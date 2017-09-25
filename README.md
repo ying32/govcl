@@ -11,7 +11,7 @@
 
 ### 实例类说明
 
-**按照Delphi中的Application、 Screen、 Mouse三个类实例是可以直接访问的，不需要释放  
+** 按照Delphi中的Application、 Screen、 Mouse、Clipboard四个类实例是可以直接访问的，不需要释放  
 其实组件带有Onwer参数的一般指定TFrom的就好了，这样就不需要手动释放，反之Owner填   
 写nil则需要手动调用Free，就像其它非组件类的。 **   
 
