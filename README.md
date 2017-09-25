@@ -294,7 +294,7 @@ func main() {
 	sheet.SetPageControl(page)
 	sheet.SetCaption("第一页")
 
-	// 需要先将TabSheet设置了父窗口，TList才可用，不然就会报错
+	// 需要先将TabSheet设置了父窗口，TListView才可用，不然就会报错
 	lv1 := vcl.NewListView(mainForm)
 	lv1.SetAlign(api.AlClient)
 	lv1.SetParent(sheet)
