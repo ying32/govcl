@@ -69,7 +69,7 @@ func main() {
 * api  
   包含各种类型定义、枚举值、DLL函数申明与重新包装  
 * dylib  
-  紧针对Linux及MacOS，模拟windows下动态调用，需要用到cgo  
+  仅针对Linux及MacOS，模拟windows下动态调用，需要用到cgo  
 * rtl  
   包含Delphi中Set类型操作、内存操作等其它函数  
 * win  
