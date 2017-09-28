@@ -228,7 +228,7 @@ func main() {
 
 	fmt.Println("main")
 	icon := vcl.NewIcon()
-	//icon.LoadFromFile("0.ico")
+	//icon.LoadFromFile(".\\imgs\\0.ico")
 	icon.LoadFromResourceID(rtl.MainInstance(), 3)
 	defer icon.Free()
 	vcl.Application.Initialize()
@@ -308,8 +308,6 @@ func main() {
 
 	// img
 	img := vcl.NewImage(mainForm)
-	/*img.SetLeft(132)
-	  img.SetTop(97)*/
 	img.SetBounds(132, 30, 156, 97)
 	img.SetParent(mainForm)
 	img.Picture().LoadFromFile(".\\imgs\\1.jpg")
@@ -319,7 +317,7 @@ func main() {
 	// linklabel
 	linklbl := vcl.NewLinkLabel(mainForm)
 	linklbl.SetAlign(api.AlBottom)
-	linklbl.SetCaption("<a href=\"http://www.baidu.com\">测试链接</a>")
+	linklbl.SetCaption("<a href=\"https://github.com/ying32/govcl\">govcl测试链接</a>")
 	linklbl.SetParent(mainForm)
 	linklbl.SetOnLinkClick(func(sender vcl.IObject, link string, linktype int32) {
 		fmt.Println("link label: ", link, ", type: ", linktype)
@@ -430,9 +428,10 @@ func main() {
 	col.SetWidth(200)
 	lv1.SetOnClick(func(vcl.IObject) {
 		if lv1.ItemIndex() != -1 {
-			fmt.Println(lv1.Items().Item(lv1.ItemIndex()).Caption(),
-				lv1.Items().Item(lv1.ItemIndex()).SubItems().Strings(0),
-				lv1.Items().Item(lv1.ItemIndex()).SubItems().Strings(1))
+			item := lv1.Selected() // lv1.Items().Item(lv1.ItemIndex())
+			fmt.Println(item.Caption(),
+				item.SubItems().Strings(0),
+				item.SubItems().Strings(1))
 		}
 	})
 
@@ -475,6 +474,5 @@ func main() {
 
 	vcl.Application.Run()
 }
-
 
 ```  
