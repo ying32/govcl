@@ -81,7 +81,7 @@ func main() {
 #### 实例类说明
 
 > 按照Delphi中的Application、 Screen、 Mouse、Clipboard四个类实例是可以直接访问的，不需要释放  
-其实组件带有Onwer参数的一般指定当前组件对应的TForm就好了，这样就不需要手动释放，反之Owner填   
+其实组件带有Owner参数的一般指定当前组件对应的TForm就好了，这样就不需要手动释放，反之Owner填   
 写nil则需要手动调用Free，就像其它非组件类的。  
 
 #### 支持的组件列表
