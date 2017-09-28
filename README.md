@@ -11,7 +11,7 @@
 
 ### 实例类说明
 
-** 按照Delphi中的Application、 Screen、 Mouse、Clipboard四个类实例是可以直接访问的，不需要释放  
+** 按照Delphi中的Application、 Screen、 Mouse、Clipboard四个类实例是可以直接访问的，不需要释放(vcl包中init.go已经定义了相关全局变量)  
 其实组件带有Onwer参数的一般指定TFrom的就好了，这样就不需要手动释放，反之Owner填   
 写nil则需要手动调用Free，就像其它非组件类的。 **   
 
@@ -67,7 +67,9 @@ TPageControl
 TTabSheet    
 TControl 
 TActionList  
-TToolButton     
+TToolButton    
+TPaintBox  
+TTimer   
 > 
 TIcon    
 TBitmap    
@@ -101,7 +103,8 @@ TGIFFrame
 TIniFile  
 TRegistry  
 TClipboard  
-
+TMonitor  
+TMargins 
 
 
 ** 文件名后面带有def的为手动编写 **   
@@ -145,13 +148,17 @@ func main() {
 		}
 	}()
 
-	//rtl.SetReportMemoryLeaksOnShutdown(true)
 	fmt.Println("main")
 	icon := vcl.NewIcon()
 	//icon.LoadFromFile("0.ico")
 	icon.LoadFromResourceID(rtl.MainInstance(), 3)
 	defer icon.Free()
 	vcl.Application.Initialize()
+
+	vcl.Application.SetOnException(func(vcl.IObject, vcl.IObject) {
+		fmt.Println("exception.")
+	})
+
 	vcl.Application.SetIcon(icon)
 	vcl.Application.SetTitle("Hello World!")
 	vcl.Application.SetMainFormOnTaskBar(true)
@@ -162,14 +169,52 @@ func main() {
 		fmt.Println("close")
 	})
 
+	fmt.Println("MainForm ClientRect: ", mainForm.ClientRect())
+
 	mainForm.SetOnCloseQuery(func(Sender vcl.IObject, CanClose uintptr) {
-		//		rtl.FormSetCanClose(CanClose, false)
+		rtl.SetFormCanClose(CanClose, vcl.MessageDlg("是否退出?", api.MtInformation, api.MbYes, api.MbNo) == vcl.MrYes)
 		fmt.Println("OnCloseQuery")
 	})
 
 	mainForm.SetCaption(vcl.Application.Title())
 	mainForm.EnabledMaximize(false)
 	mainForm.SetDoubleBuffered(true)
+	mainForm.SetPosition(api.PoScreenCenter)
+	mainForm.SetKeyPreview(true)
+	mainForm.SetOnKeyDown(func(Sender vcl.IObject, Key uintptr, Shift int32) {
+		fmt.Println(rtl.InSets(uint32(Shift), api.SsCtrl))
+		fmt.Println(rtl.GetKey(Key))
+	})
+
+	mainForm.SetOnMouseDown(func(sender vcl.IObject, button, shift, x, y int32) {
+		fmt.Println("Button:", button == api.MbLeft, ", X:", x, ", y:", y)
+		fmt.Println("OnMouseDown")
+	})
+
+	chk := vcl.NewCheckBox(mainForm)
+	chk.SetParent(mainForm)
+	chk.SetChecked(true)
+	chk.SetCaption("测试")
+	chk.SetLeft(1)
+	chk.SetTop(60)
+	chk.SetOnClick(func(vcl.IObject) {
+		fmt.Println("chk.Checked=", chk.Checked())
+	})
+
+	// action
+	action := vcl.NewAction(mainForm)
+	action.SetCaption("action1")
+	action.SetOnUpdate(func(sender vcl.IObject) {
+		vcl.ActionFromObj(sender).SetEnabled(chk.Checked())
+	})
+	action.SetOnExecute(func(vcl.IObject) {
+		fmt.Println("action execute")
+	})
+	btn := vcl.NewButton(mainForm)
+	btn.SetParent(mainForm)
+	btn.SetBounds(250, 30, 90, 25)
+	btn.SetCaption("action")
+	btn.SetAction(action)
 
 	trayicon = vcl.NewTrayIcon(mainForm)
 	trayicon.SetIcon(icon)
@@ -198,6 +243,7 @@ func main() {
 	linklbl.SetParent(mainForm)
 	linklbl.SetOnLinkClick(func(sender vcl.IObject, link string, linktype int32) {
 		fmt.Println("link label: ", link, ", type: ", linktype)
+		rtl.SysOpen(link)
 	})
 
 	// menu
@@ -263,16 +309,6 @@ func main() {
 	})
 	button2.SetAlign(api.AlTop)
 
-	chk := vcl.NewCheckBox(mainForm)
-	chk.SetParent(mainForm)
-	chk.SetChecked(true)
-	chk.SetCaption("测试")
-	chk.SetLeft(1)
-	chk.SetTop(60)
-	chk.SetOnClick(func(vcl.IObject) {
-		fmt.Println("chk.Checked=", chk.Checked())
-	})
-
 	combo := vcl.NewComboBox(mainForm)
 	combo.SetAlign(api.AlBottom)
 	combo.SetParent(mainForm)
@@ -309,9 +345,14 @@ func main() {
 	col = lv1.Columns().Add()
 	col.SetCaption("名称")
 	col.SetWidth(200)
+	col = lv1.Columns().Add()
+	col.SetCaption("内容")
+	col.SetWidth(200)
 	lv1.SetOnClick(func(vcl.IObject) {
 		if lv1.ItemIndex() != -1 {
-			fmt.Println(lv1.Items().Item(lv1.ItemIndex()).Caption())
+			fmt.Println(lv1.Items().Item(lv1.ItemIndex()).Caption(),
+				lv1.Items().Item(lv1.ItemIndex()).SubItems().Strings(0),
+				lv1.Items().Item(lv1.ItemIndex()).SubItems().Strings(1))
 		}
 	})
 
@@ -320,6 +361,7 @@ func main() {
 		lstitem := lv1.Items().Add()
 		lstitem.SetCaption(fmt.Sprintf("%d", i))
 		lstitem.SubItems().Add(fmt.Sprintf("第%d", i))
+		lstitem.SubItems().Add(fmt.Sprintf("内容%d", i))
 	}
 	lv1.Items().EndUpdate()
 
@@ -328,11 +370,28 @@ func main() {
 	sheet.SetPageControl(page)
 
 	tv1 := vcl.NewTreeView(mainForm)
+	tv1.SetAutoExpand(true)
 	tv1.SetParent(sheet)
 	tv1.SetAlign(api.AlClient)
-	tv1.Items().AddChild(nil, "首个")
+	tv1.SetOnClick(func(vcl.IObject) {
+		if tv1.SelectionCount() > 0 {
+			node := tv1.Selected()
+			fmt.Println("text:", node.Text(), ", index:", node.Index())
+		}
+	})
+	tv1.Items().BeginUpdate()
+	node := tv1.Items().AddChild(nil, "首个")
+	for i := 1; i <= 50; i++ {
+		tv1.Items().AddChild(node, fmt.Sprintf("Node%d", i))
+	}
+	node = tv1.Items().AddChild(nil, "第二个")
+	for i := 1; i <= 50; i++ {
+		tv1.Items().AddChild(node, fmt.Sprintf("Node%d", i))
+	}
+	tv1.Items().EndUpdate()
 
-	mainForm.ScreenCenter()
+	fmt.Println("Compoment Count:", mainForm.ComponentCount())
+	//	mainForm.ScreenCenter()
 
 	vcl.Application.Run()
 }
