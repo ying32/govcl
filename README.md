@@ -67,7 +67,7 @@ func main() {
 #### 项目中的包说明
 
 * api  
-  包含各种类型定义、枚举值、DLL函数申明写重新包装  
+  包含各种类型定义、枚举值、DLL函数申明与重新包装  
 * dylib  
   紧针对Linux及MacOS，模拟windows下动态调用，需要用到cgo  
 * rtl  
