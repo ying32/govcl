@@ -22,7 +22,7 @@
 > 2、项目现在支持VCL标准控件中的大部分，足以满足日常操作了，具体见[支持的组件列表](#支持的组件列表)。  
 > 事件方面也支持部分，如下：  
 ```delphi
- TGoEvent = (geNotifyEvent, geClick, geClose, geFormClose, geFormCloseQuery, geChange,
+ TGoEvent = (geClick, geClose, geFormClose, geFormCloseQuery, geChange,
               geUpDownClick, geTreeViewChange, geListViewChange, geDblClick, gePaint,
               geResize, geShow, geMenuChange, geEnter, geExit, gePopup, geBalloonClick,
               geLinkClick, geExecute, geUpdate, geException, geTimer, geMinimize,
