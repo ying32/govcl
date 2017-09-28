@@ -1,5 +1,4 @@
 # govcl
-### golang binding delphi vcl framework  
 
 #### 目录
 * [项目介绍](#项目介绍)
