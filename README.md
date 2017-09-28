@@ -198,15 +198,16 @@ by: ying32
 
 ```golang
 // govcl project main.go
-package main
-
-// windows下编译标识
 // go.exe build -i -ldflags="-H windowsgui"
+package main
 
 import (
 	"fmt"
 
-	// 这里导入项目路径
+	"gitee.com/ying32/govcl/vcl"
+	"gitee.com/ying32/govcl/vcl/api"
+	"gitee.com/ying32/govcl/vcl/rtl"
+	"gitee.com/ying32/govcl/vcl/win"
 )
 
 var (
@@ -307,6 +308,8 @@ func main() {
 
 	// img
 	img := vcl.NewImage(mainForm)
+	/*img.SetLeft(132)
+	  img.SetTop(97)*/
 	img.SetBounds(132, 30, 156, 97)
 	img.SetParent(mainForm)
 	img.Picture().LoadFromFile(".\\imgs\\1.jpg")
