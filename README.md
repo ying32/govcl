@@ -334,9 +334,12 @@ func main() {
 	item2.SetOnClick(func(vcl.IObject) {
 		mem := vcl.NewMemoryStream()
 		defer mem.Free()
-		s := api.GoStrToDStr("ffff中f")
-		mem.Write(s, int32(api.DStrLen(s)*2))
+		mem.Write([]byte("测试"))
 		mem.SaveToFile("test.txt")
+
+		mem.SetPosition(0)
+		n, bs := mem.Read(int32(mem.Size()))
+		fmt.Println("n:", n, ", bs:", bs, ", str:", string(bs))
 	})
 	item.Add(item2)
 
