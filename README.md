@@ -182,8 +182,8 @@ TComponent
 
 #### 截图
 
-[截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/1.png)   
-[截图2](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/2.png)    
+![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/1.png)   
+![截图2](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/2.png)    
 
 
 #### 备注
