@@ -67,7 +67,7 @@ func main() {
 #### 项目中的包说明
 
 * api  
-  包含各种类型定义、枚举值、DLL函数申明与重新包装  
+  DLL函数申明与重新包装  
 * dylib  
   仅针对Linux及MacOS，模拟windows下动态调用，需要用到cgo  
 * rtl  
@@ -76,6 +76,8 @@ func main() {
   包含windows下的常量、函数、类型定义  
 * xui  
   包含一个使用xml创建UI的类  
+* types  
+  包含 类型定义、枚举定义、常量
 
 
 #### 实例类说明
