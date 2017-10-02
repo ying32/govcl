@@ -146,6 +146,7 @@ TActionList
 TToolButton     
 TPaintBox  
 TTimer  
+TCategoryPanel 
 > 
 TIcon    
 TBitmap    
@@ -183,7 +184,8 @@ TMonitor
 TMargins  
 TList  
 TGraphic  
-TComponent  
+TComponent   
+TStyleManager 
 
 #### 截图
 
