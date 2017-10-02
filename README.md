@@ -70,6 +70,8 @@ func main() {
 
 #### 项目中的包说明
 
+* vcl  
+  包含Delphi标准组件中的大部分   
 * api  
   DLL函数申明与重新包装  
 * dylib  
