@@ -193,11 +193,11 @@ TStyleManager
 
 ![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/1.png)   
 ![截图2](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/2.png)     
-![绘图](https://gitee.com/ying32/govcl/raw/master/Screenshot/draw.png)  
-![ListView](https://gitee.com/ying32/govcl/raw/master/Screenshot/listview.png)  
-![RichEdit](https://gitee.com/ying32/govcl/raw/master/Screenshot/richedit.png)  
-![标准控件](https://gitee.com/ying32/govcl/raw/master/Screenshot/std.png)  
-![样式](https://gitee.com/ying32/govcl/raw/master/Screenshot/style.png)  
+![绘图](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/draw.png)  
+![ListView](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/listview.png)  
+![RichEdit](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/richedit.png)  
+![标准控件](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/std.png)  
+![样式](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/style.png)  
 
 #### 备注
 **文件名后面带有def的为手动编写**   
