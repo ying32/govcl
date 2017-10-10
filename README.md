@@ -39,6 +39,7 @@
 #### 重要说明
 **所有的代码只会存储在OSC的[码云](https://gitee.com/ying32/govcl)中，原因在于go包路径的问题。**  
 **至于github上会建一个同名的项目[govcl](https://github.com/ying32/govcl)，但不会提交任何代码**  
+**xui包目前还未完成，但不影响正常使用**  
 
 
 #### 使用方法
