@@ -34,9 +34,6 @@
               geMouseEnter, geMouseLeave, geMouseMove, geMouseUp, geMouseWheel);
 ```
 
-> 3、关于不能跨平台问题，原本是有打算借助CrossVcl这个库做到跨三个平台的，但在尝试中发现在共享  
-> 库中创建会报错，调试了下，没有找到原因，所以暂时就放弃这块了，后期视情况看能不能解决这个问题。  
-
 #### 重要说明
 **所有的代码只会存储在OSC的[码云](https://gitee.com/ying32/govcl)中，原因在于go包路径的问题。**  
 **至于github上会建一个同名的项目[govcl](https://github.com/ying32/govcl)，但不会提交任何代码**  
@@ -51,7 +48,6 @@ package main
 
 import (
    "gitee.com/ying32/govcl/vcl"
-   "gitee.com/ying32/govcl/api" // 这个视情况导入
 )
 
 var (
@@ -63,7 +59,6 @@ func main() {
     mainForm = vcl.Application.CreateForm()
     mainForm.SetCaption("Hello")
     mainForm.EnabledMaximize(false)
-    mainForm.SetDoubleBuffered(true)
     mainForm.ScreenCenter()
     vcl.Application.Run()
 }
