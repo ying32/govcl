@@ -2,19 +2,39 @@
 
 ## golang binding delphi vcl(lazarus lcl)
 
+Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)  
+
 ### usage: 
 
 > go get gitee.com/ying32/govcl    
+
+```go
+package main
+
+import (
+   "gitee.com/ying32/govcl/vcl"
+)
+
+var (
+   mainForm *vcl.TForm
+)
+
+func main() {
+    vcl.Application.SetIconResId(3)
+    vcl.Application.Initialize()
+    mainForm = vcl.Application.CreateForm()
+    mainForm.SetCaption("Hello")
+    mainForm.EnabledMaximize(false)
+    mainForm.ScreenCenter()
+    vcl.Application.Run()
+}
+
+```
 
 ---
 Q: Why not submit the code on github.com?  
 A: Visit github in China is very bad, so choose China's domestic git repository.
 ---
-
-**支持win32、win64、linux64、macOS32（linux及macOS仅限部分组件、属性、事件及方法有效）**  
-
-Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)  
-
 
 ### Chinese wiki  
 
