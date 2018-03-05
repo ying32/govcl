@@ -62,6 +62,7 @@ A: Visit github in China is very bad, so choose China's domestic git repository.
 ![RichEdit](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/richedit.png)  
 ![标准控件](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/std.png)  
 ![样式](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/style.png)  
+![图像按钮](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/imagebutton.png)  
 
 ---
 ## Linux 
@@ -72,7 +73,7 @@ A: Visit github in China is very bad, so choose China's domestic git repository.
 ![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/3_linux.jpg)  
 ![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/4_linux.jpg)  
 ![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/5_linux.jpg)  
-
+![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/6_linux.jpg)  
 
 ---
 ## MacOS
@@ -82,3 +83,4 @@ A: Visit github in China is very bad, so choose China's domestic git repository.
 ![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/3_macOS.jpg)  
 ![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/4_macOS.jpg)  
 ![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/5_macOS.jpg)  
+![截图1](https://raw.githubusercontent.com/ying32/govcl/master/Screenshot/6_macOS.jpg)  
