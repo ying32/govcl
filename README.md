@@ -2,7 +2,9 @@
 
 ## golang binding delphi vcl(lazarus lcl)
 
-Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)  
+Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)    
+
+`Go Version >= 1.9.0`  
 
 ### usage: 
 
