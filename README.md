@@ -52,7 +52,7 @@ Q: Why is there no English WIKI?
 A: My English is bad. You can use Google Translate.    
 
 
-Q:  What if I want to use the code of this repository and not want to use gitee repository?  
+Q:  if I want to use the code of this repository and not want to use gitee repository?  
 A:  Do not use the "go get" command. First create the directory "%GOPATH%/src/gitee.com/ying32". Then use the "git clone" command in this directory.  
 
 ---  
