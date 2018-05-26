@@ -1,6 +1,8 @@
 # govcl
 
-## golang binding delphi vcl(lazarus lcl)
+# Do not use this repository code. This is a backup. Please use "gitee.com/ying32/govcl".  
+
+## golang binding Delphi VCL/Lazarus LCL
 
 Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)    
 
@@ -33,15 +35,23 @@ func main() {
 
 ```
 
+### All binaries are moved to the attachment and [download](https://gitee.com/ying32/govcl/attach_files) . 
+
+
 * Windows: copy "bin\win32\libvcl.dll" or "bin\win64\libvclx64.dll" to the current exe directory or system environment path. If you don't want to use Delphi binary, you can copy the corresponding LCL library binaries under the "bin\liblcl.dll\" directory. Note: the use of LCL is limited in components, events, properties, and methods.
 
 * Linux: copy "bin\linux64\liblcl.so" executable file directory (also can be copied from the liblcl.so to `/usr/lib/` directory as a Public Library).
 
-* MacOS: copy "bin\MacOS32\liblcl.dylib" executable file directory. [apply packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=MacOS%E4%B8%8A%E5%BA%94%E7%94%A8%E6%89%93%E5%8C%85&parent=FQA).
+* MacOS: copy "bin\MacOS32\liblcl.dylib" executable file directory. [APP package](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS).
 
 ---
 Q: Why not submit the code on github.com?  
-A: Visit github in China is very bad, so choose China's domestic git repository.
+A: Visit site too slow.  
+
+
+Q: Why is there no English WIKI?   
+A: My English is bad.  
+
 ---
 
 ### Chinese wiki  

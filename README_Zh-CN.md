@@ -26,9 +26,9 @@
 
 * 至于github上会建一个同名的项目[govcl](https://github.com/ying32/govcl)，暂时不会提交任何代码，之后可能会考虑提交一个备份。    
  
-* `Go Version >= 1.9.0` 。    
+* `Go Version >= 1.9.0` 。  
 
-* 希望大家有问题的话通过Issues来进行反馈，反馈错误的话最好能带有相关错误的截图之类的， 而不是通过评论来提问。wiki也可关注下，有些问题在会里面作解答。  
+* 希望大家有问题的话通过[Issues](https://gitee.com/ying32/govcl/issues)来进行反馈，反馈错误的话最好能带有相关错误的截图之类的， 而不是通过评论来提问。wiki也可关注下，有些问题在会里面作解答。  
 
 ---
 ### 使用方法
@@ -56,6 +56,7 @@ func main() {
 }
 
 ```  
+**相关二进制已经移到附件中下载。**  
 
 * Windows: 复制"bin\win32\libvcl.dll"或者"bin\win64\libvclx64.dll"到当前exe目录或系统环境路径下(如果不想使用Delphi的二进制可到“bin\liblcl.dll\”目录下复制对应的lcl库二进制。注：使用lcl在组件，事件，属性及方法上会受到限制)  
 
