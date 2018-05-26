@@ -1,12 +1,11 @@
-# govcl
+# Do not use this repository code. This is a backup.  
+
+## govcl: Go binding Delphi VCL/Lazarus LCL
 
 * [中文](https://github.com/ying32/govcl/blob/master/README_Zh-CN.md)   
 * [English](https://github.com/ying32/govcl/blob/master/README.md)   
 
-
-# Do not use this repository code. This is a backup.  
-
-## golang binding Delphi VCL/Lazarus LCL
+----  
 
 Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)    
 
