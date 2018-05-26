@@ -1,0 +1,311 @@
+
+//----------------------------------------
+// 代码由GenlibVcl工具自动生成。
+// Copyright ? ying32. All Rights Reserved.
+//
+//----------------------------------------
+
+function StringList_Create: TStringList; stdcall;
+begin
+  Result :=  TStringList.Create;
+end;
+
+procedure StringList_Free(AObj: TStringList); stdcall;
+begin
+  AObj.Free;
+end;
+
+function StringList_Add(AObj: TStringList; S: PChar): Integer; stdcall;
+begin
+  Result :=  AObj.Add(S);
+end;
+
+function StringList_AddObject(AObj: TStringList; S: PChar; AObject: TObject): Integer; stdcall;
+begin
+  Result :=  AObj.AddObject(S, AObject);
+end;
+
+procedure StringList_Assign(AObj: TStringList; Source: TPersistent); stdcall;
+begin
+  AObj.Assign(Source);
+end;
+
+procedure StringList_Clear(AObj: TStringList); stdcall;
+begin
+  AObj.Clear;
+end;
+
+procedure StringList_Delete(AObj: TStringList; Index: Integer); stdcall;
+begin
+  AObj.Delete(Index);
+end;
+
+function StringList_IndexOf(AObj: TStringList; S: PChar): Integer; stdcall;
+begin
+  Result :=  AObj.IndexOf(S);
+end;
+
+procedure StringList_Insert(AObj: TStringList; Index: Integer; S: PChar); stdcall;
+begin
+  AObj.Insert(Index, S);
+end;
+
+procedure StringList_InsertObject(AObj: TStringList; Index: Integer; S: PChar; AObject: TObject); stdcall;
+begin
+  AObj.InsertObject(Index, S, AObject);
+end;
+
+procedure StringList_Append(AObj: TStringList; S: PChar); stdcall;
+begin
+  AObj.Append(S);
+end;
+
+procedure StringList_BeginUpdate(AObj: TStringList); stdcall;
+begin
+  AObj.BeginUpdate;
+end;
+
+procedure StringList_EndUpdate(AObj: TStringList); stdcall;
+begin
+  AObj.EndUpdate;
+end;
+
+function StringList_Equals(AObj: TStringList; Strings: TStrings): LongBool; stdcall;
+begin
+  Result :=  AObj.Equals(Strings);
+end;
+
+function StringList_IndexOfName(AObj: TStringList; Name: PChar): Integer; stdcall;
+begin
+  Result :=  AObj.IndexOfName(Name);
+end;
+
+function StringList_IndexOfObject(AObj: TStringList; AObject: TObject): Integer; stdcall;
+begin
+  Result :=  AObj.IndexOfObject(AObject);
+end;
+
+procedure StringList_LoadFromFile(AObj: TStringList; FileName: PChar); stdcall;
+begin
+  AObj.LoadFromFile(FileName);
+end;
+
+procedure StringList_LoadFromStream(AObj: TStringList; Stream: TStream); stdcall;
+begin
+  AObj.LoadFromStream(Stream);
+end;
+
+procedure StringList_Move(AObj: TStringList; CurIndex: Integer; NewIndex: Integer); stdcall;
+begin
+  AObj.Move(CurIndex, NewIndex);
+end;
+
+procedure StringList_SaveToFile(AObj: TStringList; FileName: PChar); stdcall;
+begin
+  AObj.SaveToFile(FileName);
+end;
+
+procedure StringList_SaveToStream(AObj: TStringList; Stream: TStream); stdcall;
+begin
+  AObj.SaveToStream(Stream);
+end;
+
+function StringList_GetNamePath(AObj: TStringList): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.GetNamePath);
+end;
+
+function StringList_ClassName(AObj: TStringList): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.ClassName);
+end;
+
+function StringList_GetHashCode(AObj: TStringList): Integer; stdcall;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function StringList_ToString(AObj: TStringList): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function StringList_GetSorted(AObj: TStringList): LongBool; stdcall;
+begin
+  Result :=  AObj.Sorted;
+end;
+
+procedure StringList_SetSorted(AObj: TStringList; AValue: LongBool); stdcall;
+begin
+  AObj.Sorted := AValue;
+end;
+
+procedure StringList_SetOnChange(AObj: TStringList; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChange := nil;
+    TEventClass.Remove(AObj, geChange);
+    Exit;
+  end;
+  AObj.OnChange := TEventClass.OnChange;
+  TEventClass.Add(AObj, geChange, AEventId);
+end;
+
+function StringList_GetCapacity(AObj: TStringList): Integer; stdcall;
+begin
+  Result :=  AObj.Capacity;
+end;
+
+procedure StringList_SetCapacity(AObj: TStringList; AValue: Integer); stdcall;
+begin
+  AObj.Capacity := AValue;
+end;
+
+function StringList_GetCommaText(AObj: TStringList): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.CommaText);
+end;
+
+procedure StringList_SetCommaText(AObj: TStringList; AValue: PChar); stdcall;
+begin
+  AObj.CommaText := AValue;
+end;
+
+function StringList_GetCount(AObj: TStringList): Integer; stdcall;
+begin
+  Result :=  AObj.Count;
+end;
+
+function StringList_GetDelimiter(AObj: TStringList): Char; stdcall;
+begin
+  Result :=  AObj.Delimiter;
+end;
+
+procedure StringList_SetDelimiter(AObj: TStringList; AValue: Char); stdcall;
+begin
+  AObj.Delimiter := AValue;
+end;
+
+function StringList_GetText(AObj: TStringList): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.Text);
+end;
+
+procedure StringList_SetText(AObj: TStringList; AValue: PChar); stdcall;
+begin
+  AObj.Text := AValue;
+end;
+
+function StringList_GetWriteBOM(AObj: TStringList): LongBool; stdcall;
+begin
+  Result :=  AObj.WriteBOM;
+end;
+
+procedure StringList_SetWriteBOM(AObj: TStringList; AValue: LongBool); stdcall;
+begin
+  AObj.WriteBOM := AValue;
+end;
+
+function StringList_GetOptions(AObj: TStringList): TStringsOptions; stdcall;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure StringList_SetOptions(AObj: TStringList; AValue: TStringsOptions); stdcall;
+begin
+  AObj.Options := AValue;
+end;
+
+function StringList_GetObjects(AObj: TStringList; Index: Integer): TObject; stdcall;
+begin
+  Result :=  AObj.Objects[Index];
+end;
+
+procedure StringList_SetObjects(AObj: TStringList; Index: Integer; AValue: TObject); stdcall;
+begin
+  AObj.Objects[Index] := AValue;
+end;
+
+function StringList_GetValues(AObj: TStringList; Name: PChar): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.Values[Name]);
+end;
+
+procedure StringList_SetValues(AObj: TStringList; Name: string; AValue: PChar); stdcall;
+begin
+  AObj.Values[Name] := AValue;
+end;
+
+function StringList_GetValueFromIndex(AObj: TStringList; Index: Integer): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.ValueFromIndex[Index]);
+end;
+
+procedure StringList_SetValueFromIndex(AObj: TStringList; Index: Integer; AValue: PChar); stdcall;
+begin
+  AObj.ValueFromIndex[Index] := AValue;
+end;
+
+function StringList_GetStrings(AObj: TStringList; Index: Integer): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.Strings[Index]);
+end;
+
+procedure StringList_SetStrings(AObj: TStringList; Index: Integer; AValue: PChar); stdcall;
+begin
+  AObj.Strings[Index] := AValue;
+end;
+
+
+exports
+  StringList_Create,
+  StringList_Free,
+  StringList_Add,
+  StringList_AddObject,
+  StringList_Assign,
+  StringList_Clear,
+  StringList_Delete,
+  StringList_IndexOf,
+  StringList_Insert,
+  StringList_InsertObject,
+  StringList_Append,
+  StringList_BeginUpdate,
+  StringList_EndUpdate,
+  StringList_Equals,
+  StringList_IndexOfName,
+  StringList_IndexOfObject,
+  StringList_LoadFromFile,
+  StringList_LoadFromStream,
+  StringList_Move,
+  StringList_SaveToFile,
+  StringList_SaveToStream,
+  StringList_GetNamePath,
+  StringList_ClassName,
+  StringList_GetHashCode,
+  StringList_ToString,
+  StringList_GetSorted,
+  StringList_SetSorted,
+  StringList_SetOnChange,
+  StringList_GetCapacity,
+  StringList_SetCapacity,
+  StringList_GetCommaText,
+  StringList_SetCommaText,
+  StringList_GetCount,
+  StringList_GetDelimiter,
+  StringList_SetDelimiter,
+  StringList_GetText,
+  StringList_SetText,
+  StringList_GetWriteBOM,
+  StringList_SetWriteBOM,
+  StringList_GetOptions,
+  StringList_SetOptions,
+  StringList_GetObjects,
+  StringList_SetObjects,
+  StringList_GetValues,
+  StringList_SetValues,
+  StringList_GetValueFromIndex,
+  StringList_SetValueFromIndex,
+  StringList_GetStrings,
+  StringList_SetStrings;
+
