@@ -1,6 +1,10 @@
 # govcl
 
-# Do not use this repository code. This is a backup. Please use "gitee.com/ying32/govcl".  
+* [中文](https://github.com/ying32/govcl/blob/master/README_Zh-CN.md)   
+* [English](https://github.com/ying32/govcl/blob/master/README.md)   
+
+
+# Do not use this repository code. This is a backup.  
 
 ## golang binding Delphi VCL/Lazarus LCL
 
@@ -51,7 +55,7 @@ A: My English is bad.
 ---  
 ### Chinese wiki  
 
-[Chinese wiki](https://gitee.com/ying32/govcl/wikis/Home)  
+[Chinese wiki](https://gitee.com/ying32/govcl/wikis/pages)  
 
 
 ---  
