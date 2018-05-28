@@ -34,34 +34,31 @@ end;
 // 当IsLibrary = True时，是不会调用WidgetSet.CreateAppHandle方法
 // 这时就需要手动去伪造一个 WidgetSet.AppHandle := CreateWindowsAppHandle;
 // 这里的代码来自win32object.inc单元中 CreateAppHandle方法。
-//function CreateWindowsAppHandle: HWND;
-//var
-//  SysMenu: HMENU;
-//begin
-//  Result := CreateWindowW(@ClsNameW,
-//    PWideChar(UTF8ToUTF16(Application.Title)),
-//    WS_POPUP or WS_CLIPSIBLINGS or WS_SYSMENU or WS_MINIMIZEBOX, 0,
-//    0, 0, 0, 0, 0, HInstance, nil);
-//  if Result = 0 then
-//    Exit(0);
-//  AllocWindowInfo(Result);
-//  // remove useless menuitems from sysmenu
-//  SysMenu := Windows.GetSystemMenu(Result, False);
-//  Windows.DeleteMenu(SysMenu, SC_MAXIMIZE, MF_BYCOMMAND);
-//  Windows.DeleteMenu(SysMenu, SC_SIZE, MF_BYCOMMAND);
-//  Windows.DeleteMenu(SysMenu, SC_MOVE, MF_BYCOMMAND);
-//end;
+function CreateWindowsAppHandle: HWND;
+var
+  SysMenu: HMENU;
+begin
+  Result := CreateWindowW(@ClsNameW,
+    PWideChar(UTF8ToUTF16(Application.Title)),
+    WS_POPUP or WS_CLIPSIBLINGS or WS_SYSMENU or WS_MINIMIZEBOX, 0,
+    0, 0, 0, 0, 0, HInstance, nil);
+  if Result = 0 then
+    Exit(0);
+  AllocWindowInfo(Result);
+  // remove useless menuitems from sysmenu
+  SysMenu := Windows.GetSystemMenu(Result, False);
+  Windows.DeleteMenu(SysMenu, SC_MAXIMIZE, MF_BYCOMMAND);
+  Windows.DeleteMenu(SysMenu, SC_SIZE, MF_BYCOMMAND);
+  Windows.DeleteMenu(SysMenu, SC_MOVE, MF_BYCOMMAND);
+end;
 {$ENDIF}
 
 // 移动来自 MyLCL_Application.inc
 procedure Application_Initialize(AObj: TApplication); extdecl;
 begin
-  // 换一种方式，强行修改RTL变量，伪造非Library
-  // 暂时未知会发生什么。
-  IsLibrary := False;
   AObj.Initialize;
 {$IFDEF WINDOWS}
-    //WidgetSet.AppHandle := CreateWindowsAppHandle;
+  WidgetSet.AppHandle := CreateWindowsAppHandle;
 {$ENDIF}
 end;
 
