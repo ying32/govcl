@@ -43,7 +43,7 @@ func main() {
 ---   
 ### FAQ
 
-Q: Why not submit the code on github.com?  
+Q: Why not use github.com?  
 A: Visit site too slow.  
 
 
