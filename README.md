@@ -30,7 +30,6 @@ var (
 )
 
 func main() {
-    vcl.Application.SetIconResId(3)
     vcl.Application.Initialize()
     mainForm = vcl.Application.CreateForm()
     mainForm.SetCaption("Hello")
