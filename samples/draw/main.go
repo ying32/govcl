@@ -4,6 +4,7 @@ import (
 	"gitee.com/ying32/govcl/vcl"
 	"gitee.com/ying32/govcl/vcl/rtl"
 	"gitee.com/ying32/govcl/vcl/types"
+	"gitee.com/ying32/govcl/vcl/types/colors"
 )
 
 type TPoint struct {
@@ -40,7 +41,7 @@ func main() {
 		canvas.MoveTo(10, 10)
 		canvas.LineTo(50, 10)
 		s := "这是一段文字"
-		canvas.Font().SetColor(types.ClRed) // red
+		canvas.Font().SetColor(colors.ClRed) // red
 		canvas.Font().SetSize(20)
 		style := canvas.Font().Style()
 		canvas.Font().SetStyle(types.TFontStyles(rtl.Include(uint32(style), types.FsBold, types.FsItalic)))
@@ -58,17 +59,17 @@ func main() {
 		s = "测试输出"
 		r = types.TRect{0, 0, 80, 80}
 		// brush
-		canvas.Brush().SetColor(types.ClGreen)
+		canvas.Brush().SetColor(colors.ClGreen)
 		canvas.FillRect(r)
 
 		// font
 		canvas.Font().SetStyle(0)
 		canvas.Font().SetSize(9)
-		canvas.Font().SetColor(types.ClBlue)
+		canvas.Font().SetColor(colors.ClBlue)
 
 		// pen
 		canvas.Pen().SetWidth(2)
-		canvas.Pen().SetColor(types.ClFuchsia)
+		canvas.Pen().SetColor(colors.ClFuchsia)
 		canvas.Rectangle(r.Left, r.Top, r.Right, r.Bottom)
 
 		textFmt := rtl.Include(0, types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
@@ -87,17 +88,17 @@ func main() {
 	paintbox.SetHeight(mainForm.Height() - 280)
 	paintbox.SetOnPaint(func(vcl.IObject) {
 		canvas := paintbox.Canvas()
-		canvas.Pen().SetColor(types.ClRed)
+		canvas.Pen().SetColor(colors.ClRed)
 		r := paintbox.ClientRect()
 		canvas.Rectangle(r.Left, r.Top, r.Right, r.Bottom)
 
-		canvas.Font().SetColor(types.ClSkyblue)
+		canvas.Font().SetColor(colors.ClSkyblue)
 		rect := paintbox.ClientRect()
 		s := "在这可以用鼠标绘制"
 		textFmt := types.TTextFormat(rtl.Include(0, types.TfCenter, types.TfSingleLine, types.TfVerticalCenter))
 		canvas.TextRect2(&rect, &s, textFmt)
 
-		canvas.Pen().SetColor(types.ClGreen)
+		canvas.Pen().SetColor(colors.ClGreen)
 		for _, p := range points {
 			if p.Down {
 				canvas.MoveTo(p.X, p.Y)

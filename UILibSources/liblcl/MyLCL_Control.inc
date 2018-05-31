@@ -20,6 +20,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Control_ClientToScreen(AObj: TControl; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Control_ClientToParent(AObj: TControl; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Control_Dragging(AObj: TControl): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -53,6 +63,16 @@ end;
 procedure Control_Repaint(AObj: TControl); extdecl;
 begin
   AObj.Repaint;
+end;
+
+procedure Control_ScreenToClient(AObj: TControl; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Control_ParentToClient(AObj: TControl; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Control_SendToBack(AObj: TControl); extdecl;
@@ -350,6 +370,8 @@ exports
   Control_Create,
   Control_Free,
   Control_BringToFront,
+  Control_ClientToScreen,
+  Control_ClientToParent,
   Control_Dragging,
   Control_HasParent,
   Control_Hide,
@@ -357,6 +379,8 @@ exports
   Control_Perform,
   Control_Refresh,
   Control_Repaint,
+  Control_ScreenToClient,
+  Control_ParentToClient,
   Control_SendToBack,
   Control_SetBounds,
   Control_Show,

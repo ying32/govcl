@@ -100,6 +100,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ComboBox_ClientToScreen(AObj: TComboBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ComboBox_ClientToParent(AObj: TComboBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ComboBox_Dragging(AObj: TComboBox): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -123,6 +133,16 @@ end;
 procedure ComboBox_Refresh(AObj: TComboBox); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure ComboBox_ScreenToClient(AObj: TComboBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ComboBox_ParentToClient(AObj: TComboBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ComboBox_SendToBack(AObj: TComboBox); stdcall;
@@ -1095,11 +1115,15 @@ exports
   ComboBox_SetFocus,
   ComboBox_Update,
   ComboBox_BringToFront,
+  ComboBox_ClientToScreen,
+  ComboBox_ClientToParent,
   ComboBox_Dragging,
   ComboBox_HasParent,
   ComboBox_Hide,
   ComboBox_Perform,
   ComboBox_Refresh,
+  ComboBox_ScreenToClient,
+  ComboBox_ParentToClient,
   ComboBox_SendToBack,
   ComboBox_Show,
   ComboBox_GetTextBuf,

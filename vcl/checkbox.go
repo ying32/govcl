@@ -100,6 +100,14 @@ func (c *TCheckBox) BringToFront() {
     CheckBox_BringToFront(c.instance)
 }
 
+func (c *TCheckBox) ClientToScreen(Point TPoint) TPoint {
+    return CheckBox_ClientToScreen(c.instance, Point)
+}
+
+func (c *TCheckBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return CheckBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
+}
+
 func (c *TCheckBox) Dragging() bool {
     return CheckBox_Dragging(c.instance)
 }
@@ -118,6 +126,14 @@ func (c *TCheckBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (c *TCheckBox) Refresh() {
     CheckBox_Refresh(c.instance)
+}
+
+func (c *TCheckBox) ScreenToClient(Point TPoint) TPoint {
+    return CheckBox_ScreenToClient(c.instance, Point)
+}
+
+func (c *TCheckBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return CheckBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 func (c *TCheckBox) SendToBack() {

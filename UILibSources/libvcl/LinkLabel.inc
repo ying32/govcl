@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure LinkLabel_ClientToScreen(AObj: TLinkLabel; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure LinkLabel_ClientToParent(AObj: TLinkLabel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function LinkLabel_Dragging(AObj: TLinkLabel): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure LinkLabel_Refresh(AObj: TLinkLabel); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure LinkLabel_ScreenToClient(AObj: TLinkLabel; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure LinkLabel_ParentToClient(AObj: TLinkLabel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure LinkLabel_SendToBack(AObj: TLinkLabel); stdcall;
@@ -884,11 +904,15 @@ exports
   LinkLabel_SetFocus,
   LinkLabel_Update,
   LinkLabel_BringToFront,
+  LinkLabel_ClientToScreen,
+  LinkLabel_ClientToParent,
   LinkLabel_Dragging,
   LinkLabel_HasParent,
   LinkLabel_Hide,
   LinkLabel_Perform,
   LinkLabel_Refresh,
+  LinkLabel_ScreenToClient,
+  LinkLabel_ParentToClient,
   LinkLabel_SendToBack,
   LinkLabel_Show,
   LinkLabel_GetTextBuf,

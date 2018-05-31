@@ -100,6 +100,14 @@ func (g *TGroupBox) BringToFront() {
     GroupBox_BringToFront(g.instance)
 }
 
+func (g *TGroupBox) ClientToScreen(Point TPoint) TPoint {
+    return GroupBox_ClientToScreen(g.instance, Point)
+}
+
+func (g *TGroupBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return GroupBox_ClientToParent(g.instance, Point , CheckPtr(AParent))
+}
+
 func (g *TGroupBox) Dragging() bool {
     return GroupBox_Dragging(g.instance)
 }
@@ -118,6 +126,14 @@ func (g *TGroupBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (g *TGroupBox) Refresh() {
     GroupBox_Refresh(g.instance)
+}
+
+func (g *TGroupBox) ScreenToClient(Point TPoint) TPoint {
+    return GroupBox_ScreenToClient(g.instance, Point)
+}
+
+func (g *TGroupBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return GroupBox_ParentToClient(g.instance, Point , CheckPtr(AParent))
 }
 
 func (g *TGroupBox) SendToBack() {

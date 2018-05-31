@@ -35,6 +35,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ToolButton_ClientToScreen(AObj: TToolButton; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ToolButton_ClientToParent(AObj: TToolButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ToolButton_Dragging(AObj: TToolButton): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -68,6 +78,16 @@ end;
 procedure ToolButton_Repaint(AObj: TToolButton); extdecl;
 begin
   AObj.Repaint;
+end;
+
+procedure ToolButton_ScreenToClient(AObj: TToolButton; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ToolButton_ParentToClient(AObj: TToolButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ToolButton_SendToBack(AObj: TToolButton); extdecl;
@@ -672,6 +692,8 @@ exports
   ToolButton_Click,
   ToolButton_SetBounds,
   ToolButton_BringToFront,
+  ToolButton_ClientToScreen,
+  ToolButton_ClientToParent,
   ToolButton_Dragging,
   ToolButton_HasParent,
   ToolButton_Hide,
@@ -679,6 +701,8 @@ exports
   ToolButton_Perform,
   ToolButton_Refresh,
   ToolButton_Repaint,
+  ToolButton_ScreenToClient,
+  ToolButton_ParentToClient,
   ToolButton_SendToBack,
   ToolButton_Show,
   ToolButton_Update,

@@ -120,6 +120,14 @@ func (c *TColorListBox) BringToFront() {
     ColorListBox_BringToFront(c.instance)
 }
 
+func (c *TColorListBox) ClientToScreen(Point TPoint) TPoint {
+    return ColorListBox_ClientToScreen(c.instance, Point)
+}
+
+func (c *TColorListBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ColorListBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
+}
+
 func (c *TColorListBox) Dragging() bool {
     return ColorListBox_Dragging(c.instance)
 }
@@ -138,6 +146,14 @@ func (c *TColorListBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (c *TColorListBox) Refresh() {
     ColorListBox_Refresh(c.instance)
+}
+
+func (c *TColorListBox) ScreenToClient(Point TPoint) TPoint {
+    return ColorListBox_ScreenToClient(c.instance, Point)
+}
+
+func (c *TColorListBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ColorListBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 func (c *TColorListBox) SendToBack() {

@@ -20,6 +20,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Shape_ClientToScreen(AObj: TShape; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Shape_ClientToParent(AObj: TShape; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Shape_Dragging(AObj: TShape): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -53,6 +63,16 @@ end;
 procedure Shape_Repaint(AObj: TShape); stdcall;
 begin
   AObj.Repaint;
+end;
+
+procedure Shape_ScreenToClient(AObj: TShape; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Shape_ParentToClient(AObj: TShape; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Shape_SendToBack(AObj: TShape); stdcall;
@@ -612,6 +632,8 @@ exports
   Shape_Create,
   Shape_Free,
   Shape_BringToFront,
+  Shape_ClientToScreen,
+  Shape_ClientToParent,
   Shape_Dragging,
   Shape_HasParent,
   Shape_Hide,
@@ -619,6 +641,8 @@ exports
   Shape_Perform,
   Shape_Refresh,
   Shape_Repaint,
+  Shape_ScreenToClient,
+  Shape_ParentToClient,
   Shape_SendToBack,
   Shape_SetBounds,
   Shape_Show,

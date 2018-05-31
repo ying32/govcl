@@ -130,6 +130,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure MaskEdit_ClientToScreen(AObj: TMaskEdit; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure MaskEdit_ClientToParent(AObj: TMaskEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function MaskEdit_Dragging(AObj: TMaskEdit): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -153,6 +163,16 @@ end;
 procedure MaskEdit_Refresh(AObj: TMaskEdit); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure MaskEdit_ScreenToClient(AObj: TMaskEdit; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure MaskEdit_ParentToClient(AObj: TMaskEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure MaskEdit_SendToBack(AObj: TMaskEdit); stdcall;
@@ -1113,11 +1133,15 @@ exports
   MaskEdit_SetFocus,
   MaskEdit_Update,
   MaskEdit_BringToFront,
+  MaskEdit_ClientToScreen,
+  MaskEdit_ClientToParent,
   MaskEdit_Dragging,
   MaskEdit_HasParent,
   MaskEdit_Hide,
   MaskEdit_Perform,
   MaskEdit_Refresh,
+  MaskEdit_ScreenToClient,
+  MaskEdit_ParentToClient,
   MaskEdit_SendToBack,
   MaskEdit_Show,
   MaskEdit_GetTextBuf,

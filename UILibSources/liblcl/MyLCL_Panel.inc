@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Panel_ClientToScreen(AObj: TPanel; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Panel_ClientToParent(AObj: TPanel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Panel_Dragging(AObj: TPanel): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure Panel_Refresh(AObj: TPanel); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure Panel_ScreenToClient(AObj: TPanel; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Panel_ParentToClient(AObj: TPanel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Panel_SendToBack(AObj: TPanel); extdecl;
@@ -874,11 +894,15 @@ exports
   Panel_SetFocus,
   Panel_Update,
   Panel_BringToFront,
+  Panel_ClientToScreen,
+  Panel_ClientToParent,
   Panel_Dragging,
   Panel_HasParent,
   Panel_Hide,
   Panel_Perform,
   Panel_Refresh,
+  Panel_ScreenToClient,
+  Panel_ParentToClient,
   Panel_SendToBack,
   Panel_Show,
   Panel_GetTextBuf,

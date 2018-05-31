@@ -100,6 +100,14 @@ func (h *THotKey) BringToFront() {
     HotKey_BringToFront(h.instance)
 }
 
+func (h *THotKey) ClientToScreen(Point TPoint) TPoint {
+    return HotKey_ClientToScreen(h.instance, Point)
+}
+
+func (h *THotKey) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return HotKey_ClientToParent(h.instance, Point , CheckPtr(AParent))
+}
+
 func (h *THotKey) Dragging() bool {
     return HotKey_Dragging(h.instance)
 }
@@ -118,6 +126,14 @@ func (h *THotKey) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (h *THotKey) Refresh() {
     HotKey_Refresh(h.instance)
+}
+
+func (h *THotKey) ScreenToClient(Point TPoint) TPoint {
+    return HotKey_ScreenToClient(h.instance, Point)
+}
+
+func (h *THotKey) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return HotKey_ParentToClient(h.instance, Point , CheckPtr(AParent))
 }
 
 func (h *THotKey) SendToBack() {

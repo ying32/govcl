@@ -136,6 +136,14 @@ func (e *TEdit) BringToFront() {
     Edit_BringToFront(e.instance)
 }
 
+func (e *TEdit) ClientToScreen(Point TPoint) TPoint {
+    return Edit_ClientToScreen(e.instance, Point)
+}
+
+func (e *TEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Edit_ClientToParent(e.instance, Point , CheckPtr(AParent))
+}
+
 func (e *TEdit) Dragging() bool {
     return Edit_Dragging(e.instance)
 }
@@ -154,6 +162,14 @@ func (e *TEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (e *TEdit) Refresh() {
     Edit_Refresh(e.instance)
+}
+
+func (e *TEdit) ScreenToClient(Point TPoint) TPoint {
+    return Edit_ScreenToClient(e.instance, Point)
+}
+
+func (e *TEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Edit_ParentToClient(e.instance, Point , CheckPtr(AParent))
 }
 
 func (e *TEdit) SendToBack() {

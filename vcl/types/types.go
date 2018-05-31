@@ -61,12 +61,37 @@ func (r *TRect) Width() int32 {
 	return r.Right - r.Left
 }
 
+func (r *TRect) SetWidth(val int32) {
+	r.Right = r.Left + val
+}
+
 func (r *TRect) Height() int32 {
 	return r.Bottom - r.Top
 }
 
+func (r *TRect) SetHeight(val int32) {
+	r.Bottom = r.Top + val
+}
+
 func (r *TRect) IsEmpty() bool {
 	return r.Right <= r.Left || r.Bottom <= r.Top
+}
+
+func (r *TRect) Size() TSize {
+	s := TSize{r.Width(), r.Height()}
+	return s
+}
+
+func (r *TRect) SetSize(w, h int32) {
+	r.SetWidth(w)
+	r.SetHeight(h)
+}
+
+func (r *TRect) Inflate(dx, dy int32) {
+	r.Left += -dx
+	r.Top += -dy
+	r.Right += dx
+	r.Bottom += dy
 }
 
 func (r *TRect) Contains(aR TRect) bool {

@@ -108,6 +108,14 @@ func (p *TProgressBar) BringToFront() {
     ProgressBar_BringToFront(p.instance)
 }
 
+func (p *TProgressBar) ClientToScreen(Point TPoint) TPoint {
+    return ProgressBar_ClientToScreen(p.instance, Point)
+}
+
+func (p *TProgressBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ProgressBar_ClientToParent(p.instance, Point , CheckPtr(AParent))
+}
+
 func (p *TProgressBar) Dragging() bool {
     return ProgressBar_Dragging(p.instance)
 }
@@ -126,6 +134,14 @@ func (p *TProgressBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (p *TProgressBar) Refresh() {
     ProgressBar_Refresh(p.instance)
+}
+
+func (p *TProgressBar) ScreenToClient(Point TPoint) TPoint {
+    return ProgressBar_ScreenToClient(p.instance, Point)
+}
+
+func (p *TProgressBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ProgressBar_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
 func (p *TProgressBar) SendToBack() {

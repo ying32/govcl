@@ -104,6 +104,14 @@ func (t *TTrackBar) BringToFront() {
     TrackBar_BringToFront(t.instance)
 }
 
+func (t *TTrackBar) ClientToScreen(Point TPoint) TPoint {
+    return TrackBar_ClientToScreen(t.instance, Point)
+}
+
+func (t *TTrackBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return TrackBar_ClientToParent(t.instance, Point , CheckPtr(AParent))
+}
+
 func (t *TTrackBar) Dragging() bool {
     return TrackBar_Dragging(t.instance)
 }
@@ -122,6 +130,14 @@ func (t *TTrackBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (t *TTrackBar) Refresh() {
     TrackBar_Refresh(t.instance)
+}
+
+func (t *TTrackBar) ScreenToClient(Point TPoint) TPoint {
+    return TrackBar_ScreenToClient(t.instance, Point)
+}
+
+func (t *TTrackBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return TrackBar_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
 func (t *TTrackBar) SendToBack() {

@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"gitee.com/ying32/govcl/vcl/types"
+	"gitee.com/ying32/govcl/vcl/types/colors"
 )
 
 // 事件公用。啥叫事件公用呢，比如btn, btn2两个控件，处理的大部分是相同的，只是根据不同按钮处理进行不同的选择
@@ -45,7 +46,7 @@ func main() {
 	pnl1.SetParent(mainForm)
 	pnl1.SetBounds(150, 20, 60, 30)
 	pnl1.SetParentBackground(false)
-	pnl1.SetColor(types.ClRed)
+	pnl1.SetColor(colors.ClRed)
 	pnl1.SetOnMouseEnter(pnlOnMouseEnter)
 	pnl1.SetOnMouseLeave(pnlOnMouseLeave)
 
@@ -53,7 +54,7 @@ func main() {
 	pnl2.SetParent(mainForm)
 	pnl2.SetBounds(150, pnl1.Top()+pnl1.Height()+5, 60, 30)
 	pnl2.SetParentBackground(false)
-	pnl2.SetColor(types.ClGreen)
+	pnl2.SetColor(colors.ClGreen)
 	pnl2.SetOnMouseEnter(pnlOnMouseEnter)
 	pnl2.SetOnMouseLeave(pnlOnMouseLeave)
 
@@ -61,7 +62,7 @@ func main() {
 	pnl3.SetParent(mainForm)
 	pnl3.SetBounds(150, pnl2.Top()+pnl2.Height()+5, 60, 30)
 	pnl3.SetParentBackground(false)
-	pnl3.SetColor(types.ClBlue)
+	pnl3.SetColor(colors.ClBlue)
 	pnl3.SetOnMouseEnter(pnlOnMouseEnter)
 	pnl3.SetOnMouseLeave(pnlOnMouseLeave)
 

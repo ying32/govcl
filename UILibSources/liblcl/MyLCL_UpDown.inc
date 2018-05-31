@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure UpDown_ClientToScreen(AObj: TUpDown; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure UpDown_ClientToParent(AObj: TUpDown; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function UpDown_Dragging(AObj: TUpDown): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure UpDown_Refresh(AObj: TUpDown); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure UpDown_ScreenToClient(AObj: TUpDown; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure UpDown_ParentToClient(AObj: TUpDown; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure UpDown_SendToBack(AObj: TUpDown); extdecl;
@@ -654,11 +674,15 @@ exports
   UpDown_SetFocus,
   UpDown_Update,
   UpDown_BringToFront,
+  UpDown_ClientToScreen,
+  UpDown_ClientToParent,
   UpDown_Dragging,
   UpDown_HasParent,
   UpDown_Hide,
   UpDown_Perform,
   UpDown_Refresh,
+  UpDown_ScreenToClient,
+  UpDown_ParentToClient,
   UpDown_SendToBack,
   UpDown_Show,
   UpDown_GetTextBuf,

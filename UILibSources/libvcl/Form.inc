@@ -100,6 +100,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Form_ClientToScreen(AObj: TForm; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Form_ClientToParent(AObj: TForm; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Form_Dragging(AObj: TForm): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -118,6 +128,16 @@ end;
 procedure Form_Refresh(AObj: TForm); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure Form_ScreenToClient(AObj: TForm; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Form_ParentToClient(AObj: TForm; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Form_SendToBack(AObj: TForm); stdcall;
@@ -1169,10 +1189,14 @@ exports
   Form_SetBounds,
   Form_Update,
   Form_BringToFront,
+  Form_ClientToScreen,
+  Form_ClientToParent,
   Form_Dragging,
   Form_HasParent,
   Form_Perform,
   Form_Refresh,
+  Form_ScreenToClient,
+  Form_ParentToClient,
   Form_SendToBack,
   Form_GetTextBuf,
   Form_GetTextLen,

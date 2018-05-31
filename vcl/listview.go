@@ -140,6 +140,14 @@ func (l *TListView) BringToFront() {
     ListView_BringToFront(l.instance)
 }
 
+func (l *TListView) ClientToScreen(Point TPoint) TPoint {
+    return ListView_ClientToScreen(l.instance, Point)
+}
+
+func (l *TListView) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ListView_ClientToParent(l.instance, Point , CheckPtr(AParent))
+}
+
 func (l *TListView) Dragging() bool {
     return ListView_Dragging(l.instance)
 }
@@ -158,6 +166,14 @@ func (l *TListView) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (l *TListView) Refresh() {
     ListView_Refresh(l.instance)
+}
+
+func (l *TListView) ScreenToClient(Point TPoint) TPoint {
+    return ListView_ScreenToClient(l.instance, Point)
+}
+
+func (l *TListView) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ListView_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
 func (l *TListView) SendToBack() {

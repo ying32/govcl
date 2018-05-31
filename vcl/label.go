@@ -56,6 +56,14 @@ func (l *TLabel) BringToFront() {
     Label_BringToFront(l.instance)
 }
 
+func (l *TLabel) ClientToScreen(Point TPoint) TPoint {
+    return Label_ClientToScreen(l.instance, Point)
+}
+
+func (l *TLabel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Label_ClientToParent(l.instance, Point , CheckPtr(AParent))
+}
+
 func (l *TLabel) Dragging() bool {
     return Label_Dragging(l.instance)
 }
@@ -82,6 +90,14 @@ func (l *TLabel) Refresh() {
 
 func (l *TLabel) Repaint() {
     Label_Repaint(l.instance)
+}
+
+func (l *TLabel) ScreenToClient(Point TPoint) TPoint {
+    return Label_ScreenToClient(l.instance, Point)
+}
+
+func (l *TLabel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Label_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
 func (l *TLabel) SendToBack() {

@@ -7,6 +7,7 @@ import (
 
 	"gitee.com/ying32/govcl/vcl"
 	"gitee.com/ying32/govcl/vcl/types"
+	"gitee.com/ying32/govcl/vcl/types/colors"
 )
 
 var (
@@ -111,12 +112,12 @@ func lvTraiAdvancedCustomDrawSubItem(sender *vcl.TListView, item *vcl.TListItem,
 	case subItem >= 4 && subItem <= 14:
 		s := item.SubItems().Strings(subItem - 1)
 		if strings.Contains(s, "*") || strings.Contains(s, "--") || strings.Contains(s, "无") {
-			font.SetColor(types.ClSilver)
+			font.SetColor(colors.ClSilver)
 		} else {
-			font.SetColor(types.ClGreen)
+			font.SetColor(colors.ClGreen)
 		}
 	default:
-		font.SetColor(types.ClBlack)
+		font.SetColor(colors.ClBlack)
 	}
 }
 

@@ -125,6 +125,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ListView_ClientToScreen(AObj: TListView; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ListView_ClientToParent(AObj: TListView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ListView_Dragging(AObj: TListView): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -148,6 +158,16 @@ end;
 procedure ListView_Refresh(AObj: TListView); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure ListView_ScreenToClient(AObj: TListView; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ListView_ParentToClient(AObj: TListView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ListView_SendToBack(AObj: TListView); stdcall;
@@ -1419,11 +1439,15 @@ exports
   ListView_SetFocus,
   ListView_Update,
   ListView_BringToFront,
+  ListView_ClientToScreen,
+  ListView_ClientToParent,
   ListView_Dragging,
   ListView_HasParent,
   ListView_Hide,
   ListView_Perform,
   ListView_Refresh,
+  ListView_ScreenToClient,
+  ListView_ParentToClient,
   ListView_SendToBack,
   ListView_Show,
   ListView_GetTextBuf,

@@ -120,6 +120,14 @@ func (f *TForm) BringToFront() {
     Form_BringToFront(f.instance)
 }
 
+func (f *TForm) ClientToScreen(Point TPoint) TPoint {
+    return Form_ClientToScreen(f.instance, Point)
+}
+
+func (f *TForm) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Form_ClientToParent(f.instance, Point , CheckPtr(AParent))
+}
+
 func (f *TForm) Dragging() bool {
     return Form_Dragging(f.instance)
 }
@@ -134,6 +142,14 @@ func (f *TForm) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (f *TForm) Refresh() {
     Form_Refresh(f.instance)
+}
+
+func (f *TForm) ScreenToClient(Point TPoint) TPoint {
+    return Form_ScreenToClient(f.instance, Point)
+}
+
+func (f *TForm) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Form_ParentToClient(f.instance, Point , CheckPtr(AParent))
 }
 
 func (f *TForm) SendToBack() {

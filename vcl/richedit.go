@@ -144,6 +144,14 @@ func (r *TRichEdit) BringToFront() {
     RichEdit_BringToFront(r.instance)
 }
 
+func (r *TRichEdit) ClientToScreen(Point TPoint) TPoint {
+    return RichEdit_ClientToScreen(r.instance, Point)
+}
+
+func (r *TRichEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return RichEdit_ClientToParent(r.instance, Point , CheckPtr(AParent))
+}
+
 func (r *TRichEdit) Dragging() bool {
     return RichEdit_Dragging(r.instance)
 }
@@ -162,6 +170,14 @@ func (r *TRichEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (r *TRichEdit) Refresh() {
     RichEdit_Refresh(r.instance)
+}
+
+func (r *TRichEdit) ScreenToClient(Point TPoint) TPoint {
+    return RichEdit_ScreenToClient(r.instance, Point)
+}
+
+func (r *TRichEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return RichEdit_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
 func (r *TRichEdit) SendToBack() {

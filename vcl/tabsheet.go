@@ -100,6 +100,14 @@ func (t *TTabSheet) BringToFront() {
     TabSheet_BringToFront(t.instance)
 }
 
+func (t *TTabSheet) ClientToScreen(Point TPoint) TPoint {
+    return TabSheet_ClientToScreen(t.instance, Point)
+}
+
+func (t *TTabSheet) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return TabSheet_ClientToParent(t.instance, Point , CheckPtr(AParent))
+}
+
 func (t *TTabSheet) Dragging() bool {
     return TabSheet_Dragging(t.instance)
 }
@@ -118,6 +126,14 @@ func (t *TTabSheet) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (t *TTabSheet) Refresh() {
     TabSheet_Refresh(t.instance)
+}
+
+func (t *TTabSheet) ScreenToClient(Point TPoint) TPoint {
+    return TabSheet_ScreenToClient(t.instance, Point)
+}
+
+func (t *TTabSheet) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return TabSheet_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
 func (t *TTabSheet) SendToBack() {

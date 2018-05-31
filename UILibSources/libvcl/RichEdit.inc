@@ -130,6 +130,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure RichEdit_ClientToScreen(AObj: TRichEdit; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure RichEdit_ClientToParent(AObj: TRichEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function RichEdit_Dragging(AObj: TRichEdit): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -153,6 +163,16 @@ end;
 procedure RichEdit_Refresh(AObj: TRichEdit); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure RichEdit_ScreenToClient(AObj: TRichEdit; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure RichEdit_ParentToClient(AObj: TRichEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure RichEdit_SendToBack(AObj: TRichEdit); stdcall;
@@ -1271,11 +1291,15 @@ exports
   RichEdit_SetFocus,
   RichEdit_Update,
   RichEdit_BringToFront,
+  RichEdit_ClientToScreen,
+  RichEdit_ClientToParent,
   RichEdit_Dragging,
   RichEdit_HasParent,
   RichEdit_Hide,
   RichEdit_Perform,
   RichEdit_Refresh,
+  RichEdit_ScreenToClient,
+  RichEdit_ParentToClient,
   RichEdit_SendToBack,
   RichEdit_Show,
   RichEdit_GetTextBuf,

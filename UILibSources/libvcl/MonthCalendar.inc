@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure MonthCalendar_ClientToScreen(AObj: TMonthCalendar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure MonthCalendar_ClientToParent(AObj: TMonthCalendar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function MonthCalendar_Dragging(AObj: TMonthCalendar): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure MonthCalendar_Refresh(AObj: TMonthCalendar); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure MonthCalendar_ScreenToClient(AObj: TMonthCalendar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure MonthCalendar_ParentToClient(AObj: TMonthCalendar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure MonthCalendar_SendToBack(AObj: TMonthCalendar); stdcall;
@@ -916,11 +936,15 @@ exports
   MonthCalendar_SetFocus,
   MonthCalendar_Update,
   MonthCalendar_BringToFront,
+  MonthCalendar_ClientToScreen,
+  MonthCalendar_ClientToParent,
   MonthCalendar_Dragging,
   MonthCalendar_HasParent,
   MonthCalendar_Hide,
   MonthCalendar_Perform,
   MonthCalendar_Refresh,
+  MonthCalendar_ScreenToClient,
+  MonthCalendar_ParentToClient,
   MonthCalendar_SendToBack,
   MonthCalendar_Show,
   MonthCalendar_GetTextBuf,

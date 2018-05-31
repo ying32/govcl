@@ -80,6 +80,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Button_ClientToScreen(AObj: TButton; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Button_ClientToParent(AObj: TButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Button_Dragging(AObj: TButton): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -103,6 +113,16 @@ end;
 procedure Button_Refresh(AObj: TButton); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure Button_ScreenToClient(AObj: TButton; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Button_ParentToClient(AObj: TButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Button_SendToBack(AObj: TButton); extdecl;
@@ -772,11 +792,15 @@ exports
   Button_SetFocus,
   Button_Update,
   Button_BringToFront,
+  Button_ClientToScreen,
+  Button_ClientToParent,
   Button_Dragging,
   Button_HasParent,
   Button_Hide,
   Button_Perform,
   Button_Refresh,
+  Button_ScreenToClient,
+  Button_ParentToClient,
   Button_SendToBack,
   Button_Show,
   Button_GetTextBuf,

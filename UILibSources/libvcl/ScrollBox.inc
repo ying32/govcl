@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ScrollBox_ClientToScreen(AObj: TScrollBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ScrollBox_ClientToParent(AObj: TScrollBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ScrollBox_Dragging(AObj: TScrollBox): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure ScrollBox_Refresh(AObj: TScrollBox); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure ScrollBox_ScreenToClient(AObj: TScrollBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ScrollBox_ParentToClient(AObj: TScrollBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ScrollBox_SendToBack(AObj: TScrollBox); stdcall;
@@ -980,11 +1000,15 @@ exports
   ScrollBox_SetFocus,
   ScrollBox_Update,
   ScrollBox_BringToFront,
+  ScrollBox_ClientToScreen,
+  ScrollBox_ClientToParent,
   ScrollBox_Dragging,
   ScrollBox_HasParent,
   ScrollBox_Hide,
   ScrollBox_Perform,
   ScrollBox_Refresh,
+  ScrollBox_ScreenToClient,
+  ScrollBox_ParentToClient,
   ScrollBox_SendToBack,
   ScrollBox_Show,
   ScrollBox_GetTextBuf,

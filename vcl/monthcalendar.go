@@ -101,6 +101,14 @@ func (m *TMonthCalendar) BringToFront() {
     MonthCalendar_BringToFront(m.instance)
 }
 
+func (m *TMonthCalendar) ClientToScreen(Point TPoint) TPoint {
+    return MonthCalendar_ClientToScreen(m.instance, Point)
+}
+
+func (m *TMonthCalendar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return MonthCalendar_ClientToParent(m.instance, Point , CheckPtr(AParent))
+}
+
 func (m *TMonthCalendar) Dragging() bool {
     return MonthCalendar_Dragging(m.instance)
 }
@@ -119,6 +127,14 @@ func (m *TMonthCalendar) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (m *TMonthCalendar) Refresh() {
     MonthCalendar_Refresh(m.instance)
+}
+
+func (m *TMonthCalendar) ScreenToClient(Point TPoint) TPoint {
+    return MonthCalendar_ScreenToClient(m.instance, Point)
+}
+
+func (m *TMonthCalendar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return MonthCalendar_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
 func (m *TMonthCalendar) SendToBack() {

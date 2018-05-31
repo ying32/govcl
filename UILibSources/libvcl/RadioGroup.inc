@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure RadioGroup_ClientToScreen(AObj: TRadioGroup; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure RadioGroup_ClientToParent(AObj: TRadioGroup; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function RadioGroup_Dragging(AObj: TRadioGroup): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure RadioGroup_Refresh(AObj: TRadioGroup); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure RadioGroup_ScreenToClient(AObj: TRadioGroup; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure RadioGroup_ParentToClient(AObj: TRadioGroup; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure RadioGroup_SendToBack(AObj: TRadioGroup); stdcall;
@@ -819,11 +839,15 @@ exports
   RadioGroup_SetFocus,
   RadioGroup_Update,
   RadioGroup_BringToFront,
+  RadioGroup_ClientToScreen,
+  RadioGroup_ClientToParent,
   RadioGroup_Dragging,
   RadioGroup_HasParent,
   RadioGroup_Hide,
   RadioGroup_Perform,
   RadioGroup_Refresh,
+  RadioGroup_ScreenToClient,
+  RadioGroup_ParentToClient,
   RadioGroup_SendToBack,
   RadioGroup_Show,
   RadioGroup_GetTextBuf,

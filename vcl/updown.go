@@ -100,6 +100,14 @@ func (u *TUpDown) BringToFront() {
     UpDown_BringToFront(u.instance)
 }
 
+func (u *TUpDown) ClientToScreen(Point TPoint) TPoint {
+    return UpDown_ClientToScreen(u.instance, Point)
+}
+
+func (u *TUpDown) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return UpDown_ClientToParent(u.instance, Point , CheckPtr(AParent))
+}
+
 func (u *TUpDown) Dragging() bool {
     return UpDown_Dragging(u.instance)
 }
@@ -118,6 +126,14 @@ func (u *TUpDown) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (u *TUpDown) Refresh() {
     UpDown_Refresh(u.instance)
+}
+
+func (u *TUpDown) ScreenToClient(Point TPoint) TPoint {
+    return UpDown_ScreenToClient(u.instance, Point)
+}
+
+func (u *TUpDown) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return UpDown_ParentToClient(u.instance, Point , CheckPtr(AParent))
 }
 
 func (u *TUpDown) SendToBack() {

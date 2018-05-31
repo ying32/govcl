@@ -419,6 +419,18 @@ func Form_BringToFront(obj uintptr)  {
     form_BringToFront.Call(obj)
 }
 
+func Form_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    form_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Form_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    form_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Form_Dragging(obj uintptr) bool {
     ret, _, _ := form_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -436,6 +448,18 @@ func Form_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func Form_Refresh(obj uintptr)  {
     form_Refresh.Call(obj)
+}
+
+func Form_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    form_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Form_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    form_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Form_SendToBack(obj uintptr)  {
@@ -1245,6 +1269,18 @@ func Button_BringToFront(obj uintptr)  {
     button_BringToFront.Call(obj)
 }
 
+func Button_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    button_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Button_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    button_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Button_Dragging(obj uintptr) bool {
     ret, _, _ := button_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -1266,6 +1302,18 @@ func Button_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func Button_Refresh(obj uintptr)  {
     button_Refresh.Call(obj)
+}
+
+func Button_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    button_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Button_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    button_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Button_SendToBack(obj uintptr)  {
@@ -2041,6 +2089,18 @@ func Edit_BringToFront(obj uintptr)  {
     edit_BringToFront.Call(obj)
 }
 
+func Edit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    edit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Edit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    edit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Edit_Dragging(obj uintptr) bool {
     ret, _, _ := edit_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -2062,6 +2122,18 @@ func Edit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func Edit_Refresh(obj uintptr)  {
     edit_Refresh.Call(obj)
+}
+
+func Edit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    edit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Edit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    edit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Edit_SendToBack(obj uintptr)  {
@@ -3226,6 +3298,18 @@ func Memo_BringToFront(obj uintptr)  {
     memo_BringToFront.Call(obj)
 }
 
+func Memo_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    memo_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Memo_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    memo_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Memo_Dragging(obj uintptr) bool {
     ret, _, _ := memo_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -3247,6 +3331,18 @@ func Memo_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func Memo_Refresh(obj uintptr)  {
     memo_Refresh.Call(obj)
+}
+
+func Memo_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    memo_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Memo_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    memo_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Memo_SendToBack(obj uintptr)  {
@@ -4071,6 +4167,18 @@ func CheckBox_BringToFront(obj uintptr)  {
     checkBox_BringToFront.Call(obj)
 }
 
+func CheckBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    checkBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    checkBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CheckBox_Dragging(obj uintptr) bool {
     ret, _, _ := checkBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -4092,6 +4200,18 @@ func CheckBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func CheckBox_Refresh(obj uintptr)  {
     checkBox_Refresh.Call(obj)
+}
+
+func CheckBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    checkBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    checkBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func CheckBox_SendToBack(obj uintptr)  {
@@ -4767,6 +4887,18 @@ func RadioButton_BringToFront(obj uintptr)  {
     radioButton_BringToFront.Call(obj)
 }
 
+func RadioButton_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    radioButton_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RadioButton_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    radioButton_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func RadioButton_Dragging(obj uintptr) bool {
     ret, _, _ := radioButton_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -4788,6 +4920,18 @@ func RadioButton_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) in
 
 func RadioButton_Refresh(obj uintptr)  {
     radioButton_Refresh.Call(obj)
+}
+
+func RadioButton_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    radioButton_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RadioButton_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    radioButton_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func RadioButton_SendToBack(obj uintptr)  {
@@ -5449,6 +5593,18 @@ func GroupBox_BringToFront(obj uintptr)  {
     groupBox_BringToFront.Call(obj)
 }
 
+func GroupBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    groupBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func GroupBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    groupBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func GroupBox_Dragging(obj uintptr) bool {
     ret, _, _ := groupBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -5470,6 +5626,18 @@ func GroupBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func GroupBox_Refresh(obj uintptr)  {
     groupBox_Refresh.Call(obj)
+}
+
+func GroupBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    groupBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func GroupBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    groupBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func GroupBox_SendToBack(obj uintptr)  {
@@ -6066,6 +6234,18 @@ func Label_BringToFront(obj uintptr)  {
     label_BringToFront.Call(obj)
 }
 
+func Label_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    label_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Label_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    label_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Label_Dragging(obj uintptr) bool {
     ret, _, _ := label_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -6095,6 +6275,18 @@ func Label_Refresh(obj uintptr)  {
 
 func Label_Repaint(obj uintptr)  {
     label_Repaint.Call(obj)
+}
+
+func Label_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    label_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Label_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    label_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Label_SendToBack(obj uintptr)  {
@@ -6722,6 +6914,18 @@ func ListBox_BringToFront(obj uintptr)  {
     listBox_BringToFront.Call(obj)
 }
 
+func ListBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    listBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ListBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    listBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ListBox_Dragging(obj uintptr) bool {
     ret, _, _ := listBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -6743,6 +6947,18 @@ func ListBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func ListBox_Refresh(obj uintptr)  {
     listBox_Refresh.Call(obj)
+}
+
+func ListBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    listBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ListBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    listBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ListBox_SendToBack(obj uintptr)  {
@@ -7555,6 +7771,18 @@ func ComboBox_BringToFront(obj uintptr)  {
     comboBox_BringToFront.Call(obj)
 }
 
+func ComboBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    comboBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ComboBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    comboBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ComboBox_Dragging(obj uintptr) bool {
     ret, _, _ := comboBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -7576,6 +7804,18 @@ func ComboBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func ComboBox_Refresh(obj uintptr)  {
     comboBox_Refresh.Call(obj)
+}
+
+func ComboBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    comboBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ComboBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    comboBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ComboBox_SendToBack(obj uintptr)  {
@@ -8391,6 +8631,18 @@ func Panel_BringToFront(obj uintptr)  {
     panel_BringToFront.Call(obj)
 }
 
+func Panel_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    panel_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Panel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    panel_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Panel_Dragging(obj uintptr) bool {
     ret, _, _ := panel_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -8412,6 +8664,18 @@ func Panel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func Panel_Refresh(obj uintptr)  {
     panel_Refresh.Call(obj)
+}
+
+func Panel_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    panel_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Panel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    panel_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Panel_SendToBack(obj uintptr)  {
@@ -9111,6 +9375,18 @@ func Image_BringToFront(obj uintptr)  {
     image_BringToFront.Call(obj)
 }
 
+func Image_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    image_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Image_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    image_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Image_Dragging(obj uintptr) bool {
     ret, _, _ := image_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -9140,6 +9416,18 @@ func Image_Refresh(obj uintptr)  {
 
 func Image_Repaint(obj uintptr)  {
     image_Repaint.Call(obj)
+}
+
+func Image_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    image_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Image_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    image_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Image_SendToBack(obj uintptr)  {
@@ -9693,6 +9981,18 @@ func LinkLabel_BringToFront(obj uintptr)  {
     linkLabel_BringToFront.Call(obj)
 }
 
+func LinkLabel_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    linkLabel_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LinkLabel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    linkLabel_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func LinkLabel_Dragging(obj uintptr) bool {
     ret, _, _ := linkLabel_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -9714,6 +10014,18 @@ func LinkLabel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int 
 
 func LinkLabel_Refresh(obj uintptr)  {
     linkLabel_Refresh.Call(obj)
+}
+
+func LinkLabel_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    linkLabel_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LinkLabel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    linkLabel_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func LinkLabel_SendToBack(obj uintptr)  {
@@ -10343,6 +10655,18 @@ func SpeedButton_BringToFront(obj uintptr)  {
     speedButton_BringToFront.Call(obj)
 }
 
+func SpeedButton_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    speedButton_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpeedButton_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    speedButton_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func SpeedButton_Dragging(obj uintptr) bool {
     ret, _, _ := speedButton_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -10372,6 +10696,18 @@ func SpeedButton_Refresh(obj uintptr)  {
 
 func SpeedButton_Repaint(obj uintptr)  {
     speedButton_Repaint.Call(obj)
+}
+
+func SpeedButton_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    speedButton_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpeedButton_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    speedButton_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func SpeedButton_SendToBack(obj uintptr)  {
@@ -10867,6 +11203,18 @@ func Splitter_BringToFront(obj uintptr)  {
     splitter_BringToFront.Call(obj)
 }
 
+func Splitter_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    splitter_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Splitter_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    splitter_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Splitter_Dragging(obj uintptr) bool {
     ret, _, _ := splitter_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -10896,6 +11244,18 @@ func Splitter_Refresh(obj uintptr)  {
 
 func Splitter_Repaint(obj uintptr)  {
     splitter_Repaint.Call(obj)
+}
+
+func Splitter_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    splitter_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Splitter_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    splitter_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Splitter_SendToBack(obj uintptr)  {
@@ -11311,6 +11671,18 @@ func RadioGroup_BringToFront(obj uintptr)  {
     radioGroup_BringToFront.Call(obj)
 }
 
+func RadioGroup_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    radioGroup_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RadioGroup_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    radioGroup_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func RadioGroup_Dragging(obj uintptr) bool {
     ret, _, _ := radioGroup_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -11332,6 +11704,18 @@ func RadioGroup_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int
 
 func RadioGroup_Refresh(obj uintptr)  {
     radioGroup_Refresh.Call(obj)
+}
+
+func RadioGroup_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    radioGroup_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RadioGroup_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    radioGroup_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func RadioGroup_SendToBack(obj uintptr)  {
@@ -11980,6 +12364,18 @@ func StaticText_BringToFront(obj uintptr)  {
     staticText_BringToFront.Call(obj)
 }
 
+func StaticText_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    staticText_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StaticText_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    staticText_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func StaticText_Dragging(obj uintptr) bool {
     ret, _, _ := staticText_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -12001,6 +12397,18 @@ func StaticText_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int
 
 func StaticText_Refresh(obj uintptr)  {
     staticText_Refresh.Call(obj)
+}
+
+func StaticText_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    staticText_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StaticText_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    staticText_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func StaticText_SendToBack(obj uintptr)  {
@@ -12707,6 +13115,18 @@ func ColorBox_BringToFront(obj uintptr)  {
     colorBox_BringToFront.Call(obj)
 }
 
+func ColorBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    colorBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ColorBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    colorBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ColorBox_Dragging(obj uintptr) bool {
     ret, _, _ := colorBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -12728,6 +13148,18 @@ func ColorBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func ColorBox_Refresh(obj uintptr)  {
     colorBox_Refresh.Call(obj)
+}
+
+func ColorBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    colorBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ColorBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    colorBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ColorBox_SendToBack(obj uintptr)  {
@@ -13538,6 +13970,18 @@ func ColorListBox_BringToFront(obj uintptr)  {
     colorListBox_BringToFront.Call(obj)
 }
 
+func ColorListBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    colorListBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ColorListBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    colorListBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ColorListBox_Dragging(obj uintptr) bool {
     ret, _, _ := colorListBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -13559,6 +14003,18 @@ func ColorListBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) i
 
 func ColorListBox_Refresh(obj uintptr)  {
     colorListBox_Refresh.Call(obj)
+}
+
+func ColorListBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    colorListBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ColorListBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    colorListBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ColorListBox_SendToBack(obj uintptr)  {
@@ -14717,6 +15173,18 @@ func CategoryPanelGroup_BringToFront(obj uintptr)  {
     categoryPanelGroup_BringToFront.Call(obj)
 }
 
+func CategoryPanelGroup_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    categoryPanelGroup_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CategoryPanelGroup_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    categoryPanelGroup_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CategoryPanelGroup_Dragging(obj uintptr) bool {
     ret, _, _ := categoryPanelGroup_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -14738,6 +15206,18 @@ func CategoryPanelGroup_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam 
 
 func CategoryPanelGroup_Refresh(obj uintptr)  {
     categoryPanelGroup_Refresh.Call(obj)
+}
+
+func CategoryPanelGroup_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    categoryPanelGroup_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CategoryPanelGroup_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    categoryPanelGroup_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func CategoryPanelGroup_SendToBack(obj uintptr)  {
@@ -15545,6 +16025,18 @@ func CategoryPanel_BringToFront(obj uintptr)  {
     categoryPanel_BringToFront.Call(obj)
 }
 
+func CategoryPanel_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    categoryPanel_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CategoryPanel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    categoryPanel_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CategoryPanel_Dragging(obj uintptr) bool {
     ret, _, _ := categoryPanel_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -15566,6 +16058,18 @@ func CategoryPanel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) 
 
 func CategoryPanel_Refresh(obj uintptr)  {
     categoryPanel_Refresh.Call(obj)
+}
+
+func CategoryPanel_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    categoryPanel_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CategoryPanel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    categoryPanel_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func CategoryPanel_SendToBack(obj uintptr)  {
@@ -17923,6 +18427,18 @@ func RichEdit_BringToFront(obj uintptr)  {
     richEdit_BringToFront.Call(obj)
 }
 
+func RichEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    richEdit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    richEdit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func RichEdit_Dragging(obj uintptr) bool {
     ret, _, _ := richEdit_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -17944,6 +18460,18 @@ func RichEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func RichEdit_Refresh(obj uintptr)  {
     richEdit_Refresh.Call(obj)
+}
+
+func RichEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    richEdit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    richEdit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func RichEdit_SendToBack(obj uintptr)  {
@@ -18858,6 +19386,18 @@ func TrackBar_BringToFront(obj uintptr)  {
     trackBar_BringToFront.Call(obj)
 }
 
+func TrackBar_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    trackBar_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func TrackBar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    trackBar_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func TrackBar_Dragging(obj uintptr) bool {
     ret, _, _ := trackBar_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -18879,6 +19419,18 @@ func TrackBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func TrackBar_Refresh(obj uintptr)  {
     trackBar_Refresh.Call(obj)
+}
+
+func TrackBar_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    trackBar_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func TrackBar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    trackBar_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func TrackBar_SendToBack(obj uintptr)  {
@@ -19943,6 +20495,18 @@ func UpDown_BringToFront(obj uintptr)  {
     upDown_BringToFront.Call(obj)
 }
 
+func UpDown_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    upDown_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func UpDown_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    upDown_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func UpDown_Dragging(obj uintptr) bool {
     ret, _, _ := upDown_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -19964,6 +20528,18 @@ func UpDown_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func UpDown_Refresh(obj uintptr)  {
     upDown_Refresh.Call(obj)
+}
+
+func UpDown_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    upDown_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func UpDown_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    upDown_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func UpDown_SendToBack(obj uintptr)  {
@@ -20534,6 +21110,18 @@ func ProgressBar_BringToFront(obj uintptr)  {
     progressBar_BringToFront.Call(obj)
 }
 
+func ProgressBar_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    progressBar_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ProgressBar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    progressBar_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ProgressBar_Dragging(obj uintptr) bool {
     ret, _, _ := progressBar_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -20555,6 +21143,18 @@ func ProgressBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) in
 
 func ProgressBar_Refresh(obj uintptr)  {
     progressBar_Refresh.Call(obj)
+}
+
+func ProgressBar_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    progressBar_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ProgressBar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    progressBar_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ProgressBar_SendToBack(obj uintptr)  {
@@ -21232,6 +21832,18 @@ func HotKey_BringToFront(obj uintptr)  {
     hotKey_BringToFront.Call(obj)
 }
 
+func HotKey_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    hotKey_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HotKey_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    hotKey_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func HotKey_Dragging(obj uintptr) bool {
     ret, _, _ := hotKey_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -21253,6 +21865,18 @@ func HotKey_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func HotKey_Refresh(obj uintptr)  {
     hotKey_Refresh.Call(obj)
+}
+
+func HotKey_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    hotKey_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HotKey_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    hotKey_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func HotKey_SendToBack(obj uintptr)  {
@@ -21779,6 +22403,18 @@ func DateTimePicker_BringToFront(obj uintptr)  {
     dateTimePicker_BringToFront.Call(obj)
 }
 
+func DateTimePicker_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    dateTimePicker_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DateTimePicker_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    dateTimePicker_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func DateTimePicker_Dragging(obj uintptr) bool {
     ret, _, _ := dateTimePicker_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -21800,6 +22436,18 @@ func DateTimePicker_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int)
 
 func DateTimePicker_Refresh(obj uintptr)  {
     dateTimePicker_Refresh.Call(obj)
+}
+
+func DateTimePicker_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    dateTimePicker_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DateTimePicker_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    dateTimePicker_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func DateTimePicker_SendToBack(obj uintptr)  {
@@ -22562,6 +23210,18 @@ func MonthCalendar_BringToFront(obj uintptr)  {
     monthCalendar_BringToFront.Call(obj)
 }
 
+func MonthCalendar_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    monthCalendar_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MonthCalendar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    monthCalendar_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func MonthCalendar_Dragging(obj uintptr) bool {
     ret, _, _ := monthCalendar_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -22583,6 +23243,18 @@ func MonthCalendar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) 
 
 func MonthCalendar_Refresh(obj uintptr)  {
     monthCalendar_Refresh.Call(obj)
+}
+
+func MonthCalendar_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    monthCalendar_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MonthCalendar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    monthCalendar_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func MonthCalendar_SendToBack(obj uintptr)  {
@@ -23321,6 +23993,18 @@ func ListView_BringToFront(obj uintptr)  {
     listView_BringToFront.Call(obj)
 }
 
+func ListView_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    listView_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ListView_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    listView_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ListView_Dragging(obj uintptr) bool {
     ret, _, _ := listView_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -23342,6 +24026,18 @@ func ListView_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func ListView_Refresh(obj uintptr)  {
     listView_Refresh.Call(obj)
+}
+
+func ListView_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    listView_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ListView_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    listView_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ListView_SendToBack(obj uintptr)  {
@@ -24403,6 +25099,18 @@ func TreeView_BringToFront(obj uintptr)  {
     treeView_BringToFront.Call(obj)
 }
 
+func TreeView_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    treeView_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func TreeView_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    treeView_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func TreeView_Dragging(obj uintptr) bool {
     ret, _, _ := treeView_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -24424,6 +25132,18 @@ func TreeView_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func TreeView_Refresh(obj uintptr)  {
     treeView_Refresh.Call(obj)
+}
+
+func TreeView_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    treeView_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func TreeView_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    treeView_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func TreeView_SendToBack(obj uintptr)  {
@@ -25331,6 +26051,18 @@ func StatusBar_BringToFront(obj uintptr)  {
     statusBar_BringToFront.Call(obj)
 }
 
+func StatusBar_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    statusBar_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StatusBar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    statusBar_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func StatusBar_Dragging(obj uintptr) bool {
     ret, _, _ := statusBar_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -25352,6 +26084,18 @@ func StatusBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int 
 
 func StatusBar_Refresh(obj uintptr)  {
     statusBar_Refresh.Call(obj)
+}
+
+func StatusBar_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    statusBar_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StatusBar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    statusBar_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func StatusBar_SendToBack(obj uintptr)  {
@@ -26024,6 +26768,18 @@ func ToolBar_BringToFront(obj uintptr)  {
     toolBar_BringToFront.Call(obj)
 }
 
+func ToolBar_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    toolBar_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToolBar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    toolBar_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ToolBar_Dragging(obj uintptr) bool {
     ret, _, _ := toolBar_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -26045,6 +26801,18 @@ func ToolBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func ToolBar_Refresh(obj uintptr)  {
     toolBar_Refresh.Call(obj)
+}
+
+func ToolBar_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    toolBar_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToolBar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    toolBar_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ToolBar_SendToBack(obj uintptr)  {
@@ -26937,6 +27705,18 @@ func MaskEdit_BringToFront(obj uintptr)  {
     maskEdit_BringToFront.Call(obj)
 }
 
+func MaskEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    maskEdit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    maskEdit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func MaskEdit_Dragging(obj uintptr) bool {
     ret, _, _ := maskEdit_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -26958,6 +27738,18 @@ func MaskEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func MaskEdit_Refresh(obj uintptr)  {
     maskEdit_Refresh.Call(obj)
+}
+
+func MaskEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    maskEdit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    maskEdit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func MaskEdit_SendToBack(obj uintptr)  {
@@ -27754,6 +28546,18 @@ func BitBtn_BringToFront(obj uintptr)  {
     bitBtn_BringToFront.Call(obj)
 }
 
+func BitBtn_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    bitBtn_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BitBtn_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    bitBtn_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func BitBtn_Dragging(obj uintptr) bool {
     ret, _, _ := bitBtn_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -27775,6 +28579,18 @@ func BitBtn_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func BitBtn_Refresh(obj uintptr)  {
     bitBtn_Refresh.Call(obj)
+}
+
+func BitBtn_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    bitBtn_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BitBtn_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    bitBtn_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func BitBtn_SendToBack(obj uintptr)  {
@@ -31033,6 +31849,18 @@ func PageControl_BringToFront(obj uintptr)  {
     pageControl_BringToFront.Call(obj)
 }
 
+func PageControl_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    pageControl_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func PageControl_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    pageControl_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func PageControl_Dragging(obj uintptr) bool {
     ret, _, _ := pageControl_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -31054,6 +31882,18 @@ func PageControl_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) in
 
 func PageControl_Refresh(obj uintptr)  {
     pageControl_Refresh.Call(obj)
+}
+
+func PageControl_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    pageControl_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func PageControl_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    pageControl_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func PageControl_SendToBack(obj uintptr)  {
@@ -31752,6 +32592,18 @@ func TabSheet_BringToFront(obj uintptr)  {
     tabSheet_BringToFront.Call(obj)
 }
 
+func TabSheet_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    tabSheet_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func TabSheet_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    tabSheet_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func TabSheet_Dragging(obj uintptr) bool {
     ret, _, _ := tabSheet_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -31773,6 +32625,18 @@ func TabSheet_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
 
 func TabSheet_Refresh(obj uintptr)  {
     tabSheet_Refresh.Call(obj)
+}
+
+func TabSheet_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    tabSheet_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func TabSheet_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    tabSheet_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func TabSheet_SendToBack(obj uintptr)  {
@@ -32358,6 +33222,18 @@ func Control_BringToFront(obj uintptr)  {
     control_BringToFront.Call(obj)
 }
 
+func Control_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    control_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Control_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    control_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Control_Dragging(obj uintptr) bool {
     ret, _, _ := control_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -32387,6 +33263,18 @@ func Control_Refresh(obj uintptr)  {
 
 func Control_Repaint(obj uintptr)  {
     control_Repaint.Call(obj)
+}
+
+func Control_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    control_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Control_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    control_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Control_SendToBack(obj uintptr)  {
@@ -34746,6 +35634,18 @@ func ToolButton_BringToFront(obj uintptr)  {
     toolButton_BringToFront.Call(obj)
 }
 
+func ToolButton_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    toolButton_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToolButton_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    toolButton_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ToolButton_Dragging(obj uintptr) bool {
     ret, _, _ := toolButton_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -34775,6 +35675,18 @@ func ToolButton_Refresh(obj uintptr)  {
 
 func ToolButton_Repaint(obj uintptr)  {
     toolButton_Repaint.Call(obj)
+}
+
+func ToolButton_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    toolButton_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToolButton_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    toolButton_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ToolButton_SendToBack(obj uintptr)  {
@@ -35987,6 +36899,18 @@ func PaintBox_BringToFront(obj uintptr)  {
     paintBox_BringToFront.Call(obj)
 }
 
+func PaintBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    paintBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func PaintBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    paintBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func PaintBox_Dragging(obj uintptr) bool {
     ret, _, _ := paintBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -36016,6 +36940,18 @@ func PaintBox_Refresh(obj uintptr)  {
 
 func PaintBox_Repaint(obj uintptr)  {
     paintBox_Repaint.Call(obj)
+}
+
+func PaintBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    paintBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func PaintBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    paintBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func PaintBox_SendToBack(obj uintptr)  {
@@ -37324,6 +38260,18 @@ func ScrollBar_BringToFront(obj uintptr)  {
     scrollBar_BringToFront.Call(obj)
 }
 
+func ScrollBar_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    scrollBar_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ScrollBar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    scrollBar_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ScrollBar_Dragging(obj uintptr) bool {
     ret, _, _ := scrollBar_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -37345,6 +38293,18 @@ func ScrollBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int 
 
 func ScrollBar_Refresh(obj uintptr)  {
     scrollBar_Refresh.Call(obj)
+}
+
+func ScrollBar_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    scrollBar_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ScrollBar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    scrollBar_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ScrollBar_SendToBack(obj uintptr)  {
@@ -38103,6 +39063,18 @@ func Shape_BringToFront(obj uintptr)  {
     shape_BringToFront.Call(obj)
 }
 
+func Shape_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    shape_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Shape_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    shape_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Shape_Dragging(obj uintptr) bool {
     ret, _, _ := shape_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -38132,6 +39104,18 @@ func Shape_Refresh(obj uintptr)  {
 
 func Shape_Repaint(obj uintptr)  {
     shape_Repaint.Call(obj)
+}
+
+func Shape_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    shape_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Shape_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    shape_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Shape_SendToBack(obj uintptr)  {
@@ -38580,6 +39564,18 @@ func Bevel_BringToFront(obj uintptr)  {
     bevel_BringToFront.Call(obj)
 }
 
+func Bevel_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    bevel_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Bevel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    bevel_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Bevel_Dragging(obj uintptr) bool {
     ret, _, _ := bevel_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -38609,6 +39605,18 @@ func Bevel_Refresh(obj uintptr)  {
 
 func Bevel_Repaint(obj uintptr)  {
     bevel_Repaint.Call(obj)
+}
+
+func Bevel_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    bevel_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Bevel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    bevel_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Bevel_SendToBack(obj uintptr)  {
@@ -39024,6 +40032,18 @@ func ScrollBox_BringToFront(obj uintptr)  {
     scrollBox_BringToFront.Call(obj)
 }
 
+func ScrollBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    scrollBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ScrollBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    scrollBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ScrollBox_Dragging(obj uintptr) bool {
     ret, _, _ := scrollBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -39045,6 +40065,18 @@ func ScrollBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int 
 
 func ScrollBox_Refresh(obj uintptr)  {
     scrollBox_Refresh.Call(obj)
+}
+
+func ScrollBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    scrollBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ScrollBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    scrollBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ScrollBox_SendToBack(obj uintptr)  {
@@ -39773,6 +40805,18 @@ func CheckListBox_BringToFront(obj uintptr)  {
     checkListBox_BringToFront.Call(obj)
 }
 
+func CheckListBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    checkListBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckListBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    checkListBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CheckListBox_Dragging(obj uintptr) bool {
     ret, _, _ := checkListBox_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -39794,6 +40838,18 @@ func CheckListBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) i
 
 func CheckListBox_Refresh(obj uintptr)  {
     checkListBox_Refresh.Call(obj)
+}
+
+func CheckListBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    checkListBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckListBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    checkListBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func CheckListBox_SendToBack(obj uintptr)  {
@@ -40615,6 +41671,18 @@ func Gauge_BringToFront(obj uintptr)  {
     gauge_BringToFront.Call(obj)
 }
 
+func Gauge_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    gauge_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Gauge_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    gauge_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Gauge_Dragging(obj uintptr) bool {
     ret, _, _ := gauge_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -40644,6 +41712,18 @@ func Gauge_Refresh(obj uintptr)  {
 
 func Gauge_Repaint(obj uintptr)  {
     gauge_Repaint.Call(obj)
+}
+
+func Gauge_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    gauge_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Gauge_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    gauge_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func Gauge_SendToBack(obj uintptr)  {
@@ -41120,6 +42200,18 @@ func ImageButton_BringToFront(obj uintptr)  {
     imageButton_BringToFront.Call(obj)
 }
 
+func ImageButton_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    imageButton_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ImageButton_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    imageButton_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ImageButton_Dragging(obj uintptr) bool {
     ret, _, _ := imageButton_Dragging.Call(obj)
     return DBoolToGoBool(ret)
@@ -41149,6 +42241,18 @@ func ImageButton_Refresh(obj uintptr)  {
 
 func ImageButton_Repaint(obj uintptr)  {
     imageButton_Repaint.Call(obj)
+}
+
+func ImageButton_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    imageButton_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ImageButton_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    imageButton_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ImageButton_SendToBack(obj uintptr)  {

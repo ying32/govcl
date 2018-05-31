@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure RadioButton_ClientToScreen(AObj: TRadioButton; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure RadioButton_ClientToParent(AObj: TRadioButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function RadioButton_Dragging(AObj: TRadioButton): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure RadioButton_Refresh(AObj: TRadioButton); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure RadioButton_ScreenToClient(AObj: TRadioButton; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure RadioButton_ParentToClient(AObj: TRadioButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure RadioButton_SendToBack(AObj: TRadioButton); stdcall;
@@ -902,11 +922,15 @@ exports
   RadioButton_SetFocus,
   RadioButton_Update,
   RadioButton_BringToFront,
+  RadioButton_ClientToScreen,
+  RadioButton_ClientToParent,
   RadioButton_Dragging,
   RadioButton_HasParent,
   RadioButton_Hide,
   RadioButton_Perform,
   RadioButton_Refresh,
+  RadioButton_ScreenToClient,
+  RadioButton_ParentToClient,
   RadioButton_SendToBack,
   RadioButton_Show,
   RadioButton_GetTextBuf,

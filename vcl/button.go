@@ -104,6 +104,14 @@ func (b *TButton) BringToFront() {
     Button_BringToFront(b.instance)
 }
 
+func (b *TButton) ClientToScreen(Point TPoint) TPoint {
+    return Button_ClientToScreen(b.instance, Point)
+}
+
+func (b *TButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Button_ClientToParent(b.instance, Point , CheckPtr(AParent))
+}
+
 func (b *TButton) Dragging() bool {
     return Button_Dragging(b.instance)
 }
@@ -122,6 +130,14 @@ func (b *TButton) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (b *TButton) Refresh() {
     Button_Refresh(b.instance)
+}
+
+func (b *TButton) ScreenToClient(Point TPoint) TPoint {
+    return Button_ScreenToClient(b.instance, Point)
+}
+
+func (b *TButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Button_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
 func (b *TButton) SendToBack() {

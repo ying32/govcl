@@ -56,6 +56,14 @@ func (s *TShape) BringToFront() {
     Shape_BringToFront(s.instance)
 }
 
+func (s *TShape) ClientToScreen(Point TPoint) TPoint {
+    return Shape_ClientToScreen(s.instance, Point)
+}
+
+func (s *TShape) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Shape_ClientToParent(s.instance, Point , CheckPtr(AParent))
+}
+
 func (s *TShape) Dragging() bool {
     return Shape_Dragging(s.instance)
 }
@@ -82,6 +90,14 @@ func (s *TShape) Refresh() {
 
 func (s *TShape) Repaint() {
     Shape_Repaint(s.instance)
+}
+
+func (s *TShape) ScreenToClient(Point TPoint) TPoint {
+    return Shape_ScreenToClient(s.instance, Point)
+}
+
+func (s *TShape) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Shape_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 func (s *TShape) SendToBack() {

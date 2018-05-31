@@ -20,6 +20,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Bevel_ClientToScreen(AObj: TBevel; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Bevel_ClientToParent(AObj: TBevel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Bevel_Dragging(AObj: TBevel): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -53,6 +63,16 @@ end;
 procedure Bevel_Repaint(AObj: TBevel); extdecl;
 begin
   AObj.Repaint;
+end;
+
+procedure Bevel_ScreenToClient(AObj: TBevel; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Bevel_ParentToClient(AObj: TBevel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Bevel_SendToBack(AObj: TBevel); extdecl;
@@ -380,6 +400,8 @@ exports
   Bevel_Create,
   Bevel_Free,
   Bevel_BringToFront,
+  Bevel_ClientToScreen,
+  Bevel_ClientToParent,
   Bevel_Dragging,
   Bevel_HasParent,
   Bevel_Hide,
@@ -387,6 +409,8 @@ exports
   Bevel_Perform,
   Bevel_Refresh,
   Bevel_Repaint,
+  Bevel_ScreenToClient,
+  Bevel_ParentToClient,
   Bevel_SendToBack,
   Bevel_SetBounds,
   Bevel_Show,

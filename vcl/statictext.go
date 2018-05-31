@@ -100,6 +100,14 @@ func (s *TStaticText) BringToFront() {
     StaticText_BringToFront(s.instance)
 }
 
+func (s *TStaticText) ClientToScreen(Point TPoint) TPoint {
+    return StaticText_ClientToScreen(s.instance, Point)
+}
+
+func (s *TStaticText) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return StaticText_ClientToParent(s.instance, Point , CheckPtr(AParent))
+}
+
 func (s *TStaticText) Dragging() bool {
     return StaticText_Dragging(s.instance)
 }
@@ -118,6 +126,14 @@ func (s *TStaticText) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (s *TStaticText) Refresh() {
     StaticText_Refresh(s.instance)
+}
+
+func (s *TStaticText) ScreenToClient(Point TPoint) TPoint {
+    return StaticText_ScreenToClient(s.instance, Point)
+}
+
+func (s *TStaticText) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return StaticText_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 func (s *TStaticText) SendToBack() {

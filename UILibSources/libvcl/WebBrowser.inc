@@ -5,324 +5,324 @@
 //
 //----------------------------------------
 
-function WebBrowser_Create(AOwner: TComponent): TWebBrowser; cdecl;
+function WebBrowser_Create(AOwner: TComponent): TWebBrowser; stdcall;
 begin
 //  CoInitializeEx(nil, 0);
   Result :=  TWebBrowser.Create(AOwner);
 end;
 
-procedure WebBrowser_Free(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Free(AObj: TWebBrowser); stdcall;
 begin
   AObj.Free;
 //  CoUninitialize;
 end;
 
-procedure WebBrowser_GoBack(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_GoBack(AObj: TWebBrowser); stdcall;
 begin
   AObj.GoBack;
 end;
 
-procedure WebBrowser_GoForward(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_GoForward(AObj: TWebBrowser); stdcall;
 begin
   AObj.GoForward;
 end;
 
-procedure WebBrowser_GoHome(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_GoHome(AObj: TWebBrowser); stdcall;
 begin
   AObj.GoHome;
 end;
 
-procedure WebBrowser_GoSearch(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_GoSearch(AObj: TWebBrowser); stdcall;
 begin
   AObj.GoSearch;
 end;
 
-procedure WebBrowser_Navigate(AObj: TWebBrowser; URL: PChar); cdecl;
+procedure WebBrowser_Navigate(AObj: TWebBrowser; URL: PChar); stdcall;
 begin
   AObj.Navigate(URL);
 end;
 
-procedure WebBrowser_Refresh(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Refresh(AObj: TWebBrowser); stdcall;
 begin
   AObj.Refresh;
 end;
 
-procedure WebBrowser_Refresh2(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Refresh2(AObj: TWebBrowser); stdcall;
 begin
   AObj.Refresh2;
 end;
 
-procedure WebBrowser_Stop(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Stop(AObj: TWebBrowser); stdcall;
 begin
   AObj.Stop;
 end;
 
-procedure WebBrowser_Quit(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Quit(AObj: TWebBrowser); stdcall;
 begin
   AObj.Quit;
 end;
 
-procedure WebBrowser_SetBounds(AObj: TWebBrowser; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); cdecl;
+procedure WebBrowser_SetBounds(AObj: TWebBrowser; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
 end;
 
-function WebBrowser_CanFocus(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_CanFocus(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.CanFocus;
 end;
 
-procedure WebBrowser_FlipChildren(AObj: TWebBrowser; AllLevels: LongBool); cdecl;
+procedure WebBrowser_FlipChildren(AObj: TWebBrowser; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
 end;
 
-function WebBrowser_Focused(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_Focused(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.Focused;
 end;
 
-function WebBrowser_HandleAllocated(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_HandleAllocated(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.HandleAllocated;
 end;
 
-procedure WebBrowser_Invalidate(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Invalidate(AObj: TWebBrowser); stdcall;
 begin
   AObj.Invalidate;
 end;
 
-procedure WebBrowser_Realign(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Realign(AObj: TWebBrowser); stdcall;
 begin
   AObj.Realign;
 end;
 
-procedure WebBrowser_Repaint(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Repaint(AObj: TWebBrowser); stdcall;
 begin
   AObj.Repaint;
 end;
 
-procedure WebBrowser_ScaleBy(AObj: TWebBrowser; M: Integer; D: Integer); cdecl;
+procedure WebBrowser_ScaleBy(AObj: TWebBrowser; M: Integer; D: Integer); stdcall;
 begin
   AObj.ScaleBy(M, D);
 end;
 
-procedure WebBrowser_SetFocus(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_SetFocus(AObj: TWebBrowser); stdcall;
 begin
   AObj.SetFocus;
 end;
 
-procedure WebBrowser_Update(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Update(AObj: TWebBrowser); stdcall;
 begin
   AObj.Update;
 end;
 
-procedure WebBrowser_BringToFront(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_BringToFront(AObj: TWebBrowser); stdcall;
 begin
   AObj.BringToFront;
 end;
 
-function WebBrowser_HasParent(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_HasParent(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
 end;
 
-procedure WebBrowser_Hide(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Hide(AObj: TWebBrowser); stdcall;
 begin
   AObj.Hide;
 end;
 
-function WebBrowser_Perform(AObj: TWebBrowser; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; cdecl;
+function WebBrowser_Perform(AObj: TWebBrowser; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; stdcall;
 begin
   Result :=  AObj.Perform(Msg, WParam, LParam);
 end;
 
-procedure WebBrowser_SendToBack(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_SendToBack(AObj: TWebBrowser); stdcall;
 begin
   AObj.SendToBack;
 end;
 
-procedure WebBrowser_Show(AObj: TWebBrowser); cdecl;
+procedure WebBrowser_Show(AObj: TWebBrowser); stdcall;
 begin
   AObj.Show;
 end;
 
-function WebBrowser_GetTextBuf(AObj: TWebBrowser; Buffer: PWideChar; BufSize: Integer): Integer; cdecl;
+function WebBrowser_GetTextBuf(AObj: TWebBrowser; Buffer: PWideChar; BufSize: Integer): Integer; stdcall;
 begin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
 end;
 
-function WebBrowser_FindComponent(AObj: TWebBrowser; AName: PChar): TComponent; cdecl;
+function WebBrowser_FindComponent(AObj: TWebBrowser; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
 end;
 
-function WebBrowser_GetNamePath(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_GetNamePath(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
-procedure WebBrowser_Assign(AObj: TWebBrowser; Source: TPersistent); cdecl;
+procedure WebBrowser_Assign(AObj: TWebBrowser; Source: TPersistent); stdcall;
 begin
   AObj.Assign(Source);
 end;
 
-function WebBrowser_ClassName(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_ClassName(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
 end;
 
-function WebBrowser_Equals(AObj: TWebBrowser; Obj: TObject): LongBool; cdecl;
+function WebBrowser_Equals(AObj: TWebBrowser; Obj: TObject): LongBool; stdcall;
 begin
   Result :=  AObj.Equals(Obj);
 end;
 
-function WebBrowser_GetHashCode(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetHashCode(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.GetHashCode;
 end;
 
-function WebBrowser_ToString(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_ToString(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ToString);
 end;
 
-function WebBrowser_GetControlInterface(AObj: TWebBrowser): IWebBrowser2; cdecl;
+function WebBrowser_GetControlInterface(AObj: TWebBrowser): IWebBrowser2; stdcall;
 begin
   Result :=  AObj.ControlInterface;
 end;
 
-function WebBrowser_GetDefaultInterface(AObj: TWebBrowser): IWebBrowser2; cdecl;
+function WebBrowser_GetDefaultInterface(AObj: TWebBrowser): IWebBrowser2; stdcall;
 begin
   Result :=  AObj.DefaultInterface;
 end;
 
-function WebBrowser_GetApplication(AObj: TWebBrowser): IDispatch; cdecl;
+function WebBrowser_GetApplication(AObj: TWebBrowser): IDispatch; stdcall;
 begin
   Result :=  AObj.Application;
 end;
 
-function WebBrowser_GetParent(AObj: TWebBrowser): IDispatch; cdecl;
+function WebBrowser_GetParent(AObj: TWebBrowser): IDispatch; stdcall;
 begin
   Result :=  AObj.Parent;
 end;
 
-function WebBrowser_GetDocument(AObj: TWebBrowser): IDispatch; cdecl;
+function WebBrowser_GetDocument(AObj: TWebBrowser): IDispatch; stdcall;
 begin
   Result :=  AObj.Document;
 end;
 
-function WebBrowser_GetLocationName(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_GetLocationName(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.LocationName);
 end;
 
-function WebBrowser_GetLocationURL(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_GetLocationURL(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.LocationURL);
 end;
 
-function WebBrowser_GetBusy(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetBusy(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.Busy;
 end;
 
-function WebBrowser_GetName(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_GetName(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.Name);
 end;
 
-function WebBrowser_GetFullName(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_GetFullName(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.FullName);
 end;
 
-function WebBrowser_GetPath(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_GetPath(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.Path);
 end;
 
-function WebBrowser_GetReadyState(AObj: TWebBrowser): TOleEnum; cdecl;
+function WebBrowser_GetReadyState(AObj: TWebBrowser): TOleEnum; stdcall;
 begin
   Result :=  AObj.ReadyState;
 end;
 
-function WebBrowser_GetAnchors(AObj: TWebBrowser): TAnchors; cdecl;
+function WebBrowser_GetAnchors(AObj: TWebBrowser): TAnchors; stdcall;
 begin
   Result :=  AObj.Anchors;
 end;
 
-procedure WebBrowser_SetAnchors(AObj: TWebBrowser; AValue: TAnchors); cdecl;
+procedure WebBrowser_SetAnchors(AObj: TWebBrowser; AValue: TAnchors); stdcall;
 begin
   AObj.Anchors := AValue;
 end;
 
-function WebBrowser_GetTabStop(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetTabStop(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.TabStop;
 end;
 
-procedure WebBrowser_SetTabStop(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetTabStop(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.TabStop := AValue;
 end;
 
-function WebBrowser_GetAlign(AObj: TWebBrowser): TAlign; cdecl;
+function WebBrowser_GetAlign(AObj: TWebBrowser): TAlign; stdcall;
 begin
   Result :=  AObj.Align;
 end;
 
-procedure WebBrowser_SetAlign(AObj: TWebBrowser; AValue: TAlign); cdecl;
+procedure WebBrowser_SetAlign(AObj: TWebBrowser; AValue: TAlign); stdcall;
 begin
   AObj.Align := AValue;
 end;
 
-function WebBrowser_GetParentShowHint(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetParentShowHint(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.ParentShowHint;
 end;
 
-procedure WebBrowser_SetParentShowHint(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetParentShowHint(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.ParentShowHint := AValue;
 end;
 
-function WebBrowser_GetPopupMenu(AObj: TWebBrowser): TPopupMenu; cdecl;
+function WebBrowser_GetPopupMenu(AObj: TWebBrowser): TPopupMenu; stdcall;
 begin
   Result :=  AObj.PopupMenu;
 end;
 
-procedure WebBrowser_SetPopupMenu(AObj: TWebBrowser; AValue: TPopupMenu); cdecl;
+procedure WebBrowser_SetPopupMenu(AObj: TWebBrowser; AValue: TPopupMenu); stdcall;
 begin
   AObj.PopupMenu := AValue;
 end;
 
-function WebBrowser_GetShowHint(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetShowHint(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.ShowHint;
 end;
 
-procedure WebBrowser_SetShowHint(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetShowHint(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.ShowHint := AValue;
 end;
 
-function WebBrowser_GetTabOrder(AObj: TWebBrowser): TTabOrder; cdecl;
+function WebBrowser_GetTabOrder(AObj: TWebBrowser): TTabOrder; stdcall;
 begin
   Result :=  AObj.TabOrder;
 end;
 
-procedure WebBrowser_SetTabOrder(AObj: TWebBrowser; AValue: TTabOrder); cdecl;
+procedure WebBrowser_SetTabOrder(AObj: TWebBrowser; AValue: TTabOrder); stdcall;
 begin
   AObj.TabOrder := AValue;
 end;
 
-function WebBrowser_GetStyleElements(AObj: TWebBrowser): TStyleElements; cdecl;
+function WebBrowser_GetStyleElements(AObj: TWebBrowser): TStyleElements; stdcall;
 begin
   Result :=  AObj.StyleElements;
 end;
 
-procedure WebBrowser_SetStyleElements(AObj: TWebBrowser; AValue: TStyleElements); cdecl;
+procedure WebBrowser_SetStyleElements(AObj: TWebBrowser; AValue: TStyleElements); stdcall;
 begin
   AObj.StyleElements := AValue;
 end;
@@ -351,87 +351,87 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
-function WebBrowser_GetVisible(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetVisible(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.Visible;
 end;
 
-procedure WebBrowser_SetVisible(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetVisible(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.Visible := AValue;
 end;
 
-function WebBrowser_GetFullScreen(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetFullScreen(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.FullScreen;
 end;
 
-procedure WebBrowser_SetFullScreen(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetFullScreen(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.FullScreen := AValue;
 end;
 
-function WebBrowser_GetOffline(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetOffline(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.Offline;
 end;
 
-procedure WebBrowser_SetOffline(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetOffline(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.Offline := AValue;
 end;
 
-function WebBrowser_GetSilent(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetSilent(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.Silent;
 end;
 
-procedure WebBrowser_SetSilent(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetSilent(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.Silent := AValue;
 end;
 
-function WebBrowser_GetDoubleBuffered(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetDoubleBuffered(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
 end;
 
-procedure WebBrowser_SetDoubleBuffered(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetDoubleBuffered(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
 end;
 
-function WebBrowser_GetBrush(AObj: TWebBrowser): TBrush; cdecl;
+function WebBrowser_GetBrush(AObj: TWebBrowser): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
 end;
 
-function WebBrowser_GetControlCount(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetControlCount(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ControlCount;
 end;
 
-function WebBrowser_GetHandle(AObj: TWebBrowser): HWND; cdecl;
+function WebBrowser_GetHandle(AObj: TWebBrowser): HWND; stdcall;
 begin
   Result :=  AObj.Handle;
 end;
 
-function WebBrowser_GetParentDoubleBuffered(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetParentDoubleBuffered(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.ParentDoubleBuffered;
 end;
 
-procedure WebBrowser_SetParentDoubleBuffered(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetParentDoubleBuffered(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.ParentDoubleBuffered := AValue;
 end;
 
-function WebBrowser_GetParentWindow(AObj: TWebBrowser): HWND; cdecl;
+function WebBrowser_GetParentWindow(AObj: TWebBrowser): HWND; stdcall;
 begin
   Result :=  AObj.ParentWindow;
 end;
 
-procedure WebBrowser_SetParentWindow(AObj: TWebBrowser; AValue: HWND); cdecl;
+procedure WebBrowser_SetParentWindow(AObj: TWebBrowser; AValue: HWND); stdcall;
 begin
   try
   AObj.ParentWindow := AValue;
@@ -441,212 +441,212 @@ begin
   end;
 end;
 
-function WebBrowser_GetEnabled(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetEnabled(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
 end;
 
-procedure WebBrowser_SetEnabled(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetEnabled(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.Enabled := AValue;
 end;
 
-function WebBrowser_GetAction(AObj: TWebBrowser): TBasicAction; cdecl;
+function WebBrowser_GetAction(AObj: TWebBrowser): TBasicAction; stdcall;
 begin
   Result :=  AObj.Action;
 end;
 
-procedure WebBrowser_SetAction(AObj: TWebBrowser; AValue: TBasicAction); cdecl;
+procedure WebBrowser_SetAction(AObj: TWebBrowser; AValue: TBasicAction); stdcall;
 begin
   AObj.Action := AValue;
 end;
 
-function WebBrowser_GetBiDiMode(AObj: TWebBrowser): TBiDiMode; cdecl;
+function WebBrowser_GetBiDiMode(AObj: TWebBrowser): TBiDiMode; stdcall;
 begin
   Result :=  AObj.BiDiMode;
 end;
 
-procedure WebBrowser_SetBiDiMode(AObj: TWebBrowser; AValue: TBiDiMode); cdecl;
+procedure WebBrowser_SetBiDiMode(AObj: TWebBrowser; AValue: TBiDiMode); stdcall;
 begin
   AObj.BiDiMode := AValue;
 end;
 
-procedure WebBrowser_GetBoundsRect(AObj: TWebBrowser; var Result: TRect); cdecl;
+procedure WebBrowser_GetBoundsRect(AObj: TWebBrowser; var Result: TRect); stdcall;
 begin
   Result :=  AObj.BoundsRect;
 end;
 
-procedure WebBrowser_SetBoundsRect(AObj: TWebBrowser; var AValue: TRect); cdecl;
+procedure WebBrowser_SetBoundsRect(AObj: TWebBrowser; var AValue: TRect); stdcall;
 begin
   AObj.BoundsRect := AValue;
 end;
 
-function WebBrowser_GetClientHeight(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetClientHeight(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ClientHeight;
 end;
 
-procedure WebBrowser_SetClientHeight(AObj: TWebBrowser; AValue: Integer); cdecl;
+procedure WebBrowser_SetClientHeight(AObj: TWebBrowser; AValue: Integer); stdcall;
 begin
   AObj.ClientHeight := AValue;
 end;
 
-procedure WebBrowser_GetClientRect(AObj: TWebBrowser; var Result: TRect); cdecl;
+procedure WebBrowser_GetClientRect(AObj: TWebBrowser; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
 end;
 
-function WebBrowser_GetClientWidth(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetClientWidth(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ClientWidth;
 end;
 
-procedure WebBrowser_SetClientWidth(AObj: TWebBrowser; AValue: Integer); cdecl;
+procedure WebBrowser_SetClientWidth(AObj: TWebBrowser; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
 end;
 
-function WebBrowser_GetExplicitLeft(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetExplicitLeft(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitLeft;
 end;
 
-function WebBrowser_GetExplicitTop(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetExplicitTop(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitTop;
 end;
 
-function WebBrowser_GetExplicitWidth(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetExplicitWidth(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitWidth;
 end;
 
-function WebBrowser_GetExplicitHeight(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetExplicitHeight(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
 end;
 
-function WebBrowser_GetAlignWithMargins(AObj: TWebBrowser): LongBool; cdecl;
+function WebBrowser_GetAlignWithMargins(AObj: TWebBrowser): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
 end;
 
-procedure WebBrowser_SetAlignWithMargins(AObj: TWebBrowser; AValue: LongBool); cdecl;
+procedure WebBrowser_SetAlignWithMargins(AObj: TWebBrowser; AValue: LongBool); stdcall;
 begin
   AObj.AlignWithMargins := AValue;
 end;
 
-function WebBrowser_GetLeft(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetLeft(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.Left;
 end;
 
-procedure WebBrowser_SetLeft(AObj: TWebBrowser; AValue: Integer); cdecl;
+procedure WebBrowser_SetLeft(AObj: TWebBrowser; AValue: Integer); stdcall;
 begin
   AObj.Left := AValue;
 end;
 
-function WebBrowser_GetTop(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetTop(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.Top;
 end;
 
-procedure WebBrowser_SetTop(AObj: TWebBrowser; AValue: Integer); cdecl;
+procedure WebBrowser_SetTop(AObj: TWebBrowser; AValue: Integer); stdcall;
 begin
   AObj.Top := AValue;
 end;
 
-function WebBrowser_GetWidth(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetWidth(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.Width;
 end;
 
-procedure WebBrowser_SetWidth(AObj: TWebBrowser; AValue: Integer); cdecl;
+procedure WebBrowser_SetWidth(AObj: TWebBrowser; AValue: Integer); stdcall;
 begin
   AObj.Width := AValue;
 end;
 
-function WebBrowser_GetHeight(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetHeight(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.Height;
 end;
 
-procedure WebBrowser_SetHeight(AObj: TWebBrowser; AValue: Integer); cdecl;
+procedure WebBrowser_SetHeight(AObj: TWebBrowser; AValue: Integer); stdcall;
 begin
   AObj.Height := AValue;
 end;
 
-function WebBrowser_GetCursor(AObj: TWebBrowser): TCursor; cdecl;
+function WebBrowser_GetCursor(AObj: TWebBrowser): TCursor; stdcall;
 begin
   Result :=  AObj.Cursor;
 end;
 
-procedure WebBrowser_SetCursor(AObj: TWebBrowser; AValue: TCursor); cdecl;
+procedure WebBrowser_SetCursor(AObj: TWebBrowser; AValue: TCursor); stdcall;
 begin
   AObj.Cursor := AValue;
 end;
 
-function WebBrowser_GetHint(AObj: TWebBrowser): PChar; cdecl;
+function WebBrowser_GetHint(AObj: TWebBrowser): PChar; stdcall;
 begin
   Result :=  PChar(AObj.Hint);
 end;
 
-procedure WebBrowser_SetHint(AObj: TWebBrowser; AValue: PChar); cdecl;
+procedure WebBrowser_SetHint(AObj: TWebBrowser; AValue: PChar); stdcall;
 begin
   AObj.Hint := AValue;
 end;
 
-function WebBrowser_GetMargins(AObj: TWebBrowser): TMargins; cdecl;
+function WebBrowser_GetMargins(AObj: TWebBrowser): TMargins; stdcall;
 begin
   Result :=  AObj.Margins;
 end;
 
-procedure WebBrowser_SetMargins(AObj: TWebBrowser; AValue: TMargins); cdecl;
+procedure WebBrowser_SetMargins(AObj: TWebBrowser; AValue: TMargins); stdcall;
 begin
   AObj.Margins := AValue;
 end;
 
-function WebBrowser_GetComponentCount(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetComponentCount(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ComponentCount;
 end;
 
-function WebBrowser_GetComponentIndex(AObj: TWebBrowser): Integer; cdecl;
+function WebBrowser_GetComponentIndex(AObj: TWebBrowser): Integer; stdcall;
 begin
   Result :=  AObj.ComponentIndex;
 end;
 
-procedure WebBrowser_SetComponentIndex(AObj: TWebBrowser; AValue: Integer); cdecl;
+procedure WebBrowser_SetComponentIndex(AObj: TWebBrowser; AValue: Integer); stdcall;
 begin
   AObj.ComponentIndex := AValue;
 end;
 
-function WebBrowser_GetOwner(AObj: TWebBrowser): TComponent; cdecl;
+function WebBrowser_GetOwner(AObj: TWebBrowser): TComponent; stdcall;
 begin
   Result :=  AObj.Owner;
 end;
 
-function WebBrowser_GetTag(AObj: TWebBrowser): NativeInt; cdecl;
+function WebBrowser_GetTag(AObj: TWebBrowser): NativeInt; stdcall;
 begin
   Result :=  AObj.Tag;
 end;
 
-procedure WebBrowser_SetTag(AObj: TWebBrowser; AValue: NativeInt); cdecl;
+procedure WebBrowser_SetTag(AObj: TWebBrowser; AValue: NativeInt); stdcall;
 begin
   AObj.Tag := AValue;
 end;
 
-function WebBrowser_GetControls(AObj: TWebBrowser; Index: Integer): TControl; cdecl;
+function WebBrowser_GetControls(AObj: TWebBrowser; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
 end;
 
-function WebBrowser_GetComponents(AObj: TWebBrowser; AIndex: Integer): TComponent; cdecl;
+function WebBrowser_GetComponents(AObj: TWebBrowser; AIndex: Integer): TComponent; stdcall;
 begin
   Result :=  AObj.Components[AIndex];
 end;
 
-procedure Webbrowser_SetParent(AObj: TWebBrowser; AParent: TWinControl); cdecl;
+procedure Webbrowser_SetParent(AObj: TWebBrowser; AParent: TWinControl); stdcall;
 begin
   //TWinControl(AObj.Parent) := AParent;
 end;

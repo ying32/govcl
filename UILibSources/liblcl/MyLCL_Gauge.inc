@@ -25,6 +25,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Gauge_ClientToScreen(AObj: TGauge; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Gauge_ClientToParent(AObj: TGauge; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Gauge_Dragging(AObj: TGauge): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -58,6 +68,16 @@ end;
 procedure Gauge_Repaint(AObj: TGauge); extdecl;
 begin
   AObj.Repaint;
+end;
+
+procedure Gauge_ScreenToClient(AObj: TGauge; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Gauge_ParentToClient(AObj: TGauge; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Gauge_SendToBack(AObj: TGauge); extdecl;
@@ -491,6 +511,8 @@ exports
   Gauge_Free,
   Gauge_AddProgress,
   Gauge_BringToFront,
+  Gauge_ClientToScreen,
+  Gauge_ClientToParent,
   Gauge_Dragging,
   Gauge_HasParent,
   Gauge_Hide,
@@ -498,6 +520,8 @@ exports
   Gauge_Perform,
   Gauge_Refresh,
   Gauge_Repaint,
+  Gauge_ScreenToClient,
+  Gauge_ParentToClient,
   Gauge_SendToBack,
   Gauge_SetBounds,
   Gauge_Show,

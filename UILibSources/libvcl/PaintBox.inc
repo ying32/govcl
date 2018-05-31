@@ -20,6 +20,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure PaintBox_ClientToScreen(AObj: TPaintBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure PaintBox_ClientToParent(AObj: TPaintBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function PaintBox_Dragging(AObj: TPaintBox): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -53,6 +63,16 @@ end;
 procedure PaintBox_Repaint(AObj: TPaintBox); stdcall;
 begin
   AObj.Repaint;
+end;
+
+procedure PaintBox_ScreenToClient(AObj: TPaintBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure PaintBox_ParentToClient(AObj: TPaintBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure PaintBox_SendToBack(AObj: TPaintBox); stdcall;
@@ -673,6 +693,8 @@ exports
   PaintBox_Create,
   PaintBox_Free,
   PaintBox_BringToFront,
+  PaintBox_ClientToScreen,
+  PaintBox_ClientToParent,
   PaintBox_Dragging,
   PaintBox_HasParent,
   PaintBox_Hide,
@@ -680,6 +702,8 @@ exports
   PaintBox_Perform,
   PaintBox_Refresh,
   PaintBox_Repaint,
+  PaintBox_ScreenToClient,
+  PaintBox_ParentToClient,
   PaintBox_SendToBack,
   PaintBox_SetBounds,
   PaintBox_Show,

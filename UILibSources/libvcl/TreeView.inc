@@ -145,6 +145,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure TreeView_ClientToScreen(AObj: TTreeView; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure TreeView_ClientToParent(AObj: TTreeView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function TreeView_Dragging(AObj: TTreeView): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -168,6 +178,16 @@ end;
 procedure TreeView_Refresh(AObj: TTreeView); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure TreeView_ScreenToClient(AObj: TTreeView; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure TreeView_ParentToClient(AObj: TTreeView; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure TreeView_SendToBack(AObj: TTreeView); stdcall;
@@ -1303,11 +1323,15 @@ exports
   TreeView_SetFocus,
   TreeView_Update,
   TreeView_BringToFront,
+  TreeView_ClientToScreen,
+  TreeView_ClientToParent,
   TreeView_Dragging,
   TreeView_HasParent,
   TreeView_Hide,
   TreeView_Perform,
   TreeView_Refresh,
+  TreeView_ScreenToClient,
+  TreeView_ParentToClient,
   TreeView_SendToBack,
   TreeView_Show,
   TreeView_GetTextBuf,

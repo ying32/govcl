@@ -120,6 +120,14 @@ func (c *TComboBox) BringToFront() {
     ComboBox_BringToFront(c.instance)
 }
 
+func (c *TComboBox) ClientToScreen(Point TPoint) TPoint {
+    return ComboBox_ClientToScreen(c.instance, Point)
+}
+
+func (c *TComboBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ComboBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
+}
+
 func (c *TComboBox) Dragging() bool {
     return ComboBox_Dragging(c.instance)
 }
@@ -138,6 +146,14 @@ func (c *TComboBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (c *TComboBox) Refresh() {
     ComboBox_Refresh(c.instance)
+}
+
+func (c *TComboBox) ScreenToClient(Point TPoint) TPoint {
+    return ComboBox_ScreenToClient(c.instance, Point)
+}
+
+func (c *TComboBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ComboBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 func (c *TComboBox) SendToBack() {

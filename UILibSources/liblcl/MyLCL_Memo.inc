@@ -110,6 +110,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Memo_ClientToScreen(AObj: TMemo; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Memo_ClientToParent(AObj: TMemo; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Memo_Dragging(AObj: TMemo): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -133,6 +143,16 @@ end;
 procedure Memo_Refresh(AObj: TMemo); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure Memo_ScreenToClient(AObj: TMemo; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Memo_ParentToClient(AObj: TMemo; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Memo_SendToBack(AObj: TMemo); extdecl;
@@ -987,11 +1007,15 @@ exports
   Memo_SetFocus,
   Memo_Update,
   Memo_BringToFront,
+  Memo_ClientToScreen,
+  Memo_ClientToParent,
   Memo_Dragging,
   Memo_HasParent,
   Memo_Hide,
   Memo_Perform,
   Memo_Refresh,
+  Memo_ScreenToClient,
+  Memo_ParentToClient,
   Memo_SendToBack,
   Memo_Show,
   Memo_GetTextBuf,

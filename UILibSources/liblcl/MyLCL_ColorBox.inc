@@ -90,6 +90,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ColorBox_ClientToScreen(AObj: TColorBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ColorBox_ClientToParent(AObj: TColorBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ColorBox_Dragging(AObj: TColorBox): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -113,6 +123,16 @@ end;
 procedure ColorBox_Refresh(AObj: TColorBox); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure ColorBox_ScreenToClient(AObj: TColorBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ColorBox_ParentToClient(AObj: TColorBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ColorBox_SendToBack(AObj: TColorBox); extdecl;
@@ -865,11 +885,15 @@ exports
   ColorBox_SetFocus,
   ColorBox_Update,
   ColorBox_BringToFront,
+  ColorBox_ClientToScreen,
+  ColorBox_ClientToParent,
   ColorBox_Dragging,
   ColorBox_HasParent,
   ColorBox_Hide,
   ColorBox_Perform,
   ColorBox_Refresh,
+  ColorBox_ScreenToClient,
+  ColorBox_ParentToClient,
   ColorBox_SendToBack,
   ColorBox_Show,
   ColorBox_GetTextBuf,

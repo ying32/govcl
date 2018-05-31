@@ -60,6 +60,14 @@ func (g *TGauge) BringToFront() {
     Gauge_BringToFront(g.instance)
 }
 
+func (g *TGauge) ClientToScreen(Point TPoint) TPoint {
+    return Gauge_ClientToScreen(g.instance, Point)
+}
+
+func (g *TGauge) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Gauge_ClientToParent(g.instance, Point , CheckPtr(AParent))
+}
+
 func (g *TGauge) Dragging() bool {
     return Gauge_Dragging(g.instance)
 }
@@ -86,6 +94,14 @@ func (g *TGauge) Refresh() {
 
 func (g *TGauge) Repaint() {
     Gauge_Repaint(g.instance)
+}
+
+func (g *TGauge) ScreenToClient(Point TPoint) TPoint {
+    return Gauge_ScreenToClient(g.instance, Point)
+}
+
+func (g *TGauge) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Gauge_ParentToClient(g.instance, Point , CheckPtr(AParent))
 }
 
 func (g *TGauge) SendToBack() {

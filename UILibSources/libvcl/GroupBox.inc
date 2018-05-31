@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure GroupBox_ClientToScreen(AObj: TGroupBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure GroupBox_ClientToParent(AObj: TGroupBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function GroupBox_Dragging(AObj: TGroupBox): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure GroupBox_Refresh(AObj: TGroupBox); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure GroupBox_ScreenToClient(AObj: TGroupBox; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure GroupBox_ParentToClient(AObj: TGroupBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure GroupBox_SendToBack(AObj: TGroupBox); stdcall;
@@ -882,11 +902,15 @@ exports
   GroupBox_SetFocus,
   GroupBox_Update,
   GroupBox_BringToFront,
+  GroupBox_ClientToScreen,
+  GroupBox_ClientToParent,
   GroupBox_Dragging,
   GroupBox_HasParent,
   GroupBox_Hide,
   GroupBox_Perform,
   GroupBox_Refresh,
+  GroupBox_ScreenToClient,
+  GroupBox_ParentToClient,
   GroupBox_SendToBack,
   GroupBox_Show,
   GroupBox_GetTextBuf,

@@ -104,6 +104,14 @@ func (b *TBitBtn) BringToFront() {
     BitBtn_BringToFront(b.instance)
 }
 
+func (b *TBitBtn) ClientToScreen(Point TPoint) TPoint {
+    return BitBtn_ClientToScreen(b.instance, Point)
+}
+
+func (b *TBitBtn) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return BitBtn_ClientToParent(b.instance, Point , CheckPtr(AParent))
+}
+
 func (b *TBitBtn) Dragging() bool {
     return BitBtn_Dragging(b.instance)
 }
@@ -122,6 +130,14 @@ func (b *TBitBtn) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (b *TBitBtn) Refresh() {
     BitBtn_Refresh(b.instance)
+}
+
+func (b *TBitBtn) ScreenToClient(Point TPoint) TPoint {
+    return BitBtn_ScreenToClient(b.instance, Point)
+}
+
+func (b *TBitBtn) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return BitBtn_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
 func (b *TBitBtn) SendToBack() {

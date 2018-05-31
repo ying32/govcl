@@ -100,6 +100,14 @@ func (s *TScrollBox) BringToFront() {
     ScrollBox_BringToFront(s.instance)
 }
 
+func (s *TScrollBox) ClientToScreen(Point TPoint) TPoint {
+    return ScrollBox_ClientToScreen(s.instance, Point)
+}
+
+func (s *TScrollBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ScrollBox_ClientToParent(s.instance, Point , CheckPtr(AParent))
+}
+
 func (s *TScrollBox) Dragging() bool {
     return ScrollBox_Dragging(s.instance)
 }
@@ -118,6 +126,14 @@ func (s *TScrollBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (s *TScrollBox) Refresh() {
     ScrollBox_Refresh(s.instance)
+}
+
+func (s *TScrollBox) ScreenToClient(Point TPoint) TPoint {
+    return ScrollBox_ScreenToClient(s.instance, Point)
+}
+
+func (s *TScrollBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ScrollBox_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 func (s *TScrollBox) SendToBack() {

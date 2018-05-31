@@ -120,6 +120,14 @@ func (l *TListBox) BringToFront() {
     ListBox_BringToFront(l.instance)
 }
 
+func (l *TListBox) ClientToScreen(Point TPoint) TPoint {
+    return ListBox_ClientToScreen(l.instance, Point)
+}
+
+func (l *TListBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ListBox_ClientToParent(l.instance, Point , CheckPtr(AParent))
+}
+
 func (l *TListBox) Dragging() bool {
     return ListBox_Dragging(l.instance)
 }
@@ -138,6 +146,14 @@ func (l *TListBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (l *TListBox) Refresh() {
     ListBox_Refresh(l.instance)
+}
+
+func (l *TListBox) ScreenToClient(Point TPoint) TPoint {
+    return ListBox_ScreenToClient(l.instance, Point)
+}
+
+func (l *TListBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ListBox_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
 func (l *TListBox) SendToBack() {

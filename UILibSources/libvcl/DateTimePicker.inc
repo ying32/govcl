@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure DateTimePicker_ClientToScreen(AObj: TDateTimePicker; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure DateTimePicker_ClientToParent(AObj: TDateTimePicker; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function DateTimePicker_Dragging(AObj: TDateTimePicker): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure DateTimePicker_Refresh(AObj: TDateTimePicker); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure DateTimePicker_ScreenToClient(AObj: TDateTimePicker; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure DateTimePicker_ParentToClient(AObj: TDateTimePicker; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure DateTimePicker_SendToBack(AObj: TDateTimePicker); stdcall;
@@ -991,11 +1011,15 @@ exports
   DateTimePicker_SetFocus,
   DateTimePicker_Update,
   DateTimePicker_BringToFront,
+  DateTimePicker_ClientToScreen,
+  DateTimePicker_ClientToParent,
   DateTimePicker_Dragging,
   DateTimePicker_HasParent,
   DateTimePicker_Hide,
   DateTimePicker_Perform,
   DateTimePicker_Refresh,
+  DateTimePicker_ScreenToClient,
+  DateTimePicker_ParentToClient,
   DateTimePicker_SendToBack,
   DateTimePicker_Show,
   DateTimePicker_GetTextBuf,

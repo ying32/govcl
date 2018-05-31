@@ -80,6 +80,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure TrackBar_ClientToScreen(AObj: TTrackBar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure TrackBar_ClientToParent(AObj: TTrackBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function TrackBar_Dragging(AObj: TTrackBar): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -103,6 +113,16 @@ end;
 procedure TrackBar_Refresh(AObj: TTrackBar); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure TrackBar_ScreenToClient(AObj: TTrackBar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure TrackBar_ParentToClient(AObj: TTrackBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure TrackBar_SendToBack(AObj: TTrackBar); stdcall;
@@ -916,11 +936,15 @@ exports
   TrackBar_SetFocus,
   TrackBar_Update,
   TrackBar_BringToFront,
+  TrackBar_ClientToScreen,
+  TrackBar_ClientToParent,
   TrackBar_Dragging,
   TrackBar_HasParent,
   TrackBar_Hide,
   TrackBar_Perform,
   TrackBar_Refresh,
+  TrackBar_ScreenToClient,
+  TrackBar_ParentToClient,
   TrackBar_SendToBack,
   TrackBar_Show,
   TrackBar_GetTextBuf,

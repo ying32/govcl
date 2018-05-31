@@ -108,6 +108,14 @@ func (c *TCategoryPanel) BringToFront() {
     CategoryPanel_BringToFront(c.instance)
 }
 
+func (c *TCategoryPanel) ClientToScreen(Point TPoint) TPoint {
+    return CategoryPanel_ClientToScreen(c.instance, Point)
+}
+
+func (c *TCategoryPanel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return CategoryPanel_ClientToParent(c.instance, Point , CheckPtr(AParent))
+}
+
 func (c *TCategoryPanel) Dragging() bool {
     return CategoryPanel_Dragging(c.instance)
 }
@@ -126,6 +134,14 @@ func (c *TCategoryPanel) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (c *TCategoryPanel) Refresh() {
     CategoryPanel_Refresh(c.instance)
+}
+
+func (c *TCategoryPanel) ScreenToClient(Point TPoint) TPoint {
+    return CategoryPanel_ScreenToClient(c.instance, Point)
+}
+
+func (c *TCategoryPanel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return CategoryPanel_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 func (c *TCategoryPanel) SendToBack() {

@@ -100,6 +100,14 @@ func (t *TToolBar) BringToFront() {
     ToolBar_BringToFront(t.instance)
 }
 
+func (t *TToolBar) ClientToScreen(Point TPoint) TPoint {
+    return ToolBar_ClientToScreen(t.instance, Point)
+}
+
+func (t *TToolBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ToolBar_ClientToParent(t.instance, Point , CheckPtr(AParent))
+}
+
 func (t *TToolBar) Dragging() bool {
     return ToolBar_Dragging(t.instance)
 }
@@ -118,6 +126,14 @@ func (t *TToolBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (t *TToolBar) Refresh() {
     ToolBar_Refresh(t.instance)
+}
+
+func (t *TToolBar) ScreenToClient(Point TPoint) TPoint {
+    return ToolBar_ScreenToClient(t.instance, Point)
+}
+
+func (t *TToolBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ToolBar_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
 func (t *TToolBar) SendToBack() {

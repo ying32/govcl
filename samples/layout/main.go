@@ -5,6 +5,7 @@ import (
 	"gitee.com/ying32/govcl/vcl/exts/tools"
 	"gitee.com/ying32/govcl/vcl/rtl"
 	"gitee.com/ying32/govcl/vcl/types"
+	"gitee.com/ying32/govcl/vcl/types/colors"
 )
 
 // 简单介绍下Delphi中控件的布局方式
@@ -47,7 +48,7 @@ func main() {
 	pnl := vcl.NewPanel(mainForm)
 	pnl.SetCaption("顶")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClRed)
+	pnl.SetColor(colors.ClRed)
 	pnl.SetParent(sheet)
 	pnl.SetHeight(100)
 	pnl.SetAlign(types.AlTop)
@@ -56,7 +57,7 @@ func main() {
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("左")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClGreen)
+	pnl.SetColor(colors.ClGreen)
 	pnl.SetParent(sheet)
 	pnl.SetWidth(100)
 	pnl.SetAlign(types.AlLeft)
@@ -65,7 +66,7 @@ func main() {
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("客户区")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClBlue)
+	pnl.SetColor(colors.ClBlue)
 	pnl.SetParent(sheet)
 	pnl.SetAlign(types.AlClient)
 
@@ -78,21 +79,21 @@ func main() {
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("顶")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClRed)
+	pnl.SetColor(colors.ClRed)
 	pnl.SetParent(sheet)
 	pnl.SetAlign(types.AlTop)
 
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("客户区")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClGreen)
+	pnl.SetColor(colors.ClGreen)
 	pnl.SetParent(sheet)
 	pnl.SetAlign(types.AlClient)
 
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("底")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClBlue)
+	pnl.SetColor(colors.ClBlue)
 	pnl.SetParent(sheet)
 	pnl.SetAlign(types.AlBottom)
 
@@ -105,14 +106,14 @@ func main() {
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("顶")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClRed)
+	pnl.SetColor(colors.ClRed)
 	pnl.SetParent(sheet)
 	pnl.SetAlign(types.AlTop)
 
 	ppnl := vcl.NewPanel(mainForm)
 	ppnl.SetCaption("客户区")
 	ppnl.SetParentBackground(false)
-	ppnl.SetColor(types.ClGreen)
+	ppnl.SetColor(colors.ClGreen)
 	ppnl.SetParent(sheet)
 	ppnl.SetAlign(types.AlClient)
 
@@ -120,21 +121,21 @@ func main() {
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("左")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClAqua)
+	pnl.SetColor(colors.ClAqua)
 	pnl.SetParent(ppnl)
 	pnl.SetAlign(types.AlLeft)
 
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("右")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClAzure)
+	pnl.SetColor(colors.ClAzure)
 	pnl.SetParent(ppnl)
 	pnl.SetAlign(types.AlRight)
 
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetCaption("底")
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClBlue)
+	pnl.SetColor(colors.ClBlue)
 	pnl.SetParent(sheet)
 	pnl.SetAlign(types.AlBottom)
 
@@ -193,13 +194,13 @@ func main() {
 	ppnl = vcl.NewPanel(mainForm)
 	ppnl.SetParent(sheet)
 	ppnl.SetParentBackground(false)
-	ppnl.SetColor(types.ClRed)
+	ppnl.SetColor(colors.ClRed)
 	ppnl.SetAlign(types.AlClient)
 
 	pnl = vcl.NewPanel(mainForm)
 	pnl.SetParent(ppnl)
 	pnl.SetParentBackground(false)
-	pnl.SetColor(types.ClGreen)
+	pnl.SetColor(colors.ClGreen)
 
 	pnl.SetAlign(types.AlClient)
 

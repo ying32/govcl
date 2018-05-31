@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure StaticText_ClientToScreen(AObj: TStaticText; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure StaticText_ClientToParent(AObj: TStaticText; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function StaticText_Dragging(AObj: TStaticText): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure StaticText_Refresh(AObj: TStaticText); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure StaticText_ScreenToClient(AObj: TStaticText; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure StaticText_ParentToClient(AObj: TStaticText; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure StaticText_SendToBack(AObj: TStaticText); stdcall;
@@ -892,11 +912,15 @@ exports
   StaticText_SetFocus,
   StaticText_Update,
   StaticText_BringToFront,
+  StaticText_ClientToScreen,
+  StaticText_ClientToParent,
   StaticText_Dragging,
   StaticText_HasParent,
   StaticText_Hide,
   StaticText_Perform,
   StaticText_Refresh,
+  StaticText_ScreenToClient,
+  StaticText_ParentToClient,
   StaticText_SendToBack,
   StaticText_Show,
   StaticText_GetTextBuf,

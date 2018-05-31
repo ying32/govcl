@@ -136,6 +136,14 @@ func (m *TMemo) BringToFront() {
     Memo_BringToFront(m.instance)
 }
 
+func (m *TMemo) ClientToScreen(Point TPoint) TPoint {
+    return Memo_ClientToScreen(m.instance, Point)
+}
+
+func (m *TMemo) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Memo_ClientToParent(m.instance, Point , CheckPtr(AParent))
+}
+
 func (m *TMemo) Dragging() bool {
     return Memo_Dragging(m.instance)
 }
@@ -154,6 +162,14 @@ func (m *TMemo) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (m *TMemo) Refresh() {
     Memo_Refresh(m.instance)
+}
+
+func (m *TMemo) ScreenToClient(Point TPoint) TPoint {
+    return Memo_ScreenToClient(m.instance, Point)
+}
+
+func (m *TMemo) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Memo_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
 func (m *TMemo) SendToBack() {

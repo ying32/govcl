@@ -25,6 +25,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure SpeedButton_ClientToScreen(AObj: TSpeedButton; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure SpeedButton_ClientToParent(AObj: TSpeedButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function SpeedButton_Dragging(AObj: TSpeedButton): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -58,6 +68,16 @@ end;
 procedure SpeedButton_Repaint(AObj: TSpeedButton); stdcall;
 begin
   AObj.Repaint;
+end;
+
+procedure SpeedButton_ScreenToClient(AObj: TSpeedButton; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure SpeedButton_ParentToClient(AObj: TSpeedButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure SpeedButton_SendToBack(AObj: TSpeedButton); stdcall;
@@ -640,6 +660,8 @@ exports
   SpeedButton_Free,
   SpeedButton_Click,
   SpeedButton_BringToFront,
+  SpeedButton_ClientToScreen,
+  SpeedButton_ClientToParent,
   SpeedButton_Dragging,
   SpeedButton_HasParent,
   SpeedButton_Hide,
@@ -647,6 +669,8 @@ exports
   SpeedButton_Perform,
   SpeedButton_Refresh,
   SpeedButton_Repaint,
+  SpeedButton_ScreenToClient,
+  SpeedButton_ParentToClient,
   SpeedButton_SendToBack,
   SpeedButton_SetBounds,
   SpeedButton_Show,

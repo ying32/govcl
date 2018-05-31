@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure HotKey_ClientToScreen(AObj: THotKey; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure HotKey_ClientToParent(AObj: THotKey; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function HotKey_Dragging(AObj: THotKey): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure HotKey_Refresh(AObj: THotKey); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure HotKey_ScreenToClient(AObj: THotKey; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure HotKey_ParentToClient(AObj: THotKey; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure HotKey_SendToBack(AObj: THotKey); stdcall;
@@ -684,11 +704,15 @@ exports
   HotKey_SetFocus,
   HotKey_Update,
   HotKey_BringToFront,
+  HotKey_ClientToScreen,
+  HotKey_ClientToParent,
   HotKey_Dragging,
   HotKey_HasParent,
   HotKey_Hide,
   HotKey_Perform,
   HotKey_Refresh,
+  HotKey_ScreenToClient,
+  HotKey_ParentToClient,
   HotKey_SendToBack,
   HotKey_Show,
   HotKey_GetTextBuf,

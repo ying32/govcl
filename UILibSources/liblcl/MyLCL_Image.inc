@@ -20,6 +20,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Image_ClientToScreen(AObj: TImage; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Image_ClientToParent(AObj: TImage; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Image_Dragging(AObj: TImage): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -53,6 +63,16 @@ end;
 procedure Image_Repaint(AObj: TImage); extdecl;
 begin
   AObj.Repaint;
+end;
+
+procedure Image_ScreenToClient(AObj: TImage; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Image_ParentToClient(AObj: TImage; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Image_SendToBack(AObj: TImage); extdecl;
@@ -575,6 +595,8 @@ exports
   Image_Create,
   Image_Free,
   Image_BringToFront,
+  Image_ClientToScreen,
+  Image_ClientToParent,
   Image_Dragging,
   Image_HasParent,
   Image_Hide,
@@ -582,6 +604,8 @@ exports
   Image_Perform,
   Image_Refresh,
   Image_Repaint,
+  Image_ScreenToClient,
+  Image_ParentToClient,
   Image_SendToBack,
   Image_SetBounds,
   Image_Show,

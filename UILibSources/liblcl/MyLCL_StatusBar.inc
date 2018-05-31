@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure StatusBar_ClientToScreen(AObj: TStatusBar; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure StatusBar_ClientToParent(AObj: TStatusBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function StatusBar_Dragging(AObj: TStatusBar): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure StatusBar_Refresh(AObj: TStatusBar); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure StatusBar_ScreenToClient(AObj: TStatusBar; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure StatusBar_ParentToClient(AObj: TStatusBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure StatusBar_SendToBack(AObj: TStatusBar); extdecl;
@@ -821,11 +841,15 @@ exports
   StatusBar_SetFocus,
   StatusBar_Update,
   StatusBar_BringToFront,
+  StatusBar_ClientToScreen,
+  StatusBar_ClientToParent,
   StatusBar_Dragging,
   StatusBar_HasParent,
   StatusBar_Hide,
   StatusBar_Perform,
   StatusBar_Refresh,
+  StatusBar_ScreenToClient,
+  StatusBar_ParentToClient,
   StatusBar_SendToBack,
   StatusBar_Show,
   StatusBar_GetTextBuf,

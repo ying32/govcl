@@ -90,6 +90,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ListBox_ClientToScreen(AObj: TListBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ListBox_ClientToParent(AObj: TListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ListBox_Dragging(AObj: TListBox): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -113,6 +123,16 @@ end;
 procedure ListBox_Refresh(AObj: TListBox); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure ListBox_ScreenToClient(AObj: TListBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ListBox_ParentToClient(AObj: TListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ListBox_SendToBack(AObj: TListBox); extdecl;
@@ -893,11 +913,15 @@ exports
   ListBox_SetFocus,
   ListBox_Update,
   ListBox_BringToFront,
+  ListBox_ClientToScreen,
+  ListBox_ClientToParent,
   ListBox_Dragging,
   ListBox_HasParent,
   ListBox_Hide,
   ListBox_Perform,
   ListBox_Refresh,
+  ListBox_ScreenToClient,
+  ListBox_ParentToClient,
   ListBox_SendToBack,
   ListBox_Show,
   ListBox_GetTextBuf,

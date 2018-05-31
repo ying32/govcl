@@ -56,6 +56,14 @@ func (s *TSplitter) BringToFront() {
     Splitter_BringToFront(s.instance)
 }
 
+func (s *TSplitter) ClientToScreen(Point TPoint) TPoint {
+    return Splitter_ClientToScreen(s.instance, Point)
+}
+
+func (s *TSplitter) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Splitter_ClientToParent(s.instance, Point , CheckPtr(AParent))
+}
+
 func (s *TSplitter) Dragging() bool {
     return Splitter_Dragging(s.instance)
 }
@@ -82,6 +90,14 @@ func (s *TSplitter) Refresh() {
 
 func (s *TSplitter) Repaint() {
     Splitter_Repaint(s.instance)
+}
+
+func (s *TSplitter) ScreenToClient(Point TPoint) TPoint {
+    return Splitter_ScreenToClient(s.instance, Point)
+}
+
+func (s *TSplitter) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Splitter_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 func (s *TSplitter) SendToBack() {

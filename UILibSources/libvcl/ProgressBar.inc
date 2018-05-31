@@ -85,6 +85,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ProgressBar_ClientToScreen(AObj: TProgressBar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ProgressBar_ClientToParent(AObj: TProgressBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ProgressBar_Dragging(AObj: TProgressBar): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -108,6 +118,16 @@ end;
 procedure ProgressBar_Refresh(AObj: TProgressBar); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure ProgressBar_ScreenToClient(AObj: TProgressBar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ProgressBar_ParentToClient(AObj: TProgressBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ProgressBar_SendToBack(AObj: TProgressBar); stdcall;
@@ -894,11 +914,15 @@ exports
   ProgressBar_SetFocus,
   ProgressBar_Update,
   ProgressBar_BringToFront,
+  ProgressBar_ClientToScreen,
+  ProgressBar_ClientToParent,
   ProgressBar_Dragging,
   ProgressBar_HasParent,
   ProgressBar_Hide,
   ProgressBar_Perform,
   ProgressBar_Refresh,
+  ProgressBar_ScreenToClient,
+  ProgressBar_ParentToClient,
   ProgressBar_SendToBack,
   ProgressBar_Show,
   ProgressBar_GetTextBuf,

@@ -101,6 +101,14 @@ func (d *TDateTimePicker) BringToFront() {
     DateTimePicker_BringToFront(d.instance)
 }
 
+func (d *TDateTimePicker) ClientToScreen(Point TPoint) TPoint {
+    return DateTimePicker_ClientToScreen(d.instance, Point)
+}
+
+func (d *TDateTimePicker) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return DateTimePicker_ClientToParent(d.instance, Point , CheckPtr(AParent))
+}
+
 func (d *TDateTimePicker) Dragging() bool {
     return DateTimePicker_Dragging(d.instance)
 }
@@ -119,6 +127,14 @@ func (d *TDateTimePicker) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (d *TDateTimePicker) Refresh() {
     DateTimePicker_Refresh(d.instance)
+}
+
+func (d *TDateTimePicker) ScreenToClient(Point TPoint) TPoint {
+    return DateTimePicker_ScreenToClient(d.instance, Point)
+}
+
+func (d *TDateTimePicker) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return DateTimePicker_ParentToClient(d.instance, Point , CheckPtr(AParent))
 }
 
 func (d *TDateTimePicker) SendToBack() {

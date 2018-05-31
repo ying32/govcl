@@ -40,3 +40,4 @@
 | formEvents | 演示自动关联事件    |  |
 | gdiplustest | GDI+画渐变文字及半透明背景    | Windows |
 | gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
+| imageviewer |  一个图片浏览器 |   |

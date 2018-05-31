@@ -20,6 +20,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Splitter_ClientToScreen(AObj: TSplitter; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Splitter_ClientToParent(AObj: TSplitter; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Splitter_Dragging(AObj: TSplitter): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -53,6 +63,16 @@ end;
 procedure Splitter_Repaint(AObj: TSplitter); stdcall;
 begin
   AObj.Repaint;
+end;
+
+procedure Splitter_ScreenToClient(AObj: TSplitter; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Splitter_ParentToClient(AObj: TSplitter; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Splitter_SendToBack(AObj: TSplitter); stdcall;
@@ -447,6 +467,8 @@ exports
   Splitter_Create,
   Splitter_Free,
   Splitter_BringToFront,
+  Splitter_ClientToScreen,
+  Splitter_ClientToParent,
   Splitter_Dragging,
   Splitter_HasParent,
   Splitter_Hide,
@@ -454,6 +476,8 @@ exports
   Splitter_Perform,
   Splitter_Refresh,
   Splitter_Repaint,
+  Splitter_ScreenToClient,
+  Splitter_ParentToClient,
   Splitter_SendToBack,
   Splitter_SetBounds,
   Splitter_Show,

@@ -100,6 +100,14 @@ func (r *TRadioButton) BringToFront() {
     RadioButton_BringToFront(r.instance)
 }
 
+func (r *TRadioButton) ClientToScreen(Point TPoint) TPoint {
+    return RadioButton_ClientToScreen(r.instance, Point)
+}
+
+func (r *TRadioButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return RadioButton_ClientToParent(r.instance, Point , CheckPtr(AParent))
+}
+
 func (r *TRadioButton) Dragging() bool {
     return RadioButton_Dragging(r.instance)
 }
@@ -118,6 +126,14 @@ func (r *TRadioButton) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (r *TRadioButton) Refresh() {
     RadioButton_Refresh(r.instance)
+}
+
+func (r *TRadioButton) ScreenToClient(Point TPoint) TPoint {
+    return RadioButton_ScreenToClient(r.instance, Point)
+}
+
+func (r *TRadioButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return RadioButton_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
 func (r *TRadioButton) SendToBack() {

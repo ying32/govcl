@@ -20,6 +20,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Label_ClientToScreen(AObj: TLabel; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Label_ClientToParent(AObj: TLabel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Label_Dragging(AObj: TLabel): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -53,6 +63,16 @@ end;
 procedure Label_Repaint(AObj: TLabel); extdecl;
 begin
   AObj.Repaint;
+end;
+
+procedure Label_ScreenToClient(AObj: TLabel; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Label_ParentToClient(AObj: TLabel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Label_SendToBack(AObj: TLabel); extdecl;
@@ -647,6 +667,8 @@ exports
   Label_Create,
   Label_Free,
   Label_BringToFront,
+  Label_ClientToScreen,
+  Label_ClientToParent,
   Label_Dragging,
   Label_HasParent,
   Label_Hide,
@@ -654,6 +676,8 @@ exports
   Label_Perform,
   Label_Refresh,
   Label_Repaint,
+  Label_ScreenToClient,
+  Label_ParentToClient,
   Label_SendToBack,
   Label_SetBounds,
   Label_Show,

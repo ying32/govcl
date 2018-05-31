@@ -25,6 +25,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ImageButton_ClientToScreen(AObj: TImageButton; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ImageButton_ClientToParent(AObj: TImageButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ImageButton_Dragging(AObj: TImageButton): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -58,6 +68,16 @@ end;
 procedure ImageButton_Repaint(AObj: TImageButton); stdcall;
 begin
   AObj.Repaint;
+end;
+
+procedure ImageButton_ScreenToClient(AObj: TImageButton; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ImageButton_ParentToClient(AObj: TImageButton; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ImageButton_SendToBack(AObj: TImageButton); stdcall;
@@ -690,6 +710,8 @@ exports
   ImageButton_Free,
   ImageButton_Click,
   ImageButton_BringToFront,
+  ImageButton_ClientToScreen,
+  ImageButton_ClientToParent,
   ImageButton_Dragging,
   ImageButton_HasParent,
   ImageButton_Hide,
@@ -697,6 +719,8 @@ exports
   ImageButton_Perform,
   ImageButton_Refresh,
   ImageButton_Repaint,
+  ImageButton_ScreenToClient,
+  ImageButton_ParentToClient,
   ImageButton_SendToBack,
   ImageButton_SetBounds,
   ImageButton_Show,

@@ -100,6 +100,14 @@ func (r *TRadioGroup) BringToFront() {
     RadioGroup_BringToFront(r.instance)
 }
 
+func (r *TRadioGroup) ClientToScreen(Point TPoint) TPoint {
+    return RadioGroup_ClientToScreen(r.instance, Point)
+}
+
+func (r *TRadioGroup) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return RadioGroup_ClientToParent(r.instance, Point , CheckPtr(AParent))
+}
+
 func (r *TRadioGroup) Dragging() bool {
     return RadioGroup_Dragging(r.instance)
 }
@@ -118,6 +126,14 @@ func (r *TRadioGroup) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (r *TRadioGroup) Refresh() {
     RadioGroup_Refresh(r.instance)
+}
+
+func (r *TRadioGroup) ScreenToClient(Point TPoint) TPoint {
+    return RadioGroup_ScreenToClient(r.instance, Point)
+}
+
+func (r *TRadioGroup) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return RadioGroup_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
 func (r *TRadioGroup) SendToBack() {

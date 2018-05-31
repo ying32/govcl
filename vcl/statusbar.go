@@ -100,6 +100,14 @@ func (s *TStatusBar) BringToFront() {
     StatusBar_BringToFront(s.instance)
 }
 
+func (s *TStatusBar) ClientToScreen(Point TPoint) TPoint {
+    return StatusBar_ClientToScreen(s.instance, Point)
+}
+
+func (s *TStatusBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return StatusBar_ClientToParent(s.instance, Point , CheckPtr(AParent))
+}
+
 func (s *TStatusBar) Dragging() bool {
     return StatusBar_Dragging(s.instance)
 }
@@ -118,6 +126,14 @@ func (s *TStatusBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (s *TStatusBar) Refresh() {
     StatusBar_Refresh(s.instance)
+}
+
+func (s *TStatusBar) ScreenToClient(Point TPoint) TPoint {
+    return StatusBar_ScreenToClient(s.instance, Point)
+}
+
+func (s *TStatusBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return StatusBar_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 func (s *TStatusBar) SendToBack() {

@@ -85,6 +85,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure CategoryPanel_ClientToScreen(AObj: TCategoryPanel; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure CategoryPanel_ClientToParent(AObj: TCategoryPanel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function CategoryPanel_Dragging(AObj: TCategoryPanel): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -108,6 +118,16 @@ end;
 procedure CategoryPanel_Refresh(AObj: TCategoryPanel); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure CategoryPanel_ScreenToClient(AObj: TCategoryPanel; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure CategoryPanel_ParentToClient(AObj: TCategoryPanel; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure CategoryPanel_SendToBack(AObj: TCategoryPanel); stdcall;
@@ -994,11 +1014,15 @@ exports
   CategoryPanel_SetFocus,
   CategoryPanel_Update,
   CategoryPanel_BringToFront,
+  CategoryPanel_ClientToScreen,
+  CategoryPanel_ClientToParent,
   CategoryPanel_Dragging,
   CategoryPanel_HasParent,
   CategoryPanel_Hide,
   CategoryPanel_Perform,
   CategoryPanel_Refresh,
+  CategoryPanel_ScreenToClient,
+  CategoryPanel_ParentToClient,
   CategoryPanel_SendToBack,
   CategoryPanel_Show,
   CategoryPanel_GetTextBuf,

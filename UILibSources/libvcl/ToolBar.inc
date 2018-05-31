@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ToolBar_ClientToScreen(AObj: TToolBar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ToolBar_ClientToParent(AObj: TToolBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ToolBar_Dragging(AObj: TToolBar): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure ToolBar_Refresh(AObj: TToolBar); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure ToolBar_ScreenToClient(AObj: TToolBar; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ToolBar_ParentToClient(AObj: TToolBar; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ToolBar_SendToBack(AObj: TToolBar); stdcall;
@@ -1128,11 +1148,15 @@ exports
   ToolBar_SetFocus,
   ToolBar_Update,
   ToolBar_BringToFront,
+  ToolBar_ClientToScreen,
+  ToolBar_ClientToParent,
   ToolBar_Dragging,
   ToolBar_HasParent,
   ToolBar_Hide,
   ToolBar_Perform,
   ToolBar_Refresh,
+  ToolBar_ScreenToClient,
+  ToolBar_ParentToClient,
   ToolBar_SendToBack,
   ToolBar_Show,
   ToolBar_GetTextBuf,

@@ -60,6 +60,14 @@ func (i *TImageButton) BringToFront() {
     ImageButton_BringToFront(i.instance)
 }
 
+func (i *TImageButton) ClientToScreen(Point TPoint) TPoint {
+    return ImageButton_ClientToScreen(i.instance, Point)
+}
+
+func (i *TImageButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return ImageButton_ClientToParent(i.instance, Point , CheckPtr(AParent))
+}
+
 func (i *TImageButton) Dragging() bool {
     return ImageButton_Dragging(i.instance)
 }
@@ -86,6 +94,14 @@ func (i *TImageButton) Refresh() {
 
 func (i *TImageButton) Repaint() {
     ImageButton_Repaint(i.instance)
+}
+
+func (i *TImageButton) ScreenToClient(Point TPoint) TPoint {
+    return ImageButton_ScreenToClient(i.instance, Point)
+}
+
+func (i *TImageButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return ImageButton_ParentToClient(i.instance, Point , CheckPtr(AParent))
 }
 
 func (i *TImageButton) SendToBack() {

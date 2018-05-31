@@ -80,6 +80,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure BitBtn_ClientToScreen(AObj: TBitBtn; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure BitBtn_ClientToParent(AObj: TBitBtn; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function BitBtn_Dragging(AObj: TBitBtn): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -103,6 +113,16 @@ end;
 procedure BitBtn_Refresh(AObj: TBitBtn); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure BitBtn_ScreenToClient(AObj: TBitBtn; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure BitBtn_ParentToClient(AObj: TBitBtn; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure BitBtn_SendToBack(AObj: TBitBtn); stdcall;
@@ -1036,11 +1056,15 @@ exports
   BitBtn_SetFocus,
   BitBtn_Update,
   BitBtn_BringToFront,
+  BitBtn_ClientToScreen,
+  BitBtn_ClientToParent,
   BitBtn_Dragging,
   BitBtn_HasParent,
   BitBtn_Hide,
   BitBtn_Perform,
   BitBtn_Refresh,
+  BitBtn_ScreenToClient,
+  BitBtn_ParentToClient,
   BitBtn_SendToBack,
   BitBtn_Show,
   BitBtn_GetTextBuf,

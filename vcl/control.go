@@ -56,6 +56,14 @@ func (c *TControl) BringToFront() {
     Control_BringToFront(c.instance)
 }
 
+func (c *TControl) ClientToScreen(Point TPoint) TPoint {
+    return Control_ClientToScreen(c.instance, Point)
+}
+
+func (c *TControl) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Control_ClientToParent(c.instance, Point , CheckPtr(AParent))
+}
+
 func (c *TControl) Dragging() bool {
     return Control_Dragging(c.instance)
 }
@@ -82,6 +90,14 @@ func (c *TControl) Refresh() {
 
 func (c *TControl) Repaint() {
     Control_Repaint(c.instance)
+}
+
+func (c *TControl) ScreenToClient(Point TPoint) TPoint {
+    return Control_ScreenToClient(c.instance, Point)
+}
+
+func (c *TControl) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Control_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 func (c *TControl) SendToBack() {

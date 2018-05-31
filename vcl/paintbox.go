@@ -56,6 +56,14 @@ func (p *TPaintBox) BringToFront() {
     PaintBox_BringToFront(p.instance)
 }
 
+func (p *TPaintBox) ClientToScreen(Point TPoint) TPoint {
+    return PaintBox_ClientToScreen(p.instance, Point)
+}
+
+func (p *TPaintBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return PaintBox_ClientToParent(p.instance, Point , CheckPtr(AParent))
+}
+
 func (p *TPaintBox) Dragging() bool {
     return PaintBox_Dragging(p.instance)
 }
@@ -82,6 +90,14 @@ func (p *TPaintBox) Refresh() {
 
 func (p *TPaintBox) Repaint() {
     PaintBox_Repaint(p.instance)
+}
+
+func (p *TPaintBox) ScreenToClient(Point TPoint) TPoint {
+    return PaintBox_ScreenToClient(p.instance, Point)
+}
+
+func (p *TPaintBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return PaintBox_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
 func (p *TPaintBox) SendToBack() {

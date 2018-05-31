@@ -56,6 +56,14 @@ func (b *TBevel) BringToFront() {
     Bevel_BringToFront(b.instance)
 }
 
+func (b *TBevel) ClientToScreen(Point TPoint) TPoint {
+    return Bevel_ClientToScreen(b.instance, Point)
+}
+
+func (b *TBevel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Bevel_ClientToParent(b.instance, Point , CheckPtr(AParent))
+}
+
 func (b *TBevel) Dragging() bool {
     return Bevel_Dragging(b.instance)
 }
@@ -82,6 +90,14 @@ func (b *TBevel) Refresh() {
 
 func (b *TBevel) Repaint() {
     Bevel_Repaint(b.instance)
+}
+
+func (b *TBevel) ScreenToClient(Point TPoint) TPoint {
+    return Bevel_ScreenToClient(b.instance, Point)
+}
+
+func (b *TBevel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Bevel_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
 func (b *TBevel) SendToBack() {

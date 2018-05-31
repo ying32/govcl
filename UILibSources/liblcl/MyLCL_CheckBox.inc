@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure CheckBox_ClientToScreen(AObj: TCheckBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure CheckBox_ClientToParent(AObj: TCheckBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function CheckBox_Dragging(AObj: TCheckBox): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure CheckBox_Refresh(AObj: TCheckBox); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure CheckBox_ScreenToClient(AObj: TCheckBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure CheckBox_ParentToClient(AObj: TCheckBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure CheckBox_SendToBack(AObj: TCheckBox); extdecl;
@@ -796,11 +816,15 @@ exports
   CheckBox_SetFocus,
   CheckBox_Update,
   CheckBox_BringToFront,
+  CheckBox_ClientToScreen,
+  CheckBox_ClientToParent,
   CheckBox_Dragging,
   CheckBox_HasParent,
   CheckBox_Hide,
   CheckBox_Perform,
   CheckBox_Refresh,
+  CheckBox_ScreenToClient,
+  CheckBox_ParentToClient,
   CheckBox_SendToBack,
   CheckBox_Show,
   CheckBox_GetTextBuf,

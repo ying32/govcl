@@ -185,8 +185,7 @@ end;
 function TImageButton.CanAutoSize(var NewWidth, NewHeight: Integer): Boolean;
 begin
   Result := True;
-  if not (csDesigning in ComponentState) or (Picture.Width > 0) and
-    (Picture.Height > 0) then
+  if (FPicture.Graphic <> nil) and ((FPicture.Width > 0) and (FPicture.Height > 0)) then
   begin
     if Align in [alNone, alLeft, alRight] then
       NewWidth := FPicture.Width div FImageCount;
@@ -280,8 +279,10 @@ begin
     Exit;
   end;
   R := ClientRect;
-  LNewHeight := FPicture.Height;
-  LNewWidth := FPicture.Width div FImageCount;
+  LNewWidth := Width;
+  LNewHeight := Height;
+  if (LNewWidth = 0) or (LNewHeight = 0) then
+    Exit;
   case FState of
     bsNormal :
        PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight));
@@ -301,7 +302,9 @@ begin
       end;
     bsDisabled :
       begin
-        if FImageCount > 0 then
+        if FImageCount = 4 then
+          PngBrushCopy(R, Rect(LNewWidth * 2, 0, LNewWidth * 4, LNewHeight))
+        else  if FImageCount > 0 then
           PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
       end;
   end;
@@ -310,8 +313,7 @@ end;
 
 procedure TImageButton.ResetSize;
 begin
-  if not (csDesigning in ComponentState) or (Picture.Width > 0) and
-    (Picture.Height > 0) then
+  if (FPicture.Graphic <> nil) and ((FPicture.Width > 0) and (FPicture.Height > 0)) then
   begin
     if Align in [alNone, alLeft, alRight] then
       Width := FPicture.Width div FImageCount;

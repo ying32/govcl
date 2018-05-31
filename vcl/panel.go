@@ -100,6 +100,14 @@ func (p *TPanel) BringToFront() {
     Panel_BringToFront(p.instance)
 }
 
+func (p *TPanel) ClientToScreen(Point TPoint) TPoint {
+    return Panel_ClientToScreen(p.instance, Point)
+}
+
+func (p *TPanel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return Panel_ClientToParent(p.instance, Point , CheckPtr(AParent))
+}
+
 func (p *TPanel) Dragging() bool {
     return Panel_Dragging(p.instance)
 }
@@ -118,6 +126,14 @@ func (p *TPanel) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (p *TPanel) Refresh() {
     Panel_Refresh(p.instance)
+}
+
+func (p *TPanel) ScreenToClient(Point TPoint) TPoint {
+    return Panel_ScreenToClient(p.instance, Point)
+}
+
+func (p *TPanel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return Panel_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
 func (p *TPanel) SendToBack() {

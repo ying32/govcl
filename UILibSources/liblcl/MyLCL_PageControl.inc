@@ -85,6 +85,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure PageControl_ClientToScreen(AObj: TPageControl; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure PageControl_ClientToParent(AObj: TPageControl; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function PageControl_Dragging(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -108,6 +118,16 @@ end;
 procedure PageControl_Refresh(AObj: TPageControl); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure PageControl_ScreenToClient(AObj: TPageControl; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure PageControl_ParentToClient(AObj: TPageControl; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure PageControl_SendToBack(AObj: TPageControl); extdecl;
@@ -854,11 +874,15 @@ exports
   PageControl_SetFocus,
   PageControl_Update,
   PageControl_BringToFront,
+  PageControl_ClientToScreen,
+  PageControl_ClientToParent,
   PageControl_Dragging,
   PageControl_HasParent,
   PageControl_Hide,
   PageControl_Perform,
   PageControl_Refresh,
+  PageControl_ScreenToClient,
+  PageControl_ParentToClient,
   PageControl_SendToBack,
   PageControl_Show,
   PageControl_GetTextBuf,

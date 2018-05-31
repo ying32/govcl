@@ -144,6 +144,14 @@ func (m *TMaskEdit) BringToFront() {
     MaskEdit_BringToFront(m.instance)
 }
 
+func (m *TMaskEdit) ClientToScreen(Point TPoint) TPoint {
+    return MaskEdit_ClientToScreen(m.instance, Point)
+}
+
+func (m *TMaskEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return MaskEdit_ClientToParent(m.instance, Point , CheckPtr(AParent))
+}
+
 func (m *TMaskEdit) Dragging() bool {
     return MaskEdit_Dragging(m.instance)
 }
@@ -162,6 +170,14 @@ func (m *TMaskEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (m *TMaskEdit) Refresh() {
     MaskEdit_Refresh(m.instance)
+}
+
+func (m *TMaskEdit) ScreenToClient(Point TPoint) TPoint {
+    return MaskEdit_ScreenToClient(m.instance, Point)
+}
+
+func (m *TMaskEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return MaskEdit_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
 func (m *TMaskEdit) SendToBack() {

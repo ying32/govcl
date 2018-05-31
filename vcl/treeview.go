@@ -156,6 +156,14 @@ func (t *TTreeView) BringToFront() {
     TreeView_BringToFront(t.instance)
 }
 
+func (t *TTreeView) ClientToScreen(Point TPoint) TPoint {
+    return TreeView_ClientToScreen(t.instance, Point)
+}
+
+func (t *TTreeView) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return TreeView_ClientToParent(t.instance, Point , CheckPtr(AParent))
+}
+
 func (t *TTreeView) Dragging() bool {
     return TreeView_Dragging(t.instance)
 }
@@ -174,6 +182,14 @@ func (t *TTreeView) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (t *TTreeView) Refresh() {
     TreeView_Refresh(t.instance)
+}
+
+func (t *TTreeView) ScreenToClient(Point TPoint) TPoint {
+    return TreeView_ScreenToClient(t.instance, Point)
+}
+
+func (t *TTreeView) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return TreeView_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
 func (t *TTreeView) SendToBack() {

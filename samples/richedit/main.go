@@ -6,6 +6,7 @@ import (
 	"gitee.com/ying32/govcl/vcl"
 	"gitee.com/ying32/govcl/vcl/rtl"
 	"gitee.com/ying32/govcl/vcl/types"
+	"gitee.com/ying32/govcl/vcl/types/colors"
 )
 
 var (
@@ -29,7 +30,7 @@ func main() {
 	richEdit.Lines().Add("这是一段文字红色，粗体，斜體")
 	richEdit.SetSelStart(6)
 	richEdit.SetSelLength(2)
-	richEdit.SelAttributes().SetColor(types.ClRed)
+	richEdit.SelAttributes().SetColor(colors.ClRed)
 
 	richEdit.SetSelStart(9)
 	richEdit.SetSelLength(2)

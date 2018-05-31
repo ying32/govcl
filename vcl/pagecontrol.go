@@ -112,6 +112,14 @@ func (p *TPageControl) BringToFront() {
     PageControl_BringToFront(p.instance)
 }
 
+func (p *TPageControl) ClientToScreen(Point TPoint) TPoint {
+    return PageControl_ClientToScreen(p.instance, Point)
+}
+
+func (p *TPageControl) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return PageControl_ClientToParent(p.instance, Point , CheckPtr(AParent))
+}
+
 func (p *TPageControl) Dragging() bool {
     return PageControl_Dragging(p.instance)
 }
@@ -130,6 +138,14 @@ func (p *TPageControl) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (p *TPageControl) Refresh() {
     PageControl_Refresh(p.instance)
+}
+
+func (p *TPageControl) ScreenToClient(Point TPoint) TPoint {
+    return PageControl_ScreenToClient(p.instance, Point)
+}
+
+func (p *TPageControl) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return PageControl_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
 func (p *TPageControl) SendToBack() {

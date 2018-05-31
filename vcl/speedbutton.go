@@ -60,6 +60,14 @@ func (s *TSpeedButton) BringToFront() {
     SpeedButton_BringToFront(s.instance)
 }
 
+func (s *TSpeedButton) ClientToScreen(Point TPoint) TPoint {
+    return SpeedButton_ClientToScreen(s.instance, Point)
+}
+
+func (s *TSpeedButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return SpeedButton_ClientToParent(s.instance, Point , CheckPtr(AParent))
+}
+
 func (s *TSpeedButton) Dragging() bool {
     return SpeedButton_Dragging(s.instance)
 }
@@ -86,6 +94,14 @@ func (s *TSpeedButton) Refresh() {
 
 func (s *TSpeedButton) Repaint() {
     SpeedButton_Repaint(s.instance)
+}
+
+func (s *TSpeedButton) ScreenToClient(Point TPoint) TPoint {
+    return SpeedButton_ScreenToClient(s.instance, Point)
+}
+
+func (s *TSpeedButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return SpeedButton_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 func (s *TSpeedButton) SendToBack() {

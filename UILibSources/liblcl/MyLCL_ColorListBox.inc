@@ -90,6 +90,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure ColorListBox_ClientToScreen(AObj: TColorListBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ColorListBox_ClientToParent(AObj: TColorListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function ColorListBox_Dragging(AObj: TColorListBox): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -113,6 +123,16 @@ end;
 procedure ColorListBox_Refresh(AObj: TColorListBox); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure ColorListBox_ScreenToClient(AObj: TColorListBox; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ColorListBox_ParentToClient(AObj: TColorListBox; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure ColorListBox_SendToBack(AObj: TColorListBox); extdecl;
@@ -851,11 +871,15 @@ exports
   ColorListBox_SetFocus,
   ColorListBox_Update,
   ColorListBox_BringToFront,
+  ColorListBox_ClientToScreen,
+  ColorListBox_ClientToParent,
   ColorListBox_Dragging,
   ColorListBox_HasParent,
   ColorListBox_Hide,
   ColorListBox_Perform,
   ColorListBox_Refresh,
+  ColorListBox_ScreenToClient,
+  ColorListBox_ParentToClient,
   ColorListBox_SendToBack,
   ColorListBox_Show,
   ColorListBox_GetTextBuf,

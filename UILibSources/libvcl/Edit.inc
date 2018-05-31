@@ -120,6 +120,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure Edit_ClientToScreen(AObj: TEdit; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure Edit_ClientToParent(AObj: TEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function Edit_Dragging(AObj: TEdit): LongBool; stdcall;
 begin
   Result :=  AObj.Dragging;
@@ -143,6 +153,16 @@ end;
 procedure Edit_Refresh(AObj: TEdit); stdcall;
 begin
   AObj.Refresh;
+end;
+
+procedure Edit_ScreenToClient(AObj: TEdit; var Point: TPoint; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure Edit_ParentToClient(AObj: TEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure Edit_SendToBack(AObj: TEdit); stdcall;
@@ -1123,11 +1143,15 @@ exports
   Edit_SetFocus,
   Edit_Update,
   Edit_BringToFront,
+  Edit_ClientToScreen,
+  Edit_ClientToParent,
   Edit_Dragging,
   Edit_HasParent,
   Edit_Hide,
   Edit_Perform,
   Edit_Refresh,
+  Edit_ScreenToClient,
+  Edit_ParentToClient,
   Edit_SendToBack,
   Edit_Show,
   Edit_GetTextBuf,

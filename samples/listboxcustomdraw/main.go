@@ -4,6 +4,7 @@ import (
 	"gitee.com/ying32/govcl/vcl"
 	"gitee.com/ying32/govcl/vcl/rtl"
 	"gitee.com/ying32/govcl/vcl/types"
+	"gitee.com/ying32/govcl/vcl/types/colors"
 )
 
 func main() {
@@ -38,17 +39,17 @@ func main() {
 		s := listbox.Items().Strings(index)
 		fw := canvas.TextWidth(s)
 		fh := canvas.TextHeight(s)
-		canvas.Font().SetColor(types.ClBlack)
-		canvas.Brush().SetColor(types.ClBtnFace)
+		canvas.Font().SetColor(colors.ClBlack)
+		canvas.Brush().SetColor(colors.ClBtnFace)
 		canvas.FillRect(aRect)
 		canvas.Brush().SetColor(0x00FFF7F7)
-		canvas.Pen().SetColor(types.ClSkyblue)
+		canvas.Pen().SetColor(colors.ClSkyblue)
 		canvas.Rectangle(aRect.Left+1, aRect.Top+1, aRect.Right-1, aRect.Bottom-1)
 		canvas.Rectangle(aRect.Left, aRect.Top, aRect.Right, aRect.Bottom)
 		if rtl.InSets(uint32(state), types.OdSelected) {
 			canvas.Brush().SetColor(0x00FFB2B5)
 			canvas.Rectangle(aRect.Left+1, aRect.Top+1, aRect.Right-1, aRect.Bottom-1)
-			canvas.Font().SetColor(types.ClBlue)
+			canvas.Font().SetColor(colors.ClBlue)
 			if rtl.InSets(uint32(state), types.OdFocused) {
 				canvas.DrawFocusRect(aRect)
 			}

@@ -75,6 +75,16 @@ begin
   AObj.BringToFront;
 end;
 
+procedure TabSheet_ClientToScreen(AObj: TTabSheet; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure TabSheet_ClientToParent(AObj: TTabSheet; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
 function TabSheet_Dragging(AObj: TTabSheet): LongBool; extdecl;
 begin
   Result :=  AObj.Dragging;
@@ -98,6 +108,16 @@ end;
 procedure TabSheet_Refresh(AObj: TTabSheet); extdecl;
 begin
   AObj.Refresh;
+end;
+
+procedure TabSheet_ScreenToClient(AObj: TTabSheet; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure TabSheet_ParentToClient(AObj: TTabSheet; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
 end;
 
 procedure TabSheet_SendToBack(AObj: TTabSheet); extdecl;
@@ -749,11 +769,15 @@ exports
   TabSheet_SetFocus,
   TabSheet_Update,
   TabSheet_BringToFront,
+  TabSheet_ClientToScreen,
+  TabSheet_ClientToParent,
   TabSheet_Dragging,
   TabSheet_HasParent,
   TabSheet_Hide,
   TabSheet_Perform,
   TabSheet_Refresh,
+  TabSheet_ScreenToClient,
+  TabSheet_ParentToClient,
   TabSheet_SendToBack,
   TabSheet_Show,
   TabSheet_GetTextBuf,

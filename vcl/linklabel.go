@@ -100,6 +100,14 @@ func (l *TLinkLabel) BringToFront() {
     LinkLabel_BringToFront(l.instance)
 }
 
+func (l *TLinkLabel) ClientToScreen(Point TPoint) TPoint {
+    return LinkLabel_ClientToScreen(l.instance, Point)
+}
+
+func (l *TLinkLabel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+    return LinkLabel_ClientToParent(l.instance, Point , CheckPtr(AParent))
+}
+
 func (l *TLinkLabel) Dragging() bool {
     return LinkLabel_Dragging(l.instance)
 }
@@ -118,6 +126,14 @@ func (l *TLinkLabel) Perform(Msg uint32, WParam uintptr, LParam int) int {
 
 func (l *TLinkLabel) Refresh() {
     LinkLabel_Refresh(l.instance)
+}
+
+func (l *TLinkLabel) ScreenToClient(Point TPoint) TPoint {
+    return LinkLabel_ScreenToClient(l.instance, Point)
+}
+
+func (l *TLinkLabel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+    return LinkLabel_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
 func (l *TLinkLabel) SendToBack() {
