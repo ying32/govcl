@@ -16,3 +16,7 @@ func (a *TApplication) SetFormScaled(val bool) {
 func (a *TApplication) Run() {
 	Application_Run(a.instance)
 }
+
+func (a *TApplication) Initialize() {
+	Application_Initialize(a.instance)
+}

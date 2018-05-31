@@ -30,6 +30,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function StaticText_HandleAllocated(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure StaticText_Invalidate(AObj: TStaticText); extdecl;
 begin
   AObj.Invalidate;
@@ -68,6 +73,11 @@ end;
 procedure StaticText_BringToFront(AObj: TStaticText); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function StaticText_Dragging(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function StaticText_HasParent(AObj: TStaticText): LongBool; extdecl;
@@ -235,6 +245,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function StaticText_GetDragCursor(AObj: TStaticText): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure StaticText_SetDragCursor(AObj: TStaticText; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function StaticText_GetDragKind(AObj: TStaticText): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure StaticText_SetDragKind(AObj: TStaticText; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function StaticText_GetDragMode(AObj: TStaticText): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure StaticText_SetDragMode(AObj: TStaticText; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function StaticText_GetEnabled(AObj: TStaticText): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -367,6 +407,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure StaticText_SetOnContextPopup(AObj: TStaticText; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure StaticText_SetOnDblClick(AObj: TStaticText; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -377,6 +429,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure StaticText_SetOnDragDrop(AObj: TStaticText; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure StaticText_SetOnDragOver(AObj: TStaticText; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure StaticText_SetOnEndDrag(AObj: TStaticText; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure StaticText_SetOnMouseDown(AObj: TStaticText; AEventId: NativeUInt); extdecl;
@@ -439,6 +527,16 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function StaticText_GetDockSite(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure StaticText_SetDockSite(AObj: TStaticText; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function StaticText_GetBrush(AObj: TStaticText): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -462,6 +560,16 @@ end;
 procedure StaticText_SetParentWindow(AObj: TStaticText; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function StaticText_GetUseDockManager(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure StaticText_SetUseDockManager(AObj: TStaticText; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function StaticText_GetAction(AObj: TStaticText): TBasicAction; extdecl;
@@ -507,6 +615,11 @@ end;
 procedure StaticText_SetClientWidth(AObj: TStaticText; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function StaticText_GetFloating(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function StaticText_GetParent(AObj: TStaticText): TWinControl; extdecl;
@@ -636,6 +749,7 @@ exports
   StaticText_CanFocus,
   StaticText_FlipChildren,
   StaticText_Focused,
+  StaticText_HandleAllocated,
   StaticText_Invalidate,
   StaticText_Realign,
   StaticText_Repaint,
@@ -644,6 +758,7 @@ exports
   StaticText_SetFocus,
   StaticText_Update,
   StaticText_BringToFront,
+  StaticText_Dragging,
   StaticText_HasParent,
   StaticText_Hide,
   StaticText_Perform,
@@ -677,6 +792,12 @@ exports
   StaticText_SetColor,
   StaticText_GetDoubleBuffered,
   StaticText_SetDoubleBuffered,
+  StaticText_GetDragCursor,
+  StaticText_SetDragCursor,
+  StaticText_GetDragKind,
+  StaticText_SetDragKind,
+  StaticText_GetDragMode,
+  StaticText_SetDragMode,
   StaticText_GetEnabled,
   StaticText_SetEnabled,
   StaticText_GetFont,
@@ -702,17 +823,25 @@ exports
   StaticText_GetVisible,
   StaticText_SetVisible,
   StaticText_SetOnClick,
+  StaticText_SetOnContextPopup,
   StaticText_SetOnDblClick,
+  StaticText_SetOnDragDrop,
+  StaticText_SetOnDragOver,
+  StaticText_SetOnEndDrag,
   StaticText_SetOnMouseDown,
   StaticText_SetOnMouseEnter,
   StaticText_SetOnMouseLeave,
   StaticText_SetOnMouseMove,
   StaticText_SetOnMouseUp,
+  StaticText_GetDockSite,
+  StaticText_SetDockSite,
   StaticText_GetBrush,
   StaticText_GetControlCount,
   StaticText_GetHandle,
   StaticText_GetParentWindow,
   StaticText_SetParentWindow,
+  StaticText_GetUseDockManager,
+  StaticText_SetUseDockManager,
   StaticText_GetAction,
   StaticText_SetAction,
   StaticText_GetBoundsRect,
@@ -722,6 +851,7 @@ exports
   StaticText_GetClientRect,
   StaticText_GetClientWidth,
   StaticText_SetClientWidth,
+  StaticText_GetFloating,
   StaticText_GetParent,
   StaticText_SetParent,
   StaticText_GetLeft,

@@ -56,6 +56,10 @@ func (s *TSplitter) BringToFront() {
     Splitter_BringToFront(s.instance)
 }
 
+func (s *TSplitter) Dragging() bool {
+    return Splitter_Dragging(s.instance)
+}
+
 func (s *TSplitter) HasParent() bool {
     return Splitter_HasParent(s.instance)
 }
@@ -270,6 +274,10 @@ func (s *TSplitter) ExplicitWidth() int32 {
 
 func (s *TSplitter) ExplicitHeight() int32 {
     return Splitter_GetExplicitHeight(s.instance)
+}
+
+func (s *TSplitter) Floating() bool {
+    return Splitter_GetFloating(s.instance)
 }
 
 func (s *TSplitter) ShowHint() bool {

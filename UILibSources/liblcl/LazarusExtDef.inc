@@ -7,6 +7,7 @@ type
   TPngImage = type TPortableNetworkGraphic;
   TMonthCalendar = type TCalendar;
   TJPEGPixelFormat = TPixelFormat;
+  TPageMeasureUnits = type TMeasureUnits;
 
   // 重定一个，主要是为了修改相关默认
   TGoForm = class(TForm)

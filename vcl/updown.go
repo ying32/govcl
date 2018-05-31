@@ -100,6 +100,10 @@ func (u *TUpDown) BringToFront() {
     UpDown_BringToFront(u.instance)
 }
 
+func (u *TUpDown) Dragging() bool {
+    return UpDown_Dragging(u.instance)
+}
+
 func (u *TUpDown) HasParent() bool {
     return UpDown_HasParent(u.instance)
 }
@@ -296,6 +300,10 @@ func (u *TUpDown) SetStyleElements(value TStyleElements) {
     UpDown_SetStyleElements(u.instance, value)
 }
 
+func (u *TUpDown) SetOnContextPopup(fn TContextPopupEvent) {
+    UpDown_SetOnContextPopup(u.instance, fn)
+}
+
 func (u *TUpDown) SetOnClick(fn TUDClickEvent) {
     UpDown_SetOnClick(u.instance, fn)
 }
@@ -328,6 +336,14 @@ func (u *TUpDown) SetOnMouseUp(fn TMouseEvent) {
     UpDown_SetOnMouseUp(u.instance, fn)
 }
 
+func (u *TUpDown) DockSite() bool {
+    return UpDown_GetDockSite(u.instance)
+}
+
+func (u *TUpDown) SetDockSite(value bool) {
+    UpDown_SetDockSite(u.instance, value)
+}
+
 func (u *TUpDown) Brush() *TBrush {
     return BrushFromInst(UpDown_GetBrush(u.instance))
 }
@@ -346,6 +362,14 @@ func (u *TUpDown) ParentWindow() HWND {
 
 func (u *TUpDown) SetParentWindow(value HWND) {
     UpDown_SetParentWindow(u.instance, value)
+}
+
+func (u *TUpDown) UseDockManager() bool {
+    return UpDown_GetUseDockManager(u.instance)
+}
+
+func (u *TUpDown) SetUseDockManager(value bool) {
+    UpDown_SetUseDockManager(u.instance, value)
 }
 
 func (u *TUpDown) Action() *TAction {
@@ -414,6 +438,10 @@ func (u *TUpDown) ExplicitWidth() int32 {
 
 func (u *TUpDown) ExplicitHeight() int32 {
     return UpDown_GetExplicitHeight(u.instance)
+}
+
+func (u *TUpDown) Floating() bool {
+    return UpDown_GetFloating(u.instance)
 }
 
 func (u *TUpDown) Parent() *TControl {

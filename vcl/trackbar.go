@@ -104,6 +104,10 @@ func (t *TTrackBar) BringToFront() {
     TrackBar_BringToFront(t.instance)
 }
 
+func (t *TTrackBar) Dragging() bool {
+    return TrackBar_Dragging(t.instance)
+}
+
 func (t *TTrackBar) HasParent() bool {
     return TrackBar_HasParent(t.instance)
 }
@@ -194,6 +198,30 @@ func (t *TTrackBar) DoubleBuffered() bool {
 
 func (t *TTrackBar) SetDoubleBuffered(value bool) {
     TrackBar_SetDoubleBuffered(t.instance, value)
+}
+
+func (t *TTrackBar) DragCursor() TCursor {
+    return TrackBar_GetDragCursor(t.instance)
+}
+
+func (t *TTrackBar) SetDragCursor(value TCursor) {
+    TrackBar_SetDragCursor(t.instance, value)
+}
+
+func (t *TTrackBar) DragKind() TDragKind {
+    return TrackBar_GetDragKind(t.instance)
+}
+
+func (t *TTrackBar) SetDragKind(value TDragKind) {
+    TrackBar_SetDragKind(t.instance, value)
+}
+
+func (t *TTrackBar) DragMode() TDragMode {
+    return TrackBar_GetDragMode(t.instance)
+}
+
+func (t *TTrackBar) SetDragMode(value TDragMode) {
+    TrackBar_SetDragMode(t.instance, value)
 }
 
 func (t *TTrackBar) Enabled() bool {
@@ -396,8 +424,28 @@ func (t *TTrackBar) SetStyleElements(value TStyleElements) {
     TrackBar_SetStyleElements(t.instance, value)
 }
 
+func (t *TTrackBar) SetOnContextPopup(fn TContextPopupEvent) {
+    TrackBar_SetOnContextPopup(t.instance, fn)
+}
+
 func (t *TTrackBar) SetOnChange(fn TNotifyEvent) {
     TrackBar_SetOnChange(t.instance, fn)
+}
+
+func (t *TTrackBar) SetOnDragDrop(fn TDragDropEvent) {
+    TrackBar_SetOnDragDrop(t.instance, fn)
+}
+
+func (t *TTrackBar) SetOnDragOver(fn TDragOverEvent) {
+    TrackBar_SetOnDragOver(t.instance, fn)
+}
+
+func (t *TTrackBar) SetOnEndDock(fn TEndDragEvent) {
+    TrackBar_SetOnEndDock(t.instance, fn)
+}
+
+func (t *TTrackBar) SetOnEndDrag(fn TEndDragEvent) {
+    TrackBar_SetOnEndDrag(t.instance, fn)
 }
 
 func (t *TTrackBar) SetOnEnter(fn TNotifyEvent) {
@@ -420,6 +468,18 @@ func (t *TTrackBar) SetOnKeyUp(fn TKeyEvent) {
     TrackBar_SetOnKeyUp(t.instance, fn)
 }
 
+func (t *TTrackBar) SetOnStartDock(fn TStartDockEvent) {
+    TrackBar_SetOnStartDock(t.instance, fn)
+}
+
+func (t *TTrackBar) DockSite() bool {
+    return TrackBar_GetDockSite(t.instance)
+}
+
+func (t *TTrackBar) SetDockSite(value bool) {
+    TrackBar_SetDockSite(t.instance, value)
+}
+
 func (t *TTrackBar) Brush() *TBrush {
     return BrushFromInst(TrackBar_GetBrush(t.instance))
 }
@@ -438,6 +498,14 @@ func (t *TTrackBar) ParentWindow() HWND {
 
 func (t *TTrackBar) SetParentWindow(value HWND) {
     TrackBar_SetParentWindow(t.instance, value)
+}
+
+func (t *TTrackBar) UseDockManager() bool {
+    return TrackBar_GetUseDockManager(t.instance)
+}
+
+func (t *TTrackBar) SetUseDockManager(value bool) {
+    TrackBar_SetUseDockManager(t.instance, value)
 }
 
 func (t *TTrackBar) Action() *TAction {
@@ -498,6 +566,10 @@ func (t *TTrackBar) ExplicitWidth() int32 {
 
 func (t *TTrackBar) ExplicitHeight() int32 {
     return TrackBar_GetExplicitHeight(t.instance)
+}
+
+func (t *TTrackBar) Floating() bool {
+    return TrackBar_GetFloating(t.instance)
 }
 
 func (t *TTrackBar) Parent() *TControl {

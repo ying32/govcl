@@ -136,6 +136,10 @@ func (e *TEdit) BringToFront() {
     Edit_BringToFront(e.instance)
 }
 
+func (e *TEdit) Dragging() bool {
+    return Edit_Dragging(e.instance)
+}
+
 func (e *TEdit) HasParent() bool {
     return Edit_HasParent(e.instance)
 }
@@ -298,6 +302,30 @@ func (e *TEdit) DoubleBuffered() bool {
 
 func (e *TEdit) SetDoubleBuffered(value bool) {
     Edit_SetDoubleBuffered(e.instance, value)
+}
+
+func (e *TEdit) DragCursor() TCursor {
+    return Edit_GetDragCursor(e.instance)
+}
+
+func (e *TEdit) SetDragCursor(value TCursor) {
+    Edit_SetDragCursor(e.instance, value)
+}
+
+func (e *TEdit) DragKind() TDragKind {
+    return Edit_GetDragKind(e.instance)
+}
+
+func (e *TEdit) SetDragKind(value TDragKind) {
+    Edit_SetDragKind(e.instance, value)
+}
+
+func (e *TEdit) DragMode() TDragMode {
+    return Edit_GetDragMode(e.instance)
+}
+
+func (e *TEdit) SetDragMode(value TDragMode) {
+    Edit_SetDragMode(e.instance, value)
 }
 
 func (e *TEdit) Enabled() bool {
@@ -468,8 +496,28 @@ func (e *TEdit) SetOnClick(fn TNotifyEvent) {
     Edit_SetOnClick(e.instance, fn)
 }
 
+func (e *TEdit) SetOnContextPopup(fn TContextPopupEvent) {
+    Edit_SetOnContextPopup(e.instance, fn)
+}
+
 func (e *TEdit) SetOnDblClick(fn TNotifyEvent) {
     Edit_SetOnDblClick(e.instance, fn)
+}
+
+func (e *TEdit) SetOnDragDrop(fn TDragDropEvent) {
+    Edit_SetOnDragDrop(e.instance, fn)
+}
+
+func (e *TEdit) SetOnDragOver(fn TDragOverEvent) {
+    Edit_SetOnDragOver(e.instance, fn)
+}
+
+func (e *TEdit) SetOnEndDock(fn TEndDragEvent) {
+    Edit_SetOnEndDock(e.instance, fn)
+}
+
+func (e *TEdit) SetOnEndDrag(fn TEndDragEvent) {
+    Edit_SetOnEndDrag(e.instance, fn)
 }
 
 func (e *TEdit) SetOnEnter(fn TNotifyEvent) {
@@ -512,6 +560,10 @@ func (e *TEdit) SetOnMouseUp(fn TMouseEvent) {
     Edit_SetOnMouseUp(e.instance, fn)
 }
 
+func (e *TEdit) SetOnStartDock(fn TStartDockEvent) {
+    Edit_SetOnStartDock(e.instance, fn)
+}
+
 func (e *TEdit) CanUndo() bool {
     return Edit_GetCanUndo(e.instance)
 }
@@ -548,6 +600,14 @@ func (e *TEdit) SetSelText(value string) {
     Edit_SetSelText(e.instance, value)
 }
 
+func (e *TEdit) DockSite() bool {
+    return Edit_GetDockSite(e.instance)
+}
+
+func (e *TEdit) SetDockSite(value bool) {
+    Edit_SetDockSite(e.instance, value)
+}
+
 func (e *TEdit) Brush() *TBrush {
     return BrushFromInst(Edit_GetBrush(e.instance))
 }
@@ -566,6 +626,14 @@ func (e *TEdit) ParentWindow() HWND {
 
 func (e *TEdit) SetParentWindow(value HWND) {
     Edit_SetParentWindow(e.instance, value)
+}
+
+func (e *TEdit) UseDockManager() bool {
+    return Edit_GetUseDockManager(e.instance)
+}
+
+func (e *TEdit) SetUseDockManager(value bool) {
+    Edit_SetUseDockManager(e.instance, value)
 }
 
 func (e *TEdit) Action() *TAction {
@@ -618,6 +686,10 @@ func (e *TEdit) ExplicitWidth() int32 {
 
 func (e *TEdit) ExplicitHeight() int32 {
     return Edit_GetExplicitHeight(e.instance)
+}
+
+func (e *TEdit) Floating() bool {
+    return Edit_GetFloating(e.instance)
 }
 
 func (e *TEdit) Parent() *TControl {

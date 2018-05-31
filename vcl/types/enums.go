@@ -743,7 +743,7 @@ const (
 	NaAddFirst
 	NaAddChild
 	NaAddChildFirst
-	naInsert
+	NaInsert
 )
 
 //  TAddMode = (taAddFirst, taAdd, taInsert);
@@ -1637,3 +1637,25 @@ const (
 
 // TFindOptions = set of TFindOption
 type TFindOptions uint32
+
+type TDragMode int32
+
+const (
+	DmManual = iota + 0
+	DmAutomatic
+)
+
+type TDragState int32
+
+const (
+	DsDragEnter = iota + 0
+	DsDragLeave
+	DsDragMove
+)
+
+type TDragKind int32
+
+const (
+	DkDrag = iota + 0
+	DkDock
+)

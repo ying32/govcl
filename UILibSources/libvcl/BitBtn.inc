@@ -80,6 +80,11 @@ begin
   AObj.BringToFront;
 end;
 
+function BitBtn_Dragging(AObj: TBitBtn): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function BitBtn_HasParent(AObj: TBitBtn): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -233,6 +238,36 @@ end;
 procedure BitBtn_SetDoubleBuffered(AObj: TBitBtn; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function BitBtn_GetDragCursor(AObj: TBitBtn): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure BitBtn_SetDragCursor(AObj: TBitBtn; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function BitBtn_GetDragKind(AObj: TBitBtn): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure BitBtn_SetDragKind(AObj: TBitBtn; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function BitBtn_GetDragMode(AObj: TBitBtn): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure BitBtn_SetDragMode(AObj: TBitBtn; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function BitBtn_GetEnabled(AObj: TBitBtn): LongBool; stdcall;
@@ -437,6 +472,66 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure BitBtn_SetOnContextPopup(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure BitBtn_SetOnDragDrop(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure BitBtn_SetOnDragOver(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure BitBtn_SetOnEndDock(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure BitBtn_SetOnEndDrag(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure BitBtn_SetOnEnter(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -557,6 +652,18 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure BitBtn_SetOnStartDock(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function BitBtn_GetCommandLinkHint(AObj: TBitBtn): PChar; stdcall;
 begin
   Result :=  PChar(AObj.CommandLinkHint);
@@ -657,6 +764,16 @@ begin
   AObj.StylusHotImageIndex := AValue;
 end;
 
+function BitBtn_GetDockSite(AObj: TBitBtn): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure BitBtn_SetDockSite(AObj: TBitBtn; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function BitBtn_GetBrush(AObj: TBitBtn): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -680,6 +797,16 @@ end;
 procedure BitBtn_SetParentWindow(AObj: TBitBtn; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function BitBtn_GetUseDockManager(AObj: TBitBtn): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure BitBtn_SetUseDockManager(AObj: TBitBtn; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 procedure BitBtn_GetBoundsRect(AObj: TBitBtn; var Result: TRect); stdcall;
@@ -735,6 +862,11 @@ end;
 function BitBtn_GetExplicitHeight(AObj: TBitBtn): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function BitBtn_GetFloating(AObj: TBitBtn): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function BitBtn_GetParent(AObj: TBitBtn): TWinControl; stdcall;
@@ -904,6 +1036,7 @@ exports
   BitBtn_SetFocus,
   BitBtn_Update,
   BitBtn_BringToFront,
+  BitBtn_Dragging,
   BitBtn_HasParent,
   BitBtn_Hide,
   BitBtn_Perform,
@@ -935,6 +1068,12 @@ exports
   BitBtn_SetDefault,
   BitBtn_GetDoubleBuffered,
   BitBtn_SetDoubleBuffered,
+  BitBtn_GetDragCursor,
+  BitBtn_SetDragCursor,
+  BitBtn_GetDragKind,
+  BitBtn_SetDragKind,
+  BitBtn_GetDragMode,
+  BitBtn_SetDragMode,
   BitBtn_GetEnabled,
   BitBtn_SetEnabled,
   BitBtn_GetFont,
@@ -974,6 +1113,11 @@ exports
   BitBtn_GetStyleElements,
   BitBtn_SetStyleElements,
   BitBtn_SetOnClick,
+  BitBtn_SetOnContextPopup,
+  BitBtn_SetOnDragDrop,
+  BitBtn_SetOnDragOver,
+  BitBtn_SetOnEndDock,
+  BitBtn_SetOnEndDrag,
   BitBtn_SetOnEnter,
   BitBtn_SetOnExit,
   BitBtn_SetOnKeyDown,
@@ -984,6 +1128,7 @@ exports
   BitBtn_SetOnMouseLeave,
   BitBtn_SetOnMouseMove,
   BitBtn_SetOnMouseUp,
+  BitBtn_SetOnStartDock,
   BitBtn_GetCommandLinkHint,
   BitBtn_SetCommandLinkHint,
   BitBtn_GetDisabledImageIndex,
@@ -1004,11 +1149,15 @@ exports
   BitBtn_SetSelectedImageIndex,
   BitBtn_GetStylusHotImageIndex,
   BitBtn_SetStylusHotImageIndex,
+  BitBtn_GetDockSite,
+  BitBtn_SetDockSite,
   BitBtn_GetBrush,
   BitBtn_GetControlCount,
   BitBtn_GetHandle,
   BitBtn_GetParentWindow,
   BitBtn_SetParentWindow,
+  BitBtn_GetUseDockManager,
+  BitBtn_SetUseDockManager,
   BitBtn_GetBoundsRect,
   BitBtn_SetBoundsRect,
   BitBtn_GetClientHeight,
@@ -1020,6 +1169,7 @@ exports
   BitBtn_GetExplicitTop,
   BitBtn_GetExplicitWidth,
   BitBtn_GetExplicitHeight,
+  BitBtn_GetFloating,
   BitBtn_GetParent,
   BitBtn_SetParent,
   BitBtn_GetAlignWithMargins,

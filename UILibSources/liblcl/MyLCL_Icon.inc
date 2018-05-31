@@ -20,6 +20,11 @@ begin
   AObj.Assign(Source);
 end;
 
+function Icon_HandleAllocated(AObj: TIcon): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure Icon_LoadFromStream(AObj: TIcon; Stream: TStream); extdecl;
 begin
   AObj.LoadFromStream(Stream);
@@ -164,6 +169,7 @@ exports
   Icon_Create,
   Icon_Free,
   Icon_Assign,
+  Icon_HandleAllocated,
   Icon_LoadFromStream,
   Icon_SaveToStream,
   Icon_SetSize,

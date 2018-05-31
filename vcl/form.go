@@ -120,6 +120,10 @@ func (f *TForm) BringToFront() {
     Form_BringToFront(f.instance)
 }
 
+func (f *TForm) Dragging() bool {
+    return Form_Dragging(f.instance)
+}
+
 func (f *TForm) HasParent() bool {
     return Form_HasParent(f.instance)
 }
@@ -300,12 +304,44 @@ func (f *TForm) SetTransparentColorValue(value TColor) {
     Form_SetTransparentColorValue(f.instance, value)
 }
 
+func (f *TForm) UseDockManager() bool {
+    return Form_GetUseDockManager(f.instance)
+}
+
+func (f *TForm) SetUseDockManager(value bool) {
+    Form_SetUseDockManager(f.instance, value)
+}
+
+func (f *TForm) DockSite() bool {
+    return Form_GetDockSite(f.instance)
+}
+
+func (f *TForm) SetDockSite(value bool) {
+    Form_SetDockSite(f.instance, value)
+}
+
 func (f *TForm) DoubleBuffered() bool {
     return Form_GetDoubleBuffered(f.instance)
 }
 
 func (f *TForm) SetDoubleBuffered(value bool) {
     Form_SetDoubleBuffered(f.instance, value)
+}
+
+func (f *TForm) DragKind() TDragKind {
+    return Form_GetDragKind(f.instance)
+}
+
+func (f *TForm) SetDragKind(value TDragKind) {
+    Form_SetDragKind(f.instance, value)
+}
+
+func (f *TForm) DragMode() TDragMode {
+    return Form_GetDragMode(f.instance)
+}
+
+func (f *TForm) SetDragMode(value TDragMode) {
+    Form_SetDragMode(f.instance, value)
 }
 
 func (f *TForm) Enabled() bool {
@@ -456,12 +492,40 @@ func (f *TForm) SetOnCloseQuery(fn TCloseQueryEvent) {
     Form_SetOnCloseQuery(f.instance, fn)
 }
 
+func (f *TForm) SetOnContextPopup(fn TContextPopupEvent) {
+    Form_SetOnContextPopup(f.instance, fn)
+}
+
 func (f *TForm) SetOnDblClick(fn TNotifyEvent) {
     Form_SetOnDblClick(f.instance, fn)
 }
 
+func (f *TForm) SetOnDockDrop(fn TDockDropEvent) {
+    Form_SetOnDockDrop(f.instance, fn)
+}
+
+func (f *TForm) SetOnDragDrop(fn TDragDropEvent) {
+    Form_SetOnDragDrop(f.instance, fn)
+}
+
+func (f *TForm) SetOnDragOver(fn TDragOverEvent) {
+    Form_SetOnDragOver(f.instance, fn)
+}
+
+func (f *TForm) SetOnEndDock(fn TEndDragEvent) {
+    Form_SetOnEndDock(f.instance, fn)
+}
+
+func (f *TForm) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    Form_SetOnGetSiteInfo(f.instance, fn)
+}
+
 func (f *TForm) SetOnHide(fn TNotifyEvent) {
     Form_SetOnHide(f.instance, fn)
+}
+
+func (f *TForm) SetOnHelp(fn THelpEvent) {
+    Form_SetOnHelp(f.instance, fn)
 }
 
 func (f *TForm) SetOnKeyDown(fn TKeyEvent) {
@@ -500,6 +564,14 @@ func (f *TForm) SetOnMouseWheel(fn TMouseWheelEvent) {
     Form_SetOnMouseWheel(f.instance, fn)
 }
 
+func (f *TForm) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
+    Form_SetOnMouseWheelDown(f.instance, fn)
+}
+
+func (f *TForm) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
+    Form_SetOnMouseWheelUp(f.instance, fn)
+}
+
 func (f *TForm) SetOnPaint(fn TNotifyEvent) {
     Form_SetOnPaint(f.instance, fn)
 }
@@ -508,8 +580,20 @@ func (f *TForm) SetOnResize(fn TNotifyEvent) {
     Form_SetOnResize(f.instance, fn)
 }
 
+func (f *TForm) SetOnShortCut(fn TShortCutEvent) {
+    Form_SetOnShortCut(f.instance, fn)
+}
+
 func (f *TForm) SetOnShow(fn TNotifyEvent) {
     Form_SetOnShow(f.instance, fn)
+}
+
+func (f *TForm) SetOnStartDock(fn TStartDockEvent) {
+    Form_SetOnStartDock(f.instance, fn)
+}
+
+func (f *TForm) SetOnUnDock(fn TUnDockEvent) {
+    Form_SetOnUnDock(f.instance, fn)
 }
 
 func (f *TForm) Canvas() *TCanvas {
@@ -618,6 +702,10 @@ func (f *TForm) ExplicitWidth() int32 {
 
 func (f *TForm) ExplicitHeight() int32 {
     return Form_GetExplicitHeight(f.instance)
+}
+
+func (f *TForm) Floating() bool {
+    return Form_GetFloating(f.instance)
 }
 
 func (f *TForm) Parent() *TControl {

@@ -120,6 +120,10 @@ func (c *TComboBox) BringToFront() {
     ComboBox_BringToFront(c.instance)
 }
 
+func (c *TComboBox) Dragging() bool {
+    return ComboBox_Dragging(c.instance)
+}
+
 func (c *TComboBox) HasParent() bool {
     return ComboBox_HasParent(c.instance)
 }
@@ -292,6 +296,30 @@ func (c *TComboBox) SetDoubleBuffered(value bool) {
     ComboBox_SetDoubleBuffered(c.instance, value)
 }
 
+func (c *TComboBox) DragCursor() TCursor {
+    return ComboBox_GetDragCursor(c.instance)
+}
+
+func (c *TComboBox) SetDragCursor(value TCursor) {
+    ComboBox_SetDragCursor(c.instance, value)
+}
+
+func (c *TComboBox) DragKind() TDragKind {
+    return ComboBox_GetDragKind(c.instance)
+}
+
+func (c *TComboBox) SetDragKind(value TDragKind) {
+    ComboBox_SetDragKind(c.instance, value)
+}
+
+func (c *TComboBox) DragMode() TDragMode {
+    return ComboBox_GetDragMode(c.instance)
+}
+
+func (c *TComboBox) SetDragMode(value TDragMode) {
+    ComboBox_SetDragMode(c.instance, value)
+}
+
 func (c *TComboBox) DropDownCount() int32 {
     return ComboBox_GetDropDownCount(c.instance)
 }
@@ -460,12 +488,32 @@ func (c *TComboBox) SetOnClick(fn TNotifyEvent) {
     ComboBox_SetOnClick(c.instance, fn)
 }
 
+func (c *TComboBox) SetOnContextPopup(fn TContextPopupEvent) {
+    ComboBox_SetOnContextPopup(c.instance, fn)
+}
+
 func (c *TComboBox) SetOnDblClick(fn TNotifyEvent) {
     ComboBox_SetOnDblClick(c.instance, fn)
 }
 
+func (c *TComboBox) SetOnDragDrop(fn TDragDropEvent) {
+    ComboBox_SetOnDragDrop(c.instance, fn)
+}
+
+func (c *TComboBox) SetOnDragOver(fn TDragOverEvent) {
+    ComboBox_SetOnDragOver(c.instance, fn)
+}
+
 func (c *TComboBox) SetOnDrawItem(fn TDrawItemEvent) {
     ComboBox_SetOnDrawItem(c.instance, fn)
+}
+
+func (c *TComboBox) SetOnEndDock(fn TEndDragEvent) {
+    ComboBox_SetOnEndDock(c.instance, fn)
+}
+
+func (c *TComboBox) SetOnEndDrag(fn TEndDragEvent) {
+    ComboBox_SetOnEndDrag(c.instance, fn)
 }
 
 func (c *TComboBox) SetOnEnter(fn TNotifyEvent) {
@@ -494,6 +542,10 @@ func (c *TComboBox) SetOnMouseEnter(fn TNotifyEvent) {
 
 func (c *TComboBox) SetOnMouseLeave(fn TNotifyEvent) {
     ComboBox_SetOnMouseLeave(c.instance, fn)
+}
+
+func (c *TComboBox) SetOnStartDock(fn TStartDockEvent) {
+    ComboBox_SetOnStartDock(c.instance, fn)
 }
 
 func (c *TComboBox) Items() *TStrings {
@@ -540,6 +592,14 @@ func (c *TComboBox) SetSelStart(value int32) {
     ComboBox_SetSelStart(c.instance, value)
 }
 
+func (c *TComboBox) DockSite() bool {
+    return ComboBox_GetDockSite(c.instance)
+}
+
+func (c *TComboBox) SetDockSite(value bool) {
+    ComboBox_SetDockSite(c.instance, value)
+}
+
 func (c *TComboBox) Brush() *TBrush {
     return BrushFromInst(ComboBox_GetBrush(c.instance))
 }
@@ -558,6 +618,14 @@ func (c *TComboBox) ParentWindow() HWND {
 
 func (c *TComboBox) SetParentWindow(value HWND) {
     ComboBox_SetParentWindow(c.instance, value)
+}
+
+func (c *TComboBox) UseDockManager() bool {
+    return ComboBox_GetUseDockManager(c.instance)
+}
+
+func (c *TComboBox) SetUseDockManager(value bool) {
+    ComboBox_SetUseDockManager(c.instance, value)
 }
 
 func (c *TComboBox) Action() *TAction {
@@ -610,6 +678,10 @@ func (c *TComboBox) ExplicitWidth() int32 {
 
 func (c *TComboBox) ExplicitHeight() int32 {
     return ComboBox_GetExplicitHeight(c.instance)
+}
+
+func (c *TComboBox) Floating() bool {
+    return ComboBox_GetFloating(c.instance)
 }
 
 func (c *TComboBox) Parent() *TControl {

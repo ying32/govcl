@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function GroupBox_Dragging(AObj: TGroupBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function GroupBox_HasParent(AObj: TGroupBox): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -200,6 +205,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function GroupBox_GetDockSite(AObj: TGroupBox): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure GroupBox_SetDockSite(AObj: TGroupBox; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function GroupBox_GetDoubleBuffered(AObj: TGroupBox): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -208,6 +223,36 @@ end;
 procedure GroupBox_SetDoubleBuffered(AObj: TGroupBox; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function GroupBox_GetDragCursor(AObj: TGroupBox): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure GroupBox_SetDragCursor(AObj: TGroupBox; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function GroupBox_GetDragKind(AObj: TGroupBox): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure GroupBox_SetDragKind(AObj: TGroupBox; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function GroupBox_GetDragMode(AObj: TGroupBox): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure GroupBox_SetDragMode(AObj: TGroupBox; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function GroupBox_GetEnabled(AObj: TGroupBox): LongBool; stdcall;
@@ -362,6 +407,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure GroupBox_SetOnContextPopup(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure GroupBox_SetOnDblClick(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -372,6 +429,66 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure GroupBox_SetOnDragDrop(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure GroupBox_SetOnDockDrop(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    TEventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := TEventClass.OnDockDrop;
+  TEventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
+procedure GroupBox_SetOnDragOver(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure GroupBox_SetOnEndDock(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure GroupBox_SetOnEndDrag(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure GroupBox_SetOnEnter(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
@@ -396,6 +513,18 @@ begin
   end;
   AObj.OnExit := TEventClass.OnExit;
   TEventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure GroupBox_SetOnGetSiteInfo(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    TEventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
+  TEventClass.Add(AObj, geGetSiteInfo, AEventId);
 end;
 
 procedure GroupBox_SetOnMouseDown(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
@@ -458,6 +587,30 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure GroupBox_SetOnStartDock(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+procedure GroupBox_SetOnUnDock(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    TEventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := TEventClass.OnUnDock;
+  TEventClass.Add(AObj, geUnDock, AEventId);
+end;
+
 function GroupBox_GetBrush(AObj: TGroupBox): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -481,6 +634,16 @@ end;
 procedure GroupBox_SetParentWindow(AObj: TGroupBox; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function GroupBox_GetUseDockManager(AObj: TGroupBox): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure GroupBox_SetUseDockManager(AObj: TGroupBox; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function GroupBox_GetAction(AObj: TGroupBox): TBasicAction; stdcall;
@@ -546,6 +709,11 @@ end;
 function GroupBox_GetExplicitHeight(AObj: TGroupBox): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function GroupBox_GetFloating(AObj: TGroupBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function GroupBox_GetParent(AObj: TGroupBox): TWinControl; stdcall;
@@ -714,6 +882,7 @@ exports
   GroupBox_SetFocus,
   GroupBox_Update,
   GroupBox_BringToFront,
+  GroupBox_Dragging,
   GroupBox_HasParent,
   GroupBox_Hide,
   GroupBox_Perform,
@@ -739,8 +908,16 @@ exports
   GroupBox_SetCaption,
   GroupBox_GetColor,
   GroupBox_SetColor,
+  GroupBox_GetDockSite,
+  GroupBox_SetDockSite,
   GroupBox_GetDoubleBuffered,
   GroupBox_SetDoubleBuffered,
+  GroupBox_GetDragCursor,
+  GroupBox_SetDragCursor,
+  GroupBox_GetDragKind,
+  GroupBox_SetDragKind,
+  GroupBox_GetDragMode,
+  GroupBox_SetDragMode,
   GroupBox_GetEnabled,
   GroupBox_SetEnabled,
   GroupBox_GetFont,
@@ -770,19 +947,30 @@ exports
   GroupBox_GetStyleElements,
   GroupBox_SetStyleElements,
   GroupBox_SetOnClick,
+  GroupBox_SetOnContextPopup,
   GroupBox_SetOnDblClick,
+  GroupBox_SetOnDragDrop,
+  GroupBox_SetOnDockDrop,
+  GroupBox_SetOnDragOver,
+  GroupBox_SetOnEndDock,
+  GroupBox_SetOnEndDrag,
   GroupBox_SetOnEnter,
   GroupBox_SetOnExit,
+  GroupBox_SetOnGetSiteInfo,
   GroupBox_SetOnMouseDown,
   GroupBox_SetOnMouseEnter,
   GroupBox_SetOnMouseLeave,
   GroupBox_SetOnMouseMove,
   GroupBox_SetOnMouseUp,
+  GroupBox_SetOnStartDock,
+  GroupBox_SetOnUnDock,
   GroupBox_GetBrush,
   GroupBox_GetControlCount,
   GroupBox_GetHandle,
   GroupBox_GetParentWindow,
   GroupBox_SetParentWindow,
+  GroupBox_GetUseDockManager,
+  GroupBox_SetUseDockManager,
   GroupBox_GetAction,
   GroupBox_SetAction,
   GroupBox_GetBoundsRect,
@@ -796,6 +984,7 @@ exports
   GroupBox_GetExplicitTop,
   GroupBox_GetExplicitWidth,
   GroupBox_GetExplicitHeight,
+  GroupBox_GetFloating,
   GroupBox_GetParent,
   GroupBox_SetParent,
   GroupBox_GetAlignWithMargins,

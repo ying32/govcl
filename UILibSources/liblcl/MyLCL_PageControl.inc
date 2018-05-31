@@ -20,6 +20,11 @@ begin
   AObj.SelectNextPage(GoForward, CheckTabVisible);
 end;
 
+procedure PageControl_TabRect(AObj: TPageControl; Index: Integer; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.TabRect(Index);
+end;
+
 function PageControl_CanFocus(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -33,6 +38,11 @@ end;
 function PageControl_Focused(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
+end;
+
+function PageControl_HandleAllocated(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
 end;
 
 procedure PageControl_Invalidate(AObj: TPageControl); extdecl;
@@ -73,6 +83,11 @@ end;
 procedure PageControl_BringToFront(AObj: TPageControl); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function PageControl_Dragging(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function PageControl_HasParent(AObj: TPageControl): LongBool; extdecl;
@@ -195,6 +210,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function PageControl_GetDockSite(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure PageControl_SetDockSite(AObj: TPageControl; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function PageControl_GetDoubleBuffered(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -203,6 +228,36 @@ end;
 procedure PageControl_SetDoubleBuffered(AObj: TPageControl; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function PageControl_GetDragCursor(AObj: TPageControl): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure PageControl_SetDragCursor(AObj: TPageControl; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function PageControl_GetDragKind(AObj: TPageControl): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure PageControl_SetDragKind(AObj: TPageControl; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function PageControl_GetDragMode(AObj: TPageControl): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure PageControl_SetDragMode(AObj: TPageControl; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function PageControl_GetEnabled(AObj: TPageControl): LongBool; extdecl;
@@ -285,6 +340,16 @@ begin
   AObj.ShowHint := AValue;
 end;
 
+function PageControl_GetTabHeight(AObj: TPageControl): SmallInt; extdecl;
+begin
+  Result :=  AObj.TabHeight;
+end;
+
+procedure PageControl_SetTabHeight(AObj: TPageControl; AValue: SmallInt); extdecl;
+begin
+  AObj.TabHeight := AValue;
+end;
+
 function PageControl_GetTabIndex(AObj: TPageControl): Integer; extdecl;
 begin
   Result :=  AObj.TabIndex;
@@ -325,6 +390,16 @@ begin
   AObj.TabStop := AValue;
 end;
 
+function PageControl_GetTabWidth(AObj: TPageControl): SmallInt; extdecl;
+begin
+  Result :=  AObj.TabWidth;
+end;
+
+procedure PageControl_SetTabWidth(AObj: TPageControl; AValue: SmallInt); extdecl;
+begin
+  AObj.TabWidth := AValue;
+end;
+
 function PageControl_GetVisible(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.Visible;
@@ -345,6 +420,78 @@ begin
   end;
   AObj.OnChange := @EventClass.OnChange;
   EventClass.Add(AObj, geChange, AEventId);
+end;
+
+procedure PageControl_SetOnContextPopup(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure PageControl_SetOnDockDrop(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    EventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := @EventClass.OnDockDrop;
+  EventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
+procedure PageControl_SetOnDragDrop(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure PageControl_SetOnDragOver(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure PageControl_SetOnEndDock(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    EventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := @EventClass.OnEndDock;
+  EventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure PageControl_SetOnEndDrag(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure PageControl_SetOnEnter(AObj: TPageControl; AEventId: NativeUInt); extdecl;
@@ -369,6 +516,18 @@ begin
   end;
   AObj.OnExit := @EventClass.OnExit;
   EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure PageControl_SetOnGetSiteInfo(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    EventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
+  EventClass.Add(AObj, geGetSiteInfo, AEventId);
 end;
 
 procedure PageControl_SetOnMouseDown(AObj: TPageControl; AEventId: NativeUInt); extdecl;
@@ -443,6 +602,30 @@ begin
   EventClass.Add(AObj, geResize, AEventId);
 end;
 
+procedure PageControl_SetOnStartDock(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    EventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := @EventClass.OnStartDock;
+  EventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+procedure PageControl_SetOnUnDock(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    EventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := @EventClass.OnUnDock;
+  EventClass.Add(AObj, geUnDock, AEventId);
+end;
+
 function PageControl_GetBrush(AObj: TPageControl): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -466,6 +649,16 @@ end;
 procedure PageControl_SetParentWindow(AObj: TPageControl; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function PageControl_GetUseDockManager(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure PageControl_SetUseDockManager(AObj: TPageControl; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function PageControl_GetAction(AObj: TPageControl): TBasicAction; extdecl;
@@ -511,6 +704,11 @@ end;
 procedure PageControl_SetClientWidth(AObj: TPageControl; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function PageControl_GetFloating(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function PageControl_GetParent(AObj: TPageControl): TWinControl; extdecl;
@@ -643,9 +841,11 @@ exports
   PageControl_Create,
   PageControl_Free,
   PageControl_SelectNextPage,
+  PageControl_TabRect,
   PageControl_CanFocus,
   PageControl_FlipChildren,
   PageControl_Focused,
+  PageControl_HandleAllocated,
   PageControl_Invalidate,
   PageControl_Realign,
   PageControl_Repaint,
@@ -654,6 +854,7 @@ exports
   PageControl_SetFocus,
   PageControl_Update,
   PageControl_BringToFront,
+  PageControl_Dragging,
   PageControl_HasParent,
   PageControl_Hide,
   PageControl_Perform,
@@ -678,8 +879,16 @@ exports
   PageControl_SetAnchors,
   PageControl_GetBiDiMode,
   PageControl_SetBiDiMode,
+  PageControl_GetDockSite,
+  PageControl_SetDockSite,
   PageControl_GetDoubleBuffered,
   PageControl_SetDoubleBuffered,
+  PageControl_GetDragCursor,
+  PageControl_SetDragCursor,
+  PageControl_GetDragKind,
+  PageControl_SetDragKind,
+  PageControl_GetDragMode,
+  PageControl_SetDragMode,
   PageControl_GetEnabled,
   PageControl_SetEnabled,
   PageControl_GetFont,
@@ -696,6 +905,8 @@ exports
   PageControl_SetPopupMenu,
   PageControl_GetShowHint,
   PageControl_SetShowHint,
+  PageControl_GetTabHeight,
+  PageControl_SetTabHeight,
   PageControl_GetTabIndex,
   PageControl_SetTabIndex,
   PageControl_GetTabOrder,
@@ -704,22 +915,35 @@ exports
   PageControl_SetTabPosition,
   PageControl_GetTabStop,
   PageControl_SetTabStop,
+  PageControl_GetTabWidth,
+  PageControl_SetTabWidth,
   PageControl_GetVisible,
   PageControl_SetVisible,
   PageControl_SetOnChange,
+  PageControl_SetOnContextPopup,
+  PageControl_SetOnDockDrop,
+  PageControl_SetOnDragDrop,
+  PageControl_SetOnDragOver,
+  PageControl_SetOnEndDock,
+  PageControl_SetOnEndDrag,
   PageControl_SetOnEnter,
   PageControl_SetOnExit,
+  PageControl_SetOnGetSiteInfo,
   PageControl_SetOnMouseDown,
   PageControl_SetOnMouseEnter,
   PageControl_SetOnMouseLeave,
   PageControl_SetOnMouseMove,
   PageControl_SetOnMouseUp,
   PageControl_SetOnResize,
+  PageControl_SetOnStartDock,
+  PageControl_SetOnUnDock,
   PageControl_GetBrush,
   PageControl_GetControlCount,
   PageControl_GetHandle,
   PageControl_GetParentWindow,
   PageControl_SetParentWindow,
+  PageControl_GetUseDockManager,
+  PageControl_SetUseDockManager,
   PageControl_GetAction,
   PageControl_SetAction,
   PageControl_GetBoundsRect,
@@ -729,6 +953,7 @@ exports
   PageControl_GetClientRect,
   PageControl_GetClientWidth,
   PageControl_SetClientWidth,
+  PageControl_GetFloating,
   PageControl_GetParent,
   PageControl_SetParent,
   PageControl_GetLeft,

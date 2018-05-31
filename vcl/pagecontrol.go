@@ -56,6 +56,10 @@ func (p *TPageControl) SelectNextPage(GoForward bool, CheckTabVisible bool) {
     PageControl_SelectNextPage(p.instance, GoForward , CheckTabVisible)
 }
 
+func (p *TPageControl) TabRect(Index int32) TRect {
+    return PageControl_TabRect(p.instance, Index)
+}
+
 func (p *TPageControl) RowCount() int32 {
     return PageControl_RowCount(p.instance)
 }
@@ -106,6 +110,10 @@ func (p *TPageControl) Update() {
 
 func (p *TPageControl) BringToFront() {
     PageControl_BringToFront(p.instance)
+}
+
+func (p *TPageControl) Dragging() bool {
+    return PageControl_Dragging(p.instance)
 }
 
 func (p *TPageControl) HasParent() bool {
@@ -204,12 +212,44 @@ func (p *TPageControl) SetBiDiMode(value TBiDiMode) {
     PageControl_SetBiDiMode(p.instance, value)
 }
 
+func (p *TPageControl) DockSite() bool {
+    return PageControl_GetDockSite(p.instance)
+}
+
+func (p *TPageControl) SetDockSite(value bool) {
+    PageControl_SetDockSite(p.instance, value)
+}
+
 func (p *TPageControl) DoubleBuffered() bool {
     return PageControl_GetDoubleBuffered(p.instance)
 }
 
 func (p *TPageControl) SetDoubleBuffered(value bool) {
     PageControl_SetDoubleBuffered(p.instance, value)
+}
+
+func (p *TPageControl) DragCursor() TCursor {
+    return PageControl_GetDragCursor(p.instance)
+}
+
+func (p *TPageControl) SetDragCursor(value TCursor) {
+    PageControl_SetDragCursor(p.instance, value)
+}
+
+func (p *TPageControl) DragKind() TDragKind {
+    return PageControl_GetDragKind(p.instance)
+}
+
+func (p *TPageControl) SetDragKind(value TDragKind) {
+    PageControl_SetDragKind(p.instance, value)
+}
+
+func (p *TPageControl) DragMode() TDragMode {
+    return PageControl_GetDragMode(p.instance)
+}
+
+func (p *TPageControl) SetDragMode(value TDragMode) {
+    PageControl_SetDragMode(p.instance, value)
 }
 
 func (p *TPageControl) Enabled() bool {
@@ -368,6 +408,30 @@ func (p *TPageControl) SetOnChange(fn TNotifyEvent) {
     PageControl_SetOnChange(p.instance, fn)
 }
 
+func (p *TPageControl) SetOnContextPopup(fn TContextPopupEvent) {
+    PageControl_SetOnContextPopup(p.instance, fn)
+}
+
+func (p *TPageControl) SetOnDockDrop(fn TDockDropEvent) {
+    PageControl_SetOnDockDrop(p.instance, fn)
+}
+
+func (p *TPageControl) SetOnDragDrop(fn TDragDropEvent) {
+    PageControl_SetOnDragDrop(p.instance, fn)
+}
+
+func (p *TPageControl) SetOnDragOver(fn TDragOverEvent) {
+    PageControl_SetOnDragOver(p.instance, fn)
+}
+
+func (p *TPageControl) SetOnEndDock(fn TEndDragEvent) {
+    PageControl_SetOnEndDock(p.instance, fn)
+}
+
+func (p *TPageControl) SetOnEndDrag(fn TEndDragEvent) {
+    PageControl_SetOnEndDrag(p.instance, fn)
+}
+
 func (p *TPageControl) SetOnEnter(fn TNotifyEvent) {
     PageControl_SetOnEnter(p.instance, fn)
 }
@@ -378,6 +442,10 @@ func (p *TPageControl) SetOnExit(fn TNotifyEvent) {
 
 func (p *TPageControl) SetOnGetImageIndex(fn TTabGetImageEvent) {
     PageControl_SetOnGetImageIndex(p.instance, fn)
+}
+
+func (p *TPageControl) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    PageControl_SetOnGetSiteInfo(p.instance, fn)
 }
 
 func (p *TPageControl) SetOnMouseDown(fn TMouseEvent) {
@@ -404,6 +472,14 @@ func (p *TPageControl) SetOnResize(fn TNotifyEvent) {
     PageControl_SetOnResize(p.instance, fn)
 }
 
+func (p *TPageControl) SetOnStartDock(fn TStartDockEvent) {
+    PageControl_SetOnStartDock(p.instance, fn)
+}
+
+func (p *TPageControl) SetOnUnDock(fn TUnDockEvent) {
+    PageControl_SetOnUnDock(p.instance, fn)
+}
+
 func (p *TPageControl) Canvas() *TCanvas {
     return CanvasFromInst(PageControl_GetCanvas(p.instance))
 }
@@ -426,6 +502,14 @@ func (p *TPageControl) ParentWindow() HWND {
 
 func (p *TPageControl) SetParentWindow(value HWND) {
     PageControl_SetParentWindow(p.instance, value)
+}
+
+func (p *TPageControl) UseDockManager() bool {
+    return PageControl_GetUseDockManager(p.instance)
+}
+
+func (p *TPageControl) SetUseDockManager(value bool) {
+    PageControl_SetUseDockManager(p.instance, value)
 }
 
 func (p *TPageControl) Action() *TAction {
@@ -478,6 +562,10 @@ func (p *TPageControl) ExplicitWidth() int32 {
 
 func (p *TPageControl) ExplicitHeight() int32 {
     return PageControl_GetExplicitHeight(p.instance)
+}
+
+func (p *TPageControl) Floating() bool {
+    return PageControl_GetFloating(p.instance)
 }
 
 func (p *TPageControl) Parent() *TControl {

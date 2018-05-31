@@ -25,6 +25,11 @@ begin
   AObj.BringToFront;
 end;
 
+function SpeedButton_Dragging(AObj: TSpeedButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function SpeedButton_HasParent(AObj: TSpeedButton): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -479,6 +484,11 @@ begin
   Result :=  AObj.ExplicitHeight;
 end;
 
+function SpeedButton_GetFloating(AObj: TSpeedButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function SpeedButton_GetParent(AObj: TSpeedButton): TWinControl; stdcall;
 begin
   Result :=  AObj.Parent;
@@ -630,6 +640,7 @@ exports
   SpeedButton_Free,
   SpeedButton_Click,
   SpeedButton_BringToFront,
+  SpeedButton_Dragging,
   SpeedButton_HasParent,
   SpeedButton_Hide,
   SpeedButton_Invalidate,
@@ -711,6 +722,7 @@ exports
   SpeedButton_GetExplicitTop,
   SpeedButton_GetExplicitWidth,
   SpeedButton_GetExplicitHeight,
+  SpeedButton_GetFloating,
   SpeedButton_GetParent,
   SpeedButton_SetParent,
   SpeedButton_GetAlignWithMargins,

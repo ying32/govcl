@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function PaintBox_Dragging(AObj: TPaintBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function PaintBox_HasParent(AObj: TPaintBox): LongBool; extdecl;
 begin
   Result :=  AObj.HasParent;
@@ -150,6 +155,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function PaintBox_GetDragCursor(AObj: TPaintBox): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure PaintBox_SetDragCursor(AObj: TPaintBox; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function PaintBox_GetDragMode(AObj: TPaintBox): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure PaintBox_SetDragMode(AObj: TPaintBox; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function PaintBox_GetEnabled(AObj: TPaintBox): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -252,6 +277,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure PaintBox_SetOnDragDrop(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure PaintBox_SetOnDragOver(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure PaintBox_SetOnEndDrag(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure PaintBox_SetOnMouseDown(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -381,6 +442,11 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function PaintBox_GetFloating(AObj: TPaintBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function PaintBox_GetParent(AObj: TPaintBox): TWinControl; extdecl;
 begin
   Result :=  AObj.Parent;
@@ -501,6 +567,7 @@ exports
   PaintBox_Create,
   PaintBox_Free,
   PaintBox_BringToFront,
+  PaintBox_Dragging,
   PaintBox_HasParent,
   PaintBox_Hide,
   PaintBox_Invalidate,
@@ -527,6 +594,10 @@ exports
   PaintBox_SetAnchors,
   PaintBox_GetColor,
   PaintBox_SetColor,
+  PaintBox_GetDragCursor,
+  PaintBox_SetDragCursor,
+  PaintBox_GetDragMode,
+  PaintBox_SetDragMode,
   PaintBox_GetEnabled,
   PaintBox_SetEnabled,
   PaintBox_GetFont,
@@ -545,6 +616,9 @@ exports
   PaintBox_SetVisible,
   PaintBox_SetOnClick,
   PaintBox_SetOnDblClick,
+  PaintBox_SetOnDragDrop,
+  PaintBox_SetOnDragOver,
+  PaintBox_SetOnEndDrag,
   PaintBox_SetOnMouseDown,
   PaintBox_SetOnMouseEnter,
   PaintBox_SetOnMouseLeave,
@@ -562,6 +636,7 @@ exports
   PaintBox_GetClientRect,
   PaintBox_GetClientWidth,
   PaintBox_SetClientWidth,
+  PaintBox_GetFloating,
   PaintBox_GetParent,
   PaintBox_SetParent,
   PaintBox_GetLeft,

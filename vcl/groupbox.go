@@ -100,6 +100,10 @@ func (g *TGroupBox) BringToFront() {
     GroupBox_BringToFront(g.instance)
 }
 
+func (g *TGroupBox) Dragging() bool {
+    return GroupBox_Dragging(g.instance)
+}
+
 func (g *TGroupBox) HasParent() bool {
     return GroupBox_HasParent(g.instance)
 }
@@ -200,12 +204,44 @@ func (g *TGroupBox) SetColor(value TColor) {
     GroupBox_SetColor(g.instance, value)
 }
 
+func (g *TGroupBox) DockSite() bool {
+    return GroupBox_GetDockSite(g.instance)
+}
+
+func (g *TGroupBox) SetDockSite(value bool) {
+    GroupBox_SetDockSite(g.instance, value)
+}
+
 func (g *TGroupBox) DoubleBuffered() bool {
     return GroupBox_GetDoubleBuffered(g.instance)
 }
 
 func (g *TGroupBox) SetDoubleBuffered(value bool) {
     GroupBox_SetDoubleBuffered(g.instance, value)
+}
+
+func (g *TGroupBox) DragCursor() TCursor {
+    return GroupBox_GetDragCursor(g.instance)
+}
+
+func (g *TGroupBox) SetDragCursor(value TCursor) {
+    GroupBox_SetDragCursor(g.instance, value)
+}
+
+func (g *TGroupBox) DragKind() TDragKind {
+    return GroupBox_GetDragKind(g.instance)
+}
+
+func (g *TGroupBox) SetDragKind(value TDragKind) {
+    GroupBox_SetDragKind(g.instance, value)
+}
+
+func (g *TGroupBox) DragMode() TDragMode {
+    return GroupBox_GetDragMode(g.instance)
+}
+
+func (g *TGroupBox) SetDragMode(value TDragMode) {
+    GroupBox_SetDragMode(g.instance, value)
 }
 
 func (g *TGroupBox) Enabled() bool {
@@ -324,8 +360,32 @@ func (g *TGroupBox) SetOnClick(fn TNotifyEvent) {
     GroupBox_SetOnClick(g.instance, fn)
 }
 
+func (g *TGroupBox) SetOnContextPopup(fn TContextPopupEvent) {
+    GroupBox_SetOnContextPopup(g.instance, fn)
+}
+
 func (g *TGroupBox) SetOnDblClick(fn TNotifyEvent) {
     GroupBox_SetOnDblClick(g.instance, fn)
+}
+
+func (g *TGroupBox) SetOnDragDrop(fn TDragDropEvent) {
+    GroupBox_SetOnDragDrop(g.instance, fn)
+}
+
+func (g *TGroupBox) SetOnDockDrop(fn TDockDropEvent) {
+    GroupBox_SetOnDockDrop(g.instance, fn)
+}
+
+func (g *TGroupBox) SetOnDragOver(fn TDragOverEvent) {
+    GroupBox_SetOnDragOver(g.instance, fn)
+}
+
+func (g *TGroupBox) SetOnEndDock(fn TEndDragEvent) {
+    GroupBox_SetOnEndDock(g.instance, fn)
+}
+
+func (g *TGroupBox) SetOnEndDrag(fn TEndDragEvent) {
+    GroupBox_SetOnEndDrag(g.instance, fn)
 }
 
 func (g *TGroupBox) SetOnEnter(fn TNotifyEvent) {
@@ -334,6 +394,10 @@ func (g *TGroupBox) SetOnEnter(fn TNotifyEvent) {
 
 func (g *TGroupBox) SetOnExit(fn TNotifyEvent) {
     GroupBox_SetOnExit(g.instance, fn)
+}
+
+func (g *TGroupBox) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    GroupBox_SetOnGetSiteInfo(g.instance, fn)
 }
 
 func (g *TGroupBox) SetOnMouseDown(fn TMouseEvent) {
@@ -356,6 +420,14 @@ func (g *TGroupBox) SetOnMouseUp(fn TMouseEvent) {
     GroupBox_SetOnMouseUp(g.instance, fn)
 }
 
+func (g *TGroupBox) SetOnStartDock(fn TStartDockEvent) {
+    GroupBox_SetOnStartDock(g.instance, fn)
+}
+
+func (g *TGroupBox) SetOnUnDock(fn TUnDockEvent) {
+    GroupBox_SetOnUnDock(g.instance, fn)
+}
+
 func (g *TGroupBox) Brush() *TBrush {
     return BrushFromInst(GroupBox_GetBrush(g.instance))
 }
@@ -374,6 +446,14 @@ func (g *TGroupBox) ParentWindow() HWND {
 
 func (g *TGroupBox) SetParentWindow(value HWND) {
     GroupBox_SetParentWindow(g.instance, value)
+}
+
+func (g *TGroupBox) UseDockManager() bool {
+    return GroupBox_GetUseDockManager(g.instance)
+}
+
+func (g *TGroupBox) SetUseDockManager(value bool) {
+    GroupBox_SetUseDockManager(g.instance, value)
 }
 
 func (g *TGroupBox) Action() *TAction {
@@ -426,6 +506,10 @@ func (g *TGroupBox) ExplicitWidth() int32 {
 
 func (g *TGroupBox) ExplicitHeight() int32 {
     return GroupBox_GetExplicitHeight(g.instance)
+}
+
+func (g *TGroupBox) Floating() bool {
+    return GroupBox_GetFloating(g.instance)
 }
 
 func (g *TGroupBox) Parent() *TControl {

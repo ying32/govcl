@@ -100,6 +100,10 @@ func (t *TToolBar) BringToFront() {
     ToolBar_BringToFront(t.instance)
 }
 
+func (t *TToolBar) Dragging() bool {
+    return ToolBar_Dragging(t.instance)
+}
+
 func (t *TToolBar) HasParent() bool {
     return ToolBar_HasParent(t.instance)
 }
@@ -258,6 +262,38 @@ func (t *TToolBar) DoubleBuffered() bool {
 
 func (t *TToolBar) SetDoubleBuffered(value bool) {
     ToolBar_SetDoubleBuffered(t.instance, value)
+}
+
+func (t *TToolBar) DockSite() bool {
+    return ToolBar_GetDockSite(t.instance)
+}
+
+func (t *TToolBar) SetDockSite(value bool) {
+    ToolBar_SetDockSite(t.instance, value)
+}
+
+func (t *TToolBar) DragCursor() TCursor {
+    return ToolBar_GetDragCursor(t.instance)
+}
+
+func (t *TToolBar) SetDragCursor(value TCursor) {
+    ToolBar_SetDragCursor(t.instance, value)
+}
+
+func (t *TToolBar) DragKind() TDragKind {
+    return ToolBar_GetDragKind(t.instance)
+}
+
+func (t *TToolBar) SetDragKind(value TDragKind) {
+    ToolBar_SetDragKind(t.instance, value)
+}
+
+func (t *TToolBar) DragMode() TDragMode {
+    return ToolBar_GetDragMode(t.instance)
+}
+
+func (t *TToolBar) SetDragMode(value TDragMode) {
+    ToolBar_SetDragMode(t.instance, value)
 }
 
 func (t *TToolBar) DrawingStyle() TTBDrawingStyle {
@@ -496,8 +532,32 @@ func (t *TToolBar) SetOnClick(fn TNotifyEvent) {
     ToolBar_SetOnClick(t.instance, fn)
 }
 
+func (t *TToolBar) SetOnContextPopup(fn TContextPopupEvent) {
+    ToolBar_SetOnContextPopup(t.instance, fn)
+}
+
 func (t *TToolBar) SetOnDblClick(fn TNotifyEvent) {
     ToolBar_SetOnDblClick(t.instance, fn)
+}
+
+func (t *TToolBar) SetOnDockDrop(fn TDockDropEvent) {
+    ToolBar_SetOnDockDrop(t.instance, fn)
+}
+
+func (t *TToolBar) SetOnDragDrop(fn TDragDropEvent) {
+    ToolBar_SetOnDragDrop(t.instance, fn)
+}
+
+func (t *TToolBar) SetOnDragOver(fn TDragOverEvent) {
+    ToolBar_SetOnDragOver(t.instance, fn)
+}
+
+func (t *TToolBar) SetOnEndDock(fn TEndDragEvent) {
+    ToolBar_SetOnEndDock(t.instance, fn)
+}
+
+func (t *TToolBar) SetOnEndDrag(fn TEndDragEvent) {
+    ToolBar_SetOnEndDrag(t.instance, fn)
 }
 
 func (t *TToolBar) SetOnEnter(fn TNotifyEvent) {
@@ -506,6 +566,10 @@ func (t *TToolBar) SetOnEnter(fn TNotifyEvent) {
 
 func (t *TToolBar) SetOnExit(fn TNotifyEvent) {
     ToolBar_SetOnExit(t.instance, fn)
+}
+
+func (t *TToolBar) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    ToolBar_SetOnGetSiteInfo(t.instance, fn)
 }
 
 func (t *TToolBar) SetOnMouseDown(fn TMouseEvent) {
@@ -532,6 +596,14 @@ func (t *TToolBar) SetOnResize(fn TNotifyEvent) {
     ToolBar_SetOnResize(t.instance, fn)
 }
 
+func (t *TToolBar) SetOnStartDock(fn TStartDockEvent) {
+    ToolBar_SetOnStartDock(t.instance, fn)
+}
+
+func (t *TToolBar) SetOnUnDock(fn TUnDockEvent) {
+    ToolBar_SetOnUnDock(t.instance, fn)
+}
+
 func (t *TToolBar) Brush() *TBrush {
     return BrushFromInst(ToolBar_GetBrush(t.instance))
 }
@@ -550,6 +622,14 @@ func (t *TToolBar) ParentWindow() HWND {
 
 func (t *TToolBar) SetParentWindow(value HWND) {
     ToolBar_SetParentWindow(t.instance, value)
+}
+
+func (t *TToolBar) UseDockManager() bool {
+    return ToolBar_GetUseDockManager(t.instance)
+}
+
+func (t *TToolBar) SetUseDockManager(value bool) {
+    ToolBar_SetUseDockManager(t.instance, value)
 }
 
 func (t *TToolBar) Action() *TAction {
@@ -610,6 +690,10 @@ func (t *TToolBar) ExplicitWidth() int32 {
 
 func (t *TToolBar) ExplicitHeight() int32 {
     return ToolBar_GetExplicitHeight(t.instance)
+}
+
+func (t *TToolBar) Floating() bool {
+    return ToolBar_GetFloating(t.instance)
 }
 
 func (t *TToolBar) Parent() *TControl {

@@ -20,6 +20,16 @@ begin
   Result :=  AObj.GetHotSpot;
 end;
 
+procedure ImageList_HideDragImage(AObj: TImageList); stdcall;
+begin
+  AObj.HideDragImage;
+end;
+
+procedure ImageList_ShowDragImage(AObj: TImageList); stdcall;
+begin
+  AObj.ShowDragImage;
+end;
+
 procedure ImageList_Assign(AObj: TImageList; Source: TPersistent); stdcall;
 begin
   AObj.Assign(Source);
@@ -312,6 +322,21 @@ begin
   AObj.Width := AValue;
 end;
 
+function ImageList_GetDragCursor(AObj: TImageList): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ImageList_SetDragCursor(AObj: TImageList; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ImageList_GetDragging(AObj: TImageList): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ImageList_GetHandle(AObj: TImageList): NativeUInt; stdcall;
 begin
   Result :=  AObj.Handle;
@@ -377,6 +402,8 @@ exports
   ImageList_Create,
   ImageList_Free,
   ImageList_GetHotSpot,
+  ImageList_HideDragImage,
+  ImageList_ShowDragImage,
   ImageList_Assign,
   ImageList_Add,
   ImageList_AddIcon,
@@ -434,6 +461,9 @@ exports
   ImageList_SetShareImages,
   ImageList_GetWidth,
   ImageList_SetWidth,
+  ImageList_GetDragCursor,
+  ImageList_SetDragCursor,
+  ImageList_GetDragging,
   ImageList_GetHandle,
   ImageList_SetHandle,
   ImageList_GetCount,

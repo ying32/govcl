@@ -60,6 +60,10 @@ func (i *TImageButton) BringToFront() {
     ImageButton_BringToFront(i.instance)
 }
 
+func (i *TImageButton) Dragging() bool {
+    return ImageButton_Dragging(i.instance)
+}
+
 func (i *TImageButton) HasParent() bool {
     return ImageButton_HasParent(i.instance)
 }
@@ -176,6 +180,30 @@ func (i *TImageButton) SetCaption(value string) {
     ImageButton_SetCaption(i.instance, value)
 }
 
+func (i *TImageButton) DragCursor() TCursor {
+    return ImageButton_GetDragCursor(i.instance)
+}
+
+func (i *TImageButton) SetDragCursor(value TCursor) {
+    ImageButton_SetDragCursor(i.instance, value)
+}
+
+func (i *TImageButton) DragKind() TDragKind {
+    return ImageButton_GetDragKind(i.instance)
+}
+
+func (i *TImageButton) SetDragKind(value TDragKind) {
+    ImageButton_SetDragKind(i.instance, value)
+}
+
+func (i *TImageButton) DragMode() TDragMode {
+    return ImageButton_GetDragMode(i.instance)
+}
+
+func (i *TImageButton) SetDragMode(value TDragMode) {
+    ImageButton_SetDragMode(i.instance, value)
+}
+
 func (i *TImageButton) Enabled() bool {
     return ImageButton_GetEnabled(i.instance)
 }
@@ -268,8 +296,28 @@ func (i *TImageButton) SetOnClick(fn TNotifyEvent) {
     ImageButton_SetOnClick(i.instance, fn)
 }
 
+func (i *TImageButton) SetOnContextPopup(fn TContextPopupEvent) {
+    ImageButton_SetOnContextPopup(i.instance, fn)
+}
+
 func (i *TImageButton) SetOnDblClick(fn TNotifyEvent) {
     ImageButton_SetOnDblClick(i.instance, fn)
+}
+
+func (i *TImageButton) SetOnDragDrop(fn TDragDropEvent) {
+    ImageButton_SetOnDragDrop(i.instance, fn)
+}
+
+func (i *TImageButton) SetOnDragOver(fn TDragOverEvent) {
+    ImageButton_SetOnDragOver(i.instance, fn)
+}
+
+func (i *TImageButton) SetOnEndDock(fn TEndDragEvent) {
+    ImageButton_SetOnEndDock(i.instance, fn)
+}
+
+func (i *TImageButton) SetOnEndDrag(fn TEndDragEvent) {
+    ImageButton_SetOnEndDrag(i.instance, fn)
 }
 
 func (i *TImageButton) SetOnMouseDown(fn TMouseEvent) {
@@ -342,6 +390,10 @@ func (i *TImageButton) ExplicitWidth() int32 {
 
 func (i *TImageButton) ExplicitHeight() int32 {
     return ImageButton_GetExplicitHeight(i.instance)
+}
+
+func (i *TImageButton) Floating() bool {
+    return ImageButton_GetFloating(i.instance)
 }
 
 func (i *TImageButton) Parent() *TControl {

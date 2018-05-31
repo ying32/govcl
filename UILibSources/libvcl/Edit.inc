@@ -120,6 +120,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Edit_Dragging(AObj: TEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Edit_HasParent(AObj: TEdit): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -323,6 +328,36 @@ end;
 procedure Edit_SetDoubleBuffered(AObj: TEdit; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function Edit_GetDragCursor(AObj: TEdit): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Edit_SetDragCursor(AObj: TEdit; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Edit_GetDragKind(AObj: TEdit): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Edit_SetDragKind(AObj: TEdit; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Edit_GetDragMode(AObj: TEdit): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Edit_SetDragMode(AObj: TEdit; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function Edit_GetEnabled(AObj: TEdit): LongBool; stdcall;
@@ -549,6 +584,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure Edit_SetOnContextPopup(AObj: TEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure Edit_SetOnDblClick(AObj: TEdit; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -559,6 +606,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Edit_SetOnDragDrop(AObj: TEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Edit_SetOnDragOver(AObj: TEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Edit_SetOnEndDock(AObj: TEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure Edit_SetOnEndDrag(AObj: TEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Edit_SetOnEnter(AObj: TEdit; AEventId: NativeUInt); stdcall;
@@ -681,6 +776,18 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure Edit_SetOnStartDock(AObj: TEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function Edit_GetCanUndo(AObj: TEdit): LongBool; stdcall;
 begin
   Result :=  AObj.CanUndo;
@@ -726,6 +833,16 @@ begin
   AObj.SelText := AValue;
 end;
 
+function Edit_GetDockSite(AObj: TEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure Edit_SetDockSite(AObj: TEdit; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function Edit_GetBrush(AObj: TEdit): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -749,6 +866,16 @@ end;
 procedure Edit_SetParentWindow(AObj: TEdit; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function Edit_GetUseDockManager(AObj: TEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure Edit_SetUseDockManager(AObj: TEdit; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function Edit_GetAction(AObj: TEdit): TBasicAction; stdcall;
@@ -814,6 +941,11 @@ end;
 function Edit_GetExplicitHeight(AObj: TEdit): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function Edit_GetFloating(AObj: TEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Edit_GetParent(AObj: TEdit): TWinControl; stdcall;
@@ -991,6 +1123,7 @@ exports
   Edit_SetFocus,
   Edit_Update,
   Edit_BringToFront,
+  Edit_Dragging,
   Edit_HasParent,
   Edit_Hide,
   Edit_Perform,
@@ -1032,6 +1165,12 @@ exports
   Edit_SetColor,
   Edit_GetDoubleBuffered,
   Edit_SetDoubleBuffered,
+  Edit_GetDragCursor,
+  Edit_SetDragCursor,
+  Edit_GetDragKind,
+  Edit_SetDragKind,
+  Edit_GetDragMode,
+  Edit_SetDragMode,
   Edit_GetEnabled,
   Edit_SetEnabled,
   Edit_GetFont,
@@ -1074,7 +1213,12 @@ exports
   Edit_SetStyleElements,
   Edit_SetOnChange,
   Edit_SetOnClick,
+  Edit_SetOnContextPopup,
   Edit_SetOnDblClick,
+  Edit_SetOnDragDrop,
+  Edit_SetOnDragOver,
+  Edit_SetOnEndDock,
+  Edit_SetOnEndDrag,
   Edit_SetOnEnter,
   Edit_SetOnExit,
   Edit_SetOnKeyDown,
@@ -1085,6 +1229,7 @@ exports
   Edit_SetOnMouseLeave,
   Edit_SetOnMouseMove,
   Edit_SetOnMouseUp,
+  Edit_SetOnStartDock,
   Edit_GetCanUndo,
   Edit_GetModified,
   Edit_SetModified,
@@ -1094,11 +1239,15 @@ exports
   Edit_SetSelStart,
   Edit_GetSelText,
   Edit_SetSelText,
+  Edit_GetDockSite,
+  Edit_SetDockSite,
   Edit_GetBrush,
   Edit_GetControlCount,
   Edit_GetHandle,
   Edit_GetParentWindow,
   Edit_SetParentWindow,
+  Edit_GetUseDockManager,
+  Edit_SetUseDockManager,
   Edit_GetAction,
   Edit_SetAction,
   Edit_GetBoundsRect,
@@ -1112,6 +1261,7 @@ exports
   Edit_GetExplicitTop,
   Edit_GetExplicitWidth,
   Edit_GetExplicitHeight,
+  Edit_GetFloating,
   Edit_GetParent,
   Edit_SetParent,
   Edit_GetAlignWithMargins,

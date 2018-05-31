@@ -292,6 +292,18 @@ begin
   TEventClass.Add(AObj, geException, AEventId);
 end;
 
+procedure Application_SetOnHelp(AObj: TApplication; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnHelp := nil;
+    TEventClass.Remove(AObj, geHelp);
+    Exit;
+  end;
+  AObj.OnHelp := TEventClass.OnHelp;
+  TEventClass.Add(AObj, geHelp, AEventId);
+end;
+
 procedure Application_SetOnHint(AObj: TApplication; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -302,6 +314,18 @@ begin
   end;
   AObj.OnHint := TEventClass.OnHint;
   TEventClass.Add(AObj, geHint, AEventId);
+end;
+
+procedure Application_SetOnMessage(AObj: TApplication; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMessage := nil;
+    TEventClass.Remove(AObj, geMessage);
+    Exit;
+  end;
+  AObj.OnMessage := TEventClass.OnMessage;
+  TEventClass.Add(AObj, geMessage, AEventId);
 end;
 
 procedure Application_SetOnMinimize(AObj: TApplication; AEventId: NativeUInt); stdcall;
@@ -326,6 +350,18 @@ begin
   end;
   AObj.OnRestore := TEventClass.OnRestore;
   TEventClass.Add(AObj, geRestore, AEventId);
+end;
+
+procedure Application_SetOnShortCut(AObj: TApplication; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnShortCut := nil;
+    TEventClass.Remove(AObj, geShortCut);
+    Exit;
+  end;
+  AObj.OnShortCut := TEventClass.OnShortCut;
+  TEventClass.Add(AObj, geShortCut, AEventId);
 end;
 
 function Application_GetHandle(AObj: TApplication): HWND; stdcall;
@@ -441,9 +477,12 @@ exports
   Application_GetTitle,
   Application_SetTitle,
   Application_SetOnException,
+  Application_SetOnHelp,
   Application_SetOnHint,
+  Application_SetOnMessage,
   Application_SetOnMinimize,
   Application_SetOnRestore,
+  Application_SetOnShortCut,
   Application_GetHandle,
   Application_SetHandle,
   Application_GetComponentCount,

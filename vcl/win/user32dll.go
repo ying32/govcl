@@ -49,6 +49,12 @@ func LoadIcon(hInstance uintptr, lpIconName int) HICON {
 	return HICON(r)
 }
 
+// LoadIcon2 从实例资源中加载icon
+func LoadIcon2(hInstance uintptr, lpIconName string) HICON {
+	r, _, _ := _LoadIcon.Call(hInstance, CStr(lpIconName))
+	return HICON(r)
+}
+
 // GetClientRect 获取指定句柄客户区矩形
 func GetClientRect(hWnd HWND) TRect {
 	r := TRect{}

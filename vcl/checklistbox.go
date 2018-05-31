@@ -124,6 +124,10 @@ func (c *TCheckListBox) BringToFront() {
     CheckListBox_BringToFront(c.instance)
 }
 
+func (c *TCheckListBox) Dragging() bool {
+    return CheckListBox_Dragging(c.instance)
+}
+
 func (c *TCheckListBox) HasParent() bool {
     return CheckListBox_HasParent(c.instance)
 }
@@ -290,6 +294,30 @@ func (c *TCheckListBox) DoubleBuffered() bool {
 
 func (c *TCheckListBox) SetDoubleBuffered(value bool) {
     CheckListBox_SetDoubleBuffered(c.instance, value)
+}
+
+func (c *TCheckListBox) DragCursor() TCursor {
+    return CheckListBox_GetDragCursor(c.instance)
+}
+
+func (c *TCheckListBox) SetDragCursor(value TCursor) {
+    CheckListBox_SetDragCursor(c.instance, value)
+}
+
+func (c *TCheckListBox) DragKind() TDragKind {
+    return CheckListBox_GetDragKind(c.instance)
+}
+
+func (c *TCheckListBox) SetDragKind(value TDragKind) {
+    CheckListBox_SetDragKind(c.instance, value)
+}
+
+func (c *TCheckListBox) DragMode() TDragMode {
+    return CheckListBox_GetDragMode(c.instance)
+}
+
+func (c *TCheckListBox) SetDragMode(value TDragMode) {
+    CheckListBox_SetDragMode(c.instance, value)
 }
 
 func (c *TCheckListBox) Enabled() bool {
@@ -464,8 +492,28 @@ func (c *TCheckListBox) SetOnClick(fn TNotifyEvent) {
     CheckListBox_SetOnClick(c.instance, fn)
 }
 
+func (c *TCheckListBox) SetOnContextPopup(fn TContextPopupEvent) {
+    CheckListBox_SetOnContextPopup(c.instance, fn)
+}
+
 func (c *TCheckListBox) SetOnDblClick(fn TNotifyEvent) {
     CheckListBox_SetOnDblClick(c.instance, fn)
+}
+
+func (c *TCheckListBox) SetOnDragDrop(fn TDragDropEvent) {
+    CheckListBox_SetOnDragDrop(c.instance, fn)
+}
+
+func (c *TCheckListBox) SetOnDragOver(fn TDragOverEvent) {
+    CheckListBox_SetOnDragOver(c.instance, fn)
+}
+
+func (c *TCheckListBox) SetOnEndDock(fn TEndDragEvent) {
+    CheckListBox_SetOnEndDock(c.instance, fn)
+}
+
+func (c *TCheckListBox) SetOnEndDrag(fn TEndDragEvent) {
+    CheckListBox_SetOnEndDrag(c.instance, fn)
 }
 
 func (c *TCheckListBox) SetOnEnter(fn TNotifyEvent) {
@@ -508,6 +556,10 @@ func (c *TCheckListBox) SetOnMouseUp(fn TMouseEvent) {
     CheckListBox_SetOnMouseUp(c.instance, fn)
 }
 
+func (c *TCheckListBox) SetOnStartDock(fn TStartDockEvent) {
+    CheckListBox_SetOnStartDock(c.instance, fn)
+}
+
 func (c *TCheckListBox) AutoCompleteDelay() uint32 {
     return CheckListBox_GetAutoCompleteDelay(c.instance)
 }
@@ -548,6 +600,14 @@ func (c *TCheckListBox) SetItemIndex(value int32) {
     CheckListBox_SetItemIndex(c.instance, value)
 }
 
+func (c *TCheckListBox) DockSite() bool {
+    return CheckListBox_GetDockSite(c.instance)
+}
+
+func (c *TCheckListBox) SetDockSite(value bool) {
+    CheckListBox_SetDockSite(c.instance, value)
+}
+
 func (c *TCheckListBox) Brush() *TBrush {
     return BrushFromInst(CheckListBox_GetBrush(c.instance))
 }
@@ -566,6 +626,14 @@ func (c *TCheckListBox) ParentWindow() HWND {
 
 func (c *TCheckListBox) SetParentWindow(value HWND) {
     CheckListBox_SetParentWindow(c.instance, value)
+}
+
+func (c *TCheckListBox) UseDockManager() bool {
+    return CheckListBox_GetUseDockManager(c.instance)
+}
+
+func (c *TCheckListBox) SetUseDockManager(value bool) {
+    CheckListBox_SetUseDockManager(c.instance, value)
 }
 
 func (c *TCheckListBox) Action() *TAction {
@@ -618,6 +686,10 @@ func (c *TCheckListBox) ExplicitWidth() int32 {
 
 func (c *TCheckListBox) ExplicitHeight() int32 {
     return CheckListBox_GetExplicitHeight(c.instance)
+}
+
+func (c *TCheckListBox) Floating() bool {
+    return CheckListBox_GetFloating(c.instance)
 }
 
 func (c *TCheckListBox) Parent() *TControl {

@@ -144,6 +144,10 @@ func (m *TMaskEdit) BringToFront() {
     MaskEdit_BringToFront(m.instance)
 }
 
+func (m *TMaskEdit) Dragging() bool {
+    return MaskEdit_Dragging(m.instance)
+}
+
 func (m *TMaskEdit) HasParent() bool {
     return MaskEdit_HasParent(m.instance)
 }
@@ -304,6 +308,30 @@ func (m *TMaskEdit) SetDoubleBuffered(value bool) {
     MaskEdit_SetDoubleBuffered(m.instance, value)
 }
 
+func (m *TMaskEdit) DragCursor() TCursor {
+    return MaskEdit_GetDragCursor(m.instance)
+}
+
+func (m *TMaskEdit) SetDragCursor(value TCursor) {
+    MaskEdit_SetDragCursor(m.instance, value)
+}
+
+func (m *TMaskEdit) DragKind() TDragKind {
+    return MaskEdit_GetDragKind(m.instance)
+}
+
+func (m *TMaskEdit) SetDragKind(value TDragKind) {
+    MaskEdit_SetDragKind(m.instance, value)
+}
+
+func (m *TMaskEdit) DragMode() TDragMode {
+    return MaskEdit_GetDragMode(m.instance)
+}
+
+func (m *TMaskEdit) SetDragMode(value TDragMode) {
+    MaskEdit_SetDragMode(m.instance, value)
+}
+
 func (m *TMaskEdit) Enabled() bool {
     return MaskEdit_GetEnabled(m.instance)
 }
@@ -460,6 +488,22 @@ func (m *TMaskEdit) SetOnDblClick(fn TNotifyEvent) {
     MaskEdit_SetOnDblClick(m.instance, fn)
 }
 
+func (m *TMaskEdit) SetOnDragDrop(fn TDragDropEvent) {
+    MaskEdit_SetOnDragDrop(m.instance, fn)
+}
+
+func (m *TMaskEdit) SetOnDragOver(fn TDragOverEvent) {
+    MaskEdit_SetOnDragOver(m.instance, fn)
+}
+
+func (m *TMaskEdit) SetOnEndDock(fn TEndDragEvent) {
+    MaskEdit_SetOnEndDock(m.instance, fn)
+}
+
+func (m *TMaskEdit) SetOnEndDrag(fn TEndDragEvent) {
+    MaskEdit_SetOnEndDrag(m.instance, fn)
+}
+
 func (m *TMaskEdit) SetOnEnter(fn TNotifyEvent) {
     MaskEdit_SetOnEnter(m.instance, fn)
 }
@@ -498,6 +542,10 @@ func (m *TMaskEdit) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (m *TMaskEdit) SetOnMouseUp(fn TMouseEvent) {
     MaskEdit_SetOnMouseUp(m.instance, fn)
+}
+
+func (m *TMaskEdit) SetOnStartDock(fn TStartDockEvent) {
+    MaskEdit_SetOnStartDock(m.instance, fn)
 }
 
 func (m *TMaskEdit) IsMasked() bool {
@@ -548,6 +596,14 @@ func (m *TMaskEdit) SetSelText(value string) {
     MaskEdit_SetSelText(m.instance, value)
 }
 
+func (m *TMaskEdit) DockSite() bool {
+    return MaskEdit_GetDockSite(m.instance)
+}
+
+func (m *TMaskEdit) SetDockSite(value bool) {
+    MaskEdit_SetDockSite(m.instance, value)
+}
+
 func (m *TMaskEdit) Brush() *TBrush {
     return BrushFromInst(MaskEdit_GetBrush(m.instance))
 }
@@ -566,6 +622,14 @@ func (m *TMaskEdit) ParentWindow() HWND {
 
 func (m *TMaskEdit) SetParentWindow(value HWND) {
     MaskEdit_SetParentWindow(m.instance, value)
+}
+
+func (m *TMaskEdit) UseDockManager() bool {
+    return MaskEdit_GetUseDockManager(m.instance)
+}
+
+func (m *TMaskEdit) SetUseDockManager(value bool) {
+    MaskEdit_SetUseDockManager(m.instance, value)
 }
 
 func (m *TMaskEdit) Action() *TAction {
@@ -618,6 +682,10 @@ func (m *TMaskEdit) ExplicitWidth() int32 {
 
 func (m *TMaskEdit) ExplicitHeight() int32 {
     return MaskEdit_GetExplicitHeight(m.instance)
+}
+
+func (m *TMaskEdit) Floating() bool {
+    return MaskEdit_GetFloating(m.instance)
 }
 
 func (m *TMaskEdit) Parent() *TControl {

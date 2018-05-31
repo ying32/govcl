@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function LinkLabel_Dragging(AObj: TLinkLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function LinkLabel_HasParent(AObj: TLinkLabel): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -250,6 +255,36 @@ begin
   AObj.Color := AValue;
 end;
 
+function LinkLabel_GetDragCursor(AObj: TLinkLabel): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure LinkLabel_SetDragCursor(AObj: TLinkLabel; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function LinkLabel_GetDragKind(AObj: TLinkLabel): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure LinkLabel_SetDragKind(AObj: TLinkLabel; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function LinkLabel_GetDragMode(AObj: TLinkLabel): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure LinkLabel_SetDragMode(AObj: TLinkLabel; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function LinkLabel_GetEnabled(AObj: TLinkLabel): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -372,6 +407,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure LinkLabel_SetOnContextPopup(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure LinkLabel_SetOnDblClick(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -382,6 +429,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure LinkLabel_SetOnDragDrop(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure LinkLabel_SetOnDragOver(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure LinkLabel_SetOnEndDock(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure LinkLabel_SetOnEndDrag(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure LinkLabel_SetOnMouseDown(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
@@ -444,6 +539,18 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure LinkLabel_SetOnStartDock(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 procedure LinkLabel_SetOnLinkClick(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -454,6 +561,16 @@ begin
   end;
   AObj.OnLinkClick := TEventClass.OnLinkClick;
   TEventClass.Add(AObj, geLinkClick, AEventId);
+end;
+
+function LinkLabel_GetDockSite(AObj: TLinkLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure LinkLabel_SetDockSite(AObj: TLinkLabel; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
 end;
 
 function LinkLabel_GetDoubleBuffered(AObj: TLinkLabel): LongBool; stdcall;
@@ -499,6 +616,16 @@ end;
 procedure LinkLabel_SetParentWindow(AObj: TLinkLabel; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function LinkLabel_GetUseDockManager(AObj: TLinkLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure LinkLabel_SetUseDockManager(AObj: TLinkLabel; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function LinkLabel_GetAction(AObj: TLinkLabel): TBasicAction; stdcall;
@@ -574,6 +701,11 @@ end;
 function LinkLabel_GetExplicitHeight(AObj: TLinkLabel): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function LinkLabel_GetFloating(AObj: TLinkLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function LinkLabel_GetParent(AObj: TLinkLabel): TWinControl; stdcall;
@@ -752,6 +884,7 @@ exports
   LinkLabel_SetFocus,
   LinkLabel_Update,
   LinkLabel_BringToFront,
+  LinkLabel_Dragging,
   LinkLabel_HasParent,
   LinkLabel_Hide,
   LinkLabel_Perform,
@@ -787,6 +920,12 @@ exports
   LinkLabel_SetCaption,
   LinkLabel_GetColor,
   LinkLabel_SetColor,
+  LinkLabel_GetDragCursor,
+  LinkLabel_SetDragCursor,
+  LinkLabel_GetDragKind,
+  LinkLabel_SetDragKind,
+  LinkLabel_GetDragMode,
+  LinkLabel_SetDragMode,
   LinkLabel_GetEnabled,
   LinkLabel_SetEnabled,
   LinkLabel_GetFont,
@@ -810,13 +949,21 @@ exports
   LinkLabel_GetVisible,
   LinkLabel_SetVisible,
   LinkLabel_SetOnClick,
+  LinkLabel_SetOnContextPopup,
   LinkLabel_SetOnDblClick,
+  LinkLabel_SetOnDragDrop,
+  LinkLabel_SetOnDragOver,
+  LinkLabel_SetOnEndDock,
+  LinkLabel_SetOnEndDrag,
   LinkLabel_SetOnMouseDown,
   LinkLabel_SetOnMouseEnter,
   LinkLabel_SetOnMouseLeave,
   LinkLabel_SetOnMouseMove,
   LinkLabel_SetOnMouseUp,
+  LinkLabel_SetOnStartDock,
   LinkLabel_SetOnLinkClick,
+  LinkLabel_GetDockSite,
+  LinkLabel_SetDockSite,
   LinkLabel_GetDoubleBuffered,
   LinkLabel_SetDoubleBuffered,
   LinkLabel_GetBrush,
@@ -826,6 +973,8 @@ exports
   LinkLabel_SetParentDoubleBuffered,
   LinkLabel_GetParentWindow,
   LinkLabel_SetParentWindow,
+  LinkLabel_GetUseDockManager,
+  LinkLabel_SetUseDockManager,
   LinkLabel_GetAction,
   LinkLabel_SetAction,
   LinkLabel_GetBiDiMode,
@@ -841,6 +990,7 @@ exports
   LinkLabel_GetExplicitTop,
   LinkLabel_GetExplicitWidth,
   LinkLabel_GetExplicitHeight,
+  LinkLabel_GetFloating,
   LinkLabel_GetParent,
   LinkLabel_SetParent,
   LinkLabel_GetStyleElements,

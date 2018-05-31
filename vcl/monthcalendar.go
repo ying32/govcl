@@ -101,6 +101,10 @@ func (m *TMonthCalendar) BringToFront() {
     MonthCalendar_BringToFront(m.instance)
 }
 
+func (m *TMonthCalendar) Dragging() bool {
+    return MonthCalendar_Dragging(m.instance)
+}
+
 func (m *TMonthCalendar) HasParent() bool {
     return MonthCalendar_HasParent(m.instance)
 }
@@ -231,6 +235,30 @@ func (m *TMonthCalendar) DoubleBuffered() bool {
 
 func (m *TMonthCalendar) SetDoubleBuffered(value bool) {
     MonthCalendar_SetDoubleBuffered(m.instance, value)
+}
+
+func (m *TMonthCalendar) DragCursor() TCursor {
+    return MonthCalendar_GetDragCursor(m.instance)
+}
+
+func (m *TMonthCalendar) SetDragCursor(value TCursor) {
+    MonthCalendar_SetDragCursor(m.instance, value)
+}
+
+func (m *TMonthCalendar) DragKind() TDragKind {
+    return MonthCalendar_GetDragKind(m.instance)
+}
+
+func (m *TMonthCalendar) SetDragKind(value TDragKind) {
+    MonthCalendar_SetDragKind(m.instance, value)
+}
+
+func (m *TMonthCalendar) DragMode() TDragMode {
+    return MonthCalendar_GetDragMode(m.instance)
+}
+
+func (m *TMonthCalendar) SetDragMode(value TDragMode) {
+    MonthCalendar_SetDragMode(m.instance, value)
 }
 
 func (m *TMonthCalendar) Enabled() bool {
@@ -373,8 +401,28 @@ func (m *TMonthCalendar) SetOnClick(fn TNotifyEvent) {
     MonthCalendar_SetOnClick(m.instance, fn)
 }
 
+func (m *TMonthCalendar) SetOnContextPopup(fn TContextPopupEvent) {
+    MonthCalendar_SetOnContextPopup(m.instance, fn)
+}
+
 func (m *TMonthCalendar) SetOnDblClick(fn TNotifyEvent) {
     MonthCalendar_SetOnDblClick(m.instance, fn)
+}
+
+func (m *TMonthCalendar) SetOnDragDrop(fn TDragDropEvent) {
+    MonthCalendar_SetOnDragDrop(m.instance, fn)
+}
+
+func (m *TMonthCalendar) SetOnDragOver(fn TDragOverEvent) {
+    MonthCalendar_SetOnDragOver(m.instance, fn)
+}
+
+func (m *TMonthCalendar) SetOnEndDock(fn TEndDragEvent) {
+    MonthCalendar_SetOnEndDock(m.instance, fn)
+}
+
+func (m *TMonthCalendar) SetOnEndDrag(fn TEndDragEvent) {
+    MonthCalendar_SetOnEndDrag(m.instance, fn)
 }
 
 func (m *TMonthCalendar) SetOnEnter(fn TNotifyEvent) {
@@ -405,6 +453,18 @@ func (m *TMonthCalendar) SetOnMouseLeave(fn TNotifyEvent) {
     MonthCalendar_SetOnMouseLeave(m.instance, fn)
 }
 
+func (m *TMonthCalendar) SetOnStartDock(fn TStartDockEvent) {
+    MonthCalendar_SetOnStartDock(m.instance, fn)
+}
+
+func (m *TMonthCalendar) DockSite() bool {
+    return MonthCalendar_GetDockSite(m.instance)
+}
+
+func (m *TMonthCalendar) SetDockSite(value bool) {
+    MonthCalendar_SetDockSite(m.instance, value)
+}
+
 func (m *TMonthCalendar) Brush() *TBrush {
     return BrushFromInst(MonthCalendar_GetBrush(m.instance))
 }
@@ -423,6 +483,14 @@ func (m *TMonthCalendar) ParentWindow() HWND {
 
 func (m *TMonthCalendar) SetParentWindow(value HWND) {
     MonthCalendar_SetParentWindow(m.instance, value)
+}
+
+func (m *TMonthCalendar) UseDockManager() bool {
+    return MonthCalendar_GetUseDockManager(m.instance)
+}
+
+func (m *TMonthCalendar) SetUseDockManager(value bool) {
+    MonthCalendar_SetUseDockManager(m.instance, value)
 }
 
 func (m *TMonthCalendar) Action() *TAction {
@@ -475,6 +543,10 @@ func (m *TMonthCalendar) ExplicitWidth() int32 {
 
 func (m *TMonthCalendar) ExplicitHeight() int32 {
     return MonthCalendar_GetExplicitHeight(m.instance)
+}
+
+func (m *TMonthCalendar) Floating() bool {
+    return MonthCalendar_GetFloating(m.instance)
 }
 
 func (m *TMonthCalendar) Parent() *TControl {

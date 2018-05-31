@@ -136,6 +136,10 @@ func (m *TMemo) BringToFront() {
     Memo_BringToFront(m.instance)
 }
 
+func (m *TMemo) Dragging() bool {
+    return Memo_Dragging(m.instance)
+}
+
 func (m *TMemo) HasParent() bool {
     return Memo_HasParent(m.instance)
 }
@@ -282,6 +286,30 @@ func (m *TMemo) DoubleBuffered() bool {
 
 func (m *TMemo) SetDoubleBuffered(value bool) {
     Memo_SetDoubleBuffered(m.instance, value)
+}
+
+func (m *TMemo) DragCursor() TCursor {
+    return Memo_GetDragCursor(m.instance)
+}
+
+func (m *TMemo) SetDragCursor(value TCursor) {
+    Memo_SetDragCursor(m.instance, value)
+}
+
+func (m *TMemo) DragKind() TDragKind {
+    return Memo_GetDragKind(m.instance)
+}
+
+func (m *TMemo) SetDragKind(value TDragKind) {
+    Memo_SetDragKind(m.instance, value)
+}
+
+func (m *TMemo) DragMode() TDragMode {
+    return Memo_GetDragMode(m.instance)
+}
+
+func (m *TMemo) SetDragMode(value TDragMode) {
+    Memo_SetDragMode(m.instance, value)
 }
 
 func (m *TMemo) Enabled() bool {
@@ -460,8 +488,28 @@ func (m *TMemo) SetOnClick(fn TNotifyEvent) {
     Memo_SetOnClick(m.instance, fn)
 }
 
+func (m *TMemo) SetOnContextPopup(fn TContextPopupEvent) {
+    Memo_SetOnContextPopup(m.instance, fn)
+}
+
 func (m *TMemo) SetOnDblClick(fn TNotifyEvent) {
     Memo_SetOnDblClick(m.instance, fn)
+}
+
+func (m *TMemo) SetOnDragDrop(fn TDragDropEvent) {
+    Memo_SetOnDragDrop(m.instance, fn)
+}
+
+func (m *TMemo) SetOnDragOver(fn TDragOverEvent) {
+    Memo_SetOnDragOver(m.instance, fn)
+}
+
+func (m *TMemo) SetOnEndDock(fn TEndDragEvent) {
+    Memo_SetOnEndDock(m.instance, fn)
+}
+
+func (m *TMemo) SetOnEndDrag(fn TEndDragEvent) {
+    Memo_SetOnEndDrag(m.instance, fn)
 }
 
 func (m *TMemo) SetOnEnter(fn TNotifyEvent) {
@@ -502,6 +550,10 @@ func (m *TMemo) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (m *TMemo) SetOnMouseUp(fn TMouseEvent) {
     Memo_SetOnMouseUp(m.instance, fn)
+}
+
+func (m *TMemo) SetOnStartDock(fn TStartDockEvent) {
+    Memo_SetOnStartDock(m.instance, fn)
 }
 
 func (m *TMemo) CaretPos() TPoint {
@@ -564,6 +616,14 @@ func (m *TMemo) SetTextHint(value string) {
     Memo_SetTextHint(m.instance, value)
 }
 
+func (m *TMemo) DockSite() bool {
+    return Memo_GetDockSite(m.instance)
+}
+
+func (m *TMemo) SetDockSite(value bool) {
+    Memo_SetDockSite(m.instance, value)
+}
+
 func (m *TMemo) Brush() *TBrush {
     return BrushFromInst(Memo_GetBrush(m.instance))
 }
@@ -582,6 +642,14 @@ func (m *TMemo) ParentWindow() HWND {
 
 func (m *TMemo) SetParentWindow(value HWND) {
     Memo_SetParentWindow(m.instance, value)
+}
+
+func (m *TMemo) UseDockManager() bool {
+    return Memo_GetUseDockManager(m.instance)
+}
+
+func (m *TMemo) SetUseDockManager(value bool) {
+    Memo_SetUseDockManager(m.instance, value)
 }
 
 func (m *TMemo) Action() *TAction {
@@ -634,6 +702,10 @@ func (m *TMemo) ExplicitWidth() int32 {
 
 func (m *TMemo) ExplicitHeight() int32 {
     return Memo_GetExplicitHeight(m.instance)
+}
+
+func (m *TMemo) Floating() bool {
+    return Memo_GetFloating(m.instance)
 }
 
 func (m *TMemo) Parent() *TControl {

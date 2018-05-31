@@ -200,6 +200,16 @@ begin
   Result :=  AObj.MainFormHandle;
 end;
 
+function Application_GetMainFormOnTaskBar(AObj: TApplication): LongBool; extdecl;
+begin
+  Result :=  AObj.MainFormOnTaskBar;
+end;
+
+procedure Application_SetMainFormOnTaskBar(AObj: TApplication; AValue: LongBool); extdecl;
+begin
+  AObj.MainFormOnTaskBar := AValue;
+end;
+
 function Application_GetBiDiMode(AObj: TApplication): TBiDiMode; extdecl;
 begin
   Result :=  AObj.BiDiMode;
@@ -252,6 +262,18 @@ begin
   EventClass.Add(AObj, geException, AEventId);
 end;
 
+procedure Application_SetOnHelp(AObj: TApplication; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnHelp := nil;
+    EventClass.Remove(AObj, geHelp);
+    Exit;
+  end;
+  AObj.OnHelp := @EventClass.OnHelp;
+  EventClass.Add(AObj, geHelp, AEventId);
+end;
+
 procedure Application_SetOnHint(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -286,6 +308,18 @@ begin
   end;
   AObj.OnRestore := @EventClass.OnRestore;
   EventClass.Add(AObj, geRestore, AEventId);
+end;
+
+procedure Application_SetOnShortCut(AObj: TApplication; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnShortCut := nil;
+    EventClass.Remove(AObj, geShortCut);
+    Exit;
+  end;
+  AObj.OnShortCut := @EventClass.OnShortCut;
+  EventClass.Add(AObj, geShortCut, AEventId);
 end;
 
 function Application_GetComponentCount(AObj: TApplication): Integer; extdecl;
@@ -374,6 +408,8 @@ exports
   Application_SetIcon,
   Application_GetMainForm,
   Application_GetMainFormHandle,
+  Application_GetMainFormOnTaskBar,
+  Application_SetMainFormOnTaskBar,
   Application_GetBiDiMode,
   Application_SetBiDiMode,
   Application_GetShowHint,
@@ -383,9 +419,11 @@ exports
   Application_GetTitle,
   Application_SetTitle,
   Application_SetOnException,
+  Application_SetOnHelp,
   Application_SetOnHint,
   Application_SetOnMinimize,
   Application_SetOnRestore,
+  Application_SetOnShortCut,
   Application_GetComponentCount,
   Application_GetComponentIndex,
   Application_SetComponentIndex,

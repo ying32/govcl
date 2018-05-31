@@ -30,6 +30,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function GroupBox_HandleAllocated(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure GroupBox_Invalidate(AObj: TGroupBox); extdecl;
 begin
   AObj.Invalidate;
@@ -68,6 +73,11 @@ end;
 procedure GroupBox_BringToFront(AObj: TGroupBox); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function GroupBox_Dragging(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function GroupBox_HasParent(AObj: TGroupBox): LongBool; extdecl;
@@ -195,6 +205,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function GroupBox_GetDockSite(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure GroupBox_SetDockSite(AObj: TGroupBox; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function GroupBox_GetDoubleBuffered(AObj: TGroupBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -203,6 +223,36 @@ end;
 procedure GroupBox_SetDoubleBuffered(AObj: TGroupBox; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function GroupBox_GetDragCursor(AObj: TGroupBox): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure GroupBox_SetDragCursor(AObj: TGroupBox; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function GroupBox_GetDragKind(AObj: TGroupBox): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure GroupBox_SetDragKind(AObj: TGroupBox; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function GroupBox_GetDragMode(AObj: TGroupBox): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure GroupBox_SetDragMode(AObj: TGroupBox; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function GroupBox_GetEnabled(AObj: TGroupBox): LongBool; extdecl;
@@ -317,6 +367,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure GroupBox_SetOnContextPopup(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure GroupBox_SetOnDblClick(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -327,6 +389,66 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure GroupBox_SetOnDragDrop(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure GroupBox_SetOnDockDrop(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    EventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := @EventClass.OnDockDrop;
+  EventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
+procedure GroupBox_SetOnDragOver(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure GroupBox_SetOnEndDock(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    EventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := @EventClass.OnEndDock;
+  EventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure GroupBox_SetOnEndDrag(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure GroupBox_SetOnEnter(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
@@ -351,6 +473,18 @@ begin
   end;
   AObj.OnExit := @EventClass.OnExit;
   EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure GroupBox_SetOnGetSiteInfo(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    EventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
+  EventClass.Add(AObj, geGetSiteInfo, AEventId);
 end;
 
 procedure GroupBox_SetOnMouseDown(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
@@ -413,6 +547,30 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure GroupBox_SetOnStartDock(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    EventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := @EventClass.OnStartDock;
+  EventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+procedure GroupBox_SetOnUnDock(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    EventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := @EventClass.OnUnDock;
+  EventClass.Add(AObj, geUnDock, AEventId);
+end;
+
 function GroupBox_GetBrush(AObj: TGroupBox): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -436,6 +594,16 @@ end;
 procedure GroupBox_SetParentWindow(AObj: TGroupBox; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function GroupBox_GetUseDockManager(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure GroupBox_SetUseDockManager(AObj: TGroupBox; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function GroupBox_GetAction(AObj: TGroupBox): TBasicAction; extdecl;
@@ -481,6 +649,11 @@ end;
 procedure GroupBox_SetClientWidth(AObj: TGroupBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function GroupBox_GetFloating(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function GroupBox_GetParent(AObj: TGroupBox): TWinControl; extdecl;
@@ -610,6 +783,7 @@ exports
   GroupBox_CanFocus,
   GroupBox_FlipChildren,
   GroupBox_Focused,
+  GroupBox_HandleAllocated,
   GroupBox_Invalidate,
   GroupBox_Realign,
   GroupBox_Repaint,
@@ -618,6 +792,7 @@ exports
   GroupBox_SetFocus,
   GroupBox_Update,
   GroupBox_BringToFront,
+  GroupBox_Dragging,
   GroupBox_HasParent,
   GroupBox_Hide,
   GroupBox_Perform,
@@ -643,8 +818,16 @@ exports
   GroupBox_SetCaption,
   GroupBox_GetColor,
   GroupBox_SetColor,
+  GroupBox_GetDockSite,
+  GroupBox_SetDockSite,
   GroupBox_GetDoubleBuffered,
   GroupBox_SetDoubleBuffered,
+  GroupBox_GetDragCursor,
+  GroupBox_SetDragCursor,
+  GroupBox_GetDragKind,
+  GroupBox_SetDragKind,
+  GroupBox_GetDragMode,
+  GroupBox_SetDragMode,
   GroupBox_GetEnabled,
   GroupBox_SetEnabled,
   GroupBox_GetFont,
@@ -666,19 +849,30 @@ exports
   GroupBox_GetVisible,
   GroupBox_SetVisible,
   GroupBox_SetOnClick,
+  GroupBox_SetOnContextPopup,
   GroupBox_SetOnDblClick,
+  GroupBox_SetOnDragDrop,
+  GroupBox_SetOnDockDrop,
+  GroupBox_SetOnDragOver,
+  GroupBox_SetOnEndDock,
+  GroupBox_SetOnEndDrag,
   GroupBox_SetOnEnter,
   GroupBox_SetOnExit,
+  GroupBox_SetOnGetSiteInfo,
   GroupBox_SetOnMouseDown,
   GroupBox_SetOnMouseEnter,
   GroupBox_SetOnMouseLeave,
   GroupBox_SetOnMouseMove,
   GroupBox_SetOnMouseUp,
+  GroupBox_SetOnStartDock,
+  GroupBox_SetOnUnDock,
   GroupBox_GetBrush,
   GroupBox_GetControlCount,
   GroupBox_GetHandle,
   GroupBox_GetParentWindow,
   GroupBox_SetParentWindow,
+  GroupBox_GetUseDockManager,
+  GroupBox_SetUseDockManager,
   GroupBox_GetAction,
   GroupBox_SetAction,
   GroupBox_GetBoundsRect,
@@ -688,6 +882,7 @@ exports
   GroupBox_GetClientRect,
   GroupBox_GetClientWidth,
   GroupBox_SetClientWidth,
+  GroupBox_GetFloating,
   GroupBox_GetParent,
   GroupBox_SetParent,
   GroupBox_GetLeft,

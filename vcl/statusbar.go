@@ -100,6 +100,10 @@ func (s *TStatusBar) BringToFront() {
     StatusBar_BringToFront(s.instance)
 }
 
+func (s *TStatusBar) Dragging() bool {
+    return StatusBar_Dragging(s.instance)
+}
+
 func (s *TStatusBar) HasParent() bool {
     return StatusBar_HasParent(s.instance)
 }
@@ -222,6 +226,30 @@ func (s *TStatusBar) DoubleBuffered() bool {
 
 func (s *TStatusBar) SetDoubleBuffered(value bool) {
     StatusBar_SetDoubleBuffered(s.instance, value)
+}
+
+func (s *TStatusBar) DragCursor() TCursor {
+    return StatusBar_GetDragCursor(s.instance)
+}
+
+func (s *TStatusBar) SetDragCursor(value TCursor) {
+    StatusBar_SetDragCursor(s.instance, value)
+}
+
+func (s *TStatusBar) DragKind() TDragKind {
+    return StatusBar_GetDragKind(s.instance)
+}
+
+func (s *TStatusBar) SetDragKind(value TDragKind) {
+    StatusBar_SetDragKind(s.instance, value)
+}
+
+func (s *TStatusBar) DragMode() TDragMode {
+    return StatusBar_GetDragMode(s.instance)
+}
+
+func (s *TStatusBar) SetDragMode(value TDragMode) {
+    StatusBar_SetDragMode(s.instance, value)
 }
 
 func (s *TStatusBar) Enabled() bool {
@@ -348,8 +376,28 @@ func (s *TStatusBar) SetOnClick(fn TNotifyEvent) {
     StatusBar_SetOnClick(s.instance, fn)
 }
 
+func (s *TStatusBar) SetOnContextPopup(fn TContextPopupEvent) {
+    StatusBar_SetOnContextPopup(s.instance, fn)
+}
+
 func (s *TStatusBar) SetOnDblClick(fn TNotifyEvent) {
     StatusBar_SetOnDblClick(s.instance, fn)
+}
+
+func (s *TStatusBar) SetOnDragDrop(fn TDragDropEvent) {
+    StatusBar_SetOnDragDrop(s.instance, fn)
+}
+
+func (s *TStatusBar) SetOnDragOver(fn TDragOverEvent) {
+    StatusBar_SetOnDragOver(s.instance, fn)
+}
+
+func (s *TStatusBar) SetOnEndDock(fn TEndDragEvent) {
+    StatusBar_SetOnEndDock(s.instance, fn)
+}
+
+func (s *TStatusBar) SetOnEndDrag(fn TEndDragEvent) {
+    StatusBar_SetOnEndDrag(s.instance, fn)
 }
 
 func (s *TStatusBar) SetOnHint(fn TNotifyEvent) {
@@ -380,8 +428,20 @@ func (s *TStatusBar) SetOnResize(fn TNotifyEvent) {
     StatusBar_SetOnResize(s.instance, fn)
 }
 
+func (s *TStatusBar) SetOnStartDock(fn TStartDockEvent) {
+    StatusBar_SetOnStartDock(s.instance, fn)
+}
+
 func (s *TStatusBar) Canvas() *TCanvas {
     return CanvasFromInst(StatusBar_GetCanvas(s.instance))
+}
+
+func (s *TStatusBar) DockSite() bool {
+    return StatusBar_GetDockSite(s.instance)
+}
+
+func (s *TStatusBar) SetDockSite(value bool) {
+    StatusBar_SetDockSite(s.instance, value)
 }
 
 func (s *TStatusBar) Brush() *TBrush {
@@ -418,6 +478,14 @@ func (s *TStatusBar) TabStop() bool {
 
 func (s *TStatusBar) SetTabStop(value bool) {
     StatusBar_SetTabStop(s.instance, value)
+}
+
+func (s *TStatusBar) UseDockManager() bool {
+    return StatusBar_GetUseDockManager(s.instance)
+}
+
+func (s *TStatusBar) SetUseDockManager(value bool) {
+    StatusBar_SetUseDockManager(s.instance, value)
 }
 
 func (s *TStatusBar) BoundsRect() TRect {
@@ -462,6 +530,10 @@ func (s *TStatusBar) ExplicitWidth() int32 {
 
 func (s *TStatusBar) ExplicitHeight() int32 {
     return StatusBar_GetExplicitHeight(s.instance)
+}
+
+func (s *TStatusBar) Floating() bool {
+    return StatusBar_GetFloating(s.instance)
 }
 
 func (s *TStatusBar) Parent() *TControl {

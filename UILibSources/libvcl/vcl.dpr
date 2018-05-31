@@ -48,6 +48,7 @@ uses
   Vcl.CheckLst,
   Vcl.Samples.Gauges,
   Vcl.FileCtrl,
+  //Vcl.Grids,
   uFormDesignerFile,
   uEventCallback in 'uEventCallback.pas',
   ufrmGo in 'ufrmGo.pas' {GoForm},
@@ -56,6 +57,7 @@ uses
   uComponents in 'uComponents.pas';
 
 {$R *.res}
+
 
 
 {$IFNDEF DEBUG}
@@ -175,6 +177,8 @@ uses
 {$I ReplaceDialog.inc}
 {$I PrinterSetupDialog.inc}
 {$I PageSetupDialog.inc}
+{$I DragObject.inc}
+{$I DragDockObject.inc}
 
 begin
 end.

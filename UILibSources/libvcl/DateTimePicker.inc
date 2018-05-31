@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function DateTimePicker_Dragging(AObj: TDateTimePicker): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function DateTimePicker_HasParent(AObj: TDateTimePicker): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -335,6 +340,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function DateTimePicker_GetDragCursor(AObj: TDateTimePicker): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure DateTimePicker_SetDragCursor(AObj: TDateTimePicker; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function DateTimePicker_GetDragKind(AObj: TDateTimePicker): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure DateTimePicker_SetDragKind(AObj: TDateTimePicker; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function DateTimePicker_GetDragMode(AObj: TDateTimePicker): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure DateTimePicker_SetDragMode(AObj: TDateTimePicker; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function DateTimePicker_GetEnabled(AObj: TDateTimePicker): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -519,6 +554,66 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+procedure DateTimePicker_SetOnContextPopup(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure DateTimePicker_SetOnDragDrop(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure DateTimePicker_SetOnDragOver(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure DateTimePicker_SetOnEndDock(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure DateTimePicker_SetOnEndDrag(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure DateTimePicker_SetOnEnter(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -603,6 +698,28 @@ begin
   TEventClass.Add(AObj, geMouseLeave, AEventId);
 end;
 
+procedure DateTimePicker_SetOnStartDock(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+function DateTimePicker_GetDockSite(AObj: TDateTimePicker): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure DateTimePicker_SetDockSite(AObj: TDateTimePicker; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function DateTimePicker_GetBrush(AObj: TDateTimePicker): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -626,6 +743,16 @@ end;
 procedure DateTimePicker_SetParentWindow(AObj: TDateTimePicker; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function DateTimePicker_GetUseDockManager(AObj: TDateTimePicker): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure DateTimePicker_SetUseDockManager(AObj: TDateTimePicker; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function DateTimePicker_GetAction(AObj: TDateTimePicker): TBasicAction; stdcall;
@@ -691,6 +818,11 @@ end;
 function DateTimePicker_GetExplicitHeight(AObj: TDateTimePicker): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function DateTimePicker_GetFloating(AObj: TDateTimePicker): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function DateTimePicker_GetParent(AObj: TDateTimePicker): TWinControl; stdcall;
@@ -859,6 +991,7 @@ exports
   DateTimePicker_SetFocus,
   DateTimePicker_Update,
   DateTimePicker_BringToFront,
+  DateTimePicker_Dragging,
   DateTimePicker_HasParent,
   DateTimePicker_Hide,
   DateTimePicker_Perform,
@@ -911,6 +1044,12 @@ exports
   DateTimePicker_SetDateMode,
   DateTimePicker_GetDoubleBuffered,
   DateTimePicker_SetDoubleBuffered,
+  DateTimePicker_GetDragCursor,
+  DateTimePicker_SetDragCursor,
+  DateTimePicker_GetDragKind,
+  DateTimePicker_SetDragKind,
+  DateTimePicker_GetDragMode,
+  DateTimePicker_SetDragMode,
   DateTimePicker_GetEnabled,
   DateTimePicker_SetEnabled,
   DateTimePicker_GetFont,
@@ -945,6 +1084,11 @@ exports
   DateTimePicker_SetStyleElements,
   DateTimePicker_SetOnClick,
   DateTimePicker_SetOnChange,
+  DateTimePicker_SetOnContextPopup,
+  DateTimePicker_SetOnDragDrop,
+  DateTimePicker_SetOnDragOver,
+  DateTimePicker_SetOnEndDock,
+  DateTimePicker_SetOnEndDrag,
   DateTimePicker_SetOnEnter,
   DateTimePicker_SetOnExit,
   DateTimePicker_SetOnKeyDown,
@@ -952,11 +1096,16 @@ exports
   DateTimePicker_SetOnKeyUp,
   DateTimePicker_SetOnMouseEnter,
   DateTimePicker_SetOnMouseLeave,
+  DateTimePicker_SetOnStartDock,
+  DateTimePicker_GetDockSite,
+  DateTimePicker_SetDockSite,
   DateTimePicker_GetBrush,
   DateTimePicker_GetControlCount,
   DateTimePicker_GetHandle,
   DateTimePicker_GetParentWindow,
   DateTimePicker_SetParentWindow,
+  DateTimePicker_GetUseDockManager,
+  DateTimePicker_SetUseDockManager,
   DateTimePicker_GetAction,
   DateTimePicker_SetAction,
   DateTimePicker_GetBoundsRect,
@@ -970,6 +1119,7 @@ exports
   DateTimePicker_GetExplicitTop,
   DateTimePicker_GetExplicitWidth,
   DateTimePicker_GetExplicitHeight,
+  DateTimePicker_GetFloating,
   DateTimePicker_GetParent,
   DateTimePicker_SetParent,
   DateTimePicker_GetAlignWithMargins,

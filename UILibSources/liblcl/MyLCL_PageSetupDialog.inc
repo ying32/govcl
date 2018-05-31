@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ¥˙¬Î”…GenlibVclπ§æﬂ◊‘∂Ø…˙≥…°£
-// Copyright ? ying32. All Rights Reserved.
+// ‰ª£Á†ÅÁî±GenlibLclÂ∑•ÂÖ∑Ëá™Âä®ÁîüÊàê„ÄÇ
+// Copyright ¬© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -60,58 +60,10 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
-function PageSetupDialog_GetMarginLeft(AObj: TPageSetupDialog): Integer; extdecl;
+function PageSetupDialog_GetUnits(AObj: TPageSetupDialog): TPageMeasureUnits; extdecl;
 begin
-  Result :=  AObj.Margins.Left;
+  Result :=  AObj.Units;
 end;
-
-procedure PageSetupDialog_SetMarginLeft(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-begin
-  //AObj.Margins.Left := AValue;
-end;
-
-function PageSetupDialog_GetMarginTop(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Top;
-end;
-
-procedure PageSetupDialog_SetMarginTop(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-begin
-  //AObj.MarginTop := AValue;
-end;
-
-function PageSetupDialog_GetMarginRight(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Right;
-end;
-
-procedure PageSetupDialog_SetMarginRight(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-begin
-  //AObj.MarginRight := AValue;
-end;
-
-function PageSetupDialog_GetMarginBottom(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Bottom;
-end;
-
-procedure PageSetupDialog_SetMarginBottom(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-begin
-  //AObj.MarginBottom := AValue;
-end;
-
-
-
-
-//function PageSetupDialog_GetUnits(AObj: TPageSetupDialog): TPageMeasureUnits; extdecl;
-//begin
-//  Result :=  AObj.Units;
-//end;
-//
-//procedure PageSetupDialog_SetUnits(AObj: TPageSetupDialog; AValue: TPageMeasureUnits); extdecl;
-//begin
-//  AObj.Units := AValue;
-//end;
 
 function PageSetupDialog_GetHandle(AObj: TPageSetupDialog): HWND; extdecl;
 begin
@@ -200,14 +152,7 @@ exports
   PageSetupDialog_Equals,
   PageSetupDialog_GetHashCode,
   PageSetupDialog_ToString,
-  PageSetupDialog_GetMarginLeft,
-  PageSetupDialog_SetMarginLeft,
-  PageSetupDialog_GetMarginTop,
-  PageSetupDialog_SetMarginTop,
-  PageSetupDialog_GetMarginRight,
-  PageSetupDialog_SetMarginRight,
-  PageSetupDialog_GetMarginBottom,
-  PageSetupDialog_SetMarginBottom,
+  PageSetupDialog_GetUnits,
   PageSetupDialog_GetHandle,
   PageSetupDialog_SetOnClose,
   PageSetupDialog_SetOnShow,

@@ -30,6 +30,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function Panel_HandleAllocated(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure Panel_Invalidate(AObj: TPanel); extdecl;
 begin
   AObj.Invalidate;
@@ -68,6 +73,11 @@ end;
 procedure Panel_BringToFront(AObj: TPanel); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function Panel_Dragging(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function Panel_HasParent(AObj: TPanel): LongBool; extdecl;
@@ -255,6 +265,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function Panel_GetUseDockManager(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure Panel_SetUseDockManager(AObj: TPanel; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
+end;
+
+function Panel_GetDockSite(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure Panel_SetDockSite(AObj: TPanel; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function Panel_GetDoubleBuffered(AObj: TPanel): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -263,6 +293,36 @@ end;
 procedure Panel_SetDoubleBuffered(AObj: TPanel; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function Panel_GetDragCursor(AObj: TPanel): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Panel_SetDragCursor(AObj: TPanel; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Panel_GetDragKind(AObj: TPanel): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Panel_SetDragKind(AObj: TPanel; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Panel_GetDragMode(AObj: TPanel): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Panel_SetDragMode(AObj: TPanel; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function Panel_GetEnabled(AObj: TPanel): LongBool; extdecl;
@@ -387,6 +447,30 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure Panel_SetOnContextPopup(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure Panel_SetOnDockDrop(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    EventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := @EventClass.OnDockDrop;
+  EventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
 procedure Panel_SetOnDblClick(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -397,6 +481,54 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Panel_SetOnDragDrop(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Panel_SetOnDragOver(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Panel_SetOnEndDock(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    EventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := @EventClass.OnEndDock;
+  EventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure Panel_SetOnEndDrag(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Panel_SetOnEnter(AObj: TPanel; AEventId: NativeUInt); extdecl;
@@ -421,6 +553,18 @@ begin
   end;
   AObj.OnExit := @EventClass.OnExit;
   EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure Panel_SetOnGetSiteInfo(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    EventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
+  EventClass.Add(AObj, geGetSiteInfo, AEventId);
 end;
 
 procedure Panel_SetOnMouseDown(AObj: TPanel; AEventId: NativeUInt); extdecl;
@@ -495,6 +639,30 @@ begin
   EventClass.Add(AObj, geResize, AEventId);
 end;
 
+procedure Panel_SetOnStartDock(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    EventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := @EventClass.OnStartDock;
+  EventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+procedure Panel_SetOnUnDock(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    EventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := @EventClass.OnUnDock;
+  EventClass.Add(AObj, geUnDock, AEventId);
+end;
+
 function Panel_GetBrush(AObj: TPanel): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -563,6 +731,11 @@ end;
 procedure Panel_SetClientWidth(AObj: TPanel; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Panel_GetFloating(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Panel_GetParent(AObj: TPanel): TWinControl; extdecl;
@@ -692,6 +865,7 @@ exports
   Panel_CanFocus,
   Panel_FlipChildren,
   Panel_Focused,
+  Panel_HandleAllocated,
   Panel_Invalidate,
   Panel_Realign,
   Panel_Repaint,
@@ -700,6 +874,7 @@ exports
   Panel_SetFocus,
   Panel_Update,
   Panel_BringToFront,
+  Panel_Dragging,
   Panel_HasParent,
   Panel_Hide,
   Panel_Perform,
@@ -737,8 +912,18 @@ exports
   Panel_SetCaption,
   Panel_GetColor,
   Panel_SetColor,
+  Panel_GetUseDockManager,
+  Panel_SetUseDockManager,
+  Panel_GetDockSite,
+  Panel_SetDockSite,
   Panel_GetDoubleBuffered,
   Panel_SetDoubleBuffered,
+  Panel_GetDragCursor,
+  Panel_SetDragCursor,
+  Panel_GetDragKind,
+  Panel_SetDragKind,
+  Panel_GetDragMode,
+  Panel_SetDragMode,
   Panel_GetEnabled,
   Panel_SetEnabled,
   Panel_GetFullRepaint,
@@ -762,15 +947,24 @@ exports
   Panel_GetVisible,
   Panel_SetVisible,
   Panel_SetOnClick,
+  Panel_SetOnContextPopup,
+  Panel_SetOnDockDrop,
   Panel_SetOnDblClick,
+  Panel_SetOnDragDrop,
+  Panel_SetOnDragOver,
+  Panel_SetOnEndDock,
+  Panel_SetOnEndDrag,
   Panel_SetOnEnter,
   Panel_SetOnExit,
+  Panel_SetOnGetSiteInfo,
   Panel_SetOnMouseDown,
   Panel_SetOnMouseEnter,
   Panel_SetOnMouseLeave,
   Panel_SetOnMouseMove,
   Panel_SetOnMouseUp,
   Panel_SetOnResize,
+  Panel_SetOnStartDock,
+  Panel_SetOnUnDock,
   Panel_GetBrush,
   Panel_GetControlCount,
   Panel_GetHandle,
@@ -785,6 +979,7 @@ exports
   Panel_GetClientRect,
   Panel_GetClientWidth,
   Panel_SetClientWidth,
+  Panel_GetFloating,
   Panel_GetParent,
   Panel_SetParent,
   Panel_GetLeft,

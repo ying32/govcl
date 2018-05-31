@@ -9,3 +9,7 @@ import (
 func showError(err interface{}) {
 	fmt.Println(err)
 }
+
+func tryLoadAppIcon() {
+	// no code
+}

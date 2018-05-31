@@ -100,6 +100,10 @@ func (p *TPanel) BringToFront() {
     Panel_BringToFront(p.instance)
 }
 
+func (p *TPanel) Dragging() bool {
+    return Panel_Dragging(p.instance)
+}
+
 func (p *TPanel) HasParent() bool {
     return Panel_HasParent(p.instance)
 }
@@ -264,12 +268,52 @@ func (p *TPanel) SetColor(value TColor) {
     Panel_SetColor(p.instance, value)
 }
 
+func (p *TPanel) UseDockManager() bool {
+    return Panel_GetUseDockManager(p.instance)
+}
+
+func (p *TPanel) SetUseDockManager(value bool) {
+    Panel_SetUseDockManager(p.instance, value)
+}
+
+func (p *TPanel) DockSite() bool {
+    return Panel_GetDockSite(p.instance)
+}
+
+func (p *TPanel) SetDockSite(value bool) {
+    Panel_SetDockSite(p.instance, value)
+}
+
 func (p *TPanel) DoubleBuffered() bool {
     return Panel_GetDoubleBuffered(p.instance)
 }
 
 func (p *TPanel) SetDoubleBuffered(value bool) {
     Panel_SetDoubleBuffered(p.instance, value)
+}
+
+func (p *TPanel) DragCursor() TCursor {
+    return Panel_GetDragCursor(p.instance)
+}
+
+func (p *TPanel) SetDragCursor(value TCursor) {
+    Panel_SetDragCursor(p.instance, value)
+}
+
+func (p *TPanel) DragKind() TDragKind {
+    return Panel_GetDragKind(p.instance)
+}
+
+func (p *TPanel) SetDragKind(value TDragKind) {
+    Panel_SetDragKind(p.instance, value)
+}
+
+func (p *TPanel) DragMode() TDragMode {
+    return Panel_GetDragMode(p.instance)
+}
+
+func (p *TPanel) SetDragMode(value TDragMode) {
+    Panel_SetDragMode(p.instance, value)
 }
 
 func (p *TPanel) Enabled() bool {
@@ -412,8 +456,32 @@ func (p *TPanel) SetOnClick(fn TNotifyEvent) {
     Panel_SetOnClick(p.instance, fn)
 }
 
+func (p *TPanel) SetOnContextPopup(fn TContextPopupEvent) {
+    Panel_SetOnContextPopup(p.instance, fn)
+}
+
+func (p *TPanel) SetOnDockDrop(fn TDockDropEvent) {
+    Panel_SetOnDockDrop(p.instance, fn)
+}
+
 func (p *TPanel) SetOnDblClick(fn TNotifyEvent) {
     Panel_SetOnDblClick(p.instance, fn)
+}
+
+func (p *TPanel) SetOnDragDrop(fn TDragDropEvent) {
+    Panel_SetOnDragDrop(p.instance, fn)
+}
+
+func (p *TPanel) SetOnDragOver(fn TDragOverEvent) {
+    Panel_SetOnDragOver(p.instance, fn)
+}
+
+func (p *TPanel) SetOnEndDock(fn TEndDragEvent) {
+    Panel_SetOnEndDock(p.instance, fn)
+}
+
+func (p *TPanel) SetOnEndDrag(fn TEndDragEvent) {
+    Panel_SetOnEndDrag(p.instance, fn)
 }
 
 func (p *TPanel) SetOnEnter(fn TNotifyEvent) {
@@ -422,6 +490,10 @@ func (p *TPanel) SetOnEnter(fn TNotifyEvent) {
 
 func (p *TPanel) SetOnExit(fn TNotifyEvent) {
     Panel_SetOnExit(p.instance, fn)
+}
+
+func (p *TPanel) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    Panel_SetOnGetSiteInfo(p.instance, fn)
 }
 
 func (p *TPanel) SetOnMouseDown(fn TMouseEvent) {
@@ -446,6 +518,14 @@ func (p *TPanel) SetOnMouseUp(fn TMouseEvent) {
 
 func (p *TPanel) SetOnResize(fn TNotifyEvent) {
     Panel_SetOnResize(p.instance, fn)
+}
+
+func (p *TPanel) SetOnStartDock(fn TStartDockEvent) {
+    Panel_SetOnStartDock(p.instance, fn)
+}
+
+func (p *TPanel) SetOnUnDock(fn TUnDockEvent) {
+    Panel_SetOnUnDock(p.instance, fn)
 }
 
 func (p *TPanel) Brush() *TBrush {
@@ -518,6 +598,10 @@ func (p *TPanel) ExplicitWidth() int32 {
 
 func (p *TPanel) ExplicitHeight() int32 {
     return Panel_GetExplicitHeight(p.instance)
+}
+
+func (p *TPanel) Floating() bool {
+    return Panel_GetFloating(p.instance)
 }
 
 func (p *TPanel) Parent() *TControl {

@@ -104,6 +104,10 @@ func (b *TBitBtn) BringToFront() {
     BitBtn_BringToFront(b.instance)
 }
 
+func (b *TBitBtn) Dragging() bool {
+    return BitBtn_Dragging(b.instance)
+}
+
 func (b *TBitBtn) HasParent() bool {
     return BitBtn_HasParent(b.instance)
 }
@@ -226,6 +230,30 @@ func (b *TBitBtn) DoubleBuffered() bool {
 
 func (b *TBitBtn) SetDoubleBuffered(value bool) {
     BitBtn_SetDoubleBuffered(b.instance, value)
+}
+
+func (b *TBitBtn) DragCursor() TCursor {
+    return BitBtn_GetDragCursor(b.instance)
+}
+
+func (b *TBitBtn) SetDragCursor(value TCursor) {
+    BitBtn_SetDragCursor(b.instance, value)
+}
+
+func (b *TBitBtn) DragKind() TDragKind {
+    return BitBtn_GetDragKind(b.instance)
+}
+
+func (b *TBitBtn) SetDragKind(value TDragKind) {
+    BitBtn_SetDragKind(b.instance, value)
+}
+
+func (b *TBitBtn) DragMode() TDragMode {
+    return BitBtn_GetDragMode(b.instance)
+}
+
+func (b *TBitBtn) SetDragMode(value TDragMode) {
+    BitBtn_SetDragMode(b.instance, value)
 }
 
 func (b *TBitBtn) Enabled() bool {
@@ -384,6 +412,26 @@ func (b *TBitBtn) SetOnClick(fn TNotifyEvent) {
     BitBtn_SetOnClick(b.instance, fn)
 }
 
+func (b *TBitBtn) SetOnContextPopup(fn TContextPopupEvent) {
+    BitBtn_SetOnContextPopup(b.instance, fn)
+}
+
+func (b *TBitBtn) SetOnDragDrop(fn TDragDropEvent) {
+    BitBtn_SetOnDragDrop(b.instance, fn)
+}
+
+func (b *TBitBtn) SetOnDragOver(fn TDragOverEvent) {
+    BitBtn_SetOnDragOver(b.instance, fn)
+}
+
+func (b *TBitBtn) SetOnEndDock(fn TEndDragEvent) {
+    BitBtn_SetOnEndDock(b.instance, fn)
+}
+
+func (b *TBitBtn) SetOnEndDrag(fn TEndDragEvent) {
+    BitBtn_SetOnEndDrag(b.instance, fn)
+}
+
 func (b *TBitBtn) SetOnEnter(fn TNotifyEvent) {
     BitBtn_SetOnEnter(b.instance, fn)
 }
@@ -422,6 +470,10 @@ func (b *TBitBtn) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (b *TBitBtn) SetOnMouseUp(fn TMouseEvent) {
     BitBtn_SetOnMouseUp(b.instance, fn)
+}
+
+func (b *TBitBtn) SetOnStartDock(fn TStartDockEvent) {
+    BitBtn_SetOnStartDock(b.instance, fn)
 }
 
 func (b *TBitBtn) CommandLinkHint() string {
@@ -504,6 +556,14 @@ func (b *TBitBtn) SetStylusHotImageIndex(value int32) {
     BitBtn_SetStylusHotImageIndex(b.instance, value)
 }
 
+func (b *TBitBtn) DockSite() bool {
+    return BitBtn_GetDockSite(b.instance)
+}
+
+func (b *TBitBtn) SetDockSite(value bool) {
+    BitBtn_SetDockSite(b.instance, value)
+}
+
 func (b *TBitBtn) Brush() *TBrush {
     return BrushFromInst(BitBtn_GetBrush(b.instance))
 }
@@ -522,6 +582,14 @@ func (b *TBitBtn) ParentWindow() HWND {
 
 func (b *TBitBtn) SetParentWindow(value HWND) {
     BitBtn_SetParentWindow(b.instance, value)
+}
+
+func (b *TBitBtn) UseDockManager() bool {
+    return BitBtn_GetUseDockManager(b.instance)
+}
+
+func (b *TBitBtn) SetUseDockManager(value bool) {
+    BitBtn_SetUseDockManager(b.instance, value)
 }
 
 func (b *TBitBtn) BoundsRect() TRect {
@@ -566,6 +634,10 @@ func (b *TBitBtn) ExplicitWidth() int32 {
 
 func (b *TBitBtn) ExplicitHeight() int32 {
     return BitBtn_GetExplicitHeight(b.instance)
+}
+
+func (b *TBitBtn) Floating() bool {
+    return BitBtn_GetFloating(b.instance)
 }
 
 func (b *TBitBtn) Parent() *TControl {

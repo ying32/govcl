@@ -108,6 +108,10 @@ func (p *TProgressBar) BringToFront() {
     ProgressBar_BringToFront(p.instance)
 }
 
+func (p *TProgressBar) Dragging() bool {
+    return ProgressBar_Dragging(p.instance)
+}
+
 func (p *TProgressBar) HasParent() bool {
     return ProgressBar_HasParent(p.instance)
 }
@@ -198,6 +202,30 @@ func (p *TProgressBar) DoubleBuffered() bool {
 
 func (p *TProgressBar) SetDoubleBuffered(value bool) {
     ProgressBar_SetDoubleBuffered(p.instance, value)
+}
+
+func (p *TProgressBar) DragCursor() TCursor {
+    return ProgressBar_GetDragCursor(p.instance)
+}
+
+func (p *TProgressBar) SetDragCursor(value TCursor) {
+    ProgressBar_SetDragCursor(p.instance, value)
+}
+
+func (p *TProgressBar) DragKind() TDragKind {
+    return ProgressBar_GetDragKind(p.instance)
+}
+
+func (p *TProgressBar) SetDragKind(value TDragKind) {
+    ProgressBar_SetDragKind(p.instance, value)
+}
+
+func (p *TProgressBar) DragMode() TDragMode {
+    return ProgressBar_GetDragMode(p.instance)
+}
+
+func (p *TProgressBar) SetDragMode(value TDragMode) {
+    ProgressBar_SetDragMode(p.instance, value)
 }
 
 func (p *TProgressBar) Enabled() bool {
@@ -376,6 +404,26 @@ func (p *TProgressBar) SetStyleElements(value TStyleElements) {
     ProgressBar_SetStyleElements(p.instance, value)
 }
 
+func (p *TProgressBar) SetOnContextPopup(fn TContextPopupEvent) {
+    ProgressBar_SetOnContextPopup(p.instance, fn)
+}
+
+func (p *TProgressBar) SetOnDragDrop(fn TDragDropEvent) {
+    ProgressBar_SetOnDragDrop(p.instance, fn)
+}
+
+func (p *TProgressBar) SetOnDragOver(fn TDragOverEvent) {
+    ProgressBar_SetOnDragOver(p.instance, fn)
+}
+
+func (p *TProgressBar) SetOnEndDock(fn TEndDragEvent) {
+    ProgressBar_SetOnEndDock(p.instance, fn)
+}
+
+func (p *TProgressBar) SetOnEndDrag(fn TEndDragEvent) {
+    ProgressBar_SetOnEndDrag(p.instance, fn)
+}
+
 func (p *TProgressBar) SetOnEnter(fn TNotifyEvent) {
     ProgressBar_SetOnEnter(p.instance, fn)
 }
@@ -404,6 +452,18 @@ func (p *TProgressBar) SetOnMouseUp(fn TMouseEvent) {
     ProgressBar_SetOnMouseUp(p.instance, fn)
 }
 
+func (p *TProgressBar) SetOnStartDock(fn TStartDockEvent) {
+    ProgressBar_SetOnStartDock(p.instance, fn)
+}
+
+func (p *TProgressBar) DockSite() bool {
+    return ProgressBar_GetDockSite(p.instance)
+}
+
+func (p *TProgressBar) SetDockSite(value bool) {
+    ProgressBar_SetDockSite(p.instance, value)
+}
+
 func (p *TProgressBar) Brush() *TBrush {
     return BrushFromInst(ProgressBar_GetBrush(p.instance))
 }
@@ -422,6 +482,14 @@ func (p *TProgressBar) ParentWindow() HWND {
 
 func (p *TProgressBar) SetParentWindow(value HWND) {
     ProgressBar_SetParentWindow(p.instance, value)
+}
+
+func (p *TProgressBar) UseDockManager() bool {
+    return ProgressBar_GetUseDockManager(p.instance)
+}
+
+func (p *TProgressBar) SetUseDockManager(value bool) {
+    ProgressBar_SetUseDockManager(p.instance, value)
 }
 
 func (p *TProgressBar) Action() *TAction {
@@ -482,6 +550,10 @@ func (p *TProgressBar) ExplicitWidth() int32 {
 
 func (p *TProgressBar) ExplicitHeight() int32 {
     return ProgressBar_GetExplicitHeight(p.instance)
+}
+
+func (p *TProgressBar) Floating() bool {
+    return ProgressBar_GetFloating(p.instance)
 }
 
 func (p *TProgressBar) Parent() *TControl {

@@ -65,6 +65,21 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function PopupMenu_GetPopupComponent(AObj: TPopupMenu): TComponent; stdcall;
+begin
+  Result :=  AObj.PopupComponent;
+end;
+
+procedure PopupMenu_SetPopupComponent(AObj: TPopupMenu; AValue: TComponent); stdcall;
+begin
+  AObj.PopupComponent := AValue;
+end;
+
+procedure PopupMenu_GetPopupPoint(AObj: TPopupMenu; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.PopupPoint;
+end;
+
 function PopupMenu_GetAlignment(AObj: TPopupMenu): TPopupAlignment; stdcall;
 begin
   Result :=  AObj.Alignment;
@@ -208,6 +223,9 @@ exports
   PopupMenu_Equals,
   PopupMenu_GetHashCode,
   PopupMenu_ToString,
+  PopupMenu_GetPopupComponent,
+  PopupMenu_SetPopupComponent,
+  PopupMenu_GetPopupPoint,
   PopupMenu_GetAlignment,
   PopupMenu_SetAlignment,
   PopupMenu_GetAutoHotkeys,

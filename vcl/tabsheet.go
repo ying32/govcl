@@ -100,6 +100,10 @@ func (t *TTabSheet) BringToFront() {
     TabSheet_BringToFront(t.instance)
 }
 
+func (t *TTabSheet) Dragging() bool {
+    return TabSheet_Dragging(t.instance)
+}
+
 func (t *TTabSheet) HasParent() bool {
     return TabSheet_HasParent(t.instance)
 }
@@ -194,6 +198,14 @@ func (t *TTabSheet) DoubleBuffered() bool {
 
 func (t *TTabSheet) SetDoubleBuffered(value bool) {
     TabSheet_SetDoubleBuffered(t.instance, value)
+}
+
+func (t *TTabSheet) DragMode() TDragMode {
+    return TabSheet_GetDragMode(t.instance)
+}
+
+func (t *TTabSheet) SetDragMode(value TDragMode) {
+    TabSheet_SetDragMode(t.instance, value)
 }
 
 func (t *TTabSheet) Enabled() bool {
@@ -324,6 +336,22 @@ func (t *TTabSheet) SetWidth(value int32) {
     TabSheet_SetWidth(t.instance, value)
 }
 
+func (t *TTabSheet) SetOnContextPopup(fn TContextPopupEvent) {
+    TabSheet_SetOnContextPopup(t.instance, fn)
+}
+
+func (t *TTabSheet) SetOnDragDrop(fn TDragDropEvent) {
+    TabSheet_SetOnDragDrop(t.instance, fn)
+}
+
+func (t *TTabSheet) SetOnDragOver(fn TDragOverEvent) {
+    TabSheet_SetOnDragOver(t.instance, fn)
+}
+
+func (t *TTabSheet) SetOnEndDrag(fn TEndDragEvent) {
+    TabSheet_SetOnEndDrag(t.instance, fn)
+}
+
 func (t *TTabSheet) SetOnEnter(fn TNotifyEvent) {
     TabSheet_SetOnEnter(t.instance, fn)
 }
@@ -364,6 +392,14 @@ func (t *TTabSheet) SetOnShow(fn TNotifyEvent) {
     TabSheet_SetOnShow(t.instance, fn)
 }
 
+func (t *TTabSheet) DockSite() bool {
+    return TabSheet_GetDockSite(t.instance)
+}
+
+func (t *TTabSheet) SetDockSite(value bool) {
+    TabSheet_SetDockSite(t.instance, value)
+}
+
 func (t *TTabSheet) Brush() *TBrush {
     return BrushFromInst(TabSheet_GetBrush(t.instance))
 }
@@ -398,6 +434,14 @@ func (t *TTabSheet) TabStop() bool {
 
 func (t *TTabSheet) SetTabStop(value bool) {
     TabSheet_SetTabStop(t.instance, value)
+}
+
+func (t *TTabSheet) UseDockManager() bool {
+    return TabSheet_GetUseDockManager(t.instance)
+}
+
+func (t *TTabSheet) SetUseDockManager(value bool) {
+    TabSheet_SetUseDockManager(t.instance, value)
 }
 
 func (t *TTabSheet) Action() *TAction {
@@ -474,6 +518,10 @@ func (t *TTabSheet) ExplicitWidth() int32 {
 
 func (t *TTabSheet) ExplicitHeight() int32 {
     return TabSheet_GetExplicitHeight(t.instance)
+}
+
+func (t *TTabSheet) Floating() bool {
+    return TabSheet_GetFloating(t.instance)
 }
 
 func (t *TTabSheet) Parent() *TControl {

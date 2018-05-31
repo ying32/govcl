@@ -56,6 +56,10 @@ func (l *TLabel) BringToFront() {
     Label_BringToFront(l.instance)
 }
 
+func (l *TLabel) Dragging() bool {
+    return Label_Dragging(l.instance)
+}
+
 func (l *TLabel) HasParent() bool {
     return Label_HasParent(l.instance)
 }
@@ -188,6 +192,30 @@ func (l *TLabel) SetColor(value TColor) {
     Label_SetColor(l.instance, value)
 }
 
+func (l *TLabel) DragCursor() TCursor {
+    return Label_GetDragCursor(l.instance)
+}
+
+func (l *TLabel) SetDragCursor(value TCursor) {
+    Label_SetDragCursor(l.instance, value)
+}
+
+func (l *TLabel) DragKind() TDragKind {
+    return Label_GetDragKind(l.instance)
+}
+
+func (l *TLabel) SetDragKind(value TDragKind) {
+    Label_SetDragKind(l.instance, value)
+}
+
+func (l *TLabel) DragMode() TDragMode {
+    return Label_GetDragMode(l.instance)
+}
+
+func (l *TLabel) SetDragMode(value TDragMode) {
+    Label_SetDragMode(l.instance, value)
+}
+
 func (l *TLabel) EllipsisPosition() TEllipsisPosition {
     return Label_GetEllipsisPosition(l.instance)
 }
@@ -312,8 +340,28 @@ func (l *TLabel) SetOnClick(fn TNotifyEvent) {
     Label_SetOnClick(l.instance, fn)
 }
 
+func (l *TLabel) SetOnContextPopup(fn TContextPopupEvent) {
+    Label_SetOnContextPopup(l.instance, fn)
+}
+
 func (l *TLabel) SetOnDblClick(fn TNotifyEvent) {
     Label_SetOnDblClick(l.instance, fn)
+}
+
+func (l *TLabel) SetOnDragDrop(fn TDragDropEvent) {
+    Label_SetOnDragDrop(l.instance, fn)
+}
+
+func (l *TLabel) SetOnDragOver(fn TDragOverEvent) {
+    Label_SetOnDragOver(l.instance, fn)
+}
+
+func (l *TLabel) SetOnEndDock(fn TEndDragEvent) {
+    Label_SetOnEndDock(l.instance, fn)
+}
+
+func (l *TLabel) SetOnEndDrag(fn TEndDragEvent) {
+    Label_SetOnEndDrag(l.instance, fn)
 }
 
 func (l *TLabel) SetOnMouseDown(fn TMouseEvent) {
@@ -334,6 +382,10 @@ func (l *TLabel) SetOnMouseEnter(fn TNotifyEvent) {
 
 func (l *TLabel) SetOnMouseLeave(fn TNotifyEvent) {
     Label_SetOnMouseLeave(l.instance, fn)
+}
+
+func (l *TLabel) SetOnStartDock(fn TStartDockEvent) {
+    Label_SetOnStartDock(l.instance, fn)
 }
 
 func (l *TLabel) Canvas() *TCanvas {
@@ -390,6 +442,10 @@ func (l *TLabel) ExplicitWidth() int32 {
 
 func (l *TLabel) ExplicitHeight() int32 {
     return Label_GetExplicitHeight(l.instance)
+}
+
+func (l *TLabel) Floating() bool {
+    return Label_GetFloating(l.instance)
 }
 
 func (l *TLabel) Parent() *TControl {

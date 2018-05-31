@@ -104,6 +104,10 @@ func (s *TScrollBar) BringToFront() {
     ScrollBar_BringToFront(s.instance)
 }
 
+func (s *TScrollBar) Dragging() bool {
+    return ScrollBar_Dragging(s.instance)
+}
+
 func (s *TScrollBar) HasParent() bool {
     return ScrollBar_HasParent(s.instance)
 }
@@ -194,6 +198,30 @@ func (s *TScrollBar) DoubleBuffered() bool {
 
 func (s *TScrollBar) SetDoubleBuffered(value bool) {
     ScrollBar_SetDoubleBuffered(s.instance, value)
+}
+
+func (s *TScrollBar) DragCursor() TCursor {
+    return ScrollBar_GetDragCursor(s.instance)
+}
+
+func (s *TScrollBar) SetDragCursor(value TCursor) {
+    ScrollBar_SetDragCursor(s.instance, value)
+}
+
+func (s *TScrollBar) DragKind() TDragKind {
+    return ScrollBar_GetDragKind(s.instance)
+}
+
+func (s *TScrollBar) SetDragKind(value TDragKind) {
+    ScrollBar_SetDragKind(s.instance, value)
+}
+
+func (s *TScrollBar) DragMode() TDragMode {
+    return ScrollBar_GetDragMode(s.instance)
+}
+
+func (s *TScrollBar) SetDragMode(value TDragMode) {
+    ScrollBar_SetDragMode(s.instance, value)
 }
 
 func (s *TScrollBar) Enabled() bool {
@@ -332,8 +360,28 @@ func (s *TScrollBar) SetStyleElements(value TStyleElements) {
     ScrollBar_SetStyleElements(s.instance, value)
 }
 
+func (s *TScrollBar) SetOnContextPopup(fn TContextPopupEvent) {
+    ScrollBar_SetOnContextPopup(s.instance, fn)
+}
+
 func (s *TScrollBar) SetOnChange(fn TNotifyEvent) {
     ScrollBar_SetOnChange(s.instance, fn)
+}
+
+func (s *TScrollBar) SetOnDragDrop(fn TDragDropEvent) {
+    ScrollBar_SetOnDragDrop(s.instance, fn)
+}
+
+func (s *TScrollBar) SetOnDragOver(fn TDragOverEvent) {
+    ScrollBar_SetOnDragOver(s.instance, fn)
+}
+
+func (s *TScrollBar) SetOnEndDock(fn TEndDragEvent) {
+    ScrollBar_SetOnEndDock(s.instance, fn)
+}
+
+func (s *TScrollBar) SetOnEndDrag(fn TEndDragEvent) {
+    ScrollBar_SetOnEndDrag(s.instance, fn)
 }
 
 func (s *TScrollBar) SetOnEnter(fn TNotifyEvent) {
@@ -364,6 +412,18 @@ func (s *TScrollBar) SetOnMouseLeave(fn TNotifyEvent) {
     ScrollBar_SetOnMouseLeave(s.instance, fn)
 }
 
+func (s *TScrollBar) SetOnStartDock(fn TStartDockEvent) {
+    ScrollBar_SetOnStartDock(s.instance, fn)
+}
+
+func (s *TScrollBar) DockSite() bool {
+    return ScrollBar_GetDockSite(s.instance)
+}
+
+func (s *TScrollBar) SetDockSite(value bool) {
+    ScrollBar_SetDockSite(s.instance, value)
+}
+
 func (s *TScrollBar) Brush() *TBrush {
     return BrushFromInst(ScrollBar_GetBrush(s.instance))
 }
@@ -382,6 +442,14 @@ func (s *TScrollBar) ParentWindow() HWND {
 
 func (s *TScrollBar) SetParentWindow(value HWND) {
     ScrollBar_SetParentWindow(s.instance, value)
+}
+
+func (s *TScrollBar) UseDockManager() bool {
+    return ScrollBar_GetUseDockManager(s.instance)
+}
+
+func (s *TScrollBar) SetUseDockManager(value bool) {
+    ScrollBar_SetUseDockManager(s.instance, value)
 }
 
 func (s *TScrollBar) Action() *TAction {
@@ -434,6 +502,10 @@ func (s *TScrollBar) ExplicitWidth() int32 {
 
 func (s *TScrollBar) ExplicitHeight() int32 {
     return ScrollBar_GetExplicitHeight(s.instance)
+}
+
+func (s *TScrollBar) Floating() bool {
+    return ScrollBar_GetFloating(s.instance)
 }
 
 func (s *TScrollBar) Parent() *TControl {

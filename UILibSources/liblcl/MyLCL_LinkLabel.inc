@@ -40,6 +40,11 @@ begin
   AObj.BringToFront;
 end;
 
+function LinkLabel_Dragging(AObj: TLinkLabel): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function LinkLabel_HasParent(AObj: TLinkLabel): LongBool; extdecl;
 begin
   Result :=  AObj.HasParent;
@@ -175,6 +180,36 @@ begin
   AObj.Color := AValue;
 end;
 
+function LinkLabel_GetDragCursor(AObj: TLinkLabel): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure LinkLabel_SetDragCursor(AObj: TLinkLabel; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function LinkLabel_GetDragKind(AObj: TLinkLabel): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure LinkLabel_SetDragKind(AObj: TLinkLabel; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function LinkLabel_GetDragMode(AObj: TLinkLabel): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure LinkLabel_SetDragMode(AObj: TLinkLabel; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function LinkLabel_GetEnabled(AObj: TLinkLabel): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -267,6 +302,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure LinkLabel_SetOnContextPopup(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure LinkLabel_SetOnDblClick(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -277,6 +324,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure LinkLabel_SetOnDragDrop(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure LinkLabel_SetOnDragOver(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure LinkLabel_SetOnEndDrag(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure LinkLabel_SetOnMouseDown(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
@@ -406,6 +489,11 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function LinkLabel_GetFloating(AObj: TLinkLabel): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function LinkLabel_GetParent(AObj: TLinkLabel): TWinControl; extdecl;
 begin
   Result :=  AObj.Parent;
@@ -520,6 +608,7 @@ exports
   LinkLabel_SetBounds,
   LinkLabel_Update,
   LinkLabel_BringToFront,
+  LinkLabel_Dragging,
   LinkLabel_HasParent,
   LinkLabel_Hide,
   LinkLabel_Perform,
@@ -547,6 +636,12 @@ exports
   LinkLabel_SetCaption,
   LinkLabel_GetColor,
   LinkLabel_SetColor,
+  LinkLabel_GetDragCursor,
+  LinkLabel_SetDragCursor,
+  LinkLabel_GetDragKind,
+  LinkLabel_SetDragKind,
+  LinkLabel_GetDragMode,
+  LinkLabel_SetDragMode,
   LinkLabel_GetEnabled,
   LinkLabel_SetEnabled,
   LinkLabel_GetFont,
@@ -564,7 +659,11 @@ exports
   LinkLabel_GetVisible,
   LinkLabel_SetVisible,
   LinkLabel_SetOnClick,
+  LinkLabel_SetOnContextPopup,
   LinkLabel_SetOnDblClick,
+  LinkLabel_SetOnDragDrop,
+  LinkLabel_SetOnDragOver,
+  LinkLabel_SetOnEndDrag,
   LinkLabel_SetOnMouseDown,
   LinkLabel_SetOnMouseEnter,
   LinkLabel_SetOnMouseLeave,
@@ -582,6 +681,7 @@ exports
   LinkLabel_GetClientRect,
   LinkLabel_GetClientWidth,
   LinkLabel_SetClientWidth,
+  LinkLabel_GetFloating,
   LinkLabel_GetParent,
   LinkLabel_SetParent,
   LinkLabel_GetLeft,

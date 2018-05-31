@@ -62,7 +62,8 @@ uses
   uLinkLabel in 'uLinkLabel.pas',
   uEventCallback in 'uEventCallback.pas',
   ImageButton in 'ImageButton.pas',
-  Gauges in 'Gauges.pas', uComponents;
+  Gauges in 'Gauges.pas',
+  uComponents;
 
 {$IFDEF WINDOWS}
   {$R *.res}
@@ -163,13 +164,14 @@ uses
 {$I MyLCL_Bevel.inc}
 {$I MyLCL_ScrollBox.inc}
 {$I MyLCL_CheckListBox.inc}
-{$I MyLCL_ImageButton.inc}
 {$I MyLCL_Gauge.inc}
+{$I MyLCL_ImageButton.inc}
 {$I MyLCL_FindDialog.inc}
 {$I MyLCL_ReplaceDialog.inc}
 {$I MyLCL_PrinterSetupDialog.inc}
 {$I MyLCL_PageSetupDialog.inc}
- 
+{$I MyLCL_DragObject.inc}
+{$I MyLCL_DragDockObject.inc}
 
 begin
   InitLazarusDef;

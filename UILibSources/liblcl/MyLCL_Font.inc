@@ -20,6 +20,11 @@ begin
   AObj.Assign(Source);
 end;
 
+function Font_HandleAllocated(AObj: TFont): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 function Font_GetNamePath(AObj: TFont): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -172,6 +177,7 @@ exports
   Font_Create,
   Font_Free,
   Font_Assign,
+  Font_HandleAllocated,
   Font_GetNamePath,
   Font_ClassName,
   Font_Equals,

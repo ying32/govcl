@@ -85,6 +85,11 @@ begin
   AObj.BringToFront;
 end;
 
+function CategoryPanel_Dragging(AObj: TCategoryPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function CategoryPanel_HasParent(AObj: TCategoryPanel): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -230,6 +235,26 @@ begin
   AObj.CollapsedPressedImageIndex := AValue;
 end;
 
+function CategoryPanel_GetUseDockManager(AObj: TCategoryPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure CategoryPanel_SetUseDockManager(AObj: TCategoryPanel; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
+end;
+
+function CategoryPanel_GetDockSite(AObj: TCategoryPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure CategoryPanel_SetDockSite(AObj: TCategoryPanel; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function CategoryPanel_GetDoubleBuffered(AObj: TCategoryPanel): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -238,6 +263,36 @@ end;
 procedure CategoryPanel_SetDoubleBuffered(AObj: TCategoryPanel; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function CategoryPanel_GetDragCursor(AObj: TCategoryPanel): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure CategoryPanel_SetDragCursor(AObj: TCategoryPanel; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function CategoryPanel_GetDragKind(AObj: TCategoryPanel): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure CategoryPanel_SetDragKind(AObj: TCategoryPanel; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function CategoryPanel_GetDragMode(AObj: TCategoryPanel): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure CategoryPanel_SetDragMode(AObj: TCategoryPanel; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function CategoryPanel_GetEnabled(AObj: TCategoryPanel): LongBool; stdcall;
@@ -472,6 +527,30 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure CategoryPanel_SetOnContextPopup(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure CategoryPanel_SetOnDockDrop(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    TEventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := TEventClass.OnDockDrop;
+  TEventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
 procedure CategoryPanel_SetOnDblClick(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -482,6 +561,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure CategoryPanel_SetOnDragDrop(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure CategoryPanel_SetOnDragOver(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure CategoryPanel_SetOnEndDock(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure CategoryPanel_SetOnEndDrag(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure CategoryPanel_SetOnEnter(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
@@ -506,6 +633,18 @@ begin
   end;
   AObj.OnExit := TEventClass.OnExit;
   TEventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure CategoryPanel_SetOnGetSiteInfo(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    TEventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
+  TEventClass.Add(AObj, geGetSiteInfo, AEventId);
 end;
 
 procedure CategoryPanel_SetOnMouseDown(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
@@ -566,6 +705,30 @@ begin
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
   TEventClass.Add(AObj, geMouseUp, AEventId);
+end;
+
+procedure CategoryPanel_SetOnStartDock(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+procedure CategoryPanel_SetOnUnDock(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    TEventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := TEventClass.OnUnDock;
+  TEventClass.Add(AObj, geUnDock, AEventId);
 end;
 
 function CategoryPanel_GetPanelGroup(AObj: TCategoryPanel): TCustomCategoryPanelGroup; stdcall;
@@ -686,6 +849,11 @@ end;
 function CategoryPanel_GetExplicitHeight(AObj: TCategoryPanel): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function CategoryPanel_GetFloating(AObj: TCategoryPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function CategoryPanel_GetParent(AObj: TCategoryPanel): TWinControl; stdcall;
@@ -826,6 +994,7 @@ exports
   CategoryPanel_SetFocus,
   CategoryPanel_Update,
   CategoryPanel_BringToFront,
+  CategoryPanel_Dragging,
   CategoryPanel_HasParent,
   CategoryPanel_Hide,
   CategoryPanel_Perform,
@@ -855,8 +1024,18 @@ exports
   CategoryPanel_SetCollapsedImageIndex,
   CategoryPanel_GetCollapsedPressedImageIndex,
   CategoryPanel_SetCollapsedPressedImageIndex,
+  CategoryPanel_GetUseDockManager,
+  CategoryPanel_SetUseDockManager,
+  CategoryPanel_GetDockSite,
+  CategoryPanel_SetDockSite,
   CategoryPanel_GetDoubleBuffered,
   CategoryPanel_SetDoubleBuffered,
+  CategoryPanel_GetDragCursor,
+  CategoryPanel_SetDragCursor,
+  CategoryPanel_GetDragKind,
+  CategoryPanel_SetDragKind,
+  CategoryPanel_GetDragMode,
+  CategoryPanel_SetDragMode,
   CategoryPanel_GetEnabled,
   CategoryPanel_SetEnabled,
   CategoryPanel_GetExpandedHotImageIndex,
@@ -902,14 +1081,23 @@ exports
   CategoryPanel_GetWidth,
   CategoryPanel_SetWidth,
   CategoryPanel_SetOnClick,
+  CategoryPanel_SetOnContextPopup,
+  CategoryPanel_SetOnDockDrop,
   CategoryPanel_SetOnDblClick,
+  CategoryPanel_SetOnDragDrop,
+  CategoryPanel_SetOnDragOver,
+  CategoryPanel_SetOnEndDock,
+  CategoryPanel_SetOnEndDrag,
   CategoryPanel_SetOnEnter,
   CategoryPanel_SetOnExit,
+  CategoryPanel_SetOnGetSiteInfo,
   CategoryPanel_SetOnMouseDown,
   CategoryPanel_SetOnMouseEnter,
   CategoryPanel_SetOnMouseLeave,
   CategoryPanel_SetOnMouseMove,
   CategoryPanel_SetOnMouseUp,
+  CategoryPanel_SetOnStartDock,
+  CategoryPanel_SetOnUnDock,
   CategoryPanel_GetPanelGroup,
   CategoryPanel_SetPanelGroup,
   CategoryPanel_GetBrush,
@@ -934,6 +1122,7 @@ exports
   CategoryPanel_GetExplicitTop,
   CategoryPanel_GetExplicitWidth,
   CategoryPanel_GetExplicitHeight,
+  CategoryPanel_GetFloating,
   CategoryPanel_GetParent,
   CategoryPanel_SetParent,
   CategoryPanel_GetAlignWithMargins,

@@ -184,6 +184,7 @@ procedure Strings_SetObjects(AObj: TStrings; Index: Integer; AValue: TObject); e
 begin
   AObj.Objects[Index] := AValue;
 end;
+
 function Strings_GetValues(AObj: TStrings; Name: PChar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.Values[Name]);

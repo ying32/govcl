@@ -120,6 +120,10 @@ func (c *TColorListBox) BringToFront() {
     ColorListBox_BringToFront(c.instance)
 }
 
+func (c *TColorListBox) Dragging() bool {
+    return ColorListBox_Dragging(c.instance)
+}
+
 func (c *TColorListBox) HasParent() bool {
     return ColorListBox_HasParent(c.instance)
 }
@@ -408,8 +412,28 @@ func (c *TColorListBox) SetOnClick(fn TNotifyEvent) {
     ColorListBox_SetOnClick(c.instance, fn)
 }
 
+func (c *TColorListBox) SetOnContextPopup(fn TContextPopupEvent) {
+    ColorListBox_SetOnContextPopup(c.instance, fn)
+}
+
 func (c *TColorListBox) SetOnDblClick(fn TNotifyEvent) {
     ColorListBox_SetOnDblClick(c.instance, fn)
+}
+
+func (c *TColorListBox) SetOnDragDrop(fn TDragDropEvent) {
+    ColorListBox_SetOnDragDrop(c.instance, fn)
+}
+
+func (c *TColorListBox) SetOnDragOver(fn TDragOverEvent) {
+    ColorListBox_SetOnDragOver(c.instance, fn)
+}
+
+func (c *TColorListBox) SetOnEndDock(fn TEndDragEvent) {
+    ColorListBox_SetOnEndDock(c.instance, fn)
+}
+
+func (c *TColorListBox) SetOnEndDrag(fn TEndDragEvent) {
+    ColorListBox_SetOnEndDrag(c.instance, fn)
 }
 
 func (c *TColorListBox) SetOnEnter(fn TNotifyEvent) {
@@ -450,6 +474,10 @@ func (c *TColorListBox) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (c *TColorListBox) SetOnMouseUp(fn TMouseEvent) {
     ColorListBox_SetOnMouseUp(c.instance, fn)
+}
+
+func (c *TColorListBox) SetOnStartDock(fn TStartDockEvent) {
+    ColorListBox_SetOnStartDock(c.instance, fn)
 }
 
 func (c *TColorListBox) AutoCompleteDelay() uint32 {
@@ -500,6 +528,14 @@ func (c *TColorListBox) SetItemIndex(value int32) {
     ColorListBox_SetItemIndex(c.instance, value)
 }
 
+func (c *TColorListBox) DockSite() bool {
+    return ColorListBox_GetDockSite(c.instance)
+}
+
+func (c *TColorListBox) SetDockSite(value bool) {
+    ColorListBox_SetDockSite(c.instance, value)
+}
+
 func (c *TColorListBox) Brush() *TBrush {
     return BrushFromInst(ColorListBox_GetBrush(c.instance))
 }
@@ -518,6 +554,14 @@ func (c *TColorListBox) ParentWindow() HWND {
 
 func (c *TColorListBox) SetParentWindow(value HWND) {
     ColorListBox_SetParentWindow(c.instance, value)
+}
+
+func (c *TColorListBox) UseDockManager() bool {
+    return ColorListBox_GetUseDockManager(c.instance)
+}
+
+func (c *TColorListBox) SetUseDockManager(value bool) {
+    ColorListBox_SetUseDockManager(c.instance, value)
 }
 
 func (c *TColorListBox) Action() *TAction {
@@ -570,6 +614,10 @@ func (c *TColorListBox) ExplicitWidth() int32 {
 
 func (c *TColorListBox) ExplicitHeight() int32 {
     return ColorListBox_GetExplicitHeight(c.instance)
+}
+
+func (c *TColorListBox) Floating() bool {
+    return ColorListBox_GetFloating(c.instance)
 }
 
 func (c *TColorListBox) Parent() *TControl {

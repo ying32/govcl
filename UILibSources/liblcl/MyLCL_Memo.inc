@@ -65,6 +65,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function Memo_HandleAllocated(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure Memo_Invalidate(AObj: TMemo); extdecl;
 begin
   AObj.Invalidate;
@@ -103,6 +108,11 @@ end;
 procedure Memo_BringToFront(AObj: TMemo); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function Memo_Dragging(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function Memo_HasParent(AObj: TMemo): LongBool; extdecl;
@@ -248,6 +258,36 @@ end;
 procedure Memo_SetDoubleBuffered(AObj: TMemo; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function Memo_GetDragCursor(AObj: TMemo): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Memo_SetDragCursor(AObj: TMemo; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Memo_GetDragKind(AObj: TMemo): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Memo_SetDragKind(AObj: TMemo; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Memo_GetDragMode(AObj: TMemo): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Memo_SetDragMode(AObj: TMemo; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function Memo_GetEnabled(AObj: TMemo): LongBool; extdecl;
@@ -454,6 +494,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure Memo_SetOnContextPopup(AObj: TMemo; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure Memo_SetOnDblClick(AObj: TMemo; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -464,6 +516,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Memo_SetOnDragDrop(AObj: TMemo; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Memo_SetOnDragOver(AObj: TMemo; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Memo_SetOnEndDrag(AObj: TMemo; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Memo_SetOnEnter(AObj: TMemo; AEventId: NativeUInt); extdecl;
@@ -651,6 +739,26 @@ begin
   AObj.Text := AValue;
 end;
 
+function Memo_GetTextHint(AObj: TMemo): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.TextHint);
+end;
+
+procedure Memo_SetTextHint(AObj: TMemo; AValue: PChar); extdecl;
+begin
+  AObj.TextHint := AValue;
+end;
+
+function Memo_GetDockSite(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure Memo_SetDockSite(AObj: TMemo; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function Memo_GetBrush(AObj: TMemo): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -674,6 +782,16 @@ end;
 procedure Memo_SetParentWindow(AObj: TMemo; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function Memo_GetUseDockManager(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure Memo_SetUseDockManager(AObj: TMemo; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function Memo_GetAction(AObj: TMemo): TBasicAction; extdecl;
@@ -719,6 +837,11 @@ end;
 procedure Memo_SetClientWidth(AObj: TMemo; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Memo_GetFloating(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Memo_GetParent(AObj: TMemo): TWinControl; extdecl;
@@ -855,6 +978,7 @@ exports
   Memo_CanFocus,
   Memo_FlipChildren,
   Memo_Focused,
+  Memo_HandleAllocated,
   Memo_Invalidate,
   Memo_Realign,
   Memo_Repaint,
@@ -863,6 +987,7 @@ exports
   Memo_SetFocus,
   Memo_Update,
   Memo_BringToFront,
+  Memo_Dragging,
   Memo_HasParent,
   Memo_Hide,
   Memo_Perform,
@@ -892,6 +1017,12 @@ exports
   Memo_SetColor,
   Memo_GetDoubleBuffered,
   Memo_SetDoubleBuffered,
+  Memo_GetDragCursor,
+  Memo_SetDragCursor,
+  Memo_GetDragKind,
+  Memo_SetDragKind,
+  Memo_GetDragMode,
+  Memo_SetDragMode,
   Memo_GetEnabled,
   Memo_SetEnabled,
   Memo_GetFont,
@@ -930,7 +1061,11 @@ exports
   Memo_SetWordWrap,
   Memo_SetOnChange,
   Memo_SetOnClick,
+  Memo_SetOnContextPopup,
   Memo_SetOnDblClick,
+  Memo_SetOnDragDrop,
+  Memo_SetOnDragOver,
+  Memo_SetOnEndDrag,
   Memo_SetOnEnter,
   Memo_SetOnExit,
   Memo_SetOnKeyDown,
@@ -954,11 +1089,17 @@ exports
   Memo_SetSelText,
   Memo_GetText,
   Memo_SetText,
+  Memo_GetTextHint,
+  Memo_SetTextHint,
+  Memo_GetDockSite,
+  Memo_SetDockSite,
   Memo_GetBrush,
   Memo_GetControlCount,
   Memo_GetHandle,
   Memo_GetParentWindow,
   Memo_SetParentWindow,
+  Memo_GetUseDockManager,
+  Memo_SetUseDockManager,
   Memo_GetAction,
   Memo_SetAction,
   Memo_GetBoundsRect,
@@ -968,6 +1109,7 @@ exports
   Memo_GetClientRect,
   Memo_GetClientWidth,
   Memo_SetClientWidth,
+  Memo_GetFloating,
   Memo_GetParent,
   Memo_SetParent,
   Memo_GetLeft,

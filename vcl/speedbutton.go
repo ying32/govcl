@@ -60,6 +60,10 @@ func (s *TSpeedButton) BringToFront() {
     SpeedButton_BringToFront(s.instance)
 }
 
+func (s *TSpeedButton) Dragging() bool {
+    return SpeedButton_Dragging(s.instance)
+}
+
 func (s *TSpeedButton) HasParent() bool {
     return SpeedButton_HasParent(s.instance)
 }
@@ -382,6 +386,10 @@ func (s *TSpeedButton) ExplicitWidth() int32 {
 
 func (s *TSpeedButton) ExplicitHeight() int32 {
     return SpeedButton_GetExplicitHeight(s.instance)
+}
+
+func (s *TSpeedButton) Floating() bool {
+    return SpeedButton_GetFloating(s.instance)
 }
 
 func (s *TSpeedButton) Parent() *TControl {

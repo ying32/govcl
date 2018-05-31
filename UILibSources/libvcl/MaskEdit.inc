@@ -130,6 +130,11 @@ begin
   AObj.BringToFront;
 end;
 
+function MaskEdit_Dragging(AObj: TMaskEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function MaskEdit_HasParent(AObj: TMaskEdit): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -328,6 +333,36 @@ end;
 procedure MaskEdit_SetDoubleBuffered(AObj: TMaskEdit; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function MaskEdit_GetDragCursor(AObj: TMaskEdit): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure MaskEdit_SetDragCursor(AObj: TMaskEdit; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function MaskEdit_GetDragKind(AObj: TMaskEdit): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure MaskEdit_SetDragKind(AObj: TMaskEdit; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function MaskEdit_GetDragMode(AObj: TMaskEdit): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure MaskEdit_SetDragMode(AObj: TMaskEdit; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function MaskEdit_GetEnabled(AObj: TMaskEdit): LongBool; stdcall;
@@ -546,6 +581,54 @@ begin
   TEventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure MaskEdit_SetOnDragDrop(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure MaskEdit_SetOnDragOver(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure MaskEdit_SetOnEndDock(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure MaskEdit_SetOnEndDrag(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure MaskEdit_SetOnEnter(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -666,6 +749,18 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure MaskEdit_SetOnStartDock(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function MaskEdit_GetIsMasked(AObj: TMaskEdit): LongBool; stdcall;
 begin
   Result :=  AObj.IsMasked;
@@ -726,6 +821,16 @@ begin
   AObj.SelText := AValue;
 end;
 
+function MaskEdit_GetDockSite(AObj: TMaskEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure MaskEdit_SetDockSite(AObj: TMaskEdit; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function MaskEdit_GetBrush(AObj: TMaskEdit): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -749,6 +854,16 @@ end;
 procedure MaskEdit_SetParentWindow(AObj: TMaskEdit; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function MaskEdit_GetUseDockManager(AObj: TMaskEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure MaskEdit_SetUseDockManager(AObj: TMaskEdit; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function MaskEdit_GetAction(AObj: TMaskEdit): TBasicAction; stdcall;
@@ -814,6 +929,11 @@ end;
 function MaskEdit_GetExplicitHeight(AObj: TMaskEdit): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function MaskEdit_GetFloating(AObj: TMaskEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function MaskEdit_GetParent(AObj: TMaskEdit): TWinControl; stdcall;
@@ -993,6 +1113,7 @@ exports
   MaskEdit_SetFocus,
   MaskEdit_Update,
   MaskEdit_BringToFront,
+  MaskEdit_Dragging,
   MaskEdit_HasParent,
   MaskEdit_Hide,
   MaskEdit_Perform,
@@ -1033,6 +1154,12 @@ exports
   MaskEdit_SetColor,
   MaskEdit_GetDoubleBuffered,
   MaskEdit_SetDoubleBuffered,
+  MaskEdit_GetDragCursor,
+  MaskEdit_SetDragCursor,
+  MaskEdit_GetDragKind,
+  MaskEdit_SetDragKind,
+  MaskEdit_GetDragMode,
+  MaskEdit_SetDragMode,
   MaskEdit_GetEnabled,
   MaskEdit_SetEnabled,
   MaskEdit_GetFont,
@@ -1072,6 +1199,10 @@ exports
   MaskEdit_SetOnChange,
   MaskEdit_SetOnClick,
   MaskEdit_SetOnDblClick,
+  MaskEdit_SetOnDragDrop,
+  MaskEdit_SetOnDragOver,
+  MaskEdit_SetOnEndDock,
+  MaskEdit_SetOnEndDrag,
   MaskEdit_SetOnEnter,
   MaskEdit_SetOnExit,
   MaskEdit_SetOnKeyDown,
@@ -1082,6 +1213,7 @@ exports
   MaskEdit_SetOnMouseLeave,
   MaskEdit_SetOnMouseMove,
   MaskEdit_SetOnMouseUp,
+  MaskEdit_SetOnStartDock,
   MaskEdit_GetIsMasked,
   MaskEdit_GetEditText,
   MaskEdit_SetEditText,
@@ -1094,11 +1226,15 @@ exports
   MaskEdit_SetSelStart,
   MaskEdit_GetSelText,
   MaskEdit_SetSelText,
+  MaskEdit_GetDockSite,
+  MaskEdit_SetDockSite,
   MaskEdit_GetBrush,
   MaskEdit_GetControlCount,
   MaskEdit_GetHandle,
   MaskEdit_GetParentWindow,
   MaskEdit_SetParentWindow,
+  MaskEdit_GetUseDockManager,
+  MaskEdit_SetUseDockManager,
   MaskEdit_GetAction,
   MaskEdit_SetAction,
   MaskEdit_GetBoundsRect,
@@ -1112,6 +1248,7 @@ exports
   MaskEdit_GetExplicitTop,
   MaskEdit_GetExplicitWidth,
   MaskEdit_GetExplicitHeight,
+  MaskEdit_GetFloating,
   MaskEdit_GetParent,
   MaskEdit_SetParent,
   MaskEdit_GetAlignWithMargins,

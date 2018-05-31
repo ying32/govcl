@@ -120,6 +120,10 @@ func (l *TListBox) BringToFront() {
     ListBox_BringToFront(l.instance)
 }
 
+func (l *TListBox) Dragging() bool {
+    return ListBox_Dragging(l.instance)
+}
+
 func (l *TListBox) HasParent() bool {
     return ListBox_HasParent(l.instance)
 }
@@ -292,6 +296,30 @@ func (l *TListBox) SetDoubleBuffered(value bool) {
     ListBox_SetDoubleBuffered(l.instance, value)
 }
 
+func (l *TListBox) DragCursor() TCursor {
+    return ListBox_GetDragCursor(l.instance)
+}
+
+func (l *TListBox) SetDragCursor(value TCursor) {
+    ListBox_SetDragCursor(l.instance, value)
+}
+
+func (l *TListBox) DragKind() TDragKind {
+    return ListBox_GetDragKind(l.instance)
+}
+
+func (l *TListBox) SetDragKind(value TDragKind) {
+    ListBox_SetDragKind(l.instance, value)
+}
+
+func (l *TListBox) DragMode() TDragMode {
+    return ListBox_GetDragMode(l.instance)
+}
+
+func (l *TListBox) SetDragMode(value TDragMode) {
+    ListBox_SetDragMode(l.instance, value)
+}
+
 func (l *TListBox) Enabled() bool {
     return ListBox_GetEnabled(l.instance)
 }
@@ -440,12 +468,32 @@ func (l *TListBox) SetOnClick(fn TNotifyEvent) {
     ListBox_SetOnClick(l.instance, fn)
 }
 
+func (l *TListBox) SetOnContextPopup(fn TContextPopupEvent) {
+    ListBox_SetOnContextPopup(l.instance, fn)
+}
+
 func (l *TListBox) SetOnDblClick(fn TNotifyEvent) {
     ListBox_SetOnDblClick(l.instance, fn)
 }
 
+func (l *TListBox) SetOnDragDrop(fn TDragDropEvent) {
+    ListBox_SetOnDragDrop(l.instance, fn)
+}
+
+func (l *TListBox) SetOnDragOver(fn TDragOverEvent) {
+    ListBox_SetOnDragOver(l.instance, fn)
+}
+
 func (l *TListBox) SetOnDrawItem(fn TDrawItemEvent) {
     ListBox_SetOnDrawItem(l.instance, fn)
+}
+
+func (l *TListBox) SetOnEndDock(fn TEndDragEvent) {
+    ListBox_SetOnEndDock(l.instance, fn)
+}
+
+func (l *TListBox) SetOnEndDrag(fn TEndDragEvent) {
+    ListBox_SetOnEndDrag(l.instance, fn)
 }
 
 func (l *TListBox) SetOnEnter(fn TNotifyEvent) {
@@ -488,6 +536,10 @@ func (l *TListBox) SetOnMouseUp(fn TMouseEvent) {
     ListBox_SetOnMouseUp(l.instance, fn)
 }
 
+func (l *TListBox) SetOnStartDock(fn TStartDockEvent) {
+    ListBox_SetOnStartDock(l.instance, fn)
+}
+
 func (l *TListBox) Canvas() *TCanvas {
     return CanvasFromInst(ListBox_GetCanvas(l.instance))
 }
@@ -512,6 +564,14 @@ func (l *TListBox) SetItemIndex(value int32) {
     ListBox_SetItemIndex(l.instance, value)
 }
 
+func (l *TListBox) DockSite() bool {
+    return ListBox_GetDockSite(l.instance)
+}
+
+func (l *TListBox) SetDockSite(value bool) {
+    ListBox_SetDockSite(l.instance, value)
+}
+
 func (l *TListBox) Brush() *TBrush {
     return BrushFromInst(ListBox_GetBrush(l.instance))
 }
@@ -530,6 +590,14 @@ func (l *TListBox) ParentWindow() HWND {
 
 func (l *TListBox) SetParentWindow(value HWND) {
     ListBox_SetParentWindow(l.instance, value)
+}
+
+func (l *TListBox) UseDockManager() bool {
+    return ListBox_GetUseDockManager(l.instance)
+}
+
+func (l *TListBox) SetUseDockManager(value bool) {
+    ListBox_SetUseDockManager(l.instance, value)
 }
 
 func (l *TListBox) Action() *TAction {
@@ -582,6 +650,10 @@ func (l *TListBox) ExplicitWidth() int32 {
 
 func (l *TListBox) ExplicitHeight() int32 {
     return ListBox_GetExplicitHeight(l.instance)
+}
+
+func (l *TListBox) Floating() bool {
+    return ListBox_GetFloating(l.instance)
 }
 
 func (l *TListBox) Parent() *TControl {

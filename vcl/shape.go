@@ -56,6 +56,10 @@ func (s *TShape) BringToFront() {
     Shape_BringToFront(s.instance)
 }
 
+func (s *TShape) Dragging() bool {
+    return Shape_Dragging(s.instance)
+}
+
 func (s *TShape) HasParent() bool {
     return Shape_HasParent(s.instance)
 }
@@ -156,6 +160,30 @@ func (s *TShape) SetBrush(value *TBrush) {
     Shape_SetBrush(s.instance, CheckPtr(value))
 }
 
+func (s *TShape) DragCursor() TCursor {
+    return Shape_GetDragCursor(s.instance)
+}
+
+func (s *TShape) SetDragCursor(value TCursor) {
+    Shape_SetDragCursor(s.instance, value)
+}
+
+func (s *TShape) DragKind() TDragKind {
+    return Shape_GetDragKind(s.instance)
+}
+
+func (s *TShape) SetDragKind(value TDragKind) {
+    Shape_SetDragKind(s.instance, value)
+}
+
+func (s *TShape) DragMode() TDragMode {
+    return Shape_GetDragMode(s.instance)
+}
+
+func (s *TShape) SetDragMode(value TDragMode) {
+    Shape_SetDragMode(s.instance, value)
+}
+
 func (s *TShape) Enabled() bool {
     return Shape_GetEnabled(s.instance)
 }
@@ -204,6 +232,26 @@ func (s *TShape) SetVisible(value bool) {
     Shape_SetVisible(s.instance, value)
 }
 
+func (s *TShape) SetOnContextPopup(fn TContextPopupEvent) {
+    Shape_SetOnContextPopup(s.instance, fn)
+}
+
+func (s *TShape) SetOnDragDrop(fn TDragDropEvent) {
+    Shape_SetOnDragDrop(s.instance, fn)
+}
+
+func (s *TShape) SetOnDragOver(fn TDragOverEvent) {
+    Shape_SetOnDragOver(s.instance, fn)
+}
+
+func (s *TShape) SetOnEndDock(fn TEndDragEvent) {
+    Shape_SetOnEndDock(s.instance, fn)
+}
+
+func (s *TShape) SetOnEndDrag(fn TEndDragEvent) {
+    Shape_SetOnEndDrag(s.instance, fn)
+}
+
 func (s *TShape) SetOnMouseDown(fn TMouseEvent) {
     Shape_SetOnMouseDown(s.instance, fn)
 }
@@ -222,6 +270,10 @@ func (s *TShape) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (s *TShape) SetOnMouseUp(fn TMouseEvent) {
     Shape_SetOnMouseUp(s.instance, fn)
+}
+
+func (s *TShape) SetOnStartDock(fn TStartDockEvent) {
+    Shape_SetOnStartDock(s.instance, fn)
 }
 
 func (s *TShape) Action() *TAction {
@@ -282,6 +334,10 @@ func (s *TShape) ExplicitWidth() int32 {
 
 func (s *TShape) ExplicitHeight() int32 {
     return Shape_GetExplicitHeight(s.instance)
+}
+
+func (s *TShape) Floating() bool {
+    return Shape_GetFloating(s.instance)
 }
 
 func (s *TShape) Parent() *TControl {

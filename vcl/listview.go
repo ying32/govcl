@@ -140,6 +140,10 @@ func (l *TListView) BringToFront() {
     ListView_BringToFront(l.instance)
 }
 
+func (l *TListView) Dragging() bool {
+    return ListView_Dragging(l.instance)
+}
+
 func (l *TListView) HasParent() bool {
     return ListView_HasParent(l.instance)
 }
@@ -326,6 +330,30 @@ func (l *TListView) DoubleBuffered() bool {
 
 func (l *TListView) SetDoubleBuffered(value bool) {
     ListView_SetDoubleBuffered(l.instance, value)
+}
+
+func (l *TListView) DragCursor() TCursor {
+    return ListView_GetDragCursor(l.instance)
+}
+
+func (l *TListView) SetDragCursor(value TCursor) {
+    ListView_SetDragCursor(l.instance, value)
+}
+
+func (l *TListView) DragKind() TDragKind {
+    return ListView_GetDragKind(l.instance)
+}
+
+func (l *TListView) SetDragKind(value TDragKind) {
+    ListView_SetDragKind(l.instance, value)
+}
+
+func (l *TListView) DragMode() TDragMode {
+    return ListView_GetDragMode(l.instance)
+}
+
+func (l *TListView) SetDragMode(value TDragMode) {
+    ListView_SetDragMode(l.instance, value)
 }
 
 func (l *TListView) Enabled() bool {
@@ -624,8 +652,20 @@ func (l *TListView) SetOnCompare(fn TLVCompareEvent) {
     ListView_SetOnCompare(l.instance, fn)
 }
 
+func (l *TListView) SetOnContextPopup(fn TContextPopupEvent) {
+    ListView_SetOnContextPopup(l.instance, fn)
+}
+
 func (l *TListView) SetOnDblClick(fn TNotifyEvent) {
     ListView_SetOnDblClick(l.instance, fn)
+}
+
+func (l *TListView) SetOnEndDock(fn TEndDragEvent) {
+    ListView_SetOnEndDock(l.instance, fn)
+}
+
+func (l *TListView) SetOnEndDrag(fn TEndDragEvent) {
+    ListView_SetOnEndDrag(l.instance, fn)
 }
 
 func (l *TListView) SetOnEnter(fn TNotifyEvent) {
@@ -638,6 +678,14 @@ func (l *TListView) SetOnExit(fn TNotifyEvent) {
 
 func (l *TListView) SetOnGetImageIndex(fn TLVNotifyEvent) {
     ListView_SetOnGetImageIndex(l.instance, fn)
+}
+
+func (l *TListView) SetOnDragDrop(fn TDragDropEvent) {
+    ListView_SetOnDragDrop(l.instance, fn)
+}
+
+func (l *TListView) SetOnDragOver(fn TDragOverEvent) {
+    ListView_SetOnDragOver(l.instance, fn)
 }
 
 func (l *TListView) SetOnKeyDown(fn TKeyEvent) {
@@ -682,6 +730,10 @@ func (l *TListView) SetOnSelectItem(fn TLVSelectItemEvent) {
 
 func (l *TListView) SetOnItemChecked(fn TLVCheckedItemEvent) {
     ListView_SetOnItemChecked(l.instance, fn)
+}
+
+func (l *TListView) SetOnStartDock(fn TStartDockEvent) {
+    ListView_SetOnStartDock(l.instance, fn)
 }
 
 func (l *TListView) Canvas() *TCanvas {
@@ -732,6 +784,14 @@ func (l *TListView) SetItemIndex(value int32) {
     ListView_SetItemIndex(l.instance, value)
 }
 
+func (l *TListView) DockSite() bool {
+    return ListView_GetDockSite(l.instance)
+}
+
+func (l *TListView) SetDockSite(value bool) {
+    ListView_SetDockSite(l.instance, value)
+}
+
 func (l *TListView) Brush() *TBrush {
     return BrushFromInst(ListView_GetBrush(l.instance))
 }
@@ -750,6 +810,14 @@ func (l *TListView) ParentWindow() HWND {
 
 func (l *TListView) SetParentWindow(value HWND) {
     ListView_SetParentWindow(l.instance, value)
+}
+
+func (l *TListView) UseDockManager() bool {
+    return ListView_GetUseDockManager(l.instance)
+}
+
+func (l *TListView) SetUseDockManager(value bool) {
+    ListView_SetUseDockManager(l.instance, value)
 }
 
 func (l *TListView) BoundsRect() TRect {
@@ -794,6 +862,10 @@ func (l *TListView) ExplicitWidth() int32 {
 
 func (l *TListView) ExplicitHeight() int32 {
     return ListView_GetExplicitHeight(l.instance)
+}
+
+func (l *TListView) Floating() bool {
+    return ListView_GetFloating(l.instance)
 }
 
 func (l *TListView) Parent() *TControl {

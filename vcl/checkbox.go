@@ -100,6 +100,10 @@ func (c *TCheckBox) BringToFront() {
     CheckBox_BringToFront(c.instance)
 }
 
+func (c *TCheckBox) Dragging() bool {
+    return CheckBox_Dragging(c.instance)
+}
+
 func (c *TCheckBox) HasParent() bool {
     return CheckBox_HasParent(c.instance)
 }
@@ -240,6 +244,30 @@ func (c *TCheckBox) SetDoubleBuffered(value bool) {
     CheckBox_SetDoubleBuffered(c.instance, value)
 }
 
+func (c *TCheckBox) DragCursor() TCursor {
+    return CheckBox_GetDragCursor(c.instance)
+}
+
+func (c *TCheckBox) SetDragCursor(value TCursor) {
+    CheckBox_SetDragCursor(c.instance, value)
+}
+
+func (c *TCheckBox) DragKind() TDragKind {
+    return CheckBox_GetDragKind(c.instance)
+}
+
+func (c *TCheckBox) SetDragKind(value TDragKind) {
+    CheckBox_SetDragKind(c.instance, value)
+}
+
+func (c *TCheckBox) DragMode() TDragMode {
+    return CheckBox_GetDragMode(c.instance)
+}
+
+func (c *TCheckBox) SetDragMode(value TDragMode) {
+    CheckBox_SetDragMode(c.instance, value)
+}
+
 func (c *TCheckBox) Enabled() bool {
     return CheckBox_GetEnabled(c.instance)
 }
@@ -364,6 +392,26 @@ func (c *TCheckBox) SetOnClick(fn TNotifyEvent) {
     CheckBox_SetOnClick(c.instance, fn)
 }
 
+func (c *TCheckBox) SetOnContextPopup(fn TContextPopupEvent) {
+    CheckBox_SetOnContextPopup(c.instance, fn)
+}
+
+func (c *TCheckBox) SetOnDragDrop(fn TDragDropEvent) {
+    CheckBox_SetOnDragDrop(c.instance, fn)
+}
+
+func (c *TCheckBox) SetOnDragOver(fn TDragOverEvent) {
+    CheckBox_SetOnDragOver(c.instance, fn)
+}
+
+func (c *TCheckBox) SetOnEndDock(fn TEndDragEvent) {
+    CheckBox_SetOnEndDock(c.instance, fn)
+}
+
+func (c *TCheckBox) SetOnEndDrag(fn TEndDragEvent) {
+    CheckBox_SetOnEndDrag(c.instance, fn)
+}
+
 func (c *TCheckBox) SetOnEnter(fn TNotifyEvent) {
     CheckBox_SetOnEnter(c.instance, fn)
 }
@@ -404,6 +452,18 @@ func (c *TCheckBox) SetOnMouseUp(fn TMouseEvent) {
     CheckBox_SetOnMouseUp(c.instance, fn)
 }
 
+func (c *TCheckBox) SetOnStartDock(fn TStartDockEvent) {
+    CheckBox_SetOnStartDock(c.instance, fn)
+}
+
+func (c *TCheckBox) DockSite() bool {
+    return CheckBox_GetDockSite(c.instance)
+}
+
+func (c *TCheckBox) SetDockSite(value bool) {
+    CheckBox_SetDockSite(c.instance, value)
+}
+
 func (c *TCheckBox) Brush() *TBrush {
     return BrushFromInst(CheckBox_GetBrush(c.instance))
 }
@@ -422,6 +482,14 @@ func (c *TCheckBox) ParentWindow() HWND {
 
 func (c *TCheckBox) SetParentWindow(value HWND) {
     CheckBox_SetParentWindow(c.instance, value)
+}
+
+func (c *TCheckBox) UseDockManager() bool {
+    return CheckBox_GetUseDockManager(c.instance)
+}
+
+func (c *TCheckBox) SetUseDockManager(value bool) {
+    CheckBox_SetUseDockManager(c.instance, value)
 }
 
 func (c *TCheckBox) BoundsRect() TRect {
@@ -466,6 +534,10 @@ func (c *TCheckBox) ExplicitWidth() int32 {
 
 func (c *TCheckBox) ExplicitHeight() int32 {
     return CheckBox_GetExplicitHeight(c.instance)
+}
+
+func (c *TCheckBox) Floating() bool {
+    return CheckBox_GetFloating(c.instance)
 }
 
 func (c *TCheckBox) Parent() *TControl {

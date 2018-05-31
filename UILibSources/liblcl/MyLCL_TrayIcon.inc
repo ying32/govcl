@@ -60,6 +60,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function TrayIcon_GetAnimateInterval(AObj: TTrayIcon): Cardinal; extdecl;
+begin
+  Result :=  AObj.AnimateInterval;
+end;
+
+procedure TrayIcon_SetAnimateInterval(AObj: TTrayIcon; AValue: Cardinal); extdecl;
+begin
+  AObj.AnimateInterval := AValue;
+end;
+
 function TrayIcon_GetHint(AObj: TTrayIcon): PChar; extdecl;
 begin
   Result :=  PChar(AObj.Hint);
@@ -258,6 +268,8 @@ exports
   TrayIcon_Equals,
   TrayIcon_GetHashCode,
   TrayIcon_ToString,
+  TrayIcon_GetAnimateInterval,
+  TrayIcon_SetAnimateInterval,
   TrayIcon_GetHint,
   TrayIcon_SetHint,
   TrayIcon_GetBalloonHint,

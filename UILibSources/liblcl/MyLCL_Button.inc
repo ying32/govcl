@@ -35,6 +35,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function Button_HandleAllocated(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure Button_Invalidate(AObj: TButton); extdecl;
 begin
   AObj.Invalidate;
@@ -73,6 +78,11 @@ end;
 procedure Button_BringToFront(AObj: TButton); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function Button_Dragging(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function Button_HasParent(AObj: TButton): LongBool; extdecl;
@@ -230,6 +240,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function Button_GetDragCursor(AObj: TButton): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Button_SetDragCursor(AObj: TButton; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Button_GetDragKind(AObj: TButton): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Button_SetDragKind(AObj: TButton; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Button_GetDragMode(AObj: TButton): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Button_SetDragMode(AObj: TButton; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function Button_GetEnabled(AObj: TButton): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -340,6 +380,54 @@ begin
   end;
   AObj.OnClick := @EventClass.OnClick;
   EventClass.Add(AObj, geClick, AEventId);
+end;
+
+procedure Button_SetOnContextPopup(AObj: TButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure Button_SetOnDragDrop(AObj: TButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Button_SetOnDragOver(AObj: TButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Button_SetOnEndDrag(AObj: TButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Button_SetOnEnter(AObj: TButton; AEventId: NativeUInt); extdecl;
@@ -462,6 +550,16 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function Button_GetDockSite(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure Button_SetDockSite(AObj: TButton; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function Button_GetBrush(AObj: TButton): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -485,6 +583,16 @@ end;
 procedure Button_SetParentWindow(AObj: TButton; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function Button_GetUseDockManager(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure Button_SetUseDockManager(AObj: TButton; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 procedure Button_GetBoundsRect(AObj: TButton; var Result: TRect); extdecl;
@@ -520,6 +628,11 @@ end;
 procedure Button_SetClientWidth(AObj: TButton; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Button_GetFloating(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Button_GetParent(AObj: TButton): TWinControl; extdecl;
@@ -650,6 +763,7 @@ exports
   Button_CanFocus,
   Button_FlipChildren,
   Button_Focused,
+  Button_HandleAllocated,
   Button_Invalidate,
   Button_Realign,
   Button_Repaint,
@@ -658,6 +772,7 @@ exports
   Button_SetFocus,
   Button_Update,
   Button_BringToFront,
+  Button_Dragging,
   Button_HasParent,
   Button_Hide,
   Button_Perform,
@@ -689,6 +804,12 @@ exports
   Button_SetDefault,
   Button_GetDoubleBuffered,
   Button_SetDoubleBuffered,
+  Button_GetDragCursor,
+  Button_SetDragCursor,
+  Button_GetDragKind,
+  Button_SetDragKind,
+  Button_GetDragMode,
+  Button_SetDragMode,
   Button_GetEnabled,
   Button_SetEnabled,
   Button_GetFont,
@@ -710,6 +831,10 @@ exports
   Button_GetVisible,
   Button_SetVisible,
   Button_SetOnClick,
+  Button_SetOnContextPopup,
+  Button_SetOnDragDrop,
+  Button_SetOnDragOver,
+  Button_SetOnEndDrag,
   Button_SetOnEnter,
   Button_SetOnExit,
   Button_SetOnKeyDown,
@@ -720,11 +845,15 @@ exports
   Button_SetOnMouseLeave,
   Button_SetOnMouseMove,
   Button_SetOnMouseUp,
+  Button_GetDockSite,
+  Button_SetDockSite,
   Button_GetBrush,
   Button_GetControlCount,
   Button_GetHandle,
   Button_GetParentWindow,
   Button_SetParentWindow,
+  Button_GetUseDockManager,
+  Button_SetUseDockManager,
   Button_GetBoundsRect,
   Button_SetBoundsRect,
   Button_GetClientHeight,
@@ -732,6 +861,7 @@ exports
   Button_GetClientRect,
   Button_GetClientWidth,
   Button_SetClientWidth,
+  Button_GetFloating,
   Button_GetParent,
   Button_SetParent,
   Button_GetLeft,

@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function TabSheet_Dragging(AObj: TTabSheet): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function TabSheet_HasParent(AObj: TTabSheet): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -193,6 +198,16 @@ end;
 procedure TabSheet_SetDoubleBuffered(AObj: TTabSheet; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function TabSheet_GetDragMode(AObj: TTabSheet): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure TabSheet_SetDragMode(AObj: TTabSheet; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function TabSheet_GetEnabled(AObj: TTabSheet): LongBool; stdcall;
@@ -355,6 +370,54 @@ begin
   AObj.Width := AValue;
 end;
 
+procedure TabSheet_SetOnContextPopup(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure TabSheet_SetOnDragDrop(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure TabSheet_SetOnDragOver(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure TabSheet_SetOnEndDrag(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure TabSheet_SetOnEnter(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -475,6 +538,16 @@ begin
   TEventClass.Add(AObj, geShow, AEventId);
 end;
 
+function TabSheet_GetDockSite(AObj: TTabSheet): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure TabSheet_SetDockSite(AObj: TTabSheet; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function TabSheet_GetBrush(AObj: TTabSheet): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -518,6 +591,16 @@ end;
 procedure TabSheet_SetTabStop(AObj: TTabSheet; AValue: LongBool); stdcall;
 begin
   AObj.TabStop := AValue;
+end;
+
+function TabSheet_GetUseDockManager(AObj: TTabSheet): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure TabSheet_SetUseDockManager(AObj: TTabSheet; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function TabSheet_GetAction(AObj: TTabSheet): TBasicAction; stdcall;
@@ -613,6 +696,11 @@ end;
 function TabSheet_GetExplicitHeight(AObj: TTabSheet): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function TabSheet_GetFloating(AObj: TTabSheet): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function TabSheet_GetParent(AObj: TTabSheet): TWinControl; stdcall;
@@ -751,6 +839,7 @@ exports
   TabSheet_SetFocus,
   TabSheet_Update,
   TabSheet_BringToFront,
+  TabSheet_Dragging,
   TabSheet_HasParent,
   TabSheet_Hide,
   TabSheet_Perform,
@@ -775,6 +864,8 @@ exports
   TabSheet_SetCaption,
   TabSheet_GetDoubleBuffered,
   TabSheet_SetDoubleBuffered,
+  TabSheet_GetDragMode,
+  TabSheet_SetDragMode,
   TabSheet_GetEnabled,
   TabSheet_SetEnabled,
   TabSheet_GetFont,
@@ -807,6 +898,10 @@ exports
   TabSheet_SetVisible,
   TabSheet_GetWidth,
   TabSheet_SetWidth,
+  TabSheet_SetOnContextPopup,
+  TabSheet_SetOnDragDrop,
+  TabSheet_SetOnDragOver,
+  TabSheet_SetOnEndDrag,
   TabSheet_SetOnEnter,
   TabSheet_SetOnExit,
   TabSheet_SetOnHide,
@@ -817,6 +912,8 @@ exports
   TabSheet_SetOnMouseUp,
   TabSheet_SetOnResize,
   TabSheet_SetOnShow,
+  TabSheet_GetDockSite,
+  TabSheet_SetDockSite,
   TabSheet_GetBrush,
   TabSheet_GetControlCount,
   TabSheet_GetHandle,
@@ -826,6 +923,8 @@ exports
   TabSheet_SetTabOrder,
   TabSheet_GetTabStop,
   TabSheet_SetTabStop,
+  TabSheet_GetUseDockManager,
+  TabSheet_SetUseDockManager,
   TabSheet_GetAction,
   TabSheet_SetAction,
   TabSheet_GetAlign,
@@ -845,6 +944,7 @@ exports
   TabSheet_GetExplicitTop,
   TabSheet_GetExplicitWidth,
   TabSheet_GetExplicitHeight,
+  TabSheet_GetFloating,
   TabSheet_GetParent,
   TabSheet_SetParent,
   TabSheet_GetStyleElements,

@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Image_Dragging(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Image_HasParent(AObj: TImage): LongBool; extdecl;
 begin
   Result :=  AObj.HasParent;
@@ -160,6 +165,26 @@ begin
   AObj.Center := AValue;
 end;
 
+function Image_GetDragCursor(AObj: TImage): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Image_SetDragCursor(AObj: TImage; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Image_GetDragMode(AObj: TImage): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Image_SetDragMode(AObj: TImage; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function Image_GetEnabled(AObj: TImage): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -272,6 +297,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Image_SetOnDragDrop(AObj: TImage; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Image_SetOnDragOver(AObj: TImage; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Image_SetOnEndDrag(AObj: TImage; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Image_SetOnMouseDown(AObj: TImage; AEventId: NativeUInt); extdecl;
@@ -387,6 +448,11 @@ end;
 procedure Image_SetClientWidth(AObj: TImage; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Image_GetFloating(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Image_GetParent(AObj: TImage): TWinControl; extdecl;
@@ -509,6 +575,7 @@ exports
   Image_Create,
   Image_Free,
   Image_BringToFront,
+  Image_Dragging,
   Image_HasParent,
   Image_Hide,
   Image_Invalidate,
@@ -537,6 +604,10 @@ exports
   Image_SetAutoSize,
   Image_GetCenter,
   Image_SetCenter,
+  Image_GetDragCursor,
+  Image_SetDragCursor,
+  Image_GetDragMode,
+  Image_SetDragMode,
   Image_GetEnabled,
   Image_SetEnabled,
   Image_GetParentShowHint,
@@ -557,6 +628,9 @@ exports
   Image_SetVisible,
   Image_SetOnClick,
   Image_SetOnDblClick,
+  Image_SetOnDragDrop,
+  Image_SetOnDragOver,
+  Image_SetOnEndDrag,
   Image_SetOnMouseDown,
   Image_SetOnMouseEnter,
   Image_SetOnMouseLeave,
@@ -573,6 +647,7 @@ exports
   Image_GetClientRect,
   Image_GetClientWidth,
   Image_SetClientWidth,
+  Image_GetFloating,
   Image_GetParent,
   Image_SetParent,
   Image_GetLeft,

@@ -40,6 +40,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function ProgressBar_HandleAllocated(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure ProgressBar_Invalidate(AObj: TProgressBar); extdecl;
 begin
   AObj.Invalidate;
@@ -78,6 +83,11 @@ end;
 procedure ProgressBar_BringToFront(AObj: TProgressBar); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function ProgressBar_Dragging(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function ProgressBar_HasParent(AObj: TProgressBar): LongBool; extdecl;
@@ -193,6 +203,36 @@ end;
 procedure ProgressBar_SetDoubleBuffered(AObj: TProgressBar; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function ProgressBar_GetDragCursor(AObj: TProgressBar): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ProgressBar_SetDragCursor(AObj: TProgressBar; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ProgressBar_GetDragKind(AObj: TProgressBar): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ProgressBar_SetDragKind(AObj: TProgressBar; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ProgressBar_GetDragMode(AObj: TProgressBar): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ProgressBar_SetDragMode(AObj: TProgressBar; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function ProgressBar_GetEnabled(AObj: TProgressBar): LongBool; extdecl;
@@ -345,6 +385,54 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure ProgressBar_SetOnContextPopup(AObj: TProgressBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure ProgressBar_SetOnDragDrop(AObj: TProgressBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ProgressBar_SetOnDragOver(AObj: TProgressBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ProgressBar_SetOnEndDrag(AObj: TProgressBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure ProgressBar_SetOnEnter(AObj: TProgressBar; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -429,6 +517,16 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function ProgressBar_GetDockSite(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ProgressBar_SetDockSite(AObj: TProgressBar; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ProgressBar_GetBrush(AObj: TProgressBar): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -452,6 +550,16 @@ end;
 procedure ProgressBar_SetParentWindow(AObj: TProgressBar; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ProgressBar_GetUseDockManager(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ProgressBar_SetUseDockManager(AObj: TProgressBar; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ProgressBar_GetAction(AObj: TProgressBar): TBasicAction; extdecl;
@@ -507,6 +615,11 @@ end;
 procedure ProgressBar_SetClientWidth(AObj: TProgressBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ProgressBar_GetFloating(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ProgressBar_GetParent(AObj: TProgressBar): TWinControl; extdecl;
@@ -628,6 +741,7 @@ exports
   ProgressBar_CanFocus,
   ProgressBar_FlipChildren,
   ProgressBar_Focused,
+  ProgressBar_HandleAllocated,
   ProgressBar_Invalidate,
   ProgressBar_Realign,
   ProgressBar_Repaint,
@@ -636,6 +750,7 @@ exports
   ProgressBar_SetFocus,
   ProgressBar_Update,
   ProgressBar_BringToFront,
+  ProgressBar_Dragging,
   ProgressBar_HasParent,
   ProgressBar_Hide,
   ProgressBar_Perform,
@@ -659,6 +774,12 @@ exports
   ProgressBar_SetBorderWidth,
   ProgressBar_GetDoubleBuffered,
   ProgressBar_SetDoubleBuffered,
+  ProgressBar_GetDragCursor,
+  ProgressBar_SetDragCursor,
+  ProgressBar_GetDragKind,
+  ProgressBar_SetDragKind,
+  ProgressBar_GetDragMode,
+  ProgressBar_SetDragMode,
   ProgressBar_GetEnabled,
   ProgressBar_SetEnabled,
   ProgressBar_GetHint,
@@ -689,6 +810,10 @@ exports
   ProgressBar_SetTabStop,
   ProgressBar_GetVisible,
   ProgressBar_SetVisible,
+  ProgressBar_SetOnContextPopup,
+  ProgressBar_SetOnDragDrop,
+  ProgressBar_SetOnDragOver,
+  ProgressBar_SetOnEndDrag,
   ProgressBar_SetOnEnter,
   ProgressBar_SetOnExit,
   ProgressBar_SetOnMouseDown,
@@ -696,11 +821,15 @@ exports
   ProgressBar_SetOnMouseLeave,
   ProgressBar_SetOnMouseMove,
   ProgressBar_SetOnMouseUp,
+  ProgressBar_GetDockSite,
+  ProgressBar_SetDockSite,
   ProgressBar_GetBrush,
   ProgressBar_GetControlCount,
   ProgressBar_GetHandle,
   ProgressBar_GetParentWindow,
   ProgressBar_SetParentWindow,
+  ProgressBar_GetUseDockManager,
+  ProgressBar_SetUseDockManager,
   ProgressBar_GetAction,
   ProgressBar_SetAction,
   ProgressBar_GetBiDiMode,
@@ -712,6 +841,7 @@ exports
   ProgressBar_GetClientRect,
   ProgressBar_GetClientWidth,
   ProgressBar_SetClientWidth,
+  ProgressBar_GetFloating,
   ProgressBar_GetParent,
   ProgressBar_SetParent,
   ProgressBar_GetLeft,

@@ -6,6 +6,8 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.ComCtrls,
+  Winapi.Windows,
+  Winapi.Messages,
   Vcl.Menus,
   Vcl.ExtCtrls,
   Vcl.Graphics,
@@ -39,7 +41,10 @@ type
               geTreeViewAdvancedCustomDraw, geTreeViewAdvancedCustomDrawItem,
               geToolBarAdvancedCustomDraw, geToolBarAdvancedCustomDrawButton,
               geHint, geClickCheck, geDropFiles, geDestroy, geFind, geReplace,
-              geConstrainedResize, geDeactivate, geActivate);
+              geConstrainedResize, geDeactivate, geActivate,
+              geHelp, geShortCut, geContextPopup, geDockDrop, geDragDrop,
+              geDragOver, geEndDock, geGetSiteInfo, geMouseWheelDown,
+              geMouseWheelUp, geStartDock, geUnDock, geMessage, geEndDrag);
 
   TEventKey = packed record
     Sender: TObject;
@@ -137,6 +142,23 @@ type
     class procedure OnActivate(Sender: TObject);
     class procedure OnDeactivate(Sender: TObject);
     class procedure OnConstrainedResize(Sender: TObject; var MinWidth, MinHeight, MaxWidth, MaxHeight: Integer);
+
+    // new
+    class function OnHelp(Command: Word; Data: THelpEventData; var CallHelp: Boolean): Boolean;
+    class procedure OnShortCut(var Msg: TWMKey; var Handled: Boolean);
+    class procedure OnContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
+    class procedure OnDockDrop(Sender: TObject; Source: TDragDockObject; X, Y: Integer);
+    class procedure OnDragDrop(Sender, Source: TObject; X, Y: Integer);
+    class procedure OnDragOver(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
+    class procedure OnEndDock(Sender, Target: TObject; X, Y: Integer);
+    class procedure OnGetSiteInfo(Sender: TObject; DockClient: TControl; var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean);
+    class procedure OnMouseWheelDown(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+    class procedure OnMouseWheelUp(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+    class procedure OnStartDock(Sender: TObject; var DragObject: TDragDockObject);
+    class procedure OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
+    class procedure OnMessage(var Msg: TMsg; var Handled: Boolean);
+    class procedure OnEndDrag(Sender, Target: TObject; X, Y: Integer);
+
 
 
     class procedure OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -362,6 +384,85 @@ begin
   SendEvent(Sender, geConstrainedResize, [Sender, @MinWidth, @MinHeight, @MaxWidth, @MaxHeight]);
 end;
 
+
+
+
+class function TEventClass.OnHelp(Command: Word; Data: THelpEventData;
+  var CallHelp: Boolean): Boolean;
+var
+  LResult: Boolean;
+begin
+  SendEvent(Application, geHelp, [Command, Data, Pointer(@CallHelp), Pointer(@LResult)]);
+  Result := LResult;
+end;
+
+class procedure TEventClass.OnShortCut(var Msg: TWMKey; var Handled: Boolean);
+begin
+  SendEvent(Application, geShortCut, [Pointer(@Msg), Pointer(@Handled)]);
+end;
+
+class procedure TEventClass.OnContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
+begin
+  SendEvent(Sender, geContextPopup, [Sender, Pointer(@MousePos), Pointer(@Handled)]);
+end;
+
+class procedure TEventClass.OnDockDrop(Sender: TObject; Source: TDragDockObject; X, Y: Integer);
+begin
+  SendEvent(Sender, geDockDrop, [Sender, Source, X, Y]);
+end;
+
+class procedure TEventClass.OnDragDrop(Sender, Source: TObject; X, Y: Integer);
+begin
+  SendEvent(Sender, geDragDrop, [Sender, Source, X, Y]);
+end;
+
+class procedure TEventClass.OnDragOver(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  SendEvent(Sender, geDragOver, [Sender, Source, X, Y, Integer(State), Pointer(@Accept)]);
+end;
+
+class procedure TEventClass.OnEndDock(Sender, Target: TObject; X, Y: Integer);
+begin
+  SendEvent(Sender, geEndDock, [Sender, Target, X, Y]);
+end;
+
+class procedure TEventClass.OnGetSiteInfo(Sender: TObject; DockClient: TControl;
+  var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean);
+begin
+  SendEvent(Sender, geGetSiteInfo, [Sender, DockClient, Pointer(@InfluenceRect), Pointer(@MousePos), Pointer(@CanDock)]);
+end;
+
+class procedure TEventClass.OnMouseWheelDown(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+begin
+  SendEvent(Sender, geMouseWheelDown, [Sender, PWord(@Shift)^, Pointer(@MousePos), Pointer(@Handled)]);
+end;
+
+class procedure TEventClass.OnMouseWheelUp(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean);
+begin
+  SendEvent(Sender, geMouseWheelUp, [Sender, PWord(@Shift)^, Pointer(@MousePos), Pointer(@Handled)]);
+end;
+
+class procedure TEventClass.OnStartDock(Sender: TObject; var DragObject: TDragDockObject);
+begin
+  SendEvent(Sender, geStartDock, [Sender, DragObject]);
+end;
+
+class procedure TEventClass.OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
+begin
+  SendEvent(Sender, geUnDock, [Sender, Client, NewTarget, Pointer(@Allow)]);
+end;
+
+
+class procedure TEventClass.OnMessage(var Msg: TMsg; var Handled: Boolean);
+begin
+  SendEvent(Application, geMessage, [Pointer(@Msg), Pointer(@Handled)]);
+end;
+
+
+class procedure TEventClass.OnEndDrag(Sender, Target: TObject; X, Y: Integer);
+begin
+  SendEvent(Sender, geEndDrag, [Sender, Target, X, Y]);
+end;
 
 class procedure TEventClass.OnHide(Sender: TObject);
 begin

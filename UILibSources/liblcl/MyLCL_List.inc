@@ -70,6 +70,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function List_GetCapacity(AObj: TList): Integer; extdecl;
+begin
+  Result :=  AObj.Capacity;
+end;
+
+procedure List_SetCapacity(AObj: TList; AValue: Integer); extdecl;
+begin
+  AObj.Capacity := AValue;
+end;
+
 function List_GetCount(AObj: TList): Integer; extdecl;
 begin
   Result :=  AObj.Count;
@@ -110,6 +120,8 @@ exports
   List_Equals,
   List_GetHashCode,
   List_ToString,
+  List_GetCapacity,
+  List_SetCapacity,
   List_GetCount,
   List_SetCount,
   List_GetList,

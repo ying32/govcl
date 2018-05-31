@@ -25,6 +25,11 @@ begin
   AObj.BringToFront;
 end;
 
+function ImageButton_Dragging(AObj: TImageButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ImageButton_HasParent(AObj: TImageButton): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -170,6 +175,36 @@ begin
   AObj.Caption := AValue;
 end;
 
+function ImageButton_GetDragCursor(AObj: TImageButton): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ImageButton_SetDragCursor(AObj: TImageButton; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ImageButton_GetDragKind(AObj: TImageButton): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ImageButton_SetDragKind(AObj: TImageButton; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ImageButton_GetDragMode(AObj: TImageButton): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ImageButton_SetDragMode(AObj: TImageButton; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function ImageButton_GetEnabled(AObj: TImageButton): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -292,6 +327,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ImageButton_SetOnContextPopup(AObj: TImageButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ImageButton_SetOnDblClick(AObj: TImageButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -302,6 +349,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure ImageButton_SetOnDragDrop(AObj: TImageButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ImageButton_SetOnDragOver(AObj: TImageButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ImageButton_SetOnEndDock(AObj: TImageButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ImageButton_SetOnEndDrag(AObj: TImageButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ImageButton_SetOnMouseDown(AObj: TImageButton; AEventId: NativeUInt); stdcall;
@@ -427,6 +522,11 @@ end;
 function ImageButton_GetExplicitHeight(AObj: TImageButton): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function ImageButton_GetFloating(AObj: TImageButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ImageButton_GetParent(AObj: TImageButton): TWinControl; stdcall;
@@ -590,6 +690,7 @@ exports
   ImageButton_Free,
   ImageButton_Click,
   ImageButton_BringToFront,
+  ImageButton_Dragging,
   ImageButton_HasParent,
   ImageButton_Hide,
   ImageButton_Invalidate,
@@ -619,6 +720,12 @@ exports
   ImageButton_SetAutoSize,
   ImageButton_GetCaption,
   ImageButton_SetCaption,
+  ImageButton_GetDragCursor,
+  ImageButton_SetDragCursor,
+  ImageButton_GetDragKind,
+  ImageButton_SetDragKind,
+  ImageButton_GetDragMode,
+  ImageButton_SetDragMode,
   ImageButton_GetEnabled,
   ImageButton_SetEnabled,
   ImageButton_GetFont,
@@ -642,7 +749,12 @@ exports
   ImageButton_GetVisible,
   ImageButton_SetVisible,
   ImageButton_SetOnClick,
+  ImageButton_SetOnContextPopup,
   ImageButton_SetOnDblClick,
+  ImageButton_SetOnDragDrop,
+  ImageButton_SetOnDragOver,
+  ImageButton_SetOnEndDock,
+  ImageButton_SetOnEndDrag,
   ImageButton_SetOnMouseDown,
   ImageButton_SetOnMouseEnter,
   ImageButton_SetOnMouseLeave,
@@ -661,6 +773,7 @@ exports
   ImageButton_GetExplicitTop,
   ImageButton_GetExplicitWidth,
   ImageButton_GetExplicitHeight,
+  ImageButton_GetFloating,
   ImageButton_GetParent,
   ImageButton_SetParent,
   ImageButton_GetStyleElements,

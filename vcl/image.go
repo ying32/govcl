@@ -56,6 +56,10 @@ func (i *TImage) BringToFront() {
     Image_BringToFront(i.instance)
 }
 
+func (i *TImage) Dragging() bool {
+    return Image_Dragging(i.instance)
+}
+
 func (i *TImage) HasParent() bool {
     return Image_HasParent(i.instance)
 }
@@ -168,6 +172,30 @@ func (i *TImage) SetCenter(value bool) {
     Image_SetCenter(i.instance, value)
 }
 
+func (i *TImage) DragCursor() TCursor {
+    return Image_GetDragCursor(i.instance)
+}
+
+func (i *TImage) SetDragCursor(value TCursor) {
+    Image_SetDragCursor(i.instance, value)
+}
+
+func (i *TImage) DragKind() TDragKind {
+    return Image_GetDragKind(i.instance)
+}
+
+func (i *TImage) SetDragKind(value TDragKind) {
+    Image_SetDragKind(i.instance, value)
+}
+
+func (i *TImage) DragMode() TDragMode {
+    return Image_GetDragMode(i.instance)
+}
+
+func (i *TImage) SetDragMode(value TDragMode) {
+    Image_SetDragMode(i.instance, value)
+}
+
 func (i *TImage) Enabled() bool {
     return Image_GetEnabled(i.instance)
 }
@@ -252,8 +280,28 @@ func (i *TImage) SetOnClick(fn TNotifyEvent) {
     Image_SetOnClick(i.instance, fn)
 }
 
+func (i *TImage) SetOnContextPopup(fn TContextPopupEvent) {
+    Image_SetOnContextPopup(i.instance, fn)
+}
+
 func (i *TImage) SetOnDblClick(fn TNotifyEvent) {
     Image_SetOnDblClick(i.instance, fn)
+}
+
+func (i *TImage) SetOnDragDrop(fn TDragDropEvent) {
+    Image_SetOnDragDrop(i.instance, fn)
+}
+
+func (i *TImage) SetOnDragOver(fn TDragOverEvent) {
+    Image_SetOnDragOver(i.instance, fn)
+}
+
+func (i *TImage) SetOnEndDock(fn TEndDragEvent) {
+    Image_SetOnEndDock(i.instance, fn)
+}
+
+func (i *TImage) SetOnEndDrag(fn TEndDragEvent) {
+    Image_SetOnEndDrag(i.instance, fn)
 }
 
 func (i *TImage) SetOnMouseDown(fn TMouseEvent) {
@@ -274,6 +322,10 @@ func (i *TImage) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (i *TImage) SetOnMouseUp(fn TMouseEvent) {
     Image_SetOnMouseUp(i.instance, fn)
+}
+
+func (i *TImage) SetOnStartDock(fn TStartDockEvent) {
+    Image_SetOnStartDock(i.instance, fn)
 }
 
 func (i *TImage) Action() *TAction {
@@ -334,6 +386,10 @@ func (i *TImage) ExplicitWidth() int32 {
 
 func (i *TImage) ExplicitHeight() int32 {
     return Image_GetExplicitHeight(i.instance)
+}
+
+func (i *TImage) Floating() bool {
+    return Image_GetFloating(i.instance)
 }
 
 func (i *TImage) Parent() *TControl {

@@ -56,6 +56,10 @@ func (c *TControl) BringToFront() {
     Control_BringToFront(c.instance)
 }
 
+func (c *TControl) Dragging() bool {
+    return Control_Dragging(c.instance)
+}
+
 func (c *TControl) HasParent() bool {
     return Control_HasParent(c.instance)
 }
@@ -214,6 +218,10 @@ func (c *TControl) ExplicitWidth() int32 {
 
 func (c *TControl) ExplicitHeight() int32 {
     return Control_GetExplicitHeight(c.instance)
+}
+
+func (c *TControl) Floating() bool {
+    return Control_GetFloating(c.instance)
 }
 
 func (c *TControl) ShowHint() bool {

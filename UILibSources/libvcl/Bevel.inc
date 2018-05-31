@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Bevel_Dragging(AObj: TBevel): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Bevel_HasParent(AObj: TBevel): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -270,6 +275,11 @@ begin
   Result :=  AObj.ExplicitHeight;
 end;
 
+function Bevel_GetFloating(AObj: TBevel): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function Bevel_GetParent(AObj: TBevel): TWinControl; stdcall;
 begin
   Result :=  AObj.Parent;
@@ -430,6 +440,7 @@ exports
   Bevel_Create,
   Bevel_Free,
   Bevel_BringToFront,
+  Bevel_Dragging,
   Bevel_HasParent,
   Bevel_Hide,
   Bevel_Invalidate,
@@ -480,6 +491,7 @@ exports
   Bevel_GetExplicitTop,
   Bevel_GetExplicitWidth,
   Bevel_GetExplicitHeight,
+  Bevel_GetFloating,
   Bevel_GetParent,
   Bevel_SetParent,
   Bevel_GetStyleElements,

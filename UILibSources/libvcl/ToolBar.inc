@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function ToolBar_Dragging(AObj: TToolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ToolBar_HasParent(AObj: TToolBar): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -273,6 +278,46 @@ end;
 procedure ToolBar_SetDoubleBuffered(AObj: TToolBar; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function ToolBar_GetDockSite(AObj: TToolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ToolBar_SetDockSite(AObj: TToolBar; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
+function ToolBar_GetDragCursor(AObj: TToolBar): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ToolBar_SetDragCursor(AObj: TToolBar; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ToolBar_GetDragKind(AObj: TToolBar): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ToolBar_SetDragKind(AObj: TToolBar; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ToolBar_GetDragMode(AObj: TToolBar): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ToolBar_SetDragMode(AObj: TToolBar; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function ToolBar_GetDrawingStyle(AObj: TToolBar): TTBDrawingStyle; stdcall;
@@ -591,6 +636,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ToolBar_SetOnContextPopup(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ToolBar_SetOnDblClick(AObj: TToolBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -601,6 +658,66 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure ToolBar_SetOnDockDrop(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    TEventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := TEventClass.OnDockDrop;
+  TEventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
+procedure ToolBar_SetOnDragDrop(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ToolBar_SetOnDragOver(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ToolBar_SetOnEndDock(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ToolBar_SetOnEndDrag(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ToolBar_SetOnEnter(AObj: TToolBar; AEventId: NativeUInt); stdcall;
@@ -625,6 +742,18 @@ begin
   end;
   AObj.OnExit := TEventClass.OnExit;
   TEventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure ToolBar_SetOnGetSiteInfo(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    TEventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
+  TEventClass.Add(AObj, geGetSiteInfo, AEventId);
 end;
 
 procedure ToolBar_SetOnMouseDown(AObj: TToolBar; AEventId: NativeUInt); stdcall;
@@ -699,6 +828,30 @@ begin
   TEventClass.Add(AObj, geResize, AEventId);
 end;
 
+procedure ToolBar_SetOnStartDock(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+procedure ToolBar_SetOnUnDock(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    TEventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := TEventClass.OnUnDock;
+  TEventClass.Add(AObj, geUnDock, AEventId);
+end;
+
 function ToolBar_GetBrush(AObj: TToolBar): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -722,6 +875,16 @@ end;
 procedure ToolBar_SetParentWindow(AObj: TToolBar; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ToolBar_GetUseDockManager(AObj: TToolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ToolBar_SetUseDockManager(AObj: TToolBar; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ToolBar_GetAction(AObj: TToolBar): TBasicAction; stdcall;
@@ -797,6 +960,11 @@ end;
 function ToolBar_GetExplicitHeight(AObj: TToolBar): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function ToolBar_GetFloating(AObj: TToolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ToolBar_GetParent(AObj: TToolBar): TWinControl; stdcall;
@@ -960,6 +1128,7 @@ exports
   ToolBar_SetFocus,
   ToolBar_Update,
   ToolBar_BringToFront,
+  ToolBar_Dragging,
   ToolBar_HasParent,
   ToolBar_Hide,
   ToolBar_Perform,
@@ -1000,6 +1169,14 @@ exports
   ToolBar_SetColor,
   ToolBar_GetDoubleBuffered,
   ToolBar_SetDoubleBuffered,
+  ToolBar_GetDockSite,
+  ToolBar_SetDockSite,
+  ToolBar_GetDragCursor,
+  ToolBar_SetDragCursor,
+  ToolBar_GetDragKind,
+  ToolBar_SetDragKind,
+  ToolBar_GetDragMode,
+  ToolBar_SetDragMode,
   ToolBar_GetDrawingStyle,
   ToolBar_SetDrawingStyle,
   ToolBar_GetEnabled,
@@ -1059,20 +1236,31 @@ exports
   ToolBar_SetOnAdvancedCustomDraw,
   ToolBar_SetOnAdvancedCustomDrawButton,
   ToolBar_SetOnClick,
+  ToolBar_SetOnContextPopup,
   ToolBar_SetOnDblClick,
+  ToolBar_SetOnDockDrop,
+  ToolBar_SetOnDragDrop,
+  ToolBar_SetOnDragOver,
+  ToolBar_SetOnEndDock,
+  ToolBar_SetOnEndDrag,
   ToolBar_SetOnEnter,
   ToolBar_SetOnExit,
+  ToolBar_SetOnGetSiteInfo,
   ToolBar_SetOnMouseDown,
   ToolBar_SetOnMouseEnter,
   ToolBar_SetOnMouseLeave,
   ToolBar_SetOnMouseMove,
   ToolBar_SetOnMouseUp,
   ToolBar_SetOnResize,
+  ToolBar_SetOnStartDock,
+  ToolBar_SetOnUnDock,
   ToolBar_GetBrush,
   ToolBar_GetControlCount,
   ToolBar_GetHandle,
   ToolBar_GetParentWindow,
   ToolBar_SetParentWindow,
+  ToolBar_GetUseDockManager,
+  ToolBar_SetUseDockManager,
   ToolBar_GetAction,
   ToolBar_SetAction,
   ToolBar_GetBiDiMode,
@@ -1088,6 +1276,7 @@ exports
   ToolBar_GetExplicitTop,
   ToolBar_GetExplicitWidth,
   ToolBar_GetExplicitHeight,
+  ToolBar_GetFloating,
   ToolBar_GetParent,
   ToolBar_SetParent,
   ToolBar_GetAlignWithMargins,

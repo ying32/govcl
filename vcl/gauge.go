@@ -60,6 +60,10 @@ func (g *TGauge) BringToFront() {
     Gauge_BringToFront(g.instance)
 }
 
+func (g *TGauge) Dragging() bool {
+    return Gauge_Dragging(g.instance)
+}
+
 func (g *TGauge) HasParent() bool {
     return Gauge_HasParent(g.instance)
 }
@@ -350,6 +354,10 @@ func (g *TGauge) ExplicitWidth() int32 {
 
 func (g *TGauge) ExplicitHeight() int32 {
     return Gauge_GetExplicitHeight(g.instance)
+}
+
+func (g *TGauge) Floating() bool {
+    return Gauge_GetFloating(g.instance)
 }
 
 func (g *TGauge) Parent() *TControl {

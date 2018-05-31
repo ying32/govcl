@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function HotKey_Dragging(AObj: THotKey): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function HotKey_HasParent(AObj: THotKey): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -282,6 +287,18 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+procedure HotKey_SetOnContextPopup(AObj: THotKey; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure HotKey_SetOnEnter(AObj: THotKey; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -366,6 +383,16 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function HotKey_GetDockSite(AObj: THotKey): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure HotKey_SetDockSite(AObj: THotKey; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function HotKey_GetDoubleBuffered(AObj: THotKey): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -409,6 +436,16 @@ end;
 procedure HotKey_SetParentWindow(AObj: THotKey; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function HotKey_GetUseDockManager(AObj: THotKey): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure HotKey_SetUseDockManager(AObj: THotKey; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function HotKey_GetAction(AObj: THotKey): TBasicAction; stdcall;
@@ -484,6 +521,11 @@ end;
 function HotKey_GetExplicitHeight(AObj: THotKey): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function HotKey_GetFloating(AObj: THotKey): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function HotKey_GetParent(AObj: THotKey): TWinControl; stdcall;
@@ -642,6 +684,7 @@ exports
   HotKey_SetFocus,
   HotKey_Update,
   HotKey_BringToFront,
+  HotKey_Dragging,
   HotKey_HasParent,
   HotKey_Hide,
   HotKey_Perform,
@@ -682,6 +725,7 @@ exports
   HotKey_GetStyleElements,
   HotKey_SetStyleElements,
   HotKey_SetOnChange,
+  HotKey_SetOnContextPopup,
   HotKey_SetOnEnter,
   HotKey_SetOnExit,
   HotKey_SetOnMouseDown,
@@ -689,6 +733,8 @@ exports
   HotKey_SetOnMouseLeave,
   HotKey_SetOnMouseMove,
   HotKey_SetOnMouseUp,
+  HotKey_GetDockSite,
+  HotKey_SetDockSite,
   HotKey_GetDoubleBuffered,
   HotKey_SetDoubleBuffered,
   HotKey_GetBrush,
@@ -698,6 +744,8 @@ exports
   HotKey_SetParentDoubleBuffered,
   HotKey_GetParentWindow,
   HotKey_SetParentWindow,
+  HotKey_GetUseDockManager,
+  HotKey_SetUseDockManager,
   HotKey_GetAction,
   HotKey_SetAction,
   HotKey_GetAlign,
@@ -713,6 +761,7 @@ exports
   HotKey_GetExplicitTop,
   HotKey_GetExplicitWidth,
   HotKey_GetExplicitHeight,
+  HotKey_GetFloating,
   HotKey_GetParent,
   HotKey_SetParent,
   HotKey_GetAlignWithMargins,

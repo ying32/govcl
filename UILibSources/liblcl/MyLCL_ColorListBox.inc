@@ -45,6 +45,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function ColorListBox_HandleAllocated(AObj: TColorListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure ColorListBox_Invalidate(AObj: TColorListBox); extdecl;
 begin
   AObj.Invalidate;
@@ -83,6 +88,11 @@ end;
 procedure ColorListBox_BringToFront(AObj: TColorListBox); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function ColorListBox_Dragging(AObj: TColorListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function ColorListBox_HasParent(AObj: TColorListBox): LongBool; extdecl;
@@ -372,6 +382,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ColorListBox_SetOnContextPopup(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ColorListBox_SetOnDblClick(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -382,6 +404,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure ColorListBox_SetOnDragDrop(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ColorListBox_SetOnDragOver(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ColorListBox_SetOnEndDrag(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ColorListBox_SetOnEnter(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
@@ -549,6 +607,16 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ColorListBox_GetDockSite(AObj: TColorListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ColorListBox_SetDockSite(AObj: TColorListBox; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ColorListBox_GetBrush(AObj: TColorListBox): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -572,6 +640,16 @@ end;
 procedure ColorListBox_SetParentWindow(AObj: TColorListBox; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ColorListBox_GetUseDockManager(AObj: TColorListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ColorListBox_SetUseDockManager(AObj: TColorListBox; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ColorListBox_GetAction(AObj: TColorListBox): TBasicAction; extdecl;
@@ -617,6 +695,11 @@ end;
 procedure ColorListBox_SetClientWidth(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ColorListBox_GetFloating(AObj: TColorListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ColorListBox_GetParent(AObj: TColorListBox): TWinControl; extdecl;
@@ -759,6 +842,7 @@ exports
   ColorListBox_CanFocus,
   ColorListBox_FlipChildren,
   ColorListBox_Focused,
+  ColorListBox_HandleAllocated,
   ColorListBox_Invalidate,
   ColorListBox_Realign,
   ColorListBox_Repaint,
@@ -767,6 +851,7 @@ exports
   ColorListBox_SetFocus,
   ColorListBox_Update,
   ColorListBox_BringToFront,
+  ColorListBox_Dragging,
   ColorListBox_HasParent,
   ColorListBox_Hide,
   ColorListBox_Perform,
@@ -823,7 +908,11 @@ exports
   ColorListBox_GetVisible,
   ColorListBox_SetVisible,
   ColorListBox_SetOnClick,
+  ColorListBox_SetOnContextPopup,
   ColorListBox_SetOnDblClick,
+  ColorListBox_SetOnDragDrop,
+  ColorListBox_SetOnDragOver,
+  ColorListBox_SetOnEndDrag,
   ColorListBox_SetOnEnter,
   ColorListBox_SetOnExit,
   ColorListBox_SetOnKeyDown,
@@ -843,11 +932,15 @@ exports
   ColorListBox_GetSelCount,
   ColorListBox_GetItemIndex,
   ColorListBox_SetItemIndex,
+  ColorListBox_GetDockSite,
+  ColorListBox_SetDockSite,
   ColorListBox_GetBrush,
   ColorListBox_GetControlCount,
   ColorListBox_GetHandle,
   ColorListBox_GetParentWindow,
   ColorListBox_SetParentWindow,
+  ColorListBox_GetUseDockManager,
+  ColorListBox_SetUseDockManager,
   ColorListBox_GetAction,
   ColorListBox_SetAction,
   ColorListBox_GetBoundsRect,
@@ -857,6 +950,7 @@ exports
   ColorListBox_GetClientRect,
   ColorListBox_GetClientWidth,
   ColorListBox_SetClientWidth,
+  ColorListBox_GetFloating,
   ColorListBox_GetParent,
   ColorListBox_SetParent,
   ColorListBox_GetLeft,

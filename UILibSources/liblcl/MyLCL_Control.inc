@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Control_Dragging(AObj: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Control_HasParent(AObj: TControl): LongBool; extdecl;
 begin
   Result :=  AObj.HasParent;
@@ -200,6 +205,11 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function Control_GetFloating(AObj: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function Control_GetShowHint(AObj: TControl): LongBool; extdecl;
 begin
   Result :=  AObj.ShowHint;
@@ -340,6 +350,7 @@ exports
   Control_Create,
   Control_Free,
   Control_BringToFront,
+  Control_Dragging,
   Control_HasParent,
   Control_Hide,
   Control_Invalidate,
@@ -376,6 +387,7 @@ exports
   Control_GetClientRect,
   Control_GetClientWidth,
   Control_SetClientWidth,
+  Control_GetFloating,
   Control_GetShowHint,
   Control_SetShowHint,
   Control_GetVisible,

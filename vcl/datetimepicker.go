@@ -101,6 +101,10 @@ func (d *TDateTimePicker) BringToFront() {
     DateTimePicker_BringToFront(d.instance)
 }
 
+func (d *TDateTimePicker) Dragging() bool {
+    return DateTimePicker_Dragging(d.instance)
+}
+
 func (d *TDateTimePicker) HasParent() bool {
     return DateTimePicker_HasParent(d.instance)
 }
@@ -309,6 +313,30 @@ func (d *TDateTimePicker) SetDoubleBuffered(value bool) {
     DateTimePicker_SetDoubleBuffered(d.instance, value)
 }
 
+func (d *TDateTimePicker) DragCursor() TCursor {
+    return DateTimePicker_GetDragCursor(d.instance)
+}
+
+func (d *TDateTimePicker) SetDragCursor(value TCursor) {
+    DateTimePicker_SetDragCursor(d.instance, value)
+}
+
+func (d *TDateTimePicker) DragKind() TDragKind {
+    return DateTimePicker_GetDragKind(d.instance)
+}
+
+func (d *TDateTimePicker) SetDragKind(value TDragKind) {
+    DateTimePicker_SetDragKind(d.instance, value)
+}
+
+func (d *TDateTimePicker) DragMode() TDragMode {
+    return DateTimePicker_GetDragMode(d.instance)
+}
+
+func (d *TDateTimePicker) SetDragMode(value TDragMode) {
+    DateTimePicker_SetDragMode(d.instance, value)
+}
+
 func (d *TDateTimePicker) Enabled() bool {
     return DateTimePicker_GetEnabled(d.instance)
 }
@@ -445,6 +473,26 @@ func (d *TDateTimePicker) SetOnChange(fn TNotifyEvent) {
     DateTimePicker_SetOnChange(d.instance, fn)
 }
 
+func (d *TDateTimePicker) SetOnContextPopup(fn TContextPopupEvent) {
+    DateTimePicker_SetOnContextPopup(d.instance, fn)
+}
+
+func (d *TDateTimePicker) SetOnDragDrop(fn TDragDropEvent) {
+    DateTimePicker_SetOnDragDrop(d.instance, fn)
+}
+
+func (d *TDateTimePicker) SetOnDragOver(fn TDragOverEvent) {
+    DateTimePicker_SetOnDragOver(d.instance, fn)
+}
+
+func (d *TDateTimePicker) SetOnEndDock(fn TEndDragEvent) {
+    DateTimePicker_SetOnEndDock(d.instance, fn)
+}
+
+func (d *TDateTimePicker) SetOnEndDrag(fn TEndDragEvent) {
+    DateTimePicker_SetOnEndDrag(d.instance, fn)
+}
+
 func (d *TDateTimePicker) SetOnEnter(fn TNotifyEvent) {
     DateTimePicker_SetOnEnter(d.instance, fn)
 }
@@ -473,6 +521,18 @@ func (d *TDateTimePicker) SetOnMouseLeave(fn TNotifyEvent) {
     DateTimePicker_SetOnMouseLeave(d.instance, fn)
 }
 
+func (d *TDateTimePicker) SetOnStartDock(fn TStartDockEvent) {
+    DateTimePicker_SetOnStartDock(d.instance, fn)
+}
+
+func (d *TDateTimePicker) DockSite() bool {
+    return DateTimePicker_GetDockSite(d.instance)
+}
+
+func (d *TDateTimePicker) SetDockSite(value bool) {
+    DateTimePicker_SetDockSite(d.instance, value)
+}
+
 func (d *TDateTimePicker) Brush() *TBrush {
     return BrushFromInst(DateTimePicker_GetBrush(d.instance))
 }
@@ -491,6 +551,14 @@ func (d *TDateTimePicker) ParentWindow() HWND {
 
 func (d *TDateTimePicker) SetParentWindow(value HWND) {
     DateTimePicker_SetParentWindow(d.instance, value)
+}
+
+func (d *TDateTimePicker) UseDockManager() bool {
+    return DateTimePicker_GetUseDockManager(d.instance)
+}
+
+func (d *TDateTimePicker) SetUseDockManager(value bool) {
+    DateTimePicker_SetUseDockManager(d.instance, value)
 }
 
 func (d *TDateTimePicker) Action() *TAction {
@@ -543,6 +611,10 @@ func (d *TDateTimePicker) ExplicitWidth() int32 {
 
 func (d *TDateTimePicker) ExplicitHeight() int32 {
     return DateTimePicker_GetExplicitHeight(d.instance)
+}
+
+func (d *TDateTimePicker) Floating() bool {
+    return DateTimePicker_GetFloating(d.instance)
 }
 
 func (d *TDateTimePicker) Parent() *TControl {

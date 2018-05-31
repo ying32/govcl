@@ -144,6 +144,10 @@ func (r *TRichEdit) BringToFront() {
     RichEdit_BringToFront(r.instance)
 }
 
+func (r *TRichEdit) Dragging() bool {
+    return RichEdit_Dragging(r.instance)
+}
+
 func (r *TRichEdit) HasParent() bool {
     return RichEdit_HasParent(r.instance)
 }
@@ -290,6 +294,30 @@ func (r *TRichEdit) Color() TColor {
 
 func (r *TRichEdit) SetColor(value TColor) {
     RichEdit_SetColor(r.instance, value)
+}
+
+func (r *TRichEdit) DragCursor() TCursor {
+    return RichEdit_GetDragCursor(r.instance)
+}
+
+func (r *TRichEdit) SetDragCursor(value TCursor) {
+    RichEdit_SetDragCursor(r.instance, value)
+}
+
+func (r *TRichEdit) DragKind() TDragKind {
+    return RichEdit_GetDragKind(r.instance)
+}
+
+func (r *TRichEdit) SetDragKind(value TDragKind) {
+    RichEdit_SetDragKind(r.instance, value)
+}
+
+func (r *TRichEdit) DragMode() TDragMode {
+    return RichEdit_GetDragMode(r.instance)
+}
+
+func (r *TRichEdit) SetDragMode(value TDragMode) {
+    RichEdit_SetDragMode(r.instance, value)
 }
 
 func (r *TRichEdit) Enabled() bool {
@@ -484,8 +512,28 @@ func (r *TRichEdit) SetOnClick(fn TNotifyEvent) {
     RichEdit_SetOnClick(r.instance, fn)
 }
 
+func (r *TRichEdit) SetOnContextPopup(fn TContextPopupEvent) {
+    RichEdit_SetOnContextPopup(r.instance, fn)
+}
+
 func (r *TRichEdit) SetOnDblClick(fn TNotifyEvent) {
     RichEdit_SetOnDblClick(r.instance, fn)
+}
+
+func (r *TRichEdit) SetOnDragDrop(fn TDragDropEvent) {
+    RichEdit_SetOnDragDrop(r.instance, fn)
+}
+
+func (r *TRichEdit) SetOnDragOver(fn TDragOverEvent) {
+    RichEdit_SetOnDragOver(r.instance, fn)
+}
+
+func (r *TRichEdit) SetOnEndDock(fn TEndDragEvent) {
+    RichEdit_SetOnEndDock(r.instance, fn)
+}
+
+func (r *TRichEdit) SetOnEndDrag(fn TEndDragEvent) {
+    RichEdit_SetOnEndDrag(r.instance, fn)
 }
 
 func (r *TRichEdit) SetOnEnter(fn TNotifyEvent) {
@@ -530,6 +578,18 @@ func (r *TRichEdit) SetOnMouseUp(fn TMouseEvent) {
 
 func (r *TRichEdit) SetOnMouseWheel(fn TMouseWheelEvent) {
     RichEdit_SetOnMouseWheel(r.instance, fn)
+}
+
+func (r *TRichEdit) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
+    RichEdit_SetOnMouseWheelDown(r.instance, fn)
+}
+
+func (r *TRichEdit) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
+    RichEdit_SetOnMouseWheelUp(r.instance, fn)
+}
+
+func (r *TRichEdit) SetOnStartDock(fn TStartDockEvent) {
+    RichEdit_SetOnStartDock(r.instance, fn)
 }
 
 func (r *TRichEdit) ActiveLineNo() uint32 {
@@ -624,6 +684,14 @@ func (r *TRichEdit) SetTextHint(value string) {
     RichEdit_SetTextHint(r.instance, value)
 }
 
+func (r *TRichEdit) DockSite() bool {
+    return RichEdit_GetDockSite(r.instance)
+}
+
+func (r *TRichEdit) SetDockSite(value bool) {
+    RichEdit_SetDockSite(r.instance, value)
+}
+
 func (r *TRichEdit) DoubleBuffered() bool {
     return RichEdit_GetDoubleBuffered(r.instance)
 }
@@ -658,6 +726,14 @@ func (r *TRichEdit) ParentWindow() HWND {
 
 func (r *TRichEdit) SetParentWindow(value HWND) {
     RichEdit_SetParentWindow(r.instance, value)
+}
+
+func (r *TRichEdit) UseDockManager() bool {
+    return RichEdit_GetUseDockManager(r.instance)
+}
+
+func (r *TRichEdit) SetUseDockManager(value bool) {
+    RichEdit_SetUseDockManager(r.instance, value)
 }
 
 func (r *TRichEdit) Action() *TAction {
@@ -710,6 +786,10 @@ func (r *TRichEdit) ExplicitWidth() int32 {
 
 func (r *TRichEdit) ExplicitHeight() int32 {
     return RichEdit_GetExplicitHeight(r.instance)
+}
+
+func (r *TRichEdit) Floating() bool {
+    return RichEdit_GetFloating(r.instance)
 }
 
 func (r *TRichEdit) Parent() *TControl {

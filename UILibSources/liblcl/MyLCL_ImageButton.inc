@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ¥˙¬Î”…GenlibVclπ§æﬂ◊‘∂Ø…˙≥…°£
-// Copyright ? ying32. All Rights Reserved.
+// ‰ª£Á†ÅÁî±GenlibLclÂ∑•ÂÖ∑Ëá™Âä®ÁîüÊàê„ÄÇ
+// Copyright ¬© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -23,6 +23,11 @@ end;
 procedure ImageButton_BringToFront(AObj: TImageButton); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function ImageButton_Dragging(AObj: TImageButton): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function ImageButton_HasParent(AObj: TImageButton): LongBool; extdecl;
@@ -102,7 +107,7 @@ end;
 
 function ImageButton_ClassName(AObj: TImageButton): PChar; extdecl;
 begin
-  Result :=  PChar(string(AObj.ClassName));
+  Result :=  ToPChar(AObj.ClassName);
 end;
 
 function ImageButton_Equals(AObj: TImageButton; Obj: TObject): LongBool; extdecl;
@@ -168,6 +173,36 @@ end;
 procedure ImageButton_SetCaption(AObj: TImageButton; AValue: PChar); extdecl;
 begin
   AObj.Caption := AValue;
+end;
+
+function ImageButton_GetDragCursor(AObj: TImageButton): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ImageButton_SetDragCursor(AObj: TImageButton; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ImageButton_GetDragKind(AObj: TImageButton): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ImageButton_SetDragKind(AObj: TImageButton; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ImageButton_GetDragMode(AObj: TImageButton): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ImageButton_SetDragMode(AObj: TImageButton; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function ImageButton_GetEnabled(AObj: TImageButton): LongBool; extdecl;
@@ -292,6 +327,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ImageButton_SetOnContextPopup(AObj: TImageButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ImageButton_SetOnDblClick(AObj: TImageButton; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -302,6 +349,54 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure ImageButton_SetOnDragDrop(AObj: TImageButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ImageButton_SetOnDragOver(AObj: TImageButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ImageButton_SetOnEndDock(AObj: TImageButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    EventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := @EventClass.OnEndDock;
+  EventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ImageButton_SetOnEndDrag(AObj: TImageButton; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ImageButton_SetOnMouseDown(AObj: TImageButton; AEventId: NativeUInt); extdecl;
@@ -407,6 +502,11 @@ end;
 procedure ImageButton_SetClientWidth(AObj: TImageButton; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ImageButton_GetFloating(AObj: TImageButton): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ImageButton_GetParent(AObj: TImageButton): TWinControl; extdecl;
@@ -530,6 +630,7 @@ exports
   ImageButton_Free,
   ImageButton_Click,
   ImageButton_BringToFront,
+  ImageButton_Dragging,
   ImageButton_HasParent,
   ImageButton_Hide,
   ImageButton_Invalidate,
@@ -559,6 +660,12 @@ exports
   ImageButton_SetAutoSize,
   ImageButton_GetCaption,
   ImageButton_SetCaption,
+  ImageButton_GetDragCursor,
+  ImageButton_SetDragCursor,
+  ImageButton_GetDragKind,
+  ImageButton_SetDragKind,
+  ImageButton_GetDragMode,
+  ImageButton_SetDragMode,
   ImageButton_GetEnabled,
   ImageButton_SetEnabled,
   ImageButton_GetFont,
@@ -582,7 +689,12 @@ exports
   ImageButton_GetVisible,
   ImageButton_SetVisible,
   ImageButton_SetOnClick,
+  ImageButton_SetOnContextPopup,
   ImageButton_SetOnDblClick,
+  ImageButton_SetOnDragDrop,
+  ImageButton_SetOnDragOver,
+  ImageButton_SetOnEndDock,
+  ImageButton_SetOnEndDrag,
   ImageButton_SetOnMouseDown,
   ImageButton_SetOnMouseEnter,
   ImageButton_SetOnMouseLeave,
@@ -597,6 +709,7 @@ exports
   ImageButton_GetClientRect,
   ImageButton_GetClientWidth,
   ImageButton_SetClientWidth,
+  ImageButton_GetFloating,
   ImageButton_GetParent,
   ImageButton_SetParent,
   ImageButton_GetLeft,

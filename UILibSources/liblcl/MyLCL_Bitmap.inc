@@ -20,6 +20,11 @@ begin
   AObj.Assign(Source);
 end;
 
+function Bitmap_HandleAllocated(AObj: TBitmap): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure Bitmap_LoadFromStream(AObj: TBitmap; Stream: TStream); extdecl;
 begin
   AObj.LoadFromStream(Stream);
@@ -184,6 +189,7 @@ exports
   Bitmap_Create,
   Bitmap_Free,
   Bitmap_Assign,
+  Bitmap_HandleAllocated,
   Bitmap_LoadFromStream,
   Bitmap_SaveToStream,
   Bitmap_SetSize,

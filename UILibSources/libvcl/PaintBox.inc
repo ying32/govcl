@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function PaintBox_Dragging(AObj: TPaintBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function PaintBox_HasParent(AObj: TPaintBox): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -150,6 +155,36 @@ begin
   AObj.Color := AValue;
 end;
 
+function PaintBox_GetDragCursor(AObj: TPaintBox): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure PaintBox_SetDragCursor(AObj: TPaintBox; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function PaintBox_GetDragKind(AObj: TPaintBox): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure PaintBox_SetDragKind(AObj: TPaintBox; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function PaintBox_GetDragMode(AObj: TPaintBox): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure PaintBox_SetDragMode(AObj: TPaintBox; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function PaintBox_GetEnabled(AObj: TPaintBox): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -242,6 +277,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure PaintBox_SetOnContextPopup(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure PaintBox_SetOnDblClick(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -252,6 +299,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure PaintBox_SetOnDragDrop(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure PaintBox_SetOnDragOver(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure PaintBox_SetOnEndDock(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure PaintBox_SetOnEndDrag(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure PaintBox_SetOnMouseDown(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
@@ -324,6 +419,18 @@ begin
   end;
   AObj.OnPaint := TEventClass.OnPaint;
   TEventClass.Add(AObj, gePaint, AEventId);
+end;
+
+procedure PaintBox_SetOnStartDock(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
 function PaintBox_GetAction(AObj: TPaintBox): TBasicAction; stdcall;
@@ -399,6 +506,11 @@ end;
 function PaintBox_GetExplicitHeight(AObj: TPaintBox): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function PaintBox_GetFloating(AObj: TPaintBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function PaintBox_GetParent(AObj: TPaintBox): TWinControl; stdcall;
@@ -561,6 +673,7 @@ exports
   PaintBox_Create,
   PaintBox_Free,
   PaintBox_BringToFront,
+  PaintBox_Dragging,
   PaintBox_HasParent,
   PaintBox_Hide,
   PaintBox_Invalidate,
@@ -587,6 +700,12 @@ exports
   PaintBox_SetAnchors,
   PaintBox_GetColor,
   PaintBox_SetColor,
+  PaintBox_GetDragCursor,
+  PaintBox_SetDragCursor,
+  PaintBox_GetDragKind,
+  PaintBox_SetDragKind,
+  PaintBox_GetDragMode,
+  PaintBox_SetDragMode,
   PaintBox_GetEnabled,
   PaintBox_SetEnabled,
   PaintBox_GetFont,
@@ -604,13 +723,19 @@ exports
   PaintBox_GetVisible,
   PaintBox_SetVisible,
   PaintBox_SetOnClick,
+  PaintBox_SetOnContextPopup,
   PaintBox_SetOnDblClick,
+  PaintBox_SetOnDragDrop,
+  PaintBox_SetOnDragOver,
+  PaintBox_SetOnEndDock,
+  PaintBox_SetOnEndDrag,
   PaintBox_SetOnMouseDown,
   PaintBox_SetOnMouseEnter,
   PaintBox_SetOnMouseLeave,
   PaintBox_SetOnMouseMove,
   PaintBox_SetOnMouseUp,
   PaintBox_SetOnPaint,
+  PaintBox_SetOnStartDock,
   PaintBox_GetAction,
   PaintBox_SetAction,
   PaintBox_GetBiDiMode,
@@ -626,6 +751,7 @@ exports
   PaintBox_GetExplicitTop,
   PaintBox_GetExplicitWidth,
   PaintBox_GetExplicitHeight,
+  PaintBox_GetFloating,
   PaintBox_GetParent,
   PaintBox_SetParent,
   PaintBox_GetStyleElements,

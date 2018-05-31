@@ -65,6 +65,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function Edit_HandleAllocated(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure Edit_Invalidate(AObj: TEdit); extdecl;
 begin
   AObj.Invalidate;
@@ -103,6 +108,11 @@ end;
 procedure Edit_BringToFront(AObj: TEdit); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function Edit_Dragging(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function Edit_HasParent(AObj: TEdit): LongBool; extdecl;
@@ -270,6 +280,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function Edit_GetDragCursor(AObj: TEdit): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Edit_SetDragCursor(AObj: TEdit; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Edit_GetDragKind(AObj: TEdit): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Edit_SetDragKind(AObj: TEdit; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Edit_GetDragMode(AObj: TEdit): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Edit_SetDragMode(AObj: TEdit; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function Edit_GetEnabled(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -420,6 +460,16 @@ begin
   AObj.Text := AValue;
 end;
 
+function Edit_GetTextHint(AObj: TEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.TextHint);
+end;
+
+procedure Edit_SetTextHint(AObj: TEdit; AValue: PChar); extdecl;
+begin
+  AObj.TextHint := AValue;
+end;
+
 function Edit_GetVisible(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.Visible;
@@ -454,6 +504,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure Edit_SetOnContextPopup(AObj: TEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure Edit_SetOnDblClick(AObj: TEdit; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -464,6 +526,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Edit_SetOnDragDrop(AObj: TEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Edit_SetOnDragOver(AObj: TEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Edit_SetOnEndDrag(AObj: TEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Edit_SetOnEnter(AObj: TEdit; AEventId: NativeUInt); extdecl;
@@ -590,6 +688,7 @@ function Edit_GetCanUndo(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.CanUndo;
 end;
+
 function Edit_GetModified(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.Modified;
@@ -630,6 +729,16 @@ begin
   AObj.SelText := AValue;
 end;
 
+function Edit_GetDockSite(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure Edit_SetDockSite(AObj: TEdit; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function Edit_GetBrush(AObj: TEdit): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -653,6 +762,16 @@ end;
 procedure Edit_SetParentWindow(AObj: TEdit; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function Edit_GetUseDockManager(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure Edit_SetUseDockManager(AObj: TEdit; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function Edit_GetAction(AObj: TEdit): TBasicAction; extdecl;
@@ -698,6 +817,11 @@ end;
 procedure Edit_SetClientWidth(AObj: TEdit; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Edit_GetFloating(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Edit_GetParent(AObj: TEdit): TWinControl; extdecl;
@@ -834,6 +958,7 @@ exports
   Edit_CanFocus,
   Edit_FlipChildren,
   Edit_Focused,
+  Edit_HandleAllocated,
   Edit_Invalidate,
   Edit_Realign,
   Edit_Repaint,
@@ -842,6 +967,7 @@ exports
   Edit_SetFocus,
   Edit_Update,
   Edit_BringToFront,
+  Edit_Dragging,
   Edit_HasParent,
   Edit_Hide,
   Edit_Perform,
@@ -875,6 +1001,12 @@ exports
   Edit_SetColor,
   Edit_GetDoubleBuffered,
   Edit_SetDoubleBuffered,
+  Edit_GetDragCursor,
+  Edit_SetDragCursor,
+  Edit_GetDragKind,
+  Edit_SetDragKind,
+  Edit_GetDragMode,
+  Edit_SetDragMode,
   Edit_GetEnabled,
   Edit_SetEnabled,
   Edit_GetFont,
@@ -905,11 +1037,17 @@ exports
   Edit_SetTabStop,
   Edit_GetText,
   Edit_SetText,
+  Edit_GetTextHint,
+  Edit_SetTextHint,
   Edit_GetVisible,
   Edit_SetVisible,
   Edit_SetOnChange,
   Edit_SetOnClick,
+  Edit_SetOnContextPopup,
   Edit_SetOnDblClick,
+  Edit_SetOnDragDrop,
+  Edit_SetOnDragOver,
+  Edit_SetOnEndDrag,
   Edit_SetOnEnter,
   Edit_SetOnExit,
   Edit_SetOnKeyDown,
@@ -929,11 +1067,15 @@ exports
   Edit_SetSelStart,
   Edit_GetSelText,
   Edit_SetSelText,
+  Edit_GetDockSite,
+  Edit_SetDockSite,
   Edit_GetBrush,
   Edit_GetControlCount,
   Edit_GetHandle,
   Edit_GetParentWindow,
   Edit_SetParentWindow,
+  Edit_GetUseDockManager,
+  Edit_SetUseDockManager,
   Edit_GetAction,
   Edit_SetAction,
   Edit_GetBoundsRect,
@@ -943,6 +1085,7 @@ exports
   Edit_GetClientRect,
   Edit_GetClientWidth,
   Edit_SetClientWidth,
+  Edit_GetFloating,
   Edit_GetParent,
   Edit_SetParent,
   Edit_GetLeft,

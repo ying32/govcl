@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function RadioButton_Dragging(AObj: TRadioButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function RadioButton_HasParent(AObj: TRadioButton): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -240,6 +245,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function RadioButton_GetDragCursor(AObj: TRadioButton): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure RadioButton_SetDragCursor(AObj: TRadioButton; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function RadioButton_GetDragKind(AObj: TRadioButton): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure RadioButton_SetDragKind(AObj: TRadioButton; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function RadioButton_GetDragMode(AObj: TRadioButton): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure RadioButton_SetDragMode(AObj: TRadioButton; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function RadioButton_GetEnabled(AObj: TRadioButton): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -392,6 +427,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure RadioButton_SetOnContextPopup(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure RadioButton_SetOnDblClick(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -402,6 +449,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure RadioButton_SetOnDragDrop(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure RadioButton_SetOnDragOver(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure RadioButton_SetOnEndDock(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure RadioButton_SetOnEndDrag(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure RadioButton_SetOnEnter(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
@@ -524,6 +619,28 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure RadioButton_SetOnStartDock(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+function RadioButton_GetDockSite(AObj: TRadioButton): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure RadioButton_SetDockSite(AObj: TRadioButton; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function RadioButton_GetBrush(AObj: TRadioButton): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -547,6 +664,16 @@ end;
 procedure RadioButton_SetParentWindow(AObj: TRadioButton; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function RadioButton_GetUseDockManager(AObj: TRadioButton): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure RadioButton_SetUseDockManager(AObj: TRadioButton; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 procedure RadioButton_GetBoundsRect(AObj: TRadioButton; var Result: TRect); stdcall;
@@ -602,6 +729,11 @@ end;
 function RadioButton_GetExplicitHeight(AObj: TRadioButton): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function RadioButton_GetFloating(AObj: TRadioButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function RadioButton_GetParent(AObj: TRadioButton): TWinControl; stdcall;
@@ -770,6 +902,7 @@ exports
   RadioButton_SetFocus,
   RadioButton_Update,
   RadioButton_BringToFront,
+  RadioButton_Dragging,
   RadioButton_HasParent,
   RadioButton_Hide,
   RadioButton_Perform,
@@ -803,6 +936,12 @@ exports
   RadioButton_SetColor,
   RadioButton_GetDoubleBuffered,
   RadioButton_SetDoubleBuffered,
+  RadioButton_GetDragCursor,
+  RadioButton_SetDragCursor,
+  RadioButton_GetDragKind,
+  RadioButton_SetDragKind,
+  RadioButton_GetDragMode,
+  RadioButton_SetDragMode,
   RadioButton_GetEnabled,
   RadioButton_SetEnabled,
   RadioButton_GetFont,
@@ -832,7 +971,12 @@ exports
   RadioButton_GetStyleElements,
   RadioButton_SetStyleElements,
   RadioButton_SetOnClick,
+  RadioButton_SetOnContextPopup,
   RadioButton_SetOnDblClick,
+  RadioButton_SetOnDragDrop,
+  RadioButton_SetOnDragOver,
+  RadioButton_SetOnEndDock,
+  RadioButton_SetOnEndDrag,
   RadioButton_SetOnEnter,
   RadioButton_SetOnExit,
   RadioButton_SetOnKeyDown,
@@ -843,11 +987,16 @@ exports
   RadioButton_SetOnMouseLeave,
   RadioButton_SetOnMouseMove,
   RadioButton_SetOnMouseUp,
+  RadioButton_SetOnStartDock,
+  RadioButton_GetDockSite,
+  RadioButton_SetDockSite,
   RadioButton_GetBrush,
   RadioButton_GetControlCount,
   RadioButton_GetHandle,
   RadioButton_GetParentWindow,
   RadioButton_SetParentWindow,
+  RadioButton_GetUseDockManager,
+  RadioButton_SetUseDockManager,
   RadioButton_GetBoundsRect,
   RadioButton_SetBoundsRect,
   RadioButton_GetClientHeight,
@@ -859,6 +1008,7 @@ exports
   RadioButton_GetExplicitTop,
   RadioButton_GetExplicitWidth,
   RadioButton_GetExplicitHeight,
+  RadioButton_GetFloating,
   RadioButton_GetParent,
   RadioButton_SetParent,
   RadioButton_GetAlignWithMargins,

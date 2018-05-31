@@ -35,6 +35,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function TrackBar_HandleAllocated(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure TrackBar_Invalidate(AObj: TTrackBar); extdecl;
 begin
   AObj.Invalidate;
@@ -73,6 +78,11 @@ end;
 procedure TrackBar_BringToFront(AObj: TTrackBar); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function TrackBar_Dragging(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function TrackBar_HasParent(AObj: TTrackBar): LongBool; extdecl;
@@ -188,6 +198,26 @@ end;
 procedure TrackBar_SetDoubleBuffered(AObj: TTrackBar; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function TrackBar_GetDragCursor(AObj: TTrackBar): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure TrackBar_SetDragCursor(AObj: TTrackBar; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function TrackBar_GetDragMode(AObj: TTrackBar): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure TrackBar_SetDragMode(AObj: TTrackBar; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function TrackBar_GetEnabled(AObj: TTrackBar): LongBool; extdecl;
@@ -380,6 +410,18 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure TrackBar_SetOnContextPopup(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure TrackBar_SetOnChange(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -390,6 +432,42 @@ begin
   end;
   AObj.OnChange := @EventClass.OnChange;
   EventClass.Add(AObj, geChange, AEventId);
+end;
+
+procedure TrackBar_SetOnDragDrop(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure TrackBar_SetOnDragOver(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure TrackBar_SetOnEndDrag(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure TrackBar_SetOnEnter(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
@@ -452,6 +530,16 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+function TrackBar_GetDockSite(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure TrackBar_SetDockSite(AObj: TTrackBar; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function TrackBar_GetBrush(AObj: TTrackBar): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -475,6 +563,16 @@ end;
 procedure TrackBar_SetParentWindow(AObj: TTrackBar; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function TrackBar_GetUseDockManager(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure TrackBar_SetUseDockManager(AObj: TTrackBar; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function TrackBar_GetAction(AObj: TTrackBar): TBasicAction; extdecl;
@@ -530,6 +628,11 @@ end;
 procedure TrackBar_SetClientWidth(AObj: TTrackBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function TrackBar_GetFloating(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function TrackBar_GetParent(AObj: TTrackBar): TWinControl; extdecl;
@@ -660,6 +763,7 @@ exports
   TrackBar_CanFocus,
   TrackBar_FlipChildren,
   TrackBar_Focused,
+  TrackBar_HandleAllocated,
   TrackBar_Invalidate,
   TrackBar_Realign,
   TrackBar_Repaint,
@@ -668,6 +772,7 @@ exports
   TrackBar_SetFocus,
   TrackBar_Update,
   TrackBar_BringToFront,
+  TrackBar_Dragging,
   TrackBar_HasParent,
   TrackBar_Hide,
   TrackBar_Perform,
@@ -691,6 +796,10 @@ exports
   TrackBar_SetBorderWidth,
   TrackBar_GetDoubleBuffered,
   TrackBar_SetDoubleBuffered,
+  TrackBar_GetDragCursor,
+  TrackBar_SetDragCursor,
+  TrackBar_GetDragMode,
+  TrackBar_SetDragMode,
   TrackBar_GetEnabled,
   TrackBar_SetEnabled,
   TrackBar_GetLineSize,
@@ -729,17 +838,25 @@ exports
   TrackBar_SetTickStyle,
   TrackBar_GetVisible,
   TrackBar_SetVisible,
+  TrackBar_SetOnContextPopup,
   TrackBar_SetOnChange,
+  TrackBar_SetOnDragDrop,
+  TrackBar_SetOnDragOver,
+  TrackBar_SetOnEndDrag,
   TrackBar_SetOnEnter,
   TrackBar_SetOnExit,
   TrackBar_SetOnKeyDown,
   TrackBar_SetOnKeyPress,
   TrackBar_SetOnKeyUp,
+  TrackBar_GetDockSite,
+  TrackBar_SetDockSite,
   TrackBar_GetBrush,
   TrackBar_GetControlCount,
   TrackBar_GetHandle,
   TrackBar_GetParentWindow,
   TrackBar_SetParentWindow,
+  TrackBar_GetUseDockManager,
+  TrackBar_SetUseDockManager,
   TrackBar_GetAction,
   TrackBar_SetAction,
   TrackBar_GetBiDiMode,
@@ -751,6 +868,7 @@ exports
   TrackBar_GetClientRect,
   TrackBar_GetClientWidth,
   TrackBar_SetClientWidth,
+  TrackBar_GetFloating,
   TrackBar_GetParent,
   TrackBar_SetParent,
   TrackBar_GetLeft,

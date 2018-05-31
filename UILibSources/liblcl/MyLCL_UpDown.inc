@@ -30,6 +30,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function UpDown_HandleAllocated(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure UpDown_Invalidate(AObj: TUpDown); extdecl;
 begin
   AObj.Invalidate;
@@ -68,6 +73,11 @@ end;
 procedure UpDown_BringToFront(AObj: TUpDown); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function UpDown_Dragging(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function UpDown_HasParent(AObj: TUpDown): LongBool; extdecl;
@@ -295,6 +305,18 @@ begin
   AObj.Wrap := AValue;
 end;
 
+procedure UpDown_SetOnContextPopup(AObj: TUpDown; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure UpDown_SetOnClick(AObj: TUpDown; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -391,6 +413,16 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function UpDown_GetDockSite(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure UpDown_SetDockSite(AObj: TUpDown; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function UpDown_GetBrush(AObj: TUpDown): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -414,6 +446,16 @@ end;
 procedure UpDown_SetParentWindow(AObj: TUpDown; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function UpDown_GetUseDockManager(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure UpDown_SetUseDockManager(AObj: TUpDown; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function UpDown_GetAction(AObj: TUpDown): TBasicAction; extdecl;
@@ -479,6 +521,11 @@ end;
 procedure UpDown_SetClientWidth(AObj: TUpDown; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function UpDown_GetFloating(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function UpDown_GetParent(AObj: TUpDown): TWinControl; extdecl;
@@ -598,6 +645,7 @@ exports
   UpDown_CanFocus,
   UpDown_FlipChildren,
   UpDown_Focused,
+  UpDown_HandleAllocated,
   UpDown_Invalidate,
   UpDown_Realign,
   UpDown_Repaint,
@@ -606,6 +654,7 @@ exports
   UpDown_SetFocus,
   UpDown_Update,
   UpDown_BringToFront,
+  UpDown_Dragging,
   UpDown_HasParent,
   UpDown_Hide,
   UpDown_Perform,
@@ -651,6 +700,7 @@ exports
   UpDown_SetVisible,
   UpDown_GetWrap,
   UpDown_SetWrap,
+  UpDown_SetOnContextPopup,
   UpDown_SetOnClick,
   UpDown_SetOnEnter,
   UpDown_SetOnExit,
@@ -659,11 +709,15 @@ exports
   UpDown_SetOnMouseLeave,
   UpDown_SetOnMouseMove,
   UpDown_SetOnMouseUp,
+  UpDown_GetDockSite,
+  UpDown_SetDockSite,
   UpDown_GetBrush,
   UpDown_GetControlCount,
   UpDown_GetHandle,
   UpDown_GetParentWindow,
   UpDown_SetParentWindow,
+  UpDown_GetUseDockManager,
+  UpDown_SetUseDockManager,
   UpDown_GetAction,
   UpDown_SetAction,
   UpDown_GetAlign,
@@ -677,6 +731,7 @@ exports
   UpDown_GetClientRect,
   UpDown_GetClientWidth,
   UpDown_SetClientWidth,
+  UpDown_GetFloating,
   UpDown_GetParent,
   UpDown_SetParent,
   UpDown_GetLeft,

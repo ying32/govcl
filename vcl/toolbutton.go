@@ -68,6 +68,10 @@ func (t *TToolButton) BringToFront() {
     ToolButton_BringToFront(t.instance)
 }
 
+func (t *TToolButton) Dragging() bool {
+    return ToolButton_Dragging(t.instance)
+}
+
 func (t *TToolButton) HasParent() bool {
     return ToolButton_HasParent(t.instance)
 }
@@ -182,6 +186,30 @@ func (t *TToolButton) Down() bool {
 
 func (t *TToolButton) SetDown(value bool) {
     ToolButton_SetDown(t.instance, value)
+}
+
+func (t *TToolButton) DragCursor() TCursor {
+    return ToolButton_GetDragCursor(t.instance)
+}
+
+func (t *TToolButton) SetDragCursor(value TCursor) {
+    ToolButton_SetDragCursor(t.instance, value)
+}
+
+func (t *TToolButton) DragKind() TDragKind {
+    return ToolButton_GetDragKind(t.instance)
+}
+
+func (t *TToolButton) SetDragKind(value TDragKind) {
+    ToolButton_SetDragKind(t.instance, value)
+}
+
+func (t *TToolButton) DragMode() TDragMode {
+    return ToolButton_GetDragMode(t.instance)
+}
+
+func (t *TToolButton) SetDragMode(value TDragMode) {
+    ToolButton_SetDragMode(t.instance, value)
 }
 
 func (t *TToolButton) DropdownMenu() *TPopupMenu {
@@ -308,6 +336,26 @@ func (t *TToolButton) SetOnClick(fn TNotifyEvent) {
     ToolButton_SetOnClick(t.instance, fn)
 }
 
+func (t *TToolButton) SetOnContextPopup(fn TContextPopupEvent) {
+    ToolButton_SetOnContextPopup(t.instance, fn)
+}
+
+func (t *TToolButton) SetOnDragDrop(fn TDragDropEvent) {
+    ToolButton_SetOnDragDrop(t.instance, fn)
+}
+
+func (t *TToolButton) SetOnDragOver(fn TDragOverEvent) {
+    ToolButton_SetOnDragOver(t.instance, fn)
+}
+
+func (t *TToolButton) SetOnEndDock(fn TEndDragEvent) {
+    ToolButton_SetOnEndDock(t.instance, fn)
+}
+
+func (t *TToolButton) SetOnEndDrag(fn TEndDragEvent) {
+    ToolButton_SetOnEndDrag(t.instance, fn)
+}
+
 func (t *TToolButton) SetOnMouseDown(fn TMouseEvent) {
     ToolButton_SetOnMouseDown(t.instance, fn)
 }
@@ -326,6 +374,10 @@ func (t *TToolButton) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (t *TToolButton) SetOnMouseUp(fn TMouseEvent) {
     ToolButton_SetOnMouseUp(t.instance, fn)
+}
+
+func (t *TToolButton) SetOnStartDock(fn TStartDockEvent) {
+    ToolButton_SetOnStartDock(t.instance, fn)
 }
 
 func (t *TToolButton) Align() TAlign {
@@ -394,6 +446,10 @@ func (t *TToolButton) ExplicitWidth() int32 {
 
 func (t *TToolButton) ExplicitHeight() int32 {
     return ToolButton_GetExplicitHeight(t.instance)
+}
+
+func (t *TToolButton) Floating() bool {
+    return ToolButton_GetFloating(t.instance)
 }
 
 func (t *TToolButton) Parent() *TControl {

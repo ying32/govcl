@@ -56,6 +56,10 @@ func (p *TPaintBox) BringToFront() {
     PaintBox_BringToFront(p.instance)
 }
 
+func (p *TPaintBox) Dragging() bool {
+    return PaintBox_Dragging(p.instance)
+}
+
 func (p *TPaintBox) HasParent() bool {
     return PaintBox_HasParent(p.instance)
 }
@@ -160,6 +164,30 @@ func (p *TPaintBox) SetColor(value TColor) {
     PaintBox_SetColor(p.instance, value)
 }
 
+func (p *TPaintBox) DragCursor() TCursor {
+    return PaintBox_GetDragCursor(p.instance)
+}
+
+func (p *TPaintBox) SetDragCursor(value TCursor) {
+    PaintBox_SetDragCursor(p.instance, value)
+}
+
+func (p *TPaintBox) DragKind() TDragKind {
+    return PaintBox_GetDragKind(p.instance)
+}
+
+func (p *TPaintBox) SetDragKind(value TDragKind) {
+    PaintBox_SetDragKind(p.instance, value)
+}
+
+func (p *TPaintBox) DragMode() TDragMode {
+    return PaintBox_GetDragMode(p.instance)
+}
+
+func (p *TPaintBox) SetDragMode(value TDragMode) {
+    PaintBox_SetDragMode(p.instance, value)
+}
+
 func (p *TPaintBox) Enabled() bool {
     return PaintBox_GetEnabled(p.instance)
 }
@@ -228,8 +256,28 @@ func (p *TPaintBox) SetOnClick(fn TNotifyEvent) {
     PaintBox_SetOnClick(p.instance, fn)
 }
 
+func (p *TPaintBox) SetOnContextPopup(fn TContextPopupEvent) {
+    PaintBox_SetOnContextPopup(p.instance, fn)
+}
+
 func (p *TPaintBox) SetOnDblClick(fn TNotifyEvent) {
     PaintBox_SetOnDblClick(p.instance, fn)
+}
+
+func (p *TPaintBox) SetOnDragDrop(fn TDragDropEvent) {
+    PaintBox_SetOnDragDrop(p.instance, fn)
+}
+
+func (p *TPaintBox) SetOnDragOver(fn TDragOverEvent) {
+    PaintBox_SetOnDragOver(p.instance, fn)
+}
+
+func (p *TPaintBox) SetOnEndDock(fn TEndDragEvent) {
+    PaintBox_SetOnEndDock(p.instance, fn)
+}
+
+func (p *TPaintBox) SetOnEndDrag(fn TEndDragEvent) {
+    PaintBox_SetOnEndDrag(p.instance, fn)
 }
 
 func (p *TPaintBox) SetOnMouseDown(fn TMouseEvent) {
@@ -254,6 +302,10 @@ func (p *TPaintBox) SetOnMouseUp(fn TMouseEvent) {
 
 func (p *TPaintBox) SetOnPaint(fn TNotifyEvent) {
     PaintBox_SetOnPaint(p.instance, fn)
+}
+
+func (p *TPaintBox) SetOnStartDock(fn TStartDockEvent) {
+    PaintBox_SetOnStartDock(p.instance, fn)
 }
 
 func (p *TPaintBox) Action() *TAction {
@@ -314,6 +366,10 @@ func (p *TPaintBox) ExplicitWidth() int32 {
 
 func (p *TPaintBox) ExplicitHeight() int32 {
     return PaintBox_GetExplicitHeight(p.instance)
+}
+
+func (p *TPaintBox) Floating() bool {
+    return PaintBox_GetFloating(p.instance)
 }
 
 func (p *TPaintBox) Parent() *TControl {

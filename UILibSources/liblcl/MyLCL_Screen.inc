@@ -140,6 +140,11 @@ begin
   Result :=  AObj.Fonts;
 end;
 
+function Screen_GetFormCount(AObj: TScreen): Integer; extdecl;
+begin
+  Result :=  AObj.FormCount;
+end;
+
 function Screen_GetHeight(AObj: TScreen): Integer; extdecl;
 begin
   Result :=  AObj.Height;
@@ -254,6 +259,7 @@ exports
   Screen_GetWorkAreaTop,
   Screen_GetWorkAreaWidth,
   Screen_GetFonts,
+  Screen_GetFormCount,
   Screen_GetHeight,
   Screen_GetPixelsPerInch,
   Screen_GetPrimaryMonitor,

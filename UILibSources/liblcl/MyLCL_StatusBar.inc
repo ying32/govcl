@@ -35,6 +35,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function StatusBar_HandleAllocated(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure StatusBar_Invalidate(AObj: TStatusBar); extdecl;
 begin
   AObj.Invalidate;
@@ -68,6 +73,11 @@ end;
 procedure StatusBar_BringToFront(AObj: TStatusBar); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function StatusBar_Dragging(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function StatusBar_HasParent(AObj: TStatusBar): LongBool; extdecl;
@@ -225,6 +235,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function StatusBar_GetDragCursor(AObj: TStatusBar): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure StatusBar_SetDragCursor(AObj: TStatusBar; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function StatusBar_GetDragKind(AObj: TStatusBar): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure StatusBar_SetDragKind(AObj: TStatusBar; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function StatusBar_GetDragMode(AObj: TStatusBar): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure StatusBar_SetDragMode(AObj: TStatusBar; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function StatusBar_GetEnabled(AObj: TStatusBar): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -367,6 +407,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure StatusBar_SetOnContextPopup(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure StatusBar_SetOnDblClick(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -377,6 +429,54 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure StatusBar_SetOnDragDrop(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure StatusBar_SetOnDragOver(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure StatusBar_SetOnEndDock(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    EventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := @EventClass.OnEndDock;
+  EventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure StatusBar_SetOnEndDrag(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure StatusBar_SetOnHint(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
@@ -463,9 +563,31 @@ begin
   EventClass.Add(AObj, geResize, AEventId);
 end;
 
+procedure StatusBar_SetOnStartDock(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    EventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := @EventClass.OnStartDock;
+  EventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function StatusBar_GetCanvas(AObj: TStatusBar): TCanvas; extdecl;
 begin
   Result :=  AObj.Canvas;
+end;
+
+function StatusBar_GetDockSite(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure StatusBar_SetDockSite(AObj: TStatusBar; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
 end;
 
 function StatusBar_GetBrush(AObj: TStatusBar): TBrush; extdecl;
@@ -513,6 +635,16 @@ begin
   AObj.TabStop := AValue;
 end;
 
+function StatusBar_GetUseDockManager(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure StatusBar_SetUseDockManager(AObj: TStatusBar; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
+end;
+
 procedure StatusBar_GetBoundsRect(AObj: TStatusBar; var Result: TRect); extdecl;
 begin
   Result :=  AObj.BoundsRect;
@@ -546,6 +678,11 @@ end;
 procedure StatusBar_SetClientWidth(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function StatusBar_GetFloating(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function StatusBar_GetParent(AObj: TStatusBar): TWinControl; extdecl;
@@ -676,6 +813,7 @@ exports
   StatusBar_SetBounds,
   StatusBar_CanFocus,
   StatusBar_Focused,
+  StatusBar_HandleAllocated,
   StatusBar_Invalidate,
   StatusBar_Realign,
   StatusBar_Repaint,
@@ -683,6 +821,7 @@ exports
   StatusBar_SetFocus,
   StatusBar_Update,
   StatusBar_BringToFront,
+  StatusBar_Dragging,
   StatusBar_HasParent,
   StatusBar_Hide,
   StatusBar_Perform,
@@ -714,6 +853,12 @@ exports
   StatusBar_SetColor,
   StatusBar_GetDoubleBuffered,
   StatusBar_SetDoubleBuffered,
+  StatusBar_GetDragCursor,
+  StatusBar_SetDragCursor,
+  StatusBar_GetDragKind,
+  StatusBar_SetDragKind,
+  StatusBar_GetDragMode,
+  StatusBar_SetDragMode,
   StatusBar_GetEnabled,
   StatusBar_SetEnabled,
   StatusBar_GetFont,
@@ -741,7 +886,12 @@ exports
   StatusBar_GetVisible,
   StatusBar_SetVisible,
   StatusBar_SetOnClick,
+  StatusBar_SetOnContextPopup,
   StatusBar_SetOnDblClick,
+  StatusBar_SetOnDragDrop,
+  StatusBar_SetOnDragOver,
+  StatusBar_SetOnEndDock,
+  StatusBar_SetOnEndDrag,
   StatusBar_SetOnHint,
   StatusBar_SetOnMouseDown,
   StatusBar_SetOnMouseEnter,
@@ -749,7 +899,10 @@ exports
   StatusBar_SetOnMouseMove,
   StatusBar_SetOnMouseUp,
   StatusBar_SetOnResize,
+  StatusBar_SetOnStartDock,
   StatusBar_GetCanvas,
+  StatusBar_GetDockSite,
+  StatusBar_SetDockSite,
   StatusBar_GetBrush,
   StatusBar_GetControlCount,
   StatusBar_GetHandle,
@@ -759,6 +912,8 @@ exports
   StatusBar_SetTabOrder,
   StatusBar_GetTabStop,
   StatusBar_SetTabStop,
+  StatusBar_GetUseDockManager,
+  StatusBar_SetUseDockManager,
   StatusBar_GetBoundsRect,
   StatusBar_SetBoundsRect,
   StatusBar_GetClientHeight,
@@ -766,6 +921,7 @@ exports
   StatusBar_GetClientRect,
   StatusBar_GetClientWidth,
   StatusBar_SetClientWidth,
+  StatusBar_GetFloating,
   StatusBar_GetParent,
   StatusBar_SetParent,
   StatusBar_GetLeft,

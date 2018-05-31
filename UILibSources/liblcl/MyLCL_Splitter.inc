@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Splitter_Dragging(AObj: TSplitter): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Splitter_HasParent(AObj: TSplitter): LongBool; extdecl;
 begin
   Result :=  AObj.HasParent;
@@ -267,6 +272,11 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function Splitter_GetFloating(AObj: TSplitter): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function Splitter_GetShowHint(AObj: TSplitter): LongBool; extdecl;
 begin
   Result :=  AObj.ShowHint;
@@ -377,6 +387,7 @@ exports
   Splitter_Create,
   Splitter_Free,
   Splitter_BringToFront,
+  Splitter_Dragging,
   Splitter_HasParent,
   Splitter_Hide,
   Splitter_Invalidate,
@@ -425,6 +436,7 @@ exports
   Splitter_GetClientRect,
   Splitter_GetClientWidth,
   Splitter_SetClientWidth,
+  Splitter_GetFloating,
   Splitter_GetShowHint,
   Splitter_SetShowHint,
   Splitter_GetParent,

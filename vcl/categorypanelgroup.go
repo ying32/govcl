@@ -108,6 +108,10 @@ func (c *TCategoryPanelGroup) BringToFront() {
     CategoryPanelGroup_BringToFront(c.instance)
 }
 
+func (c *TCategoryPanelGroup) Dragging() bool {
+    return CategoryPanelGroup_Dragging(c.instance)
+}
+
 func (c *TCategoryPanelGroup) HasParent() bool {
     return CategoryPanelGroup_HasParent(c.instance)
 }
@@ -248,12 +252,44 @@ func (c *TCategoryPanelGroup) SetChevronHotColor(value TColor) {
     CategoryPanelGroup_SetChevronHotColor(c.instance, value)
 }
 
+func (c *TCategoryPanelGroup) DockSite() bool {
+    return CategoryPanelGroup_GetDockSite(c.instance)
+}
+
+func (c *TCategoryPanelGroup) SetDockSite(value bool) {
+    CategoryPanelGroup_SetDockSite(c.instance, value)
+}
+
 func (c *TCategoryPanelGroup) DoubleBuffered() bool {
     return CategoryPanelGroup_GetDoubleBuffered(c.instance)
 }
 
 func (c *TCategoryPanelGroup) SetDoubleBuffered(value bool) {
     CategoryPanelGroup_SetDoubleBuffered(c.instance, value)
+}
+
+func (c *TCategoryPanelGroup) DragCursor() TCursor {
+    return CategoryPanelGroup_GetDragCursor(c.instance)
+}
+
+func (c *TCategoryPanelGroup) SetDragCursor(value TCursor) {
+    CategoryPanelGroup_SetDragCursor(c.instance, value)
+}
+
+func (c *TCategoryPanelGroup) DragKind() TDragKind {
+    return CategoryPanelGroup_GetDragKind(c.instance)
+}
+
+func (c *TCategoryPanelGroup) SetDragKind(value TDragKind) {
+    CategoryPanelGroup_SetDragKind(c.instance, value)
+}
+
+func (c *TCategoryPanelGroup) DragMode() TDragMode {
+    return CategoryPanelGroup_GetDragMode(c.instance)
+}
+
+func (c *TCategoryPanelGroup) SetDragMode(value TDragMode) {
+    CategoryPanelGroup_SetDragMode(c.instance, value)
 }
 
 func (c *TCategoryPanelGroup) Enabled() bool {
@@ -468,8 +504,32 @@ func (c *TCategoryPanelGroup) SetOnClick(fn TNotifyEvent) {
     CategoryPanelGroup_SetOnClick(c.instance, fn)
 }
 
+func (c *TCategoryPanelGroup) SetOnContextPopup(fn TContextPopupEvent) {
+    CategoryPanelGroup_SetOnContextPopup(c.instance, fn)
+}
+
 func (c *TCategoryPanelGroup) SetOnDblClick(fn TNotifyEvent) {
     CategoryPanelGroup_SetOnDblClick(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnDockDrop(fn TDockDropEvent) {
+    CategoryPanelGroup_SetOnDockDrop(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnDragDrop(fn TDragDropEvent) {
+    CategoryPanelGroup_SetOnDragDrop(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnDragOver(fn TDragOverEvent) {
+    CategoryPanelGroup_SetOnDragOver(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnEndDock(fn TEndDragEvent) {
+    CategoryPanelGroup_SetOnEndDock(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnEndDrag(fn TEndDragEvent) {
+    CategoryPanelGroup_SetOnEndDrag(c.instance, fn)
 }
 
 func (c *TCategoryPanelGroup) SetOnEnter(fn TNotifyEvent) {
@@ -478,6 +538,10 @@ func (c *TCategoryPanelGroup) SetOnEnter(fn TNotifyEvent) {
 
 func (c *TCategoryPanelGroup) SetOnExit(fn TNotifyEvent) {
     CategoryPanelGroup_SetOnExit(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    CategoryPanelGroup_SetOnGetSiteInfo(c.instance, fn)
 }
 
 func (c *TCategoryPanelGroup) SetOnMouseDown(fn TMouseEvent) {
@@ -504,8 +568,24 @@ func (c *TCategoryPanelGroup) SetOnMouseWheel(fn TMouseWheelEvent) {
     CategoryPanelGroup_SetOnMouseWheel(c.instance, fn)
 }
 
+func (c *TCategoryPanelGroup) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
+    CategoryPanelGroup_SetOnMouseWheelDown(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
+    CategoryPanelGroup_SetOnMouseWheelUp(c.instance, fn)
+}
+
 func (c *TCategoryPanelGroup) SetOnResize(fn TNotifyEvent) {
     CategoryPanelGroup_SetOnResize(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnStartDock(fn TStartDockEvent) {
+    CategoryPanelGroup_SetOnStartDock(c.instance, fn)
+}
+
+func (c *TCategoryPanelGroup) SetOnUnDock(fn TUnDockEvent) {
+    CategoryPanelGroup_SetOnUnDock(c.instance, fn)
 }
 
 func (c *TCategoryPanelGroup) Panels() *TList {
@@ -530,6 +610,14 @@ func (c *TCategoryPanelGroup) ParentWindow() HWND {
 
 func (c *TCategoryPanelGroup) SetParentWindow(value HWND) {
     CategoryPanelGroup_SetParentWindow(c.instance, value)
+}
+
+func (c *TCategoryPanelGroup) UseDockManager() bool {
+    return CategoryPanelGroup_GetUseDockManager(c.instance)
+}
+
+func (c *TCategoryPanelGroup) SetUseDockManager(value bool) {
+    CategoryPanelGroup_SetUseDockManager(c.instance, value)
 }
 
 func (c *TCategoryPanelGroup) Action() *TAction {
@@ -582,6 +670,10 @@ func (c *TCategoryPanelGroup) ExplicitWidth() int32 {
 
 func (c *TCategoryPanelGroup) ExplicitHeight() int32 {
     return CategoryPanelGroup_GetExplicitHeight(c.instance)
+}
+
+func (c *TCategoryPanelGroup) Floating() bool {
+    return CategoryPanelGroup_GetFloating(c.instance)
 }
 
 func (c *TCategoryPanelGroup) Parent() *TControl {

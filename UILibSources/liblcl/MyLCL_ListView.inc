@@ -16,6 +16,11 @@ begin
   AObj.Free;
 end;
 
+function ListView_AlphaSort(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.AlphaSort;
+end;
+
 procedure ListView_Clear(AObj: TListView); extdecl;
 begin
   AObj.Clear;
@@ -49,6 +54,11 @@ end;
 function ListView_Focused(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
+end;
+
+function ListView_HandleAllocated(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
 end;
 
 procedure ListView_Invalidate(AObj: TListView); extdecl;
@@ -89,6 +99,11 @@ end;
 procedure ListView_BringToFront(AObj: TListView); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function ListView_Dragging(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function ListView_HasParent(AObj: TListView): LongBool; extdecl;
@@ -284,6 +299,36 @@ end;
 procedure ListView_SetDoubleBuffered(AObj: TListView; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function ListView_GetDragCursor(AObj: TListView): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ListView_SetDragCursor(AObj: TListView; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ListView_GetDragKind(AObj: TListView): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ListView_SetDragKind(AObj: TListView; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ListView_GetDragMode(AObj: TListView): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ListView_SetDragMode(AObj: TListView; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function ListView_GetEnabled(AObj: TListView): LongBool; extdecl;
@@ -630,6 +675,18 @@ begin
   EventClass.Add(AObj, geListViewCompare, AEventId);
 end;
 
+procedure ListView_SetOnContextPopup(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -640,6 +697,30 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure ListView_SetOnEndDock(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    EventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := @EventClass.OnEndDock;
+  EventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ListView_SetOnEndDrag(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ListView_SetOnEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -664,6 +745,30 @@ begin
   end;
   AObj.OnExit := @EventClass.OnExit;
   EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure ListView_SetOnDragDrop(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ListView_SetOnDragOver(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
 end;
 
 procedure ListView_SetOnKeyDown(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -798,6 +903,18 @@ begin
   EventClass.Add(AObj, geListViewItemChecked, AEventId);
 end;
 
+procedure ListView_SetOnStartDock(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    EventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := @EventClass.OnStartDock;
+  EventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function ListView_GetCanvas(AObj: TListView): TCanvas; extdecl;
 begin
   Result :=  AObj.Canvas;
@@ -848,6 +965,16 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ListView_GetDockSite(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ListView_SetDockSite(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ListView_GetBrush(AObj: TListView): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -871,6 +998,16 @@ end;
 procedure ListView_SetParentWindow(AObj: TListView; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ListView_GetUseDockManager(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ListView_SetUseDockManager(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 procedure ListView_GetBoundsRect(AObj: TListView; var Result: TRect); extdecl;
@@ -906,6 +1043,11 @@ end;
 procedure ListView_SetClientWidth(AObj: TListView; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ListView_GetFloating(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ListView_GetParent(AObj: TListView): TWinControl; extdecl;
@@ -1037,6 +1179,7 @@ end;
 exports
   ListView_Create,
   ListView_Free,
+  ListView_AlphaSort,
   ListView_Clear,
   ListView_ClearSelection,
   ListView_IsEditing,
@@ -1044,6 +1187,7 @@ exports
   ListView_CanFocus,
   ListView_FlipChildren,
   ListView_Focused,
+  ListView_HandleAllocated,
   ListView_Invalidate,
   ListView_Realign,
   ListView_Repaint,
@@ -1052,6 +1196,7 @@ exports
   ListView_SetFocus,
   ListView_Update,
   ListView_BringToFront,
+  ListView_Dragging,
   ListView_HasParent,
   ListView_Hide,
   ListView_Perform,
@@ -1091,6 +1236,12 @@ exports
   ListView_SetColumnClick,
   ListView_GetDoubleBuffered,
   ListView_SetDoubleBuffered,
+  ListView_GetDragCursor,
+  ListView_SetDragCursor,
+  ListView_GetDragKind,
+  ListView_SetDragKind,
+  ListView_GetDragMode,
+  ListView_SetDragMode,
   ListView_GetEnabled,
   ListView_SetEnabled,
   ListView_GetFont,
@@ -1150,9 +1301,14 @@ exports
   ListView_SetOnClick,
   ListView_SetOnColumnClick,
   ListView_SetOnCompare,
+  ListView_SetOnContextPopup,
   ListView_SetOnDblClick,
+  ListView_SetOnEndDock,
+  ListView_SetOnEndDrag,
   ListView_SetOnEnter,
   ListView_SetOnExit,
+  ListView_SetOnDragDrop,
+  ListView_SetOnDragOver,
   ListView_SetOnKeyDown,
   ListView_SetOnKeyPress,
   ListView_SetOnKeyUp,
@@ -1164,6 +1320,7 @@ exports
   ListView_SetOnResize,
   ListView_SetOnSelectItem,
   ListView_SetOnItemChecked,
+  ListView_SetOnStartDock,
   ListView_GetCanvas,
   ListView_GetItemFocused,
   ListView_SetItemFocused,
@@ -1174,11 +1331,15 @@ exports
   ListView_GetVisibleRowCount,
   ListView_GetItemIndex,
   ListView_SetItemIndex,
+  ListView_GetDockSite,
+  ListView_SetDockSite,
   ListView_GetBrush,
   ListView_GetControlCount,
   ListView_GetHandle,
   ListView_GetParentWindow,
   ListView_SetParentWindow,
+  ListView_GetUseDockManager,
+  ListView_SetUseDockManager,
   ListView_GetBoundsRect,
   ListView_SetBoundsRect,
   ListView_GetClientHeight,
@@ -1186,6 +1347,7 @@ exports
   ListView_GetClientRect,
   ListView_GetClientWidth,
   ListView_SetClientWidth,
+  ListView_GetFloating,
   ListView_GetParent,
   ListView_SetParent,
   ListView_GetLeft,

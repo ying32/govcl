@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function CheckBox_Dragging(AObj: TCheckBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function CheckBox_HasParent(AObj: TCheckBox): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -250,6 +255,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function CheckBox_GetDragCursor(AObj: TCheckBox): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure CheckBox_SetDragCursor(AObj: TCheckBox; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function CheckBox_GetDragKind(AObj: TCheckBox): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure CheckBox_SetDragKind(AObj: TCheckBox; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function CheckBox_GetDragMode(AObj: TCheckBox): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure CheckBox_SetDragMode(AObj: TCheckBox; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function CheckBox_GetEnabled(AObj: TCheckBox): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -412,6 +447,66 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure CheckBox_SetOnContextPopup(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure CheckBox_SetOnDragDrop(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure CheckBox_SetOnDragOver(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure CheckBox_SetOnEndDock(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure CheckBox_SetOnEndDrag(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure CheckBox_SetOnEnter(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -532,6 +627,28 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure CheckBox_SetOnStartDock(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+function CheckBox_GetDockSite(AObj: TCheckBox): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure CheckBox_SetDockSite(AObj: TCheckBox; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function CheckBox_GetBrush(AObj: TCheckBox): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -555,6 +672,16 @@ end;
 procedure CheckBox_SetParentWindow(AObj: TCheckBox; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function CheckBox_GetUseDockManager(AObj: TCheckBox): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure CheckBox_SetUseDockManager(AObj: TCheckBox; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 procedure CheckBox_GetBoundsRect(AObj: TCheckBox; var Result: TRect); stdcall;
@@ -610,6 +737,11 @@ end;
 function CheckBox_GetExplicitHeight(AObj: TCheckBox): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function CheckBox_GetFloating(AObj: TCheckBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function CheckBox_GetParent(AObj: TCheckBox): TWinControl; stdcall;
@@ -778,6 +910,7 @@ exports
   CheckBox_SetFocus,
   CheckBox_Update,
   CheckBox_BringToFront,
+  CheckBox_Dragging,
   CheckBox_HasParent,
   CheckBox_Hide,
   CheckBox_Perform,
@@ -813,6 +946,12 @@ exports
   CheckBox_SetColor,
   CheckBox_GetDoubleBuffered,
   CheckBox_SetDoubleBuffered,
+  CheckBox_GetDragCursor,
+  CheckBox_SetDragCursor,
+  CheckBox_GetDragKind,
+  CheckBox_SetDragKind,
+  CheckBox_GetDragMode,
+  CheckBox_SetDragMode,
   CheckBox_GetEnabled,
   CheckBox_SetEnabled,
   CheckBox_GetFont,
@@ -844,6 +983,11 @@ exports
   CheckBox_GetStyleElements,
   CheckBox_SetStyleElements,
   CheckBox_SetOnClick,
+  CheckBox_SetOnContextPopup,
+  CheckBox_SetOnDragDrop,
+  CheckBox_SetOnDragOver,
+  CheckBox_SetOnEndDock,
+  CheckBox_SetOnEndDrag,
   CheckBox_SetOnEnter,
   CheckBox_SetOnExit,
   CheckBox_SetOnKeyDown,
@@ -854,11 +998,16 @@ exports
   CheckBox_SetOnMouseLeave,
   CheckBox_SetOnMouseMove,
   CheckBox_SetOnMouseUp,
+  CheckBox_SetOnStartDock,
+  CheckBox_GetDockSite,
+  CheckBox_SetDockSite,
   CheckBox_GetBrush,
   CheckBox_GetControlCount,
   CheckBox_GetHandle,
   CheckBox_GetParentWindow,
   CheckBox_SetParentWindow,
+  CheckBox_GetUseDockManager,
+  CheckBox_SetUseDockManager,
   CheckBox_GetBoundsRect,
   CheckBox_SetBoundsRect,
   CheckBox_GetClientHeight,
@@ -870,6 +1019,7 @@ exports
   CheckBox_GetExplicitTop,
   CheckBox_GetExplicitWidth,
   CheckBox_GetExplicitHeight,
+  CheckBox_GetFloating,
   CheckBox_GetParent,
   CheckBox_SetParent,
   CheckBox_GetAlignWithMargins,

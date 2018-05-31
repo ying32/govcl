@@ -10,452 +10,512 @@ begin
   Result :=  TGoForm.CreateNew(AOwner);
 end;
 
-procedure Form_Free(AObj: TGoForm); extdecl;
+procedure Form_Free(AObj: TForm); extdecl;
 begin
   AObj.Free;
 end;
 
-procedure Form_Close(AObj: TGoForm); extdecl;
+procedure Form_Close(AObj: TForm); extdecl;
 begin
   AObj.Close;
 end;
 
-procedure Form_Hide(AObj: TGoForm); extdecl;
+procedure Form_Hide(AObj: TForm); extdecl;
 begin
   AObj.Hide;
 end;
 
-procedure Form_SetFocus(AObj: TGoForm); extdecl;
+procedure Form_SetFocus(AObj: TForm); extdecl;
 begin
   AObj.SetFocus;
 end;
 
-procedure Form_Show(AObj: TGoForm); extdecl;
+procedure Form_Show(AObj: TForm); extdecl;
 begin
   AObj.Show;
 end;
 
-function Form_ShowModal(AObj: TGoForm): Integer; extdecl;
+function Form_ShowModal(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ShowModal;
 end;
 
-function Form_CanFocus(AObj: TGoForm): LongBool; extdecl;
+function Form_CanFocus(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
 end;
 
-procedure Form_FlipChildren(AObj: TGoForm; AllLevels: LongBool); extdecl;
+procedure Form_FlipChildren(AObj: TForm; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
 end;
 
-function Form_Focused(AObj: TGoForm): LongBool; extdecl;
+function Form_Focused(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
 end;
 
-procedure Form_Invalidate(AObj: TGoForm); extdecl;
+function Form_HandleAllocated(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
+procedure Form_Invalidate(AObj: TForm); extdecl;
 begin
   AObj.Invalidate;
 end;
 
-procedure Form_Realign(AObj: TGoForm); extdecl;
+procedure Form_Realign(AObj: TForm); extdecl;
 begin
   AObj.Realign;
 end;
 
-procedure Form_Repaint(AObj: TGoForm); extdecl;
+procedure Form_Repaint(AObj: TForm); extdecl;
 begin
   AObj.Repaint;
 end;
 
-procedure Form_ScaleBy(AObj: TGoForm; M: Integer; D: Integer); extdecl;
+procedure Form_ScaleBy(AObj: TForm; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
 end;
 
-procedure Form_SetBounds(AObj: TGoForm; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
+procedure Form_SetBounds(AObj: TForm; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
 end;
 
-procedure Form_Update(AObj: TGoForm); extdecl;
+procedure Form_Update(AObj: TForm); extdecl;
 begin
   AObj.Update;
 end;
 
-procedure Form_BringToFront(AObj: TGoForm); extdecl;
+procedure Form_BringToFront(AObj: TForm); extdecl;
 begin
   AObj.BringToFront;
 end;
 
-function Form_HasParent(AObj: TGoForm): LongBool; extdecl;
+function Form_Dragging(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
+function Form_HasParent(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.HasParent;
 end;
 
-function Form_Perform(AObj: TGoForm; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
+function Form_Perform(AObj: TForm; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
 begin
   Result :=  AObj.Perform(Msg, WParam, LParam);
 end;
 
-procedure Form_Refresh(AObj: TGoForm); extdecl;
+procedure Form_Refresh(AObj: TForm); extdecl;
 begin
   AObj.Refresh;
 end;
 
-procedure Form_SendToBack(AObj: TGoForm); extdecl;
+procedure Form_SendToBack(AObj: TForm); extdecl;
 begin
   AObj.SendToBack;
 end;
 
-function Form_GetTextBuf(AObj: TGoForm; Buffer: PChar; BufSize: Integer): Integer; extdecl;
+function Form_GetTextBuf(AObj: TForm; Buffer: PChar; BufSize: Integer): Integer; extdecl;
 begin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
 end;
 
-function Form_GetTextLen(AObj: TGoForm): Integer; extdecl;
+function Form_GetTextLen(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
 end;
 
-function Form_FindComponent(AObj: TGoForm; AName: PChar): TComponent; extdecl;
+function Form_FindComponent(AObj: TForm; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
 end;
 
-function Form_GetNamePath(AObj: TGoForm): PChar; extdecl;
+function Form_GetNamePath(AObj: TForm): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
-procedure Form_Assign(AObj: TGoForm; Source: TPersistent); extdecl;
+procedure Form_Assign(AObj: TForm; Source: TPersistent); extdecl;
 begin
   AObj.Assign(Source);
 end;
 
-function Form_ClassName(AObj: TGoForm): PChar; extdecl;
+function Form_ClassName(AObj: TForm): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
 end;
 
-function Form_Equals(AObj: TGoForm; Obj: TObject): LongBool; extdecl;
+function Form_Equals(AObj: TForm; Obj: TObject): LongBool; extdecl;
 begin
   Result :=  AObj.Equals(Obj);
 end;
 
-function Form_GetHashCode(AObj: TGoForm): Integer; extdecl;
+function Form_GetHashCode(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.GetHashCode;
 end;
 
-function Form_ToString(AObj: TGoForm): PChar; extdecl;
+function Form_ToString(AObj: TForm): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
 end;
 
-function Form_GetAction(AObj: TGoForm): TBasicAction; extdecl;
+function Form_GetAction(AObj: TForm): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
 end;
 
-procedure Form_SetAction(AObj: TGoForm; AValue: TBasicAction); extdecl;
+procedure Form_SetAction(AObj: TForm; AValue: TBasicAction); extdecl;
 begin
   AObj.Action := AValue;
 end;
 
-function Form_GetAlign(AObj: TGoForm): TAlign; extdecl;
+function Form_GetAlign(AObj: TForm): TAlign; extdecl;
 begin
   Result :=  AObj.Align;
 end;
 
-procedure Form_SetAlign(AObj: TGoForm; AValue: TAlign); extdecl;
+procedure Form_SetAlign(AObj: TForm; AValue: TAlign); extdecl;
 begin
   AObj.Align := AValue;
 end;
 
-function Form_GetAlphaBlend(AObj: TGoForm): LongBool; extdecl;
+function Form_GetAlphaBlend(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.AlphaBlend;
 end;
 
-procedure Form_SetAlphaBlend(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetAlphaBlend(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.AlphaBlend := AValue;
 end;
 
-function Form_GetAlphaBlendValue(AObj: TGoForm): Byte; extdecl;
+function Form_GetAlphaBlendValue(AObj: TForm): Byte; extdecl;
 begin
   Result :=  AObj.AlphaBlendValue;
 end;
 
-procedure Form_SetAlphaBlendValue(AObj: TGoForm; AValue: Byte); extdecl;
+procedure Form_SetAlphaBlendValue(AObj: TForm; AValue: Byte); extdecl;
 begin
   AObj.AlphaBlendValue := AValue;
 end;
 
-function Form_GetAnchors(AObj: TGoForm): TAnchors; extdecl;
+function Form_GetAnchors(AObj: TForm): TAnchors; extdecl;
 begin
   Result :=  AObj.Anchors;
 end;
 
-procedure Form_SetAnchors(AObj: TGoForm; AValue: TAnchors); extdecl;
+procedure Form_SetAnchors(AObj: TForm; AValue: TAnchors); extdecl;
 begin
   AObj.Anchors := AValue;
 end;
 
-function Form_GetAutoSize(AObj: TGoForm): LongBool; extdecl;
+function Form_GetAutoSize(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.AutoSize;
 end;
 
-procedure Form_SetAutoSize(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetAutoSize(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.AutoSize := AValue;
 end;
 
-function Form_GetBiDiMode(AObj: TGoForm): TBiDiMode; extdecl;
+function Form_GetBiDiMode(AObj: TForm): TBiDiMode; extdecl;
 begin
   Result :=  AObj.BiDiMode;
 end;
 
-procedure Form_SetBiDiMode(AObj: TGoForm; AValue: TBiDiMode); extdecl;
+procedure Form_SetBiDiMode(AObj: TForm; AValue: TBiDiMode); extdecl;
 begin
   AObj.BiDiMode := AValue;
 end;
 
-function Form_GetBorderIcons(AObj: TGoForm): TBorderIcons; extdecl;
+function Form_GetBorderIcons(AObj: TForm): TBorderIcons; extdecl;
 begin
   Result :=  AObj.BorderIcons;
 end;
 
-procedure Form_SetBorderIcons(AObj: TGoForm; AValue: TBorderIcons); extdecl;
+procedure Form_SetBorderIcons(AObj: TForm; AValue: TBorderIcons); extdecl;
 begin
   AObj.BorderIcons := AValue;
 end;
 
-function Form_GetBorderStyle(AObj: TGoForm): TFormBorderStyle; extdecl;
+function Form_GetBorderStyle(AObj: TForm): TFormBorderStyle; extdecl;
 begin
   Result :=  AObj.BorderStyle;
 end;
 
-procedure Form_SetBorderStyle(AObj: TGoForm; AValue: TFormBorderStyle); extdecl;
+procedure Form_SetBorderStyle(AObj: TForm; AValue: TFormBorderStyle); extdecl;
 begin
   AObj.BorderStyle := AValue;
 end;
 
-function Form_GetBorderWidth(AObj: TGoForm): TBorderWidth; extdecl;
+function Form_GetBorderWidth(AObj: TForm): TBorderWidth; extdecl;
 begin
   Result :=  AObj.BorderWidth;
 end;
 
-procedure Form_SetBorderWidth(AObj: TGoForm; AValue: TBorderWidth); extdecl;
+procedure Form_SetBorderWidth(AObj: TForm; AValue: TBorderWidth); extdecl;
 begin
   AObj.BorderWidth := AValue;
 end;
 
-function Form_GetCaption(AObj: TGoForm): PChar; extdecl;
+function Form_GetCaption(AObj: TForm): PChar; extdecl;
 begin
   Result :=  PChar(AObj.Caption);
 end;
 
-procedure Form_SetCaption(AObj: TGoForm; AValue: PChar); extdecl;
+procedure Form_SetCaption(AObj: TForm; AValue: PChar); extdecl;
 begin
   AObj.Caption := AValue;
 end;
 
-function Form_GetClientHeight(AObj: TGoForm): Integer; extdecl;
+function Form_GetClientHeight(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ClientHeight;
 end;
 
-procedure Form_SetClientHeight(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetClientHeight(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.ClientHeight := AValue;
 end;
 
-function Form_GetClientWidth(AObj: TGoForm): Integer; extdecl;
+function Form_GetClientWidth(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ClientWidth;
 end;
 
-procedure Form_SetClientWidth(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetClientWidth(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
 end;
 
-function Form_GetColor(AObj: TGoForm): TColor; extdecl;
+function Form_GetColor(AObj: TForm): TColor; extdecl;
 begin
   Result :=  AObj.Color;
 end;
 
-procedure Form_SetColor(AObj: TGoForm; AValue: TColor); extdecl;
+procedure Form_SetColor(AObj: TForm; AValue: TColor); extdecl;
 begin
   AObj.Color := AValue;
 end;
 
-function Form_GetDoubleBuffered(AObj: TGoForm): LongBool; extdecl;
+function Form_GetUseDockManager(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure Form_SetUseDockManager(AObj: TForm; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
+end;
+
+function Form_GetDockSite(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure Form_SetDockSite(AObj: TForm; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
+function Form_GetDoubleBuffered(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
 end;
 
-procedure Form_SetDoubleBuffered(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetDoubleBuffered(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
 end;
 
-function Form_GetEnabled(AObj: TGoForm): LongBool; extdecl;
+function Form_GetDragKind(AObj: TForm): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Form_SetDragKind(AObj: TForm; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Form_GetDragMode(AObj: TForm): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Form_SetDragMode(AObj: TForm; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
+function Form_GetEnabled(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
 end;
 
-procedure Form_SetEnabled(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetEnabled(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.Enabled := AValue;
 end;
 
-function Form_GetParentFont(AObj: TGoForm): LongBool; extdecl;
+function Form_GetParentFont(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
 end;
 
-procedure Form_SetParentFont(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetParentFont(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.ParentFont := AValue;
 end;
 
-function Form_GetFont(AObj: TGoForm): TFont; extdecl;
+function Form_GetFont(AObj: TForm): TFont; extdecl;
 begin
   Result :=  AObj.Font;
 end;
 
-procedure Form_SetFont(AObj: TGoForm; AValue: TFont); extdecl;
+procedure Form_SetFont(AObj: TForm; AValue: TFont); extdecl;
 begin
   AObj.Font := AValue;
 end;
 
-function Form_GetFormStyle(AObj: TGoForm): TFormStyle; extdecl;
+function Form_GetFormStyle(AObj: TForm): TFormStyle; extdecl;
 begin
   Result :=  AObj.FormStyle;
 end;
 
-procedure Form_SetFormStyle(AObj: TGoForm; AValue: TFormStyle); extdecl;
+procedure Form_SetFormStyle(AObj: TForm; AValue: TFormStyle); extdecl;
 begin
   AObj.FormStyle := AValue;
 end;
 
-function Form_GetHeight(AObj: TGoForm): Integer; extdecl;
+function Form_GetHeight(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.Height;
 end;
 
-procedure Form_SetHeight(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetHeight(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.Height := AValue;
 end;
 
-function Form_GetIcon(AObj: TGoForm): TIcon; extdecl;
+function Form_GetIcon(AObj: TForm): TIcon; extdecl;
 begin
   Result :=  AObj.Icon;
 end;
 
-procedure Form_SetIcon(AObj: TGoForm; AValue: TIcon); extdecl;
+procedure Form_SetIcon(AObj: TForm; AValue: TIcon); extdecl;
 begin
   AObj.Icon := AValue;
 end;
 
-function Form_GetKeyPreview(AObj: TGoForm): LongBool; extdecl;
+function Form_GetKeyPreview(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.KeyPreview;
 end;
 
-procedure Form_SetKeyPreview(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetKeyPreview(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.KeyPreview := AValue;
 end;
 
-function Form_GetMenu(AObj: TGoForm): TMainMenu; extdecl;
+function Form_GetMenu(AObj: TForm): TMainMenu; extdecl;
 begin
   Result :=  AObj.Menu;
 end;
 
-procedure Form_SetMenu(AObj: TGoForm; AValue: TMainMenu); extdecl;
+procedure Form_SetMenu(AObj: TForm; AValue: TMainMenu); extdecl;
 begin
   AObj.Menu := AValue;
 end;
 
-function Form_GetPixelsPerInch(AObj: TGoForm): Integer; extdecl;
+function Form_GetPixelsPerInch(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.PixelsPerInch;
 end;
 
-procedure Form_SetPixelsPerInch(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetPixelsPerInch(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.PixelsPerInch := AValue;
 end;
 
-function Form_GetPopupMenu(AObj: TGoForm): TPopupMenu; extdecl;
+function Form_GetPopupMenu(AObj: TForm): TPopupMenu; extdecl;
 begin
   Result :=  AObj.PopupMenu;
 end;
 
-procedure Form_SetPopupMenu(AObj: TGoForm; AValue: TPopupMenu); extdecl;
+procedure Form_SetPopupMenu(AObj: TForm; AValue: TPopupMenu); extdecl;
 begin
   AObj.PopupMenu := AValue;
 end;
 
-function Form_GetPosition(AObj: TGoForm): TPosition; extdecl;
+function Form_GetPosition(AObj: TForm): TPosition; extdecl;
 begin
   Result :=  AObj.Position;
 end;
 
-procedure Form_SetPosition(AObj: TGoForm; AValue: TPosition); extdecl;
+procedure Form_SetPosition(AObj: TForm; AValue: TPosition); extdecl;
 begin
   AObj.Position := AValue;
 end;
 
-function Form_GetShowHint(AObj: TGoForm): LongBool; extdecl;
+function Form_GetScaled(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.Scaled;
+end;
+
+procedure Form_SetScaled(AObj: TForm; AValue: LongBool); extdecl;
+begin
+  AObj.Scaled := AValue;
+end;
+
+function Form_GetShowHint(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.ShowHint;
 end;
 
-procedure Form_SetShowHint(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetShowHint(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.ShowHint := AValue;
 end;
 
-function Form_GetVisible(AObj: TGoForm): LongBool; extdecl;
+function Form_GetVisible(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.Visible;
 end;
 
-procedure Form_SetVisible(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetVisible(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.Visible := AValue;
 end;
 
-function Form_GetWidth(AObj: TGoForm): Integer; extdecl;
+function Form_GetWidth(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.Width;
 end;
 
-procedure Form_SetWidth(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetWidth(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.Width := AValue;
 end;
 
-function Form_GetWindowState(AObj: TGoForm): TWindowState; extdecl;
+function Form_GetWindowState(AObj: TForm): TWindowState; extdecl;
 begin
   Result :=  AObj.WindowState;
 end;
 
-procedure Form_SetWindowState(AObj: TGoForm; AValue: TWindowState); extdecl;
+procedure Form_SetWindowState(AObj: TForm; AValue: TWindowState); extdecl;
 begin
   AObj.WindowState := AValue;
 end;
 
-procedure Form_SetOnClick(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnClick(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -467,7 +527,7 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
-procedure Form_SetOnClose(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnClose(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -479,7 +539,7 @@ begin
   EventClass.Add(AObj, geFormClose, AEventId);
 end;
 
-procedure Form_SetOnCloseQuery(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnCloseQuery(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -491,7 +551,19 @@ begin
   EventClass.Add(AObj, geFormCloseQuery, AEventId);
 end;
 
-procedure Form_SetOnDblClick(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnContextPopup(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure Form_SetOnDblClick(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -503,7 +575,67 @@ begin
   EventClass.Add(AObj, geDblClick, AEventId);
 end;
 
-procedure Form_SetOnHide(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnDockDrop(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    EventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := @EventClass.OnDockDrop;
+  EventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
+procedure Form_SetOnDragDrop(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Form_SetOnDragOver(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Form_SetOnEndDock(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    EventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := @EventClass.OnEndDock;
+  EventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure Form_SetOnGetSiteInfo(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    EventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
+  EventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure Form_SetOnHide(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -515,7 +647,19 @@ begin
   EventClass.Add(AObj, geHide, AEventId);
 end;
 
-procedure Form_SetOnKeyDown(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnHelp(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnHelp := nil;
+    EventClass.Remove(AObj, geHelp);
+    Exit;
+  end;
+  AObj.OnHelp := @EventClass.OnHelp;
+  EventClass.Add(AObj, geHelp, AEventId);
+end;
+
+procedure Form_SetOnKeyDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -527,7 +671,7 @@ begin
   EventClass.Add(AObj, geKeyDown, AEventId);
 end;
 
-procedure Form_SetOnKeyPress(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnKeyPress(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -539,7 +683,7 @@ begin
   EventClass.Add(AObj, geKeyPress, AEventId);
 end;
 
-procedure Form_SetOnKeyUp(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnKeyUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -551,7 +695,7 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
-procedure Form_SetOnMouseDown(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnMouseDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -563,7 +707,7 @@ begin
   EventClass.Add(AObj, geMouseDown, AEventId);
 end;
 
-procedure Form_SetOnMouseEnter(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnMouseEnter(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -575,7 +719,7 @@ begin
   EventClass.Add(AObj, geMouseEnter, AEventId);
 end;
 
-procedure Form_SetOnMouseLeave(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnMouseLeave(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -587,7 +731,7 @@ begin
   EventClass.Add(AObj, geMouseLeave, AEventId);
 end;
 
-procedure Form_SetOnMouseMove(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnMouseMove(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -599,7 +743,7 @@ begin
   EventClass.Add(AObj, geMouseMove, AEventId);
 end;
 
-procedure Form_SetOnMouseUp(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnMouseUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -611,7 +755,7 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
-procedure Form_SetOnMouseWheel(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnMouseWheel(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -623,7 +767,31 @@ begin
   EventClass.Add(AObj, geMouseWheel, AEventId);
 end;
 
-procedure Form_SetOnPaint(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnMouseWheelDown(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseWheelDown := nil;
+    EventClass.Remove(AObj, geMouseWheelDown);
+    Exit;
+  end;
+  AObj.OnMouseWheelDown := @EventClass.OnMouseWheelDown;
+  EventClass.Add(AObj, geMouseWheelDown, AEventId);
+end;
+
+procedure Form_SetOnMouseWheelUp(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseWheelUp := nil;
+    EventClass.Remove(AObj, geMouseWheelUp);
+    Exit;
+  end;
+  AObj.OnMouseWheelUp := @EventClass.OnMouseWheelUp;
+  EventClass.Add(AObj, geMouseWheelUp, AEventId);
+end;
+
+procedure Form_SetOnPaint(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -635,7 +803,7 @@ begin
   EventClass.Add(AObj, gePaint, AEventId);
 end;
 
-procedure Form_SetOnResize(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnResize(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -647,7 +815,19 @@ begin
   EventClass.Add(AObj, geResize, AEventId);
 end;
 
-procedure Form_SetOnShow(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+procedure Form_SetOnShortCut(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnShortCut := nil;
+    EventClass.Remove(AObj, geShortCut);
+    Exit;
+  end;
+  AObj.OnShortCut := @EventClass.OnShortCut;
+  EventClass.Add(AObj, geShortCut, AEventId);
+end;
+
+procedure Form_SetOnShow(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
   begin
@@ -659,177 +839,206 @@ begin
   EventClass.Add(AObj, geShow, AEventId);
 end;
 
-function Form_GetCanvas(AObj: TGoForm): TCanvas; extdecl;
+procedure Form_SetOnStartDock(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    EventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := @EventClass.OnStartDock;
+  EventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+procedure Form_SetOnUnDock(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    EventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := @EventClass.OnUnDock;
+  EventClass.Add(AObj, geUnDock, AEventId);
+end;
+
+function Form_GetCanvas(AObj: TForm): TCanvas; extdecl;
 begin
   Result :=  AObj.Canvas;
 end;
 
-function Form_GetModalResult(AObj: TGoForm): TModalResult; extdecl;
+function Form_GetModalResult(AObj: TForm): TModalResult; extdecl;
 begin
   Result :=  AObj.ModalResult;
 end;
 
-procedure Form_SetModalResult(AObj: TGoForm; AValue: TModalResult); extdecl;
+procedure Form_SetModalResult(AObj: TForm; AValue: TModalResult); extdecl;
 begin
   AObj.ModalResult := AValue;
 end;
 
-function Form_GetLeft(AObj: TGoForm): Integer; extdecl;
+function Form_GetLeft(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.Left;
 end;
 
-procedure Form_SetLeft(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetLeft(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.Left := AValue;
 end;
 
-function Form_GetTop(AObj: TGoForm): Integer; extdecl;
+function Form_GetTop(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.Top;
 end;
 
-procedure Form_SetTop(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetTop(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.Top := AValue;
 end;
 
-function Form_GetBrush(AObj: TGoForm): TBrush; extdecl;
+function Form_GetBrush(AObj: TForm): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
 end;
 
-function Form_GetControlCount(AObj: TGoForm): Integer; extdecl;
+function Form_GetControlCount(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ControlCount;
 end;
 
-function Form_GetHandle(AObj: TGoForm): HWND; extdecl;
+function Form_GetHandle(AObj: TForm): HWND; extdecl;
 begin
   Result :=  AObj.Handle;
 end;
 
-function Form_GetParentWindow(AObj: TGoForm): HWND; extdecl;
+function Form_GetParentWindow(AObj: TForm): HWND; extdecl;
 begin
   Result :=  AObj.ParentWindow;
 end;
 
-procedure Form_SetParentWindow(AObj: TGoForm; AValue: HWND); extdecl;
+procedure Form_SetParentWindow(AObj: TForm; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
 end;
 
-function Form_GetTabOrder(AObj: TGoForm): TTabOrder; extdecl;
+function Form_GetTabOrder(AObj: TForm): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
 end;
 
-procedure Form_SetTabOrder(AObj: TGoForm; AValue: TTabOrder); extdecl;
+procedure Form_SetTabOrder(AObj: TForm; AValue: TTabOrder); extdecl;
 begin
   AObj.TabOrder := AValue;
 end;
 
-function Form_GetTabStop(AObj: TGoForm): LongBool; extdecl;
+function Form_GetTabStop(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.TabStop;
 end;
 
-procedure Form_SetTabStop(AObj: TGoForm; AValue: LongBool); extdecl;
+procedure Form_SetTabStop(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.TabStop := AValue;
 end;
 
-procedure Form_GetBoundsRect(AObj: TGoForm; var Result: TRect); extdecl;
+procedure Form_GetBoundsRect(AObj: TForm; var Result: TRect); extdecl;
 begin
   Result :=  AObj.BoundsRect;
 end;
 
-procedure Form_SetBoundsRect(AObj: TGoForm; var AValue: TRect); extdecl;
+procedure Form_SetBoundsRect(AObj: TForm; var AValue: TRect); extdecl;
 begin
   AObj.BoundsRect := AValue;
 end;
 
-procedure Form_GetClientRect(AObj: TGoForm; var Result: TRect); extdecl;
+procedure Form_GetClientRect(AObj: TForm; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
 end;
 
-function Form_GetParent(AObj: TGoForm): TWinControl; extdecl;
+function Form_GetFloating(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
+function Form_GetParent(AObj: TForm): TWinControl; extdecl;
 begin
   Result :=  AObj.Parent;
 end;
 
-procedure Form_SetParent(AObj: TGoForm; AValue: TWinControl); extdecl;
+procedure Form_SetParent(AObj: TForm; AValue: TWinControl); extdecl;
 begin
   AObj.Parent := AValue;
 end;
 
-function Form_GetCursor(AObj: TGoForm): TCursor; extdecl;
+function Form_GetCursor(AObj: TForm): TCursor; extdecl;
 begin
   Result :=  AObj.Cursor;
 end;
 
-procedure Form_SetCursor(AObj: TGoForm; AValue: TCursor); extdecl;
+procedure Form_SetCursor(AObj: TForm; AValue: TCursor); extdecl;
 begin
   AObj.Cursor := AValue;
 end;
 
-function Form_GetHint(AObj: TGoForm): PChar; extdecl;
+function Form_GetHint(AObj: TForm): PChar; extdecl;
 begin
   Result :=  PChar(AObj.Hint);
 end;
 
-procedure Form_SetHint(AObj: TGoForm; AValue: PChar); extdecl;
+procedure Form_SetHint(AObj: TForm; AValue: PChar); extdecl;
 begin
   AObj.Hint := AValue;
 end;
 
-function Form_GetComponentCount(AObj: TGoForm): Integer; extdecl;
+function Form_GetComponentCount(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
 end;
 
-function Form_GetComponentIndex(AObj: TGoForm): Integer; extdecl;
+function Form_GetComponentIndex(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ComponentIndex;
 end;
 
-procedure Form_SetComponentIndex(AObj: TGoForm; AValue: Integer); extdecl;
+procedure Form_SetComponentIndex(AObj: TForm; AValue: Integer); extdecl;
 begin
   AObj.ComponentIndex := AValue;
 end;
 
-function Form_GetOwner(AObj: TGoForm): TComponent; extdecl;
+function Form_GetOwner(AObj: TForm): TComponent; extdecl;
 begin
   Result :=  AObj.Owner;
 end;
 
-function Form_GetName(AObj: TGoForm): PChar; extdecl;
+function Form_GetName(AObj: TForm): PChar; extdecl;
 begin
   Result :=  PChar(AObj.Name);
 end;
 
-procedure Form_SetName(AObj: TGoForm; AValue: PChar); extdecl;
+procedure Form_SetName(AObj: TForm; AValue: PChar); extdecl;
 begin
   AObj.Name := AValue;
 end;
 
-function Form_GetTag(AObj: TGoForm): NativeInt; extdecl;
+function Form_GetTag(AObj: TForm): NativeInt; extdecl;
 begin
   Result :=  AObj.Tag;
 end;
 
-procedure Form_SetTag(AObj: TGoForm; AValue: NativeInt); extdecl;
+procedure Form_SetTag(AObj: TForm; AValue: NativeInt); extdecl;
 begin
   AObj.Tag := AValue;
 end;
 
-function Form_GetControls(AObj: TGoForm; Index: Integer): TControl; extdecl;
+function Form_GetControls(AObj: TForm; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
 end;
 
-function Form_GetComponents(AObj: TGoForm; AIndex: Integer): TComponent; extdecl;
+function Form_GetComponents(AObj: TForm; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
 end;
@@ -846,6 +1055,7 @@ exports
   Form_CanFocus,
   Form_FlipChildren,
   Form_Focused,
+  Form_HandleAllocated,
   Form_Invalidate,
   Form_Realign,
   Form_Repaint,
@@ -853,6 +1063,7 @@ exports
   Form_SetBounds,
   Form_Update,
   Form_BringToFront,
+  Form_Dragging,
   Form_HasParent,
   Form_Perform,
   Form_Refresh,
@@ -894,8 +1105,16 @@ exports
   Form_SetClientWidth,
   Form_GetColor,
   Form_SetColor,
+  Form_GetUseDockManager,
+  Form_SetUseDockManager,
+  Form_GetDockSite,
+  Form_SetDockSite,
   Form_GetDoubleBuffered,
   Form_SetDoubleBuffered,
+  Form_GetDragKind,
+  Form_SetDragKind,
+  Form_GetDragMode,
+  Form_SetDragMode,
   Form_GetEnabled,
   Form_SetEnabled,
   Form_GetParentFont,
@@ -918,6 +1137,8 @@ exports
   Form_SetPopupMenu,
   Form_GetPosition,
   Form_SetPosition,
+  Form_GetScaled,
+  Form_SetScaled,
   Form_GetShowHint,
   Form_SetShowHint,
   Form_GetVisible,
@@ -929,8 +1150,15 @@ exports
   Form_SetOnClick,
   Form_SetOnClose,
   Form_SetOnCloseQuery,
+  Form_SetOnContextPopup,
   Form_SetOnDblClick,
+  Form_SetOnDockDrop,
+  Form_SetOnDragDrop,
+  Form_SetOnDragOver,
+  Form_SetOnEndDock,
+  Form_SetOnGetSiteInfo,
   Form_SetOnHide,
+  Form_SetOnHelp,
   Form_SetOnKeyDown,
   Form_SetOnKeyPress,
   Form_SetOnKeyUp,
@@ -940,9 +1168,14 @@ exports
   Form_SetOnMouseMove,
   Form_SetOnMouseUp,
   Form_SetOnMouseWheel,
+  Form_SetOnMouseWheelDown,
+  Form_SetOnMouseWheelUp,
   Form_SetOnPaint,
   Form_SetOnResize,
+  Form_SetOnShortCut,
   Form_SetOnShow,
+  Form_SetOnStartDock,
+  Form_SetOnUnDock,
   Form_GetCanvas,
   Form_GetModalResult,
   Form_SetModalResult,
@@ -962,6 +1195,7 @@ exports
   Form_GetBoundsRect,
   Form_SetBoundsRect,
   Form_GetClientRect,
+  Form_GetFloating,
   Form_GetParent,
   Form_SetParent,
   Form_GetCursor,

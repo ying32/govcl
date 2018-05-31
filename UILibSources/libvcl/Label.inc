@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Label_Dragging(AObj: TLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Label_HasParent(AObj: TLabel): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -185,6 +190,36 @@ begin
   AObj.Color := AValue;
 end;
 
+function Label_GetDragCursor(AObj: TLabel): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Label_SetDragCursor(AObj: TLabel; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Label_GetDragKind(AObj: TLabel): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Label_SetDragKind(AObj: TLabel; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Label_GetDragMode(AObj: TLabel): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Label_SetDragMode(AObj: TLabel; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function Label_GetEllipsisPosition(AObj: TLabel): TEllipsisPosition; stdcall;
 begin
   Result :=  AObj.EllipsisPosition;
@@ -347,6 +382,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure Label_SetOnContextPopup(AObj: TLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure Label_SetOnDblClick(AObj: TLabel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -357,6 +404,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Label_SetOnDragDrop(AObj: TLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Label_SetOnDragOver(AObj: TLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Label_SetOnEndDock(AObj: TLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure Label_SetOnEndDrag(AObj: TLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Label_SetOnMouseDown(AObj: TLabel; AEventId: NativeUInt); stdcall;
@@ -417,6 +512,18 @@ begin
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
   TEventClass.Add(AObj, geMouseLeave, AEventId);
+end;
+
+procedure Label_SetOnStartDock(AObj: TLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
 function Label_GetCanvas(AObj: TLabel): TCanvas; stdcall;
@@ -487,6 +594,11 @@ end;
 function Label_GetExplicitHeight(AObj: TLabel): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function Label_GetFloating(AObj: TLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Label_GetParent(AObj: TLabel): TWinControl; stdcall;
@@ -639,6 +751,7 @@ exports
   Label_Create,
   Label_Free,
   Label_BringToFront,
+  Label_Dragging,
   Label_HasParent,
   Label_Hide,
   Label_Invalidate,
@@ -672,6 +785,12 @@ exports
   Label_SetCaption,
   Label_GetColor,
   Label_SetColor,
+  Label_GetDragCursor,
+  Label_SetDragCursor,
+  Label_GetDragKind,
+  Label_SetDragKind,
+  Label_GetDragMode,
+  Label_SetDragMode,
   Label_GetEllipsisPosition,
   Label_SetEllipsisPosition,
   Label_GetEnabled,
@@ -703,12 +822,18 @@ exports
   Label_GetStyleElements,
   Label_SetStyleElements,
   Label_SetOnClick,
+  Label_SetOnContextPopup,
   Label_SetOnDblClick,
+  Label_SetOnDragDrop,
+  Label_SetOnDragOver,
+  Label_SetOnEndDock,
+  Label_SetOnEndDrag,
   Label_SetOnMouseDown,
   Label_SetOnMouseMove,
   Label_SetOnMouseUp,
   Label_SetOnMouseEnter,
   Label_SetOnMouseLeave,
+  Label_SetOnStartDock,
   Label_GetCanvas,
   Label_GetAction,
   Label_SetAction,
@@ -723,6 +848,7 @@ exports
   Label_GetExplicitTop,
   Label_GetExplicitWidth,
   Label_GetExplicitHeight,
+  Label_GetFloating,
   Label_GetParent,
   Label_SetParent,
   Label_GetAlignWithMargins,

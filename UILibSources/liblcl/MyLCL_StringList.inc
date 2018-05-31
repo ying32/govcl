@@ -206,6 +206,7 @@ procedure StringList_SetObjects(AObj: TStringList; Index: Integer; AValue: TObje
 begin
   AObj.Objects[Index] := AValue;
 end;
+
 function StringList_GetValues(AObj: TStringList; Name: PChar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.Values[Name]);

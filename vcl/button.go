@@ -104,6 +104,10 @@ func (b *TButton) BringToFront() {
     Button_BringToFront(b.instance)
 }
 
+func (b *TButton) Dragging() bool {
+    return Button_Dragging(b.instance)
+}
+
 func (b *TButton) HasParent() bool {
     return Button_HasParent(b.instance)
 }
@@ -242,6 +246,30 @@ func (b *TButton) DoubleBuffered() bool {
 
 func (b *TButton) SetDoubleBuffered(value bool) {
     Button_SetDoubleBuffered(b.instance, value)
+}
+
+func (b *TButton) DragCursor() TCursor {
+    return Button_GetDragCursor(b.instance)
+}
+
+func (b *TButton) SetDragCursor(value TCursor) {
+    Button_SetDragCursor(b.instance, value)
+}
+
+func (b *TButton) DragKind() TDragKind {
+    return Button_GetDragKind(b.instance)
+}
+
+func (b *TButton) SetDragKind(value TDragKind) {
+    Button_SetDragKind(b.instance, value)
+}
+
+func (b *TButton) DragMode() TDragMode {
+    return Button_GetDragMode(b.instance)
+}
+
+func (b *TButton) SetDragMode(value TDragMode) {
+    Button_SetDragMode(b.instance, value)
 }
 
 func (b *TButton) ElevationRequired() bool {
@@ -424,6 +452,26 @@ func (b *TButton) SetOnClick(fn TNotifyEvent) {
     Button_SetOnClick(b.instance, fn)
 }
 
+func (b *TButton) SetOnContextPopup(fn TContextPopupEvent) {
+    Button_SetOnContextPopup(b.instance, fn)
+}
+
+func (b *TButton) SetOnDragDrop(fn TDragDropEvent) {
+    Button_SetOnDragDrop(b.instance, fn)
+}
+
+func (b *TButton) SetOnDragOver(fn TDragOverEvent) {
+    Button_SetOnDragOver(b.instance, fn)
+}
+
+func (b *TButton) SetOnEndDock(fn TEndDragEvent) {
+    Button_SetOnEndDock(b.instance, fn)
+}
+
+func (b *TButton) SetOnEndDrag(fn TEndDragEvent) {
+    Button_SetOnEndDrag(b.instance, fn)
+}
+
 func (b *TButton) SetOnEnter(fn TNotifyEvent) {
     Button_SetOnEnter(b.instance, fn)
 }
@@ -464,6 +512,18 @@ func (b *TButton) SetOnMouseUp(fn TMouseEvent) {
     Button_SetOnMouseUp(b.instance, fn)
 }
 
+func (b *TButton) SetOnStartDock(fn TStartDockEvent) {
+    Button_SetOnStartDock(b.instance, fn)
+}
+
+func (b *TButton) DockSite() bool {
+    return Button_GetDockSite(b.instance)
+}
+
+func (b *TButton) SetDockSite(value bool) {
+    Button_SetDockSite(b.instance, value)
+}
+
 func (b *TButton) Brush() *TBrush {
     return BrushFromInst(Button_GetBrush(b.instance))
 }
@@ -482,6 +542,14 @@ func (b *TButton) ParentWindow() HWND {
 
 func (b *TButton) SetParentWindow(value HWND) {
     Button_SetParentWindow(b.instance, value)
+}
+
+func (b *TButton) UseDockManager() bool {
+    return Button_GetUseDockManager(b.instance)
+}
+
+func (b *TButton) SetUseDockManager(value bool) {
+    Button_SetUseDockManager(b.instance, value)
 }
 
 func (b *TButton) BoundsRect() TRect {
@@ -526,6 +594,10 @@ func (b *TButton) ExplicitWidth() int32 {
 
 func (b *TButton) ExplicitHeight() int32 {
     return Button_GetExplicitHeight(b.instance)
+}
+
+func (b *TButton) Floating() bool {
+    return Button_GetFloating(b.instance)
 }
 
 func (b *TButton) Parent() *TControl {

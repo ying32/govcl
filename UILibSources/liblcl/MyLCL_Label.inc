@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Label_Dragging(AObj: TLabel): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Label_HasParent(AObj: TLabel): LongBool; extdecl;
 begin
   Result :=  AObj.HasParent;
@@ -185,6 +190,36 @@ begin
   AObj.Color := AValue;
 end;
 
+function Label_GetDragCursor(AObj: TLabel): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Label_SetDragCursor(AObj: TLabel; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Label_GetDragKind(AObj: TLabel): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Label_SetDragKind(AObj: TLabel; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Label_GetDragMode(AObj: TLabel): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Label_SetDragMode(AObj: TLabel; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function Label_GetEnabled(AObj: TLabel): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -317,6 +352,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure Label_SetOnContextPopup(AObj: TLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure Label_SetOnDblClick(AObj: TLabel; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -327,6 +374,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Label_SetOnDragDrop(AObj: TLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Label_SetOnDragOver(AObj: TLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Label_SetOnEndDrag(AObj: TLabel; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Label_SetOnMouseDown(AObj: TLabel; AEventId: NativeUInt); extdecl;
@@ -437,6 +520,11 @@ end;
 procedure Label_SetClientWidth(AObj: TLabel; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Label_GetFloating(AObj: TLabel): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Label_GetParent(AObj: TLabel): TWinControl; extdecl;
@@ -559,6 +647,7 @@ exports
   Label_Create,
   Label_Free,
   Label_BringToFront,
+  Label_Dragging,
   Label_HasParent,
   Label_Hide,
   Label_Invalidate,
@@ -592,6 +681,12 @@ exports
   Label_SetCaption,
   Label_GetColor,
   Label_SetColor,
+  Label_GetDragCursor,
+  Label_SetDragCursor,
+  Label_GetDragKind,
+  Label_SetDragKind,
+  Label_GetDragMode,
+  Label_SetDragMode,
   Label_GetEnabled,
   Label_SetEnabled,
   Label_GetFont,
@@ -617,7 +712,11 @@ exports
   Label_GetWordWrap,
   Label_SetWordWrap,
   Label_SetOnClick,
+  Label_SetOnContextPopup,
   Label_SetOnDblClick,
+  Label_SetOnDragDrop,
+  Label_SetOnDragOver,
+  Label_SetOnEndDrag,
   Label_SetOnMouseDown,
   Label_SetOnMouseMove,
   Label_SetOnMouseUp,
@@ -633,6 +732,7 @@ exports
   Label_GetClientRect,
   Label_GetClientWidth,
   Label_SetClientWidth,
+  Label_GetFloating,
   Label_GetParent,
   Label_SetParent,
   Label_GetLeft,

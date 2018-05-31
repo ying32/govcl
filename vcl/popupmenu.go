@@ -92,6 +92,18 @@ func (p *TPopupMenu) ToString() string {
     return PopupMenu_ToString(p.instance)
 }
 
+func (p *TPopupMenu) PopupComponent() *TComponent {
+    return ComponentFromInst(PopupMenu_GetPopupComponent(p.instance))
+}
+
+func (p *TPopupMenu) SetPopupComponent(value IComponent) {
+    PopupMenu_SetPopupComponent(p.instance, CheckPtr(value))
+}
+
+func (p *TPopupMenu) PopupPoint() TPoint {
+    return PopupMenu_GetPopupPoint(p.instance)
+}
+
 func (p *TPopupMenu) Alignment() TPopupAlignment {
     return PopupMenu_GetAlignment(p.instance)
 }

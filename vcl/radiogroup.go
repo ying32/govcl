@@ -100,6 +100,10 @@ func (r *TRadioGroup) BringToFront() {
     RadioGroup_BringToFront(r.instance)
 }
 
+func (r *TRadioGroup) Dragging() bool {
+    return RadioGroup_Dragging(r.instance)
+}
+
 func (r *TRadioGroup) HasParent() bool {
     return RadioGroup_HasParent(r.instance)
 }
@@ -214,6 +218,30 @@ func (r *TRadioGroup) DoubleBuffered() bool {
 
 func (r *TRadioGroup) SetDoubleBuffered(value bool) {
     RadioGroup_SetDoubleBuffered(r.instance, value)
+}
+
+func (r *TRadioGroup) DragCursor() TCursor {
+    return RadioGroup_GetDragCursor(r.instance)
+}
+
+func (r *TRadioGroup) SetDragCursor(value TCursor) {
+    RadioGroup_SetDragCursor(r.instance, value)
+}
+
+func (r *TRadioGroup) DragKind() TDragKind {
+    return RadioGroup_GetDragKind(r.instance)
+}
+
+func (r *TRadioGroup) SetDragKind(value TDragKind) {
+    RadioGroup_SetDragKind(r.instance, value)
+}
+
+func (r *TRadioGroup) DragMode() TDragMode {
+    return RadioGroup_GetDragMode(r.instance)
+}
+
+func (r *TRadioGroup) SetDragMode(value TDragMode) {
+    RadioGroup_SetDragMode(r.instance, value)
 }
 
 func (r *TRadioGroup) Enabled() bool {
@@ -356,12 +384,44 @@ func (r *TRadioGroup) SetOnClick(fn TNotifyEvent) {
     RadioGroup_SetOnClick(r.instance, fn)
 }
 
+func (r *TRadioGroup) SetOnContextPopup(fn TContextPopupEvent) {
+    RadioGroup_SetOnContextPopup(r.instance, fn)
+}
+
+func (r *TRadioGroup) SetOnDragDrop(fn TDragDropEvent) {
+    RadioGroup_SetOnDragDrop(r.instance, fn)
+}
+
+func (r *TRadioGroup) SetOnDragOver(fn TDragOverEvent) {
+    RadioGroup_SetOnDragOver(r.instance, fn)
+}
+
+func (r *TRadioGroup) SetOnEndDock(fn TEndDragEvent) {
+    RadioGroup_SetOnEndDock(r.instance, fn)
+}
+
+func (r *TRadioGroup) SetOnEndDrag(fn TEndDragEvent) {
+    RadioGroup_SetOnEndDrag(r.instance, fn)
+}
+
 func (r *TRadioGroup) SetOnEnter(fn TNotifyEvent) {
     RadioGroup_SetOnEnter(r.instance, fn)
 }
 
 func (r *TRadioGroup) SetOnExit(fn TNotifyEvent) {
     RadioGroup_SetOnExit(r.instance, fn)
+}
+
+func (r *TRadioGroup) SetOnStartDock(fn TStartDockEvent) {
+    RadioGroup_SetOnStartDock(r.instance, fn)
+}
+
+func (r *TRadioGroup) DockSite() bool {
+    return RadioGroup_GetDockSite(r.instance)
+}
+
+func (r *TRadioGroup) SetDockSite(value bool) {
+    RadioGroup_SetDockSite(r.instance, value)
 }
 
 func (r *TRadioGroup) Brush() *TBrush {
@@ -382,6 +442,14 @@ func (r *TRadioGroup) ParentWindow() HWND {
 
 func (r *TRadioGroup) SetParentWindow(value HWND) {
     RadioGroup_SetParentWindow(r.instance, value)
+}
+
+func (r *TRadioGroup) UseDockManager() bool {
+    return RadioGroup_GetUseDockManager(r.instance)
+}
+
+func (r *TRadioGroup) SetUseDockManager(value bool) {
+    RadioGroup_SetUseDockManager(r.instance, value)
 }
 
 func (r *TRadioGroup) Action() *TAction {
@@ -434,6 +502,10 @@ func (r *TRadioGroup) ExplicitWidth() int32 {
 
 func (r *TRadioGroup) ExplicitHeight() int32 {
     return RadioGroup_GetExplicitHeight(r.instance)
+}
+
+func (r *TRadioGroup) Floating() bool {
+    return RadioGroup_GetFloating(r.instance)
 }
 
 func (r *TRadioGroup) Parent() *TControl {

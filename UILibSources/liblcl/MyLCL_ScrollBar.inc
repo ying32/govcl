@@ -35,6 +35,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function ScrollBar_HandleAllocated(AObj: TScrollBar): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure ScrollBar_Invalidate(AObj: TScrollBar); extdecl;
 begin
   AObj.Invalidate;
@@ -73,6 +78,11 @@ end;
 procedure ScrollBar_BringToFront(AObj: TScrollBar); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function ScrollBar_Dragging(AObj: TScrollBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function ScrollBar_HasParent(AObj: TScrollBar): LongBool; extdecl;
@@ -190,6 +200,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function ScrollBar_GetDragCursor(AObj: TScrollBar): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ScrollBar_SetDragCursor(AObj: TScrollBar; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ScrollBar_GetDragKind(AObj: TScrollBar): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ScrollBar_SetDragKind(AObj: TScrollBar; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ScrollBar_GetDragMode(AObj: TScrollBar): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ScrollBar_SetDragMode(AObj: TScrollBar; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function ScrollBar_GetEnabled(AObj: TScrollBar): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -198,16 +238,6 @@ end;
 procedure ScrollBar_SetEnabled(AObj: TScrollBar; AValue: LongBool); extdecl;
 begin
   AObj.Enabled := AValue;
-end;
-
-function ScrollBar_GetKind(AObj: TScrollBar): TScrollBarKind; extdecl;
-begin
-  Result :=  AObj.Kind;
-end;
-
-procedure ScrollBar_SetKind(AObj: TScrollBar; AValue: TScrollBarKind); extdecl;
-begin
-  AObj.Kind := AValue;
 end;
 
 function ScrollBar_GetLargeChange(AObj: TScrollBar): TScrollBarInc; extdecl;
@@ -330,6 +360,18 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure ScrollBar_SetOnContextPopup(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ScrollBar_SetOnChange(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -340,6 +382,42 @@ begin
   end;
   AObj.OnChange := @EventClass.OnChange;
   EventClass.Add(AObj, geChange, AEventId);
+end;
+
+procedure ScrollBar_SetOnDragDrop(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ScrollBar_SetOnDragOver(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ScrollBar_SetOnEndDrag(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ScrollBar_SetOnEnter(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
@@ -402,6 +480,16 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+function ScrollBar_GetDockSite(AObj: TScrollBar): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ScrollBar_SetDockSite(AObj: TScrollBar; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ScrollBar_GetBrush(AObj: TScrollBar): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -425,6 +513,16 @@ end;
 procedure ScrollBar_SetParentWindow(AObj: TScrollBar; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ScrollBar_GetUseDockManager(AObj: TScrollBar): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ScrollBar_SetUseDockManager(AObj: TScrollBar; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ScrollBar_GetAction(AObj: TScrollBar): TBasicAction; extdecl;
@@ -470,6 +568,11 @@ end;
 procedure ScrollBar_SetClientWidth(AObj: TScrollBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ScrollBar_GetFloating(AObj: TScrollBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ScrollBar_GetParent(AObj: TScrollBar): TWinControl; extdecl;
@@ -600,6 +703,7 @@ exports
   ScrollBar_CanFocus,
   ScrollBar_FlipChildren,
   ScrollBar_Focused,
+  ScrollBar_HandleAllocated,
   ScrollBar_Invalidate,
   ScrollBar_Realign,
   ScrollBar_Repaint,
@@ -608,6 +712,7 @@ exports
   ScrollBar_SetFocus,
   ScrollBar_Update,
   ScrollBar_BringToFront,
+  ScrollBar_Dragging,
   ScrollBar_HasParent,
   ScrollBar_Hide,
   ScrollBar_Perform,
@@ -631,10 +736,14 @@ exports
   ScrollBar_SetBiDiMode,
   ScrollBar_GetDoubleBuffered,
   ScrollBar_SetDoubleBuffered,
+  ScrollBar_GetDragCursor,
+  ScrollBar_SetDragCursor,
+  ScrollBar_GetDragKind,
+  ScrollBar_SetDragKind,
+  ScrollBar_GetDragMode,
+  ScrollBar_SetDragMode,
   ScrollBar_GetEnabled,
   ScrollBar_SetEnabled,
-  ScrollBar_GetKind,
-  ScrollBar_SetKind,
   ScrollBar_GetLargeChange,
   ScrollBar_SetLargeChange,
   ScrollBar_GetMax,
@@ -659,17 +768,25 @@ exports
   ScrollBar_SetTabStop,
   ScrollBar_GetVisible,
   ScrollBar_SetVisible,
+  ScrollBar_SetOnContextPopup,
   ScrollBar_SetOnChange,
+  ScrollBar_SetOnDragDrop,
+  ScrollBar_SetOnDragOver,
+  ScrollBar_SetOnEndDrag,
   ScrollBar_SetOnEnter,
   ScrollBar_SetOnExit,
   ScrollBar_SetOnKeyDown,
   ScrollBar_SetOnKeyPress,
   ScrollBar_SetOnKeyUp,
+  ScrollBar_GetDockSite,
+  ScrollBar_SetDockSite,
   ScrollBar_GetBrush,
   ScrollBar_GetControlCount,
   ScrollBar_GetHandle,
   ScrollBar_GetParentWindow,
   ScrollBar_SetParentWindow,
+  ScrollBar_GetUseDockManager,
+  ScrollBar_SetUseDockManager,
   ScrollBar_GetAction,
   ScrollBar_SetAction,
   ScrollBar_GetBoundsRect,
@@ -679,6 +796,7 @@ exports
   ScrollBar_GetClientRect,
   ScrollBar_GetClientWidth,
   ScrollBar_SetClientWidth,
+  ScrollBar_GetFloating,
   ScrollBar_GetParent,
   ScrollBar_SetParent,
   ScrollBar_GetLeft,

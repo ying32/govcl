@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function UpDown_Dragging(AObj: TUpDown): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function UpDown_HasParent(AObj: TUpDown): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -320,6 +325,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure UpDown_SetOnContextPopup(AObj: TUpDown; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure UpDown_SetOnClick(AObj: TUpDown; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -416,6 +433,16 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function UpDown_GetDockSite(AObj: TUpDown): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure UpDown_SetDockSite(AObj: TUpDown; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function UpDown_GetBrush(AObj: TUpDown): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -439,6 +466,16 @@ end;
 procedure UpDown_SetParentWindow(AObj: TUpDown; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function UpDown_GetUseDockManager(AObj: TUpDown): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure UpDown_SetUseDockManager(AObj: TUpDown; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function UpDown_GetAction(AObj: TUpDown): TBasicAction; stdcall;
@@ -524,6 +561,11 @@ end;
 function UpDown_GetExplicitHeight(AObj: TUpDown): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function UpDown_GetFloating(AObj: TUpDown): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function UpDown_GetParent(AObj: TUpDown): TWinControl; stdcall;
@@ -682,6 +724,7 @@ exports
   UpDown_SetFocus,
   UpDown_Update,
   UpDown_BringToFront,
+  UpDown_Dragging,
   UpDown_HasParent,
   UpDown_Hide,
   UpDown_Perform,
@@ -731,6 +774,7 @@ exports
   UpDown_SetWrap,
   UpDown_GetStyleElements,
   UpDown_SetStyleElements,
+  UpDown_SetOnContextPopup,
   UpDown_SetOnClick,
   UpDown_SetOnEnter,
   UpDown_SetOnExit,
@@ -739,11 +783,15 @@ exports
   UpDown_SetOnMouseLeave,
   UpDown_SetOnMouseMove,
   UpDown_SetOnMouseUp,
+  UpDown_GetDockSite,
+  UpDown_SetDockSite,
   UpDown_GetBrush,
   UpDown_GetControlCount,
   UpDown_GetHandle,
   UpDown_GetParentWindow,
   UpDown_SetParentWindow,
+  UpDown_GetUseDockManager,
+  UpDown_SetUseDockManager,
   UpDown_GetAction,
   UpDown_SetAction,
   UpDown_GetAlign,
@@ -761,6 +809,7 @@ exports
   UpDown_GetExplicitTop,
   UpDown_GetExplicitWidth,
   UpDown_GetExplicitHeight,
+  UpDown_GetFloating,
   UpDown_GetParent,
   UpDown_SetParent,
   UpDown_GetAlignWithMargins,

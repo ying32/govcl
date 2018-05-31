@@ -80,6 +80,11 @@ begin
   AObj.BringToFront;
 end;
 
+function TrackBar_Dragging(AObj: TTrackBar): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function TrackBar_HasParent(AObj: TTrackBar): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -193,6 +198,36 @@ end;
 procedure TrackBar_SetDoubleBuffered(AObj: TTrackBar; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function TrackBar_GetDragCursor(AObj: TTrackBar): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure TrackBar_SetDragCursor(AObj: TTrackBar; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function TrackBar_GetDragKind(AObj: TTrackBar): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure TrackBar_SetDragKind(AObj: TTrackBar; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function TrackBar_GetDragMode(AObj: TTrackBar): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure TrackBar_SetDragMode(AObj: TTrackBar; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function TrackBar_GetEnabled(AObj: TTrackBar): LongBool; stdcall;
@@ -445,6 +480,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure TrackBar_SetOnContextPopup(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure TrackBar_SetOnChange(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -455,6 +502,54 @@ begin
   end;
   AObj.OnChange := TEventClass.OnChange;
   TEventClass.Add(AObj, geChange, AEventId);
+end;
+
+procedure TrackBar_SetOnDragDrop(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure TrackBar_SetOnDragOver(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure TrackBar_SetOnEndDock(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure TrackBar_SetOnEndDrag(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure TrackBar_SetOnEnter(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
@@ -517,6 +612,28 @@ begin
   TEventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure TrackBar_SetOnStartDock(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+function TrackBar_GetDockSite(AObj: TTrackBar): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure TrackBar_SetDockSite(AObj: TTrackBar; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function TrackBar_GetBrush(AObj: TTrackBar): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -540,6 +657,16 @@ end;
 procedure TrackBar_SetParentWindow(AObj: TTrackBar; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function TrackBar_GetUseDockManager(AObj: TTrackBar): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure TrackBar_SetUseDockManager(AObj: TTrackBar; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function TrackBar_GetAction(AObj: TTrackBar): TBasicAction; stdcall;
@@ -615,6 +742,11 @@ end;
 function TrackBar_GetExplicitHeight(AObj: TTrackBar): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function TrackBar_GetFloating(AObj: TTrackBar): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function TrackBar_GetParent(AObj: TTrackBar): TWinControl; stdcall;
@@ -784,6 +916,7 @@ exports
   TrackBar_SetFocus,
   TrackBar_Update,
   TrackBar_BringToFront,
+  TrackBar_Dragging,
   TrackBar_HasParent,
   TrackBar_Hide,
   TrackBar_Perform,
@@ -807,6 +940,12 @@ exports
   TrackBar_SetBorderWidth,
   TrackBar_GetDoubleBuffered,
   TrackBar_SetDoubleBuffered,
+  TrackBar_GetDragCursor,
+  TrackBar_SetDragCursor,
+  TrackBar_GetDragKind,
+  TrackBar_SetDragKind,
+  TrackBar_GetDragMode,
+  TrackBar_SetDragMode,
   TrackBar_GetEnabled,
   TrackBar_SetEnabled,
   TrackBar_GetLineSize,
@@ -857,17 +996,27 @@ exports
   TrackBar_SetVisible,
   TrackBar_GetStyleElements,
   TrackBar_SetStyleElements,
+  TrackBar_SetOnContextPopup,
   TrackBar_SetOnChange,
+  TrackBar_SetOnDragDrop,
+  TrackBar_SetOnDragOver,
+  TrackBar_SetOnEndDock,
+  TrackBar_SetOnEndDrag,
   TrackBar_SetOnEnter,
   TrackBar_SetOnExit,
   TrackBar_SetOnKeyDown,
   TrackBar_SetOnKeyPress,
   TrackBar_SetOnKeyUp,
+  TrackBar_SetOnStartDock,
+  TrackBar_GetDockSite,
+  TrackBar_SetDockSite,
   TrackBar_GetBrush,
   TrackBar_GetControlCount,
   TrackBar_GetHandle,
   TrackBar_GetParentWindow,
   TrackBar_SetParentWindow,
+  TrackBar_GetUseDockManager,
+  TrackBar_SetUseDockManager,
   TrackBar_GetAction,
   TrackBar_SetAction,
   TrackBar_GetBiDiMode,
@@ -883,6 +1032,7 @@ exports
   TrackBar_GetExplicitTop,
   TrackBar_GetExplicitWidth,
   TrackBar_GetExplicitHeight,
+  TrackBar_GetFloating,
   TrackBar_GetParent,
   TrackBar_SetParent,
   TrackBar_GetAlignWithMargins,

@@ -20,6 +20,16 @@ begin
   Result :=  AObj.GetHotSpot;
 end;
 
+procedure ImageList_HideDragImage(AObj: TImageList); extdecl;
+begin
+  AObj.HideDragImage;
+end;
+
+procedure ImageList_ShowDragImage(AObj: TImageList); extdecl;
+begin
+  AObj.ShowDragImage;
+end;
+
 procedure ImageList_Assign(AObj: TImageList; Source: TPersistent); extdecl;
 begin
   AObj.Assign(Source);
@@ -53,6 +63,11 @@ end;
 procedure ImageList_Delete(AObj: TImageList; Index: Integer); extdecl;
 begin
   AObj.Delete(Index);
+end;
+
+function ImageList_HandleAllocated(AObj: TImageList): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
 end;
 
 procedure ImageList_Insert(AObj: TImageList; Index: Integer; Image: TBitmap; Mask: TBitmap); extdecl;
@@ -232,6 +247,21 @@ begin
   AObj.Width := AValue;
 end;
 
+function ImageList_GetDragCursor(AObj: TImageList): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ImageList_SetDragCursor(AObj: TImageList; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ImageList_GetDragging(AObj: TImageList): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ImageList_GetCount(AObj: TImageList): Integer; extdecl;
 begin
   Result :=  AObj.Count;
@@ -287,6 +317,8 @@ exports
   ImageList_Create,
   ImageList_Free,
   ImageList_GetHotSpot,
+  ImageList_HideDragImage,
+  ImageList_ShowDragImage,
   ImageList_Assign,
   ImageList_Add,
   ImageList_AddIcon,
@@ -294,6 +326,7 @@ exports
   ImageList_AddMasked,
   ImageList_Clear,
   ImageList_Delete,
+  ImageList_HandleAllocated,
   ImageList_Insert,
   ImageList_InsertIcon,
   ImageList_InsertMasked,
@@ -328,6 +361,9 @@ exports
   ImageList_SetShareImages,
   ImageList_GetWidth,
   ImageList_SetWidth,
+  ImageList_GetDragCursor,
+  ImageList_SetDragCursor,
+  ImageList_GetDragging,
   ImageList_GetCount,
   ImageList_GetComponentCount,
   ImageList_GetComponentIndex,

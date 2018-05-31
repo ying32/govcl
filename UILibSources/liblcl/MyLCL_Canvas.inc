@@ -45,6 +45,11 @@ begin
   AObj.FloodFill(X, Y, Color, FillStyle);
 end;
 
+function Canvas_HandleAllocated(AObj: TCanvas): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure Canvas_LineTo(AObj: TCanvas; X: Integer; Y: Integer); extdecl;
 begin
   AObj.LineTo(X, Y);
@@ -202,6 +207,7 @@ exports
   Canvas_Chord,
   Canvas_Ellipse,
   Canvas_FloodFill,
+  Canvas_HandleAllocated,
   Canvas_LineTo,
   Canvas_MoveTo,
   Canvas_Pie,

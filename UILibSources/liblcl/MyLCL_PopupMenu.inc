@@ -15,9 +15,14 @@ begin
   AObj.Free;
 end;
 
+procedure PopupMenu_CloseMenu(AObj: TPopupMenu); extdecl;
+begin
+  AObj.Close;
+end;
+
 procedure PopupMenu_Popup(AObj: TPopupMenu; X: Integer; Y: Integer); extdecl;
 begin
-  AObj.Popup(X, Y);
+  AObj.PopUp(X, Y);
 end;
 
 function PopupMenu_FindComponent(AObj: TPopupMenu; AName: PChar): TComponent; extdecl;
@@ -58,6 +63,21 @@ end;
 function PopupMenu_ToString(AObj: TPopupMenu): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+function PopupMenu_GetPopupComponent(AObj: TPopupMenu): TComponent; extdecl;
+begin
+  Result :=  AObj.PopupComponent;
+end;
+
+procedure PopupMenu_SetPopupComponent(AObj: TPopupMenu; AValue: TComponent); extdecl;
+begin
+  AObj.PopupComponent := AValue;
+end;
+
+procedure PopupMenu_GetPopupPoint(AObj: TPopupMenu; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.PopupPoint;
 end;
 
 function PopupMenu_GetAlignment(AObj: TPopupMenu): TPopupAlignment; extdecl;
@@ -161,6 +181,7 @@ end;
 exports
   PopupMenu_Create,
   PopupMenu_Free,
+  PopupMenu_CloseMenu,
   PopupMenu_Popup,
   PopupMenu_FindComponent,
   PopupMenu_GetNamePath,
@@ -170,6 +191,9 @@ exports
   PopupMenu_Equals,
   PopupMenu_GetHashCode,
   PopupMenu_ToString,
+  PopupMenu_GetPopupComponent,
+  PopupMenu_SetPopupComponent,
+  PopupMenu_GetPopupPoint,
   PopupMenu_GetAlignment,
   PopupMenu_SetAlignment,
   PopupMenu_GetBiDiMode,

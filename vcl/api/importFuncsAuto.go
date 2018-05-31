@@ -39,10 +39,6 @@ func Application_HideHint(obj uintptr)  {
     application_HideHint.Call(obj)
 }
 
-func Application_Initialize(obj uintptr)  {
-    application_Initialize.Call(obj)
-}
-
 func Application_Minimize(obj uintptr)  {
     application_Minimize.Call(obj)
 }
@@ -264,8 +260,16 @@ func Application_SetOnException(obj uintptr, fn interface{}) {
     application_SetOnException.Call(obj, addEventToMap(fn))
 }
 
+func Application_SetOnHelp(obj uintptr, fn interface{}) {
+    application_SetOnHelp.Call(obj, addEventToMap(fn))
+}
+
 func Application_SetOnHint(obj uintptr, fn interface{}) {
     application_SetOnHint.Call(obj, addEventToMap(fn))
+}
+
+func Application_SetOnMessage(obj uintptr, fn interface{}) {
+    application_SetOnMessage.Call(obj, addEventToMap(fn))
 }
 
 func Application_SetOnMinimize(obj uintptr, fn interface{}) {
@@ -274,6 +278,10 @@ func Application_SetOnMinimize(obj uintptr, fn interface{}) {
 
 func Application_SetOnRestore(obj uintptr, fn interface{}) {
     application_SetOnRestore.Call(obj, addEventToMap(fn))
+}
+
+func Application_SetOnShortCut(obj uintptr, fn interface{}) {
+    application_SetOnShortCut.Call(obj, addEventToMap(fn))
 }
 
 func Application_GetHandle(obj uintptr) HWND {
@@ -409,6 +417,11 @@ func Form_Update(obj uintptr)  {
 
 func Form_BringToFront(obj uintptr)  {
     form_BringToFront.Call(obj)
+}
+
+func Form_Dragging(obj uintptr) bool {
+    ret, _, _ := form_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Form_HasParent(obj uintptr) bool {
@@ -617,6 +630,24 @@ func Form_SetTransparentColorValue(obj uintptr, value TColor) {
    form_SetTransparentColorValue.Call(obj, uintptr(value))
 }
 
+func Form_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := form_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Form_SetUseDockManager(obj uintptr, value bool) {
+   form_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func Form_GetDockSite(obj uintptr) bool {
+    ret, _, _ := form_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Form_SetDockSite(obj uintptr, value bool) {
+   form_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func Form_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := form_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -624,6 +655,24 @@ func Form_GetDoubleBuffered(obj uintptr) bool {
 
 func Form_SetDoubleBuffered(obj uintptr, value bool) {
    form_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func Form_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := form_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Form_SetDragKind(obj uintptr, value TDragKind) {
+   form_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Form_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := form_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Form_SetDragMode(obj uintptr, value TDragMode) {
+   form_SetDragMode.Call(obj, uintptr(value))
 }
 
 func Form_GetEnabled(obj uintptr) bool {
@@ -791,12 +840,40 @@ func Form_SetOnCloseQuery(obj uintptr, fn interface{}) {
     form_SetOnCloseQuery.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnContextPopup(obj uintptr, fn interface{}) {
+    form_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnDblClick(obj uintptr, fn interface{}) {
     form_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnDockDrop(obj uintptr, fn interface{}) {
+    form_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnDragDrop(obj uintptr, fn interface{}) {
+    form_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnDragOver(obj uintptr, fn interface{}) {
+    form_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnEndDock(obj uintptr, fn interface{}) {
+    form_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    form_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnHide(obj uintptr, fn interface{}) {
     form_SetOnHide.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnHelp(obj uintptr, fn interface{}) {
+    form_SetOnHelp.Call(obj, addEventToMap(fn))
 }
 
 func Form_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -835,6 +912,14 @@ func Form_SetOnMouseWheel(obj uintptr, fn interface{}) {
     form_SetOnMouseWheel.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    form_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    form_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnPaint(obj uintptr, fn interface{}) {
     form_SetOnPaint.Call(obj, addEventToMap(fn))
 }
@@ -843,8 +928,20 @@ func Form_SetOnResize(obj uintptr, fn interface{}) {
     form_SetOnResize.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnShortCut(obj uintptr, fn interface{}) {
+    form_SetOnShortCut.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnShow(obj uintptr, fn interface{}) {
     form_SetOnShow.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnStartDock(obj uintptr, fn interface{}) {
+    form_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnUnDock(obj uintptr, fn interface{}) {
+    form_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
 func Form_GetCanvas(obj uintptr) uintptr {
@@ -973,6 +1070,11 @@ func Form_GetExplicitWidth(obj uintptr) int32 {
 func Form_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := form_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Form_GetFloating(obj uintptr) bool {
+    ret, _, _ := form_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Form_GetParent(obj uintptr) uintptr {
@@ -1143,6 +1245,11 @@ func Button_BringToFront(obj uintptr)  {
     button_BringToFront.Call(obj)
 }
 
+func Button_Dragging(obj uintptr) bool {
+    ret, _, _ := button_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Button_HasParent(obj uintptr) bool {
     ret, _, _ := button_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -1301,6 +1408,33 @@ func Button_GetDoubleBuffered(obj uintptr) bool {
 
 func Button_SetDoubleBuffered(obj uintptr, value bool) {
    button_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func Button_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := button_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func Button_SetDragCursor(obj uintptr, value TCursor) {
+   button_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func Button_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := button_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Button_SetDragKind(obj uintptr, value TDragKind) {
+   button_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Button_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := button_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Button_SetDragMode(obj uintptr, value TDragMode) {
+   button_SetDragMode.Call(obj, uintptr(value))
 }
 
 func Button_GetElevationRequired(obj uintptr) bool {
@@ -1505,6 +1639,26 @@ func Button_SetOnClick(obj uintptr, fn interface{}) {
     button_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func Button_SetOnContextPopup(obj uintptr, fn interface{}) {
+    button_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func Button_SetOnDragDrop(obj uintptr, fn interface{}) {
+    button_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Button_SetOnDragOver(obj uintptr, fn interface{}) {
+    button_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Button_SetOnEndDock(obj uintptr, fn interface{}) {
+    button_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Button_SetOnEndDrag(obj uintptr, fn interface{}) {
+    button_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func Button_SetOnEnter(obj uintptr, fn interface{}) {
     button_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -1545,6 +1699,19 @@ func Button_SetOnMouseUp(obj uintptr, fn interface{}) {
     button_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func Button_SetOnStartDock(obj uintptr, fn interface{}) {
+    button_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func Button_GetDockSite(obj uintptr) bool {
+    ret, _, _ := button_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Button_SetDockSite(obj uintptr, value bool) {
+   button_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func Button_GetBrush(obj uintptr) uintptr {
     ret, _, _ := button_GetBrush.Call(obj)
     return ret
@@ -1567,6 +1734,15 @@ func Button_GetParentWindow(obj uintptr) HWND {
 
 func Button_SetParentWindow(obj uintptr, value HWND) {
    button_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func Button_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := button_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Button_SetUseDockManager(obj uintptr, value bool) {
+   button_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func Button_GetBoundsRect(obj uintptr) TRect {
@@ -1621,6 +1797,11 @@ func Button_GetExplicitWidth(obj uintptr) int32 {
 func Button_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := button_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Button_GetFloating(obj uintptr) bool {
+    ret, _, _ := button_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Button_GetParent(obj uintptr) uintptr {
@@ -1860,6 +2041,11 @@ func Edit_BringToFront(obj uintptr)  {
     edit_BringToFront.Call(obj)
 }
 
+func Edit_Dragging(obj uintptr) bool {
+    ret, _, _ := edit_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Edit_HasParent(obj uintptr) bool {
     ret, _, _ := edit_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -2045,6 +2231,33 @@ func Edit_GetDoubleBuffered(obj uintptr) bool {
 
 func Edit_SetDoubleBuffered(obj uintptr, value bool) {
    edit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func Edit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := edit_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func Edit_SetDragCursor(obj uintptr, value TCursor) {
+   edit_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func Edit_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := edit_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Edit_SetDragKind(obj uintptr, value TDragKind) {
+   edit_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Edit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := edit_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Edit_SetDragMode(obj uintptr, value TDragMode) {
+   edit_SetDragMode.Call(obj, uintptr(value))
 }
 
 func Edit_GetEnabled(obj uintptr) bool {
@@ -2235,8 +2448,28 @@ func Edit_SetOnClick(obj uintptr, fn interface{}) {
     edit_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func Edit_SetOnContextPopup(obj uintptr, fn interface{}) {
+    edit_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func Edit_SetOnDblClick(obj uintptr, fn interface{}) {
     edit_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func Edit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    edit_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Edit_SetOnDragOver(obj uintptr, fn interface{}) {
+    edit_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Edit_SetOnEndDock(obj uintptr, fn interface{}) {
+    edit_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Edit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    edit_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func Edit_SetOnEnter(obj uintptr, fn interface{}) {
@@ -2277,6 +2510,10 @@ func Edit_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Edit_SetOnMouseUp(obj uintptr, fn interface{}) {
     edit_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func Edit_SetOnStartDock(obj uintptr, fn interface{}) {
+    edit_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Edit_GetCanUndo(obj uintptr) bool {
@@ -2320,6 +2557,15 @@ func Edit_SetSelText(obj uintptr, value string) {
    edit_SetSelText.Call(obj, GoStrToDStr(value))
 }
 
+func Edit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := edit_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Edit_SetDockSite(obj uintptr, value bool) {
+   edit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func Edit_GetBrush(obj uintptr) uintptr {
     ret, _, _ := edit_GetBrush.Call(obj)
     return ret
@@ -2342,6 +2588,15 @@ func Edit_GetParentWindow(obj uintptr) HWND {
 
 func Edit_SetParentWindow(obj uintptr, value HWND) {
    edit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func Edit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := edit_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Edit_SetUseDockManager(obj uintptr, value bool) {
+   edit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func Edit_GetAction(obj uintptr) uintptr {
@@ -2405,6 +2660,11 @@ func Edit_GetExplicitWidth(obj uintptr) int32 {
 func Edit_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := edit_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Edit_GetFloating(obj uintptr) bool {
+    ret, _, _ := edit_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Edit_GetParent(obj uintptr) uintptr {
@@ -2746,6 +3006,21 @@ func PopupMenu_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func PopupMenu_GetPopupComponent(obj uintptr) uintptr {
+    ret, _, _ := popupMenu_GetPopupComponent.Call(obj)
+    return ret
+}
+
+func PopupMenu_SetPopupComponent(obj uintptr, value uintptr) {
+   popupMenu_SetPopupComponent.Call(obj, value)
+}
+
+func PopupMenu_GetPopupPoint(obj uintptr) TPoint {
+    var ret TPoint
+    popupMenu_GetPopupPoint.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func PopupMenu_GetAlignment(obj uintptr) TPopupAlignment {
     ret, _, _ := popupMenu_GetAlignment.Call(obj)
     return TPopupAlignment(ret)
@@ -2951,6 +3226,11 @@ func Memo_BringToFront(obj uintptr)  {
     memo_BringToFront.Call(obj)
 }
 
+func Memo_Dragging(obj uintptr) bool {
+    ret, _, _ := memo_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Memo_HasParent(obj uintptr) bool {
     ret, _, _ := memo_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -3118,6 +3398,33 @@ func Memo_GetDoubleBuffered(obj uintptr) bool {
 
 func Memo_SetDoubleBuffered(obj uintptr, value bool) {
    memo_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func Memo_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := memo_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func Memo_SetDragCursor(obj uintptr, value TCursor) {
+   memo_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func Memo_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := memo_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Memo_SetDragKind(obj uintptr, value TDragKind) {
+   memo_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Memo_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := memo_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Memo_SetDragMode(obj uintptr, value TDragMode) {
+   memo_SetDragMode.Call(obj, uintptr(value))
 }
 
 func Memo_GetEnabled(obj uintptr) bool {
@@ -3317,8 +3624,28 @@ func Memo_SetOnClick(obj uintptr, fn interface{}) {
     memo_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func Memo_SetOnContextPopup(obj uintptr, fn interface{}) {
+    memo_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func Memo_SetOnDblClick(obj uintptr, fn interface{}) {
     memo_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func Memo_SetOnDragDrop(obj uintptr, fn interface{}) {
+    memo_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Memo_SetOnDragOver(obj uintptr, fn interface{}) {
+    memo_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Memo_SetOnEndDock(obj uintptr, fn interface{}) {
+    memo_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Memo_SetOnEndDrag(obj uintptr, fn interface{}) {
+    memo_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func Memo_SetOnEnter(obj uintptr, fn interface{}) {
@@ -3359,6 +3686,10 @@ func Memo_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Memo_SetOnMouseUp(obj uintptr, fn interface{}) {
     memo_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func Memo_SetOnStartDock(obj uintptr, fn interface{}) {
+    memo_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Memo_GetCaretPos(obj uintptr) TPoint {
@@ -3430,6 +3761,15 @@ func Memo_SetTextHint(obj uintptr, value string) {
    memo_SetTextHint.Call(obj, GoStrToDStr(value))
 }
 
+func Memo_GetDockSite(obj uintptr) bool {
+    ret, _, _ := memo_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Memo_SetDockSite(obj uintptr, value bool) {
+   memo_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func Memo_GetBrush(obj uintptr) uintptr {
     ret, _, _ := memo_GetBrush.Call(obj)
     return ret
@@ -3452,6 +3792,15 @@ func Memo_GetParentWindow(obj uintptr) HWND {
 
 func Memo_SetParentWindow(obj uintptr, value HWND) {
    memo_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func Memo_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := memo_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Memo_SetUseDockManager(obj uintptr, value bool) {
+   memo_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func Memo_GetAction(obj uintptr) uintptr {
@@ -3515,6 +3864,11 @@ func Memo_GetExplicitWidth(obj uintptr) int32 {
 func Memo_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := memo_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Memo_GetFloating(obj uintptr) bool {
+    ret, _, _ := memo_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Memo_GetParent(obj uintptr) uintptr {
@@ -3717,6 +4071,11 @@ func CheckBox_BringToFront(obj uintptr)  {
     checkBox_BringToFront.Call(obj)
 }
 
+func CheckBox_Dragging(obj uintptr) bool {
+    ret, _, _ := checkBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func CheckBox_HasParent(obj uintptr) bool {
     ret, _, _ := checkBox_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -3877,6 +4236,33 @@ func CheckBox_SetDoubleBuffered(obj uintptr, value bool) {
    checkBox_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func CheckBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := checkBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CheckBox_SetDragCursor(obj uintptr, value TCursor) {
+   checkBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func CheckBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := checkBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func CheckBox_SetDragKind(obj uintptr, value TDragKind) {
+   checkBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func CheckBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := checkBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func CheckBox_SetDragMode(obj uintptr, value TDragMode) {
+   checkBox_SetDragMode.Call(obj, uintptr(value))
+}
+
 func CheckBox_GetEnabled(obj uintptr) bool {
     ret, _, _ := checkBox_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -4016,6 +4402,26 @@ func CheckBox_SetOnClick(obj uintptr, fn interface{}) {
     checkBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func CheckBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    checkBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func CheckBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    checkBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func CheckBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    checkBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func CheckBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    checkBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func CheckBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    checkBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func CheckBox_SetOnEnter(obj uintptr, fn interface{}) {
     checkBox_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -4056,6 +4462,19 @@ func CheckBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     checkBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func CheckBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    checkBox_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func CheckBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := checkBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckBox_SetDockSite(obj uintptr, value bool) {
+   checkBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func CheckBox_GetBrush(obj uintptr) uintptr {
     ret, _, _ := checkBox_GetBrush.Call(obj)
     return ret
@@ -4078,6 +4497,15 @@ func CheckBox_GetParentWindow(obj uintptr) HWND {
 
 func CheckBox_SetParentWindow(obj uintptr, value HWND) {
    checkBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func CheckBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := checkBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckBox_SetUseDockManager(obj uintptr, value bool) {
+   checkBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func CheckBox_GetBoundsRect(obj uintptr) TRect {
@@ -4132,6 +4560,11 @@ func CheckBox_GetExplicitWidth(obj uintptr) int32 {
 func CheckBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := checkBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func CheckBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := checkBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func CheckBox_GetParent(obj uintptr) uintptr {
@@ -4334,6 +4767,11 @@ func RadioButton_BringToFront(obj uintptr)  {
     radioButton_BringToFront.Call(obj)
 }
 
+func RadioButton_Dragging(obj uintptr) bool {
+    ret, _, _ := radioButton_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func RadioButton_HasParent(obj uintptr) bool {
     ret, _, _ := radioButton_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -4485,6 +4923,33 @@ func RadioButton_SetDoubleBuffered(obj uintptr, value bool) {
    radioButton_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func RadioButton_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := radioButton_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func RadioButton_SetDragCursor(obj uintptr, value TCursor) {
+   radioButton_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func RadioButton_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := radioButton_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func RadioButton_SetDragKind(obj uintptr, value TDragKind) {
+   radioButton_SetDragKind.Call(obj, uintptr(value))
+}
+
+func RadioButton_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := radioButton_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func RadioButton_SetDragMode(obj uintptr, value TDragMode) {
+   radioButton_SetDragMode.Call(obj, uintptr(value))
+}
+
 func RadioButton_GetEnabled(obj uintptr) bool {
     ret, _, _ := radioButton_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -4615,8 +5080,28 @@ func RadioButton_SetOnClick(obj uintptr, fn interface{}) {
     radioButton_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func RadioButton_SetOnContextPopup(obj uintptr, fn interface{}) {
+    radioButton_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func RadioButton_SetOnDblClick(obj uintptr, fn interface{}) {
     radioButton_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func RadioButton_SetOnDragDrop(obj uintptr, fn interface{}) {
+    radioButton_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func RadioButton_SetOnDragOver(obj uintptr, fn interface{}) {
+    radioButton_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func RadioButton_SetOnEndDock(obj uintptr, fn interface{}) {
+    radioButton_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func RadioButton_SetOnEndDrag(obj uintptr, fn interface{}) {
+    radioButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func RadioButton_SetOnEnter(obj uintptr, fn interface{}) {
@@ -4659,6 +5144,19 @@ func RadioButton_SetOnMouseUp(obj uintptr, fn interface{}) {
     radioButton_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func RadioButton_SetOnStartDock(obj uintptr, fn interface{}) {
+    radioButton_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func RadioButton_GetDockSite(obj uintptr) bool {
+    ret, _, _ := radioButton_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioButton_SetDockSite(obj uintptr, value bool) {
+   radioButton_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func RadioButton_GetBrush(obj uintptr) uintptr {
     ret, _, _ := radioButton_GetBrush.Call(obj)
     return ret
@@ -4681,6 +5179,15 @@ func RadioButton_GetParentWindow(obj uintptr) HWND {
 
 func RadioButton_SetParentWindow(obj uintptr, value HWND) {
    radioButton_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func RadioButton_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := radioButton_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioButton_SetUseDockManager(obj uintptr, value bool) {
+   radioButton_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func RadioButton_GetBoundsRect(obj uintptr) TRect {
@@ -4735,6 +5242,11 @@ func RadioButton_GetExplicitWidth(obj uintptr) int32 {
 func RadioButton_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := radioButton_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func RadioButton_GetFloating(obj uintptr) bool {
+    ret, _, _ := radioButton_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func RadioButton_GetParent(obj uintptr) uintptr {
@@ -4937,6 +5449,11 @@ func GroupBox_BringToFront(obj uintptr)  {
     groupBox_BringToFront.Call(obj)
 }
 
+func GroupBox_Dragging(obj uintptr) bool {
+    ret, _, _ := groupBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func GroupBox_HasParent(obj uintptr) bool {
     ret, _, _ := groupBox_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -5052,6 +5569,15 @@ func GroupBox_SetColor(obj uintptr, value TColor) {
    groupBox_SetColor.Call(obj, uintptr(value))
 }
 
+func GroupBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := groupBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GroupBox_SetDockSite(obj uintptr, value bool) {
+   groupBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func GroupBox_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := groupBox_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -5059,6 +5585,33 @@ func GroupBox_GetDoubleBuffered(obj uintptr) bool {
 
 func GroupBox_SetDoubleBuffered(obj uintptr, value bool) {
    groupBox_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func GroupBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := groupBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func GroupBox_SetDragCursor(obj uintptr, value TCursor) {
+   groupBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func GroupBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := groupBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func GroupBox_SetDragKind(obj uintptr, value TDragKind) {
+   groupBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func GroupBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := groupBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func GroupBox_SetDragMode(obj uintptr, value TDragMode) {
+   groupBox_SetDragMode.Call(obj, uintptr(value))
 }
 
 func GroupBox_GetEnabled(obj uintptr) bool {
@@ -5191,8 +5744,32 @@ func GroupBox_SetOnClick(obj uintptr, fn interface{}) {
     groupBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func GroupBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    groupBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func GroupBox_SetOnDblClick(obj uintptr, fn interface{}) {
     groupBox_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    groupBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnDockDrop(obj uintptr, fn interface{}) {
+    groupBox_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    groupBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    groupBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    groupBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func GroupBox_SetOnEnter(obj uintptr, fn interface{}) {
@@ -5201,6 +5778,10 @@ func GroupBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func GroupBox_SetOnExit(obj uintptr, fn interface{}) {
     groupBox_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    groupBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
 
 func GroupBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -5221,6 +5802,14 @@ func GroupBox_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func GroupBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     groupBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    groupBox_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnUnDock(obj uintptr, fn interface{}) {
+    groupBox_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
 func GroupBox_GetBrush(obj uintptr) uintptr {
@@ -5245,6 +5834,15 @@ func GroupBox_GetParentWindow(obj uintptr) HWND {
 
 func GroupBox_SetParentWindow(obj uintptr, value HWND) {
    groupBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func GroupBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := groupBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GroupBox_SetUseDockManager(obj uintptr, value bool) {
+   groupBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func GroupBox_GetAction(obj uintptr) uintptr {
@@ -5308,6 +5906,11 @@ func GroupBox_GetExplicitWidth(obj uintptr) int32 {
 func GroupBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := groupBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func GroupBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := groupBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func GroupBox_GetParent(obj uintptr) uintptr {
@@ -5463,6 +6066,11 @@ func Label_BringToFront(obj uintptr)  {
     label_BringToFront.Call(obj)
 }
 
+func Label_Dragging(obj uintptr) bool {
+    ret, _, _ := label_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Label_HasParent(obj uintptr) bool {
     ret, _, _ := label_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -5612,6 +6220,33 @@ func Label_SetColor(obj uintptr, value TColor) {
    label_SetColor.Call(obj, uintptr(value))
 }
 
+func Label_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := label_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func Label_SetDragCursor(obj uintptr, value TCursor) {
+   label_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func Label_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := label_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Label_SetDragKind(obj uintptr, value TDragKind) {
+   label_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Label_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := label_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Label_SetDragMode(obj uintptr, value TDragMode) {
+   label_SetDragMode.Call(obj, uintptr(value))
+}
+
 func Label_GetEllipsisPosition(obj uintptr) TEllipsisPosition {
     ret, _, _ := label_GetEllipsisPosition.Call(obj)
     return TEllipsisPosition(ret)
@@ -5751,8 +6386,28 @@ func Label_SetOnClick(obj uintptr, fn interface{}) {
     label_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func Label_SetOnContextPopup(obj uintptr, fn interface{}) {
+    label_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func Label_SetOnDblClick(obj uintptr, fn interface{}) {
     label_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnDragDrop(obj uintptr, fn interface{}) {
+    label_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnDragOver(obj uintptr, fn interface{}) {
+    label_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnEndDock(obj uintptr, fn interface{}) {
+    label_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnEndDrag(obj uintptr, fn interface{}) {
+    label_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func Label_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -5773,6 +6428,10 @@ func Label_SetOnMouseEnter(obj uintptr, fn interface{}) {
 
 func Label_SetOnMouseLeave(obj uintptr, fn interface{}) {
     label_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnStartDock(obj uintptr, fn interface{}) {
+    label_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Label_GetCanvas(obj uintptr) uintptr {
@@ -5841,6 +6500,11 @@ func Label_GetExplicitWidth(obj uintptr) int32 {
 func Label_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := label_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Label_GetFloating(obj uintptr) bool {
+    ret, _, _ := label_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Label_GetParent(obj uintptr) uintptr {
@@ -6058,6 +6722,11 @@ func ListBox_BringToFront(obj uintptr)  {
     listBox_BringToFront.Call(obj)
 }
 
+func ListBox_Dragging(obj uintptr) bool {
+    ret, _, _ := listBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ListBox_HasParent(obj uintptr) bool {
     ret, _, _ := listBox_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -6254,6 +6923,33 @@ func ListBox_SetDoubleBuffered(obj uintptr, value bool) {
    listBox_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func ListBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := listBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ListBox_SetDragCursor(obj uintptr, value TCursor) {
+   listBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ListBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := listBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ListBox_SetDragKind(obj uintptr, value TDragKind) {
+   listBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ListBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := listBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ListBox_SetDragMode(obj uintptr, value TDragMode) {
+   listBox_SetDragMode.Call(obj, uintptr(value))
+}
+
 func ListBox_GetEnabled(obj uintptr) bool {
     ret, _, _ := listBox_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -6420,12 +7116,32 @@ func ListBox_SetOnClick(obj uintptr, fn interface{}) {
     listBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    listBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     listBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func ListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    listBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    listBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
 func ListBox_SetOnDrawItem(obj uintptr, fn interface{}) {
     listBox_SetOnDrawItem.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    listBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    listBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ListBox_SetOnEnter(obj uintptr, fn interface{}) {
@@ -6468,6 +7184,10 @@ func ListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     listBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func ListBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    listBox_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
 func ListBox_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := listBox_GetCanvas.Call(obj)
     return ret
@@ -6496,6 +7216,15 @@ func ListBox_SetItemIndex(obj uintptr, value int32) {
    listBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ListBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := listBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_SetDockSite(obj uintptr, value bool) {
+   listBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ListBox_GetBrush(obj uintptr) uintptr {
     ret, _, _ := listBox_GetBrush.Call(obj)
     return ret
@@ -6518,6 +7247,15 @@ func ListBox_GetParentWindow(obj uintptr) HWND {
 
 func ListBox_SetParentWindow(obj uintptr, value HWND) {
    listBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ListBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := listBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_SetUseDockManager(obj uintptr, value bool) {
+   listBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ListBox_GetAction(obj uintptr) uintptr {
@@ -6581,6 +7319,11 @@ func ListBox_GetExplicitWidth(obj uintptr) int32 {
 func ListBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := listBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ListBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := listBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ListBox_GetParent(obj uintptr) uintptr {
@@ -6812,6 +7555,11 @@ func ComboBox_BringToFront(obj uintptr)  {
     comboBox_BringToFront.Call(obj)
 }
 
+func ComboBox_Dragging(obj uintptr) bool {
+    ret, _, _ := comboBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ComboBox_HasParent(obj uintptr) bool {
     ret, _, _ := comboBox_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -7008,6 +7756,33 @@ func ComboBox_SetDoubleBuffered(obj uintptr, value bool) {
    comboBox_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func ComboBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := comboBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ComboBox_SetDragCursor(obj uintptr, value TCursor) {
+   comboBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ComboBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := comboBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ComboBox_SetDragKind(obj uintptr, value TDragKind) {
+   comboBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ComboBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := comboBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ComboBox_SetDragMode(obj uintptr, value TDragMode) {
+   comboBox_SetDragMode.Call(obj, uintptr(value))
+}
+
 func ComboBox_GetDropDownCount(obj uintptr) int32 {
     ret, _, _ := comboBox_GetDropDownCount.Call(obj)
     return int32(ret)
@@ -7196,12 +7971,32 @@ func ComboBox_SetOnClick(obj uintptr, fn interface{}) {
     comboBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ComboBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    comboBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ComboBox_SetOnDblClick(obj uintptr, fn interface{}) {
     comboBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func ComboBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    comboBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ComboBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    comboBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
 func ComboBox_SetOnDrawItem(obj uintptr, fn interface{}) {
     comboBox_SetOnDrawItem.Call(obj, addEventToMap(fn))
+}
+
+func ComboBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    comboBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ComboBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    comboBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ComboBox_SetOnEnter(obj uintptr, fn interface{}) {
@@ -7230,6 +8025,10 @@ func ComboBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
 
 func ComboBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
     comboBox_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func ComboBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    comboBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func ComboBox_GetItems(obj uintptr) uintptr {
@@ -7282,6 +8081,15 @@ func ComboBox_SetSelStart(obj uintptr, value int32) {
    comboBox_SetSelStart.Call(obj, uintptr(value))
 }
 
+func ComboBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := comboBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ComboBox_SetDockSite(obj uintptr, value bool) {
+   comboBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ComboBox_GetBrush(obj uintptr) uintptr {
     ret, _, _ := comboBox_GetBrush.Call(obj)
     return ret
@@ -7304,6 +8112,15 @@ func ComboBox_GetParentWindow(obj uintptr) HWND {
 
 func ComboBox_SetParentWindow(obj uintptr, value HWND) {
    comboBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ComboBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := comboBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ComboBox_SetUseDockManager(obj uintptr, value bool) {
+   comboBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ComboBox_GetAction(obj uintptr) uintptr {
@@ -7367,6 +8184,11 @@ func ComboBox_GetExplicitWidth(obj uintptr) int32 {
 func ComboBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := comboBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ComboBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := comboBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ComboBox_GetParent(obj uintptr) uintptr {
@@ -7569,6 +8391,11 @@ func Panel_BringToFront(obj uintptr)  {
     panel_BringToFront.Call(obj)
 }
 
+func Panel_Dragging(obj uintptr) bool {
+    ret, _, _ := panel_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Panel_HasParent(obj uintptr) bool {
     ret, _, _ := panel_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -7756,6 +8583,24 @@ func Panel_SetColor(obj uintptr, value TColor) {
    panel_SetColor.Call(obj, uintptr(value))
 }
 
+func Panel_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := panel_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Panel_SetUseDockManager(obj uintptr, value bool) {
+   panel_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func Panel_GetDockSite(obj uintptr) bool {
+    ret, _, _ := panel_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Panel_SetDockSite(obj uintptr, value bool) {
+   panel_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func Panel_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := panel_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -7763,6 +8608,33 @@ func Panel_GetDoubleBuffered(obj uintptr) bool {
 
 func Panel_SetDoubleBuffered(obj uintptr, value bool) {
    panel_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func Panel_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := panel_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func Panel_SetDragCursor(obj uintptr, value TCursor) {
+   panel_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func Panel_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := panel_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Panel_SetDragKind(obj uintptr, value TDragKind) {
+   panel_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Panel_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := panel_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Panel_SetDragMode(obj uintptr, value TDragMode) {
+   panel_SetDragMode.Call(obj, uintptr(value))
 }
 
 func Panel_GetEnabled(obj uintptr) bool {
@@ -7922,8 +8794,32 @@ func Panel_SetOnClick(obj uintptr, fn interface{}) {
     panel_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func Panel_SetOnContextPopup(obj uintptr, fn interface{}) {
+    panel_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnDockDrop(obj uintptr, fn interface{}) {
+    panel_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
 func Panel_SetOnDblClick(obj uintptr, fn interface{}) {
     panel_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnDragDrop(obj uintptr, fn interface{}) {
+    panel_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnDragOver(obj uintptr, fn interface{}) {
+    panel_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnEndDock(obj uintptr, fn interface{}) {
+    panel_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnEndDrag(obj uintptr, fn interface{}) {
+    panel_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func Panel_SetOnEnter(obj uintptr, fn interface{}) {
@@ -7932,6 +8828,10 @@ func Panel_SetOnEnter(obj uintptr, fn interface{}) {
 
 func Panel_SetOnExit(obj uintptr, fn interface{}) {
     panel_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    panel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
 
 func Panel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -7956,6 +8856,14 @@ func Panel_SetOnMouseUp(obj uintptr, fn interface{}) {
 
 func Panel_SetOnResize(obj uintptr, fn interface{}) {
     panel_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnStartDock(obj uintptr, fn interface{}) {
+    panel_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnUnDock(obj uintptr, fn interface{}) {
+    panel_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
 func Panel_GetBrush(obj uintptr) uintptr {
@@ -8043,6 +8951,11 @@ func Panel_GetExplicitWidth(obj uintptr) int32 {
 func Panel_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := panel_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Panel_GetFloating(obj uintptr) bool {
+    ret, _, _ := panel_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Panel_GetParent(obj uintptr) uintptr {
@@ -8198,6 +9111,11 @@ func Image_BringToFront(obj uintptr)  {
     image_BringToFront.Call(obj)
 }
 
+func Image_Dragging(obj uintptr) bool {
+    ret, _, _ := image_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Image_HasParent(obj uintptr) bool {
     ret, _, _ := image_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -8325,6 +9243,33 @@ func Image_SetCenter(obj uintptr, value bool) {
    image_SetCenter.Call(obj, GoBoolToDBool(value))
 }
 
+func Image_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := image_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func Image_SetDragCursor(obj uintptr, value TCursor) {
+   image_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func Image_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := image_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Image_SetDragKind(obj uintptr, value TDragKind) {
+   image_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Image_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := image_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Image_SetDragMode(obj uintptr, value TDragMode) {
+   image_SetDragMode.Call(obj, uintptr(value))
+}
+
 func Image_GetEnabled(obj uintptr) bool {
     ret, _, _ := image_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -8419,8 +9364,28 @@ func Image_SetOnClick(obj uintptr, fn interface{}) {
     image_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func Image_SetOnContextPopup(obj uintptr, fn interface{}) {
+    image_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func Image_SetOnDblClick(obj uintptr, fn interface{}) {
     image_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnDragDrop(obj uintptr, fn interface{}) {
+    image_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnDragOver(obj uintptr, fn interface{}) {
+    image_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnEndDock(obj uintptr, fn interface{}) {
+    image_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnEndDrag(obj uintptr, fn interface{}) {
+    image_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func Image_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -8441,6 +9406,10 @@ func Image_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Image_SetOnMouseUp(obj uintptr, fn interface{}) {
     image_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnStartDock(obj uintptr, fn interface{}) {
+    image_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Image_GetAction(obj uintptr) uintptr {
@@ -8513,6 +9482,11 @@ func Image_GetExplicitWidth(obj uintptr) int32 {
 func Image_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := image_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Image_GetFloating(obj uintptr) bool {
+    ret, _, _ := image_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Image_GetParent(obj uintptr) uintptr {
@@ -8719,6 +9693,11 @@ func LinkLabel_BringToFront(obj uintptr)  {
     linkLabel_BringToFront.Call(obj)
 }
 
+func LinkLabel_Dragging(obj uintptr) bool {
+    ret, _, _ := linkLabel_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func LinkLabel_HasParent(obj uintptr) bool {
     ret, _, _ := linkLabel_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -8879,6 +9858,33 @@ func LinkLabel_SetColor(obj uintptr, value TColor) {
    linkLabel_SetColor.Call(obj, uintptr(value))
 }
 
+func LinkLabel_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := linkLabel_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func LinkLabel_SetDragCursor(obj uintptr, value TCursor) {
+   linkLabel_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func LinkLabel_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := linkLabel_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func LinkLabel_SetDragKind(obj uintptr, value TDragKind) {
+   linkLabel_SetDragKind.Call(obj, uintptr(value))
+}
+
+func LinkLabel_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := linkLabel_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func LinkLabel_SetDragMode(obj uintptr, value TDragMode) {
+   linkLabel_SetDragMode.Call(obj, uintptr(value))
+}
+
 func LinkLabel_GetEnabled(obj uintptr) bool {
     ret, _, _ := linkLabel_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -8982,8 +9988,28 @@ func LinkLabel_SetOnClick(obj uintptr, fn interface{}) {
     linkLabel_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func LinkLabel_SetOnContextPopup(obj uintptr, fn interface{}) {
+    linkLabel_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func LinkLabel_SetOnDblClick(obj uintptr, fn interface{}) {
     linkLabel_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func LinkLabel_SetOnDragDrop(obj uintptr, fn interface{}) {
+    linkLabel_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func LinkLabel_SetOnDragOver(obj uintptr, fn interface{}) {
+    linkLabel_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func LinkLabel_SetOnEndDock(obj uintptr, fn interface{}) {
+    linkLabel_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func LinkLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
+    linkLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func LinkLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -9006,8 +10032,21 @@ func LinkLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
     linkLabel_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func LinkLabel_SetOnStartDock(obj uintptr, fn interface{}) {
+    linkLabel_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
 func LinkLabel_SetOnLinkClick(obj uintptr, fn interface{}) {
     linkLabel_SetOnLinkClick.Call(obj, addEventToMap(fn))
+}
+
+func LinkLabel_GetDockSite(obj uintptr) bool {
+    ret, _, _ := linkLabel_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LinkLabel_SetDockSite(obj uintptr, value bool) {
+   linkLabel_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
 func LinkLabel_GetDoubleBuffered(obj uintptr) bool {
@@ -9050,6 +10089,15 @@ func LinkLabel_GetParentWindow(obj uintptr) HWND {
 
 func LinkLabel_SetParentWindow(obj uintptr, value HWND) {
    linkLabel_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func LinkLabel_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := linkLabel_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LinkLabel_SetUseDockManager(obj uintptr, value bool) {
+   linkLabel_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func LinkLabel_GetAction(obj uintptr) uintptr {
@@ -9122,6 +10170,11 @@ func LinkLabel_GetExplicitWidth(obj uintptr) int32 {
 func LinkLabel_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := linkLabel_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func LinkLabel_GetFloating(obj uintptr) bool {
+    ret, _, _ := linkLabel_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func LinkLabel_GetParent(obj uintptr) uintptr {
@@ -9288,6 +10341,11 @@ func SpeedButton_Click(obj uintptr)  {
 
 func SpeedButton_BringToFront(obj uintptr)  {
     speedButton_BringToFront.Call(obj)
+}
+
+func SpeedButton_Dragging(obj uintptr) bool {
+    ret, _, _ := speedButton_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func SpeedButton_HasParent(obj uintptr) bool {
@@ -9656,6 +10714,11 @@ func SpeedButton_GetExplicitHeight(obj uintptr) int32 {
     return int32(ret)
 }
 
+func SpeedButton_GetFloating(obj uintptr) bool {
+    ret, _, _ := speedButton_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func SpeedButton_GetParent(obj uintptr) uintptr {
     ret, _, _ := speedButton_GetParent.Call(obj)
     return ret
@@ -9802,6 +10865,11 @@ func Splitter_Free(obj uintptr) {
 
 func Splitter_BringToFront(obj uintptr)  {
     splitter_BringToFront.Call(obj)
+}
+
+func Splitter_Dragging(obj uintptr) bool {
+    ret, _, _ := splitter_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Splitter_HasParent(obj uintptr) bool {
@@ -10052,6 +11120,11 @@ func Splitter_GetExplicitHeight(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Splitter_GetFloating(obj uintptr) bool {
+    ret, _, _ := splitter_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Splitter_GetShowHint(obj uintptr) bool {
     ret, _, _ := splitter_GetShowHint.Call(obj)
     return DBoolToGoBool(ret)
@@ -10238,6 +11311,11 @@ func RadioGroup_BringToFront(obj uintptr)  {
     radioGroup_BringToFront.Call(obj)
 }
 
+func RadioGroup_Dragging(obj uintptr) bool {
+    ret, _, _ := radioGroup_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func RadioGroup_HasParent(obj uintptr) bool {
     ret, _, _ := radioGroup_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -10369,6 +11447,33 @@ func RadioGroup_GetDoubleBuffered(obj uintptr) bool {
 
 func RadioGroup_SetDoubleBuffered(obj uintptr, value bool) {
    radioGroup_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func RadioGroup_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := radioGroup_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func RadioGroup_SetDragCursor(obj uintptr, value TCursor) {
+   radioGroup_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func RadioGroup_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := radioGroup_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func RadioGroup_SetDragKind(obj uintptr, value TDragKind) {
+   radioGroup_SetDragKind.Call(obj, uintptr(value))
+}
+
+func RadioGroup_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := radioGroup_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func RadioGroup_SetDragMode(obj uintptr, value TDragMode) {
+   radioGroup_SetDragMode.Call(obj, uintptr(value))
 }
 
 func RadioGroup_GetEnabled(obj uintptr) bool {
@@ -10528,12 +11633,45 @@ func RadioGroup_SetOnClick(obj uintptr, fn interface{}) {
     radioGroup_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func RadioGroup_SetOnContextPopup(obj uintptr, fn interface{}) {
+    radioGroup_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
+    radioGroup_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_SetOnDragOver(obj uintptr, fn interface{}) {
+    radioGroup_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_SetOnEndDock(obj uintptr, fn interface{}) {
+    radioGroup_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_SetOnEndDrag(obj uintptr, fn interface{}) {
+    radioGroup_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func RadioGroup_SetOnEnter(obj uintptr, fn interface{}) {
     radioGroup_SetOnEnter.Call(obj, addEventToMap(fn))
 }
 
 func RadioGroup_SetOnExit(obj uintptr, fn interface{}) {
     radioGroup_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_SetOnStartDock(obj uintptr, fn interface{}) {
+    radioGroup_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_GetDockSite(obj uintptr) bool {
+    ret, _, _ := radioGroup_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioGroup_SetDockSite(obj uintptr, value bool) {
+   radioGroup_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
 func RadioGroup_GetBrush(obj uintptr) uintptr {
@@ -10558,6 +11696,15 @@ func RadioGroup_GetParentWindow(obj uintptr) HWND {
 
 func RadioGroup_SetParentWindow(obj uintptr, value HWND) {
    radioGroup_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func RadioGroup_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := radioGroup_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioGroup_SetUseDockManager(obj uintptr, value bool) {
+   radioGroup_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func RadioGroup_GetAction(obj uintptr) uintptr {
@@ -10621,6 +11768,11 @@ func RadioGroup_GetExplicitWidth(obj uintptr) int32 {
 func RadioGroup_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := radioGroup_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func RadioGroup_GetFloating(obj uintptr) bool {
+    ret, _, _ := radioGroup_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func RadioGroup_GetParent(obj uintptr) uintptr {
@@ -10828,6 +11980,11 @@ func StaticText_BringToFront(obj uintptr)  {
     staticText_BringToFront.Call(obj)
 }
 
+func StaticText_Dragging(obj uintptr) bool {
+    ret, _, _ := staticText_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func StaticText_HasParent(obj uintptr) bool {
     ret, _, _ := staticText_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -11015,6 +12172,33 @@ func StaticText_SetDoubleBuffered(obj uintptr, value bool) {
    staticText_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func StaticText_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := staticText_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func StaticText_SetDragCursor(obj uintptr, value TCursor) {
+   staticText_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func StaticText_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := staticText_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func StaticText_SetDragKind(obj uintptr, value TDragKind) {
+   staticText_SetDragKind.Call(obj, uintptr(value))
+}
+
+func StaticText_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := staticText_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func StaticText_SetDragMode(obj uintptr, value TDragMode) {
+   staticText_SetDragMode.Call(obj, uintptr(value))
+}
+
 func StaticText_GetEnabled(obj uintptr) bool {
     ret, _, _ := staticText_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -11145,8 +12329,28 @@ func StaticText_SetOnClick(obj uintptr, fn interface{}) {
     staticText_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func StaticText_SetOnContextPopup(obj uintptr, fn interface{}) {
+    staticText_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func StaticText_SetOnDblClick(obj uintptr, fn interface{}) {
     staticText_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnDragDrop(obj uintptr, fn interface{}) {
+    staticText_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnDragOver(obj uintptr, fn interface{}) {
+    staticText_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnEndDock(obj uintptr, fn interface{}) {
+    staticText_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnEndDrag(obj uintptr, fn interface{}) {
+    staticText_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func StaticText_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -11167,6 +12371,19 @@ func StaticText_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func StaticText_SetOnMouseUp(obj uintptr, fn interface{}) {
     staticText_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnStartDock(obj uintptr, fn interface{}) {
+    staticText_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_GetDockSite(obj uintptr) bool {
+    ret, _, _ := staticText_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StaticText_SetDockSite(obj uintptr, value bool) {
+   staticText_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
 func StaticText_GetBrush(obj uintptr) uintptr {
@@ -11191,6 +12408,15 @@ func StaticText_GetParentWindow(obj uintptr) HWND {
 
 func StaticText_SetParentWindow(obj uintptr, value HWND) {
    staticText_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func StaticText_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := staticText_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StaticText_SetUseDockManager(obj uintptr, value bool) {
+   staticText_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func StaticText_GetAction(obj uintptr) uintptr {
@@ -11254,6 +12480,11 @@ func StaticText_GetExplicitWidth(obj uintptr) int32 {
 func StaticText_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := staticText_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func StaticText_GetFloating(obj uintptr) bool {
+    ret, _, _ := staticText_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func StaticText_GetParent(obj uintptr) uintptr {
@@ -11474,6 +12705,11 @@ func ColorBox_Update(obj uintptr)  {
 
 func ColorBox_BringToFront(obj uintptr)  {
     colorBox_BringToFront.Call(obj)
+}
+
+func ColorBox_Dragging(obj uintptr) bool {
+    ret, _, _ := colorBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ColorBox_HasParent(obj uintptr) bool {
@@ -11824,6 +13060,26 @@ func ColorBox_SetOnClick(obj uintptr, fn interface{}) {
     colorBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ColorBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    colorBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    colorBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    colorBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    colorBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    colorBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func ColorBox_SetOnEnter(obj uintptr, fn interface{}) {
     colorBox_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -11850,6 +13106,10 @@ func ColorBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
 
 func ColorBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
     colorBox_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    colorBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func ColorBox_GetAutoCompleteDelay(obj uintptr) uint32 {
@@ -11938,6 +13198,15 @@ func ColorBox_SetItemIndex(obj uintptr, value int32) {
    colorBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ColorBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := colorBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorBox_SetDockSite(obj uintptr, value bool) {
+   colorBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ColorBox_GetBrush(obj uintptr) uintptr {
     ret, _, _ := colorBox_GetBrush.Call(obj)
     return ret
@@ -11960,6 +13229,15 @@ func ColorBox_GetParentWindow(obj uintptr) HWND {
 
 func ColorBox_SetParentWindow(obj uintptr, value HWND) {
    colorBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ColorBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := colorBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorBox_SetUseDockManager(obj uintptr, value bool) {
+   colorBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorBox_GetAction(obj uintptr) uintptr {
@@ -12023,6 +13301,11 @@ func ColorBox_GetExplicitWidth(obj uintptr) int32 {
 func ColorBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := colorBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ColorBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := colorBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ColorBox_GetParent(obj uintptr) uintptr {
@@ -12253,6 +13536,11 @@ func ColorListBox_Update(obj uintptr)  {
 
 func ColorListBox_BringToFront(obj uintptr)  {
     colorListBox_BringToFront.Call(obj)
+}
+
+func ColorListBox_Dragging(obj uintptr) bool {
+    ret, _, _ := colorListBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ColorListBox_HasParent(obj uintptr) bool {
@@ -12581,8 +13869,28 @@ func ColorListBox_SetOnClick(obj uintptr, fn interface{}) {
     colorListBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ColorListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    colorListBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ColorListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     colorListBox_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ColorListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    colorListBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ColorListBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    colorListBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ColorListBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    colorListBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ColorListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    colorListBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ColorListBox_SetOnEnter(obj uintptr, fn interface{}) {
@@ -12623,6 +13931,10 @@ func ColorListBox_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func ColorListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     colorListBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func ColorListBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    colorListBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func ColorListBox_GetAutoCompleteDelay(obj uintptr) uint32 {
@@ -12680,6 +13992,15 @@ func ColorListBox_SetItemIndex(obj uintptr, value int32) {
    colorListBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ColorListBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := colorListBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorListBox_SetDockSite(obj uintptr, value bool) {
+   colorListBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ColorListBox_GetBrush(obj uintptr) uintptr {
     ret, _, _ := colorListBox_GetBrush.Call(obj)
     return ret
@@ -12702,6 +14023,15 @@ func ColorListBox_GetParentWindow(obj uintptr) HWND {
 
 func ColorListBox_SetParentWindow(obj uintptr, value HWND) {
    colorListBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ColorListBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := colorListBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorListBox_SetUseDockManager(obj uintptr, value bool) {
+   colorListBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorListBox_GetAction(obj uintptr) uintptr {
@@ -12765,6 +14095,11 @@ func ColorListBox_GetExplicitWidth(obj uintptr) int32 {
 func ColorListBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := colorListBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ColorListBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := colorListBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ColorListBox_GetParent(obj uintptr) uintptr {
@@ -13382,6 +14717,11 @@ func CategoryPanelGroup_BringToFront(obj uintptr)  {
     categoryPanelGroup_BringToFront.Call(obj)
 }
 
+func CategoryPanelGroup_Dragging(obj uintptr) bool {
+    ret, _, _ := categoryPanelGroup_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func CategoryPanelGroup_HasParent(obj uintptr) bool {
     ret, _, _ := categoryPanelGroup_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -13542,6 +14882,15 @@ func CategoryPanelGroup_SetChevronHotColor(obj uintptr, value TColor) {
    categoryPanelGroup_SetChevronHotColor.Call(obj, uintptr(value))
 }
 
+func CategoryPanelGroup_GetDockSite(obj uintptr) bool {
+    ret, _, _ := categoryPanelGroup_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanelGroup_SetDockSite(obj uintptr, value bool) {
+   categoryPanelGroup_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func CategoryPanelGroup_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := categoryPanelGroup_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -13549,6 +14898,33 @@ func CategoryPanelGroup_GetDoubleBuffered(obj uintptr) bool {
 
 func CategoryPanelGroup_SetDoubleBuffered(obj uintptr, value bool) {
    categoryPanelGroup_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func CategoryPanelGroup_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := categoryPanelGroup_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CategoryPanelGroup_SetDragCursor(obj uintptr, value TCursor) {
+   categoryPanelGroup_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func CategoryPanelGroup_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := categoryPanelGroup_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func CategoryPanelGroup_SetDragKind(obj uintptr, value TDragKind) {
+   categoryPanelGroup_SetDragKind.Call(obj, uintptr(value))
+}
+
+func CategoryPanelGroup_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := categoryPanelGroup_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func CategoryPanelGroup_SetDragMode(obj uintptr, value TDragMode) {
+   categoryPanelGroup_SetDragMode.Call(obj, uintptr(value))
 }
 
 func CategoryPanelGroup_GetEnabled(obj uintptr) bool {
@@ -13789,8 +15165,32 @@ func CategoryPanelGroup_SetOnClick(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func CategoryPanelGroup_SetOnContextPopup(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func CategoryPanelGroup_SetOnDblClick(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnDockDrop(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnDragOver(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnEndDock(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnEndDrag(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanelGroup_SetOnEnter(obj uintptr, fn interface{}) {
@@ -13799,6 +15199,10 @@ func CategoryPanelGroup_SetOnEnter(obj uintptr, fn interface{}) {
 
 func CategoryPanelGroup_SetOnExit(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanelGroup_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -13825,8 +15229,24 @@ func CategoryPanelGroup_SetOnMouseWheel(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnMouseWheel.Call(obj, addEventToMap(fn))
 }
 
+func CategoryPanelGroup_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
 func CategoryPanelGroup_SetOnResize(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnStartDock(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnUnDock(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanelGroup_GetPanels(obj uintptr) uintptr {
@@ -13856,6 +15276,15 @@ func CategoryPanelGroup_GetParentWindow(obj uintptr) HWND {
 
 func CategoryPanelGroup_SetParentWindow(obj uintptr, value HWND) {
    categoryPanelGroup_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func CategoryPanelGroup_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := categoryPanelGroup_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanelGroup_SetUseDockManager(obj uintptr, value bool) {
+   categoryPanelGroup_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func CategoryPanelGroup_GetAction(obj uintptr) uintptr {
@@ -13919,6 +15348,11 @@ func CategoryPanelGroup_GetExplicitWidth(obj uintptr) int32 {
 func CategoryPanelGroup_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := categoryPanelGroup_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func CategoryPanelGroup_GetFloating(obj uintptr) bool {
+    ret, _, _ := categoryPanelGroup_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func CategoryPanelGroup_GetParent(obj uintptr) uintptr {
@@ -14111,6 +15545,11 @@ func CategoryPanel_BringToFront(obj uintptr)  {
     categoryPanel_BringToFront.Call(obj)
 }
 
+func CategoryPanel_Dragging(obj uintptr) bool {
+    ret, _, _ := categoryPanel_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func CategoryPanel_HasParent(obj uintptr) bool {
     ret, _, _ := categoryPanel_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -14244,6 +15683,24 @@ func CategoryPanel_SetCollapsedPressedImageIndex(obj uintptr, value int32) {
    categoryPanel_SetCollapsedPressedImageIndex.Call(obj, uintptr(value))
 }
 
+func CategoryPanel_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := categoryPanel_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanel_SetUseDockManager(obj uintptr, value bool) {
+   categoryPanel_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func CategoryPanel_GetDockSite(obj uintptr) bool {
+    ret, _, _ := categoryPanel_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanel_SetDockSite(obj uintptr, value bool) {
+   categoryPanel_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func CategoryPanel_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := categoryPanel_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -14251,6 +15708,33 @@ func CategoryPanel_GetDoubleBuffered(obj uintptr) bool {
 
 func CategoryPanel_SetDoubleBuffered(obj uintptr, value bool) {
    categoryPanel_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func CategoryPanel_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := categoryPanel_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CategoryPanel_SetDragCursor(obj uintptr, value TCursor) {
+   categoryPanel_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func CategoryPanel_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := categoryPanel_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func CategoryPanel_SetDragKind(obj uintptr, value TDragKind) {
+   categoryPanel_SetDragKind.Call(obj, uintptr(value))
+}
+
+func CategoryPanel_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := categoryPanel_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func CategoryPanel_SetDragMode(obj uintptr, value TDragMode) {
+   categoryPanel_SetDragMode.Call(obj, uintptr(value))
 }
 
 func CategoryPanel_GetEnabled(obj uintptr) bool {
@@ -14455,8 +15939,32 @@ func CategoryPanel_SetOnClick(obj uintptr, fn interface{}) {
     categoryPanel_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func CategoryPanel_SetOnContextPopup(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnDockDrop(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
 func CategoryPanel_SetOnDblClick(obj uintptr, fn interface{}) {
     categoryPanel_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnDragDrop(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnDragOver(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnEndDock(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnEndDrag(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanel_SetOnEnter(obj uintptr, fn interface{}) {
@@ -14465,6 +15973,10 @@ func CategoryPanel_SetOnEnter(obj uintptr, fn interface{}) {
 
 func CategoryPanel_SetOnExit(obj uintptr, fn interface{}) {
     categoryPanel_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -14485,6 +15997,14 @@ func CategoryPanel_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func CategoryPanel_SetOnMouseUp(obj uintptr, fn interface{}) {
     categoryPanel_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnStartDock(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnUnDock(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanel_GetPanelGroup(obj uintptr) uintptr {
@@ -14599,6 +16119,11 @@ func CategoryPanel_GetExplicitWidth(obj uintptr) int32 {
 func CategoryPanel_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := categoryPanel_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func CategoryPanel_GetFloating(obj uintptr) bool {
+    ret, _, _ := categoryPanel_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func CategoryPanel_GetParent(obj uintptr) uintptr {
@@ -16398,6 +17923,11 @@ func RichEdit_BringToFront(obj uintptr)  {
     richEdit_BringToFront.Call(obj)
 }
 
+func RichEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := richEdit_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func RichEdit_HasParent(obj uintptr) bool {
     ret, _, _ := richEdit_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -16565,6 +18095,33 @@ func RichEdit_GetColor(obj uintptr) TColor {
 
 func RichEdit_SetColor(obj uintptr, value TColor) {
    richEdit_SetColor.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := richEdit_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func RichEdit_SetDragCursor(obj uintptr, value TCursor) {
+   richEdit_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := richEdit_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func RichEdit_SetDragKind(obj uintptr, value TDragKind) {
+   richEdit_SetDragKind.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := richEdit_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func RichEdit_SetDragMode(obj uintptr, value TDragMode) {
+   richEdit_SetDragMode.Call(obj, uintptr(value))
 }
 
 func RichEdit_GetEnabled(obj uintptr) bool {
@@ -16782,8 +18339,28 @@ func RichEdit_SetOnClick(obj uintptr, fn interface{}) {
     richEdit_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func RichEdit_SetOnContextPopup(obj uintptr, fn interface{}) {
+    richEdit_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func RichEdit_SetOnDblClick(obj uintptr, fn interface{}) {
     richEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    richEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+    richEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnEndDock(obj uintptr, fn interface{}) {
+    richEdit_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    richEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func RichEdit_SetOnEnter(obj uintptr, fn interface{}) {
@@ -16828,6 +18405,18 @@ func RichEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
 
 func RichEdit_SetOnMouseWheel(obj uintptr, fn interface{}) {
     richEdit_SetOnMouseWheel.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnStartDock(obj uintptr, fn interface{}) {
+    richEdit_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func RichEdit_GetActiveLineNo(obj uintptr) uint32 {
@@ -16937,6 +18526,15 @@ func RichEdit_SetTextHint(obj uintptr, value string) {
    richEdit_SetTextHint.Call(obj, GoStrToDStr(value))
 }
 
+func RichEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := richEdit_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetDockSite(obj uintptr, value bool) {
+   richEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func RichEdit_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := richEdit_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -16977,6 +18575,15 @@ func RichEdit_GetParentWindow(obj uintptr) HWND {
 
 func RichEdit_SetParentWindow(obj uintptr, value HWND) {
    richEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := richEdit_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetUseDockManager(obj uintptr, value bool) {
+   richEdit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func RichEdit_GetAction(obj uintptr) uintptr {
@@ -17040,6 +18647,11 @@ func RichEdit_GetExplicitWidth(obj uintptr) int32 {
 func RichEdit_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := richEdit_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func RichEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := richEdit_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func RichEdit_GetParent(obj uintptr) uintptr {
@@ -17246,6 +18858,11 @@ func TrackBar_BringToFront(obj uintptr)  {
     trackBar_BringToFront.Call(obj)
 }
 
+func TrackBar_Dragging(obj uintptr) bool {
+    ret, _, _ := trackBar_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func TrackBar_HasParent(obj uintptr) bool {
     ret, _, _ := trackBar_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -17350,6 +18967,33 @@ func TrackBar_GetDoubleBuffered(obj uintptr) bool {
 
 func TrackBar_SetDoubleBuffered(obj uintptr, value bool) {
    trackBar_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func TrackBar_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := trackBar_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func TrackBar_SetDragCursor(obj uintptr, value TCursor) {
+   trackBar_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func TrackBar_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := trackBar_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func TrackBar_SetDragKind(obj uintptr, value TDragKind) {
+   trackBar_SetDragKind.Call(obj, uintptr(value))
+}
+
+func TrackBar_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := trackBar_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func TrackBar_SetDragMode(obj uintptr, value TDragMode) {
+   trackBar_SetDragMode.Call(obj, uintptr(value))
 }
 
 func TrackBar_GetEnabled(obj uintptr) bool {
@@ -17577,8 +19221,28 @@ func TrackBar_SetStyleElements(obj uintptr, value TStyleElements) {
    trackBar_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func TrackBar_SetOnContextPopup(obj uintptr, fn interface{}) {
+    trackBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func TrackBar_SetOnChange(obj uintptr, fn interface{}) {
     trackBar_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func TrackBar_SetOnDragDrop(obj uintptr, fn interface{}) {
+    trackBar_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func TrackBar_SetOnDragOver(obj uintptr, fn interface{}) {
+    trackBar_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func TrackBar_SetOnEndDock(obj uintptr, fn interface{}) {
+    trackBar_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func TrackBar_SetOnEndDrag(obj uintptr, fn interface{}) {
+    trackBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func TrackBar_SetOnEnter(obj uintptr, fn interface{}) {
@@ -17599,6 +19263,19 @@ func TrackBar_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func TrackBar_SetOnKeyUp(obj uintptr, fn interface{}) {
     trackBar_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func TrackBar_SetOnStartDock(obj uintptr, fn interface{}) {
+    trackBar_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func TrackBar_GetDockSite(obj uintptr) bool {
+    ret, _, _ := trackBar_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TrackBar_SetDockSite(obj uintptr, value bool) {
+   trackBar_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
 func TrackBar_GetBrush(obj uintptr) uintptr {
@@ -17623,6 +19300,15 @@ func TrackBar_GetParentWindow(obj uintptr) HWND {
 
 func TrackBar_SetParentWindow(obj uintptr, value HWND) {
    trackBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func TrackBar_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := trackBar_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TrackBar_SetUseDockManager(obj uintptr, value bool) {
+   trackBar_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func TrackBar_GetAction(obj uintptr) uintptr {
@@ -17695,6 +19381,11 @@ func TrackBar_GetExplicitWidth(obj uintptr) int32 {
 func TrackBar_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := trackBar_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func TrackBar_GetFloating(obj uintptr) bool {
+    ret, _, _ := trackBar_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func TrackBar_GetParent(obj uintptr) uintptr {
@@ -17850,6 +19541,14 @@ func ImageList_GetHotSpot(obj uintptr) TPoint {
     var ret TPoint
     imageList_GetHotSpot.Call(obj, uintptr(unsafe.Pointer(&ret)))
     return ret
+}
+
+func ImageList_HideDragImage(obj uintptr)  {
+    imageList_HideDragImage.Call(obj)
+}
+
+func ImageList_ShowDragImage(obj uintptr)  {
+    imageList_ShowDragImage.Call(obj)
 }
 
 func ImageList_Assign(obj uintptr, Source uintptr)  {
@@ -18111,6 +19810,20 @@ func ImageList_SetWidth(obj uintptr, value int32) {
    imageList_SetWidth.Call(obj, uintptr(value))
 }
 
+func ImageList_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := imageList_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ImageList_SetDragCursor(obj uintptr, value TCursor) {
+   imageList_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ImageList_GetDragging(obj uintptr) bool {
+    ret, _, _ := imageList_GetDragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ImageList_GetHandle(obj uintptr) uintptr {
     ret, _, _ := imageList_GetHandle.Call(obj)
     return ret
@@ -18228,6 +19941,11 @@ func UpDown_Update(obj uintptr)  {
 
 func UpDown_BringToFront(obj uintptr)  {
     upDown_BringToFront.Call(obj)
+}
+
+func UpDown_Dragging(obj uintptr) bool {
+    ret, _, _ := upDown_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func UpDown_HasParent(obj uintptr) bool {
@@ -18453,6 +20171,10 @@ func UpDown_SetStyleElements(obj uintptr, value TStyleElements) {
    upDown_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func UpDown_SetOnContextPopup(obj uintptr, fn interface{}) {
+    upDown_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func UpDown_SetOnClick(obj uintptr, fn interface{}) {
     upDown_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -18485,6 +20207,15 @@ func UpDown_SetOnMouseUp(obj uintptr, fn interface{}) {
     upDown_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func UpDown_GetDockSite(obj uintptr) bool {
+    ret, _, _ := upDown_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func UpDown_SetDockSite(obj uintptr, value bool) {
+   upDown_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func UpDown_GetBrush(obj uintptr) uintptr {
     ret, _, _ := upDown_GetBrush.Call(obj)
     return ret
@@ -18507,6 +20238,15 @@ func UpDown_GetParentWindow(obj uintptr) HWND {
 
 func UpDown_SetParentWindow(obj uintptr, value HWND) {
    upDown_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func UpDown_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := upDown_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func UpDown_SetUseDockManager(obj uintptr, value bool) {
+   upDown_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func UpDown_GetAction(obj uintptr) uintptr {
@@ -18588,6 +20328,11 @@ func UpDown_GetExplicitWidth(obj uintptr) int32 {
 func UpDown_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := upDown_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func UpDown_GetFloating(obj uintptr) bool {
+    ret, _, _ := upDown_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func UpDown_GetParent(obj uintptr) uintptr {
@@ -18789,6 +20534,11 @@ func ProgressBar_BringToFront(obj uintptr)  {
     progressBar_BringToFront.Call(obj)
 }
 
+func ProgressBar_Dragging(obj uintptr) bool {
+    ret, _, _ := progressBar_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ProgressBar_HasParent(obj uintptr) bool {
     ret, _, _ := progressBar_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -18893,6 +20643,33 @@ func ProgressBar_GetDoubleBuffered(obj uintptr) bool {
 
 func ProgressBar_SetDoubleBuffered(obj uintptr, value bool) {
    progressBar_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ProgressBar_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := progressBar_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ProgressBar_SetDragCursor(obj uintptr, value TCursor) {
+   progressBar_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ProgressBar_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := progressBar_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ProgressBar_SetDragKind(obj uintptr, value TDragKind) {
+   progressBar_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ProgressBar_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := progressBar_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ProgressBar_SetDragMode(obj uintptr, value TDragMode) {
+   progressBar_SetDragMode.Call(obj, uintptr(value))
 }
 
 func ProgressBar_GetEnabled(obj uintptr) bool {
@@ -19093,6 +20870,26 @@ func ProgressBar_SetStyleElements(obj uintptr, value TStyleElements) {
    progressBar_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func ProgressBar_SetOnContextPopup(obj uintptr, fn interface{}) {
+    progressBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_SetOnDragDrop(obj uintptr, fn interface{}) {
+    progressBar_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_SetOnDragOver(obj uintptr, fn interface{}) {
+    progressBar_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_SetOnEndDock(obj uintptr, fn interface{}) {
+    progressBar_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_SetOnEndDrag(obj uintptr, fn interface{}) {
+    progressBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func ProgressBar_SetOnEnter(obj uintptr, fn interface{}) {
     progressBar_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -19121,6 +20918,19 @@ func ProgressBar_SetOnMouseUp(obj uintptr, fn interface{}) {
     progressBar_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func ProgressBar_SetOnStartDock(obj uintptr, fn interface{}) {
+    progressBar_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_GetDockSite(obj uintptr) bool {
+    ret, _, _ := progressBar_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ProgressBar_SetDockSite(obj uintptr, value bool) {
+   progressBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ProgressBar_GetBrush(obj uintptr) uintptr {
     ret, _, _ := progressBar_GetBrush.Call(obj)
     return ret
@@ -19143,6 +20953,15 @@ func ProgressBar_GetParentWindow(obj uintptr) HWND {
 
 func ProgressBar_SetParentWindow(obj uintptr, value HWND) {
    progressBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ProgressBar_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := progressBar_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ProgressBar_SetUseDockManager(obj uintptr, value bool) {
+   progressBar_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ProgressBar_GetAction(obj uintptr) uintptr {
@@ -19215,6 +21034,11 @@ func ProgressBar_GetExplicitWidth(obj uintptr) int32 {
 func ProgressBar_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := progressBar_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ProgressBar_GetFloating(obj uintptr) bool {
+    ret, _, _ := progressBar_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ProgressBar_GetParent(obj uintptr) uintptr {
@@ -19408,6 +21232,11 @@ func HotKey_BringToFront(obj uintptr)  {
     hotKey_BringToFront.Call(obj)
 }
 
+func HotKey_Dragging(obj uintptr) bool {
+    ret, _, _ := hotKey_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func HotKey_HasParent(obj uintptr) bool {
     ret, _, _ := hotKey_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -19590,6 +21419,10 @@ func HotKey_SetOnChange(obj uintptr, fn interface{}) {
     hotKey_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func HotKey_SetOnContextPopup(obj uintptr, fn interface{}) {
+    hotKey_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func HotKey_SetOnEnter(obj uintptr, fn interface{}) {
     hotKey_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -19616,6 +21449,15 @@ func HotKey_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func HotKey_SetOnMouseUp(obj uintptr, fn interface{}) {
     hotKey_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func HotKey_GetDockSite(obj uintptr) bool {
+    ret, _, _ := hotKey_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HotKey_SetDockSite(obj uintptr, value bool) {
+   hotKey_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
 func HotKey_GetDoubleBuffered(obj uintptr) bool {
@@ -19658,6 +21500,15 @@ func HotKey_GetParentWindow(obj uintptr) HWND {
 
 func HotKey_SetParentWindow(obj uintptr, value HWND) {
    hotKey_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func HotKey_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := hotKey_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HotKey_SetUseDockManager(obj uintptr, value bool) {
+   hotKey_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func HotKey_GetAction(obj uintptr) uintptr {
@@ -19730,6 +21581,11 @@ func HotKey_GetExplicitWidth(obj uintptr) int32 {
 func HotKey_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := hotKey_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func HotKey_GetFloating(obj uintptr) bool {
+    ret, _, _ := hotKey_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func HotKey_GetParent(obj uintptr) uintptr {
@@ -19921,6 +21777,11 @@ func DateTimePicker_Update(obj uintptr)  {
 
 func DateTimePicker_BringToFront(obj uintptr)  {
     dateTimePicker_BringToFront.Call(obj)
+}
+
+func DateTimePicker_Dragging(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func DateTimePicker_HasParent(obj uintptr) bool {
@@ -20160,6 +22021,33 @@ func DateTimePicker_SetDoubleBuffered(obj uintptr, value bool) {
    dateTimePicker_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func DateTimePicker_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := dateTimePicker_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func DateTimePicker_SetDragCursor(obj uintptr, value TCursor) {
+   dateTimePicker_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := dateTimePicker_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func DateTimePicker_SetDragKind(obj uintptr, value TDragKind) {
+   dateTimePicker_SetDragKind.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := dateTimePicker_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func DateTimePicker_SetDragMode(obj uintptr, value TDragMode) {
+   dateTimePicker_SetDragMode.Call(obj, uintptr(value))
+}
+
 func DateTimePicker_GetEnabled(obj uintptr) bool {
     ret, _, _ := dateTimePicker_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -20312,6 +22200,26 @@ func DateTimePicker_SetOnChange(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func DateTimePicker_SetOnContextPopup(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func DateTimePicker_SetOnDragDrop(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func DateTimePicker_SetOnDragOver(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func DateTimePicker_SetOnEndDock(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func DateTimePicker_SetOnEndDrag(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func DateTimePicker_SetOnEnter(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -20340,6 +22248,19 @@ func DateTimePicker_SetOnMouseLeave(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnMouseLeave.Call(obj, addEventToMap(fn))
 }
 
+func DateTimePicker_SetOnStartDock(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func DateTimePicker_GetDockSite(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetDockSite(obj uintptr, value bool) {
+   dateTimePicker_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func DateTimePicker_GetBrush(obj uintptr) uintptr {
     ret, _, _ := dateTimePicker_GetBrush.Call(obj)
     return ret
@@ -20362,6 +22283,15 @@ func DateTimePicker_GetParentWindow(obj uintptr) HWND {
 
 func DateTimePicker_SetParentWindow(obj uintptr, value HWND) {
    dateTimePicker_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_SetUseDockManager(obj uintptr, value bool) {
+   dateTimePicker_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func DateTimePicker_GetAction(obj uintptr) uintptr {
@@ -20425,6 +22355,11 @@ func DateTimePicker_GetExplicitWidth(obj uintptr) int32 {
 func DateTimePicker_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := dateTimePicker_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func DateTimePicker_GetFloating(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func DateTimePicker_GetParent(obj uintptr) uintptr {
@@ -20627,6 +22562,11 @@ func MonthCalendar_BringToFront(obj uintptr)  {
     monthCalendar_BringToFront.Call(obj)
 }
 
+func MonthCalendar_Dragging(obj uintptr) bool {
+    ret, _, _ := monthCalendar_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func MonthCalendar_HasParent(obj uintptr) bool {
     ret, _, _ := monthCalendar_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -20776,6 +22716,33 @@ func MonthCalendar_GetDoubleBuffered(obj uintptr) bool {
 
 func MonthCalendar_SetDoubleBuffered(obj uintptr, value bool) {
    monthCalendar_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func MonthCalendar_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := monthCalendar_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func MonthCalendar_SetDragCursor(obj uintptr, value TCursor) {
+   monthCalendar_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func MonthCalendar_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := monthCalendar_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func MonthCalendar_SetDragKind(obj uintptr, value TDragKind) {
+   monthCalendar_SetDragKind.Call(obj, uintptr(value))
+}
+
+func MonthCalendar_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := monthCalendar_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func MonthCalendar_SetDragMode(obj uintptr, value TDragMode) {
+   monthCalendar_SetDragMode.Call(obj, uintptr(value))
 }
 
 func MonthCalendar_GetEnabled(obj uintptr) bool {
@@ -20935,8 +22902,28 @@ func MonthCalendar_SetOnClick(obj uintptr, fn interface{}) {
     monthCalendar_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func MonthCalendar_SetOnContextPopup(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func MonthCalendar_SetOnDblClick(obj uintptr, fn interface{}) {
     monthCalendar_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func MonthCalendar_SetOnDragDrop(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func MonthCalendar_SetOnDragOver(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func MonthCalendar_SetOnEndDock(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func MonthCalendar_SetOnEndDrag(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func MonthCalendar_SetOnEnter(obj uintptr, fn interface{}) {
@@ -20967,6 +22954,19 @@ func MonthCalendar_SetOnMouseLeave(obj uintptr, fn interface{}) {
     monthCalendar_SetOnMouseLeave.Call(obj, addEventToMap(fn))
 }
 
+func MonthCalendar_SetOnStartDock(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func MonthCalendar_GetDockSite(obj uintptr) bool {
+    ret, _, _ := monthCalendar_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MonthCalendar_SetDockSite(obj uintptr, value bool) {
+   monthCalendar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func MonthCalendar_GetBrush(obj uintptr) uintptr {
     ret, _, _ := monthCalendar_GetBrush.Call(obj)
     return ret
@@ -20989,6 +22989,15 @@ func MonthCalendar_GetParentWindow(obj uintptr) HWND {
 
 func MonthCalendar_SetParentWindow(obj uintptr, value HWND) {
    monthCalendar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func MonthCalendar_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := monthCalendar_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MonthCalendar_SetUseDockManager(obj uintptr, value bool) {
+   monthCalendar_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func MonthCalendar_GetAction(obj uintptr) uintptr {
@@ -21052,6 +23061,11 @@ func MonthCalendar_GetExplicitWidth(obj uintptr) int32 {
 func MonthCalendar_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := monthCalendar_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func MonthCalendar_GetFloating(obj uintptr) bool {
+    ret, _, _ := monthCalendar_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func MonthCalendar_GetParent(obj uintptr) uintptr {
@@ -21307,6 +23321,11 @@ func ListView_BringToFront(obj uintptr)  {
     listView_BringToFront.Call(obj)
 }
 
+func ListView_Dragging(obj uintptr) bool {
+    ret, _, _ := listView_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ListView_HasParent(obj uintptr) bool {
     ret, _, _ := listView_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -21519,6 +23538,33 @@ func ListView_GetDoubleBuffered(obj uintptr) bool {
 
 func ListView_SetDoubleBuffered(obj uintptr, value bool) {
    listView_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := listView_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ListView_SetDragCursor(obj uintptr, value TCursor) {
+   listView_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ListView_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := listView_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ListView_SetDragKind(obj uintptr, value TDragKind) {
+   listView_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ListView_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := listView_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ListView_SetDragMode(obj uintptr, value TDragMode) {
+   listView_SetDragMode.Call(obj, uintptr(value))
 }
 
 func ListView_GetEnabled(obj uintptr) bool {
@@ -21850,8 +23896,20 @@ func ListView_SetOnCompare(obj uintptr, fn interface{}) {
     listView_SetOnCompare.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnContextPopup(obj uintptr, fn interface{}) {
+    listView_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnDblClick(obj uintptr, fn interface{}) {
     listView_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnEndDock(obj uintptr, fn interface{}) {
+    listView_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnEndDrag(obj uintptr, fn interface{}) {
+    listView_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnEnter(obj uintptr, fn interface{}) {
@@ -21864,6 +23922,14 @@ func ListView_SetOnExit(obj uintptr, fn interface{}) {
 
 func ListView_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     listView_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnDragDrop(obj uintptr, fn interface{}) {
+    listView_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnDragOver(obj uintptr, fn interface{}) {
+    listView_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -21908,6 +23974,10 @@ func ListView_SetOnSelectItem(obj uintptr, fn interface{}) {
 
 func ListView_SetOnItemChecked(obj uintptr, fn interface{}) {
     listView_SetOnItemChecked.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnStartDock(obj uintptr, fn interface{}) {
+    listView_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func ListView_GetCanvas(obj uintptr) uintptr {
@@ -21966,6 +24036,15 @@ func ListView_SetItemIndex(obj uintptr, value int32) {
    listView_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ListView_GetDockSite(obj uintptr) bool {
+    ret, _, _ := listView_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetDockSite(obj uintptr, value bool) {
+   listView_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ListView_GetBrush(obj uintptr) uintptr {
     ret, _, _ := listView_GetBrush.Call(obj)
     return ret
@@ -21988,6 +24067,15 @@ func ListView_GetParentWindow(obj uintptr) HWND {
 
 func ListView_SetParentWindow(obj uintptr, value HWND) {
    listView_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ListView_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := listView_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetUseDockManager(obj uintptr, value bool) {
+   listView_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ListView_GetBoundsRect(obj uintptr) TRect {
@@ -22042,6 +24130,11 @@ func ListView_GetExplicitWidth(obj uintptr) int32 {
 func ListView_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := listView_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ListView_GetFloating(obj uintptr) bool {
+    ret, _, _ := listView_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ListView_GetParent(obj uintptr) uintptr {
@@ -22310,6 +24403,11 @@ func TreeView_BringToFront(obj uintptr)  {
     treeView_BringToFront.Call(obj)
 }
 
+func TreeView_Dragging(obj uintptr) bool {
+    ret, _, _ := treeView_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func TreeView_HasParent(obj uintptr) bool {
     ret, _, _ := treeView_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -22495,6 +24593,33 @@ func TreeView_GetDoubleBuffered(obj uintptr) bool {
 
 func TreeView_SetDoubleBuffered(obj uintptr, value bool) {
    treeView_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func TreeView_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := treeView_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func TreeView_SetDragKind(obj uintptr, value TDragKind) {
+   treeView_SetDragKind.Call(obj, uintptr(value))
+}
+
+func TreeView_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := treeView_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func TreeView_SetDragCursor(obj uintptr, value TCursor) {
+   treeView_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := treeView_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func TreeView_SetDragMode(obj uintptr, value TDragMode) {
+   treeView_SetDragMode.Call(obj, uintptr(value))
 }
 
 func TreeView_GetEnabled(obj uintptr) bool {
@@ -22769,8 +24894,28 @@ func TreeView_SetOnCompare(obj uintptr, fn interface{}) {
     treeView_SetOnCompare.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnContextPopup(obj uintptr, fn interface{}) {
+    treeView_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnDblClick(obj uintptr, fn interface{}) {
     treeView_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnDragDrop(obj uintptr, fn interface{}) {
+    treeView_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnDragOver(obj uintptr, fn interface{}) {
+    treeView_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnEndDock(obj uintptr, fn interface{}) {
+    treeView_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnEndDrag(obj uintptr, fn interface{}) {
+    treeView_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnEnter(obj uintptr, fn interface{}) {
@@ -22821,6 +24966,10 @@ func TreeView_SetOnMouseUp(obj uintptr, fn interface{}) {
     treeView_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnStartDock(obj uintptr, fn interface{}) {
+    treeView_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_GetItems(obj uintptr) uintptr {
     ret, _, _ := treeView_GetItems.Call(obj)
     return ret
@@ -22867,6 +25016,15 @@ func TreeView_GetSelectionCount(obj uintptr) uint32 {
     return uint32(ret)
 }
 
+func TreeView_GetDockSite(obj uintptr) bool {
+    ret, _, _ := treeView_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_SetDockSite(obj uintptr, value bool) {
+   treeView_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func TreeView_GetBrush(obj uintptr) uintptr {
     ret, _, _ := treeView_GetBrush.Call(obj)
     return ret
@@ -22889,6 +25047,15 @@ func TreeView_GetParentWindow(obj uintptr) HWND {
 
 func TreeView_SetParentWindow(obj uintptr, value HWND) {
    treeView_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func TreeView_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := treeView_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_SetUseDockManager(obj uintptr, value bool) {
+   treeView_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeView_GetAction(obj uintptr) uintptr {
@@ -22952,6 +25119,11 @@ func TreeView_GetExplicitWidth(obj uintptr) int32 {
 func TreeView_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := treeView_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func TreeView_GetFloating(obj uintptr) bool {
+    ret, _, _ := treeView_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func TreeView_GetParent(obj uintptr) uintptr {
@@ -23159,6 +25331,11 @@ func StatusBar_BringToFront(obj uintptr)  {
     statusBar_BringToFront.Call(obj)
 }
 
+func StatusBar_Dragging(obj uintptr) bool {
+    ret, _, _ := statusBar_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func StatusBar_HasParent(obj uintptr) bool {
     ret, _, _ := statusBar_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -23301,6 +25478,33 @@ func StatusBar_SetDoubleBuffered(obj uintptr, value bool) {
    statusBar_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func StatusBar_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := statusBar_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func StatusBar_SetDragCursor(obj uintptr, value TCursor) {
+   statusBar_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func StatusBar_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := statusBar_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func StatusBar_SetDragKind(obj uintptr, value TDragKind) {
+   statusBar_SetDragKind.Call(obj, uintptr(value))
+}
+
+func StatusBar_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := statusBar_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func StatusBar_SetDragMode(obj uintptr, value TDragMode) {
+   statusBar_SetDragMode.Call(obj, uintptr(value))
+}
+
 func StatusBar_GetEnabled(obj uintptr) bool {
     ret, _, _ := statusBar_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -23440,8 +25644,28 @@ func StatusBar_SetOnClick(obj uintptr, fn interface{}) {
     statusBar_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func StatusBar_SetOnContextPopup(obj uintptr, fn interface{}) {
+    statusBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func StatusBar_SetOnDblClick(obj uintptr, fn interface{}) {
     statusBar_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func StatusBar_SetOnDragDrop(obj uintptr, fn interface{}) {
+    statusBar_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func StatusBar_SetOnDragOver(obj uintptr, fn interface{}) {
+    statusBar_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func StatusBar_SetOnEndDock(obj uintptr, fn interface{}) {
+    statusBar_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func StatusBar_SetOnEndDrag(obj uintptr, fn interface{}) {
+    statusBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func StatusBar_SetOnHint(obj uintptr, fn interface{}) {
@@ -23472,9 +25696,22 @@ func StatusBar_SetOnResize(obj uintptr, fn interface{}) {
     statusBar_SetOnResize.Call(obj, addEventToMap(fn))
 }
 
+func StatusBar_SetOnStartDock(obj uintptr, fn interface{}) {
+    statusBar_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
 func StatusBar_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := statusBar_GetCanvas.Call(obj)
     return ret
+}
+
+func StatusBar_GetDockSite(obj uintptr) bool {
+    ret, _, _ := statusBar_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StatusBar_SetDockSite(obj uintptr, value bool) {
+   statusBar_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
 func StatusBar_GetBrush(obj uintptr) uintptr {
@@ -23517,6 +25754,15 @@ func StatusBar_GetTabStop(obj uintptr) bool {
 
 func StatusBar_SetTabStop(obj uintptr, value bool) {
    statusBar_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func StatusBar_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := statusBar_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StatusBar_SetUseDockManager(obj uintptr, value bool) {
+   statusBar_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func StatusBar_GetBoundsRect(obj uintptr) TRect {
@@ -23571,6 +25817,11 @@ func StatusBar_GetExplicitWidth(obj uintptr) int32 {
 func StatusBar_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := statusBar_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func StatusBar_GetFloating(obj uintptr) bool {
+    ret, _, _ := statusBar_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func StatusBar_GetParent(obj uintptr) uintptr {
@@ -23773,6 +26024,11 @@ func ToolBar_BringToFront(obj uintptr)  {
     toolBar_BringToFront.Call(obj)
 }
 
+func ToolBar_Dragging(obj uintptr) bool {
+    ret, _, _ := toolBar_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ToolBar_HasParent(obj uintptr) bool {
     ret, _, _ := toolBar_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -23955,6 +26211,42 @@ func ToolBar_GetDoubleBuffered(obj uintptr) bool {
 
 func ToolBar_SetDoubleBuffered(obj uintptr, value bool) {
    toolBar_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ToolBar_GetDockSite(obj uintptr) bool {
+    ret, _, _ := toolBar_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToolBar_SetDockSite(obj uintptr, value bool) {
+   toolBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ToolBar_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := toolBar_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ToolBar_SetDragCursor(obj uintptr, value TCursor) {
+   toolBar_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ToolBar_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := toolBar_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ToolBar_SetDragKind(obj uintptr, value TDragKind) {
+   toolBar_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ToolBar_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := toolBar_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ToolBar_SetDragMode(obj uintptr, value TDragMode) {
+   toolBar_SetDragMode.Call(obj, uintptr(value))
 }
 
 func ToolBar_GetDrawingStyle(obj uintptr) TTBDrawingStyle {
@@ -24221,8 +26513,32 @@ func ToolBar_SetOnClick(obj uintptr, fn interface{}) {
     toolBar_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ToolBar_SetOnContextPopup(obj uintptr, fn interface{}) {
+    toolBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ToolBar_SetOnDblClick(obj uintptr, fn interface{}) {
     toolBar_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnDockDrop(obj uintptr, fn interface{}) {
+    toolBar_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnDragDrop(obj uintptr, fn interface{}) {
+    toolBar_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnDragOver(obj uintptr, fn interface{}) {
+    toolBar_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnEndDock(obj uintptr, fn interface{}) {
+    toolBar_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
+    toolBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ToolBar_SetOnEnter(obj uintptr, fn interface{}) {
@@ -24231,6 +26547,10 @@ func ToolBar_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ToolBar_SetOnExit(obj uintptr, fn interface{}) {
     toolBar_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    toolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
 
 func ToolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -24257,6 +26577,14 @@ func ToolBar_SetOnResize(obj uintptr, fn interface{}) {
     toolBar_SetOnResize.Call(obj, addEventToMap(fn))
 }
 
+func ToolBar_SetOnStartDock(obj uintptr, fn interface{}) {
+    toolBar_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnUnDock(obj uintptr, fn interface{}) {
+    toolBar_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
 func ToolBar_GetBrush(obj uintptr) uintptr {
     ret, _, _ := toolBar_GetBrush.Call(obj)
     return ret
@@ -24279,6 +26607,15 @@ func ToolBar_GetParentWindow(obj uintptr) HWND {
 
 func ToolBar_SetParentWindow(obj uintptr, value HWND) {
    toolBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ToolBar_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := toolBar_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToolBar_SetUseDockManager(obj uintptr, value bool) {
+   toolBar_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ToolBar_GetAction(obj uintptr) uintptr {
@@ -24351,6 +26688,11 @@ func ToolBar_GetExplicitWidth(obj uintptr) int32 {
 func ToolBar_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := toolBar_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ToolBar_GetFloating(obj uintptr) bool {
+    ret, _, _ := toolBar_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ToolBar_GetParent(obj uintptr) uintptr {
@@ -24595,6 +26937,11 @@ func MaskEdit_BringToFront(obj uintptr)  {
     maskEdit_BringToFront.Call(obj)
 }
 
+func MaskEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := maskEdit_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func MaskEdit_HasParent(obj uintptr) bool {
     ret, _, _ := maskEdit_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -24777,6 +27124,33 @@ func MaskEdit_SetDoubleBuffered(obj uintptr, value bool) {
    maskEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
+func MaskEdit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := maskEdit_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func MaskEdit_SetDragCursor(obj uintptr, value TCursor) {
+   maskEdit_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := maskEdit_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func MaskEdit_SetDragKind(obj uintptr, value TDragKind) {
+   maskEdit_SetDragKind.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := maskEdit_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func MaskEdit_SetDragMode(obj uintptr, value TDragMode) {
+   maskEdit_SetDragMode.Call(obj, uintptr(value))
+}
+
 func MaskEdit_GetEnabled(obj uintptr) bool {
     ret, _, _ := maskEdit_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -24951,6 +27325,22 @@ func MaskEdit_SetOnDblClick(obj uintptr, fn interface{}) {
     maskEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func MaskEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    maskEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+    maskEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnEndDock(obj uintptr, fn interface{}) {
+    maskEdit_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    maskEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func MaskEdit_SetOnEnter(obj uintptr, fn interface{}) {
     maskEdit_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -24989,6 +27379,10 @@ func MaskEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func MaskEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
     maskEdit_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnStartDock(obj uintptr, fn interface{}) {
+    maskEdit_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func MaskEdit_GetIsMasked(obj uintptr) bool {
@@ -25046,6 +27440,15 @@ func MaskEdit_SetSelText(obj uintptr, value string) {
    maskEdit_SetSelText.Call(obj, GoStrToDStr(value))
 }
 
+func MaskEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetDockSite(obj uintptr, value bool) {
+   maskEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func MaskEdit_GetBrush(obj uintptr) uintptr {
     ret, _, _ := maskEdit_GetBrush.Call(obj)
     return ret
@@ -25068,6 +27471,15 @@ func MaskEdit_GetParentWindow(obj uintptr) HWND {
 
 func MaskEdit_SetParentWindow(obj uintptr, value HWND) {
    maskEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetUseDockManager(obj uintptr, value bool) {
+   maskEdit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func MaskEdit_GetAction(obj uintptr) uintptr {
@@ -25131,6 +27543,11 @@ func MaskEdit_GetExplicitWidth(obj uintptr) int32 {
 func MaskEdit_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := maskEdit_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func MaskEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func MaskEdit_GetParent(obj uintptr) uintptr {
@@ -25337,6 +27754,11 @@ func BitBtn_BringToFront(obj uintptr)  {
     bitBtn_BringToFront.Call(obj)
 }
 
+func BitBtn_Dragging(obj uintptr) bool {
+    ret, _, _ := bitBtn_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func BitBtn_HasParent(obj uintptr) bool {
     ret, _, _ := bitBtn_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -25477,6 +27899,33 @@ func BitBtn_GetDoubleBuffered(obj uintptr) bool {
 
 func BitBtn_SetDoubleBuffered(obj uintptr, value bool) {
    bitBtn_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func BitBtn_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := bitBtn_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func BitBtn_SetDragCursor(obj uintptr, value TCursor) {
+   bitBtn_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := bitBtn_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func BitBtn_SetDragKind(obj uintptr, value TDragKind) {
+   bitBtn_SetDragKind.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := bitBtn_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func BitBtn_SetDragMode(obj uintptr, value TDragMode) {
+   bitBtn_SetDragMode.Call(obj, uintptr(value))
 }
 
 func BitBtn_GetEnabled(obj uintptr) bool {
@@ -25654,6 +28103,26 @@ func BitBtn_SetOnClick(obj uintptr, fn interface{}) {
     bitBtn_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func BitBtn_SetOnContextPopup(obj uintptr, fn interface{}) {
+    bitBtn_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func BitBtn_SetOnDragDrop(obj uintptr, fn interface{}) {
+    bitBtn_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func BitBtn_SetOnDragOver(obj uintptr, fn interface{}) {
+    bitBtn_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func BitBtn_SetOnEndDock(obj uintptr, fn interface{}) {
+    bitBtn_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func BitBtn_SetOnEndDrag(obj uintptr, fn interface{}) {
+    bitBtn_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func BitBtn_SetOnEnter(obj uintptr, fn interface{}) {
     bitBtn_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -25692,6 +28161,10 @@ func BitBtn_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func BitBtn_SetOnMouseUp(obj uintptr, fn interface{}) {
     bitBtn_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func BitBtn_SetOnStartDock(obj uintptr, fn interface{}) {
+    bitBtn_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func BitBtn_GetCommandLinkHint(obj uintptr) string {
@@ -25784,6 +28257,15 @@ func BitBtn_SetStylusHotImageIndex(obj uintptr, value int32) {
    bitBtn_SetStylusHotImageIndex.Call(obj, uintptr(value))
 }
 
+func BitBtn_GetDockSite(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BitBtn_SetDockSite(obj uintptr, value bool) {
+   bitBtn_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func BitBtn_GetBrush(obj uintptr) uintptr {
     ret, _, _ := bitBtn_GetBrush.Call(obj)
     return ret
@@ -25806,6 +28288,15 @@ func BitBtn_GetParentWindow(obj uintptr) HWND {
 
 func BitBtn_SetParentWindow(obj uintptr, value HWND) {
    bitBtn_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BitBtn_SetUseDockManager(obj uintptr, value bool) {
+   bitBtn_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func BitBtn_GetBoundsRect(obj uintptr) TRect {
@@ -25860,6 +28351,11 @@ func BitBtn_GetExplicitWidth(obj uintptr) int32 {
 func BitBtn_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := bitBtn_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func BitBtn_GetFloating(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func BitBtn_GetParent(obj uintptr) uintptr {
@@ -28475,6 +30971,12 @@ func PageControl_SelectNextPage(obj uintptr, GoForward bool, CheckTabVisible boo
     pageControl_SelectNextPage.Call(obj, GoBoolToDBool(GoForward) , GoBoolToDBool(CheckTabVisible) )
 }
 
+func PageControl_TabRect(obj uintptr, Index int32) TRect {
+    var ret TRect
+    pageControl_TabRect.Call(obj, uintptr(Index) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func PageControl_RowCount(obj uintptr) int32 {
     ret, _, _ := pageControl_RowCount.Call(obj)
     return int32(ret)
@@ -28529,6 +31031,11 @@ func PageControl_Update(obj uintptr)  {
 
 func PageControl_BringToFront(obj uintptr)  {
     pageControl_BringToFront.Call(obj)
+}
+
+func PageControl_Dragging(obj uintptr) bool {
+    ret, _, _ := pageControl_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func PageControl_HasParent(obj uintptr) bool {
@@ -28642,6 +31149,15 @@ func PageControl_SetBiDiMode(obj uintptr, value TBiDiMode) {
    pageControl_SetBiDiMode.Call(obj, uintptr(value))
 }
 
+func PageControl_GetDockSite(obj uintptr) bool {
+    ret, _, _ := pageControl_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PageControl_SetDockSite(obj uintptr, value bool) {
+   pageControl_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func PageControl_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := pageControl_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -28649,6 +31165,33 @@ func PageControl_GetDoubleBuffered(obj uintptr) bool {
 
 func PageControl_SetDoubleBuffered(obj uintptr, value bool) {
    pageControl_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func PageControl_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := pageControl_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func PageControl_SetDragCursor(obj uintptr, value TCursor) {
+   pageControl_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func PageControl_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := pageControl_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func PageControl_SetDragKind(obj uintptr, value TDragKind) {
+   pageControl_SetDragKind.Call(obj, uintptr(value))
+}
+
+func PageControl_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := pageControl_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func PageControl_SetDragMode(obj uintptr, value TDragMode) {
+   pageControl_SetDragMode.Call(obj, uintptr(value))
 }
 
 func PageControl_GetEnabled(obj uintptr) bool {
@@ -28826,6 +31369,30 @@ func PageControl_SetOnChange(obj uintptr, fn interface{}) {
     pageControl_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func PageControl_SetOnContextPopup(obj uintptr, fn interface{}) {
+    pageControl_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnDockDrop(obj uintptr, fn interface{}) {
+    pageControl_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnDragDrop(obj uintptr, fn interface{}) {
+    pageControl_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnDragOver(obj uintptr, fn interface{}) {
+    pageControl_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnEndDock(obj uintptr, fn interface{}) {
+    pageControl_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnEndDrag(obj uintptr, fn interface{}) {
+    pageControl_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func PageControl_SetOnEnter(obj uintptr, fn interface{}) {
     pageControl_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -28836,6 +31403,10 @@ func PageControl_SetOnExit(obj uintptr, fn interface{}) {
 
 func PageControl_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     pageControl_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    pageControl_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
 
 func PageControl_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -28860,6 +31431,14 @@ func PageControl_SetOnMouseUp(obj uintptr, fn interface{}) {
 
 func PageControl_SetOnResize(obj uintptr, fn interface{}) {
     pageControl_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnStartDock(obj uintptr, fn interface{}) {
+    pageControl_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnUnDock(obj uintptr, fn interface{}) {
+    pageControl_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
 func PageControl_GetCanvas(obj uintptr) uintptr {
@@ -28889,6 +31468,15 @@ func PageControl_GetParentWindow(obj uintptr) HWND {
 
 func PageControl_SetParentWindow(obj uintptr, value HWND) {
    pageControl_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func PageControl_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := pageControl_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PageControl_SetUseDockManager(obj uintptr, value bool) {
+   pageControl_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func PageControl_GetAction(obj uintptr) uintptr {
@@ -28952,6 +31540,11 @@ func PageControl_GetExplicitWidth(obj uintptr) int32 {
 func PageControl_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := pageControl_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func PageControl_GetFloating(obj uintptr) bool {
+    ret, _, _ := pageControl_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func PageControl_GetParent(obj uintptr) uintptr {
@@ -29159,6 +31752,11 @@ func TabSheet_BringToFront(obj uintptr)  {
     tabSheet_BringToFront.Call(obj)
 }
 
+func TabSheet_Dragging(obj uintptr) bool {
+    ret, _, _ := tabSheet_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func TabSheet_HasParent(obj uintptr) bool {
     ret, _, _ := tabSheet_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -29268,6 +31866,15 @@ func TabSheet_GetDoubleBuffered(obj uintptr) bool {
 
 func TabSheet_SetDoubleBuffered(obj uintptr, value bool) {
    tabSheet_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func TabSheet_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := tabSheet_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func TabSheet_SetDragMode(obj uintptr, value TDragMode) {
+   tabSheet_SetDragMode.Call(obj, uintptr(value))
 }
 
 func TabSheet_GetEnabled(obj uintptr) bool {
@@ -29414,6 +32021,22 @@ func TabSheet_SetWidth(obj uintptr, value int32) {
    tabSheet_SetWidth.Call(obj, uintptr(value))
 }
 
+func TabSheet_SetOnContextPopup(obj uintptr, fn interface{}) {
+    tabSheet_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func TabSheet_SetOnDragDrop(obj uintptr, fn interface{}) {
+    tabSheet_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func TabSheet_SetOnDragOver(obj uintptr, fn interface{}) {
+    tabSheet_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func TabSheet_SetOnEndDrag(obj uintptr, fn interface{}) {
+    tabSheet_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func TabSheet_SetOnEnter(obj uintptr, fn interface{}) {
     tabSheet_SetOnEnter.Call(obj, addEventToMap(fn))
 }
@@ -29452,6 +32075,15 @@ func TabSheet_SetOnResize(obj uintptr, fn interface{}) {
 
 func TabSheet_SetOnShow(obj uintptr, fn interface{}) {
     tabSheet_SetOnShow.Call(obj, addEventToMap(fn))
+}
+
+func TabSheet_GetDockSite(obj uintptr) bool {
+    ret, _, _ := tabSheet_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TabSheet_SetDockSite(obj uintptr, value bool) {
+   tabSheet_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
 func TabSheet_GetBrush(obj uintptr) uintptr {
@@ -29494,6 +32126,15 @@ func TabSheet_GetTabStop(obj uintptr) bool {
 
 func TabSheet_SetTabStop(obj uintptr, value bool) {
    tabSheet_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func TabSheet_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := tabSheet_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TabSheet_SetUseDockManager(obj uintptr, value bool) {
+   tabSheet_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func TabSheet_GetAction(obj uintptr) uintptr {
@@ -29584,6 +32225,11 @@ func TabSheet_GetExplicitWidth(obj uintptr) int32 {
 func TabSheet_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := tabSheet_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func TabSheet_GetFloating(obj uintptr) bool {
+    ret, _, _ := tabSheet_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func TabSheet_GetParent(obj uintptr) uintptr {
@@ -29710,6 +32356,11 @@ func Control_Free(obj uintptr) {
 
 func Control_BringToFront(obj uintptr)  {
     control_BringToFront.Call(obj)
+}
+
+func Control_Dragging(obj uintptr) bool {
+    ret, _, _ := control_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Control_HasParent(obj uintptr) bool {
@@ -29895,6 +32546,11 @@ func Control_GetExplicitWidth(obj uintptr) int32 {
 func Control_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := control_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Control_GetFloating(obj uintptr) bool {
+    ret, _, _ := control_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Control_GetShowHint(obj uintptr) bool {
@@ -32090,6 +34746,11 @@ func ToolButton_BringToFront(obj uintptr)  {
     toolButton_BringToFront.Call(obj)
 }
 
+func ToolButton_Dragging(obj uintptr) bool {
+    ret, _, _ := toolButton_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ToolButton_HasParent(obj uintptr) bool {
     ret, _, _ := toolButton_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -32220,6 +34881,33 @@ func ToolButton_GetDown(obj uintptr) bool {
 
 func ToolButton_SetDown(obj uintptr, value bool) {
    toolButton_SetDown.Call(obj, GoBoolToDBool(value))
+}
+
+func ToolButton_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := toolButton_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ToolButton_SetDragCursor(obj uintptr, value TCursor) {
+   toolButton_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ToolButton_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := toolButton_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ToolButton_SetDragKind(obj uintptr, value TDragKind) {
+   toolButton_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ToolButton_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := toolButton_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ToolButton_SetDragMode(obj uintptr, value TDragMode) {
+   toolButton_SetDragMode.Call(obj, uintptr(value))
 }
 
 func ToolButton_GetDropdownMenu(obj uintptr) uintptr {
@@ -32361,6 +35049,26 @@ func ToolButton_SetOnClick(obj uintptr, fn interface{}) {
     toolButton_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ToolButton_SetOnContextPopup(obj uintptr, fn interface{}) {
+    toolButton_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func ToolButton_SetOnDragDrop(obj uintptr, fn interface{}) {
+    toolButton_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ToolButton_SetOnDragOver(obj uintptr, fn interface{}) {
+    toolButton_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ToolButton_SetOnEndDock(obj uintptr, fn interface{}) {
+    toolButton_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ToolButton_SetOnEndDrag(obj uintptr, fn interface{}) {
+    toolButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func ToolButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     toolButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -32379,6 +35087,10 @@ func ToolButton_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func ToolButton_SetOnMouseUp(obj uintptr, fn interface{}) {
     toolButton_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func ToolButton_SetOnStartDock(obj uintptr, fn interface{}) {
+    toolButton_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func ToolButton_GetAlign(obj uintptr) TAlign {
@@ -32460,6 +35172,11 @@ func ToolButton_GetExplicitWidth(obj uintptr) int32 {
 func ToolButton_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := toolButton_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ToolButton_GetFloating(obj uintptr) bool {
+    ret, _, _ := toolButton_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ToolButton_GetParent(obj uintptr) uintptr {
@@ -33270,6 +35987,11 @@ func PaintBox_BringToFront(obj uintptr)  {
     paintBox_BringToFront.Call(obj)
 }
 
+func PaintBox_Dragging(obj uintptr) bool {
+    ret, _, _ := paintBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func PaintBox_HasParent(obj uintptr) bool {
     ret, _, _ := paintBox_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -33388,6 +36110,33 @@ func PaintBox_SetColor(obj uintptr, value TColor) {
    paintBox_SetColor.Call(obj, uintptr(value))
 }
 
+func PaintBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := paintBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func PaintBox_SetDragCursor(obj uintptr, value TCursor) {
+   paintBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func PaintBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := paintBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func PaintBox_SetDragKind(obj uintptr, value TDragKind) {
+   paintBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func PaintBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := paintBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func PaintBox_SetDragMode(obj uintptr, value TDragMode) {
+   paintBox_SetDragMode.Call(obj, uintptr(value))
+}
+
 func PaintBox_GetEnabled(obj uintptr) bool {
     ret, _, _ := paintBox_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -33464,8 +36213,28 @@ func PaintBox_SetOnClick(obj uintptr, fn interface{}) {
     paintBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func PaintBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    paintBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func PaintBox_SetOnDblClick(obj uintptr, fn interface{}) {
     paintBox_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    paintBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    paintBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    paintBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    paintBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func PaintBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -33490,6 +36259,10 @@ func PaintBox_SetOnMouseUp(obj uintptr, fn interface{}) {
 
 func PaintBox_SetOnPaint(obj uintptr, fn interface{}) {
     paintBox_SetOnPaint.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    paintBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func PaintBox_GetAction(obj uintptr) uintptr {
@@ -33562,6 +36335,11 @@ func PaintBox_GetExplicitWidth(obj uintptr) int32 {
 func PaintBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := paintBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func PaintBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := paintBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func PaintBox_GetParent(obj uintptr) uintptr {
@@ -34546,6 +37324,11 @@ func ScrollBar_BringToFront(obj uintptr)  {
     scrollBar_BringToFront.Call(obj)
 }
 
+func ScrollBar_Dragging(obj uintptr) bool {
+    ret, _, _ := scrollBar_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ScrollBar_HasParent(obj uintptr) bool {
     ret, _, _ := scrollBar_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -34650,6 +37433,33 @@ func ScrollBar_GetDoubleBuffered(obj uintptr) bool {
 
 func ScrollBar_SetDoubleBuffered(obj uintptr, value bool) {
    scrollBar_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ScrollBar_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := scrollBar_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ScrollBar_SetDragCursor(obj uintptr, value TCursor) {
+   scrollBar_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ScrollBar_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := scrollBar_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ScrollBar_SetDragKind(obj uintptr, value TDragKind) {
+   scrollBar_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ScrollBar_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := scrollBar_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ScrollBar_SetDragMode(obj uintptr, value TDragMode) {
+   scrollBar_SetDragMode.Call(obj, uintptr(value))
 }
 
 func ScrollBar_GetEnabled(obj uintptr) bool {
@@ -34805,8 +37615,28 @@ func ScrollBar_SetStyleElements(obj uintptr, value TStyleElements) {
    scrollBar_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func ScrollBar_SetOnContextPopup(obj uintptr, fn interface{}) {
+    scrollBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBar_SetOnChange(obj uintptr, fn interface{}) {
     scrollBar_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBar_SetOnDragDrop(obj uintptr, fn interface{}) {
+    scrollBar_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBar_SetOnDragOver(obj uintptr, fn interface{}) {
+    scrollBar_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBar_SetOnEndDock(obj uintptr, fn interface{}) {
+    scrollBar_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBar_SetOnEndDrag(obj uintptr, fn interface{}) {
+    scrollBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBar_SetOnEnter(obj uintptr, fn interface{}) {
@@ -34837,6 +37667,19 @@ func ScrollBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
     scrollBar_SetOnMouseLeave.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBar_SetOnStartDock(obj uintptr, fn interface{}) {
+    scrollBar_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBar_GetDockSite(obj uintptr) bool {
+    ret, _, _ := scrollBar_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBar_SetDockSite(obj uintptr, value bool) {
+   scrollBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ScrollBar_GetBrush(obj uintptr) uintptr {
     ret, _, _ := scrollBar_GetBrush.Call(obj)
     return ret
@@ -34859,6 +37702,15 @@ func ScrollBar_GetParentWindow(obj uintptr) HWND {
 
 func ScrollBar_SetParentWindow(obj uintptr, value HWND) {
    scrollBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ScrollBar_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := scrollBar_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBar_SetUseDockManager(obj uintptr, value bool) {
+   scrollBar_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ScrollBar_GetAction(obj uintptr) uintptr {
@@ -34922,6 +37774,11 @@ func ScrollBar_GetExplicitWidth(obj uintptr) int32 {
 func ScrollBar_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := scrollBar_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ScrollBar_GetFloating(obj uintptr) bool {
+    ret, _, _ := scrollBar_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ScrollBar_GetParent(obj uintptr) uintptr {
@@ -35246,6 +38103,11 @@ func Shape_BringToFront(obj uintptr)  {
     shape_BringToFront.Call(obj)
 }
 
+func Shape_Dragging(obj uintptr) bool {
+    ret, _, _ := shape_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Shape_HasParent(obj uintptr) bool {
     ret, _, _ := shape_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -35359,6 +38221,33 @@ func Shape_SetBrush(obj uintptr, value uintptr) {
    shape_SetBrush.Call(obj, value)
 }
 
+func Shape_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := shape_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func Shape_SetDragCursor(obj uintptr, value TCursor) {
+   shape_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func Shape_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := shape_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func Shape_SetDragKind(obj uintptr, value TDragKind) {
+   shape_SetDragKind.Call(obj, uintptr(value))
+}
+
+func Shape_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := shape_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func Shape_SetDragMode(obj uintptr, value TDragMode) {
+   shape_SetDragMode.Call(obj, uintptr(value))
+}
+
 func Shape_GetEnabled(obj uintptr) bool {
     ret, _, _ := shape_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -35413,6 +38302,26 @@ func Shape_SetVisible(obj uintptr, value bool) {
    shape_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
+func Shape_SetOnContextPopup(obj uintptr, fn interface{}) {
+    shape_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func Shape_SetOnDragDrop(obj uintptr, fn interface{}) {
+    shape_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func Shape_SetOnDragOver(obj uintptr, fn interface{}) {
+    shape_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func Shape_SetOnEndDock(obj uintptr, fn interface{}) {
+    shape_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func Shape_SetOnEndDrag(obj uintptr, fn interface{}) {
+    shape_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
 func Shape_SetOnMouseDown(obj uintptr, fn interface{}) {
     shape_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -35431,6 +38340,10 @@ func Shape_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Shape_SetOnMouseUp(obj uintptr, fn interface{}) {
     shape_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func Shape_SetOnStartDock(obj uintptr, fn interface{}) {
+    shape_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Shape_GetAction(obj uintptr) uintptr {
@@ -35503,6 +38416,11 @@ func Shape_GetExplicitWidth(obj uintptr) int32 {
 func Shape_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := shape_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func Shape_GetFloating(obj uintptr) bool {
+    ret, _, _ := shape_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Shape_GetParent(obj uintptr) uintptr {
@@ -35660,6 +38578,11 @@ func Bevel_Free(obj uintptr) {
 
 func Bevel_BringToFront(obj uintptr)  {
     bevel_BringToFront.Call(obj)
+}
+
+func Bevel_Dragging(obj uintptr) bool {
+    ret, _, _ := bevel_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Bevel_HasParent(obj uintptr) bool {
@@ -35892,6 +38815,11 @@ func Bevel_GetExplicitHeight(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Bevel_GetFloating(obj uintptr) bool {
+    ret, _, _ := bevel_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Bevel_GetParent(obj uintptr) uintptr {
     ret, _, _ := bevel_GetParent.Call(obj)
     return ret
@@ -36096,6 +39024,11 @@ func ScrollBox_BringToFront(obj uintptr)  {
     scrollBox_BringToFront.Call(obj)
 }
 
+func ScrollBox_Dragging(obj uintptr) bool {
+    ret, _, _ := scrollBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ScrollBox_HasParent(obj uintptr) bool {
     ret, _, _ := scrollBox_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -36247,6 +39180,15 @@ func ScrollBox_SetBorderStyle(obj uintptr, value TBorderStyle) {
    scrollBox_SetBorderStyle.Call(obj, uintptr(value))
 }
 
+func ScrollBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := scrollBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBox_SetDockSite(obj uintptr, value bool) {
+   scrollBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func ScrollBox_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := scrollBox_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -36254,6 +39196,33 @@ func ScrollBox_GetDoubleBuffered(obj uintptr) bool {
 
 func ScrollBox_SetDoubleBuffered(obj uintptr, value bool) {
    scrollBox_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ScrollBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := scrollBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ScrollBox_SetDragCursor(obj uintptr, value TCursor) {
+   scrollBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ScrollBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := scrollBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ScrollBox_SetDragKind(obj uintptr, value TDragKind) {
+   scrollBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ScrollBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := scrollBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ScrollBox_SetDragMode(obj uintptr, value TDragMode) {
+   scrollBox_SetDragMode.Call(obj, uintptr(value))
 }
 
 func ScrollBox_GetEnabled(obj uintptr) bool {
@@ -36395,8 +39364,32 @@ func ScrollBox_SetOnClick(obj uintptr, fn interface{}) {
     scrollBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    scrollBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBox_SetOnDblClick(obj uintptr, fn interface{}) {
     scrollBox_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnDockDrop(obj uintptr, fn interface{}) {
+    scrollBox_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    scrollBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    scrollBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    scrollBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    scrollBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBox_SetOnEnter(obj uintptr, fn interface{}) {
@@ -36405,6 +39398,10 @@ func ScrollBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ScrollBox_SetOnExit(obj uintptr, fn interface{}) {
     scrollBox_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    scrollBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -36431,8 +39428,24 @@ func ScrollBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
     scrollBox_SetOnMouseWheel.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    scrollBox_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    scrollBox_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBox_SetOnResize(obj uintptr, fn interface{}) {
     scrollBox_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    scrollBox_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnUnDock(obj uintptr, fn interface{}) {
+    scrollBox_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBox_GetBrush(obj uintptr) uintptr {
@@ -36457,6 +39470,15 @@ func ScrollBox_GetParentWindow(obj uintptr) HWND {
 
 func ScrollBox_SetParentWindow(obj uintptr, value HWND) {
    scrollBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ScrollBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := scrollBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBox_SetUseDockManager(obj uintptr, value bool) {
+   scrollBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func ScrollBox_GetAction(obj uintptr) uintptr {
@@ -36520,6 +39542,11 @@ func ScrollBox_GetExplicitWidth(obj uintptr) int32 {
 func ScrollBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := scrollBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ScrollBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := scrollBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ScrollBox_GetParent(obj uintptr) uintptr {
@@ -36746,6 +39773,11 @@ func CheckListBox_BringToFront(obj uintptr)  {
     checkListBox_BringToFront.Call(obj)
 }
 
+func CheckListBox_Dragging(obj uintptr) bool {
+    ret, _, _ := checkListBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func CheckListBox_HasParent(obj uintptr) bool {
     ret, _, _ := checkListBox_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -36935,6 +39967,33 @@ func CheckListBox_GetDoubleBuffered(obj uintptr) bool {
 
 func CheckListBox_SetDoubleBuffered(obj uintptr, value bool) {
    checkListBox_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckListBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := checkListBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CheckListBox_SetDragCursor(obj uintptr, value TCursor) {
+   checkListBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func CheckListBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := checkListBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func CheckListBox_SetDragKind(obj uintptr, value TDragKind) {
+   checkListBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func CheckListBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := checkListBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func CheckListBox_SetDragMode(obj uintptr, value TDragMode) {
+   checkListBox_SetDragMode.Call(obj, uintptr(value))
 }
 
 func CheckListBox_GetEnabled(obj uintptr) bool {
@@ -37130,8 +40189,28 @@ func CheckListBox_SetOnClick(obj uintptr, fn interface{}) {
     checkListBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func CheckListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
+    checkListBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func CheckListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     checkListBox_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    checkListBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    checkListBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnEndDock(obj uintptr, fn interface{}) {
+    checkListBox_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    checkListBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_SetOnEnter(obj uintptr, fn interface{}) {
@@ -37172,6 +40251,10 @@ func CheckListBox_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func CheckListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     checkListBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnStartDock(obj uintptr, fn interface{}) {
+    checkListBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_GetAutoCompleteDelay(obj uintptr) uint32 {
@@ -37220,6 +40303,15 @@ func CheckListBox_SetItemIndex(obj uintptr, value int32) {
    checkListBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func CheckListBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := checkListBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckListBox_SetDockSite(obj uintptr, value bool) {
+   checkListBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
 func CheckListBox_GetBrush(obj uintptr) uintptr {
     ret, _, _ := checkListBox_GetBrush.Call(obj)
     return ret
@@ -37242,6 +40334,15 @@ func CheckListBox_GetParentWindow(obj uintptr) HWND {
 
 func CheckListBox_SetParentWindow(obj uintptr, value HWND) {
    checkListBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func CheckListBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := checkListBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckListBox_SetUseDockManager(obj uintptr, value bool) {
+   checkListBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func CheckListBox_GetAction(obj uintptr) uintptr {
@@ -37305,6 +40406,11 @@ func CheckListBox_GetExplicitWidth(obj uintptr) int32 {
 func CheckListBox_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := checkListBox_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func CheckListBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := checkListBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func CheckListBox_GetParent(obj uintptr) uintptr {
@@ -37507,6 +40613,11 @@ func Gauge_AddProgress(obj uintptr, Value int32)  {
 
 func Gauge_BringToFront(obj uintptr)  {
     gauge_BringToFront.Call(obj)
+}
+
+func Gauge_Dragging(obj uintptr) bool {
+    ret, _, _ := gauge_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Gauge_HasParent(obj uintptr) bool {
@@ -37843,6 +40954,11 @@ func Gauge_GetExplicitHeight(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Gauge_GetFloating(obj uintptr) bool {
+    ret, _, _ := gauge_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Gauge_GetParent(obj uintptr) uintptr {
     ret, _, _ := gauge_GetParent.Call(obj)
     return ret
@@ -38004,6 +41120,11 @@ func ImageButton_BringToFront(obj uintptr)  {
     imageButton_BringToFront.Call(obj)
 }
 
+func ImageButton_Dragging(obj uintptr) bool {
+    ret, _, _ := imageButton_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ImageButton_HasParent(obj uintptr) bool {
     ret, _, _ := imageButton_HasParent.Call(obj)
     return DBoolToGoBool(ret)
@@ -38135,6 +41256,33 @@ func ImageButton_SetCaption(obj uintptr, value string) {
    imageButton_SetCaption.Call(obj, GoStrToDStr(value))
 }
 
+func ImageButton_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := imageButton_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ImageButton_SetDragCursor(obj uintptr, value TCursor) {
+   imageButton_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ImageButton_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := imageButton_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ImageButton_SetDragKind(obj uintptr, value TDragKind) {
+   imageButton_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ImageButton_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := imageButton_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ImageButton_SetDragMode(obj uintptr, value TDragMode) {
+   imageButton_SetDragMode.Call(obj, uintptr(value))
+}
+
 func ImageButton_GetEnabled(obj uintptr) bool {
     ret, _, _ := imageButton_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -38238,8 +41386,28 @@ func ImageButton_SetOnClick(obj uintptr, fn interface{}) {
     imageButton_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
+func ImageButton_SetOnContextPopup(obj uintptr, fn interface{}) {
+    imageButton_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
 func ImageButton_SetOnDblClick(obj uintptr, fn interface{}) {
     imageButton_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ImageButton_SetOnDragDrop(obj uintptr, fn interface{}) {
+    imageButton_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ImageButton_SetOnDragOver(obj uintptr, fn interface{}) {
+    imageButton_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ImageButton_SetOnEndDock(obj uintptr, fn interface{}) {
+    imageButton_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ImageButton_SetOnEndDrag(obj uintptr, fn interface{}) {
+    imageButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func ImageButton_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -38323,6 +41491,11 @@ func ImageButton_GetExplicitWidth(obj uintptr) int32 {
 func ImageButton_GetExplicitHeight(obj uintptr) int32 {
     ret, _, _ := imageButton_GetExplicitHeight.Call(obj)
     return int32(ret)
+}
+
+func ImageButton_GetFloating(obj uintptr) bool {
+    ret, _, _ := imageButton_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ImageButton_GetParent(obj uintptr) uintptr {
@@ -39142,5 +42315,324 @@ func PageSetupDialog_SetTag(obj uintptr, value int) {
 func PageSetupDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := pageSetupDialog_GetComponents.Call(obj, uintptr(AIndex))
     return ret
+}
+
+
+//--------------------------- TDragObject ---------------------------
+
+func DragObject_Create() uintptr {
+    ret, _, _ := dragObject_Create.Call()
+    return ret
+}
+
+func DragObject_Free(obj uintptr) {
+    dragObject_Free.Call(obj)
+}
+
+func DragObject_Assign(obj uintptr, Source uintptr)  {
+    dragObject_Assign.Call(obj, Source )
+}
+
+func DragObject_HideDragImage(obj uintptr)  {
+    dragObject_HideDragImage.Call(obj)
+}
+
+func DragObject_ShowDragImage(obj uintptr)  {
+    dragObject_ShowDragImage.Call(obj)
+}
+
+func DragObject_ClassName(obj uintptr) string {
+    ret, _, _ := dragObject_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DragObject_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := dragObject_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func DragObject_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := dragObject_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func DragObject_ToString(obj uintptr) string {
+    ret, _, _ := dragObject_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DragObject_GetAlwaysShowDragImages(obj uintptr) bool {
+    ret, _, _ := dragObject_GetAlwaysShowDragImages.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragObject_SetAlwaysShowDragImages(obj uintptr, value bool) {
+   dragObject_SetAlwaysShowDragImages.Call(obj, GoBoolToDBool(value))
+}
+
+func DragObject_GetCancelling(obj uintptr) bool {
+    ret, _, _ := dragObject_GetCancelling.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragObject_SetCancelling(obj uintptr, value bool) {
+   dragObject_SetCancelling.Call(obj, GoBoolToDBool(value))
+}
+
+func DragObject_GetDragHandle(obj uintptr) HWND {
+    ret, _, _ := dragObject_GetDragHandle.Call(obj)
+    return HWND(ret)
+}
+
+func DragObject_SetDragHandle(obj uintptr, value HWND) {
+   dragObject_SetDragHandle.Call(obj, uintptr(value))
+}
+
+func DragObject_GetDragPos(obj uintptr) TPoint {
+    var ret TPoint
+    dragObject_GetDragPos.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragObject_SetDragPos(obj uintptr, value TPoint) {
+   dragObject_SetDragPos.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DragObject_GetDragTarget(obj uintptr) uintptr {
+    ret, _, _ := dragObject_GetDragTarget.Call(obj)
+    return ret
+}
+
+func DragObject_SetDragTarget(obj uintptr, value uintptr) {
+   dragObject_SetDragTarget.Call(obj, value)
+}
+
+func DragObject_GetDragTargetPos(obj uintptr) TPoint {
+    var ret TPoint
+    dragObject_GetDragTargetPos.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragObject_SetDragTargetPos(obj uintptr, value TPoint) {
+   dragObject_SetDragTargetPos.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DragObject_GetDropped(obj uintptr) bool {
+    ret, _, _ := dragObject_GetDropped.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragObject_GetMouseDeltaX(obj uintptr) float64 {
+    var ret float64
+    dragObject_GetMouseDeltaX.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragObject_GetMouseDeltaY(obj uintptr) float64 {
+    var ret float64
+    dragObject_GetMouseDeltaY.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragObject_GetRightClickCancels(obj uintptr) bool {
+    ret, _, _ := dragObject_GetRightClickCancels.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragObject_SetRightClickCancels(obj uintptr, value bool) {
+   dragObject_SetRightClickCancels.Call(obj, GoBoolToDBool(value))
+}
+
+
+//--------------------------- TDragDockObject ---------------------------
+
+func DragDockObject_Create() uintptr {
+    ret, _, _ := dragDockObject_Create.Call()
+    return ret
+}
+
+func DragDockObject_Free(obj uintptr) {
+    dragDockObject_Free.Call(obj)
+}
+
+func DragDockObject_Assign(obj uintptr, Source uintptr)  {
+    dragDockObject_Assign.Call(obj, Source )
+}
+
+func DragDockObject_HideDragImage(obj uintptr)  {
+    dragDockObject_HideDragImage.Call(obj)
+}
+
+func DragDockObject_ShowDragImage(obj uintptr)  {
+    dragDockObject_ShowDragImage.Call(obj)
+}
+
+func DragDockObject_ClassName(obj uintptr) string {
+    ret, _, _ := dragDockObject_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DragDockObject_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := dragDockObject_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func DragDockObject_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := dragDockObject_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func DragDockObject_ToString(obj uintptr) string {
+    ret, _, _ := dragDockObject_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DragDockObject_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := dragDockObject_GetBrush.Call(obj)
+    return ret
+}
+
+func DragDockObject_SetBrush(obj uintptr, value uintptr) {
+   dragDockObject_SetBrush.Call(obj, value)
+}
+
+func DragDockObject_GetDockRect(obj uintptr) TRect {
+    var ret TRect
+    dragDockObject_GetDockRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragDockObject_SetDockRect(obj uintptr, value TRect) {
+   dragDockObject_SetDockRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DragDockObject_GetDropAlign(obj uintptr) TAlign {
+    ret, _, _ := dragDockObject_GetDropAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func DragDockObject_GetDropOnControl(obj uintptr) uintptr {
+    ret, _, _ := dragDockObject_GetDropOnControl.Call(obj)
+    return ret
+}
+
+func DragDockObject_GetEraseDockRect(obj uintptr) TRect {
+    var ret TRect
+    dragDockObject_GetEraseDockRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragDockObject_SetEraseDockRect(obj uintptr, value TRect) {
+   dragDockObject_SetEraseDockRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DragDockObject_GetEraseWhenMoving(obj uintptr) bool {
+    ret, _, _ := dragDockObject_GetEraseWhenMoving.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragDockObject_GetFloating(obj uintptr) bool {
+    ret, _, _ := dragDockObject_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragDockObject_SetFloating(obj uintptr, value bool) {
+   dragDockObject_SetFloating.Call(obj, GoBoolToDBool(value))
+}
+
+func DragDockObject_GetFrameWidth(obj uintptr) int32 {
+    ret, _, _ := dragDockObject_GetFrameWidth.Call(obj)
+    return int32(ret)
+}
+
+func DragDockObject_GetControl(obj uintptr) uintptr {
+    ret, _, _ := dragDockObject_GetControl.Call(obj)
+    return ret
+}
+
+func DragDockObject_SetControl(obj uintptr, value uintptr) {
+   dragDockObject_SetControl.Call(obj, value)
+}
+
+func DragDockObject_GetAlwaysShowDragImages(obj uintptr) bool {
+    ret, _, _ := dragDockObject_GetAlwaysShowDragImages.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragDockObject_SetAlwaysShowDragImages(obj uintptr, value bool) {
+   dragDockObject_SetAlwaysShowDragImages.Call(obj, GoBoolToDBool(value))
+}
+
+func DragDockObject_GetCancelling(obj uintptr) bool {
+    ret, _, _ := dragDockObject_GetCancelling.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragDockObject_SetCancelling(obj uintptr, value bool) {
+   dragDockObject_SetCancelling.Call(obj, GoBoolToDBool(value))
+}
+
+func DragDockObject_GetDragHandle(obj uintptr) HWND {
+    ret, _, _ := dragDockObject_GetDragHandle.Call(obj)
+    return HWND(ret)
+}
+
+func DragDockObject_SetDragHandle(obj uintptr, value HWND) {
+   dragDockObject_SetDragHandle.Call(obj, uintptr(value))
+}
+
+func DragDockObject_GetDragPos(obj uintptr) TPoint {
+    var ret TPoint
+    dragDockObject_GetDragPos.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragDockObject_SetDragPos(obj uintptr, value TPoint) {
+   dragDockObject_SetDragPos.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DragDockObject_GetDragTarget(obj uintptr) uintptr {
+    ret, _, _ := dragDockObject_GetDragTarget.Call(obj)
+    return ret
+}
+
+func DragDockObject_SetDragTarget(obj uintptr, value uintptr) {
+   dragDockObject_SetDragTarget.Call(obj, value)
+}
+
+func DragDockObject_GetDragTargetPos(obj uintptr) TPoint {
+    var ret TPoint
+    dragDockObject_GetDragTargetPos.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragDockObject_SetDragTargetPos(obj uintptr, value TPoint) {
+   dragDockObject_SetDragTargetPos.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DragDockObject_GetDropped(obj uintptr) bool {
+    ret, _, _ := dragDockObject_GetDropped.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragDockObject_GetMouseDeltaX(obj uintptr) float64 {
+    var ret float64
+    dragDockObject_GetMouseDeltaX.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragDockObject_GetMouseDeltaY(obj uintptr) float64 {
+    var ret float64
+    dragDockObject_GetMouseDeltaY.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DragDockObject_GetRightClickCancels(obj uintptr) bool {
+    ret, _, _ := dragDockObject_GetRightClickCancels.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DragDockObject_SetRightClickCancels(obj uintptr, value bool) {
+   dragDockObject_SetRightClickCancels.Call(obj, GoBoolToDBool(value))
 }
 

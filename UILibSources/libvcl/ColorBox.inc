@@ -100,6 +100,11 @@ begin
   AObj.BringToFront;
 end;
 
+function ColorBox_Dragging(AObj: TColorBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ColorBox_HasParent(AObj: TColorBox): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -499,6 +504,66 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ColorBox_SetOnContextPopup(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure ColorBox_SetOnDragDrop(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ColorBox_SetOnDragOver(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ColorBox_SetOnEndDock(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ColorBox_SetOnEndDrag(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure ColorBox_SetOnEnter(AObj: TColorBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -581,6 +646,18 @@ begin
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
   TEventClass.Add(AObj, geMouseLeave, AEventId);
+end;
+
+procedure ColorBox_SetOnStartDock(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
 function ColorBox_GetAutoCompleteDelay(AObj: TColorBox): Cardinal; stdcall;
@@ -678,6 +755,16 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ColorBox_GetDockSite(AObj: TColorBox): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ColorBox_SetDockSite(AObj: TColorBox; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ColorBox_GetBrush(AObj: TColorBox): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -701,6 +788,16 @@ end;
 procedure ColorBox_SetParentWindow(AObj: TColorBox; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ColorBox_GetUseDockManager(AObj: TColorBox): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ColorBox_SetUseDockManager(AObj: TColorBox; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ColorBox_GetAction(AObj: TColorBox): TBasicAction; stdcall;
@@ -766,6 +863,11 @@ end;
 function ColorBox_GetExplicitHeight(AObj: TColorBox): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function ColorBox_GetFloating(AObj: TColorBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ColorBox_GetParent(AObj: TColorBox): TWinControl; stdcall;
@@ -949,6 +1051,7 @@ exports
   ColorBox_SetFocus,
   ColorBox_Update,
   ColorBox_BringToFront,
+  ColorBox_Dragging,
   ColorBox_HasParent,
   ColorBox_Hide,
   ColorBox_Perform,
@@ -1026,6 +1129,11 @@ exports
   ColorBox_SetStyleElements,
   ColorBox_SetOnChange,
   ColorBox_SetOnClick,
+  ColorBox_SetOnContextPopup,
+  ColorBox_SetOnDragDrop,
+  ColorBox_SetOnDragOver,
+  ColorBox_SetOnEndDock,
+  ColorBox_SetOnEndDrag,
   ColorBox_SetOnEnter,
   ColorBox_SetOnExit,
   ColorBox_SetOnKeyDown,
@@ -1033,6 +1141,7 @@ exports
   ColorBox_SetOnKeyUp,
   ColorBox_SetOnMouseEnter,
   ColorBox_SetOnMouseLeave,
+  ColorBox_SetOnStartDock,
   ColorBox_GetAutoCompleteDelay,
   ColorBox_SetAutoCompleteDelay,
   ColorBox_GetAutoCloseUp,
@@ -1052,11 +1161,15 @@ exports
   ColorBox_SetSelStart,
   ColorBox_GetItemIndex,
   ColorBox_SetItemIndex,
+  ColorBox_GetDockSite,
+  ColorBox_SetDockSite,
   ColorBox_GetBrush,
   ColorBox_GetControlCount,
   ColorBox_GetHandle,
   ColorBox_GetParentWindow,
   ColorBox_SetParentWindow,
+  ColorBox_GetUseDockManager,
+  ColorBox_SetUseDockManager,
   ColorBox_GetAction,
   ColorBox_SetAction,
   ColorBox_GetBoundsRect,
@@ -1070,6 +1183,7 @@ exports
   ColorBox_GetExplicitTop,
   ColorBox_GetExplicitWidth,
   ColorBox_GetExplicitHeight,
+  ColorBox_GetFloating,
   ColorBox_GetParent,
   ColorBox_SetParent,
   ColorBox_GetAlignWithMargins,

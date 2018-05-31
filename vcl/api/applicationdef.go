@@ -13,3 +13,7 @@ func Application_CreateForm(app uintptr) uintptr {
 func Application_Run(app uintptr) {
 	application_Run.Call(app)
 }
+
+func Application_Initialize(obj uintptr) {
+	application_Initialize.Call(obj)
+}

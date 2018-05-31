@@ -75,6 +75,11 @@ begin
   AObj.BringToFront;
 end;
 
+function MonthCalendar_Dragging(AObj: TMonthCalendar): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function MonthCalendar_HasParent(AObj: TMonthCalendar): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -238,6 +243,36 @@ end;
 procedure MonthCalendar_SetDoubleBuffered(AObj: TMonthCalendar; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function MonthCalendar_GetDragCursor(AObj: TMonthCalendar): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure MonthCalendar_SetDragCursor(AObj: TMonthCalendar; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function MonthCalendar_GetDragKind(AObj: TMonthCalendar): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure MonthCalendar_SetDragKind(AObj: TMonthCalendar; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function MonthCalendar_GetDragMode(AObj: TMonthCalendar): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure MonthCalendar_SetDragMode(AObj: TMonthCalendar; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function MonthCalendar_GetEnabled(AObj: TMonthCalendar): LongBool; stdcall;
@@ -422,6 +457,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure MonthCalendar_SetOnContextPopup(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure MonthCalendar_SetOnDblClick(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -432,6 +479,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure MonthCalendar_SetOnDragDrop(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure MonthCalendar_SetOnDragOver(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure MonthCalendar_SetOnEndDock(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure MonthCalendar_SetOnEndDrag(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure MonthCalendar_SetOnEnter(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
@@ -518,6 +613,28 @@ begin
   TEventClass.Add(AObj, geMouseLeave, AEventId);
 end;
 
+procedure MonthCalendar_SetOnStartDock(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
+function MonthCalendar_GetDockSite(AObj: TMonthCalendar): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure MonthCalendar_SetDockSite(AObj: TMonthCalendar; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function MonthCalendar_GetBrush(AObj: TMonthCalendar): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -541,6 +658,16 @@ end;
 procedure MonthCalendar_SetParentWindow(AObj: TMonthCalendar; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function MonthCalendar_GetUseDockManager(AObj: TMonthCalendar): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure MonthCalendar_SetUseDockManager(AObj: TMonthCalendar; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function MonthCalendar_GetAction(AObj: TMonthCalendar): TBasicAction; stdcall;
@@ -606,6 +733,11 @@ end;
 function MonthCalendar_GetExplicitHeight(AObj: TMonthCalendar): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function MonthCalendar_GetFloating(AObj: TMonthCalendar): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function MonthCalendar_GetParent(AObj: TMonthCalendar): TWinControl; stdcall;
@@ -784,6 +916,7 @@ exports
   MonthCalendar_SetFocus,
   MonthCalendar_Update,
   MonthCalendar_BringToFront,
+  MonthCalendar_Dragging,
   MonthCalendar_HasParent,
   MonthCalendar_Hide,
   MonthCalendar_Perform,
@@ -817,6 +950,12 @@ exports
   MonthCalendar_SetDate,
   MonthCalendar_GetDoubleBuffered,
   MonthCalendar_SetDoubleBuffered,
+  MonthCalendar_GetDragCursor,
+  MonthCalendar_SetDragCursor,
+  MonthCalendar_GetDragKind,
+  MonthCalendar_SetDragKind,
+  MonthCalendar_GetDragMode,
+  MonthCalendar_SetDragMode,
   MonthCalendar_GetEnabled,
   MonthCalendar_SetEnabled,
   MonthCalendar_GetFirstDayOfWeek,
@@ -852,7 +991,12 @@ exports
   MonthCalendar_GetWeekNumbers,
   MonthCalendar_SetWeekNumbers,
   MonthCalendar_SetOnClick,
+  MonthCalendar_SetOnContextPopup,
   MonthCalendar_SetOnDblClick,
+  MonthCalendar_SetOnDragDrop,
+  MonthCalendar_SetOnDragOver,
+  MonthCalendar_SetOnEndDock,
+  MonthCalendar_SetOnEndDrag,
   MonthCalendar_SetOnEnter,
   MonthCalendar_SetOnExit,
   MonthCalendar_SetOnKeyDown,
@@ -860,11 +1004,16 @@ exports
   MonthCalendar_SetOnKeyUp,
   MonthCalendar_SetOnMouseEnter,
   MonthCalendar_SetOnMouseLeave,
+  MonthCalendar_SetOnStartDock,
+  MonthCalendar_GetDockSite,
+  MonthCalendar_SetDockSite,
   MonthCalendar_GetBrush,
   MonthCalendar_GetControlCount,
   MonthCalendar_GetHandle,
   MonthCalendar_GetParentWindow,
   MonthCalendar_SetParentWindow,
+  MonthCalendar_GetUseDockManager,
+  MonthCalendar_SetUseDockManager,
   MonthCalendar_GetAction,
   MonthCalendar_SetAction,
   MonthCalendar_GetBoundsRect,
@@ -878,6 +1027,7 @@ exports
   MonthCalendar_GetExplicitTop,
   MonthCalendar_GetExplicitWidth,
   MonthCalendar_GetExplicitHeight,
+  MonthCalendar_GetFloating,
   MonthCalendar_GetParent,
   MonthCalendar_SetParent,
   MonthCalendar_GetStyleElements,

@@ -145,6 +145,11 @@ begin
   AObj.BringToFront;
 end;
 
+function TreeView_Dragging(AObj: TTreeView): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function TreeView_HasParent(AObj: TTreeView): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -348,6 +353,36 @@ end;
 procedure TreeView_SetDoubleBuffered(AObj: TTreeView; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function TreeView_GetDragKind(AObj: TTreeView): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure TreeView_SetDragKind(AObj: TTreeView; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function TreeView_GetDragCursor(AObj: TTreeView): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure TreeView_SetDragCursor(AObj: TTreeView; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function TreeView_GetDragMode(AObj: TTreeView): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure TreeView_SetDragMode(AObj: TTreeView; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function TreeView_GetEnabled(AObj: TTreeView): LongBool; stdcall;
@@ -690,6 +725,18 @@ begin
   TEventClass.Add(AObj, geTreeViewCompare, AEventId);
 end;
 
+procedure TreeView_SetOnContextPopup(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure TreeView_SetOnDblClick(AObj: TTreeView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -700,6 +747,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure TreeView_SetOnDragDrop(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure TreeView_SetOnDragOver(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure TreeView_SetOnEndDock(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure TreeView_SetOnEndDrag(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure TreeView_SetOnEnter(AObj: TTreeView; AEventId: NativeUInt); stdcall;
@@ -846,6 +941,18 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure TreeView_SetOnStartDock(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function TreeView_GetItems(AObj: TTreeView): TTreeNodes; stdcall;
 begin
   Result :=  AObj.Items;
@@ -896,6 +1003,16 @@ begin
   Result :=  AObj.SelectionCount;
 end;
 
+function TreeView_GetDockSite(AObj: TTreeView): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure TreeView_SetDockSite(AObj: TTreeView; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function TreeView_GetBrush(AObj: TTreeView): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -919,6 +1036,16 @@ end;
 procedure TreeView_SetParentWindow(AObj: TTreeView; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function TreeView_GetUseDockManager(AObj: TTreeView): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure TreeView_SetUseDockManager(AObj: TTreeView; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function TreeView_GetAction(AObj: TTreeView): TBasicAction; stdcall;
@@ -984,6 +1111,11 @@ end;
 function TreeView_GetExplicitHeight(AObj: TTreeView): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function TreeView_GetFloating(AObj: TTreeView): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function TreeView_GetParent(AObj: TTreeView): TWinControl; stdcall;
@@ -1171,6 +1303,7 @@ exports
   TreeView_SetFocus,
   TreeView_Update,
   TreeView_BringToFront,
+  TreeView_Dragging,
   TreeView_HasParent,
   TreeView_Hide,
   TreeView_Perform,
@@ -1212,6 +1345,12 @@ exports
   TreeView_SetColor,
   TreeView_GetDoubleBuffered,
   TreeView_SetDoubleBuffered,
+  TreeView_GetDragKind,
+  TreeView_SetDragKind,
+  TreeView_GetDragCursor,
+  TreeView_SetDragCursor,
+  TreeView_GetDragMode,
+  TreeView_SetDragMode,
   TreeView_GetEnabled,
   TreeView_SetEnabled,
   TreeView_GetFont,
@@ -1273,7 +1412,12 @@ exports
   TreeView_SetOnChange,
   TreeView_SetOnClick,
   TreeView_SetOnCompare,
+  TreeView_SetOnContextPopup,
   TreeView_SetOnDblClick,
+  TreeView_SetOnDragDrop,
+  TreeView_SetOnDragOver,
+  TreeView_SetOnEndDock,
+  TreeView_SetOnEndDrag,
   TreeView_SetOnEnter,
   TreeView_SetOnExit,
   TreeView_SetOnGetImageIndex,
@@ -1286,6 +1430,7 @@ exports
   TreeView_SetOnMouseLeave,
   TreeView_SetOnMouseMove,
   TreeView_SetOnMouseUp,
+  TreeView_SetOnStartDock,
   TreeView_GetItems,
   TreeView_SetItems,
   TreeView_GetCanvas,
@@ -1296,11 +1441,15 @@ exports
   TreeView_GetTopItem,
   TreeView_SetTopItem,
   TreeView_GetSelectionCount,
+  TreeView_GetDockSite,
+  TreeView_SetDockSite,
   TreeView_GetBrush,
   TreeView_GetControlCount,
   TreeView_GetHandle,
   TreeView_GetParentWindow,
   TreeView_SetParentWindow,
+  TreeView_GetUseDockManager,
+  TreeView_SetUseDockManager,
   TreeView_GetAction,
   TreeView_SetAction,
   TreeView_GetBoundsRect,
@@ -1314,6 +1463,7 @@ exports
   TreeView_GetExplicitTop,
   TreeView_GetExplicitWidth,
   TreeView_GetExplicitHeight,
+  TreeView_GetFloating,
   TreeView_GetParent,
   TreeView_SetParent,
   TreeView_GetAlignWithMargins,

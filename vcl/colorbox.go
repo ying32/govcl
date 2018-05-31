@@ -120,6 +120,10 @@ func (c *TColorBox) BringToFront() {
     ColorBox_BringToFront(c.instance)
 }
 
+func (c *TColorBox) Dragging() bool {
+    return ColorBox_Dragging(c.instance)
+}
+
 func (c *TColorBox) HasParent() bool {
     return ColorBox_HasParent(c.instance)
 }
@@ -428,6 +432,26 @@ func (c *TColorBox) SetOnClick(fn TNotifyEvent) {
     ColorBox_SetOnClick(c.instance, fn)
 }
 
+func (c *TColorBox) SetOnContextPopup(fn TContextPopupEvent) {
+    ColorBox_SetOnContextPopup(c.instance, fn)
+}
+
+func (c *TColorBox) SetOnDragDrop(fn TDragDropEvent) {
+    ColorBox_SetOnDragDrop(c.instance, fn)
+}
+
+func (c *TColorBox) SetOnDragOver(fn TDragOverEvent) {
+    ColorBox_SetOnDragOver(c.instance, fn)
+}
+
+func (c *TColorBox) SetOnEndDock(fn TEndDragEvent) {
+    ColorBox_SetOnEndDock(c.instance, fn)
+}
+
+func (c *TColorBox) SetOnEndDrag(fn TEndDragEvent) {
+    ColorBox_SetOnEndDrag(c.instance, fn)
+}
+
 func (c *TColorBox) SetOnEnter(fn TNotifyEvent) {
     ColorBox_SetOnEnter(c.instance, fn)
 }
@@ -454,6 +478,10 @@ func (c *TColorBox) SetOnMouseEnter(fn TNotifyEvent) {
 
 func (c *TColorBox) SetOnMouseLeave(fn TNotifyEvent) {
     ColorBox_SetOnMouseLeave(c.instance, fn)
+}
+
+func (c *TColorBox) SetOnStartDock(fn TStartDockEvent) {
+    ColorBox_SetOnStartDock(c.instance, fn)
 }
 
 func (c *TColorBox) AutoCompleteDelay() uint32 {
@@ -532,6 +560,14 @@ func (c *TColorBox) SetItemIndex(value int32) {
     ColorBox_SetItemIndex(c.instance, value)
 }
 
+func (c *TColorBox) DockSite() bool {
+    return ColorBox_GetDockSite(c.instance)
+}
+
+func (c *TColorBox) SetDockSite(value bool) {
+    ColorBox_SetDockSite(c.instance, value)
+}
+
 func (c *TColorBox) Brush() *TBrush {
     return BrushFromInst(ColorBox_GetBrush(c.instance))
 }
@@ -550,6 +586,14 @@ func (c *TColorBox) ParentWindow() HWND {
 
 func (c *TColorBox) SetParentWindow(value HWND) {
     ColorBox_SetParentWindow(c.instance, value)
+}
+
+func (c *TColorBox) UseDockManager() bool {
+    return ColorBox_GetUseDockManager(c.instance)
+}
+
+func (c *TColorBox) SetUseDockManager(value bool) {
+    ColorBox_SetUseDockManager(c.instance, value)
 }
 
 func (c *TColorBox) Action() *TAction {
@@ -602,6 +646,10 @@ func (c *TColorBox) ExplicitWidth() int32 {
 
 func (c *TColorBox) ExplicitHeight() int32 {
     return ColorBox_GetExplicitHeight(c.instance)
+}
+
+func (c *TColorBox) Floating() bool {
+    return ColorBox_GetFloating(c.instance)
 }
 
 func (c *TColorBox) Parent() *TControl {

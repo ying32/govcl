@@ -156,6 +156,10 @@ func (t *TTreeView) BringToFront() {
     TreeView_BringToFront(t.instance)
 }
 
+func (t *TTreeView) Dragging() bool {
+    return TreeView_Dragging(t.instance)
+}
+
 func (t *TTreeView) HasParent() bool {
     return TreeView_HasParent(t.instance)
 }
@@ -318,6 +322,30 @@ func (t *TTreeView) DoubleBuffered() bool {
 
 func (t *TTreeView) SetDoubleBuffered(value bool) {
     TreeView_SetDoubleBuffered(t.instance, value)
+}
+
+func (t *TTreeView) DragKind() TDragKind {
+    return TreeView_GetDragKind(t.instance)
+}
+
+func (t *TTreeView) SetDragKind(value TDragKind) {
+    TreeView_SetDragKind(t.instance, value)
+}
+
+func (t *TTreeView) DragCursor() TCursor {
+    return TreeView_GetDragCursor(t.instance)
+}
+
+func (t *TTreeView) SetDragCursor(value TCursor) {
+    TreeView_SetDragCursor(t.instance, value)
+}
+
+func (t *TTreeView) DragMode() TDragMode {
+    return TreeView_GetDragMode(t.instance)
+}
+
+func (t *TTreeView) SetDragMode(value TDragMode) {
+    TreeView_SetDragMode(t.instance, value)
 }
 
 func (t *TTreeView) Enabled() bool {
@@ -564,8 +592,28 @@ func (t *TTreeView) SetOnCompare(fn TTVCompareEvent) {
     TreeView_SetOnCompare(t.instance, fn)
 }
 
+func (t *TTreeView) SetOnContextPopup(fn TContextPopupEvent) {
+    TreeView_SetOnContextPopup(t.instance, fn)
+}
+
 func (t *TTreeView) SetOnDblClick(fn TNotifyEvent) {
     TreeView_SetOnDblClick(t.instance, fn)
+}
+
+func (t *TTreeView) SetOnDragDrop(fn TDragDropEvent) {
+    TreeView_SetOnDragDrop(t.instance, fn)
+}
+
+func (t *TTreeView) SetOnDragOver(fn TDragOverEvent) {
+    TreeView_SetOnDragOver(t.instance, fn)
+}
+
+func (t *TTreeView) SetOnEndDock(fn TEndDragEvent) {
+    TreeView_SetOnEndDock(t.instance, fn)
+}
+
+func (t *TTreeView) SetOnEndDrag(fn TEndDragEvent) {
+    TreeView_SetOnEndDrag(t.instance, fn)
 }
 
 func (t *TTreeView) SetOnEnter(fn TNotifyEvent) {
@@ -616,6 +664,10 @@ func (t *TTreeView) SetOnMouseUp(fn TMouseEvent) {
     TreeView_SetOnMouseUp(t.instance, fn)
 }
 
+func (t *TTreeView) SetOnStartDock(fn TStartDockEvent) {
+    TreeView_SetOnStartDock(t.instance, fn)
+}
+
 func (t *TTreeView) Items() *TTreeNodes {
     return TreeNodesFromInst(TreeView_GetItems(t.instance))
 }
@@ -656,6 +708,14 @@ func (t *TTreeView) SelectionCount() uint32 {
     return TreeView_GetSelectionCount(t.instance)
 }
 
+func (t *TTreeView) DockSite() bool {
+    return TreeView_GetDockSite(t.instance)
+}
+
+func (t *TTreeView) SetDockSite(value bool) {
+    TreeView_SetDockSite(t.instance, value)
+}
+
 func (t *TTreeView) Brush() *TBrush {
     return BrushFromInst(TreeView_GetBrush(t.instance))
 }
@@ -674,6 +734,14 @@ func (t *TTreeView) ParentWindow() HWND {
 
 func (t *TTreeView) SetParentWindow(value HWND) {
     TreeView_SetParentWindow(t.instance, value)
+}
+
+func (t *TTreeView) UseDockManager() bool {
+    return TreeView_GetUseDockManager(t.instance)
+}
+
+func (t *TTreeView) SetUseDockManager(value bool) {
+    TreeView_SetUseDockManager(t.instance, value)
 }
 
 func (t *TTreeView) Action() *TAction {
@@ -726,6 +794,10 @@ func (t *TTreeView) ExplicitWidth() int32 {
 
 func (t *TTreeView) ExplicitHeight() int32 {
     return TreeView_GetExplicitHeight(t.instance)
+}
+
+func (t *TTreeView) Floating() bool {
+    return TreeView_GetFloating(t.instance)
 }
 
 func (t *TTreeView) Parent() *TControl {

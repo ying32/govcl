@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Image_Dragging(AObj: TImage): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Image_HasParent(AObj: TImage): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -160,6 +165,36 @@ begin
   AObj.Center := AValue;
 end;
 
+function Image_GetDragCursor(AObj: TImage): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Image_SetDragCursor(AObj: TImage; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Image_GetDragKind(AObj: TImage): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Image_SetDragKind(AObj: TImage; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Image_GetDragMode(AObj: TImage): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Image_SetDragMode(AObj: TImage; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function Image_GetEnabled(AObj: TImage): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -272,6 +307,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure Image_SetOnContextPopup(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure Image_SetOnDblClick(AObj: TImage; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -282,6 +329,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure Image_SetOnDragDrop(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Image_SetOnDragOver(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Image_SetOnEndDock(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure Image_SetOnEndDrag(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure Image_SetOnMouseDown(AObj: TImage; AEventId: NativeUInt); stdcall;
@@ -342,6 +437,18 @@ begin
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
   TEventClass.Add(AObj, geMouseUp, AEventId);
+end;
+
+procedure Image_SetOnStartDock(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
 function Image_GetAction(AObj: TImage): TBasicAction; stdcall;
@@ -417,6 +524,11 @@ end;
 function Image_GetExplicitHeight(AObj: TImage): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function Image_GetFloating(AObj: TImage): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Image_GetParent(AObj: TImage): TWinControl; stdcall;
@@ -579,6 +691,7 @@ exports
   Image_Create,
   Image_Free,
   Image_BringToFront,
+  Image_Dragging,
   Image_HasParent,
   Image_Hide,
   Image_Invalidate,
@@ -607,6 +720,12 @@ exports
   Image_SetAutoSize,
   Image_GetCenter,
   Image_SetCenter,
+  Image_GetDragCursor,
+  Image_SetDragCursor,
+  Image_GetDragKind,
+  Image_SetDragKind,
+  Image_GetDragMode,
+  Image_SetDragMode,
   Image_GetEnabled,
   Image_SetEnabled,
   Image_GetIncrementalDisplay,
@@ -628,12 +747,18 @@ exports
   Image_GetVisible,
   Image_SetVisible,
   Image_SetOnClick,
+  Image_SetOnContextPopup,
   Image_SetOnDblClick,
+  Image_SetOnDragDrop,
+  Image_SetOnDragOver,
+  Image_SetOnEndDock,
+  Image_SetOnEndDrag,
   Image_SetOnMouseDown,
   Image_SetOnMouseEnter,
   Image_SetOnMouseLeave,
   Image_SetOnMouseMove,
   Image_SetOnMouseUp,
+  Image_SetOnStartDock,
   Image_GetAction,
   Image_SetAction,
   Image_GetBiDiMode,
@@ -649,6 +774,7 @@ exports
   Image_GetExplicitTop,
   Image_GetExplicitWidth,
   Image_GetExplicitHeight,
+  Image_GetFloating,
   Image_GetParent,
   Image_SetParent,
   Image_GetStyleElements,

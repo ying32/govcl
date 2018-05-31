@@ -100,6 +100,11 @@ begin
   AObj.BringToFront;
 end;
 
+function ListBox_Dragging(AObj: TListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ListBox_HasParent(AObj: TListBox): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -315,6 +320,36 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function ListBox_GetDragCursor(AObj: TListBox): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ListBox_SetDragCursor(AObj: TListBox; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ListBox_GetDragKind(AObj: TListBox): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ListBox_SetDragKind(AObj: TListBox; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ListBox_GetDragMode(AObj: TListBox): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ListBox_SetDragMode(AObj: TListBox; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function ListBox_GetEnabled(AObj: TListBox): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -507,6 +542,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ListBox_SetOnContextPopup(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ListBox_SetOnDblClick(AObj: TListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -519,6 +566,30 @@ begin
   TEventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure ListBox_SetOnDragDrop(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ListBox_SetOnDragOver(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
 procedure ListBox_SetOnDrawItem(AObj: TListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -529,6 +600,30 @@ begin
   end;
   AObj.OnDrawItem := TEventClass.ListBoxOnDrawItem;
   TEventClass.Add(AObj, geListBoxDrawItem, AEventId);
+end;
+
+procedure ListBox_SetOnEndDock(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ListBox_SetOnEndDrag(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ListBox_SetOnEnter(AObj: TListBox; AEventId: NativeUInt); stdcall;
@@ -651,6 +746,18 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure ListBox_SetOnStartDock(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function ListBox_GetCanvas(AObj: TListBox): TCanvas; stdcall;
 begin
   Result :=  AObj.Canvas;
@@ -681,6 +788,16 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ListBox_GetDockSite(AObj: TListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ListBox_SetDockSite(AObj: TListBox; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ListBox_GetBrush(AObj: TListBox): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -704,6 +821,16 @@ end;
 procedure ListBox_SetParentWindow(AObj: TListBox; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ListBox_GetUseDockManager(AObj: TListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ListBox_SetUseDockManager(AObj: TListBox; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ListBox_GetAction(AObj: TListBox): TBasicAction; stdcall;
@@ -769,6 +896,11 @@ end;
 function ListBox_GetExplicitHeight(AObj: TListBox): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function ListBox_GetFloating(AObj: TListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ListBox_GetParent(AObj: TListBox): TWinControl; stdcall;
@@ -952,6 +1084,7 @@ exports
   ListBox_SetFocus,
   ListBox_Update,
   ListBox_BringToFront,
+  ListBox_Dragging,
   ListBox_HasParent,
   ListBox_Hide,
   ListBox_Perform,
@@ -995,6 +1128,12 @@ exports
   ListBox_SetColumns,
   ListBox_GetDoubleBuffered,
   ListBox_SetDoubleBuffered,
+  ListBox_GetDragCursor,
+  ListBox_SetDragCursor,
+  ListBox_GetDragKind,
+  ListBox_SetDragKind,
+  ListBox_GetDragMode,
+  ListBox_SetDragMode,
   ListBox_GetEnabled,
   ListBox_SetEnabled,
   ListBox_GetFont,
@@ -1032,8 +1171,13 @@ exports
   ListBox_GetStyleElements,
   ListBox_SetStyleElements,
   ListBox_SetOnClick,
+  ListBox_SetOnContextPopup,
   ListBox_SetOnDblClick,
+  ListBox_SetOnDragDrop,
+  ListBox_SetOnDragOver,
   ListBox_SetOnDrawItem,
+  ListBox_SetOnEndDock,
+  ListBox_SetOnEndDrag,
   ListBox_SetOnEnter,
   ListBox_SetOnExit,
   ListBox_SetOnKeyDown,
@@ -1044,17 +1188,22 @@ exports
   ListBox_SetOnMouseLeave,
   ListBox_SetOnMouseMove,
   ListBox_SetOnMouseUp,
+  ListBox_SetOnStartDock,
   ListBox_GetCanvas,
   ListBox_GetCount,
   ListBox_SetCount,
   ListBox_GetSelCount,
   ListBox_GetItemIndex,
   ListBox_SetItemIndex,
+  ListBox_GetDockSite,
+  ListBox_SetDockSite,
   ListBox_GetBrush,
   ListBox_GetControlCount,
   ListBox_GetHandle,
   ListBox_GetParentWindow,
   ListBox_SetParentWindow,
+  ListBox_GetUseDockManager,
+  ListBox_SetUseDockManager,
   ListBox_GetAction,
   ListBox_SetAction,
   ListBox_GetBoundsRect,
@@ -1068,6 +1217,7 @@ exports
   ListBox_GetExplicitTop,
   ListBox_GetExplicitWidth,
   ListBox_GetExplicitHeight,
+  ListBox_GetFloating,
   ListBox_GetParent,
   ListBox_SetParent,
   ListBox_GetAlignWithMargins,

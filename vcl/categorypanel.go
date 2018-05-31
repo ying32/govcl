@@ -108,6 +108,10 @@ func (c *TCategoryPanel) BringToFront() {
     CategoryPanel_BringToFront(c.instance)
 }
 
+func (c *TCategoryPanel) Dragging() bool {
+    return CategoryPanel_Dragging(c.instance)
+}
+
 func (c *TCategoryPanel) HasParent() bool {
     return CategoryPanel_HasParent(c.instance)
 }
@@ -224,12 +228,52 @@ func (c *TCategoryPanel) SetCollapsedPressedImageIndex(value int32) {
     CategoryPanel_SetCollapsedPressedImageIndex(c.instance, value)
 }
 
+func (c *TCategoryPanel) UseDockManager() bool {
+    return CategoryPanel_GetUseDockManager(c.instance)
+}
+
+func (c *TCategoryPanel) SetUseDockManager(value bool) {
+    CategoryPanel_SetUseDockManager(c.instance, value)
+}
+
+func (c *TCategoryPanel) DockSite() bool {
+    return CategoryPanel_GetDockSite(c.instance)
+}
+
+func (c *TCategoryPanel) SetDockSite(value bool) {
+    CategoryPanel_SetDockSite(c.instance, value)
+}
+
 func (c *TCategoryPanel) DoubleBuffered() bool {
     return CategoryPanel_GetDoubleBuffered(c.instance)
 }
 
 func (c *TCategoryPanel) SetDoubleBuffered(value bool) {
     CategoryPanel_SetDoubleBuffered(c.instance, value)
+}
+
+func (c *TCategoryPanel) DragCursor() TCursor {
+    return CategoryPanel_GetDragCursor(c.instance)
+}
+
+func (c *TCategoryPanel) SetDragCursor(value TCursor) {
+    CategoryPanel_SetDragCursor(c.instance, value)
+}
+
+func (c *TCategoryPanel) DragKind() TDragKind {
+    return CategoryPanel_GetDragKind(c.instance)
+}
+
+func (c *TCategoryPanel) SetDragKind(value TDragKind) {
+    CategoryPanel_SetDragKind(c.instance, value)
+}
+
+func (c *TCategoryPanel) DragMode() TDragMode {
+    return CategoryPanel_GetDragMode(c.instance)
+}
+
+func (c *TCategoryPanel) SetDragMode(value TDragMode) {
+    CategoryPanel_SetDragMode(c.instance, value)
 }
 
 func (c *TCategoryPanel) Enabled() bool {
@@ -412,8 +456,32 @@ func (c *TCategoryPanel) SetOnClick(fn TNotifyEvent) {
     CategoryPanel_SetOnClick(c.instance, fn)
 }
 
+func (c *TCategoryPanel) SetOnContextPopup(fn TContextPopupEvent) {
+    CategoryPanel_SetOnContextPopup(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnDockDrop(fn TDockDropEvent) {
+    CategoryPanel_SetOnDockDrop(c.instance, fn)
+}
+
 func (c *TCategoryPanel) SetOnDblClick(fn TNotifyEvent) {
     CategoryPanel_SetOnDblClick(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnDragDrop(fn TDragDropEvent) {
+    CategoryPanel_SetOnDragDrop(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnDragOver(fn TDragOverEvent) {
+    CategoryPanel_SetOnDragOver(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnEndDock(fn TEndDragEvent) {
+    CategoryPanel_SetOnEndDock(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnEndDrag(fn TEndDragEvent) {
+    CategoryPanel_SetOnEndDrag(c.instance, fn)
 }
 
 func (c *TCategoryPanel) SetOnEnter(fn TNotifyEvent) {
@@ -422,6 +490,10 @@ func (c *TCategoryPanel) SetOnEnter(fn TNotifyEvent) {
 
 func (c *TCategoryPanel) SetOnExit(fn TNotifyEvent) {
     CategoryPanel_SetOnExit(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    CategoryPanel_SetOnGetSiteInfo(c.instance, fn)
 }
 
 func (c *TCategoryPanel) SetOnMouseDown(fn TMouseEvent) {
@@ -442,6 +514,14 @@ func (c *TCategoryPanel) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (c *TCategoryPanel) SetOnMouseUp(fn TMouseEvent) {
     CategoryPanel_SetOnMouseUp(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnStartDock(fn TStartDockEvent) {
+    CategoryPanel_SetOnStartDock(c.instance, fn)
+}
+
+func (c *TCategoryPanel) SetOnUnDock(fn TUnDockEvent) {
+    CategoryPanel_SetOnUnDock(c.instance, fn)
 }
 
 func (c *TCategoryPanel) PanelGroup() *TCategoryPanelGroup {
@@ -538,6 +618,10 @@ func (c *TCategoryPanel) ExplicitWidth() int32 {
 
 func (c *TCategoryPanel) ExplicitHeight() int32 {
     return CategoryPanel_GetExplicitHeight(c.instance)
+}
+
+func (c *TCategoryPanel) Floating() bool {
+    return CategoryPanel_GetFloating(c.instance)
 }
 
 func (c *TCategoryPanel) Parent() *TControl {

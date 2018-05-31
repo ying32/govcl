@@ -100,6 +100,11 @@ begin
   AObj.BringToFront;
 end;
 
+function ComboBox_Dragging(AObj: TComboBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ComboBox_HasParent(AObj: TComboBox): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -313,6 +318,36 @@ end;
 procedure ComboBox_SetDoubleBuffered(AObj: TComboBox; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function ComboBox_GetDragCursor(AObj: TComboBox): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ComboBox_SetDragCursor(AObj: TComboBox; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ComboBox_GetDragKind(AObj: TComboBox): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ComboBox_SetDragKind(AObj: TComboBox; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ComboBox_GetDragMode(AObj: TComboBox): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ComboBox_SetDragMode(AObj: TComboBox; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function ComboBox_GetDropDownCount(AObj: TComboBox): Integer; stdcall;
@@ -539,6 +574,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ComboBox_SetOnContextPopup(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure ComboBox_SetOnDblClick(AObj: TComboBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -551,6 +598,30 @@ begin
   TEventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure ComboBox_SetOnDragDrop(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ComboBox_SetOnDragOver(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
 procedure ComboBox_SetOnDrawItem(AObj: TComboBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -561,6 +632,30 @@ begin
   end;
   AObj.OnDrawItem := TEventClass.ListBoxOnDrawItem;
   TEventClass.Add(AObj, geListBoxDrawItem, AEventId);
+end;
+
+procedure ComboBox_SetOnEndDock(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ComboBox_SetOnEndDrag(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure ComboBox_SetOnEnter(AObj: TComboBox; AEventId: NativeUInt); stdcall;
@@ -647,6 +742,18 @@ begin
   TEventClass.Add(AObj, geMouseLeave, AEventId);
 end;
 
+procedure ComboBox_SetOnStartDock(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function ComboBox_GetItems(AObj: TComboBox): TStrings; stdcall;
 begin
   Result :=  AObj.Items;
@@ -702,6 +809,16 @@ begin
   AObj.SelStart := AValue;
 end;
 
+function ComboBox_GetDockSite(AObj: TComboBox): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ComboBox_SetDockSite(AObj: TComboBox; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ComboBox_GetBrush(AObj: TComboBox): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -725,6 +842,16 @@ end;
 procedure ComboBox_SetParentWindow(AObj: TComboBox; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ComboBox_GetUseDockManager(AObj: TComboBox): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ComboBox_SetUseDockManager(AObj: TComboBox; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ComboBox_GetAction(AObj: TComboBox): TBasicAction; stdcall;
@@ -790,6 +917,11 @@ end;
 function ComboBox_GetExplicitHeight(AObj: TComboBox): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function ComboBox_GetFloating(AObj: TComboBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ComboBox_GetParent(AObj: TComboBox): TWinControl; stdcall;
@@ -963,6 +1095,7 @@ exports
   ComboBox_SetFocus,
   ComboBox_Update,
   ComboBox_BringToFront,
+  ComboBox_Dragging,
   ComboBox_HasParent,
   ComboBox_Hide,
   ComboBox_Perform,
@@ -1006,6 +1139,12 @@ exports
   ComboBox_SetColor,
   ComboBox_GetDoubleBuffered,
   ComboBox_SetDoubleBuffered,
+  ComboBox_GetDragCursor,
+  ComboBox_SetDragCursor,
+  ComboBox_GetDragKind,
+  ComboBox_SetDragKind,
+  ComboBox_GetDragMode,
+  ComboBox_SetDragMode,
   ComboBox_GetDropDownCount,
   ComboBox_SetDropDownCount,
   ComboBox_GetEnabled,
@@ -1048,8 +1187,13 @@ exports
   ComboBox_SetStyleElements,
   ComboBox_SetOnChange,
   ComboBox_SetOnClick,
+  ComboBox_SetOnContextPopup,
   ComboBox_SetOnDblClick,
+  ComboBox_SetOnDragDrop,
+  ComboBox_SetOnDragOver,
   ComboBox_SetOnDrawItem,
+  ComboBox_SetOnEndDock,
+  ComboBox_SetOnEndDrag,
   ComboBox_SetOnEnter,
   ComboBox_SetOnExit,
   ComboBox_SetOnKeyDown,
@@ -1057,6 +1201,7 @@ exports
   ComboBox_SetOnKeyUp,
   ComboBox_SetOnMouseEnter,
   ComboBox_SetOnMouseLeave,
+  ComboBox_SetOnStartDock,
   ComboBox_GetItems,
   ComboBox_SetItems,
   ComboBox_GetSelText,
@@ -1068,11 +1213,15 @@ exports
   ComboBox_SetSelLength,
   ComboBox_GetSelStart,
   ComboBox_SetSelStart,
+  ComboBox_GetDockSite,
+  ComboBox_SetDockSite,
   ComboBox_GetBrush,
   ComboBox_GetControlCount,
   ComboBox_GetHandle,
   ComboBox_GetParentWindow,
   ComboBox_SetParentWindow,
+  ComboBox_GetUseDockManager,
+  ComboBox_SetUseDockManager,
   ComboBox_GetAction,
   ComboBox_SetAction,
   ComboBox_GetBoundsRect,
@@ -1086,6 +1235,7 @@ exports
   ComboBox_GetExplicitTop,
   ComboBox_GetExplicitWidth,
   ComboBox_GetExplicitHeight,
+  ComboBox_GetFloating,
   ComboBox_GetParent,
   ComboBox_SetParent,
   ComboBox_GetAlignWithMargins,

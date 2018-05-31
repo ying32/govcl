@@ -132,3 +132,45 @@ type TDropFilesEvent func(sender IObject, aFileNames []string)
 
 // 约束调整大小事件
 type TConstrainedResizeEvent func(sender IObject, minWidth, minHeight, maxWidth, maxHeight *int32)
+
+// THelpEvent = function(Command: Word; Data: THelpEventData; var CallHelp: Boolean): Boolean of object;
+type THelpEvent func(command uint16, data THelpEventData, callhelp, result *bool)
+
+// TShortCutEvent = procedure (var Msg: TWMKey; var Handled: Boolean) of object;
+type TShortCutEvent func(msg *TWMKey, handled *bool)
+
+// TContextPopupEvent = procedure(Sender: TObject; MousePos: TPoint; var Handled: Boolean) of object;
+type TContextPopupEvent func(sender IObject, mousePos TPoint, handled *bool)
+
+//TDragOverEvent = procedure(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean) of object;
+type TDragOverEvent func(sender, source IObject, x, y int32, state TDragState, accept *bool)
+
+//TDragDropEvent = procedure(Sender, Source: TObject; X, Y: Integer) of object;
+type TDragDropEvent func(sender, source IObject, x, y int32)
+
+//TStartDragEvent = procedure(Sender: TObject;var DragObject: TDragObject) of object;
+type TStartDragEvent func(sender IObject, dragObject *TDragObject)
+
+//TEndDragEvent = procedure(Sender, Target: TObject; X, Y: Integer) of object;
+type TEndDragEvent func(sender, target IObject, x, y int32)
+
+//TDockDropEvent = procedure(Sender: TObject; Source: TDragDockObject; X, Y: Integer) of object;
+type TDockDropEvent func(sender IObject, source *TDragDockObject, x, y int32)
+
+//TDockOverEvent = procedure(Sender: TObject; Source: TDragDockObject; X, Y: Integer; State: TDragState; var Accept: Boolean) of object;
+type TDockOverEvent func(sender IObject, source *TDragDockObject, x, y int32, state TDragState, accept *bool)
+
+//TUnDockEvent = procedure(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean) of object;
+type TUnDockEvent func(sender IObject, client *TControl, newTarget *TControl, allow *bool)
+
+//TStartDockEvent = procedure(Sender: TObject;var DragObject: TDragDockObject) of object;
+type TStartDockEvent func(sender IObject, dragObject *TDragDockObject)
+
+//TGetSiteInfoEvent = procedure(Sender: TObject; DockClient: TControl; var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean) of object;
+type TGetSiteInfoEvent func(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool)
+
+//TMouseWheelUpDownEvent = procedure(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean) of object;
+type TMouseWheelUpDownEvent func(sender IObject, shift TShiftState, mousePos TPoint, handled *bool)
+
+// TMessageEvent = procedure (var Msg: TMsg; var Handled: Boolean) of object;
+type TMessageEvent func(msg *TMsg, handled *bool)

@@ -100,6 +100,10 @@ func (h *THotKey) BringToFront() {
     HotKey_BringToFront(h.instance)
 }
 
+func (h *THotKey) Dragging() bool {
+    return HotKey_Dragging(h.instance)
+}
+
 func (h *THotKey) HasParent() bool {
     return HotKey_HasParent(h.instance)
 }
@@ -260,6 +264,10 @@ func (h *THotKey) SetOnChange(fn TNotifyEvent) {
     HotKey_SetOnChange(h.instance, fn)
 }
 
+func (h *THotKey) SetOnContextPopup(fn TContextPopupEvent) {
+    HotKey_SetOnContextPopup(h.instance, fn)
+}
+
 func (h *THotKey) SetOnEnter(fn TNotifyEvent) {
     HotKey_SetOnEnter(h.instance, fn)
 }
@@ -286,6 +294,14 @@ func (h *THotKey) SetOnMouseMove(fn TMouseMoveEvent) {
 
 func (h *THotKey) SetOnMouseUp(fn TMouseEvent) {
     HotKey_SetOnMouseUp(h.instance, fn)
+}
+
+func (h *THotKey) DockSite() bool {
+    return HotKey_GetDockSite(h.instance)
+}
+
+func (h *THotKey) SetDockSite(value bool) {
+    HotKey_SetDockSite(h.instance, value)
 }
 
 func (h *THotKey) DoubleBuffered() bool {
@@ -322,6 +338,14 @@ func (h *THotKey) ParentWindow() HWND {
 
 func (h *THotKey) SetParentWindow(value HWND) {
     HotKey_SetParentWindow(h.instance, value)
+}
+
+func (h *THotKey) UseDockManager() bool {
+    return HotKey_GetUseDockManager(h.instance)
+}
+
+func (h *THotKey) SetUseDockManager(value bool) {
+    HotKey_SetUseDockManager(h.instance, value)
 }
 
 func (h *THotKey) Action() *TAction {
@@ -382,6 +406,10 @@ func (h *THotKey) ExplicitWidth() int32 {
 
 func (h *THotKey) ExplicitHeight() int32 {
     return HotKey_GetExplicitHeight(h.instance)
+}
+
+func (h *THotKey) Floating() bool {
+    return HotKey_GetFloating(h.instance)
 }
 
 func (h *THotKey) Parent() *TControl {

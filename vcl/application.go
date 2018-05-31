@@ -72,10 +72,6 @@ func (a *TApplication) HideHint() {
     Application_HideHint(a.instance)
 }
 
-func (a *TApplication) Initialize() {
-    Application_Initialize(a.instance)
-}
-
 func (a *TApplication) Minimize() {
     Application_Minimize(a.instance)
 }
@@ -272,8 +268,16 @@ func (a *TApplication) SetOnException(fn TExceptionEvent) {
     Application_SetOnException(a.instance, fn)
 }
 
+func (a *TApplication) SetOnHelp(fn THelpEvent) {
+    Application_SetOnHelp(a.instance, fn)
+}
+
 func (a *TApplication) SetOnHint(fn TNotifyEvent) {
     Application_SetOnHint(a.instance, fn)
+}
+
+func (a *TApplication) SetOnMessage(fn TMessageEvent) {
+    Application_SetOnMessage(a.instance, fn)
 }
 
 func (a *TApplication) SetOnMinimize(fn TNotifyEvent) {
@@ -282,6 +286,10 @@ func (a *TApplication) SetOnMinimize(fn TNotifyEvent) {
 
 func (a *TApplication) SetOnRestore(fn TNotifyEvent) {
     Application_SetOnRestore(a.instance, fn)
+}
+
+func (a *TApplication) SetOnShortCut(fn TShortCutEvent) {
+    Application_SetOnShortCut(a.instance, fn)
 }
 
 func (a *TApplication) Handle() HWND {

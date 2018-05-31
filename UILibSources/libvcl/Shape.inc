@@ -20,6 +20,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Shape_Dragging(AObj: TShape): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Shape_HasParent(AObj: TShape): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -145,6 +150,36 @@ begin
   AObj.Brush := AValue;
 end;
 
+function Shape_GetDragCursor(AObj: TShape): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure Shape_SetDragCursor(AObj: TShape; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function Shape_GetDragKind(AObj: TShape): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure Shape_SetDragKind(AObj: TShape; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function Shape_GetDragMode(AObj: TShape): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure Shape_SetDragMode(AObj: TShape; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function Shape_GetEnabled(AObj: TShape): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -205,6 +240,66 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure Shape_SetOnContextPopup(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure Shape_SetOnDragDrop(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure Shape_SetOnDragOver(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure Shape_SetOnEndDock(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure Shape_SetOnEndDrag(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure Shape_SetOnMouseDown(AObj: TShape; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -263,6 +358,18 @@ begin
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
   TEventClass.Add(AObj, geMouseUp, AEventId);
+end;
+
+procedure Shape_SetOnStartDock(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
 function Shape_GetAction(AObj: TShape): TBasicAction; stdcall;
@@ -338,6 +445,11 @@ end;
 function Shape_GetExplicitHeight(AObj: TShape): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function Shape_GetFloating(AObj: TShape): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function Shape_GetParent(AObj: TShape): TWinControl; stdcall;
@@ -500,6 +612,7 @@ exports
   Shape_Create,
   Shape_Free,
   Shape_BringToFront,
+  Shape_Dragging,
   Shape_HasParent,
   Shape_Hide,
   Shape_Invalidate,
@@ -525,6 +638,12 @@ exports
   Shape_SetAnchors,
   Shape_GetBrush,
   Shape_SetBrush,
+  Shape_GetDragCursor,
+  Shape_SetDragCursor,
+  Shape_GetDragKind,
+  Shape_SetDragKind,
+  Shape_GetDragMode,
+  Shape_SetDragMode,
   Shape_GetEnabled,
   Shape_SetEnabled,
   Shape_GetParentShowHint,
@@ -537,11 +656,17 @@ exports
   Shape_SetShowHint,
   Shape_GetVisible,
   Shape_SetVisible,
+  Shape_SetOnContextPopup,
+  Shape_SetOnDragDrop,
+  Shape_SetOnDragOver,
+  Shape_SetOnEndDock,
+  Shape_SetOnEndDrag,
   Shape_SetOnMouseDown,
   Shape_SetOnMouseEnter,
   Shape_SetOnMouseLeave,
   Shape_SetOnMouseMove,
   Shape_SetOnMouseUp,
+  Shape_SetOnStartDock,
   Shape_GetAction,
   Shape_SetAction,
   Shape_GetBiDiMode,
@@ -557,6 +682,7 @@ exports
   Shape_GetExplicitTop,
   Shape_GetExplicitWidth,
   Shape_GetExplicitHeight,
+  Shape_GetFloating,
   Shape_GetParent,
   Shape_SetParent,
   Shape_GetStyleElements,

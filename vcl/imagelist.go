@@ -56,6 +56,14 @@ func (i *TImageList) GetHotSpot() TPoint {
     return ImageList_GetHotSpot(i.instance)
 }
 
+func (i *TImageList) HideDragImage() {
+    ImageList_HideDragImage(i.instance)
+}
+
+func (i *TImageList) ShowDragImage() {
+    ImageList_ShowDragImage(i.instance)
+}
+
 func (i *TImageList) Assign(Source IObject) {
     ImageList_Assign(i.instance, CheckPtr(Source))
 }
@@ -282,6 +290,18 @@ func (i *TImageList) Width() int32 {
 
 func (i *TImageList) SetWidth(value int32) {
     ImageList_SetWidth(i.instance, value)
+}
+
+func (i *TImageList) DragCursor() TCursor {
+    return ImageList_GetDragCursor(i.instance)
+}
+
+func (i *TImageList) SetDragCursor(value TCursor) {
+    ImageList_SetDragCursor(i.instance, value)
+}
+
+func (i *TImageList) Dragging() bool {
+    return ImageList_GetDragging(i.instance)
 }
 
 func (i *TImageList) Handle() uintptr {

@@ -30,6 +30,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function ScrollBox_HandleAllocated(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure ScrollBox_Invalidate(AObj: TScrollBox); extdecl;
 begin
   AObj.Invalidate;
@@ -68,6 +73,11 @@ end;
 procedure ScrollBox_BringToFront(AObj: TScrollBox); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function ScrollBox_Dragging(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function ScrollBox_HasParent(AObj: TScrollBox): LongBool; extdecl;
@@ -195,6 +205,16 @@ begin
   AObj.BorderStyle := AValue;
 end;
 
+function ScrollBox_GetDockSite(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ScrollBox_SetDockSite(AObj: TScrollBox; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ScrollBox_GetDoubleBuffered(AObj: TScrollBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -203,6 +223,36 @@ end;
 procedure ScrollBox_SetDoubleBuffered(AObj: TScrollBox; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function ScrollBox_GetDragCursor(AObj: TScrollBox): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ScrollBox_SetDragCursor(AObj: TScrollBox; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ScrollBox_GetDragKind(AObj: TScrollBox): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ScrollBox_SetDragKind(AObj: TScrollBox; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ScrollBox_GetDragMode(AObj: TScrollBox): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ScrollBox_SetDragMode(AObj: TScrollBox; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function ScrollBox_GetEnabled(AObj: TScrollBox): LongBool; extdecl;
@@ -339,6 +389,54 @@ begin
   EventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure ScrollBox_SetOnDockDrop(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDockDrop := nil;
+    EventClass.Remove(AObj, geDockDrop);
+    Exit;
+  end;
+  AObj.OnDockDrop := @EventClass.OnDockDrop;
+  EventClass.Add(AObj, geDockDrop, AEventId);
+end;
+
+procedure ScrollBox_SetOnDragDrop(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ScrollBox_SetOnDragOver(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ScrollBox_SetOnEndDrag(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure ScrollBox_SetOnEnter(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -361,6 +459,18 @@ begin
   end;
   AObj.OnExit := @EventClass.OnExit;
   EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure ScrollBox_SetOnGetSiteInfo(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGetSiteInfo := nil;
+    EventClass.Remove(AObj, geGetSiteInfo);
+    Exit;
+  end;
+  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
+  EventClass.Add(AObj, geGetSiteInfo, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseDown(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -435,6 +545,30 @@ begin
   EventClass.Add(AObj, geMouseWheel, AEventId);
 end;
 
+procedure ScrollBox_SetOnMouseWheelDown(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseWheelDown := nil;
+    EventClass.Remove(AObj, geMouseWheelDown);
+    Exit;
+  end;
+  AObj.OnMouseWheelDown := @EventClass.OnMouseWheelDown;
+  EventClass.Add(AObj, geMouseWheelDown, AEventId);
+end;
+
+procedure ScrollBox_SetOnMouseWheelUp(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseWheelUp := nil;
+    EventClass.Remove(AObj, geMouseWheelUp);
+    Exit;
+  end;
+  AObj.OnMouseWheelUp := @EventClass.OnMouseWheelUp;
+  EventClass.Add(AObj, geMouseWheelUp, AEventId);
+end;
+
 procedure ScrollBox_SetOnResize(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -445,6 +579,18 @@ begin
   end;
   AObj.OnResize := @EventClass.OnResize;
   EventClass.Add(AObj, geResize, AEventId);
+end;
+
+procedure ScrollBox_SetOnUnDock(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnUnDock := nil;
+    EventClass.Remove(AObj, geUnDock);
+    Exit;
+  end;
+  AObj.OnUnDock := @EventClass.OnUnDock;
+  EventClass.Add(AObj, geUnDock, AEventId);
 end;
 
 function ScrollBox_GetBrush(AObj: TScrollBox): TBrush; extdecl;
@@ -470,6 +616,16 @@ end;
 procedure ScrollBox_SetParentWindow(AObj: TScrollBox; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ScrollBox_GetUseDockManager(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ScrollBox_SetUseDockManager(AObj: TScrollBox; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ScrollBox_GetAction(AObj: TScrollBox): TBasicAction; extdecl;
@@ -515,6 +671,11 @@ end;
 procedure ScrollBox_SetClientWidth(AObj: TScrollBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ScrollBox_GetFloating(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ScrollBox_GetParent(AObj: TScrollBox): TWinControl; extdecl;
@@ -644,6 +805,7 @@ exports
   ScrollBox_CanFocus,
   ScrollBox_FlipChildren,
   ScrollBox_Focused,
+  ScrollBox_HandleAllocated,
   ScrollBox_Invalidate,
   ScrollBox_Realign,
   ScrollBox_Repaint,
@@ -652,6 +814,7 @@ exports
   ScrollBox_SetFocus,
   ScrollBox_Update,
   ScrollBox_BringToFront,
+  ScrollBox_Dragging,
   ScrollBox_HasParent,
   ScrollBox_Hide,
   ScrollBox_Perform,
@@ -677,8 +840,16 @@ exports
   ScrollBox_SetBiDiMode,
   ScrollBox_GetBorderStyle,
   ScrollBox_SetBorderStyle,
+  ScrollBox_GetDockSite,
+  ScrollBox_SetDockSite,
   ScrollBox_GetDoubleBuffered,
   ScrollBox_SetDoubleBuffered,
+  ScrollBox_GetDragCursor,
+  ScrollBox_SetDragCursor,
+  ScrollBox_GetDragKind,
+  ScrollBox_SetDragKind,
+  ScrollBox_GetDragMode,
+  ScrollBox_SetDragMode,
   ScrollBox_GetEnabled,
   ScrollBox_SetEnabled,
   ScrollBox_GetColor,
@@ -703,20 +874,30 @@ exports
   ScrollBox_SetVisible,
   ScrollBox_SetOnClick,
   ScrollBox_SetOnDblClick,
+  ScrollBox_SetOnDockDrop,
+  ScrollBox_SetOnDragDrop,
+  ScrollBox_SetOnDragOver,
+  ScrollBox_SetOnEndDrag,
   ScrollBox_SetOnEnter,
   ScrollBox_SetOnExit,
+  ScrollBox_SetOnGetSiteInfo,
   ScrollBox_SetOnMouseDown,
   ScrollBox_SetOnMouseEnter,
   ScrollBox_SetOnMouseLeave,
   ScrollBox_SetOnMouseMove,
   ScrollBox_SetOnMouseUp,
   ScrollBox_SetOnMouseWheel,
+  ScrollBox_SetOnMouseWheelDown,
+  ScrollBox_SetOnMouseWheelUp,
   ScrollBox_SetOnResize,
+  ScrollBox_SetOnUnDock,
   ScrollBox_GetBrush,
   ScrollBox_GetControlCount,
   ScrollBox_GetHandle,
   ScrollBox_GetParentWindow,
   ScrollBox_SetParentWindow,
+  ScrollBox_GetUseDockManager,
+  ScrollBox_SetUseDockManager,
   ScrollBox_GetAction,
   ScrollBox_SetAction,
   ScrollBox_GetBoundsRect,
@@ -726,6 +907,7 @@ exports
   ScrollBox_GetClientRect,
   ScrollBox_GetClientWidth,
   ScrollBox_SetClientWidth,
+  ScrollBox_GetFloating,
   ScrollBox_GetParent,
   ScrollBox_SetParent,
   ScrollBox_GetLeft,

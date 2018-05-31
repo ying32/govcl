@@ -100,6 +100,10 @@ func (l *TLinkLabel) BringToFront() {
     LinkLabel_BringToFront(l.instance)
 }
 
+func (l *TLinkLabel) Dragging() bool {
+    return LinkLabel_Dragging(l.instance)
+}
+
 func (l *TLinkLabel) HasParent() bool {
     return LinkLabel_HasParent(l.instance)
 }
@@ -240,6 +244,30 @@ func (l *TLinkLabel) SetColor(value TColor) {
     LinkLabel_SetColor(l.instance, value)
 }
 
+func (l *TLinkLabel) DragCursor() TCursor {
+    return LinkLabel_GetDragCursor(l.instance)
+}
+
+func (l *TLinkLabel) SetDragCursor(value TCursor) {
+    LinkLabel_SetDragCursor(l.instance, value)
+}
+
+func (l *TLinkLabel) DragKind() TDragKind {
+    return LinkLabel_GetDragKind(l.instance)
+}
+
+func (l *TLinkLabel) SetDragKind(value TDragKind) {
+    LinkLabel_SetDragKind(l.instance, value)
+}
+
+func (l *TLinkLabel) DragMode() TDragMode {
+    return LinkLabel_GetDragMode(l.instance)
+}
+
+func (l *TLinkLabel) SetDragMode(value TDragMode) {
+    LinkLabel_SetDragMode(l.instance, value)
+}
+
 func (l *TLinkLabel) Enabled() bool {
     return LinkLabel_GetEnabled(l.instance)
 }
@@ -332,8 +360,28 @@ func (l *TLinkLabel) SetOnClick(fn TNotifyEvent) {
     LinkLabel_SetOnClick(l.instance, fn)
 }
 
+func (l *TLinkLabel) SetOnContextPopup(fn TContextPopupEvent) {
+    LinkLabel_SetOnContextPopup(l.instance, fn)
+}
+
 func (l *TLinkLabel) SetOnDblClick(fn TNotifyEvent) {
     LinkLabel_SetOnDblClick(l.instance, fn)
+}
+
+func (l *TLinkLabel) SetOnDragDrop(fn TDragDropEvent) {
+    LinkLabel_SetOnDragDrop(l.instance, fn)
+}
+
+func (l *TLinkLabel) SetOnDragOver(fn TDragOverEvent) {
+    LinkLabel_SetOnDragOver(l.instance, fn)
+}
+
+func (l *TLinkLabel) SetOnEndDock(fn TEndDragEvent) {
+    LinkLabel_SetOnEndDock(l.instance, fn)
+}
+
+func (l *TLinkLabel) SetOnEndDrag(fn TEndDragEvent) {
+    LinkLabel_SetOnEndDrag(l.instance, fn)
 }
 
 func (l *TLinkLabel) SetOnMouseDown(fn TMouseEvent) {
@@ -356,8 +404,20 @@ func (l *TLinkLabel) SetOnMouseUp(fn TMouseEvent) {
     LinkLabel_SetOnMouseUp(l.instance, fn)
 }
 
+func (l *TLinkLabel) SetOnStartDock(fn TStartDockEvent) {
+    LinkLabel_SetOnStartDock(l.instance, fn)
+}
+
 func (l *TLinkLabel) SetOnLinkClick(fn TSysLinkEvent) {
     LinkLabel_SetOnLinkClick(l.instance, fn)
+}
+
+func (l *TLinkLabel) DockSite() bool {
+    return LinkLabel_GetDockSite(l.instance)
+}
+
+func (l *TLinkLabel) SetDockSite(value bool) {
+    LinkLabel_SetDockSite(l.instance, value)
 }
 
 func (l *TLinkLabel) DoubleBuffered() bool {
@@ -394,6 +454,14 @@ func (l *TLinkLabel) ParentWindow() HWND {
 
 func (l *TLinkLabel) SetParentWindow(value HWND) {
     LinkLabel_SetParentWindow(l.instance, value)
+}
+
+func (l *TLinkLabel) UseDockManager() bool {
+    return LinkLabel_GetUseDockManager(l.instance)
+}
+
+func (l *TLinkLabel) SetUseDockManager(value bool) {
+    LinkLabel_SetUseDockManager(l.instance, value)
 }
 
 func (l *TLinkLabel) Action() *TAction {
@@ -454,6 +522,10 @@ func (l *TLinkLabel) ExplicitWidth() int32 {
 
 func (l *TLinkLabel) ExplicitHeight() int32 {
     return LinkLabel_GetExplicitHeight(l.instance)
+}
+
+func (l *TLinkLabel) Floating() bool {
+    return LinkLabel_GetFloating(l.instance)
 }
 
 func (l *TLinkLabel) Parent() *TControl {

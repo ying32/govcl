@@ -100,6 +100,10 @@ func (s *TStaticText) BringToFront() {
     StaticText_BringToFront(s.instance)
 }
 
+func (s *TStaticText) Dragging() bool {
+    return StaticText_Dragging(s.instance)
+}
+
 func (s *TStaticText) HasParent() bool {
     return StaticText_HasParent(s.instance)
 }
@@ -264,6 +268,30 @@ func (s *TStaticText) SetDoubleBuffered(value bool) {
     StaticText_SetDoubleBuffered(s.instance, value)
 }
 
+func (s *TStaticText) DragCursor() TCursor {
+    return StaticText_GetDragCursor(s.instance)
+}
+
+func (s *TStaticText) SetDragCursor(value TCursor) {
+    StaticText_SetDragCursor(s.instance, value)
+}
+
+func (s *TStaticText) DragKind() TDragKind {
+    return StaticText_GetDragKind(s.instance)
+}
+
+func (s *TStaticText) SetDragKind(value TDragKind) {
+    StaticText_SetDragKind(s.instance, value)
+}
+
+func (s *TStaticText) DragMode() TDragMode {
+    return StaticText_GetDragMode(s.instance)
+}
+
+func (s *TStaticText) SetDragMode(value TDragMode) {
+    StaticText_SetDragMode(s.instance, value)
+}
+
 func (s *TStaticText) Enabled() bool {
     return StaticText_GetEnabled(s.instance)
 }
@@ -380,8 +408,28 @@ func (s *TStaticText) SetOnClick(fn TNotifyEvent) {
     StaticText_SetOnClick(s.instance, fn)
 }
 
+func (s *TStaticText) SetOnContextPopup(fn TContextPopupEvent) {
+    StaticText_SetOnContextPopup(s.instance, fn)
+}
+
 func (s *TStaticText) SetOnDblClick(fn TNotifyEvent) {
     StaticText_SetOnDblClick(s.instance, fn)
+}
+
+func (s *TStaticText) SetOnDragDrop(fn TDragDropEvent) {
+    StaticText_SetOnDragDrop(s.instance, fn)
+}
+
+func (s *TStaticText) SetOnDragOver(fn TDragOverEvent) {
+    StaticText_SetOnDragOver(s.instance, fn)
+}
+
+func (s *TStaticText) SetOnEndDock(fn TEndDragEvent) {
+    StaticText_SetOnEndDock(s.instance, fn)
+}
+
+func (s *TStaticText) SetOnEndDrag(fn TEndDragEvent) {
+    StaticText_SetOnEndDrag(s.instance, fn)
 }
 
 func (s *TStaticText) SetOnMouseDown(fn TMouseEvent) {
@@ -404,6 +452,18 @@ func (s *TStaticText) SetOnMouseUp(fn TMouseEvent) {
     StaticText_SetOnMouseUp(s.instance, fn)
 }
 
+func (s *TStaticText) SetOnStartDock(fn TStartDockEvent) {
+    StaticText_SetOnStartDock(s.instance, fn)
+}
+
+func (s *TStaticText) DockSite() bool {
+    return StaticText_GetDockSite(s.instance)
+}
+
+func (s *TStaticText) SetDockSite(value bool) {
+    StaticText_SetDockSite(s.instance, value)
+}
+
 func (s *TStaticText) Brush() *TBrush {
     return BrushFromInst(StaticText_GetBrush(s.instance))
 }
@@ -422,6 +482,14 @@ func (s *TStaticText) ParentWindow() HWND {
 
 func (s *TStaticText) SetParentWindow(value HWND) {
     StaticText_SetParentWindow(s.instance, value)
+}
+
+func (s *TStaticText) UseDockManager() bool {
+    return StaticText_GetUseDockManager(s.instance)
+}
+
+func (s *TStaticText) SetUseDockManager(value bool) {
+    StaticText_SetUseDockManager(s.instance, value)
 }
 
 func (s *TStaticText) Action() *TAction {
@@ -474,6 +542,10 @@ func (s *TStaticText) ExplicitWidth() int32 {
 
 func (s *TStaticText) ExplicitHeight() int32 {
     return StaticText_GetExplicitHeight(s.instance)
+}
+
+func (s *TStaticText) Floating() bool {
+    return StaticText_GetFloating(s.instance)
 }
 
 func (s *TStaticText) Parent() *TControl {

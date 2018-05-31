@@ -25,6 +25,11 @@ begin
   AObj.BringToFront;
 end;
 
+function Gauge_Dragging(AObj: TGauge): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function Gauge_HasParent(AObj: TGauge): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -390,6 +395,11 @@ begin
   Result :=  AObj.ExplicitHeight;
 end;
 
+function Gauge_GetFloating(AObj: TGauge): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function Gauge_GetParent(AObj: TGauge): TWinControl; stdcall;
 begin
   Result :=  AObj.Parent;
@@ -551,6 +561,7 @@ exports
   Gauge_Free,
   Gauge_AddProgress,
   Gauge_BringToFront,
+  Gauge_Dragging,
   Gauge_HasParent,
   Gauge_Hide,
   Gauge_Invalidate,
@@ -624,6 +635,7 @@ exports
   Gauge_GetExplicitTop,
   Gauge_GetExplicitWidth,
   Gauge_GetExplicitHeight,
+  Gauge_GetFloating,
   Gauge_GetParent,
   Gauge_SetParent,
   Gauge_GetStyleElements,

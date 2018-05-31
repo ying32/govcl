@@ -100,6 +100,10 @@ func (r *TRadioButton) BringToFront() {
     RadioButton_BringToFront(r.instance)
 }
 
+func (r *TRadioButton) Dragging() bool {
+    return RadioButton_Dragging(r.instance)
+}
+
 func (r *TRadioButton) HasParent() bool {
     return RadioButton_HasParent(r.instance)
 }
@@ -232,6 +236,30 @@ func (r *TRadioButton) SetDoubleBuffered(value bool) {
     RadioButton_SetDoubleBuffered(r.instance, value)
 }
 
+func (r *TRadioButton) DragCursor() TCursor {
+    return RadioButton_GetDragCursor(r.instance)
+}
+
+func (r *TRadioButton) SetDragCursor(value TCursor) {
+    RadioButton_SetDragCursor(r.instance, value)
+}
+
+func (r *TRadioButton) DragKind() TDragKind {
+    return RadioButton_GetDragKind(r.instance)
+}
+
+func (r *TRadioButton) SetDragKind(value TDragKind) {
+    RadioButton_SetDragKind(r.instance, value)
+}
+
+func (r *TRadioButton) DragMode() TDragMode {
+    return RadioButton_GetDragMode(r.instance)
+}
+
+func (r *TRadioButton) SetDragMode(value TDragMode) {
+    RadioButton_SetDragMode(r.instance, value)
+}
+
 func (r *TRadioButton) Enabled() bool {
     return RadioButton_GetEnabled(r.instance)
 }
@@ -348,8 +376,28 @@ func (r *TRadioButton) SetOnClick(fn TNotifyEvent) {
     RadioButton_SetOnClick(r.instance, fn)
 }
 
+func (r *TRadioButton) SetOnContextPopup(fn TContextPopupEvent) {
+    RadioButton_SetOnContextPopup(r.instance, fn)
+}
+
 func (r *TRadioButton) SetOnDblClick(fn TNotifyEvent) {
     RadioButton_SetOnDblClick(r.instance, fn)
+}
+
+func (r *TRadioButton) SetOnDragDrop(fn TDragDropEvent) {
+    RadioButton_SetOnDragDrop(r.instance, fn)
+}
+
+func (r *TRadioButton) SetOnDragOver(fn TDragOverEvent) {
+    RadioButton_SetOnDragOver(r.instance, fn)
+}
+
+func (r *TRadioButton) SetOnEndDock(fn TEndDragEvent) {
+    RadioButton_SetOnEndDock(r.instance, fn)
+}
+
+func (r *TRadioButton) SetOnEndDrag(fn TEndDragEvent) {
+    RadioButton_SetOnEndDrag(r.instance, fn)
 }
 
 func (r *TRadioButton) SetOnEnter(fn TNotifyEvent) {
@@ -392,6 +440,18 @@ func (r *TRadioButton) SetOnMouseUp(fn TMouseEvent) {
     RadioButton_SetOnMouseUp(r.instance, fn)
 }
 
+func (r *TRadioButton) SetOnStartDock(fn TStartDockEvent) {
+    RadioButton_SetOnStartDock(r.instance, fn)
+}
+
+func (r *TRadioButton) DockSite() bool {
+    return RadioButton_GetDockSite(r.instance)
+}
+
+func (r *TRadioButton) SetDockSite(value bool) {
+    RadioButton_SetDockSite(r.instance, value)
+}
+
 func (r *TRadioButton) Brush() *TBrush {
     return BrushFromInst(RadioButton_GetBrush(r.instance))
 }
@@ -410,6 +470,14 @@ func (r *TRadioButton) ParentWindow() HWND {
 
 func (r *TRadioButton) SetParentWindow(value HWND) {
     RadioButton_SetParentWindow(r.instance, value)
+}
+
+func (r *TRadioButton) UseDockManager() bool {
+    return RadioButton_GetUseDockManager(r.instance)
+}
+
+func (r *TRadioButton) SetUseDockManager(value bool) {
+    RadioButton_SetUseDockManager(r.instance, value)
 }
 
 func (r *TRadioButton) BoundsRect() TRect {
@@ -454,6 +522,10 @@ func (r *TRadioButton) ExplicitWidth() int32 {
 
 func (r *TRadioButton) ExplicitHeight() int32 {
     return RadioButton_GetExplicitHeight(r.instance)
+}
+
+func (r *TRadioButton) Floating() bool {
+    return RadioButton_GetFloating(r.instance)
 }
 
 func (r *TRadioButton) Parent() *TControl {

@@ -26,6 +26,8 @@ type HDC uintptr
 
 type TColor uint32
 
+type THelpEventData uintptr
+
 type TTabOrder int16
 
 type HFONT uintptr
@@ -90,4 +92,14 @@ func (p *TPoint) IsZero() bool {
 func (p *TPoint) Offset(dx, dy int32) {
 	p.X += dx
 	p.Y += dy
+}
+
+// TMsg: Only Windows,  tagMSG
+type TMsg struct {
+	Hwnd    HWND
+	Message uint32
+	WParam  uintptr
+	LParam  uintptr
+	Time    uint32
+	Pt      TPoint
 }

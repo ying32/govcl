@@ -56,6 +56,10 @@ func (b *TBevel) BringToFront() {
     Bevel_BringToFront(b.instance)
 }
 
+func (b *TBevel) Dragging() bool {
+    return Bevel_Dragging(b.instance)
+}
+
 func (b *TBevel) HasParent() bool {
     return Bevel_HasParent(b.instance)
 }
@@ -254,6 +258,10 @@ func (b *TBevel) ExplicitWidth() int32 {
 
 func (b *TBevel) ExplicitHeight() int32 {
     return Bevel_GetExplicitHeight(b.instance)
+}
+
+func (b *TBevel) Floating() bool {
+    return Bevel_GetFloating(b.instance)
 }
 
 func (b *TBevel) Parent() *TControl {

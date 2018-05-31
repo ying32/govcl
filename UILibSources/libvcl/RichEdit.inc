@@ -130,6 +130,11 @@ begin
   AObj.BringToFront;
 end;
 
+function RichEdit_Dragging(AObj: TRichEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function RichEdit_HasParent(AObj: TRichEdit): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -313,6 +318,36 @@ end;
 procedure RichEdit_SetColor(AObj: TRichEdit; AValue: TColor); stdcall;
 begin
   AObj.Color := AValue;
+end;
+
+function RichEdit_GetDragCursor(AObj: TRichEdit): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure RichEdit_SetDragCursor(AObj: TRichEdit; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function RichEdit_GetDragKind(AObj: TRichEdit): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure RichEdit_SetDragKind(AObj: TRichEdit; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function RichEdit_GetDragMode(AObj: TRichEdit): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure RichEdit_SetDragMode(AObj: TRichEdit; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function RichEdit_GetEnabled(AObj: TRichEdit): LongBool; stdcall;
@@ -569,6 +604,18 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure RichEdit_SetOnContextPopup(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure RichEdit_SetOnDblClick(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -579,6 +626,54 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure RichEdit_SetOnDragDrop(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure RichEdit_SetOnDragOver(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure RichEdit_SetOnEndDock(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure RichEdit_SetOnEndDrag(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure RichEdit_SetOnEnter(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -713,6 +808,42 @@ begin
   TEventClass.Add(AObj, geMouseWheel, AEventId);
 end;
 
+procedure RichEdit_SetOnMouseWheelDown(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseWheelDown := nil;
+    TEventClass.Remove(AObj, geMouseWheelDown);
+    Exit;
+  end;
+  AObj.OnMouseWheelDown := TEventClass.OnMouseWheelDown;
+  TEventClass.Add(AObj, geMouseWheelDown, AEventId);
+end;
+
+procedure RichEdit_SetOnMouseWheelUp(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseWheelUp := nil;
+    TEventClass.Remove(AObj, geMouseWheelUp);
+    Exit;
+  end;
+  AObj.OnMouseWheelUp := TEventClass.OnMouseWheelUp;
+  TEventClass.Add(AObj, geMouseWheelUp, AEventId);
+end;
+
+procedure RichEdit_SetOnStartDock(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
+end;
+
 function RichEdit_GetActiveLineNo(AObj: TRichEdit): Cardinal; stdcall;
 begin
   Result :=  AObj.ActiveLineNo;
@@ -828,6 +959,16 @@ begin
   AObj.TextHint := AValue;
 end;
 
+function RichEdit_GetDockSite(AObj: TRichEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure RichEdit_SetDockSite(AObj: TRichEdit; AValue: LongBool); stdcall;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function RichEdit_GetDoubleBuffered(AObj: TRichEdit): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -871,6 +1012,16 @@ end;
 procedure RichEdit_SetParentWindow(AObj: TRichEdit; AValue: HWND); stdcall;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function RichEdit_GetUseDockManager(AObj: TRichEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure RichEdit_SetUseDockManager(AObj: TRichEdit; AValue: LongBool); stdcall;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function RichEdit_GetAction(AObj: TRichEdit): TBasicAction; stdcall;
@@ -936,6 +1087,11 @@ end;
 function RichEdit_GetExplicitHeight(AObj: TRichEdit): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function RichEdit_GetFloating(AObj: TRichEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function RichEdit_GetParent(AObj: TRichEdit): TWinControl; stdcall;
@@ -1115,6 +1271,7 @@ exports
   RichEdit_SetFocus,
   RichEdit_Update,
   RichEdit_BringToFront,
+  RichEdit_Dragging,
   RichEdit_HasParent,
   RichEdit_Hide,
   RichEdit_Perform,
@@ -1152,6 +1309,12 @@ exports
   RichEdit_SetBorderWidth,
   RichEdit_GetColor,
   RichEdit_SetColor,
+  RichEdit_GetDragCursor,
+  RichEdit_SetDragCursor,
+  RichEdit_GetDragKind,
+  RichEdit_SetDragKind,
+  RichEdit_GetDragMode,
+  RichEdit_SetDragMode,
   RichEdit_GetEnabled,
   RichEdit_SetEnabled,
   RichEdit_GetFont,
@@ -1200,7 +1363,12 @@ exports
   RichEdit_SetZoom,
   RichEdit_SetOnChange,
   RichEdit_SetOnClick,
+  RichEdit_SetOnContextPopup,
   RichEdit_SetOnDblClick,
+  RichEdit_SetOnDragDrop,
+  RichEdit_SetOnDragOver,
+  RichEdit_SetOnEndDock,
+  RichEdit_SetOnEndDrag,
   RichEdit_SetOnEnter,
   RichEdit_SetOnExit,
   RichEdit_SetOnKeyDown,
@@ -1212,6 +1380,9 @@ exports
   RichEdit_SetOnMouseMove,
   RichEdit_SetOnMouseUp,
   RichEdit_SetOnMouseWheel,
+  RichEdit_SetOnMouseWheelDown,
+  RichEdit_SetOnMouseWheelUp,
+  RichEdit_SetOnStartDock,
   RichEdit_GetActiveLineNo,
   RichEdit_GetDefAttributes,
   RichEdit_SetDefAttributes,
@@ -1235,6 +1406,8 @@ exports
   RichEdit_SetText,
   RichEdit_GetTextHint,
   RichEdit_SetTextHint,
+  RichEdit_GetDockSite,
+  RichEdit_SetDockSite,
   RichEdit_GetDoubleBuffered,
   RichEdit_SetDoubleBuffered,
   RichEdit_GetBrush,
@@ -1244,6 +1417,8 @@ exports
   RichEdit_SetParentDoubleBuffered,
   RichEdit_GetParentWindow,
   RichEdit_SetParentWindow,
+  RichEdit_GetUseDockManager,
+  RichEdit_SetUseDockManager,
   RichEdit_GetAction,
   RichEdit_SetAction,
   RichEdit_GetBoundsRect,
@@ -1257,6 +1432,7 @@ exports
   RichEdit_GetExplicitTop,
   RichEdit_GetExplicitWidth,
   RichEdit_GetExplicitHeight,
+  RichEdit_GetFloating,
   RichEdit_GetParent,
   RichEdit_SetParent,
   RichEdit_GetAlignWithMargins,

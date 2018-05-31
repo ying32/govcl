@@ -30,6 +30,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function RadioGroup_HandleAllocated(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure RadioGroup_Invalidate(AObj: TRadioGroup); extdecl;
 begin
   AObj.Invalidate;
@@ -68,6 +73,11 @@ end;
 procedure RadioGroup_BringToFront(AObj: TRadioGroup); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function RadioGroup_Dragging(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function RadioGroup_HasParent(AObj: TRadioGroup): LongBool; extdecl;
@@ -215,6 +225,26 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function RadioGroup_GetDragCursor(AObj: TRadioGroup): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure RadioGroup_SetDragCursor(AObj: TRadioGroup; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function RadioGroup_GetDragMode(AObj: TRadioGroup): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure RadioGroup_SetDragMode(AObj: TRadioGroup; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function RadioGroup_GetEnabled(AObj: TRadioGroup): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -347,6 +377,42 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure RadioGroup_SetOnDragDrop(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure RadioGroup_SetOnDragOver(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure RadioGroup_SetOnEndDrag(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure RadioGroup_SetOnEnter(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -369,6 +435,16 @@ begin
   end;
   AObj.OnExit := @EventClass.OnExit;
   EventClass.Add(AObj, geExit, AEventId);
+end;
+
+function RadioGroup_GetDockSite(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure RadioGroup_SetDockSite(AObj: TRadioGroup; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
 end;
 
 function RadioGroup_GetBrush(AObj: TRadioGroup): TBrush; extdecl;
@@ -394,6 +470,16 @@ end;
 procedure RadioGroup_SetParentWindow(AObj: TRadioGroup; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function RadioGroup_GetUseDockManager(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure RadioGroup_SetUseDockManager(AObj: TRadioGroup; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function RadioGroup_GetAction(AObj: TRadioGroup): TBasicAction; extdecl;
@@ -439,6 +525,11 @@ end;
 procedure RadioGroup_SetClientWidth(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function RadioGroup_GetFloating(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function RadioGroup_GetParent(AObj: TRadioGroup): TWinControl; extdecl;
@@ -568,6 +659,7 @@ exports
   RadioGroup_FlipChildren,
   RadioGroup_CanFocus,
   RadioGroup_Focused,
+  RadioGroup_HandleAllocated,
   RadioGroup_Invalidate,
   RadioGroup_Realign,
   RadioGroup_Repaint,
@@ -576,6 +668,7 @@ exports
   RadioGroup_SetFocus,
   RadioGroup_Update,
   RadioGroup_BringToFront,
+  RadioGroup_Dragging,
   RadioGroup_HasParent,
   RadioGroup_Hide,
   RadioGroup_Perform,
@@ -605,6 +698,10 @@ exports
   RadioGroup_SetColumns,
   RadioGroup_GetDoubleBuffered,
   RadioGroup_SetDoubleBuffered,
+  RadioGroup_GetDragCursor,
+  RadioGroup_SetDragCursor,
+  RadioGroup_GetDragMode,
+  RadioGroup_SetDragMode,
   RadioGroup_GetEnabled,
   RadioGroup_SetEnabled,
   RadioGroup_GetFont,
@@ -630,13 +727,20 @@ exports
   RadioGroup_GetVisible,
   RadioGroup_SetVisible,
   RadioGroup_SetOnClick,
+  RadioGroup_SetOnDragDrop,
+  RadioGroup_SetOnDragOver,
+  RadioGroup_SetOnEndDrag,
   RadioGroup_SetOnEnter,
   RadioGroup_SetOnExit,
+  RadioGroup_GetDockSite,
+  RadioGroup_SetDockSite,
   RadioGroup_GetBrush,
   RadioGroup_GetControlCount,
   RadioGroup_GetHandle,
   RadioGroup_GetParentWindow,
   RadioGroup_SetParentWindow,
+  RadioGroup_GetUseDockManager,
+  RadioGroup_SetUseDockManager,
   RadioGroup_GetAction,
   RadioGroup_SetAction,
   RadioGroup_GetBoundsRect,
@@ -646,6 +750,7 @@ exports
   RadioGroup_GetClientRect,
   RadioGroup_GetClientWidth,
   RadioGroup_SetClientWidth,
+  RadioGroup_GetFloating,
   RadioGroup_GetParent,
   RadioGroup_SetParent,
   RadioGroup_GetLeft,

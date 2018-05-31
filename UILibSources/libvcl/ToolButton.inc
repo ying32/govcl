@@ -35,6 +35,11 @@ begin
   AObj.BringToFront;
 end;
 
+function ToolButton_Dragging(AObj: TToolButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Dragging;
+end;
+
 function ToolButton_HasParent(AObj: TToolButton): LongBool; stdcall;
 begin
   Result :=  AObj.HasParent;
@@ -178,6 +183,36 @@ end;
 procedure ToolButton_SetDown(AObj: TToolButton; AValue: LongBool); stdcall;
 begin
   AObj.Down := AValue;
+end;
+
+function ToolButton_GetDragCursor(AObj: TToolButton): TCursor; stdcall;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ToolButton_SetDragCursor(AObj: TToolButton; AValue: TCursor); stdcall;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ToolButton_GetDragKind(AObj: TToolButton): TDragKind; stdcall;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ToolButton_SetDragKind(AObj: TToolButton; AValue: TDragKind); stdcall;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ToolButton_GetDragMode(AObj: TToolButton): TDragMode; stdcall;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ToolButton_SetDragMode(AObj: TToolButton; AValue: TDragMode); stdcall;
+begin
+  AObj.DragMode := AValue;
 end;
 
 function ToolButton_GetDropdownMenu(AObj: TToolButton): TPopupMenu; stdcall;
@@ -342,6 +377,66 @@ begin
   TEventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ToolButton_SetOnContextPopup(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    TEventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure ToolButton_SetOnDragDrop(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    TEventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ToolButton_SetOnDragOver(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    TEventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ToolButton_SetOnEndDock(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDock := nil;
+    TEventClass.Remove(AObj, geEndDock);
+    Exit;
+  end;
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, geEndDock, AEventId);
+end;
+
+procedure ToolButton_SetOnEndDrag(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    TEventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure ToolButton_SetOnMouseDown(AObj: TToolButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -400,6 +495,18 @@ begin
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
   TEventClass.Add(AObj, geMouseUp, AEventId);
+end;
+
+procedure ToolButton_SetOnStartDock(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStartDock := nil;
+    TEventClass.Remove(AObj, geStartDock);
+    Exit;
+  end;
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
 function ToolButton_GetAlign(AObj: TToolButton): TAlign; stdcall;
@@ -485,6 +592,11 @@ end;
 function ToolButton_GetExplicitHeight(AObj: TToolButton): Integer; stdcall;
 begin
   Result :=  AObj.ExplicitHeight;
+end;
+
+function ToolButton_GetFloating(AObj: TToolButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ToolButton_GetParent(AObj: TToolButton): TWinControl; stdcall;
@@ -630,6 +742,7 @@ exports
   ToolButton_Click,
   ToolButton_SetBounds,
   ToolButton_BringToFront,
+  ToolButton_Dragging,
   ToolButton_HasParent,
   ToolButton_Hide,
   ToolButton_Invalidate,
@@ -659,6 +772,12 @@ exports
   ToolButton_SetCaption,
   ToolButton_GetDown,
   ToolButton_SetDown,
+  ToolButton_GetDragCursor,
+  ToolButton_SetDragCursor,
+  ToolButton_GetDragKind,
+  ToolButton_SetDragKind,
+  ToolButton_GetDragMode,
+  ToolButton_SetDragMode,
   ToolButton_GetDropdownMenu,
   ToolButton_SetDropdownMenu,
   ToolButton_GetEnabled,
@@ -690,11 +809,17 @@ exports
   ToolButton_GetWidth,
   ToolButton_SetWidth,
   ToolButton_SetOnClick,
+  ToolButton_SetOnContextPopup,
+  ToolButton_SetOnDragDrop,
+  ToolButton_SetOnDragOver,
+  ToolButton_SetOnEndDock,
+  ToolButton_SetOnEndDrag,
   ToolButton_SetOnMouseDown,
   ToolButton_SetOnMouseEnter,
   ToolButton_SetOnMouseLeave,
   ToolButton_SetOnMouseMove,
   ToolButton_SetOnMouseUp,
+  ToolButton_SetOnStartDock,
   ToolButton_GetAlign,
   ToolButton_SetAlign,
   ToolButton_GetAnchors,
@@ -712,6 +837,7 @@ exports
   ToolButton_GetExplicitTop,
   ToolButton_GetExplicitWidth,
   ToolButton_GetExplicitHeight,
+  ToolButton_GetFloating,
   ToolButton_GetParent,
   ToolButton_SetParent,
   ToolButton_GetStyleElements,

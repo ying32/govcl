@@ -100,6 +100,10 @@ func (s *TScrollBox) BringToFront() {
     ScrollBox_BringToFront(s.instance)
 }
 
+func (s *TScrollBox) Dragging() bool {
+    return ScrollBox_Dragging(s.instance)
+}
+
 func (s *TScrollBox) HasParent() bool {
     return ScrollBox_HasParent(s.instance)
 }
@@ -232,12 +236,44 @@ func (s *TScrollBox) SetBorderStyle(value TBorderStyle) {
     ScrollBox_SetBorderStyle(s.instance, value)
 }
 
+func (s *TScrollBox) DockSite() bool {
+    return ScrollBox_GetDockSite(s.instance)
+}
+
+func (s *TScrollBox) SetDockSite(value bool) {
+    ScrollBox_SetDockSite(s.instance, value)
+}
+
 func (s *TScrollBox) DoubleBuffered() bool {
     return ScrollBox_GetDoubleBuffered(s.instance)
 }
 
 func (s *TScrollBox) SetDoubleBuffered(value bool) {
     ScrollBox_SetDoubleBuffered(s.instance, value)
+}
+
+func (s *TScrollBox) DragCursor() TCursor {
+    return ScrollBox_GetDragCursor(s.instance)
+}
+
+func (s *TScrollBox) SetDragCursor(value TCursor) {
+    ScrollBox_SetDragCursor(s.instance, value)
+}
+
+func (s *TScrollBox) DragKind() TDragKind {
+    return ScrollBox_GetDragKind(s.instance)
+}
+
+func (s *TScrollBox) SetDragKind(value TDragKind) {
+    ScrollBox_SetDragKind(s.instance, value)
+}
+
+func (s *TScrollBox) DragMode() TDragMode {
+    return ScrollBox_GetDragMode(s.instance)
+}
+
+func (s *TScrollBox) SetDragMode(value TDragMode) {
+    ScrollBox_SetDragMode(s.instance, value)
 }
 
 func (s *TScrollBox) Enabled() bool {
@@ -364,8 +400,32 @@ func (s *TScrollBox) SetOnClick(fn TNotifyEvent) {
     ScrollBox_SetOnClick(s.instance, fn)
 }
 
+func (s *TScrollBox) SetOnContextPopup(fn TContextPopupEvent) {
+    ScrollBox_SetOnContextPopup(s.instance, fn)
+}
+
 func (s *TScrollBox) SetOnDblClick(fn TNotifyEvent) {
     ScrollBox_SetOnDblClick(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnDockDrop(fn TDockDropEvent) {
+    ScrollBox_SetOnDockDrop(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnDragDrop(fn TDragDropEvent) {
+    ScrollBox_SetOnDragDrop(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnDragOver(fn TDragOverEvent) {
+    ScrollBox_SetOnDragOver(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnEndDock(fn TEndDragEvent) {
+    ScrollBox_SetOnEndDock(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnEndDrag(fn TEndDragEvent) {
+    ScrollBox_SetOnEndDrag(s.instance, fn)
 }
 
 func (s *TScrollBox) SetOnEnter(fn TNotifyEvent) {
@@ -374,6 +434,10 @@ func (s *TScrollBox) SetOnEnter(fn TNotifyEvent) {
 
 func (s *TScrollBox) SetOnExit(fn TNotifyEvent) {
     ScrollBox_SetOnExit(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
+    ScrollBox_SetOnGetSiteInfo(s.instance, fn)
 }
 
 func (s *TScrollBox) SetOnMouseDown(fn TMouseEvent) {
@@ -400,8 +464,24 @@ func (s *TScrollBox) SetOnMouseWheel(fn TMouseWheelEvent) {
     ScrollBox_SetOnMouseWheel(s.instance, fn)
 }
 
+func (s *TScrollBox) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
+    ScrollBox_SetOnMouseWheelDown(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
+    ScrollBox_SetOnMouseWheelUp(s.instance, fn)
+}
+
 func (s *TScrollBox) SetOnResize(fn TNotifyEvent) {
     ScrollBox_SetOnResize(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnStartDock(fn TStartDockEvent) {
+    ScrollBox_SetOnStartDock(s.instance, fn)
+}
+
+func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {
+    ScrollBox_SetOnUnDock(s.instance, fn)
 }
 
 func (s *TScrollBox) Brush() *TBrush {
@@ -422,6 +502,14 @@ func (s *TScrollBox) ParentWindow() HWND {
 
 func (s *TScrollBox) SetParentWindow(value HWND) {
     ScrollBox_SetParentWindow(s.instance, value)
+}
+
+func (s *TScrollBox) UseDockManager() bool {
+    return ScrollBox_GetUseDockManager(s.instance)
+}
+
+func (s *TScrollBox) SetUseDockManager(value bool) {
+    ScrollBox_SetUseDockManager(s.instance, value)
 }
 
 func (s *TScrollBox) Action() *TAction {
@@ -474,6 +562,10 @@ func (s *TScrollBox) ExplicitWidth() int32 {
 
 func (s *TScrollBox) ExplicitHeight() int32 {
     return ScrollBox_GetExplicitHeight(s.instance)
+}
+
+func (s *TScrollBox) Floating() bool {
+    return ScrollBox_GetFloating(s.instance)
 }
 
 func (s *TScrollBox) Parent() *TControl {

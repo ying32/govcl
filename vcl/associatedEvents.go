@@ -63,14 +63,29 @@ var (
 		"Activate":          {onActivate, nil},
 		"Deactivate":        {onDeactivate, nil},
 		"ConstrainedResize": {onConstrainedResize, nil},
-		"Paint":             {onPaint, nil}}
+		"Paint":             {onPaint, nil},
+		"ContextPopup":      {onContextPopup, nil},
+		"DragOver":          {onDragOver, nil},
+		"DragDrop":          {onDragDrop, nil},
+		"StartDrag":         {onStartDrag, nil},
+		"EndDrag":           {onEndDrag, nil},
+		"DockDrop":          {onDockDrop, nil},
+		"DockOver":          {onDockOver, nil},
+		"UnDock":            {onUnDock, nil},
+		"StartDock":         {onStartDock, nil},
+		"GetSiteInfo":       {onGetSiteInfo, nil},
+		"MouseWheelDown":    {onMouseWheelDown, nil},
+		"MouseWheelUp":      {onMouseWheelUp, nil}}
 
 	// Application 独有事件
 	_appEvents = map[string]interface{}{
 		"Hint":      onHint,
 		"Exception": onException,
 		"Minimize":  onMinimize,
-		"Restore":   onRestore}
+		"Restore":   onRestore,
+		"Message":   onMessage,
+		"Help":      onHelp,
+		"ShortCut":  onShortCut}
 )
 
 func getComponents(f *TForm) (ret []tComponentItem) {
@@ -303,6 +318,54 @@ func onConstrainedResize(sender IObject, minWidth, minHeight, maxWidth, maxHeigh
 	mcall("ConstrainedResize", sender, minWidth, minHeight, maxWidth, maxHeight)
 }
 
+func onContextPopup(sender IObject, mousePos TPoint, handled *bool) {
+	mcall("ContextPopup", sender, mousePos, handled)
+}
+
+func onDragOver(sender, source IObject, x, y int32, state TDragState, accept *bool) {
+	mcall("DragOver", sender, source, x, y, state, accept)
+}
+
+func onDragDrop(sender, source IObject, x, y int32) {
+	mcall("DragDrop", sender, source, x, y)
+}
+
+func onStartDrag(sender IObject, dragObject *TDragObject) {
+	mcall("StartDrag", sender, dragObject)
+}
+
+func onEndDrag(sender, target IObject, x, y int32) {
+	mcall("EndDrag", sender, target, x, y)
+}
+
+func onDockDrop(sender IObject, source *TDragDockObject, x, y int32) {
+	mcall("DockDrop", sender, x, y)
+}
+
+func onDockOver(sender IObject, source *TDragDockObject, x, y int32, state TDragState, accept *bool) {
+	mcall("DockOver", sender, source, x, y, state, accept)
+}
+
+func onUnDock(sender IObject, client *TControl, newTarget *TControl, allow *bool) {
+	mcall("UnDock", sender, client, newTarget, allow)
+}
+
+func onStartDock(sender IObject, dragObject *TDragDockObject) {
+	mcall("StartDock", sender, dragObject)
+}
+
+func onGetSiteInfo(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool) {
+	mcall("GetSiteInfo", sender, dockClient, influenceRect, mousePos, canDock)
+}
+
+func onMouseWheelDown(sender IObject, shift TShiftState, mousePos TPoint, handled *bool) {
+	mcall("MouseWheelDown", sender, shift, mousePos, handled)
+}
+
+func onMouseWheelUp(sender IObject, shift TShiftState, mousePos TPoint, handled *bool) {
+	mcall("MouseWheelUp", sender, shift, mousePos, handled)
+}
+
 // -- Application
 
 func onException(sender IObject, e *Exception) {
@@ -318,6 +381,18 @@ func onMinimize(sender IObject) {
 
 func onRestore(sender IObject) {
 	mcall("Restore", sender)
+}
+
+func onMessage(msg *TMsg, handled *bool) {
+	mcall("Message", msg, handled)
+}
+
+func onHelp(command uint16, data THelpEventData, callhelp, result *bool) {
+	mcall("Help", data, callhelp, result)
+}
+
+func onShortCut(msg *TWMKey, handled *bool) {
+	mcall("ShortCut", msg, handled)
 }
 
 // callSetEventMethod 公用的call SetOnXXXX方法

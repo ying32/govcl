@@ -50,6 +50,11 @@ begin
   Result :=  AObj.Focused;
 end;
 
+function CheckListBox_HandleAllocated(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure CheckListBox_Invalidate(AObj: TCheckListBox); extdecl;
 begin
   AObj.Invalidate;
@@ -88,6 +93,11 @@ end;
 procedure CheckListBox_BringToFront(AObj: TCheckListBox); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function CheckListBox_Dragging(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function CheckListBox_HasParent(AObj: TCheckListBox): LongBool; extdecl;
@@ -257,6 +267,26 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function CheckListBox_GetDragCursor(AObj: TCheckListBox): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure CheckListBox_SetDragCursor(AObj: TCheckListBox; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function CheckListBox_GetDragMode(AObj: TCheckListBox): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure CheckListBox_SetDragMode(AObj: TCheckListBox; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
 function CheckListBox_GetEnabled(AObj: TCheckListBox): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -409,6 +439,18 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure CheckListBox_SetOnContextPopup(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
 procedure CheckListBox_SetOnDblClick(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -419,6 +461,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure CheckListBox_SetOnDragDrop(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure CheckListBox_SetOnDragOver(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure CheckListBox_SetOnEndDrag(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
 procedure CheckListBox_SetOnEnter(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
@@ -576,6 +654,16 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function CheckListBox_GetDockSite(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure CheckListBox_SetDockSite(AObj: TCheckListBox; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function CheckListBox_GetBrush(AObj: TCheckListBox): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -599,6 +687,16 @@ end;
 procedure CheckListBox_SetParentWindow(AObj: TCheckListBox; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function CheckListBox_GetUseDockManager(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure CheckListBox_SetUseDockManager(AObj: TCheckListBox; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function CheckListBox_GetAction(AObj: TCheckListBox): TBasicAction; extdecl;
@@ -644,6 +742,11 @@ end;
 procedure CheckListBox_SetClientWidth(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function CheckListBox_GetFloating(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function CheckListBox_GetParent(AObj: TCheckListBox): TWinControl; extdecl;
@@ -827,6 +930,7 @@ exports
   CheckListBox_CanFocus,
   CheckListBox_FlipChildren,
   CheckListBox_Focused,
+  CheckListBox_HandleAllocated,
   CheckListBox_Invalidate,
   CheckListBox_Realign,
   CheckListBox_Repaint,
@@ -835,6 +939,7 @@ exports
   CheckListBox_SetFocus,
   CheckListBox_Update,
   CheckListBox_BringToFront,
+  CheckListBox_Dragging,
   CheckListBox_HasParent,
   CheckListBox_Hide,
   CheckListBox_Perform,
@@ -867,6 +972,10 @@ exports
   CheckListBox_SetColumns,
   CheckListBox_GetDoubleBuffered,
   CheckListBox_SetDoubleBuffered,
+  CheckListBox_GetDragCursor,
+  CheckListBox_SetDragCursor,
+  CheckListBox_GetDragMode,
+  CheckListBox_SetDragMode,
   CheckListBox_GetEnabled,
   CheckListBox_SetEnabled,
   CheckListBox_GetFont,
@@ -896,7 +1005,11 @@ exports
   CheckListBox_GetVisible,
   CheckListBox_SetVisible,
   CheckListBox_SetOnClick,
+  CheckListBox_SetOnContextPopup,
   CheckListBox_SetOnDblClick,
+  CheckListBox_SetOnDragDrop,
+  CheckListBox_SetOnDragOver,
+  CheckListBox_SetOnEndDrag,
   CheckListBox_SetOnEnter,
   CheckListBox_SetOnExit,
   CheckListBox_SetOnKeyDown,
@@ -914,11 +1027,15 @@ exports
   CheckListBox_GetSelCount,
   CheckListBox_GetItemIndex,
   CheckListBox_SetItemIndex,
+  CheckListBox_GetDockSite,
+  CheckListBox_SetDockSite,
   CheckListBox_GetBrush,
   CheckListBox_GetControlCount,
   CheckListBox_GetHandle,
   CheckListBox_GetParentWindow,
   CheckListBox_SetParentWindow,
+  CheckListBox_GetUseDockManager,
+  CheckListBox_SetUseDockManager,
   CheckListBox_GetAction,
   CheckListBox_SetAction,
   CheckListBox_GetBoundsRect,
@@ -928,6 +1045,7 @@ exports
   CheckListBox_GetClientRect,
   CheckListBox_GetClientWidth,
   CheckListBox_SetClientWidth,
+  CheckListBox_GetFloating,
   CheckListBox_GetParent,
   CheckListBox_SetParent,
   CheckListBox_GetLeft,

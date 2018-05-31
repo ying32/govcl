@@ -45,6 +45,11 @@ begin
   AObj.FlipChildren(AllLevels);
 end;
 
+function ColorBox_HandleAllocated(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
 procedure ColorBox_Invalidate(AObj: TColorBox); extdecl;
 begin
   AObj.Invalidate;
@@ -83,6 +88,11 @@ end;
 procedure ColorBox_BringToFront(AObj: TColorBox); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function ColorBox_Dragging(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function ColorBox_HasParent(AObj: TColorBox): LongBool; extdecl;
@@ -414,6 +424,54 @@ begin
   EventClass.Add(AObj, geClick, AEventId);
 end;
 
+procedure ColorBox_SetOnContextPopup(AObj: TColorBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnContextPopup := nil;
+    EventClass.Remove(AObj, geContextPopup);
+    Exit;
+  end;
+  AObj.OnContextPopup := @EventClass.OnContextPopup;
+  EventClass.Add(AObj, geContextPopup, AEventId);
+end;
+
+procedure ColorBox_SetOnDragDrop(AObj: TColorBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure ColorBox_SetOnDragOver(AObj: TColorBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ColorBox_SetOnEndDrag(AObj: TColorBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
 procedure ColorBox_SetOnEnter(AObj: TColorBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -563,6 +621,16 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ColorBox_GetDockSite(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ColorBox_SetDockSite(AObj: TColorBox; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
 function ColorBox_GetBrush(AObj: TColorBox): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -586,6 +654,16 @@ end;
 procedure ColorBox_SetParentWindow(AObj: TColorBox; AValue: HWND); extdecl;
 begin
   AObj.ParentWindow := AValue;
+end;
+
+function ColorBox_GetUseDockManager(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ColorBox_SetUseDockManager(AObj: TColorBox; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
 end;
 
 function ColorBox_GetAction(AObj: TColorBox): TBasicAction; extdecl;
@@ -631,6 +709,11 @@ end;
 procedure ColorBox_SetClientWidth(AObj: TColorBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ColorBox_GetFloating(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
 end;
 
 function ColorBox_GetParent(AObj: TColorBox): TWinControl; extdecl;
@@ -773,6 +856,7 @@ exports
   ColorBox_SelectAll,
   ColorBox_CanFocus,
   ColorBox_FlipChildren,
+  ColorBox_HandleAllocated,
   ColorBox_Invalidate,
   ColorBox_Realign,
   ColorBox_Repaint,
@@ -781,6 +865,7 @@ exports
   ColorBox_SetFocus,
   ColorBox_Update,
   ColorBox_BringToFront,
+  ColorBox_Dragging,
   ColorBox_HasParent,
   ColorBox_Hide,
   ColorBox_Perform,
@@ -844,6 +929,10 @@ exports
   ColorBox_SetVisible,
   ColorBox_SetOnChange,
   ColorBox_SetOnClick,
+  ColorBox_SetOnContextPopup,
+  ColorBox_SetOnDragDrop,
+  ColorBox_SetOnDragOver,
+  ColorBox_SetOnEndDrag,
   ColorBox_SetOnEnter,
   ColorBox_SetOnExit,
   ColorBox_SetOnKeyDown,
@@ -864,11 +953,15 @@ exports
   ColorBox_SetSelStart,
   ColorBox_GetItemIndex,
   ColorBox_SetItemIndex,
+  ColorBox_GetDockSite,
+  ColorBox_SetDockSite,
   ColorBox_GetBrush,
   ColorBox_GetControlCount,
   ColorBox_GetHandle,
   ColorBox_GetParentWindow,
   ColorBox_SetParentWindow,
+  ColorBox_GetUseDockManager,
+  ColorBox_SetUseDockManager,
   ColorBox_GetAction,
   ColorBox_SetAction,
   ColorBox_GetBoundsRect,
@@ -878,6 +971,7 @@ exports
   ColorBox_GetClientRect,
   ColorBox_GetClientWidth,
   ColorBox_SetClientWidth,
+  ColorBox_GetFloating,
   ColorBox_GetParent,
   ColorBox_SetParent,
   ColorBox_GetLeft,

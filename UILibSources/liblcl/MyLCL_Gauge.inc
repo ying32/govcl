@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ´úÂëÓÉGenlibVcl¹¤¾ß×Ô¶¯Éú³É¡£
-// Copyright ? ying32. All Rights Reserved.
+// ä»£ç ç”±GenlibLclå·¥å…·è‡ªåŠ¨ç”Ÿæˆã€‚
+// Copyright Â© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -23,6 +23,11 @@ end;
 procedure Gauge_BringToFront(AObj: TGauge); extdecl;
 begin
   AObj.BringToFront;
+end;
+
+function Gauge_Dragging(AObj: TGauge): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
 end;
 
 function Gauge_HasParent(AObj: TGauge): LongBool; extdecl;
@@ -73,6 +78,11 @@ end;
 procedure Gauge_Update(AObj: TGauge); extdecl;
 begin
   AObj.Update;
+end;
+
+function Gauge_GetTextBuf(AObj: TGauge; Buffer: PChar; BufSize: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.GetTextBuf(Buffer, BufSize);
 end;
 
 function Gauge_GetTextLen(AObj: TGauge): Integer; extdecl;
@@ -198,16 +208,6 @@ end;
 procedure Gauge_SetFont(AObj: TGauge; AValue: TFont); extdecl;
 begin
   AObj.Font := AValue;
-end;
-
-function Gauge_GetKind(AObj: TGauge): TGaugeKind; extdecl;
-begin
-  Result :=  AObj.Kind;
-end;
-
-procedure Gauge_SetKind(AObj: TGauge; AValue: TGaugeKind); extdecl;
-begin
-  AObj.Kind := AValue;
 end;
 
 function Gauge_GetMinValue(AObj: TGauge): Integer; extdecl;
@@ -365,6 +365,11 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function Gauge_GetFloating(AObj: TGauge): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
 function Gauge_GetParent(AObj: TGauge): TWinControl; extdecl;
 begin
   Result :=  AObj.Parent;
@@ -486,6 +491,7 @@ exports
   Gauge_Free,
   Gauge_AddProgress,
   Gauge_BringToFront,
+  Gauge_Dragging,
   Gauge_HasParent,
   Gauge_Hide,
   Gauge_Invalidate,
@@ -496,6 +502,7 @@ exports
   Gauge_SetBounds,
   Gauge_Show,
   Gauge_Update,
+  Gauge_GetTextBuf,
   Gauge_GetTextLen,
   Gauge_FindComponent,
   Gauge_GetNamePath,
@@ -521,8 +528,6 @@ exports
   Gauge_SetForeColor,
   Gauge_GetFont,
   Gauge_SetFont,
-  Gauge_GetKind,
-  Gauge_SetKind,
   Gauge_GetMinValue,
   Gauge_SetMinValue,
   Gauge_GetMaxValue,
@@ -554,6 +559,7 @@ exports
   Gauge_GetClientRect,
   Gauge_GetClientWidth,
   Gauge_SetClientWidth,
+  Gauge_GetFloating,
   Gauge_GetParent,
   Gauge_SetParent,
   Gauge_GetLeft,
