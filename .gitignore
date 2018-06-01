@@ -74,3 +74,4 @@ __recovery/
 /bin/win64
 /bin/win32
 /Librarys
+/samples/SkinsharpTest/*.she
