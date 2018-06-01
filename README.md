@@ -50,7 +50,7 @@ A: My English is bad. You can use Google Translate.
 ---  
 ### Other 
 
-**All binaries are moved to the attachment and [download](https://gitee.com/ying32/govcl/attach_files) .**   
+**binaries [download](https://github.com/ying32/govcl/releases) .**   
 
 * Windows: copy "bin\win32\libvcl.dll" or "bin\win64\libvclx64.dll" to the current exe directory or system environment path. If you don't want to use Delphi binary, you can copy the corresponding LCL library binaries under the "bin\liblcl.dll\" directory. Note: the use of LCL is limited in components, events, properties, and methods.
 
