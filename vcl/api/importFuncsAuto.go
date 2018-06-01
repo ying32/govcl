@@ -4,7 +4,7 @@ package api
 import (
     "unsafe"
     "time"
-    . "gitee.com/ying32/govcl/vcl/types"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 

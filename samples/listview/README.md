@@ -1,1 +1,1 @@
-![s1.jpg](https://gitee.com/ying32/govcl/raw/dev/samples/listview/s1.jpg)  
+![s1.jpg](https://raw.githubusercontent.com/ying32/govcl/dev/samples/listview/s1.jpg)  

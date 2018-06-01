@@ -9,9 +9,9 @@ import (
 	"io"
 	"os"
 
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/rtl"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 var styleNames = make(map[string]string, 0)

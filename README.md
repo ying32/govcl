@@ -1,9 +1,11 @@
-# Do not use this repository code. This is a backup.  
-
-## govcl: Go binding Delphi VCL/Lazarus LCL
+## govcl: Go bindings Delphi VCL/Lazarus LCL
 
 * [中文](https://github.com/ying32/govcl/blob/master/README_Zh-CN.md)   
 * [English](https://github.com/ying32/govcl/blob/master/README.md)   
+
+----
+
+* [中文wiki(Chinese wiki) ](https://gitee.com/ying32/govcl/wikis/pages)  
 
 ----  
 
@@ -16,13 +18,13 @@ Support win32, win64, linux64, macOS32 (linux and macOS only part of the compone
 
 ### usage: 
 
-> go get gitee.com/ying32/govcl    
+> go get github.com/ying32/govcl    
 
 ```go
 package main
 
 import (
-   "gitee.com/ying32/govcl/vcl"
+   "github.com/ying32/govcl/vcl"
 )
 
 var (
@@ -42,23 +44,9 @@ func main() {
 ---   
 ### FAQ
 
-Q: Why not use github.com?  
-A: Visit site too slow.  
-
-
 Q: Why is there no English WIKI?   
 A: My English is bad. You can use Google Translate.    
-
-
-Q:  if I want to use the code of this repository and not want to use gitee repository?  
-A:  Do not use the "go get" command. First create the directory "%GOPATH%/src/gitee.com/ying32". Then use the "git clone" command in this directory.  
-
----  
-### Chinese wiki  
-
-[Chinese wiki](https://gitee.com/ying32/govcl/wikis/pages)  
-
-
+ 
 ---  
 ### Other 
 

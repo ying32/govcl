@@ -4,7 +4,7 @@
   此项功能稳定性还有待观查。
 
   作者：ying32，本为govcl项目中的一个dylib扩展包
-  https://gitee.com/ying32/govcl
+  https://github.com/ying32/govcl
 
   这是一个移植自delphi BTMemoryModule.pas的，暂时只支持32bit dll， 最原始版本的c++代码
   已经支持64bit，暂时还没有想法去做移植。

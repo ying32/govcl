@@ -8,7 +8,7 @@ import (
 
 	"unsafe"
 
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 const (

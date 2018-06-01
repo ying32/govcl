@@ -1,7 +1,7 @@
 package vcl
 
 import (
-	. "gitee.com/ying32/govcl/vcl/types"
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 type IControl interface {

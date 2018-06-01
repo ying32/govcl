@@ -1,1 +1,1 @@
-![s1.jpg](https://gitee.com/ying32/govcl/raw/dev/samples/gdiplustest/s1.jpg)  
+![s1.jpg](https://raw.githubusercontent.com/ying32/govcl/dev/samples/gdiplustest/s1.jpg)  

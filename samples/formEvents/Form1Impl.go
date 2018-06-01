@@ -5,8 +5,8 @@ import (
 
 	"strconv"
 
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 func (f *TForm1) OnForm1Create(object vcl.IObject) {

@@ -8,7 +8,7 @@
 //       Photoshop文件格式参考官网
 //         http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/#50577409_72092
 //
-//  这个只是 gitee.com/ying32/govcl中imageviewer例程所写，解析psd。
+//  这个只是 github.com/ying32/govcl中imageviewer例程所写，解析psd。
 //=======================================================
 /*
 
@@ -96,8 +96,8 @@ import (
 
 	"errors"
 
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 // psd文件读取，将psd转为一个TBitmap
@@ -200,7 +200,7 @@ func PsdToBitmap(aFileName string, bmp *vcl.TBitmap) error {
 
 	bmp.SetPixelFormat(types.Pf32bit)
 	bmp.SetSize(int32(width), int32(height))
-	// 填充，左下解为起点
+	// 填充，左下角为起点
 	for h := int(height - 1); h >= 0; h-- {
 		ptr := bmp.ScanLine(int32(h))
 		for w := 0; w < int(width*4); w++ {

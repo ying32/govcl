@@ -22,22 +22,21 @@
  
 ---
 ### 重要说明
-* 所有的代码暂时只会存储在OSC的[码云](https://gitee.com/ying32/govcl)上， [github](https://github.com/ying32/govcl)上的只作备份，所以不会即时更新。
-不提交到github主要是访问实在是太慢了， 加之Go的包导入不爽，也不想用包管理器。   
+* 码云上的代码暂时不再更新了，全部迁移到这。     
  
 * 推荐Go版 `Go Version >= 1.9.0` 。   
 
-* 希望大家有问题的话通过[Issues](https://gitee.com/ying32/govcl/issues)来进行反馈，反馈错误的话最好能带有相关错误的截图之类的， 而不是通过评论来提问。wiki也可关注下，有些问题在会里面作解答。  
+* 希望大家有问题的话通过[Issues](https://github.com/ying32/govcl/issues)来进行反馈，反馈错误的话最好能带有相关错误的截图之类的， 而不是通过评论来提问。wiki也可关注下，有些问题在会里面作解答。  
 
 ---
 ### 使用方法
-> go get gitee.com/ying32/govcl  
+> go get github.com/ying32/govcl  
 
 ```golang
 package main
 
 import (
-   "gitee.com/ying32/govcl/vcl"
+   "github.com/ying32/govcl/vcl"
 )
 
 var (

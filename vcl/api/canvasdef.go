@@ -3,7 +3,7 @@ package api
 import (
 	"unsafe"
 
-	. "gitee.com/ying32/govcl/vcl/types"
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 func Canvas_BrushCopy(obj uintptr, dest TRect, bitmap uintptr, source TRect, color TColor) {

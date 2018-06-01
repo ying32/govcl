@@ -7,8 +7,8 @@ import (
 
 	"os"
 
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 // windows下关联文件类型， 需要windows管理权限才能写入

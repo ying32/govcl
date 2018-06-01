@@ -1,10 +1,10 @@
 package main
 
 import (
-	"gitee.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl"
 
-	"gitee.com/ying32/govcl/vcl/types"
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 func main() {

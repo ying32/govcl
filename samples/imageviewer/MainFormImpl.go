@@ -12,11 +12,13 @@ import (
 
 	"sort"
 
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/rtl"
-	"gitee.com/ying32/govcl/vcl/types"
-	"gitee.com/ying32/govcl/vcl/types/colors"
-	"gitee.com/ying32/govcl/vcl/types/keys"
+	"math"
+
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/types/colors"
+	"github.com/ying32/govcl/vcl/types/keys"
 )
 
 var (
@@ -33,17 +35,17 @@ var (
 	curImageIndex int      // 当前浏览的图片索引
 )
 
-const (
-	zoomSize = 50
-)
-
 func (f *TMainForm) OnMainFormCreate(sender vcl.IObject) {
 	f.SetAllowDropFiles(true)
 
+	//imgBuffer = vcl.NewPicture()
+	//imgBuffer.SetOnChange(f.OnPicChanged)
 	ImgThumb = vcl.NewBitmap()
 	//f.setPBPreViewPos()
 	// 调试下，先显示
 	//f.PBPreview.Show()
+
+	f.BtnMax.Click()
 
 	f.ImgViewer.SetStretch(true)
 	f.ImgViewer.SetAutoSize(false)
@@ -59,6 +61,11 @@ func (f *TMainForm) OnMainFormCreate(sender vcl.IObject) {
 func (f *TMainForm) OnMainFormDestroy(sender vcl.IObject) {
 	f.SetAllowDropFiles(false)
 	ImgThumb.Free()
+	//imgBuffer.Free()
+}
+
+func (f *TMainForm) OnPicChanged(sender vcl.IObject) {
+	fmt.Println("图片改变")
 }
 
 func (f *TMainForm) OnMainFormMouseWheel(sender vcl.IObject, shift types.TShiftState, wheelDelta, x, y int32, handled *bool) {
@@ -119,9 +126,13 @@ func (f *TMainForm) getRatio() int {
 func (f *TMainForm) zoom(val int) {
 	var newW, newH, newX, newY int32
 	img := f.ImgViewer
+	scale := 1.1
+	mPos := f.ScreenToClient(vcl.Mouse.CursorPos())
+
+	r := types.TRect{img.Left(), img.Top(), img.Left() + img.Width(), img.Top() + img.Height()}
 
 	if val > 0 {
-		if f.getRatio() >= 320 {
+		if f.getRatio() >= 500 {
 			return
 		}
 	} else if val < 0 {
@@ -142,16 +153,11 @@ func (f *TMainForm) zoom(val int) {
 			ratio = float64(newH) / float64(img.Picture().Height())
 			newW = int32(float64(img.Picture().Width()) * ratio)
 		}
-
-		f.ImgViewer.SetBounds((f.Width()-newW)/2, (f.Height()-f.PnlTitleBar.Height()-newH)/2, newW, newH)
 		// 这里调整
-		//f.updateTitle()
-		return
+		f.ImgViewer.SetBounds((f.Width()-newW)/2, (f.Height()-f.PnlTitleBar.Height()-newH)/2, newW, newH)
+		goto theEnd
 	}
-	scale := 1.1
-	mPos := f.ScreenToClient(vcl.Mouse.CursorPos())
 
-	r := types.TRect{img.Left(), img.Top(), img.Left() + img.Width(), img.Top() + img.Height()}
 	if r.PtInRect(mPos) {
 		if val > 0 {
 			newW = int32(float64(img.Width()) * scale)
@@ -174,9 +180,19 @@ func (f *TMainForm) zoom(val int) {
 		}
 		newX = img.Left()
 		newY = img.Top()
+
 	}
 	img.SetBounds(newX, newY, newW, newH)
+
+theEnd:
 	f.updateTitle()
+
+	// 决定是否显示
+	f.PBPreview.SetVisible(img.Width() >= f.PnlClient.Width() || img.Height() >= f.PnlClient.Height())
+	if f.PBPreview.Visible() {
+		f.setPBPreViewPos()
+		f.Invalidate()
+	}
 }
 
 func (f *TMainForm) loadImage(aFileName string) {
@@ -238,36 +254,25 @@ func (f *TMainForm) OnMainFormResize(sender vcl.IObject) {
 		f.zoom(0)
 	}
 	f.setPBPreViewPos()
+	f.resetBtnPrevNextPos()
 }
 
 func (f *TMainForm) OnMainFormKeyDown(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
-
-	/*
-	  vkLeft             = 0x25;  //  37
-	  vkUp               = 0x26;  //  38
-	  vkRight            = 0x27;  //  39
-	  vkDown             = 0x28;  //  40
-	*/
-	if len(curDirImages) == 0 {
-		return
-	}
-
 	switch *key {
 	// Left
 	case keys.VkLeft:
-		curImageIndex--
-		if curImageIndex < 0 {
-			curImageIndex = len(curDirImages) - 1
-		}
-		f.loadImage(curDirImages[curImageIndex])
-
+		f.BtnPrev.Click()
 	// Right
 	case keys.VkRight:
-		curImageIndex++
-		if curImageIndex >= len(curDirImages) {
-			curImageIndex = 0
-		}
-		f.loadImage(curDirImages[curImageIndex])
+		f.BtnNext.Click()
+
+	// +
+	case keys.VkAdd, keys.VkUp:
+		f.zoom(1)
+
+	// -
+	case keys.VkSubtract, keys.VkDown:
+		f.zoom(-1)
 	}
 }
 
@@ -388,6 +393,7 @@ func (f *TMainForm) OnImgViewerMouseMove(sender vcl.IObject, shift types.TShiftS
 		isAutoCenter = false
 		f.ImgViewer.SetLeft(f.ImgViewer.Left() + (x - mouseDownPos.X))
 		f.ImgViewer.SetTop(f.ImgViewer.Top() + (y - mouseDownPos.Y))
+		f.PBPreview.Invalidate()
 	}
 }
 
@@ -403,13 +409,45 @@ func (f *TMainForm) OnPBPreviewMouseDown(sender vcl.IObject, button types.TMouse
 }
 
 func (f *TMainForm) OnPBPreviewPaint(sender vcl.IObject) {
-	if ImgThumb.IsValid() {
+	if ImgThumb.IsValid() && f.PBPreview.Visible() {
 		pb := f.PBPreview
 		canvas := pb.Canvas()
 		canvas.Pen().SetColor(colors.ClBlack)
 		canvas.Brush().SetStyle(types.BsClear)
 		canvas.Rectangle(0, 0, pb.Width(), pb.Height())
-		canvas.Draw(0, pb.Height()-ImgThumb.Height(), ImgThumb)
+		canvas.Draw(0 /* pb.Height()-ImgThumb.Height()*/, 0, ImgThumb)
+
+		img := f.ImgViewer
+
+		vRect := types.TRect{}
+		if img.Left() <= 0 {
+			vRect.Left = int32(math.Abs(float64(img.Left())))
+		}
+		if img.Top() <= 0 {
+			vRect.Top = int32(math.Abs(float64(img.Top())))
+		}
+		if img.Left()+img.Width() >= f.PnlClient.Width() {
+			vRect.SetWidth(f.PnlClient.Width())
+		} else {
+			vRect.SetWidth(img.Width())
+		}
+		if img.Top()+img.Height() >= f.PnlClient.Height() {
+			vRect.SetHeight(f.PnlClient.Height())
+		} else {
+			vRect.SetHeight(img.Height())
+		}
+
+		wRatio := float64(ImgThumb.Width()) / float64(img.Width())
+		hRatio := float64(ImgThumb.Height()) / float64(img.Height())
+
+		r := types.TRect{
+			int32(float64(vRect.Left) * wRatio),
+			int32(float64(vRect.Top) * hRatio),
+			int32(float64(vRect.Right) * wRatio),
+			int32(float64(vRect.Bottom) * hRatio)}
+
+		canvas.Pen().SetColor(colors.ClGreen)
+		canvas.Rectangle(r.Left, r.Top, r.Right, r.Bottom)
 	}
 }
 
@@ -419,4 +457,56 @@ func (f *TMainForm) OnPBPreviewMouseMove(sender vcl.IObject, shift types.TShiftS
 
 func (f *TMainForm) OnPBPreviewMouseUp(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 
+}
+
+func (f *TMainForm) resetBtnPrevNextPos() {
+	f.BtnPrev.SetLeft(5)
+	f.BtnPrev.SetTop((f.PnlClient.Height() - f.BtnPrev.Height()) / 2)
+	f.BtnNext.SetLeft(f.PnlClient.Width() - f.BtnNext.Width() - 5)
+	f.BtnNext.SetTop((f.PnlClient.Height() - f.BtnNext.Height()) / 2)
+}
+
+func (f *TMainForm) showBtnPreNext(val bool) {
+
+	if f.BtnPrev.Visible() == val || f.BtnNext.Visible() == val {
+		return
+	}
+
+	f.BtnNext.SetVisible(val)
+	f.BtnPrev.SetVisible(val)
+	f.resetBtnPrevNextPos()
+}
+
+func (f *TMainForm) OnPnlClientMouseMove(sender vcl.IObject, shift types.TShiftState, x, y int32) {
+	f.showBtnPreNext(x <= f.BtnPrev.Left()+f.BtnPrev.Width() || x >= f.BtnNext.Left())
+
+}
+
+func (f *TMainForm) OnBtnPrevClick(sender vcl.IObject) {
+	if len(curDirImages) == 0 {
+		return
+	}
+
+	curImageIndex--
+	if curImageIndex < 0 {
+		curImageIndex = len(curDirImages) - 1
+	}
+	f.loadImage(curDirImages[curImageIndex])
+}
+
+func (f *TMainForm) OnBtnNextClick(sender vcl.IObject) {
+	if len(curDirImages) == 0 {
+		return
+	}
+
+	curImageIndex++
+	if curImageIndex >= len(curDirImages) {
+		curImageIndex = 0
+	}
+	f.loadImage(curDirImages[curImageIndex])
+}
+
+func (f *TMainForm) OnMainFormConstrainedResize(sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32) {
+	*minWidth = 400
+	*minHeight = 400
 }

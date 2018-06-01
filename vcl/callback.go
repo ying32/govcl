@@ -3,8 +3,8 @@ package vcl
 import (
 	"unsafe"
 
-	. "gitee.com/ying32/govcl/vcl/api"
-	. "gitee.com/ying32/govcl/vcl/types"
+	. "github.com/ying32/govcl/vcl/api"
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 // 回调过程

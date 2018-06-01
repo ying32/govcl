@@ -5,7 +5,7 @@ import (
 
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl/dylib"
+	"github.com/ying32/govcl/vcl/dylib"
 )
 
 // 全局导入库

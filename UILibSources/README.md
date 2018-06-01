@@ -2,7 +2,7 @@
 
 libvcl 基于Delphi 10.2.1版本, 其它版本编译出现的问题请自行解决相关。
 
-libvcl工程源码位于%GOPATH%\src\gitee.com\govcl\UILibSources\libvcl目录。`libvcl限仅于windows`     
+libvcl工程源码位于"govcl\UILibSources\libvcl"目录。`libvcl限仅于windows`     
 
 编译步骤：  
 
@@ -30,7 +30,7 @@ libvcl工程源码位于%GOPATH%\src\gitee.com\govcl\UILibSources\libvcl目录�
 
 liblcl 基于Lazarus 1.8.0版本 FPC 3.0.4，具体各个平台的安装方式自行参考官网安装说明, 其它版本编译出现的问题请自行解决相关。。
 
-libvcl工程源码位于%GOPATH%\src\gitee.com\govcl\UILibSources\liblcl目录。`liblcl适用于Win32、Win64、Linux64、MacOS32`     
+libvcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Win32、Win64、Linux64、MacOS32`     
 
 编译步骤：  
 

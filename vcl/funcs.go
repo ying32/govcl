@@ -3,9 +3,9 @@ package vcl
 import (
 	"reflect"
 
-	"gitee.com/ying32/govcl/vcl/api"
-	"gitee.com/ying32/govcl/vcl/rtl"
-	. "gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/rtl"
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 // ShowMessage 显示一个消息框

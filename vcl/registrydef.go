@@ -1,7 +1,7 @@
 package vcl
 
 import (
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 // NewRegistryAllAccess 所有访问权限

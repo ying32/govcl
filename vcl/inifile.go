@@ -11,7 +11,7 @@ package vcl
 
 import (
     "time"
-	. "gitee.com/ying32/govcl/vcl/api"
+	. "github.com/ying32/govcl/vcl/api"
 )
 
 type TIniFile struct {

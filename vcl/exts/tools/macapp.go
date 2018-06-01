@@ -99,7 +99,7 @@ func getdylibzip() string {
 		return ""
 	}
 	for _, s := range strings.Split(env, ":") {
-		s += "/src/gitee.com/ying32/govcl/bin/MacOS32/liblcl.zip"
+		s += "/src/github.com/ying32/govcl/bin/MacOS32/liblcl.zip"
 		if fileExists(s) {
 			return s
 		}

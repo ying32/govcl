@@ -13,8 +13,8 @@ package skinh
 import (
 	"syscall"
 
-	"gitee.com/ying32/govcl/vcl/api"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 var (

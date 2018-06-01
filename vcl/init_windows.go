@@ -1,6 +1,6 @@
 package vcl
 
-import . "gitee.com/ying32/govcl/vcl/win"
+import . "github.com/ying32/govcl/vcl/win"
 
 var (
 	// StyleManager 没有实例类的，属于静态类

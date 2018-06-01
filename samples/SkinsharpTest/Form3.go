@@ -3,7 +3,7 @@
 package main
 
 import (
-    "gitee.com/ying32/govcl/vcl"
+    "github.com/ying32/govcl/vcl"
 )
 
 type TForm3 struct {

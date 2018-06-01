@@ -1,7 +1,7 @@
 package vcl
 
 import (
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 // SetIconResId 从资源中置图标的id

@@ -1,8 +1,8 @@
 package rtl
 
 import (
-	"gitee.com/ying32/govcl/vcl/api"
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 // MainInstance EXE自身的实例

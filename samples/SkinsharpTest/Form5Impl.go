@@ -3,7 +3,7 @@
 
 package main
 
-import "gitee.com/ying32/govcl/vcl"
+import "github.com/ying32/govcl/vcl"
 
 func (f *TForm5) OnOpenProject1Click(sender vcl.IObject) {
 	f.OpenDialog1.Execute()

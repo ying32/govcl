@@ -19,7 +19,7 @@ import (
 
 	"fmt"
 
-	. "gitee.com/ying32/govcl/vcl/types"
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 type tComponentItem struct {

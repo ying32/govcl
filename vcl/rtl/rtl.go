@@ -3,8 +3,8 @@ package rtl
 import (
 	"reflect"
 
-	"gitee.com/ying32/govcl/vcl/api"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 // Move Delphi中的内存操作，不过这里传入的是指针

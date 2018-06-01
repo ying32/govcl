@@ -33,8 +33,8 @@
 package vcl
 
 import (
-	"gitee.com/ying32/govcl/vcl/api"
-	"gitee.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/rtl"
 )
 
 // CreateFormFromResourceName 资源类型为 RT_RCDATA

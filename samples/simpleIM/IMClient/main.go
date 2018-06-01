@@ -10,9 +10,9 @@ import (
 
 	"encoding/binary"
 
-	"gitee.com/ying32/govcl/samples/simpleIM"
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/samples/simpleIM"
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 // 我就是测试下随便写的林

@@ -1,13 +1,13 @@
 // govcl wke，by: ying32
-// https://gitee.com/ying32/ying32
+// https://github.com/ying32/ying32
 
 package wke
 
 import (
 	"unsafe"
 
-	"gitee.com/ying32/govcl/vcl/types"
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 type TOnTitleChangedEvent func(title string)

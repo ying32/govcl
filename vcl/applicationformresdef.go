@@ -38,7 +38,7 @@ import (
 
 	"unsafe"
 
-	"gitee.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/api"
 )
 
 func (a *TApplication) setFiledVal(name string, instance uintptr, v reflect.Value) {

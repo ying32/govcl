@@ -1,12 +1,12 @@
 package main
 
 import (
-	"gitee.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl"
 
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl/types"
-	"gitee.com/ying32/govcl/vcl/types/colors"
+	"github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/types/colors"
 )
 
 // 事件公用。啥叫事件公用呢，比如btn, btn2两个控件，处理的大部分是相同的，只是根据不同按钮处理进行不同的选择

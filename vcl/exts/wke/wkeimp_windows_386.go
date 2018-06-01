@@ -1,5 +1,5 @@
 // govcl wke测试头文件，by: ying32
-// https://gitee.com/ying32/ying32
+// https://github.com/ying32/ying32
 
 package wke
 
@@ -8,8 +8,8 @@ import (
 
 	"unsafe"
 
-	"gitee.com/ying32/govcl/vcl/api"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 type WindowType int32

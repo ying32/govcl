@@ -5,7 +5,7 @@ package main
 import (
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl"
 	"github.com/tryor/gdiplus"
 	"github.com/tryor/winapi"
 )

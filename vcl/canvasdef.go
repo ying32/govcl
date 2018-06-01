@@ -1,8 +1,8 @@
 package vcl
 
 import (
-	. "gitee.com/ying32/govcl/vcl/api"
-    . "gitee.com/ying32/govcl/vcl/types"
+	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 func (c *TCanvas) BrushCopy(dest TRect, bitmap IObject, source TRect, color TColor) {

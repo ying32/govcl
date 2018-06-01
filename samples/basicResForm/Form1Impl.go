@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 func (m *TForm1) OnForm1Create(sender vcl.IObject) {

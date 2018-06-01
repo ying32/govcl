@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl"
-	"gitee.com/ying32/govcl/vcl/win"
+	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/win"
 )
 
 // 注册表操作示例

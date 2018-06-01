@@ -1,11 +1,11 @@
 package main
 
 import (
-	"gitee.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl"
 
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 func main() {

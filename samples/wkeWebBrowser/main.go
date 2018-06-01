@@ -14,12 +14,12 @@ package main
 */
 
 import (
-	"gitee.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl"
 
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl/exts/wke"
-	"gitee.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/exts/wke"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 var wkeBrw *wke.TWkeWebBrowser
@@ -91,7 +91,7 @@ func main() {
 	edit.SetAlign(types.AlClient)
 	edit.Font().SetSize(10)
 	//edit.SetName("editURL")
-	// https://gitee.com/ying32
+	// https://github.com/ying32
 	edit.SetText("https://www.baidu.com")
 	edit.SetAlignWithMargins(true)
 	edit.Margins().SetBounds(10, 5, 10, 5)

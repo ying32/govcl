@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	. "gitee.com/ying32/govcl/vcl/rtl/version"
+	. "github.com/ying32/govcl/vcl/rtl/version"
 )
 
 func main() {

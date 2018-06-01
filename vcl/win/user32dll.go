@@ -6,7 +6,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	. "gitee.com/ying32/govcl/vcl/types"
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 var (

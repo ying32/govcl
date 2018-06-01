@@ -5,7 +5,7 @@ import (
 
 	"fmt"
 
-	"gitee.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl"
 )
 
 // 此方法会在将资源窗口处理完后调用，命名规则为  On+窗口Name+Create

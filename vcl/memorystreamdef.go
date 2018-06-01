@@ -1,7 +1,7 @@
 package vcl
 
 import (
-	. "gitee.com/ying32/govcl/vcl/api"
+	. "github.com/ying32/govcl/vcl/api"
 )
 
 // NewMemoryStreamFromBytes 新建Delphi内存流来自Go字节数组
