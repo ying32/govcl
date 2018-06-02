@@ -52,6 +52,10 @@ func (c *TColorDialog) IsValid() bool {
     return c.instance != 0
 }
 
+func TColorDialogClass() TClass {
+    return ColorDialog_StaticClassType()
+}
+
 func (c *TColorDialog) Execute() bool {
     return ColorDialog_Execute(c.instance)
 }
@@ -72,8 +76,24 @@ func (c *TColorDialog) Assign(Source IObject) {
     ColorDialog_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TColorDialog) DisposeOf() {
+    ColorDialog_DisposeOf(c.instance)
+}
+
+func (c *TColorDialog) ClassType() TClass {
+    return ColorDialog_ClassType(c.instance)
+}
+
 func (c *TColorDialog) ClassName() string {
     return ColorDialog_ClassName(c.instance)
+}
+
+func (c *TColorDialog) InstanceSize() int32 {
+    return ColorDialog_InstanceSize(c.instance)
+}
+
+func (c *TColorDialog) InheritsFrom(AClass TClass) bool {
+    return ColorDialog_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TColorDialog) Equals(Obj IObject) bool {

@@ -120,9 +120,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Splitter_DisposeOf(AObj: TSplitter); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Splitter_ClassType(AObj: TSplitter): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Splitter_ClassName(AObj: TSplitter): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Splitter_InstanceSize(AObj: TSplitter): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Splitter_InheritsFrom(AObj: TSplitter; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Splitter_Equals(AObj: TSplitter; Obj: TObject): LongBool; stdcall;
@@ -462,6 +482,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Splitter_StaticClassType: TClass; stdcall;
+begin
+  Result := TSplitter;
+end;
 
 exports
   Splitter_Create,
@@ -487,7 +511,11 @@ exports
   Splitter_FindComponent,
   Splitter_GetNamePath,
   Splitter_Assign,
+  Splitter_DisposeOf,
+  Splitter_ClassType,
   Splitter_ClassName,
+  Splitter_InstanceSize,
+  Splitter_InheritsFrom,
   Splitter_Equals,
   Splitter_GetHashCode,
   Splitter_ToString,
@@ -553,5 +581,6 @@ exports
   Splitter_SetName,
   Splitter_GetTag,
   Splitter_SetTag,
-  Splitter_GetComponents;
+  Splitter_GetComponents,
+  Splitter_StaticClassType;
 

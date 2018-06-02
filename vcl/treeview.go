@@ -52,6 +52,10 @@ func (t *TTreeView) IsValid() bool {
     return t.instance != 0
 }
 
+func TTreeViewClass() TClass {
+    return TreeView_StaticClassType()
+}
+
 func (t *TTreeView) AlphaSort(ARecurse bool) bool {
     return TreeView_AlphaSort(t.instance, ARecurse)
 }
@@ -220,8 +224,24 @@ func (t *TTreeView) Assign(Source IObject) {
     TreeView_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTreeView) DisposeOf() {
+    TreeView_DisposeOf(t.instance)
+}
+
+func (t *TTreeView) ClassType() TClass {
+    return TreeView_ClassType(t.instance)
+}
+
 func (t *TTreeView) ClassName() string {
     return TreeView_ClassName(t.instance)
+}
+
+func (t *TTreeView) InstanceSize() int32 {
+    return TreeView_InstanceSize(t.instance)
+}
+
+func (t *TTreeView) InheritsFrom(AClass TClass) bool {
+    return TreeView_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTreeView) Equals(Obj IObject) bool {

@@ -115,6 +115,7 @@ uses
 {$I MyLCL_TreeView.inc}
 {$I MyLCL_StatusBar.inc}
 {$I MyLCL_ToolBar.inc}
+{$I MyLCL_BitBtn.inc}
 {$I MyLCL_Icon.inc}
 {$I MyLCL_Bitmap.inc}
 {$I MyLCL_MemoryStream.inc}

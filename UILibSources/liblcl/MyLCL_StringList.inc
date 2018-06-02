@@ -115,9 +115,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function StringList_ClassType(AObj: TStringList): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function StringList_ClassName(AObj: TStringList): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function StringList_InstanceSize(AObj: TStringList): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function StringList_InheritsFrom(AObj: TStringList; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function StringList_GetHashCode(AObj: TStringList): Integer; extdecl;
@@ -237,6 +252,10 @@ begin
   AObj.Strings[Index] := AValue;
 end;
 
+function StringList_StaticClassType: TClass; extdecl;
+begin
+  Result := TStringList;
+end;
 
 exports
   StringList_Create,
@@ -261,7 +280,10 @@ exports
   StringList_SaveToFile,
   StringList_SaveToStream,
   StringList_GetNamePath,
+  StringList_ClassType,
   StringList_ClassName,
+  StringList_InstanceSize,
+  StringList_InheritsFrom,
   StringList_GetHashCode,
   StringList_ToString,
   StringList_GetSorted,
@@ -283,5 +305,6 @@ exports
   StringList_GetValueFromIndex,
   StringList_SetValueFromIndex,
   StringList_GetStrings,
-  StringList_SetStrings;
+  StringList_SetStrings,
+  StringList_StaticClassType;
 

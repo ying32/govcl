@@ -45,9 +45,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure FindDialog_DisposeOf(AObj: TFindDialog); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function FindDialog_ClassType(AObj: TFindDialog): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function FindDialog_ClassName(AObj: TFindDialog): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function FindDialog_InstanceSize(AObj: TFindDialog): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function FindDialog_InheritsFrom(AObj: TFindDialog; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function FindDialog_Equals(AObj: TFindDialog; Obj: TObject): LongBool; stdcall;
@@ -201,6 +221,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function FindDialog_StaticClassType: TClass; stdcall;
+begin
+  Result := TFindDialog;
+end;
 
 exports
   FindDialog_Create,
@@ -211,7 +235,11 @@ exports
   FindDialog_GetNamePath,
   FindDialog_HasParent,
   FindDialog_Assign,
+  FindDialog_DisposeOf,
+  FindDialog_ClassType,
   FindDialog_ClassName,
+  FindDialog_InstanceSize,
+  FindDialog_InheritsFrom,
   FindDialog_Equals,
   FindDialog_GetHashCode,
   FindDialog_ToString,
@@ -237,5 +265,6 @@ exports
   FindDialog_SetName,
   FindDialog_GetTag,
   FindDialog_SetTag,
-  FindDialog_GetComponents;
+  FindDialog_GetComponents,
+  FindDialog_StaticClassType;
 

@@ -52,6 +52,10 @@ func (p *TPaintBox) IsValid() bool {
     return p.instance != 0
 }
 
+func TPaintBoxClass() TClass {
+    return PaintBox_StaticClassType()
+}
+
 func (p *TPaintBox) BringToFront() {
     PaintBox_BringToFront(p.instance)
 }
@@ -136,8 +140,24 @@ func (p *TPaintBox) Assign(Source IObject) {
     PaintBox_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPaintBox) DisposeOf() {
+    PaintBox_DisposeOf(p.instance)
+}
+
+func (p *TPaintBox) ClassType() TClass {
+    return PaintBox_ClassType(p.instance)
+}
+
 func (p *TPaintBox) ClassName() string {
     return PaintBox_ClassName(p.instance)
+}
+
+func (p *TPaintBox) InstanceSize() int32 {
+    return PaintBox_InstanceSize(p.instance)
+}
+
+func (p *TPaintBox) InheritsFrom(AClass TClass) bool {
+    return PaintBox_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPaintBox) Equals(Obj IObject) bool {

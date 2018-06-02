@@ -40,9 +40,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function FontDialog_ClassType(AObj: TFontDialog): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function FontDialog_ClassName(AObj: TFontDialog): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function FontDialog_InstanceSize(AObj: TFontDialog): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function FontDialog_InheritsFrom(AObj: TFontDialog; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function FontDialog_Equals(AObj: TFontDialog; Obj: TObject): LongBool; extdecl;
@@ -154,6 +169,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function FontDialog_StaticClassType: TClass; extdecl;
+begin
+  Result := TFontDialog;
+end;
 
 exports
   FontDialog_Create,
@@ -163,7 +182,10 @@ exports
   FontDialog_GetNamePath,
   FontDialog_HasParent,
   FontDialog_Assign,
+  FontDialog_ClassType,
   FontDialog_ClassName,
+  FontDialog_InstanceSize,
+  FontDialog_InheritsFrom,
   FontDialog_Equals,
   FontDialog_GetHashCode,
   FontDialog_ToString,
@@ -182,5 +204,6 @@ exports
   FontDialog_SetName,
   FontDialog_GetTag,
   FontDialog_SetTag,
-  FontDialog_GetComponents;
+  FontDialog_GetComponents,
+  FontDialog_StaticClassType;
 

@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure DateTimePicker_DisposeOf(AObj: TDateTimePicker); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function DateTimePicker_ClassType(AObj: TDateTimePicker): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function DateTimePicker_ClassName(AObj: TDateTimePicker): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function DateTimePicker_InstanceSize(AObj: TDateTimePicker): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function DateTimePicker_InheritsFrom(AObj: TDateTimePicker; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function DateTimePicker_Equals(AObj: TDateTimePicker; Obj: TObject): LongBool; stdcall;
@@ -995,6 +1015,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function DateTimePicker_StaticClassType: TClass; stdcall;
+begin
+  Result := TDateTimePicker;
+end;
 
 exports
   DateTimePicker_Create,
@@ -1027,7 +1051,11 @@ exports
   DateTimePicker_FindComponent,
   DateTimePicker_GetNamePath,
   DateTimePicker_Assign,
+  DateTimePicker_DisposeOf,
+  DateTimePicker_ClassType,
   DateTimePicker_ClassName,
+  DateTimePicker_InstanceSize,
+  DateTimePicker_InheritsFrom,
   DateTimePicker_Equals,
   DateTimePicker_GetHashCode,
   DateTimePicker_ToString,
@@ -1173,5 +1201,6 @@ exports
   DateTimePicker_GetTag,
   DateTimePicker_SetTag,
   DateTimePicker_GetControls,
-  DateTimePicker_GetComponents;
+  DateTimePicker_GetComponents,
+  DateTimePicker_StaticClassType;
 

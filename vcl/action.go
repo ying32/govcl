@@ -52,6 +52,10 @@ func (a *TAction) IsValid() bool {
     return a.instance != 0
 }
 
+func TActionClass() TClass {
+    return Action_StaticClassType()
+}
+
 func (a *TAction) Execute() bool {
     return Action_Execute(a.instance)
 }
@@ -76,8 +80,24 @@ func (a *TAction) Assign(Source IObject) {
     Action_Assign(a.instance, CheckPtr(Source))
 }
 
+func (a *TAction) DisposeOf() {
+    Action_DisposeOf(a.instance)
+}
+
+func (a *TAction) ClassType() TClass {
+    return Action_ClassType(a.instance)
+}
+
 func (a *TAction) ClassName() string {
     return Action_ClassName(a.instance)
+}
+
+func (a *TAction) InstanceSize() int32 {
+    return Action_InstanceSize(a.instance)
+}
+
+func (a *TAction) InheritsFrom(AClass TClass) bool {
+    return Action_InheritsFrom(a.instance, AClass)
 }
 
 func (a *TAction) Equals(Obj IObject) bool {

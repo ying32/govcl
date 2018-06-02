@@ -30,9 +30,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function Font_ClassType(AObj: TFont): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Font_ClassName(AObj: TFont): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Font_InstanceSize(AObj: TFont): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Font_InheritsFrom(AObj: TFont; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Font_Equals(AObj: TFont; Obj: TObject): LongBool; extdecl;
@@ -172,6 +187,10 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Font_StaticClassType: TClass; extdecl;
+begin
+  Result := TFont;
+end;
 
 exports
   Font_Create,
@@ -179,7 +198,10 @@ exports
   Font_Assign,
   Font_HandleAllocated,
   Font_GetNamePath,
+  Font_ClassType,
   Font_ClassName,
+  Font_InstanceSize,
+  Font_InheritsFrom,
   Font_Equals,
   Font_GetHashCode,
   Font_ToString,
@@ -205,5 +227,6 @@ exports
   Font_SetStyle,
   Font_GetQuality,
   Font_SetQuality,
-  Font_SetOnChange;
+  Font_SetOnChange,
+  Font_StaticClassType;
 

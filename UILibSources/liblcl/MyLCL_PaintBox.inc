@@ -120,9 +120,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function PaintBox_ClassType(AObj: TPaintBox): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PaintBox_ClassName(AObj: TPaintBox): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function PaintBox_InstanceSize(AObj: TPaintBox): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PaintBox_InheritsFrom(AObj: TPaintBox; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PaintBox_Equals(AObj: TPaintBox; Obj: TObject): LongBool; extdecl;
@@ -582,6 +597,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PaintBox_StaticClassType: TClass; extdecl;
+begin
+  Result := TPaintBox;
+end;
 
 exports
   PaintBox_Create,
@@ -607,7 +626,10 @@ exports
   PaintBox_FindComponent,
   PaintBox_GetNamePath,
   PaintBox_Assign,
+  PaintBox_ClassType,
   PaintBox_ClassName,
+  PaintBox_InstanceSize,
+  PaintBox_InheritsFrom,
   PaintBox_Equals,
   PaintBox_GetHashCode,
   PaintBox_ToString,
@@ -683,5 +705,6 @@ exports
   PaintBox_SetName,
   PaintBox_GetTag,
   PaintBox_SetTag,
-  PaintBox_GetComponents;
+  PaintBox_GetComponents,
+  PaintBox_StaticClassType;
 

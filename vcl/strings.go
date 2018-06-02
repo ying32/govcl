@@ -52,6 +52,10 @@ func (s *TStrings) IsValid() bool {
     return s.instance != 0
 }
 
+func TStringsClass() TClass {
+    return Strings_StaticClassType()
+}
+
 func (s *TStrings) Add(S string) int32 {
     return Strings_Add(s.instance, S)
 }
@@ -132,8 +136,24 @@ func (s *TStrings) GetNamePath() string {
     return Strings_GetNamePath(s.instance)
 }
 
+func (s *TStrings) DisposeOf() {
+    Strings_DisposeOf(s.instance)
+}
+
+func (s *TStrings) ClassType() TClass {
+    return Strings_ClassType(s.instance)
+}
+
 func (s *TStrings) ClassName() string {
     return Strings_ClassName(s.instance)
+}
+
+func (s *TStrings) InstanceSize() int32 {
+    return Strings_InstanceSize(s.instance)
+}
+
+func (s *TStrings) InheritsFrom(AClass TClass) bool {
+    return Strings_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStrings) GetHashCode() int32 {

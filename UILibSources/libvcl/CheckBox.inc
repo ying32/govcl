@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure CheckBox_DisposeOf(AObj: TCheckBox); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function CheckBox_ClassType(AObj: TCheckBox): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function CheckBox_ClassName(AObj: TCheckBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function CheckBox_InstanceSize(AObj: TCheckBox): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function CheckBox_InheritsFrom(AObj: TCheckBox; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function CheckBox_Equals(AObj: TCheckBox; Obj: TObject): LongBool; stdcall;
@@ -914,6 +934,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function CheckBox_StaticClassType: TClass; stdcall;
+begin
+  Result := TCheckBox;
+end;
 
 exports
   CheckBox_Create,
@@ -946,7 +970,11 @@ exports
   CheckBox_FindComponent,
   CheckBox_GetNamePath,
   CheckBox_Assign,
+  CheckBox_DisposeOf,
+  CheckBox_ClassType,
   CheckBox_ClassName,
+  CheckBox_InstanceSize,
+  CheckBox_InheritsFrom,
   CheckBox_Equals,
   CheckBox_GetHashCode,
   CheckBox_ToString,
@@ -1073,5 +1101,6 @@ exports
   CheckBox_GetTag,
   CheckBox_SetTag,
   CheckBox_GetControls,
-  CheckBox_GetComponents;
+  CheckBox_GetComponents,
+  CheckBox_StaticClassType;
 

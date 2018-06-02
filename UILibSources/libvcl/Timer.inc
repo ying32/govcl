@@ -35,9 +35,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Timer_DisposeOf(AObj: TTimer); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Timer_ClassType(AObj: TTimer): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Timer_ClassName(AObj: TTimer): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Timer_InstanceSize(AObj: TTimer): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Timer_InheritsFrom(AObj: TTimer; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Timer_Equals(AObj: TTimer; Obj: TObject): LongBool; stdcall;
@@ -132,6 +152,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Timer_StaticClassType: TClass; stdcall;
+begin
+  Result := TTimer;
+end;
 
 exports
   Timer_Create,
@@ -140,7 +164,11 @@ exports
   Timer_GetNamePath,
   Timer_HasParent,
   Timer_Assign,
+  Timer_DisposeOf,
+  Timer_ClassType,
   Timer_ClassName,
+  Timer_InstanceSize,
+  Timer_InheritsFrom,
   Timer_Equals,
   Timer_GetHashCode,
   Timer_ToString,
@@ -157,5 +185,6 @@ exports
   Timer_SetName,
   Timer_GetTag,
   Timer_SetTag,
-  Timer_GetComponents;
+  Timer_GetComponents,
+  Timer_StaticClassType;
 

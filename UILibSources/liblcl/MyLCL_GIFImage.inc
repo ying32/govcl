@@ -60,9 +60,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function GIFImage_ClassType(AObj: TGIFImage): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function GIFImage_ClassName(AObj: TGIFImage): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function GIFImage_InstanceSize(AObj: TGIFImage): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function GIFImage_InheritsFrom(AObj: TGIFImage; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function GIFImage_GetHashCode(AObj: TGIFImage): Integer; extdecl;
@@ -142,6 +157,10 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+function GIFImage_StaticClassType: TClass; extdecl;
+begin
+  Result := TGIFImage;
+end;
 
 exports
   GIFImage_Create,
@@ -155,7 +174,10 @@ exports
   GIFImage_SaveToFile,
   GIFImage_SetSize,
   GIFImage_GetNamePath,
+  GIFImage_ClassType,
   GIFImage_ClassName,
+  GIFImage_InstanceSize,
+  GIFImage_InheritsFrom,
   GIFImage_GetHashCode,
   GIFImage_ToString,
   GIFImage_GetBitsPerPixel,
@@ -169,5 +191,6 @@ exports
   GIFImage_GetTransparent,
   GIFImage_GetWidth,
   GIFImage_SetWidth,
-  GIFImage_SetOnChange;
+  GIFImage_SetOnChange,
+  GIFImage_StaticClassType;
 

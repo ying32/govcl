@@ -120,9 +120,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Shape_ClassType(AObj: TShape): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Shape_ClassName(AObj: TShape): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Shape_InstanceSize(AObj: TShape): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Shape_InheritsFrom(AObj: TShape; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Shape_Equals(AObj: TShape; Obj: TObject): LongBool; extdecl;
@@ -531,6 +546,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Shape_StaticClassType: TClass; extdecl;
+begin
+  Result := TShape;
+end;
 
 exports
   Shape_Create,
@@ -556,7 +575,10 @@ exports
   Shape_FindComponent,
   Shape_GetNamePath,
   Shape_Assign,
+  Shape_ClassType,
   Shape_ClassName,
+  Shape_InstanceSize,
+  Shape_InheritsFrom,
   Shape_Equals,
   Shape_GetHashCode,
   Shape_ToString,
@@ -626,5 +648,6 @@ exports
   Shape_SetName,
   Shape_GetTag,
   Shape_SetTag,
-  Shape_GetComponents;
+  Shape_GetComponents,
+  Shape_StaticClassType;
 

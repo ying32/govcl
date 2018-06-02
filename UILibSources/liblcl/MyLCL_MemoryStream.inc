@@ -50,9 +50,24 @@ begin
   Result :=  AObj.CopyFrom(Source, Count);
 end;
 
+function MemoryStream_ClassType(AObj: TMemoryStream): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function MemoryStream_ClassName(AObj: TMemoryStream): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function MemoryStream_InstanceSize(AObj: TMemoryStream): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function MemoryStream_InheritsFrom(AObj: TMemoryStream; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function MemoryStream_Equals(AObj: TMemoryStream; Obj: TObject): LongBool; extdecl;
@@ -95,6 +110,10 @@ begin
   AObj.Size := AValue;
 end;
 
+function MemoryStream_StaticClassType: TClass; extdecl;
+begin
+  Result := TMemoryStream;
+end;
 
 exports
   MemoryStream_Create,
@@ -106,7 +125,10 @@ exports
   MemoryStream_SaveToStream,
   MemoryStream_SaveToFile,
   MemoryStream_CopyFrom,
+  MemoryStream_ClassType,
   MemoryStream_ClassName,
+  MemoryStream_InstanceSize,
+  MemoryStream_InheritsFrom,
   MemoryStream_Equals,
   MemoryStream_GetHashCode,
   MemoryStream_ToString,
@@ -114,5 +136,6 @@ exports
   MemoryStream_GetPosition,
   MemoryStream_SetPosition,
   MemoryStream_GetSize,
-  MemoryStream_SetSize;
+  MemoryStream_SetSize,
+  MemoryStream_StaticClassType;
 

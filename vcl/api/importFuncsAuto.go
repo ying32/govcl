@@ -99,9 +99,28 @@ func Application_Assign(obj uintptr, Source uintptr)  {
     application_Assign.Call(obj, Source )
 }
 
+func Application_DisposeOf(obj uintptr)  {
+    application_DisposeOf.Call(obj)
+}
+
+func Application_ClassType(obj uintptr) TClass {
+    ret, _, _ := application_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Application_ClassName(obj uintptr) string {
     ret, _, _ := application_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Application_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := application_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Application_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := application_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Application_Equals(obj uintptr, Obj uintptr) bool {
@@ -335,6 +354,10 @@ func Application_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Application_StaticClassType() TClass {
+    r, _, _:= application_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TForm ---------------------------
 
@@ -490,9 +513,28 @@ func Form_Assign(obj uintptr, Source uintptr)  {
     form_Assign.Call(obj, Source )
 }
 
+func Form_DisposeOf(obj uintptr)  {
+    form_DisposeOf.Call(obj)
+}
+
+func Form_ClassType(obj uintptr) TClass {
+    ret, _, _ := form_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Form_ClassName(obj uintptr) string {
     ret, _, _ := form_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Form_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := form_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Form_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := form_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Form_Equals(obj uintptr, Obj uintptr) bool {
@@ -1202,6 +1244,10 @@ func Form_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Form_StaticClassType() TClass {
+    r, _, _:= form_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TButton ---------------------------
 
@@ -1348,9 +1394,28 @@ func Button_Assign(obj uintptr, Source uintptr)  {
     button_Assign.Call(obj, Source )
 }
 
+func Button_DisposeOf(obj uintptr)  {
+    button_DisposeOf.Call(obj)
+}
+
+func Button_ClassType(obj uintptr) TClass {
+    ret, _, _ := button_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Button_ClassName(obj uintptr) string {
     ret, _, _ := button_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Button_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := button_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Button_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := button_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Button_Equals(obj uintptr, Obj uintptr) bool {
@@ -1989,6 +2054,10 @@ func Button_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Button_StaticClassType() TClass {
+    r, _, _:= button_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TEdit ---------------------------
 
@@ -2168,9 +2237,28 @@ func Edit_Assign(obj uintptr, Source uintptr)  {
     edit_Assign.Call(obj, Source )
 }
 
+func Edit_DisposeOf(obj uintptr)  {
+    edit_DisposeOf.Call(obj)
+}
+
+func Edit_ClassType(obj uintptr) TClass {
+    ret, _, _ := edit_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Edit_ClassName(obj uintptr) string {
     ret, _, _ := edit_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Edit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := edit_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Edit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := edit_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Edit_Equals(obj uintptr, Obj uintptr) bool {
@@ -2876,6 +2964,10 @@ func Edit_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Edit_StaticClassType() TClass {
+    r, _, _:= edit_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMainMenu ---------------------------
 
@@ -2907,9 +2999,28 @@ func MainMenu_Assign(obj uintptr, Source uintptr)  {
     mainMenu_Assign.Call(obj, Source )
 }
 
+func MainMenu_DisposeOf(obj uintptr)  {
+    mainMenu_DisposeOf.Call(obj)
+}
+
+func MainMenu_ClassType(obj uintptr) TClass {
+    ret, _, _ := mainMenu_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func MainMenu_ClassName(obj uintptr) string {
     ret, _, _ := mainMenu_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MainMenu_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := mainMenu_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MainMenu_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := mainMenu_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func MainMenu_Equals(obj uintptr, Obj uintptr) bool {
@@ -3019,6 +3130,10 @@ func MainMenu_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func MainMenu_StaticClassType() TClass {
+    r, _, _:= mainMenu_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPopupMenu ---------------------------
 
@@ -3058,9 +3173,28 @@ func PopupMenu_Assign(obj uintptr, Source uintptr)  {
     popupMenu_Assign.Call(obj, Source )
 }
 
+func PopupMenu_DisposeOf(obj uintptr)  {
+    popupMenu_DisposeOf.Call(obj)
+}
+
+func PopupMenu_ClassType(obj uintptr) TClass {
+    ret, _, _ := popupMenu_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func PopupMenu_ClassName(obj uintptr) string {
     ret, _, _ := popupMenu_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PopupMenu_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := popupMenu_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PopupMenu_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := popupMenu_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func PopupMenu_Equals(obj uintptr, Obj uintptr) bool {
@@ -3198,6 +3332,10 @@ func PopupMenu_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func PopupMenu_StaticClassType() TClass {
+    r, _, _:= popupMenu_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMemo ---------------------------
 
@@ -3377,9 +3515,28 @@ func Memo_Assign(obj uintptr, Source uintptr)  {
     memo_Assign.Call(obj, Source )
 }
 
+func Memo_DisposeOf(obj uintptr)  {
+    memo_DisposeOf.Call(obj)
+}
+
+func Memo_ClassType(obj uintptr) TClass {
+    ret, _, _ := memo_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Memo_ClassName(obj uintptr) string {
     ret, _, _ := memo_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Memo_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := memo_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Memo_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := memo_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Memo_Equals(obj uintptr, Obj uintptr) bool {
@@ -4104,6 +4261,10 @@ func Memo_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Memo_StaticClassType() TClass {
+    r, _, _:= memo_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TCheckBox ---------------------------
 
@@ -4246,9 +4407,28 @@ func CheckBox_Assign(obj uintptr, Source uintptr)  {
     checkBox_Assign.Call(obj, Source )
 }
 
+func CheckBox_DisposeOf(obj uintptr)  {
+    checkBox_DisposeOf.Call(obj)
+}
+
+func CheckBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := checkBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func CheckBox_ClassName(obj uintptr) string {
     ret, _, _ := checkBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CheckBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := checkBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CheckBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := checkBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func CheckBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -4824,6 +5004,10 @@ func CheckBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func CheckBox_StaticClassType() TClass {
+    r, _, _:= checkBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TRadioButton ---------------------------
 
@@ -4966,9 +5150,28 @@ func RadioButton_Assign(obj uintptr, Source uintptr)  {
     radioButton_Assign.Call(obj, Source )
 }
 
+func RadioButton_DisposeOf(obj uintptr)  {
+    radioButton_DisposeOf.Call(obj)
+}
+
+func RadioButton_ClassType(obj uintptr) TClass {
+    ret, _, _ := radioButton_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func RadioButton_ClassName(obj uintptr) string {
     ret, _, _ := radioButton_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func RadioButton_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := radioButton_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func RadioButton_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := radioButton_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func RadioButton_Equals(obj uintptr, Obj uintptr) bool {
@@ -5530,6 +5733,10 @@ func RadioButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func RadioButton_StaticClassType() TClass {
+    r, _, _:= radioButton_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TGroupBox ---------------------------
 
@@ -5672,9 +5879,28 @@ func GroupBox_Assign(obj uintptr, Source uintptr)  {
     groupBox_Assign.Call(obj, Source )
 }
 
+func GroupBox_DisposeOf(obj uintptr)  {
+    groupBox_DisposeOf.Call(obj)
+}
+
+func GroupBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := groupBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func GroupBox_ClassName(obj uintptr) string {
     ret, _, _ := groupBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func GroupBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := groupBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func GroupBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := groupBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func GroupBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -6218,6 +6444,10 @@ func GroupBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func GroupBox_StaticClassType() TClass {
+    r, _, _:= groupBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TLabel ---------------------------
 
@@ -6329,9 +6559,28 @@ func Label_Assign(obj uintptr, Source uintptr)  {
     label_Assign.Call(obj, Source )
 }
 
+func Label_DisposeOf(obj uintptr)  {
+    label_DisposeOf.Call(obj)
+}
+
+func Label_ClassType(obj uintptr) TClass {
+    ret, _, _ := label_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Label_ClassName(obj uintptr) string {
     ret, _, _ := label_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Label_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := label_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Label_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := label_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Label_Equals(obj uintptr, Obj uintptr) bool {
@@ -6831,6 +7080,10 @@ func Label_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Label_StaticClassType() TClass {
+    r, _, _:= label_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListBox ---------------------------
 
@@ -6993,9 +7246,28 @@ func ListBox_Assign(obj uintptr, Source uintptr)  {
     listBox_Assign.Call(obj, Source )
 }
 
+func ListBox_DisposeOf(obj uintptr)  {
+    listBox_DisposeOf.Call(obj)
+}
+
+func ListBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := listBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListBox_ClassName(obj uintptr) string {
     ret, _, _ := listBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -7688,6 +7960,10 @@ func ListBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ListBox_StaticClassType() TClass {
+    r, _, _:= listBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TComboBox ---------------------------
 
@@ -7850,9 +8126,28 @@ func ComboBox_Assign(obj uintptr, Source uintptr)  {
     comboBox_Assign.Call(obj, Source )
 }
 
+func ComboBox_DisposeOf(obj uintptr)  {
+    comboBox_DisposeOf.Call(obj)
+}
+
+func ComboBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := comboBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ComboBox_ClassName(obj uintptr) string {
     ret, _, _ := comboBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ComboBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := comboBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ComboBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := comboBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ComboBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -8568,6 +8863,10 @@ func ComboBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ComboBox_StaticClassType() TClass {
+    r, _, _:= comboBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPanel ---------------------------
 
@@ -8710,9 +9009,28 @@ func Panel_Assign(obj uintptr, Source uintptr)  {
     panel_Assign.Call(obj, Source )
 }
 
+func Panel_DisposeOf(obj uintptr)  {
+    panel_DisposeOf.Call(obj)
+}
+
+func Panel_ClassType(obj uintptr) TClass {
+    ret, _, _ := panel_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Panel_ClassName(obj uintptr) string {
     ret, _, _ := panel_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Panel_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := panel_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Panel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := panel_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Panel_Equals(obj uintptr, Obj uintptr) bool {
@@ -9359,6 +9677,10 @@ func Panel_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Panel_StaticClassType() TClass {
+    r, _, _:= panel_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TImage ---------------------------
 
@@ -9470,9 +9792,28 @@ func Image_Assign(obj uintptr, Source uintptr)  {
     image_Assign.Call(obj, Source )
 }
 
+func Image_DisposeOf(obj uintptr)  {
+    image_DisposeOf.Call(obj)
+}
+
+func Image_ClassType(obj uintptr) TClass {
+    ret, _, _ := image_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Image_ClassName(obj uintptr) string {
     ret, _, _ := image_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Image_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := image_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Image_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := image_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Image_Equals(obj uintptr, Obj uintptr) bool {
@@ -9918,6 +10259,10 @@ func Image_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Image_StaticClassType() TClass {
+    r, _, _:= image_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TLinkLabel ---------------------------
 
@@ -10060,9 +10405,28 @@ func LinkLabel_Assign(obj uintptr, Source uintptr)  {
     linkLabel_Assign.Call(obj, Source )
 }
 
+func LinkLabel_DisposeOf(obj uintptr)  {
+    linkLabel_DisposeOf.Call(obj)
+}
+
+func LinkLabel_ClassType(obj uintptr) TClass {
+    ret, _, _ := linkLabel_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func LinkLabel_ClassName(obj uintptr) string {
     ret, _, _ := linkLabel_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func LinkLabel_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := linkLabel_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func LinkLabel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := linkLabel_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func LinkLabel_Equals(obj uintptr, Obj uintptr) bool {
@@ -10635,6 +10999,10 @@ func LinkLabel_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func LinkLabel_StaticClassType() TClass {
+    r, _, _:= linkLabel_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TSpeedButton ---------------------------
 
@@ -10750,9 +11118,28 @@ func SpeedButton_Assign(obj uintptr, Source uintptr)  {
     speedButton_Assign.Call(obj, Source )
 }
 
+func SpeedButton_DisposeOf(obj uintptr)  {
+    speedButton_DisposeOf.Call(obj)
+}
+
+func SpeedButton_ClassType(obj uintptr) TClass {
+    ret, _, _ := speedButton_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func SpeedButton_ClassName(obj uintptr) string {
     ret, _, _ := speedButton_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func SpeedButton_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := speedButton_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func SpeedButton_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := speedButton_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func SpeedButton_Equals(obj uintptr, Obj uintptr) bool {
@@ -11187,6 +11574,10 @@ func SpeedButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func SpeedButton_StaticClassType() TClass {
+    r, _, _:= speedButton_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TSplitter ---------------------------
 
@@ -11298,9 +11689,28 @@ func Splitter_Assign(obj uintptr, Source uintptr)  {
     splitter_Assign.Call(obj, Source )
 }
 
+func Splitter_DisposeOf(obj uintptr)  {
+    splitter_DisposeOf.Call(obj)
+}
+
+func Splitter_ClassType(obj uintptr) TClass {
+    ret, _, _ := splitter_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Splitter_ClassName(obj uintptr) string {
     ret, _, _ := splitter_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Splitter_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := splitter_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Splitter_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := splitter_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Splitter_Equals(obj uintptr, Obj uintptr) bool {
@@ -11608,6 +12018,10 @@ func Splitter_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Splitter_StaticClassType() TClass {
+    r, _, _:= splitter_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TRadioGroup ---------------------------
 
@@ -11750,9 +12164,28 @@ func RadioGroup_Assign(obj uintptr, Source uintptr)  {
     radioGroup_Assign.Call(obj, Source )
 }
 
+func RadioGroup_DisposeOf(obj uintptr)  {
+    radioGroup_DisposeOf.Call(obj)
+}
+
+func RadioGroup_ClassType(obj uintptr) TClass {
+    ret, _, _ := radioGroup_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func RadioGroup_ClassName(obj uintptr) string {
     ret, _, _ := radioGroup_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func RadioGroup_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := radioGroup_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func RadioGroup_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := radioGroup_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func RadioGroup_Equals(obj uintptr, Obj uintptr) bool {
@@ -12301,6 +12734,10 @@ func RadioGroup_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func RadioGroup_StaticClassType() TClass {
+    r, _, _:= radioGroup_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TStaticText ---------------------------
 
@@ -12443,9 +12880,28 @@ func StaticText_Assign(obj uintptr, Source uintptr)  {
     staticText_Assign.Call(obj, Source )
 }
 
+func StaticText_DisposeOf(obj uintptr)  {
+    staticText_DisposeOf.Call(obj)
+}
+
+func StaticText_ClassType(obj uintptr) TClass {
+    ret, _, _ := staticText_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func StaticText_ClassName(obj uintptr) string {
     ret, _, _ := staticText_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func StaticText_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := staticText_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func StaticText_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := staticText_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func StaticText_Equals(obj uintptr, Obj uintptr) bool {
@@ -13032,6 +13488,10 @@ func StaticText_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func StaticText_StaticClassType() TClass {
+    r, _, _:= staticText_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TColorBox ---------------------------
 
@@ -13194,9 +13654,28 @@ func ColorBox_Assign(obj uintptr, Source uintptr)  {
     colorBox_Assign.Call(obj, Source )
 }
 
+func ColorBox_DisposeOf(obj uintptr)  {
+    colorBox_DisposeOf.Call(obj)
+}
+
+func ColorBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := colorBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ColorBox_ClassName(obj uintptr) string {
     ret, _, _ := colorBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ColorBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := colorBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ColorBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := colorBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ColorBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -13887,6 +14366,10 @@ func ColorBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ColorBox_StaticClassType() TClass {
+    r, _, _:= colorBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TColorListBox ---------------------------
 
@@ -14049,9 +14532,28 @@ func ColorListBox_Assign(obj uintptr, Source uintptr)  {
     colorListBox_Assign.Call(obj, Source )
 }
 
+func ColorListBox_DisposeOf(obj uintptr)  {
+    colorListBox_DisposeOf.Call(obj)
+}
+
+func ColorListBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := colorListBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ColorListBox_ClassName(obj uintptr) string {
     ret, _, _ := colorListBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ColorListBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := colorListBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ColorListBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := colorListBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ColorListBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -14705,6 +15207,10 @@ func ColorListBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ColorListBox_StaticClassType() TClass {
+    r, _, _:= colorListBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTrayIcon ---------------------------
 
@@ -14748,9 +15254,28 @@ func TrayIcon_Assign(obj uintptr, Source uintptr)  {
     trayIcon_Assign.Call(obj, Source )
 }
 
+func TrayIcon_DisposeOf(obj uintptr)  {
+    trayIcon_DisposeOf.Call(obj)
+}
+
+func TrayIcon_ClassType(obj uintptr) TClass {
+    ret, _, _ := trayIcon_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func TrayIcon_ClassName(obj uintptr) string {
     ret, _, _ := trayIcon_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TrayIcon_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := trayIcon_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TrayIcon_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := trayIcon_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func TrayIcon_Equals(obj uintptr, Obj uintptr) bool {
@@ -14933,6 +15458,10 @@ func TrayIcon_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func TrayIcon_StaticClassType() TClass {
+    r, _, _:= trayIcon_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TBalloonHint ---------------------------
 
@@ -14972,9 +15501,28 @@ func BalloonHint_Assign(obj uintptr, Source uintptr)  {
     balloonHint_Assign.Call(obj, Source )
 }
 
+func BalloonHint_DisposeOf(obj uintptr)  {
+    balloonHint_DisposeOf.Call(obj)
+}
+
+func BalloonHint_ClassType(obj uintptr) TClass {
+    ret, _, _ := balloonHint_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func BalloonHint_ClassName(obj uintptr) string {
     ret, _, _ := balloonHint_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func BalloonHint_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := balloonHint_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func BalloonHint_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := balloonHint_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func BalloonHint_Equals(obj uintptr, Obj uintptr) bool {
@@ -15102,6 +15650,10 @@ func BalloonHint_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func BalloonHint_StaticClassType() TClass {
+    r, _, _:= balloonHint_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TCategoryPanelGroup ---------------------------
 
@@ -15252,9 +15804,28 @@ func CategoryPanelGroup_Assign(obj uintptr, Source uintptr)  {
     categoryPanelGroup_Assign.Call(obj, Source )
 }
 
+func CategoryPanelGroup_DisposeOf(obj uintptr)  {
+    categoryPanelGroup_DisposeOf.Call(obj)
+}
+
+func CategoryPanelGroup_ClassType(obj uintptr) TClass {
+    ret, _, _ := categoryPanelGroup_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func CategoryPanelGroup_ClassName(obj uintptr) string {
     ret, _, _ := categoryPanelGroup_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CategoryPanelGroup_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := categoryPanelGroup_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CategoryPanelGroup_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := categoryPanelGroup_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func CategoryPanelGroup_Equals(obj uintptr, Obj uintptr) bool {
@@ -15954,6 +16525,10 @@ func CategoryPanelGroup_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func CategoryPanelGroup_StaticClassType() TClass {
+    r, _, _:= categoryPanelGroup_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TCategoryPanel ---------------------------
 
@@ -16104,9 +16679,28 @@ func CategoryPanel_Assign(obj uintptr, Source uintptr)  {
     categoryPanel_Assign.Call(obj, Source )
 }
 
+func CategoryPanel_DisposeOf(obj uintptr)  {
+    categoryPanel_DisposeOf.Call(obj)
+}
+
+func CategoryPanel_ClassType(obj uintptr) TClass {
+    ret, _, _ := categoryPanel_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func CategoryPanel_ClassName(obj uintptr) string {
     ret, _, _ := categoryPanel_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CategoryPanel_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := categoryPanel_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CategoryPanel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := categoryPanel_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func CategoryPanel_Equals(obj uintptr, Obj uintptr) bool {
@@ -16740,6 +17334,10 @@ func CategoryPanel_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func CategoryPanel_StaticClassType() TClass {
+    r, _, _:= categoryPanel_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TOpenDialog ---------------------------
 
@@ -16776,9 +17374,28 @@ func OpenDialog_Assign(obj uintptr, Source uintptr)  {
     openDialog_Assign.Call(obj, Source )
 }
 
+func OpenDialog_DisposeOf(obj uintptr)  {
+    openDialog_DisposeOf.Call(obj)
+}
+
+func OpenDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := openDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func OpenDialog_ClassName(obj uintptr) string {
     ret, _, _ := openDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func OpenDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := openDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func OpenDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := openDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func OpenDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -16928,6 +17545,10 @@ func OpenDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func OpenDialog_StaticClassType() TClass {
+    r, _, _:= openDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TSaveDialog ---------------------------
 
@@ -16964,9 +17585,28 @@ func SaveDialog_Assign(obj uintptr, Source uintptr)  {
     saveDialog_Assign.Call(obj, Source )
 }
 
+func SaveDialog_DisposeOf(obj uintptr)  {
+    saveDialog_DisposeOf.Call(obj)
+}
+
+func SaveDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := saveDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func SaveDialog_ClassName(obj uintptr) string {
     ret, _, _ := saveDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func SaveDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := saveDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func SaveDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := saveDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func SaveDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -17116,6 +17756,10 @@ func SaveDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func SaveDialog_StaticClassType() TClass {
+    r, _, _:= saveDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TColorDialog ---------------------------
 
@@ -17152,9 +17796,28 @@ func ColorDialog_Assign(obj uintptr, Source uintptr)  {
     colorDialog_Assign.Call(obj, Source )
 }
 
+func ColorDialog_DisposeOf(obj uintptr)  {
+    colorDialog_DisposeOf.Call(obj)
+}
+
+func ColorDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := colorDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ColorDialog_ClassName(obj uintptr) string {
     ret, _, _ := colorDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ColorDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := colorDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ColorDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := colorDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ColorDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -17245,6 +17908,10 @@ func ColorDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ColorDialog_StaticClassType() TClass {
+    r, _, _:= colorDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TFontDialog ---------------------------
 
@@ -17281,9 +17948,28 @@ func FontDialog_Assign(obj uintptr, Source uintptr)  {
     fontDialog_Assign.Call(obj, Source )
 }
 
+func FontDialog_DisposeOf(obj uintptr)  {
+    fontDialog_DisposeOf.Call(obj)
+}
+
+func FontDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := fontDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func FontDialog_ClassName(obj uintptr) string {
     ret, _, _ := fontDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func FontDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := fontDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func FontDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := fontDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func FontDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -17374,6 +18060,10 @@ func FontDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func FontDialog_StaticClassType() TClass {
+    r, _, _:= fontDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPrintDialog ---------------------------
 
@@ -17410,9 +18100,28 @@ func PrintDialog_Assign(obj uintptr, Source uintptr)  {
     printDialog_Assign.Call(obj, Source )
 }
 
+func PrintDialog_DisposeOf(obj uintptr)  {
+    printDialog_DisposeOf.Call(obj)
+}
+
+func PrintDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := printDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func PrintDialog_ClassName(obj uintptr) string {
     ret, _, _ := printDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PrintDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := printDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PrintDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := printDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func PrintDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -17566,6 +18275,10 @@ func PrintDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func PrintDialog_StaticClassType() TClass {
+    r, _, _:= printDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TOpenPictureDialog ---------------------------
 
@@ -17602,9 +18315,28 @@ func OpenPictureDialog_Assign(obj uintptr, Source uintptr)  {
     openPictureDialog_Assign.Call(obj, Source )
 }
 
+func OpenPictureDialog_DisposeOf(obj uintptr)  {
+    openPictureDialog_DisposeOf.Call(obj)
+}
+
+func OpenPictureDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := openPictureDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func OpenPictureDialog_ClassName(obj uintptr) string {
     ret, _, _ := openPictureDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func OpenPictureDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := openPictureDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func OpenPictureDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := openPictureDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func OpenPictureDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -17754,6 +18486,10 @@ func OpenPictureDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func OpenPictureDialog_StaticClassType() TClass {
+    r, _, _:= openPictureDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TSavePictureDialog ---------------------------
 
@@ -17790,9 +18526,28 @@ func SavePictureDialog_Assign(obj uintptr, Source uintptr)  {
     savePictureDialog_Assign.Call(obj, Source )
 }
 
+func SavePictureDialog_DisposeOf(obj uintptr)  {
+    savePictureDialog_DisposeOf.Call(obj)
+}
+
+func SavePictureDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := savePictureDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func SavePictureDialog_ClassName(obj uintptr) string {
     ret, _, _ := savePictureDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func SavePictureDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := savePictureDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func SavePictureDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := savePictureDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func SavePictureDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -17942,6 +18697,10 @@ func SavePictureDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func SavePictureDialog_StaticClassType() TClass {
+    r, _, _:= savePictureDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TSaveTextFileDialog ---------------------------
 
@@ -17978,9 +18737,28 @@ func SaveTextFileDialog_Assign(obj uintptr, Source uintptr)  {
     saveTextFileDialog_Assign.Call(obj, Source )
 }
 
+func SaveTextFileDialog_DisposeOf(obj uintptr)  {
+    saveTextFileDialog_DisposeOf.Call(obj)
+}
+
+func SaveTextFileDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := saveTextFileDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func SaveTextFileDialog_ClassName(obj uintptr) string {
     ret, _, _ := saveTextFileDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func SaveTextFileDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := saveTextFileDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func SaveTextFileDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := saveTextFileDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func SaveTextFileDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -18130,6 +18908,10 @@ func SaveTextFileDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func SaveTextFileDialog_StaticClassType() TClass {
+    r, _, _:= saveTextFileDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TOpenTextFileDialog ---------------------------
 
@@ -18166,9 +18948,28 @@ func OpenTextFileDialog_Assign(obj uintptr, Source uintptr)  {
     openTextFileDialog_Assign.Call(obj, Source )
 }
 
+func OpenTextFileDialog_DisposeOf(obj uintptr)  {
+    openTextFileDialog_DisposeOf.Call(obj)
+}
+
+func OpenTextFileDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := openTextFileDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func OpenTextFileDialog_ClassName(obj uintptr) string {
     ret, _, _ := openTextFileDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func OpenTextFileDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := openTextFileDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func OpenTextFileDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := openTextFileDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func OpenTextFileDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -18318,6 +19119,10 @@ func OpenTextFileDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func OpenTextFileDialog_StaticClassType() TClass {
+    r, _, _:= openTextFileDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TRichEdit ---------------------------
 
@@ -18506,9 +19311,28 @@ func RichEdit_Assign(obj uintptr, Source uintptr)  {
     richEdit_Assign.Call(obj, Source )
 }
 
+func RichEdit_DisposeOf(obj uintptr)  {
+    richEdit_DisposeOf.Call(obj)
+}
+
+func RichEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := richEdit_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func RichEdit_ClassName(obj uintptr) string {
     ret, _, _ := richEdit_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func RichEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := richEdit_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := richEdit_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func RichEdit_Equals(obj uintptr, Obj uintptr) bool {
@@ -19319,6 +20143,10 @@ func RichEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func RichEdit_StaticClassType() TClass {
+    r, _, _:= richEdit_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTrackBar ---------------------------
 
@@ -19465,9 +20293,28 @@ func TrackBar_Assign(obj uintptr, Source uintptr)  {
     trackBar_Assign.Call(obj, Source )
 }
 
+func TrackBar_DisposeOf(obj uintptr)  {
+    trackBar_DisposeOf.Call(obj)
+}
+
+func TrackBar_ClassType(obj uintptr) TClass {
+    ret, _, _ := trackBar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func TrackBar_ClassName(obj uintptr) string {
     ret, _, _ := trackBar_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TrackBar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := trackBar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TrackBar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := trackBar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func TrackBar_Equals(obj uintptr, Obj uintptr) bool {
@@ -20077,6 +20924,10 @@ func TrackBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func TrackBar_StaticClassType() TClass {
+    r, _, _:= trackBar_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TImageList ---------------------------
 
@@ -20239,9 +21090,28 @@ func ImageList_HasParent(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ImageList_DisposeOf(obj uintptr)  {
+    imageList_DisposeOf.Call(obj)
+}
+
+func ImageList_ClassType(obj uintptr) TClass {
+    ret, _, _ := imageList_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ImageList_ClassName(obj uintptr) string {
     ret, _, _ := imageList_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ImageList_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := imageList_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ImageList_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := imageList_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ImageList_Equals(obj uintptr, Obj uintptr) bool {
@@ -20432,6 +21302,10 @@ func ImageList_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ImageList_StaticClassType() TClass {
+    r, _, _:= imageList_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TUpDown ---------------------------
 
@@ -20574,9 +21448,28 @@ func UpDown_Assign(obj uintptr, Source uintptr)  {
     upDown_Assign.Call(obj, Source )
 }
 
+func UpDown_DisposeOf(obj uintptr)  {
+    upDown_DisposeOf.Call(obj)
+}
+
+func UpDown_ClassType(obj uintptr) TClass {
+    ret, _, _ := upDown_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func UpDown_ClassName(obj uintptr) string {
     ret, _, _ := upDown_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func UpDown_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := upDown_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func UpDown_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := upDown_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func UpDown_Equals(obj uintptr, Obj uintptr) bool {
@@ -21039,6 +21932,10 @@ func UpDown_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func UpDown_StaticClassType() TClass {
+    r, _, _:= upDown_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TProgressBar ---------------------------
 
@@ -21189,9 +22086,28 @@ func ProgressBar_Assign(obj uintptr, Source uintptr)  {
     progressBar_Assign.Call(obj, Source )
 }
 
+func ProgressBar_DisposeOf(obj uintptr)  {
+    progressBar_DisposeOf.Call(obj)
+}
+
+func ProgressBar_ClassType(obj uintptr) TClass {
+    ret, _, _ := progressBar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ProgressBar_ClassName(obj uintptr) string {
     ret, _, _ := progressBar_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ProgressBar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := progressBar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ProgressBar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := progressBar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ProgressBar_Equals(obj uintptr, Obj uintptr) bool {
@@ -21769,6 +22685,10 @@ func ProgressBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ProgressBar_StaticClassType() TClass {
+    r, _, _:= progressBar_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- THotKey ---------------------------
 
@@ -21911,9 +22831,28 @@ func HotKey_Assign(obj uintptr, Source uintptr)  {
     hotKey_Assign.Call(obj, Source )
 }
 
+func HotKey_DisposeOf(obj uintptr)  {
+    hotKey_DisposeOf.Call(obj)
+}
+
+func HotKey_ClassType(obj uintptr) TClass {
+    ret, _, _ := hotKey_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func HotKey_ClassName(obj uintptr) string {
     ret, _, _ := hotKey_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func HotKey_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := hotKey_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func HotKey_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := hotKey_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func HotKey_Equals(obj uintptr, Obj uintptr) bool {
@@ -22340,6 +23279,10 @@ func HotKey_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func HotKey_StaticClassType() TClass {
+    r, _, _:= hotKey_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TDateTimePicker ---------------------------
 
@@ -22482,9 +23425,28 @@ func DateTimePicker_Assign(obj uintptr, Source uintptr)  {
     dateTimePicker_Assign.Call(obj, Source )
 }
 
+func DateTimePicker_DisposeOf(obj uintptr)  {
+    dateTimePicker_DisposeOf.Call(obj)
+}
+
+func DateTimePicker_ClassType(obj uintptr) TClass {
+    ret, _, _ := dateTimePicker_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func DateTimePicker_ClassName(obj uintptr) string {
     ret, _, _ := dateTimePicker_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func DateTimePicker_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := dateTimePicker_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func DateTimePicker_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := dateTimePicker_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func DateTimePicker_Equals(obj uintptr, Obj uintptr) bool {
@@ -23147,6 +24109,10 @@ func DateTimePicker_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func DateTimePicker_StaticClassType() TClass {
+    r, _, _:= dateTimePicker_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMonthCalendar ---------------------------
 
@@ -23289,9 +24255,28 @@ func MonthCalendar_Assign(obj uintptr, Source uintptr)  {
     monthCalendar_Assign.Call(obj, Source )
 }
 
+func MonthCalendar_DisposeOf(obj uintptr)  {
+    monthCalendar_DisposeOf.Call(obj)
+}
+
+func MonthCalendar_ClassType(obj uintptr) TClass {
+    ret, _, _ := monthCalendar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func MonthCalendar_ClassName(obj uintptr) string {
     ret, _, _ := monthCalendar_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MonthCalendar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := monthCalendar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MonthCalendar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := monthCalendar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func MonthCalendar_Equals(obj uintptr, Obj uintptr) bool {
@@ -23886,6 +24871,10 @@ func MonthCalendar_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func MonthCalendar_StaticClassType() TClass {
+    r, _, _:= monthCalendar_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListView ---------------------------
 
@@ -24072,9 +25061,28 @@ func ListView_Assign(obj uintptr, Source uintptr)  {
     listView_Assign.Call(obj, Source )
 }
 
+func ListView_DisposeOf(obj uintptr)  {
+    listView_DisposeOf.Call(obj)
+}
+
+func ListView_ClassType(obj uintptr) TClass {
+    ret, _, _ := listView_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListView_ClassName(obj uintptr) string {
     ret, _, _ := listView_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListView_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listView_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListView_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listView_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListView_Equals(obj uintptr, Obj uintptr) bool {
@@ -24975,6 +25983,10 @@ func ListView_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ListView_StaticClassType() TClass {
+    r, _, _:= listView_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTreeView ---------------------------
 
@@ -25178,9 +26190,28 @@ func TreeView_Assign(obj uintptr, Source uintptr)  {
     treeView_Assign.Call(obj, Source )
 }
 
+func TreeView_DisposeOf(obj uintptr)  {
+    treeView_DisposeOf.Call(obj)
+}
+
+func TreeView_ClassType(obj uintptr) TClass {
+    ret, _, _ := treeView_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func TreeView_ClassName(obj uintptr) string {
     ret, _, _ := treeView_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TreeView_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := treeView_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := treeView_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func TreeView_Equals(obj uintptr, Obj uintptr) bool {
@@ -25988,6 +27019,10 @@ func TreeView_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func TreeView_StaticClassType() TClass {
+    r, _, _:= treeView_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TStatusBar ---------------------------
 
@@ -26130,9 +27165,28 @@ func StatusBar_Assign(obj uintptr, Source uintptr)  {
     statusBar_Assign.Call(obj, Source )
 }
 
+func StatusBar_DisposeOf(obj uintptr)  {
+    statusBar_DisposeOf.Call(obj)
+}
+
+func StatusBar_ClassType(obj uintptr) TClass {
+    ret, _, _ := statusBar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func StatusBar_ClassName(obj uintptr) string {
     ret, _, _ := statusBar_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func StatusBar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := statusBar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func StatusBar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := statusBar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func StatusBar_Equals(obj uintptr, Obj uintptr) bool {
@@ -26705,6 +27759,10 @@ func StatusBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func StatusBar_StaticClassType() TClass {
+    r, _, _:= statusBar_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TToolBar ---------------------------
 
@@ -26847,9 +27905,28 @@ func ToolBar_Assign(obj uintptr, Source uintptr)  {
     toolBar_Assign.Call(obj, Source )
 }
 
+func ToolBar_DisposeOf(obj uintptr)  {
+    toolBar_DisposeOf.Call(obj)
+}
+
+func ToolBar_ClassType(obj uintptr) TClass {
+    ret, _, _ := toolBar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ToolBar_ClassName(obj uintptr) string {
     ret, _, _ := toolBar_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ToolBar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := toolBar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ToolBar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := toolBar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ToolBar_Equals(obj uintptr, Obj uintptr) bool {
@@ -27596,6 +28673,10 @@ func ToolBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ToolBar_StaticClassType() TClass {
+    r, _, _:= toolBar_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMaskEdit ---------------------------
 
@@ -27779,9 +28860,28 @@ func MaskEdit_Assign(obj uintptr, Source uintptr)  {
     maskEdit_Assign.Call(obj, Source )
 }
 
+func MaskEdit_DisposeOf(obj uintptr)  {
+    maskEdit_DisposeOf.Call(obj)
+}
+
+func MaskEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := maskEdit_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func MaskEdit_ClassName(obj uintptr) string {
     ret, _, _ := maskEdit_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MaskEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := maskEdit_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := maskEdit_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func MaskEdit_Equals(obj uintptr, Obj uintptr) bool {
@@ -28479,6 +29579,10 @@ func MaskEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func MaskEdit_StaticClassType() TClass {
+    r, _, _:= maskEdit_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TBitBtn ---------------------------
 
@@ -28625,9 +29729,28 @@ func BitBtn_Assign(obj uintptr, Source uintptr)  {
     bitBtn_Assign.Call(obj, Source )
 }
 
+func BitBtn_DisposeOf(obj uintptr)  {
+    bitBtn_DisposeOf.Call(obj)
+}
+
+func BitBtn_ClassType(obj uintptr) TClass {
+    ret, _, _ := bitBtn_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func BitBtn_ClassName(obj uintptr) string {
     ret, _, _ := bitBtn_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func BitBtn_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := bitBtn_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func BitBtn_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := bitBtn_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func BitBtn_Equals(obj uintptr, Obj uintptr) bool {
@@ -29311,6 +30434,10 @@ func BitBtn_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func BitBtn_StaticClassType() TClass {
+    r, _, _:= bitBtn_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TIcon ---------------------------
 
@@ -29370,9 +30497,28 @@ func Icon_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Icon_DisposeOf(obj uintptr)  {
+    icon_DisposeOf.Call(obj)
+}
+
+func Icon_ClassType(obj uintptr) TClass {
+    ret, _, _ := icon_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Icon_ClassName(obj uintptr) string {
     ret, _, _ := icon_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Icon_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := icon_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Icon_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := icon_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Icon_GetHashCode(obj uintptr) int32 {
@@ -29448,6 +30594,10 @@ func Icon_SetOnChange(obj uintptr, fn interface{}) {
     icon_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func Icon_StaticClassType() TClass {
+    r, _, _:= icon_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TBitmap ---------------------------
 
@@ -29507,9 +30657,28 @@ func Bitmap_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Bitmap_DisposeOf(obj uintptr)  {
+    bitmap_DisposeOf.Call(obj)
+}
+
+func Bitmap_ClassType(obj uintptr) TClass {
+    ret, _, _ := bitmap_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Bitmap_ClassName(obj uintptr) string {
     ret, _, _ := bitmap_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Bitmap_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := bitmap_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Bitmap_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := bitmap_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Bitmap_GetHashCode(obj uintptr) int32 {
@@ -29613,6 +30782,10 @@ func Bitmap_GetScanLine(obj uintptr, Row int32) uintptr {
     return ret
 }
 
+func Bitmap_StaticClassType() TClass {
+    r, _, _:= bitmap_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMemoryStream ---------------------------
 
@@ -29657,9 +30830,28 @@ func MemoryStream_CopyFrom(obj uintptr, Source uintptr, Count int64) int64 {
     return ret
 }
 
+func MemoryStream_DisposeOf(obj uintptr)  {
+    memoryStream_DisposeOf.Call(obj)
+}
+
+func MemoryStream_ClassType(obj uintptr) TClass {
+    ret, _, _ := memoryStream_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func MemoryStream_ClassName(obj uintptr) string {
     ret, _, _ := memoryStream_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MemoryStream_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := memoryStream_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MemoryStream_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := memoryStream_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func MemoryStream_Equals(obj uintptr, Obj uintptr) bool {
@@ -29702,6 +30894,10 @@ func MemoryStream_SetSize(obj uintptr, value int64) {
    memoryStream_SetSize.Call(obj, uintptr(unsafe.Pointer(&value)))
 }
 
+func MemoryStream_StaticClassType() TClass {
+    r, _, _:= memoryStream_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TFont ---------------------------
 
@@ -29728,9 +30924,28 @@ func Font_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Font_DisposeOf(obj uintptr)  {
+    font_DisposeOf.Call(obj)
+}
+
+func Font_ClassType(obj uintptr) TClass {
+    ret, _, _ := font_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Font_ClassName(obj uintptr) string {
     ret, _, _ := font_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Font_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := font_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Font_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := font_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Font_Equals(obj uintptr, Obj uintptr) bool {
@@ -29851,6 +31066,10 @@ func Font_SetOnChange(obj uintptr, fn interface{}) {
     font_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func Font_StaticClassType() TClass {
+    r, _, _:= font_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TStrings ---------------------------
 
@@ -29950,9 +31169,28 @@ func Strings_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Strings_DisposeOf(obj uintptr)  {
+    strings_DisposeOf.Call(obj)
+}
+
+func Strings_ClassType(obj uintptr) TClass {
+    ret, _, _ := strings_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Strings_ClassName(obj uintptr) string {
     ret, _, _ := strings_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Strings_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := strings_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Strings_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := strings_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Strings_GetHashCode(obj uintptr) int32 {
@@ -30060,6 +31298,10 @@ func Strings_SetStrings(obj uintptr, Index int32, value string) {
    strings_SetStrings.Call(obj, uintptr(Index), GoStrToDStr(value))
 }
 
+func Strings_StaticClassType() TClass {
+    r, _, _:= strings_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TStringList ---------------------------
 
@@ -30159,9 +31401,28 @@ func StringList_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func StringList_DisposeOf(obj uintptr)  {
+    stringList_DisposeOf.Call(obj)
+}
+
+func StringList_ClassType(obj uintptr) TClass {
+    ret, _, _ := stringList_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func StringList_ClassName(obj uintptr) string {
     ret, _, _ := stringList_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func StringList_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := stringList_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func StringList_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := stringList_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func StringList_GetHashCode(obj uintptr) int32 {
@@ -30282,6 +31543,10 @@ func StringList_SetStrings(obj uintptr, Index int32, value string) {
    stringList_SetStrings.Call(obj, uintptr(Index), GoStrToDStr(value))
 }
 
+func StringList_StaticClassType() TClass {
+    r, _, _:= stringList_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TBrush ---------------------------
 
@@ -30308,9 +31573,28 @@ func Brush_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Brush_DisposeOf(obj uintptr)  {
+    brush_DisposeOf.Call(obj)
+}
+
+func Brush_ClassType(obj uintptr) TClass {
+    ret, _, _ := brush_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Brush_ClassName(obj uintptr) string {
     ret, _, _ := brush_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Brush_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := brush_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Brush_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := brush_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Brush_Equals(obj uintptr, Obj uintptr) bool {
@@ -30368,6 +31652,10 @@ func Brush_SetOnChange(obj uintptr, fn interface{}) {
     brush_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func Brush_StaticClassType() TClass {
+    r, _, _:= brush_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPen ---------------------------
 
@@ -30394,9 +31682,28 @@ func Pen_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Pen_DisposeOf(obj uintptr)  {
+    pen_DisposeOf.Call(obj)
+}
+
+func Pen_ClassType(obj uintptr) TClass {
+    ret, _, _ := pen_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Pen_ClassName(obj uintptr) string {
     ret, _, _ := pen_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Pen_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := pen_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Pen_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := pen_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Pen_Equals(obj uintptr, Obj uintptr) bool {
@@ -30463,6 +31770,10 @@ func Pen_SetOnChange(obj uintptr, fn interface{}) {
     pen_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func Pen_StaticClassType() TClass {
+    r, _, _:= pen_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMenuItem ---------------------------
 
@@ -30519,9 +31830,28 @@ func MenuItem_Assign(obj uintptr, Source uintptr)  {
     menuItem_Assign.Call(obj, Source )
 }
 
+func MenuItem_DisposeOf(obj uintptr)  {
+    menuItem_DisposeOf.Call(obj)
+}
+
+func MenuItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := menuItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func MenuItem_ClassName(obj uintptr) string {
     ret, _, _ := menuItem_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MenuItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := menuItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MenuItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := menuItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func MenuItem_Equals(obj uintptr, Obj uintptr) bool {
@@ -30717,6 +32047,10 @@ func MenuItem_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func MenuItem_StaticClassType() TClass {
+    r, _, _:= menuItem_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListGroups ---------------------------
 
@@ -30769,9 +32103,28 @@ func ListGroups_Insert(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func ListGroups_DisposeOf(obj uintptr)  {
+    listGroups_DisposeOf.Call(obj)
+}
+
+func ListGroups_ClassType(obj uintptr) TClass {
+    ret, _, _ := listGroups_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListGroups_ClassName(obj uintptr) string {
     ret, _, _ := listGroups_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListGroups_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listGroups_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListGroups_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listGroups_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListGroups_Equals(obj uintptr, Obj uintptr) bool {
@@ -30812,6 +32165,10 @@ func ListGroups_SetItems(obj uintptr, Index int32, value uintptr) {
    listGroups_SetItems.Call(obj, uintptr(Index), value)
 }
 
+func ListGroups_StaticClassType() TClass {
+    r, _, _:= listGroups_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPicture ---------------------------
 
@@ -30849,9 +32206,28 @@ func Picture_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Picture_DisposeOf(obj uintptr)  {
+    picture_DisposeOf.Call(obj)
+}
+
+func Picture_ClassType(obj uintptr) TClass {
+    ret, _, _ := picture_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Picture_ClassName(obj uintptr) string {
     ret, _, _ := picture_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Picture_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := picture_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Picture_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := picture_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Picture_Equals(obj uintptr, Obj uintptr) bool {
@@ -30910,6 +32286,10 @@ func Picture_SetOnChange(obj uintptr, fn interface{}) {
     picture_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func Picture_StaticClassType() TClass {
+    r, _, _:= picture_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListColumns ---------------------------
 
@@ -30962,9 +32342,28 @@ func ListColumns_Insert(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func ListColumns_DisposeOf(obj uintptr)  {
+    listColumns_DisposeOf.Call(obj)
+}
+
+func ListColumns_ClassType(obj uintptr) TClass {
+    ret, _, _ := listColumns_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListColumns_ClassName(obj uintptr) string {
     ret, _, _ := listColumns_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListColumns_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listColumns_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListColumns_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listColumns_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListColumns_Equals(obj uintptr, Obj uintptr) bool {
@@ -31005,6 +32404,10 @@ func ListColumns_SetItems(obj uintptr, Index int32, value uintptr) {
    listColumns_SetItems.Call(obj, uintptr(Index), value)
 }
 
+func ListColumns_StaticClassType() TClass {
+    r, _, _:= listColumns_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListItems ---------------------------
 
@@ -31062,9 +32465,28 @@ func ListItems_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ListItems_DisposeOf(obj uintptr)  {
+    listItems_DisposeOf.Call(obj)
+}
+
+func ListItems_ClassType(obj uintptr) TClass {
+    ret, _, _ := listItems_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListItems_ClassName(obj uintptr) string {
     ret, _, _ := listItems_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListItems_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listItems_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListItems_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listItems_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListItems_Equals(obj uintptr, Obj uintptr) bool {
@@ -31110,6 +32532,10 @@ func ListItems_SetItem(obj uintptr, Index int32, value uintptr) {
    listItems_SetItem.Call(obj, uintptr(Index), value)
 }
 
+func ListItems_StaticClassType() TClass {
+    r, _, _:= listItems_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTreeNodes ---------------------------
 
@@ -31217,9 +32643,28 @@ func TreeNodes_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func TreeNodes_DisposeOf(obj uintptr)  {
+    treeNodes_DisposeOf.Call(obj)
+}
+
+func TreeNodes_ClassType(obj uintptr) TClass {
+    ret, _, _ := treeNodes_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func TreeNodes_ClassName(obj uintptr) string {
     ret, _, _ := treeNodes_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TreeNodes_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := treeNodes_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TreeNodes_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := treeNodes_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func TreeNodes_Equals(obj uintptr, Obj uintptr) bool {
@@ -31257,6 +32702,10 @@ func TreeNodes_GetItem(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func TreeNodes_StaticClassType() TClass {
+    r, _, _:= treeNodes_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListItem ---------------------------
 
@@ -31310,9 +32759,28 @@ func ListItem_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ListItem_DisposeOf(obj uintptr)  {
+    listItem_DisposeOf.Call(obj)
+}
+
+func ListItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := listItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListItem_ClassName(obj uintptr) string {
     ret, _, _ := listItem_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListItem_Equals(obj uintptr, Obj uintptr) bool {
@@ -31504,6 +32972,10 @@ func ListItem_SetSubItemImages(obj uintptr, Index int32, value int32) {
    listItem_SetSubItemImages.Call(obj, uintptr(Index), uintptr(value))
 }
 
+func ListItem_StaticClassType() TClass {
+    r, _, _:= listItem_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTreeNode ---------------------------
 
@@ -31566,9 +33038,28 @@ func TreeNode_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func TreeNode_DisposeOf(obj uintptr)  {
+    treeNode_DisposeOf.Call(obj)
+}
+
+func TreeNode_ClassType(obj uintptr) TClass {
+    ret, _, _ := treeNode_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func TreeNode_ClassName(obj uintptr) string {
     ret, _, _ := treeNode_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TreeNode_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := treeNode_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TreeNode_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := treeNode_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func TreeNode_Equals(obj uintptr, Obj uintptr) bool {
@@ -31771,6 +33262,10 @@ func TreeNode_SetItem(obj uintptr, Index int32, value uintptr) {
    treeNode_SetItem.Call(obj, uintptr(Index), value)
 }
 
+func TreeNode_StaticClassType() TClass {
+    r, _, _:= treeNode_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPageControl ---------------------------
 
@@ -31928,9 +33423,28 @@ func PageControl_Assign(obj uintptr, Source uintptr)  {
     pageControl_Assign.Call(obj, Source )
 }
 
+func PageControl_DisposeOf(obj uintptr)  {
+    pageControl_DisposeOf.Call(obj)
+}
+
+func PageControl_ClassType(obj uintptr) TClass {
+    ret, _, _ := pageControl_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func PageControl_ClassName(obj uintptr) string {
     ret, _, _ := pageControl_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PageControl_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := pageControl_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PageControl_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := pageControl_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func PageControl_Equals(obj uintptr, Obj uintptr) bool {
@@ -32529,6 +34043,10 @@ func PageControl_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func PageControl_StaticClassType() TClass {
+    r, _, _:= pageControl_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTabSheet ---------------------------
 
@@ -32671,9 +34189,28 @@ func TabSheet_Assign(obj uintptr, Source uintptr)  {
     tabSheet_Assign.Call(obj, Source )
 }
 
+func TabSheet_DisposeOf(obj uintptr)  {
+    tabSheet_DisposeOf.Call(obj)
+}
+
+func TabSheet_ClassType(obj uintptr) TClass {
+    ret, _, _ := tabSheet_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func TabSheet_ClassName(obj uintptr) string {
     ret, _, _ := tabSheet_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TabSheet_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := tabSheet_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TabSheet_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := tabSheet_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func TabSheet_Equals(obj uintptr, Obj uintptr) bool {
@@ -33206,6 +34743,10 @@ func TabSheet_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func TabSheet_StaticClassType() TClass {
+    r, _, _:= tabSheet_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TControl ---------------------------
 
@@ -33317,9 +34858,28 @@ func Control_Assign(obj uintptr, Source uintptr)  {
     control_Assign.Call(obj, Source )
 }
 
+func Control_DisposeOf(obj uintptr)  {
+    control_DisposeOf.Call(obj)
+}
+
+func Control_ClassType(obj uintptr) TClass {
+    ret, _, _ := control_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Control_ClassName(obj uintptr) string {
     ret, _, _ := control_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Control_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := control_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Control_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := control_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Control_Equals(obj uintptr, Obj uintptr) bool {
@@ -33600,6 +35160,10 @@ func Control_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Control_StaticClassType() TClass {
+    r, _, _:= control_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TScreen ---------------------------
 
@@ -33635,9 +35199,28 @@ func Screen_Assign(obj uintptr, Source uintptr)  {
     screen_Assign.Call(obj, Source )
 }
 
+func Screen_DisposeOf(obj uintptr)  {
+    screen_DisposeOf.Call(obj)
+}
+
+func Screen_ClassType(obj uintptr) TClass {
+    ret, _, _ := screen_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Screen_ClassName(obj uintptr) string {
     ret, _, _ := screen_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Screen_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := screen_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Screen_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := screen_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Screen_Equals(obj uintptr, Obj uintptr) bool {
@@ -33846,6 +35429,10 @@ func Screen_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Screen_StaticClassType() TClass {
+    r, _, _:= screen_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMouse ---------------------------
 
@@ -33858,9 +35445,28 @@ func Mouse_Free(obj uintptr) {
     mouse_Free.Call(obj)
 }
 
+func Mouse_DisposeOf(obj uintptr)  {
+    mouse_DisposeOf.Call(obj)
+}
+
+func Mouse_ClassType(obj uintptr) TClass {
+    ret, _, _ := mouse_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Mouse_ClassName(obj uintptr) string {
     ret, _, _ := mouse_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Mouse_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := mouse_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Mouse_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := mouse_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Mouse_Equals(obj uintptr, Obj uintptr) bool {
@@ -33917,6 +35523,10 @@ func Mouse_GetWheelScrollLines(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Mouse_StaticClassType() TClass {
+    r, _, _:= mouse_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListGroup ---------------------------
 
@@ -33938,9 +35548,28 @@ func ListGroup_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ListGroup_DisposeOf(obj uintptr)  {
+    listGroup_DisposeOf.Call(obj)
+}
+
+func ListGroup_ClassType(obj uintptr) TClass {
+    ret, _, _ := listGroup_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListGroup_ClassName(obj uintptr) string {
     ret, _, _ := listGroup_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListGroup_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listGroup_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListGroup_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listGroup_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListGroup_Equals(obj uintptr, Obj uintptr) bool {
@@ -34039,6 +35668,10 @@ func ListGroup_SetIndex(obj uintptr, value int32) {
    listGroup_SetIndex.Call(obj, uintptr(value))
 }
 
+func ListGroup_StaticClassType() TClass {
+    r, _, _:= listGroup_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TListColumn ---------------------------
 
@@ -34060,9 +35693,28 @@ func ListColumn_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ListColumn_DisposeOf(obj uintptr)  {
+    listColumn_DisposeOf.Call(obj)
+}
+
+func ListColumn_ClassType(obj uintptr) TClass {
+    ret, _, _ := listColumn_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ListColumn_ClassName(obj uintptr) string {
     ret, _, _ := listColumn_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListColumn_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := listColumn_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ListColumn_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := listColumn_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ListColumn_Equals(obj uintptr, Obj uintptr) bool {
@@ -34161,6 +35813,10 @@ func ListColumn_SetIndex(obj uintptr, value int32) {
    listColumn_SetIndex.Call(obj, uintptr(value))
 }
 
+func ListColumn_StaticClassType() TClass {
+    r, _, _:= listColumn_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TCollectionItem ---------------------------
 
@@ -34182,9 +35838,28 @@ func CollectionItem_Assign(obj uintptr, Source uintptr)  {
     collectionItem_Assign.Call(obj, Source )
 }
 
+func CollectionItem_DisposeOf(obj uintptr)  {
+    collectionItem_DisposeOf.Call(obj)
+}
+
+func CollectionItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := collectionItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func CollectionItem_ClassName(obj uintptr) string {
     ret, _, _ := collectionItem_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CollectionItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := collectionItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CollectionItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := collectionItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func CollectionItem_Equals(obj uintptr, Obj uintptr) bool {
@@ -34211,6 +35886,10 @@ func CollectionItem_SetIndex(obj uintptr, value int32) {
    collectionItem_SetIndex.Call(obj, uintptr(value))
 }
 
+func CollectionItem_StaticClassType() TClass {
+    r, _, _:= collectionItem_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TStatusPanels ---------------------------
 
@@ -34268,9 +35947,28 @@ func StatusPanels_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func StatusPanels_DisposeOf(obj uintptr)  {
+    statusPanels_DisposeOf.Call(obj)
+}
+
+func StatusPanels_ClassType(obj uintptr) TClass {
+    ret, _, _ := statusPanels_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func StatusPanels_ClassName(obj uintptr) string {
     ret, _, _ := statusPanels_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func StatusPanels_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := statusPanels_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func StatusPanels_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := statusPanels_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func StatusPanels_Equals(obj uintptr, Obj uintptr) bool {
@@ -34311,6 +36009,10 @@ func StatusPanels_SetItems(obj uintptr, Index int32, value uintptr) {
    statusPanels_SetItems.Call(obj, uintptr(Index), value)
 }
 
+func StatusPanels_StaticClassType() TClass {
+    r, _, _:= statusPanels_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TStatusPanel ---------------------------
 
@@ -34332,9 +36034,28 @@ func StatusPanel_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func StatusPanel_DisposeOf(obj uintptr)  {
+    statusPanel_DisposeOf.Call(obj)
+}
+
+func StatusPanel_ClassType(obj uintptr) TClass {
+    ret, _, _ := statusPanel_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func StatusPanel_ClassName(obj uintptr) string {
     ret, _, _ := statusPanel_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func StatusPanel_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := statusPanel_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func StatusPanel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := statusPanel_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func StatusPanel_Equals(obj uintptr, Obj uintptr) bool {
@@ -34406,6 +36127,10 @@ func StatusPanel_SetIndex(obj uintptr, value int32) {
    statusPanel_SetIndex.Call(obj, uintptr(value))
 }
 
+func StatusPanel_StaticClassType() TClass {
+    r, _, _:= statusPanel_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TCanvas ---------------------------
 
@@ -34504,9 +36229,28 @@ func Canvas_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Canvas_DisposeOf(obj uintptr)  {
+    canvas_DisposeOf.Call(obj)
+}
+
+func Canvas_ClassType(obj uintptr) TClass {
+    ret, _, _ := canvas_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Canvas_ClassName(obj uintptr) string {
     ret, _, _ := canvas_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Canvas_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := canvas_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Canvas_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := canvas_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Canvas_Equals(obj uintptr, Obj uintptr) bool {
@@ -34573,6 +36317,10 @@ func Canvas_SetOnChange(obj uintptr, fn interface{}) {
     canvas_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func Canvas_StaticClassType() TClass {
+    r, _, _:= canvas_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TObject ---------------------------
 
@@ -34585,9 +36333,28 @@ func Object_Free(obj uintptr) {
     object_Free.Call(obj)
 }
 
+func Object_DisposeOf(obj uintptr)  {
+    object_DisposeOf.Call(obj)
+}
+
+func Object_ClassType(obj uintptr) TClass {
+    ret, _, _ := object_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Object_ClassName(obj uintptr) string {
     ret, _, _ := object_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Object_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := object_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Object_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := object_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Object_Equals(obj uintptr, Obj uintptr) bool {
@@ -34605,6 +36372,10 @@ func Object_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Object_StaticClassType() TClass {
+    r, _, _:= object_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPngImage ---------------------------
 
@@ -34659,9 +36430,28 @@ func PngImage_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func PngImage_DisposeOf(obj uintptr)  {
+    pngImage_DisposeOf.Call(obj)
+}
+
+func PngImage_ClassType(obj uintptr) TClass {
+    ret, _, _ := pngImage_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func PngImage_ClassName(obj uintptr) string {
     ret, _, _ := pngImage_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PngImage_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := pngImage_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PngImage_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := pngImage_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func PngImage_GetHashCode(obj uintptr) int32 {
@@ -34757,6 +36547,10 @@ func PngImage_SetOnChange(obj uintptr, fn interface{}) {
     pngImage_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func PngImage_StaticClassType() TClass {
+    r, _, _:= pngImage_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TJPEGImage ---------------------------
 
@@ -34803,9 +36597,28 @@ func JPEGImage_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func JPEGImage_DisposeOf(obj uintptr)  {
+    jPEGImage_DisposeOf.Call(obj)
+}
+
+func JPEGImage_ClassType(obj uintptr) TClass {
+    ret, _, _ := jPEGImage_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func JPEGImage_ClassName(obj uintptr) string {
     ret, _, _ := jPEGImage_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func JPEGImage_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := jPEGImage_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func JPEGImage_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := jPEGImage_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func JPEGImage_GetHashCode(obj uintptr) int32 {
@@ -34922,6 +36735,10 @@ func JPEGImage_SetOnChange(obj uintptr, fn interface{}) {
     jPEGImage_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func JPEGImage_StaticClassType() TClass {
+    r, _, _:= jPEGImage_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TGIFImage ---------------------------
 
@@ -34989,9 +36806,28 @@ func GIFImage_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func GIFImage_DisposeOf(obj uintptr)  {
+    gIFImage_DisposeOf.Call(obj)
+}
+
+func GIFImage_ClassType(obj uintptr) TClass {
+    ret, _, _ := gIFImage_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func GIFImage_ClassName(obj uintptr) string {
     ret, _, _ := gIFImage_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func GIFImage_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := gIFImage_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func GIFImage_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := gIFImage_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func GIFImage_GetHashCode(obj uintptr) int32 {
@@ -35132,6 +36968,10 @@ func GIFImage_SetOnChange(obj uintptr, fn interface{}) {
     gIFImage_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func GIFImage_StaticClassType() TClass {
+    r, _, _:= gIFImage_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TGIFFrame ---------------------------
 
@@ -35173,9 +37013,28 @@ func GIFFrame_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func GIFFrame_DisposeOf(obj uintptr)  {
+    gIFFrame_DisposeOf.Call(obj)
+}
+
+func GIFFrame_ClassType(obj uintptr) TClass {
+    ret, _, _ := gIFFrame_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func GIFFrame_ClassName(obj uintptr) string {
     ret, _, _ := gIFFrame_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func GIFFrame_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := gIFFrame_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func GIFFrame_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := gIFFrame_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func GIFFrame_Equals(obj uintptr, Obj uintptr) bool {
@@ -35293,6 +37152,10 @@ func GIFFrame_GetTransparent(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func GIFFrame_StaticClassType() TClass {
+    r, _, _:= gIFFrame_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TActionList ---------------------------
 
@@ -35324,9 +37187,28 @@ func ActionList_Assign(obj uintptr, Source uintptr)  {
     actionList_Assign.Call(obj, Source )
 }
 
+func ActionList_DisposeOf(obj uintptr)  {
+    actionList_DisposeOf.Call(obj)
+}
+
+func ActionList_ClassType(obj uintptr) TClass {
+    ret, _, _ := actionList_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ActionList_ClassName(obj uintptr) string {
     ret, _, _ := actionList_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ActionList_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := actionList_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ActionList_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := actionList_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ActionList_Equals(obj uintptr, Obj uintptr) bool {
@@ -35408,6 +37290,10 @@ func ActionList_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ActionList_StaticClassType() TClass {
+    r, _, _:= actionList_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TAction ---------------------------
 
@@ -35449,9 +37335,28 @@ func Action_Assign(obj uintptr, Source uintptr)  {
     action_Assign.Call(obj, Source )
 }
 
+func Action_DisposeOf(obj uintptr)  {
+    action_DisposeOf.Call(obj)
+}
+
+func Action_ClassType(obj uintptr) TClass {
+    ret, _, _ := action_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Action_ClassName(obj uintptr) string {
     ret, _, _ := action_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Action_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := action_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Action_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := action_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Action_Equals(obj uintptr, Obj uintptr) bool {
@@ -35605,6 +37510,10 @@ func Action_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Action_StaticClassType() TClass {
+    r, _, _:= action_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TToolButton ---------------------------
 
@@ -35725,9 +37634,28 @@ func ToolButton_Assign(obj uintptr, Source uintptr)  {
     toolButton_Assign.Call(obj, Source )
 }
 
+func ToolButton_DisposeOf(obj uintptr)  {
+    toolButton_DisposeOf.Call(obj)
+}
+
+func ToolButton_ClassType(obj uintptr) TClass {
+    ret, _, _ := toolButton_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ToolButton_ClassName(obj uintptr) string {
     ret, _, _ := toolButton_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ToolButton_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := toolButton_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ToolButton_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := toolButton_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ToolButton_Equals(obj uintptr, Obj uintptr) bool {
@@ -36214,6 +38142,10 @@ func ToolButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ToolButton_StaticClassType() TClass {
+    r, _, _:= toolButton_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TIniFile ---------------------------
 
@@ -36324,9 +38256,28 @@ func IniFile_ValueExists(obj uintptr, Section string, Ident string) bool {
     return DBoolToGoBool(ret)
 }
 
+func IniFile_DisposeOf(obj uintptr)  {
+    iniFile_DisposeOf.Call(obj)
+}
+
+func IniFile_ClassType(obj uintptr) TClass {
+    ret, _, _ := iniFile_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func IniFile_ClassName(obj uintptr) string {
     ret, _, _ := iniFile_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func IniFile_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := iniFile_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func IniFile_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := iniFile_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func IniFile_Equals(obj uintptr, Obj uintptr) bool {
@@ -36349,6 +38300,10 @@ func IniFile_GetFileName(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func IniFile_StaticClassType() TClass {
+    r, _, _:= iniFile_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TRegistry ---------------------------
 
@@ -36511,9 +38466,28 @@ func Registry_WriteTime(obj uintptr, Name string, Value time.Time)  {
     registry_WriteTime.Call(obj, GoStrToDStr(Name) , uintptr(Value.Unix()))
 }
 
+func Registry_DisposeOf(obj uintptr)  {
+    registry_DisposeOf.Call(obj)
+}
+
+func Registry_ClassType(obj uintptr) TClass {
+    ret, _, _ := registry_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Registry_ClassName(obj uintptr) string {
     ret, _, _ := registry_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Registry_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := registry_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Registry_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := registry_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Registry_Equals(obj uintptr, Obj uintptr) bool {
@@ -36583,6 +38557,10 @@ func Registry_SetAccess(obj uintptr, value uint32) {
    registry_SetAccess.Call(obj, uintptr(value))
 }
 
+func Registry_StaticClassType() TClass {
+    r, _, _:= registry_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TClipboard ---------------------------
 
@@ -36635,9 +38613,28 @@ func Clipboard_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Clipboard_DisposeOf(obj uintptr)  {
+    clipboard_DisposeOf.Call(obj)
+}
+
+func Clipboard_ClassType(obj uintptr) TClass {
+    ret, _, _ := clipboard_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Clipboard_ClassName(obj uintptr) string {
     ret, _, _ := clipboard_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Clipboard_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := clipboard_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Clipboard_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := clipboard_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Clipboard_Equals(obj uintptr, Obj uintptr) bool {
@@ -36674,6 +38671,10 @@ func Clipboard_GetFormats(obj uintptr, Index int32) uint16 {
     return uint16(ret)
 }
 
+func Clipboard_StaticClassType() TClass {
+    r, _, _:= clipboard_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMonitor ---------------------------
 
@@ -36686,9 +38687,28 @@ func Monitor_Free(obj uintptr) {
     monitor_Free.Call(obj)
 }
 
+func Monitor_DisposeOf(obj uintptr)  {
+    monitor_DisposeOf.Call(obj)
+}
+
+func Monitor_ClassType(obj uintptr) TClass {
+    ret, _, _ := monitor_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Monitor_ClassName(obj uintptr) string {
     ret, _, _ := monitor_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Monitor_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := monitor_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Monitor_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := monitor_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Monitor_Equals(obj uintptr, Obj uintptr) bool {
@@ -36758,6 +38778,10 @@ func Monitor_GetPixelsPerInch(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Monitor_StaticClassType() TClass {
+    r, _, _:= monitor_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMargins ---------------------------
 
@@ -36783,9 +38807,28 @@ func Margins_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Margins_DisposeOf(obj uintptr)  {
+    margins_DisposeOf.Call(obj)
+}
+
+func Margins_ClassType(obj uintptr) TClass {
+    ret, _, _ := margins_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Margins_ClassName(obj uintptr) string {
     ret, _, _ := margins_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Margins_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := margins_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Margins_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := margins_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Margins_Equals(obj uintptr, Obj uintptr) bool {
@@ -36883,6 +38926,10 @@ func Margins_SetBottom(obj uintptr, value int32) {
    margins_SetBottom.Call(obj, uintptr(value))
 }
 
+func Margins_StaticClassType() TClass {
+    r, _, _:= margins_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPaintBox ---------------------------
 
@@ -36994,9 +39041,28 @@ func PaintBox_Assign(obj uintptr, Source uintptr)  {
     paintBox_Assign.Call(obj, Source )
 }
 
+func PaintBox_DisposeOf(obj uintptr)  {
+    paintBox_DisposeOf.Call(obj)
+}
+
+func PaintBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := paintBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func PaintBox_ClassName(obj uintptr) string {
     ret, _, _ := paintBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PaintBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := paintBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PaintBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := paintBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func PaintBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -37419,6 +39485,10 @@ func PaintBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func PaintBox_StaticClassType() TClass {
+    r, _, _:= paintBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTimer ---------------------------
 
@@ -37450,9 +39520,28 @@ func Timer_Assign(obj uintptr, Source uintptr)  {
     timer_Assign.Call(obj, Source )
 }
 
+func Timer_DisposeOf(obj uintptr)  {
+    timer_DisposeOf.Call(obj)
+}
+
+func Timer_ClassType(obj uintptr) TClass {
+    ret, _, _ := timer_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Timer_ClassName(obj uintptr) string {
     ret, _, _ := timer_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Timer_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := timer_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Timer_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := timer_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Timer_Equals(obj uintptr, Obj uintptr) bool {
@@ -37534,6 +39623,10 @@ func Timer_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Timer_StaticClassType() TClass {
+    r, _, _:= timer_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TList ---------------------------
 
@@ -37577,9 +39670,28 @@ func List_Move(obj uintptr, CurIndex int32, NewIndex int32)  {
     list_Move.Call(obj, uintptr(CurIndex) , uintptr(NewIndex) )
 }
 
+func List_DisposeOf(obj uintptr)  {
+    list_DisposeOf.Call(obj)
+}
+
+func List_ClassType(obj uintptr) TClass {
+    ret, _, _ := list_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func List_ClassName(obj uintptr) string {
     ret, _, _ := list_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func List_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := list_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func List_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := list_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func List_Equals(obj uintptr, Obj uintptr) bool {
@@ -37629,6 +39741,10 @@ func List_SetItems(obj uintptr, Index int32, value uintptr) {
    list_SetItems.Call(obj, uintptr(Index), value)
 }
 
+func List_StaticClassType() TClass {
+    r, _, _:= list_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TGraphic ---------------------------
 
@@ -37675,9 +39791,28 @@ func Graphic_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Graphic_DisposeOf(obj uintptr)  {
+    graphic_DisposeOf.Call(obj)
+}
+
+func Graphic_ClassType(obj uintptr) TClass {
+    ret, _, _ := graphic_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Graphic_ClassName(obj uintptr) string {
     ret, _, _ := graphic_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Graphic_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := graphic_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Graphic_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := graphic_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Graphic_GetHashCode(obj uintptr) int32 {
@@ -37744,6 +39879,10 @@ func Graphic_SetOnChange(obj uintptr, fn interface{}) {
     graphic_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func Graphic_StaticClassType() TClass {
+    r, _, _:= graphic_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TComponent ---------------------------
 
@@ -37775,9 +39914,28 @@ func Component_Assign(obj uintptr, Source uintptr)  {
     component_Assign.Call(obj, Source )
 }
 
+func Component_DisposeOf(obj uintptr)  {
+    component_DisposeOf.Call(obj)
+}
+
+func Component_ClassType(obj uintptr) TClass {
+    ret, _, _ := component_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Component_ClassName(obj uintptr) string {
     ret, _, _ := component_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Component_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := component_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Component_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := component_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Component_Equals(obj uintptr, Obj uintptr) bool {
@@ -37837,6 +39995,10 @@ func Component_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Component_StaticClassType() TClass {
+    r, _, _:= component_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TMonthCalColors ---------------------------
 
@@ -37858,9 +40020,28 @@ func MonthCalColors_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func MonthCalColors_DisposeOf(obj uintptr)  {
+    monthCalColors_DisposeOf.Call(obj)
+}
+
+func MonthCalColors_ClassType(obj uintptr) TClass {
+    ret, _, _ := monthCalColors_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func MonthCalColors_ClassName(obj uintptr) string {
     ret, _, _ := monthCalColors_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MonthCalColors_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := monthCalColors_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MonthCalColors_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := monthCalColors_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func MonthCalColors_Equals(obj uintptr, Obj uintptr) bool {
@@ -37887,6 +40068,10 @@ func MonthCalColors_SetBackColor(obj uintptr, value TColor) {
    monthCalColors_SetBackColor.Call(obj, uintptr(value))
 }
 
+func MonthCalColors_StaticClassType() TClass {
+    r, _, _:= monthCalColors_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TParaAttributes ---------------------------
 
@@ -37899,9 +40084,28 @@ func ParaAttributes_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ParaAttributes_DisposeOf(obj uintptr)  {
+    paraAttributes_DisposeOf.Call(obj)
+}
+
+func ParaAttributes_ClassType(obj uintptr) TClass {
+    ret, _, _ := paraAttributes_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ParaAttributes_ClassName(obj uintptr) string {
     ret, _, _ := paraAttributes_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ParaAttributes_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := paraAttributes_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ParaAttributes_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := paraAttributes_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ParaAttributes_Equals(obj uintptr, Obj uintptr) bool {
@@ -37982,6 +40186,10 @@ func ParaAttributes_SetTab(obj uintptr, Index uint8, value int32) {
    paraAttributes_SetTab.Call(obj, uintptr(Index), uintptr(value))
 }
 
+func ParaAttributes_StaticClassType() TClass {
+    r, _, _:= paraAttributes_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TTextAttributes ---------------------------
 
@@ -37994,9 +40202,28 @@ func TextAttributes_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func TextAttributes_DisposeOf(obj uintptr)  {
+    textAttributes_DisposeOf.Call(obj)
+}
+
+func TextAttributes_ClassType(obj uintptr) TClass {
+    ret, _, _ := textAttributes_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func TextAttributes_ClassName(obj uintptr) string {
     ret, _, _ := textAttributes_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TextAttributes_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := textAttributes_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TextAttributes_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := textAttributes_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func TextAttributes_Equals(obj uintptr, Obj uintptr) bool {
@@ -38091,6 +40318,10 @@ func TextAttributes_SetHeight(obj uintptr, value int32) {
    textAttributes_SetHeight.Call(obj, uintptr(value))
 }
 
+func TextAttributes_StaticClassType() TClass {
+    r, _, _:= textAttributes_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TIconOptions ---------------------------
 
@@ -38103,9 +40334,28 @@ func IconOptions_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func IconOptions_DisposeOf(obj uintptr)  {
+    iconOptions_DisposeOf.Call(obj)
+}
+
+func IconOptions_ClassType(obj uintptr) TClass {
+    ret, _, _ := iconOptions_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func IconOptions_ClassName(obj uintptr) string {
     ret, _, _ := iconOptions_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func IconOptions_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := iconOptions_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func IconOptions_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := iconOptions_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func IconOptions_Equals(obj uintptr, Obj uintptr) bool {
@@ -38141,6 +40391,10 @@ func IconOptions_SetAutoArrange(obj uintptr, value bool) {
    iconOptions_SetAutoArrange.Call(obj, GoBoolToDBool(value))
 }
 
+func IconOptions_StaticClassType() TClass {
+    r, _, _:= iconOptions_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- Exception ---------------------------
 
@@ -38149,9 +40403,28 @@ func Exception_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Exception_DisposeOf(obj uintptr)  {
+    exception_DisposeOf.Call(obj)
+}
+
+func Exception_ClassType(obj uintptr) TClass {
+    ret, _, _ := exception_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Exception_ClassName(obj uintptr) string {
     ret, _, _ := exception_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Exception_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := exception_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Exception_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := exception_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Exception_Equals(obj uintptr, Obj uintptr) bool {
@@ -38193,6 +40466,10 @@ func Exception_GetStackInfo(obj uintptr) uintptr {
     return ret
 }
 
+func Exception_StaticClassType() TClass {
+    r, _, _:= exception_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TScrollBar ---------------------------
 
@@ -38339,9 +40616,28 @@ func ScrollBar_Assign(obj uintptr, Source uintptr)  {
     scrollBar_Assign.Call(obj, Source )
 }
 
+func ScrollBar_DisposeOf(obj uintptr)  {
+    scrollBar_DisposeOf.Call(obj)
+}
+
+func ScrollBar_ClassType(obj uintptr) TClass {
+    ret, _, _ := scrollBar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ScrollBar_ClassName(obj uintptr) string {
     ret, _, _ := scrollBar_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ScrollBar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := scrollBar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ScrollBar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := scrollBar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ScrollBar_Equals(obj uintptr, Obj uintptr) bool {
@@ -38878,6 +41174,10 @@ func ScrollBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ScrollBar_StaticClassType() TClass {
+    r, _, _:= scrollBar_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TCustomHint ---------------------------
 
@@ -38917,9 +41217,28 @@ func CustomHint_Assign(obj uintptr, Source uintptr)  {
     customHint_Assign.Call(obj, Source )
 }
 
+func CustomHint_DisposeOf(obj uintptr)  {
+    customHint_DisposeOf.Call(obj)
+}
+
+func CustomHint_ClassType(obj uintptr) TClass {
+    ret, _, _ := customHint_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func CustomHint_ClassName(obj uintptr) string {
     ret, _, _ := customHint_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CustomHint_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := customHint_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CustomHint_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := customHint_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func CustomHint_Equals(obj uintptr, Obj uintptr) bool {
@@ -39047,6 +41366,10 @@ func CustomHint_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func CustomHint_StaticClassType() TClass {
+    r, _, _:= customHint_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TShape ---------------------------
 
@@ -39158,9 +41481,28 @@ func Shape_Assign(obj uintptr, Source uintptr)  {
     shape_Assign.Call(obj, Source )
 }
 
+func Shape_DisposeOf(obj uintptr)  {
+    shape_DisposeOf.Call(obj)
+}
+
+func Shape_ClassType(obj uintptr) TClass {
+    ret, _, _ := shape_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Shape_ClassName(obj uintptr) string {
     ret, _, _ := shape_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Shape_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := shape_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Shape_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := shape_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Shape_Equals(obj uintptr, Obj uintptr) bool {
@@ -39548,6 +41890,10 @@ func Shape_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Shape_StaticClassType() TClass {
+    r, _, _:= shape_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TBevel ---------------------------
 
@@ -39659,9 +42005,28 @@ func Bevel_Assign(obj uintptr, Source uintptr)  {
     bevel_Assign.Call(obj, Source )
 }
 
+func Bevel_DisposeOf(obj uintptr)  {
+    bevel_DisposeOf.Call(obj)
+}
+
+func Bevel_ClassType(obj uintptr) TClass {
+    ret, _, _ := bevel_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Bevel_ClassName(obj uintptr) string {
     ret, _, _ := bevel_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Bevel_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := bevel_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Bevel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := bevel_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Bevel_Equals(obj uintptr, Obj uintptr) bool {
@@ -39969,6 +42334,10 @@ func Bevel_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Bevel_StaticClassType() TClass {
+    r, _, _:= bevel_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TScrollBox ---------------------------
 
@@ -40111,9 +42480,28 @@ func ScrollBox_Assign(obj uintptr, Source uintptr)  {
     scrollBox_Assign.Call(obj, Source )
 }
 
+func ScrollBox_DisposeOf(obj uintptr)  {
+    scrollBox_DisposeOf.Call(obj)
+}
+
+func ScrollBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := scrollBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ScrollBox_ClassName(obj uintptr) string {
     ret, _, _ := scrollBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ScrollBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := scrollBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ScrollBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := scrollBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ScrollBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -40718,6 +43106,10 @@ func ScrollBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ScrollBox_StaticClassType() TClass {
+    r, _, _:= scrollBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TCheckListBox ---------------------------
 
@@ -40884,9 +43276,28 @@ func CheckListBox_Assign(obj uintptr, Source uintptr)  {
     checkListBox_Assign.Call(obj, Source )
 }
 
+func CheckListBox_DisposeOf(obj uintptr)  {
+    checkListBox_DisposeOf.Call(obj)
+}
+
+func CheckListBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := checkListBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func CheckListBox_ClassName(obj uintptr) string {
     ret, _, _ := checkListBox_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CheckListBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := checkListBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CheckListBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := checkListBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func CheckListBox_Equals(obj uintptr, Obj uintptr) bool {
@@ -41651,6 +44062,10 @@ func CheckListBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func CheckListBox_StaticClassType() TClass {
+    r, _, _:= checkListBox_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TGauge ---------------------------
 
@@ -41766,9 +44181,28 @@ func Gauge_Assign(obj uintptr, Source uintptr)  {
     gauge_Assign.Call(obj, Source )
 }
 
+func Gauge_DisposeOf(obj uintptr)  {
+    gauge_DisposeOf.Call(obj)
+}
+
+func Gauge_ClassType(obj uintptr) TClass {
+    ret, _, _ := gauge_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func Gauge_ClassName(obj uintptr) string {
     ret, _, _ := gauge_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Gauge_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := gauge_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Gauge_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := gauge_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func Gauge_Equals(obj uintptr, Obj uintptr) bool {
@@ -42180,6 +44614,10 @@ func Gauge_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func Gauge_StaticClassType() TClass {
+    r, _, _:= gauge_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TImageButton ---------------------------
 
@@ -42295,9 +44733,28 @@ func ImageButton_Assign(obj uintptr, Source uintptr)  {
     imageButton_Assign.Call(obj, Source )
 }
 
+func ImageButton_DisposeOf(obj uintptr)  {
+    imageButton_DisposeOf.Call(obj)
+}
+
+func ImageButton_ClassType(obj uintptr) TClass {
+    ret, _, _ := imageButton_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ImageButton_ClassName(obj uintptr) string {
     ret, _, _ := imageButton_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ImageButton_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := imageButton_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ImageButton_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := imageButton_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ImageButton_Equals(obj uintptr, Obj uintptr) bool {
@@ -42743,6 +45200,10 @@ func ImageButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ImageButton_StaticClassType() TClass {
+    r, _, _:= imageButton_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TFindDialog ---------------------------
 
@@ -42783,9 +45244,28 @@ func FindDialog_Assign(obj uintptr, Source uintptr)  {
     findDialog_Assign.Call(obj, Source )
 }
 
+func FindDialog_DisposeOf(obj uintptr)  {
+    findDialog_DisposeOf.Call(obj)
+}
+
+func FindDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := findDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func FindDialog_ClassName(obj uintptr) string {
     ret, _, _ := findDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func FindDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := findDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func FindDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := findDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func FindDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -42908,6 +45388,10 @@ func FindDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func FindDialog_StaticClassType() TClass {
+    r, _, _:= findDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TReplaceDialog ---------------------------
 
@@ -42948,9 +45432,28 @@ func ReplaceDialog_Assign(obj uintptr, Source uintptr)  {
     replaceDialog_Assign.Call(obj, Source )
 }
 
+func ReplaceDialog_DisposeOf(obj uintptr)  {
+    replaceDialog_DisposeOf.Call(obj)
+}
+
+func ReplaceDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := replaceDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func ReplaceDialog_ClassName(obj uintptr) string {
     ret, _, _ := replaceDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ReplaceDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := replaceDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ReplaceDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := replaceDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func ReplaceDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -43086,6 +45589,10 @@ func ReplaceDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func ReplaceDialog_StaticClassType() TClass {
+    r, _, _:= replaceDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPrinterSetupDialog ---------------------------
 
@@ -43122,9 +45629,28 @@ func PrinterSetupDialog_Assign(obj uintptr, Source uintptr)  {
     printerSetupDialog_Assign.Call(obj, Source )
 }
 
+func PrinterSetupDialog_DisposeOf(obj uintptr)  {
+    printerSetupDialog_DisposeOf.Call(obj)
+}
+
+func PrinterSetupDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := printerSetupDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func PrinterSetupDialog_ClassName(obj uintptr) string {
     ret, _, _ := printerSetupDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PrinterSetupDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := printerSetupDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PrinterSetupDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := printerSetupDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func PrinterSetupDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -43197,6 +45723,10 @@ func PrinterSetupDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func PrinterSetupDialog_StaticClassType() TClass {
+    r, _, _:= printerSetupDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TPageSetupDialog ---------------------------
 
@@ -43238,9 +45768,28 @@ func PageSetupDialog_Assign(obj uintptr, Source uintptr)  {
     pageSetupDialog_Assign.Call(obj, Source )
 }
 
+func PageSetupDialog_DisposeOf(obj uintptr)  {
+    pageSetupDialog_DisposeOf.Call(obj)
+}
+
+func PageSetupDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := pageSetupDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func PageSetupDialog_ClassName(obj uintptr) string {
     ret, _, _ := pageSetupDialog_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PageSetupDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := pageSetupDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PageSetupDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := pageSetupDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func PageSetupDialog_Equals(obj uintptr, Obj uintptr) bool {
@@ -43421,6 +45970,10 @@ func PageSetupDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
     return ret
 }
 
+func PageSetupDialog_StaticClassType() TClass {
+    r, _, _:= pageSetupDialog_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TDragObject ---------------------------
 
@@ -43445,9 +45998,28 @@ func DragObject_ShowDragImage(obj uintptr)  {
     dragObject_ShowDragImage.Call(obj)
 }
 
+func DragObject_DisposeOf(obj uintptr)  {
+    dragObject_DisposeOf.Call(obj)
+}
+
+func DragObject_ClassType(obj uintptr) TClass {
+    ret, _, _ := dragObject_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func DragObject_ClassName(obj uintptr) string {
     ret, _, _ := dragObject_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func DragObject_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := dragObject_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func DragObject_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := dragObject_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func DragObject_Equals(obj uintptr, Obj uintptr) bool {
@@ -43547,6 +46119,10 @@ func DragObject_SetRightClickCancels(obj uintptr, value bool) {
    dragObject_SetRightClickCancels.Call(obj, GoBoolToDBool(value))
 }
 
+func DragObject_StaticClassType() TClass {
+    r, _, _:= dragObject_StaticClassType.Call()
+    return TClass(r)
+}
 
 //--------------------------- TDragDockObject ---------------------------
 
@@ -43571,9 +46147,28 @@ func DragDockObject_ShowDragImage(obj uintptr)  {
     dragDockObject_ShowDragImage.Call(obj)
 }
 
+func DragDockObject_DisposeOf(obj uintptr)  {
+    dragDockObject_DisposeOf.Call(obj)
+}
+
+func DragDockObject_ClassType(obj uintptr) TClass {
+    ret, _, _ := dragDockObject_ClassType.Call(obj)
+    return TClass(ret)
+}
+
 func DragDockObject_ClassName(obj uintptr) string {
     ret, _, _ := dragDockObject_ClassName.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func DragDockObject_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := dragDockObject_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func DragDockObject_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := dragDockObject_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
 }
 
 func DragDockObject_Equals(obj uintptr, Obj uintptr) bool {
@@ -43740,3 +46335,7 @@ func DragDockObject_SetRightClickCancels(obj uintptr, value bool) {
    dragDockObject_SetRightClickCancels.Call(obj, GoBoolToDBool(value))
 }
 
+func DragDockObject_StaticClassType() TClass {
+    r, _, _:= dragDockObject_StaticClassType.Call()
+    return TClass(r)
+}

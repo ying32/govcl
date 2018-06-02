@@ -115,9 +115,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure StringList_DisposeOf(AObj: TStringList); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function StringList_ClassType(AObj: TStringList): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function StringList_ClassName(AObj: TStringList): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function StringList_InstanceSize(AObj: TStringList): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function StringList_InheritsFrom(AObj: TStringList; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function StringList_GetHashCode(AObj: TStringList): Integer; stdcall;
@@ -257,6 +277,10 @@ begin
   AObj.Strings[Index] := AValue;
 end;
 
+function StringList_StaticClassType: TClass; stdcall;
+begin
+  Result := TStringList;
+end;
 
 exports
   StringList_Create,
@@ -281,7 +305,11 @@ exports
   StringList_SaveToFile,
   StringList_SaveToStream,
   StringList_GetNamePath,
+  StringList_DisposeOf,
+  StringList_ClassType,
   StringList_ClassName,
+  StringList_InstanceSize,
+  StringList_InheritsFrom,
   StringList_GetHashCode,
   StringList_ToString,
   StringList_GetSorted,
@@ -307,5 +335,6 @@ exports
   StringList_GetValueFromIndex,
   StringList_SetValueFromIndex,
   StringList_GetStrings,
-  StringList_SetStrings;
+  StringList_SetStrings,
+  StringList_StaticClassType;
 

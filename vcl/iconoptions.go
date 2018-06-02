@@ -39,6 +39,10 @@ func (i *TIconOptions) IsValid() bool {
     return i.instance != 0
 }
 
+func TIconOptionsClass() TClass {
+    return IconOptions_StaticClassType()
+}
+
 func (i *TIconOptions) Assign(Source IObject) {
     IconOptions_Assign(i.instance, CheckPtr(Source))
 }
@@ -47,8 +51,24 @@ func (i *TIconOptions) GetNamePath() string {
     return IconOptions_GetNamePath(i.instance)
 }
 
+func (i *TIconOptions) DisposeOf() {
+    IconOptions_DisposeOf(i.instance)
+}
+
+func (i *TIconOptions) ClassType() TClass {
+    return IconOptions_ClassType(i.instance)
+}
+
 func (i *TIconOptions) ClassName() string {
     return IconOptions_ClassName(i.instance)
+}
+
+func (i *TIconOptions) InstanceSize() int32 {
+    return IconOptions_InstanceSize(i.instance)
+}
+
+func (i *TIconOptions) InheritsFrom(AClass TClass) bool {
+    return IconOptions_InheritsFrom(i.instance, AClass)
 }
 
 func (i *TIconOptions) Equals(Obj IObject) bool {

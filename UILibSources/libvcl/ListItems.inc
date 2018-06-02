@@ -65,9 +65,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure ListItems_DisposeOf(AObj: TListItems); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ListItems_ClassType(AObj: TListItems): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ListItems_ClassName(AObj: TListItems): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ListItems_InstanceSize(AObj: TListItems): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ListItems_InheritsFrom(AObj: TListItems; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ListItems_Equals(AObj: TListItems; Obj: TObject): LongBool; stdcall;
@@ -115,6 +135,10 @@ begin
   AObj.Item[Index] := AValue;
 end;
 
+function ListItems_StaticClassType: TClass; stdcall;
+begin
+  Result := TListItems;
+end;
 
 exports
   ListItems_Create,
@@ -129,7 +153,11 @@ exports
   ListItems_IndexOf,
   ListItems_Insert,
   ListItems_GetNamePath,
+  ListItems_DisposeOf,
+  ListItems_ClassType,
   ListItems_ClassName,
+  ListItems_InstanceSize,
+  ListItems_InheritsFrom,
   ListItems_Equals,
   ListItems_GetHashCode,
   ListItems_ToString,
@@ -138,5 +166,6 @@ exports
   ListItems_GetHandle,
   ListItems_GetOwner,
   ListItems_GetItem,
-  ListItems_SetItem;
+  ListItems_SetItem,
+  ListItems_StaticClassType;
 

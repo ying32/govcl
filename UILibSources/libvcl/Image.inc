@@ -120,9 +120,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Image_DisposeOf(AObj: TImage); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Image_ClassType(AObj: TImage): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Image_ClassName(AObj: TImage): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Image_InstanceSize(AObj: TImage): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Image_InheritsFrom(AObj: TImage; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Image_Equals(AObj: TImage; Obj: TObject): LongBool; stdcall;
@@ -706,6 +726,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Image_StaticClassType: TClass; stdcall;
+begin
+  Result := TImage;
+end;
 
 exports
   Image_Create,
@@ -731,7 +755,11 @@ exports
   Image_FindComponent,
   Image_GetNamePath,
   Image_Assign,
+  Image_DisposeOf,
+  Image_ClassType,
   Image_ClassName,
+  Image_InstanceSize,
+  Image_InheritsFrom,
   Image_Equals,
   Image_GetHashCode,
   Image_ToString,
@@ -829,5 +857,6 @@ exports
   Image_SetName,
   Image_GetTag,
   Image_SetTag,
-  Image_GetComponents;
+  Image_GetComponents,
+  Image_StaticClassType;
 

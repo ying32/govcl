@@ -53,6 +53,10 @@ func (r *TRegistry) IsValid() bool {
     return r.instance != 0
 }
 
+func TRegistryClass() TClass {
+    return Registry_StaticClassType()
+}
+
 func (r *TRegistry) CloseKey() {
     Registry_CloseKey(r.instance)
 }
@@ -181,8 +185,24 @@ func (r *TRegistry) WriteTime(Name string, Value time.Time) {
     Registry_WriteTime(r.instance, Name , Value)
 }
 
+func (r *TRegistry) DisposeOf() {
+    Registry_DisposeOf(r.instance)
+}
+
+func (r *TRegistry) ClassType() TClass {
+    return Registry_ClassType(r.instance)
+}
+
 func (r *TRegistry) ClassName() string {
     return Registry_ClassName(r.instance)
+}
+
+func (r *TRegistry) InstanceSize() int32 {
+    return Registry_InstanceSize(r.instance)
+}
+
+func (r *TRegistry) InheritsFrom(AClass TClass) bool {
+    return Registry_InheritsFrom(r.instance, AClass)
 }
 
 func (r *TRegistry) Equals(Obj IObject) bool {

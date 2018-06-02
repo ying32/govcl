@@ -155,9 +155,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Panel_ClassType(AObj: TPanel): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Panel_ClassName(AObj: TPanel): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Panel_InstanceSize(AObj: TPanel): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Panel_InheritsFrom(AObj: TPanel; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Panel_Equals(AObj: TPanel; Obj: TObject): LongBool; extdecl;
@@ -878,6 +893,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Panel_StaticClassType: TClass; extdecl;
+begin
+  Result := TPanel;
+end;
 
 exports
   Panel_Create,
@@ -910,7 +929,10 @@ exports
   Panel_FindComponent,
   Panel_GetNamePath,
   Panel_Assign,
+  Panel_ClassType,
   Panel_ClassName,
+  Panel_InstanceSize,
+  Panel_InheritsFrom,
   Panel_Equals,
   Panel_GetHashCode,
   Panel_ToString,
@@ -1027,5 +1049,6 @@ exports
   Panel_GetTag,
   Panel_SetTag,
   Panel_GetControls,
-  Panel_GetComponents;
+  Panel_GetComponents,
+  Panel_StaticClassType;
 

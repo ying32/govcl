@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TTimer struct {
@@ -51,6 +52,10 @@ func (t *TTimer) IsValid() bool {
     return t.instance != 0
 }
 
+func TTimerClass() TClass {
+    return Timer_StaticClassType()
+}
+
 func (t *TTimer) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Timer_FindComponent(t.instance, AName))
 }
@@ -67,8 +72,24 @@ func (t *TTimer) Assign(Source IObject) {
     Timer_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTimer) DisposeOf() {
+    Timer_DisposeOf(t.instance)
+}
+
+func (t *TTimer) ClassType() TClass {
+    return Timer_ClassType(t.instance)
+}
+
 func (t *TTimer) ClassName() string {
     return Timer_ClassName(t.instance)
+}
+
+func (t *TTimer) InstanceSize() int32 {
+    return Timer_InstanceSize(t.instance)
+}
+
+func (t *TTimer) InheritsFrom(AClass TClass) bool {
+    return Timer_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTimer) Equals(Obj IObject) bool {

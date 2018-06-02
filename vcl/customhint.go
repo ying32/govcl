@@ -52,6 +52,10 @@ func (c *TCustomHint) IsValid() bool {
     return c.instance != 0
 }
 
+func TCustomHintClass() TClass {
+    return CustomHint_StaticClassType()
+}
+
 func (c *TCustomHint) ShowHint() {
     CustomHint_ShowHint(c.instance)
 }
@@ -76,8 +80,24 @@ func (c *TCustomHint) Assign(Source IObject) {
     CustomHint_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TCustomHint) DisposeOf() {
+    CustomHint_DisposeOf(c.instance)
+}
+
+func (c *TCustomHint) ClassType() TClass {
+    return CustomHint_ClassType(c.instance)
+}
+
 func (c *TCustomHint) ClassName() string {
     return CustomHint_ClassName(c.instance)
+}
+
+func (c *TCustomHint) InstanceSize() int32 {
+    return CustomHint_InstanceSize(c.instance)
+}
+
+func (c *TCustomHint) InheritsFrom(AClass TClass) bool {
+    return CustomHint_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCustomHint) Equals(Obj IObject) bool {

@@ -52,6 +52,10 @@ func (p *TPrintDialog) IsValid() bool {
     return p.instance != 0
 }
 
+func TPrintDialogClass() TClass {
+    return PrintDialog_StaticClassType()
+}
+
 func (p *TPrintDialog) Execute() bool {
     return PrintDialog_Execute(p.instance)
 }
@@ -72,8 +76,24 @@ func (p *TPrintDialog) Assign(Source IObject) {
     PrintDialog_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPrintDialog) DisposeOf() {
+    PrintDialog_DisposeOf(p.instance)
+}
+
+func (p *TPrintDialog) ClassType() TClass {
+    return PrintDialog_ClassType(p.instance)
+}
+
 func (p *TPrintDialog) ClassName() string {
     return PrintDialog_ClassName(p.instance)
+}
+
+func (p *TPrintDialog) InstanceSize() int32 {
+    return PrintDialog_InstanceSize(p.instance)
+}
+
+func (p *TPrintDialog) InheritsFrom(AClass TClass) bool {
+    return PrintDialog_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPrintDialog) Equals(Obj IObject) bool {

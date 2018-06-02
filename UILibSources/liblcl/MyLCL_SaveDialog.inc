@@ -40,9 +40,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function SaveDialog_ClassType(AObj: TSaveDialog): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function SaveDialog_ClassName(AObj: TSaveDialog): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function SaveDialog_InstanceSize(AObj: TSaveDialog): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function SaveDialog_InheritsFrom(AObj: TSaveDialog; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function SaveDialog_Equals(AObj: TSaveDialog; Obj: TObject): LongBool; extdecl;
@@ -209,6 +224,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function SaveDialog_StaticClassType: TClass; extdecl;
+begin
+  Result := TSaveDialog;
+end;
 
 exports
   SaveDialog_Create,
@@ -218,7 +237,10 @@ exports
   SaveDialog_GetNamePath,
   SaveDialog_HasParent,
   SaveDialog_Assign,
+  SaveDialog_ClassType,
   SaveDialog_ClassName,
+  SaveDialog_InstanceSize,
+  SaveDialog_InheritsFrom,
   SaveDialog_Equals,
   SaveDialog_GetHashCode,
   SaveDialog_ToString,
@@ -248,5 +270,6 @@ exports
   SaveDialog_SetName,
   SaveDialog_GetTag,
   SaveDialog_SetTag,
-  SaveDialog_GetComponents;
+  SaveDialog_GetComponents,
+  SaveDialog_StaticClassType;
 

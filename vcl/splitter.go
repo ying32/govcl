@@ -52,6 +52,10 @@ func (s *TSplitter) IsValid() bool {
     return s.instance != 0
 }
 
+func TSplitterClass() TClass {
+    return Splitter_StaticClassType()
+}
+
 func (s *TSplitter) BringToFront() {
     Splitter_BringToFront(s.instance)
 }
@@ -136,8 +140,24 @@ func (s *TSplitter) Assign(Source IObject) {
     Splitter_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TSplitter) DisposeOf() {
+    Splitter_DisposeOf(s.instance)
+}
+
+func (s *TSplitter) ClassType() TClass {
+    return Splitter_ClassType(s.instance)
+}
+
 func (s *TSplitter) ClassName() string {
     return Splitter_ClassName(s.instance)
+}
+
+func (s *TSplitter) InstanceSize() int32 {
+    return Splitter_InstanceSize(s.instance)
+}
+
+func (s *TSplitter) InheritsFrom(AClass TClass) bool {
+    return Splitter_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TSplitter) Equals(Obj IObject) bool {

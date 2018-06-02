@@ -52,6 +52,10 @@ func (s *TScrollBox) IsValid() bool {
     return s.instance != 0
 }
 
+func TScrollBoxClass() TClass {
+    return ScrollBox_StaticClassType()
+}
+
 func (s *TScrollBox) CanFocus() bool {
     return ScrollBox_CanFocus(s.instance)
 }
@@ -164,8 +168,24 @@ func (s *TScrollBox) Assign(Source IObject) {
     ScrollBox_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TScrollBox) DisposeOf() {
+    ScrollBox_DisposeOf(s.instance)
+}
+
+func (s *TScrollBox) ClassType() TClass {
+    return ScrollBox_ClassType(s.instance)
+}
+
 func (s *TScrollBox) ClassName() string {
     return ScrollBox_ClassName(s.instance)
+}
+
+func (s *TScrollBox) InstanceSize() int32 {
+    return ScrollBox_InstanceSize(s.instance)
+}
+
+func (s *TScrollBox) InheritsFrom(AClass TClass) bool {
+    return ScrollBox_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TScrollBox) Equals(Obj IObject) bool {

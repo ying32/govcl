@@ -25,9 +25,24 @@ begin
   AObj.ShowDragImage;
 end;
 
+function DragDockObject_ClassType(AObj: TDragDockObject): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function DragDockObject_ClassName(AObj: TDragDockObject): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function DragDockObject_InstanceSize(AObj: TDragDockObject): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function DragDockObject_InheritsFrom(AObj: TDragDockObject; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function DragDockObject_Equals(AObj: TDragDockObject; Obj: TObject): LongBool; extdecl;
@@ -130,13 +145,20 @@ begin
   Result :=  AObj.Dropped;
 end;
 
+function DragDockObject_StaticClassType: TClass; extdecl;
+begin
+  Result := TDragDockObject;
+end;
 
 exports
   DragDockObject_Create,
   DragDockObject_Free,
   DragDockObject_HideDragImage,
   DragDockObject_ShowDragImage,
+  DragDockObject_ClassType,
   DragDockObject_ClassName,
+  DragDockObject_InstanceSize,
+  DragDockObject_InheritsFrom,
   DragDockObject_Equals,
   DragDockObject_GetHashCode,
   DragDockObject_ToString,
@@ -156,5 +178,6 @@ exports
   DragDockObject_SetDragPos,
   DragDockObject_GetDragTargetPos,
   DragDockObject_SetDragTargetPos,
-  DragDockObject_GetDropped;
+  DragDockObject_GetDropped,
+  DragDockObject_StaticClassType;
 

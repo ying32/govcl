@@ -52,6 +52,10 @@ func (r *TReplaceDialog) IsValid() bool {
     return r.instance != 0
 }
 
+func TReplaceDialogClass() TClass {
+    return ReplaceDialog_StaticClassType()
+}
+
 func (r *TReplaceDialog) CloseDialog() {
     ReplaceDialog_CloseDialog(r.instance)
 }
@@ -76,8 +80,24 @@ func (r *TReplaceDialog) Assign(Source IObject) {
     ReplaceDialog_Assign(r.instance, CheckPtr(Source))
 }
 
+func (r *TReplaceDialog) DisposeOf() {
+    ReplaceDialog_DisposeOf(r.instance)
+}
+
+func (r *TReplaceDialog) ClassType() TClass {
+    return ReplaceDialog_ClassType(r.instance)
+}
+
 func (r *TReplaceDialog) ClassName() string {
     return ReplaceDialog_ClassName(r.instance)
+}
+
+func (r *TReplaceDialog) InstanceSize() int32 {
+    return ReplaceDialog_InstanceSize(r.instance)
+}
+
+func (r *TReplaceDialog) InheritsFrom(AClass TClass) bool {
+    return ReplaceDialog_InheritsFrom(r.instance, AClass)
 }
 
 func (r *TReplaceDialog) Equals(Obj IObject) bool {

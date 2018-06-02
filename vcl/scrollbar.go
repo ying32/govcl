@@ -52,6 +52,10 @@ func (s *TScrollBar) IsValid() bool {
     return s.instance != 0
 }
 
+func TScrollBarClass() TClass {
+    return ScrollBar_StaticClassType()
+}
+
 func (s *TScrollBar) SetParams(APosition int32, AMin int32, AMax int32) {
     ScrollBar_SetParams(s.instance, APosition , AMin , AMax)
 }
@@ -168,8 +172,24 @@ func (s *TScrollBar) Assign(Source IObject) {
     ScrollBar_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TScrollBar) DisposeOf() {
+    ScrollBar_DisposeOf(s.instance)
+}
+
+func (s *TScrollBar) ClassType() TClass {
+    return ScrollBar_ClassType(s.instance)
+}
+
 func (s *TScrollBar) ClassName() string {
     return ScrollBar_ClassName(s.instance)
+}
+
+func (s *TScrollBar) InstanceSize() int32 {
+    return ScrollBar_InstanceSize(s.instance)
+}
+
+func (s *TScrollBar) InheritsFrom(AClass TClass) bool {
+    return ScrollBar_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TScrollBar) Equals(Obj IObject) bool {

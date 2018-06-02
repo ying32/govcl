@@ -115,9 +115,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function Strings_ClassType(AObj: TStrings): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Strings_ClassName(AObj: TStrings): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Strings_InstanceSize(AObj: TStrings): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Strings_InheritsFrom(AObj: TStrings; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Strings_GetHashCode(AObj: TStrings): Integer; extdecl;
@@ -215,6 +230,10 @@ begin
   AObj.Strings[Index] := AValue;
 end;
 
+function Strings_StaticClassType: TClass; extdecl;
+begin
+  Result := TStrings;
+end;
 
 exports
   Strings_Create,
@@ -239,7 +258,10 @@ exports
   Strings_SaveToFile,
   Strings_SaveToStream,
   Strings_GetNamePath,
+  Strings_ClassType,
   Strings_ClassName,
+  Strings_InstanceSize,
+  Strings_InheritsFrom,
   Strings_GetHashCode,
   Strings_ToString,
   Strings_GetCapacity,
@@ -258,5 +280,6 @@ exports
   Strings_GetValueFromIndex,
   Strings_SetValueFromIndex,
   Strings_GetStrings,
-  Strings_SetStrings;
+  Strings_SetStrings,
+  Strings_StaticClassType;
 

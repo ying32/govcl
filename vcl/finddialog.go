@@ -52,6 +52,10 @@ func (f *TFindDialog) IsValid() bool {
     return f.instance != 0
 }
 
+func TFindDialogClass() TClass {
+    return FindDialog_StaticClassType()
+}
+
 func (f *TFindDialog) CloseDialog() {
     FindDialog_CloseDialog(f.instance)
 }
@@ -76,8 +80,24 @@ func (f *TFindDialog) Assign(Source IObject) {
     FindDialog_Assign(f.instance, CheckPtr(Source))
 }
 
+func (f *TFindDialog) DisposeOf() {
+    FindDialog_DisposeOf(f.instance)
+}
+
+func (f *TFindDialog) ClassType() TClass {
+    return FindDialog_ClassType(f.instance)
+}
+
 func (f *TFindDialog) ClassName() string {
     return FindDialog_ClassName(f.instance)
+}
+
+func (f *TFindDialog) InstanceSize() int32 {
+    return FindDialog_InstanceSize(f.instance)
+}
+
+func (f *TFindDialog) InheritsFrom(AClass TClass) bool {
+    return FindDialog_InheritsFrom(f.instance, AClass)
 }
 
 func (f *TFindDialog) Equals(Obj IObject) bool {

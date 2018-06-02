@@ -52,6 +52,10 @@ func (b *TBevel) IsValid() bool {
     return b.instance != 0
 }
 
+func TBevelClass() TClass {
+    return Bevel_StaticClassType()
+}
+
 func (b *TBevel) BringToFront() {
     Bevel_BringToFront(b.instance)
 }
@@ -136,8 +140,24 @@ func (b *TBevel) Assign(Source IObject) {
     Bevel_Assign(b.instance, CheckPtr(Source))
 }
 
+func (b *TBevel) DisposeOf() {
+    Bevel_DisposeOf(b.instance)
+}
+
+func (b *TBevel) ClassType() TClass {
+    return Bevel_ClassType(b.instance)
+}
+
 func (b *TBevel) ClassName() string {
     return Bevel_ClassName(b.instance)
+}
+
+func (b *TBevel) InstanceSize() int32 {
+    return Bevel_InstanceSize(b.instance)
+}
+
+func (b *TBevel) InheritsFrom(AClass TClass) bool {
+    return Bevel_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TBevel) Equals(Obj IObject) bool {

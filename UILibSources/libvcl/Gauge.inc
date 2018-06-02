@@ -125,9 +125,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Gauge_DisposeOf(AObj: TGauge); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Gauge_ClassType(AObj: TGauge): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Gauge_ClassName(AObj: TGauge): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Gauge_InstanceSize(AObj: TGauge): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Gauge_InheritsFrom(AObj: TGauge; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Gauge_Equals(AObj: TGauge; Obj: TObject): LongBool; stdcall;
@@ -575,6 +595,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Gauge_StaticClassType: TClass; stdcall;
+begin
+  Result := TGauge;
+end;
 
 exports
   Gauge_Create,
@@ -601,7 +625,11 @@ exports
   Gauge_FindComponent,
   Gauge_GetNamePath,
   Gauge_Assign,
+  Gauge_DisposeOf,
+  Gauge_ClassType,
   Gauge_ClassName,
+  Gauge_InstanceSize,
+  Gauge_InheritsFrom,
   Gauge_Equals,
   Gauge_GetHashCode,
   Gauge_ToString,
@@ -690,5 +718,6 @@ exports
   Gauge_SetName,
   Gauge_GetTag,
   Gauge_SetTag,
-  Gauge_GetComponents;
+  Gauge_GetComponents,
+  Gauge_StaticClassType;
 

@@ -52,6 +52,10 @@ func (p *TProgressBar) IsValid() bool {
     return p.instance != 0
 }
 
+func TProgressBarClass() TClass {
+    return ProgressBar_StaticClassType()
+}
+
 func (p *TProgressBar) StepIt() {
     ProgressBar_StepIt(p.instance)
 }
@@ -172,8 +176,24 @@ func (p *TProgressBar) Assign(Source IObject) {
     ProgressBar_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TProgressBar) DisposeOf() {
+    ProgressBar_DisposeOf(p.instance)
+}
+
+func (p *TProgressBar) ClassType() TClass {
+    return ProgressBar_ClassType(p.instance)
+}
+
 func (p *TProgressBar) ClassName() string {
     return ProgressBar_ClassName(p.instance)
+}
+
+func (p *TProgressBar) InstanceSize() int32 {
+    return ProgressBar_InstanceSize(p.instance)
+}
+
+func (p *TProgressBar) InheritsFrom(AClass TClass) bool {
+    return ProgressBar_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TProgressBar) Equals(Obj IObject) bool {

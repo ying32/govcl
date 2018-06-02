@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure LinkLabel_DisposeOf(AObj: TLinkLabel); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function LinkLabel_ClassType(AObj: TLinkLabel): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function LinkLabel_ClassName(AObj: TLinkLabel): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function LinkLabel_InstanceSize(AObj: TLinkLabel): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function LinkLabel_InheritsFrom(AObj: TLinkLabel; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function LinkLabel_Equals(AObj: TLinkLabel; Obj: TObject): LongBool; stdcall;
@@ -888,6 +908,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function LinkLabel_StaticClassType: TClass; stdcall;
+begin
+  Result := TLinkLabel;
+end;
 
 exports
   LinkLabel_Create,
@@ -920,7 +944,11 @@ exports
   LinkLabel_FindComponent,
   LinkLabel_GetNamePath,
   LinkLabel_Assign,
+  LinkLabel_DisposeOf,
+  LinkLabel_ClassType,
   LinkLabel_ClassName,
+  LinkLabel_InstanceSize,
+  LinkLabel_InheritsFrom,
   LinkLabel_Equals,
   LinkLabel_GetHashCode,
   LinkLabel_ToString,
@@ -1046,5 +1074,6 @@ exports
   LinkLabel_GetTag,
   LinkLabel_SetTag,
   LinkLabel_GetControls,
-  LinkLabel_GetComponents;
+  LinkLabel_GetComponents,
+  LinkLabel_StaticClassType;
 

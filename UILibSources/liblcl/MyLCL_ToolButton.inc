@@ -130,9 +130,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function ToolButton_ClassType(AObj: TToolButton): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ToolButton_ClassName(AObj: TToolButton): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function ToolButton_InstanceSize(AObj: TToolButton): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ToolButton_InheritsFrom(AObj: TToolButton; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ToolButton_Equals(AObj: TToolButton; Obj: TObject): LongBool; extdecl;
@@ -684,6 +699,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ToolButton_StaticClassType: TClass; extdecl;
+begin
+  Result := TToolButton;
+end;
 
 exports
   ToolButton_Create,
@@ -711,7 +730,10 @@ exports
   ToolButton_FindComponent,
   ToolButton_GetNamePath,
   ToolButton_Assign,
+  ToolButton_ClassType,
   ToolButton_ClassName,
+  ToolButton_InstanceSize,
+  ToolButton_InheritsFrom,
   ToolButton_Equals,
   ToolButton_GetHashCode,
   ToolButton_ToString,
@@ -804,5 +826,6 @@ exports
   ToolButton_SetName,
   ToolButton_GetTag,
   ToolButton_SetTag,
-  ToolButton_GetComponents;
+  ToolButton_GetComponents,
+  ToolButton_StaticClassType;
 

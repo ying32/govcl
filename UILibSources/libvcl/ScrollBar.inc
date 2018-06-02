@@ -160,9 +160,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ScrollBar_DisposeOf(AObj: TScrollBar); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ScrollBar_ClassType(AObj: TScrollBar): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ScrollBar_ClassName(AObj: TScrollBar): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ScrollBar_InstanceSize(AObj: TScrollBar): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ScrollBar_InheritsFrom(AObj: TScrollBar; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ScrollBar_Equals(AObj: TScrollBar; Obj: TObject): LongBool; stdcall;
@@ -853,6 +873,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ScrollBar_StaticClassType: TClass; stdcall;
+begin
+  Result := TScrollBar;
+end;
 
 exports
   ScrollBar_Create,
@@ -886,7 +910,11 @@ exports
   ScrollBar_FindComponent,
   ScrollBar_GetNamePath,
   ScrollBar_Assign,
+  ScrollBar_DisposeOf,
+  ScrollBar_ClassType,
   ScrollBar_ClassName,
+  ScrollBar_InstanceSize,
+  ScrollBar_InheritsFrom,
   ScrollBar_Equals,
   ScrollBar_GetHashCode,
   ScrollBar_ToString,
@@ -1004,5 +1032,6 @@ exports
   ScrollBar_GetTag,
   ScrollBar_SetTag,
   ScrollBar_GetControls,
-  ScrollBar_GetComponents;
+  ScrollBar_GetComponents,
+  ScrollBar_StaticClassType;
 

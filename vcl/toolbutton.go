@@ -52,6 +52,10 @@ func (t *TToolButton) IsValid() bool {
     return t.instance != 0
 }
 
+func TToolButtonClass() TClass {
+    return ToolButton_StaticClassType()
+}
+
 func (t *TToolButton) CheckMenuDropdown() bool {
     return ToolButton_CheckMenuDropdown(t.instance)
 }
@@ -144,8 +148,24 @@ func (t *TToolButton) Assign(Source IObject) {
     ToolButton_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TToolButton) DisposeOf() {
+    ToolButton_DisposeOf(t.instance)
+}
+
+func (t *TToolButton) ClassType() TClass {
+    return ToolButton_ClassType(t.instance)
+}
+
 func (t *TToolButton) ClassName() string {
     return ToolButton_ClassName(t.instance)
+}
+
+func (t *TToolButton) InstanceSize() int32 {
+    return ToolButton_InstanceSize(t.instance)
+}
+
+func (t *TToolButton) InheritsFrom(AClass TClass) bool {
+    return ToolButton_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TToolButton) Equals(Obj IObject) bool {

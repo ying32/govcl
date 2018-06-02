@@ -175,9 +175,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function CheckListBox_ClassType(AObj: TCheckListBox): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function CheckListBox_ClassName(AObj: TCheckListBox): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function CheckListBox_InstanceSize(AObj: TCheckListBox): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function CheckListBox_InheritsFrom(AObj: TCheckListBox; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function CheckListBox_Equals(AObj: TCheckListBox; Obj: TObject): LongBool; extdecl;
@@ -939,6 +954,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function CheckListBox_StaticClassType: TClass; extdecl;
+begin
+  Result := TCheckListBox;
+end;
 
 exports
   CheckListBox_Create,
@@ -975,7 +994,10 @@ exports
   CheckListBox_FindComponent,
   CheckListBox_GetNamePath,
   CheckListBox_Assign,
+  CheckListBox_ClassType,
   CheckListBox_ClassName,
+  CheckListBox_InstanceSize,
+  CheckListBox_InheritsFrom,
   CheckListBox_Equals,
   CheckListBox_GetHashCode,
   CheckListBox_ToString,
@@ -1103,5 +1125,6 @@ exports
   CheckListBox_GetSelected,
   CheckListBox_SetSelected,
   CheckListBox_GetControls,
-  CheckListBox_GetComponents;
+  CheckListBox_GetComponents,
+  CheckListBox_StaticClassType;
 

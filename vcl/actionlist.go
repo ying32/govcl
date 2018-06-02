@@ -52,6 +52,10 @@ func (a *TActionList) IsValid() bool {
     return a.instance != 0
 }
 
+func TActionListClass() TClass {
+    return ActionList_StaticClassType()
+}
+
 func (a *TActionList) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ActionList_FindComponent(a.instance, AName))
 }
@@ -68,8 +72,24 @@ func (a *TActionList) Assign(Source IObject) {
     ActionList_Assign(a.instance, CheckPtr(Source))
 }
 
+func (a *TActionList) DisposeOf() {
+    ActionList_DisposeOf(a.instance)
+}
+
+func (a *TActionList) ClassType() TClass {
+    return ActionList_ClassType(a.instance)
+}
+
 func (a *TActionList) ClassName() string {
     return ActionList_ClassName(a.instance)
+}
+
+func (a *TActionList) InstanceSize() int32 {
+    return ActionList_InstanceSize(a.instance)
+}
+
+func (a *TActionList) InheritsFrom(AClass TClass) bool {
+    return ActionList_InheritsFrom(a.instance, AClass)
 }
 
 func (a *TActionList) Equals(Obj IObject) bool {

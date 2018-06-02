@@ -52,6 +52,10 @@ func (r *TRichEdit) IsValid() bool {
     return r.instance != 0
 }
 
+func TRichEditClass() TClass {
+    return RichEdit_StaticClassType()
+}
+
 func (r *TRichEdit) Clear() {
     RichEdit_Clear(r.instance)
 }
@@ -208,8 +212,24 @@ func (r *TRichEdit) Assign(Source IObject) {
     RichEdit_Assign(r.instance, CheckPtr(Source))
 }
 
+func (r *TRichEdit) DisposeOf() {
+    RichEdit_DisposeOf(r.instance)
+}
+
+func (r *TRichEdit) ClassType() TClass {
+    return RichEdit_ClassType(r.instance)
+}
+
 func (r *TRichEdit) ClassName() string {
     return RichEdit_ClassName(r.instance)
+}
+
+func (r *TRichEdit) InstanceSize() int32 {
+    return RichEdit_InstanceSize(r.instance)
+}
+
+func (r *TRichEdit) InheritsFrom(AClass TClass) bool {
+    return RichEdit_InheritsFrom(r.instance, AClass)
 }
 
 func (r *TRichEdit) Equals(Obj IObject) bool {

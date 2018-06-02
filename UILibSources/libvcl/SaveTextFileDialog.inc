@@ -40,9 +40,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure SaveTextFileDialog_DisposeOf(AObj: TSaveTextFileDialog); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function SaveTextFileDialog_ClassType(AObj: TSaveTextFileDialog): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function SaveTextFileDialog_ClassName(AObj: TSaveTextFileDialog): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function SaveTextFileDialog_InstanceSize(AObj: TSaveTextFileDialog): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function SaveTextFileDialog_InheritsFrom(AObj: TSaveTextFileDialog; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function SaveTextFileDialog_Equals(AObj: TSaveTextFileDialog; Obj: TObject): LongBool; stdcall;
@@ -219,6 +239,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function SaveTextFileDialog_StaticClassType: TClass; stdcall;
+begin
+  Result := TSaveTextFileDialog;
+end;
 
 exports
   SaveTextFileDialog_Create,
@@ -228,7 +252,11 @@ exports
   SaveTextFileDialog_GetNamePath,
   SaveTextFileDialog_HasParent,
   SaveTextFileDialog_Assign,
+  SaveTextFileDialog_DisposeOf,
+  SaveTextFileDialog_ClassType,
   SaveTextFileDialog_ClassName,
+  SaveTextFileDialog_InstanceSize,
+  SaveTextFileDialog_InheritsFrom,
   SaveTextFileDialog_Equals,
   SaveTextFileDialog_GetHashCode,
   SaveTextFileDialog_ToString,
@@ -260,5 +288,6 @@ exports
   SaveTextFileDialog_SetName,
   SaveTextFileDialog_GetTag,
   SaveTextFileDialog_SetTag,
-  SaveTextFileDialog_GetComponents;
+  SaveTextFileDialog_GetComponents,
+  SaveTextFileDialog_StaticClassType;
 

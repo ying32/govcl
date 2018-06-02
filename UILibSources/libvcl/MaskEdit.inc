@@ -205,9 +205,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure MaskEdit_DisposeOf(AObj: TMaskEdit); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function MaskEdit_ClassType(AObj: TMaskEdit): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function MaskEdit_ClassName(AObj: TMaskEdit): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function MaskEdit_InstanceSize(AObj: TMaskEdit): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function MaskEdit_InheritsFrom(AObj: TMaskEdit; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function MaskEdit_Equals(AObj: TMaskEdit; Obj: TObject): LongBool; stdcall;
@@ -1106,6 +1126,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function MaskEdit_StaticClassType: TClass; stdcall;
+begin
+  Result := TMaskEdit;
+end;
 
 exports
   MaskEdit_Create,
@@ -1148,7 +1172,11 @@ exports
   MaskEdit_FindComponent,
   MaskEdit_GetNamePath,
   MaskEdit_Assign,
+  MaskEdit_DisposeOf,
+  MaskEdit_ClassType,
   MaskEdit_ClassName,
+  MaskEdit_InstanceSize,
+  MaskEdit_InheritsFrom,
   MaskEdit_Equals,
   MaskEdit_GetHashCode,
   MaskEdit_ToString,
@@ -1302,5 +1330,6 @@ exports
   MaskEdit_GetTag,
   MaskEdit_SetTag,
   MaskEdit_GetControls,
-  MaskEdit_GetComponents;
+  MaskEdit_GetComponents,
+  MaskEdit_StaticClassType;
 

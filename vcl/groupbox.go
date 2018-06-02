@@ -52,6 +52,10 @@ func (g *TGroupBox) IsValid() bool {
     return g.instance != 0
 }
 
+func TGroupBoxClass() TClass {
+    return GroupBox_StaticClassType()
+}
+
 func (g *TGroupBox) CanFocus() bool {
     return GroupBox_CanFocus(g.instance)
 }
@@ -164,8 +168,24 @@ func (g *TGroupBox) Assign(Source IObject) {
     GroupBox_Assign(g.instance, CheckPtr(Source))
 }
 
+func (g *TGroupBox) DisposeOf() {
+    GroupBox_DisposeOf(g.instance)
+}
+
+func (g *TGroupBox) ClassType() TClass {
+    return GroupBox_ClassType(g.instance)
+}
+
 func (g *TGroupBox) ClassName() string {
     return GroupBox_ClassName(g.instance)
+}
+
+func (g *TGroupBox) InstanceSize() int32 {
+    return GroupBox_InstanceSize(g.instance)
+}
+
+func (g *TGroupBox) InheritsFrom(AClass TClass) bool {
+    return GroupBox_InheritsFrom(g.instance, AClass)
 }
 
 func (g *TGroupBox) Equals(Obj IObject) bool {

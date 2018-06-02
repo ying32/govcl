@@ -125,9 +125,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ImageButton_DisposeOf(AObj: TImageButton); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ImageButton_ClassType(AObj: TImageButton): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ImageButton_ClassName(AObj: TImageButton): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ImageButton_InstanceSize(AObj: TImageButton): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ImageButton_InheritsFrom(AObj: TImageButton; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ImageButton_Equals(AObj: TImageButton; Obj: TObject): LongBool; stdcall;
@@ -704,6 +724,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ImageButton_StaticClassType: TClass; stdcall;
+begin
+  Result := TImageButton;
+end;
 
 exports
   ImageButton_Create,
@@ -730,7 +754,11 @@ exports
   ImageButton_FindComponent,
   ImageButton_GetNamePath,
   ImageButton_Assign,
+  ImageButton_DisposeOf,
+  ImageButton_ClassType,
   ImageButton_ClassName,
+  ImageButton_InstanceSize,
+  ImageButton_InheritsFrom,
   ImageButton_Equals,
   ImageButton_GetHashCode,
   ImageButton_ToString,
@@ -828,5 +856,6 @@ exports
   ImageButton_SetName,
   ImageButton_GetTag,
   ImageButton_SetTag,
-  ImageButton_GetComponents;
+  ImageButton_GetComponents,
+  ImageButton_StaticClassType;
 

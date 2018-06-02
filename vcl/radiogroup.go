@@ -52,6 +52,10 @@ func (r *TRadioGroup) IsValid() bool {
     return r.instance != 0
 }
 
+func TRadioGroupClass() TClass {
+    return RadioGroup_StaticClassType()
+}
+
 func (r *TRadioGroup) FlipChildren(AllLevels bool) {
     RadioGroup_FlipChildren(r.instance, AllLevels)
 }
@@ -164,8 +168,24 @@ func (r *TRadioGroup) Assign(Source IObject) {
     RadioGroup_Assign(r.instance, CheckPtr(Source))
 }
 
+func (r *TRadioGroup) DisposeOf() {
+    RadioGroup_DisposeOf(r.instance)
+}
+
+func (r *TRadioGroup) ClassType() TClass {
+    return RadioGroup_ClassType(r.instance)
+}
+
 func (r *TRadioGroup) ClassName() string {
     return RadioGroup_ClassName(r.instance)
+}
+
+func (r *TRadioGroup) InstanceSize() int32 {
+    return RadioGroup_InstanceSize(r.instance)
+}
+
+func (r *TRadioGroup) InheritsFrom(AClass TClass) bool {
+    return RadioGroup_InheritsFrom(r.instance, AClass)
 }
 
 func (r *TRadioGroup) Equals(Obj IObject) bool {

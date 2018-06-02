@@ -25,9 +25,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure MonthCalColors_DisposeOf(AObj: TMonthCalColors); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function MonthCalColors_ClassType(AObj: TMonthCalColors): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function MonthCalColors_ClassName(AObj: TMonthCalColors): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function MonthCalColors_InstanceSize(AObj: TMonthCalColors): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function MonthCalColors_InheritsFrom(AObj: TMonthCalColors; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function MonthCalColors_Equals(AObj: TMonthCalColors; Obj: TObject): LongBool; stdcall;
@@ -55,16 +75,25 @@ begin
   AObj.BackColor := AValue;
 end;
 
+function MonthCalColors_StaticClassType: TClass; stdcall;
+begin
+  Result := TMonthCalColors;
+end;
 
 exports
   MonthCalColors_Create,
   MonthCalColors_Free,
   MonthCalColors_Assign,
   MonthCalColors_GetNamePath,
+  MonthCalColors_DisposeOf,
+  MonthCalColors_ClassType,
   MonthCalColors_ClassName,
+  MonthCalColors_InstanceSize,
+  MonthCalColors_InheritsFrom,
   MonthCalColors_Equals,
   MonthCalColors_GetHashCode,
   MonthCalColors_ToString,
   MonthCalColors_GetBackColor,
-  MonthCalColors_SetBackColor;
+  MonthCalColors_SetBackColor,
+  MonthCalColors_StaticClassType;
 

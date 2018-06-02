@@ -190,9 +190,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Edit_ClassType(AObj: TEdit): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Edit_ClassName(AObj: TEdit): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Edit_InstanceSize(AObj: TEdit): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Edit_InheritsFrom(AObj: TEdit; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Edit_Equals(AObj: TEdit; Obj: TObject): LongBool; extdecl;
@@ -964,6 +979,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Edit_StaticClassType: TClass; extdecl;
+begin
+  Result := TEdit;
+end;
 
 exports
   Edit_Create,
@@ -1003,7 +1022,10 @@ exports
   Edit_FindComponent,
   Edit_GetNamePath,
   Edit_Assign,
+  Edit_ClassType,
   Edit_ClassName,
+  Edit_InstanceSize,
+  Edit_InheritsFrom,
   Edit_Equals,
   Edit_GetHashCode,
   Edit_ToString,
@@ -1133,5 +1155,6 @@ exports
   Edit_GetTag,
   Edit_SetTag,
   Edit_GetControls,
-  Edit_GetComponents;
+  Edit_GetComponents,
+  Edit_StaticClassType;
 

@@ -45,9 +45,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Action_ClassType(AObj: TAction): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Action_ClassName(AObj: TAction): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Action_InstanceSize(AObj: TAction): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Action_InheritsFrom(AObj: TAction; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Action_Equals(AObj: TAction; Obj: TObject): LongBool; extdecl;
@@ -224,6 +239,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Action_StaticClassType: TClass; extdecl;
+begin
+  Result := TAction;
+end;
 
 exports
   Action_Create,
@@ -234,7 +253,10 @@ exports
   Action_FindComponent,
   Action_GetNamePath,
   Action_Assign,
+  Action_ClassType,
   Action_ClassName,
+  Action_InstanceSize,
+  Action_InheritsFrom,
   Action_Equals,
   Action_GetHashCode,
   Action_ToString,
@@ -266,5 +288,6 @@ exports
   Action_SetName,
   Action_GetTag,
   Action_SetTag,
-  Action_GetComponents;
+  Action_GetComponents,
+  Action_StaticClassType;
 

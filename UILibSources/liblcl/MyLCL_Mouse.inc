@@ -15,9 +15,24 @@ begin
   AObj.Free;
 end;
 
+function Mouse_ClassType(AObj: TMouse): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Mouse_ClassName(AObj: TMouse): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Mouse_InstanceSize(AObj: TMouse): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Mouse_InheritsFrom(AObj: TMouse; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Mouse_Equals(AObj: TMouse; Obj: TObject): LongBool; extdecl;
@@ -65,11 +80,18 @@ begin
   Result :=  AObj.WheelScrollLines;
 end;
 
+function Mouse_StaticClassType: TClass; extdecl;
+begin
+  Result := TMouse;
+end;
 
 exports
   Mouse_Create,
   Mouse_Free,
+  Mouse_ClassType,
   Mouse_ClassName,
+  Mouse_InstanceSize,
+  Mouse_InheritsFrom,
   Mouse_Equals,
   Mouse_GetHashCode,
   Mouse_ToString,
@@ -78,5 +100,6 @@ exports
   Mouse_GetCursorPos,
   Mouse_SetCursorPos,
   Mouse_GetIsDragging,
-  Mouse_GetWheelScrollLines;
+  Mouse_GetWheelScrollLines,
+  Mouse_StaticClassType;
 

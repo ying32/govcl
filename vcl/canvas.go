@@ -52,6 +52,10 @@ func (c *TCanvas) IsValid() bool {
     return c.instance != 0
 }
 
+func TCanvasClass() TClass {
+    return Canvas_StaticClassType()
+}
+
 func (c *TCanvas) Arc(X1 int32, Y1 int32, X2 int32, Y2 int32, X3 int32, Y3 int32, X4 int32, Y4 int32) {
     Canvas_Arc(c.instance, X1 , Y1 , X2 , Y2 , X3 , Y3 , X4 , Y4)
 }
@@ -132,8 +136,24 @@ func (c *TCanvas) GetNamePath() string {
     return Canvas_GetNamePath(c.instance)
 }
 
+func (c *TCanvas) DisposeOf() {
+    Canvas_DisposeOf(c.instance)
+}
+
+func (c *TCanvas) ClassType() TClass {
+    return Canvas_ClassType(c.instance)
+}
+
 func (c *TCanvas) ClassName() string {
     return Canvas_ClassName(c.instance)
+}
+
+func (c *TCanvas) InstanceSize() int32 {
+    return Canvas_InstanceSize(c.instance)
+}
+
+func (c *TCanvas) InheritsFrom(AClass TClass) bool {
+    return Canvas_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCanvas) Equals(Obj IObject) bool {

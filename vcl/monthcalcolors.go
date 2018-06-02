@@ -52,6 +52,10 @@ func (m *TMonthCalColors) IsValid() bool {
     return m.instance != 0
 }
 
+func TMonthCalColorsClass() TClass {
+    return MonthCalColors_StaticClassType()
+}
+
 func (m *TMonthCalColors) Assign(Source IObject) {
     MonthCalColors_Assign(m.instance, CheckPtr(Source))
 }
@@ -60,8 +64,24 @@ func (m *TMonthCalColors) GetNamePath() string {
     return MonthCalColors_GetNamePath(m.instance)
 }
 
+func (m *TMonthCalColors) DisposeOf() {
+    MonthCalColors_DisposeOf(m.instance)
+}
+
+func (m *TMonthCalColors) ClassType() TClass {
+    return MonthCalColors_ClassType(m.instance)
+}
+
 func (m *TMonthCalColors) ClassName() string {
     return MonthCalColors_ClassName(m.instance)
+}
+
+func (m *TMonthCalColors) InstanceSize() int32 {
+    return MonthCalColors_InstanceSize(m.instance)
+}
+
+func (m *TMonthCalColors) InheritsFrom(AClass TClass) bool {
+    return MonthCalColors_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMonthCalColors) Equals(Obj IObject) bool {

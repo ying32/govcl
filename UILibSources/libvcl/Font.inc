@@ -30,9 +30,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure Font_DisposeOf(AObj: TFont); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Font_ClassType(AObj: TFont): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Font_ClassName(AObj: TFont): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Font_InstanceSize(AObj: TFont): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Font_InheritsFrom(AObj: TFont; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Font_Equals(AObj: TFont; Obj: TObject): LongBool; stdcall;
@@ -172,6 +192,10 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Font_StaticClassType: TClass; stdcall;
+begin
+  Result := TFont;
+end;
 
 exports
   Font_Create,
@@ -179,7 +203,11 @@ exports
   Font_Assign,
   Font_HandleAllocated,
   Font_GetNamePath,
+  Font_DisposeOf,
+  Font_ClassType,
   Font_ClassName,
+  Font_InstanceSize,
+  Font_InheritsFrom,
   Font_Equals,
   Font_GetHashCode,
   Font_ToString,
@@ -205,5 +233,6 @@ exports
   Font_SetStyle,
   Font_GetQuality,
   Font_SetQuality,
-  Font_SetOnChange;
+  Font_SetOnChange,
+  Font_StaticClassType;
 

@@ -52,6 +52,10 @@ func (t *TTabSheet) IsValid() bool {
     return t.instance != 0
 }
 
+func TTabSheetClass() TClass {
+    return TabSheet_StaticClassType()
+}
+
 func (t *TTabSheet) CanFocus() bool {
     return TabSheet_CanFocus(t.instance)
 }
@@ -164,8 +168,24 @@ func (t *TTabSheet) Assign(Source IObject) {
     TabSheet_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTabSheet) DisposeOf() {
+    TabSheet_DisposeOf(t.instance)
+}
+
+func (t *TTabSheet) ClassType() TClass {
+    return TabSheet_ClassType(t.instance)
+}
+
 func (t *TTabSheet) ClassName() string {
     return TabSheet_ClassName(t.instance)
+}
+
+func (t *TTabSheet) InstanceSize() int32 {
+    return TabSheet_InstanceSize(t.instance)
+}
+
+func (t *TTabSheet) InheritsFrom(AClass TClass) bool {
+    return TabSheet_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTabSheet) Equals(Obj IObject) bool {

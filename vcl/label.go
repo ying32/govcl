@@ -52,6 +52,10 @@ func (l *TLabel) IsValid() bool {
     return l.instance != 0
 }
 
+func TLabelClass() TClass {
+    return Label_StaticClassType()
+}
+
 func (l *TLabel) BringToFront() {
     Label_BringToFront(l.instance)
 }
@@ -136,8 +140,24 @@ func (l *TLabel) Assign(Source IObject) {
     Label_Assign(l.instance, CheckPtr(Source))
 }
 
+func (l *TLabel) DisposeOf() {
+    Label_DisposeOf(l.instance)
+}
+
+func (l *TLabel) ClassType() TClass {
+    return Label_ClassType(l.instance)
+}
+
 func (l *TLabel) ClassName() string {
     return Label_ClassName(l.instance)
+}
+
+func (l *TLabel) InstanceSize() int32 {
+    return Label_InstanceSize(l.instance)
+}
+
+func (l *TLabel) InheritsFrom(AClass TClass) bool {
+    return Label_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TLabel) Equals(Obj IObject) bool {

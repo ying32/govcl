@@ -52,6 +52,10 @@ func (s *TStatusBar) IsValid() bool {
     return s.instance != 0
 }
 
+func TStatusBarClass() TClass {
+    return StatusBar_StaticClassType()
+}
+
 func (s *TStatusBar) FlipChildren(AllLevels bool) {
     StatusBar_FlipChildren(s.instance, AllLevels)
 }
@@ -164,8 +168,24 @@ func (s *TStatusBar) Assign(Source IObject) {
     StatusBar_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TStatusBar) DisposeOf() {
+    StatusBar_DisposeOf(s.instance)
+}
+
+func (s *TStatusBar) ClassType() TClass {
+    return StatusBar_ClassType(s.instance)
+}
+
 func (s *TStatusBar) ClassName() string {
     return StatusBar_ClassName(s.instance)
+}
+
+func (s *TStatusBar) InstanceSize() int32 {
+    return StatusBar_InstanceSize(s.instance)
+}
+
+func (s *TStatusBar) InheritsFrom(AClass TClass) bool {
+    return StatusBar_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStatusBar) Equals(Obj IObject) bool {

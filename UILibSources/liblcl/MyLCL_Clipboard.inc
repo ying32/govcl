@@ -50,9 +50,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function Clipboard_ClassType(AObj: TClipboard): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Clipboard_ClassName(AObj: TClipboard): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Clipboard_InstanceSize(AObj: TClipboard): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Clipboard_InheritsFrom(AObj: TClipboard; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Clipboard_Equals(AObj: TClipboard; Obj: TObject): LongBool; extdecl;
@@ -90,6 +105,10 @@ begin
   Result :=  AObj.Formats[Index];
 end;
 
+function Clipboard_StaticClassType: TClass; extdecl;
+begin
+  Result := TClipboard;
+end;
 
 exports
   Clipboard_Create,
@@ -101,12 +120,16 @@ exports
   Clipboard_Open,
   Clipboard_GetTextBuf,
   Clipboard_GetNamePath,
+  Clipboard_ClassType,
   Clipboard_ClassName,
+  Clipboard_InstanceSize,
+  Clipboard_InheritsFrom,
   Clipboard_Equals,
   Clipboard_GetHashCode,
   Clipboard_ToString,
   Clipboard_GetAsText,
   Clipboard_SetAsText,
   Clipboard_GetFormatCount,
-  Clipboard_GetFormats;
+  Clipboard_GetFormats,
+  Clipboard_StaticClassType;
 

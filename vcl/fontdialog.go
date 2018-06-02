@@ -52,6 +52,10 @@ func (f *TFontDialog) IsValid() bool {
     return f.instance != 0
 }
 
+func TFontDialogClass() TClass {
+    return FontDialog_StaticClassType()
+}
+
 func (f *TFontDialog) Execute() bool {
     return FontDialog_Execute(f.instance)
 }
@@ -72,8 +76,24 @@ func (f *TFontDialog) Assign(Source IObject) {
     FontDialog_Assign(f.instance, CheckPtr(Source))
 }
 
+func (f *TFontDialog) DisposeOf() {
+    FontDialog_DisposeOf(f.instance)
+}
+
+func (f *TFontDialog) ClassType() TClass {
+    return FontDialog_ClassType(f.instance)
+}
+
 func (f *TFontDialog) ClassName() string {
     return FontDialog_ClassName(f.instance)
+}
+
+func (f *TFontDialog) InstanceSize() int32 {
+    return FontDialog_InstanceSize(f.instance)
+}
+
+func (f *TFontDialog) InheritsFrom(AClass TClass) bool {
+    return FontDialog_InheritsFrom(f.instance, AClass)
 }
 
 func (f *TFontDialog) Equals(Obj IObject) bool {

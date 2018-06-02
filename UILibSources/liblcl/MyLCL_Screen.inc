@@ -35,9 +35,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Screen_ClassType(AObj: TScreen): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Screen_ClassName(AObj: TScreen): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Screen_InstanceSize(AObj: TScreen): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Screen_InheritsFrom(AObj: TScreen; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Screen_Equals(AObj: TScreen; Obj: TObject): LongBool; extdecl;
@@ -230,6 +245,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Screen_StaticClassType: TClass; extdecl;
+begin
+  Result := TScreen;
+end;
 
 exports
   Screen_Create,
@@ -238,7 +257,10 @@ exports
   Screen_GetNamePath,
   Screen_HasParent,
   Screen_Assign,
+  Screen_ClassType,
   Screen_ClassName,
+  Screen_InstanceSize,
+  Screen_InheritsFrom,
   Screen_Equals,
   Screen_GetHashCode,
   Screen_ToString,
@@ -276,5 +298,6 @@ exports
   Screen_SetCursors,
   Screen_GetMonitors,
   Screen_GetForms,
-  Screen_GetComponents;
+  Screen_GetComponents,
+  Screen_StaticClassType;
 

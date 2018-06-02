@@ -35,9 +35,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure MainMenu_DisposeOf(AObj: TMainMenu); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function MainMenu_ClassType(AObj: TMainMenu): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function MainMenu_ClassName(AObj: TMainMenu): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function MainMenu_InstanceSize(AObj: TMainMenu): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function MainMenu_InheritsFrom(AObj: TMainMenu; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function MainMenu_Equals(AObj: TMainMenu; Obj: TObject): LongBool; stdcall;
@@ -162,6 +182,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function MainMenu_StaticClassType: TClass; stdcall;
+begin
+  Result := TMainMenu;
+end;
 
 exports
   MainMenu_Create,
@@ -170,7 +194,11 @@ exports
   MainMenu_GetNamePath,
   MainMenu_HasParent,
   MainMenu_Assign,
+  MainMenu_DisposeOf,
+  MainMenu_ClassType,
   MainMenu_ClassName,
+  MainMenu_InstanceSize,
+  MainMenu_InheritsFrom,
   MainMenu_Equals,
   MainMenu_GetHashCode,
   MainMenu_ToString,
@@ -193,5 +221,6 @@ exports
   MainMenu_SetName,
   MainMenu_GetTag,
   MainMenu_SetTag,
-  MainMenu_GetComponents;
+  MainMenu_GetComponents,
+  MainMenu_StaticClassType;
 

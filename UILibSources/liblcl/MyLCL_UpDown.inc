@@ -155,9 +155,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function UpDown_ClassType(AObj: TUpDown): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function UpDown_ClassName(AObj: TUpDown): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function UpDown_InstanceSize(AObj: TUpDown): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function UpDown_InheritsFrom(AObj: TUpDown; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function UpDown_Equals(AObj: TUpDown; Obj: TObject): LongBool; extdecl;
@@ -658,6 +673,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function UpDown_StaticClassType: TClass; extdecl;
+begin
+  Result := TUpDown;
+end;
 
 exports
   UpDown_Create,
@@ -690,7 +709,10 @@ exports
   UpDown_FindComponent,
   UpDown_GetNamePath,
   UpDown_Assign,
+  UpDown_ClassType,
   UpDown_ClassName,
+  UpDown_InstanceSize,
+  UpDown_InheritsFrom,
   UpDown_Equals,
   UpDown_GetHashCode,
   UpDown_ToString,
@@ -777,5 +799,6 @@ exports
   UpDown_GetTag,
   UpDown_SetTag,
   UpDown_GetControls,
-  UpDown_GetComponents;
+  UpDown_GetComponents,
+  UpDown_StaticClassType;
 

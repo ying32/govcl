@@ -52,6 +52,10 @@ func (s *TShape) IsValid() bool {
     return s.instance != 0
 }
 
+func TShapeClass() TClass {
+    return Shape_StaticClassType()
+}
+
 func (s *TShape) BringToFront() {
     Shape_BringToFront(s.instance)
 }
@@ -136,8 +140,24 @@ func (s *TShape) Assign(Source IObject) {
     Shape_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TShape) DisposeOf() {
+    Shape_DisposeOf(s.instance)
+}
+
+func (s *TShape) ClassType() TClass {
+    return Shape_ClassType(s.instance)
+}
+
 func (s *TShape) ClassName() string {
     return Shape_ClassName(s.instance)
+}
+
+func (s *TShape) InstanceSize() int32 {
+    return Shape_InstanceSize(s.instance)
+}
+
+func (s *TShape) InheritsFrom(AClass TClass) bool {
+    return Shape_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TShape) Equals(Obj IObject) bool {

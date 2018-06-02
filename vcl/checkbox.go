@@ -52,6 +52,10 @@ func (c *TCheckBox) IsValid() bool {
     return c.instance != 0
 }
 
+func TCheckBoxClass() TClass {
+    return CheckBox_StaticClassType()
+}
+
 func (c *TCheckBox) CanFocus() bool {
     return CheckBox_CanFocus(c.instance)
 }
@@ -164,8 +168,24 @@ func (c *TCheckBox) Assign(Source IObject) {
     CheckBox_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TCheckBox) DisposeOf() {
+    CheckBox_DisposeOf(c.instance)
+}
+
+func (c *TCheckBox) ClassType() TClass {
+    return CheckBox_ClassType(c.instance)
+}
+
 func (c *TCheckBox) ClassName() string {
     return CheckBox_ClassName(c.instance)
+}
+
+func (c *TCheckBox) InstanceSize() int32 {
+    return CheckBox_InstanceSize(c.instance)
+}
+
+func (c *TCheckBox) InheritsFrom(AClass TClass) bool {
+    return CheckBox_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCheckBox) Equals(Obj IObject) bool {

@@ -40,9 +40,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure SavePictureDialog_DisposeOf(AObj: TSavePictureDialog); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function SavePictureDialog_ClassType(AObj: TSavePictureDialog): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function SavePictureDialog_ClassName(AObj: TSavePictureDialog): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function SavePictureDialog_InstanceSize(AObj: TSavePictureDialog): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function SavePictureDialog_InheritsFrom(AObj: TSavePictureDialog; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function SavePictureDialog_Equals(AObj: TSavePictureDialog; Obj: TObject): LongBool; stdcall;
@@ -219,6 +239,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function SavePictureDialog_StaticClassType: TClass; stdcall;
+begin
+  Result := TSavePictureDialog;
+end;
 
 exports
   SavePictureDialog_Create,
@@ -228,7 +252,11 @@ exports
   SavePictureDialog_GetNamePath,
   SavePictureDialog_HasParent,
   SavePictureDialog_Assign,
+  SavePictureDialog_DisposeOf,
+  SavePictureDialog_ClassType,
   SavePictureDialog_ClassName,
+  SavePictureDialog_InstanceSize,
+  SavePictureDialog_InheritsFrom,
   SavePictureDialog_Equals,
   SavePictureDialog_GetHashCode,
   SavePictureDialog_ToString,
@@ -260,5 +288,6 @@ exports
   SavePictureDialog_SetName,
   SavePictureDialog_GetTag,
   SavePictureDialog_SetTag,
-  SavePictureDialog_GetComponents;
+  SavePictureDialog_GetComponents,
+  SavePictureDialog_StaticClassType;
 

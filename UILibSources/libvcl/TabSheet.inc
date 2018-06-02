@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure TabSheet_DisposeOf(AObj: TTabSheet); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function TabSheet_ClassType(AObj: TTabSheet): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function TabSheet_ClassName(AObj: TTabSheet): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function TabSheet_InstanceSize(AObj: TTabSheet): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function TabSheet_InheritsFrom(AObj: TTabSheet; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function TabSheet_Equals(AObj: TTabSheet; Obj: TObject): LongBool; stdcall;
@@ -843,6 +863,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function TabSheet_StaticClassType: TClass; stdcall;
+begin
+  Result := TTabSheet;
+end;
 
 exports
   TabSheet_Create,
@@ -875,7 +899,11 @@ exports
   TabSheet_FindComponent,
   TabSheet_GetNamePath,
   TabSheet_Assign,
+  TabSheet_DisposeOf,
+  TabSheet_ClassType,
   TabSheet_ClassName,
+  TabSheet_InstanceSize,
+  TabSheet_InheritsFrom,
   TabSheet_Equals,
   TabSheet_GetHashCode,
   TabSheet_ToString,
@@ -992,5 +1020,6 @@ exports
   TabSheet_GetTag,
   TabSheet_SetTag,
   TabSheet_GetControls,
-  TabSheet_GetComponents;
+  TabSheet_GetComponents,
+  TabSheet_StaticClassType;
 

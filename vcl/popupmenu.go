@@ -52,6 +52,10 @@ func (p *TPopupMenu) IsValid() bool {
     return p.instance != 0
 }
 
+func TPopupMenuClass() TClass {
+    return PopupMenu_StaticClassType()
+}
+
 func (p *TPopupMenu) CloseMenu() {
     PopupMenu_CloseMenu(p.instance)
 }
@@ -76,8 +80,24 @@ func (p *TPopupMenu) Assign(Source IObject) {
     PopupMenu_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPopupMenu) DisposeOf() {
+    PopupMenu_DisposeOf(p.instance)
+}
+
+func (p *TPopupMenu) ClassType() TClass {
+    return PopupMenu_ClassType(p.instance)
+}
+
 func (p *TPopupMenu) ClassName() string {
     return PopupMenu_ClassName(p.instance)
+}
+
+func (p *TPopupMenu) InstanceSize() int32 {
+    return PopupMenu_InstanceSize(p.instance)
+}
+
+func (p *TPopupMenu) InheritsFrom(AClass TClass) bool {
+    return PopupMenu_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPopupMenu) Equals(Obj IObject) bool {

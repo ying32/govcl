@@ -52,6 +52,10 @@ func (f *TForm) IsValid() bool {
     return f.instance != 0
 }
 
+func TFormClass() TClass {
+    return Form_StaticClassType()
+}
+
 func (f *TForm) Close() {
     Form_Close(f.instance)
 }
@@ -176,8 +180,24 @@ func (f *TForm) Assign(Source IObject) {
     Form_Assign(f.instance, CheckPtr(Source))
 }
 
+func (f *TForm) DisposeOf() {
+    Form_DisposeOf(f.instance)
+}
+
+func (f *TForm) ClassType() TClass {
+    return Form_ClassType(f.instance)
+}
+
 func (f *TForm) ClassName() string {
     return Form_ClassName(f.instance)
+}
+
+func (f *TForm) InstanceSize() int32 {
+    return Form_InstanceSize(f.instance)
+}
+
+func (f *TForm) InheritsFrom(AClass TClass) bool {
+    return Form_InheritsFrom(f.instance, AClass)
 }
 
 func (f *TForm) Equals(Obj IObject) bool {

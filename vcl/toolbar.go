@@ -52,6 +52,10 @@ func (t *TToolBar) IsValid() bool {
     return t.instance != 0
 }
 
+func TToolBarClass() TClass {
+    return ToolBar_StaticClassType()
+}
+
 func (t *TToolBar) FlipChildren(AllLevels bool) {
     ToolBar_FlipChildren(t.instance, AllLevels)
 }
@@ -164,8 +168,24 @@ func (t *TToolBar) Assign(Source IObject) {
     ToolBar_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TToolBar) DisposeOf() {
+    ToolBar_DisposeOf(t.instance)
+}
+
+func (t *TToolBar) ClassType() TClass {
+    return ToolBar_ClassType(t.instance)
+}
+
 func (t *TToolBar) ClassName() string {
     return ToolBar_ClassName(t.instance)
+}
+
+func (t *TToolBar) InstanceSize() int32 {
+    return ToolBar_InstanceSize(t.instance)
+}
+
+func (t *TToolBar) InheritsFrom(AClass TClass) bool {
+    return ToolBar_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TToolBar) Equals(Obj IObject) bool {

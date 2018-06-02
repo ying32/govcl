@@ -52,6 +52,10 @@ func (s *TSaveDialog) IsValid() bool {
     return s.instance != 0
 }
 
+func TSaveDialogClass() TClass {
+    return SaveDialog_StaticClassType()
+}
+
 func (s *TSaveDialog) Execute() bool {
     return SaveDialog_Execute(s.instance)
 }
@@ -72,8 +76,24 @@ func (s *TSaveDialog) Assign(Source IObject) {
     SaveDialog_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TSaveDialog) DisposeOf() {
+    SaveDialog_DisposeOf(s.instance)
+}
+
+func (s *TSaveDialog) ClassType() TClass {
+    return SaveDialog_ClassType(s.instance)
+}
+
 func (s *TSaveDialog) ClassName() string {
     return SaveDialog_ClassName(s.instance)
+}
+
+func (s *TSaveDialog) InstanceSize() int32 {
+    return SaveDialog_InstanceSize(s.instance)
+}
+
+func (s *TSaveDialog) InheritsFrom(AClass TClass) bool {
+    return SaveDialog_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TSaveDialog) Equals(Obj IObject) bool {

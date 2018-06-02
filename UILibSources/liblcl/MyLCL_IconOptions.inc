@@ -8,9 +8,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function IconOptions_ClassType(AObj: TIconOptions): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function IconOptions_ClassName(AObj: TIconOptions): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function IconOptions_InstanceSize(AObj: TIconOptions): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function IconOptions_InheritsFrom(AObj: TIconOptions; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function IconOptions_Equals(AObj: TIconOptions; Obj: TObject): LongBool; extdecl;
@@ -48,16 +63,24 @@ begin
   AObj.AutoArrange := AValue;
 end;
 
+function IconOptions_StaticClassType: TClass; extdecl;
+begin
+  Result := TIconOptions;
+end;
 
 exports
   IconOptions_Assign,
   IconOptions_GetNamePath,
+  IconOptions_ClassType,
   IconOptions_ClassName,
+  IconOptions_InstanceSize,
+  IconOptions_InheritsFrom,
   IconOptions_Equals,
   IconOptions_GetHashCode,
   IconOptions_ToString,
   IconOptions_GetArrangement,
   IconOptions_SetArrangement,
   IconOptions_GetAutoArrange,
-  IconOptions_SetAutoArrange;
+  IconOptions_SetAutoArrange,
+  IconOptions_StaticClassType;
 

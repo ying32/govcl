@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TListColumns struct {
@@ -51,6 +52,10 @@ func (l *TListColumns) IsValid() bool {
     return l.instance != 0
 }
 
+func TListColumnsClass() TClass {
+    return ListColumns_StaticClassType()
+}
+
 func (l *TListColumns) Add() *TListColumn {
     return ListColumnFromInst(ListColumns_Add(l.instance))
 }
@@ -87,8 +92,24 @@ func (l *TListColumns) Insert(Index int32) *TCollectionItem {
     return CollectionItemFromInst(ListColumns_Insert(l.instance, Index))
 }
 
+func (l *TListColumns) DisposeOf() {
+    ListColumns_DisposeOf(l.instance)
+}
+
+func (l *TListColumns) ClassType() TClass {
+    return ListColumns_ClassType(l.instance)
+}
+
 func (l *TListColumns) ClassName() string {
     return ListColumns_ClassName(l.instance)
+}
+
+func (l *TListColumns) InstanceSize() int32 {
+    return ListColumns_InstanceSize(l.instance)
+}
+
+func (l *TListColumns) InheritsFrom(AClass TClass) bool {
+    return ListColumns_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListColumns) Equals(Obj IObject) bool {

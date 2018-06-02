@@ -45,9 +45,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function Picture_ClassType(AObj: TPicture): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Picture_ClassName(AObj: TPicture): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Picture_InstanceSize(AObj: TPicture): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Picture_InheritsFrom(AObj: TPicture; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Picture_Equals(AObj: TPicture; Obj: TObject): LongBool; extdecl;
@@ -117,6 +132,10 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Picture_StaticClassType: TClass; extdecl;
+begin
+  Result := TPicture;
+end;
 
 exports
   Picture_Create,
@@ -127,7 +146,10 @@ exports
   Picture_SaveToStream,
   Picture_Assign,
   Picture_GetNamePath,
+  Picture_ClassType,
   Picture_ClassName,
+  Picture_InstanceSize,
+  Picture_InheritsFrom,
   Picture_Equals,
   Picture_GetHashCode,
   Picture_ToString,
@@ -139,5 +161,6 @@ exports
   Picture_GetIcon,
   Picture_SetIcon,
   Picture_GetWidth,
-  Picture_SetOnChange;
+  Picture_SetOnChange,
+  Picture_StaticClassType;
 

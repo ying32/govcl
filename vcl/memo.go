@@ -52,6 +52,10 @@ func (m *TMemo) IsValid() bool {
     return m.instance != 0
 }
 
+func TMemoClass() TClass {
+    return Memo_StaticClassType()
+}
+
 func (m *TMemo) Clear() {
     Memo_Clear(m.instance)
 }
@@ -200,8 +204,24 @@ func (m *TMemo) Assign(Source IObject) {
     Memo_Assign(m.instance, CheckPtr(Source))
 }
 
+func (m *TMemo) DisposeOf() {
+    Memo_DisposeOf(m.instance)
+}
+
+func (m *TMemo) ClassType() TClass {
+    return Memo_ClassType(m.instance)
+}
+
 func (m *TMemo) ClassName() string {
     return Memo_ClassName(m.instance)
+}
+
+func (m *TMemo) InstanceSize() int32 {
+    return Memo_InstanceSize(m.instance)
+}
+
+func (m *TMemo) InheritsFrom(AClass TClass) bool {
+    return Memo_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMemo) Equals(Obj IObject) bool {

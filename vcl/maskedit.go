@@ -52,6 +52,10 @@ func (m *TMaskEdit) IsValid() bool {
     return m.instance != 0
 }
 
+func TMaskEditClass() TClass {
+    return MaskEdit_StaticClassType()
+}
+
 func (m *TMaskEdit) ValidateEdit() {
     MaskEdit_ValidateEdit(m.instance)
 }
@@ -204,8 +208,24 @@ func (m *TMaskEdit) Assign(Source IObject) {
     MaskEdit_Assign(m.instance, CheckPtr(Source))
 }
 
+func (m *TMaskEdit) DisposeOf() {
+    MaskEdit_DisposeOf(m.instance)
+}
+
+func (m *TMaskEdit) ClassType() TClass {
+    return MaskEdit_ClassType(m.instance)
+}
+
 func (m *TMaskEdit) ClassName() string {
     return MaskEdit_ClassName(m.instance)
+}
+
+func (m *TMaskEdit) InstanceSize() int32 {
+    return MaskEdit_InstanceSize(m.instance)
+}
+
+func (m *TMaskEdit) InheritsFrom(AClass TClass) bool {
+    return MaskEdit_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMaskEdit) Equals(Obj IObject) bool {

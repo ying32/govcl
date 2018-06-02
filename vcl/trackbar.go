@@ -52,6 +52,10 @@ func (t *TTrackBar) IsValid() bool {
     return t.instance != 0
 }
 
+func TTrackBarClass() TClass {
+    return TrackBar_StaticClassType()
+}
+
 func (t *TTrackBar) SetTick(Value int32) {
     TrackBar_SetTick(t.instance, Value)
 }
@@ -168,8 +172,24 @@ func (t *TTrackBar) Assign(Source IObject) {
     TrackBar_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTrackBar) DisposeOf() {
+    TrackBar_DisposeOf(t.instance)
+}
+
+func (t *TTrackBar) ClassType() TClass {
+    return TrackBar_ClassType(t.instance)
+}
+
 func (t *TTrackBar) ClassName() string {
     return TrackBar_ClassName(t.instance)
+}
+
+func (t *TTrackBar) InstanceSize() int32 {
+    return TrackBar_InstanceSize(t.instance)
+}
+
+func (t *TTrackBar) InheritsFrom(AClass TClass) bool {
+    return TrackBar_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTrackBar) Equals(Obj IObject) bool {

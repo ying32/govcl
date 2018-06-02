@@ -8,9 +8,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure ParaAttributes_DisposeOf(AObj: TParaAttributes); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ParaAttributes_ClassType(AObj: TParaAttributes): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ParaAttributes_ClassName(AObj: TParaAttributes): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ParaAttributes_InstanceSize(AObj: TParaAttributes): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ParaAttributes_InheritsFrom(AObj: TParaAttributes; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ParaAttributes_Equals(AObj: TParaAttributes; Obj: TObject): LongBool; stdcall;
@@ -98,11 +118,19 @@ begin
   AObj.Tab[Index] := AValue;
 end;
 
+function ParaAttributes_StaticClassType: TClass; stdcall;
+begin
+  Result := TParaAttributes;
+end;
 
 exports
   ParaAttributes_Assign,
   ParaAttributes_GetNamePath,
+  ParaAttributes_DisposeOf,
+  ParaAttributes_ClassType,
   ParaAttributes_ClassName,
+  ParaAttributes_InstanceSize,
+  ParaAttributes_InheritsFrom,
   ParaAttributes_Equals,
   ParaAttributes_GetHashCode,
   ParaAttributes_ToString,
@@ -119,5 +147,6 @@ exports
   ParaAttributes_GetTabCount,
   ParaAttributes_SetTabCount,
   ParaAttributes_GetTab,
-  ParaAttributes_SetTab;
+  ParaAttributes_SetTab,
+  ParaAttributes_StaticClassType;
 

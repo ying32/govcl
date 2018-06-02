@@ -52,6 +52,10 @@ func (c *TComboBox) IsValid() bool {
     return c.instance != 0
 }
 
+func TComboBoxClass() TClass {
+    return ComboBox_StaticClassType()
+}
+
 func (c *TComboBox) AddItem(Item string, AObject IObject) {
     ComboBox_AddItem(c.instance, Item , CheckPtr(AObject))
 }
@@ -184,8 +188,24 @@ func (c *TComboBox) Assign(Source IObject) {
     ComboBox_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TComboBox) DisposeOf() {
+    ComboBox_DisposeOf(c.instance)
+}
+
+func (c *TComboBox) ClassType() TClass {
+    return ComboBox_ClassType(c.instance)
+}
+
 func (c *TComboBox) ClassName() string {
     return ComboBox_ClassName(c.instance)
+}
+
+func (c *TComboBox) InstanceSize() int32 {
+    return ComboBox_InstanceSize(c.instance)
+}
+
+func (c *TComboBox) InheritsFrom(AClass TClass) bool {
+    return ComboBox_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TComboBox) Equals(Obj IObject) bool {

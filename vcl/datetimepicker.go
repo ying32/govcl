@@ -53,6 +53,10 @@ func (d *TDateTimePicker) IsValid() bool {
     return d.instance != 0
 }
 
+func TDateTimePickerClass() TClass {
+    return DateTimePicker_StaticClassType()
+}
+
 func (d *TDateTimePicker) CanFocus() bool {
     return DateTimePicker_CanFocus(d.instance)
 }
@@ -165,8 +169,24 @@ func (d *TDateTimePicker) Assign(Source IObject) {
     DateTimePicker_Assign(d.instance, CheckPtr(Source))
 }
 
+func (d *TDateTimePicker) DisposeOf() {
+    DateTimePicker_DisposeOf(d.instance)
+}
+
+func (d *TDateTimePicker) ClassType() TClass {
+    return DateTimePicker_ClassType(d.instance)
+}
+
 func (d *TDateTimePicker) ClassName() string {
     return DateTimePicker_ClassName(d.instance)
+}
+
+func (d *TDateTimePicker) InstanceSize() int32 {
+    return DateTimePicker_InstanceSize(d.instance)
+}
+
+func (d *TDateTimePicker) InheritsFrom(AClass TClass) bool {
+    return DateTimePicker_InheritsFrom(d.instance, AClass)
 }
 
 func (d *TDateTimePicker) Equals(Obj IObject) bool {

@@ -125,9 +125,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function SpeedButton_ClassType(AObj: TSpeedButton): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function SpeedButton_ClassName(AObj: TSpeedButton): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function SpeedButton_InstanceSize(AObj: TSpeedButton): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function SpeedButton_InheritsFrom(AObj: TSpeedButton; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function SpeedButton_Equals(AObj: TSpeedButton; Obj: TObject): LongBool; extdecl;
@@ -594,6 +609,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function SpeedButton_StaticClassType: TClass; extdecl;
+begin
+  Result := TSpeedButton;
+end;
 
 exports
   SpeedButton_Create,
@@ -620,7 +639,10 @@ exports
   SpeedButton_FindComponent,
   SpeedButton_GetNamePath,
   SpeedButton_Assign,
+  SpeedButton_ClassType,
   SpeedButton_ClassName,
+  SpeedButton_InstanceSize,
+  SpeedButton_InheritsFrom,
   SpeedButton_Equals,
   SpeedButton_GetHashCode,
   SpeedButton_ToString,
@@ -703,5 +725,6 @@ exports
   SpeedButton_SetName,
   SpeedButton_GetTag,
   SpeedButton_SetTag,
-  SpeedButton_GetComponents;
+  SpeedButton_GetComponents,
+  SpeedButton_StaticClassType;
 

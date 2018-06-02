@@ -52,6 +52,10 @@ func (s *TSpeedButton) IsValid() bool {
     return s.instance != 0
 }
 
+func TSpeedButtonClass() TClass {
+    return SpeedButton_StaticClassType()
+}
+
 func (s *TSpeedButton) Click() {
     SpeedButton_Click(s.instance)
 }
@@ -140,8 +144,24 @@ func (s *TSpeedButton) Assign(Source IObject) {
     SpeedButton_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TSpeedButton) DisposeOf() {
+    SpeedButton_DisposeOf(s.instance)
+}
+
+func (s *TSpeedButton) ClassType() TClass {
+    return SpeedButton_ClassType(s.instance)
+}
+
 func (s *TSpeedButton) ClassName() string {
     return SpeedButton_ClassName(s.instance)
+}
+
+func (s *TSpeedButton) InstanceSize() int32 {
+    return SpeedButton_InstanceSize(s.instance)
+}
+
+func (s *TSpeedButton) InheritsFrom(AClass TClass) bool {
+    return SpeedButton_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TSpeedButton) Equals(Obj IObject) bool {

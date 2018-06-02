@@ -52,6 +52,10 @@ func (f *TFont) IsValid() bool {
     return f.instance != 0
 }
 
+func TFontClass() TClass {
+    return Font_StaticClassType()
+}
+
 func (f *TFont) Assign(Source IObject) {
     Font_Assign(f.instance, CheckPtr(Source))
 }
@@ -64,8 +68,24 @@ func (f *TFont) GetNamePath() string {
     return Font_GetNamePath(f.instance)
 }
 
+func (f *TFont) DisposeOf() {
+    Font_DisposeOf(f.instance)
+}
+
+func (f *TFont) ClassType() TClass {
+    return Font_ClassType(f.instance)
+}
+
 func (f *TFont) ClassName() string {
     return Font_ClassName(f.instance)
+}
+
+func (f *TFont) InstanceSize() int32 {
+    return Font_InstanceSize(f.instance)
+}
+
+func (f *TFont) InheritsFrom(AClass TClass) bool {
+    return Font_InheritsFrom(f.instance, AClass)
 }
 
 func (f *TFont) Equals(Obj IObject) bool {

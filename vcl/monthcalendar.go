@@ -53,6 +53,10 @@ func (m *TMonthCalendar) IsValid() bool {
     return m.instance != 0
 }
 
+func TMonthCalendarClass() TClass {
+    return MonthCalendar_StaticClassType()
+}
+
 func (m *TMonthCalendar) CanFocus() bool {
     return MonthCalendar_CanFocus(m.instance)
 }
@@ -165,8 +169,24 @@ func (m *TMonthCalendar) Assign(Source IObject) {
     MonthCalendar_Assign(m.instance, CheckPtr(Source))
 }
 
+func (m *TMonthCalendar) DisposeOf() {
+    MonthCalendar_DisposeOf(m.instance)
+}
+
+func (m *TMonthCalendar) ClassType() TClass {
+    return MonthCalendar_ClassType(m.instance)
+}
+
 func (m *TMonthCalendar) ClassName() string {
     return MonthCalendar_ClassName(m.instance)
+}
+
+func (m *TMonthCalendar) InstanceSize() int32 {
+    return MonthCalendar_InstanceSize(m.instance)
+}
+
+func (m *TMonthCalendar) InheritsFrom(AClass TClass) bool {
+    return MonthCalendar_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMonthCalendar) Equals(Obj IObject) bool {

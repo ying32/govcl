@@ -52,6 +52,10 @@ func (b *TBalloonHint) IsValid() bool {
     return b.instance != 0
 }
 
+func TBalloonHintClass() TClass {
+    return BalloonHint_StaticClassType()
+}
+
 func (b *TBalloonHint) ShowHint() {
     BalloonHint_ShowHint(b.instance)
 }
@@ -76,8 +80,24 @@ func (b *TBalloonHint) Assign(Source IObject) {
     BalloonHint_Assign(b.instance, CheckPtr(Source))
 }
 
+func (b *TBalloonHint) DisposeOf() {
+    BalloonHint_DisposeOf(b.instance)
+}
+
+func (b *TBalloonHint) ClassType() TClass {
+    return BalloonHint_ClassType(b.instance)
+}
+
 func (b *TBalloonHint) ClassName() string {
     return BalloonHint_ClassName(b.instance)
+}
+
+func (b *TBalloonHint) InstanceSize() int32 {
+    return BalloonHint_InstanceSize(b.instance)
+}
+
+func (b *TBalloonHint) InheritsFrom(AClass TClass) bool {
+    return BalloonHint_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TBalloonHint) Equals(Obj IObject) bool {

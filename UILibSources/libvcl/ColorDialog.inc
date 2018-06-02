@@ -40,9 +40,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ColorDialog_DisposeOf(AObj: TColorDialog); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ColorDialog_ClassType(AObj: TColorDialog): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ColorDialog_ClassName(AObj: TColorDialog): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ColorDialog_InstanceSize(AObj: TColorDialog): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ColorDialog_InheritsFrom(AObj: TColorDialog; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ColorDialog_Equals(AObj: TColorDialog; Obj: TObject): LongBool; stdcall;
@@ -154,6 +174,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ColorDialog_StaticClassType: TClass; stdcall;
+begin
+  Result := TColorDialog;
+end;
 
 exports
   ColorDialog_Create,
@@ -163,7 +187,11 @@ exports
   ColorDialog_GetNamePath,
   ColorDialog_HasParent,
   ColorDialog_Assign,
+  ColorDialog_DisposeOf,
+  ColorDialog_ClassType,
   ColorDialog_ClassName,
+  ColorDialog_InstanceSize,
+  ColorDialog_InheritsFrom,
   ColorDialog_Equals,
   ColorDialog_GetHashCode,
   ColorDialog_ToString,
@@ -182,5 +210,6 @@ exports
   ColorDialog_SetName,
   ColorDialog_GetTag,
   ColorDialog_SetTag,
-  ColorDialog_GetComponents;
+  ColorDialog_GetComponents,
+  ColorDialog_StaticClassType;
 

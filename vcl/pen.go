@@ -52,6 +52,10 @@ func (p *TPen) IsValid() bool {
     return p.instance != 0
 }
 
+func TPenClass() TClass {
+    return Pen_StaticClassType()
+}
+
 func (p *TPen) Assign(Source IObject) {
     Pen_Assign(p.instance, CheckPtr(Source))
 }
@@ -64,8 +68,24 @@ func (p *TPen) GetNamePath() string {
     return Pen_GetNamePath(p.instance)
 }
 
+func (p *TPen) DisposeOf() {
+    Pen_DisposeOf(p.instance)
+}
+
+func (p *TPen) ClassType() TClass {
+    return Pen_ClassType(p.instance)
+}
+
 func (p *TPen) ClassName() string {
     return Pen_ClassName(p.instance)
+}
+
+func (p *TPen) InstanceSize() int32 {
+    return Pen_InstanceSize(p.instance)
+}
+
+func (p *TPen) InheritsFrom(AClass TClass) bool {
+    return Pen_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPen) Equals(Obj IObject) bool {

@@ -155,9 +155,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function GroupBox_ClassType(AObj: TGroupBox): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function GroupBox_ClassName(AObj: TGroupBox): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function GroupBox_InstanceSize(AObj: TGroupBox): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function GroupBox_InheritsFrom(AObj: TGroupBox; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function GroupBox_Equals(AObj: TGroupBox; Obj: TObject): LongBool; extdecl;
@@ -796,6 +811,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function GroupBox_StaticClassType: TClass; extdecl;
+begin
+  Result := TGroupBox;
+end;
 
 exports
   GroupBox_Create,
@@ -828,7 +847,10 @@ exports
   GroupBox_FindComponent,
   GroupBox_GetNamePath,
   GroupBox_Assign,
+  GroupBox_ClassType,
   GroupBox_ClassName,
+  GroupBox_InstanceSize,
+  GroupBox_InheritsFrom,
   GroupBox_Equals,
   GroupBox_GetHashCode,
   GroupBox_ToString,
@@ -930,5 +952,6 @@ exports
   GroupBox_GetTag,
   GroupBox_SetTag,
   GroupBox_GetControls,
-  GroupBox_GetComponents;
+  GroupBox_GetComponents,
+  GroupBox_StaticClassType;
 

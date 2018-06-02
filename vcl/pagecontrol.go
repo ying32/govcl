@@ -52,6 +52,10 @@ func (p *TPageControl) IsValid() bool {
     return p.instance != 0
 }
 
+func TPageControlClass() TClass {
+    return PageControl_StaticClassType()
+}
+
 func (p *TPageControl) SelectNextPage(GoForward bool, CheckTabVisible bool) {
     PageControl_SelectNextPage(p.instance, GoForward , CheckTabVisible)
 }
@@ -176,8 +180,24 @@ func (p *TPageControl) Assign(Source IObject) {
     PageControl_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPageControl) DisposeOf() {
+    PageControl_DisposeOf(p.instance)
+}
+
+func (p *TPageControl) ClassType() TClass {
+    return PageControl_ClassType(p.instance)
+}
+
 func (p *TPageControl) ClassName() string {
     return PageControl_ClassName(p.instance)
+}
+
+func (p *TPageControl) InstanceSize() int32 {
+    return PageControl_InstanceSize(p.instance)
+}
+
+func (p *TPageControl) InheritsFrom(AClass TClass) bool {
+    return PageControl_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPageControl) Equals(Obj IObject) bool {

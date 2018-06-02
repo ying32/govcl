@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TStatusPanels struct {
@@ -49,6 +50,10 @@ func (s *TStatusPanels) Instance() uintptr {
 
 func (s *TStatusPanels) IsValid() bool {
     return s.instance != 0
+}
+
+func TStatusPanelsClass() TClass {
+    return StatusPanels_StaticClassType()
 }
 
 func (s *TStatusPanels) Add() *TStatusPanel {
@@ -91,8 +96,24 @@ func (s *TStatusPanels) GetNamePath() string {
     return StatusPanels_GetNamePath(s.instance)
 }
 
+func (s *TStatusPanels) DisposeOf() {
+    StatusPanels_DisposeOf(s.instance)
+}
+
+func (s *TStatusPanels) ClassType() TClass {
+    return StatusPanels_ClassType(s.instance)
+}
+
 func (s *TStatusPanels) ClassName() string {
     return StatusPanels_ClassName(s.instance)
+}
+
+func (s *TStatusPanels) InstanceSize() int32 {
+    return StatusPanels_InstanceSize(s.instance)
+}
+
+func (s *TStatusPanels) InheritsFrom(AClass TClass) bool {
+    return StatusPanels_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStatusPanels) Equals(Obj IObject) bool {

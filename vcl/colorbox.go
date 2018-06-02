@@ -52,6 +52,10 @@ func (c *TColorBox) IsValid() bool {
     return c.instance != 0
 }
 
+func TColorBoxClass() TClass {
+    return ColorBox_StaticClassType()
+}
+
 func (c *TColorBox) AddItem(Item string, AObject IObject) {
     ColorBox_AddItem(c.instance, Item , CheckPtr(AObject))
 }
@@ -184,8 +188,24 @@ func (c *TColorBox) Assign(Source IObject) {
     ColorBox_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TColorBox) DisposeOf() {
+    ColorBox_DisposeOf(c.instance)
+}
+
+func (c *TColorBox) ClassType() TClass {
+    return ColorBox_ClassType(c.instance)
+}
+
 func (c *TColorBox) ClassName() string {
     return ColorBox_ClassName(c.instance)
+}
+
+func (c *TColorBox) InstanceSize() int32 {
+    return ColorBox_InstanceSize(c.instance)
+}
+
+func (c *TColorBox) InheritsFrom(AClass TClass) bool {
+    return ColorBox_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TColorBox) Equals(Obj IObject) bool {

@@ -52,6 +52,10 @@ func (l *TListView) IsValid() bool {
     return l.instance != 0
 }
 
+func TListViewClass() TClass {
+    return ListView_StaticClassType()
+}
+
 func (l *TListView) AddItem(Item string, AObject IObject) {
     ListView_AddItem(l.instance, Item , CheckPtr(AObject))
 }
@@ -204,8 +208,24 @@ func (l *TListView) Assign(Source IObject) {
     ListView_Assign(l.instance, CheckPtr(Source))
 }
 
+func (l *TListView) DisposeOf() {
+    ListView_DisposeOf(l.instance)
+}
+
+func (l *TListView) ClassType() TClass {
+    return ListView_ClassType(l.instance)
+}
+
 func (l *TListView) ClassName() string {
     return ListView_ClassName(l.instance)
+}
+
+func (l *TListView) InstanceSize() int32 {
+    return ListView_InstanceSize(l.instance)
+}
+
+func (l *TListView) InheritsFrom(AClass TClass) bool {
+    return ListView_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListView) Equals(Obj IObject) bool {

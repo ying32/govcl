@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ScrollBox_DisposeOf(AObj: TScrollBox); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ScrollBox_ClassType(AObj: TScrollBox): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ScrollBox_ClassName(AObj: TScrollBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ScrollBox_InstanceSize(AObj: TScrollBox): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ScrollBox_InheritsFrom(AObj: TScrollBox; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ScrollBox_Equals(AObj: TScrollBox; Obj: TObject): LongBool; stdcall;
@@ -984,6 +1004,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ScrollBox_StaticClassType: TClass; stdcall;
+begin
+  Result := TScrollBox;
+end;
 
 exports
   ScrollBox_Create,
@@ -1016,7 +1040,11 @@ exports
   ScrollBox_FindComponent,
   ScrollBox_GetNamePath,
   ScrollBox_Assign,
+  ScrollBox_DisposeOf,
+  ScrollBox_ClassType,
   ScrollBox_ClassName,
+  ScrollBox_InstanceSize,
+  ScrollBox_InheritsFrom,
   ScrollBox_Equals,
   ScrollBox_GetHashCode,
   ScrollBox_ToString,
@@ -1150,5 +1178,6 @@ exports
   ScrollBox_GetTag,
   ScrollBox_SetTag,
   ScrollBox_GetControls,
-  ScrollBox_GetComponents;
+  ScrollBox_GetComponents,
+  ScrollBox_StaticClassType;
 

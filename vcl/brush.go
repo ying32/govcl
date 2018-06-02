@@ -52,6 +52,10 @@ func (b *TBrush) IsValid() bool {
     return b.instance != 0
 }
 
+func TBrushClass() TClass {
+    return Brush_StaticClassType()
+}
+
 func (b *TBrush) Assign(Source IObject) {
     Brush_Assign(b.instance, CheckPtr(Source))
 }
@@ -64,8 +68,24 @@ func (b *TBrush) GetNamePath() string {
     return Brush_GetNamePath(b.instance)
 }
 
+func (b *TBrush) DisposeOf() {
+    Brush_DisposeOf(b.instance)
+}
+
+func (b *TBrush) ClassType() TClass {
+    return Brush_ClassType(b.instance)
+}
+
 func (b *TBrush) ClassName() string {
     return Brush_ClassName(b.instance)
+}
+
+func (b *TBrush) InstanceSize() int32 {
+    return Brush_InstanceSize(b.instance)
+}
+
+func (b *TBrush) InheritsFrom(AClass TClass) bool {
+    return Brush_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TBrush) Equals(Obj IObject) bool {

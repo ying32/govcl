@@ -72,9 +72,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure Bitmap_DisposeOf(AObj: TBitmap); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Bitmap_ClassType(AObj: TBitmap): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Bitmap_ClassName(AObj: TBitmap): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Bitmap_InstanceSize(AObj: TBitmap): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Bitmap_InheritsFrom(AObj: TBitmap; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Bitmap_GetHashCode(AObj: TBitmap): Integer; stdcall;
@@ -194,6 +214,10 @@ begin
   Result :=  AObj.ScanLine[Row];
 end;
 
+function Bitmap_StaticClassType: TClass; stdcall;
+begin
+  Result := TBitmap;
+end;
 
 exports
   Bitmap_Create,
@@ -209,7 +233,11 @@ exports
   Bitmap_LoadFromFile,
   Bitmap_SaveToFile,
   Bitmap_GetNamePath,
+  Bitmap_DisposeOf,
+  Bitmap_ClassType,
   Bitmap_ClassName,
+  Bitmap_InstanceSize,
+  Bitmap_InheritsFrom,
   Bitmap_GetHashCode,
   Bitmap_ToString,
   Bitmap_GetCanvas,
@@ -231,5 +259,6 @@ exports
   Bitmap_GetWidth,
   Bitmap_SetWidth,
   Bitmap_SetOnChange,
-  Bitmap_GetScanLine;
+  Bitmap_GetScanLine,
+  Bitmap_StaticClassType;
 

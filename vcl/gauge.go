@@ -52,6 +52,10 @@ func (g *TGauge) IsValid() bool {
     return g.instance != 0
 }
 
+func TGaugeClass() TClass {
+    return Gauge_StaticClassType()
+}
+
 func (g *TGauge) AddProgress(Value int32) {
     Gauge_AddProgress(g.instance, Value)
 }
@@ -140,8 +144,24 @@ func (g *TGauge) Assign(Source IObject) {
     Gauge_Assign(g.instance, CheckPtr(Source))
 }
 
+func (g *TGauge) DisposeOf() {
+    Gauge_DisposeOf(g.instance)
+}
+
+func (g *TGauge) ClassType() TClass {
+    return Gauge_ClassType(g.instance)
+}
+
 func (g *TGauge) ClassName() string {
     return Gauge_ClassName(g.instance)
+}
+
+func (g *TGauge) InstanceSize() int32 {
+    return Gauge_InstanceSize(g.instance)
+}
+
+func (g *TGauge) InheritsFrom(AClass TClass) bool {
+    return Gauge_InheritsFrom(g.instance, AClass)
 }
 
 func (g *TGauge) Equals(Obj IObject) bool {

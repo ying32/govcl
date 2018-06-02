@@ -52,6 +52,10 @@ func (b *TBitBtn) IsValid() bool {
     return b.instance != 0
 }
 
+func TBitBtnClass() TClass {
+    return BitBtn_StaticClassType()
+}
+
 func (b *TBitBtn) Click() {
     BitBtn_Click(b.instance)
 }
@@ -168,8 +172,24 @@ func (b *TBitBtn) Assign(Source IObject) {
     BitBtn_Assign(b.instance, CheckPtr(Source))
 }
 
+func (b *TBitBtn) DisposeOf() {
+    BitBtn_DisposeOf(b.instance)
+}
+
+func (b *TBitBtn) ClassType() TClass {
+    return BitBtn_ClassType(b.instance)
+}
+
 func (b *TBitBtn) ClassName() string {
     return BitBtn_ClassName(b.instance)
+}
+
+func (b *TBitBtn) InstanceSize() int32 {
+    return BitBtn_InstanceSize(b.instance)
+}
+
+func (b *TBitBtn) InheritsFrom(AClass TClass) bool {
+    return BitBtn_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TBitBtn) Equals(Obj IObject) bool {

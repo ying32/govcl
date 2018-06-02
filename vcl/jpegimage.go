@@ -52,6 +52,10 @@ func (j *TJPEGImage) IsValid() bool {
     return j.instance != 0
 }
 
+func TJPEGImageClass() TClass {
+    return JPEGImage_StaticClassType()
+}
+
 func (j *TJPEGImage) Assign(Source IObject) {
     JPEGImage_Assign(j.instance, CheckPtr(Source))
 }
@@ -84,8 +88,24 @@ func (j *TJPEGImage) GetNamePath() string {
     return JPEGImage_GetNamePath(j.instance)
 }
 
+func (j *TJPEGImage) DisposeOf() {
+    JPEGImage_DisposeOf(j.instance)
+}
+
+func (j *TJPEGImage) ClassType() TClass {
+    return JPEGImage_ClassType(j.instance)
+}
+
 func (j *TJPEGImage) ClassName() string {
     return JPEGImage_ClassName(j.instance)
+}
+
+func (j *TJPEGImage) InstanceSize() int32 {
+    return JPEGImage_InstanceSize(j.instance)
+}
+
+func (j *TJPEGImage) InheritsFrom(AClass TClass) bool {
+    return JPEGImage_InheritsFrom(j.instance, AClass)
 }
 
 func (j *TJPEGImage) GetHashCode() int32 {

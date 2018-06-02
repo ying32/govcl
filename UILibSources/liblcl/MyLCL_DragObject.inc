@@ -25,9 +25,24 @@ begin
   AObj.ShowDragImage;
 end;
 
+function DragObject_ClassType(AObj: TDragObject): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function DragObject_ClassName(AObj: TDragObject): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function DragObject_InstanceSize(AObj: TDragObject): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function DragObject_InheritsFrom(AObj: TDragObject; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function DragObject_Equals(AObj: TDragObject; Obj: TObject): LongBool; extdecl;
@@ -80,13 +95,20 @@ begin
   Result :=  AObj.Dropped;
 end;
 
+function DragObject_StaticClassType: TClass; extdecl;
+begin
+  Result := TDragObject;
+end;
 
 exports
   DragObject_Create,
   DragObject_Free,
   DragObject_HideDragImage,
   DragObject_ShowDragImage,
+  DragObject_ClassType,
   DragObject_ClassName,
+  DragObject_InstanceSize,
+  DragObject_InheritsFrom,
   DragObject_Equals,
   DragObject_GetHashCode,
   DragObject_ToString,
@@ -96,5 +118,6 @@ exports
   DragObject_SetDragPos,
   DragObject_GetDragTargetPos,
   DragObject_SetDragTargetPos,
-  DragObject_GetDropped;
+  DragObject_GetDropped,
+  DragObject_StaticClassType;
 

@@ -52,6 +52,10 @@ func (l *TListItem) IsValid() bool {
     return l.instance != 0
 }
 
+func TListItemClass() TClass {
+    return ListItem_StaticClassType()
+}
+
 func (l *TListItem) Assign(Source IObject) {
     ListItem_Assign(l.instance, CheckPtr(Source))
 }
@@ -88,8 +92,24 @@ func (l *TListItem) GetNamePath() string {
     return ListItem_GetNamePath(l.instance)
 }
 
+func (l *TListItem) DisposeOf() {
+    ListItem_DisposeOf(l.instance)
+}
+
+func (l *TListItem) ClassType() TClass {
+    return ListItem_ClassType(l.instance)
+}
+
 func (l *TListItem) ClassName() string {
     return ListItem_ClassName(l.instance)
+}
+
+func (l *TListItem) InstanceSize() int32 {
+    return ListItem_InstanceSize(l.instance)
+}
+
+func (l *TListItem) InheritsFrom(AClass TClass) bool {
+    return ListItem_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListItem) Equals(Obj IObject) bool {

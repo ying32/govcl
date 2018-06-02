@@ -125,9 +125,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Gauge_ClassType(AObj: TGauge): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Gauge_ClassName(AObj: TGauge): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Gauge_InstanceSize(AObj: TGauge): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Gauge_InheritsFrom(AObj: TGauge; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Gauge_Equals(AObj: TGauge; Obj: TObject): LongBool; extdecl;
@@ -505,6 +520,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Gauge_StaticClassType: TClass; extdecl;
+begin
+  Result := TGauge;
+end;
 
 exports
   Gauge_Create,
@@ -531,7 +550,10 @@ exports
   Gauge_FindComponent,
   Gauge_GetNamePath,
   Gauge_Assign,
+  Gauge_ClassType,
   Gauge_ClassName,
+  Gauge_InstanceSize,
+  Gauge_InheritsFrom,
   Gauge_Equals,
   Gauge_GetHashCode,
   Gauge_ToString,
@@ -606,5 +628,6 @@ exports
   Gauge_SetName,
   Gauge_GetTag,
   Gauge_SetTag,
-  Gauge_GetComponents;
+  Gauge_GetComponents,
+  Gauge_StaticClassType;
 

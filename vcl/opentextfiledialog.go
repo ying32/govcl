@@ -52,6 +52,10 @@ func (o *TOpenTextFileDialog) IsValid() bool {
     return o.instance != 0
 }
 
+func TOpenTextFileDialogClass() TClass {
+    return OpenTextFileDialog_StaticClassType()
+}
+
 func (o *TOpenTextFileDialog) Execute() bool {
     return OpenTextFileDialog_Execute(o.instance)
 }
@@ -72,8 +76,24 @@ func (o *TOpenTextFileDialog) Assign(Source IObject) {
     OpenTextFileDialog_Assign(o.instance, CheckPtr(Source))
 }
 
+func (o *TOpenTextFileDialog) DisposeOf() {
+    OpenTextFileDialog_DisposeOf(o.instance)
+}
+
+func (o *TOpenTextFileDialog) ClassType() TClass {
+    return OpenTextFileDialog_ClassType(o.instance)
+}
+
 func (o *TOpenTextFileDialog) ClassName() string {
     return OpenTextFileDialog_ClassName(o.instance)
+}
+
+func (o *TOpenTextFileDialog) InstanceSize() int32 {
+    return OpenTextFileDialog_InstanceSize(o.instance)
+}
+
+func (o *TOpenTextFileDialog) InheritsFrom(AClass TClass) bool {
+    return OpenTextFileDialog_InheritsFrom(o.instance, AClass)
 }
 
 func (o *TOpenTextFileDialog) Equals(Obj IObject) bool {

@@ -52,6 +52,10 @@ func (u *TUpDown) IsValid() bool {
     return u.instance != 0
 }
 
+func TUpDownClass() TClass {
+    return UpDown_StaticClassType()
+}
+
 func (u *TUpDown) CanFocus() bool {
     return UpDown_CanFocus(u.instance)
 }
@@ -164,8 +168,24 @@ func (u *TUpDown) Assign(Source IObject) {
     UpDown_Assign(u.instance, CheckPtr(Source))
 }
 
+func (u *TUpDown) DisposeOf() {
+    UpDown_DisposeOf(u.instance)
+}
+
+func (u *TUpDown) ClassType() TClass {
+    return UpDown_ClassType(u.instance)
+}
+
 func (u *TUpDown) ClassName() string {
     return UpDown_ClassName(u.instance)
+}
+
+func (u *TUpDown) InstanceSize() int32 {
+    return UpDown_InstanceSize(u.instance)
+}
+
+func (u *TUpDown) InheritsFrom(AClass TClass) bool {
+    return UpDown_InheritsFrom(u.instance, AClass)
 }
 
 func (u *TUpDown) Equals(Obj IObject) bool {

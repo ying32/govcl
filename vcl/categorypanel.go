@@ -52,6 +52,10 @@ func (c *TCategoryPanel) IsValid() bool {
     return c.instance != 0
 }
 
+func TCategoryPanelClass() TClass {
+    return CategoryPanel_StaticClassType()
+}
+
 func (c *TCategoryPanel) Collapse() {
     CategoryPanel_Collapse(c.instance)
 }
@@ -172,8 +176,24 @@ func (c *TCategoryPanel) Assign(Source IObject) {
     CategoryPanel_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TCategoryPanel) DisposeOf() {
+    CategoryPanel_DisposeOf(c.instance)
+}
+
+func (c *TCategoryPanel) ClassType() TClass {
+    return CategoryPanel_ClassType(c.instance)
+}
+
 func (c *TCategoryPanel) ClassName() string {
     return CategoryPanel_ClassName(c.instance)
+}
+
+func (c *TCategoryPanel) InstanceSize() int32 {
+    return CategoryPanel_InstanceSize(c.instance)
+}
+
+func (c *TCategoryPanel) InheritsFrom(AClass TClass) bool {
+    return CategoryPanel_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCategoryPanel) Equals(Obj IObject) bool {

@@ -52,6 +52,10 @@ func (r *TRadioButton) IsValid() bool {
     return r.instance != 0
 }
 
+func TRadioButtonClass() TClass {
+    return RadioButton_StaticClassType()
+}
+
 func (r *TRadioButton) CanFocus() bool {
     return RadioButton_CanFocus(r.instance)
 }
@@ -164,8 +168,24 @@ func (r *TRadioButton) Assign(Source IObject) {
     RadioButton_Assign(r.instance, CheckPtr(Source))
 }
 
+func (r *TRadioButton) DisposeOf() {
+    RadioButton_DisposeOf(r.instance)
+}
+
+func (r *TRadioButton) ClassType() TClass {
+    return RadioButton_ClassType(r.instance)
+}
+
 func (r *TRadioButton) ClassName() string {
     return RadioButton_ClassName(r.instance)
+}
+
+func (r *TRadioButton) InstanceSize() int32 {
+    return RadioButton_InstanceSize(r.instance)
+}
+
+func (r *TRadioButton) InheritsFrom(AClass TClass) bool {
+    return RadioButton_InheritsFrom(r.instance, AClass)
 }
 
 func (r *TRadioButton) Equals(Obj IObject) bool {

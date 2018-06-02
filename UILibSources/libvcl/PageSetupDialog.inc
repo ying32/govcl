@@ -45,9 +45,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure PageSetupDialog_DisposeOf(AObj: TPageSetupDialog); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function PageSetupDialog_ClassType(AObj: TPageSetupDialog): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PageSetupDialog_ClassName(AObj: TPageSetupDialog): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function PageSetupDialog_InstanceSize(AObj: TPageSetupDialog): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PageSetupDialog_InheritsFrom(AObj: TPageSetupDialog; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PageSetupDialog_Equals(AObj: TPageSetupDialog; Obj: TObject): LongBool; stdcall;
@@ -259,6 +279,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PageSetupDialog_StaticClassType: TClass; stdcall;
+begin
+  Result := TPageSetupDialog;
+end;
 
 exports
   PageSetupDialog_Create,
@@ -269,7 +293,11 @@ exports
   PageSetupDialog_GetNamePath,
   PageSetupDialog_HasParent,
   PageSetupDialog_Assign,
+  PageSetupDialog_DisposeOf,
+  PageSetupDialog_ClassType,
   PageSetupDialog_ClassName,
+  PageSetupDialog_InstanceSize,
+  PageSetupDialog_InheritsFrom,
   PageSetupDialog_Equals,
   PageSetupDialog_GetHashCode,
   PageSetupDialog_ToString,
@@ -308,5 +336,6 @@ exports
   PageSetupDialog_SetName,
   PageSetupDialog_GetTag,
   PageSetupDialog_SetTag,
-  PageSetupDialog_GetComponents;
+  PageSetupDialog_GetComponents,
+  PageSetupDialog_StaticClassType;
 

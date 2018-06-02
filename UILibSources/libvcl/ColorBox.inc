@@ -180,9 +180,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ColorBox_DisposeOf(AObj: TColorBox); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ColorBox_ClassType(AObj: TColorBox): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ColorBox_ClassName(AObj: TColorBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ColorBox_InstanceSize(AObj: TColorBox): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ColorBox_InheritsFrom(AObj: TColorBox; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ColorBox_Equals(AObj: TColorBox; Obj: TObject): LongBool; stdcall;
@@ -1050,6 +1070,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ColorBox_StaticClassType: TClass; stdcall;
+begin
+  Result := TColorBox;
+end;
 
 exports
   ColorBox_Create,
@@ -1087,7 +1111,11 @@ exports
   ColorBox_FindComponent,
   ColorBox_GetNamePath,
   ColorBox_Assign,
+  ColorBox_DisposeOf,
+  ColorBox_ClassType,
   ColorBox_ClassName,
+  ColorBox_InstanceSize,
+  ColorBox_InheritsFrom,
   ColorBox_Equals,
   ColorBox_GetHashCode,
   ColorBox_ToString,
@@ -1239,5 +1267,6 @@ exports
   ColorBox_GetColors,
   ColorBox_GetColorNames,
   ColorBox_GetControls,
-  ColorBox_GetComponents;
+  ColorBox_GetComponents,
+  ColorBox_StaticClassType;
 

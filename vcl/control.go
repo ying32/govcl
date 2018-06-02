@@ -52,6 +52,10 @@ func (c *TControl) IsValid() bool {
     return c.instance != 0
 }
 
+func TControlClass() TClass {
+    return Control_StaticClassType()
+}
+
 func (c *TControl) BringToFront() {
     Control_BringToFront(c.instance)
 }
@@ -136,8 +140,24 @@ func (c *TControl) Assign(Source IObject) {
     Control_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TControl) DisposeOf() {
+    Control_DisposeOf(c.instance)
+}
+
+func (c *TControl) ClassType() TClass {
+    return Control_ClassType(c.instance)
+}
+
 func (c *TControl) ClassName() string {
     return Control_ClassName(c.instance)
+}
+
+func (c *TControl) InstanceSize() int32 {
+    return Control_InstanceSize(c.instance)
+}
+
+func (c *TControl) InheritsFrom(AClass TClass) bool {
+    return Control_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TControl) Equals(Obj IObject) bool {

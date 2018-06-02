@@ -52,6 +52,10 @@ func (h *THotKey) IsValid() bool {
     return h.instance != 0
 }
 
+func THotKeyClass() TClass {
+    return HotKey_StaticClassType()
+}
+
 func (h *THotKey) CanFocus() bool {
     return HotKey_CanFocus(h.instance)
 }
@@ -164,8 +168,24 @@ func (h *THotKey) Assign(Source IObject) {
     HotKey_Assign(h.instance, CheckPtr(Source))
 }
 
+func (h *THotKey) DisposeOf() {
+    HotKey_DisposeOf(h.instance)
+}
+
+func (h *THotKey) ClassType() TClass {
+    return HotKey_ClassType(h.instance)
+}
+
 func (h *THotKey) ClassName() string {
     return HotKey_ClassName(h.instance)
+}
+
+func (h *THotKey) InstanceSize() int32 {
+    return HotKey_InstanceSize(h.instance)
+}
+
+func (h *THotKey) InheritsFrom(AClass TClass) bool {
+    return HotKey_InheritsFrom(h.instance, AClass)
 }
 
 func (h *THotKey) Equals(Obj IObject) bool {

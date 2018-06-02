@@ -52,6 +52,10 @@ func (p *TPanel) IsValid() bool {
     return p.instance != 0
 }
 
+func TPanelClass() TClass {
+    return Panel_StaticClassType()
+}
+
 func (p *TPanel) CanFocus() bool {
     return Panel_CanFocus(p.instance)
 }
@@ -164,8 +168,24 @@ func (p *TPanel) Assign(Source IObject) {
     Panel_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPanel) DisposeOf() {
+    Panel_DisposeOf(p.instance)
+}
+
+func (p *TPanel) ClassType() TClass {
+    return Panel_ClassType(p.instance)
+}
+
 func (p *TPanel) ClassName() string {
     return Panel_ClassName(p.instance)
+}
+
+func (p *TPanel) InstanceSize() int32 {
+    return Panel_InstanceSize(p.instance)
+}
+
+func (p *TPanel) InheritsFrom(AClass TClass) bool {
+    return Panel_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPanel) Equals(Obj IObject) bool {

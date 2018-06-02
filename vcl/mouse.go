@@ -52,8 +52,28 @@ func (m *TMouse) IsValid() bool {
     return m.instance != 0
 }
 
+func TMouseClass() TClass {
+    return Mouse_StaticClassType()
+}
+
+func (m *TMouse) DisposeOf() {
+    Mouse_DisposeOf(m.instance)
+}
+
+func (m *TMouse) ClassType() TClass {
+    return Mouse_ClassType(m.instance)
+}
+
 func (m *TMouse) ClassName() string {
     return Mouse_ClassName(m.instance)
+}
+
+func (m *TMouse) InstanceSize() int32 {
+    return Mouse_InstanceSize(m.instance)
+}
+
+func (m *TMouse) InheritsFrom(AClass TClass) bool {
+    return Mouse_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMouse) Equals(Obj IObject) bool {

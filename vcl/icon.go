@@ -52,6 +52,10 @@ func (i *TIcon) IsValid() bool {
     return i.instance != 0
 }
 
+func TIconClass() TClass {
+    return Icon_StaticClassType()
+}
+
 func (i *TIcon) Assign(Source IObject) {
     Icon_Assign(i.instance, CheckPtr(Source))
 }
@@ -96,8 +100,24 @@ func (i *TIcon) GetNamePath() string {
     return Icon_GetNamePath(i.instance)
 }
 
+func (i *TIcon) DisposeOf() {
+    Icon_DisposeOf(i.instance)
+}
+
+func (i *TIcon) ClassType() TClass {
+    return Icon_ClassType(i.instance)
+}
+
 func (i *TIcon) ClassName() string {
     return Icon_ClassName(i.instance)
+}
+
+func (i *TIcon) InstanceSize() int32 {
+    return Icon_InstanceSize(i.instance)
+}
+
+func (i *TIcon) InheritsFrom(AClass TClass) bool {
+    return Icon_InheritsFrom(i.instance, AClass)
 }
 
 func (i *TIcon) GetHashCode() int32 {

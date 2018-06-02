@@ -52,6 +52,10 @@ func (b *TButton) IsValid() bool {
     return b.instance != 0
 }
 
+func TButtonClass() TClass {
+    return Button_StaticClassType()
+}
+
 func (b *TButton) Click() {
     Button_Click(b.instance)
 }
@@ -168,8 +172,24 @@ func (b *TButton) Assign(Source IObject) {
     Button_Assign(b.instance, CheckPtr(Source))
 }
 
+func (b *TButton) DisposeOf() {
+    Button_DisposeOf(b.instance)
+}
+
+func (b *TButton) ClassType() TClass {
+    return Button_ClassType(b.instance)
+}
+
 func (b *TButton) ClassName() string {
     return Button_ClassName(b.instance)
+}
+
+func (b *TButton) InstanceSize() int32 {
+    return Button_InstanceSize(b.instance)
+}
+
+func (b *TButton) InheritsFrom(AClass TClass) bool {
+    return Button_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TButton) Equals(Obj IObject) bool {

@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type Exception struct {
@@ -38,12 +39,32 @@ func (e *Exception) IsValid() bool {
     return e.instance != 0
 }
 
+func ExceptionClass() TClass {
+    return Exception_StaticClassType()
+}
+
 func (e *Exception) ToString() string {
     return Exception_ToString(e.instance)
 }
 
+func (e *Exception) DisposeOf() {
+    Exception_DisposeOf(e.instance)
+}
+
+func (e *Exception) ClassType() TClass {
+    return Exception_ClassType(e.instance)
+}
+
 func (e *Exception) ClassName() string {
     return Exception_ClassName(e.instance)
+}
+
+func (e *Exception) InstanceSize() int32 {
+    return Exception_InstanceSize(e.instance)
+}
+
+func (e *Exception) InheritsFrom(AClass TClass) bool {
+    return Exception_InheritsFrom(e.instance, AClass)
 }
 
 func (e *Exception) Equals(Obj IObject) bool {

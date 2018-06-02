@@ -45,9 +45,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function ListItem_ClassType(AObj: TListItem): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ListItem_ClassName(AObj: TListItem): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function ListItem_InstanceSize(AObj: TListItem): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ListItem_InheritsFrom(AObj: TListItem; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ListItem_Equals(AObj: TListItem; Obj: TObject): LongBool; extdecl;
@@ -205,6 +220,10 @@ begin
   AObj.SubItemImages[Index] := AValue;
 end;
 
+function ListItem_StaticClassType: TClass; extdecl;
+begin
+  Result := TListItem;
+end;
 
 exports
   ListItem_Create,
@@ -215,7 +234,10 @@ exports
   ListItem_EditCaption,
   ListItem_MakeVisible,
   ListItem_GetNamePath,
+  ListItem_ClassType,
   ListItem_ClassName,
+  ListItem_InstanceSize,
+  ListItem_InheritsFrom,
   ListItem_Equals,
   ListItem_GetHashCode,
   ListItem_ToString,
@@ -246,5 +268,6 @@ exports
   ListItem_GetTop,
   ListItem_SetTop,
   ListItem_GetSubItemImages,
-  ListItem_SetSubItemImages;
+  ListItem_SetSubItemImages,
+  ListItem_StaticClassType;
 

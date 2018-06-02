@@ -40,9 +40,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function OpenDialog_ClassType(AObj: TOpenDialog): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function OpenDialog_ClassName(AObj: TOpenDialog): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function OpenDialog_InstanceSize(AObj: TOpenDialog): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function OpenDialog_InheritsFrom(AObj: TOpenDialog; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function OpenDialog_Equals(AObj: TOpenDialog; Obj: TObject): LongBool; extdecl;
@@ -209,6 +224,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function OpenDialog_StaticClassType: TClass; extdecl;
+begin
+  Result := TOpenDialog;
+end;
 
 exports
   OpenDialog_Create,
@@ -218,7 +237,10 @@ exports
   OpenDialog_GetNamePath,
   OpenDialog_HasParent,
   OpenDialog_Assign,
+  OpenDialog_ClassType,
   OpenDialog_ClassName,
+  OpenDialog_InstanceSize,
+  OpenDialog_InheritsFrom,
   OpenDialog_Equals,
   OpenDialog_GetHashCode,
   OpenDialog_ToString,
@@ -248,5 +270,6 @@ exports
   OpenDialog_SetName,
   OpenDialog_GetTag,
   OpenDialog_SetTag,
-  OpenDialog_GetComponents;
+  OpenDialog_GetComponents,
+  OpenDialog_StaticClassType;
 

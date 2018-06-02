@@ -65,9 +65,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure StatusPanels_DisposeOf(AObj: TStatusPanels); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function StatusPanels_ClassType(AObj: TStatusPanels): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function StatusPanels_ClassName(AObj: TStatusPanels): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function StatusPanels_InstanceSize(AObj: TStatusPanels): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function StatusPanels_InheritsFrom(AObj: TStatusPanels; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function StatusPanels_Equals(AObj: TStatusPanels; Obj: TObject): LongBool; stdcall;
@@ -110,6 +130,10 @@ begin
   AObj.Items[Index] := AValue;
 end;
 
+function StatusPanels_StaticClassType: TClass; stdcall;
+begin
+  Result := TStatusPanels;
+end;
 
 exports
   StatusPanels_Create,
@@ -124,7 +148,11 @@ exports
   StatusPanels_Delete,
   StatusPanels_EndUpdate,
   StatusPanels_GetNamePath,
+  StatusPanels_DisposeOf,
+  StatusPanels_ClassType,
   StatusPanels_ClassName,
+  StatusPanels_InstanceSize,
+  StatusPanels_InheritsFrom,
   StatusPanels_Equals,
   StatusPanels_GetHashCode,
   StatusPanels_ToString,
@@ -132,5 +160,6 @@ exports
   StatusPanels_SetCapacity,
   StatusPanels_GetCount,
   StatusPanels_GetItems,
-  StatusPanels_SetItems;
+  StatusPanels_SetItems,
+  StatusPanels_StaticClassType;
 

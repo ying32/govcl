@@ -52,6 +52,10 @@ func (p *TPngImage) IsValid() bool {
     return p.instance != 0
 }
 
+func TPngImageClass() TClass {
+    return PngImage_StaticClassType()
+}
+
 func (p *TPngImage) Assign(Source IObject) {
     PngImage_Assign(p.instance, CheckPtr(Source))
 }
@@ -92,8 +96,24 @@ func (p *TPngImage) GetNamePath() string {
     return PngImage_GetNamePath(p.instance)
 }
 
+func (p *TPngImage) DisposeOf() {
+    PngImage_DisposeOf(p.instance)
+}
+
+func (p *TPngImage) ClassType() TClass {
+    return PngImage_ClassType(p.instance)
+}
+
 func (p *TPngImage) ClassName() string {
     return PngImage_ClassName(p.instance)
+}
+
+func (p *TPngImage) InstanceSize() int32 {
+    return PngImage_InstanceSize(p.instance)
+}
+
+func (p *TPngImage) InheritsFrom(AClass TClass) bool {
+    return PngImage_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPngImage) GetHashCode() int32 {

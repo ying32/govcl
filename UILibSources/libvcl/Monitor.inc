@@ -15,9 +15,29 @@ begin
   AObj.Free;
 end;
 
+procedure Monitor_DisposeOf(AObj: TMonitor); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Monitor_ClassType(AObj: TMonitor): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Monitor_ClassName(AObj: TMonitor): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Monitor_InstanceSize(AObj: TMonitor): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Monitor_InheritsFrom(AObj: TMonitor; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Monitor_Equals(AObj: TMonitor; Obj: TObject): LongBool; stdcall;
@@ -85,11 +105,19 @@ begin
   Result :=  AObj.PixelsPerInch;
 end;
 
+function Monitor_StaticClassType: TClass; stdcall;
+begin
+  Result := TMonitor;
+end;
 
 exports
   Monitor_Create,
   Monitor_Free,
+  Monitor_DisposeOf,
+  Monitor_ClassType,
   Monitor_ClassName,
+  Monitor_InstanceSize,
+  Monitor_InheritsFrom,
   Monitor_Equals,
   Monitor_GetHashCode,
   Monitor_ToString,
@@ -102,5 +130,6 @@ exports
   Monitor_GetBoundsRect,
   Monitor_GetWorkareaRect,
   Monitor_GetPrimary,
-  Monitor_GetPixelsPerInch;
+  Monitor_GetPixelsPerInch,
+  Monitor_StaticClassType;
 

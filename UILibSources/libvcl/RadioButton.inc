@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure RadioButton_DisposeOf(AObj: TRadioButton); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function RadioButton_ClassType(AObj: TRadioButton): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function RadioButton_ClassName(AObj: TRadioButton): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function RadioButton_InstanceSize(AObj: TRadioButton): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function RadioButton_InheritsFrom(AObj: TRadioButton; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function RadioButton_Equals(AObj: TRadioButton; Obj: TObject): LongBool; stdcall;
@@ -906,6 +926,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function RadioButton_StaticClassType: TClass; stdcall;
+begin
+  Result := TRadioButton;
+end;
 
 exports
   RadioButton_Create,
@@ -938,7 +962,11 @@ exports
   RadioButton_FindComponent,
   RadioButton_GetNamePath,
   RadioButton_Assign,
+  RadioButton_DisposeOf,
+  RadioButton_ClassType,
   RadioButton_ClassName,
+  RadioButton_InstanceSize,
+  RadioButton_InheritsFrom,
   RadioButton_Equals,
   RadioButton_GetHashCode,
   RadioButton_ToString,
@@ -1062,5 +1090,6 @@ exports
   RadioButton_GetTag,
   RadioButton_SetTag,
   RadioButton_GetControls,
-  RadioButton_GetComponents;
+  RadioButton_GetComponents,
+  RadioButton_StaticClassType;
 

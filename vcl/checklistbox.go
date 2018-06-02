@@ -52,6 +52,10 @@ func (c *TCheckListBox) IsValid() bool {
     return c.instance != 0
 }
 
+func TCheckListBoxClass() TClass {
+    return CheckListBox_StaticClassType()
+}
+
 func (c *TCheckListBox) CheckAll(AState TCheckBoxState, AllowGrayed bool, AllowDisabled bool) {
     CheckListBox_CheckAll(c.instance, AState , AllowGrayed , AllowDisabled)
 }
@@ -188,8 +192,24 @@ func (c *TCheckListBox) Assign(Source IObject) {
     CheckListBox_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TCheckListBox) DisposeOf() {
+    CheckListBox_DisposeOf(c.instance)
+}
+
+func (c *TCheckListBox) ClassType() TClass {
+    return CheckListBox_ClassType(c.instance)
+}
+
 func (c *TCheckListBox) ClassName() string {
     return CheckListBox_ClassName(c.instance)
+}
+
+func (c *TCheckListBox) InstanceSize() int32 {
+    return CheckListBox_InstanceSize(c.instance)
+}
+
+func (c *TCheckListBox) InheritsFrom(AClass TClass) bool {
+    return CheckListBox_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCheckListBox) Equals(Obj IObject) bool {

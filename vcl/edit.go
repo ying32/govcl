@@ -52,6 +52,10 @@ func (e *TEdit) IsValid() bool {
     return e.instance != 0
 }
 
+func TEditClass() TClass {
+    return Edit_StaticClassType()
+}
+
 func (e *TEdit) Clear() {
     Edit_Clear(e.instance)
 }
@@ -200,8 +204,24 @@ func (e *TEdit) Assign(Source IObject) {
     Edit_Assign(e.instance, CheckPtr(Source))
 }
 
+func (e *TEdit) DisposeOf() {
+    Edit_DisposeOf(e.instance)
+}
+
+func (e *TEdit) ClassType() TClass {
+    return Edit_ClassType(e.instance)
+}
+
 func (e *TEdit) ClassName() string {
     return Edit_ClassName(e.instance)
+}
+
+func (e *TEdit) InstanceSize() int32 {
+    return Edit_InstanceSize(e.instance)
+}
+
+func (e *TEdit) InheritsFrom(AClass TClass) bool {
+    return Edit_InheritsFrom(e.instance, AClass)
 }
 
 func (e *TEdit) Equals(Obj IObject) bool {

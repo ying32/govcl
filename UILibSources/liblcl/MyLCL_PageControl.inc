@@ -165,9 +165,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function PageControl_ClassType(AObj: TPageControl): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PageControl_ClassName(AObj: TPageControl): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function PageControl_InstanceSize(AObj: TPageControl): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PageControl_InheritsFrom(AObj: TPageControl; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PageControl_Equals(AObj: TPageControl; Obj: TObject): LongBool; extdecl;
@@ -856,6 +871,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PageControl_StaticClassType: TClass; extdecl;
+begin
+  Result := TPageControl;
+end;
 
 exports
   PageControl_Create,
@@ -890,7 +909,10 @@ exports
   PageControl_FindComponent,
   PageControl_GetNamePath,
   PageControl_Assign,
+  PageControl_ClassType,
   PageControl_ClassName,
+  PageControl_InstanceSize,
+  PageControl_InheritsFrom,
   PageControl_Equals,
   PageControl_GetHashCode,
   PageControl_ToString,
@@ -1002,5 +1024,6 @@ exports
   PageControl_SetTag,
   PageControl_GetPages,
   PageControl_GetControls,
-  PageControl_GetComponents;
+  PageControl_GetComponents,
+  PageControl_StaticClassType;
 

@@ -40,9 +40,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function PrinterSetupDialog_ClassType(AObj: TPrinterSetupDialog): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PrinterSetupDialog_ClassName(AObj: TPrinterSetupDialog): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function PrinterSetupDialog_InstanceSize(AObj: TPrinterSetupDialog): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PrinterSetupDialog_InheritsFrom(AObj: TPrinterSetupDialog; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PrinterSetupDialog_Equals(AObj: TPrinterSetupDialog; Obj: TObject): LongBool; extdecl;
@@ -134,6 +149,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PrinterSetupDialog_StaticClassType: TClass; extdecl;
+begin
+  Result := TPrinterSetupDialog;
+end;
 
 exports
   PrinterSetupDialog_Create,
@@ -143,7 +162,10 @@ exports
   PrinterSetupDialog_GetNamePath,
   PrinterSetupDialog_HasParent,
   PrinterSetupDialog_Assign,
+  PrinterSetupDialog_ClassType,
   PrinterSetupDialog_ClassName,
+  PrinterSetupDialog_InstanceSize,
+  PrinterSetupDialog_InheritsFrom,
   PrinterSetupDialog_Equals,
   PrinterSetupDialog_GetHashCode,
   PrinterSetupDialog_ToString,
@@ -158,5 +180,6 @@ exports
   PrinterSetupDialog_SetName,
   PrinterSetupDialog_GetTag,
   PrinterSetupDialog_SetTag,
-  PrinterSetupDialog_GetComponents;
+  PrinterSetupDialog_GetComponents,
+  PrinterSetupDialog_StaticClassType;
 

@@ -52,6 +52,10 @@ func (i *TImage) IsValid() bool {
     return i.instance != 0
 }
 
+func TImageClass() TClass {
+    return Image_StaticClassType()
+}
+
 func (i *TImage) BringToFront() {
     Image_BringToFront(i.instance)
 }
@@ -136,8 +140,24 @@ func (i *TImage) Assign(Source IObject) {
     Image_Assign(i.instance, CheckPtr(Source))
 }
 
+func (i *TImage) DisposeOf() {
+    Image_DisposeOf(i.instance)
+}
+
+func (i *TImage) ClassType() TClass {
+    return Image_ClassType(i.instance)
+}
+
 func (i *TImage) ClassName() string {
     return Image_ClassName(i.instance)
+}
+
+func (i *TImage) InstanceSize() int32 {
+    return Image_InstanceSize(i.instance)
+}
+
+func (i *TImage) InheritsFrom(AClass TClass) bool {
+    return Image_InheritsFrom(i.instance, AClass)
 }
 
 func (i *TImage) Equals(Obj IObject) bool {

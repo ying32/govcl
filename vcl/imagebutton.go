@@ -52,6 +52,10 @@ func (i *TImageButton) IsValid() bool {
     return i.instance != 0
 }
 
+func TImageButtonClass() TClass {
+    return ImageButton_StaticClassType()
+}
+
 func (i *TImageButton) Click() {
     ImageButton_Click(i.instance)
 }
@@ -140,8 +144,24 @@ func (i *TImageButton) Assign(Source IObject) {
     ImageButton_Assign(i.instance, CheckPtr(Source))
 }
 
+func (i *TImageButton) DisposeOf() {
+    ImageButton_DisposeOf(i.instance)
+}
+
+func (i *TImageButton) ClassType() TClass {
+    return ImageButton_ClassType(i.instance)
+}
+
 func (i *TImageButton) ClassName() string {
     return ImageButton_ClassName(i.instance)
+}
+
+func (i *TImageButton) InstanceSize() int32 {
+    return ImageButton_InstanceSize(i.instance)
+}
+
+func (i *TImageButton) InheritsFrom(AClass TClass) bool {
+    return ImageButton_InheritsFrom(i.instance, AClass)
 }
 
 func (i *TImageButton) Equals(Obj IObject) bool {

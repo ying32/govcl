@@ -120,9 +120,24 @@ begin
   Result :=  AObj.ValueExists(Section, Ident);
 end;
 
+function IniFile_ClassType(AObj: TIniFile): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function IniFile_ClassName(AObj: TIniFile): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function IniFile_InstanceSize(AObj: TIniFile): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function IniFile_InheritsFrom(AObj: TIniFile; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function IniFile_Equals(AObj: TIniFile; Obj: TObject): LongBool; extdecl;
@@ -145,6 +160,10 @@ begin
   Result :=  PChar(AObj.FileName);
 end;
 
+function IniFile_StaticClassType: TClass; extdecl;
+begin
+  Result := TIniFile;
+end;
 
 exports
   IniFile_Create,
@@ -170,9 +189,13 @@ exports
   IniFile_WriteFloat,
   IniFile_WriteTime,
   IniFile_ValueExists,
+  IniFile_ClassType,
   IniFile_ClassName,
+  IniFile_InstanceSize,
+  IniFile_InheritsFrom,
   IniFile_Equals,
   IniFile_GetHashCode,
   IniFile_ToString,
-  IniFile_GetFileName;
+  IniFile_GetFileName,
+  IniFile_StaticClassType;
 

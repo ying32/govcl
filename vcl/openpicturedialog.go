@@ -52,6 +52,10 @@ func (o *TOpenPictureDialog) IsValid() bool {
     return o.instance != 0
 }
 
+func TOpenPictureDialogClass() TClass {
+    return OpenPictureDialog_StaticClassType()
+}
+
 func (o *TOpenPictureDialog) Execute() bool {
     return OpenPictureDialog_Execute(o.instance)
 }
@@ -72,8 +76,24 @@ func (o *TOpenPictureDialog) Assign(Source IObject) {
     OpenPictureDialog_Assign(o.instance, CheckPtr(Source))
 }
 
+func (o *TOpenPictureDialog) DisposeOf() {
+    OpenPictureDialog_DisposeOf(o.instance)
+}
+
+func (o *TOpenPictureDialog) ClassType() TClass {
+    return OpenPictureDialog_ClassType(o.instance)
+}
+
 func (o *TOpenPictureDialog) ClassName() string {
     return OpenPictureDialog_ClassName(o.instance)
+}
+
+func (o *TOpenPictureDialog) InstanceSize() int32 {
+    return OpenPictureDialog_InstanceSize(o.instance)
+}
+
+func (o *TOpenPictureDialog) InheritsFrom(AClass TClass) bool {
+    return OpenPictureDialog_InheritsFrom(o.instance, AClass)
 }
 
 func (o *TOpenPictureDialog) Equals(Obj IObject) bool {

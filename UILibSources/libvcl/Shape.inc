@@ -120,9 +120,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Shape_DisposeOf(AObj: TShape); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Shape_ClassType(AObj: TShape): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Shape_ClassName(AObj: TShape): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Shape_InstanceSize(AObj: TShape): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Shape_InheritsFrom(AObj: TShape; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Shape_Equals(AObj: TShape; Obj: TObject): LongBool; stdcall;
@@ -627,6 +647,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Shape_StaticClassType: TClass; stdcall;
+begin
+  Result := TShape;
+end;
 
 exports
   Shape_Create,
@@ -652,7 +676,11 @@ exports
   Shape_FindComponent,
   Shape_GetNamePath,
   Shape_Assign,
+  Shape_DisposeOf,
+  Shape_ClassType,
   Shape_ClassName,
+  Shape_InstanceSize,
+  Shape_InheritsFrom,
   Shape_Equals,
   Shape_GetHashCode,
   Shape_ToString,
@@ -737,5 +765,6 @@ exports
   Shape_SetName,
   Shape_GetTag,
   Shape_SetTag,
-  Shape_GetComponents;
+  Shape_GetComponents,
+  Shape_StaticClassType;
 

@@ -15,9 +15,29 @@ begin
   AObj.Free;
 end;
 
+procedure Object_DisposeOf(AObj: TObject); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Object_ClassType(AObj: TObject): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Object_ClassName(AObj: TObject): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Object_InstanceSize(AObj: TObject): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Object_InheritsFrom(AObj: TObject; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Object_Equals(AObj: TObject; Obj: TObject): LongBool; stdcall;
@@ -35,12 +55,21 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function Object_StaticClassType: TClass; stdcall;
+begin
+  Result := TObject;
+end;
 
 exports
   Object_Create,
   Object_Free,
+  Object_DisposeOf,
+  Object_ClassType,
   Object_ClassName,
+  Object_InstanceSize,
+  Object_InheritsFrom,
   Object_Equals,
   Object_GetHashCode,
-  Object_ToString;
+  Object_ToString,
+  Object_StaticClassType;
 

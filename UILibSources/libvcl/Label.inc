@@ -120,9 +120,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Label_DisposeOf(AObj: TLabel); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Label_ClassType(AObj: TLabel): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Label_ClassName(AObj: TLabel): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Label_InstanceSize(AObj: TLabel): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Label_InheritsFrom(AObj: TLabel; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Label_Equals(AObj: TLabel; Obj: TObject): LongBool; stdcall;
@@ -766,6 +786,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Label_StaticClassType: TClass; stdcall;
+begin
+  Result := TLabel;
+end;
 
 exports
   Label_Create,
@@ -791,7 +815,11 @@ exports
   Label_FindComponent,
   Label_GetNamePath,
   Label_Assign,
+  Label_DisposeOf,
+  Label_ClassType,
   Label_ClassName,
+  Label_InstanceSize,
+  Label_InheritsFrom,
   Label_Equals,
   Label_GetHashCode,
   Label_ToString,
@@ -901,5 +929,6 @@ exports
   Label_SetName,
   Label_GetTag,
   Label_SetTag,
-  Label_GetComponents;
+  Label_GetComponents,
+  Label_StaticClassType;
 

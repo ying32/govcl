@@ -30,9 +30,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure Margins_DisposeOf(AObj: TMargins); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Margins_ClassType(AObj: TMargins): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Margins_ClassName(AObj: TMargins): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Margins_InstanceSize(AObj: TMargins): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Margins_InheritsFrom(AObj: TMargins; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Margins_Equals(AObj: TMargins; Obj: TObject): LongBool; stdcall;
@@ -142,6 +162,10 @@ begin
   AObj.Bottom := AValue;
 end;
 
+function Margins_StaticClassType: TClass; stdcall;
+begin
+  Result := TMargins;
+end;
 
 exports
   Margins_Create,
@@ -149,7 +173,11 @@ exports
   Margins_SetBounds,
   Margins_Assign,
   Margins_GetNamePath,
+  Margins_DisposeOf,
+  Margins_ClassType,
   Margins_ClassName,
+  Margins_InstanceSize,
+  Margins_InheritsFrom,
   Margins_Equals,
   Margins_GetHashCode,
   Margins_ToString,
@@ -169,5 +197,6 @@ exports
   Margins_GetRight,
   Margins_SetRight,
   Margins_GetBottom,
-  Margins_SetBottom;
+  Margins_SetBottom,
+  Margins_StaticClassType;
 

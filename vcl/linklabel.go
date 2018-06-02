@@ -52,6 +52,10 @@ func (l *TLinkLabel) IsValid() bool {
     return l.instance != 0
 }
 
+func TLinkLabelClass() TClass {
+    return LinkLabel_StaticClassType()
+}
+
 func (l *TLinkLabel) CanFocus() bool {
     return LinkLabel_CanFocus(l.instance)
 }
@@ -164,8 +168,24 @@ func (l *TLinkLabel) Assign(Source IObject) {
     LinkLabel_Assign(l.instance, CheckPtr(Source))
 }
 
+func (l *TLinkLabel) DisposeOf() {
+    LinkLabel_DisposeOf(l.instance)
+}
+
+func (l *TLinkLabel) ClassType() TClass {
+    return LinkLabel_ClassType(l.instance)
+}
+
 func (l *TLinkLabel) ClassName() string {
     return LinkLabel_ClassName(l.instance)
+}
+
+func (l *TLinkLabel) InstanceSize() int32 {
+    return LinkLabel_InstanceSize(l.instance)
+}
+
+func (l *TLinkLabel) InheritsFrom(AClass TClass) bool {
+    return LinkLabel_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TLinkLabel) Equals(Obj IObject) bool {

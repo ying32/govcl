@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure HotKey_DisposeOf(AObj: THotKey); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function HotKey_ClassType(AObj: THotKey): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function HotKey_ClassName(AObj: THotKey): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function HotKey_InstanceSize(AObj: THotKey): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function HotKey_InheritsFrom(AObj: THotKey; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function HotKey_Equals(AObj: THotKey; Obj: TObject): LongBool; stdcall;
@@ -688,6 +708,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function HotKey_StaticClassType: TClass; stdcall;
+begin
+  Result := THotKey;
+end;
 
 exports
   HotKey_Create,
@@ -720,7 +744,11 @@ exports
   HotKey_FindComponent,
   HotKey_GetNamePath,
   HotKey_Assign,
+  HotKey_DisposeOf,
+  HotKey_ClassType,
   HotKey_ClassName,
+  HotKey_InstanceSize,
+  HotKey_InheritsFrom,
   HotKey_Equals,
   HotKey_GetHashCode,
   HotKey_ToString,
@@ -813,5 +841,6 @@ exports
   HotKey_GetTag,
   HotKey_SetTag,
   HotKey_GetControls,
-  HotKey_GetComponents;
+  HotKey_GetComponents,
+  HotKey_StaticClassType;
 

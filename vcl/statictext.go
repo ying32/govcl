@@ -52,6 +52,10 @@ func (s *TStaticText) IsValid() bool {
     return s.instance != 0
 }
 
+func TStaticTextClass() TClass {
+    return StaticText_StaticClassType()
+}
+
 func (s *TStaticText) CanFocus() bool {
     return StaticText_CanFocus(s.instance)
 }
@@ -164,8 +168,24 @@ func (s *TStaticText) Assign(Source IObject) {
     StaticText_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TStaticText) DisposeOf() {
+    StaticText_DisposeOf(s.instance)
+}
+
+func (s *TStaticText) ClassType() TClass {
+    return StaticText_ClassType(s.instance)
+}
+
 func (s *TStaticText) ClassName() string {
     return StaticText_ClassName(s.instance)
+}
+
+func (s *TStaticText) InstanceSize() int32 {
+    return StaticText_InstanceSize(s.instance)
+}
+
+func (s *TStaticText) InheritsFrom(AClass TClass) bool {
+    return StaticText_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStaticText) Equals(Obj IObject) bool {
