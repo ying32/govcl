@@ -41,3 +41,4 @@
 | gdiplustest | GDI+画渐变文字及半透明背景    | Windows |
 | gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
 | imageviewer |  一个图片浏览器 |   |
+| windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
