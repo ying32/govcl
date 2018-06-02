@@ -587,23 +587,23 @@ end;
 
 // dylib
 type
-  TSyscall0  = function: Pointer; stdcall;
-  TSyscall1  = function(A1: Pointer): Pointer; stdcall;
-  TSyscall2  = function(A1, A2: Pointer): Pointer; stdcall;
-  TSyscall3  = function(A1, A2, A3: Pointer): Pointer; stdcall;
-  TSyscall4  = function(A1, A2, A3, A4: Pointer): Pointer; stdcall;
-  TSyscall5  = function(A1, A2, A3, A4, A5: Pointer): Pointer; stdcall;
-  TSyscall6  = function(A1, A2, A3, A4, A5, A6: Pointer): Pointer; stdcall;
-  TSyscall7  = function(A1, A2, A3, A4, A5, A6, A7: Pointer): Pointer; stdcall;
-  TSyscall8  = function(A1, A2, A3, A4, A5, A6, A7, A8: Pointer): Pointer; stdcall;
-  TSyscall9  = function(A1, A2, A3, A4, A5, A6, A7, A8, A9: Pointer): Pointer; stdcall;
-  TSyscall10 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10: Pointer): Pointer; stdcall;
-  TSyscall11 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11: Pointer): Pointer; stdcall;
-  TSyscall12 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): Pointer; stdcall;
+  TSyscall0  = function: UInt64; stdcall;
+  TSyscall1  = function(A1: Pointer): UInt64; stdcall;
+  TSyscall2  = function(A1, A2: Pointer): UInt64; stdcall;
+  TSyscall3  = function(A1, A2, A3: Pointer): UInt64; stdcall;
+  TSyscall4  = function(A1, A2, A3, A4: Pointer): UInt64; stdcall;
+  TSyscall5  = function(A1, A2, A3, A4, A5: Pointer): UInt64; stdcall;
+  TSyscall6  = function(A1, A2, A3, A4, A5, A6: Pointer): UInt64; stdcall;
+  TSyscall7  = function(A1, A2, A3, A4, A5, A6, A7: Pointer): UInt64; stdcall;
+  TSyscall8  = function(A1, A2, A3, A4, A5, A6, A7, A8: Pointer): UInt64; stdcall;
+  TSyscall9  = function(A1, A2, A3, A4, A5, A6, A7, A8, A9: Pointer): UInt64; stdcall;
+  TSyscall10 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10: Pointer): UInt64; stdcall;
+  TSyscall11 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11: Pointer): UInt64; stdcall;
+  TSyscall12 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): UInt64; stdcall;
 
-function MySyscall(AProc:Pointer; ALen: NativeInt; A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): Pointer; stdcall;
+function MySyscall(AProc:Pointer; ALen: NativeInt; A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): UInt64; stdcall;
 begin
-  Result := nil;
+  Result := 0;
   if AProc = nil then Exit;
   try
     case ALen of
