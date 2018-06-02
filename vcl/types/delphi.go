@@ -26,3 +26,5 @@ type TFontCharset byte
 
 // Unicode
 type Char uint16
+
+type TClass uintptr
