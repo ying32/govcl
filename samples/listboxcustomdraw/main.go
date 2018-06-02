@@ -34,7 +34,7 @@ func main() {
 	listbox.Items().Add("第七项")
 	listbox.Items().Add("第八项")
 	listbox.SetItemHeight(itemHeight)
-	listbox.SetOnDrawItem(func(control vcl.IControl, index int32, aRect types.TRect, state types.TOwnerDrawState) {
+	listbox.SetOnDrawItem(func(control vcl.IWinControl, index int32, aRect types.TRect, state types.TOwnerDrawState) {
 		canvas := listbox.Canvas()
 		s := listbox.Items().Strings(index)
 		fw := canvas.TextWidth(s)
