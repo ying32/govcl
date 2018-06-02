@@ -201,7 +201,7 @@ func PsdToBitmap(aFileName string, bmp *vcl.TBitmap) error {
 	bmp.SetPixelFormat(types.Pf32bit)
 	bmp.SetSize(int32(width), int32(height))
 
-	if runtime.GOOS == "windows" {
+	if runtime.GOOS == "windows" || runtime.GOOS == "linux" {
 		for h := int(height - 1); h >= 0; h-- {
 			ptr := bmp.ScanLine(int32(h))
 			for w := 0; w < int(width*4); w++ {
