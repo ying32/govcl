@@ -16,19 +16,11 @@ type HWND uintptr
 
 type HBITMAP uintptr
 
-type TModalResult int32
-
 type HMENU uintptr
 
 type HICON uintptr
 
 type HDC uintptr
-
-type TColor uint32
-
-type THelpEventData uintptr
-
-type TTabOrder int16
 
 type HFONT uintptr
 
@@ -36,19 +28,31 @@ type HBRUSH uintptr
 
 type HPEN uintptr
 
-type TFontCharset uint8
-
 type HKEY uintptr
 
 type HMONITOR uintptr
 
-type Char uint16
-
-type PFNLVCOMPARE uintptr
-
-type PFNTVCOMPARE uintptr
-
 type HGDIOBJ uintptr
+
+type HMODULE uintptr
+
+type COLORREF uint32
+
+type DWORD uint32
+
+type HCURSOR HICON
+
+type HINST uintptr
+
+type LPCWSTR uintptr
+
+type HRGN uintptr
+
+type UINT uint32
+
+type LPARAM uintptr
+
+type WAPRAM uintptr
 
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect
@@ -75,6 +79,13 @@ func (r *TRect) SetHeight(val int32) {
 
 func (r *TRect) IsEmpty() bool {
 	return r.Right <= r.Left || r.Bottom <= r.Top
+}
+
+func (r *TRect) Empty() {
+	r.Left = 0
+	r.Top = 0
+	r.Right = 0
+	r.Bottom = 0
 }
 
 func (r *TRect) Size() TSize {
@@ -108,6 +119,17 @@ func (r *TRect) CenterPoint() (ret TPoint) {
 	return
 }
 
+func (r *TRect) Scale(val float64) {
+	r.Left = int32(float64(r.Left) * val)
+	r.Top = int32(float64(r.Top) * val)
+	r.Right = int32(float64(r.Right) * val)
+	r.Bottom = int32(float64(r.Bottom) * val)
+}
+
+func (r *TRect) Scale2(val int) {
+	r.Scale(float64(val))
+}
+
 // -- TPoint
 
 func (p *TPoint) IsZero() bool {
@@ -119,6 +141,15 @@ func (p *TPoint) Offset(dx, dy int32) {
 	p.Y += dy
 }
 
+func (p *TPoint) Scale(val float64) {
+	p.X = int32(float64(p.X) * val)
+	p.Y = int32(float64(p.Y) * val)
+}
+
+func (p *TPoint) Scale2(val int) {
+	p.Scale(float64(val))
+}
+
 // TMsg: Only Windows,  tagMSG
 type TMsg struct {
 	Hwnd    HWND
@@ -127,4 +158,26 @@ type TMsg struct {
 	LParam  uintptr
 	Time    uint32
 	Pt      TPoint
+}
+
+// TCursorInfo
+type TCursorInfo struct {
+	CbSize      uint32
+	Flags       uint32
+	HCursor     HCURSOR
+	PtScreenPos TPoint
+}
+
+// TWndClass
+type TWndClass struct {
+	Style         uint32
+	LpfnWndProc   uintptr
+	CbClsExtra    int32
+	CbWndExtra    int32
+	HInstance     uintptr
+	HIcon         HICON
+	HCursor       HCURSOR
+	HbrBackground HBRUSH
+	LpszMenuName  LPCWSTR
+	LpszClassName LPCWSTR
 }
