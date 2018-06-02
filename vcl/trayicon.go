@@ -52,6 +52,10 @@ func (t *TTrayIcon) IsValid() bool {
     return t.instance != 0
 }
 
+func TTrayIconClass() TClass {
+    return TrayIcon_StaticClassType()
+}
+
 func (t *TTrayIcon) Refresh() {
     TrayIcon_Refresh(t.instance)
 }
@@ -80,8 +84,24 @@ func (t *TTrayIcon) Assign(Source IObject) {
     TrayIcon_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTrayIcon) DisposeOf() {
+    TrayIcon_DisposeOf(t.instance)
+}
+
+func (t *TTrayIcon) ClassType() TClass {
+    return TrayIcon_ClassType(t.instance)
+}
+
 func (t *TTrayIcon) ClassName() string {
     return TrayIcon_ClassName(t.instance)
+}
+
+func (t *TTrayIcon) InstanceSize() int32 {
+    return TrayIcon_InstanceSize(t.instance)
+}
+
+func (t *TTrayIcon) InheritsFrom(AClass TClass) bool {
+    return TrayIcon_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTrayIcon) Equals(Obj IObject) bool {

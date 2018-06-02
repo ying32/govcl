@@ -52,6 +52,10 @@ func (s *TStringList) IsValid() bool {
     return s.instance != 0
 }
 
+func TStringListClass() TClass {
+    return StringList_StaticClassType()
+}
+
 func (s *TStringList) Add(S string) int32 {
     return StringList_Add(s.instance, S)
 }
@@ -132,8 +136,24 @@ func (s *TStringList) GetNamePath() string {
     return StringList_GetNamePath(s.instance)
 }
 
+func (s *TStringList) DisposeOf() {
+    StringList_DisposeOf(s.instance)
+}
+
+func (s *TStringList) ClassType() TClass {
+    return StringList_ClassType(s.instance)
+}
+
 func (s *TStringList) ClassName() string {
     return StringList_ClassName(s.instance)
+}
+
+func (s *TStringList) InstanceSize() int32 {
+    return StringList_InstanceSize(s.instance)
+}
+
+func (s *TStringList) InheritsFrom(AClass TClass) bool {
+    return StringList_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStringList) GetHashCode() int32 {

@@ -15,7 +15,7 @@ import (
 )
 
 type TToolBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (t *TToolBar) Instance() uintptr {
 
 func (t *TToolBar) IsValid() bool {
     return t.instance != 0
+}
+
+func TToolBarClass() TClass {
+    return ToolBar_StaticClassType()
 }
 
 func (t *TToolBar) FlipChildren(AllLevels bool) {
@@ -104,7 +108,7 @@ func (t *TToolBar) ClientToScreen(Point TPoint) TPoint {
     return ToolBar_ClientToScreen(t.instance, Point)
 }
 
-func (t *TToolBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (t *TToolBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ToolBar_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (t *TToolBar) ScreenToClient(Point TPoint) TPoint {
     return ToolBar_ScreenToClient(t.instance, Point)
 }
 
-func (t *TToolBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (t *TToolBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ToolBar_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (t *TToolBar) Assign(Source IObject) {
     ToolBar_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TToolBar) DisposeOf() {
+    ToolBar_DisposeOf(t.instance)
+}
+
+func (t *TToolBar) ClassType() TClass {
+    return ToolBar_ClassType(t.instance)
+}
+
 func (t *TToolBar) ClassName() string {
     return ToolBar_ClassName(t.instance)
+}
+
+func (t *TToolBar) InstanceSize() int32 {
+    return ToolBar_InstanceSize(t.instance)
+}
+
+func (t *TToolBar) InheritsFrom(AClass TClass) bool {
+    return ToolBar_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TToolBar) Equals(Obj IObject) bool {
@@ -712,11 +732,11 @@ func (t *TToolBar) Floating() bool {
     return ToolBar_GetFloating(t.instance)
 }
 
-func (t *TToolBar) Parent() *TControl {
-    return ControlFromInst(ToolBar_GetParent(t.instance))
+func (t *TToolBar) Parent() *TWinControl {
+    return WinControlFromInst(ToolBar_GetParent(t.instance))
 }
 
-func (t *TToolBar) SetParent(value IControl) {
+func (t *TToolBar) SetParent(value IWinControl) {
     ToolBar_SetParent(t.instance, CheckPtr(value))
 }
 

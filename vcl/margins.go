@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TMargins struct {
@@ -51,6 +52,10 @@ func (m *TMargins) IsValid() bool {
     return m.instance != 0
 }
 
+func TMarginsClass() TClass {
+    return Margins_StaticClassType()
+}
+
 func (m *TMargins) SetBounds(ALeft int32, ATop int32, ARight int32, ABottom int32) {
     Margins_SetBounds(m.instance, ALeft , ATop , ARight , ABottom)
 }
@@ -63,8 +68,24 @@ func (m *TMargins) GetNamePath() string {
     return Margins_GetNamePath(m.instance)
 }
 
+func (m *TMargins) DisposeOf() {
+    Margins_DisposeOf(m.instance)
+}
+
+func (m *TMargins) ClassType() TClass {
+    return Margins_ClassType(m.instance)
+}
+
 func (m *TMargins) ClassName() string {
     return Margins_ClassName(m.instance)
+}
+
+func (m *TMargins) InstanceSize() int32 {
+    return Margins_InstanceSize(m.instance)
+}
+
+func (m *TMargins) InheritsFrom(AClass TClass) bool {
+    return Margins_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMargins) Equals(Obj IObject) bool {

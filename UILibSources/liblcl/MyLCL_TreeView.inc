@@ -201,9 +201,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function TreeView_ClassType(AObj: TTreeView): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function TreeView_ClassName(AObj: TTreeView): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function TreeView_InstanceSize(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function TreeView_InheritsFrom(AObj: TTreeView; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function TreeView_Equals(AObj: TTreeView; Obj: TObject): LongBool; extdecl;
@@ -1093,6 +1108,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function TreeView_StaticClassType: TClass; extdecl;
+begin
+  Result := TTreeView;
+end;
 
 exports
   TreeView_Create,
@@ -1134,7 +1153,10 @@ exports
   TreeView_FindComponent,
   TreeView_GetNamePath,
   TreeView_Assign,
+  TreeView_ClassType,
   TreeView_ClassName,
+  TreeView_InstanceSize,
+  TreeView_InheritsFrom,
   TreeView_Equals,
   TreeView_GetHashCode,
   TreeView_ToString,
@@ -1282,5 +1304,6 @@ exports
   TreeView_SetTag,
   TreeView_GetSelections,
   TreeView_GetControls,
-  TreeView_GetComponents;
+  TreeView_GetComponents,
+  TreeView_StaticClassType;
 

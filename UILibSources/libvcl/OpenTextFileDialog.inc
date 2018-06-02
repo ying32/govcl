@@ -40,9 +40,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure OpenTextFileDialog_DisposeOf(AObj: TOpenTextFileDialog); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function OpenTextFileDialog_ClassType(AObj: TOpenTextFileDialog): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function OpenTextFileDialog_ClassName(AObj: TOpenTextFileDialog): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function OpenTextFileDialog_InstanceSize(AObj: TOpenTextFileDialog): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function OpenTextFileDialog_InheritsFrom(AObj: TOpenTextFileDialog; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function OpenTextFileDialog_Equals(AObj: TOpenTextFileDialog; Obj: TObject): LongBool; stdcall;
@@ -219,6 +239,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function OpenTextFileDialog_StaticClassType: TClass; stdcall;
+begin
+  Result := TOpenTextFileDialog;
+end;
 
 exports
   OpenTextFileDialog_Create,
@@ -228,7 +252,11 @@ exports
   OpenTextFileDialog_GetNamePath,
   OpenTextFileDialog_HasParent,
   OpenTextFileDialog_Assign,
+  OpenTextFileDialog_DisposeOf,
+  OpenTextFileDialog_ClassType,
   OpenTextFileDialog_ClassName,
+  OpenTextFileDialog_InstanceSize,
+  OpenTextFileDialog_InheritsFrom,
   OpenTextFileDialog_Equals,
   OpenTextFileDialog_GetHashCode,
   OpenTextFileDialog_ToString,
@@ -260,5 +288,6 @@ exports
   OpenTextFileDialog_SetName,
   OpenTextFileDialog_GetTag,
   OpenTextFileDialog_SetTag,
-  OpenTextFileDialog_GetComponents;
+  OpenTextFileDialog_GetComponents,
+  OpenTextFileDialog_StaticClassType;
 

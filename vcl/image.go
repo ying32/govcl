@@ -52,6 +52,10 @@ func (i *TImage) IsValid() bool {
     return i.instance != 0
 }
 
+func TImageClass() TClass {
+    return Image_StaticClassType()
+}
+
 func (i *TImage) BringToFront() {
     Image_BringToFront(i.instance)
 }
@@ -60,7 +64,7 @@ func (i *TImage) ClientToScreen(Point TPoint) TPoint {
     return Image_ClientToScreen(i.instance, Point)
 }
 
-func (i *TImage) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (i *TImage) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Image_ClientToParent(i.instance, Point , CheckPtr(AParent))
 }
 
@@ -96,7 +100,7 @@ func (i *TImage) ScreenToClient(Point TPoint) TPoint {
     return Image_ScreenToClient(i.instance, Point)
 }
 
-func (i *TImage) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (i *TImage) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Image_ParentToClient(i.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,8 +140,24 @@ func (i *TImage) Assign(Source IObject) {
     Image_Assign(i.instance, CheckPtr(Source))
 }
 
+func (i *TImage) DisposeOf() {
+    Image_DisposeOf(i.instance)
+}
+
+func (i *TImage) ClassType() TClass {
+    return Image_ClassType(i.instance)
+}
+
 func (i *TImage) ClassName() string {
     return Image_ClassName(i.instance)
+}
+
+func (i *TImage) InstanceSize() int32 {
+    return Image_InstanceSize(i.instance)
+}
+
+func (i *TImage) InheritsFrom(AClass TClass) bool {
+    return Image_InheritsFrom(i.instance, AClass)
 }
 
 func (i *TImage) Equals(Obj IObject) bool {
@@ -408,11 +428,11 @@ func (i *TImage) Floating() bool {
     return Image_GetFloating(i.instance)
 }
 
-func (i *TImage) Parent() *TControl {
-    return ControlFromInst(Image_GetParent(i.instance))
+func (i *TImage) Parent() *TWinControl {
+    return WinControlFromInst(Image_GetParent(i.instance))
 }
 
-func (i *TImage) SetParent(value IControl) {
+func (i *TImage) SetParent(value IWinControl) {
     Image_SetParent(i.instance, CheckPtr(value))
 }
 

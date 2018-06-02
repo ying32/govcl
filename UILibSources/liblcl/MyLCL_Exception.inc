@@ -3,9 +3,24 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function Exception_ClassType(AObj: Exception): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Exception_ClassName(AObj: Exception): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Exception_InstanceSize(AObj: Exception): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Exception_InheritsFrom(AObj: Exception; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Exception_Equals(AObj: Exception; Obj: TObject): LongBool; extdecl;
@@ -28,12 +43,20 @@ begin
   AObj.Message := AValue;
 end;
 
+function Exception_StaticClassType: TClass; extdecl;
+begin
+  Result := Exception;
+end;
 
 exports
   Exception_ToString,
+  Exception_ClassType,
   Exception_ClassName,
+  Exception_InstanceSize,
+  Exception_InheritsFrom,
   Exception_Equals,
   Exception_GetHashCode,
   Exception_GetMessage,
-  Exception_SetMessage;
+  Exception_SetMessage,
+  Exception_StaticClassType;
 

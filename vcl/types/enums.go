@@ -185,6 +185,9 @@ const (
 	WsNormal = iota + 0
 	WsMinimized
 	WsMaximized
+
+	// LCL
+	WsFullScreen
 )
 
 //  TTextLayout = (tlTop, tlCenter, tlBottom);

@@ -72,9 +72,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function Icon_ClassType(AObj: TIcon): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Icon_ClassName(AObj: TIcon): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Icon_InstanceSize(AObj: TIcon): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Icon_InheritsFrom(AObj: TIcon; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Icon_GetHashCode(AObj: TIcon): Integer; extdecl;
@@ -164,6 +179,10 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Icon_StaticClassType: TClass; extdecl;
+begin
+  Result := TIcon;
+end;
 
 exports
   Icon_Create,
@@ -179,7 +198,10 @@ exports
   Icon_LoadFromFile,
   Icon_SaveToFile,
   Icon_GetNamePath,
+  Icon_ClassType,
   Icon_ClassName,
+  Icon_InstanceSize,
+  Icon_InheritsFrom,
   Icon_GetHashCode,
   Icon_ToString,
   Icon_GetHandle,
@@ -195,5 +217,6 @@ exports
   Icon_SetTransparent,
   Icon_GetWidth,
   Icon_SetWidth,
-  Icon_SetOnChange;
+  Icon_SetOnChange,
+  Icon_StaticClassType;
 

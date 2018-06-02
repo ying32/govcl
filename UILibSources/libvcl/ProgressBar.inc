@@ -165,9 +165,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ProgressBar_DisposeOf(AObj: TProgressBar); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ProgressBar_ClassType(AObj: TProgressBar): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ProgressBar_ClassName(AObj: TProgressBar): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ProgressBar_InstanceSize(AObj: TProgressBar): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ProgressBar_InheritsFrom(AObj: TProgressBar; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ProgressBar_Equals(AObj: TProgressBar; Obj: TObject): LongBool; stdcall;
@@ -896,6 +916,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ProgressBar_StaticClassType: TClass; stdcall;
+begin
+  Result := TProgressBar;
+end;
 
 exports
   ProgressBar_Create,
@@ -930,7 +954,11 @@ exports
   ProgressBar_FindComponent,
   ProgressBar_GetNamePath,
   ProgressBar_Assign,
+  ProgressBar_DisposeOf,
+  ProgressBar_ClassType,
   ProgressBar_ClassName,
+  ProgressBar_InstanceSize,
+  ProgressBar_InheritsFrom,
   ProgressBar_Equals,
   ProgressBar_GetHashCode,
   ProgressBar_ToString,
@@ -1057,5 +1085,6 @@ exports
   ProgressBar_GetTag,
   ProgressBar_SetTag,
   ProgressBar_GetControls,
-  ProgressBar_GetComponents;
+  ProgressBar_GetComponents,
+  ProgressBar_StaticClassType;
 

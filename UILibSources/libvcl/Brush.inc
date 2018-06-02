@@ -30,9 +30,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure Brush_DisposeOf(AObj: TBrush); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Brush_ClassType(AObj: TBrush): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Brush_ClassName(AObj: TBrush): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Brush_InstanceSize(AObj: TBrush): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Brush_InheritsFrom(AObj: TBrush; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Brush_Equals(AObj: TBrush; Obj: TObject): LongBool; stdcall;
@@ -102,6 +122,10 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Brush_StaticClassType: TClass; stdcall;
+begin
+  Result := TBrush;
+end;
 
 exports
   Brush_Create,
@@ -109,7 +133,11 @@ exports
   Brush_Assign,
   Brush_HandleAllocated,
   Brush_GetNamePath,
+  Brush_DisposeOf,
+  Brush_ClassType,
   Brush_ClassName,
+  Brush_InstanceSize,
+  Brush_InheritsFrom,
   Brush_Equals,
   Brush_GetHashCode,
   Brush_ToString,
@@ -121,5 +149,6 @@ exports
   Brush_SetColor,
   Brush_GetStyle,
   Brush_SetStyle,
-  Brush_SetOnChange;
+  Brush_SetOnChange,
+  Brush_StaticClassType;
 

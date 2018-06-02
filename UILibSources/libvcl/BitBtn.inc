@@ -160,9 +160,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure BitBtn_DisposeOf(AObj: TBitBtn); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function BitBtn_ClassType(AObj: TBitBtn): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function BitBtn_ClassName(AObj: TBitBtn): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function BitBtn_InstanceSize(AObj: TBitBtn): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function BitBtn_InheritsFrom(AObj: TBitBtn; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function BitBtn_Equals(AObj: TBitBtn; Obj: TObject): LongBool; stdcall;
@@ -1039,6 +1059,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function BitBtn_StaticClassType: TClass; stdcall;
+begin
+  Result := TBitBtn;
+end;
 
 exports
   BitBtn_Create,
@@ -1072,7 +1096,11 @@ exports
   BitBtn_FindComponent,
   BitBtn_GetNamePath,
   BitBtn_Assign,
+  BitBtn_DisposeOf,
+  BitBtn_ClassType,
   BitBtn_ClassName,
+  BitBtn_InstanceSize,
+  BitBtn_InheritsFrom,
   BitBtn_Equals,
   BitBtn_GetHashCode,
   BitBtn_ToString,
@@ -1223,5 +1251,6 @@ exports
   BitBtn_GetTag,
   BitBtn_SetTag,
   BitBtn_GetControls,
-  BitBtn_GetComponents;
+  BitBtn_GetComponents,
+  BitBtn_StaticClassType;
 

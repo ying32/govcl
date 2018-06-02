@@ -35,9 +35,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ActionList_DisposeOf(AObj: TActionList); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ActionList_ClassType(AObj: TActionList): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ActionList_ClassName(AObj: TActionList): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ActionList_InstanceSize(AObj: TActionList): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ActionList_InheritsFrom(AObj: TActionList; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ActionList_Equals(AObj: TActionList; Obj: TObject): LongBool; stdcall;
@@ -132,6 +152,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ActionList_StaticClassType: TClass; stdcall;
+begin
+  Result := TActionList;
+end;
 
 exports
   ActionList_Create,
@@ -140,7 +164,11 @@ exports
   ActionList_GetNamePath,
   ActionList_HasParent,
   ActionList_Assign,
+  ActionList_DisposeOf,
+  ActionList_ClassType,
   ActionList_ClassName,
+  ActionList_InstanceSize,
+  ActionList_InheritsFrom,
   ActionList_Equals,
   ActionList_GetHashCode,
   ActionList_ToString,
@@ -157,5 +185,6 @@ exports
   ActionList_SetName,
   ActionList_GetTag,
   ActionList_SetTag,
-  ActionList_GetComponents;
+  ActionList_GetComponents,
+  ActionList_StaticClassType;
 

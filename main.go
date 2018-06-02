@@ -31,6 +31,10 @@ func main() {
 		}
 	}()
 
+	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TObjectClass()))
+	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TComponentClass()))
+	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TControlClass()))
+
 	fmt.Println("main")
 	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
@@ -339,10 +343,10 @@ func main() {
 	lbl := vcl.NewLabel(mainForm)
 	lbl.SetCaption("标签")
 	lbl.SetAlign(types.AlBottom)
-	fmt.Println("InheritsFromControl:", rtl.InheritsFromControl(mainForm.Instance()))
-	fmt.Println("InheritsFromWinControl:", rtl.InheritsFromWinControl(mainForm.Instance()))
-	fmt.Println("InheritsFromComponent:", rtl.InheritsFromComponent(tv1.Instance()))
-	fmt.Println("InheritsFromWinControl:", rtl.InheritsFromWinControl(lbl.Instance()))
+	fmt.Println("InheritsFromControl:", mainForm.InheritsFrom(vcl.TControlClass()))
+	fmt.Println("InheritsFromWinControl:", mainForm.InheritsFrom(vcl.TWinControlClass()))
+	fmt.Println("InheritsFromComponent:", mainForm.InheritsFrom(vcl.TComponentClass()))
+	fmt.Println("InheritsFromWinControl:", lbl.InheritsFrom(vcl.TWinControlClass()))
 
 	vcl.Application.Run()
 }

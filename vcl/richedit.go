@@ -15,7 +15,7 @@ import (
 )
 
 type TRichEdit struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (r *TRichEdit) Instance() uintptr {
 
 func (r *TRichEdit) IsValid() bool {
     return r.instance != 0
+}
+
+func TRichEditClass() TClass {
+    return RichEdit_StaticClassType()
 }
 
 func (r *TRichEdit) Clear() {
@@ -148,7 +152,7 @@ func (r *TRichEdit) ClientToScreen(Point TPoint) TPoint {
     return RichEdit_ClientToScreen(r.instance, Point)
 }
 
-func (r *TRichEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (r *TRichEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return RichEdit_ClientToParent(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -176,7 +180,7 @@ func (r *TRichEdit) ScreenToClient(Point TPoint) TPoint {
     return RichEdit_ScreenToClient(r.instance, Point)
 }
 
-func (r *TRichEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (r *TRichEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return RichEdit_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -208,8 +212,24 @@ func (r *TRichEdit) Assign(Source IObject) {
     RichEdit_Assign(r.instance, CheckPtr(Source))
 }
 
+func (r *TRichEdit) DisposeOf() {
+    RichEdit_DisposeOf(r.instance)
+}
+
+func (r *TRichEdit) ClassType() TClass {
+    return RichEdit_ClassType(r.instance)
+}
+
 func (r *TRichEdit) ClassName() string {
     return RichEdit_ClassName(r.instance)
+}
+
+func (r *TRichEdit) InstanceSize() int32 {
+    return RichEdit_InstanceSize(r.instance)
+}
+
+func (r *TRichEdit) InheritsFrom(AClass TClass) bool {
+    return RichEdit_InheritsFrom(r.instance, AClass)
 }
 
 func (r *TRichEdit) Equals(Obj IObject) bool {
@@ -808,11 +828,11 @@ func (r *TRichEdit) Floating() bool {
     return RichEdit_GetFloating(r.instance)
 }
 
-func (r *TRichEdit) Parent() *TControl {
-    return ControlFromInst(RichEdit_GetParent(r.instance))
+func (r *TRichEdit) Parent() *TWinControl {
+    return WinControlFromInst(RichEdit_GetParent(r.instance))
 }
 
-func (r *TRichEdit) SetParent(value IControl) {
+func (r *TRichEdit) SetParent(value IWinControl) {
     RichEdit_SetParent(r.instance, CheckPtr(value))
 }
 

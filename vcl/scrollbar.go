@@ -15,7 +15,7 @@ import (
 )
 
 type TScrollBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (s *TScrollBar) Instance() uintptr {
 
 func (s *TScrollBar) IsValid() bool {
     return s.instance != 0
+}
+
+func TScrollBarClass() TClass {
+    return ScrollBar_StaticClassType()
 }
 
 func (s *TScrollBar) SetParams(APosition int32, AMin int32, AMax int32) {
@@ -108,7 +112,7 @@ func (s *TScrollBar) ClientToScreen(Point TPoint) TPoint {
     return ScrollBar_ClientToScreen(s.instance, Point)
 }
 
-func (s *TScrollBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TScrollBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBar_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +140,7 @@ func (s *TScrollBar) ScreenToClient(Point TPoint) TPoint {
     return ScrollBar_ScreenToClient(s.instance, Point)
 }
 
-func (s *TScrollBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TScrollBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBar_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -168,8 +172,24 @@ func (s *TScrollBar) Assign(Source IObject) {
     ScrollBar_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TScrollBar) DisposeOf() {
+    ScrollBar_DisposeOf(s.instance)
+}
+
+func (s *TScrollBar) ClassType() TClass {
+    return ScrollBar_ClassType(s.instance)
+}
+
 func (s *TScrollBar) ClassName() string {
     return ScrollBar_ClassName(s.instance)
+}
+
+func (s *TScrollBar) InstanceSize() int32 {
+    return ScrollBar_InstanceSize(s.instance)
+}
+
+func (s *TScrollBar) InheritsFrom(AClass TClass) bool {
+    return ScrollBar_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TScrollBar) Equals(Obj IObject) bool {
@@ -524,11 +544,11 @@ func (s *TScrollBar) Floating() bool {
     return ScrollBar_GetFloating(s.instance)
 }
 
-func (s *TScrollBar) Parent() *TControl {
-    return ControlFromInst(ScrollBar_GetParent(s.instance))
+func (s *TScrollBar) Parent() *TWinControl {
+    return WinControlFromInst(ScrollBar_GetParent(s.instance))
 }
 
-func (s *TScrollBar) SetParent(value IControl) {
+func (s *TScrollBar) SetParent(value IWinControl) {
     ScrollBar_SetParent(s.instance, CheckPtr(value))
 }
 

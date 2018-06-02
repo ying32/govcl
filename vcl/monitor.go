@@ -52,8 +52,28 @@ func (m *TMonitor) IsValid() bool {
     return m.instance != 0
 }
 
+func TMonitorClass() TClass {
+    return Monitor_StaticClassType()
+}
+
+func (m *TMonitor) DisposeOf() {
+    Monitor_DisposeOf(m.instance)
+}
+
+func (m *TMonitor) ClassType() TClass {
+    return Monitor_ClassType(m.instance)
+}
+
 func (m *TMonitor) ClassName() string {
     return Monitor_ClassName(m.instance)
+}
+
+func (m *TMonitor) InstanceSize() int32 {
+    return Monitor_InstanceSize(m.instance)
+}
+
+func (m *TMonitor) InheritsFrom(AClass TClass) bool {
+    return Monitor_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMonitor) Equals(Obj IObject) bool {

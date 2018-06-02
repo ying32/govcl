@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TList struct {
@@ -51,6 +52,10 @@ func (l *TList) IsValid() bool {
     return l.instance != 0
 }
 
+func TListClass() TClass {
+    return List_StaticClassType()
+}
+
 func (l *TList) Add(Item uintptr) int32 {
     return List_Add(l.instance, Item)
 }
@@ -79,8 +84,24 @@ func (l *TList) Move(CurIndex int32, NewIndex int32) {
     List_Move(l.instance, CurIndex , NewIndex)
 }
 
+func (l *TList) DisposeOf() {
+    List_DisposeOf(l.instance)
+}
+
+func (l *TList) ClassType() TClass {
+    return List_ClassType(l.instance)
+}
+
 func (l *TList) ClassName() string {
     return List_ClassName(l.instance)
+}
+
+func (l *TList) InstanceSize() int32 {
+    return List_InstanceSize(l.instance)
+}
+
+func (l *TList) InheritsFrom(AClass TClass) bool {
+    return List_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TList) Equals(Obj IObject) bool {

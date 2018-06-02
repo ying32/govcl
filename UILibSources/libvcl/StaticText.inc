@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure StaticText_DisposeOf(AObj: TStaticText); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function StaticText_ClassType(AObj: TStaticText): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function StaticText_ClassName(AObj: TStaticText): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function StaticText_InstanceSize(AObj: TStaticText): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function StaticText_InheritsFrom(AObj: TStaticText; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function StaticText_Equals(AObj: TStaticText; Obj: TObject): LongBool; stdcall;
@@ -896,6 +916,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function StaticText_StaticClassType: TClass; stdcall;
+begin
+  Result := TStaticText;
+end;
 
 exports
   StaticText_Create,
@@ -928,7 +952,11 @@ exports
   StaticText_FindComponent,
   StaticText_GetNamePath,
   StaticText_Assign,
+  StaticText_DisposeOf,
+  StaticText_ClassType,
   StaticText_ClassName,
+  StaticText_InstanceSize,
+  StaticText_InheritsFrom,
   StaticText_Equals,
   StaticText_GetHashCode,
   StaticText_ToString,
@@ -1057,5 +1085,6 @@ exports
   StaticText_GetTag,
   StaticText_SetTag,
   StaticText_GetControls,
-  StaticText_GetComponents;
+  StaticText_GetComponents,
+  StaticText_StaticClassType;
 

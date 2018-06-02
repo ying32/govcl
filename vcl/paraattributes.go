@@ -39,6 +39,10 @@ func (p *TParaAttributes) IsValid() bool {
     return p.instance != 0
 }
 
+func TParaAttributesClass() TClass {
+    return ParaAttributes_StaticClassType()
+}
+
 func (p *TParaAttributes) Assign(Source IObject) {
     ParaAttributes_Assign(p.instance, CheckPtr(Source))
 }
@@ -47,8 +51,24 @@ func (p *TParaAttributes) GetNamePath() string {
     return ParaAttributes_GetNamePath(p.instance)
 }
 
+func (p *TParaAttributes) DisposeOf() {
+    ParaAttributes_DisposeOf(p.instance)
+}
+
+func (p *TParaAttributes) ClassType() TClass {
+    return ParaAttributes_ClassType(p.instance)
+}
+
 func (p *TParaAttributes) ClassName() string {
     return ParaAttributes_ClassName(p.instance)
+}
+
+func (p *TParaAttributes) InstanceSize() int32 {
+    return ParaAttributes_InstanceSize(p.instance)
+}
+
+func (p *TParaAttributes) InheritsFrom(AClass TClass) bool {
+    return ParaAttributes_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TParaAttributes) Equals(Obj IObject) bool {

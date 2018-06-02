@@ -52,6 +52,10 @@ func (c *TControl) IsValid() bool {
     return c.instance != 0
 }
 
+func TControlClass() TClass {
+    return Control_StaticClassType()
+}
+
 func (c *TControl) BringToFront() {
     Control_BringToFront(c.instance)
 }
@@ -60,7 +64,7 @@ func (c *TControl) ClientToScreen(Point TPoint) TPoint {
     return Control_ClientToScreen(c.instance, Point)
 }
 
-func (c *TControl) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Control_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -96,7 +100,7 @@ func (c *TControl) ScreenToClient(Point TPoint) TPoint {
     return Control_ScreenToClient(c.instance, Point)
 }
 
-func (c *TControl) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TControl) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Control_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,8 +140,24 @@ func (c *TControl) Assign(Source IObject) {
     Control_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TControl) DisposeOf() {
+    Control_DisposeOf(c.instance)
+}
+
+func (c *TControl) ClassType() TClass {
+    return Control_ClassType(c.instance)
+}
+
 func (c *TControl) ClassName() string {
     return Control_ClassName(c.instance)
+}
+
+func (c *TControl) InstanceSize() int32 {
+    return Control_InstanceSize(c.instance)
+}
+
+func (c *TControl) InheritsFrom(AClass TClass) bool {
+    return Control_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TControl) Equals(Obj IObject) bool {
@@ -256,11 +276,11 @@ func (c *TControl) SetVisible(value bool) {
     Control_SetVisible(c.instance, value)
 }
 
-func (c *TControl) Parent() *TControl {
-    return ControlFromInst(Control_GetParent(c.instance))
+func (c *TControl) Parent() *TWinControl {
+    return WinControlFromInst(Control_GetParent(c.instance))
 }
 
-func (c *TControl) SetParent(value IControl) {
+func (c *TControl) SetParent(value IWinControl) {
     Control_SetParent(c.instance, CheckPtr(value))
 }
 

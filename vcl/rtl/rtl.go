@@ -119,21 +119,6 @@ func FileExists(filename string) bool {
 	return api.DFileExists(filename)
 }
 
-// InheritsFromControl 判断对象是否继承自TControl
-func InheritsFromControl(obj uintptr) bool {
-	return api.DInheritsFromControl(obj)
-}
-
-// InheritsFromWinControl 判断对象是否继承自TWinControl
-func InheritsFromWinControl(obj uintptr) bool {
-	return api.DInheritsFromWinControl(obj)
-}
-
-// InheritsFromComponent 判断对象是否继承自TComponent
-func InheritsFromComponent(obj uintptr) bool {
-	return api.DInheritsFromComponent(obj)
-}
-
 // LcLLoaded 是否加载的为lcl库，true表是是，false表示不是
 func LcLLoaded() bool {
 	return api.IsloadedLcl

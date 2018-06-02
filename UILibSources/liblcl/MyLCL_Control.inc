@@ -120,9 +120,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Control_ClassType(AObj: TControl): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Control_ClassName(AObj: TControl): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Control_InstanceSize(AObj: TControl): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Control_InheritsFrom(AObj: TControl; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Control_Equals(AObj: TControl; Obj: TObject): LongBool; extdecl;
@@ -365,6 +380,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Control_StaticClassType: TClass; extdecl;
+begin
+  Result := TControl;
+end;
 
 exports
   Control_Create,
@@ -390,7 +409,10 @@ exports
   Control_FindComponent,
   Control_GetNamePath,
   Control_Assign,
+  Control_ClassType,
   Control_ClassName,
+  Control_InstanceSize,
+  Control_InheritsFrom,
   Control_Equals,
   Control_GetHashCode,
   Control_ToString,
@@ -438,5 +460,6 @@ exports
   Control_SetName,
   Control_GetTag,
   Control_SetTag,
-  Control_GetComponents;
+  Control_GetComponents,
+  Control_StaticClassType;
 

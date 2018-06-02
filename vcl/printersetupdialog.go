@@ -52,6 +52,10 @@ func (p *TPrinterSetupDialog) IsValid() bool {
     return p.instance != 0
 }
 
+func TPrinterSetupDialogClass() TClass {
+    return PrinterSetupDialog_StaticClassType()
+}
+
 func (p *TPrinterSetupDialog) Execute() bool {
     return PrinterSetupDialog_Execute(p.instance)
 }
@@ -72,8 +76,24 @@ func (p *TPrinterSetupDialog) Assign(Source IObject) {
     PrinterSetupDialog_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPrinterSetupDialog) DisposeOf() {
+    PrinterSetupDialog_DisposeOf(p.instance)
+}
+
+func (p *TPrinterSetupDialog) ClassType() TClass {
+    return PrinterSetupDialog_ClassType(p.instance)
+}
+
 func (p *TPrinterSetupDialog) ClassName() string {
     return PrinterSetupDialog_ClassName(p.instance)
+}
+
+func (p *TPrinterSetupDialog) InstanceSize() int32 {
+    return PrinterSetupDialog_InstanceSize(p.instance)
+}
+
+func (p *TPrinterSetupDialog) InheritsFrom(AClass TClass) bool {
+    return PrinterSetupDialog_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPrinterSetupDialog) Equals(Obj IObject) bool {

@@ -40,9 +40,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure PrintDialog_DisposeOf(AObj: TPrintDialog); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function PrintDialog_ClassType(AObj: TPrintDialog): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PrintDialog_ClassName(AObj: TPrintDialog): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function PrintDialog_InstanceSize(AObj: TPrintDialog): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PrintDialog_InheritsFrom(AObj: TPrintDialog; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PrintDialog_Equals(AObj: TPrintDialog; Obj: TObject): LongBool; stdcall;
@@ -224,6 +244,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PrintDialog_StaticClassType: TClass; stdcall;
+begin
+  Result := TPrintDialog;
+end;
 
 exports
   PrintDialog_Create,
@@ -233,7 +257,11 @@ exports
   PrintDialog_GetNamePath,
   PrintDialog_HasParent,
   PrintDialog_Assign,
+  PrintDialog_DisposeOf,
+  PrintDialog_ClassType,
   PrintDialog_ClassName,
+  PrintDialog_InstanceSize,
+  PrintDialog_InheritsFrom,
   PrintDialog_Equals,
   PrintDialog_GetHashCode,
   PrintDialog_ToString,
@@ -266,5 +294,6 @@ exports
   PrintDialog_SetName,
   PrintDialog_GetTag,
   PrintDialog_SetTag,
-  PrintDialog_GetComponents;
+  PrintDialog_GetComponents,
+  PrintDialog_StaticClassType;
 

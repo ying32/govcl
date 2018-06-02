@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TPicture struct {
@@ -51,6 +52,10 @@ func (p *TPicture) IsValid() bool {
     return p.instance != 0
 }
 
+func TPictureClass() TClass {
+    return Picture_StaticClassType()
+}
+
 func (p *TPicture) LoadFromFile(Filename string) {
     Picture_LoadFromFile(p.instance, Filename)
 }
@@ -75,8 +80,24 @@ func (p *TPicture) GetNamePath() string {
     return Picture_GetNamePath(p.instance)
 }
 
+func (p *TPicture) DisposeOf() {
+    Picture_DisposeOf(p.instance)
+}
+
+func (p *TPicture) ClassType() TClass {
+    return Picture_ClassType(p.instance)
+}
+
 func (p *TPicture) ClassName() string {
     return Picture_ClassName(p.instance)
+}
+
+func (p *TPicture) InstanceSize() int32 {
+    return Picture_InstanceSize(p.instance)
+}
+
+func (p *TPicture) InheritsFrom(AClass TClass) bool {
+    return Picture_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPicture) Equals(Obj IObject) bool {

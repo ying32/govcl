@@ -120,9 +120,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Image_ClassType(AObj: TImage): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Image_ClassName(AObj: TImage): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Image_InstanceSize(AObj: TImage): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Image_InheritsFrom(AObj: TImage; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Image_Equals(AObj: TImage; Obj: TObject): LongBool; extdecl;
@@ -590,6 +605,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Image_StaticClassType: TClass; extdecl;
+begin
+  Result := TImage;
+end;
 
 exports
   Image_Create,
@@ -615,7 +634,10 @@ exports
   Image_FindComponent,
   Image_GetNamePath,
   Image_Assign,
+  Image_ClassType,
   Image_ClassName,
+  Image_InstanceSize,
+  Image_InheritsFrom,
   Image_Equals,
   Image_GetHashCode,
   Image_ToString,
@@ -694,5 +716,6 @@ exports
   Image_SetName,
   Image_GetTag,
   Image_SetTag,
-  Image_GetComponents;
+  Image_GetComponents,
+  Image_StaticClassType;
 

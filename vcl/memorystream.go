@@ -52,6 +52,10 @@ func (m *TMemoryStream) IsValid() bool {
     return m.instance != 0
 }
 
+func TMemoryStreamClass() TClass {
+    return MemoryStream_StaticClassType()
+}
+
 func (m *TMemoryStream) Clear() {
     MemoryStream_Clear(m.instance)
 }
@@ -80,8 +84,24 @@ func (m *TMemoryStream) CopyFrom(Source IObject, Count int64) int64 {
     return MemoryStream_CopyFrom(m.instance, CheckPtr(Source), Count)
 }
 
+func (m *TMemoryStream) DisposeOf() {
+    MemoryStream_DisposeOf(m.instance)
+}
+
+func (m *TMemoryStream) ClassType() TClass {
+    return MemoryStream_ClassType(m.instance)
+}
+
 func (m *TMemoryStream) ClassName() string {
     return MemoryStream_ClassName(m.instance)
+}
+
+func (m *TMemoryStream) InstanceSize() int32 {
+    return MemoryStream_InstanceSize(m.instance)
+}
+
+func (m *TMemoryStream) InheritsFrom(AClass TClass) bool {
+    return MemoryStream_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMemoryStream) Equals(Obj IObject) bool {

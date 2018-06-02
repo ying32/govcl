@@ -45,9 +45,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function ReplaceDialog_ClassType(AObj: TReplaceDialog): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ReplaceDialog_ClassName(AObj: TReplaceDialog): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function ReplaceDialog_InstanceSize(AObj: TReplaceDialog): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ReplaceDialog_InheritsFrom(AObj: TReplaceDialog; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ReplaceDialog_Equals(AObj: TReplaceDialog; Obj: TObject): LongBool; extdecl;
@@ -223,6 +238,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ReplaceDialog_StaticClassType: TClass; extdecl;
+begin
+  Result := TReplaceDialog;
+end;
 
 exports
   ReplaceDialog_Create,
@@ -233,7 +252,10 @@ exports
   ReplaceDialog_GetNamePath,
   ReplaceDialog_HasParent,
   ReplaceDialog_Assign,
+  ReplaceDialog_ClassType,
   ReplaceDialog_ClassName,
+  ReplaceDialog_InstanceSize,
+  ReplaceDialog_InheritsFrom,
   ReplaceDialog_Equals,
   ReplaceDialog_GetHashCode,
   ReplaceDialog_ToString,
@@ -262,5 +284,6 @@ exports
   ReplaceDialog_SetName,
   ReplaceDialog_GetTag,
   ReplaceDialog_SetTag,
-  ReplaceDialog_GetComponents;
+  ReplaceDialog_GetComponents,
+  ReplaceDialog_StaticClassType;
 

@@ -15,7 +15,7 @@ import (
 )
 
 type TCheckBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (c *TCheckBox) Instance() uintptr {
 
 func (c *TCheckBox) IsValid() bool {
     return c.instance != 0
+}
+
+func TCheckBoxClass() TClass {
+    return CheckBox_StaticClassType()
 }
 
 func (c *TCheckBox) CanFocus() bool {
@@ -104,7 +108,7 @@ func (c *TCheckBox) ClientToScreen(Point TPoint) TPoint {
     return CheckBox_ClientToScreen(c.instance, Point)
 }
 
-func (c *TCheckBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TCheckBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return CheckBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (c *TCheckBox) ScreenToClient(Point TPoint) TPoint {
     return CheckBox_ScreenToClient(c.instance, Point)
 }
 
-func (c *TCheckBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TCheckBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return CheckBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (c *TCheckBox) Assign(Source IObject) {
     CheckBox_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TCheckBox) DisposeOf() {
+    CheckBox_DisposeOf(c.instance)
+}
+
+func (c *TCheckBox) ClassType() TClass {
+    return CheckBox_ClassType(c.instance)
+}
+
 func (c *TCheckBox) ClassName() string {
     return CheckBox_ClassName(c.instance)
+}
+
+func (c *TCheckBox) InstanceSize() int32 {
+    return CheckBox_InstanceSize(c.instance)
+}
+
+func (c *TCheckBox) InheritsFrom(AClass TClass) bool {
+    return CheckBox_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCheckBox) Equals(Obj IObject) bool {
@@ -556,11 +576,11 @@ func (c *TCheckBox) Floating() bool {
     return CheckBox_GetFloating(c.instance)
 }
 
-func (c *TCheckBox) Parent() *TControl {
-    return ControlFromInst(CheckBox_GetParent(c.instance))
+func (c *TCheckBox) Parent() *TWinControl {
+    return WinControlFromInst(CheckBox_GetParent(c.instance))
 }
 
-func (c *TCheckBox) SetParent(value IControl) {
+func (c *TCheckBox) SetParent(value IWinControl) {
     CheckBox_SetParent(c.instance, CheckPtr(value))
 }
 

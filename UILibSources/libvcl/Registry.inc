@@ -175,9 +175,29 @@ begin
   AObj.WriteTime(Name, UnixToTime(Value));
 end;
 
+procedure Registry_DisposeOf(AObj: TRegistry); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Registry_ClassType(AObj: TRegistry): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Registry_ClassName(AObj: TRegistry): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Registry_InstanceSize(AObj: TRegistry): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Registry_InheritsFrom(AObj: TRegistry; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Registry_Equals(AObj: TRegistry; Obj: TObject): LongBool; stdcall;
@@ -250,6 +270,10 @@ begin
   AObj.Access := AValue;
 end;
 
+function Registry_StaticClassType: TClass; stdcall;
+begin
+  Result := TRegistry;
+end;
 
 exports
   Registry_Create,
@@ -286,7 +310,11 @@ exports
   Registry_WriteString,
   Registry_WriteExpandString,
   Registry_WriteTime,
+  Registry_DisposeOf,
+  Registry_ClassType,
   Registry_ClassName,
+  Registry_InstanceSize,
+  Registry_InheritsFrom,
   Registry_Equals,
   Registry_GetHashCode,
   Registry_ToString,
@@ -300,5 +328,6 @@ exports
   Registry_SetRootKey,
   Registry_GetRootKeyName,
   Registry_GetAccess,
-  Registry_SetAccess;
+  Registry_SetAccess,
+  Registry_StaticClassType;
 

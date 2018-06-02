@@ -155,9 +155,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function RadioGroup_ClassType(AObj: TRadioGroup): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function RadioGroup_ClassName(AObj: TRadioGroup): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function RadioGroup_InstanceSize(AObj: TRadioGroup): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function RadioGroup_InheritsFrom(AObj: TRadioGroup; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function RadioGroup_Equals(AObj: TRadioGroup; Obj: TObject): LongBool; extdecl;
@@ -672,6 +687,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function RadioGroup_StaticClassType: TClass; extdecl;
+begin
+  Result := TRadioGroup;
+end;
 
 exports
   RadioGroup_Create,
@@ -704,7 +723,10 @@ exports
   RadioGroup_FindComponent,
   RadioGroup_GetNamePath,
   RadioGroup_Assign,
+  RadioGroup_ClassType,
   RadioGroup_ClassName,
+  RadioGroup_InstanceSize,
+  RadioGroup_InheritsFrom,
   RadioGroup_Equals,
   RadioGroup_GetHashCode,
   RadioGroup_ToString,
@@ -798,5 +820,6 @@ exports
   RadioGroup_GetTag,
   RadioGroup_SetTag,
   RadioGroup_GetControls,
-  RadioGroup_GetComponents;
+  RadioGroup_GetComponents,
+  RadioGroup_StaticClassType;
 

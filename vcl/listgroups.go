@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TListGroups struct {
@@ -51,12 +52,16 @@ func (l *TListGroups) IsValid() bool {
     return l.instance != 0
 }
 
+func TListGroupsClass() TClass {
+    return ListGroups_StaticClassType()
+}
+
 func (l *TListGroups) Add() *TListGroup {
     return ListGroupFromInst(ListGroups_Add(l.instance))
 }
 
-func (l *TListGroups) Owner() *TControl {
-    return ControlFromInst(ListGroups_Owner(l.instance))
+func (l *TListGroups) Owner() *TWinControl {
+    return WinControlFromInst(ListGroups_Owner(l.instance))
 }
 
 func (l *TListGroups) Assign(Source IObject) {
@@ -87,8 +92,24 @@ func (l *TListGroups) Insert(Index int32) *TCollectionItem {
     return CollectionItemFromInst(ListGroups_Insert(l.instance, Index))
 }
 
+func (l *TListGroups) DisposeOf() {
+    ListGroups_DisposeOf(l.instance)
+}
+
+func (l *TListGroups) ClassType() TClass {
+    return ListGroups_ClassType(l.instance)
+}
+
 func (l *TListGroups) ClassName() string {
     return ListGroups_ClassName(l.instance)
+}
+
+func (l *TListGroups) InstanceSize() int32 {
+    return ListGroups_InstanceSize(l.instance)
+}
+
+func (l *TListGroups) InheritsFrom(AClass TClass) bool {
+    return ListGroups_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListGroups) Equals(Obj IObject) bool {

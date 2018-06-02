@@ -52,6 +52,10 @@ func (g *TGauge) IsValid() bool {
     return g.instance != 0
 }
 
+func TGaugeClass() TClass {
+    return Gauge_StaticClassType()
+}
+
 func (g *TGauge) AddProgress(Value int32) {
     Gauge_AddProgress(g.instance, Value)
 }
@@ -64,7 +68,7 @@ func (g *TGauge) ClientToScreen(Point TPoint) TPoint {
     return Gauge_ClientToScreen(g.instance, Point)
 }
 
-func (g *TGauge) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (g *TGauge) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Gauge_ClientToParent(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -100,7 +104,7 @@ func (g *TGauge) ScreenToClient(Point TPoint) TPoint {
     return Gauge_ScreenToClient(g.instance, Point)
 }
 
-func (g *TGauge) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (g *TGauge) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Gauge_ParentToClient(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -140,8 +144,24 @@ func (g *TGauge) Assign(Source IObject) {
     Gauge_Assign(g.instance, CheckPtr(Source))
 }
 
+func (g *TGauge) DisposeOf() {
+    Gauge_DisposeOf(g.instance)
+}
+
+func (g *TGauge) ClassType() TClass {
+    return Gauge_ClassType(g.instance)
+}
+
 func (g *TGauge) ClassName() string {
     return Gauge_ClassName(g.instance)
+}
+
+func (g *TGauge) InstanceSize() int32 {
+    return Gauge_InstanceSize(g.instance)
+}
+
+func (g *TGauge) InheritsFrom(AClass TClass) bool {
+    return Gauge_InheritsFrom(g.instance, AClass)
 }
 
 func (g *TGauge) Equals(Obj IObject) bool {
@@ -376,11 +396,11 @@ func (g *TGauge) Floating() bool {
     return Gauge_GetFloating(g.instance)
 }
 
-func (g *TGauge) Parent() *TControl {
-    return ControlFromInst(Gauge_GetParent(g.instance))
+func (g *TGauge) Parent() *TWinControl {
+    return WinControlFromInst(Gauge_GetParent(g.instance))
 }
 
-func (g *TGauge) SetParent(value IControl) {
+func (g *TGauge) SetParent(value IWinControl) {
     Gauge_SetParent(g.instance, CheckPtr(value))
 }
 

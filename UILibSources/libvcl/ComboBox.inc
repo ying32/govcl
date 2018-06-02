@@ -180,9 +180,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ComboBox_DisposeOf(AObj: TComboBox); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ComboBox_ClassType(AObj: TComboBox): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ComboBox_ClassName(AObj: TComboBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ComboBox_InstanceSize(AObj: TComboBox): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ComboBox_InheritsFrom(AObj: TComboBox; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ComboBox_Equals(AObj: TComboBox; Obj: TObject): LongBool; stdcall;
@@ -1094,6 +1114,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ComboBox_StaticClassType: TClass; stdcall;
+begin
+  Result := TComboBox;
+end;
 
 exports
   ComboBox_Create,
@@ -1131,7 +1155,11 @@ exports
   ComboBox_FindComponent,
   ComboBox_GetNamePath,
   ComboBox_Assign,
+  ComboBox_DisposeOf,
+  ComboBox_ClassType,
   ComboBox_ClassName,
+  ComboBox_InstanceSize,
+  ComboBox_InheritsFrom,
   ComboBox_Equals,
   ComboBox_GetHashCode,
   ComboBox_ToString,
@@ -1289,5 +1317,6 @@ exports
   ComboBox_GetTag,
   ComboBox_SetTag,
   ComboBox_GetControls,
-  ComboBox_GetComponents;
+  ComboBox_GetComponents,
+  ComboBox_StaticClassType;
 

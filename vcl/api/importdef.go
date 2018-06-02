@@ -71,10 +71,6 @@ var (
 	dExtractFilePath = libvcl.NewProc("DExtractFilePath")
 	dFileExists      = libvcl.NewProc("DFileExists")
 
-	dInheritsFromControl    = libvcl.NewProc("DInheritsFromControl")
-	dInheritsFromWinControl = libvcl.NewProc("DInheritsFromWinControl")
-	dInheritsFromComponent  = libvcl.NewProc("DInheritsFromComponent")
-
 	dSelectDirectory1 = libvcl.NewProc("DSelectDirectory1")
 	dSelectDirectory2 = libvcl.NewProc("DSelectDirectory2")
 	dInputBox         = libvcl.NewProc("DInputBox")

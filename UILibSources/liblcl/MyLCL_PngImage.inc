@@ -67,9 +67,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function PngImage_ClassType(AObj: TPngImage): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PngImage_ClassName(AObj: TPngImage): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function PngImage_InstanceSize(AObj: TPngImage): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PngImage_InheritsFrom(AObj: TPngImage; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PngImage_GetHashCode(AObj: TPngImage): Integer; extdecl;
@@ -144,6 +159,10 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+function PngImage_StaticClassType: TClass; extdecl;
+begin
+  Result := TPngImage;
+end;
 
 exports
   PngImage_Create,
@@ -158,7 +177,10 @@ exports
   PngImage_SaveToFile,
   PngImage_SetSize,
   PngImage_GetNamePath,
+  PngImage_ClassType,
   PngImage_ClassName,
+  PngImage_InstanceSize,
+  PngImage_InheritsFrom,
   PngImage_GetHashCode,
   PngImage_ToString,
   PngImage_GetCanvas,
@@ -171,5 +193,6 @@ exports
   PngImage_SetPaletteModified,
   PngImage_GetTransparent,
   PngImage_SetTransparent,
-  PngImage_SetOnChange;
+  PngImage_SetOnChange,
+  PngImage_StaticClassType;
 

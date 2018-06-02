@@ -25,9 +25,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure CollectionItem_DisposeOf(AObj: TCollectionItem); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function CollectionItem_ClassType(AObj: TCollectionItem): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function CollectionItem_ClassName(AObj: TCollectionItem): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function CollectionItem_InstanceSize(AObj: TCollectionItem): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function CollectionItem_InheritsFrom(AObj: TCollectionItem; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function CollectionItem_Equals(AObj: TCollectionItem; Obj: TObject): LongBool; stdcall;
@@ -55,16 +75,25 @@ begin
   AObj.Index := AValue;
 end;
 
+function CollectionItem_StaticClassType: TClass; stdcall;
+begin
+  Result := TCollectionItem;
+end;
 
 exports
   CollectionItem_Create,
   CollectionItem_Free,
   CollectionItem_GetNamePath,
   CollectionItem_Assign,
+  CollectionItem_DisposeOf,
+  CollectionItem_ClassType,
   CollectionItem_ClassName,
+  CollectionItem_InstanceSize,
+  CollectionItem_InheritsFrom,
   CollectionItem_Equals,
   CollectionItem_GetHashCode,
   CollectionItem_ToString,
   CollectionItem_GetIndex,
-  CollectionItem_SetIndex;
+  CollectionItem_SetIndex,
+  CollectionItem_StaticClassType;
 

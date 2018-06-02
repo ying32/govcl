@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ToolBar_DisposeOf(AObj: TToolBar); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ToolBar_ClassType(AObj: TToolBar): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ToolBar_ClassName(AObj: TToolBar): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ToolBar_InstanceSize(AObj: TToolBar): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ToolBar_InheritsFrom(AObj: TToolBar; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ToolBar_Equals(AObj: TToolBar; Obj: TObject): LongBool; stdcall;
@@ -1132,6 +1152,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ToolBar_StaticClassType: TClass; stdcall;
+begin
+  Result := TToolBar;
+end;
 
 exports
   ToolBar_Create,
@@ -1164,7 +1188,11 @@ exports
   ToolBar_FindComponent,
   ToolBar_GetNamePath,
   ToolBar_Assign,
+  ToolBar_DisposeOf,
+  ToolBar_ClassType,
   ToolBar_ClassName,
+  ToolBar_InstanceSize,
+  ToolBar_InheritsFrom,
   ToolBar_Equals,
   ToolBar_GetHashCode,
   ToolBar_ToString,
@@ -1329,5 +1357,6 @@ exports
   ToolBar_SetTag,
   ToolBar_GetButtons,
   ToolBar_GetControls,
-  ToolBar_GetComponents;
+  ToolBar_GetComponents,
+  ToolBar_StaticClassType;
 

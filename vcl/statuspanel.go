@@ -52,6 +52,10 @@ func (s *TStatusPanel) IsValid() bool {
     return s.instance != 0
 }
 
+func TStatusPanelClass() TClass {
+    return StatusPanel_StaticClassType()
+}
+
 func (s *TStatusPanel) Assign(Source IObject) {
     StatusPanel_Assign(s.instance, CheckPtr(Source))
 }
@@ -60,8 +64,24 @@ func (s *TStatusPanel) GetNamePath() string {
     return StatusPanel_GetNamePath(s.instance)
 }
 
+func (s *TStatusPanel) DisposeOf() {
+    StatusPanel_DisposeOf(s.instance)
+}
+
+func (s *TStatusPanel) ClassType() TClass {
+    return StatusPanel_ClassType(s.instance)
+}
+
 func (s *TStatusPanel) ClassName() string {
     return StatusPanel_ClassName(s.instance)
+}
+
+func (s *TStatusPanel) InstanceSize() int32 {
+    return StatusPanel_InstanceSize(s.instance)
+}
+
+func (s *TStatusPanel) InheritsFrom(AClass TClass) bool {
+    return StatusPanel_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStatusPanel) Equals(Obj IObject) bool {

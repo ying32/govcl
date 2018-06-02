@@ -210,9 +210,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure RichEdit_DisposeOf(AObj: TRichEdit); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function RichEdit_ClassType(AObj: TRichEdit): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function RichEdit_ClassName(AObj: TRichEdit): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function RichEdit_InstanceSize(AObj: TRichEdit): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function RichEdit_InheritsFrom(AObj: TRichEdit; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function RichEdit_Equals(AObj: TRichEdit; Obj: TObject): LongBool; stdcall;
@@ -1264,6 +1284,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function RichEdit_StaticClassType: TClass; stdcall;
+begin
+  Result := TRichEdit;
+end;
 
 exports
   RichEdit_Create,
@@ -1307,7 +1331,11 @@ exports
   RichEdit_FindComponent,
   RichEdit_GetNamePath,
   RichEdit_Assign,
+  RichEdit_DisposeOf,
+  RichEdit_ClassType,
   RichEdit_ClassName,
+  RichEdit_InstanceSize,
+  RichEdit_InheritsFrom,
   RichEdit_Equals,
   RichEdit_GetHashCode,
   RichEdit_ToString,
@@ -1486,5 +1514,6 @@ exports
   RichEdit_GetTag,
   RichEdit_SetTag,
   RichEdit_GetControls,
-  RichEdit_GetComponents;
+  RichEdit_GetComponents,
+  RichEdit_StaticClassType;
 

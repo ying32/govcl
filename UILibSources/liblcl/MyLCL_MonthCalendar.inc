@@ -155,9 +155,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function MonthCalendar_ClassType(AObj: TMonthCalendar): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function MonthCalendar_ClassName(AObj: TMonthCalendar): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function MonthCalendar_InstanceSize(AObj: TMonthCalendar): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function MonthCalendar_InheritsFrom(AObj: TMonthCalendar; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function MonthCalendar_Equals(AObj: TMonthCalendar; Obj: TObject): LongBool; extdecl;
@@ -730,6 +745,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function MonthCalendar_StaticClassType: TClass; extdecl;
+begin
+  Result := TMonthCalendar;
+end;
 
 exports
   MonthCalendar_Create,
@@ -762,7 +781,10 @@ exports
   MonthCalendar_FindComponent,
   MonthCalendar_GetNamePath,
   MonthCalendar_Assign,
+  MonthCalendar_ClassType,
   MonthCalendar_ClassName,
+  MonthCalendar_InstanceSize,
+  MonthCalendar_InheritsFrom,
   MonthCalendar_Equals,
   MonthCalendar_GetHashCode,
   MonthCalendar_ToString,
@@ -855,5 +877,6 @@ exports
   MonthCalendar_GetTag,
   MonthCalendar_SetTag,
   MonthCalendar_GetControls,
-  MonthCalendar_GetComponents;
+  MonthCalendar_GetComponents,
+  MonthCalendar_StaticClassType;
 

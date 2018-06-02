@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TCollectionItem struct {
@@ -51,6 +52,10 @@ func (c *TCollectionItem) IsValid() bool {
     return c.instance != 0
 }
 
+func TCollectionItemClass() TClass {
+    return CollectionItem_StaticClassType()
+}
+
 func (c *TCollectionItem) GetNamePath() string {
     return CollectionItem_GetNamePath(c.instance)
 }
@@ -59,8 +64,24 @@ func (c *TCollectionItem) Assign(Source IObject) {
     CollectionItem_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TCollectionItem) DisposeOf() {
+    CollectionItem_DisposeOf(c.instance)
+}
+
+func (c *TCollectionItem) ClassType() TClass {
+    return CollectionItem_ClassType(c.instance)
+}
+
 func (c *TCollectionItem) ClassName() string {
     return CollectionItem_ClassName(c.instance)
+}
+
+func (c *TCollectionItem) InstanceSize() int32 {
+    return CollectionItem_InstanceSize(c.instance)
+}
+
+func (c *TCollectionItem) InheritsFrom(AClass TClass) bool {
+    return CollectionItem_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCollectionItem) Equals(Obj IObject) bool {

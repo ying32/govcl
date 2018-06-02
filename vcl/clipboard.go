@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TClipboard struct {
@@ -51,6 +52,10 @@ func (c *TClipboard) IsValid() bool {
     return c.instance != 0
 }
 
+func TClipboardClass() TClass {
+    return Clipboard_StaticClassType()
+}
+
 func (c *TClipboard) Assign(Source IObject) {
     Clipboard_Assign(c.instance, CheckPtr(Source))
 }
@@ -87,8 +92,24 @@ func (c *TClipboard) GetNamePath() string {
     return Clipboard_GetNamePath(c.instance)
 }
 
+func (c *TClipboard) DisposeOf() {
+    Clipboard_DisposeOf(c.instance)
+}
+
+func (c *TClipboard) ClassType() TClass {
+    return Clipboard_ClassType(c.instance)
+}
+
 func (c *TClipboard) ClassName() string {
     return Clipboard_ClassName(c.instance)
+}
+
+func (c *TClipboard) InstanceSize() int32 {
+    return Clipboard_InstanceSize(c.instance)
+}
+
+func (c *TClipboard) InheritsFrom(AClass TClass) bool {
+    return Clipboard_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TClipboard) Equals(Obj IObject) bool {

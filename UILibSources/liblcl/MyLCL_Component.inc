@@ -35,9 +35,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Component_ClassType(AObj: TComponent): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Component_ClassName(AObj: TComponent): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Component_InstanceSize(AObj: TComponent): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Component_InheritsFrom(AObj: TComponent; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Component_Equals(AObj: TComponent; Obj: TObject): LongBool; extdecl;
@@ -100,6 +115,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Component_StaticClassType: TClass; extdecl;
+begin
+  Result := TComponent;
+end;
 
 exports
   Component_Create,
@@ -108,7 +127,10 @@ exports
   Component_GetNamePath,
   Component_HasParent,
   Component_Assign,
+  Component_ClassType,
   Component_ClassName,
+  Component_InstanceSize,
+  Component_InheritsFrom,
   Component_Equals,
   Component_GetHashCode,
   Component_ToString,
@@ -120,5 +142,6 @@ exports
   Component_SetName,
   Component_GetTag,
   Component_SetTag,
-  Component_GetComponents;
+  Component_GetComponents,
+  Component_StaticClassType;
 

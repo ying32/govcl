@@ -70,9 +70,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure TreeNode_DisposeOf(AObj: TTreeNode); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function TreeNode_ClassType(AObj: TTreeNode): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function TreeNode_ClassName(AObj: TTreeNode): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function TreeNode_InstanceSize(AObj: TTreeNode): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function TreeNode_InheritsFrom(AObj: TTreeNode; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function TreeNode_Equals(AObj: TTreeNode; Obj: TObject): LongBool; stdcall;
@@ -290,6 +310,10 @@ begin
   AObj.Item[Index] := AValue;
 end;
 
+function TreeNode_StaticClassType: TClass; stdcall;
+begin
+  Result := TTreeNode;
+end;
 
 exports
   TreeNode_Create,
@@ -305,7 +329,11 @@ exports
   TreeNode_MakeVisible,
   TreeNode_MoveTo,
   TreeNode_GetNamePath,
+  TreeNode_DisposeOf,
+  TreeNode_ClassType,
   TreeNode_ClassName,
+  TreeNode_InstanceSize,
+  TreeNode_InheritsFrom,
   TreeNode_Equals,
   TreeNode_GetHashCode,
   TreeNode_ToString,
@@ -348,5 +376,6 @@ exports
   TreeNode_GetText,
   TreeNode_SetText,
   TreeNode_GetItem,
-  TreeNode_SetItem;
+  TreeNode_SetItem,
+  TreeNode_StaticClassType;
 

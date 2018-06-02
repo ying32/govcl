@@ -15,7 +15,7 @@ import (
 )
 
 type TColorBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (c *TColorBox) Instance() uintptr {
 
 func (c *TColorBox) IsValid() bool {
     return c.instance != 0
+}
+
+func TColorBoxClass() TClass {
+    return ColorBox_StaticClassType()
 }
 
 func (c *TColorBox) AddItem(Item string, AObject IObject) {
@@ -124,7 +128,7 @@ func (c *TColorBox) ClientToScreen(Point TPoint) TPoint {
     return ColorBox_ClientToScreen(c.instance, Point)
 }
 
-func (c *TColorBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TColorBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ColorBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -152,7 +156,7 @@ func (c *TColorBox) ScreenToClient(Point TPoint) TPoint {
     return ColorBox_ScreenToClient(c.instance, Point)
 }
 
-func (c *TColorBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TColorBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ColorBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -184,8 +188,24 @@ func (c *TColorBox) Assign(Source IObject) {
     ColorBox_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TColorBox) DisposeOf() {
+    ColorBox_DisposeOf(c.instance)
+}
+
+func (c *TColorBox) ClassType() TClass {
+    return ColorBox_ClassType(c.instance)
+}
+
 func (c *TColorBox) ClassName() string {
     return ColorBox_ClassName(c.instance)
+}
+
+func (c *TColorBox) InstanceSize() int32 {
+    return ColorBox_InstanceSize(c.instance)
+}
+
+func (c *TColorBox) InheritsFrom(AClass TClass) bool {
+    return ColorBox_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TColorBox) Equals(Obj IObject) bool {
@@ -668,11 +688,11 @@ func (c *TColorBox) Floating() bool {
     return ColorBox_GetFloating(c.instance)
 }
 
-func (c *TColorBox) Parent() *TControl {
-    return ControlFromInst(ColorBox_GetParent(c.instance))
+func (c *TColorBox) Parent() *TWinControl {
+    return WinControlFromInst(ColorBox_GetParent(c.instance))
 }
 
-func (c *TColorBox) SetParent(value IControl) {
+func (c *TColorBox) SetParent(value IWinControl) {
     ColorBox_SetParent(c.instance, CheckPtr(value))
 }
 

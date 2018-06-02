@@ -50,9 +50,24 @@ begin
   AObj.Move(CurIndex, NewIndex);
 end;
 
+function List_ClassType(AObj: TList): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function List_ClassName(AObj: TList): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function List_InstanceSize(AObj: TList): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function List_InheritsFrom(AObj: TList; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function List_Equals(AObj: TList; Obj: TObject): LongBool; extdecl;
@@ -105,6 +120,10 @@ begin
   AObj.Items[Index] := AValue;
 end;
 
+function List_StaticClassType: TClass; extdecl;
+begin
+  Result := TList;
+end;
 
 exports
   List_Create,
@@ -116,7 +135,10 @@ exports
   List_IndexOf,
   List_Insert,
   List_Move,
+  List_ClassType,
   List_ClassName,
+  List_InstanceSize,
+  List_InheritsFrom,
   List_Equals,
   List_GetHashCode,
   List_ToString,
@@ -126,5 +148,6 @@ exports
   List_SetCount,
   List_GetList,
   List_GetItems,
-  List_SetItems;
+  List_SetItems,
+  List_StaticClassType;
 

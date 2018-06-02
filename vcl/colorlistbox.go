@@ -15,7 +15,7 @@ import (
 )
 
 type TColorListBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (c *TColorListBox) Instance() uintptr {
 
 func (c *TColorListBox) IsValid() bool {
     return c.instance != 0
+}
+
+func TColorListBoxClass() TClass {
+    return ColorListBox_StaticClassType()
 }
 
 func (c *TColorListBox) AddItem(Item string, AObject IObject) {
@@ -124,7 +128,7 @@ func (c *TColorListBox) ClientToScreen(Point TPoint) TPoint {
     return ColorListBox_ClientToScreen(c.instance, Point)
 }
 
-func (c *TColorListBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TColorListBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ColorListBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -152,7 +156,7 @@ func (c *TColorListBox) ScreenToClient(Point TPoint) TPoint {
     return ColorListBox_ScreenToClient(c.instance, Point)
 }
 
-func (c *TColorListBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TColorListBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ColorListBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -184,8 +188,24 @@ func (c *TColorListBox) Assign(Source IObject) {
     ColorListBox_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TColorListBox) DisposeOf() {
+    ColorListBox_DisposeOf(c.instance)
+}
+
+func (c *TColorListBox) ClassType() TClass {
+    return ColorListBox_ClassType(c.instance)
+}
+
 func (c *TColorListBox) ClassName() string {
     return ColorListBox_ClassName(c.instance)
+}
+
+func (c *TColorListBox) InstanceSize() int32 {
+    return ColorListBox_InstanceSize(c.instance)
+}
+
+func (c *TColorListBox) InheritsFrom(AClass TClass) bool {
+    return ColorListBox_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TColorListBox) Equals(Obj IObject) bool {
@@ -636,11 +656,11 @@ func (c *TColorListBox) Floating() bool {
     return ColorListBox_GetFloating(c.instance)
 }
 
-func (c *TColorListBox) Parent() *TControl {
-    return ControlFromInst(ColorListBox_GetParent(c.instance))
+func (c *TColorListBox) Parent() *TWinControl {
+    return WinControlFromInst(ColorListBox_GetParent(c.instance))
 }
 
-func (c *TColorListBox) SetParent(value IControl) {
+func (c *TColorListBox) SetParent(value IWinControl) {
     ColorListBox_SetParent(c.instance, CheckPtr(value))
 }
 

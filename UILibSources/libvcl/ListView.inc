@@ -205,9 +205,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ListView_DisposeOf(AObj: TListView); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ListView_ClassType(AObj: TListView): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ListView_ClassName(AObj: TListView): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ListView_InstanceSize(AObj: TListView): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ListView_InheritsFrom(AObj: TListView; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ListView_Equals(AObj: TListView; Obj: TObject): LongBool; stdcall;
@@ -1413,6 +1433,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ListView_StaticClassType: TClass; stdcall;
+begin
+  Result := TListView;
+end;
 
 exports
   ListView_Create,
@@ -1455,7 +1479,11 @@ exports
   ListView_FindComponent,
   ListView_GetNamePath,
   ListView_Assign,
+  ListView_DisposeOf,
+  ListView_ClassType,
   ListView_ClassName,
+  ListView_InstanceSize,
+  ListView_InheritsFrom,
   ListView_Equals,
   ListView_GetHashCode,
   ListView_ToString,
@@ -1655,5 +1683,6 @@ exports
   ListView_SetTag,
   ListView_GetColumn,
   ListView_GetControls,
-  ListView_GetComponents;
+  ListView_GetComponents,
+  ListView_StaticClassType;
 

@@ -45,9 +45,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure BalloonHint_DisposeOf(AObj: TBalloonHint); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function BalloonHint_ClassType(AObj: TBalloonHint): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function BalloonHint_ClassName(AObj: TBalloonHint): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function BalloonHint_InstanceSize(AObj: TBalloonHint): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function BalloonHint_InheritsFrom(AObj: TBalloonHint; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function BalloonHint_Equals(AObj: TBalloonHint; Obj: TObject): LongBool; stdcall;
@@ -185,6 +205,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function BalloonHint_StaticClassType: TClass; stdcall;
+begin
+  Result := TBalloonHint;
+end;
 
 exports
   BalloonHint_Create,
@@ -195,7 +219,11 @@ exports
   BalloonHint_GetNamePath,
   BalloonHint_HasParent,
   BalloonHint_Assign,
+  BalloonHint_DisposeOf,
+  BalloonHint_ClassType,
   BalloonHint_ClassName,
+  BalloonHint_InstanceSize,
+  BalloonHint_InheritsFrom,
   BalloonHint_Equals,
   BalloonHint_GetHashCode,
   BalloonHint_ToString,
@@ -222,5 +250,6 @@ exports
   BalloonHint_SetName,
   BalloonHint_GetTag,
   BalloonHint_SetTag,
-  BalloonHint_GetComponents;
+  BalloonHint_GetComponents,
+  BalloonHint_StaticClassType;
 

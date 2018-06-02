@@ -15,7 +15,7 @@ import (
 )
 
 type TScrollBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (s *TScrollBox) Instance() uintptr {
 
 func (s *TScrollBox) IsValid() bool {
     return s.instance != 0
+}
+
+func TScrollBoxClass() TClass {
+    return ScrollBox_StaticClassType()
 }
 
 func (s *TScrollBox) CanFocus() bool {
@@ -104,7 +108,7 @@ func (s *TScrollBox) ClientToScreen(Point TPoint) TPoint {
     return ScrollBox_ClientToScreen(s.instance, Point)
 }
 
-func (s *TScrollBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TScrollBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBox_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (s *TScrollBox) ScreenToClient(Point TPoint) TPoint {
     return ScrollBox_ScreenToClient(s.instance, Point)
 }
 
-func (s *TScrollBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TScrollBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBox_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (s *TScrollBox) Assign(Source IObject) {
     ScrollBox_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TScrollBox) DisposeOf() {
+    ScrollBox_DisposeOf(s.instance)
+}
+
+func (s *TScrollBox) ClassType() TClass {
+    return ScrollBox_ClassType(s.instance)
+}
+
 func (s *TScrollBox) ClassName() string {
     return ScrollBox_ClassName(s.instance)
+}
+
+func (s *TScrollBox) InstanceSize() int32 {
+    return ScrollBox_InstanceSize(s.instance)
+}
+
+func (s *TScrollBox) InheritsFrom(AClass TClass) bool {
+    return ScrollBox_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TScrollBox) Equals(Obj IObject) bool {
@@ -584,11 +604,11 @@ func (s *TScrollBox) Floating() bool {
     return ScrollBox_GetFloating(s.instance)
 }
 
-func (s *TScrollBox) Parent() *TControl {
-    return ControlFromInst(ScrollBox_GetParent(s.instance))
+func (s *TScrollBox) Parent() *TWinControl {
+    return WinControlFromInst(ScrollBox_GetParent(s.instance))
 }
 
-func (s *TScrollBox) SetParent(value IControl) {
+func (s *TScrollBox) SetParent(value IWinControl) {
     ScrollBox_SetParent(s.instance, CheckPtr(value))
 }
 

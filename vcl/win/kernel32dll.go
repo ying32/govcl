@@ -37,6 +37,22 @@ var (
 
 	_MultiByteToWideChar = kernel32dll.NewProc("MultiByteToWideChar")
 	_WideCharToMultiByte = kernel32dll.NewProc("WideCharToMultiByte")
+
+	_LoadLibrary              = kernel32dll.NewProc("LoadLibraryW")
+	_LoadLibraryEx            = kernel32dll.NewProc("LoadLibraryExW")
+	_GetModuleFileName        = kernel32dll.NewProc("GetModuleFileNameW")
+	_GetProcAddress           = kernel32dll.NewProc("GetProcAddress")
+	_FreeLibrary              = kernel32dll.NewProc("FreeLibrary")
+	_FreeLibraryAndExitThread = kernel32dll.NewProc("FreeLibraryAndExitThread")
+
+	_HeapFree       = kernel32dll.NewProc("HeapFree")
+	_HeapAlloc      = kernel32dll.NewProc("HeapAlloc")
+	_GetProcessHeap = kernel32dll.NewProc("GetProcessHeap")
+	_VirtualFree    = kernel32dll.NewProc("VirtualFree")
+	_lstrlen        = kernel32dll.NewProc("lstrlenA")
+	_VirtualAlloc   = kernel32dll.NewProc("VirtualAlloc")
+	_VirtualProtect = kernel32dll.NewProc("VirtualProtect")
+	_IsBadReadPtr   = kernel32dll.NewProc("IsBadReadPtr")
 )
 
 // GetLastError
@@ -162,4 +178,80 @@ func WideCharToMultiByte(CodePage, dwFlags uint32, lpWideCharStr uintptr, cchWid
 	r, _, _ := _WideCharToMultiByte.Call(uintptr(CodePage), uintptr(dwFlags), lpWideCharStr, uintptr(cchWideChar), lpMultiByteStr, uintptr(cchMultiByte), lpDefaultChar,
 		uintptr(unsafe.Pointer(lpUsedDefaultChar)))
 	return int(r)
+}
+
+// LoadLibrary
+func LoadLibrary(lpLibFileName string) uintptr {
+	r, _, _ := _LoadLibrary.Call(CStr(lpLibFileName))
+	return r
+}
+
+// LoadLibraryEx
+func LoadLibraryEx(lpLibFileName string, hFile uintptr, dwFlags uint32) uintptr {
+	r, _, _ := _LoadLibraryEx.Call(CStr(lpLibFileName), hFile, uintptr(dwFlags))
+	return r
+}
+
+// GetModuleFileName
+func GetModuleFileName(hModule uintptr) (string, uint32) {
+	buff := make([]uint16, MAX_PATH)
+	r, _, _ := _GetModuleFileName.Call(hModule, uintptr(unsafe.Pointer(&buff[0])), MAX_PATH*2)
+	return GoStr(buff), uint32(r)
+}
+
+// GetProcAddress
+func GetProcAddress(hModule uintptr, lpProcName string) uintptr {
+	r, _, _ := _GetProcAddress.Call(hModule, uintptr(unsafe.Pointer(&UTF8ToANSI(lpProcName)[0])))
+	return r
+}
+
+// FreeLibrary
+func FreeLibrary(hLibModule uintptr) bool {
+	r, _, _ := _FreeLibrary.Call(hLibModule)
+	return r != 0
+}
+
+// FreeLibraryAndExitThread
+func FreeLibraryAndExitThread(hLibModule uintptr, dwExitCode uint32) {
+	_FreeLibraryAndExitThread.Call(hLibModule, uintptr(dwExitCode))
+}
+
+func HeapFree(hHeap uintptr, dwFlags uint32, lpMem uintptr) bool {
+	r, _, _ := _HeapFree.Call(hHeap, uintptr(dwFlags), lpMem)
+	return r != 0
+}
+
+func HeapAlloc(hHeap uintptr, dwFlags uint32, dwBytes uintptr) uintptr {
+	r, _, _ := _HeapAlloc.Call(hHeap, uintptr(dwFlags), dwBytes)
+	return r
+}
+
+func GetProcessHeap() uintptr {
+	r, _, _ := _GetProcessHeap.Call()
+	return r
+}
+
+func VirtualFree(lpAddress uintptr, dwSize uintptr, dwFreeType uint32) bool {
+	r, _, _ := _VirtualFree.Call(lpAddress, dwSize, uintptr(dwFreeType))
+	return r != 0
+}
+
+func Lstrlen(lpString uintptr) int32 {
+	r, _, _ := _lstrlen.Call(lpString)
+	return int32(r)
+}
+
+func VirtualAlloc(lpvAddress uintptr, dwSize uintptr, flAllocationType, flProtect uint32) uintptr {
+	r, _, _ := _VirtualAlloc.Call(lpvAddress, dwSize, uintptr(flAllocationType), uintptr(flProtect))
+	return r
+}
+
+func VirtualProtect(lpAddress uintptr, dwSize uintptr, flNewProtect uint32, lpflOldProtect uintptr) bool {
+	r, _, _ := _VirtualProtect.Call(lpAddress, dwSize, uintptr(flNewProtect), lpflOldProtect)
+	return r != 0
+}
+
+func IsBadReadPtr(lp uintptr, ucb uintptr) bool {
+	r, _, _ := _IsBadReadPtr.Call(lp, ucb)
+	return r != 0
 }

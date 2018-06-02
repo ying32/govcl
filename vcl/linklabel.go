@@ -15,7 +15,7 @@ import (
 )
 
 type TLinkLabel struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (l *TLinkLabel) Instance() uintptr {
 
 func (l *TLinkLabel) IsValid() bool {
     return l.instance != 0
+}
+
+func TLinkLabelClass() TClass {
+    return LinkLabel_StaticClassType()
 }
 
 func (l *TLinkLabel) CanFocus() bool {
@@ -104,7 +108,7 @@ func (l *TLinkLabel) ClientToScreen(Point TPoint) TPoint {
     return LinkLabel_ClientToScreen(l.instance, Point)
 }
 
-func (l *TLinkLabel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (l *TLinkLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return LinkLabel_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (l *TLinkLabel) ScreenToClient(Point TPoint) TPoint {
     return LinkLabel_ScreenToClient(l.instance, Point)
 }
 
-func (l *TLinkLabel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (l *TLinkLabel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return LinkLabel_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (l *TLinkLabel) Assign(Source IObject) {
     LinkLabel_Assign(l.instance, CheckPtr(Source))
 }
 
+func (l *TLinkLabel) DisposeOf() {
+    LinkLabel_DisposeOf(l.instance)
+}
+
+func (l *TLinkLabel) ClassType() TClass {
+    return LinkLabel_ClassType(l.instance)
+}
+
 func (l *TLinkLabel) ClassName() string {
     return LinkLabel_ClassName(l.instance)
+}
+
+func (l *TLinkLabel) InstanceSize() int32 {
+    return LinkLabel_InstanceSize(l.instance)
+}
+
+func (l *TLinkLabel) InheritsFrom(AClass TClass) bool {
+    return LinkLabel_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TLinkLabel) Equals(Obj IObject) bool {
@@ -544,11 +564,11 @@ func (l *TLinkLabel) Floating() bool {
     return LinkLabel_GetFloating(l.instance)
 }
 
-func (l *TLinkLabel) Parent() *TControl {
-    return ControlFromInst(LinkLabel_GetParent(l.instance))
+func (l *TLinkLabel) Parent() *TWinControl {
+    return WinControlFromInst(LinkLabel_GetParent(l.instance))
 }
 
-func (l *TLinkLabel) SetParent(value IControl) {
+func (l *TLinkLabel) SetParent(value IWinControl) {
     LinkLabel_SetParent(l.instance, CheckPtr(value))
 }
 

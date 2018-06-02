@@ -8,9 +8,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure TextAttributes_DisposeOf(AObj: TTextAttributes); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function TextAttributes_ClassType(AObj: TTextAttributes): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function TextAttributes_ClassName(AObj: TTextAttributes): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function TextAttributes_InstanceSize(AObj: TTextAttributes): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function TextAttributes_InheritsFrom(AObj: TTextAttributes; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function TextAttributes_Equals(AObj: TTextAttributes; Obj: TObject): LongBool; stdcall;
@@ -113,11 +133,19 @@ begin
   AObj.Height := AValue;
 end;
 
+function TextAttributes_StaticClassType: TClass; stdcall;
+begin
+  Result := TTextAttributes;
+end;
 
 exports
   TextAttributes_Assign,
   TextAttributes_GetNamePath,
+  TextAttributes_DisposeOf,
+  TextAttributes_ClassType,
   TextAttributes_ClassName,
+  TextAttributes_InstanceSize,
+  TextAttributes_InheritsFrom,
   TextAttributes_Equals,
   TextAttributes_GetHashCode,
   TextAttributes_ToString,
@@ -137,5 +165,6 @@ exports
   TextAttributes_GetStyle,
   TextAttributes_SetStyle,
   TextAttributes_GetHeight,
-  TextAttributes_SetHeight;
+  TextAttributes_SetHeight,
+  TextAttributes_StaticClassType;
 

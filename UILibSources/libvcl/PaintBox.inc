@@ -120,9 +120,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure PaintBox_DisposeOf(AObj: TPaintBox); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function PaintBox_ClassType(AObj: TPaintBox): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PaintBox_ClassName(AObj: TPaintBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function PaintBox_InstanceSize(AObj: TPaintBox): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PaintBox_InheritsFrom(AObj: TPaintBox; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PaintBox_Equals(AObj: TPaintBox; Obj: TObject): LongBool; stdcall;
@@ -688,6 +708,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PaintBox_StaticClassType: TClass; stdcall;
+begin
+  Result := TPaintBox;
+end;
 
 exports
   PaintBox_Create,
@@ -713,7 +737,11 @@ exports
   PaintBox_FindComponent,
   PaintBox_GetNamePath,
   PaintBox_Assign,
+  PaintBox_DisposeOf,
+  PaintBox_ClassType,
   PaintBox_ClassName,
+  PaintBox_InstanceSize,
+  PaintBox_InheritsFrom,
   PaintBox_Equals,
   PaintBox_GetHashCode,
   PaintBox_ToString,
@@ -806,5 +834,6 @@ exports
   PaintBox_SetName,
   PaintBox_GetTag,
   PaintBox_SetTag,
-  PaintBox_GetComponents;
+  PaintBox_GetComponents,
+  PaintBox_StaticClassType;
 

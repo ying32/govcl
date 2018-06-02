@@ -67,9 +67,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure PngImage_DisposeOf(AObj: TPngImage); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function PngImage_ClassType(AObj: TPngImage): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PngImage_ClassName(AObj: TPngImage): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function PngImage_InstanceSize(AObj: TPngImage): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PngImage_InheritsFrom(AObj: TPngImage; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PngImage_GetHashCode(AObj: TPngImage): Integer; stdcall;
@@ -179,6 +199,10 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+function PngImage_StaticClassType: TClass; stdcall;
+begin
+  Result := TPngImage;
+end;
 
 exports
   PngImage_Create,
@@ -193,7 +217,11 @@ exports
   PngImage_SaveToFile,
   PngImage_SetSize,
   PngImage_GetNamePath,
+  PngImage_DisposeOf,
+  PngImage_ClassType,
   PngImage_ClassName,
+  PngImage_InstanceSize,
+  PngImage_InheritsFrom,
   PngImage_GetHashCode,
   PngImage_ToString,
   PngImage_GetTransparentColor,
@@ -213,5 +241,6 @@ exports
   PngImage_SetPaletteModified,
   PngImage_GetTransparent,
   PngImage_SetTransparent,
-  PngImage_SetOnChange;
+  PngImage_SetOnChange,
+  PngImage_StaticClassType;
 

@@ -16,7 +16,7 @@ import (
 )
 
 type TDateTimePicker struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -51,6 +51,10 @@ func (d *TDateTimePicker) Instance() uintptr {
 
 func (d *TDateTimePicker) IsValid() bool {
     return d.instance != 0
+}
+
+func TDateTimePickerClass() TClass {
+    return DateTimePicker_StaticClassType()
 }
 
 func (d *TDateTimePicker) CanFocus() bool {
@@ -105,7 +109,7 @@ func (d *TDateTimePicker) ClientToScreen(Point TPoint) TPoint {
     return DateTimePicker_ClientToScreen(d.instance, Point)
 }
 
-func (d *TDateTimePicker) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (d *TDateTimePicker) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return DateTimePicker_ClientToParent(d.instance, Point , CheckPtr(AParent))
 }
 
@@ -133,7 +137,7 @@ func (d *TDateTimePicker) ScreenToClient(Point TPoint) TPoint {
     return DateTimePicker_ScreenToClient(d.instance, Point)
 }
 
-func (d *TDateTimePicker) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (d *TDateTimePicker) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return DateTimePicker_ParentToClient(d.instance, Point , CheckPtr(AParent))
 }
 
@@ -165,8 +169,24 @@ func (d *TDateTimePicker) Assign(Source IObject) {
     DateTimePicker_Assign(d.instance, CheckPtr(Source))
 }
 
+func (d *TDateTimePicker) DisposeOf() {
+    DateTimePicker_DisposeOf(d.instance)
+}
+
+func (d *TDateTimePicker) ClassType() TClass {
+    return DateTimePicker_ClassType(d.instance)
+}
+
 func (d *TDateTimePicker) ClassName() string {
     return DateTimePicker_ClassName(d.instance)
+}
+
+func (d *TDateTimePicker) InstanceSize() int32 {
+    return DateTimePicker_InstanceSize(d.instance)
+}
+
+func (d *TDateTimePicker) InheritsFrom(AClass TClass) bool {
+    return DateTimePicker_InheritsFrom(d.instance, AClass)
 }
 
 func (d *TDateTimePicker) Equals(Obj IObject) bool {
@@ -633,11 +653,11 @@ func (d *TDateTimePicker) Floating() bool {
     return DateTimePicker_GetFloating(d.instance)
 }
 
-func (d *TDateTimePicker) Parent() *TControl {
-    return ControlFromInst(DateTimePicker_GetParent(d.instance))
+func (d *TDateTimePicker) Parent() *TWinControl {
+    return WinControlFromInst(DateTimePicker_GetParent(d.instance))
 }
 
-func (d *TDateTimePicker) SetParent(value IControl) {
+func (d *TDateTimePicker) SetParent(value IWinControl) {
     DateTimePicker_SetParent(d.instance, CheckPtr(value))
 }
 

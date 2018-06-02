@@ -15,7 +15,7 @@ import (
 )
 
 type TTabSheet struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (t *TTabSheet) Instance() uintptr {
 
 func (t *TTabSheet) IsValid() bool {
     return t.instance != 0
+}
+
+func TTabSheetClass() TClass {
+    return TabSheet_StaticClassType()
 }
 
 func (t *TTabSheet) CanFocus() bool {
@@ -104,7 +108,7 @@ func (t *TTabSheet) ClientToScreen(Point TPoint) TPoint {
     return TabSheet_ClientToScreen(t.instance, Point)
 }
 
-func (t *TTabSheet) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (t *TTabSheet) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return TabSheet_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (t *TTabSheet) ScreenToClient(Point TPoint) TPoint {
     return TabSheet_ScreenToClient(t.instance, Point)
 }
 
-func (t *TTabSheet) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (t *TTabSheet) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return TabSheet_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (t *TTabSheet) Assign(Source IObject) {
     TabSheet_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTabSheet) DisposeOf() {
+    TabSheet_DisposeOf(t.instance)
+}
+
+func (t *TTabSheet) ClassType() TClass {
+    return TabSheet_ClassType(t.instance)
+}
+
 func (t *TTabSheet) ClassName() string {
     return TabSheet_ClassName(t.instance)
+}
+
+func (t *TTabSheet) InstanceSize() int32 {
+    return TabSheet_InstanceSize(t.instance)
+}
+
+func (t *TTabSheet) InheritsFrom(AClass TClass) bool {
+    return TabSheet_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTabSheet) Equals(Obj IObject) bool {
@@ -184,7 +204,7 @@ func (t *TTabSheet) PageControl() *TPageControl {
     return PageControlFromInst(TabSheet_GetPageControl(t.instance))
 }
 
-func (t *TTabSheet) SetPageControl(value IControl) {
+func (t *TTabSheet) SetPageControl(value IWinControl) {
     TabSheet_SetPageControl(t.instance, CheckPtr(value))
 }
 
@@ -540,11 +560,11 @@ func (t *TTabSheet) Floating() bool {
     return TabSheet_GetFloating(t.instance)
 }
 
-func (t *TTabSheet) Parent() *TControl {
-    return ControlFromInst(TabSheet_GetParent(t.instance))
+func (t *TTabSheet) Parent() *TWinControl {
+    return WinControlFromInst(TabSheet_GetParent(t.instance))
 }
 
-func (t *TTabSheet) SetParent(value IControl) {
+func (t *TTabSheet) SetParent(value IWinControl) {
     TabSheet_SetParent(t.instance, CheckPtr(value))
 }
 

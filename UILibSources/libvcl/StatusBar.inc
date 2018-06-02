@@ -155,9 +155,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure StatusBar_DisposeOf(AObj: TStatusBar); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function StatusBar_ClassType(AObj: TStatusBar): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function StatusBar_ClassName(AObj: TStatusBar): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function StatusBar_InstanceSize(AObj: TStatusBar): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function StatusBar_InheritsFrom(AObj: TStatusBar; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function StatusBar_Equals(AObj: TStatusBar; Obj: TObject): LongBool; stdcall;
@@ -895,6 +915,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function StatusBar_StaticClassType: TClass; stdcall;
+begin
+  Result := TStatusBar;
+end;
 
 exports
   StatusBar_Create,
@@ -927,7 +951,11 @@ exports
   StatusBar_FindComponent,
   StatusBar_GetNamePath,
   StatusBar_Assign,
+  StatusBar_DisposeOf,
+  StatusBar_ClassType,
   StatusBar_ClassName,
+  StatusBar_InstanceSize,
+  StatusBar_InheritsFrom,
   StatusBar_Equals,
   StatusBar_GetHashCode,
   StatusBar_ToString,
@@ -1053,5 +1081,6 @@ exports
   StatusBar_GetTag,
   StatusBar_SetTag,
   StatusBar_GetControls,
-  StatusBar_GetComponents;
+  StatusBar_GetComponents,
+  StatusBar_StaticClassType;
 

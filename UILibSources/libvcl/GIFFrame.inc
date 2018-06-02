@@ -50,9 +50,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure GIFFrame_DisposeOf(AObj: TGIFFrame); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function GIFFrame_ClassType(AObj: TGIFFrame): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function GIFFrame_ClassName(AObj: TGIFFrame): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function GIFFrame_InstanceSize(AObj: TGIFFrame): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function GIFFrame_InheritsFrom(AObj: TGIFFrame; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function GIFFrame_Equals(AObj: TGIFFrame; Obj: TObject): LongBool; stdcall;
@@ -175,6 +195,10 @@ begin
   Result :=  AObj.Transparent;
 end;
 
+function GIFFrame_StaticClassType: TClass; stdcall;
+begin
+  Result := TGIFFrame;
+end;
 
 exports
   GIFFrame_Create,
@@ -186,7 +210,11 @@ exports
   GIFFrame_SaveToFile,
   GIFFrame_LoadFromFile,
   GIFFrame_GetNamePath,
+  GIFFrame_DisposeOf,
+  GIFFrame_ClassType,
   GIFFrame_ClassName,
+  GIFFrame_InstanceSize,
+  GIFFrame_InheritsFrom,
   GIFFrame_Equals,
   GIFFrame_GetHashCode,
   GIFFrame_ToString,
@@ -210,5 +238,6 @@ exports
   GIFFrame_GetBitmap,
   GIFFrame_SetBitmap,
   GIFFrame_GetEmpty,
-  GIFFrame_GetTransparent;
+  GIFFrame_GetTransparent,
+  GIFFrame_StaticClassType;
 

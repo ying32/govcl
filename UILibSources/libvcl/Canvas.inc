@@ -115,9 +115,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure Canvas_DisposeOf(AObj: TCanvas); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Canvas_ClassType(AObj: TCanvas): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Canvas_ClassName(AObj: TCanvas): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Canvas_InstanceSize(AObj: TCanvas): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Canvas_InheritsFrom(AObj: TCanvas; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Canvas_Equals(AObj: TCanvas; Obj: TObject): LongBool; stdcall;
@@ -197,6 +217,10 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Canvas_StaticClassType: TClass; stdcall;
+begin
+  Result := TCanvas;
+end;
 
 exports
   Canvas_Create,
@@ -221,7 +245,11 @@ exports
   Canvas_TextWidth,
   Canvas_Assign,
   Canvas_GetNamePath,
+  Canvas_DisposeOf,
+  Canvas_ClassType,
   Canvas_ClassName,
+  Canvas_InstanceSize,
+  Canvas_InheritsFrom,
   Canvas_Equals,
   Canvas_GetHashCode,
   Canvas_ToString,
@@ -235,5 +263,6 @@ exports
   Canvas_SetFont,
   Canvas_GetPen,
   Canvas_SetPen,
-  Canvas_SetOnChange;
+  Canvas_SetOnChange,
+  Canvas_StaticClassType;
 

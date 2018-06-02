@@ -16,7 +16,7 @@ import (
 )
 
 type TMonthCalendar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -51,6 +51,10 @@ func (m *TMonthCalendar) Instance() uintptr {
 
 func (m *TMonthCalendar) IsValid() bool {
     return m.instance != 0
+}
+
+func TMonthCalendarClass() TClass {
+    return MonthCalendar_StaticClassType()
 }
 
 func (m *TMonthCalendar) CanFocus() bool {
@@ -105,7 +109,7 @@ func (m *TMonthCalendar) ClientToScreen(Point TPoint) TPoint {
     return MonthCalendar_ClientToScreen(m.instance, Point)
 }
 
-func (m *TMonthCalendar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (m *TMonthCalendar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return MonthCalendar_ClientToParent(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -133,7 +137,7 @@ func (m *TMonthCalendar) ScreenToClient(Point TPoint) TPoint {
     return MonthCalendar_ScreenToClient(m.instance, Point)
 }
 
-func (m *TMonthCalendar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (m *TMonthCalendar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return MonthCalendar_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -165,8 +169,24 @@ func (m *TMonthCalendar) Assign(Source IObject) {
     MonthCalendar_Assign(m.instance, CheckPtr(Source))
 }
 
+func (m *TMonthCalendar) DisposeOf() {
+    MonthCalendar_DisposeOf(m.instance)
+}
+
+func (m *TMonthCalendar) ClassType() TClass {
+    return MonthCalendar_ClassType(m.instance)
+}
+
 func (m *TMonthCalendar) ClassName() string {
     return MonthCalendar_ClassName(m.instance)
+}
+
+func (m *TMonthCalendar) InstanceSize() int32 {
+    return MonthCalendar_InstanceSize(m.instance)
+}
+
+func (m *TMonthCalendar) InheritsFrom(AClass TClass) bool {
+    return MonthCalendar_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMonthCalendar) Equals(Obj IObject) bool {
@@ -565,11 +585,11 @@ func (m *TMonthCalendar) Floating() bool {
     return MonthCalendar_GetFloating(m.instance)
 }
 
-func (m *TMonthCalendar) Parent() *TControl {
-    return ControlFromInst(MonthCalendar_GetParent(m.instance))
+func (m *TMonthCalendar) Parent() *TWinControl {
+    return WinControlFromInst(MonthCalendar_GetParent(m.instance))
 }
 
-func (m *TMonthCalendar) SetParent(value IControl) {
+func (m *TMonthCalendar) SetParent(value IWinControl) {
     MonthCalendar_SetParent(m.instance, CheckPtr(value))
 }
 

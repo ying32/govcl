@@ -15,7 +15,7 @@ import (
 )
 
 type TTreeView struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (t *TTreeView) Instance() uintptr {
 
 func (t *TTreeView) IsValid() bool {
     return t.instance != 0
+}
+
+func TTreeViewClass() TClass {
+    return TreeView_StaticClassType()
 }
 
 func (t *TTreeView) AlphaSort(ARecurse bool) bool {
@@ -160,7 +164,7 @@ func (t *TTreeView) ClientToScreen(Point TPoint) TPoint {
     return TreeView_ClientToScreen(t.instance, Point)
 }
 
-func (t *TTreeView) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (t *TTreeView) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return TreeView_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -188,7 +192,7 @@ func (t *TTreeView) ScreenToClient(Point TPoint) TPoint {
     return TreeView_ScreenToClient(t.instance, Point)
 }
 
-func (t *TTreeView) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (t *TTreeView) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return TreeView_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -220,8 +224,24 @@ func (t *TTreeView) Assign(Source IObject) {
     TreeView_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTreeView) DisposeOf() {
+    TreeView_DisposeOf(t.instance)
+}
+
+func (t *TTreeView) ClassType() TClass {
+    return TreeView_ClassType(t.instance)
+}
+
 func (t *TTreeView) ClassName() string {
     return TreeView_ClassName(t.instance)
+}
+
+func (t *TTreeView) InstanceSize() int32 {
+    return TreeView_InstanceSize(t.instance)
+}
+
+func (t *TTreeView) InheritsFrom(AClass TClass) bool {
+    return TreeView_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTreeView) Equals(Obj IObject) bool {
@@ -816,11 +836,11 @@ func (t *TTreeView) Floating() bool {
     return TreeView_GetFloating(t.instance)
 }
 
-func (t *TTreeView) Parent() *TControl {
-    return ControlFromInst(TreeView_GetParent(t.instance))
+func (t *TTreeView) Parent() *TWinControl {
+    return WinControlFromInst(TreeView_GetParent(t.instance))
 }
 
-func (t *TTreeView) SetParent(value IControl) {
+func (t *TTreeView) SetParent(value IWinControl) {
     TreeView_SetParent(t.instance, CheckPtr(value))
 }
 

@@ -120,9 +120,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Control_DisposeOf(AObj: TControl); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Control_ClassType(AObj: TControl): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Control_ClassName(AObj: TControl): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Control_InstanceSize(AObj: TControl): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Control_InheritsFrom(AObj: TControl; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Control_Equals(AObj: TControl; Obj: TObject): LongBool; stdcall;
@@ -425,6 +445,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Control_StaticClassType: TClass; stdcall;
+begin
+  Result := TControl;
+end;
 
 exports
   Control_Create,
@@ -450,7 +474,11 @@ exports
   Control_FindComponent,
   Control_GetNamePath,
   Control_Assign,
+  Control_DisposeOf,
+  Control_ClassType,
   Control_ClassName,
+  Control_InstanceSize,
+  Control_InheritsFrom,
   Control_Equals,
   Control_GetHashCode,
   Control_ToString,
@@ -510,5 +538,6 @@ exports
   Control_SetName,
   Control_GetTag,
   Control_SetTag,
-  Control_GetComponents;
+  Control_GetComponents,
+  Control_StaticClassType;
 

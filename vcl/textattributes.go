@@ -39,6 +39,10 @@ func (t *TTextAttributes) IsValid() bool {
     return t.instance != 0
 }
 
+func TTextAttributesClass() TClass {
+    return TextAttributes_StaticClassType()
+}
+
 func (t *TTextAttributes) Assign(Source IObject) {
     TextAttributes_Assign(t.instance, CheckPtr(Source))
 }
@@ -47,8 +51,24 @@ func (t *TTextAttributes) GetNamePath() string {
     return TextAttributes_GetNamePath(t.instance)
 }
 
+func (t *TTextAttributes) DisposeOf() {
+    TextAttributes_DisposeOf(t.instance)
+}
+
+func (t *TTextAttributes) ClassType() TClass {
+    return TextAttributes_ClassType(t.instance)
+}
+
 func (t *TTextAttributes) ClassName() string {
     return TextAttributes_ClassName(t.instance)
+}
+
+func (t *TTextAttributes) InstanceSize() int32 {
+    return TextAttributes_InstanceSize(t.instance)
+}
+
+func (t *TTextAttributes) InheritsFrom(AClass TClass) bool {
+    return TextAttributes_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTextAttributes) Equals(Obj IObject) bool {

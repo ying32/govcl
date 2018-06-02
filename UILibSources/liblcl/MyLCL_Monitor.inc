@@ -15,9 +15,24 @@ begin
   AObj.Free;
 end;
 
+function Monitor_ClassType(AObj: TMonitor): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Monitor_ClassName(AObj: TMonitor): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Monitor_InstanceSize(AObj: TMonitor): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Monitor_InheritsFrom(AObj: TMonitor; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Monitor_Equals(AObj: TMonitor; Obj: TObject): LongBool; extdecl;
@@ -85,11 +100,18 @@ begin
   Result :=  AObj.PixelsPerInch;
 end;
 
+function Monitor_StaticClassType: TClass; extdecl;
+begin
+  Result := TMonitor;
+end;
 
 exports
   Monitor_Create,
   Monitor_Free,
+  Monitor_ClassType,
   Monitor_ClassName,
+  Monitor_InstanceSize,
+  Monitor_InheritsFrom,
   Monitor_Equals,
   Monitor_GetHashCode,
   Monitor_ToString,
@@ -102,5 +124,6 @@ exports
   Monitor_GetBoundsRect,
   Monitor_GetWorkareaRect,
   Monitor_GetPrimary,
-  Monitor_GetPixelsPerInch;
+  Monitor_GetPixelsPerInch,
+  Monitor_StaticClassType;
 

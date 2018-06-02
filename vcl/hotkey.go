@@ -15,7 +15,7 @@ import (
 )
 
 type THotKey struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (h *THotKey) Instance() uintptr {
 
 func (h *THotKey) IsValid() bool {
     return h.instance != 0
+}
+
+func THotKeyClass() TClass {
+    return HotKey_StaticClassType()
 }
 
 func (h *THotKey) CanFocus() bool {
@@ -104,7 +108,7 @@ func (h *THotKey) ClientToScreen(Point TPoint) TPoint {
     return HotKey_ClientToScreen(h.instance, Point)
 }
 
-func (h *THotKey) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (h *THotKey) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return HotKey_ClientToParent(h.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (h *THotKey) ScreenToClient(Point TPoint) TPoint {
     return HotKey_ScreenToClient(h.instance, Point)
 }
 
-func (h *THotKey) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (h *THotKey) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return HotKey_ParentToClient(h.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (h *THotKey) Assign(Source IObject) {
     HotKey_Assign(h.instance, CheckPtr(Source))
 }
 
+func (h *THotKey) DisposeOf() {
+    HotKey_DisposeOf(h.instance)
+}
+
+func (h *THotKey) ClassType() TClass {
+    return HotKey_ClassType(h.instance)
+}
+
 func (h *THotKey) ClassName() string {
     return HotKey_ClassName(h.instance)
+}
+
+func (h *THotKey) InstanceSize() int32 {
+    return HotKey_InstanceSize(h.instance)
+}
+
+func (h *THotKey) InheritsFrom(AClass TClass) bool {
+    return HotKey_InheritsFrom(h.instance, AClass)
 }
 
 func (h *THotKey) Equals(Obj IObject) bool {
@@ -428,11 +448,11 @@ func (h *THotKey) Floating() bool {
     return HotKey_GetFloating(h.instance)
 }
 
-func (h *THotKey) Parent() *TControl {
-    return ControlFromInst(HotKey_GetParent(h.instance))
+func (h *THotKey) Parent() *TWinControl {
+    return WinControlFromInst(HotKey_GetParent(h.instance))
 }
 
-func (h *THotKey) SetParent(value IControl) {
+func (h *THotKey) SetParent(value IWinControl) {
     HotKey_SetParent(h.instance, CheckPtr(value))
 }
 

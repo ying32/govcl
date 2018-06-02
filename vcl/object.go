@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TObject struct {
@@ -51,8 +52,28 @@ func (o *TObject) IsValid() bool {
     return o.instance != 0
 }
 
+func TObjectClass() TClass {
+    return Object_StaticClassType()
+}
+
+func (o *TObject) DisposeOf() {
+    Object_DisposeOf(o.instance)
+}
+
+func (o *TObject) ClassType() TClass {
+    return Object_ClassType(o.instance)
+}
+
 func (o *TObject) ClassName() string {
     return Object_ClassName(o.instance)
+}
+
+func (o *TObject) InstanceSize() int32 {
+    return Object_InstanceSize(o.instance)
+}
+
+func (o *TObject) InheritsFrom(AClass TClass) bool {
+    return Object_InheritsFrom(o.instance, AClass)
 }
 
 func (o *TObject) Equals(Obj IObject) bool {

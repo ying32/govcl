@@ -160,9 +160,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Button_DisposeOf(AObj: TButton); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Button_ClassType(AObj: TButton): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Button_ClassName(AObj: TButton): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Button_InstanceSize(AObj: TButton): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Button_InheritsFrom(AObj: TButton; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Button_Equals(AObj: TButton; Obj: TObject): LongBool; stdcall;
@@ -989,6 +1009,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Button_StaticClassType: TClass; stdcall;
+begin
+  Result := TButton;
+end;
 
 exports
   Button_Create,
@@ -1022,7 +1046,11 @@ exports
   Button_FindComponent,
   Button_GetNamePath,
   Button_Assign,
+  Button_DisposeOf,
+  Button_ClassType,
   Button_ClassName,
+  Button_InstanceSize,
+  Button_InheritsFrom,
   Button_Equals,
   Button_GetHashCode,
   Button_ToString,
@@ -1163,5 +1191,6 @@ exports
   Button_GetTag,
   Button_SetTag,
   Button_GetControls,
-  Button_GetComponents;
+  Button_GetComponents,
+  Button_StaticClassType;
 

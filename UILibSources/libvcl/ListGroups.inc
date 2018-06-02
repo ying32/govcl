@@ -60,9 +60,29 @@ begin
   Result :=  AObj.Insert(Index);
 end;
 
+procedure ListGroups_DisposeOf(AObj: TListGroups); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ListGroups_ClassType(AObj: TListGroups): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ListGroups_ClassName(AObj: TListGroups): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ListGroups_InstanceSize(AObj: TListGroups): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ListGroups_InheritsFrom(AObj: TListGroups; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ListGroups_Equals(AObj: TListGroups; Obj: TObject): LongBool; stdcall;
@@ -105,6 +125,10 @@ begin
   AObj.Items[Index] := AValue;
 end;
 
+function ListGroups_StaticClassType: TClass; stdcall;
+begin
+  Result := TListGroups;
+end;
 
 exports
   ListGroups_Create,
@@ -118,7 +142,11 @@ exports
   ListGroups_EndUpdate,
   ListGroups_GetNamePath,
   ListGroups_Insert,
+  ListGroups_DisposeOf,
+  ListGroups_ClassType,
   ListGroups_ClassName,
+  ListGroups_InstanceSize,
+  ListGroups_InheritsFrom,
   ListGroups_Equals,
   ListGroups_GetHashCode,
   ListGroups_ToString,
@@ -126,5 +154,6 @@ exports
   ListGroups_SetCapacity,
   ListGroups_GetCount,
   ListGroups_GetItems,
-  ListGroups_SetItems;
+  ListGroups_SetItems,
+  ListGroups_StaticClassType;
 

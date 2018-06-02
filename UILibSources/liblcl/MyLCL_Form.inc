@@ -165,9 +165,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Form_ClassType(AObj: TForm): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Form_ClassName(AObj: TForm): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Form_InstanceSize(AObj: TForm): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Form_InheritsFrom(AObj: TForm; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Form_Equals(AObj: TForm; Obj: TObject): LongBool; extdecl;
@@ -1063,6 +1078,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Form_StaticClassType: TClass; extdecl;
+begin
+  Result := TForm;
+end;
 
 exports
   Form_Create,
@@ -1097,7 +1116,10 @@ exports
   Form_FindComponent,
   Form_GetNamePath,
   Form_Assign,
+  Form_ClassType,
   Form_ClassName,
+  Form_InstanceSize,
+  Form_InheritsFrom,
   Form_Equals,
   Form_GetHashCode,
   Form_ToString,
@@ -1235,5 +1257,6 @@ exports
   Form_GetTag,
   Form_SetTag,
   Form_GetControls,
-  Form_GetComponents;
+  Form_GetComponents,
+  Form_StaticClassType;
 

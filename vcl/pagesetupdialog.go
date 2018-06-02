@@ -52,6 +52,10 @@ func (p *TPageSetupDialog) IsValid() bool {
     return p.instance != 0
 }
 
+func TPageSetupDialogClass() TClass {
+    return PageSetupDialog_StaticClassType()
+}
+
 func (p *TPageSetupDialog) GetDefaults() bool {
     return PageSetupDialog_GetDefaults(p.instance)
 }
@@ -76,8 +80,24 @@ func (p *TPageSetupDialog) Assign(Source IObject) {
     PageSetupDialog_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPageSetupDialog) DisposeOf() {
+    PageSetupDialog_DisposeOf(p.instance)
+}
+
+func (p *TPageSetupDialog) ClassType() TClass {
+    return PageSetupDialog_ClassType(p.instance)
+}
+
 func (p *TPageSetupDialog) ClassName() string {
     return PageSetupDialog_ClassName(p.instance)
+}
+
+func (p *TPageSetupDialog) InstanceSize() int32 {
+    return PageSetupDialog_InstanceSize(p.instance)
+}
+
+func (p *TPageSetupDialog) InheritsFrom(AClass TClass) bool {
+    return PageSetupDialog_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPageSetupDialog) Equals(Obj IObject) bool {

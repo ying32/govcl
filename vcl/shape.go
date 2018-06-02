@@ -52,6 +52,10 @@ func (s *TShape) IsValid() bool {
     return s.instance != 0
 }
 
+func TShapeClass() TClass {
+    return Shape_StaticClassType()
+}
+
 func (s *TShape) BringToFront() {
     Shape_BringToFront(s.instance)
 }
@@ -60,7 +64,7 @@ func (s *TShape) ClientToScreen(Point TPoint) TPoint {
     return Shape_ClientToScreen(s.instance, Point)
 }
 
-func (s *TShape) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TShape) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Shape_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -96,7 +100,7 @@ func (s *TShape) ScreenToClient(Point TPoint) TPoint {
     return Shape_ScreenToClient(s.instance, Point)
 }
 
-func (s *TShape) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TShape) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Shape_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,8 +140,24 @@ func (s *TShape) Assign(Source IObject) {
     Shape_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TShape) DisposeOf() {
+    Shape_DisposeOf(s.instance)
+}
+
+func (s *TShape) ClassType() TClass {
+    return Shape_ClassType(s.instance)
+}
+
 func (s *TShape) ClassName() string {
     return Shape_ClassName(s.instance)
+}
+
+func (s *TShape) InstanceSize() int32 {
+    return Shape_InstanceSize(s.instance)
+}
+
+func (s *TShape) InheritsFrom(AClass TClass) bool {
+    return Shape_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TShape) Equals(Obj IObject) bool {
@@ -356,11 +376,11 @@ func (s *TShape) Floating() bool {
     return Shape_GetFloating(s.instance)
 }
 
-func (s *TShape) Parent() *TControl {
-    return ControlFromInst(Shape_GetParent(s.instance))
+func (s *TShape) Parent() *TWinControl {
+    return WinControlFromInst(Shape_GetParent(s.instance))
 }
 
-func (s *TShape) SetParent(value IControl) {
+func (s *TShape) SetParent(value IWinControl) {
     Shape_SetParent(s.instance, CheckPtr(value))
 }
 

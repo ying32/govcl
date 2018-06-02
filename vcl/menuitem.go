@@ -52,6 +52,10 @@ func (m *TMenuItem) IsValid() bool {
     return m.instance != 0
 }
 
+func TMenuItemClass() TClass {
+    return MenuItem_StaticClassType()
+}
+
 func (m *TMenuItem) Insert(Index int32, Item IComponent) {
     MenuItem_Insert(m.instance, Index , CheckPtr(Item))
 }
@@ -92,8 +96,24 @@ func (m *TMenuItem) Assign(Source IObject) {
     MenuItem_Assign(m.instance, CheckPtr(Source))
 }
 
+func (m *TMenuItem) DisposeOf() {
+    MenuItem_DisposeOf(m.instance)
+}
+
+func (m *TMenuItem) ClassType() TClass {
+    return MenuItem_ClassType(m.instance)
+}
+
 func (m *TMenuItem) ClassName() string {
     return MenuItem_ClassName(m.instance)
+}
+
+func (m *TMenuItem) InstanceSize() int32 {
+    return MenuItem_InstanceSize(m.instance)
+}
+
+func (m *TMenuItem) InheritsFrom(AClass TClass) bool {
+    return MenuItem_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMenuItem) Equals(Obj IObject) bool {

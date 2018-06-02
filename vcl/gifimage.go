@@ -52,6 +52,10 @@ func (g *TGIFImage) IsValid() bool {
     return g.instance != 0
 }
 
+func TGIFImageClass() TClass {
+    return GIFImage_StaticClassType()
+}
+
 func (g *TGIFImage) SaveToStream(Stream IObject) {
     GIFImage_SaveToStream(g.instance, CheckPtr(Stream))
 }
@@ -104,8 +108,24 @@ func (g *TGIFImage) GetNamePath() string {
     return GIFImage_GetNamePath(g.instance)
 }
 
+func (g *TGIFImage) DisposeOf() {
+    GIFImage_DisposeOf(g.instance)
+}
+
+func (g *TGIFImage) ClassType() TClass {
+    return GIFImage_ClassType(g.instance)
+}
+
 func (g *TGIFImage) ClassName() string {
     return GIFImage_ClassName(g.instance)
+}
+
+func (g *TGIFImage) InstanceSize() int32 {
+    return GIFImage_InstanceSize(g.instance)
+}
+
+func (g *TGIFImage) InheritsFrom(AClass TClass) bool {
+    return GIFImage_InheritsFrom(g.instance, AClass)
 }
 
 func (g *TGIFImage) GetHashCode() int32 {

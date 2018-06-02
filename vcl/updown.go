@@ -15,7 +15,7 @@ import (
 )
 
 type TUpDown struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (u *TUpDown) Instance() uintptr {
 
 func (u *TUpDown) IsValid() bool {
     return u.instance != 0
+}
+
+func TUpDownClass() TClass {
+    return UpDown_StaticClassType()
 }
 
 func (u *TUpDown) CanFocus() bool {
@@ -104,7 +108,7 @@ func (u *TUpDown) ClientToScreen(Point TPoint) TPoint {
     return UpDown_ClientToScreen(u.instance, Point)
 }
 
-func (u *TUpDown) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (u *TUpDown) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return UpDown_ClientToParent(u.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (u *TUpDown) ScreenToClient(Point TPoint) TPoint {
     return UpDown_ScreenToClient(u.instance, Point)
 }
 
-func (u *TUpDown) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (u *TUpDown) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return UpDown_ParentToClient(u.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (u *TUpDown) Assign(Source IObject) {
     UpDown_Assign(u.instance, CheckPtr(Source))
 }
 
+func (u *TUpDown) DisposeOf() {
+    UpDown_DisposeOf(u.instance)
+}
+
+func (u *TUpDown) ClassType() TClass {
+    return UpDown_ClassType(u.instance)
+}
+
 func (u *TUpDown) ClassName() string {
     return UpDown_ClassName(u.instance)
+}
+
+func (u *TUpDown) InstanceSize() int32 {
+    return UpDown_InstanceSize(u.instance)
+}
+
+func (u *TUpDown) InheritsFrom(AClass TClass) bool {
+    return UpDown_InheritsFrom(u.instance, AClass)
 }
 
 func (u *TUpDown) Equals(Obj IObject) bool {
@@ -460,11 +480,11 @@ func (u *TUpDown) Floating() bool {
     return UpDown_GetFloating(u.instance)
 }
 
-func (u *TUpDown) Parent() *TControl {
-    return ControlFromInst(UpDown_GetParent(u.instance))
+func (u *TUpDown) Parent() *TWinControl {
+    return WinControlFromInst(UpDown_GetParent(u.instance))
 }
 
-func (u *TUpDown) SetParent(value IControl) {
+func (u *TUpDown) SetParent(value IWinControl) {
     UpDown_SetParent(u.instance, CheckPtr(value))
 }
 

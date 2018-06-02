@@ -52,6 +52,10 @@ func (b *TBevel) IsValid() bool {
     return b.instance != 0
 }
 
+func TBevelClass() TClass {
+    return Bevel_StaticClassType()
+}
+
 func (b *TBevel) BringToFront() {
     Bevel_BringToFront(b.instance)
 }
@@ -60,7 +64,7 @@ func (b *TBevel) ClientToScreen(Point TPoint) TPoint {
     return Bevel_ClientToScreen(b.instance, Point)
 }
 
-func (b *TBevel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (b *TBevel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Bevel_ClientToParent(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -96,7 +100,7 @@ func (b *TBevel) ScreenToClient(Point TPoint) TPoint {
     return Bevel_ScreenToClient(b.instance, Point)
 }
 
-func (b *TBevel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (b *TBevel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Bevel_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,8 +140,24 @@ func (b *TBevel) Assign(Source IObject) {
     Bevel_Assign(b.instance, CheckPtr(Source))
 }
 
+func (b *TBevel) DisposeOf() {
+    Bevel_DisposeOf(b.instance)
+}
+
+func (b *TBevel) ClassType() TClass {
+    return Bevel_ClassType(b.instance)
+}
+
 func (b *TBevel) ClassName() string {
     return Bevel_ClassName(b.instance)
+}
+
+func (b *TBevel) InstanceSize() int32 {
+    return Bevel_InstanceSize(b.instance)
+}
+
+func (b *TBevel) InheritsFrom(AClass TClass) bool {
+    return Bevel_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TBevel) Equals(Obj IObject) bool {
@@ -280,11 +300,11 @@ func (b *TBevel) Floating() bool {
     return Bevel_GetFloating(b.instance)
 }
 
-func (b *TBevel) Parent() *TControl {
-    return ControlFromInst(Bevel_GetParent(b.instance))
+func (b *TBevel) Parent() *TWinControl {
+    return WinControlFromInst(Bevel_GetParent(b.instance))
 }
 
-func (b *TBevel) SetParent(value IControl) {
+func (b *TBevel) SetParent(value IWinControl) {
     Bevel_SetParent(b.instance, CheckPtr(value))
 }
 

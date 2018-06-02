@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TComponent struct {
@@ -51,6 +52,10 @@ func (c *TComponent) IsValid() bool {
     return c.instance != 0
 }
 
+func TComponentClass() TClass {
+    return Component_StaticClassType()
+}
+
 func (c *TComponent) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Component_FindComponent(c.instance, AName))
 }
@@ -67,8 +72,24 @@ func (c *TComponent) Assign(Source IObject) {
     Component_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TComponent) DisposeOf() {
+    Component_DisposeOf(c.instance)
+}
+
+func (c *TComponent) ClassType() TClass {
+    return Component_ClassType(c.instance)
+}
+
 func (c *TComponent) ClassName() string {
     return Component_ClassName(c.instance)
+}
+
+func (c *TComponent) InstanceSize() int32 {
+    return Component_InstanceSize(c.instance)
+}
+
+func (c *TComponent) InheritsFrom(AClass TClass) bool {
+    return Component_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TComponent) Equals(Obj IObject) bool {

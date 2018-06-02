@@ -55,9 +55,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure JPEGImage_DisposeOf(AObj: TJPEGImage); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function JPEGImage_ClassType(AObj: TJPEGImage): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function JPEGImage_ClassName(AObj: TJPEGImage): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function JPEGImage_InstanceSize(AObj: TJPEGImage): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function JPEGImage_InheritsFrom(AObj: TJPEGImage; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function JPEGImage_GetHashCode(AObj: TJPEGImage): Integer; stdcall;
@@ -192,6 +212,10 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+function JPEGImage_StaticClassType: TClass; stdcall;
+begin
+  Result := TJPEGImage;
+end;
 
 exports
   JPEGImage_Create,
@@ -204,7 +228,11 @@ exports
   JPEGImage_SaveToFile,
   JPEGImage_SetSize,
   JPEGImage_GetNamePath,
+  JPEGImage_DisposeOf,
+  JPEGImage_ClassType,
   JPEGImage_ClassName,
+  JPEGImage_InstanceSize,
+  JPEGImage_InheritsFrom,
   JPEGImage_GetHashCode,
   JPEGImage_ToString,
   JPEGImage_GetPixelFormat,
@@ -229,5 +257,6 @@ exports
   JPEGImage_SetTransparent,
   JPEGImage_GetWidth,
   JPEGImage_SetWidth,
-  JPEGImage_SetOnChange;
+  JPEGImage_SetOnChange,
+  JPEGImage_StaticClassType;
 

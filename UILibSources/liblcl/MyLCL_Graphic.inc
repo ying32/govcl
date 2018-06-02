@@ -50,9 +50,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function Graphic_ClassType(AObj: TGraphic): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Graphic_ClassName(AObj: TGraphic): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Graphic_InstanceSize(AObj: TGraphic): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Graphic_InheritsFrom(AObj: TGraphic; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Graphic_GetHashCode(AObj: TGraphic): Integer; extdecl;
@@ -132,6 +147,10 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Graphic_StaticClassType: TClass; extdecl;
+begin
+  Result := TGraphic;
+end;
 
 exports
   Graphic_Create,
@@ -143,7 +162,10 @@ exports
   Graphic_SaveToStream,
   Graphic_Assign,
   Graphic_GetNamePath,
+  Graphic_ClassType,
   Graphic_ClassName,
+  Graphic_InstanceSize,
+  Graphic_InheritsFrom,
   Graphic_GetHashCode,
   Graphic_ToString,
   Graphic_GetEmpty,
@@ -157,5 +179,6 @@ exports
   Graphic_SetTransparent,
   Graphic_GetWidth,
   Graphic_SetWidth,
-  Graphic_SetOnChange;
+  Graphic_SetOnChange,
+  Graphic_StaticClassType;
 

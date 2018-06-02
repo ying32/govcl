@@ -165,9 +165,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function ProgressBar_ClassType(AObj: TProgressBar): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ProgressBar_ClassName(AObj: TProgressBar): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function ProgressBar_InstanceSize(AObj: TProgressBar): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ProgressBar_InheritsFrom(AObj: TProgressBar; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ProgressBar_Equals(AObj: TProgressBar; Obj: TObject): LongBool; extdecl;
@@ -752,6 +767,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ProgressBar_StaticClassType: TClass; extdecl;
+begin
+  Result := TProgressBar;
+end;
 
 exports
   ProgressBar_Create,
@@ -786,7 +805,10 @@ exports
   ProgressBar_FindComponent,
   ProgressBar_GetNamePath,
   ProgressBar_Assign,
+  ProgressBar_ClassType,
   ProgressBar_ClassName,
+  ProgressBar_InstanceSize,
+  ProgressBar_InheritsFrom,
   ProgressBar_Equals,
   ProgressBar_GetHashCode,
   ProgressBar_ToString,
@@ -887,5 +909,6 @@ exports
   ProgressBar_GetTag,
   ProgressBar_SetTag,
   ProgressBar_GetControls,
-  ProgressBar_GetComponents;
+  ProgressBar_GetComponents,
+  ProgressBar_StaticClassType;
 

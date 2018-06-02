@@ -40,9 +40,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function TrayIcon_ClassType(AObj: TTrayIcon): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function TrayIcon_ClassName(AObj: TTrayIcon): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function TrayIcon_InstanceSize(AObj: TTrayIcon): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function TrayIcon_InheritsFrom(AObj: TTrayIcon; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function TrayIcon_Equals(AObj: TTrayIcon; Obj: TObject): LongBool; extdecl;
@@ -255,6 +270,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function TrayIcon_StaticClassType: TClass; extdecl;
+begin
+  Result := TTrayIcon;
+end;
 
 exports
   TrayIcon_Create,
@@ -264,7 +283,10 @@ exports
   TrayIcon_GetNamePath,
   TrayIcon_HasParent,
   TrayIcon_Assign,
+  TrayIcon_ClassType,
   TrayIcon_ClassName,
+  TrayIcon_InstanceSize,
+  TrayIcon_InheritsFrom,
   TrayIcon_Equals,
   TrayIcon_GetHashCode,
   TrayIcon_ToString,
@@ -299,5 +321,6 @@ exports
   TrayIcon_SetName,
   TrayIcon_GetTag,
   TrayIcon_SetTag,
-  TrayIcon_GetComponents;
+  TrayIcon_GetComponents,
+  TrayIcon_StaticClassType;
 

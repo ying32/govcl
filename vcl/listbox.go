@@ -15,7 +15,7 @@ import (
 )
 
 type TListBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (l *TListBox) Instance() uintptr {
 
 func (l *TListBox) IsValid() bool {
     return l.instance != 0
+}
+
+func TListBoxClass() TClass {
+    return ListBox_StaticClassType()
 }
 
 func (l *TListBox) AddItem(Item string, AObject IObject) {
@@ -124,7 +128,7 @@ func (l *TListBox) ClientToScreen(Point TPoint) TPoint {
     return ListBox_ClientToScreen(l.instance, Point)
 }
 
-func (l *TListBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (l *TListBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ListBox_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -152,7 +156,7 @@ func (l *TListBox) ScreenToClient(Point TPoint) TPoint {
     return ListBox_ScreenToClient(l.instance, Point)
 }
 
-func (l *TListBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (l *TListBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ListBox_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -184,8 +188,24 @@ func (l *TListBox) Assign(Source IObject) {
     ListBox_Assign(l.instance, CheckPtr(Source))
 }
 
+func (l *TListBox) DisposeOf() {
+    ListBox_DisposeOf(l.instance)
+}
+
+func (l *TListBox) ClassType() TClass {
+    return ListBox_ClassType(l.instance)
+}
+
 func (l *TListBox) ClassName() string {
     return ListBox_ClassName(l.instance)
+}
+
+func (l *TListBox) InstanceSize() int32 {
+    return ListBox_InstanceSize(l.instance)
+}
+
+func (l *TListBox) InheritsFrom(AClass TClass) bool {
+    return ListBox_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListBox) Equals(Obj IObject) bool {
@@ -672,11 +692,11 @@ func (l *TListBox) Floating() bool {
     return ListBox_GetFloating(l.instance)
 }
 
-func (l *TListBox) Parent() *TControl {
-    return ControlFromInst(ListBox_GetParent(l.instance))
+func (l *TListBox) Parent() *TWinControl {
+    return WinControlFromInst(ListBox_GetParent(l.instance))
 }
 
-func (l *TListBox) SetParent(value IControl) {
+func (l *TListBox) SetParent(value IWinControl) {
     ListBox_SetParent(l.instance, CheckPtr(value))
 }
 

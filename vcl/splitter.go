@@ -52,6 +52,10 @@ func (s *TSplitter) IsValid() bool {
     return s.instance != 0
 }
 
+func TSplitterClass() TClass {
+    return Splitter_StaticClassType()
+}
+
 func (s *TSplitter) BringToFront() {
     Splitter_BringToFront(s.instance)
 }
@@ -60,7 +64,7 @@ func (s *TSplitter) ClientToScreen(Point TPoint) TPoint {
     return Splitter_ClientToScreen(s.instance, Point)
 }
 
-func (s *TSplitter) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TSplitter) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Splitter_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -96,7 +100,7 @@ func (s *TSplitter) ScreenToClient(Point TPoint) TPoint {
     return Splitter_ScreenToClient(s.instance, Point)
 }
 
-func (s *TSplitter) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TSplitter) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Splitter_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,8 +140,24 @@ func (s *TSplitter) Assign(Source IObject) {
     Splitter_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TSplitter) DisposeOf() {
+    Splitter_DisposeOf(s.instance)
+}
+
+func (s *TSplitter) ClassType() TClass {
+    return Splitter_ClassType(s.instance)
+}
+
 func (s *TSplitter) ClassName() string {
     return Splitter_ClassName(s.instance)
+}
+
+func (s *TSplitter) InstanceSize() int32 {
+    return Splitter_InstanceSize(s.instance)
+}
+
+func (s *TSplitter) InheritsFrom(AClass TClass) bool {
+    return Splitter_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TSplitter) Equals(Obj IObject) bool {
@@ -304,11 +324,11 @@ func (s *TSplitter) SetShowHint(value bool) {
     Splitter_SetShowHint(s.instance, value)
 }
 
-func (s *TSplitter) Parent() *TControl {
-    return ControlFromInst(Splitter_GetParent(s.instance))
+func (s *TSplitter) Parent() *TWinControl {
+    return WinControlFromInst(Splitter_GetParent(s.instance))
 }
 
-func (s *TSplitter) SetParent(value IControl) {
+func (s *TSplitter) SetParent(value IWinControl) {
     Splitter_SetParent(s.instance, CheckPtr(value))
 }
 

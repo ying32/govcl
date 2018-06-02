@@ -14,6 +14,8 @@ import (
 
 	"math"
 
+	"runtime"
+
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
@@ -24,7 +26,6 @@ import (
 var (
 	isMouseDown    bool
 	mouseDownPos   types.TPoint
-	saveFormSize   types.TRect
 	canAcceptTypes = []string{".jpg", ".gif", ".png", ".bmp", ".ico", ".psd"}
 	isAutoCenter   bool // 首次加载图片后，如果不改变ImageViewer的位置，则窗口调整大小时居中显示
 	imgMousePos    types.TPoint
@@ -36,8 +37,9 @@ var (
 )
 
 func (f *TMainForm) OnMainFormCreate(sender vcl.IObject) {
-	f.SetAllowDropFiles(true)
+	hookMainFormWndPrc()
 
+	f.SetAllowDropFiles(true)
 	//imgBuffer = vcl.NewPicture()
 	//imgBuffer.SetOnChange(f.OnPicChanged)
 	ImgThumb = vcl.NewBitmap()
@@ -45,7 +47,7 @@ func (f *TMainForm) OnMainFormCreate(sender vcl.IObject) {
 	// 调试下，先显示
 	//f.PBPreview.Show()
 
-	f.BtnMax.Click()
+	f.setWindowState(types.WsMaximized)
 
 	f.ImgViewer.SetStretch(true)
 	f.ImgViewer.SetAutoSize(false)
@@ -59,6 +61,8 @@ func (f *TMainForm) OnMainFormCreate(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnMainFormDestroy(sender vcl.IObject) {
+	unHookMainFormWndPrc()
+
 	f.SetAllowDropFiles(false)
 	ImgThumb.Free()
 	//imgBuffer.Free()
@@ -74,6 +78,11 @@ func (f *TMainForm) OnMainFormMouseWheel(sender vcl.IObject, shift types.TShiftS
 	} else {
 		f.zoom(-1)
 	}
+}
+
+func (f *TMainForm) setWindowState(state types.TWindowState) {
+	f.SetWindowState(state)
+	f.updateSysButtonState()
 }
 
 func (f *TMainForm) getFileIndex(aFileName string) int {
@@ -305,12 +314,22 @@ func (f *TMainForm) canAccept(aFileName string) bool {
 	return false
 }
 
+func (f *TMainForm) updateSysButtonState() {
+	if f.isMax() {
+		f.BtnMax.Hide()
+		f.BtnRestore.Show()
+	} else {
+		f.BtnMax.Show()
+		f.BtnRestore.Hide()
+	}
+}
+
 func (f *TMainForm) isMax() bool {
-	return f.Width() == vcl.Screen.WorkAreaWidth() && f.Height() == vcl.Screen.WorkAreaHeight()
+	return f.WindowState() == types.WsMaximized
 }
 
 func (f *TMainForm) OnBtnMinClick(sender vcl.IObject) {
-	vcl.Application.Minimize()
+	f.setWindowState(types.WsMinimized)
 }
 
 func (f *TMainForm) OnBtnCloseClick(sender vcl.IObject) {
@@ -318,19 +337,11 @@ func (f *TMainForm) OnBtnCloseClick(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnBtnMaxClick(sender vcl.IObject) {
-	f.BtnMax.Hide()
-	f.BtnRestore.Show()
-	saveFormSize.Left = f.Left()
-	saveFormSize.Top = f.Top()
-	saveFormSize.Right = saveFormSize.Left + f.Width()
-	saveFormSize.Bottom = saveFormSize.Top + f.Height()
-	f.SetBounds(0, 0, vcl.Screen.WorkAreaWidth(), vcl.Screen.WorkAreaHeight())
+	f.setWindowState(types.WsMaximized)
 }
 
 func (f *TMainForm) OnBtnRestoreClick(sender vcl.IObject) {
-	f.BtnRestore.Hide()
-	f.BtnMax.Show()
-	f.SetBounds(saveFormSize.Left, saveFormSize.Top, saveFormSize.Width(), saveFormSize.Height())
+	f.setWindowState(types.WsNormal)
 }
 
 func (f *TMainForm) OnBtnMenuClick(sender vcl.IObject) {
@@ -355,9 +366,9 @@ func (f *TMainForm) OnLblCaptionMouseDown(sender vcl.IObject, button types.TMous
 func (f *TMainForm) OnLblCaptionMouseMove(sender vcl.IObject, shift types.TShiftState, x, y int32) {
 	if isMouseDown {
 		if f.isMax() {
-			f.BtnRestore.Click()
-			// 模拟的就是麻烦啊，要各种计算
-			ratio := float64(saveFormSize.Width()) / float64(vcl.Screen.WorkAreaWidth())
+			f.setWindowState(types.WsNormal)
+			// 这里做，主要是修复还原后鼠标位置
+			ratio := float64(f.Width()) / float64(vcl.Screen.Width())
 			x = int32(float64(x) * ratio)
 			mouseDownPos.X = x
 		}
@@ -367,10 +378,14 @@ func (f *TMainForm) OnLblCaptionMouseMove(sender vcl.IObject, shift types.TShift
 }
 
 func (f *TMainForm) OnLblCaptionDblClick(sender vcl.IObject) {
+	//if runtime.GOOS == "windows" {
+	//	win.ReleaseCapture()
+	//	f.Perform(win.WM_NCLBUTTONDBLCLK, win.HTCAPTION, 0)
+	//}
 	//if f.isMax() {
-	//	f.BtnRestore.Click()
+	//	f.setWindowState(types.WsNormal)
 	//} else {
-	//	f.BtnMax.Click()
+	//	f.setWindowState(types.WsMaximized)
 	//}
 }
 
@@ -486,7 +501,6 @@ func (f *TMainForm) OnBtnPrevClick(sender vcl.IObject) {
 	if len(curDirImages) == 0 {
 		return
 	}
-
 	curImageIndex--
 	if curImageIndex < 0 {
 		curImageIndex = len(curDirImages) - 1
@@ -507,6 +521,11 @@ func (f *TMainForm) OnBtnNextClick(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnMainFormConstrainedResize(sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32) {
+	if runtime.GOOS == "windows" {
+		if f.WindowState() == types.WsMaximized {
+			*maxHeight = vcl.Screen.WorkAreaHeight()
+		}
+	}
 	*minWidth = 400
 	*minHeight = 400
 }

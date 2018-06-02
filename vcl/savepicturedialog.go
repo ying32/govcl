@@ -52,6 +52,10 @@ func (s *TSavePictureDialog) IsValid() bool {
     return s.instance != 0
 }
 
+func TSavePictureDialogClass() TClass {
+    return SavePictureDialog_StaticClassType()
+}
+
 func (s *TSavePictureDialog) Execute() bool {
     return SavePictureDialog_Execute(s.instance)
 }
@@ -72,8 +76,24 @@ func (s *TSavePictureDialog) Assign(Source IObject) {
     SavePictureDialog_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TSavePictureDialog) DisposeOf() {
+    SavePictureDialog_DisposeOf(s.instance)
+}
+
+func (s *TSavePictureDialog) ClassType() TClass {
+    return SavePictureDialog_ClassType(s.instance)
+}
+
 func (s *TSavePictureDialog) ClassName() string {
     return SavePictureDialog_ClassName(s.instance)
+}
+
+func (s *TSavePictureDialog) InstanceSize() int32 {
+    return SavePictureDialog_InstanceSize(s.instance)
+}
+
+func (s *TSavePictureDialog) InheritsFrom(AClass TClass) bool {
+    return SavePictureDialog_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TSavePictureDialog) Equals(Obj IObject) bool {

@@ -15,7 +15,7 @@ import (
 )
 
 type TGroupBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (g *TGroupBox) Instance() uintptr {
 
 func (g *TGroupBox) IsValid() bool {
     return g.instance != 0
+}
+
+func TGroupBoxClass() TClass {
+    return GroupBox_StaticClassType()
 }
 
 func (g *TGroupBox) CanFocus() bool {
@@ -104,7 +108,7 @@ func (g *TGroupBox) ClientToScreen(Point TPoint) TPoint {
     return GroupBox_ClientToScreen(g.instance, Point)
 }
 
-func (g *TGroupBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (g *TGroupBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return GroupBox_ClientToParent(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (g *TGroupBox) ScreenToClient(Point TPoint) TPoint {
     return GroupBox_ScreenToClient(g.instance, Point)
 }
 
-func (g *TGroupBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (g *TGroupBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return GroupBox_ParentToClient(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (g *TGroupBox) Assign(Source IObject) {
     GroupBox_Assign(g.instance, CheckPtr(Source))
 }
 
+func (g *TGroupBox) DisposeOf() {
+    GroupBox_DisposeOf(g.instance)
+}
+
+func (g *TGroupBox) ClassType() TClass {
+    return GroupBox_ClassType(g.instance)
+}
+
 func (g *TGroupBox) ClassName() string {
     return GroupBox_ClassName(g.instance)
+}
+
+func (g *TGroupBox) InstanceSize() int32 {
+    return GroupBox_InstanceSize(g.instance)
+}
+
+func (g *TGroupBox) InheritsFrom(AClass TClass) bool {
+    return GroupBox_InheritsFrom(g.instance, AClass)
 }
 
 func (g *TGroupBox) Equals(Obj IObject) bool {
@@ -528,11 +548,11 @@ func (g *TGroupBox) Floating() bool {
     return GroupBox_GetFloating(g.instance)
 }
 
-func (g *TGroupBox) Parent() *TControl {
-    return ControlFromInst(GroupBox_GetParent(g.instance))
+func (g *TGroupBox) Parent() *TWinControl {
+    return WinControlFromInst(GroupBox_GetParent(g.instance))
 }
 
-func (g *TGroupBox) SetParent(value IControl) {
+func (g *TGroupBox) SetParent(value IWinControl) {
     GroupBox_SetParent(g.instance, CheckPtr(value))
 }
 

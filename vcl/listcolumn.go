@@ -52,6 +52,10 @@ func (l *TListColumn) IsValid() bool {
     return l.instance != 0
 }
 
+func TListColumnClass() TClass {
+    return ListColumn_StaticClassType()
+}
+
 func (l *TListColumn) Assign(Source IObject) {
     ListColumn_Assign(l.instance, CheckPtr(Source))
 }
@@ -60,8 +64,24 @@ func (l *TListColumn) GetNamePath() string {
     return ListColumn_GetNamePath(l.instance)
 }
 
+func (l *TListColumn) DisposeOf() {
+    ListColumn_DisposeOf(l.instance)
+}
+
+func (l *TListColumn) ClassType() TClass {
+    return ListColumn_ClassType(l.instance)
+}
+
 func (l *TListColumn) ClassName() string {
     return ListColumn_ClassName(l.instance)
+}
+
+func (l *TListColumn) InstanceSize() int32 {
+    return ListColumn_InstanceSize(l.instance)
+}
+
+func (l *TListColumn) InheritsFrom(AClass TClass) bool {
+    return ListColumn_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListColumn) Equals(Obj IObject) bool {

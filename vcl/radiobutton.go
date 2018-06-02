@@ -15,7 +15,7 @@ import (
 )
 
 type TRadioButton struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (r *TRadioButton) Instance() uintptr {
 
 func (r *TRadioButton) IsValid() bool {
     return r.instance != 0
+}
+
+func TRadioButtonClass() TClass {
+    return RadioButton_StaticClassType()
 }
 
 func (r *TRadioButton) CanFocus() bool {
@@ -104,7 +108,7 @@ func (r *TRadioButton) ClientToScreen(Point TPoint) TPoint {
     return RadioButton_ClientToScreen(r.instance, Point)
 }
 
-func (r *TRadioButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (r *TRadioButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return RadioButton_ClientToParent(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (r *TRadioButton) ScreenToClient(Point TPoint) TPoint {
     return RadioButton_ScreenToClient(r.instance, Point)
 }
 
-func (r *TRadioButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (r *TRadioButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return RadioButton_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (r *TRadioButton) Assign(Source IObject) {
     RadioButton_Assign(r.instance, CheckPtr(Source))
 }
 
+func (r *TRadioButton) DisposeOf() {
+    RadioButton_DisposeOf(r.instance)
+}
+
+func (r *TRadioButton) ClassType() TClass {
+    return RadioButton_ClassType(r.instance)
+}
+
 func (r *TRadioButton) ClassName() string {
     return RadioButton_ClassName(r.instance)
+}
+
+func (r *TRadioButton) InstanceSize() int32 {
+    return RadioButton_InstanceSize(r.instance)
+}
+
+func (r *TRadioButton) InheritsFrom(AClass TClass) bool {
+    return RadioButton_InheritsFrom(r.instance, AClass)
 }
 
 func (r *TRadioButton) Equals(Obj IObject) bool {
@@ -544,11 +564,11 @@ func (r *TRadioButton) Floating() bool {
     return RadioButton_GetFloating(r.instance)
 }
 
-func (r *TRadioButton) Parent() *TControl {
-    return ControlFromInst(RadioButton_GetParent(r.instance))
+func (r *TRadioButton) Parent() *TWinControl {
+    return WinControlFromInst(RadioButton_GetParent(r.instance))
 }
 
-func (r *TRadioButton) SetParent(value IControl) {
+func (r *TRadioButton) SetParent(value IWinControl) {
     RadioButton_SetParent(r.instance, CheckPtr(value))
 }
 

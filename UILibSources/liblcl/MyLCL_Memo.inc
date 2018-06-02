@@ -190,9 +190,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Memo_ClassType(AObj: TMemo): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Memo_ClassName(AObj: TMemo): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Memo_InstanceSize(AObj: TMemo): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Memo_InheritsFrom(AObj: TMemo; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Memo_Equals(AObj: TMemo; Obj: TObject): LongBool; extdecl;
@@ -984,6 +999,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Memo_StaticClassType: TClass; extdecl;
+begin
+  Result := TMemo;
+end;
 
 exports
   Memo_Create,
@@ -1023,7 +1042,10 @@ exports
   Memo_FindComponent,
   Memo_GetNamePath,
   Memo_Assign,
+  Memo_ClassType,
   Memo_ClassName,
+  Memo_InstanceSize,
+  Memo_InheritsFrom,
   Memo_Equals,
   Memo_GetHashCode,
   Memo_ToString,
@@ -1157,5 +1179,6 @@ exports
   Memo_GetTag,
   Memo_SetTag,
   Memo_GetControls,
-  Memo_GetComponents;
+  Memo_GetComponents,
+  Memo_StaticClassType;
 

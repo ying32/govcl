@@ -52,6 +52,10 @@ func (l *TListGroup) IsValid() bool {
     return l.instance != 0
 }
 
+func TListGroupClass() TClass {
+    return ListGroup_StaticClassType()
+}
+
 func (l *TListGroup) Assign(Source IObject) {
     ListGroup_Assign(l.instance, CheckPtr(Source))
 }
@@ -60,8 +64,24 @@ func (l *TListGroup) GetNamePath() string {
     return ListGroup_GetNamePath(l.instance)
 }
 
+func (l *TListGroup) DisposeOf() {
+    ListGroup_DisposeOf(l.instance)
+}
+
+func (l *TListGroup) ClassType() TClass {
+    return ListGroup_ClassType(l.instance)
+}
+
 func (l *TListGroup) ClassName() string {
     return ListGroup_ClassName(l.instance)
+}
+
+func (l *TListGroup) InstanceSize() int32 {
+    return ListGroup_InstanceSize(l.instance)
+}
+
+func (l *TListGroup) InheritsFrom(AClass TClass) bool {
+    return ListGroup_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListGroup) Equals(Obj IObject) bool {

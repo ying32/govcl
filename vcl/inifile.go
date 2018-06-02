@@ -12,6 +12,7 @@ package vcl
 import (
     "time"
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TIniFile struct {
@@ -50,6 +51,10 @@ func (i *TIniFile) Instance() uintptr {
 
 func (i *TIniFile) IsValid() bool {
     return i.instance != 0
+}
+
+func TIniFileClass() TClass {
+    return IniFile_StaticClassType()
 }
 
 func (i *TIniFile) ReadString(Section string, Ident string, Default string) string {
@@ -140,8 +145,24 @@ func (i *TIniFile) ValueExists(Section string, Ident string) bool {
     return IniFile_ValueExists(i.instance, Section , Ident)
 }
 
+func (i *TIniFile) DisposeOf() {
+    IniFile_DisposeOf(i.instance)
+}
+
+func (i *TIniFile) ClassType() TClass {
+    return IniFile_ClassType(i.instance)
+}
+
 func (i *TIniFile) ClassName() string {
     return IniFile_ClassName(i.instance)
+}
+
+func (i *TIniFile) InstanceSize() int32 {
+    return IniFile_InstanceSize(i.instance)
+}
+
+func (i *TIniFile) InheritsFrom(AClass TClass) bool {
+    return IniFile_InheritsFrom(i.instance, AClass)
 }
 
 func (i *TIniFile) Equals(Obj IObject) bool {

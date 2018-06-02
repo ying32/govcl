@@ -180,9 +180,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ListBox_DisposeOf(AObj: TListBox); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ListBox_ClassType(AObj: TListBox): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ListBox_ClassName(AObj: TListBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ListBox_InstanceSize(AObj: TListBox): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ListBox_InheritsFrom(AObj: TListBox; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ListBox_Equals(AObj: TListBox; Obj: TObject): LongBool; stdcall;
@@ -1083,6 +1103,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ListBox_StaticClassType: TClass; stdcall;
+begin
+  Result := TListBox;
+end;
 
 exports
   ListBox_Create,
@@ -1120,7 +1144,11 @@ exports
   ListBox_FindComponent,
   ListBox_GetNamePath,
   ListBox_Assign,
+  ListBox_DisposeOf,
+  ListBox_ClassType,
   ListBox_ClassName,
+  ListBox_InstanceSize,
+  ListBox_InheritsFrom,
   ListBox_Equals,
   ListBox_GetHashCode,
   ListBox_ToString,
@@ -1273,5 +1301,6 @@ exports
   ListBox_GetSelected,
   ListBox_SetSelected,
   ListBox_GetControls,
-  ListBox_GetComponents;
+  ListBox_GetComponents,
+  ListBox_StaticClassType;
 

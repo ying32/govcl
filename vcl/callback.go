@@ -113,10 +113,10 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				int32(getVal(4)),
 				(*bool)(unsafe.Pointer(getVal(5))))
 
-			// func(control IControl, index int32, aRect TRect, state TOwnerDrawState)
+			// func(control IWinControl, index int32, aRect TRect, state TOwnerDrawState)
 		case TDrawItemEvent:
 			v.(TDrawItemEvent)(
-				ControlFromInst(getVal(0)),
+				WinControlFromInst(getVal(0)),
 				int32(getVal(1)),
 				*(*TRect)(unsafe.Pointer(getVal(2))),
 				TOwnerDrawState(getVal(3)))

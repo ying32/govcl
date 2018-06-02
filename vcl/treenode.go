@@ -52,6 +52,10 @@ func (t *TTreeNode) IsValid() bool {
     return t.instance != 0
 }
 
+func TTreeNodeClass() TClass {
+    return TreeNode_StaticClassType()
+}
+
 func (t *TTreeNode) AlphaSort(ARecurse bool) bool {
     return TreeNode_AlphaSort(t.instance, ARecurse)
 }
@@ -96,8 +100,24 @@ func (t *TTreeNode) GetNamePath() string {
     return TreeNode_GetNamePath(t.instance)
 }
 
+func (t *TTreeNode) DisposeOf() {
+    TreeNode_DisposeOf(t.instance)
+}
+
+func (t *TTreeNode) ClassType() TClass {
+    return TreeNode_ClassType(t.instance)
+}
+
 func (t *TTreeNode) ClassName() string {
     return TreeNode_ClassName(t.instance)
+}
+
+func (t *TTreeNode) InstanceSize() int32 {
+    return TreeNode_InstanceSize(t.instance)
+}
+
+func (t *TTreeNode) InheritsFrom(AClass TClass) bool {
+    return TreeNode_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTreeNode) Equals(Obj IObject) bool {

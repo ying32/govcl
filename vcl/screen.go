@@ -52,6 +52,10 @@ func (s *TScreen) IsValid() bool {
     return s.instance != 0
 }
 
+func TScreenClass() TClass {
+    return Screen_StaticClassType()
+}
+
 func (s *TScreen) Realign() {
     Screen_Realign(s.instance)
 }
@@ -72,8 +76,24 @@ func (s *TScreen) Assign(Source IObject) {
     Screen_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TScreen) DisposeOf() {
+    Screen_DisposeOf(s.instance)
+}
+
+func (s *TScreen) ClassType() TClass {
+    return Screen_ClassType(s.instance)
+}
+
 func (s *TScreen) ClassName() string {
     return Screen_ClassName(s.instance)
+}
+
+func (s *TScreen) InstanceSize() int32 {
+    return Screen_InstanceSize(s.instance)
+}
+
+func (s *TScreen) InheritsFrom(AClass TClass) bool {
+    return Screen_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TScreen) Equals(Obj IObject) bool {
@@ -112,7 +132,7 @@ func (s *TScreen) FocusedForm() *TForm {
     return FormFromInst(Screen_GetFocusedForm(s.instance))
 }
 
-func (s *TScreen) SetFocusedForm(value IControl) {
+func (s *TScreen) SetFocusedForm(value IWinControl) {
     Screen_SetFocusedForm(s.instance, CheckPtr(value))
 }
 

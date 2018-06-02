@@ -165,9 +165,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure CategoryPanel_DisposeOf(AObj: TCategoryPanel); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function CategoryPanel_ClassType(AObj: TCategoryPanel): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function CategoryPanel_ClassName(AObj: TCategoryPanel): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function CategoryPanel_InstanceSize(AObj: TCategoryPanel): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function CategoryPanel_InheritsFrom(AObj: TCategoryPanel; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function CategoryPanel_Equals(AObj: TCategoryPanel; Obj: TObject): LongBool; stdcall;
@@ -996,6 +1016,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function CategoryPanel_StaticClassType: TClass; stdcall;
+begin
+  Result := TCategoryPanel;
+end;
 
 exports
   CategoryPanel_Create,
@@ -1030,7 +1054,11 @@ exports
   CategoryPanel_FindComponent,
   CategoryPanel_GetNamePath,
   CategoryPanel_Assign,
+  CategoryPanel_DisposeOf,
+  CategoryPanel_ClassType,
   CategoryPanel_ClassName,
+  CategoryPanel_InstanceSize,
+  CategoryPanel_InheritsFrom,
   CategoryPanel_Equals,
   CategoryPanel_GetHashCode,
   CategoryPanel_ToString,
@@ -1170,5 +1198,6 @@ exports
   CategoryPanel_GetTag,
   CategoryPanel_SetTag,
   CategoryPanel_GetControls,
-  CategoryPanel_GetComponents;
+  CategoryPanel_GetComponents,
+  CategoryPanel_StaticClassType;
 

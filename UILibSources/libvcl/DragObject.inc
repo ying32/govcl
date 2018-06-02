@@ -30,9 +30,29 @@ begin
   AObj.ShowDragImage;
 end;
 
+procedure DragObject_DisposeOf(AObj: TDragObject); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function DragObject_ClassType(AObj: TDragObject): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function DragObject_ClassName(AObj: TDragObject): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function DragObject_InstanceSize(AObj: TDragObject): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function DragObject_InheritsFrom(AObj: TDragObject; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function DragObject_Equals(AObj: TDragObject; Obj: TObject): LongBool; stdcall;
@@ -135,6 +155,10 @@ begin
   AObj.RightClickCancels := AValue;
 end;
 
+function DragObject_StaticClassType: TClass; stdcall;
+begin
+  Result := TDragObject;
+end;
 
 exports
   DragObject_Create,
@@ -142,7 +166,11 @@ exports
   DragObject_Assign,
   DragObject_HideDragImage,
   DragObject_ShowDragImage,
+  DragObject_DisposeOf,
+  DragObject_ClassType,
   DragObject_ClassName,
+  DragObject_InstanceSize,
+  DragObject_InheritsFrom,
   DragObject_Equals,
   DragObject_GetHashCode,
   DragObject_ToString,
@@ -162,5 +190,6 @@ exports
   DragObject_GetMouseDeltaX,
   DragObject_GetMouseDeltaY,
   DragObject_GetRightClickCancels,
-  DragObject_SetRightClickCancels;
+  DragObject_SetRightClickCancels,
+  DragObject_StaticClassType;
 

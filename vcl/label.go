@@ -52,6 +52,10 @@ func (l *TLabel) IsValid() bool {
     return l.instance != 0
 }
 
+func TLabelClass() TClass {
+    return Label_StaticClassType()
+}
+
 func (l *TLabel) BringToFront() {
     Label_BringToFront(l.instance)
 }
@@ -60,7 +64,7 @@ func (l *TLabel) ClientToScreen(Point TPoint) TPoint {
     return Label_ClientToScreen(l.instance, Point)
 }
 
-func (l *TLabel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (l *TLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Label_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -96,7 +100,7 @@ func (l *TLabel) ScreenToClient(Point TPoint) TPoint {
     return Label_ScreenToClient(l.instance, Point)
 }
 
-func (l *TLabel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (l *TLabel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Label_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,8 +140,24 @@ func (l *TLabel) Assign(Source IObject) {
     Label_Assign(l.instance, CheckPtr(Source))
 }
 
+func (l *TLabel) DisposeOf() {
+    Label_DisposeOf(l.instance)
+}
+
+func (l *TLabel) ClassType() TClass {
+    return Label_ClassType(l.instance)
+}
+
 func (l *TLabel) ClassName() string {
     return Label_ClassName(l.instance)
+}
+
+func (l *TLabel) InstanceSize() int32 {
+    return Label_InstanceSize(l.instance)
+}
+
+func (l *TLabel) InheritsFrom(AClass TClass) bool {
+    return Label_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TLabel) Equals(Obj IObject) bool {
@@ -464,11 +484,11 @@ func (l *TLabel) Floating() bool {
     return Label_GetFloating(l.instance)
 }
 
-func (l *TLabel) Parent() *TControl {
-    return ControlFromInst(Label_GetParent(l.instance))
+func (l *TLabel) Parent() *TWinControl {
+    return WinControlFromInst(Label_GetParent(l.instance))
 }
 
-func (l *TLabel) SetParent(value IControl) {
+func (l *TLabel) SetParent(value IWinControl) {
     Label_SetParent(l.instance, CheckPtr(value))
 }
 

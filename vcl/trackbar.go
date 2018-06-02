@@ -15,7 +15,7 @@ import (
 )
 
 type TTrackBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (t *TTrackBar) Instance() uintptr {
 
 func (t *TTrackBar) IsValid() bool {
     return t.instance != 0
+}
+
+func TTrackBarClass() TClass {
+    return TrackBar_StaticClassType()
 }
 
 func (t *TTrackBar) SetTick(Value int32) {
@@ -108,7 +112,7 @@ func (t *TTrackBar) ClientToScreen(Point TPoint) TPoint {
     return TrackBar_ClientToScreen(t.instance, Point)
 }
 
-func (t *TTrackBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (t *TTrackBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return TrackBar_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +140,7 @@ func (t *TTrackBar) ScreenToClient(Point TPoint) TPoint {
     return TrackBar_ScreenToClient(t.instance, Point)
 }
 
-func (t *TTrackBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (t *TTrackBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return TrackBar_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -168,8 +172,24 @@ func (t *TTrackBar) Assign(Source IObject) {
     TrackBar_Assign(t.instance, CheckPtr(Source))
 }
 
+func (t *TTrackBar) DisposeOf() {
+    TrackBar_DisposeOf(t.instance)
+}
+
+func (t *TTrackBar) ClassType() TClass {
+    return TrackBar_ClassType(t.instance)
+}
+
 func (t *TTrackBar) ClassName() string {
     return TrackBar_ClassName(t.instance)
+}
+
+func (t *TTrackBar) InstanceSize() int32 {
+    return TrackBar_InstanceSize(t.instance)
+}
+
+func (t *TTrackBar) InheritsFrom(AClass TClass) bool {
+    return TrackBar_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTrackBar) Equals(Obj IObject) bool {
@@ -588,11 +608,11 @@ func (t *TTrackBar) Floating() bool {
     return TrackBar_GetFloating(t.instance)
 }
 
-func (t *TTrackBar) Parent() *TControl {
-    return ControlFromInst(TrackBar_GetParent(t.instance))
+func (t *TTrackBar) Parent() *TWinControl {
+    return WinControlFromInst(TrackBar_GetParent(t.instance))
 }
 
-func (t *TTrackBar) SetParent(value IControl) {
+func (t *TTrackBar) SetParent(value IWinControl) {
     TrackBar_SetParent(t.instance, CheckPtr(value))
 }
 

@@ -180,9 +180,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure ColorListBox_DisposeOf(AObj: TColorListBox); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ColorListBox_ClassType(AObj: TColorListBox): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ColorListBox_ClassName(AObj: TColorListBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ColorListBox_InstanceSize(AObj: TColorListBox): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ColorListBox_InheritsFrom(AObj: TColorListBox; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ColorListBox_Equals(AObj: TColorListBox; Obj: TObject): LongBool; stdcall;
@@ -1031,6 +1051,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ColorListBox_StaticClassType: TClass; stdcall;
+begin
+  Result := TColorListBox;
+end;
 
 exports
   ColorListBox_Create,
@@ -1068,7 +1092,11 @@ exports
   ColorListBox_FindComponent,
   ColorListBox_GetNamePath,
   ColorListBox_Assign,
+  ColorListBox_DisposeOf,
+  ColorListBox_ClassType,
   ColorListBox_ClassName,
+  ColorListBox_InstanceSize,
+  ColorListBox_InheritsFrom,
   ColorListBox_Equals,
   ColorListBox_GetHashCode,
   ColorListBox_ToString,
@@ -1212,5 +1240,6 @@ exports
   ColorListBox_GetColors,
   ColorListBox_GetColorNames,
   ColorListBox_GetControls,
-  ColorListBox_GetComponents;
+  ColorListBox_GetComponents,
+  ColorListBox_StaticClassType;
 

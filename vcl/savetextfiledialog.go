@@ -52,6 +52,10 @@ func (s *TSaveTextFileDialog) IsValid() bool {
     return s.instance != 0
 }
 
+func TSaveTextFileDialogClass() TClass {
+    return SaveTextFileDialog_StaticClassType()
+}
+
 func (s *TSaveTextFileDialog) Execute() bool {
     return SaveTextFileDialog_Execute(s.instance)
 }
@@ -72,8 +76,24 @@ func (s *TSaveTextFileDialog) Assign(Source IObject) {
     SaveTextFileDialog_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TSaveTextFileDialog) DisposeOf() {
+    SaveTextFileDialog_DisposeOf(s.instance)
+}
+
+func (s *TSaveTextFileDialog) ClassType() TClass {
+    return SaveTextFileDialog_ClassType(s.instance)
+}
+
 func (s *TSaveTextFileDialog) ClassName() string {
     return SaveTextFileDialog_ClassName(s.instance)
+}
+
+func (s *TSaveTextFileDialog) InstanceSize() int32 {
+    return SaveTextFileDialog_InstanceSize(s.instance)
+}
+
+func (s *TSaveTextFileDialog) InheritsFrom(AClass TClass) bool {
+    return SaveTextFileDialog_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TSaveTextFileDialog) Equals(Obj IObject) bool {

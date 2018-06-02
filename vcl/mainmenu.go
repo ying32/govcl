@@ -52,6 +52,10 @@ func (m *TMainMenu) IsValid() bool {
     return m.instance != 0
 }
 
+func TMainMenuClass() TClass {
+    return MainMenu_StaticClassType()
+}
+
 func (m *TMainMenu) FindComponent(AName string) *TComponent {
     return ComponentFromInst(MainMenu_FindComponent(m.instance, AName))
 }
@@ -68,8 +72,24 @@ func (m *TMainMenu) Assign(Source IObject) {
     MainMenu_Assign(m.instance, CheckPtr(Source))
 }
 
+func (m *TMainMenu) DisposeOf() {
+    MainMenu_DisposeOf(m.instance)
+}
+
+func (m *TMainMenu) ClassType() TClass {
+    return MainMenu_ClassType(m.instance)
+}
+
 func (m *TMainMenu) ClassName() string {
     return MainMenu_ClassName(m.instance)
+}
+
+func (m *TMainMenu) InstanceSize() int32 {
+    return MainMenu_InstanceSize(m.instance)
+}
+
+func (m *TMainMenu) InheritsFrom(AClass TClass) bool {
+    return MainMenu_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMainMenu) Equals(Obj IObject) bool {

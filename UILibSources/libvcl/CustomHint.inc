@@ -45,9 +45,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure CustomHint_DisposeOf(AObj: TCustomHint); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function CustomHint_ClassType(AObj: TCustomHint): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function CustomHint_ClassName(AObj: TCustomHint): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function CustomHint_InstanceSize(AObj: TCustomHint): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function CustomHint_InheritsFrom(AObj: TCustomHint; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function CustomHint_Equals(AObj: TCustomHint; Obj: TObject): LongBool; stdcall;
@@ -185,6 +205,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function CustomHint_StaticClassType: TClass; stdcall;
+begin
+  Result := TCustomHint;
+end;
 
 exports
   CustomHint_Create,
@@ -195,7 +219,11 @@ exports
   CustomHint_GetNamePath,
   CustomHint_HasParent,
   CustomHint_Assign,
+  CustomHint_DisposeOf,
+  CustomHint_ClassType,
   CustomHint_ClassName,
+  CustomHint_InstanceSize,
+  CustomHint_InheritsFrom,
   CustomHint_Equals,
   CustomHint_GetHashCode,
   CustomHint_ToString,
@@ -222,5 +250,6 @@ exports
   CustomHint_SetName,
   CustomHint_GetTag,
   CustomHint_SetTag,
-  CustomHint_GetComponents;
+  CustomHint_GetComponents,
+  CustomHint_StaticClassType;
 

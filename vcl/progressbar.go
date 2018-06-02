@@ -15,7 +15,7 @@ import (
 )
 
 type TProgressBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (p *TProgressBar) Instance() uintptr {
 
 func (p *TProgressBar) IsValid() bool {
     return p.instance != 0
+}
+
+func TProgressBarClass() TClass {
+    return ProgressBar_StaticClassType()
 }
 
 func (p *TProgressBar) StepIt() {
@@ -112,7 +116,7 @@ func (p *TProgressBar) ClientToScreen(Point TPoint) TPoint {
     return ProgressBar_ClientToScreen(p.instance, Point)
 }
 
-func (p *TProgressBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (p *TProgressBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ProgressBar_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -140,7 +144,7 @@ func (p *TProgressBar) ScreenToClient(Point TPoint) TPoint {
     return ProgressBar_ScreenToClient(p.instance, Point)
 }
 
-func (p *TProgressBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (p *TProgressBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ProgressBar_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -172,8 +176,24 @@ func (p *TProgressBar) Assign(Source IObject) {
     ProgressBar_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TProgressBar) DisposeOf() {
+    ProgressBar_DisposeOf(p.instance)
+}
+
+func (p *TProgressBar) ClassType() TClass {
+    return ProgressBar_ClassType(p.instance)
+}
+
 func (p *TProgressBar) ClassName() string {
     return ProgressBar_ClassName(p.instance)
+}
+
+func (p *TProgressBar) InstanceSize() int32 {
+    return ProgressBar_InstanceSize(p.instance)
+}
+
+func (p *TProgressBar) InheritsFrom(AClass TClass) bool {
+    return ProgressBar_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TProgressBar) Equals(Obj IObject) bool {
@@ -572,11 +592,11 @@ func (p *TProgressBar) Floating() bool {
     return ProgressBar_GetFloating(p.instance)
 }
 
-func (p *TProgressBar) Parent() *TControl {
-    return ControlFromInst(ProgressBar_GetParent(p.instance))
+func (p *TProgressBar) Parent() *TWinControl {
+    return WinControlFromInst(ProgressBar_GetParent(p.instance))
 }
 
-func (p *TProgressBar) SetParent(value IControl) {
+func (p *TProgressBar) SetParent(value IWinControl) {
     ProgressBar_SetParent(p.instance, CheckPtr(value))
 }
 

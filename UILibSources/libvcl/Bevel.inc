@@ -120,9 +120,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Bevel_DisposeOf(AObj: TBevel); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function Bevel_ClassType(AObj: TBevel): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Bevel_ClassName(AObj: TBevel): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function Bevel_InstanceSize(AObj: TBevel): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Bevel_InheritsFrom(AObj: TBevel; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Bevel_Equals(AObj: TBevel; Obj: TObject): LongBool; stdcall;
@@ -455,6 +475,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Bevel_StaticClassType: TClass; stdcall;
+begin
+  Result := TBevel;
+end;
 
 exports
   Bevel_Create,
@@ -480,7 +504,11 @@ exports
   Bevel_FindComponent,
   Bevel_GetNamePath,
   Bevel_Assign,
+  Bevel_DisposeOf,
+  Bevel_ClassType,
   Bevel_ClassName,
+  Bevel_InstanceSize,
+  Bevel_InheritsFrom,
   Bevel_Equals,
   Bevel_GetHashCode,
   Bevel_ToString,
@@ -546,5 +574,6 @@ exports
   Bevel_SetName,
   Bevel_GetTag,
   Bevel_SetTag,
-  Bevel_GetComponents;
+  Bevel_GetComponents,
+  Bevel_StaticClassType;
 

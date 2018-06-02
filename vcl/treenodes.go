@@ -52,6 +52,10 @@ func (t *TTreeNodes) IsValid() bool {
     return t.instance != 0
 }
 
+func TTreeNodesClass() TClass {
+    return TreeNodes_StaticClassType()
+}
+
 func (t *TTreeNodes) AddChildFirst(Parent *TTreeNode, S string) *TTreeNode {
     return TreeNodeFromInst(TreeNodes_AddChildFirst(t.instance, CheckPtr(Parent), S))
 }
@@ -132,8 +136,24 @@ func (t *TTreeNodes) GetNamePath() string {
     return TreeNodes_GetNamePath(t.instance)
 }
 
+func (t *TTreeNodes) DisposeOf() {
+    TreeNodes_DisposeOf(t.instance)
+}
+
+func (t *TTreeNodes) ClassType() TClass {
+    return TreeNodes_ClassType(t.instance)
+}
+
 func (t *TTreeNodes) ClassName() string {
     return TreeNodes_ClassName(t.instance)
+}
+
+func (t *TTreeNodes) InstanceSize() int32 {
+    return TreeNodes_InstanceSize(t.instance)
+}
+
+func (t *TTreeNodes) InheritsFrom(AClass TClass) bool {
+    return TreeNodes_InheritsFrom(t.instance, AClass)
 }
 
 func (t *TTreeNodes) Equals(Obj IObject) bool {
@@ -156,8 +176,8 @@ func (t *TTreeNodes) Handle() HWND {
     return TreeNodes_GetHandle(t.instance)
 }
 
-func (t *TTreeNodes) Owner() *TControl {
-    return ControlFromInst(TreeNodes_GetOwner(t.instance))
+func (t *TTreeNodes) Owner() *TWinControl {
+    return WinControlFromInst(TreeNodes_GetOwner(t.instance))
 }
 
 func (t *TTreeNodes) Item(Index int32) *TTreeNode {

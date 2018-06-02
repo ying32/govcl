@@ -52,6 +52,10 @@ func (g *TGIFFrame) IsValid() bool {
     return g.instance != 0
 }
 
+func TGIFFrameClass() TClass {
+    return GIFFrame_StaticClassType()
+}
+
 func (g *TGIFFrame) Clear() {
     GIFFrame_Clear(g.instance)
 }
@@ -80,8 +84,24 @@ func (g *TGIFFrame) GetNamePath() string {
     return GIFFrame_GetNamePath(g.instance)
 }
 
+func (g *TGIFFrame) DisposeOf() {
+    GIFFrame_DisposeOf(g.instance)
+}
+
+func (g *TGIFFrame) ClassType() TClass {
+    return GIFFrame_ClassType(g.instance)
+}
+
 func (g *TGIFFrame) ClassName() string {
     return GIFFrame_ClassName(g.instance)
+}
+
+func (g *TGIFFrame) InstanceSize() int32 {
+    return GIFFrame_InstanceSize(g.instance)
+}
+
+func (g *TGIFFrame) InheritsFrom(AClass TClass) bool {
+    return GIFFrame_InheritsFrom(g.instance, AClass)
 }
 
 func (g *TGIFFrame) Equals(Obj IObject) bool {

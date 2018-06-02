@@ -52,6 +52,10 @@ func (b *TBitmap) IsValid() bool {
     return b.instance != 0
 }
 
+func TBitmapClass() TClass {
+    return Bitmap_StaticClassType()
+}
+
 func (b *TBitmap) Assign(Source IObject) {
     Bitmap_Assign(b.instance, CheckPtr(Source))
 }
@@ -96,8 +100,24 @@ func (b *TBitmap) GetNamePath() string {
     return Bitmap_GetNamePath(b.instance)
 }
 
+func (b *TBitmap) DisposeOf() {
+    Bitmap_DisposeOf(b.instance)
+}
+
+func (b *TBitmap) ClassType() TClass {
+    return Bitmap_ClassType(b.instance)
+}
+
 func (b *TBitmap) ClassName() string {
     return Bitmap_ClassName(b.instance)
+}
+
+func (b *TBitmap) InstanceSize() int32 {
+    return Bitmap_InstanceSize(b.instance)
+}
+
+func (b *TBitmap) InheritsFrom(AClass TClass) bool {
+    return Bitmap_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TBitmap) GetHashCode() int32 {

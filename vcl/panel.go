@@ -15,7 +15,7 @@ import (
 )
 
 type TPanel struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (p *TPanel) Instance() uintptr {
 
 func (p *TPanel) IsValid() bool {
     return p.instance != 0
+}
+
+func TPanelClass() TClass {
+    return Panel_StaticClassType()
 }
 
 func (p *TPanel) CanFocus() bool {
@@ -104,7 +108,7 @@ func (p *TPanel) ClientToScreen(Point TPoint) TPoint {
     return Panel_ClientToScreen(p.instance, Point)
 }
 
-func (p *TPanel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (p *TPanel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Panel_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (p *TPanel) ScreenToClient(Point TPoint) TPoint {
     return Panel_ScreenToClient(p.instance, Point)
 }
 
-func (p *TPanel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (p *TPanel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Panel_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (p *TPanel) Assign(Source IObject) {
     Panel_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPanel) DisposeOf() {
+    Panel_DisposeOf(p.instance)
+}
+
+func (p *TPanel) ClassType() TClass {
+    return Panel_ClassType(p.instance)
+}
+
 func (p *TPanel) ClassName() string {
     return Panel_ClassName(p.instance)
+}
+
+func (p *TPanel) InstanceSize() int32 {
+    return Panel_InstanceSize(p.instance)
+}
+
+func (p *TPanel) InheritsFrom(AClass TClass) bool {
+    return Panel_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPanel) Equals(Obj IObject) bool {
@@ -620,11 +640,11 @@ func (p *TPanel) Floating() bool {
     return Panel_GetFloating(p.instance)
 }
 
-func (p *TPanel) Parent() *TControl {
-    return ControlFromInst(Panel_GetParent(p.instance))
+func (p *TPanel) Parent() *TWinControl {
+    return WinControlFromInst(Panel_GetParent(p.instance))
 }
 
-func (p *TPanel) SetParent(value IControl) {
+func (p *TPanel) SetParent(value IWinControl) {
     Panel_SetParent(p.instance, CheckPtr(value))
 }
 

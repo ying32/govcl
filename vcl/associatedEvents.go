@@ -75,7 +75,8 @@ var (
 		"StartDock":         {onStartDock, nil},
 		"GetSiteInfo":       {onGetSiteInfo, nil},
 		"MouseWheelDown":    {onMouseWheelDown, nil},
-		"MouseWheelUp":      {onMouseWheelUp, nil}}
+		"MouseWheelUp":      {onMouseWheelUp, nil},
+		"Timer":             {onTimer, nil}}
 
 	// Application 独有事件
 	_appEvents = map[string]interface{}{
@@ -364,6 +365,10 @@ func onMouseWheelDown(sender IObject, shift TShiftState, mousePos TPoint, handle
 
 func onMouseWheelUp(sender IObject, shift TShiftState, mousePos TPoint, handled *bool) {
 	mcall("MouseWheelUp", sender, shift, mousePos, handled)
+}
+
+func onTimer(sender IObject) {
+	mcall("Timer", sender)
 }
 
 // -- Application

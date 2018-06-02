@@ -160,9 +160,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function TrackBar_ClassType(AObj: TTrackBar): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function TrackBar_ClassName(AObj: TTrackBar): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function TrackBar_InstanceSize(AObj: TTrackBar): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function TrackBar_InheritsFrom(AObj: TTrackBar; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function TrackBar_Equals(AObj: TTrackBar; Obj: TObject): LongBool; extdecl;
@@ -775,6 +790,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function TrackBar_StaticClassType: TClass; extdecl;
+begin
+  Result := TTrackBar;
+end;
 
 exports
   TrackBar_Create,
@@ -808,7 +827,10 @@ exports
   TrackBar_FindComponent,
   TrackBar_GetNamePath,
   TrackBar_Assign,
+  TrackBar_ClassType,
   TrackBar_ClassName,
+  TrackBar_InstanceSize,
+  TrackBar_InheritsFrom,
   TrackBar_Equals,
   TrackBar_GetHashCode,
   TrackBar_ToString,
@@ -916,5 +938,6 @@ exports
   TrackBar_GetTag,
   TrackBar_SetTag,
   TrackBar_GetControls,
-  TrackBar_GetComponents;
+  TrackBar_GetComponents,
+  TrackBar_StaticClassType;
 

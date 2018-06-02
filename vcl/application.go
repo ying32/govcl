@@ -52,6 +52,10 @@ func (a *TApplication) IsValid() bool {
     return a.instance != 0
 }
 
+func TApplicationClass() TClass {
+    return Application_StaticClassType()
+}
+
 func (a *TApplication) ActivateHint(CursorPos TPoint) {
     Application_ActivateHint(a.instance, CursorPos)
 }
@@ -128,8 +132,24 @@ func (a *TApplication) Assign(Source IObject) {
     Application_Assign(a.instance, CheckPtr(Source))
 }
 
+func (a *TApplication) DisposeOf() {
+    Application_DisposeOf(a.instance)
+}
+
+func (a *TApplication) ClassType() TClass {
+    return Application_ClassType(a.instance)
+}
+
 func (a *TApplication) ClassName() string {
     return Application_ClassName(a.instance)
+}
+
+func (a *TApplication) InstanceSize() int32 {
+    return Application_InstanceSize(a.instance)
+}
+
+func (a *TApplication) InheritsFrom(AClass TClass) bool {
+    return Application_InheritsFrom(a.instance, AClass)
 }
 
 func (a *TApplication) Equals(Obj IObject) bool {

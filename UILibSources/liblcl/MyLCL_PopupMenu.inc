@@ -45,9 +45,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function PopupMenu_ClassType(AObj: TPopupMenu): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function PopupMenu_ClassName(AObj: TPopupMenu): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function PopupMenu_InstanceSize(AObj: TPopupMenu): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function PopupMenu_InheritsFrom(AObj: TPopupMenu; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function PopupMenu_Equals(AObj: TPopupMenu; Obj: TObject): LongBool; extdecl;
@@ -177,6 +192,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PopupMenu_StaticClassType: TClass; extdecl;
+begin
+  Result := TPopupMenu;
+end;
 
 exports
   PopupMenu_Create,
@@ -187,7 +206,10 @@ exports
   PopupMenu_GetNamePath,
   PopupMenu_HasParent,
   PopupMenu_Assign,
+  PopupMenu_ClassType,
   PopupMenu_ClassName,
+  PopupMenu_InstanceSize,
+  PopupMenu_InheritsFrom,
   PopupMenu_Equals,
   PopupMenu_GetHashCode,
   PopupMenu_ToString,
@@ -211,5 +233,6 @@ exports
   PopupMenu_SetName,
   PopupMenu_GetTag,
   PopupMenu_SetTag,
-  PopupMenu_GetComponents;
+  PopupMenu_GetComponents,
+  PopupMenu_StaticClassType;
 

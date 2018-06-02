@@ -52,6 +52,10 @@ func (l *TListItems) IsValid() bool {
     return l.instance != 0
 }
 
+func TListItemsClass() TClass {
+    return ListItems_StaticClassType()
+}
+
 func (l *TListItems) Add() *TListItem {
     return ListItemFromInst(ListItems_Add(l.instance))
 }
@@ -92,8 +96,24 @@ func (l *TListItems) GetNamePath() string {
     return ListItems_GetNamePath(l.instance)
 }
 
+func (l *TListItems) DisposeOf() {
+    ListItems_DisposeOf(l.instance)
+}
+
+func (l *TListItems) ClassType() TClass {
+    return ListItems_ClassType(l.instance)
+}
+
 func (l *TListItems) ClassName() string {
     return ListItems_ClassName(l.instance)
+}
+
+func (l *TListItems) InstanceSize() int32 {
+    return ListItems_InstanceSize(l.instance)
+}
+
+func (l *TListItems) InheritsFrom(AClass TClass) bool {
+    return ListItems_InheritsFrom(l.instance, AClass)
 }
 
 func (l *TListItems) Equals(Obj IObject) bool {
@@ -120,8 +140,8 @@ func (l *TListItems) Handle() HWND {
     return ListItems_GetHandle(l.instance)
 }
 
-func (l *TListItems) Owner() *TControl {
-    return ControlFromInst(ListItems_GetOwner(l.instance))
+func (l *TListItems) Owner() *TWinControl {
+    return WinControlFromInst(ListItems_GetOwner(l.instance))
 }
 
 func (l *TListItems) Item(Index int32) *TListItem {

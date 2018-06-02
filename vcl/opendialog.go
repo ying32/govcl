@@ -52,6 +52,10 @@ func (o *TOpenDialog) IsValid() bool {
     return o.instance != 0
 }
 
+func TOpenDialogClass() TClass {
+    return OpenDialog_StaticClassType()
+}
+
 func (o *TOpenDialog) Execute() bool {
     return OpenDialog_Execute(o.instance)
 }
@@ -72,8 +76,24 @@ func (o *TOpenDialog) Assign(Source IObject) {
     OpenDialog_Assign(o.instance, CheckPtr(Source))
 }
 
+func (o *TOpenDialog) DisposeOf() {
+    OpenDialog_DisposeOf(o.instance)
+}
+
+func (o *TOpenDialog) ClassType() TClass {
+    return OpenDialog_ClassType(o.instance)
+}
+
 func (o *TOpenDialog) ClassName() string {
     return OpenDialog_ClassName(o.instance)
+}
+
+func (o *TOpenDialog) InstanceSize() int32 {
+    return OpenDialog_InstanceSize(o.instance)
+}
+
+func (o *TOpenDialog) InheritsFrom(AClass TClass) bool {
+    return OpenDialog_InheritsFrom(o.instance, AClass)
 }
 
 func (o *TOpenDialog) Equals(Obj IObject) bool {

@@ -30,9 +30,29 @@ begin
   AObj.ShowDragImage;
 end;
 
+procedure DragDockObject_DisposeOf(AObj: TDragDockObject); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function DragDockObject_ClassType(AObj: TDragDockObject): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function DragDockObject_ClassName(AObj: TDragDockObject): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function DragDockObject_InstanceSize(AObj: TDragDockObject): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function DragDockObject_InheritsFrom(AObj: TDragDockObject; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function DragDockObject_Equals(AObj: TDragDockObject; Obj: TObject): LongBool; stdcall;
@@ -205,6 +225,10 @@ begin
   AObj.RightClickCancels := AValue;
 end;
 
+function DragDockObject_StaticClassType: TClass; stdcall;
+begin
+  Result := TDragDockObject;
+end;
 
 exports
   DragDockObject_Create,
@@ -212,7 +236,11 @@ exports
   DragDockObject_Assign,
   DragDockObject_HideDragImage,
   DragDockObject_ShowDragImage,
+  DragDockObject_DisposeOf,
+  DragDockObject_ClassType,
   DragDockObject_ClassName,
+  DragDockObject_InstanceSize,
+  DragDockObject_InheritsFrom,
   DragDockObject_Equals,
   DragDockObject_GetHashCode,
   DragDockObject_ToString,
@@ -246,5 +274,6 @@ exports
   DragDockObject_GetMouseDeltaX,
   DragDockObject_GetMouseDeltaY,
   DragDockObject_GetRightClickCancels,
-  DragDockObject_SetRightClickCancels;
+  DragDockObject_SetRightClickCancels,
+  DragDockObject_StaticClassType;
 

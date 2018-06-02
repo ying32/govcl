@@ -52,6 +52,10 @@ func (s *TSpeedButton) IsValid() bool {
     return s.instance != 0
 }
 
+func TSpeedButtonClass() TClass {
+    return SpeedButton_StaticClassType()
+}
+
 func (s *TSpeedButton) Click() {
     SpeedButton_Click(s.instance)
 }
@@ -64,7 +68,7 @@ func (s *TSpeedButton) ClientToScreen(Point TPoint) TPoint {
     return SpeedButton_ClientToScreen(s.instance, Point)
 }
 
-func (s *TSpeedButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TSpeedButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return SpeedButton_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -100,7 +104,7 @@ func (s *TSpeedButton) ScreenToClient(Point TPoint) TPoint {
     return SpeedButton_ScreenToClient(s.instance, Point)
 }
 
-func (s *TSpeedButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TSpeedButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return SpeedButton_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -140,8 +144,24 @@ func (s *TSpeedButton) Assign(Source IObject) {
     SpeedButton_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TSpeedButton) DisposeOf() {
+    SpeedButton_DisposeOf(s.instance)
+}
+
+func (s *TSpeedButton) ClassType() TClass {
+    return SpeedButton_ClassType(s.instance)
+}
+
 func (s *TSpeedButton) ClassName() string {
     return SpeedButton_ClassName(s.instance)
+}
+
+func (s *TSpeedButton) InstanceSize() int32 {
+    return SpeedButton_InstanceSize(s.instance)
+}
+
+func (s *TSpeedButton) InheritsFrom(AClass TClass) bool {
+    return SpeedButton_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TSpeedButton) Equals(Obj IObject) bool {
@@ -408,11 +428,11 @@ func (s *TSpeedButton) Floating() bool {
     return SpeedButton_GetFloating(s.instance)
 }
 
-func (s *TSpeedButton) Parent() *TControl {
-    return ControlFromInst(SpeedButton_GetParent(s.instance))
+func (s *TSpeedButton) Parent() *TWinControl {
+    return WinControlFromInst(SpeedButton_GetParent(s.instance))
 }
 
-func (s *TSpeedButton) SetParent(value IControl) {
+func (s *TSpeedButton) SetParent(value IWinControl) {
     SpeedButton_SetParent(s.instance, CheckPtr(value))
 }
 

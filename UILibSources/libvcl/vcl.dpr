@@ -134,6 +134,7 @@ uses
 {$I PageControl.inc}
 {$I TabSheet.inc}
 {$I Control.inc}
+{$I WinControl.inc}
 {$I Screen.inc}
 {$I Mouse.inc}
 {$I ListGroup.inc}

@@ -180,9 +180,29 @@ begin
   Result :=  AObj.HasParent;
 end;
 
+procedure ImageList_DisposeOf(AObj: TImageList); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ImageList_ClassType(AObj: TImageList): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ImageList_ClassName(AObj: TImageList): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ImageList_InstanceSize(AObj: TImageList): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ImageList_InheritsFrom(AObj: TImageList; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ImageList_Equals(AObj: TImageList; Obj: TObject): LongBool; stdcall;
@@ -397,6 +417,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ImageList_StaticClassType: TClass; stdcall;
+begin
+  Result := TImageList;
+end;
 
 exports
   ImageList_Create,
@@ -434,7 +458,11 @@ exports
   ImageList_FindComponent,
   ImageList_GetNamePath,
   ImageList_HasParent,
+  ImageList_DisposeOf,
+  ImageList_ClassType,
   ImageList_ClassName,
+  ImageList_InstanceSize,
+  ImageList_InheritsFrom,
   ImageList_Equals,
   ImageList_GetHashCode,
   ImageList_ToString,
@@ -475,5 +503,6 @@ exports
   ImageList_SetName,
   ImageList_GetTag,
   ImageList_SetTag,
-  ImageList_GetComponents;
+  ImageList_GetComponents,
+  ImageList_StaticClassType;
 

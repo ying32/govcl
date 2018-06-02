@@ -15,7 +15,7 @@ import (
 )
 
 type TBitBtn struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (b *TBitBtn) Instance() uintptr {
 
 func (b *TBitBtn) IsValid() bool {
     return b.instance != 0
+}
+
+func TBitBtnClass() TClass {
+    return BitBtn_StaticClassType()
 }
 
 func (b *TBitBtn) Click() {
@@ -108,7 +112,7 @@ func (b *TBitBtn) ClientToScreen(Point TPoint) TPoint {
     return BitBtn_ClientToScreen(b.instance, Point)
 }
 
-func (b *TBitBtn) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (b *TBitBtn) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return BitBtn_ClientToParent(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +140,7 @@ func (b *TBitBtn) ScreenToClient(Point TPoint) TPoint {
     return BitBtn_ScreenToClient(b.instance, Point)
 }
 
-func (b *TBitBtn) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (b *TBitBtn) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return BitBtn_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -168,8 +172,24 @@ func (b *TBitBtn) Assign(Source IObject) {
     BitBtn_Assign(b.instance, CheckPtr(Source))
 }
 
+func (b *TBitBtn) DisposeOf() {
+    BitBtn_DisposeOf(b.instance)
+}
+
+func (b *TBitBtn) ClassType() TClass {
+    return BitBtn_ClassType(b.instance)
+}
+
 func (b *TBitBtn) ClassName() string {
     return BitBtn_ClassName(b.instance)
+}
+
+func (b *TBitBtn) InstanceSize() int32 {
+    return BitBtn_InstanceSize(b.instance)
+}
+
+func (b *TBitBtn) InheritsFrom(AClass TClass) bool {
+    return BitBtn_InheritsFrom(b.instance, AClass)
 }
 
 func (b *TBitBtn) Equals(Obj IObject) bool {
@@ -656,11 +676,11 @@ func (b *TBitBtn) Floating() bool {
     return BitBtn_GetFloating(b.instance)
 }
 
-func (b *TBitBtn) Parent() *TControl {
-    return ControlFromInst(BitBtn_GetParent(b.instance))
+func (b *TBitBtn) Parent() *TWinControl {
+    return WinControlFromInst(BitBtn_GetParent(b.instance))
 }
 
-func (b *TBitBtn) SetParent(value IControl) {
+func (b *TBitBtn) SetParent(value IWinControl) {
     BitBtn_SetParent(b.instance, CheckPtr(value))
 }
 

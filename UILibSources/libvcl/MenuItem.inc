@@ -65,9 +65,29 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure MenuItem_DisposeOf(AObj: TMenuItem); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function MenuItem_ClassType(AObj: TMenuItem): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function MenuItem_ClassName(AObj: TMenuItem): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function MenuItem_InstanceSize(AObj: TMenuItem): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function MenuItem_InheritsFrom(AObj: TMenuItem; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function MenuItem_Equals(AObj: TMenuItem; Obj: TObject): LongBool; stdcall;
@@ -294,6 +314,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function MenuItem_StaticClassType: TClass; stdcall;
+begin
+  Result := TMenuItem;
+end;
 
 exports
   MenuItem_Create,
@@ -308,7 +332,11 @@ exports
   MenuItem_FindComponent,
   MenuItem_GetNamePath,
   MenuItem_Assign,
+  MenuItem_DisposeOf,
+  MenuItem_ClassType,
   MenuItem_ClassName,
+  MenuItem_InstanceSize,
+  MenuItem_InheritsFrom,
   MenuItem_Equals,
   MenuItem_GetHashCode,
   MenuItem_ToString,
@@ -350,5 +378,6 @@ exports
   MenuItem_GetTag,
   MenuItem_SetTag,
   MenuItem_GetItems,
-  MenuItem_GetComponents;
+  MenuItem_GetComponents,
+  MenuItem_StaticClassType;
 

@@ -18,6 +18,9 @@ var (
 	_SelectObject       = gdi32dll.NewProc("SelectObject")
 	_DeleteDC           = gdi32dll.NewProc("DeleteDC")
 	_DeleteObject       = gdi32dll.NewProc("DeleteObject")
+	_CreatePen          = gdi32dll.NewProc("CreatePen")
+	_SetROP2            = gdi32dll.NewProc("SetROP2")
+	_Rectangle          = gdi32dll.NewProc("Rectangle")
 )
 
 func CreateCompatibleDC(dc HDC) HDC {
@@ -42,5 +45,20 @@ func DeleteDC(dc HDC) bool {
 
 func DeleteObject(p1 HGDIOBJ) bool {
 	r, _, _ := _DeleteObject.Call(uintptr(p1))
+	return r != 0
+}
+
+func CreatePen(style, width int32, color uint32) HPEN {
+	r, _, _ := _CreatePen.Call(uintptr(style), uintptr(width), uintptr(color))
+	return HPEN(r)
+}
+
+func SetROP2(dc HDC, p2 int32) int32 {
+	r, _, _ := _SetROP2.Call(uintptr(dc), uintptr(p2))
+	return int32(r)
+}
+
+func Rectangle(dc HDC, x1, y1, x2, y2 int32) bool {
+	r, _, _ := _Rectangle.Call(uintptr(dc), uintptr(x1), uintptr(y1), uintptr(x2), uintptr(y2))
 	return r != 0
 }

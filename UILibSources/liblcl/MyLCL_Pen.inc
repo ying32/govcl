@@ -25,9 +25,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function Pen_ClassType(AObj: TPen): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Pen_ClassName(AObj: TPen): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Pen_InstanceSize(AObj: TPen): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Pen_InheritsFrom(AObj: TPen; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Pen_Equals(AObj: TPen; Obj: TObject): LongBool; extdecl;
@@ -107,13 +122,20 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+function Pen_StaticClassType: TClass; extdecl;
+begin
+  Result := TPen;
+end;
 
 exports
   Pen_Create,
   Pen_Free,
   Pen_Assign,
   Pen_GetNamePath,
+  Pen_ClassType,
   Pen_ClassName,
+  Pen_InstanceSize,
+  Pen_InheritsFrom,
   Pen_Equals,
   Pen_GetHashCode,
   Pen_ToString,
@@ -127,5 +149,6 @@ exports
   Pen_SetStyle,
   Pen_GetWidth,
   Pen_SetWidth,
-  Pen_SetOnChange;
+  Pen_SetOnChange,
+  Pen_StaticClassType;
 

@@ -15,7 +15,7 @@ import (
 )
 
 type TPageControl struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (p *TPageControl) Instance() uintptr {
 
 func (p *TPageControl) IsValid() bool {
     return p.instance != 0
+}
+
+func TPageControlClass() TClass {
+    return PageControl_StaticClassType()
 }
 
 func (p *TPageControl) SelectNextPage(GoForward bool, CheckTabVisible bool) {
@@ -116,7 +120,7 @@ func (p *TPageControl) ClientToScreen(Point TPoint) TPoint {
     return PageControl_ClientToScreen(p.instance, Point)
 }
 
-func (p *TPageControl) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (p *TPageControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return PageControl_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -144,7 +148,7 @@ func (p *TPageControl) ScreenToClient(Point TPoint) TPoint {
     return PageControl_ScreenToClient(p.instance, Point)
 }
 
-func (p *TPageControl) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (p *TPageControl) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return PageControl_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -176,8 +180,24 @@ func (p *TPageControl) Assign(Source IObject) {
     PageControl_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPageControl) DisposeOf() {
+    PageControl_DisposeOf(p.instance)
+}
+
+func (p *TPageControl) ClassType() TClass {
+    return PageControl_ClassType(p.instance)
+}
+
 func (p *TPageControl) ClassName() string {
     return PageControl_ClassName(p.instance)
+}
+
+func (p *TPageControl) InstanceSize() int32 {
+    return PageControl_InstanceSize(p.instance)
+}
+
+func (p *TPageControl) InheritsFrom(AClass TClass) bool {
+    return PageControl_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPageControl) Equals(Obj IObject) bool {
@@ -584,11 +604,11 @@ func (p *TPageControl) Floating() bool {
     return PageControl_GetFloating(p.instance)
 }
 
-func (p *TPageControl) Parent() *TControl {
-    return ControlFromInst(PageControl_GetParent(p.instance))
+func (p *TPageControl) Parent() *TWinControl {
+    return WinControlFromInst(PageControl_GetParent(p.instance))
 }
 
-func (p *TPageControl) SetParent(value IControl) {
+func (p *TPageControl) SetParent(value IWinControl) {
     PageControl_SetParent(p.instance, CheckPtr(value))
 }
 

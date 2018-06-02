@@ -15,7 +15,7 @@ import (
 )
 
 type TStatusBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (s *TStatusBar) Instance() uintptr {
 
 func (s *TStatusBar) IsValid() bool {
     return s.instance != 0
+}
+
+func TStatusBarClass() TClass {
+    return StatusBar_StaticClassType()
 }
 
 func (s *TStatusBar) FlipChildren(AllLevels bool) {
@@ -104,7 +108,7 @@ func (s *TStatusBar) ClientToScreen(Point TPoint) TPoint {
     return StatusBar_ClientToScreen(s.instance, Point)
 }
 
-func (s *TStatusBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TStatusBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return StatusBar_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (s *TStatusBar) ScreenToClient(Point TPoint) TPoint {
     return StatusBar_ScreenToClient(s.instance, Point)
 }
 
-func (s *TStatusBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TStatusBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return StatusBar_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (s *TStatusBar) Assign(Source IObject) {
     StatusBar_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TStatusBar) DisposeOf() {
+    StatusBar_DisposeOf(s.instance)
+}
+
+func (s *TStatusBar) ClassType() TClass {
+    return StatusBar_ClassType(s.instance)
+}
+
 func (s *TStatusBar) ClassName() string {
     return StatusBar_ClassName(s.instance)
+}
+
+func (s *TStatusBar) InstanceSize() int32 {
+    return StatusBar_InstanceSize(s.instance)
+}
+
+func (s *TStatusBar) InheritsFrom(AClass TClass) bool {
+    return StatusBar_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStatusBar) Equals(Obj IObject) bool {
@@ -552,11 +572,11 @@ func (s *TStatusBar) Floating() bool {
     return StatusBar_GetFloating(s.instance)
 }
 
-func (s *TStatusBar) Parent() *TControl {
-    return ControlFromInst(StatusBar_GetParent(s.instance))
+func (s *TStatusBar) Parent() *TWinControl {
+    return WinControlFromInst(StatusBar_GetParent(s.instance))
 }
 
-func (s *TStatusBar) SetParent(value IControl) {
+func (s *TStatusBar) SetParent(value IWinControl) {
     StatusBar_SetParent(s.instance, CheckPtr(value))
 }
 

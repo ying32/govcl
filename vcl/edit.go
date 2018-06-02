@@ -15,7 +15,7 @@ import (
 )
 
 type TEdit struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (e *TEdit) Instance() uintptr {
 
 func (e *TEdit) IsValid() bool {
     return e.instance != 0
+}
+
+func TEditClass() TClass {
+    return Edit_StaticClassType()
 }
 
 func (e *TEdit) Clear() {
@@ -140,7 +144,7 @@ func (e *TEdit) ClientToScreen(Point TPoint) TPoint {
     return Edit_ClientToScreen(e.instance, Point)
 }
 
-func (e *TEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (e *TEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Edit_ClientToParent(e.instance, Point , CheckPtr(AParent))
 }
 
@@ -168,7 +172,7 @@ func (e *TEdit) ScreenToClient(Point TPoint) TPoint {
     return Edit_ScreenToClient(e.instance, Point)
 }
 
-func (e *TEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (e *TEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Edit_ParentToClient(e.instance, Point , CheckPtr(AParent))
 }
 
@@ -200,8 +204,24 @@ func (e *TEdit) Assign(Source IObject) {
     Edit_Assign(e.instance, CheckPtr(Source))
 }
 
+func (e *TEdit) DisposeOf() {
+    Edit_DisposeOf(e.instance)
+}
+
+func (e *TEdit) ClassType() TClass {
+    return Edit_ClassType(e.instance)
+}
+
 func (e *TEdit) ClassName() string {
     return Edit_ClassName(e.instance)
+}
+
+func (e *TEdit) InstanceSize() int32 {
+    return Edit_InstanceSize(e.instance)
+}
+
+func (e *TEdit) InheritsFrom(AClass TClass) bool {
+    return Edit_InheritsFrom(e.instance, AClass)
 }
 
 func (e *TEdit) Equals(Obj IObject) bool {
@@ -708,11 +728,11 @@ func (e *TEdit) Floating() bool {
     return Edit_GetFloating(e.instance)
 }
 
-func (e *TEdit) Parent() *TControl {
-    return ControlFromInst(Edit_GetParent(e.instance))
+func (e *TEdit) Parent() *TWinControl {
+    return WinControlFromInst(Edit_GetParent(e.instance))
 }
 
-func (e *TEdit) SetParent(value IControl) {
+func (e *TEdit) SetParent(value IWinControl) {
     Edit_SetParent(e.instance, CheckPtr(value))
 }
 

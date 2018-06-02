@@ -11,6 +11,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/types"
 )
 
 type TGraphic struct {
@@ -51,6 +52,10 @@ func (g *TGraphic) IsValid() bool {
     return g.instance != 0
 }
 
+func TGraphicClass() TClass {
+    return Graphic_StaticClassType()
+}
+
 func (g *TGraphic) Equals(Obj IObject) bool {
     return Graphic_Equals(g.instance, CheckPtr(Obj))
 }
@@ -83,8 +88,24 @@ func (g *TGraphic) GetNamePath() string {
     return Graphic_GetNamePath(g.instance)
 }
 
+func (g *TGraphic) DisposeOf() {
+    Graphic_DisposeOf(g.instance)
+}
+
+func (g *TGraphic) ClassType() TClass {
+    return Graphic_ClassType(g.instance)
+}
+
 func (g *TGraphic) ClassName() string {
     return Graphic_ClassName(g.instance)
+}
+
+func (g *TGraphic) InstanceSize() int32 {
+    return Graphic_InstanceSize(g.instance)
+}
+
+func (g *TGraphic) InheritsFrom(AClass TClass) bool {
+    return Graphic_InheritsFrom(g.instance, AClass)
 }
 
 func (g *TGraphic) GetHashCode() int32 {

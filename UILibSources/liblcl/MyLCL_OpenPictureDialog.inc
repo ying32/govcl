@@ -40,9 +40,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function OpenPictureDialog_ClassType(AObj: TOpenPictureDialog): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function OpenPictureDialog_ClassName(AObj: TOpenPictureDialog): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function OpenPictureDialog_InstanceSize(AObj: TOpenPictureDialog): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function OpenPictureDialog_InheritsFrom(AObj: TOpenPictureDialog; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function OpenPictureDialog_Equals(AObj: TOpenPictureDialog; Obj: TObject): LongBool; extdecl;
@@ -209,6 +224,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function OpenPictureDialog_StaticClassType: TClass; extdecl;
+begin
+  Result := TOpenPictureDialog;
+end;
 
 exports
   OpenPictureDialog_Create,
@@ -218,7 +237,10 @@ exports
   OpenPictureDialog_GetNamePath,
   OpenPictureDialog_HasParent,
   OpenPictureDialog_Assign,
+  OpenPictureDialog_ClassType,
   OpenPictureDialog_ClassName,
+  OpenPictureDialog_InstanceSize,
+  OpenPictureDialog_InheritsFrom,
   OpenPictureDialog_Equals,
   OpenPictureDialog_GetHashCode,
   OpenPictureDialog_ToString,
@@ -248,5 +270,6 @@ exports
   OpenPictureDialog_SetName,
   OpenPictureDialog_GetTag,
   OpenPictureDialog_SetTag,
-  OpenPictureDialog_GetComponents;
+  OpenPictureDialog_GetComponents,
+  OpenPictureDialog_StaticClassType;
 

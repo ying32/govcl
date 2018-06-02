@@ -15,7 +15,7 @@ import (
 )
 
 type TStaticText struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (s *TStaticText) Instance() uintptr {
 
 func (s *TStaticText) IsValid() bool {
     return s.instance != 0
+}
+
+func TStaticTextClass() TClass {
+    return StaticText_StaticClassType()
 }
 
 func (s *TStaticText) CanFocus() bool {
@@ -104,7 +108,7 @@ func (s *TStaticText) ClientToScreen(Point TPoint) TPoint {
     return StaticText_ClientToScreen(s.instance, Point)
 }
 
-func (s *TStaticText) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TStaticText) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return StaticText_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -132,7 +136,7 @@ func (s *TStaticText) ScreenToClient(Point TPoint) TPoint {
     return StaticText_ScreenToClient(s.instance, Point)
 }
 
-func (s *TStaticText) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TStaticText) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return StaticText_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -164,8 +168,24 @@ func (s *TStaticText) Assign(Source IObject) {
     StaticText_Assign(s.instance, CheckPtr(Source))
 }
 
+func (s *TStaticText) DisposeOf() {
+    StaticText_DisposeOf(s.instance)
+}
+
+func (s *TStaticText) ClassType() TClass {
+    return StaticText_ClassType(s.instance)
+}
+
 func (s *TStaticText) ClassName() string {
     return StaticText_ClassName(s.instance)
+}
+
+func (s *TStaticText) InstanceSize() int32 {
+    return StaticText_InstanceSize(s.instance)
+}
+
+func (s *TStaticText) InheritsFrom(AClass TClass) bool {
+    return StaticText_InheritsFrom(s.instance, AClass)
 }
 
 func (s *TStaticText) Equals(Obj IObject) bool {
@@ -564,11 +584,11 @@ func (s *TStaticText) Floating() bool {
     return StaticText_GetFloating(s.instance)
 }
 
-func (s *TStaticText) Parent() *TControl {
-    return ControlFromInst(StaticText_GetParent(s.instance))
+func (s *TStaticText) Parent() *TWinControl {
+    return WinControlFromInst(StaticText_GetParent(s.instance))
 }
 
-func (s *TStaticText) SetParent(value IControl) {
+func (s *TStaticText) SetParent(value IWinControl) {
     StaticText_SetParent(s.instance, CheckPtr(value))
 }
 

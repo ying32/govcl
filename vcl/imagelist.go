@@ -52,6 +52,10 @@ func (i *TImageList) IsValid() bool {
     return i.instance != 0
 }
 
+func TImageListClass() TClass {
+    return ImageList_StaticClassType()
+}
+
 func (i *TImageList) GetHotSpot() TPoint {
     return ImageList_GetHotSpot(i.instance)
 }
@@ -184,8 +188,24 @@ func (i *TImageList) HasParent() bool {
     return ImageList_HasParent(i.instance)
 }
 
+func (i *TImageList) DisposeOf() {
+    ImageList_DisposeOf(i.instance)
+}
+
+func (i *TImageList) ClassType() TClass {
+    return ImageList_ClassType(i.instance)
+}
+
 func (i *TImageList) ClassName() string {
     return ImageList_ClassName(i.instance)
+}
+
+func (i *TImageList) InstanceSize() int32 {
+    return ImageList_InstanceSize(i.instance)
+}
+
+func (i *TImageList) InheritsFrom(AClass TClass) bool {
+    return ImageList_InheritsFrom(i.instance, AClass)
 }
 
 func (i *TImageList) Equals(Obj IObject) bool {

@@ -15,7 +15,7 @@ import (
 )
 
 type TMemo struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (m *TMemo) Instance() uintptr {
 
 func (m *TMemo) IsValid() bool {
     return m.instance != 0
+}
+
+func TMemoClass() TClass {
+    return Memo_StaticClassType()
 }
 
 func (m *TMemo) Clear() {
@@ -140,7 +144,7 @@ func (m *TMemo) ClientToScreen(Point TPoint) TPoint {
     return Memo_ClientToScreen(m.instance, Point)
 }
 
-func (m *TMemo) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (m *TMemo) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Memo_ClientToParent(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -168,7 +172,7 @@ func (m *TMemo) ScreenToClient(Point TPoint) TPoint {
     return Memo_ScreenToClient(m.instance, Point)
 }
 
-func (m *TMemo) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (m *TMemo) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Memo_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -200,8 +204,24 @@ func (m *TMemo) Assign(Source IObject) {
     Memo_Assign(m.instance, CheckPtr(Source))
 }
 
+func (m *TMemo) DisposeOf() {
+    Memo_DisposeOf(m.instance)
+}
+
+func (m *TMemo) ClassType() TClass {
+    return Memo_ClassType(m.instance)
+}
+
 func (m *TMemo) ClassName() string {
     return Memo_ClassName(m.instance)
+}
+
+func (m *TMemo) InstanceSize() int32 {
+    return Memo_InstanceSize(m.instance)
+}
+
+func (m *TMemo) InheritsFrom(AClass TClass) bool {
+    return Memo_InheritsFrom(m.instance, AClass)
 }
 
 func (m *TMemo) Equals(Obj IObject) bool {
@@ -724,11 +744,11 @@ func (m *TMemo) Floating() bool {
     return Memo_GetFloating(m.instance)
 }
 
-func (m *TMemo) Parent() *TControl {
-    return ControlFromInst(Memo_GetParent(m.instance))
+func (m *TMemo) Parent() *TWinControl {
+    return WinControlFromInst(Memo_GetParent(m.instance))
 }
 
-func (m *TMemo) SetParent(value IControl) {
+func (m *TMemo) SetParent(value IWinControl) {
     Memo_SetParent(m.instance, CheckPtr(value))
 }
 

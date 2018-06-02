@@ -95,9 +95,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function Application_ClassType(AObj: TApplication): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function Application_ClassName(AObj: TApplication): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Application_InstanceSize(AObj: TApplication): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Application_InheritsFrom(AObj: TApplication; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function Application_Equals(AObj: TApplication; Obj: TObject): LongBool; extdecl;
@@ -367,6 +382,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Application_StaticClassType: TClass; extdecl;
+begin
+  Result := TApplication;
+end;
 
 exports
   Application_Create,
@@ -387,7 +406,10 @@ exports
   Application_GetNamePath,
   Application_HasParent,
   Application_Assign,
+  Application_ClassType,
   Application_ClassName,
+  Application_InstanceSize,
+  Application_InheritsFrom,
   Application_Equals,
   Application_GetHashCode,
   Application_ToString,
@@ -432,5 +454,6 @@ exports
   Application_SetName,
   Application_GetTag,
   Application_SetTag,
-  Application_GetComponents;
+  Application_GetComponents,
+  Application_StaticClassType;
 

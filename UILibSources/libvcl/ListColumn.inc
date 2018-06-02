@@ -25,9 +25,29 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+procedure ListColumn_DisposeOf(AObj: TListColumn); stdcall;
+begin
+  AObj.DisposeOf;
+end;
+
+function ListColumn_ClassType(AObj: TListColumn): TClass; stdcall;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ListColumn_ClassName(AObj: TListColumn): PChar; stdcall;
 begin
   Result :=  PChar(AObj.ClassName);
+end;
+
+function ListColumn_InstanceSize(AObj: TListColumn): Integer; stdcall;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ListColumn_InheritsFrom(AObj: TListColumn; AClass: TClass): LongBool; stdcall;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ListColumn_Equals(AObj: TListColumn; Obj: TObject): LongBool; stdcall;
@@ -135,13 +155,21 @@ begin
   AObj.Index := AValue;
 end;
 
+function ListColumn_StaticClassType: TClass; stdcall;
+begin
+  Result := TListColumn;
+end;
 
 exports
   ListColumn_Create,
   ListColumn_Free,
   ListColumn_Assign,
   ListColumn_GetNamePath,
+  ListColumn_DisposeOf,
+  ListColumn_ClassType,
   ListColumn_ClassName,
+  ListColumn_InstanceSize,
+  ListColumn_InheritsFrom,
   ListColumn_Equals,
   ListColumn_GetHashCode,
   ListColumn_ToString,
@@ -162,5 +190,6 @@ exports
   ListColumn_GetWidth,
   ListColumn_SetWidth,
   ListColumn_GetIndex,
-  ListColumn_SetIndex;
+  ListColumn_SetIndex,
+  ListColumn_StaticClassType;
 

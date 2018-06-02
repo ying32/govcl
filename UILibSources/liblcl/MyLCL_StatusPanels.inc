@@ -60,9 +60,24 @@ begin
   Result :=  PChar(AObj.GetNamePath);
 end;
 
+function StatusPanels_ClassType(AObj: TStatusPanels): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function StatusPanels_ClassName(AObj: TStatusPanels): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function StatusPanels_InstanceSize(AObj: TStatusPanels): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function StatusPanels_InheritsFrom(AObj: TStatusPanels; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function StatusPanels_Equals(AObj: TStatusPanels; Obj: TObject): LongBool; extdecl;
@@ -95,6 +110,10 @@ begin
   AObj.Items[Index] := AValue;
 end;
 
+function StatusPanels_StaticClassType: TClass; extdecl;
+begin
+  Result := TStatusPanels;
+end;
 
 exports
   StatusPanels_Create,
@@ -108,11 +127,15 @@ exports
   StatusPanels_Delete,
   StatusPanels_EndUpdate,
   StatusPanels_GetNamePath,
+  StatusPanels_ClassType,
   StatusPanels_ClassName,
+  StatusPanels_InstanceSize,
+  StatusPanels_InheritsFrom,
   StatusPanels_Equals,
   StatusPanels_GetHashCode,
   StatusPanels_ToString,
   StatusPanels_GetCount,
   StatusPanels_GetItems,
-  StatusPanels_SetItems;
+  StatusPanels_SetItems,
+  StatusPanels_StaticClassType;
 

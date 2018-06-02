@@ -52,6 +52,10 @@ func (p *TPaintBox) IsValid() bool {
     return p.instance != 0
 }
 
+func TPaintBoxClass() TClass {
+    return PaintBox_StaticClassType()
+}
+
 func (p *TPaintBox) BringToFront() {
     PaintBox_BringToFront(p.instance)
 }
@@ -60,7 +64,7 @@ func (p *TPaintBox) ClientToScreen(Point TPoint) TPoint {
     return PaintBox_ClientToScreen(p.instance, Point)
 }
 
-func (p *TPaintBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (p *TPaintBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return PaintBox_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -96,7 +100,7 @@ func (p *TPaintBox) ScreenToClient(Point TPoint) TPoint {
     return PaintBox_ScreenToClient(p.instance, Point)
 }
 
-func (p *TPaintBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (p *TPaintBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return PaintBox_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,8 +140,24 @@ func (p *TPaintBox) Assign(Source IObject) {
     PaintBox_Assign(p.instance, CheckPtr(Source))
 }
 
+func (p *TPaintBox) DisposeOf() {
+    PaintBox_DisposeOf(p.instance)
+}
+
+func (p *TPaintBox) ClassType() TClass {
+    return PaintBox_ClassType(p.instance)
+}
+
 func (p *TPaintBox) ClassName() string {
     return PaintBox_ClassName(p.instance)
+}
+
+func (p *TPaintBox) InstanceSize() int32 {
+    return PaintBox_InstanceSize(p.instance)
+}
+
+func (p *TPaintBox) InheritsFrom(AClass TClass) bool {
+    return PaintBox_InheritsFrom(p.instance, AClass)
 }
 
 func (p *TPaintBox) Equals(Obj IObject) bool {
@@ -388,11 +408,11 @@ func (p *TPaintBox) Floating() bool {
     return PaintBox_GetFloating(p.instance)
 }
 
-func (p *TPaintBox) Parent() *TControl {
-    return ControlFromInst(PaintBox_GetParent(p.instance))
+func (p *TPaintBox) Parent() *TWinControl {
+    return WinControlFromInst(PaintBox_GetParent(p.instance))
 }
 
-func (p *TPaintBox) SetParent(value IControl) {
+func (p *TPaintBox) SetParent(value IWinControl) {
     PaintBox_SetParent(p.instance, CheckPtr(value))
 }
 

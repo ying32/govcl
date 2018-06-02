@@ -155,9 +155,24 @@ begin
   AObj.Assign(Source);
 end;
 
+function ScrollBox_ClassType(AObj: TScrollBox): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
 function ScrollBox_ClassName(AObj: TScrollBox): PChar; extdecl;
 begin
   Result :=  ToPChar(AObj.ClassName);
+end;
+
+function ScrollBox_InstanceSize(AObj: TScrollBox): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ScrollBox_InheritsFrom(AObj: TScrollBox; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
 end;
 
 function ScrollBox_Equals(AObj: TScrollBox; Obj: TObject): LongBool; extdecl;
@@ -818,6 +833,10 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ScrollBox_StaticClassType: TClass; extdecl;
+begin
+  Result := TScrollBox;
+end;
 
 exports
   ScrollBox_Create,
@@ -850,7 +869,10 @@ exports
   ScrollBox_FindComponent,
   ScrollBox_GetNamePath,
   ScrollBox_Assign,
+  ScrollBox_ClassType,
   ScrollBox_ClassName,
+  ScrollBox_InstanceSize,
+  ScrollBox_InheritsFrom,
   ScrollBox_Equals,
   ScrollBox_GetHashCode,
   ScrollBox_ToString,
@@ -955,5 +977,6 @@ exports
   ScrollBox_GetTag,
   ScrollBox_SetTag,
   ScrollBox_GetControls,
-  ScrollBox_GetComponents;
+  ScrollBox_GetComponents,
+  ScrollBox_StaticClassType;
 

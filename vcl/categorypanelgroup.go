@@ -15,7 +15,7 @@ import (
 )
 
 type TCategoryPanelGroup struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -50,6 +50,10 @@ func (c *TCategoryPanelGroup) Instance() uintptr {
 
 func (c *TCategoryPanelGroup) IsValid() bool {
     return c.instance != 0
+}
+
+func TCategoryPanelGroupClass() TClass {
+    return CategoryPanelGroup_StaticClassType()
 }
 
 func (c *TCategoryPanelGroup) CollapseAll() {
@@ -112,7 +116,7 @@ func (c *TCategoryPanelGroup) ClientToScreen(Point TPoint) TPoint {
     return CategoryPanelGroup_ClientToScreen(c.instance, Point)
 }
 
-func (c *TCategoryPanelGroup) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TCategoryPanelGroup) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return CategoryPanelGroup_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -140,7 +144,7 @@ func (c *TCategoryPanelGroup) ScreenToClient(Point TPoint) TPoint {
     return CategoryPanelGroup_ScreenToClient(c.instance, Point)
 }
 
-func (c *TCategoryPanelGroup) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TCategoryPanelGroup) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return CategoryPanelGroup_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -172,8 +176,24 @@ func (c *TCategoryPanelGroup) Assign(Source IObject) {
     CategoryPanelGroup_Assign(c.instance, CheckPtr(Source))
 }
 
+func (c *TCategoryPanelGroup) DisposeOf() {
+    CategoryPanelGroup_DisposeOf(c.instance)
+}
+
+func (c *TCategoryPanelGroup) ClassType() TClass {
+    return CategoryPanelGroup_ClassType(c.instance)
+}
+
 func (c *TCategoryPanelGroup) ClassName() string {
     return CategoryPanelGroup_ClassName(c.instance)
+}
+
+func (c *TCategoryPanelGroup) InstanceSize() int32 {
+    return CategoryPanelGroup_InstanceSize(c.instance)
+}
+
+func (c *TCategoryPanelGroup) InheritsFrom(AClass TClass) bool {
+    return CategoryPanelGroup_InheritsFrom(c.instance, AClass)
 }
 
 func (c *TCategoryPanelGroup) Equals(Obj IObject) bool {
@@ -692,11 +712,11 @@ func (c *TCategoryPanelGroup) Floating() bool {
     return CategoryPanelGroup_GetFloating(c.instance)
 }
 
-func (c *TCategoryPanelGroup) Parent() *TControl {
-    return ControlFromInst(CategoryPanelGroup_GetParent(c.instance))
+func (c *TCategoryPanelGroup) Parent() *TWinControl {
+    return WinControlFromInst(CategoryPanelGroup_GetParent(c.instance))
 }
 
-func (c *TCategoryPanelGroup) SetParent(value IControl) {
+func (c *TCategoryPanelGroup) SetParent(value IWinControl) {
     CategoryPanelGroup_SetParent(c.instance, CheckPtr(value))
 }
 

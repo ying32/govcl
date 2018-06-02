@@ -52,6 +52,10 @@ func (d *TDragDockObject) IsValid() bool {
     return d.instance != 0
 }
 
+func TDragDockObjectClass() TClass {
+    return DragDockObject_StaticClassType()
+}
+
 func (d *TDragDockObject) Assign(Source *TDragObject) {
     DragDockObject_Assign(d.instance, CheckPtr(Source))
 }
@@ -64,8 +68,24 @@ func (d *TDragDockObject) ShowDragImage() {
     DragDockObject_ShowDragImage(d.instance)
 }
 
+func (d *TDragDockObject) DisposeOf() {
+    DragDockObject_DisposeOf(d.instance)
+}
+
+func (d *TDragDockObject) ClassType() TClass {
+    return DragDockObject_ClassType(d.instance)
+}
+
 func (d *TDragDockObject) ClassName() string {
     return DragDockObject_ClassName(d.instance)
+}
+
+func (d *TDragDockObject) InstanceSize() int32 {
+    return DragDockObject_InstanceSize(d.instance)
+}
+
+func (d *TDragDockObject) InheritsFrom(AClass TClass) bool {
+    return DragDockObject_InheritsFrom(d.instance, AClass)
 }
 
 func (d *TDragDockObject) Equals(Obj IObject) bool {

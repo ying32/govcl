@@ -678,21 +678,6 @@ begin
   Result := FileExists(AFileName);
 end;
 
-function DInheritsFromControl(AObj: TObject): LongBool; extdecl;
-begin
-  Result := AObj.InheritsFrom(TControl);
-end;
-
-function DInheritsFromWinControl(AObj: TObject): LongBool; extdecl;
-begin
-  Result := AObj.InheritsFrom(TWinControl);
-end;
-
-function DInheritsFromComponent(AObj: TObject): LongBool; extdecl;
-begin
-  Result := AObj.InheritsFrom(TComponent);
-end;
-
 function DSelectDirectory1(var Directory: PChar;
   Options: TSelectDirOpts; HelpCtx: Longint): LongBool; extdecl;
 var
@@ -738,23 +723,23 @@ end;
 
 // dylib
 type
-  TSyscall0  = function: Pointer; extdecl;
-  TSyscall1  = function(A1: Pointer): Pointer; extdecl;
-  TSyscall2  = function(A1, A2: Pointer): Pointer; extdecl;
-  TSyscall3  = function(A1, A2, A3: Pointer): Pointer; extdecl;
-  TSyscall4  = function(A1, A2, A3, A4: Pointer): Pointer; extdecl;
-  TSyscall5  = function(A1, A2, A3, A4, A5: Pointer): Pointer; extdecl;
-  TSyscall6  = function(A1, A2, A3, A4, A5, A6: Pointer): Pointer; extdecl;
-  TSyscall7  = function(A1, A2, A3, A4, A5, A6, A7: Pointer): Pointer; extdecl;
-  TSyscall8  = function(A1, A2, A3, A4, A5, A6, A7, A8: Pointer): Pointer; extdecl;
-  TSyscall9  = function(A1, A2, A3, A4, A5, A6, A7, A8, A9: Pointer): Pointer; extdecl;
-  TSyscall10 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10: Pointer): Pointer; extdecl;
-  TSyscall11 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11: Pointer): Pointer; extdecl;
-  TSyscall12 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): Pointer; extdecl;
+  TSyscall0  = function: UInt64; extdecl;
+  TSyscall1  = function(A1: Pointer): UInt64; extdecl;
+  TSyscall2  = function(A1, A2: Pointer): UInt64; extdecl;
+  TSyscall3  = function(A1, A2, A3: Pointer): UInt64; extdecl;
+  TSyscall4  = function(A1, A2, A3, A4: Pointer): UInt64; extdecl;
+  TSyscall5  = function(A1, A2, A3, A4, A5: Pointer): UInt64; extdecl;
+  TSyscall6  = function(A1, A2, A3, A4, A5, A6: Pointer): UInt64; extdecl;
+  TSyscall7  = function(A1, A2, A3, A4, A5, A6, A7: Pointer): UInt64; extdecl;
+  TSyscall8  = function(A1, A2, A3, A4, A5, A6, A7, A8: Pointer): UInt64; extdecl;
+  TSyscall9  = function(A1, A2, A3, A4, A5, A6, A7, A8, A9: Pointer): UInt64; extdecl;
+  TSyscall10 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10: Pointer): UInt64; extdecl;
+  TSyscall11 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11: Pointer): UInt64; extdecl;
+  TSyscall12 = function(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): UInt64; extdecl;
 
-function MySyscall(AProc:Pointer; ALen: NativeInt; A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): Pointer; extdecl;
+function MySyscall(AProc:Pointer; ALen: NativeInt; A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12: Pointer): UInt64; extdecl;
 begin
-  Result := nil;
+  Result := 0;
   if AProc = nil then Exit;
   try
     case ALen of
@@ -842,9 +827,6 @@ exports
   DMessageDlg,
   DExtractFilePath,
   DFileExists,
-  DInheritsFromControl,
-  DInheritsFromWinControl,
-  DInheritsFromComponent,
 
   DSelectDirectory1,
   DSelectDirectory2,

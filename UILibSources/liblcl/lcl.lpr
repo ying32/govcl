@@ -115,6 +115,7 @@ uses
 {$I MyLCL_TreeView.inc}
 {$I MyLCL_StatusBar.inc}
 {$I MyLCL_ToolBar.inc}
+{$I MyLCL_BitBtn.inc}
 {$I MyLCL_Icon.inc}
 {$I MyLCL_Bitmap.inc}
 {$I MyLCL_MemoryStream.inc}
@@ -133,6 +134,7 @@ uses
 {$I MyLCL_PageControl.inc}
 {$I MyLCL_TabSheet.inc}
 {$I MyLCL_Control.inc}
+{$I MyLCL_WinControl.inc}
 {$I MyLCL_Screen.inc}
 {$I MyLCL_Mouse.inc}
 {$I MyLCL_ListColumn.inc}
