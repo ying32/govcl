@@ -38,56 +38,56 @@ package dylib
 	}
 
 
-    static void* Syscall0(void* addr) {
-		return ((void*(*)())addr)();
+    static uint64_t Syscall0(void* addr) {
+		return ((uint64_t(*)())addr)();
 	}
 
-    static void* Syscall1(void* addr, void* p1) {
-		return ((void*(*)(void*))addr)(p1);
+    static uint64_t Syscall1(void* addr, void* p1) {
+		return ((uint64_t(*)(void*))addr)(p1);
 	}
 
-    static void* Syscall2(void* addr, void* p1, void* p2) {
-		return ((void*(*)(void*,void*))addr)(p1, p2);
+    static uint64_t Syscall2(void* addr, void* p1, void* p2) {
+		return ((uint64_t(*)(void*,void*))addr)(p1, p2);
 	}
 
-    static void* Syscall3(void* addr, void* p1, void* p2, void* p3) {
-		return ((void*(*)(void*,void*,void*))addr)(p1, p2, p3);
+    static uint64_t Syscall3(void* addr, void* p1, void* p2, void* p3) {
+		return ((uint64_t(*)(void*,void*,void*))addr)(p1, p2, p3);
 	}
 
-    static void* Syscall4(void* addr, void* p1, void* p2, void* p3, void* p4) {
-		return ((void*(*)(void*,void*,void*,void*))addr)(p1, p2, p3, p4);
+    static uint64_t Syscall4(void* addr, void* p1, void* p2, void* p3, void* p4) {
+		return ((uint64_t(*)(void*,void*,void*,void*))addr)(p1, p2, p3, p4);
 	}
 
-    static void* Syscall5(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5) {
-		return ((void*(*)(void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5);
+    static uint64_t Syscall5(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5);
 	}
 
-    static void* Syscall6(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6) {
-		return ((void*(*)(void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6);
+    static uint64_t Syscall6(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6);
 	}
 
-    static void* Syscall7(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7) {
-		return ((void*(*)(void*,void*,void*,void*,void*,void*, void*))addr)(p1, p2, p3, p4, p5, p6, p7);
+    static uint64_t Syscall7(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*,void*, void*))addr)(p1, p2, p3, p4, p5, p6, p7);
 	}
 
-    static void* Syscall8(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8) {
-		return ((void*(*)(void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8);
+    static uint64_t Syscall8(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8);
 	}
 
-    static void* Syscall9(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9) {
-		return ((void*(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9);
+    static uint64_t Syscall9(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9);
 	}
 
-    static void* Syscall10(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9, void *p10) {
-		return ((void*(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9,p10);
+    static uint64_t Syscall10(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9, void *p10) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9,p10);
 	}
 
-    static void* Syscall11(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9, void *p10, void *p11) {
-		return ((void*(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9,p10,p11);
+    static uint64_t Syscall11(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9, void *p10, void *p11) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9,p10,p11);
 	}
 
-    static void* Syscall12(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9, void *p10, void *p11, void *p12) {
-		return ((void*(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9,p10,p11,p12);
+    static uint64_t Syscall12(void* addr, void* p1, void* p2, void* p3, void* p4, void* p5, void* p6, void *p7, void *p8, void *p9, void *p10, void *p11, void *p12) {
+		return ((uint64_t(*)(void*,void*,void*,void*,void*,void*,void*,void*,void*,void*,void*,void*))addr)(p1, p2, p3, p4, p5, p6,p7,p8,p9,p10,p11,p12);
 	}
 
 */
@@ -269,7 +269,7 @@ func (p *LazyProc) CallOriginal(a ...uintptr) (r1, r2 uintptr, lastErr error) {
 	if p.p == 0 {
 		return 0, 0, syscall.EINVAL
 	}
-	var ret unsafe.Pointer
+	var ret C.uint64_t
 	switch len(a) {
 	case 0:
 		ret = C.Syscall0(unsafe.Pointer(p.p))
@@ -301,5 +301,5 @@ func (p *LazyProc) CallOriginal(a ...uintptr) (r1, r2 uintptr, lastErr error) {
 	default:
 		panic("Call " + p.Name + " with too many arguments " + strconv.Itoa(len(a)) + ".")
 	}
-	return uintptr(ret), 0, nil
+	return uintptr(ret), uintptr(ret >> 32), nil
 }

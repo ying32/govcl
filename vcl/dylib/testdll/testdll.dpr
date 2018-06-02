@@ -1,13 +1,22 @@
-/*
-   dylib是从govcl的api包中分离出来，可以方便其它使用。
-   dylib实现现了一个通用的共享库调用，可以在windows、linux、macOS下不需要任何改变实现通用。
-   Window下使用syscall.NewLazyDLL加载dll，linux与macOS下使用dlopen加载，然后使用dlsym来获取,
-   通过封装，使用接口与Windows下的一模一样，如此达到通用，最多实现12个参数的过程。
+library testdll;
 
-   在被调用的共享库中如果导出了“MySyscall”函数，则会使用此函数来call， 一般导出此函数的目的是为了在共享库中捕获异常，不然一但共享库中出现异常
-   程序就挂了。
+{ Important note about DLL memory management: ShareMem must be the
+  first unit in your library's USES clause AND your project's (select
+  Project-View Source) USES clause if your DLL exports any procedures or
+  functions that pass strings as parameters or function results. This
+  applies to all strings passed to and from your DLL--even those that
+  are nested in records and classes. ShareMem is the interface unit to
+  the BORLNDMM.DLL shared memory manager, which must be deployed along
+  with your DLL. To avoid using BORLNDMM.DLL, pass string information
+  using PChar or ShortString parameters. }
 
-   一个Pascal的实现例程：
+uses
+  System.SysUtils,
+  System.Classes;
+
+{$R *.res}
+
+
 
 // dylib
 type
@@ -56,6 +65,59 @@ begin
   end;
 end;
 
-*/
 
-package dylib
+function ResultValue: Int64; stdcall;
+begin
+  Result := Int64.MaxValue;
+end;
+
+function ResultValAndParam(p1, p2: Int64): UInt64; stdcall;
+begin
+  Writeln('p1:', p1, ', p2:', p2);
+  if p1 = $FF2233445500 then
+     Writeln('---p1 ok.')
+  else
+     Writeln('---p1 fail.');
+
+  if p2 = $FF6677889900 then
+     Writeln('---p2 ok.')
+  else
+     Writeln('---p2 fail.');
+
+  Result := UInt64.MaxValue;
+end;
+
+
+function ResultValue32: Integer; stdcall;
+begin
+  Result := Integer.MaxValue;
+end;
+
+function ResultValAndParam32(p1, p2: Integer): Cardinal; stdcall;
+begin
+  Writeln('p1:', p1, ', p2:', p2);
+  if p1 = $0F112233 then
+     Writeln('---p1 ok.')
+  else
+     Writeln('---p1 fail.');
+
+  if p2 = $0F445566 then
+     Writeln('---p2 ok.')
+  else
+     Writeln('---p2 fail.');
+
+  Result := Cardinal.MaxValue;
+end;
+
+exports
+  ResultValue,
+  ResultValAndParam,
+
+  ResultValue32,
+  ResultValAndParam32,
+
+  MySyscall;
+
+begin
+end.
+

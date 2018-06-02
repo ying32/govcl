@@ -39,6 +39,10 @@ func (d *LazyDLL) NewProc(name string) *LazyProc {
 	return l
 }
 
+func (d *LazyDLL) Close() {
+	//
+}
+
 func (d *LazyDLL) call(proc *LazyProc, a ...uintptr) (r1, r2 uintptr, lastErr error) {
 	// 没到找到我封装的那个系统函数，就使用原始的
 	if d.mySyscall == nil {
