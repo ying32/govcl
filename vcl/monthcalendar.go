@@ -16,7 +16,7 @@ import (
 )
 
 type TMonthCalendar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -109,7 +109,7 @@ func (m *TMonthCalendar) ClientToScreen(Point TPoint) TPoint {
     return MonthCalendar_ClientToScreen(m.instance, Point)
 }
 
-func (m *TMonthCalendar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (m *TMonthCalendar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return MonthCalendar_ClientToParent(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -137,7 +137,7 @@ func (m *TMonthCalendar) ScreenToClient(Point TPoint) TPoint {
     return MonthCalendar_ScreenToClient(m.instance, Point)
 }
 
-func (m *TMonthCalendar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (m *TMonthCalendar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return MonthCalendar_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -585,11 +585,11 @@ func (m *TMonthCalendar) Floating() bool {
     return MonthCalendar_GetFloating(m.instance)
 }
 
-func (m *TMonthCalendar) Parent() *TControl {
-    return ControlFromInst(MonthCalendar_GetParent(m.instance))
+func (m *TMonthCalendar) Parent() *TWinControl {
+    return WinControlFromInst(MonthCalendar_GetParent(m.instance))
 }
 
-func (m *TMonthCalendar) SetParent(value IControl) {
+func (m *TMonthCalendar) SetParent(value IWinControl) {
     MonthCalendar_SetParent(m.instance, CheckPtr(value))
 }
 

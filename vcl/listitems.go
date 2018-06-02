@@ -140,8 +140,8 @@ func (l *TListItems) Handle() HWND {
     return ListItems_GetHandle(l.instance)
 }
 
-func (l *TListItems) Owner() *TControl {
-    return ControlFromInst(ListItems_GetOwner(l.instance))
+func (l *TListItems) Owner() *TWinControl {
+    return WinControlFromInst(ListItems_GetOwner(l.instance))
 }
 
 func (l *TListItems) Item(Index int32) *TListItem {

@@ -15,7 +15,7 @@ import (
 )
 
 type TGroupBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (g *TGroupBox) ClientToScreen(Point TPoint) TPoint {
     return GroupBox_ClientToScreen(g.instance, Point)
 }
 
-func (g *TGroupBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (g *TGroupBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return GroupBox_ClientToParent(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (g *TGroupBox) ScreenToClient(Point TPoint) TPoint {
     return GroupBox_ScreenToClient(g.instance, Point)
 }
 
-func (g *TGroupBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (g *TGroupBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return GroupBox_ParentToClient(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -548,11 +548,11 @@ func (g *TGroupBox) Floating() bool {
     return GroupBox_GetFloating(g.instance)
 }
 
-func (g *TGroupBox) Parent() *TControl {
-    return ControlFromInst(GroupBox_GetParent(g.instance))
+func (g *TGroupBox) Parent() *TWinControl {
+    return WinControlFromInst(GroupBox_GetParent(g.instance))
 }
 
-func (g *TGroupBox) SetParent(value IControl) {
+func (g *TGroupBox) SetParent(value IWinControl) {
     GroupBox_SetParent(g.instance, CheckPtr(value))
 }
 

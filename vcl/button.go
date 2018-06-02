@@ -15,7 +15,7 @@ import (
 )
 
 type TButton struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -112,7 +112,7 @@ func (b *TButton) ClientToScreen(Point TPoint) TPoint {
     return Button_ClientToScreen(b.instance, Point)
 }
 
-func (b *TButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (b *TButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Button_ClientToParent(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -140,7 +140,7 @@ func (b *TButton) ScreenToClient(Point TPoint) TPoint {
     return Button_ScreenToClient(b.instance, Point)
 }
 
-func (b *TButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (b *TButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Button_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -636,11 +636,11 @@ func (b *TButton) Floating() bool {
     return Button_GetFloating(b.instance)
 }
 
-func (b *TButton) Parent() *TControl {
-    return ControlFromInst(Button_GetParent(b.instance))
+func (b *TButton) Parent() *TWinControl {
+    return WinControlFromInst(Button_GetParent(b.instance))
 }
 
-func (b *TButton) SetParent(value IControl) {
+func (b *TButton) SetParent(value IWinControl) {
     Button_SetParent(b.instance, CheckPtr(value))
 }
 

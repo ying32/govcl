@@ -15,7 +15,7 @@ import (
 )
 
 type TCheckListBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -132,7 +132,7 @@ func (c *TCheckListBox) ClientToScreen(Point TPoint) TPoint {
     return CheckListBox_ClientToScreen(c.instance, Point)
 }
 
-func (c *TCheckListBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TCheckListBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return CheckListBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -160,7 +160,7 @@ func (c *TCheckListBox) ScreenToClient(Point TPoint) TPoint {
     return CheckListBox_ScreenToClient(c.instance, Point)
 }
 
-func (c *TCheckListBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TCheckListBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return CheckListBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -728,11 +728,11 @@ func (c *TCheckListBox) Floating() bool {
     return CheckListBox_GetFloating(c.instance)
 }
 
-func (c *TCheckListBox) Parent() *TControl {
-    return ControlFromInst(CheckListBox_GetParent(c.instance))
+func (c *TCheckListBox) Parent() *TWinControl {
+    return WinControlFromInst(CheckListBox_GetParent(c.instance))
 }
 
-func (c *TCheckListBox) SetParent(value IControl) {
+func (c *TCheckListBox) SetParent(value IWinControl) {
     CheckListBox_SetParent(c.instance, CheckPtr(value))
 }
 

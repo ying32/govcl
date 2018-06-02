@@ -15,7 +15,7 @@ import (
 )
 
 type TColorBox struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -128,7 +128,7 @@ func (c *TColorBox) ClientToScreen(Point TPoint) TPoint {
     return ColorBox_ClientToScreen(c.instance, Point)
 }
 
-func (c *TColorBox) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TColorBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ColorBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -156,7 +156,7 @@ func (c *TColorBox) ScreenToClient(Point TPoint) TPoint {
     return ColorBox_ScreenToClient(c.instance, Point)
 }
 
-func (c *TColorBox) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TColorBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ColorBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -688,11 +688,11 @@ func (c *TColorBox) Floating() bool {
     return ColorBox_GetFloating(c.instance)
 }
 
-func (c *TColorBox) Parent() *TControl {
-    return ControlFromInst(ColorBox_GetParent(c.instance))
+func (c *TColorBox) Parent() *TWinControl {
+    return WinControlFromInst(ColorBox_GetParent(c.instance))
 }
 
-func (c *TColorBox) SetParent(value IControl) {
+func (c *TColorBox) SetParent(value IWinControl) {
     ColorBox_SetParent(c.instance, CheckPtr(value))
 }
 

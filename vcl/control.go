@@ -64,7 +64,7 @@ func (c *TControl) ClientToScreen(Point TPoint) TPoint {
     return Control_ClientToScreen(c.instance, Point)
 }
 
-func (c *TControl) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (c *TControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Control_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -100,7 +100,7 @@ func (c *TControl) ScreenToClient(Point TPoint) TPoint {
     return Control_ScreenToClient(c.instance, Point)
 }
 
-func (c *TControl) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (c *TControl) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Control_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
@@ -276,11 +276,11 @@ func (c *TControl) SetVisible(value bool) {
     Control_SetVisible(c.instance, value)
 }
 
-func (c *TControl) Parent() *TControl {
-    return ControlFromInst(Control_GetParent(c.instance))
+func (c *TControl) Parent() *TWinControl {
+    return WinControlFromInst(Control_GetParent(c.instance))
 }
 
-func (c *TControl) SetParent(value IControl) {
+func (c *TControl) SetParent(value IWinControl) {
     Control_SetParent(c.instance, CheckPtr(value))
 }
 

@@ -15,7 +15,7 @@ import (
 )
 
 type TMaskEdit struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -152,7 +152,7 @@ func (m *TMaskEdit) ClientToScreen(Point TPoint) TPoint {
     return MaskEdit_ClientToScreen(m.instance, Point)
 }
 
-func (m *TMaskEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (m *TMaskEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return MaskEdit_ClientToParent(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -180,7 +180,7 @@ func (m *TMaskEdit) ScreenToClient(Point TPoint) TPoint {
     return MaskEdit_ScreenToClient(m.instance, Point)
 }
 
-func (m *TMaskEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (m *TMaskEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return MaskEdit_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
@@ -724,11 +724,11 @@ func (m *TMaskEdit) Floating() bool {
     return MaskEdit_GetFloating(m.instance)
 }
 
-func (m *TMaskEdit) Parent() *TControl {
-    return ControlFromInst(MaskEdit_GetParent(m.instance))
+func (m *TMaskEdit) Parent() *TWinControl {
+    return WinControlFromInst(MaskEdit_GetParent(m.instance))
 }
 
-func (m *TMaskEdit) SetParent(value IControl) {
+func (m *TMaskEdit) SetParent(value IWinControl) {
     MaskEdit_SetParent(m.instance, CheckPtr(value))
 }
 

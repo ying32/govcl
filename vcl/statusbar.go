@@ -15,7 +15,7 @@ import (
 )
 
 type TStatusBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (s *TStatusBar) ClientToScreen(Point TPoint) TPoint {
     return StatusBar_ClientToScreen(s.instance, Point)
 }
 
-func (s *TStatusBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TStatusBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return StatusBar_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (s *TStatusBar) ScreenToClient(Point TPoint) TPoint {
     return StatusBar_ScreenToClient(s.instance, Point)
 }
 
-func (s *TStatusBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TStatusBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return StatusBar_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -572,11 +572,11 @@ func (s *TStatusBar) Floating() bool {
     return StatusBar_GetFloating(s.instance)
 }
 
-func (s *TStatusBar) Parent() *TControl {
-    return ControlFromInst(StatusBar_GetParent(s.instance))
+func (s *TStatusBar) Parent() *TWinControl {
+    return WinControlFromInst(StatusBar_GetParent(s.instance))
 }
 
-func (s *TStatusBar) SetParent(value IControl) {
+func (s *TStatusBar) SetParent(value IWinControl) {
     StatusBar_SetParent(s.instance, CheckPtr(value))
 }
 

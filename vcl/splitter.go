@@ -64,7 +64,7 @@ func (s *TSplitter) ClientToScreen(Point TPoint) TPoint {
     return Splitter_ClientToScreen(s.instance, Point)
 }
 
-func (s *TSplitter) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TSplitter) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Splitter_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -100,7 +100,7 @@ func (s *TSplitter) ScreenToClient(Point TPoint) TPoint {
     return Splitter_ScreenToClient(s.instance, Point)
 }
 
-func (s *TSplitter) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TSplitter) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Splitter_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -324,11 +324,11 @@ func (s *TSplitter) SetShowHint(value bool) {
     Splitter_SetShowHint(s.instance, value)
 }
 
-func (s *TSplitter) Parent() *TControl {
-    return ControlFromInst(Splitter_GetParent(s.instance))
+func (s *TSplitter) Parent() *TWinControl {
+    return WinControlFromInst(Splitter_GetParent(s.instance))
 }
 
-func (s *TSplitter) SetParent(value IControl) {
+func (s *TSplitter) SetParent(value IWinControl) {
     Splitter_SetParent(s.instance, CheckPtr(value))
 }
 

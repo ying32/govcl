@@ -134,6 +134,7 @@ uses
 {$I MyLCL_PageControl.inc}
 {$I MyLCL_TabSheet.inc}
 {$I MyLCL_Control.inc}
+{$I MyLCL_WinControl.inc}
 {$I MyLCL_Screen.inc}
 {$I MyLCL_Mouse.inc}
 {$I MyLCL_ListColumn.inc}

@@ -35165,6 +35165,537 @@ func Control_StaticClassType() TClass {
     return TClass(r)
 }
 
+//--------------------------- TWinControl ---------------------------
+
+func WinControl_Create(obj uintptr) uintptr {
+    ret, _, _ := winControl_Create.Call(obj)
+    return ret
+}
+
+func WinControl_Free(obj uintptr) {
+    winControl_Free.Call(obj)
+}
+
+func WinControl_CanFocus(obj uintptr) bool {
+    ret, _, _ := winControl_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_FlipChildren(obj uintptr, AllLevels bool)  {
+    winControl_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func WinControl_Focused(obj uintptr) bool {
+    ret, _, _ := winControl_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := winControl_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_Invalidate(obj uintptr)  {
+    winControl_Invalidate.Call(obj)
+}
+
+func WinControl_Realign(obj uintptr)  {
+    winControl_Realign.Call(obj)
+}
+
+func WinControl_Repaint(obj uintptr)  {
+    winControl_Repaint.Call(obj)
+}
+
+func WinControl_ScaleBy(obj uintptr, M int32, D int32)  {
+    winControl_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func WinControl_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    winControl_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func WinControl_SetFocus(obj uintptr)  {
+    winControl_SetFocus.Call(obj)
+}
+
+func WinControl_Update(obj uintptr)  {
+    winControl_Update.Call(obj)
+}
+
+func WinControl_BringToFront(obj uintptr)  {
+    winControl_BringToFront.Call(obj)
+}
+
+func WinControl_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    winControl_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func WinControl_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    winControl_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func WinControl_Dragging(obj uintptr) bool {
+    ret, _, _ := winControl_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_HasParent(obj uintptr) bool {
+    ret, _, _ := winControl_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_Hide(obj uintptr)  {
+    winControl_Hide.Call(obj)
+}
+
+func WinControl_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := winControl_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func WinControl_Refresh(obj uintptr)  {
+    winControl_Refresh.Call(obj)
+}
+
+func WinControl_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    winControl_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func WinControl_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    winControl_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func WinControl_SendToBack(obj uintptr)  {
+    winControl_SendToBack.Call(obj)
+}
+
+func WinControl_Show(obj uintptr)  {
+    winControl_Show.Call(obj)
+}
+
+func WinControl_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := winControl_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func WinControl_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := winControl_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := winControl_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func WinControl_GetNamePath(obj uintptr) string {
+    ret, _, _ := winControl_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func WinControl_Assign(obj uintptr, Source uintptr)  {
+    winControl_Assign.Call(obj, Source )
+}
+
+func WinControl_DisposeOf(obj uintptr)  {
+    winControl_DisposeOf.Call(obj)
+}
+
+func WinControl_ClassType(obj uintptr) TClass {
+    ret, _, _ := winControl_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func WinControl_ClassName(obj uintptr) string {
+    ret, _, _ := winControl_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func WinControl_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := winControl_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := winControl_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := winControl_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := winControl_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_ToString(obj uintptr) string {
+    ret, _, _ := winControl_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func WinControl_GetDockSite(obj uintptr) bool {
+    ret, _, _ := winControl_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetDockSite(obj uintptr, value bool) {
+   winControl_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := winControl_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetDoubleBuffered(obj uintptr, value bool) {
+   winControl_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetBrush.Call(obj)
+    return ret
+}
+
+func WinControl_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := winControl_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_GetHandle(obj uintptr) HWND {
+    ret, _, _ := winControl_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func WinControl_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := winControl_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetParentDoubleBuffered(obj uintptr, value bool) {
+   winControl_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := winControl_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func WinControl_SetParentWindow(obj uintptr, value HWND) {
+   winControl_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func WinControl_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := winControl_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func WinControl_SetTabOrder(obj uintptr, value uint16) {
+   winControl_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func WinControl_GetTabStop(obj uintptr) bool {
+    ret, _, _ := winControl_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetTabStop(obj uintptr, value bool) {
+   winControl_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := winControl_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetUseDockManager(obj uintptr, value bool) {
+   winControl_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetEnabled(obj uintptr) bool {
+    ret, _, _ := winControl_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetEnabled(obj uintptr, value bool) {
+   winControl_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetAction(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetAction.Call(obj)
+    return ret
+}
+
+func WinControl_SetAction(obj uintptr, value uintptr) {
+   winControl_SetAction.Call(obj, value)
+}
+
+func WinControl_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := winControl_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func WinControl_SetAlign(obj uintptr, value TAlign) {
+   winControl_SetAlign.Call(obj, uintptr(value))
+}
+
+func WinControl_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := winControl_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func WinControl_SetAnchors(obj uintptr, value TAnchors) {
+   winControl_SetAnchors.Call(obj, uintptr(value))
+}
+
+func WinControl_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := winControl_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func WinControl_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   winControl_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func WinControl_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    winControl_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func WinControl_SetBoundsRect(obj uintptr, value TRect) {
+   winControl_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func WinControl_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := winControl_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_SetClientHeight(obj uintptr, value int32) {
+   winControl_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func WinControl_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    winControl_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func WinControl_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := winControl_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_SetClientWidth(obj uintptr, value int32) {
+   winControl_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func WinControl_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := winControl_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := winControl_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := winControl_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := winControl_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_GetFloating(obj uintptr) bool {
+    ret, _, _ := winControl_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_GetShowHint(obj uintptr) bool {
+    ret, _, _ := winControl_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetShowHint(obj uintptr, value bool) {
+   winControl_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetVisible(obj uintptr) bool {
+    ret, _, _ := winControl_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetVisible(obj uintptr, value bool) {
+   winControl_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetParent(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetParent.Call(obj)
+    return ret
+}
+
+func WinControl_SetParent(obj uintptr, value uintptr) {
+   winControl_SetParent.Call(obj, value)
+}
+
+func WinControl_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := winControl_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func WinControl_SetStyleElements(obj uintptr, value TStyleElements) {
+   winControl_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func WinControl_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := winControl_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_SetAlignWithMargins(obj uintptr, value bool) {
+   winControl_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetLeft(obj uintptr) int32 {
+    ret, _, _ := winControl_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_SetLeft(obj uintptr, value int32) {
+   winControl_SetLeft.Call(obj, uintptr(value))
+}
+
+func WinControl_GetTop(obj uintptr) int32 {
+    ret, _, _ := winControl_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_SetTop(obj uintptr, value int32) {
+   winControl_SetTop.Call(obj, uintptr(value))
+}
+
+func WinControl_GetWidth(obj uintptr) int32 {
+    ret, _, _ := winControl_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_SetWidth(obj uintptr, value int32) {
+   winControl_SetWidth.Call(obj, uintptr(value))
+}
+
+func WinControl_GetHeight(obj uintptr) int32 {
+    ret, _, _ := winControl_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_SetHeight(obj uintptr, value int32) {
+   winControl_SetHeight.Call(obj, uintptr(value))
+}
+
+func WinControl_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := winControl_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func WinControl_SetCursor(obj uintptr, value TCursor) {
+   winControl_SetCursor.Call(obj, uintptr(value))
+}
+
+func WinControl_GetHint(obj uintptr) string {
+    ret, _, _ := winControl_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func WinControl_SetHint(obj uintptr, value string) {
+   winControl_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func WinControl_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetMargins.Call(obj)
+    return ret
+}
+
+func WinControl_SetMargins(obj uintptr, value uintptr) {
+   winControl_SetMargins.Call(obj, value)
+}
+
+func WinControl_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetCustomHint.Call(obj)
+    return ret
+}
+
+func WinControl_SetCustomHint(obj uintptr, value uintptr) {
+   winControl_SetCustomHint.Call(obj, value)
+}
+
+func WinControl_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := winControl_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := winControl_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func WinControl_SetComponentIndex(obj uintptr, value int32) {
+   winControl_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func WinControl_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetOwner.Call(obj)
+    return ret
+}
+
+func WinControl_GetName(obj uintptr) string {
+    ret, _, _ := winControl_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func WinControl_SetName(obj uintptr, value string) {
+   winControl_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func WinControl_GetTag(obj uintptr) int {
+    ret, _, _ := winControl_GetTag.Call(obj)
+    return int(ret)
+}
+
+func WinControl_SetTag(obj uintptr, value int) {
+   winControl_SetTag.Call(obj, uintptr(value))
+}
+
+func WinControl_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := winControl_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func WinControl_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := winControl_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func WinControl_StaticClassType() TClass {
+    r, _, _:= winControl_StaticClassType.Call()
+    return TClass(r)
+}
+
 //--------------------------- TScreen ---------------------------
 
 func Screen_Create(obj uintptr) uintptr {

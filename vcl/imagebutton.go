@@ -68,7 +68,7 @@ func (i *TImageButton) ClientToScreen(Point TPoint) TPoint {
     return ImageButton_ClientToScreen(i.instance, Point)
 }
 
-func (i *TImageButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (i *TImageButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ImageButton_ClientToParent(i.instance, Point , CheckPtr(AParent))
 }
 
@@ -104,7 +104,7 @@ func (i *TImageButton) ScreenToClient(Point TPoint) TPoint {
     return ImageButton_ScreenToClient(i.instance, Point)
 }
 
-func (i *TImageButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (i *TImageButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ImageButton_ParentToClient(i.instance, Point , CheckPtr(AParent))
 }
 
@@ -432,11 +432,11 @@ func (i *TImageButton) Floating() bool {
     return ImageButton_GetFloating(i.instance)
 }
 
-func (i *TImageButton) Parent() *TControl {
-    return ControlFromInst(ImageButton_GetParent(i.instance))
+func (i *TImageButton) Parent() *TWinControl {
+    return WinControlFromInst(ImageButton_GetParent(i.instance))
 }
 
-func (i *TImageButton) SetParent(value IControl) {
+func (i *TImageButton) SetParent(value IWinControl) {
     ImageButton_SetParent(i.instance, CheckPtr(value))
 }
 

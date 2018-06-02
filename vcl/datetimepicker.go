@@ -16,7 +16,7 @@ import (
 )
 
 type TDateTimePicker struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -109,7 +109,7 @@ func (d *TDateTimePicker) ClientToScreen(Point TPoint) TPoint {
     return DateTimePicker_ClientToScreen(d.instance, Point)
 }
 
-func (d *TDateTimePicker) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (d *TDateTimePicker) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return DateTimePicker_ClientToParent(d.instance, Point , CheckPtr(AParent))
 }
 
@@ -137,7 +137,7 @@ func (d *TDateTimePicker) ScreenToClient(Point TPoint) TPoint {
     return DateTimePicker_ScreenToClient(d.instance, Point)
 }
 
-func (d *TDateTimePicker) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (d *TDateTimePicker) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return DateTimePicker_ParentToClient(d.instance, Point , CheckPtr(AParent))
 }
 
@@ -653,11 +653,11 @@ func (d *TDateTimePicker) Floating() bool {
     return DateTimePicker_GetFloating(d.instance)
 }
 
-func (d *TDateTimePicker) Parent() *TControl {
-    return ControlFromInst(DateTimePicker_GetParent(d.instance))
+func (d *TDateTimePicker) Parent() *TWinControl {
+    return WinControlFromInst(DateTimePicker_GetParent(d.instance))
 }
 
-func (d *TDateTimePicker) SetParent(value IControl) {
+func (d *TDateTimePicker) SetParent(value IWinControl) {
     DateTimePicker_SetParent(d.instance, CheckPtr(value))
 }
 

@@ -64,7 +64,7 @@ func (l *TLabel) ClientToScreen(Point TPoint) TPoint {
     return Label_ClientToScreen(l.instance, Point)
 }
 
-func (l *TLabel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (l *TLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Label_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -100,7 +100,7 @@ func (l *TLabel) ScreenToClient(Point TPoint) TPoint {
     return Label_ScreenToClient(l.instance, Point)
 }
 
-func (l *TLabel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (l *TLabel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Label_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -484,11 +484,11 @@ func (l *TLabel) Floating() bool {
     return Label_GetFloating(l.instance)
 }
 
-func (l *TLabel) Parent() *TControl {
-    return ControlFromInst(Label_GetParent(l.instance))
+func (l *TLabel) Parent() *TWinControl {
+    return WinControlFromInst(Label_GetParent(l.instance))
 }
 
-func (l *TLabel) SetParent(value IControl) {
+func (l *TLabel) SetParent(value IWinControl) {
     Label_SetParent(l.instance, CheckPtr(value))
 }
 

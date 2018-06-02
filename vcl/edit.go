@@ -15,7 +15,7 @@ import (
 )
 
 type TEdit struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -144,7 +144,7 @@ func (e *TEdit) ClientToScreen(Point TPoint) TPoint {
     return Edit_ClientToScreen(e.instance, Point)
 }
 
-func (e *TEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (e *TEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Edit_ClientToParent(e.instance, Point , CheckPtr(AParent))
 }
 
@@ -172,7 +172,7 @@ func (e *TEdit) ScreenToClient(Point TPoint) TPoint {
     return Edit_ScreenToClient(e.instance, Point)
 }
 
-func (e *TEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (e *TEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Edit_ParentToClient(e.instance, Point , CheckPtr(AParent))
 }
 
@@ -728,11 +728,11 @@ func (e *TEdit) Floating() bool {
     return Edit_GetFloating(e.instance)
 }
 
-func (e *TEdit) Parent() *TControl {
-    return ControlFromInst(Edit_GetParent(e.instance))
+func (e *TEdit) Parent() *TWinControl {
+    return WinControlFromInst(Edit_GetParent(e.instance))
 }
 
-func (e *TEdit) SetParent(value IControl) {
+func (e *TEdit) SetParent(value IWinControl) {
     Edit_SetParent(e.instance, CheckPtr(value))
 }
 

@@ -15,7 +15,7 @@ import (
 )
 
 type TPageControl struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -120,7 +120,7 @@ func (p *TPageControl) ClientToScreen(Point TPoint) TPoint {
     return PageControl_ClientToScreen(p.instance, Point)
 }
 
-func (p *TPageControl) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (p *TPageControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return PageControl_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -148,7 +148,7 @@ func (p *TPageControl) ScreenToClient(Point TPoint) TPoint {
     return PageControl_ScreenToClient(p.instance, Point)
 }
 
-func (p *TPageControl) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (p *TPageControl) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return PageControl_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -604,11 +604,11 @@ func (p *TPageControl) Floating() bool {
     return PageControl_GetFloating(p.instance)
 }
 
-func (p *TPageControl) Parent() *TControl {
-    return ControlFromInst(PageControl_GetParent(p.instance))
+func (p *TPageControl) Parent() *TWinControl {
+    return WinControlFromInst(PageControl_GetParent(p.instance))
 }
 
-func (p *TPageControl) SetParent(value IControl) {
+func (p *TPageControl) SetParent(value IWinControl) {
     PageControl_SetParent(p.instance, CheckPtr(value))
 }
 

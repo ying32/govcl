@@ -132,7 +132,7 @@ func (s *TScreen) FocusedForm() *TForm {
     return FormFromInst(Screen_GetFocusedForm(s.instance))
 }
 
-func (s *TScreen) SetFocusedForm(value IControl) {
+func (s *TScreen) SetFocusedForm(value IWinControl) {
     Screen_SetFocusedForm(s.instance, CheckPtr(value))
 }
 

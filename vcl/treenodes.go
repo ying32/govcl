@@ -176,8 +176,8 @@ func (t *TTreeNodes) Handle() HWND {
     return TreeNodes_GetHandle(t.instance)
 }
 
-func (t *TTreeNodes) Owner() *TControl {
-    return ControlFromInst(TreeNodes_GetOwner(t.instance))
+func (t *TTreeNodes) Owner() *TWinControl {
+    return WinControlFromInst(TreeNodes_GetOwner(t.instance))
 }
 
 func (t *TTreeNodes) Item(Index int32) *TTreeNode {

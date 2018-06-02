@@ -15,7 +15,7 @@ import (
 )
 
 type TProgressBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -116,7 +116,7 @@ func (p *TProgressBar) ClientToScreen(Point TPoint) TPoint {
     return ProgressBar_ClientToScreen(p.instance, Point)
 }
 
-func (p *TProgressBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (p *TProgressBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ProgressBar_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -144,7 +144,7 @@ func (p *TProgressBar) ScreenToClient(Point TPoint) TPoint {
     return ProgressBar_ScreenToClient(p.instance, Point)
 }
 
-func (p *TProgressBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (p *TProgressBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ProgressBar_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -592,11 +592,11 @@ func (p *TProgressBar) Floating() bool {
     return ProgressBar_GetFloating(p.instance)
 }
 
-func (p *TProgressBar) Parent() *TControl {
-    return ControlFromInst(ProgressBar_GetParent(p.instance))
+func (p *TProgressBar) Parent() *TWinControl {
+    return WinControlFromInst(ProgressBar_GetParent(p.instance))
 }
 
-func (p *TProgressBar) SetParent(value IControl) {
+func (p *TProgressBar) SetParent(value IWinControl) {
     ProgressBar_SetParent(p.instance, CheckPtr(value))
 }
 

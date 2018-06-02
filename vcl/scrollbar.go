@@ -15,7 +15,7 @@ import (
 )
 
 type TScrollBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -112,7 +112,7 @@ func (s *TScrollBar) ClientToScreen(Point TPoint) TPoint {
     return ScrollBar_ClientToScreen(s.instance, Point)
 }
 
-func (s *TScrollBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TScrollBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBar_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -140,7 +140,7 @@ func (s *TScrollBar) ScreenToClient(Point TPoint) TPoint {
     return ScrollBar_ScreenToClient(s.instance, Point)
 }
 
-func (s *TScrollBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TScrollBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBar_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -544,11 +544,11 @@ func (s *TScrollBar) Floating() bool {
     return ScrollBar_GetFloating(s.instance)
 }
 
-func (s *TScrollBar) Parent() *TControl {
-    return ControlFromInst(ScrollBar_GetParent(s.instance))
+func (s *TScrollBar) Parent() *TWinControl {
+    return WinControlFromInst(ScrollBar_GetParent(s.instance))
 }
 
-func (s *TScrollBar) SetParent(value IControl) {
+func (s *TScrollBar) SetParent(value IWinControl) {
     ScrollBar_SetParent(s.instance, CheckPtr(value))
 }
 

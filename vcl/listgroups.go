@@ -60,8 +60,8 @@ func (l *TListGroups) Add() *TListGroup {
     return ListGroupFromInst(ListGroups_Add(l.instance))
 }
 
-func (l *TListGroups) Owner() *TControl {
-    return ControlFromInst(ListGroups_Owner(l.instance))
+func (l *TListGroups) Owner() *TWinControl {
+    return WinControlFromInst(ListGroups_Owner(l.instance))
 }
 
 func (l *TListGroups) Assign(Source IObject) {

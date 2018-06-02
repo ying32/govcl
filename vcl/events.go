@@ -45,7 +45,7 @@ type TMouseWheelEvent func(sender IObject, shift TShiftState, wheelDelta, x, y i
 
 //  TDrawItemEvent = procedure(Control: TWinControl; Index: Integer;
 //    Rect: TRect; State: TOwnerDrawState) of object;
-type TDrawItemEvent func(control IControl, index int32, aRect TRect, state TOwnerDrawState)
+type TDrawItemEvent func(control IWinControl, index int32, aRect TRect, state TOwnerDrawState)
 
 //  TMenuDrawItemEvent = procedure (Sender: TObject; ACanvas: TCanvas;
 //    ARect: TRect; Selected: Boolean) of object;

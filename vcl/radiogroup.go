@@ -15,7 +15,7 @@ import (
 )
 
 type TRadioGroup struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (r *TRadioGroup) ClientToScreen(Point TPoint) TPoint {
     return RadioGroup_ClientToScreen(r.instance, Point)
 }
 
-func (r *TRadioGroup) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (r *TRadioGroup) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return RadioGroup_ClientToParent(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (r *TRadioGroup) ScreenToClient(Point TPoint) TPoint {
     return RadioGroup_ScreenToClient(r.instance, Point)
 }
 
-func (r *TRadioGroup) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (r *TRadioGroup) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return RadioGroup_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -544,11 +544,11 @@ func (r *TRadioGroup) Floating() bool {
     return RadioGroup_GetFloating(r.instance)
 }
 
-func (r *TRadioGroup) Parent() *TControl {
-    return ControlFromInst(RadioGroup_GetParent(r.instance))
+func (r *TRadioGroup) Parent() *TWinControl {
+    return WinControlFromInst(RadioGroup_GetParent(r.instance))
 }
 
-func (r *TRadioGroup) SetParent(value IControl) {
+func (r *TRadioGroup) SetParent(value IWinControl) {
     RadioGroup_SetParent(r.instance, CheckPtr(value))
 }
 

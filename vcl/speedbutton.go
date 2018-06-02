@@ -68,7 +68,7 @@ func (s *TSpeedButton) ClientToScreen(Point TPoint) TPoint {
     return SpeedButton_ClientToScreen(s.instance, Point)
 }
 
-func (s *TSpeedButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TSpeedButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return SpeedButton_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -104,7 +104,7 @@ func (s *TSpeedButton) ScreenToClient(Point TPoint) TPoint {
     return SpeedButton_ScreenToClient(s.instance, Point)
 }
 
-func (s *TSpeedButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TSpeedButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return SpeedButton_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -428,11 +428,11 @@ func (s *TSpeedButton) Floating() bool {
     return SpeedButton_GetFloating(s.instance)
 }
 
-func (s *TSpeedButton) Parent() *TControl {
-    return ControlFromInst(SpeedButton_GetParent(s.instance))
+func (s *TSpeedButton) Parent() *TWinControl {
+    return WinControlFromInst(SpeedButton_GetParent(s.instance))
 }
 
-func (s *TSpeedButton) SetParent(value IControl) {
+func (s *TSpeedButton) SetParent(value IWinControl) {
     SpeedButton_SetParent(s.instance, CheckPtr(value))
 }
 

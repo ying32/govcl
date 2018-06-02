@@ -64,7 +64,7 @@ func (b *TBevel) ClientToScreen(Point TPoint) TPoint {
     return Bevel_ClientToScreen(b.instance, Point)
 }
 
-func (b *TBevel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (b *TBevel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Bevel_ClientToParent(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -100,7 +100,7 @@ func (b *TBevel) ScreenToClient(Point TPoint) TPoint {
     return Bevel_ScreenToClient(b.instance, Point)
 }
 
-func (b *TBevel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (b *TBevel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Bevel_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -300,11 +300,11 @@ func (b *TBevel) Floating() bool {
     return Bevel_GetFloating(b.instance)
 }
 
-func (b *TBevel) Parent() *TControl {
-    return ControlFromInst(Bevel_GetParent(b.instance))
+func (b *TBevel) Parent() *TWinControl {
+    return WinControlFromInst(Bevel_GetParent(b.instance))
 }
 
-func (b *TBevel) SetParent(value IControl) {
+func (b *TBevel) SetParent(value IWinControl) {
     Bevel_SetParent(b.instance, CheckPtr(value))
 }
 

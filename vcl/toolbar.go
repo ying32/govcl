@@ -15,7 +15,7 @@ import (
 )
 
 type TToolBar struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (t *TToolBar) ClientToScreen(Point TPoint) TPoint {
     return ToolBar_ClientToScreen(t.instance, Point)
 }
 
-func (t *TToolBar) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (t *TToolBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ToolBar_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (t *TToolBar) ScreenToClient(Point TPoint) TPoint {
     return ToolBar_ScreenToClient(t.instance, Point)
 }
 
-func (t *TToolBar) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (t *TToolBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ToolBar_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -732,11 +732,11 @@ func (t *TToolBar) Floating() bool {
     return ToolBar_GetFloating(t.instance)
 }
 
-func (t *TToolBar) Parent() *TControl {
-    return ControlFromInst(ToolBar_GetParent(t.instance))
+func (t *TToolBar) Parent() *TWinControl {
+    return WinControlFromInst(ToolBar_GetParent(t.instance))
 }
 
-func (t *TToolBar) SetParent(value IControl) {
+func (t *TToolBar) SetParent(value IWinControl) {
     ToolBar_SetParent(t.instance, CheckPtr(value))
 }
 

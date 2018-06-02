@@ -60,8 +60,8 @@ func (l *TListColumns) Add() *TListColumn {
     return ListColumnFromInst(ListColumns_Add(l.instance))
 }
 
-func (l *TListColumns) Owner() *TControl {
-    return ControlFromInst(ListColumns_Owner(l.instance))
+func (l *TListColumns) Owner() *TWinControl {
+    return WinControlFromInst(ListColumns_Owner(l.instance))
 }
 
 func (l *TListColumns) Assign(Source IObject) {

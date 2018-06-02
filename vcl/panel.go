@@ -15,7 +15,7 @@ import (
 )
 
 type TPanel struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (p *TPanel) ClientToScreen(Point TPoint) TPoint {
     return Panel_ClientToScreen(p.instance, Point)
 }
 
-func (p *TPanel) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (p *TPanel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Panel_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (p *TPanel) ScreenToClient(Point TPoint) TPoint {
     return Panel_ScreenToClient(p.instance, Point)
 }
 
-func (p *TPanel) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (p *TPanel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Panel_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
@@ -640,11 +640,11 @@ func (p *TPanel) Floating() bool {
     return Panel_GetFloating(p.instance)
 }
 
-func (p *TPanel) Parent() *TControl {
-    return ControlFromInst(Panel_GetParent(p.instance))
+func (p *TPanel) Parent() *TWinControl {
+    return WinControlFromInst(Panel_GetParent(p.instance))
 }
 
-func (p *TPanel) SetParent(value IControl) {
+func (p *TPanel) SetParent(value IWinControl) {
     Panel_SetParent(p.instance, CheckPtr(value))
 }
 

@@ -64,7 +64,7 @@ func (s *TShape) ClientToScreen(Point TPoint) TPoint {
     return Shape_ClientToScreen(s.instance, Point)
 }
 
-func (s *TShape) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TShape) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Shape_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -100,7 +100,7 @@ func (s *TShape) ScreenToClient(Point TPoint) TPoint {
     return Shape_ScreenToClient(s.instance, Point)
 }
 
-func (s *TShape) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TShape) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Shape_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -376,11 +376,11 @@ func (s *TShape) Floating() bool {
     return Shape_GetFloating(s.instance)
 }
 
-func (s *TShape) Parent() *TControl {
-    return ControlFromInst(Shape_GetParent(s.instance))
+func (s *TShape) Parent() *TWinControl {
+    return WinControlFromInst(Shape_GetParent(s.instance))
 }
 
-func (s *TShape) SetParent(value IControl) {
+func (s *TShape) SetParent(value IWinControl) {
     Shape_SetParent(s.instance, CheckPtr(value))
 }
 

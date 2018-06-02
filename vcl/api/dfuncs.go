@@ -102,21 +102,6 @@ func DFileExists(filename string) bool {
 	return DBoolToGoBool(r)
 }
 
-func DInheritsFromControl(obj uintptr) bool {
-	r, _, _ := dInheritsFromControl.Call(obj)
-	return r != 0
-}
-
-func DInheritsFromWinControl(obj uintptr) bool {
-	r, _, _ := dInheritsFromWinControl.Call(obj)
-	return r != 0
-}
-
-func DInheritsFromComponent(obj uintptr) bool {
-	r, _, _ := dInheritsFromComponent.Call(obj)
-	return r != 0
-}
-
 func DSelectDirectory1(options TSelectDirOpts) (bool, string) {
 	var ptr uintptr
 	r, _, _ := dSelectDirectory1.Call(uintptr(unsafe.Pointer(&ptr)), uintptr(options), 0)

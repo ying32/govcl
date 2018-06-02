@@ -76,7 +76,7 @@ func (t *TToolButton) ClientToScreen(Point TPoint) TPoint {
     return ToolButton_ClientToScreen(t.instance, Point)
 }
 
-func (t *TToolButton) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (t *TToolButton) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ToolButton_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -112,7 +112,7 @@ func (t *TToolButton) ScreenToClient(Point TPoint) TPoint {
     return ToolButton_ScreenToClient(t.instance, Point)
 }
 
-func (t *TToolButton) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (t *TToolButton) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ToolButton_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -488,11 +488,11 @@ func (t *TToolButton) Floating() bool {
     return ToolButton_GetFloating(t.instance)
 }
 
-func (t *TToolButton) Parent() *TControl {
-    return ControlFromInst(ToolButton_GetParent(t.instance))
+func (t *TToolButton) Parent() *TWinControl {
+    return WinControlFromInst(ToolButton_GetParent(t.instance))
 }
 
-func (t *TToolButton) SetParent(value IControl) {
+func (t *TToolButton) SetParent(value IWinControl) {
     ToolButton_SetParent(t.instance, CheckPtr(value))
 }
 

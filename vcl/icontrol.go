@@ -45,8 +45,8 @@ type IControl interface {
 	ShowHint() bool
 	SetShowHint(bool)
 
-	Parent() *TControl
-	SetParent(IControl)
+	//Parent() *TControl
+	//(IControl)
 
 	SetBounds(int32, int32, int32, int32)
 	// ---------------------事件

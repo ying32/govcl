@@ -15,7 +15,7 @@ import (
 )
 
 type THotKey struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (h *THotKey) ClientToScreen(Point TPoint) TPoint {
     return HotKey_ClientToScreen(h.instance, Point)
 }
 
-func (h *THotKey) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (h *THotKey) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return HotKey_ClientToParent(h.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (h *THotKey) ScreenToClient(Point TPoint) TPoint {
     return HotKey_ScreenToClient(h.instance, Point)
 }
 
-func (h *THotKey) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (h *THotKey) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return HotKey_ParentToClient(h.instance, Point , CheckPtr(AParent))
 }
 
@@ -448,11 +448,11 @@ func (h *THotKey) Floating() bool {
     return HotKey_GetFloating(h.instance)
 }
 
-func (h *THotKey) Parent() *TControl {
-    return ControlFromInst(HotKey_GetParent(h.instance))
+func (h *THotKey) Parent() *TWinControl {
+    return WinControlFromInst(HotKey_GetParent(h.instance))
 }
 
-func (h *THotKey) SetParent(value IControl) {
+func (h *THotKey) SetParent(value IWinControl) {
     HotKey_SetParent(h.instance, CheckPtr(value))
 }
 

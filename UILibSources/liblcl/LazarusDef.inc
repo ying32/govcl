@@ -678,21 +678,6 @@ begin
   Result := FileExists(AFileName);
 end;
 
-function DInheritsFromControl(AObj: TObject): LongBool; extdecl;
-begin
-  Result := AObj.InheritsFrom(TControl);
-end;
-
-function DInheritsFromWinControl(AObj: TObject): LongBool; extdecl;
-begin
-  Result := AObj.InheritsFrom(TWinControl);
-end;
-
-function DInheritsFromComponent(AObj: TObject): LongBool; extdecl;
-begin
-  Result := AObj.InheritsFrom(TComponent);
-end;
-
 function DSelectDirectory1(var Directory: PChar;
   Options: TSelectDirOpts; HelpCtx: Longint): LongBool; extdecl;
 var
@@ -842,9 +827,6 @@ exports
   DMessageDlg,
   DExtractFilePath,
   DFileExists,
-  DInheritsFromControl,
-  DInheritsFromWinControl,
-  DInheritsFromComponent,
 
   DSelectDirectory1,
   DSelectDirectory2,

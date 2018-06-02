@@ -15,7 +15,7 @@ import (
 )
 
 type TUpDown struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (u *TUpDown) ClientToScreen(Point TPoint) TPoint {
     return UpDown_ClientToScreen(u.instance, Point)
 }
 
-func (u *TUpDown) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (u *TUpDown) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return UpDown_ClientToParent(u.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (u *TUpDown) ScreenToClient(Point TPoint) TPoint {
     return UpDown_ScreenToClient(u.instance, Point)
 }
 
-func (u *TUpDown) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (u *TUpDown) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return UpDown_ParentToClient(u.instance, Point , CheckPtr(AParent))
 }
 
@@ -480,11 +480,11 @@ func (u *TUpDown) Floating() bool {
     return UpDown_GetFloating(u.instance)
 }
 
-func (u *TUpDown) Parent() *TControl {
-    return ControlFromInst(UpDown_GetParent(u.instance))
+func (u *TUpDown) Parent() *TWinControl {
+    return WinControlFromInst(UpDown_GetParent(u.instance))
 }
 
-func (u *TUpDown) SetParent(value IControl) {
+func (u *TUpDown) SetParent(value IWinControl) {
     UpDown_SetParent(u.instance, CheckPtr(value))
 }
 

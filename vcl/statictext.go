@@ -15,7 +15,7 @@ import (
 )
 
 type TStaticText struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -108,7 +108,7 @@ func (s *TStaticText) ClientToScreen(Point TPoint) TPoint {
     return StaticText_ClientToScreen(s.instance, Point)
 }
 
-func (s *TStaticText) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (s *TStaticText) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return StaticText_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -136,7 +136,7 @@ func (s *TStaticText) ScreenToClient(Point TPoint) TPoint {
     return StaticText_ScreenToClient(s.instance, Point)
 }
 
-func (s *TStaticText) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (s *TStaticText) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return StaticText_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
@@ -584,11 +584,11 @@ func (s *TStaticText) Floating() bool {
     return StaticText_GetFloating(s.instance)
 }
 
-func (s *TStaticText) Parent() *TControl {
-    return ControlFromInst(StaticText_GetParent(s.instance))
+func (s *TStaticText) Parent() *TWinControl {
+    return WinControlFromInst(StaticText_GetParent(s.instance))
 }
 
-func (s *TStaticText) SetParent(value IControl) {
+func (s *TStaticText) SetParent(value IWinControl) {
     StaticText_SetParent(s.instance, CheckPtr(value))
 }
 

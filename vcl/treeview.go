@@ -15,7 +15,7 @@ import (
 )
 
 type TTreeView struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -164,7 +164,7 @@ func (t *TTreeView) ClientToScreen(Point TPoint) TPoint {
     return TreeView_ClientToScreen(t.instance, Point)
 }
 
-func (t *TTreeView) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (t *TTreeView) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return TreeView_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -192,7 +192,7 @@ func (t *TTreeView) ScreenToClient(Point TPoint) TPoint {
     return TreeView_ScreenToClient(t.instance, Point)
 }
 
-func (t *TTreeView) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (t *TTreeView) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return TreeView_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
@@ -836,11 +836,11 @@ func (t *TTreeView) Floating() bool {
     return TreeView_GetFloating(t.instance)
 }
 
-func (t *TTreeView) Parent() *TControl {
-    return ControlFromInst(TreeView_GetParent(t.instance))
+func (t *TTreeView) Parent() *TWinControl {
+    return WinControlFromInst(TreeView_GetParent(t.instance))
 }
 
-func (t *TTreeView) SetParent(value IControl) {
+func (t *TTreeView) SetParent(value IWinControl) {
     TreeView_SetParent(t.instance, CheckPtr(value))
 }
 

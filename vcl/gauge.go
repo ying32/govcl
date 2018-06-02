@@ -68,7 +68,7 @@ func (g *TGauge) ClientToScreen(Point TPoint) TPoint {
     return Gauge_ClientToScreen(g.instance, Point)
 }
 
-func (g *TGauge) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (g *TGauge) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Gauge_ClientToParent(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -104,7 +104,7 @@ func (g *TGauge) ScreenToClient(Point TPoint) TPoint {
     return Gauge_ScreenToClient(g.instance, Point)
 }
 
-func (g *TGauge) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (g *TGauge) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Gauge_ParentToClient(g.instance, Point , CheckPtr(AParent))
 }
 
@@ -396,11 +396,11 @@ func (g *TGauge) Floating() bool {
     return Gauge_GetFloating(g.instance)
 }
 
-func (g *TGauge) Parent() *TControl {
-    return ControlFromInst(Gauge_GetParent(g.instance))
+func (g *TGauge) Parent() *TWinControl {
+    return WinControlFromInst(Gauge_GetParent(g.instance))
 }
 
-func (g *TGauge) SetParent(value IControl) {
+func (g *TGauge) SetParent(value IWinControl) {
     Gauge_SetParent(g.instance, CheckPtr(value))
 }
 

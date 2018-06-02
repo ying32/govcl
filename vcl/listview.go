@@ -15,7 +15,7 @@ import (
 )
 
 type TListView struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -148,7 +148,7 @@ func (l *TListView) ClientToScreen(Point TPoint) TPoint {
     return ListView_ClientToScreen(l.instance, Point)
 }
 
-func (l *TListView) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (l *TListView) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ListView_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -176,7 +176,7 @@ func (l *TListView) ScreenToClient(Point TPoint) TPoint {
     return ListView_ScreenToClient(l.instance, Point)
 }
 
-func (l *TListView) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (l *TListView) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ListView_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
@@ -904,11 +904,11 @@ func (l *TListView) Floating() bool {
     return ListView_GetFloating(l.instance)
 }
 
-func (l *TListView) Parent() *TControl {
-    return ControlFromInst(ListView_GetParent(l.instance))
+func (l *TListView) Parent() *TWinControl {
+    return WinControlFromInst(ListView_GetParent(l.instance))
 }
 
-func (l *TListView) SetParent(value IControl) {
+func (l *TListView) SetParent(value IWinControl) {
     ListView_SetParent(l.instance, CheckPtr(value))
 }
 

@@ -15,7 +15,7 @@ import (
 )
 
 type TRichEdit struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -152,7 +152,7 @@ func (r *TRichEdit) ClientToScreen(Point TPoint) TPoint {
     return RichEdit_ClientToScreen(r.instance, Point)
 }
 
-func (r *TRichEdit) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (r *TRichEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return RichEdit_ClientToParent(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -180,7 +180,7 @@ func (r *TRichEdit) ScreenToClient(Point TPoint) TPoint {
     return RichEdit_ScreenToClient(r.instance, Point)
 }
 
-func (r *TRichEdit) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (r *TRichEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return RichEdit_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
@@ -828,11 +828,11 @@ func (r *TRichEdit) Floating() bool {
     return RichEdit_GetFloating(r.instance)
 }
 
-func (r *TRichEdit) Parent() *TControl {
-    return ControlFromInst(RichEdit_GetParent(r.instance))
+func (r *TRichEdit) Parent() *TWinControl {
+    return WinControlFromInst(RichEdit_GetParent(r.instance))
 }
 
-func (r *TRichEdit) SetParent(value IControl) {
+func (r *TRichEdit) SetParent(value IWinControl) {
     RichEdit_SetParent(r.instance, CheckPtr(value))
 }
 

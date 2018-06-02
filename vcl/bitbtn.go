@@ -15,7 +15,7 @@ import (
 )
 
 type TBitBtn struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -112,7 +112,7 @@ func (b *TBitBtn) ClientToScreen(Point TPoint) TPoint {
     return BitBtn_ClientToScreen(b.instance, Point)
 }
 
-func (b *TBitBtn) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (b *TBitBtn) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return BitBtn_ClientToParent(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -140,7 +140,7 @@ func (b *TBitBtn) ScreenToClient(Point TPoint) TPoint {
     return BitBtn_ScreenToClient(b.instance, Point)
 }
 
-func (b *TBitBtn) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (b *TBitBtn) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return BitBtn_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
@@ -676,11 +676,11 @@ func (b *TBitBtn) Floating() bool {
     return BitBtn_GetFloating(b.instance)
 }
 
-func (b *TBitBtn) Parent() *TControl {
-    return ControlFromInst(BitBtn_GetParent(b.instance))
+func (b *TBitBtn) Parent() *TWinControl {
+    return WinControlFromInst(BitBtn_GetParent(b.instance))
 }
 
-func (b *TBitBtn) SetParent(value IControl) {
+func (b *TBitBtn) SetParent(value IWinControl) {
     BitBtn_SetParent(b.instance, CheckPtr(value))
 }
 

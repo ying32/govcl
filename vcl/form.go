@@ -15,7 +15,7 @@ import (
 )
 
 type TForm struct {
-    IControl
+    IWinControl
     instance uintptr
 }
 
@@ -128,7 +128,7 @@ func (f *TForm) ClientToScreen(Point TPoint) TPoint {
     return Form_ClientToScreen(f.instance, Point)
 }
 
-func (f *TForm) ClientToParent(Point TPoint, AParent IControl) TPoint {
+func (f *TForm) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Form_ClientToParent(f.instance, Point , CheckPtr(AParent))
 }
 
@@ -152,7 +152,7 @@ func (f *TForm) ScreenToClient(Point TPoint) TPoint {
     return Form_ScreenToClient(f.instance, Point)
 }
 
-func (f *TForm) ParentToClient(Point TPoint, AParent IControl) TPoint {
+func (f *TForm) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Form_ParentToClient(f.instance, Point , CheckPtr(AParent))
 }
 
@@ -744,11 +744,11 @@ func (f *TForm) Floating() bool {
     return Form_GetFloating(f.instance)
 }
 
-func (f *TForm) Parent() *TControl {
-    return ControlFromInst(Form_GetParent(f.instance))
+func (f *TForm) Parent() *TWinControl {
+    return WinControlFromInst(Form_GetParent(f.instance))
 }
 
-func (f *TForm) SetParent(value IControl) {
+func (f *TForm) SetParent(value IWinControl) {
     Form_SetParent(f.instance, CheckPtr(value))
 }
 
