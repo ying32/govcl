@@ -200,12 +200,26 @@ func PsdToBitmap(aFileName string, bmp *vcl.TBitmap) error {
 
 	bmp.SetPixelFormat(types.Pf32bit)
 	bmp.SetSize(int32(width), int32(height))
-	// 填充，左下角为起点
-	for h := int(height - 1); h >= 0; h-- {
-		ptr := bmp.ScanLine(int32(h))
-		for w := 0; w < int(width*4); w++ {
-			index := h*(int(width)*4) + w
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w))) = psdPixels[index]
+
+	if runtime.GOOS == "windows" {
+		for h := int(height - 1); h >= 0; h-- {
+			ptr := bmp.ScanLine(int32(h))
+			for w := 0; w < int(width*4); w++ {
+				index := h*(int(width)*4) + w
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w))) = psdPixels[index]
+			}
+		}
+	} else {
+		// 填充，左下角为起点
+		for h := int(height - 1); h >= 0; h-- {
+			ptr := bmp.ScanLine(int32(h))
+			for w := 0; w < int(width); w++ {
+				index := (h*int(width) + w) * 4
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = psdPixels[index+3]
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = psdPixels[index+2]
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = psdPixels[index+1]
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = psdPixels[index]
+			}
 		}
 	}
 	return nil
@@ -214,16 +228,9 @@ func PsdToBitmap(aFileName string, bmp *vcl.TBitmap) error {
 // 解包psd文件
 func unPackPSD(buffer *bytes.Reader, width, height uint32, pixels []byte, channelCount, compressionType uint16) {
 	var (
-		channelArr       []byte
-		channelArrWindow = []byte{2, 1, 0, 3}
-		channelArrMacOS  = []byte{3, 0, 1, 2}
-		defaultArr       = []byte{0, 0, 0, 255}
+		channelArr = []byte{2, 1, 0, 3}
+		defaultArr = []byte{0, 0, 0, 255}
 	)
-	if runtime.GOOS == "windows" {
-		channelArr = channelArrWindow
-	} else {
-		channelArr = channelArrMacOS
-	}
 	pixelCount := width * height
 	if compressionType == 1 {
 		buffer.Seek(int64(height*uint32(channelCount)*2), io.SeekCurrent)
