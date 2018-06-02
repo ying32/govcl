@@ -79,3 +79,4 @@ __recovery/
 *.ini
 *.td
 uFormDesignerFile.pas
+/vcl/dylib/testdll
