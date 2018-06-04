@@ -53,7 +53,7 @@ func main() {
 }
 
 ```  
-**相关二进制已经移到附件中[下载](https://gitee.com/ying32/govcl/attach_files)。**  
+**相关二进制已经移到附件中[下载](https://github.com/ying32/govcl/releases)。**  
 
 * Windows: 复制"bin\win32\libvcl.dll"或者"bin\win64\libvclx64.dll"到当前exe目录或系统环境路径下(如果不想使用Delphi的二进制可到“bin\liblcl.dll\”目录下复制对应的lcl库二进制。注：使用lcl在组件，事件，属性及方法上会受到限制)  
 
