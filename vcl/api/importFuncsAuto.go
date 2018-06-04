@@ -32825,13 +32825,13 @@ func ListItem_SetCut(obj uintptr, value bool) {
    listItem_SetCut.Call(obj, GoBoolToDBool(value))
 }
 
-func ListItem_GetData(obj uintptr) uintptr {
+func ListItem_GetData(obj uintptr) unsafe.Pointer {
     ret, _, _ := listItem_GetData.Call(obj)
-    return ret
+    return unsafe.Pointer(ret)
 }
 
-func ListItem_SetData(obj uintptr, value uintptr) {
-   listItem_SetData.Call(obj, value)
+func ListItem_SetData(obj uintptr, value unsafe.Pointer) {
+   listItem_SetData.Call(obj, uintptr(value))
 }
 
 func ListItem_GetDeleting(obj uintptr) bool {
@@ -33096,13 +33096,13 @@ func TreeNode_SetCut(obj uintptr, value bool) {
    treeNode_SetCut.Call(obj, GoBoolToDBool(value))
 }
 
-func TreeNode_GetData(obj uintptr) uintptr {
+func TreeNode_GetData(obj uintptr) unsafe.Pointer {
     ret, _, _ := treeNode_GetData.Call(obj)
-    return ret
+    return unsafe.Pointer(ret)
 }
 
-func TreeNode_SetData(obj uintptr, value uintptr) {
-   treeNode_SetData.Call(obj, value)
+func TreeNode_SetData(obj uintptr, value unsafe.Pointer) {
+   treeNode_SetData.Call(obj, uintptr(value))
 }
 
 func TreeNode_GetDeleting(obj uintptr) bool {

@@ -12,6 +12,7 @@ package vcl
 import (
 	. "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
+    "unsafe"
 )
 
 type TListItem struct {
@@ -148,11 +149,11 @@ func (l *TListItem) SetCut(value bool) {
     ListItem_SetCut(l.instance, value)
 }
 
-func (l *TListItem) Data() uintptr {
+func (l *TListItem) Data() unsafe.Pointer {
     return ListItem_GetData(l.instance)
 }
 
-func (l *TListItem) SetData(value uintptr) {
+func (l *TListItem) SetData(value unsafe.Pointer) {
     ListItem_SetData(l.instance, value)
 }
 
