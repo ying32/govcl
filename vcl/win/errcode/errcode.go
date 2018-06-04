@@ -1,6 +1,6 @@
 // +build windows
 
-package errocde
+package errcode
 
 const (
 	// Define the severity codes
