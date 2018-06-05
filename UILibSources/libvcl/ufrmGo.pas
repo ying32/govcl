@@ -17,18 +17,42 @@ type
     procedure WMDropFiles(var Msg: TWMDropFiles); message WM_DROPFILES;
   protected
     procedure InitializeNewForm; override;
+  public
+    constructor Create(AOwner: TComponent); override;
   published
     property AllowDropFiles: Boolean read FAllowDropFiles write SetAllowDropFiles;
     property OnDropFiles: TDropFilesEvent read FOnDropFiles write FOnDropFiles;
   end;
 
+  procedure LockInitScale;
+  procedure UnLockInitScale;
+  procedure SetInitScale(AValue: Boolean);
 implementation
 
-{$R *.dfm}
+//{$R *.dfm}
 
 uses
   uComponents,
   Winapi.ShellAPI;
+
+var
+  uLockObj: TObject;
+  uInitScale: Boolean;
+
+procedure LockInitScale;
+begin
+  System.TMonitor.Enter(uLockObj);
+end;
+
+procedure UnLockInitScale;
+begin
+  System.TMonitor.Exit(uLockObj);
+end;
+
+procedure SetInitScale(AValue: Boolean);
+begin
+  uInitScale := AValue;
+end;
 
 procedure Form_ScaleForPPI(AObj: TGoForm; ANewPPI: Integer); stdcall;
 begin
@@ -43,10 +67,28 @@ end;
 
 { TGoForm }
 
+constructor TGoForm.Create(AOwner: TComponent);
+var
+  LPPI: Integer;
+  LR: TRect;
+begin
+  CreateNew(AOwner, 0);
+  if uInitScale and GetGlobalFormScaled then
+  begin
+    LPPI := Screen.PixelsPerInch;
+    ClientWidth := MulDiv(ClientWidth, LPPI, 96);
+    ClientHeight := MulDiv(ClientHeight, LPPI, 96);
+    ScaleForPPI(LPPI);
+  end;
+end;
+
 procedure TGoForm.InitializeNewForm;
 begin
   inherited InitializeNewForm;
-  Scaled := GetGlobalFormScaled;
+  Self.ClientHeight := 321;
+  Self.ClientWidth := 678;
+  Self.PixelsPerInch := 96;
+  Scaled := False;
 end;
 
 procedure TGoForm.SetAllowDropFiles(const Value: Boolean);
@@ -87,7 +129,11 @@ exports
    Form_ScaleControlsForDpi;
 
 
+initialization
+  uLockObj := TObject.Create;
 
+finalization
+  uLockObj.Free;
 
 
 end.

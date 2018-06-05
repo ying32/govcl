@@ -108,11 +108,7 @@ begin
   if uGlobalFormScaled then
   begin
     if AForm is TForm then
-    begin
-      (AForm as TForm).Scaled := False;
-      (AForm as TForm).PixelsPerInch := 96;
-      (AForm as TForm).ScaleForPPI(Screen.PixelsPerInch);
-    end;
+      (AForm as TForm).ScaleForPPI(Screen.PixelsPerInch)
   end;
 end;
 
