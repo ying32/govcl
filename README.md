@@ -1,4 +1,6 @@
-## govcl: A cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding. [QQ群号:263106281](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)   
+## A cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
+
+## [QQ群号:263106281](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)   
 
 * [中文](https://github.com/ying32/govcl/blob/master/README_Zh-CN.md)   
 * [English](https://github.com/ying32/govcl/blob/master/README.md)   
