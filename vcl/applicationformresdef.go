@@ -75,6 +75,14 @@ func (a *TApplication) fullFiledVal(f *TForm, out interface{}) {
 	vPtr := v.Elem()
 	// 检查是否不效，并且可以被设置
 	if vPtr.IsValid() && vPtr.CanSet() {
+		// 如果没有名字，就指定一个名字，名字以当前类，如果首个为T则去除
+		if f.Name() == "" {
+			newName := vPtr.Type().Name()
+			if newName[0] == 'T' {
+				newName = newName[1:]
+			}
+			f.SetName(newName)
+		}
 		// TForm，默认的, 使用隐式嵌入
 		a.setFiledVal("TForm", f.Instance(), vPtr)
 		var ci int32
