@@ -29,7 +29,7 @@ func fullListViewDataAndSetEvent(lv *vcl.TListView, trainData *TTrainSearchResul
 		//FormListViewDraw.LVTrain.SetGroupView(false)
 		//FormListViewDraw.LVTrain.SetGridLines(false)
 		lv.Items().BeginUpdate()
-		for i, data := range trainData.Data.Datas {
+		for _, data := range trainData.Data.Datas {
 
 			item := lv.Items().Add()
 
@@ -51,7 +51,7 @@ func fullListViewDataAndSetEvent(lv *vcl.TListView, trainData *TTrainSearchResul
 
 			item.SetGroupID(groupId)
 			item.SetCaption(data.StationTrainCode)
-			item.SetData(uintptr(i))
+			//item.SetData(unsafe.Pointer(uintptr(i)))
 
 			subItem := item.SubItems()
 			subItem.Add(fmt.Sprintf("%s\r\n(%s)(%s)", data.FromStationName, data.StartTime, retStartorEnd(data.StartStationTelecode, data.FromStationTelecode, "始")))
@@ -100,7 +100,7 @@ func lvTraiAdvancedCustomDrawSubItem(sender *vcl.TListView, item *vcl.TListItem,
 	font := canvas.Font()
 	// 10 行后开始绘制，前面用于其它演示
 	// 演示数据的使用，，，，， 如果使用了GroupView的话，因为分组排序问题会造成不对的，哈哈哈。。。
-	i := int(item.Data()) //item.Index()
+	i := item.Index() //   int(item.Data()) //item.Index()
 	if i > 10 {
 		if i%2 == 0 {
 			canvas.Brush().SetColor(Color1)
@@ -126,10 +126,10 @@ func lvTraiAdvancedCustomDrawItem(sender *vcl.TListView, item *vcl.TListItem, st
 	//*defaultDraw = false
 
 	// 演示数据的使用，，，，， 如果使用了GroupView的话，因为分组排序问题会造成不对的，哈哈哈。。。
-	i := int(item.Data()) //item.Index()
+	//i := int(item.Data()) //item.Index()
 	// 10 行后开始绘制，前面用于其它演示
-	if i > 10 {
-		if i%2 == 0 {
+	if item.Index() > 10 {
+		if item.Index()%2 == 0 {
 			sender.Canvas().Brush().SetColor(Color1)
 		} else {
 			sender.Canvas().Brush().SetColor(Color2)
