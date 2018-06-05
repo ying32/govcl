@@ -76,7 +76,26 @@ var (
 		"GetSiteInfo":       {onGetSiteInfo, nil},
 		"MouseWheelDown":    {onMouseWheelDown, nil},
 		"MouseWheelUp":      {onMouseWheelUp, nil},
-		"Timer":             {onTimer, nil}}
+		"Timer":             {onTimer, nil},
+		// Grid
+		"ColumnMoved":    {onColumnMoved, nil},
+		"DrawCell":       {onDrawCell, nil},
+		"FixedCellClick": {onFixedCellClick, nil}, // libvcl
+		"GetEditMask":    {onGetEditMask, nil},
+		"GetEditText":    {onGetEditText, nil},
+		"RowMoved":       {onRowMoved, nil},
+		"SelectCell":     {onSelectCell, nil},
+		"SetEditText":    {onSetEditText, nil},
+		"TopLeftChanged": {onTopLeftChanged, nil},
+
+		//headercontrol
+		"DrawSection":    {onDrawSection, nil},  // livcl
+		"SectionCheck":   {onSectionCheck, nil}, // libvcl
+		"SectionClick":   {onSectionClick, nil}, // libvcl
+		"SectionDrag":    {onSectionDrag, nil},
+		"SectionEndDrag": {onSectionEndDrag, nil},
+		"SectionResize":  {onSectionResize, nil},
+		"SectionTrack":   {onSectionTrack, nil}}
 
 	// Application 独有事件
 	_appEvents = map[string]interface{}{
@@ -369,6 +388,73 @@ func onMouseWheelUp(sender IObject, shift TShiftState, mousePos TPoint, handled 
 
 func onTimer(sender IObject) {
 	mcall("Timer", sender)
+}
+
+// Grid
+func onColumnMoved(sender IObject, fromIndex, toIndex int32) {
+	mcall("ColumnMoved", sender, fromIndex, toIndex)
+}
+
+func onDrawCell(sender IObject, aCol, aRow int32, aRect TRect, state TGridDrawState) {
+	mcall("DrawCell", sender, aCol, aRow, aRect, state)
+}
+
+func onFixedCellClick(sender IObject, aCol, aRow int32) {
+	mcall("FixedCellClick", sender, aCol, aRow)
+}
+
+func onGetEditMask(sender IObject, aCol, aRow int32, value *string) {
+	mcall("GetEditMask", sender, aCol, aRow, value)
+}
+
+func onGetEditText(sender IObject, aCol, aRow int32, value *string) {
+	mcall("GetEditText", sender, aCol, aRow, value)
+}
+
+func onRowMoved(sender IObject, fromIndex, toIndex int32) {
+	mcall("RowMoved", sender, fromIndex, toIndex)
+}
+
+func onSelectCell(sender IObject, aCol, aRow int32, canSelect *bool) {
+	mcall("SelectCell", sender, aCol, aRow, canSelect)
+}
+
+func onSetEditText(sender IObject, aCol, aRow int32, value string) {
+	mcall("SetEditText", sender, aCol, aRow, value)
+}
+
+func onTopLeftChanged(sender IObject) {
+	mcall("TopLeftChanged", sender)
+}
+
+//headercontrol
+
+func onDrawSection(headerControl *THeaderControl, section *THeaderSection, aRect TRect, pressed bool) {
+	mcall("DrawSection", headerControl, section, aRect, pressed)
+}
+
+func onSectionCheck(headerControl *THeaderControl, section *THeaderSection) {
+	mcall("SectionCheck", headerControl, section)
+}
+
+func onSectionClick(headerControl *THeaderControl, section *THeaderSection) {
+	mcall("SectionClick", headerControl, section)
+}
+
+func onSectionDrag(sender IObject, fromSection, toSection *THeaderSection, allowDrag *bool) {
+	mcall("SectionDrag", sender, fromSection, toSection, allowDrag)
+}
+
+func onSectionEndDrag(sender IObject) {
+	mcall("SectionEndDrag", sender)
+}
+
+func onSectionResize(headerControl *THeaderControl, section *THeaderSection) {
+	mcall("SectionResize", headerControl, section)
+}
+
+func onSectionTrack(headerControl *THeaderControl, section *THeaderSection, width int32, state TSectionTrackState) {
+	mcall("SectionTrack", headerControl, section, width, state)
 }
 
 // -- Application
