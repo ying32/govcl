@@ -3,12 +3,19 @@ unit uComponents;
 interface
 
 uses
+  Winapi.GDIPAPI,
+  Winapi.GDIPOBJ,
   System.Classes,
   System.SysUtils,
   System.Generics.Collections;
 
 var
   uClassLists: TDictionary<string, TClass>;
+
+  procedure SetGlobalFormScaled(AValue: LongBool); stdcall;
+  function GetGlobalFormScaled: LongBool; stdcall;
+
+  procedure ScaledForm(AForm: TComponent);
 
 implementation
 
@@ -53,6 +60,10 @@ uses
   Vcl.FileCtrl,
   ImageButton;
 
+var
+  uGlobalFormScaled: Boolean = False;
+
+
 //--------------------- Ô­DelphiResForm.incÄÚÈÝ
 
 const
@@ -82,6 +93,29 @@ const
   );
 
 
+procedure SetGlobalFormScaled(AValue: LongBool);
+begin
+  uGlobalFormScaled := AValue;
+end;
+
+function GetGlobalFormScaled: LongBool;
+begin
+  Result := uGlobalFormScaled;
+end;
+
+procedure ScaledForm(AForm: TComponent);
+begin
+  if uGlobalFormScaled then
+  begin
+    if AForm is TForm then
+    begin
+      (AForm as TForm).Scaled := False;
+      (AForm as TForm).PixelsPerInch := 96;
+      (AForm as TForm).ScaleForPPI(Screen.PixelsPerInch);
+    end;
+  end;
+end;
+
 procedure InitClassLists;
 var
   LB: TClass;
@@ -90,12 +124,47 @@ begin
     uClassLists.AddOrSetValue(LB.ClassName, LB);
 end;
 
+exports
+  SetGlobalFormScaled,
+  GetGlobalFormScaled;
+
+
+procedure GidpInit;
+begin
+  // Initialize StartupInput structure
+  StartupInput.DebugEventCallback := nil;
+  StartupInput.SuppressBackgroundThread := False;
+  StartupInput.SuppressExternalCodecs   := False;
+  StartupInput.GdiplusVersion := 1;
+
+  GdiplusStartup(gdiplusToken, @StartupInput, nil);
+end;
+
+procedure GdipUnInit;
+begin
+  if Assigned(GenericSansSerifFontFamily) then
+    GenericSansSerifFontFamily.Free;
+  if Assigned(GenericSerifFontFamily) then
+    GenericSerifFontFamily.Free;
+  if Assigned(GenericMonospaceFontFamily) then
+    GenericMonospaceFontFamily.Free;
+  if Assigned(GenericTypographicStringFormatBuffer) then
+    GenericTypographicStringFormatBuffer.free;
+  if Assigned(GenericDefaultStringFormatBuffer) then
+    GenericDefaultStringFormatBuffer.Free;
+
+  GdiplusShutdown(gdiplusToken);
+end;
+
+
 initialization
+  GidpInit;
   uClassLists := TDictionary<string, TClass>.Create;
   InitClassLists;
 
 finalization
   uClassLists.Free;
+  GdipUnInit;
 
 
 end.
