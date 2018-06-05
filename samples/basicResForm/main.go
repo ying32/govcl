@@ -10,6 +10,7 @@ func main() {
 	// mac下发布时去掉，只在测试时使用
 	tools.RunWithMacOSApp()
 
+	vcl.Application.SetFormScaled(true)
 	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
@@ -17,11 +18,11 @@ func main() {
 		vcl.ShowMessage(e.Message())
 	})
 	//   Form1.gfm
-	vcl.Application.CreateFormFromFile(rtl.ExtractFilePath(vcl.Application.ExeName())+"Form1.gfm", &Form1)
+	vcl.Application.CreateForm(rtl.ExtractFilePath(vcl.Application.ExeName())+"Form1.gfm", &Form1)
 	// 文件加载方式
-	//	vcl.Application.CreateFormFromFile("Form2.gfm", &Form2)
+	//	vcl.Application.CreateForm("Form2.gfm", &Form2)
 	// 字节加载方式
-	vcl.Application.CreateFormFromBytes(form2Bytes, &Form2)
+	vcl.Application.CreateForm(form2Bytes, &Form2)
 
 	vcl.Application.Run()
 

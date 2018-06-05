@@ -37,7 +37,7 @@ func main() {
 	vcl.Application.SetIconResId(3) // 具体资源id根据rsrc.exe编译的为准
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateFormFromBytes(mainFormBytes, &MainForm)
+	vcl.Application.CreateForm(mainFormBytes, &MainForm)
 
 	mainFormhWd = MainForm.Handle()
 	MainForm.EditdlURL.SetText("http://sw.bos.baidu.com/sw-search-sp/software/19de58890ffb8/QQ_8.6.18804.0_setup.exe")

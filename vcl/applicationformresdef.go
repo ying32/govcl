@@ -88,18 +88,21 @@ func (a *TApplication) fullFiledVal(f *TForm, out interface{}) {
 }
 
 // CreateFormFromFile
+// Deprecated: Use Application.CreateForm instead.
 func (a *TApplication) CreateFormFromFile(filename string, out interface{}) {
 	f := a.CreateForm()
 	api.ResFormLoadFromFile(filename, CheckPtr(f))
 	a.fullFiledVal(f, out)
 }
 
+// Deprecated: Use Application.CreateForm instead.
 func (a *TApplication) CreateFormFromStream(stream IObject, out interface{}) {
 	f := a.CreateForm()
 	api.ResFormLoadFromStream(CheckPtr(stream), CheckPtr(f))
 	a.fullFiledVal(f, out)
 }
 
+// Deprecated: Use Application.CreateForm instead.
 func (a *TApplication) CreateFormFromBytes(inBytes []byte, out interface{}) {
 	if len(inBytes) == 0 {
 		panic("CreateFormFromBytes失败，无效的窗口资源数据。")

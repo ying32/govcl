@@ -9,6 +9,7 @@ import (
 
 func main() {
 	vcl.Application.Initialize()
+	vcl.Application.SetFormScaled(true)
 	mainForm := vcl.Application.CreateForm()
 	mainForm.SetWidth(700)
 	mainForm.SetHeight(500)

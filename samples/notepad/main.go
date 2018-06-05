@@ -12,7 +12,7 @@ func main() {
 	vcl.Application.SetIconResId(3) // 具体资源id根据rsrc.exe编译的为准
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateFormFromBytes(mainFormBytes, &MainForm)
+	vcl.Application.CreateForm(mainFormBytes, &MainForm)
 	vcl.Application.Run()
 
 }
