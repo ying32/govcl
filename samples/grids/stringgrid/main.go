@@ -23,7 +23,7 @@ func main() {
 	//grid.SetFixedCols(1)
 	//grid.SetFixedRows(1)
 
-	// 3x5
+	// 10x10
 	grid.SetColCount(10)
 	grid.SetRowCount(10)
 
