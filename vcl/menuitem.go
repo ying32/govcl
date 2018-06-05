@@ -164,6 +164,14 @@ func (m *TMenuItem) SetBitmap(value *TBitmap) {
     MenuItem_SetBitmap(m.instance, CheckPtr(value))
 }
 
+func (m *TMenuItem) Break() TMenuBreak {
+    return MenuItem_GetBreak(m.instance)
+}
+
+func (m *TMenuItem) SetBreak(value TMenuBreak) {
+    MenuItem_SetBreak(m.instance, value)
+}
+
 func (m *TMenuItem) Caption() string {
     return MenuItem_GetCaption(m.instance)
 }

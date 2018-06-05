@@ -174,3 +174,38 @@ type TMouseWheelUpDownEvent func(sender IObject, shift TShiftState, mousePos TPo
 
 // TMessageEvent = procedure (var Msg: TMsg; var Handled: Boolean) of object;
 type TMessageEvent func(msg *TMsg, handled *bool)
+
+// ---- grid
+//  TMovedEvent = procedure (Sender: TObject; FromIndex, ToIndex: Longint) of object;
+type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
+
+//TDrawCellEvent = procedure (Sender: TObject; ACol, ARow: Longint; Rect: TRect; State: TGridDrawState) of object;
+type TDrawCellEvent func(sender IObject, aCol, aRow int32, aRect TRect, state TGridDrawState)
+
+//  TFixedCellClickEvent = procedure (Sender: TObject; ACol, ARow: Longint) of object;
+type TFixedCellClickEvent func(sender IObject, aCol, aRow int32)
+
+// TGetEditEvent = procedure (Sender: TObject; ACol, ARow: Longint; var Value: string) of object;
+type TGetEditEvent func(sender IObject, aCol, aRow int32, value *string)
+
+// TSelectCellEvent = procedure (Sender: TObject; ACol, ARow: Longint; var CanSelect: Boolean) of object;
+type TSelectCellEvent func(sender IObject, aCol, aRow int32, canSelect *bool)
+
+// TSetEditEvent = procedure (Sender: TObject; ACol, ARow: Longint; const Value: string) of object;
+type TSetEditEvent func(sender IObject, aCol, aRow int32, value string)
+
+// ---- headercontrol
+// TDrawSectionEvent = procedure(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean) of object;
+type TDrawSectionEvent func(headerControl *THeaderControl, section *THeaderSection, aRect TRect, pressed bool)
+
+// TSectionNotifyEvent = procedure(HeaderControl: THeaderControl; Section: THeaderSection) of object;
+type TSectionNotifyEvent func(headerControl *THeaderControl, section *THeaderSection)
+
+//TSectionTrackEvent = procedure(HeaderControl: THeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState) of object;
+type TSectionTrackEvent func(headerControl *THeaderControl, section *THeaderSection, width int32, state TSectionTrackState)
+
+// TSectionDragEvent = procedure (Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean) of object;
+type TSectionDragEvent func(sender IObject, fromSection, toSection *THeaderSection, allowDrag *bool)
+
+// TCustomSectionNotifyEvent = procedure(HeaderControl: TCustomHeaderControl; Section: THeaderSection) of object;
+type TCustomSectionNotifyEvent func(headerControl *THeaderControl, section *THeaderSection)

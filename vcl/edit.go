@@ -324,6 +324,14 @@ func (e *TEdit) SetBorderStyle(value TBorderStyle) {
     Edit_SetBorderStyle(e.instance, value)
 }
 
+func (e *TEdit) CharCase() TEditCharCase {
+    return Edit_GetCharCase(e.instance)
+}
+
+func (e *TEdit) SetCharCase(value TEditCharCase) {
+    Edit_SetCharCase(e.instance, value)
+}
+
 func (e *TEdit) Color() TColor {
     return Edit_GetColor(e.instance)
 }

@@ -28,3 +28,10 @@ type TFontCharset byte
 type Char uint16
 
 type TClass uintptr
+
+type TGridCoord struct {
+	X int32
+	Y int32
+}
+
+type TGridRect TRect

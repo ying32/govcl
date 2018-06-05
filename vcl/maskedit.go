@@ -328,6 +328,14 @@ func (m *TMaskEdit) SetBorderStyle(value TBorderStyle) {
     MaskEdit_SetBorderStyle(m.instance, value)
 }
 
+func (m *TMaskEdit) CharCase() TEditCharCase {
+    return MaskEdit_GetCharCase(m.instance)
+}
+
+func (m *TMaskEdit) SetCharCase(value TEditCharCase) {
+    MaskEdit_SetCharCase(m.instance, value)
+}
+
 func (m *TMaskEdit) Color() TColor {
     return MaskEdit_GetColor(m.instance)
 }

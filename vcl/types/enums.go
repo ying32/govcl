@@ -1662,3 +1662,137 @@ const (
 	DkDrag = iota + 0
 	DkDock
 )
+
+// Editors common support=
+type TEditCharCase int32
+
+const (
+	EcNormal = iota + 0
+	EcUpperCase
+	EcLowerCase
+)
+
+type TEdgeBorder int32
+
+const (
+	EbLeft = iota + 0
+	EbTop
+	EbRight
+	EbBottom
+)
+
+type TEdgeBorders uint32
+
+type TEdgeStyle int32
+
+const (
+	EsNone = iota + 0
+	EsRaised
+	EsLowered
+)
+
+type TGridDrawingStyle int32
+
+const (
+	GdsClassic = iota + 0
+	GdsThemed
+	GdsGradient
+)
+
+type TGridOption int32
+
+const (
+	GoFixedVertLine = iota + 0
+	GoFixedHorzLine
+	GoVertLine
+	GoHorzLine
+	GoRangeSelect
+	GoDrawFocusSelected
+	GoRowSizing
+	GoColSizing
+	GoRowMoving
+	GoColMoving
+	GoEditing
+	GoTabs
+	GoRowSelect
+	GoAlwaysShowEditor
+	GoThumbTracking
+	GoFixedColClick
+	GoFixedRowClick
+	GoFixedHotTrack
+)
+
+type TGridOptions uint32
+
+type TGridDrawState uint32
+
+const (
+	GdSelected = iota + 0
+	GdFocused
+	GdFixed
+	GdRowSelected
+	GdHotTrack
+	GdPressed
+)
+
+type TGridScrollDirection uint32
+
+const (
+	//SdLeft = iota + 0
+	//SdRight
+	SdUp = iota + SdRight
+	SdDown
+)
+
+type THeaderSectionStyle int32
+
+const (
+	HsText = iota + 0
+	HsOwnerDraw
+)
+
+type TLabelPosition int32
+
+const (
+	LpAbove = iota + 0
+	LpBelow
+	LpLeft
+	LpRight
+)
+
+type TFlowStyle int32
+
+const (
+	FsLeftRightTopBottom = iota + 0
+	FsRightLeftTopBottom
+	FsLeftRightBottomTop
+	FsRightLeftBottomTop
+	FsTopBottomLeftRight
+	FsBottomTopLeftRight
+	FsTopBottomRightLeft
+	FsBottomTopRightLeft
+)
+
+type TCoolBandMaximize int32
+
+const (
+	BmNone = iota + 0
+	BmClick
+	BmDblClick
+)
+
+type TMenuBreak int32
+
+const (
+	MbNone = iota + 0
+	MbBreak
+	MbBarBreak
+)
+
+type TSectionTrackState int32
+
+const (
+	TsTrackBegin = iota + 0
+	TsTrackMove
+	TsTrackEnd
+)

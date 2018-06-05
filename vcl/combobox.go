@@ -316,6 +316,14 @@ func (c *TComboBox) SetBiDiMode(value TBiDiMode) {
     ComboBox_SetBiDiMode(c.instance, value)
 }
 
+func (c *TComboBox) CharCase() TEditCharCase {
+    return ComboBox_GetCharCase(c.instance)
+}
+
+func (c *TComboBox) SetCharCase(value TEditCharCase) {
+    ComboBox_SetCharCase(c.instance, value)
+}
+
 func (c *TComboBox) Color() TColor {
     return ComboBox_GetColor(c.instance)
 }

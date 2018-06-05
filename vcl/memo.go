@@ -308,6 +308,14 @@ func (m *TMemo) SetBorderStyle(value TBorderStyle) {
     Memo_SetBorderStyle(m.instance, value)
 }
 
+func (m *TMemo) CharCase() TEditCharCase {
+    return Memo_GetCharCase(m.instance)
+}
+
+func (m *TMemo) SetCharCase(value TEditCharCase) {
+    Memo_SetCharCase(m.instance, value)
+}
+
 func (m *TMemo) Color() TColor {
     return Memo_GetColor(m.instance)
 }

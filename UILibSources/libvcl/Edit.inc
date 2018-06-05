@@ -350,6 +350,16 @@ begin
   AObj.BorderStyle := AValue;
 end;
 
+function Edit_GetCharCase(AObj: TEdit): TEditCharCase; stdcall;
+begin
+  Result :=  AObj.CharCase;
+end;
+
+procedure Edit_SetCharCase(AObj: TEdit; AValue: TEditCharCase); stdcall;
+begin
+  AObj.CharCase := AValue;
+end;
+
 function Edit_GetColor(AObj: TEdit): TColor; stdcall;
 begin
   Result :=  AObj.Color;
@@ -1213,6 +1223,8 @@ exports
   Edit_SetBiDiMode,
   Edit_GetBorderStyle,
   Edit_SetBorderStyle,
+  Edit_GetCharCase,
+  Edit_SetCharCase,
   Edit_GetColor,
   Edit_SetColor,
   Edit_GetDoubleBuffered,

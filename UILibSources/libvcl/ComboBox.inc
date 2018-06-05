@@ -340,6 +340,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function ComboBox_GetCharCase(AObj: TComboBox): TEditCharCase; stdcall;
+begin
+  Result :=  AObj.CharCase;
+end;
+
+procedure ComboBox_SetCharCase(AObj: TComboBox; AValue: TEditCharCase); stdcall;
+begin
+  AObj.CharCase := AValue;
+end;
+
 function ComboBox_GetColor(AObj: TComboBox): TColor; stdcall;
 begin
   Result :=  AObj.Color;
@@ -1187,6 +1197,8 @@ exports
   ComboBox_SetAnchors,
   ComboBox_GetBiDiMode,
   ComboBox_SetBiDiMode,
+  ComboBox_GetCharCase,
+  ComboBox_SetCharCase,
   ComboBox_GetColor,
   ComboBox_SetColor,
   ComboBox_GetDoubleBuffered,

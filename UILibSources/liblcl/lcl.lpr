@@ -57,6 +57,8 @@ uses
   Clipbrd,
   CheckLst,
   MaskEdit,
+  Grids,
+  ValEdit,
   fgl,
   uFormDesignerFile,
   uLinkLabel in 'uLinkLabel.pas',
@@ -174,6 +176,18 @@ uses
 {$I MyLCL_PageSetupDialog.inc}
 {$I MyLCL_DragObject.inc}
 {$I MyLCL_DragDockObject.inc}
+{$I MyLCL_StringGrid.inc}
+{$I MyLCL_DrawGrid.inc}
+{$I MyLCL_ValueListEditor.inc}
+{$I MyLCL_HeaderControl.inc}
+{$I MyLCL_HeaderSection.inc}
+{$I MyLCL_HeaderSections.inc}
+{$I MyLCL_LabeledEdit.inc}
+{$I MyLCL_BoundLabel.inc}
+{$I MyLCL_FlowPanel.inc}
+{$I MyLCL_CoolBar.inc}
+{$I MyLCL_CoolBands.inc}
+{$I MyLCL_CoolBand.inc}
 
 begin
   InitLazarusDef;

@@ -340,6 +340,30 @@ func (t *TToolBar) SetDrawingStyle(value TTBDrawingStyle) {
     ToolBar_SetDrawingStyle(t.instance, value)
 }
 
+func (t *TToolBar) EdgeBorders() TEdgeBorders {
+    return ToolBar_GetEdgeBorders(t.instance)
+}
+
+func (t *TToolBar) SetEdgeBorders(value TEdgeBorders) {
+    ToolBar_SetEdgeBorders(t.instance, value)
+}
+
+func (t *TToolBar) EdgeInner() TEdgeStyle {
+    return ToolBar_GetEdgeInner(t.instance)
+}
+
+func (t *TToolBar) SetEdgeInner(value TEdgeStyle) {
+    ToolBar_SetEdgeInner(t.instance, value)
+}
+
+func (t *TToolBar) EdgeOuter() TEdgeStyle {
+    return ToolBar_GetEdgeOuter(t.instance)
+}
+
+func (t *TToolBar) SetEdgeOuter(value TEdgeStyle) {
+    ToolBar_SetEdgeOuter(t.instance, value)
+}
+
 func (t *TToolBar) Enabled() bool {
     return ToolBar_GetEnabled(t.instance)
 }

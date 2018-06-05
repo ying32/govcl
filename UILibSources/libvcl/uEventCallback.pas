@@ -3,11 +3,12 @@ unit uEventCallback;
 interface
 
 uses
+  Winapi.Windows,
+  Winapi.Messages,
   Vcl.Controls,
   Vcl.Forms,
   Vcl.ComCtrls,
-  Winapi.Windows,
-  Winapi.Messages,
+  Vcl.Grids,
   Vcl.Menus,
   Vcl.ExtCtrls,
   Vcl.Graphics,
@@ -44,7 +45,13 @@ type
               geConstrainedResize, geDeactivate, geActivate,
               geHelp, geShortCut, geContextPopup, geDockDrop, geDragDrop,
               geDragOver, geEndDock, geGetSiteInfo, geMouseWheelDown,
-              geMouseWheelUp, geStartDock, geUnDock, geMessage, geEndDrag);
+              geMouseWheelUp, geStartDock, geUnDock, geMessage, geEndDrag,
+
+              geColumnMoved, geDrawCell, geFixedCellClick, geGetEditMask,
+              geGetEditText, geRowMoved, geSelectCell, geSetEditText, geTopLeftChanged,
+
+              geDrawSection, geSectionResize, geSectionTrack, geSectionDrag, geSectionEndDrag, geSectionCheck,
+              geSectionClick);
 
   TEventKey = packed record
     Sender: TObject;
@@ -158,6 +165,30 @@ type
     class procedure OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
     class procedure OnMessage(var Msg: TMsg; var Handled: Boolean);
     class procedure OnEndDrag(Sender, Target: TObject; X, Y: Integer);
+
+
+    // grid
+
+    class procedure OnColumnMoved(Sender: TObject; FromIndex, ToIndex: Longint);
+    class procedure OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
+    class procedure OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
+    class procedure OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
+    class procedure OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
+    class procedure OnRowMoved(Sender: TObject; FromIndex, ToIndex: Integer);
+    class procedure OnSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
+    class procedure OnSetEditText(Sender: TObject; ACol, ARow: Integer; const Value: string);
+    class procedure OnTopLeftChanged(Sender: TObject);
+
+
+
+    // headercontrol
+    class procedure OnDrawSection(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean);
+    class procedure OnSectionCheck(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+    class procedure OnSectionClick(HeaderControl: THeaderControl; Section: THeaderSection);
+    class procedure OnSectionDrag(Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean);
+    class procedure OnSectionEndDrag(Sender: TObject);
+    class procedure OnSectionResize(HeaderControl: THeaderControl; Section: THeaderSection);
+    class procedure OnSectionTrack(HeaderControl: THeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState);
 
 
 
@@ -463,6 +494,101 @@ class procedure TEventClass.OnEndDrag(Sender, Target: TObject; X, Y: Integer);
 begin
   SendEvent(Sender, geEndDrag, [Sender, Target, X, Y]);
 end;
+
+// grid
+class procedure TEventClass.OnColumnMoved(Sender: TObject; FromIndex, ToIndex: Longint);
+begin
+  SendEvent(Sender, geColumnMoved, [Sender, FromIndex, ToIndex]);
+end;
+
+class procedure TEventClass.OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
+begin
+  SendEvent(Sender, geDrawCell, [Sender, ACol, ARow, Pointer(@ARect), PWord(@State)^]);
+end;
+
+class procedure TEventClass.OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
+begin
+  SendEvent(Sender, geFixedCellClick, [Sender, ACol, ARow]);
+end;
+
+class procedure TEventClass.OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(Value);
+  SendEvent(Sender, geGetEditMask, [Sender, ACol, ARow, Pointer(@LS)]);
+  Value := LS;
+end;
+
+class procedure TEventClass.OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(Value);
+  SendEvent(Sender, geGetEditText, [Sender, ACol, ARow, Pointer(@LS)]);
+  Value := LS;
+end;
+
+class procedure TEventClass.OnRowMoved(Sender: TObject; FromIndex, ToIndex: Integer);
+begin
+  SendEvent(Sender, geRowMoved, [Sender, FromIndex, ToIndex]);
+end;
+
+class procedure TEventClass.OnSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
+begin
+  SendEvent(Sender, geSelectCell, [Sender, ACol, ARow, Pointer(@CanSelect)]);
+end;
+
+class procedure TEventClass.OnSetEditText(Sender: TObject; ACol, ARow: Integer; const Value: string);
+begin
+  SendEvent(Sender, geSetEditText, [Sender, ACol, ARow, PChar(Value)]);
+end;
+
+class procedure TEventClass.OnTopLeftChanged(Sender: TObject);
+begin
+  SendEvent(Sender, geTopLeftChanged, [Sender]);
+end;
+
+
+// headercontrol
+class procedure TEventClass.OnDrawSection(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean);
+begin
+  SendEvent(HeaderControl, geDrawSection, [HeaderControl, Section, Pointer(@Rect), Pressed]);
+end;
+
+class procedure TEventClass.OnSectionCheck(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+begin
+  SendEvent(HeaderControl, geSectionCheck, [HeaderControl, Section]);
+end;
+
+class procedure TEventClass.OnSectionClick(HeaderControl: THeaderControl; Section: THeaderSection);
+begin
+  SendEvent(HeaderControl, geSectionClick, [HeaderControl, Section]);
+end;
+
+class procedure TEventClass.OnSectionDrag(Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean);
+begin
+  SendEvent(Sender, geSectionClick, [Sender, FromSection, ToSection, Pointer(@AllowDrag)]);
+end;
+
+class procedure TEventClass.OnSectionEndDrag(Sender: TObject);
+begin
+  SendEvent(Sender, geSectionEndDrag, [Sender]);
+end;
+
+class procedure TEventClass.OnSectionResize(HeaderControl: THeaderControl; Section: THeaderSection);
+begin
+  SendEvent(HeaderControl, geSectionResize, [HeaderControl, Section]);
+end;
+
+class procedure TEventClass.OnSectionTrack(HeaderControl: THeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState);
+begin
+  SendEvent(HeaderControl, geSectionTrack, [HeaderControl, Section, Width, Integer(State)]);
+end;
+
+
+
+
 
 class procedure TEventClass.OnHide(Sender: TObject);
 begin

@@ -536,6 +536,14 @@ func (c *TColorBox) SetAutoCloseUp(value bool) {
     ColorBox_SetAutoCloseUp(c.instance, value)
 }
 
+func (c *TColorBox) CharCase() TEditCharCase {
+    return ColorBox_GetCharCase(c.instance)
+}
+
+func (c *TColorBox) SetCharCase(value TEditCharCase) {
+    ColorBox_SetCharCase(c.instance, value)
+}
+
 func (c *TColorBox) SelText() string {
     return ColorBox_GetSelText(c.instance)
 }

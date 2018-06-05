@@ -1,0 +1,1177 @@
+
+//----------------------------------------
+// 代码由GenlibLcl工具自动生成。
+// Copyright © ying32. All Rights Reserved.
+//
+//----------------------------------------
+
+function LabeledEdit_Create(AOwner: TComponent): TLabeledEdit; extdecl;
+begin
+  Result :=  TLabeledEdit.Create(AOwner);
+end;
+
+procedure LabeledEdit_Free(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Free;
+end;
+
+procedure LabeledEdit_SetBounds(AObj: TLabeledEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
+begin
+  AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+end;
+
+procedure LabeledEdit_Clear(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Clear;
+end;
+
+procedure LabeledEdit_ClearSelection(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.ClearSelection;
+end;
+
+procedure LabeledEdit_CopyToClipboard(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.CopyToClipboard;
+end;
+
+procedure LabeledEdit_CutToClipboard(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.CutToClipboard;
+end;
+
+procedure LabeledEdit_PasteFromClipboard(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.PasteFromClipboard;
+end;
+
+procedure LabeledEdit_Undo(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Undo;
+end;
+
+procedure LabeledEdit_SelectAll(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.SelectAll;
+end;
+
+function LabeledEdit_CanFocus(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.CanFocus;
+end;
+
+procedure LabeledEdit_FlipChildren(AObj: TLabeledEdit; AllLevels: LongBool); extdecl;
+begin
+  AObj.FlipChildren(AllLevels);
+end;
+
+function LabeledEdit_Focused(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Focused;
+end;
+
+function LabeledEdit_HandleAllocated(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
+procedure LabeledEdit_Invalidate(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Invalidate;
+end;
+
+procedure LabeledEdit_Realign(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Realign;
+end;
+
+procedure LabeledEdit_Repaint(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Repaint;
+end;
+
+procedure LabeledEdit_ScaleBy(AObj: TLabeledEdit; M: Integer; D: Integer); extdecl;
+begin
+  AObj.ScaleBy(M, D);
+end;
+
+procedure LabeledEdit_SetFocus(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.SetFocus;
+end;
+
+procedure LabeledEdit_Update(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Update;
+end;
+
+procedure LabeledEdit_BringToFront(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.BringToFront;
+end;
+
+procedure LabeledEdit_ClientToScreen(AObj: TLabeledEdit; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure LabeledEdit_ClientToParent(AObj: TLabeledEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
+function LabeledEdit_Dragging(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
+function LabeledEdit_HasParent(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.HasParent;
+end;
+
+procedure LabeledEdit_Hide(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Hide;
+end;
+
+function LabeledEdit_Perform(AObj: TLabeledEdit; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
+begin
+  Result :=  AObj.Perform(Msg, WParam, LParam);
+end;
+
+procedure LabeledEdit_Refresh(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Refresh;
+end;
+
+procedure LabeledEdit_ScreenToClient(AObj: TLabeledEdit; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure LabeledEdit_ParentToClient(AObj: TLabeledEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
+end;
+
+procedure LabeledEdit_SendToBack(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.SendToBack;
+end;
+
+procedure LabeledEdit_Show(AObj: TLabeledEdit); extdecl;
+begin
+  AObj.Show;
+end;
+
+function LabeledEdit_GetTextBuf(AObj: TLabeledEdit; Buffer: PChar; BufSize: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.GetTextBuf(Buffer, BufSize);
+end;
+
+function LabeledEdit_GetTextLen(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.GetTextLen;
+end;
+
+function LabeledEdit_FindComponent(AObj: TLabeledEdit; AName: PChar): TComponent; extdecl;
+begin
+  Result :=  AObj.FindComponent(AName);
+end;
+
+function LabeledEdit_GetNamePath(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.GetNamePath);
+end;
+
+procedure LabeledEdit_Assign(AObj: TLabeledEdit; Source: TPersistent); extdecl;
+begin
+  AObj.Assign(Source);
+end;
+
+function LabeledEdit_ClassType(AObj: TLabeledEdit): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
+function LabeledEdit_ClassName(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  ToPChar(AObj.ClassName);
+end;
+
+function LabeledEdit_InstanceSize(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function LabeledEdit_InheritsFrom(AObj: TLabeledEdit; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
+end;
+
+function LabeledEdit_Equals(AObj: TLabeledEdit; Obj: TObject): LongBool; extdecl;
+begin
+  Result :=  AObj.Equals(Obj);
+end;
+
+function LabeledEdit_GetHashCode(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function LabeledEdit_ToString(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function LabeledEdit_GetAlignment(AObj: TLabeledEdit): TAlignment; extdecl;
+begin
+  Result :=  AObj.Alignment;
+end;
+
+procedure LabeledEdit_SetAlignment(AObj: TLabeledEdit; AValue: TAlignment); extdecl;
+begin
+  AObj.Alignment := AValue;
+end;
+
+function LabeledEdit_GetAnchors(AObj: TLabeledEdit): TAnchors; extdecl;
+begin
+  Result :=  AObj.Anchors;
+end;
+
+procedure LabeledEdit_SetAnchors(AObj: TLabeledEdit; AValue: TAnchors); extdecl;
+begin
+  AObj.Anchors := AValue;
+end;
+
+function LabeledEdit_GetAutoSelect(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSelect;
+end;
+
+procedure LabeledEdit_SetAutoSelect(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSelect := AValue;
+end;
+
+function LabeledEdit_GetAutoSize(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSize;
+end;
+
+procedure LabeledEdit_SetAutoSize(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSize := AValue;
+end;
+
+function LabeledEdit_GetBiDiMode(AObj: TLabeledEdit): TBiDiMode; extdecl;
+begin
+  Result :=  AObj.BiDiMode;
+end;
+
+procedure LabeledEdit_SetBiDiMode(AObj: TLabeledEdit; AValue: TBiDiMode); extdecl;
+begin
+  AObj.BiDiMode := AValue;
+end;
+
+function LabeledEdit_GetBorderStyle(AObj: TLabeledEdit): TBorderStyle; extdecl;
+begin
+  Result :=  AObj.BorderStyle;
+end;
+
+procedure LabeledEdit_SetBorderStyle(AObj: TLabeledEdit; AValue: TBorderStyle); extdecl;
+begin
+  AObj.BorderStyle := AValue;
+end;
+
+function LabeledEdit_GetCharCase(AObj: TLabeledEdit): TEditCharCase; extdecl;
+begin
+  Result :=  AObj.CharCase;
+end;
+
+procedure LabeledEdit_SetCharCase(AObj: TLabeledEdit; AValue: TEditCharCase); extdecl;
+begin
+  AObj.CharCase := AValue;
+end;
+
+function LabeledEdit_GetColor(AObj: TLabeledEdit): TColor; extdecl;
+begin
+  Result :=  AObj.Color;
+end;
+
+procedure LabeledEdit_SetColor(AObj: TLabeledEdit; AValue: TColor); extdecl;
+begin
+  AObj.Color := AValue;
+end;
+
+function LabeledEdit_GetDoubleBuffered(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.DoubleBuffered;
+end;
+
+procedure LabeledEdit_SetDoubleBuffered(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.DoubleBuffered := AValue;
+end;
+
+function LabeledEdit_GetDragCursor(AObj: TLabeledEdit): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure LabeledEdit_SetDragCursor(AObj: TLabeledEdit; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function LabeledEdit_GetDragMode(AObj: TLabeledEdit): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure LabeledEdit_SetDragMode(AObj: TLabeledEdit; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
+function LabeledEdit_GetEditLabel(AObj: TLabeledEdit): TBoundLabel; extdecl;
+begin
+  Result :=  AObj.EditLabel;
+end;
+
+function LabeledEdit_GetEnabled(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Enabled;
+end;
+
+procedure LabeledEdit_SetEnabled(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.Enabled := AValue;
+end;
+
+function LabeledEdit_GetFont(AObj: TLabeledEdit): TFont; extdecl;
+begin
+  Result :=  AObj.Font;
+end;
+
+procedure LabeledEdit_SetFont(AObj: TLabeledEdit; AValue: TFont); extdecl;
+begin
+  AObj.Font := AValue;
+end;
+
+function LabeledEdit_GetHideSelection(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.HideSelection;
+end;
+
+procedure LabeledEdit_SetHideSelection(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.HideSelection := AValue;
+end;
+
+function LabeledEdit_GetLabelPosition(AObj: TLabeledEdit): TLabelPosition; extdecl;
+begin
+  Result :=  AObj.LabelPosition;
+end;
+
+procedure LabeledEdit_SetLabelPosition(AObj: TLabeledEdit; AValue: TLabelPosition); extdecl;
+begin
+  AObj.LabelPosition := AValue;
+end;
+
+function LabeledEdit_GetLabelSpacing(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.LabelSpacing;
+end;
+
+procedure LabeledEdit_SetLabelSpacing(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.LabelSpacing := AValue;
+end;
+
+function LabeledEdit_GetMaxLength(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.MaxLength;
+end;
+
+procedure LabeledEdit_SetMaxLength(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.MaxLength := AValue;
+end;
+
+function LabeledEdit_GetNumbersOnly(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.NumbersOnly;
+end;
+
+procedure LabeledEdit_SetNumbersOnly(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.NumbersOnly := AValue;
+end;
+
+function LabeledEdit_GetParentColor(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentColor;
+end;
+
+procedure LabeledEdit_SetParentColor(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentColor := AValue;
+end;
+
+function LabeledEdit_GetParentFont(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentFont;
+end;
+
+procedure LabeledEdit_SetParentFont(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentFont := AValue;
+end;
+
+function LabeledEdit_GetParentShowHint(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentShowHint;
+end;
+
+procedure LabeledEdit_SetParentShowHint(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentShowHint := AValue;
+end;
+
+function LabeledEdit_GetPasswordChar(AObj: TLabeledEdit): Char; extdecl;
+begin
+  Result :=  AObj.PasswordChar;
+end;
+
+procedure LabeledEdit_SetPasswordChar(AObj: TLabeledEdit; AValue: Char); extdecl;
+begin
+  AObj.PasswordChar := AValue;
+end;
+
+function LabeledEdit_GetPopupMenu(AObj: TLabeledEdit): TPopupMenu; extdecl;
+begin
+  Result :=  AObj.PopupMenu;
+end;
+
+procedure LabeledEdit_SetPopupMenu(AObj: TLabeledEdit; AValue: TPopupMenu); extdecl;
+begin
+  AObj.PopupMenu := AValue;
+end;
+
+function LabeledEdit_GetReadOnly(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ReadOnly;
+end;
+
+procedure LabeledEdit_SetReadOnly(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ReadOnly := AValue;
+end;
+
+function LabeledEdit_GetShowHint(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ShowHint;
+end;
+
+procedure LabeledEdit_SetShowHint(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ShowHint := AValue;
+end;
+
+function LabeledEdit_GetTabOrder(AObj: TLabeledEdit): TTabOrder; extdecl;
+begin
+  Result :=  AObj.TabOrder;
+end;
+
+procedure LabeledEdit_SetTabOrder(AObj: TLabeledEdit; AValue: TTabOrder); extdecl;
+begin
+  AObj.TabOrder := AValue;
+end;
+
+function LabeledEdit_GetTabStop(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.TabStop;
+end;
+
+procedure LabeledEdit_SetTabStop(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.TabStop := AValue;
+end;
+
+function LabeledEdit_GetText(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Text);
+end;
+
+procedure LabeledEdit_SetText(AObj: TLabeledEdit; AValue: PChar); extdecl;
+begin
+  AObj.Text := AValue;
+end;
+
+function LabeledEdit_GetTextHint(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.TextHint);
+end;
+
+procedure LabeledEdit_SetTextHint(AObj: TLabeledEdit; AValue: PChar); extdecl;
+begin
+  AObj.TextHint := AValue;
+end;
+
+function LabeledEdit_GetVisible(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Visible;
+end;
+
+procedure LabeledEdit_SetVisible(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.Visible := AValue;
+end;
+
+procedure LabeledEdit_SetOnChange(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChange := nil;
+    EventClass.Remove(AObj, geChange);
+    Exit;
+  end;
+  AObj.OnChange := @EventClass.OnChange;
+  EventClass.Add(AObj, geChange, AEventId);
+end;
+
+procedure LabeledEdit_SetOnClick(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnClick := nil;
+    EventClass.Remove(AObj, geClick);
+    Exit;
+  end;
+  AObj.OnClick := @EventClass.OnClick;
+  EventClass.Add(AObj, geClick, AEventId);
+end;
+
+procedure LabeledEdit_SetOnDblClick(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDblClick := nil;
+    EventClass.Remove(AObj, geDblClick);
+    Exit;
+  end;
+  AObj.OnDblClick := @EventClass.OnDblClick;
+  EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure LabeledEdit_SetOnDragDrop(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragDrop := nil;
+    EventClass.Remove(AObj, geDragDrop);
+    Exit;
+  end;
+  AObj.OnDragDrop := @EventClass.OnDragDrop;
+  EventClass.Add(AObj, geDragDrop, AEventId);
+end;
+
+procedure LabeledEdit_SetOnDragOver(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDragOver := nil;
+    EventClass.Remove(AObj, geDragOver);
+    Exit;
+  end;
+  AObj.OnDragOver := @EventClass.OnDragOver;
+  EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure LabeledEdit_SetOnEndDrag(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEndDrag := nil;
+    EventClass.Remove(AObj, geEndDrag);
+    Exit;
+  end;
+  AObj.OnEndDrag := @EventClass.OnEndDrag;
+  EventClass.Add(AObj, geEndDrag, AEventId);
+end;
+
+procedure LabeledEdit_SetOnEnter(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEnter := nil;
+    EventClass.Remove(AObj, geEnter);
+    Exit;
+  end;
+  AObj.OnEnter := @EventClass.OnEnter;
+  EventClass.Add(AObj, geEnter, AEventId);
+end;
+
+procedure LabeledEdit_SetOnExit(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnExit := nil;
+    EventClass.Remove(AObj, geExit);
+    Exit;
+  end;
+  AObj.OnExit := @EventClass.OnExit;
+  EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure LabeledEdit_SetOnKeyDown(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnKeyDown := nil;
+    EventClass.Remove(AObj, geKeyDown);
+    Exit;
+  end;
+  AObj.OnKeyDown := @EventClass.OnKeyDown;
+  EventClass.Add(AObj, geKeyDown, AEventId);
+end;
+
+procedure LabeledEdit_SetOnKeyPress(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnKeyPress := nil;
+    EventClass.Remove(AObj, geKeyPress);
+    Exit;
+  end;
+  AObj.OnKeyPress := @EventClass.OnKeyPress;
+  EventClass.Add(AObj, geKeyPress, AEventId);
+end;
+
+procedure LabeledEdit_SetOnKeyUp(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnKeyUp := nil;
+    EventClass.Remove(AObj, geKeyUp);
+    Exit;
+  end;
+  AObj.OnKeyUp := @EventClass.OnKeyUp;
+  EventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure LabeledEdit_SetOnMouseDown(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseDown := nil;
+    EventClass.Remove(AObj, geMouseDown);
+    Exit;
+  end;
+  AObj.OnMouseDown := @EventClass.OnMouseDown;
+  EventClass.Add(AObj, geMouseDown, AEventId);
+end;
+
+procedure LabeledEdit_SetOnMouseEnter(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseEnter := nil;
+    EventClass.Remove(AObj, geMouseEnter);
+    Exit;
+  end;
+  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
+  EventClass.Add(AObj, geMouseEnter, AEventId);
+end;
+
+procedure LabeledEdit_SetOnMouseLeave(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseLeave := nil;
+    EventClass.Remove(AObj, geMouseLeave);
+    Exit;
+  end;
+  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
+  EventClass.Add(AObj, geMouseLeave, AEventId);
+end;
+
+procedure LabeledEdit_SetOnMouseMove(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseMove := nil;
+    EventClass.Remove(AObj, geMouseMove);
+    Exit;
+  end;
+  AObj.OnMouseMove := @EventClass.OnMouseMove;
+  EventClass.Add(AObj, geMouseMove, AEventId);
+end;
+
+procedure LabeledEdit_SetOnMouseUp(AObj: TLabeledEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseUp := nil;
+    EventClass.Remove(AObj, geMouseUp);
+    Exit;
+  end;
+  AObj.OnMouseUp := @EventClass.OnMouseUp;
+  EventClass.Add(AObj, geMouseUp, AEventId);
+end;
+
+function LabeledEdit_GetCanUndo(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.CanUndo;
+end;
+
+function LabeledEdit_GetModified(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Modified;
+end;
+
+procedure LabeledEdit_SetModified(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.Modified := AValue;
+end;
+
+function LabeledEdit_GetSelLength(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.SelLength;
+end;
+
+procedure LabeledEdit_SetSelLength(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.SelLength := AValue;
+end;
+
+function LabeledEdit_GetSelStart(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.SelStart;
+end;
+
+procedure LabeledEdit_SetSelStart(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.SelStart := AValue;
+end;
+
+function LabeledEdit_GetSelText(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.SelText);
+end;
+
+procedure LabeledEdit_SetSelText(AObj: TLabeledEdit; AValue: PChar); extdecl;
+begin
+  AObj.SelText := AValue;
+end;
+
+function LabeledEdit_GetDockSite(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure LabeledEdit_SetDockSite(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
+function LabeledEdit_GetBrush(AObj: TLabeledEdit): TBrush; extdecl;
+begin
+  Result :=  AObj.Brush;
+end;
+
+function LabeledEdit_GetControlCount(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ControlCount;
+end;
+
+function LabeledEdit_GetHandle(AObj: TLabeledEdit): HWND; extdecl;
+begin
+  Result :=  AObj.Handle;
+end;
+
+function LabeledEdit_GetParentWindow(AObj: TLabeledEdit): HWND; extdecl;
+begin
+  Result :=  AObj.ParentWindow;
+end;
+
+procedure LabeledEdit_SetParentWindow(AObj: TLabeledEdit; AValue: HWND); extdecl;
+begin
+  AObj.ParentWindow := AValue;
+end;
+
+function LabeledEdit_GetUseDockManager(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure LabeledEdit_SetUseDockManager(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
+end;
+
+function LabeledEdit_GetAction(AObj: TLabeledEdit): TBasicAction; extdecl;
+begin
+  Result :=  AObj.Action;
+end;
+
+procedure LabeledEdit_SetAction(AObj: TLabeledEdit; AValue: TBasicAction); extdecl;
+begin
+  AObj.Action := AValue;
+end;
+
+function LabeledEdit_GetAlign(AObj: TLabeledEdit): TAlign; extdecl;
+begin
+  Result :=  AObj.Align;
+end;
+
+procedure LabeledEdit_SetAlign(AObj: TLabeledEdit; AValue: TAlign); extdecl;
+begin
+  AObj.Align := AValue;
+end;
+
+procedure LabeledEdit_GetBoundsRect(AObj: TLabeledEdit; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.BoundsRect;
+end;
+
+procedure LabeledEdit_SetBoundsRect(AObj: TLabeledEdit; var AValue: TRect); extdecl;
+begin
+  AObj.BoundsRect := AValue;
+end;
+
+function LabeledEdit_GetClientHeight(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ClientHeight;
+end;
+
+procedure LabeledEdit_SetClientHeight(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.ClientHeight := AValue;
+end;
+
+procedure LabeledEdit_GetClientRect(AObj: TLabeledEdit; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.ClientRect;
+end;
+
+function LabeledEdit_GetClientWidth(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ClientWidth;
+end;
+
+procedure LabeledEdit_SetClientWidth(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.ClientWidth := AValue;
+end;
+
+function LabeledEdit_GetFloating(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
+function LabeledEdit_GetParent(AObj: TLabeledEdit): TWinControl; extdecl;
+begin
+  Result :=  AObj.Parent;
+end;
+
+procedure LabeledEdit_SetParent(AObj: TLabeledEdit; AValue: TWinControl); extdecl;
+begin
+  AObj.Parent := AValue;
+end;
+
+function LabeledEdit_GetLeft(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Left;
+end;
+
+procedure LabeledEdit_SetLeft(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.Left := AValue;
+end;
+
+function LabeledEdit_GetTop(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Top;
+end;
+
+procedure LabeledEdit_SetTop(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.Top := AValue;
+end;
+
+function LabeledEdit_GetWidth(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Width;
+end;
+
+procedure LabeledEdit_SetWidth(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.Width := AValue;
+end;
+
+function LabeledEdit_GetHeight(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Height;
+end;
+
+procedure LabeledEdit_SetHeight(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.Height := AValue;
+end;
+
+function LabeledEdit_GetCursor(AObj: TLabeledEdit): TCursor; extdecl;
+begin
+  Result :=  AObj.Cursor;
+end;
+
+procedure LabeledEdit_SetCursor(AObj: TLabeledEdit; AValue: TCursor); extdecl;
+begin
+  AObj.Cursor := AValue;
+end;
+
+function LabeledEdit_GetHint(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Hint);
+end;
+
+procedure LabeledEdit_SetHint(AObj: TLabeledEdit; AValue: PChar); extdecl;
+begin
+  AObj.Hint := AValue;
+end;
+
+function LabeledEdit_GetComponentCount(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ComponentCount;
+end;
+
+function LabeledEdit_GetComponentIndex(AObj: TLabeledEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ComponentIndex;
+end;
+
+procedure LabeledEdit_SetComponentIndex(AObj: TLabeledEdit; AValue: Integer); extdecl;
+begin
+  AObj.ComponentIndex := AValue;
+end;
+
+function LabeledEdit_GetOwner(AObj: TLabeledEdit): TComponent; extdecl;
+begin
+  Result :=  AObj.Owner;
+end;
+
+function LabeledEdit_GetName(AObj: TLabeledEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Name);
+end;
+
+procedure LabeledEdit_SetName(AObj: TLabeledEdit; AValue: PChar); extdecl;
+begin
+  AObj.Name := AValue;
+end;
+
+function LabeledEdit_GetTag(AObj: TLabeledEdit): NativeInt; extdecl;
+begin
+  Result :=  AObj.Tag;
+end;
+
+procedure LabeledEdit_SetTag(AObj: TLabeledEdit; AValue: NativeInt); extdecl;
+begin
+  AObj.Tag := AValue;
+end;
+
+function LabeledEdit_GetControls(AObj: TLabeledEdit; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.Controls[Index];
+end;
+
+function LabeledEdit_GetComponents(AObj: TLabeledEdit; AIndex: Integer): TComponent; extdecl;
+begin
+  Result :=  AObj.Components[AIndex];
+end;
+
+function LabeledEdit_StaticClassType: TClass; extdecl;
+begin
+  Result := TLabeledEdit;
+end;
+
+exports
+  LabeledEdit_Create,
+  LabeledEdit_Free,
+  LabeledEdit_SetBounds,
+  LabeledEdit_Clear,
+  LabeledEdit_ClearSelection,
+  LabeledEdit_CopyToClipboard,
+  LabeledEdit_CutToClipboard,
+  LabeledEdit_PasteFromClipboard,
+  LabeledEdit_Undo,
+  LabeledEdit_SelectAll,
+  LabeledEdit_CanFocus,
+  LabeledEdit_FlipChildren,
+  LabeledEdit_Focused,
+  LabeledEdit_HandleAllocated,
+  LabeledEdit_Invalidate,
+  LabeledEdit_Realign,
+  LabeledEdit_Repaint,
+  LabeledEdit_ScaleBy,
+  LabeledEdit_SetFocus,
+  LabeledEdit_Update,
+  LabeledEdit_BringToFront,
+  LabeledEdit_ClientToScreen,
+  LabeledEdit_ClientToParent,
+  LabeledEdit_Dragging,
+  LabeledEdit_HasParent,
+  LabeledEdit_Hide,
+  LabeledEdit_Perform,
+  LabeledEdit_Refresh,
+  LabeledEdit_ScreenToClient,
+  LabeledEdit_ParentToClient,
+  LabeledEdit_SendToBack,
+  LabeledEdit_Show,
+  LabeledEdit_GetTextBuf,
+  LabeledEdit_GetTextLen,
+  LabeledEdit_FindComponent,
+  LabeledEdit_GetNamePath,
+  LabeledEdit_Assign,
+  LabeledEdit_ClassType,
+  LabeledEdit_ClassName,
+  LabeledEdit_InstanceSize,
+  LabeledEdit_InheritsFrom,
+  LabeledEdit_Equals,
+  LabeledEdit_GetHashCode,
+  LabeledEdit_ToString,
+  LabeledEdit_GetAlignment,
+  LabeledEdit_SetAlignment,
+  LabeledEdit_GetAnchors,
+  LabeledEdit_SetAnchors,
+  LabeledEdit_GetAutoSelect,
+  LabeledEdit_SetAutoSelect,
+  LabeledEdit_GetAutoSize,
+  LabeledEdit_SetAutoSize,
+  LabeledEdit_GetBiDiMode,
+  LabeledEdit_SetBiDiMode,
+  LabeledEdit_GetBorderStyle,
+  LabeledEdit_SetBorderStyle,
+  LabeledEdit_GetCharCase,
+  LabeledEdit_SetCharCase,
+  LabeledEdit_GetColor,
+  LabeledEdit_SetColor,
+  LabeledEdit_GetDoubleBuffered,
+  LabeledEdit_SetDoubleBuffered,
+  LabeledEdit_GetDragCursor,
+  LabeledEdit_SetDragCursor,
+  LabeledEdit_GetDragMode,
+  LabeledEdit_SetDragMode,
+  LabeledEdit_GetEditLabel,
+  LabeledEdit_GetEnabled,
+  LabeledEdit_SetEnabled,
+  LabeledEdit_GetFont,
+  LabeledEdit_SetFont,
+  LabeledEdit_GetHideSelection,
+  LabeledEdit_SetHideSelection,
+  LabeledEdit_GetLabelPosition,
+  LabeledEdit_SetLabelPosition,
+  LabeledEdit_GetLabelSpacing,
+  LabeledEdit_SetLabelSpacing,
+  LabeledEdit_GetMaxLength,
+  LabeledEdit_SetMaxLength,
+  LabeledEdit_GetNumbersOnly,
+  LabeledEdit_SetNumbersOnly,
+  LabeledEdit_GetParentColor,
+  LabeledEdit_SetParentColor,
+  LabeledEdit_GetParentFont,
+  LabeledEdit_SetParentFont,
+  LabeledEdit_GetParentShowHint,
+  LabeledEdit_SetParentShowHint,
+  LabeledEdit_GetPasswordChar,
+  LabeledEdit_SetPasswordChar,
+  LabeledEdit_GetPopupMenu,
+  LabeledEdit_SetPopupMenu,
+  LabeledEdit_GetReadOnly,
+  LabeledEdit_SetReadOnly,
+  LabeledEdit_GetShowHint,
+  LabeledEdit_SetShowHint,
+  LabeledEdit_GetTabOrder,
+  LabeledEdit_SetTabOrder,
+  LabeledEdit_GetTabStop,
+  LabeledEdit_SetTabStop,
+  LabeledEdit_GetText,
+  LabeledEdit_SetText,
+  LabeledEdit_GetTextHint,
+  LabeledEdit_SetTextHint,
+  LabeledEdit_GetVisible,
+  LabeledEdit_SetVisible,
+  LabeledEdit_SetOnChange,
+  LabeledEdit_SetOnClick,
+  LabeledEdit_SetOnDblClick,
+  LabeledEdit_SetOnDragDrop,
+  LabeledEdit_SetOnDragOver,
+  LabeledEdit_SetOnEndDrag,
+  LabeledEdit_SetOnEnter,
+  LabeledEdit_SetOnExit,
+  LabeledEdit_SetOnKeyDown,
+  LabeledEdit_SetOnKeyPress,
+  LabeledEdit_SetOnKeyUp,
+  LabeledEdit_SetOnMouseDown,
+  LabeledEdit_SetOnMouseEnter,
+  LabeledEdit_SetOnMouseLeave,
+  LabeledEdit_SetOnMouseMove,
+  LabeledEdit_SetOnMouseUp,
+  LabeledEdit_GetCanUndo,
+  LabeledEdit_GetModified,
+  LabeledEdit_SetModified,
+  LabeledEdit_GetSelLength,
+  LabeledEdit_SetSelLength,
+  LabeledEdit_GetSelStart,
+  LabeledEdit_SetSelStart,
+  LabeledEdit_GetSelText,
+  LabeledEdit_SetSelText,
+  LabeledEdit_GetDockSite,
+  LabeledEdit_SetDockSite,
+  LabeledEdit_GetBrush,
+  LabeledEdit_GetControlCount,
+  LabeledEdit_GetHandle,
+  LabeledEdit_GetParentWindow,
+  LabeledEdit_SetParentWindow,
+  LabeledEdit_GetUseDockManager,
+  LabeledEdit_SetUseDockManager,
+  LabeledEdit_GetAction,
+  LabeledEdit_SetAction,
+  LabeledEdit_GetAlign,
+  LabeledEdit_SetAlign,
+  LabeledEdit_GetBoundsRect,
+  LabeledEdit_SetBoundsRect,
+  LabeledEdit_GetClientHeight,
+  LabeledEdit_SetClientHeight,
+  LabeledEdit_GetClientRect,
+  LabeledEdit_GetClientWidth,
+  LabeledEdit_SetClientWidth,
+  LabeledEdit_GetFloating,
+  LabeledEdit_GetParent,
+  LabeledEdit_SetParent,
+  LabeledEdit_GetLeft,
+  LabeledEdit_SetLeft,
+  LabeledEdit_GetTop,
+  LabeledEdit_SetTop,
+  LabeledEdit_GetWidth,
+  LabeledEdit_SetWidth,
+  LabeledEdit_GetHeight,
+  LabeledEdit_SetHeight,
+  LabeledEdit_GetCursor,
+  LabeledEdit_SetCursor,
+  LabeledEdit_GetHint,
+  LabeledEdit_SetHint,
+  LabeledEdit_GetComponentCount,
+  LabeledEdit_GetComponentIndex,
+  LabeledEdit_SetComponentIndex,
+  LabeledEdit_GetOwner,
+  LabeledEdit_GetName,
+  LabeledEdit_SetName,
+  LabeledEdit_GetTag,
+  LabeledEdit_SetTag,
+  LabeledEdit_GetControls,
+  LabeledEdit_GetComponents,
+  LabeledEdit_StaticClassType;
+

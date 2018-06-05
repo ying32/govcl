@@ -335,6 +335,36 @@ begin
   AObj.DragMode := AValue;
 end;
 
+function ToolBar_GetEdgeBorders(AObj: TToolBar): TEdgeBorders; extdecl;
+begin
+  Result :=  AObj.EdgeBorders;
+end;
+
+procedure ToolBar_SetEdgeBorders(AObj: TToolBar; AValue: TEdgeBorders); extdecl;
+begin
+  AObj.EdgeBorders := AValue;
+end;
+
+function ToolBar_GetEdgeInner(AObj: TToolBar): TEdgeStyle; extdecl;
+begin
+  Result :=  AObj.EdgeInner;
+end;
+
+procedure ToolBar_SetEdgeInner(AObj: TToolBar; AValue: TEdgeStyle); extdecl;
+begin
+  AObj.EdgeInner := AValue;
+end;
+
+function ToolBar_GetEdgeOuter(AObj: TToolBar): TEdgeStyle; extdecl;
+begin
+  Result :=  AObj.EdgeOuter;
+end;
+
+procedure ToolBar_SetEdgeOuter(AObj: TToolBar; AValue: TEdgeStyle); extdecl;
+begin
+  AObj.EdgeOuter := AValue;
+end;
+
 function ToolBar_GetEnabled(AObj: TToolBar): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -999,6 +1029,12 @@ exports
   ToolBar_SetDragKind,
   ToolBar_GetDragMode,
   ToolBar_SetDragMode,
+  ToolBar_GetEdgeBorders,
+  ToolBar_SetEdgeBorders,
+  ToolBar_GetEdgeInner,
+  ToolBar_SetEdgeInner,
+  ToolBar_GetEdgeOuter,
+  ToolBar_SetEdgeOuter,
   ToolBar_GetEnabled,
   ToolBar_SetEnabled,
   ToolBar_GetFlat,

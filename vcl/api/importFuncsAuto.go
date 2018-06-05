@@ -2375,6 +2375,15 @@ func Edit_SetBorderStyle(obj uintptr, value TBorderStyle) {
    edit_SetBorderStyle.Call(obj, uintptr(value))
 }
 
+func Edit_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := edit_GetCharCase.Call(obj)
+    return TEditCharCase(ret)
+}
+
+func Edit_SetCharCase(obj uintptr, value TEditCharCase) {
+   edit_SetCharCase.Call(obj, uintptr(value))
+}
+
 func Edit_GetColor(obj uintptr) TColor {
     ret, _, _ := edit_GetColor.Call(obj)
     return TColor(ret)
@@ -3633,6 +3642,15 @@ func Memo_GetBorderStyle(obj uintptr) TBorderStyle {
 
 func Memo_SetBorderStyle(obj uintptr, value TBorderStyle) {
    memo_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func Memo_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := memo_GetCharCase.Call(obj)
+    return TEditCharCase(ret)
+}
+
+func Memo_SetCharCase(obj uintptr, value TEditCharCase) {
+   memo_SetCharCase.Call(obj, uintptr(value))
 }
 
 func Memo_GetColor(obj uintptr) TColor {
@@ -8271,6 +8289,15 @@ func ComboBox_GetBiDiMode(obj uintptr) TBiDiMode {
 
 func ComboBox_SetBiDiMode(obj uintptr, value TBiDiMode) {
    comboBox_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func ComboBox_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := comboBox_GetCharCase.Call(obj)
+    return TEditCharCase(ret)
+}
+
+func ComboBox_SetCharCase(obj uintptr, value TEditCharCase) {
+   comboBox_SetCharCase.Call(obj, uintptr(value))
 }
 
 func ComboBox_GetColor(obj uintptr) TColor {
@@ -14039,6 +14066,15 @@ func ColorBox_GetAutoCloseUp(obj uintptr) bool {
 
 func ColorBox_SetAutoCloseUp(obj uintptr, value bool) {
    colorBox_SetAutoCloseUp.Call(obj, GoBoolToDBool(value))
+}
+
+func ColorBox_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := colorBox_GetCharCase.Call(obj)
+    return TEditCharCase(ret)
+}
+
+func ColorBox_SetCharCase(obj uintptr, value TEditCharCase) {
+   colorBox_SetCharCase.Call(obj, uintptr(value))
 }
 
 func ColorBox_GetSelText(obj uintptr) string {
@@ -28103,6 +28139,33 @@ func ToolBar_SetDrawingStyle(obj uintptr, value TTBDrawingStyle) {
    toolBar_SetDrawingStyle.Call(obj, uintptr(value))
 }
 
+func ToolBar_GetEdgeBorders(obj uintptr) TEdgeBorders {
+    ret, _, _ := toolBar_GetEdgeBorders.Call(obj)
+    return TEdgeBorders(ret)
+}
+
+func ToolBar_SetEdgeBorders(obj uintptr, value TEdgeBorders) {
+   toolBar_SetEdgeBorders.Call(obj, uintptr(value))
+}
+
+func ToolBar_GetEdgeInner(obj uintptr) TEdgeStyle {
+    ret, _, _ := toolBar_GetEdgeInner.Call(obj)
+    return TEdgeStyle(ret)
+}
+
+func ToolBar_SetEdgeInner(obj uintptr, value TEdgeStyle) {
+   toolBar_SetEdgeInner.Call(obj, uintptr(value))
+}
+
+func ToolBar_GetEdgeOuter(obj uintptr) TEdgeStyle {
+    ret, _, _ := toolBar_GetEdgeOuter.Call(obj)
+    return TEdgeStyle(ret)
+}
+
+func ToolBar_SetEdgeOuter(obj uintptr, value TEdgeStyle) {
+   toolBar_SetEdgeOuter.Call(obj, uintptr(value))
+}
+
 func ToolBar_GetEnabled(obj uintptr) bool {
     ret, _, _ := toolBar_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -28996,6 +29059,15 @@ func MaskEdit_GetBorderStyle(obj uintptr) TBorderStyle {
 
 func MaskEdit_SetBorderStyle(obj uintptr, value TBorderStyle) {
    maskEdit_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := maskEdit_GetCharCase.Call(obj)
+    return TEditCharCase(ret)
+}
+
+func MaskEdit_SetCharCase(obj uintptr, value TEditCharCase) {
+   maskEdit_SetCharCase.Call(obj, uintptr(value))
 }
 
 func MaskEdit_GetColor(obj uintptr) TColor {
@@ -31909,6 +31981,15 @@ func MenuItem_GetBitmap(obj uintptr) uintptr {
 
 func MenuItem_SetBitmap(obj uintptr, value uintptr) {
    menuItem_SetBitmap.Call(obj, value)
+}
+
+func MenuItem_GetBreak(obj uintptr) TMenuBreak {
+    ret, _, _ := menuItem_GetBreak.Call(obj)
+    return TMenuBreak(ret)
+}
+
+func MenuItem_SetBreak(obj uintptr, value TMenuBreak) {
+   menuItem_SetBreak.Call(obj, uintptr(value))
 }
 
 func MenuItem_GetCaption(obj uintptr) string {
@@ -46868,5 +46949,7687 @@ func DragDockObject_SetRightClickCancels(obj uintptr, value bool) {
 
 func DragDockObject_StaticClassType() TClass {
     r, _, _:= dragDockObject_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TStringGrid ---------------------------
+
+func StringGrid_Create(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_Create.Call(obj)
+    return ret
+}
+
+func StringGrid_Free(obj uintptr) {
+    stringGrid_Free.Call(obj)
+}
+
+func StringGrid_CellRect(obj uintptr, ACol int32, ARow int32) TRect {
+    var ret TRect
+    stringGrid_CellRect.Call(obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_MouseToCell(obj uintptr, X int32, Y int32, ACol *int32, ARow *int32)  {
+    stringGrid_MouseToCell.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
+}
+
+func StringGrid_MouseCoord(obj uintptr, X int32, Y int32) TGridCoord {
+    var ret TGridCoord
+    stringGrid_MouseCoord.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_CanFocus(obj uintptr) bool {
+    ret, _, _ := stringGrid_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_FlipChildren(obj uintptr, AllLevels bool)  {
+    stringGrid_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func StringGrid_Focused(obj uintptr) bool {
+    ret, _, _ := stringGrid_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := stringGrid_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_Invalidate(obj uintptr)  {
+    stringGrid_Invalidate.Call(obj)
+}
+
+func StringGrid_Realign(obj uintptr)  {
+    stringGrid_Realign.Call(obj)
+}
+
+func StringGrid_Repaint(obj uintptr)  {
+    stringGrid_Repaint.Call(obj)
+}
+
+func StringGrid_ScaleBy(obj uintptr, M int32, D int32)  {
+    stringGrid_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func StringGrid_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    stringGrid_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func StringGrid_SetFocus(obj uintptr)  {
+    stringGrid_SetFocus.Call(obj)
+}
+
+func StringGrid_Update(obj uintptr)  {
+    stringGrid_Update.Call(obj)
+}
+
+func StringGrid_BringToFront(obj uintptr)  {
+    stringGrid_BringToFront.Call(obj)
+}
+
+func StringGrid_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    stringGrid_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    stringGrid_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_Dragging(obj uintptr) bool {
+    ret, _, _ := stringGrid_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_HasParent(obj uintptr) bool {
+    ret, _, _ := stringGrid_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_Hide(obj uintptr)  {
+    stringGrid_Hide.Call(obj)
+}
+
+func StringGrid_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := stringGrid_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func StringGrid_Refresh(obj uintptr)  {
+    stringGrid_Refresh.Call(obj)
+}
+
+func StringGrid_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    stringGrid_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    stringGrid_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_SendToBack(obj uintptr)  {
+    stringGrid_SendToBack.Call(obj)
+}
+
+func StringGrid_Show(obj uintptr)  {
+    stringGrid_Show.Call(obj)
+}
+
+func StringGrid_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := stringGrid_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func StringGrid_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := stringGrid_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func StringGrid_GetNamePath(obj uintptr) string {
+    ret, _, _ := stringGrid_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func StringGrid_Assign(obj uintptr, Source uintptr)  {
+    stringGrid_Assign.Call(obj, Source )
+}
+
+func StringGrid_DisposeOf(obj uintptr)  {
+    stringGrid_DisposeOf.Call(obj)
+}
+
+func StringGrid_ClassType(obj uintptr) TClass {
+    ret, _, _ := stringGrid_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func StringGrid_ClassName(obj uintptr) string {
+    ret, _, _ := stringGrid_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func StringGrid_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := stringGrid_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := stringGrid_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := stringGrid_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_ToString(obj uintptr) string {
+    ret, _, _ := stringGrid_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func StringGrid_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := stringGrid_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func StringGrid_SetAlign(obj uintptr, value TAlign) {
+   stringGrid_SetAlign.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := stringGrid_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func StringGrid_SetAnchors(obj uintptr, value TAnchors) {
+   stringGrid_SetAnchors.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetBevelEdges(obj uintptr) TBevelEdges {
+    ret, _, _ := stringGrid_GetBevelEdges.Call(obj)
+    return TBevelEdges(ret)
+}
+
+func StringGrid_SetBevelEdges(obj uintptr, value TBevelEdges) {
+   stringGrid_SetBevelEdges.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetBevelInner(obj uintptr) TBevelCut {
+    ret, _, _ := stringGrid_GetBevelInner.Call(obj)
+    return TBevelCut(ret)
+}
+
+func StringGrid_SetBevelInner(obj uintptr, value TBevelCut) {
+   stringGrid_SetBevelInner.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetBevelKind(obj uintptr) TBevelKind {
+    ret, _, _ := stringGrid_GetBevelKind.Call(obj)
+    return TBevelKind(ret)
+}
+
+func StringGrid_SetBevelKind(obj uintptr, value TBevelKind) {
+   stringGrid_SetBevelKind.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetBevelOuter(obj uintptr) TBevelCut {
+    ret, _, _ := stringGrid_GetBevelOuter.Call(obj)
+    return TBevelCut(ret)
+}
+
+func StringGrid_SetBevelOuter(obj uintptr, value TBevelCut) {
+   stringGrid_SetBevelOuter.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := stringGrid_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func StringGrid_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   stringGrid_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := stringGrid_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func StringGrid_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   stringGrid_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetColor(obj uintptr, value TColor) {
+   stringGrid_SetColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetColCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetColCount.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetColCount(obj uintptr, value int32) {
+   stringGrid_SetColCount.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetDefaultColWidth(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetDefaultColWidth.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetDefaultColWidth(obj uintptr, value int32) {
+   stringGrid_SetDefaultColWidth.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetDefaultRowHeight(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetDefaultRowHeight.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetDefaultRowHeight(obj uintptr, value int32) {
+   stringGrid_SetDefaultRowHeight.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetDefaultDrawing(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetDefaultDrawing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetDefaultDrawing(obj uintptr, value bool) {
+   stringGrid_SetDefaultDrawing.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetDoubleBuffered(obj uintptr, value bool) {
+   stringGrid_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := stringGrid_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func StringGrid_SetDragCursor(obj uintptr, value TCursor) {
+   stringGrid_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := stringGrid_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func StringGrid_SetDragKind(obj uintptr, value TDragKind) {
+   stringGrid_SetDragKind.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := stringGrid_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func StringGrid_SetDragMode(obj uintptr, value TDragMode) {
+   stringGrid_SetDragMode.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetDrawingStyle(obj uintptr) TGridDrawingStyle {
+    ret, _, _ := stringGrid_GetDrawingStyle.Call(obj)
+    return TGridDrawingStyle(ret)
+}
+
+func StringGrid_SetDrawingStyle(obj uintptr, value TGridDrawingStyle) {
+   stringGrid_SetDrawingStyle.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetEnabled(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetEnabled(obj uintptr, value bool) {
+   stringGrid_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetFixedColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetFixedColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetFixedColor(obj uintptr, value TColor) {
+   stringGrid_SetFixedColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetFixedCols(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetFixedCols.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetFixedCols(obj uintptr, value int32) {
+   stringGrid_SetFixedCols.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetRowCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetRowCount.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetRowCount(obj uintptr, value int32) {
+   stringGrid_SetRowCount.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetFixedRows(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetFixedRows.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetFixedRows(obj uintptr, value int32) {
+   stringGrid_SetFixedRows.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetFont(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetFont.Call(obj)
+    return ret
+}
+
+func StringGrid_SetFont(obj uintptr, value uintptr) {
+   stringGrid_SetFont.Call(obj, value)
+}
+
+func StringGrid_GetGradientEndColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetGradientEndColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetGradientEndColor(obj uintptr, value TColor) {
+   stringGrid_SetGradientEndColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetGradientStartColor(obj uintptr) TColor {
+    ret, _, _ := stringGrid_GetGradientStartColor.Call(obj)
+    return TColor(ret)
+}
+
+func StringGrid_SetGradientStartColor(obj uintptr, value TColor) {
+   stringGrid_SetGradientStartColor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetGridLineWidth(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetGridLineWidth.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetGridLineWidth(obj uintptr, value int32) {
+   stringGrid_SetGridLineWidth.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetOptions(obj uintptr) TGridOptions {
+    ret, _, _ := stringGrid_GetOptions.Call(obj)
+    return TGridOptions(ret)
+}
+
+func StringGrid_SetOptions(obj uintptr, value TGridOptions) {
+   stringGrid_SetOptions.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetParentColor(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetParentColor(obj uintptr, value bool) {
+   stringGrid_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetParentCtl3D(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetParentCtl3D.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetParentCtl3D(obj uintptr, value bool) {
+   stringGrid_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetParentDoubleBuffered(obj uintptr, value bool) {
+   stringGrid_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetParentFont(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetParentFont(obj uintptr, value bool) {
+   stringGrid_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetParentShowHint(obj uintptr, value bool) {
+   stringGrid_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func StringGrid_SetPopupMenu(obj uintptr, value uintptr) {
+   stringGrid_SetPopupMenu.Call(obj, value)
+}
+
+func StringGrid_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := stringGrid_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func StringGrid_SetScrollBars(obj uintptr, value TScrollStyle) {
+   stringGrid_SetScrollBars.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetShowHint(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetShowHint(obj uintptr, value bool) {
+   stringGrid_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := stringGrid_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func StringGrid_SetTabOrder(obj uintptr, value uint16) {
+   stringGrid_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetVisible(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetVisible(obj uintptr, value bool) {
+   stringGrid_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := stringGrid_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func StringGrid_SetStyleElements(obj uintptr, value TStyleElements) {
+   stringGrid_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetVisibleColCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetVisibleColCount.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetVisibleRowCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetVisibleRowCount.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetOnClick(obj uintptr, fn interface{}) {
+    stringGrid_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnColumnMoved(obj uintptr, fn interface{}) {
+    stringGrid_SetOnColumnMoved.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
+    stringGrid_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnDblClick(obj uintptr, fn interface{}) {
+    stringGrid_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
+    stringGrid_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnDragOver(obj uintptr, fn interface{}) {
+    stringGrid_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
+    stringGrid_SetOnDrawCell.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnEndDock(obj uintptr, fn interface{}) {
+    stringGrid_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
+    stringGrid_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnEnter(obj uintptr, fn interface{}) {
+    stringGrid_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnExit(obj uintptr, fn interface{}) {
+    stringGrid_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
+    stringGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
+    stringGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
+    stringGrid_SetOnGetEditText.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
+    stringGrid_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
+    stringGrid_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
+    stringGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnRowMoved(obj uintptr, fn interface{}) {
+    stringGrid_SetOnRowMoved.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
+    stringGrid_SetOnSelectCell.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
+    stringGrid_SetOnSetEditText.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnStartDock(obj uintptr, fn interface{}) {
+    stringGrid_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+    stringGrid_SetOnTopLeftChanged.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_GetCanvas(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetCanvas.Call(obj)
+    return ret
+}
+
+func StringGrid_GetCol(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetCol.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetCol(obj uintptr, value int32) {
+   stringGrid_SetCol.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetEditorMode(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetEditorMode.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetEditorMode(obj uintptr, value bool) {
+   stringGrid_SetEditorMode.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetGridHeight(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetGridHeight.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetGridWidth(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetGridWidth.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetLeftCol(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetLeftCol.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetLeftCol(obj uintptr, value int32) {
+   stringGrid_SetLeftCol.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetSelection(obj uintptr) TGridRect {
+    var ret TGridRect
+    stringGrid_GetSelection.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_SetSelection(obj uintptr, value TGridRect) {
+   stringGrid_SetSelection.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func StringGrid_GetRow(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetRow.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetRow(obj uintptr, value int32) {
+   stringGrid_SetRow.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetTopRow(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetTopRow.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetTopRow(obj uintptr, value int32) {
+   stringGrid_SetTopRow.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetTabStop(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetTabStop(obj uintptr, value bool) {
+   stringGrid_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetDockSite(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetDockSite(obj uintptr, value bool) {
+   stringGrid_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetBrush.Call(obj)
+    return ret
+}
+
+func StringGrid_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetHandle(obj uintptr) HWND {
+    ret, _, _ := stringGrid_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func StringGrid_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := stringGrid_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func StringGrid_SetParentWindow(obj uintptr, value HWND) {
+   stringGrid_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetUseDockManager(obj uintptr, value bool) {
+   stringGrid_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetAction(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetAction.Call(obj)
+    return ret
+}
+
+func StringGrid_SetAction(obj uintptr, value uintptr) {
+   stringGrid_SetAction.Call(obj, value)
+}
+
+func StringGrid_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    stringGrid_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_SetBoundsRect(obj uintptr, value TRect) {
+   stringGrid_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func StringGrid_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetClientHeight(obj uintptr, value int32) {
+   stringGrid_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    stringGrid_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func StringGrid_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetClientWidth(obj uintptr, value int32) {
+   stringGrid_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetFloating(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_GetParent(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetParent.Call(obj)
+    return ret
+}
+
+func StringGrid_SetParent(obj uintptr, value uintptr) {
+   stringGrid_SetParent.Call(obj, value)
+}
+
+func StringGrid_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetAlignWithMargins(obj uintptr, value bool) {
+   stringGrid_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetLeft(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetLeft(obj uintptr, value int32) {
+   stringGrid_SetLeft.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetTop(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetTop(obj uintptr, value int32) {
+   stringGrid_SetTop.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetWidth(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetWidth(obj uintptr, value int32) {
+   stringGrid_SetWidth.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetHeight(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetHeight(obj uintptr, value int32) {
+   stringGrid_SetHeight.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := stringGrid_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func StringGrid_SetCursor(obj uintptr, value TCursor) {
+   stringGrid_SetCursor.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetHint(obj uintptr) string {
+    ret, _, _ := stringGrid_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func StringGrid_SetHint(obj uintptr, value string) {
+   stringGrid_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func StringGrid_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetMargins.Call(obj)
+    return ret
+}
+
+func StringGrid_SetMargins(obj uintptr, value uintptr) {
+   stringGrid_SetMargins.Call(obj, value)
+}
+
+func StringGrid_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetCustomHint.Call(obj)
+    return ret
+}
+
+func StringGrid_SetCustomHint(obj uintptr, value uintptr) {
+   stringGrid_SetCustomHint.Call(obj, value)
+}
+
+func StringGrid_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func StringGrid_SetComponentIndex(obj uintptr, value int32) {
+   stringGrid_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetOwner.Call(obj)
+    return ret
+}
+
+func StringGrid_GetName(obj uintptr) string {
+    ret, _, _ := stringGrid_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func StringGrid_SetName(obj uintptr, value string) {
+   stringGrid_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func StringGrid_GetTag(obj uintptr) int {
+    ret, _, _ := stringGrid_GetTag.Call(obj)
+    return int(ret)
+}
+
+func StringGrid_SetTag(obj uintptr, value int) {
+   stringGrid_SetTag.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetCells(obj uintptr, ACol int32, ARow int32) string {
+    ret, _, _ := stringGrid_GetCells.Call(obj, uintptr(ACol), uintptr(ARow))
+    return DStrToGoStr(ret)
+}
+
+func StringGrid_SetCells(obj uintptr, ACol int32, ARow int32, value string) {
+   stringGrid_SetCells.Call(obj, uintptr(ACol), uintptr(ARow), GoStrToDStr(value))
+}
+
+func StringGrid_GetCols(obj uintptr, Index int32) uintptr {
+    ret, _, _ := stringGrid_GetCols.Call(obj, uintptr(Index))
+    return ret
+}
+
+func StringGrid_SetCols(obj uintptr, Index int32, value uintptr) {
+   stringGrid_SetCols.Call(obj, uintptr(Index), value)
+}
+
+func StringGrid_GetObjects(obj uintptr, ACol int32, ARow int32) uintptr {
+    ret, _, _ := stringGrid_GetObjects.Call(obj, uintptr(ACol), uintptr(ARow))
+    return ret
+}
+
+func StringGrid_SetObjects(obj uintptr, ACol int32, ARow int32, value uintptr) {
+   stringGrid_SetObjects.Call(obj, uintptr(ACol), uintptr(ARow), value)
+}
+
+func StringGrid_GetRows(obj uintptr, Index int32) uintptr {
+    ret, _, _ := stringGrid_GetRows.Call(obj, uintptr(Index))
+    return ret
+}
+
+func StringGrid_SetRows(obj uintptr, Index int32, value uintptr) {
+   stringGrid_SetRows.Call(obj, uintptr(Index), value)
+}
+
+func StringGrid_GetColWidths(obj uintptr, Index int32) int32 {
+    ret, _, _ := stringGrid_GetColWidths.Call(obj, uintptr(Index))
+    return int32(ret)
+}
+
+func StringGrid_SetColWidths(obj uintptr, Index int32, value int32) {
+   stringGrid_SetColWidths.Call(obj, uintptr(Index), uintptr(value))
+}
+
+func StringGrid_GetRowHeights(obj uintptr, Index int32) int32 {
+    ret, _, _ := stringGrid_GetRowHeights.Call(obj, uintptr(Index))
+    return int32(ret)
+}
+
+func StringGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
+   stringGrid_SetRowHeights.Call(obj, uintptr(Index), uintptr(value))
+}
+
+func StringGrid_GetTabStops(obj uintptr, Index int32) bool {
+    ret, _, _ := stringGrid_GetTabStops.Call(obj, uintptr(Index))
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_SetTabStops(obj uintptr, Index int32, value bool) {
+   stringGrid_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
+}
+
+func StringGrid_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := stringGrid_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func StringGrid_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := stringGrid_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func StringGrid_StaticClassType() TClass {
+    r, _, _:= stringGrid_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TDrawGrid ---------------------------
+
+func DrawGrid_Create(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_Create.Call(obj)
+    return ret
+}
+
+func DrawGrid_Free(obj uintptr) {
+    drawGrid_Free.Call(obj)
+}
+
+func DrawGrid_CellRect(obj uintptr, ACol int32, ARow int32) TRect {
+    var ret TRect
+    drawGrid_CellRect.Call(obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_MouseToCell(obj uintptr, X int32, Y int32, ACol *int32, ARow *int32)  {
+    drawGrid_MouseToCell.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
+}
+
+func DrawGrid_MouseCoord(obj uintptr, X int32, Y int32) TGridCoord {
+    var ret TGridCoord
+    drawGrid_MouseCoord.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_CanFocus(obj uintptr) bool {
+    ret, _, _ := drawGrid_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_FlipChildren(obj uintptr, AllLevels bool)  {
+    drawGrid_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func DrawGrid_Focused(obj uintptr) bool {
+    ret, _, _ := drawGrid_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := drawGrid_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_Invalidate(obj uintptr)  {
+    drawGrid_Invalidate.Call(obj)
+}
+
+func DrawGrid_Realign(obj uintptr)  {
+    drawGrid_Realign.Call(obj)
+}
+
+func DrawGrid_Repaint(obj uintptr)  {
+    drawGrid_Repaint.Call(obj)
+}
+
+func DrawGrid_ScaleBy(obj uintptr, M int32, D int32)  {
+    drawGrid_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func DrawGrid_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    drawGrid_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func DrawGrid_SetFocus(obj uintptr)  {
+    drawGrid_SetFocus.Call(obj)
+}
+
+func DrawGrid_Update(obj uintptr)  {
+    drawGrid_Update.Call(obj)
+}
+
+func DrawGrid_BringToFront(obj uintptr)  {
+    drawGrid_BringToFront.Call(obj)
+}
+
+func DrawGrid_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    drawGrid_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    drawGrid_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_Dragging(obj uintptr) bool {
+    ret, _, _ := drawGrid_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_HasParent(obj uintptr) bool {
+    ret, _, _ := drawGrid_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_Hide(obj uintptr)  {
+    drawGrid_Hide.Call(obj)
+}
+
+func DrawGrid_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := drawGrid_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func DrawGrid_Refresh(obj uintptr)  {
+    drawGrid_Refresh.Call(obj)
+}
+
+func DrawGrid_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    drawGrid_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    drawGrid_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_SendToBack(obj uintptr)  {
+    drawGrid_SendToBack.Call(obj)
+}
+
+func DrawGrid_Show(obj uintptr)  {
+    drawGrid_Show.Call(obj)
+}
+
+func DrawGrid_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := drawGrid_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func DrawGrid_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := drawGrid_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func DrawGrid_GetNamePath(obj uintptr) string {
+    ret, _, _ := drawGrid_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DrawGrid_Assign(obj uintptr, Source uintptr)  {
+    drawGrid_Assign.Call(obj, Source )
+}
+
+func DrawGrid_DisposeOf(obj uintptr)  {
+    drawGrid_DisposeOf.Call(obj)
+}
+
+func DrawGrid_ClassType(obj uintptr) TClass {
+    ret, _, _ := drawGrid_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func DrawGrid_ClassName(obj uintptr) string {
+    ret, _, _ := drawGrid_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DrawGrid_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := drawGrid_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := drawGrid_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := drawGrid_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_ToString(obj uintptr) string {
+    ret, _, _ := drawGrid_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DrawGrid_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := drawGrid_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func DrawGrid_SetAlign(obj uintptr, value TAlign) {
+   drawGrid_SetAlign.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := drawGrid_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func DrawGrid_SetAnchors(obj uintptr, value TAnchors) {
+   drawGrid_SetAnchors.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetBevelEdges(obj uintptr) TBevelEdges {
+    ret, _, _ := drawGrid_GetBevelEdges.Call(obj)
+    return TBevelEdges(ret)
+}
+
+func DrawGrid_SetBevelEdges(obj uintptr, value TBevelEdges) {
+   drawGrid_SetBevelEdges.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetBevelInner(obj uintptr) TBevelCut {
+    ret, _, _ := drawGrid_GetBevelInner.Call(obj)
+    return TBevelCut(ret)
+}
+
+func DrawGrid_SetBevelInner(obj uintptr, value TBevelCut) {
+   drawGrid_SetBevelInner.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetBevelKind(obj uintptr) TBevelKind {
+    ret, _, _ := drawGrid_GetBevelKind.Call(obj)
+    return TBevelKind(ret)
+}
+
+func DrawGrid_SetBevelKind(obj uintptr, value TBevelKind) {
+   drawGrid_SetBevelKind.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetBevelOuter(obj uintptr) TBevelCut {
+    ret, _, _ := drawGrid_GetBevelOuter.Call(obj)
+    return TBevelCut(ret)
+}
+
+func DrawGrid_SetBevelOuter(obj uintptr, value TBevelCut) {
+   drawGrid_SetBevelOuter.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := drawGrid_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func DrawGrid_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   drawGrid_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := drawGrid_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func DrawGrid_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   drawGrid_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetColor(obj uintptr) TColor {
+    ret, _, _ := drawGrid_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func DrawGrid_SetColor(obj uintptr, value TColor) {
+   drawGrid_SetColor.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetColCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetColCount.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetColCount(obj uintptr, value int32) {
+   drawGrid_SetColCount.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetDefaultColWidth(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetDefaultColWidth.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetDefaultColWidth(obj uintptr, value int32) {
+   drawGrid_SetDefaultColWidth.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetDefaultRowHeight(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetDefaultRowHeight.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetDefaultRowHeight(obj uintptr, value int32) {
+   drawGrid_SetDefaultRowHeight.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetDefaultDrawing(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetDefaultDrawing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetDefaultDrawing(obj uintptr, value bool) {
+   drawGrid_SetDefaultDrawing.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetDoubleBuffered(obj uintptr, value bool) {
+   drawGrid_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := drawGrid_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func DrawGrid_SetDragCursor(obj uintptr, value TCursor) {
+   drawGrid_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := drawGrid_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func DrawGrid_SetDragKind(obj uintptr, value TDragKind) {
+   drawGrid_SetDragKind.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := drawGrid_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func DrawGrid_SetDragMode(obj uintptr, value TDragMode) {
+   drawGrid_SetDragMode.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetDrawingStyle(obj uintptr) TGridDrawingStyle {
+    ret, _, _ := drawGrid_GetDrawingStyle.Call(obj)
+    return TGridDrawingStyle(ret)
+}
+
+func DrawGrid_SetDrawingStyle(obj uintptr, value TGridDrawingStyle) {
+   drawGrid_SetDrawingStyle.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetEnabled(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetEnabled(obj uintptr, value bool) {
+   drawGrid_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetFixedColor(obj uintptr) TColor {
+    ret, _, _ := drawGrid_GetFixedColor.Call(obj)
+    return TColor(ret)
+}
+
+func DrawGrid_SetFixedColor(obj uintptr, value TColor) {
+   drawGrid_SetFixedColor.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetFixedCols(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetFixedCols.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetFixedCols(obj uintptr, value int32) {
+   drawGrid_SetFixedCols.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetRowCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetRowCount.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetRowCount(obj uintptr, value int32) {
+   drawGrid_SetRowCount.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetFixedRows(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetFixedRows.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetFixedRows(obj uintptr, value int32) {
+   drawGrid_SetFixedRows.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetFont(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetFont.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetFont(obj uintptr, value uintptr) {
+   drawGrid_SetFont.Call(obj, value)
+}
+
+func DrawGrid_GetGradientEndColor(obj uintptr) TColor {
+    ret, _, _ := drawGrid_GetGradientEndColor.Call(obj)
+    return TColor(ret)
+}
+
+func DrawGrid_SetGradientEndColor(obj uintptr, value TColor) {
+   drawGrid_SetGradientEndColor.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetGradientStartColor(obj uintptr) TColor {
+    ret, _, _ := drawGrid_GetGradientStartColor.Call(obj)
+    return TColor(ret)
+}
+
+func DrawGrid_SetGradientStartColor(obj uintptr, value TColor) {
+   drawGrid_SetGradientStartColor.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetGridLineWidth(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetGridLineWidth.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetGridLineWidth(obj uintptr, value int32) {
+   drawGrid_SetGridLineWidth.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetOptions(obj uintptr) TGridOptions {
+    ret, _, _ := drawGrid_GetOptions.Call(obj)
+    return TGridOptions(ret)
+}
+
+func DrawGrid_SetOptions(obj uintptr, value TGridOptions) {
+   drawGrid_SetOptions.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetParentColor(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetParentColor(obj uintptr, value bool) {
+   drawGrid_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetParentCtl3D(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetParentCtl3D.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetParentCtl3D(obj uintptr, value bool) {
+   drawGrid_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetParentDoubleBuffered(obj uintptr, value bool) {
+   drawGrid_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetParentFont(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetParentFont(obj uintptr, value bool) {
+   drawGrid_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetParentShowHint(obj uintptr, value bool) {
+   drawGrid_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetPopupMenu(obj uintptr, value uintptr) {
+   drawGrid_SetPopupMenu.Call(obj, value)
+}
+
+func DrawGrid_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := drawGrid_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func DrawGrid_SetScrollBars(obj uintptr, value TScrollStyle) {
+   drawGrid_SetScrollBars.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetShowHint(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetShowHint(obj uintptr, value bool) {
+   drawGrid_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := drawGrid_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func DrawGrid_SetTabOrder(obj uintptr, value uint16) {
+   drawGrid_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetVisible(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetVisible(obj uintptr, value bool) {
+   drawGrid_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := drawGrid_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func DrawGrid_SetStyleElements(obj uintptr, value TStyleElements) {
+   drawGrid_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetVisibleColCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetVisibleColCount.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetVisibleRowCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetVisibleRowCount.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetOnClick(obj uintptr, fn interface{}) {
+    drawGrid_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnColumnMoved(obj uintptr, fn interface{}) {
+    drawGrid_SetOnColumnMoved.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnContextPopup(obj uintptr, fn interface{}) {
+    drawGrid_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnDblClick(obj uintptr, fn interface{}) {
+    drawGrid_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnDragDrop(obj uintptr, fn interface{}) {
+    drawGrid_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnDragOver(obj uintptr, fn interface{}) {
+    drawGrid_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnDrawCell(obj uintptr, fn interface{}) {
+    drawGrid_SetOnDrawCell.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnEndDock(obj uintptr, fn interface{}) {
+    drawGrid_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnEndDrag(obj uintptr, fn interface{}) {
+    drawGrid_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnEnter(obj uintptr, fn interface{}) {
+    drawGrid_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnExit(obj uintptr, fn interface{}) {
+    drawGrid_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
+    drawGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
+    drawGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnGetEditText(obj uintptr, fn interface{}) {
+    drawGrid_SetOnGetEditText.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnKeyDown(obj uintptr, fn interface{}) {
+    drawGrid_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
+    drawGrid_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
+    drawGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseMove(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseUp(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnRowMoved(obj uintptr, fn interface{}) {
+    drawGrid_SetOnRowMoved.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnSelectCell(obj uintptr, fn interface{}) {
+    drawGrid_SetOnSelectCell.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnSetEditText(obj uintptr, fn interface{}) {
+    drawGrid_SetOnSetEditText.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnStartDock(obj uintptr, fn interface{}) {
+    drawGrid_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+    drawGrid_SetOnTopLeftChanged.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_GetCanvas(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetCanvas.Call(obj)
+    return ret
+}
+
+func DrawGrid_GetCol(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetCol.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetCol(obj uintptr, value int32) {
+   drawGrid_SetCol.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetEditorMode(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetEditorMode.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetEditorMode(obj uintptr, value bool) {
+   drawGrid_SetEditorMode.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetGridHeight(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetGridHeight.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetGridWidth(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetGridWidth.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetLeftCol(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetLeftCol.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetLeftCol(obj uintptr, value int32) {
+   drawGrid_SetLeftCol.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetSelection(obj uintptr) TGridRect {
+    var ret TGridRect
+    drawGrid_GetSelection.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_SetSelection(obj uintptr, value TGridRect) {
+   drawGrid_SetSelection.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DrawGrid_GetRow(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetRow.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetRow(obj uintptr, value int32) {
+   drawGrid_SetRow.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetTopRow(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetTopRow.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetTopRow(obj uintptr, value int32) {
+   drawGrid_SetTopRow.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetTabStop(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetTabStop(obj uintptr, value bool) {
+   drawGrid_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetDockSite(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetDockSite(obj uintptr, value bool) {
+   drawGrid_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetBrush.Call(obj)
+    return ret
+}
+
+func DrawGrid_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetHandle(obj uintptr) HWND {
+    ret, _, _ := drawGrid_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func DrawGrid_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := drawGrid_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func DrawGrid_SetParentWindow(obj uintptr, value HWND) {
+   drawGrid_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetUseDockManager(obj uintptr, value bool) {
+   drawGrid_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetAction(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetAction.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetAction(obj uintptr, value uintptr) {
+   drawGrid_SetAction.Call(obj, value)
+}
+
+func DrawGrid_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    drawGrid_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_SetBoundsRect(obj uintptr, value TRect) {
+   drawGrid_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func DrawGrid_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetClientHeight(obj uintptr, value int32) {
+   drawGrid_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    drawGrid_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func DrawGrid_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetClientWidth(obj uintptr, value int32) {
+   drawGrid_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetFloating(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_GetParent(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetParent.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetParent(obj uintptr, value uintptr) {
+   drawGrid_SetParent.Call(obj, value)
+}
+
+func DrawGrid_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetAlignWithMargins(obj uintptr, value bool) {
+   drawGrid_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetLeft(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetLeft(obj uintptr, value int32) {
+   drawGrid_SetLeft.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetTop(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetTop(obj uintptr, value int32) {
+   drawGrid_SetTop.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetWidth(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetWidth(obj uintptr, value int32) {
+   drawGrid_SetWidth.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetHeight(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetHeight(obj uintptr, value int32) {
+   drawGrid_SetHeight.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := drawGrid_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func DrawGrid_SetCursor(obj uintptr, value TCursor) {
+   drawGrid_SetCursor.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetHint(obj uintptr) string {
+    ret, _, _ := drawGrid_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DrawGrid_SetHint(obj uintptr, value string) {
+   drawGrid_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func DrawGrid_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetMargins.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetMargins(obj uintptr, value uintptr) {
+   drawGrid_SetMargins.Call(obj, value)
+}
+
+func DrawGrid_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetCustomHint.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetCustomHint(obj uintptr, value uintptr) {
+   drawGrid_SetCustomHint.Call(obj, value)
+}
+
+func DrawGrid_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func DrawGrid_SetComponentIndex(obj uintptr, value int32) {
+   drawGrid_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetOwner.Call(obj)
+    return ret
+}
+
+func DrawGrid_GetName(obj uintptr) string {
+    ret, _, _ := drawGrid_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func DrawGrid_SetName(obj uintptr, value string) {
+   drawGrid_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func DrawGrid_GetTag(obj uintptr) int {
+    ret, _, _ := drawGrid_GetTag.Call(obj)
+    return int(ret)
+}
+
+func DrawGrid_SetTag(obj uintptr, value int) {
+   drawGrid_SetTag.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetColWidths(obj uintptr, Index int32) int32 {
+    ret, _, _ := drawGrid_GetColWidths.Call(obj, uintptr(Index))
+    return int32(ret)
+}
+
+func DrawGrid_SetColWidths(obj uintptr, Index int32, value int32) {
+   drawGrid_SetColWidths.Call(obj, uintptr(Index), uintptr(value))
+}
+
+func DrawGrid_GetRowHeights(obj uintptr, Index int32) int32 {
+    ret, _, _ := drawGrid_GetRowHeights.Call(obj, uintptr(Index))
+    return int32(ret)
+}
+
+func DrawGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
+   drawGrid_SetRowHeights.Call(obj, uintptr(Index), uintptr(value))
+}
+
+func DrawGrid_GetTabStops(obj uintptr, Index int32) bool {
+    ret, _, _ := drawGrid_GetTabStops.Call(obj, uintptr(Index))
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_SetTabStops(obj uintptr, Index int32, value bool) {
+   drawGrid_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
+}
+
+func DrawGrid_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := drawGrid_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func DrawGrid_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := drawGrid_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func DrawGrid_StaticClassType() TClass {
+    r, _, _:= drawGrid_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TValueListEditor ---------------------------
+
+func ValueListEditor_Create(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_Create.Call(obj)
+    return ret
+}
+
+func ValueListEditor_Free(obj uintptr) {
+    valueListEditor_Free.Call(obj)
+}
+
+func ValueListEditor_Refresh(obj uintptr)  {
+    valueListEditor_Refresh.Call(obj)
+}
+
+func ValueListEditor_CellRect(obj uintptr, ACol int32, ARow int32) TRect {
+    var ret TRect
+    valueListEditor_CellRect.Call(obj, uintptr(ACol) , uintptr(ARow) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_MouseToCell(obj uintptr, X int32, Y int32, ACol *int32, ARow *int32)  {
+    valueListEditor_MouseToCell.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(ACol)), uintptr(unsafe.Pointer(ARow)))
+}
+
+func ValueListEditor_MouseCoord(obj uintptr, X int32, Y int32) TGridCoord {
+    var ret TGridCoord
+    valueListEditor_MouseCoord.Call(obj, uintptr(X) , uintptr(Y) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_CanFocus(obj uintptr) bool {
+    ret, _, _ := valueListEditor_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_FlipChildren(obj uintptr, AllLevels bool)  {
+    valueListEditor_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func ValueListEditor_Focused(obj uintptr) bool {
+    ret, _, _ := valueListEditor_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := valueListEditor_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_Invalidate(obj uintptr)  {
+    valueListEditor_Invalidate.Call(obj)
+}
+
+func ValueListEditor_Realign(obj uintptr)  {
+    valueListEditor_Realign.Call(obj)
+}
+
+func ValueListEditor_Repaint(obj uintptr)  {
+    valueListEditor_Repaint.Call(obj)
+}
+
+func ValueListEditor_ScaleBy(obj uintptr, M int32, D int32)  {
+    valueListEditor_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func ValueListEditor_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    valueListEditor_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func ValueListEditor_SetFocus(obj uintptr)  {
+    valueListEditor_SetFocus.Call(obj)
+}
+
+func ValueListEditor_Update(obj uintptr)  {
+    valueListEditor_Update.Call(obj)
+}
+
+func ValueListEditor_BringToFront(obj uintptr)  {
+    valueListEditor_BringToFront.Call(obj)
+}
+
+func ValueListEditor_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    valueListEditor_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    valueListEditor_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_Dragging(obj uintptr) bool {
+    ret, _, _ := valueListEditor_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_HasParent(obj uintptr) bool {
+    ret, _, _ := valueListEditor_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_Hide(obj uintptr)  {
+    valueListEditor_Hide.Call(obj)
+}
+
+func ValueListEditor_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := valueListEditor_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func ValueListEditor_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    valueListEditor_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    valueListEditor_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_SendToBack(obj uintptr)  {
+    valueListEditor_SendToBack.Call(obj)
+}
+
+func ValueListEditor_Show(obj uintptr)  {
+    valueListEditor_Show.Call(obj)
+}
+
+func ValueListEditor_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := valueListEditor_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func ValueListEditor_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := valueListEditor_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func ValueListEditor_GetNamePath(obj uintptr) string {
+    ret, _, _ := valueListEditor_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ValueListEditor_Assign(obj uintptr, Source uintptr)  {
+    valueListEditor_Assign.Call(obj, Source )
+}
+
+func ValueListEditor_DisposeOf(obj uintptr)  {
+    valueListEditor_DisposeOf.Call(obj)
+}
+
+func ValueListEditor_ClassType(obj uintptr) TClass {
+    ret, _, _ := valueListEditor_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func ValueListEditor_ClassName(obj uintptr) string {
+    ret, _, _ := valueListEditor_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ValueListEditor_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := valueListEditor_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := valueListEditor_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_ToString(obj uintptr) string {
+    ret, _, _ := valueListEditor_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ValueListEditor_GetColCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetColCount.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetColCount(obj uintptr, value int32) {
+   valueListEditor_SetColCount.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetRowCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetRowCount.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetVisibleColCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetVisibleColCount.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetVisibleRowCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetVisibleRowCount.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := valueListEditor_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func ValueListEditor_SetAlign(obj uintptr, value TAlign) {
+   valueListEditor_SetAlign.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := valueListEditor_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func ValueListEditor_SetAnchors(obj uintptr, value TAnchors) {
+   valueListEditor_SetAnchors.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := valueListEditor_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func ValueListEditor_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   valueListEditor_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := valueListEditor_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func ValueListEditor_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   valueListEditor_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetColor(obj uintptr) TColor {
+    ret, _, _ := valueListEditor_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func ValueListEditor_SetColor(obj uintptr, value TColor) {
+   valueListEditor_SetColor.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetDefaultColWidth(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetDefaultColWidth.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetDefaultColWidth(obj uintptr, value int32) {
+   valueListEditor_SetDefaultColWidth.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetDefaultDrawing(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetDefaultDrawing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetDefaultDrawing(obj uintptr, value bool) {
+   valueListEditor_SetDefaultDrawing.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetDefaultRowHeight(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetDefaultRowHeight.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetDefaultRowHeight(obj uintptr, value int32) {
+   valueListEditor_SetDefaultRowHeight.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetDoubleBuffered(obj uintptr, value bool) {
+   valueListEditor_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := valueListEditor_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ValueListEditor_SetDragCursor(obj uintptr, value TCursor) {
+   valueListEditor_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := valueListEditor_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ValueListEditor_SetDragKind(obj uintptr, value TDragKind) {
+   valueListEditor_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := valueListEditor_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ValueListEditor_SetDragMode(obj uintptr, value TDragMode) {
+   valueListEditor_SetDragMode.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetDrawingStyle(obj uintptr) TGridDrawingStyle {
+    ret, _, _ := valueListEditor_GetDrawingStyle.Call(obj)
+    return TGridDrawingStyle(ret)
+}
+
+func ValueListEditor_SetDrawingStyle(obj uintptr, value TGridDrawingStyle) {
+   valueListEditor_SetDrawingStyle.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetEnabled(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetEnabled(obj uintptr, value bool) {
+   valueListEditor_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetFixedColor(obj uintptr) TColor {
+    ret, _, _ := valueListEditor_GetFixedColor.Call(obj)
+    return TColor(ret)
+}
+
+func ValueListEditor_SetFixedColor(obj uintptr, value TColor) {
+   valueListEditor_SetFixedColor.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetFixedCols(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetFixedCols.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetFixedCols(obj uintptr, value int32) {
+   valueListEditor_SetFixedCols.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetFont(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetFont.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetFont(obj uintptr, value uintptr) {
+   valueListEditor_SetFont.Call(obj, value)
+}
+
+func ValueListEditor_GetGradientEndColor(obj uintptr) TColor {
+    ret, _, _ := valueListEditor_GetGradientEndColor.Call(obj)
+    return TColor(ret)
+}
+
+func ValueListEditor_SetGradientEndColor(obj uintptr, value TColor) {
+   valueListEditor_SetGradientEndColor.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetGradientStartColor(obj uintptr) TColor {
+    ret, _, _ := valueListEditor_GetGradientStartColor.Call(obj)
+    return TColor(ret)
+}
+
+func ValueListEditor_SetGradientStartColor(obj uintptr, value TColor) {
+   valueListEditor_SetGradientStartColor.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetGridLineWidth(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetGridLineWidth.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetGridLineWidth(obj uintptr, value int32) {
+   valueListEditor_SetGridLineWidth.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetOptions(obj uintptr) TGridOptions {
+    ret, _, _ := valueListEditor_GetOptions.Call(obj)
+    return TGridOptions(ret)
+}
+
+func ValueListEditor_SetOptions(obj uintptr, value TGridOptions) {
+   valueListEditor_SetOptions.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetParentColor(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetParentColor(obj uintptr, value bool) {
+   valueListEditor_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetParentCtl3D(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetParentCtl3D.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetParentCtl3D(obj uintptr, value bool) {
+   valueListEditor_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetParentDoubleBuffered(obj uintptr, value bool) {
+   valueListEditor_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetParentFont(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetParentFont(obj uintptr, value bool) {
+   valueListEditor_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetParentShowHint(obj uintptr, value bool) {
+   valueListEditor_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetPopupMenu(obj uintptr, value uintptr) {
+   valueListEditor_SetPopupMenu.Call(obj, value)
+}
+
+func ValueListEditor_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := valueListEditor_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func ValueListEditor_SetScrollBars(obj uintptr, value TScrollStyle) {
+   valueListEditor_SetScrollBars.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetShowHint(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetShowHint(obj uintptr, value bool) {
+   valueListEditor_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetStrings(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetStrings.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetStrings(obj uintptr, value uintptr) {
+   valueListEditor_SetStrings.Call(obj, value)
+}
+
+func ValueListEditor_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := valueListEditor_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func ValueListEditor_SetTabOrder(obj uintptr, value uint16) {
+   valueListEditor_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetVisible(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetVisible(obj uintptr, value bool) {
+   valueListEditor_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := valueListEditor_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func ValueListEditor_SetStyleElements(obj uintptr, value TStyleElements) {
+   valueListEditor_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_SetOnClick(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnContextPopup(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnDblClick(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnDragDrop(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnDragOver(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnDrawCell(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnDrawCell.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnEndDock(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnEndDrag(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnEnter(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnExit(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnGetEditMask(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnGetEditMask.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnGetEditText(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnGetEditText.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnKeyDown(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnKeyPress(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnKeyUp(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseDown(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseMove(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseUp(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnRowMoved(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnRowMoved.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnSelectCell(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnSelectCell.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnSetEditText(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnSetEditText.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnStartDock(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnTopLeftChanged(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnTopLeftChanged.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_GetCanvas(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetCanvas.Call(obj)
+    return ret
+}
+
+func ValueListEditor_GetCol(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetCol.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetCol(obj uintptr, value int32) {
+   valueListEditor_SetCol.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetEditorMode(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetEditorMode.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetEditorMode(obj uintptr, value bool) {
+   valueListEditor_SetEditorMode.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetGridHeight(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetGridHeight.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetGridWidth(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetGridWidth.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetLeftCol(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetLeftCol.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetLeftCol(obj uintptr, value int32) {
+   valueListEditor_SetLeftCol.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetSelection(obj uintptr) TGridRect {
+    var ret TGridRect
+    valueListEditor_GetSelection.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_SetSelection(obj uintptr, value TGridRect) {
+   valueListEditor_SetSelection.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func ValueListEditor_GetRow(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetRow.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetRow(obj uintptr, value int32) {
+   valueListEditor_SetRow.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetTopRow(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetTopRow.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetTopRow(obj uintptr, value int32) {
+   valueListEditor_SetTopRow.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetTabStop(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetTabStop(obj uintptr, value bool) {
+   valueListEditor_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetDockSite(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetDockSite(obj uintptr, value bool) {
+   valueListEditor_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetBrush.Call(obj)
+    return ret
+}
+
+func ValueListEditor_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetHandle(obj uintptr) HWND {
+    ret, _, _ := valueListEditor_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func ValueListEditor_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := valueListEditor_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func ValueListEditor_SetParentWindow(obj uintptr, value HWND) {
+   valueListEditor_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetUseDockManager(obj uintptr, value bool) {
+   valueListEditor_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetAction(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetAction.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetAction(obj uintptr, value uintptr) {
+   valueListEditor_SetAction.Call(obj, value)
+}
+
+func ValueListEditor_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    valueListEditor_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_SetBoundsRect(obj uintptr, value TRect) {
+   valueListEditor_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func ValueListEditor_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetClientHeight(obj uintptr, value int32) {
+   valueListEditor_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    valueListEditor_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ValueListEditor_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetClientWidth(obj uintptr, value int32) {
+   valueListEditor_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetFloating(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_GetParent(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetParent.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetParent(obj uintptr, value uintptr) {
+   valueListEditor_SetParent.Call(obj, value)
+}
+
+func ValueListEditor_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetAlignWithMargins(obj uintptr, value bool) {
+   valueListEditor_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetLeft(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetLeft(obj uintptr, value int32) {
+   valueListEditor_SetLeft.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetTop(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetTop(obj uintptr, value int32) {
+   valueListEditor_SetTop.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetWidth(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetWidth(obj uintptr, value int32) {
+   valueListEditor_SetWidth.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetHeight(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetHeight(obj uintptr, value int32) {
+   valueListEditor_SetHeight.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := valueListEditor_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ValueListEditor_SetCursor(obj uintptr, value TCursor) {
+   valueListEditor_SetCursor.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetHint(obj uintptr) string {
+    ret, _, _ := valueListEditor_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ValueListEditor_SetHint(obj uintptr, value string) {
+   valueListEditor_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func ValueListEditor_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetMargins.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetMargins(obj uintptr, value uintptr) {
+   valueListEditor_SetMargins.Call(obj, value)
+}
+
+func ValueListEditor_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetCustomHint.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetCustomHint(obj uintptr, value uintptr) {
+   valueListEditor_SetCustomHint.Call(obj, value)
+}
+
+func ValueListEditor_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func ValueListEditor_SetComponentIndex(obj uintptr, value int32) {
+   valueListEditor_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetOwner.Call(obj)
+    return ret
+}
+
+func ValueListEditor_GetName(obj uintptr) string {
+    ret, _, _ := valueListEditor_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ValueListEditor_SetName(obj uintptr, value string) {
+   valueListEditor_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func ValueListEditor_GetTag(obj uintptr) int {
+    ret, _, _ := valueListEditor_GetTag.Call(obj)
+    return int(ret)
+}
+
+func ValueListEditor_SetTag(obj uintptr, value int) {
+   valueListEditor_SetTag.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetCells(obj uintptr, ACol int32, ARow int32) string {
+    ret, _, _ := valueListEditor_GetCells.Call(obj, uintptr(ACol), uintptr(ARow))
+    return DStrToGoStr(ret)
+}
+
+func ValueListEditor_SetCells(obj uintptr, ACol int32, ARow int32, value string) {
+   valueListEditor_SetCells.Call(obj, uintptr(ACol), uintptr(ARow), GoStrToDStr(value))
+}
+
+func ValueListEditor_GetValues(obj uintptr, Key string) string {
+    ret, _, _ := valueListEditor_GetValues.Call(obj, GoStrToDStr(Key))
+    return DStrToGoStr(ret)
+}
+
+func ValueListEditor_SetValues(obj uintptr, Key string, value string) {
+   valueListEditor_SetValues.Call(obj, GoStrToDStr(Key), GoStrToDStr(value))
+}
+
+func ValueListEditor_GetColWidths(obj uintptr, Index int32) int32 {
+    ret, _, _ := valueListEditor_GetColWidths.Call(obj, uintptr(Index))
+    return int32(ret)
+}
+
+func ValueListEditor_SetColWidths(obj uintptr, Index int32, value int32) {
+   valueListEditor_SetColWidths.Call(obj, uintptr(Index), uintptr(value))
+}
+
+func ValueListEditor_GetRowHeights(obj uintptr, Index int32) int32 {
+    ret, _, _ := valueListEditor_GetRowHeights.Call(obj, uintptr(Index))
+    return int32(ret)
+}
+
+func ValueListEditor_SetRowHeights(obj uintptr, Index int32, value int32) {
+   valueListEditor_SetRowHeights.Call(obj, uintptr(Index), uintptr(value))
+}
+
+func ValueListEditor_GetTabStops(obj uintptr, Index int32) bool {
+    ret, _, _ := valueListEditor_GetTabStops.Call(obj, uintptr(Index))
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_SetTabStops(obj uintptr, Index int32, value bool) {
+   valueListEditor_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := valueListEditor_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func ValueListEditor_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := valueListEditor_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ValueListEditor_StaticClassType() TClass {
+    r, _, _:= valueListEditor_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- THeaderControl ---------------------------
+
+func HeaderControl_Create(obj uintptr) uintptr {
+    ret, _, _ := headerControl_Create.Call(obj)
+    return ret
+}
+
+func HeaderControl_Free(obj uintptr) {
+    headerControl_Free.Call(obj)
+}
+
+func HeaderControl_FlipChildren(obj uintptr, AllLevels bool)  {
+    headerControl_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func HeaderControl_CanFocus(obj uintptr) bool {
+    ret, _, _ := headerControl_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_Focused(obj uintptr) bool {
+    ret, _, _ := headerControl_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := headerControl_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_Invalidate(obj uintptr)  {
+    headerControl_Invalidate.Call(obj)
+}
+
+func HeaderControl_Realign(obj uintptr)  {
+    headerControl_Realign.Call(obj)
+}
+
+func HeaderControl_Repaint(obj uintptr)  {
+    headerControl_Repaint.Call(obj)
+}
+
+func HeaderControl_ScaleBy(obj uintptr, M int32, D int32)  {
+    headerControl_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func HeaderControl_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    headerControl_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func HeaderControl_SetFocus(obj uintptr)  {
+    headerControl_SetFocus.Call(obj)
+}
+
+func HeaderControl_Update(obj uintptr)  {
+    headerControl_Update.Call(obj)
+}
+
+func HeaderControl_BringToFront(obj uintptr)  {
+    headerControl_BringToFront.Call(obj)
+}
+
+func HeaderControl_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    headerControl_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HeaderControl_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    headerControl_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HeaderControl_Dragging(obj uintptr) bool {
+    ret, _, _ := headerControl_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_HasParent(obj uintptr) bool {
+    ret, _, _ := headerControl_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_Hide(obj uintptr)  {
+    headerControl_Hide.Call(obj)
+}
+
+func HeaderControl_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := headerControl_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func HeaderControl_Refresh(obj uintptr)  {
+    headerControl_Refresh.Call(obj)
+}
+
+func HeaderControl_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    headerControl_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HeaderControl_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    headerControl_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HeaderControl_SendToBack(obj uintptr)  {
+    headerControl_SendToBack.Call(obj)
+}
+
+func HeaderControl_Show(obj uintptr)  {
+    headerControl_Show.Call(obj)
+}
+
+func HeaderControl_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := headerControl_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func HeaderControl_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := headerControl_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func HeaderControl_GetNamePath(obj uintptr) string {
+    ret, _, _ := headerControl_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderControl_Assign(obj uintptr, Source uintptr)  {
+    headerControl_Assign.Call(obj, Source )
+}
+
+func HeaderControl_DisposeOf(obj uintptr)  {
+    headerControl_DisposeOf.Call(obj)
+}
+
+func HeaderControl_ClassType(obj uintptr) TClass {
+    ret, _, _ := headerControl_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func HeaderControl_ClassName(obj uintptr) string {
+    ret, _, _ := headerControl_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderControl_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := headerControl_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := headerControl_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := headerControl_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_ToString(obj uintptr) string {
+    ret, _, _ := headerControl_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderControl_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := headerControl_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func HeaderControl_SetAlign(obj uintptr, value TAlign) {
+   headerControl_SetAlign.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := headerControl_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func HeaderControl_SetAnchors(obj uintptr, value TAnchors) {
+   headerControl_SetAnchors.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := headerControl_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func HeaderControl_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   headerControl_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetBorderWidth(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetBorderWidth.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetBorderWidth(obj uintptr, value int32) {
+   headerControl_SetBorderWidth.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := headerControl_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetDoubleBuffered(obj uintptr, value bool) {
+   headerControl_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := headerControl_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func HeaderControl_SetDragCursor(obj uintptr, value TCursor) {
+   headerControl_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := headerControl_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func HeaderControl_SetDragKind(obj uintptr, value TDragKind) {
+   headerControl_SetDragKind.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := headerControl_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func HeaderControl_SetDragMode(obj uintptr, value TDragMode) {
+   headerControl_SetDragMode.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetEnabled(obj uintptr) bool {
+    ret, _, _ := headerControl_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetEnabled(obj uintptr, value bool) {
+   headerControl_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetFont(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetFont.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetFont(obj uintptr, value uintptr) {
+   headerControl_SetFont.Call(obj, value)
+}
+
+func HeaderControl_GetFullDrag(obj uintptr) bool {
+    ret, _, _ := headerControl_GetFullDrag.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetFullDrag(obj uintptr, value bool) {
+   headerControl_SetFullDrag.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetHotTrack(obj uintptr) bool {
+    ret, _, _ := headerControl_GetHotTrack.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetHotTrack(obj uintptr, value bool) {
+   headerControl_SetHotTrack.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetImages(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetImages.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetImages(obj uintptr, value uintptr) {
+   headerControl_SetImages.Call(obj, value)
+}
+
+func HeaderControl_GetShowHint(obj uintptr) bool {
+    ret, _, _ := headerControl_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetShowHint(obj uintptr, value bool) {
+   headerControl_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetStyle(obj uintptr) THeaderStyle {
+    ret, _, _ := headerControl_GetStyle.Call(obj)
+    return THeaderStyle(ret)
+}
+
+func HeaderControl_SetStyle(obj uintptr, value THeaderStyle) {
+   headerControl_SetStyle.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := headerControl_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetParentDoubleBuffered(obj uintptr, value bool) {
+   headerControl_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetParentFont(obj uintptr) bool {
+    ret, _, _ := headerControl_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetParentFont(obj uintptr, value bool) {
+   headerControl_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := headerControl_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetParentShowHint(obj uintptr, value bool) {
+   headerControl_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetPopupMenu(obj uintptr, value uintptr) {
+   headerControl_SetPopupMenu.Call(obj, value)
+}
+
+func HeaderControl_GetVisible(obj uintptr) bool {
+    ret, _, _ := headerControl_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetVisible(obj uintptr, value bool) {
+   headerControl_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := headerControl_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func HeaderControl_SetStyleElements(obj uintptr, value TStyleElements) {
+   headerControl_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func HeaderControl_SetOnContextPopup(obj uintptr, fn interface{}) {
+    headerControl_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnDragDrop(obj uintptr, fn interface{}) {
+    headerControl_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnDragOver(obj uintptr, fn interface{}) {
+    headerControl_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnEndDock(obj uintptr, fn interface{}) {
+    headerControl_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnEndDrag(obj uintptr, fn interface{}) {
+    headerControl_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnMouseDown(obj uintptr, fn interface{}) {
+    headerControl_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    headerControl_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    headerControl_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnMouseMove(obj uintptr, fn interface{}) {
+    headerControl_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnMouseUp(obj uintptr, fn interface{}) {
+    headerControl_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnResize(obj uintptr, fn interface{}) {
+    headerControl_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnDrawSection(obj uintptr, fn interface{}) {
+    headerControl_SetOnDrawSection.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnSectionClick(obj uintptr, fn interface{}) {
+    headerControl_SetOnSectionClick.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnSectionResize(obj uintptr, fn interface{}) {
+    headerControl_SetOnSectionResize.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnSectionTrack(obj uintptr, fn interface{}) {
+    headerControl_SetOnSectionTrack.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnSectionDrag(obj uintptr, fn interface{}) {
+    headerControl_SetOnSectionDrag.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnSectionEndDrag(obj uintptr, fn interface{}) {
+    headerControl_SetOnSectionEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnStartDock(obj uintptr, fn interface{}) {
+    headerControl_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_GetCanvas(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetCanvas.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetOnSectionCheck(obj uintptr, fn interface{}) {
+    headerControl_SetOnSectionCheck.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_GetDockSite(obj uintptr) bool {
+    ret, _, _ := headerControl_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetDockSite(obj uintptr, value bool) {
+   headerControl_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetBrush.Call(obj)
+    return ret
+}
+
+func HeaderControl_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_GetHandle(obj uintptr) HWND {
+    ret, _, _ := headerControl_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func HeaderControl_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := headerControl_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func HeaderControl_SetParentWindow(obj uintptr, value HWND) {
+   headerControl_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := headerControl_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func HeaderControl_SetTabOrder(obj uintptr, value uint16) {
+   headerControl_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetTabStop(obj uintptr) bool {
+    ret, _, _ := headerControl_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetTabStop(obj uintptr, value bool) {
+   headerControl_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := headerControl_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetUseDockManager(obj uintptr, value bool) {
+   headerControl_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetAction(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetAction.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetAction(obj uintptr, value uintptr) {
+   headerControl_SetAction.Call(obj, value)
+}
+
+func HeaderControl_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    headerControl_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HeaderControl_SetBoundsRect(obj uintptr, value TRect) {
+   headerControl_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func HeaderControl_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetClientHeight(obj uintptr, value int32) {
+   headerControl_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    headerControl_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func HeaderControl_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetClientWidth(obj uintptr, value int32) {
+   headerControl_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_GetFloating(obj uintptr) bool {
+    ret, _, _ := headerControl_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_GetParent(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetParent.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetParent(obj uintptr, value uintptr) {
+   headerControl_SetParent.Call(obj, value)
+}
+
+func HeaderControl_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := headerControl_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_SetAlignWithMargins(obj uintptr, value bool) {
+   headerControl_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetLeft(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetLeft(obj uintptr, value int32) {
+   headerControl_SetLeft.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetTop(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetTop(obj uintptr, value int32) {
+   headerControl_SetTop.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetWidth(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetWidth(obj uintptr, value int32) {
+   headerControl_SetWidth.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetHeight(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetHeight(obj uintptr, value int32) {
+   headerControl_SetHeight.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := headerControl_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func HeaderControl_SetCursor(obj uintptr, value TCursor) {
+   headerControl_SetCursor.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetHint(obj uintptr) string {
+    ret, _, _ := headerControl_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderControl_SetHint(obj uintptr, value string) {
+   headerControl_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func HeaderControl_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetMargins.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetMargins(obj uintptr, value uintptr) {
+   headerControl_SetMargins.Call(obj, value)
+}
+
+func HeaderControl_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetCustomHint.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetCustomHint(obj uintptr, value uintptr) {
+   headerControl_SetCustomHint.Call(obj, value)
+}
+
+func HeaderControl_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func HeaderControl_SetComponentIndex(obj uintptr, value int32) {
+   headerControl_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetOwner.Call(obj)
+    return ret
+}
+
+func HeaderControl_GetName(obj uintptr) string {
+    ret, _, _ := headerControl_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderControl_SetName(obj uintptr, value string) {
+   headerControl_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func HeaderControl_GetTag(obj uintptr) int {
+    ret, _, _ := headerControl_GetTag.Call(obj)
+    return int(ret)
+}
+
+func HeaderControl_SetTag(obj uintptr, value int) {
+   headerControl_SetTag.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := headerControl_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func HeaderControl_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := headerControl_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func HeaderControl_StaticClassType() TClass {
+    r, _, _:= headerControl_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- THeaderSection ---------------------------
+
+func HeaderSection_Create() uintptr {
+    ret, _, _ := headerSection_Create.Call()
+    return ret
+}
+
+func HeaderSection_Free(obj uintptr) {
+    headerSection_Free.Call(obj)
+}
+
+func HeaderSection_Assign(obj uintptr, Source uintptr)  {
+    headerSection_Assign.Call(obj, Source )
+}
+
+func HeaderSection_GetNamePath(obj uintptr) string {
+    ret, _, _ := headerSection_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderSection_DisposeOf(obj uintptr)  {
+    headerSection_DisposeOf.Call(obj)
+}
+
+func HeaderSection_ClassType(obj uintptr) TClass {
+    ret, _, _ := headerSection_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func HeaderSection_ClassName(obj uintptr) string {
+    ret, _, _ := headerSection_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderSection_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := headerSection_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := headerSection_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSection_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := headerSection_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSection_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_ToString(obj uintptr) string {
+    ret, _, _ := headerSection_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderSection_GetLeft(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_GetRight(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetRight.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := headerSection_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func HeaderSection_SetAlignment(obj uintptr, value TAlignment) {
+   headerSection_SetAlignment.Call(obj, uintptr(value))
+}
+
+func HeaderSection_GetAllowClick(obj uintptr) bool {
+    ret, _, _ := headerSection_GetAllowClick.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSection_SetAllowClick(obj uintptr, value bool) {
+   headerSection_SetAllowClick.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderSection_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := headerSection_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSection_SetAutoSize(obj uintptr, value bool) {
+   headerSection_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderSection_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := headerSection_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func HeaderSection_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   headerSection_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func HeaderSection_GetCheckBox(obj uintptr) bool {
+    ret, _, _ := headerSection_GetCheckBox.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSection_SetCheckBox(obj uintptr, value bool) {
+   headerSection_SetCheckBox.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderSection_GetChecked(obj uintptr) bool {
+    ret, _, _ := headerSection_GetChecked.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSection_SetChecked(obj uintptr, value bool) {
+   headerSection_SetChecked.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderSection_GetFixedWidth(obj uintptr) bool {
+    ret, _, _ := headerSection_GetFixedWidth.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSection_SetFixedWidth(obj uintptr, value bool) {
+   headerSection_SetFixedWidth.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderSection_GetImageIndex(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetImageIndex.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_SetImageIndex(obj uintptr, value int32) {
+   headerSection_SetImageIndex.Call(obj, uintptr(value))
+}
+
+func HeaderSection_GetMaxWidth(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetMaxWidth.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_SetMaxWidth(obj uintptr, value int32) {
+   headerSection_SetMaxWidth.Call(obj, uintptr(value))
+}
+
+func HeaderSection_GetMinWidth(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetMinWidth.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_SetMinWidth(obj uintptr, value int32) {
+   headerSection_SetMinWidth.Call(obj, uintptr(value))
+}
+
+func HeaderSection_GetStyle(obj uintptr) THeaderSectionStyle {
+    ret, _, _ := headerSection_GetStyle.Call(obj)
+    return THeaderSectionStyle(ret)
+}
+
+func HeaderSection_SetStyle(obj uintptr, value THeaderSectionStyle) {
+   headerSection_SetStyle.Call(obj, uintptr(value))
+}
+
+func HeaderSection_GetText(obj uintptr) string {
+    ret, _, _ := headerSection_GetText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderSection_SetText(obj uintptr, value string) {
+   headerSection_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func HeaderSection_GetWidth(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_SetWidth(obj uintptr, value int32) {
+   headerSection_SetWidth.Call(obj, uintptr(value))
+}
+
+func HeaderSection_GetIndex(obj uintptr) int32 {
+    ret, _, _ := headerSection_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSection_SetIndex(obj uintptr, value int32) {
+   headerSection_SetIndex.Call(obj, uintptr(value))
+}
+
+func HeaderSection_StaticClassType() TClass {
+    r, _, _:= headerSection_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- THeaderSections ---------------------------
+
+func HeaderSections_Create() uintptr {
+    ret, _, _ := headerSections_Create.Call()
+    return ret
+}
+
+func HeaderSections_Free(obj uintptr) {
+    headerSections_Free.Call(obj)
+}
+
+func HeaderSections_Add(obj uintptr) uintptr {
+    ret, _, _ := headerSections_Add.Call(obj)
+    return ret
+}
+
+func HeaderSections_AddItem(obj uintptr, Item uintptr, Index int32) uintptr {
+    ret, _, _ := headerSections_AddItem.Call(obj, Item , uintptr(Index) )
+    return ret
+}
+
+func HeaderSections_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := headerSections_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func HeaderSections_Owner(obj uintptr) uintptr {
+    ret, _, _ := headerSections_Owner.Call(obj)
+    return ret
+}
+
+func HeaderSections_Assign(obj uintptr, Source uintptr)  {
+    headerSections_Assign.Call(obj, Source )
+}
+
+func HeaderSections_BeginUpdate(obj uintptr)  {
+    headerSections_BeginUpdate.Call(obj)
+}
+
+func HeaderSections_Clear(obj uintptr)  {
+    headerSections_Clear.Call(obj)
+}
+
+func HeaderSections_Delete(obj uintptr, Index int32)  {
+    headerSections_Delete.Call(obj, uintptr(Index) )
+}
+
+func HeaderSections_EndUpdate(obj uintptr)  {
+    headerSections_EndUpdate.Call(obj)
+}
+
+func HeaderSections_GetNamePath(obj uintptr) string {
+    ret, _, _ := headerSections_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderSections_DisposeOf(obj uintptr)  {
+    headerSections_DisposeOf.Call(obj)
+}
+
+func HeaderSections_ClassType(obj uintptr) TClass {
+    ret, _, _ := headerSections_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func HeaderSections_ClassName(obj uintptr) string {
+    ret, _, _ := headerSections_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderSections_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := headerSections_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSections_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := headerSections_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSections_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := headerSections_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func HeaderSections_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := headerSections_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSections_ToString(obj uintptr) string {
+    ret, _, _ := headerSections_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func HeaderSections_GetCapacity(obj uintptr) int32 {
+    ret, _, _ := headerSections_GetCapacity.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSections_SetCapacity(obj uintptr, value int32) {
+   headerSections_SetCapacity.Call(obj, uintptr(value))
+}
+
+func HeaderSections_GetCount(obj uintptr) int32 {
+    ret, _, _ := headerSections_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func HeaderSections_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := headerSections_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func HeaderSections_SetItems(obj uintptr, Index int32, value uintptr) {
+   headerSections_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func HeaderSections_StaticClassType() TClass {
+    r, _, _:= headerSections_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TLabeledEdit ---------------------------
+
+func LabeledEdit_Create(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_Create.Call(obj)
+    return ret
+}
+
+func LabeledEdit_Free(obj uintptr) {
+    labeledEdit_Free.Call(obj)
+}
+
+func LabeledEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    labeledEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func LabeledEdit_SetupInternalLabel(obj uintptr)  {
+    labeledEdit_SetupInternalLabel.Call(obj)
+}
+
+func LabeledEdit_Clear(obj uintptr)  {
+    labeledEdit_Clear.Call(obj)
+}
+
+func LabeledEdit_ClearSelection(obj uintptr)  {
+    labeledEdit_ClearSelection.Call(obj)
+}
+
+func LabeledEdit_CopyToClipboard(obj uintptr)  {
+    labeledEdit_CopyToClipboard.Call(obj)
+}
+
+func LabeledEdit_CutToClipboard(obj uintptr)  {
+    labeledEdit_CutToClipboard.Call(obj)
+}
+
+func LabeledEdit_PasteFromClipboard(obj uintptr)  {
+    labeledEdit_PasteFromClipboard.Call(obj)
+}
+
+func LabeledEdit_Undo(obj uintptr)  {
+    labeledEdit_Undo.Call(obj)
+}
+
+func LabeledEdit_ClearUndo(obj uintptr)  {
+    labeledEdit_ClearUndo.Call(obj)
+}
+
+func LabeledEdit_SelectAll(obj uintptr)  {
+    labeledEdit_SelectAll.Call(obj)
+}
+
+func LabeledEdit_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := labeledEdit_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func LabeledEdit_CanFocus(obj uintptr) bool {
+    ret, _, _ := labeledEdit_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_FlipChildren(obj uintptr, AllLevels bool)  {
+    labeledEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func LabeledEdit_Focused(obj uintptr) bool {
+    ret, _, _ := labeledEdit_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := labeledEdit_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_Invalidate(obj uintptr)  {
+    labeledEdit_Invalidate.Call(obj)
+}
+
+func LabeledEdit_Realign(obj uintptr)  {
+    labeledEdit_Realign.Call(obj)
+}
+
+func LabeledEdit_Repaint(obj uintptr)  {
+    labeledEdit_Repaint.Call(obj)
+}
+
+func LabeledEdit_ScaleBy(obj uintptr, M int32, D int32)  {
+    labeledEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func LabeledEdit_SetFocus(obj uintptr)  {
+    labeledEdit_SetFocus.Call(obj)
+}
+
+func LabeledEdit_Update(obj uintptr)  {
+    labeledEdit_Update.Call(obj)
+}
+
+func LabeledEdit_BringToFront(obj uintptr)  {
+    labeledEdit_BringToFront.Call(obj)
+}
+
+func LabeledEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    labeledEdit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LabeledEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    labeledEdit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LabeledEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := labeledEdit_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_HasParent(obj uintptr) bool {
+    ret, _, _ := labeledEdit_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_Hide(obj uintptr)  {
+    labeledEdit_Hide.Call(obj)
+}
+
+func LabeledEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := labeledEdit_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func LabeledEdit_Refresh(obj uintptr)  {
+    labeledEdit_Refresh.Call(obj)
+}
+
+func LabeledEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    labeledEdit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LabeledEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    labeledEdit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LabeledEdit_SendToBack(obj uintptr)  {
+    labeledEdit_SendToBack.Call(obj)
+}
+
+func LabeledEdit_Show(obj uintptr)  {
+    labeledEdit_Show.Call(obj)
+}
+
+func LabeledEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := labeledEdit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func LabeledEdit_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := labeledEdit_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func LabeledEdit_GetNamePath(obj uintptr) string {
+    ret, _, _ := labeledEdit_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_Assign(obj uintptr, Source uintptr)  {
+    labeledEdit_Assign.Call(obj, Source )
+}
+
+func LabeledEdit_DisposeOf(obj uintptr)  {
+    labeledEdit_DisposeOf.Call(obj)
+}
+
+func LabeledEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := labeledEdit_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func LabeledEdit_ClassName(obj uintptr) string {
+    ret, _, _ := labeledEdit_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := labeledEdit_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := labeledEdit_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_ToString(obj uintptr) string {
+    ret, _, _ := labeledEdit_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := labeledEdit_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func LabeledEdit_SetAlignment(obj uintptr, value TAlignment) {
+   labeledEdit_SetAlignment.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := labeledEdit_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func LabeledEdit_SetAnchors(obj uintptr, value TAnchors) {
+   labeledEdit_SetAnchors.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetAutoSelect(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetAutoSelect.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetAutoSelect(obj uintptr, value bool) {
+   labeledEdit_SetAutoSelect.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetAutoSize(obj uintptr, value bool) {
+   labeledEdit_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetBevelEdges(obj uintptr) TBevelEdges {
+    ret, _, _ := labeledEdit_GetBevelEdges.Call(obj)
+    return TBevelEdges(ret)
+}
+
+func LabeledEdit_SetBevelEdges(obj uintptr, value TBevelEdges) {
+   labeledEdit_SetBevelEdges.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetBevelInner(obj uintptr) TBevelCut {
+    ret, _, _ := labeledEdit_GetBevelInner.Call(obj)
+    return TBevelCut(ret)
+}
+
+func LabeledEdit_SetBevelInner(obj uintptr, value TBevelCut) {
+   labeledEdit_SetBevelInner.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetBevelKind(obj uintptr) TBevelKind {
+    ret, _, _ := labeledEdit_GetBevelKind.Call(obj)
+    return TBevelKind(ret)
+}
+
+func LabeledEdit_SetBevelKind(obj uintptr, value TBevelKind) {
+   labeledEdit_SetBevelKind.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetBevelOuter(obj uintptr) TBevelCut {
+    ret, _, _ := labeledEdit_GetBevelOuter.Call(obj)
+    return TBevelCut(ret)
+}
+
+func LabeledEdit_SetBevelOuter(obj uintptr, value TBevelCut) {
+   labeledEdit_SetBevelOuter.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := labeledEdit_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func LabeledEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   labeledEdit_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := labeledEdit_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func LabeledEdit_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   labeledEdit_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := labeledEdit_GetCharCase.Call(obj)
+    return TEditCharCase(ret)
+}
+
+func LabeledEdit_SetCharCase(obj uintptr, value TEditCharCase) {
+   labeledEdit_SetCharCase.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetColor(obj uintptr) TColor {
+    ret, _, _ := labeledEdit_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func LabeledEdit_SetColor(obj uintptr, value TColor) {
+   labeledEdit_SetColor.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetDoubleBuffered(obj uintptr, value bool) {
+   labeledEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := labeledEdit_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func LabeledEdit_SetDragCursor(obj uintptr, value TCursor) {
+   labeledEdit_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := labeledEdit_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func LabeledEdit_SetDragKind(obj uintptr, value TDragKind) {
+   labeledEdit_SetDragKind.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := labeledEdit_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func LabeledEdit_SetDragMode(obj uintptr, value TDragMode) {
+   labeledEdit_SetDragMode.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetEditLabel(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetEditLabel.Call(obj)
+    return ret
+}
+
+func LabeledEdit_GetEnabled(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetEnabled(obj uintptr, value bool) {
+   labeledEdit_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetFont(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetFont.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetFont(obj uintptr, value uintptr) {
+   labeledEdit_SetFont.Call(obj, value)
+}
+
+func LabeledEdit_GetHideSelection(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetHideSelection.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetHideSelection(obj uintptr, value bool) {
+   labeledEdit_SetHideSelection.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetLabelPosition(obj uintptr) TLabelPosition {
+    ret, _, _ := labeledEdit_GetLabelPosition.Call(obj)
+    return TLabelPosition(ret)
+}
+
+func LabeledEdit_SetLabelPosition(obj uintptr, value TLabelPosition) {
+   labeledEdit_SetLabelPosition.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetLabelSpacing(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetLabelSpacing.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetLabelSpacing(obj uintptr, value int32) {
+   labeledEdit_SetLabelSpacing.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetMaxLength(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetMaxLength.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetMaxLength(obj uintptr, value int32) {
+   labeledEdit_SetMaxLength.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetNumbersOnly(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetNumbersOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetNumbersOnly(obj uintptr, value bool) {
+   labeledEdit_SetNumbersOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetParentColor(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetParentColor(obj uintptr, value bool) {
+   labeledEdit_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetParentCtl3D(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetParentCtl3D.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetParentCtl3D(obj uintptr, value bool) {
+   labeledEdit_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+   labeledEdit_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetParentFont(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetParentFont(obj uintptr, value bool) {
+   labeledEdit_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetParentShowHint(obj uintptr, value bool) {
+   labeledEdit_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetPasswordChar(obj uintptr) uint16 {
+    ret, _, _ := labeledEdit_GetPasswordChar.Call(obj)
+    return uint16(ret)
+}
+
+func LabeledEdit_SetPasswordChar(obj uintptr, value uint16) {
+   labeledEdit_SetPasswordChar.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetPopupMenu(obj uintptr, value uintptr) {
+   labeledEdit_SetPopupMenu.Call(obj, value)
+}
+
+func LabeledEdit_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetReadOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetReadOnly(obj uintptr, value bool) {
+   labeledEdit_SetReadOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetShowHint(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetShowHint(obj uintptr, value bool) {
+   labeledEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := labeledEdit_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func LabeledEdit_SetTabOrder(obj uintptr, value uint16) {
+   labeledEdit_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetTabStop(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetTabStop(obj uintptr, value bool) {
+   labeledEdit_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetText(obj uintptr) string {
+    ret, _, _ := labeledEdit_GetText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_SetText(obj uintptr, value string) {
+   labeledEdit_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func LabeledEdit_GetTextHint(obj uintptr) string {
+    ret, _, _ := labeledEdit_GetTextHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_SetTextHint(obj uintptr, value string) {
+   labeledEdit_SetTextHint.Call(obj, GoStrToDStr(value))
+}
+
+func LabeledEdit_GetVisible(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetVisible(obj uintptr, value bool) {
+   labeledEdit_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := labeledEdit_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func LabeledEdit_SetStyleElements(obj uintptr, value TStyleElements) {
+   labeledEdit_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_SetOnChange(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnClick(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnContextPopup(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnDblClick(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnEndDock(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnEnter(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnExit(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnStartDock(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_GetCanUndo(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetCanUndo.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_GetModified(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetModified.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetModified(obj uintptr, value bool) {
+   labeledEdit_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetSelLength(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetSelLength.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetSelLength(obj uintptr, value int32) {
+   labeledEdit_SetSelLength.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetSelStart(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetSelStart.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetSelStart(obj uintptr, value int32) {
+   labeledEdit_SetSelStart.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetSelText(obj uintptr) string {
+    ret, _, _ := labeledEdit_GetSelText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_SetSelText(obj uintptr, value string) {
+   labeledEdit_SetSelText.Call(obj, GoStrToDStr(value))
+}
+
+func LabeledEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetDockSite(obj uintptr, value bool) {
+   labeledEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetBrush.Call(obj)
+    return ret
+}
+
+func LabeledEdit_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_GetHandle(obj uintptr) HWND {
+    ret, _, _ := labeledEdit_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func LabeledEdit_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := labeledEdit_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func LabeledEdit_SetParentWindow(obj uintptr, value HWND) {
+   labeledEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetUseDockManager(obj uintptr, value bool) {
+   labeledEdit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetAction(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetAction.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetAction(obj uintptr, value uintptr) {
+   labeledEdit_SetAction.Call(obj, value)
+}
+
+func LabeledEdit_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := labeledEdit_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func LabeledEdit_SetAlign(obj uintptr, value TAlign) {
+   labeledEdit_SetAlign.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    labeledEdit_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LabeledEdit_SetBoundsRect(obj uintptr, value TRect) {
+   labeledEdit_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func LabeledEdit_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetClientHeight(obj uintptr, value int32) {
+   labeledEdit_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    labeledEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func LabeledEdit_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetClientWidth(obj uintptr, value int32) {
+   labeledEdit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_GetParent(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetParent.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetParent(obj uintptr, value uintptr) {
+   labeledEdit_SetParent.Call(obj, value)
+}
+
+func LabeledEdit_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_SetAlignWithMargins(obj uintptr, value bool) {
+   labeledEdit_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetLeft(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetLeft(obj uintptr, value int32) {
+   labeledEdit_SetLeft.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetTop(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetTop(obj uintptr, value int32) {
+   labeledEdit_SetTop.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetWidth(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetWidth(obj uintptr, value int32) {
+   labeledEdit_SetWidth.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetHeight(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetHeight(obj uintptr, value int32) {
+   labeledEdit_SetHeight.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := labeledEdit_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func LabeledEdit_SetCursor(obj uintptr, value TCursor) {
+   labeledEdit_SetCursor.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetHint(obj uintptr) string {
+    ret, _, _ := labeledEdit_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_SetHint(obj uintptr, value string) {
+   labeledEdit_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func LabeledEdit_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetMargins.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetMargins(obj uintptr, value uintptr) {
+   labeledEdit_SetMargins.Call(obj, value)
+}
+
+func LabeledEdit_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetCustomHint.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetCustomHint(obj uintptr, value uintptr) {
+   labeledEdit_SetCustomHint.Call(obj, value)
+}
+
+func LabeledEdit_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func LabeledEdit_SetComponentIndex(obj uintptr, value int32) {
+   labeledEdit_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetOwner.Call(obj)
+    return ret
+}
+
+func LabeledEdit_GetName(obj uintptr) string {
+    ret, _, _ := labeledEdit_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func LabeledEdit_SetName(obj uintptr, value string) {
+   labeledEdit_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func LabeledEdit_GetTag(obj uintptr) int {
+    ret, _, _ := labeledEdit_GetTag.Call(obj)
+    return int(ret)
+}
+
+func LabeledEdit_SetTag(obj uintptr, value int) {
+   labeledEdit_SetTag.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := labeledEdit_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func LabeledEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := labeledEdit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func LabeledEdit_StaticClassType() TClass {
+    r, _, _:= labeledEdit_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TBoundLabel ---------------------------
+
+func BoundLabel_Create(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_Create.Call(obj)
+    return ret
+}
+
+func BoundLabel_Free(obj uintptr) {
+    boundLabel_Free.Call(obj)
+}
+
+func BoundLabel_BringToFront(obj uintptr)  {
+    boundLabel_BringToFront.Call(obj)
+}
+
+func BoundLabel_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    boundLabel_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BoundLabel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    boundLabel_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BoundLabel_Dragging(obj uintptr) bool {
+    ret, _, _ := boundLabel_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_HasParent(obj uintptr) bool {
+    ret, _, _ := boundLabel_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_Hide(obj uintptr)  {
+    boundLabel_Hide.Call(obj)
+}
+
+func BoundLabel_Invalidate(obj uintptr)  {
+    boundLabel_Invalidate.Call(obj)
+}
+
+func BoundLabel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := boundLabel_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func BoundLabel_Refresh(obj uintptr)  {
+    boundLabel_Refresh.Call(obj)
+}
+
+func BoundLabel_Repaint(obj uintptr)  {
+    boundLabel_Repaint.Call(obj)
+}
+
+func BoundLabel_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    boundLabel_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BoundLabel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    boundLabel_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BoundLabel_SendToBack(obj uintptr)  {
+    boundLabel_SendToBack.Call(obj)
+}
+
+func BoundLabel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    boundLabel_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func BoundLabel_Show(obj uintptr)  {
+    boundLabel_Show.Call(obj)
+}
+
+func BoundLabel_Update(obj uintptr)  {
+    boundLabel_Update.Call(obj)
+}
+
+func BoundLabel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := boundLabel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func BoundLabel_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := boundLabel_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func BoundLabel_GetNamePath(obj uintptr) string {
+    ret, _, _ := boundLabel_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func BoundLabel_Assign(obj uintptr, Source uintptr)  {
+    boundLabel_Assign.Call(obj, Source )
+}
+
+func BoundLabel_DisposeOf(obj uintptr)  {
+    boundLabel_DisposeOf.Call(obj)
+}
+
+func BoundLabel_ClassType(obj uintptr) TClass {
+    ret, _, _ := boundLabel_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func BoundLabel_ClassName(obj uintptr) string {
+    ret, _, _ := boundLabel_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func BoundLabel_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := boundLabel_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := boundLabel_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := boundLabel_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_ToString(obj uintptr) string {
+    ret, _, _ := boundLabel_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func BoundLabel_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := boundLabel_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func BoundLabel_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   boundLabel_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetCaption(obj uintptr) string {
+    ret, _, _ := boundLabel_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func BoundLabel_SetCaption(obj uintptr, value string) {
+   boundLabel_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func BoundLabel_GetColor(obj uintptr) TColor {
+    ret, _, _ := boundLabel_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func BoundLabel_SetColor(obj uintptr, value TColor) {
+   boundLabel_SetColor.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := boundLabel_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func BoundLabel_SetDragCursor(obj uintptr, value TCursor) {
+   boundLabel_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := boundLabel_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func BoundLabel_SetDragKind(obj uintptr, value TDragKind) {
+   boundLabel_SetDragKind.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := boundLabel_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func BoundLabel_SetDragMode(obj uintptr, value TDragMode) {
+   boundLabel_SetDragMode.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetFont(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetFont.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetFont(obj uintptr, value uintptr) {
+   boundLabel_SetFont.Call(obj, value)
+}
+
+func BoundLabel_GetHeight(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_SetHeight(obj uintptr, value int32) {
+   boundLabel_SetHeight.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetLeft(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_GetParentColor(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetParentColor(obj uintptr, value bool) {
+   boundLabel_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetParentFont(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetParentFont(obj uintptr, value bool) {
+   boundLabel_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetParentShowHint(obj uintptr, value bool) {
+   boundLabel_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetPopupMenu(obj uintptr, value uintptr) {
+   boundLabel_SetPopupMenu.Call(obj, value)
+}
+
+func BoundLabel_GetShowAccelChar(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetShowAccelChar.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetShowAccelChar(obj uintptr, value bool) {
+   boundLabel_SetShowAccelChar.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetShowHint(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetShowHint(obj uintptr, value bool) {
+   boundLabel_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetTop(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_GetTransparent(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetTransparent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetTransparent(obj uintptr, value bool) {
+   boundLabel_SetTransparent.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetLayout(obj uintptr) TTextLayout {
+    ret, _, _ := boundLabel_GetLayout.Call(obj)
+    return TTextLayout(ret)
+}
+
+func BoundLabel_SetLayout(obj uintptr, value TTextLayout) {
+   boundLabel_SetLayout.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetWordWrap(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetWordWrap.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetWordWrap(obj uintptr, value bool) {
+   boundLabel_SetWordWrap.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetWidth(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_SetWidth(obj uintptr, value int32) {
+   boundLabel_SetWidth.Call(obj, uintptr(value))
+}
+
+func BoundLabel_SetOnClick(obj uintptr, fn interface{}) {
+    boundLabel_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnContextPopup(obj uintptr, fn interface{}) {
+    boundLabel_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnDblClick(obj uintptr, fn interface{}) {
+    boundLabel_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnDragDrop(obj uintptr, fn interface{}) {
+    boundLabel_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnDragOver(obj uintptr, fn interface{}) {
+    boundLabel_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnEndDock(obj uintptr, fn interface{}) {
+    boundLabel_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
+    boundLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
+    boundLabel_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnMouseMove(obj uintptr, fn interface{}) {
+    boundLabel_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
+    boundLabel_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnStartDock(obj uintptr, fn interface{}) {
+    boundLabel_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_GetCanvas(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetCanvas.Call(obj)
+    return ret
+}
+
+func BoundLabel_GetGlowSize(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetGlowSize.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_SetGlowSize(obj uintptr, value int32) {
+   boundLabel_SetGlowSize.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetEnabled(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetEnabled(obj uintptr, value bool) {
+   boundLabel_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetAction(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetAction.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetAction(obj uintptr, value uintptr) {
+   boundLabel_SetAction.Call(obj, value)
+}
+
+func BoundLabel_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := boundLabel_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func BoundLabel_SetAlign(obj uintptr, value TAlign) {
+   boundLabel_SetAlign.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := boundLabel_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func BoundLabel_SetAnchors(obj uintptr, value TAnchors) {
+   boundLabel_SetAnchors.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    boundLabel_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BoundLabel_SetBoundsRect(obj uintptr, value TRect) {
+   boundLabel_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func BoundLabel_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_SetClientHeight(obj uintptr, value int32) {
+   boundLabel_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    boundLabel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func BoundLabel_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_SetClientWidth(obj uintptr, value int32) {
+   boundLabel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_GetFloating(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_GetVisible(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetVisible(obj uintptr, value bool) {
+   boundLabel_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetParent(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetParent.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetParent(obj uintptr, value uintptr) {
+   boundLabel_SetParent.Call(obj, value)
+}
+
+func BoundLabel_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := boundLabel_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func BoundLabel_SetStyleElements(obj uintptr, value TStyleElements) {
+   boundLabel_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := boundLabel_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BoundLabel_SetAlignWithMargins(obj uintptr, value bool) {
+   boundLabel_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func BoundLabel_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := boundLabel_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func BoundLabel_SetCursor(obj uintptr, value TCursor) {
+   boundLabel_SetCursor.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetHint(obj uintptr) string {
+    ret, _, _ := boundLabel_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func BoundLabel_SetHint(obj uintptr, value string) {
+   boundLabel_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func BoundLabel_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetMargins.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetMargins(obj uintptr, value uintptr) {
+   boundLabel_SetMargins.Call(obj, value)
+}
+
+func BoundLabel_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetCustomHint.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetCustomHint(obj uintptr, value uintptr) {
+   boundLabel_SetCustomHint.Call(obj, value)
+}
+
+func BoundLabel_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := boundLabel_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func BoundLabel_SetComponentIndex(obj uintptr, value int32) {
+   boundLabel_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetOwner.Call(obj)
+    return ret
+}
+
+func BoundLabel_GetName(obj uintptr) string {
+    ret, _, _ := boundLabel_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func BoundLabel_SetName(obj uintptr, value string) {
+   boundLabel_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func BoundLabel_GetTag(obj uintptr) int {
+    ret, _, _ := boundLabel_GetTag.Call(obj)
+    return int(ret)
+}
+
+func BoundLabel_SetTag(obj uintptr, value int) {
+   boundLabel_SetTag.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := boundLabel_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func BoundLabel_StaticClassType() TClass {
+    r, _, _:= boundLabel_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TFlowPanel ---------------------------
+
+func FlowPanel_Create(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_Create.Call(obj)
+    return ret
+}
+
+func FlowPanel_Free(obj uintptr) {
+    flowPanel_Free.Call(obj)
+}
+
+func FlowPanel_GetControlIndex(obj uintptr, AControl uintptr) int32 {
+    ret, _, _ := flowPanel_GetControlIndex.Call(obj, AControl )
+    return int32(ret)
+}
+
+func FlowPanel_SetControlIndex(obj uintptr, AControl uintptr, Index int32)  {
+    flowPanel_SetControlIndex.Call(obj, AControl , uintptr(Index) )
+}
+
+func FlowPanel_CanFocus(obj uintptr) bool {
+    ret, _, _ := flowPanel_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_FlipChildren(obj uintptr, AllLevels bool)  {
+    flowPanel_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func FlowPanel_Focused(obj uintptr) bool {
+    ret, _, _ := flowPanel_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := flowPanel_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_Invalidate(obj uintptr)  {
+    flowPanel_Invalidate.Call(obj)
+}
+
+func FlowPanel_Realign(obj uintptr)  {
+    flowPanel_Realign.Call(obj)
+}
+
+func FlowPanel_Repaint(obj uintptr)  {
+    flowPanel_Repaint.Call(obj)
+}
+
+func FlowPanel_ScaleBy(obj uintptr, M int32, D int32)  {
+    flowPanel_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func FlowPanel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    flowPanel_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func FlowPanel_SetFocus(obj uintptr)  {
+    flowPanel_SetFocus.Call(obj)
+}
+
+func FlowPanel_Update(obj uintptr)  {
+    flowPanel_Update.Call(obj)
+}
+
+func FlowPanel_BringToFront(obj uintptr)  {
+    flowPanel_BringToFront.Call(obj)
+}
+
+func FlowPanel_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    flowPanel_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FlowPanel_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    flowPanel_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FlowPanel_Dragging(obj uintptr) bool {
+    ret, _, _ := flowPanel_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_HasParent(obj uintptr) bool {
+    ret, _, _ := flowPanel_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_Hide(obj uintptr)  {
+    flowPanel_Hide.Call(obj)
+}
+
+func FlowPanel_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := flowPanel_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func FlowPanel_Refresh(obj uintptr)  {
+    flowPanel_Refresh.Call(obj)
+}
+
+func FlowPanel_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    flowPanel_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FlowPanel_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    flowPanel_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FlowPanel_SendToBack(obj uintptr)  {
+    flowPanel_SendToBack.Call(obj)
+}
+
+func FlowPanel_Show(obj uintptr)  {
+    flowPanel_Show.Call(obj)
+}
+
+func FlowPanel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := flowPanel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func FlowPanel_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := flowPanel_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func FlowPanel_GetNamePath(obj uintptr) string {
+    ret, _, _ := flowPanel_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FlowPanel_Assign(obj uintptr, Source uintptr)  {
+    flowPanel_Assign.Call(obj, Source )
+}
+
+func FlowPanel_DisposeOf(obj uintptr)  {
+    flowPanel_DisposeOf.Call(obj)
+}
+
+func FlowPanel_ClassType(obj uintptr) TClass {
+    ret, _, _ := flowPanel_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func FlowPanel_ClassName(obj uintptr) string {
+    ret, _, _ := flowPanel_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FlowPanel_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := flowPanel_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := flowPanel_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := flowPanel_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_ToString(obj uintptr) string {
+    ret, _, _ := flowPanel_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FlowPanel_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := flowPanel_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func FlowPanel_SetAlign(obj uintptr, value TAlign) {
+   flowPanel_SetAlign.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := flowPanel_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func FlowPanel_SetAlignment(obj uintptr, value TAlignment) {
+   flowPanel_SetAlignment.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := flowPanel_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func FlowPanel_SetAnchors(obj uintptr, value TAnchors) {
+   flowPanel_SetAnchors.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetAutoSize(obj uintptr, value bool) {
+   flowPanel_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetAutoWrap(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetAutoWrap.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetAutoWrap(obj uintptr, value bool) {
+   flowPanel_SetAutoWrap.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetBevelEdges(obj uintptr) TBevelEdges {
+    ret, _, _ := flowPanel_GetBevelEdges.Call(obj)
+    return TBevelEdges(ret)
+}
+
+func FlowPanel_SetBevelEdges(obj uintptr, value TBevelEdges) {
+   flowPanel_SetBevelEdges.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetBevelInner(obj uintptr) TBevelCut {
+    ret, _, _ := flowPanel_GetBevelInner.Call(obj)
+    return TBevelCut(ret)
+}
+
+func FlowPanel_SetBevelInner(obj uintptr, value TBevelCut) {
+   flowPanel_SetBevelInner.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetBevelKind(obj uintptr) TBevelKind {
+    ret, _, _ := flowPanel_GetBevelKind.Call(obj)
+    return TBevelKind(ret)
+}
+
+func FlowPanel_SetBevelKind(obj uintptr, value TBevelKind) {
+   flowPanel_SetBevelKind.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetBevelOuter(obj uintptr) TBevelCut {
+    ret, _, _ := flowPanel_GetBevelOuter.Call(obj)
+    return TBevelCut(ret)
+}
+
+func FlowPanel_SetBevelOuter(obj uintptr, value TBevelCut) {
+   flowPanel_SetBevelOuter.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := flowPanel_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func FlowPanel_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   flowPanel_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetBorderWidth(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetBorderWidth.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetBorderWidth(obj uintptr, value int32) {
+   flowPanel_SetBorderWidth.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := flowPanel_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func FlowPanel_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   flowPanel_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetCaption(obj uintptr) string {
+    ret, _, _ := flowPanel_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FlowPanel_SetCaption(obj uintptr, value string) {
+   flowPanel_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func FlowPanel_GetColor(obj uintptr) TColor {
+    ret, _, _ := flowPanel_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func FlowPanel_SetColor(obj uintptr, value TColor) {
+   flowPanel_SetColor.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetUseDockManager(obj uintptr, value bool) {
+   flowPanel_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetDockSite(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetDockSite(obj uintptr, value bool) {
+   flowPanel_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetDoubleBuffered(obj uintptr, value bool) {
+   flowPanel_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := flowPanel_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func FlowPanel_SetDragCursor(obj uintptr, value TCursor) {
+   flowPanel_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := flowPanel_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func FlowPanel_SetDragKind(obj uintptr, value TDragKind) {
+   flowPanel_SetDragKind.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := flowPanel_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func FlowPanel_SetDragMode(obj uintptr, value TDragMode) {
+   flowPanel_SetDragMode.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetEnabled(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetEnabled(obj uintptr, value bool) {
+   flowPanel_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetFlowStyle(obj uintptr) TFlowStyle {
+    ret, _, _ := flowPanel_GetFlowStyle.Call(obj)
+    return TFlowStyle(ret)
+}
+
+func FlowPanel_SetFlowStyle(obj uintptr, value TFlowStyle) {
+   flowPanel_SetFlowStyle.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetFullRepaint(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetFullRepaint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetFullRepaint(obj uintptr, value bool) {
+   flowPanel_SetFullRepaint.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetFont(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetFont.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetFont(obj uintptr, value uintptr) {
+   flowPanel_SetFont.Call(obj, value)
+}
+
+func FlowPanel_GetLocked(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetLocked.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetLocked(obj uintptr, value bool) {
+   flowPanel_SetLocked.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetParentBackground(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetParentBackground.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetParentBackground(obj uintptr, value bool) {
+   flowPanel_SetParentBackground.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetParentColor(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetParentColor(obj uintptr, value bool) {
+   flowPanel_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetParentCtl3D(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetParentCtl3D.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetParentCtl3D(obj uintptr, value bool) {
+   flowPanel_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetParentDoubleBuffered(obj uintptr, value bool) {
+   flowPanel_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetParentFont(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetParentFont(obj uintptr, value bool) {
+   flowPanel_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetParentShowHint(obj uintptr, value bool) {
+   flowPanel_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetPopupMenu(obj uintptr, value uintptr) {
+   flowPanel_SetPopupMenu.Call(obj, value)
+}
+
+func FlowPanel_GetShowCaption(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetShowCaption.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetShowCaption(obj uintptr, value bool) {
+   flowPanel_SetShowCaption.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetShowHint(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetShowHint(obj uintptr, value bool) {
+   flowPanel_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := flowPanel_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func FlowPanel_SetTabOrder(obj uintptr, value uint16) {
+   flowPanel_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetTabStop(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetTabStop(obj uintptr, value bool) {
+   flowPanel_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetVisible(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetVisible(obj uintptr, value bool) {
+   flowPanel_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := flowPanel_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func FlowPanel_SetStyleElements(obj uintptr, value TStyleElements) {
+   flowPanel_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func FlowPanel_SetOnClick(obj uintptr, fn interface{}) {
+    flowPanel_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnContextPopup(obj uintptr, fn interface{}) {
+    flowPanel_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnDockDrop(obj uintptr, fn interface{}) {
+    flowPanel_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnDblClick(obj uintptr, fn interface{}) {
+    flowPanel_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnDragDrop(obj uintptr, fn interface{}) {
+    flowPanel_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnDragOver(obj uintptr, fn interface{}) {
+    flowPanel_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnEndDock(obj uintptr, fn interface{}) {
+    flowPanel_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnEndDrag(obj uintptr, fn interface{}) {
+    flowPanel_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnEnter(obj uintptr, fn interface{}) {
+    flowPanel_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnExit(obj uintptr, fn interface{}) {
+    flowPanel_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    flowPanel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
+    flowPanel_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    flowPanel_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    flowPanel_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnMouseMove(obj uintptr, fn interface{}) {
+    flowPanel_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnMouseUp(obj uintptr, fn interface{}) {
+    flowPanel_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnResize(obj uintptr, fn interface{}) {
+    flowPanel_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnStartDock(obj uintptr, fn interface{}) {
+    flowPanel_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnUnDock(obj uintptr, fn interface{}) {
+    flowPanel_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetBrush.Call(obj)
+    return ret
+}
+
+func FlowPanel_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_GetHandle(obj uintptr) HWND {
+    ret, _, _ := flowPanel_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func FlowPanel_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := flowPanel_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func FlowPanel_SetParentWindow(obj uintptr, value HWND) {
+   flowPanel_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetAction(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetAction.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetAction(obj uintptr, value uintptr) {
+   flowPanel_SetAction.Call(obj, value)
+}
+
+func FlowPanel_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    flowPanel_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FlowPanel_SetBoundsRect(obj uintptr, value TRect) {
+   flowPanel_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func FlowPanel_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetClientHeight(obj uintptr, value int32) {
+   flowPanel_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    flowPanel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func FlowPanel_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetClientWidth(obj uintptr, value int32) {
+   flowPanel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_GetFloating(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_GetParent(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetParent.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetParent(obj uintptr, value uintptr) {
+   flowPanel_SetParent.Call(obj, value)
+}
+
+func FlowPanel_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_SetAlignWithMargins(obj uintptr, value bool) {
+   flowPanel_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func FlowPanel_GetLeft(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetLeft(obj uintptr, value int32) {
+   flowPanel_SetLeft.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetTop(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetTop(obj uintptr, value int32) {
+   flowPanel_SetTop.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetWidth(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetWidth(obj uintptr, value int32) {
+   flowPanel_SetWidth.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetHeight(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetHeight(obj uintptr, value int32) {
+   flowPanel_SetHeight.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := flowPanel_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func FlowPanel_SetCursor(obj uintptr, value TCursor) {
+   flowPanel_SetCursor.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetHint(obj uintptr) string {
+    ret, _, _ := flowPanel_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FlowPanel_SetHint(obj uintptr, value string) {
+   flowPanel_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func FlowPanel_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetMargins.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetMargins(obj uintptr, value uintptr) {
+   flowPanel_SetMargins.Call(obj, value)
+}
+
+func FlowPanel_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetCustomHint.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetCustomHint(obj uintptr, value uintptr) {
+   flowPanel_SetCustomHint.Call(obj, value)
+}
+
+func FlowPanel_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_SetComponentIndex(obj uintptr, value int32) {
+   flowPanel_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetOwner.Call(obj)
+    return ret
+}
+
+func FlowPanel_GetName(obj uintptr) string {
+    ret, _, _ := flowPanel_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func FlowPanel_SetName(obj uintptr, value string) {
+   flowPanel_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func FlowPanel_GetTag(obj uintptr) int {
+    ret, _, _ := flowPanel_GetTag.Call(obj)
+    return int(ret)
+}
+
+func FlowPanel_SetTag(obj uintptr, value int) {
+   flowPanel_SetTag.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := flowPanel_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func FlowPanel_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := flowPanel_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func FlowPanel_StaticClassType() TClass {
+    r, _, _:= flowPanel_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TCoolBar ---------------------------
+
+func CoolBar_Create(obj uintptr) uintptr {
+    ret, _, _ := coolBar_Create.Call(obj)
+    return ret
+}
+
+func CoolBar_Free(obj uintptr) {
+    coolBar_Free.Call(obj)
+}
+
+func CoolBar_FlipChildren(obj uintptr, AllLevels bool)  {
+    coolBar_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func CoolBar_CanFocus(obj uintptr) bool {
+    ret, _, _ := coolBar_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_Focused(obj uintptr) bool {
+    ret, _, _ := coolBar_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := coolBar_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_Invalidate(obj uintptr)  {
+    coolBar_Invalidate.Call(obj)
+}
+
+func CoolBar_Realign(obj uintptr)  {
+    coolBar_Realign.Call(obj)
+}
+
+func CoolBar_Repaint(obj uintptr)  {
+    coolBar_Repaint.Call(obj)
+}
+
+func CoolBar_ScaleBy(obj uintptr, M int32, D int32)  {
+    coolBar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func CoolBar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    coolBar_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func CoolBar_SetFocus(obj uintptr)  {
+    coolBar_SetFocus.Call(obj)
+}
+
+func CoolBar_Update(obj uintptr)  {
+    coolBar_Update.Call(obj)
+}
+
+func CoolBar_BringToFront(obj uintptr)  {
+    coolBar_BringToFront.Call(obj)
+}
+
+func CoolBar_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    coolBar_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CoolBar_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    coolBar_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CoolBar_Dragging(obj uintptr) bool {
+    ret, _, _ := coolBar_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_HasParent(obj uintptr) bool {
+    ret, _, _ := coolBar_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_Hide(obj uintptr)  {
+    coolBar_Hide.Call(obj)
+}
+
+func CoolBar_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := coolBar_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func CoolBar_Refresh(obj uintptr)  {
+    coolBar_Refresh.Call(obj)
+}
+
+func CoolBar_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    coolBar_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CoolBar_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    coolBar_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CoolBar_SendToBack(obj uintptr)  {
+    coolBar_SendToBack.Call(obj)
+}
+
+func CoolBar_Show(obj uintptr)  {
+    coolBar_Show.Call(obj)
+}
+
+func CoolBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := coolBar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func CoolBar_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := coolBar_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func CoolBar_GetNamePath(obj uintptr) string {
+    ret, _, _ := coolBar_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBar_Assign(obj uintptr, Source uintptr)  {
+    coolBar_Assign.Call(obj, Source )
+}
+
+func CoolBar_DisposeOf(obj uintptr)  {
+    coolBar_DisposeOf.Call(obj)
+}
+
+func CoolBar_ClassType(obj uintptr) TClass {
+    ret, _, _ := coolBar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func CoolBar_ClassName(obj uintptr) string {
+    ret, _, _ := coolBar_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := coolBar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := coolBar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := coolBar_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_ToString(obj uintptr) string {
+    ret, _, _ := coolBar_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBar_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := coolBar_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func CoolBar_SetAlign(obj uintptr, value TAlign) {
+   coolBar_SetAlign.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := coolBar_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func CoolBar_SetAnchors(obj uintptr, value TAnchors) {
+   coolBar_SetAnchors.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := coolBar_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetAutoSize(obj uintptr, value bool) {
+   coolBar_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetBandBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := coolBar_GetBandBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func CoolBar_SetBandBorderStyle(obj uintptr, value TBorderStyle) {
+   coolBar_SetBandBorderStyle.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetBandMaximize(obj uintptr) TCoolBandMaximize {
+    ret, _, _ := coolBar_GetBandMaximize.Call(obj)
+    return TCoolBandMaximize(ret)
+}
+
+func CoolBar_SetBandMaximize(obj uintptr, value TCoolBandMaximize) {
+   coolBar_SetBandMaximize.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetBands(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetBands.Call(obj)
+    return ret
+}
+
+func CoolBar_SetBands(obj uintptr, value uintptr) {
+   coolBar_SetBands.Call(obj, value)
+}
+
+func CoolBar_GetBorderWidth(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetBorderWidth.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetBorderWidth(obj uintptr, value int32) {
+   coolBar_SetBorderWidth.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetColor(obj uintptr) TColor {
+    ret, _, _ := coolBar_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func CoolBar_SetColor(obj uintptr, value TColor) {
+   coolBar_SetColor.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetDockSite(obj uintptr) bool {
+    ret, _, _ := coolBar_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetDockSite(obj uintptr, value bool) {
+   coolBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := coolBar_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetDoubleBuffered(obj uintptr, value bool) {
+   coolBar_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := coolBar_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CoolBar_SetDragCursor(obj uintptr, value TCursor) {
+   coolBar_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := coolBar_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func CoolBar_SetDragKind(obj uintptr, value TDragKind) {
+   coolBar_SetDragKind.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := coolBar_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func CoolBar_SetDragMode(obj uintptr, value TDragMode) {
+   coolBar_SetDragMode.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetEdgeBorders(obj uintptr) TEdgeBorders {
+    ret, _, _ := coolBar_GetEdgeBorders.Call(obj)
+    return TEdgeBorders(ret)
+}
+
+func CoolBar_SetEdgeBorders(obj uintptr, value TEdgeBorders) {
+   coolBar_SetEdgeBorders.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetEdgeInner(obj uintptr) TEdgeStyle {
+    ret, _, _ := coolBar_GetEdgeInner.Call(obj)
+    return TEdgeStyle(ret)
+}
+
+func CoolBar_SetEdgeInner(obj uintptr, value TEdgeStyle) {
+   coolBar_SetEdgeInner.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetEdgeOuter(obj uintptr) TEdgeStyle {
+    ret, _, _ := coolBar_GetEdgeOuter.Call(obj)
+    return TEdgeStyle(ret)
+}
+
+func CoolBar_SetEdgeOuter(obj uintptr, value TEdgeStyle) {
+   coolBar_SetEdgeOuter.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetEnabled(obj uintptr) bool {
+    ret, _, _ := coolBar_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetEnabled(obj uintptr, value bool) {
+   coolBar_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetFixedSize(obj uintptr) bool {
+    ret, _, _ := coolBar_GetFixedSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetFixedSize(obj uintptr, value bool) {
+   coolBar_SetFixedSize.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetFixedOrder(obj uintptr) bool {
+    ret, _, _ := coolBar_GetFixedOrder.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetFixedOrder(obj uintptr, value bool) {
+   coolBar_SetFixedOrder.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetFont(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetFont.Call(obj)
+    return ret
+}
+
+func CoolBar_SetFont(obj uintptr, value uintptr) {
+   coolBar_SetFont.Call(obj, value)
+}
+
+func CoolBar_GetImages(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetImages.Call(obj)
+    return ret
+}
+
+func CoolBar_SetImages(obj uintptr, value uintptr) {
+   coolBar_SetImages.Call(obj, value)
+}
+
+func CoolBar_GetParentColor(obj uintptr) bool {
+    ret, _, _ := coolBar_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetParentColor(obj uintptr, value bool) {
+   coolBar_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := coolBar_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetParentDoubleBuffered(obj uintptr, value bool) {
+   coolBar_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetParentFont(obj uintptr) bool {
+    ret, _, _ := coolBar_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetParentFont(obj uintptr, value bool) {
+   coolBar_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := coolBar_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetParentShowHint(obj uintptr, value bool) {
+   coolBar_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetBitmap(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetBitmap.Call(obj)
+    return ret
+}
+
+func CoolBar_SetBitmap(obj uintptr, value uintptr) {
+   coolBar_SetBitmap.Call(obj, value)
+}
+
+func CoolBar_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func CoolBar_SetPopupMenu(obj uintptr, value uintptr) {
+   coolBar_SetPopupMenu.Call(obj, value)
+}
+
+func CoolBar_GetShowHint(obj uintptr) bool {
+    ret, _, _ := coolBar_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetShowHint(obj uintptr, value bool) {
+   coolBar_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetShowText(obj uintptr) bool {
+    ret, _, _ := coolBar_GetShowText.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetShowText(obj uintptr, value bool) {
+   coolBar_SetShowText.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetVertical(obj uintptr) bool {
+    ret, _, _ := coolBar_GetVertical.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetVertical(obj uintptr, value bool) {
+   coolBar_SetVertical.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetVisible(obj uintptr) bool {
+    ret, _, _ := coolBar_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetVisible(obj uintptr, value bool) {
+   coolBar_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := coolBar_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func CoolBar_SetStyleElements(obj uintptr, value TStyleElements) {
+   coolBar_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func CoolBar_SetOnChange(obj uintptr, fn interface{}) {
+    coolBar_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnClick(obj uintptr, fn interface{}) {
+    coolBar_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnContextPopup(obj uintptr, fn interface{}) {
+    coolBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnDblClick(obj uintptr, fn interface{}) {
+    coolBar_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnDockDrop(obj uintptr, fn interface{}) {
+    coolBar_SetOnDockDrop.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnDragDrop(obj uintptr, fn interface{}) {
+    coolBar_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnDragOver(obj uintptr, fn interface{}) {
+    coolBar_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnEndDock(obj uintptr, fn interface{}) {
+    coolBar_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
+    coolBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
+    coolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
+    coolBar_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    coolBar_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    coolBar_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnMouseMove(obj uintptr, fn interface{}) {
+    coolBar_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnMouseUp(obj uintptr, fn interface{}) {
+    coolBar_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnResize(obj uintptr, fn interface{}) {
+    coolBar_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnStartDock(obj uintptr, fn interface{}) {
+    coolBar_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnUnDock(obj uintptr, fn interface{}) {
+    coolBar_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetBrush.Call(obj)
+    return ret
+}
+
+func CoolBar_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_GetHandle(obj uintptr) HWND {
+    ret, _, _ := coolBar_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func CoolBar_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := coolBar_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func CoolBar_SetParentWindow(obj uintptr, value HWND) {
+   coolBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetTabOrder(obj uintptr) uint16 {
+    ret, _, _ := coolBar_GetTabOrder.Call(obj)
+    return uint16(ret)
+}
+
+func CoolBar_SetTabOrder(obj uintptr, value uint16) {
+   coolBar_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetTabStop(obj uintptr) bool {
+    ret, _, _ := coolBar_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetTabStop(obj uintptr, value bool) {
+   coolBar_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := coolBar_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetUseDockManager(obj uintptr, value bool) {
+   coolBar_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetAction(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetAction.Call(obj)
+    return ret
+}
+
+func CoolBar_SetAction(obj uintptr, value uintptr) {
+   coolBar_SetAction.Call(obj, value)
+}
+
+func CoolBar_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := coolBar_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func CoolBar_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   coolBar_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    coolBar_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CoolBar_SetBoundsRect(obj uintptr, value TRect) {
+   coolBar_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func CoolBar_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetClientHeight(obj uintptr, value int32) {
+   coolBar_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    coolBar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CoolBar_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetClientWidth(obj uintptr, value int32) {
+   coolBar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_GetFloating(obj uintptr) bool {
+    ret, _, _ := coolBar_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_GetParent(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetParent.Call(obj)
+    return ret
+}
+
+func CoolBar_SetParent(obj uintptr, value uintptr) {
+   coolBar_SetParent.Call(obj, value)
+}
+
+func CoolBar_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := coolBar_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_SetAlignWithMargins(obj uintptr, value bool) {
+   coolBar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBar_GetLeft(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetLeft(obj uintptr, value int32) {
+   coolBar_SetLeft.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetTop(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetTop(obj uintptr, value int32) {
+   coolBar_SetTop.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetWidth(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetWidth(obj uintptr, value int32) {
+   coolBar_SetWidth.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetHeight(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetHeight(obj uintptr, value int32) {
+   coolBar_SetHeight.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := coolBar_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CoolBar_SetCursor(obj uintptr, value TCursor) {
+   coolBar_SetCursor.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetHint(obj uintptr) string {
+    ret, _, _ := coolBar_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBar_SetHint(obj uintptr, value string) {
+   coolBar_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func CoolBar_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetMargins.Call(obj)
+    return ret
+}
+
+func CoolBar_SetMargins(obj uintptr, value uintptr) {
+   coolBar_SetMargins.Call(obj, value)
+}
+
+func CoolBar_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetCustomHint.Call(obj)
+    return ret
+}
+
+func CoolBar_SetCustomHint(obj uintptr, value uintptr) {
+   coolBar_SetCustomHint.Call(obj, value)
+}
+
+func CoolBar_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_SetComponentIndex(obj uintptr, value int32) {
+   coolBar_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetOwner.Call(obj)
+    return ret
+}
+
+func CoolBar_GetName(obj uintptr) string {
+    ret, _, _ := coolBar_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBar_SetName(obj uintptr, value string) {
+   coolBar_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func CoolBar_GetTag(obj uintptr) int {
+    ret, _, _ := coolBar_GetTag.Call(obj)
+    return int(ret)
+}
+
+func CoolBar_SetTag(obj uintptr, value int) {
+   coolBar_SetTag.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := coolBar_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func CoolBar_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := coolBar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func CoolBar_StaticClassType() TClass {
+    r, _, _:= coolBar_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TCoolBands ---------------------------
+
+func CoolBands_Create() uintptr {
+    ret, _, _ := coolBands_Create.Call()
+    return ret
+}
+
+func CoolBands_Free(obj uintptr) {
+    coolBands_Free.Call(obj)
+}
+
+func CoolBands_Add(obj uintptr) uintptr {
+    ret, _, _ := coolBands_Add.Call(obj)
+    return ret
+}
+
+func CoolBands_FindBand(obj uintptr, AControl uintptr) uintptr {
+    ret, _, _ := coolBands_FindBand.Call(obj, AControl )
+    return ret
+}
+
+func CoolBands_Owner(obj uintptr) uintptr {
+    ret, _, _ := coolBands_Owner.Call(obj)
+    return ret
+}
+
+func CoolBands_Assign(obj uintptr, Source uintptr)  {
+    coolBands_Assign.Call(obj, Source )
+}
+
+func CoolBands_BeginUpdate(obj uintptr)  {
+    coolBands_BeginUpdate.Call(obj)
+}
+
+func CoolBands_Clear(obj uintptr)  {
+    coolBands_Clear.Call(obj)
+}
+
+func CoolBands_Delete(obj uintptr, Index int32)  {
+    coolBands_Delete.Call(obj, uintptr(Index) )
+}
+
+func CoolBands_EndUpdate(obj uintptr)  {
+    coolBands_EndUpdate.Call(obj)
+}
+
+func CoolBands_GetNamePath(obj uintptr) string {
+    ret, _, _ := coolBands_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBands_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := coolBands_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func CoolBands_DisposeOf(obj uintptr)  {
+    coolBands_DisposeOf.Call(obj)
+}
+
+func CoolBands_ClassType(obj uintptr) TClass {
+    ret, _, _ := coolBands_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func CoolBands_ClassName(obj uintptr) string {
+    ret, _, _ := coolBands_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBands_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := coolBands_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CoolBands_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := coolBands_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func CoolBands_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := coolBands_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func CoolBands_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := coolBands_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func CoolBands_ToString(obj uintptr) string {
+    ret, _, _ := coolBands_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBands_GetCoolBar(obj uintptr) uintptr {
+    ret, _, _ := coolBands_GetCoolBar.Call(obj)
+    return ret
+}
+
+func CoolBands_GetCapacity(obj uintptr) int32 {
+    ret, _, _ := coolBands_GetCapacity.Call(obj)
+    return int32(ret)
+}
+
+func CoolBands_SetCapacity(obj uintptr, value int32) {
+   coolBands_SetCapacity.Call(obj, uintptr(value))
+}
+
+func CoolBands_GetCount(obj uintptr) int32 {
+    ret, _, _ := coolBands_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func CoolBands_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := coolBands_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func CoolBands_SetItems(obj uintptr, Index int32, value uintptr) {
+   coolBands_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func CoolBands_StaticClassType() TClass {
+    r, _, _:= coolBands_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TCoolBand ---------------------------
+
+func CoolBand_Create() uintptr {
+    ret, _, _ := coolBand_Create.Call()
+    return ret
+}
+
+func CoolBand_Free(obj uintptr) {
+    coolBand_Free.Call(obj)
+}
+
+func CoolBand_Assign(obj uintptr, Source uintptr)  {
+    coolBand_Assign.Call(obj, Source )
+}
+
+func CoolBand_GetNamePath(obj uintptr) string {
+    ret, _, _ := coolBand_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBand_DisposeOf(obj uintptr)  {
+    coolBand_DisposeOf.Call(obj)
+}
+
+func CoolBand_ClassType(obj uintptr) TClass {
+    ret, _, _ := coolBand_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func CoolBand_ClassName(obj uintptr) string {
+    ret, _, _ := coolBand_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBand_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := coolBand_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := coolBand_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := coolBand_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := coolBand_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_ToString(obj uintptr) string {
+    ret, _, _ := coolBand_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBand_GetHeight(obj uintptr) int32 {
+    ret, _, _ := coolBand_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_GetBitmap(obj uintptr) uintptr {
+    ret, _, _ := coolBand_GetBitmap.Call(obj)
+    return ret
+}
+
+func CoolBand_SetBitmap(obj uintptr, value uintptr) {
+   coolBand_SetBitmap.Call(obj, value)
+}
+
+func CoolBand_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := coolBand_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func CoolBand_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   coolBand_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func CoolBand_GetBreak(obj uintptr) bool {
+    ret, _, _ := coolBand_GetBreak.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_SetBreak(obj uintptr, value bool) {
+   coolBand_SetBreak.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBand_GetColor(obj uintptr) TColor {
+    ret, _, _ := coolBand_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func CoolBand_SetColor(obj uintptr, value TColor) {
+   coolBand_SetColor.Call(obj, uintptr(value))
+}
+
+func CoolBand_GetControl(obj uintptr) uintptr {
+    ret, _, _ := coolBand_GetControl.Call(obj)
+    return ret
+}
+
+func CoolBand_SetControl(obj uintptr, value uintptr) {
+   coolBand_SetControl.Call(obj, value)
+}
+
+func CoolBand_GetFixedBackground(obj uintptr) bool {
+    ret, _, _ := coolBand_GetFixedBackground.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_SetFixedBackground(obj uintptr, value bool) {
+   coolBand_SetFixedBackground.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBand_GetFixedSize(obj uintptr) bool {
+    ret, _, _ := coolBand_GetFixedSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_SetFixedSize(obj uintptr, value bool) {
+   coolBand_SetFixedSize.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBand_GetHorizontalOnly(obj uintptr) bool {
+    ret, _, _ := coolBand_GetHorizontalOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_SetHorizontalOnly(obj uintptr, value bool) {
+   coolBand_SetHorizontalOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBand_GetImageIndex(obj uintptr) int32 {
+    ret, _, _ := coolBand_GetImageIndex.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_SetImageIndex(obj uintptr, value int32) {
+   coolBand_SetImageIndex.Call(obj, uintptr(value))
+}
+
+func CoolBand_GetMinHeight(obj uintptr) int32 {
+    ret, _, _ := coolBand_GetMinHeight.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_SetMinHeight(obj uintptr, value int32) {
+   coolBand_SetMinHeight.Call(obj, uintptr(value))
+}
+
+func CoolBand_GetMinWidth(obj uintptr) int32 {
+    ret, _, _ := coolBand_GetMinWidth.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_SetMinWidth(obj uintptr, value int32) {
+   coolBand_SetMinWidth.Call(obj, uintptr(value))
+}
+
+func CoolBand_GetParentColor(obj uintptr) bool {
+    ret, _, _ := coolBand_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_SetParentColor(obj uintptr, value bool) {
+   coolBand_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBand_GetParentBitmap(obj uintptr) bool {
+    ret, _, _ := coolBand_GetParentBitmap.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_SetParentBitmap(obj uintptr, value bool) {
+   coolBand_SetParentBitmap.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBand_GetText(obj uintptr) string {
+    ret, _, _ := coolBand_GetText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CoolBand_SetText(obj uintptr, value string) {
+   coolBand_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func CoolBand_GetVisible(obj uintptr) bool {
+    ret, _, _ := coolBand_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBand_SetVisible(obj uintptr, value bool) {
+   coolBand_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func CoolBand_GetWidth(obj uintptr) int32 {
+    ret, _, _ := coolBand_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_SetWidth(obj uintptr, value int32) {
+   coolBand_SetWidth.Call(obj, uintptr(value))
+}
+
+func CoolBand_GetIndex(obj uintptr) int32 {
+    ret, _, _ := coolBand_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func CoolBand_SetIndex(obj uintptr, value int32) {
+   coolBand_SetIndex.Call(obj, uintptr(value))
+}
+
+func CoolBand_StaticClassType() TClass {
+    r, _, _:= coolBand_StaticClassType.Call()
     return TClass(r)
 }

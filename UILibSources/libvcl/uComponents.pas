@@ -47,6 +47,8 @@ uses
   Vcl.Styles,
   Vcl.Mask,
   Vcl.CheckLst,
+  Vcl.Grids,
+  Vcl.ValEdit,
   Vcl.Samples.Gauges,
   Vcl.FileCtrl,
   ImageButton;
@@ -54,7 +56,7 @@ uses
 //--------------------- Ô­DelphiResForm.incÄÚÈÝ
 
 const
-  ClassRefArrs: array[0..111] of TClass = (
+  ClassRefArrs: array[0..123] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -73,7 +75,10 @@ const
     TMargins,TPadding,TPaintBox,TTimer,TList,TGraphic,TComponent,TMonthCalColors,
     TParaAttributes,TTextAttributes,TIconOptions,TScrollBar,TShape,TBevel,TScrollBox,
     TCheckListBox,TGauge,TCustomHint,TImageButton,TFontDialog,TFindDialog, TReplaceDialog,TPageSetupDialog,
-    TPrinterSetupDialog
+    TPrinterSetupDialog,
+    TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
+    THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
+    TFlowPanel,TCoolBar,TCoolBands,TCoolBand
   );
 
 
