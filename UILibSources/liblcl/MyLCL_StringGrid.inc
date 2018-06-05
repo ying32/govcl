@@ -15,6 +15,21 @@ begin
   AObj.Free;
 end;
 
+procedure StringGrid_CellRect(AObj: TStringGrid; ACol: Integer; ARow: Integer; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.CellRect(ACol, ARow);
+end;
+
+procedure StringGrid_MouseToCell(AObj: TStringGrid; X: Integer; Y: Integer; var ACol: Integer; var ARow: Integer); extdecl;
+begin
+  AObj.MouseToCell(X, Y, ACol, ARow);
+end;
+
+procedure StringGrid_MouseCoord(AObj: TStringGrid; X: Integer; Y: Integer; var Result: TGridCoord); extdecl;
+begin
+  Result :=  AObj.MouseCoord(X, Y);
+end;
+
 function StringGrid_CanFocus(AObj: TStringGrid): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -240,6 +255,46 @@ begin
   AObj.Color := AValue;
 end;
 
+function StringGrid_GetColCount(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.ColCount;
+end;
+
+procedure StringGrid_SetColCount(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.ColCount := AValue;
+end;
+
+function StringGrid_GetDefaultColWidth(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultColWidth;
+end;
+
+procedure StringGrid_SetDefaultColWidth(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.DefaultColWidth := AValue;
+end;
+
+function StringGrid_GetDefaultRowHeight(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultRowHeight;
+end;
+
+procedure StringGrid_SetDefaultRowHeight(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.DefaultRowHeight := AValue;
+end;
+
+function StringGrid_GetDefaultDrawing(AObj: TStringGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.DefaultDrawing;
+end;
+
+procedure StringGrid_SetDefaultDrawing(AObj: TStringGrid; AValue: LongBool); extdecl;
+begin
+  AObj.DefaultDrawing := AValue;
+end;
+
 function StringGrid_GetDoubleBuffered(AObj: TStringGrid): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -290,6 +345,26 @@ begin
   AObj.Enabled := AValue;
 end;
 
+function StringGrid_GetFixedColor(AObj: TStringGrid): TColor; extdecl;
+begin
+  Result :=  AObj.FixedColor;
+end;
+
+procedure StringGrid_SetFixedColor(AObj: TStringGrid; AValue: TColor); extdecl;
+begin
+  AObj.FixedColor := AValue;
+end;
+
+function StringGrid_GetFixedCols(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.FixedCols;
+end;
+
+procedure StringGrid_SetFixedCols(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.FixedCols := AValue;
+end;
+
 function StringGrid_GetRowCount(AObj: TStringGrid): Integer; extdecl;
 begin
   Result :=  AObj.RowCount;
@@ -300,6 +375,16 @@ begin
   AObj.RowCount := AValue;
 end;
 
+function StringGrid_GetFixedRows(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.FixedRows;
+end;
+
+procedure StringGrid_SetFixedRows(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.FixedRows := AValue;
+end;
+
 function StringGrid_GetFont(AObj: TStringGrid): TFont; extdecl;
 begin
   Result :=  AObj.Font;
@@ -308,6 +393,16 @@ end;
 procedure StringGrid_SetFont(AObj: TStringGrid; AValue: TFont); extdecl;
 begin
   AObj.Font := AValue;
+end;
+
+function StringGrid_GetGridLineWidth(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.GridLineWidth;
+end;
+
+procedure StringGrid_SetGridLineWidth(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.GridLineWidth := AValue;
 end;
 
 function StringGrid_GetOptions(AObj: TStringGrid): TGridOptions; extdecl;
@@ -398,6 +493,11 @@ end;
 procedure StringGrid_SetVisible(AObj: TStringGrid; AValue: LongBool); extdecl;
 begin
   AObj.Visible := AValue;
+end;
+
+function StringGrid_GetVisibleColCount(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleColCount;
 end;
 
 function StringGrid_GetVisibleRowCount(AObj: TStringGrid): Integer; extdecl;
@@ -734,6 +834,76 @@ begin
   Result :=  AObj.Canvas;
 end;
 
+function StringGrid_GetCol(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.Col;
+end;
+
+procedure StringGrid_SetCol(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.Col := AValue;
+end;
+
+function StringGrid_GetEditorMode(AObj: TStringGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.EditorMode;
+end;
+
+procedure StringGrid_SetEditorMode(AObj: TStringGrid; AValue: LongBool); extdecl;
+begin
+  AObj.EditorMode := AValue;
+end;
+
+function StringGrid_GetGridHeight(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.GridHeight;
+end;
+
+function StringGrid_GetGridWidth(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.GridWidth;
+end;
+
+function StringGrid_GetLeftCol(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.LeftCol;
+end;
+
+procedure StringGrid_SetLeftCol(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.LeftCol := AValue;
+end;
+
+procedure StringGrid_GetSelection(AObj: TStringGrid; var Result: TGridRect); extdecl;
+begin
+  Result :=  AObj.Selection;
+end;
+
+procedure StringGrid_SetSelection(AObj: TStringGrid; var AValue: TGridRect); extdecl;
+begin
+  AObj.Selection := AValue;
+end;
+
+function StringGrid_GetRow(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.Row;
+end;
+
+procedure StringGrid_SetRow(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.Row := AValue;
+end;
+
+function StringGrid_GetTopRow(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.TopRow;
+end;
+
+procedure StringGrid_SetTopRow(AObj: TStringGrid; AValue: Integer); extdecl;
+begin
+  AObj.TopRow := AValue;
+end;
+
 function StringGrid_GetTabStop(AObj: TStringGrid): LongBool; extdecl;
 begin
   Result :=  AObj.TabStop;
@@ -949,6 +1119,26 @@ begin
   AObj.Tag := AValue;
 end;
 
+function StringGrid_GetCells(AObj: TStringGrid; ACol: Integer; ARow: Integer): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Cells[ACol, ARow]);
+end;
+
+procedure StringGrid_SetCells(AObj: TStringGrid; ACol: Integer; ARow: Integer; AValue: PChar); extdecl;
+begin
+  AObj.Cells[ACol, ARow] := AValue;
+end;
+
+function StringGrid_GetCols(AObj: TStringGrid; Index: Integer): TStrings; extdecl;
+begin
+  Result :=  AObj.Cols[Index];
+end;
+
+procedure StringGrid_SetCols(AObj: TStringGrid; Index: Integer; AValue: TStrings); extdecl;
+begin
+  AObj.Cols[Index] := AValue;
+end;
+
 function StringGrid_GetObjects(AObj: TStringGrid; ACol: Integer; ARow: Integer): TObject; extdecl;
 begin
   Result :=  AObj.Objects[ACol, ARow];
@@ -957,6 +1147,36 @@ end;
 procedure StringGrid_SetObjects(AObj: TStringGrid; ACol: Integer; ARow: Integer; AValue: TObject); extdecl;
 begin
   AObj.Objects[ACol, ARow] := AValue;
+end;
+
+function StringGrid_GetRows(AObj: TStringGrid; Index: Integer): TStrings; extdecl;
+begin
+  Result :=  AObj.Rows[Index];
+end;
+
+procedure StringGrid_SetRows(AObj: TStringGrid; Index: Integer; AValue: TStrings); extdecl;
+begin
+  AObj.Rows[Index] := AValue;
+end;
+
+function StringGrid_GetColWidths(AObj: TStringGrid; Index: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.ColWidths[Index];
+end;
+
+procedure StringGrid_SetColWidths(AObj: TStringGrid; Index: Integer; AValue: Integer); extdecl;
+begin
+  AObj.ColWidths[Index] := AValue;
+end;
+
+function StringGrid_GetRowHeights(AObj: TStringGrid; Index: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.RowHeights[Index];
+end;
+
+procedure StringGrid_SetRowHeights(AObj: TStringGrid; Index: Integer; AValue: Integer); extdecl;
+begin
+  AObj.RowHeights[Index] := AValue;
 end;
 
 function StringGrid_GetControls(AObj: TStringGrid; Index: Integer): TControl; extdecl;
@@ -977,6 +1197,9 @@ end;
 exports
   StringGrid_Create,
   StringGrid_Free,
+  StringGrid_CellRect,
+  StringGrid_MouseToCell,
+  StringGrid_MouseCoord,
   StringGrid_CanFocus,
   StringGrid_FlipChildren,
   StringGrid_Focused,
@@ -1022,6 +1245,14 @@ exports
   StringGrid_SetBorderStyle,
   StringGrid_GetColor,
   StringGrid_SetColor,
+  StringGrid_GetColCount,
+  StringGrid_SetColCount,
+  StringGrid_GetDefaultColWidth,
+  StringGrid_SetDefaultColWidth,
+  StringGrid_GetDefaultRowHeight,
+  StringGrid_SetDefaultRowHeight,
+  StringGrid_GetDefaultDrawing,
+  StringGrid_SetDefaultDrawing,
   StringGrid_GetDoubleBuffered,
   StringGrid_SetDoubleBuffered,
   StringGrid_GetDragCursor,
@@ -1032,10 +1263,18 @@ exports
   StringGrid_SetDragMode,
   StringGrid_GetEnabled,
   StringGrid_SetEnabled,
+  StringGrid_GetFixedColor,
+  StringGrid_SetFixedColor,
+  StringGrid_GetFixedCols,
+  StringGrid_SetFixedCols,
   StringGrid_GetRowCount,
   StringGrid_SetRowCount,
+  StringGrid_GetFixedRows,
+  StringGrid_SetFixedRows,
   StringGrid_GetFont,
   StringGrid_SetFont,
+  StringGrid_GetGridLineWidth,
+  StringGrid_SetGridLineWidth,
   StringGrid_GetOptions,
   StringGrid_SetOptions,
   StringGrid_GetParentColor,
@@ -1054,6 +1293,7 @@ exports
   StringGrid_SetTabOrder,
   StringGrid_GetVisible,
   StringGrid_SetVisible,
+  StringGrid_GetVisibleColCount,
   StringGrid_GetVisibleRowCount,
   StringGrid_SetOnClick,
   StringGrid_SetOnColumnMoved,
@@ -1083,6 +1323,20 @@ exports
   StringGrid_SetOnStartDock,
   StringGrid_SetOnTopLeftChanged,
   StringGrid_GetCanvas,
+  StringGrid_GetCol,
+  StringGrid_SetCol,
+  StringGrid_GetEditorMode,
+  StringGrid_SetEditorMode,
+  StringGrid_GetGridHeight,
+  StringGrid_GetGridWidth,
+  StringGrid_GetLeftCol,
+  StringGrid_SetLeftCol,
+  StringGrid_GetSelection,
+  StringGrid_SetSelection,
+  StringGrid_GetRow,
+  StringGrid_SetRow,
+  StringGrid_GetTopRow,
+  StringGrid_SetTopRow,
   StringGrid_GetTabStop,
   StringGrid_SetTabStop,
   StringGrid_GetDockSite,
@@ -1126,8 +1380,18 @@ exports
   StringGrid_SetName,
   StringGrid_GetTag,
   StringGrid_SetTag,
+  StringGrid_GetCells,
+  StringGrid_SetCells,
+  StringGrid_GetCols,
+  StringGrid_SetCols,
   StringGrid_GetObjects,
   StringGrid_SetObjects,
+  StringGrid_GetRows,
+  StringGrid_SetRows,
+  StringGrid_GetColWidths,
+  StringGrid_SetColWidths,
+  StringGrid_GetRowHeights,
+  StringGrid_SetRowHeights,
   StringGrid_GetControls,
   StringGrid_GetComponents,
   StringGrid_StaticClassType;

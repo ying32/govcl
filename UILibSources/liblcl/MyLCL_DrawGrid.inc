@@ -15,6 +15,21 @@ begin
   AObj.Free;
 end;
 
+procedure DrawGrid_CellRect(AObj: TDrawGrid; ACol: Integer; ARow: Integer; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.CellRect(ACol, ARow);
+end;
+
+procedure DrawGrid_MouseToCell(AObj: TDrawGrid; X: Integer; Y: Integer; var ACol: Integer; var ARow: Integer); extdecl;
+begin
+  AObj.MouseToCell(X, Y, ACol, ARow);
+end;
+
+procedure DrawGrid_MouseCoord(AObj: TDrawGrid; X: Integer; Y: Integer; var Result: TGridCoord); extdecl;
+begin
+  Result :=  AObj.MouseCoord(X, Y);
+end;
+
 function DrawGrid_CanFocus(AObj: TDrawGrid): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -240,6 +255,46 @@ begin
   AObj.Color := AValue;
 end;
 
+function DrawGrid_GetColCount(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.ColCount;
+end;
+
+procedure DrawGrid_SetColCount(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.ColCount := AValue;
+end;
+
+function DrawGrid_GetDefaultColWidth(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultColWidth;
+end;
+
+procedure DrawGrid_SetDefaultColWidth(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.DefaultColWidth := AValue;
+end;
+
+function DrawGrid_GetDefaultRowHeight(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultRowHeight;
+end;
+
+procedure DrawGrid_SetDefaultRowHeight(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.DefaultRowHeight := AValue;
+end;
+
+function DrawGrid_GetDefaultDrawing(AObj: TDrawGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.DefaultDrawing;
+end;
+
+procedure DrawGrid_SetDefaultDrawing(AObj: TDrawGrid; AValue: LongBool); extdecl;
+begin
+  AObj.DefaultDrawing := AValue;
+end;
+
 function DrawGrid_GetDoubleBuffered(AObj: TDrawGrid): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -290,6 +345,26 @@ begin
   AObj.Enabled := AValue;
 end;
 
+function DrawGrid_GetFixedColor(AObj: TDrawGrid): TColor; extdecl;
+begin
+  Result :=  AObj.FixedColor;
+end;
+
+procedure DrawGrid_SetFixedColor(AObj: TDrawGrid; AValue: TColor); extdecl;
+begin
+  AObj.FixedColor := AValue;
+end;
+
+function DrawGrid_GetFixedCols(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.FixedCols;
+end;
+
+procedure DrawGrid_SetFixedCols(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.FixedCols := AValue;
+end;
+
 function DrawGrid_GetRowCount(AObj: TDrawGrid): Integer; extdecl;
 begin
   Result :=  AObj.RowCount;
@@ -300,6 +375,16 @@ begin
   AObj.RowCount := AValue;
 end;
 
+function DrawGrid_GetFixedRows(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.FixedRows;
+end;
+
+procedure DrawGrid_SetFixedRows(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.FixedRows := AValue;
+end;
+
 function DrawGrid_GetFont(AObj: TDrawGrid): TFont; extdecl;
 begin
   Result :=  AObj.Font;
@@ -308,6 +393,16 @@ end;
 procedure DrawGrid_SetFont(AObj: TDrawGrid; AValue: TFont); extdecl;
 begin
   AObj.Font := AValue;
+end;
+
+function DrawGrid_GetGridLineWidth(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.GridLineWidth;
+end;
+
+procedure DrawGrid_SetGridLineWidth(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.GridLineWidth := AValue;
 end;
 
 function DrawGrid_GetOptions(AObj: TDrawGrid): TGridOptions; extdecl;
@@ -398,6 +493,11 @@ end;
 procedure DrawGrid_SetVisible(AObj: TDrawGrid; AValue: LongBool); extdecl;
 begin
   AObj.Visible := AValue;
+end;
+
+function DrawGrid_GetVisibleColCount(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleColCount;
 end;
 
 function DrawGrid_GetVisibleRowCount(AObj: TDrawGrid): Integer; extdecl;
@@ -734,6 +834,76 @@ begin
   Result :=  AObj.Canvas;
 end;
 
+function DrawGrid_GetCol(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.Col;
+end;
+
+procedure DrawGrid_SetCol(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.Col := AValue;
+end;
+
+function DrawGrid_GetEditorMode(AObj: TDrawGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.EditorMode;
+end;
+
+procedure DrawGrid_SetEditorMode(AObj: TDrawGrid; AValue: LongBool); extdecl;
+begin
+  AObj.EditorMode := AValue;
+end;
+
+function DrawGrid_GetGridHeight(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.GridHeight;
+end;
+
+function DrawGrid_GetGridWidth(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.GridWidth;
+end;
+
+function DrawGrid_GetLeftCol(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.LeftCol;
+end;
+
+procedure DrawGrid_SetLeftCol(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.LeftCol := AValue;
+end;
+
+procedure DrawGrid_GetSelection(AObj: TDrawGrid; var Result: TGridRect); extdecl;
+begin
+  Result :=  AObj.Selection;
+end;
+
+procedure DrawGrid_SetSelection(AObj: TDrawGrid; var AValue: TGridRect); extdecl;
+begin
+  AObj.Selection := AValue;
+end;
+
+function DrawGrid_GetRow(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.Row;
+end;
+
+procedure DrawGrid_SetRow(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.Row := AValue;
+end;
+
+function DrawGrid_GetTopRow(AObj: TDrawGrid): Integer; extdecl;
+begin
+  Result :=  AObj.TopRow;
+end;
+
+procedure DrawGrid_SetTopRow(AObj: TDrawGrid; AValue: Integer); extdecl;
+begin
+  AObj.TopRow := AValue;
+end;
+
 function DrawGrid_GetTabStop(AObj: TDrawGrid): LongBool; extdecl;
 begin
   Result :=  AObj.TabStop;
@@ -949,6 +1119,26 @@ begin
   AObj.Tag := AValue;
 end;
 
+function DrawGrid_GetColWidths(AObj: TDrawGrid; Index: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.ColWidths[Index];
+end;
+
+procedure DrawGrid_SetColWidths(AObj: TDrawGrid; Index: Integer; AValue: Integer); extdecl;
+begin
+  AObj.ColWidths[Index] := AValue;
+end;
+
+function DrawGrid_GetRowHeights(AObj: TDrawGrid; Index: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.RowHeights[Index];
+end;
+
+procedure DrawGrid_SetRowHeights(AObj: TDrawGrid; Index: Integer; AValue: Integer); extdecl;
+begin
+  AObj.RowHeights[Index] := AValue;
+end;
+
 function DrawGrid_GetControls(AObj: TDrawGrid; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -967,6 +1157,9 @@ end;
 exports
   DrawGrid_Create,
   DrawGrid_Free,
+  DrawGrid_CellRect,
+  DrawGrid_MouseToCell,
+  DrawGrid_MouseCoord,
   DrawGrid_CanFocus,
   DrawGrid_FlipChildren,
   DrawGrid_Focused,
@@ -1012,6 +1205,14 @@ exports
   DrawGrid_SetBorderStyle,
   DrawGrid_GetColor,
   DrawGrid_SetColor,
+  DrawGrid_GetColCount,
+  DrawGrid_SetColCount,
+  DrawGrid_GetDefaultColWidth,
+  DrawGrid_SetDefaultColWidth,
+  DrawGrid_GetDefaultRowHeight,
+  DrawGrid_SetDefaultRowHeight,
+  DrawGrid_GetDefaultDrawing,
+  DrawGrid_SetDefaultDrawing,
   DrawGrid_GetDoubleBuffered,
   DrawGrid_SetDoubleBuffered,
   DrawGrid_GetDragCursor,
@@ -1022,10 +1223,18 @@ exports
   DrawGrid_SetDragMode,
   DrawGrid_GetEnabled,
   DrawGrid_SetEnabled,
+  DrawGrid_GetFixedColor,
+  DrawGrid_SetFixedColor,
+  DrawGrid_GetFixedCols,
+  DrawGrid_SetFixedCols,
   DrawGrid_GetRowCount,
   DrawGrid_SetRowCount,
+  DrawGrid_GetFixedRows,
+  DrawGrid_SetFixedRows,
   DrawGrid_GetFont,
   DrawGrid_SetFont,
+  DrawGrid_GetGridLineWidth,
+  DrawGrid_SetGridLineWidth,
   DrawGrid_GetOptions,
   DrawGrid_SetOptions,
   DrawGrid_GetParentColor,
@@ -1044,6 +1253,7 @@ exports
   DrawGrid_SetTabOrder,
   DrawGrid_GetVisible,
   DrawGrid_SetVisible,
+  DrawGrid_GetVisibleColCount,
   DrawGrid_GetVisibleRowCount,
   DrawGrid_SetOnClick,
   DrawGrid_SetOnColumnMoved,
@@ -1073,6 +1283,20 @@ exports
   DrawGrid_SetOnStartDock,
   DrawGrid_SetOnTopLeftChanged,
   DrawGrid_GetCanvas,
+  DrawGrid_GetCol,
+  DrawGrid_SetCol,
+  DrawGrid_GetEditorMode,
+  DrawGrid_SetEditorMode,
+  DrawGrid_GetGridHeight,
+  DrawGrid_GetGridWidth,
+  DrawGrid_GetLeftCol,
+  DrawGrid_SetLeftCol,
+  DrawGrid_GetSelection,
+  DrawGrid_SetSelection,
+  DrawGrid_GetRow,
+  DrawGrid_SetRow,
+  DrawGrid_GetTopRow,
+  DrawGrid_SetTopRow,
   DrawGrid_GetTabStop,
   DrawGrid_SetTabStop,
   DrawGrid_GetDockSite,
@@ -1116,6 +1340,10 @@ exports
   DrawGrid_SetName,
   DrawGrid_GetTag,
   DrawGrid_SetTag,
+  DrawGrid_GetColWidths,
+  DrawGrid_SetColWidths,
+  DrawGrid_GetRowHeights,
+  DrawGrid_SetRowHeights,
   DrawGrid_GetControls,
   DrawGrid_GetComponents,
   DrawGrid_StaticClassType;

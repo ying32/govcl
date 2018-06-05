@@ -20,6 +20,21 @@ begin
   AObj.Refresh;
 end;
 
+procedure ValueListEditor_CellRect(AObj: TValueListEditor; ACol: Integer; ARow: Integer; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.CellRect(ACol, ARow);
+end;
+
+procedure ValueListEditor_MouseToCell(AObj: TValueListEditor; X: Integer; Y: Integer; var ACol: Integer; var ARow: Integer); extdecl;
+begin
+  AObj.MouseToCell(X, Y, ACol, ARow);
+end;
+
+procedure ValueListEditor_MouseCoord(AObj: TValueListEditor; X: Integer; Y: Integer; var Result: TGridCoord); extdecl;
+begin
+  Result :=  AObj.MouseCoord(X, Y);
+end;
+
 function ValueListEditor_CanFocus(AObj: TValueListEditor): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -190,9 +205,24 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function ValueListEditor_GetColCount(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.ColCount;
+end;
+
+procedure ValueListEditor_SetColCount(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.ColCount := AValue;
+end;
+
 function ValueListEditor_GetRowCount(AObj: TValueListEditor): Integer; extdecl;
 begin
   Result :=  AObj.RowCount;
+end;
+
+function ValueListEditor_GetVisibleColCount(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleColCount;
 end;
 
 function ValueListEditor_GetVisibleRowCount(AObj: TValueListEditor): Integer; extdecl;
@@ -250,6 +280,36 @@ begin
   AObj.Color := AValue;
 end;
 
+function ValueListEditor_GetDefaultColWidth(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultColWidth;
+end;
+
+procedure ValueListEditor_SetDefaultColWidth(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.DefaultColWidth := AValue;
+end;
+
+function ValueListEditor_GetDefaultDrawing(AObj: TValueListEditor): LongBool; extdecl;
+begin
+  Result :=  AObj.DefaultDrawing;
+end;
+
+procedure ValueListEditor_SetDefaultDrawing(AObj: TValueListEditor; AValue: LongBool); extdecl;
+begin
+  AObj.DefaultDrawing := AValue;
+end;
+
+function ValueListEditor_GetDefaultRowHeight(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultRowHeight;
+end;
+
+procedure ValueListEditor_SetDefaultRowHeight(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.DefaultRowHeight := AValue;
+end;
+
 function ValueListEditor_GetDoubleBuffered(AObj: TValueListEditor): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -300,6 +360,26 @@ begin
   AObj.Enabled := AValue;
 end;
 
+function ValueListEditor_GetFixedColor(AObj: TValueListEditor): TColor; extdecl;
+begin
+  Result :=  AObj.FixedColor;
+end;
+
+procedure ValueListEditor_SetFixedColor(AObj: TValueListEditor; AValue: TColor); extdecl;
+begin
+  AObj.FixedColor := AValue;
+end;
+
+function ValueListEditor_GetFixedCols(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.FixedCols;
+end;
+
+procedure ValueListEditor_SetFixedCols(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.FixedCols := AValue;
+end;
+
 function ValueListEditor_GetFont(AObj: TValueListEditor): TFont; extdecl;
 begin
   Result :=  AObj.Font;
@@ -308,6 +388,16 @@ end;
 procedure ValueListEditor_SetFont(AObj: TValueListEditor; AValue: TFont); extdecl;
 begin
   AObj.Font := AValue;
+end;
+
+function ValueListEditor_GetGridLineWidth(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.GridLineWidth;
+end;
+
+procedure ValueListEditor_SetGridLineWidth(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.GridLineWidth := AValue;
 end;
 
 function ValueListEditor_GetOptions(AObj: TValueListEditor): TGridOptions; extdecl;
@@ -727,6 +817,76 @@ begin
   Result :=  AObj.Canvas;
 end;
 
+function ValueListEditor_GetCol(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.Col;
+end;
+
+procedure ValueListEditor_SetCol(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.Col := AValue;
+end;
+
+function ValueListEditor_GetEditorMode(AObj: TValueListEditor): LongBool; extdecl;
+begin
+  Result :=  AObj.EditorMode;
+end;
+
+procedure ValueListEditor_SetEditorMode(AObj: TValueListEditor; AValue: LongBool); extdecl;
+begin
+  AObj.EditorMode := AValue;
+end;
+
+function ValueListEditor_GetGridHeight(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.GridHeight;
+end;
+
+function ValueListEditor_GetGridWidth(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.GridWidth;
+end;
+
+function ValueListEditor_GetLeftCol(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.LeftCol;
+end;
+
+procedure ValueListEditor_SetLeftCol(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.LeftCol := AValue;
+end;
+
+procedure ValueListEditor_GetSelection(AObj: TValueListEditor; var Result: TGridRect); extdecl;
+begin
+  Result :=  AObj.Selection;
+end;
+
+procedure ValueListEditor_SetSelection(AObj: TValueListEditor; var AValue: TGridRect); extdecl;
+begin
+  AObj.Selection := AValue;
+end;
+
+function ValueListEditor_GetRow(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.Row;
+end;
+
+procedure ValueListEditor_SetRow(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.Row := AValue;
+end;
+
+function ValueListEditor_GetTopRow(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.TopRow;
+end;
+
+procedure ValueListEditor_SetTopRow(AObj: TValueListEditor; AValue: Integer); extdecl;
+begin
+  AObj.TopRow := AValue;
+end;
+
 function ValueListEditor_GetTabStop(AObj: TValueListEditor): LongBool; extdecl;
 begin
   Result :=  AObj.TabStop;
@@ -942,6 +1102,16 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ValueListEditor_GetCells(AObj: TValueListEditor; ACol: Integer; ARow: Integer): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Cells[ACol, ARow]);
+end;
+
+procedure ValueListEditor_SetCells(AObj: TValueListEditor; ACol: Integer; ARow: Integer; AValue: PChar); extdecl;
+begin
+  AObj.Cells[ACol, ARow] := AValue;
+end;
+
 function ValueListEditor_GetValues(AObj: TValueListEditor; Key: PChar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.Values[Key]);
@@ -950,6 +1120,26 @@ end;
 procedure ValueListEditor_SetValues(AObj: TValueListEditor; Key: string; AValue: PChar); extdecl;
 begin
   AObj.Values[Key] := AValue;
+end;
+
+function ValueListEditor_GetColWidths(AObj: TValueListEditor; Index: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.ColWidths[Index];
+end;
+
+procedure ValueListEditor_SetColWidths(AObj: TValueListEditor; Index: Integer; AValue: Integer); extdecl;
+begin
+  AObj.ColWidths[Index] := AValue;
+end;
+
+function ValueListEditor_GetRowHeights(AObj: TValueListEditor; Index: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.RowHeights[Index];
+end;
+
+procedure ValueListEditor_SetRowHeights(AObj: TValueListEditor; Index: Integer; AValue: Integer); extdecl;
+begin
+  AObj.RowHeights[Index] := AValue;
 end;
 
 function ValueListEditor_GetControls(AObj: TValueListEditor; Index: Integer): TControl; extdecl;
@@ -971,6 +1161,9 @@ exports
   ValueListEditor_Create,
   ValueListEditor_Free,
   ValueListEditor_Refresh,
+  ValueListEditor_CellRect,
+  ValueListEditor_MouseToCell,
+  ValueListEditor_MouseCoord,
   ValueListEditor_CanFocus,
   ValueListEditor_FlipChildren,
   ValueListEditor_Focused,
@@ -1005,7 +1198,10 @@ exports
   ValueListEditor_Equals,
   ValueListEditor_GetHashCode,
   ValueListEditor_ToString,
+  ValueListEditor_GetColCount,
+  ValueListEditor_SetColCount,
   ValueListEditor_GetRowCount,
+  ValueListEditor_GetVisibleColCount,
   ValueListEditor_GetVisibleRowCount,
   ValueListEditor_GetAlign,
   ValueListEditor_SetAlign,
@@ -1017,6 +1213,12 @@ exports
   ValueListEditor_SetBorderStyle,
   ValueListEditor_GetColor,
   ValueListEditor_SetColor,
+  ValueListEditor_GetDefaultColWidth,
+  ValueListEditor_SetDefaultColWidth,
+  ValueListEditor_GetDefaultDrawing,
+  ValueListEditor_SetDefaultDrawing,
+  ValueListEditor_GetDefaultRowHeight,
+  ValueListEditor_SetDefaultRowHeight,
   ValueListEditor_GetDoubleBuffered,
   ValueListEditor_SetDoubleBuffered,
   ValueListEditor_GetDragCursor,
@@ -1027,8 +1229,14 @@ exports
   ValueListEditor_SetDragMode,
   ValueListEditor_GetEnabled,
   ValueListEditor_SetEnabled,
+  ValueListEditor_GetFixedColor,
+  ValueListEditor_SetFixedColor,
+  ValueListEditor_GetFixedCols,
+  ValueListEditor_SetFixedCols,
   ValueListEditor_GetFont,
   ValueListEditor_SetFont,
+  ValueListEditor_GetGridLineWidth,
+  ValueListEditor_SetGridLineWidth,
   ValueListEditor_GetOptions,
   ValueListEditor_SetOptions,
   ValueListEditor_GetParentColor,
@@ -1076,6 +1284,20 @@ exports
   ValueListEditor_SetOnStartDock,
   ValueListEditor_SetOnTopLeftChanged,
   ValueListEditor_GetCanvas,
+  ValueListEditor_GetCol,
+  ValueListEditor_SetCol,
+  ValueListEditor_GetEditorMode,
+  ValueListEditor_SetEditorMode,
+  ValueListEditor_GetGridHeight,
+  ValueListEditor_GetGridWidth,
+  ValueListEditor_GetLeftCol,
+  ValueListEditor_SetLeftCol,
+  ValueListEditor_GetSelection,
+  ValueListEditor_SetSelection,
+  ValueListEditor_GetRow,
+  ValueListEditor_SetRow,
+  ValueListEditor_GetTopRow,
+  ValueListEditor_SetTopRow,
   ValueListEditor_GetTabStop,
   ValueListEditor_SetTabStop,
   ValueListEditor_GetDockSite,
@@ -1119,8 +1341,14 @@ exports
   ValueListEditor_SetName,
   ValueListEditor_GetTag,
   ValueListEditor_SetTag,
+  ValueListEditor_GetCells,
+  ValueListEditor_SetCells,
   ValueListEditor_GetValues,
   ValueListEditor_SetValues,
+  ValueListEditor_GetColWidths,
+  ValueListEditor_SetColWidths,
+  ValueListEditor_GetRowHeights,
+  ValueListEditor_SetRowHeights,
   ValueListEditor_GetControls,
   ValueListEditor_GetComponents,
   ValueListEditor_StaticClassType;
