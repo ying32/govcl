@@ -429,8 +429,6 @@ begin
     if FImageCount > 4 then
       FImageCount := 4;
     ResetSize;
-    OutputDebugString(PChar(Format('Width=%d, Height=%d, FImageCount=%d, %d, %d',
-     [Width, Height, FImageCount, FImgWidth, FImgHeight])));
     Invalidate;
   end;
 end;
