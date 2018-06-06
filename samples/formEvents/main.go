@@ -15,11 +15,11 @@ func main() {
 	vcl.Application.SetMainFormOnTaskBar(true)
 
 	//   Form1.gfm
-	vcl.Application.CreateFormFromFile(rtl.ExtractFilePath(vcl.Application.ExeName())+"Form1.gfm", &Form1)
+	vcl.Application.CreateForm(rtl.ExtractFilePath(vcl.Application.ExeName())+"Form1.gfm", &Form1)
 	// 文件加载方式
-	//	vcl.Application.CreateFormFromFile("Form2.gfm", &Form2)
+	//	vcl.Application.CreateForm("Form2.gfm", &Form2)
 	// 字节加载方式
-	vcl.Application.CreateFormFromBytes(form2Bytes, &Form2)
+	vcl.Application.CreateForm(form2Bytes, &Form2)
 
 	vcl.Application.Run()
 

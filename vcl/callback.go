@@ -284,29 +284,29 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				(*int32)(unsafe.Pointer(getVal(3))),
 				(*int32)(unsafe.Pointer(getVal(4))))
 
-			// THelpEvent = function(Command: Word; Data: THelpEventData; var CallHelp: Boolean): Boolean of object;
-		case THelpEvent: // func(command uint16, data THelpEventData, callhelp *bool) bool
+			// func(command uint16, data THelpEventData, callhelp *bool) bool
+		case THelpEvent:
 			v.(THelpEvent)(
 				uint16(getVal(0)),
 				THelpEventData(getVal(1)),
 				(*bool)(unsafe.Pointer(getVal(2))),
 				(*bool)(unsafe.Pointer(getVal(3))))
 
-			// TShortCutEvent = procedure (var Msg: TWMKey; var Handled: Boolean) of object;
-		case TShortCutEvent: // func(msg *TWMKey, handled *bool)
+			// func(msg *TWMKey, handled *bool)
+		case TShortCutEvent:
 			v.(TShortCutEvent)(
 				(*TWMKey)(unsafe.Pointer(getVal(0))),
 				(*bool)(unsafe.Pointer(getVal(1))))
 
-			// TContextPopupEvent = procedure(Sender: TObject; MousePos: TPoint; var Handled: Boolean) of object;
-		case TContextPopupEvent: // func(sender IObject, mousePos TPoint, handled *bool)
+			// func(sender IObject, mousePos TPoint, handled *bool)
+		case TContextPopupEvent:
 			v.(TContextPopupEvent)(
 				ObjectFromInst(getVal(0)),
 				*(*TPoint)(unsafe.Pointer(getVal(1))),
 				(*bool)(unsafe.Pointer(getVal(2))))
 
-			//TDragOverEvent = procedure(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean) of object;
-		case TDragOverEvent: // func(sender, source IObject, x, y int32, state TDragState, accept *bool)
+			// func(sender, source IObject, x, y int32, state TDragState, accept *bool)
+		case TDragOverEvent:
 			v.(TDragOverEvent)(
 				ObjectFromInst(getVal(0)),
 				ObjectFromInst(getVal(1)),
@@ -315,38 +315,38 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				TDragState(getVal(4)),
 				(*bool)(unsafe.Pointer(getVal(5))))
 
-			//TDragDropEvent = procedure(Sender, Source: TObject; X, Y: Integer) of object;
-		case TDragDropEvent: //func(sender, source IObject, x, y int32)
+			//func(sender, source IObject, x, y int32)
+		case TDragDropEvent:
 			v.(TDragDropEvent)(
 				ObjectFromInst(getVal(0)),
 				ObjectFromInst(getVal(1)),
 				int32(getVal(2)),
 				int32(getVal(3)))
 
-			//TStartDragEvent = procedure(Sender: TObject;var DragObject: TDragObject) of object;
-		case TStartDragEvent: //func(sender IObject, dragObject *TDragObject)
+			//func(sender IObject, dragObject *TDragObject)
+		case TStartDragEvent:
 			v.(TStartDragEvent)(
 				ObjectFromInst(getVal(0)),
 				DragObjectFromInst(getVal(1)))
 
-			//TEndDragEvent = procedure(Sender, Target: TObject; X, Y: Integer) of object;
-		case TEndDragEvent: //func(sender, target IObject, x, y int32)
+			//func(sender, target IObject, x, y int32)
+		case TEndDragEvent:
 			v.(TEndDragEvent)(
 				ObjectFromInst(getVal(0)),
 				ObjectFromInst(getVal(1)),
 				int32(getVal(2)),
 				int32(getVal(3)))
 
-			//TDockDropEvent = procedure(Sender: TObject; Source: TDragDockObject; X, Y: Integer) of object;
-		case TDockDropEvent: // func(sender IObject, source *TDragDockObject, x, y int32)
+			// func(sender IObject, source *TDragDockObject, x, y int32)
+		case TDockDropEvent:
 			v.(TDockDropEvent)(
 				ObjectFromInst(getVal(0)),
 				DragDockObjectFromInst(getVal(1)),
 				int32(getVal(2)),
 				int32(getVal(3)))
 
-			//TDockOverEvent = procedure(Sender: TObject; Source: TDragDockObject; X, Y: Integer; State: TDragState; var Accept: Boolean) of object;
-		case TDockOverEvent: //func(sender IObject, source *TDragDockObject, x, y int32, state TDragState, accept *bool)
+			//func(sender IObject, source *TDragDockObject, x, y int32, state TDragState, accept *bool)
+		case TDockOverEvent:
 			v.(TDockOverEvent)(
 				ObjectFromInst(getVal(0)),
 				DragDockObjectFromInst(getVal(1)),
@@ -355,22 +355,22 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				TDragState(getVal(4)),
 				(*bool)(unsafe.Pointer(getVal(5))))
 
-			//TUnDockEvent = procedure(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean) of object;
-		case TUnDockEvent: //func(sender IObject, client *TControl, newTarget *TControl, allow *bool)
+			//func(sender IObject, client *TControl, newTarget *TControl, allow *bool)
+		case TUnDockEvent:
 			v.(TUnDockEvent)(
 				ObjectFromInst(getVal(0)),
 				ControlFromInst(getVal(1)),
 				ControlFromInst(getVal(2)),
 				(*bool)(unsafe.Pointer(getVal(3))))
 
-			//TStartDockEvent = procedure(Sender: TObject;var DragObject: TDragDockObject) of object;
-		case TStartDockEvent: //func(sender IObject, dragObject *TDragDockObject)
+			//func(sender IObject, dragObject *TDragDockObject)
+		case TStartDockEvent:
 			v.(TStartDockEvent)(
 				ObjectFromInst(getVal(0)),
 				DragDockObjectFromInst(getVal(1)))
 
-			//TGetSiteInfoEvent = procedure(Sender: TObject; DockClient: TControl; var InfluenceRect: TRect; MousePos: TPoint; var CanDock: Boolean) of object;
-		case TGetSiteInfoEvent: //func(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool)
+			//func(sender IObject, dockClient *TControl, influenceRect *TRect, mousePos TPoint, canDock *bool)
+		case TGetSiteInfoEvent:
 			v.(TGetSiteInfoEvent)(
 				ObjectFromInst(getVal(0)),
 				ControlFromInst(getVal(1)),
@@ -378,8 +378,8 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				*(*TPoint)(unsafe.Pointer(getVal(3))),
 				(*bool)(unsafe.Pointer(getVal(4))))
 
-			//TMouseWheelUpDownEvent = procedure(Sender: TObject; Shift: TShiftState; MousePos: TPoint; var Handled: Boolean) of object;
-		case TMouseWheelUpDownEvent: //func(sender IObject, shift TShiftState, mousePos TPoint, handled *bool)
+			//func(sender IObject, shift TShiftState, mousePos TPoint, handled *bool)
+		case TMouseWheelUpDownEvent:
 			v.(TMouseWheelUpDownEvent)(
 				ObjectFromInst(getVal(0)),
 				TShiftState(getVal(1)),
@@ -391,6 +391,93 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TMessageEvent)(
 				(*TMsg)(unsafe.Pointer(getVal(0))),
 				(*bool)(unsafe.Pointer(getVal(1))))
+
+			// ---- grid
+			//type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
+		case TMovedEvent:
+			v.(TMovedEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)))
+
+			//type TDrawCellEvent func(sender IObject, aCol, aRow int32, aRect TRect, state TGridDrawState)
+		case TDrawCellEvent:
+			v.(TDrawCellEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				*(*TRect)(unsafe.Pointer(getVal(3))),
+				TGridDrawState(getVal(4)))
+
+			//type TFixedCellClickEvent func(sender IObject, aCol, aRow int32)
+		case TFixedCellClickEvent:
+			v.(TFixedCellClickEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)))
+
+			//type TGetEditEvent func(sender IObject, aCol, aRow int32, value *string)
+		case TGetEditEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			v.(TGetEditEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(3))) = GoStrToDStr(str)
+
+			//type TSelectCellEvent func(sender IObject, aCol, aRow int32, canSelect *bool)
+		case TSelectCellEvent:
+			v.(TSelectCellEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				(*bool)(unsafe.Pointer(getVal(3))))
+
+			//type TSetEditEvent func(sender IObject, aCol, aRow int32, value string)
+		case TSetEditEvent:
+			v.(TSetEditEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				DStrToGoStr(getVal(3)))
+
+			// ---- headercontrol
+			//type TDrawSectionEvent func(headerControl *THeaderControl, section *THeaderSection, aRect TRect, pressed bool)
+		case TDrawSectionEvent:
+			v.(TDrawSectionEvent)(
+				HeaderControlFromInst(getVal(0)),
+				HeaderSectionFromInst(getVal(1)),
+				*(*TRect)(unsafe.Pointer(getVal(2))),
+				getVal(3) != 0)
+
+			//type TSectionNotifyEvent func(headerControl *THeaderControl, section *THeaderSection)
+		case TSectionNotifyEvent:
+			v.(TSectionNotifyEvent)(
+				HeaderControlFromInst(getVal(0)),
+				HeaderSectionFromInst(getVal(1)))
+
+			//type TSectionTrackEvent func(headerControl *THeaderControl, section *THeaderSection, width int32, state TSectionTrackState)
+		case TSectionTrackEvent:
+			v.(TSectionTrackEvent)(
+				HeaderControlFromInst(getVal(0)),
+				HeaderSectionFromInst(getVal(1)),
+				int32(getVal(2)),
+				TSectionTrackState(getVal(3)))
+
+			//type TSectionDragEvent func(sender IObject, fromSection, toSection *THeaderSection, allowDrag *bool)
+		case TSectionDragEvent:
+			v.(TSectionDragEvent)(
+				ObjectFromInst(getVal(0)),
+				HeaderSectionFromInst(getVal(1)),
+				HeaderSectionFromInst(getVal(2)),
+				(*bool)(unsafe.Pointer(getVal(3))))
+
+			//type TCustomSectionNotifyEvent func(headerControl *THeaderControl, section *THeaderSection)
+		case TCustomSectionNotifyEvent:
+			v.(TCustomSectionNotifyEvent)(
+				HeaderControlFromInst(getVal(0)),
+				HeaderSectionFromInst(getVal(1)))
 
 		default:
 		}

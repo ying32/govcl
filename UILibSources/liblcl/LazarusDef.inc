@@ -63,7 +63,7 @@ begin
 {$ENDIF}
 end;
 
-function Application_CreateForm(App: TApplication): TForm; extdecl;
+function Application_CreateForm(App: TApplication; AInitScale: LongBool): TForm; extdecl;
 begin
   App.CreateForm(TGoForm, Result);
 end;

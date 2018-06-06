@@ -5,9 +5,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/ying32/govcl/vcl"
 	"github.com/tryor/gdiplus"
 	"github.com/tryor/winapi"
+	"github.com/ying32/govcl/vcl"
 )
 
 var (
@@ -34,7 +34,7 @@ func main() {
 	vcl.Application.SetIconResId(3) // 具体资源id根据rsrc.exe编译的为准
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateFormFromBytes(gdipFormBytes, &GdipForm)
+	vcl.Application.CreateForm(gdipFormBytes, &GdipForm)
 	vcl.Application.Run()
 
 }

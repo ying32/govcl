@@ -720,6 +720,16 @@ begin
   AObj.AutoCloseUp := AValue;
 end;
 
+function ColorBox_GetCharCase(AObj: TColorBox): TEditCharCase; stdcall;
+begin
+  Result :=  AObj.CharCase;
+end;
+
+procedure ColorBox_SetCharCase(AObj: TColorBox; AValue: TEditCharCase); stdcall;
+begin
+  AObj.CharCase := AValue;
+end;
+
 function ColorBox_GetSelText(AObj: TColorBox): PChar; stdcall;
 begin
   Result :=  PChar(AObj.SelText);
@@ -1198,6 +1208,8 @@ exports
   ColorBox_SetAutoCompleteDelay,
   ColorBox_GetAutoCloseUp,
   ColorBox_SetAutoCloseUp,
+  ColorBox_GetCharCase,
+  ColorBox_SetCharCase,
   ColorBox_GetSelText,
   ColorBox_SetSelText,
   ColorBox_GetTextHint,

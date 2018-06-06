@@ -3,12 +3,19 @@ unit uComponents;
 interface
 
 uses
+  Winapi.GDIPAPI,
+  Winapi.GDIPOBJ,
   System.Classes,
   System.SysUtils,
   System.Generics.Collections;
 
 var
   uClassLists: TDictionary<string, TClass>;
+
+  procedure SetGlobalFormScaled(AValue: LongBool); stdcall;
+  function GetGlobalFormScaled: LongBool; stdcall;
+
+  procedure ScaledForm(AForm: TComponent);
 
 implementation
 
@@ -47,14 +54,20 @@ uses
   Vcl.Styles,
   Vcl.Mask,
   Vcl.CheckLst,
+  Vcl.Grids,
+  Vcl.ValEdit,
   Vcl.Samples.Gauges,
   Vcl.FileCtrl,
   ImageButton;
 
+var
+  uGlobalFormScaled: Boolean = False;
+
+
 //--------------------- Ô­DelphiResForm.incÄÚÈÝ
 
 const
-  ClassRefArrs: array[0..111] of TClass = (
+  ClassRefArrs: array[0..123] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -73,9 +86,31 @@ const
     TMargins,TPadding,TPaintBox,TTimer,TList,TGraphic,TComponent,TMonthCalColors,
     TParaAttributes,TTextAttributes,TIconOptions,TScrollBar,TShape,TBevel,TScrollBox,
     TCheckListBox,TGauge,TCustomHint,TImageButton,TFontDialog,TFindDialog, TReplaceDialog,TPageSetupDialog,
-    TPrinterSetupDialog
+    TPrinterSetupDialog,
+    TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
+    THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
+    TFlowPanel,TCoolBar,TCoolBands,TCoolBand
   );
 
+
+procedure SetGlobalFormScaled(AValue: LongBool);
+begin
+  uGlobalFormScaled := AValue;
+end;
+
+function GetGlobalFormScaled: LongBool;
+begin
+  Result := uGlobalFormScaled;
+end;
+
+procedure ScaledForm(AForm: TComponent);
+begin
+  if uGlobalFormScaled then
+  begin
+    if AForm is TForm then
+      (AForm as TForm).ScaleForPPI(Screen.PixelsPerInch)
+  end;
+end;
 
 procedure InitClassLists;
 var
@@ -85,12 +120,47 @@ begin
     uClassLists.AddOrSetValue(LB.ClassName, LB);
 end;
 
+exports
+  SetGlobalFormScaled,
+  GetGlobalFormScaled;
+
+
+procedure GidpInit;
+begin
+  // Initialize StartupInput structure
+  StartupInput.DebugEventCallback := nil;
+  StartupInput.SuppressBackgroundThread := False;
+  StartupInput.SuppressExternalCodecs   := False;
+  StartupInput.GdiplusVersion := 1;
+
+  GdiplusStartup(gdiplusToken, @StartupInput, nil);
+end;
+
+procedure GdipUnInit;
+begin
+  if Assigned(GenericSansSerifFontFamily) then
+    GenericSansSerifFontFamily.Free;
+  if Assigned(GenericSerifFontFamily) then
+    GenericSerifFontFamily.Free;
+  if Assigned(GenericMonospaceFontFamily) then
+    GenericMonospaceFontFamily.Free;
+  if Assigned(GenericTypographicStringFormatBuffer) then
+    GenericTypographicStringFormatBuffer.free;
+  if Assigned(GenericDefaultStringFormatBuffer) then
+    GenericDefaultStringFormatBuffer.Free;
+
+  GdiplusShutdown(gdiplusToken);
+end;
+
+
 initialization
+  GidpInit;
   uClassLists := TDictionary<string, TClass>.Create;
   InitClassLists;
 
 finalization
   uClassLists.Free;
+  GdipUnInit;
 
 
 end.

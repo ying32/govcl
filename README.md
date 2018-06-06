@@ -1,4 +1,6 @@
-## govcl: Go bindings Delphi VCL/Lazarus LCL
+## A cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
+
+## [QQ群号:263106281](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)   
 
 * [中文](https://github.com/ying32/govcl/blob/master/README_Zh-CN.md)   
 * [English](https://github.com/ying32/govcl/blob/master/README.md)   
@@ -14,7 +16,7 @@ Support win32, win64, linux64, macOS32 (linux and macOS only part of the compone
 **[See more screenshots](https://github.com/ying32/govcl/tree/master/Screenshot)**  
 
 
-`Go Version >= 1.9.0`  
+`Recommended Golang Version >= 1.9.0`  
 
 ### usage: 
 

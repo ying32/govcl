@@ -51,7 +51,13 @@ type
               geConstrainedResize, geDeactivate, geActivate,
               geHelp, geShortCut, geContextPopup, geDockDrop, geDragDrop,
               geDragOver, geEndDock, geGetSiteInfo, geMouseWheelDown,
-              geMouseWheelUp, geStartDock, geUnDock, geMessage, geEndDrag);
+              geMouseWheelUp, geStartDock, geUnDock, geMessage, geEndDrag,
+
+              geColumnMoved, geDrawCell, geFixedCellClick, geGetEditMask,
+              geGetEditText, geRowMoved, geSelectCell, geSetEditText, geTopLeftChanged,
+
+              geDrawSection, geSectionResize, geSectionTrack, geSectionDrag, geSectionEndDrag, geSectionCheck,
+              geSectionClick);
 
   TEventKey = packed record
     Sender: TObject;
@@ -170,6 +176,32 @@ type
     procedure OnStartDock(Sender: TObject; var DragObject: TDragDockObject);
     procedure OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
     procedure OnEndDrag(Sender, Target: TObject; X, Y: Integer);
+
+
+    // grid
+
+    procedure OnColumnMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Longint);
+    //procedure OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
+    procedure OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
+    procedure OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
+    procedure OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
+    procedure OnRowMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Integer);
+    procedure OnSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
+    procedure OnSetEditText(Sender: TObject; ACol, ARow: Integer; const Value: string);
+    procedure OnTopLeftChanged(Sender: TObject);
+
+
+
+    // headercontrol
+    //procedure OnDrawSection(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean);
+    //procedure OnSectionCheck(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+    procedure OnSectionClick(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+    procedure OnSectionDrag(Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean);
+    procedure OnSectionEndDrag(Sender: TObject);
+    procedure OnSectionResize(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+    procedure OnSectionTrack(HeaderControl: TCustomHeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState);
+
+
 
     procedure OnKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure OnKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -530,6 +562,106 @@ procedure TEventClass.OnHide(Sender: TObject);
 begin
   SendEvent(Sender, geHide, [Sender]);
 end;
+
+
+
+
+// grid
+procedure TEventClass.OnColumnMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Longint);
+begin
+  if IsColumn then
+    SendEvent(Sender, geColumnMoved, [Sender, FromIndex, ToIndex]);
+end;
+
+//procedure TEventClass.OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
+//begin
+//  SendEvent(Sender, geDrawCell, [Sender, ACol, ARow, Pointer(@ARect), PWord(@State)^]);
+//end;
+
+procedure TEventClass.OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
+begin
+  SendEvent(Sender, geFixedCellClick, [Sender, ACol, ARow]);
+end;
+
+procedure TEventClass.OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(Value);
+  SendEvent(Sender, geGetEditMask, [Sender, ACol, ARow, Pointer(@LS)]);
+  Value := LS;
+end;
+
+procedure TEventClass.OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(Value);
+  SendEvent(Sender, geGetEditText, [Sender, ACol, ARow, Pointer(@LS)]);
+  Value := LS;
+end;
+
+procedure TEventClass.OnRowMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Integer);
+begin
+  if not IsColumn then
+    SendEvent(Sender, geRowMoved, [Sender, FromIndex, ToIndex]);
+end;
+
+procedure TEventClass.OnSelectCell(Sender: TObject; ACol, ARow: Integer; var CanSelect: Boolean);
+begin
+  SendEvent(Sender, geSelectCell, [Sender, ACol, ARow, Pointer(@CanSelect)]);
+end;
+
+procedure TEventClass.OnSetEditText(Sender: TObject; ACol, ARow: Integer; const Value: string);
+begin
+  SendEvent(Sender, geSetEditText, [Sender, ACol, ARow, PChar(Value)]);
+end;
+
+procedure TEventClass.OnTopLeftChanged(Sender: TObject);
+begin
+  SendEvent(Sender, geTopLeftChanged, [Sender]);
+end;
+
+
+// headercontrol
+//procedure TEventClass.OnDrawSection(HeaderControl: THeaderControl; Section: THeaderSection; const Rect: TRect; Pressed: Boolean);
+//begin
+//  SendEvent(HeaderControl, geDrawSection, [HeaderControl, Section, Pointer(@Rect), Pressed]);
+//end;
+
+//procedure TEventClass.OnSectionCheck(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+//begin
+//  SendEvent(HeaderControl, geSectionCheck, [HeaderControl, Section]);
+//end;
+
+procedure TEventClass.OnSectionClick(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+begin
+  SendEvent(HeaderControl, geSectionClick, [HeaderControl, Section]);
+end;
+
+procedure TEventClass.OnSectionDrag(Sender: TObject; FromSection, ToSection: THeaderSection; var AllowDrag: Boolean);
+begin
+  SendEvent(Sender, geSectionClick, [Sender, FromSection, ToSection, Pointer(@AllowDrag)]);
+end;
+
+procedure TEventClass.OnSectionEndDrag(Sender: TObject);
+begin
+  SendEvent(Sender, geSectionEndDrag, [Sender]);
+end;
+
+procedure TEventClass.OnSectionResize(HeaderControl: TCustomHeaderControl; Section: THeaderSection);
+begin
+  SendEvent(HeaderControl, geSectionResize, [HeaderControl, Section]);
+end;
+
+procedure TEventClass.OnSectionTrack(HeaderControl: TCustomHeaderControl; Section: THeaderSection; Width: Integer; State: TSectionTrackState);
+begin
+  SendEvent(HeaderControl, geSectionTrack, [HeaderControl, Section, Width, Integer(State)]);
+end;
+
+
+
+
 
 procedure TEventClass.OnDestroy(Sender: TObject);
 begin

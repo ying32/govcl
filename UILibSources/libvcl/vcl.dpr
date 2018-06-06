@@ -48,7 +48,8 @@ uses
   Vcl.CheckLst,
   Vcl.Samples.Gauges,
   Vcl.FileCtrl,
-  //Vcl.Grids,
+  Vcl.Grids,
+  Vcl.ValEdit,
   uFormDesignerFile,
   uEventCallback in 'uEventCallback.pas',
   ufrmGo in 'ufrmGo.pas' {GoForm},
@@ -180,6 +181,18 @@ uses
 {$I PageSetupDialog.inc}
 {$I DragObject.inc}
 {$I DragDockObject.inc}
+{$I StringGrid.inc}
+{$I DrawGrid.inc}
+{$I ValueListEditor.inc}
+{$I HeaderControl.inc}
+{$I HeaderSection.inc}
+{$I HeaderSections.inc}
+{$I LabeledEdit.inc}
+{$I BoundLabel.inc}
+{$I FlowPanel.inc}
+{$I CoolBar.inc}
+{$I CoolBands.inc}
+{$I CoolBand.inc}
 
 begin
 end.

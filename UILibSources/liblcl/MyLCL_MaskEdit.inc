@@ -300,6 +300,16 @@ begin
   AObj.BorderStyle := AValue;
 end;
 
+function MaskEdit_GetCharCase(AObj: TMaskEdit): TEditCharCase; extdecl;
+begin
+  Result :=  AObj.CharCase;
+end;
+
+procedure MaskEdit_SetCharCase(AObj: TMaskEdit; AValue: TEditCharCase); extdecl;
+begin
+  AObj.CharCase := AValue;
+end;
+
 function MaskEdit_GetColor(AObj: TMaskEdit): TColor; extdecl;
 begin
   Result :=  AObj.Color;
@@ -1056,6 +1066,8 @@ exports
   MaskEdit_SetBiDiMode,
   MaskEdit_GetBorderStyle,
   MaskEdit_SetBorderStyle,
+  MaskEdit_GetCharCase,
+  MaskEdit_SetCharCase,
   MaskEdit_GetColor,
   MaskEdit_SetColor,
   MaskEdit_GetDoubleBuffered,

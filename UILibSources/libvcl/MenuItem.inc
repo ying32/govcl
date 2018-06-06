@@ -150,6 +150,16 @@ begin
   AObj.Bitmap := AValue;
 end;
 
+function MenuItem_GetBreak(AObj: TMenuItem): TMenuBreak; stdcall;
+begin
+  Result :=  AObj.Break;
+end;
+
+procedure MenuItem_SetBreak(AObj: TMenuItem; AValue: TMenuBreak); stdcall;
+begin
+  AObj.Break := AValue;
+end;
+
 function MenuItem_GetCaption(AObj: TMenuItem): PChar; stdcall;
 begin
   Result :=  PChar(AObj.Caption);
@@ -349,6 +359,8 @@ exports
   MenuItem_SetAutoHotkeys,
   MenuItem_GetBitmap,
   MenuItem_SetBitmap,
+  MenuItem_GetBreak,
+  MenuItem_SetBreak,
   MenuItem_GetCaption,
   MenuItem_SetCaption,
   MenuItem_GetChecked,

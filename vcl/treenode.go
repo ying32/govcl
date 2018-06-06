@@ -12,6 +12,7 @@ package vcl
 import (
 	. "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
+    "unsafe"
 )
 
 type TTreeNode struct {
@@ -148,11 +149,11 @@ func (t *TTreeNode) SetCut(value bool) {
     TreeNode_SetCut(t.instance, value)
 }
 
-func (t *TTreeNode) Data() uintptr {
+func (t *TTreeNode) Data() unsafe.Pointer {
     return TreeNode_GetData(t.instance)
 }
 
-func (t *TTreeNode) SetData(value uintptr) {
+func (t *TTreeNode) SetData(value unsafe.Pointer) {
     TreeNode_SetData(t.instance, value)
 }
 

@@ -9,7 +9,7 @@ func main() {
 	tools.RunWithMacOSApp()
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateFormFromBytes(mainFormBytes, &MainForm)
+	vcl.Application.CreateForm(mainFormBytes, &MainForm)
 	vcl.Application.Run()
 
 }

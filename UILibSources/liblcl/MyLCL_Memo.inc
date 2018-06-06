@@ -275,6 +275,16 @@ begin
   AObj.BorderStyle := AValue;
 end;
 
+function Memo_GetCharCase(AObj: TMemo): TEditCharCase; extdecl;
+begin
+  Result :=  AObj.CharCase;
+end;
+
+procedure Memo_SetCharCase(AObj: TMemo; AValue: TEditCharCase); extdecl;
+begin
+  AObj.CharCase := AValue;
+end;
+
 function Memo_GetColor(AObj: TMemo): TColor; extdecl;
 begin
   Result :=  AObj.Color;
@@ -1059,6 +1069,8 @@ exports
   Memo_SetBiDiMode,
   Memo_GetBorderStyle,
   Memo_SetBorderStyle,
+  Memo_GetCharCase,
+  Memo_SetCharCase,
   Memo_GetColor,
   Memo_SetColor,
   Memo_GetDoubleBuffered,

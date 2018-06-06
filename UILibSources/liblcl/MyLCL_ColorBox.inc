@@ -591,6 +591,16 @@ begin
   EventClass.Add(AObj, geMouseLeave, AEventId);
 end;
 
+function ColorBox_GetCharCase(AObj: TColorBox): TEditCharCase; extdecl;
+begin
+  Result :=  AObj.CharCase;
+end;
+
+procedure ColorBox_SetCharCase(AObj: TColorBox; AValue: TEditCharCase); extdecl;
+begin
+  AObj.CharCase := AValue;
+end;
+
 function ColorBox_GetSelText(AObj: TColorBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.SelText);
@@ -986,6 +996,8 @@ exports
   ColorBox_SetOnKeyUp,
   ColorBox_SetOnMouseEnter,
   ColorBox_SetOnMouseLeave,
+  ColorBox_GetCharCase,
+  ColorBox_SetCharCase,
   ColorBox_GetSelText,
   ColorBox_SetSelText,
   ColorBox_GetCanvas,

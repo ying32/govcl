@@ -54,12 +54,14 @@ uses
   MaskEdit,
   uLinkLabel,
   ImageButton,
+  Grids,
+  ValEdit,
   Gauges;
 
 {$I LazarusExtDef.inc}
 
 const
-  ClassRefArrs: array[0..95] of TClass = (
+  ClassRefArrs: array[0..107] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -78,7 +80,10 @@ const
     {TMargins,TPadding,}TPaintBox,TTimer,TList,TGraphic,TComponent,{TMonthCalColors,}
     {TParaAttributes,TTextAttributes,}TIconOptions,TScrollBar,TShape,TBevel,TScrollBox,
     TCheckListBox,TGauge{,TCustomHint},TImageButton,TFontDialog,TFindDialog,TReplaceDialog,TPageSetupDialog,
-    TPrinterSetupDialog
+    TPrinterSetupDialog,
+    TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
+    THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
+    TFlowPanel,TCoolBar,TCoolBands,TCoolBand
   );
 
 procedure InitClassLists;

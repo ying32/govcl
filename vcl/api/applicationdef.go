@@ -5,8 +5,8 @@ func Application_Instance() uintptr {
 	return ret
 }
 
-func Application_CreateForm(app uintptr) uintptr {
-	ret, _, _ := application_CreateForm.Call(app)
+func Application_CreateForm(app uintptr, initScale bool) uintptr {
+	ret, _, _ := application_CreateForm.Call(app, GoBoolToDBool(initScale))
 	return ret
 }
 

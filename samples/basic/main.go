@@ -3,8 +3,17 @@ package main
 import (
 	"github.com/ying32/govcl/vcl"
 
+	"fmt"
+
 	"github.com/ying32/govcl/vcl/types"
 )
+
+type TForm1 struct {
+	*vcl.TForm
+	Button1 *vcl.TButton
+}
+
+var form1 *TForm1
 
 func main() {
 
@@ -22,11 +31,23 @@ func main() {
 		*CanClose = vcl.MessageDlg("是否退出？", types.MtConfirmation, types.MbYes, types.MbNo) == types.IdYes
 	})
 
+	vcl.Application.CreateForm(&form1)
+
 	btn := vcl.NewButton(mainForm)
 	btn.SetParent(mainForm)
-	btn.SetCaption("按钮1")
+	btn.SetCaption("窗口1")
 	btn.SetLeft(50)
 	btn.SetTop(50)
+	btn.SetOnClick(func(sender vcl.IObject) {
+		form1.Show()
+	})
 
 	vcl.Application.Run()
+}
+
+func (f *TForm1) OnForm1Create(sender vcl.IObject) {
+	fmt.Println("onCreate")
+	f.Button1 = vcl.NewButton(f)
+	f.Button1.SetParent(f)
+	f.Button1.SetCaption("我是按钮")
 }

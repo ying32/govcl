@@ -8,7 +8,7 @@ import (
 )
 
 func (m *TForm1) OnForm1Create(sender vcl.IObject) {
-	fmt.Println(Form1.Caption())
+	fmt.Println(Form1.Caption(), m.PixelsPerInch())
 	Form1.Button1.SetOnClick(func(sender vcl.IObject) {
 		//vcl.ShowMessage("Hello!")
 		jpg := vcl.NewJPEGImage()

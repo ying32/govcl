@@ -301,7 +301,7 @@ begin
     bsDisabled :
       begin
         if FImageCount = 4 then
-          PngBrushCopy(R, Rect(LNewWidth * 2, 0, LNewWidth * 4, LNewHeight))
+          PngBrushCopy(R, Rect(LNewWidth * 3, 0, LNewWidth * 4, LNewHeight))
         else  if FImageCount > 0 then
           PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
       end;

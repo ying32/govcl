@@ -24,9 +24,16 @@ begin
   Result := Application;
 end;
 
-function Application_CreateForm(App: TApplication): TGoForm; stdcall;
+function Application_CreateForm(App: TApplication; AInitScale: LongBool): TGoForm; stdcall;
 begin
-  App.CreateForm(TGoForm, Result);
+  LockInitScale;
+  try
+    SetInitScale(AInitScale);
+    App.CreateForm(TGoForm, Result);
+    SetInitScale(False);
+  finally
+    UnLockInitScale;
+  end;
 end;
 
 procedure RemoveAllForms;

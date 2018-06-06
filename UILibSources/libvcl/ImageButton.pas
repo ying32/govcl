@@ -1,7 +1,7 @@
 ///=======================================================
 /// 功能：图像状态按钮
 ///
-/// 注： 一般使推荐使用png图片，当然jpg、bmp也是可以的。
+/// 注： 一般使推荐使用png图片，当然jpg、bmp也是可以的，控件暂时只支持windows。
 ///      一张png图的排序为 Normal, Hover, Down, Disabled，其中
 ///      Disabled状态可忽略
 ///
@@ -9,18 +9,24 @@
 
 unit ImageButton;
 
+// GDI+
+{$DEFINE UseGDIPlus}
+
 interface
 
 uses
+{$IFDEF UseGDIPlus}
+  Winapi.Windows,
+  Winapi.GDIPAPI,
+  Winapi.GDIPOBJ,
+{$ENDIF}
   Winapi.Messages,
   System.Classes,
-//  System.SysUtils,
+  System.Sysutils,
   System.Types,
-//  Vcl.StdCtrls,
   Vcl.Controls,
   Vcl.Graphics,
-  Vcl.Forms
-  ;
+  Vcl.Forms;
 
 type
 
@@ -37,6 +43,11 @@ type
     FWordwarp: Boolean;
     FModalResult: TModalResult;
     FMouseLeave: Boolean;
+    FImgWidth: Integer;
+    FImgHeight: Integer;
+  {$IFDEF UseGDIPlus}
+    FGPBitmap: TGPImage;
+  {$ENDIF}
     procedure SetPicture(const Value: TPicture);
     procedure OnPictureChanged(Sender: TObject);
     procedure OnFontChanged(Sender: TObject);
@@ -47,6 +58,9 @@ type
     procedure SetShowCaption(const Value: Boolean);
     procedure SetFont(const Value: TFont);
     procedure SetWordwarp(const Value: Boolean);
+  {$IFDEF UseGDIPlus}
+    procedure AssGPBitmap;
+  {$ENDIF}
   protected
     procedure MouseDown(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
@@ -110,6 +124,9 @@ uses
 constructor TImageButton.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
+{$IFDEF UseGDIPlus}
+  FGPBitmap := TGPImage.Create;
+{$ENDIF}
   FPicture := TPicture.Create;
   FPicture.OnChange := OnPictureChanged;
   FFont := TFont.Create;
@@ -127,8 +144,36 @@ destructor TImageButton.Destroy;
 begin
   FFont.Free;
   FPicture.Free;
+{$IFDEF UseGDIPlus}
+  FGPBitmap.Free;
+{$ENDIF}
   inherited;
 end;
+
+{$IFDEF UseGDIPlus}
+procedure TImageButton.AssGPBitmap;
+var
+  Adapter: TStreamAdapter;
+  Mem: TMemoryStream;
+begin
+  if Picture.Graphic <> nil then
+  begin
+    if FGPBitmap <> nil then
+    begin
+      FGPBitmap.Free;
+      Mem := TMemoryStream.Create;
+      try
+        Picture.Graphic.SaveToStream(Mem);
+        Mem.Position := 0;
+        Adapter := TStreamAdapter.Create(Mem);
+        FGPBitmap := TGPImage.Create(Adapter);
+      finally
+        Mem.Free;
+      end;
+    end;
+  end;
+end;
+{$ENDIF}
 
 procedure TImageButton.MouseDown(Button: TMouseButton; Shift: TShiftState; X,
   Y: Integer);
@@ -174,11 +219,19 @@ end;
 
 procedure TImageButton.OnPictureChanged(Sender: TObject);
 begin
+  if Picture.Graphic <> nil then
+  begin
+    FImgWidth := FPicture.Width div FImageCount;
+    FImgHeight := FPicture.Height;
+  end;
   if AutoSize and (Picture.Width > 0) and (Picture.Height > 0) then
   begin
     ResetSize;
     SetEnabled(True);
   end;
+{$IFDEF UseGDIPlus}
+  AssGPBitmap;
+{$ENDIF}
   Invalidate;
 end;
 
@@ -188,9 +241,9 @@ begin
   if (FPicture.Graphic <> nil) and ((FPicture.Width > 0) and (FPicture.Height > 0)) then
   begin
     if Align in [alNone, alLeft, alRight] then
-      NewWidth := FPicture.Width div FImageCount;
+      NewWidth := FImgWidth;
     if Align in [alNone, alTop, alBottom] then
-      NewHeight := FPicture.Height;
+      NewHeight := FImgHeight;
   end;
 end;
 
@@ -204,17 +257,18 @@ begin
 end;
 
 procedure TImageButton.Paint;
+{$IFDEF UseGDIPlus}
+const
+  ColorMatrix2: TColorMatrix = (
+    (0.229, 0.229, 0.229, 0.0, 0.0),
+    (0.587, 0.587, 0.587, 0.0, 0.0),
+    (0.144, 0.144, 0.144, 0.0, 0.0),
+    (0.0,  0.0,  0.0,  0.5, 0.0),
+    (0.0,  0.0,  0.0,  0.0, 1.0));
 
-//const
-//  ColorMatrix2: TColorMatrix = (
-//    (0.229, 0.229, 0.229, 0.0, 0.0),
-//    (0.587, 0.587, 0.587, 0.0, 0.0),
-//    (0.144, 0.144, 0.144, 0.0, 0.0),
-//    (0.0,  0.0,  0.0,  0.5, 0.0),
-//    (0.0,  0.0,  0.0,  0.0, 1.0));
-
-//var
-//  GP: TGPGraphics;
+var
+  GP: TGPGraphics;
+{$ENDIF}
 
   procedure DrawText;
   var
@@ -232,37 +286,41 @@ procedure TImageButton.Paint;
   end;
 
   procedure PngBrushCopy(const Dest, Source: TRect);
-//  var
-//    R:TGPRectF;
-//    LImageAttributes: TGPImageAttributes;
+  {$IFDEF UseGDIPlus}
+  var
+    R:TGPRectF;
+    LImageAttributes: TGPImageAttributes;
   begin
-//    R.X := 0;
-//    R.Y := 0;
-//    R.Width := Dest.Width;
-//    R.Height := Dest.Height;
-//    if FState = bsDisabled then
-//    begin
-//      LImageAttributes := TGPImageAttributes.Create;
-//      try
-//        LImageAttributes.SetColorMatrix(ColorMatrix2);
-//        GP.DrawImage(FGPBitmap, R, Source.Left, Source.Top, Source.Width, Source.Height, UnitPixel, LImageAttributes);
-//      finally
-//        LImageAttributes.Free;
-//      end;
-//    end
-//    else
-//      GP.DrawImage(FGPBitmap, R, Source.Left, Source.Top, Source.Width, Source.Height, UnitPixel);
-//    Canvas.Draw();
+    R.X := 0;
+    R.Y := 0;
+    R.Width := Dest.Width;
+    R.Height := Dest.Height;
+    if FState = bsDisabled then
+    begin
+      LImageAttributes := TGPImageAttributes.Create;
+      try
+        LImageAttributes.SetColorMatrix(ColorMatrix2);
+        GP.DrawImage(FGPBitmap, R, Source.Left, Source.Top, Source.Width, Source.Height, UnitPixel, LImageAttributes);
+      finally
+        LImageAttributes.Free;
+      end;
+    end
+    else
+      GP.DrawImage(FGPBitmap, R, Source.Left, Source.Top, Source.Width, Source.Height, UnitPixel);
+  end;
+  {$ELSE}
+  begin
     Canvas.Draw(-Source.Left, Dest.Top , FPicture.Graphic);
   end;
+  {$ENDIF}
 
 var
   R: TRect;
-  LNewWidth, LNewHeight: Integer;
+//  LNewWidth, LNewHeight: Integer;
 begin
   inherited Paint;
 
-  if not Visible then Exit;
+
   if csDesigning in ComponentState then
   begin
     with inherited Canvas do
@@ -271,7 +329,9 @@ begin
       Brush.Style := bsClear;
       Rectangle(0, 0, Width, Height);
     end;
-  end;
+  end else
+  if not Visible then
+    Exit;
 
   if FPicture.Graphic = nil then
   begin
@@ -279,35 +339,41 @@ begin
     Exit;
   end;
   R := ClientRect;
-  LNewWidth := Width;
-  LNewHeight := Height;
-  if (LNewWidth = 0) or (LNewHeight = 0) then
+//  LNewWidth := Width;
+//  LNewHeight := Height;
+  if (FImgWidth = 0) or (FImgHeight = 0) then
     Exit;
+{$IFDEF UseGDIPlus}
+  GP := TGPGraphics.Create(Canvas.Handle);
+{$ENDIF}
   case FState of
     bsNormal :
-       PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight));
+       PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight));
     bsHover :
       begin
         if FImageCount < 2 then
-          PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
+          PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight))
         else
-          PngBrushCopy(R, Rect(LNewWidth, 0, LNewWidth * 2, LNewHeight))
+          PngBrushCopy(R, Rect(FImgWidth, 0, FImgWidth * 2, FImgHeight))
       end;
     bsDown :
       begin
         if FImageCount < 3 then
-          PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
+          PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight))
         else
-          PngBrushCopy(R, Rect(LNewWidth * 2, 0, LNewWidth * 3, LNewHeight));
+          PngBrushCopy(R, Rect(FImgWidth * 2, 0, FImgWidth * 3, FImgHeight));
       end;
     bsDisabled :
       begin
         if FImageCount = 4 then
-          PngBrushCopy(R, Rect(LNewWidth * 2, 0, LNewWidth * 4, LNewHeight))
+          PngBrushCopy(R, Rect(FImgWidth * 3, 0, FImgWidth * 4, FImgHeight))
         else  if FImageCount > 0 then
-          PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
+          PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight))
       end;
   end;
+{$IFDEF UseGDIPlus}
+  GP.Free;
+{$ENDIF}
   DrawText;
 end;
 
@@ -316,9 +382,9 @@ begin
   if (FPicture.Graphic <> nil) and ((FPicture.Width > 0) and (FPicture.Height > 0)) then
   begin
     if Align in [alNone, alLeft, alRight] then
-      Width := FPicture.Width div FImageCount;
+      Width := FImgWidth;
     if Align in [alNone, alTop, alBottom] then
-      Height := FPicture.Height;
+      Height := FImgHeight;
   end;
 end;
 

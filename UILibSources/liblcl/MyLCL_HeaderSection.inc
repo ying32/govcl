@@ -1,0 +1,177 @@
+
+//----------------------------------------
+// 代码由GenlibLcl工具自动生成。
+// Copyright © ying32. All Rights Reserved.
+//
+//----------------------------------------
+
+function HeaderSection_Create(AOwner: TCollection): THeaderSection; extdecl;
+begin
+  Result :=  THeaderSection.Create(AOwner);
+end;
+
+procedure HeaderSection_Free(AObj: THeaderSection); extdecl;
+begin
+  AObj.Free;
+end;
+
+procedure HeaderSection_Assign(AObj: THeaderSection; Source: TPersistent); extdecl;
+begin
+  AObj.Assign(Source);
+end;
+
+function HeaderSection_GetNamePath(AObj: THeaderSection): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.GetNamePath);
+end;
+
+function HeaderSection_ClassType(AObj: THeaderSection): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
+function HeaderSection_ClassName(AObj: THeaderSection): PChar; extdecl;
+begin
+  Result :=  ToPChar(AObj.ClassName);
+end;
+
+function HeaderSection_InstanceSize(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function HeaderSection_InheritsFrom(AObj: THeaderSection; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
+end;
+
+function HeaderSection_Equals(AObj: THeaderSection; Obj: TObject): LongBool; extdecl;
+begin
+  Result :=  AObj.Equals(Obj);
+end;
+
+function HeaderSection_GetHashCode(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function HeaderSection_ToString(AObj: THeaderSection): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function HeaderSection_GetLeft(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.Left;
+end;
+
+function HeaderSection_GetRight(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.Right;
+end;
+
+function HeaderSection_GetAlignment(AObj: THeaderSection): TAlignment; extdecl;
+begin
+  Result :=  AObj.Alignment;
+end;
+
+procedure HeaderSection_SetAlignment(AObj: THeaderSection; AValue: TAlignment); extdecl;
+begin
+  AObj.Alignment := AValue;
+end;
+
+function HeaderSection_GetImageIndex(AObj: THeaderSection): TImageIndex; extdecl;
+begin
+  Result :=  AObj.ImageIndex;
+end;
+
+procedure HeaderSection_SetImageIndex(AObj: THeaderSection; AValue: TImageIndex); extdecl;
+begin
+  AObj.ImageIndex := AValue;
+end;
+
+function HeaderSection_GetMaxWidth(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.MaxWidth;
+end;
+
+procedure HeaderSection_SetMaxWidth(AObj: THeaderSection; AValue: Integer); extdecl;
+begin
+  AObj.MaxWidth := AValue;
+end;
+
+function HeaderSection_GetMinWidth(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.MinWidth;
+end;
+
+procedure HeaderSection_SetMinWidth(AObj: THeaderSection; AValue: Integer); extdecl;
+begin
+  AObj.MinWidth := AValue;
+end;
+
+function HeaderSection_GetText(AObj: THeaderSection): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Text);
+end;
+
+procedure HeaderSection_SetText(AObj: THeaderSection; AValue: PChar); extdecl;
+begin
+  AObj.Text := AValue;
+end;
+
+function HeaderSection_GetWidth(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.Width;
+end;
+
+procedure HeaderSection_SetWidth(AObj: THeaderSection; AValue: Integer); extdecl;
+begin
+  AObj.Width := AValue;
+end;
+
+function HeaderSection_GetIndex(AObj: THeaderSection): Integer; extdecl;
+begin
+  Result :=  AObj.Index;
+end;
+
+procedure HeaderSection_SetIndex(AObj: THeaderSection; AValue: Integer); extdecl;
+begin
+  AObj.Index := AValue;
+end;
+
+function HeaderSection_StaticClassType: TClass; extdecl;
+begin
+  Result := THeaderSection;
+end;
+
+exports
+  HeaderSection_Create,
+  HeaderSection_Free,
+  HeaderSection_Assign,
+  HeaderSection_GetNamePath,
+  HeaderSection_ClassType,
+  HeaderSection_ClassName,
+  HeaderSection_InstanceSize,
+  HeaderSection_InheritsFrom,
+  HeaderSection_Equals,
+  HeaderSection_GetHashCode,
+  HeaderSection_ToString,
+  HeaderSection_GetLeft,
+  HeaderSection_GetRight,
+  HeaderSection_GetAlignment,
+  HeaderSection_SetAlignment,
+  HeaderSection_GetImageIndex,
+  HeaderSection_SetImageIndex,
+  HeaderSection_GetMaxWidth,
+  HeaderSection_SetMaxWidth,
+  HeaderSection_GetMinWidth,
+  HeaderSection_SetMinWidth,
+  HeaderSection_GetText,
+  HeaderSection_SetText,
+  HeaderSection_GetWidth,
+  HeaderSection_SetWidth,
+  HeaderSection_GetIndex,
+  HeaderSection_SetIndex,
+  HeaderSection_StaticClassType;
+
