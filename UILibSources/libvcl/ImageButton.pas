@@ -22,6 +22,7 @@ uses
 {$ENDIF}
   Winapi.Messages,
   System.Classes,
+  System.Sysutils,
   System.Types,
   Vcl.Controls,
   Vcl.Graphics,
@@ -42,6 +43,8 @@ type
     FWordwarp: Boolean;
     FModalResult: TModalResult;
     FMouseLeave: Boolean;
+    FImgWidth: Integer;
+    FImgHeight: Integer;
   {$IFDEF UseGDIPlus}
     FGPBitmap: TGPImage;
   {$ENDIF}
@@ -216,6 +219,11 @@ end;
 
 procedure TImageButton.OnPictureChanged(Sender: TObject);
 begin
+  if Picture.Graphic <> nil then
+  begin
+    FImgWidth := FPicture.Width div FImageCount;
+    FImgHeight := FPicture.Height;
+  end;
   if AutoSize and (Picture.Width > 0) and (Picture.Height > 0) then
   begin
     ResetSize;
@@ -233,9 +241,9 @@ begin
   if (FPicture.Graphic <> nil) and ((FPicture.Width > 0) and (FPicture.Height > 0)) then
   begin
     if Align in [alNone, alLeft, alRight] then
-      NewWidth := FPicture.Width div FImageCount;
+      NewWidth := FImgWidth;
     if Align in [alNone, alTop, alBottom] then
-      NewHeight := FPicture.Height;
+      NewHeight := FImgHeight;
   end;
 end;
 
@@ -308,7 +316,7 @@ var
 
 var
   R: TRect;
-  LNewWidth, LNewHeight: Integer;
+//  LNewWidth, LNewHeight: Integer;
 begin
   inherited Paint;
 
@@ -331,36 +339,36 @@ begin
     Exit;
   end;
   R := ClientRect;
-  LNewWidth := Width;
-  LNewHeight := Height;
-  if (LNewWidth = 0) or (LNewHeight = 0) then
+//  LNewWidth := Width;
+//  LNewHeight := Height;
+  if (FImgWidth = 0) or (FImgHeight = 0) then
     Exit;
 {$IFDEF UseGDIPlus}
   GP := TGPGraphics.Create(Canvas.Handle);
 {$ENDIF}
   case FState of
     bsNormal :
-       PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight));
+       PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight));
     bsHover :
       begin
         if FImageCount < 2 then
-          PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
+          PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight))
         else
-          PngBrushCopy(R, Rect(LNewWidth, 0, LNewWidth * 2, LNewHeight))
+          PngBrushCopy(R, Rect(FImgWidth, 0, FImgWidth * 2, FImgHeight))
       end;
     bsDown :
       begin
         if FImageCount < 3 then
-          PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
+          PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight))
         else
-          PngBrushCopy(R, Rect(LNewWidth * 2, 0, LNewWidth * 3, LNewHeight));
+          PngBrushCopy(R, Rect(FImgWidth * 2, 0, FImgWidth * 3, FImgHeight));
       end;
     bsDisabled :
       begin
         if FImageCount = 4 then
-          PngBrushCopy(R, Rect(LNewWidth * 3, 0, LNewWidth * 4, LNewHeight))
+          PngBrushCopy(R, Rect(FImgWidth * 3, 0, FImgWidth * 4, FImgHeight))
         else  if FImageCount > 0 then
-          PngBrushCopy(R, TRect.Create(Point(0, 0), LNewWidth, LNewHeight))
+          PngBrushCopy(R, TRect.Create(Point(0, 0), FImgWidth, FImgHeight))
       end;
   end;
 {$IFDEF UseGDIPlus}
@@ -374,9 +382,9 @@ begin
   if (FPicture.Graphic <> nil) and ((FPicture.Width > 0) and (FPicture.Height > 0)) then
   begin
     if Align in [alNone, alLeft, alRight] then
-      Width := FPicture.Width div FImageCount;
+      Width := FImgWidth;
     if Align in [alNone, alTop, alBottom] then
-      Height := FPicture.Height;
+      Height := FImgHeight;
   end;
 end;
 
@@ -421,6 +429,8 @@ begin
     if FImageCount > 4 then
       FImageCount := 4;
     ResetSize;
+    OutputDebugString(PChar(Format('Width=%d, Height=%d, FImageCount=%d, %d, %d',
+     [Width, Height, FImageCount, FImgWidth, FImgHeight])));
     Invalidate;
   end;
 end;
