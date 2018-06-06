@@ -15,7 +15,7 @@ func main() {
 	mainForm.SetHeight(500)
 	mainForm.WorkAreaCenter()
 	mainForm.SetCaption("九九乘法表")
-
+	mainForm.ScaleSelf()
 	grid := vcl.NewStringGrid(mainForm)
 	grid.SetParent(mainForm)
 	grid.SetAlign(types.AlClient)
