@@ -6,6 +6,8 @@ import (
 	. "github.com/ying32/govcl/vcl/api"
 )
 
+var globalFormScaled bool = false
+
 /*
  CreateForm 一般不建议使用 NewForm，而优先使用CreateForm
  这里要做兼容
@@ -57,6 +59,7 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 
 // SetFormScaled 设置全局窗口的Scaled
 func (a *TApplication) SetFormScaled(val bool) {
+	globalFormScaled = val
 	SetGlobalFormScaled(val)
 }
 
