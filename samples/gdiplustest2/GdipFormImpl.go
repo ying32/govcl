@@ -6,12 +6,12 @@ package main
 import (
 	"fmt"
 
-	"github.com/ying32/govcl/vcl"
 	"github.com/tryor/gdiplus"
 	"github.com/tryor/winapi"
+	"github.com/ying32/govcl/vcl"
 )
 
-func (f *TGdipForm) OnGdipFormCreate(sender vcl.IObject) {
+func (f *TGdipForm) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("OnCreate")
 
 }
@@ -234,7 +234,7 @@ func (f *TGdipForm) DrawText(s string, top int, g *gdiplus.Graphics, family *gdi
 	g.FillPath(brush2, path)
 }
 
-func (f *TGdipForm) OnGdipFormPaint(vcl.IObject) {
+func (f *TGdipForm) OnFormPaint(vcl.IObject) {
 	fmt.Println("OnPaint")
 	f.UpdateLayer()
 }

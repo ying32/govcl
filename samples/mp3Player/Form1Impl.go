@@ -13,12 +13,12 @@ var (
 	bassPlayer *bass.TBass
 )
 
-func (f *TForm1) OnForm1Create(sender vcl.IObject) {
+func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	bassPlayer = bass.NewBass()
 	f.Timer1.SetEnabled(true)
 }
 
-func (f *TForm1) OnForm1Destroy(sender vcl.IObject) {
+func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 	bassPlayer.Close()
 	bass.BassFree()
 }

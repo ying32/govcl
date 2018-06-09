@@ -3,9 +3,9 @@
    感觉有点蹩脚，暂无好办法替代。
 
    事件名命名的规则：
-     On + 组件名 + 事件，相关支持的事件见： _events中
+     On + 组件名 + 事件，TForm特殊性，固定为名称为Form， 相关支持的事件见： _events中
    例如窗口建完后：
-     func (f *TForm1) OnForm1Create(sender vcl.IObject)
+     func (f *TForm1) OnFormCreate(sender vcl.IObject)
    又如按钮：
      func (f *TForm1) OnButton1Click(sender vcl.IObject)
 
@@ -168,16 +168,25 @@ func associatedEvents(vv reflect.Value, comps []tComponentItem) {
 		v, ok := eventMethods[fmt.Sprintf("On%s%s", name, event)]
 		return v, ok
 	}
+
+	// 因为TForm的特殊性，所以需要重新命名下
+	realName := func(ii int, name string) string {
+		if ii > 0 {
+			return name
+		}
+		return "Form"
+	}
+
 	// 遍沥组件，找寻方法
 	for i, item := range comps {
 		if item.Name != "" {
 			for k, v := range _events {
-				if m, ok := findMethod(item.Name, k); ok {
-					callx := v.call1
+				if m, ok := findMethod(realName(i, item.Name), k); ok {
+					callProc := v.call1
 					if (i == 0) && k == "Close" {
-						callx = v.call2
+						callProc = v.call2
 					}
-					addNotifyEvent(vv, iifstr(i == 0, "TForm", item.Name), m, item.Component, k, callx)
+					addNotifyEvent(vv, iifstr(i == 0, "TForm", item.Name), m, item.Component, k, callProc)
 				}
 			}
 		}
@@ -185,17 +194,17 @@ func associatedEvents(vv reflect.Value, comps []tComponentItem) {
 	// 一些特殊的，比如Application
 	addApplicationNotifyEvent(vv, eventMethods)
 	// 最后调用OnCreate
-	callFormCreate(vv, comps[0].Name)
+	callFormCreate(vv)
 }
 
-func callFormCreate(vv reflect.Value, name string) {
+func callFormCreate(vv reflect.Value) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("callFormCreate ERROR: ", err)
 		}
 	}()
 	// 查找默认的Form创建，命名规则以 On+组件名+方法名
-	m := vv.MethodByName(fmt.Sprintf("On%sCreate", name))
+	m := vv.MethodByName(fmt.Sprintf("OnFormCreate"))
 	if m.IsValid() {
 		m.Call([]reflect.Value{vv})
 	}

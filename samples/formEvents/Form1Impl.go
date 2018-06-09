@@ -9,7 +9,7 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
-func (f *TForm1) OnForm1Create(object vcl.IObject) {
+func (f *TForm1) OnFormCreate(object vcl.IObject) {
 	fmt.Println("OnForm1Create被调用了:", object.Instance())
 	vcl.Application.SetTitle("我是新标题")
 
@@ -54,28 +54,28 @@ func (f *TForm1) OnCheckBox1Click(sender vcl.IObject) {
 	f.Button1.SetEnabled(f.CheckBox1.Checked())
 }
 
-func (f *TForm1) OnForm1Click(sender vcl.IObject) {
+func (f *TForm1) OnFormClick(sender vcl.IObject) {
 	fmt.Println("OnForm1Click")
 }
 
-func (f *TForm1) OnForm1Destroy(sender vcl.IObject) {
+func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 	fmt.Println("OnForm1Destroy")
 }
 
-func (f *TForm1) OnForm1KeyDown(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
+func (f *TForm1) OnFormKeyDown(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
 	fmt.Println("OnForm1KeyDown:", *key, ", ", shift)
 }
 
-func (f *TForm1) OnForm1MouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
+func (f *TForm1) OnFormMouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 	fmt.Println("OnForm1MouseDown:", button, ", ", shift, ", ", x, ", ", y)
 }
 
-func (f *TForm1) OnForm1CloseQuery(sender vcl.IObject, canClose *bool) {
+func (f *TForm1) OnFormCloseQuery(sender vcl.IObject, canClose *bool) {
 	fmt.Println("OnForm1CloseQuery")
 	//*canClose = false
 }
 
-func (f *TForm1) OnForm1Close(sender vcl.IObject, action *types.TCloseAction) {
+func (f *TForm1) OnFormClose(sender vcl.IObject, action *types.TCloseAction) {
 	fmt.Println("OnForm1Close")
 	//*canClose = false
 }

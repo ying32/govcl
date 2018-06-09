@@ -36,7 +36,7 @@ var (
 	curImageIndex int      // 当前浏览的图片索引
 )
 
-func (f *TMainForm) OnMainFormCreate(sender vcl.IObject) {
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	hookMainFormWndPrc()
 
 	f.SetAllowDropFiles(true)
@@ -60,7 +60,7 @@ func (f *TMainForm) OnMainFormCreate(sender vcl.IObject) {
 	// 调试用
 }
 
-func (f *TMainForm) OnMainFormDestroy(sender vcl.IObject) {
+func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
 	unHookMainFormWndPrc()
 
 	f.SetAllowDropFiles(false)
@@ -72,7 +72,7 @@ func (f *TMainForm) OnPicChanged(sender vcl.IObject) {
 	fmt.Println("图片改变")
 }
 
-func (f *TMainForm) OnMainFormMouseWheel(sender vcl.IObject, shift types.TShiftState, wheelDelta, x, y int32, handled *bool) {
+func (f *TMainForm) OnFormMouseWheel(sender vcl.IObject, shift types.TShiftState, wheelDelta, x, y int32, handled *bool) {
 	if wheelDelta > 0 {
 		f.zoom(1)
 	} else {
@@ -256,7 +256,7 @@ func (f *TMainForm) loadImage(aFileName string) {
 
 }
 
-func (f *TMainForm) OnMainFormResize(sender vcl.IObject) {
+func (f *TMainForm) OnFormResize(sender vcl.IObject) {
 	// 首次加载后居中
 	if isAutoCenter {
 		fmt.Println("isAutoCenter:", isAutoCenter)
@@ -266,7 +266,7 @@ func (f *TMainForm) OnMainFormResize(sender vcl.IObject) {
 	f.resetBtnPrevNextPos()
 }
 
-func (f *TMainForm) OnMainFormKeyDown(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
+func (f *TMainForm) OnFormKeyDown(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
 	switch *key {
 	// Left
 	case keys.VkLeft:
@@ -412,7 +412,7 @@ func (f *TMainForm) OnImgViewerMouseMove(sender vcl.IObject, shift types.TShiftS
 	}
 }
 
-func (f *TMainForm) OnMainFormDropFiles(sender vcl.IObject, aFileNames []string) {
+func (f *TMainForm) OnFormDropFiles(sender vcl.IObject, aFileNames []string) {
 	// 只第一个
 	if f.canAccept(aFileNames[0]) {
 		f.loadImage(aFileNames[0])
@@ -520,7 +520,7 @@ func (f *TMainForm) OnBtnNextClick(sender vcl.IObject) {
 	f.loadImage(curDirImages[curImageIndex])
 }
 
-func (f *TMainForm) OnMainFormConstrainedResize(sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32) {
+func (f *TMainForm) OnFormConstrainedResize(sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32) {
 	if runtime.GOOS == "windows" {
 		if f.WindowState() == types.WsMaximized {
 			*maxHeight = vcl.Screen.WorkAreaHeight()
