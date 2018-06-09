@@ -16,13 +16,13 @@ var (
 	lasthWnd types.HWND
 )
 
-func (f *TForm1) OnForm1Create(sender vcl.IObject) {
+func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.SetLeft(vcl.Screen.Width() - f.Width() - 5)
 	f.SetTop(vcl.Screen.WorkAreaHeight() - f.Height() - 5)
 	vcl.Screen.SetCursors(1, f.Img3.Picture().Icon().Handle())
 }
 
-func (f *TForm1) OnForm1Destroy(sender vcl.IObject) {
+func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 	vcl.Screen.SetCursor(types.CrDefault)
 	f.clearDesktopRect()
 }

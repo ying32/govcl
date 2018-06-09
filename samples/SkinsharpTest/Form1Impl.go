@@ -8,12 +8,12 @@ import (
 	"github.com/ying32/govcl/vcl/exts/skinh"
 )
 
-func (f *TForm1) OnForm1Create(sender vcl.IObject) {
+func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	skinh.Attach()
 
 }
 
-func (f *TForm1) OnForm1Destroy(sender vcl.IObject) {
+func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 	skinh.Detach()
 }
 

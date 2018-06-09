@@ -8,7 +8,7 @@ import (
 	"github.com/ying32/govcl/vcl/exts/skinh"
 )
 
-func (f *TForm6) OnForm6Create(sender vcl.IObject) {
+func (f *TForm6) OnFormCreate(sender vcl.IObject) {
 	f.TrackBar1.SetOnChange(f.OnHSBChange)
 	f.TrackBar2.SetOnChange(f.OnHSBChange)
 	f.TrackBar3.SetOnChange(f.OnHSBChange)

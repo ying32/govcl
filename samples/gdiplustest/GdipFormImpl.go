@@ -8,14 +8,14 @@ import (
 
 	"unsafe"
 
+	"github.com/tryor/gdiplus"
+	"github.com/tryor/winapi"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/win"
-	"github.com/tryor/gdiplus"
-	"github.com/tryor/winapi"
 )
 
-func (f *TGdipForm) OnGdipFormCreate(sender vcl.IObject) {
+func (f *TGdipForm) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("OnCreate")
 	style := win.GetWindowLongPtr(f.Handle(), win.GWL_EXSTYLE) | win.WS_EX_LAYERED | win.WS_EX_TOOLWINDOW
 	win.SetWindowLongPtr(f.Handle(), win.GWL_EXSTYLE, uintptr(style))
@@ -160,7 +160,7 @@ func (f *TGdipForm) DrawText(s string, top int, g *gdiplus.Graphics, family *gdi
 	g.FillPath(brush2, path)
 }
 
-func (f *TGdipForm) OnGdipFormMouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
+func (f *TGdipForm) OnFormMouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 	if button == types.MbLeft {
 		win.ReleaseCapture()
 		f.Perform(win.WM_SYSCOMMAND, win.SC_MOVE+1, 0)
