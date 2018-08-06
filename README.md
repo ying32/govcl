@@ -2,7 +2,7 @@
 
 ## [QQ群号:263106281](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)   
 
-* [中文](https://github.com/ying32/govcl/blob/master/README_Zh-CN.md)   
+* [中文](https://github.com/ying32/govcl/blob/master/README.zh-CN.md)   
 * [English](https://github.com/ying32/govcl/blob/master/README.md)   
 
 ----
@@ -12,6 +12,14 @@
 ----  
 
 Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)    
+
+---
+
+
+[![Releases](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.19.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.19/Librarys-1.1.19.zip)
+
+
+---
 
 **[See more screenshots](https://github.com/ying32/govcl/tree/master/Screenshot)**  
 
@@ -47,7 +55,7 @@ func main() {
 ### FAQ
 
 Q: Why is there no English WIKI?   
-A: My English is bad. You can use Google Translate.    
+A: My English is bad. You can try using Google Translate Chinese WIKI.    
  
 ---  
 ### Other 
