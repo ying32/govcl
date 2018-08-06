@@ -7,10 +7,10 @@
 
 ----
 
-* [中文wiki(Chinese wiki) ](https://gitee.com/ying32/govcl/wikis/pages)  
-
-----  
-[![license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)   
+[![license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
+![Recommended Golang Version](https://img.shields.io/badge/recommended%20golang%20version->=1.9.0-green.svg)
+[![screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
+[![Chinese Wiki](https://img.shields.io/badge/wiki-中文WIKI(Chinese%20WIKI)-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)  
 
 
 ![Support Platform](https://img.shields.io/badge/Platform-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
@@ -23,15 +23,8 @@ Librarys binaries
 
 
 res2go Tool  
-[![res2go](https://img.shields.io/badge/style-flat-green.svg?longCache=true&label=download&label=res2go%201.0.3&link=http://right)](https://github.com/ying32/govcl/blob/master/Tools/res2go/res2go.zip)
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.3.zip-green.svg)](https://github.com/ying32/govcl/blob/master/Tools/res2go/res2go)
 
-
----
-
-**[See more screenshots](https://github.com/ying32/govcl/tree/master/Screenshot)**  
-
-
-`Recommended Golang Version >= 1.9.0`  
 
 ### usage: 
 
