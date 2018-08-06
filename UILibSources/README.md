@@ -15,7 +15,7 @@ Compile steps:
 * 2. Double-click vcl.dproj or vcl.dpr to open the project in the IDE.  
 * 3. Select Build Configurations as Release in the File list on the right of Project Manager.  
 * 4. Select Target Platforms (32-bit Windows or 64-bit Windows) in the File list on the right Project Manager.  
-* 5, press Ctrl + F9 (or directly in the Release configuration, select Make or Build).  
+* 5. press Ctrl + F9 (or directly in the Release configuration, select Make or Build).  
 
 The compiled binary can be viewed in the following directory:     
 
