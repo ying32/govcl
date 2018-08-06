@@ -1,6 +1,5 @@
 //----------------------------------------
 // 加载文件或者内存中的窗口资源文件功能
-// 本文件内部函数不在开源范围内
 // 需要配合窗口设计器使用
 // Copyright © ying32. All Rights Reserved.
 //
@@ -13,7 +12,7 @@ var (
 	resFormLoadFromResourceName = libvcl.NewProc("ResFormLoadFromResourceName")
 )
 
-// ResFormLoadFromStream与ResFormLoadFromFile不在开源范围内
+// ResFormLoadFromStream
 func ResFormLoadFromStream(obj, root uintptr) {
 	resFormLoadFromStream.Call(obj, root)
 }
