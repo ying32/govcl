@@ -38,13 +38,13 @@ liblcl Based on Lazarus 1.8.0 version FPC 3.0.4, the specific installation metho
 Compile steps:     
 
 * 1. Install Lazarus 1.8.0 64bit version and i386 expansion package  
-* 2, double-click lcl.lpi  
-* 3, Menu -> Project -> Project Options -> Compiler Options -> Build modes Switch the relevant ring mode, the current effective mode is the following four:  
+* 2. double-click lcl.lpi  
+* 3. Menu -> Project -> Project Options -> Compiler Options -> Build modes Switch the relevant ring mode, the current effective mode is the following four:  
    * ReleaseWindows64  
    * ReleaseWindows32  
    * ReleaseLinux64  
    * ReleaseMacOS32  
-* 4, menu -> Run-> Compile (or Build)  
+* 4. menu -> Run-> Compile (or Build)  
 
  
 The compiled binary can be viewed in the following directory:      
