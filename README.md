@@ -2,8 +2,8 @@
 
 ## [QQ群号:263106281](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)   
 
-* [中文](https://github.com/ying32/govcl/blob/master/README.zh-CN.md)   
-* [English](https://github.com/ying32/govcl/blob/master/README.md)   
+* [中文](README.zh-CN.md)   
+* [English](README.md)   
 
 ----
 
@@ -15,9 +15,13 @@ Support win32, win64, linux64, macOS32 (linux and macOS only part of the compone
 
 ---
 
-
+* Librarys binaries  
 [![Releases](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.19.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.19/Librarys-1.1.19.zip)
 
+**Note: The attachment contains liblcl three platform binary, libvcl does not currently provide, you need to compile.**  
+
+* res2go Tool  
+[![Releases](https://img.shields.io/github/downloads/ying32/govcl/1.0.3/res2go.svg)](https://github.com/ying32/govcl/blob/master/Tools/res2go/res2go.zip)
 
 ---
 
