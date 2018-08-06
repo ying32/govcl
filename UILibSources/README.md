@@ -25,7 +25,7 @@ The compiled binary can be viewed in the following directory:
 > %GOPATH%\src\github.com\ying32\bin\win64\libvclx64.dll    
 
 
-**Note: The source code has no third-party dependencies, and can be compiled directly after installing the relevant version of Delphi. **  
+**Note: The source code has no third-party dependencies, and can be compiled directly after installing the relevant version of Delphi.**    
 
 
 ----
@@ -53,4 +53,4 @@ The compiled binary can be viewed in the following directory:
 > Linux: `"../bin/liblcl"`  
 > MacOS: `"../../../../../bin/liblcl"`
 
-**Note: The source code has no third-party dependencies, and can be compiled directly after installing the relevant version of Delphi. **  
+**Note: The source code has no third-party dependencies, and can be compiled directly after installing the relevant version of Delphi.**  
