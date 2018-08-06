@@ -10,18 +10,21 @@
 * [中文wiki(Chinese wiki) ](https://gitee.com/ying32/govcl/wikis/pages)  
 
 ----  
+[![license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)   
 
-Support win32, win64, linux64, macOS32 (linux and macOS only part of the components, properties, events and methods are valid)    
 
----
+![Support Platform](https://img.shields.io/badge/Platform-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
+**Note: linux and macOS only part of the components, properties, events and methods are valid**   
 
-* Librarys binaries  
-[![Releases](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.19.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.19/Librarys-1.1.19.zip)
 
+Librarys binaries  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.19.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.19/Librarys-1.1.19.zip)  
 **Note: The attachment contains liblcl three platform binary, libvcl does not currently provide, you need to compile.**  
 
-* res2go Tool  
-[![Releases](https://img.shields.io/github/downloads/ying32/govcl/1.0.3/res2go.svg)](https://github.com/ying32/govcl/blob/master/Tools/res2go/res2go.zip)
+
+res2go Tool  
+[![res2go](https://img.shields.io/badge/style-flat-green.svg?longCache=true&label=download&label=res2go%201.0.3&link=http://right)](https://github.com/ying32/govcl/blob/master/Tools/res2go/res2go.zip)
+
 
 ---
 
