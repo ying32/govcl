@@ -21,7 +21,7 @@ Librarys binaries
 
 
 res2go Tool  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.3.zip-green.svg)](https://github.com/ying32/govcl/blob/master/Tools/res2go)
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.4.zip-green.svg)](https://github.com/ying32/govcl/blob/master/Tools/res2go)
 
 
 ### usage: 
