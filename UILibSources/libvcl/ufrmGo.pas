@@ -87,7 +87,9 @@ begin
   inherited InitializeNewForm;
   Self.ClientHeight := 321;
   Self.ClientWidth := 678;
-  Self.PixelsPerInch := 96;
+  if GetGlobalFormScaled then
+    Self.PixelsPerInch := 96
+  else Self.PixelsPerInch := Screen.PixelsPerInch;
   Scaled := False;
 end;
 
