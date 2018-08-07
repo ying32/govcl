@@ -16,7 +16,7 @@
 
 
 GUI库二进制下载：   
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.19.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.19/Librarys-1.1.19.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.20.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.20/Librarys-1.1.20.zip)  
 **注意: 压缩包中下载的二进制只包含liblcl库，libvcl则需要你自己编译，具体编译方法参考UILIbSrcources中的说明。**  
 
 
