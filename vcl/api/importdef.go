@@ -80,4 +80,7 @@ var (
 	setGlobalFormScaled      = libvcl.NewProc("SetGlobalFormScaled")
 	form_ScaleForPPI         = libvcl.NewProc("Form_ScaleForPPI")
 	form_ScaleControlsForDpi = libvcl.NewProc("Form_ScaleControlsForDpi")
+
+	// TSysLocaled
+	dSysLocale = libvcl.NewProc("DSysLocale")
 )

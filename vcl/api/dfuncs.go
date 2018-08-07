@@ -143,3 +143,8 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 	}
 	return DBoolToGoBool(r)
 }
+
+// DSysLocaled
+func DSysLocale(aInfo *TSysLocale) {
+	dSysLocale.Call(uintptr(unsafe.Pointer(aInfo)))
+}

@@ -7,6 +7,11 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
+var (
+	// SysLocale 本地化相关
+	SysLocale types.TSysLocale
+)
+
 // Move Delphi中的内存操作，不过这里传入的是指针
 func Move(src, dest uintptr, llen int) {
 	api.DMove(src, dest, llen)
