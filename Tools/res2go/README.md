@@ -15,6 +15,7 @@ usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outre
   -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default output.
   -outres     Outputs a Windows default resource file, if it does not exist, the default output.
   -scale      The window scale option, the default is false.
+  -encrypt    Using the encrypted format of the *.gfm file, the default is true.  
   -h -help    Show help.
   -v -version Show Version.
 ```

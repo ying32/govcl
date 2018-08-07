@@ -16,13 +16,16 @@
 
 
 Librarys binaries  
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.19.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.19/Librarys-1.1.19.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.20.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.20/Librarys-1.1.20.zip)  
 **Note: The attachment contains liblcl three platform binary, libvcl does not currently provide, you need to compile.**  
 
 
 res2go Tool  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.3.zip-green.svg)](https://github.com/ying32/govcl/blob/master/Tools/res2go)
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.4.zip-blue.svg)](https://github.com/ying32/govcl/blob/master/Tools/res2go)
 
+
+VCL style files  
+[![VCL style files](https://img.shields.io/badge/downloads-VCL%20style%20files-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.1.20/vcl-styles.zip)  
 
 ### usage: 
 
