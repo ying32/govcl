@@ -49,7 +49,11 @@ func (a *TApplication) setFiledVal(name string, instance uintptr, v reflect.Valu
 		//for j := 0; j < fv.Elem().Type().NumField(); j++ {
 		//	if fv.Elem().Type().Field(j).Name == "instance" {
 		// 因为反射不能设置未导出的，所以直接使用指针来设置
+		// instance ord = 1
 		*(*uintptr)(unsafe.Pointer(fv.Elem().Field(1).UnsafeAddr())) = instance
+		// ptr ord = 2
+		*(*uintptr)(unsafe.Pointer(fv.Elem().Field(2).UnsafeAddr())) = instance
+
 		//		break
 		//	}
 		//}

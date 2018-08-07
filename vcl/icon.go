@@ -12,174 +12,267 @@ package vcl
 import (
 	. "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
+    "unsafe"
 )
 
 type TIcon struct {
     IObject
     instance uintptr
+    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    ptr unsafe.Pointer
 }
 
+// NewIcon
+// CN: 创建一个新的对象。
+// EN: Create a new object.
 func NewIcon() *TIcon {
     i := new(TIcon)
     i.instance = Icon_Create()
+    i.ptr = unsafe.Pointer(i.instance)
     return i
 }
 
+// IconFromInst
+// CN: 新建一个对象来自已经存在的对象实例指针。
+// EN: Create a new object from an existing object instance pointer.
 func IconFromInst(inst uintptr) *TIcon {
     i := new(TIcon)
     i.instance = inst
+    i.ptr = unsafe.Pointer(inst)
     return i
 }
 
+// IconFromObj
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
 func IconFromObj(obj IObject) *TIcon {
     i := new(TIcon)
     i.instance = CheckPtr(obj)
+    i.ptr = unsafe.Pointer(i.instance)
     return i
 }
 
+// IconFromUnsafePointer
+// CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+func IconFromUnsafePointer(ptr unsafe.Pointer) *TIcon {
+    i := new(TIcon)
+    i.instance = uintptr(ptr)
+    i.ptr = ptr
+    return i
+}
+
+// Free 
+// CN: 释放对象。
+// EN: Free object.
 func (i *TIcon) Free() {
     if i.instance != 0 {
         Icon_Free(i.instance)
         i.instance = 0
+        i.ptr = unsafe.Pointer(uintptr(0))
     }
 }
 
+// Instance 
+// CN: 返回对象实例指针。
+// EN: Return object instance pointer.
 func (i *TIcon) Instance() uintptr {
     return i.instance
 }
 
+// UnsafeAddr 
+// CN: 获取一个不安全的地址。
+// EN: Get an unsafe address.
+func (i *TIcon) UnsafeAddr() unsafe.Pointer {
+    return i.ptr
+}
+
+// IsValid 
+// CN: 检测地址是否为空。
+// EN: Check if the address is empty.
 func (i *TIcon) IsValid() bool {
     return i.instance != 0
 }
 
+// TIconClass
+// CN: 获取类信息指针。
+// EN: Get class information pointer.
 func TIconClass() TClass {
     return Icon_StaticClassType()
 }
 
+// Assign
 func (i *TIcon) Assign(Source IObject) {
     Icon_Assign(i.instance, CheckPtr(Source))
 }
 
+// HandleAllocated
 func (i *TIcon) HandleAllocated() bool {
     return Icon_HandleAllocated(i.instance)
 }
 
+// LoadFromStream
 func (i *TIcon) LoadFromStream(Stream IObject) {
     Icon_LoadFromStream(i.instance, CheckPtr(Stream))
 }
 
+// SaveToStream
 func (i *TIcon) SaveToStream(Stream IObject) {
     Icon_SaveToStream(i.instance, CheckPtr(Stream))
 }
 
+// SetSize
 func (i *TIcon) SetSize(AWidth int32, AHeight int32) {
     Icon_SetSize(i.instance, AWidth , AHeight)
 }
 
+// LoadFromResourceName
 func (i *TIcon) LoadFromResourceName(Instance uintptr, ResName string) {
     Icon_LoadFromResourceName(i.instance, Instance , ResName)
 }
 
+// LoadFromResourceID
 func (i *TIcon) LoadFromResourceID(Instance uintptr, ResID int32) {
     Icon_LoadFromResourceID(i.instance, Instance , ResID)
 }
 
+// Equals
+// CN: 与一个对象进行比较。
+// EN: Compare with an object.
 func (i *TIcon) Equals(Obj IObject) bool {
     return Icon_Equals(i.instance, CheckPtr(Obj))
 }
 
+// LoadFromFile
 func (i *TIcon) LoadFromFile(Filename string) {
     Icon_LoadFromFile(i.instance, Filename)
 }
 
+// SaveToFile
 func (i *TIcon) SaveToFile(Filename string) {
     Icon_SaveToFile(i.instance, Filename)
 }
 
+// GetNamePath
 func (i *TIcon) GetNamePath() string {
     return Icon_GetNamePath(i.instance)
 }
 
+// DisposeOf
+// CN: 丢弃当前对象。
+// EN: Discard the current object.
 func (i *TIcon) DisposeOf() {
     Icon_DisposeOf(i.instance)
 }
 
+// ClassType
+// CN: 获取类的类型信息。
+// EN: Get class type information.
 func (i *TIcon) ClassType() TClass {
     return Icon_ClassType(i.instance)
 }
 
+// ClassName
+// CN: 获取当前对象类名称。
+// EN: Get the current object class name.
 func (i *TIcon) ClassName() string {
     return Icon_ClassName(i.instance)
 }
 
+// InstanceSize
+// CN: 获取当前对象实例大小。
+// EN: Get the current object instance size.
 func (i *TIcon) InstanceSize() int32 {
     return Icon_InstanceSize(i.instance)
 }
 
+// InheritsFrom
+// CN: 判断当前类是否继承自指定类。
+// EN: Determine whether the current class inherits from the specified class.
 func (i *TIcon) InheritsFrom(AClass TClass) bool {
     return Icon_InheritsFrom(i.instance, AClass)
 }
 
+// GetHashCode
+// CN: 获取类的哈希值。
+// EN: Get the hash value of the class.
 func (i *TIcon) GetHashCode() int32 {
     return Icon_GetHashCode(i.instance)
 }
 
+// ToString
+// CN: 文本类信息。
+// EN: Text information.
 func (i *TIcon) ToString() string {
     return Icon_ToString(i.instance)
 }
 
+// Handle
 func (i *TIcon) Handle() HICON {
     return Icon_GetHandle(i.instance)
 }
 
+// SetHandle
 func (i *TIcon) SetHandle(value HICON) {
     Icon_SetHandle(i.instance, value)
 }
 
+// Empty
 func (i *TIcon) Empty() bool {
     return Icon_GetEmpty(i.instance)
 }
 
+// Height
 func (i *TIcon) Height() int32 {
     return Icon_GetHeight(i.instance)
 }
 
+// SetHeight
 func (i *TIcon) SetHeight(value int32) {
     Icon_SetHeight(i.instance, value)
 }
 
+// Modified
 func (i *TIcon) Modified() bool {
     return Icon_GetModified(i.instance)
 }
 
+// SetModified
 func (i *TIcon) SetModified(value bool) {
     Icon_SetModified(i.instance, value)
 }
 
+// PaletteModified
 func (i *TIcon) PaletteModified() bool {
     return Icon_GetPaletteModified(i.instance)
 }
 
+// SetPaletteModified
 func (i *TIcon) SetPaletteModified(value bool) {
     Icon_SetPaletteModified(i.instance, value)
 }
 
+// Transparent
 func (i *TIcon) Transparent() bool {
     return Icon_GetTransparent(i.instance)
 }
 
+// SetTransparent
 func (i *TIcon) SetTransparent(value bool) {
     Icon_SetTransparent(i.instance, value)
 }
 
+// Width
 func (i *TIcon) Width() int32 {
     return Icon_GetWidth(i.instance)
 }
 
+// SetWidth
 func (i *TIcon) SetWidth(value int32) {
     Icon_SetWidth(i.instance, value)
 }
 
+// SetOnChange
 func (i *TIcon) SetOnChange(fn TNotifyEvent) {
     Icon_SetOnChange(i.instance, fn)
 }
