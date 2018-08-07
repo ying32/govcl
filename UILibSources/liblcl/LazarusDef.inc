@@ -23,13 +23,19 @@ begin
   TPicture.RegisterFileFormat(TPngImage.GetFileExtensions, rsPortableNetworkGraphic, TPngImage);
 end;
 
+
+// SysLocale  14byte
+procedure DSysLocale(var AInfo: TSysLocale); extdecl;
+begin
+  AInfo := SysLocale;
+end;
+
+
 // TApplication
 function Application_Instance: TApplication; extdecl;
 begin
   Result := Application;
 end;
-
-
 
 {$IFDEF WINDOWS}
 // 当IsLibrary = True时，是不会调用WidgetSet.CreateAppHandle方法
@@ -779,6 +785,9 @@ end;
 exports
   // 导出动态调用的
   MySyscall,
+
+  // SysLocaled
+  DSysLocale,
 
   // TApplication
   Application_Instance,

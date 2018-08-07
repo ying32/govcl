@@ -16,6 +16,25 @@ begin
   Result := UnixToDateTime(ADateTime, False);
 end;
 
+// SysLocale  14byte
+type  // 重新定义，目地为对齐go中的结构
+  TSysLocaleRedim = record
+    DefaultLCID: TLocaleID;
+    PriLangID: Integer;
+    SubLangID: Integer;
+    FarEast: Boolean;
+    MiddleEast: Boolean;
+  end;
+// SysLocale
+procedure DSysLocale(var AInfo: TSysLocaleRedim); stdcall;
+begin
+  AInfo.DefaultLCID := SysLocale.DefaultLCID;
+  AInfo.PriLangID := SysLocale.PriLangID;
+  AInfo.SubLangID := SysLocale.SubLangID;
+  AInfo.FarEast := SysLocale.FarEast;
+  AInfo.MiddleEast := SysLocale.MiddleEast;
+end;
+
 
 // TApplication
 
@@ -635,6 +654,8 @@ exports
   // 导出动态调用的
   MySyscall,
 
+  // SysLocaled
+  DSysLocale,
 
   // TApplication
   Application_Instance,
