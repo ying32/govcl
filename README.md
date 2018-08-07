@@ -25,7 +25,7 @@ res2go Tool
 
 
 VCL style files  
-[![VCL style files](https://img.shields.io/badge/downloads-VCL%20style%20files-blue.svg)](https://githuhttps://github.com/ying32/govcl/releases/download/v1.1.20/vcl-styles.zip)  
+[![VCL style files](https://img.shields.io/badge/downloads-VCL%20style%20files-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.1.20/vcl-styles.zip)  
 
 ### usage: 
 
