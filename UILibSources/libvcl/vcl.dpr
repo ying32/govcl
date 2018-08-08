@@ -26,6 +26,7 @@ uses
   System.Win.ComObj,
   System.Actions,
   System.Generics.Collections,
+  System.TypInfo,
   Vcl.Forms,
   Vcl.StdCtrls,
   Vcl.Dialogs,

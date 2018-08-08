@@ -740,7 +740,7 @@ begin
 end;
 
 // 创建URL快捷方式
-procedure DCreateURLShortCut(ADestPath, AShortCutName, AURL: PChar); stdcall;
+procedure DCreateURLShortCut(ADestPath, AShortCutName, AURL: PChar); extdecl;
 var
   Ini: TIniFile;
 begin
@@ -754,7 +754,7 @@ begin
 end;
 
 // 创建快捷方式
-function DCreateShortCut(ADestPath, AShortCutName, ASrcFileName, AIconFileName, ADescription, ACmdArgs: PChar): LongBool; stdcall;
+function DCreateShortCut(ADestPath, AShortCutName, ASrcFileName, AIconFileName, ADescription, ACmdArgs: PChar): LongBool; extdecl;
 var
   LObject : IUnknown;
   LPLink : IShellLink;
@@ -781,6 +781,53 @@ begin
 end;
 
 {$ENDIF}
+
+
+// 属性设置，这里主要提供给多语言使用
+procedure DSetPropertyValue(Instance: TObject; PropName, Value: PChar); stdcall;
+var
+  LPropInfo: PPropInfo;
+begin
+  LPropInfo := GetPropInfo(Instance, PropName);
+  if LPropInfo <> nil then
+    SetStrProp(Instance, LPropInfo, Value);
+end;
+
+procedure DSetPropertySecValue(Instance: TObject; PropName, SecPropName, Value: PChar); stdcall;
+type
+  TCallIndexGetClassProc = function(AData: Pointer; AIndex: Integer): Pointer;
+var
+  LPropInfo: PPropInfo;
+  LObj: TObject;
+  LPropName: string;
+  LP, LIndex: Integer;
+begin
+  LPropName := PropName;
+  LIndex := -1;
+  LP := LPropName.IndexOf('[');
+  if LP > 0 then
+  begin
+    LIndex := StrToIntDef(LPropName.Substring(LP + 1, LPropName.IndexOf(']') - LP - 1), -1);
+    LPropName := LPropName.Substring(0, LP);
+  end;
+  LPropInfo := GetPropInfo(Instance, LPropName);
+  if LPropInfo <> nil then
+  begin
+    LObj := GetObjectProp(Instance, LPropInfo);
+    if LObj <> nil then
+    begin
+      if LIndex <> -1 then
+      begin
+        if LPropInfo^.PropType^.Kind = tkClass then
+        begin
+          if (LObj is TListColumns) and (LIndex >= 0) and (LIndex < TListColumns(LObj).Count) and string(SecPropName).Equals('Caption') then
+            TListColumns(LObj)[LIndex].Caption := Value;
+        end;
+      end else
+        DSetPropertyValue(LObj, SecPropName, Value);
+    end;
+  end;
+end;
 
 
 // dylib
@@ -903,6 +950,10 @@ exports
   DCreateURLShortCut,
   DCreateShortCut,
 {$ENDIF}
+
+  // SetProperty
+  DSetPropertyValue,
+  DSetPropertySecValue,
 
   // TMemoryStream
   MemoryStream_Write,
