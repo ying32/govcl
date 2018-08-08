@@ -143,3 +143,12 @@ func UTF8ToANSI(str string) []uint8 {
 
 	return aCharBuffer
 }
+
+// GetDesktopPath
+func GetDesktopPath() string {
+	var lpPath string
+	if SHGetSpecialFolderPath(0, &lpPath, CSIDL_DESKTOP, false) {
+		return lpPath
+	}
+	return ""
+}
