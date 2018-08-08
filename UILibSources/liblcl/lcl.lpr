@@ -18,6 +18,8 @@ uses
   Windows,
   MultiMon,
   ShellAPI,
+  ShlObj,
+  ComObj,
   CommCtrl,
   ActiveX,
   Win32Int,

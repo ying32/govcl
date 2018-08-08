@@ -727,6 +727,62 @@ begin
   Application.Scaled := AVal;
 end;
 
+
+{$IFDEF WINDOWS}
+// 路径合并
+function PathCombine(A1, A2: string): string; inline;
+begin
+  if A1[Length(A1)] <> PathDelim then
+    A1 := A1 + PathDelim;
+  if (Length(A2) > 0) and (A2[1] = PathDelim) then
+    Delete(A2, 1, 1);
+  Result := A1 + A2;
+end;
+
+// 创建URL快捷方式
+procedure DCreateURLShortCut(ADestPath, AShortCutName, AURL: PChar); stdcall;
+var
+  Ini: TIniFile;
+begin
+  Ini := TIniFile.Create(PathCombine(ADestPath, AShortCutName) + '.url');
+  try
+    Ini.WriteString('{000214A0-0000-0000-C000-000000000046}', 'Prop3', '19,2');
+    Ini.WriteString('InternetShortcut', 'URL', AURL);
+  finally
+    Ini.Free;
+  end;
+end;
+
+// 创建快捷方式
+function DCreateShortCut(ADestPath, AShortCutName, ASrcFileName, AIconFileName, ADescription, ACmdArgs: PChar): LongBool; stdcall;
+var
+  LObject : IUnknown;
+  LPLink : IShellLink;
+  LPPFile : IPersistFile;
+  LinkFilename : WideString;
+begin
+  CoInitializeEx(nil, 0);
+  try
+    LObject := CreateComObject(CLSID_ShellLink);
+    LPLink := LObject as IShellLink;
+    LPPFile := LObject as IPersistFile;
+    LPLink.SetPath(ASrcFileName);
+    LPLink.SetWorkingDirectory(PChar(ExtractFilePath(ASrcFileName)));
+    LPLink.SetDescription(ADescription);
+    if AIconFileName = '' then
+      LPLink.SetIconLocation(ASrcFileName, 0)
+    else LPLink.SetIconLocation(AIconFileName, 0);
+    LPLink.SetArguments(ACmdArgs);
+    LinkFilename := WideString(PathCombine(ADestPath, AShortCutName) + '.lnk');
+    Result := LPPFile.Save(PWideChar(LinkFilename), FALSE) = S_OK;
+  finally
+    CoUninitialize;
+  end;
+end;
+
+{$ENDIF}
+
+
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -841,6 +897,12 @@ exports
   DSelectDirectory2,
   DInputBox,
   DInputQuery,
+
+{$IFDEF WINDOWS}
+  // ShortCut
+  DCreateURLShortCut,
+  DCreateShortCut,
+{$ENDIF}
 
   // TMemoryStream
   MemoryStream_Write,
