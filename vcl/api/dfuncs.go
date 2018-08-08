@@ -148,3 +148,16 @@ func DInputQuery(aCaption, aPrompt string, value *string) bool {
 func DSysLocale(aInfo *TSysLocale) {
 	dSysLocale.Call(uintptr(unsafe.Pointer(aInfo)))
 }
+
+// Shortcut
+//DCreateURLShortCut
+func DCreateURLShortCut(aDestPath, aShortCutName, aURL string) {
+	dCreateURLShortCut.Call(GoStrToDStr(aDestPath), GoStrToDStr(aShortCutName), GoStrToDStr(aURL))
+}
+
+//DCreateShortCut
+func DCreateShortCut(aDestPath, aShortCutName, aSrcFileName, aIconFileName, aDescription, aCmdArgs string) bool {
+	r, _, _ := dCreateShortCut.Call(GoStrToDStr(aDestPath), GoStrToDStr(aShortCutName), GoStrToDStr(aSrcFileName),
+		GoStrToDStr(aIconFileName), GoStrToDStr(aDescription), GoStrToDStr(aCmdArgs))
+	return DBoolToGoBool(r)
+}

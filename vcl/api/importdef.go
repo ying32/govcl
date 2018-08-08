@@ -83,4 +83,8 @@ var (
 
 	// TSysLocaled
 	dSysLocale = libvcl.NewProc("DSysLocale")
+
+	// Shortcut
+	dCreateURLShortCut = libvcl.NewProc("DCreateURLShortCut")
+	dCreateShortCut    = libvcl.NewProc("DCreateShortCut")
 )
