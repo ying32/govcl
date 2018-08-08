@@ -87,4 +87,8 @@ var (
 	// Shortcut
 	dCreateURLShortCut = libvcl.NewProc("DCreateURLShortCut")
 	dCreateShortCut    = libvcl.NewProc("DCreateShortCut")
+
+	// SetProperty
+	dSetPropertyValue    = libvcl.NewProc("DSetPropertyValue")
+	dSetPropertySecValue = libvcl.NewProc("DSetPropertySecValue")
 )

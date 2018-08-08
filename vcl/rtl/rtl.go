@@ -128,3 +128,14 @@ func FileExists(filename string) bool {
 func LcLLoaded() bool {
 	return api.IsloadedLcl
 }
+
+// SetProperty
+// SetPropertyValue 设置对象属性
+func SetPropertyValue(instance uintptr, propName, value string) {
+	api.DSetPropertyValue(instance, propName, value)
+}
+
+// SetPropertySecValue 设置对象二级属性
+func SetPropertySecValue(instance uintptr, propName, secPropName, value string) {
+	api.DSetPropertySecValue(instance, propName, secPropName, value)
+}

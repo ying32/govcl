@@ -161,3 +161,14 @@ func DCreateShortCut(aDestPath, aShortCutName, aSrcFileName, aIconFileName, aDes
 		GoStrToDStr(aIconFileName), GoStrToDStr(aDescription), GoStrToDStr(aCmdArgs))
 	return DBoolToGoBool(r)
 }
+
+// SetProperty
+// DSetPropertyValue
+func DSetPropertyValue(instance uintptr, propName, value string) {
+	dSetPropertyValue.Call(instance, GoStrToDStr(propName), GoStrToDStr(value))
+}
+
+// DSetPropertySecValue
+func DSetPropertySecValue(instance uintptr, propName, secPropName, value string) {
+	dSetPropertySecValue.Call(instance, GoStrToDStr(propName), GoStrToDStr(secPropName), GoStrToDStr(value))
+}
