@@ -8,6 +8,7 @@
 | basicResForm | 演示设计器输出的UI | |
 | SkinsharpTest | skinsharp第三方皮肤演示 | Windows,32bit |
 | checklistbox | 复选列表框演示 | |
+| draganddrop | 数据拖放 | |
 | draw | canvas自绘演示 | |
 | dropfiles | 鼠标拖放文件演示  | |
 | eventpublic | 控件事件的公用演示  | |
@@ -42,3 +43,7 @@
 | gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
 | imageviewer |  一个图片浏览器 |   |
 | windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
+| grid | 表格控件 | |
+| syslocale | 本地化相关 | |
+| shortcut | 快捷方式相关 | Windows |
+
