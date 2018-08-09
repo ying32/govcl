@@ -5,10 +5,10 @@
 
 ----
 
-[![license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
+[![license](https://img.shields.io/badge/开源协议-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
 ![Recommended Golang Version](https://img.shields.io/badge/推荐Goland版本->=1.9.0-green.svg)
 [![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
-[![Chinese Wiki](https://img.shields.io/badge/wiki-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
+[![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)  
 
 ![Support Platform](https://img.shields.io/badge/支持的平台-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
