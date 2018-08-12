@@ -191,6 +191,11 @@ func (b *TBevel) GetTextLen() int32 {
     return Bevel_GetTextLen(b.instance)
 }
 
+// SetTextBuf
+func (b *TBevel) SetTextBuf(Buffer string) {
+    Bevel_SetTextBuf(b.instance, Buffer)
+}
+
 // FindComponent
 func (b *TBevel) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Bevel_FindComponent(b.instance, AName))
@@ -390,6 +395,11 @@ func (b *TBevel) SetClientHeight(value int32) {
     Bevel_SetClientHeight(b.instance, value)
 }
 
+// ClientOrigin
+func (b *TBevel) ClientOrigin() TPoint {
+    return Bevel_GetClientOrigin(b.instance)
+}
+
 // ClientRect
 func (b *TBevel) ClientRect() TRect {
     return Bevel_GetClientRect(b.instance)
@@ -403,6 +413,26 @@ func (b *TBevel) ClientWidth() int32 {
 // SetClientWidth
 func (b *TBevel) SetClientWidth(value int32) {
     Bevel_SetClientWidth(b.instance, value)
+}
+
+// ControlState
+func (b *TBevel) ControlState() TControlState {
+    return Bevel_GetControlState(b.instance)
+}
+
+// SetControlState
+func (b *TBevel) SetControlState(value TControlState) {
+    Bevel_SetControlState(b.instance, value)
+}
+
+// ControlStyle
+func (b *TBevel) ControlStyle() TControlStyle {
+    return Bevel_GetControlStyle(b.instance)
+}
+
+// SetControlStyle
+func (b *TBevel) SetControlStyle(value TControlStyle) {
+    Bevel_SetControlStyle(b.instance, value)
 }
 
 // ExplicitLeft

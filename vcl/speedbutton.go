@@ -196,6 +196,11 @@ func (s *TSpeedButton) GetTextLen() int32 {
     return SpeedButton_GetTextLen(s.instance)
 }
 
+// SetTextBuf
+func (s *TSpeedButton) SetTextBuf(Buffer string) {
+    SpeedButton_SetTextBuf(s.instance, Buffer)
+}
+
 // FindComponent
 func (s *TSpeedButton) FindComponent(AName string) *TComponent {
     return ComponentFromInst(SpeedButton_FindComponent(s.instance, AName))
@@ -556,6 +561,11 @@ func (s *TSpeedButton) SetClientHeight(value int32) {
     SpeedButton_SetClientHeight(s.instance, value)
 }
 
+// ClientOrigin
+func (s *TSpeedButton) ClientOrigin() TPoint {
+    return SpeedButton_GetClientOrigin(s.instance)
+}
+
 // ClientRect
 func (s *TSpeedButton) ClientRect() TRect {
     return SpeedButton_GetClientRect(s.instance)
@@ -569,6 +579,26 @@ func (s *TSpeedButton) ClientWidth() int32 {
 // SetClientWidth
 func (s *TSpeedButton) SetClientWidth(value int32) {
     SpeedButton_SetClientWidth(s.instance, value)
+}
+
+// ControlState
+func (s *TSpeedButton) ControlState() TControlState {
+    return SpeedButton_GetControlState(s.instance)
+}
+
+// SetControlState
+func (s *TSpeedButton) SetControlState(value TControlState) {
+    SpeedButton_SetControlState(s.instance, value)
+}
+
+// ControlStyle
+func (s *TSpeedButton) ControlStyle() TControlStyle {
+    return SpeedButton_GetControlStyle(s.instance)
+}
+
+// SetControlStyle
+func (s *TSpeedButton) SetControlStyle(value TControlStyle) {
+    SpeedButton_SetControlStyle(s.instance, value)
 }
 
 // ExplicitLeft

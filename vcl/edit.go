@@ -151,6 +151,31 @@ func (e *TEdit) CanFocus() bool {
     return Edit_CanFocus(e.instance)
 }
 
+// ContainsControl
+func (e *TEdit) ContainsControl(Control IControl) bool {
+    return Edit_ContainsControl(e.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (e *TEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(Edit_ControlAtPos(e.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (e *TEdit) DisableAlign() {
+    Edit_DisableAlign(e.instance)
+}
+
+// EnableAlign
+func (e *TEdit) EnableAlign() {
+    Edit_EnableAlign(e.instance)
+}
+
+// FindChildControl
+func (e *TEdit) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(Edit_FindChildControl(e.instance, ControlName))
+}
+
 // FlipChildren
 func (e *TEdit) FlipChildren(AllLevels bool) {
     Edit_FlipChildren(e.instance, AllLevels)
@@ -166,9 +191,24 @@ func (e *TEdit) HandleAllocated() bool {
     return Edit_HandleAllocated(e.instance)
 }
 
+// InsertControl
+func (e *TEdit) InsertControl(AControl IControl) {
+    Edit_InsertControl(e.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (e *TEdit) Invalidate() {
     Edit_Invalidate(e.instance)
+}
+
+// PaintTo
+func (e *TEdit) PaintTo(DC HDC, X int32, Y int32) {
+    Edit_PaintTo(e.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (e *TEdit) RemoveControl(AControl IControl) {
+    Edit_RemoveControl(e.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -186,6 +226,11 @@ func (e *TEdit) ScaleBy(M int32, D int32) {
     Edit_ScaleBy(e.instance, M , D)
 }
 
+// ScrollBy
+func (e *TEdit) ScrollBy(DeltaX int32, DeltaY int32) {
+    Edit_ScrollBy(e.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (e *TEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Edit_SetBounds(e.instance, ALeft , ATop , AWidth , AHeight)
@@ -199,6 +244,11 @@ func (e *TEdit) SetFocus() {
 // Update
 func (e *TEdit) Update() {
     Edit_Update(e.instance)
+}
+
+// UpdateControlState
+func (e *TEdit) UpdateControlState() {
+    Edit_UpdateControlState(e.instance)
 }
 
 // BringToFront
@@ -269,6 +319,11 @@ func (e *TEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (e *TEdit) GetTextLen() int32 {
     return Edit_GetTextLen(e.instance)
+}
+
+// SetTextBuf
+func (e *TEdit) SetTextBuf(Buffer string) {
+    Edit_SetTextBuf(e.instance, Buffer)
 }
 
 // FindComponent
@@ -657,12 +712,12 @@ func (e *TEdit) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (e *TEdit) TabOrder() uint16 {
+func (e *TEdit) TabOrder() TTabOrder {
     return Edit_GetTabOrder(e.instance)
 }
 
 // SetTabOrder
-func (e *TEdit) SetTabOrder(value uint16) {
+func (e *TEdit) SetTabOrder(value TTabOrder) {
     Edit_SetTabOrder(e.instance, value)
 }
 
@@ -862,6 +917,11 @@ func (e *TEdit) SetSelText(value string) {
     Edit_SetSelText(e.instance, value)
 }
 
+// DockClientCount
+func (e *TEdit) DockClientCount() int32 {
+    return Edit_GetDockClientCount(e.instance)
+}
+
 // DockSite
 func (e *TEdit) DockSite() bool {
     return Edit_GetDockSite(e.instance)
@@ -870,6 +930,21 @@ func (e *TEdit) DockSite() bool {
 // SetDockSite
 func (e *TEdit) SetDockSite(value bool) {
     Edit_SetDockSite(e.instance, value)
+}
+
+// AlignDisabled
+func (e *TEdit) AlignDisabled() bool {
+    return Edit_GetAlignDisabled(e.instance)
+}
+
+// MouseInClient
+func (e *TEdit) MouseInClient() bool {
+    return Edit_GetMouseInClient(e.instance)
+}
+
+// VisibleDockClientCount
+func (e *TEdit) VisibleDockClientCount() int32 {
+    return Edit_GetVisibleDockClientCount(e.instance)
 }
 
 // Brush
@@ -937,6 +1012,11 @@ func (e *TEdit) SetClientHeight(value int32) {
     Edit_SetClientHeight(e.instance, value)
 }
 
+// ClientOrigin
+func (e *TEdit) ClientOrigin() TPoint {
+    return Edit_GetClientOrigin(e.instance)
+}
+
 // ClientRect
 func (e *TEdit) ClientRect() TRect {
     return Edit_GetClientRect(e.instance)
@@ -950,6 +1030,26 @@ func (e *TEdit) ClientWidth() int32 {
 // SetClientWidth
 func (e *TEdit) SetClientWidth(value int32) {
     Edit_SetClientWidth(e.instance, value)
+}
+
+// ControlState
+func (e *TEdit) ControlState() TControlState {
+    return Edit_GetControlState(e.instance)
+}
+
+// SetControlState
+func (e *TEdit) SetControlState(value TControlState) {
+    Edit_SetControlState(e.instance, value)
+}
+
+// ControlStyle
+func (e *TEdit) ControlStyle() TControlStyle {
+    return Edit_GetControlStyle(e.instance)
+}
+
+// SetControlStyle
+func (e *TEdit) SetControlStyle(value TControlStyle) {
+    Edit_SetControlStyle(e.instance, value)
 }
 
 // ExplicitLeft
@@ -1143,6 +1243,11 @@ func (e *TEdit) Tag() int {
 // EN: Set the control tag.
 func (e *TEdit) SetTag(value int) {
     Edit_SetTag(e.instance, value)
+}
+
+// DockClients
+func (e *TEdit) DockClients(Index int32) *TControl {
+    return ControlFromInst(Edit_GetDockClients(e.instance, Index))
 }
 
 // Controls

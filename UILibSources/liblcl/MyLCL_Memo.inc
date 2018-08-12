@@ -55,6 +55,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function Memo_ContainsControl(AObj: TMemo; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function Memo_ControlAtPos(AObj: TMemo; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure Memo_DisableAlign(AObj: TMemo); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure Memo_EnableAlign(AObj: TMemo); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function Memo_FindChildControl(AObj: TMemo; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure Memo_FlipChildren(AObj: TMemo; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -70,9 +95,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure Memo_InsertControl(AObj: TMemo; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure Memo_Invalidate(AObj: TMemo); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure Memo_RemoveControl(AObj: TMemo; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure Memo_Realign(AObj: TMemo); extdecl;
@@ -88,6 +123,11 @@ end;
 procedure Memo_ScaleBy(AObj: TMemo; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure Memo_ScrollBy(AObj: TMemo; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure Memo_SetBounds(AObj: TMemo; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -173,6 +213,11 @@ end;
 function Memo_GetTextLen(AObj: TMemo): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure Memo_SetTextBuf(AObj: TMemo; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function Memo_FindComponent(AObj: TMemo; AName: PChar): TComponent; extdecl;
@@ -794,6 +839,11 @@ begin
   AObj.TextHint := AValue;
 end;
 
+function Memo_GetDockClientCount(AObj: TMemo): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function Memo_GetDockSite(AObj: TMemo): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -802,6 +852,11 @@ end;
 procedure Memo_SetDockSite(AObj: TMemo; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function Memo_GetVisibleDockClientCount(AObj: TMemo): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function Memo_GetBrush(AObj: TMemo): TBrush; extdecl;
@@ -869,6 +924,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Memo_GetClientOrigin(AObj: TMemo; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Memo_GetClientRect(AObj: TMemo; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -882,6 +942,26 @@ end;
 procedure Memo_SetClientWidth(AObj: TMemo; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Memo_GetControlState(AObj: TMemo): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Memo_SetControlState(AObj: TMemo; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Memo_GetControlStyle(AObj: TMemo): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Memo_SetControlStyle(AObj: TMemo; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Memo_GetFloating(AObj: TMemo): LongBool; extdecl;
@@ -999,6 +1079,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Memo_GetDockClients(AObj: TMemo; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function Memo_GetControls(AObj: TMemo; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -1025,13 +1110,21 @@ exports
   Memo_Undo,
   Memo_SelectAll,
   Memo_CanFocus,
+  Memo_ContainsControl,
+  Memo_ControlAtPos,
+  Memo_DisableAlign,
+  Memo_EnableAlign,
+  Memo_FindChildControl,
   Memo_FlipChildren,
   Memo_Focused,
   Memo_HandleAllocated,
+  Memo_InsertControl,
   Memo_Invalidate,
+  Memo_RemoveControl,
   Memo_Realign,
   Memo_Repaint,
   Memo_ScaleBy,
+  Memo_ScrollBy,
   Memo_SetBounds,
   Memo_SetFocus,
   Memo_Update,
@@ -1049,6 +1142,7 @@ exports
   Memo_Show,
   Memo_GetTextBuf,
   Memo_GetTextLen,
+  Memo_SetTextBuf,
   Memo_FindComponent,
   Memo_GetNamePath,
   Memo_Assign,
@@ -1149,8 +1243,10 @@ exports
   Memo_SetText,
   Memo_GetTextHint,
   Memo_SetTextHint,
+  Memo_GetDockClientCount,
   Memo_GetDockSite,
   Memo_SetDockSite,
+  Memo_GetVisibleDockClientCount,
   Memo_GetBrush,
   Memo_GetControlCount,
   Memo_GetHandle,
@@ -1164,9 +1260,14 @@ exports
   Memo_SetBoundsRect,
   Memo_GetClientHeight,
   Memo_SetClientHeight,
+  Memo_GetClientOrigin,
   Memo_GetClientRect,
   Memo_GetClientWidth,
   Memo_SetClientWidth,
+  Memo_GetControlState,
+  Memo_SetControlState,
+  Memo_GetControlStyle,
+  Memo_SetControlStyle,
   Memo_GetFloating,
   Memo_GetParent,
   Memo_SetParent,
@@ -1190,6 +1291,7 @@ exports
   Memo_SetName,
   Memo_GetTag,
   Memo_SetTag,
+  Memo_GetDockClients,
   Memo_GetControls,
   Memo_GetComponents,
   Memo_StaticClassType;

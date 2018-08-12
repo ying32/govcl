@@ -106,6 +106,31 @@ func (r *TRadioButton) CanFocus() bool {
     return RadioButton_CanFocus(r.instance)
 }
 
+// ContainsControl
+func (r *TRadioButton) ContainsControl(Control IControl) bool {
+    return RadioButton_ContainsControl(r.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (r *TRadioButton) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(RadioButton_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (r *TRadioButton) DisableAlign() {
+    RadioButton_DisableAlign(r.instance)
+}
+
+// EnableAlign
+func (r *TRadioButton) EnableAlign() {
+    RadioButton_EnableAlign(r.instance)
+}
+
+// FindChildControl
+func (r *TRadioButton) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(RadioButton_FindChildControl(r.instance, ControlName))
+}
+
 // FlipChildren
 func (r *TRadioButton) FlipChildren(AllLevels bool) {
     RadioButton_FlipChildren(r.instance, AllLevels)
@@ -121,9 +146,24 @@ func (r *TRadioButton) HandleAllocated() bool {
     return RadioButton_HandleAllocated(r.instance)
 }
 
+// InsertControl
+func (r *TRadioButton) InsertControl(AControl IControl) {
+    RadioButton_InsertControl(r.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (r *TRadioButton) Invalidate() {
     RadioButton_Invalidate(r.instance)
+}
+
+// PaintTo
+func (r *TRadioButton) PaintTo(DC HDC, X int32, Y int32) {
+    RadioButton_PaintTo(r.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (r *TRadioButton) RemoveControl(AControl IControl) {
+    RadioButton_RemoveControl(r.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (r *TRadioButton) ScaleBy(M int32, D int32) {
     RadioButton_ScaleBy(r.instance, M , D)
 }
 
+// ScrollBy
+func (r *TRadioButton) ScrollBy(DeltaX int32, DeltaY int32) {
+    RadioButton_ScrollBy(r.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (r *TRadioButton) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     RadioButton_SetBounds(r.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (r *TRadioButton) SetFocus() {
 // Update
 func (r *TRadioButton) Update() {
     RadioButton_Update(r.instance)
+}
+
+// UpdateControlState
+func (r *TRadioButton) UpdateControlState() {
+    RadioButton_UpdateControlState(r.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (r *TRadioButton) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (r *TRadioButton) GetTextLen() int32 {
     return RadioButton_GetTextLen(r.instance)
+}
+
+// SetTextBuf
+func (r *TRadioButton) SetTextBuf(Buffer string) {
+    RadioButton_SetTextBuf(r.instance, Buffer)
 }
 
 // FindComponent
@@ -516,12 +571,12 @@ func (r *TRadioButton) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (r *TRadioButton) TabOrder() uint16 {
+func (r *TRadioButton) TabOrder() TTabOrder {
     return RadioButton_GetTabOrder(r.instance)
 }
 
 // SetTabOrder
-func (r *TRadioButton) SetTabOrder(value uint16) {
+func (r *TRadioButton) SetTabOrder(value TTabOrder) {
     RadioButton_SetTabOrder(r.instance, value)
 }
 
@@ -661,6 +716,11 @@ func (r *TRadioButton) SetOnStartDock(fn TStartDockEvent) {
     RadioButton_SetOnStartDock(r.instance, fn)
 }
 
+// DockClientCount
+func (r *TRadioButton) DockClientCount() int32 {
+    return RadioButton_GetDockClientCount(r.instance)
+}
+
 // DockSite
 func (r *TRadioButton) DockSite() bool {
     return RadioButton_GetDockSite(r.instance)
@@ -669,6 +729,21 @@ func (r *TRadioButton) DockSite() bool {
 // SetDockSite
 func (r *TRadioButton) SetDockSite(value bool) {
     RadioButton_SetDockSite(r.instance, value)
+}
+
+// AlignDisabled
+func (r *TRadioButton) AlignDisabled() bool {
+    return RadioButton_GetAlignDisabled(r.instance)
+}
+
+// MouseInClient
+func (r *TRadioButton) MouseInClient() bool {
+    return RadioButton_GetMouseInClient(r.instance)
+}
+
+// VisibleDockClientCount
+func (r *TRadioButton) VisibleDockClientCount() int32 {
+    return RadioButton_GetVisibleDockClientCount(r.instance)
 }
 
 // Brush
@@ -726,6 +801,11 @@ func (r *TRadioButton) SetClientHeight(value int32) {
     RadioButton_SetClientHeight(r.instance, value)
 }
 
+// ClientOrigin
+func (r *TRadioButton) ClientOrigin() TPoint {
+    return RadioButton_GetClientOrigin(r.instance)
+}
+
 // ClientRect
 func (r *TRadioButton) ClientRect() TRect {
     return RadioButton_GetClientRect(r.instance)
@@ -739,6 +819,26 @@ func (r *TRadioButton) ClientWidth() int32 {
 // SetClientWidth
 func (r *TRadioButton) SetClientWidth(value int32) {
     RadioButton_SetClientWidth(r.instance, value)
+}
+
+// ControlState
+func (r *TRadioButton) ControlState() TControlState {
+    return RadioButton_GetControlState(r.instance)
+}
+
+// SetControlState
+func (r *TRadioButton) SetControlState(value TControlState) {
+    RadioButton_SetControlState(r.instance, value)
+}
+
+// ControlStyle
+func (r *TRadioButton) ControlStyle() TControlStyle {
+    return RadioButton_GetControlStyle(r.instance)
+}
+
+// SetControlStyle
+func (r *TRadioButton) SetControlStyle(value TControlStyle) {
+    RadioButton_SetControlStyle(r.instance, value)
 }
 
 // ExplicitLeft
@@ -932,6 +1032,11 @@ func (r *TRadioButton) Tag() int {
 // EN: Set the control tag.
 func (r *TRadioButton) SetTag(value int) {
     RadioButton_SetTag(r.instance, value)
+}
+
+// DockClients
+func (r *TRadioButton) DockClients(Index int32) *TControl {
+    return ControlFromInst(RadioButton_GetDockClients(r.instance, Index))
 }
 
 // Controls

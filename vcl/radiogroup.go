@@ -111,6 +111,31 @@ func (r *TRadioGroup) CanFocus() bool {
     return RadioGroup_CanFocus(r.instance)
 }
 
+// ContainsControl
+func (r *TRadioGroup) ContainsControl(Control IControl) bool {
+    return RadioGroup_ContainsControl(r.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (r *TRadioGroup) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(RadioGroup_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (r *TRadioGroup) DisableAlign() {
+    RadioGroup_DisableAlign(r.instance)
+}
+
+// EnableAlign
+func (r *TRadioGroup) EnableAlign() {
+    RadioGroup_EnableAlign(r.instance)
+}
+
+// FindChildControl
+func (r *TRadioGroup) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(RadioGroup_FindChildControl(r.instance, ControlName))
+}
+
 // Focused
 func (r *TRadioGroup) Focused() bool {
     return RadioGroup_Focused(r.instance)
@@ -121,9 +146,24 @@ func (r *TRadioGroup) HandleAllocated() bool {
     return RadioGroup_HandleAllocated(r.instance)
 }
 
+// InsertControl
+func (r *TRadioGroup) InsertControl(AControl IControl) {
+    RadioGroup_InsertControl(r.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (r *TRadioGroup) Invalidate() {
     RadioGroup_Invalidate(r.instance)
+}
+
+// PaintTo
+func (r *TRadioGroup) PaintTo(DC HDC, X int32, Y int32) {
+    RadioGroup_PaintTo(r.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (r *TRadioGroup) RemoveControl(AControl IControl) {
+    RadioGroup_RemoveControl(r.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (r *TRadioGroup) ScaleBy(M int32, D int32) {
     RadioGroup_ScaleBy(r.instance, M , D)
 }
 
+// ScrollBy
+func (r *TRadioGroup) ScrollBy(DeltaX int32, DeltaY int32) {
+    RadioGroup_ScrollBy(r.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (r *TRadioGroup) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     RadioGroup_SetBounds(r.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (r *TRadioGroup) SetFocus() {
 // Update
 func (r *TRadioGroup) Update() {
     RadioGroup_Update(r.instance)
+}
+
+// UpdateControlState
+func (r *TRadioGroup) UpdateControlState() {
+    RadioGroup_UpdateControlState(r.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (r *TRadioGroup) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (r *TRadioGroup) GetTextLen() int32 {
     return RadioGroup_GetTextLen(r.instance)
+}
+
+// SetTextBuf
+func (r *TRadioGroup) SetTextBuf(Buffer string) {
+    RadioGroup_SetTextBuf(r.instance, Buffer)
 }
 
 // FindComponent
@@ -526,12 +581,12 @@ func (r *TRadioGroup) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (r *TRadioGroup) TabOrder() uint16 {
+func (r *TRadioGroup) TabOrder() TTabOrder {
     return RadioGroup_GetTabOrder(r.instance)
 }
 
 // SetTabOrder
-func (r *TRadioGroup) SetTabOrder(value uint16) {
+func (r *TRadioGroup) SetTabOrder(value TTabOrder) {
     RadioGroup_SetTabOrder(r.instance, value)
 }
 
@@ -626,6 +681,11 @@ func (r *TRadioGroup) SetOnStartDock(fn TStartDockEvent) {
     RadioGroup_SetOnStartDock(r.instance, fn)
 }
 
+// DockClientCount
+func (r *TRadioGroup) DockClientCount() int32 {
+    return RadioGroup_GetDockClientCount(r.instance)
+}
+
 // DockSite
 func (r *TRadioGroup) DockSite() bool {
     return RadioGroup_GetDockSite(r.instance)
@@ -634,6 +694,21 @@ func (r *TRadioGroup) DockSite() bool {
 // SetDockSite
 func (r *TRadioGroup) SetDockSite(value bool) {
     RadioGroup_SetDockSite(r.instance, value)
+}
+
+// AlignDisabled
+func (r *TRadioGroup) AlignDisabled() bool {
+    return RadioGroup_GetAlignDisabled(r.instance)
+}
+
+// MouseInClient
+func (r *TRadioGroup) MouseInClient() bool {
+    return RadioGroup_GetMouseInClient(r.instance)
+}
+
+// VisibleDockClientCount
+func (r *TRadioGroup) VisibleDockClientCount() int32 {
+    return RadioGroup_GetVisibleDockClientCount(r.instance)
 }
 
 // Brush
@@ -701,6 +776,11 @@ func (r *TRadioGroup) SetClientHeight(value int32) {
     RadioGroup_SetClientHeight(r.instance, value)
 }
 
+// ClientOrigin
+func (r *TRadioGroup) ClientOrigin() TPoint {
+    return RadioGroup_GetClientOrigin(r.instance)
+}
+
 // ClientRect
 func (r *TRadioGroup) ClientRect() TRect {
     return RadioGroup_GetClientRect(r.instance)
@@ -714,6 +794,26 @@ func (r *TRadioGroup) ClientWidth() int32 {
 // SetClientWidth
 func (r *TRadioGroup) SetClientWidth(value int32) {
     RadioGroup_SetClientWidth(r.instance, value)
+}
+
+// ControlState
+func (r *TRadioGroup) ControlState() TControlState {
+    return RadioGroup_GetControlState(r.instance)
+}
+
+// SetControlState
+func (r *TRadioGroup) SetControlState(value TControlState) {
+    RadioGroup_SetControlState(r.instance, value)
+}
+
+// ControlStyle
+func (r *TRadioGroup) ControlStyle() TControlStyle {
+    return RadioGroup_GetControlStyle(r.instance)
+}
+
+// SetControlStyle
+func (r *TRadioGroup) SetControlStyle(value TControlStyle) {
+    RadioGroup_SetControlStyle(r.instance, value)
 }
 
 // ExplicitLeft
@@ -912,6 +1012,11 @@ func (r *TRadioGroup) SetTag(value int) {
 // Buttons
 func (r *TRadioGroup) Buttons(Index int32) *TRadioButton {
     return RadioButtonFromInst(RadioGroup_GetButtons(r.instance, Index))
+}
+
+// DockClients
+func (r *TRadioGroup) DockClients(Index int32) *TControl {
+    return ControlFromInst(RadioGroup_GetDockClients(r.instance, Index))
 }
 
 // Controls

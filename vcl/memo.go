@@ -151,6 +151,31 @@ func (m *TMemo) CanFocus() bool {
     return Memo_CanFocus(m.instance)
 }
 
+// ContainsControl
+func (m *TMemo) ContainsControl(Control IControl) bool {
+    return Memo_ContainsControl(m.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (m *TMemo) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(Memo_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (m *TMemo) DisableAlign() {
+    Memo_DisableAlign(m.instance)
+}
+
+// EnableAlign
+func (m *TMemo) EnableAlign() {
+    Memo_EnableAlign(m.instance)
+}
+
+// FindChildControl
+func (m *TMemo) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(Memo_FindChildControl(m.instance, ControlName))
+}
+
 // FlipChildren
 func (m *TMemo) FlipChildren(AllLevels bool) {
     Memo_FlipChildren(m.instance, AllLevels)
@@ -166,9 +191,24 @@ func (m *TMemo) HandleAllocated() bool {
     return Memo_HandleAllocated(m.instance)
 }
 
+// InsertControl
+func (m *TMemo) InsertControl(AControl IControl) {
+    Memo_InsertControl(m.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (m *TMemo) Invalidate() {
     Memo_Invalidate(m.instance)
+}
+
+// PaintTo
+func (m *TMemo) PaintTo(DC HDC, X int32, Y int32) {
+    Memo_PaintTo(m.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (m *TMemo) RemoveControl(AControl IControl) {
+    Memo_RemoveControl(m.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -186,6 +226,11 @@ func (m *TMemo) ScaleBy(M int32, D int32) {
     Memo_ScaleBy(m.instance, M , D)
 }
 
+// ScrollBy
+func (m *TMemo) ScrollBy(DeltaX int32, DeltaY int32) {
+    Memo_ScrollBy(m.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (m *TMemo) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Memo_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
@@ -199,6 +244,11 @@ func (m *TMemo) SetFocus() {
 // Update
 func (m *TMemo) Update() {
     Memo_Update(m.instance)
+}
+
+// UpdateControlState
+func (m *TMemo) UpdateControlState() {
+    Memo_UpdateControlState(m.instance)
 }
 
 // BringToFront
@@ -269,6 +319,11 @@ func (m *TMemo) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (m *TMemo) GetTextLen() int32 {
     return Memo_GetTextLen(m.instance)
+}
+
+// SetTextBuf
+func (m *TMemo) SetTextBuf(Buffer string) {
+    Memo_SetTextBuf(m.instance, Buffer)
 }
 
 // FindComponent
@@ -637,12 +692,12 @@ func (m *TMemo) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (m *TMemo) TabOrder() uint16 {
+func (m *TMemo) TabOrder() TTabOrder {
     return Memo_GetTabOrder(m.instance)
 }
 
 // SetTabOrder
-func (m *TMemo) SetTabOrder(value uint16) {
+func (m *TMemo) SetTabOrder(value TTabOrder) {
     Memo_SetTabOrder(m.instance, value)
 }
 
@@ -882,6 +937,11 @@ func (m *TMemo) SetTextHint(value string) {
     Memo_SetTextHint(m.instance, value)
 }
 
+// DockClientCount
+func (m *TMemo) DockClientCount() int32 {
+    return Memo_GetDockClientCount(m.instance)
+}
+
 // DockSite
 func (m *TMemo) DockSite() bool {
     return Memo_GetDockSite(m.instance)
@@ -890,6 +950,21 @@ func (m *TMemo) DockSite() bool {
 // SetDockSite
 func (m *TMemo) SetDockSite(value bool) {
     Memo_SetDockSite(m.instance, value)
+}
+
+// AlignDisabled
+func (m *TMemo) AlignDisabled() bool {
+    return Memo_GetAlignDisabled(m.instance)
+}
+
+// MouseInClient
+func (m *TMemo) MouseInClient() bool {
+    return Memo_GetMouseInClient(m.instance)
+}
+
+// VisibleDockClientCount
+func (m *TMemo) VisibleDockClientCount() int32 {
+    return Memo_GetVisibleDockClientCount(m.instance)
 }
 
 // Brush
@@ -957,6 +1032,11 @@ func (m *TMemo) SetClientHeight(value int32) {
     Memo_SetClientHeight(m.instance, value)
 }
 
+// ClientOrigin
+func (m *TMemo) ClientOrigin() TPoint {
+    return Memo_GetClientOrigin(m.instance)
+}
+
 // ClientRect
 func (m *TMemo) ClientRect() TRect {
     return Memo_GetClientRect(m.instance)
@@ -970,6 +1050,26 @@ func (m *TMemo) ClientWidth() int32 {
 // SetClientWidth
 func (m *TMemo) SetClientWidth(value int32) {
     Memo_SetClientWidth(m.instance, value)
+}
+
+// ControlState
+func (m *TMemo) ControlState() TControlState {
+    return Memo_GetControlState(m.instance)
+}
+
+// SetControlState
+func (m *TMemo) SetControlState(value TControlState) {
+    Memo_SetControlState(m.instance, value)
+}
+
+// ControlStyle
+func (m *TMemo) ControlStyle() TControlStyle {
+    return Memo_GetControlStyle(m.instance)
+}
+
+// SetControlStyle
+func (m *TMemo) SetControlStyle(value TControlStyle) {
+    Memo_SetControlStyle(m.instance, value)
 }
 
 // ExplicitLeft
@@ -1163,6 +1263,11 @@ func (m *TMemo) Tag() int {
 // EN: Set the control tag.
 func (m *TMemo) SetTag(value int) {
     Memo_SetTag(m.instance, value)
+}
+
+// DockClients
+func (m *TMemo) DockClients(Index int32) *TControl {
+    return ControlFromInst(Memo_GetDockClients(m.instance, Index))
 }
 
 // Controls

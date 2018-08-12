@@ -176,6 +176,31 @@ func (t *TTreeView) CanFocus() bool {
     return TreeView_CanFocus(t.instance)
 }
 
+// ContainsControl
+func (t *TTreeView) ContainsControl(Control IControl) bool {
+    return TreeView_ContainsControl(t.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (t *TTreeView) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(TreeView_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (t *TTreeView) DisableAlign() {
+    TreeView_DisableAlign(t.instance)
+}
+
+// EnableAlign
+func (t *TTreeView) EnableAlign() {
+    TreeView_EnableAlign(t.instance)
+}
+
+// FindChildControl
+func (t *TTreeView) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(TreeView_FindChildControl(t.instance, ControlName))
+}
+
 // FlipChildren
 func (t *TTreeView) FlipChildren(AllLevels bool) {
     TreeView_FlipChildren(t.instance, AllLevels)
@@ -191,9 +216,24 @@ func (t *TTreeView) HandleAllocated() bool {
     return TreeView_HandleAllocated(t.instance)
 }
 
+// InsertControl
+func (t *TTreeView) InsertControl(AControl IControl) {
+    TreeView_InsertControl(t.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (t *TTreeView) Invalidate() {
     TreeView_Invalidate(t.instance)
+}
+
+// PaintTo
+func (t *TTreeView) PaintTo(DC HDC, X int32, Y int32) {
+    TreeView_PaintTo(t.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (t *TTreeView) RemoveControl(AControl IControl) {
+    TreeView_RemoveControl(t.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -211,6 +251,11 @@ func (t *TTreeView) ScaleBy(M int32, D int32) {
     TreeView_ScaleBy(t.instance, M , D)
 }
 
+// ScrollBy
+func (t *TTreeView) ScrollBy(DeltaX int32, DeltaY int32) {
+    TreeView_ScrollBy(t.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (t *TTreeView) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     TreeView_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
@@ -224,6 +269,11 @@ func (t *TTreeView) SetFocus() {
 // Update
 func (t *TTreeView) Update() {
     TreeView_Update(t.instance)
+}
+
+// UpdateControlState
+func (t *TTreeView) UpdateControlState() {
+    TreeView_UpdateControlState(t.instance)
 }
 
 // BringToFront
@@ -294,6 +344,11 @@ func (t *TTreeView) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (t *TTreeView) GetTextLen() int32 {
     return TreeView_GetTextLen(t.instance)
+}
+
+// SetTextBuf
+func (t *TTreeView) SetTextBuf(Buffer string) {
+    TreeView_SetTextBuf(t.instance, Buffer)
 }
 
 // FindComponent
@@ -762,12 +817,12 @@ func (t *TTreeView) SetStateImages(value IComponent) {
 }
 
 // TabOrder
-func (t *TTreeView) TabOrder() uint16 {
+func (t *TTreeView) TabOrder() TTabOrder {
     return TreeView_GetTabOrder(t.instance)
 }
 
 // SetTabOrder
-func (t *TTreeView) SetTabOrder(value uint16) {
+func (t *TTreeView) SetTabOrder(value TTabOrder) {
     TreeView_SetTabOrder(t.instance, value)
 }
 
@@ -987,6 +1042,11 @@ func (t *TTreeView) SelectionCount() uint32 {
     return TreeView_GetSelectionCount(t.instance)
 }
 
+// DockClientCount
+func (t *TTreeView) DockClientCount() int32 {
+    return TreeView_GetDockClientCount(t.instance)
+}
+
 // DockSite
 func (t *TTreeView) DockSite() bool {
     return TreeView_GetDockSite(t.instance)
@@ -995,6 +1055,21 @@ func (t *TTreeView) DockSite() bool {
 // SetDockSite
 func (t *TTreeView) SetDockSite(value bool) {
     TreeView_SetDockSite(t.instance, value)
+}
+
+// AlignDisabled
+func (t *TTreeView) AlignDisabled() bool {
+    return TreeView_GetAlignDisabled(t.instance)
+}
+
+// MouseInClient
+func (t *TTreeView) MouseInClient() bool {
+    return TreeView_GetMouseInClient(t.instance)
+}
+
+// VisibleDockClientCount
+func (t *TTreeView) VisibleDockClientCount() int32 {
+    return TreeView_GetVisibleDockClientCount(t.instance)
 }
 
 // Brush
@@ -1062,6 +1137,11 @@ func (t *TTreeView) SetClientHeight(value int32) {
     TreeView_SetClientHeight(t.instance, value)
 }
 
+// ClientOrigin
+func (t *TTreeView) ClientOrigin() TPoint {
+    return TreeView_GetClientOrigin(t.instance)
+}
+
 // ClientRect
 func (t *TTreeView) ClientRect() TRect {
     return TreeView_GetClientRect(t.instance)
@@ -1075,6 +1155,26 @@ func (t *TTreeView) ClientWidth() int32 {
 // SetClientWidth
 func (t *TTreeView) SetClientWidth(value int32) {
     TreeView_SetClientWidth(t.instance, value)
+}
+
+// ControlState
+func (t *TTreeView) ControlState() TControlState {
+    return TreeView_GetControlState(t.instance)
+}
+
+// SetControlState
+func (t *TTreeView) SetControlState(value TControlState) {
+    TreeView_SetControlState(t.instance, value)
+}
+
+// ControlStyle
+func (t *TTreeView) ControlStyle() TControlStyle {
+    return TreeView_GetControlStyle(t.instance)
+}
+
+// SetControlStyle
+func (t *TTreeView) SetControlStyle(value TControlStyle) {
+    TreeView_SetControlStyle(t.instance, value)
 }
 
 // ExplicitLeft
@@ -1273,6 +1373,11 @@ func (t *TTreeView) SetTag(value int) {
 // Selections
 func (t *TTreeView) Selections(Index int32) *TTreeNode {
     return TreeNodeFromInst(TreeView_GetSelections(t.instance, Index))
+}
+
+// DockClients
+func (t *TTreeView) DockClients(Index int32) *TControl {
+    return ControlFromInst(TreeView_GetDockClients(t.instance, Index))
 }
 
 // Controls

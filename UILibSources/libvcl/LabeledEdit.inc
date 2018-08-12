@@ -75,6 +75,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function LabeledEdit_ContainsControl(AObj: TLabeledEdit; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function LabeledEdit_ControlAtPos(AObj: TLabeledEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure LabeledEdit_DisableAlign(AObj: TLabeledEdit); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure LabeledEdit_EnableAlign(AObj: TLabeledEdit); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function LabeledEdit_FindChildControl(AObj: TLabeledEdit; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure LabeledEdit_FlipChildren(AObj: TLabeledEdit; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -90,9 +115,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure LabeledEdit_InsertControl(AObj: TLabeledEdit; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure LabeledEdit_Invalidate(AObj: TLabeledEdit); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure LabeledEdit_PaintTo(AObj: TLabeledEdit; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure LabeledEdit_RemoveControl(AObj: TLabeledEdit; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure LabeledEdit_Realign(AObj: TLabeledEdit); stdcall;
@@ -110,6 +150,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure LabeledEdit_ScrollBy(AObj: TLabeledEdit; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure LabeledEdit_SetFocus(AObj: TLabeledEdit); stdcall;
 begin
   AObj.SetFocus;
@@ -118,6 +163,11 @@ end;
 procedure LabeledEdit_Update(AObj: TLabeledEdit); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure LabeledEdit_UpdateControlState(AObj: TLabeledEdit); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure LabeledEdit_BringToFront(AObj: TLabeledEdit); stdcall;
@@ -188,6 +238,11 @@ end;
 function LabeledEdit_GetTextLen(AObj: TLabeledEdit): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure LabeledEdit_SetTextBuf(AObj: TLabeledEdit; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function LabeledEdit_FindComponent(AObj: TLabeledEdit; AName: PChar): TComponent; stdcall;
@@ -903,6 +958,11 @@ begin
   AObj.SelText := AValue;
 end;
 
+function LabeledEdit_GetDockClientCount(AObj: TLabeledEdit): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function LabeledEdit_GetDockSite(AObj: TLabeledEdit): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -911,6 +971,21 @@ end;
 procedure LabeledEdit_SetDockSite(AObj: TLabeledEdit; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function LabeledEdit_GetAlignDisabled(AObj: TLabeledEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function LabeledEdit_GetMouseInClient(AObj: TLabeledEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function LabeledEdit_GetVisibleDockClientCount(AObj: TLabeledEdit): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function LabeledEdit_GetBrush(AObj: TLabeledEdit): TBrush; stdcall;
@@ -988,6 +1063,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure LabeledEdit_GetClientOrigin(AObj: TLabeledEdit; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure LabeledEdit_GetClientRect(AObj: TLabeledEdit; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -1001,6 +1081,26 @@ end;
 procedure LabeledEdit_SetClientWidth(AObj: TLabeledEdit; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function LabeledEdit_GetControlState(AObj: TLabeledEdit): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure LabeledEdit_SetControlState(AObj: TLabeledEdit; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function LabeledEdit_GetControlStyle(AObj: TLabeledEdit): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure LabeledEdit_SetControlStyle(AObj: TLabeledEdit; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function LabeledEdit_GetExplicitLeft(AObj: TLabeledEdit): Integer; stdcall;
@@ -1168,6 +1268,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function LabeledEdit_GetDockClients(AObj: TLabeledEdit; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function LabeledEdit_GetControls(AObj: TLabeledEdit; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1198,15 +1303,25 @@ exports
   LabeledEdit_SelectAll,
   LabeledEdit_GetSelTextBuf,
   LabeledEdit_CanFocus,
+  LabeledEdit_ContainsControl,
+  LabeledEdit_ControlAtPos,
+  LabeledEdit_DisableAlign,
+  LabeledEdit_EnableAlign,
+  LabeledEdit_FindChildControl,
   LabeledEdit_FlipChildren,
   LabeledEdit_Focused,
   LabeledEdit_HandleAllocated,
+  LabeledEdit_InsertControl,
   LabeledEdit_Invalidate,
+  LabeledEdit_PaintTo,
+  LabeledEdit_RemoveControl,
   LabeledEdit_Realign,
   LabeledEdit_Repaint,
   LabeledEdit_ScaleBy,
+  LabeledEdit_ScrollBy,
   LabeledEdit_SetFocus,
   LabeledEdit_Update,
+  LabeledEdit_UpdateControlState,
   LabeledEdit_BringToFront,
   LabeledEdit_ClientToScreen,
   LabeledEdit_ClientToParent,
@@ -1221,6 +1336,7 @@ exports
   LabeledEdit_Show,
   LabeledEdit_GetTextBuf,
   LabeledEdit_GetTextLen,
+  LabeledEdit_SetTextBuf,
   LabeledEdit_FindComponent,
   LabeledEdit_GetNamePath,
   LabeledEdit_Assign,
@@ -1337,8 +1453,12 @@ exports
   LabeledEdit_SetSelStart,
   LabeledEdit_GetSelText,
   LabeledEdit_SetSelText,
+  LabeledEdit_GetDockClientCount,
   LabeledEdit_GetDockSite,
   LabeledEdit_SetDockSite,
+  LabeledEdit_GetAlignDisabled,
+  LabeledEdit_GetMouseInClient,
+  LabeledEdit_GetVisibleDockClientCount,
   LabeledEdit_GetBrush,
   LabeledEdit_GetControlCount,
   LabeledEdit_GetHandle,
@@ -1354,9 +1474,14 @@ exports
   LabeledEdit_SetBoundsRect,
   LabeledEdit_GetClientHeight,
   LabeledEdit_SetClientHeight,
+  LabeledEdit_GetClientOrigin,
   LabeledEdit_GetClientRect,
   LabeledEdit_GetClientWidth,
   LabeledEdit_SetClientWidth,
+  LabeledEdit_GetControlState,
+  LabeledEdit_SetControlState,
+  LabeledEdit_GetControlStyle,
+  LabeledEdit_SetControlStyle,
   LabeledEdit_GetExplicitLeft,
   LabeledEdit_GetExplicitTop,
   LabeledEdit_GetExplicitWidth,
@@ -1390,6 +1515,7 @@ exports
   LabeledEdit_SetName,
   LabeledEdit_GetTag,
   LabeledEdit_SetTag,
+  LabeledEdit_GetDockClients,
   LabeledEdit_GetControls,
   LabeledEdit_GetComponents,
   LabeledEdit_StaticClassType;

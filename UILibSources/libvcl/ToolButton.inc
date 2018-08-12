@@ -115,6 +115,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure ToolButton_SetTextBuf(AObj: TToolButton; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function ToolButton_FindComponent(AObj: TToolButton; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -599,6 +604,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ToolButton_GetClientOrigin(AObj: TToolButton; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ToolButton_GetClientRect(AObj: TToolButton; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -612,6 +622,26 @@ end;
 procedure ToolButton_SetClientWidth(AObj: TToolButton; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ToolButton_GetControlState(AObj: TToolButton): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ToolButton_SetControlState(AObj: TToolButton; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ToolButton_GetControlStyle(AObj: TToolButton): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ToolButton_SetControlStyle(AObj: TToolButton; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ToolButton_GetExplicitLeft(AObj: TToolButton): Integer; stdcall;
@@ -802,6 +832,7 @@ exports
   ToolButton_Update,
   ToolButton_GetTextBuf,
   ToolButton_GetTextLen,
+  ToolButton_SetTextBuf,
   ToolButton_FindComponent,
   ToolButton_GetNamePath,
   ToolButton_Assign,
@@ -882,9 +913,14 @@ exports
   ToolButton_SetBoundsRect,
   ToolButton_GetClientHeight,
   ToolButton_SetClientHeight,
+  ToolButton_GetClientOrigin,
   ToolButton_GetClientRect,
   ToolButton_GetClientWidth,
   ToolButton_SetClientWidth,
+  ToolButton_GetControlState,
+  ToolButton_SetControlState,
+  ToolButton_GetControlStyle,
+  ToolButton_SetControlStyle,
   ToolButton_GetExplicitLeft,
   ToolButton_GetExplicitTop,
   ToolButton_GetExplicitWidth,

@@ -191,6 +191,11 @@ func (i *TImage) GetTextLen() int32 {
     return Image_GetTextLen(i.instance)
 }
 
+// SetTextBuf
+func (i *TImage) SetTextBuf(Buffer string) {
+    Image_SetTextBuf(i.instance, Buffer)
+}
+
 // FindComponent
 func (i *TImage) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Image_FindComponent(i.instance, AName))
@@ -552,6 +557,11 @@ func (i *TImage) SetClientHeight(value int32) {
     Image_SetClientHeight(i.instance, value)
 }
 
+// ClientOrigin
+func (i *TImage) ClientOrigin() TPoint {
+    return Image_GetClientOrigin(i.instance)
+}
+
 // ClientRect
 func (i *TImage) ClientRect() TRect {
     return Image_GetClientRect(i.instance)
@@ -565,6 +575,26 @@ func (i *TImage) ClientWidth() int32 {
 // SetClientWidth
 func (i *TImage) SetClientWidth(value int32) {
     Image_SetClientWidth(i.instance, value)
+}
+
+// ControlState
+func (i *TImage) ControlState() TControlState {
+    return Image_GetControlState(i.instance)
+}
+
+// SetControlState
+func (i *TImage) SetControlState(value TControlState) {
+    Image_SetControlState(i.instance, value)
+}
+
+// ControlStyle
+func (i *TImage) ControlStyle() TControlStyle {
+    return Image_GetControlStyle(i.instance)
+}
+
+// SetControlStyle
+func (i *TImage) SetControlStyle(value TControlStyle) {
+    Image_SetControlStyle(i.instance, value)
 }
 
 // ExplicitLeft

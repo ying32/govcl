@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function BitBtn_ContainsControl(AObj: TBitBtn; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function BitBtn_ControlAtPos(AObj: TBitBtn; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure BitBtn_DisableAlign(AObj: TBitBtn); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure BitBtn_EnableAlign(AObj: TBitBtn); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function BitBtn_FindChildControl(AObj: TBitBtn; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure BitBtn_FlipChildren(AObj: TBitBtn; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -40,9 +65,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure BitBtn_InsertControl(AObj: TBitBtn; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure BitBtn_Invalidate(AObj: TBitBtn); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure BitBtn_RemoveControl(AObj: TBitBtn; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure BitBtn_Realign(AObj: TBitBtn); extdecl;
@@ -58,6 +93,11 @@ end;
 procedure BitBtn_ScaleBy(AObj: TBitBtn; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure BitBtn_ScrollBy(AObj: TBitBtn; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure BitBtn_SetBounds(AObj: TBitBtn; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -143,6 +183,11 @@ end;
 function BitBtn_GetTextLen(AObj: TBitBtn): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure BitBtn_SetTextBuf(AObj: TBitBtn; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function BitBtn_FindComponent(AObj: TBitBtn; AName: PChar): TComponent; extdecl;
@@ -595,6 +640,11 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function BitBtn_GetDockClientCount(AObj: TBitBtn): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function BitBtn_GetDockSite(AObj: TBitBtn): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -603,6 +653,11 @@ end;
 procedure BitBtn_SetDockSite(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function BitBtn_GetVisibleDockClientCount(AObj: TBitBtn): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function BitBtn_GetBrush(AObj: TBitBtn): TBrush; extdecl;
@@ -660,6 +715,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure BitBtn_GetClientOrigin(AObj: TBitBtn; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure BitBtn_GetClientRect(AObj: TBitBtn; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -673,6 +733,26 @@ end;
 procedure BitBtn_SetClientWidth(AObj: TBitBtn; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function BitBtn_GetControlState(AObj: TBitBtn): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure BitBtn_SetControlState(AObj: TBitBtn; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function BitBtn_GetControlStyle(AObj: TBitBtn): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure BitBtn_SetControlStyle(AObj: TBitBtn; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function BitBtn_GetFloating(AObj: TBitBtn): LongBool; extdecl;
@@ -790,6 +870,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function BitBtn_GetDockClients(AObj: TBitBtn; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function BitBtn_GetControls(AObj: TBitBtn; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -810,13 +895,21 @@ exports
   BitBtn_Free,
   BitBtn_Click,
   BitBtn_CanFocus,
+  BitBtn_ContainsControl,
+  BitBtn_ControlAtPos,
+  BitBtn_DisableAlign,
+  BitBtn_EnableAlign,
+  BitBtn_FindChildControl,
   BitBtn_FlipChildren,
   BitBtn_Focused,
   BitBtn_HandleAllocated,
+  BitBtn_InsertControl,
   BitBtn_Invalidate,
+  BitBtn_RemoveControl,
   BitBtn_Realign,
   BitBtn_Repaint,
   BitBtn_ScaleBy,
+  BitBtn_ScrollBy,
   BitBtn_SetBounds,
   BitBtn_SetFocus,
   BitBtn_Update,
@@ -834,6 +927,7 @@ exports
   BitBtn_Show,
   BitBtn_GetTextBuf,
   BitBtn_GetTextLen,
+  BitBtn_SetTextBuf,
   BitBtn_FindComponent,
   BitBtn_GetNamePath,
   BitBtn_Assign,
@@ -903,8 +997,10 @@ exports
   BitBtn_SetOnMouseLeave,
   BitBtn_SetOnMouseMove,
   BitBtn_SetOnMouseUp,
+  BitBtn_GetDockClientCount,
   BitBtn_GetDockSite,
   BitBtn_SetDockSite,
+  BitBtn_GetVisibleDockClientCount,
   BitBtn_GetBrush,
   BitBtn_GetControlCount,
   BitBtn_GetHandle,
@@ -916,9 +1012,14 @@ exports
   BitBtn_SetBoundsRect,
   BitBtn_GetClientHeight,
   BitBtn_SetClientHeight,
+  BitBtn_GetClientOrigin,
   BitBtn_GetClientRect,
   BitBtn_GetClientWidth,
   BitBtn_SetClientWidth,
+  BitBtn_GetControlState,
+  BitBtn_SetControlState,
+  BitBtn_GetControlStyle,
+  BitBtn_SetControlStyle,
   BitBtn_GetFloating,
   BitBtn_GetParent,
   BitBtn_SetParent,
@@ -942,6 +1043,7 @@ exports
   BitBtn_SetName,
   BitBtn_GetTag,
   BitBtn_SetTag,
+  BitBtn_GetDockClients,
   BitBtn_GetControls,
   BitBtn_GetComponents,
   BitBtn_StaticClassType;

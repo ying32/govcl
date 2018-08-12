@@ -30,6 +30,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ProgressBar_ContainsControl(AObj: TProgressBar; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ProgressBar_ControlAtPos(AObj: TProgressBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure ProgressBar_DisableAlign(AObj: TProgressBar); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ProgressBar_EnableAlign(AObj: TProgressBar); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function ProgressBar_FindChildControl(AObj: TProgressBar; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ProgressBar_FlipChildren(AObj: TProgressBar; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -45,9 +70,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ProgressBar_InsertControl(AObj: TProgressBar; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ProgressBar_Invalidate(AObj: TProgressBar); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure ProgressBar_PaintTo(AObj: TProgressBar; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure ProgressBar_RemoveControl(AObj: TProgressBar; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ProgressBar_Realign(AObj: TProgressBar); stdcall;
@@ -65,6 +105,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure ProgressBar_ScrollBy(AObj: TProgressBar; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure ProgressBar_SetBounds(AObj: TProgressBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -78,6 +123,11 @@ end;
 procedure ProgressBar_Update(AObj: TProgressBar); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure ProgressBar_UpdateControlState(AObj: TProgressBar); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure ProgressBar_BringToFront(AObj: TProgressBar); stdcall;
@@ -148,6 +198,11 @@ end;
 function ProgressBar_GetTextLen(AObj: TProgressBar): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ProgressBar_SetTextBuf(AObj: TProgressBar; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ProgressBar_FindComponent(AObj: TProgressBar; AName: PChar): TComponent; stdcall;
@@ -651,6 +706,11 @@ begin
   TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
+function ProgressBar_GetDockClientCount(AObj: TProgressBar): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ProgressBar_GetDockSite(AObj: TProgressBar): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -659,6 +719,21 @@ end;
 procedure ProgressBar_SetDockSite(AObj: TProgressBar; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ProgressBar_GetAlignDisabled(AObj: TProgressBar): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function ProgressBar_GetMouseInClient(AObj: TProgressBar): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function ProgressBar_GetVisibleDockClientCount(AObj: TProgressBar): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ProgressBar_GetBrush(AObj: TProgressBar): TBrush; stdcall;
@@ -736,6 +811,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ProgressBar_GetClientOrigin(AObj: TProgressBar; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ProgressBar_GetClientRect(AObj: TProgressBar; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -749,6 +829,26 @@ end;
 procedure ProgressBar_SetClientWidth(AObj: TProgressBar; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ProgressBar_GetControlState(AObj: TProgressBar): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ProgressBar_SetControlState(AObj: TProgressBar; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ProgressBar_GetControlStyle(AObj: TProgressBar): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ProgressBar_SetControlStyle(AObj: TProgressBar; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ProgressBar_GetExplicitLeft(AObj: TProgressBar): Integer; stdcall;
@@ -906,6 +1006,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ProgressBar_GetDockClients(AObj: TProgressBar; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ProgressBar_GetControls(AObj: TProgressBar; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -927,16 +1032,26 @@ exports
   ProgressBar_StepIt,
   ProgressBar_StepBy,
   ProgressBar_CanFocus,
+  ProgressBar_ContainsControl,
+  ProgressBar_ControlAtPos,
+  ProgressBar_DisableAlign,
+  ProgressBar_EnableAlign,
+  ProgressBar_FindChildControl,
   ProgressBar_FlipChildren,
   ProgressBar_Focused,
   ProgressBar_HandleAllocated,
+  ProgressBar_InsertControl,
   ProgressBar_Invalidate,
+  ProgressBar_PaintTo,
+  ProgressBar_RemoveControl,
   ProgressBar_Realign,
   ProgressBar_Repaint,
   ProgressBar_ScaleBy,
+  ProgressBar_ScrollBy,
   ProgressBar_SetBounds,
   ProgressBar_SetFocus,
   ProgressBar_Update,
+  ProgressBar_UpdateControlState,
   ProgressBar_BringToFront,
   ProgressBar_ClientToScreen,
   ProgressBar_ClientToParent,
@@ -951,6 +1066,7 @@ exports
   ProgressBar_Show,
   ProgressBar_GetTextBuf,
   ProgressBar_GetTextLen,
+  ProgressBar_SetTextBuf,
   ProgressBar_FindComponent,
   ProgressBar_GetNamePath,
   ProgressBar_Assign,
@@ -1033,8 +1149,12 @@ exports
   ProgressBar_SetOnMouseMove,
   ProgressBar_SetOnMouseUp,
   ProgressBar_SetOnStartDock,
+  ProgressBar_GetDockClientCount,
   ProgressBar_GetDockSite,
   ProgressBar_SetDockSite,
+  ProgressBar_GetAlignDisabled,
+  ProgressBar_GetMouseInClient,
+  ProgressBar_GetVisibleDockClientCount,
   ProgressBar_GetBrush,
   ProgressBar_GetControlCount,
   ProgressBar_GetHandle,
@@ -1050,9 +1170,14 @@ exports
   ProgressBar_SetBoundsRect,
   ProgressBar_GetClientHeight,
   ProgressBar_SetClientHeight,
+  ProgressBar_GetClientOrigin,
   ProgressBar_GetClientRect,
   ProgressBar_GetClientWidth,
   ProgressBar_SetClientWidth,
+  ProgressBar_GetControlState,
+  ProgressBar_SetControlState,
+  ProgressBar_GetControlStyle,
+  ProgressBar_SetControlStyle,
   ProgressBar_GetExplicitLeft,
   ProgressBar_GetExplicitTop,
   ProgressBar_GetExplicitWidth,
@@ -1084,6 +1209,7 @@ exports
   ProgressBar_SetName,
   ProgressBar_GetTag,
   ProgressBar_SetTag,
+  ProgressBar_GetDockClients,
   ProgressBar_GetControls,
   ProgressBar_GetComponents,
   ProgressBar_StaticClassType;

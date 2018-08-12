@@ -30,6 +30,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ProgressBar_ContainsControl(AObj: TProgressBar; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ProgressBar_ControlAtPos(AObj: TProgressBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure ProgressBar_DisableAlign(AObj: TProgressBar); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ProgressBar_EnableAlign(AObj: TProgressBar); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function ProgressBar_FindChildControl(AObj: TProgressBar; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ProgressBar_FlipChildren(AObj: TProgressBar; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -45,9 +70,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ProgressBar_InsertControl(AObj: TProgressBar; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ProgressBar_Invalidate(AObj: TProgressBar); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure ProgressBar_RemoveControl(AObj: TProgressBar; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ProgressBar_Realign(AObj: TProgressBar); extdecl;
@@ -63,6 +98,11 @@ end;
 procedure ProgressBar_ScaleBy(AObj: TProgressBar; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure ProgressBar_ScrollBy(AObj: TProgressBar; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure ProgressBar_SetBounds(AObj: TProgressBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -148,6 +188,11 @@ end;
 function ProgressBar_GetTextLen(AObj: TProgressBar): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ProgressBar_SetTextBuf(AObj: TProgressBar; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ProgressBar_FindComponent(AObj: TProgressBar; AName: PChar): TComponent; extdecl;
@@ -552,6 +597,11 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function ProgressBar_GetDockClientCount(AObj: TProgressBar): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ProgressBar_GetDockSite(AObj: TProgressBar): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -560,6 +610,11 @@ end;
 procedure ProgressBar_SetDockSite(AObj: TProgressBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ProgressBar_GetVisibleDockClientCount(AObj: TProgressBar): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ProgressBar_GetBrush(AObj: TProgressBar): TBrush; extdecl;
@@ -637,6 +692,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ProgressBar_GetClientOrigin(AObj: TProgressBar; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ProgressBar_GetClientRect(AObj: TProgressBar; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -650,6 +710,26 @@ end;
 procedure ProgressBar_SetClientWidth(AObj: TProgressBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ProgressBar_GetControlState(AObj: TProgressBar): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ProgressBar_SetControlState(AObj: TProgressBar; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ProgressBar_GetControlStyle(AObj: TProgressBar): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ProgressBar_SetControlStyle(AObj: TProgressBar; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ProgressBar_GetFloating(AObj: TProgressBar): LongBool; extdecl;
@@ -757,6 +837,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ProgressBar_GetDockClients(AObj: TProgressBar; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ProgressBar_GetControls(AObj: TProgressBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -778,13 +863,21 @@ exports
   ProgressBar_StepIt,
   ProgressBar_StepBy,
   ProgressBar_CanFocus,
+  ProgressBar_ContainsControl,
+  ProgressBar_ControlAtPos,
+  ProgressBar_DisableAlign,
+  ProgressBar_EnableAlign,
+  ProgressBar_FindChildControl,
   ProgressBar_FlipChildren,
   ProgressBar_Focused,
   ProgressBar_HandleAllocated,
+  ProgressBar_InsertControl,
   ProgressBar_Invalidate,
+  ProgressBar_RemoveControl,
   ProgressBar_Realign,
   ProgressBar_Repaint,
   ProgressBar_ScaleBy,
+  ProgressBar_ScrollBy,
   ProgressBar_SetBounds,
   ProgressBar_SetFocus,
   ProgressBar_Update,
@@ -802,6 +895,7 @@ exports
   ProgressBar_Show,
   ProgressBar_GetTextBuf,
   ProgressBar_GetTextLen,
+  ProgressBar_SetTextBuf,
   ProgressBar_FindComponent,
   ProgressBar_GetNamePath,
   ProgressBar_Assign,
@@ -867,8 +961,10 @@ exports
   ProgressBar_SetOnMouseLeave,
   ProgressBar_SetOnMouseMove,
   ProgressBar_SetOnMouseUp,
+  ProgressBar_GetDockClientCount,
   ProgressBar_GetDockSite,
   ProgressBar_SetDockSite,
+  ProgressBar_GetVisibleDockClientCount,
   ProgressBar_GetBrush,
   ProgressBar_GetControlCount,
   ProgressBar_GetHandle,
@@ -884,9 +980,14 @@ exports
   ProgressBar_SetBoundsRect,
   ProgressBar_GetClientHeight,
   ProgressBar_SetClientHeight,
+  ProgressBar_GetClientOrigin,
   ProgressBar_GetClientRect,
   ProgressBar_GetClientWidth,
   ProgressBar_SetClientWidth,
+  ProgressBar_GetControlState,
+  ProgressBar_SetControlState,
+  ProgressBar_GetControlStyle,
+  ProgressBar_SetControlStyle,
   ProgressBar_GetFloating,
   ProgressBar_GetParent,
   ProgressBar_SetParent,
@@ -908,6 +1009,7 @@ exports
   ProgressBar_SetName,
   ProgressBar_GetTag,
   ProgressBar_SetTag,
+  ProgressBar_GetDockClients,
   ProgressBar_GetControls,
   ProgressBar_GetComponents,
   ProgressBar_StaticClassType;

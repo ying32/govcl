@@ -101,6 +101,16 @@ func TScreenClass() TClass {
     return Screen_StaticClassType()
 }
 
+// DisableAlign
+func (s *TScreen) DisableAlign() {
+    Screen_DisableAlign(s.instance)
+}
+
+// EnableAlign
+func (s *TScreen) EnableAlign() {
+    Screen_EnableAlign(s.instance)
+}
+
 // Realign
 func (s *TScreen) Realign() {
     Screen_Realign(s.instance)

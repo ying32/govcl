@@ -131,6 +131,31 @@ func (c *TColorListBox) CanFocus() bool {
     return ColorListBox_CanFocus(c.instance)
 }
 
+// ContainsControl
+func (c *TColorListBox) ContainsControl(Control IControl) bool {
+    return ColorListBox_ContainsControl(c.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (c *TColorListBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ColorListBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (c *TColorListBox) DisableAlign() {
+    ColorListBox_DisableAlign(c.instance)
+}
+
+// EnableAlign
+func (c *TColorListBox) EnableAlign() {
+    ColorListBox_EnableAlign(c.instance)
+}
+
+// FindChildControl
+func (c *TColorListBox) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ColorListBox_FindChildControl(c.instance, ControlName))
+}
+
 // FlipChildren
 func (c *TColorListBox) FlipChildren(AllLevels bool) {
     ColorListBox_FlipChildren(c.instance, AllLevels)
@@ -146,9 +171,24 @@ func (c *TColorListBox) HandleAllocated() bool {
     return ColorListBox_HandleAllocated(c.instance)
 }
 
+// InsertControl
+func (c *TColorListBox) InsertControl(AControl IControl) {
+    ColorListBox_InsertControl(c.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (c *TColorListBox) Invalidate() {
     ColorListBox_Invalidate(c.instance)
+}
+
+// PaintTo
+func (c *TColorListBox) PaintTo(DC HDC, X int32, Y int32) {
+    ColorListBox_PaintTo(c.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (c *TColorListBox) RemoveControl(AControl IControl) {
+    ColorListBox_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -166,6 +206,11 @@ func (c *TColorListBox) ScaleBy(M int32, D int32) {
     ColorListBox_ScaleBy(c.instance, M , D)
 }
 
+// ScrollBy
+func (c *TColorListBox) ScrollBy(DeltaX int32, DeltaY int32) {
+    ColorListBox_ScrollBy(c.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (c *TColorListBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ColorListBox_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
@@ -179,6 +224,11 @@ func (c *TColorListBox) SetFocus() {
 // Update
 func (c *TColorListBox) Update() {
     ColorListBox_Update(c.instance)
+}
+
+// UpdateControlState
+func (c *TColorListBox) UpdateControlState() {
+    ColorListBox_UpdateControlState(c.instance)
 }
 
 // BringToFront
@@ -249,6 +299,11 @@ func (c *TColorListBox) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (c *TColorListBox) GetTextLen() int32 {
     return ColorListBox_GetTextLen(c.instance)
+}
+
+// SetTextBuf
+func (c *TColorListBox) SetTextBuf(Buffer string) {
+    ColorListBox_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
@@ -567,12 +622,12 @@ func (c *TColorListBox) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (c *TColorListBox) TabOrder() uint16 {
+func (c *TColorListBox) TabOrder() TTabOrder {
     return ColorListBox_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
-func (c *TColorListBox) SetTabOrder(value uint16) {
+func (c *TColorListBox) SetTabOrder(value TTabOrder) {
     ColorListBox_SetTabOrder(c.instance, value)
 }
 
@@ -762,6 +817,11 @@ func (c *TColorListBox) SetItemIndex(value int32) {
     ColorListBox_SetItemIndex(c.instance, value)
 }
 
+// DockClientCount
+func (c *TColorListBox) DockClientCount() int32 {
+    return ColorListBox_GetDockClientCount(c.instance)
+}
+
 // DockSite
 func (c *TColorListBox) DockSite() bool {
     return ColorListBox_GetDockSite(c.instance)
@@ -770,6 +830,21 @@ func (c *TColorListBox) DockSite() bool {
 // SetDockSite
 func (c *TColorListBox) SetDockSite(value bool) {
     ColorListBox_SetDockSite(c.instance, value)
+}
+
+// AlignDisabled
+func (c *TColorListBox) AlignDisabled() bool {
+    return ColorListBox_GetAlignDisabled(c.instance)
+}
+
+// MouseInClient
+func (c *TColorListBox) MouseInClient() bool {
+    return ColorListBox_GetMouseInClient(c.instance)
+}
+
+// VisibleDockClientCount
+func (c *TColorListBox) VisibleDockClientCount() int32 {
+    return ColorListBox_GetVisibleDockClientCount(c.instance)
 }
 
 // Brush
@@ -837,6 +912,11 @@ func (c *TColorListBox) SetClientHeight(value int32) {
     ColorListBox_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TColorListBox) ClientOrigin() TPoint {
+    return ColorListBox_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TColorListBox) ClientRect() TRect {
     return ColorListBox_GetClientRect(c.instance)
@@ -850,6 +930,26 @@ func (c *TColorListBox) ClientWidth() int32 {
 // SetClientWidth
 func (c *TColorListBox) SetClientWidth(value int32) {
     ColorListBox_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TColorListBox) ControlState() TControlState {
+    return ColorListBox_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TColorListBox) SetControlState(value TControlState) {
+    ColorListBox_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TColorListBox) ControlStyle() TControlStyle {
+    return ColorListBox_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TColorListBox) SetControlStyle(value TControlStyle) {
+    ColorListBox_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft
@@ -1053,6 +1153,11 @@ func (c *TColorListBox) Colors(Index int32) TColor {
 // ColorNames
 func (c *TColorListBox) ColorNames(Index int32) string {
     return ColorListBox_GetColorNames(c.instance, Index)
+}
+
+// DockClients
+func (c *TColorListBox) DockClients(Index int32) *TControl {
+    return ControlFromInst(ColorListBox_GetDockClients(c.instance, Index))
 }
 
 // Controls

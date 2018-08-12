@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function WinControl_ContainsControl(AObj: TWinControl; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function WinControl_ControlAtPos(AObj: TWinControl; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure WinControl_DisableAlign(AObj: TWinControl); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure WinControl_EnableAlign(AObj: TWinControl); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function WinControl_FindChildControl(AObj: TWinControl; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure WinControl_FlipChildren(AObj: TWinControl; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure WinControl_InsertControl(AObj: TWinControl; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure WinControl_Invalidate(AObj: TWinControl); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure WinControl_PaintTo(AObj: TWinControl; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure WinControl_RemoveControl(AObj: TWinControl; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure WinControl_Realign(AObj: TWinControl); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure WinControl_ScrollBy(AObj: TWinControl; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure WinControl_SetBounds(AObj: TWinControl; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure WinControl_Update(AObj: TWinControl); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure WinControl_UpdateControlState(AObj: TWinControl); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure WinControl_BringToFront(AObj: TWinControl); stdcall;
@@ -140,6 +190,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure WinControl_SetTextBuf(AObj: TWinControl; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function WinControl_FindComponent(AObj: TWinControl; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -195,6 +250,11 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function WinControl_GetDockClientCount(AObj: TWinControl): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function WinControl_GetDockSite(AObj: TWinControl): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -213,6 +273,21 @@ end;
 procedure WinControl_SetDoubleBuffered(AObj: TWinControl; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function WinControl_GetAlignDisabled(AObj: TWinControl): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function WinControl_GetMouseInClient(AObj: TWinControl): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function WinControl_GetVisibleDockClientCount(AObj: TWinControl): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function WinControl_GetBrush(AObj: TWinControl): TBrush; stdcall;
@@ -350,6 +425,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure WinControl_GetClientOrigin(AObj: TWinControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure WinControl_GetClientRect(AObj: TWinControl; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -363,6 +443,26 @@ end;
 procedure WinControl_SetClientWidth(AObj: TWinControl; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function WinControl_GetControlState(AObj: TWinControl): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure WinControl_SetControlState(AObj: TWinControl; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function WinControl_GetControlStyle(AObj: TWinControl): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure WinControl_SetControlStyle(AObj: TWinControl; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function WinControl_GetExplicitLeft(AObj: TWinControl): Integer; stdcall;
@@ -560,6 +660,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function WinControl_GetDockClients(AObj: TWinControl; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function WinControl_GetControls(AObj: TWinControl; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -579,16 +684,26 @@ exports
   WinControl_Create,
   WinControl_Free,
   WinControl_CanFocus,
+  WinControl_ContainsControl,
+  WinControl_ControlAtPos,
+  WinControl_DisableAlign,
+  WinControl_EnableAlign,
+  WinControl_FindChildControl,
   WinControl_FlipChildren,
   WinControl_Focused,
   WinControl_HandleAllocated,
+  WinControl_InsertControl,
   WinControl_Invalidate,
+  WinControl_PaintTo,
+  WinControl_RemoveControl,
   WinControl_Realign,
   WinControl_Repaint,
   WinControl_ScaleBy,
+  WinControl_ScrollBy,
   WinControl_SetBounds,
   WinControl_SetFocus,
   WinControl_Update,
+  WinControl_UpdateControlState,
   WinControl_BringToFront,
   WinControl_ClientToScreen,
   WinControl_ClientToParent,
@@ -603,6 +718,7 @@ exports
   WinControl_Show,
   WinControl_GetTextBuf,
   WinControl_GetTextLen,
+  WinControl_SetTextBuf,
   WinControl_FindComponent,
   WinControl_GetNamePath,
   WinControl_Assign,
@@ -614,10 +730,14 @@ exports
   WinControl_Equals,
   WinControl_GetHashCode,
   WinControl_ToString,
+  WinControl_GetDockClientCount,
   WinControl_GetDockSite,
   WinControl_SetDockSite,
   WinControl_GetDoubleBuffered,
   WinControl_SetDoubleBuffered,
+  WinControl_GetAlignDisabled,
+  WinControl_GetMouseInClient,
+  WinControl_GetVisibleDockClientCount,
   WinControl_GetBrush,
   WinControl_GetControlCount,
   WinControl_GetHandle,
@@ -645,9 +765,14 @@ exports
   WinControl_SetBoundsRect,
   WinControl_GetClientHeight,
   WinControl_SetClientHeight,
+  WinControl_GetClientOrigin,
   WinControl_GetClientRect,
   WinControl_GetClientWidth,
   WinControl_SetClientWidth,
+  WinControl_GetControlState,
+  WinControl_SetControlState,
+  WinControl_GetControlStyle,
+  WinControl_SetControlStyle,
   WinControl_GetExplicitLeft,
   WinControl_GetExplicitTop,
   WinControl_GetExplicitWidth,
@@ -687,6 +812,7 @@ exports
   WinControl_SetName,
   WinControl_GetTag,
   WinControl_SetTag,
+  WinControl_GetDockClients,
   WinControl_GetControls,
   WinControl_GetComponents,
   WinControl_StaticClassType;

@@ -196,6 +196,11 @@ func (g *TGauge) GetTextLen() int32 {
     return Gauge_GetTextLen(g.instance)
 }
 
+// SetTextBuf
+func (g *TGauge) SetTextBuf(Buffer string) {
+    Gauge_SetTextBuf(g.instance, Buffer)
+}
+
 // FindComponent
 func (g *TGauge) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Gauge_FindComponent(g.instance, AName))
@@ -510,6 +515,11 @@ func (g *TGauge) SetClientHeight(value int32) {
     Gauge_SetClientHeight(g.instance, value)
 }
 
+// ClientOrigin
+func (g *TGauge) ClientOrigin() TPoint {
+    return Gauge_GetClientOrigin(g.instance)
+}
+
 // ClientRect
 func (g *TGauge) ClientRect() TRect {
     return Gauge_GetClientRect(g.instance)
@@ -523,6 +533,26 @@ func (g *TGauge) ClientWidth() int32 {
 // SetClientWidth
 func (g *TGauge) SetClientWidth(value int32) {
     Gauge_SetClientWidth(g.instance, value)
+}
+
+// ControlState
+func (g *TGauge) ControlState() TControlState {
+    return Gauge_GetControlState(g.instance)
+}
+
+// SetControlState
+func (g *TGauge) SetControlState(value TControlState) {
+    Gauge_SetControlState(g.instance, value)
+}
+
+// ControlStyle
+func (g *TGauge) ControlStyle() TControlStyle {
+    return Gauge_GetControlStyle(g.instance)
+}
+
+// SetControlStyle
+func (g *TGauge) SetControlStyle(value TControlStyle) {
+    Gauge_SetControlStyle(g.instance, value)
 }
 
 // ExplicitLeft

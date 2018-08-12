@@ -106,6 +106,31 @@ func (g *TGroupBox) CanFocus() bool {
     return GroupBox_CanFocus(g.instance)
 }
 
+// ContainsControl
+func (g *TGroupBox) ContainsControl(Control IControl) bool {
+    return GroupBox_ContainsControl(g.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (g *TGroupBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(GroupBox_ControlAtPos(g.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (g *TGroupBox) DisableAlign() {
+    GroupBox_DisableAlign(g.instance)
+}
+
+// EnableAlign
+func (g *TGroupBox) EnableAlign() {
+    GroupBox_EnableAlign(g.instance)
+}
+
+// FindChildControl
+func (g *TGroupBox) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(GroupBox_FindChildControl(g.instance, ControlName))
+}
+
 // FlipChildren
 func (g *TGroupBox) FlipChildren(AllLevels bool) {
     GroupBox_FlipChildren(g.instance, AllLevels)
@@ -121,9 +146,24 @@ func (g *TGroupBox) HandleAllocated() bool {
     return GroupBox_HandleAllocated(g.instance)
 }
 
+// InsertControl
+func (g *TGroupBox) InsertControl(AControl IControl) {
+    GroupBox_InsertControl(g.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (g *TGroupBox) Invalidate() {
     GroupBox_Invalidate(g.instance)
+}
+
+// PaintTo
+func (g *TGroupBox) PaintTo(DC HDC, X int32, Y int32) {
+    GroupBox_PaintTo(g.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (g *TGroupBox) RemoveControl(AControl IControl) {
+    GroupBox_RemoveControl(g.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (g *TGroupBox) ScaleBy(M int32, D int32) {
     GroupBox_ScaleBy(g.instance, M , D)
 }
 
+// ScrollBy
+func (g *TGroupBox) ScrollBy(DeltaX int32, DeltaY int32) {
+    GroupBox_ScrollBy(g.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (g *TGroupBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     GroupBox_SetBounds(g.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (g *TGroupBox) SetFocus() {
 // Update
 func (g *TGroupBox) Update() {
     GroupBox_Update(g.instance)
+}
+
+// UpdateControlState
+func (g *TGroupBox) UpdateControlState() {
+    GroupBox_UpdateControlState(g.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (g *TGroupBox) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (g *TGroupBox) GetTextLen() int32 {
     return GroupBox_GetTextLen(g.instance)
+}
+
+// SetTextBuf
+func (g *TGroupBox) SetTextBuf(Buffer string) {
+    GroupBox_SetTextBuf(g.instance, Buffer)
 }
 
 // FindComponent
@@ -506,12 +561,12 @@ func (g *TGroupBox) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (g *TGroupBox) TabOrder() uint16 {
+func (g *TGroupBox) TabOrder() TTabOrder {
     return GroupBox_GetTabOrder(g.instance)
 }
 
 // SetTabOrder
-func (g *TGroupBox) SetTabOrder(value uint16) {
+func (g *TGroupBox) SetTabOrder(value TTabOrder) {
     GroupBox_SetTabOrder(g.instance, value)
 }
 
@@ -641,6 +696,26 @@ func (g *TGroupBox) SetOnUnDock(fn TUnDockEvent) {
     GroupBox_SetOnUnDock(g.instance, fn)
 }
 
+// DockClientCount
+func (g *TGroupBox) DockClientCount() int32 {
+    return GroupBox_GetDockClientCount(g.instance)
+}
+
+// AlignDisabled
+func (g *TGroupBox) AlignDisabled() bool {
+    return GroupBox_GetAlignDisabled(g.instance)
+}
+
+// MouseInClient
+func (g *TGroupBox) MouseInClient() bool {
+    return GroupBox_GetMouseInClient(g.instance)
+}
+
+// VisibleDockClientCount
+func (g *TGroupBox) VisibleDockClientCount() int32 {
+    return GroupBox_GetVisibleDockClientCount(g.instance)
+}
+
 // Brush
 func (g *TGroupBox) Brush() *TBrush {
     return BrushFromInst(GroupBox_GetBrush(g.instance))
@@ -706,6 +781,11 @@ func (g *TGroupBox) SetClientHeight(value int32) {
     GroupBox_SetClientHeight(g.instance, value)
 }
 
+// ClientOrigin
+func (g *TGroupBox) ClientOrigin() TPoint {
+    return GroupBox_GetClientOrigin(g.instance)
+}
+
 // ClientRect
 func (g *TGroupBox) ClientRect() TRect {
     return GroupBox_GetClientRect(g.instance)
@@ -719,6 +799,26 @@ func (g *TGroupBox) ClientWidth() int32 {
 // SetClientWidth
 func (g *TGroupBox) SetClientWidth(value int32) {
     GroupBox_SetClientWidth(g.instance, value)
+}
+
+// ControlState
+func (g *TGroupBox) ControlState() TControlState {
+    return GroupBox_GetControlState(g.instance)
+}
+
+// SetControlState
+func (g *TGroupBox) SetControlState(value TControlState) {
+    GroupBox_SetControlState(g.instance, value)
+}
+
+// ControlStyle
+func (g *TGroupBox) ControlStyle() TControlStyle {
+    return GroupBox_GetControlStyle(g.instance)
+}
+
+// SetControlStyle
+func (g *TGroupBox) SetControlStyle(value TControlStyle) {
+    GroupBox_SetControlStyle(g.instance, value)
 }
 
 // ExplicitLeft
@@ -912,6 +1012,11 @@ func (g *TGroupBox) Tag() int {
 // EN: Set the control tag.
 func (g *TGroupBox) SetTag(value int) {
     GroupBox_SetTag(g.instance, value)
+}
+
+// DockClients
+func (g *TGroupBox) DockClients(Index int32) *TControl {
+    return ControlFromInst(GroupBox_GetDockClients(g.instance, Index))
 }
 
 // Controls

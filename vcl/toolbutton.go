@@ -201,6 +201,11 @@ func (t *TToolButton) GetTextLen() int32 {
     return ToolButton_GetTextLen(t.instance)
 }
 
+// SetTextBuf
+func (t *TToolButton) SetTextBuf(Buffer string) {
+    ToolButton_SetTextBuf(t.instance, Buffer)
+}
+
 // FindComponent
 func (t *TToolButton) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ToolButton_FindComponent(t.instance, AName))
@@ -631,6 +636,11 @@ func (t *TToolButton) SetClientHeight(value int32) {
     ToolButton_SetClientHeight(t.instance, value)
 }
 
+// ClientOrigin
+func (t *TToolButton) ClientOrigin() TPoint {
+    return ToolButton_GetClientOrigin(t.instance)
+}
+
 // ClientRect
 func (t *TToolButton) ClientRect() TRect {
     return ToolButton_GetClientRect(t.instance)
@@ -644,6 +654,26 @@ func (t *TToolButton) ClientWidth() int32 {
 // SetClientWidth
 func (t *TToolButton) SetClientWidth(value int32) {
     ToolButton_SetClientWidth(t.instance, value)
+}
+
+// ControlState
+func (t *TToolButton) ControlState() TControlState {
+    return ToolButton_GetControlState(t.instance)
+}
+
+// SetControlState
+func (t *TToolButton) SetControlState(value TControlState) {
+    ToolButton_SetControlState(t.instance, value)
+}
+
+// ControlStyle
+func (t *TToolButton) ControlStyle() TControlStyle {
+    return ToolButton_GetControlStyle(t.instance)
+}
+
+// SetControlStyle
+func (t *TToolButton) SetControlStyle(value TControlStyle) {
+    ToolButton_SetControlStyle(t.instance, value)
 }
 
 // ExplicitLeft

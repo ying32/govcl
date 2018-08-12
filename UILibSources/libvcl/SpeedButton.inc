@@ -110,6 +110,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure SpeedButton_SetTextBuf(AObj: TSpeedButton; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function SpeedButton_FindComponent(AObj: TSpeedButton; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -489,6 +494,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure SpeedButton_GetClientOrigin(AObj: TSpeedButton; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure SpeedButton_GetClientRect(AObj: TSpeedButton; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -502,6 +512,26 @@ end;
 procedure SpeedButton_SetClientWidth(AObj: TSpeedButton; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function SpeedButton_GetControlState(AObj: TSpeedButton): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure SpeedButton_SetControlState(AObj: TSpeedButton; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function SpeedButton_GetControlStyle(AObj: TSpeedButton): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure SpeedButton_SetControlStyle(AObj: TSpeedButton; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function SpeedButton_GetExplicitLeft(AObj: TSpeedButton): Integer; stdcall;
@@ -701,6 +731,7 @@ exports
   SpeedButton_Update,
   SpeedButton_GetTextBuf,
   SpeedButton_GetTextLen,
+  SpeedButton_SetTextBuf,
   SpeedButton_FindComponent,
   SpeedButton_GetNamePath,
   SpeedButton_Assign,
@@ -767,9 +798,14 @@ exports
   SpeedButton_SetBoundsRect,
   SpeedButton_GetClientHeight,
   SpeedButton_SetClientHeight,
+  SpeedButton_GetClientOrigin,
   SpeedButton_GetClientRect,
   SpeedButton_GetClientWidth,
   SpeedButton_SetClientWidth,
+  SpeedButton_GetControlState,
+  SpeedButton_SetControlState,
+  SpeedButton_GetControlStyle,
+  SpeedButton_SetControlStyle,
   SpeedButton_GetExplicitLeft,
   SpeedButton_GetExplicitTop,
   SpeedButton_GetExplicitWidth,

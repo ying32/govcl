@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure BoundLabel_SetTextBuf(AObj: TBoundLabel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function BoundLabel_FindComponent(AObj: TBoundLabel; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -557,6 +562,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure BoundLabel_GetClientOrigin(AObj: TBoundLabel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure BoundLabel_GetClientRect(AObj: TBoundLabel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -570,6 +580,26 @@ end;
 procedure BoundLabel_SetClientWidth(AObj: TBoundLabel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function BoundLabel_GetControlState(AObj: TBoundLabel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure BoundLabel_SetControlState(AObj: TBoundLabel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function BoundLabel_GetControlStyle(AObj: TBoundLabel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure BoundLabel_SetControlStyle(AObj: TBoundLabel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function BoundLabel_GetExplicitLeft(AObj: TBoundLabel): Integer; stdcall;
@@ -748,6 +778,7 @@ exports
   BoundLabel_Update,
   BoundLabel_GetTextBuf,
   BoundLabel_GetTextLen,
+  BoundLabel_SetTextBuf,
   BoundLabel_FindComponent,
   BoundLabel_GetNamePath,
   BoundLabel_Assign,
@@ -823,9 +854,14 @@ exports
   BoundLabel_SetBoundsRect,
   BoundLabel_GetClientHeight,
   BoundLabel_SetClientHeight,
+  BoundLabel_GetClientOrigin,
   BoundLabel_GetClientRect,
   BoundLabel_GetClientWidth,
   BoundLabel_SetClientWidth,
+  BoundLabel_GetControlState,
+  BoundLabel_SetControlState,
+  BoundLabel_GetControlStyle,
+  BoundLabel_SetControlStyle,
   BoundLabel_GetExplicitLeft,
   BoundLabel_GetExplicitTop,
   BoundLabel_GetExplicitWidth,

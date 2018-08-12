@@ -111,6 +111,31 @@ func (t *TTrackBar) CanFocus() bool {
     return TrackBar_CanFocus(t.instance)
 }
 
+// ContainsControl
+func (t *TTrackBar) ContainsControl(Control IControl) bool {
+    return TrackBar_ContainsControl(t.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (t *TTrackBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(TrackBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (t *TTrackBar) DisableAlign() {
+    TrackBar_DisableAlign(t.instance)
+}
+
+// EnableAlign
+func (t *TTrackBar) EnableAlign() {
+    TrackBar_EnableAlign(t.instance)
+}
+
+// FindChildControl
+func (t *TTrackBar) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(TrackBar_FindChildControl(t.instance, ControlName))
+}
+
 // FlipChildren
 func (t *TTrackBar) FlipChildren(AllLevels bool) {
     TrackBar_FlipChildren(t.instance, AllLevels)
@@ -126,9 +151,24 @@ func (t *TTrackBar) HandleAllocated() bool {
     return TrackBar_HandleAllocated(t.instance)
 }
 
+// InsertControl
+func (t *TTrackBar) InsertControl(AControl IControl) {
+    TrackBar_InsertControl(t.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (t *TTrackBar) Invalidate() {
     TrackBar_Invalidate(t.instance)
+}
+
+// PaintTo
+func (t *TTrackBar) PaintTo(DC HDC, X int32, Y int32) {
+    TrackBar_PaintTo(t.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (t *TTrackBar) RemoveControl(AControl IControl) {
+    TrackBar_RemoveControl(t.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -146,6 +186,11 @@ func (t *TTrackBar) ScaleBy(M int32, D int32) {
     TrackBar_ScaleBy(t.instance, M , D)
 }
 
+// ScrollBy
+func (t *TTrackBar) ScrollBy(DeltaX int32, DeltaY int32) {
+    TrackBar_ScrollBy(t.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (t *TTrackBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     TrackBar_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
@@ -159,6 +204,11 @@ func (t *TTrackBar) SetFocus() {
 // Update
 func (t *TTrackBar) Update() {
     TrackBar_Update(t.instance)
+}
+
+// UpdateControlState
+func (t *TTrackBar) UpdateControlState() {
+    TrackBar_UpdateControlState(t.instance)
 }
 
 // BringToFront
@@ -229,6 +279,11 @@ func (t *TTrackBar) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (t *TTrackBar) GetTextLen() int32 {
     return TrackBar_GetTextLen(t.instance)
+}
+
+// SetTextBuf
+func (t *TTrackBar) SetTextBuf(Buffer string) {
+    TrackBar_SetTextBuf(t.instance, Buffer)
 }
 
 // FindComponent
@@ -557,12 +612,12 @@ func (t *TTrackBar) SetShowSelRange(value bool) {
 }
 
 // TabOrder
-func (t *TTrackBar) TabOrder() uint16 {
+func (t *TTrackBar) TabOrder() TTabOrder {
     return TrackBar_GetTabOrder(t.instance)
 }
 
 // SetTabOrder
-func (t *TTrackBar) SetTabOrder(value uint16) {
+func (t *TTrackBar) SetTabOrder(value TTabOrder) {
     TrackBar_SetTabOrder(t.instance, value)
 }
 
@@ -690,6 +745,11 @@ func (t *TTrackBar) SetOnStartDock(fn TStartDockEvent) {
     TrackBar_SetOnStartDock(t.instance, fn)
 }
 
+// DockClientCount
+func (t *TTrackBar) DockClientCount() int32 {
+    return TrackBar_GetDockClientCount(t.instance)
+}
+
 // DockSite
 func (t *TTrackBar) DockSite() bool {
     return TrackBar_GetDockSite(t.instance)
@@ -698,6 +758,21 @@ func (t *TTrackBar) DockSite() bool {
 // SetDockSite
 func (t *TTrackBar) SetDockSite(value bool) {
     TrackBar_SetDockSite(t.instance, value)
+}
+
+// AlignDisabled
+func (t *TTrackBar) AlignDisabled() bool {
+    return TrackBar_GetAlignDisabled(t.instance)
+}
+
+// MouseInClient
+func (t *TTrackBar) MouseInClient() bool {
+    return TrackBar_GetMouseInClient(t.instance)
+}
+
+// VisibleDockClientCount
+func (t *TTrackBar) VisibleDockClientCount() int32 {
+    return TrackBar_GetVisibleDockClientCount(t.instance)
 }
 
 // Brush
@@ -775,6 +850,11 @@ func (t *TTrackBar) SetClientHeight(value int32) {
     TrackBar_SetClientHeight(t.instance, value)
 }
 
+// ClientOrigin
+func (t *TTrackBar) ClientOrigin() TPoint {
+    return TrackBar_GetClientOrigin(t.instance)
+}
+
 // ClientRect
 func (t *TTrackBar) ClientRect() TRect {
     return TrackBar_GetClientRect(t.instance)
@@ -788,6 +868,26 @@ func (t *TTrackBar) ClientWidth() int32 {
 // SetClientWidth
 func (t *TTrackBar) SetClientWidth(value int32) {
     TrackBar_SetClientWidth(t.instance, value)
+}
+
+// ControlState
+func (t *TTrackBar) ControlState() TControlState {
+    return TrackBar_GetControlState(t.instance)
+}
+
+// SetControlState
+func (t *TTrackBar) SetControlState(value TControlState) {
+    TrackBar_SetControlState(t.instance, value)
+}
+
+// ControlStyle
+func (t *TTrackBar) ControlStyle() TControlStyle {
+    return TrackBar_GetControlStyle(t.instance)
+}
+
+// SetControlStyle
+func (t *TTrackBar) SetControlStyle(value TControlStyle) {
+    TrackBar_SetControlStyle(t.instance, value)
 }
 
 // ExplicitLeft
@@ -981,6 +1081,11 @@ func (t *TTrackBar) Tag() int {
 // EN: Set the control tag.
 func (t *TTrackBar) SetTag(value int) {
     TrackBar_SetTag(t.instance, value)
+}
+
+// DockClients
+func (t *TTrackBar) DockClients(Index int32) *TControl {
+    return ControlFromInst(TrackBar_GetDockClients(t.instance, Index))
 }
 
 // Controls

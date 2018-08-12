@@ -161,6 +161,31 @@ func (l *TLabeledEdit) CanFocus() bool {
     return LabeledEdit_CanFocus(l.instance)
 }
 
+// ContainsControl
+func (l *TLabeledEdit) ContainsControl(Control IControl) bool {
+    return LabeledEdit_ContainsControl(l.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (l *TLabeledEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(LabeledEdit_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (l *TLabeledEdit) DisableAlign() {
+    LabeledEdit_DisableAlign(l.instance)
+}
+
+// EnableAlign
+func (l *TLabeledEdit) EnableAlign() {
+    LabeledEdit_EnableAlign(l.instance)
+}
+
+// FindChildControl
+func (l *TLabeledEdit) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(LabeledEdit_FindChildControl(l.instance, ControlName))
+}
+
 // FlipChildren
 func (l *TLabeledEdit) FlipChildren(AllLevels bool) {
     LabeledEdit_FlipChildren(l.instance, AllLevels)
@@ -176,9 +201,24 @@ func (l *TLabeledEdit) HandleAllocated() bool {
     return LabeledEdit_HandleAllocated(l.instance)
 }
 
+// InsertControl
+func (l *TLabeledEdit) InsertControl(AControl IControl) {
+    LabeledEdit_InsertControl(l.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (l *TLabeledEdit) Invalidate() {
     LabeledEdit_Invalidate(l.instance)
+}
+
+// PaintTo
+func (l *TLabeledEdit) PaintTo(DC HDC, X int32, Y int32) {
+    LabeledEdit_PaintTo(l.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (l *TLabeledEdit) RemoveControl(AControl IControl) {
+    LabeledEdit_RemoveControl(l.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -196,6 +236,11 @@ func (l *TLabeledEdit) ScaleBy(M int32, D int32) {
     LabeledEdit_ScaleBy(l.instance, M , D)
 }
 
+// ScrollBy
+func (l *TLabeledEdit) ScrollBy(DeltaX int32, DeltaY int32) {
+    LabeledEdit_ScrollBy(l.instance, DeltaX , DeltaY)
+}
+
 // SetFocus
 func (l *TLabeledEdit) SetFocus() {
     LabeledEdit_SetFocus(l.instance)
@@ -204,6 +249,11 @@ func (l *TLabeledEdit) SetFocus() {
 // Update
 func (l *TLabeledEdit) Update() {
     LabeledEdit_Update(l.instance)
+}
+
+// UpdateControlState
+func (l *TLabeledEdit) UpdateControlState() {
+    LabeledEdit_UpdateControlState(l.instance)
 }
 
 // BringToFront
@@ -274,6 +324,11 @@ func (l *TLabeledEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (l *TLabeledEdit) GetTextLen() int32 {
     return LabeledEdit_GetTextLen(l.instance)
+}
+
+// SetTextBuf
+func (l *TLabeledEdit) SetTextBuf(Buffer string) {
+    LabeledEdit_SetTextBuf(l.instance, Buffer)
 }
 
 // FindComponent
@@ -677,12 +732,12 @@ func (l *TLabeledEdit) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (l *TLabeledEdit) TabOrder() uint16 {
+func (l *TLabeledEdit) TabOrder() TTabOrder {
     return LabeledEdit_GetTabOrder(l.instance)
 }
 
 // SetTabOrder
-func (l *TLabeledEdit) SetTabOrder(value uint16) {
+func (l *TLabeledEdit) SetTabOrder(value TTabOrder) {
     LabeledEdit_SetTabOrder(l.instance, value)
 }
 
@@ -882,6 +937,11 @@ func (l *TLabeledEdit) SetSelText(value string) {
     LabeledEdit_SetSelText(l.instance, value)
 }
 
+// DockClientCount
+func (l *TLabeledEdit) DockClientCount() int32 {
+    return LabeledEdit_GetDockClientCount(l.instance)
+}
+
 // DockSite
 func (l *TLabeledEdit) DockSite() bool {
     return LabeledEdit_GetDockSite(l.instance)
@@ -890,6 +950,21 @@ func (l *TLabeledEdit) DockSite() bool {
 // SetDockSite
 func (l *TLabeledEdit) SetDockSite(value bool) {
     LabeledEdit_SetDockSite(l.instance, value)
+}
+
+// AlignDisabled
+func (l *TLabeledEdit) AlignDisabled() bool {
+    return LabeledEdit_GetAlignDisabled(l.instance)
+}
+
+// MouseInClient
+func (l *TLabeledEdit) MouseInClient() bool {
+    return LabeledEdit_GetMouseInClient(l.instance)
+}
+
+// VisibleDockClientCount
+func (l *TLabeledEdit) VisibleDockClientCount() int32 {
+    return LabeledEdit_GetVisibleDockClientCount(l.instance)
 }
 
 // Brush
@@ -967,6 +1042,11 @@ func (l *TLabeledEdit) SetClientHeight(value int32) {
     LabeledEdit_SetClientHeight(l.instance, value)
 }
 
+// ClientOrigin
+func (l *TLabeledEdit) ClientOrigin() TPoint {
+    return LabeledEdit_GetClientOrigin(l.instance)
+}
+
 // ClientRect
 func (l *TLabeledEdit) ClientRect() TRect {
     return LabeledEdit_GetClientRect(l.instance)
@@ -980,6 +1060,26 @@ func (l *TLabeledEdit) ClientWidth() int32 {
 // SetClientWidth
 func (l *TLabeledEdit) SetClientWidth(value int32) {
     LabeledEdit_SetClientWidth(l.instance, value)
+}
+
+// ControlState
+func (l *TLabeledEdit) ControlState() TControlState {
+    return LabeledEdit_GetControlState(l.instance)
+}
+
+// SetControlState
+func (l *TLabeledEdit) SetControlState(value TControlState) {
+    LabeledEdit_SetControlState(l.instance, value)
+}
+
+// ControlStyle
+func (l *TLabeledEdit) ControlStyle() TControlStyle {
+    return LabeledEdit_GetControlStyle(l.instance)
+}
+
+// SetControlStyle
+func (l *TLabeledEdit) SetControlStyle(value TControlStyle) {
+    LabeledEdit_SetControlStyle(l.instance, value)
 }
 
 // ExplicitLeft
@@ -1173,6 +1273,11 @@ func (l *TLabeledEdit) Tag() int {
 // EN: Set the control tag.
 func (l *TLabeledEdit) SetTag(value int) {
     LabeledEdit_SetTag(l.instance, value)
+}
+
+// DockClients
+func (l *TLabeledEdit) DockClients(Index int32) *TControl {
+    return ControlFromInst(LabeledEdit_GetDockClients(l.instance, Index))
 }
 
 // Controls

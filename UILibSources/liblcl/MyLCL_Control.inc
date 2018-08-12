@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Control_SetTextBuf(AObj: TControl; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Control_FindComponent(AObj: TControl; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -225,6 +230,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Control_GetClientOrigin(AObj: TControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Control_GetClientRect(AObj: TControl; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -238,6 +248,26 @@ end;
 procedure Control_SetClientWidth(AObj: TControl; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Control_GetControlState(AObj: TControl): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Control_SetControlState(AObj: TControl; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Control_GetControlStyle(AObj: TControl): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Control_SetControlStyle(AObj: TControl; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Control_GetFloating(AObj: TControl): LongBool; extdecl;
@@ -406,6 +436,7 @@ exports
   Control_Update,
   Control_GetTextBuf,
   Control_GetTextLen,
+  Control_SetTextBuf,
   Control_FindComponent,
   Control_GetNamePath,
   Control_Assign,
@@ -430,9 +461,14 @@ exports
   Control_SetBoundsRect,
   Control_GetClientHeight,
   Control_SetClientHeight,
+  Control_GetClientOrigin,
   Control_GetClientRect,
   Control_GetClientWidth,
   Control_SetClientWidth,
+  Control_GetControlState,
+  Control_SetControlState,
+  Control_GetControlStyle,
+  Control_SetControlStyle,
   Control_GetFloating,
   Control_GetShowHint,
   Control_SetShowHint,

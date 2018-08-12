@@ -107,6 +107,31 @@ func (m *TMonthCalendar) CanFocus() bool {
     return MonthCalendar_CanFocus(m.instance)
 }
 
+// ContainsControl
+func (m *TMonthCalendar) ContainsControl(Control IControl) bool {
+    return MonthCalendar_ContainsControl(m.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (m *TMonthCalendar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(MonthCalendar_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (m *TMonthCalendar) DisableAlign() {
+    MonthCalendar_DisableAlign(m.instance)
+}
+
+// EnableAlign
+func (m *TMonthCalendar) EnableAlign() {
+    MonthCalendar_EnableAlign(m.instance)
+}
+
+// FindChildControl
+func (m *TMonthCalendar) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(MonthCalendar_FindChildControl(m.instance, ControlName))
+}
+
 // FlipChildren
 func (m *TMonthCalendar) FlipChildren(AllLevels bool) {
     MonthCalendar_FlipChildren(m.instance, AllLevels)
@@ -122,9 +147,24 @@ func (m *TMonthCalendar) HandleAllocated() bool {
     return MonthCalendar_HandleAllocated(m.instance)
 }
 
+// InsertControl
+func (m *TMonthCalendar) InsertControl(AControl IControl) {
+    MonthCalendar_InsertControl(m.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (m *TMonthCalendar) Invalidate() {
     MonthCalendar_Invalidate(m.instance)
+}
+
+// PaintTo
+func (m *TMonthCalendar) PaintTo(DC HDC, X int32, Y int32) {
+    MonthCalendar_PaintTo(m.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (m *TMonthCalendar) RemoveControl(AControl IControl) {
+    MonthCalendar_RemoveControl(m.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -142,6 +182,11 @@ func (m *TMonthCalendar) ScaleBy(M int32, D int32) {
     MonthCalendar_ScaleBy(m.instance, M , D)
 }
 
+// ScrollBy
+func (m *TMonthCalendar) ScrollBy(DeltaX int32, DeltaY int32) {
+    MonthCalendar_ScrollBy(m.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (m *TMonthCalendar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     MonthCalendar_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
@@ -155,6 +200,11 @@ func (m *TMonthCalendar) SetFocus() {
 // Update
 func (m *TMonthCalendar) Update() {
     MonthCalendar_Update(m.instance)
+}
+
+// UpdateControlState
+func (m *TMonthCalendar) UpdateControlState() {
+    MonthCalendar_UpdateControlState(m.instance)
 }
 
 // BringToFront
@@ -225,6 +275,11 @@ func (m *TMonthCalendar) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (m *TMonthCalendar) GetTextLen() int32 {
     return MonthCalendar_GetTextLen(m.instance)
+}
+
+// SetTextBuf
+func (m *TMonthCalendar) SetTextBuf(Buffer string) {
+    MonthCalendar_SetTextBuf(m.instance, Buffer)
 }
 
 // FindComponent
@@ -553,12 +608,12 @@ func (m *TMonthCalendar) SetShowTodayCircle(value bool) {
 }
 
 // TabOrder
-func (m *TMonthCalendar) TabOrder() uint16 {
+func (m *TMonthCalendar) TabOrder() TTabOrder {
     return MonthCalendar_GetTabOrder(m.instance)
 }
 
 // SetTabOrder
-func (m *TMonthCalendar) SetTabOrder(value uint16) {
+func (m *TMonthCalendar) SetTabOrder(value TTabOrder) {
     MonthCalendar_SetTabOrder(m.instance, value)
 }
 
@@ -673,6 +728,11 @@ func (m *TMonthCalendar) SetOnStartDock(fn TStartDockEvent) {
     MonthCalendar_SetOnStartDock(m.instance, fn)
 }
 
+// DockClientCount
+func (m *TMonthCalendar) DockClientCount() int32 {
+    return MonthCalendar_GetDockClientCount(m.instance)
+}
+
 // DockSite
 func (m *TMonthCalendar) DockSite() bool {
     return MonthCalendar_GetDockSite(m.instance)
@@ -681,6 +741,21 @@ func (m *TMonthCalendar) DockSite() bool {
 // SetDockSite
 func (m *TMonthCalendar) SetDockSite(value bool) {
     MonthCalendar_SetDockSite(m.instance, value)
+}
+
+// AlignDisabled
+func (m *TMonthCalendar) AlignDisabled() bool {
+    return MonthCalendar_GetAlignDisabled(m.instance)
+}
+
+// MouseInClient
+func (m *TMonthCalendar) MouseInClient() bool {
+    return MonthCalendar_GetMouseInClient(m.instance)
+}
+
+// VisibleDockClientCount
+func (m *TMonthCalendar) VisibleDockClientCount() int32 {
+    return MonthCalendar_GetVisibleDockClientCount(m.instance)
 }
 
 // Brush
@@ -748,6 +823,11 @@ func (m *TMonthCalendar) SetClientHeight(value int32) {
     MonthCalendar_SetClientHeight(m.instance, value)
 }
 
+// ClientOrigin
+func (m *TMonthCalendar) ClientOrigin() TPoint {
+    return MonthCalendar_GetClientOrigin(m.instance)
+}
+
 // ClientRect
 func (m *TMonthCalendar) ClientRect() TRect {
     return MonthCalendar_GetClientRect(m.instance)
@@ -761,6 +841,26 @@ func (m *TMonthCalendar) ClientWidth() int32 {
 // SetClientWidth
 func (m *TMonthCalendar) SetClientWidth(value int32) {
     MonthCalendar_SetClientWidth(m.instance, value)
+}
+
+// ControlState
+func (m *TMonthCalendar) ControlState() TControlState {
+    return MonthCalendar_GetControlState(m.instance)
+}
+
+// SetControlState
+func (m *TMonthCalendar) SetControlState(value TControlState) {
+    MonthCalendar_SetControlState(m.instance, value)
+}
+
+// ControlStyle
+func (m *TMonthCalendar) ControlStyle() TControlStyle {
+    return MonthCalendar_GetControlStyle(m.instance)
+}
+
+// SetControlStyle
+func (m *TMonthCalendar) SetControlStyle(value TControlStyle) {
+    MonthCalendar_SetControlStyle(m.instance, value)
 }
 
 // ExplicitLeft
@@ -964,6 +1064,11 @@ func (m *TMonthCalendar) Tag() int {
 // EN: Set the control tag.
 func (m *TMonthCalendar) SetTag(value int) {
     MonthCalendar_SetTag(m.instance, value)
+}
+
+// DockClients
+func (m *TMonthCalendar) DockClients(Index int32) *TControl {
+    return ControlFromInst(MonthCalendar_GetDockClients(m.instance, Index))
 }
 
 // Controls

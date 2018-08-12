@@ -106,6 +106,31 @@ func (s *TStaticText) CanFocus() bool {
     return StaticText_CanFocus(s.instance)
 }
 
+// ContainsControl
+func (s *TStaticText) ContainsControl(Control IControl) bool {
+    return StaticText_ContainsControl(s.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (s *TStaticText) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(StaticText_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (s *TStaticText) DisableAlign() {
+    StaticText_DisableAlign(s.instance)
+}
+
+// EnableAlign
+func (s *TStaticText) EnableAlign() {
+    StaticText_EnableAlign(s.instance)
+}
+
+// FindChildControl
+func (s *TStaticText) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(StaticText_FindChildControl(s.instance, ControlName))
+}
+
 // FlipChildren
 func (s *TStaticText) FlipChildren(AllLevels bool) {
     StaticText_FlipChildren(s.instance, AllLevels)
@@ -121,9 +146,24 @@ func (s *TStaticText) HandleAllocated() bool {
     return StaticText_HandleAllocated(s.instance)
 }
 
+// InsertControl
+func (s *TStaticText) InsertControl(AControl IControl) {
+    StaticText_InsertControl(s.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (s *TStaticText) Invalidate() {
     StaticText_Invalidate(s.instance)
+}
+
+// PaintTo
+func (s *TStaticText) PaintTo(DC HDC, X int32, Y int32) {
+    StaticText_PaintTo(s.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (s *TStaticText) RemoveControl(AControl IControl) {
+    StaticText_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (s *TStaticText) ScaleBy(M int32, D int32) {
     StaticText_ScaleBy(s.instance, M , D)
 }
 
+// ScrollBy
+func (s *TStaticText) ScrollBy(DeltaX int32, DeltaY int32) {
+    StaticText_ScrollBy(s.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (s *TStaticText) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     StaticText_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (s *TStaticText) SetFocus() {
 // Update
 func (s *TStaticText) Update() {
     StaticText_Update(s.instance)
+}
+
+// UpdateControlState
+func (s *TStaticText) UpdateControlState() {
+    StaticText_UpdateControlState(s.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (s *TStaticText) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (s *TStaticText) GetTextLen() int32 {
     return StaticText_GetTextLen(s.instance)
+}
+
+// SetTextBuf
+func (s *TStaticText) SetTextBuf(Buffer string) {
+    StaticText_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
@@ -556,12 +611,12 @@ func (s *TStaticText) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (s *TStaticText) TabOrder() uint16 {
+func (s *TStaticText) TabOrder() TTabOrder {
     return StaticText_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
-func (s *TStaticText) SetTabOrder(value uint16) {
+func (s *TStaticText) SetTabOrder(value TTabOrder) {
     StaticText_SetTabOrder(s.instance, value)
 }
 
@@ -676,6 +731,11 @@ func (s *TStaticText) SetOnStartDock(fn TStartDockEvent) {
     StaticText_SetOnStartDock(s.instance, fn)
 }
 
+// DockClientCount
+func (s *TStaticText) DockClientCount() int32 {
+    return StaticText_GetDockClientCount(s.instance)
+}
+
 // DockSite
 func (s *TStaticText) DockSite() bool {
     return StaticText_GetDockSite(s.instance)
@@ -684,6 +744,21 @@ func (s *TStaticText) DockSite() bool {
 // SetDockSite
 func (s *TStaticText) SetDockSite(value bool) {
     StaticText_SetDockSite(s.instance, value)
+}
+
+// AlignDisabled
+func (s *TStaticText) AlignDisabled() bool {
+    return StaticText_GetAlignDisabled(s.instance)
+}
+
+// MouseInClient
+func (s *TStaticText) MouseInClient() bool {
+    return StaticText_GetMouseInClient(s.instance)
+}
+
+// VisibleDockClientCount
+func (s *TStaticText) VisibleDockClientCount() int32 {
+    return StaticText_GetVisibleDockClientCount(s.instance)
 }
 
 // Brush
@@ -751,6 +826,11 @@ func (s *TStaticText) SetClientHeight(value int32) {
     StaticText_SetClientHeight(s.instance, value)
 }
 
+// ClientOrigin
+func (s *TStaticText) ClientOrigin() TPoint {
+    return StaticText_GetClientOrigin(s.instance)
+}
+
 // ClientRect
 func (s *TStaticText) ClientRect() TRect {
     return StaticText_GetClientRect(s.instance)
@@ -764,6 +844,26 @@ func (s *TStaticText) ClientWidth() int32 {
 // SetClientWidth
 func (s *TStaticText) SetClientWidth(value int32) {
     StaticText_SetClientWidth(s.instance, value)
+}
+
+// ControlState
+func (s *TStaticText) ControlState() TControlState {
+    return StaticText_GetControlState(s.instance)
+}
+
+// SetControlState
+func (s *TStaticText) SetControlState(value TControlState) {
+    StaticText_SetControlState(s.instance, value)
+}
+
+// ControlStyle
+func (s *TStaticText) ControlStyle() TControlStyle {
+    return StaticText_GetControlStyle(s.instance)
+}
+
+// SetControlStyle
+func (s *TStaticText) SetControlStyle(value TControlStyle) {
+    StaticText_SetControlStyle(s.instance, value)
 }
 
 // ExplicitLeft
@@ -957,6 +1057,11 @@ func (s *TStaticText) Tag() int {
 // EN: Set the control tag.
 func (s *TStaticText) SetTag(value int) {
     StaticText_SetTag(s.instance, value)
+}
+
+// DockClients
+func (s *TStaticText) DockClients(Index int32) *TControl {
+    return ControlFromInst(StaticText_GetDockClients(s.instance, Index))
 }
 
 // Controls

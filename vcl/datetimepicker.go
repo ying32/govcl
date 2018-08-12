@@ -107,6 +107,31 @@ func (d *TDateTimePicker) CanFocus() bool {
     return DateTimePicker_CanFocus(d.instance)
 }
 
+// ContainsControl
+func (d *TDateTimePicker) ContainsControl(Control IControl) bool {
+    return DateTimePicker_ContainsControl(d.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (d *TDateTimePicker) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(DateTimePicker_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (d *TDateTimePicker) DisableAlign() {
+    DateTimePicker_DisableAlign(d.instance)
+}
+
+// EnableAlign
+func (d *TDateTimePicker) EnableAlign() {
+    DateTimePicker_EnableAlign(d.instance)
+}
+
+// FindChildControl
+func (d *TDateTimePicker) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(DateTimePicker_FindChildControl(d.instance, ControlName))
+}
+
 // FlipChildren
 func (d *TDateTimePicker) FlipChildren(AllLevels bool) {
     DateTimePicker_FlipChildren(d.instance, AllLevels)
@@ -122,9 +147,24 @@ func (d *TDateTimePicker) HandleAllocated() bool {
     return DateTimePicker_HandleAllocated(d.instance)
 }
 
+// InsertControl
+func (d *TDateTimePicker) InsertControl(AControl IControl) {
+    DateTimePicker_InsertControl(d.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (d *TDateTimePicker) Invalidate() {
     DateTimePicker_Invalidate(d.instance)
+}
+
+// PaintTo
+func (d *TDateTimePicker) PaintTo(DC HDC, X int32, Y int32) {
+    DateTimePicker_PaintTo(d.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (d *TDateTimePicker) RemoveControl(AControl IControl) {
+    DateTimePicker_RemoveControl(d.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -142,6 +182,11 @@ func (d *TDateTimePicker) ScaleBy(M int32, D int32) {
     DateTimePicker_ScaleBy(d.instance, M , D)
 }
 
+// ScrollBy
+func (d *TDateTimePicker) ScrollBy(DeltaX int32, DeltaY int32) {
+    DateTimePicker_ScrollBy(d.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (d *TDateTimePicker) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     DateTimePicker_SetBounds(d.instance, ALeft , ATop , AWidth , AHeight)
@@ -155,6 +200,11 @@ func (d *TDateTimePicker) SetFocus() {
 // Update
 func (d *TDateTimePicker) Update() {
     DateTimePicker_Update(d.instance)
+}
+
+// UpdateControlState
+func (d *TDateTimePicker) UpdateControlState() {
+    DateTimePicker_UpdateControlState(d.instance)
 }
 
 // BringToFront
@@ -225,6 +275,11 @@ func (d *TDateTimePicker) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (d *TDateTimePicker) GetTextLen() int32 {
     return DateTimePicker_GetTextLen(d.instance)
+}
+
+// SetTextBuf
+func (d *TDateTimePicker) SetTextBuf(Buffer string) {
+    DateTimePicker_SetTextBuf(d.instance, Buffer)
 }
 
 // FindComponent
@@ -638,12 +693,12 @@ func (d *TDateTimePicker) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (d *TDateTimePicker) TabOrder() uint16 {
+func (d *TDateTimePicker) TabOrder() TTabOrder {
     return DateTimePicker_GetTabOrder(d.instance)
 }
 
 // SetTabOrder
-func (d *TDateTimePicker) SetTabOrder(value uint16) {
+func (d *TDateTimePicker) SetTabOrder(value TTabOrder) {
     DateTimePicker_SetTabOrder(d.instance, value)
 }
 
@@ -758,6 +813,11 @@ func (d *TDateTimePicker) SetOnStartDock(fn TStartDockEvent) {
     DateTimePicker_SetOnStartDock(d.instance, fn)
 }
 
+// DockClientCount
+func (d *TDateTimePicker) DockClientCount() int32 {
+    return DateTimePicker_GetDockClientCount(d.instance)
+}
+
 // DockSite
 func (d *TDateTimePicker) DockSite() bool {
     return DateTimePicker_GetDockSite(d.instance)
@@ -766,6 +826,21 @@ func (d *TDateTimePicker) DockSite() bool {
 // SetDockSite
 func (d *TDateTimePicker) SetDockSite(value bool) {
     DateTimePicker_SetDockSite(d.instance, value)
+}
+
+// AlignDisabled
+func (d *TDateTimePicker) AlignDisabled() bool {
+    return DateTimePicker_GetAlignDisabled(d.instance)
+}
+
+// MouseInClient
+func (d *TDateTimePicker) MouseInClient() bool {
+    return DateTimePicker_GetMouseInClient(d.instance)
+}
+
+// VisibleDockClientCount
+func (d *TDateTimePicker) VisibleDockClientCount() int32 {
+    return DateTimePicker_GetVisibleDockClientCount(d.instance)
 }
 
 // Brush
@@ -833,6 +908,11 @@ func (d *TDateTimePicker) SetClientHeight(value int32) {
     DateTimePicker_SetClientHeight(d.instance, value)
 }
 
+// ClientOrigin
+func (d *TDateTimePicker) ClientOrigin() TPoint {
+    return DateTimePicker_GetClientOrigin(d.instance)
+}
+
 // ClientRect
 func (d *TDateTimePicker) ClientRect() TRect {
     return DateTimePicker_GetClientRect(d.instance)
@@ -846,6 +926,26 @@ func (d *TDateTimePicker) ClientWidth() int32 {
 // SetClientWidth
 func (d *TDateTimePicker) SetClientWidth(value int32) {
     DateTimePicker_SetClientWidth(d.instance, value)
+}
+
+// ControlState
+func (d *TDateTimePicker) ControlState() TControlState {
+    return DateTimePicker_GetControlState(d.instance)
+}
+
+// SetControlState
+func (d *TDateTimePicker) SetControlState(value TControlState) {
+    DateTimePicker_SetControlState(d.instance, value)
+}
+
+// ControlStyle
+func (d *TDateTimePicker) ControlStyle() TControlStyle {
+    return DateTimePicker_GetControlStyle(d.instance)
+}
+
+// SetControlStyle
+func (d *TDateTimePicker) SetControlStyle(value TControlStyle) {
+    DateTimePicker_SetControlStyle(d.instance, value)
 }
 
 // ExplicitLeft
@@ -1039,6 +1139,11 @@ func (d *TDateTimePicker) Tag() int {
 // EN: Set the control tag.
 func (d *TDateTimePicker) SetTag(value int) {
     DateTimePicker_SetTag(d.instance, value)
+}
+
+// DockClients
+func (d *TDateTimePicker) DockClients(Index int32) *TControl {
+    return ControlFromInst(DateTimePicker_GetDockClients(d.instance, Index))
 }
 
 // Controls

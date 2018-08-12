@@ -106,6 +106,31 @@ func (c *TCheckBox) CanFocus() bool {
     return CheckBox_CanFocus(c.instance)
 }
 
+// ContainsControl
+func (c *TCheckBox) ContainsControl(Control IControl) bool {
+    return CheckBox_ContainsControl(c.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (c *TCheckBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(CheckBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (c *TCheckBox) DisableAlign() {
+    CheckBox_DisableAlign(c.instance)
+}
+
+// EnableAlign
+func (c *TCheckBox) EnableAlign() {
+    CheckBox_EnableAlign(c.instance)
+}
+
+// FindChildControl
+func (c *TCheckBox) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(CheckBox_FindChildControl(c.instance, ControlName))
+}
+
 // FlipChildren
 func (c *TCheckBox) FlipChildren(AllLevels bool) {
     CheckBox_FlipChildren(c.instance, AllLevels)
@@ -121,9 +146,24 @@ func (c *TCheckBox) HandleAllocated() bool {
     return CheckBox_HandleAllocated(c.instance)
 }
 
+// InsertControl
+func (c *TCheckBox) InsertControl(AControl IControl) {
+    CheckBox_InsertControl(c.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (c *TCheckBox) Invalidate() {
     CheckBox_Invalidate(c.instance)
+}
+
+// PaintTo
+func (c *TCheckBox) PaintTo(DC HDC, X int32, Y int32) {
+    CheckBox_PaintTo(c.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (c *TCheckBox) RemoveControl(AControl IControl) {
+    CheckBox_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (c *TCheckBox) ScaleBy(M int32, D int32) {
     CheckBox_ScaleBy(c.instance, M , D)
 }
 
+// ScrollBy
+func (c *TCheckBox) ScrollBy(DeltaX int32, DeltaY int32) {
+    CheckBox_ScrollBy(c.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (c *TCheckBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     CheckBox_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (c *TCheckBox) SetFocus() {
 // Update
 func (c *TCheckBox) Update() {
     CheckBox_Update(c.instance)
+}
+
+// UpdateControlState
+func (c *TCheckBox) UpdateControlState() {
+    CheckBox_UpdateControlState(c.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (c *TCheckBox) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (c *TCheckBox) GetTextLen() int32 {
     return CheckBox_GetTextLen(c.instance)
+}
+
+// SetTextBuf
+func (c *TCheckBox) SetTextBuf(Buffer string) {
+    CheckBox_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
@@ -536,12 +591,12 @@ func (c *TCheckBox) SetState(value TCheckBoxState) {
 }
 
 // TabOrder
-func (c *TCheckBox) TabOrder() uint16 {
+func (c *TCheckBox) TabOrder() TTabOrder {
     return CheckBox_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
-func (c *TCheckBox) SetTabOrder(value uint16) {
+func (c *TCheckBox) SetTabOrder(value TTabOrder) {
     CheckBox_SetTabOrder(c.instance, value)
 }
 
@@ -676,6 +731,11 @@ func (c *TCheckBox) SetOnStartDock(fn TStartDockEvent) {
     CheckBox_SetOnStartDock(c.instance, fn)
 }
 
+// DockClientCount
+func (c *TCheckBox) DockClientCount() int32 {
+    return CheckBox_GetDockClientCount(c.instance)
+}
+
 // DockSite
 func (c *TCheckBox) DockSite() bool {
     return CheckBox_GetDockSite(c.instance)
@@ -684,6 +744,21 @@ func (c *TCheckBox) DockSite() bool {
 // SetDockSite
 func (c *TCheckBox) SetDockSite(value bool) {
     CheckBox_SetDockSite(c.instance, value)
+}
+
+// AlignDisabled
+func (c *TCheckBox) AlignDisabled() bool {
+    return CheckBox_GetAlignDisabled(c.instance)
+}
+
+// MouseInClient
+func (c *TCheckBox) MouseInClient() bool {
+    return CheckBox_GetMouseInClient(c.instance)
+}
+
+// VisibleDockClientCount
+func (c *TCheckBox) VisibleDockClientCount() int32 {
+    return CheckBox_GetVisibleDockClientCount(c.instance)
 }
 
 // Brush
@@ -741,6 +816,11 @@ func (c *TCheckBox) SetClientHeight(value int32) {
     CheckBox_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TCheckBox) ClientOrigin() TPoint {
+    return CheckBox_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TCheckBox) ClientRect() TRect {
     return CheckBox_GetClientRect(c.instance)
@@ -754,6 +834,26 @@ func (c *TCheckBox) ClientWidth() int32 {
 // SetClientWidth
 func (c *TCheckBox) SetClientWidth(value int32) {
     CheckBox_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TCheckBox) ControlState() TControlState {
+    return CheckBox_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TCheckBox) SetControlState(value TControlState) {
+    CheckBox_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TCheckBox) ControlStyle() TControlStyle {
+    return CheckBox_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TCheckBox) SetControlStyle(value TControlStyle) {
+    CheckBox_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft
@@ -947,6 +1047,11 @@ func (c *TCheckBox) Tag() int {
 // EN: Set the control tag.
 func (c *TCheckBox) SetTag(value int) {
     CheckBox_SetTag(c.instance, value)
+}
+
+// DockClients
+func (c *TCheckBox) DockClients(Index int32) *TControl {
+    return ControlFromInst(CheckBox_GetDockClients(c.instance, Index))
 }
 
 // Controls

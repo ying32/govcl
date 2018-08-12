@@ -110,6 +110,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Gauge_SetTextBuf(AObj: TGauge; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Gauge_FindComponent(AObj: TGauge; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -400,6 +405,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Gauge_GetClientOrigin(AObj: TGauge; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Gauge_GetClientRect(AObj: TGauge; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -413,6 +423,26 @@ end;
 procedure Gauge_SetClientWidth(AObj: TGauge; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Gauge_GetControlState(AObj: TGauge): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Gauge_SetControlState(AObj: TGauge; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Gauge_GetControlStyle(AObj: TGauge): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Gauge_SetControlStyle(AObj: TGauge; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Gauge_GetExplicitLeft(AObj: TGauge): Integer; stdcall;
@@ -622,6 +652,7 @@ exports
   Gauge_Update,
   Gauge_GetTextBuf,
   Gauge_GetTextLen,
+  Gauge_SetTextBuf,
   Gauge_FindComponent,
   Gauge_GetNamePath,
   Gauge_Assign,
@@ -680,9 +711,14 @@ exports
   Gauge_SetBoundsRect,
   Gauge_GetClientHeight,
   Gauge_SetClientHeight,
+  Gauge_GetClientOrigin,
   Gauge_GetClientRect,
   Gauge_GetClientWidth,
   Gauge_SetClientWidth,
+  Gauge_GetControlState,
+  Gauge_SetControlState,
+  Gauge_GetControlStyle,
+  Gauge_SetControlStyle,
   Gauge_GetExplicitLeft,
   Gauge_GetExplicitTop,
   Gauge_GetExplicitWidth,

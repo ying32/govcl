@@ -115,6 +115,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure ToolButton_SetTextBuf(AObj: TToolButton; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function ToolButton_FindComponent(AObj: TToolButton; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -584,6 +589,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ToolButton_GetClientOrigin(AObj: TToolButton; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ToolButton_GetClientRect(AObj: TToolButton; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -597,6 +607,26 @@ end;
 procedure ToolButton_SetClientWidth(AObj: TToolButton; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ToolButton_GetControlState(AObj: TToolButton): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ToolButton_SetControlState(AObj: TToolButton; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ToolButton_GetControlStyle(AObj: TToolButton): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ToolButton_SetControlStyle(AObj: TToolButton; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ToolButton_GetFloating(AObj: TToolButton): LongBool; extdecl;
@@ -727,6 +757,7 @@ exports
   ToolButton_Update,
   ToolButton_GetTextBuf,
   ToolButton_GetTextLen,
+  ToolButton_SetTextBuf,
   ToolButton_FindComponent,
   ToolButton_GetNamePath,
   ToolButton_Assign,
@@ -804,9 +835,14 @@ exports
   ToolButton_SetBoundsRect,
   ToolButton_GetClientHeight,
   ToolButton_SetClientHeight,
+  ToolButton_GetClientOrigin,
   ToolButton_GetClientRect,
   ToolButton_GetClientWidth,
   ToolButton_SetClientWidth,
+  ToolButton_GetControlState,
+  ToolButton_SetControlState,
+  ToolButton_GetControlStyle,
+  ToolButton_SetControlStyle,
   ToolButton_GetFloating,
   ToolButton_GetParent,
   ToolButton_SetParent,

@@ -106,6 +106,31 @@ func (h *THotKey) CanFocus() bool {
     return HotKey_CanFocus(h.instance)
 }
 
+// ContainsControl
+func (h *THotKey) ContainsControl(Control IControl) bool {
+    return HotKey_ContainsControl(h.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (h *THotKey) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(HotKey_ControlAtPos(h.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (h *THotKey) DisableAlign() {
+    HotKey_DisableAlign(h.instance)
+}
+
+// EnableAlign
+func (h *THotKey) EnableAlign() {
+    HotKey_EnableAlign(h.instance)
+}
+
+// FindChildControl
+func (h *THotKey) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(HotKey_FindChildControl(h.instance, ControlName))
+}
+
 // FlipChildren
 func (h *THotKey) FlipChildren(AllLevels bool) {
     HotKey_FlipChildren(h.instance, AllLevels)
@@ -121,9 +146,24 @@ func (h *THotKey) HandleAllocated() bool {
     return HotKey_HandleAllocated(h.instance)
 }
 
+// InsertControl
+func (h *THotKey) InsertControl(AControl IControl) {
+    HotKey_InsertControl(h.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (h *THotKey) Invalidate() {
     HotKey_Invalidate(h.instance)
+}
+
+// PaintTo
+func (h *THotKey) PaintTo(DC HDC, X int32, Y int32) {
+    HotKey_PaintTo(h.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (h *THotKey) RemoveControl(AControl IControl) {
+    HotKey_RemoveControl(h.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (h *THotKey) ScaleBy(M int32, D int32) {
     HotKey_ScaleBy(h.instance, M , D)
 }
 
+// ScrollBy
+func (h *THotKey) ScrollBy(DeltaX int32, DeltaY int32) {
+    HotKey_ScrollBy(h.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (h *THotKey) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     HotKey_SetBounds(h.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (h *THotKey) SetFocus() {
 // Update
 func (h *THotKey) Update() {
     HotKey_Update(h.instance)
+}
+
+// UpdateControlState
+func (h *THotKey) UpdateControlState() {
+    HotKey_UpdateControlState(h.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (h *THotKey) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (h *THotKey) GetTextLen() int32 {
     return HotKey_GetTextLen(h.instance)
+}
+
+// SetTextBuf
+func (h *THotKey) SetTextBuf(Buffer string) {
+    HotKey_SetTextBuf(h.instance, Buffer)
 }
 
 // FindComponent
@@ -386,12 +441,12 @@ func (h *THotKey) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (h *THotKey) TabOrder() uint16 {
+func (h *THotKey) TabOrder() TTabOrder {
     return HotKey_GetTabOrder(h.instance)
 }
 
 // SetTabOrder
-func (h *THotKey) SetTabOrder(value uint16) {
+func (h *THotKey) SetTabOrder(value TTabOrder) {
     HotKey_SetTabOrder(h.instance, value)
 }
 
@@ -474,6 +529,11 @@ func (h *THotKey) SetOnMouseUp(fn TMouseEvent) {
     HotKey_SetOnMouseUp(h.instance, fn)
 }
 
+// DockClientCount
+func (h *THotKey) DockClientCount() int32 {
+    return HotKey_GetDockClientCount(h.instance)
+}
+
 // DockSite
 func (h *THotKey) DockSite() bool {
     return HotKey_GetDockSite(h.instance)
@@ -492,6 +552,21 @@ func (h *THotKey) DoubleBuffered() bool {
 // SetDoubleBuffered
 func (h *THotKey) SetDoubleBuffered(value bool) {
     HotKey_SetDoubleBuffered(h.instance, value)
+}
+
+// AlignDisabled
+func (h *THotKey) AlignDisabled() bool {
+    return HotKey_GetAlignDisabled(h.instance)
+}
+
+// MouseInClient
+func (h *THotKey) MouseInClient() bool {
+    return HotKey_GetMouseInClient(h.instance)
+}
+
+// VisibleDockClientCount
+func (h *THotKey) VisibleDockClientCount() int32 {
+    return HotKey_GetVisibleDockClientCount(h.instance)
 }
 
 // Brush
@@ -579,6 +654,11 @@ func (h *THotKey) SetClientHeight(value int32) {
     HotKey_SetClientHeight(h.instance, value)
 }
 
+// ClientOrigin
+func (h *THotKey) ClientOrigin() TPoint {
+    return HotKey_GetClientOrigin(h.instance)
+}
+
 // ClientRect
 func (h *THotKey) ClientRect() TRect {
     return HotKey_GetClientRect(h.instance)
@@ -592,6 +672,26 @@ func (h *THotKey) ClientWidth() int32 {
 // SetClientWidth
 func (h *THotKey) SetClientWidth(value int32) {
     HotKey_SetClientWidth(h.instance, value)
+}
+
+// ControlState
+func (h *THotKey) ControlState() TControlState {
+    return HotKey_GetControlState(h.instance)
+}
+
+// SetControlState
+func (h *THotKey) SetControlState(value TControlState) {
+    HotKey_SetControlState(h.instance, value)
+}
+
+// ControlStyle
+func (h *THotKey) ControlStyle() TControlStyle {
+    return HotKey_GetControlStyle(h.instance)
+}
+
+// SetControlStyle
+func (h *THotKey) SetControlStyle(value TControlStyle) {
+    HotKey_SetControlStyle(h.instance, value)
 }
 
 // ExplicitLeft
@@ -771,6 +871,11 @@ func (h *THotKey) Tag() int {
 // EN: Set the control tag.
 func (h *THotKey) SetTag(value int) {
     HotKey_SetTag(h.instance, value)
+}
+
+// DockClients
+func (h *THotKey) DockClients(Index int32) *TControl {
+    return ControlFromInst(HotKey_GetDockClients(h.instance, Index))
 }
 
 // Controls

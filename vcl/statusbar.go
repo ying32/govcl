@@ -116,6 +116,31 @@ func (s *TStatusBar) CanFocus() bool {
     return StatusBar_CanFocus(s.instance)
 }
 
+// ContainsControl
+func (s *TStatusBar) ContainsControl(Control IControl) bool {
+    return StatusBar_ContainsControl(s.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (s *TStatusBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(StatusBar_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (s *TStatusBar) DisableAlign() {
+    StatusBar_DisableAlign(s.instance)
+}
+
+// EnableAlign
+func (s *TStatusBar) EnableAlign() {
+    StatusBar_EnableAlign(s.instance)
+}
+
+// FindChildControl
+func (s *TStatusBar) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(StatusBar_FindChildControl(s.instance, ControlName))
+}
+
 // Focused
 func (s *TStatusBar) Focused() bool {
     return StatusBar_Focused(s.instance)
@@ -126,9 +151,24 @@ func (s *TStatusBar) HandleAllocated() bool {
     return StatusBar_HandleAllocated(s.instance)
 }
 
+// InsertControl
+func (s *TStatusBar) InsertControl(AControl IControl) {
+    StatusBar_InsertControl(s.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (s *TStatusBar) Invalidate() {
     StatusBar_Invalidate(s.instance)
+}
+
+// PaintTo
+func (s *TStatusBar) PaintTo(DC HDC, X int32, Y int32) {
+    StatusBar_PaintTo(s.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (s *TStatusBar) RemoveControl(AControl IControl) {
+    StatusBar_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -146,6 +186,11 @@ func (s *TStatusBar) ScaleBy(M int32, D int32) {
     StatusBar_ScaleBy(s.instance, M , D)
 }
 
+// ScrollBy
+func (s *TStatusBar) ScrollBy(DeltaX int32, DeltaY int32) {
+    StatusBar_ScrollBy(s.instance, DeltaX , DeltaY)
+}
+
 // SetFocus
 func (s *TStatusBar) SetFocus() {
     StatusBar_SetFocus(s.instance)
@@ -154,6 +199,11 @@ func (s *TStatusBar) SetFocus() {
 // Update
 func (s *TStatusBar) Update() {
     StatusBar_Update(s.instance)
+}
+
+// UpdateControlState
+func (s *TStatusBar) UpdateControlState() {
+    StatusBar_UpdateControlState(s.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (s *TStatusBar) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (s *TStatusBar) GetTextLen() int32 {
     return StatusBar_GetTextLen(s.instance)
+}
+
+// SetTextBuf
+func (s *TStatusBar) SetTextBuf(Buffer string) {
+    StatusBar_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
@@ -647,6 +702,11 @@ func (s *TStatusBar) Canvas() *TCanvas {
     return CanvasFromInst(StatusBar_GetCanvas(s.instance))
 }
 
+// DockClientCount
+func (s *TStatusBar) DockClientCount() int32 {
+    return StatusBar_GetDockClientCount(s.instance)
+}
+
 // DockSite
 func (s *TStatusBar) DockSite() bool {
     return StatusBar_GetDockSite(s.instance)
@@ -655,6 +715,21 @@ func (s *TStatusBar) DockSite() bool {
 // SetDockSite
 func (s *TStatusBar) SetDockSite(value bool) {
     StatusBar_SetDockSite(s.instance, value)
+}
+
+// AlignDisabled
+func (s *TStatusBar) AlignDisabled() bool {
+    return StatusBar_GetAlignDisabled(s.instance)
+}
+
+// MouseInClient
+func (s *TStatusBar) MouseInClient() bool {
+    return StatusBar_GetMouseInClient(s.instance)
+}
+
+// VisibleDockClientCount
+func (s *TStatusBar) VisibleDockClientCount() int32 {
+    return StatusBar_GetVisibleDockClientCount(s.instance)
 }
 
 // Brush
@@ -683,12 +758,12 @@ func (s *TStatusBar) SetParentWindow(value HWND) {
 }
 
 // TabOrder
-func (s *TStatusBar) TabOrder() uint16 {
+func (s *TStatusBar) TabOrder() TTabOrder {
     return StatusBar_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
-func (s *TStatusBar) SetTabOrder(value uint16) {
+func (s *TStatusBar) SetTabOrder(value TTabOrder) {
     StatusBar_SetTabOrder(s.instance, value)
 }
 
@@ -732,6 +807,11 @@ func (s *TStatusBar) SetClientHeight(value int32) {
     StatusBar_SetClientHeight(s.instance, value)
 }
 
+// ClientOrigin
+func (s *TStatusBar) ClientOrigin() TPoint {
+    return StatusBar_GetClientOrigin(s.instance)
+}
+
 // ClientRect
 func (s *TStatusBar) ClientRect() TRect {
     return StatusBar_GetClientRect(s.instance)
@@ -745,6 +825,26 @@ func (s *TStatusBar) ClientWidth() int32 {
 // SetClientWidth
 func (s *TStatusBar) SetClientWidth(value int32) {
     StatusBar_SetClientWidth(s.instance, value)
+}
+
+// ControlState
+func (s *TStatusBar) ControlState() TControlState {
+    return StatusBar_GetControlState(s.instance)
+}
+
+// SetControlState
+func (s *TStatusBar) SetControlState(value TControlState) {
+    StatusBar_SetControlState(s.instance, value)
+}
+
+// ControlStyle
+func (s *TStatusBar) ControlStyle() TControlStyle {
+    return StatusBar_GetControlStyle(s.instance)
+}
+
+// SetControlStyle
+func (s *TStatusBar) SetControlStyle(value TControlStyle) {
+    StatusBar_SetControlStyle(s.instance, value)
 }
 
 // ExplicitLeft
@@ -938,6 +1038,11 @@ func (s *TStatusBar) Tag() int {
 // EN: Set the control tag.
 func (s *TStatusBar) SetTag(value int) {
     StatusBar_SetTag(s.instance, value)
+}
+
+// DockClients
+func (s *TStatusBar) DockClients(Index int32) *TControl {
+    return ControlFromInst(StatusBar_GetDockClients(s.instance, Index))
 }
 
 // Controls

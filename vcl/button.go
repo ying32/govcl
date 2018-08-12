@@ -111,6 +111,31 @@ func (b *TButton) CanFocus() bool {
     return Button_CanFocus(b.instance)
 }
 
+// ContainsControl
+func (b *TButton) ContainsControl(Control IControl) bool {
+    return Button_ContainsControl(b.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (b *TButton) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(Button_ControlAtPos(b.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (b *TButton) DisableAlign() {
+    Button_DisableAlign(b.instance)
+}
+
+// EnableAlign
+func (b *TButton) EnableAlign() {
+    Button_EnableAlign(b.instance)
+}
+
+// FindChildControl
+func (b *TButton) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(Button_FindChildControl(b.instance, ControlName))
+}
+
 // FlipChildren
 func (b *TButton) FlipChildren(AllLevels bool) {
     Button_FlipChildren(b.instance, AllLevels)
@@ -126,9 +151,24 @@ func (b *TButton) HandleAllocated() bool {
     return Button_HandleAllocated(b.instance)
 }
 
+// InsertControl
+func (b *TButton) InsertControl(AControl IControl) {
+    Button_InsertControl(b.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (b *TButton) Invalidate() {
     Button_Invalidate(b.instance)
+}
+
+// PaintTo
+func (b *TButton) PaintTo(DC HDC, X int32, Y int32) {
+    Button_PaintTo(b.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (b *TButton) RemoveControl(AControl IControl) {
+    Button_RemoveControl(b.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -146,6 +186,11 @@ func (b *TButton) ScaleBy(M int32, D int32) {
     Button_ScaleBy(b.instance, M , D)
 }
 
+// ScrollBy
+func (b *TButton) ScrollBy(DeltaX int32, DeltaY int32) {
+    Button_ScrollBy(b.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (b *TButton) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Button_SetBounds(b.instance, ALeft , ATop , AWidth , AHeight)
@@ -159,6 +204,11 @@ func (b *TButton) SetFocus() {
 // Update
 func (b *TButton) Update() {
     Button_Update(b.instance)
+}
+
+// UpdateControlState
+func (b *TButton) UpdateControlState() {
+    Button_UpdateControlState(b.instance)
 }
 
 // BringToFront
@@ -229,6 +279,11 @@ func (b *TButton) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (b *TButton) GetTextLen() int32 {
     return Button_GetTextLen(b.instance)
+}
+
+// SetTextBuf
+func (b *TButton) SetTextBuf(Buffer string) {
+    Button_SetTextBuf(b.instance, Buffer)
 }
 
 // FindComponent
@@ -611,12 +666,12 @@ func (b *TButton) SetStylusHotImageIndex(value int32) {
 }
 
 // TabOrder
-func (b *TButton) TabOrder() uint16 {
+func (b *TButton) TabOrder() TTabOrder {
     return Button_GetTabOrder(b.instance)
 }
 
 // SetTabOrder
-func (b *TButton) SetTabOrder(value uint16) {
+func (b *TButton) SetTabOrder(value TTabOrder) {
     Button_SetTabOrder(b.instance, value)
 }
 
@@ -751,6 +806,11 @@ func (b *TButton) SetOnStartDock(fn TStartDockEvent) {
     Button_SetOnStartDock(b.instance, fn)
 }
 
+// DockClientCount
+func (b *TButton) DockClientCount() int32 {
+    return Button_GetDockClientCount(b.instance)
+}
+
 // DockSite
 func (b *TButton) DockSite() bool {
     return Button_GetDockSite(b.instance)
@@ -759,6 +819,21 @@ func (b *TButton) DockSite() bool {
 // SetDockSite
 func (b *TButton) SetDockSite(value bool) {
     Button_SetDockSite(b.instance, value)
+}
+
+// AlignDisabled
+func (b *TButton) AlignDisabled() bool {
+    return Button_GetAlignDisabled(b.instance)
+}
+
+// MouseInClient
+func (b *TButton) MouseInClient() bool {
+    return Button_GetMouseInClient(b.instance)
+}
+
+// VisibleDockClientCount
+func (b *TButton) VisibleDockClientCount() int32 {
+    return Button_GetVisibleDockClientCount(b.instance)
 }
 
 // Brush
@@ -816,6 +891,11 @@ func (b *TButton) SetClientHeight(value int32) {
     Button_SetClientHeight(b.instance, value)
 }
 
+// ClientOrigin
+func (b *TButton) ClientOrigin() TPoint {
+    return Button_GetClientOrigin(b.instance)
+}
+
 // ClientRect
 func (b *TButton) ClientRect() TRect {
     return Button_GetClientRect(b.instance)
@@ -829,6 +909,26 @@ func (b *TButton) ClientWidth() int32 {
 // SetClientWidth
 func (b *TButton) SetClientWidth(value int32) {
     Button_SetClientWidth(b.instance, value)
+}
+
+// ControlState
+func (b *TButton) ControlState() TControlState {
+    return Button_GetControlState(b.instance)
+}
+
+// SetControlState
+func (b *TButton) SetControlState(value TControlState) {
+    Button_SetControlState(b.instance, value)
+}
+
+// ControlStyle
+func (b *TButton) ControlStyle() TControlStyle {
+    return Button_GetControlStyle(b.instance)
+}
+
+// SetControlStyle
+func (b *TButton) SetControlStyle(value TControlStyle) {
+    Button_SetControlStyle(b.instance, value)
 }
 
 // ExplicitLeft
@@ -1022,6 +1122,11 @@ func (b *TButton) Tag() int {
 // EN: Set the control tag.
 func (b *TButton) SetTag(value int) {
     Button_SetTag(b.instance, value)
+}
+
+// DockClients
+func (b *TButton) DockClients(Index int32) *TControl {
+    return ControlFromInst(Button_GetDockClients(b.instance, Index))
 }
 
 // Controls

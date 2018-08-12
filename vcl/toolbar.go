@@ -111,6 +111,31 @@ func (t *TToolBar) CanFocus() bool {
     return ToolBar_CanFocus(t.instance)
 }
 
+// ContainsControl
+func (t *TToolBar) ContainsControl(Control IControl) bool {
+    return ToolBar_ContainsControl(t.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (t *TToolBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ToolBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (t *TToolBar) DisableAlign() {
+    ToolBar_DisableAlign(t.instance)
+}
+
+// EnableAlign
+func (t *TToolBar) EnableAlign() {
+    ToolBar_EnableAlign(t.instance)
+}
+
+// FindChildControl
+func (t *TToolBar) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ToolBar_FindChildControl(t.instance, ControlName))
+}
+
 // Focused
 func (t *TToolBar) Focused() bool {
     return ToolBar_Focused(t.instance)
@@ -121,9 +146,24 @@ func (t *TToolBar) HandleAllocated() bool {
     return ToolBar_HandleAllocated(t.instance)
 }
 
+// InsertControl
+func (t *TToolBar) InsertControl(AControl IControl) {
+    ToolBar_InsertControl(t.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (t *TToolBar) Invalidate() {
     ToolBar_Invalidate(t.instance)
+}
+
+// PaintTo
+func (t *TToolBar) PaintTo(DC HDC, X int32, Y int32) {
+    ToolBar_PaintTo(t.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (t *TToolBar) RemoveControl(AControl IControl) {
+    ToolBar_RemoveControl(t.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (t *TToolBar) ScaleBy(M int32, D int32) {
     ToolBar_ScaleBy(t.instance, M , D)
 }
 
+// ScrollBy
+func (t *TToolBar) ScrollBy(DeltaX int32, DeltaY int32) {
+    ToolBar_ScrollBy(t.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (t *TToolBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ToolBar_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (t *TToolBar) SetFocus() {
 // Update
 func (t *TToolBar) Update() {
     ToolBar_Update(t.instance)
+}
+
+// UpdateControlState
+func (t *TToolBar) UpdateControlState() {
+    ToolBar_UpdateControlState(t.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (t *TToolBar) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (t *TToolBar) GetTextLen() int32 {
     return ToolBar_GetTextLen(t.instance)
+}
+
+// SetTextBuf
+func (t *TToolBar) SetTextBuf(Buffer string) {
+    ToolBar_SetTextBuf(t.instance, Buffer)
 }
 
 // FindComponent
@@ -721,12 +776,12 @@ func (t *TToolBar) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (t *TToolBar) TabOrder() uint16 {
+func (t *TToolBar) TabOrder() TTabOrder {
     return ToolBar_GetTabOrder(t.instance)
 }
 
 // SetTabOrder
-func (t *TToolBar) SetTabOrder(value uint16) {
+func (t *TToolBar) SetTabOrder(value TTabOrder) {
     ToolBar_SetTabOrder(t.instance, value)
 }
 
@@ -891,6 +946,26 @@ func (t *TToolBar) SetOnUnDock(fn TUnDockEvent) {
     ToolBar_SetOnUnDock(t.instance, fn)
 }
 
+// DockClientCount
+func (t *TToolBar) DockClientCount() int32 {
+    return ToolBar_GetDockClientCount(t.instance)
+}
+
+// AlignDisabled
+func (t *TToolBar) AlignDisabled() bool {
+    return ToolBar_GetAlignDisabled(t.instance)
+}
+
+// MouseInClient
+func (t *TToolBar) MouseInClient() bool {
+    return ToolBar_GetMouseInClient(t.instance)
+}
+
+// VisibleDockClientCount
+func (t *TToolBar) VisibleDockClientCount() int32 {
+    return ToolBar_GetVisibleDockClientCount(t.instance)
+}
+
 // Brush
 func (t *TToolBar) Brush() *TBrush {
     return BrushFromInst(ToolBar_GetBrush(t.instance))
@@ -966,6 +1041,11 @@ func (t *TToolBar) SetClientHeight(value int32) {
     ToolBar_SetClientHeight(t.instance, value)
 }
 
+// ClientOrigin
+func (t *TToolBar) ClientOrigin() TPoint {
+    return ToolBar_GetClientOrigin(t.instance)
+}
+
 // ClientRect
 func (t *TToolBar) ClientRect() TRect {
     return ToolBar_GetClientRect(t.instance)
@@ -979,6 +1059,26 @@ func (t *TToolBar) ClientWidth() int32 {
 // SetClientWidth
 func (t *TToolBar) SetClientWidth(value int32) {
     ToolBar_SetClientWidth(t.instance, value)
+}
+
+// ControlState
+func (t *TToolBar) ControlState() TControlState {
+    return ToolBar_GetControlState(t.instance)
+}
+
+// SetControlState
+func (t *TToolBar) SetControlState(value TControlState) {
+    ToolBar_SetControlState(t.instance, value)
+}
+
+// ControlStyle
+func (t *TToolBar) ControlStyle() TControlStyle {
+    return ToolBar_GetControlStyle(t.instance)
+}
+
+// SetControlStyle
+func (t *TToolBar) SetControlStyle(value TControlStyle) {
+    ToolBar_SetControlStyle(t.instance, value)
 }
 
 // ExplicitLeft
@@ -1167,6 +1267,11 @@ func (t *TToolBar) SetTag(value int) {
 // Buttons
 func (t *TToolBar) Buttons(Index int32) *TToolButton {
     return ToolButtonFromInst(ToolBar_GetButtons(t.instance, Index))
+}
+
+// DockClients
+func (t *TToolBar) DockClients(Index int32) *TControl {
+    return ControlFromInst(ToolBar_GetDockClients(t.instance, Index))
 }
 
 // Controls

@@ -116,6 +116,31 @@ func (p *TProgressBar) CanFocus() bool {
     return ProgressBar_CanFocus(p.instance)
 }
 
+// ContainsControl
+func (p *TProgressBar) ContainsControl(Control IControl) bool {
+    return ProgressBar_ContainsControl(p.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (p *TProgressBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ProgressBar_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (p *TProgressBar) DisableAlign() {
+    ProgressBar_DisableAlign(p.instance)
+}
+
+// EnableAlign
+func (p *TProgressBar) EnableAlign() {
+    ProgressBar_EnableAlign(p.instance)
+}
+
+// FindChildControl
+func (p *TProgressBar) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ProgressBar_FindChildControl(p.instance, ControlName))
+}
+
 // FlipChildren
 func (p *TProgressBar) FlipChildren(AllLevels bool) {
     ProgressBar_FlipChildren(p.instance, AllLevels)
@@ -131,9 +156,24 @@ func (p *TProgressBar) HandleAllocated() bool {
     return ProgressBar_HandleAllocated(p.instance)
 }
 
+// InsertControl
+func (p *TProgressBar) InsertControl(AControl IControl) {
+    ProgressBar_InsertControl(p.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (p *TProgressBar) Invalidate() {
     ProgressBar_Invalidate(p.instance)
+}
+
+// PaintTo
+func (p *TProgressBar) PaintTo(DC HDC, X int32, Y int32) {
+    ProgressBar_PaintTo(p.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (p *TProgressBar) RemoveControl(AControl IControl) {
+    ProgressBar_RemoveControl(p.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -151,6 +191,11 @@ func (p *TProgressBar) ScaleBy(M int32, D int32) {
     ProgressBar_ScaleBy(p.instance, M , D)
 }
 
+// ScrollBy
+func (p *TProgressBar) ScrollBy(DeltaX int32, DeltaY int32) {
+    ProgressBar_ScrollBy(p.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (p *TProgressBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ProgressBar_SetBounds(p.instance, ALeft , ATop , AWidth , AHeight)
@@ -164,6 +209,11 @@ func (p *TProgressBar) SetFocus() {
 // Update
 func (p *TProgressBar) Update() {
     ProgressBar_Update(p.instance)
+}
+
+// UpdateControlState
+func (p *TProgressBar) UpdateControlState() {
+    ProgressBar_UpdateControlState(p.instance)
 }
 
 // BringToFront
@@ -234,6 +284,11 @@ func (p *TProgressBar) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (p *TProgressBar) GetTextLen() int32 {
     return ProgressBar_GetTextLen(p.instance)
+}
+
+// SetTextBuf
+func (p *TProgressBar) SetTextBuf(Buffer string) {
+    ProgressBar_SetTextBuf(p.instance, Buffer)
 }
 
 // FindComponent
@@ -566,12 +621,12 @@ func (p *TProgressBar) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (p *TProgressBar) TabOrder() uint16 {
+func (p *TProgressBar) TabOrder() TTabOrder {
     return ProgressBar_GetTabOrder(p.instance)
 }
 
 // SetTabOrder
-func (p *TProgressBar) SetTabOrder(value uint16) {
+func (p *TProgressBar) SetTabOrder(value TTabOrder) {
     ProgressBar_SetTabOrder(p.instance, value)
 }
 
@@ -674,6 +729,11 @@ func (p *TProgressBar) SetOnStartDock(fn TStartDockEvent) {
     ProgressBar_SetOnStartDock(p.instance, fn)
 }
 
+// DockClientCount
+func (p *TProgressBar) DockClientCount() int32 {
+    return ProgressBar_GetDockClientCount(p.instance)
+}
+
 // DockSite
 func (p *TProgressBar) DockSite() bool {
     return ProgressBar_GetDockSite(p.instance)
@@ -682,6 +742,21 @@ func (p *TProgressBar) DockSite() bool {
 // SetDockSite
 func (p *TProgressBar) SetDockSite(value bool) {
     ProgressBar_SetDockSite(p.instance, value)
+}
+
+// AlignDisabled
+func (p *TProgressBar) AlignDisabled() bool {
+    return ProgressBar_GetAlignDisabled(p.instance)
+}
+
+// MouseInClient
+func (p *TProgressBar) MouseInClient() bool {
+    return ProgressBar_GetMouseInClient(p.instance)
+}
+
+// VisibleDockClientCount
+func (p *TProgressBar) VisibleDockClientCount() int32 {
+    return ProgressBar_GetVisibleDockClientCount(p.instance)
 }
 
 // Brush
@@ -759,6 +834,11 @@ func (p *TProgressBar) SetClientHeight(value int32) {
     ProgressBar_SetClientHeight(p.instance, value)
 }
 
+// ClientOrigin
+func (p *TProgressBar) ClientOrigin() TPoint {
+    return ProgressBar_GetClientOrigin(p.instance)
+}
+
 // ClientRect
 func (p *TProgressBar) ClientRect() TRect {
     return ProgressBar_GetClientRect(p.instance)
@@ -772,6 +852,26 @@ func (p *TProgressBar) ClientWidth() int32 {
 // SetClientWidth
 func (p *TProgressBar) SetClientWidth(value int32) {
     ProgressBar_SetClientWidth(p.instance, value)
+}
+
+// ControlState
+func (p *TProgressBar) ControlState() TControlState {
+    return ProgressBar_GetControlState(p.instance)
+}
+
+// SetControlState
+func (p *TProgressBar) SetControlState(value TControlState) {
+    ProgressBar_SetControlState(p.instance, value)
+}
+
+// ControlStyle
+func (p *TProgressBar) ControlStyle() TControlStyle {
+    return ProgressBar_GetControlStyle(p.instance)
+}
+
+// SetControlStyle
+func (p *TProgressBar) SetControlStyle(value TControlStyle) {
+    ProgressBar_SetControlStyle(p.instance, value)
 }
 
 // ExplicitLeft
@@ -951,6 +1051,11 @@ func (p *TProgressBar) Tag() int {
 // EN: Set the control tag.
 func (p *TProgressBar) SetTag(value int) {
     ProgressBar_SetTag(p.instance, value)
+}
+
+// DockClients
+func (p *TProgressBar) DockClients(Index int32) *TControl {
+    return ControlFromInst(ProgressBar_GetDockClients(p.instance, Index))
 }
 
 // Controls

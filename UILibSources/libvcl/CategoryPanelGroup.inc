@@ -30,6 +30,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function CategoryPanelGroup_ContainsControl(AObj: TCategoryPanelGroup; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function CategoryPanelGroup_ControlAtPos(AObj: TCategoryPanelGroup; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure CategoryPanelGroup_DisableAlign(AObj: TCategoryPanelGroup); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure CategoryPanelGroup_EnableAlign(AObj: TCategoryPanelGroup); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function CategoryPanelGroup_FindChildControl(AObj: TCategoryPanelGroup; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure CategoryPanelGroup_FlipChildren(AObj: TCategoryPanelGroup; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -45,9 +70,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure CategoryPanelGroup_InsertControl(AObj: TCategoryPanelGroup; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure CategoryPanelGroup_Invalidate(AObj: TCategoryPanelGroup); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure CategoryPanelGroup_PaintTo(AObj: TCategoryPanelGroup; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure CategoryPanelGroup_RemoveControl(AObj: TCategoryPanelGroup; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure CategoryPanelGroup_Realign(AObj: TCategoryPanelGroup); stdcall;
@@ -65,6 +105,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure CategoryPanelGroup_ScrollBy(AObj: TCategoryPanelGroup; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure CategoryPanelGroup_SetBounds(AObj: TCategoryPanelGroup; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -78,6 +123,11 @@ end;
 procedure CategoryPanelGroup_Update(AObj: TCategoryPanelGroup); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure CategoryPanelGroup_UpdateControlState(AObj: TCategoryPanelGroup); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure CategoryPanelGroup_BringToFront(AObj: TCategoryPanelGroup); stdcall;
@@ -148,6 +198,11 @@ end;
 function CategoryPanelGroup_GetTextLen(AObj: TCategoryPanelGroup): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure CategoryPanelGroup_SetTextBuf(AObj: TCategoryPanelGroup; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function CategoryPanelGroup_FindComponent(AObj: TCategoryPanelGroup; AName: PChar): TComponent; stdcall;
@@ -884,6 +939,26 @@ begin
   Result :=  AObj.Panels;
 end;
 
+function CategoryPanelGroup_GetDockClientCount(AObj: TCategoryPanelGroup): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function CategoryPanelGroup_GetAlignDisabled(AObj: TCategoryPanelGroup): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function CategoryPanelGroup_GetMouseInClient(AObj: TCategoryPanelGroup): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function CategoryPanelGroup_GetVisibleDockClientCount(AObj: TCategoryPanelGroup): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function CategoryPanelGroup_GetBrush(AObj: TCategoryPanelGroup): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -949,6 +1024,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure CategoryPanelGroup_GetClientOrigin(AObj: TCategoryPanelGroup; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure CategoryPanelGroup_GetClientRect(AObj: TCategoryPanelGroup; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -962,6 +1042,26 @@ end;
 procedure CategoryPanelGroup_SetClientWidth(AObj: TCategoryPanelGroup; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function CategoryPanelGroup_GetControlState(AObj: TCategoryPanelGroup): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure CategoryPanelGroup_SetControlState(AObj: TCategoryPanelGroup; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function CategoryPanelGroup_GetControlStyle(AObj: TCategoryPanelGroup): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure CategoryPanelGroup_SetControlStyle(AObj: TCategoryPanelGroup; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function CategoryPanelGroup_GetExplicitLeft(AObj: TCategoryPanelGroup): Integer; stdcall;
@@ -1109,6 +1209,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function CategoryPanelGroup_GetDockClients(AObj: TCategoryPanelGroup; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function CategoryPanelGroup_GetControls(AObj: TCategoryPanelGroup; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1130,16 +1235,26 @@ exports
   CategoryPanelGroup_CollapseAll,
   CategoryPanelGroup_ExpandAll,
   CategoryPanelGroup_CanFocus,
+  CategoryPanelGroup_ContainsControl,
+  CategoryPanelGroup_ControlAtPos,
+  CategoryPanelGroup_DisableAlign,
+  CategoryPanelGroup_EnableAlign,
+  CategoryPanelGroup_FindChildControl,
   CategoryPanelGroup_FlipChildren,
   CategoryPanelGroup_Focused,
   CategoryPanelGroup_HandleAllocated,
+  CategoryPanelGroup_InsertControl,
   CategoryPanelGroup_Invalidate,
+  CategoryPanelGroup_PaintTo,
+  CategoryPanelGroup_RemoveControl,
   CategoryPanelGroup_Realign,
   CategoryPanelGroup_Repaint,
   CategoryPanelGroup_ScaleBy,
+  CategoryPanelGroup_ScrollBy,
   CategoryPanelGroup_SetBounds,
   CategoryPanelGroup_SetFocus,
   CategoryPanelGroup_Update,
+  CategoryPanelGroup_UpdateControlState,
   CategoryPanelGroup_BringToFront,
   CategoryPanelGroup_ClientToScreen,
   CategoryPanelGroup_ClientToParent,
@@ -1154,6 +1269,7 @@ exports
   CategoryPanelGroup_Show,
   CategoryPanelGroup_GetTextBuf,
   CategoryPanelGroup_GetTextLen,
+  CategoryPanelGroup_SetTextBuf,
   CategoryPanelGroup_FindComponent,
   CategoryPanelGroup_GetNamePath,
   CategoryPanelGroup_Assign,
@@ -1270,6 +1386,10 @@ exports
   CategoryPanelGroup_SetOnStartDock,
   CategoryPanelGroup_SetOnUnDock,
   CategoryPanelGroup_GetPanels,
+  CategoryPanelGroup_GetDockClientCount,
+  CategoryPanelGroup_GetAlignDisabled,
+  CategoryPanelGroup_GetMouseInClient,
+  CategoryPanelGroup_GetVisibleDockClientCount,
   CategoryPanelGroup_GetBrush,
   CategoryPanelGroup_GetControlCount,
   CategoryPanelGroup_GetHandle,
@@ -1283,9 +1403,14 @@ exports
   CategoryPanelGroup_SetBoundsRect,
   CategoryPanelGroup_GetClientHeight,
   CategoryPanelGroup_SetClientHeight,
+  CategoryPanelGroup_GetClientOrigin,
   CategoryPanelGroup_GetClientRect,
   CategoryPanelGroup_GetClientWidth,
   CategoryPanelGroup_SetClientWidth,
+  CategoryPanelGroup_GetControlState,
+  CategoryPanelGroup_SetControlState,
+  CategoryPanelGroup_GetControlStyle,
+  CategoryPanelGroup_SetControlStyle,
   CategoryPanelGroup_GetExplicitLeft,
   CategoryPanelGroup_GetExplicitTop,
   CategoryPanelGroup_GetExplicitWidth,
@@ -1315,6 +1440,7 @@ exports
   CategoryPanelGroup_SetName,
   CategoryPanelGroup_GetTag,
   CategoryPanelGroup_SetTag,
+  CategoryPanelGroup_GetDockClients,
   CategoryPanelGroup_GetControls,
   CategoryPanelGroup_GetComponents,
   CategoryPanelGroup_StaticClassType;

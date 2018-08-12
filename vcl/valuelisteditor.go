@@ -126,6 +126,31 @@ func (v *TValueListEditor) CanFocus() bool {
     return ValueListEditor_CanFocus(v.instance)
 }
 
+// ContainsControl
+func (v *TValueListEditor) ContainsControl(Control IControl) bool {
+    return ValueListEditor_ContainsControl(v.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (v *TValueListEditor) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ValueListEditor_ControlAtPos(v.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (v *TValueListEditor) DisableAlign() {
+    ValueListEditor_DisableAlign(v.instance)
+}
+
+// EnableAlign
+func (v *TValueListEditor) EnableAlign() {
+    ValueListEditor_EnableAlign(v.instance)
+}
+
+// FindChildControl
+func (v *TValueListEditor) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ValueListEditor_FindChildControl(v.instance, ControlName))
+}
+
 // FlipChildren
 func (v *TValueListEditor) FlipChildren(AllLevels bool) {
     ValueListEditor_FlipChildren(v.instance, AllLevels)
@@ -141,9 +166,24 @@ func (v *TValueListEditor) HandleAllocated() bool {
     return ValueListEditor_HandleAllocated(v.instance)
 }
 
+// InsertControl
+func (v *TValueListEditor) InsertControl(AControl IControl) {
+    ValueListEditor_InsertControl(v.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (v *TValueListEditor) Invalidate() {
     ValueListEditor_Invalidate(v.instance)
+}
+
+// PaintTo
+func (v *TValueListEditor) PaintTo(DC HDC, X int32, Y int32) {
+    ValueListEditor_PaintTo(v.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (v *TValueListEditor) RemoveControl(AControl IControl) {
+    ValueListEditor_RemoveControl(v.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -161,6 +201,11 @@ func (v *TValueListEditor) ScaleBy(M int32, D int32) {
     ValueListEditor_ScaleBy(v.instance, M , D)
 }
 
+// ScrollBy
+func (v *TValueListEditor) ScrollBy(DeltaX int32, DeltaY int32) {
+    ValueListEditor_ScrollBy(v.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (v *TValueListEditor) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ValueListEditor_SetBounds(v.instance, ALeft , ATop , AWidth , AHeight)
@@ -174,6 +219,11 @@ func (v *TValueListEditor) SetFocus() {
 // Update
 func (v *TValueListEditor) Update() {
     ValueListEditor_Update(v.instance)
+}
+
+// UpdateControlState
+func (v *TValueListEditor) UpdateControlState() {
+    ValueListEditor_UpdateControlState(v.instance)
 }
 
 // BringToFront
@@ -239,6 +289,11 @@ func (v *TValueListEditor) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (v *TValueListEditor) GetTextLen() int32 {
     return ValueListEditor_GetTextLen(v.instance)
+}
+
+// SetTextBuf
+func (v *TValueListEditor) SetTextBuf(Buffer string) {
+    ValueListEditor_SetTextBuf(v.instance, Buffer)
 }
 
 // FindComponent
@@ -642,12 +697,12 @@ func (v *TValueListEditor) SetStrings(value IObject) {
 }
 
 // TabOrder
-func (v *TValueListEditor) TabOrder() uint16 {
+func (v *TValueListEditor) TabOrder() TTabOrder {
     return ValueListEditor_GetTabOrder(v.instance)
 }
 
 // SetTabOrder
-func (v *TValueListEditor) SetTabOrder(value uint16) {
+func (v *TValueListEditor) SetTabOrder(value TTabOrder) {
     ValueListEditor_SetTabOrder(v.instance, value)
 }
 
@@ -897,6 +952,11 @@ func (v *TValueListEditor) SetTabStop(value bool) {
     ValueListEditor_SetTabStop(v.instance, value)
 }
 
+// DockClientCount
+func (v *TValueListEditor) DockClientCount() int32 {
+    return ValueListEditor_GetDockClientCount(v.instance)
+}
+
 // DockSite
 func (v *TValueListEditor) DockSite() bool {
     return ValueListEditor_GetDockSite(v.instance)
@@ -905,6 +965,21 @@ func (v *TValueListEditor) DockSite() bool {
 // SetDockSite
 func (v *TValueListEditor) SetDockSite(value bool) {
     ValueListEditor_SetDockSite(v.instance, value)
+}
+
+// AlignDisabled
+func (v *TValueListEditor) AlignDisabled() bool {
+    return ValueListEditor_GetAlignDisabled(v.instance)
+}
+
+// MouseInClient
+func (v *TValueListEditor) MouseInClient() bool {
+    return ValueListEditor_GetMouseInClient(v.instance)
+}
+
+// VisibleDockClientCount
+func (v *TValueListEditor) VisibleDockClientCount() int32 {
+    return ValueListEditor_GetVisibleDockClientCount(v.instance)
 }
 
 // Brush
@@ -972,6 +1047,11 @@ func (v *TValueListEditor) SetClientHeight(value int32) {
     ValueListEditor_SetClientHeight(v.instance, value)
 }
 
+// ClientOrigin
+func (v *TValueListEditor) ClientOrigin() TPoint {
+    return ValueListEditor_GetClientOrigin(v.instance)
+}
+
 // ClientRect
 func (v *TValueListEditor) ClientRect() TRect {
     return ValueListEditor_GetClientRect(v.instance)
@@ -985,6 +1065,26 @@ func (v *TValueListEditor) ClientWidth() int32 {
 // SetClientWidth
 func (v *TValueListEditor) SetClientWidth(value int32) {
     ValueListEditor_SetClientWidth(v.instance, value)
+}
+
+// ControlState
+func (v *TValueListEditor) ControlState() TControlState {
+    return ValueListEditor_GetControlState(v.instance)
+}
+
+// SetControlState
+func (v *TValueListEditor) SetControlState(value TControlState) {
+    ValueListEditor_SetControlState(v.instance, value)
+}
+
+// ControlStyle
+func (v *TValueListEditor) ControlStyle() TControlStyle {
+    return ValueListEditor_GetControlStyle(v.instance)
+}
+
+// SetControlStyle
+func (v *TValueListEditor) SetControlStyle(value TControlStyle) {
+    ValueListEditor_SetControlStyle(v.instance, value)
 }
 
 // ExplicitLeft
@@ -1228,6 +1328,11 @@ func (v *TValueListEditor) TabStops(Index int32) bool {
 // TabStops
 func (v *TValueListEditor) SetTabStops(Index int32, value bool) {
     ValueListEditor_SetTabStops(v.instance, Index, value)
+}
+
+// DockClients
+func (v *TValueListEditor) DockClients(Index int32) *TControl {
+    return ControlFromInst(ValueListEditor_GetDockClients(v.instance, Index))
 }
 
 // Controls

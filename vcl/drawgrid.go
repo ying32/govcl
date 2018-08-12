@@ -121,6 +121,31 @@ func (d *TDrawGrid) CanFocus() bool {
     return DrawGrid_CanFocus(d.instance)
 }
 
+// ContainsControl
+func (d *TDrawGrid) ContainsControl(Control IControl) bool {
+    return DrawGrid_ContainsControl(d.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (d *TDrawGrid) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(DrawGrid_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (d *TDrawGrid) DisableAlign() {
+    DrawGrid_DisableAlign(d.instance)
+}
+
+// EnableAlign
+func (d *TDrawGrid) EnableAlign() {
+    DrawGrid_EnableAlign(d.instance)
+}
+
+// FindChildControl
+func (d *TDrawGrid) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(DrawGrid_FindChildControl(d.instance, ControlName))
+}
+
 // FlipChildren
 func (d *TDrawGrid) FlipChildren(AllLevels bool) {
     DrawGrid_FlipChildren(d.instance, AllLevels)
@@ -136,9 +161,24 @@ func (d *TDrawGrid) HandleAllocated() bool {
     return DrawGrid_HandleAllocated(d.instance)
 }
 
+// InsertControl
+func (d *TDrawGrid) InsertControl(AControl IControl) {
+    DrawGrid_InsertControl(d.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (d *TDrawGrid) Invalidate() {
     DrawGrid_Invalidate(d.instance)
+}
+
+// PaintTo
+func (d *TDrawGrid) PaintTo(DC HDC, X int32, Y int32) {
+    DrawGrid_PaintTo(d.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (d *TDrawGrid) RemoveControl(AControl IControl) {
+    DrawGrid_RemoveControl(d.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -156,6 +196,11 @@ func (d *TDrawGrid) ScaleBy(M int32, D int32) {
     DrawGrid_ScaleBy(d.instance, M , D)
 }
 
+// ScrollBy
+func (d *TDrawGrid) ScrollBy(DeltaX int32, DeltaY int32) {
+    DrawGrid_ScrollBy(d.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (d *TDrawGrid) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     DrawGrid_SetBounds(d.instance, ALeft , ATop , AWidth , AHeight)
@@ -169,6 +214,11 @@ func (d *TDrawGrid) SetFocus() {
 // Update
 func (d *TDrawGrid) Update() {
     DrawGrid_Update(d.instance)
+}
+
+// UpdateControlState
+func (d *TDrawGrid) UpdateControlState() {
+    DrawGrid_UpdateControlState(d.instance)
 }
 
 // BringToFront
@@ -239,6 +289,11 @@ func (d *TDrawGrid) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (d *TDrawGrid) GetTextLen() int32 {
     return DrawGrid_GetTextLen(d.instance)
+}
+
+// SetTextBuf
+func (d *TDrawGrid) SetTextBuf(Buffer string) {
+    DrawGrid_SetTextBuf(d.instance, Buffer)
 }
 
 // FindComponent
@@ -677,12 +732,12 @@ func (d *TDrawGrid) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (d *TDrawGrid) TabOrder() uint16 {
+func (d *TDrawGrid) TabOrder() TTabOrder {
     return DrawGrid_GetTabOrder(d.instance)
 }
 
 // SetTabOrder
-func (d *TDrawGrid) SetTabOrder(value uint16) {
+func (d *TDrawGrid) SetTabOrder(value TTabOrder) {
     DrawGrid_SetTabOrder(d.instance, value)
 }
 
@@ -952,6 +1007,11 @@ func (d *TDrawGrid) SetTabStop(value bool) {
     DrawGrid_SetTabStop(d.instance, value)
 }
 
+// DockClientCount
+func (d *TDrawGrid) DockClientCount() int32 {
+    return DrawGrid_GetDockClientCount(d.instance)
+}
+
 // DockSite
 func (d *TDrawGrid) DockSite() bool {
     return DrawGrid_GetDockSite(d.instance)
@@ -960,6 +1020,21 @@ func (d *TDrawGrid) DockSite() bool {
 // SetDockSite
 func (d *TDrawGrid) SetDockSite(value bool) {
     DrawGrid_SetDockSite(d.instance, value)
+}
+
+// AlignDisabled
+func (d *TDrawGrid) AlignDisabled() bool {
+    return DrawGrid_GetAlignDisabled(d.instance)
+}
+
+// MouseInClient
+func (d *TDrawGrid) MouseInClient() bool {
+    return DrawGrid_GetMouseInClient(d.instance)
+}
+
+// VisibleDockClientCount
+func (d *TDrawGrid) VisibleDockClientCount() int32 {
+    return DrawGrid_GetVisibleDockClientCount(d.instance)
 }
 
 // Brush
@@ -1027,6 +1102,11 @@ func (d *TDrawGrid) SetClientHeight(value int32) {
     DrawGrid_SetClientHeight(d.instance, value)
 }
 
+// ClientOrigin
+func (d *TDrawGrid) ClientOrigin() TPoint {
+    return DrawGrid_GetClientOrigin(d.instance)
+}
+
 // ClientRect
 func (d *TDrawGrid) ClientRect() TRect {
     return DrawGrid_GetClientRect(d.instance)
@@ -1040,6 +1120,26 @@ func (d *TDrawGrid) ClientWidth() int32 {
 // SetClientWidth
 func (d *TDrawGrid) SetClientWidth(value int32) {
     DrawGrid_SetClientWidth(d.instance, value)
+}
+
+// ControlState
+func (d *TDrawGrid) ControlState() TControlState {
+    return DrawGrid_GetControlState(d.instance)
+}
+
+// SetControlState
+func (d *TDrawGrid) SetControlState(value TControlState) {
+    DrawGrid_SetControlState(d.instance, value)
+}
+
+// ControlStyle
+func (d *TDrawGrid) ControlStyle() TControlStyle {
+    return DrawGrid_GetControlStyle(d.instance)
+}
+
+// SetControlStyle
+func (d *TDrawGrid) SetControlStyle(value TControlStyle) {
+    DrawGrid_SetControlStyle(d.instance, value)
 }
 
 // ExplicitLeft
@@ -1263,6 +1363,11 @@ func (d *TDrawGrid) TabStops(Index int32) bool {
 // TabStops
 func (d *TDrawGrid) SetTabStops(Index int32, value bool) {
     DrawGrid_SetTabStops(d.instance, Index, value)
+}
+
+// DockClients
+func (d *TDrawGrid) DockClients(Index int32) *TControl {
+    return ControlFromInst(DrawGrid_GetDockClients(d.instance, Index))
 }
 
 // Controls

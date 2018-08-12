@@ -50,6 +50,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ColorBox_ContainsControl(AObj: TColorBox; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ColorBox_ControlAtPos(AObj: TColorBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure ColorBox_DisableAlign(AObj: TColorBox); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ColorBox_EnableAlign(AObj: TColorBox); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function ColorBox_FindChildControl(AObj: TColorBox; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ColorBox_FlipChildren(AObj: TColorBox; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -60,9 +85,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ColorBox_InsertControl(AObj: TColorBox; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ColorBox_Invalidate(AObj: TColorBox); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure ColorBox_PaintTo(AObj: TColorBox; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure ColorBox_RemoveControl(AObj: TColorBox; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ColorBox_Realign(AObj: TColorBox); stdcall;
@@ -80,6 +120,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure ColorBox_ScrollBy(AObj: TColorBox; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure ColorBox_SetBounds(AObj: TColorBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -93,6 +138,11 @@ end;
 procedure ColorBox_Update(AObj: TColorBox); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure ColorBox_UpdateControlState(AObj: TColorBox); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure ColorBox_BringToFront(AObj: TColorBox); stdcall;
@@ -163,6 +213,11 @@ end;
 function ColorBox_GetTextLen(AObj: TColorBox): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ColorBox_SetTextBuf(AObj: TColorBox; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ColorBox_FindComponent(AObj: TColorBox; AName: PChar): TComponent; stdcall;
@@ -805,6 +860,11 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ColorBox_GetDockClientCount(AObj: TColorBox): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ColorBox_GetDockSite(AObj: TColorBox): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -813,6 +873,21 @@ end;
 procedure ColorBox_SetDockSite(AObj: TColorBox; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ColorBox_GetAlignDisabled(AObj: TColorBox): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function ColorBox_GetMouseInClient(AObj: TColorBox): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function ColorBox_GetVisibleDockClientCount(AObj: TColorBox): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ColorBox_GetBrush(AObj: TColorBox): TBrush; stdcall;
@@ -880,6 +955,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ColorBox_GetClientOrigin(AObj: TColorBox; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ColorBox_GetClientRect(AObj: TColorBox; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -893,6 +973,26 @@ end;
 procedure ColorBox_SetClientWidth(AObj: TColorBox; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ColorBox_GetControlState(AObj: TColorBox): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ColorBox_SetControlState(AObj: TColorBox; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ColorBox_GetControlStyle(AObj: TColorBox): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ColorBox_SetControlStyle(AObj: TColorBox; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ColorBox_GetExplicitLeft(AObj: TColorBox): Integer; stdcall;
@@ -1070,6 +1170,11 @@ begin
   Result :=  PChar(AObj.ColorNames[Index]);
 end;
 
+function ColorBox_GetDockClients(AObj: TColorBox; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ColorBox_GetControls(AObj: TColorBox; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1095,15 +1200,25 @@ exports
   ColorBox_Focused,
   ColorBox_SelectAll,
   ColorBox_CanFocus,
+  ColorBox_ContainsControl,
+  ColorBox_ControlAtPos,
+  ColorBox_DisableAlign,
+  ColorBox_EnableAlign,
+  ColorBox_FindChildControl,
   ColorBox_FlipChildren,
   ColorBox_HandleAllocated,
+  ColorBox_InsertControl,
   ColorBox_Invalidate,
+  ColorBox_PaintTo,
+  ColorBox_RemoveControl,
   ColorBox_Realign,
   ColorBox_Repaint,
   ColorBox_ScaleBy,
+  ColorBox_ScrollBy,
   ColorBox_SetBounds,
   ColorBox_SetFocus,
   ColorBox_Update,
+  ColorBox_UpdateControlState,
   ColorBox_BringToFront,
   ColorBox_ClientToScreen,
   ColorBox_ClientToParent,
@@ -1118,6 +1233,7 @@ exports
   ColorBox_Show,
   ColorBox_GetTextBuf,
   ColorBox_GetTextLen,
+  ColorBox_SetTextBuf,
   ColorBox_FindComponent,
   ColorBox_GetNamePath,
   ColorBox_Assign,
@@ -1225,8 +1341,12 @@ exports
   ColorBox_SetSelStart,
   ColorBox_GetItemIndex,
   ColorBox_SetItemIndex,
+  ColorBox_GetDockClientCount,
   ColorBox_GetDockSite,
   ColorBox_SetDockSite,
+  ColorBox_GetAlignDisabled,
+  ColorBox_GetMouseInClient,
+  ColorBox_GetVisibleDockClientCount,
   ColorBox_GetBrush,
   ColorBox_GetControlCount,
   ColorBox_GetHandle,
@@ -1240,9 +1360,14 @@ exports
   ColorBox_SetBoundsRect,
   ColorBox_GetClientHeight,
   ColorBox_SetClientHeight,
+  ColorBox_GetClientOrigin,
   ColorBox_GetClientRect,
   ColorBox_GetClientWidth,
   ColorBox_SetClientWidth,
+  ColorBox_GetControlState,
+  ColorBox_SetControlState,
+  ColorBox_GetControlStyle,
+  ColorBox_SetControlStyle,
   ColorBox_GetExplicitLeft,
   ColorBox_GetExplicitTop,
   ColorBox_GetExplicitWidth,
@@ -1278,6 +1403,7 @@ exports
   ColorBox_SetTag,
   ColorBox_GetColors,
   ColorBox_GetColorNames,
+  ColorBox_GetDockClients,
   ColorBox_GetControls,
   ColorBox_GetComponents,
   ColorBox_StaticClassType;

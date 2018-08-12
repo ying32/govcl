@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Label_SetTextBuf(AObj: TLabel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Label_FindComponent(AObj: TLabel; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -601,6 +606,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Label_GetClientOrigin(AObj: TLabel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Label_GetClientRect(AObj: TLabel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -614,6 +624,26 @@ end;
 procedure Label_SetClientWidth(AObj: TLabel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Label_GetControlState(AObj: TLabel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Label_SetControlState(AObj: TLabel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Label_GetControlStyle(AObj: TLabel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Label_SetControlStyle(AObj: TLabel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Label_GetExplicitLeft(AObj: TLabel): Integer; stdcall;
@@ -812,6 +842,7 @@ exports
   Label_Update,
   Label_GetTextBuf,
   Label_GetTextLen,
+  Label_SetTextBuf,
   Label_FindComponent,
   Label_GetNamePath,
   Label_Assign,
@@ -893,9 +924,14 @@ exports
   Label_SetBoundsRect,
   Label_GetClientHeight,
   Label_SetClientHeight,
+  Label_GetClientOrigin,
   Label_GetClientRect,
   Label_GetClientWidth,
   Label_SetClientWidth,
+  Label_GetControlState,
+  Label_SetControlState,
+  Label_GetControlStyle,
+  Label_SetControlStyle,
   Label_GetExplicitLeft,
   Label_GetExplicitTop,
   Label_GetExplicitWidth,

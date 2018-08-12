@@ -191,6 +191,11 @@ func (s *TShape) GetTextLen() int32 {
     return Shape_GetTextLen(s.instance)
 }
 
+// SetTextBuf
+func (s *TShape) SetTextBuf(Buffer string) {
+    Shape_SetTextBuf(s.instance, Buffer)
+}
+
 // FindComponent
 func (s *TShape) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Shape_FindComponent(s.instance, AName))
@@ -485,6 +490,11 @@ func (s *TShape) SetClientHeight(value int32) {
     Shape_SetClientHeight(s.instance, value)
 }
 
+// ClientOrigin
+func (s *TShape) ClientOrigin() TPoint {
+    return Shape_GetClientOrigin(s.instance)
+}
+
 // ClientRect
 func (s *TShape) ClientRect() TRect {
     return Shape_GetClientRect(s.instance)
@@ -498,6 +508,26 @@ func (s *TShape) ClientWidth() int32 {
 // SetClientWidth
 func (s *TShape) SetClientWidth(value int32) {
     Shape_SetClientWidth(s.instance, value)
+}
+
+// ControlState
+func (s *TShape) ControlState() TControlState {
+    return Shape_GetControlState(s.instance)
+}
+
+// SetControlState
+func (s *TShape) SetControlState(value TControlState) {
+    Shape_SetControlState(s.instance, value)
+}
+
+// ControlStyle
+func (s *TShape) ControlStyle() TControlStyle {
+    return Shape_GetControlStyle(s.instance)
+}
+
+// SetControlStyle
+func (s *TShape) SetControlStyle(value TControlStyle) {
+    Shape_SetControlStyle(s.instance, value)
 }
 
 // ExplicitLeft

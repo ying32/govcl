@@ -111,6 +111,31 @@ func (b *TBitBtn) CanFocus() bool {
     return BitBtn_CanFocus(b.instance)
 }
 
+// ContainsControl
+func (b *TBitBtn) ContainsControl(Control IControl) bool {
+    return BitBtn_ContainsControl(b.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (b *TBitBtn) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(BitBtn_ControlAtPos(b.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (b *TBitBtn) DisableAlign() {
+    BitBtn_DisableAlign(b.instance)
+}
+
+// EnableAlign
+func (b *TBitBtn) EnableAlign() {
+    BitBtn_EnableAlign(b.instance)
+}
+
+// FindChildControl
+func (b *TBitBtn) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(BitBtn_FindChildControl(b.instance, ControlName))
+}
+
 // FlipChildren
 func (b *TBitBtn) FlipChildren(AllLevels bool) {
     BitBtn_FlipChildren(b.instance, AllLevels)
@@ -126,9 +151,24 @@ func (b *TBitBtn) HandleAllocated() bool {
     return BitBtn_HandleAllocated(b.instance)
 }
 
+// InsertControl
+func (b *TBitBtn) InsertControl(AControl IControl) {
+    BitBtn_InsertControl(b.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (b *TBitBtn) Invalidate() {
     BitBtn_Invalidate(b.instance)
+}
+
+// PaintTo
+func (b *TBitBtn) PaintTo(DC HDC, X int32, Y int32) {
+    BitBtn_PaintTo(b.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (b *TBitBtn) RemoveControl(AControl IControl) {
+    BitBtn_RemoveControl(b.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -146,6 +186,11 @@ func (b *TBitBtn) ScaleBy(M int32, D int32) {
     BitBtn_ScaleBy(b.instance, M , D)
 }
 
+// ScrollBy
+func (b *TBitBtn) ScrollBy(DeltaX int32, DeltaY int32) {
+    BitBtn_ScrollBy(b.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (b *TBitBtn) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     BitBtn_SetBounds(b.instance, ALeft , ATop , AWidth , AHeight)
@@ -159,6 +204,11 @@ func (b *TBitBtn) SetFocus() {
 // Update
 func (b *TBitBtn) Update() {
     BitBtn_Update(b.instance)
+}
+
+// UpdateControlState
+func (b *TBitBtn) UpdateControlState() {
+    BitBtn_UpdateControlState(b.instance)
 }
 
 // BringToFront
@@ -229,6 +279,11 @@ func (b *TBitBtn) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (b *TBitBtn) GetTextLen() int32 {
     return BitBtn_GetTextLen(b.instance)
+}
+
+// SetTextBuf
+func (b *TBitBtn) SetTextBuf(Buffer string) {
+    BitBtn_SetTextBuf(b.instance, Buffer)
 }
 
 // FindComponent
@@ -561,12 +616,12 @@ func (b *TBitBtn) SetSpacing(value int32) {
 }
 
 // TabOrder
-func (b *TBitBtn) TabOrder() uint16 {
+func (b *TBitBtn) TabOrder() TTabOrder {
     return BitBtn_GetTabOrder(b.instance)
 }
 
 // SetTabOrder
-func (b *TBitBtn) SetTabOrder(value uint16) {
+func (b *TBitBtn) SetTabOrder(value TTabOrder) {
     BitBtn_SetTabOrder(b.instance, value)
 }
 
@@ -801,6 +856,11 @@ func (b *TBitBtn) SetStylusHotImageIndex(value int32) {
     BitBtn_SetStylusHotImageIndex(b.instance, value)
 }
 
+// DockClientCount
+func (b *TBitBtn) DockClientCount() int32 {
+    return BitBtn_GetDockClientCount(b.instance)
+}
+
 // DockSite
 func (b *TBitBtn) DockSite() bool {
     return BitBtn_GetDockSite(b.instance)
@@ -809,6 +869,21 @@ func (b *TBitBtn) DockSite() bool {
 // SetDockSite
 func (b *TBitBtn) SetDockSite(value bool) {
     BitBtn_SetDockSite(b.instance, value)
+}
+
+// AlignDisabled
+func (b *TBitBtn) AlignDisabled() bool {
+    return BitBtn_GetAlignDisabled(b.instance)
+}
+
+// MouseInClient
+func (b *TBitBtn) MouseInClient() bool {
+    return BitBtn_GetMouseInClient(b.instance)
+}
+
+// VisibleDockClientCount
+func (b *TBitBtn) VisibleDockClientCount() int32 {
+    return BitBtn_GetVisibleDockClientCount(b.instance)
 }
 
 // Brush
@@ -866,6 +941,11 @@ func (b *TBitBtn) SetClientHeight(value int32) {
     BitBtn_SetClientHeight(b.instance, value)
 }
 
+// ClientOrigin
+func (b *TBitBtn) ClientOrigin() TPoint {
+    return BitBtn_GetClientOrigin(b.instance)
+}
+
 // ClientRect
 func (b *TBitBtn) ClientRect() TRect {
     return BitBtn_GetClientRect(b.instance)
@@ -879,6 +959,26 @@ func (b *TBitBtn) ClientWidth() int32 {
 // SetClientWidth
 func (b *TBitBtn) SetClientWidth(value int32) {
     BitBtn_SetClientWidth(b.instance, value)
+}
+
+// ControlState
+func (b *TBitBtn) ControlState() TControlState {
+    return BitBtn_GetControlState(b.instance)
+}
+
+// SetControlState
+func (b *TBitBtn) SetControlState(value TControlState) {
+    BitBtn_SetControlState(b.instance, value)
+}
+
+// ControlStyle
+func (b *TBitBtn) ControlStyle() TControlStyle {
+    return BitBtn_GetControlStyle(b.instance)
+}
+
+// SetControlStyle
+func (b *TBitBtn) SetControlStyle(value TControlStyle) {
+    BitBtn_SetControlStyle(b.instance, value)
 }
 
 // ExplicitLeft
@@ -1072,6 +1172,11 @@ func (b *TBitBtn) Tag() int {
 // EN: Set the control tag.
 func (b *TBitBtn) SetTag(value int) {
     BitBtn_SetTag(b.instance, value)
+}
+
+// DockClients
+func (b *TBitBtn) DockClients(Index int32) *TControl {
+    return ControlFromInst(BitBtn_GetDockClients(b.instance, Index))
 }
 
 // Controls

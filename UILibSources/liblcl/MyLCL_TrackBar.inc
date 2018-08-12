@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function TrackBar_ContainsControl(AObj: TTrackBar; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function TrackBar_ControlAtPos(AObj: TTrackBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure TrackBar_DisableAlign(AObj: TTrackBar); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure TrackBar_EnableAlign(AObj: TTrackBar); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function TrackBar_FindChildControl(AObj: TTrackBar; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure TrackBar_FlipChildren(AObj: TTrackBar; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -40,9 +65,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure TrackBar_InsertControl(AObj: TTrackBar; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure TrackBar_Invalidate(AObj: TTrackBar); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure TrackBar_RemoveControl(AObj: TTrackBar; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure TrackBar_Realign(AObj: TTrackBar); extdecl;
@@ -58,6 +93,11 @@ end;
 procedure TrackBar_ScaleBy(AObj: TTrackBar; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure TrackBar_ScrollBy(AObj: TTrackBar; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure TrackBar_SetBounds(AObj: TTrackBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -143,6 +183,11 @@ end;
 function TrackBar_GetTextLen(AObj: TTrackBar): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure TrackBar_SetTextBuf(AObj: TTrackBar; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function TrackBar_FindComponent(AObj: TTrackBar; AName: PChar): TComponent; extdecl;
@@ -565,6 +610,11 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+function TrackBar_GetDockClientCount(AObj: TTrackBar): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function TrackBar_GetDockSite(AObj: TTrackBar): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -573,6 +623,11 @@ end;
 procedure TrackBar_SetDockSite(AObj: TTrackBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function TrackBar_GetVisibleDockClientCount(AObj: TTrackBar): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function TrackBar_GetBrush(AObj: TTrackBar): TBrush; extdecl;
@@ -650,6 +705,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure TrackBar_GetClientOrigin(AObj: TTrackBar; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure TrackBar_GetClientRect(AObj: TTrackBar; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -663,6 +723,26 @@ end;
 procedure TrackBar_SetClientWidth(AObj: TTrackBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function TrackBar_GetControlState(AObj: TTrackBar): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure TrackBar_SetControlState(AObj: TTrackBar; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function TrackBar_GetControlStyle(AObj: TTrackBar): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure TrackBar_SetControlStyle(AObj: TTrackBar; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function TrackBar_GetFloating(AObj: TTrackBar): LongBool; extdecl;
@@ -780,6 +860,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function TrackBar_GetDockClients(AObj: TTrackBar; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function TrackBar_GetControls(AObj: TTrackBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -800,13 +885,21 @@ exports
   TrackBar_Free,
   TrackBar_SetTick,
   TrackBar_CanFocus,
+  TrackBar_ContainsControl,
+  TrackBar_ControlAtPos,
+  TrackBar_DisableAlign,
+  TrackBar_EnableAlign,
+  TrackBar_FindChildControl,
   TrackBar_FlipChildren,
   TrackBar_Focused,
   TrackBar_HandleAllocated,
+  TrackBar_InsertControl,
   TrackBar_Invalidate,
+  TrackBar_RemoveControl,
   TrackBar_Realign,
   TrackBar_Repaint,
   TrackBar_ScaleBy,
+  TrackBar_ScrollBy,
   TrackBar_SetBounds,
   TrackBar_SetFocus,
   TrackBar_Update,
@@ -824,6 +917,7 @@ exports
   TrackBar_Show,
   TrackBar_GetTextBuf,
   TrackBar_GetTextLen,
+  TrackBar_SetTextBuf,
   TrackBar_FindComponent,
   TrackBar_GetNamePath,
   TrackBar_Assign,
@@ -894,8 +988,10 @@ exports
   TrackBar_SetOnKeyDown,
   TrackBar_SetOnKeyPress,
   TrackBar_SetOnKeyUp,
+  TrackBar_GetDockClientCount,
   TrackBar_GetDockSite,
   TrackBar_SetDockSite,
+  TrackBar_GetVisibleDockClientCount,
   TrackBar_GetBrush,
   TrackBar_GetControlCount,
   TrackBar_GetHandle,
@@ -911,9 +1007,14 @@ exports
   TrackBar_SetBoundsRect,
   TrackBar_GetClientHeight,
   TrackBar_SetClientHeight,
+  TrackBar_GetClientOrigin,
   TrackBar_GetClientRect,
   TrackBar_GetClientWidth,
   TrackBar_SetClientWidth,
+  TrackBar_GetControlState,
+  TrackBar_SetControlState,
+  TrackBar_GetControlStyle,
+  TrackBar_SetControlStyle,
   TrackBar_GetFloating,
   TrackBar_GetParent,
   TrackBar_SetParent,
@@ -937,6 +1038,7 @@ exports
   TrackBar_SetName,
   TrackBar_GetTag,
   TrackBar_SetTag,
+  TrackBar_GetDockClients,
   TrackBar_GetControls,
   TrackBar_GetComponents,
   TrackBar_StaticClassType;

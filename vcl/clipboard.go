@@ -141,6 +141,11 @@ func (c *TClipboard) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Clipboard_GetTextBuf(c.instance, Buffer , BufSize)
 }
 
+// SetTextBuf
+func (c *TClipboard) SetTextBuf(Buffer string) {
+    Clipboard_SetTextBuf(c.instance, Buffer)
+}
+
 // GetNamePath
 func (c *TClipboard) GetNamePath() string {
     return Clipboard_GetNamePath(c.instance)

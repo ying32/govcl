@@ -45,6 +45,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function Form_ContainsControl(AObj: TForm; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function Form_ControlAtPos(AObj: TForm; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure Form_DisableAlign(AObj: TForm); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure Form_EnableAlign(AObj: TForm); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function Form_FindChildControl(AObj: TForm; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure Form_FlipChildren(AObj: TForm; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -60,9 +85,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure Form_InsertControl(AObj: TForm; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure Form_Invalidate(AObj: TForm); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure Form_RemoveControl(AObj: TForm; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure Form_Realign(AObj: TForm); extdecl;
@@ -78,6 +113,11 @@ end;
 procedure Form_ScaleBy(AObj: TForm; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure Form_ScrollBy(AObj: TForm; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure Form_SetBounds(AObj: TForm; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -148,6 +188,11 @@ end;
 function Form_GetTextLen(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure Form_SetTextBuf(AObj: TForm; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function Form_FindComponent(AObj: TForm; AName: PChar): TComponent; extdecl;
@@ -933,6 +978,16 @@ begin
   AObj.Top := AValue;
 end;
 
+function Form_GetDockClientCount(AObj: TForm): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function Form_GetVisibleDockClientCount(AObj: TForm): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function Form_GetBrush(AObj: TForm): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -988,9 +1043,34 @@ begin
   AObj.BoundsRect := AValue;
 end;
 
+procedure Form_GetClientOrigin(AObj: TForm; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Form_GetClientRect(AObj: TForm; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
+end;
+
+function Form_GetControlState(AObj: TForm): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Form_SetControlState(AObj: TForm; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Form_GetControlStyle(AObj: TForm): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Form_SetControlStyle(AObj: TForm; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Form_GetFloating(AObj: TForm): LongBool; extdecl;
@@ -1068,6 +1148,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Form_GetDockClients(AObj: TForm; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function Form_GetControls(AObj: TForm; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -1092,13 +1177,21 @@ exports
   Form_Show,
   Form_ShowModal,
   Form_CanFocus,
+  Form_ContainsControl,
+  Form_ControlAtPos,
+  Form_DisableAlign,
+  Form_EnableAlign,
+  Form_FindChildControl,
   Form_FlipChildren,
   Form_Focused,
   Form_HandleAllocated,
+  Form_InsertControl,
   Form_Invalidate,
+  Form_RemoveControl,
   Form_Realign,
   Form_Repaint,
   Form_ScaleBy,
+  Form_ScrollBy,
   Form_SetBounds,
   Form_Update,
   Form_BringToFront,
@@ -1113,6 +1206,7 @@ exports
   Form_SendToBack,
   Form_GetTextBuf,
   Form_GetTextLen,
+  Form_SetTextBuf,
   Form_FindComponent,
   Form_GetNamePath,
   Form_Assign,
@@ -1229,6 +1323,8 @@ exports
   Form_SetLeft,
   Form_GetTop,
   Form_SetTop,
+  Form_GetDockClientCount,
+  Form_GetVisibleDockClientCount,
   Form_GetBrush,
   Form_GetControlCount,
   Form_GetHandle,
@@ -1240,7 +1336,12 @@ exports
   Form_SetTabStop,
   Form_GetBoundsRect,
   Form_SetBoundsRect,
+  Form_GetClientOrigin,
   Form_GetClientRect,
+  Form_GetControlState,
+  Form_SetControlState,
+  Form_GetControlStyle,
+  Form_SetControlStyle,
   Form_GetFloating,
   Form_GetParent,
   Form_SetParent,
@@ -1256,6 +1357,7 @@ exports
   Form_SetName,
   Form_GetTag,
   Form_SetTag,
+  Form_GetDockClients,
   Form_GetControls,
   Form_GetComponents,
   Form_StaticClassType;

@@ -116,6 +116,31 @@ func (f *TFlowPanel) CanFocus() bool {
     return FlowPanel_CanFocus(f.instance)
 }
 
+// ContainsControl
+func (f *TFlowPanel) ContainsControl(Control IControl) bool {
+    return FlowPanel_ContainsControl(f.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (f *TFlowPanel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(FlowPanel_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (f *TFlowPanel) DisableAlign() {
+    FlowPanel_DisableAlign(f.instance)
+}
+
+// EnableAlign
+func (f *TFlowPanel) EnableAlign() {
+    FlowPanel_EnableAlign(f.instance)
+}
+
+// FindChildControl
+func (f *TFlowPanel) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(FlowPanel_FindChildControl(f.instance, ControlName))
+}
+
 // FlipChildren
 func (f *TFlowPanel) FlipChildren(AllLevels bool) {
     FlowPanel_FlipChildren(f.instance, AllLevels)
@@ -131,9 +156,24 @@ func (f *TFlowPanel) HandleAllocated() bool {
     return FlowPanel_HandleAllocated(f.instance)
 }
 
+// InsertControl
+func (f *TFlowPanel) InsertControl(AControl IControl) {
+    FlowPanel_InsertControl(f.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (f *TFlowPanel) Invalidate() {
     FlowPanel_Invalidate(f.instance)
+}
+
+// PaintTo
+func (f *TFlowPanel) PaintTo(DC HDC, X int32, Y int32) {
+    FlowPanel_PaintTo(f.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (f *TFlowPanel) RemoveControl(AControl IControl) {
+    FlowPanel_RemoveControl(f.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -151,6 +191,11 @@ func (f *TFlowPanel) ScaleBy(M int32, D int32) {
     FlowPanel_ScaleBy(f.instance, M , D)
 }
 
+// ScrollBy
+func (f *TFlowPanel) ScrollBy(DeltaX int32, DeltaY int32) {
+    FlowPanel_ScrollBy(f.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (f *TFlowPanel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     FlowPanel_SetBounds(f.instance, ALeft , ATop , AWidth , AHeight)
@@ -164,6 +209,11 @@ func (f *TFlowPanel) SetFocus() {
 // Update
 func (f *TFlowPanel) Update() {
     FlowPanel_Update(f.instance)
+}
+
+// UpdateControlState
+func (f *TFlowPanel) UpdateControlState() {
+    FlowPanel_UpdateControlState(f.instance)
 }
 
 // BringToFront
@@ -234,6 +284,11 @@ func (f *TFlowPanel) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (f *TFlowPanel) GetTextLen() int32 {
     return FlowPanel_GetTextLen(f.instance)
+}
+
+// SetTextBuf
+func (f *TFlowPanel) SetTextBuf(Buffer string) {
+    FlowPanel_SetTextBuf(f.instance, Buffer)
 }
 
 // FindComponent
@@ -656,12 +711,12 @@ func (f *TFlowPanel) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (f *TFlowPanel) TabOrder() uint16 {
+func (f *TFlowPanel) TabOrder() TTabOrder {
     return FlowPanel_GetTabOrder(f.instance)
 }
 
 // SetTabOrder
-func (f *TFlowPanel) SetTabOrder(value uint16) {
+func (f *TFlowPanel) SetTabOrder(value TTabOrder) {
     FlowPanel_SetTabOrder(f.instance, value)
 }
 
@@ -796,6 +851,26 @@ func (f *TFlowPanel) SetOnUnDock(fn TUnDockEvent) {
     FlowPanel_SetOnUnDock(f.instance, fn)
 }
 
+// DockClientCount
+func (f *TFlowPanel) DockClientCount() int32 {
+    return FlowPanel_GetDockClientCount(f.instance)
+}
+
+// AlignDisabled
+func (f *TFlowPanel) AlignDisabled() bool {
+    return FlowPanel_GetAlignDisabled(f.instance)
+}
+
+// MouseInClient
+func (f *TFlowPanel) MouseInClient() bool {
+    return FlowPanel_GetMouseInClient(f.instance)
+}
+
+// VisibleDockClientCount
+func (f *TFlowPanel) VisibleDockClientCount() int32 {
+    return FlowPanel_GetVisibleDockClientCount(f.instance)
+}
+
 // Brush
 func (f *TFlowPanel) Brush() *TBrush {
     return BrushFromInst(FlowPanel_GetBrush(f.instance))
@@ -851,6 +926,11 @@ func (f *TFlowPanel) SetClientHeight(value int32) {
     FlowPanel_SetClientHeight(f.instance, value)
 }
 
+// ClientOrigin
+func (f *TFlowPanel) ClientOrigin() TPoint {
+    return FlowPanel_GetClientOrigin(f.instance)
+}
+
 // ClientRect
 func (f *TFlowPanel) ClientRect() TRect {
     return FlowPanel_GetClientRect(f.instance)
@@ -864,6 +944,26 @@ func (f *TFlowPanel) ClientWidth() int32 {
 // SetClientWidth
 func (f *TFlowPanel) SetClientWidth(value int32) {
     FlowPanel_SetClientWidth(f.instance, value)
+}
+
+// ControlState
+func (f *TFlowPanel) ControlState() TControlState {
+    return FlowPanel_GetControlState(f.instance)
+}
+
+// SetControlState
+func (f *TFlowPanel) SetControlState(value TControlState) {
+    FlowPanel_SetControlState(f.instance, value)
+}
+
+// ControlStyle
+func (f *TFlowPanel) ControlStyle() TControlStyle {
+    return FlowPanel_GetControlStyle(f.instance)
+}
+
+// SetControlStyle
+func (f *TFlowPanel) SetControlStyle(value TControlStyle) {
+    FlowPanel_SetControlStyle(f.instance, value)
 }
 
 // ExplicitLeft
@@ -1057,6 +1157,11 @@ func (f *TFlowPanel) Tag() int {
 // EN: Set the control tag.
 func (f *TFlowPanel) SetTag(value int) {
     FlowPanel_SetTag(f.instance, value)
+}
+
+// DockClients
+func (f *TFlowPanel) DockClients(Index int32) *TControl {
+    return ControlFromInst(FlowPanel_GetDockClients(f.instance, Index))
 }
 
 // Controls

@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Splitter_SetTextBuf(AObj: TSplitter; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Splitter_FindComponent(AObj: TSplitter; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -292,6 +297,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Splitter_GetClientOrigin(AObj: TSplitter; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Splitter_GetClientRect(AObj: TSplitter; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -305,6 +315,26 @@ end;
 procedure Splitter_SetClientWidth(AObj: TSplitter; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Splitter_GetControlState(AObj: TSplitter): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Splitter_SetControlState(AObj: TSplitter; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Splitter_GetControlStyle(AObj: TSplitter): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Splitter_SetControlStyle(AObj: TSplitter; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Splitter_GetFloating(AObj: TSplitter): LongBool; extdecl;
@@ -443,6 +473,7 @@ exports
   Splitter_Update,
   Splitter_GetTextBuf,
   Splitter_GetTextLen,
+  Splitter_SetTextBuf,
   Splitter_FindComponent,
   Splitter_GetNamePath,
   Splitter_Assign,
@@ -479,9 +510,14 @@ exports
   Splitter_SetBoundsRect,
   Splitter_GetClientHeight,
   Splitter_SetClientHeight,
+  Splitter_GetClientOrigin,
   Splitter_GetClientRect,
   Splitter_GetClientWidth,
   Splitter_SetClientWidth,
+  Splitter_GetControlState,
+  Splitter_SetControlState,
+  Splitter_GetControlStyle,
+  Splitter_SetControlStyle,
   Splitter_GetFloating,
   Splitter_GetShowHint,
   Splitter_SetShowHint,

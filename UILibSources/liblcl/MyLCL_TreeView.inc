@@ -66,6 +66,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function TreeView_ContainsControl(AObj: TTreeView; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function TreeView_ControlAtPos(AObj: TTreeView; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure TreeView_DisableAlign(AObj: TTreeView); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure TreeView_EnableAlign(AObj: TTreeView); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function TreeView_FindChildControl(AObj: TTreeView; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure TreeView_FlipChildren(AObj: TTreeView; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -81,9 +106,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure TreeView_InsertControl(AObj: TTreeView; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure TreeView_Invalidate(AObj: TTreeView); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure TreeView_RemoveControl(AObj: TTreeView; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure TreeView_Realign(AObj: TTreeView); extdecl;
@@ -99,6 +134,11 @@ end;
 procedure TreeView_ScaleBy(AObj: TTreeView; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure TreeView_ScrollBy(AObj: TTreeView; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure TreeView_SetBounds(AObj: TTreeView; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -184,6 +224,11 @@ end;
 function TreeView_GetTextLen(AObj: TTreeView): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure TreeView_SetTextBuf(AObj: TTreeView; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function TreeView_FindComponent(AObj: TTreeView; AName: PChar): TComponent; extdecl;
@@ -888,6 +933,11 @@ begin
   Result :=  AObj.SelectionCount;
 end;
 
+function TreeView_GetDockClientCount(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function TreeView_GetDockSite(AObj: TTreeView): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -896,6 +946,11 @@ end;
 procedure TreeView_SetDockSite(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function TreeView_GetVisibleDockClientCount(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function TreeView_GetBrush(AObj: TTreeView): TBrush; extdecl;
@@ -963,6 +1018,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure TreeView_GetClientOrigin(AObj: TTreeView; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure TreeView_GetClientRect(AObj: TTreeView; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -976,6 +1036,26 @@ end;
 procedure TreeView_SetClientWidth(AObj: TTreeView; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function TreeView_GetControlState(AObj: TTreeView): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure TreeView_SetControlState(AObj: TTreeView; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function TreeView_GetControlStyle(AObj: TTreeView): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure TreeView_SetControlStyle(AObj: TTreeView; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function TreeView_GetFloating(AObj: TTreeView): LongBool; extdecl;
@@ -1098,6 +1178,11 @@ begin
   Result :=  AObj.Selections[Index];
 end;
 
+function TreeView_GetDockClients(AObj: TTreeView; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function TreeView_GetControls(AObj: TTreeView; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -1126,13 +1211,21 @@ exports
   TreeView_SaveToStream,
   TreeView_ClearSelection,
   TreeView_CanFocus,
+  TreeView_ContainsControl,
+  TreeView_ControlAtPos,
+  TreeView_DisableAlign,
+  TreeView_EnableAlign,
+  TreeView_FindChildControl,
   TreeView_FlipChildren,
   TreeView_Focused,
   TreeView_HandleAllocated,
+  TreeView_InsertControl,
   TreeView_Invalidate,
+  TreeView_RemoveControl,
   TreeView_Realign,
   TreeView_Repaint,
   TreeView_ScaleBy,
+  TreeView_ScrollBy,
   TreeView_SetBounds,
   TreeView_SetFocus,
   TreeView_Update,
@@ -1150,6 +1243,7 @@ exports
   TreeView_Show,
   TreeView_GetTextBuf,
   TreeView_GetTextLen,
+  TreeView_SetTextBuf,
   TreeView_FindComponent,
   TreeView_GetNamePath,
   TreeView_Assign,
@@ -1261,8 +1355,10 @@ exports
   TreeView_GetTopItem,
   TreeView_SetTopItem,
   TreeView_GetSelectionCount,
+  TreeView_GetDockClientCount,
   TreeView_GetDockSite,
   TreeView_SetDockSite,
+  TreeView_GetVisibleDockClientCount,
   TreeView_GetBrush,
   TreeView_GetControlCount,
   TreeView_GetHandle,
@@ -1276,9 +1372,14 @@ exports
   TreeView_SetBoundsRect,
   TreeView_GetClientHeight,
   TreeView_SetClientHeight,
+  TreeView_GetClientOrigin,
   TreeView_GetClientRect,
   TreeView_GetClientWidth,
   TreeView_SetClientWidth,
+  TreeView_GetControlState,
+  TreeView_SetControlState,
+  TreeView_GetControlStyle,
+  TreeView_SetControlStyle,
   TreeView_GetFloating,
   TreeView_GetParent,
   TreeView_SetParent,
@@ -1303,6 +1404,7 @@ exports
   TreeView_GetTag,
   TreeView_SetTag,
   TreeView_GetSelections,
+  TreeView_GetDockClients,
   TreeView_GetControls,
   TreeView_GetComponents,
   TreeView_StaticClassType;

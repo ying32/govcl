@@ -191,6 +191,11 @@ func (b *TBoundLabel) GetTextLen() int32 {
     return BoundLabel_GetTextLen(b.instance)
 }
 
+// SetTextBuf
+func (b *TBoundLabel) SetTextBuf(Buffer string) {
+    BoundLabel_SetTextBuf(b.instance, Buffer)
+}
+
 // FindComponent
 func (b *TBoundLabel) FindComponent(AName string) *TComponent {
     return ComponentFromInst(BoundLabel_FindComponent(b.instance, AName))
@@ -592,6 +597,11 @@ func (b *TBoundLabel) SetClientHeight(value int32) {
     BoundLabel_SetClientHeight(b.instance, value)
 }
 
+// ClientOrigin
+func (b *TBoundLabel) ClientOrigin() TPoint {
+    return BoundLabel_GetClientOrigin(b.instance)
+}
+
 // ClientRect
 func (b *TBoundLabel) ClientRect() TRect {
     return BoundLabel_GetClientRect(b.instance)
@@ -605,6 +615,26 @@ func (b *TBoundLabel) ClientWidth() int32 {
 // SetClientWidth
 func (b *TBoundLabel) SetClientWidth(value int32) {
     BoundLabel_SetClientWidth(b.instance, value)
+}
+
+// ControlState
+func (b *TBoundLabel) ControlState() TControlState {
+    return BoundLabel_GetControlState(b.instance)
+}
+
+// SetControlState
+func (b *TBoundLabel) SetControlState(value TControlState) {
+    BoundLabel_SetControlState(b.instance, value)
+}
+
+// ControlStyle
+func (b *TBoundLabel) ControlStyle() TControlStyle {
+    return BoundLabel_GetControlStyle(b.instance)
+}
+
+// SetControlStyle
+func (b *TBoundLabel) SetControlStyle(value TControlStyle) {
+    BoundLabel_SetControlStyle(b.instance, value)
 }
 
 // ExplicitLeft

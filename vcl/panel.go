@@ -106,6 +106,31 @@ func (p *TPanel) CanFocus() bool {
     return Panel_CanFocus(p.instance)
 }
 
+// ContainsControl
+func (p *TPanel) ContainsControl(Control IControl) bool {
+    return Panel_ContainsControl(p.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (p *TPanel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(Panel_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (p *TPanel) DisableAlign() {
+    Panel_DisableAlign(p.instance)
+}
+
+// EnableAlign
+func (p *TPanel) EnableAlign() {
+    Panel_EnableAlign(p.instance)
+}
+
+// FindChildControl
+func (p *TPanel) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(Panel_FindChildControl(p.instance, ControlName))
+}
+
 // FlipChildren
 func (p *TPanel) FlipChildren(AllLevels bool) {
     Panel_FlipChildren(p.instance, AllLevels)
@@ -121,9 +146,24 @@ func (p *TPanel) HandleAllocated() bool {
     return Panel_HandleAllocated(p.instance)
 }
 
+// InsertControl
+func (p *TPanel) InsertControl(AControl IControl) {
+    Panel_InsertControl(p.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (p *TPanel) Invalidate() {
     Panel_Invalidate(p.instance)
+}
+
+// PaintTo
+func (p *TPanel) PaintTo(DC HDC, X int32, Y int32) {
+    Panel_PaintTo(p.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (p *TPanel) RemoveControl(AControl IControl) {
+    Panel_RemoveControl(p.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (p *TPanel) ScaleBy(M int32, D int32) {
     Panel_ScaleBy(p.instance, M , D)
 }
 
+// ScrollBy
+func (p *TPanel) ScrollBy(DeltaX int32, DeltaY int32) {
+    Panel_ScrollBy(p.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (p *TPanel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Panel_SetBounds(p.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (p *TPanel) SetFocus() {
 // Update
 func (p *TPanel) Update() {
     Panel_Update(p.instance)
+}
+
+// UpdateControlState
+func (p *TPanel) UpdateControlState() {
+    Panel_UpdateControlState(p.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (p *TPanel) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (p *TPanel) GetTextLen() int32 {
     return Panel_GetTextLen(p.instance)
+}
+
+// SetTextBuf
+func (p *TPanel) SetTextBuf(Buffer string) {
+    Panel_SetTextBuf(p.instance, Buffer)
 }
 
 // FindComponent
@@ -626,12 +681,12 @@ func (p *TPanel) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (p *TPanel) TabOrder() uint16 {
+func (p *TPanel) TabOrder() TTabOrder {
     return Panel_GetTabOrder(p.instance)
 }
 
 // SetTabOrder
-func (p *TPanel) SetTabOrder(value uint16) {
+func (p *TPanel) SetTabOrder(value TTabOrder) {
     Panel_SetTabOrder(p.instance, value)
 }
 
@@ -766,6 +821,26 @@ func (p *TPanel) SetOnUnDock(fn TUnDockEvent) {
     Panel_SetOnUnDock(p.instance, fn)
 }
 
+// DockClientCount
+func (p *TPanel) DockClientCount() int32 {
+    return Panel_GetDockClientCount(p.instance)
+}
+
+// AlignDisabled
+func (p *TPanel) AlignDisabled() bool {
+    return Panel_GetAlignDisabled(p.instance)
+}
+
+// MouseInClient
+func (p *TPanel) MouseInClient() bool {
+    return Panel_GetMouseInClient(p.instance)
+}
+
+// VisibleDockClientCount
+func (p *TPanel) VisibleDockClientCount() int32 {
+    return Panel_GetVisibleDockClientCount(p.instance)
+}
+
 // Brush
 func (p *TPanel) Brush() *TBrush {
     return BrushFromInst(Panel_GetBrush(p.instance))
@@ -821,6 +896,11 @@ func (p *TPanel) SetClientHeight(value int32) {
     Panel_SetClientHeight(p.instance, value)
 }
 
+// ClientOrigin
+func (p *TPanel) ClientOrigin() TPoint {
+    return Panel_GetClientOrigin(p.instance)
+}
+
 // ClientRect
 func (p *TPanel) ClientRect() TRect {
     return Panel_GetClientRect(p.instance)
@@ -834,6 +914,26 @@ func (p *TPanel) ClientWidth() int32 {
 // SetClientWidth
 func (p *TPanel) SetClientWidth(value int32) {
     Panel_SetClientWidth(p.instance, value)
+}
+
+// ControlState
+func (p *TPanel) ControlState() TControlState {
+    return Panel_GetControlState(p.instance)
+}
+
+// SetControlState
+func (p *TPanel) SetControlState(value TControlState) {
+    Panel_SetControlState(p.instance, value)
+}
+
+// ControlStyle
+func (p *TPanel) ControlStyle() TControlStyle {
+    return Panel_GetControlStyle(p.instance)
+}
+
+// SetControlStyle
+func (p *TPanel) SetControlStyle(value TControlStyle) {
+    Panel_SetControlStyle(p.instance, value)
 }
 
 // ExplicitLeft
@@ -1027,6 +1127,11 @@ func (p *TPanel) Tag() int {
 // EN: Set the control tag.
 func (p *TPanel) SetTag(value int) {
     Panel_SetTag(p.instance, value)
+}
+
+// DockClients
+func (p *TPanel) DockClients(Index int32) *TControl {
+    return ControlFromInst(Panel_GetDockClients(p.instance, Index))
 }
 
 // Controls

@@ -106,6 +106,31 @@ func (t *TTabSheet) CanFocus() bool {
     return TabSheet_CanFocus(t.instance)
 }
 
+// ContainsControl
+func (t *TTabSheet) ContainsControl(Control IControl) bool {
+    return TabSheet_ContainsControl(t.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (t *TTabSheet) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(TabSheet_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (t *TTabSheet) DisableAlign() {
+    TabSheet_DisableAlign(t.instance)
+}
+
+// EnableAlign
+func (t *TTabSheet) EnableAlign() {
+    TabSheet_EnableAlign(t.instance)
+}
+
+// FindChildControl
+func (t *TTabSheet) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(TabSheet_FindChildControl(t.instance, ControlName))
+}
+
 // FlipChildren
 func (t *TTabSheet) FlipChildren(AllLevels bool) {
     TabSheet_FlipChildren(t.instance, AllLevels)
@@ -121,9 +146,24 @@ func (t *TTabSheet) HandleAllocated() bool {
     return TabSheet_HandleAllocated(t.instance)
 }
 
+// InsertControl
+func (t *TTabSheet) InsertControl(AControl IControl) {
+    TabSheet_InsertControl(t.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (t *TTabSheet) Invalidate() {
     TabSheet_Invalidate(t.instance)
+}
+
+// PaintTo
+func (t *TTabSheet) PaintTo(DC HDC, X int32, Y int32) {
+    TabSheet_PaintTo(t.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (t *TTabSheet) RemoveControl(AControl IControl) {
+    TabSheet_RemoveControl(t.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (t *TTabSheet) ScaleBy(M int32, D int32) {
     TabSheet_ScaleBy(t.instance, M , D)
 }
 
+// ScrollBy
+func (t *TTabSheet) ScrollBy(DeltaX int32, DeltaY int32) {
+    TabSheet_ScrollBy(t.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (t *TTabSheet) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     TabSheet_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (t *TTabSheet) SetFocus() {
 // Update
 func (t *TTabSheet) Update() {
     TabSheet_Update(t.instance)
+}
+
+// UpdateControlState
+func (t *TTabSheet) UpdateControlState() {
+    TabSheet_UpdateControlState(t.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (t *TTabSheet) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (t *TTabSheet) GetTextLen() int32 {
     return TabSheet_GetTextLen(t.instance)
+}
+
+// SetTextBuf
+func (t *TTabSheet) SetTextBuf(Buffer string) {
+    TabSheet_SetTextBuf(t.instance, Buffer)
 }
 
 // FindComponent
@@ -594,6 +649,11 @@ func (t *TTabSheet) SetOnShow(fn TNotifyEvent) {
     TabSheet_SetOnShow(t.instance, fn)
 }
 
+// DockClientCount
+func (t *TTabSheet) DockClientCount() int32 {
+    return TabSheet_GetDockClientCount(t.instance)
+}
+
 // DockSite
 func (t *TTabSheet) DockSite() bool {
     return TabSheet_GetDockSite(t.instance)
@@ -602,6 +662,21 @@ func (t *TTabSheet) DockSite() bool {
 // SetDockSite
 func (t *TTabSheet) SetDockSite(value bool) {
     TabSheet_SetDockSite(t.instance, value)
+}
+
+// AlignDisabled
+func (t *TTabSheet) AlignDisabled() bool {
+    return TabSheet_GetAlignDisabled(t.instance)
+}
+
+// MouseInClient
+func (t *TTabSheet) MouseInClient() bool {
+    return TabSheet_GetMouseInClient(t.instance)
+}
+
+// VisibleDockClientCount
+func (t *TTabSheet) VisibleDockClientCount() int32 {
+    return TabSheet_GetVisibleDockClientCount(t.instance)
 }
 
 // Brush
@@ -630,12 +705,12 @@ func (t *TTabSheet) SetParentWindow(value HWND) {
 }
 
 // TabOrder
-func (t *TTabSheet) TabOrder() uint16 {
+func (t *TTabSheet) TabOrder() TTabOrder {
     return TabSheet_GetTabOrder(t.instance)
 }
 
 // SetTabOrder
-func (t *TTabSheet) SetTabOrder(value uint16) {
+func (t *TTabSheet) SetTabOrder(value TTabOrder) {
     TabSheet_SetTabOrder(t.instance, value)
 }
 
@@ -719,6 +794,11 @@ func (t *TTabSheet) SetClientHeight(value int32) {
     TabSheet_SetClientHeight(t.instance, value)
 }
 
+// ClientOrigin
+func (t *TTabSheet) ClientOrigin() TPoint {
+    return TabSheet_GetClientOrigin(t.instance)
+}
+
 // ClientRect
 func (t *TTabSheet) ClientRect() TRect {
     return TabSheet_GetClientRect(t.instance)
@@ -732,6 +812,26 @@ func (t *TTabSheet) ClientWidth() int32 {
 // SetClientWidth
 func (t *TTabSheet) SetClientWidth(value int32) {
     TabSheet_SetClientWidth(t.instance, value)
+}
+
+// ControlState
+func (t *TTabSheet) ControlState() TControlState {
+    return TabSheet_GetControlState(t.instance)
+}
+
+// SetControlState
+func (t *TTabSheet) SetControlState(value TControlState) {
+    TabSheet_SetControlState(t.instance, value)
+}
+
+// ControlStyle
+func (t *TTabSheet) ControlStyle() TControlStyle {
+    return TabSheet_GetControlStyle(t.instance)
+}
+
+// SetControlStyle
+func (t *TTabSheet) SetControlStyle(value TControlStyle) {
+    TabSheet_SetControlStyle(t.instance, value)
 }
 
 // ExplicitLeft
@@ -895,6 +995,11 @@ func (t *TTabSheet) Tag() int {
 // EN: Set the control tag.
 func (t *TTabSheet) SetTag(value int) {
     TabSheet_SetTag(t.instance, value)
+}
+
+// DockClients
+func (t *TTabSheet) DockClients(Index int32) *TControl {
+    return ControlFromInst(TabSheet_GetDockClients(t.instance, Index))
 }
 
 // Controls

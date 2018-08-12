@@ -784,7 +784,7 @@ end;
 
 
 // 属性设置，这里主要提供给多语言使用
-procedure DSetPropertyValue(Instance: TObject; PropName, Value: PChar); stdcall;
+procedure DSetPropertyValue(Instance: TObject; PropName, Value: PChar); extdecl;
 var
   LPropInfo: PPropInfo;
 begin
@@ -793,7 +793,7 @@ begin
     SetStrProp(Instance, LPropInfo, Value);
 end;
 
-procedure DSetPropertySecValue(Instance: TObject; PropName, SecPropName, Value: PChar); stdcall;
+procedure DSetPropertySecValue(Instance: TObject; PropName, SecPropName, Value: PChar); extdecl;
 type
   TCallIndexGetClassProc = function(AData: Pointer; AIndex: Integer): Pointer;
 var

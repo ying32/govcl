@@ -116,6 +116,31 @@ func (c *TCategoryPanelGroup) CanFocus() bool {
     return CategoryPanelGroup_CanFocus(c.instance)
 }
 
+// ContainsControl
+func (c *TCategoryPanelGroup) ContainsControl(Control IControl) bool {
+    return CategoryPanelGroup_ContainsControl(c.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (c *TCategoryPanelGroup) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(CategoryPanelGroup_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (c *TCategoryPanelGroup) DisableAlign() {
+    CategoryPanelGroup_DisableAlign(c.instance)
+}
+
+// EnableAlign
+func (c *TCategoryPanelGroup) EnableAlign() {
+    CategoryPanelGroup_EnableAlign(c.instance)
+}
+
+// FindChildControl
+func (c *TCategoryPanelGroup) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(CategoryPanelGroup_FindChildControl(c.instance, ControlName))
+}
+
 // FlipChildren
 func (c *TCategoryPanelGroup) FlipChildren(AllLevels bool) {
     CategoryPanelGroup_FlipChildren(c.instance, AllLevels)
@@ -131,9 +156,24 @@ func (c *TCategoryPanelGroup) HandleAllocated() bool {
     return CategoryPanelGroup_HandleAllocated(c.instance)
 }
 
+// InsertControl
+func (c *TCategoryPanelGroup) InsertControl(AControl IControl) {
+    CategoryPanelGroup_InsertControl(c.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (c *TCategoryPanelGroup) Invalidate() {
     CategoryPanelGroup_Invalidate(c.instance)
+}
+
+// PaintTo
+func (c *TCategoryPanelGroup) PaintTo(DC HDC, X int32, Y int32) {
+    CategoryPanelGroup_PaintTo(c.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (c *TCategoryPanelGroup) RemoveControl(AControl IControl) {
+    CategoryPanelGroup_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -151,6 +191,11 @@ func (c *TCategoryPanelGroup) ScaleBy(M int32, D int32) {
     CategoryPanelGroup_ScaleBy(c.instance, M , D)
 }
 
+// ScrollBy
+func (c *TCategoryPanelGroup) ScrollBy(DeltaX int32, DeltaY int32) {
+    CategoryPanelGroup_ScrollBy(c.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (c *TCategoryPanelGroup) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     CategoryPanelGroup_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
@@ -164,6 +209,11 @@ func (c *TCategoryPanelGroup) SetFocus() {
 // Update
 func (c *TCategoryPanelGroup) Update() {
     CategoryPanelGroup_Update(c.instance)
+}
+
+// UpdateControlState
+func (c *TCategoryPanelGroup) UpdateControlState() {
+    CategoryPanelGroup_UpdateControlState(c.instance)
 }
 
 // BringToFront
@@ -234,6 +284,11 @@ func (c *TCategoryPanelGroup) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (c *TCategoryPanelGroup) GetTextLen() int32 {
     return CategoryPanelGroup_GetTextLen(c.instance)
+}
+
+// SetTextBuf
+func (c *TCategoryPanelGroup) SetTextBuf(Buffer string) {
+    CategoryPanelGroup_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
@@ -672,12 +727,12 @@ func (c *TCategoryPanelGroup) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (c *TCategoryPanelGroup) TabOrder() uint16 {
+func (c *TCategoryPanelGroup) TabOrder() TTabOrder {
     return CategoryPanelGroup_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
-func (c *TCategoryPanelGroup) SetTabOrder(value uint16) {
+func (c *TCategoryPanelGroup) SetTabOrder(value TTabOrder) {
     CategoryPanelGroup_SetTabOrder(c.instance, value)
 }
 
@@ -842,6 +897,26 @@ func (c *TCategoryPanelGroup) Panels() *TList {
     return ListFromInst(CategoryPanelGroup_GetPanels(c.instance))
 }
 
+// DockClientCount
+func (c *TCategoryPanelGroup) DockClientCount() int32 {
+    return CategoryPanelGroup_GetDockClientCount(c.instance)
+}
+
+// AlignDisabled
+func (c *TCategoryPanelGroup) AlignDisabled() bool {
+    return CategoryPanelGroup_GetAlignDisabled(c.instance)
+}
+
+// MouseInClient
+func (c *TCategoryPanelGroup) MouseInClient() bool {
+    return CategoryPanelGroup_GetMouseInClient(c.instance)
+}
+
+// VisibleDockClientCount
+func (c *TCategoryPanelGroup) VisibleDockClientCount() int32 {
+    return CategoryPanelGroup_GetVisibleDockClientCount(c.instance)
+}
+
 // Brush
 func (c *TCategoryPanelGroup) Brush() *TBrush {
     return BrushFromInst(CategoryPanelGroup_GetBrush(c.instance))
@@ -907,6 +982,11 @@ func (c *TCategoryPanelGroup) SetClientHeight(value int32) {
     CategoryPanelGroup_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TCategoryPanelGroup) ClientOrigin() TPoint {
+    return CategoryPanelGroup_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TCategoryPanelGroup) ClientRect() TRect {
     return CategoryPanelGroup_GetClientRect(c.instance)
@@ -920,6 +1000,26 @@ func (c *TCategoryPanelGroup) ClientWidth() int32 {
 // SetClientWidth
 func (c *TCategoryPanelGroup) SetClientWidth(value int32) {
     CategoryPanelGroup_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TCategoryPanelGroup) ControlState() TControlState {
+    return CategoryPanelGroup_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TCategoryPanelGroup) SetControlState(value TControlState) {
+    CategoryPanelGroup_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TCategoryPanelGroup) ControlStyle() TControlStyle {
+    return CategoryPanelGroup_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TCategoryPanelGroup) SetControlStyle(value TControlStyle) {
+    CategoryPanelGroup_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft
@@ -1093,6 +1193,11 @@ func (c *TCategoryPanelGroup) Tag() int {
 // EN: Set the control tag.
 func (c *TCategoryPanelGroup) SetTag(value int) {
     CategoryPanelGroup_SetTag(c.instance, value)
+}
+
+// DockClients
+func (c *TCategoryPanelGroup) DockClients(Index int32) *TControl {
+    return ControlFromInst(CategoryPanelGroup_GetDockClients(c.instance, Index))
 }
 
 // Controls

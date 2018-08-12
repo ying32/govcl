@@ -35,6 +35,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function StringGrid_ContainsControl(AObj: TStringGrid; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function StringGrid_ControlAtPos(AObj: TStringGrid; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure StringGrid_DisableAlign(AObj: TStringGrid); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure StringGrid_EnableAlign(AObj: TStringGrid); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function StringGrid_FindChildControl(AObj: TStringGrid; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure StringGrid_FlipChildren(AObj: TStringGrid; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -50,9 +75,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure StringGrid_InsertControl(AObj: TStringGrid; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure StringGrid_Invalidate(AObj: TStringGrid); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure StringGrid_RemoveControl(AObj: TStringGrid; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure StringGrid_Realign(AObj: TStringGrid); extdecl;
@@ -68,6 +103,11 @@ end;
 procedure StringGrid_ScaleBy(AObj: TStringGrid; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure StringGrid_ScrollBy(AObj: TStringGrid; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure StringGrid_SetBounds(AObj: TStringGrid; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -153,6 +193,11 @@ end;
 function StringGrid_GetTextLen(AObj: TStringGrid): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure StringGrid_SetTextBuf(AObj: TStringGrid; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function StringGrid_FindComponent(AObj: TStringGrid; AName: PChar): TComponent; extdecl;
@@ -914,6 +959,11 @@ begin
   AObj.TabStop := AValue;
 end;
 
+function StringGrid_GetDockClientCount(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function StringGrid_GetDockSite(AObj: TStringGrid): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -922,6 +972,11 @@ end;
 procedure StringGrid_SetDockSite(AObj: TStringGrid; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function StringGrid_GetVisibleDockClientCount(AObj: TStringGrid): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function StringGrid_GetBrush(AObj: TStringGrid): TBrush; extdecl;
@@ -989,6 +1044,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure StringGrid_GetClientOrigin(AObj: TStringGrid; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure StringGrid_GetClientRect(AObj: TStringGrid; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -1002,6 +1062,26 @@ end;
 procedure StringGrid_SetClientWidth(AObj: TStringGrid; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function StringGrid_GetControlState(AObj: TStringGrid): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure StringGrid_SetControlState(AObj: TStringGrid; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function StringGrid_GetControlStyle(AObj: TStringGrid): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure StringGrid_SetControlStyle(AObj: TStringGrid; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function StringGrid_GetFloating(AObj: TStringGrid): LongBool; extdecl;
@@ -1179,6 +1259,11 @@ begin
   AObj.RowHeights[Index] := AValue;
 end;
 
+function StringGrid_GetDockClients(AObj: TStringGrid; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function StringGrid_GetControls(AObj: TStringGrid; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -1201,13 +1286,21 @@ exports
   StringGrid_MouseToCell,
   StringGrid_MouseCoord,
   StringGrid_CanFocus,
+  StringGrid_ContainsControl,
+  StringGrid_ControlAtPos,
+  StringGrid_DisableAlign,
+  StringGrid_EnableAlign,
+  StringGrid_FindChildControl,
   StringGrid_FlipChildren,
   StringGrid_Focused,
   StringGrid_HandleAllocated,
+  StringGrid_InsertControl,
   StringGrid_Invalidate,
+  StringGrid_RemoveControl,
   StringGrid_Realign,
   StringGrid_Repaint,
   StringGrid_ScaleBy,
+  StringGrid_ScrollBy,
   StringGrid_SetBounds,
   StringGrid_SetFocus,
   StringGrid_Update,
@@ -1225,6 +1318,7 @@ exports
   StringGrid_Show,
   StringGrid_GetTextBuf,
   StringGrid_GetTextLen,
+  StringGrid_SetTextBuf,
   StringGrid_FindComponent,
   StringGrid_GetNamePath,
   StringGrid_Assign,
@@ -1339,8 +1433,10 @@ exports
   StringGrid_SetTopRow,
   StringGrid_GetTabStop,
   StringGrid_SetTabStop,
+  StringGrid_GetDockClientCount,
   StringGrid_GetDockSite,
   StringGrid_SetDockSite,
+  StringGrid_GetVisibleDockClientCount,
   StringGrid_GetBrush,
   StringGrid_GetControlCount,
   StringGrid_GetHandle,
@@ -1354,9 +1450,14 @@ exports
   StringGrid_SetBoundsRect,
   StringGrid_GetClientHeight,
   StringGrid_SetClientHeight,
+  StringGrid_GetClientOrigin,
   StringGrid_GetClientRect,
   StringGrid_GetClientWidth,
   StringGrid_SetClientWidth,
+  StringGrid_GetControlState,
+  StringGrid_SetControlState,
+  StringGrid_GetControlStyle,
+  StringGrid_SetControlStyle,
   StringGrid_GetFloating,
   StringGrid_GetParent,
   StringGrid_SetParent,
@@ -1392,6 +1493,7 @@ exports
   StringGrid_SetColWidths,
   StringGrid_GetRowHeights,
   StringGrid_SetRowHeights,
+  StringGrid_GetDockClients,
   StringGrid_GetControls,
   StringGrid_GetComponents,
   StringGrid_StaticClassType;

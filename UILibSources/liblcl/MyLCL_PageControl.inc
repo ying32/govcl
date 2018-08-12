@@ -30,6 +30,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function PageControl_ContainsControl(AObj: TPageControl; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function PageControl_ControlAtPos(AObj: TPageControl; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure PageControl_DisableAlign(AObj: TPageControl); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure PageControl_EnableAlign(AObj: TPageControl); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function PageControl_FindChildControl(AObj: TPageControl; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure PageControl_FlipChildren(AObj: TPageControl; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -45,9 +70,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure PageControl_InsertControl(AObj: TPageControl; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure PageControl_Invalidate(AObj: TPageControl); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure PageControl_RemoveControl(AObj: TPageControl; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure PageControl_Realign(AObj: TPageControl); extdecl;
@@ -63,6 +98,11 @@ end;
 procedure PageControl_ScaleBy(AObj: TPageControl; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure PageControl_ScrollBy(AObj: TPageControl; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure PageControl_SetBounds(AObj: TPageControl; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -148,6 +188,11 @@ end;
 function PageControl_GetTextLen(AObj: TPageControl): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure PageControl_SetTextBuf(AObj: TPageControl; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function PageControl_FindComponent(AObj: TPageControl; AName: PChar): TComponent; extdecl;
@@ -661,6 +706,16 @@ begin
   EventClass.Add(AObj, geUnDock, AEventId);
 end;
 
+function PageControl_GetDockClientCount(AObj: TPageControl): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function PageControl_GetVisibleDockClientCount(AObj: TPageControl): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function PageControl_GetBrush(AObj: TPageControl): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -726,6 +781,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure PageControl_GetClientOrigin(AObj: TPageControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure PageControl_GetClientRect(AObj: TPageControl; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -739,6 +799,26 @@ end;
 procedure PageControl_SetClientWidth(AObj: TPageControl; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function PageControl_GetControlState(AObj: TPageControl): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure PageControl_SetControlState(AObj: TPageControl; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function PageControl_GetControlStyle(AObj: TPageControl): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure PageControl_SetControlStyle(AObj: TPageControl; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function PageControl_GetFloating(AObj: TPageControl): LongBool; extdecl;
@@ -861,6 +941,11 @@ begin
   Result :=  AObj.Pages[Index];
 end;
 
+function PageControl_GetDockClients(AObj: TPageControl; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function PageControl_GetControls(AObj: TPageControl; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -882,13 +967,21 @@ exports
   PageControl_SelectNextPage,
   PageControl_TabRect,
   PageControl_CanFocus,
+  PageControl_ContainsControl,
+  PageControl_ControlAtPos,
+  PageControl_DisableAlign,
+  PageControl_EnableAlign,
+  PageControl_FindChildControl,
   PageControl_FlipChildren,
   PageControl_Focused,
   PageControl_HandleAllocated,
+  PageControl_InsertControl,
   PageControl_Invalidate,
+  PageControl_RemoveControl,
   PageControl_Realign,
   PageControl_Repaint,
   PageControl_ScaleBy,
+  PageControl_ScrollBy,
   PageControl_SetBounds,
   PageControl_SetFocus,
   PageControl_Update,
@@ -906,6 +999,7 @@ exports
   PageControl_Show,
   PageControl_GetTextBuf,
   PageControl_GetTextLen,
+  PageControl_SetTextBuf,
   PageControl_FindComponent,
   PageControl_GetNamePath,
   PageControl_Assign,
@@ -983,6 +1077,8 @@ exports
   PageControl_SetOnResize,
   PageControl_SetOnStartDock,
   PageControl_SetOnUnDock,
+  PageControl_GetDockClientCount,
+  PageControl_GetVisibleDockClientCount,
   PageControl_GetBrush,
   PageControl_GetControlCount,
   PageControl_GetHandle,
@@ -996,9 +1092,14 @@ exports
   PageControl_SetBoundsRect,
   PageControl_GetClientHeight,
   PageControl_SetClientHeight,
+  PageControl_GetClientOrigin,
   PageControl_GetClientRect,
   PageControl_GetClientWidth,
   PageControl_SetClientWidth,
+  PageControl_GetControlState,
+  PageControl_SetControlState,
+  PageControl_GetControlStyle,
+  PageControl_SetControlStyle,
   PageControl_GetFloating,
   PageControl_GetParent,
   PageControl_SetParent,
@@ -1023,6 +1124,7 @@ exports
   PageControl_GetTag,
   PageControl_SetTag,
   PageControl_GetPages,
+  PageControl_GetDockClients,
   PageControl_GetControls,
   PageControl_GetComponents,
   PageControl_StaticClassType;

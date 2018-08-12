@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function RadioGroup_ContainsControl(AObj: TRadioGroup; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function RadioGroup_ControlAtPos(AObj: TRadioGroup; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure RadioGroup_DisableAlign(AObj: TRadioGroup); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure RadioGroup_EnableAlign(AObj: TRadioGroup); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function RadioGroup_FindChildControl(AObj: TRadioGroup; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 function RadioGroup_Focused(AObj: TRadioGroup): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure RadioGroup_InsertControl(AObj: TRadioGroup; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure RadioGroup_Invalidate(AObj: TRadioGroup); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure RadioGroup_RemoveControl(AObj: TRadioGroup; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure RadioGroup_Realign(AObj: TRadioGroup); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure RadioGroup_ScaleBy(AObj: TRadioGroup; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure RadioGroup_ScrollBy(AObj: TRadioGroup; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure RadioGroup_SetBounds(AObj: TRadioGroup; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function RadioGroup_GetTextLen(AObj: TRadioGroup): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure RadioGroup_SetTextBuf(AObj: TRadioGroup; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function RadioGroup_FindComponent(AObj: TRadioGroup; AName: PChar): TComponent; extdecl;
@@ -472,6 +517,11 @@ begin
   EventClass.Add(AObj, geExit, AEventId);
 end;
 
+function RadioGroup_GetDockClientCount(AObj: TRadioGroup): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function RadioGroup_GetDockSite(AObj: TRadioGroup): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -480,6 +530,11 @@ end;
 procedure RadioGroup_SetDockSite(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function RadioGroup_GetVisibleDockClientCount(AObj: TRadioGroup): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function RadioGroup_GetBrush(AObj: TRadioGroup): TBrush; extdecl;
@@ -547,6 +602,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure RadioGroup_GetClientOrigin(AObj: TRadioGroup; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure RadioGroup_GetClientRect(AObj: TRadioGroup; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -560,6 +620,26 @@ end;
 procedure RadioGroup_SetClientWidth(AObj: TRadioGroup; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function RadioGroup_GetControlState(AObj: TRadioGroup): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure RadioGroup_SetControlState(AObj: TRadioGroup; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function RadioGroup_GetControlStyle(AObj: TRadioGroup): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure RadioGroup_SetControlStyle(AObj: TRadioGroup; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function RadioGroup_GetFloating(AObj: TRadioGroup): LongBool; extdecl;
@@ -677,6 +757,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function RadioGroup_GetDockClients(AObj: TRadioGroup; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function RadioGroup_GetControls(AObj: TRadioGroup; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -697,12 +782,20 @@ exports
   RadioGroup_Free,
   RadioGroup_FlipChildren,
   RadioGroup_CanFocus,
+  RadioGroup_ContainsControl,
+  RadioGroup_ControlAtPos,
+  RadioGroup_DisableAlign,
+  RadioGroup_EnableAlign,
+  RadioGroup_FindChildControl,
   RadioGroup_Focused,
   RadioGroup_HandleAllocated,
+  RadioGroup_InsertControl,
   RadioGroup_Invalidate,
+  RadioGroup_RemoveControl,
   RadioGroup_Realign,
   RadioGroup_Repaint,
   RadioGroup_ScaleBy,
+  RadioGroup_ScrollBy,
   RadioGroup_SetBounds,
   RadioGroup_SetFocus,
   RadioGroup_Update,
@@ -720,6 +813,7 @@ exports
   RadioGroup_Show,
   RadioGroup_GetTextBuf,
   RadioGroup_GetTextLen,
+  RadioGroup_SetTextBuf,
   RadioGroup_FindComponent,
   RadioGroup_GetNamePath,
   RadioGroup_Assign,
@@ -778,8 +872,10 @@ exports
   RadioGroup_SetOnEndDrag,
   RadioGroup_SetOnEnter,
   RadioGroup_SetOnExit,
+  RadioGroup_GetDockClientCount,
   RadioGroup_GetDockSite,
   RadioGroup_SetDockSite,
+  RadioGroup_GetVisibleDockClientCount,
   RadioGroup_GetBrush,
   RadioGroup_GetControlCount,
   RadioGroup_GetHandle,
@@ -793,9 +889,14 @@ exports
   RadioGroup_SetBoundsRect,
   RadioGroup_GetClientHeight,
   RadioGroup_SetClientHeight,
+  RadioGroup_GetClientOrigin,
   RadioGroup_GetClientRect,
   RadioGroup_GetClientWidth,
   RadioGroup_SetClientWidth,
+  RadioGroup_GetControlState,
+  RadioGroup_SetControlState,
+  RadioGroup_GetControlStyle,
+  RadioGroup_SetControlStyle,
   RadioGroup_GetFloating,
   RadioGroup_GetParent,
   RadioGroup_SetParent,
@@ -819,6 +920,7 @@ exports
   RadioGroup_SetName,
   RadioGroup_GetTag,
   RadioGroup_SetTag,
+  RadioGroup_GetDockClients,
   RadioGroup_GetControls,
   RadioGroup_GetComponents,
   RadioGroup_StaticClassType;

@@ -106,6 +106,31 @@ func (l *TLinkLabel) CanFocus() bool {
     return LinkLabel_CanFocus(l.instance)
 }
 
+// ContainsControl
+func (l *TLinkLabel) ContainsControl(Control IControl) bool {
+    return LinkLabel_ContainsControl(l.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (l *TLinkLabel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(LinkLabel_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (l *TLinkLabel) DisableAlign() {
+    LinkLabel_DisableAlign(l.instance)
+}
+
+// EnableAlign
+func (l *TLinkLabel) EnableAlign() {
+    LinkLabel_EnableAlign(l.instance)
+}
+
+// FindChildControl
+func (l *TLinkLabel) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(LinkLabel_FindChildControl(l.instance, ControlName))
+}
+
 // FlipChildren
 func (l *TLinkLabel) FlipChildren(AllLevels bool) {
     LinkLabel_FlipChildren(l.instance, AllLevels)
@@ -121,9 +146,24 @@ func (l *TLinkLabel) HandleAllocated() bool {
     return LinkLabel_HandleAllocated(l.instance)
 }
 
+// InsertControl
+func (l *TLinkLabel) InsertControl(AControl IControl) {
+    LinkLabel_InsertControl(l.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (l *TLinkLabel) Invalidate() {
     LinkLabel_Invalidate(l.instance)
+}
+
+// PaintTo
+func (l *TLinkLabel) PaintTo(DC HDC, X int32, Y int32) {
+    LinkLabel_PaintTo(l.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (l *TLinkLabel) RemoveControl(AControl IControl) {
+    LinkLabel_RemoveControl(l.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (l *TLinkLabel) ScaleBy(M int32, D int32) {
     LinkLabel_ScaleBy(l.instance, M , D)
 }
 
+// ScrollBy
+func (l *TLinkLabel) ScrollBy(DeltaX int32, DeltaY int32) {
+    LinkLabel_ScrollBy(l.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (l *TLinkLabel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     LinkLabel_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (l *TLinkLabel) SetFocus() {
 // Update
 func (l *TLinkLabel) Update() {
     LinkLabel_Update(l.instance)
+}
+
+// UpdateControlState
+func (l *TLinkLabel) UpdateControlState() {
+    LinkLabel_UpdateControlState(l.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (l *TLinkLabel) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (l *TLinkLabel) GetTextLen() int32 {
     return LinkLabel_GetTextLen(l.instance)
+}
+
+// SetTextBuf
+func (l *TLinkLabel) SetTextBuf(Buffer string) {
+    LinkLabel_SetTextBuf(l.instance, Buffer)
 }
 
 // FindComponent
@@ -506,12 +561,12 @@ func (l *TLinkLabel) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (l *TLinkLabel) TabOrder() uint16 {
+func (l *TLinkLabel) TabOrder() TTabOrder {
     return LinkLabel_GetTabOrder(l.instance)
 }
 
 // SetTabOrder
-func (l *TLinkLabel) SetTabOrder(value uint16) {
+func (l *TLinkLabel) SetTabOrder(value TTabOrder) {
     LinkLabel_SetTabOrder(l.instance, value)
 }
 
@@ -621,6 +676,11 @@ func (l *TLinkLabel) SetOnLinkClick(fn TSysLinkEvent) {
     LinkLabel_SetOnLinkClick(l.instance, fn)
 }
 
+// DockClientCount
+func (l *TLinkLabel) DockClientCount() int32 {
+    return LinkLabel_GetDockClientCount(l.instance)
+}
+
 // DockSite
 func (l *TLinkLabel) DockSite() bool {
     return LinkLabel_GetDockSite(l.instance)
@@ -639,6 +699,21 @@ func (l *TLinkLabel) DoubleBuffered() bool {
 // SetDoubleBuffered
 func (l *TLinkLabel) SetDoubleBuffered(value bool) {
     LinkLabel_SetDoubleBuffered(l.instance, value)
+}
+
+// AlignDisabled
+func (l *TLinkLabel) AlignDisabled() bool {
+    return LinkLabel_GetAlignDisabled(l.instance)
+}
+
+// MouseInClient
+func (l *TLinkLabel) MouseInClient() bool {
+    return LinkLabel_GetMouseInClient(l.instance)
+}
+
+// VisibleDockClientCount
+func (l *TLinkLabel) VisibleDockClientCount() int32 {
+    return LinkLabel_GetVisibleDockClientCount(l.instance)
 }
 
 // Brush
@@ -726,6 +801,11 @@ func (l *TLinkLabel) SetClientHeight(value int32) {
     LinkLabel_SetClientHeight(l.instance, value)
 }
 
+// ClientOrigin
+func (l *TLinkLabel) ClientOrigin() TPoint {
+    return LinkLabel_GetClientOrigin(l.instance)
+}
+
 // ClientRect
 func (l *TLinkLabel) ClientRect() TRect {
     return LinkLabel_GetClientRect(l.instance)
@@ -739,6 +819,26 @@ func (l *TLinkLabel) ClientWidth() int32 {
 // SetClientWidth
 func (l *TLinkLabel) SetClientWidth(value int32) {
     LinkLabel_SetClientWidth(l.instance, value)
+}
+
+// ControlState
+func (l *TLinkLabel) ControlState() TControlState {
+    return LinkLabel_GetControlState(l.instance)
+}
+
+// SetControlState
+func (l *TLinkLabel) SetControlState(value TControlState) {
+    LinkLabel_SetControlState(l.instance, value)
+}
+
+// ControlStyle
+func (l *TLinkLabel) ControlStyle() TControlStyle {
+    return LinkLabel_GetControlStyle(l.instance)
+}
+
+// SetControlStyle
+func (l *TLinkLabel) SetControlStyle(value TControlStyle) {
+    LinkLabel_SetControlStyle(l.instance, value)
 }
 
 // ExplicitLeft
@@ -942,6 +1042,11 @@ func (l *TLinkLabel) Tag() int {
 // EN: Set the control tag.
 func (l *TLinkLabel) SetTag(value int) {
     LinkLabel_SetTag(l.instance, value)
+}
+
+// DockClients
+func (l *TLinkLabel) DockClients(Index int32) *TControl {
+    return ControlFromInst(LinkLabel_GetDockClients(l.instance, Index))
 }
 
 // Controls

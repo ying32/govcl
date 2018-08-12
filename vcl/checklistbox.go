@@ -136,6 +136,31 @@ func (c *TCheckListBox) CanFocus() bool {
     return CheckListBox_CanFocus(c.instance)
 }
 
+// ContainsControl
+func (c *TCheckListBox) ContainsControl(Control IControl) bool {
+    return CheckListBox_ContainsControl(c.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (c *TCheckListBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(CheckListBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (c *TCheckListBox) DisableAlign() {
+    CheckListBox_DisableAlign(c.instance)
+}
+
+// EnableAlign
+func (c *TCheckListBox) EnableAlign() {
+    CheckListBox_EnableAlign(c.instance)
+}
+
+// FindChildControl
+func (c *TCheckListBox) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(CheckListBox_FindChildControl(c.instance, ControlName))
+}
+
 // FlipChildren
 func (c *TCheckListBox) FlipChildren(AllLevels bool) {
     CheckListBox_FlipChildren(c.instance, AllLevels)
@@ -151,9 +176,24 @@ func (c *TCheckListBox) HandleAllocated() bool {
     return CheckListBox_HandleAllocated(c.instance)
 }
 
+// InsertControl
+func (c *TCheckListBox) InsertControl(AControl IControl) {
+    CheckListBox_InsertControl(c.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (c *TCheckListBox) Invalidate() {
     CheckListBox_Invalidate(c.instance)
+}
+
+// PaintTo
+func (c *TCheckListBox) PaintTo(DC HDC, X int32, Y int32) {
+    CheckListBox_PaintTo(c.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (c *TCheckListBox) RemoveControl(AControl IControl) {
+    CheckListBox_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -171,6 +211,11 @@ func (c *TCheckListBox) ScaleBy(M int32, D int32) {
     CheckListBox_ScaleBy(c.instance, M , D)
 }
 
+// ScrollBy
+func (c *TCheckListBox) ScrollBy(DeltaX int32, DeltaY int32) {
+    CheckListBox_ScrollBy(c.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (c *TCheckListBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     CheckListBox_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
@@ -184,6 +229,11 @@ func (c *TCheckListBox) SetFocus() {
 // Update
 func (c *TCheckListBox) Update() {
     CheckListBox_Update(c.instance)
+}
+
+// UpdateControlState
+func (c *TCheckListBox) UpdateControlState() {
+    CheckListBox_UpdateControlState(c.instance)
 }
 
 // BringToFront
@@ -254,6 +304,11 @@ func (c *TCheckListBox) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (c *TCheckListBox) GetTextLen() int32 {
     return CheckListBox_GetTextLen(c.instance)
+}
+
+// SetTextBuf
+func (c *TCheckListBox) SetTextBuf(Buffer string) {
+    CheckListBox_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
@@ -657,12 +712,12 @@ func (c *TCheckListBox) SetStyle(value TListBoxStyle) {
 }
 
 // TabOrder
-func (c *TCheckListBox) TabOrder() uint16 {
+func (c *TCheckListBox) TabOrder() TTabOrder {
     return CheckListBox_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
-func (c *TCheckListBox) SetTabOrder(value uint16) {
+func (c *TCheckListBox) SetTabOrder(value TTabOrder) {
     CheckListBox_SetTabOrder(c.instance, value)
 }
 
@@ -852,6 +907,11 @@ func (c *TCheckListBox) SetItemIndex(value int32) {
     CheckListBox_SetItemIndex(c.instance, value)
 }
 
+// DockClientCount
+func (c *TCheckListBox) DockClientCount() int32 {
+    return CheckListBox_GetDockClientCount(c.instance)
+}
+
 // DockSite
 func (c *TCheckListBox) DockSite() bool {
     return CheckListBox_GetDockSite(c.instance)
@@ -860,6 +920,21 @@ func (c *TCheckListBox) DockSite() bool {
 // SetDockSite
 func (c *TCheckListBox) SetDockSite(value bool) {
     CheckListBox_SetDockSite(c.instance, value)
+}
+
+// AlignDisabled
+func (c *TCheckListBox) AlignDisabled() bool {
+    return CheckListBox_GetAlignDisabled(c.instance)
+}
+
+// MouseInClient
+func (c *TCheckListBox) MouseInClient() bool {
+    return CheckListBox_GetMouseInClient(c.instance)
+}
+
+// VisibleDockClientCount
+func (c *TCheckListBox) VisibleDockClientCount() int32 {
+    return CheckListBox_GetVisibleDockClientCount(c.instance)
 }
 
 // Brush
@@ -927,6 +1002,11 @@ func (c *TCheckListBox) SetClientHeight(value int32) {
     CheckListBox_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TCheckListBox) ClientOrigin() TPoint {
+    return CheckListBox_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TCheckListBox) ClientRect() TRect {
     return CheckListBox_GetClientRect(c.instance)
@@ -940,6 +1020,26 @@ func (c *TCheckListBox) ClientWidth() int32 {
 // SetClientWidth
 func (c *TCheckListBox) SetClientWidth(value int32) {
     CheckListBox_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TCheckListBox) ControlState() TControlState {
+    return CheckListBox_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TCheckListBox) SetControlState(value TControlState) {
+    CheckListBox_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TCheckListBox) ControlStyle() TControlStyle {
+    return CheckListBox_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TCheckListBox) SetControlStyle(value TControlStyle) {
+    CheckListBox_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft
@@ -1183,6 +1283,11 @@ func (c *TCheckListBox) Selected(Index int32) bool {
 // Selected
 func (c *TCheckListBox) SetSelected(Index int32, value bool) {
     CheckListBox_SetSelected(c.instance, Index, value)
+}
+
+// DockClients
+func (c *TCheckListBox) DockClients(Index int32) *TControl {
+    return ControlFromInst(CheckListBox_GetDockClients(c.instance, Index))
 }
 
 // Controls

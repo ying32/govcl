@@ -121,6 +121,31 @@ func (c *TCategoryPanel) CanFocus() bool {
     return CategoryPanel_CanFocus(c.instance)
 }
 
+// ContainsControl
+func (c *TCategoryPanel) ContainsControl(Control IControl) bool {
+    return CategoryPanel_ContainsControl(c.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (c *TCategoryPanel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(CategoryPanel_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (c *TCategoryPanel) DisableAlign() {
+    CategoryPanel_DisableAlign(c.instance)
+}
+
+// EnableAlign
+func (c *TCategoryPanel) EnableAlign() {
+    CategoryPanel_EnableAlign(c.instance)
+}
+
+// FindChildControl
+func (c *TCategoryPanel) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(CategoryPanel_FindChildControl(c.instance, ControlName))
+}
+
 // FlipChildren
 func (c *TCategoryPanel) FlipChildren(AllLevels bool) {
     CategoryPanel_FlipChildren(c.instance, AllLevels)
@@ -136,9 +161,24 @@ func (c *TCategoryPanel) HandleAllocated() bool {
     return CategoryPanel_HandleAllocated(c.instance)
 }
 
+// InsertControl
+func (c *TCategoryPanel) InsertControl(AControl IControl) {
+    CategoryPanel_InsertControl(c.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (c *TCategoryPanel) Invalidate() {
     CategoryPanel_Invalidate(c.instance)
+}
+
+// PaintTo
+func (c *TCategoryPanel) PaintTo(DC HDC, X int32, Y int32) {
+    CategoryPanel_PaintTo(c.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (c *TCategoryPanel) RemoveControl(AControl IControl) {
+    CategoryPanel_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -156,6 +196,11 @@ func (c *TCategoryPanel) ScaleBy(M int32, D int32) {
     CategoryPanel_ScaleBy(c.instance, M , D)
 }
 
+// ScrollBy
+func (c *TCategoryPanel) ScrollBy(DeltaX int32, DeltaY int32) {
+    CategoryPanel_ScrollBy(c.instance, DeltaX , DeltaY)
+}
+
 // SetFocus
 func (c *TCategoryPanel) SetFocus() {
     CategoryPanel_SetFocus(c.instance)
@@ -164,6 +209,11 @@ func (c *TCategoryPanel) SetFocus() {
 // Update
 func (c *TCategoryPanel) Update() {
     CategoryPanel_Update(c.instance)
+}
+
+// UpdateControlState
+func (c *TCategoryPanel) UpdateControlState() {
+    CategoryPanel_UpdateControlState(c.instance)
 }
 
 // BringToFront
@@ -234,6 +284,11 @@ func (c *TCategoryPanel) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (c *TCategoryPanel) GetTextLen() int32 {
     return CategoryPanel_GetTextLen(c.instance)
+}
+
+// SetTextBuf
+func (c *TCategoryPanel) SetTextBuf(Buffer string) {
+    CategoryPanel_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
@@ -616,12 +671,12 @@ func (c *TCategoryPanel) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (c *TCategoryPanel) TabOrder() uint16 {
+func (c *TCategoryPanel) TabOrder() TTabOrder {
     return CategoryPanel_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
-func (c *TCategoryPanel) SetTabOrder(value uint16) {
+func (c *TCategoryPanel) SetTabOrder(value TTabOrder) {
     CategoryPanel_SetTabOrder(c.instance, value)
 }
 
@@ -771,6 +826,26 @@ func (c *TCategoryPanel) SetPanelGroup(value IWinControl) {
     CategoryPanel_SetPanelGroup(c.instance, CheckPtr(value))
 }
 
+// DockClientCount
+func (c *TCategoryPanel) DockClientCount() int32 {
+    return CategoryPanel_GetDockClientCount(c.instance)
+}
+
+// AlignDisabled
+func (c *TCategoryPanel) AlignDisabled() bool {
+    return CategoryPanel_GetAlignDisabled(c.instance)
+}
+
+// MouseInClient
+func (c *TCategoryPanel) MouseInClient() bool {
+    return CategoryPanel_GetMouseInClient(c.instance)
+}
+
+// VisibleDockClientCount
+func (c *TCategoryPanel) VisibleDockClientCount() int32 {
+    return CategoryPanel_GetVisibleDockClientCount(c.instance)
+}
+
 // Brush
 func (c *TCategoryPanel) Brush() *TBrush {
     return BrushFromInst(CategoryPanel_GetBrush(c.instance))
@@ -846,6 +921,11 @@ func (c *TCategoryPanel) SetClientHeight(value int32) {
     CategoryPanel_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TCategoryPanel) ClientOrigin() TPoint {
+    return CategoryPanel_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TCategoryPanel) ClientRect() TRect {
     return CategoryPanel_GetClientRect(c.instance)
@@ -859,6 +939,26 @@ func (c *TCategoryPanel) ClientWidth() int32 {
 // SetClientWidth
 func (c *TCategoryPanel) SetClientWidth(value int32) {
     CategoryPanel_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TCategoryPanel) ControlState() TControlState {
+    return CategoryPanel_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TCategoryPanel) SetControlState(value TControlState) {
+    CategoryPanel_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TCategoryPanel) ControlStyle() TControlStyle {
+    return CategoryPanel_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TCategoryPanel) SetControlStyle(value TControlStyle) {
+    CategoryPanel_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft
@@ -1022,6 +1122,11 @@ func (c *TCategoryPanel) Tag() int {
 // EN: Set the control tag.
 func (c *TCategoryPanel) SetTag(value int) {
     CategoryPanel_SetTag(c.instance, value)
+}
+
+// DockClients
+func (c *TCategoryPanel) DockClients(Index int32) *TControl {
+    return ControlFromInst(CategoryPanel_GetDockClients(c.instance, Index))
 }
 
 // Controls

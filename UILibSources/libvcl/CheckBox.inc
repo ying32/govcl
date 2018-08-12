@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function CheckBox_ContainsControl(AObj: TCheckBox; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function CheckBox_ControlAtPos(AObj: TCheckBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure CheckBox_DisableAlign(AObj: TCheckBox); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure CheckBox_EnableAlign(AObj: TCheckBox); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function CheckBox_FindChildControl(AObj: TCheckBox; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure CheckBox_FlipChildren(AObj: TCheckBox; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure CheckBox_InsertControl(AObj: TCheckBox; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure CheckBox_Invalidate(AObj: TCheckBox); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure CheckBox_PaintTo(AObj: TCheckBox; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure CheckBox_RemoveControl(AObj: TCheckBox; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure CheckBox_Realign(AObj: TCheckBox); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure CheckBox_ScrollBy(AObj: TCheckBox; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure CheckBox_SetBounds(AObj: TCheckBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure CheckBox_Update(AObj: TCheckBox); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure CheckBox_UpdateControlState(AObj: TCheckBox); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure CheckBox_BringToFront(AObj: TCheckBox); stdcall;
@@ -138,6 +188,11 @@ end;
 function CheckBox_GetTextLen(AObj: TCheckBox): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure CheckBox_SetTextBuf(AObj: TCheckBox; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function CheckBox_FindComponent(AObj: TCheckBox; AName: PChar): TComponent; stdcall;
@@ -679,6 +734,11 @@ begin
   TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
+function CheckBox_GetDockClientCount(AObj: TCheckBox): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function CheckBox_GetDockSite(AObj: TCheckBox): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -687,6 +747,21 @@ end;
 procedure CheckBox_SetDockSite(AObj: TCheckBox; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function CheckBox_GetAlignDisabled(AObj: TCheckBox): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function CheckBox_GetMouseInClient(AObj: TCheckBox): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function CheckBox_GetVisibleDockClientCount(AObj: TCheckBox): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function CheckBox_GetBrush(AObj: TCheckBox): TBrush; stdcall;
@@ -744,6 +819,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure CheckBox_GetClientOrigin(AObj: TCheckBox; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure CheckBox_GetClientRect(AObj: TCheckBox; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -757,6 +837,26 @@ end;
 procedure CheckBox_SetClientWidth(AObj: TCheckBox; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function CheckBox_GetControlState(AObj: TCheckBox): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure CheckBox_SetControlState(AObj: TCheckBox; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function CheckBox_GetControlStyle(AObj: TCheckBox): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure CheckBox_SetControlStyle(AObj: TCheckBox; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function CheckBox_GetExplicitLeft(AObj: TCheckBox): Integer; stdcall;
@@ -924,6 +1024,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function CheckBox_GetDockClients(AObj: TCheckBox; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function CheckBox_GetControls(AObj: TCheckBox; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -943,16 +1048,26 @@ exports
   CheckBox_Create,
   CheckBox_Free,
   CheckBox_CanFocus,
+  CheckBox_ContainsControl,
+  CheckBox_ControlAtPos,
+  CheckBox_DisableAlign,
+  CheckBox_EnableAlign,
+  CheckBox_FindChildControl,
   CheckBox_FlipChildren,
   CheckBox_Focused,
   CheckBox_HandleAllocated,
+  CheckBox_InsertControl,
   CheckBox_Invalidate,
+  CheckBox_PaintTo,
+  CheckBox_RemoveControl,
   CheckBox_Realign,
   CheckBox_Repaint,
   CheckBox_ScaleBy,
+  CheckBox_ScrollBy,
   CheckBox_SetBounds,
   CheckBox_SetFocus,
   CheckBox_Update,
+  CheckBox_UpdateControlState,
   CheckBox_BringToFront,
   CheckBox_ClientToScreen,
   CheckBox_ClientToParent,
@@ -967,6 +1082,7 @@ exports
   CheckBox_Show,
   CheckBox_GetTextBuf,
   CheckBox_GetTextLen,
+  CheckBox_SetTextBuf,
   CheckBox_FindComponent,
   CheckBox_GetNamePath,
   CheckBox_Assign,
@@ -1051,8 +1167,12 @@ exports
   CheckBox_SetOnMouseMove,
   CheckBox_SetOnMouseUp,
   CheckBox_SetOnStartDock,
+  CheckBox_GetDockClientCount,
   CheckBox_GetDockSite,
   CheckBox_SetDockSite,
+  CheckBox_GetAlignDisabled,
+  CheckBox_GetMouseInClient,
+  CheckBox_GetVisibleDockClientCount,
   CheckBox_GetBrush,
   CheckBox_GetControlCount,
   CheckBox_GetHandle,
@@ -1064,9 +1184,14 @@ exports
   CheckBox_SetBoundsRect,
   CheckBox_GetClientHeight,
   CheckBox_SetClientHeight,
+  CheckBox_GetClientOrigin,
   CheckBox_GetClientRect,
   CheckBox_GetClientWidth,
   CheckBox_SetClientWidth,
+  CheckBox_GetControlState,
+  CheckBox_SetControlState,
+  CheckBox_GetControlStyle,
+  CheckBox_SetControlStyle,
   CheckBox_GetExplicitLeft,
   CheckBox_GetExplicitTop,
   CheckBox_GetExplicitWidth,
@@ -1100,6 +1225,7 @@ exports
   CheckBox_SetName,
   CheckBox_GetTag,
   CheckBox_SetTag,
+  CheckBox_GetDockClients,
   CheckBox_GetControls,
   CheckBox_GetComponents,
   CheckBox_StaticClassType;

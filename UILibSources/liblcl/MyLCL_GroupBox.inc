@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function GroupBox_ContainsControl(AObj: TGroupBox; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function GroupBox_ControlAtPos(AObj: TGroupBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure GroupBox_DisableAlign(AObj: TGroupBox); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure GroupBox_EnableAlign(AObj: TGroupBox); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function GroupBox_FindChildControl(AObj: TGroupBox; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure GroupBox_FlipChildren(AObj: TGroupBox; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure GroupBox_InsertControl(AObj: TGroupBox; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure GroupBox_Invalidate(AObj: TGroupBox); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure GroupBox_RemoveControl(AObj: TGroupBox; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure GroupBox_Realign(AObj: TGroupBox); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure GroupBox_ScaleBy(AObj: TGroupBox; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure GroupBox_ScrollBy(AObj: TGroupBox; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure GroupBox_SetBounds(AObj: TGroupBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function GroupBox_GetTextLen(AObj: TGroupBox): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure GroupBox_SetTextBuf(AObj: TGroupBox; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function GroupBox_FindComponent(AObj: TGroupBox; AName: PChar): TComponent; extdecl;
@@ -606,6 +651,16 @@ begin
   EventClass.Add(AObj, geUnDock, AEventId);
 end;
 
+function GroupBox_GetDockClientCount(AObj: TGroupBox): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function GroupBox_GetVisibleDockClientCount(AObj: TGroupBox): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function GroupBox_GetBrush(AObj: TGroupBox): TBrush; extdecl;
 begin
   Result :=  AObj.Brush;
@@ -671,6 +726,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure GroupBox_GetClientOrigin(AObj: TGroupBox; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure GroupBox_GetClientRect(AObj: TGroupBox; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -684,6 +744,26 @@ end;
 procedure GroupBox_SetClientWidth(AObj: TGroupBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function GroupBox_GetControlState(AObj: TGroupBox): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure GroupBox_SetControlState(AObj: TGroupBox; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function GroupBox_GetControlStyle(AObj: TGroupBox): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure GroupBox_SetControlStyle(AObj: TGroupBox; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function GroupBox_GetFloating(AObj: TGroupBox): LongBool; extdecl;
@@ -801,6 +881,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function GroupBox_GetDockClients(AObj: TGroupBox; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function GroupBox_GetControls(AObj: TGroupBox; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -820,13 +905,21 @@ exports
   GroupBox_Create,
   GroupBox_Free,
   GroupBox_CanFocus,
+  GroupBox_ContainsControl,
+  GroupBox_ControlAtPos,
+  GroupBox_DisableAlign,
+  GroupBox_EnableAlign,
+  GroupBox_FindChildControl,
   GroupBox_FlipChildren,
   GroupBox_Focused,
   GroupBox_HandleAllocated,
+  GroupBox_InsertControl,
   GroupBox_Invalidate,
+  GroupBox_RemoveControl,
   GroupBox_Realign,
   GroupBox_Repaint,
   GroupBox_ScaleBy,
+  GroupBox_ScrollBy,
   GroupBox_SetBounds,
   GroupBox_SetFocus,
   GroupBox_Update,
@@ -844,6 +937,7 @@ exports
   GroupBox_Show,
   GroupBox_GetTextBuf,
   GroupBox_GetTextLen,
+  GroupBox_SetTextBuf,
   GroupBox_FindComponent,
   GroupBox_GetNamePath,
   GroupBox_Assign,
@@ -912,6 +1006,8 @@ exports
   GroupBox_SetOnMouseUp,
   GroupBox_SetOnStartDock,
   GroupBox_SetOnUnDock,
+  GroupBox_GetDockClientCount,
+  GroupBox_GetVisibleDockClientCount,
   GroupBox_GetBrush,
   GroupBox_GetControlCount,
   GroupBox_GetHandle,
@@ -925,9 +1021,14 @@ exports
   GroupBox_SetBoundsRect,
   GroupBox_GetClientHeight,
   GroupBox_SetClientHeight,
+  GroupBox_GetClientOrigin,
   GroupBox_GetClientRect,
   GroupBox_GetClientWidth,
   GroupBox_SetClientWidth,
+  GroupBox_GetControlState,
+  GroupBox_SetControlState,
+  GroupBox_GetControlStyle,
+  GroupBox_SetControlStyle,
   GroupBox_GetFloating,
   GroupBox_GetParent,
   GroupBox_SetParent,
@@ -951,6 +1052,7 @@ exports
   GroupBox_SetName,
   GroupBox_GetTag,
   GroupBox_SetTag,
+  GroupBox_GetDockClients,
   GroupBox_GetControls,
   GroupBox_GetComponents,
   GroupBox_StaticClassType;

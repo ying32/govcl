@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function Panel_ContainsControl(AObj: TPanel; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function Panel_ControlAtPos(AObj: TPanel; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure Panel_DisableAlign(AObj: TPanel); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure Panel_EnableAlign(AObj: TPanel); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function Panel_FindChildControl(AObj: TPanel; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure Panel_FlipChildren(AObj: TPanel; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure Panel_InsertControl(AObj: TPanel; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure Panel_Invalidate(AObj: TPanel); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure Panel_PaintTo(AObj: TPanel; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure Panel_RemoveControl(AObj: TPanel; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure Panel_Realign(AObj: TPanel); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure Panel_ScrollBy(AObj: TPanel; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure Panel_SetBounds(AObj: TPanel; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure Panel_Update(AObj: TPanel); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure Panel_UpdateControlState(AObj: TPanel); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure Panel_BringToFront(AObj: TPanel); stdcall;
@@ -138,6 +188,11 @@ end;
 function Panel_GetTextLen(AObj: TPanel): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure Panel_SetTextBuf(AObj: TPanel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function Panel_FindComponent(AObj: TPanel; AName: PChar): TComponent; stdcall;
@@ -783,6 +838,26 @@ begin
   TEventClass.Add(AObj, geUnDock, AEventId);
 end;
 
+function Panel_GetDockClientCount(AObj: TPanel): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function Panel_GetAlignDisabled(AObj: TPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function Panel_GetMouseInClient(AObj: TPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function Panel_GetVisibleDockClientCount(AObj: TPanel): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function Panel_GetBrush(AObj: TPanel): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -838,6 +913,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Panel_GetClientOrigin(AObj: TPanel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Panel_GetClientRect(AObj: TPanel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -851,6 +931,26 @@ end;
 procedure Panel_SetClientWidth(AObj: TPanel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Panel_GetControlState(AObj: TPanel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Panel_SetControlState(AObj: TPanel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Panel_GetControlStyle(AObj: TPanel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Panel_SetControlStyle(AObj: TPanel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Panel_GetExplicitLeft(AObj: TPanel): Integer; stdcall;
@@ -1018,6 +1118,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Panel_GetDockClients(AObj: TPanel; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function Panel_GetControls(AObj: TPanel; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1037,16 +1142,26 @@ exports
   Panel_Create,
   Panel_Free,
   Panel_CanFocus,
+  Panel_ContainsControl,
+  Panel_ControlAtPos,
+  Panel_DisableAlign,
+  Panel_EnableAlign,
+  Panel_FindChildControl,
   Panel_FlipChildren,
   Panel_Focused,
   Panel_HandleAllocated,
+  Panel_InsertControl,
   Panel_Invalidate,
+  Panel_PaintTo,
+  Panel_RemoveControl,
   Panel_Realign,
   Panel_Repaint,
   Panel_ScaleBy,
+  Panel_ScrollBy,
   Panel_SetBounds,
   Panel_SetFocus,
   Panel_Update,
+  Panel_UpdateControlState,
   Panel_BringToFront,
   Panel_ClientToScreen,
   Panel_ClientToParent,
@@ -1061,6 +1176,7 @@ exports
   Panel_Show,
   Panel_GetTextBuf,
   Panel_GetTextLen,
+  Panel_SetTextBuf,
   Panel_FindComponent,
   Panel_GetNamePath,
   Panel_Assign,
@@ -1163,6 +1279,10 @@ exports
   Panel_SetOnResize,
   Panel_SetOnStartDock,
   Panel_SetOnUnDock,
+  Panel_GetDockClientCount,
+  Panel_GetAlignDisabled,
+  Panel_GetMouseInClient,
+  Panel_GetVisibleDockClientCount,
   Panel_GetBrush,
   Panel_GetControlCount,
   Panel_GetHandle,
@@ -1174,9 +1294,14 @@ exports
   Panel_SetBoundsRect,
   Panel_GetClientHeight,
   Panel_SetClientHeight,
+  Panel_GetClientOrigin,
   Panel_GetClientRect,
   Panel_GetClientWidth,
   Panel_SetClientWidth,
+  Panel_GetControlState,
+  Panel_SetControlState,
+  Panel_GetControlStyle,
+  Panel_SetControlStyle,
   Panel_GetExplicitLeft,
   Panel_GetExplicitTop,
   Panel_GetExplicitWidth,
@@ -1210,6 +1335,7 @@ exports
   Panel_SetName,
   Panel_GetTag,
   Panel_SetTag,
+  Panel_GetDockClients,
   Panel_GetControls,
   Panel_GetComponents,
   Panel_StaticClassType;

@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure BoundLabel_SetTextBuf(AObj: TBoundLabel; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function BoundLabel_FindComponent(AObj: TBoundLabel; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -486,6 +491,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure BoundLabel_GetClientOrigin(AObj: TBoundLabel; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure BoundLabel_GetClientRect(AObj: TBoundLabel; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -499,6 +509,26 @@ end;
 procedure BoundLabel_SetClientWidth(AObj: TBoundLabel; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function BoundLabel_GetControlState(AObj: TBoundLabel): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure BoundLabel_SetControlState(AObj: TBoundLabel; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function BoundLabel_GetControlStyle(AObj: TBoundLabel): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure BoundLabel_SetControlStyle(AObj: TBoundLabel; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function BoundLabel_GetFloating(AObj: TBoundLabel): LongBool; extdecl;
@@ -617,6 +647,7 @@ exports
   BoundLabel_Update,
   BoundLabel_GetTextBuf,
   BoundLabel_GetTextLen,
+  BoundLabel_SetTextBuf,
   BoundLabel_FindComponent,
   BoundLabel_GetNamePath,
   BoundLabel_Assign,
@@ -682,9 +713,14 @@ exports
   BoundLabel_SetBoundsRect,
   BoundLabel_GetClientHeight,
   BoundLabel_SetClientHeight,
+  BoundLabel_GetClientOrigin,
   BoundLabel_GetClientRect,
   BoundLabel_GetClientWidth,
   BoundLabel_SetClientWidth,
+  BoundLabel_GetControlState,
+  BoundLabel_SetControlState,
+  BoundLabel_GetControlStyle,
+  BoundLabel_SetControlStyle,
   BoundLabel_GetFloating,
   BoundLabel_GetVisible,
   BoundLabel_SetVisible,

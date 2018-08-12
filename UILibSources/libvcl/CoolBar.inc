@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function CoolBar_ContainsControl(AObj: TCoolBar; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function CoolBar_ControlAtPos(AObj: TCoolBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure CoolBar_DisableAlign(AObj: TCoolBar); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure CoolBar_EnableAlign(AObj: TCoolBar); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function CoolBar_FindChildControl(AObj: TCoolBar; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 function CoolBar_Focused(AObj: TCoolBar): LongBool; stdcall;
 begin
   Result :=  AObj.Focused;
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure CoolBar_InsertControl(AObj: TCoolBar; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure CoolBar_Invalidate(AObj: TCoolBar); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure CoolBar_PaintTo(AObj: TCoolBar; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure CoolBar_RemoveControl(AObj: TCoolBar; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure CoolBar_Realign(AObj: TCoolBar); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure CoolBar_ScrollBy(AObj: TCoolBar; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure CoolBar_SetBounds(AObj: TCoolBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure CoolBar_Update(AObj: TCoolBar); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure CoolBar_UpdateControlState(AObj: TCoolBar); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure CoolBar_BringToFront(AObj: TCoolBar); stdcall;
@@ -138,6 +188,11 @@ end;
 function CoolBar_GetTextLen(AObj: TCoolBar): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure CoolBar_SetTextBuf(AObj: TCoolBar; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function CoolBar_FindComponent(AObj: TCoolBar; AName: PChar): TComponent; stdcall;
@@ -731,6 +786,26 @@ begin
   TEventClass.Add(AObj, geUnDock, AEventId);
 end;
 
+function CoolBar_GetDockClientCount(AObj: TCoolBar): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function CoolBar_GetAlignDisabled(AObj: TCoolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function CoolBar_GetMouseInClient(AObj: TCoolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function CoolBar_GetVisibleDockClientCount(AObj: TCoolBar): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function CoolBar_GetBrush(AObj: TCoolBar): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -826,6 +901,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure CoolBar_GetClientOrigin(AObj: TCoolBar; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure CoolBar_GetClientRect(AObj: TCoolBar; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -839,6 +919,26 @@ end;
 procedure CoolBar_SetClientWidth(AObj: TCoolBar; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function CoolBar_GetControlState(AObj: TCoolBar): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure CoolBar_SetControlState(AObj: TCoolBar; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function CoolBar_GetControlStyle(AObj: TCoolBar): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure CoolBar_SetControlStyle(AObj: TCoolBar; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function CoolBar_GetExplicitLeft(AObj: TCoolBar): Integer; stdcall;
@@ -1006,6 +1106,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function CoolBar_GetDockClients(AObj: TCoolBar; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function CoolBar_GetControls(AObj: TCoolBar; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1026,15 +1131,25 @@ exports
   CoolBar_Free,
   CoolBar_FlipChildren,
   CoolBar_CanFocus,
+  CoolBar_ContainsControl,
+  CoolBar_ControlAtPos,
+  CoolBar_DisableAlign,
+  CoolBar_EnableAlign,
+  CoolBar_FindChildControl,
   CoolBar_Focused,
   CoolBar_HandleAllocated,
+  CoolBar_InsertControl,
   CoolBar_Invalidate,
+  CoolBar_PaintTo,
+  CoolBar_RemoveControl,
   CoolBar_Realign,
   CoolBar_Repaint,
   CoolBar_ScaleBy,
+  CoolBar_ScrollBy,
   CoolBar_SetBounds,
   CoolBar_SetFocus,
   CoolBar_Update,
+  CoolBar_UpdateControlState,
   CoolBar_BringToFront,
   CoolBar_ClientToScreen,
   CoolBar_ClientToParent,
@@ -1049,6 +1164,7 @@ exports
   CoolBar_Show,
   CoolBar_GetTextBuf,
   CoolBar_GetTextLen,
+  CoolBar_SetTextBuf,
   CoolBar_FindComponent,
   CoolBar_GetNamePath,
   CoolBar_Assign,
@@ -1142,6 +1258,10 @@ exports
   CoolBar_SetOnResize,
   CoolBar_SetOnStartDock,
   CoolBar_SetOnUnDock,
+  CoolBar_GetDockClientCount,
+  CoolBar_GetAlignDisabled,
+  CoolBar_GetMouseInClient,
+  CoolBar_GetVisibleDockClientCount,
   CoolBar_GetBrush,
   CoolBar_GetControlCount,
   CoolBar_GetHandle,
@@ -1161,9 +1281,14 @@ exports
   CoolBar_SetBoundsRect,
   CoolBar_GetClientHeight,
   CoolBar_SetClientHeight,
+  CoolBar_GetClientOrigin,
   CoolBar_GetClientRect,
   CoolBar_GetClientWidth,
   CoolBar_SetClientWidth,
+  CoolBar_GetControlState,
+  CoolBar_SetControlState,
+  CoolBar_GetControlStyle,
+  CoolBar_SetControlStyle,
   CoolBar_GetExplicitLeft,
   CoolBar_GetExplicitTop,
   CoolBar_GetExplicitWidth,
@@ -1197,6 +1322,7 @@ exports
   CoolBar_SetName,
   CoolBar_GetTag,
   CoolBar_SetTag,
+  CoolBar_GetDockClients,
   CoolBar_GetControls,
   CoolBar_GetComponents,
   CoolBar_StaticClassType;

@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Bevel_SetTextBuf(AObj: TBevel; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Bevel_FindComponent(AObj: TBevel; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -275,6 +280,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Bevel_GetClientOrigin(AObj: TBevel; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Bevel_GetClientRect(AObj: TBevel; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -288,6 +298,26 @@ end;
 procedure Bevel_SetClientWidth(AObj: TBevel; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Bevel_GetControlState(AObj: TBevel): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Bevel_SetControlState(AObj: TBevel; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Bevel_GetControlStyle(AObj: TBevel): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Bevel_SetControlStyle(AObj: TBevel; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Bevel_GetFloating(AObj: TBevel): LongBool; extdecl;
@@ -436,6 +466,7 @@ exports
   Bevel_Update,
   Bevel_GetTextBuf,
   Bevel_GetTextLen,
+  Bevel_SetTextBuf,
   Bevel_FindComponent,
   Bevel_GetNamePath,
   Bevel_Assign,
@@ -470,9 +501,14 @@ exports
   Bevel_SetBoundsRect,
   Bevel_GetClientHeight,
   Bevel_SetClientHeight,
+  Bevel_GetClientOrigin,
   Bevel_GetClientRect,
   Bevel_GetClientWidth,
   Bevel_SetClientWidth,
+  Bevel_GetControlState,
+  Bevel_SetControlState,
+  Bevel_GetControlStyle,
+  Bevel_SetControlStyle,
   Bevel_GetFloating,
   Bevel_GetParent,
   Bevel_SetParent,

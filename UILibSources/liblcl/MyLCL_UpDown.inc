@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function UpDown_ContainsControl(AObj: TUpDown; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function UpDown_ControlAtPos(AObj: TUpDown; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure UpDown_DisableAlign(AObj: TUpDown); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure UpDown_EnableAlign(AObj: TUpDown); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function UpDown_FindChildControl(AObj: TUpDown; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure UpDown_FlipChildren(AObj: TUpDown; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure UpDown_InsertControl(AObj: TUpDown; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure UpDown_Invalidate(AObj: TUpDown); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure UpDown_RemoveControl(AObj: TUpDown; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure UpDown_Realign(AObj: TUpDown); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure UpDown_ScaleBy(AObj: TUpDown; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure UpDown_ScrollBy(AObj: TUpDown; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure UpDown_SetBounds(AObj: TUpDown; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function UpDown_GetTextLen(AObj: TUpDown): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure UpDown_SetTextBuf(AObj: TUpDown; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function UpDown_FindComponent(AObj: TUpDown; AName: PChar): TComponent; extdecl;
@@ -448,6 +493,11 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function UpDown_GetDockClientCount(AObj: TUpDown): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function UpDown_GetDockSite(AObj: TUpDown): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -456,6 +506,11 @@ end;
 procedure UpDown_SetDockSite(AObj: TUpDown; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function UpDown_GetVisibleDockClientCount(AObj: TUpDown): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function UpDown_GetBrush(AObj: TUpDown): TBrush; extdecl;
@@ -543,6 +598,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure UpDown_GetClientOrigin(AObj: TUpDown; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure UpDown_GetClientRect(AObj: TUpDown; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -556,6 +616,26 @@ end;
 procedure UpDown_SetClientWidth(AObj: TUpDown; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function UpDown_GetControlState(AObj: TUpDown): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure UpDown_SetControlState(AObj: TUpDown; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function UpDown_GetControlStyle(AObj: TUpDown): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure UpDown_SetControlStyle(AObj: TUpDown; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function UpDown_GetFloating(AObj: TUpDown): LongBool; extdecl;
@@ -663,6 +743,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function UpDown_GetDockClients(AObj: TUpDown; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function UpDown_GetControls(AObj: TUpDown; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -682,13 +767,21 @@ exports
   UpDown_Create,
   UpDown_Free,
   UpDown_CanFocus,
+  UpDown_ContainsControl,
+  UpDown_ControlAtPos,
+  UpDown_DisableAlign,
+  UpDown_EnableAlign,
+  UpDown_FindChildControl,
   UpDown_FlipChildren,
   UpDown_Focused,
   UpDown_HandleAllocated,
+  UpDown_InsertControl,
   UpDown_Invalidate,
+  UpDown_RemoveControl,
   UpDown_Realign,
   UpDown_Repaint,
   UpDown_ScaleBy,
+  UpDown_ScrollBy,
   UpDown_SetBounds,
   UpDown_SetFocus,
   UpDown_Update,
@@ -706,6 +799,7 @@ exports
   UpDown_Show,
   UpDown_GetTextBuf,
   UpDown_GetTextLen,
+  UpDown_SetTextBuf,
   UpDown_FindComponent,
   UpDown_GetNamePath,
   UpDown_Assign,
@@ -755,8 +849,10 @@ exports
   UpDown_SetOnMouseLeave,
   UpDown_SetOnMouseMove,
   UpDown_SetOnMouseUp,
+  UpDown_GetDockClientCount,
   UpDown_GetDockSite,
   UpDown_SetDockSite,
+  UpDown_GetVisibleDockClientCount,
   UpDown_GetBrush,
   UpDown_GetControlCount,
   UpDown_GetHandle,
@@ -774,9 +870,14 @@ exports
   UpDown_SetBoundsRect,
   UpDown_GetClientHeight,
   UpDown_SetClientHeight,
+  UpDown_GetClientOrigin,
   UpDown_GetClientRect,
   UpDown_GetClientWidth,
   UpDown_SetClientWidth,
+  UpDown_GetControlState,
+  UpDown_SetControlState,
+  UpDown_GetControlStyle,
+  UpDown_SetControlStyle,
   UpDown_GetFloating,
   UpDown_GetParent,
   UpDown_SetParent,
@@ -798,6 +899,7 @@ exports
   UpDown_SetName,
   UpDown_GetTag,
   UpDown_SetTag,
+  UpDown_GetDockClients,
   UpDown_GetControls,
   UpDown_GetComponents,
   UpDown_StaticClassType;

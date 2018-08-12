@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Image_SetTextBuf(AObj: TImage; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Image_FindComponent(AObj: TImage; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -470,6 +475,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Image_GetClientOrigin(AObj: TImage; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Image_GetClientRect(AObj: TImage; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -483,6 +493,26 @@ end;
 procedure Image_SetClientWidth(AObj: TImage; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Image_GetControlState(AObj: TImage): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Image_SetControlState(AObj: TImage; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Image_GetControlStyle(AObj: TImage): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Image_SetControlStyle(AObj: TImage; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Image_GetFloating(AObj: TImage): LongBool; extdecl;
@@ -631,6 +661,7 @@ exports
   Image_Update,
   Image_GetTextBuf,
   Image_GetTextLen,
+  Image_SetTextBuf,
   Image_FindComponent,
   Image_GetNamePath,
   Image_Assign,
@@ -690,9 +721,14 @@ exports
   Image_SetBoundsRect,
   Image_GetClientHeight,
   Image_SetClientHeight,
+  Image_GetClientOrigin,
   Image_GetClientRect,
   Image_GetClientWidth,
   Image_SetClientWidth,
+  Image_GetControlState,
+  Image_SetControlState,
+  Image_GetControlStyle,
+  Image_SetControlStyle,
   Image_GetFloating,
   Image_GetParent,
   Image_SetParent,

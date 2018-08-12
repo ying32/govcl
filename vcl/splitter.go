@@ -191,6 +191,11 @@ func (s *TSplitter) GetTextLen() int32 {
     return Splitter_GetTextLen(s.instance)
 }
 
+// SetTextBuf
+func (s *TSplitter) SetTextBuf(Buffer string) {
+    Splitter_SetTextBuf(s.instance, Buffer)
+}
+
 // FindComponent
 func (s *TSplitter) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Splitter_FindComponent(s.instance, AName))
@@ -414,6 +419,11 @@ func (s *TSplitter) SetClientHeight(value int32) {
     Splitter_SetClientHeight(s.instance, value)
 }
 
+// ClientOrigin
+func (s *TSplitter) ClientOrigin() TPoint {
+    return Splitter_GetClientOrigin(s.instance)
+}
+
 // ClientRect
 func (s *TSplitter) ClientRect() TRect {
     return Splitter_GetClientRect(s.instance)
@@ -427,6 +437,26 @@ func (s *TSplitter) ClientWidth() int32 {
 // SetClientWidth
 func (s *TSplitter) SetClientWidth(value int32) {
     Splitter_SetClientWidth(s.instance, value)
+}
+
+// ControlState
+func (s *TSplitter) ControlState() TControlState {
+    return Splitter_GetControlState(s.instance)
+}
+
+// SetControlState
+func (s *TSplitter) SetControlState(value TControlState) {
+    Splitter_SetControlState(s.instance, value)
+}
+
+// ControlStyle
+func (s *TSplitter) ControlStyle() TControlStyle {
+    return Splitter_GetControlStyle(s.instance)
+}
+
+// SetControlStyle
+func (s *TSplitter) SetControlStyle(value TControlStyle) {
+    Splitter_SetControlStyle(s.instance, value)
 }
 
 // ExplicitLeft

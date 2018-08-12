@@ -131,6 +131,31 @@ func (l *TListBox) CanFocus() bool {
     return ListBox_CanFocus(l.instance)
 }
 
+// ContainsControl
+func (l *TListBox) ContainsControl(Control IControl) bool {
+    return ListBox_ContainsControl(l.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (l *TListBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ListBox_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (l *TListBox) DisableAlign() {
+    ListBox_DisableAlign(l.instance)
+}
+
+// EnableAlign
+func (l *TListBox) EnableAlign() {
+    ListBox_EnableAlign(l.instance)
+}
+
+// FindChildControl
+func (l *TListBox) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ListBox_FindChildControl(l.instance, ControlName))
+}
+
 // FlipChildren
 func (l *TListBox) FlipChildren(AllLevels bool) {
     ListBox_FlipChildren(l.instance, AllLevels)
@@ -146,9 +171,24 @@ func (l *TListBox) HandleAllocated() bool {
     return ListBox_HandleAllocated(l.instance)
 }
 
+// InsertControl
+func (l *TListBox) InsertControl(AControl IControl) {
+    ListBox_InsertControl(l.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (l *TListBox) Invalidate() {
     ListBox_Invalidate(l.instance)
+}
+
+// PaintTo
+func (l *TListBox) PaintTo(DC HDC, X int32, Y int32) {
+    ListBox_PaintTo(l.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (l *TListBox) RemoveControl(AControl IControl) {
+    ListBox_RemoveControl(l.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -166,6 +206,11 @@ func (l *TListBox) ScaleBy(M int32, D int32) {
     ListBox_ScaleBy(l.instance, M , D)
 }
 
+// ScrollBy
+func (l *TListBox) ScrollBy(DeltaX int32, DeltaY int32) {
+    ListBox_ScrollBy(l.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (l *TListBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ListBox_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
@@ -179,6 +224,11 @@ func (l *TListBox) SetFocus() {
 // Update
 func (l *TListBox) Update() {
     ListBox_Update(l.instance)
+}
+
+// UpdateControlState
+func (l *TListBox) UpdateControlState() {
+    ListBox_UpdateControlState(l.instance)
 }
 
 // BringToFront
@@ -249,6 +299,11 @@ func (l *TListBox) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (l *TListBox) GetTextLen() int32 {
     return ListBox_GetTextLen(l.instance)
+}
+
+// SetTextBuf
+func (l *TListBox) SetTextBuf(Buffer string) {
+    ListBox_SetTextBuf(l.instance, Buffer)
 }
 
 // FindComponent
@@ -627,12 +682,12 @@ func (l *TListBox) SetSorted(value bool) {
 }
 
 // TabOrder
-func (l *TListBox) TabOrder() uint16 {
+func (l *TListBox) TabOrder() TTabOrder {
     return ListBox_GetTabOrder(l.instance)
 }
 
 // SetTabOrder
-func (l *TListBox) SetTabOrder(value uint16) {
+func (l *TListBox) SetTabOrder(value TTabOrder) {
     ListBox_SetTabOrder(l.instance, value)
 }
 
@@ -807,6 +862,11 @@ func (l *TListBox) SetItemIndex(value int32) {
     ListBox_SetItemIndex(l.instance, value)
 }
 
+// DockClientCount
+func (l *TListBox) DockClientCount() int32 {
+    return ListBox_GetDockClientCount(l.instance)
+}
+
 // DockSite
 func (l *TListBox) DockSite() bool {
     return ListBox_GetDockSite(l.instance)
@@ -815,6 +875,21 @@ func (l *TListBox) DockSite() bool {
 // SetDockSite
 func (l *TListBox) SetDockSite(value bool) {
     ListBox_SetDockSite(l.instance, value)
+}
+
+// AlignDisabled
+func (l *TListBox) AlignDisabled() bool {
+    return ListBox_GetAlignDisabled(l.instance)
+}
+
+// MouseInClient
+func (l *TListBox) MouseInClient() bool {
+    return ListBox_GetMouseInClient(l.instance)
+}
+
+// VisibleDockClientCount
+func (l *TListBox) VisibleDockClientCount() int32 {
+    return ListBox_GetVisibleDockClientCount(l.instance)
 }
 
 // Brush
@@ -882,6 +957,11 @@ func (l *TListBox) SetClientHeight(value int32) {
     ListBox_SetClientHeight(l.instance, value)
 }
 
+// ClientOrigin
+func (l *TListBox) ClientOrigin() TPoint {
+    return ListBox_GetClientOrigin(l.instance)
+}
+
 // ClientRect
 func (l *TListBox) ClientRect() TRect {
     return ListBox_GetClientRect(l.instance)
@@ -895,6 +975,26 @@ func (l *TListBox) ClientWidth() int32 {
 // SetClientWidth
 func (l *TListBox) SetClientWidth(value int32) {
     ListBox_SetClientWidth(l.instance, value)
+}
+
+// ControlState
+func (l *TListBox) ControlState() TControlState {
+    return ListBox_GetControlState(l.instance)
+}
+
+// SetControlState
+func (l *TListBox) SetControlState(value TControlState) {
+    ListBox_SetControlState(l.instance, value)
+}
+
+// ControlStyle
+func (l *TListBox) ControlStyle() TControlStyle {
+    return ListBox_GetControlStyle(l.instance)
+}
+
+// SetControlStyle
+func (l *TListBox) SetControlStyle(value TControlStyle) {
+    ListBox_SetControlStyle(l.instance, value)
 }
 
 // ExplicitLeft
@@ -1098,6 +1198,11 @@ func (l *TListBox) Selected(Index int32) bool {
 // Selected
 func (l *TListBox) SetSelected(Index int32, value bool) {
     ListBox_SetSelected(l.instance, Index, value)
+}
+
+// DockClients
+func (l *TListBox) DockClients(Index int32) *TControl {
+    return ControlFromInst(ListBox_GetDockClients(l.instance, Index))
 }
 
 // Controls

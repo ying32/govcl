@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function HotKey_ContainsControl(AObj: THotKey; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function HotKey_ControlAtPos(AObj: THotKey; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure HotKey_DisableAlign(AObj: THotKey); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure HotKey_EnableAlign(AObj: THotKey); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function HotKey_FindChildControl(AObj: THotKey; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure HotKey_FlipChildren(AObj: THotKey; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure HotKey_InsertControl(AObj: THotKey; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure HotKey_Invalidate(AObj: THotKey); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure HotKey_PaintTo(AObj: THotKey; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure HotKey_RemoveControl(AObj: THotKey; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure HotKey_Realign(AObj: THotKey); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure HotKey_ScrollBy(AObj: THotKey; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure HotKey_SetBounds(AObj: THotKey; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure HotKey_Update(AObj: THotKey); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure HotKey_UpdateControlState(AObj: THotKey); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure HotKey_BringToFront(AObj: THotKey); stdcall;
@@ -138,6 +188,11 @@ end;
 function HotKey_GetTextLen(AObj: THotKey): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure HotKey_SetTextBuf(AObj: THotKey; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function HotKey_FindComponent(AObj: THotKey; AName: PChar): TComponent; stdcall;
@@ -423,6 +478,11 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function HotKey_GetDockClientCount(AObj: THotKey): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function HotKey_GetDockSite(AObj: THotKey): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -441,6 +501,21 @@ end;
 procedure HotKey_SetDoubleBuffered(AObj: THotKey; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function HotKey_GetAlignDisabled(AObj: THotKey): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function HotKey_GetMouseInClient(AObj: THotKey): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function HotKey_GetVisibleDockClientCount(AObj: THotKey): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function HotKey_GetBrush(AObj: THotKey): TBrush; stdcall;
@@ -528,6 +603,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure HotKey_GetClientOrigin(AObj: THotKey; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure HotKey_GetClientRect(AObj: THotKey; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -541,6 +621,26 @@ end;
 procedure HotKey_SetClientWidth(AObj: THotKey; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function HotKey_GetControlState(AObj: THotKey): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure HotKey_SetControlState(AObj: THotKey; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function HotKey_GetControlStyle(AObj: THotKey): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure HotKey_SetControlStyle(AObj: THotKey; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function HotKey_GetExplicitLeft(AObj: THotKey): Integer; stdcall;
@@ -698,6 +798,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function HotKey_GetDockClients(AObj: THotKey; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function HotKey_GetControls(AObj: THotKey; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -717,16 +822,26 @@ exports
   HotKey_Create,
   HotKey_Free,
   HotKey_CanFocus,
+  HotKey_ContainsControl,
+  HotKey_ControlAtPos,
+  HotKey_DisableAlign,
+  HotKey_EnableAlign,
+  HotKey_FindChildControl,
   HotKey_FlipChildren,
   HotKey_Focused,
   HotKey_HandleAllocated,
+  HotKey_InsertControl,
   HotKey_Invalidate,
+  HotKey_PaintTo,
+  HotKey_RemoveControl,
   HotKey_Realign,
   HotKey_Repaint,
   HotKey_ScaleBy,
+  HotKey_ScrollBy,
   HotKey_SetBounds,
   HotKey_SetFocus,
   HotKey_Update,
+  HotKey_UpdateControlState,
   HotKey_BringToFront,
   HotKey_ClientToScreen,
   HotKey_ClientToParent,
@@ -741,6 +856,7 @@ exports
   HotKey_Show,
   HotKey_GetTextBuf,
   HotKey_GetTextLen,
+  HotKey_SetTextBuf,
   HotKey_FindComponent,
   HotKey_GetNamePath,
   HotKey_Assign,
@@ -785,10 +901,14 @@ exports
   HotKey_SetOnMouseLeave,
   HotKey_SetOnMouseMove,
   HotKey_SetOnMouseUp,
+  HotKey_GetDockClientCount,
   HotKey_GetDockSite,
   HotKey_SetDockSite,
   HotKey_GetDoubleBuffered,
   HotKey_SetDoubleBuffered,
+  HotKey_GetAlignDisabled,
+  HotKey_GetMouseInClient,
+  HotKey_GetVisibleDockClientCount,
   HotKey_GetBrush,
   HotKey_GetControlCount,
   HotKey_GetHandle,
@@ -806,9 +926,14 @@ exports
   HotKey_SetBoundsRect,
   HotKey_GetClientHeight,
   HotKey_SetClientHeight,
+  HotKey_GetClientOrigin,
   HotKey_GetClientRect,
   HotKey_GetClientWidth,
   HotKey_SetClientWidth,
+  HotKey_GetControlState,
+  HotKey_SetControlState,
+  HotKey_GetControlStyle,
+  HotKey_SetControlStyle,
   HotKey_GetExplicitLeft,
   HotKey_GetExplicitTop,
   HotKey_GetExplicitWidth,
@@ -840,6 +965,7 @@ exports
   HotKey_SetName,
   HotKey_GetTag,
   HotKey_SetTag,
+  HotKey_GetDockClients,
   HotKey_GetControls,
   HotKey_GetComponents,
   HotKey_StaticClassType;

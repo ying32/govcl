@@ -191,6 +191,11 @@ func (c *TControl) GetTextLen() int32 {
     return Control_GetTextLen(c.instance)
 }
 
+// SetTextBuf
+func (c *TControl) SetTextBuf(Buffer string) {
+    Control_SetTextBuf(c.instance, Buffer)
+}
+
 // FindComponent
 func (c *TControl) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Control_FindComponent(c.instance, AName))
@@ -336,6 +341,11 @@ func (c *TControl) SetClientHeight(value int32) {
     Control_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TControl) ClientOrigin() TPoint {
+    return Control_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TControl) ClientRect() TRect {
     return Control_GetClientRect(c.instance)
@@ -349,6 +359,26 @@ func (c *TControl) ClientWidth() int32 {
 // SetClientWidth
 func (c *TControl) SetClientWidth(value int32) {
     Control_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TControl) ControlState() TControlState {
+    return Control_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TControl) SetControlState(value TControlState) {
+    Control_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TControl) ControlStyle() TControlStyle {
+    return Control_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TControl) SetControlStyle(value TControlStyle) {
+    Control_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft

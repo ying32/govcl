@@ -106,6 +106,31 @@ func (u *TUpDown) CanFocus() bool {
     return UpDown_CanFocus(u.instance)
 }
 
+// ContainsControl
+func (u *TUpDown) ContainsControl(Control IControl) bool {
+    return UpDown_ContainsControl(u.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (u *TUpDown) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(UpDown_ControlAtPos(u.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (u *TUpDown) DisableAlign() {
+    UpDown_DisableAlign(u.instance)
+}
+
+// EnableAlign
+func (u *TUpDown) EnableAlign() {
+    UpDown_EnableAlign(u.instance)
+}
+
+// FindChildControl
+func (u *TUpDown) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(UpDown_FindChildControl(u.instance, ControlName))
+}
+
 // FlipChildren
 func (u *TUpDown) FlipChildren(AllLevels bool) {
     UpDown_FlipChildren(u.instance, AllLevels)
@@ -121,9 +146,24 @@ func (u *TUpDown) HandleAllocated() bool {
     return UpDown_HandleAllocated(u.instance)
 }
 
+// InsertControl
+func (u *TUpDown) InsertControl(AControl IControl) {
+    UpDown_InsertControl(u.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (u *TUpDown) Invalidate() {
     UpDown_Invalidate(u.instance)
+}
+
+// PaintTo
+func (u *TUpDown) PaintTo(DC HDC, X int32, Y int32) {
+    UpDown_PaintTo(u.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (u *TUpDown) RemoveControl(AControl IControl) {
+    UpDown_RemoveControl(u.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (u *TUpDown) ScaleBy(M int32, D int32) {
     UpDown_ScaleBy(u.instance, M , D)
 }
 
+// ScrollBy
+func (u *TUpDown) ScrollBy(DeltaX int32, DeltaY int32) {
+    UpDown_ScrollBy(u.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (u *TUpDown) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     UpDown_SetBounds(u.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (u *TUpDown) SetFocus() {
 // Update
 func (u *TUpDown) Update() {
     UpDown_Update(u.instance)
+}
+
+// UpdateControlState
+func (u *TUpDown) UpdateControlState() {
+    UpDown_UpdateControlState(u.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (u *TUpDown) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (u *TUpDown) GetTextLen() int32 {
     return UpDown_GetTextLen(u.instance)
+}
+
+// SetTextBuf
+func (u *TUpDown) SetTextBuf(Buffer string) {
+    UpDown_SetTextBuf(u.instance, Buffer)
 }
 
 // FindComponent
@@ -426,12 +481,12 @@ func (u *TUpDown) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (u *TUpDown) TabOrder() uint16 {
+func (u *TUpDown) TabOrder() TTabOrder {
     return UpDown_GetTabOrder(u.instance)
 }
 
 // SetTabOrder
-func (u *TUpDown) SetTabOrder(value uint16) {
+func (u *TUpDown) SetTabOrder(value TTabOrder) {
     UpDown_SetTabOrder(u.instance, value)
 }
 
@@ -526,6 +581,11 @@ func (u *TUpDown) SetOnMouseUp(fn TMouseEvent) {
     UpDown_SetOnMouseUp(u.instance, fn)
 }
 
+// DockClientCount
+func (u *TUpDown) DockClientCount() int32 {
+    return UpDown_GetDockClientCount(u.instance)
+}
+
 // DockSite
 func (u *TUpDown) DockSite() bool {
     return UpDown_GetDockSite(u.instance)
@@ -534,6 +594,21 @@ func (u *TUpDown) DockSite() bool {
 // SetDockSite
 func (u *TUpDown) SetDockSite(value bool) {
     UpDown_SetDockSite(u.instance, value)
+}
+
+// AlignDisabled
+func (u *TUpDown) AlignDisabled() bool {
+    return UpDown_GetAlignDisabled(u.instance)
+}
+
+// MouseInClient
+func (u *TUpDown) MouseInClient() bool {
+    return UpDown_GetMouseInClient(u.instance)
+}
+
+// VisibleDockClientCount
+func (u *TUpDown) VisibleDockClientCount() int32 {
+    return UpDown_GetVisibleDockClientCount(u.instance)
 }
 
 // Brush
@@ -621,6 +696,11 @@ func (u *TUpDown) SetClientHeight(value int32) {
     UpDown_SetClientHeight(u.instance, value)
 }
 
+// ClientOrigin
+func (u *TUpDown) ClientOrigin() TPoint {
+    return UpDown_GetClientOrigin(u.instance)
+}
+
 // ClientRect
 func (u *TUpDown) ClientRect() TRect {
     return UpDown_GetClientRect(u.instance)
@@ -634,6 +714,26 @@ func (u *TUpDown) ClientWidth() int32 {
 // SetClientWidth
 func (u *TUpDown) SetClientWidth(value int32) {
     UpDown_SetClientWidth(u.instance, value)
+}
+
+// ControlState
+func (u *TUpDown) ControlState() TControlState {
+    return UpDown_GetControlState(u.instance)
+}
+
+// SetControlState
+func (u *TUpDown) SetControlState(value TControlState) {
+    UpDown_SetControlState(u.instance, value)
+}
+
+// ControlStyle
+func (u *TUpDown) ControlStyle() TControlStyle {
+    return UpDown_GetControlStyle(u.instance)
+}
+
+// SetControlStyle
+func (u *TUpDown) SetControlStyle(value TControlStyle) {
+    UpDown_SetControlStyle(u.instance, value)
 }
 
 // ExplicitLeft
@@ -813,6 +913,11 @@ func (u *TUpDown) Tag() int {
 // EN: Set the control tag.
 func (u *TUpDown) SetTag(value int) {
     UpDown_SetTag(u.instance, value)
+}
+
+// DockClients
+func (u *TUpDown) DockClients(Index int32) *TControl {
+    return ControlFromInst(UpDown_GetDockClients(u.instance, Index))
 }
 
 // Controls

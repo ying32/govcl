@@ -70,6 +70,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ListView_ContainsControl(AObj: TListView; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ListView_ControlAtPos(AObj: TListView; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure ListView_DisableAlign(AObj: TListView); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ListView_EnableAlign(AObj: TListView); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function ListView_FindChildControl(AObj: TListView; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ListView_FlipChildren(AObj: TListView; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -85,9 +110,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ListView_InsertControl(AObj: TListView; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ListView_Invalidate(AObj: TListView); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure ListView_PaintTo(AObj: TListView; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure ListView_RemoveControl(AObj: TListView; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ListView_Realign(AObj: TListView); stdcall;
@@ -105,6 +145,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure ListView_ScrollBy(AObj: TListView; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure ListView_SetBounds(AObj: TListView; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -118,6 +163,11 @@ end;
 procedure ListView_Update(AObj: TListView); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure ListView_UpdateControlState(AObj: TListView); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure ListView_BringToFront(AObj: TListView); stdcall;
@@ -188,6 +238,11 @@ end;
 function ListView_GetTextLen(AObj: TListView): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ListView_SetTextBuf(AObj: TListView; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ListView_FindComponent(AObj: TListView; AName: PChar): TComponent; stdcall;
@@ -1173,6 +1228,11 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ListView_GetDockClientCount(AObj: TListView): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ListView_GetDockSite(AObj: TListView): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -1181,6 +1241,21 @@ end;
 procedure ListView_SetDockSite(AObj: TListView; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ListView_GetAlignDisabled(AObj: TListView): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function ListView_GetMouseInClient(AObj: TListView): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function ListView_GetVisibleDockClientCount(AObj: TListView): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ListView_GetBrush(AObj: TListView): TBrush; stdcall;
@@ -1238,6 +1313,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ListView_GetClientOrigin(AObj: TListView; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ListView_GetClientRect(AObj: TListView; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -1251,6 +1331,26 @@ end;
 procedure ListView_SetClientWidth(AObj: TListView; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ListView_GetControlState(AObj: TListView): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ListView_SetControlState(AObj: TListView; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ListView_GetControlStyle(AObj: TListView): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ListView_SetControlStyle(AObj: TListView; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ListView_GetExplicitLeft(AObj: TListView): Integer; stdcall;
@@ -1423,6 +1523,11 @@ begin
   Result :=  AObj.Column[Index];
 end;
 
+function ListView_GetDockClients(AObj: TListView; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ListView_GetControls(AObj: TListView; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1452,16 +1557,26 @@ exports
   ListView_Scroll,
   ListView_CustomSort,
   ListView_CanFocus,
+  ListView_ContainsControl,
+  ListView_ControlAtPos,
+  ListView_DisableAlign,
+  ListView_EnableAlign,
+  ListView_FindChildControl,
   ListView_FlipChildren,
   ListView_Focused,
   ListView_HandleAllocated,
+  ListView_InsertControl,
   ListView_Invalidate,
+  ListView_PaintTo,
+  ListView_RemoveControl,
   ListView_Realign,
   ListView_Repaint,
   ListView_ScaleBy,
+  ListView_ScrollBy,
   ListView_SetBounds,
   ListView_SetFocus,
   ListView_Update,
+  ListView_UpdateControlState,
   ListView_BringToFront,
   ListView_ClientToScreen,
   ListView_ClientToParent,
@@ -1476,6 +1591,7 @@ exports
   ListView_Show,
   ListView_GetTextBuf,
   ListView_GetTextLen,
+  ListView_SetTextBuf,
   ListView_FindComponent,
   ListView_GetNamePath,
   ListView_Assign,
@@ -1632,8 +1748,12 @@ exports
   ListView_GetVisibleRowCount,
   ListView_GetItemIndex,
   ListView_SetItemIndex,
+  ListView_GetDockClientCount,
   ListView_GetDockSite,
   ListView_SetDockSite,
+  ListView_GetAlignDisabled,
+  ListView_GetMouseInClient,
+  ListView_GetVisibleDockClientCount,
   ListView_GetBrush,
   ListView_GetControlCount,
   ListView_GetHandle,
@@ -1645,9 +1765,14 @@ exports
   ListView_SetBoundsRect,
   ListView_GetClientHeight,
   ListView_SetClientHeight,
+  ListView_GetClientOrigin,
   ListView_GetClientRect,
   ListView_GetClientWidth,
   ListView_SetClientWidth,
+  ListView_GetControlState,
+  ListView_SetControlState,
+  ListView_GetControlStyle,
+  ListView_SetControlStyle,
   ListView_GetExplicitLeft,
   ListView_GetExplicitTop,
   ListView_GetExplicitWidth,
@@ -1682,6 +1807,7 @@ exports
   ListView_GetTag,
   ListView_SetTag,
   ListView_GetColumn,
+  ListView_GetDockClients,
   ListView_GetControls,
   ListView_GetComponents,
   ListView_StaticClassType;

@@ -121,6 +121,31 @@ func (s *TStringGrid) CanFocus() bool {
     return StringGrid_CanFocus(s.instance)
 }
 
+// ContainsControl
+func (s *TStringGrid) ContainsControl(Control IControl) bool {
+    return StringGrid_ContainsControl(s.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (s *TStringGrid) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(StringGrid_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (s *TStringGrid) DisableAlign() {
+    StringGrid_DisableAlign(s.instance)
+}
+
+// EnableAlign
+func (s *TStringGrid) EnableAlign() {
+    StringGrid_EnableAlign(s.instance)
+}
+
+// FindChildControl
+func (s *TStringGrid) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(StringGrid_FindChildControl(s.instance, ControlName))
+}
+
 // FlipChildren
 func (s *TStringGrid) FlipChildren(AllLevels bool) {
     StringGrid_FlipChildren(s.instance, AllLevels)
@@ -136,9 +161,24 @@ func (s *TStringGrid) HandleAllocated() bool {
     return StringGrid_HandleAllocated(s.instance)
 }
 
+// InsertControl
+func (s *TStringGrid) InsertControl(AControl IControl) {
+    StringGrid_InsertControl(s.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (s *TStringGrid) Invalidate() {
     StringGrid_Invalidate(s.instance)
+}
+
+// PaintTo
+func (s *TStringGrid) PaintTo(DC HDC, X int32, Y int32) {
+    StringGrid_PaintTo(s.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (s *TStringGrid) RemoveControl(AControl IControl) {
+    StringGrid_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -156,6 +196,11 @@ func (s *TStringGrid) ScaleBy(M int32, D int32) {
     StringGrid_ScaleBy(s.instance, M , D)
 }
 
+// ScrollBy
+func (s *TStringGrid) ScrollBy(DeltaX int32, DeltaY int32) {
+    StringGrid_ScrollBy(s.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (s *TStringGrid) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     StringGrid_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
@@ -169,6 +214,11 @@ func (s *TStringGrid) SetFocus() {
 // Update
 func (s *TStringGrid) Update() {
     StringGrid_Update(s.instance)
+}
+
+// UpdateControlState
+func (s *TStringGrid) UpdateControlState() {
+    StringGrid_UpdateControlState(s.instance)
 }
 
 // BringToFront
@@ -239,6 +289,11 @@ func (s *TStringGrid) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (s *TStringGrid) GetTextLen() int32 {
     return StringGrid_GetTextLen(s.instance)
+}
+
+// SetTextBuf
+func (s *TStringGrid) SetTextBuf(Buffer string) {
+    StringGrid_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
@@ -677,12 +732,12 @@ func (s *TStringGrid) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (s *TStringGrid) TabOrder() uint16 {
+func (s *TStringGrid) TabOrder() TTabOrder {
     return StringGrid_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
-func (s *TStringGrid) SetTabOrder(value uint16) {
+func (s *TStringGrid) SetTabOrder(value TTabOrder) {
     StringGrid_SetTabOrder(s.instance, value)
 }
 
@@ -952,6 +1007,11 @@ func (s *TStringGrid) SetTabStop(value bool) {
     StringGrid_SetTabStop(s.instance, value)
 }
 
+// DockClientCount
+func (s *TStringGrid) DockClientCount() int32 {
+    return StringGrid_GetDockClientCount(s.instance)
+}
+
 // DockSite
 func (s *TStringGrid) DockSite() bool {
     return StringGrid_GetDockSite(s.instance)
@@ -960,6 +1020,21 @@ func (s *TStringGrid) DockSite() bool {
 // SetDockSite
 func (s *TStringGrid) SetDockSite(value bool) {
     StringGrid_SetDockSite(s.instance, value)
+}
+
+// AlignDisabled
+func (s *TStringGrid) AlignDisabled() bool {
+    return StringGrid_GetAlignDisabled(s.instance)
+}
+
+// MouseInClient
+func (s *TStringGrid) MouseInClient() bool {
+    return StringGrid_GetMouseInClient(s.instance)
+}
+
+// VisibleDockClientCount
+func (s *TStringGrid) VisibleDockClientCount() int32 {
+    return StringGrid_GetVisibleDockClientCount(s.instance)
 }
 
 // Brush
@@ -1027,6 +1102,11 @@ func (s *TStringGrid) SetClientHeight(value int32) {
     StringGrid_SetClientHeight(s.instance, value)
 }
 
+// ClientOrigin
+func (s *TStringGrid) ClientOrigin() TPoint {
+    return StringGrid_GetClientOrigin(s.instance)
+}
+
 // ClientRect
 func (s *TStringGrid) ClientRect() TRect {
     return StringGrid_GetClientRect(s.instance)
@@ -1040,6 +1120,26 @@ func (s *TStringGrid) ClientWidth() int32 {
 // SetClientWidth
 func (s *TStringGrid) SetClientWidth(value int32) {
     StringGrid_SetClientWidth(s.instance, value)
+}
+
+// ControlState
+func (s *TStringGrid) ControlState() TControlState {
+    return StringGrid_GetControlState(s.instance)
+}
+
+// SetControlState
+func (s *TStringGrid) SetControlState(value TControlState) {
+    StringGrid_SetControlState(s.instance, value)
+}
+
+// ControlStyle
+func (s *TStringGrid) ControlStyle() TControlStyle {
+    return StringGrid_GetControlStyle(s.instance)
+}
+
+// SetControlStyle
+func (s *TStringGrid) SetControlStyle(value TControlStyle) {
+    StringGrid_SetControlStyle(s.instance, value)
 }
 
 // ExplicitLeft
@@ -1303,6 +1403,11 @@ func (s *TStringGrid) TabStops(Index int32) bool {
 // TabStops
 func (s *TStringGrid) SetTabStops(Index int32, value bool) {
     StringGrid_SetTabStops(s.instance, Index, value)
+}
+
+// DockClients
+func (s *TStringGrid) DockClients(Index int32) *TControl {
+    return ControlFromInst(StringGrid_GetDockClients(s.instance, Index))
 }
 
 // Controls

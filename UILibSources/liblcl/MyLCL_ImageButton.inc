@@ -110,6 +110,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure ImageButton_SetTextBuf(AObj: TImageButton; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function ImageButton_FindComponent(AObj: TImageButton; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -524,6 +529,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ImageButton_GetClientOrigin(AObj: TImageButton; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ImageButton_GetClientRect(AObj: TImageButton; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -537,6 +547,26 @@ end;
 procedure ImageButton_SetClientWidth(AObj: TImageButton; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ImageButton_GetControlState(AObj: TImageButton): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ImageButton_SetControlState(AObj: TImageButton; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ImageButton_GetControlStyle(AObj: TImageButton): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ImageButton_SetControlStyle(AObj: TImageButton; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ImageButton_GetFloating(AObj: TImageButton): LongBool; extdecl;
@@ -686,6 +716,7 @@ exports
   ImageButton_Update,
   ImageButton_GetTextBuf,
   ImageButton_GetTextLen,
+  ImageButton_SetTextBuf,
   ImageButton_FindComponent,
   ImageButton_GetNamePath,
   ImageButton_Assign,
@@ -752,9 +783,14 @@ exports
   ImageButton_SetBoundsRect,
   ImageButton_GetClientHeight,
   ImageButton_SetClientHeight,
+  ImageButton_GetClientOrigin,
   ImageButton_GetClientRect,
   ImageButton_GetClientWidth,
   ImageButton_SetClientWidth,
+  ImageButton_GetControlState,
+  ImageButton_SetControlState,
+  ImageButton_GetControlStyle,
+  ImageButton_SetControlStyle,
   ImageButton_GetFloating,
   ImageButton_GetParent,
   ImageButton_SetParent,

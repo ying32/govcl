@@ -121,6 +121,31 @@ func (p *TPageControl) CanFocus() bool {
     return PageControl_CanFocus(p.instance)
 }
 
+// ContainsControl
+func (p *TPageControl) ContainsControl(Control IControl) bool {
+    return PageControl_ContainsControl(p.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (p *TPageControl) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(PageControl_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (p *TPageControl) DisableAlign() {
+    PageControl_DisableAlign(p.instance)
+}
+
+// EnableAlign
+func (p *TPageControl) EnableAlign() {
+    PageControl_EnableAlign(p.instance)
+}
+
+// FindChildControl
+func (p *TPageControl) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(PageControl_FindChildControl(p.instance, ControlName))
+}
+
 // FlipChildren
 func (p *TPageControl) FlipChildren(AllLevels bool) {
     PageControl_FlipChildren(p.instance, AllLevels)
@@ -136,9 +161,24 @@ func (p *TPageControl) HandleAllocated() bool {
     return PageControl_HandleAllocated(p.instance)
 }
 
+// InsertControl
+func (p *TPageControl) InsertControl(AControl IControl) {
+    PageControl_InsertControl(p.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (p *TPageControl) Invalidate() {
     PageControl_Invalidate(p.instance)
+}
+
+// PaintTo
+func (p *TPageControl) PaintTo(DC HDC, X int32, Y int32) {
+    PageControl_PaintTo(p.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (p *TPageControl) RemoveControl(AControl IControl) {
+    PageControl_RemoveControl(p.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -156,6 +196,11 @@ func (p *TPageControl) ScaleBy(M int32, D int32) {
     PageControl_ScaleBy(p.instance, M , D)
 }
 
+// ScrollBy
+func (p *TPageControl) ScrollBy(DeltaX int32, DeltaY int32) {
+    PageControl_ScrollBy(p.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (p *TPageControl) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     PageControl_SetBounds(p.instance, ALeft , ATop , AWidth , AHeight)
@@ -169,6 +214,11 @@ func (p *TPageControl) SetFocus() {
 // Update
 func (p *TPageControl) Update() {
     PageControl_Update(p.instance)
+}
+
+// UpdateControlState
+func (p *TPageControl) UpdateControlState() {
+    PageControl_UpdateControlState(p.instance)
 }
 
 // BringToFront
@@ -239,6 +289,11 @@ func (p *TPageControl) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (p *TPageControl) GetTextLen() int32 {
     return PageControl_GetTextLen(p.instance)
+}
+
+// SetTextBuf
+func (p *TPageControl) SetTextBuf(Buffer string) {
+    PageControl_SetTextBuf(p.instance, Buffer)
 }
 
 // FindComponent
@@ -542,12 +597,12 @@ func (p *TPageControl) SetTabIndex(value int32) {
 }
 
 // TabOrder
-func (p *TPageControl) TabOrder() uint16 {
+func (p *TPageControl) TabOrder() TTabOrder {
     return PageControl_GetTabOrder(p.instance)
 }
 
 // SetTabOrder
-func (p *TPageControl) SetTabOrder(value uint16) {
+func (p *TPageControl) SetTabOrder(value TTabOrder) {
     PageControl_SetTabOrder(p.instance, value)
 }
 
@@ -705,6 +760,26 @@ func (p *TPageControl) Canvas() *TCanvas {
     return CanvasFromInst(PageControl_GetCanvas(p.instance))
 }
 
+// DockClientCount
+func (p *TPageControl) DockClientCount() int32 {
+    return PageControl_GetDockClientCount(p.instance)
+}
+
+// AlignDisabled
+func (p *TPageControl) AlignDisabled() bool {
+    return PageControl_GetAlignDisabled(p.instance)
+}
+
+// MouseInClient
+func (p *TPageControl) MouseInClient() bool {
+    return PageControl_GetMouseInClient(p.instance)
+}
+
+// VisibleDockClientCount
+func (p *TPageControl) VisibleDockClientCount() int32 {
+    return PageControl_GetVisibleDockClientCount(p.instance)
+}
+
 // Brush
 func (p *TPageControl) Brush() *TBrush {
     return BrushFromInst(PageControl_GetBrush(p.instance))
@@ -770,6 +845,11 @@ func (p *TPageControl) SetClientHeight(value int32) {
     PageControl_SetClientHeight(p.instance, value)
 }
 
+// ClientOrigin
+func (p *TPageControl) ClientOrigin() TPoint {
+    return PageControl_GetClientOrigin(p.instance)
+}
+
 // ClientRect
 func (p *TPageControl) ClientRect() TRect {
     return PageControl_GetClientRect(p.instance)
@@ -783,6 +863,26 @@ func (p *TPageControl) ClientWidth() int32 {
 // SetClientWidth
 func (p *TPageControl) SetClientWidth(value int32) {
     PageControl_SetClientWidth(p.instance, value)
+}
+
+// ControlState
+func (p *TPageControl) ControlState() TControlState {
+    return PageControl_GetControlState(p.instance)
+}
+
+// SetControlState
+func (p *TPageControl) SetControlState(value TControlState) {
+    PageControl_SetControlState(p.instance, value)
+}
+
+// ControlStyle
+func (p *TPageControl) ControlStyle() TControlStyle {
+    return PageControl_GetControlStyle(p.instance)
+}
+
+// SetControlStyle
+func (p *TPageControl) SetControlStyle(value TControlStyle) {
+    PageControl_SetControlStyle(p.instance, value)
 }
 
 // ExplicitLeft
@@ -981,6 +1081,11 @@ func (p *TPageControl) SetTag(value int) {
 // Pages
 func (p *TPageControl) Pages(Index int32) *TTabSheet {
     return TabSheetFromInst(PageControl_GetPages(p.instance, Index))
+}
+
+// DockClients
+func (p *TPageControl) DockClients(Index int32) *TControl {
+    return ControlFromInst(PageControl_GetDockClients(p.instance, Index))
 }
 
 // Controls

@@ -111,6 +111,31 @@ func (c *TCoolBar) CanFocus() bool {
     return CoolBar_CanFocus(c.instance)
 }
 
+// ContainsControl
+func (c *TCoolBar) ContainsControl(Control IControl) bool {
+    return CoolBar_ContainsControl(c.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (c *TCoolBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(CoolBar_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (c *TCoolBar) DisableAlign() {
+    CoolBar_DisableAlign(c.instance)
+}
+
+// EnableAlign
+func (c *TCoolBar) EnableAlign() {
+    CoolBar_EnableAlign(c.instance)
+}
+
+// FindChildControl
+func (c *TCoolBar) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(CoolBar_FindChildControl(c.instance, ControlName))
+}
+
 // Focused
 func (c *TCoolBar) Focused() bool {
     return CoolBar_Focused(c.instance)
@@ -121,9 +146,24 @@ func (c *TCoolBar) HandleAllocated() bool {
     return CoolBar_HandleAllocated(c.instance)
 }
 
+// InsertControl
+func (c *TCoolBar) InsertControl(AControl IControl) {
+    CoolBar_InsertControl(c.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (c *TCoolBar) Invalidate() {
     CoolBar_Invalidate(c.instance)
+}
+
+// PaintTo
+func (c *TCoolBar) PaintTo(DC HDC, X int32, Y int32) {
+    CoolBar_PaintTo(c.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (c *TCoolBar) RemoveControl(AControl IControl) {
+    CoolBar_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (c *TCoolBar) ScaleBy(M int32, D int32) {
     CoolBar_ScaleBy(c.instance, M , D)
 }
 
+// ScrollBy
+func (c *TCoolBar) ScrollBy(DeltaX int32, DeltaY int32) {
+    CoolBar_ScrollBy(c.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (c *TCoolBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     CoolBar_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (c *TCoolBar) SetFocus() {
 // Update
 func (c *TCoolBar) Update() {
     CoolBar_Update(c.instance)
+}
+
+// UpdateControlState
+func (c *TCoolBar) UpdateControlState() {
+    CoolBar_UpdateControlState(c.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (c *TCoolBar) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (c *TCoolBar) GetTextLen() int32 {
     return CoolBar_GetTextLen(c.instance)
+}
+
+// SetTextBuf
+func (c *TCoolBar) SetTextBuf(Buffer string) {
+    CoolBar_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
@@ -717,6 +772,26 @@ func (c *TCoolBar) SetOnUnDock(fn TUnDockEvent) {
     CoolBar_SetOnUnDock(c.instance, fn)
 }
 
+// DockClientCount
+func (c *TCoolBar) DockClientCount() int32 {
+    return CoolBar_GetDockClientCount(c.instance)
+}
+
+// AlignDisabled
+func (c *TCoolBar) AlignDisabled() bool {
+    return CoolBar_GetAlignDisabled(c.instance)
+}
+
+// MouseInClient
+func (c *TCoolBar) MouseInClient() bool {
+    return CoolBar_GetMouseInClient(c.instance)
+}
+
+// VisibleDockClientCount
+func (c *TCoolBar) VisibleDockClientCount() int32 {
+    return CoolBar_GetVisibleDockClientCount(c.instance)
+}
+
 // Brush
 func (c *TCoolBar) Brush() *TBrush {
     return BrushFromInst(CoolBar_GetBrush(c.instance))
@@ -743,12 +818,12 @@ func (c *TCoolBar) SetParentWindow(value HWND) {
 }
 
 // TabOrder
-func (c *TCoolBar) TabOrder() uint16 {
+func (c *TCoolBar) TabOrder() TTabOrder {
     return CoolBar_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
-func (c *TCoolBar) SetTabOrder(value uint16) {
+func (c *TCoolBar) SetTabOrder(value TTabOrder) {
     CoolBar_SetTabOrder(c.instance, value)
 }
 
@@ -812,6 +887,11 @@ func (c *TCoolBar) SetClientHeight(value int32) {
     CoolBar_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TCoolBar) ClientOrigin() TPoint {
+    return CoolBar_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TCoolBar) ClientRect() TRect {
     return CoolBar_GetClientRect(c.instance)
@@ -825,6 +905,26 @@ func (c *TCoolBar) ClientWidth() int32 {
 // SetClientWidth
 func (c *TCoolBar) SetClientWidth(value int32) {
     CoolBar_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TCoolBar) ControlState() TControlState {
+    return CoolBar_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TCoolBar) SetControlState(value TControlState) {
+    CoolBar_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TCoolBar) ControlStyle() TControlStyle {
+    return CoolBar_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TCoolBar) SetControlStyle(value TControlStyle) {
+    CoolBar_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft
@@ -1018,6 +1118,11 @@ func (c *TCoolBar) Tag() int {
 // EN: Set the control tag.
 func (c *TCoolBar) SetTag(value int) {
     CoolBar_SetTag(c.instance, value)
+}
+
+// DockClients
+func (c *TCoolBar) DockClients(Index int32) *TControl {
+    return ControlFromInst(CoolBar_GetDockClients(c.instance, Index))
 }
 
 // Controls

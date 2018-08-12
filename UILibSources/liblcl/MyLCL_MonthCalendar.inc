@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function MonthCalendar_ContainsControl(AObj: TMonthCalendar; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function MonthCalendar_ControlAtPos(AObj: TMonthCalendar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure MonthCalendar_DisableAlign(AObj: TMonthCalendar); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure MonthCalendar_EnableAlign(AObj: TMonthCalendar); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function MonthCalendar_FindChildControl(AObj: TMonthCalendar; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure MonthCalendar_FlipChildren(AObj: TMonthCalendar; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure MonthCalendar_InsertControl(AObj: TMonthCalendar; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure MonthCalendar_Invalidate(AObj: TMonthCalendar); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure MonthCalendar_RemoveControl(AObj: TMonthCalendar; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure MonthCalendar_Realign(AObj: TMonthCalendar); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure MonthCalendar_ScaleBy(AObj: TMonthCalendar; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure MonthCalendar_ScrollBy(AObj: TMonthCalendar; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure MonthCalendar_SetBounds(AObj: TMonthCalendar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function MonthCalendar_GetTextLen(AObj: TMonthCalendar): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure MonthCalendar_SetTextBuf(AObj: TMonthCalendar; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function MonthCalendar_FindComponent(AObj: TMonthCalendar; AName: PChar): TComponent; extdecl;
@@ -530,6 +575,11 @@ begin
   EventClass.Add(AObj, geStartDock, AEventId);
 end;
 
+function MonthCalendar_GetDockClientCount(AObj: TMonthCalendar): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function MonthCalendar_GetDockSite(AObj: TMonthCalendar): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -538,6 +588,11 @@ end;
 procedure MonthCalendar_SetDockSite(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function MonthCalendar_GetVisibleDockClientCount(AObj: TMonthCalendar): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function MonthCalendar_GetBrush(AObj: TMonthCalendar): TBrush; extdecl;
@@ -605,6 +660,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure MonthCalendar_GetClientOrigin(AObj: TMonthCalendar; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure MonthCalendar_GetClientRect(AObj: TMonthCalendar; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -618,6 +678,26 @@ end;
 procedure MonthCalendar_SetClientWidth(AObj: TMonthCalendar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function MonthCalendar_GetControlState(AObj: TMonthCalendar): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure MonthCalendar_SetControlState(AObj: TMonthCalendar; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function MonthCalendar_GetControlStyle(AObj: TMonthCalendar): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure MonthCalendar_SetControlStyle(AObj: TMonthCalendar; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function MonthCalendar_GetFloating(AObj: TMonthCalendar): LongBool; extdecl;
@@ -735,6 +815,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function MonthCalendar_GetDockClients(AObj: TMonthCalendar; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function MonthCalendar_GetControls(AObj: TMonthCalendar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -754,13 +839,21 @@ exports
   MonthCalendar_Create,
   MonthCalendar_Free,
   MonthCalendar_CanFocus,
+  MonthCalendar_ContainsControl,
+  MonthCalendar_ControlAtPos,
+  MonthCalendar_DisableAlign,
+  MonthCalendar_EnableAlign,
+  MonthCalendar_FindChildControl,
   MonthCalendar_FlipChildren,
   MonthCalendar_Focused,
   MonthCalendar_HandleAllocated,
+  MonthCalendar_InsertControl,
   MonthCalendar_Invalidate,
+  MonthCalendar_RemoveControl,
   MonthCalendar_Realign,
   MonthCalendar_Repaint,
   MonthCalendar_ScaleBy,
+  MonthCalendar_ScrollBy,
   MonthCalendar_SetBounds,
   MonthCalendar_SetFocus,
   MonthCalendar_Update,
@@ -778,6 +871,7 @@ exports
   MonthCalendar_Show,
   MonthCalendar_GetTextBuf,
   MonthCalendar_GetTextLen,
+  MonthCalendar_SetTextBuf,
   MonthCalendar_FindComponent,
   MonthCalendar_GetNamePath,
   MonthCalendar_Assign,
@@ -835,8 +929,10 @@ exports
   MonthCalendar_SetOnMouseEnter,
   MonthCalendar_SetOnMouseLeave,
   MonthCalendar_SetOnStartDock,
+  MonthCalendar_GetDockClientCount,
   MonthCalendar_GetDockSite,
   MonthCalendar_SetDockSite,
+  MonthCalendar_GetVisibleDockClientCount,
   MonthCalendar_GetBrush,
   MonthCalendar_GetControlCount,
   MonthCalendar_GetHandle,
@@ -850,9 +946,14 @@ exports
   MonthCalendar_SetBoundsRect,
   MonthCalendar_GetClientHeight,
   MonthCalendar_SetClientHeight,
+  MonthCalendar_GetClientOrigin,
   MonthCalendar_GetClientRect,
   MonthCalendar_GetClientWidth,
   MonthCalendar_SetClientWidth,
+  MonthCalendar_GetControlState,
+  MonthCalendar_SetControlState,
+  MonthCalendar_GetControlStyle,
+  MonthCalendar_SetControlStyle,
   MonthCalendar_GetFloating,
   MonthCalendar_GetParent,
   MonthCalendar_SetParent,
@@ -876,6 +977,7 @@ exports
   MonthCalendar_SetName,
   MonthCalendar_GetTag,
   MonthCalendar_SetTag,
+  MonthCalendar_GetDockClients,
   MonthCalendar_GetControls,
   MonthCalendar_GetComponents,
   MonthCalendar_StaticClassType;

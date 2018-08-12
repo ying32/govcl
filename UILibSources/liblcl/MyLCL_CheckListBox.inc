@@ -40,6 +40,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function CheckListBox_ContainsControl(AObj: TCheckListBox; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function CheckListBox_ControlAtPos(AObj: TCheckListBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure CheckListBox_DisableAlign(AObj: TCheckListBox); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure CheckListBox_EnableAlign(AObj: TCheckListBox); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function CheckListBox_FindChildControl(AObj: TCheckListBox; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure CheckListBox_FlipChildren(AObj: TCheckListBox; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -55,9 +80,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure CheckListBox_InsertControl(AObj: TCheckListBox; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure CheckListBox_Invalidate(AObj: TCheckListBox); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure CheckListBox_RemoveControl(AObj: TCheckListBox; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure CheckListBox_Realign(AObj: TCheckListBox); extdecl;
@@ -73,6 +108,11 @@ end;
 procedure CheckListBox_ScaleBy(AObj: TCheckListBox; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure CheckListBox_ScrollBy(AObj: TCheckListBox; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure CheckListBox_SetBounds(AObj: TCheckListBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -158,6 +198,11 @@ end;
 function CheckListBox_GetTextLen(AObj: TCheckListBox): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure CheckListBox_SetTextBuf(AObj: TCheckListBox; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function CheckListBox_FindComponent(AObj: TCheckListBox; AName: PChar): TComponent; extdecl;
@@ -689,6 +734,11 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function CheckListBox_GetDockClientCount(AObj: TCheckListBox): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function CheckListBox_GetDockSite(AObj: TCheckListBox): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -697,6 +747,11 @@ end;
 procedure CheckListBox_SetDockSite(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function CheckListBox_GetVisibleDockClientCount(AObj: TCheckListBox): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function CheckListBox_GetBrush(AObj: TCheckListBox): TBrush; extdecl;
@@ -764,6 +819,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure CheckListBox_GetClientOrigin(AObj: TCheckListBox; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure CheckListBox_GetClientRect(AObj: TCheckListBox; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -777,6 +837,26 @@ end;
 procedure CheckListBox_SetClientWidth(AObj: TCheckListBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function CheckListBox_GetControlState(AObj: TCheckListBox): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure CheckListBox_SetControlState(AObj: TCheckListBox; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function CheckListBox_GetControlStyle(AObj: TCheckListBox): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure CheckListBox_SetControlStyle(AObj: TCheckListBox; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function CheckListBox_GetFloating(AObj: TCheckListBox): LongBool; extdecl;
@@ -944,6 +1024,11 @@ begin
   AObj.Selected[Index] := AValue;
 end;
 
+function CheckListBox_GetDockClients(AObj: TCheckListBox; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function CheckListBox_GetControls(AObj: TCheckListBox; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -967,13 +1052,21 @@ exports
   CheckListBox_ClearSelection,
   CheckListBox_SelectAll,
   CheckListBox_CanFocus,
+  CheckListBox_ContainsControl,
+  CheckListBox_ControlAtPos,
+  CheckListBox_DisableAlign,
+  CheckListBox_EnableAlign,
+  CheckListBox_FindChildControl,
   CheckListBox_FlipChildren,
   CheckListBox_Focused,
   CheckListBox_HandleAllocated,
+  CheckListBox_InsertControl,
   CheckListBox_Invalidate,
+  CheckListBox_RemoveControl,
   CheckListBox_Realign,
   CheckListBox_Repaint,
   CheckListBox_ScaleBy,
+  CheckListBox_ScrollBy,
   CheckListBox_SetBounds,
   CheckListBox_SetFocus,
   CheckListBox_Update,
@@ -991,6 +1084,7 @@ exports
   CheckListBox_Show,
   CheckListBox_GetTextBuf,
   CheckListBox_GetTextLen,
+  CheckListBox_SetTextBuf,
   CheckListBox_FindComponent,
   CheckListBox_GetNamePath,
   CheckListBox_Assign,
@@ -1073,8 +1167,10 @@ exports
   CheckListBox_GetSelCount,
   CheckListBox_GetItemIndex,
   CheckListBox_SetItemIndex,
+  CheckListBox_GetDockClientCount,
   CheckListBox_GetDockSite,
   CheckListBox_SetDockSite,
+  CheckListBox_GetVisibleDockClientCount,
   CheckListBox_GetBrush,
   CheckListBox_GetControlCount,
   CheckListBox_GetHandle,
@@ -1088,9 +1184,14 @@ exports
   CheckListBox_SetBoundsRect,
   CheckListBox_GetClientHeight,
   CheckListBox_SetClientHeight,
+  CheckListBox_GetClientOrigin,
   CheckListBox_GetClientRect,
   CheckListBox_GetClientWidth,
   CheckListBox_SetClientWidth,
+  CheckListBox_GetControlState,
+  CheckListBox_SetControlState,
+  CheckListBox_GetControlStyle,
+  CheckListBox_SetControlStyle,
   CheckListBox_GetFloating,
   CheckListBox_GetParent,
   CheckListBox_SetParent,
@@ -1124,6 +1225,7 @@ exports
   CheckListBox_SetHeader,
   CheckListBox_GetSelected,
   CheckListBox_SetSelected,
+  CheckListBox_GetDockClients,
   CheckListBox_GetControls,
   CheckListBox_GetComponents,
   CheckListBox_StaticClassType;

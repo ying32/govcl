@@ -106,6 +106,31 @@ func (s *TScrollBox) CanFocus() bool {
     return ScrollBox_CanFocus(s.instance)
 }
 
+// ContainsControl
+func (s *TScrollBox) ContainsControl(Control IControl) bool {
+    return ScrollBox_ContainsControl(s.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (s *TScrollBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ScrollBox_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (s *TScrollBox) DisableAlign() {
+    ScrollBox_DisableAlign(s.instance)
+}
+
+// EnableAlign
+func (s *TScrollBox) EnableAlign() {
+    ScrollBox_EnableAlign(s.instance)
+}
+
+// FindChildControl
+func (s *TScrollBox) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ScrollBox_FindChildControl(s.instance, ControlName))
+}
+
 // FlipChildren
 func (s *TScrollBox) FlipChildren(AllLevels bool) {
     ScrollBox_FlipChildren(s.instance, AllLevels)
@@ -121,9 +146,24 @@ func (s *TScrollBox) HandleAllocated() bool {
     return ScrollBox_HandleAllocated(s.instance)
 }
 
+// InsertControl
+func (s *TScrollBox) InsertControl(AControl IControl) {
+    ScrollBox_InsertControl(s.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (s *TScrollBox) Invalidate() {
     ScrollBox_Invalidate(s.instance)
+}
+
+// PaintTo
+func (s *TScrollBox) PaintTo(DC HDC, X int32, Y int32) {
+    ScrollBox_PaintTo(s.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (s *TScrollBox) RemoveControl(AControl IControl) {
+    ScrollBox_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (s *TScrollBox) ScaleBy(M int32, D int32) {
     ScrollBox_ScaleBy(s.instance, M , D)
 }
 
+// ScrollBy
+func (s *TScrollBox) ScrollBy(DeltaX int32, DeltaY int32) {
+    ScrollBox_ScrollBy(s.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (s *TScrollBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ScrollBox_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (s *TScrollBox) SetFocus() {
 // Update
 func (s *TScrollBox) Update() {
     ScrollBox_Update(s.instance)
+}
+
+// UpdateControlState
+func (s *TScrollBox) UpdateControlState() {
+    ScrollBox_UpdateControlState(s.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (s *TScrollBox) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (s *TScrollBox) GetTextLen() int32 {
     return ScrollBox_GetTextLen(s.instance)
+}
+
+// SetTextBuf
+func (s *TScrollBox) SetTextBuf(Buffer string) {
+    ScrollBox_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
@@ -552,12 +607,12 @@ func (s *TScrollBox) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (s *TScrollBox) TabOrder() uint16 {
+func (s *TScrollBox) TabOrder() TTabOrder {
     return ScrollBox_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
-func (s *TScrollBox) SetTabOrder(value uint16) {
+func (s *TScrollBox) SetTabOrder(value TTabOrder) {
     ScrollBox_SetTabOrder(s.instance, value)
 }
 
@@ -707,6 +762,26 @@ func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {
     ScrollBox_SetOnUnDock(s.instance, fn)
 }
 
+// DockClientCount
+func (s *TScrollBox) DockClientCount() int32 {
+    return ScrollBox_GetDockClientCount(s.instance)
+}
+
+// AlignDisabled
+func (s *TScrollBox) AlignDisabled() bool {
+    return ScrollBox_GetAlignDisabled(s.instance)
+}
+
+// MouseInClient
+func (s *TScrollBox) MouseInClient() bool {
+    return ScrollBox_GetMouseInClient(s.instance)
+}
+
+// VisibleDockClientCount
+func (s *TScrollBox) VisibleDockClientCount() int32 {
+    return ScrollBox_GetVisibleDockClientCount(s.instance)
+}
+
 // Brush
 func (s *TScrollBox) Brush() *TBrush {
     return BrushFromInst(ScrollBox_GetBrush(s.instance))
@@ -772,6 +847,11 @@ func (s *TScrollBox) SetClientHeight(value int32) {
     ScrollBox_SetClientHeight(s.instance, value)
 }
 
+// ClientOrigin
+func (s *TScrollBox) ClientOrigin() TPoint {
+    return ScrollBox_GetClientOrigin(s.instance)
+}
+
 // ClientRect
 func (s *TScrollBox) ClientRect() TRect {
     return ScrollBox_GetClientRect(s.instance)
@@ -785,6 +865,26 @@ func (s *TScrollBox) ClientWidth() int32 {
 // SetClientWidth
 func (s *TScrollBox) SetClientWidth(value int32) {
     ScrollBox_SetClientWidth(s.instance, value)
+}
+
+// ControlState
+func (s *TScrollBox) ControlState() TControlState {
+    return ScrollBox_GetControlState(s.instance)
+}
+
+// SetControlState
+func (s *TScrollBox) SetControlState(value TControlState) {
+    ScrollBox_SetControlState(s.instance, value)
+}
+
+// ControlStyle
+func (s *TScrollBox) ControlStyle() TControlStyle {
+    return ScrollBox_GetControlStyle(s.instance)
+}
+
+// SetControlStyle
+func (s *TScrollBox) SetControlStyle(value TControlStyle) {
+    ScrollBox_SetControlStyle(s.instance, value)
 }
 
 // ExplicitLeft
@@ -978,6 +1078,11 @@ func (s *TScrollBox) Tag() int {
 // EN: Set the control tag.
 func (s *TScrollBox) SetTag(value int) {
     ScrollBox_SetTag(s.instance, value)
+}
+
+// DockClients
+func (s *TScrollBox) DockClients(Index int32) *TControl {
+    return ControlFromInst(ScrollBox_GetDockClients(s.instance, Index))
 }
 
 // Controls

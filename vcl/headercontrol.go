@@ -111,6 +111,31 @@ func (h *THeaderControl) CanFocus() bool {
     return HeaderControl_CanFocus(h.instance)
 }
 
+// ContainsControl
+func (h *THeaderControl) ContainsControl(Control IControl) bool {
+    return HeaderControl_ContainsControl(h.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (h *THeaderControl) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(HeaderControl_ControlAtPos(h.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (h *THeaderControl) DisableAlign() {
+    HeaderControl_DisableAlign(h.instance)
+}
+
+// EnableAlign
+func (h *THeaderControl) EnableAlign() {
+    HeaderControl_EnableAlign(h.instance)
+}
+
+// FindChildControl
+func (h *THeaderControl) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(HeaderControl_FindChildControl(h.instance, ControlName))
+}
+
 // Focused
 func (h *THeaderControl) Focused() bool {
     return HeaderControl_Focused(h.instance)
@@ -121,9 +146,24 @@ func (h *THeaderControl) HandleAllocated() bool {
     return HeaderControl_HandleAllocated(h.instance)
 }
 
+// InsertControl
+func (h *THeaderControl) InsertControl(AControl IControl) {
+    HeaderControl_InsertControl(h.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (h *THeaderControl) Invalidate() {
     HeaderControl_Invalidate(h.instance)
+}
+
+// PaintTo
+func (h *THeaderControl) PaintTo(DC HDC, X int32, Y int32) {
+    HeaderControl_PaintTo(h.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (h *THeaderControl) RemoveControl(AControl IControl) {
+    HeaderControl_RemoveControl(h.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (h *THeaderControl) ScaleBy(M int32, D int32) {
     HeaderControl_ScaleBy(h.instance, M , D)
 }
 
+// ScrollBy
+func (h *THeaderControl) ScrollBy(DeltaX int32, DeltaY int32) {
+    HeaderControl_ScrollBy(h.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (h *THeaderControl) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     HeaderControl_SetBounds(h.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (h *THeaderControl) SetFocus() {
 // Update
 func (h *THeaderControl) Update() {
     HeaderControl_Update(h.instance)
+}
+
+// UpdateControlState
+func (h *THeaderControl) UpdateControlState() {
+    HeaderControl_UpdateControlState(h.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (h *THeaderControl) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (h *THeaderControl) GetTextLen() int32 {
     return HeaderControl_GetTextLen(h.instance)
+}
+
+// SetTextBuf
+func (h *THeaderControl) SetTextBuf(Buffer string) {
+    HeaderControl_SetTextBuf(h.instance, Buffer)
 }
 
 // FindComponent
@@ -615,6 +670,11 @@ func (h *THeaderControl) SetOnSectionCheck(fn TCustomSectionNotifyEvent) {
     HeaderControl_SetOnSectionCheck(h.instance, fn)
 }
 
+// DockClientCount
+func (h *THeaderControl) DockClientCount() int32 {
+    return HeaderControl_GetDockClientCount(h.instance)
+}
+
 // DockSite
 func (h *THeaderControl) DockSite() bool {
     return HeaderControl_GetDockSite(h.instance)
@@ -623,6 +683,21 @@ func (h *THeaderControl) DockSite() bool {
 // SetDockSite
 func (h *THeaderControl) SetDockSite(value bool) {
     HeaderControl_SetDockSite(h.instance, value)
+}
+
+// AlignDisabled
+func (h *THeaderControl) AlignDisabled() bool {
+    return HeaderControl_GetAlignDisabled(h.instance)
+}
+
+// MouseInClient
+func (h *THeaderControl) MouseInClient() bool {
+    return HeaderControl_GetMouseInClient(h.instance)
+}
+
+// VisibleDockClientCount
+func (h *THeaderControl) VisibleDockClientCount() int32 {
+    return HeaderControl_GetVisibleDockClientCount(h.instance)
 }
 
 // Brush
@@ -651,12 +726,12 @@ func (h *THeaderControl) SetParentWindow(value HWND) {
 }
 
 // TabOrder
-func (h *THeaderControl) TabOrder() uint16 {
+func (h *THeaderControl) TabOrder() TTabOrder {
     return HeaderControl_GetTabOrder(h.instance)
 }
 
 // SetTabOrder
-func (h *THeaderControl) SetTabOrder(value uint16) {
+func (h *THeaderControl) SetTabOrder(value TTabOrder) {
     HeaderControl_SetTabOrder(h.instance, value)
 }
 
@@ -710,6 +785,11 @@ func (h *THeaderControl) SetClientHeight(value int32) {
     HeaderControl_SetClientHeight(h.instance, value)
 }
 
+// ClientOrigin
+func (h *THeaderControl) ClientOrigin() TPoint {
+    return HeaderControl_GetClientOrigin(h.instance)
+}
+
 // ClientRect
 func (h *THeaderControl) ClientRect() TRect {
     return HeaderControl_GetClientRect(h.instance)
@@ -723,6 +803,26 @@ func (h *THeaderControl) ClientWidth() int32 {
 // SetClientWidth
 func (h *THeaderControl) SetClientWidth(value int32) {
     HeaderControl_SetClientWidth(h.instance, value)
+}
+
+// ControlState
+func (h *THeaderControl) ControlState() TControlState {
+    return HeaderControl_GetControlState(h.instance)
+}
+
+// SetControlState
+func (h *THeaderControl) SetControlState(value TControlState) {
+    HeaderControl_SetControlState(h.instance, value)
+}
+
+// ControlStyle
+func (h *THeaderControl) ControlStyle() TControlStyle {
+    return HeaderControl_GetControlStyle(h.instance)
+}
+
+// SetControlStyle
+func (h *THeaderControl) SetControlStyle(value TControlStyle) {
+    HeaderControl_SetControlStyle(h.instance, value)
 }
 
 // ExplicitLeft
@@ -916,6 +1016,11 @@ func (h *THeaderControl) Tag() int {
 // EN: Set the control tag.
 func (h *THeaderControl) SetTag(value int) {
     HeaderControl_SetTag(h.instance, value)
+}
+
+// DockClients
+func (h *THeaderControl) DockClients(Index int32) *TControl {
+    return ControlFromInst(HeaderControl_GetDockClients(h.instance, Index))
 }
 
 // Controls

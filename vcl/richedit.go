@@ -161,6 +161,31 @@ func (r *TRichEdit) CanFocus() bool {
     return RichEdit_CanFocus(r.instance)
 }
 
+// ContainsControl
+func (r *TRichEdit) ContainsControl(Control IControl) bool {
+    return RichEdit_ContainsControl(r.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (r *TRichEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(RichEdit_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (r *TRichEdit) DisableAlign() {
+    RichEdit_DisableAlign(r.instance)
+}
+
+// EnableAlign
+func (r *TRichEdit) EnableAlign() {
+    RichEdit_EnableAlign(r.instance)
+}
+
+// FindChildControl
+func (r *TRichEdit) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(RichEdit_FindChildControl(r.instance, ControlName))
+}
+
 // FlipChildren
 func (r *TRichEdit) FlipChildren(AllLevels bool) {
     RichEdit_FlipChildren(r.instance, AllLevels)
@@ -176,9 +201,24 @@ func (r *TRichEdit) HandleAllocated() bool {
     return RichEdit_HandleAllocated(r.instance)
 }
 
+// InsertControl
+func (r *TRichEdit) InsertControl(AControl IControl) {
+    RichEdit_InsertControl(r.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (r *TRichEdit) Invalidate() {
     RichEdit_Invalidate(r.instance)
+}
+
+// PaintTo
+func (r *TRichEdit) PaintTo(DC HDC, X int32, Y int32) {
+    RichEdit_PaintTo(r.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (r *TRichEdit) RemoveControl(AControl IControl) {
+    RichEdit_RemoveControl(r.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -196,6 +236,11 @@ func (r *TRichEdit) ScaleBy(M int32, D int32) {
     RichEdit_ScaleBy(r.instance, M , D)
 }
 
+// ScrollBy
+func (r *TRichEdit) ScrollBy(DeltaX int32, DeltaY int32) {
+    RichEdit_ScrollBy(r.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (r *TRichEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     RichEdit_SetBounds(r.instance, ALeft , ATop , AWidth , AHeight)
@@ -209,6 +254,11 @@ func (r *TRichEdit) SetFocus() {
 // Update
 func (r *TRichEdit) Update() {
     RichEdit_Update(r.instance)
+}
+
+// UpdateControlState
+func (r *TRichEdit) UpdateControlState() {
+    RichEdit_UpdateControlState(r.instance)
 }
 
 // BringToFront
@@ -279,6 +329,11 @@ func (r *TRichEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (r *TRichEdit) GetTextLen() int32 {
     return RichEdit_GetTextLen(r.instance)
+}
+
+// SetTextBuf
+func (r *TRichEdit) SetTextBuf(Buffer string) {
+    RichEdit_SetTextBuf(r.instance, Buffer)
 }
 
 // FindComponent
@@ -647,12 +702,12 @@ func (r *TRichEdit) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (r *TRichEdit) TabOrder() uint16 {
+func (r *TRichEdit) TabOrder() TTabOrder {
     return RichEdit_GetTabOrder(r.instance)
 }
 
 // SetTabOrder
-func (r *TRichEdit) SetTabOrder(value uint16) {
+func (r *TRichEdit) SetTabOrder(value TTabOrder) {
     RichEdit_SetTabOrder(r.instance, value)
 }
 
@@ -957,6 +1012,11 @@ func (r *TRichEdit) SetTextHint(value string) {
     RichEdit_SetTextHint(r.instance, value)
 }
 
+// DockClientCount
+func (r *TRichEdit) DockClientCount() int32 {
+    return RichEdit_GetDockClientCount(r.instance)
+}
+
 // DockSite
 func (r *TRichEdit) DockSite() bool {
     return RichEdit_GetDockSite(r.instance)
@@ -975,6 +1035,21 @@ func (r *TRichEdit) DoubleBuffered() bool {
 // SetDoubleBuffered
 func (r *TRichEdit) SetDoubleBuffered(value bool) {
     RichEdit_SetDoubleBuffered(r.instance, value)
+}
+
+// AlignDisabled
+func (r *TRichEdit) AlignDisabled() bool {
+    return RichEdit_GetAlignDisabled(r.instance)
+}
+
+// MouseInClient
+func (r *TRichEdit) MouseInClient() bool {
+    return RichEdit_GetMouseInClient(r.instance)
+}
+
+// VisibleDockClientCount
+func (r *TRichEdit) VisibleDockClientCount() int32 {
+    return RichEdit_GetVisibleDockClientCount(r.instance)
 }
 
 // Brush
@@ -1052,6 +1127,11 @@ func (r *TRichEdit) SetClientHeight(value int32) {
     RichEdit_SetClientHeight(r.instance, value)
 }
 
+// ClientOrigin
+func (r *TRichEdit) ClientOrigin() TPoint {
+    return RichEdit_GetClientOrigin(r.instance)
+}
+
 // ClientRect
 func (r *TRichEdit) ClientRect() TRect {
     return RichEdit_GetClientRect(r.instance)
@@ -1065,6 +1145,26 @@ func (r *TRichEdit) ClientWidth() int32 {
 // SetClientWidth
 func (r *TRichEdit) SetClientWidth(value int32) {
     RichEdit_SetClientWidth(r.instance, value)
+}
+
+// ControlState
+func (r *TRichEdit) ControlState() TControlState {
+    return RichEdit_GetControlState(r.instance)
+}
+
+// SetControlState
+func (r *TRichEdit) SetControlState(value TControlState) {
+    RichEdit_SetControlState(r.instance, value)
+}
+
+// ControlStyle
+func (r *TRichEdit) ControlStyle() TControlStyle {
+    return RichEdit_GetControlStyle(r.instance)
+}
+
+// SetControlStyle
+func (r *TRichEdit) SetControlStyle(value TControlStyle) {
+    RichEdit_SetControlStyle(r.instance, value)
 }
 
 // ExplicitLeft
@@ -1258,6 +1358,11 @@ func (r *TRichEdit) Tag() int {
 // EN: Set the control tag.
 func (r *TRichEdit) SetTag(value int) {
     RichEdit_SetTag(r.instance, value)
+}
+
+// DockClients
+func (r *TRichEdit) DockClients(Index int32) *TControl {
+    return ControlFromInst(RichEdit_GetDockClients(r.instance, Index))
 }
 
 // Controls

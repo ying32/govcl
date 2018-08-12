@@ -75,6 +75,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function RichEdit_ContainsControl(AObj: TRichEdit; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function RichEdit_ControlAtPos(AObj: TRichEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure RichEdit_DisableAlign(AObj: TRichEdit); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure RichEdit_EnableAlign(AObj: TRichEdit); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function RichEdit_FindChildControl(AObj: TRichEdit; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure RichEdit_FlipChildren(AObj: TRichEdit; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -90,9 +115,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure RichEdit_InsertControl(AObj: TRichEdit; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure RichEdit_Invalidate(AObj: TRichEdit); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure RichEdit_PaintTo(AObj: TRichEdit; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure RichEdit_RemoveControl(AObj: TRichEdit; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure RichEdit_Realign(AObj: TRichEdit); stdcall;
@@ -110,6 +150,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure RichEdit_ScrollBy(AObj: TRichEdit; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure RichEdit_SetBounds(AObj: TRichEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -123,6 +168,11 @@ end;
 procedure RichEdit_Update(AObj: TRichEdit); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure RichEdit_UpdateControlState(AObj: TRichEdit); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure RichEdit_BringToFront(AObj: TRichEdit); stdcall;
@@ -193,6 +243,11 @@ end;
 function RichEdit_GetTextLen(AObj: TRichEdit): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure RichEdit_SetTextBuf(AObj: TRichEdit; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function RichEdit_FindComponent(AObj: TRichEdit; AName: PChar): TComponent; stdcall;
@@ -999,6 +1054,11 @@ begin
   AObj.TextHint := AValue;
 end;
 
+function RichEdit_GetDockClientCount(AObj: TRichEdit): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function RichEdit_GetDockSite(AObj: TRichEdit): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -1017,6 +1077,21 @@ end;
 procedure RichEdit_SetDoubleBuffered(AObj: TRichEdit; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function RichEdit_GetAlignDisabled(AObj: TRichEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function RichEdit_GetMouseInClient(AObj: TRichEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function RichEdit_GetVisibleDockClientCount(AObj: TRichEdit): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function RichEdit_GetBrush(AObj: TRichEdit): TBrush; stdcall;
@@ -1094,6 +1169,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure RichEdit_GetClientOrigin(AObj: TRichEdit; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure RichEdit_GetClientRect(AObj: TRichEdit; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -1107,6 +1187,26 @@ end;
 procedure RichEdit_SetClientWidth(AObj: TRichEdit; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function RichEdit_GetControlState(AObj: TRichEdit): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure RichEdit_SetControlState(AObj: TRichEdit; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function RichEdit_GetControlStyle(AObj: TRichEdit): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure RichEdit_SetControlStyle(AObj: TRichEdit; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function RichEdit_GetExplicitLeft(AObj: TRichEdit): Integer; stdcall;
@@ -1274,6 +1374,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function RichEdit_GetDockClients(AObj: TRichEdit; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function RichEdit_GetControls(AObj: TRichEdit; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1304,16 +1409,26 @@ exports
   RichEdit_ClearUndo,
   RichEdit_SelectAll,
   RichEdit_CanFocus,
+  RichEdit_ContainsControl,
+  RichEdit_ControlAtPos,
+  RichEdit_DisableAlign,
+  RichEdit_EnableAlign,
+  RichEdit_FindChildControl,
   RichEdit_FlipChildren,
   RichEdit_Focused,
   RichEdit_HandleAllocated,
+  RichEdit_InsertControl,
   RichEdit_Invalidate,
+  RichEdit_PaintTo,
+  RichEdit_RemoveControl,
   RichEdit_Realign,
   RichEdit_Repaint,
   RichEdit_ScaleBy,
+  RichEdit_ScrollBy,
   RichEdit_SetBounds,
   RichEdit_SetFocus,
   RichEdit_Update,
+  RichEdit_UpdateControlState,
   RichEdit_BringToFront,
   RichEdit_ClientToScreen,
   RichEdit_ClientToParent,
@@ -1328,6 +1443,7 @@ exports
   RichEdit_Show,
   RichEdit_GetTextBuf,
   RichEdit_GetTextLen,
+  RichEdit_SetTextBuf,
   RichEdit_FindComponent,
   RichEdit_GetNamePath,
   RichEdit_Assign,
@@ -1458,10 +1574,14 @@ exports
   RichEdit_SetText,
   RichEdit_GetTextHint,
   RichEdit_SetTextHint,
+  RichEdit_GetDockClientCount,
   RichEdit_GetDockSite,
   RichEdit_SetDockSite,
   RichEdit_GetDoubleBuffered,
   RichEdit_SetDoubleBuffered,
+  RichEdit_GetAlignDisabled,
+  RichEdit_GetMouseInClient,
+  RichEdit_GetVisibleDockClientCount,
   RichEdit_GetBrush,
   RichEdit_GetControlCount,
   RichEdit_GetHandle,
@@ -1477,9 +1597,14 @@ exports
   RichEdit_SetBoundsRect,
   RichEdit_GetClientHeight,
   RichEdit_SetClientHeight,
+  RichEdit_GetClientOrigin,
   RichEdit_GetClientRect,
   RichEdit_GetClientWidth,
   RichEdit_SetClientWidth,
+  RichEdit_GetControlState,
+  RichEdit_SetControlState,
+  RichEdit_GetControlStyle,
+  RichEdit_SetControlStyle,
   RichEdit_GetExplicitLeft,
   RichEdit_GetExplicitTop,
   RichEdit_GetExplicitWidth,
@@ -1513,6 +1638,7 @@ exports
   RichEdit_SetName,
   RichEdit_GetTag,
   RichEdit_SetTag,
+  RichEdit_GetDockClients,
   RichEdit_GetControls,
   RichEdit_GetComponents,
   RichEdit_StaticClassType;

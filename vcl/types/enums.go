@@ -1796,3 +1796,54 @@ const (
 	TsTrackMove
 	TsTrackEnd
 )
+
+type TControlState uint32
+
+const (
+	CsLButtonDown = iota + 0
+	CsClicked
+	CsPalette
+	CsReadingState
+	CsAlignmentNeeded
+	CsFocusing
+	CsCreating
+	CsPaintCopy
+	CsCustomPaint
+	CsDestroyingHandle
+	CsDocking
+	CsDesignerHide
+	CsPanning
+	CsRecreating
+	CsAligning
+	CsGlassPaint
+	CsPrintClient
+)
+
+type TControlStyle uint32
+
+const (
+	CsAcceptsControls = iota + 0
+	CsCaptureMouse
+	CsDesignInteractive
+	CsClickEvents
+	CsFramed
+	CsSetCaption
+	CsOpaque
+	CsDoubleClicks
+	CsFixedWidth
+	CsFixedHeight
+	CsNoDesignVisible
+	CsReplicatable
+	CsNoStdEvents
+	CsDisplayDragImage
+	CsReflector
+	CsActionClient
+	CsMenuEvents
+	CsNeedsBorderPaint
+	CsParentBackground
+	CsPannable
+	CsAlignWithMargins
+	CsGestures
+	CsPaintBlackOpaqueOnGlass
+	CsOverrideStylePaint
+)

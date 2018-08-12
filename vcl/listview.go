@@ -156,6 +156,31 @@ func (l *TListView) CanFocus() bool {
     return ListView_CanFocus(l.instance)
 }
 
+// ContainsControl
+func (l *TListView) ContainsControl(Control IControl) bool {
+    return ListView_ContainsControl(l.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (l *TListView) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ListView_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (l *TListView) DisableAlign() {
+    ListView_DisableAlign(l.instance)
+}
+
+// EnableAlign
+func (l *TListView) EnableAlign() {
+    ListView_EnableAlign(l.instance)
+}
+
+// FindChildControl
+func (l *TListView) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ListView_FindChildControl(l.instance, ControlName))
+}
+
 // FlipChildren
 func (l *TListView) FlipChildren(AllLevels bool) {
     ListView_FlipChildren(l.instance, AllLevels)
@@ -171,9 +196,24 @@ func (l *TListView) HandleAllocated() bool {
     return ListView_HandleAllocated(l.instance)
 }
 
+// InsertControl
+func (l *TListView) InsertControl(AControl IControl) {
+    ListView_InsertControl(l.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (l *TListView) Invalidate() {
     ListView_Invalidate(l.instance)
+}
+
+// PaintTo
+func (l *TListView) PaintTo(DC HDC, X int32, Y int32) {
+    ListView_PaintTo(l.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (l *TListView) RemoveControl(AControl IControl) {
+    ListView_RemoveControl(l.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -191,6 +231,11 @@ func (l *TListView) ScaleBy(M int32, D int32) {
     ListView_ScaleBy(l.instance, M , D)
 }
 
+// ScrollBy
+func (l *TListView) ScrollBy(DeltaX int32, DeltaY int32) {
+    ListView_ScrollBy(l.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (l *TListView) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ListView_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
@@ -204,6 +249,11 @@ func (l *TListView) SetFocus() {
 // Update
 func (l *TListView) Update() {
     ListView_Update(l.instance)
+}
+
+// UpdateControlState
+func (l *TListView) UpdateControlState() {
+    ListView_UpdateControlState(l.instance)
 }
 
 // BringToFront
@@ -274,6 +324,11 @@ func (l *TListView) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (l *TListView) GetTextLen() int32 {
     return ListView_GetTextLen(l.instance)
+}
+
+// SetTextBuf
+func (l *TListView) SetTextBuf(Buffer string) {
+    ListView_SetTextBuf(l.instance, Buffer)
 }
 
 // FindComponent
@@ -832,12 +887,12 @@ func (l *TListView) SetStateImages(value IComponent) {
 }
 
 // TabOrder
-func (l *TListView) TabOrder() uint16 {
+func (l *TListView) TabOrder() TTabOrder {
     return ListView_GetTabOrder(l.instance)
 }
 
 // SetTabOrder
-func (l *TListView) SetTabOrder(value uint16) {
+func (l *TListView) SetTabOrder(value TTabOrder) {
     ListView_SetTabOrder(l.instance, value)
 }
 
@@ -1082,6 +1137,11 @@ func (l *TListView) SetItemIndex(value int32) {
     ListView_SetItemIndex(l.instance, value)
 }
 
+// DockClientCount
+func (l *TListView) DockClientCount() int32 {
+    return ListView_GetDockClientCount(l.instance)
+}
+
 // DockSite
 func (l *TListView) DockSite() bool {
     return ListView_GetDockSite(l.instance)
@@ -1090,6 +1150,21 @@ func (l *TListView) DockSite() bool {
 // SetDockSite
 func (l *TListView) SetDockSite(value bool) {
     ListView_SetDockSite(l.instance, value)
+}
+
+// AlignDisabled
+func (l *TListView) AlignDisabled() bool {
+    return ListView_GetAlignDisabled(l.instance)
+}
+
+// MouseInClient
+func (l *TListView) MouseInClient() bool {
+    return ListView_GetMouseInClient(l.instance)
+}
+
+// VisibleDockClientCount
+func (l *TListView) VisibleDockClientCount() int32 {
+    return ListView_GetVisibleDockClientCount(l.instance)
 }
 
 // Brush
@@ -1147,6 +1222,11 @@ func (l *TListView) SetClientHeight(value int32) {
     ListView_SetClientHeight(l.instance, value)
 }
 
+// ClientOrigin
+func (l *TListView) ClientOrigin() TPoint {
+    return ListView_GetClientOrigin(l.instance)
+}
+
 // ClientRect
 func (l *TListView) ClientRect() TRect {
     return ListView_GetClientRect(l.instance)
@@ -1160,6 +1240,26 @@ func (l *TListView) ClientWidth() int32 {
 // SetClientWidth
 func (l *TListView) SetClientWidth(value int32) {
     ListView_SetClientWidth(l.instance, value)
+}
+
+// ControlState
+func (l *TListView) ControlState() TControlState {
+    return ListView_GetControlState(l.instance)
+}
+
+// SetControlState
+func (l *TListView) SetControlState(value TControlState) {
+    ListView_SetControlState(l.instance, value)
+}
+
+// ControlStyle
+func (l *TListView) ControlStyle() TControlStyle {
+    return ListView_GetControlStyle(l.instance)
+}
+
+// SetControlStyle
+func (l *TListView) SetControlStyle(value TControlStyle) {
+    ListView_SetControlStyle(l.instance, value)
 }
 
 // ExplicitLeft
@@ -1358,6 +1458,11 @@ func (l *TListView) SetTag(value int) {
 // Column
 func (l *TListView) Column(Index int32) *TListColumn {
     return ListColumnFromInst(ListView_GetColumn(l.instance, Index))
+}
+
+// DockClients
+func (l *TListView) DockClients(Index int32) *TControl {
+    return ControlFromInst(ListView_GetDockClients(l.instance, Index))
 }
 
 // Controls

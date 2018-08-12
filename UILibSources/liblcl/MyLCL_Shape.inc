@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Shape_SetTextBuf(AObj: TShape; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Shape_FindComponent(AObj: TShape; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -411,6 +416,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Shape_GetClientOrigin(AObj: TShape; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Shape_GetClientRect(AObj: TShape; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -424,6 +434,26 @@ end;
 procedure Shape_SetClientWidth(AObj: TShape; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Shape_GetControlState(AObj: TShape): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Shape_SetControlState(AObj: TShape; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Shape_GetControlStyle(AObj: TShape): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Shape_SetControlStyle(AObj: TShape; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Shape_GetFloating(AObj: TShape): LongBool; extdecl;
@@ -572,6 +602,7 @@ exports
   Shape_Update,
   Shape_GetTextBuf,
   Shape_GetTextLen,
+  Shape_SetTextBuf,
   Shape_FindComponent,
   Shape_GetNamePath,
   Shape_Assign,
@@ -622,9 +653,14 @@ exports
   Shape_SetBoundsRect,
   Shape_GetClientHeight,
   Shape_SetClientHeight,
+  Shape_GetClientOrigin,
   Shape_GetClientRect,
   Shape_GetClientWidth,
   Shape_SetClientWidth,
+  Shape_GetControlState,
+  Shape_SetControlState,
+  Shape_GetControlStyle,
+  Shape_SetControlStyle,
   Shape_GetFloating,
   Shape_GetParent,
   Shape_SetParent,

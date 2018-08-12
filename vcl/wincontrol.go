@@ -106,6 +106,31 @@ func (w *TWinControl) CanFocus() bool {
     return WinControl_CanFocus(w.instance)
 }
 
+// ContainsControl
+func (w *TWinControl) ContainsControl(Control IControl) bool {
+    return WinControl_ContainsControl(w.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (w *TWinControl) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(WinControl_ControlAtPos(w.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (w *TWinControl) DisableAlign() {
+    WinControl_DisableAlign(w.instance)
+}
+
+// EnableAlign
+func (w *TWinControl) EnableAlign() {
+    WinControl_EnableAlign(w.instance)
+}
+
+// FindChildControl
+func (w *TWinControl) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(WinControl_FindChildControl(w.instance, ControlName))
+}
+
 // FlipChildren
 func (w *TWinControl) FlipChildren(AllLevels bool) {
     WinControl_FlipChildren(w.instance, AllLevels)
@@ -121,9 +146,24 @@ func (w *TWinControl) HandleAllocated() bool {
     return WinControl_HandleAllocated(w.instance)
 }
 
+// InsertControl
+func (w *TWinControl) InsertControl(AControl IControl) {
+    WinControl_InsertControl(w.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (w *TWinControl) Invalidate() {
     WinControl_Invalidate(w.instance)
+}
+
+// PaintTo
+func (w *TWinControl) PaintTo(DC HDC, X int32, Y int32) {
+    WinControl_PaintTo(w.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (w *TWinControl) RemoveControl(AControl IControl) {
+    WinControl_RemoveControl(w.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -141,6 +181,11 @@ func (w *TWinControl) ScaleBy(M int32, D int32) {
     WinControl_ScaleBy(w.instance, M , D)
 }
 
+// ScrollBy
+func (w *TWinControl) ScrollBy(DeltaX int32, DeltaY int32) {
+    WinControl_ScrollBy(w.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (w *TWinControl) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     WinControl_SetBounds(w.instance, ALeft , ATop , AWidth , AHeight)
@@ -154,6 +199,11 @@ func (w *TWinControl) SetFocus() {
 // Update
 func (w *TWinControl) Update() {
     WinControl_Update(w.instance)
+}
+
+// UpdateControlState
+func (w *TWinControl) UpdateControlState() {
+    WinControl_UpdateControlState(w.instance)
 }
 
 // BringToFront
@@ -224,6 +274,11 @@ func (w *TWinControl) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (w *TWinControl) GetTextLen() int32 {
     return WinControl_GetTextLen(w.instance)
+}
+
+// SetTextBuf
+func (w *TWinControl) SetTextBuf(Buffer string) {
+    WinControl_SetTextBuf(w.instance, Buffer)
 }
 
 // FindComponent
@@ -297,6 +352,11 @@ func (w *TWinControl) ToString() string {
     return WinControl_ToString(w.instance)
 }
 
+// DockClientCount
+func (w *TWinControl) DockClientCount() int32 {
+    return WinControl_GetDockClientCount(w.instance)
+}
+
 // DockSite
 func (w *TWinControl) DockSite() bool {
     return WinControl_GetDockSite(w.instance)
@@ -315,6 +375,21 @@ func (w *TWinControl) DoubleBuffered() bool {
 // SetDoubleBuffered
 func (w *TWinControl) SetDoubleBuffered(value bool) {
     WinControl_SetDoubleBuffered(w.instance, value)
+}
+
+// AlignDisabled
+func (w *TWinControl) AlignDisabled() bool {
+    return WinControl_GetAlignDisabled(w.instance)
+}
+
+// MouseInClient
+func (w *TWinControl) MouseInClient() bool {
+    return WinControl_GetMouseInClient(w.instance)
+}
+
+// VisibleDockClientCount
+func (w *TWinControl) VisibleDockClientCount() int32 {
+    return WinControl_GetVisibleDockClientCount(w.instance)
 }
 
 // Brush
@@ -353,12 +428,12 @@ func (w *TWinControl) SetParentWindow(value HWND) {
 }
 
 // TabOrder
-func (w *TWinControl) TabOrder() uint16 {
+func (w *TWinControl) TabOrder() TTabOrder {
     return WinControl_GetTabOrder(w.instance)
 }
 
 // SetTabOrder
-func (w *TWinControl) SetTabOrder(value uint16) {
+func (w *TWinControl) SetTabOrder(value TTabOrder) {
     WinControl_SetTabOrder(w.instance, value)
 }
 
@@ -456,6 +531,11 @@ func (w *TWinControl) SetClientHeight(value int32) {
     WinControl_SetClientHeight(w.instance, value)
 }
 
+// ClientOrigin
+func (w *TWinControl) ClientOrigin() TPoint {
+    return WinControl_GetClientOrigin(w.instance)
+}
+
 // ClientRect
 func (w *TWinControl) ClientRect() TRect {
     return WinControl_GetClientRect(w.instance)
@@ -469,6 +549,26 @@ func (w *TWinControl) ClientWidth() int32 {
 // SetClientWidth
 func (w *TWinControl) SetClientWidth(value int32) {
     WinControl_SetClientWidth(w.instance, value)
+}
+
+// ControlState
+func (w *TWinControl) ControlState() TControlState {
+    return WinControl_GetControlState(w.instance)
+}
+
+// SetControlState
+func (w *TWinControl) SetControlState(value TControlState) {
+    WinControl_SetControlState(w.instance, value)
+}
+
+// ControlStyle
+func (w *TWinControl) ControlStyle() TControlStyle {
+    return WinControl_GetControlStyle(w.instance)
+}
+
+// SetControlStyle
+func (w *TWinControl) SetControlStyle(value TControlStyle) {
+    WinControl_SetControlStyle(w.instance, value)
 }
 
 // ExplicitLeft
@@ -696,6 +796,11 @@ func (w *TWinControl) Tag() int {
 // EN: Set the control tag.
 func (w *TWinControl) SetTag(value int) {
     WinControl_SetTag(w.instance, value)
+}
+
+// DockClients
+func (w *TWinControl) DockClients(Index int32) *TControl {
+    return ControlFromInst(WinControl_GetDockClients(w.instance, Index))
 }
 
 // Controls

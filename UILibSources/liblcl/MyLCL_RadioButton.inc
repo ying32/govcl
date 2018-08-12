@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function RadioButton_ContainsControl(AObj: TRadioButton; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function RadioButton_ControlAtPos(AObj: TRadioButton; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure RadioButton_DisableAlign(AObj: TRadioButton); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure RadioButton_EnableAlign(AObj: TRadioButton); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function RadioButton_FindChildControl(AObj: TRadioButton; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure RadioButton_FlipChildren(AObj: TRadioButton; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure RadioButton_InsertControl(AObj: TRadioButton; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure RadioButton_Invalidate(AObj: TRadioButton); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure RadioButton_RemoveControl(AObj: TRadioButton; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure RadioButton_Realign(AObj: TRadioButton); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure RadioButton_ScaleBy(AObj: TRadioButton; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure RadioButton_ScrollBy(AObj: TRadioButton; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure RadioButton_SetBounds(AObj: TRadioButton; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function RadioButton_GetTextLen(AObj: TRadioButton): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure RadioButton_SetTextBuf(AObj: TRadioButton; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function RadioButton_FindComponent(AObj: TRadioButton; AName: PChar): TComponent; extdecl;
@@ -590,6 +635,11 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function RadioButton_GetDockClientCount(AObj: TRadioButton): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function RadioButton_GetDockSite(AObj: TRadioButton): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -598,6 +648,11 @@ end;
 procedure RadioButton_SetDockSite(AObj: TRadioButton; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function RadioButton_GetVisibleDockClientCount(AObj: TRadioButton): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function RadioButton_GetBrush(AObj: TRadioButton): TBrush; extdecl;
@@ -655,6 +710,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure RadioButton_GetClientOrigin(AObj: TRadioButton; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure RadioButton_GetClientRect(AObj: TRadioButton; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -668,6 +728,26 @@ end;
 procedure RadioButton_SetClientWidth(AObj: TRadioButton; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function RadioButton_GetControlState(AObj: TRadioButton): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure RadioButton_SetControlState(AObj: TRadioButton; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function RadioButton_GetControlStyle(AObj: TRadioButton): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure RadioButton_SetControlStyle(AObj: TRadioButton; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function RadioButton_GetFloating(AObj: TRadioButton): LongBool; extdecl;
@@ -785,6 +865,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function RadioButton_GetDockClients(AObj: TRadioButton; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function RadioButton_GetControls(AObj: TRadioButton; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -804,13 +889,21 @@ exports
   RadioButton_Create,
   RadioButton_Free,
   RadioButton_CanFocus,
+  RadioButton_ContainsControl,
+  RadioButton_ControlAtPos,
+  RadioButton_DisableAlign,
+  RadioButton_EnableAlign,
+  RadioButton_FindChildControl,
   RadioButton_FlipChildren,
   RadioButton_Focused,
   RadioButton_HandleAllocated,
+  RadioButton_InsertControl,
   RadioButton_Invalidate,
+  RadioButton_RemoveControl,
   RadioButton_Realign,
   RadioButton_Repaint,
   RadioButton_ScaleBy,
+  RadioButton_ScrollBy,
   RadioButton_SetBounds,
   RadioButton_SetFocus,
   RadioButton_Update,
@@ -828,6 +921,7 @@ exports
   RadioButton_Show,
   RadioButton_GetTextBuf,
   RadioButton_GetTextLen,
+  RadioButton_SetTextBuf,
   RadioButton_FindComponent,
   RadioButton_GetNamePath,
   RadioButton_Assign,
@@ -897,8 +991,10 @@ exports
   RadioButton_SetOnMouseLeave,
   RadioButton_SetOnMouseMove,
   RadioButton_SetOnMouseUp,
+  RadioButton_GetDockClientCount,
   RadioButton_GetDockSite,
   RadioButton_SetDockSite,
+  RadioButton_GetVisibleDockClientCount,
   RadioButton_GetBrush,
   RadioButton_GetControlCount,
   RadioButton_GetHandle,
@@ -910,9 +1006,14 @@ exports
   RadioButton_SetBoundsRect,
   RadioButton_GetClientHeight,
   RadioButton_SetClientHeight,
+  RadioButton_GetClientOrigin,
   RadioButton_GetClientRect,
   RadioButton_GetClientWidth,
   RadioButton_SetClientWidth,
+  RadioButton_GetControlState,
+  RadioButton_SetControlState,
+  RadioButton_GetControlStyle,
+  RadioButton_SetControlStyle,
   RadioButton_GetFloating,
   RadioButton_GetParent,
   RadioButton_SetParent,
@@ -936,6 +1037,7 @@ exports
   RadioButton_SetName,
   RadioButton_GetTag,
   RadioButton_SetTag,
+  RadioButton_GetDockClients,
   RadioButton_GetControls,
   RadioButton_GetComponents,
   RadioButton_StaticClassType;

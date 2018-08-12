@@ -161,6 +161,31 @@ func (m *TMaskEdit) CanFocus() bool {
     return MaskEdit_CanFocus(m.instance)
 }
 
+// ContainsControl
+func (m *TMaskEdit) ContainsControl(Control IControl) bool {
+    return MaskEdit_ContainsControl(m.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (m *TMaskEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(MaskEdit_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (m *TMaskEdit) DisableAlign() {
+    MaskEdit_DisableAlign(m.instance)
+}
+
+// EnableAlign
+func (m *TMaskEdit) EnableAlign() {
+    MaskEdit_EnableAlign(m.instance)
+}
+
+// FindChildControl
+func (m *TMaskEdit) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(MaskEdit_FindChildControl(m.instance, ControlName))
+}
+
 // FlipChildren
 func (m *TMaskEdit) FlipChildren(AllLevels bool) {
     MaskEdit_FlipChildren(m.instance, AllLevels)
@@ -176,9 +201,24 @@ func (m *TMaskEdit) HandleAllocated() bool {
     return MaskEdit_HandleAllocated(m.instance)
 }
 
+// InsertControl
+func (m *TMaskEdit) InsertControl(AControl IControl) {
+    MaskEdit_InsertControl(m.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (m *TMaskEdit) Invalidate() {
     MaskEdit_Invalidate(m.instance)
+}
+
+// PaintTo
+func (m *TMaskEdit) PaintTo(DC HDC, X int32, Y int32) {
+    MaskEdit_PaintTo(m.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (m *TMaskEdit) RemoveControl(AControl IControl) {
+    MaskEdit_RemoveControl(m.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -196,6 +236,11 @@ func (m *TMaskEdit) ScaleBy(M int32, D int32) {
     MaskEdit_ScaleBy(m.instance, M , D)
 }
 
+// ScrollBy
+func (m *TMaskEdit) ScrollBy(DeltaX int32, DeltaY int32) {
+    MaskEdit_ScrollBy(m.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (m *TMaskEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     MaskEdit_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
@@ -209,6 +254,11 @@ func (m *TMaskEdit) SetFocus() {
 // Update
 func (m *TMaskEdit) Update() {
     MaskEdit_Update(m.instance)
+}
+
+// UpdateControlState
+func (m *TMaskEdit) UpdateControlState() {
+    MaskEdit_UpdateControlState(m.instance)
 }
 
 // BringToFront
@@ -274,6 +324,11 @@ func (m *TMaskEdit) Show() {
 // GetTextBuf
 func (m *TMaskEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
     return MaskEdit_GetTextBuf(m.instance, Buffer , BufSize)
+}
+
+// SetTextBuf
+func (m *TMaskEdit) SetTextBuf(Buffer string) {
+    MaskEdit_SetTextBuf(m.instance, Buffer)
 }
 
 // FindComponent
@@ -642,12 +697,12 @@ func (m *TMaskEdit) SetShowHint(value bool) {
 }
 
 // TabOrder
-func (m *TMaskEdit) TabOrder() uint16 {
+func (m *TMaskEdit) TabOrder() TTabOrder {
     return MaskEdit_GetTabOrder(m.instance)
 }
 
 // SetTabOrder
-func (m *TMaskEdit) SetTabOrder(value uint16) {
+func (m *TMaskEdit) SetTabOrder(value TTabOrder) {
     MaskEdit_SetTabOrder(m.instance, value)
 }
 
@@ -857,6 +912,11 @@ func (m *TMaskEdit) SetSelText(value string) {
     MaskEdit_SetSelText(m.instance, value)
 }
 
+// DockClientCount
+func (m *TMaskEdit) DockClientCount() int32 {
+    return MaskEdit_GetDockClientCount(m.instance)
+}
+
 // DockSite
 func (m *TMaskEdit) DockSite() bool {
     return MaskEdit_GetDockSite(m.instance)
@@ -865,6 +925,21 @@ func (m *TMaskEdit) DockSite() bool {
 // SetDockSite
 func (m *TMaskEdit) SetDockSite(value bool) {
     MaskEdit_SetDockSite(m.instance, value)
+}
+
+// AlignDisabled
+func (m *TMaskEdit) AlignDisabled() bool {
+    return MaskEdit_GetAlignDisabled(m.instance)
+}
+
+// MouseInClient
+func (m *TMaskEdit) MouseInClient() bool {
+    return MaskEdit_GetMouseInClient(m.instance)
+}
+
+// VisibleDockClientCount
+func (m *TMaskEdit) VisibleDockClientCount() int32 {
+    return MaskEdit_GetVisibleDockClientCount(m.instance)
 }
 
 // Brush
@@ -932,6 +1007,11 @@ func (m *TMaskEdit) SetClientHeight(value int32) {
     MaskEdit_SetClientHeight(m.instance, value)
 }
 
+// ClientOrigin
+func (m *TMaskEdit) ClientOrigin() TPoint {
+    return MaskEdit_GetClientOrigin(m.instance)
+}
+
 // ClientRect
 func (m *TMaskEdit) ClientRect() TRect {
     return MaskEdit_GetClientRect(m.instance)
@@ -945,6 +1025,26 @@ func (m *TMaskEdit) ClientWidth() int32 {
 // SetClientWidth
 func (m *TMaskEdit) SetClientWidth(value int32) {
     MaskEdit_SetClientWidth(m.instance, value)
+}
+
+// ControlState
+func (m *TMaskEdit) ControlState() TControlState {
+    return MaskEdit_GetControlState(m.instance)
+}
+
+// SetControlState
+func (m *TMaskEdit) SetControlState(value TControlState) {
+    MaskEdit_SetControlState(m.instance, value)
+}
+
+// ControlStyle
+func (m *TMaskEdit) ControlStyle() TControlStyle {
+    return MaskEdit_GetControlStyle(m.instance)
+}
+
+// SetControlStyle
+func (m *TMaskEdit) SetControlStyle(value TControlStyle) {
+    MaskEdit_SetControlStyle(m.instance, value)
 }
 
 // ExplicitLeft
@@ -1138,6 +1238,11 @@ func (m *TMaskEdit) Tag() int {
 // EN: Set the control tag.
 func (m *TMaskEdit) SetTag(value int) {
     MaskEdit_SetTag(m.instance, value)
+}
+
+// DockClients
+func (m *TMaskEdit) DockClients(Index int32) *TControl {
+    return ControlFromInst(MaskEdit_GetDockClients(m.instance, Index))
 }
 
 // Controls

@@ -136,6 +136,31 @@ func (f *TForm) CanFocus() bool {
     return Form_CanFocus(f.instance)
 }
 
+// ContainsControl
+func (f *TForm) ContainsControl(Control IControl) bool {
+    return Form_ContainsControl(f.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (f *TForm) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(Form_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (f *TForm) DisableAlign() {
+    Form_DisableAlign(f.instance)
+}
+
+// EnableAlign
+func (f *TForm) EnableAlign() {
+    Form_EnableAlign(f.instance)
+}
+
+// FindChildControl
+func (f *TForm) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(Form_FindChildControl(f.instance, ControlName))
+}
+
 // FlipChildren
 func (f *TForm) FlipChildren(AllLevels bool) {
     Form_FlipChildren(f.instance, AllLevels)
@@ -151,9 +176,24 @@ func (f *TForm) HandleAllocated() bool {
     return Form_HandleAllocated(f.instance)
 }
 
+// InsertControl
+func (f *TForm) InsertControl(AControl IControl) {
+    Form_InsertControl(f.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (f *TForm) Invalidate() {
     Form_Invalidate(f.instance)
+}
+
+// PaintTo
+func (f *TForm) PaintTo(DC HDC, X int32, Y int32) {
+    Form_PaintTo(f.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (f *TForm) RemoveControl(AControl IControl) {
+    Form_RemoveControl(f.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -171,6 +211,11 @@ func (f *TForm) ScaleBy(M int32, D int32) {
     Form_ScaleBy(f.instance, M , D)
 }
 
+// ScrollBy
+func (f *TForm) ScrollBy(DeltaX int32, DeltaY int32) {
+    Form_ScrollBy(f.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (f *TForm) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Form_SetBounds(f.instance, ALeft , ATop , AWidth , AHeight)
@@ -179,6 +224,11 @@ func (f *TForm) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) 
 // Update
 func (f *TForm) Update() {
     Form_Update(f.instance)
+}
+
+// UpdateControlState
+func (f *TForm) UpdateControlState() {
+    Form_UpdateControlState(f.instance)
 }
 
 // BringToFront
@@ -239,6 +289,11 @@ func (f *TForm) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (f *TForm) GetTextLen() int32 {
     return Form_GetTextLen(f.instance)
+}
+
+// SetTextBuf
+func (f *TForm) SetTextBuf(Buffer string) {
+    Form_SetTextBuf(f.instance, Buffer)
 }
 
 // FindComponent
@@ -896,6 +951,26 @@ func (f *TForm) SetTop(value int32) {
     Form_SetTop(f.instance, value)
 }
 
+// DockClientCount
+func (f *TForm) DockClientCount() int32 {
+    return Form_GetDockClientCount(f.instance)
+}
+
+// AlignDisabled
+func (f *TForm) AlignDisabled() bool {
+    return Form_GetAlignDisabled(f.instance)
+}
+
+// MouseInClient
+func (f *TForm) MouseInClient() bool {
+    return Form_GetMouseInClient(f.instance)
+}
+
+// VisibleDockClientCount
+func (f *TForm) VisibleDockClientCount() int32 {
+    return Form_GetVisibleDockClientCount(f.instance)
+}
+
 // Brush
 func (f *TForm) Brush() *TBrush {
     return BrushFromInst(Form_GetBrush(f.instance))
@@ -932,12 +1007,12 @@ func (f *TForm) SetParentWindow(value HWND) {
 }
 
 // TabOrder
-func (f *TForm) TabOrder() uint16 {
+func (f *TForm) TabOrder() TTabOrder {
     return Form_GetTabOrder(f.instance)
 }
 
 // SetTabOrder
-func (f *TForm) SetTabOrder(value uint16) {
+func (f *TForm) SetTabOrder(value TTabOrder) {
     Form_SetTabOrder(f.instance, value)
 }
 
@@ -961,9 +1036,34 @@ func (f *TForm) SetBoundsRect(value TRect) {
     Form_SetBoundsRect(f.instance, value)
 }
 
+// ClientOrigin
+func (f *TForm) ClientOrigin() TPoint {
+    return Form_GetClientOrigin(f.instance)
+}
+
 // ClientRect
 func (f *TForm) ClientRect() TRect {
     return Form_GetClientRect(f.instance)
+}
+
+// ControlState
+func (f *TForm) ControlState() TControlState {
+    return Form_GetControlState(f.instance)
+}
+
+// SetControlState
+func (f *TForm) SetControlState(value TControlState) {
+    Form_SetControlState(f.instance, value)
+}
+
+// ControlStyle
+func (f *TForm) ControlStyle() TControlStyle {
+    return Form_GetControlStyle(f.instance)
+}
+
+// SetControlStyle
+func (f *TForm) SetControlStyle(value TControlStyle) {
+    Form_SetControlStyle(f.instance, value)
 }
 
 // ExplicitLeft
@@ -1117,6 +1217,11 @@ func (f *TForm) Tag() int {
 // EN: Set the control tag.
 func (f *TForm) SetTag(value int) {
     Form_SetTag(f.instance, value)
+}
+
+// DockClients
+func (f *TForm) DockClients(Index int32) *TControl {
+    return ControlFromInst(Form_GetDockClients(f.instance, Index))
 }
 
 // Controls

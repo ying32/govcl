@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Shape_SetTextBuf(AObj: TShape; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Shape_FindComponent(AObj: TShape; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -452,6 +457,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Shape_GetClientOrigin(AObj: TShape; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Shape_GetClientRect(AObj: TShape; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -465,6 +475,26 @@ end;
 procedure Shape_SetClientWidth(AObj: TShape; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Shape_GetControlState(AObj: TShape): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Shape_SetControlState(AObj: TShape; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Shape_GetControlStyle(AObj: TShape): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Shape_SetControlStyle(AObj: TShape; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Shape_GetExplicitLeft(AObj: TShape): Integer; stdcall;
@@ -673,6 +703,7 @@ exports
   Shape_Update,
   Shape_GetTextBuf,
   Shape_GetTextLen,
+  Shape_SetTextBuf,
   Shape_FindComponent,
   Shape_GetNamePath,
   Shape_Assign,
@@ -727,9 +758,14 @@ exports
   Shape_SetBoundsRect,
   Shape_GetClientHeight,
   Shape_SetClientHeight,
+  Shape_GetClientOrigin,
   Shape_GetClientRect,
   Shape_GetClientWidth,
   Shape_SetClientWidth,
+  Shape_GetControlState,
+  Shape_SetControlState,
+  Shape_GetControlStyle,
+  Shape_SetControlStyle,
   Shape_GetExplicitLeft,
   Shape_GetExplicitTop,
   Shape_GetExplicitWidth,

@@ -191,6 +191,11 @@ func (l *TLabel) GetTextLen() int32 {
     return Label_GetTextLen(l.instance)
 }
 
+// SetTextBuf
+func (l *TLabel) SetTextBuf(Buffer string) {
+    Label_SetTextBuf(l.instance, Buffer)
+}
+
 // FindComponent
 func (l *TLabel) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Label_FindComponent(l.instance, AName))
@@ -626,6 +631,11 @@ func (l *TLabel) SetClientHeight(value int32) {
     Label_SetClientHeight(l.instance, value)
 }
 
+// ClientOrigin
+func (l *TLabel) ClientOrigin() TPoint {
+    return Label_GetClientOrigin(l.instance)
+}
+
 // ClientRect
 func (l *TLabel) ClientRect() TRect {
     return Label_GetClientRect(l.instance)
@@ -639,6 +649,26 @@ func (l *TLabel) ClientWidth() int32 {
 // SetClientWidth
 func (l *TLabel) SetClientWidth(value int32) {
     Label_SetClientWidth(l.instance, value)
+}
+
+// ControlState
+func (l *TLabel) ControlState() TControlState {
+    return Label_GetControlState(l.instance)
+}
+
+// SetControlState
+func (l *TLabel) SetControlState(value TControlState) {
+    Label_SetControlState(l.instance, value)
+}
+
+// ControlStyle
+func (l *TLabel) ControlStyle() TControlStyle {
+    return Label_GetControlStyle(l.instance)
+}
+
+// SetControlStyle
+func (l *TLabel) SetControlStyle(value TControlStyle) {
+    Label_SetControlStyle(l.instance, value)
 }
 
 // ExplicitLeft

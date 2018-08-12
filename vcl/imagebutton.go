@@ -196,6 +196,11 @@ func (i *TImageButton) GetTextLen() int32 {
     return ImageButton_GetTextLen(i.instance)
 }
 
+// SetTextBuf
+func (i *TImageButton) SetTextBuf(Buffer string) {
+    ImageButton_SetTextBuf(i.instance, Buffer)
+}
+
 // FindComponent
 func (i *TImageButton) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ImageButton_FindComponent(i.instance, AName))
@@ -561,6 +566,11 @@ func (i *TImageButton) SetClientHeight(value int32) {
     ImageButton_SetClientHeight(i.instance, value)
 }
 
+// ClientOrigin
+func (i *TImageButton) ClientOrigin() TPoint {
+    return ImageButton_GetClientOrigin(i.instance)
+}
+
 // ClientRect
 func (i *TImageButton) ClientRect() TRect {
     return ImageButton_GetClientRect(i.instance)
@@ -574,6 +584,26 @@ func (i *TImageButton) ClientWidth() int32 {
 // SetClientWidth
 func (i *TImageButton) SetClientWidth(value int32) {
     ImageButton_SetClientWidth(i.instance, value)
+}
+
+// ControlState
+func (i *TImageButton) ControlState() TControlState {
+    return ImageButton_GetControlState(i.instance)
+}
+
+// SetControlState
+func (i *TImageButton) SetControlState(value TControlState) {
+    ImageButton_SetControlState(i.instance, value)
+}
+
+// ControlStyle
+func (i *TImageButton) ControlStyle() TControlStyle {
+    return ImageButton_GetControlStyle(i.instance)
+}
+
+// SetControlStyle
+func (i *TImageButton) SetControlStyle(value TControlStyle) {
+    ImageButton_SetControlStyle(i.instance, value)
 }
 
 // ExplicitLeft

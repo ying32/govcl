@@ -35,6 +35,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function DrawGrid_ContainsControl(AObj: TDrawGrid; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function DrawGrid_ControlAtPos(AObj: TDrawGrid; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure DrawGrid_DisableAlign(AObj: TDrawGrid); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure DrawGrid_EnableAlign(AObj: TDrawGrid); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function DrawGrid_FindChildControl(AObj: TDrawGrid; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure DrawGrid_FlipChildren(AObj: TDrawGrid; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -50,9 +75,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure DrawGrid_InsertControl(AObj: TDrawGrid; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure DrawGrid_Invalidate(AObj: TDrawGrid); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure DrawGrid_PaintTo(AObj: TDrawGrid; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure DrawGrid_RemoveControl(AObj: TDrawGrid; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure DrawGrid_Realign(AObj: TDrawGrid); stdcall;
@@ -70,6 +110,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure DrawGrid_ScrollBy(AObj: TDrawGrid; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure DrawGrid_SetBounds(AObj: TDrawGrid; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -83,6 +128,11 @@ end;
 procedure DrawGrid_Update(AObj: TDrawGrid); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure DrawGrid_UpdateControlState(AObj: TDrawGrid); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure DrawGrid_BringToFront(AObj: TDrawGrid); stdcall;
@@ -153,6 +203,11 @@ end;
 function DrawGrid_GetTextLen(AObj: TDrawGrid): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure DrawGrid_SetTextBuf(AObj: TDrawGrid; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function DrawGrid_FindComponent(AObj: TDrawGrid; AName: PChar): TComponent; stdcall;
@@ -1043,6 +1098,11 @@ begin
   AObj.TabStop := AValue;
 end;
 
+function DrawGrid_GetDockClientCount(AObj: TDrawGrid): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function DrawGrid_GetDockSite(AObj: TDrawGrid): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -1051,6 +1111,21 @@ end;
 procedure DrawGrid_SetDockSite(AObj: TDrawGrid; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function DrawGrid_GetAlignDisabled(AObj: TDrawGrid): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function DrawGrid_GetMouseInClient(AObj: TDrawGrid): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function DrawGrid_GetVisibleDockClientCount(AObj: TDrawGrid): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function DrawGrid_GetBrush(AObj: TDrawGrid): TBrush; stdcall;
@@ -1118,6 +1193,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure DrawGrid_GetClientOrigin(AObj: TDrawGrid; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure DrawGrid_GetClientRect(AObj: TDrawGrid; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -1131,6 +1211,26 @@ end;
 procedure DrawGrid_SetClientWidth(AObj: TDrawGrid; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function DrawGrid_GetControlState(AObj: TDrawGrid): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure DrawGrid_SetControlState(AObj: TDrawGrid; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function DrawGrid_GetControlStyle(AObj: TDrawGrid): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure DrawGrid_SetControlStyle(AObj: TDrawGrid; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function DrawGrid_GetExplicitLeft(AObj: TDrawGrid): Integer; stdcall;
@@ -1328,6 +1428,11 @@ begin
   AObj.TabStops[Index] := AValue;
 end;
 
+function DrawGrid_GetDockClients(AObj: TDrawGrid; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function DrawGrid_GetControls(AObj: TDrawGrid; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1350,16 +1455,26 @@ exports
   DrawGrid_MouseToCell,
   DrawGrid_MouseCoord,
   DrawGrid_CanFocus,
+  DrawGrid_ContainsControl,
+  DrawGrid_ControlAtPos,
+  DrawGrid_DisableAlign,
+  DrawGrid_EnableAlign,
+  DrawGrid_FindChildControl,
   DrawGrid_FlipChildren,
   DrawGrid_Focused,
   DrawGrid_HandleAllocated,
+  DrawGrid_InsertControl,
   DrawGrid_Invalidate,
+  DrawGrid_PaintTo,
+  DrawGrid_RemoveControl,
   DrawGrid_Realign,
   DrawGrid_Repaint,
   DrawGrid_ScaleBy,
+  DrawGrid_ScrollBy,
   DrawGrid_SetBounds,
   DrawGrid_SetFocus,
   DrawGrid_Update,
+  DrawGrid_UpdateControlState,
   DrawGrid_BringToFront,
   DrawGrid_ClientToScreen,
   DrawGrid_ClientToParent,
@@ -1374,6 +1489,7 @@ exports
   DrawGrid_Show,
   DrawGrid_GetTextBuf,
   DrawGrid_GetTextLen,
+  DrawGrid_SetTextBuf,
   DrawGrid_FindComponent,
   DrawGrid_GetNamePath,
   DrawGrid_Assign,
@@ -1511,8 +1627,12 @@ exports
   DrawGrid_SetTopRow,
   DrawGrid_GetTabStop,
   DrawGrid_SetTabStop,
+  DrawGrid_GetDockClientCount,
   DrawGrid_GetDockSite,
   DrawGrid_SetDockSite,
+  DrawGrid_GetAlignDisabled,
+  DrawGrid_GetMouseInClient,
+  DrawGrid_GetVisibleDockClientCount,
   DrawGrid_GetBrush,
   DrawGrid_GetControlCount,
   DrawGrid_GetHandle,
@@ -1526,9 +1646,14 @@ exports
   DrawGrid_SetBoundsRect,
   DrawGrid_GetClientHeight,
   DrawGrid_SetClientHeight,
+  DrawGrid_GetClientOrigin,
   DrawGrid_GetClientRect,
   DrawGrid_GetClientWidth,
   DrawGrid_SetClientWidth,
+  DrawGrid_GetControlState,
+  DrawGrid_SetControlState,
+  DrawGrid_GetControlStyle,
+  DrawGrid_SetControlStyle,
   DrawGrid_GetExplicitLeft,
   DrawGrid_GetExplicitTop,
   DrawGrid_GetExplicitWidth,
@@ -1568,6 +1693,7 @@ exports
   DrawGrid_SetRowHeights,
   DrawGrid_GetTabStops,
   DrawGrid_SetTabStops,
+  DrawGrid_GetDockClients,
   DrawGrid_GetControls,
   DrawGrid_GetComponents,
   DrawGrid_StaticClassType;

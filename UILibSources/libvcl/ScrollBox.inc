@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ScrollBox_ContainsControl(AObj: TScrollBox; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ScrollBox_ControlAtPos(AObj: TScrollBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure ScrollBox_DisableAlign(AObj: TScrollBox); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ScrollBox_EnableAlign(AObj: TScrollBox); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function ScrollBox_FindChildControl(AObj: TScrollBox; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ScrollBox_FlipChildren(AObj: TScrollBox; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ScrollBox_InsertControl(AObj: TScrollBox; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ScrollBox_Invalidate(AObj: TScrollBox); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure ScrollBox_PaintTo(AObj: TScrollBox; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure ScrollBox_RemoveControl(AObj: TScrollBox; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ScrollBox_Realign(AObj: TScrollBox); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure ScrollBox_ScrollBy(AObj: TScrollBox; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure ScrollBox_SetBounds(AObj: TScrollBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure ScrollBox_Update(AObj: TScrollBox); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure ScrollBox_UpdateControlState(AObj: TScrollBox); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure ScrollBox_BringToFront(AObj: TScrollBox); stdcall;
@@ -138,6 +188,11 @@ end;
 function ScrollBox_GetTextLen(AObj: TScrollBox): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ScrollBox_SetTextBuf(AObj: TScrollBox; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ScrollBox_FindComponent(AObj: TScrollBox; AName: PChar): TComponent; stdcall;
@@ -749,6 +804,26 @@ begin
   TEventClass.Add(AObj, geUnDock, AEventId);
 end;
 
+function ScrollBox_GetDockClientCount(AObj: TScrollBox): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function ScrollBox_GetAlignDisabled(AObj: TScrollBox): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function ScrollBox_GetMouseInClient(AObj: TScrollBox): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function ScrollBox_GetVisibleDockClientCount(AObj: TScrollBox): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function ScrollBox_GetBrush(AObj: TScrollBox): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -814,6 +889,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ScrollBox_GetClientOrigin(AObj: TScrollBox; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ScrollBox_GetClientRect(AObj: TScrollBox; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -827,6 +907,26 @@ end;
 procedure ScrollBox_SetClientWidth(AObj: TScrollBox; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ScrollBox_GetControlState(AObj: TScrollBox): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ScrollBox_SetControlState(AObj: TScrollBox; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ScrollBox_GetControlStyle(AObj: TScrollBox): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ScrollBox_SetControlStyle(AObj: TScrollBox; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ScrollBox_GetExplicitLeft(AObj: TScrollBox): Integer; stdcall;
@@ -994,6 +1094,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ScrollBox_GetDockClients(AObj: TScrollBox; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ScrollBox_GetControls(AObj: TScrollBox; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1013,16 +1118,26 @@ exports
   ScrollBox_Create,
   ScrollBox_Free,
   ScrollBox_CanFocus,
+  ScrollBox_ContainsControl,
+  ScrollBox_ControlAtPos,
+  ScrollBox_DisableAlign,
+  ScrollBox_EnableAlign,
+  ScrollBox_FindChildControl,
   ScrollBox_FlipChildren,
   ScrollBox_Focused,
   ScrollBox_HandleAllocated,
+  ScrollBox_InsertControl,
   ScrollBox_Invalidate,
+  ScrollBox_PaintTo,
+  ScrollBox_RemoveControl,
   ScrollBox_Realign,
   ScrollBox_Repaint,
   ScrollBox_ScaleBy,
+  ScrollBox_ScrollBy,
   ScrollBox_SetBounds,
   ScrollBox_SetFocus,
   ScrollBox_Update,
+  ScrollBox_UpdateControlState,
   ScrollBox_BringToFront,
   ScrollBox_ClientToScreen,
   ScrollBox_ClientToParent,
@@ -1037,6 +1152,7 @@ exports
   ScrollBox_Show,
   ScrollBox_GetTextBuf,
   ScrollBox_GetTextLen,
+  ScrollBox_SetTextBuf,
   ScrollBox_FindComponent,
   ScrollBox_GetNamePath,
   ScrollBox_Assign,
@@ -1128,6 +1244,10 @@ exports
   ScrollBox_SetOnResize,
   ScrollBox_SetOnStartDock,
   ScrollBox_SetOnUnDock,
+  ScrollBox_GetDockClientCount,
+  ScrollBox_GetAlignDisabled,
+  ScrollBox_GetMouseInClient,
+  ScrollBox_GetVisibleDockClientCount,
   ScrollBox_GetBrush,
   ScrollBox_GetControlCount,
   ScrollBox_GetHandle,
@@ -1141,9 +1261,14 @@ exports
   ScrollBox_SetBoundsRect,
   ScrollBox_GetClientHeight,
   ScrollBox_SetClientHeight,
+  ScrollBox_GetClientOrigin,
   ScrollBox_GetClientRect,
   ScrollBox_GetClientWidth,
   ScrollBox_SetClientWidth,
+  ScrollBox_GetControlState,
+  ScrollBox_SetControlState,
+  ScrollBox_GetControlStyle,
+  ScrollBox_SetControlStyle,
   ScrollBox_GetExplicitLeft,
   ScrollBox_GetExplicitTop,
   ScrollBox_GetExplicitWidth,
@@ -1177,6 +1302,7 @@ exports
   ScrollBox_SetName,
   ScrollBox_GetTag,
   ScrollBox_SetTag,
+  ScrollBox_GetDockClients,
   ScrollBox_GetControls,
   ScrollBox_GetComponents,
   ScrollBox_StaticClassType;

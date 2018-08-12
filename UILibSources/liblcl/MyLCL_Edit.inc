@@ -55,6 +55,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function Edit_ContainsControl(AObj: TEdit; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function Edit_ControlAtPos(AObj: TEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure Edit_DisableAlign(AObj: TEdit); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure Edit_EnableAlign(AObj: TEdit); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function Edit_FindChildControl(AObj: TEdit; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure Edit_FlipChildren(AObj: TEdit; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -70,9 +95,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure Edit_InsertControl(AObj: TEdit; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure Edit_Invalidate(AObj: TEdit); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure Edit_RemoveControl(AObj: TEdit; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure Edit_Realign(AObj: TEdit); extdecl;
@@ -88,6 +123,11 @@ end;
 procedure Edit_ScaleBy(AObj: TEdit; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure Edit_ScrollBy(AObj: TEdit; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure Edit_SetBounds(AObj: TEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -173,6 +213,11 @@ end;
 function Edit_GetTextLen(AObj: TEdit): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure Edit_SetTextBuf(AObj: TEdit; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function Edit_FindComponent(AObj: TEdit; AName: PChar): TComponent; extdecl;
@@ -774,6 +819,11 @@ begin
   AObj.SelText := AValue;
 end;
 
+function Edit_GetDockClientCount(AObj: TEdit): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function Edit_GetDockSite(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -782,6 +832,11 @@ end;
 procedure Edit_SetDockSite(AObj: TEdit; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function Edit_GetVisibleDockClientCount(AObj: TEdit): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function Edit_GetBrush(AObj: TEdit): TBrush; extdecl;
@@ -849,6 +904,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Edit_GetClientOrigin(AObj: TEdit; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Edit_GetClientRect(AObj: TEdit; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -862,6 +922,26 @@ end;
 procedure Edit_SetClientWidth(AObj: TEdit; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Edit_GetControlState(AObj: TEdit): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Edit_SetControlState(AObj: TEdit; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Edit_GetControlStyle(AObj: TEdit): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Edit_SetControlStyle(AObj: TEdit; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Edit_GetFloating(AObj: TEdit): LongBool; extdecl;
@@ -979,6 +1059,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Edit_GetDockClients(AObj: TEdit; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function Edit_GetControls(AObj: TEdit; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -1005,13 +1090,21 @@ exports
   Edit_Undo,
   Edit_SelectAll,
   Edit_CanFocus,
+  Edit_ContainsControl,
+  Edit_ControlAtPos,
+  Edit_DisableAlign,
+  Edit_EnableAlign,
+  Edit_FindChildControl,
   Edit_FlipChildren,
   Edit_Focused,
   Edit_HandleAllocated,
+  Edit_InsertControl,
   Edit_Invalidate,
+  Edit_RemoveControl,
   Edit_Realign,
   Edit_Repaint,
   Edit_ScaleBy,
+  Edit_ScrollBy,
   Edit_SetBounds,
   Edit_SetFocus,
   Edit_Update,
@@ -1029,6 +1122,7 @@ exports
   Edit_Show,
   Edit_GetTextBuf,
   Edit_GetTextLen,
+  Edit_SetTextBuf,
   Edit_FindComponent,
   Edit_GetNamePath,
   Edit_Assign,
@@ -1125,8 +1219,10 @@ exports
   Edit_SetSelStart,
   Edit_GetSelText,
   Edit_SetSelText,
+  Edit_GetDockClientCount,
   Edit_GetDockSite,
   Edit_SetDockSite,
+  Edit_GetVisibleDockClientCount,
   Edit_GetBrush,
   Edit_GetControlCount,
   Edit_GetHandle,
@@ -1140,9 +1236,14 @@ exports
   Edit_SetBoundsRect,
   Edit_GetClientHeight,
   Edit_SetClientHeight,
+  Edit_GetClientOrigin,
   Edit_GetClientRect,
   Edit_GetClientWidth,
   Edit_SetClientWidth,
+  Edit_GetControlState,
+  Edit_SetControlState,
+  Edit_GetControlStyle,
+  Edit_SetControlStyle,
   Edit_GetFloating,
   Edit_GetParent,
   Edit_SetParent,
@@ -1166,6 +1267,7 @@ exports
   Edit_SetName,
   Edit_GetTag,
   Edit_SetTag,
+  Edit_GetDockClients,
   Edit_GetControls,
   Edit_GetComponents,
   Edit_StaticClassType;

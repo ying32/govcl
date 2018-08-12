@@ -191,6 +191,11 @@ func (p *TPaintBox) GetTextLen() int32 {
     return PaintBox_GetTextLen(p.instance)
 }
 
+// SetTextBuf
+func (p *TPaintBox) SetTextBuf(Buffer string) {
+    PaintBox_SetTextBuf(p.instance, Buffer)
+}
+
 // FindComponent
 func (p *TPaintBox) FindComponent(AName string) *TComponent {
     return ComponentFromInst(PaintBox_FindComponent(p.instance, AName))
@@ -527,6 +532,11 @@ func (p *TPaintBox) SetClientHeight(value int32) {
     PaintBox_SetClientHeight(p.instance, value)
 }
 
+// ClientOrigin
+func (p *TPaintBox) ClientOrigin() TPoint {
+    return PaintBox_GetClientOrigin(p.instance)
+}
+
 // ClientRect
 func (p *TPaintBox) ClientRect() TRect {
     return PaintBox_GetClientRect(p.instance)
@@ -540,6 +550,26 @@ func (p *TPaintBox) ClientWidth() int32 {
 // SetClientWidth
 func (p *TPaintBox) SetClientWidth(value int32) {
     PaintBox_SetClientWidth(p.instance, value)
+}
+
+// ControlState
+func (p *TPaintBox) ControlState() TControlState {
+    return PaintBox_GetControlState(p.instance)
+}
+
+// SetControlState
+func (p *TPaintBox) SetControlState(value TControlState) {
+    PaintBox_SetControlState(p.instance, value)
+}
+
+// ControlStyle
+func (p *TPaintBox) ControlStyle() TControlStyle {
+    return PaintBox_GetControlStyle(p.instance)
+}
+
+// SetControlStyle
+func (p *TPaintBox) SetControlStyle(value TControlStyle) {
+    PaintBox_SetControlStyle(p.instance, value)
 }
 
 // ExplicitLeft

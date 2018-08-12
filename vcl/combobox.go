@@ -136,6 +136,31 @@ func (c *TComboBox) CanFocus() bool {
     return ComboBox_CanFocus(c.instance)
 }
 
+// ContainsControl
+func (c *TComboBox) ContainsControl(Control IControl) bool {
+    return ComboBox_ContainsControl(c.instance, CheckPtr(Control))
+}
+
+// ControlAtPos
+func (c *TComboBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
+    return ControlFromInst(ComboBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+}
+
+// DisableAlign
+func (c *TComboBox) DisableAlign() {
+    ComboBox_DisableAlign(c.instance)
+}
+
+// EnableAlign
+func (c *TComboBox) EnableAlign() {
+    ComboBox_EnableAlign(c.instance)
+}
+
+// FindChildControl
+func (c *TComboBox) FindChildControl(ControlName string) *TControl {
+    return ControlFromInst(ComboBox_FindChildControl(c.instance, ControlName))
+}
+
 // FlipChildren
 func (c *TComboBox) FlipChildren(AllLevels bool) {
     ComboBox_FlipChildren(c.instance, AllLevels)
@@ -146,9 +171,24 @@ func (c *TComboBox) HandleAllocated() bool {
     return ComboBox_HandleAllocated(c.instance)
 }
 
+// InsertControl
+func (c *TComboBox) InsertControl(AControl IControl) {
+    ComboBox_InsertControl(c.instance, CheckPtr(AControl))
+}
+
 // Invalidate
 func (c *TComboBox) Invalidate() {
     ComboBox_Invalidate(c.instance)
+}
+
+// PaintTo
+func (c *TComboBox) PaintTo(DC HDC, X int32, Y int32) {
+    ComboBox_PaintTo(c.instance, DC , X , Y)
+}
+
+// RemoveControl
+func (c *TComboBox) RemoveControl(AControl IControl) {
+    ComboBox_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
@@ -166,6 +206,11 @@ func (c *TComboBox) ScaleBy(M int32, D int32) {
     ComboBox_ScaleBy(c.instance, M , D)
 }
 
+// ScrollBy
+func (c *TComboBox) ScrollBy(DeltaX int32, DeltaY int32) {
+    ComboBox_ScrollBy(c.instance, DeltaX , DeltaY)
+}
+
 // SetBounds
 func (c *TComboBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ComboBox_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
@@ -179,6 +224,11 @@ func (c *TComboBox) SetFocus() {
 // Update
 func (c *TComboBox) Update() {
     ComboBox_Update(c.instance)
+}
+
+// UpdateControlState
+func (c *TComboBox) UpdateControlState() {
+    ComboBox_UpdateControlState(c.instance)
 }
 
 // BringToFront
@@ -249,6 +299,11 @@ func (c *TComboBox) GetTextBuf(Buffer string, BufSize int32) int32 {
 // GetTextLen
 func (c *TComboBox) GetTextLen() int32 {
     return ComboBox_GetTextLen(c.instance)
+}
+
+// SetTextBuf
+func (c *TComboBox) SetTextBuf(Buffer string) {
+    ComboBox_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
@@ -647,12 +702,12 @@ func (c *TComboBox) SetSorted(value bool) {
 }
 
 // TabOrder
-func (c *TComboBox) TabOrder() uint16 {
+func (c *TComboBox) TabOrder() TTabOrder {
     return ComboBox_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
-func (c *TComboBox) SetTabOrder(value uint16) {
+func (c *TComboBox) SetTabOrder(value TTabOrder) {
     ComboBox_SetTabOrder(c.instance, value)
 }
 
@@ -852,6 +907,11 @@ func (c *TComboBox) SetSelStart(value int32) {
     ComboBox_SetSelStart(c.instance, value)
 }
 
+// DockClientCount
+func (c *TComboBox) DockClientCount() int32 {
+    return ComboBox_GetDockClientCount(c.instance)
+}
+
 // DockSite
 func (c *TComboBox) DockSite() bool {
     return ComboBox_GetDockSite(c.instance)
@@ -860,6 +920,21 @@ func (c *TComboBox) DockSite() bool {
 // SetDockSite
 func (c *TComboBox) SetDockSite(value bool) {
     ComboBox_SetDockSite(c.instance, value)
+}
+
+// AlignDisabled
+func (c *TComboBox) AlignDisabled() bool {
+    return ComboBox_GetAlignDisabled(c.instance)
+}
+
+// MouseInClient
+func (c *TComboBox) MouseInClient() bool {
+    return ComboBox_GetMouseInClient(c.instance)
+}
+
+// VisibleDockClientCount
+func (c *TComboBox) VisibleDockClientCount() int32 {
+    return ComboBox_GetVisibleDockClientCount(c.instance)
 }
 
 // Brush
@@ -927,6 +1002,11 @@ func (c *TComboBox) SetClientHeight(value int32) {
     ComboBox_SetClientHeight(c.instance, value)
 }
 
+// ClientOrigin
+func (c *TComboBox) ClientOrigin() TPoint {
+    return ComboBox_GetClientOrigin(c.instance)
+}
+
 // ClientRect
 func (c *TComboBox) ClientRect() TRect {
     return ComboBox_GetClientRect(c.instance)
@@ -940,6 +1020,26 @@ func (c *TComboBox) ClientWidth() int32 {
 // SetClientWidth
 func (c *TComboBox) SetClientWidth(value int32) {
     ComboBox_SetClientWidth(c.instance, value)
+}
+
+// ControlState
+func (c *TComboBox) ControlState() TControlState {
+    return ComboBox_GetControlState(c.instance)
+}
+
+// SetControlState
+func (c *TComboBox) SetControlState(value TControlState) {
+    ComboBox_SetControlState(c.instance, value)
+}
+
+// ControlStyle
+func (c *TComboBox) ControlStyle() TControlStyle {
+    return ComboBox_GetControlStyle(c.instance)
+}
+
+// SetControlStyle
+func (c *TComboBox) SetControlStyle(value TControlStyle) {
+    ComboBox_SetControlStyle(c.instance, value)
 }
 
 // ExplicitLeft
@@ -1133,6 +1233,11 @@ func (c *TComboBox) Tag() int {
 // EN: Set the control tag.
 func (c *TComboBox) SetTag(value int) {
     ComboBox_SetTag(c.instance, value)
+}
+
+// DockClients
+func (c *TComboBox) DockClients(Index int32) *TControl {
+    return ControlFromInst(ComboBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
