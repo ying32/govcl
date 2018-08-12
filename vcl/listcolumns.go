@@ -114,6 +114,8 @@ func (l *TListColumns) Owner() *TWinControl {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (l *TListColumns) Assign(Source IObject) {
     ListColumns_Assign(l.instance, CheckPtr(Source))
 }
@@ -139,6 +141,8 @@ func (l *TListColumns) EndUpdate() {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (l *TListColumns) GetNamePath() string {
     return ListColumns_GetNamePath(l.instance)
 }

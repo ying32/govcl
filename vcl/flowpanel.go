@@ -117,26 +117,36 @@ func (f *TFlowPanel) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (f *TFlowPanel) ContainsControl(Control IControl) bool {
     return FlowPanel_ContainsControl(f.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (f *TFlowPanel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(FlowPanel_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (f *TFlowPanel) DisableAlign() {
     FlowPanel_DisableAlign(f.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (f *TFlowPanel) EnableAlign() {
     FlowPanel_EnableAlign(f.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (f *TFlowPanel) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(FlowPanel_FindChildControl(f.instance, ControlName))
 }
@@ -147,161 +157,225 @@ func (f *TFlowPanel) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (f *TFlowPanel) Focused() bool {
     return FlowPanel_Focused(f.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (f *TFlowPanel) HandleAllocated() bool {
     return FlowPanel_HandleAllocated(f.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (f *TFlowPanel) InsertControl(AControl IControl) {
     FlowPanel_InsertControl(f.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (f *TFlowPanel) Invalidate() {
     FlowPanel_Invalidate(f.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (f *TFlowPanel) PaintTo(DC HDC, X int32, Y int32) {
     FlowPanel_PaintTo(f.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (f *TFlowPanel) RemoveControl(AControl IControl) {
     FlowPanel_RemoveControl(f.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (f *TFlowPanel) Realign() {
     FlowPanel_Realign(f.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (f *TFlowPanel) Repaint() {
     FlowPanel_Repaint(f.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (f *TFlowPanel) ScaleBy(M int32, D int32) {
     FlowPanel_ScaleBy(f.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (f *TFlowPanel) ScrollBy(DeltaX int32, DeltaY int32) {
     FlowPanel_ScrollBy(f.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (f *TFlowPanel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     FlowPanel_SetBounds(f.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (f *TFlowPanel) SetFocus() {
     FlowPanel_SetFocus(f.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (f *TFlowPanel) Update() {
     FlowPanel_Update(f.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (f *TFlowPanel) UpdateControlState() {
     FlowPanel_UpdateControlState(f.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (f *TFlowPanel) BringToFront() {
     FlowPanel_BringToFront(f.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (f *TFlowPanel) ClientToScreen(Point TPoint) TPoint {
     return FlowPanel_ClientToScreen(f.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (f *TFlowPanel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return FlowPanel_ClientToParent(f.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (f *TFlowPanel) Dragging() bool {
     return FlowPanel_Dragging(f.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (f *TFlowPanel) HasParent() bool {
     return FlowPanel_HasParent(f.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (f *TFlowPanel) Hide() {
     FlowPanel_Hide(f.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (f *TFlowPanel) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return FlowPanel_Perform(f.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (f *TFlowPanel) Refresh() {
     FlowPanel_Refresh(f.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (f *TFlowPanel) ScreenToClient(Point TPoint) TPoint {
     return FlowPanel_ScreenToClient(f.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (f *TFlowPanel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return FlowPanel_ParentToClient(f.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (f *TFlowPanel) SendToBack() {
     FlowPanel_SendToBack(f.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (f *TFlowPanel) Show() {
     FlowPanel_Show(f.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (f *TFlowPanel) GetTextBuf(Buffer string, BufSize int32) int32 {
     return FlowPanel_GetTextBuf(f.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (f *TFlowPanel) GetTextLen() int32 {
     return FlowPanel_GetTextLen(f.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (f *TFlowPanel) SetTextBuf(Buffer string) {
     FlowPanel_SetTextBuf(f.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (f *TFlowPanel) FindComponent(AName string) *TComponent {
     return ComponentFromInst(FlowPanel_FindComponent(f.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (f *TFlowPanel) GetNamePath() string {
     return FlowPanel_GetNamePath(f.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (f *TFlowPanel) Assign(Source IObject) {
     FlowPanel_Assign(f.instance, CheckPtr(Source))
 }
@@ -363,21 +437,29 @@ func (f *TFlowPanel) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (f *TFlowPanel) Align() TAlign {
     return FlowPanel_GetAlign(f.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (f *TFlowPanel) SetAlign(value TAlign) {
     FlowPanel_SetAlign(f.instance, value)
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (f *TFlowPanel) Alignment() TAlignment {
     return FlowPanel_GetAlignment(f.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (f *TFlowPanel) SetAlignment(value TAlignment) {
     FlowPanel_SetAlignment(f.instance, value)
 }
@@ -497,11 +579,15 @@ func (f *TFlowPanel) SetCaption(value string) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (f *TFlowPanel) Color() TColor {
     return FlowPanel_GetColor(f.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (f *TFlowPanel) SetColor(value TColor) {
     FlowPanel_SetColor(f.instance, value)
 }
@@ -517,51 +603,71 @@ func (f *TFlowPanel) SetUseDockManager(value bool) {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (f *TFlowPanel) DockSite() bool {
     return FlowPanel_GetDockSite(f.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (f *TFlowPanel) SetDockSite(value bool) {
     FlowPanel_SetDockSite(f.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (f *TFlowPanel) DoubleBuffered() bool {
     return FlowPanel_GetDoubleBuffered(f.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (f *TFlowPanel) SetDoubleBuffered(value bool) {
     FlowPanel_SetDoubleBuffered(f.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (f *TFlowPanel) DragCursor() TCursor {
     return FlowPanel_GetDragCursor(f.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (f *TFlowPanel) SetDragCursor(value TCursor) {
     FlowPanel_SetDragCursor(f.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (f *TFlowPanel) DragKind() TDragKind {
     return FlowPanel_GetDragKind(f.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (f *TFlowPanel) SetDragKind(value TDragKind) {
     FlowPanel_SetDragKind(f.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (f *TFlowPanel) DragMode() TDragMode {
     return FlowPanel_GetDragMode(f.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (f *TFlowPanel) SetDragMode(value TDragMode) {
     FlowPanel_SetDragMode(f.instance, value)
 }
@@ -601,11 +707,15 @@ func (f *TFlowPanel) SetFullRepaint(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (f *TFlowPanel) Font() *TFont {
     return FontFromInst(FlowPanel_GetFont(f.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (f *TFlowPanel) SetFont(value *TFont) {
     FlowPanel_SetFont(f.instance, CheckPtr(value))
 }
@@ -631,11 +741,15 @@ func (f *TFlowPanel) SetParentBackground(value bool) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (f *TFlowPanel) ParentColor() bool {
     return FlowPanel_GetParentColor(f.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (f *TFlowPanel) SetParentColor(value bool) {
     FlowPanel_SetParentColor(f.instance, value)
 }
@@ -651,21 +765,29 @@ func (f *TFlowPanel) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (f *TFlowPanel) ParentDoubleBuffered() bool {
     return FlowPanel_GetParentDoubleBuffered(f.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (f *TFlowPanel) SetParentDoubleBuffered(value bool) {
     FlowPanel_SetParentDoubleBuffered(f.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (f *TFlowPanel) ParentFont() bool {
     return FlowPanel_GetParentFont(f.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (f *TFlowPanel) SetParentFont(value bool) {
     FlowPanel_SetParentFont(f.instance, value)
 }
@@ -681,11 +803,15 @@ func (f *TFlowPanel) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (f *TFlowPanel) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(FlowPanel_GetPopupMenu(f.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (f *TFlowPanel) SetPopupMenu(value IComponent) {
     FlowPanel_SetPopupMenu(f.instance, CheckPtr(value))
 }
@@ -701,31 +827,43 @@ func (f *TFlowPanel) SetShowCaption(value bool) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (f *TFlowPanel) ShowHint() bool {
     return FlowPanel_GetShowHint(f.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (f *TFlowPanel) SetShowHint(value bool) {
     FlowPanel_SetShowHint(f.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (f *TFlowPanel) TabOrder() TTabOrder {
     return FlowPanel_GetTabOrder(f.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (f *TFlowPanel) SetTabOrder(value TTabOrder) {
     FlowPanel_SetTabOrder(f.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (f *TFlowPanel) TabStop() bool {
     return FlowPanel_GetTabStop(f.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (f *TFlowPanel) SetTabStop(value bool) {
     FlowPanel_SetTabStop(f.instance, value)
 }
@@ -745,11 +883,15 @@ func (f *TFlowPanel) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (f *TFlowPanel) StyleElements() TStyleElements {
     return FlowPanel_GetStyleElements(f.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (f *TFlowPanel) SetStyleElements(value TStyleElements) {
     FlowPanel_SetStyleElements(f.instance, value)
 }
@@ -762,6 +904,8 @@ func (f *TFlowPanel) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (f *TFlowPanel) SetOnContextPopup(fn TContextPopupEvent) {
     FlowPanel_SetOnContextPopup(f.instance, fn)
 }
@@ -777,31 +921,43 @@ func (f *TFlowPanel) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (f *TFlowPanel) SetOnDragDrop(fn TDragDropEvent) {
     FlowPanel_SetOnDragDrop(f.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (f *TFlowPanel) SetOnDragOver(fn TDragOverEvent) {
     FlowPanel_SetOnDragOver(f.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (f *TFlowPanel) SetOnEndDock(fn TEndDragEvent) {
     FlowPanel_SetOnEndDock(f.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (f *TFlowPanel) SetOnEndDrag(fn TEndDragEvent) {
     FlowPanel_SetOnEndDrag(f.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (f *TFlowPanel) SetOnEnter(fn TNotifyEvent) {
     FlowPanel_SetOnEnter(f.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (f *TFlowPanel) SetOnExit(fn TNotifyEvent) {
     FlowPanel_SetOnExit(f.instance, fn)
 }
@@ -812,16 +968,22 @@ func (f *TFlowPanel) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (f *TFlowPanel) SetOnMouseDown(fn TMouseEvent) {
     FlowPanel_SetOnMouseDown(f.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (f *TFlowPanel) SetOnMouseEnter(fn TNotifyEvent) {
     FlowPanel_SetOnMouseEnter(f.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (f *TFlowPanel) SetOnMouseLeave(fn TNotifyEvent) {
     FlowPanel_SetOnMouseLeave(f.instance, fn)
 }
@@ -832,6 +994,8 @@ func (f *TFlowPanel) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (f *TFlowPanel) SetOnMouseUp(fn TMouseEvent) {
     FlowPanel_SetOnMouseUp(f.instance, fn)
 }
@@ -862,36 +1026,50 @@ func (f *TFlowPanel) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (f *TFlowPanel) MouseInClient() bool {
     return FlowPanel_GetMouseInClient(f.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (f *TFlowPanel) VisibleDockClientCount() int32 {
     return FlowPanel_GetVisibleDockClientCount(f.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (f *TFlowPanel) Brush() *TBrush {
     return BrushFromInst(FlowPanel_GetBrush(f.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (f *TFlowPanel) ControlCount() int32 {
     return FlowPanel_GetControlCount(f.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (f *TFlowPanel) Handle() HWND {
     return FlowPanel_GetHandle(f.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (f *TFlowPanel) ParentWindow() HWND {
     return FlowPanel_GetParentWindow(f.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (f *TFlowPanel) SetParentWindow(value HWND) {
     FlowPanel_SetParentWindow(f.instance, value)
 }
@@ -917,11 +1095,15 @@ func (f *TFlowPanel) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (f *TFlowPanel) ClientHeight() int32 {
     return FlowPanel_GetClientHeight(f.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (f *TFlowPanel) SetClientHeight(value int32) {
     FlowPanel_SetClientHeight(f.instance, value)
 }
@@ -932,36 +1114,50 @@ func (f *TFlowPanel) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (f *TFlowPanel) ClientRect() TRect {
     return FlowPanel_GetClientRect(f.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (f *TFlowPanel) ClientWidth() int32 {
     return FlowPanel_GetClientWidth(f.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (f *TFlowPanel) SetClientWidth(value int32) {
     FlowPanel_SetClientWidth(f.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (f *TFlowPanel) ControlState() TControlState {
     return FlowPanel_GetControlState(f.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (f *TFlowPanel) SetControlState(value TControlState) {
     FlowPanel_SetControlState(f.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (f *TFlowPanel) ControlStyle() TControlStyle {
     return FlowPanel_GetControlStyle(f.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (f *TFlowPanel) SetControlStyle(value TControlStyle) {
     FlowPanel_SetControlStyle(f.instance, value)
 }
@@ -1006,51 +1202,71 @@ func (f *TFlowPanel) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (f *TFlowPanel) AlignWithMargins() bool {
     return FlowPanel_GetAlignWithMargins(f.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (f *TFlowPanel) SetAlignWithMargins(value bool) {
     FlowPanel_SetAlignWithMargins(f.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (f *TFlowPanel) Left() int32 {
     return FlowPanel_GetLeft(f.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (f *TFlowPanel) SetLeft(value int32) {
     FlowPanel_SetLeft(f.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (f *TFlowPanel) Top() int32 {
     return FlowPanel_GetTop(f.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (f *TFlowPanel) SetTop(value int32) {
     FlowPanel_SetTop(f.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (f *TFlowPanel) Width() int32 {
     return FlowPanel_GetWidth(f.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (f *TFlowPanel) SetWidth(value int32) {
     FlowPanel_SetWidth(f.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (f *TFlowPanel) Height() int32 {
     return FlowPanel_GetHeight(f.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (f *TFlowPanel) SetHeight(value int32) {
     FlowPanel_SetHeight(f.instance, value)
 }
@@ -1084,21 +1300,29 @@ func (f *TFlowPanel) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (f *TFlowPanel) Margins() *TMargins {
     return MarginsFromInst(FlowPanel_GetMargins(f.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (f *TFlowPanel) SetMargins(value *TMargins) {
     FlowPanel_SetMargins(f.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (f *TFlowPanel) CustomHint() *TCustomHint {
     return CustomHintFromInst(FlowPanel_GetCustomHint(f.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (f *TFlowPanel) SetCustomHint(value IComponent) {
     FlowPanel_SetCustomHint(f.instance, CheckPtr(value))
 }

@@ -158,6 +158,8 @@ func (m *TMonitor) ToString() string {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (m *TMonitor) Handle() HMONITOR {
     return Monitor_GetHandle(m.instance)
 }
@@ -168,21 +170,29 @@ func (m *TMonitor) MonitorNum() int32 {
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (m *TMonitor) Left() int32 {
     return Monitor_GetLeft(m.instance)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (m *TMonitor) Height() int32 {
     return Monitor_GetHeight(m.instance)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (m *TMonitor) Top() int32 {
     return Monitor_GetTop(m.instance)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (m *TMonitor) Width() int32 {
     return Monitor_GetWidth(m.instance)
 }

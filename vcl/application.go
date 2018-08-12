@@ -107,6 +107,8 @@ func (a *TApplication) ActivateHint(CursorPos TPoint) {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (a *TApplication) BringToFront() {
     Application_BringToFront(a.instance)
 }
@@ -177,21 +179,29 @@ func (a *TApplication) MessageBox(Text string, Caption string, Flags int32) int3
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (a *TApplication) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Application_FindComponent(a.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (a *TApplication) GetNamePath() string {
     return Application_GetNamePath(a.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (a *TApplication) HasParent() bool {
     return Application_HasParent(a.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (a *TApplication) Assign(Source IObject) {
     Application_Assign(a.instance, CheckPtr(Source))
 }
@@ -332,11 +342,15 @@ func (a *TApplication) SetHintShortPause(value int32) {
 }
 
 // Icon
+// CN: 获取图标。
+// EN: Get icon.
 func (a *TApplication) Icon() *TIcon {
     return IconFromInst(Application_GetIcon(a.instance))
 }
 
 // SetIcon
+// CN: 设置图标。
+// EN: Set icon.
 func (a *TApplication) SetIcon(value *TIcon) {
     Application_SetIcon(a.instance, CheckPtr(value))
 }
@@ -377,11 +391,15 @@ func (a *TApplication) SetBiDiMode(value TBiDiMode) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (a *TApplication) ShowHint() bool {
     return Application_GetShowHint(a.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (a *TApplication) SetShowHint(value bool) {
     Application_SetShowHint(a.instance, value)
 }
@@ -442,11 +460,15 @@ func (a *TApplication) SetOnShortCut(fn TShortCutEvent) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (a *TApplication) Handle() HWND {
     return Application_GetHandle(a.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (a *TApplication) SetHandle(value HWND) {
     Application_SetHandle(a.instance, value)
 }

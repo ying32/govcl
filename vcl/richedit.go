@@ -162,26 +162,36 @@ func (r *TRichEdit) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (r *TRichEdit) ContainsControl(Control IControl) bool {
     return RichEdit_ContainsControl(r.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (r *TRichEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(RichEdit_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (r *TRichEdit) DisableAlign() {
     RichEdit_DisableAlign(r.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (r *TRichEdit) EnableAlign() {
     RichEdit_EnableAlign(r.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (r *TRichEdit) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(RichEdit_FindChildControl(r.instance, ControlName))
 }
@@ -192,161 +202,225 @@ func (r *TRichEdit) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (r *TRichEdit) Focused() bool {
     return RichEdit_Focused(r.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (r *TRichEdit) HandleAllocated() bool {
     return RichEdit_HandleAllocated(r.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (r *TRichEdit) InsertControl(AControl IControl) {
     RichEdit_InsertControl(r.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (r *TRichEdit) Invalidate() {
     RichEdit_Invalidate(r.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (r *TRichEdit) PaintTo(DC HDC, X int32, Y int32) {
     RichEdit_PaintTo(r.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (r *TRichEdit) RemoveControl(AControl IControl) {
     RichEdit_RemoveControl(r.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (r *TRichEdit) Realign() {
     RichEdit_Realign(r.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (r *TRichEdit) Repaint() {
     RichEdit_Repaint(r.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (r *TRichEdit) ScaleBy(M int32, D int32) {
     RichEdit_ScaleBy(r.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (r *TRichEdit) ScrollBy(DeltaX int32, DeltaY int32) {
     RichEdit_ScrollBy(r.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (r *TRichEdit) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     RichEdit_SetBounds(r.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (r *TRichEdit) SetFocus() {
     RichEdit_SetFocus(r.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (r *TRichEdit) Update() {
     RichEdit_Update(r.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (r *TRichEdit) UpdateControlState() {
     RichEdit_UpdateControlState(r.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (r *TRichEdit) BringToFront() {
     RichEdit_BringToFront(r.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (r *TRichEdit) ClientToScreen(Point TPoint) TPoint {
     return RichEdit_ClientToScreen(r.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (r *TRichEdit) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return RichEdit_ClientToParent(r.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (r *TRichEdit) Dragging() bool {
     return RichEdit_Dragging(r.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (r *TRichEdit) HasParent() bool {
     return RichEdit_HasParent(r.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (r *TRichEdit) Hide() {
     RichEdit_Hide(r.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (r *TRichEdit) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return RichEdit_Perform(r.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (r *TRichEdit) Refresh() {
     RichEdit_Refresh(r.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (r *TRichEdit) ScreenToClient(Point TPoint) TPoint {
     return RichEdit_ScreenToClient(r.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (r *TRichEdit) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return RichEdit_ParentToClient(r.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (r *TRichEdit) SendToBack() {
     RichEdit_SendToBack(r.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (r *TRichEdit) Show() {
     RichEdit_Show(r.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (r *TRichEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
     return RichEdit_GetTextBuf(r.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (r *TRichEdit) GetTextLen() int32 {
     return RichEdit_GetTextLen(r.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (r *TRichEdit) SetTextBuf(Buffer string) {
     RichEdit_SetTextBuf(r.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (r *TRichEdit) FindComponent(AName string) *TComponent {
     return ComponentFromInst(RichEdit_FindComponent(r.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (r *TRichEdit) GetNamePath() string {
     return RichEdit_GetNamePath(r.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (r *TRichEdit) Assign(Source IObject) {
     RichEdit_Assign(r.instance, CheckPtr(Source))
 }
@@ -408,21 +482,29 @@ func (r *TRichEdit) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (r *TRichEdit) Align() TAlign {
     return RichEdit_GetAlign(r.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (r *TRichEdit) SetAlign(value TAlign) {
     RichEdit_SetAlign(r.instance, value)
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (r *TRichEdit) Alignment() TAlignment {
     return RichEdit_GetAlignment(r.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (r *TRichEdit) SetAlignment(value TAlignment) {
     RichEdit_SetAlignment(r.instance, value)
 }
@@ -508,41 +590,57 @@ func (r *TRichEdit) SetBorderWidth(value int32) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (r *TRichEdit) Color() TColor {
     return RichEdit_GetColor(r.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (r *TRichEdit) SetColor(value TColor) {
     RichEdit_SetColor(r.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (r *TRichEdit) DragCursor() TCursor {
     return RichEdit_GetDragCursor(r.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (r *TRichEdit) SetDragCursor(value TCursor) {
     RichEdit_SetDragCursor(r.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (r *TRichEdit) DragKind() TDragKind {
     return RichEdit_GetDragKind(r.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (r *TRichEdit) SetDragKind(value TDragKind) {
     RichEdit_SetDragKind(r.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (r *TRichEdit) DragMode() TDragMode {
     return RichEdit_GetDragMode(r.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (r *TRichEdit) SetDragMode(value TDragMode) {
     RichEdit_SetDragMode(r.instance, value)
 }
@@ -562,11 +660,15 @@ func (r *TRichEdit) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (r *TRichEdit) Font() *TFont {
     return FontFromInst(RichEdit_GetFont(r.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (r *TRichEdit) SetFont(value *TFont) {
     RichEdit_SetFont(r.instance, CheckPtr(value))
 }
@@ -612,11 +714,15 @@ func (r *TRichEdit) SetMaxLength(value int32) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (r *TRichEdit) ParentColor() bool {
     return RichEdit_GetParentColor(r.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (r *TRichEdit) SetParentColor(value bool) {
     RichEdit_SetParentColor(r.instance, value)
 }
@@ -632,11 +738,15 @@ func (r *TRichEdit) SetParentCtl3D(value bool) {
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (r *TRichEdit) ParentFont() bool {
     return RichEdit_GetParentFont(r.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (r *TRichEdit) SetParentFont(value bool) {
     RichEdit_SetParentFont(r.instance, value)
 }
@@ -662,11 +772,15 @@ func (r *TRichEdit) SetPlainText(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (r *TRichEdit) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(RichEdit_GetPopupMenu(r.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (r *TRichEdit) SetPopupMenu(value IComponent) {
     RichEdit_SetPopupMenu(r.instance, CheckPtr(value))
 }
@@ -692,31 +806,43 @@ func (r *TRichEdit) SetScrollBars(value TScrollStyle) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (r *TRichEdit) ShowHint() bool {
     return RichEdit_GetShowHint(r.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (r *TRichEdit) SetShowHint(value bool) {
     RichEdit_SetShowHint(r.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (r *TRichEdit) TabOrder() TTabOrder {
     return RichEdit_GetTabOrder(r.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (r *TRichEdit) SetTabOrder(value TTabOrder) {
     RichEdit_SetTabOrder(r.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (r *TRichEdit) TabStop() bool {
     return RichEdit_GetTabStop(r.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (r *TRichEdit) SetTabStop(value bool) {
     RichEdit_SetTabStop(r.instance, value)
 }
@@ -756,21 +882,29 @@ func (r *TRichEdit) SetWantReturns(value bool) {
 }
 
 // WordWrap
+// CN: 获取自动换行。
+// EN: Get Automatic line break.
 func (r *TRichEdit) WordWrap() bool {
     return RichEdit_GetWordWrap(r.instance)
 }
 
 // SetWordWrap
+// CN: 设置自动换行。
+// EN: Set Automatic line break.
 func (r *TRichEdit) SetWordWrap(value bool) {
     RichEdit_SetWordWrap(r.instance, value)
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (r *TRichEdit) StyleElements() TStyleElements {
     return RichEdit_GetStyleElements(r.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (r *TRichEdit) SetStyleElements(value TStyleElements) {
     RichEdit_SetStyleElements(r.instance, value)
 }
@@ -786,6 +920,8 @@ func (r *TRichEdit) SetZoom(value int32) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (r *TRichEdit) SetOnChange(fn TNotifyEvent) {
     RichEdit_SetOnChange(r.instance, fn)
 }
@@ -798,6 +934,8 @@ func (r *TRichEdit) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (r *TRichEdit) SetOnContextPopup(fn TContextPopupEvent) {
     RichEdit_SetOnContextPopup(r.instance, fn)
 }
@@ -808,36 +946,50 @@ func (r *TRichEdit) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (r *TRichEdit) SetOnDragDrop(fn TDragDropEvent) {
     RichEdit_SetOnDragDrop(r.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (r *TRichEdit) SetOnDragOver(fn TDragOverEvent) {
     RichEdit_SetOnDragOver(r.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (r *TRichEdit) SetOnEndDock(fn TEndDragEvent) {
     RichEdit_SetOnEndDock(r.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (r *TRichEdit) SetOnEndDrag(fn TEndDragEvent) {
     RichEdit_SetOnEndDrag(r.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (r *TRichEdit) SetOnEnter(fn TNotifyEvent) {
     RichEdit_SetOnEnter(r.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (r *TRichEdit) SetOnExit(fn TNotifyEvent) {
     RichEdit_SetOnExit(r.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (r *TRichEdit) SetOnKeyDown(fn TKeyEvent) {
     RichEdit_SetOnKeyDown(r.instance, fn)
 }
@@ -848,21 +1000,29 @@ func (r *TRichEdit) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (r *TRichEdit) SetOnKeyUp(fn TKeyEvent) {
     RichEdit_SetOnKeyUp(r.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (r *TRichEdit) SetOnMouseDown(fn TMouseEvent) {
     RichEdit_SetOnMouseDown(r.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (r *TRichEdit) SetOnMouseEnter(fn TNotifyEvent) {
     RichEdit_SetOnMouseEnter(r.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (r *TRichEdit) SetOnMouseLeave(fn TNotifyEvent) {
     RichEdit_SetOnMouseLeave(r.instance, fn)
 }
@@ -873,6 +1033,8 @@ func (r *TRichEdit) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (r *TRichEdit) SetOnMouseUp(fn TMouseEvent) {
     RichEdit_SetOnMouseUp(r.instance, fn)
 }
@@ -953,11 +1115,15 @@ func (r *TRichEdit) CanUndo() bool {
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (r *TRichEdit) Modified() bool {
     return RichEdit_GetModified(r.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (r *TRichEdit) SetModified(value bool) {
     RichEdit_SetModified(r.instance, value)
 }
@@ -1018,21 +1184,29 @@ func (r *TRichEdit) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (r *TRichEdit) DockSite() bool {
     return RichEdit_GetDockSite(r.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (r *TRichEdit) SetDockSite(value bool) {
     RichEdit_SetDockSite(r.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (r *TRichEdit) DoubleBuffered() bool {
     return RichEdit_GetDoubleBuffered(r.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (r *TRichEdit) SetDoubleBuffered(value bool) {
     RichEdit_SetDoubleBuffered(r.instance, value)
 }
@@ -1043,46 +1217,64 @@ func (r *TRichEdit) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (r *TRichEdit) MouseInClient() bool {
     return RichEdit_GetMouseInClient(r.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (r *TRichEdit) VisibleDockClientCount() int32 {
     return RichEdit_GetVisibleDockClientCount(r.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (r *TRichEdit) Brush() *TBrush {
     return BrushFromInst(RichEdit_GetBrush(r.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (r *TRichEdit) ControlCount() int32 {
     return RichEdit_GetControlCount(r.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (r *TRichEdit) Handle() HWND {
     return RichEdit_GetHandle(r.instance)
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (r *TRichEdit) ParentDoubleBuffered() bool {
     return RichEdit_GetParentDoubleBuffered(r.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (r *TRichEdit) SetParentDoubleBuffered(value bool) {
     RichEdit_SetParentDoubleBuffered(r.instance, value)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (r *TRichEdit) ParentWindow() HWND {
     return RichEdit_GetParentWindow(r.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (r *TRichEdit) SetParentWindow(value HWND) {
     RichEdit_SetParentWindow(r.instance, value)
 }
@@ -1118,11 +1310,15 @@ func (r *TRichEdit) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (r *TRichEdit) ClientHeight() int32 {
     return RichEdit_GetClientHeight(r.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (r *TRichEdit) SetClientHeight(value int32) {
     RichEdit_SetClientHeight(r.instance, value)
 }
@@ -1133,36 +1329,50 @@ func (r *TRichEdit) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (r *TRichEdit) ClientRect() TRect {
     return RichEdit_GetClientRect(r.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (r *TRichEdit) ClientWidth() int32 {
     return RichEdit_GetClientWidth(r.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (r *TRichEdit) SetClientWidth(value int32) {
     RichEdit_SetClientWidth(r.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (r *TRichEdit) ControlState() TControlState {
     return RichEdit_GetControlState(r.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (r *TRichEdit) SetControlState(value TControlState) {
     RichEdit_SetControlState(r.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (r *TRichEdit) ControlStyle() TControlStyle {
     return RichEdit_GetControlStyle(r.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (r *TRichEdit) SetControlStyle(value TControlStyle) {
     RichEdit_SetControlStyle(r.instance, value)
 }
@@ -1207,51 +1417,71 @@ func (r *TRichEdit) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (r *TRichEdit) AlignWithMargins() bool {
     return RichEdit_GetAlignWithMargins(r.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (r *TRichEdit) SetAlignWithMargins(value bool) {
     RichEdit_SetAlignWithMargins(r.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (r *TRichEdit) Left() int32 {
     return RichEdit_GetLeft(r.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (r *TRichEdit) SetLeft(value int32) {
     RichEdit_SetLeft(r.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (r *TRichEdit) Top() int32 {
     return RichEdit_GetTop(r.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (r *TRichEdit) SetTop(value int32) {
     RichEdit_SetTop(r.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (r *TRichEdit) Width() int32 {
     return RichEdit_GetWidth(r.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (r *TRichEdit) SetWidth(value int32) {
     RichEdit_SetWidth(r.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (r *TRichEdit) Height() int32 {
     return RichEdit_GetHeight(r.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (r *TRichEdit) SetHeight(value int32) {
     RichEdit_SetHeight(r.instance, value)
 }
@@ -1285,21 +1515,29 @@ func (r *TRichEdit) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (r *TRichEdit) Margins() *TMargins {
     return MarginsFromInst(RichEdit_GetMargins(r.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (r *TRichEdit) SetMargins(value *TMargins) {
     RichEdit_SetMargins(r.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (r *TRichEdit) CustomHint() *TCustomHint {
     return CustomHintFromInst(RichEdit_GetCustomHint(r.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (r *TRichEdit) SetCustomHint(value IComponent) {
     RichEdit_SetCustomHint(r.instance, CheckPtr(value))
 }

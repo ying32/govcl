@@ -122,26 +122,36 @@ func (s *TStringGrid) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (s *TStringGrid) ContainsControl(Control IControl) bool {
     return StringGrid_ContainsControl(s.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TStringGrid) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(StringGrid_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (s *TStringGrid) DisableAlign() {
     StringGrid_DisableAlign(s.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (s *TStringGrid) EnableAlign() {
     StringGrid_EnableAlign(s.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (s *TStringGrid) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(StringGrid_FindChildControl(s.instance, ControlName))
 }
@@ -152,161 +162,225 @@ func (s *TStringGrid) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (s *TStringGrid) Focused() bool {
     return StringGrid_Focused(s.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (s *TStringGrid) HandleAllocated() bool {
     return StringGrid_HandleAllocated(s.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (s *TStringGrid) InsertControl(AControl IControl) {
     StringGrid_InsertControl(s.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (s *TStringGrid) Invalidate() {
     StringGrid_Invalidate(s.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (s *TStringGrid) PaintTo(DC HDC, X int32, Y int32) {
     StringGrid_PaintTo(s.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (s *TStringGrid) RemoveControl(AControl IControl) {
     StringGrid_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (s *TStringGrid) Realign() {
     StringGrid_Realign(s.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (s *TStringGrid) Repaint() {
     StringGrid_Repaint(s.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (s *TStringGrid) ScaleBy(M int32, D int32) {
     StringGrid_ScaleBy(s.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (s *TStringGrid) ScrollBy(DeltaX int32, DeltaY int32) {
     StringGrid_ScrollBy(s.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (s *TStringGrid) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     StringGrid_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (s *TStringGrid) SetFocus() {
     StringGrid_SetFocus(s.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (s *TStringGrid) Update() {
     StringGrid_Update(s.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (s *TStringGrid) UpdateControlState() {
     StringGrid_UpdateControlState(s.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (s *TStringGrid) BringToFront() {
     StringGrid_BringToFront(s.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (s *TStringGrid) ClientToScreen(Point TPoint) TPoint {
     return StringGrid_ClientToScreen(s.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (s *TStringGrid) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return StringGrid_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (s *TStringGrid) Dragging() bool {
     return StringGrid_Dragging(s.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (s *TStringGrid) HasParent() bool {
     return StringGrid_HasParent(s.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (s *TStringGrid) Hide() {
     StringGrid_Hide(s.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (s *TStringGrid) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return StringGrid_Perform(s.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (s *TStringGrid) Refresh() {
     StringGrid_Refresh(s.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (s *TStringGrid) ScreenToClient(Point TPoint) TPoint {
     return StringGrid_ScreenToClient(s.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (s *TStringGrid) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return StringGrid_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (s *TStringGrid) SendToBack() {
     StringGrid_SendToBack(s.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (s *TStringGrid) Show() {
     StringGrid_Show(s.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (s *TStringGrid) GetTextBuf(Buffer string, BufSize int32) int32 {
     return StringGrid_GetTextBuf(s.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (s *TStringGrid) GetTextLen() int32 {
     return StringGrid_GetTextLen(s.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (s *TStringGrid) SetTextBuf(Buffer string) {
     StringGrid_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (s *TStringGrid) FindComponent(AName string) *TComponent {
     return ComponentFromInst(StringGrid_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TStringGrid) GetNamePath() string {
     return StringGrid_GetNamePath(s.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TStringGrid) Assign(Source IObject) {
     StringGrid_Assign(s.instance, CheckPtr(Source))
 }
@@ -368,11 +442,15 @@ func (s *TStringGrid) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (s *TStringGrid) Align() TAlign {
     return StringGrid_GetAlign(s.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (s *TStringGrid) SetAlign(value TAlign) {
     StringGrid_SetAlign(s.instance, value)
 }
@@ -448,11 +526,15 @@ func (s *TStringGrid) SetBorderStyle(value TBorderStyle) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (s *TStringGrid) Color() TColor {
     return StringGrid_GetColor(s.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (s *TStringGrid) SetColor(value TColor) {
     StringGrid_SetColor(s.instance, value)
 }
@@ -498,41 +580,57 @@ func (s *TStringGrid) SetDefaultDrawing(value bool) {
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (s *TStringGrid) DoubleBuffered() bool {
     return StringGrid_GetDoubleBuffered(s.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (s *TStringGrid) SetDoubleBuffered(value bool) {
     StringGrid_SetDoubleBuffered(s.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (s *TStringGrid) DragCursor() TCursor {
     return StringGrid_GetDragCursor(s.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (s *TStringGrid) SetDragCursor(value TCursor) {
     StringGrid_SetDragCursor(s.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (s *TStringGrid) DragKind() TDragKind {
     return StringGrid_GetDragKind(s.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (s *TStringGrid) SetDragKind(value TDragKind) {
     StringGrid_SetDragKind(s.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (s *TStringGrid) DragMode() TDragMode {
     return StringGrid_GetDragMode(s.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (s *TStringGrid) SetDragMode(value TDragMode) {
     StringGrid_SetDragMode(s.instance, value)
 }
@@ -602,11 +700,15 @@ func (s *TStringGrid) SetFixedRows(value int32) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (s *TStringGrid) Font() *TFont {
     return FontFromInst(StringGrid_GetFont(s.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (s *TStringGrid) SetFont(value *TFont) {
     StringGrid_SetFont(s.instance, CheckPtr(value))
 }
@@ -652,11 +754,15 @@ func (s *TStringGrid) SetOptions(value TGridOptions) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (s *TStringGrid) ParentColor() bool {
     return StringGrid_GetParentColor(s.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (s *TStringGrid) SetParentColor(value bool) {
     StringGrid_SetParentColor(s.instance, value)
 }
@@ -672,21 +778,29 @@ func (s *TStringGrid) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (s *TStringGrid) ParentDoubleBuffered() bool {
     return StringGrid_GetParentDoubleBuffered(s.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (s *TStringGrid) SetParentDoubleBuffered(value bool) {
     StringGrid_SetParentDoubleBuffered(s.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (s *TStringGrid) ParentFont() bool {
     return StringGrid_GetParentFont(s.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (s *TStringGrid) SetParentFont(value bool) {
     StringGrid_SetParentFont(s.instance, value)
 }
@@ -702,11 +816,15 @@ func (s *TStringGrid) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (s *TStringGrid) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(StringGrid_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (s *TStringGrid) SetPopupMenu(value IComponent) {
     StringGrid_SetPopupMenu(s.instance, CheckPtr(value))
 }
@@ -722,21 +840,29 @@ func (s *TStringGrid) SetScrollBars(value TScrollStyle) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (s *TStringGrid) ShowHint() bool {
     return StringGrid_GetShowHint(s.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (s *TStringGrid) SetShowHint(value bool) {
     StringGrid_SetShowHint(s.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (s *TStringGrid) TabOrder() TTabOrder {
     return StringGrid_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (s *TStringGrid) SetTabOrder(value TTabOrder) {
     StringGrid_SetTabOrder(s.instance, value)
 }
@@ -756,11 +882,15 @@ func (s *TStringGrid) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (s *TStringGrid) StyleElements() TStyleElements {
     return StringGrid_GetStyleElements(s.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (s *TStringGrid) SetStyleElements(value TStyleElements) {
     StringGrid_SetStyleElements(s.instance, value)
 }
@@ -788,6 +918,8 @@ func (s *TStringGrid) SetOnColumnMoved(fn TMovedEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (s *TStringGrid) SetOnContextPopup(fn TContextPopupEvent) {
     StringGrid_SetOnContextPopup(s.instance, fn)
 }
@@ -798,11 +930,15 @@ func (s *TStringGrid) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (s *TStringGrid) SetOnDragDrop(fn TDragDropEvent) {
     StringGrid_SetOnDragDrop(s.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (s *TStringGrid) SetOnDragOver(fn TDragOverEvent) {
     StringGrid_SetOnDragOver(s.instance, fn)
 }
@@ -813,21 +949,29 @@ func (s *TStringGrid) SetOnDrawCell(fn TDrawCellEvent) {
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (s *TStringGrid) SetOnEndDock(fn TEndDragEvent) {
     StringGrid_SetOnEndDock(s.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (s *TStringGrid) SetOnEndDrag(fn TEndDragEvent) {
     StringGrid_SetOnEndDrag(s.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (s *TStringGrid) SetOnEnter(fn TNotifyEvent) {
     StringGrid_SetOnEnter(s.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (s *TStringGrid) SetOnExit(fn TNotifyEvent) {
     StringGrid_SetOnExit(s.instance, fn)
 }
@@ -848,6 +992,8 @@ func (s *TStringGrid) SetOnGetEditText(fn TGetEditEvent) {
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (s *TStringGrid) SetOnKeyDown(fn TKeyEvent) {
     StringGrid_SetOnKeyDown(s.instance, fn)
 }
@@ -858,21 +1004,29 @@ func (s *TStringGrid) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (s *TStringGrid) SetOnKeyUp(fn TKeyEvent) {
     StringGrid_SetOnKeyUp(s.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (s *TStringGrid) SetOnMouseDown(fn TMouseEvent) {
     StringGrid_SetOnMouseDown(s.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (s *TStringGrid) SetOnMouseEnter(fn TNotifyEvent) {
     StringGrid_SetOnMouseEnter(s.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (s *TStringGrid) SetOnMouseLeave(fn TNotifyEvent) {
     StringGrid_SetOnMouseLeave(s.instance, fn)
 }
@@ -883,6 +1037,8 @@ func (s *TStringGrid) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (s *TStringGrid) SetOnMouseUp(fn TMouseEvent) {
     StringGrid_SetOnMouseUp(s.instance, fn)
 }
@@ -998,11 +1154,15 @@ func (s *TStringGrid) SetTopRow(value int32) {
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (s *TStringGrid) TabStop() bool {
     return StringGrid_GetTabStop(s.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (s *TStringGrid) SetTabStop(value bool) {
     StringGrid_SetTabStop(s.instance, value)
 }
@@ -1013,11 +1173,15 @@ func (s *TStringGrid) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (s *TStringGrid) DockSite() bool {
     return StringGrid_GetDockSite(s.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (s *TStringGrid) SetDockSite(value bool) {
     StringGrid_SetDockSite(s.instance, value)
 }
@@ -1028,36 +1192,50 @@ func (s *TStringGrid) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (s *TStringGrid) MouseInClient() bool {
     return StringGrid_GetMouseInClient(s.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (s *TStringGrid) VisibleDockClientCount() int32 {
     return StringGrid_GetVisibleDockClientCount(s.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (s *TStringGrid) Brush() *TBrush {
     return BrushFromInst(StringGrid_GetBrush(s.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (s *TStringGrid) ControlCount() int32 {
     return StringGrid_GetControlCount(s.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (s *TStringGrid) Handle() HWND {
     return StringGrid_GetHandle(s.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (s *TStringGrid) ParentWindow() HWND {
     return StringGrid_GetParentWindow(s.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (s *TStringGrid) SetParentWindow(value HWND) {
     StringGrid_SetParentWindow(s.instance, value)
 }
@@ -1093,11 +1271,15 @@ func (s *TStringGrid) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (s *TStringGrid) ClientHeight() int32 {
     return StringGrid_GetClientHeight(s.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (s *TStringGrid) SetClientHeight(value int32) {
     StringGrid_SetClientHeight(s.instance, value)
 }
@@ -1108,36 +1290,50 @@ func (s *TStringGrid) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (s *TStringGrid) ClientRect() TRect {
     return StringGrid_GetClientRect(s.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (s *TStringGrid) ClientWidth() int32 {
     return StringGrid_GetClientWidth(s.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (s *TStringGrid) SetClientWidth(value int32) {
     StringGrid_SetClientWidth(s.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (s *TStringGrid) ControlState() TControlState {
     return StringGrid_GetControlState(s.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (s *TStringGrid) SetControlState(value TControlState) {
     StringGrid_SetControlState(s.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (s *TStringGrid) ControlStyle() TControlStyle {
     return StringGrid_GetControlStyle(s.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (s *TStringGrid) SetControlStyle(value TControlStyle) {
     StringGrid_SetControlStyle(s.instance, value)
 }
@@ -1182,51 +1378,71 @@ func (s *TStringGrid) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (s *TStringGrid) AlignWithMargins() bool {
     return StringGrid_GetAlignWithMargins(s.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (s *TStringGrid) SetAlignWithMargins(value bool) {
     StringGrid_SetAlignWithMargins(s.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (s *TStringGrid) Left() int32 {
     return StringGrid_GetLeft(s.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (s *TStringGrid) SetLeft(value int32) {
     StringGrid_SetLeft(s.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (s *TStringGrid) Top() int32 {
     return StringGrid_GetTop(s.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (s *TStringGrid) SetTop(value int32) {
     StringGrid_SetTop(s.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (s *TStringGrid) Width() int32 {
     return StringGrid_GetWidth(s.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (s *TStringGrid) SetWidth(value int32) {
     StringGrid_SetWidth(s.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (s *TStringGrid) Height() int32 {
     return StringGrid_GetHeight(s.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (s *TStringGrid) SetHeight(value int32) {
     StringGrid_SetHeight(s.instance, value)
 }
@@ -1260,21 +1476,29 @@ func (s *TStringGrid) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (s *TStringGrid) Margins() *TMargins {
     return MarginsFromInst(StringGrid_GetMargins(s.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (s *TStringGrid) SetMargins(value *TMargins) {
     StringGrid_SetMargins(s.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (s *TStringGrid) CustomHint() *TCustomHint {
     return CustomHintFromInst(StringGrid_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (s *TStringGrid) SetCustomHint(value IComponent) {
     StringGrid_SetCustomHint(s.instance, CheckPtr(value))
 }

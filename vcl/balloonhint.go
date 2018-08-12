@@ -102,6 +102,8 @@ func TBalloonHintClass() TClass {
 }
 
 // ShowHint
+// CN: 显示鼠标悬停提示。
+// EN: Show mouseover tips.
 func (b *TBalloonHint) ShowHint() {
     BalloonHint_ShowHint(b.instance)
 }
@@ -112,21 +114,29 @@ func (b *TBalloonHint) HideHint() {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (b *TBalloonHint) FindComponent(AName string) *TComponent {
     return ComponentFromInst(BalloonHint_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (b *TBalloonHint) GetNamePath() string {
     return BalloonHint_GetNamePath(b.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (b *TBalloonHint) HasParent() bool {
     return BalloonHint_HasParent(b.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (b *TBalloonHint) Assign(Source IObject) {
     BalloonHint_Assign(b.instance, CheckPtr(Source))
 }

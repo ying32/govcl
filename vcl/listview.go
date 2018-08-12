@@ -157,26 +157,36 @@ func (l *TListView) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (l *TListView) ContainsControl(Control IControl) bool {
     return ListView_ContainsControl(l.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (l *TListView) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(ListView_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (l *TListView) DisableAlign() {
     ListView_DisableAlign(l.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (l *TListView) EnableAlign() {
     ListView_EnableAlign(l.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (l *TListView) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(ListView_FindChildControl(l.instance, ControlName))
 }
@@ -187,161 +197,225 @@ func (l *TListView) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (l *TListView) Focused() bool {
     return ListView_Focused(l.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (l *TListView) HandleAllocated() bool {
     return ListView_HandleAllocated(l.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (l *TListView) InsertControl(AControl IControl) {
     ListView_InsertControl(l.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (l *TListView) Invalidate() {
     ListView_Invalidate(l.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (l *TListView) PaintTo(DC HDC, X int32, Y int32) {
     ListView_PaintTo(l.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (l *TListView) RemoveControl(AControl IControl) {
     ListView_RemoveControl(l.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (l *TListView) Realign() {
     ListView_Realign(l.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (l *TListView) Repaint() {
     ListView_Repaint(l.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (l *TListView) ScaleBy(M int32, D int32) {
     ListView_ScaleBy(l.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (l *TListView) ScrollBy(DeltaX int32, DeltaY int32) {
     ListView_ScrollBy(l.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (l *TListView) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ListView_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (l *TListView) SetFocus() {
     ListView_SetFocus(l.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (l *TListView) Update() {
     ListView_Update(l.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (l *TListView) UpdateControlState() {
     ListView_UpdateControlState(l.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (l *TListView) BringToFront() {
     ListView_BringToFront(l.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (l *TListView) ClientToScreen(Point TPoint) TPoint {
     return ListView_ClientToScreen(l.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (l *TListView) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ListView_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (l *TListView) Dragging() bool {
     return ListView_Dragging(l.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (l *TListView) HasParent() bool {
     return ListView_HasParent(l.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (l *TListView) Hide() {
     ListView_Hide(l.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (l *TListView) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return ListView_Perform(l.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (l *TListView) Refresh() {
     ListView_Refresh(l.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (l *TListView) ScreenToClient(Point TPoint) TPoint {
     return ListView_ScreenToClient(l.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (l *TListView) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ListView_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (l *TListView) SendToBack() {
     ListView_SendToBack(l.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (l *TListView) Show() {
     ListView_Show(l.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (l *TListView) GetTextBuf(Buffer string, BufSize int32) int32 {
     return ListView_GetTextBuf(l.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (l *TListView) GetTextLen() int32 {
     return ListView_GetTextLen(l.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (l *TListView) SetTextBuf(Buffer string) {
     ListView_SetTextBuf(l.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (l *TListView) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ListView_FindComponent(l.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (l *TListView) GetNamePath() string {
     return ListView_GetNamePath(l.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (l *TListView) Assign(Source IObject) {
     ListView_Assign(l.instance, CheckPtr(Source))
 }
@@ -413,11 +487,15 @@ func (l *TListView) SetAction(value IComponent) {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (l *TListView) Align() TAlign {
     return ListView_GetAlign(l.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (l *TListView) SetAlign(value TAlign) {
     ListView_SetAlign(l.instance, value)
 }
@@ -523,11 +601,15 @@ func (l *TListView) SetCheckboxes(value bool) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (l *TListView) Color() TColor {
     return ListView_GetColor(l.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (l *TListView) SetColor(value TColor) {
     ListView_SetColor(l.instance, value)
 }
@@ -553,41 +635,57 @@ func (l *TListView) SetColumnClick(value bool) {
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (l *TListView) DoubleBuffered() bool {
     return ListView_GetDoubleBuffered(l.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (l *TListView) SetDoubleBuffered(value bool) {
     ListView_SetDoubleBuffered(l.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (l *TListView) DragCursor() TCursor {
     return ListView_GetDragCursor(l.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (l *TListView) SetDragCursor(value TCursor) {
     ListView_SetDragCursor(l.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (l *TListView) DragKind() TDragKind {
     return ListView_GetDragKind(l.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (l *TListView) SetDragKind(value TDragKind) {
     ListView_SetDragKind(l.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (l *TListView) DragMode() TDragMode {
     return ListView_GetDragMode(l.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (l *TListView) SetDragMode(value TDragMode) {
     ListView_SetDragMode(l.instance, value)
 }
@@ -607,11 +705,15 @@ func (l *TListView) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (l *TListView) Font() *TFont {
     return FontFromInst(ListView_GetFont(l.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (l *TListView) SetFont(value *TFont) {
     ListView_SetFont(l.instance, CheckPtr(value))
 }
@@ -727,11 +829,15 @@ func (l *TListView) SetMultiSelect(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (l *TListView) StyleElements() TStyleElements {
     return ListView_GetStyleElements(l.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (l *TListView) SetStyleElements(value TStyleElements) {
     ListView_SetStyleElements(l.instance, value)
 }
@@ -777,31 +883,43 @@ func (l *TListView) SetRowSelect(value bool) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (l *TListView) ParentColor() bool {
     return ListView_GetParentColor(l.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (l *TListView) SetParentColor(value bool) {
     ListView_SetParentColor(l.instance, value)
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (l *TListView) ParentDoubleBuffered() bool {
     return ListView_GetParentDoubleBuffered(l.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (l *TListView) SetParentDoubleBuffered(value bool) {
     ListView_SetParentDoubleBuffered(l.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (l *TListView) ParentFont() bool {
     return ListView_GetParentFont(l.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (l *TListView) SetParentFont(value bool) {
     ListView_SetParentFont(l.instance, value)
 }
@@ -817,11 +935,15 @@ func (l *TListView) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (l *TListView) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(ListView_GetPopupMenu(l.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (l *TListView) SetPopupMenu(value IComponent) {
     ListView_SetPopupMenu(l.instance, CheckPtr(value))
 }
@@ -847,11 +969,15 @@ func (l *TListView) SetShowWorkAreas(value bool) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (l *TListView) ShowHint() bool {
     return ListView_GetShowHint(l.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (l *TListView) SetShowHint(value bool) {
     ListView_SetShowHint(l.instance, value)
 }
@@ -887,21 +1013,29 @@ func (l *TListView) SetStateImages(value IComponent) {
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (l *TListView) TabOrder() TTabOrder {
     return ListView_GetTabOrder(l.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (l *TListView) SetTabOrder(value TTabOrder) {
     ListView_SetTabOrder(l.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (l *TListView) TabStop() bool {
     return ListView_GetTabStop(l.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (l *TListView) SetTabStop(value bool) {
     ListView_SetTabStop(l.instance, value)
 }
@@ -946,6 +1080,8 @@ func (l *TListView) SetOnAdvancedCustomDrawSubItem(fn TLVAdvancedCustomDrawSubIt
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (l *TListView) SetOnChange(fn TLVChangeEvent) {
     ListView_SetOnChange(l.instance, fn)
 }
@@ -973,6 +1109,8 @@ func (l *TListView) SetOnCompare(fn TLVCompareEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (l *TListView) SetOnContextPopup(fn TContextPopupEvent) {
     ListView_SetOnContextPopup(l.instance, fn)
 }
@@ -983,21 +1121,29 @@ func (l *TListView) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (l *TListView) SetOnEndDock(fn TEndDragEvent) {
     ListView_SetOnEndDock(l.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (l *TListView) SetOnEndDrag(fn TEndDragEvent) {
     ListView_SetOnEndDrag(l.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (l *TListView) SetOnEnter(fn TNotifyEvent) {
     ListView_SetOnEnter(l.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (l *TListView) SetOnExit(fn TNotifyEvent) {
     ListView_SetOnExit(l.instance, fn)
 }
@@ -1008,16 +1154,22 @@ func (l *TListView) SetOnGetImageIndex(fn TLVNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (l *TListView) SetOnDragDrop(fn TDragDropEvent) {
     ListView_SetOnDragDrop(l.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (l *TListView) SetOnDragOver(fn TDragOverEvent) {
     ListView_SetOnDragOver(l.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (l *TListView) SetOnKeyDown(fn TKeyEvent) {
     ListView_SetOnKeyDown(l.instance, fn)
 }
@@ -1028,21 +1180,29 @@ func (l *TListView) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (l *TListView) SetOnKeyUp(fn TKeyEvent) {
     ListView_SetOnKeyUp(l.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (l *TListView) SetOnMouseDown(fn TMouseEvent) {
     ListView_SetOnMouseDown(l.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (l *TListView) SetOnMouseEnter(fn TNotifyEvent) {
     ListView_SetOnMouseEnter(l.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (l *TListView) SetOnMouseLeave(fn TNotifyEvent) {
     ListView_SetOnMouseLeave(l.instance, fn)
 }
@@ -1053,6 +1213,8 @@ func (l *TListView) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (l *TListView) SetOnMouseUp(fn TMouseEvent) {
     ListView_SetOnMouseUp(l.instance, fn)
 }
@@ -1143,11 +1305,15 @@ func (l *TListView) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (l *TListView) DockSite() bool {
     return ListView_GetDockSite(l.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (l *TListView) SetDockSite(value bool) {
     ListView_SetDockSite(l.instance, value)
 }
@@ -1158,36 +1324,50 @@ func (l *TListView) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (l *TListView) MouseInClient() bool {
     return ListView_GetMouseInClient(l.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (l *TListView) VisibleDockClientCount() int32 {
     return ListView_GetVisibleDockClientCount(l.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (l *TListView) Brush() *TBrush {
     return BrushFromInst(ListView_GetBrush(l.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (l *TListView) ControlCount() int32 {
     return ListView_GetControlCount(l.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (l *TListView) Handle() HWND {
     return ListView_GetHandle(l.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (l *TListView) ParentWindow() HWND {
     return ListView_GetParentWindow(l.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (l *TListView) SetParentWindow(value HWND) {
     ListView_SetParentWindow(l.instance, value)
 }
@@ -1213,11 +1393,15 @@ func (l *TListView) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (l *TListView) ClientHeight() int32 {
     return ListView_GetClientHeight(l.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (l *TListView) SetClientHeight(value int32) {
     ListView_SetClientHeight(l.instance, value)
 }
@@ -1228,36 +1412,50 @@ func (l *TListView) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (l *TListView) ClientRect() TRect {
     return ListView_GetClientRect(l.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (l *TListView) ClientWidth() int32 {
     return ListView_GetClientWidth(l.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (l *TListView) SetClientWidth(value int32) {
     ListView_SetClientWidth(l.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (l *TListView) ControlState() TControlState {
     return ListView_GetControlState(l.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (l *TListView) SetControlState(value TControlState) {
     ListView_SetControlState(l.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (l *TListView) ControlStyle() TControlStyle {
     return ListView_GetControlStyle(l.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (l *TListView) SetControlStyle(value TControlStyle) {
     ListView_SetControlStyle(l.instance, value)
 }
@@ -1302,51 +1500,71 @@ func (l *TListView) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (l *TListView) AlignWithMargins() bool {
     return ListView_GetAlignWithMargins(l.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (l *TListView) SetAlignWithMargins(value bool) {
     ListView_SetAlignWithMargins(l.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (l *TListView) Left() int32 {
     return ListView_GetLeft(l.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (l *TListView) SetLeft(value int32) {
     ListView_SetLeft(l.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (l *TListView) Top() int32 {
     return ListView_GetTop(l.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (l *TListView) SetTop(value int32) {
     ListView_SetTop(l.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (l *TListView) Width() int32 {
     return ListView_GetWidth(l.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (l *TListView) SetWidth(value int32) {
     ListView_SetWidth(l.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (l *TListView) Height() int32 {
     return ListView_GetHeight(l.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (l *TListView) SetHeight(value int32) {
     ListView_SetHeight(l.instance, value)
 }
@@ -1380,21 +1598,29 @@ func (l *TListView) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (l *TListView) Margins() *TMargins {
     return MarginsFromInst(ListView_GetMargins(l.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (l *TListView) SetMargins(value *TMargins) {
     ListView_SetMargins(l.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (l *TListView) CustomHint() *TCustomHint {
     return CustomHintFromInst(ListView_GetCustomHint(l.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (l *TListView) SetCustomHint(value IComponent) {
     ListView_SetCustomHint(l.instance, CheckPtr(value))
 }

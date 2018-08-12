@@ -107,6 +107,8 @@ func (s *TStatusBar) FlipChildren(AllLevels bool) {
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (s *TStatusBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     StatusBar_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
 }
@@ -117,181 +119,253 @@ func (s *TStatusBar) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (s *TStatusBar) ContainsControl(Control IControl) bool {
     return StatusBar_ContainsControl(s.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TStatusBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(StatusBar_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (s *TStatusBar) DisableAlign() {
     StatusBar_DisableAlign(s.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (s *TStatusBar) EnableAlign() {
     StatusBar_EnableAlign(s.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (s *TStatusBar) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(StatusBar_FindChildControl(s.instance, ControlName))
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (s *TStatusBar) Focused() bool {
     return StatusBar_Focused(s.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (s *TStatusBar) HandleAllocated() bool {
     return StatusBar_HandleAllocated(s.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (s *TStatusBar) InsertControl(AControl IControl) {
     StatusBar_InsertControl(s.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (s *TStatusBar) Invalidate() {
     StatusBar_Invalidate(s.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (s *TStatusBar) PaintTo(DC HDC, X int32, Y int32) {
     StatusBar_PaintTo(s.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (s *TStatusBar) RemoveControl(AControl IControl) {
     StatusBar_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (s *TStatusBar) Realign() {
     StatusBar_Realign(s.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (s *TStatusBar) Repaint() {
     StatusBar_Repaint(s.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (s *TStatusBar) ScaleBy(M int32, D int32) {
     StatusBar_ScaleBy(s.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (s *TStatusBar) ScrollBy(DeltaX int32, DeltaY int32) {
     StatusBar_ScrollBy(s.instance, DeltaX , DeltaY)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (s *TStatusBar) SetFocus() {
     StatusBar_SetFocus(s.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (s *TStatusBar) Update() {
     StatusBar_Update(s.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (s *TStatusBar) UpdateControlState() {
     StatusBar_UpdateControlState(s.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (s *TStatusBar) BringToFront() {
     StatusBar_BringToFront(s.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (s *TStatusBar) ClientToScreen(Point TPoint) TPoint {
     return StatusBar_ClientToScreen(s.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (s *TStatusBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return StatusBar_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (s *TStatusBar) Dragging() bool {
     return StatusBar_Dragging(s.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (s *TStatusBar) HasParent() bool {
     return StatusBar_HasParent(s.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (s *TStatusBar) Hide() {
     StatusBar_Hide(s.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (s *TStatusBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return StatusBar_Perform(s.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (s *TStatusBar) Refresh() {
     StatusBar_Refresh(s.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (s *TStatusBar) ScreenToClient(Point TPoint) TPoint {
     return StatusBar_ScreenToClient(s.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (s *TStatusBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return StatusBar_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (s *TStatusBar) SendToBack() {
     StatusBar_SendToBack(s.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (s *TStatusBar) Show() {
     StatusBar_Show(s.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (s *TStatusBar) GetTextBuf(Buffer string, BufSize int32) int32 {
     return StatusBar_GetTextBuf(s.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (s *TStatusBar) GetTextLen() int32 {
     return StatusBar_GetTextLen(s.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (s *TStatusBar) SetTextBuf(Buffer string) {
     StatusBar_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (s *TStatusBar) FindComponent(AName string) *TComponent {
     return ComponentFromInst(StatusBar_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TStatusBar) GetNamePath() string {
     return StatusBar_GetNamePath(s.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TStatusBar) Assign(Source IObject) {
     StatusBar_Assign(s.instance, CheckPtr(Source))
 }
@@ -373,11 +447,15 @@ func (s *TStatusBar) SetAutoHint(value bool) {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (s *TStatusBar) Align() TAlign {
     return StatusBar_GetAlign(s.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (s *TStatusBar) SetAlign(value TAlign) {
     StatusBar_SetAlign(s.instance, value)
 }
@@ -413,51 +491,71 @@ func (s *TStatusBar) SetBorderWidth(value int32) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (s *TStatusBar) Color() TColor {
     return StatusBar_GetColor(s.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (s *TStatusBar) SetColor(value TColor) {
     StatusBar_SetColor(s.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (s *TStatusBar) DoubleBuffered() bool {
     return StatusBar_GetDoubleBuffered(s.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (s *TStatusBar) SetDoubleBuffered(value bool) {
     StatusBar_SetDoubleBuffered(s.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (s *TStatusBar) DragCursor() TCursor {
     return StatusBar_GetDragCursor(s.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (s *TStatusBar) SetDragCursor(value TCursor) {
     StatusBar_SetDragCursor(s.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (s *TStatusBar) DragKind() TDragKind {
     return StatusBar_GetDragKind(s.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (s *TStatusBar) SetDragKind(value TDragKind) {
     StatusBar_SetDragKind(s.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (s *TStatusBar) DragMode() TDragMode {
     return StatusBar_GetDragMode(s.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (s *TStatusBar) SetDragMode(value TDragMode) {
     StatusBar_SetDragMode(s.instance, value)
 }
@@ -477,11 +575,15 @@ func (s *TStatusBar) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (s *TStatusBar) Font() *TFont {
     return FontFromInst(StatusBar_GetFont(s.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (s *TStatusBar) SetFont(value *TFont) {
     StatusBar_SetFont(s.instance, CheckPtr(value))
 }
@@ -497,31 +599,43 @@ func (s *TStatusBar) SetPanels(value *TStatusPanels) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (s *TStatusBar) ParentColor() bool {
     return StatusBar_GetParentColor(s.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (s *TStatusBar) SetParentColor(value bool) {
     StatusBar_SetParentColor(s.instance, value)
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (s *TStatusBar) ParentDoubleBuffered() bool {
     return StatusBar_GetParentDoubleBuffered(s.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (s *TStatusBar) SetParentDoubleBuffered(value bool) {
     StatusBar_SetParentDoubleBuffered(s.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (s *TStatusBar) ParentFont() bool {
     return StatusBar_GetParentFont(s.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (s *TStatusBar) SetParentFont(value bool) {
     StatusBar_SetParentFont(s.instance, value)
 }
@@ -537,21 +651,29 @@ func (s *TStatusBar) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (s *TStatusBar) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(StatusBar_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (s *TStatusBar) SetPopupMenu(value IComponent) {
     StatusBar_SetPopupMenu(s.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (s *TStatusBar) ShowHint() bool {
     return StatusBar_GetShowHint(s.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (s *TStatusBar) SetShowHint(value bool) {
     StatusBar_SetShowHint(s.instance, value)
 }
@@ -611,11 +733,15 @@ func (s *TStatusBar) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (s *TStatusBar) StyleElements() TStyleElements {
     return StatusBar_GetStyleElements(s.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (s *TStatusBar) SetStyleElements(value TStyleElements) {
     StatusBar_SetStyleElements(s.instance, value)
 }
@@ -628,6 +754,8 @@ func (s *TStatusBar) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (s *TStatusBar) SetOnContextPopup(fn TContextPopupEvent) {
     StatusBar_SetOnContextPopup(s.instance, fn)
 }
@@ -638,21 +766,29 @@ func (s *TStatusBar) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (s *TStatusBar) SetOnDragDrop(fn TDragDropEvent) {
     StatusBar_SetOnDragDrop(s.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (s *TStatusBar) SetOnDragOver(fn TDragOverEvent) {
     StatusBar_SetOnDragOver(s.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (s *TStatusBar) SetOnEndDock(fn TEndDragEvent) {
     StatusBar_SetOnEndDock(s.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (s *TStatusBar) SetOnEndDrag(fn TEndDragEvent) {
     StatusBar_SetOnEndDrag(s.instance, fn)
 }
@@ -663,16 +799,22 @@ func (s *TStatusBar) SetOnHint(fn TNotifyEvent) {
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (s *TStatusBar) SetOnMouseDown(fn TMouseEvent) {
     StatusBar_SetOnMouseDown(s.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (s *TStatusBar) SetOnMouseEnter(fn TNotifyEvent) {
     StatusBar_SetOnMouseEnter(s.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (s *TStatusBar) SetOnMouseLeave(fn TNotifyEvent) {
     StatusBar_SetOnMouseLeave(s.instance, fn)
 }
@@ -683,6 +825,8 @@ func (s *TStatusBar) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (s *TStatusBar) SetOnMouseUp(fn TMouseEvent) {
     StatusBar_SetOnMouseUp(s.instance, fn)
 }
@@ -708,11 +852,15 @@ func (s *TStatusBar) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (s *TStatusBar) DockSite() bool {
     return StatusBar_GetDockSite(s.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (s *TStatusBar) SetDockSite(value bool) {
     StatusBar_SetDockSite(s.instance, value)
 }
@@ -723,56 +871,78 @@ func (s *TStatusBar) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (s *TStatusBar) MouseInClient() bool {
     return StatusBar_GetMouseInClient(s.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (s *TStatusBar) VisibleDockClientCount() int32 {
     return StatusBar_GetVisibleDockClientCount(s.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (s *TStatusBar) Brush() *TBrush {
     return BrushFromInst(StatusBar_GetBrush(s.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (s *TStatusBar) ControlCount() int32 {
     return StatusBar_GetControlCount(s.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (s *TStatusBar) Handle() HWND {
     return StatusBar_GetHandle(s.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (s *TStatusBar) ParentWindow() HWND {
     return StatusBar_GetParentWindow(s.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (s *TStatusBar) SetParentWindow(value HWND) {
     StatusBar_SetParentWindow(s.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (s *TStatusBar) TabOrder() TTabOrder {
     return StatusBar_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (s *TStatusBar) SetTabOrder(value TTabOrder) {
     StatusBar_SetTabOrder(s.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (s *TStatusBar) TabStop() bool {
     return StatusBar_GetTabStop(s.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (s *TStatusBar) SetTabStop(value bool) {
     StatusBar_SetTabStop(s.instance, value)
 }
@@ -798,11 +968,15 @@ func (s *TStatusBar) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (s *TStatusBar) ClientHeight() int32 {
     return StatusBar_GetClientHeight(s.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (s *TStatusBar) SetClientHeight(value int32) {
     StatusBar_SetClientHeight(s.instance, value)
 }
@@ -813,36 +987,50 @@ func (s *TStatusBar) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (s *TStatusBar) ClientRect() TRect {
     return StatusBar_GetClientRect(s.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (s *TStatusBar) ClientWidth() int32 {
     return StatusBar_GetClientWidth(s.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (s *TStatusBar) SetClientWidth(value int32) {
     StatusBar_SetClientWidth(s.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (s *TStatusBar) ControlState() TControlState {
     return StatusBar_GetControlState(s.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (s *TStatusBar) SetControlState(value TControlState) {
     StatusBar_SetControlState(s.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (s *TStatusBar) ControlStyle() TControlStyle {
     return StatusBar_GetControlStyle(s.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (s *TStatusBar) SetControlStyle(value TControlStyle) {
     StatusBar_SetControlStyle(s.instance, value)
 }
@@ -887,51 +1075,71 @@ func (s *TStatusBar) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (s *TStatusBar) AlignWithMargins() bool {
     return StatusBar_GetAlignWithMargins(s.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (s *TStatusBar) SetAlignWithMargins(value bool) {
     StatusBar_SetAlignWithMargins(s.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (s *TStatusBar) Left() int32 {
     return StatusBar_GetLeft(s.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (s *TStatusBar) SetLeft(value int32) {
     StatusBar_SetLeft(s.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (s *TStatusBar) Top() int32 {
     return StatusBar_GetTop(s.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (s *TStatusBar) SetTop(value int32) {
     StatusBar_SetTop(s.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (s *TStatusBar) Width() int32 {
     return StatusBar_GetWidth(s.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (s *TStatusBar) SetWidth(value int32) {
     StatusBar_SetWidth(s.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (s *TStatusBar) Height() int32 {
     return StatusBar_GetHeight(s.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (s *TStatusBar) SetHeight(value int32) {
     StatusBar_SetHeight(s.instance, value)
 }
@@ -965,21 +1173,29 @@ func (s *TStatusBar) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (s *TStatusBar) Margins() *TMargins {
     return MarginsFromInst(StatusBar_GetMargins(s.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (s *TStatusBar) SetMargins(value *TMargins) {
     StatusBar_SetMargins(s.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (s *TStatusBar) CustomHint() *TCustomHint {
     return CustomHintFromInst(StatusBar_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (s *TStatusBar) SetCustomHint(value IComponent) {
     StatusBar_SetCustomHint(s.instance, CheckPtr(value))
 }

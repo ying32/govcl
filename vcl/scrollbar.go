@@ -112,26 +112,36 @@ func (s *TScrollBar) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (s *TScrollBar) ContainsControl(Control IControl) bool {
     return ScrollBar_ContainsControl(s.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TScrollBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(ScrollBar_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (s *TScrollBar) DisableAlign() {
     ScrollBar_DisableAlign(s.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (s *TScrollBar) EnableAlign() {
     ScrollBar_EnableAlign(s.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (s *TScrollBar) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(ScrollBar_FindChildControl(s.instance, ControlName))
 }
@@ -142,161 +152,225 @@ func (s *TScrollBar) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (s *TScrollBar) Focused() bool {
     return ScrollBar_Focused(s.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (s *TScrollBar) HandleAllocated() bool {
     return ScrollBar_HandleAllocated(s.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (s *TScrollBar) InsertControl(AControl IControl) {
     ScrollBar_InsertControl(s.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (s *TScrollBar) Invalidate() {
     ScrollBar_Invalidate(s.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (s *TScrollBar) PaintTo(DC HDC, X int32, Y int32) {
     ScrollBar_PaintTo(s.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (s *TScrollBar) RemoveControl(AControl IControl) {
     ScrollBar_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (s *TScrollBar) Realign() {
     ScrollBar_Realign(s.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (s *TScrollBar) Repaint() {
     ScrollBar_Repaint(s.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (s *TScrollBar) ScaleBy(M int32, D int32) {
     ScrollBar_ScaleBy(s.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (s *TScrollBar) ScrollBy(DeltaX int32, DeltaY int32) {
     ScrollBar_ScrollBy(s.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (s *TScrollBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ScrollBar_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (s *TScrollBar) SetFocus() {
     ScrollBar_SetFocus(s.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (s *TScrollBar) Update() {
     ScrollBar_Update(s.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (s *TScrollBar) UpdateControlState() {
     ScrollBar_UpdateControlState(s.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (s *TScrollBar) BringToFront() {
     ScrollBar_BringToFront(s.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (s *TScrollBar) ClientToScreen(Point TPoint) TPoint {
     return ScrollBar_ClientToScreen(s.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (s *TScrollBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBar_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (s *TScrollBar) Dragging() bool {
     return ScrollBar_Dragging(s.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (s *TScrollBar) HasParent() bool {
     return ScrollBar_HasParent(s.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (s *TScrollBar) Hide() {
     ScrollBar_Hide(s.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (s *TScrollBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return ScrollBar_Perform(s.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (s *TScrollBar) Refresh() {
     ScrollBar_Refresh(s.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (s *TScrollBar) ScreenToClient(Point TPoint) TPoint {
     return ScrollBar_ScreenToClient(s.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (s *TScrollBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ScrollBar_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (s *TScrollBar) SendToBack() {
     ScrollBar_SendToBack(s.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (s *TScrollBar) Show() {
     ScrollBar_Show(s.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (s *TScrollBar) GetTextBuf(Buffer string, BufSize int32) int32 {
     return ScrollBar_GetTextBuf(s.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (s *TScrollBar) GetTextLen() int32 {
     return ScrollBar_GetTextLen(s.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (s *TScrollBar) SetTextBuf(Buffer string) {
     ScrollBar_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (s *TScrollBar) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ScrollBar_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TScrollBar) GetNamePath() string {
     return ScrollBar_GetNamePath(s.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TScrollBar) Assign(Source IObject) {
     ScrollBar_Assign(s.instance, CheckPtr(Source))
 }
@@ -358,11 +432,15 @@ func (s *TScrollBar) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (s *TScrollBar) Align() TAlign {
     return ScrollBar_GetAlign(s.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (s *TScrollBar) SetAlign(value TAlign) {
     ScrollBar_SetAlign(s.instance, value)
 }
@@ -388,41 +466,57 @@ func (s *TScrollBar) SetBiDiMode(value TBiDiMode) {
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (s *TScrollBar) DoubleBuffered() bool {
     return ScrollBar_GetDoubleBuffered(s.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (s *TScrollBar) SetDoubleBuffered(value bool) {
     ScrollBar_SetDoubleBuffered(s.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (s *TScrollBar) DragCursor() TCursor {
     return ScrollBar_GetDragCursor(s.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (s *TScrollBar) SetDragCursor(value TCursor) {
     ScrollBar_SetDragCursor(s.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (s *TScrollBar) DragKind() TDragKind {
     return ScrollBar_GetDragKind(s.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (s *TScrollBar) SetDragKind(value TDragKind) {
     ScrollBar_SetDragKind(s.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (s *TScrollBar) DragMode() TDragMode {
     return ScrollBar_GetDragMode(s.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (s *TScrollBar) SetDragMode(value TDragMode) {
     ScrollBar_SetDragMode(s.instance, value)
 }
@@ -502,11 +596,15 @@ func (s *TScrollBar) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (s *TScrollBar) ParentDoubleBuffered() bool {
     return ScrollBar_GetParentDoubleBuffered(s.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (s *TScrollBar) SetParentDoubleBuffered(value bool) {
     ScrollBar_SetParentDoubleBuffered(s.instance, value)
 }
@@ -522,11 +620,15 @@ func (s *TScrollBar) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (s *TScrollBar) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(ScrollBar_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (s *TScrollBar) SetPopupMenu(value IComponent) {
     ScrollBar_SetPopupMenu(s.instance, CheckPtr(value))
 }
@@ -542,11 +644,15 @@ func (s *TScrollBar) SetPosition(value int32) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (s *TScrollBar) ShowHint() bool {
     return ScrollBar_GetShowHint(s.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (s *TScrollBar) SetShowHint(value bool) {
     ScrollBar_SetShowHint(s.instance, value)
 }
@@ -562,21 +668,29 @@ func (s *TScrollBar) SetSmallChange(value TScrollBarInc) {
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (s *TScrollBar) TabOrder() TTabOrder {
     return ScrollBar_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (s *TScrollBar) SetTabOrder(value TTabOrder) {
     ScrollBar_SetTabOrder(s.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (s *TScrollBar) TabStop() bool {
     return ScrollBar_GetTabStop(s.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (s *TScrollBar) SetTabStop(value bool) {
     ScrollBar_SetTabStop(s.instance, value)
 }
@@ -596,56 +710,78 @@ func (s *TScrollBar) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (s *TScrollBar) StyleElements() TStyleElements {
     return ScrollBar_GetStyleElements(s.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (s *TScrollBar) SetStyleElements(value TStyleElements) {
     ScrollBar_SetStyleElements(s.instance, value)
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (s *TScrollBar) SetOnContextPopup(fn TContextPopupEvent) {
     ScrollBar_SetOnContextPopup(s.instance, fn)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (s *TScrollBar) SetOnChange(fn TNotifyEvent) {
     ScrollBar_SetOnChange(s.instance, fn)
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (s *TScrollBar) SetOnDragDrop(fn TDragDropEvent) {
     ScrollBar_SetOnDragDrop(s.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (s *TScrollBar) SetOnDragOver(fn TDragOverEvent) {
     ScrollBar_SetOnDragOver(s.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (s *TScrollBar) SetOnEndDock(fn TEndDragEvent) {
     ScrollBar_SetOnEndDock(s.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (s *TScrollBar) SetOnEndDrag(fn TEndDragEvent) {
     ScrollBar_SetOnEndDrag(s.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (s *TScrollBar) SetOnEnter(fn TNotifyEvent) {
     ScrollBar_SetOnEnter(s.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (s *TScrollBar) SetOnExit(fn TNotifyEvent) {
     ScrollBar_SetOnExit(s.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (s *TScrollBar) SetOnKeyDown(fn TKeyEvent) {
     ScrollBar_SetOnKeyDown(s.instance, fn)
 }
@@ -656,16 +792,22 @@ func (s *TScrollBar) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (s *TScrollBar) SetOnKeyUp(fn TKeyEvent) {
     ScrollBar_SetOnKeyUp(s.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (s *TScrollBar) SetOnMouseEnter(fn TNotifyEvent) {
     ScrollBar_SetOnMouseEnter(s.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (s *TScrollBar) SetOnMouseLeave(fn TNotifyEvent) {
     ScrollBar_SetOnMouseLeave(s.instance, fn)
 }
@@ -681,11 +823,15 @@ func (s *TScrollBar) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (s *TScrollBar) DockSite() bool {
     return ScrollBar_GetDockSite(s.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (s *TScrollBar) SetDockSite(value bool) {
     ScrollBar_SetDockSite(s.instance, value)
 }
@@ -696,36 +842,50 @@ func (s *TScrollBar) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (s *TScrollBar) MouseInClient() bool {
     return ScrollBar_GetMouseInClient(s.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (s *TScrollBar) VisibleDockClientCount() int32 {
     return ScrollBar_GetVisibleDockClientCount(s.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (s *TScrollBar) Brush() *TBrush {
     return BrushFromInst(ScrollBar_GetBrush(s.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (s *TScrollBar) ControlCount() int32 {
     return ScrollBar_GetControlCount(s.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (s *TScrollBar) Handle() HWND {
     return ScrollBar_GetHandle(s.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (s *TScrollBar) ParentWindow() HWND {
     return ScrollBar_GetParentWindow(s.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (s *TScrollBar) SetParentWindow(value HWND) {
     ScrollBar_SetParentWindow(s.instance, value)
 }
@@ -761,11 +921,15 @@ func (s *TScrollBar) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (s *TScrollBar) ClientHeight() int32 {
     return ScrollBar_GetClientHeight(s.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (s *TScrollBar) SetClientHeight(value int32) {
     ScrollBar_SetClientHeight(s.instance, value)
 }
@@ -776,36 +940,50 @@ func (s *TScrollBar) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (s *TScrollBar) ClientRect() TRect {
     return ScrollBar_GetClientRect(s.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (s *TScrollBar) ClientWidth() int32 {
     return ScrollBar_GetClientWidth(s.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (s *TScrollBar) SetClientWidth(value int32) {
     ScrollBar_SetClientWidth(s.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (s *TScrollBar) ControlState() TControlState {
     return ScrollBar_GetControlState(s.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (s *TScrollBar) SetControlState(value TControlState) {
     ScrollBar_SetControlState(s.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (s *TScrollBar) ControlStyle() TControlStyle {
     return ScrollBar_GetControlStyle(s.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (s *TScrollBar) SetControlStyle(value TControlStyle) {
     ScrollBar_SetControlStyle(s.instance, value)
 }
@@ -850,51 +1028,71 @@ func (s *TScrollBar) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (s *TScrollBar) AlignWithMargins() bool {
     return ScrollBar_GetAlignWithMargins(s.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (s *TScrollBar) SetAlignWithMargins(value bool) {
     ScrollBar_SetAlignWithMargins(s.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (s *TScrollBar) Left() int32 {
     return ScrollBar_GetLeft(s.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (s *TScrollBar) SetLeft(value int32) {
     ScrollBar_SetLeft(s.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (s *TScrollBar) Top() int32 {
     return ScrollBar_GetTop(s.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (s *TScrollBar) SetTop(value int32) {
     ScrollBar_SetTop(s.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (s *TScrollBar) Width() int32 {
     return ScrollBar_GetWidth(s.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (s *TScrollBar) SetWidth(value int32) {
     ScrollBar_SetWidth(s.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (s *TScrollBar) Height() int32 {
     return ScrollBar_GetHeight(s.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (s *TScrollBar) SetHeight(value int32) {
     ScrollBar_SetHeight(s.instance, value)
 }
@@ -928,21 +1126,29 @@ func (s *TScrollBar) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (s *TScrollBar) Margins() *TMargins {
     return MarginsFromInst(ScrollBar_GetMargins(s.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (s *TScrollBar) SetMargins(value *TMargins) {
     ScrollBar_SetMargins(s.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (s *TScrollBar) CustomHint() *TCustomHint {
     return CustomHintFromInst(ScrollBar_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (s *TScrollBar) SetCustomHint(value IComponent) {
     ScrollBar_SetCustomHint(s.instance, CheckPtr(value))
 }

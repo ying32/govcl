@@ -102,11 +102,15 @@ func TListColumnClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (l *TListColumn) Assign(Source IObject) {
     ListColumn_Assign(l.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (l *TListColumn) GetNamePath() string {
     return ListColumn_GetNamePath(l.instance)
 }
@@ -168,11 +172,15 @@ func (l *TListColumn) ToString() string {
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (l *TListColumn) Alignment() TAlignment {
     return ListColumn_GetAlignment(l.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (l *TListColumn) SetAlignment(value TAlignment) {
     ListColumn_SetAlignment(l.instance, value)
 }
@@ -246,11 +254,15 @@ func (l *TListColumn) SetTag(value int32) {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (l *TListColumn) Width() int32 {
     return ListColumn_GetWidth(l.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (l *TListColumn) SetWidth(value int32) {
     ListColumn_SetWidth(l.instance, value)
 }

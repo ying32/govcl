@@ -112,21 +112,29 @@ func (f *TFindDialog) Execute() bool {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (f *TFindDialog) FindComponent(AName string) *TComponent {
     return ComponentFromInst(FindDialog_FindComponent(f.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (f *TFindDialog) GetNamePath() string {
     return FindDialog_GetNamePath(f.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (f *TFindDialog) HasParent() bool {
     return FindDialog_HasParent(f.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (f *TFindDialog) Assign(Source IObject) {
     FindDialog_Assign(f.instance, CheckPtr(Source))
 }
@@ -188,11 +196,15 @@ func (f *TFindDialog) ToString() string {
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (f *TFindDialog) Left() int32 {
     return FindDialog_GetLeft(f.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (f *TFindDialog) SetLeft(value int32) {
     FindDialog_SetLeft(f.instance, value)
 }
@@ -208,11 +220,15 @@ func (f *TFindDialog) SetPosition(value TPoint) {
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (f *TFindDialog) Top() int32 {
     return FindDialog_GetTop(f.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (f *TFindDialog) SetTop(value int32) {
     FindDialog_SetTop(f.instance, value)
 }
@@ -243,6 +259,8 @@ func (f *TFindDialog) SetOnFind(fn TNotifyEvent) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (f *TFindDialog) Handle() HWND {
     return FindDialog_GetHandle(f.instance)
 }

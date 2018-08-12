@@ -107,21 +107,29 @@ func (p *TPrintDialog) Execute() bool {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (p *TPrintDialog) FindComponent(AName string) *TComponent {
     return ComponentFromInst(PrintDialog_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (p *TPrintDialog) GetNamePath() string {
     return PrintDialog_GetNamePath(p.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (p *TPrintDialog) HasParent() bool {
     return PrintDialog_HasParent(p.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (p *TPrintDialog) Assign(Source IObject) {
     PrintDialog_Assign(p.instance, CheckPtr(Source))
 }
@@ -273,6 +281,8 @@ func (p *TPrintDialog) SetToPage(value int32) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (p *TPrintDialog) Handle() HWND {
     return PrintDialog_GetHandle(p.instance)
 }

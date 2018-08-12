@@ -102,21 +102,29 @@ func TActionListClass() TClass {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (a *TActionList) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ActionList_FindComponent(a.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (a *TActionList) GetNamePath() string {
     return ActionList_GetNamePath(a.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (a *TActionList) HasParent() bool {
     return ActionList_HasParent(a.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (a *TActionList) Assign(Source IObject) {
     ActionList_Assign(a.instance, CheckPtr(Source))
 }
@@ -198,6 +206,8 @@ func (a *TActionList) SetState(value TActionListState) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (a *TActionList) SetOnChange(fn TNotifyEvent) {
     ActionList_SetOnChange(a.instance, fn)
 }

@@ -102,11 +102,15 @@ func TBitmapClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (b *TBitmap) Assign(Source IObject) {
     Bitmap_Assign(b.instance, CheckPtr(Source))
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (b *TBitmap) HandleAllocated() bool {
     return Bitmap_HandleAllocated(b.instance)
 }
@@ -154,6 +158,8 @@ func (b *TBitmap) SaveToFile(Filename string) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (b *TBitmap) GetNamePath() string {
     return Bitmap_GetNamePath(b.instance)
 }
@@ -213,11 +219,15 @@ func (b *TBitmap) Canvas() *TCanvas {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (b *TBitmap) Handle() HBITMAP {
     return Bitmap_GetHandle(b.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (b *TBitmap) SetHandle(value HBITMAP) {
     Bitmap_SetHandle(b.instance, value)
 }
@@ -248,21 +258,29 @@ func (b *TBitmap) Empty() bool {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (b *TBitmap) Height() int32 {
     return Bitmap_GetHeight(b.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (b *TBitmap) SetHeight(value int32) {
     Bitmap_SetHeight(b.instance, value)
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (b *TBitmap) Modified() bool {
     return Bitmap_GetModified(b.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (b *TBitmap) SetModified(value bool) {
     Bitmap_SetModified(b.instance, value)
 }
@@ -278,26 +296,36 @@ func (b *TBitmap) SetPaletteModified(value bool) {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (b *TBitmap) Transparent() bool {
     return Bitmap_GetTransparent(b.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (b *TBitmap) SetTransparent(value bool) {
     Bitmap_SetTransparent(b.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (b *TBitmap) Width() int32 {
     return Bitmap_GetWidth(b.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (b *TBitmap) SetWidth(value int32) {
     Bitmap_SetWidth(b.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (b *TBitmap) SetOnChange(fn TNotifyEvent) {
     Bitmap_SetOnChange(b.instance, fn)
 }

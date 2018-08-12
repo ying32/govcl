@@ -102,6 +102,8 @@ func TListItemClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (l *TListItem) Assign(Source IObject) {
     ListItem_Assign(l.instance, CheckPtr(Source))
 }
@@ -132,6 +134,8 @@ func (l *TListItem) MakeVisible(PartialOK bool) {
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (l *TListItem) Update() {
     ListItem_Update(l.instance)
 }
@@ -142,6 +146,8 @@ func (l *TListItem) WorkArea() int32 {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (l *TListItem) GetNamePath() string {
     return ListItem_GetNamePath(l.instance)
 }
@@ -262,11 +268,15 @@ func (l *TListItem) SetDropTarget(value bool) {
 }
 
 // Focused
+// CN: 获取返回是否获取焦点。
+// EN: Get Return to get focus.
 func (l *TListItem) Focused() bool {
     return ListItem_GetFocused(l.instance)
 }
 
 // SetFocused
+// CN: 设置返回是否获取焦点。
+// EN: Set Return to get focus.
 func (l *TListItem) SetFocused(value bool) {
     ListItem_SetFocused(l.instance, value)
 }
@@ -282,6 +292,8 @@ func (l *TListItem) SetGroupID(value int32) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (l *TListItem) Handle() HWND {
     return ListItem_GetHandle(l.instance)
 }
@@ -312,11 +324,15 @@ func (l *TListItem) Index() int32 {
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (l *TListItem) Left() int32 {
     return ListItem_GetLeft(l.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (l *TListItem) SetLeft(value int32) {
     ListItem_SetLeft(l.instance, value)
 }
@@ -379,11 +395,15 @@ func (l *TListItem) SetSubItems(value IObject) {
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (l *TListItem) Top() int32 {
     return ListItem_GetTop(l.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (l *TListItem) SetTop(value int32) {
     ListItem_SetTop(l.instance, value)
 }

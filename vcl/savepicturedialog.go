@@ -107,21 +107,29 @@ func (s *TSavePictureDialog) Execute() bool {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (s *TSavePictureDialog) FindComponent(AName string) *TComponent {
     return ComponentFromInst(SavePictureDialog_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TSavePictureDialog) GetNamePath() string {
     return SavePictureDialog_GetNamePath(s.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (s *TSavePictureDialog) HasParent() bool {
     return SavePictureDialog_HasParent(s.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TSavePictureDialog) Assign(Source IObject) {
     SavePictureDialog_Assign(s.instance, CheckPtr(Source))
 }
@@ -268,6 +276,8 @@ func (s *TSavePictureDialog) SetTitle(value string) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (s *TSavePictureDialog) Handle() HWND {
     return SavePictureDialog_GetHandle(s.instance)
 }

@@ -102,16 +102,22 @@ func TMarginsClass() TClass {
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (m *TMargins) SetBounds(ALeft int32, ATop int32, ARight int32, ABottom int32) {
     Margins_SetBounds(m.instance, ALeft , ATop , ARight , ABottom)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (m *TMargins) Assign(Source IObject) {
     Margins_Assign(m.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (m *TMargins) GetNamePath() string {
     return Margins_GetNamePath(m.instance)
 }
@@ -213,26 +219,36 @@ func (m *TMargins) ExplicitHeight() int32 {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (m *TMargins) SetOnChange(fn TNotifyEvent) {
     Margins_SetOnChange(m.instance, fn)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (m *TMargins) Left() int32 {
     return Margins_GetLeft(m.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (m *TMargins) SetLeft(value int32) {
     Margins_SetLeft(m.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (m *TMargins) Top() int32 {
     return Margins_GetTop(m.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (m *TMargins) SetTop(value int32) {
     Margins_SetTop(m.instance, value)
 }

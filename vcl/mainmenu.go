@@ -102,21 +102,29 @@ func TMainMenuClass() TClass {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (m *TMainMenu) FindComponent(AName string) *TComponent {
     return ComponentFromInst(MainMenu_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (m *TMainMenu) GetNamePath() string {
     return MainMenu_GetNamePath(m.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (m *TMainMenu) HasParent() bool {
     return MainMenu_HasParent(m.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (m *TMainMenu) Assign(Source IObject) {
     MainMenu_Assign(m.instance, CheckPtr(Source))
 }
@@ -208,11 +216,15 @@ func (m *TMainMenu) SetImages(value IComponent) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (m *TMainMenu) SetOnChange(fn TMenuChangeEvent) {
     MainMenu_SetOnChange(m.instance, fn)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (m *TMainMenu) Handle() HMENU {
     return MainMenu_GetHandle(m.instance)
 }

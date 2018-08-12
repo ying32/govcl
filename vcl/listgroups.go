@@ -114,6 +114,8 @@ func (l *TListGroups) Owner() *TWinControl {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (l *TListGroups) Assign(Source IObject) {
     ListGroups_Assign(l.instance, CheckPtr(Source))
 }
@@ -139,6 +141,8 @@ func (l *TListGroups) EndUpdate() {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (l *TListGroups) GetNamePath() string {
     return ListGroups_GetNamePath(l.instance)
 }

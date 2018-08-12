@@ -102,6 +102,8 @@ func TJPEGImageClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (j *TJPEGImage) Assign(Source IObject) {
     JPEGImage_Assign(j.instance, CheckPtr(Source))
 }
@@ -139,6 +141,8 @@ func (j *TJPEGImage) SetSize(AWidth int32, AHeight int32) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (j *TJPEGImage) GetNamePath() string {
     return JPEGImage_GetNamePath(j.instance)
 }
@@ -253,21 +257,29 @@ func (j *TJPEGImage) Empty() bool {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (j *TJPEGImage) Height() int32 {
     return JPEGImage_GetHeight(j.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (j *TJPEGImage) SetHeight(value int32) {
     JPEGImage_SetHeight(j.instance, value)
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (j *TJPEGImage) Modified() bool {
     return JPEGImage_GetModified(j.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (j *TJPEGImage) SetModified(value bool) {
     JPEGImage_SetModified(j.instance, value)
 }
@@ -283,26 +295,36 @@ func (j *TJPEGImage) SetPaletteModified(value bool) {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (j *TJPEGImage) Transparent() bool {
     return JPEGImage_GetTransparent(j.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (j *TJPEGImage) SetTransparent(value bool) {
     JPEGImage_SetTransparent(j.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (j *TJPEGImage) Width() int32 {
     return JPEGImage_GetWidth(j.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (j *TJPEGImage) SetWidth(value int32) {
     JPEGImage_SetWidth(j.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (j *TJPEGImage) SetOnChange(fn TNotifyEvent) {
     JPEGImage_SetOnChange(j.instance, fn)
 }

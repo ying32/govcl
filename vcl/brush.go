@@ -102,16 +102,22 @@ func TBrushClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (b *TBrush) Assign(Source IObject) {
     Brush_Assign(b.instance, CheckPtr(Source))
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (b *TBrush) HandleAllocated() bool {
     return Brush_HandleAllocated(b.instance)
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (b *TBrush) GetNamePath() string {
     return Brush_GetNamePath(b.instance)
 }
@@ -183,21 +189,29 @@ func (b *TBrush) SetBitmap(value *TBitmap) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (b *TBrush) Handle() HBRUSH {
     return Brush_GetHandle(b.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (b *TBrush) SetHandle(value HBRUSH) {
     Brush_SetHandle(b.instance, value)
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (b *TBrush) Color() TColor {
     return Brush_GetColor(b.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (b *TBrush) SetColor(value TColor) {
     Brush_SetColor(b.instance, value)
 }
@@ -213,6 +227,8 @@ func (b *TBrush) SetStyle(value TBrushStyle) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (b *TBrush) SetOnChange(fn TNotifyEvent) {
     Brush_SetOnChange(b.instance, fn)
 }

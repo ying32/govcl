@@ -107,26 +107,36 @@ func (a *TAction) Execute() bool {
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (a *TAction) Update() bool {
     return Action_Update(a.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (a *TAction) HasParent() bool {
     return Action_HasParent(a.instance)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (a *TAction) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Action_FindComponent(a.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (a *TAction) GetNamePath() string {
     return Action_GetNamePath(a.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (a *TAction) Assign(Source IObject) {
     Action_Assign(a.instance, CheckPtr(Source))
 }

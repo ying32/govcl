@@ -102,11 +102,15 @@ func TIconClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (i *TIcon) Assign(Source IObject) {
     Icon_Assign(i.instance, CheckPtr(Source))
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (i *TIcon) HandleAllocated() bool {
     return Icon_HandleAllocated(i.instance)
 }
@@ -154,6 +158,8 @@ func (i *TIcon) SaveToFile(Filename string) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (i *TIcon) GetNamePath() string {
     return Icon_GetNamePath(i.instance)
 }
@@ -208,11 +214,15 @@ func (i *TIcon) ToString() string {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (i *TIcon) Handle() HICON {
     return Icon_GetHandle(i.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (i *TIcon) SetHandle(value HICON) {
     Icon_SetHandle(i.instance, value)
 }
@@ -223,21 +233,29 @@ func (i *TIcon) Empty() bool {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (i *TIcon) Height() int32 {
     return Icon_GetHeight(i.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (i *TIcon) SetHeight(value int32) {
     Icon_SetHeight(i.instance, value)
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (i *TIcon) Modified() bool {
     return Icon_GetModified(i.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (i *TIcon) SetModified(value bool) {
     Icon_SetModified(i.instance, value)
 }
@@ -253,26 +271,36 @@ func (i *TIcon) SetPaletteModified(value bool) {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (i *TIcon) Transparent() bool {
     return Icon_GetTransparent(i.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (i *TIcon) SetTransparent(value bool) {
     Icon_SetTransparent(i.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (i *TIcon) Width() int32 {
     return Icon_GetWidth(i.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (i *TIcon) SetWidth(value int32) {
     Icon_SetWidth(i.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (i *TIcon) SetOnChange(fn TNotifyEvent) {
     Icon_SetOnChange(i.instance, fn)
 }

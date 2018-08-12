@@ -81,11 +81,15 @@ func TIconOptionsClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (i *TIconOptions) Assign(Source IObject) {
     IconOptions_Assign(i.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (i *TIconOptions) GetNamePath() string {
     return IconOptions_GetNamePath(i.instance)
 }

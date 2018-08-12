@@ -112,21 +112,29 @@ func (r *TReplaceDialog) Execute() bool {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (r *TReplaceDialog) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ReplaceDialog_FindComponent(r.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (r *TReplaceDialog) GetNamePath() string {
     return ReplaceDialog_GetNamePath(r.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (r *TReplaceDialog) HasParent() bool {
     return ReplaceDialog_HasParent(r.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (r *TReplaceDialog) Assign(Source IObject) {
     ReplaceDialog_Assign(r.instance, CheckPtr(Source))
 }
@@ -203,11 +211,15 @@ func (r *TReplaceDialog) SetOnReplace(fn TNotifyEvent) {
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (r *TReplaceDialog) Left() int32 {
     return ReplaceDialog_GetLeft(r.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (r *TReplaceDialog) SetLeft(value int32) {
     ReplaceDialog_SetLeft(r.instance, value)
 }
@@ -223,11 +235,15 @@ func (r *TReplaceDialog) SetPosition(value TPoint) {
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (r *TReplaceDialog) Top() int32 {
     return ReplaceDialog_GetTop(r.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (r *TReplaceDialog) SetTop(value int32) {
     ReplaceDialog_SetTop(r.instance, value)
 }
@@ -258,6 +274,8 @@ func (r *TReplaceDialog) SetOnFind(fn TNotifyEvent) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (r *TReplaceDialog) Handle() HWND {
     return ReplaceDialog_GetHandle(r.instance)
 }

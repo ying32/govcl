@@ -122,26 +122,36 @@ func (p *TPageControl) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (p *TPageControl) ContainsControl(Control IControl) bool {
     return PageControl_ContainsControl(p.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (p *TPageControl) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(PageControl_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (p *TPageControl) DisableAlign() {
     PageControl_DisableAlign(p.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (p *TPageControl) EnableAlign() {
     PageControl_EnableAlign(p.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (p *TPageControl) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(PageControl_FindChildControl(p.instance, ControlName))
 }
@@ -152,161 +162,225 @@ func (p *TPageControl) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (p *TPageControl) Focused() bool {
     return PageControl_Focused(p.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (p *TPageControl) HandleAllocated() bool {
     return PageControl_HandleAllocated(p.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (p *TPageControl) InsertControl(AControl IControl) {
     PageControl_InsertControl(p.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (p *TPageControl) Invalidate() {
     PageControl_Invalidate(p.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (p *TPageControl) PaintTo(DC HDC, X int32, Y int32) {
     PageControl_PaintTo(p.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (p *TPageControl) RemoveControl(AControl IControl) {
     PageControl_RemoveControl(p.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (p *TPageControl) Realign() {
     PageControl_Realign(p.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (p *TPageControl) Repaint() {
     PageControl_Repaint(p.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (p *TPageControl) ScaleBy(M int32, D int32) {
     PageControl_ScaleBy(p.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (p *TPageControl) ScrollBy(DeltaX int32, DeltaY int32) {
     PageControl_ScrollBy(p.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (p *TPageControl) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     PageControl_SetBounds(p.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (p *TPageControl) SetFocus() {
     PageControl_SetFocus(p.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (p *TPageControl) Update() {
     PageControl_Update(p.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (p *TPageControl) UpdateControlState() {
     PageControl_UpdateControlState(p.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (p *TPageControl) BringToFront() {
     PageControl_BringToFront(p.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (p *TPageControl) ClientToScreen(Point TPoint) TPoint {
     return PageControl_ClientToScreen(p.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (p *TPageControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return PageControl_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (p *TPageControl) Dragging() bool {
     return PageControl_Dragging(p.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (p *TPageControl) HasParent() bool {
     return PageControl_HasParent(p.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (p *TPageControl) Hide() {
     PageControl_Hide(p.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (p *TPageControl) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return PageControl_Perform(p.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (p *TPageControl) Refresh() {
     PageControl_Refresh(p.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (p *TPageControl) ScreenToClient(Point TPoint) TPoint {
     return PageControl_ScreenToClient(p.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (p *TPageControl) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return PageControl_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (p *TPageControl) SendToBack() {
     PageControl_SendToBack(p.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (p *TPageControl) Show() {
     PageControl_Show(p.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (p *TPageControl) GetTextBuf(Buffer string, BufSize int32) int32 {
     return PageControl_GetTextBuf(p.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (p *TPageControl) GetTextLen() int32 {
     return PageControl_GetTextLen(p.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (p *TPageControl) SetTextBuf(Buffer string) {
     PageControl_SetTextBuf(p.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (p *TPageControl) FindComponent(AName string) *TComponent {
     return ComponentFromInst(PageControl_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (p *TPageControl) GetNamePath() string {
     return PageControl_GetNamePath(p.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (p *TPageControl) Assign(Source IObject) {
     PageControl_Assign(p.instance, CheckPtr(Source))
 }
@@ -383,11 +457,15 @@ func (p *TPageControl) PageCount() int32 {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (p *TPageControl) Align() TAlign {
     return PageControl_GetAlign(p.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (p *TPageControl) SetAlign(value TAlign) {
     PageControl_SetAlign(p.instance, value)
 }
@@ -413,51 +491,71 @@ func (p *TPageControl) SetBiDiMode(value TBiDiMode) {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (p *TPageControl) DockSite() bool {
     return PageControl_GetDockSite(p.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (p *TPageControl) SetDockSite(value bool) {
     PageControl_SetDockSite(p.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (p *TPageControl) DoubleBuffered() bool {
     return PageControl_GetDoubleBuffered(p.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (p *TPageControl) SetDoubleBuffered(value bool) {
     PageControl_SetDoubleBuffered(p.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (p *TPageControl) DragCursor() TCursor {
     return PageControl_GetDragCursor(p.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (p *TPageControl) SetDragCursor(value TCursor) {
     PageControl_SetDragCursor(p.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (p *TPageControl) DragKind() TDragKind {
     return PageControl_GetDragKind(p.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (p *TPageControl) SetDragKind(value TDragKind) {
     PageControl_SetDragKind(p.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (p *TPageControl) DragMode() TDragMode {
     return PageControl_GetDragMode(p.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (p *TPageControl) SetDragMode(value TDragMode) {
     PageControl_SetDragMode(p.instance, value)
 }
@@ -477,11 +575,15 @@ func (p *TPageControl) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (p *TPageControl) Font() *TFont {
     return FontFromInst(PageControl_GetFont(p.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (p *TPageControl) SetFont(value *TFont) {
     PageControl_SetFont(p.instance, CheckPtr(value))
 }
@@ -517,21 +619,29 @@ func (p *TPageControl) SetMultiLine(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (p *TPageControl) ParentDoubleBuffered() bool {
     return PageControl_GetParentDoubleBuffered(p.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (p *TPageControl) SetParentDoubleBuffered(value bool) {
     PageControl_SetParentDoubleBuffered(p.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (p *TPageControl) ParentFont() bool {
     return PageControl_GetParentFont(p.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (p *TPageControl) SetParentFont(value bool) {
     PageControl_SetParentFont(p.instance, value)
 }
@@ -547,21 +657,29 @@ func (p *TPageControl) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (p *TPageControl) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(PageControl_GetPopupMenu(p.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (p *TPageControl) SetPopupMenu(value IComponent) {
     PageControl_SetPopupMenu(p.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (p *TPageControl) ShowHint() bool {
     return PageControl_GetShowHint(p.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (p *TPageControl) SetShowHint(value bool) {
     PageControl_SetShowHint(p.instance, value)
 }
@@ -597,11 +715,15 @@ func (p *TPageControl) SetTabIndex(value int32) {
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (p *TPageControl) TabOrder() TTabOrder {
     return PageControl_GetTabOrder(p.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (p *TPageControl) SetTabOrder(value TTabOrder) {
     PageControl_SetTabOrder(p.instance, value)
 }
@@ -617,11 +739,15 @@ func (p *TPageControl) SetTabPosition(value TTabPosition) {
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (p *TPageControl) TabStop() bool {
     return PageControl_GetTabStop(p.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (p *TPageControl) SetTabStop(value bool) {
     PageControl_SetTabStop(p.instance, value)
 }
@@ -651,21 +777,29 @@ func (p *TPageControl) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (p *TPageControl) StyleElements() TStyleElements {
     return PageControl_GetStyleElements(p.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (p *TPageControl) SetStyleElements(value TStyleElements) {
     PageControl_SetStyleElements(p.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (p *TPageControl) SetOnChange(fn TNotifyEvent) {
     PageControl_SetOnChange(p.instance, fn)
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (p *TPageControl) SetOnContextPopup(fn TContextPopupEvent) {
     PageControl_SetOnContextPopup(p.instance, fn)
 }
@@ -676,31 +810,43 @@ func (p *TPageControl) SetOnDockDrop(fn TDockDropEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (p *TPageControl) SetOnDragDrop(fn TDragDropEvent) {
     PageControl_SetOnDragDrop(p.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (p *TPageControl) SetOnDragOver(fn TDragOverEvent) {
     PageControl_SetOnDragOver(p.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (p *TPageControl) SetOnEndDock(fn TEndDragEvent) {
     PageControl_SetOnEndDock(p.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (p *TPageControl) SetOnEndDrag(fn TEndDragEvent) {
     PageControl_SetOnEndDrag(p.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (p *TPageControl) SetOnEnter(fn TNotifyEvent) {
     PageControl_SetOnEnter(p.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (p *TPageControl) SetOnExit(fn TNotifyEvent) {
     PageControl_SetOnExit(p.instance, fn)
 }
@@ -716,16 +862,22 @@ func (p *TPageControl) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (p *TPageControl) SetOnMouseDown(fn TMouseEvent) {
     PageControl_SetOnMouseDown(p.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (p *TPageControl) SetOnMouseEnter(fn TNotifyEvent) {
     PageControl_SetOnMouseEnter(p.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (p *TPageControl) SetOnMouseLeave(fn TNotifyEvent) {
     PageControl_SetOnMouseLeave(p.instance, fn)
 }
@@ -736,6 +888,8 @@ func (p *TPageControl) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (p *TPageControl) SetOnMouseUp(fn TMouseEvent) {
     PageControl_SetOnMouseUp(p.instance, fn)
 }
@@ -771,36 +925,50 @@ func (p *TPageControl) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (p *TPageControl) MouseInClient() bool {
     return PageControl_GetMouseInClient(p.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (p *TPageControl) VisibleDockClientCount() int32 {
     return PageControl_GetVisibleDockClientCount(p.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (p *TPageControl) Brush() *TBrush {
     return BrushFromInst(PageControl_GetBrush(p.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (p *TPageControl) ControlCount() int32 {
     return PageControl_GetControlCount(p.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (p *TPageControl) Handle() HWND {
     return PageControl_GetHandle(p.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (p *TPageControl) ParentWindow() HWND {
     return PageControl_GetParentWindow(p.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (p *TPageControl) SetParentWindow(value HWND) {
     PageControl_SetParentWindow(p.instance, value)
 }
@@ -836,11 +1004,15 @@ func (p *TPageControl) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (p *TPageControl) ClientHeight() int32 {
     return PageControl_GetClientHeight(p.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (p *TPageControl) SetClientHeight(value int32) {
     PageControl_SetClientHeight(p.instance, value)
 }
@@ -851,36 +1023,50 @@ func (p *TPageControl) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (p *TPageControl) ClientRect() TRect {
     return PageControl_GetClientRect(p.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (p *TPageControl) ClientWidth() int32 {
     return PageControl_GetClientWidth(p.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (p *TPageControl) SetClientWidth(value int32) {
     PageControl_SetClientWidth(p.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (p *TPageControl) ControlState() TControlState {
     return PageControl_GetControlState(p.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (p *TPageControl) SetControlState(value TControlState) {
     PageControl_SetControlState(p.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (p *TPageControl) ControlStyle() TControlStyle {
     return PageControl_GetControlStyle(p.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (p *TPageControl) SetControlStyle(value TControlStyle) {
     PageControl_SetControlStyle(p.instance, value)
 }
@@ -925,51 +1111,71 @@ func (p *TPageControl) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (p *TPageControl) AlignWithMargins() bool {
     return PageControl_GetAlignWithMargins(p.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (p *TPageControl) SetAlignWithMargins(value bool) {
     PageControl_SetAlignWithMargins(p.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (p *TPageControl) Left() int32 {
     return PageControl_GetLeft(p.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (p *TPageControl) SetLeft(value int32) {
     PageControl_SetLeft(p.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (p *TPageControl) Top() int32 {
     return PageControl_GetTop(p.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (p *TPageControl) SetTop(value int32) {
     PageControl_SetTop(p.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (p *TPageControl) Width() int32 {
     return PageControl_GetWidth(p.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (p *TPageControl) SetWidth(value int32) {
     PageControl_SetWidth(p.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (p *TPageControl) Height() int32 {
     return PageControl_GetHeight(p.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (p *TPageControl) SetHeight(value int32) {
     PageControl_SetHeight(p.instance, value)
 }
@@ -1003,21 +1209,29 @@ func (p *TPageControl) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (p *TPageControl) Margins() *TMargins {
     return MarginsFromInst(PageControl_GetMargins(p.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (p *TPageControl) SetMargins(value *TMargins) {
     PageControl_SetMargins(p.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (p *TPageControl) CustomHint() *TCustomHint {
     return CustomHintFromInst(PageControl_GetCustomHint(p.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (p *TPageControl) SetCustomHint(value IComponent) {
     PageControl_SetCustomHint(p.instance, CheckPtr(value))
 }

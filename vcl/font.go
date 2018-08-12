@@ -102,16 +102,22 @@ func TFontClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (f *TFont) Assign(Source IObject) {
     Font_Assign(f.instance, CheckPtr(Source))
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (f *TFont) HandleAllocated() bool {
     return Font_HandleAllocated(f.instance)
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (f *TFont) GetNamePath() string {
     return Font_GetNamePath(f.instance)
 }
@@ -173,11 +179,15 @@ func (f *TFont) ToString() string {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (f *TFont) Handle() HFONT {
     return Font_GetHandle(f.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (f *TFont) SetHandle(value HFONT) {
     Font_SetHandle(f.instance, value)
 }
@@ -203,21 +213,29 @@ func (f *TFont) SetCharset(value TFontCharset) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (f *TFont) Color() TColor {
     return Font_GetColor(f.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (f *TFont) SetColor(value TColor) {
     Font_SetColor(f.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (f *TFont) Height() int32 {
     return Font_GetHeight(f.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (f *TFont) SetHeight(value int32) {
     Font_SetHeight(f.instance, value)
 }
@@ -287,6 +305,8 @@ func (f *TFont) SetQuality(value TFontQuality) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (f *TFont) SetOnChange(fn TNotifyEvent) {
     Font_SetOnChange(f.instance, fn)
 }

@@ -112,6 +112,8 @@ func (l *TListItems) AddItem(Item *TListItem, Index int32) *TListItem {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (l *TListItems) Assign(Source IObject) {
     ListItems_Assign(l.instance, CheckPtr(Source))
 }
@@ -147,6 +149,8 @@ func (l *TListItems) Insert(Index int32) *TListItem {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (l *TListItems) GetNamePath() string {
     return ListItems_GetNamePath(l.instance)
 }
@@ -218,6 +222,8 @@ func (l *TListItems) SetCount(value int32) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (l *TListItems) Handle() HWND {
     return ListItems_GetHandle(l.instance)
 }

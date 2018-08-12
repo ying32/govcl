@@ -132,26 +132,36 @@ func (c *TColorListBox) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (c *TColorListBox) ContainsControl(Control IControl) bool {
     return ColorListBox_ContainsControl(c.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TColorListBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(ColorListBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (c *TColorListBox) DisableAlign() {
     ColorListBox_DisableAlign(c.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (c *TColorListBox) EnableAlign() {
     ColorListBox_EnableAlign(c.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (c *TColorListBox) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(ColorListBox_FindChildControl(c.instance, ControlName))
 }
@@ -162,161 +172,225 @@ func (c *TColorListBox) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (c *TColorListBox) Focused() bool {
     return ColorListBox_Focused(c.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (c *TColorListBox) HandleAllocated() bool {
     return ColorListBox_HandleAllocated(c.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (c *TColorListBox) InsertControl(AControl IControl) {
     ColorListBox_InsertControl(c.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (c *TColorListBox) Invalidate() {
     ColorListBox_Invalidate(c.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (c *TColorListBox) PaintTo(DC HDC, X int32, Y int32) {
     ColorListBox_PaintTo(c.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (c *TColorListBox) RemoveControl(AControl IControl) {
     ColorListBox_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (c *TColorListBox) Realign() {
     ColorListBox_Realign(c.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (c *TColorListBox) Repaint() {
     ColorListBox_Repaint(c.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (c *TColorListBox) ScaleBy(M int32, D int32) {
     ColorListBox_ScaleBy(c.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (c *TColorListBox) ScrollBy(DeltaX int32, DeltaY int32) {
     ColorListBox_ScrollBy(c.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (c *TColorListBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ColorListBox_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (c *TColorListBox) SetFocus() {
     ColorListBox_SetFocus(c.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (c *TColorListBox) Update() {
     ColorListBox_Update(c.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (c *TColorListBox) UpdateControlState() {
     ColorListBox_UpdateControlState(c.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (c *TColorListBox) BringToFront() {
     ColorListBox_BringToFront(c.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (c *TColorListBox) ClientToScreen(Point TPoint) TPoint {
     return ColorListBox_ClientToScreen(c.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (c *TColorListBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ColorListBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (c *TColorListBox) Dragging() bool {
     return ColorListBox_Dragging(c.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (c *TColorListBox) HasParent() bool {
     return ColorListBox_HasParent(c.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (c *TColorListBox) Hide() {
     ColorListBox_Hide(c.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (c *TColorListBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return ColorListBox_Perform(c.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (c *TColorListBox) Refresh() {
     ColorListBox_Refresh(c.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (c *TColorListBox) ScreenToClient(Point TPoint) TPoint {
     return ColorListBox_ScreenToClient(c.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (c *TColorListBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ColorListBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (c *TColorListBox) SendToBack() {
     ColorListBox_SendToBack(c.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (c *TColorListBox) Show() {
     ColorListBox_Show(c.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (c *TColorListBox) GetTextBuf(Buffer string, BufSize int32) int32 {
     return ColorListBox_GetTextBuf(c.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (c *TColorListBox) GetTextLen() int32 {
     return ColorListBox_GetTextLen(c.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (c *TColorListBox) SetTextBuf(Buffer string) {
     ColorListBox_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (c *TColorListBox) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ColorListBox_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TColorListBox) GetNamePath() string {
     return ColorListBox_GetNamePath(c.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TColorListBox) Assign(Source IObject) {
     ColorListBox_Assign(c.instance, CheckPtr(Source))
 }
@@ -378,11 +452,15 @@ func (c *TColorListBox) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (c *TColorListBox) Align() TAlign {
     return ColorListBox_GetAlign(c.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (c *TColorListBox) SetAlign(value TAlign) {
     ColorListBox_SetAlign(c.instance, value)
 }
@@ -498,21 +576,29 @@ func (c *TColorListBox) SetBiDiMode(value TBiDiMode) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (c *TColorListBox) Color() TColor {
     return ColorListBox_GetColor(c.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (c *TColorListBox) SetColor(value TColor) {
     ColorListBox_SetColor(c.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (c *TColorListBox) DoubleBuffered() bool {
     return ColorListBox_GetDoubleBuffered(c.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (c *TColorListBox) SetDoubleBuffered(value bool) {
     ColorListBox_SetDoubleBuffered(c.instance, value)
 }
@@ -532,11 +618,15 @@ func (c *TColorListBox) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (c *TColorListBox) Font() *TFont {
     return FontFromInst(ColorListBox_GetFont(c.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (c *TColorListBox) SetFont(value *TFont) {
     ColorListBox_SetFont(c.instance, CheckPtr(value))
 }
@@ -552,11 +642,15 @@ func (c *TColorListBox) SetItemHeight(value int32) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (c *TColorListBox) ParentColor() bool {
     return ColorListBox_GetParentColor(c.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (c *TColorListBox) SetParentColor(value bool) {
     ColorListBox_SetParentColor(c.instance, value)
 }
@@ -572,21 +666,29 @@ func (c *TColorListBox) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (c *TColorListBox) ParentDoubleBuffered() bool {
     return ColorListBox_GetParentDoubleBuffered(c.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (c *TColorListBox) SetParentDoubleBuffered(value bool) {
     ColorListBox_SetParentDoubleBuffered(c.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (c *TColorListBox) ParentFont() bool {
     return ColorListBox_GetParentFont(c.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (c *TColorListBox) SetParentFont(value bool) {
     ColorListBox_SetParentFont(c.instance, value)
 }
@@ -602,41 +704,57 @@ func (c *TColorListBox) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (c *TColorListBox) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(ColorListBox_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (c *TColorListBox) SetPopupMenu(value IComponent) {
     ColorListBox_SetPopupMenu(c.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (c *TColorListBox) ShowHint() bool {
     return ColorListBox_GetShowHint(c.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (c *TColorListBox) SetShowHint(value bool) {
     ColorListBox_SetShowHint(c.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (c *TColorListBox) TabOrder() TTabOrder {
     return ColorListBox_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (c *TColorListBox) SetTabOrder(value TTabOrder) {
     ColorListBox_SetTabOrder(c.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (c *TColorListBox) TabStop() bool {
     return ColorListBox_GetTabStop(c.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (c *TColorListBox) SetTabStop(value bool) {
     ColorListBox_SetTabStop(c.instance, value)
 }
@@ -656,11 +774,15 @@ func (c *TColorListBox) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (c *TColorListBox) StyleElements() TStyleElements {
     return ColorListBox_GetStyleElements(c.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (c *TColorListBox) SetStyleElements(value TStyleElements) {
     ColorListBox_SetStyleElements(c.instance, value)
 }
@@ -673,6 +795,8 @@ func (c *TColorListBox) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (c *TColorListBox) SetOnContextPopup(fn TContextPopupEvent) {
     ColorListBox_SetOnContextPopup(c.instance, fn)
 }
@@ -683,36 +807,50 @@ func (c *TColorListBox) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (c *TColorListBox) SetOnDragDrop(fn TDragDropEvent) {
     ColorListBox_SetOnDragDrop(c.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (c *TColorListBox) SetOnDragOver(fn TDragOverEvent) {
     ColorListBox_SetOnDragOver(c.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (c *TColorListBox) SetOnEndDock(fn TEndDragEvent) {
     ColorListBox_SetOnEndDock(c.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (c *TColorListBox) SetOnEndDrag(fn TEndDragEvent) {
     ColorListBox_SetOnEndDrag(c.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (c *TColorListBox) SetOnEnter(fn TNotifyEvent) {
     ColorListBox_SetOnEnter(c.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (c *TColorListBox) SetOnExit(fn TNotifyEvent) {
     ColorListBox_SetOnExit(c.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (c *TColorListBox) SetOnKeyDown(fn TKeyEvent) {
     ColorListBox_SetOnKeyDown(c.instance, fn)
 }
@@ -723,21 +861,29 @@ func (c *TColorListBox) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (c *TColorListBox) SetOnKeyUp(fn TKeyEvent) {
     ColorListBox_SetOnKeyUp(c.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (c *TColorListBox) SetOnMouseDown(fn TMouseEvent) {
     ColorListBox_SetOnMouseDown(c.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (c *TColorListBox) SetOnMouseEnter(fn TNotifyEvent) {
     ColorListBox_SetOnMouseEnter(c.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (c *TColorListBox) SetOnMouseLeave(fn TNotifyEvent) {
     ColorListBox_SetOnMouseLeave(c.instance, fn)
 }
@@ -748,6 +894,8 @@ func (c *TColorListBox) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (c *TColorListBox) SetOnMouseUp(fn TMouseEvent) {
     ColorListBox_SetOnMouseUp(c.instance, fn)
 }
@@ -823,11 +971,15 @@ func (c *TColorListBox) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (c *TColorListBox) DockSite() bool {
     return ColorListBox_GetDockSite(c.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (c *TColorListBox) SetDockSite(value bool) {
     ColorListBox_SetDockSite(c.instance, value)
 }
@@ -838,36 +990,50 @@ func (c *TColorListBox) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (c *TColorListBox) MouseInClient() bool {
     return ColorListBox_GetMouseInClient(c.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (c *TColorListBox) VisibleDockClientCount() int32 {
     return ColorListBox_GetVisibleDockClientCount(c.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (c *TColorListBox) Brush() *TBrush {
     return BrushFromInst(ColorListBox_GetBrush(c.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (c *TColorListBox) ControlCount() int32 {
     return ColorListBox_GetControlCount(c.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (c *TColorListBox) Handle() HWND {
     return ColorListBox_GetHandle(c.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (c *TColorListBox) ParentWindow() HWND {
     return ColorListBox_GetParentWindow(c.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (c *TColorListBox) SetParentWindow(value HWND) {
     ColorListBox_SetParentWindow(c.instance, value)
 }
@@ -903,11 +1069,15 @@ func (c *TColorListBox) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (c *TColorListBox) ClientHeight() int32 {
     return ColorListBox_GetClientHeight(c.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (c *TColorListBox) SetClientHeight(value int32) {
     ColorListBox_SetClientHeight(c.instance, value)
 }
@@ -918,36 +1088,50 @@ func (c *TColorListBox) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (c *TColorListBox) ClientRect() TRect {
     return ColorListBox_GetClientRect(c.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (c *TColorListBox) ClientWidth() int32 {
     return ColorListBox_GetClientWidth(c.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (c *TColorListBox) SetClientWidth(value int32) {
     ColorListBox_SetClientWidth(c.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (c *TColorListBox) ControlState() TControlState {
     return ColorListBox_GetControlState(c.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (c *TColorListBox) SetControlState(value TControlState) {
     ColorListBox_SetControlState(c.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (c *TColorListBox) ControlStyle() TControlStyle {
     return ColorListBox_GetControlStyle(c.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (c *TColorListBox) SetControlStyle(value TControlStyle) {
     ColorListBox_SetControlStyle(c.instance, value)
 }
@@ -992,51 +1176,71 @@ func (c *TColorListBox) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (c *TColorListBox) AlignWithMargins() bool {
     return ColorListBox_GetAlignWithMargins(c.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (c *TColorListBox) SetAlignWithMargins(value bool) {
     ColorListBox_SetAlignWithMargins(c.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (c *TColorListBox) Left() int32 {
     return ColorListBox_GetLeft(c.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (c *TColorListBox) SetLeft(value int32) {
     ColorListBox_SetLeft(c.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (c *TColorListBox) Top() int32 {
     return ColorListBox_GetTop(c.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (c *TColorListBox) SetTop(value int32) {
     ColorListBox_SetTop(c.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (c *TColorListBox) Width() int32 {
     return ColorListBox_GetWidth(c.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (c *TColorListBox) SetWidth(value int32) {
     ColorListBox_SetWidth(c.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (c *TColorListBox) Height() int32 {
     return ColorListBox_GetHeight(c.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (c *TColorListBox) SetHeight(value int32) {
     ColorListBox_SetHeight(c.instance, value)
 }
@@ -1070,21 +1274,29 @@ func (c *TColorListBox) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (c *TColorListBox) Margins() *TMargins {
     return MarginsFromInst(ColorListBox_GetMargins(c.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (c *TColorListBox) SetMargins(value *TMargins) {
     ColorListBox_SetMargins(c.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (c *TColorListBox) CustomHint() *TCustomHint {
     return CustomHintFromInst(ColorListBox_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (c *TColorListBox) SetCustomHint(value IComponent) {
     ColorListBox_SetCustomHint(c.instance, CheckPtr(value))
 }

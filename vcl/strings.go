@@ -117,6 +117,8 @@ func (s *TStrings) Append(S string) {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TStrings) Assign(Source IObject) {
     Strings_Assign(s.instance, CheckPtr(Source))
 }
@@ -199,6 +201,8 @@ func (s *TStrings) SaveToStream(Stream IObject) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TStrings) GetNamePath() string {
     return Strings_GetNamePath(s.instance)
 }

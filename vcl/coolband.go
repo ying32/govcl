@@ -102,11 +102,15 @@ func TCoolBandClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TCoolBand) Assign(Source IObject) {
     CoolBand_Assign(c.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TCoolBand) GetNamePath() string {
     return CoolBand_GetNamePath(c.instance)
 }
@@ -168,6 +172,8 @@ func (c *TCoolBand) ToString() string {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (c *TCoolBand) Height() int32 {
     return CoolBand_GetHeight(c.instance)
 }
@@ -203,11 +209,15 @@ func (c *TCoolBand) SetBreak(value bool) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (c *TCoolBand) Color() TColor {
     return CoolBand_GetColor(c.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (c *TCoolBand) SetColor(value TColor) {
     CoolBand_SetColor(c.instance, value)
 }
@@ -283,11 +293,15 @@ func (c *TCoolBand) SetMinWidth(value int32) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (c *TCoolBand) ParentColor() bool {
     return CoolBand_GetParentColor(c.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (c *TCoolBand) SetParentColor(value bool) {
     CoolBand_SetParentColor(c.instance, value)
 }
@@ -327,11 +341,15 @@ func (c *TCoolBand) SetVisible(value bool) {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (c *TCoolBand) Width() int32 {
     return CoolBand_GetWidth(c.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (c *TCoolBand) SetWidth(value int32) {
     CoolBand_SetWidth(c.instance, value)
 }

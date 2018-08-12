@@ -107,21 +107,29 @@ func (f *TFontDialog) Execute() bool {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (f *TFontDialog) FindComponent(AName string) *TComponent {
     return ComponentFromInst(FontDialog_FindComponent(f.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (f *TFontDialog) GetNamePath() string {
     return FontDialog_GetNamePath(f.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (f *TFontDialog) HasParent() bool {
     return FontDialog_HasParent(f.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (f *TFontDialog) Assign(Source IObject) {
     FontDialog_Assign(f.instance, CheckPtr(Source))
 }
@@ -183,11 +191,15 @@ func (f *TFontDialog) ToString() string {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (f *TFontDialog) Font() *TFont {
     return FontFromInst(FontDialog_GetFont(f.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (f *TFontDialog) SetFont(value *TFont) {
     FontDialog_SetFont(f.instance, CheckPtr(value))
 }
@@ -203,6 +215,8 @@ func (f *TFontDialog) SetOptions(value TFontDialogOptions) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (f *TFontDialog) Handle() HWND {
     return FontDialog_GetHandle(f.instance)
 }

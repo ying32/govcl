@@ -112,26 +112,36 @@ func (b *TBitBtn) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (b *TBitBtn) ContainsControl(Control IControl) bool {
     return BitBtn_ContainsControl(b.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (b *TBitBtn) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(BitBtn_ControlAtPos(b.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (b *TBitBtn) DisableAlign() {
     BitBtn_DisableAlign(b.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (b *TBitBtn) EnableAlign() {
     BitBtn_EnableAlign(b.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (b *TBitBtn) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(BitBtn_FindChildControl(b.instance, ControlName))
 }
@@ -142,161 +152,225 @@ func (b *TBitBtn) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (b *TBitBtn) Focused() bool {
     return BitBtn_Focused(b.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (b *TBitBtn) HandleAllocated() bool {
     return BitBtn_HandleAllocated(b.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (b *TBitBtn) InsertControl(AControl IControl) {
     BitBtn_InsertControl(b.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (b *TBitBtn) Invalidate() {
     BitBtn_Invalidate(b.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (b *TBitBtn) PaintTo(DC HDC, X int32, Y int32) {
     BitBtn_PaintTo(b.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (b *TBitBtn) RemoveControl(AControl IControl) {
     BitBtn_RemoveControl(b.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (b *TBitBtn) Realign() {
     BitBtn_Realign(b.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (b *TBitBtn) Repaint() {
     BitBtn_Repaint(b.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (b *TBitBtn) ScaleBy(M int32, D int32) {
     BitBtn_ScaleBy(b.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (b *TBitBtn) ScrollBy(DeltaX int32, DeltaY int32) {
     BitBtn_ScrollBy(b.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (b *TBitBtn) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     BitBtn_SetBounds(b.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (b *TBitBtn) SetFocus() {
     BitBtn_SetFocus(b.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (b *TBitBtn) Update() {
     BitBtn_Update(b.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (b *TBitBtn) UpdateControlState() {
     BitBtn_UpdateControlState(b.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (b *TBitBtn) BringToFront() {
     BitBtn_BringToFront(b.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (b *TBitBtn) ClientToScreen(Point TPoint) TPoint {
     return BitBtn_ClientToScreen(b.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (b *TBitBtn) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return BitBtn_ClientToParent(b.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (b *TBitBtn) Dragging() bool {
     return BitBtn_Dragging(b.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (b *TBitBtn) HasParent() bool {
     return BitBtn_HasParent(b.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (b *TBitBtn) Hide() {
     BitBtn_Hide(b.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (b *TBitBtn) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return BitBtn_Perform(b.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (b *TBitBtn) Refresh() {
     BitBtn_Refresh(b.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (b *TBitBtn) ScreenToClient(Point TPoint) TPoint {
     return BitBtn_ScreenToClient(b.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (b *TBitBtn) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return BitBtn_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (b *TBitBtn) SendToBack() {
     BitBtn_SendToBack(b.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (b *TBitBtn) Show() {
     BitBtn_Show(b.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (b *TBitBtn) GetTextBuf(Buffer string, BufSize int32) int32 {
     return BitBtn_GetTextBuf(b.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (b *TBitBtn) GetTextLen() int32 {
     return BitBtn_GetTextLen(b.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (b *TBitBtn) SetTextBuf(Buffer string) {
     BitBtn_SetTextBuf(b.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (b *TBitBtn) FindComponent(AName string) *TComponent {
     return ComponentFromInst(BitBtn_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (b *TBitBtn) GetNamePath() string {
     return BitBtn_GetNamePath(b.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (b *TBitBtn) Assign(Source IObject) {
     BitBtn_Assign(b.instance, CheckPtr(Source))
 }
@@ -368,11 +442,15 @@ func (b *TBitBtn) SetAction(value IComponent) {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (b *TBitBtn) Align() TAlign {
     return BitBtn_GetAlign(b.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (b *TBitBtn) SetAlign(value TAlign) {
     BitBtn_SetAlign(b.instance, value)
 }
@@ -432,41 +510,57 @@ func (b *TBitBtn) SetDefault(value bool) {
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (b *TBitBtn) DoubleBuffered() bool {
     return BitBtn_GetDoubleBuffered(b.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (b *TBitBtn) SetDoubleBuffered(value bool) {
     BitBtn_SetDoubleBuffered(b.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (b *TBitBtn) DragCursor() TCursor {
     return BitBtn_GetDragCursor(b.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (b *TBitBtn) SetDragCursor(value TCursor) {
     BitBtn_SetDragCursor(b.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (b *TBitBtn) DragKind() TDragKind {
     return BitBtn_GetDragKind(b.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (b *TBitBtn) SetDragKind(value TDragKind) {
     BitBtn_SetDragKind(b.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (b *TBitBtn) DragMode() TDragMode {
     return BitBtn_GetDragMode(b.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (b *TBitBtn) SetDragMode(value TDragMode) {
     BitBtn_SetDragMode(b.instance, value)
 }
@@ -486,11 +580,15 @@ func (b *TBitBtn) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (b *TBitBtn) Font() *TFont {
     return FontFromInst(BitBtn_GetFont(b.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (b *TBitBtn) SetFont(value *TFont) {
     BitBtn_SetFont(b.instance, CheckPtr(value))
 }
@@ -546,21 +644,29 @@ func (b *TBitBtn) SetNumGlyphs(value TNumGlyphs) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (b *TBitBtn) ParentDoubleBuffered() bool {
     return BitBtn_GetParentDoubleBuffered(b.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (b *TBitBtn) SetParentDoubleBuffered(value bool) {
     BitBtn_SetParentDoubleBuffered(b.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (b *TBitBtn) ParentFont() bool {
     return BitBtn_GetParentFont(b.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (b *TBitBtn) SetParentFont(value bool) {
     BitBtn_SetParentFont(b.instance, value)
 }
@@ -576,21 +682,29 @@ func (b *TBitBtn) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (b *TBitBtn) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(BitBtn_GetPopupMenu(b.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (b *TBitBtn) SetPopupMenu(value IComponent) {
     BitBtn_SetPopupMenu(b.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (b *TBitBtn) ShowHint() bool {
     return BitBtn_GetShowHint(b.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (b *TBitBtn) SetShowHint(value bool) {
     BitBtn_SetShowHint(b.instance, value)
 }
@@ -616,21 +730,29 @@ func (b *TBitBtn) SetSpacing(value int32) {
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (b *TBitBtn) TabOrder() TTabOrder {
     return BitBtn_GetTabOrder(b.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (b *TBitBtn) SetTabOrder(value TTabOrder) {
     BitBtn_SetTabOrder(b.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (b *TBitBtn) TabStop() bool {
     return BitBtn_GetTabStop(b.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (b *TBitBtn) SetTabStop(value bool) {
     BitBtn_SetTabStop(b.instance, value)
 }
@@ -650,21 +772,29 @@ func (b *TBitBtn) SetVisible(value bool) {
 }
 
 // WordWrap
+// CN: 获取自动换行。
+// EN: Get Automatic line break.
 func (b *TBitBtn) WordWrap() bool {
     return BitBtn_GetWordWrap(b.instance)
 }
 
 // SetWordWrap
+// CN: 设置自动换行。
+// EN: Set Automatic line break.
 func (b *TBitBtn) SetWordWrap(value bool) {
     BitBtn_SetWordWrap(b.instance, value)
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (b *TBitBtn) StyleElements() TStyleElements {
     return BitBtn_GetStyleElements(b.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (b *TBitBtn) SetStyleElements(value TStyleElements) {
     BitBtn_SetStyleElements(b.instance, value)
 }
@@ -677,41 +807,57 @@ func (b *TBitBtn) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (b *TBitBtn) SetOnContextPopup(fn TContextPopupEvent) {
     BitBtn_SetOnContextPopup(b.instance, fn)
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (b *TBitBtn) SetOnDragDrop(fn TDragDropEvent) {
     BitBtn_SetOnDragDrop(b.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (b *TBitBtn) SetOnDragOver(fn TDragOverEvent) {
     BitBtn_SetOnDragOver(b.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (b *TBitBtn) SetOnEndDock(fn TEndDragEvent) {
     BitBtn_SetOnEndDock(b.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (b *TBitBtn) SetOnEndDrag(fn TEndDragEvent) {
     BitBtn_SetOnEndDrag(b.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (b *TBitBtn) SetOnEnter(fn TNotifyEvent) {
     BitBtn_SetOnEnter(b.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (b *TBitBtn) SetOnExit(fn TNotifyEvent) {
     BitBtn_SetOnExit(b.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (b *TBitBtn) SetOnKeyDown(fn TKeyEvent) {
     BitBtn_SetOnKeyDown(b.instance, fn)
 }
@@ -722,21 +868,29 @@ func (b *TBitBtn) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (b *TBitBtn) SetOnKeyUp(fn TKeyEvent) {
     BitBtn_SetOnKeyUp(b.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (b *TBitBtn) SetOnMouseDown(fn TMouseEvent) {
     BitBtn_SetOnMouseDown(b.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (b *TBitBtn) SetOnMouseEnter(fn TNotifyEvent) {
     BitBtn_SetOnMouseEnter(b.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (b *TBitBtn) SetOnMouseLeave(fn TNotifyEvent) {
     BitBtn_SetOnMouseLeave(b.instance, fn)
 }
@@ -747,6 +901,8 @@ func (b *TBitBtn) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (b *TBitBtn) SetOnMouseUp(fn TMouseEvent) {
     BitBtn_SetOnMouseUp(b.instance, fn)
 }
@@ -862,11 +1018,15 @@ func (b *TBitBtn) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (b *TBitBtn) DockSite() bool {
     return BitBtn_GetDockSite(b.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (b *TBitBtn) SetDockSite(value bool) {
     BitBtn_SetDockSite(b.instance, value)
 }
@@ -877,36 +1037,50 @@ func (b *TBitBtn) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (b *TBitBtn) MouseInClient() bool {
     return BitBtn_GetMouseInClient(b.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (b *TBitBtn) VisibleDockClientCount() int32 {
     return BitBtn_GetVisibleDockClientCount(b.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (b *TBitBtn) Brush() *TBrush {
     return BrushFromInst(BitBtn_GetBrush(b.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (b *TBitBtn) ControlCount() int32 {
     return BitBtn_GetControlCount(b.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (b *TBitBtn) Handle() HWND {
     return BitBtn_GetHandle(b.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (b *TBitBtn) ParentWindow() HWND {
     return BitBtn_GetParentWindow(b.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (b *TBitBtn) SetParentWindow(value HWND) {
     BitBtn_SetParentWindow(b.instance, value)
 }
@@ -932,11 +1106,15 @@ func (b *TBitBtn) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (b *TBitBtn) ClientHeight() int32 {
     return BitBtn_GetClientHeight(b.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (b *TBitBtn) SetClientHeight(value int32) {
     BitBtn_SetClientHeight(b.instance, value)
 }
@@ -947,36 +1125,50 @@ func (b *TBitBtn) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (b *TBitBtn) ClientRect() TRect {
     return BitBtn_GetClientRect(b.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (b *TBitBtn) ClientWidth() int32 {
     return BitBtn_GetClientWidth(b.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (b *TBitBtn) SetClientWidth(value int32) {
     BitBtn_SetClientWidth(b.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (b *TBitBtn) ControlState() TControlState {
     return BitBtn_GetControlState(b.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (b *TBitBtn) SetControlState(value TControlState) {
     BitBtn_SetControlState(b.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (b *TBitBtn) ControlStyle() TControlStyle {
     return BitBtn_GetControlStyle(b.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (b *TBitBtn) SetControlStyle(value TControlStyle) {
     BitBtn_SetControlStyle(b.instance, value)
 }
@@ -1021,51 +1213,71 @@ func (b *TBitBtn) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (b *TBitBtn) AlignWithMargins() bool {
     return BitBtn_GetAlignWithMargins(b.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (b *TBitBtn) SetAlignWithMargins(value bool) {
     BitBtn_SetAlignWithMargins(b.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (b *TBitBtn) Left() int32 {
     return BitBtn_GetLeft(b.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (b *TBitBtn) SetLeft(value int32) {
     BitBtn_SetLeft(b.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (b *TBitBtn) Top() int32 {
     return BitBtn_GetTop(b.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (b *TBitBtn) SetTop(value int32) {
     BitBtn_SetTop(b.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (b *TBitBtn) Width() int32 {
     return BitBtn_GetWidth(b.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (b *TBitBtn) SetWidth(value int32) {
     BitBtn_SetWidth(b.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (b *TBitBtn) Height() int32 {
     return BitBtn_GetHeight(b.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (b *TBitBtn) SetHeight(value int32) {
     BitBtn_SetHeight(b.instance, value)
 }
@@ -1099,21 +1311,29 @@ func (b *TBitBtn) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (b *TBitBtn) Margins() *TMargins {
     return MarginsFromInst(BitBtn_GetMargins(b.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (b *TBitBtn) SetMargins(value *TMargins) {
     BitBtn_SetMargins(b.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (b *TBitBtn) CustomHint() *TCustomHint {
     return CustomHintFromInst(BitBtn_GetCustomHint(b.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (b *TBitBtn) SetCustomHint(value IComponent) {
     BitBtn_SetCustomHint(b.instance, CheckPtr(value))
 }

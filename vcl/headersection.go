@@ -102,11 +102,15 @@ func THeaderSectionClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (h *THeaderSection) Assign(Source IObject) {
     HeaderSection_Assign(h.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (h *THeaderSection) GetNamePath() string {
     return HeaderSection_GetNamePath(h.instance)
 }
@@ -168,6 +172,8 @@ func (h *THeaderSection) ToString() string {
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (h *THeaderSection) Left() int32 {
     return HeaderSection_GetLeft(h.instance)
 }
@@ -178,11 +184,15 @@ func (h *THeaderSection) Right() int32 {
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (h *THeaderSection) Alignment() TAlignment {
     return HeaderSection_GetAlignment(h.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (h *THeaderSection) SetAlignment(value TAlignment) {
     HeaderSection_SetAlignment(h.instance, value)
 }
@@ -298,11 +308,15 @@ func (h *THeaderSection) SetText(value string) {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (h *THeaderSection) Width() int32 {
     return HeaderSection_GetWidth(h.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (h *THeaderSection) SetWidth(value int32) {
     HeaderSection_SetWidth(h.instance, value)
 }

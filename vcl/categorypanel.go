@@ -112,6 +112,8 @@ func (c *TCategoryPanel) Expand() {
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (c *TCategoryPanel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     CategoryPanel_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
 }
@@ -122,26 +124,36 @@ func (c *TCategoryPanel) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (c *TCategoryPanel) ContainsControl(Control IControl) bool {
     return CategoryPanel_ContainsControl(c.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TCategoryPanel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(CategoryPanel_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (c *TCategoryPanel) DisableAlign() {
     CategoryPanel_DisableAlign(c.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (c *TCategoryPanel) EnableAlign() {
     CategoryPanel_EnableAlign(c.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (c *TCategoryPanel) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(CategoryPanel_FindChildControl(c.instance, ControlName))
 }
@@ -152,156 +164,218 @@ func (c *TCategoryPanel) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (c *TCategoryPanel) Focused() bool {
     return CategoryPanel_Focused(c.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (c *TCategoryPanel) HandleAllocated() bool {
     return CategoryPanel_HandleAllocated(c.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (c *TCategoryPanel) InsertControl(AControl IControl) {
     CategoryPanel_InsertControl(c.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (c *TCategoryPanel) Invalidate() {
     CategoryPanel_Invalidate(c.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (c *TCategoryPanel) PaintTo(DC HDC, X int32, Y int32) {
     CategoryPanel_PaintTo(c.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (c *TCategoryPanel) RemoveControl(AControl IControl) {
     CategoryPanel_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (c *TCategoryPanel) Realign() {
     CategoryPanel_Realign(c.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (c *TCategoryPanel) Repaint() {
     CategoryPanel_Repaint(c.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (c *TCategoryPanel) ScaleBy(M int32, D int32) {
     CategoryPanel_ScaleBy(c.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (c *TCategoryPanel) ScrollBy(DeltaX int32, DeltaY int32) {
     CategoryPanel_ScrollBy(c.instance, DeltaX , DeltaY)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (c *TCategoryPanel) SetFocus() {
     CategoryPanel_SetFocus(c.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (c *TCategoryPanel) Update() {
     CategoryPanel_Update(c.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (c *TCategoryPanel) UpdateControlState() {
     CategoryPanel_UpdateControlState(c.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (c *TCategoryPanel) BringToFront() {
     CategoryPanel_BringToFront(c.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (c *TCategoryPanel) ClientToScreen(Point TPoint) TPoint {
     return CategoryPanel_ClientToScreen(c.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (c *TCategoryPanel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return CategoryPanel_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (c *TCategoryPanel) Dragging() bool {
     return CategoryPanel_Dragging(c.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (c *TCategoryPanel) HasParent() bool {
     return CategoryPanel_HasParent(c.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (c *TCategoryPanel) Hide() {
     CategoryPanel_Hide(c.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (c *TCategoryPanel) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return CategoryPanel_Perform(c.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (c *TCategoryPanel) Refresh() {
     CategoryPanel_Refresh(c.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (c *TCategoryPanel) ScreenToClient(Point TPoint) TPoint {
     return CategoryPanel_ScreenToClient(c.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (c *TCategoryPanel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return CategoryPanel_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (c *TCategoryPanel) SendToBack() {
     CategoryPanel_SendToBack(c.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (c *TCategoryPanel) Show() {
     CategoryPanel_Show(c.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (c *TCategoryPanel) GetTextBuf(Buffer string, BufSize int32) int32 {
     return CategoryPanel_GetTextBuf(c.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (c *TCategoryPanel) GetTextLen() int32 {
     return CategoryPanel_GetTextLen(c.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (c *TCategoryPanel) SetTextBuf(Buffer string) {
     CategoryPanel_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (c *TCategoryPanel) FindComponent(AName string) *TComponent {
     return ComponentFromInst(CategoryPanel_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TCategoryPanel) GetNamePath() string {
     return CategoryPanel_GetNamePath(c.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TCategoryPanel) Assign(Source IObject) {
     CategoryPanel_Assign(c.instance, CheckPtr(Source))
 }
@@ -387,11 +461,15 @@ func (c *TCategoryPanel) SetCaption(value string) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (c *TCategoryPanel) Color() TColor {
     return CategoryPanel_GetColor(c.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (c *TCategoryPanel) SetColor(value TColor) {
     CategoryPanel_SetColor(c.instance, value)
 }
@@ -447,51 +525,71 @@ func (c *TCategoryPanel) SetUseDockManager(value bool) {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (c *TCategoryPanel) DockSite() bool {
     return CategoryPanel_GetDockSite(c.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (c *TCategoryPanel) SetDockSite(value bool) {
     CategoryPanel_SetDockSite(c.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (c *TCategoryPanel) DoubleBuffered() bool {
     return CategoryPanel_GetDoubleBuffered(c.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (c *TCategoryPanel) SetDoubleBuffered(value bool) {
     CategoryPanel_SetDoubleBuffered(c.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (c *TCategoryPanel) DragCursor() TCursor {
     return CategoryPanel_GetDragCursor(c.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (c *TCategoryPanel) SetDragCursor(value TCursor) {
     CategoryPanel_SetDragCursor(c.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (c *TCategoryPanel) DragKind() TDragKind {
     return CategoryPanel_GetDragKind(c.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (c *TCategoryPanel) SetDragKind(value TDragKind) {
     CategoryPanel_SetDragKind(c.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (c *TCategoryPanel) DragMode() TDragMode {
     return CategoryPanel_GetDragMode(c.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (c *TCategoryPanel) SetDragMode(value TDragMode) {
     CategoryPanel_SetDragMode(c.instance, value)
 }
@@ -551,31 +649,43 @@ func (c *TCategoryPanel) SetFullRepaint(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (c *TCategoryPanel) Font() *TFont {
     return FontFromInst(CategoryPanel_GetFont(c.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (c *TCategoryPanel) SetFont(value *TFont) {
     CategoryPanel_SetFont(c.instance, CheckPtr(value))
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (c *TCategoryPanel) Height() int32 {
     return CategoryPanel_GetHeight(c.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (c *TCategoryPanel) SetHeight(value int32) {
     CategoryPanel_SetHeight(c.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (c *TCategoryPanel) Left() int32 {
     return CategoryPanel_GetLeft(c.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (c *TCategoryPanel) SetLeft(value int32) {
     CategoryPanel_SetLeft(c.instance, value)
 }
@@ -601,11 +711,15 @@ func (c *TCategoryPanel) SetParentBackground(value bool) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (c *TCategoryPanel) ParentColor() bool {
     return CategoryPanel_GetParentColor(c.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (c *TCategoryPanel) SetParentColor(value bool) {
     CategoryPanel_SetParentColor(c.instance, value)
 }
@@ -621,21 +735,29 @@ func (c *TCategoryPanel) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (c *TCategoryPanel) ParentDoubleBuffered() bool {
     return CategoryPanel_GetParentDoubleBuffered(c.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (c *TCategoryPanel) SetParentDoubleBuffered(value bool) {
     CategoryPanel_SetParentDoubleBuffered(c.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (c *TCategoryPanel) ParentFont() bool {
     return CategoryPanel_GetParentFont(c.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (c *TCategoryPanel) SetParentFont(value bool) {
     CategoryPanel_SetParentFont(c.instance, value)
 }
@@ -651,41 +773,57 @@ func (c *TCategoryPanel) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (c *TCategoryPanel) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(CategoryPanel_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (c *TCategoryPanel) SetPopupMenu(value IComponent) {
     CategoryPanel_SetPopupMenu(c.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (c *TCategoryPanel) ShowHint() bool {
     return CategoryPanel_GetShowHint(c.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (c *TCategoryPanel) SetShowHint(value bool) {
     CategoryPanel_SetShowHint(c.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (c *TCategoryPanel) TabOrder() TTabOrder {
     return CategoryPanel_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (c *TCategoryPanel) SetTabOrder(value TTabOrder) {
     CategoryPanel_SetTabOrder(c.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (c *TCategoryPanel) TabStop() bool {
     return CategoryPanel_GetTabStop(c.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (c *TCategoryPanel) SetTabStop(value bool) {
     CategoryPanel_SetTabStop(c.instance, value)
 }
@@ -705,21 +843,29 @@ func (c *TCategoryPanel) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (c *TCategoryPanel) StyleElements() TStyleElements {
     return CategoryPanel_GetStyleElements(c.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (c *TCategoryPanel) SetStyleElements(value TStyleElements) {
     CategoryPanel_SetStyleElements(c.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (c *TCategoryPanel) Width() int32 {
     return CategoryPanel_GetWidth(c.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (c *TCategoryPanel) SetWidth(value int32) {
     CategoryPanel_SetWidth(c.instance, value)
 }
@@ -732,6 +878,8 @@ func (c *TCategoryPanel) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (c *TCategoryPanel) SetOnContextPopup(fn TContextPopupEvent) {
     CategoryPanel_SetOnContextPopup(c.instance, fn)
 }
@@ -747,31 +895,43 @@ func (c *TCategoryPanel) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (c *TCategoryPanel) SetOnDragDrop(fn TDragDropEvent) {
     CategoryPanel_SetOnDragDrop(c.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (c *TCategoryPanel) SetOnDragOver(fn TDragOverEvent) {
     CategoryPanel_SetOnDragOver(c.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (c *TCategoryPanel) SetOnEndDock(fn TEndDragEvent) {
     CategoryPanel_SetOnEndDock(c.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (c *TCategoryPanel) SetOnEndDrag(fn TEndDragEvent) {
     CategoryPanel_SetOnEndDrag(c.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (c *TCategoryPanel) SetOnEnter(fn TNotifyEvent) {
     CategoryPanel_SetOnEnter(c.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (c *TCategoryPanel) SetOnExit(fn TNotifyEvent) {
     CategoryPanel_SetOnExit(c.instance, fn)
 }
@@ -782,16 +942,22 @@ func (c *TCategoryPanel) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (c *TCategoryPanel) SetOnMouseDown(fn TMouseEvent) {
     CategoryPanel_SetOnMouseDown(c.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (c *TCategoryPanel) SetOnMouseEnter(fn TNotifyEvent) {
     CategoryPanel_SetOnMouseEnter(c.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (c *TCategoryPanel) SetOnMouseLeave(fn TNotifyEvent) {
     CategoryPanel_SetOnMouseLeave(c.instance, fn)
 }
@@ -802,6 +968,8 @@ func (c *TCategoryPanel) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (c *TCategoryPanel) SetOnMouseUp(fn TMouseEvent) {
     CategoryPanel_SetOnMouseUp(c.instance, fn)
 }
@@ -837,36 +1005,50 @@ func (c *TCategoryPanel) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (c *TCategoryPanel) MouseInClient() bool {
     return CategoryPanel_GetMouseInClient(c.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (c *TCategoryPanel) VisibleDockClientCount() int32 {
     return CategoryPanel_GetVisibleDockClientCount(c.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (c *TCategoryPanel) Brush() *TBrush {
     return BrushFromInst(CategoryPanel_GetBrush(c.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (c *TCategoryPanel) ControlCount() int32 {
     return CategoryPanel_GetControlCount(c.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (c *TCategoryPanel) Handle() HWND {
     return CategoryPanel_GetHandle(c.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (c *TCategoryPanel) ParentWindow() HWND {
     return CategoryPanel_GetParentWindow(c.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (c *TCategoryPanel) SetParentWindow(value HWND) {
     CategoryPanel_SetParentWindow(c.instance, value)
 }
@@ -882,11 +1064,15 @@ func (c *TCategoryPanel) SetAction(value IComponent) {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (c *TCategoryPanel) Align() TAlign {
     return CategoryPanel_GetAlign(c.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (c *TCategoryPanel) SetAlign(value TAlign) {
     CategoryPanel_SetAlign(c.instance, value)
 }
@@ -912,11 +1098,15 @@ func (c *TCategoryPanel) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (c *TCategoryPanel) ClientHeight() int32 {
     return CategoryPanel_GetClientHeight(c.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (c *TCategoryPanel) SetClientHeight(value int32) {
     CategoryPanel_SetClientHeight(c.instance, value)
 }
@@ -927,36 +1117,50 @@ func (c *TCategoryPanel) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (c *TCategoryPanel) ClientRect() TRect {
     return CategoryPanel_GetClientRect(c.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (c *TCategoryPanel) ClientWidth() int32 {
     return CategoryPanel_GetClientWidth(c.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (c *TCategoryPanel) SetClientWidth(value int32) {
     CategoryPanel_SetClientWidth(c.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (c *TCategoryPanel) ControlState() TControlState {
     return CategoryPanel_GetControlState(c.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (c *TCategoryPanel) SetControlState(value TControlState) {
     CategoryPanel_SetControlState(c.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (c *TCategoryPanel) ControlStyle() TControlStyle {
     return CategoryPanel_GetControlStyle(c.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (c *TCategoryPanel) SetControlStyle(value TControlStyle) {
     CategoryPanel_SetControlStyle(c.instance, value)
 }
@@ -1001,21 +1205,29 @@ func (c *TCategoryPanel) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (c *TCategoryPanel) AlignWithMargins() bool {
     return CategoryPanel_GetAlignWithMargins(c.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (c *TCategoryPanel) SetAlignWithMargins(value bool) {
     CategoryPanel_SetAlignWithMargins(c.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (c *TCategoryPanel) Top() int32 {
     return CategoryPanel_GetTop(c.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (c *TCategoryPanel) SetTop(value int32) {
     CategoryPanel_SetTop(c.instance, value)
 }
@@ -1049,21 +1261,29 @@ func (c *TCategoryPanel) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (c *TCategoryPanel) Margins() *TMargins {
     return MarginsFromInst(CategoryPanel_GetMargins(c.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (c *TCategoryPanel) SetMargins(value *TMargins) {
     CategoryPanel_SetMargins(c.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (c *TCategoryPanel) CustomHint() *TCustomHint {
     return CustomHintFromInst(CategoryPanel_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (c *TCategoryPanel) SetCustomHint(value IComponent) {
     CategoryPanel_SetCustomHint(c.instance, CheckPtr(value))
 }

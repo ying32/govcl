@@ -124,6 +124,8 @@ func (s *TStatusPanels) Owner() *TObject {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TStatusPanels) Assign(Source IObject) {
     StatusPanels_Assign(s.instance, CheckPtr(Source))
 }
@@ -149,6 +151,8 @@ func (s *TStatusPanels) EndUpdate() {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TStatusPanels) GetNamePath() string {
     return StatusPanels_GetNamePath(s.instance)
 }

@@ -107,21 +107,29 @@ func (c *TColorDialog) Execute() bool {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (c *TColorDialog) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ColorDialog_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TColorDialog) GetNamePath() string {
     return ColorDialog_GetNamePath(c.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (c *TColorDialog) HasParent() bool {
     return ColorDialog_HasParent(c.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TColorDialog) Assign(Source IObject) {
     ColorDialog_Assign(c.instance, CheckPtr(Source))
 }
@@ -183,11 +191,15 @@ func (c *TColorDialog) ToString() string {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (c *TColorDialog) Color() TColor {
     return ColorDialog_GetColor(c.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (c *TColorDialog) SetColor(value TColor) {
     ColorDialog_SetColor(c.instance, value)
 }
@@ -203,6 +215,8 @@ func (c *TColorDialog) SetOptions(value TColorDialogOptions) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (c *TColorDialog) Handle() HWND {
     return ColorDialog_GetHandle(c.instance)
 }

@@ -102,111 +102,155 @@ func TControlClass() TClass {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (c *TControl) BringToFront() {
     Control_BringToFront(c.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (c *TControl) ClientToScreen(Point TPoint) TPoint {
     return Control_ClientToScreen(c.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (c *TControl) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Control_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (c *TControl) Dragging() bool {
     return Control_Dragging(c.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (c *TControl) HasParent() bool {
     return Control_HasParent(c.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (c *TControl) Hide() {
     Control_Hide(c.instance)
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (c *TControl) Invalidate() {
     Control_Invalidate(c.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (c *TControl) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Control_Perform(c.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (c *TControl) Refresh() {
     Control_Refresh(c.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (c *TControl) Repaint() {
     Control_Repaint(c.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (c *TControl) ScreenToClient(Point TPoint) TPoint {
     return Control_ScreenToClient(c.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (c *TControl) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Control_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (c *TControl) SendToBack() {
     Control_SendToBack(c.instance)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (c *TControl) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Control_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (c *TControl) Show() {
     Control_Show(c.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (c *TControl) Update() {
     Control_Update(c.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (c *TControl) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Control_GetTextBuf(c.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (c *TControl) GetTextLen() int32 {
     return Control_GetTextLen(c.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (c *TControl) SetTextBuf(Buffer string) {
     Control_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (c *TControl) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Control_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TControl) GetNamePath() string {
     return Control_GetNamePath(c.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TControl) Assign(Source IObject) {
     Control_Assign(c.instance, CheckPtr(Source))
 }
@@ -292,11 +336,15 @@ func (c *TControl) SetAction(value IComponent) {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (c *TControl) Align() TAlign {
     return Control_GetAlign(c.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (c *TControl) SetAlign(value TAlign) {
     Control_SetAlign(c.instance, value)
 }
@@ -332,11 +380,15 @@ func (c *TControl) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (c *TControl) ClientHeight() int32 {
     return Control_GetClientHeight(c.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (c *TControl) SetClientHeight(value int32) {
     Control_SetClientHeight(c.instance, value)
 }
@@ -347,36 +399,50 @@ func (c *TControl) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (c *TControl) ClientRect() TRect {
     return Control_GetClientRect(c.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (c *TControl) ClientWidth() int32 {
     return Control_GetClientWidth(c.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (c *TControl) SetClientWidth(value int32) {
     Control_SetClientWidth(c.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (c *TControl) ControlState() TControlState {
     return Control_GetControlState(c.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (c *TControl) SetControlState(value TControlState) {
     Control_SetControlState(c.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (c *TControl) ControlStyle() TControlStyle {
     return Control_GetControlStyle(c.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (c *TControl) SetControlStyle(value TControlStyle) {
     Control_SetControlStyle(c.instance, value)
 }
@@ -407,11 +473,15 @@ func (c *TControl) Floating() bool {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (c *TControl) ShowHint() bool {
     return Control_GetShowHint(c.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (c *TControl) SetShowHint(value bool) {
     Control_SetShowHint(c.instance, value)
 }
@@ -445,61 +515,85 @@ func (c *TControl) SetParent(value IWinControl) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (c *TControl) StyleElements() TStyleElements {
     return Control_GetStyleElements(c.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (c *TControl) SetStyleElements(value TStyleElements) {
     Control_SetStyleElements(c.instance, value)
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (c *TControl) AlignWithMargins() bool {
     return Control_GetAlignWithMargins(c.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (c *TControl) SetAlignWithMargins(value bool) {
     Control_SetAlignWithMargins(c.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (c *TControl) Left() int32 {
     return Control_GetLeft(c.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (c *TControl) SetLeft(value int32) {
     Control_SetLeft(c.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (c *TControl) Top() int32 {
     return Control_GetTop(c.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (c *TControl) SetTop(value int32) {
     Control_SetTop(c.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (c *TControl) Width() int32 {
     return Control_GetWidth(c.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (c *TControl) SetWidth(value int32) {
     Control_SetWidth(c.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (c *TControl) Height() int32 {
     return Control_GetHeight(c.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (c *TControl) SetHeight(value int32) {
     Control_SetHeight(c.instance, value)
 }
@@ -533,21 +627,29 @@ func (c *TControl) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (c *TControl) Margins() *TMargins {
     return MarginsFromInst(Control_GetMargins(c.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (c *TControl) SetMargins(value *TMargins) {
     Control_SetMargins(c.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (c *TControl) CustomHint() *TCustomHint {
     return CustomHintFromInst(Control_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (c *TControl) SetCustomHint(value IComponent) {
     Control_SetCustomHint(c.instance, CheckPtr(value))
 }

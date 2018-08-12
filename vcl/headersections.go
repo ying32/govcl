@@ -124,6 +124,8 @@ func (h *THeaderSections) Owner() *TObject {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (h *THeaderSections) Assign(Source IObject) {
     HeaderSections_Assign(h.instance, CheckPtr(Source))
 }
@@ -149,6 +151,8 @@ func (h *THeaderSections) EndUpdate() {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (h *THeaderSections) GetNamePath() string {
     return HeaderSections_GetNamePath(h.instance)
 }

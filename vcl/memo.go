@@ -152,26 +152,36 @@ func (m *TMemo) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (m *TMemo) ContainsControl(Control IControl) bool {
     return Memo_ContainsControl(m.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (m *TMemo) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(Memo_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (m *TMemo) DisableAlign() {
     Memo_DisableAlign(m.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (m *TMemo) EnableAlign() {
     Memo_EnableAlign(m.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (m *TMemo) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(Memo_FindChildControl(m.instance, ControlName))
 }
@@ -182,161 +192,225 @@ func (m *TMemo) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (m *TMemo) Focused() bool {
     return Memo_Focused(m.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (m *TMemo) HandleAllocated() bool {
     return Memo_HandleAllocated(m.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (m *TMemo) InsertControl(AControl IControl) {
     Memo_InsertControl(m.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (m *TMemo) Invalidate() {
     Memo_Invalidate(m.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (m *TMemo) PaintTo(DC HDC, X int32, Y int32) {
     Memo_PaintTo(m.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (m *TMemo) RemoveControl(AControl IControl) {
     Memo_RemoveControl(m.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (m *TMemo) Realign() {
     Memo_Realign(m.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (m *TMemo) Repaint() {
     Memo_Repaint(m.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (m *TMemo) ScaleBy(M int32, D int32) {
     Memo_ScaleBy(m.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (m *TMemo) ScrollBy(DeltaX int32, DeltaY int32) {
     Memo_ScrollBy(m.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (m *TMemo) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Memo_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (m *TMemo) SetFocus() {
     Memo_SetFocus(m.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (m *TMemo) Update() {
     Memo_Update(m.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (m *TMemo) UpdateControlState() {
     Memo_UpdateControlState(m.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (m *TMemo) BringToFront() {
     Memo_BringToFront(m.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (m *TMemo) ClientToScreen(Point TPoint) TPoint {
     return Memo_ClientToScreen(m.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (m *TMemo) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Memo_ClientToParent(m.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (m *TMemo) Dragging() bool {
     return Memo_Dragging(m.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (m *TMemo) HasParent() bool {
     return Memo_HasParent(m.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (m *TMemo) Hide() {
     Memo_Hide(m.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (m *TMemo) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Memo_Perform(m.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (m *TMemo) Refresh() {
     Memo_Refresh(m.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (m *TMemo) ScreenToClient(Point TPoint) TPoint {
     return Memo_ScreenToClient(m.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (m *TMemo) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Memo_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (m *TMemo) SendToBack() {
     Memo_SendToBack(m.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (m *TMemo) Show() {
     Memo_Show(m.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (m *TMemo) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Memo_GetTextBuf(m.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (m *TMemo) GetTextLen() int32 {
     return Memo_GetTextLen(m.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (m *TMemo) SetTextBuf(Buffer string) {
     Memo_SetTextBuf(m.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (m *TMemo) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Memo_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (m *TMemo) GetNamePath() string {
     return Memo_GetNamePath(m.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (m *TMemo) Assign(Source IObject) {
     Memo_Assign(m.instance, CheckPtr(Source))
 }
@@ -398,21 +472,29 @@ func (m *TMemo) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (m *TMemo) Align() TAlign {
     return Memo_GetAlign(m.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (m *TMemo) SetAlign(value TAlign) {
     Memo_SetAlign(m.instance, value)
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (m *TMemo) Alignment() TAlignment {
     return Memo_GetAlignment(m.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (m *TMemo) SetAlignment(value TAlignment) {
     Memo_SetAlignment(m.instance, value)
 }
@@ -498,51 +580,71 @@ func (m *TMemo) SetCharCase(value TEditCharCase) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (m *TMemo) Color() TColor {
     return Memo_GetColor(m.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (m *TMemo) SetColor(value TColor) {
     Memo_SetColor(m.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (m *TMemo) DoubleBuffered() bool {
     return Memo_GetDoubleBuffered(m.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (m *TMemo) SetDoubleBuffered(value bool) {
     Memo_SetDoubleBuffered(m.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (m *TMemo) DragCursor() TCursor {
     return Memo_GetDragCursor(m.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (m *TMemo) SetDragCursor(value TCursor) {
     Memo_SetDragCursor(m.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (m *TMemo) DragKind() TDragKind {
     return Memo_GetDragKind(m.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (m *TMemo) SetDragKind(value TDragKind) {
     Memo_SetDragKind(m.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (m *TMemo) DragMode() TDragMode {
     return Memo_GetDragMode(m.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (m *TMemo) SetDragMode(value TDragMode) {
     Memo_SetDragMode(m.instance, value)
 }
@@ -562,11 +664,15 @@ func (m *TMemo) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (m *TMemo) Font() *TFont {
     return FontFromInst(Memo_GetFont(m.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (m *TMemo) SetFont(value *TFont) {
     Memo_SetFont(m.instance, CheckPtr(value))
 }
@@ -602,11 +708,15 @@ func (m *TMemo) SetMaxLength(value int32) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (m *TMemo) ParentColor() bool {
     return Memo_GetParentColor(m.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (m *TMemo) SetParentColor(value bool) {
     Memo_SetParentColor(m.instance, value)
 }
@@ -622,21 +732,29 @@ func (m *TMemo) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (m *TMemo) ParentDoubleBuffered() bool {
     return Memo_GetParentDoubleBuffered(m.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (m *TMemo) SetParentDoubleBuffered(value bool) {
     Memo_SetParentDoubleBuffered(m.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (m *TMemo) ParentFont() bool {
     return Memo_GetParentFont(m.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (m *TMemo) SetParentFont(value bool) {
     Memo_SetParentFont(m.instance, value)
 }
@@ -652,11 +770,15 @@ func (m *TMemo) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (m *TMemo) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(Memo_GetPopupMenu(m.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (m *TMemo) SetPopupMenu(value IComponent) {
     Memo_SetPopupMenu(m.instance, CheckPtr(value))
 }
@@ -682,31 +804,43 @@ func (m *TMemo) SetScrollBars(value TScrollStyle) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (m *TMemo) ShowHint() bool {
     return Memo_GetShowHint(m.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (m *TMemo) SetShowHint(value bool) {
     Memo_SetShowHint(m.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (m *TMemo) TabOrder() TTabOrder {
     return Memo_GetTabOrder(m.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (m *TMemo) SetTabOrder(value TTabOrder) {
     Memo_SetTabOrder(m.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (m *TMemo) TabStop() bool {
     return Memo_GetTabStop(m.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (m *TMemo) SetTabStop(value bool) {
     Memo_SetTabStop(m.instance, value)
 }
@@ -746,26 +880,36 @@ func (m *TMemo) SetWantTabs(value bool) {
 }
 
 // WordWrap
+// CN: 获取自动换行。
+// EN: Get Automatic line break.
 func (m *TMemo) WordWrap() bool {
     return Memo_GetWordWrap(m.instance)
 }
 
 // SetWordWrap
+// CN: 设置自动换行。
+// EN: Set Automatic line break.
 func (m *TMemo) SetWordWrap(value bool) {
     Memo_SetWordWrap(m.instance, value)
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (m *TMemo) StyleElements() TStyleElements {
     return Memo_GetStyleElements(m.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (m *TMemo) SetStyleElements(value TStyleElements) {
     Memo_SetStyleElements(m.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (m *TMemo) SetOnChange(fn TNotifyEvent) {
     Memo_SetOnChange(m.instance, fn)
 }
@@ -778,6 +922,8 @@ func (m *TMemo) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (m *TMemo) SetOnContextPopup(fn TContextPopupEvent) {
     Memo_SetOnContextPopup(m.instance, fn)
 }
@@ -788,36 +934,50 @@ func (m *TMemo) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (m *TMemo) SetOnDragDrop(fn TDragDropEvent) {
     Memo_SetOnDragDrop(m.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (m *TMemo) SetOnDragOver(fn TDragOverEvent) {
     Memo_SetOnDragOver(m.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (m *TMemo) SetOnEndDock(fn TEndDragEvent) {
     Memo_SetOnEndDock(m.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (m *TMemo) SetOnEndDrag(fn TEndDragEvent) {
     Memo_SetOnEndDrag(m.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (m *TMemo) SetOnEnter(fn TNotifyEvent) {
     Memo_SetOnEnter(m.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (m *TMemo) SetOnExit(fn TNotifyEvent) {
     Memo_SetOnExit(m.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (m *TMemo) SetOnKeyDown(fn TKeyEvent) {
     Memo_SetOnKeyDown(m.instance, fn)
 }
@@ -828,21 +988,29 @@ func (m *TMemo) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (m *TMemo) SetOnKeyUp(fn TKeyEvent) {
     Memo_SetOnKeyUp(m.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (m *TMemo) SetOnMouseDown(fn TMouseEvent) {
     Memo_SetOnMouseDown(m.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (m *TMemo) SetOnMouseEnter(fn TNotifyEvent) {
     Memo_SetOnMouseEnter(m.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (m *TMemo) SetOnMouseLeave(fn TNotifyEvent) {
     Memo_SetOnMouseLeave(m.instance, fn)
 }
@@ -853,6 +1021,8 @@ func (m *TMemo) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (m *TMemo) SetOnMouseUp(fn TMouseEvent) {
     Memo_SetOnMouseUp(m.instance, fn)
 }
@@ -878,11 +1048,15 @@ func (m *TMemo) CanUndo() bool {
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (m *TMemo) Modified() bool {
     return Memo_GetModified(m.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (m *TMemo) SetModified(value bool) {
     Memo_SetModified(m.instance, value)
 }
@@ -943,11 +1117,15 @@ func (m *TMemo) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (m *TMemo) DockSite() bool {
     return Memo_GetDockSite(m.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (m *TMemo) SetDockSite(value bool) {
     Memo_SetDockSite(m.instance, value)
 }
@@ -958,36 +1136,50 @@ func (m *TMemo) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (m *TMemo) MouseInClient() bool {
     return Memo_GetMouseInClient(m.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (m *TMemo) VisibleDockClientCount() int32 {
     return Memo_GetVisibleDockClientCount(m.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (m *TMemo) Brush() *TBrush {
     return BrushFromInst(Memo_GetBrush(m.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (m *TMemo) ControlCount() int32 {
     return Memo_GetControlCount(m.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (m *TMemo) Handle() HWND {
     return Memo_GetHandle(m.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (m *TMemo) ParentWindow() HWND {
     return Memo_GetParentWindow(m.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (m *TMemo) SetParentWindow(value HWND) {
     Memo_SetParentWindow(m.instance, value)
 }
@@ -1023,11 +1215,15 @@ func (m *TMemo) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (m *TMemo) ClientHeight() int32 {
     return Memo_GetClientHeight(m.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (m *TMemo) SetClientHeight(value int32) {
     Memo_SetClientHeight(m.instance, value)
 }
@@ -1038,36 +1234,50 @@ func (m *TMemo) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (m *TMemo) ClientRect() TRect {
     return Memo_GetClientRect(m.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (m *TMemo) ClientWidth() int32 {
     return Memo_GetClientWidth(m.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (m *TMemo) SetClientWidth(value int32) {
     Memo_SetClientWidth(m.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (m *TMemo) ControlState() TControlState {
     return Memo_GetControlState(m.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (m *TMemo) SetControlState(value TControlState) {
     Memo_SetControlState(m.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (m *TMemo) ControlStyle() TControlStyle {
     return Memo_GetControlStyle(m.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (m *TMemo) SetControlStyle(value TControlStyle) {
     Memo_SetControlStyle(m.instance, value)
 }
@@ -1112,51 +1322,71 @@ func (m *TMemo) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (m *TMemo) AlignWithMargins() bool {
     return Memo_GetAlignWithMargins(m.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (m *TMemo) SetAlignWithMargins(value bool) {
     Memo_SetAlignWithMargins(m.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (m *TMemo) Left() int32 {
     return Memo_GetLeft(m.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (m *TMemo) SetLeft(value int32) {
     Memo_SetLeft(m.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (m *TMemo) Top() int32 {
     return Memo_GetTop(m.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (m *TMemo) SetTop(value int32) {
     Memo_SetTop(m.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (m *TMemo) Width() int32 {
     return Memo_GetWidth(m.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (m *TMemo) SetWidth(value int32) {
     Memo_SetWidth(m.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (m *TMemo) Height() int32 {
     return Memo_GetHeight(m.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (m *TMemo) SetHeight(value int32) {
     Memo_SetHeight(m.instance, value)
 }
@@ -1190,21 +1420,29 @@ func (m *TMemo) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (m *TMemo) Margins() *TMargins {
     return MarginsFromInst(Memo_GetMargins(m.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (m *TMemo) SetMargins(value *TMargins) {
     Memo_SetMargins(m.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (m *TMemo) CustomHint() *TCustomHint {
     return CustomHintFromInst(Memo_GetCustomHint(m.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (m *TMemo) SetCustomHint(value IComponent) {
     Memo_SetCustomHint(m.instance, CheckPtr(value))
 }

@@ -102,6 +102,8 @@ func TPngImageClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (p *TPngImage) Assign(Source IObject) {
     PngImage_Assign(p.instance, CheckPtr(Source))
 }
@@ -149,6 +151,8 @@ func (p *TPngImage) SetSize(AWidth int32, AHeight int32) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (p *TPngImage) GetNamePath() string {
     return PngImage_GetNamePath(p.instance)
 }
@@ -218,11 +222,15 @@ func (p *TPngImage) Canvas() *TCanvas {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (p *TPngImage) Width() int32 {
     return PngImage_GetWidth(p.instance)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (p *TPngImage) Height() int32 {
     return PngImage_GetHeight(p.instance)
 }
@@ -258,11 +266,15 @@ func (p *TPngImage) Version() string {
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (p *TPngImage) Modified() bool {
     return PngImage_GetModified(p.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (p *TPngImage) SetModified(value bool) {
     PngImage_SetModified(p.instance, value)
 }
@@ -278,16 +290,22 @@ func (p *TPngImage) SetPaletteModified(value bool) {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (p *TPngImage) Transparent() bool {
     return PngImage_GetTransparent(p.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (p *TPngImage) SetTransparent(value bool) {
     PngImage_SetTransparent(p.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (p *TPngImage) SetOnChange(fn TNotifyEvent) {
     PngImage_SetOnChange(p.instance, fn)
 }

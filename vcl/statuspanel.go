@@ -102,11 +102,15 @@ func TStatusPanelClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TStatusPanel) Assign(Source IObject) {
     StatusPanel_Assign(s.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TStatusPanel) GetNamePath() string {
     return StatusPanel_GetNamePath(s.instance)
 }
@@ -168,11 +172,15 @@ func (s *TStatusPanel) ToString() string {
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (s *TStatusPanel) Alignment() TAlignment {
     return StatusPanel_GetAlignment(s.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (s *TStatusPanel) SetAlignment(value TAlignment) {
     StatusPanel_SetAlignment(s.instance, value)
 }
@@ -208,11 +216,15 @@ func (s *TStatusPanel) SetText(value string) {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (s *TStatusPanel) Width() int32 {
     return StatusPanel_GetWidth(s.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (s *TStatusPanel) SetWidth(value int32) {
     StatusPanel_SetWidth(s.instance, value)
 }

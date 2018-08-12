@@ -102,111 +102,155 @@ func TImageClass() TClass {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (i *TImage) BringToFront() {
     Image_BringToFront(i.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (i *TImage) ClientToScreen(Point TPoint) TPoint {
     return Image_ClientToScreen(i.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (i *TImage) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Image_ClientToParent(i.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (i *TImage) Dragging() bool {
     return Image_Dragging(i.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (i *TImage) HasParent() bool {
     return Image_HasParent(i.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (i *TImage) Hide() {
     Image_Hide(i.instance)
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (i *TImage) Invalidate() {
     Image_Invalidate(i.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (i *TImage) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Image_Perform(i.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (i *TImage) Refresh() {
     Image_Refresh(i.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (i *TImage) Repaint() {
     Image_Repaint(i.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (i *TImage) ScreenToClient(Point TPoint) TPoint {
     return Image_ScreenToClient(i.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (i *TImage) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Image_ParentToClient(i.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (i *TImage) SendToBack() {
     Image_SendToBack(i.instance)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (i *TImage) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Image_SetBounds(i.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (i *TImage) Show() {
     Image_Show(i.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (i *TImage) Update() {
     Image_Update(i.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (i *TImage) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Image_GetTextBuf(i.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (i *TImage) GetTextLen() int32 {
     return Image_GetTextLen(i.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (i *TImage) SetTextBuf(Buffer string) {
     Image_SetTextBuf(i.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (i *TImage) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Image_FindComponent(i.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (i *TImage) GetNamePath() string {
     return Image_GetNamePath(i.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (i *TImage) Assign(Source IObject) {
     Image_Assign(i.instance, CheckPtr(Source))
 }
@@ -273,11 +317,15 @@ func (i *TImage) Canvas() *TCanvas {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (i *TImage) Align() TAlign {
     return Image_GetAlign(i.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (i *TImage) SetAlign(value TAlign) {
     Image_SetAlign(i.instance, value)
 }
@@ -313,31 +361,43 @@ func (i *TImage) SetCenter(value bool) {
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (i *TImage) DragCursor() TCursor {
     return Image_GetDragCursor(i.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (i *TImage) SetDragCursor(value TCursor) {
     Image_SetDragCursor(i.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (i *TImage) DragKind() TDragKind {
     return Image_GetDragKind(i.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (i *TImage) SetDragKind(value TDragKind) {
     Image_SetDragKind(i.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (i *TImage) DragMode() TDragMode {
     return Image_GetDragMode(i.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (i *TImage) SetDragMode(value TDragMode) {
     Image_SetDragMode(i.instance, value)
 }
@@ -387,11 +447,15 @@ func (i *TImage) SetPicture(value *TPicture) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (i *TImage) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(Image_GetPopupMenu(i.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (i *TImage) SetPopupMenu(value IComponent) {
     Image_SetPopupMenu(i.instance, CheckPtr(value))
 }
@@ -407,11 +471,15 @@ func (i *TImage) SetProportional(value bool) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (i *TImage) ShowHint() bool {
     return Image_GetShowHint(i.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (i *TImage) SetShowHint(value bool) {
     Image_SetShowHint(i.instance, value)
 }
@@ -427,11 +495,15 @@ func (i *TImage) SetStretch(value bool) {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (i *TImage) Transparent() bool {
     return Image_GetTransparent(i.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (i *TImage) SetTransparent(value bool) {
     Image_SetTransparent(i.instance, value)
 }
@@ -458,6 +530,8 @@ func (i *TImage) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (i *TImage) SetOnContextPopup(fn TContextPopupEvent) {
     Image_SetOnContextPopup(i.instance, fn)
 }
@@ -468,36 +542,50 @@ func (i *TImage) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (i *TImage) SetOnDragDrop(fn TDragDropEvent) {
     Image_SetOnDragDrop(i.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (i *TImage) SetOnDragOver(fn TDragOverEvent) {
     Image_SetOnDragOver(i.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (i *TImage) SetOnEndDock(fn TEndDragEvent) {
     Image_SetOnEndDock(i.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (i *TImage) SetOnEndDrag(fn TEndDragEvent) {
     Image_SetOnEndDrag(i.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (i *TImage) SetOnMouseDown(fn TMouseEvent) {
     Image_SetOnMouseDown(i.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (i *TImage) SetOnMouseEnter(fn TNotifyEvent) {
     Image_SetOnMouseEnter(i.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (i *TImage) SetOnMouseLeave(fn TNotifyEvent) {
     Image_SetOnMouseLeave(i.instance, fn)
 }
@@ -508,6 +596,8 @@ func (i *TImage) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (i *TImage) SetOnMouseUp(fn TMouseEvent) {
     Image_SetOnMouseUp(i.instance, fn)
 }
@@ -548,11 +638,15 @@ func (i *TImage) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (i *TImage) ClientHeight() int32 {
     return Image_GetClientHeight(i.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (i *TImage) SetClientHeight(value int32) {
     Image_SetClientHeight(i.instance, value)
 }
@@ -563,36 +657,50 @@ func (i *TImage) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (i *TImage) ClientRect() TRect {
     return Image_GetClientRect(i.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (i *TImage) ClientWidth() int32 {
     return Image_GetClientWidth(i.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (i *TImage) SetClientWidth(value int32) {
     Image_SetClientWidth(i.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (i *TImage) ControlState() TControlState {
     return Image_GetControlState(i.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (i *TImage) SetControlState(value TControlState) {
     Image_SetControlState(i.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (i *TImage) ControlStyle() TControlStyle {
     return Image_GetControlStyle(i.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (i *TImage) SetControlStyle(value TControlStyle) {
     Image_SetControlStyle(i.instance, value)
 }
@@ -637,61 +745,85 @@ func (i *TImage) SetParent(value IWinControl) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (i *TImage) StyleElements() TStyleElements {
     return Image_GetStyleElements(i.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (i *TImage) SetStyleElements(value TStyleElements) {
     Image_SetStyleElements(i.instance, value)
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (i *TImage) AlignWithMargins() bool {
     return Image_GetAlignWithMargins(i.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (i *TImage) SetAlignWithMargins(value bool) {
     Image_SetAlignWithMargins(i.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (i *TImage) Left() int32 {
     return Image_GetLeft(i.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (i *TImage) SetLeft(value int32) {
     Image_SetLeft(i.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (i *TImage) Top() int32 {
     return Image_GetTop(i.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (i *TImage) SetTop(value int32) {
     Image_SetTop(i.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (i *TImage) Width() int32 {
     return Image_GetWidth(i.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (i *TImage) SetWidth(value int32) {
     Image_SetWidth(i.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (i *TImage) Height() int32 {
     return Image_GetHeight(i.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (i *TImage) SetHeight(value int32) {
     Image_SetHeight(i.instance, value)
 }
@@ -725,21 +857,29 @@ func (i *TImage) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (i *TImage) Margins() *TMargins {
     return MarginsFromInst(Image_GetMargins(i.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (i *TImage) SetMargins(value *TMargins) {
     Image_SetMargins(i.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (i *TImage) CustomHint() *TCustomHint {
     return CustomHintFromInst(Image_GetCustomHint(i.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (i *TImage) SetCustomHint(value IComponent) {
     Image_SetCustomHint(i.instance, CheckPtr(value))
 }

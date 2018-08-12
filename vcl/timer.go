@@ -102,21 +102,29 @@ func TTimerClass() TClass {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (t *TTimer) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Timer_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (t *TTimer) GetNamePath() string {
     return Timer_GetNamePath(t.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (t *TTimer) HasParent() bool {
     return Timer_HasParent(t.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (t *TTimer) Assign(Source IObject) {
     Timer_Assign(t.instance, CheckPtr(Source))
 }

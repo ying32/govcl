@@ -102,6 +102,8 @@ func TClipboardClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TClipboard) Assign(Source IObject) {
     Clipboard_Assign(c.instance, CheckPtr(Source))
 }
@@ -137,16 +139,22 @@ func (c *TClipboard) SetAsHandle(Format uint16, Value uintptr) {
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (c *TClipboard) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Clipboard_GetTextBuf(c.instance, Buffer , BufSize)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (c *TClipboard) SetTextBuf(Buffer string) {
     Clipboard_SetTextBuf(c.instance, Buffer)
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TClipboard) GetNamePath() string {
     return Clipboard_GetNamePath(c.instance)
 }

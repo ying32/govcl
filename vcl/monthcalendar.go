@@ -108,26 +108,36 @@ func (m *TMonthCalendar) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (m *TMonthCalendar) ContainsControl(Control IControl) bool {
     return MonthCalendar_ContainsControl(m.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (m *TMonthCalendar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(MonthCalendar_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (m *TMonthCalendar) DisableAlign() {
     MonthCalendar_DisableAlign(m.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (m *TMonthCalendar) EnableAlign() {
     MonthCalendar_EnableAlign(m.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (m *TMonthCalendar) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(MonthCalendar_FindChildControl(m.instance, ControlName))
 }
@@ -138,161 +148,225 @@ func (m *TMonthCalendar) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (m *TMonthCalendar) Focused() bool {
     return MonthCalendar_Focused(m.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (m *TMonthCalendar) HandleAllocated() bool {
     return MonthCalendar_HandleAllocated(m.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (m *TMonthCalendar) InsertControl(AControl IControl) {
     MonthCalendar_InsertControl(m.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (m *TMonthCalendar) Invalidate() {
     MonthCalendar_Invalidate(m.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (m *TMonthCalendar) PaintTo(DC HDC, X int32, Y int32) {
     MonthCalendar_PaintTo(m.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (m *TMonthCalendar) RemoveControl(AControl IControl) {
     MonthCalendar_RemoveControl(m.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (m *TMonthCalendar) Realign() {
     MonthCalendar_Realign(m.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (m *TMonthCalendar) Repaint() {
     MonthCalendar_Repaint(m.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (m *TMonthCalendar) ScaleBy(M int32, D int32) {
     MonthCalendar_ScaleBy(m.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (m *TMonthCalendar) ScrollBy(DeltaX int32, DeltaY int32) {
     MonthCalendar_ScrollBy(m.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (m *TMonthCalendar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     MonthCalendar_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (m *TMonthCalendar) SetFocus() {
     MonthCalendar_SetFocus(m.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (m *TMonthCalendar) Update() {
     MonthCalendar_Update(m.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (m *TMonthCalendar) UpdateControlState() {
     MonthCalendar_UpdateControlState(m.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (m *TMonthCalendar) BringToFront() {
     MonthCalendar_BringToFront(m.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (m *TMonthCalendar) ClientToScreen(Point TPoint) TPoint {
     return MonthCalendar_ClientToScreen(m.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (m *TMonthCalendar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return MonthCalendar_ClientToParent(m.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (m *TMonthCalendar) Dragging() bool {
     return MonthCalendar_Dragging(m.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (m *TMonthCalendar) HasParent() bool {
     return MonthCalendar_HasParent(m.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (m *TMonthCalendar) Hide() {
     MonthCalendar_Hide(m.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (m *TMonthCalendar) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return MonthCalendar_Perform(m.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (m *TMonthCalendar) Refresh() {
     MonthCalendar_Refresh(m.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (m *TMonthCalendar) ScreenToClient(Point TPoint) TPoint {
     return MonthCalendar_ScreenToClient(m.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (m *TMonthCalendar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return MonthCalendar_ParentToClient(m.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (m *TMonthCalendar) SendToBack() {
     MonthCalendar_SendToBack(m.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (m *TMonthCalendar) Show() {
     MonthCalendar_Show(m.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (m *TMonthCalendar) GetTextBuf(Buffer string, BufSize int32) int32 {
     return MonthCalendar_GetTextBuf(m.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (m *TMonthCalendar) GetTextLen() int32 {
     return MonthCalendar_GetTextLen(m.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (m *TMonthCalendar) SetTextBuf(Buffer string) {
     MonthCalendar_SetTextBuf(m.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (m *TMonthCalendar) FindComponent(AName string) *TComponent {
     return ComponentFromInst(MonthCalendar_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (m *TMonthCalendar) GetNamePath() string {
     return MonthCalendar_GetNamePath(m.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (m *TMonthCalendar) Assign(Source IObject) {
     MonthCalendar_Assign(m.instance, CheckPtr(Source))
 }
@@ -354,11 +428,15 @@ func (m *TMonthCalendar) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (m *TMonthCalendar) Align() TAlign {
     return MonthCalendar_GetAlign(m.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (m *TMonthCalendar) SetAlign(value TAlign) {
     MonthCalendar_SetAlign(m.instance, value)
 }
@@ -434,41 +512,57 @@ func (m *TMonthCalendar) SetDate(value time.Time) {
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (m *TMonthCalendar) DoubleBuffered() bool {
     return MonthCalendar_GetDoubleBuffered(m.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (m *TMonthCalendar) SetDoubleBuffered(value bool) {
     MonthCalendar_SetDoubleBuffered(m.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (m *TMonthCalendar) DragCursor() TCursor {
     return MonthCalendar_GetDragCursor(m.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (m *TMonthCalendar) SetDragCursor(value TCursor) {
     MonthCalendar_SetDragCursor(m.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (m *TMonthCalendar) DragKind() TDragKind {
     return MonthCalendar_GetDragKind(m.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (m *TMonthCalendar) SetDragKind(value TDragKind) {
     MonthCalendar_SetDragKind(m.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (m *TMonthCalendar) DragMode() TDragMode {
     return MonthCalendar_GetDragMode(m.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (m *TMonthCalendar) SetDragMode(value TDragMode) {
     MonthCalendar_SetDragMode(m.instance, value)
 }
@@ -498,11 +592,15 @@ func (m *TMonthCalendar) SetFirstDayOfWeek(value TCalDayOfWeek) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (m *TMonthCalendar) Font() *TFont {
     return FontFromInst(MonthCalendar_GetFont(m.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (m *TMonthCalendar) SetFont(value *TFont) {
     MonthCalendar_SetFont(m.instance, CheckPtr(value))
 }
@@ -538,21 +636,29 @@ func (m *TMonthCalendar) SetMinDate(value time.Time) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (m *TMonthCalendar) ParentDoubleBuffered() bool {
     return MonthCalendar_GetParentDoubleBuffered(m.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (m *TMonthCalendar) SetParentDoubleBuffered(value bool) {
     MonthCalendar_SetParentDoubleBuffered(m.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (m *TMonthCalendar) ParentFont() bool {
     return MonthCalendar_GetParentFont(m.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (m *TMonthCalendar) SetParentFont(value bool) {
     MonthCalendar_SetParentFont(m.instance, value)
 }
@@ -568,21 +674,29 @@ func (m *TMonthCalendar) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (m *TMonthCalendar) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(MonthCalendar_GetPopupMenu(m.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (m *TMonthCalendar) SetPopupMenu(value IComponent) {
     MonthCalendar_SetPopupMenu(m.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (m *TMonthCalendar) ShowHint() bool {
     return MonthCalendar_GetShowHint(m.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (m *TMonthCalendar) SetShowHint(value bool) {
     MonthCalendar_SetShowHint(m.instance, value)
 }
@@ -608,21 +722,29 @@ func (m *TMonthCalendar) SetShowTodayCircle(value bool) {
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (m *TMonthCalendar) TabOrder() TTabOrder {
     return MonthCalendar_GetTabOrder(m.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (m *TMonthCalendar) SetTabOrder(value TTabOrder) {
     MonthCalendar_SetTabOrder(m.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (m *TMonthCalendar) TabStop() bool {
     return MonthCalendar_GetTabStop(m.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (m *TMonthCalendar) SetTabStop(value bool) {
     MonthCalendar_SetTabStop(m.instance, value)
 }
@@ -659,6 +781,8 @@ func (m *TMonthCalendar) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (m *TMonthCalendar) SetOnContextPopup(fn TContextPopupEvent) {
     MonthCalendar_SetOnContextPopup(m.instance, fn)
 }
@@ -669,36 +793,50 @@ func (m *TMonthCalendar) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (m *TMonthCalendar) SetOnDragDrop(fn TDragDropEvent) {
     MonthCalendar_SetOnDragDrop(m.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (m *TMonthCalendar) SetOnDragOver(fn TDragOverEvent) {
     MonthCalendar_SetOnDragOver(m.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (m *TMonthCalendar) SetOnEndDock(fn TEndDragEvent) {
     MonthCalendar_SetOnEndDock(m.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (m *TMonthCalendar) SetOnEndDrag(fn TEndDragEvent) {
     MonthCalendar_SetOnEndDrag(m.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (m *TMonthCalendar) SetOnEnter(fn TNotifyEvent) {
     MonthCalendar_SetOnEnter(m.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (m *TMonthCalendar) SetOnExit(fn TNotifyEvent) {
     MonthCalendar_SetOnExit(m.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (m *TMonthCalendar) SetOnKeyDown(fn TKeyEvent) {
     MonthCalendar_SetOnKeyDown(m.instance, fn)
 }
@@ -709,16 +847,22 @@ func (m *TMonthCalendar) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (m *TMonthCalendar) SetOnKeyUp(fn TKeyEvent) {
     MonthCalendar_SetOnKeyUp(m.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (m *TMonthCalendar) SetOnMouseEnter(fn TNotifyEvent) {
     MonthCalendar_SetOnMouseEnter(m.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (m *TMonthCalendar) SetOnMouseLeave(fn TNotifyEvent) {
     MonthCalendar_SetOnMouseLeave(m.instance, fn)
 }
@@ -734,11 +878,15 @@ func (m *TMonthCalendar) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (m *TMonthCalendar) DockSite() bool {
     return MonthCalendar_GetDockSite(m.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (m *TMonthCalendar) SetDockSite(value bool) {
     MonthCalendar_SetDockSite(m.instance, value)
 }
@@ -749,36 +897,50 @@ func (m *TMonthCalendar) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (m *TMonthCalendar) MouseInClient() bool {
     return MonthCalendar_GetMouseInClient(m.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (m *TMonthCalendar) VisibleDockClientCount() int32 {
     return MonthCalendar_GetVisibleDockClientCount(m.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (m *TMonthCalendar) Brush() *TBrush {
     return BrushFromInst(MonthCalendar_GetBrush(m.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (m *TMonthCalendar) ControlCount() int32 {
     return MonthCalendar_GetControlCount(m.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (m *TMonthCalendar) Handle() HWND {
     return MonthCalendar_GetHandle(m.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (m *TMonthCalendar) ParentWindow() HWND {
     return MonthCalendar_GetParentWindow(m.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (m *TMonthCalendar) SetParentWindow(value HWND) {
     MonthCalendar_SetParentWindow(m.instance, value)
 }
@@ -814,11 +976,15 @@ func (m *TMonthCalendar) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (m *TMonthCalendar) ClientHeight() int32 {
     return MonthCalendar_GetClientHeight(m.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (m *TMonthCalendar) SetClientHeight(value int32) {
     MonthCalendar_SetClientHeight(m.instance, value)
 }
@@ -829,36 +995,50 @@ func (m *TMonthCalendar) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (m *TMonthCalendar) ClientRect() TRect {
     return MonthCalendar_GetClientRect(m.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (m *TMonthCalendar) ClientWidth() int32 {
     return MonthCalendar_GetClientWidth(m.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (m *TMonthCalendar) SetClientWidth(value int32) {
     MonthCalendar_SetClientWidth(m.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (m *TMonthCalendar) ControlState() TControlState {
     return MonthCalendar_GetControlState(m.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (m *TMonthCalendar) SetControlState(value TControlState) {
     MonthCalendar_SetControlState(m.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (m *TMonthCalendar) ControlStyle() TControlStyle {
     return MonthCalendar_GetControlStyle(m.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (m *TMonthCalendar) SetControlStyle(value TControlStyle) {
     MonthCalendar_SetControlStyle(m.instance, value)
 }
@@ -903,61 +1083,85 @@ func (m *TMonthCalendar) SetParent(value IWinControl) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (m *TMonthCalendar) StyleElements() TStyleElements {
     return MonthCalendar_GetStyleElements(m.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (m *TMonthCalendar) SetStyleElements(value TStyleElements) {
     MonthCalendar_SetStyleElements(m.instance, value)
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (m *TMonthCalendar) AlignWithMargins() bool {
     return MonthCalendar_GetAlignWithMargins(m.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (m *TMonthCalendar) SetAlignWithMargins(value bool) {
     MonthCalendar_SetAlignWithMargins(m.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (m *TMonthCalendar) Left() int32 {
     return MonthCalendar_GetLeft(m.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (m *TMonthCalendar) SetLeft(value int32) {
     MonthCalendar_SetLeft(m.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (m *TMonthCalendar) Top() int32 {
     return MonthCalendar_GetTop(m.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (m *TMonthCalendar) SetTop(value int32) {
     MonthCalendar_SetTop(m.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (m *TMonthCalendar) Width() int32 {
     return MonthCalendar_GetWidth(m.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (m *TMonthCalendar) SetWidth(value int32) {
     MonthCalendar_SetWidth(m.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (m *TMonthCalendar) Height() int32 {
     return MonthCalendar_GetHeight(m.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (m *TMonthCalendar) SetHeight(value int32) {
     MonthCalendar_SetHeight(m.instance, value)
 }
@@ -991,21 +1195,29 @@ func (m *TMonthCalendar) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (m *TMonthCalendar) Margins() *TMargins {
     return MarginsFromInst(MonthCalendar_GetMargins(m.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (m *TMonthCalendar) SetMargins(value *TMargins) {
     MonthCalendar_SetMargins(m.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (m *TMonthCalendar) CustomHint() *TCustomHint {
     return CustomHintFromInst(MonthCalendar_GetCustomHint(m.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (m *TMonthCalendar) SetCustomHint(value IComponent) {
     MonthCalendar_SetCustomHint(m.instance, CheckPtr(value))
 }

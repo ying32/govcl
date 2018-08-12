@@ -102,111 +102,155 @@ func TBevelClass() TClass {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (b *TBevel) BringToFront() {
     Bevel_BringToFront(b.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (b *TBevel) ClientToScreen(Point TPoint) TPoint {
     return Bevel_ClientToScreen(b.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (b *TBevel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Bevel_ClientToParent(b.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (b *TBevel) Dragging() bool {
     return Bevel_Dragging(b.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (b *TBevel) HasParent() bool {
     return Bevel_HasParent(b.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (b *TBevel) Hide() {
     Bevel_Hide(b.instance)
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (b *TBevel) Invalidate() {
     Bevel_Invalidate(b.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (b *TBevel) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Bevel_Perform(b.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (b *TBevel) Refresh() {
     Bevel_Refresh(b.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (b *TBevel) Repaint() {
     Bevel_Repaint(b.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (b *TBevel) ScreenToClient(Point TPoint) TPoint {
     return Bevel_ScreenToClient(b.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (b *TBevel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Bevel_ParentToClient(b.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (b *TBevel) SendToBack() {
     Bevel_SendToBack(b.instance)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (b *TBevel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Bevel_SetBounds(b.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (b *TBevel) Show() {
     Bevel_Show(b.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (b *TBevel) Update() {
     Bevel_Update(b.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (b *TBevel) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Bevel_GetTextBuf(b.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (b *TBevel) GetTextLen() int32 {
     return Bevel_GetTextLen(b.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (b *TBevel) SetTextBuf(Buffer string) {
     Bevel_SetTextBuf(b.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (b *TBevel) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Bevel_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (b *TBevel) GetNamePath() string {
     return Bevel_GetNamePath(b.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (b *TBevel) Assign(Source IObject) {
     Bevel_Assign(b.instance, CheckPtr(Source))
 }
@@ -268,11 +312,15 @@ func (b *TBevel) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (b *TBevel) Align() TAlign {
     return Bevel_GetAlign(b.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (b *TBevel) SetAlign(value TAlign) {
     Bevel_SetAlign(b.instance, value)
 }
@@ -308,11 +356,15 @@ func (b *TBevel) SetShape(value TBevelShape) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (b *TBevel) ShowHint() bool {
     return Bevel_GetShowHint(b.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (b *TBevel) SetShowHint(value bool) {
     Bevel_SetShowHint(b.instance, value)
 }
@@ -386,11 +438,15 @@ func (b *TBevel) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (b *TBevel) ClientHeight() int32 {
     return Bevel_GetClientHeight(b.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (b *TBevel) SetClientHeight(value int32) {
     Bevel_SetClientHeight(b.instance, value)
 }
@@ -401,36 +457,50 @@ func (b *TBevel) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (b *TBevel) ClientRect() TRect {
     return Bevel_GetClientRect(b.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (b *TBevel) ClientWidth() int32 {
     return Bevel_GetClientWidth(b.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (b *TBevel) SetClientWidth(value int32) {
     Bevel_SetClientWidth(b.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (b *TBevel) ControlState() TControlState {
     return Bevel_GetControlState(b.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (b *TBevel) SetControlState(value TControlState) {
     Bevel_SetControlState(b.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (b *TBevel) ControlStyle() TControlStyle {
     return Bevel_GetControlStyle(b.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (b *TBevel) SetControlStyle(value TControlStyle) {
     Bevel_SetControlStyle(b.instance, value)
 }
@@ -475,61 +545,85 @@ func (b *TBevel) SetParent(value IWinControl) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (b *TBevel) StyleElements() TStyleElements {
     return Bevel_GetStyleElements(b.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (b *TBevel) SetStyleElements(value TStyleElements) {
     Bevel_SetStyleElements(b.instance, value)
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (b *TBevel) AlignWithMargins() bool {
     return Bevel_GetAlignWithMargins(b.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (b *TBevel) SetAlignWithMargins(value bool) {
     Bevel_SetAlignWithMargins(b.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (b *TBevel) Left() int32 {
     return Bevel_GetLeft(b.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (b *TBevel) SetLeft(value int32) {
     Bevel_SetLeft(b.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (b *TBevel) Top() int32 {
     return Bevel_GetTop(b.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (b *TBevel) SetTop(value int32) {
     Bevel_SetTop(b.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (b *TBevel) Width() int32 {
     return Bevel_GetWidth(b.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (b *TBevel) SetWidth(value int32) {
     Bevel_SetWidth(b.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (b *TBevel) Height() int32 {
     return Bevel_GetHeight(b.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (b *TBevel) SetHeight(value int32) {
     Bevel_SetHeight(b.instance, value)
 }
@@ -563,21 +657,29 @@ func (b *TBevel) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (b *TBevel) Margins() *TMargins {
     return MarginsFromInst(Bevel_GetMargins(b.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (b *TBevel) SetMargins(value *TMargins) {
     Bevel_SetMargins(b.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (b *TBevel) CustomHint() *TCustomHint {
     return CustomHintFromInst(Bevel_GetCustomHint(b.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (b *TBevel) SetCustomHint(value IComponent) {
     Bevel_SetCustomHint(b.instance, CheckPtr(value))
 }

@@ -127,6 +127,8 @@ func (m *TMenuItem) IndexOf(Item IComponent) int32 {
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (m *TMenuItem) HasParent() bool {
     return MenuItem_HasParent(m.instance)
 }
@@ -137,16 +139,22 @@ func (m *TMenuItem) Add(Item IComponent) {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (m *TMenuItem) FindComponent(AName string) *TComponent {
     return ComponentFromInst(MenuItem_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (m *TMenuItem) GetNamePath() string {
     return MenuItem_GetNamePath(m.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (m *TMenuItem) Assign(Source IObject) {
     MenuItem_Assign(m.instance, CheckPtr(Source))
 }
@@ -208,6 +216,8 @@ func (m *TMenuItem) ToString() string {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (m *TMenuItem) Handle() HMENU {
     return MenuItem_GetHandle(m.instance)
 }

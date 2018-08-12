@@ -102,16 +102,22 @@ func TPenClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (p *TPen) Assign(Source IObject) {
     Pen_Assign(p.instance, CheckPtr(Source))
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (p *TPen) HandleAllocated() bool {
     return Pen_HandleAllocated(p.instance)
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (p *TPen) GetNamePath() string {
     return Pen_GetNamePath(p.instance)
 }
@@ -173,21 +179,29 @@ func (p *TPen) ToString() string {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (p *TPen) Handle() HPEN {
     return Pen_GetHandle(p.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (p *TPen) SetHandle(value HPEN) {
     Pen_SetHandle(p.instance, value)
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (p *TPen) Color() TColor {
     return Pen_GetColor(p.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (p *TPen) SetColor(value TColor) {
     Pen_SetColor(p.instance, value)
 }
@@ -213,16 +227,22 @@ func (p *TPen) SetStyle(value TPenStyle) {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (p *TPen) Width() int32 {
     return Pen_GetWidth(p.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (p *TPen) SetWidth(value int32) {
     Pen_SetWidth(p.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (p *TPen) SetOnChange(fn TNotifyEvent) {
     Pen_SetOnChange(p.instance, fn)
 }

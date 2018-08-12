@@ -102,11 +102,15 @@ func TMonthCalColorsClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (m *TMonthCalColors) Assign(Source IObject) {
     MonthCalColors_Assign(m.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (m *TMonthCalColors) GetNamePath() string {
     return MonthCalColors_GetNamePath(m.instance)
 }

@@ -107,111 +107,155 @@ func (g *TGauge) AddProgress(Value int32) {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (g *TGauge) BringToFront() {
     Gauge_BringToFront(g.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (g *TGauge) ClientToScreen(Point TPoint) TPoint {
     return Gauge_ClientToScreen(g.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (g *TGauge) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Gauge_ClientToParent(g.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (g *TGauge) Dragging() bool {
     return Gauge_Dragging(g.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (g *TGauge) HasParent() bool {
     return Gauge_HasParent(g.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (g *TGauge) Hide() {
     Gauge_Hide(g.instance)
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (g *TGauge) Invalidate() {
     Gauge_Invalidate(g.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (g *TGauge) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Gauge_Perform(g.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (g *TGauge) Refresh() {
     Gauge_Refresh(g.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (g *TGauge) Repaint() {
     Gauge_Repaint(g.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (g *TGauge) ScreenToClient(Point TPoint) TPoint {
     return Gauge_ScreenToClient(g.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (g *TGauge) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Gauge_ParentToClient(g.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (g *TGauge) SendToBack() {
     Gauge_SendToBack(g.instance)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (g *TGauge) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Gauge_SetBounds(g.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (g *TGauge) Show() {
     Gauge_Show(g.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (g *TGauge) Update() {
     Gauge_Update(g.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (g *TGauge) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Gauge_GetTextBuf(g.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (g *TGauge) GetTextLen() int32 {
     return Gauge_GetTextLen(g.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (g *TGauge) SetTextBuf(Buffer string) {
     Gauge_SetTextBuf(g.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (g *TGauge) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Gauge_FindComponent(g.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (g *TGauge) GetNamePath() string {
     return Gauge_GetNamePath(g.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (g *TGauge) Assign(Source IObject) {
     Gauge_Assign(g.instance, CheckPtr(Source))
 }
@@ -278,11 +322,15 @@ func (g *TGauge) PercentDone() int32 {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (g *TGauge) Align() TAlign {
     return Gauge_GetAlign(g.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (g *TGauge) SetAlign(value TAlign) {
     Gauge_SetAlign(g.instance, value)
 }
@@ -318,11 +366,15 @@ func (g *TGauge) SetBorderStyle(value TBorderStyle) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (g *TGauge) Color() TColor {
     return Gauge_GetColor(g.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (g *TGauge) SetColor(value TColor) {
     Gauge_SetColor(g.instance, value)
 }
@@ -352,11 +404,15 @@ func (g *TGauge) SetForeColor(value TColor) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (g *TGauge) Font() *TFont {
     return FontFromInst(Gauge_GetFont(g.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (g *TGauge) SetFont(value *TFont) {
     Gauge_SetFont(g.instance, CheckPtr(value))
 }
@@ -392,21 +448,29 @@ func (g *TGauge) SetMaxValue(value int32) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (g *TGauge) ParentColor() bool {
     return Gauge_GetParentColor(g.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (g *TGauge) SetParentColor(value bool) {
     Gauge_SetParentColor(g.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (g *TGauge) ParentFont() bool {
     return Gauge_GetParentFont(g.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (g *TGauge) SetParentFont(value bool) {
     Gauge_SetParentFont(g.instance, value)
 }
@@ -422,11 +486,15 @@ func (g *TGauge) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (g *TGauge) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(Gauge_GetPopupMenu(g.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (g *TGauge) SetPopupMenu(value IComponent) {
     Gauge_SetPopupMenu(g.instance, CheckPtr(value))
 }
@@ -442,11 +510,15 @@ func (g *TGauge) SetProgress(value int32) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (g *TGauge) ShowHint() bool {
     return Gauge_GetShowHint(g.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (g *TGauge) SetShowHint(value bool) {
     Gauge_SetShowHint(g.instance, value)
 }
@@ -506,11 +578,15 @@ func (g *TGauge) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (g *TGauge) ClientHeight() int32 {
     return Gauge_GetClientHeight(g.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (g *TGauge) SetClientHeight(value int32) {
     Gauge_SetClientHeight(g.instance, value)
 }
@@ -521,36 +597,50 @@ func (g *TGauge) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (g *TGauge) ClientRect() TRect {
     return Gauge_GetClientRect(g.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (g *TGauge) ClientWidth() int32 {
     return Gauge_GetClientWidth(g.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (g *TGauge) SetClientWidth(value int32) {
     Gauge_SetClientWidth(g.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (g *TGauge) ControlState() TControlState {
     return Gauge_GetControlState(g.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (g *TGauge) SetControlState(value TControlState) {
     Gauge_SetControlState(g.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (g *TGauge) ControlStyle() TControlStyle {
     return Gauge_GetControlStyle(g.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (g *TGauge) SetControlStyle(value TControlStyle) {
     Gauge_SetControlStyle(g.instance, value)
 }
@@ -595,61 +685,85 @@ func (g *TGauge) SetParent(value IWinControl) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (g *TGauge) StyleElements() TStyleElements {
     return Gauge_GetStyleElements(g.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (g *TGauge) SetStyleElements(value TStyleElements) {
     Gauge_SetStyleElements(g.instance, value)
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (g *TGauge) AlignWithMargins() bool {
     return Gauge_GetAlignWithMargins(g.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (g *TGauge) SetAlignWithMargins(value bool) {
     Gauge_SetAlignWithMargins(g.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (g *TGauge) Left() int32 {
     return Gauge_GetLeft(g.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (g *TGauge) SetLeft(value int32) {
     Gauge_SetLeft(g.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (g *TGauge) Top() int32 {
     return Gauge_GetTop(g.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (g *TGauge) SetTop(value int32) {
     Gauge_SetTop(g.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (g *TGauge) Width() int32 {
     return Gauge_GetWidth(g.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (g *TGauge) SetWidth(value int32) {
     Gauge_SetWidth(g.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (g *TGauge) Height() int32 {
     return Gauge_GetHeight(g.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (g *TGauge) SetHeight(value int32) {
     Gauge_SetHeight(g.instance, value)
 }
@@ -683,21 +797,29 @@ func (g *TGauge) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (g *TGauge) Margins() *TMargins {
     return MarginsFromInst(Gauge_GetMargins(g.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (g *TGauge) SetMargins(value *TMargins) {
     Gauge_SetMargins(g.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (g *TGauge) CustomHint() *TCustomHint {
     return CustomHintFromInst(Gauge_GetCustomHint(g.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (g *TGauge) SetCustomHint(value IComponent) {
     Gauge_SetCustomHint(g.instance, CheckPtr(value))
 }

@@ -107,26 +107,36 @@ func (h *THotKey) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (h *THotKey) ContainsControl(Control IControl) bool {
     return HotKey_ContainsControl(h.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (h *THotKey) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(HotKey_ControlAtPos(h.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (h *THotKey) DisableAlign() {
     HotKey_DisableAlign(h.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (h *THotKey) EnableAlign() {
     HotKey_EnableAlign(h.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (h *THotKey) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(HotKey_FindChildControl(h.instance, ControlName))
 }
@@ -137,161 +147,225 @@ func (h *THotKey) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (h *THotKey) Focused() bool {
     return HotKey_Focused(h.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (h *THotKey) HandleAllocated() bool {
     return HotKey_HandleAllocated(h.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (h *THotKey) InsertControl(AControl IControl) {
     HotKey_InsertControl(h.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (h *THotKey) Invalidate() {
     HotKey_Invalidate(h.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (h *THotKey) PaintTo(DC HDC, X int32, Y int32) {
     HotKey_PaintTo(h.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (h *THotKey) RemoveControl(AControl IControl) {
     HotKey_RemoveControl(h.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (h *THotKey) Realign() {
     HotKey_Realign(h.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (h *THotKey) Repaint() {
     HotKey_Repaint(h.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (h *THotKey) ScaleBy(M int32, D int32) {
     HotKey_ScaleBy(h.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (h *THotKey) ScrollBy(DeltaX int32, DeltaY int32) {
     HotKey_ScrollBy(h.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (h *THotKey) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     HotKey_SetBounds(h.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (h *THotKey) SetFocus() {
     HotKey_SetFocus(h.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (h *THotKey) Update() {
     HotKey_Update(h.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (h *THotKey) UpdateControlState() {
     HotKey_UpdateControlState(h.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (h *THotKey) BringToFront() {
     HotKey_BringToFront(h.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (h *THotKey) ClientToScreen(Point TPoint) TPoint {
     return HotKey_ClientToScreen(h.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (h *THotKey) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return HotKey_ClientToParent(h.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (h *THotKey) Dragging() bool {
     return HotKey_Dragging(h.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (h *THotKey) HasParent() bool {
     return HotKey_HasParent(h.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (h *THotKey) Hide() {
     HotKey_Hide(h.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (h *THotKey) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return HotKey_Perform(h.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (h *THotKey) Refresh() {
     HotKey_Refresh(h.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (h *THotKey) ScreenToClient(Point TPoint) TPoint {
     return HotKey_ScreenToClient(h.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (h *THotKey) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return HotKey_ParentToClient(h.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (h *THotKey) SendToBack() {
     HotKey_SendToBack(h.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (h *THotKey) Show() {
     HotKey_Show(h.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (h *THotKey) GetTextBuf(Buffer string, BufSize int32) int32 {
     return HotKey_GetTextBuf(h.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (h *THotKey) GetTextLen() int32 {
     return HotKey_GetTextLen(h.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (h *THotKey) SetTextBuf(Buffer string) {
     HotKey_SetTextBuf(h.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (h *THotKey) FindComponent(AName string) *TComponent {
     return ComponentFromInst(HotKey_FindComponent(h.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (h *THotKey) GetNamePath() string {
     return HotKey_GetNamePath(h.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (h *THotKey) Assign(Source IObject) {
     HotKey_Assign(h.instance, CheckPtr(Source))
 }
@@ -421,41 +495,57 @@ func (h *THotKey) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (h *THotKey) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(HotKey_GetPopupMenu(h.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (h *THotKey) SetPopupMenu(value IComponent) {
     HotKey_SetPopupMenu(h.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (h *THotKey) ShowHint() bool {
     return HotKey_GetShowHint(h.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (h *THotKey) SetShowHint(value bool) {
     HotKey_SetShowHint(h.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (h *THotKey) TabOrder() TTabOrder {
     return HotKey_GetTabOrder(h.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (h *THotKey) SetTabOrder(value TTabOrder) {
     HotKey_SetTabOrder(h.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (h *THotKey) TabStop() bool {
     return HotKey_GetTabStop(h.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (h *THotKey) SetTabStop(value bool) {
     HotKey_SetTabStop(h.instance, value)
 }
@@ -475,46 +565,64 @@ func (h *THotKey) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (h *THotKey) StyleElements() TStyleElements {
     return HotKey_GetStyleElements(h.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (h *THotKey) SetStyleElements(value TStyleElements) {
     HotKey_SetStyleElements(h.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (h *THotKey) SetOnChange(fn TNotifyEvent) {
     HotKey_SetOnChange(h.instance, fn)
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (h *THotKey) SetOnContextPopup(fn TContextPopupEvent) {
     HotKey_SetOnContextPopup(h.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (h *THotKey) SetOnEnter(fn TNotifyEvent) {
     HotKey_SetOnEnter(h.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (h *THotKey) SetOnExit(fn TNotifyEvent) {
     HotKey_SetOnExit(h.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (h *THotKey) SetOnMouseDown(fn TMouseEvent) {
     HotKey_SetOnMouseDown(h.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (h *THotKey) SetOnMouseEnter(fn TNotifyEvent) {
     HotKey_SetOnMouseEnter(h.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (h *THotKey) SetOnMouseLeave(fn TNotifyEvent) {
     HotKey_SetOnMouseLeave(h.instance, fn)
 }
@@ -525,6 +633,8 @@ func (h *THotKey) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (h *THotKey) SetOnMouseUp(fn TMouseEvent) {
     HotKey_SetOnMouseUp(h.instance, fn)
 }
@@ -535,21 +645,29 @@ func (h *THotKey) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (h *THotKey) DockSite() bool {
     return HotKey_GetDockSite(h.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (h *THotKey) SetDockSite(value bool) {
     HotKey_SetDockSite(h.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (h *THotKey) DoubleBuffered() bool {
     return HotKey_GetDoubleBuffered(h.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (h *THotKey) SetDoubleBuffered(value bool) {
     HotKey_SetDoubleBuffered(h.instance, value)
 }
@@ -560,46 +678,64 @@ func (h *THotKey) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (h *THotKey) MouseInClient() bool {
     return HotKey_GetMouseInClient(h.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (h *THotKey) VisibleDockClientCount() int32 {
     return HotKey_GetVisibleDockClientCount(h.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (h *THotKey) Brush() *TBrush {
     return BrushFromInst(HotKey_GetBrush(h.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (h *THotKey) ControlCount() int32 {
     return HotKey_GetControlCount(h.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (h *THotKey) Handle() HWND {
     return HotKey_GetHandle(h.instance)
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (h *THotKey) ParentDoubleBuffered() bool {
     return HotKey_GetParentDoubleBuffered(h.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (h *THotKey) SetParentDoubleBuffered(value bool) {
     HotKey_SetParentDoubleBuffered(h.instance, value)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (h *THotKey) ParentWindow() HWND {
     return HotKey_GetParentWindow(h.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (h *THotKey) SetParentWindow(value HWND) {
     HotKey_SetParentWindow(h.instance, value)
 }
@@ -625,11 +761,15 @@ func (h *THotKey) SetAction(value IComponent) {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (h *THotKey) Align() TAlign {
     return HotKey_GetAlign(h.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (h *THotKey) SetAlign(value TAlign) {
     HotKey_SetAlign(h.instance, value)
 }
@@ -645,11 +785,15 @@ func (h *THotKey) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (h *THotKey) ClientHeight() int32 {
     return HotKey_GetClientHeight(h.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (h *THotKey) SetClientHeight(value int32) {
     HotKey_SetClientHeight(h.instance, value)
 }
@@ -660,36 +804,50 @@ func (h *THotKey) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (h *THotKey) ClientRect() TRect {
     return HotKey_GetClientRect(h.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (h *THotKey) ClientWidth() int32 {
     return HotKey_GetClientWidth(h.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (h *THotKey) SetClientWidth(value int32) {
     HotKey_SetClientWidth(h.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (h *THotKey) ControlState() TControlState {
     return HotKey_GetControlState(h.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (h *THotKey) SetControlState(value TControlState) {
     HotKey_SetControlState(h.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (h *THotKey) ControlStyle() TControlStyle {
     return HotKey_GetControlStyle(h.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (h *THotKey) SetControlStyle(value TControlStyle) {
     HotKey_SetControlStyle(h.instance, value)
 }
@@ -734,51 +892,71 @@ func (h *THotKey) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (h *THotKey) AlignWithMargins() bool {
     return HotKey_GetAlignWithMargins(h.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (h *THotKey) SetAlignWithMargins(value bool) {
     HotKey_SetAlignWithMargins(h.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (h *THotKey) Left() int32 {
     return HotKey_GetLeft(h.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (h *THotKey) SetLeft(value int32) {
     HotKey_SetLeft(h.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (h *THotKey) Top() int32 {
     return HotKey_GetTop(h.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (h *THotKey) SetTop(value int32) {
     HotKey_SetTop(h.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (h *THotKey) Width() int32 {
     return HotKey_GetWidth(h.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (h *THotKey) SetWidth(value int32) {
     HotKey_SetWidth(h.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (h *THotKey) Height() int32 {
     return HotKey_GetHeight(h.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (h *THotKey) SetHeight(value int32) {
     HotKey_SetHeight(h.instance, value)
 }
@@ -798,21 +976,29 @@ func (h *THotKey) SetCursor(value TCursor) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (h *THotKey) Margins() *TMargins {
     return MarginsFromInst(HotKey_GetMargins(h.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (h *THotKey) SetMargins(value *TMargins) {
     HotKey_SetMargins(h.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (h *THotKey) CustomHint() *TCustomHint {
     return CustomHintFromInst(HotKey_GetCustomHint(h.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (h *THotKey) SetCustomHint(value IComponent) {
     HotKey_SetCustomHint(h.instance, CheckPtr(value))
 }

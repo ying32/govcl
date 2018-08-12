@@ -117,6 +117,8 @@ func (i *TImageList) ShowDragImage() {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (i *TImageList) Assign(Source IObject) {
     ImageList_Assign(i.instance, CheckPtr(Source))
 }
@@ -182,6 +184,8 @@ func (i *TImageList) GetResource(ResType TResType, Name string, Width int32, Loa
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (i *TImageList) HandleAllocated() bool {
     return ImageList_HandleAllocated(i.instance)
 }
@@ -252,16 +256,22 @@ func (i *TImageList) EndUpdate() {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (i *TImageList) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ImageList_FindComponent(i.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (i *TImageList) GetNamePath() string {
     return ImageList_GetNamePath(i.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (i *TImageList) HasParent() bool {
     return ImageList_HasParent(i.instance)
 }
@@ -383,11 +393,15 @@ func (i *TImageList) SetGrayscaleFactor(value uint8) {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (i *TImageList) Height() int32 {
     return ImageList_GetHeight(i.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (i *TImageList) SetHeight(value int32) {
     ImageList_SetHeight(i.instance, value)
 }
@@ -413,6 +427,8 @@ func (i *TImageList) SetMasked(value bool) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (i *TImageList) SetOnChange(fn TNotifyEvent) {
     ImageList_SetOnChange(i.instance, fn)
 }
@@ -428,36 +444,50 @@ func (i *TImageList) SetShareImages(value bool) {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (i *TImageList) Width() int32 {
     return ImageList_GetWidth(i.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (i *TImageList) SetWidth(value int32) {
     ImageList_SetWidth(i.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (i *TImageList) DragCursor() TCursor {
     return ImageList_GetDragCursor(i.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (i *TImageList) SetDragCursor(value TCursor) {
     ImageList_SetDragCursor(i.instance, value)
 }
 
 // Dragging
+// CN: 获取是否在拖拽中。
+// EN: Get Is it in the middle of dragging.
 func (i *TImageList) Dragging() bool {
     return ImageList_GetDragging(i.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (i *TImageList) Handle() uintptr {
     return ImageList_GetHandle(i.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (i *TImageList) SetHandle(value uintptr) {
     ImageList_SetHandle(i.instance, value)
 }

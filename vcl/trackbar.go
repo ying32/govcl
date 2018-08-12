@@ -112,26 +112,36 @@ func (t *TTrackBar) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (t *TTrackBar) ContainsControl(Control IControl) bool {
     return TrackBar_ContainsControl(t.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (t *TTrackBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(TrackBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (t *TTrackBar) DisableAlign() {
     TrackBar_DisableAlign(t.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (t *TTrackBar) EnableAlign() {
     TrackBar_EnableAlign(t.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (t *TTrackBar) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(TrackBar_FindChildControl(t.instance, ControlName))
 }
@@ -142,161 +152,225 @@ func (t *TTrackBar) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (t *TTrackBar) Focused() bool {
     return TrackBar_Focused(t.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (t *TTrackBar) HandleAllocated() bool {
     return TrackBar_HandleAllocated(t.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (t *TTrackBar) InsertControl(AControl IControl) {
     TrackBar_InsertControl(t.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (t *TTrackBar) Invalidate() {
     TrackBar_Invalidate(t.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (t *TTrackBar) PaintTo(DC HDC, X int32, Y int32) {
     TrackBar_PaintTo(t.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (t *TTrackBar) RemoveControl(AControl IControl) {
     TrackBar_RemoveControl(t.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (t *TTrackBar) Realign() {
     TrackBar_Realign(t.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (t *TTrackBar) Repaint() {
     TrackBar_Repaint(t.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (t *TTrackBar) ScaleBy(M int32, D int32) {
     TrackBar_ScaleBy(t.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (t *TTrackBar) ScrollBy(DeltaX int32, DeltaY int32) {
     TrackBar_ScrollBy(t.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (t *TTrackBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     TrackBar_SetBounds(t.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (t *TTrackBar) SetFocus() {
     TrackBar_SetFocus(t.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (t *TTrackBar) Update() {
     TrackBar_Update(t.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (t *TTrackBar) UpdateControlState() {
     TrackBar_UpdateControlState(t.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (t *TTrackBar) BringToFront() {
     TrackBar_BringToFront(t.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (t *TTrackBar) ClientToScreen(Point TPoint) TPoint {
     return TrackBar_ClientToScreen(t.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (t *TTrackBar) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return TrackBar_ClientToParent(t.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (t *TTrackBar) Dragging() bool {
     return TrackBar_Dragging(t.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (t *TTrackBar) HasParent() bool {
     return TrackBar_HasParent(t.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (t *TTrackBar) Hide() {
     TrackBar_Hide(t.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (t *TTrackBar) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return TrackBar_Perform(t.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (t *TTrackBar) Refresh() {
     TrackBar_Refresh(t.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (t *TTrackBar) ScreenToClient(Point TPoint) TPoint {
     return TrackBar_ScreenToClient(t.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (t *TTrackBar) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return TrackBar_ParentToClient(t.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (t *TTrackBar) SendToBack() {
     TrackBar_SendToBack(t.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (t *TTrackBar) Show() {
     TrackBar_Show(t.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (t *TTrackBar) GetTextBuf(Buffer string, BufSize int32) int32 {
     return TrackBar_GetTextBuf(t.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (t *TTrackBar) GetTextLen() int32 {
     return TrackBar_GetTextLen(t.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (t *TTrackBar) SetTextBuf(Buffer string) {
     TrackBar_SetTextBuf(t.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (t *TTrackBar) FindComponent(AName string) *TComponent {
     return ComponentFromInst(TrackBar_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (t *TTrackBar) GetNamePath() string {
     return TrackBar_GetNamePath(t.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (t *TTrackBar) Assign(Source IObject) {
     TrackBar_Assign(t.instance, CheckPtr(Source))
 }
@@ -358,11 +432,15 @@ func (t *TTrackBar) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (t *TTrackBar) Align() TAlign {
     return TrackBar_GetAlign(t.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (t *TTrackBar) SetAlign(value TAlign) {
     TrackBar_SetAlign(t.instance, value)
 }
@@ -388,41 +466,57 @@ func (t *TTrackBar) SetBorderWidth(value int32) {
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (t *TTrackBar) DoubleBuffered() bool {
     return TrackBar_GetDoubleBuffered(t.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (t *TTrackBar) SetDoubleBuffered(value bool) {
     TrackBar_SetDoubleBuffered(t.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (t *TTrackBar) DragCursor() TCursor {
     return TrackBar_GetDragCursor(t.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (t *TTrackBar) SetDragCursor(value TCursor) {
     TrackBar_SetDragCursor(t.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (t *TTrackBar) DragKind() TDragKind {
     return TrackBar_GetDragKind(t.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (t *TTrackBar) SetDragKind(value TDragKind) {
     TrackBar_SetDragKind(t.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (t *TTrackBar) DragMode() TDragMode {
     return TrackBar_GetDragMode(t.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (t *TTrackBar) SetDragMode(value TDragMode) {
     TrackBar_SetDragMode(t.instance, value)
 }
@@ -492,11 +586,15 @@ func (t *TTrackBar) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (t *TTrackBar) ParentDoubleBuffered() bool {
     return TrackBar_GetParentDoubleBuffered(t.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (t *TTrackBar) SetParentDoubleBuffered(value bool) {
     TrackBar_SetParentDoubleBuffered(t.instance, value)
 }
@@ -522,11 +620,15 @@ func (t *TTrackBar) SetPageSize(value int32) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (t *TTrackBar) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(TrackBar_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (t *TTrackBar) SetPopupMenu(value IComponent) {
     TrackBar_SetPopupMenu(t.instance, CheckPtr(value))
 }
@@ -592,11 +694,15 @@ func (t *TTrackBar) SetSelStart(value int32) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (t *TTrackBar) ShowHint() bool {
     return TrackBar_GetShowHint(t.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (t *TTrackBar) SetShowHint(value bool) {
     TrackBar_SetShowHint(t.instance, value)
 }
@@ -612,21 +718,29 @@ func (t *TTrackBar) SetShowSelRange(value bool) {
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (t *TTrackBar) TabOrder() TTabOrder {
     return TrackBar_GetTabOrder(t.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (t *TTrackBar) SetTabOrder(value TTabOrder) {
     TrackBar_SetTabOrder(t.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (t *TTrackBar) TabStop() bool {
     return TrackBar_GetTabStop(t.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (t *TTrackBar) SetTabStop(value bool) {
     TrackBar_SetTabStop(t.instance, value)
 }
@@ -676,56 +790,78 @@ func (t *TTrackBar) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (t *TTrackBar) StyleElements() TStyleElements {
     return TrackBar_GetStyleElements(t.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (t *TTrackBar) SetStyleElements(value TStyleElements) {
     TrackBar_SetStyleElements(t.instance, value)
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (t *TTrackBar) SetOnContextPopup(fn TContextPopupEvent) {
     TrackBar_SetOnContextPopup(t.instance, fn)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (t *TTrackBar) SetOnChange(fn TNotifyEvent) {
     TrackBar_SetOnChange(t.instance, fn)
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (t *TTrackBar) SetOnDragDrop(fn TDragDropEvent) {
     TrackBar_SetOnDragDrop(t.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (t *TTrackBar) SetOnDragOver(fn TDragOverEvent) {
     TrackBar_SetOnDragOver(t.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (t *TTrackBar) SetOnEndDock(fn TEndDragEvent) {
     TrackBar_SetOnEndDock(t.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (t *TTrackBar) SetOnEndDrag(fn TEndDragEvent) {
     TrackBar_SetOnEndDrag(t.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (t *TTrackBar) SetOnEnter(fn TNotifyEvent) {
     TrackBar_SetOnEnter(t.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (t *TTrackBar) SetOnExit(fn TNotifyEvent) {
     TrackBar_SetOnExit(t.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (t *TTrackBar) SetOnKeyDown(fn TKeyEvent) {
     TrackBar_SetOnKeyDown(t.instance, fn)
 }
@@ -736,6 +872,8 @@ func (t *TTrackBar) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (t *TTrackBar) SetOnKeyUp(fn TKeyEvent) {
     TrackBar_SetOnKeyUp(t.instance, fn)
 }
@@ -751,11 +889,15 @@ func (t *TTrackBar) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (t *TTrackBar) DockSite() bool {
     return TrackBar_GetDockSite(t.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (t *TTrackBar) SetDockSite(value bool) {
     TrackBar_SetDockSite(t.instance, value)
 }
@@ -766,36 +908,50 @@ func (t *TTrackBar) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (t *TTrackBar) MouseInClient() bool {
     return TrackBar_GetMouseInClient(t.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (t *TTrackBar) VisibleDockClientCount() int32 {
     return TrackBar_GetVisibleDockClientCount(t.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (t *TTrackBar) Brush() *TBrush {
     return BrushFromInst(TrackBar_GetBrush(t.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (t *TTrackBar) ControlCount() int32 {
     return TrackBar_GetControlCount(t.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (t *TTrackBar) Handle() HWND {
     return TrackBar_GetHandle(t.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (t *TTrackBar) ParentWindow() HWND {
     return TrackBar_GetParentWindow(t.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (t *TTrackBar) SetParentWindow(value HWND) {
     TrackBar_SetParentWindow(t.instance, value)
 }
@@ -841,11 +997,15 @@ func (t *TTrackBar) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (t *TTrackBar) ClientHeight() int32 {
     return TrackBar_GetClientHeight(t.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (t *TTrackBar) SetClientHeight(value int32) {
     TrackBar_SetClientHeight(t.instance, value)
 }
@@ -856,36 +1016,50 @@ func (t *TTrackBar) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (t *TTrackBar) ClientRect() TRect {
     return TrackBar_GetClientRect(t.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (t *TTrackBar) ClientWidth() int32 {
     return TrackBar_GetClientWidth(t.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (t *TTrackBar) SetClientWidth(value int32) {
     TrackBar_SetClientWidth(t.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (t *TTrackBar) ControlState() TControlState {
     return TrackBar_GetControlState(t.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (t *TTrackBar) SetControlState(value TControlState) {
     TrackBar_SetControlState(t.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (t *TTrackBar) ControlStyle() TControlStyle {
     return TrackBar_GetControlStyle(t.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (t *TTrackBar) SetControlStyle(value TControlStyle) {
     TrackBar_SetControlStyle(t.instance, value)
 }
@@ -930,51 +1104,71 @@ func (t *TTrackBar) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (t *TTrackBar) AlignWithMargins() bool {
     return TrackBar_GetAlignWithMargins(t.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (t *TTrackBar) SetAlignWithMargins(value bool) {
     TrackBar_SetAlignWithMargins(t.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (t *TTrackBar) Left() int32 {
     return TrackBar_GetLeft(t.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (t *TTrackBar) SetLeft(value int32) {
     TrackBar_SetLeft(t.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (t *TTrackBar) Top() int32 {
     return TrackBar_GetTop(t.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (t *TTrackBar) SetTop(value int32) {
     TrackBar_SetTop(t.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (t *TTrackBar) Width() int32 {
     return TrackBar_GetWidth(t.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (t *TTrackBar) SetWidth(value int32) {
     TrackBar_SetWidth(t.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (t *TTrackBar) Height() int32 {
     return TrackBar_GetHeight(t.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (t *TTrackBar) SetHeight(value int32) {
     TrackBar_SetHeight(t.instance, value)
 }
@@ -1008,21 +1202,29 @@ func (t *TTrackBar) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (t *TTrackBar) Margins() *TMargins {
     return MarginsFromInst(TrackBar_GetMargins(t.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (t *TTrackBar) SetMargins(value *TMargins) {
     TrackBar_SetMargins(t.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (t *TTrackBar) CustomHint() *TCustomHint {
     return CustomHintFromInst(TrackBar_GetCustomHint(t.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (t *TTrackBar) SetCustomHint(value IComponent) {
     TrackBar_SetCustomHint(t.instance, CheckPtr(value))
 }

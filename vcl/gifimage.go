@@ -122,6 +122,8 @@ func (g *TGIFImage) Clear() {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (g *TGIFImage) Assign(Source IObject) {
     GIFImage_Assign(g.instance, CheckPtr(Source))
 }
@@ -164,6 +166,8 @@ func (g *TGIFImage) SetSize(AWidth int32, AHeight int32) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (g *TGIFImage) GetNamePath() string {
     return GIFImage_GetNamePath(g.instance)
 }
@@ -303,21 +307,29 @@ func (g *TGIFImage) Empty() bool {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (g *TGIFImage) Height() int32 {
     return GIFImage_GetHeight(g.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (g *TGIFImage) SetHeight(value int32) {
     GIFImage_SetHeight(g.instance, value)
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (g *TGIFImage) Modified() bool {
     return GIFImage_GetModified(g.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (g *TGIFImage) SetModified(value bool) {
     GIFImage_SetModified(g.instance, value)
 }
@@ -333,26 +345,36 @@ func (g *TGIFImage) SetPaletteModified(value bool) {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (g *TGIFImage) Transparent() bool {
     return GIFImage_GetTransparent(g.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (g *TGIFImage) SetTransparent(value bool) {
     GIFImage_SetTransparent(g.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (g *TGIFImage) Width() int32 {
     return GIFImage_GetWidth(g.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (g *TGIFImage) SetWidth(value int32) {
     GIFImage_SetWidth(g.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (g *TGIFImage) SetOnChange(fn TNotifyEvent) {
     GIFImage_SetOnChange(g.instance, fn)
 }

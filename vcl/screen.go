@@ -102,36 +102,50 @@ func TScreenClass() TClass {
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (s *TScreen) DisableAlign() {
     Screen_DisableAlign(s.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (s *TScreen) EnableAlign() {
     Screen_EnableAlign(s.instance)
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (s *TScreen) Realign() {
     Screen_Realign(s.instance)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (s *TScreen) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Screen_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TScreen) GetNamePath() string {
     return Screen_GetNamePath(s.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (s *TScreen) HasParent() bool {
     return Screen_HasParent(s.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TScreen) Assign(Source IObject) {
     Screen_Assign(s.instance, CheckPtr(Source))
 }
@@ -307,6 +321,8 @@ func (s *TScreen) DefaultIme() string {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (s *TScreen) Height() int32 {
     return Screen_GetHeight(s.instance)
 }
@@ -322,6 +338,8 @@ func (s *TScreen) PrimaryMonitor() *TMonitor {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (s *TScreen) Width() int32 {
     return Screen_GetWidth(s.instance)
 }

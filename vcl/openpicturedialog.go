@@ -107,21 +107,29 @@ func (o *TOpenPictureDialog) Execute() bool {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (o *TOpenPictureDialog) FindComponent(AName string) *TComponent {
     return ComponentFromInst(OpenPictureDialog_FindComponent(o.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (o *TOpenPictureDialog) GetNamePath() string {
     return OpenPictureDialog_GetNamePath(o.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (o *TOpenPictureDialog) HasParent() bool {
     return OpenPictureDialog_HasParent(o.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (o *TOpenPictureDialog) Assign(Source IObject) {
     OpenPictureDialog_Assign(o.instance, CheckPtr(Source))
 }
@@ -268,6 +276,8 @@ func (o *TOpenPictureDialog) SetTitle(value string) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (o *TOpenPictureDialog) Handle() HWND {
     return OpenPictureDialog_GetHandle(o.instance)
 }

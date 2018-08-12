@@ -81,11 +81,15 @@ func TParaAttributesClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (p *TParaAttributes) Assign(Source IObject) {
     ParaAttributes_Assign(p.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (p *TParaAttributes) GetNamePath() string {
     return ParaAttributes_GetNamePath(p.instance)
 }
@@ -147,11 +151,15 @@ func (p *TParaAttributes) ToString() string {
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (p *TParaAttributes) Alignment() TAlignment {
     return ParaAttributes_GetAlignment(p.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (p *TParaAttributes) SetAlignment(value TAlignment) {
     ParaAttributes_SetAlignment(p.instance, value)
 }

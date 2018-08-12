@@ -117,6 +117,8 @@ func (g *TGIFFrame) LoadFromStream(Stream IObject) {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (g *TGIFFrame) Assign(Source IObject) {
     GIFFrame_Assign(g.instance, CheckPtr(Source))
 }
@@ -132,6 +134,8 @@ func (g *TGIFFrame) LoadFromFile(Filename string) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (g *TGIFFrame) GetNamePath() string {
     return GIFFrame_GetNamePath(g.instance)
 }
@@ -203,41 +207,57 @@ func (g *TGIFFrame) SetHasBitmap(value bool) {
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (g *TGIFFrame) Left() uint16 {
     return GIFFrame_GetLeft(g.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (g *TGIFFrame) SetLeft(value uint16) {
     GIFFrame_SetLeft(g.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (g *TGIFFrame) Top() uint16 {
     return GIFFrame_GetTop(g.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (g *TGIFFrame) SetTop(value uint16) {
     GIFFrame_SetTop(g.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (g *TGIFFrame) Width() uint16 {
     return GIFFrame_GetWidth(g.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (g *TGIFFrame) SetWidth(value uint16) {
     GIFFrame_SetWidth(g.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (g *TGIFFrame) Height() uint16 {
     return GIFFrame_GetHeight(g.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (g *TGIFFrame) SetHeight(value uint16) {
     GIFFrame_SetHeight(g.instance, value)
 }
@@ -253,6 +273,8 @@ func (g *TGIFFrame) SetBoundsRect(value TRect) {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (g *TGIFFrame) ClientRect() TRect {
     return GIFFrame_GetClientRect(g.instance)
 }
@@ -293,6 +315,8 @@ func (g *TGIFFrame) Empty() bool {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (g *TGIFFrame) Transparent() bool {
     return GIFFrame_GetTransparent(g.instance)
 }

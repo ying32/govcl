@@ -102,6 +102,8 @@ func TDragDockObjectClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (d *TDragDockObject) Assign(Source *TDragObject) {
     DragDockObject_Assign(d.instance, CheckPtr(Source))
 }
@@ -173,11 +175,15 @@ func (d *TDragDockObject) ToString() string {
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (d *TDragDockObject) Brush() *TBrush {
     return BrushFromInst(DragDockObject_GetBrush(d.instance))
 }
 
 // SetBrush
+// CN: 设置画刷对象。
+// EN: Set Brush.
 func (d *TDragDockObject) SetBrush(value *TBrush) {
     DragDockObject_SetBrush(d.instance, CheckPtr(value))
 }

@@ -107,6 +107,8 @@ func (t *TTreeNode) AlphaSort(ARecurse bool) bool {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (t *TTreeNode) Assign(Source IObject) {
     TreeNode_Assign(t.instance, CheckPtr(Source))
 }
@@ -152,6 +154,8 @@ func (t *TTreeNode) MoveTo(Destination *TTreeNode, Mode TNodeAttachMode) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (t *TTreeNode) GetNamePath() string {
     return TreeNode_GetNamePath(t.instance)
 }
@@ -248,11 +252,15 @@ func (t *TTreeNode) Deleting() bool {
 }
 
 // Focused
+// CN: 获取返回是否获取焦点。
+// EN: Get Return to get focus.
 func (t *TTreeNode) Focused() bool {
     return TreeNode_GetFocused(t.instance)
 }
 
 // SetFocused
+// CN: 设置返回是否获取焦点。
+// EN: Set Return to get focus.
 func (t *TTreeNode) SetFocused(value bool) {
     TreeNode_SetFocused(t.instance, value)
 }
@@ -298,6 +306,8 @@ func (t *TTreeNode) SetExpandedImageIndex(value int32) {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (t *TTreeNode) Handle() HWND {
     return TreeNode_GetHandle(t.instance)
 }

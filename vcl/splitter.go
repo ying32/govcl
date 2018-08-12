@@ -102,111 +102,155 @@ func TSplitterClass() TClass {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (s *TSplitter) BringToFront() {
     Splitter_BringToFront(s.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (s *TSplitter) ClientToScreen(Point TPoint) TPoint {
     return Splitter_ClientToScreen(s.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (s *TSplitter) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Splitter_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (s *TSplitter) Dragging() bool {
     return Splitter_Dragging(s.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (s *TSplitter) HasParent() bool {
     return Splitter_HasParent(s.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (s *TSplitter) Hide() {
     Splitter_Hide(s.instance)
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (s *TSplitter) Invalidate() {
     Splitter_Invalidate(s.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (s *TSplitter) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Splitter_Perform(s.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (s *TSplitter) Refresh() {
     Splitter_Refresh(s.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (s *TSplitter) Repaint() {
     Splitter_Repaint(s.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (s *TSplitter) ScreenToClient(Point TPoint) TPoint {
     return Splitter_ScreenToClient(s.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (s *TSplitter) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Splitter_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (s *TSplitter) SendToBack() {
     Splitter_SendToBack(s.instance)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (s *TSplitter) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Splitter_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (s *TSplitter) Show() {
     Splitter_Show(s.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (s *TSplitter) Update() {
     Splitter_Update(s.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (s *TSplitter) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Splitter_GetTextBuf(s.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (s *TSplitter) GetTextLen() int32 {
     return Splitter_GetTextLen(s.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (s *TSplitter) SetTextBuf(Buffer string) {
     Splitter_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (s *TSplitter) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Splitter_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TSplitter) GetNamePath() string {
     return Splitter_GetNamePath(s.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TSplitter) Assign(Source IObject) {
     Splitter_Assign(s.instance, CheckPtr(Source))
 }
@@ -273,21 +317,29 @@ func (s *TSplitter) Canvas() *TCanvas {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (s *TSplitter) Align() TAlign {
     return Splitter_GetAlign(s.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (s *TSplitter) SetAlign(value TAlign) {
     Splitter_SetAlign(s.instance, value)
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (s *TSplitter) Color() TColor {
     return Splitter_GetColor(s.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (s *TSplitter) SetColor(value TColor) {
     Splitter_SetColor(s.instance, value)
 }
@@ -307,11 +359,15 @@ func (s *TSplitter) SetCursor(value TCursor) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (s *TSplitter) ParentColor() bool {
     return Splitter_GetParentColor(s.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (s *TSplitter) SetParentColor(value bool) {
     Splitter_SetParentColor(s.instance, value)
 }
@@ -331,21 +387,29 @@ func (s *TSplitter) SetVisible(value bool) {
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (s *TSplitter) Width() int32 {
     return Splitter_GetWidth(s.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (s *TSplitter) SetWidth(value int32) {
     Splitter_SetWidth(s.instance, value)
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (s *TSplitter) StyleElements() TStyleElements {
     return Splitter_GetStyleElements(s.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (s *TSplitter) SetStyleElements(value TStyleElements) {
     Splitter_SetStyleElements(s.instance, value)
 }
@@ -410,11 +474,15 @@ func (s *TSplitter) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (s *TSplitter) ClientHeight() int32 {
     return Splitter_GetClientHeight(s.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (s *TSplitter) SetClientHeight(value int32) {
     Splitter_SetClientHeight(s.instance, value)
 }
@@ -425,36 +493,50 @@ func (s *TSplitter) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (s *TSplitter) ClientRect() TRect {
     return Splitter_GetClientRect(s.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (s *TSplitter) ClientWidth() int32 {
     return Splitter_GetClientWidth(s.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (s *TSplitter) SetClientWidth(value int32) {
     Splitter_SetClientWidth(s.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (s *TSplitter) ControlState() TControlState {
     return Splitter_GetControlState(s.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (s *TSplitter) SetControlState(value TControlState) {
     Splitter_SetControlState(s.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (s *TSplitter) ControlStyle() TControlStyle {
     return Splitter_GetControlStyle(s.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (s *TSplitter) SetControlStyle(value TControlStyle) {
     Splitter_SetControlStyle(s.instance, value)
 }
@@ -485,11 +567,15 @@ func (s *TSplitter) Floating() bool {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (s *TSplitter) ShowHint() bool {
     return Splitter_GetShowHint(s.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (s *TSplitter) SetShowHint(value bool) {
     Splitter_SetShowHint(s.instance, value)
 }
@@ -509,41 +595,57 @@ func (s *TSplitter) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (s *TSplitter) AlignWithMargins() bool {
     return Splitter_GetAlignWithMargins(s.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (s *TSplitter) SetAlignWithMargins(value bool) {
     Splitter_SetAlignWithMargins(s.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (s *TSplitter) Left() int32 {
     return Splitter_GetLeft(s.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (s *TSplitter) SetLeft(value int32) {
     Splitter_SetLeft(s.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (s *TSplitter) Top() int32 {
     return Splitter_GetTop(s.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (s *TSplitter) SetTop(value int32) {
     Splitter_SetTop(s.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (s *TSplitter) Height() int32 {
     return Splitter_GetHeight(s.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (s *TSplitter) SetHeight(value int32) {
     Splitter_SetHeight(s.instance, value)
 }
@@ -563,21 +665,29 @@ func (s *TSplitter) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (s *TSplitter) Margins() *TMargins {
     return MarginsFromInst(Splitter_GetMargins(s.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (s *TSplitter) SetMargins(value *TMargins) {
     Splitter_SetMargins(s.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (s *TSplitter) CustomHint() *TCustomHint {
     return CustomHintFromInst(Splitter_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (s *TSplitter) SetCustomHint(value IComponent) {
     Splitter_SetCustomHint(s.instance, CheckPtr(value))
 }

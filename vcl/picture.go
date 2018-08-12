@@ -122,11 +122,15 @@ func (p *TPicture) SaveToStream(Stream IObject) {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (p *TPicture) Assign(Source IObject) {
     Picture_Assign(p.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (p *TPicture) GetNamePath() string {
     return Picture_GetNamePath(p.instance)
 }
@@ -208,26 +212,36 @@ func (p *TPicture) SetGraphic(value *TGraphic) {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (p *TPicture) Height() int32 {
     return Picture_GetHeight(p.instance)
 }
 
 // Icon
+// CN: 获取图标。
+// EN: Get icon.
 func (p *TPicture) Icon() *TIcon {
     return IconFromInst(Picture_GetIcon(p.instance))
 }
 
 // SetIcon
+// CN: 设置图标。
+// EN: Set icon.
 func (p *TPicture) SetIcon(value *TIcon) {
     Picture_SetIcon(p.instance, CheckPtr(value))
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (p *TPicture) Width() int32 {
     return Picture_GetWidth(p.instance)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (p *TPicture) SetOnChange(fn TNotifyEvent) {
     Picture_SetOnChange(p.instance, fn)
 }

@@ -132,6 +132,8 @@ func (c *TCanvas) FloodFill(X int32, Y int32, Color TColor, FillStyle TFillStyle
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (c *TCanvas) HandleAllocated() bool {
     return Canvas_HandleAllocated(c.instance)
 }
@@ -157,6 +159,8 @@ func (c *TCanvas) Rectangle(X1 int32, Y1 int32, X2 int32, Y2 int32) {
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (c *TCanvas) Refresh() {
     Canvas_Refresh(c.instance)
 }
@@ -192,11 +196,15 @@ func (c *TCanvas) TextWidth(Text string) int32 {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TCanvas) Assign(Source IObject) {
     Canvas_Assign(c.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TCanvas) GetNamePath() string {
     return Canvas_GetNamePath(c.instance)
 }
@@ -258,21 +266,29 @@ func (c *TCanvas) ToString() string {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (c *TCanvas) Handle() HDC {
     return Canvas_GetHandle(c.instance)
 }
 
 // SetHandle
+// CN: 设置控件句柄。
+// EN: Set Control handle.
 func (c *TCanvas) SetHandle(value HDC) {
     Canvas_SetHandle(c.instance, value)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (c *TCanvas) Brush() *TBrush {
     return BrushFromInst(Canvas_GetBrush(c.instance))
 }
 
 // SetBrush
+// CN: 设置画刷对象。
+// EN: Set Brush.
 func (c *TCanvas) SetBrush(value *TBrush) {
     Canvas_SetBrush(c.instance, CheckPtr(value))
 }
@@ -288,11 +304,15 @@ func (c *TCanvas) SetCopyMode(value int32) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (c *TCanvas) Font() *TFont {
     return FontFromInst(Canvas_GetFont(c.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (c *TCanvas) SetFont(value *TFont) {
     Canvas_SetFont(c.instance, CheckPtr(value))
 }
@@ -308,6 +328,8 @@ func (c *TCanvas) SetPen(value *TPen) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (c *TCanvas) SetOnChange(fn TNotifyEvent) {
     Canvas_SetOnChange(c.instance, fn)
 }

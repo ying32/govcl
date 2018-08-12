@@ -102,6 +102,8 @@ func TTrayIconClass() TClass {
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (t *TTrayIcon) Refresh() {
     TrayIcon_Refresh(t.instance)
 }
@@ -117,21 +119,29 @@ func (t *TTrayIcon) ShowBalloonHint() {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (t *TTrayIcon) FindComponent(AName string) *TComponent {
     return ComponentFromInst(TrayIcon_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (t *TTrayIcon) GetNamePath() string {
     return TrayIcon_GetNamePath(t.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (t *TTrayIcon) HasParent() bool {
     return TrayIcon_HasParent(t.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (t *TTrayIcon) Assign(Source IObject) {
     TrayIcon_Assign(t.instance, CheckPtr(Source))
 }
@@ -267,11 +277,15 @@ func (t *TTrayIcon) SetBalloonFlags(value TBalloonFlags) {
 }
 
 // Icon
+// CN: 获取图标。
+// EN: Get icon.
 func (t *TTrayIcon) Icon() *TIcon {
     return IconFromInst(TrayIcon_GetIcon(t.instance))
 }
 
 // SetIcon
+// CN: 设置图标。
+// EN: Set icon.
 func (t *TTrayIcon) SetIcon(value *TIcon) {
     TrayIcon_SetIcon(t.instance, CheckPtr(value))
 }
@@ -287,11 +301,15 @@ func (t *TTrayIcon) SetIconIndex(value int32) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (t *TTrayIcon) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(TrayIcon_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (t *TTrayIcon) SetPopupMenu(value IComponent) {
     TrayIcon_SetPopupMenu(t.instance, CheckPtr(value))
 }
@@ -333,11 +351,15 @@ func (t *TTrayIcon) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (t *TTrayIcon) SetOnMouseUp(fn TMouseEvent) {
     TrayIcon_SetOnMouseUp(t.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (t *TTrayIcon) SetOnMouseDown(fn TMouseEvent) {
     TrayIcon_SetOnMouseDown(t.instance, fn)
 }

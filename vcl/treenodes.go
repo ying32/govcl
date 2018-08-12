@@ -152,6 +152,8 @@ func (t *TTreeNodes) AlphaSort(ARecurse bool) bool {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (t *TTreeNodes) Assign(Source IObject) {
     TreeNodes_Assign(t.instance, CheckPtr(Source))
 }
@@ -197,6 +199,8 @@ func (t *TTreeNodes) InsertObject(Sibling *TTreeNode, S string, Ptr uintptr) *TT
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (t *TTreeNodes) GetNamePath() string {
     return TreeNodes_GetNamePath(t.instance)
 }
@@ -263,6 +267,8 @@ func (t *TTreeNodes) Count() int32 {
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (t *TTreeNodes) Handle() HWND {
     return TreeNodes_GetHandle(t.instance)
 }

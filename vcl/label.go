@@ -102,111 +102,155 @@ func TLabelClass() TClass {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (l *TLabel) BringToFront() {
     Label_BringToFront(l.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (l *TLabel) ClientToScreen(Point TPoint) TPoint {
     return Label_ClientToScreen(l.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (l *TLabel) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return Label_ClientToParent(l.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (l *TLabel) Dragging() bool {
     return Label_Dragging(l.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (l *TLabel) HasParent() bool {
     return Label_HasParent(l.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (l *TLabel) Hide() {
     Label_Hide(l.instance)
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (l *TLabel) Invalidate() {
     Label_Invalidate(l.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (l *TLabel) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return Label_Perform(l.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (l *TLabel) Refresh() {
     Label_Refresh(l.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (l *TLabel) Repaint() {
     Label_Repaint(l.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (l *TLabel) ScreenToClient(Point TPoint) TPoint {
     return Label_ScreenToClient(l.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (l *TLabel) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return Label_ParentToClient(l.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (l *TLabel) SendToBack() {
     Label_SendToBack(l.instance)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (l *TLabel) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     Label_SetBounds(l.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (l *TLabel) Show() {
     Label_Show(l.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (l *TLabel) Update() {
     Label_Update(l.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (l *TLabel) GetTextBuf(Buffer string, BufSize int32) int32 {
     return Label_GetTextBuf(l.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (l *TLabel) GetTextLen() int32 {
     return Label_GetTextLen(l.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (l *TLabel) SetTextBuf(Buffer string) {
     Label_SetTextBuf(l.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (l *TLabel) FindComponent(AName string) *TComponent {
     return ComponentFromInst(Label_FindComponent(l.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (l *TLabel) GetNamePath() string {
     return Label_GetNamePath(l.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (l *TLabel) Assign(Source IObject) {
     Label_Assign(l.instance, CheckPtr(Source))
 }
@@ -268,21 +312,29 @@ func (l *TLabel) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (l *TLabel) Align() TAlign {
     return Label_GetAlign(l.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (l *TLabel) SetAlign(value TAlign) {
     Label_SetAlign(l.instance, value)
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (l *TLabel) Alignment() TAlignment {
     return Label_GetAlignment(l.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (l *TLabel) SetAlignment(value TAlignment) {
     Label_SetAlignment(l.instance, value)
 }
@@ -332,41 +384,57 @@ func (l *TLabel) SetCaption(value string) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (l *TLabel) Color() TColor {
     return Label_GetColor(l.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (l *TLabel) SetColor(value TColor) {
     Label_SetColor(l.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (l *TLabel) DragCursor() TCursor {
     return Label_GetDragCursor(l.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (l *TLabel) SetDragCursor(value TCursor) {
     Label_SetDragCursor(l.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (l *TLabel) DragKind() TDragKind {
     return Label_GetDragKind(l.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (l *TLabel) SetDragKind(value TDragKind) {
     Label_SetDragKind(l.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (l *TLabel) DragMode() TDragMode {
     return Label_GetDragMode(l.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (l *TLabel) SetDragMode(value TDragMode) {
     Label_SetDragMode(l.instance, value)
 }
@@ -396,11 +464,15 @@ func (l *TLabel) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (l *TLabel) Font() *TFont {
     return FontFromInst(Label_GetFont(l.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (l *TLabel) SetFont(value *TFont) {
     Label_SetFont(l.instance, CheckPtr(value))
 }
@@ -416,21 +488,29 @@ func (l *TLabel) SetGlowSize(value int32) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (l *TLabel) ParentColor() bool {
     return Label_GetParentColor(l.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (l *TLabel) SetParentColor(value bool) {
     Label_SetParentColor(l.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (l *TLabel) ParentFont() bool {
     return Label_GetParentFont(l.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (l *TLabel) SetParentFont(value bool) {
     Label_SetParentFont(l.instance, value)
 }
@@ -446,11 +526,15 @@ func (l *TLabel) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (l *TLabel) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(Label_GetPopupMenu(l.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (l *TLabel) SetPopupMenu(value IComponent) {
     Label_SetPopupMenu(l.instance, CheckPtr(value))
 }
@@ -466,21 +550,29 @@ func (l *TLabel) SetShowAccelChar(value bool) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (l *TLabel) ShowHint() bool {
     return Label_GetShowHint(l.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (l *TLabel) SetShowHint(value bool) {
     Label_SetShowHint(l.instance, value)
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (l *TLabel) Transparent() bool {
     return Label_GetTransparent(l.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (l *TLabel) SetTransparent(value bool) {
     Label_SetTransparent(l.instance, value)
 }
@@ -510,21 +602,29 @@ func (l *TLabel) SetVisible(value bool) {
 }
 
 // WordWrap
+// CN: 获取自动换行。
+// EN: Get Automatic line break.
 func (l *TLabel) WordWrap() bool {
     return Label_GetWordWrap(l.instance)
 }
 
 // SetWordWrap
+// CN: 设置自动换行。
+// EN: Set Automatic line break.
 func (l *TLabel) SetWordWrap(value bool) {
     Label_SetWordWrap(l.instance, value)
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (l *TLabel) StyleElements() TStyleElements {
     return Label_GetStyleElements(l.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (l *TLabel) SetStyleElements(value TStyleElements) {
     Label_SetStyleElements(l.instance, value)
 }
@@ -537,6 +637,8 @@ func (l *TLabel) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (l *TLabel) SetOnContextPopup(fn TContextPopupEvent) {
     Label_SetOnContextPopup(l.instance, fn)
 }
@@ -547,26 +649,36 @@ func (l *TLabel) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (l *TLabel) SetOnDragDrop(fn TDragDropEvent) {
     Label_SetOnDragDrop(l.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (l *TLabel) SetOnDragOver(fn TDragOverEvent) {
     Label_SetOnDragOver(l.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (l *TLabel) SetOnEndDock(fn TEndDragEvent) {
     Label_SetOnEndDock(l.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (l *TLabel) SetOnEndDrag(fn TEndDragEvent) {
     Label_SetOnEndDrag(l.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (l *TLabel) SetOnMouseDown(fn TMouseEvent) {
     Label_SetOnMouseDown(l.instance, fn)
 }
@@ -577,16 +689,22 @@ func (l *TLabel) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (l *TLabel) SetOnMouseUp(fn TMouseEvent) {
     Label_SetOnMouseUp(l.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (l *TLabel) SetOnMouseEnter(fn TNotifyEvent) {
     Label_SetOnMouseEnter(l.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (l *TLabel) SetOnMouseLeave(fn TNotifyEvent) {
     Label_SetOnMouseLeave(l.instance, fn)
 }
@@ -622,11 +740,15 @@ func (l *TLabel) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (l *TLabel) ClientHeight() int32 {
     return Label_GetClientHeight(l.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (l *TLabel) SetClientHeight(value int32) {
     Label_SetClientHeight(l.instance, value)
 }
@@ -637,36 +759,50 @@ func (l *TLabel) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (l *TLabel) ClientRect() TRect {
     return Label_GetClientRect(l.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (l *TLabel) ClientWidth() int32 {
     return Label_GetClientWidth(l.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (l *TLabel) SetClientWidth(value int32) {
     Label_SetClientWidth(l.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (l *TLabel) ControlState() TControlState {
     return Label_GetControlState(l.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (l *TLabel) SetControlState(value TControlState) {
     Label_SetControlState(l.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (l *TLabel) ControlStyle() TControlStyle {
     return Label_GetControlStyle(l.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (l *TLabel) SetControlStyle(value TControlStyle) {
     Label_SetControlStyle(l.instance, value)
 }
@@ -711,51 +847,71 @@ func (l *TLabel) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (l *TLabel) AlignWithMargins() bool {
     return Label_GetAlignWithMargins(l.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (l *TLabel) SetAlignWithMargins(value bool) {
     Label_SetAlignWithMargins(l.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (l *TLabel) Left() int32 {
     return Label_GetLeft(l.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (l *TLabel) SetLeft(value int32) {
     Label_SetLeft(l.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (l *TLabel) Top() int32 {
     return Label_GetTop(l.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (l *TLabel) SetTop(value int32) {
     Label_SetTop(l.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (l *TLabel) Width() int32 {
     return Label_GetWidth(l.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (l *TLabel) SetWidth(value int32) {
     Label_SetWidth(l.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (l *TLabel) Height() int32 {
     return Label_GetHeight(l.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (l *TLabel) SetHeight(value int32) {
     Label_SetHeight(l.instance, value)
 }
@@ -789,21 +945,29 @@ func (l *TLabel) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (l *TLabel) Margins() *TMargins {
     return MarginsFromInst(Label_GetMargins(l.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (l *TLabel) SetMargins(value *TMargins) {
     Label_SetMargins(l.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (l *TLabel) CustomHint() *TCustomHint {
     return CustomHintFromInst(Label_GetCustomHint(l.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (l *TLabel) SetCustomHint(value IComponent) {
     Label_SetCustomHint(l.instance, CheckPtr(value))
 }

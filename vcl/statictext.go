@@ -107,26 +107,36 @@ func (s *TStaticText) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (s *TStaticText) ContainsControl(Control IControl) bool {
     return StaticText_ContainsControl(s.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TStaticText) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(StaticText_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (s *TStaticText) DisableAlign() {
     StaticText_DisableAlign(s.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (s *TStaticText) EnableAlign() {
     StaticText_EnableAlign(s.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (s *TStaticText) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(StaticText_FindChildControl(s.instance, ControlName))
 }
@@ -137,161 +147,225 @@ func (s *TStaticText) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (s *TStaticText) Focused() bool {
     return StaticText_Focused(s.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (s *TStaticText) HandleAllocated() bool {
     return StaticText_HandleAllocated(s.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (s *TStaticText) InsertControl(AControl IControl) {
     StaticText_InsertControl(s.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (s *TStaticText) Invalidate() {
     StaticText_Invalidate(s.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (s *TStaticText) PaintTo(DC HDC, X int32, Y int32) {
     StaticText_PaintTo(s.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (s *TStaticText) RemoveControl(AControl IControl) {
     StaticText_RemoveControl(s.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (s *TStaticText) Realign() {
     StaticText_Realign(s.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (s *TStaticText) Repaint() {
     StaticText_Repaint(s.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (s *TStaticText) ScaleBy(M int32, D int32) {
     StaticText_ScaleBy(s.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (s *TStaticText) ScrollBy(DeltaX int32, DeltaY int32) {
     StaticText_ScrollBy(s.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (s *TStaticText) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     StaticText_SetBounds(s.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (s *TStaticText) SetFocus() {
     StaticText_SetFocus(s.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (s *TStaticText) Update() {
     StaticText_Update(s.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (s *TStaticText) UpdateControlState() {
     StaticText_UpdateControlState(s.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (s *TStaticText) BringToFront() {
     StaticText_BringToFront(s.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (s *TStaticText) ClientToScreen(Point TPoint) TPoint {
     return StaticText_ClientToScreen(s.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (s *TStaticText) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return StaticText_ClientToParent(s.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (s *TStaticText) Dragging() bool {
     return StaticText_Dragging(s.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (s *TStaticText) HasParent() bool {
     return StaticText_HasParent(s.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (s *TStaticText) Hide() {
     StaticText_Hide(s.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (s *TStaticText) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return StaticText_Perform(s.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (s *TStaticText) Refresh() {
     StaticText_Refresh(s.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (s *TStaticText) ScreenToClient(Point TPoint) TPoint {
     return StaticText_ScreenToClient(s.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (s *TStaticText) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return StaticText_ParentToClient(s.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (s *TStaticText) SendToBack() {
     StaticText_SendToBack(s.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (s *TStaticText) Show() {
     StaticText_Show(s.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (s *TStaticText) GetTextBuf(Buffer string, BufSize int32) int32 {
     return StaticText_GetTextBuf(s.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (s *TStaticText) GetTextLen() int32 {
     return StaticText_GetTextLen(s.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (s *TStaticText) SetTextBuf(Buffer string) {
     StaticText_SetTextBuf(s.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (s *TStaticText) FindComponent(AName string) *TComponent {
     return ComponentFromInst(StaticText_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TStaticText) GetNamePath() string {
     return StaticText_GetNamePath(s.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TStaticText) Assign(Source IObject) {
     StaticText_Assign(s.instance, CheckPtr(Source))
 }
@@ -353,21 +427,29 @@ func (s *TStaticText) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (s *TStaticText) Align() TAlign {
     return StaticText_GetAlign(s.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (s *TStaticText) SetAlign(value TAlign) {
     StaticText_SetAlign(s.instance, value)
 }
 
 // Alignment
+// CN: 获取文字对齐。
+// EN: Get Text alignment.
 func (s *TStaticText) Alignment() TAlignment {
     return StaticText_GetAlignment(s.instance)
 }
 
 // SetAlignment
+// CN: 设置文字对齐。
+// EN: Set Text alignment.
 func (s *TStaticText) SetAlignment(value TAlignment) {
     StaticText_SetAlignment(s.instance, value)
 }
@@ -467,51 +549,71 @@ func (s *TStaticText) SetCaption(value string) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (s *TStaticText) Color() TColor {
     return StaticText_GetColor(s.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (s *TStaticText) SetColor(value TColor) {
     StaticText_SetColor(s.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (s *TStaticText) DoubleBuffered() bool {
     return StaticText_GetDoubleBuffered(s.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (s *TStaticText) SetDoubleBuffered(value bool) {
     StaticText_SetDoubleBuffered(s.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (s *TStaticText) DragCursor() TCursor {
     return StaticText_GetDragCursor(s.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (s *TStaticText) SetDragCursor(value TCursor) {
     StaticText_SetDragCursor(s.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (s *TStaticText) DragKind() TDragKind {
     return StaticText_GetDragKind(s.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (s *TStaticText) SetDragKind(value TDragKind) {
     StaticText_SetDragKind(s.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (s *TStaticText) DragMode() TDragMode {
     return StaticText_GetDragMode(s.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (s *TStaticText) SetDragMode(value TDragMode) {
     StaticText_SetDragMode(s.instance, value)
 }
@@ -531,41 +633,57 @@ func (s *TStaticText) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (s *TStaticText) Font() *TFont {
     return FontFromInst(StaticText_GetFont(s.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (s *TStaticText) SetFont(value *TFont) {
     StaticText_SetFont(s.instance, CheckPtr(value))
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (s *TStaticText) ParentColor() bool {
     return StaticText_GetParentColor(s.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (s *TStaticText) SetParentColor(value bool) {
     StaticText_SetParentColor(s.instance, value)
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (s *TStaticText) ParentDoubleBuffered() bool {
     return StaticText_GetParentDoubleBuffered(s.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (s *TStaticText) SetParentDoubleBuffered(value bool) {
     StaticText_SetParentDoubleBuffered(s.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (s *TStaticText) ParentFont() bool {
     return StaticText_GetParentFont(s.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (s *TStaticText) SetParentFont(value bool) {
     StaticText_SetParentFont(s.instance, value)
 }
@@ -581,11 +699,15 @@ func (s *TStaticText) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (s *TStaticText) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(StaticText_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (s *TStaticText) SetPopupMenu(value IComponent) {
     StaticText_SetPopupMenu(s.instance, CheckPtr(value))
 }
@@ -601,41 +723,57 @@ func (s *TStaticText) SetShowAccelChar(value bool) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (s *TStaticText) ShowHint() bool {
     return StaticText_GetShowHint(s.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (s *TStaticText) SetShowHint(value bool) {
     StaticText_SetShowHint(s.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (s *TStaticText) TabOrder() TTabOrder {
     return StaticText_GetTabOrder(s.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (s *TStaticText) SetTabOrder(value TTabOrder) {
     StaticText_SetTabOrder(s.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (s *TStaticText) TabStop() bool {
     return StaticText_GetTabStop(s.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (s *TStaticText) SetTabStop(value bool) {
     StaticText_SetTabStop(s.instance, value)
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (s *TStaticText) Transparent() bool {
     return StaticText_GetTransparent(s.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (s *TStaticText) SetTransparent(value bool) {
     StaticText_SetTransparent(s.instance, value)
 }
@@ -655,11 +793,15 @@ func (s *TStaticText) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (s *TStaticText) StyleElements() TStyleElements {
     return StaticText_GetStyleElements(s.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (s *TStaticText) SetStyleElements(value TStyleElements) {
     StaticText_SetStyleElements(s.instance, value)
 }
@@ -672,6 +814,8 @@ func (s *TStaticText) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (s *TStaticText) SetOnContextPopup(fn TContextPopupEvent) {
     StaticText_SetOnContextPopup(s.instance, fn)
 }
@@ -682,36 +826,50 @@ func (s *TStaticText) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (s *TStaticText) SetOnDragDrop(fn TDragDropEvent) {
     StaticText_SetOnDragDrop(s.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (s *TStaticText) SetOnDragOver(fn TDragOverEvent) {
     StaticText_SetOnDragOver(s.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (s *TStaticText) SetOnEndDock(fn TEndDragEvent) {
     StaticText_SetOnEndDock(s.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (s *TStaticText) SetOnEndDrag(fn TEndDragEvent) {
     StaticText_SetOnEndDrag(s.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (s *TStaticText) SetOnMouseDown(fn TMouseEvent) {
     StaticText_SetOnMouseDown(s.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (s *TStaticText) SetOnMouseEnter(fn TNotifyEvent) {
     StaticText_SetOnMouseEnter(s.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (s *TStaticText) SetOnMouseLeave(fn TNotifyEvent) {
     StaticText_SetOnMouseLeave(s.instance, fn)
 }
@@ -722,6 +880,8 @@ func (s *TStaticText) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (s *TStaticText) SetOnMouseUp(fn TMouseEvent) {
     StaticText_SetOnMouseUp(s.instance, fn)
 }
@@ -737,11 +897,15 @@ func (s *TStaticText) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (s *TStaticText) DockSite() bool {
     return StaticText_GetDockSite(s.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (s *TStaticText) SetDockSite(value bool) {
     StaticText_SetDockSite(s.instance, value)
 }
@@ -752,36 +916,50 @@ func (s *TStaticText) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (s *TStaticText) MouseInClient() bool {
     return StaticText_GetMouseInClient(s.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (s *TStaticText) VisibleDockClientCount() int32 {
     return StaticText_GetVisibleDockClientCount(s.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (s *TStaticText) Brush() *TBrush {
     return BrushFromInst(StaticText_GetBrush(s.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (s *TStaticText) ControlCount() int32 {
     return StaticText_GetControlCount(s.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (s *TStaticText) Handle() HWND {
     return StaticText_GetHandle(s.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (s *TStaticText) ParentWindow() HWND {
     return StaticText_GetParentWindow(s.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (s *TStaticText) SetParentWindow(value HWND) {
     StaticText_SetParentWindow(s.instance, value)
 }
@@ -817,11 +995,15 @@ func (s *TStaticText) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (s *TStaticText) ClientHeight() int32 {
     return StaticText_GetClientHeight(s.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (s *TStaticText) SetClientHeight(value int32) {
     StaticText_SetClientHeight(s.instance, value)
 }
@@ -832,36 +1014,50 @@ func (s *TStaticText) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (s *TStaticText) ClientRect() TRect {
     return StaticText_GetClientRect(s.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (s *TStaticText) ClientWidth() int32 {
     return StaticText_GetClientWidth(s.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (s *TStaticText) SetClientWidth(value int32) {
     StaticText_SetClientWidth(s.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (s *TStaticText) ControlState() TControlState {
     return StaticText_GetControlState(s.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (s *TStaticText) SetControlState(value TControlState) {
     StaticText_SetControlState(s.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (s *TStaticText) ControlStyle() TControlStyle {
     return StaticText_GetControlStyle(s.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (s *TStaticText) SetControlStyle(value TControlStyle) {
     StaticText_SetControlStyle(s.instance, value)
 }
@@ -906,51 +1102,71 @@ func (s *TStaticText) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (s *TStaticText) AlignWithMargins() bool {
     return StaticText_GetAlignWithMargins(s.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (s *TStaticText) SetAlignWithMargins(value bool) {
     StaticText_SetAlignWithMargins(s.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (s *TStaticText) Left() int32 {
     return StaticText_GetLeft(s.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (s *TStaticText) SetLeft(value int32) {
     StaticText_SetLeft(s.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (s *TStaticText) Top() int32 {
     return StaticText_GetTop(s.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (s *TStaticText) SetTop(value int32) {
     StaticText_SetTop(s.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (s *TStaticText) Width() int32 {
     return StaticText_GetWidth(s.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (s *TStaticText) SetWidth(value int32) {
     StaticText_SetWidth(s.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (s *TStaticText) Height() int32 {
     return StaticText_GetHeight(s.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (s *TStaticText) SetHeight(value int32) {
     StaticText_SetHeight(s.instance, value)
 }
@@ -984,21 +1200,29 @@ func (s *TStaticText) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (s *TStaticText) Margins() *TMargins {
     return MarginsFromInst(StaticText_GetMargins(s.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (s *TStaticText) SetMargins(value *TMargins) {
     StaticText_SetMargins(s.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (s *TStaticText) CustomHint() *TCustomHint {
     return CustomHintFromInst(StaticText_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (s *TStaticText) SetCustomHint(value IComponent) {
     StaticText_SetCustomHint(s.instance, CheckPtr(value))
 }

@@ -107,26 +107,36 @@ func (u *TUpDown) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (u *TUpDown) ContainsControl(Control IControl) bool {
     return UpDown_ContainsControl(u.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (u *TUpDown) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(UpDown_ControlAtPos(u.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (u *TUpDown) DisableAlign() {
     UpDown_DisableAlign(u.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (u *TUpDown) EnableAlign() {
     UpDown_EnableAlign(u.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (u *TUpDown) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(UpDown_FindChildControl(u.instance, ControlName))
 }
@@ -137,161 +147,225 @@ func (u *TUpDown) FlipChildren(AllLevels bool) {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (u *TUpDown) Focused() bool {
     return UpDown_Focused(u.instance)
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (u *TUpDown) HandleAllocated() bool {
     return UpDown_HandleAllocated(u.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (u *TUpDown) InsertControl(AControl IControl) {
     UpDown_InsertControl(u.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (u *TUpDown) Invalidate() {
     UpDown_Invalidate(u.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (u *TUpDown) PaintTo(DC HDC, X int32, Y int32) {
     UpDown_PaintTo(u.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (u *TUpDown) RemoveControl(AControl IControl) {
     UpDown_RemoveControl(u.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (u *TUpDown) Realign() {
     UpDown_Realign(u.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (u *TUpDown) Repaint() {
     UpDown_Repaint(u.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (u *TUpDown) ScaleBy(M int32, D int32) {
     UpDown_ScaleBy(u.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (u *TUpDown) ScrollBy(DeltaX int32, DeltaY int32) {
     UpDown_ScrollBy(u.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (u *TUpDown) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     UpDown_SetBounds(u.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (u *TUpDown) SetFocus() {
     UpDown_SetFocus(u.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (u *TUpDown) Update() {
     UpDown_Update(u.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (u *TUpDown) UpdateControlState() {
     UpDown_UpdateControlState(u.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (u *TUpDown) BringToFront() {
     UpDown_BringToFront(u.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (u *TUpDown) ClientToScreen(Point TPoint) TPoint {
     return UpDown_ClientToScreen(u.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (u *TUpDown) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return UpDown_ClientToParent(u.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (u *TUpDown) Dragging() bool {
     return UpDown_Dragging(u.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (u *TUpDown) HasParent() bool {
     return UpDown_HasParent(u.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (u *TUpDown) Hide() {
     UpDown_Hide(u.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (u *TUpDown) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return UpDown_Perform(u.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (u *TUpDown) Refresh() {
     UpDown_Refresh(u.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (u *TUpDown) ScreenToClient(Point TPoint) TPoint {
     return UpDown_ScreenToClient(u.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (u *TUpDown) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return UpDown_ParentToClient(u.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (u *TUpDown) SendToBack() {
     UpDown_SendToBack(u.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (u *TUpDown) Show() {
     UpDown_Show(u.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (u *TUpDown) GetTextBuf(Buffer string, BufSize int32) int32 {
     return UpDown_GetTextBuf(u.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (u *TUpDown) GetTextLen() int32 {
     return UpDown_GetTextLen(u.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (u *TUpDown) SetTextBuf(Buffer string) {
     UpDown_SetTextBuf(u.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (u *TUpDown) FindComponent(AName string) *TComponent {
     return ComponentFromInst(UpDown_FindComponent(u.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (u *TUpDown) GetNamePath() string {
     return UpDown_GetNamePath(u.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (u *TUpDown) Assign(Source IObject) {
     UpDown_Assign(u.instance, CheckPtr(Source))
 }
@@ -363,11 +437,15 @@ func (u *TUpDown) SetAnchors(value TAnchors) {
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (u *TUpDown) DoubleBuffered() bool {
     return UpDown_GetDoubleBuffered(u.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (u *TUpDown) SetDoubleBuffered(value bool) {
     UpDown_SetDoubleBuffered(u.instance, value)
 }
@@ -431,11 +509,15 @@ func (u *TUpDown) SetOrientation(value TUDOrientation) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (u *TUpDown) ParentDoubleBuffered() bool {
     return UpDown_GetParentDoubleBuffered(u.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (u *TUpDown) SetParentDoubleBuffered(value bool) {
     UpDown_SetParentDoubleBuffered(u.instance, value)
 }
@@ -451,11 +533,15 @@ func (u *TUpDown) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (u *TUpDown) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(UpDown_GetPopupMenu(u.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (u *TUpDown) SetPopupMenu(value IComponent) {
     UpDown_SetPopupMenu(u.instance, CheckPtr(value))
 }
@@ -471,31 +557,43 @@ func (u *TUpDown) SetPosition(value int32) {
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (u *TUpDown) ShowHint() bool {
     return UpDown_GetShowHint(u.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (u *TUpDown) SetShowHint(value bool) {
     UpDown_SetShowHint(u.instance, value)
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (u *TUpDown) TabOrder() TTabOrder {
     return UpDown_GetTabOrder(u.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (u *TUpDown) SetTabOrder(value TTabOrder) {
     UpDown_SetTabOrder(u.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (u *TUpDown) TabStop() bool {
     return UpDown_GetTabStop(u.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (u *TUpDown) SetTabStop(value bool) {
     UpDown_SetTabStop(u.instance, value)
 }
@@ -525,16 +623,22 @@ func (u *TUpDown) SetWrap(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (u *TUpDown) StyleElements() TStyleElements {
     return UpDown_GetStyleElements(u.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (u *TUpDown) SetStyleElements(value TStyleElements) {
     UpDown_SetStyleElements(u.instance, value)
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (u *TUpDown) SetOnContextPopup(fn TContextPopupEvent) {
     UpDown_SetOnContextPopup(u.instance, fn)
 }
@@ -547,26 +651,36 @@ func (u *TUpDown) SetOnClick(fn TUDClickEvent) {
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (u *TUpDown) SetOnEnter(fn TNotifyEvent) {
     UpDown_SetOnEnter(u.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (u *TUpDown) SetOnExit(fn TNotifyEvent) {
     UpDown_SetOnExit(u.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (u *TUpDown) SetOnMouseDown(fn TMouseEvent) {
     UpDown_SetOnMouseDown(u.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (u *TUpDown) SetOnMouseEnter(fn TNotifyEvent) {
     UpDown_SetOnMouseEnter(u.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (u *TUpDown) SetOnMouseLeave(fn TNotifyEvent) {
     UpDown_SetOnMouseLeave(u.instance, fn)
 }
@@ -577,6 +691,8 @@ func (u *TUpDown) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (u *TUpDown) SetOnMouseUp(fn TMouseEvent) {
     UpDown_SetOnMouseUp(u.instance, fn)
 }
@@ -587,11 +703,15 @@ func (u *TUpDown) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (u *TUpDown) DockSite() bool {
     return UpDown_GetDockSite(u.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (u *TUpDown) SetDockSite(value bool) {
     UpDown_SetDockSite(u.instance, value)
 }
@@ -602,36 +722,50 @@ func (u *TUpDown) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (u *TUpDown) MouseInClient() bool {
     return UpDown_GetMouseInClient(u.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (u *TUpDown) VisibleDockClientCount() int32 {
     return UpDown_GetVisibleDockClientCount(u.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (u *TUpDown) Brush() *TBrush {
     return BrushFromInst(UpDown_GetBrush(u.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (u *TUpDown) ControlCount() int32 {
     return UpDown_GetControlCount(u.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (u *TUpDown) Handle() HWND {
     return UpDown_GetHandle(u.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (u *TUpDown) ParentWindow() HWND {
     return UpDown_GetParentWindow(u.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (u *TUpDown) SetParentWindow(value HWND) {
     UpDown_SetParentWindow(u.instance, value)
 }
@@ -657,11 +791,15 @@ func (u *TUpDown) SetAction(value IComponent) {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (u *TUpDown) Align() TAlign {
     return UpDown_GetAlign(u.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (u *TUpDown) SetAlign(value TAlign) {
     UpDown_SetAlign(u.instance, value)
 }
@@ -687,11 +825,15 @@ func (u *TUpDown) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (u *TUpDown) ClientHeight() int32 {
     return UpDown_GetClientHeight(u.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (u *TUpDown) SetClientHeight(value int32) {
     UpDown_SetClientHeight(u.instance, value)
 }
@@ -702,36 +844,50 @@ func (u *TUpDown) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (u *TUpDown) ClientRect() TRect {
     return UpDown_GetClientRect(u.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (u *TUpDown) ClientWidth() int32 {
     return UpDown_GetClientWidth(u.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (u *TUpDown) SetClientWidth(value int32) {
     UpDown_SetClientWidth(u.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (u *TUpDown) ControlState() TControlState {
     return UpDown_GetControlState(u.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (u *TUpDown) SetControlState(value TControlState) {
     UpDown_SetControlState(u.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (u *TUpDown) ControlStyle() TControlStyle {
     return UpDown_GetControlStyle(u.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (u *TUpDown) SetControlStyle(value TControlStyle) {
     UpDown_SetControlStyle(u.instance, value)
 }
@@ -776,51 +932,71 @@ func (u *TUpDown) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (u *TUpDown) AlignWithMargins() bool {
     return UpDown_GetAlignWithMargins(u.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (u *TUpDown) SetAlignWithMargins(value bool) {
     UpDown_SetAlignWithMargins(u.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (u *TUpDown) Left() int32 {
     return UpDown_GetLeft(u.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (u *TUpDown) SetLeft(value int32) {
     UpDown_SetLeft(u.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (u *TUpDown) Top() int32 {
     return UpDown_GetTop(u.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (u *TUpDown) SetTop(value int32) {
     UpDown_SetTop(u.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (u *TUpDown) Width() int32 {
     return UpDown_GetWidth(u.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (u *TUpDown) SetWidth(value int32) {
     UpDown_SetWidth(u.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (u *TUpDown) Height() int32 {
     return UpDown_GetHeight(u.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (u *TUpDown) SetHeight(value int32) {
     UpDown_SetHeight(u.instance, value)
 }
@@ -840,21 +1016,29 @@ func (u *TUpDown) SetCursor(value TCursor) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (u *TUpDown) Margins() *TMargins {
     return MarginsFromInst(UpDown_GetMargins(u.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (u *TUpDown) SetMargins(value *TMargins) {
     UpDown_SetMargins(u.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (u *TUpDown) CustomHint() *TCustomHint {
     return CustomHintFromInst(UpDown_GetCustomHint(u.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (u *TUpDown) SetCustomHint(value IComponent) {
     UpDown_SetCustomHint(u.instance, CheckPtr(value))
 }

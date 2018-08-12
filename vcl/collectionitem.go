@@ -102,11 +102,15 @@ func TCollectionItemClass() TClass {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TCollectionItem) GetNamePath() string {
     return CollectionItem_GetNamePath(c.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TCollectionItem) Assign(Source IObject) {
     CollectionItem_Assign(c.instance, CheckPtr(Source))
 }

@@ -81,11 +81,15 @@ func TTextAttributesClass() TClass {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (t *TTextAttributes) Assign(Source IObject) {
     TextAttributes_Assign(t.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (t *TTextAttributes) GetNamePath() string {
     return TextAttributes_GetNamePath(t.instance)
 }
@@ -157,11 +161,15 @@ func (t *TTextAttributes) SetCharset(value TFontCharset) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (t *TTextAttributes) Color() TColor {
     return TextAttributes_GetColor(t.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (t *TTextAttributes) SetColor(value TColor) {
     TextAttributes_SetColor(t.instance, value)
 }
@@ -226,11 +234,15 @@ func (t *TTextAttributes) SetStyle(value TFontStyles) {
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (t *TTextAttributes) Height() int32 {
     return TextAttributes_GetHeight(t.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (t *TTextAttributes) SetHeight(value int32) {
     TextAttributes_SetHeight(t.instance, value)
 }

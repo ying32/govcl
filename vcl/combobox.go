@@ -122,6 +122,8 @@ func (c *TComboBox) DeleteSelected() {
 }
 
 // Focused
+// CN: 返回是否获取焦点。
+// EN: Return to get focus.
 func (c *TComboBox) Focused() bool {
     return ComboBox_Focused(c.instance)
 }
@@ -137,26 +139,36 @@ func (c *TComboBox) CanFocus() bool {
 }
 
 // ContainsControl
+// CN: 返回是否包含指定控件。
+// EN: it's contain a specified control.
 func (c *TComboBox) ContainsControl(Control IControl) bool {
     return ComboBox_ContainsControl(c.instance, CheckPtr(Control))
 }
 
 // ControlAtPos
+// CN: 返回指定坐标及相关属性位置控件。
+// EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TComboBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
     return ControlFromInst(ComboBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
+// CN: 禁用控件的对齐。
+// EN: Disable control alignment.
 func (c *TComboBox) DisableAlign() {
     ComboBox_DisableAlign(c.instance)
 }
 
 // EnableAlign
+// CN: 启用控件对齐。
+// EN: Enabled control alignment.
 func (c *TComboBox) EnableAlign() {
     ComboBox_EnableAlign(c.instance)
 }
 
 // FindChildControl
+// CN: 查找子控件。
+// EN: Find sub controls.
 func (c *TComboBox) FindChildControl(ControlName string) *TControl {
     return ControlFromInst(ComboBox_FindChildControl(c.instance, ControlName))
 }
@@ -167,156 +179,218 @@ func (c *TComboBox) FlipChildren(AllLevels bool) {
 }
 
 // HandleAllocated
+// CN: 句柄是否已经分配。
+// EN: Is the handle already allocated.
 func (c *TComboBox) HandleAllocated() bool {
     return ComboBox_HandleAllocated(c.instance)
 }
 
 // InsertControl
+// CN: 插入一个控件。
+// EN: Insert a control.
 func (c *TComboBox) InsertControl(AControl IControl) {
     ComboBox_InsertControl(c.instance, CheckPtr(AControl))
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (c *TComboBox) Invalidate() {
     ComboBox_Invalidate(c.instance)
 }
 
 // PaintTo
+// CN: 绘画至指定DC。
+// EN: Painting to the specified DC.
 func (c *TComboBox) PaintTo(DC HDC, X int32, Y int32) {
     ComboBox_PaintTo(c.instance, DC , X , Y)
 }
 
 // RemoveControl
+// CN: 移除一个控件。
+// EN: Remove a control.
 func (c *TComboBox) RemoveControl(AControl IControl) {
     ComboBox_RemoveControl(c.instance, CheckPtr(AControl))
 }
 
 // Realign
+// CN: 重新对齐。
+// EN: Realign.
 func (c *TComboBox) Realign() {
     ComboBox_Realign(c.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (c *TComboBox) Repaint() {
     ComboBox_Repaint(c.instance)
 }
 
 // ScaleBy
+// CN: 按比例缩放。
+// EN: Scale by.
 func (c *TComboBox) ScaleBy(M int32, D int32) {
     ComboBox_ScaleBy(c.instance, M , D)
 }
 
 // ScrollBy
+// CN: 滚动至指定位置。
+// EN: Scroll by.
 func (c *TComboBox) ScrollBy(DeltaX int32, DeltaY int32) {
     ComboBox_ScrollBy(c.instance, DeltaX , DeltaY)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (c *TComboBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     ComboBox_SetBounds(c.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // SetFocus
+// CN: 设置控件焦点。
+// EN: Set control focus.
 func (c *TComboBox) SetFocus() {
     ComboBox_SetFocus(c.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (c *TComboBox) Update() {
     ComboBox_Update(c.instance)
 }
 
 // UpdateControlState
+// CN: 更新控件状态。
+// EN: Update control status.
 func (c *TComboBox) UpdateControlState() {
     ComboBox_UpdateControlState(c.instance)
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (c *TComboBox) BringToFront() {
     ComboBox_BringToFront(c.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (c *TComboBox) ClientToScreen(Point TPoint) TPoint {
     return ComboBox_ClientToScreen(c.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (c *TComboBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return ComboBox_ClientToParent(c.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (c *TComboBox) Dragging() bool {
     return ComboBox_Dragging(c.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (c *TComboBox) HasParent() bool {
     return ComboBox_HasParent(c.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (c *TComboBox) Hide() {
     ComboBox_Hide(c.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (c *TComboBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return ComboBox_Perform(c.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (c *TComboBox) Refresh() {
     ComboBox_Refresh(c.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (c *TComboBox) ScreenToClient(Point TPoint) TPoint {
     return ComboBox_ScreenToClient(c.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (c *TComboBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return ComboBox_ParentToClient(c.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (c *TComboBox) SendToBack() {
     ComboBox_SendToBack(c.instance)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (c *TComboBox) Show() {
     ComboBox_Show(c.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (c *TComboBox) GetTextBuf(Buffer string, BufSize int32) int32 {
     return ComboBox_GetTextBuf(c.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (c *TComboBox) GetTextLen() int32 {
     return ComboBox_GetTextLen(c.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (c *TComboBox) SetTextBuf(Buffer string) {
     ComboBox_SetTextBuf(c.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (c *TComboBox) FindComponent(AName string) *TComponent {
     return ComponentFromInst(ComboBox_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TComboBox) GetNamePath() string {
     return ComboBox_GetNamePath(c.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TComboBox) Assign(Source IObject) {
     ComboBox_Assign(c.instance, CheckPtr(Source))
 }
@@ -378,11 +452,15 @@ func (c *TComboBox) ToString() string {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (c *TComboBox) Align() TAlign {
     return ComboBox_GetAlign(c.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (c *TComboBox) SetAlign(value TAlign) {
     ComboBox_SetAlign(c.instance, value)
 }
@@ -508,51 +586,71 @@ func (c *TComboBox) SetCharCase(value TEditCharCase) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (c *TComboBox) Color() TColor {
     return ComboBox_GetColor(c.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (c *TComboBox) SetColor(value TColor) {
     ComboBox_SetColor(c.instance, value)
 }
 
 // DoubleBuffered
+// CN: 获取设置控件双缓冲。
+// EN: Get Set control double buffering.
 func (c *TComboBox) DoubleBuffered() bool {
     return ComboBox_GetDoubleBuffered(c.instance)
 }
 
 // SetDoubleBuffered
+// CN: 设置设置控件双缓冲。
+// EN: Set Set control double buffering.
 func (c *TComboBox) SetDoubleBuffered(value bool) {
     ComboBox_SetDoubleBuffered(c.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (c *TComboBox) DragCursor() TCursor {
     return ComboBox_GetDragCursor(c.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (c *TComboBox) SetDragCursor(value TCursor) {
     ComboBox_SetDragCursor(c.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (c *TComboBox) DragKind() TDragKind {
     return ComboBox_GetDragKind(c.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (c *TComboBox) SetDragKind(value TDragKind) {
     ComboBox_SetDragKind(c.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (c *TComboBox) DragMode() TDragMode {
     return ComboBox_GetDragMode(c.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (c *TComboBox) SetDragMode(value TDragMode) {
     ComboBox_SetDragMode(c.instance, value)
 }
@@ -582,11 +680,15 @@ func (c *TComboBox) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (c *TComboBox) Font() *TFont {
     return FontFromInst(ComboBox_GetFont(c.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (c *TComboBox) SetFont(value *TFont) {
     ComboBox_SetFont(c.instance, CheckPtr(value))
 }
@@ -622,11 +724,15 @@ func (c *TComboBox) SetMaxLength(value int32) {
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (c *TComboBox) ParentColor() bool {
     return ComboBox_GetParentColor(c.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (c *TComboBox) SetParentColor(value bool) {
     ComboBox_SetParentColor(c.instance, value)
 }
@@ -642,21 +748,29 @@ func (c *TComboBox) SetParentCtl3D(value bool) {
 }
 
 // ParentDoubleBuffered
+// CN: 获取父容器双缓冲。
+// EN: Get Parent container double buffering.
 func (c *TComboBox) ParentDoubleBuffered() bool {
     return ComboBox_GetParentDoubleBuffered(c.instance)
 }
 
 // SetParentDoubleBuffered
+// CN: 设置父容器双缓冲。
+// EN: Set Parent container double buffering.
 func (c *TComboBox) SetParentDoubleBuffered(value bool) {
     ComboBox_SetParentDoubleBuffered(c.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (c *TComboBox) ParentFont() bool {
     return ComboBox_GetParentFont(c.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (c *TComboBox) SetParentFont(value bool) {
     ComboBox_SetParentFont(c.instance, value)
 }
@@ -672,21 +786,29 @@ func (c *TComboBox) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (c *TComboBox) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(ComboBox_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (c *TComboBox) SetPopupMenu(value IComponent) {
     ComboBox_SetPopupMenu(c.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (c *TComboBox) ShowHint() bool {
     return ComboBox_GetShowHint(c.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (c *TComboBox) SetShowHint(value bool) {
     ComboBox_SetShowHint(c.instance, value)
 }
@@ -702,21 +824,29 @@ func (c *TComboBox) SetSorted(value bool) {
 }
 
 // TabOrder
+// CN: 获取Tab切换顺序序号。
+// EN: Get Tab switching sequence number.
 func (c *TComboBox) TabOrder() TTabOrder {
     return ComboBox_GetTabOrder(c.instance)
 }
 
 // SetTabOrder
+// CN: 设置Tab切换顺序序号。
+// EN: Set Tab switching sequence number.
 func (c *TComboBox) SetTabOrder(value TTabOrder) {
     ComboBox_SetTabOrder(c.instance, value)
 }
 
 // TabStop
+// CN: 获取Tab可停留。
+// EN: Get Tab can stay.
 func (c *TComboBox) TabStop() bool {
     return ComboBox_GetTabStop(c.instance)
 }
 
 // SetTabStop
+// CN: 设置Tab可停留。
+// EN: Set Tab can stay.
 func (c *TComboBox) SetTabStop(value bool) {
     ComboBox_SetTabStop(c.instance, value)
 }
@@ -756,16 +886,22 @@ func (c *TComboBox) SetVisible(value bool) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (c *TComboBox) StyleElements() TStyleElements {
     return ComboBox_GetStyleElements(c.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (c *TComboBox) SetStyleElements(value TStyleElements) {
     ComboBox_SetStyleElements(c.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (c *TComboBox) SetOnChange(fn TNotifyEvent) {
     ComboBox_SetOnChange(c.instance, fn)
 }
@@ -778,6 +914,8 @@ func (c *TComboBox) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (c *TComboBox) SetOnContextPopup(fn TContextPopupEvent) {
     ComboBox_SetOnContextPopup(c.instance, fn)
 }
@@ -788,11 +926,15 @@ func (c *TComboBox) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (c *TComboBox) SetOnDragDrop(fn TDragDropEvent) {
     ComboBox_SetOnDragDrop(c.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (c *TComboBox) SetOnDragOver(fn TDragOverEvent) {
     ComboBox_SetOnDragOver(c.instance, fn)
 }
@@ -803,26 +945,36 @@ func (c *TComboBox) SetOnDrawItem(fn TDrawItemEvent) {
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (c *TComboBox) SetOnEndDock(fn TEndDragEvent) {
     ComboBox_SetOnEndDock(c.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (c *TComboBox) SetOnEndDrag(fn TEndDragEvent) {
     ComboBox_SetOnEndDrag(c.instance, fn)
 }
 
 // SetOnEnter
+// CN: 设置焦点进入。
+// EN: Set Focus entry.
 func (c *TComboBox) SetOnEnter(fn TNotifyEvent) {
     ComboBox_SetOnEnter(c.instance, fn)
 }
 
 // SetOnExit
+// CN: 设置焦点退出。
+// EN: Set Focus exit.
 func (c *TComboBox) SetOnExit(fn TNotifyEvent) {
     ComboBox_SetOnExit(c.instance, fn)
 }
 
 // SetOnKeyDown
+// CN: 设置键盘按键按下事件。
+// EN: Set Keyboard button press event.
 func (c *TComboBox) SetOnKeyDown(fn TKeyEvent) {
     ComboBox_SetOnKeyDown(c.instance, fn)
 }
@@ -833,16 +985,22 @@ func (c *TComboBox) SetOnKeyPress(fn TKeyPressEvent) {
 }
 
 // SetOnKeyUp
+// CN: 设置键盘按键抬起事件。
+// EN: Set Keyboard button lift event.
 func (c *TComboBox) SetOnKeyUp(fn TKeyEvent) {
     ComboBox_SetOnKeyUp(c.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (c *TComboBox) SetOnMouseEnter(fn TNotifyEvent) {
     ComboBox_SetOnMouseEnter(c.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (c *TComboBox) SetOnMouseLeave(fn TNotifyEvent) {
     ComboBox_SetOnMouseLeave(c.instance, fn)
 }
@@ -913,11 +1071,15 @@ func (c *TComboBox) DockClientCount() int32 {
 }
 
 // DockSite
+// CN: 获取停靠站点。
+// EN: Get Docking site.
 func (c *TComboBox) DockSite() bool {
     return ComboBox_GetDockSite(c.instance)
 }
 
 // SetDockSite
+// CN: 设置停靠站点。
+// EN: Set Docking site.
 func (c *TComboBox) SetDockSite(value bool) {
     ComboBox_SetDockSite(c.instance, value)
 }
@@ -928,36 +1090,50 @@ func (c *TComboBox) AlignDisabled() bool {
 }
 
 // MouseInClient
+// CN: 获取鼠标是否在客户端，仅VCL有效。
+// EN: Get Whether the mouse is on the client, only VCL is valid.
 func (c *TComboBox) MouseInClient() bool {
     return ComboBox_GetMouseInClient(c.instance)
 }
 
 // VisibleDockClientCount
+// CN: 获取当前停靠的可视总数。
+// EN: Get The total number of visible calls currently docked.
 func (c *TComboBox) VisibleDockClientCount() int32 {
     return ComboBox_GetVisibleDockClientCount(c.instance)
 }
 
 // Brush
+// CN: 获取画刷对象。
+// EN: Get Brush.
 func (c *TComboBox) Brush() *TBrush {
     return BrushFromInst(ComboBox_GetBrush(c.instance))
 }
 
 // ControlCount
+// CN: 获取子控件数。
+// EN: Get Number of child controls.
 func (c *TComboBox) ControlCount() int32 {
     return ComboBox_GetControlCount(c.instance)
 }
 
 // Handle
+// CN: 获取控件句柄。
+// EN: Get Control handle.
 func (c *TComboBox) Handle() HWND {
     return ComboBox_GetHandle(c.instance)
 }
 
 // ParentWindow
+// CN: 获取父容器句柄。
+// EN: Get Parent container handle.
 func (c *TComboBox) ParentWindow() HWND {
     return ComboBox_GetParentWindow(c.instance)
 }
 
 // SetParentWindow
+// CN: 设置父容器句柄。
+// EN: Set Parent container handle.
 func (c *TComboBox) SetParentWindow(value HWND) {
     ComboBox_SetParentWindow(c.instance, value)
 }
@@ -993,11 +1169,15 @@ func (c *TComboBox) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (c *TComboBox) ClientHeight() int32 {
     return ComboBox_GetClientHeight(c.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (c *TComboBox) SetClientHeight(value int32) {
     ComboBox_SetClientHeight(c.instance, value)
 }
@@ -1008,36 +1188,50 @@ func (c *TComboBox) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (c *TComboBox) ClientRect() TRect {
     return ComboBox_GetClientRect(c.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (c *TComboBox) ClientWidth() int32 {
     return ComboBox_GetClientWidth(c.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (c *TComboBox) SetClientWidth(value int32) {
     ComboBox_SetClientWidth(c.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (c *TComboBox) ControlState() TControlState {
     return ComboBox_GetControlState(c.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (c *TComboBox) SetControlState(value TControlState) {
     ComboBox_SetControlState(c.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (c *TComboBox) ControlStyle() TControlStyle {
     return ComboBox_GetControlStyle(c.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (c *TComboBox) SetControlStyle(value TControlStyle) {
     ComboBox_SetControlStyle(c.instance, value)
 }
@@ -1082,51 +1276,71 @@ func (c *TComboBox) SetParent(value IWinControl) {
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (c *TComboBox) AlignWithMargins() bool {
     return ComboBox_GetAlignWithMargins(c.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (c *TComboBox) SetAlignWithMargins(value bool) {
     ComboBox_SetAlignWithMargins(c.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (c *TComboBox) Left() int32 {
     return ComboBox_GetLeft(c.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (c *TComboBox) SetLeft(value int32) {
     ComboBox_SetLeft(c.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (c *TComboBox) Top() int32 {
     return ComboBox_GetTop(c.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (c *TComboBox) SetTop(value int32) {
     ComboBox_SetTop(c.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (c *TComboBox) Width() int32 {
     return ComboBox_GetWidth(c.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (c *TComboBox) SetWidth(value int32) {
     ComboBox_SetWidth(c.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (c *TComboBox) Height() int32 {
     return ComboBox_GetHeight(c.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (c *TComboBox) SetHeight(value int32) {
     ComboBox_SetHeight(c.instance, value)
 }
@@ -1160,21 +1374,29 @@ func (c *TComboBox) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (c *TComboBox) Margins() *TMargins {
     return MarginsFromInst(ComboBox_GetMargins(c.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (c *TComboBox) SetMargins(value *TMargins) {
     ComboBox_SetMargins(c.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (c *TComboBox) CustomHint() *TCustomHint {
     return CustomHintFromInst(ComboBox_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (c *TComboBox) SetCustomHint(value IComponent) {
     ComboBox_SetCustomHint(c.instance, CheckPtr(value))
 }

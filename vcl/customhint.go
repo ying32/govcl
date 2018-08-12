@@ -102,6 +102,8 @@ func TCustomHintClass() TClass {
 }
 
 // ShowHint
+// CN: 显示鼠标悬停提示。
+// EN: Show mouseover tips.
 func (c *TCustomHint) ShowHint() {
     CustomHint_ShowHint(c.instance)
 }
@@ -112,21 +114,29 @@ func (c *TCustomHint) HideHint() {
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (c *TCustomHint) FindComponent(AName string) *TComponent {
     return ComponentFromInst(CustomHint_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (c *TCustomHint) GetNamePath() string {
     return CustomHint_GetNamePath(c.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (c *TCustomHint) HasParent() bool {
     return CustomHint_HasParent(c.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (c *TCustomHint) Assign(Source IObject) {
     CustomHint_Assign(c.instance, CheckPtr(Source))
 }

@@ -102,111 +102,155 @@ func TPaintBoxClass() TClass {
 }
 
 // BringToFront
+// CN: 将控件置于最前。
+// EN: Bring the control to the front.
 func (p *TPaintBox) BringToFront() {
     PaintBox_BringToFront(p.instance)
 }
 
 // ClientToScreen
+// CN: 将客户端坐标转为绝对的屏幕坐标。
+// EN: Convert client coordinates to absolute screen coordinates.
 func (p *TPaintBox) ClientToScreen(Point TPoint) TPoint {
     return PaintBox_ClientToScreen(p.instance, Point)
 }
 
 // ClientToParent
+// CN: 将客户端坐标转为父容器坐标。
+// EN: Convert client coordinates to parent container coordinates.
 func (p *TPaintBox) ClientToParent(Point TPoint, AParent IWinControl) TPoint {
     return PaintBox_ClientToParent(p.instance, Point , CheckPtr(AParent))
 }
 
 // Dragging
+// CN: 是否在拖拽中。
+// EN: Is it in the middle of dragging.
 func (p *TPaintBox) Dragging() bool {
     return PaintBox_Dragging(p.instance)
 }
 
 // HasParent
+// CN: 是否有父容器。
+// EN: Is there a parent container.
 func (p *TPaintBox) HasParent() bool {
     return PaintBox_HasParent(p.instance)
 }
 
 // Hide
+// CN: 隐藏控件。
+// EN: Hidden control.
 func (p *TPaintBox) Hide() {
     PaintBox_Hide(p.instance)
 }
 
 // Invalidate
+// CN: 要求重绘。
+// EN: Redraw.
 func (p *TPaintBox) Invalidate() {
     PaintBox_Invalidate(p.instance)
 }
 
 // Perform
+// CN: 发送一个消息。
+// EN: Send a message.
 func (p *TPaintBox) Perform(Msg uint32, WParam uintptr, LParam int) int {
     return PaintBox_Perform(p.instance, Msg , WParam , LParam)
 }
 
 // Refresh
+// CN: 刷新控件。
+// EN: Refresh control.
 func (p *TPaintBox) Refresh() {
     PaintBox_Refresh(p.instance)
 }
 
 // Repaint
+// CN: 重绘。
+// EN: Repaint.
 func (p *TPaintBox) Repaint() {
     PaintBox_Repaint(p.instance)
 }
 
 // ScreenToClient
+// CN: 将屏幕坐标转为客户端坐标。
+// EN: Convert screen coordinates to client coordinates.
 func (p *TPaintBox) ScreenToClient(Point TPoint) TPoint {
     return PaintBox_ScreenToClient(p.instance, Point)
 }
 
 // ParentToClient
+// CN: 将父容器坐标转为客户端坐标。
+// EN: Convert parent container coordinates to client coordinates.
 func (p *TPaintBox) ParentToClient(Point TPoint, AParent IWinControl) TPoint {
     return PaintBox_ParentToClient(p.instance, Point , CheckPtr(AParent))
 }
 
 // SendToBack
+// CN: 控件至于最后面。
+// EN: The control is placed at the end.
 func (p *TPaintBox) SendToBack() {
     PaintBox_SendToBack(p.instance)
 }
 
 // SetBounds
+// CN: 设置组件边界。
+// EN: Set component boundaries.
 func (p *TPaintBox) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight int32) {
     PaintBox_SetBounds(p.instance, ALeft , ATop , AWidth , AHeight)
 }
 
 // Show
+// CN: 显示控件。
+// EN: Show control.
 func (p *TPaintBox) Show() {
     PaintBox_Show(p.instance)
 }
 
 // Update
+// CN: 控件更新。
+// EN: Update.
 func (p *TPaintBox) Update() {
     PaintBox_Update(p.instance)
 }
 
 // GetTextBuf
+// CN: 获取控件的字符，如果有。
+// EN: Get the characters of the control, if any.
 func (p *TPaintBox) GetTextBuf(Buffer string, BufSize int32) int32 {
     return PaintBox_GetTextBuf(p.instance, Buffer , BufSize)
 }
 
 // GetTextLen
+// CN: 获取控件的字符长，如果有。
+// EN: Get the character length of the control, if any.
 func (p *TPaintBox) GetTextLen() int32 {
     return PaintBox_GetTextLen(p.instance)
 }
 
 // SetTextBuf
+// CN: 设置控件字符，如果有。
+// EN: Set control characters, if any.
 func (p *TPaintBox) SetTextBuf(Buffer string) {
     PaintBox_SetTextBuf(p.instance, Buffer)
 }
 
 // FindComponent
+// CN: 查找指定名称的组件。
+// EN: Find the component with the specified name.
 func (p *TPaintBox) FindComponent(AName string) *TComponent {
     return ComponentFromInst(PaintBox_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (p *TPaintBox) GetNamePath() string {
     return PaintBox_GetNamePath(p.instance)
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (p *TPaintBox) Assign(Source IObject) {
     PaintBox_Assign(p.instance, CheckPtr(Source))
 }
@@ -273,11 +317,15 @@ func (p *TPaintBox) Canvas() *TCanvas {
 }
 
 // Align
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
 func (p *TPaintBox) Align() TAlign {
     return PaintBox_GetAlign(p.instance)
 }
 
 // SetAlign
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
 func (p *TPaintBox) SetAlign(value TAlign) {
     PaintBox_SetAlign(p.instance, value)
 }
@@ -293,41 +341,57 @@ func (p *TPaintBox) SetAnchors(value TAnchors) {
 }
 
 // Color
+// CN: 获取设置颜色。
+// EN: Get Set color.
 func (p *TPaintBox) Color() TColor {
     return PaintBox_GetColor(p.instance)
 }
 
 // SetColor
+// CN: 设置设置颜色。
+// EN: Set Set color.
 func (p *TPaintBox) SetColor(value TColor) {
     PaintBox_SetColor(p.instance, value)
 }
 
 // DragCursor
+// CN: 获取设置控件拖拽时的光标。
+// EN: Get Set the cursor when the control is dragged.
 func (p *TPaintBox) DragCursor() TCursor {
     return PaintBox_GetDragCursor(p.instance)
 }
 
 // SetDragCursor
+// CN: 设置设置控件拖拽时的光标。
+// EN: Set Set the cursor when the control is dragged.
 func (p *TPaintBox) SetDragCursor(value TCursor) {
     PaintBox_SetDragCursor(p.instance, value)
 }
 
 // DragKind
+// CN: 获取拖拽方式。
+// EN: Get Drag and drop.
 func (p *TPaintBox) DragKind() TDragKind {
     return PaintBox_GetDragKind(p.instance)
 }
 
 // SetDragKind
+// CN: 设置拖拽方式。
+// EN: Set Drag and drop.
 func (p *TPaintBox) SetDragKind(value TDragKind) {
     PaintBox_SetDragKind(p.instance, value)
 }
 
 // DragMode
+// CN: 获取拖拽模式。
+// EN: Get Drag mode.
 func (p *TPaintBox) DragMode() TDragMode {
     return PaintBox_GetDragMode(p.instance)
 }
 
 // SetDragMode
+// CN: 设置拖拽模式。
+// EN: Set Drag mode.
 func (p *TPaintBox) SetDragMode(value TDragMode) {
     PaintBox_SetDragMode(p.instance, value)
 }
@@ -347,31 +411,43 @@ func (p *TPaintBox) SetEnabled(value bool) {
 }
 
 // Font
+// CN: 获取字体。
+// EN: Get Font.
 func (p *TPaintBox) Font() *TFont {
     return FontFromInst(PaintBox_GetFont(p.instance))
 }
 
 // SetFont
+// CN: 设置字体。
+// EN: Set Font.
 func (p *TPaintBox) SetFont(value *TFont) {
     PaintBox_SetFont(p.instance, CheckPtr(value))
 }
 
 // ParentColor
+// CN: 获取父容器颜色。
+// EN: Get parent color.
 func (p *TPaintBox) ParentColor() bool {
     return PaintBox_GetParentColor(p.instance)
 }
 
 // SetParentColor
+// CN: 设置父容器颜色。
+// EN: Set parent color.
 func (p *TPaintBox) SetParentColor(value bool) {
     PaintBox_SetParentColor(p.instance, value)
 }
 
 // ParentFont
+// CN: 获取父容器字体。
+// EN: Get Parent container font.
 func (p *TPaintBox) ParentFont() bool {
     return PaintBox_GetParentFont(p.instance)
 }
 
 // SetParentFont
+// CN: 设置父容器字体。
+// EN: Set Parent container font.
 func (p *TPaintBox) SetParentFont(value bool) {
     PaintBox_SetParentFont(p.instance, value)
 }
@@ -387,21 +463,29 @@ func (p *TPaintBox) SetParentShowHint(value bool) {
 }
 
 // PopupMenu
+// CN: 获取右键菜单。
+// EN: Get Right click menu.
 func (p *TPaintBox) PopupMenu() *TPopupMenu {
     return PopupMenuFromInst(PaintBox_GetPopupMenu(p.instance))
 }
 
 // SetPopupMenu
+// CN: 设置右键菜单。
+// EN: Set Right click menu.
 func (p *TPaintBox) SetPopupMenu(value IComponent) {
     PaintBox_SetPopupMenu(p.instance, CheckPtr(value))
 }
 
 // ShowHint
+// CN: 获取显示鼠标悬停提示。
+// EN: Get Show mouseover tips.
 func (p *TPaintBox) ShowHint() bool {
     return PaintBox_GetShowHint(p.instance)
 }
 
 // SetShowHint
+// CN: 设置显示鼠标悬停提示。
+// EN: Set Show mouseover tips.
 func (p *TPaintBox) SetShowHint(value bool) {
     PaintBox_SetShowHint(p.instance, value)
 }
@@ -428,6 +512,8 @@ func (p *TPaintBox) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnContextPopup
+// CN: 设置上下文弹出事件，一般是右键时弹出。
+// EN: Set Context popup event, usually pop up when right click.
 func (p *TPaintBox) SetOnContextPopup(fn TContextPopupEvent) {
     PaintBox_SetOnContextPopup(p.instance, fn)
 }
@@ -438,36 +524,50 @@ func (p *TPaintBox) SetOnDblClick(fn TNotifyEvent) {
 }
 
 // SetOnDragDrop
+// CN: 设置拖拽下落事件。
+// EN: Set Drag and drop event.
 func (p *TPaintBox) SetOnDragDrop(fn TDragDropEvent) {
     PaintBox_SetOnDragDrop(p.instance, fn)
 }
 
 // SetOnDragOver
+// CN: 设置拖拽完成事件。
+// EN: Set Drag and drop completion event.
 func (p *TPaintBox) SetOnDragOver(fn TDragOverEvent) {
     PaintBox_SetOnDragOver(p.instance, fn)
 }
 
 // SetOnEndDock
+// CN: 设置停靠结束事件。
+// EN: Set Dock end event.
 func (p *TPaintBox) SetOnEndDock(fn TEndDragEvent) {
     PaintBox_SetOnEndDock(p.instance, fn)
 }
 
 // SetOnEndDrag
+// CN: 设置拖拽结束。
+// EN: Set End of drag.
 func (p *TPaintBox) SetOnEndDrag(fn TEndDragEvent) {
     PaintBox_SetOnEndDrag(p.instance, fn)
 }
 
 // SetOnMouseDown
+// CN: 设置鼠标按下事件。
+// EN: Set Mouse down event.
 func (p *TPaintBox) SetOnMouseDown(fn TMouseEvent) {
     PaintBox_SetOnMouseDown(p.instance, fn)
 }
 
 // SetOnMouseEnter
+// CN: 设置鼠标进入事件。
+// EN: Set Mouse entry event.
 func (p *TPaintBox) SetOnMouseEnter(fn TNotifyEvent) {
     PaintBox_SetOnMouseEnter(p.instance, fn)
 }
 
 // SetOnMouseLeave
+// CN: 设置鼠标离开事件。
+// EN: Set Mouse leave event.
 func (p *TPaintBox) SetOnMouseLeave(fn TNotifyEvent) {
     PaintBox_SetOnMouseLeave(p.instance, fn)
 }
@@ -478,6 +578,8 @@ func (p *TPaintBox) SetOnMouseMove(fn TMouseMoveEvent) {
 }
 
 // SetOnMouseUp
+// CN: 设置鼠标抬起事件。
+// EN: Set Mouse lift event.
 func (p *TPaintBox) SetOnMouseUp(fn TMouseEvent) {
     PaintBox_SetOnMouseUp(p.instance, fn)
 }
@@ -523,11 +625,15 @@ func (p *TPaintBox) SetBoundsRect(value TRect) {
 }
 
 // ClientHeight
+// CN: 获取客户区高度。
+// EN: Get client height.
 func (p *TPaintBox) ClientHeight() int32 {
     return PaintBox_GetClientHeight(p.instance)
 }
 
 // SetClientHeight
+// CN: 设置客户区高度。
+// EN: Set client height.
 func (p *TPaintBox) SetClientHeight(value int32) {
     PaintBox_SetClientHeight(p.instance, value)
 }
@@ -538,36 +644,50 @@ func (p *TPaintBox) ClientOrigin() TPoint {
 }
 
 // ClientRect
+// CN: 获取客户区矩形。
+// EN: Get client rectangle.
 func (p *TPaintBox) ClientRect() TRect {
     return PaintBox_GetClientRect(p.instance)
 }
 
 // ClientWidth
+// CN: 获取客户区宽度。
+// EN: Get client width.
 func (p *TPaintBox) ClientWidth() int32 {
     return PaintBox_GetClientWidth(p.instance)
 }
 
 // SetClientWidth
+// CN: 设置客户区宽度。
+// EN: Set client width.
 func (p *TPaintBox) SetClientWidth(value int32) {
     PaintBox_SetClientWidth(p.instance, value)
 }
 
 // ControlState
+// CN: 获取控件状态。
+// EN: Get control state.
 func (p *TPaintBox) ControlState() TControlState {
     return PaintBox_GetControlState(p.instance)
 }
 
 // SetControlState
+// CN: 设置控件状态。
+// EN: Set control state.
 func (p *TPaintBox) SetControlState(value TControlState) {
     PaintBox_SetControlState(p.instance, value)
 }
 
 // ControlStyle
+// CN: 获取控件样式。
+// EN: Get control style.
 func (p *TPaintBox) ControlStyle() TControlStyle {
     return PaintBox_GetControlStyle(p.instance)
 }
 
 // SetControlStyle
+// CN: 设置控件样式。
+// EN: Set control style.
 func (p *TPaintBox) SetControlStyle(value TControlStyle) {
     PaintBox_SetControlStyle(p.instance, value)
 }
@@ -612,61 +732,85 @@ func (p *TPaintBox) SetParent(value IWinControl) {
 }
 
 // StyleElements
+// CN: 获取样式元素。
+// EN: Get Style element.
 func (p *TPaintBox) StyleElements() TStyleElements {
     return PaintBox_GetStyleElements(p.instance)
 }
 
 // SetStyleElements
+// CN: 设置样式元素。
+// EN: Set Style element.
 func (p *TPaintBox) SetStyleElements(value TStyleElements) {
     PaintBox_SetStyleElements(p.instance, value)
 }
 
 // AlignWithMargins
+// CN: 获取边距，仅VCL有效。
+// EN: Get The margin. Only VCL is valid..
 func (p *TPaintBox) AlignWithMargins() bool {
     return PaintBox_GetAlignWithMargins(p.instance)
 }
 
 // SetAlignWithMargins
+// CN: 设置边距，仅VCL有效。
+// EN: Set The margin. Only VCL is valid..
 func (p *TPaintBox) SetAlignWithMargins(value bool) {
     PaintBox_SetAlignWithMargins(p.instance, value)
 }
 
 // Left
+// CN: 获取左边位置。
+// EN: Get Left position.
 func (p *TPaintBox) Left() int32 {
     return PaintBox_GetLeft(p.instance)
 }
 
 // SetLeft
+// CN: 设置左边位置。
+// EN: Set Left position.
 func (p *TPaintBox) SetLeft(value int32) {
     PaintBox_SetLeft(p.instance, value)
 }
 
 // Top
+// CN: 获取顶边位置。
+// EN: Get Top position.
 func (p *TPaintBox) Top() int32 {
     return PaintBox_GetTop(p.instance)
 }
 
 // SetTop
+// CN: 设置顶边位置。
+// EN: Set Top position.
 func (p *TPaintBox) SetTop(value int32) {
     PaintBox_SetTop(p.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (p *TPaintBox) Width() int32 {
     return PaintBox_GetWidth(p.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (p *TPaintBox) SetWidth(value int32) {
     PaintBox_SetWidth(p.instance, value)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (p *TPaintBox) Height() int32 {
     return PaintBox_GetHeight(p.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (p *TPaintBox) SetHeight(value int32) {
     PaintBox_SetHeight(p.instance, value)
 }
@@ -700,21 +844,29 @@ func (p *TPaintBox) SetHint(value string) {
 }
 
 // Margins
+// CN: 获取边矩，仅VCL有效。
+// EN: Get Edge moment, only VCL is valid.
 func (p *TPaintBox) Margins() *TMargins {
     return MarginsFromInst(PaintBox_GetMargins(p.instance))
 }
 
 // SetMargins
+// CN: 设置边矩，仅VCL有效。
+// EN: Set Edge moment, only VCL is valid.
 func (p *TPaintBox) SetMargins(value *TMargins) {
     PaintBox_SetMargins(p.instance, CheckPtr(value))
 }
 
 // CustomHint
+// CN: 获取自定义提示。
+// EN: Get custom hint.
 func (p *TPaintBox) CustomHint() *TCustomHint {
     return CustomHintFromInst(PaintBox_GetCustomHint(p.instance))
 }
 
 // SetCustomHint
+// CN: 设置自定义提示。
+// EN: Set custom hint.
 func (p *TPaintBox) SetCustomHint(value IComponent) {
     PaintBox_SetCustomHint(p.instance, CheckPtr(value))
 }

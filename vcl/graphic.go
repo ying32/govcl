@@ -134,11 +134,15 @@ func (g *TGraphic) SetSize(AWidth int32, AHeight int32) {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (g *TGraphic) Assign(Source IObject) {
     Graphic_Assign(g.instance, CheckPtr(Source))
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (g *TGraphic) GetNamePath() string {
     return Graphic_GetNamePath(g.instance)
 }
@@ -193,26 +197,36 @@ func (g *TGraphic) ToString() string {
 }
 
 // Empty
+// CN: 获取对象是否为空。
+// EN: Get object is empty.
 func (g *TGraphic) Empty() bool {
     return Graphic_GetEmpty(g.instance)
 }
 
 // Height
+// CN: 获取高度。
+// EN: Get height.
 func (g *TGraphic) Height() int32 {
     return Graphic_GetHeight(g.instance)
 }
 
 // SetHeight
+// CN: 设置高度。
+// EN: Set height.
 func (g *TGraphic) SetHeight(value int32) {
     Graphic_SetHeight(g.instance, value)
 }
 
 // Modified
+// CN: 获取修改。
+// EN: Get modified.
 func (g *TGraphic) Modified() bool {
     return Graphic_GetModified(g.instance)
 }
 
 // SetModified
+// CN: 设置修改。
+// EN: Set modified.
 func (g *TGraphic) SetModified(value bool) {
     Graphic_SetModified(g.instance, value)
 }
@@ -228,26 +242,36 @@ func (g *TGraphic) SetPaletteModified(value bool) {
 }
 
 // Transparent
+// CN: 获取透明。
+// EN: Get transparent.
 func (g *TGraphic) Transparent() bool {
     return Graphic_GetTransparent(g.instance)
 }
 
 // SetTransparent
+// CN: 设置透明。
+// EN: Set transparent.
 func (g *TGraphic) SetTransparent(value bool) {
     Graphic_SetTransparent(g.instance, value)
 }
 
 // Width
+// CN: 获取宽度。
+// EN: Get width.
 func (g *TGraphic) Width() int32 {
     return Graphic_GetWidth(g.instance)
 }
 
 // SetWidth
+// CN: 设置宽度。
+// EN: Set width.
 func (g *TGraphic) SetWidth(value int32) {
     Graphic_SetWidth(g.instance, value)
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (g *TGraphic) SetOnChange(fn TNotifyEvent) {
     Graphic_SetOnChange(g.instance, fn)
 }

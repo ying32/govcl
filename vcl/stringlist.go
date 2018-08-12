@@ -112,6 +112,8 @@ func (s *TStringList) AddObject(S string, AObject IObject) int32 {
 }
 
 // Assign
+// CN: 复制一个对象，如果对象实现了此方法的话。
+// EN: Copy an object, if the object implements this method.
 func (s *TStringList) Assign(Source IObject) {
     StringList_Assign(s.instance, CheckPtr(Source))
 }
@@ -199,6 +201,8 @@ func (s *TStringList) SaveToStream(Stream IObject) {
 }
 
 // GetNamePath
+// CN: 获取类名路径。
+// EN: Get the class name path.
 func (s *TStringList) GetNamePath() string {
     return StringList_GetNamePath(s.instance)
 }
@@ -263,6 +267,8 @@ func (s *TStringList) SetSorted(value bool) {
 }
 
 // SetOnChange
+// CN: 设置改变事件。
+// EN: Set changed event.
 func (s *TStringList) SetOnChange(fn TNotifyEvent) {
     StringList_SetOnChange(s.instance, fn)
 }
