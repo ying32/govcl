@@ -312,6 +312,8 @@ func (s *TSplitter) ToString() string {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (s *TSplitter) Canvas() *TCanvas {
     return CanvasFromInst(Splitter_GetCanvas(s.instance))
 }
@@ -331,15 +333,15 @@ func (s *TSplitter) SetAlign(value TAlign) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (s *TSplitter) Color() TColor {
     return Splitter_GetColor(s.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (s *TSplitter) SetColor(value TColor) {
     Splitter_SetColor(s.instance, value)
 }
@@ -415,6 +417,8 @@ func (s *TSplitter) SetStyleElements(value TStyleElements) {
 }
 
 // SetOnPaint
+// CN: 设置绘画事件。
+// EN: .
 func (s *TSplitter) SetOnPaint(fn TNotifyEvent) {
     Splitter_SetOnPaint(s.instance, fn)
 }
@@ -444,11 +448,15 @@ func (s *TSplitter) SetAction(value IComponent) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TSplitter) Anchors() TAnchors {
     return Splitter_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TSplitter) SetAnchors(value TAnchors) {
     Splitter_SetAnchors(s.instance, value)
 }
@@ -651,14 +659,14 @@ func (s *TSplitter) SetHeight(value int32) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TSplitter) Hint() string {
     return Splitter_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TSplitter) SetHint(value string) {
     Splitter_SetHint(s.instance, value)

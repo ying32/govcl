@@ -112,6 +112,8 @@ func (p *TProgressBar) StepBy(Delta int32) {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (p *TProgressBar) CanFocus() bool {
     return ProgressBar_CanFocus(p.instance)
 }
@@ -451,21 +453,29 @@ func (p *TProgressBar) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (p *TProgressBar) Anchors() TAnchors {
     return ProgressBar_GetAnchors(p.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (p *TProgressBar) SetAnchors(value TAnchors) {
     ProgressBar_SetAnchors(p.instance, value)
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (p *TProgressBar) BorderWidth() int32 {
     return ProgressBar_GetBorderWidth(p.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (p *TProgressBar) SetBorderWidth(value int32) {
     ProgressBar_SetBorderWidth(p.instance, value)
 }
@@ -541,14 +551,14 @@ func (p *TProgressBar) SetEnabled(value bool) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (p *TProgressBar) Hint() string {
     return ProgressBar_GetHint(p.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (p *TProgressBar) SetHint(value string) {
     ProgressBar_SetHint(p.instance, value)
@@ -853,6 +863,8 @@ func (p *TProgressBar) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (p *TProgressBar) SetOnMouseMove(fn TMouseMoveEvent) {
     ProgressBar_SetOnMouseMove(p.instance, fn)
 }
@@ -865,11 +877,15 @@ func (p *TProgressBar) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (p *TProgressBar) SetOnStartDock(fn TStartDockEvent) {
     ProgressBar_SetOnStartDock(p.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (p *TProgressBar) DockClientCount() int32 {
     return ProgressBar_GetDockClientCount(p.instance)
 }
@@ -889,6 +905,8 @@ func (p *TProgressBar) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (p *TProgressBar) AlignDisabled() bool {
     return ProgressBar_GetAlignDisabled(p.instance)
 }
@@ -943,11 +961,15 @@ func (p *TProgressBar) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (p *TProgressBar) UseDockManager() bool {
     return ProgressBar_GetUseDockManager(p.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (p *TProgressBar) SetUseDockManager(value bool) {
     ProgressBar_SetUseDockManager(p.instance, value)
 }
@@ -1258,11 +1280,15 @@ func (p *TProgressBar) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (p *TProgressBar) DockClients(Index int32) *TControl {
     return ControlFromInst(ProgressBar_GetDockClients(p.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (p *TProgressBar) Controls(Index int32) *TControl {
     return ControlFromInst(ProgressBar_GetControls(p.instance, Index))
 }

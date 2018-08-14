@@ -336,11 +336,15 @@ func (g *TGauge) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (g *TGauge) Anchors() TAnchors {
     return Gauge_GetAnchors(g.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (g *TGauge) SetAnchors(value TAnchors) {
     Gauge_SetAnchors(g.instance, value)
 }
@@ -356,25 +360,29 @@ func (g *TGauge) SetBackColor(value TColor) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (g *TGauge) BorderStyle() TBorderStyle {
     return Gauge_GetBorderStyle(g.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (g *TGauge) SetBorderStyle(value TBorderStyle) {
     Gauge_SetBorderStyle(g.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (g *TGauge) Color() TColor {
     return Gauge_GetColor(g.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (g *TGauge) SetColor(value TColor) {
     Gauge_SetColor(g.instance, value)
 }
@@ -783,14 +791,14 @@ func (g *TGauge) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (g *TGauge) Hint() string {
     return Gauge_GetHint(g.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (g *TGauge) SetHint(value string) {
     Gauge_SetHint(g.instance, value)

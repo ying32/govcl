@@ -336,15 +336,15 @@ func (b *TBoundLabel) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (b *TBoundLabel) Color() TColor {
     return BoundLabel_GetColor(b.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (b *TBoundLabel) SetColor(value TColor) {
     BoundLabel_SetColor(b.instance, value)
 }
@@ -576,6 +576,8 @@ func (b *TBoundLabel) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (b *TBoundLabel) SetOnDblClick(fn TNotifyEvent) {
     BoundLabel_SetOnDblClick(b.instance, fn)
 }
@@ -616,6 +618,8 @@ func (b *TBoundLabel) SetOnMouseDown(fn TMouseEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (b *TBoundLabel) SetOnMouseMove(fn TMouseMoveEvent) {
     BoundLabel_SetOnMouseMove(b.instance, fn)
 }
@@ -628,11 +632,15 @@ func (b *TBoundLabel) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (b *TBoundLabel) SetOnStartDock(fn TStartDockEvent) {
     BoundLabel_SetOnStartDock(b.instance, fn)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (b *TBoundLabel) Canvas() *TCanvas {
     return CanvasFromInst(BoundLabel_GetCanvas(b.instance))
 }
@@ -686,11 +694,15 @@ func (b *TBoundLabel) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (b *TBoundLabel) Anchors() TAnchors {
     return BoundLabel_GetAnchors(b.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (b *TBoundLabel) SetAnchors(value TAnchors) {
     BoundLabel_SetAnchors(b.instance, value)
 }
@@ -869,14 +881,14 @@ func (b *TBoundLabel) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (b *TBoundLabel) Hint() string {
     return BoundLabel_GetHint(b.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (b *TBoundLabel) SetHint(value string) {
     BoundLabel_SetHint(b.instance, value)

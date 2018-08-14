@@ -102,6 +102,8 @@ func TOpenDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (o *TOpenDialog) Execute() bool {
     return OpenDialog_Execute(o.instance)
 }
@@ -288,6 +290,8 @@ func (o *TOpenDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (o *TOpenDialog) SetOnShow(fn TNotifyEvent) {
     OpenDialog_SetOnShow(o.instance, fn)
 }

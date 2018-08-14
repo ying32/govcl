@@ -340,21 +340,29 @@ func (l *TLabel) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (l *TLabel) Anchors() TAnchors {
     return Label_GetAnchors(l.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (l *TLabel) SetAnchors(value TAnchors) {
     Label_SetAnchors(l.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (l *TLabel) AutoSize() bool {
     return Label_GetAutoSize(l.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (l *TLabel) SetAutoSize(value bool) {
     Label_SetAutoSize(l.instance, value)
 }
@@ -384,15 +392,15 @@ func (l *TLabel) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (l *TLabel) Color() TColor {
     return Label_GetColor(l.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (l *TLabel) SetColor(value TColor) {
     Label_SetColor(l.instance, value)
 }
@@ -644,6 +652,8 @@ func (l *TLabel) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (l *TLabel) SetOnDblClick(fn TNotifyEvent) {
     Label_SetOnDblClick(l.instance, fn)
 }
@@ -684,6 +694,8 @@ func (l *TLabel) SetOnMouseDown(fn TMouseEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (l *TLabel) SetOnMouseMove(fn TMouseMoveEvent) {
     Label_SetOnMouseMove(l.instance, fn)
 }
@@ -710,11 +722,15 @@ func (l *TLabel) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (l *TLabel) SetOnStartDock(fn TStartDockEvent) {
     Label_SetOnStartDock(l.instance, fn)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (l *TLabel) Canvas() *TCanvas {
     return CanvasFromInst(Label_GetCanvas(l.instance))
 }
@@ -931,14 +947,14 @@ func (l *TLabel) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (l *TLabel) Hint() string {
     return Label_GetHint(l.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (l *TLabel) SetHint(value string) {
     Label_SetHint(l.instance, value)

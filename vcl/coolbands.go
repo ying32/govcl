@@ -131,6 +131,8 @@ func (c *TCoolBands) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (c *TCoolBands) Clear() {
     CoolBands_Clear(c.instance)
 }

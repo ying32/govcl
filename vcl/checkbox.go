@@ -102,6 +102,8 @@ func TCheckBoxClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (c *TCheckBox) CanFocus() bool {
     return CheckBox_CanFocus(c.instance)
 }
@@ -475,11 +477,15 @@ func (c *TCheckBox) SetAllowGrayed(value bool) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TCheckBox) Anchors() TAnchors {
     return CheckBox_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TCheckBox) SetAnchors(value TAnchors) {
     CheckBox_SetAnchors(c.instance, value)
 }
@@ -509,25 +515,29 @@ func (c *TCheckBox) SetCaption(value string) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (c *TCheckBox) Checked() bool {
     return CheckBox_GetChecked(c.instance)
 }
 
 // SetChecked
+// CN: 设置是否选中。
+// EN: .
 func (c *TCheckBox) SetChecked(value bool) {
     CheckBox_SetChecked(c.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TCheckBox) Color() TColor {
     return CheckBox_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TCheckBox) SetColor(value TColor) {
     CheckBox_SetColor(c.instance, value)
 }
@@ -883,6 +893,8 @@ func (c *TCheckBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (c *TCheckBox) SetOnMouseMove(fn TMouseMoveEvent) {
     CheckBox_SetOnMouseMove(c.instance, fn)
 }
@@ -895,11 +907,15 @@ func (c *TCheckBox) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (c *TCheckBox) SetOnStartDock(fn TStartDockEvent) {
     CheckBox_SetOnStartDock(c.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (c *TCheckBox) DockClientCount() int32 {
     return CheckBox_GetDockClientCount(c.instance)
 }
@@ -919,6 +935,8 @@ func (c *TCheckBox) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (c *TCheckBox) AlignDisabled() bool {
     return CheckBox_GetAlignDisabled(c.instance)
 }
@@ -973,11 +991,15 @@ func (c *TCheckBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (c *TCheckBox) UseDockManager() bool {
     return CheckBox_GetUseDockManager(c.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (c *TCheckBox) SetUseDockManager(value bool) {
     CheckBox_SetUseDockManager(c.instance, value)
 }
@@ -1184,14 +1206,14 @@ func (c *TCheckBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TCheckBox) Hint() string {
     return CheckBox_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TCheckBox) SetHint(value string) {
     CheckBox_SetHint(c.instance, value)
@@ -1282,11 +1304,15 @@ func (c *TCheckBox) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (c *TCheckBox) DockClients(Index int32) *TControl {
     return ControlFromInst(CheckBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (c *TCheckBox) Controls(Index int32) *TControl {
     return ControlFromInst(CheckBox_GetControls(c.instance, Index))
 }

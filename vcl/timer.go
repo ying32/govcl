@@ -200,16 +200,22 @@ func (t *TTimer) SetEnabled(value bool) {
 }
 
 // Interval
+// CN: 获取时钟每次跳动间隔时间，ms。
+// EN: .
 func (t *TTimer) Interval() uint32 {
     return Timer_GetInterval(t.instance)
 }
 
 // SetInterval
+// CN: 设置时钟每次跳动间隔时间，ms。
+// EN: .
 func (t *TTimer) SetInterval(value uint32) {
     Timer_SetInterval(t.instance, value)
 }
 
 // SetOnTimer
+// CN: 设置时钟事件。
+// EN: .
 func (t *TTimer) SetOnTimer(fn TNotifyEvent) {
     Timer_SetOnTimer(t.instance, fn)
 }

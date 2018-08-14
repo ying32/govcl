@@ -114,41 +114,57 @@ func (l *TLabeledEdit) SetupInternalLabel() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (l *TLabeledEdit) Clear() {
     LabeledEdit_Clear(l.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (l *TLabeledEdit) ClearSelection() {
     LabeledEdit_ClearSelection(l.instance)
 }
 
 // CopyToClipboard
+// CN: 复制到粘贴板。
+// EN: .
 func (l *TLabeledEdit) CopyToClipboard() {
     LabeledEdit_CopyToClipboard(l.instance)
 }
 
 // CutToClipboard
+// CN: 剪切到粘贴板。
+// EN: .
 func (l *TLabeledEdit) CutToClipboard() {
     LabeledEdit_CutToClipboard(l.instance)
 }
 
 // PasteFromClipboard
+// CN: 从剪切板粘贴。
+// EN: .
 func (l *TLabeledEdit) PasteFromClipboard() {
     LabeledEdit_PasteFromClipboard(l.instance)
 }
 
 // Undo
+// CN: 撤销上一次操作。
+// EN: .
 func (l *TLabeledEdit) Undo() {
     LabeledEdit_Undo(l.instance)
 }
 
 // ClearUndo
+// CN: 清除撤销。
+// EN: .
 func (l *TLabeledEdit) ClearUndo() {
     LabeledEdit_ClearUndo(l.instance)
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (l *TLabeledEdit) SelectAll() {
     LabeledEdit_SelectAll(l.instance)
 }
@@ -159,6 +175,8 @@ func (l *TLabeledEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (l *TLabeledEdit) CanFocus() bool {
     return LabeledEdit_CanFocus(l.instance)
 }
@@ -491,31 +509,43 @@ func (l *TLabeledEdit) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (l *TLabeledEdit) Anchors() TAnchors {
     return LabeledEdit_GetAnchors(l.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (l *TLabeledEdit) SetAnchors(value TAnchors) {
     LabeledEdit_SetAnchors(l.instance, value)
 }
 
 // AutoSelect
+// CN: 获取自动选择。
+// EN: .
 func (l *TLabeledEdit) AutoSelect() bool {
     return LabeledEdit_GetAutoSelect(l.instance)
 }
 
 // SetAutoSelect
+// CN: 设置自动选择。
+// EN: .
 func (l *TLabeledEdit) SetAutoSelect(value bool) {
     LabeledEdit_SetAutoSelect(l.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (l *TLabeledEdit) AutoSize() bool {
     return LabeledEdit_GetAutoSize(l.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (l *TLabeledEdit) SetAutoSize(value bool) {
     LabeledEdit_SetAutoSize(l.instance, value)
 }
@@ -571,11 +601,15 @@ func (l *TLabeledEdit) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (l *TLabeledEdit) BorderStyle() TBorderStyle {
     return LabeledEdit_GetBorderStyle(l.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (l *TLabeledEdit) SetBorderStyle(value TBorderStyle) {
     LabeledEdit_SetBorderStyle(l.instance, value)
 }
@@ -591,15 +625,15 @@ func (l *TLabeledEdit) SetCharCase(value TEditCharCase) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (l *TLabeledEdit) Color() TColor {
     return LabeledEdit_GetColor(l.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (l *TLabeledEdit) SetColor(value TColor) {
     LabeledEdit_SetColor(l.instance, value)
 }
@@ -694,11 +728,15 @@ func (l *TLabeledEdit) SetFont(value *TFont) {
 }
 
 // HideSelection
+// CN: 获取隐藏选择。
+// EN: .
 func (l *TLabeledEdit) HideSelection() bool {
     return LabeledEdit_GetHideSelection(l.instance)
 }
 
 // SetHideSelection
+// CN: 设置隐藏选择。
+// EN: .
 func (l *TLabeledEdit) SetHideSelection(value bool) {
     LabeledEdit_SetHideSelection(l.instance, value)
 }
@@ -724,21 +762,29 @@ func (l *TLabeledEdit) SetLabelSpacing(value int32) {
 }
 
 // MaxLength
+// CN: 获取最大长度。
+// EN: .
 func (l *TLabeledEdit) MaxLength() int32 {
     return LabeledEdit_GetMaxLength(l.instance)
 }
 
 // SetMaxLength
+// CN: 设置最大长度。
+// EN: .
 func (l *TLabeledEdit) SetMaxLength(value int32) {
     LabeledEdit_SetMaxLength(l.instance, value)
 }
 
 // NumbersOnly
+// CN: 获取只能输入数字。
+// EN: .
 func (l *TLabeledEdit) NumbersOnly() bool {
     return LabeledEdit_GetNumbersOnly(l.instance)
 }
 
 // SetNumbersOnly
+// CN: 设置只能输入数字。
+// EN: .
 func (l *TLabeledEdit) SetNumbersOnly(value bool) {
     LabeledEdit_SetNumbersOnly(l.instance, value)
 }
@@ -806,11 +852,15 @@ func (l *TLabeledEdit) SetParentShowHint(value bool) {
 }
 
 // PasswordChar
+// CN: 获取密码掩码字符。
+// EN: .
 func (l *TLabeledEdit) PasswordChar() uint16 {
     return LabeledEdit_GetPasswordChar(l.instance)
 }
 
 // SetPasswordChar
+// CN: 设置密码掩码字符。
+// EN: .
 func (l *TLabeledEdit) SetPasswordChar(value uint16) {
     LabeledEdit_SetPasswordChar(l.instance, value)
 }
@@ -830,11 +880,15 @@ func (l *TLabeledEdit) SetPopupMenu(value IComponent) {
 }
 
 // ReadOnly
+// CN: 获取只读。
+// EN: .
 func (l *TLabeledEdit) ReadOnly() bool {
     return LabeledEdit_GetReadOnly(l.instance)
 }
 
 // SetReadOnly
+// CN: 设置只读。
+// EN: .
 func (l *TLabeledEdit) SetReadOnly(value bool) {
     LabeledEdit_SetReadOnly(l.instance, value)
 }
@@ -882,21 +936,29 @@ func (l *TLabeledEdit) SetTabStop(value bool) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (l *TLabeledEdit) Text() string {
     return LabeledEdit_GetText(l.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (l *TLabeledEdit) SetText(value string) {
     LabeledEdit_SetText(l.instance, value)
 }
 
 // TextHint
+// CN: 获取提示文本。
+// EN: .
 func (l *TLabeledEdit) TextHint() string {
     return LabeledEdit_GetTextHint(l.instance)
 }
 
 // SetTextHint
+// CN: 设置提示文本。
+// EN: .
 func (l *TLabeledEdit) SetTextHint(value string) {
     LabeledEdit_SetTextHint(l.instance, value)
 }
@@ -951,6 +1013,8 @@ func (l *TLabeledEdit) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (l *TLabeledEdit) SetOnDblClick(fn TNotifyEvent) {
     LabeledEdit_SetOnDblClick(l.instance, fn)
 }
@@ -1038,6 +1102,8 @@ func (l *TLabeledEdit) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (l *TLabeledEdit) SetOnMouseMove(fn TMouseMoveEvent) {
     LabeledEdit_SetOnMouseMove(l.instance, fn)
 }
@@ -1050,11 +1116,15 @@ func (l *TLabeledEdit) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (l *TLabeledEdit) SetOnStartDock(fn TStartDockEvent) {
     LabeledEdit_SetOnStartDock(l.instance, fn)
 }
 
 // CanUndo
+// CN: 获取能否撤销。
+// EN: .
 func (l *TLabeledEdit) CanUndo() bool {
     return LabeledEdit_GetCanUndo(l.instance)
 }
@@ -1074,36 +1144,50 @@ func (l *TLabeledEdit) SetModified(value bool) {
 }
 
 // SelLength
+// CN: 获取选择的长度。
+// EN: .
 func (l *TLabeledEdit) SelLength() int32 {
     return LabeledEdit_GetSelLength(l.instance)
 }
 
 // SetSelLength
+// CN: 设置选择的长度。
+// EN: .
 func (l *TLabeledEdit) SetSelLength(value int32) {
     LabeledEdit_SetSelLength(l.instance, value)
 }
 
 // SelStart
+// CN: 获取选择的启始位置。
+// EN: .
 func (l *TLabeledEdit) SelStart() int32 {
     return LabeledEdit_GetSelStart(l.instance)
 }
 
 // SetSelStart
+// CN: 设置选择的启始位置。
+// EN: .
 func (l *TLabeledEdit) SetSelStart(value int32) {
     LabeledEdit_SetSelStart(l.instance, value)
 }
 
 // SelText
+// CN: 获取选择的文本。
+// EN: .
 func (l *TLabeledEdit) SelText() string {
     return LabeledEdit_GetSelText(l.instance)
 }
 
 // SetSelText
+// CN: 设置选择的文本。
+// EN: .
 func (l *TLabeledEdit) SetSelText(value string) {
     LabeledEdit_SetSelText(l.instance, value)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (l *TLabeledEdit) DockClientCount() int32 {
     return LabeledEdit_GetDockClientCount(l.instance)
 }
@@ -1123,6 +1207,8 @@ func (l *TLabeledEdit) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (l *TLabeledEdit) AlignDisabled() bool {
     return LabeledEdit_GetAlignDisabled(l.instance)
 }
@@ -1177,11 +1263,15 @@ func (l *TLabeledEdit) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (l *TLabeledEdit) UseDockManager() bool {
     return LabeledEdit_GetUseDockManager(l.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (l *TLabeledEdit) SetUseDockManager(value bool) {
     LabeledEdit_SetUseDockManager(l.instance, value)
 }
@@ -1412,14 +1502,14 @@ func (l *TLabeledEdit) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (l *TLabeledEdit) Hint() string {
     return LabeledEdit_GetHint(l.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (l *TLabeledEdit) SetHint(value string) {
     LabeledEdit_SetHint(l.instance, value)
@@ -1510,11 +1600,15 @@ func (l *TLabeledEdit) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (l *TLabeledEdit) DockClients(Index int32) *TControl {
     return ControlFromInst(LabeledEdit_GetDockClients(l.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (l *TLabeledEdit) Controls(Index int32) *TControl {
     return ControlFromInst(LabeledEdit_GetControls(l.instance, Index))
 }

@@ -102,6 +102,8 @@ func TImageButtonClass() TClass {
 }
 
 // Click
+// CN: 单击。
+// EN: .
 func (i *TImageButton) Click() {
     ImageButton_Click(i.instance)
 }
@@ -341,21 +343,29 @@ func (i *TImageButton) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (i *TImageButton) Anchors() TAnchors {
     return ImageButton_GetAnchors(i.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (i *TImageButton) SetAnchors(value TAnchors) {
     ImageButton_SetAnchors(i.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (i *TImageButton) AutoSize() bool {
     return ImageButton_GetAutoSize(i.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (i *TImageButton) SetAutoSize(value bool) {
     ImageButton_SetAutoSize(i.instance, value)
 }
@@ -455,11 +465,15 @@ func (i *TImageButton) SetImageCount(value int32) {
 }
 
 // ModalResult
+// CN: 获取模态对话框显示结果。
+// EN: .
 func (i *TImageButton) ModalResult() TModalResult {
     return ImageButton_GetModalResult(i.instance)
 }
 
 // SetModalResult
+// CN: 设置模态对话框显示结果。
+// EN: .
 func (i *TImageButton) SetModalResult(value TModalResult) {
     ImageButton_SetModalResult(i.instance, value)
 }
@@ -565,6 +579,8 @@ func (i *TImageButton) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (i *TImageButton) SetOnDblClick(fn TNotifyEvent) {
     ImageButton_SetOnDblClick(i.instance, fn)
 }
@@ -619,6 +635,8 @@ func (i *TImageButton) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (i *TImageButton) SetOnMouseMove(fn TMouseMoveEvent) {
     ImageButton_SetOnMouseMove(i.instance, fn)
 }
@@ -856,14 +874,14 @@ func (i *TImageButton) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (i *TImageButton) Hint() string {
     return ImageButton_GetHint(i.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (i *TImageButton) SetHint(value string) {
     ImageButton_SetHint(i.instance, value)

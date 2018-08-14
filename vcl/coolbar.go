@@ -107,6 +107,8 @@ func (c *TCoolBar) FlipChildren(AllLevels bool) {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (c *TCoolBar) CanFocus() bool {
     return CoolBar_CanFocus(c.instance)
 }
@@ -441,21 +443,29 @@ func (c *TCoolBar) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TCoolBar) Anchors() TAnchors {
     return CoolBar_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TCoolBar) SetAnchors(value TAnchors) {
     CoolBar_SetAnchors(c.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (c *TCoolBar) AutoSize() bool {
     return CoolBar_GetAutoSize(c.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (c *TCoolBar) SetAutoSize(value bool) {
     CoolBar_SetAutoSize(c.instance, value)
 }
@@ -491,25 +501,29 @@ func (c *TCoolBar) SetBands(value *TCoolBands) {
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (c *TCoolBar) BorderWidth() int32 {
     return CoolBar_GetBorderWidth(c.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (c *TCoolBar) SetBorderWidth(value int32) {
     CoolBar_SetBorderWidth(c.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TCoolBar) Color() TColor {
     return CoolBar_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TCoolBar) SetColor(value TColor) {
     CoolBar_SetColor(c.instance, value)
 }
@@ -663,11 +677,15 @@ func (c *TCoolBar) SetFont(value *TFont) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (c *TCoolBar) Images() *TImageList {
     return ImageListFromInst(CoolBar_GetImages(c.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (c *TCoolBar) SetImages(value IComponent) {
     CoolBar_SetImages(c.instance, CheckPtr(value))
 }
@@ -832,6 +850,8 @@ func (c *TCoolBar) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (c *TCoolBar) SetOnDblClick(fn TNotifyEvent) {
     CoolBar_SetOnDblClick(c.instance, fn)
 }
@@ -896,6 +916,8 @@ func (c *TCoolBar) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (c *TCoolBar) SetOnMouseMove(fn TMouseMoveEvent) {
     CoolBar_SetOnMouseMove(c.instance, fn)
 }
@@ -908,11 +930,15 @@ func (c *TCoolBar) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (c *TCoolBar) SetOnResize(fn TNotifyEvent) {
     CoolBar_SetOnResize(c.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (c *TCoolBar) SetOnStartDock(fn TStartDockEvent) {
     CoolBar_SetOnStartDock(c.instance, fn)
 }
@@ -923,11 +949,15 @@ func (c *TCoolBar) SetOnUnDock(fn TUnDockEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (c *TCoolBar) DockClientCount() int32 {
     return CoolBar_GetDockClientCount(c.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (c *TCoolBar) AlignDisabled() bool {
     return CoolBar_GetAlignDisabled(c.instance)
 }
@@ -1010,11 +1040,15 @@ func (c *TCoolBar) SetTabStop(value bool) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (c *TCoolBar) UseDockManager() bool {
     return CoolBar_GetUseDockManager(c.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (c *TCoolBar) SetUseDockManager(value bool) {
     CoolBar_SetUseDockManager(c.instance, value)
 }
@@ -1241,14 +1275,14 @@ func (c *TCoolBar) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TCoolBar) Hint() string {
     return CoolBar_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TCoolBar) SetHint(value string) {
     CoolBar_SetHint(c.instance, value)
@@ -1339,11 +1373,15 @@ func (c *TCoolBar) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (c *TCoolBar) DockClients(Index int32) *TControl {
     return ControlFromInst(CoolBar_GetDockClients(c.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (c *TCoolBar) Controls(Index int32) *TControl {
     return ControlFromInst(CoolBar_GetControls(c.instance, Index))
 }

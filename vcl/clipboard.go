@@ -109,11 +109,15 @@ func (c *TClipboard) Assign(Source IObject) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (c *TClipboard) Clear() {
     Clipboard_Clear(c.instance)
 }
 
 // Close
+// CN: 关闭。
+// EN: .
 func (c *TClipboard) Close() {
     Clipboard_Close(c.instance)
 }

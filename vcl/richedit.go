@@ -102,6 +102,8 @@ func TRichEditClass() TClass {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (r *TRichEdit) Clear() {
     RichEdit_Clear(r.instance)
 }
@@ -122,41 +124,57 @@ func (r *TRichEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (r *TRichEdit) ClearSelection() {
     RichEdit_ClearSelection(r.instance)
 }
 
 // CopyToClipboard
+// CN: 复制到粘贴板。
+// EN: .
 func (r *TRichEdit) CopyToClipboard() {
     RichEdit_CopyToClipboard(r.instance)
 }
 
 // CutToClipboard
+// CN: 剪切到粘贴板。
+// EN: .
 func (r *TRichEdit) CutToClipboard() {
     RichEdit_CutToClipboard(r.instance)
 }
 
 // PasteFromClipboard
+// CN: 从剪切板粘贴。
+// EN: .
 func (r *TRichEdit) PasteFromClipboard() {
     RichEdit_PasteFromClipboard(r.instance)
 }
 
 // Undo
+// CN: 撤销上一次操作。
+// EN: .
 func (r *TRichEdit) Undo() {
     RichEdit_Undo(r.instance)
 }
 
 // ClearUndo
+// CN: 清除撤销。
+// EN: .
 func (r *TRichEdit) ClearUndo() {
     RichEdit_ClearUndo(r.instance)
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (r *TRichEdit) SelectAll() {
     RichEdit_SelectAll(r.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (r *TRichEdit) CanFocus() bool {
     return RichEdit_CanFocus(r.instance)
 }
@@ -510,11 +528,15 @@ func (r *TRichEdit) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (r *TRichEdit) Anchors() TAnchors {
     return RichEdit_GetAnchors(r.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (r *TRichEdit) SetAnchors(value TAnchors) {
     RichEdit_SetAnchors(r.instance, value)
 }
@@ -570,35 +592,43 @@ func (r *TRichEdit) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (r *TRichEdit) BorderStyle() TBorderStyle {
     return RichEdit_GetBorderStyle(r.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (r *TRichEdit) SetBorderStyle(value TBorderStyle) {
     RichEdit_SetBorderStyle(r.instance, value)
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (r *TRichEdit) BorderWidth() int32 {
     return RichEdit_GetBorderWidth(r.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (r *TRichEdit) SetBorderWidth(value int32) {
     RichEdit_SetBorderWidth(r.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (r *TRichEdit) Color() TColor {
     return RichEdit_GetColor(r.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (r *TRichEdit) SetColor(value TColor) {
     RichEdit_SetColor(r.instance, value)
 }
@@ -674,11 +704,15 @@ func (r *TRichEdit) SetFont(value *TFont) {
 }
 
 // HideSelection
+// CN: 获取隐藏选择。
+// EN: .
 func (r *TRichEdit) HideSelection() bool {
     return RichEdit_GetHideSelection(r.instance)
 }
 
 // SetHideSelection
+// CN: 设置隐藏选择。
+// EN: .
 func (r *TRichEdit) SetHideSelection(value bool) {
     RichEdit_SetHideSelection(r.instance, value)
 }
@@ -704,11 +738,15 @@ func (r *TRichEdit) SetLines(value IObject) {
 }
 
 // MaxLength
+// CN: 获取最大长度。
+// EN: .
 func (r *TRichEdit) MaxLength() int32 {
     return RichEdit_GetMaxLength(r.instance)
 }
 
 // SetMaxLength
+// CN: 设置最大长度。
+// EN: .
 func (r *TRichEdit) SetMaxLength(value int32) {
     RichEdit_SetMaxLength(r.instance, value)
 }
@@ -786,11 +824,15 @@ func (r *TRichEdit) SetPopupMenu(value IComponent) {
 }
 
 // ReadOnly
+// CN: 获取只读。
+// EN: .
 func (r *TRichEdit) ReadOnly() bool {
     return RichEdit_GetReadOnly(r.instance)
 }
 
 // SetReadOnly
+// CN: 设置只读。
+// EN: .
 func (r *TRichEdit) SetReadOnly(value bool) {
     RichEdit_SetReadOnly(r.instance, value)
 }
@@ -941,6 +983,8 @@ func (r *TRichEdit) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (r *TRichEdit) SetOnDblClick(fn TNotifyEvent) {
     RichEdit_SetOnDblClick(r.instance, fn)
 }
@@ -1028,6 +1072,8 @@ func (r *TRichEdit) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (r *TRichEdit) SetOnMouseMove(fn TMouseMoveEvent) {
     RichEdit_SetOnMouseMove(r.instance, fn)
 }
@@ -1040,21 +1086,29 @@ func (r *TRichEdit) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnMouseWheel
+// CN: 设置鼠标滚轮事件。
+// EN: .
 func (r *TRichEdit) SetOnMouseWheel(fn TMouseWheelEvent) {
     RichEdit_SetOnMouseWheel(r.instance, fn)
 }
 
 // SetOnMouseWheelDown
+// CN: 设置鼠标滚轮按下事件。
+// EN: .
 func (r *TRichEdit) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     RichEdit_SetOnMouseWheelDown(r.instance, fn)
 }
 
 // SetOnMouseWheelUp
+// CN: 设置鼠标滚轮抬起事件。
+// EN: .
 func (r *TRichEdit) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     RichEdit_SetOnMouseWheelUp(r.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (r *TRichEdit) SetOnStartDock(fn TStartDockEvent) {
     RichEdit_SetOnStartDock(r.instance, fn)
 }
@@ -1110,6 +1164,8 @@ func (r *TRichEdit) SetCaretPos(value TPoint) {
 }
 
 // CanUndo
+// CN: 获取能否撤销。
+// EN: .
 func (r *TRichEdit) CanUndo() bool {
     return RichEdit_GetCanUndo(r.instance)
 }
@@ -1129,56 +1185,78 @@ func (r *TRichEdit) SetModified(value bool) {
 }
 
 // SelLength
+// CN: 获取选择的长度。
+// EN: .
 func (r *TRichEdit) SelLength() int32 {
     return RichEdit_GetSelLength(r.instance)
 }
 
 // SetSelLength
+// CN: 设置选择的长度。
+// EN: .
 func (r *TRichEdit) SetSelLength(value int32) {
     RichEdit_SetSelLength(r.instance, value)
 }
 
 // SelStart
+// CN: 获取选择的启始位置。
+// EN: .
 func (r *TRichEdit) SelStart() int32 {
     return RichEdit_GetSelStart(r.instance)
 }
 
 // SetSelStart
+// CN: 设置选择的启始位置。
+// EN: .
 func (r *TRichEdit) SetSelStart(value int32) {
     RichEdit_SetSelStart(r.instance, value)
 }
 
 // SelText
+// CN: 获取选择的文本。
+// EN: .
 func (r *TRichEdit) SelText() string {
     return RichEdit_GetSelText(r.instance)
 }
 
 // SetSelText
+// CN: 设置选择的文本。
+// EN: .
 func (r *TRichEdit) SetSelText(value string) {
     RichEdit_SetSelText(r.instance, value)
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (r *TRichEdit) Text() string {
     return RichEdit_GetText(r.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (r *TRichEdit) SetText(value string) {
     RichEdit_SetText(r.instance, value)
 }
 
 // TextHint
+// CN: 获取提示文本。
+// EN: .
 func (r *TRichEdit) TextHint() string {
     return RichEdit_GetTextHint(r.instance)
 }
 
 // SetTextHint
+// CN: 设置提示文本。
+// EN: .
 func (r *TRichEdit) SetTextHint(value string) {
     RichEdit_SetTextHint(r.instance, value)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (r *TRichEdit) DockClientCount() int32 {
     return RichEdit_GetDockClientCount(r.instance)
 }
@@ -1212,6 +1290,8 @@ func (r *TRichEdit) SetDoubleBuffered(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (r *TRichEdit) AlignDisabled() bool {
     return RichEdit_GetAlignDisabled(r.instance)
 }
@@ -1280,11 +1360,15 @@ func (r *TRichEdit) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (r *TRichEdit) UseDockManager() bool {
     return RichEdit_GetUseDockManager(r.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (r *TRichEdit) SetUseDockManager(value bool) {
     RichEdit_SetUseDockManager(r.instance, value)
 }
@@ -1501,14 +1585,14 @@ func (r *TRichEdit) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (r *TRichEdit) Hint() string {
     return RichEdit_GetHint(r.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (r *TRichEdit) SetHint(value string) {
     RichEdit_SetHint(r.instance, value)
@@ -1599,11 +1683,15 @@ func (r *TRichEdit) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (r *TRichEdit) DockClients(Index int32) *TControl {
     return ControlFromInst(RichEdit_GetDockClients(r.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (r *TRichEdit) Controls(Index int32) *TControl {
     return ControlFromInst(RichEdit_GetControls(r.instance, Index))
 }

@@ -149,6 +149,8 @@ func (i *TImageList) AddMasked(Image *TBitmap, MaskColor TColor) int32 {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (i *TImageList) Clear() {
     ImageList_Clear(i.instance)
 }

@@ -350,11 +350,15 @@ func (c *TControl) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TControl) Anchors() TAnchors {
     return Control_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TControl) SetAnchors(value TAnchors) {
     Control_SetAnchors(c.instance, value)
 }
@@ -613,14 +617,14 @@ func (c *TControl) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TControl) Hint() string {
     return Control_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TControl) SetHint(value string) {
     Control_SetHint(c.instance, value)

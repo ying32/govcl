@@ -102,6 +102,8 @@ func TWinControlClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (w *TWinControl) CanFocus() bool {
     return WinControl_CanFocus(w.instance)
 }
@@ -427,6 +429,8 @@ func (w *TWinControl) ToString() string {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (w *TWinControl) DockClientCount() int32 {
     return WinControl_GetDockClientCount(w.instance)
 }
@@ -460,6 +464,8 @@ func (w *TWinControl) SetDoubleBuffered(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (w *TWinControl) AlignDisabled() bool {
     return WinControl_GetAlignDisabled(w.instance)
 }
@@ -556,11 +562,15 @@ func (w *TWinControl) SetTabStop(value bool) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (w *TWinControl) UseDockManager() bool {
     return WinControl_GetUseDockManager(w.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (w *TWinControl) SetUseDockManager(value bool) {
     WinControl_SetUseDockManager(w.instance, value)
 }
@@ -604,11 +614,15 @@ func (w *TWinControl) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (w *TWinControl) Anchors() TAnchors {
     return WinControl_GetAnchors(w.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (w *TWinControl) SetAnchors(value TAnchors) {
     WinControl_SetAnchors(w.instance, value)
 }
@@ -867,14 +881,14 @@ func (w *TWinControl) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (w *TWinControl) Hint() string {
     return WinControl_GetHint(w.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (w *TWinControl) SetHint(value string) {
     WinControl_SetHint(w.instance, value)
@@ -965,11 +979,15 @@ func (w *TWinControl) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (w *TWinControl) DockClients(Index int32) *TControl {
     return ControlFromInst(WinControl_GetDockClients(w.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (w *TWinControl) Controls(Index int32) *TControl {
     return ControlFromInst(WinControl_GetControls(w.instance, Index))
 }

@@ -102,6 +102,8 @@ func TSavePictureDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (s *TSavePictureDialog) Execute() bool {
     return SavePictureDialog_Execute(s.instance)
 }
@@ -288,6 +290,8 @@ func (s *TSavePictureDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (s *TSavePictureDialog) SetOnShow(fn TNotifyEvent) {
     SavePictureDialog_SetOnShow(s.instance, fn)
 }

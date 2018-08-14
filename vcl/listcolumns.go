@@ -126,6 +126,8 @@ func (l *TListColumns) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (l *TListColumns) Clear() {
     ListColumns_Clear(l.instance)
 }

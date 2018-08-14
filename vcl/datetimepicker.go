@@ -103,6 +103,8 @@ func TDateTimePickerClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (d *TDateTimePicker) CanFocus() bool {
     return DateTimePicker_CanFocus(d.instance)
 }
@@ -457,11 +459,15 @@ func (d *TDateTimePicker) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (d *TDateTimePicker) Anchors() TAnchors {
     return DateTimePicker_GetAnchors(d.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (d *TDateTimePicker) SetAnchors(value TAnchors) {
     DateTimePicker_SetAnchors(d.instance, value)
 }
@@ -567,25 +573,29 @@ func (d *TDateTimePicker) SetTime(value time.Time) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (d *TDateTimePicker) Checked() bool {
     return DateTimePicker_GetChecked(d.instance)
 }
 
 // SetChecked
+// CN: 设置是否选中。
+// EN: .
 func (d *TDateTimePicker) SetChecked(value bool) {
     DateTimePicker_SetChecked(d.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (d *TDateTimePicker) Color() TColor {
     return DateTimePicker_GetColor(d.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (d *TDateTimePicker) SetColor(value TColor) {
     DateTimePicker_SetColor(d.instance, value)
 }
@@ -967,11 +977,15 @@ func (d *TDateTimePicker) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (d *TDateTimePicker) SetOnStartDock(fn TStartDockEvent) {
     DateTimePicker_SetOnStartDock(d.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (d *TDateTimePicker) DockClientCount() int32 {
     return DateTimePicker_GetDockClientCount(d.instance)
 }
@@ -991,6 +1005,8 @@ func (d *TDateTimePicker) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (d *TDateTimePicker) AlignDisabled() bool {
     return DateTimePicker_GetAlignDisabled(d.instance)
 }
@@ -1045,11 +1061,15 @@ func (d *TDateTimePicker) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (d *TDateTimePicker) UseDockManager() bool {
     return DateTimePicker_GetUseDockManager(d.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (d *TDateTimePicker) SetUseDockManager(value bool) {
     DateTimePicker_SetUseDockManager(d.instance, value)
 }
@@ -1266,14 +1286,14 @@ func (d *TDateTimePicker) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (d *TDateTimePicker) Hint() string {
     return DateTimePicker_GetHint(d.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (d *TDateTimePicker) SetHint(value string) {
     DateTimePicker_SetHint(d.instance, value)
@@ -1364,11 +1384,15 @@ func (d *TDateTimePicker) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (d *TDateTimePicker) DockClients(Index int32) *TControl {
     return ControlFromInst(DateTimePicker_GetDockClients(d.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (d *TDateTimePicker) Controls(Index int32) *TControl {
     return ControlFromInst(DateTimePicker_GetControls(d.instance, Index))
 }

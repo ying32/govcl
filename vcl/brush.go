@@ -203,15 +203,15 @@ func (b *TBrush) SetHandle(value HBRUSH) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (b *TBrush) Color() TColor {
     return Brush_GetColor(b.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (b *TBrush) SetColor(value TColor) {
     Brush_SetColor(b.instance, value)
 }

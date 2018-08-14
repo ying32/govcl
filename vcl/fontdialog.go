@@ -102,6 +102,8 @@ func TFontDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (f *TFontDialog) Execute() bool {
     return FontDialog_Execute(f.instance)
 }
@@ -227,6 +229,8 @@ func (f *TFontDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (f *TFontDialog) SetOnShow(fn TNotifyEvent) {
     FontDialog_SetOnShow(f.instance, fn)
 }

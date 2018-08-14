@@ -107,6 +107,8 @@ func (r *TRadioGroup) FlipChildren(AllLevels bool) {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (r *TRadioGroup) CanFocus() bool {
     return RadioGroup_CanFocus(r.instance)
 }
@@ -441,11 +443,15 @@ func (r *TRadioGroup) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (r *TRadioGroup) Anchors() TAnchors {
     return RadioGroup_GetAnchors(r.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (r *TRadioGroup) SetAnchors(value TAnchors) {
     RadioGroup_SetAnchors(r.instance, value)
 }
@@ -475,15 +481,15 @@ func (r *TRadioGroup) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (r *TRadioGroup) Color() TColor {
     return RadioGroup_GetColor(r.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (r *TRadioGroup) SetColor(value TColor) {
     RadioGroup_SetColor(r.instance, value)
 }
@@ -829,11 +835,15 @@ func (r *TRadioGroup) SetOnExit(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (r *TRadioGroup) SetOnStartDock(fn TStartDockEvent) {
     RadioGroup_SetOnStartDock(r.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (r *TRadioGroup) DockClientCount() int32 {
     return RadioGroup_GetDockClientCount(r.instance)
 }
@@ -853,6 +863,8 @@ func (r *TRadioGroup) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (r *TRadioGroup) AlignDisabled() bool {
     return RadioGroup_GetAlignDisabled(r.instance)
 }
@@ -907,11 +919,15 @@ func (r *TRadioGroup) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (r *TRadioGroup) UseDockManager() bool {
     return RadioGroup_GetUseDockManager(r.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (r *TRadioGroup) SetUseDockManager(value bool) {
     RadioGroup_SetUseDockManager(r.instance, value)
 }
@@ -1128,14 +1144,14 @@ func (r *TRadioGroup) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (r *TRadioGroup) Hint() string {
     return RadioGroup_GetHint(r.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (r *TRadioGroup) SetHint(value string) {
     RadioGroup_SetHint(r.instance, value)
@@ -1231,11 +1247,15 @@ func (r *TRadioGroup) Buttons(Index int32) *TRadioButton {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (r *TRadioGroup) DockClients(Index int32) *TControl {
     return ControlFromInst(RadioGroup_GetDockClients(r.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (r *TRadioGroup) Controls(Index int32) *TControl {
     return ControlFromInst(RadioGroup_GetControls(r.instance, Index))
 }

@@ -206,11 +206,15 @@ func (m *TMainMenu) SetBiDiMode(value TBiDiMode) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (m *TMainMenu) Images() *TImageList {
     return ImageListFromInst(MainMenu_GetImages(m.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (m *TMainMenu) SetImages(value IComponent) {
     MainMenu_SetImages(m.instance, CheckPtr(value))
 }

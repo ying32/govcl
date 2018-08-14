@@ -164,6 +164,8 @@ func (t *TTreeNodes) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (t *TTreeNodes) Clear() {
     TreeNodes_Clear(t.instance)
 }

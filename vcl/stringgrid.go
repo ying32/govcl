@@ -117,6 +117,8 @@ func (s *TStringGrid) MouseCoord(X int32, Y int32) TGridCoord {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (s *TStringGrid) CanFocus() bool {
     return StringGrid_CanFocus(s.instance)
 }
@@ -456,11 +458,15 @@ func (s *TStringGrid) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TStringGrid) Anchors() TAnchors {
     return StringGrid_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TStringGrid) SetAnchors(value TAnchors) {
     StringGrid_SetAnchors(s.instance, value)
 }
@@ -516,25 +522,29 @@ func (s *TStringGrid) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (s *TStringGrid) BorderStyle() TBorderStyle {
     return StringGrid_GetBorderStyle(s.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (s *TStringGrid) SetBorderStyle(value TBorderStyle) {
     StringGrid_SetBorderStyle(s.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (s *TStringGrid) Color() TColor {
     return StringGrid_GetColor(s.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (s *TStringGrid) SetColor(value TColor) {
     StringGrid_SetColor(s.instance, value)
 }
@@ -714,21 +724,29 @@ func (s *TStringGrid) SetFont(value *TFont) {
 }
 
 // GradientEndColor
+// CN: 获取渐变结束颜色, 仅VCL。
+// EN: .
 func (s *TStringGrid) GradientEndColor() TColor {
     return StringGrid_GetGradientEndColor(s.instance)
 }
 
 // SetGradientEndColor
+// CN: 设置渐变结束颜色, 仅VCL。
+// EN: .
 func (s *TStringGrid) SetGradientEndColor(value TColor) {
     StringGrid_SetGradientEndColor(s.instance, value)
 }
 
 // GradientStartColor
+// CN: 获取渐变起始颜色，仅VCL。
+// EN: .
 func (s *TStringGrid) GradientStartColor() TColor {
     return StringGrid_GetGradientStartColor(s.instance)
 }
 
 // SetGradientStartColor
+// CN: 设置渐变起始颜色，仅VCL。
+// EN: .
 func (s *TStringGrid) SetGradientStartColor(value TColor) {
     StringGrid_SetGradientStartColor(s.instance, value)
 }
@@ -925,6 +943,8 @@ func (s *TStringGrid) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (s *TStringGrid) SetOnDblClick(fn TNotifyEvent) {
     StringGrid_SetOnDblClick(s.instance, fn)
 }
@@ -1032,6 +1052,8 @@ func (s *TStringGrid) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (s *TStringGrid) SetOnMouseMove(fn TMouseMoveEvent) {
     StringGrid_SetOnMouseMove(s.instance, fn)
 }
@@ -1044,11 +1066,15 @@ func (s *TStringGrid) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnMouseWheelDown
+// CN: 设置鼠标滚轮按下事件。
+// EN: .
 func (s *TStringGrid) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     StringGrid_SetOnMouseWheelDown(s.instance, fn)
 }
 
 // SetOnMouseWheelUp
+// CN: 设置鼠标滚轮抬起事件。
+// EN: .
 func (s *TStringGrid) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     StringGrid_SetOnMouseWheelUp(s.instance, fn)
 }
@@ -1069,6 +1095,8 @@ func (s *TStringGrid) SetOnSetEditText(fn TSetEditEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (s *TStringGrid) SetOnStartDock(fn TStartDockEvent) {
     StringGrid_SetOnStartDock(s.instance, fn)
 }
@@ -1079,6 +1107,8 @@ func (s *TStringGrid) SetOnTopLeftChanged(fn TNotifyEvent) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (s *TStringGrid) Canvas() *TCanvas {
     return CanvasFromInst(StringGrid_GetCanvas(s.instance))
 }
@@ -1168,6 +1198,8 @@ func (s *TStringGrid) SetTabStop(value bool) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (s *TStringGrid) DockClientCount() int32 {
     return StringGrid_GetDockClientCount(s.instance)
 }
@@ -1187,6 +1219,8 @@ func (s *TStringGrid) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (s *TStringGrid) AlignDisabled() bool {
     return StringGrid_GetAlignDisabled(s.instance)
 }
@@ -1241,11 +1275,15 @@ func (s *TStringGrid) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (s *TStringGrid) UseDockManager() bool {
     return StringGrid_GetUseDockManager(s.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (s *TStringGrid) SetUseDockManager(value bool) {
     StringGrid_SetUseDockManager(s.instance, value)
 }
@@ -1462,14 +1500,14 @@ func (s *TStringGrid) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TStringGrid) Hint() string {
     return StringGrid_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TStringGrid) SetHint(value string) {
     StringGrid_SetHint(s.instance, value)
@@ -1630,11 +1668,15 @@ func (s *TStringGrid) SetTabStops(Index int32, value bool) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (s *TStringGrid) DockClients(Index int32) *TControl {
     return ControlFromInst(StringGrid_GetDockClients(s.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (s *TStringGrid) Controls(Index int32) *TControl {
     return ControlFromInst(StringGrid_GetControls(s.instance, Index))
 }

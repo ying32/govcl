@@ -127,21 +127,29 @@ func (t *TTreeView) IsEditing() bool {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (t *TTreeView) LoadFromFile(FileName string) {
     TreeView_LoadFromFile(t.instance, FileName)
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (t *TTreeView) LoadFromStream(Stream IObject) {
     TreeView_LoadFromStream(t.instance, CheckPtr(Stream))
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (t *TTreeView) SaveToFile(FileName string) {
     TreeView_SaveToFile(t.instance, FileName)
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (t *TTreeView) SaveToStream(Stream IObject) {
     TreeView_SaveToStream(t.instance, CheckPtr(Stream))
 }
@@ -157,6 +165,8 @@ func (t *TTreeView) Subselect(Node *TTreeNode, Validate bool) {
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (t *TTreeView) ClearSelection(KeepPrimary bool) {
     TreeView_ClearSelection(t.instance, KeepPrimary)
 }
@@ -172,6 +182,8 @@ func (t *TTreeView) CustomSort(SortProc PFNTVCOMPARE, Data int, ARecurse bool) b
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (t *TTreeView) CanFocus() bool {
     return TreeView_CanFocus(t.instance)
 }
@@ -511,11 +523,15 @@ func (t *TTreeView) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (t *TTreeView) Anchors() TAnchors {
     return TreeView_GetAnchors(t.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (t *TTreeView) SetAnchors(value TAnchors) {
     TreeView_SetAnchors(t.instance, value)
 }
@@ -581,21 +597,29 @@ func (t *TTreeView) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (t *TTreeView) BorderStyle() TBorderStyle {
     return TreeView_GetBorderStyle(t.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (t *TTreeView) SetBorderStyle(value TBorderStyle) {
     TreeView_SetBorderStyle(t.instance, value)
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (t *TTreeView) BorderWidth() int32 {
     return TreeView_GetBorderWidth(t.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (t *TTreeView) SetBorderWidth(value int32) {
     TreeView_SetBorderWidth(t.instance, value)
 }
@@ -611,15 +635,15 @@ func (t *TTreeView) SetChangeDelay(value int32) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (t *TTreeView) Color() TColor {
     return TreeView_GetColor(t.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (t *TTreeView) SetColor(value TColor) {
     TreeView_SetColor(t.instance, value)
 }
@@ -709,11 +733,15 @@ func (t *TTreeView) SetFont(value *TFont) {
 }
 
 // HideSelection
+// CN: 获取隐藏选择。
+// EN: .
 func (t *TTreeView) HideSelection() bool {
     return TreeView_GetHideSelection(t.instance)
 }
 
 // SetHideSelection
+// CN: 设置隐藏选择。
+// EN: .
 func (t *TTreeView) SetHideSelection(value bool) {
     TreeView_SetHideSelection(t.instance, value)
 }
@@ -729,11 +757,15 @@ func (t *TTreeView) SetHotTrack(value bool) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (t *TTreeView) Images() *TImageList {
     return ImageListFromInst(TreeView_GetImages(t.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (t *TTreeView) SetImages(value IComponent) {
     TreeView_SetImages(t.instance, CheckPtr(value))
 }
@@ -845,11 +877,15 @@ func (t *TTreeView) SetPopupMenu(value IComponent) {
 }
 
 // ReadOnly
+// CN: 获取只读。
+// EN: .
 func (t *TTreeView) ReadOnly() bool {
     return TreeView_GetReadOnly(t.instance)
 }
 
 // SetReadOnly
+// CN: 设置只读。
+// EN: .
 func (t *TTreeView) SetReadOnly(value bool) {
     TreeView_SetReadOnly(t.instance, value)
 }
@@ -1041,6 +1077,8 @@ func (t *TTreeView) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (t *TTreeView) SetOnDblClick(fn TNotifyEvent) {
     TreeView_SetOnDblClick(t.instance, fn)
 }
@@ -1138,6 +1176,8 @@ func (t *TTreeView) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (t *TTreeView) SetOnMouseMove(fn TMouseMoveEvent) {
     TreeView_SetOnMouseMove(t.instance, fn)
 }
@@ -1150,6 +1190,8 @@ func (t *TTreeView) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (t *TTreeView) SetOnStartDock(fn TStartDockEvent) {
     TreeView_SetOnStartDock(t.instance, fn)
 }
@@ -1165,6 +1207,8 @@ func (t *TTreeView) SetItems(value *TTreeNodes) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (t *TTreeView) Canvas() *TCanvas {
     return CanvasFromInst(TreeView_GetCanvas(t.instance))
 }
@@ -1205,6 +1249,8 @@ func (t *TTreeView) SelectionCount() uint32 {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (t *TTreeView) DockClientCount() int32 {
     return TreeView_GetDockClientCount(t.instance)
 }
@@ -1224,6 +1270,8 @@ func (t *TTreeView) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (t *TTreeView) AlignDisabled() bool {
     return TreeView_GetAlignDisabled(t.instance)
 }
@@ -1278,11 +1326,15 @@ func (t *TTreeView) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (t *TTreeView) UseDockManager() bool {
     return TreeView_GetUseDockManager(t.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (t *TTreeView) SetUseDockManager(value bool) {
     TreeView_SetUseDockManager(t.instance, value)
 }
@@ -1499,14 +1551,14 @@ func (t *TTreeView) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (t *TTreeView) Hint() string {
     return TreeView_GetHint(t.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (t *TTreeView) SetHint(value string) {
     TreeView_SetHint(t.instance, value)
@@ -1602,11 +1654,15 @@ func (t *TTreeView) Selections(Index int32) *TTreeNode {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (t *TTreeView) DockClients(Index int32) *TControl {
     return ControlFromInst(TreeView_GetDockClients(t.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (t *TTreeView) Controls(Index int32) *TControl {
     return ControlFromInst(TreeView_GetControls(t.instance, Index))
 }

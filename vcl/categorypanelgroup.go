@@ -112,6 +112,8 @@ func (c *TCategoryPanelGroup) ExpandAll() {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (c *TCategoryPanelGroup) CanFocus() bool {
     return CategoryPanelGroup_CanFocus(c.instance)
 }
@@ -451,11 +453,15 @@ func (c *TCategoryPanelGroup) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TCategoryPanelGroup) Anchors() TAnchors {
     return CategoryPanelGroup_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TCategoryPanelGroup) SetAnchors(value TAnchors) {
     CategoryPanelGroup_SetAnchors(c.instance, value)
 }
@@ -625,15 +631,15 @@ func (c *TCategoryPanelGroup) SetEnabled(value bool) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TCategoryPanelGroup) Color() TColor {
     return CategoryPanelGroup_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TCategoryPanelGroup) SetColor(value TColor) {
     CategoryPanelGroup_SetColor(c.instance, value)
 }
@@ -673,11 +679,15 @@ func (c *TCategoryPanelGroup) SetGradientColor(value TColor) {
 }
 
 // GradientDirection
+// CN: 获取渐变颜色方向。
+// EN: .
 func (c *TCategoryPanelGroup) GradientDirection() TGradientDirection {
     return CategoryPanelGroup_GetGradientDirection(c.instance)
 }
 
 // SetGradientDirection
+// CN: 设置渐变颜色方向。
+// EN: .
 func (c *TCategoryPanelGroup) SetGradientDirection(value TGradientDirection) {
     CategoryPanelGroup_SetGradientDirection(c.instance, value)
 }
@@ -747,11 +757,15 @@ func (c *TCategoryPanelGroup) SetHeight(value int32) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (c *TCategoryPanelGroup) Images() *TImageList {
     return ImageListFromInst(CategoryPanelGroup_GetImages(c.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (c *TCategoryPanelGroup) SetImages(value IComponent) {
     CategoryPanelGroup_SetImages(c.instance, CheckPtr(value))
 }
@@ -941,6 +955,8 @@ func (c *TCategoryPanelGroup) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (c *TCategoryPanelGroup) SetOnDblClick(fn TNotifyEvent) {
     CategoryPanelGroup_SetOnDblClick(c.instance, fn)
 }
@@ -1019,6 +1035,8 @@ func (c *TCategoryPanelGroup) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (c *TCategoryPanelGroup) SetOnMouseMove(fn TMouseMoveEvent) {
     CategoryPanelGroup_SetOnMouseMove(c.instance, fn)
 }
@@ -1031,26 +1049,36 @@ func (c *TCategoryPanelGroup) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnMouseWheel
+// CN: 设置鼠标滚轮事件。
+// EN: .
 func (c *TCategoryPanelGroup) SetOnMouseWheel(fn TMouseWheelEvent) {
     CategoryPanelGroup_SetOnMouseWheel(c.instance, fn)
 }
 
 // SetOnMouseWheelDown
+// CN: 设置鼠标滚轮按下事件。
+// EN: .
 func (c *TCategoryPanelGroup) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     CategoryPanelGroup_SetOnMouseWheelDown(c.instance, fn)
 }
 
 // SetOnMouseWheelUp
+// CN: 设置鼠标滚轮抬起事件。
+// EN: .
 func (c *TCategoryPanelGroup) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     CategoryPanelGroup_SetOnMouseWheelUp(c.instance, fn)
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (c *TCategoryPanelGroup) SetOnResize(fn TNotifyEvent) {
     CategoryPanelGroup_SetOnResize(c.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (c *TCategoryPanelGroup) SetOnStartDock(fn TStartDockEvent) {
     CategoryPanelGroup_SetOnStartDock(c.instance, fn)
 }
@@ -1066,11 +1094,15 @@ func (c *TCategoryPanelGroup) Panels() *TList {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (c *TCategoryPanelGroup) DockClientCount() int32 {
     return CategoryPanelGroup_GetDockClientCount(c.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (c *TCategoryPanelGroup) AlignDisabled() bool {
     return CategoryPanelGroup_GetAlignDisabled(c.instance)
 }
@@ -1125,11 +1157,15 @@ func (c *TCategoryPanelGroup) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (c *TCategoryPanelGroup) UseDockManager() bool {
     return CategoryPanelGroup_GetUseDockManager(c.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (c *TCategoryPanelGroup) SetUseDockManager(value bool) {
     CategoryPanelGroup_SetUseDockManager(c.instance, value)
 }
@@ -1318,14 +1354,14 @@ func (c *TCategoryPanelGroup) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TCategoryPanelGroup) Hint() string {
     return CategoryPanelGroup_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TCategoryPanelGroup) SetHint(value string) {
     CategoryPanelGroup_SetHint(c.instance, value)
@@ -1416,11 +1452,15 @@ func (c *TCategoryPanelGroup) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (c *TCategoryPanelGroup) DockClients(Index int32) *TControl {
     return ControlFromInst(CategoryPanelGroup_GetDockClients(c.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (c *TCategoryPanelGroup) Controls(Index int32) *TControl {
     return ControlFromInst(CategoryPanelGroup_GetControls(c.instance, Index))
 }

@@ -193,15 +193,15 @@ func (p *TPen) SetHandle(value HPEN) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (p *TPen) Color() TColor {
     return Pen_GetColor(p.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (p *TPen) SetColor(value TColor) {
     Pen_SetColor(p.instance, value)
 }

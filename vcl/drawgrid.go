@@ -117,6 +117,8 @@ func (d *TDrawGrid) MouseCoord(X int32, Y int32) TGridCoord {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (d *TDrawGrid) CanFocus() bool {
     return DrawGrid_CanFocus(d.instance)
 }
@@ -456,11 +458,15 @@ func (d *TDrawGrid) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (d *TDrawGrid) Anchors() TAnchors {
     return DrawGrid_GetAnchors(d.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (d *TDrawGrid) SetAnchors(value TAnchors) {
     DrawGrid_SetAnchors(d.instance, value)
 }
@@ -516,25 +522,29 @@ func (d *TDrawGrid) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (d *TDrawGrid) BorderStyle() TBorderStyle {
     return DrawGrid_GetBorderStyle(d.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (d *TDrawGrid) SetBorderStyle(value TBorderStyle) {
     DrawGrid_SetBorderStyle(d.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (d *TDrawGrid) Color() TColor {
     return DrawGrid_GetColor(d.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (d *TDrawGrid) SetColor(value TColor) {
     DrawGrid_SetColor(d.instance, value)
 }
@@ -714,21 +724,29 @@ func (d *TDrawGrid) SetFont(value *TFont) {
 }
 
 // GradientEndColor
+// CN: 获取渐变结束颜色, 仅VCL。
+// EN: .
 func (d *TDrawGrid) GradientEndColor() TColor {
     return DrawGrid_GetGradientEndColor(d.instance)
 }
 
 // SetGradientEndColor
+// CN: 设置渐变结束颜色, 仅VCL。
+// EN: .
 func (d *TDrawGrid) SetGradientEndColor(value TColor) {
     DrawGrid_SetGradientEndColor(d.instance, value)
 }
 
 // GradientStartColor
+// CN: 获取渐变起始颜色，仅VCL。
+// EN: .
 func (d *TDrawGrid) GradientStartColor() TColor {
     return DrawGrid_GetGradientStartColor(d.instance)
 }
 
 // SetGradientStartColor
+// CN: 设置渐变起始颜色，仅VCL。
+// EN: .
 func (d *TDrawGrid) SetGradientStartColor(value TColor) {
     DrawGrid_SetGradientStartColor(d.instance, value)
 }
@@ -925,6 +943,8 @@ func (d *TDrawGrid) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (d *TDrawGrid) SetOnDblClick(fn TNotifyEvent) {
     DrawGrid_SetOnDblClick(d.instance, fn)
 }
@@ -1032,6 +1052,8 @@ func (d *TDrawGrid) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (d *TDrawGrid) SetOnMouseMove(fn TMouseMoveEvent) {
     DrawGrid_SetOnMouseMove(d.instance, fn)
 }
@@ -1044,11 +1066,15 @@ func (d *TDrawGrid) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnMouseWheelDown
+// CN: 设置鼠标滚轮按下事件。
+// EN: .
 func (d *TDrawGrid) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     DrawGrid_SetOnMouseWheelDown(d.instance, fn)
 }
 
 // SetOnMouseWheelUp
+// CN: 设置鼠标滚轮抬起事件。
+// EN: .
 func (d *TDrawGrid) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     DrawGrid_SetOnMouseWheelUp(d.instance, fn)
 }
@@ -1069,6 +1095,8 @@ func (d *TDrawGrid) SetOnSetEditText(fn TSetEditEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (d *TDrawGrid) SetOnStartDock(fn TStartDockEvent) {
     DrawGrid_SetOnStartDock(d.instance, fn)
 }
@@ -1079,6 +1107,8 @@ func (d *TDrawGrid) SetOnTopLeftChanged(fn TNotifyEvent) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (d *TDrawGrid) Canvas() *TCanvas {
     return CanvasFromInst(DrawGrid_GetCanvas(d.instance))
 }
@@ -1168,6 +1198,8 @@ func (d *TDrawGrid) SetTabStop(value bool) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (d *TDrawGrid) DockClientCount() int32 {
     return DrawGrid_GetDockClientCount(d.instance)
 }
@@ -1187,6 +1219,8 @@ func (d *TDrawGrid) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (d *TDrawGrid) AlignDisabled() bool {
     return DrawGrid_GetAlignDisabled(d.instance)
 }
@@ -1241,11 +1275,15 @@ func (d *TDrawGrid) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (d *TDrawGrid) UseDockManager() bool {
     return DrawGrid_GetUseDockManager(d.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (d *TDrawGrid) SetUseDockManager(value bool) {
     DrawGrid_SetUseDockManager(d.instance, value)
 }
@@ -1462,14 +1500,14 @@ func (d *TDrawGrid) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (d *TDrawGrid) Hint() string {
     return DrawGrid_GetHint(d.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (d *TDrawGrid) SetHint(value string) {
     DrawGrid_SetHint(d.instance, value)
@@ -1590,11 +1628,15 @@ func (d *TDrawGrid) SetTabStops(Index int32, value bool) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (d *TDrawGrid) DockClients(Index int32) *TControl {
     return ControlFromInst(DrawGrid_GetDockClients(d.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (d *TDrawGrid) Controls(Index int32) *TControl {
     return ControlFromInst(DrawGrid_GetControls(d.instance, Index))
 }

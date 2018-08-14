@@ -107,6 +107,8 @@ func (s *TScrollBar) SetParams(APosition int32, AMin int32, AMax int32) {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (s *TScrollBar) CanFocus() bool {
     return ScrollBar_CanFocus(s.instance)
 }
@@ -446,11 +448,15 @@ func (s *TScrollBar) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TScrollBar) Anchors() TAnchors {
     return ScrollBar_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TScrollBar) SetAnchors(value TAnchors) {
     ScrollBar_SetAnchors(s.instance, value)
 }
@@ -813,11 +819,15 @@ func (s *TScrollBar) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (s *TScrollBar) SetOnStartDock(fn TStartDockEvent) {
     ScrollBar_SetOnStartDock(s.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (s *TScrollBar) DockClientCount() int32 {
     return ScrollBar_GetDockClientCount(s.instance)
 }
@@ -837,6 +847,8 @@ func (s *TScrollBar) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (s *TScrollBar) AlignDisabled() bool {
     return ScrollBar_GetAlignDisabled(s.instance)
 }
@@ -891,11 +903,15 @@ func (s *TScrollBar) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (s *TScrollBar) UseDockManager() bool {
     return ScrollBar_GetUseDockManager(s.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (s *TScrollBar) SetUseDockManager(value bool) {
     ScrollBar_SetUseDockManager(s.instance, value)
 }
@@ -1112,14 +1128,14 @@ func (s *TScrollBar) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TScrollBar) Hint() string {
     return ScrollBar_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TScrollBar) SetHint(value string) {
     ScrollBar_SetHint(s.instance, value)
@@ -1210,11 +1226,15 @@ func (s *TScrollBar) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (s *TScrollBar) DockClients(Index int32) *TControl {
     return ControlFromInst(ScrollBar_GetDockClients(s.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (s *TScrollBar) Controls(Index int32) *TControl {
     return ControlFromInst(ScrollBar_GetControls(s.instance, Index))
 }

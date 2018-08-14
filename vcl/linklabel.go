@@ -102,6 +102,8 @@ func TLinkLabelClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (l *TLinkLabel) CanFocus() bool {
     return LinkLabel_CanFocus(l.instance)
 }
@@ -455,21 +457,29 @@ func (l *TLinkLabel) SetAlignment(value TLinkAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (l *TLinkLabel) Anchors() TAnchors {
     return LinkLabel_GetAnchors(l.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (l *TLinkLabel) SetAnchors(value TAnchors) {
     LinkLabel_SetAnchors(l.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (l *TLinkLabel) AutoSize() bool {
     return LinkLabel_GetAutoSize(l.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (l *TLinkLabel) SetAutoSize(value bool) {
     LinkLabel_SetAutoSize(l.instance, value)
 }
@@ -529,15 +539,15 @@ func (l *TLinkLabel) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (l *TLinkLabel) Color() TColor {
     return LinkLabel_GetColor(l.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (l *TLinkLabel) SetColor(value TColor) {
     LinkLabel_SetColor(l.instance, value)
 }
@@ -745,6 +755,8 @@ func (l *TLinkLabel) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (l *TLinkLabel) SetOnDblClick(fn TNotifyEvent) {
     LinkLabel_SetOnDblClick(l.instance, fn)
 }
@@ -799,6 +811,8 @@ func (l *TLinkLabel) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (l *TLinkLabel) SetOnMouseMove(fn TMouseMoveEvent) {
     LinkLabel_SetOnMouseMove(l.instance, fn)
 }
@@ -811,6 +825,8 @@ func (l *TLinkLabel) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (l *TLinkLabel) SetOnStartDock(fn TStartDockEvent) {
     LinkLabel_SetOnStartDock(l.instance, fn)
 }
@@ -821,6 +837,8 @@ func (l *TLinkLabel) SetOnLinkClick(fn TSysLinkEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (l *TLinkLabel) DockClientCount() int32 {
     return LinkLabel_GetDockClientCount(l.instance)
 }
@@ -854,6 +872,8 @@ func (l *TLinkLabel) SetDoubleBuffered(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (l *TLinkLabel) AlignDisabled() bool {
     return LinkLabel_GetAlignDisabled(l.instance)
 }
@@ -922,11 +942,15 @@ func (l *TLinkLabel) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (l *TLinkLabel) UseDockManager() bool {
     return LinkLabel_GetUseDockManager(l.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (l *TLinkLabel) SetUseDockManager(value bool) {
     LinkLabel_SetUseDockManager(l.instance, value)
 }
@@ -1167,14 +1191,14 @@ func (l *TLinkLabel) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (l *TLinkLabel) Hint() string {
     return LinkLabel_GetHint(l.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (l *TLinkLabel) SetHint(value string) {
     LinkLabel_SetHint(l.instance, value)
@@ -1265,11 +1289,15 @@ func (l *TLinkLabel) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (l *TLinkLabel) DockClients(Index int32) *TControl {
     return ControlFromInst(LinkLabel_GetDockClients(l.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (l *TLinkLabel) Controls(Index int32) *TControl {
     return ControlFromInst(LinkLabel_GetControls(l.instance, Index))
 }

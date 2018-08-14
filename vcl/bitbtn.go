@@ -102,11 +102,15 @@ func TBitBtnClass() TClass {
 }
 
 // Click
+// CN: 单击。
+// EN: .
 func (b *TBitBtn) Click() {
     BitBtn_Click(b.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (b *TBitBtn) CanFocus() bool {
     return BitBtn_CanFocus(b.instance)
 }
@@ -456,11 +460,15 @@ func (b *TBitBtn) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (b *TBitBtn) Anchors() TAnchors {
     return BitBtn_GetAnchors(b.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (b *TBitBtn) SetAnchors(value TAnchors) {
     BitBtn_SetAnchors(b.instance, value)
 }
@@ -624,11 +632,15 @@ func (b *TBitBtn) SetLayout(value TButtonLayout) {
 }
 
 // ModalResult
+// CN: 获取模态对话框显示结果。
+// EN: .
 func (b *TBitBtn) ModalResult() TModalResult {
     return BitBtn_GetModalResult(b.instance)
 }
 
 // SetModalResult
+// CN: 设置模态对话框显示结果。
+// EN: .
 func (b *TBitBtn) SetModalResult(value TModalResult) {
     BitBtn_SetModalResult(b.instance, value)
 }
@@ -896,6 +908,8 @@ func (b *TBitBtn) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (b *TBitBtn) SetOnMouseMove(fn TMouseMoveEvent) {
     BitBtn_SetOnMouseMove(b.instance, fn)
 }
@@ -908,6 +922,8 @@ func (b *TBitBtn) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (b *TBitBtn) SetOnStartDock(fn TStartDockEvent) {
     BitBtn_SetOnStartDock(b.instance, fn)
 }
@@ -953,11 +969,15 @@ func (b *TBitBtn) SetHotImageIndex(value int32) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (b *TBitBtn) Images() *TImageList {
     return ImageListFromInst(BitBtn_GetImages(b.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (b *TBitBtn) SetImages(value IComponent) {
     BitBtn_SetImages(b.instance, CheckPtr(value))
 }
@@ -973,11 +993,15 @@ func (b *TBitBtn) SetImageAlignment(value TImageAlignment) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (b *TBitBtn) ImageIndex() int32 {
     return BitBtn_GetImageIndex(b.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (b *TBitBtn) SetImageIndex(value int32) {
     BitBtn_SetImageIndex(b.instance, value)
 }
@@ -1013,6 +1037,8 @@ func (b *TBitBtn) SetStylusHotImageIndex(value int32) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (b *TBitBtn) DockClientCount() int32 {
     return BitBtn_GetDockClientCount(b.instance)
 }
@@ -1032,6 +1058,8 @@ func (b *TBitBtn) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (b *TBitBtn) AlignDisabled() bool {
     return BitBtn_GetAlignDisabled(b.instance)
 }
@@ -1086,11 +1114,15 @@ func (b *TBitBtn) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (b *TBitBtn) UseDockManager() bool {
     return BitBtn_GetUseDockManager(b.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (b *TBitBtn) SetUseDockManager(value bool) {
     BitBtn_SetUseDockManager(b.instance, value)
 }
@@ -1297,14 +1329,14 @@ func (b *TBitBtn) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (b *TBitBtn) Hint() string {
     return BitBtn_GetHint(b.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (b *TBitBtn) SetHint(value string) {
     BitBtn_SetHint(b.instance, value)
@@ -1395,11 +1427,15 @@ func (b *TBitBtn) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (b *TBitBtn) DockClients(Index int32) *TControl {
     return ControlFromInst(BitBtn_GetDockClients(b.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (b *TBitBtn) Controls(Index int32) *TControl {
     return ControlFromInst(BitBtn_GetControls(b.instance, Index))
 }

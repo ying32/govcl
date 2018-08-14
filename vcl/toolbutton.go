@@ -107,6 +107,8 @@ func (t *TToolButton) CheckMenuDropdown() bool {
 }
 
 // Click
+// CN: 单击。
+// EN: .
 func (t *TToolButton) Click() {
     ToolButton_Click(t.instance)
 }
@@ -347,11 +349,15 @@ func (t *TToolButton) SetAllowAllUp(value bool) {
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (t *TToolButton) AutoSize() bool {
     return ToolButton_GetAutoSize(t.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (t *TToolButton) SetAutoSize(value bool) {
     ToolButton_SetAutoSize(t.instance, value)
 }
@@ -481,11 +487,15 @@ func (t *TToolButton) SetHeight(value int32) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (t *TToolButton) ImageIndex() int32 {
     return ToolButton_GetImageIndex(t.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (t *TToolButton) SetImageIndex(value int32) {
     ToolButton_SetImageIndex(t.instance, value)
 }
@@ -660,6 +670,8 @@ func (t *TToolButton) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (t *TToolButton) SetOnMouseMove(fn TMouseMoveEvent) {
     ToolButton_SetOnMouseMove(t.instance, fn)
 }
@@ -672,6 +684,8 @@ func (t *TToolButton) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (t *TToolButton) SetOnStartDock(fn TStartDockEvent) {
     ToolButton_SetOnStartDock(t.instance, fn)
 }
@@ -691,11 +705,15 @@ func (t *TToolButton) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (t *TToolButton) Anchors() TAnchors {
     return ToolButton_GetAnchors(t.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (t *TToolButton) SetAnchors(value TAnchors) {
     ToolButton_SetAnchors(t.instance, value)
 }
@@ -898,14 +916,14 @@ func (t *TToolButton) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (t *TToolButton) Hint() string {
     return ToolButton_GetHint(t.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (t *TToolButton) SetHint(value string) {
     ToolButton_SetHint(t.instance, value)

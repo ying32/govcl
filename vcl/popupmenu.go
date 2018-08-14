@@ -245,11 +245,15 @@ func (p *TPopupMenu) SetBiDiMode(value TBiDiMode) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (p *TPopupMenu) Images() *TImageList {
     return ImageListFromInst(PopupMenu_GetImages(p.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (p *TPopupMenu) SetImages(value IComponent) {
     PopupMenu_SetImages(p.instance, CheckPtr(value))
 }

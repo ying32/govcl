@@ -107,6 +107,8 @@ func (m *TMaskEdit) ValidateEdit() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (m *TMaskEdit) Clear() {
     MaskEdit_Clear(m.instance)
 }
@@ -119,36 +121,50 @@ func (m *TMaskEdit) GetTextLen() int32 {
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (m *TMaskEdit) ClearSelection() {
     MaskEdit_ClearSelection(m.instance)
 }
 
 // CopyToClipboard
+// CN: 复制到粘贴板。
+// EN: .
 func (m *TMaskEdit) CopyToClipboard() {
     MaskEdit_CopyToClipboard(m.instance)
 }
 
 // CutToClipboard
+// CN: 剪切到粘贴板。
+// EN: .
 func (m *TMaskEdit) CutToClipboard() {
     MaskEdit_CutToClipboard(m.instance)
 }
 
 // PasteFromClipboard
+// CN: 从剪切板粘贴。
+// EN: .
 func (m *TMaskEdit) PasteFromClipboard() {
     MaskEdit_PasteFromClipboard(m.instance)
 }
 
 // Undo
+// CN: 撤销上一次操作。
+// EN: .
 func (m *TMaskEdit) Undo() {
     MaskEdit_Undo(m.instance)
 }
 
 // ClearUndo
+// CN: 清除撤销。
+// EN: .
 func (m *TMaskEdit) ClearUndo() {
     MaskEdit_ClearUndo(m.instance)
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (m *TMaskEdit) SelectAll() {
     MaskEdit_SelectAll(m.instance)
 }
@@ -159,6 +175,8 @@ func (m *TMaskEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (m *TMaskEdit) CanFocus() bool {
     return MaskEdit_CanFocus(m.instance)
 }
@@ -505,31 +523,43 @@ func (m *TMaskEdit) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (m *TMaskEdit) Anchors() TAnchors {
     return MaskEdit_GetAnchors(m.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (m *TMaskEdit) SetAnchors(value TAnchors) {
     MaskEdit_SetAnchors(m.instance, value)
 }
 
 // AutoSelect
+// CN: 获取自动选择。
+// EN: .
 func (m *TMaskEdit) AutoSelect() bool {
     return MaskEdit_GetAutoSelect(m.instance)
 }
 
 // SetAutoSelect
+// CN: 设置自动选择。
+// EN: .
 func (m *TMaskEdit) SetAutoSelect(value bool) {
     MaskEdit_SetAutoSelect(m.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (m *TMaskEdit) AutoSize() bool {
     return MaskEdit_GetAutoSize(m.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (m *TMaskEdit) SetAutoSize(value bool) {
     MaskEdit_SetAutoSize(m.instance, value)
 }
@@ -585,11 +615,15 @@ func (m *TMaskEdit) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (m *TMaskEdit) BorderStyle() TBorderStyle {
     return MaskEdit_GetBorderStyle(m.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (m *TMaskEdit) SetBorderStyle(value TBorderStyle) {
     MaskEdit_SetBorderStyle(m.instance, value)
 }
@@ -605,15 +639,15 @@ func (m *TMaskEdit) SetCharCase(value TEditCharCase) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (m *TMaskEdit) Color() TColor {
     return MaskEdit_GetColor(m.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (m *TMaskEdit) SetColor(value TColor) {
     MaskEdit_SetColor(m.instance, value)
 }
@@ -703,11 +737,15 @@ func (m *TMaskEdit) SetFont(value *TFont) {
 }
 
 // MaxLength
+// CN: 获取最大长度。
+// EN: .
 func (m *TMaskEdit) MaxLength() int32 {
     return MaskEdit_GetMaxLength(m.instance)
 }
 
 // SetMaxLength
+// CN: 设置最大长度。
+// EN: .
 func (m *TMaskEdit) SetMaxLength(value int32) {
     MaskEdit_SetMaxLength(m.instance, value)
 }
@@ -775,11 +813,15 @@ func (m *TMaskEdit) SetParentShowHint(value bool) {
 }
 
 // PasswordChar
+// CN: 获取密码掩码字符。
+// EN: .
 func (m *TMaskEdit) PasswordChar() uint16 {
     return MaskEdit_GetPasswordChar(m.instance)
 }
 
 // SetPasswordChar
+// CN: 设置密码掩码字符。
+// EN: .
 func (m *TMaskEdit) SetPasswordChar(value uint16) {
     MaskEdit_SetPasswordChar(m.instance, value)
 }
@@ -799,11 +841,15 @@ func (m *TMaskEdit) SetPopupMenu(value IComponent) {
 }
 
 // ReadOnly
+// CN: 获取只读。
+// EN: .
 func (m *TMaskEdit) ReadOnly() bool {
     return MaskEdit_GetReadOnly(m.instance)
 }
 
 // SetReadOnly
+// CN: 设置只读。
+// EN: .
 func (m *TMaskEdit) SetReadOnly(value bool) {
     MaskEdit_SetReadOnly(m.instance, value)
 }
@@ -851,21 +897,29 @@ func (m *TMaskEdit) SetTabStop(value bool) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (m *TMaskEdit) Text() string {
     return MaskEdit_GetText(m.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (m *TMaskEdit) SetText(value string) {
     MaskEdit_SetText(m.instance, value)
 }
 
 // TextHint
+// CN: 获取提示文本。
+// EN: .
 func (m *TMaskEdit) TextHint() string {
     return MaskEdit_GetTextHint(m.instance)
 }
 
 // SetTextHint
+// CN: 设置提示文本。
+// EN: .
 func (m *TMaskEdit) SetTextHint(value string) {
     MaskEdit_SetTextHint(m.instance, value)
 }
@@ -913,6 +967,8 @@ func (m *TMaskEdit) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (m *TMaskEdit) SetOnDblClick(fn TNotifyEvent) {
     MaskEdit_SetOnDblClick(m.instance, fn)
 }
@@ -1000,6 +1056,8 @@ func (m *TMaskEdit) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (m *TMaskEdit) SetOnMouseMove(fn TMouseMoveEvent) {
     MaskEdit_SetOnMouseMove(m.instance, fn)
 }
@@ -1012,6 +1070,8 @@ func (m *TMaskEdit) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (m *TMaskEdit) SetOnStartDock(fn TStartDockEvent) {
     MaskEdit_SetOnStartDock(m.instance, fn)
 }
@@ -1032,6 +1092,8 @@ func (m *TMaskEdit) SetEditText(value string) {
 }
 
 // CanUndo
+// CN: 获取能否撤销。
+// EN: .
 func (m *TMaskEdit) CanUndo() bool {
     return MaskEdit_GetCanUndo(m.instance)
 }
@@ -1051,36 +1113,50 @@ func (m *TMaskEdit) SetModified(value bool) {
 }
 
 // SelLength
+// CN: 获取选择的长度。
+// EN: .
 func (m *TMaskEdit) SelLength() int32 {
     return MaskEdit_GetSelLength(m.instance)
 }
 
 // SetSelLength
+// CN: 设置选择的长度。
+// EN: .
 func (m *TMaskEdit) SetSelLength(value int32) {
     MaskEdit_SetSelLength(m.instance, value)
 }
 
 // SelStart
+// CN: 获取选择的启始位置。
+// EN: .
 func (m *TMaskEdit) SelStart() int32 {
     return MaskEdit_GetSelStart(m.instance)
 }
 
 // SetSelStart
+// CN: 设置选择的启始位置。
+// EN: .
 func (m *TMaskEdit) SetSelStart(value int32) {
     MaskEdit_SetSelStart(m.instance, value)
 }
 
 // SelText
+// CN: 获取选择的文本。
+// EN: .
 func (m *TMaskEdit) SelText() string {
     return MaskEdit_GetSelText(m.instance)
 }
 
 // SetSelText
+// CN: 设置选择的文本。
+// EN: .
 func (m *TMaskEdit) SetSelText(value string) {
     MaskEdit_SetSelText(m.instance, value)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (m *TMaskEdit) DockClientCount() int32 {
     return MaskEdit_GetDockClientCount(m.instance)
 }
@@ -1100,6 +1176,8 @@ func (m *TMaskEdit) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (m *TMaskEdit) AlignDisabled() bool {
     return MaskEdit_GetAlignDisabled(m.instance)
 }
@@ -1154,11 +1232,15 @@ func (m *TMaskEdit) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (m *TMaskEdit) UseDockManager() bool {
     return MaskEdit_GetUseDockManager(m.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (m *TMaskEdit) SetUseDockManager(value bool) {
     MaskEdit_SetUseDockManager(m.instance, value)
 }
@@ -1375,14 +1457,14 @@ func (m *TMaskEdit) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (m *TMaskEdit) Hint() string {
     return MaskEdit_GetHint(m.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (m *TMaskEdit) SetHint(value string) {
     MaskEdit_SetHint(m.instance, value)
@@ -1473,11 +1555,15 @@ func (m *TMaskEdit) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (m *TMaskEdit) DockClients(Index int32) *TControl {
     return ControlFromInst(MaskEdit_GetDockClients(m.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (m *TMaskEdit) Controls(Index int32) *TControl {
     return ControlFromInst(MaskEdit_GetControls(m.instance, Index))
 }

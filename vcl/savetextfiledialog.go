@@ -102,6 +102,8 @@ func TSaveTextFileDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (s *TSaveTextFileDialog) Execute() bool {
     return SaveTextFileDialog_Execute(s.instance)
 }
@@ -288,6 +290,8 @@ func (s *TSaveTextFileDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (s *TSaveTextFileDialog) SetOnShow(fn TNotifyEvent) {
     SaveTextFileDialog_SetOnShow(s.instance, fn)
 }

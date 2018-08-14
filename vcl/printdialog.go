@@ -102,6 +102,8 @@ func TPrintDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (p *TPrintDialog) Execute() bool {
     return PrintDialog_Execute(p.instance)
 }
@@ -293,6 +295,8 @@ func (p *TPrintDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (p *TPrintDialog) SetOnShow(fn TNotifyEvent) {
     PrintDialog_SetOnShow(p.instance, fn)
 }

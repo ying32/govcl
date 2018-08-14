@@ -102,41 +102,57 @@ func TEditClass() TClass {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (e *TEdit) Clear() {
     Edit_Clear(e.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (e *TEdit) ClearSelection() {
     Edit_ClearSelection(e.instance)
 }
 
 // CopyToClipboard
+// CN: 复制到粘贴板。
+// EN: .
 func (e *TEdit) CopyToClipboard() {
     Edit_CopyToClipboard(e.instance)
 }
 
 // CutToClipboard
+// CN: 剪切到粘贴板。
+// EN: .
 func (e *TEdit) CutToClipboard() {
     Edit_CutToClipboard(e.instance)
 }
 
 // PasteFromClipboard
+// CN: 从剪切板粘贴。
+// EN: .
 func (e *TEdit) PasteFromClipboard() {
     Edit_PasteFromClipboard(e.instance)
 }
 
 // Undo
+// CN: 撤销上一次操作。
+// EN: .
 func (e *TEdit) Undo() {
     Edit_Undo(e.instance)
 }
 
 // ClearUndo
+// CN: 清除撤销。
+// EN: .
 func (e *TEdit) ClearUndo() {
     Edit_ClearUndo(e.instance)
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (e *TEdit) SelectAll() {
     Edit_SelectAll(e.instance)
 }
@@ -147,6 +163,8 @@ func (e *TEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (e *TEdit) CanFocus() bool {
     return Edit_CanFocus(e.instance)
 }
@@ -500,31 +518,43 @@ func (e *TEdit) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (e *TEdit) Anchors() TAnchors {
     return Edit_GetAnchors(e.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (e *TEdit) SetAnchors(value TAnchors) {
     Edit_SetAnchors(e.instance, value)
 }
 
 // AutoSelect
+// CN: 获取自动选择。
+// EN: .
 func (e *TEdit) AutoSelect() bool {
     return Edit_GetAutoSelect(e.instance)
 }
 
 // SetAutoSelect
+// CN: 设置自动选择。
+// EN: .
 func (e *TEdit) SetAutoSelect(value bool) {
     Edit_SetAutoSelect(e.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (e *TEdit) AutoSize() bool {
     return Edit_GetAutoSize(e.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (e *TEdit) SetAutoSize(value bool) {
     Edit_SetAutoSize(e.instance, value)
 }
@@ -580,11 +610,15 @@ func (e *TEdit) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (e *TEdit) BorderStyle() TBorderStyle {
     return Edit_GetBorderStyle(e.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (e *TEdit) SetBorderStyle(value TBorderStyle) {
     Edit_SetBorderStyle(e.instance, value)
 }
@@ -600,15 +634,15 @@ func (e *TEdit) SetCharCase(value TEditCharCase) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (e *TEdit) Color() TColor {
     return Edit_GetColor(e.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (e *TEdit) SetColor(value TColor) {
     Edit_SetColor(e.instance, value)
 }
@@ -698,31 +732,43 @@ func (e *TEdit) SetFont(value *TFont) {
 }
 
 // HideSelection
+// CN: 获取隐藏选择。
+// EN: .
 func (e *TEdit) HideSelection() bool {
     return Edit_GetHideSelection(e.instance)
 }
 
 // SetHideSelection
+// CN: 设置隐藏选择。
+// EN: .
 func (e *TEdit) SetHideSelection(value bool) {
     Edit_SetHideSelection(e.instance, value)
 }
 
 // MaxLength
+// CN: 获取最大长度。
+// EN: .
 func (e *TEdit) MaxLength() int32 {
     return Edit_GetMaxLength(e.instance)
 }
 
 // SetMaxLength
+// CN: 设置最大长度。
+// EN: .
 func (e *TEdit) SetMaxLength(value int32) {
     Edit_SetMaxLength(e.instance, value)
 }
 
 // NumbersOnly
+// CN: 获取只能输入数字。
+// EN: .
 func (e *TEdit) NumbersOnly() bool {
     return Edit_GetNumbersOnly(e.instance)
 }
 
 // SetNumbersOnly
+// CN: 设置只能输入数字。
+// EN: .
 func (e *TEdit) SetNumbersOnly(value bool) {
     Edit_SetNumbersOnly(e.instance, value)
 }
@@ -790,11 +836,15 @@ func (e *TEdit) SetParentShowHint(value bool) {
 }
 
 // PasswordChar
+// CN: 获取密码掩码字符。
+// EN: .
 func (e *TEdit) PasswordChar() uint16 {
     return Edit_GetPasswordChar(e.instance)
 }
 
 // SetPasswordChar
+// CN: 设置密码掩码字符。
+// EN: .
 func (e *TEdit) SetPasswordChar(value uint16) {
     Edit_SetPasswordChar(e.instance, value)
 }
@@ -814,11 +864,15 @@ func (e *TEdit) SetPopupMenu(value IComponent) {
 }
 
 // ReadOnly
+// CN: 获取只读。
+// EN: .
 func (e *TEdit) ReadOnly() bool {
     return Edit_GetReadOnly(e.instance)
 }
 
 // SetReadOnly
+// CN: 设置只读。
+// EN: .
 func (e *TEdit) SetReadOnly(value bool) {
     Edit_SetReadOnly(e.instance, value)
 }
@@ -866,21 +920,29 @@ func (e *TEdit) SetTabStop(value bool) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (e *TEdit) Text() string {
     return Edit_GetText(e.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (e *TEdit) SetText(value string) {
     Edit_SetText(e.instance, value)
 }
 
 // TextHint
+// CN: 获取提示文本。
+// EN: .
 func (e *TEdit) TextHint() string {
     return Edit_GetTextHint(e.instance)
 }
 
 // SetTextHint
+// CN: 设置提示文本。
+// EN: .
 func (e *TEdit) SetTextHint(value string) {
     Edit_SetTextHint(e.instance, value)
 }
@@ -935,6 +997,8 @@ func (e *TEdit) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (e *TEdit) SetOnDblClick(fn TNotifyEvent) {
     Edit_SetOnDblClick(e.instance, fn)
 }
@@ -1022,6 +1086,8 @@ func (e *TEdit) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (e *TEdit) SetOnMouseMove(fn TMouseMoveEvent) {
     Edit_SetOnMouseMove(e.instance, fn)
 }
@@ -1034,11 +1100,15 @@ func (e *TEdit) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (e *TEdit) SetOnStartDock(fn TStartDockEvent) {
     Edit_SetOnStartDock(e.instance, fn)
 }
 
 // CanUndo
+// CN: 获取能否撤销。
+// EN: .
 func (e *TEdit) CanUndo() bool {
     return Edit_GetCanUndo(e.instance)
 }
@@ -1058,36 +1128,50 @@ func (e *TEdit) SetModified(value bool) {
 }
 
 // SelLength
+// CN: 获取选择的长度。
+// EN: .
 func (e *TEdit) SelLength() int32 {
     return Edit_GetSelLength(e.instance)
 }
 
 // SetSelLength
+// CN: 设置选择的长度。
+// EN: .
 func (e *TEdit) SetSelLength(value int32) {
     Edit_SetSelLength(e.instance, value)
 }
 
 // SelStart
+// CN: 获取选择的启始位置。
+// EN: .
 func (e *TEdit) SelStart() int32 {
     return Edit_GetSelStart(e.instance)
 }
 
 // SetSelStart
+// CN: 设置选择的启始位置。
+// EN: .
 func (e *TEdit) SetSelStart(value int32) {
     Edit_SetSelStart(e.instance, value)
 }
 
 // SelText
+// CN: 获取选择的文本。
+// EN: .
 func (e *TEdit) SelText() string {
     return Edit_GetSelText(e.instance)
 }
 
 // SetSelText
+// CN: 设置选择的文本。
+// EN: .
 func (e *TEdit) SetSelText(value string) {
     Edit_SetSelText(e.instance, value)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (e *TEdit) DockClientCount() int32 {
     return Edit_GetDockClientCount(e.instance)
 }
@@ -1107,6 +1191,8 @@ func (e *TEdit) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (e *TEdit) AlignDisabled() bool {
     return Edit_GetAlignDisabled(e.instance)
 }
@@ -1161,11 +1247,15 @@ func (e *TEdit) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (e *TEdit) UseDockManager() bool {
     return Edit_GetUseDockManager(e.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (e *TEdit) SetUseDockManager(value bool) {
     Edit_SetUseDockManager(e.instance, value)
 }
@@ -1382,14 +1472,14 @@ func (e *TEdit) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (e *TEdit) Hint() string {
     return Edit_GetHint(e.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (e *TEdit) SetHint(value string) {
     Edit_SetHint(e.instance, value)
@@ -1480,11 +1570,15 @@ func (e *TEdit) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (e *TEdit) DockClients(Index int32) *TControl {
     return ControlFromInst(Edit_GetDockClients(e.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (e *TEdit) Controls(Index int32) *TControl {
     return ControlFromInst(Edit_GetControls(e.instance, Index))
 }

@@ -107,6 +107,8 @@ func (t *TToolBar) FlipChildren(AllLevels bool) {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (t *TToolBar) CanFocus() bool {
     return ToolBar_CanFocus(t.instance)
 }
@@ -432,6 +434,8 @@ func (t *TToolBar) ButtonCount() int32 {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (t *TToolBar) Canvas() *TCanvas {
     return CanvasFromInst(ToolBar_GetCanvas(t.instance))
 }
@@ -476,31 +480,43 @@ func (t *TToolBar) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (t *TToolBar) Anchors() TAnchors {
     return ToolBar_GetAnchors(t.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (t *TToolBar) SetAnchors(value TAnchors) {
     ToolBar_SetAnchors(t.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (t *TToolBar) AutoSize() bool {
     return ToolBar_GetAutoSize(t.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (t *TToolBar) SetAutoSize(value bool) {
     ToolBar_SetAutoSize(t.instance, value)
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (t *TToolBar) BorderWidth() int32 {
     return ToolBar_GetBorderWidth(t.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (t *TToolBar) SetBorderWidth(value int32) {
     ToolBar_SetBorderWidth(t.instance, value)
 }
@@ -540,15 +556,15 @@ func (t *TToolBar) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (t *TToolBar) Color() TColor {
     return ToolBar_GetColor(t.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (t *TToolBar) SetColor(value TColor) {
     ToolBar_SetColor(t.instance, value)
 }
@@ -678,11 +694,15 @@ func (t *TToolBar) SetEnabled(value bool) {
 }
 
 // Flat
+// CN: 获取平面样式。
+// EN: .
 func (t *TToolBar) Flat() bool {
     return ToolBar_GetFlat(t.instance)
 }
 
 // SetFlat
+// CN: 设置平面样式。
+// EN: .
 func (t *TToolBar) SetFlat(value bool) {
     ToolBar_SetFlat(t.instance, value)
 }
@@ -702,21 +722,29 @@ func (t *TToolBar) SetFont(value *TFont) {
 }
 
 // GradientEndColor
+// CN: 获取渐变结束颜色, 仅VCL。
+// EN: .
 func (t *TToolBar) GradientEndColor() TColor {
     return ToolBar_GetGradientEndColor(t.instance)
 }
 
 // SetGradientEndColor
+// CN: 设置渐变结束颜色, 仅VCL。
+// EN: .
 func (t *TToolBar) SetGradientEndColor(value TColor) {
     ToolBar_SetGradientEndColor(t.instance, value)
 }
 
 // GradientStartColor
+// CN: 获取渐变起始颜色，仅VCL。
+// EN: .
 func (t *TToolBar) GradientStartColor() TColor {
     return ToolBar_GetGradientStartColor(t.instance)
 }
 
 // SetGradientStartColor
+// CN: 设置渐变起始颜色，仅VCL。
+// EN: .
 func (t *TToolBar) SetGradientStartColor(value TColor) {
     ToolBar_SetGradientStartColor(t.instance, value)
 }
@@ -756,11 +784,15 @@ func (t *TToolBar) SetHotImages(value IComponent) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (t *TToolBar) Images() *TImageList {
     return ImageListFromInst(ToolBar_GetImages(t.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (t *TToolBar) SetImages(value IComponent) {
     ToolBar_SetImages(t.instance, CheckPtr(value))
 }
@@ -796,21 +828,29 @@ func (t *TToolBar) SetMenu(value IComponent) {
 }
 
 // GradientDirection
+// CN: 获取渐变颜色方向。
+// EN: .
 func (t *TToolBar) GradientDirection() TGradientDirection {
     return ToolBar_GetGradientDirection(t.instance)
 }
 
 // SetGradientDirection
+// CN: 设置渐变颜色方向。
+// EN: .
 func (t *TToolBar) SetGradientDirection(value TGradientDirection) {
     ToolBar_SetGradientDirection(t.instance, value)
 }
 
 // GradientDrawingOptions
+// CN: 获取渐变绘制选项。
+// EN: .
 func (t *TToolBar) GradientDrawingOptions() TTBGradientDrawingOptions {
     return ToolBar_GetGradientDrawingOptions(t.instance)
 }
 
 // SetGradientDrawingOptions
+// CN: 设置渐变绘制选项。
+// EN: .
 func (t *TToolBar) SetGradientDrawingOptions(value TTBGradientDrawingOptions) {
     ToolBar_SetGradientDrawingOptions(t.instance, value)
 }
@@ -882,11 +922,15 @@ func (t *TToolBar) SetPopupMenu(value IComponent) {
 }
 
 // ShowCaptions
+// CN: 获取显示标题。
+// EN: .
 func (t *TToolBar) ShowCaptions() bool {
     return ToolBar_GetShowCaptions(t.instance)
 }
 
 // SetShowCaptions
+// CN: 设置显示标题。
+// EN: .
 func (t *TToolBar) SetShowCaptions(value bool) {
     ToolBar_SetShowCaptions(t.instance, value)
 }
@@ -1010,6 +1054,8 @@ func (t *TToolBar) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (t *TToolBar) SetOnDblClick(fn TNotifyEvent) {
     ToolBar_SetOnDblClick(t.instance, fn)
 }
@@ -1088,6 +1134,8 @@ func (t *TToolBar) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (t *TToolBar) SetOnMouseMove(fn TMouseMoveEvent) {
     ToolBar_SetOnMouseMove(t.instance, fn)
 }
@@ -1100,11 +1148,15 @@ func (t *TToolBar) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (t *TToolBar) SetOnResize(fn TNotifyEvent) {
     ToolBar_SetOnResize(t.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (t *TToolBar) SetOnStartDock(fn TStartDockEvent) {
     ToolBar_SetOnStartDock(t.instance, fn)
 }
@@ -1115,11 +1167,15 @@ func (t *TToolBar) SetOnUnDock(fn TUnDockEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (t *TToolBar) DockClientCount() int32 {
     return ToolBar_GetDockClientCount(t.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (t *TToolBar) AlignDisabled() bool {
     return ToolBar_GetAlignDisabled(t.instance)
 }
@@ -1174,11 +1230,15 @@ func (t *TToolBar) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (t *TToolBar) UseDockManager() bool {
     return ToolBar_GetUseDockManager(t.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (t *TToolBar) SetUseDockManager(value bool) {
     ToolBar_SetUseDockManager(t.instance, value)
 }
@@ -1391,14 +1451,14 @@ func (t *TToolBar) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (t *TToolBar) Hint() string {
     return ToolBar_GetHint(t.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (t *TToolBar) SetHint(value string) {
     ToolBar_SetHint(t.instance, value)
@@ -1494,11 +1554,15 @@ func (t *TToolBar) Buttons(Index int32) *TToolButton {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (t *TToolBar) DockClients(Index int32) *TControl {
     return ControlFromInst(ToolBar_GetDockClients(t.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (t *TToolBar) Controls(Index int32) *TControl {
     return ControlFromInst(ToolBar_GetControls(t.instance, Index))
 }

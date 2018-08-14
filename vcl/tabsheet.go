@@ -102,6 +102,8 @@ func TTabSheetClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (t *TTabSheet) CanFocus() bool {
     return TabSheet_CanFocus(t.instance)
 }
@@ -442,11 +444,15 @@ func (t *TTabSheet) TabIndex() int32 {
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (t *TTabSheet) BorderWidth() int32 {
     return TabSheet_GetBorderWidth(t.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (t *TTabSheet) SetBorderWidth(value int32) {
     TabSheet_SetBorderWidth(t.instance, value)
 }
@@ -546,11 +552,15 @@ func (t *TTabSheet) SetHighlighted(value bool) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (t *TTabSheet) ImageIndex() int32 {
     return TabSheet_GetImageIndex(t.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (t *TTabSheet) SetImageIndex(value int32) {
     TabSheet_SetImageIndex(t.instance, value)
 }
@@ -740,6 +750,8 @@ func (t *TTabSheet) SetOnExit(fn TNotifyEvent) {
 }
 
 // SetOnHide
+// CN: 设置隐藏事件。
+// EN: .
 func (t *TTabSheet) SetOnHide(fn TNotifyEvent) {
     TabSheet_SetOnHide(t.instance, fn)
 }
@@ -766,6 +778,8 @@ func (t *TTabSheet) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (t *TTabSheet) SetOnMouseMove(fn TMouseMoveEvent) {
     TabSheet_SetOnMouseMove(t.instance, fn)
 }
@@ -778,16 +792,22 @@ func (t *TTabSheet) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (t *TTabSheet) SetOnResize(fn TNotifyEvent) {
     TabSheet_SetOnResize(t.instance, fn)
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (t *TTabSheet) SetOnShow(fn TNotifyEvent) {
     TabSheet_SetOnShow(t.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (t *TTabSheet) DockClientCount() int32 {
     return TabSheet_GetDockClientCount(t.instance)
 }
@@ -807,6 +827,8 @@ func (t *TTabSheet) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (t *TTabSheet) AlignDisabled() bool {
     return TabSheet_GetAlignDisabled(t.instance)
 }
@@ -889,11 +911,15 @@ func (t *TTabSheet) SetTabStop(value bool) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (t *TTabSheet) UseDockManager() bool {
     return TabSheet_GetUseDockManager(t.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (t *TTabSheet) SetUseDockManager(value bool) {
     TabSheet_SetUseDockManager(t.instance, value)
 }
@@ -923,11 +949,15 @@ func (t *TTabSheet) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (t *TTabSheet) Anchors() TAnchors {
     return TabSheet_GetAnchors(t.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (t *TTabSheet) SetAnchors(value TAnchors) {
     TabSheet_SetAnchors(t.instance, value)
 }
@@ -1102,14 +1132,14 @@ func (t *TTabSheet) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (t *TTabSheet) Hint() string {
     return TabSheet_GetHint(t.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (t *TTabSheet) SetHint(value string) {
     TabSheet_SetHint(t.instance, value)
@@ -1200,11 +1230,15 @@ func (t *TTabSheet) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (t *TTabSheet) DockClients(Index int32) *TControl {
     return ControlFromInst(TabSheet_GetDockClients(t.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (t *TTabSheet) Controls(Index int32) *TControl {
     return ControlFromInst(TabSheet_GetControls(t.instance, Index))
 }

@@ -107,6 +107,8 @@ func (f *TFindDialog) CloseDialog() {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (f *TFindDialog) Execute() bool {
     return FindDialog_Execute(f.instance)
 }
@@ -271,6 +273,8 @@ func (f *TFindDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (f *TFindDialog) SetOnShow(fn TNotifyEvent) {
     FindDialog_SetOnShow(f.instance, fn)
 }

@@ -186,11 +186,15 @@ func (l *TListColumn) SetAlignment(value TAlignment) {
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (l *TListColumn) AutoSize() bool {
     return ListColumn_GetAutoSize(l.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (l *TListColumn) SetAutoSize(value bool) {
     ListColumn_SetAutoSize(l.instance, value)
 }
@@ -210,11 +214,15 @@ func (l *TListColumn) SetCaption(value string) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (l *TListColumn) ImageIndex() int32 {
     return ListColumn_GetImageIndex(l.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (l *TListColumn) SetImageIndex(value int32) {
     ListColumn_SetImageIndex(l.instance, value)
 }

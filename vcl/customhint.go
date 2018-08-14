@@ -109,6 +109,8 @@ func (c *TCustomHint) ShowHint() {
 }
 
 // HideHint
+// CN: 隐藏鼠标悬停提示。
+// EN: .
 func (c *TCustomHint) HideHint() {
     CustomHint_HideHint(c.instance)
 }
@@ -223,21 +225,29 @@ func (c *TCustomHint) SetDescription(value string) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (c *TCustomHint) ImageIndex() int32 {
     return CustomHint_GetImageIndex(c.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (c *TCustomHint) SetImageIndex(value int32) {
     CustomHint_SetImageIndex(c.instance, value)
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (c *TCustomHint) Images() *TImageList {
     return ImageListFromInst(CustomHint_GetImages(c.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (c *TCustomHint) SetImages(value IComponent) {
     CustomHint_SetImages(c.instance, CheckPtr(value))
 }

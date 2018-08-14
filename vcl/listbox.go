@@ -107,11 +107,15 @@ func (l *TListBox) AddItem(Item string, AObject IObject) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (l *TListBox) Clear() {
     ListBox_Clear(l.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (l *TListBox) ClearSelection() {
     ListBox_ClearSelection(l.instance)
 }
@@ -122,11 +126,15 @@ func (l *TListBox) DeleteSelected() {
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (l *TListBox) SelectAll() {
     ListBox_SelectAll(l.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (l *TListBox) CanFocus() bool {
     return ListBox_CanFocus(l.instance)
 }
@@ -496,11 +504,15 @@ func (l *TListBox) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (l *TListBox) Anchors() TAnchors {
     return ListBox_GetAnchors(l.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (l *TListBox) SetAnchors(value TAnchors) {
     ListBox_SetAnchors(l.instance, value)
 }
@@ -556,25 +568,29 @@ func (l *TListBox) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (l *TListBox) BorderStyle() TBorderStyle {
     return ListBox_GetBorderStyle(l.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (l *TListBox) SetBorderStyle(value TBorderStyle) {
     ListBox_SetBorderStyle(l.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (l *TListBox) Color() TColor {
     return ListBox_GetColor(l.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (l *TListBox) SetColor(value TColor) {
     ListBox_SetColor(l.instance, value)
 }
@@ -884,6 +900,8 @@ func (l *TListBox) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (l *TListBox) SetOnDblClick(fn TNotifyEvent) {
     ListBox_SetOnDblClick(l.instance, fn)
 }
@@ -976,6 +994,8 @@ func (l *TListBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (l *TListBox) SetOnMouseMove(fn TMouseMoveEvent) {
     ListBox_SetOnMouseMove(l.instance, fn)
 }
@@ -988,11 +1008,15 @@ func (l *TListBox) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (l *TListBox) SetOnStartDock(fn TStartDockEvent) {
     ListBox_SetOnStartDock(l.instance, fn)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (l *TListBox) Canvas() *TCanvas {
     return CanvasFromInst(ListBox_GetCanvas(l.instance))
 }
@@ -1023,6 +1047,8 @@ func (l *TListBox) SetItemIndex(value int32) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (l *TListBox) DockClientCount() int32 {
     return ListBox_GetDockClientCount(l.instance)
 }
@@ -1042,6 +1068,8 @@ func (l *TListBox) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (l *TListBox) AlignDisabled() bool {
     return ListBox_GetAlignDisabled(l.instance)
 }
@@ -1096,11 +1124,15 @@ func (l *TListBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (l *TListBox) UseDockManager() bool {
     return ListBox_GetUseDockManager(l.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (l *TListBox) SetUseDockManager(value bool) {
     ListBox_SetUseDockManager(l.instance, value)
 }
@@ -1317,14 +1349,14 @@ func (l *TListBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (l *TListBox) Hint() string {
     return ListBox_GetHint(l.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (l *TListBox) SetHint(value string) {
     ListBox_SetHint(l.instance, value)
@@ -1425,11 +1457,15 @@ func (l *TListBox) SetSelected(Index int32, value bool) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (l *TListBox) DockClients(Index int32) *TControl {
     return ControlFromInst(ListBox_GetDockClients(l.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (l *TListBox) Controls(Index int32) *TControl {
     return ControlFromInst(ListBox_GetControls(l.instance, Index))
 }

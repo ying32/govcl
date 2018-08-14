@@ -312,6 +312,8 @@ func (p *TPaintBox) ToString() string {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (p *TPaintBox) Canvas() *TCanvas {
     return CanvasFromInst(PaintBox_GetCanvas(p.instance))
 }
@@ -331,25 +333,29 @@ func (p *TPaintBox) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (p *TPaintBox) Anchors() TAnchors {
     return PaintBox_GetAnchors(p.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (p *TPaintBox) SetAnchors(value TAnchors) {
     PaintBox_SetAnchors(p.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (p *TPaintBox) Color() TColor {
     return PaintBox_GetColor(p.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (p *TPaintBox) SetColor(value TColor) {
     PaintBox_SetColor(p.instance, value)
 }
@@ -519,6 +525,8 @@ func (p *TPaintBox) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (p *TPaintBox) SetOnDblClick(fn TNotifyEvent) {
     PaintBox_SetOnDblClick(p.instance, fn)
 }
@@ -573,6 +581,8 @@ func (p *TPaintBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (p *TPaintBox) SetOnMouseMove(fn TMouseMoveEvent) {
     PaintBox_SetOnMouseMove(p.instance, fn)
 }
@@ -585,11 +595,15 @@ func (p *TPaintBox) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnPaint
+// CN: 设置绘画事件。
+// EN: .
 func (p *TPaintBox) SetOnPaint(fn TNotifyEvent) {
     PaintBox_SetOnPaint(p.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (p *TPaintBox) SetOnStartDock(fn TStartDockEvent) {
     PaintBox_SetOnStartDock(p.instance, fn)
 }
@@ -830,14 +844,14 @@ func (p *TPaintBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (p *TPaintBox) Hint() string {
     return PaintBox_GetHint(p.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (p *TPaintBox) SetHint(value string) {
     PaintBox_SetHint(p.instance, value)

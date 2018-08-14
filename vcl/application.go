@@ -102,6 +102,8 @@ func TApplicationClass() TClass {
 }
 
 // ActivateHint
+// CN: 激活鼠标悬停提示。
+// EN: .
 func (a *TApplication) ActivateHint(CursorPos TPoint) {
     Application_ActivateHint(a.instance, CursorPos)
 }
@@ -114,21 +116,29 @@ func (a *TApplication) BringToFront() {
 }
 
 // CancelHint
+// CN: 取消鼠标悬停提示。
+// EN: .
 func (a *TApplication) CancelHint() {
     Application_CancelHint(a.instance)
 }
 
 // HandleMessage
+// CN: 消息循环，不要使用。
+// EN: .
 func (a *TApplication) HandleMessage() {
     Application_HandleMessage(a.instance)
 }
 
 // HideHint
+// CN: 隐藏鼠标悬停提示。
+// EN: .
 func (a *TApplication) HideHint() {
     Application_HideHint(a.instance)
 }
 
 // Minimize
+// CN: 最小化应用程序。
+// EN: .
 func (a *TApplication) Minimize() {
     Application_Minimize(a.instance)
 }
@@ -154,26 +164,36 @@ func (a *TApplication) NormalizeTopMosts() {
 }
 
 // ProcessMessages
+// CN: 处理消息循环。
+// EN: .
 func (a *TApplication) ProcessMessages() {
     Application_ProcessMessages(a.instance)
 }
 
 // Restore
+// CN: 恢复小最小的应用。
+// EN: .
 func (a *TApplication) Restore() {
     Application_Restore(a.instance)
 }
 
 // RestoreTopMosts
+// CN: 恢复最小化的应用并置顶。
+// EN: .
 func (a *TApplication) RestoreTopMosts() {
     Application_RestoreTopMosts(a.instance)
 }
 
 // Terminate
+// CN: 结束应用程序。
+// EN: .
 func (a *TApplication) Terminate() {
     Application_Terminate(a.instance)
 }
 
 // MessageBox
+// CN: 显示消息框。
+// EN: .
 func (a *TApplication) MessageBox(Text string, Caption string, Flags int32) int32 {
     return Application_MessageBox(a.instance, Text , Caption , Flags)
 }
@@ -263,60 +283,78 @@ func (a *TApplication) ToString() string {
 }
 
 // DialogHandle
+// CN: 获取对话框句柄。
+// EN: .
 func (a *TApplication) DialogHandle() HWND {
     return Application_GetDialogHandle(a.instance)
 }
 
 // SetDialogHandle
+// CN: 设置对话框句柄。
+// EN: .
 func (a *TApplication) SetDialogHandle(value HWND) {
     Application_SetDialogHandle(a.instance, value)
 }
 
 // ExeName
+// CN: 获取当前exe文件名，包含全路径。
+// EN: .
 func (a *TApplication) ExeName() string {
     return Application_GetExeName(a.instance)
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (a *TApplication) Hint() string {
     return Application_GetHint(a.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (a *TApplication) SetHint(value string) {
     Application_SetHint(a.instance, value)
 }
 
 // HintColor
+// CN: 获取鼠标悬停提示颜色。
+// EN: .
 func (a *TApplication) HintColor() TColor {
     return Application_GetHintColor(a.instance)
 }
 
 // SetHintColor
+// CN: 设置鼠标悬停提示颜色。
+// EN: .
 func (a *TApplication) SetHintColor(value TColor) {
     Application_SetHintColor(a.instance, value)
 }
 
 // HintHidePause
+// CN: 获取鼠标悬停提示暂停时间，ms。
+// EN: .
 func (a *TApplication) HintHidePause() int32 {
     return Application_GetHintHidePause(a.instance)
 }
 
 // SetHintHidePause
+// CN: 设置鼠标悬停提示暂停时间，ms。
+// EN: .
 func (a *TApplication) SetHintHidePause(value int32) {
     Application_SetHintHidePause(a.instance, value)
 }
 
 // HintPause
+// CN: 获取鼠标悬停暂时时间。
+// EN: .
 func (a *TApplication) HintPause() int32 {
     return Application_GetHintPause(a.instance)
 }
 
 // SetHintPause
+// CN: 设置鼠标悬停暂时时间。
+// EN: .
 func (a *TApplication) SetHintPause(value int32) {
     Application_SetHintPause(a.instance, value)
 }
@@ -371,11 +409,15 @@ func (a *TApplication) MainFormHandle() HWND {
 }
 
 // MainFormOnTaskBar
+// CN: 获取主窗口显示在任务栏上。
+// EN: .
 func (a *TApplication) MainFormOnTaskBar() bool {
     return Application_GetMainFormOnTaskBar(a.instance)
 }
 
 // SetMainFormOnTaskBar
+// CN: 设置主窗口显示在任务栏上。
+// EN: .
 func (a *TApplication) SetMainFormOnTaskBar(value bool) {
     Application_SetMainFormOnTaskBar(a.instance, value)
 }
@@ -405,11 +447,15 @@ func (a *TApplication) SetShowHint(value bool) {
 }
 
 // ShowMainForm
+// CN: 获取初始显示主窗口。
+// EN: .
 func (a *TApplication) ShowMainForm() bool {
     return Application_GetShowMainForm(a.instance)
 }
 
 // SetShowMainForm
+// CN: 设置初始显示主窗口。
+// EN: .
 func (a *TApplication) SetShowMainForm(value bool) {
     Application_SetShowMainForm(a.instance, value)
 }
@@ -425,6 +471,8 @@ func (a *TApplication) SetTitle(value string) {
 }
 
 // SetOnException
+// CN: 设置应用程序异常事件。
+// EN: .
 func (a *TApplication) SetOnException(fn TExceptionEvent) {
     Application_SetOnException(a.instance, fn)
 }
@@ -435,21 +483,29 @@ func (a *TApplication) SetOnHelp(fn THelpEvent) {
 }
 
 // SetOnHint
+// CN: 设置鼠标悬停提示事件。
+// EN: .
 func (a *TApplication) SetOnHint(fn TNotifyEvent) {
     Application_SetOnHint(a.instance, fn)
 }
 
 // SetOnMessage
+// CN: 设置消息循环事件，VCL。
+// EN: .
 func (a *TApplication) SetOnMessage(fn TMessageEvent) {
     Application_SetOnMessage(a.instance, fn)
 }
 
 // SetOnMinimize
+// CN: 设置App或者窗口最小化事件。
+// EN: .
 func (a *TApplication) SetOnMinimize(fn TNotifyEvent) {
     Application_SetOnMinimize(a.instance, fn)
 }
 
 // SetOnRestore
+// CN: 设置App或者窗口恢复事件。
+// EN: .
 func (a *TApplication) SetOnRestore(fn TNotifyEvent) {
     Application_SetOnRestore(a.instance, fn)
 }

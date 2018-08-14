@@ -119,6 +119,8 @@ func (s *TStringList) Assign(Source IObject) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (s *TStringList) Clear() {
     StringList_Clear(s.instance)
 }
@@ -176,11 +178,15 @@ func (s *TStringList) IndexOfObject(AObject IObject) int32 {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (s *TStringList) LoadFromFile(FileName string) {
     StringList_LoadFromFile(s.instance, FileName)
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (s *TStringList) LoadFromStream(Stream IObject) {
     StringList_LoadFromStream(s.instance, CheckPtr(Stream))
 }
@@ -191,11 +197,15 @@ func (s *TStringList) Move(CurIndex int32, NewIndex int32) {
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (s *TStringList) SaveToFile(FileName string) {
     StringList_SaveToFile(s.instance, FileName)
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (s *TStringList) SaveToStream(Stream IObject) {
     StringList_SaveToStream(s.instance, CheckPtr(Stream))
 }
@@ -309,11 +319,15 @@ func (s *TStringList) SetDelimiter(value uint16) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (s *TStringList) Text() string {
     return StringList_GetText(s.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (s *TStringList) SetText(value string) {
     StringList_SetText(s.instance, value)
 }

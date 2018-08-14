@@ -102,6 +102,8 @@ func TRadioButtonClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (r *TRadioButton) CanFocus() bool {
     return RadioButton_CanFocus(r.instance)
 }
@@ -465,11 +467,15 @@ func (r *TRadioButton) SetAlignment(value TLeftRight) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (r *TRadioButton) Anchors() TAnchors {
     return RadioButton_GetAnchors(r.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (r *TRadioButton) SetAnchors(value TAnchors) {
     RadioButton_SetAnchors(r.instance, value)
 }
@@ -499,25 +505,29 @@ func (r *TRadioButton) SetCaption(value string) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (r *TRadioButton) Checked() bool {
     return RadioButton_GetChecked(r.instance)
 }
 
 // SetChecked
+// CN: 设置是否选中。
+// EN: .
 func (r *TRadioButton) SetChecked(value bool) {
     RadioButton_SetChecked(r.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (r *TRadioButton) Color() TColor {
     return RadioButton_GetColor(r.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (r *TRadioButton) SetColor(value TColor) {
     RadioButton_SetColor(r.instance, value)
 }
@@ -781,6 +791,8 @@ func (r *TRadioButton) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (r *TRadioButton) SetOnDblClick(fn TNotifyEvent) {
     RadioButton_SetOnDblClick(r.instance, fn)
 }
@@ -868,6 +880,8 @@ func (r *TRadioButton) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (r *TRadioButton) SetOnMouseMove(fn TMouseMoveEvent) {
     RadioButton_SetOnMouseMove(r.instance, fn)
 }
@@ -880,11 +894,15 @@ func (r *TRadioButton) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (r *TRadioButton) SetOnStartDock(fn TStartDockEvent) {
     RadioButton_SetOnStartDock(r.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (r *TRadioButton) DockClientCount() int32 {
     return RadioButton_GetDockClientCount(r.instance)
 }
@@ -904,6 +922,8 @@ func (r *TRadioButton) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (r *TRadioButton) AlignDisabled() bool {
     return RadioButton_GetAlignDisabled(r.instance)
 }
@@ -958,11 +978,15 @@ func (r *TRadioButton) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (r *TRadioButton) UseDockManager() bool {
     return RadioButton_GetUseDockManager(r.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (r *TRadioButton) SetUseDockManager(value bool) {
     RadioButton_SetUseDockManager(r.instance, value)
 }
@@ -1169,14 +1193,14 @@ func (r *TRadioButton) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (r *TRadioButton) Hint() string {
     return RadioButton_GetHint(r.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (r *TRadioButton) SetHint(value string) {
     RadioButton_SetHint(r.instance, value)
@@ -1267,11 +1291,15 @@ func (r *TRadioButton) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (r *TRadioButton) DockClients(Index int32) *TControl {
     return ControlFromInst(RadioButton_GetDockClients(r.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (r *TRadioButton) Controls(Index int32) *TControl {
     return ControlFromInst(RadioButton_GetControls(r.instance, Index))
 }

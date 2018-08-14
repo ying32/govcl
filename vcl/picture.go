@@ -102,21 +102,29 @@ func TPictureClass() TClass {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (p *TPicture) LoadFromFile(Filename string) {
     Picture_LoadFromFile(p.instance, Filename)
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (p *TPicture) SaveToFile(Filename string) {
     Picture_SaveToFile(p.instance, Filename)
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (p *TPicture) LoadFromStream(Stream IObject) {
     Picture_LoadFromStream(p.instance, CheckPtr(Stream))
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (p *TPicture) SaveToStream(Stream IObject) {
     Picture_SaveToStream(p.instance, CheckPtr(Stream))
 }

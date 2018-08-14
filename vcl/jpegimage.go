@@ -109,11 +109,15 @@ func (j *TJPEGImage) Assign(Source IObject) {
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (j *TJPEGImage) LoadFromStream(Stream IObject) {
     JPEGImage_LoadFromStream(j.instance, CheckPtr(Stream))
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (j *TJPEGImage) SaveToStream(Stream IObject) {
     JPEGImage_SaveToStream(j.instance, CheckPtr(Stream))
 }
@@ -126,11 +130,15 @@ func (j *TJPEGImage) Equals(Obj IObject) bool {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (j *TJPEGImage) LoadFromFile(Filename string) {
     JPEGImage_LoadFromFile(j.instance, Filename)
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (j *TJPEGImage) SaveToFile(Filename string) {
     JPEGImage_SaveToFile(j.instance, Filename)
 }
@@ -247,6 +255,8 @@ func (j *TJPEGImage) SetSmoothing(value bool) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (j *TJPEGImage) Canvas() *TCanvas {
     return CanvasFromInst(JPEGImage_GetCanvas(j.instance))
 }

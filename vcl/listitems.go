@@ -124,6 +124,8 @@ func (l *TListItems) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (l *TListItems) Clear() {
     ListItems_Clear(l.instance)
 }

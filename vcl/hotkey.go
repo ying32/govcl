@@ -102,6 +102,8 @@ func THotKeyClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (h *THotKey) CanFocus() bool {
     return HotKey_CanFocus(h.instance)
 }
@@ -427,21 +429,29 @@ func (h *THotKey) ToString() string {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (h *THotKey) Anchors() TAnchors {
     return HotKey_GetAnchors(h.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (h *THotKey) SetAnchors(value TAnchors) {
     HotKey_SetAnchors(h.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (h *THotKey) AutoSize() bool {
     return HotKey_GetAutoSize(h.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (h *THotKey) SetAutoSize(value bool) {
     HotKey_SetAutoSize(h.instance, value)
 }
@@ -471,14 +481,14 @@ func (h *THotKey) SetEnabled(value bool) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (h *THotKey) Hint() string {
     return HotKey_GetHint(h.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (h *THotKey) SetHint(value string) {
     HotKey_SetHint(h.instance, value)
@@ -628,6 +638,8 @@ func (h *THotKey) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (h *THotKey) SetOnMouseMove(fn TMouseMoveEvent) {
     HotKey_SetOnMouseMove(h.instance, fn)
 }
@@ -640,6 +652,8 @@ func (h *THotKey) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (h *THotKey) DockClientCount() int32 {
     return HotKey_GetDockClientCount(h.instance)
 }
@@ -673,6 +687,8 @@ func (h *THotKey) SetDoubleBuffered(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (h *THotKey) AlignDisabled() bool {
     return HotKey_GetAlignDisabled(h.instance)
 }
@@ -741,11 +757,15 @@ func (h *THotKey) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (h *THotKey) UseDockManager() bool {
     return HotKey_GetUseDockManager(h.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (h *THotKey) SetUseDockManager(value bool) {
     HotKey_SetUseDockManager(h.instance, value)
 }
@@ -1060,11 +1080,15 @@ func (h *THotKey) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (h *THotKey) DockClients(Index int32) *TControl {
     return ControlFromInst(HotKey_GetDockClients(h.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (h *THotKey) Controls(Index int32) *TControl {
     return ControlFromInst(HotKey_GetControls(h.instance, Index))
 }

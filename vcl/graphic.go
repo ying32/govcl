@@ -109,21 +109,29 @@ func (g *TGraphic) Equals(Obj IObject) bool {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (g *TGraphic) LoadFromFile(Filename string) {
     Graphic_LoadFromFile(g.instance, Filename)
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (g *TGraphic) SaveToFile(Filename string) {
     Graphic_SaveToFile(g.instance, Filename)
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (g *TGraphic) LoadFromStream(Stream IObject) {
     Graphic_LoadFromStream(g.instance, CheckPtr(Stream))
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (g *TGraphic) SaveToStream(Stream IObject) {
     Graphic_SaveToStream(g.instance, CheckPtr(Stream))
 }

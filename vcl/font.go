@@ -213,15 +213,15 @@ func (f *TFont) SetCharset(value TFontCharset) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (f *TFont) Color() TColor {
     return Font_GetColor(f.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (f *TFont) SetColor(value TColor) {
     Font_SetColor(f.instance, value)
 }

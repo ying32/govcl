@@ -116,11 +116,15 @@ func (b *TBitmap) HandleAllocated() bool {
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (b *TBitmap) LoadFromStream(Stream IObject) {
     Bitmap_LoadFromStream(b.instance, CheckPtr(Stream))
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (b *TBitmap) SaveToStream(Stream IObject) {
     Bitmap_SaveToStream(b.instance, CheckPtr(Stream))
 }
@@ -148,11 +152,15 @@ func (b *TBitmap) Equals(Obj IObject) bool {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (b *TBitmap) LoadFromFile(Filename string) {
     Bitmap_LoadFromFile(b.instance, Filename)
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (b *TBitmap) SaveToFile(Filename string) {
     Bitmap_SaveToFile(b.instance, Filename)
 }
@@ -214,6 +222,8 @@ func (b *TBitmap) ToString() string {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (b *TBitmap) Canvas() *TCanvas {
     return CanvasFromInst(Bitmap_GetCanvas(b.instance))
 }
@@ -243,11 +253,15 @@ func (b *TBitmap) SetPixelFormat(value TPixelFormat) {
 }
 
 // TransparentColor
+// CN: 获取使用颜色透明。
+// EN: .
 func (b *TBitmap) TransparentColor() TColor {
     return Bitmap_GetTransparentColor(b.instance)
 }
 
 // SetTransparentColor
+// CN: 设置使用颜色透明。
+// EN: .
 func (b *TBitmap) SetTransparentColor(value TColor) {
     Bitmap_SetTransparentColor(b.instance, value)
 }

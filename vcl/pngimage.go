@@ -109,11 +109,15 @@ func (p *TPngImage) Assign(Source IObject) {
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (p *TPngImage) LoadFromStream(Stream IObject) {
     PngImage_LoadFromStream(p.instance, CheckPtr(Stream))
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (p *TPngImage) SaveToStream(Stream IObject) {
     PngImage_SaveToStream(p.instance, CheckPtr(Stream))
 }
@@ -136,11 +140,15 @@ func (p *TPngImage) Equals(Obj IObject) bool {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (p *TPngImage) LoadFromFile(Filename string) {
     PngImage_LoadFromFile(p.instance, Filename)
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (p *TPngImage) SaveToFile(Filename string) {
     PngImage_SaveToFile(p.instance, Filename)
 }
@@ -207,16 +215,22 @@ func (p *TPngImage) ToString() string {
 }
 
 // TransparentColor
+// CN: 获取使用颜色透明。
+// EN: .
 func (p *TPngImage) TransparentColor() TColor {
     return PngImage_GetTransparentColor(p.instance)
 }
 
 // SetTransparentColor
+// CN: 设置使用颜色透明。
+// EN: .
 func (p *TPngImage) SetTransparentColor(value TColor) {
     PngImage_SetTransparentColor(p.instance, value)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (p *TPngImage) Canvas() *TCanvas {
     return CanvasFromInst(PngImage_GetCanvas(p.instance))
 }

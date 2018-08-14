@@ -124,6 +124,8 @@ func (v *TValueListEditor) MouseCoord(X int32, Y int32) TGridCoord {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (v *TValueListEditor) CanFocus() bool {
     return ValueListEditor_CanFocus(v.instance)
 }
@@ -481,11 +483,15 @@ func (v *TValueListEditor) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (v *TValueListEditor) Anchors() TAnchors {
     return ValueListEditor_GetAnchors(v.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (v *TValueListEditor) SetAnchors(value TAnchors) {
     ValueListEditor_SetAnchors(v.instance, value)
 }
@@ -501,25 +507,29 @@ func (v *TValueListEditor) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (v *TValueListEditor) BorderStyle() TBorderStyle {
     return ValueListEditor_GetBorderStyle(v.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (v *TValueListEditor) SetBorderStyle(value TBorderStyle) {
     ValueListEditor_SetBorderStyle(v.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (v *TValueListEditor) Color() TColor {
     return ValueListEditor_GetColor(v.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (v *TValueListEditor) SetColor(value TColor) {
     ValueListEditor_SetColor(v.instance, value)
 }
@@ -669,21 +679,29 @@ func (v *TValueListEditor) SetFont(value *TFont) {
 }
 
 // GradientEndColor
+// CN: 获取渐变结束颜色, 仅VCL。
+// EN: .
 func (v *TValueListEditor) GradientEndColor() TColor {
     return ValueListEditor_GetGradientEndColor(v.instance)
 }
 
 // SetGradientEndColor
+// CN: 设置渐变结束颜色, 仅VCL。
+// EN: .
 func (v *TValueListEditor) SetGradientEndColor(value TColor) {
     ValueListEditor_SetGradientEndColor(v.instance, value)
 }
 
 // GradientStartColor
+// CN: 获取渐变起始颜色，仅VCL。
+// EN: .
 func (v *TValueListEditor) GradientStartColor() TColor {
     return ValueListEditor_GetGradientStartColor(v.instance)
 }
 
 // SetGradientStartColor
+// CN: 设置渐变起始颜色，仅VCL。
+// EN: .
 func (v *TValueListEditor) SetGradientStartColor(value TColor) {
     ValueListEditor_SetGradientStartColor(v.instance, value)
 }
@@ -875,6 +893,8 @@ func (v *TValueListEditor) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (v *TValueListEditor) SetOnDblClick(fn TNotifyEvent) {
     ValueListEditor_SetOnDblClick(v.instance, fn)
 }
@@ -977,6 +997,8 @@ func (v *TValueListEditor) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (v *TValueListEditor) SetOnMouseMove(fn TMouseMoveEvent) {
     ValueListEditor_SetOnMouseMove(v.instance, fn)
 }
@@ -989,11 +1011,15 @@ func (v *TValueListEditor) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnMouseWheelDown
+// CN: 设置鼠标滚轮按下事件。
+// EN: .
 func (v *TValueListEditor) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     ValueListEditor_SetOnMouseWheelDown(v.instance, fn)
 }
 
 // SetOnMouseWheelUp
+// CN: 设置鼠标滚轮抬起事件。
+// EN: .
 func (v *TValueListEditor) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     ValueListEditor_SetOnMouseWheelUp(v.instance, fn)
 }
@@ -1014,6 +1040,8 @@ func (v *TValueListEditor) SetOnSetEditText(fn TSetEditEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (v *TValueListEditor) SetOnStartDock(fn TStartDockEvent) {
     ValueListEditor_SetOnStartDock(v.instance, fn)
 }
@@ -1024,6 +1052,8 @@ func (v *TValueListEditor) SetOnTopLeftChanged(fn TNotifyEvent) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (v *TValueListEditor) Canvas() *TCanvas {
     return CanvasFromInst(ValueListEditor_GetCanvas(v.instance))
 }
@@ -1113,6 +1143,8 @@ func (v *TValueListEditor) SetTabStop(value bool) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (v *TValueListEditor) DockClientCount() int32 {
     return ValueListEditor_GetDockClientCount(v.instance)
 }
@@ -1132,6 +1164,8 @@ func (v *TValueListEditor) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (v *TValueListEditor) AlignDisabled() bool {
     return ValueListEditor_GetAlignDisabled(v.instance)
 }
@@ -1186,11 +1220,15 @@ func (v *TValueListEditor) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (v *TValueListEditor) UseDockManager() bool {
     return ValueListEditor_GetUseDockManager(v.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (v *TValueListEditor) SetUseDockManager(value bool) {
     ValueListEditor_SetUseDockManager(v.instance, value)
 }
@@ -1407,14 +1445,14 @@ func (v *TValueListEditor) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (v *TValueListEditor) Hint() string {
     return ValueListEditor_GetHint(v.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (v *TValueListEditor) SetHint(value string) {
     ValueListEditor_SetHint(v.instance, value)
@@ -1555,11 +1593,15 @@ func (v *TValueListEditor) SetTabStops(Index int32, value bool) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (v *TValueListEditor) DockClients(Index int32) *TControl {
     return ControlFromInst(ValueListEditor_GetDockClients(v.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (v *TValueListEditor) Controls(Index int32) *TControl {
     return ControlFromInst(ValueListEditor_GetControls(v.instance, Index))
 }

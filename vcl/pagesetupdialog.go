@@ -107,6 +107,8 @@ func (p *TPageSetupDialog) GetDefaults() bool {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (p *TPageSetupDialog) Execute() bool {
     return PageSetupDialog_Execute(p.instance)
 }
@@ -328,6 +330,8 @@ func (p *TPageSetupDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (p *TPageSetupDialog) SetOnShow(fn TNotifyEvent) {
     PageSetupDialog_SetOnShow(p.instance, fn)
 }

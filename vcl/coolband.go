@@ -189,11 +189,15 @@ func (c *TCoolBand) SetBitmap(value *TBitmap) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (c *TCoolBand) BorderStyle() TBorderStyle {
     return CoolBand_GetBorderStyle(c.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (c *TCoolBand) SetBorderStyle(value TBorderStyle) {
     CoolBand_SetBorderStyle(c.instance, value)
 }
@@ -209,15 +213,15 @@ func (c *TCoolBand) SetBreak(value bool) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TCoolBand) Color() TColor {
     return CoolBand_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TCoolBand) SetColor(value TColor) {
     CoolBand_SetColor(c.instance, value)
 }
@@ -263,11 +267,15 @@ func (c *TCoolBand) SetHorizontalOnly(value bool) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (c *TCoolBand) ImageIndex() int32 {
     return CoolBand_GetImageIndex(c.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (c *TCoolBand) SetImageIndex(value int32) {
     CoolBand_SetImageIndex(c.instance, value)
 }
@@ -317,11 +325,15 @@ func (c *TCoolBand) SetParentBitmap(value bool) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (c *TCoolBand) Text() string {
     return CoolBand_GetText(c.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (c *TCoolBand) SetText(value string) {
     CoolBand_SetText(c.instance, value)
 }

@@ -112,6 +112,8 @@ func (f *TFlowPanel) SetControlIndex(AControl IControl, Index int32) {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (f *TFlowPanel) CanFocus() bool {
     return FlowPanel_CanFocus(f.instance)
 }
@@ -465,21 +467,29 @@ func (f *TFlowPanel) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (f *TFlowPanel) Anchors() TAnchors {
     return FlowPanel_GetAnchors(f.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (f *TFlowPanel) SetAnchors(value TAnchors) {
     FlowPanel_SetAnchors(f.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (f *TFlowPanel) AutoSize() bool {
     return FlowPanel_GetAutoSize(f.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (f *TFlowPanel) SetAutoSize(value bool) {
     FlowPanel_SetAutoSize(f.instance, value)
 }
@@ -545,21 +555,29 @@ func (f *TFlowPanel) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (f *TFlowPanel) BorderWidth() int32 {
     return FlowPanel_GetBorderWidth(f.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (f *TFlowPanel) SetBorderWidth(value int32) {
     FlowPanel_SetBorderWidth(f.instance, value)
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (f *TFlowPanel) BorderStyle() TBorderStyle {
     return FlowPanel_GetBorderStyle(f.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (f *TFlowPanel) SetBorderStyle(value TBorderStyle) {
     FlowPanel_SetBorderStyle(f.instance, value)
 }
@@ -579,25 +597,29 @@ func (f *TFlowPanel) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (f *TFlowPanel) Color() TColor {
     return FlowPanel_GetColor(f.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (f *TFlowPanel) SetColor(value TColor) {
     FlowPanel_SetColor(f.instance, value)
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (f *TFlowPanel) UseDockManager() bool {
     return FlowPanel_GetUseDockManager(f.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (f *TFlowPanel) SetUseDockManager(value bool) {
     FlowPanel_SetUseDockManager(f.instance, value)
 }
@@ -916,6 +938,8 @@ func (f *TFlowPanel) SetOnDockDrop(fn TDockDropEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (f *TFlowPanel) SetOnDblClick(fn TNotifyEvent) {
     FlowPanel_SetOnDblClick(f.instance, fn)
 }
@@ -989,6 +1013,8 @@ func (f *TFlowPanel) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (f *TFlowPanel) SetOnMouseMove(fn TMouseMoveEvent) {
     FlowPanel_SetOnMouseMove(f.instance, fn)
 }
@@ -1001,11 +1027,15 @@ func (f *TFlowPanel) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (f *TFlowPanel) SetOnResize(fn TNotifyEvent) {
     FlowPanel_SetOnResize(f.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (f *TFlowPanel) SetOnStartDock(fn TStartDockEvent) {
     FlowPanel_SetOnStartDock(f.instance, fn)
 }
@@ -1016,11 +1046,15 @@ func (f *TFlowPanel) SetOnUnDock(fn TUnDockEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (f *TFlowPanel) DockClientCount() int32 {
     return FlowPanel_GetDockClientCount(f.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (f *TFlowPanel) AlignDisabled() bool {
     return FlowPanel_GetAlignDisabled(f.instance)
 }
@@ -1286,14 +1320,14 @@ func (f *TFlowPanel) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (f *TFlowPanel) Hint() string {
     return FlowPanel_GetHint(f.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (f *TFlowPanel) SetHint(value string) {
     FlowPanel_SetHint(f.instance, value)
@@ -1384,11 +1418,15 @@ func (f *TFlowPanel) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (f *TFlowPanel) DockClients(Index int32) *TControl {
     return ControlFromInst(FlowPanel_GetDockClients(f.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (f *TFlowPanel) Controls(Index int32) *TControl {
     return ControlFromInst(FlowPanel_GetControls(f.instance, Index))
 }

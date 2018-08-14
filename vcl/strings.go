@@ -129,6 +129,8 @@ func (s *TStrings) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (s *TStrings) Clear() {
     Strings_Clear(s.instance)
 }
@@ -176,11 +178,15 @@ func (s *TStrings) InsertObject(Index int32, S string, AObject IObject) {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (s *TStrings) LoadFromFile(FileName string) {
     Strings_LoadFromFile(s.instance, FileName)
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (s *TStrings) LoadFromStream(Stream IObject) {
     Strings_LoadFromStream(s.instance, CheckPtr(Stream))
 }
@@ -191,11 +197,15 @@ func (s *TStrings) Move(CurIndex int32, NewIndex int32) {
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (s *TStrings) SaveToFile(FileName string) {
     Strings_SaveToFile(s.instance, FileName)
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (s *TStrings) SaveToStream(Stream IObject) {
     Strings_SaveToStream(s.instance, CheckPtr(Stream))
 }
@@ -292,11 +302,15 @@ func (s *TStrings) SetDelimiter(value uint16) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (s *TStrings) Text() string {
     return Strings_GetText(s.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (s *TStrings) SetText(value string) {
     Strings_SetText(s.instance, value)
 }

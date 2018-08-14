@@ -107,6 +107,8 @@ func (l *TList) Add(Item uintptr) int32 {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (l *TList) Clear() {
     List_Clear(l.instance)
 }
@@ -203,26 +205,36 @@ func (l *TList) SetCapacity(value int32) {
 }
 
 // Count
+// CN: 获取项目总数。
+// EN: Get Total number of projects.
 func (l *TList) Count() int32 {
     return List_GetCount(l.instance)
 }
 
 // SetCount
+// CN: 设置项目总数。
+// EN: Set Total number of projects.
 func (l *TList) SetCount(value int32) {
     List_SetCount(l.instance, value)
 }
 
 // List
+// CN: 获取获取列表指针。
+// EN: Get Get list pointer.
 func (l *TList) List() uintptr {
     return List_GetList(l.instance)
 }
 
 // Items
+// CN: 获取获取指定索引项目。
+// EN: Get Get the specified index item.
 func (l *TList) Items(Index int32) uintptr {
     return List_GetItems(l.instance, Index)
 }
 
 // Items
+// CN: 设置获取指定索引项目。
+// EN: Set Get the specified index item.
 func (l *TList) SetItems(Index int32, value uintptr) {
     List_SetItems(l.instance, Index, value)
 }

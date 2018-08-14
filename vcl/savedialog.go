@@ -102,6 +102,8 @@ func TSaveDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (s *TSaveDialog) Execute() bool {
     return SaveDialog_Execute(s.instance)
 }
@@ -288,6 +290,8 @@ func (s *TSaveDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (s *TSaveDialog) SetOnShow(fn TNotifyEvent) {
     SaveDialog_SetOnShow(s.instance, fn)
 }

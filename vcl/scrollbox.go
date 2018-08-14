@@ -102,6 +102,8 @@ func TScrollBoxClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (s *TScrollBox) CanFocus() bool {
     return ScrollBox_CanFocus(s.instance)
 }
@@ -441,21 +443,29 @@ func (s *TScrollBox) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TScrollBox) Anchors() TAnchors {
     return ScrollBox_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TScrollBox) SetAnchors(value TAnchors) {
     ScrollBox_SetAnchors(s.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (s *TScrollBox) AutoSize() bool {
     return ScrollBox_GetAutoSize(s.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (s *TScrollBox) SetAutoSize(value bool) {
     ScrollBox_SetAutoSize(s.instance, value)
 }
@@ -511,11 +521,15 @@ func (s *TScrollBox) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (s *TScrollBox) BorderStyle() TBorderStyle {
     return ScrollBox_GetBorderStyle(s.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (s *TScrollBox) SetBorderStyle(value TBorderStyle) {
     ScrollBox_SetBorderStyle(s.instance, value)
 }
@@ -605,15 +619,15 @@ func (s *TScrollBox) SetEnabled(value bool) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (s *TScrollBox) Color() TColor {
     return ScrollBox_GetColor(s.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (s *TScrollBox) SetColor(value TColor) {
     ScrollBox_SetColor(s.instance, value)
 }
@@ -803,6 +817,8 @@ func (s *TScrollBox) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (s *TScrollBox) SetOnDblClick(fn TNotifyEvent) {
     ScrollBox_SetOnDblClick(s.instance, fn)
 }
@@ -881,6 +897,8 @@ func (s *TScrollBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (s *TScrollBox) SetOnMouseMove(fn TMouseMoveEvent) {
     ScrollBox_SetOnMouseMove(s.instance, fn)
 }
@@ -893,26 +911,36 @@ func (s *TScrollBox) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnMouseWheel
+// CN: 设置鼠标滚轮事件。
+// EN: .
 func (s *TScrollBox) SetOnMouseWheel(fn TMouseWheelEvent) {
     ScrollBox_SetOnMouseWheel(s.instance, fn)
 }
 
 // SetOnMouseWheelDown
+// CN: 设置鼠标滚轮按下事件。
+// EN: .
 func (s *TScrollBox) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     ScrollBox_SetOnMouseWheelDown(s.instance, fn)
 }
 
 // SetOnMouseWheelUp
+// CN: 设置鼠标滚轮抬起事件。
+// EN: .
 func (s *TScrollBox) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     ScrollBox_SetOnMouseWheelUp(s.instance, fn)
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (s *TScrollBox) SetOnResize(fn TNotifyEvent) {
     ScrollBox_SetOnResize(s.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (s *TScrollBox) SetOnStartDock(fn TStartDockEvent) {
     ScrollBox_SetOnStartDock(s.instance, fn)
 }
@@ -923,11 +951,15 @@ func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (s *TScrollBox) DockClientCount() int32 {
     return ScrollBox_GetDockClientCount(s.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (s *TScrollBox) AlignDisabled() bool {
     return ScrollBox_GetAlignDisabled(s.instance)
 }
@@ -982,11 +1014,15 @@ func (s *TScrollBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (s *TScrollBox) UseDockManager() bool {
     return ScrollBox_GetUseDockManager(s.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (s *TScrollBox) SetUseDockManager(value bool) {
     ScrollBox_SetUseDockManager(s.instance, value)
 }
@@ -1203,14 +1239,14 @@ func (s *TScrollBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TScrollBox) Hint() string {
     return ScrollBox_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TScrollBox) SetHint(value string) {
     ScrollBox_SetHint(s.instance, value)
@@ -1301,11 +1337,15 @@ func (s *TScrollBox) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (s *TScrollBox) DockClients(Index int32) *TControl {
     return ControlFromInst(ScrollBox_GetDockClients(s.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (s *TScrollBox) Controls(Index int32) *TControl {
     return ControlFromInst(ScrollBox_GetControls(s.instance, Index))
 }

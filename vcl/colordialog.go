@@ -102,6 +102,8 @@ func TColorDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (c *TColorDialog) Execute() bool {
     return ColorDialog_Execute(c.instance)
 }
@@ -191,15 +193,15 @@ func (c *TColorDialog) ToString() string {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TColorDialog) Color() TColor {
     return ColorDialog_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TColorDialog) SetColor(value TColor) {
     ColorDialog_SetColor(c.instance, value)
 }
@@ -227,6 +229,8 @@ func (c *TColorDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (c *TColorDialog) SetOnShow(fn TNotifyEvent) {
     ColorDialog_SetOnShow(c.instance, fn)
 }

@@ -117,6 +117,8 @@ func (p *TPageControl) RowCount() int32 {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (p *TPageControl) CanFocus() bool {
     return PageControl_CanFocus(p.instance)
 }
@@ -471,11 +473,15 @@ func (p *TPageControl) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (p *TPageControl) Anchors() TAnchors {
     return PageControl_GetAnchors(p.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (p *TPageControl) SetAnchors(value TAnchors) {
     PageControl_SetAnchors(p.instance, value)
 }
@@ -599,11 +605,15 @@ func (p *TPageControl) SetHotTrack(value bool) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (p *TPageControl) Images() *TImageList {
     return ImageListFromInst(PageControl_GetImages(p.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (p *TPageControl) SetImages(value IComponent) {
     PageControl_SetImages(p.instance, CheckPtr(value))
 }
@@ -883,6 +893,8 @@ func (p *TPageControl) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (p *TPageControl) SetOnMouseMove(fn TMouseMoveEvent) {
     PageControl_SetOnMouseMove(p.instance, fn)
 }
@@ -895,11 +907,15 @@ func (p *TPageControl) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (p *TPageControl) SetOnResize(fn TNotifyEvent) {
     PageControl_SetOnResize(p.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (p *TPageControl) SetOnStartDock(fn TStartDockEvent) {
     PageControl_SetOnStartDock(p.instance, fn)
 }
@@ -910,16 +926,22 @@ func (p *TPageControl) SetOnUnDock(fn TUnDockEvent) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (p *TPageControl) Canvas() *TCanvas {
     return CanvasFromInst(PageControl_GetCanvas(p.instance))
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (p *TPageControl) DockClientCount() int32 {
     return PageControl_GetDockClientCount(p.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (p *TPageControl) AlignDisabled() bool {
     return PageControl_GetAlignDisabled(p.instance)
 }
@@ -974,11 +996,15 @@ func (p *TPageControl) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (p *TPageControl) UseDockManager() bool {
     return PageControl_GetUseDockManager(p.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (p *TPageControl) SetUseDockManager(value bool) {
     PageControl_SetUseDockManager(p.instance, value)
 }
@@ -1195,14 +1221,14 @@ func (p *TPageControl) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (p *TPageControl) Hint() string {
     return PageControl_GetHint(p.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (p *TPageControl) SetHint(value string) {
     PageControl_SetHint(p.instance, value)
@@ -1298,11 +1324,15 @@ func (p *TPageControl) Pages(Index int32) *TTabSheet {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (p *TPageControl) DockClients(Index int32) *TControl {
     return ControlFromInst(PageControl_GetDockClients(p.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (p *TPageControl) Controls(Index int32) *TControl {
     return ControlFromInst(PageControl_GetControls(p.instance, Index))
 }

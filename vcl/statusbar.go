@@ -114,6 +114,8 @@ func (s *TStatusBar) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight in
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (s *TStatusBar) CanFocus() bool {
     return StatusBar_CanFocus(s.instance)
 }
@@ -461,11 +463,15 @@ func (s *TStatusBar) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TStatusBar) Anchors() TAnchors {
     return StatusBar_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TStatusBar) SetAnchors(value TAnchors) {
     StatusBar_SetAnchors(s.instance, value)
 }
@@ -481,25 +487,29 @@ func (s *TStatusBar) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (s *TStatusBar) BorderWidth() int32 {
     return StatusBar_GetBorderWidth(s.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (s *TStatusBar) SetBorderWidth(value int32) {
     StatusBar_SetBorderWidth(s.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (s *TStatusBar) Color() TColor {
     return StatusBar_GetColor(s.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (s *TStatusBar) SetColor(value TColor) {
     StatusBar_SetColor(s.instance, value)
 }
@@ -761,6 +771,8 @@ func (s *TStatusBar) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (s *TStatusBar) SetOnDblClick(fn TNotifyEvent) {
     StatusBar_SetOnDblClick(s.instance, fn)
 }
@@ -794,6 +806,8 @@ func (s *TStatusBar) SetOnEndDrag(fn TEndDragEvent) {
 }
 
 // SetOnHint
+// CN: 设置鼠标悬停提示事件。
+// EN: .
 func (s *TStatusBar) SetOnHint(fn TNotifyEvent) {
     StatusBar_SetOnHint(s.instance, fn)
 }
@@ -820,6 +834,8 @@ func (s *TStatusBar) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (s *TStatusBar) SetOnMouseMove(fn TMouseMoveEvent) {
     StatusBar_SetOnMouseMove(s.instance, fn)
 }
@@ -832,21 +848,29 @@ func (s *TStatusBar) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (s *TStatusBar) SetOnResize(fn TNotifyEvent) {
     StatusBar_SetOnResize(s.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (s *TStatusBar) SetOnStartDock(fn TStartDockEvent) {
     StatusBar_SetOnStartDock(s.instance, fn)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (s *TStatusBar) Canvas() *TCanvas {
     return CanvasFromInst(StatusBar_GetCanvas(s.instance))
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (s *TStatusBar) DockClientCount() int32 {
     return StatusBar_GetDockClientCount(s.instance)
 }
@@ -866,6 +890,8 @@ func (s *TStatusBar) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (s *TStatusBar) AlignDisabled() bool {
     return StatusBar_GetAlignDisabled(s.instance)
 }
@@ -948,11 +974,15 @@ func (s *TStatusBar) SetTabStop(value bool) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (s *TStatusBar) UseDockManager() bool {
     return StatusBar_GetUseDockManager(s.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (s *TStatusBar) SetUseDockManager(value bool) {
     StatusBar_SetUseDockManager(s.instance, value)
 }
@@ -1159,14 +1189,14 @@ func (s *TStatusBar) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TStatusBar) Hint() string {
     return StatusBar_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TStatusBar) SetHint(value string) {
     StatusBar_SetHint(s.instance, value)
@@ -1257,11 +1287,15 @@ func (s *TStatusBar) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (s *TStatusBar) DockClients(Index int32) *TControl {
     return ControlFromInst(StatusBar_GetDockClients(s.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (s *TStatusBar) Controls(Index int32) *TControl {
     return ControlFromInst(StatusBar_GetControls(s.instance, Index))
 }

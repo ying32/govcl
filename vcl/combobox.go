@@ -107,11 +107,15 @@ func (c *TComboBox) AddItem(Item string, AObject IObject) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (c *TComboBox) Clear() {
     ComboBox_Clear(c.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (c *TComboBox) ClearSelection() {
     ComboBox_ClearSelection(c.instance)
 }
@@ -129,11 +133,15 @@ func (c *TComboBox) Focused() bool {
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (c *TComboBox) SelectAll() {
     ComboBox_SelectAll(c.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (c *TComboBox) CanFocus() bool {
     return ComboBox_CanFocus(c.instance)
 }
@@ -556,11 +564,15 @@ func (c *TComboBox) SetStyle(value TComboBoxStyle) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TComboBox) Anchors() TAnchors {
     return ComboBox_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TComboBox) SetAnchors(value TAnchors) {
     ComboBox_SetAnchors(c.instance, value)
 }
@@ -586,15 +598,15 @@ func (c *TComboBox) SetCharCase(value TEditCharCase) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TComboBox) Color() TColor {
     return ComboBox_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TComboBox) SetColor(value TColor) {
     ComboBox_SetColor(c.instance, value)
 }
@@ -714,11 +726,15 @@ func (c *TComboBox) SetItemIndex(value int32) {
 }
 
 // MaxLength
+// CN: 获取最大长度。
+// EN: .
 func (c *TComboBox) MaxLength() int32 {
     return ComboBox_GetMaxLength(c.instance)
 }
 
 // SetMaxLength
+// CN: 设置最大长度。
+// EN: .
 func (c *TComboBox) SetMaxLength(value int32) {
     ComboBox_SetMaxLength(c.instance, value)
 }
@@ -852,21 +868,29 @@ func (c *TComboBox) SetTabStop(value bool) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (c *TComboBox) Text() string {
     return ComboBox_GetText(c.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (c *TComboBox) SetText(value string) {
     ComboBox_SetText(c.instance, value)
 }
 
 // TextHint
+// CN: 获取提示文本。
+// EN: .
 func (c *TComboBox) TextHint() string {
     return ComboBox_GetTextHint(c.instance)
 }
 
 // SetTextHint
+// CN: 设置提示文本。
+// EN: .
 func (c *TComboBox) SetTextHint(value string) {
     ComboBox_SetTextHint(c.instance, value)
 }
@@ -921,6 +945,8 @@ func (c *TComboBox) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (c *TComboBox) SetOnDblClick(fn TNotifyEvent) {
     ComboBox_SetOnDblClick(c.instance, fn)
 }
@@ -1006,6 +1032,8 @@ func (c *TComboBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (c *TComboBox) SetOnStartDock(fn TStartDockEvent) {
     ComboBox_SetOnStartDock(c.instance, fn)
 }
@@ -1021,16 +1049,22 @@ func (c *TComboBox) SetItems(value IObject) {
 }
 
 // SelText
+// CN: 获取选择的文本。
+// EN: .
 func (c *TComboBox) SelText() string {
     return ComboBox_GetSelText(c.instance)
 }
 
 // SetSelText
+// CN: 设置选择的文本。
+// EN: .
 func (c *TComboBox) SetSelText(value string) {
     ComboBox_SetSelText(c.instance, value)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (c *TComboBox) Canvas() *TCanvas {
     return CanvasFromInst(ComboBox_GetCanvas(c.instance))
 }
@@ -1046,26 +1080,36 @@ func (c *TComboBox) SetDroppedDown(value bool) {
 }
 
 // SelLength
+// CN: 获取选择的长度。
+// EN: .
 func (c *TComboBox) SelLength() int32 {
     return ComboBox_GetSelLength(c.instance)
 }
 
 // SetSelLength
+// CN: 设置选择的长度。
+// EN: .
 func (c *TComboBox) SetSelLength(value int32) {
     ComboBox_SetSelLength(c.instance, value)
 }
 
 // SelStart
+// CN: 获取选择的启始位置。
+// EN: .
 func (c *TComboBox) SelStart() int32 {
     return ComboBox_GetSelStart(c.instance)
 }
 
 // SetSelStart
+// CN: 设置选择的启始位置。
+// EN: .
 func (c *TComboBox) SetSelStart(value int32) {
     ComboBox_SetSelStart(c.instance, value)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (c *TComboBox) DockClientCount() int32 {
     return ComboBox_GetDockClientCount(c.instance)
 }
@@ -1085,6 +1129,8 @@ func (c *TComboBox) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (c *TComboBox) AlignDisabled() bool {
     return ComboBox_GetAlignDisabled(c.instance)
 }
@@ -1139,11 +1185,15 @@ func (c *TComboBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (c *TComboBox) UseDockManager() bool {
     return ComboBox_GetUseDockManager(c.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (c *TComboBox) SetUseDockManager(value bool) {
     ComboBox_SetUseDockManager(c.instance, value)
 }
@@ -1360,14 +1410,14 @@ func (c *TComboBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TComboBox) Hint() string {
     return ComboBox_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TComboBox) SetHint(value string) {
     ComboBox_SetHint(c.instance, value)
@@ -1458,11 +1508,15 @@ func (c *TComboBox) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (c *TComboBox) DockClients(Index int32) *TControl {
     return ControlFromInst(ComboBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (c *TComboBox) Controls(Index int32) *TControl {
     return ControlFromInst(ComboBox_GetControls(c.instance, Index))
 }

@@ -102,41 +102,57 @@ func TMemoClass() TClass {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (m *TMemo) Clear() {
     Memo_Clear(m.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (m *TMemo) ClearSelection() {
     Memo_ClearSelection(m.instance)
 }
 
 // CopyToClipboard
+// CN: 复制到粘贴板。
+// EN: .
 func (m *TMemo) CopyToClipboard() {
     Memo_CopyToClipboard(m.instance)
 }
 
 // CutToClipboard
+// CN: 剪切到粘贴板。
+// EN: .
 func (m *TMemo) CutToClipboard() {
     Memo_CutToClipboard(m.instance)
 }
 
 // PasteFromClipboard
+// CN: 从剪切板粘贴。
+// EN: .
 func (m *TMemo) PasteFromClipboard() {
     Memo_PasteFromClipboard(m.instance)
 }
 
 // Undo
+// CN: 撤销上一次操作。
+// EN: .
 func (m *TMemo) Undo() {
     Memo_Undo(m.instance)
 }
 
 // ClearUndo
+// CN: 清除撤销。
+// EN: .
 func (m *TMemo) ClearUndo() {
     Memo_ClearUndo(m.instance)
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (m *TMemo) SelectAll() {
     Memo_SelectAll(m.instance)
 }
@@ -147,6 +163,8 @@ func (m *TMemo) GetSelTextBuf(Buffer string, BufSize int32) int32 {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (m *TMemo) CanFocus() bool {
     return Memo_CanFocus(m.instance)
 }
@@ -500,11 +518,15 @@ func (m *TMemo) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (m *TMemo) Anchors() TAnchors {
     return Memo_GetAnchors(m.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (m *TMemo) SetAnchors(value TAnchors) {
     Memo_SetAnchors(m.instance, value)
 }
@@ -560,11 +582,15 @@ func (m *TMemo) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (m *TMemo) BorderStyle() TBorderStyle {
     return Memo_GetBorderStyle(m.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (m *TMemo) SetBorderStyle(value TBorderStyle) {
     Memo_SetBorderStyle(m.instance, value)
 }
@@ -580,15 +606,15 @@ func (m *TMemo) SetCharCase(value TEditCharCase) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (m *TMemo) Color() TColor {
     return Memo_GetColor(m.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (m *TMemo) SetColor(value TColor) {
     Memo_SetColor(m.instance, value)
 }
@@ -678,11 +704,15 @@ func (m *TMemo) SetFont(value *TFont) {
 }
 
 // HideSelection
+// CN: 获取隐藏选择。
+// EN: .
 func (m *TMemo) HideSelection() bool {
     return Memo_GetHideSelection(m.instance)
 }
 
 // SetHideSelection
+// CN: 设置隐藏选择。
+// EN: .
 func (m *TMemo) SetHideSelection(value bool) {
     Memo_SetHideSelection(m.instance, value)
 }
@@ -698,11 +728,15 @@ func (m *TMemo) SetLines(value IObject) {
 }
 
 // MaxLength
+// CN: 获取最大长度。
+// EN: .
 func (m *TMemo) MaxLength() int32 {
     return Memo_GetMaxLength(m.instance)
 }
 
 // SetMaxLength
+// CN: 设置最大长度。
+// EN: .
 func (m *TMemo) SetMaxLength(value int32) {
     Memo_SetMaxLength(m.instance, value)
 }
@@ -784,11 +818,15 @@ func (m *TMemo) SetPopupMenu(value IComponent) {
 }
 
 // ReadOnly
+// CN: 获取只读。
+// EN: .
 func (m *TMemo) ReadOnly() bool {
     return Memo_GetReadOnly(m.instance)
 }
 
 // SetReadOnly
+// CN: 设置只读。
+// EN: .
 func (m *TMemo) SetReadOnly(value bool) {
     Memo_SetReadOnly(m.instance, value)
 }
@@ -929,6 +967,8 @@ func (m *TMemo) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (m *TMemo) SetOnDblClick(fn TNotifyEvent) {
     Memo_SetOnDblClick(m.instance, fn)
 }
@@ -1016,6 +1056,8 @@ func (m *TMemo) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (m *TMemo) SetOnMouseMove(fn TMouseMoveEvent) {
     Memo_SetOnMouseMove(m.instance, fn)
 }
@@ -1028,6 +1070,8 @@ func (m *TMemo) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (m *TMemo) SetOnStartDock(fn TStartDockEvent) {
     Memo_SetOnStartDock(m.instance, fn)
 }
@@ -1043,6 +1087,8 @@ func (m *TMemo) SetCaretPos(value TPoint) {
 }
 
 // CanUndo
+// CN: 获取能否撤销。
+// EN: .
 func (m *TMemo) CanUndo() bool {
     return Memo_GetCanUndo(m.instance)
 }
@@ -1062,56 +1108,78 @@ func (m *TMemo) SetModified(value bool) {
 }
 
 // SelLength
+// CN: 获取选择的长度。
+// EN: .
 func (m *TMemo) SelLength() int32 {
     return Memo_GetSelLength(m.instance)
 }
 
 // SetSelLength
+// CN: 设置选择的长度。
+// EN: .
 func (m *TMemo) SetSelLength(value int32) {
     Memo_SetSelLength(m.instance, value)
 }
 
 // SelStart
+// CN: 获取选择的启始位置。
+// EN: .
 func (m *TMemo) SelStart() int32 {
     return Memo_GetSelStart(m.instance)
 }
 
 // SetSelStart
+// CN: 设置选择的启始位置。
+// EN: .
 func (m *TMemo) SetSelStart(value int32) {
     Memo_SetSelStart(m.instance, value)
 }
 
 // SelText
+// CN: 获取选择的文本。
+// EN: .
 func (m *TMemo) SelText() string {
     return Memo_GetSelText(m.instance)
 }
 
 // SetSelText
+// CN: 设置选择的文本。
+// EN: .
 func (m *TMemo) SetSelText(value string) {
     Memo_SetSelText(m.instance, value)
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (m *TMemo) Text() string {
     return Memo_GetText(m.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (m *TMemo) SetText(value string) {
     Memo_SetText(m.instance, value)
 }
 
 // TextHint
+// CN: 获取提示文本。
+// EN: .
 func (m *TMemo) TextHint() string {
     return Memo_GetTextHint(m.instance)
 }
 
 // SetTextHint
+// CN: 设置提示文本。
+// EN: .
 func (m *TMemo) SetTextHint(value string) {
     Memo_SetTextHint(m.instance, value)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (m *TMemo) DockClientCount() int32 {
     return Memo_GetDockClientCount(m.instance)
 }
@@ -1131,6 +1199,8 @@ func (m *TMemo) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (m *TMemo) AlignDisabled() bool {
     return Memo_GetAlignDisabled(m.instance)
 }
@@ -1185,11 +1255,15 @@ func (m *TMemo) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (m *TMemo) UseDockManager() bool {
     return Memo_GetUseDockManager(m.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (m *TMemo) SetUseDockManager(value bool) {
     Memo_SetUseDockManager(m.instance, value)
 }
@@ -1406,14 +1480,14 @@ func (m *TMemo) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (m *TMemo) Hint() string {
     return Memo_GetHint(m.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (m *TMemo) SetHint(value string) {
     Memo_SetHint(m.instance, value)
@@ -1504,11 +1578,15 @@ func (m *TMemo) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (m *TMemo) DockClients(Index int32) *TControl {
     return ControlFromInst(Memo_GetDockClients(m.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (m *TMemo) Controls(Index int32) *TControl {
     return ControlFromInst(Memo_GetControls(m.instance, Index))
 }

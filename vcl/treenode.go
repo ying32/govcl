@@ -323,11 +323,15 @@ func (t *TTreeNode) SetHasChildren(value bool) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (t *TTreeNode) ImageIndex() int32 {
     return TreeNode_GetImageIndex(t.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (t *TTreeNode) SetImageIndex(value int32) {
     TreeNode_SetImageIndex(t.instance, value)
 }
@@ -411,11 +415,15 @@ func (t *TTreeNode) SetStateIndex(value int32) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (t *TTreeNode) Text() string {
     return TreeNode_GetText(t.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (t *TTreeNode) SetText(value string) {
     TreeNode_SetText(t.instance, value)
 }

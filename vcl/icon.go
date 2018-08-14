@@ -116,11 +116,15 @@ func (i *TIcon) HandleAllocated() bool {
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (i *TIcon) LoadFromStream(Stream IObject) {
     Icon_LoadFromStream(i.instance, CheckPtr(Stream))
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (i *TIcon) SaveToStream(Stream IObject) {
     Icon_SaveToStream(i.instance, CheckPtr(Stream))
 }
@@ -148,11 +152,15 @@ func (i *TIcon) Equals(Obj IObject) bool {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (i *TIcon) LoadFromFile(Filename string) {
     Icon_LoadFromFile(i.instance, Filename)
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (i *TIcon) SaveToFile(Filename string) {
     Icon_SaveToFile(i.instance, Filename)
 }

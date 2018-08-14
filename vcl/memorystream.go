@@ -102,16 +102,22 @@ func TMemoryStreamClass() TClass {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (m *TMemoryStream) Clear() {
     MemoryStream_Clear(m.instance)
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (m *TMemoryStream) LoadFromStream(Stream IObject) {
     MemoryStream_LoadFromStream(m.instance, CheckPtr(Stream))
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (m *TMemoryStream) LoadFromFile(FileName string) {
     MemoryStream_LoadFromFile(m.instance, FileName)
 }
@@ -122,11 +128,15 @@ func (m *TMemoryStream) Seek(Offset int64, Origin TSeekOrigin) int64 {
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (m *TMemoryStream) SaveToStream(Stream IObject) {
     MemoryStream_SaveToStream(m.instance, CheckPtr(Stream))
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (m *TMemoryStream) SaveToFile(FileName string) {
     MemoryStream_SaveToFile(m.instance, FileName)
 }

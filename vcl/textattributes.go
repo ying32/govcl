@@ -161,15 +161,15 @@ func (t *TTextAttributes) SetCharset(value TFontCharset) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (t *TTextAttributes) Color() TColor {
     return TextAttributes_GetColor(t.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (t *TTextAttributes) SetColor(value TColor) {
     TextAttributes_SetColor(t.instance, value)
 }

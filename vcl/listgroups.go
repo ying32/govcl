@@ -126,6 +126,8 @@ func (l *TListGroups) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (l *TListGroups) Clear() {
     ListGroups_Clear(l.instance)
 }

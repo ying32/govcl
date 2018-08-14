@@ -102,11 +102,15 @@ func TButtonClass() TClass {
 }
 
 // Click
+// CN: 单击。
+// EN: .
 func (b *TButton) Click() {
     Button_Click(b.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (b *TButton) CanFocus() bool {
     return Button_CanFocus(b.instance)
 }
@@ -456,11 +460,15 @@ func (b *TButton) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (b *TButton) Anchors() TAnchors {
     return Button_GetAnchors(b.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (b *TButton) SetAnchors(value TAnchors) {
     Button_SetAnchors(b.instance, value)
 }
@@ -644,31 +652,43 @@ func (b *TButton) SetImageAlignment(value TImageAlignment) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (b *TButton) ImageIndex() int32 {
     return Button_GetImageIndex(b.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (b *TButton) SetImageIndex(value int32) {
     Button_SetImageIndex(b.instance, value)
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (b *TButton) Images() *TImageList {
     return ImageListFromInst(Button_GetImages(b.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (b *TButton) SetImages(value IComponent) {
     Button_SetImages(b.instance, CheckPtr(value))
 }
 
 // ModalResult
+// CN: 获取模态对话框显示结果。
+// EN: .
 func (b *TButton) ModalResult() TModalResult {
     return Button_GetModalResult(b.instance)
 }
 
 // SetModalResult
+// CN: 设置模态对话框显示结果。
+// EN: .
 func (b *TButton) SetModalResult(value TModalResult) {
     Button_SetModalResult(b.instance, value)
 }
@@ -946,6 +966,8 @@ func (b *TButton) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (b *TButton) SetOnMouseMove(fn TMouseMoveEvent) {
     Button_SetOnMouseMove(b.instance, fn)
 }
@@ -958,11 +980,15 @@ func (b *TButton) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (b *TButton) SetOnStartDock(fn TStartDockEvent) {
     Button_SetOnStartDock(b.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (b *TButton) DockClientCount() int32 {
     return Button_GetDockClientCount(b.instance)
 }
@@ -982,6 +1008,8 @@ func (b *TButton) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (b *TButton) AlignDisabled() bool {
     return Button_GetAlignDisabled(b.instance)
 }
@@ -1036,11 +1064,15 @@ func (b *TButton) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (b *TButton) UseDockManager() bool {
     return Button_GetUseDockManager(b.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (b *TButton) SetUseDockManager(value bool) {
     Button_SetUseDockManager(b.instance, value)
 }
@@ -1247,14 +1279,14 @@ func (b *TButton) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (b *TButton) Hint() string {
     return Button_GetHint(b.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (b *TButton) SetHint(value string) {
     Button_SetHint(b.instance, value)
@@ -1345,11 +1377,15 @@ func (b *TButton) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (b *TButton) DockClients(Index int32) *TControl {
     return ControlFromInst(Button_GetDockClients(b.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (b *TButton) Controls(Index int32) *TControl {
     return ControlFromInst(Button_GetControls(b.instance, Index))
 }

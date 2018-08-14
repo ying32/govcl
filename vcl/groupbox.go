@@ -102,6 +102,8 @@ func TGroupBoxClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (g *TGroupBox) CanFocus() bool {
     return GroupBox_CanFocus(g.instance)
 }
@@ -441,11 +443,15 @@ func (g *TGroupBox) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (g *TGroupBox) Anchors() TAnchors {
     return GroupBox_GetAnchors(g.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (g *TGroupBox) SetAnchors(value TAnchors) {
     GroupBox_SetAnchors(g.instance, value)
 }
@@ -475,15 +481,15 @@ func (g *TGroupBox) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (g *TGroupBox) Color() TColor {
     return GroupBox_GetColor(g.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (g *TGroupBox) SetColor(value TColor) {
     GroupBox_SetColor(g.instance, value)
 }
@@ -757,6 +763,8 @@ func (g *TGroupBox) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (g *TGroupBox) SetOnDblClick(fn TNotifyEvent) {
     GroupBox_SetOnDblClick(g.instance, fn)
 }
@@ -835,6 +843,8 @@ func (g *TGroupBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (g *TGroupBox) SetOnMouseMove(fn TMouseMoveEvent) {
     GroupBox_SetOnMouseMove(g.instance, fn)
 }
@@ -847,6 +857,8 @@ func (g *TGroupBox) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (g *TGroupBox) SetOnStartDock(fn TStartDockEvent) {
     GroupBox_SetOnStartDock(g.instance, fn)
 }
@@ -857,11 +869,15 @@ func (g *TGroupBox) SetOnUnDock(fn TUnDockEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (g *TGroupBox) DockClientCount() int32 {
     return GroupBox_GetDockClientCount(g.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (g *TGroupBox) AlignDisabled() bool {
     return GroupBox_GetAlignDisabled(g.instance)
 }
@@ -916,11 +932,15 @@ func (g *TGroupBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (g *TGroupBox) UseDockManager() bool {
     return GroupBox_GetUseDockManager(g.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (g *TGroupBox) SetUseDockManager(value bool) {
     GroupBox_SetUseDockManager(g.instance, value)
 }
@@ -1137,14 +1157,14 @@ func (g *TGroupBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (g *TGroupBox) Hint() string {
     return GroupBox_GetHint(g.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (g *TGroupBox) SetHint(value string) {
     GroupBox_SetHint(g.instance, value)
@@ -1235,11 +1255,15 @@ func (g *TGroupBox) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (g *TGroupBox) DockClients(Index int32) *TControl {
     return ControlFromInst(GroupBox_GetDockClients(g.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (g *TGroupBox) Controls(Index int32) *TControl {
     return ControlFromInst(GroupBox_GetControls(g.instance, Index))
 }

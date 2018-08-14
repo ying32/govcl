@@ -107,6 +107,8 @@ func (r *TReplaceDialog) CloseDialog() {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (r *TReplaceDialog) Execute() bool {
     return ReplaceDialog_Execute(r.instance)
 }
@@ -286,6 +288,8 @@ func (r *TReplaceDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (r *TReplaceDialog) SetOnShow(fn TNotifyEvent) {
     ReplaceDialog_SetOnShow(r.instance, fn)
 }

@@ -326,11 +326,15 @@ func (s *TShape) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TShape) Anchors() TAnchors {
     return Shape_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TShape) SetAnchors(value TAnchors) {
     Shape_SetAnchors(s.instance, value)
 }
@@ -520,6 +524,8 @@ func (s *TShape) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (s *TShape) SetOnMouseMove(fn TMouseMoveEvent) {
     Shape_SetOnMouseMove(s.instance, fn)
 }
@@ -532,6 +538,8 @@ func (s *TShape) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (s *TShape) SetOnStartDock(fn TStartDockEvent) {
     Shape_SetOnStartDock(s.instance, fn)
 }
@@ -772,14 +780,14 @@ func (s *TShape) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TShape) Hint() string {
     return Shape_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TShape) SetHint(value string) {
     Shape_SetHint(s.instance, value)

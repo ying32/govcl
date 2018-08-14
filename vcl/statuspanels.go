@@ -136,6 +136,8 @@ func (s *TStatusPanels) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (s *TStatusPanels) Clear() {
     StatusPanels_Clear(s.instance)
 }

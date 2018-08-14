@@ -223,11 +223,15 @@ func (l *TListItem) SetCaption(value string) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (l *TListItem) Checked() bool {
     return ListItem_GetChecked(l.instance)
 }
 
 // SetChecked
+// CN: 设置是否选中。
+// EN: .
 func (l *TListItem) SetChecked(value bool) {
     ListItem_SetChecked(l.instance, value)
 }
@@ -299,11 +303,15 @@ func (l *TListItem) Handle() HWND {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (l *TListItem) ImageIndex() int32 {
     return ListItem_GetImageIndex(l.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (l *TListItem) SetImageIndex(value int32) {
     ListItem_SetImageIndex(l.instance, value)
 }

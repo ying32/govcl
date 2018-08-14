@@ -102,11 +102,15 @@ func TGIFImageClass() TClass {
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (g *TGIFImage) SaveToStream(Stream IObject) {
     GIFImage_SaveToStream(g.instance, CheckPtr(Stream))
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (g *TGIFImage) LoadFromStream(Stream IObject) {
     GIFImage_LoadFromStream(g.instance, CheckPtr(Stream))
 }
@@ -117,6 +121,8 @@ func (g *TGIFImage) Add(Source IObject) *TGIFFrame {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (g *TGIFImage) Clear() {
     GIFImage_Clear(g.instance)
 }
@@ -151,11 +157,15 @@ func (g *TGIFImage) Equals(Obj IObject) bool {
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (g *TGIFImage) LoadFromFile(Filename string) {
     GIFImage_LoadFromFile(g.instance, Filename)
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (g *TGIFImage) SaveToFile(Filename string) {
     GIFImage_SaveToFile(g.instance, Filename)
 }
@@ -272,6 +282,8 @@ func (g *TGIFImage) Bitmap() *TBitmap {
 }
 
 // SetOnPaint
+// CN: 设置绘画事件。
+// EN: .
 func (g *TGIFImage) SetOnPaint(fn TNotifyEvent) {
     GIFImage_SetOnPaint(g.instance, fn)
 }

@@ -107,6 +107,8 @@ func (h *THeaderControl) FlipChildren(AllLevels bool) {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (h *THeaderControl) CanFocus() bool {
     return HeaderControl_CanFocus(h.instance)
 }
@@ -441,11 +443,15 @@ func (h *THeaderControl) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (h *THeaderControl) Anchors() TAnchors {
     return HeaderControl_GetAnchors(h.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (h *THeaderControl) SetAnchors(value TAnchors) {
     HeaderControl_SetAnchors(h.instance, value)
 }
@@ -461,11 +467,15 @@ func (h *THeaderControl) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (h *THeaderControl) BorderWidth() int32 {
     return HeaderControl_GetBorderWidth(h.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (h *THeaderControl) SetBorderWidth(value int32) {
     HeaderControl_SetBorderWidth(h.instance, value)
 }
@@ -575,11 +585,15 @@ func (h *THeaderControl) SetHotTrack(value bool) {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (h *THeaderControl) Images() *TImageList {
     return ImageListFromInst(HeaderControl_GetImages(h.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (h *THeaderControl) SetImages(value IComponent) {
     HeaderControl_SetImages(h.instance, CheckPtr(value))
 }
@@ -745,6 +759,8 @@ func (h *THeaderControl) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (h *THeaderControl) SetOnMouseMove(fn TMouseMoveEvent) {
     HeaderControl_SetOnMouseMove(h.instance, fn)
 }
@@ -757,6 +773,8 @@ func (h *THeaderControl) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (h *THeaderControl) SetOnResize(fn TNotifyEvent) {
     HeaderControl_SetOnResize(h.instance, fn)
 }
@@ -792,11 +810,15 @@ func (h *THeaderControl) SetOnSectionEndDrag(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (h *THeaderControl) SetOnStartDock(fn TStartDockEvent) {
     HeaderControl_SetOnStartDock(h.instance, fn)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (h *THeaderControl) Canvas() *TCanvas {
     return CanvasFromInst(HeaderControl_GetCanvas(h.instance))
 }
@@ -807,6 +829,8 @@ func (h *THeaderControl) SetOnSectionCheck(fn TCustomSectionNotifyEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (h *THeaderControl) DockClientCount() int32 {
     return HeaderControl_GetDockClientCount(h.instance)
 }
@@ -826,6 +850,8 @@ func (h *THeaderControl) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (h *THeaderControl) AlignDisabled() bool {
     return HeaderControl_GetAlignDisabled(h.instance)
 }
@@ -908,11 +934,15 @@ func (h *THeaderControl) SetTabStop(value bool) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (h *THeaderControl) UseDockManager() bool {
     return HeaderControl_GetUseDockManager(h.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (h *THeaderControl) SetUseDockManager(value bool) {
     HeaderControl_SetUseDockManager(h.instance, value)
 }
@@ -1129,14 +1159,14 @@ func (h *THeaderControl) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (h *THeaderControl) Hint() string {
     return HeaderControl_GetHint(h.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (h *THeaderControl) SetHint(value string) {
     HeaderControl_SetHint(h.instance, value)
@@ -1227,11 +1257,15 @@ func (h *THeaderControl) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (h *THeaderControl) DockClients(Index int32) *TControl {
     return ControlFromInst(HeaderControl_GetDockClients(h.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (h *THeaderControl) Controls(Index int32) *TControl {
     return ControlFromInst(HeaderControl_GetControls(h.instance, Index))
 }

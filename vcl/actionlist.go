@@ -186,11 +186,15 @@ func (a *TActionList) ToString() string {
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (a *TActionList) Images() *TImageList {
     return ImageListFromInst(ActionList_GetImages(a.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (a *TActionList) SetImages(value IComponent) {
     ActionList_SetImages(a.instance, CheckPtr(value))
 }

@@ -102,6 +102,8 @@ func TStaticTextClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (s *TStaticText) CanFocus() bool {
     return StaticText_CanFocus(s.instance)
 }
@@ -455,21 +457,29 @@ func (s *TStaticText) SetAlignment(value TAlignment) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TStaticText) Anchors() TAnchors {
     return StaticText_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TStaticText) SetAnchors(value TAnchors) {
     StaticText_SetAnchors(s.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (s *TStaticText) AutoSize() bool {
     return StaticText_GetAutoSize(s.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (s *TStaticText) SetAutoSize(value bool) {
     StaticText_SetAutoSize(s.instance, value)
 }
@@ -525,11 +535,15 @@ func (s *TStaticText) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (s *TStaticText) BorderStyle() TStaticBorderStyle {
     return StaticText_GetBorderStyle(s.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (s *TStaticText) SetBorderStyle(value TStaticBorderStyle) {
     StaticText_SetBorderStyle(s.instance, value)
 }
@@ -549,15 +563,15 @@ func (s *TStaticText) SetCaption(value string) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (s *TStaticText) Color() TColor {
     return StaticText_GetColor(s.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (s *TStaticText) SetColor(value TColor) {
     StaticText_SetColor(s.instance, value)
 }
@@ -821,6 +835,8 @@ func (s *TStaticText) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (s *TStaticText) SetOnDblClick(fn TNotifyEvent) {
     StaticText_SetOnDblClick(s.instance, fn)
 }
@@ -875,6 +891,8 @@ func (s *TStaticText) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (s *TStaticText) SetOnMouseMove(fn TMouseMoveEvent) {
     StaticText_SetOnMouseMove(s.instance, fn)
 }
@@ -887,11 +905,15 @@ func (s *TStaticText) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (s *TStaticText) SetOnStartDock(fn TStartDockEvent) {
     StaticText_SetOnStartDock(s.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (s *TStaticText) DockClientCount() int32 {
     return StaticText_GetDockClientCount(s.instance)
 }
@@ -911,6 +933,8 @@ func (s *TStaticText) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (s *TStaticText) AlignDisabled() bool {
     return StaticText_GetAlignDisabled(s.instance)
 }
@@ -965,11 +989,15 @@ func (s *TStaticText) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (s *TStaticText) UseDockManager() bool {
     return StaticText_GetUseDockManager(s.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (s *TStaticText) SetUseDockManager(value bool) {
     StaticText_SetUseDockManager(s.instance, value)
 }
@@ -1186,14 +1214,14 @@ func (s *TStaticText) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TStaticText) Hint() string {
     return StaticText_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TStaticText) SetHint(value string) {
     StaticText_SetHint(s.instance, value)
@@ -1284,11 +1312,15 @@ func (s *TStaticText) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (s *TStaticText) DockClients(Index int32) *TControl {
     return ControlFromInst(StaticText_GetDockClients(s.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (s *TStaticText) Controls(Index int32) *TControl {
     return ControlFromInst(StaticText_GetControls(s.instance, Index))
 }

@@ -102,16 +102,22 @@ func TGIFFrameClass() TClass {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (g *TGIFFrame) Clear() {
     GIFFrame_Clear(g.instance)
 }
 
 // SaveToStream
+// CN: 保存至流。
+// EN: .
 func (g *TGIFFrame) SaveToStream(Stream IObject) {
     GIFFrame_SaveToStream(g.instance, CheckPtr(Stream))
 }
 
 // LoadFromStream
+// CN: 文件流加载。
+// EN: .
 func (g *TGIFFrame) LoadFromStream(Stream IObject) {
     GIFFrame_LoadFromStream(g.instance, CheckPtr(Stream))
 }
@@ -124,11 +130,15 @@ func (g *TGIFFrame) Assign(Source IObject) {
 }
 
 // SaveToFile
+// CN: 保存至文件。
+// EN: .
 func (g *TGIFFrame) SaveToFile(Filename string) {
     GIFFrame_SaveToFile(g.instance, Filename)
 }
 
 // LoadFromFile
+// CN: 从文件加载。
+// EN: .
 func (g *TGIFFrame) LoadFromFile(Filename string) {
     GIFFrame_LoadFromFile(g.instance, Filename)
 }

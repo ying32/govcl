@@ -223,14 +223,14 @@ func (t *TTrayIcon) SetAnimateInterval(value uint32) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (t *TTrayIcon) Hint() string {
     return TrayIcon_GetHint(t.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (t *TTrayIcon) SetHint(value string) {
     TrayIcon_SetHint(t.instance, value)
@@ -341,11 +341,15 @@ func (t *TTrayIcon) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (t *TTrayIcon) SetOnDblClick(fn TNotifyEvent) {
     TrayIcon_SetOnDblClick(t.instance, fn)
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (t *TTrayIcon) SetOnMouseMove(fn TMouseMoveEvent) {
     TrayIcon_SetOnMouseMove(t.instance, fn)
 }

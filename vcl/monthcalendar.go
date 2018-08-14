@@ -103,6 +103,8 @@ func TMonthCalendarClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (m *TMonthCalendar) CanFocus() bool {
     return MonthCalendar_CanFocus(m.instance)
 }
@@ -442,31 +444,43 @@ func (m *TMonthCalendar) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (m *TMonthCalendar) Anchors() TAnchors {
     return MonthCalendar_GetAnchors(m.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (m *TMonthCalendar) SetAnchors(value TAnchors) {
     MonthCalendar_SetAnchors(m.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (m *TMonthCalendar) AutoSize() bool {
     return MonthCalendar_GetAutoSize(m.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (m *TMonthCalendar) SetAutoSize(value bool) {
     MonthCalendar_SetAutoSize(m.instance, value)
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (m *TMonthCalendar) BorderWidth() int32 {
     return MonthCalendar_GetBorderWidth(m.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (m *TMonthCalendar) SetBorderWidth(value int32) {
     MonthCalendar_SetBorderWidth(m.instance, value)
 }
@@ -788,6 +802,8 @@ func (m *TMonthCalendar) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (m *TMonthCalendar) SetOnDblClick(fn TNotifyEvent) {
     MonthCalendar_SetOnDblClick(m.instance, fn)
 }
@@ -868,11 +884,15 @@ func (m *TMonthCalendar) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (m *TMonthCalendar) SetOnStartDock(fn TStartDockEvent) {
     MonthCalendar_SetOnStartDock(m.instance, fn)
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (m *TMonthCalendar) DockClientCount() int32 {
     return MonthCalendar_GetDockClientCount(m.instance)
 }
@@ -892,6 +912,8 @@ func (m *TMonthCalendar) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (m *TMonthCalendar) AlignDisabled() bool {
     return MonthCalendar_GetAlignDisabled(m.instance)
 }
@@ -946,11 +968,15 @@ func (m *TMonthCalendar) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (m *TMonthCalendar) UseDockManager() bool {
     return MonthCalendar_GetUseDockManager(m.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (m *TMonthCalendar) SetUseDockManager(value bool) {
     MonthCalendar_SetUseDockManager(m.instance, value)
 }
@@ -1181,14 +1207,14 @@ func (m *TMonthCalendar) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (m *TMonthCalendar) Hint() string {
     return MonthCalendar_GetHint(m.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (m *TMonthCalendar) SetHint(value string) {
     MonthCalendar_SetHint(m.instance, value)
@@ -1279,11 +1305,15 @@ func (m *TMonthCalendar) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (m *TMonthCalendar) DockClients(Index int32) *TControl {
     return ControlFromInst(MonthCalendar_GetDockClients(m.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (m *TMonthCalendar) Controls(Index int32) *TControl {
     return ControlFromInst(MonthCalendar_GetControls(m.instance, Index))
 }

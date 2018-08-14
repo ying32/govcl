@@ -102,6 +102,8 @@ func TPrinterSetupDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (p *TPrinterSetupDialog) Execute() bool {
     return PrinterSetupDialog_Execute(p.instance)
 }
@@ -203,6 +205,8 @@ func (p *TPrinterSetupDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (p *TPrinterSetupDialog) SetOnShow(fn TNotifyEvent) {
     PrinterSetupDialog_SetOnShow(p.instance, fn)
 }

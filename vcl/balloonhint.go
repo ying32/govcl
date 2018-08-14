@@ -109,6 +109,8 @@ func (b *TBalloonHint) ShowHint() {
 }
 
 // HideHint
+// CN: 隐藏鼠标悬停提示。
+// EN: .
 func (b *TBalloonHint) HideHint() {
     BalloonHint_HideHint(b.instance)
 }
@@ -223,21 +225,29 @@ func (b *TBalloonHint) SetDescription(value string) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (b *TBalloonHint) ImageIndex() int32 {
     return BalloonHint_GetImageIndex(b.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (b *TBalloonHint) SetImageIndex(value int32) {
     BalloonHint_SetImageIndex(b.instance, value)
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (b *TBalloonHint) Images() *TImageList {
     return ImageListFromInst(BalloonHint_GetImages(b.instance))
 }
 
 // SetImages
+// CN: 设置图标索引列表对象。
+// EN: .
 func (b *TBalloonHint) SetImages(value IComponent) {
     BalloonHint_SetImages(b.instance, CheckPtr(value))
 }

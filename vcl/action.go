@@ -102,6 +102,8 @@ func TActionClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (a *TAction) Execute() bool {
     return Action_Execute(a.instance)
 }
@@ -212,11 +214,15 @@ func (a *TAction) SetCaption(value string) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (a *TAction) Checked() bool {
     return Action_GetChecked(a.instance)
 }
 
 // SetChecked
+// CN: 设置是否选中。
+// EN: .
 func (a *TAction) SetChecked(value bool) {
     Action_SetChecked(a.instance, value)
 }
@@ -236,45 +242,57 @@ func (a *TAction) SetEnabled(value bool) {
 }
 
 // GroupIndex
+// CN: 获取团组索引。
+// EN: .
 func (a *TAction) GroupIndex() int32 {
     return Action_GetGroupIndex(a.instance)
 }
 
 // SetGroupIndex
+// CN: 设置团组索引。
+// EN: .
 func (a *TAction) SetGroupIndex(value int32) {
     Action_SetGroupIndex(a.instance, value)
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (a *TAction) Hint() string {
     return Action_GetHint(a.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (a *TAction) SetHint(value string) {
     Action_SetHint(a.instance, value)
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (a *TAction) ImageIndex() int32 {
     return Action_GetImageIndex(a.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (a *TAction) SetImageIndex(value int32) {
     Action_SetImageIndex(a.instance, value)
 }
 
 // ShortCut
+// CN: 获取快捷键。
+// EN: .
 func (a *TAction) ShortCut() TShortCut {
     return Action_GetShortCut(a.instance)
 }
 
 // SetShortCut
+// CN: 设置快捷键。
+// EN: .
 func (a *TAction) SetShortCut(value TShortCut) {
     Action_SetShortCut(a.instance, value)
 }
@@ -294,16 +312,22 @@ func (a *TAction) SetVisible(value bool) {
 }
 
 // SetOnExecute
+// CN: 设置动作执行事件。
+// EN: .
 func (a *TAction) SetOnExecute(fn TNotifyEvent) {
     Action_SetOnExecute(a.instance, fn)
 }
 
 // SetOnUpdate
+// CN: 设置动作更新事件。
+// EN: .
 func (a *TAction) SetOnUpdate(fn TNotifyEvent) {
     Action_SetOnUpdate(a.instance, fn)
 }
 
 // Images
+// CN: 获取图标索引列表对象。
+// EN: .
 func (a *TAction) Images() *TImageList {
     return ImageListFromInst(Action_GetImages(a.instance))
 }

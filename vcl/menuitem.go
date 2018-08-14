@@ -112,11 +112,15 @@ func (m *TMenuItem) Delete(Index int32) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (m *TMenuItem) Clear() {
     MenuItem_Clear(m.instance)
 }
 
 // Click
+// CN: 单击。
+// EN: .
 func (m *TMenuItem) Click() {
     MenuItem_Click(m.instance)
 }
@@ -289,11 +293,15 @@ func (m *TMenuItem) SetCaption(value string) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (m *TMenuItem) Checked() bool {
     return MenuItem_GetChecked(m.instance)
 }
 
 // SetChecked
+// CN: 设置是否选中。
+// EN: .
 func (m *TMenuItem) SetChecked(value bool) {
     MenuItem_SetChecked(m.instance, value)
 }
@@ -323,45 +331,57 @@ func (m *TMenuItem) SetEnabled(value bool) {
 }
 
 // GroupIndex
+// CN: 获取团组索引。
+// EN: .
 func (m *TMenuItem) GroupIndex() uint8 {
     return MenuItem_GetGroupIndex(m.instance)
 }
 
 // SetGroupIndex
+// CN: 设置团组索引。
+// EN: .
 func (m *TMenuItem) SetGroupIndex(value uint8) {
     MenuItem_SetGroupIndex(m.instance, value)
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (m *TMenuItem) Hint() string {
     return MenuItem_GetHint(m.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (m *TMenuItem) SetHint(value string) {
     MenuItem_SetHint(m.instance, value)
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (m *TMenuItem) ImageIndex() int32 {
     return MenuItem_GetImageIndex(m.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (m *TMenuItem) SetImageIndex(value int32) {
     MenuItem_SetImageIndex(m.instance, value)
 }
 
 // ShortCut
+// CN: 获取快捷键。
+// EN: .
 func (m *TMenuItem) ShortCut() TShortCut {
     return MenuItem_GetShortCut(m.instance)
 }
 
 // SetShortCut
+// CN: 设置快捷键。
+// EN: .
 func (m *TMenuItem) SetShortCut(value TShortCut) {
     MenuItem_SetShortCut(m.instance, value)
 }

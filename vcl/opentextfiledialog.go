@@ -102,6 +102,8 @@ func TOpenTextFileDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (o *TOpenTextFileDialog) Execute() bool {
     return OpenTextFileDialog_Execute(o.instance)
 }
@@ -288,6 +290,8 @@ func (o *TOpenTextFileDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (o *TOpenTextFileDialog) SetOnShow(fn TNotifyEvent) {
     OpenTextFileDialog_SetOnShow(o.instance, fn)
 }

@@ -107,11 +107,15 @@ func (c *TColorListBox) AddItem(Item string, AObject IObject) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (c *TColorListBox) Clear() {
     ColorListBox_Clear(c.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (c *TColorListBox) ClearSelection() {
     ColorListBox_ClearSelection(c.instance)
 }
@@ -122,11 +126,15 @@ func (c *TColorListBox) DeleteSelected() {
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (c *TColorListBox) SelectAll() {
     ColorListBox_SelectAll(c.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (c *TColorListBox) CanFocus() bool {
     return ColorListBox_CanFocus(c.instance)
 }
@@ -516,11 +524,15 @@ func (c *TColorListBox) SetStyle(value TColorBoxStyle) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TColorListBox) Anchors() TAnchors {
     return ColorListBox_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TColorListBox) SetAnchors(value TAnchors) {
     ColorListBox_SetAnchors(c.instance, value)
 }
@@ -576,15 +588,15 @@ func (c *TColorListBox) SetBiDiMode(value TBiDiMode) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TColorListBox) Color() TColor {
     return ColorListBox_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TColorListBox) SetColor(value TColor) {
     ColorListBox_SetColor(c.instance, value)
 }
@@ -802,6 +814,8 @@ func (c *TColorListBox) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (c *TColorListBox) SetOnDblClick(fn TNotifyEvent) {
     ColorListBox_SetOnDblClick(c.instance, fn)
 }
@@ -889,6 +903,8 @@ func (c *TColorListBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (c *TColorListBox) SetOnMouseMove(fn TMouseMoveEvent) {
     ColorListBox_SetOnMouseMove(c.instance, fn)
 }
@@ -901,6 +917,8 @@ func (c *TColorListBox) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (c *TColorListBox) SetOnStartDock(fn TStartDockEvent) {
     ColorListBox_SetOnStartDock(c.instance, fn)
 }
@@ -916,6 +934,8 @@ func (c *TColorListBox) SetAutoCompleteDelay(value uint32) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (c *TColorListBox) Canvas() *TCanvas {
     return CanvasFromInst(ColorListBox_GetCanvas(c.instance))
 }
@@ -966,6 +986,8 @@ func (c *TColorListBox) SetItemIndex(value int32) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (c *TColorListBox) DockClientCount() int32 {
     return ColorListBox_GetDockClientCount(c.instance)
 }
@@ -985,6 +1007,8 @@ func (c *TColorListBox) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (c *TColorListBox) AlignDisabled() bool {
     return ColorListBox_GetAlignDisabled(c.instance)
 }
@@ -1039,11 +1063,15 @@ func (c *TColorListBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (c *TColorListBox) UseDockManager() bool {
     return ColorListBox_GetUseDockManager(c.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (c *TColorListBox) SetUseDockManager(value bool) {
     ColorListBox_SetUseDockManager(c.instance, value)
 }
@@ -1260,14 +1288,14 @@ func (c *TColorListBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TColorListBox) Hint() string {
     return ColorListBox_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TColorListBox) SetHint(value string) {
     ColorListBox_SetHint(c.instance, value)
@@ -1368,11 +1396,15 @@ func (c *TColorListBox) ColorNames(Index int32) string {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (c *TColorListBox) DockClients(Index int32) *TControl {
     return ControlFromInst(ColorListBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (c *TColorListBox) Controls(Index int32) *TControl {
     return ControlFromInst(ColorListBox_GetControls(c.instance, Index))
 }

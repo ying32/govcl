@@ -112,11 +112,15 @@ func (c *TCheckListBox) AddItem(Item string, AObject IObject) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (c *TCheckListBox) Clear() {
     CheckListBox_Clear(c.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (c *TCheckListBox) ClearSelection() {
     CheckListBox_ClearSelection(c.instance)
 }
@@ -127,11 +131,15 @@ func (c *TCheckListBox) DeleteSelected() {
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (c *TCheckListBox) SelectAll() {
     CheckListBox_SelectAll(c.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (c *TCheckListBox) CanFocus() bool {
     return CheckListBox_CanFocus(c.instance)
 }
@@ -486,11 +494,15 @@ func (c *TCheckListBox) SetAllowGrayed(value bool) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TCheckListBox) Anchors() TAnchors {
     return CheckListBox_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TCheckListBox) SetAnchors(value TAnchors) {
     CheckListBox_SetAnchors(c.instance, value)
 }
@@ -556,25 +568,29 @@ func (c *TCheckListBox) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (c *TCheckListBox) BorderStyle() TBorderStyle {
     return CheckListBox_GetBorderStyle(c.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (c *TCheckListBox) SetBorderStyle(value TBorderStyle) {
     CheckListBox_SetBorderStyle(c.instance, value)
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TCheckListBox) Color() TColor {
     return CheckListBox_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TCheckListBox) SetColor(value TColor) {
     CheckListBox_SetColor(c.instance, value)
 }
@@ -660,11 +676,15 @@ func (c *TCheckListBox) SetEnabled(value bool) {
 }
 
 // Flat
+// CN: 获取平面样式。
+// EN: .
 func (c *TCheckListBox) Flat() bool {
     return CheckListBox_GetFlat(c.instance)
 }
 
 // SetFlat
+// CN: 设置平面样式。
+// EN: .
 func (c *TCheckListBox) SetFlat(value bool) {
     CheckListBox_SetFlat(c.instance, value)
 }
@@ -914,6 +934,8 @@ func (c *TCheckListBox) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (c *TCheckListBox) SetOnDblClick(fn TNotifyEvent) {
     CheckListBox_SetOnDblClick(c.instance, fn)
 }
@@ -1001,6 +1023,8 @@ func (c *TCheckListBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (c *TCheckListBox) SetOnMouseMove(fn TMouseMoveEvent) {
     CheckListBox_SetOnMouseMove(c.instance, fn)
 }
@@ -1013,6 +1037,8 @@ func (c *TCheckListBox) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (c *TCheckListBox) SetOnStartDock(fn TStartDockEvent) {
     CheckListBox_SetOnStartDock(c.instance, fn)
 }
@@ -1028,6 +1054,8 @@ func (c *TCheckListBox) SetAutoCompleteDelay(value uint32) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (c *TCheckListBox) Canvas() *TCanvas {
     return CanvasFromInst(CheckListBox_GetCanvas(c.instance))
 }
@@ -1068,6 +1096,8 @@ func (c *TCheckListBox) SetItemIndex(value int32) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (c *TCheckListBox) DockClientCount() int32 {
     return CheckListBox_GetDockClientCount(c.instance)
 }
@@ -1087,6 +1117,8 @@ func (c *TCheckListBox) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (c *TCheckListBox) AlignDisabled() bool {
     return CheckListBox_GetAlignDisabled(c.instance)
 }
@@ -1141,11 +1173,15 @@ func (c *TCheckListBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (c *TCheckListBox) UseDockManager() bool {
     return CheckListBox_GetUseDockManager(c.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (c *TCheckListBox) SetUseDockManager(value bool) {
     CheckListBox_SetUseDockManager(c.instance, value)
 }
@@ -1362,14 +1398,14 @@ func (c *TCheckListBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TCheckListBox) Hint() string {
     return CheckListBox_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TCheckListBox) SetHint(value string) {
     CheckListBox_SetHint(c.instance, value)
@@ -1460,11 +1496,15 @@ func (c *TCheckListBox) SetTag(value int) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (c *TCheckListBox) Checked(Index int32) bool {
     return CheckListBox_GetChecked(c.instance, Index)
 }
 
 // Checked
+// CN: 设置是否选中。
+// EN: .
 func (c *TCheckListBox) SetChecked(Index int32, value bool) {
     CheckListBox_SetChecked(c.instance, Index, value)
 }
@@ -1510,11 +1550,15 @@ func (c *TCheckListBox) SetSelected(Index int32, value bool) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (c *TCheckListBox) DockClients(Index int32) *TControl {
     return ControlFromInst(CheckListBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (c *TCheckListBox) Controls(Index int32) *TControl {
     return ControlFromInst(CheckListBox_GetControls(c.instance, Index))
 }

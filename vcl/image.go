@@ -312,6 +312,8 @@ func (i *TImage) ToString() string {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (i *TImage) Canvas() *TCanvas {
     return CanvasFromInst(Image_GetCanvas(i.instance))
 }
@@ -331,21 +333,29 @@ func (i *TImage) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (i *TImage) Anchors() TAnchors {
     return Image_GetAnchors(i.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (i *TImage) SetAnchors(value TAnchors) {
     Image_SetAnchors(i.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (i *TImage) AutoSize() bool {
     return Image_GetAutoSize(i.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (i *TImage) SetAutoSize(value bool) {
     Image_SetAutoSize(i.instance, value)
 }
@@ -537,6 +547,8 @@ func (i *TImage) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (i *TImage) SetOnDblClick(fn TNotifyEvent) {
     Image_SetOnDblClick(i.instance, fn)
 }
@@ -591,6 +603,8 @@ func (i *TImage) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (i *TImage) SetOnMouseMove(fn TMouseMoveEvent) {
     Image_SetOnMouseMove(i.instance, fn)
 }
@@ -603,6 +617,8 @@ func (i *TImage) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (i *TImage) SetOnStartDock(fn TStartDockEvent) {
     Image_SetOnStartDock(i.instance, fn)
 }
@@ -843,14 +859,14 @@ func (i *TImage) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (i *TImage) Hint() string {
     return Image_GetHint(i.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (i *TImage) SetHint(value string) {
     Image_SetHint(i.instance, value)

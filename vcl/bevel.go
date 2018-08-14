@@ -326,11 +326,15 @@ func (b *TBevel) SetAlign(value TAlign) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (b *TBevel) Anchors() TAnchors {
     return Bevel_GetAnchors(b.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (b *TBevel) SetAnchors(value TAnchors) {
     Bevel_SetAnchors(b.instance, value)
 }
@@ -643,14 +647,14 @@ func (b *TBevel) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (b *TBevel) Hint() string {
     return Bevel_GetHint(b.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (b *TBevel) SetHint(value string) {
     Bevel_SetHint(b.instance, value)

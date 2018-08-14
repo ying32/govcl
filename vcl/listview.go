@@ -112,11 +112,15 @@ func (l *TListView) AlphaSort() bool {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (l *TListView) Clear() {
     ListView_Clear(l.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (l *TListView) ClearSelection() {
     ListView_ClearSelection(l.instance)
 }
@@ -137,6 +141,8 @@ func (l *TListView) IsEditing() bool {
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (l *TListView) SelectAll() {
     ListView_SelectAll(l.instance)
 }
@@ -152,6 +158,8 @@ func (l *TListView) CustomSort(SortProc PFNLVCOMPARE, lParam int) bool {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (l *TListView) CanFocus() bool {
     return ListView_CanFocus(l.instance)
 }
@@ -511,11 +519,15 @@ func (l *TListView) SetAllocBy(value int32) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (l *TListView) Anchors() TAnchors {
     return ListView_GetAnchors(l.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (l *TListView) SetAnchors(value TAnchors) {
     ListView_SetAnchors(l.instance, value)
 }
@@ -571,21 +583,29 @@ func (l *TListView) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (l *TListView) BorderStyle() TBorderStyle {
     return ListView_GetBorderStyle(l.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (l *TListView) SetBorderStyle(value TBorderStyle) {
     ListView_SetBorderStyle(l.instance, value)
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (l *TListView) BorderWidth() int32 {
     return ListView_GetBorderWidth(l.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (l *TListView) SetBorderWidth(value int32) {
     ListView_SetBorderWidth(l.instance, value)
 }
@@ -601,15 +621,15 @@ func (l *TListView) SetCheckboxes(value bool) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (l *TListView) Color() TColor {
     return ListView_GetColor(l.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (l *TListView) SetColor(value TColor) {
     ListView_SetColor(l.instance, value)
 }
@@ -759,11 +779,15 @@ func (l *TListView) SetGroups(value *TListGroups) {
 }
 
 // HideSelection
+// CN: 获取隐藏选择。
+// EN: .
 func (l *TListView) HideSelection() bool {
     return ListView_GetHideSelection(l.instance)
 }
 
 // SetHideSelection
+// CN: 设置隐藏选择。
+// EN: .
 func (l *TListView) SetHideSelection(value bool) {
     ListView_SetHideSelection(l.instance, value)
 }
@@ -863,11 +887,15 @@ func (l *TListView) SetGroupView(value bool) {
 }
 
 // ReadOnly
+// CN: 获取只读。
+// EN: .
 func (l *TListView) ReadOnly() bool {
     return ListView_GetReadOnly(l.instance)
 }
 
 // SetReadOnly
+// CN: 设置只读。
+// EN: .
 func (l *TListView) SetReadOnly(value bool) {
     ListView_SetReadOnly(l.instance, value)
 }
@@ -1116,6 +1144,8 @@ func (l *TListView) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (l *TListView) SetOnDblClick(fn TNotifyEvent) {
     ListView_SetOnDblClick(l.instance, fn)
 }
@@ -1208,6 +1238,8 @@ func (l *TListView) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (l *TListView) SetOnMouseMove(fn TMouseMoveEvent) {
     ListView_SetOnMouseMove(l.instance, fn)
 }
@@ -1220,6 +1252,8 @@ func (l *TListView) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (l *TListView) SetOnResize(fn TNotifyEvent) {
     ListView_SetOnResize(l.instance, fn)
 }
@@ -1235,11 +1269,15 @@ func (l *TListView) SetOnItemChecked(fn TLVCheckedItemEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (l *TListView) SetOnStartDock(fn TStartDockEvent) {
     ListView_SetOnStartDock(l.instance, fn)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (l *TListView) Canvas() *TCanvas {
     return CanvasFromInst(ListView_GetCanvas(l.instance))
 }
@@ -1300,6 +1338,8 @@ func (l *TListView) SetItemIndex(value int32) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (l *TListView) DockClientCount() int32 {
     return ListView_GetDockClientCount(l.instance)
 }
@@ -1319,6 +1359,8 @@ func (l *TListView) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (l *TListView) AlignDisabled() bool {
     return ListView_GetAlignDisabled(l.instance)
 }
@@ -1373,11 +1415,15 @@ func (l *TListView) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (l *TListView) UseDockManager() bool {
     return ListView_GetUseDockManager(l.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (l *TListView) SetUseDockManager(value bool) {
     ListView_SetUseDockManager(l.instance, value)
 }
@@ -1584,14 +1630,14 @@ func (l *TListView) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (l *TListView) Hint() string {
     return ListView_GetHint(l.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (l *TListView) SetHint(value string) {
     ListView_SetHint(l.instance, value)
@@ -1687,11 +1733,15 @@ func (l *TListView) Column(Index int32) *TListColumn {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (l *TListView) DockClients(Index int32) *TControl {
     return ControlFromInst(ListView_GetDockClients(l.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (l *TListView) Controls(Index int32) *TControl {
     return ControlFromInst(ListView_GetControls(l.instance, Index))
 }

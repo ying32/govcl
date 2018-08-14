@@ -107,11 +107,15 @@ func (c *TColorBox) AddItem(Item string, AObject IObject) {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (c *TColorBox) Clear() {
     ColorBox_Clear(c.instance)
 }
 
 // ClearSelection
+// CN: 清除选择。
+// EN: .
 func (c *TColorBox) ClearSelection() {
     ColorBox_ClearSelection(c.instance)
 }
@@ -129,11 +133,15 @@ func (c *TColorBox) Focused() bool {
 }
 
 // SelectAll
+// CN: 全选。
+// EN: .
 func (c *TColorBox) SelectAll() {
     ColorBox_SelectAll(c.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (c *TColorBox) CanFocus() bool {
     return ColorBox_CanFocus(c.instance)
 }
@@ -526,11 +534,15 @@ func (c *TColorBox) SetStyle(value TColorBoxStyle) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (c *TColorBox) Anchors() TAnchors {
     return ColorBox_GetAnchors(c.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (c *TColorBox) SetAnchors(value TAnchors) {
     ColorBox_SetAnchors(c.instance, value)
 }
@@ -586,15 +598,15 @@ func (c *TColorBox) SetBiDiMode(value TBiDiMode) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (c *TColorBox) Color() TColor {
     return ColorBox_GetColor(c.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (c *TColorBox) SetColor(value TColor) {
     ColorBox_SetColor(c.instance, value)
 }
@@ -904,6 +916,8 @@ func (c *TColorBox) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (c *TColorBox) SetOnStartDock(fn TStartDockEvent) {
     ColorBox_SetOnStartDock(c.instance, fn)
 }
@@ -939,26 +953,36 @@ func (c *TColorBox) SetCharCase(value TEditCharCase) {
 }
 
 // SelText
+// CN: 获取选择的文本。
+// EN: .
 func (c *TColorBox) SelText() string {
     return ColorBox_GetSelText(c.instance)
 }
 
 // SetSelText
+// CN: 设置选择的文本。
+// EN: .
 func (c *TColorBox) SetSelText(value string) {
     ColorBox_SetSelText(c.instance, value)
 }
 
 // TextHint
+// CN: 获取提示文本。
+// EN: .
 func (c *TColorBox) TextHint() string {
     return ColorBox_GetTextHint(c.instance)
 }
 
 // SetTextHint
+// CN: 设置提示文本。
+// EN: .
 func (c *TColorBox) SetTextHint(value string) {
     ColorBox_SetTextHint(c.instance, value)
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (c *TColorBox) Canvas() *TCanvas {
     return CanvasFromInst(ColorBox_GetCanvas(c.instance))
 }
@@ -984,21 +1008,29 @@ func (c *TColorBox) SetItems(value IObject) {
 }
 
 // SelLength
+// CN: 获取选择的长度。
+// EN: .
 func (c *TColorBox) SelLength() int32 {
     return ColorBox_GetSelLength(c.instance)
 }
 
 // SetSelLength
+// CN: 设置选择的长度。
+// EN: .
 func (c *TColorBox) SetSelLength(value int32) {
     ColorBox_SetSelLength(c.instance, value)
 }
 
 // SelStart
+// CN: 获取选择的启始位置。
+// EN: .
 func (c *TColorBox) SelStart() int32 {
     return ColorBox_GetSelStart(c.instance)
 }
 
 // SetSelStart
+// CN: 设置选择的启始位置。
+// EN: .
 func (c *TColorBox) SetSelStart(value int32) {
     ColorBox_SetSelStart(c.instance, value)
 }
@@ -1014,6 +1046,8 @@ func (c *TColorBox) SetItemIndex(value int32) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (c *TColorBox) DockClientCount() int32 {
     return ColorBox_GetDockClientCount(c.instance)
 }
@@ -1033,6 +1067,8 @@ func (c *TColorBox) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (c *TColorBox) AlignDisabled() bool {
     return ColorBox_GetAlignDisabled(c.instance)
 }
@@ -1087,11 +1123,15 @@ func (c *TColorBox) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (c *TColorBox) UseDockManager() bool {
     return ColorBox_GetUseDockManager(c.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (c *TColorBox) SetUseDockManager(value bool) {
     ColorBox_SetUseDockManager(c.instance, value)
 }
@@ -1308,14 +1348,14 @@ func (c *TColorBox) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (c *TColorBox) Hint() string {
     return ColorBox_GetHint(c.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (c *TColorBox) SetHint(value string) {
     ColorBox_SetHint(c.instance, value)
@@ -1416,11 +1456,15 @@ func (c *TColorBox) ColorNames(Index int32) string {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (c *TColorBox) DockClients(Index int32) *TControl {
     return ControlFromInst(ColorBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (c *TColorBox) Controls(Index int32) *TControl {
     return ControlFromInst(ColorBox_GetControls(c.instance, Index))
 }

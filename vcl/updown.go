@@ -102,6 +102,8 @@ func TUpDownClass() TClass {
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (u *TUpDown) CanFocus() bool {
     return UpDown_CanFocus(u.instance)
 }
@@ -427,11 +429,15 @@ func (u *TUpDown) ToString() string {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (u *TUpDown) Anchors() TAnchors {
     return UpDown_GetAnchors(u.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (u *TUpDown) SetAnchors(value TAnchors) {
     UpDown_SetAnchors(u.instance, value)
 }
@@ -465,14 +471,14 @@ func (u *TUpDown) SetEnabled(value bool) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (u *TUpDown) Hint() string {
     return UpDown_GetHint(u.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (u *TUpDown) SetHint(value string) {
     UpDown_SetHint(u.instance, value)
@@ -686,6 +692,8 @@ func (u *TUpDown) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (u *TUpDown) SetOnMouseMove(fn TMouseMoveEvent) {
     UpDown_SetOnMouseMove(u.instance, fn)
 }
@@ -698,6 +706,8 @@ func (u *TUpDown) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (u *TUpDown) DockClientCount() int32 {
     return UpDown_GetDockClientCount(u.instance)
 }
@@ -717,6 +727,8 @@ func (u *TUpDown) SetDockSite(value bool) {
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (u *TUpDown) AlignDisabled() bool {
     return UpDown_GetAlignDisabled(u.instance)
 }
@@ -771,11 +783,15 @@ func (u *TUpDown) SetParentWindow(value HWND) {
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (u *TUpDown) UseDockManager() bool {
     return UpDown_GetUseDockManager(u.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (u *TUpDown) SetUseDockManager(value bool) {
     UpDown_SetUseDockManager(u.instance, value)
 }
@@ -1100,11 +1116,15 @@ func (u *TUpDown) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (u *TUpDown) DockClients(Index int32) *TControl {
     return ControlFromInst(UpDown_GetDockClients(u.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (u *TUpDown) Controls(Index int32) *TControl {
     return ControlFromInst(UpDown_GetControls(u.instance, Index))
 }

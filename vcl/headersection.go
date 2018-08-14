@@ -208,11 +208,15 @@ func (h *THeaderSection) SetAllowClick(value bool) {
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (h *THeaderSection) AutoSize() bool {
     return HeaderSection_GetAutoSize(h.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (h *THeaderSection) SetAutoSize(value bool) {
     HeaderSection_SetAutoSize(h.instance, value)
 }
@@ -238,11 +242,15 @@ func (h *THeaderSection) SetCheckBox(value bool) {
 }
 
 // Checked
+// CN: 获取是否选中。
+// EN: .
 func (h *THeaderSection) Checked() bool {
     return HeaderSection_GetChecked(h.instance)
 }
 
 // SetChecked
+// CN: 设置是否选中。
+// EN: .
 func (h *THeaderSection) SetChecked(value bool) {
     HeaderSection_SetChecked(h.instance, value)
 }
@@ -258,11 +266,15 @@ func (h *THeaderSection) SetFixedWidth(value bool) {
 }
 
 // ImageIndex
+// CN: 获取图像在images中的索引。
+// EN: .
 func (h *THeaderSection) ImageIndex() int32 {
     return HeaderSection_GetImageIndex(h.instance)
 }
 
 // SetImageIndex
+// CN: 设置图像在images中的索引。
+// EN: .
 func (h *THeaderSection) SetImageIndex(value int32) {
     HeaderSection_SetImageIndex(h.instance, value)
 }
@@ -298,11 +310,15 @@ func (h *THeaderSection) SetStyle(value THeaderSectionStyle) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (h *THeaderSection) Text() string {
     return HeaderSection_GetText(h.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (h *THeaderSection) SetText(value string) {
     HeaderSection_SetText(h.instance, value)
 }

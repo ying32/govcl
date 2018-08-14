@@ -102,6 +102,8 @@ func TOpenPictureDialogClass() TClass {
 }
 
 // Execute
+// CN: 执行。
+// EN: .
 func (o *TOpenPictureDialog) Execute() bool {
     return OpenPictureDialog_Execute(o.instance)
 }
@@ -288,6 +290,8 @@ func (o *TOpenPictureDialog) SetOnClose(fn TNotifyEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (o *TOpenPictureDialog) SetOnShow(fn TNotifyEvent) {
     OpenPictureDialog_SetOnShow(o.instance, fn)
 }

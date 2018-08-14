@@ -206,11 +206,15 @@ func (s *TStatusPanel) SetStyle(value TStatusPanelStyle) {
 }
 
 // Text
+// CN: 获取文本。
+// EN: .
 func (s *TStatusPanel) Text() string {
     return StatusPanel_GetText(s.instance)
 }
 
 // SetText
+// CN: 设置文本。
+// EN: .
 func (s *TStatusPanel) SetText(value string) {
     StatusPanel_SetText(s.instance, value)
 }

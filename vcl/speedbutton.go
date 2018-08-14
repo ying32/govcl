@@ -102,6 +102,8 @@ func TSpeedButtonClass() TClass {
 }
 
 // Click
+// CN: 单击。
+// EN: .
 func (s *TSpeedButton) Click() {
     SpeedButton_Click(s.instance)
 }
@@ -351,11 +353,15 @@ func (s *TSpeedButton) SetAllowAllUp(value bool) {
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (s *TSpeedButton) Anchors() TAnchors {
     return SpeedButton_GetAnchors(s.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (s *TSpeedButton) SetAnchors(value TAnchors) {
     SpeedButton_SetAnchors(s.instance, value)
 }
@@ -371,11 +377,15 @@ func (s *TSpeedButton) SetBiDiMode(value TBiDiMode) {
 }
 
 // GroupIndex
+// CN: 获取团组索引。
+// EN: .
 func (s *TSpeedButton) GroupIndex() int32 {
     return SpeedButton_GetGroupIndex(s.instance)
 }
 
 // SetGroupIndex
+// CN: 设置团组索引。
+// EN: .
 func (s *TSpeedButton) SetGroupIndex(value int32) {
     SpeedButton_SetGroupIndex(s.instance, value)
 }
@@ -419,11 +429,15 @@ func (s *TSpeedButton) SetEnabled(value bool) {
 }
 
 // Flat
+// CN: 获取平面样式。
+// EN: .
 func (s *TSpeedButton) Flat() bool {
     return SpeedButton_GetFlat(s.instance)
 }
 
 // SetFlat
+// CN: 设置平面样式。
+// EN: .
 func (s *TSpeedButton) SetFlat(value bool) {
     SpeedButton_SetFlat(s.instance, value)
 }
@@ -584,6 +598,8 @@ func (s *TSpeedButton) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (s *TSpeedButton) SetOnDblClick(fn TNotifyEvent) {
     SpeedButton_SetOnDblClick(s.instance, fn)
 }
@@ -610,6 +626,8 @@ func (s *TSpeedButton) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (s *TSpeedButton) SetOnMouseMove(fn TMouseMoveEvent) {
     SpeedButton_SetOnMouseMove(s.instance, fn)
 }
@@ -823,14 +841,14 @@ func (s *TSpeedButton) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (s *TSpeedButton) Hint() string {
     return SpeedButton_GetHint(s.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (s *TSpeedButton) SetHint(value string) {
     SpeedButton_SetHint(s.instance, value)

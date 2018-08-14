@@ -102,6 +102,8 @@ func TFormClass() TClass {
 }
 
 // Close
+// CN: 关闭。
+// EN: .
 func (f *TForm) Close() {
     Form_Close(f.instance)
 }
@@ -114,6 +116,8 @@ func (f *TForm) Hide() {
 }
 
 // Print
+// CN: 将当前界面输出到打印机。
+// EN: .
 func (f *TForm) Print() {
     Form_Print(f.instance)
 }
@@ -133,11 +137,15 @@ func (f *TForm) Show() {
 }
 
 // ShowModal
+// CN: 以模态模式显示对话框。
+// EN: .
 func (f *TForm) ShowModal() int32 {
     return Form_ShowModal(f.instance)
 }
 
 // CanFocus
+// CN: 是否可以获得焦点。
+// EN: .
 func (f *TForm) CanFocus() bool {
     return Form_CanFocus(f.instance)
 }
@@ -466,41 +474,57 @@ func (f *TForm) SetAlign(value TAlign) {
 }
 
 // AlphaBlend
+// CN: 获取半透明。
+// EN: .
 func (f *TForm) AlphaBlend() bool {
     return Form_GetAlphaBlend(f.instance)
 }
 
 // SetAlphaBlend
+// CN: 设置半透明。
+// EN: .
 func (f *TForm) SetAlphaBlend(value bool) {
     Form_SetAlphaBlend(f.instance, value)
 }
 
 // AlphaBlendValue
+// CN: 获取半透明值-0-255。
+// EN: .
 func (f *TForm) AlphaBlendValue() uint8 {
     return Form_GetAlphaBlendValue(f.instance)
 }
 
 // SetAlphaBlendValue
+// CN: 设置半透明值-0-255。
+// EN: .
 func (f *TForm) SetAlphaBlendValue(value uint8) {
     Form_SetAlphaBlendValue(f.instance, value)
 }
 
 // Anchors
+// CN: 获取四个角位置的锚点。
+// EN: .
 func (f *TForm) Anchors() TAnchors {
     return Form_GetAnchors(f.instance)
 }
 
 // SetAnchors
+// CN: 设置四个角位置的锚点。
+// EN: .
 func (f *TForm) SetAnchors(value TAnchors) {
     Form_SetAnchors(f.instance, value)
 }
 
 // AutoSize
+// CN: 获取自动调整大小。
+// EN: .
 func (f *TForm) AutoSize() bool {
     return Form_GetAutoSize(f.instance)
 }
 
 // SetAutoSize
+// CN: 设置自动调整大小。
+// EN: .
 func (f *TForm) SetAutoSize(value bool) {
     Form_SetAutoSize(f.instance, value)
 }
@@ -516,31 +540,43 @@ func (f *TForm) SetBiDiMode(value TBiDiMode) {
 }
 
 // BorderIcons
+// CN: 获取窗口标题栏图标设置。比如：关闭，最大化，最小化等。
+// EN: .
 func (f *TForm) BorderIcons() TBorderIcons {
     return Form_GetBorderIcons(f.instance)
 }
 
 // SetBorderIcons
+// CN: 设置窗口标题栏图标设置。比如：关闭，最大化，最小化等。
+// EN: .
 func (f *TForm) SetBorderIcons(value TBorderIcons) {
     Form_SetBorderIcons(f.instance, value)
 }
 
 // BorderStyle
+// CN: 获取窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (f *TForm) BorderStyle() TFormBorderStyle {
     return Form_GetBorderStyle(f.instance)
 }
 
 // SetBorderStyle
+// CN: 设置窗口边框样式。比如：无边框，单一边框等。
+// EN: .
 func (f *TForm) SetBorderStyle(value TFormBorderStyle) {
     Form_SetBorderStyle(f.instance, value)
 }
 
 // BorderWidth
+// CN: 获取边框的宽度。
+// EN: .
 func (f *TForm) BorderWidth() int32 {
     return Form_GetBorderWidth(f.instance)
 }
 
 // SetBorderWidth
+// CN: 设置边框的宽度。
+// EN: .
 func (f *TForm) SetBorderWidth(value int32) {
     Form_SetBorderWidth(f.instance, value)
 }
@@ -588,45 +624,57 @@ func (f *TForm) SetClientWidth(value int32) {
 }
 
 // Color
-// CN: 获取设置颜色。
-// EN: Get Set color.
+// CN: 获取颜色。
+// EN: Get color.
 func (f *TForm) Color() TColor {
     return Form_GetColor(f.instance)
 }
 
 // SetColor
-// CN: 设置设置颜色。
-// EN: Set Set color.
+// CN: 设置颜色。
+// EN: Set color.
 func (f *TForm) SetColor(value TColor) {
     Form_SetColor(f.instance, value)
 }
 
 // TransparentColor
+// CN: 获取使用颜色透明。
+// EN: .
 func (f *TForm) TransparentColor() bool {
     return Form_GetTransparentColor(f.instance)
 }
 
 // SetTransparentColor
+// CN: 设置使用颜色透明。
+// EN: .
 func (f *TForm) SetTransparentColor(value bool) {
     Form_SetTransparentColor(f.instance, value)
 }
 
 // TransparentColorValue
+// CN: 获取透明的颜色值。
+// EN: .
 func (f *TForm) TransparentColorValue() TColor {
     return Form_GetTransparentColorValue(f.instance)
 }
 
 // SetTransparentColorValue
+// CN: 设置透明的颜色值。
+// EN: .
 func (f *TForm) SetTransparentColorValue(value TColor) {
     Form_SetTransparentColorValue(f.instance, value)
 }
 
 // UseDockManager
+// CN: 获取使用停靠管理。
+// EN: .
 func (f *TForm) UseDockManager() bool {
     return Form_GetUseDockManager(f.instance)
 }
 
 // SetUseDockManager
+// CN: 设置使用停靠管理。
+// EN: .
 func (f *TForm) SetUseDockManager(value bool) {
     Form_SetUseDockManager(f.instance, value)
 }
@@ -730,11 +778,15 @@ func (f *TForm) SetFont(value *TFont) {
 }
 
 // FormStyle
+// CN: 获取窗口样式。比如：置顶，MID窗口。
+// EN: .
 func (f *TForm) FormStyle() TFormStyle {
     return Form_GetFormStyle(f.instance)
 }
 
 // SetFormStyle
+// CN: 设置窗口样式。比如：置顶，MID窗口。
+// EN: .
 func (f *TForm) SetFormStyle(value TFormStyle) {
     Form_SetFormStyle(f.instance, value)
 }
@@ -768,31 +820,43 @@ func (f *TForm) SetIcon(value *TIcon) {
 }
 
 // KeyPreview
+// CN: 获取窗口优先接收键盘按盘消息。
+// EN: .
 func (f *TForm) KeyPreview() bool {
     return Form_GetKeyPreview(f.instance)
 }
 
 // SetKeyPreview
+// CN: 设置窗口优先接收键盘按盘消息。
+// EN: .
 func (f *TForm) SetKeyPreview(value bool) {
     Form_SetKeyPreview(f.instance, value)
 }
 
 // Menu
+// CN: 获取窗口主菜单。
+// EN: .
 func (f *TForm) Menu() *TMainMenu {
     return MainMenuFromInst(Form_GetMenu(f.instance))
 }
 
 // SetMenu
+// CN: 设置窗口主菜单。
+// EN: .
 func (f *TForm) SetMenu(value IComponent) {
     Form_SetMenu(f.instance, CheckPtr(value))
 }
 
 // PixelsPerInch
+// CN: 获取每英寸像素数。
+// EN: .
 func (f *TForm) PixelsPerInch() int32 {
     return Form_GetPixelsPerInch(f.instance)
 }
 
 // SetPixelsPerInch
+// CN: 设置每英寸像素数。
+// EN: .
 func (f *TForm) SetPixelsPerInch(value int32) {
     Form_SetPixelsPerInch(f.instance, value)
 }
@@ -812,21 +876,29 @@ func (f *TForm) SetPopupMenu(value IComponent) {
 }
 
 // Position
+// CN: 获取窗口的位置。比如：居中等。。
+// EN: .
 func (f *TForm) Position() TPosition {
     return Form_GetPosition(f.instance)
 }
 
 // SetPosition
+// CN: 设置窗口的位置。比如：居中等。。
+// EN: .
 func (f *TForm) SetPosition(value TPosition) {
     Form_SetPosition(f.instance, value)
 }
 
 // Scaled
+// CN: 获取自动缩放。
+// EN: .
 func (f *TForm) Scaled() bool {
     return Form_GetScaled(f.instance)
 }
 
 // SetScaled
+// CN: 设置自动缩放。
+// EN: .
 func (f *TForm) SetScaled(value bool) {
     Form_SetScaled(f.instance, value)
 }
@@ -874,11 +946,15 @@ func (f *TForm) SetWidth(value int32) {
 }
 
 // WindowState
+// CN: 获取窗口样式。比如：最大化，最小化等。
+// EN: .
 func (f *TForm) WindowState() TWindowState {
     return Form_GetWindowState(f.instance)
 }
 
 // SetWindowState
+// CN: 设置窗口样式。比如：最大化，最小化等。
+// EN: .
 func (f *TForm) SetWindowState(value TWindowState) {
     Form_SetWindowState(f.instance, value)
 }
@@ -905,11 +981,15 @@ func (f *TForm) SetOnClick(fn TNotifyEvent) {
 }
 
 // SetOnClose
+// CN: 设置窗口关闭事件。
+// EN: .
 func (f *TForm) SetOnClose(fn TCloseEvent) {
     Form_SetOnClose(f.instance, fn)
 }
 
 // SetOnCloseQuery
+// CN: 设置窗口关闭询问事件。
+// EN: .
 func (f *TForm) SetOnCloseQuery(fn TCloseQueryEvent) {
     Form_SetOnCloseQuery(f.instance, fn)
 }
@@ -922,6 +1002,8 @@ func (f *TForm) SetOnContextPopup(fn TContextPopupEvent) {
 }
 
 // SetOnDblClick
+// CN: 设置双击事件。
+// EN: .
 func (f *TForm) SetOnDblClick(fn TNotifyEvent) {
     Form_SetOnDblClick(f.instance, fn)
 }
@@ -958,6 +1040,8 @@ func (f *TForm) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
 }
 
 // SetOnHide
+// CN: 设置隐藏事件。
+// EN: .
 func (f *TForm) SetOnHide(fn TNotifyEvent) {
     Form_SetOnHide(f.instance, fn)
 }
@@ -1008,6 +1092,8 @@ func (f *TForm) SetOnMouseLeave(fn TNotifyEvent) {
 }
 
 // SetOnMouseMove
+// CN: 设置鼠标移动事件。
+// EN: .
 func (f *TForm) SetOnMouseMove(fn TMouseMoveEvent) {
     Form_SetOnMouseMove(f.instance, fn)
 }
@@ -1020,26 +1106,36 @@ func (f *TForm) SetOnMouseUp(fn TMouseEvent) {
 }
 
 // SetOnMouseWheel
+// CN: 设置鼠标滚轮事件。
+// EN: .
 func (f *TForm) SetOnMouseWheel(fn TMouseWheelEvent) {
     Form_SetOnMouseWheel(f.instance, fn)
 }
 
 // SetOnMouseWheelDown
+// CN: 设置鼠标滚轮按下事件。
+// EN: .
 func (f *TForm) SetOnMouseWheelDown(fn TMouseWheelUpDownEvent) {
     Form_SetOnMouseWheelDown(f.instance, fn)
 }
 
 // SetOnMouseWheelUp
+// CN: 设置鼠标滚轮抬起事件。
+// EN: .
 func (f *TForm) SetOnMouseWheelUp(fn TMouseWheelUpDownEvent) {
     Form_SetOnMouseWheelUp(f.instance, fn)
 }
 
 // SetOnPaint
+// CN: 设置绘画事件。
+// EN: .
 func (f *TForm) SetOnPaint(fn TNotifyEvent) {
     Form_SetOnPaint(f.instance, fn)
 }
 
 // SetOnResize
+// CN: 设置大小被改变事件。
+// EN: .
 func (f *TForm) SetOnResize(fn TNotifyEvent) {
     Form_SetOnResize(f.instance, fn)
 }
@@ -1050,11 +1146,15 @@ func (f *TForm) SetOnShortCut(fn TShortCutEvent) {
 }
 
 // SetOnShow
+// CN: 设置显示事件。
+// EN: .
 func (f *TForm) SetOnShow(fn TNotifyEvent) {
     Form_SetOnShow(f.instance, fn)
 }
 
 // SetOnStartDock
+// CN: 设置启动停靠。
+// EN: .
 func (f *TForm) SetOnStartDock(fn TStartDockEvent) {
     Form_SetOnStartDock(f.instance, fn)
 }
@@ -1065,6 +1165,8 @@ func (f *TForm) SetOnUnDock(fn TUnDockEvent) {
 }
 
 // Canvas
+// CN: 获取画布。
+// EN: .
 func (f *TForm) Canvas() *TCanvas {
     return CanvasFromInst(Form_GetCanvas(f.instance))
 }
@@ -1080,11 +1182,15 @@ func (f *TForm) SetDropTarget(value bool) {
 }
 
 // ModalResult
+// CN: 获取模态对话框显示结果。
+// EN: .
 func (f *TForm) ModalResult() TModalResult {
     return Form_GetModalResult(f.instance)
 }
 
 // SetModalResult
+// CN: 设置模态对话框显示结果。
+// EN: .
 func (f *TForm) SetModalResult(value TModalResult) {
     Form_SetModalResult(f.instance, value)
 }
@@ -1118,11 +1224,15 @@ func (f *TForm) SetTop(value int32) {
 }
 
 // DockClientCount
+// CN: 获取依靠客户端总数。
+// EN: .
 func (f *TForm) DockClientCount() int32 {
     return Form_GetDockClientCount(f.instance)
 }
 
 // AlignDisabled
+// CN: 获取禁用对齐。
+// EN: .
 func (f *TForm) AlignDisabled() bool {
     return Form_GetAlignDisabled(f.instance)
 }
@@ -1336,14 +1446,14 @@ func (f *TForm) SetCursor(value TCursor) {
 }
 
 // Hint
-// CN: 获取组件鼠标提示。
+// CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.
 func (f *TForm) Hint() string {
     return Form_GetHint(f.instance)
 }
 
 // SetHint
-// CN: 设置组件鼠标提示。
+// CN: 设置组件鼠标悬停提示。
 // EN: Set component mouse hints.
 func (f *TForm) SetHint(value string) {
     Form_SetHint(f.instance, value)
@@ -1434,11 +1544,15 @@ func (f *TForm) SetTag(value int) {
 }
 
 // DockClients
+// CN: 获取指定索引停靠客户端。
+// EN: .
 func (f *TForm) DockClients(Index int32) *TControl {
     return ControlFromInst(Form_GetDockClients(f.instance, Index))
 }
 
 // Controls
+// CN: 获取指定索引子控件。
+// EN: .
 func (f *TForm) Controls(Index int32) *TControl {
     return ControlFromInst(Form_GetControls(f.instance, Index))
 }

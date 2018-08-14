@@ -136,6 +136,8 @@ func (h *THeaderSections) BeginUpdate() {
 }
 
 // Clear
+// CN: 清除。
+// EN: .
 func (h *THeaderSections) Clear() {
     HeaderSections_Clear(h.instance)
 }
