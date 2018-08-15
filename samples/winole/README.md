@@ -1,0 +1,1 @@
+演示Windows下OLE操作，这里不使用Delphi/Lazarus原有的，因为封装过于麻烦，使用现成第三方[go-ole](https://github.com/go-ole/go-ole)库。这个库只能用于Windows，实际测试中有些用不了。
