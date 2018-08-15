@@ -4,6 +4,7 @@ import (
 	"unsafe"
 
 	. "github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -75,16 +76,22 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 		// func(sender IObject, key *Char, shift TShiftState)
 		case TKeyEvent:
-			v.(TKeyEvent)(
-				ObjectFromInst(getVal(0)),
-				(*Char)(unsafe.Pointer(getVal(1))),
-				TShiftState(getVal(2)))
+
+			val := (*Char)(unsafe.Pointer(getVal(1)))
+			if rtl.LcLLoaded() {
+				*val = Char(uint8(*val))
+			}
+			v.(TKeyEvent)(ObjectFromInst(getVal(0)), val, TShiftState(getVal(2)))
 
 		// func(sender IObject, key *Char)
 		case TKeyPressEvent:
-			v.(TKeyPressEvent)(
-				ObjectFromInst(getVal(0)),
-				(*Char)(unsafe.Pointer(getVal(1))))
+
+			// 这里要改下，Delphi与FreePascal的区别，Delphi用的Unicode所以用uint16，Lazarus用的UTF8，只有一个字节的。
+			val := (*Char)(unsafe.Pointer(getVal(1)))
+			if rtl.LcLLoaded() {
+				*val = Char(uint8(*val))
+			}
+			v.(TKeyPressEvent)(ObjectFromInst(getVal(0)), val)
 
 		// func(sender IObject, button TMouseButton, shift TShiftState, x, y int32)
 		case TMouseEvent:
