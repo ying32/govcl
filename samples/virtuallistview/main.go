@@ -77,7 +77,7 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 
 	// 产生100w条数据
 	tempData = make([]TTempItem, 1000000)
-	t := time.Now().Unix()
+	t := time.Now().UnixNano()
 	for i := 0; i < len(tempData); i++ {
 		tempData[i].Caption = fmt.Sprintf("%d", i+1)
 		tempData[i].Sub1 = fmt.Sprintf("子项1:%d", rand.Intn(1000000))
@@ -86,7 +86,8 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 		tempData[i].Sub4 = fmt.Sprintf("子项4:%d", rand.Intn(1000000))
 		tempData[i].Sub5 = fmt.Sprintf("子项5:%d", rand.Intn(1000000))
 	}
-	fmt.Println("t:", time.Now().Unix()-t, "ms")
+	ns := time.Now().UnixNano() - t // 1e-6
+	fmt.Println("t:", ns, "ns, ", ns/1E6, "ms")
 	f.ListView.Items().SetCount(int32(len(tempData))) //   必须主动的设置Virtual List的行数
 
 }
