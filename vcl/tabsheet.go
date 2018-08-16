@@ -749,11 +749,21 @@ func (t *TTabSheet) SetOnExit(fn TNotifyEvent) {
     TabSheet_SetOnExit(t.instance, fn)
 }
 
+// SetOnGesture
+func (t *TTabSheet) SetOnGesture(fn TGestureEvent) {
+    TabSheet_SetOnGesture(t.instance, fn)
+}
+
 // SetOnHide
 // CN: 设置隐藏事件。
 // EN: .
 func (t *TTabSheet) SetOnHide(fn TNotifyEvent) {
     TabSheet_SetOnHide(t.instance, fn)
+}
+
+// SetOnMouseActivate
+func (t *TTabSheet) SetOnMouseActivate(fn TMouseActivateEvent) {
+    TabSheet_SetOnMouseActivate(t.instance, fn)
 }
 
 // SetOnMouseDown

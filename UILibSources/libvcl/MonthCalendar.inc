@@ -648,6 +648,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure MonthCalendar_SetOnGesture(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure MonthCalendar_SetOnKeyDown(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1167,6 +1179,7 @@ exports
   MonthCalendar_SetOnEndDrag,
   MonthCalendar_SetOnEnter,
   MonthCalendar_SetOnExit,
+  MonthCalendar_SetOnGesture,
   MonthCalendar_SetOnKeyDown,
   MonthCalendar_SetOnKeyPress,
   MonthCalendar_SetOnKeyUp,

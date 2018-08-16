@@ -834,6 +834,11 @@ func (r *TRadioGroup) SetOnExit(fn TNotifyEvent) {
     RadioGroup_SetOnExit(r.instance, fn)
 }
 
+// SetOnGesture
+func (r *TRadioGroup) SetOnGesture(fn TGestureEvent) {
+    RadioGroup_SetOnGesture(r.instance, fn)
+}
+
 // SetOnStartDock
 // CN: 设置启动停靠。
 // EN: .

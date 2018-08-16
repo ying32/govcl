@@ -634,6 +634,30 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ProgressBar_SetOnGesture(AObj: TProgressBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure ProgressBar_SetOnMouseActivate(AObj: TProgressBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure ProgressBar_SetOnMouseDown(AObj: TProgressBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1143,6 +1167,8 @@ exports
   ProgressBar_SetOnEndDrag,
   ProgressBar_SetOnEnter,
   ProgressBar_SetOnExit,
+  ProgressBar_SetOnGesture,
+  ProgressBar_SetOnMouseActivate,
   ProgressBar_SetOnMouseDown,
   ProgressBar_SetOnMouseEnter,
   ProgressBar_SetOnMouseLeave,

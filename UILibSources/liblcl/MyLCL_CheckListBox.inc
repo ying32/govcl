@@ -639,6 +639,18 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure CheckListBox_SetOnMeasureItem(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    EventClass.Remove(AObj, geListBoxMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := @EventClass.ListBoxOnMeasureItem;
+  EventClass.Add(AObj, geListBoxMeasureItem, AEventId);
+end;
+
 procedure CheckListBox_SetOnMouseDown(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -1155,6 +1167,7 @@ exports
   CheckListBox_SetOnKeyDown,
   CheckListBox_SetOnKeyPress,
   CheckListBox_SetOnKeyUp,
+  CheckListBox_SetOnMeasureItem,
   CheckListBox_SetOnMouseDown,
   CheckListBox_SetOnMouseEnter,
   CheckListBox_SetOnMouseLeave,

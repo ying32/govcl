@@ -649,6 +649,42 @@ begin
   TEventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure ListBox_SetOnData(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnData := nil;
+    TEventClass.Remove(AObj, geListBoxData);
+    Exit;
+  end;
+  AObj.OnData := TEventClass.ListBoxOnData;
+  TEventClass.Add(AObj, geListBoxData, AEventId);
+end;
+
+procedure ListBox_SetOnDataFind(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataFind := nil;
+    TEventClass.Remove(AObj, geListBoxDataFind);
+    Exit;
+  end;
+  AObj.OnDataFind := TEventClass.ListBoxOnDataFind;
+  TEventClass.Add(AObj, geListBoxDataFind, AEventId);
+end;
+
+procedure ListBox_SetOnDataObject(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataObject := nil;
+    TEventClass.Remove(AObj, geListBoxDataObject);
+    Exit;
+  end;
+  AObj.OnDataObject := TEventClass.ListBoxOnDataObject;
+  TEventClass.Add(AObj, geListBoxDataObject, AEventId);
+end;
+
 procedure ListBox_SetOnDblClick(AObj: TListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -745,6 +781,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ListBox_SetOnGesture(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ListBox_SetOnKeyDown(AObj: TListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -779,6 +827,30 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure ListBox_SetOnMeasureItem(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    TEventClass.Remove(AObj, geListBoxMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := TEventClass.ListBoxOnMeasureItem;
+  TEventClass.Add(AObj, geListBoxMeasureItem, AEventId);
+end;
+
+procedure ListBox_SetOnMouseActivate(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ListBox_SetOnMouseDown(AObj: TListBox; AEventId: NativeUInt); stdcall;
@@ -1340,6 +1412,9 @@ exports
   ListBox_SetStyleElements,
   ListBox_SetOnClick,
   ListBox_SetOnContextPopup,
+  ListBox_SetOnData,
+  ListBox_SetOnDataFind,
+  ListBox_SetOnDataObject,
   ListBox_SetOnDblClick,
   ListBox_SetOnDragDrop,
   ListBox_SetOnDragOver,
@@ -1348,9 +1423,12 @@ exports
   ListBox_SetOnEndDrag,
   ListBox_SetOnEnter,
   ListBox_SetOnExit,
+  ListBox_SetOnGesture,
   ListBox_SetOnKeyDown,
   ListBox_SetOnKeyPress,
   ListBox_SetOnKeyUp,
+  ListBox_SetOnMeasureItem,
+  ListBox_SetOnMouseActivate,
   ListBox_SetOnMouseDown,
   ListBox_SetOnMouseEnter,
   ListBox_SetOnMouseLeave,

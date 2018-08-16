@@ -616,6 +616,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure RadioGroup_SetOnGesture(AObj: TRadioGroup; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure RadioGroup_SetOnStartDock(AObj: TRadioGroup; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1065,6 +1077,7 @@ exports
   RadioGroup_SetOnEndDrag,
   RadioGroup_SetOnEnter,
   RadioGroup_SetOnExit,
+  RadioGroup_SetOnGesture,
   RadioGroup_SetOnStartDock,
   RadioGroup_GetDockClientCount,
   RadioGroup_GetDockSite,

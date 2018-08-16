@@ -613,6 +613,16 @@ func (i *TImageButton) SetOnEndDrag(fn TEndDragEvent) {
     ImageButton_SetOnEndDrag(i.instance, fn)
 }
 
+// SetOnGesture
+func (i *TImageButton) SetOnGesture(fn TGestureEvent) {
+    ImageButton_SetOnGesture(i.instance, fn)
+}
+
+// SetOnMouseActivate
+func (i *TImageButton) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ImageButton_SetOnMouseActivate(i.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

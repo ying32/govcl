@@ -4,7 +4,6 @@ import (
 	"unsafe"
 
 	. "github.com/ying32/govcl/vcl/api"
-	"github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -77,21 +76,17 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 		// func(sender IObject, key *Char, shift TShiftState)
 		case TKeyEvent:
 
-			val := (*Char)(unsafe.Pointer(getVal(1)))
-			if rtl.LcLLoaded() {
-				*val = Char(uint8(*val))
-			}
-			v.(TKeyEvent)(ObjectFromInst(getVal(0)), val, TShiftState(getVal(2)))
+			v.(TKeyEvent)(
+				ObjectFromInst(getVal(0)),
+				(*Char)(unsafe.Pointer(getVal(1))),
+				TShiftState(getVal(2)))
 
 		// func(sender IObject, key *Char)
 		case TKeyPressEvent:
 
-			// 这里要改下，Delphi与FreePascal的区别，Delphi用的Unicode所以用uint16，Lazarus用的UTF8，只有一个字节的。
-			val := (*Char)(unsafe.Pointer(getVal(1)))
-			if rtl.LcLLoaded() {
-				*val = Char(uint8(*val))
-			}
-			v.(TKeyPressEvent)(ObjectFromInst(getVal(0)), val)
+			v.(TKeyPressEvent)(
+				ObjectFromInst(getVal(0)),
+				(*Char)(unsafe.Pointer(getVal(1))))
 
 		// func(sender IObject, button TMouseButton, shift TShiftState, x, y int32)
 		case TMouseEvent:
@@ -485,6 +480,173 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 			v.(TCustomSectionNotifyEvent)(
 				HeaderControlFromInst(getVal(0)),
 				HeaderSectionFromInst(getVal(1)))
+
+			////
+			//type TGestureEvent func(sender IObject, eventInfo TGestureEventInfo, handled *bool)
+		case TGestureEvent:
+			v.(TGestureEvent)(
+				ObjectFromInst(getVal(0)),
+				*(*TGestureEventInfo)(unsafe.Pointer(getVal(1))),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TMouseActivateEvent func(sender IObject, button TMouseButton, shift TShiftState, x, y int32, hitTest int32, mouseActivate *TMouseActivate)
+		case TMouseActivateEvent:
+			v.(TMouseActivateEvent)(
+				ObjectFromInst(getVal(0)),
+				TMouseButton(getVal(1)),
+				TShiftState(getVal(2)),
+				int32(getVal(3)),
+				int32(getVal(4)),
+				int32(getVal(5)),
+				(*TMouseActivate)(unsafe.Pointer(getVal(6))))
+
+			//type TLBGetDataEvent func(control *TWinControl, index int32, data *string)
+		case TLBGetDataEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			v.(TLBGetDataEvent)(
+				WinControlFromInst(getVal(0)),
+				int32(getVal(1)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+
+			//type TLBGetDataObjectEvent func(control *TWinControl, index int32, dataObject IObject)
+		case TLBGetDataObjectEvent:
+			//ptr := *(*uintptr)(unsafe.Pointer(getVal(2)))
+			v.(TLBGetDataObjectEvent)(
+				WinControlFromInst(getVal(0)),
+				int32(getVal(1)),
+				ObjectFromInst(getVal(2))) // 这个参数要改，先这样
+
+			//type TLBFindDataEvent func(control *TWinControl, findString string) int32
+		case TLBFindDataEvent:
+
+			result := v.(TLBFindDataEvent)(
+				WinControlFromInst(getVal(0)),
+				DStrToGoStr(getVal(1)))
+			*(*int32)(unsafe.Pointer(getVal(2))) = result
+
+			//type TMeasureItemEvent func(control *TWinControl, index int32, height *int32)
+		case TMeasureItemEvent:
+			v.(TMeasureItemEvent)(
+				WinControlFromInst(getVal(0)),
+				int32(getVal(1)),
+				(*int32)(unsafe.Pointer(getVal(2))))
+
+			//type TLVChangingEvent func(sender IObject, item *TListItem, change TItemChange, allowChange *bool)
+		case TLVChangingEvent:
+			v.(TLVChangingEvent)(
+				ObjectFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)),
+				TItemChange(getVal(2)),
+				(*bool)(unsafe.Pointer(getVal(3))))
+
+			//type TLVOwnerDataEvent func(sender IObject, item *TListItem)
+		case TLVOwnerDataEvent:
+			v.(TLVOwnerDataEvent)(
+				ObjectFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)))
+
+			//type TLVOwnerDataFindEvent func(sender IObject, find TItemFind, findString string, findPosition TPoint, findData TCustomData, startIndex int32,
+			//	direction TSearchDirection, warp bool, index *int32)
+		case TLVOwnerDataFindEvent:
+			v.(TLVOwnerDataFindEvent)(
+				ObjectFromInst(getVal(0)),
+				TItemFind(getVal(1)),
+				DStrToGoStr(getVal(2)),
+				*(*TPoint)(unsafe.Pointer(getVal(3))),
+				TCustomData(getVal(4)),
+				int32(getVal(5)),
+				TSearchDirection(getVal(6)),
+				DBoolToGoBool(getVal(7)),
+				(*int32)(unsafe.Pointer(getVal(8))))
+
+			//type TLVDeletedEvent func(sender IObject, item *TListItem)
+		case TLVDeletedEvent:
+			v.(TLVDeletedEvent)(
+				ObjectFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)))
+
+			//type TLVEditingEvent func(sender IObject, item *TListItem, allowEdit *bool)
+		case TLVEditingEvent:
+			v.(TLVEditingEvent)(
+				ObjectFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TLVEditedEvent func(sender IObject, item *TListItem, s *string)
+		case TLVEditedEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			v.(TLVEditedEvent)(
+				ObjectFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+
+			//type TMenuMeasureItemEvent func(sender IObject, aCanvas *TCanvas, width, height *int32)
+		case TMenuMeasureItemEvent:
+			v.(TMenuMeasureItemEvent)(
+				ObjectFromInst(getVal(0)),
+				CanvasFromInst(getVal(1)),
+				(*int32)(unsafe.Pointer(getVal(2))),
+				(*int32)(unsafe.Pointer(getVal(3))))
+
+			//type TTabChangingEvent func(sender IObject, allowChange *bool)
+		case TTabChangingEvent:
+			v.(TTabChangingEvent)(
+				ObjectFromInst(getVal(0)),
+				(*bool)(unsafe.Pointer(getVal(1))))
+
+			//type TTVChangingEvent func(sender IObject, node *TTreeNode, allowChange *bool)
+		case TTVChangingEvent:
+			v.(TTVChangingEvent)(
+				ObjectFromInst(getVal(0)),
+				TreeNodeFromInst(getVal(1)),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TTVCollapsingEvent func(sender IObject, node *TTreeNode, allowCollapse *bool)
+		case TTVCollapsingEvent:
+			v.(TTVCollapsingEvent)(
+				ObjectFromInst(getVal(0)),
+				TreeNodeFromInst(getVal(1)),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TTVEditedEvent func(sender IObject, node *TTreeNode, s *string)
+		case TTVEditedEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			v.(TTVEditedEvent)(
+				ObjectFromInst(getVal(0)),
+				TreeNodeFromInst(getVal(1)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+
+			//type TTVEditingEvent func(sender IObject, node *TTreeNode, allowEdit *bool)
+		case TTVEditingEvent:
+			v.(TTVEditingEvent)(
+				ObjectFromInst(getVal(0)),
+				TreeNodeFromInst(getVal(1)),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TTVExpandingEvent func(sender IObject, node *TTreeNode, allowExpansion *bool)
+		case TTVExpandingEvent:
+			v.(TTVExpandingEvent)(
+				ObjectFromInst(getVal(0)),
+				TreeNodeFromInst(getVal(1)),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TTVHintEvent func(sender IObject, node *TTreeNode, hint *string)
+		case TTVHintEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(2))))
+			v.(TTVHintEvent)(
+				ObjectFromInst(getVal(0)),
+				TreeNodeFromInst(getVal(1)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(2))) = GoStrToDStr(str)
+
+			//type TUDChangingEvent func(sender IObject, allowChange *bool)
+		case TUDChangingEvent:
+			v.(TUDChangingEvent)(
+				ObjectFromInst(getVal(0)),
+				(*bool)(unsafe.Pointer(getVal(1))))
 
 		default:
 		}

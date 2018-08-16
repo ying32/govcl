@@ -610,6 +610,16 @@ func (b *TBoundLabel) SetOnEndDrag(fn TEndDragEvent) {
     BoundLabel_SetOnEndDrag(b.instance, fn)
 }
 
+// SetOnGesture
+func (b *TBoundLabel) SetOnGesture(fn TGestureEvent) {
+    BoundLabel_SetOnGesture(b.instance, fn)
+}
+
+// SetOnMouseActivate
+func (b *TBoundLabel) SetOnMouseActivate(fn TMouseActivateEvent) {
+    BoundLabel_SetOnMouseActivate(b.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

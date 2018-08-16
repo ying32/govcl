@@ -1045,6 +1045,11 @@ func (e *TEdit) SetOnExit(fn TNotifyEvent) {
     Edit_SetOnExit(e.instance, fn)
 }
 
+// SetOnGesture
+func (e *TEdit) SetOnGesture(fn TGestureEvent) {
+    Edit_SetOnGesture(e.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -1062,6 +1067,11 @@ func (e *TEdit) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (e *TEdit) SetOnKeyUp(fn TKeyEvent) {
     Edit_SetOnKeyUp(e.instance, fn)
+}
+
+// SetOnMouseActivate
+func (e *TEdit) SetOnMouseActivate(fn TMouseActivateEvent) {
+    Edit_SetOnMouseActivate(e.instance, fn)
 }
 
 // SetOnMouseDown

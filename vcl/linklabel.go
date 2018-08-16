@@ -789,6 +789,16 @@ func (l *TLinkLabel) SetOnEndDrag(fn TEndDragEvent) {
     LinkLabel_SetOnEndDrag(l.instance, fn)
 }
 
+// SetOnGesture
+func (l *TLinkLabel) SetOnGesture(fn TGestureEvent) {
+    LinkLabel_SetOnGesture(l.instance, fn)
+}
+
+// SetOnMouseActivate
+func (l *TLinkLabel) SetOnMouseActivate(fn TMouseActivateEvent) {
+    LinkLabel_SetOnMouseActivate(l.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

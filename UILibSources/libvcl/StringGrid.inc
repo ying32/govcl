@@ -809,6 +809,18 @@ begin
   TEventClass.Add(AObj, geFixedCellClick, AEventId);
 end;
 
+procedure StringGrid_SetOnGesture(AObj: TStringGrid; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure StringGrid_SetOnGetEditMask(AObj: TStringGrid; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -867,6 +879,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure StringGrid_SetOnMouseActivate(AObj: TStringGrid; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure StringGrid_SetOnMouseDown(AObj: TStringGrid; AEventId: NativeUInt); stdcall;
@@ -1633,11 +1657,13 @@ exports
   StringGrid_SetOnEnter,
   StringGrid_SetOnExit,
   StringGrid_SetOnFixedCellClick,
+  StringGrid_SetOnGesture,
   StringGrid_SetOnGetEditMask,
   StringGrid_SetOnGetEditText,
   StringGrid_SetOnKeyDown,
   StringGrid_SetOnKeyPress,
   StringGrid_SetOnKeyUp,
+  StringGrid_SetOnMouseActivate,
   StringGrid_SetOnMouseDown,
   StringGrid_SetOnMouseEnter,
   StringGrid_SetOnMouseLeave,

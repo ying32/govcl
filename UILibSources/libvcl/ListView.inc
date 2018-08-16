@@ -630,6 +630,16 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+function ListView_GetOwnerData(AObj: TListView): LongBool; stdcall;
+begin
+  Result :=  AObj.OwnerData;
+end;
+
+procedure ListView_SetOwnerData(AObj: TListView; AValue: LongBool); stdcall;
+begin
+  AObj.OwnerData := AValue;
+end;
+
 function ListView_GetGroupHeaderImages(AObj: TListView): TCustomImageList; stdcall;
 begin
   Result :=  AObj.GroupHeaderImages;
@@ -868,6 +878,18 @@ begin
   TEventClass.Add(AObj, geListViewChange, AEventId);
 end;
 
+procedure ListView_SetOnChanging(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    TEventClass.Remove(AObj, geListViewChanging);
+    Exit;
+  end;
+  AObj.OnChanging := TEventClass.ListViewOnChanging;
+  TEventClass.Add(AObj, geListViewChanging, AEventId);
+end;
+
 procedure ListView_SetOnClick(AObj: TListView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -928,6 +950,30 @@ begin
   TEventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnData := nil;
+    TEventClass.Remove(AObj, geListViewData);
+    Exit;
+  end;
+  AObj.OnData := TEventClass.ListViewOnData;
+  TEventClass.Add(AObj, geListViewData, AEventId);
+end;
+
+procedure ListView_SetOnDataFind(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataFind := nil;
+    TEventClass.Remove(AObj, geListViewDataFind);
+    Exit;
+  end;
+  AObj.OnDataFind := TEventClass.ListViewOnDataFind;
+  TEventClass.Add(AObj, geListViewDataFind, AEventId);
+end;
+
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -938,6 +984,42 @@ begin
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
   TEventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure ListView_SetOnDeletion(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDeletion := nil;
+    TEventClass.Remove(AObj, geListViewDeletion);
+    Exit;
+  end;
+  AObj.OnDeletion := TEventClass.ListViewOnDeletion;
+  TEventClass.Add(AObj, geListViewDeletion, AEventId);
+end;
+
+procedure ListView_SetOnEdited(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEdited := nil;
+    TEventClass.Remove(AObj, geListViewEdited);
+    Exit;
+  end;
+  AObj.OnEdited := TEventClass.ListViewOnEdited;
+  TEventClass.Add(AObj, geListViewEdited, AEventId);
+end;
+
+procedure ListView_SetOnEditing(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEditing := nil;
+    TEventClass.Remove(AObj, geListViewEditing);
+    Exit;
+  end;
+  AObj.OnEditing := TEventClass.ListViewOnEditing;
+  TEventClass.Add(AObj, geListViewEditing, AEventId);
 end;
 
 procedure ListView_SetOnEndDock(AObj: TListView; AEventId: NativeUInt); stdcall;
@@ -988,6 +1070,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ListView_SetOnGesture(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ListView_SetOnGetImageIndex(AObj: TListView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1024,6 +1118,18 @@ begin
   TEventClass.Add(AObj, geDragOver, AEventId);
 end;
 
+procedure ListView_SetOnInsert(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnInsert := nil;
+    TEventClass.Remove(AObj, geListViewInsert);
+    Exit;
+  end;
+  AObj.OnInsert := TEventClass.ListViewOnInsert;
+  TEventClass.Add(AObj, geListViewInsert, AEventId);
+end;
+
 procedure ListView_SetOnKeyDown(AObj: TListView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1058,6 +1164,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure ListView_SetOnMouseActivate(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ListView_SetOnMouseDown(AObj: TListView; AEventId: NativeUInt); stdcall;
@@ -1669,6 +1787,8 @@ exports
   ListView_SetMultiSelect,
   ListView_GetStyleElements,
   ListView_SetStyleElements,
+  ListView_GetOwnerData,
+  ListView_SetOwnerData,
   ListView_GetGroupHeaderImages,
   ListView_SetGroupHeaderImages,
   ListView_GetGroupView,
@@ -1711,22 +1831,31 @@ exports
   ListView_SetOnAdvancedCustomDrawItem,
   ListView_SetOnAdvancedCustomDrawSubItem,
   ListView_SetOnChange,
+  ListView_SetOnChanging,
   ListView_SetOnClick,
   ListView_SetOnColumnClick,
   ListView_SetOnColumnRightClick,
   ListView_SetOnCompare,
   ListView_SetOnContextPopup,
+  ListView_SetOnData,
+  ListView_SetOnDataFind,
   ListView_SetOnDblClick,
+  ListView_SetOnDeletion,
+  ListView_SetOnEdited,
+  ListView_SetOnEditing,
   ListView_SetOnEndDock,
   ListView_SetOnEndDrag,
   ListView_SetOnEnter,
   ListView_SetOnExit,
+  ListView_SetOnGesture,
   ListView_SetOnGetImageIndex,
   ListView_SetOnDragDrop,
   ListView_SetOnDragOver,
+  ListView_SetOnInsert,
   ListView_SetOnKeyDown,
   ListView_SetOnKeyPress,
   ListView_SetOnKeyUp,
+  ListView_SetOnMouseActivate,
   ListView_SetOnMouseDown,
   ListView_SetOnMouseEnter,
   ListView_SetOnMouseLeave,

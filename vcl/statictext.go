@@ -869,6 +869,16 @@ func (s *TStaticText) SetOnEndDrag(fn TEndDragEvent) {
     StaticText_SetOnEndDrag(s.instance, fn)
 }
 
+// SetOnGesture
+func (s *TStaticText) SetOnGesture(fn TGestureEvent) {
+    StaticText_SetOnGesture(s.instance, fn)
+}
+
+// SetOnMouseActivate
+func (s *TStaticText) SetOnMouseActivate(fn TMouseActivateEvent) {
+    StaticText_SetOnMouseActivate(s.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

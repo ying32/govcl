@@ -730,6 +730,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure CategoryPanel_SetOnGesture(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure CategoryPanel_SetOnGetSiteInfo(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -740,6 +752,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure CategoryPanel_SetOnMouseActivate(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure CategoryPanel_SetOnMouseDown(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
@@ -1258,7 +1282,9 @@ exports
   CategoryPanel_SetOnEndDrag,
   CategoryPanel_SetOnEnter,
   CategoryPanel_SetOnExit,
+  CategoryPanel_SetOnGesture,
   CategoryPanel_SetOnGetSiteInfo,
+  CategoryPanel_SetOnMouseActivate,
   CategoryPanel_SetOnMouseDown,
   CategoryPanel_SetOnMouseEnter,
   CategoryPanel_SetOnMouseLeave,

@@ -737,6 +737,18 @@ begin
   TEventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure Button_SetOnMouseActivate(AObj: TButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure Button_SetOnMouseDown(AObj: TButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -967,6 +979,18 @@ end;
 procedure Button_SetParent(AObj: TButton; AValue: TWinControl); stdcall;
 begin
   AObj.Parent := AValue;
+end;
+
+procedure Button_SetOnGesture(AObj: TButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function Button_GetAlignWithMargins(AObj: TButton): LongBool; stdcall;
@@ -1251,6 +1275,7 @@ exports
   Button_SetOnKeyDown,
   Button_SetOnKeyPress,
   Button_SetOnKeyUp,
+  Button_SetOnMouseActivate,
   Button_SetOnMouseDown,
   Button_SetOnMouseEnter,
   Button_SetOnMouseLeave,
@@ -1289,6 +1314,7 @@ exports
   Button_GetFloating,
   Button_GetParent,
   Button_SetParent,
+  Button_SetOnGesture,
   Button_GetAlignWithMargins,
   Button_SetAlignWithMargins,
   Button_GetLeft,

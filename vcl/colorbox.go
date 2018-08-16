@@ -882,6 +882,11 @@ func (c *TColorBox) SetOnExit(fn TNotifyEvent) {
     ColorBox_SetOnExit(c.instance, fn)
 }
 
+// SetOnGesture
+func (c *TColorBox) SetOnGesture(fn TGestureEvent) {
+    ColorBox_SetOnGesture(c.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.

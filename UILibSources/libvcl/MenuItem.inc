@@ -274,6 +274,18 @@ begin
   TEventClass.Add(AObj, geMenuItemDrawItem, AEventId);
 end;
 
+procedure MenuItem_SetOnMeasureItem(AObj: TMenuItem; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    TEventClass.Remove(AObj, geMenuItemMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := TEventClass.MenuItemOnMeasureItem;
+  TEventClass.Add(AObj, geMenuItemMeasureItem, AEventId);
+end;
+
 function MenuItem_GetComponentCount(AObj: TMenuItem): Integer; stdcall;
 begin
   Result :=  AObj.ComponentCount;
@@ -381,6 +393,7 @@ exports
   MenuItem_SetVisible,
   MenuItem_SetOnClick,
   MenuItem_SetOnDrawItem,
+  MenuItem_SetOnMeasureItem,
   MenuItem_GetComponentCount,
   MenuItem_GetComponentIndex,
   MenuItem_SetComponentIndex,

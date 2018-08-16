@@ -805,6 +805,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure LabeledEdit_SetOnGesture(AObj: TLabeledEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure LabeledEdit_SetOnKeyDown(AObj: TLabeledEdit; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -839,6 +851,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure LabeledEdit_SetOnMouseActivate(AObj: TLabeledEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure LabeledEdit_SetOnMouseDown(AObj: TLabeledEdit; AEventId: NativeUInt); stdcall;
@@ -1435,9 +1459,11 @@ exports
   LabeledEdit_SetOnEndDrag,
   LabeledEdit_SetOnEnter,
   LabeledEdit_SetOnExit,
+  LabeledEdit_SetOnGesture,
   LabeledEdit_SetOnKeyDown,
   LabeledEdit_SetOnKeyPress,
   LabeledEdit_SetOnKeyUp,
+  LabeledEdit_SetOnMouseActivate,
   LabeledEdit_SetOnMouseDown,
   LabeledEdit_SetOnMouseEnter,
   LabeledEdit_SetOnMouseLeave,

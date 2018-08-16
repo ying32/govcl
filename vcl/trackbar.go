@@ -873,6 +873,11 @@ func (t *TTrackBar) SetOnExit(fn TNotifyEvent) {
     TrackBar_SetOnExit(t.instance, fn)
 }
 
+// SetOnGesture
+func (t *TTrackBar) SetOnGesture(fn TGestureEvent) {
+    TrackBar_SetOnGesture(t.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.

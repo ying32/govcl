@@ -758,6 +758,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure MaskEdit_SetOnGesture(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure MaskEdit_SetOnKeyDown(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -792,6 +804,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure MaskEdit_SetOnMouseActivate(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure MaskEdit_SetOnMouseDown(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
@@ -1385,9 +1409,11 @@ exports
   MaskEdit_SetOnEndDrag,
   MaskEdit_SetOnEnter,
   MaskEdit_SetOnExit,
+  MaskEdit_SetOnGesture,
   MaskEdit_SetOnKeyDown,
   MaskEdit_SetOnKeyPress,
   MaskEdit_SetOnKeyUp,
+  MaskEdit_SetOnMouseActivate,
   MaskEdit_SetOnMouseDown,
   MaskEdit_SetOnMouseEnter,
   MaskEdit_SetOnMouseLeave,

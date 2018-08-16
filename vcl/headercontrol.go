@@ -737,6 +737,16 @@ func (h *THeaderControl) SetOnEndDrag(fn TEndDragEvent) {
     HeaderControl_SetOnEndDrag(h.instance, fn)
 }
 
+// SetOnGesture
+func (h *THeaderControl) SetOnGesture(fn TGestureEvent) {
+    HeaderControl_SetOnGesture(h.instance, fn)
+}
+
+// SetOnMouseActivate
+func (h *THeaderControl) SetOnMouseActivate(fn TMouseActivateEvent) {
+    HeaderControl_SetOnMouseActivate(h.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

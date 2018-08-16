@@ -334,3 +334,8 @@ func (c *TCanvas) SetOnChange(fn TNotifyEvent) {
     Canvas_SetOnChange(c.instance, fn)
 }
 
+// SetOnChanging
+func (c *TCanvas) SetOnChanging(fn TNotifyEvent) {
+    Canvas_SetOnChanging(c.instance, fn)
+}
+

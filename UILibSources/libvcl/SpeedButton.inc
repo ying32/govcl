@@ -414,6 +414,18 @@ begin
   TEventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure SpeedButton_SetOnMouseActivate(AObj: TSpeedButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure SpeedButton_SetOnMouseDown(AObj: TSpeedButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -567,6 +579,18 @@ end;
 procedure SpeedButton_SetParent(AObj: TSpeedButton; AValue: TWinControl); stdcall;
 begin
   AObj.Parent := AValue;
+end;
+
+procedure SpeedButton_SetOnGesture(AObj: TSpeedButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function SpeedButton_GetAlignWithMargins(AObj: TSpeedButton): LongBool; stdcall;
@@ -789,6 +813,7 @@ exports
   SpeedButton_SetStyleElements,
   SpeedButton_SetOnClick,
   SpeedButton_SetOnDblClick,
+  SpeedButton_SetOnMouseActivate,
   SpeedButton_SetOnMouseDown,
   SpeedButton_SetOnMouseEnter,
   SpeedButton_SetOnMouseLeave,
@@ -813,6 +838,7 @@ exports
   SpeedButton_GetFloating,
   SpeedButton_GetParent,
   SpeedButton_SetParent,
+  SpeedButton_SetOnGesture,
   SpeedButton_GetAlignWithMargins,
   SpeedButton_SetAlignWithMargins,
   SpeedButton_GetLeft,

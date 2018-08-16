@@ -753,6 +753,18 @@ begin
   TEventClass.Add(AObj, geEndDock, AEventId);
 end;
 
+procedure Form_SetOnGesture(AObj: TForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure Form_SetOnGetSiteInfo(AObj: TForm; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -823,6 +835,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure Form_SetOnMouseActivate(AObj: TForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure Form_SetOnMouseDown(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -1436,12 +1460,14 @@ exports
   Form_SetOnDragDrop,
   Form_SetOnDragOver,
   Form_SetOnEndDock,
+  Form_SetOnGesture,
   Form_SetOnGetSiteInfo,
   Form_SetOnHide,
   Form_SetOnHelp,
   Form_SetOnKeyDown,
   Form_SetOnKeyPress,
   Form_SetOnKeyUp,
+  Form_SetOnMouseActivate,
   Form_SetOnMouseDown,
   Form_SetOnMouseEnter,
   Form_SetOnMouseLeave,

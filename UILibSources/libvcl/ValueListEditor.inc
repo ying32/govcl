@@ -740,6 +740,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ValueListEditor_SetOnGesture(AObj: TValueListEditor; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ValueListEditor_SetOnGetEditMask(AObj: TValueListEditor; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -798,6 +810,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure ValueListEditor_SetOnMouseActivate(AObj: TValueListEditor; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseDown(AObj: TValueListEditor; AEventId: NativeUInt); stdcall;
@@ -1533,11 +1557,13 @@ exports
   ValueListEditor_SetOnEndDrag,
   ValueListEditor_SetOnEnter,
   ValueListEditor_SetOnExit,
+  ValueListEditor_SetOnGesture,
   ValueListEditor_SetOnGetEditMask,
   ValueListEditor_SetOnGetEditText,
   ValueListEditor_SetOnKeyDown,
   ValueListEditor_SetOnKeyPress,
   ValueListEditor_SetOnKeyUp,
+  ValueListEditor_SetOnMouseActivate,
   ValueListEditor_SetOnMouseDown,
   ValueListEditor_SetOnMouseEnter,
   ValueListEditor_SetOnMouseLeave,

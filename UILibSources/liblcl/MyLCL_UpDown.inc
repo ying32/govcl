@@ -385,6 +385,18 @@ begin
   AObj.Wrap := AValue;
 end;
 
+procedure UpDown_SetOnChanging(AObj: TUpDown; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    EventClass.Remove(AObj, geUpDownChanging);
+    Exit;
+  end;
+  AObj.OnChanging := @EventClass.UpDownOnChanging;
+  EventClass.Add(AObj, geUpDownChanging, AEventId);
+end;
+
 procedure UpDown_SetOnContextPopup(AObj: TUpDown; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -840,6 +852,7 @@ exports
   UpDown_SetVisible,
   UpDown_GetWrap,
   UpDown_SetWrap,
+  UpDown_SetOnChanging,
   UpDown_SetOnContextPopup,
   UpDown_SetOnClick,
   UpDown_SetOnEnter,

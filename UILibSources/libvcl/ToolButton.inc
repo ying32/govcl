@@ -482,6 +482,18 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure ToolButton_SetOnMouseActivate(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure ToolButton_SetOnMouseDown(AObj: TToolButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -687,6 +699,18 @@ end;
 procedure ToolButton_SetStyleElements(AObj: TToolButton; AValue: TStyleElements); stdcall;
 begin
   AObj.StyleElements := AValue;
+end;
+
+procedure ToolButton_SetOnGesture(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function ToolButton_GetAlignWithMargins(AObj: TToolButton): LongBool; stdcall;
@@ -897,6 +921,7 @@ exports
   ToolButton_SetOnDragOver,
   ToolButton_SetOnEndDock,
   ToolButton_SetOnEndDrag,
+  ToolButton_SetOnMouseActivate,
   ToolButton_SetOnMouseDown,
   ToolButton_SetOnMouseEnter,
   ToolButton_SetOnMouseLeave,
@@ -930,6 +955,7 @@ exports
   ToolButton_SetParent,
   ToolButton_GetStyleElements,
   ToolButton_SetStyleElements,
+  ToolButton_SetOnGesture,
   ToolButton_GetAlignWithMargins,
   ToolButton_SetAlignWithMargins,
   ToolButton_GetLeft,

@@ -520,6 +520,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure HeaderControl_SetOnGesture(AObj: THeaderControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure HeaderControl_SetOnMouseActivate(AObj: THeaderControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure HeaderControl_SetOnMouseDown(AObj: THeaderControl; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1130,6 +1154,8 @@ exports
   HeaderControl_SetOnDragOver,
   HeaderControl_SetOnEndDock,
   HeaderControl_SetOnEndDrag,
+  HeaderControl_SetOnGesture,
+  HeaderControl_SetOnMouseActivate,
   HeaderControl_SetOnMouseDown,
   HeaderControl_SetOnMouseEnter,
   HeaderControl_SetOnMouseLeave,

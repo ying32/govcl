@@ -1107,9 +1107,19 @@ func (t *TToolBar) SetOnExit(fn TNotifyEvent) {
     ToolBar_SetOnExit(t.instance, fn)
 }
 
+// SetOnGesture
+func (t *TToolBar) SetOnGesture(fn TGestureEvent) {
+    ToolBar_SetOnGesture(t.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (t *TToolBar) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     ToolBar_SetOnGetSiteInfo(t.instance, fn)
+}
+
+// SetOnMouseActivate
+func (t *TToolBar) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ToolBar_SetOnMouseActivate(t.instance, fn)
 }
 
 // SetOnMouseDown

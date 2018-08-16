@@ -671,6 +671,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure TrackBar_SetOnGesture(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure TrackBar_SetOnKeyDown(AObj: TTrackBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1172,6 +1184,7 @@ exports
   TrackBar_SetOnEndDrag,
   TrackBar_SetOnEnter,
   TrackBar_SetOnExit,
+  TrackBar_SetOnGesture,
   TrackBar_SetOnKeyDown,
   TrackBar_SetOnKeyPress,
   TrackBar_SetOnKeyUp,

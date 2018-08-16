@@ -642,6 +642,11 @@ func (u *TUpDown) SetStyleElements(value TStyleElements) {
     UpDown_SetStyleElements(u.instance, value)
 }
 
+// SetOnChanging
+func (u *TUpDown) SetOnChanging(fn TUDChangingEvent) {
+    UpDown_SetOnChanging(u.instance, fn)
+}
+
 // SetOnContextPopup
 // CN: 设置上下文弹出事件，一般是右键时弹出。
 // EN: Set Context popup event, usually pop up when right click.
@@ -668,6 +673,11 @@ func (u *TUpDown) SetOnEnter(fn TNotifyEvent) {
 // EN: Set Focus exit.
 func (u *TUpDown) SetOnExit(fn TNotifyEvent) {
     UpDown_SetOnExit(u.instance, fn)
+}
+
+// SetOnMouseActivate
+func (u *TUpDown) SetOnMouseActivate(fn TMouseActivateEvent) {
+    UpDown_SetOnMouseActivate(u.instance, fn)
 }
 
 // SetOnMouseDown
@@ -945,6 +955,11 @@ func (u *TUpDown) Parent() *TWinControl {
 // EN: Set control parent container.
 func (u *TUpDown) SetParent(value IWinControl) {
     UpDown_SetParent(u.instance, CheckPtr(value))
+}
+
+// SetOnGesture
+func (u *TUpDown) SetOnGesture(fn TGestureEvent) {
+    UpDown_SetOnGesture(u.instance, fn)
 }
 
 // AlignWithMargins

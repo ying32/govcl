@@ -610,6 +610,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure GroupBox_SetOnGesture(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure GroupBox_SetOnGetSiteInfo(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -620,6 +632,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure GroupBox_SetOnMouseActivate(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure GroupBox_SetOnMouseDown(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
@@ -1124,7 +1148,9 @@ exports
   GroupBox_SetOnEndDrag,
   GroupBox_SetOnEnter,
   GroupBox_SetOnExit,
+  GroupBox_SetOnGesture,
   GroupBox_SetOnGetSiteInfo,
+  GroupBox_SetOnMouseActivate,
   GroupBox_SetOnMouseDown,
   GroupBox_SetOnMouseEnter,
   GroupBox_SetOnMouseLeave,

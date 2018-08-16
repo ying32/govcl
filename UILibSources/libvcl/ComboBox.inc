@@ -787,6 +787,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ComboBox_SetOnGesture(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ComboBox_SetOnKeyDown(AObj: TComboBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -821,6 +833,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure ComboBox_SetOnMeasureItem(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    TEventClass.Remove(AObj, geListBoxMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := TEventClass.ListBoxOnMeasureItem;
+  TEventClass.Add(AObj, geListBoxMeasureItem, AEventId);
 end;
 
 procedure ComboBox_SetOnMouseEnter(AObj: TComboBox; AEventId: NativeUInt); stdcall;
@@ -1376,9 +1400,11 @@ exports
   ComboBox_SetOnEndDrag,
   ComboBox_SetOnEnter,
   ComboBox_SetOnExit,
+  ComboBox_SetOnGesture,
   ComboBox_SetOnKeyDown,
   ComboBox_SetOnKeyPress,
   ComboBox_SetOnKeyUp,
+  ComboBox_SetOnMeasureItem,
   ComboBox_SetOnMouseEnter,
   ComboBox_SetOnMouseLeave,
   ComboBox_SetOnStartDock,

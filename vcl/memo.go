@@ -1015,6 +1015,11 @@ func (m *TMemo) SetOnExit(fn TNotifyEvent) {
     Memo_SetOnExit(m.instance, fn)
 }
 
+// SetOnGesture
+func (m *TMemo) SetOnGesture(fn TGestureEvent) {
+    Memo_SetOnGesture(m.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -1032,6 +1037,11 @@ func (m *TMemo) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (m *TMemo) SetOnKeyUp(fn TKeyEvent) {
     Memo_SetOnKeyUp(m.instance, fn)
+}
+
+// SetOnMouseActivate
+func (m *TMemo) SetOnMouseActivate(fn TMouseActivateEvent) {
+    Memo_SetOnMouseActivate(m.instance, fn)
 }
 
 // SetOnMouseDown

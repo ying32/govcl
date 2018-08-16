@@ -869,6 +869,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ToolBar_SetOnGesture(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ToolBar_SetOnGetSiteInfo(AObj: TToolBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -879,6 +891,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure ToolBar_SetOnMouseActivate(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ToolBar_SetOnMouseDown(AObj: TToolBar; AEventId: NativeUInt); stdcall;
@@ -1449,7 +1473,9 @@ exports
   ToolBar_SetOnEndDrag,
   ToolBar_SetOnEnter,
   ToolBar_SetOnExit,
+  ToolBar_SetOnGesture,
   ToolBar_SetOnGetSiteInfo,
+  ToolBar_SetOnMouseActivate,
   ToolBar_SetOnMouseDown,
   ToolBar_SetOnMouseEnter,
   ToolBar_SetOnMouseLeave,

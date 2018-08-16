@@ -1040,6 +1040,11 @@ func (t *TTreeView) SetStyleElements(value TStyleElements) {
     TreeView_SetStyleElements(t.instance, value)
 }
 
+// SetOnAddition
+func (t *TTreeView) SetOnAddition(fn TTVExpandedEvent) {
+    TreeView_SetOnAddition(t.instance, fn)
+}
+
 // SetOnAdvancedCustomDraw
 func (t *TTreeView) SetOnAdvancedCustomDraw(fn TTVAdvancedCustomDrawEvent) {
     TreeView_SetOnAdvancedCustomDraw(t.instance, fn)
@@ -1050,6 +1055,11 @@ func (t *TTreeView) SetOnAdvancedCustomDrawItem(fn TTVAdvancedCustomDrawItemEven
     TreeView_SetOnAdvancedCustomDrawItem(t.instance, fn)
 }
 
+// SetOnCancelEdit
+func (t *TTreeView) SetOnCancelEdit(fn TTVChangedEvent) {
+    TreeView_SetOnCancelEdit(t.instance, fn)
+}
+
 // SetOnChange
 // CN: 设置改变事件。
 // EN: Set changed event.
@@ -1057,11 +1067,26 @@ func (t *TTreeView) SetOnChange(fn TTVChangedEvent) {
     TreeView_SetOnChange(t.instance, fn)
 }
 
+// SetOnChanging
+func (t *TTreeView) SetOnChanging(fn TTVChangingEvent) {
+    TreeView_SetOnChanging(t.instance, fn)
+}
+
 // SetOnClick
 // CN: 设置控件单击事件。
 // EN: Set control click event.
 func (t *TTreeView) SetOnClick(fn TNotifyEvent) {
     TreeView_SetOnClick(t.instance, fn)
+}
+
+// SetOnCollapsed
+func (t *TTreeView) SetOnCollapsed(fn TTVExpandedEvent) {
+    TreeView_SetOnCollapsed(t.instance, fn)
+}
+
+// SetOnCollapsing
+func (t *TTreeView) SetOnCollapsing(fn TTVCollapsingEvent) {
+    TreeView_SetOnCollapsing(t.instance, fn)
 }
 
 // SetOnCompare
@@ -1083,6 +1108,11 @@ func (t *TTreeView) SetOnDblClick(fn TNotifyEvent) {
     TreeView_SetOnDblClick(t.instance, fn)
 }
 
+// SetOnDeletion
+func (t *TTreeView) SetOnDeletion(fn TTVExpandedEvent) {
+    TreeView_SetOnDeletion(t.instance, fn)
+}
+
 // SetOnDragDrop
 // CN: 设置拖拽下落事件。
 // EN: Set Drag and drop event.
@@ -1095,6 +1125,16 @@ func (t *TTreeView) SetOnDragDrop(fn TDragDropEvent) {
 // EN: Set Drag and drop completion event.
 func (t *TTreeView) SetOnDragOver(fn TDragOverEvent) {
     TreeView_SetOnDragOver(t.instance, fn)
+}
+
+// SetOnEdited
+func (t *TTreeView) SetOnEdited(fn TTVEditedEvent) {
+    TreeView_SetOnEdited(t.instance, fn)
+}
+
+// SetOnEditing
+func (t *TTreeView) SetOnEditing(fn TTVEditingEvent) {
+    TreeView_SetOnEditing(t.instance, fn)
 }
 
 // SetOnEndDock
@@ -1125,6 +1165,21 @@ func (t *TTreeView) SetOnExit(fn TNotifyEvent) {
     TreeView_SetOnExit(t.instance, fn)
 }
 
+// SetOnExpanding
+func (t *TTreeView) SetOnExpanding(fn TTVExpandingEvent) {
+    TreeView_SetOnExpanding(t.instance, fn)
+}
+
+// SetOnExpanded
+func (t *TTreeView) SetOnExpanded(fn TTVExpandedEvent) {
+    TreeView_SetOnExpanded(t.instance, fn)
+}
+
+// SetOnGesture
+func (t *TTreeView) SetOnGesture(fn TGestureEvent) {
+    TreeView_SetOnGesture(t.instance, fn)
+}
+
 // SetOnGetImageIndex
 func (t *TTreeView) SetOnGetImageIndex(fn TTVExpandedEvent) {
     TreeView_SetOnGetImageIndex(t.instance, fn)
@@ -1133,6 +1188,13 @@ func (t *TTreeView) SetOnGetImageIndex(fn TTVExpandedEvent) {
 // SetOnGetSelectedIndex
 func (t *TTreeView) SetOnGetSelectedIndex(fn TTVExpandedEvent) {
     TreeView_SetOnGetSelectedIndex(t.instance, fn)
+}
+
+// SetOnHint
+// CN: 设置鼠标悬停提示事件。
+// EN: .
+func (t *TTreeView) SetOnHint(fn TTVHintEvent) {
+    TreeView_SetOnHint(t.instance, fn)
 }
 
 // SetOnKeyDown
@@ -1152,6 +1214,11 @@ func (t *TTreeView) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (t *TTreeView) SetOnKeyUp(fn TKeyEvent) {
     TreeView_SetOnKeyUp(t.instance, fn)
+}
+
+// SetOnMouseActivate
+func (t *TTreeView) SetOnMouseActivate(fn TMouseActivateEvent) {
+    TreeView_SetOnMouseActivate(t.instance, fn)
 }
 
 // SetOnMouseDown

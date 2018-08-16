@@ -34,6 +34,8 @@ type TGridCoord struct {
 	Y int32
 }
 
+type TCustomData uintptr
+
 type TGridRect TRect
 
 type TSysLocale struct {
@@ -48,4 +50,9 @@ type TSysLocale struct {
 
 	// LCL
 	// real meaning  2: (MBCS: boolean; RightToLeft: Boolean);
+}
+
+type TSmallPoint struct {
+	X int16
+	Y int16
 }

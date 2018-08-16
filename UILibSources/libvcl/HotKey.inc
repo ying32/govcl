@@ -418,6 +418,30 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure HotKey_SetOnGesture(AObj: THotKey; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure HotKey_SetOnMouseActivate(AObj: THotKey; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure HotKey_SetOnMouseDown(AObj: THotKey; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -896,6 +920,8 @@ exports
   HotKey_SetOnContextPopup,
   HotKey_SetOnEnter,
   HotKey_SetOnExit,
+  HotKey_SetOnGesture,
+  HotKey_SetOnMouseActivate,
   HotKey_SetOnMouseDown,
   HotKey_SetOnMouseEnter,
   HotKey_SetOnMouseLeave,

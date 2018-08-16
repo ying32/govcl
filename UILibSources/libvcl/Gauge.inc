@@ -490,6 +490,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure Gauge_SetOnGesture(AObj: TGauge; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function Gauge_GetAlignWithMargins(AObj: TGauge): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
@@ -728,6 +740,7 @@ exports
   Gauge_SetParent,
   Gauge_GetStyleElements,
   Gauge_SetStyleElements,
+  Gauge_SetOnGesture,
   Gauge_GetAlignWithMargins,
   Gauge_SetAlignWithMargins,
   Gauge_GetLeft,

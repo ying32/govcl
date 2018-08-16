@@ -502,6 +502,18 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+procedure PageControl_SetOnChanging(AObj: TPageControl; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    EventClass.Remove(AObj, gePageControlChanging);
+    Exit;
+  end;
+  AObj.OnChanging := @EventClass.PageControlOnChanging;
+  EventClass.Add(AObj, gePageControlChanging, AEventId);
+end;
+
 procedure PageControl_SetOnContextPopup(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -1060,6 +1072,7 @@ exports
   PageControl_GetVisible,
   PageControl_SetVisible,
   PageControl_SetOnChange,
+  PageControl_SetOnChanging,
   PageControl_SetOnContextPopup,
   PageControl_SetOnDockDrop,
   PageControl_SetOnDragDrop,

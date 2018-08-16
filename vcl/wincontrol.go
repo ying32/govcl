@@ -796,6 +796,11 @@ func (w *TWinControl) SetStyleElements(value TStyleElements) {
     WinControl_SetStyleElements(w.instance, value)
 }
 
+// SetOnGesture
+func (w *TWinControl) SetOnGesture(fn TGestureEvent) {
+    WinControl_SetOnGesture(w.instance, fn)
+}
+
 // AlignWithMargins
 // CN: 获取边距，仅VCL有效。
 // EN: Get The margin. Only VCL is valid..

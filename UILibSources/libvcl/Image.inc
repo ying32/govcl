@@ -424,6 +424,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure Image_SetOnGesture(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure Image_SetOnMouseActivate(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure Image_SetOnMouseDown(AObj: TImage; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -836,6 +860,8 @@ exports
   Image_SetOnDragOver,
   Image_SetOnEndDock,
   Image_SetOnEndDrag,
+  Image_SetOnGesture,
+  Image_SetOnMouseActivate,
   Image_SetOnMouseDown,
   Image_SetOnMouseEnter,
   Image_SetOnMouseLeave,

@@ -986,9 +986,19 @@ func (f *TFlowPanel) SetOnExit(fn TNotifyEvent) {
     FlowPanel_SetOnExit(f.instance, fn)
 }
 
+// SetOnGesture
+func (f *TFlowPanel) SetOnGesture(fn TGestureEvent) {
+    FlowPanel_SetOnGesture(f.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (f *TFlowPanel) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     FlowPanel_SetOnGetSiteInfo(f.instance, fn)
+}
+
+// SetOnMouseActivate
+func (f *TFlowPanel) SetOnMouseActivate(fn TMouseActivateEvent) {
+    FlowPanel_SetOnMouseActivate(f.instance, fn)
 }
 
 // SetOnMouseDown

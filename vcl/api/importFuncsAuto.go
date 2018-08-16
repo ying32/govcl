@@ -977,6 +977,10 @@ func Form_SetOnEndDock(obj uintptr, fn interface{}) {
     form_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnGesture(obj uintptr, fn interface{}) {
+    form_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     form_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
@@ -999,6 +1003,10 @@ func Form_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Form_SetOnKeyUp(obj uintptr, fn interface{}) {
     form_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    form_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Form_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -1935,6 +1943,10 @@ func Button_SetOnKeyUp(obj uintptr, fn interface{}) {
     button_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
+func Button_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    button_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func Button_SetOnMouseDown(obj uintptr, fn interface{}) {
     button_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -2111,6 +2123,10 @@ func Button_GetParent(obj uintptr) uintptr {
 
 func Button_SetParent(obj uintptr, value uintptr) {
    button_SetParent.Call(obj, value)
+}
+
+func Button_SetOnGesture(obj uintptr, fn interface{}) {
+    button_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Button_GetAlignWithMargins(obj uintptr) bool {
@@ -2888,6 +2904,10 @@ func Edit_SetOnExit(obj uintptr, fn interface{}) {
     edit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func Edit_SetOnGesture(obj uintptr, fn interface{}) {
+    edit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Edit_SetOnKeyDown(obj uintptr, fn interface{}) {
     edit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -2898,6 +2918,10 @@ func Edit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Edit_SetOnKeyUp(obj uintptr, fn interface{}) {
     edit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func Edit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    edit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Edit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -4262,6 +4286,10 @@ func Memo_SetOnExit(obj uintptr, fn interface{}) {
     memo_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func Memo_SetOnGesture(obj uintptr, fn interface{}) {
+    memo_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Memo_SetOnKeyDown(obj uintptr, fn interface{}) {
     memo_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -4272,6 +4300,10 @@ func Memo_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Memo_SetOnKeyUp(obj uintptr, fn interface{}) {
     memo_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func Memo_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    memo_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Memo_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -5191,6 +5223,10 @@ func CheckBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     checkBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
+func CheckBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    checkBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func CheckBox_SetOnMouseDown(obj uintptr, fn interface{}) {
     checkBox_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -5367,6 +5403,10 @@ func CheckBox_GetParent(obj uintptr) uintptr {
 
 func CheckBox_SetParent(obj uintptr, value uintptr) {
    checkBox_SetParent.Call(obj, value)
+}
+
+func CheckBox_SetOnGesture(obj uintptr, fn interface{}) {
+    checkBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func CheckBox_GetAlignWithMargins(obj uintptr) bool {
@@ -6016,6 +6056,10 @@ func RadioButton_SetOnKeyUp(obj uintptr, fn interface{}) {
     radioButton_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
+func RadioButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    radioButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func RadioButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     radioButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -6192,6 +6236,10 @@ func RadioButton_GetParent(obj uintptr) uintptr {
 
 func RadioButton_SetParent(obj uintptr, value uintptr) {
    radioButton_SetParent.Call(obj, value)
+}
+
+func RadioButton_SetOnGesture(obj uintptr, fn interface{}) {
+    radioButton_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func RadioButton_GetAlignWithMargins(obj uintptr) bool {
@@ -6815,8 +6863,16 @@ func GroupBox_SetOnExit(obj uintptr, fn interface{}) {
     groupBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func GroupBox_SetOnGesture(obj uintptr, fn interface{}) {
+    groupBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func GroupBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     groupBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    groupBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func GroupBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -7543,6 +7599,14 @@ func Label_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func Label_SetOnEndDrag(obj uintptr, fn interface{}) {
     label_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnGesture(obj uintptr, fn interface{}) {
+    label_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    label_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Label_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -8373,6 +8437,18 @@ func ListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
     listBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
+func ListBox_SetOnData(obj uintptr, fn interface{}) {
+    listBox_SetOnData.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnDataFind(obj uintptr, fn interface{}) {
+    listBox_SetOnDataFind.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnDataObject(obj uintptr, fn interface{}) {
+    listBox_SetOnDataObject.Call(obj, addEventToMap(fn))
+}
+
 func ListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     listBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -8405,6 +8481,10 @@ func ListBox_SetOnExit(obj uintptr, fn interface{}) {
     listBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ListBox_SetOnGesture(obj uintptr, fn interface{}) {
+    listBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     listBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -8415,6 +8495,14 @@ func ListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     listBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    listBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    listBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -9412,6 +9500,10 @@ func ComboBox_SetOnExit(obj uintptr, fn interface{}) {
     comboBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ComboBox_SetOnGesture(obj uintptr, fn interface{}) {
+    comboBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ComboBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     comboBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -9422,6 +9514,10 @@ func ComboBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ComboBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     comboBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ComboBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    comboBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
 }
 
 func ComboBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
@@ -10378,8 +10474,16 @@ func Panel_SetOnExit(obj uintptr, fn interface{}) {
     panel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func Panel_SetOnGesture(obj uintptr, fn interface{}) {
+    panel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Panel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     panel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    panel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Panel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -11034,6 +11138,14 @@ func Image_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func Image_SetOnEndDrag(obj uintptr, fn interface{}) {
     image_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnGesture(obj uintptr, fn interface{}) {
+    image_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    image_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Image_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -11778,6 +11890,14 @@ func LinkLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
     linkLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func LinkLabel_SetOnGesture(obj uintptr, fn interface{}) {
+    linkLabel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func LinkLabel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    linkLabel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func LinkLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
     linkLabel_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -12506,6 +12626,10 @@ func SpeedButton_SetOnDblClick(obj uintptr, fn interface{}) {
     speedButton_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func SpeedButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    speedButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func SpeedButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     speedButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -12616,6 +12740,10 @@ func SpeedButton_GetParent(obj uintptr) uintptr {
 
 func SpeedButton_SetParent(obj uintptr, value uintptr) {
    speedButton_SetParent.Call(obj, value)
+}
+
+func SpeedButton_SetOnGesture(obj uintptr, fn interface{}) {
+    speedButton_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func SpeedButton_GetAlignWithMargins(obj uintptr) bool {
@@ -13106,6 +13234,10 @@ func Splitter_GetParent(obj uintptr) uintptr {
 
 func Splitter_SetParent(obj uintptr, value uintptr) {
    splitter_SetParent.Call(obj, value)
+}
+
+func Splitter_SetOnGesture(obj uintptr, fn interface{}) {
+    splitter_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Splitter_GetAlignWithMargins(obj uintptr) bool {
@@ -13718,6 +13850,10 @@ func RadioGroup_SetOnEnter(obj uintptr, fn interface{}) {
 
 func RadioGroup_SetOnExit(obj uintptr, fn interface{}) {
     radioGroup_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_SetOnGesture(obj uintptr, fn interface{}) {
+    radioGroup_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func RadioGroup_SetOnStartDock(obj uintptr, fn interface{}) {
@@ -14553,6 +14689,14 @@ func StaticText_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func StaticText_SetOnEndDrag(obj uintptr, fn interface{}) {
     staticText_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnGesture(obj uintptr, fn interface{}) {
+    staticText_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    staticText_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StaticText_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -15431,6 +15575,10 @@ func ColorBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ColorBox_SetOnExit(obj uintptr, fn interface{}) {
     colorBox_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnGesture(obj uintptr, fn interface{}) {
+    colorBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ColorBox_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -16398,6 +16546,10 @@ func ColorListBox_SetOnExit(obj uintptr, fn interface{}) {
     colorListBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ColorListBox_SetOnGesture(obj uintptr, fn interface{}) {
+    colorListBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ColorListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     colorListBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -16408,6 +16560,10 @@ func ColorListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ColorListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     colorListBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ColorListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    colorListBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ColorListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -17887,8 +18043,16 @@ func CategoryPanelGroup_SetOnExit(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func CategoryPanelGroup_SetOnGesture(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CategoryPanelGroup_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanelGroup_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -18804,8 +18968,16 @@ func CategoryPanel_SetOnExit(obj uintptr, fn interface{}) {
     categoryPanel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func CategoryPanel_SetOnGesture(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CategoryPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     categoryPanel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -21550,6 +21722,10 @@ func RichEdit_SetOnExit(obj uintptr, fn interface{}) {
     richEdit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func RichEdit_SetOnGesture(obj uintptr, fn interface{}) {
+    richEdit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func RichEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     richEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -21560,6 +21736,10 @@ func RichEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func RichEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     richEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func RichEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -22573,6 +22753,10 @@ func TrackBar_SetOnEnter(obj uintptr, fn interface{}) {
 
 func TrackBar_SetOnExit(obj uintptr, fn interface{}) {
     trackBar_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func TrackBar_SetOnGesture(obj uintptr, fn interface{}) {
+    trackBar_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func TrackBar_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -23659,6 +23843,10 @@ func UpDown_SetStyleElements(obj uintptr, value TStyleElements) {
    upDown_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func UpDown_SetOnChanging(obj uintptr, fn interface{}) {
+    upDown_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func UpDown_SetOnContextPopup(obj uintptr, fn interface{}) {
     upDown_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -23673,6 +23861,10 @@ func UpDown_SetOnEnter(obj uintptr, fn interface{}) {
 
 func UpDown_SetOnExit(obj uintptr, fn interface{}) {
     upDown_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func UpDown_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    upDown_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func UpDown_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -23874,6 +24066,10 @@ func UpDown_GetParent(obj uintptr) uintptr {
 
 func UpDown_SetParent(obj uintptr, value uintptr) {
    upDown_SetParent.Call(obj, value)
+}
+
+func UpDown_SetOnGesture(obj uintptr, fn interface{}) {
+    upDown_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func UpDown_GetAlignWithMargins(obj uintptr) bool {
@@ -24527,6 +24723,14 @@ func ProgressBar_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ProgressBar_SetOnExit(obj uintptr, fn interface{}) {
     progressBar_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_SetOnGesture(obj uintptr, fn interface{}) {
+    progressBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    progressBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ProgressBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -25203,6 +25407,14 @@ func HotKey_SetOnEnter(obj uintptr, fn interface{}) {
 
 func HotKey_SetOnExit(obj uintptr, fn interface{}) {
     hotKey_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func HotKey_SetOnGesture(obj uintptr, fn interface{}) {
+    hotKey_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func HotKey_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    hotKey_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func HotKey_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -26145,6 +26357,10 @@ func DateTimePicker_SetOnExit(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func DateTimePicker_SetOnGesture(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func DateTimePicker_SetOnKeyDown(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -26992,6 +27208,10 @@ func MonthCalendar_SetOnEnter(obj uintptr, fn interface{}) {
 
 func MonthCalendar_SetOnExit(obj uintptr, fn interface{}) {
     monthCalendar_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func MonthCalendar_SetOnGesture(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func MonthCalendar_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -27896,6 +28116,15 @@ func ListView_SetStyleElements(obj uintptr, value TStyleElements) {
    listView_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func ListView_GetOwnerData(obj uintptr) bool {
+    ret, _, _ := listView_GetOwnerData.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetOwnerData(obj uintptr, value bool) {
+   listView_SetOwnerData.Call(obj, GoBoolToDBool(value))
+}
+
 func ListView_GetGroupHeaderImages(obj uintptr) uintptr {
     ret, _, _ := listView_GetGroupHeaderImages.Call(obj)
     return ret
@@ -28083,6 +28312,10 @@ func ListView_SetOnChange(obj uintptr, fn interface{}) {
     listView_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnChanging(obj uintptr, fn interface{}) {
+    listView_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnClick(obj uintptr, fn interface{}) {
     listView_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -28103,8 +28336,28 @@ func ListView_SetOnContextPopup(obj uintptr, fn interface{}) {
     listView_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnData(obj uintptr, fn interface{}) {
+    listView_SetOnData.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnDataFind(obj uintptr, fn interface{}) {
+    listView_SetOnDataFind.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnDblClick(obj uintptr, fn interface{}) {
     listView_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnDeletion(obj uintptr, fn interface{}) {
+    listView_SetOnDeletion.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnEdited(obj uintptr, fn interface{}) {
+    listView_SetOnEdited.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnEditing(obj uintptr, fn interface{}) {
+    listView_SetOnEditing.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnEndDock(obj uintptr, fn interface{}) {
@@ -28123,6 +28376,10 @@ func ListView_SetOnExit(obj uintptr, fn interface{}) {
     listView_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnGesture(obj uintptr, fn interface{}) {
+    listView_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     listView_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
 }
@@ -28135,6 +28392,10 @@ func ListView_SetOnDragOver(obj uintptr, fn interface{}) {
     listView_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnInsert(obj uintptr, fn interface{}) {
+    listView_SetOnInsert.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnKeyDown(obj uintptr, fn interface{}) {
     listView_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -28145,6 +28406,10 @@ func ListView_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ListView_SetOnKeyUp(obj uintptr, fn interface{}) {
     listView_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    listView_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -29220,6 +29485,10 @@ func TreeView_SetStyleElements(obj uintptr, value TStyleElements) {
    treeView_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func TreeView_SetOnAddition(obj uintptr, fn interface{}) {
+    treeView_SetOnAddition.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnAdvancedCustomDraw(obj uintptr, fn interface{}) {
     treeView_SetOnAdvancedCustomDraw.Call(obj, addEventToMap(fn))
 }
@@ -29228,12 +29497,28 @@ func TreeView_SetOnAdvancedCustomDrawItem(obj uintptr, fn interface{}) {
     treeView_SetOnAdvancedCustomDrawItem.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnCancelEdit(obj uintptr, fn interface{}) {
+    treeView_SetOnCancelEdit.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnChange(obj uintptr, fn interface{}) {
     treeView_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnChanging(obj uintptr, fn interface{}) {
+    treeView_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnClick(obj uintptr, fn interface{}) {
     treeView_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnCollapsed(obj uintptr, fn interface{}) {
+    treeView_SetOnCollapsed.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnCollapsing(obj uintptr, fn interface{}) {
+    treeView_SetOnCollapsing.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnCompare(obj uintptr, fn interface{}) {
@@ -29248,12 +29533,24 @@ func TreeView_SetOnDblClick(obj uintptr, fn interface{}) {
     treeView_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnDeletion(obj uintptr, fn interface{}) {
+    treeView_SetOnDeletion.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnDragDrop(obj uintptr, fn interface{}) {
     treeView_SetOnDragDrop.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnDragOver(obj uintptr, fn interface{}) {
     treeView_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnEdited(obj uintptr, fn interface{}) {
+    treeView_SetOnEdited.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnEditing(obj uintptr, fn interface{}) {
+    treeView_SetOnEditing.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnEndDock(obj uintptr, fn interface{}) {
@@ -29272,12 +29569,28 @@ func TreeView_SetOnExit(obj uintptr, fn interface{}) {
     treeView_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnExpanding(obj uintptr, fn interface{}) {
+    treeView_SetOnExpanding.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnExpanded(obj uintptr, fn interface{}) {
+    treeView_SetOnExpanded.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnGesture(obj uintptr, fn interface{}) {
+    treeView_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     treeView_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnGetSelectedIndex(obj uintptr, fn interface{}) {
     treeView_SetOnGetSelectedIndex.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnHint(obj uintptr, fn interface{}) {
+    treeView_SetOnHint.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -29290,6 +29603,10 @@ func TreeView_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func TreeView_SetOnKeyUp(obj uintptr, fn interface{}) {
     treeView_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    treeView_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -30157,8 +30474,16 @@ func StatusBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     statusBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func StatusBar_SetOnGesture(obj uintptr, fn interface{}) {
+    statusBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func StatusBar_SetOnHint(obj uintptr, fn interface{}) {
     statusBar_SetOnHint.Call(obj, addEventToMap(fn))
+}
+
+func StatusBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    statusBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StatusBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -31208,8 +31533,16 @@ func ToolBar_SetOnExit(obj uintptr, fn interface{}) {
     toolBar_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ToolBar_SetOnGesture(obj uintptr, fn interface{}) {
+    toolBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ToolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     toolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    toolBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ToolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -32160,6 +32493,10 @@ func MaskEdit_SetOnExit(obj uintptr, fn interface{}) {
     maskEdit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func MaskEdit_SetOnGesture(obj uintptr, fn interface{}) {
+    maskEdit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func MaskEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     maskEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -32170,6 +32507,10 @@ func MaskEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func MaskEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     maskEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    maskEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func MaskEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -33097,6 +33438,10 @@ func BitBtn_SetOnKeyUp(obj uintptr, fn interface{}) {
     bitBtn_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
+func BitBtn_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    bitBtn_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func BitBtn_SetOnMouseDown(obj uintptr, fn interface{}) {
     bitBtn_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -33363,6 +33708,10 @@ func BitBtn_GetParent(obj uintptr) uintptr {
 
 func BitBtn_SetParent(obj uintptr, value uintptr) {
    bitBtn_SetParent.Call(obj, value)
+}
+
+func BitBtn_SetOnGesture(obj uintptr, fn interface{}) {
+    bitBtn_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func BitBtn_GetAlignWithMargins(obj uintptr) bool {
@@ -34512,6 +34861,10 @@ func StringList_SetOnChange(obj uintptr, fn interface{}) {
     stringList_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func StringList_SetOnChanging(obj uintptr, fn interface{}) {
+    stringList_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func StringList_GetCapacity(obj uintptr) int32 {
     ret, _, _ := stringList_GetCapacity.Call(obj)
     return int32(ret)
@@ -35071,6 +35424,10 @@ func MenuItem_SetOnClick(obj uintptr, fn interface{}) {
 
 func MenuItem_SetOnDrawItem(obj uintptr, fn interface{}) {
     menuItem_SetOnDrawItem.Call(obj, addEventToMap(fn))
+}
+
+func MenuItem_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    menuItem_SetOnMeasureItem.Call(obj, addEventToMap(fn))
 }
 
 func MenuItem_GetComponentCount(obj uintptr) int32 {
@@ -36843,6 +37200,10 @@ func PageControl_SetOnChange(obj uintptr, fn interface{}) {
     pageControl_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func PageControl_SetOnChanging(obj uintptr, fn interface{}) {
+    pageControl_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func PageControl_SetOnContextPopup(obj uintptr, fn interface{}) {
     pageControl_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -36875,12 +37236,20 @@ func PageControl_SetOnExit(obj uintptr, fn interface{}) {
     pageControl_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func PageControl_SetOnGesture(obj uintptr, fn interface{}) {
+    pageControl_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func PageControl_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     pageControl_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
 }
 
 func PageControl_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     pageControl_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    pageControl_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func PageControl_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -37662,8 +38031,16 @@ func TabSheet_SetOnExit(obj uintptr, fn interface{}) {
     tabSheet_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func TabSheet_SetOnGesture(obj uintptr, fn interface{}) {
+    tabSheet_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func TabSheet_SetOnHide(obj uintptr, fn interface{}) {
     tabSheet_SetOnHide.Call(obj, addEventToMap(fn))
+}
+
+func TabSheet_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    tabSheet_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func TabSheet_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -38330,6 +38707,10 @@ func Control_SetStyleElements(obj uintptr, value TStyleElements) {
    control_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func Control_SetOnGesture(obj uintptr, fn interface{}) {
+    control_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Control_GetAlignWithMargins(obj uintptr) bool {
     ret, _, _ := control_GetAlignWithMargins.Call(obj)
     return DBoolToGoBool(ret)
@@ -38945,6 +39326,10 @@ func WinControl_GetStyleElements(obj uintptr) TStyleElements {
 
 func WinControl_SetStyleElements(obj uintptr, value TStyleElements) {
    winControl_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func WinControl_SetOnGesture(obj uintptr, fn interface{}) {
+    winControl_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func WinControl_GetAlignWithMargins(obj uintptr) bool {
@@ -40243,6 +40628,10 @@ func Canvas_SetPen(obj uintptr, value uintptr) {
 
 func Canvas_SetOnChange(obj uintptr, fn interface{}) {
     canvas_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func Canvas_SetOnChanging(obj uintptr, fn interface{}) {
+    canvas_SetOnChanging.Call(obj, addEventToMap(fn))
 }
 
 func Canvas_StaticClassType() TClass {
@@ -41841,6 +42230,10 @@ func ToolButton_SetOnEndDrag(obj uintptr, fn interface{}) {
     toolButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func ToolButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    toolButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func ToolButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     toolButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -41991,6 +42384,10 @@ func ToolButton_GetStyleElements(obj uintptr) TStyleElements {
 
 func ToolButton_SetStyleElements(obj uintptr, value TStyleElements) {
    toolButton_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func ToolButton_SetOnGesture(obj uintptr, fn interface{}) {
+    toolButton_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ToolButton_GetAlignWithMargins(obj uintptr) bool {
@@ -43201,6 +43598,14 @@ func PaintBox_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func PaintBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     paintBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnGesture(obj uintptr, fn interface{}) {
+    paintBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    paintBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func PaintBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -45125,6 +45530,10 @@ func ScrollBar_SetParent(obj uintptr, value uintptr) {
    scrollBar_SetParent.Call(obj, value)
 }
 
+func ScrollBar_SetOnGesture(obj uintptr, fn interface{}) {
+    scrollBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBar_GetAlignWithMargins(obj uintptr) bool {
     ret, _, _ := scrollBar_GetAlignWithMargins.Call(obj)
     return DBoolToGoBool(ret)
@@ -45736,6 +46145,10 @@ func Shape_SetOnEndDrag(obj uintptr, fn interface{}) {
     shape_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func Shape_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    shape_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func Shape_SetOnMouseDown(obj uintptr, fn interface{}) {
     shape_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -45754,6 +46167,10 @@ func Shape_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Shape_SetOnMouseUp(obj uintptr, fn interface{}) {
     shape_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func Shape_SetOnGesture(obj uintptr, fn interface{}) {
+    shape_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Shape_SetOnStartDock(obj uintptr, fn interface{}) {
@@ -46221,6 +46638,10 @@ func Bevel_GetVisible(obj uintptr) bool {
 
 func Bevel_SetVisible(obj uintptr, value bool) {
    bevel_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func Bevel_SetOnGesture(obj uintptr, fn interface{}) {
+    bevel_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Bevel_GetEnabled(obj uintptr) bool {
@@ -47007,8 +47428,16 @@ func ScrollBox_SetOnExit(obj uintptr, fn interface{}) {
     scrollBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBox_SetOnGesture(obj uintptr, fn interface{}) {
+    scrollBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     scrollBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    scrollBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -47943,6 +48372,18 @@ func CheckListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
     checkListBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
+func CheckListBox_SetOnData(obj uintptr, fn interface{}) {
+    checkListBox_SetOnData.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnDataFind(obj uintptr, fn interface{}) {
+    checkListBox_SetOnDataFind.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnDataObject(obj uintptr, fn interface{}) {
+    checkListBox_SetOnDataObject.Call(obj, addEventToMap(fn))
+}
+
 func CheckListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     checkListBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -47971,6 +48412,10 @@ func CheckListBox_SetOnExit(obj uintptr, fn interface{}) {
     checkListBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func CheckListBox_SetOnGesture(obj uintptr, fn interface{}) {
+    checkListBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CheckListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     checkListBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -47981,6 +48426,14 @@ func CheckListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func CheckListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     checkListBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    checkListBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    checkListBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -48851,6 +49304,10 @@ func Gauge_SetStyleElements(obj uintptr, value TStyleElements) {
    gauge_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func Gauge_SetOnGesture(obj uintptr, fn interface{}) {
+    gauge_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Gauge_GetAlignWithMargins(obj uintptr) bool {
     ret, _, _ := gauge_GetAlignWithMargins.Call(obj)
     return DBoolToGoBool(ret)
@@ -49333,6 +49790,14 @@ func ImageButton_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func ImageButton_SetOnEndDrag(obj uintptr, fn interface{}) {
     imageButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func ImageButton_SetOnGesture(obj uintptr, fn interface{}) {
+    imageButton_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func ImageButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    imageButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ImageButton_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -51380,6 +51845,10 @@ func StringGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
     stringGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
 }
 
+func StringGrid_SetOnGesture(obj uintptr, fn interface{}) {
+    stringGrid_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func StringGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     stringGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -51398,6 +51867,10 @@ func StringGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func StringGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     stringGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StringGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -52543,6 +53016,10 @@ func DrawGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
     drawGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
 }
 
+func DrawGrid_SetOnGesture(obj uintptr, fn interface{}) {
+    drawGrid_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func DrawGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     drawGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -52561,6 +53038,10 @@ func DrawGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func DrawGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     drawGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func DrawGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -53622,6 +54103,10 @@ func ValueListEditor_SetOnExit(obj uintptr, fn interface{}) {
     valueListEditor_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ValueListEditor_SetOnGesture(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ValueListEditor_SetOnGetEditMask(obj uintptr, fn interface{}) {
     valueListEditor_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -53640,6 +54125,10 @@ func ValueListEditor_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ValueListEditor_SetOnKeyUp(obj uintptr, fn interface{}) {
     valueListEditor_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ValueListEditor_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -54549,6 +55038,14 @@ func HeaderControl_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func HeaderControl_SetOnEndDrag(obj uintptr, fn interface{}) {
     headerControl_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnGesture(obj uintptr, fn interface{}) {
+    headerControl_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    headerControl_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func HeaderControl_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -55909,6 +56406,10 @@ func LabeledEdit_SetOnExit(obj uintptr, fn interface{}) {
     labeledEdit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func LabeledEdit_SetOnGesture(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func LabeledEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     labeledEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -55919,6 +56420,10 @@ func LabeledEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func LabeledEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     labeledEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func LabeledEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -56647,6 +57152,14 @@ func BoundLabel_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func BoundLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
     boundLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnGesture(obj uintptr, fn interface{}) {
+    boundLabel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    boundLabel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func BoundLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -57535,8 +58048,16 @@ func FlowPanel_SetOnExit(obj uintptr, fn interface{}) {
     flowPanel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func FlowPanel_SetOnGesture(obj uintptr, fn interface{}) {
+    flowPanel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func FlowPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     flowPanel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    flowPanel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func FlowPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -58405,8 +58926,16 @@ func CoolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     coolBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func CoolBar_SetOnGesture(obj uintptr, fn interface{}) {
+    coolBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CoolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     coolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    coolBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CoolBar_SetOnMouseDown(obj uintptr, fn interface{}) {

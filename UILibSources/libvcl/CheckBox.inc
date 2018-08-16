@@ -662,6 +662,18 @@ begin
   TEventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure CheckBox_SetOnMouseActivate(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure CheckBox_SetOnMouseDown(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -892,6 +904,18 @@ end;
 procedure CheckBox_SetParent(AObj: TCheckBox; AValue: TWinControl); stdcall;
 begin
   AObj.Parent := AValue;
+end;
+
+procedure CheckBox_SetOnGesture(AObj: TCheckBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function CheckBox_GetAlignWithMargins(AObj: TCheckBox): LongBool; stdcall;
@@ -1161,6 +1185,7 @@ exports
   CheckBox_SetOnKeyDown,
   CheckBox_SetOnKeyPress,
   CheckBox_SetOnKeyUp,
+  CheckBox_SetOnMouseActivate,
   CheckBox_SetOnMouseDown,
   CheckBox_SetOnMouseEnter,
   CheckBox_SetOnMouseLeave,
@@ -1199,6 +1224,7 @@ exports
   CheckBox_GetFloating,
   CheckBox_GetParent,
   CheckBox_SetParent,
+  CheckBox_SetOnGesture,
   CheckBox_GetAlignWithMargins,
   CheckBox_SetAlignWithMargins,
   CheckBox_GetLeft,

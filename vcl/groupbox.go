@@ -816,9 +816,19 @@ func (g *TGroupBox) SetOnExit(fn TNotifyEvent) {
     GroupBox_SetOnExit(g.instance, fn)
 }
 
+// SetOnGesture
+func (g *TGroupBox) SetOnGesture(fn TGestureEvent) {
+    GroupBox_SetOnGesture(g.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (g *TGroupBox) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     GroupBox_SetOnGetSiteInfo(g.instance, fn)
+}
+
+// SetOnMouseActivate
+func (g *TGroupBox) SetOnMouseActivate(fn TMouseActivateEvent) {
+    GroupBox_SetOnMouseActivate(g.instance, fn)
 }
 
 // SetOnMouseDown

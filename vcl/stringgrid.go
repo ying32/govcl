@@ -1001,6 +1001,11 @@ func (s *TStringGrid) SetOnFixedCellClick(fn TFixedCellClickEvent) {
     StringGrid_SetOnFixedCellClick(s.instance, fn)
 }
 
+// SetOnGesture
+func (s *TStringGrid) SetOnGesture(fn TGestureEvent) {
+    StringGrid_SetOnGesture(s.instance, fn)
+}
+
 // SetOnGetEditMask
 func (s *TStringGrid) SetOnGetEditMask(fn TGetEditEvent) {
     StringGrid_SetOnGetEditMask(s.instance, fn)
@@ -1028,6 +1033,11 @@ func (s *TStringGrid) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (s *TStringGrid) SetOnKeyUp(fn TKeyEvent) {
     StringGrid_SetOnKeyUp(s.instance, fn)
+}
+
+// SetOnMouseActivate
+func (s *TStringGrid) SetOnMouseActivate(fn TMouseActivateEvent) {
+    StringGrid_SetOnMouseActivate(s.instance, fn)
 }
 
 // SetOnMouseDown

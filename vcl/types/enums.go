@@ -1819,20 +1819,17 @@ const (
 	CsPrintClient
 )
 
-
-
 /* New TControlStyles: csNeedsBorderPaint and csParentBackground.
 
-    These two ControlStyles are only applicable when Themes are Enabled
-    in applications on Windows XP. csNeedsBorderPaint causes the
-    ThemeServices to paint the border of a control with the current theme.
-    csParentBackground causes the parent to draw its background into the
-    Control's background; this is useful for controls which need to show their
-    parent's theme elements, such as a TPanel or TFrame that appear on a
-    TPageControl. TWinControl introduces a protected ParentBackground
-    property which includes/excludes the csParentBackground control style.
+   These two ControlStyles are only applicable when Themes are Enabled
+   in applications on Windows XP. csNeedsBorderPaint causes the
+   ThemeServices to paint the border of a control with the current theme.
+   csParentBackground causes the parent to draw its background into the
+   Control's background; this is useful for controls which need to show their
+   parent's theme elements, such as a TPanel or TFrame that appear on a
+   TPageControl. TWinControl introduces a protected ParentBackground
+   property which includes/excludes the csParentBackground control style.
 */
-
 
 type TControlStyle uint32
 
@@ -1861,4 +1858,28 @@ const (
 	CsGestures
 	CsPaintBlackOpaqueOnGlass
 	CsOverrideStylePaint
+)
+
+type TGestureID int32 // rgiFirst..igiLast;
+
+// Corresponds to GF_* flags
+
+type TInteractiveGestureFlag int32
+
+const (
+	GfBegin = iota + 0
+	GfInertia
+	GfEnd
+)
+
+type TInteractiveGestureFlags uint32
+
+type TMouseActivate int32
+
+const (
+	MaDefault = iota + 0
+	MaActivate
+	MaActivateAndEat
+	MaNoActivate
+	MaNoActivateAndEat
 )

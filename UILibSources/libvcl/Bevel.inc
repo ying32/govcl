@@ -235,6 +235,18 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure Bevel_SetOnGesture(AObj: TBevel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function Bevel_GetEnabled(AObj: TBevel): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -557,6 +569,7 @@ exports
   Bevel_SetStyle,
   Bevel_GetVisible,
   Bevel_SetVisible,
+  Bevel_SetOnGesture,
   Bevel_GetEnabled,
   Bevel_SetEnabled,
   Bevel_GetAction,

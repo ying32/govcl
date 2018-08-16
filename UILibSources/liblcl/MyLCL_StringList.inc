@@ -167,6 +167,18 @@ begin
   EventClass.Add(AObj, geChange, AEventId);
 end;
 
+procedure StringList_SetOnChanging(AObj: TStringList; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    EventClass.Remove(AObj, geChanging);
+    Exit;
+  end;
+  AObj.OnChanging := @EventClass.OnChanging;
+  EventClass.Add(AObj, geChanging, AEventId);
+end;
+
 function StringList_GetCapacity(AObj: TStringList): Integer; extdecl;
 begin
   Result :=  AObj.Capacity;
@@ -289,6 +301,7 @@ exports
   StringList_GetSorted,
   StringList_SetSorted,
   StringList_SetOnChange,
+  StringList_SetOnChanging,
   StringList_GetCapacity,
   StringList_SetCapacity,
   StringList_GetCommaText,

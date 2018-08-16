@@ -340,6 +340,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure Control_SetOnGesture(AObj: TControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function Control_GetAlignWithMargins(AObj: TControl): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
@@ -548,6 +560,7 @@ exports
   Control_SetParent,
   Control_GetStyleElements,
   Control_SetStyleElements,
+  Control_SetOnGesture,
   Control_GetAlignWithMargins,
   Control_SetAlignWithMargins,
   Control_GetLeft,

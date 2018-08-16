@@ -574,6 +574,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure LinkLabel_SetOnGesture(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure LinkLabel_SetOnMouseActivate(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure LinkLabel_SetOnMouseDown(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1123,6 +1147,8 @@ exports
   LinkLabel_SetOnDragOver,
   LinkLabel_SetOnEndDock,
   LinkLabel_SetOnEndDrag,
+  LinkLabel_SetOnGesture,
+  LinkLabel_SetOnMouseActivate,
   LinkLabel_SetOnMouseDown,
   LinkLabel_SetOnMouseEnter,
   LinkLabel_SetOnMouseLeave,

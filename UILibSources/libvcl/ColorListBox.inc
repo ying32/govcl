@@ -663,6 +663,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ColorListBox_SetOnGesture(AObj: TColorListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ColorListBox_SetOnKeyDown(AObj: TColorListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -697,6 +709,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure ColorListBox_SetOnMouseActivate(AObj: TColorListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ColorListBox_SetOnMouseDown(AObj: TColorListBox; AEventId: NativeUInt); stdcall;
@@ -1281,9 +1305,11 @@ exports
   ColorListBox_SetOnEndDrag,
   ColorListBox_SetOnEnter,
   ColorListBox_SetOnExit,
+  ColorListBox_SetOnGesture,
   ColorListBox_SetOnKeyDown,
   ColorListBox_SetOnKeyPress,
   ColorListBox_SetOnKeyUp,
+  ColorListBox_SetOnMouseActivate,
   ColorListBox_SetOnMouseDown,
   ColorListBox_SetOnMouseEnter,
   ColorListBox_SetOnMouseLeave,

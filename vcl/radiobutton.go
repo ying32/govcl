@@ -858,6 +858,11 @@ func (r *TRadioButton) SetOnKeyUp(fn TKeyEvent) {
     RadioButton_SetOnKeyUp(r.instance, fn)
 }
 
+// SetOnMouseActivate
+func (r *TRadioButton) SetOnMouseActivate(fn TMouseActivateEvent) {
+    RadioButton_SetOnMouseActivate(r.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.
@@ -1106,6 +1111,11 @@ func (r *TRadioButton) Parent() *TWinControl {
 // EN: Set control parent container.
 func (r *TRadioButton) SetParent(value IWinControl) {
     RadioButton_SetParent(r.instance, CheckPtr(value))
+}
+
+// SetOnGesture
+func (r *TRadioButton) SetOnGesture(fn TGestureEvent) {
+    RadioButton_SetOnGesture(r.instance, fn)
 }
 
 // AlignWithMargins

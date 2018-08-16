@@ -833,6 +833,18 @@ begin
   AObj.Parent := AValue;
 end;
 
+procedure ScrollBar_SetOnGesture(AObj: TScrollBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function ScrollBar_GetAlignWithMargins(AObj: TScrollBar): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
@@ -1130,6 +1142,7 @@ exports
   ScrollBar_GetFloating,
   ScrollBar_GetParent,
   ScrollBar_SetParent,
+  ScrollBar_SetOnGesture,
   ScrollBar_GetAlignWithMargins,
   ScrollBar_SetAlignWithMargins,
   ScrollBar_GetLeft,

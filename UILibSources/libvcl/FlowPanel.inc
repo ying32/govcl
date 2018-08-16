@@ -760,6 +760,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure FlowPanel_SetOnGesture(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure FlowPanel_SetOnGetSiteInfo(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -770,6 +782,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure FlowPanel_SetOnMouseActivate(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure FlowPanel_SetOnMouseDown(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
@@ -1306,7 +1330,9 @@ exports
   FlowPanel_SetOnEndDrag,
   FlowPanel_SetOnEnter,
   FlowPanel_SetOnExit,
+  FlowPanel_SetOnGesture,
   FlowPanel_SetOnGetSiteInfo,
+  FlowPanel_SetOnMouseActivate,
   FlowPanel_SetOnMouseDown,
   FlowPanel_SetOnMouseEnter,
   FlowPanel_SetOnMouseLeave,

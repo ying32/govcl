@@ -634,6 +634,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure StaticText_SetOnGesture(AObj: TStaticText; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure StaticText_SetOnMouseActivate(AObj: TStaticText; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure StaticText_SetOnMouseDown(AObj: TStaticText; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1143,6 +1167,8 @@ exports
   StaticText_SetOnDragOver,
   StaticText_SetOnEndDock,
   StaticText_SetOnEndDrag,
+  StaticText_SetOnGesture,
+  StaticText_SetOnMouseActivate,
   StaticText_SetOnMouseDown,
   StaticText_SetOnMouseEnter,
   StaticText_SetOnMouseLeave,

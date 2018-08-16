@@ -602,6 +602,11 @@ func (s *TSplitter) SetParent(value IWinControl) {
     Splitter_SetParent(s.instance, CheckPtr(value))
 }
 
+// SetOnGesture
+func (s *TSplitter) SetOnGesture(fn TGestureEvent) {
+    Splitter_SetOnGesture(s.instance, fn)
+}
+
 // AlignWithMargins
 // CN: 获取边距，仅VCL有效。
 // EN: Get The margin. Only VCL is valid..

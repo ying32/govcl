@@ -899,6 +899,21 @@ func (l *TListBox) SetOnContextPopup(fn TContextPopupEvent) {
     ListBox_SetOnContextPopup(l.instance, fn)
 }
 
+// SetOnData
+func (l *TListBox) SetOnData(fn TLBGetDataEvent) {
+    ListBox_SetOnData(l.instance, fn)
+}
+
+// SetOnDataFind
+func (l *TListBox) SetOnDataFind(fn TLBFindDataEvent) {
+    ListBox_SetOnDataFind(l.instance, fn)
+}
+
+// SetOnDataObject
+func (l *TListBox) SetOnDataObject(fn TLBGetDataObjectEvent) {
+    ListBox_SetOnDataObject(l.instance, fn)
+}
+
 // SetOnDblClick
 // CN: 设置双击事件。
 // EN: .
@@ -953,6 +968,11 @@ func (l *TListBox) SetOnExit(fn TNotifyEvent) {
     ListBox_SetOnExit(l.instance, fn)
 }
 
+// SetOnGesture
+func (l *TListBox) SetOnGesture(fn TGestureEvent) {
+    ListBox_SetOnGesture(l.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -970,6 +990,16 @@ func (l *TListBox) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (l *TListBox) SetOnKeyUp(fn TKeyEvent) {
     ListBox_SetOnKeyUp(l.instance, fn)
+}
+
+// SetOnMeasureItem
+func (l *TListBox) SetOnMeasureItem(fn TMeasureItemEvent) {
+    ListBox_SetOnMeasureItem(l.instance, fn)
+}
+
+// SetOnMouseActivate
+func (l *TListBox) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ListBox_SetOnMouseActivate(l.instance, fn)
 }
 
 // SetOnMouseDown

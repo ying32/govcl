@@ -775,6 +775,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure Memo_SetOnGesture(AObj: TMemo; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure Memo_SetOnKeyDown(AObj: TMemo; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -809,6 +821,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure Memo_SetOnMouseActivate(AObj: TMemo; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure Memo_SetOnMouseDown(AObj: TMemo; AEventId: NativeUInt); stdcall;
@@ -1419,9 +1443,11 @@ exports
   Memo_SetOnEndDrag,
   Memo_SetOnEnter,
   Memo_SetOnExit,
+  Memo_SetOnGesture,
   Memo_SetOnKeyDown,
   Memo_SetOnKeyPress,
   Memo_SetOnKeyUp,
+  Memo_SetOnMouseActivate,
   Memo_SetOnMouseDown,
   Memo_SetOnMouseEnter,
   Memo_SetOnMouseLeave,

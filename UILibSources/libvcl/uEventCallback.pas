@@ -51,7 +51,18 @@ type
               geGetEditText, geRowMoved, geSelectCell, geSetEditText, geTopLeftChanged,
 
               geDrawSection, geSectionResize, geSectionTrack, geSectionDrag, geSectionEndDrag, geSectionCheck,
-              geSectionClick);
+              geSectionClick,
+
+              geGesture, geMouseActivate, geListBoxData, geListBoxDataFind, geListBoxDataObject, geListBoxMeasureItem,
+              geChanging, geUpDownChanging,
+              geListViewChanging, geListViewData, geListViewDataFind, geListViewEdited, geListViewEditing, geListViewInsert,
+              geListViewDeletion,
+
+              geTreeViewChanging, geTreeViewCancelEdit, geTreeViewAddition, geTreeViewCollapsed, geTreeViewCollapsing,
+              geTreeViewDeletion, geTreeViewEdited, geTreeViewEditing, geTreeViewExpanded, geTreeViewExpanding, geTreeViewHint,
+
+              geMenuItemMeasureItem, gePageControlChanging
+              );
 
   TEventKey = packed record
     Sender: TObject;
@@ -165,6 +176,44 @@ type
     class procedure OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
     class procedure OnMessage(var Msg: TMsg; var Handled: Boolean);
     class procedure OnEndDrag(Sender, Target: TObject; X, Y: Integer);
+
+
+
+
+    class procedure OnGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
+    class procedure OnMouseActivate(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y, HitTest: Integer; var MouseActivate: TMouseActivate);
+    class procedure ListBoxOnData(Control: TWinControl; Index: Integer; var Data: string);
+    class function ListBoxOnDataFind(Control: TWinControl; FindString: string): Integer;
+    class procedure ListBoxOnDataObject(Control: TWinControl; Index: Integer; var DataObject: TObject);
+    class procedure ListBoxOnMeasureItem(Control: TWinControl; Index: Integer; var Height: Integer);
+    class procedure OnChanging(Sender: TObject);
+    class procedure UpDownOnChanging(Sender: TObject; var AllowChange: Boolean);
+
+    class procedure ListViewOnChanging(Sender: TObject; Item: TListItem; Change: TItemChange; var AllowChange: Boolean);
+    class procedure ListViewOnData(Sender: TObject; Item: TListItem);
+    class procedure ListViewOnDataFind(Sender: TObject; Find: TItemFind;
+      const FindString: string; const FindPosition: TPoint; FindData: Pointer;
+      StartIndex: Integer; Direction: TSearchDirection; Wrap: Boolean; var Index: Integer);
+    class procedure ListViewOnEdited(Sender: TObject; Item: TListItem; var S: string);
+    class procedure ListViewOnEditing(Sender: TObject; Item: TListItem; var AllowEdit: Boolean);
+    class procedure ListViewOnInsert(Sender: TObject; Item: TListItem);
+    class procedure ListViewOnDeletion(Sender: TObject; Item: TListItem);
+
+
+    class procedure TreeViewOnChanging(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean);
+    class procedure TreeViewOnCancelEdit(Sender: TObject; Node: TTreeNode);
+    class procedure TreeViewOnAddition(Sender: TObject; Node: TTreeNode);
+    class procedure TreeViewOnCollapsed(Sender: TObject; Node: TTreeNode);
+    class procedure TreeViewOnCollapsing(Sender: TObject; Node: TTreeNode; var AllowCollapse: Boolean);
+    class procedure TreeViewOnDeletion(Sender: TObject; Node: TTreeNode);
+    class procedure TreeViewOnEdited(Sender: TObject; Node: TTreeNode; var S: string);
+    class procedure TreeViewOnEditing(Sender: TObject; Node: TTreeNode; var AllowEdit: Boolean);
+    class procedure TreeViewOnExpanded(Sender: TObject; Node: TTreeNode);
+    class procedure TreeViewOnExpanding(Sender: TObject; Node: TTreeNode; var AllowExpansion: Boolean);
+    class procedure TreeViewOnHint(Sender: TObject; const Node: TTreeNode; var Hint: string);
+
+    class procedure MenuItemOnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);
+    class procedure PageControlOnChanging(Sender: TObject; var AllowChange: Boolean);
 
 
     // grid
@@ -494,6 +543,181 @@ class procedure TEventClass.OnEndDrag(Sender, Target: TObject; X, Y: Integer);
 begin
   SendEvent(Sender, geEndDrag, [Sender, Target, X, Y]);
 end;
+
+
+
+
+class procedure TEventClass.OnGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
+begin
+  SendEvent(Sender, geGesture, [Sender, @EventInfo, @Handled]);
+end;
+
+class procedure TEventClass.OnMouseActivate(Sender: TObject; Button: TMouseButton; Shift: TShiftState;
+  X, Y, HitTest: Integer; var MouseActivate: TMouseActivate);
+begin
+  SendEvent(Sender, geMouseActivate, [Sender, Ord(Button), PWord(@Shift)^, X, Y, HitTest, @MouseActivate]);
+end;
+
+
+class procedure TEventClass.ListBoxOnData(Control: TWinControl; Index: Integer; var Data: string);
+var
+  LData: PChar;
+begin
+  LData := PChar(Data);
+  SendEvent(Control, geListBoxData, [Control,Index, @LData]);
+  Data := LData;
+end;
+
+
+class function TEventClass.ListBoxOnDataFind(Control: TWinControl; FindString: string): Integer;
+begin
+  SendEvent(Control, geListBoxDataFind, [Control, PChar(FindString), @Result]);
+end;
+
+class procedure TEventClass.ListBoxOnDataObject(Control: TWinControl; Index: Integer; var DataObject: TObject);
+begin
+  SendEvent(Control, geListBoxDataObject, [Control, Index, @DataObject]);
+end;
+
+class procedure TEventClass.ListBoxOnMeasureItem(Control: TWinControl; Index: Integer; var Height: Integer);
+begin
+  SendEvent(Control, geListBoxMeasureItem, [Control, Index, @Height]);
+end;
+
+class procedure TEventClass.OnChanging(Sender: TObject);
+begin
+  SendEvent(Sender, geChanging, [Sender]);
+end;
+
+class procedure TEventClass.UpDownOnChanging(Sender: TObject; var AllowChange: Boolean);
+begin
+  SendEvent(Sender, geUpDownChanging, [Sender, @AllowChange]);
+end;
+
+class procedure TEventClass.ListViewOnChanging(Sender: TObject; Item: TListItem; Change: TItemChange; var AllowChange: Boolean);
+begin
+  SendEvent(Sender, geListViewChanging, [Sender, Item, Ord(Change), @AllowChange]);
+end;
+
+class procedure TEventClass.ListViewOnData(Sender: TObject; Item: TListItem);
+begin
+  SendEvent(Sender, geListViewData, [Sender, Item]);
+end;
+
+class procedure TEventClass.ListViewOnDataFind(Sender: TObject; Find: TItemFind;
+  const FindString: string; const FindPosition: TPoint; FindData: Pointer;
+  StartIndex: Integer; Direction: TSearchDirection; Wrap: Boolean; var Index: Integer);
+begin
+  SendEvent(Sender, geListViewDataFind, [Sender, Ord(Find), PChar(FindString), @FindPosition, FindData, StartIndex,
+    Ord(Direction), Integer(Wrap), @Index]);
+end;
+
+class procedure TEventClass.ListViewOnEdited(Sender: TObject; Item: TListItem; var S: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(S);
+  SendEvent(Sender, geListViewEdited, [Sender, Item, @LS]);
+  S := LS;
+end;
+
+class procedure TEventClass.ListViewOnEditing(Sender: TObject; Item: TListItem; var AllowEdit: Boolean);
+begin
+  SendEvent(Sender, geListViewEditing, [Sender, Item, @AllowEdit]);
+end;
+
+class procedure TEventClass.ListViewOnInsert(Sender: TObject; Item: TListItem);
+begin
+  SendEvent(Sender, geListViewInsert, [Sender, Item]);
+end;
+
+class procedure TEventClass.ListViewOnDeletion(Sender: TObject; Item: TListItem);
+begin
+  SendEvent(Sender, geListViewDeletion, [Sender, Item]);
+end;
+
+
+
+class procedure TEventClass.TreeViewOnChanging(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean);
+begin
+  SendEvent(Sender, geTreeViewChanging, [Sender, Node, @AllowChange]);
+end;
+
+class procedure TEventClass.TreeViewOnCancelEdit(Sender: TObject; Node: TTreeNode);
+begin
+  SendEvent(Sender, geTreeViewCancelEdit, [Sender, Node]);
+end;
+
+class procedure TEventClass.TreeViewOnAddition(Sender: TObject; Node: TTreeNode);
+begin
+  SendEvent(Sender, geTreeViewAddition, [Sender, Node]);
+end;
+
+class procedure TEventClass.TreeViewOnCollapsed(Sender: TObject; Node: TTreeNode);
+begin
+  SendEvent(Sender, geTreeViewCollapsed, [Sender, Node]);
+end;
+
+class procedure TEventClass.TreeViewOnCollapsing(Sender: TObject; Node: TTreeNode; var AllowCollapse: Boolean);
+begin
+  SendEvent(Sender, geTreeViewCollapsing, [Sender, Node, @AllowCollapse]);
+end;
+
+class procedure TEventClass.TreeViewOnDeletion(Sender: TObject; Node: TTreeNode);
+begin
+  SendEvent(Sender, geTreeViewDeletion, [Sender, Node]);
+end;
+
+class procedure TEventClass.TreeViewOnEdited(Sender: TObject; Node: TTreeNode; var S: string);
+var
+  LS: PChar;
+begin
+  LS := PChar(S);
+  SendEvent(Sender, geTreeViewEdited, [Sender, Node, @LS]);
+  S := LS;
+end;
+
+class procedure TEventClass.TreeViewOnEditing(Sender: TObject; Node: TTreeNode; var AllowEdit: Boolean);
+begin
+  SendEvent(Sender, geTreeViewEditing, [Sender, Node, @AllowEdit]);
+end;
+
+class procedure TEventClass.TreeViewOnExpanded(Sender: TObject; Node: TTreeNode);
+begin
+  SendEvent(Sender, geTreeViewExpanded, [Sender, Node]);
+end;
+
+class procedure TEventClass.TreeViewOnExpanding(Sender: TObject; Node: TTreeNode; var AllowExpansion: Boolean);
+begin
+  SendEvent(Sender, geTreeViewExpanding, [Sender, Node, @AllowExpansion]);
+end;
+
+class procedure TEventClass.TreeViewOnHint(Sender: TObject; const Node: TTreeNode; var Hint: string);
+var
+  LHint: PChar;
+begin
+  LHint := PChar(Hint);
+  SendEvent(Sender, geTreeViewHint, [Sender, Node, @LHint]);
+  Hint := LHint;
+end;
+
+
+class procedure TEventClass.MenuItemOnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  SendEvent(Sender, geMenuItemMeasureItem, [Sender, ACanvas, @Width, @Height]);
+end;
+
+class procedure TEventClass.PageControlOnChanging(Sender: TObject; var AllowChange: Boolean);
+begin
+  SendEvent(Sender, gePageControlChanging, [Sender, @AllowChange]);
+end;
+
+
+
+
+
+
+
 
 // grid
 class procedure TEventClass.OnColumnMoved(Sender: TObject; FromIndex, ToIndex: Longint);

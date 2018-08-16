@@ -345,6 +345,18 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure Shape_SetOnMouseActivate(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure Shape_SetOnMouseDown(AObj: TShape; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -403,6 +415,18 @@ begin
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
   TEventClass.Add(AObj, geMouseUp, AEventId);
+end;
+
+procedure Shape_SetOnGesture(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 procedure Shape_SetOnStartDock(AObj: TShape; AEventId: NativeUInt); stdcall;
@@ -744,11 +768,13 @@ exports
   Shape_SetOnDragOver,
   Shape_SetOnEndDock,
   Shape_SetOnEndDrag,
+  Shape_SetOnMouseActivate,
   Shape_SetOnMouseDown,
   Shape_SetOnMouseEnter,
   Shape_SetOnMouseLeave,
   Shape_SetOnMouseMove,
   Shape_SetOnMouseUp,
+  Shape_SetOnGesture,
   Shape_SetOnStartDock,
   Shape_GetAction,
   Shape_SetAction,

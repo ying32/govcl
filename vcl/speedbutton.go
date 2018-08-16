@@ -604,6 +604,11 @@ func (s *TSpeedButton) SetOnDblClick(fn TNotifyEvent) {
     SpeedButton_SetOnDblClick(s.instance, fn)
 }
 
+// SetOnMouseActivate
+func (s *TSpeedButton) SetOnMouseActivate(fn TMouseActivateEvent) {
+    SpeedButton_SetOnMouseActivate(s.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.
@@ -754,6 +759,11 @@ func (s *TSpeedButton) Parent() *TWinControl {
 // EN: Set control parent container.
 func (s *TSpeedButton) SetParent(value IWinControl) {
     SpeedButton_SetParent(s.instance, CheckPtr(value))
+}
+
+// SetOnGesture
+func (s *TSpeedButton) SetOnGesture(fn TGestureEvent) {
+    SpeedButton_SetOnGesture(s.instance, fn)
 }
 
 // AlignWithMargins

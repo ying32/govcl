@@ -502,6 +502,11 @@ func (s *TShape) SetOnEndDrag(fn TEndDragEvent) {
     Shape_SetOnEndDrag(s.instance, fn)
 }
 
+// SetOnMouseActivate
+func (s *TShape) SetOnMouseActivate(fn TMouseActivateEvent) {
+    Shape_SetOnMouseActivate(s.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.
@@ -535,6 +540,11 @@ func (s *TShape) SetOnMouseMove(fn TMouseMoveEvent) {
 // EN: Set Mouse lift event.
 func (s *TShape) SetOnMouseUp(fn TMouseEvent) {
     Shape_SetOnMouseUp(s.instance, fn)
+}
+
+// SetOnGesture
+func (s *TShape) SetOnGesture(fn TGestureEvent) {
+    Shape_SetOnGesture(s.instance, fn)
 }
 
 // SetOnStartDock

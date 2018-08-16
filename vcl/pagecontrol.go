@@ -807,6 +807,11 @@ func (p *TPageControl) SetOnChange(fn TNotifyEvent) {
     PageControl_SetOnChange(p.instance, fn)
 }
 
+// SetOnChanging
+func (p *TPageControl) SetOnChanging(fn TTabChangingEvent) {
+    PageControl_SetOnChanging(p.instance, fn)
+}
+
 // SetOnContextPopup
 // CN: 设置上下文弹出事件，一般是右键时弹出。
 // EN: Set Context popup event, usually pop up when right click.
@@ -861,6 +866,11 @@ func (p *TPageControl) SetOnExit(fn TNotifyEvent) {
     PageControl_SetOnExit(p.instance, fn)
 }
 
+// SetOnGesture
+func (p *TPageControl) SetOnGesture(fn TGestureEvent) {
+    PageControl_SetOnGesture(p.instance, fn)
+}
+
 // SetOnGetImageIndex
 func (p *TPageControl) SetOnGetImageIndex(fn TTabGetImageEvent) {
     PageControl_SetOnGetImageIndex(p.instance, fn)
@@ -869,6 +879,11 @@ func (p *TPageControl) SetOnGetImageIndex(fn TTabGetImageEvent) {
 // SetOnGetSiteInfo
 func (p *TPageControl) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     PageControl_SetOnGetSiteInfo(p.instance, fn)
+}
+
+// SetOnMouseActivate
+func (p *TPageControl) SetOnMouseActivate(fn TMouseActivateEvent) {
+    PageControl_SetOnMouseActivate(p.instance, fn)
 }
 
 // SetOnMouseDown

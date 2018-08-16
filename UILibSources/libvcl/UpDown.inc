@@ -420,6 +420,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure UpDown_SetOnChanging(AObj: TUpDown; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    TEventClass.Remove(AObj, geUpDownChanging);
+    Exit;
+  end;
+  AObj.OnChanging := TEventClass.UpDownOnChanging;
+  TEventClass.Add(AObj, geUpDownChanging, AEventId);
+end;
+
 procedure UpDown_SetOnContextPopup(AObj: TUpDown; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -466,6 +478,18 @@ begin
   end;
   AObj.OnExit := TEventClass.OnExit;
   TEventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure UpDown_SetOnMouseActivate(AObj: TUpDown; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure UpDown_SetOnMouseDown(AObj: TUpDown; AEventId: NativeUInt); stdcall;
@@ -718,6 +742,18 @@ begin
   AObj.Parent := AValue;
 end;
 
+procedure UpDown_SetOnGesture(AObj: TUpDown; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function UpDown_GetAlignWithMargins(AObj: TUpDown): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
@@ -942,10 +978,12 @@ exports
   UpDown_SetWrap,
   UpDown_GetStyleElements,
   UpDown_SetStyleElements,
+  UpDown_SetOnChanging,
   UpDown_SetOnContextPopup,
   UpDown_SetOnClick,
   UpDown_SetOnEnter,
   UpDown_SetOnExit,
+  UpDown_SetOnMouseActivate,
   UpDown_SetOnMouseDown,
   UpDown_SetOnMouseEnter,
   UpDown_SetOnMouseLeave,
@@ -989,6 +1027,7 @@ exports
   UpDown_GetFloating,
   UpDown_GetParent,
   UpDown_SetParent,
+  UpDown_SetOnGesture,
   UpDown_GetAlignWithMargins,
   UpDown_SetAlignWithMargins,
   UpDown_GetLeft,

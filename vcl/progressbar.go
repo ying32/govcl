@@ -841,6 +841,16 @@ func (p *TProgressBar) SetOnExit(fn TNotifyEvent) {
     ProgressBar_SetOnExit(p.instance, fn)
 }
 
+// SetOnGesture
+func (p *TProgressBar) SetOnGesture(fn TGestureEvent) {
+    ProgressBar_SetOnGesture(p.instance, fn)
+}
+
+// SetOnMouseActivate
+func (p *TProgressBar) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ProgressBar_SetOnMouseActivate(p.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

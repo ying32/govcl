@@ -559,6 +559,16 @@ func (p *TPaintBox) SetOnEndDrag(fn TEndDragEvent) {
     PaintBox_SetOnEndDrag(p.instance, fn)
 }
 
+// SetOnGesture
+func (p *TPaintBox) SetOnGesture(fn TGestureEvent) {
+    PaintBox_SetOnGesture(p.instance, fn)
+}
+
+// SetOnMouseActivate
+func (p *TPaintBox) SetOnMouseActivate(fn TMouseActivateEvent) {
+    PaintBox_SetOnMouseActivate(p.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

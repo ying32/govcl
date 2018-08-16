@@ -946,6 +946,11 @@ func (v *TValueListEditor) SetOnExit(fn TNotifyEvent) {
     ValueListEditor_SetOnExit(v.instance, fn)
 }
 
+// SetOnGesture
+func (v *TValueListEditor) SetOnGesture(fn TGestureEvent) {
+    ValueListEditor_SetOnGesture(v.instance, fn)
+}
+
 // SetOnGetEditMask
 func (v *TValueListEditor) SetOnGetEditMask(fn TGetEditEvent) {
     ValueListEditor_SetOnGetEditMask(v.instance, fn)
@@ -973,6 +978,11 @@ func (v *TValueListEditor) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (v *TValueListEditor) SetOnKeyUp(fn TKeyEvent) {
     ValueListEditor_SetOnKeyUp(v.instance, fn)
+}
+
+// SetOnMouseActivate
+func (v *TValueListEditor) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ValueListEditor_SetOnMouseActivate(v.instance, fn)
 }
 
 // SetOnMouseDown

@@ -944,6 +944,11 @@ func (b *TButton) SetOnKeyUp(fn TKeyEvent) {
     Button_SetOnKeyUp(b.instance, fn)
 }
 
+// SetOnMouseActivate
+func (b *TButton) SetOnMouseActivate(fn TMouseActivateEvent) {
+    Button_SetOnMouseActivate(b.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.
@@ -1192,6 +1197,11 @@ func (b *TButton) Parent() *TWinControl {
 // EN: Set control parent container.
 func (b *TButton) SetParent(value IWinControl) {
     Button_SetParent(b.instance, CheckPtr(value))
+}
+
+// SetOnGesture
+func (b *TButton) SetOnGesture(fn TGestureEvent) {
+    Button_SetOnGesture(b.instance, fn)
 }
 
 // AlignWithMargins

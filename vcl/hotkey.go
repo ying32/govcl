@@ -616,6 +616,16 @@ func (h *THotKey) SetOnExit(fn TNotifyEvent) {
     HotKey_SetOnExit(h.instance, fn)
 }
 
+// SetOnGesture
+func (h *THotKey) SetOnGesture(fn TGestureEvent) {
+    HotKey_SetOnGesture(h.instance, fn)
+}
+
+// SetOnMouseActivate
+func (h *THotKey) SetOnMouseActivate(fn TMouseActivateEvent) {
+    HotKey_SetOnMouseActivate(h.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.

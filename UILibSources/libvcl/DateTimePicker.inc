@@ -733,6 +733,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure DateTimePicker_SetOnGesture(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure DateTimePicker_SetOnKeyDown(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1259,6 +1271,7 @@ exports
   DateTimePicker_SetOnEndDrag,
   DateTimePicker_SetOnEnter,
   DateTimePicker_SetOnExit,
+  DateTimePicker_SetOnGesture,
   DateTimePicker_SetOnKeyDown,
   DateTimePicker_SetOnKeyPress,
   DateTimePicker_SetOnKeyUp,

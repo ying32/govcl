@@ -866,6 +866,16 @@ func (l *TListView) SetStyleElements(value TStyleElements) {
     ListView_SetStyleElements(l.instance, value)
 }
 
+// OwnerData
+func (l *TListView) OwnerData() bool {
+    return ListView_GetOwnerData(l.instance)
+}
+
+// SetOwnerData
+func (l *TListView) SetOwnerData(value bool) {
+    ListView_SetOwnerData(l.instance, value)
+}
+
 // GroupHeaderImages
 func (l *TListView) GroupHeaderImages() *TImageList {
     return ImageListFromInst(ListView_GetGroupHeaderImages(l.instance))
@@ -1114,6 +1124,11 @@ func (l *TListView) SetOnChange(fn TLVChangeEvent) {
     ListView_SetOnChange(l.instance, fn)
 }
 
+// SetOnChanging
+func (l *TListView) SetOnChanging(fn TLVChangingEvent) {
+    ListView_SetOnChanging(l.instance, fn)
+}
+
 // SetOnClick
 // CN: 设置控件单击事件。
 // EN: Set control click event.
@@ -1143,11 +1158,36 @@ func (l *TListView) SetOnContextPopup(fn TContextPopupEvent) {
     ListView_SetOnContextPopup(l.instance, fn)
 }
 
+// SetOnData
+func (l *TListView) SetOnData(fn TLVOwnerDataEvent) {
+    ListView_SetOnData(l.instance, fn)
+}
+
+// SetOnDataFind
+func (l *TListView) SetOnDataFind(fn TLVOwnerDataFindEvent) {
+    ListView_SetOnDataFind(l.instance, fn)
+}
+
 // SetOnDblClick
 // CN: 设置双击事件。
 // EN: .
 func (l *TListView) SetOnDblClick(fn TNotifyEvent) {
     ListView_SetOnDblClick(l.instance, fn)
+}
+
+// SetOnDeletion
+func (l *TListView) SetOnDeletion(fn TLVDeletedEvent) {
+    ListView_SetOnDeletion(l.instance, fn)
+}
+
+// SetOnEdited
+func (l *TListView) SetOnEdited(fn TLVEditedEvent) {
+    ListView_SetOnEdited(l.instance, fn)
+}
+
+// SetOnEditing
+func (l *TListView) SetOnEditing(fn TLVEditingEvent) {
+    ListView_SetOnEditing(l.instance, fn)
 }
 
 // SetOnEndDock
@@ -1178,6 +1218,11 @@ func (l *TListView) SetOnExit(fn TNotifyEvent) {
     ListView_SetOnExit(l.instance, fn)
 }
 
+// SetOnGesture
+func (l *TListView) SetOnGesture(fn TGestureEvent) {
+    ListView_SetOnGesture(l.instance, fn)
+}
+
 // SetOnGetImageIndex
 func (l *TListView) SetOnGetImageIndex(fn TLVNotifyEvent) {
     ListView_SetOnGetImageIndex(l.instance, fn)
@@ -1197,6 +1242,11 @@ func (l *TListView) SetOnDragOver(fn TDragOverEvent) {
     ListView_SetOnDragOver(l.instance, fn)
 }
 
+// SetOnInsert
+func (l *TListView) SetOnInsert(fn TLVDeletedEvent) {
+    ListView_SetOnInsert(l.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -1214,6 +1264,11 @@ func (l *TListView) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (l *TListView) SetOnKeyUp(fn TKeyEvent) {
     ListView_SetOnKeyUp(l.instance, fn)
+}
+
+// SetOnMouseActivate
+func (l *TListView) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ListView_SetOnMouseActivate(l.instance, fn)
 }
 
 // SetOnMouseDown

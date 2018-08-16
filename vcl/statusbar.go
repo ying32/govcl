@@ -805,11 +805,21 @@ func (s *TStatusBar) SetOnEndDrag(fn TEndDragEvent) {
     StatusBar_SetOnEndDrag(s.instance, fn)
 }
 
+// SetOnGesture
+func (s *TStatusBar) SetOnGesture(fn TGestureEvent) {
+    StatusBar_SetOnGesture(s.instance, fn)
+}
+
 // SetOnHint
 // CN: 设置鼠标悬停提示事件。
 // EN: .
 func (s *TStatusBar) SetOnHint(fn TNotifyEvent) {
     StatusBar_SetOnHint(s.instance, fn)
+}
+
+// SetOnMouseActivate
+func (s *TStatusBar) SetOnMouseActivate(fn TMouseActivateEvent) {
+    StatusBar_SetOnMouseActivate(s.instance, fn)
 }
 
 // SetOnMouseDown

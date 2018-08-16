@@ -660,6 +660,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ScrollBox_SetOnGesture(AObj: TScrollBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ScrollBox_SetOnGetSiteInfo(AObj: TScrollBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -670,6 +682,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure ScrollBox_SetOnMouseActivate(AObj: TScrollBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseDown(AObj: TScrollBox; AEventId: NativeUInt); stdcall;
@@ -1232,7 +1256,9 @@ exports
   ScrollBox_SetOnEndDrag,
   ScrollBox_SetOnEnter,
   ScrollBox_SetOnExit,
+  ScrollBox_SetOnGesture,
   ScrollBox_SetOnGetSiteInfo,
+  ScrollBox_SetOnMouseActivate,
   ScrollBox_SetOnMouseDown,
   ScrollBox_SetOnMouseEnter,
   ScrollBox_SetOnMouseLeave,

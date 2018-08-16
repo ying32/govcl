@@ -706,6 +706,11 @@ func (g *TGauge) SetStyleElements(value TStyleElements) {
     Gauge_SetStyleElements(g.instance, value)
 }
 
+// SetOnGesture
+func (g *TGauge) SetOnGesture(fn TGestureEvent) {
+    Gauge_SetOnGesture(g.instance, fn)
+}
+
 // AlignWithMargins
 // CN: 获取边距，仅VCL有效。
 // EN: Get The margin. Only VCL is valid..

@@ -283,6 +283,11 @@ func (s *TStringList) SetOnChange(fn TNotifyEvent) {
     StringList_SetOnChange(s.instance, fn)
 }
 
+// SetOnChanging
+func (s *TStringList) SetOnChanging(fn TNotifyEvent) {
+    StringList_SetOnChanging(s.instance, fn)
+}
+
 // Capacity
 func (s *TStringList) Capacity() int32 {
     return StringList_GetCapacity(s.instance)

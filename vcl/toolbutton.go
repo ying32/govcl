@@ -648,6 +648,11 @@ func (t *TToolButton) SetOnEndDrag(fn TEndDragEvent) {
     ToolButton_SetOnEndDrag(t.instance, fn)
 }
 
+// SetOnMouseActivate
+func (t *TToolButton) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ToolButton_SetOnMouseActivate(t.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.
@@ -857,6 +862,11 @@ func (t *TToolButton) StyleElements() TStyleElements {
 // EN: Set Style element.
 func (t *TToolButton) SetStyleElements(value TStyleElements) {
     ToolButton_SetStyleElements(t.instance, value)
+}
+
+// SetOnGesture
+func (t *TToolButton) SetOnGesture(fn TGestureEvent) {
+    ToolButton_SetOnGesture(t.instance, fn)
 }
 
 // AlignWithMargins

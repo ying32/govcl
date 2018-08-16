@@ -870,9 +870,19 @@ func (s *TScrollBox) SetOnExit(fn TNotifyEvent) {
     ScrollBox_SetOnExit(s.instance, fn)
 }
 
+// SetOnGesture
+func (s *TScrollBox) SetOnGesture(fn TGestureEvent) {
+    ScrollBox_SetOnGesture(s.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (s *TScrollBox) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     ScrollBox_SetOnGetSiteInfo(s.instance, fn)
+}
+
+// SetOnMouseActivate
+func (s *TScrollBox) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ScrollBox_SetOnMouseActivate(s.instance, fn)
 }
 
 // SetOnMouseDown

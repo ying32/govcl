@@ -209,3 +209,69 @@ type TSectionDragEvent func(sender IObject, fromSection, toSection *THeaderSecti
 
 // TCustomSectionNotifyEvent = procedure(HeaderControl: TCustomHeaderControl; Section: THeaderSection) of object;
 type TCustomSectionNotifyEvent func(headerControl *THeaderControl, section *THeaderSection)
+
+//
+// TGestureEvent = procedure(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean) of object;
+type TGestureEvent func(sender IObject, eventInfo TGestureEventInfo, handled *bool)
+
+// TMouseActivateEvent = procedure(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer; HitTest: Integer; var MouseActivate: TMouseActivate) of object;
+type TMouseActivateEvent func(sender IObject, button TMouseButton, shift TShiftState, x, y int32, hitTest int32, mouseActivate *TMouseActivate)
+
+// TLBGetDataEvent = procedure(Control: TWinControl; Index: Integer; var Data: string) of object;
+type TLBGetDataEvent func(control *TWinControl, index int32, data *string)
+
+// TLBGetDataObjectEvent = procedure(Control: TWinControl; Index: Integer; var DataObject: TObject) of object;
+type TLBGetDataObjectEvent func(control *TWinControl, index int32, dataObject IObject)
+
+// TLBFindDataEvent = function(Control: TWinControl; FindString: string): Integer of object;
+type TLBFindDataEvent func(control *TWinControl, findString string) int32
+
+// TMeasureItemEvent = procedure(Control: TWinControl; Index: Integer; var Height: Integer) of object;
+type TMeasureItemEvent func(control *TWinControl, index int32, height *int32)
+
+// TLVChangingEvent = procedure(Sender: TObject; Item: TListItem; Change: TItemChange; var AllowChange: Boolean) of object;
+type TLVChangingEvent func(sender IObject, item *TListItem, change TItemChange, allowChange *bool)
+
+// TLVOwnerDataEvent = procedure(Sender: TObject; Item: TListItem) of object;
+type TLVOwnerDataEvent func(sender IObject, item *TListItem)
+
+// TLVOwnerDataFindEvent = procedure(Sender: TObject; Find: TItemFind; const FindString: string;
+//  const FindPosition: TPoint; FindData: TCustomData; StartIndex: Integer; Direction: TSearchDirection; Wrap: Boolean; var Index: Integer) of object;
+type TLVOwnerDataFindEvent func(sender IObject, find TItemFind, findString string, findPosition TPoint, findData TCustomData, startIndex int32,
+	direction TSearchDirection, warp bool, index *int32)
+
+//TLVDeletedEvent = procedure(Sender: TObject; Item: TListItem) of object;
+type TLVDeletedEvent func(sender IObject, item *TListItem)
+
+//TLVEditingEvent = procedure(Sender: TObject; Item: TListItem; var AllowEdit: Boolean) of object;
+type TLVEditingEvent func(sender IObject, item *TListItem, allowEdit *bool)
+
+//TLVEditedEvent = procedure(Sender: TObject; Item: TListItem; var S: string) of object;
+type TLVEditedEvent func(sender IObject, item *TListItem, s *string)
+
+//  TMenuMeasureItemEvent = procedure (Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer) of object;
+type TMenuMeasureItemEvent func(sender IObject, aCanvas *TCanvas, width, height *int32)
+
+// TTabChangingEvent = procedure(Sender: TObject; var AllowChange: Boolean) of object;
+type TTabChangingEvent func(sender IObject, allowChange *bool)
+
+//   TTVChangingEvent = procedure(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean) of object;
+type TTVChangingEvent func(sender IObject, node *TTreeNode, allowChange *bool)
+
+// TTVCollapsingEvent = procedure(Sender: TObject; Node: TTreeNode; var AllowCollapse: Boolean) of object;
+type TTVCollapsingEvent func(sender IObject, node *TTreeNode, allowCollapse *bool)
+
+// TTVEditedEvent = procedure(Sender: TObject; Node: TTreeNode; var S: string) of object;
+type TTVEditedEvent func(sender IObject, node *TTreeNode, s *string)
+
+// TTVEditingEvent = procedure(Sender: TObject; Node: TTreeNode; var AllowEdit: Boolean) of object;
+type TTVEditingEvent func(sender IObject, node *TTreeNode, allowEdit *bool)
+
+// TTVExpandingEvent = procedure(Sender: TObject; Node: TTreeNode; var AllowExpansion: Boolean) of object;
+type TTVExpandingEvent func(sender IObject, node *TTreeNode, allowExpansion *bool)
+
+// TTVHintEvent = procedure(Sender: TObject; const Node: TTreeNode; var Hint: String) of object;
+type TTVHintEvent func(sender IObject, node *TTreeNode, hint *string)
+
+// TUDChangingEvent = procedure (Sender: TObject; var AllowChange: Boolean) of object;
+type TUDChangingEvent func(sender IObject, allowChange *bool)

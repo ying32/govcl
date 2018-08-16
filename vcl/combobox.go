@@ -998,6 +998,11 @@ func (c *TComboBox) SetOnExit(fn TNotifyEvent) {
     ComboBox_SetOnExit(c.instance, fn)
 }
 
+// SetOnGesture
+func (c *TComboBox) SetOnGesture(fn TGestureEvent) {
+    ComboBox_SetOnGesture(c.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -1015,6 +1020,11 @@ func (c *TComboBox) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (c *TComboBox) SetOnKeyUp(fn TKeyEvent) {
     ComboBox_SetOnKeyUp(c.instance, fn)
+}
+
+// SetOnMeasureItem
+func (c *TComboBox) SetOnMeasureItem(fn TMeasureItemEvent) {
+    ComboBox_SetOnMeasureItem(c.instance, fn)
 }
 
 // SetOnMouseEnter

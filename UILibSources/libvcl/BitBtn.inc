@@ -687,6 +687,18 @@ begin
   TEventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure BitBtn_SetOnMouseActivate(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure BitBtn_SetOnMouseDown(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1019,6 +1031,18 @@ begin
   AObj.Parent := AValue;
 end;
 
+procedure BitBtn_SetOnGesture(AObj: TBitBtn; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function BitBtn_GetAlignWithMargins(AObj: TBitBtn): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
@@ -1291,6 +1315,7 @@ exports
   BitBtn_SetOnKeyDown,
   BitBtn_SetOnKeyPress,
   BitBtn_SetOnKeyUp,
+  BitBtn_SetOnMouseActivate,
   BitBtn_SetOnMouseDown,
   BitBtn_SetOnMouseEnter,
   BitBtn_SetOnMouseLeave,
@@ -1349,6 +1374,7 @@ exports
   BitBtn_GetFloating,
   BitBtn_GetParent,
   BitBtn_SetParent,
+  BitBtn_SetOnGesture,
   BitBtn_GetAlignWithMargins,
   BitBtn_SetAlignWithMargins,
   BitBtn_GetLeft,

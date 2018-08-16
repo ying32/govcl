@@ -394,6 +394,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure PaintBox_SetOnGesture(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure PaintBox_SetOnMouseActivate(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure PaintBox_SetOnMouseDown(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -812,6 +836,8 @@ exports
   PaintBox_SetOnDragOver,
   PaintBox_SetOnEndDock,
   PaintBox_SetOnEndDrag,
+  PaintBox_SetOnGesture,
+  PaintBox_SetOnMouseActivate,
   PaintBox_SetOnMouseDown,
   PaintBox_SetOnMouseEnter,
   PaintBox_SetOnMouseLeave,

@@ -862,6 +862,11 @@ func (c *TColorListBox) SetOnExit(fn TNotifyEvent) {
     ColorListBox_SetOnExit(c.instance, fn)
 }
 
+// SetOnGesture
+func (c *TColorListBox) SetOnGesture(fn TGestureEvent) {
+    ColorListBox_SetOnGesture(c.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -879,6 +884,11 @@ func (c *TColorListBox) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (c *TColorListBox) SetOnKeyUp(fn TKeyEvent) {
     ColorListBox_SetOnKeyUp(c.instance, fn)
+}
+
+// SetOnMouseActivate
+func (c *TColorListBox) SetOnMouseActivate(fn TMouseActivateEvent) {
+    ColorListBox_SetOnMouseActivate(c.instance, fn)
 }
 
 // SetOnMouseDown

@@ -644,6 +644,18 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure ListBox_SetOnMeasureItem(AObj: TListBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    EventClass.Remove(AObj, geListBoxMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := @EventClass.ListBoxOnMeasureItem;
+  EventClass.Add(AObj, geListBoxMeasureItem, AEventId);
+end;
+
 procedure ListBox_SetOnMouseDown(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -1111,6 +1123,7 @@ exports
   ListBox_SetOnKeyDown,
   ListBox_SetOnKeyPress,
   ListBox_SetOnKeyUp,
+  ListBox_SetOnMeasureItem,
   ListBox_SetOnMouseDown,
   ListBox_SetOnMouseEnter,
   ListBox_SetOnMouseLeave,

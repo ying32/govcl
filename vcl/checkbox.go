@@ -871,6 +871,11 @@ func (c *TCheckBox) SetOnKeyUp(fn TKeyEvent) {
     CheckBox_SetOnKeyUp(c.instance, fn)
 }
 
+// SetOnMouseActivate
+func (c *TCheckBox) SetOnMouseActivate(fn TMouseActivateEvent) {
+    CheckBox_SetOnMouseActivate(c.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.
@@ -1119,6 +1124,11 @@ func (c *TCheckBox) Parent() *TWinControl {
 // EN: Set control parent container.
 func (c *TCheckBox) SetParent(value IWinControl) {
     CheckBox_SetParent(c.instance, CheckPtr(value))
+}
+
+// SetOnGesture
+func (c *TCheckBox) SetOnGesture(fn TGestureEvent) {
+    CheckBox_SetOnGesture(c.instance, fn)
 }
 
 // AlignWithMargins

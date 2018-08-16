@@ -1015,6 +1015,11 @@ func (m *TMaskEdit) SetOnExit(fn TNotifyEvent) {
     MaskEdit_SetOnExit(m.instance, fn)
 }
 
+// SetOnGesture
+func (m *TMaskEdit) SetOnGesture(fn TGestureEvent) {
+    MaskEdit_SetOnGesture(m.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -1032,6 +1037,11 @@ func (m *TMaskEdit) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (m *TMaskEdit) SetOnKeyUp(fn TKeyEvent) {
     MaskEdit_SetOnKeyUp(m.instance, fn)
+}
+
+// SetOnMouseActivate
+func (m *TMaskEdit) SetOnMouseActivate(fn TMouseActivateEvent) {
+    MaskEdit_SetOnMouseActivate(m.instance, fn)
 }
 
 // SetOnMouseDown

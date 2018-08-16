@@ -886,6 +886,11 @@ func (b *TBitBtn) SetOnKeyUp(fn TKeyEvent) {
     BitBtn_SetOnKeyUp(b.instance, fn)
 }
 
+// SetOnMouseActivate
+func (b *TBitBtn) SetOnMouseActivate(fn TMouseActivateEvent) {
+    BitBtn_SetOnMouseActivate(b.instance, fn)
+}
+
 // SetOnMouseDown
 // CN: 设置鼠标按下事件。
 // EN: Set Mouse down event.
@@ -1242,6 +1247,11 @@ func (b *TBitBtn) Parent() *TWinControl {
 // EN: Set control parent container.
 func (b *TBitBtn) SetParent(value IWinControl) {
     BitBtn_SetParent(b.instance, CheckPtr(value))
+}
+
+// SetOnGesture
+func (b *TBitBtn) SetOnGesture(fn TGestureEvent) {
+    BitBtn_SetOnGesture(b.instance, fn)
 }
 
 // AlignWithMargins

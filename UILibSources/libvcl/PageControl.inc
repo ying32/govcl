@@ -562,6 +562,18 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+procedure PageControl_SetOnChanging(AObj: TPageControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    TEventClass.Remove(AObj, gePageControlChanging);
+    Exit;
+  end;
+  AObj.OnChanging := TEventClass.PageControlOnChanging;
+  TEventClass.Add(AObj, gePageControlChanging, AEventId);
+end;
+
 procedure PageControl_SetOnContextPopup(AObj: TPageControl; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -658,6 +670,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure PageControl_SetOnGesture(AObj: TPageControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure PageControl_SetOnGetImageIndex(AObj: TPageControl; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -680,6 +704,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure PageControl_SetOnMouseActivate(AObj: TPageControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure PageControl_SetOnMouseDown(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -1209,6 +1245,7 @@ exports
   PageControl_GetStyleElements,
   PageControl_SetStyleElements,
   PageControl_SetOnChange,
+  PageControl_SetOnChanging,
   PageControl_SetOnContextPopup,
   PageControl_SetOnDockDrop,
   PageControl_SetOnDragDrop,
@@ -1217,8 +1254,10 @@ exports
   PageControl_SetOnEndDrag,
   PageControl_SetOnEnter,
   PageControl_SetOnExit,
+  PageControl_SetOnGesture,
   PageControl_SetOnGetImageIndex,
   PageControl_SetOnGetSiteInfo,
+  PageControl_SetOnMouseActivate,
   PageControl_SetOnMouseDown,
   PageControl_SetOnMouseEnter,
   PageControl_SetOnMouseLeave,

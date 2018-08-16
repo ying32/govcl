@@ -521,6 +521,16 @@ begin
   AObj.MultiSelect := AValue;
 end;
 
+function ListView_GetOwnerData(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.OwnerData;
+end;
+
+procedure ListView_SetOwnerData(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.OwnerData := AValue;
+end;
+
 function ListView_GetReadOnly(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.ReadOnly;
@@ -767,6 +777,30 @@ begin
   EventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnData := nil;
+    EventClass.Remove(AObj, geListViewData);
+    Exit;
+  end;
+  AObj.OnData := @EventClass.ListViewOnData;
+  EventClass.Add(AObj, geListViewData, AEventId);
+end;
+
+procedure ListView_SetOnDataFind(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataFind := nil;
+    EventClass.Remove(AObj, geListViewDataFind);
+    Exit;
+  end;
+  AObj.OnDataFind := @EventClass.ListViewOnDataFind;
+  EventClass.Add(AObj, geListViewDataFind, AEventId);
+end;
+
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -777,6 +811,42 @@ begin
   end;
   AObj.OnDblClick := @EventClass.OnDblClick;
   EventClass.Add(AObj, geDblClick, AEventId);
+end;
+
+procedure ListView_SetOnDeletion(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDeletion := nil;
+    EventClass.Remove(AObj, geListViewDeletion);
+    Exit;
+  end;
+  AObj.OnDeletion := @EventClass.ListViewOnDeletion;
+  EventClass.Add(AObj, geListViewDeletion, AEventId);
+end;
+
+procedure ListView_SetOnEdited(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEdited := nil;
+    EventClass.Remove(AObj, geListViewEdited);
+    Exit;
+  end;
+  AObj.OnEdited := @EventClass.ListViewOnEdited;
+  EventClass.Add(AObj, geListViewEdited, AEventId);
+end;
+
+procedure ListView_SetOnEditing(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEditing := nil;
+    EventClass.Remove(AObj, geListViewEditing);
+    Exit;
+  end;
+  AObj.OnEditing := @EventClass.ListViewOnEditing;
+  EventClass.Add(AObj, geListViewEditing, AEventId);
 end;
 
 procedure ListView_SetOnEndDock(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -849,6 +919,18 @@ begin
   end;
   AObj.OnDragOver := @EventClass.OnDragOver;
   EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure ListView_SetOnInsert(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnInsert := nil;
+    EventClass.Remove(AObj, geListViewInsert);
+    Exit;
+  end;
+  AObj.OnInsert := @EventClass.ListViewOnInsert;
+  EventClass.Add(AObj, geListViewInsert, AEventId);
 end;
 
 procedure ListView_SetOnKeyDown(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1404,6 +1486,8 @@ exports
   ListView_SetLargeImages,
   ListView_GetMultiSelect,
   ListView_SetMultiSelect,
+  ListView_GetOwnerData,
+  ListView_SetOwnerData,
   ListView_GetReadOnly,
   ListView_SetReadOnly,
   ListView_GetRowSelect,
@@ -1442,13 +1526,19 @@ exports
   ListView_SetOnColumnClick,
   ListView_SetOnCompare,
   ListView_SetOnContextPopup,
+  ListView_SetOnData,
+  ListView_SetOnDataFind,
   ListView_SetOnDblClick,
+  ListView_SetOnDeletion,
+  ListView_SetOnEdited,
+  ListView_SetOnEditing,
   ListView_SetOnEndDock,
   ListView_SetOnEndDrag,
   ListView_SetOnEnter,
   ListView_SetOnExit,
   ListView_SetOnDragDrop,
   ListView_SetOnDragOver,
+  ListView_SetOnInsert,
   ListView_SetOnKeyDown,
   ListView_SetOnKeyPress,
   ListView_SetOnKeyUp,

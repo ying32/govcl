@@ -1001,6 +1001,11 @@ func (d *TDrawGrid) SetOnFixedCellClick(fn TFixedCellClickEvent) {
     DrawGrid_SetOnFixedCellClick(d.instance, fn)
 }
 
+// SetOnGesture
+func (d *TDrawGrid) SetOnGesture(fn TGestureEvent) {
+    DrawGrid_SetOnGesture(d.instance, fn)
+}
+
 // SetOnGetEditMask
 func (d *TDrawGrid) SetOnGetEditMask(fn TGetEditEvent) {
     DrawGrid_SetOnGetEditMask(d.instance, fn)
@@ -1028,6 +1033,11 @@ func (d *TDrawGrid) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (d *TDrawGrid) SetOnKeyUp(fn TKeyEvent) {
     DrawGrid_SetOnKeyUp(d.instance, fn)
+}
+
+// SetOnMouseActivate
+func (d *TDrawGrid) SetOnMouseActivate(fn TMouseActivateEvent) {
+    DrawGrid_SetOnMouseActivate(d.instance, fn)
 }
 
 // SetOnMouseDown

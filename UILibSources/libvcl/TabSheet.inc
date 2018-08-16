@@ -537,6 +537,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure TabSheet_SetOnGesture(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure TabSheet_SetOnHide(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -547,6 +559,18 @@ begin
   end;
   AObj.OnHide := TEventClass.OnHide;
   TEventClass.Add(AObj, geHide, AEventId);
+end;
+
+procedure TabSheet_SetOnMouseActivate(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure TabSheet_SetOnMouseDown(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -1072,7 +1096,9 @@ exports
   TabSheet_SetOnEndDrag,
   TabSheet_SetOnEnter,
   TabSheet_SetOnExit,
+  TabSheet_SetOnGesture,
   TabSheet_SetOnHide,
+  TabSheet_SetOnMouseActivate,
   TabSheet_SetOnMouseDown,
   TabSheet_SetOnMouseEnter,
   TabSheet_SetOnMouseLeave,

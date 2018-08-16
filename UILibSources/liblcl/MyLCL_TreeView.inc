@@ -641,6 +641,18 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure TreeView_SetOnAddition(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAddition := nil;
+    EventClass.Remove(AObj, geTreeViewAddition);
+    Exit;
+  end;
+  AObj.OnAddition := @EventClass.TreeViewOnAddition;
+  EventClass.Add(AObj, geTreeViewAddition, AEventId);
+end;
+
 procedure TreeView_SetOnAdvancedCustomDraw(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -677,6 +689,18 @@ begin
   EventClass.Add(AObj, geTreeViewChange, AEventId);
 end;
 
+procedure TreeView_SetOnChanging(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    EventClass.Remove(AObj, geTreeViewChanging);
+    Exit;
+  end;
+  AObj.OnChanging := @EventClass.TreeViewOnChanging;
+  EventClass.Add(AObj, geTreeViewChanging, AEventId);
+end;
+
 procedure TreeView_SetOnClick(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -687,6 +711,30 @@ begin
   end;
   AObj.OnClick := @EventClass.OnClick;
   EventClass.Add(AObj, geClick, AEventId);
+end;
+
+procedure TreeView_SetOnCollapsed(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCollapsed := nil;
+    EventClass.Remove(AObj, geTreeViewCollapsed);
+    Exit;
+  end;
+  AObj.OnCollapsed := @EventClass.TreeViewOnCollapsed;
+  EventClass.Add(AObj, geTreeViewCollapsed, AEventId);
+end;
+
+procedure TreeView_SetOnCollapsing(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCollapsing := nil;
+    EventClass.Remove(AObj, geTreeViewCollapsing);
+    Exit;
+  end;
+  AObj.OnCollapsing := @EventClass.TreeViewOnCollapsing;
+  EventClass.Add(AObj, geTreeViewCollapsing, AEventId);
 end;
 
 procedure TreeView_SetOnCompare(AObj: TTreeView; AEventId: NativeUInt); extdecl;
@@ -725,6 +773,18 @@ begin
   EventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure TreeView_SetOnDeletion(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDeletion := nil;
+    EventClass.Remove(AObj, geTreeViewDeletion);
+    Exit;
+  end;
+  AObj.OnDeletion := @EventClass.TreeViewOnDeletion;
+  EventClass.Add(AObj, geTreeViewDeletion, AEventId);
+end;
+
 procedure TreeView_SetOnDragDrop(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -747,6 +807,30 @@ begin
   end;
   AObj.OnDragOver := @EventClass.OnDragOver;
   EventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure TreeView_SetOnEdited(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEdited := nil;
+    EventClass.Remove(AObj, geTreeViewEdited);
+    Exit;
+  end;
+  AObj.OnEdited := @EventClass.TreeViewOnEdited;
+  EventClass.Add(AObj, geTreeViewEdited, AEventId);
+end;
+
+procedure TreeView_SetOnEditing(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEditing := nil;
+    EventClass.Remove(AObj, geTreeViewEditing);
+    Exit;
+  end;
+  AObj.OnEditing := @EventClass.TreeViewOnEditing;
+  EventClass.Add(AObj, geTreeViewEditing, AEventId);
 end;
 
 procedure TreeView_SetOnEndDrag(AObj: TTreeView; AEventId: NativeUInt); extdecl;
@@ -783,6 +867,30 @@ begin
   end;
   AObj.OnExit := @EventClass.OnExit;
   EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure TreeView_SetOnExpanding(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnExpanding := nil;
+    EventClass.Remove(AObj, geTreeViewExpanding);
+    Exit;
+  end;
+  AObj.OnExpanding := @EventClass.TreeViewOnExpanding;
+  EventClass.Add(AObj, geTreeViewExpanding, AEventId);
+end;
+
+procedure TreeView_SetOnExpanded(AObj: TTreeView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnExpanded := nil;
+    EventClass.Remove(AObj, geTreeViewExpanded);
+    Exit;
+  end;
+  AObj.OnExpanded := @EventClass.TreeViewOnExpanded;
+  EventClass.Add(AObj, geTreeViewExpanded, AEventId);
 end;
 
 procedure TreeView_SetOnGetSelectedIndex(AObj: TTreeView; AEventId: NativeUInt); extdecl;
@@ -1326,18 +1434,27 @@ exports
   TreeView_SetToolTips,
   TreeView_GetVisible,
   TreeView_SetVisible,
+  TreeView_SetOnAddition,
   TreeView_SetOnAdvancedCustomDraw,
   TreeView_SetOnAdvancedCustomDrawItem,
   TreeView_SetOnChange,
+  TreeView_SetOnChanging,
   TreeView_SetOnClick,
+  TreeView_SetOnCollapsed,
+  TreeView_SetOnCollapsing,
   TreeView_SetOnCompare,
   TreeView_SetOnContextPopup,
   TreeView_SetOnDblClick,
+  TreeView_SetOnDeletion,
   TreeView_SetOnDragDrop,
   TreeView_SetOnDragOver,
+  TreeView_SetOnEdited,
+  TreeView_SetOnEditing,
   TreeView_SetOnEndDrag,
   TreeView_SetOnEnter,
   TreeView_SetOnExit,
+  TreeView_SetOnExpanding,
+  TreeView_SetOnExpanded,
   TreeView_SetOnGetSelectedIndex,
   TreeView_SetOnKeyDown,
   TreeView_SetOnKeyPress,

@@ -889,9 +889,19 @@ func (c *TCoolBar) SetOnEndDrag(fn TEndDragEvent) {
     CoolBar_SetOnEndDrag(c.instance, fn)
 }
 
+// SetOnGesture
+func (c *TCoolBar) SetOnGesture(fn TGestureEvent) {
+    CoolBar_SetOnGesture(c.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (c *TCoolBar) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     CoolBar_SetOnGetSiteInfo(c.instance, fn)
+}
+
+// SetOnMouseActivate
+func (c *TCoolBar) SetOnMouseActivate(fn TMouseActivateEvent) {
+    CoolBar_SetOnMouseActivate(c.instance, fn)
 }
 
 // SetOnMouseDown

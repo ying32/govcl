@@ -654,6 +654,18 @@ begin
   TEventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure RadioButton_SetOnMouseActivate(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure RadioButton_SetOnMouseDown(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -884,6 +896,18 @@ end;
 procedure RadioButton_SetParent(AObj: TRadioButton; AValue: TWinControl); stdcall;
 begin
   AObj.Parent := AValue;
+end;
+
+procedure RadioButton_SetOnGesture(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function RadioButton_GetAlignWithMargins(AObj: TRadioButton): LongBool; stdcall;
@@ -1150,6 +1174,7 @@ exports
   RadioButton_SetOnKeyDown,
   RadioButton_SetOnKeyPress,
   RadioButton_SetOnKeyUp,
+  RadioButton_SetOnMouseActivate,
   RadioButton_SetOnMouseDown,
   RadioButton_SetOnMouseEnter,
   RadioButton_SetOnMouseLeave,
@@ -1188,6 +1213,7 @@ exports
   RadioButton_GetFloating,
   RadioButton_GetParent,
   RadioButton_SetParent,
+  RadioButton_SetOnGesture,
   RadioButton_GetAlignWithMargins,
   RadioButton_SetAlignWithMargins,
   RadioButton_GetLeft,

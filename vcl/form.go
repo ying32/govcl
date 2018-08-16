@@ -1034,6 +1034,11 @@ func (f *TForm) SetOnEndDock(fn TEndDragEvent) {
     Form_SetOnEndDock(f.instance, fn)
 }
 
+// SetOnGesture
+func (f *TForm) SetOnGesture(fn TGestureEvent) {
+    Form_SetOnGesture(f.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (f *TForm) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     Form_SetOnGetSiteInfo(f.instance, fn)
@@ -1068,6 +1073,11 @@ func (f *TForm) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (f *TForm) SetOnKeyUp(fn TKeyEvent) {
     Form_SetOnKeyUp(f.instance, fn)
+}
+
+// SetOnMouseActivate
+func (f *TForm) SetOnMouseActivate(fn TMouseActivateEvent) {
+    Form_SetOnMouseActivate(f.instance, fn)
 }
 
 // SetOnMouseDown

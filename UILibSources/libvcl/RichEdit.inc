@@ -795,6 +795,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure RichEdit_SetOnGesture(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure RichEdit_SetOnKeyDown(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -829,6 +841,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure RichEdit_SetOnMouseActivate(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseDown(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -1539,9 +1563,11 @@ exports
   RichEdit_SetOnEndDrag,
   RichEdit_SetOnEnter,
   RichEdit_SetOnExit,
+  RichEdit_SetOnGesture,
   RichEdit_SetOnKeyDown,
   RichEdit_SetOnKeyPress,
   RichEdit_SetOnKeyUp,
+  RichEdit_SetOnMouseActivate,
   RichEdit_SetOnMouseDown,
   RichEdit_SetOnMouseEnter,
   RichEdit_SetOnMouseLeave,

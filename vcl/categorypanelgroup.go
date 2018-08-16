@@ -1008,9 +1008,19 @@ func (c *TCategoryPanelGroup) SetOnExit(fn TNotifyEvent) {
     CategoryPanelGroup_SetOnExit(c.instance, fn)
 }
 
+// SetOnGesture
+func (c *TCategoryPanelGroup) SetOnGesture(fn TGestureEvent) {
+    CategoryPanelGroup_SetOnGesture(c.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (c *TCategoryPanelGroup) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     CategoryPanelGroup_SetOnGetSiteInfo(c.instance, fn)
+}
+
+// SetOnMouseActivate
+func (c *TCategoryPanelGroup) SetOnMouseActivate(fn TMouseActivateEvent) {
+    CategoryPanelGroup_SetOnMouseActivate(c.instance, fn)
 }
 
 // SetOnMouseDown

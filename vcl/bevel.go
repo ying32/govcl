@@ -397,6 +397,11 @@ func (b *TBevel) SetVisible(value bool) {
     Bevel_SetVisible(b.instance, value)
 }
 
+// SetOnGesture
+func (b *TBevel) SetOnGesture(fn TGestureEvent) {
+    Bevel_SetOnGesture(b.instance, fn)
+}
+
 // Enabled
 // CN: 获取控件启用。
 // EN: Get the control enabled.

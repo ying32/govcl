@@ -1061,6 +1061,11 @@ func (l *TLabeledEdit) SetOnExit(fn TNotifyEvent) {
     LabeledEdit_SetOnExit(l.instance, fn)
 }
 
+// SetOnGesture
+func (l *TLabeledEdit) SetOnGesture(fn TGestureEvent) {
+    LabeledEdit_SetOnGesture(l.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -1078,6 +1083,11 @@ func (l *TLabeledEdit) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (l *TLabeledEdit) SetOnKeyUp(fn TKeyEvent) {
     LabeledEdit_SetOnKeyUp(l.instance, fn)
+}
+
+// SetOnMouseActivate
+func (l *TLabeledEdit) SetOnMouseActivate(fn TMouseActivateEvent) {
+    LabeledEdit_SetOnMouseActivate(l.instance, fn)
 }
 
 // SetOnMouseDown

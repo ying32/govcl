@@ -686,6 +686,42 @@ begin
   TEventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure CheckListBox_SetOnData(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnData := nil;
+    TEventClass.Remove(AObj, geListBoxData);
+    Exit;
+  end;
+  AObj.OnData := TEventClass.ListBoxOnData;
+  TEventClass.Add(AObj, geListBoxData, AEventId);
+end;
+
+procedure CheckListBox_SetOnDataFind(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataFind := nil;
+    TEventClass.Remove(AObj, geListBoxDataFind);
+    Exit;
+  end;
+  AObj.OnDataFind := TEventClass.ListBoxOnDataFind;
+  TEventClass.Add(AObj, geListBoxDataFind, AEventId);
+end;
+
+procedure CheckListBox_SetOnDataObject(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataObject := nil;
+    TEventClass.Remove(AObj, geListBoxDataObject);
+    Exit;
+  end;
+  AObj.OnDataObject := TEventClass.ListBoxOnDataObject;
+  TEventClass.Add(AObj, geListBoxDataObject, AEventId);
+end;
+
 procedure CheckListBox_SetOnDblClick(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -770,6 +806,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure CheckListBox_SetOnGesture(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure CheckListBox_SetOnKeyDown(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -804,6 +852,30 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure CheckListBox_SetOnMeasureItem(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    TEventClass.Remove(AObj, geListBoxMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := TEventClass.ListBoxOnMeasureItem;
+  TEventClass.Add(AObj, geListBoxMeasureItem, AEventId);
+end;
+
+procedure CheckListBox_SetOnMouseActivate(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure CheckListBox_SetOnMouseDown(AObj: TCheckListBox; AEventId: NativeUInt); stdcall;
@@ -1431,6 +1503,9 @@ exports
   CheckListBox_SetStyleElements,
   CheckListBox_SetOnClick,
   CheckListBox_SetOnContextPopup,
+  CheckListBox_SetOnData,
+  CheckListBox_SetOnDataFind,
+  CheckListBox_SetOnDataObject,
   CheckListBox_SetOnDblClick,
   CheckListBox_SetOnDragDrop,
   CheckListBox_SetOnDragOver,
@@ -1438,9 +1513,12 @@ exports
   CheckListBox_SetOnEndDrag,
   CheckListBox_SetOnEnter,
   CheckListBox_SetOnExit,
+  CheckListBox_SetOnGesture,
   CheckListBox_SetOnKeyDown,
   CheckListBox_SetOnKeyPress,
   CheckListBox_SetOnKeyUp,
+  CheckListBox_SetOnMeasureItem,
+  CheckListBox_SetOnMouseActivate,
   CheckListBox_SetOnMouseDown,
   CheckListBox_SetOnMouseEnter,
   CheckListBox_SetOnMouseLeave,

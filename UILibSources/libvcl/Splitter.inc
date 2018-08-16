@@ -397,6 +397,18 @@ begin
   AObj.Parent := AValue;
 end;
 
+procedure Splitter_SetOnGesture(AObj: TSplitter; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function Splitter_GetAlignWithMargins(AObj: TSplitter): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
@@ -595,6 +607,7 @@ exports
   Splitter_SetShowHint,
   Splitter_GetParent,
   Splitter_SetParent,
+  Splitter_SetOnGesture,
   Splitter_GetAlignWithMargins,
   Splitter_SetAlignWithMargins,
   Splitter_GetLeft,

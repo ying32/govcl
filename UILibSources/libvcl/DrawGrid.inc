@@ -809,6 +809,18 @@ begin
   TEventClass.Add(AObj, geFixedCellClick, AEventId);
 end;
 
+procedure DrawGrid_SetOnGesture(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure DrawGrid_SetOnGetEditMask(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -867,6 +879,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure DrawGrid_SetOnMouseActivate(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseDown(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -1593,11 +1617,13 @@ exports
   DrawGrid_SetOnEnter,
   DrawGrid_SetOnExit,
   DrawGrid_SetOnFixedCellClick,
+  DrawGrid_SetOnGesture,
   DrawGrid_SetOnGetEditMask,
   DrawGrid_SetOnGetEditText,
   DrawGrid_SetOnKeyDown,
   DrawGrid_SetOnKeyPress,
   DrawGrid_SetOnKeyUp,
+  DrawGrid_SetOnMouseActivate,
   DrawGrid_SetOnMouseDown,
   DrawGrid_SetOnMouseEnter,
   DrawGrid_SetOnMouseLeave,

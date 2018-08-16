@@ -678,6 +678,18 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure CoolBar_SetOnGesture(AObj: TCoolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure CoolBar_SetOnGetSiteInfo(AObj: TCoolBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -688,6 +700,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure CoolBar_SetOnMouseActivate(AObj: TCoolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure CoolBar_SetOnMouseDown(AObj: TCoolBar; AEventId: NativeUInt); stdcall;
@@ -1249,7 +1273,9 @@ exports
   CoolBar_SetOnDragOver,
   CoolBar_SetOnEndDock,
   CoolBar_SetOnEndDrag,
+  CoolBar_SetOnGesture,
   CoolBar_SetOnGetSiteInfo,
+  CoolBar_SetOnMouseActivate,
   CoolBar_SetOnMouseDown,
   CoolBar_SetOnMouseEnter,
   CoolBar_SetOnMouseLeave,

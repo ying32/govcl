@@ -956,9 +956,19 @@ func (p *TPanel) SetOnExit(fn TNotifyEvent) {
     Panel_SetOnExit(p.instance, fn)
 }
 
+// SetOnGesture
+func (p *TPanel) SetOnGesture(fn TGestureEvent) {
+    Panel_SetOnGesture(p.instance, fn)
+}
+
 // SetOnGetSiteInfo
 func (p *TPanel) SetOnGetSiteInfo(fn TGetSiteInfoEvent) {
     Panel_SetOnGetSiteInfo(p.instance, fn)
+}
+
+// SetOnMouseActivate
+func (p *TPanel) SetOnMouseActivate(fn TMouseActivateEvent) {
+    Panel_SetOnMouseActivate(p.instance, fn)
 }
 
 // SetOnMouseDown

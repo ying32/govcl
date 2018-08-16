@@ -683,6 +683,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ColorBox_SetOnGesture(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ColorBox_SetOnKeyDown(AObj: TColorBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1314,6 +1326,7 @@ exports
   ColorBox_SetOnEndDrag,
   ColorBox_SetOnEnter,
   ColorBox_SetOnExit,
+  ColorBox_SetOnGesture,
   ColorBox_SetOnKeyDown,
   ColorBox_SetOnKeyPress,
   ColorBox_SetOnKeyUp,

@@ -532,6 +532,11 @@ func (c *TControl) SetStyleElements(value TStyleElements) {
     Control_SetStyleElements(c.instance, value)
 }
 
+// SetOnGesture
+func (c *TControl) SetOnGesture(fn TGestureEvent) {
+    Control_SetOnGesture(c.instance, fn)
+}
+
 // AlignWithMargins
 // CN: 获取边距，仅VCL有效。
 // EN: Get The margin. Only VCL is valid..

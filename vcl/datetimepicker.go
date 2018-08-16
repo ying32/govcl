@@ -943,6 +943,11 @@ func (d *TDateTimePicker) SetOnExit(fn TNotifyEvent) {
     DateTimePicker_SetOnExit(d.instance, fn)
 }
 
+// SetOnGesture
+func (d *TDateTimePicker) SetOnGesture(fn TGestureEvent) {
+    DateTimePicker_SetOnGesture(d.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.

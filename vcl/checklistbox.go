@@ -933,6 +933,21 @@ func (c *TCheckListBox) SetOnContextPopup(fn TContextPopupEvent) {
     CheckListBox_SetOnContextPopup(c.instance, fn)
 }
 
+// SetOnData
+func (c *TCheckListBox) SetOnData(fn TLBGetDataEvent) {
+    CheckListBox_SetOnData(c.instance, fn)
+}
+
+// SetOnDataFind
+func (c *TCheckListBox) SetOnDataFind(fn TLBFindDataEvent) {
+    CheckListBox_SetOnDataFind(c.instance, fn)
+}
+
+// SetOnDataObject
+func (c *TCheckListBox) SetOnDataObject(fn TLBGetDataObjectEvent) {
+    CheckListBox_SetOnDataObject(c.instance, fn)
+}
+
 // SetOnDblClick
 // CN: 设置双击事件。
 // EN: .
@@ -982,6 +997,11 @@ func (c *TCheckListBox) SetOnExit(fn TNotifyEvent) {
     CheckListBox_SetOnExit(c.instance, fn)
 }
 
+// SetOnGesture
+func (c *TCheckListBox) SetOnGesture(fn TGestureEvent) {
+    CheckListBox_SetOnGesture(c.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -999,6 +1019,16 @@ func (c *TCheckListBox) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (c *TCheckListBox) SetOnKeyUp(fn TKeyEvent) {
     CheckListBox_SetOnKeyUp(c.instance, fn)
+}
+
+// SetOnMeasureItem
+func (c *TCheckListBox) SetOnMeasureItem(fn TMeasureItemEvent) {
+    CheckListBox_SetOnMeasureItem(c.instance, fn)
+}
+
+// SetOnMouseActivate
+func (c *TCheckListBox) SetOnMouseActivate(fn TMouseActivateEvent) {
+    CheckListBox_SetOnMouseActivate(c.instance, fn)
 }
 
 // SetOnMouseDown

@@ -850,6 +850,11 @@ func (m *TMonthCalendar) SetOnExit(fn TNotifyEvent) {
     MonthCalendar_SetOnExit(m.instance, fn)
 }
 
+// SetOnGesture
+func (m *TMonthCalendar) SetOnGesture(fn TGestureEvent) {
+    MonthCalendar_SetOnGesture(m.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.

@@ -530,6 +530,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure WinControl_SetOnGesture(AObj: TWinControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function WinControl_GetAlignWithMargins(AObj: TWinControl): LongBool; stdcall;
 begin
   Result :=  AObj.AlignWithMargins;
@@ -786,6 +798,7 @@ exports
   WinControl_SetParent,
   WinControl_GetStyleElements,
   WinControl_SetStyleElements,
+  WinControl_SetOnGesture,
   WinControl_GetAlignWithMargins,
   WinControl_SetAlignWithMargins,
   WinControl_GetLeft,

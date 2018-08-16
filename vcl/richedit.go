@@ -1031,6 +1031,11 @@ func (r *TRichEdit) SetOnExit(fn TNotifyEvent) {
     RichEdit_SetOnExit(r.instance, fn)
 }
 
+// SetOnGesture
+func (r *TRichEdit) SetOnGesture(fn TGestureEvent) {
+    RichEdit_SetOnGesture(r.instance, fn)
+}
+
 // SetOnKeyDown
 // CN: 设置键盘按键按下事件。
 // EN: Set Keyboard button press event.
@@ -1048,6 +1053,11 @@ func (r *TRichEdit) SetOnKeyPress(fn TKeyPressEvent) {
 // EN: Set Keyboard button lift event.
 func (r *TRichEdit) SetOnKeyUp(fn TKeyEvent) {
     RichEdit_SetOnKeyUp(r.instance, fn)
+}
+
+// SetOnMouseActivate
+func (r *TRichEdit) SetOnMouseActivate(fn TMouseActivateEvent) {
+    RichEdit_SetOnMouseActivate(r.instance, fn)
 }
 
 // SetOnMouseDown

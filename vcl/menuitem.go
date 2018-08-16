@@ -412,6 +412,11 @@ func (m *TMenuItem) SetOnDrawItem(fn TMenuDrawItemEvent) {
     MenuItem_SetOnDrawItem(m.instance, fn)
 }
 
+// SetOnMeasureItem
+func (m *TMenuItem) SetOnMeasureItem(fn TMenuMeasureItemEvent) {
+    MenuItem_SetOnMeasureItem(m.instance, fn)
+}
+
 // ComponentCount
 // CN: 获取组件总数。
 // EN: Get the total number of components.
