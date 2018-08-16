@@ -45,5 +45,7 @@
 | windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
 | grid | 表格控件 | |
 | syslocale | 本地化相关 | |
-| shortcut | 快捷方式相关 | Windows |
+| shortcut | 快捷方式相关 | Windows | 
+| winole | 使用go-ole库操作ole | Windows | 
+| virtuallistview | 虚拟TListView，用于大数据显示 |   |
 
