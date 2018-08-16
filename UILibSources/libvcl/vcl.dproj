@@ -6,7 +6,7 @@
         <MainSource>vcl.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Library</AppType>
     </PropertyGroup>
@@ -129,9 +129,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Build>44</VerInfo_Build>
-        <PostBuildEvent><![CDATA[Move "$(OUTPUTDIR)vcl.dll" "$(OUTPUTDIR)libvcl.dll"
- Copy "$(OUTPUTDIR)libvcl.dll" "$(GOPATH)\bin\libvcl.dll" /Y 
- Copy "$(OUTPUTDIR)libvcl.dll" "$(GOPATH)\src\github.com\ying32\govcl\bin\win32\libvcl.dll" /Y]]></PostBuildEvent>
+        <PostBuildEvent><![CDATA[Move "$(OUTPUTDIR)vcl.dll" "$(OUTPUTDIR)libvcl.dll"]]></PostBuildEvent>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <DCC_FullBooleanEvaluations>true</DCC_FullBooleanEvaluations>
@@ -141,9 +139,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Build>84</VerInfo_Build>
         <DCC_ExeOutput>..\x64</DCC_ExeOutput>
-        <PostBuildEvent><![CDATA[Move "$(OUTPUTDIR)vcl.dll" "$(OUTPUTDIR)libvclx64.dll"
- Copy "$(OUTPUTDIR)libvclx64.dll" "$(GOPATH)\bin\libvclx64.dll" /Y 
- Copy "$(OUTPUTDIR)libvclx64.dll" "$(GOPATH)\src\github.com\ying32\govcl\bin\win64\libvclx64.dll" /Y]]></PostBuildEvent>
+        <PostBuildEvent><![CDATA[Move "$(OUTPUTDIR)vcl.dll" "$(OUTPUTDIR)libvclx64.dll"]]></PostBuildEvent>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -600,7 +596,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>Move &quot;$(OUTPUTDIR)vcl.dll&quot; &quot;$(OUTPUTDIR)libvclx64.dll&quot;&amp;&amp; Copy &quot;$(OUTPUTDIR)libvclx64.dll&quot; &quot;$(GOPATH)\bin\libvclx64.dll&quot; /Y &amp;&amp; Copy &quot;$(OUTPUTDIR)libvclx64.dll&quot; &quot;$(GOPATH)\src\github.com\ying32\govcl\bin\win64\libvclx64.dll&quot; /Y</PostBuildEvent>
+        <PostBuildEvent><![CDATA[Move "$(OUTPUTDIR)vcl.dll" "$(OUTPUTDIR)libvclx64.dll"&& Copy "$(OUTPUTDIR)libvclx64.dll" "$(GOPATH)\bin\libvclx64.dll" /Y && Copy "$(OUTPUTDIR)libvclx64.dll" "$(GOPATH)\src\github.com\ying32\govcl\bin\win64\libvclx64.dll" /Y]]></PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win32'">
@@ -608,7 +604,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>Move &quot;$(OUTPUTDIR)vcl.dll&quot; &quot;$(OUTPUTDIR)libvcl.dll&quot;&amp;&amp; Copy &quot;$(OUTPUTDIR)libvcl.dll&quot; &quot;$(GOPATH)\bin\libvcl.dll&quot; /Y &amp;&amp; Copy &quot;$(OUTPUTDIR)libvcl.dll&quot; &quot;$(GOPATH)\src\github.com\ying32\govcl\bin\win32\libvcl.dll&quot; /Y</PostBuildEvent>
+        <PostBuildEvent>Move &quot;$(OUTPUTDIR)vcl.dll&quot; &quot;$(OUTPUTDIR)libvcl.dll&quot;</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win64'">
@@ -616,7 +612,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>Move &quot;$(OUTPUTDIR)vcl.dll&quot; &quot;$(OUTPUTDIR)libvclx64.dll&quot;&amp;&amp; Copy &quot;$(OUTPUTDIR)libvclx64.dll&quot; &quot;$(GOPATH)\bin\libvclx64.dll&quot; /Y &amp;&amp; Copy &quot;$(OUTPUTDIR)libvclx64.dll&quot; &quot;$(GOPATH)\src\github.com\ying32\govcl\bin\win64\libvclx64.dll&quot; /Y</PostBuildEvent>
+        <PostBuildEvent>Move &quot;$(OUTPUTDIR)vcl.dll&quot; &quot;$(OUTPUTDIR)libvclx64.dll&quot;</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>
