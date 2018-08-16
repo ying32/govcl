@@ -19,11 +19,8 @@ Compile steps:
 
 The compiled binary can be viewed in the following directory:     
 
-> %GOPATH%\bin\libvcl.dll  
-> %GOPATH%\bin\libvclx64.dll    
-> %GOPATH%\src\github.com\ying32\bin\win32\libvcl.dll  
-> %GOPATH%\src\github.com\ying32\bin\win64\libvclx64.dll    
-
+> ..\libvcl.dll  
+> ..\x64\libvclx64.dll    
 
 **Note: The source code has no third-party dependencies, and can be compiled directly after installing the relevant version of Delphi.**    
 

@@ -21,12 +21,9 @@ libvcl工程源码位于"govcl\UILibSources\libvcl"目录。`libvcl限仅于wind
 
 因为配置中设置了相关编译后的操作，编译完后的二进制可以在以下目录查看  
 
-> %GOPATH%\bin\libvcl.dll  
-> %GOPATH%\bin\libvclx64.dll    
-> %GOPATH%\src\github.com\ying32\bin\win32\libvcl.dll  
-> %GOPATH%\src\github.com\ying32\bin\win64\libvclx64.dll    
-
-
+> ..\libvcl.dll  
+> ..\x64\libvclx64.dll    
+ 
 **注：源码无第三方依赖库，安装好相关版本Delphi后直接编译即可。**
 
 
