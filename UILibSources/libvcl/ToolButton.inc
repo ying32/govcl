@@ -115,6 +115,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure ToolButton_SetTextBuf(AObj: TToolButton; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function ToolButton_FindComponent(AObj: TToolButton; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -477,6 +482,18 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure ToolButton_SetOnMouseActivate(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure ToolButton_SetOnMouseDown(AObj: TToolButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -599,6 +616,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ToolButton_GetClientOrigin(AObj: TToolButton; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ToolButton_GetClientRect(AObj: TToolButton; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -612,6 +634,26 @@ end;
 procedure ToolButton_SetClientWidth(AObj: TToolButton; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ToolButton_GetControlState(AObj: TToolButton): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ToolButton_SetControlState(AObj: TToolButton; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ToolButton_GetControlStyle(AObj: TToolButton): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ToolButton_SetControlStyle(AObj: TToolButton; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ToolButton_GetExplicitLeft(AObj: TToolButton): Integer; stdcall;
@@ -657,6 +699,18 @@ end;
 procedure ToolButton_SetStyleElements(AObj: TToolButton; AValue: TStyleElements); stdcall;
 begin
   AObj.StyleElements := AValue;
+end;
+
+procedure ToolButton_SetOnGesture(AObj: TToolButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function ToolButton_GetAlignWithMargins(AObj: TToolButton): LongBool; stdcall;
@@ -802,6 +856,7 @@ exports
   ToolButton_Update,
   ToolButton_GetTextBuf,
   ToolButton_GetTextLen,
+  ToolButton_SetTextBuf,
   ToolButton_FindComponent,
   ToolButton_GetNamePath,
   ToolButton_Assign,
@@ -866,6 +921,7 @@ exports
   ToolButton_SetOnDragOver,
   ToolButton_SetOnEndDock,
   ToolButton_SetOnEndDrag,
+  ToolButton_SetOnMouseActivate,
   ToolButton_SetOnMouseDown,
   ToolButton_SetOnMouseEnter,
   ToolButton_SetOnMouseLeave,
@@ -882,9 +938,14 @@ exports
   ToolButton_SetBoundsRect,
   ToolButton_GetClientHeight,
   ToolButton_SetClientHeight,
+  ToolButton_GetClientOrigin,
   ToolButton_GetClientRect,
   ToolButton_GetClientWidth,
   ToolButton_SetClientWidth,
+  ToolButton_GetControlState,
+  ToolButton_SetControlState,
+  ToolButton_GetControlStyle,
+  ToolButton_SetControlStyle,
   ToolButton_GetExplicitLeft,
   ToolButton_GetExplicitTop,
   ToolButton_GetExplicitWidth,
@@ -894,6 +955,7 @@ exports
   ToolButton_SetParent,
   ToolButton_GetStyleElements,
   ToolButton_SetStyleElements,
+  ToolButton_SetOnGesture,
   ToolButton_GetAlignWithMargins,
   ToolButton_SetAlignWithMargins,
   ToolButton_GetLeft,

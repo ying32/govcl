@@ -75,6 +75,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function MaskEdit_ContainsControl(AObj: TMaskEdit; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function MaskEdit_ControlAtPos(AObj: TMaskEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure MaskEdit_DisableAlign(AObj: TMaskEdit); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure MaskEdit_EnableAlign(AObj: TMaskEdit); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function MaskEdit_FindChildControl(AObj: TMaskEdit; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure MaskEdit_FlipChildren(AObj: TMaskEdit; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -90,9 +115,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure MaskEdit_InsertControl(AObj: TMaskEdit; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure MaskEdit_Invalidate(AObj: TMaskEdit); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure MaskEdit_PaintTo(AObj: TMaskEdit; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure MaskEdit_RemoveControl(AObj: TMaskEdit; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure MaskEdit_Realign(AObj: TMaskEdit); stdcall;
@@ -110,6 +150,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure MaskEdit_ScrollBy(AObj: TMaskEdit; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure MaskEdit_SetBounds(AObj: TMaskEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -123,6 +168,11 @@ end;
 procedure MaskEdit_Update(AObj: TMaskEdit); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure MaskEdit_UpdateControlState(AObj: TMaskEdit); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure MaskEdit_BringToFront(AObj: TMaskEdit); stdcall;
@@ -188,6 +238,11 @@ end;
 function MaskEdit_GetTextBuf(AObj: TMaskEdit; Buffer: PWideChar; BufSize: Integer): Integer; stdcall;
 begin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
+end;
+
+procedure MaskEdit_SetTextBuf(AObj: TMaskEdit; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function MaskEdit_FindComponent(AObj: TMaskEdit; AName: PChar): TComponent; stdcall;
@@ -703,6 +758,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure MaskEdit_SetOnGesture(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure MaskEdit_SetOnKeyDown(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -737,6 +804,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure MaskEdit_SetOnMouseActivate(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure MaskEdit_SetOnMouseDown(AObj: TMaskEdit; AEventId: NativeUInt); stdcall;
@@ -871,6 +950,11 @@ begin
   AObj.SelText := AValue;
 end;
 
+function MaskEdit_GetDockClientCount(AObj: TMaskEdit): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function MaskEdit_GetDockSite(AObj: TMaskEdit): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -879,6 +963,21 @@ end;
 procedure MaskEdit_SetDockSite(AObj: TMaskEdit; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function MaskEdit_GetAlignDisabled(AObj: TMaskEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function MaskEdit_GetMouseInClient(AObj: TMaskEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function MaskEdit_GetVisibleDockClientCount(AObj: TMaskEdit): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function MaskEdit_GetBrush(AObj: TMaskEdit): TBrush; stdcall;
@@ -946,6 +1045,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure MaskEdit_GetClientOrigin(AObj: TMaskEdit; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure MaskEdit_GetClientRect(AObj: TMaskEdit; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -959,6 +1063,26 @@ end;
 procedure MaskEdit_SetClientWidth(AObj: TMaskEdit; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function MaskEdit_GetControlState(AObj: TMaskEdit): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure MaskEdit_SetControlState(AObj: TMaskEdit; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function MaskEdit_GetControlStyle(AObj: TMaskEdit): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure MaskEdit_SetControlStyle(AObj: TMaskEdit; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function MaskEdit_GetExplicitLeft(AObj: TMaskEdit): Integer; stdcall;
@@ -1126,6 +1250,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function MaskEdit_GetDockClients(AObj: TMaskEdit; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function MaskEdit_GetControls(AObj: TMaskEdit; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1156,16 +1285,26 @@ exports
   MaskEdit_SelectAll,
   MaskEdit_GetSelTextBuf,
   MaskEdit_CanFocus,
+  MaskEdit_ContainsControl,
+  MaskEdit_ControlAtPos,
+  MaskEdit_DisableAlign,
+  MaskEdit_EnableAlign,
+  MaskEdit_FindChildControl,
   MaskEdit_FlipChildren,
   MaskEdit_Focused,
   MaskEdit_HandleAllocated,
+  MaskEdit_InsertControl,
   MaskEdit_Invalidate,
+  MaskEdit_PaintTo,
+  MaskEdit_RemoveControl,
   MaskEdit_Realign,
   MaskEdit_Repaint,
   MaskEdit_ScaleBy,
+  MaskEdit_ScrollBy,
   MaskEdit_SetBounds,
   MaskEdit_SetFocus,
   MaskEdit_Update,
+  MaskEdit_UpdateControlState,
   MaskEdit_BringToFront,
   MaskEdit_ClientToScreen,
   MaskEdit_ClientToParent,
@@ -1179,6 +1318,7 @@ exports
   MaskEdit_SendToBack,
   MaskEdit_Show,
   MaskEdit_GetTextBuf,
+  MaskEdit_SetTextBuf,
   MaskEdit_FindComponent,
   MaskEdit_GetNamePath,
   MaskEdit_Assign,
@@ -1269,9 +1409,11 @@ exports
   MaskEdit_SetOnEndDrag,
   MaskEdit_SetOnEnter,
   MaskEdit_SetOnExit,
+  MaskEdit_SetOnGesture,
   MaskEdit_SetOnKeyDown,
   MaskEdit_SetOnKeyPress,
   MaskEdit_SetOnKeyUp,
+  MaskEdit_SetOnMouseActivate,
   MaskEdit_SetOnMouseDown,
   MaskEdit_SetOnMouseEnter,
   MaskEdit_SetOnMouseLeave,
@@ -1290,8 +1432,12 @@ exports
   MaskEdit_SetSelStart,
   MaskEdit_GetSelText,
   MaskEdit_SetSelText,
+  MaskEdit_GetDockClientCount,
   MaskEdit_GetDockSite,
   MaskEdit_SetDockSite,
+  MaskEdit_GetAlignDisabled,
+  MaskEdit_GetMouseInClient,
+  MaskEdit_GetVisibleDockClientCount,
   MaskEdit_GetBrush,
   MaskEdit_GetControlCount,
   MaskEdit_GetHandle,
@@ -1305,9 +1451,14 @@ exports
   MaskEdit_SetBoundsRect,
   MaskEdit_GetClientHeight,
   MaskEdit_SetClientHeight,
+  MaskEdit_GetClientOrigin,
   MaskEdit_GetClientRect,
   MaskEdit_GetClientWidth,
   MaskEdit_SetClientWidth,
+  MaskEdit_GetControlState,
+  MaskEdit_SetControlState,
+  MaskEdit_GetControlStyle,
+  MaskEdit_SetControlStyle,
   MaskEdit_GetExplicitLeft,
   MaskEdit_GetExplicitTop,
   MaskEdit_GetExplicitWidth,
@@ -1341,6 +1492,7 @@ exports
   MaskEdit_SetName,
   MaskEdit_GetTag,
   MaskEdit_SetTag,
+  MaskEdit_GetDockClients,
   MaskEdit_GetControls,
   MaskEdit_GetComponents,
   MaskEdit_StaticClassType;

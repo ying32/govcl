@@ -30,6 +30,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function FlowPanel_ContainsControl(AObj: TFlowPanel; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function FlowPanel_ControlAtPos(AObj: TFlowPanel; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure FlowPanel_DisableAlign(AObj: TFlowPanel); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure FlowPanel_EnableAlign(AObj: TFlowPanel); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function FlowPanel_FindChildControl(AObj: TFlowPanel; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure FlowPanel_FlipChildren(AObj: TFlowPanel; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -45,9 +70,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure FlowPanel_InsertControl(AObj: TFlowPanel; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure FlowPanel_Invalidate(AObj: TFlowPanel); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure FlowPanel_PaintTo(AObj: TFlowPanel; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure FlowPanel_RemoveControl(AObj: TFlowPanel; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure FlowPanel_Realign(AObj: TFlowPanel); stdcall;
@@ -65,6 +105,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure FlowPanel_ScrollBy(AObj: TFlowPanel; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure FlowPanel_SetBounds(AObj: TFlowPanel; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -78,6 +123,11 @@ end;
 procedure FlowPanel_Update(AObj: TFlowPanel); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure FlowPanel_UpdateControlState(AObj: TFlowPanel); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure FlowPanel_BringToFront(AObj: TFlowPanel); stdcall;
@@ -148,6 +198,11 @@ end;
 function FlowPanel_GetTextLen(AObj: TFlowPanel): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure FlowPanel_SetTextBuf(AObj: TFlowPanel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function FlowPanel_FindComponent(AObj: TFlowPanel; AName: PChar): TComponent; stdcall;
@@ -705,6 +760,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure FlowPanel_SetOnGesture(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure FlowPanel_SetOnGetSiteInfo(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -715,6 +782,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure FlowPanel_SetOnMouseActivate(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure FlowPanel_SetOnMouseDown(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
@@ -813,6 +892,26 @@ begin
   TEventClass.Add(AObj, geUnDock, AEventId);
 end;
 
+function FlowPanel_GetDockClientCount(AObj: TFlowPanel): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function FlowPanel_GetAlignDisabled(AObj: TFlowPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function FlowPanel_GetMouseInClient(AObj: TFlowPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function FlowPanel_GetVisibleDockClientCount(AObj: TFlowPanel): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function FlowPanel_GetBrush(AObj: TFlowPanel): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -868,6 +967,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure FlowPanel_GetClientOrigin(AObj: TFlowPanel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure FlowPanel_GetClientRect(AObj: TFlowPanel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -881,6 +985,26 @@ end;
 procedure FlowPanel_SetClientWidth(AObj: TFlowPanel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function FlowPanel_GetControlState(AObj: TFlowPanel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure FlowPanel_SetControlState(AObj: TFlowPanel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function FlowPanel_GetControlStyle(AObj: TFlowPanel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure FlowPanel_SetControlStyle(AObj: TFlowPanel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function FlowPanel_GetExplicitLeft(AObj: TFlowPanel): Integer; stdcall;
@@ -1048,6 +1172,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function FlowPanel_GetDockClients(AObj: TFlowPanel; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function FlowPanel_GetControls(AObj: TFlowPanel; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1069,16 +1198,26 @@ exports
   FlowPanel_GetControlIndex,
   FlowPanel_SetControlIndex,
   FlowPanel_CanFocus,
+  FlowPanel_ContainsControl,
+  FlowPanel_ControlAtPos,
+  FlowPanel_DisableAlign,
+  FlowPanel_EnableAlign,
+  FlowPanel_FindChildControl,
   FlowPanel_FlipChildren,
   FlowPanel_Focused,
   FlowPanel_HandleAllocated,
+  FlowPanel_InsertControl,
   FlowPanel_Invalidate,
+  FlowPanel_PaintTo,
+  FlowPanel_RemoveControl,
   FlowPanel_Realign,
   FlowPanel_Repaint,
   FlowPanel_ScaleBy,
+  FlowPanel_ScrollBy,
   FlowPanel_SetBounds,
   FlowPanel_SetFocus,
   FlowPanel_Update,
+  FlowPanel_UpdateControlState,
   FlowPanel_BringToFront,
   FlowPanel_ClientToScreen,
   FlowPanel_ClientToParent,
@@ -1093,6 +1232,7 @@ exports
   FlowPanel_Show,
   FlowPanel_GetTextBuf,
   FlowPanel_GetTextLen,
+  FlowPanel_SetTextBuf,
   FlowPanel_FindComponent,
   FlowPanel_GetNamePath,
   FlowPanel_Assign,
@@ -1190,7 +1330,9 @@ exports
   FlowPanel_SetOnEndDrag,
   FlowPanel_SetOnEnter,
   FlowPanel_SetOnExit,
+  FlowPanel_SetOnGesture,
   FlowPanel_SetOnGetSiteInfo,
+  FlowPanel_SetOnMouseActivate,
   FlowPanel_SetOnMouseDown,
   FlowPanel_SetOnMouseEnter,
   FlowPanel_SetOnMouseLeave,
@@ -1199,6 +1341,10 @@ exports
   FlowPanel_SetOnResize,
   FlowPanel_SetOnStartDock,
   FlowPanel_SetOnUnDock,
+  FlowPanel_GetDockClientCount,
+  FlowPanel_GetAlignDisabled,
+  FlowPanel_GetMouseInClient,
+  FlowPanel_GetVisibleDockClientCount,
   FlowPanel_GetBrush,
   FlowPanel_GetControlCount,
   FlowPanel_GetHandle,
@@ -1210,9 +1356,14 @@ exports
   FlowPanel_SetBoundsRect,
   FlowPanel_GetClientHeight,
   FlowPanel_SetClientHeight,
+  FlowPanel_GetClientOrigin,
   FlowPanel_GetClientRect,
   FlowPanel_GetClientWidth,
   FlowPanel_SetClientWidth,
+  FlowPanel_GetControlState,
+  FlowPanel_SetControlState,
+  FlowPanel_GetControlStyle,
+  FlowPanel_SetControlStyle,
   FlowPanel_GetExplicitLeft,
   FlowPanel_GetExplicitTop,
   FlowPanel_GetExplicitWidth,
@@ -1246,6 +1397,7 @@ exports
   FlowPanel_SetName,
   FlowPanel_GetTag,
   FlowPanel_SetTag,
+  FlowPanel_GetDockClients,
   FlowPanel_GetControls,
   FlowPanel_GetComponents,
   FlowPanel_StaticClassType;

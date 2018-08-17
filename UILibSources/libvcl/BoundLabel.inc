@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure BoundLabel_SetTextBuf(AObj: TBoundLabel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function BoundLabel_FindComponent(AObj: TBoundLabel; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -434,6 +439,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure BoundLabel_SetOnGesture(AObj: TBoundLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure BoundLabel_SetOnMouseActivate(AObj: TBoundLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure BoundLabel_SetOnMouseDown(AObj: TBoundLabel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -557,6 +586,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure BoundLabel_GetClientOrigin(AObj: TBoundLabel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure BoundLabel_GetClientRect(AObj: TBoundLabel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -570,6 +604,26 @@ end;
 procedure BoundLabel_SetClientWidth(AObj: TBoundLabel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function BoundLabel_GetControlState(AObj: TBoundLabel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure BoundLabel_SetControlState(AObj: TBoundLabel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function BoundLabel_GetControlStyle(AObj: TBoundLabel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure BoundLabel_SetControlStyle(AObj: TBoundLabel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function BoundLabel_GetExplicitLeft(AObj: TBoundLabel): Integer; stdcall;
@@ -748,6 +802,7 @@ exports
   BoundLabel_Update,
   BoundLabel_GetTextBuf,
   BoundLabel_GetTextLen,
+  BoundLabel_SetTextBuf,
   BoundLabel_FindComponent,
   BoundLabel_GetNamePath,
   BoundLabel_Assign,
@@ -804,6 +859,8 @@ exports
   BoundLabel_SetOnDragOver,
   BoundLabel_SetOnEndDock,
   BoundLabel_SetOnEndDrag,
+  BoundLabel_SetOnGesture,
+  BoundLabel_SetOnMouseActivate,
   BoundLabel_SetOnMouseDown,
   BoundLabel_SetOnMouseMove,
   BoundLabel_SetOnMouseUp,
@@ -823,9 +880,14 @@ exports
   BoundLabel_SetBoundsRect,
   BoundLabel_GetClientHeight,
   BoundLabel_SetClientHeight,
+  BoundLabel_GetClientOrigin,
   BoundLabel_GetClientRect,
   BoundLabel_GetClientWidth,
   BoundLabel_SetClientWidth,
+  BoundLabel_GetControlState,
+  BoundLabel_SetControlState,
+  BoundLabel_GetControlStyle,
+  BoundLabel_SetControlStyle,
   BoundLabel_GetExplicitLeft,
   BoundLabel_GetExplicitTop,
   BoundLabel_GetExplicitWidth,

@@ -1,0 +1,51 @@
+{
+	"!language": {
+	    "Id": 2052,
+		"Name": "zh-CN",
+		"Description": "简体中文",
+		"Author": "ying32",
+		"AuthorEmail": "1444386932@qq.com"
+	},
+	"!resources": {
+		"SOpenFileTitle": "打开",
+		"SOKButton": "确定",
+		"SCancelButton": "取消",
+		"SYesButton": "是(&Y)",
+		"SNoButton": "否(&N)",
+		"SHelpButton": "帮助(&H)",
+		"SCloseButton": "帮助(&C)",
+		"SIgnoreButton": "忽略(&I)",
+		"SRetryButton": "重试(&R)",
+		"SAbortButton": "终止",
+		"SAllButton": "全部(&A)",
+		"SMsgDlgWarning": "警告",
+		"SMsgDlgError": "错误",
+		"SMsgDlgInformation": "信息",
+		"SMsgDlgConfirm": "询问",
+		"SMsgDlgYes": "是(&Y)",
+		"SMsgDlgNo": "否(&N)",
+		"SMsgDlgOK": "确定",
+		"SMsgDlgCancel": "取消",
+		"SMsgDlgHelp": "帮助(&H)",
+		"SMsgDlgHelpNone": "没有有效的帮助",
+		"SMsgDlgHelpHelp": "帮助",
+		"SMsgDlgAbort": "终止(&A)",
+		"SMsgDlgRetry": "重试(&R)",
+		"SMsgDlgIgnore": "忽略(&I)",
+		"SMsgDlgAll": "全部(&A)",
+		"SMsgDlgNoToAll": "全否(&o)",
+		"SMsgDlgYesToAll": "全是(&A)",
+		"SMsgDlgClose": "关闭(&C)"
+	},
+	"multilanguage": {
+		"!resources": {
+			"testRes": "切换语言后需要重启应用程序，是否现在重启？"
+		},
+
+		"Form1": {
+		   "Caption": "多语言测试",
+		   "Button1.Caption": "按钮",
+		   "MenuItem1.Caption": "文件(&F)"
+		}
+	}
+}

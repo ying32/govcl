@@ -45,6 +45,11 @@ begin
   Result :=  AObj.GetTextBuf(Buffer, BufSize);
 end;
 
+procedure Clipboard_SetTextBuf(AObj: TClipboard; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Clipboard_GetNamePath(AObj: TClipboard): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -119,6 +124,7 @@ exports
   Clipboard_HasFormat,
   Clipboard_Open,
   Clipboard_GetTextBuf,
+  Clipboard_SetTextBuf,
   Clipboard_GetNamePath,
   Clipboard_ClassType,
   Clipboard_ClassName,

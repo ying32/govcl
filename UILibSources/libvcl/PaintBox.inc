@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure PaintBox_SetTextBuf(AObj: TPaintBox; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function PaintBox_FindComponent(AObj: TPaintBox; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -389,6 +394,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure PaintBox_SetOnGesture(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure PaintBox_SetOnMouseActivate(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure PaintBox_SetOnMouseDown(AObj: TPaintBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -513,6 +542,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure PaintBox_GetClientOrigin(AObj: TPaintBox; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure PaintBox_GetClientRect(AObj: TPaintBox; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -526,6 +560,26 @@ end;
 procedure PaintBox_SetClientWidth(AObj: TPaintBox; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function PaintBox_GetControlState(AObj: TPaintBox): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure PaintBox_SetControlState(AObj: TPaintBox; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function PaintBox_GetControlStyle(AObj: TPaintBox): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure PaintBox_SetControlStyle(AObj: TPaintBox; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function PaintBox_GetExplicitLeft(AObj: TPaintBox): Integer; stdcall;
@@ -734,6 +788,7 @@ exports
   PaintBox_Update,
   PaintBox_GetTextBuf,
   PaintBox_GetTextLen,
+  PaintBox_SetTextBuf,
   PaintBox_FindComponent,
   PaintBox_GetNamePath,
   PaintBox_Assign,
@@ -781,6 +836,8 @@ exports
   PaintBox_SetOnDragOver,
   PaintBox_SetOnEndDock,
   PaintBox_SetOnEndDrag,
+  PaintBox_SetOnGesture,
+  PaintBox_SetOnMouseActivate,
   PaintBox_SetOnMouseDown,
   PaintBox_SetOnMouseEnter,
   PaintBox_SetOnMouseLeave,
@@ -796,9 +853,14 @@ exports
   PaintBox_SetBoundsRect,
   PaintBox_GetClientHeight,
   PaintBox_SetClientHeight,
+  PaintBox_GetClientOrigin,
   PaintBox_GetClientRect,
   PaintBox_GetClientWidth,
   PaintBox_SetClientWidth,
+  PaintBox_GetControlState,
+  PaintBox_SetControlState,
+  PaintBox_GetControlStyle,
+  PaintBox_SetControlStyle,
   PaintBox_GetExplicitLeft,
   PaintBox_GetExplicitTop,
   PaintBox_GetExplicitWidth,

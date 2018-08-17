@@ -35,6 +35,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ColorListBox_ContainsControl(AObj: TColorListBox; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ColorListBox_ControlAtPos(AObj: TColorListBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure ColorListBox_DisableAlign(AObj: TColorListBox); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ColorListBox_EnableAlign(AObj: TColorListBox); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function ColorListBox_FindChildControl(AObj: TColorListBox; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ColorListBox_FlipChildren(AObj: TColorListBox; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -50,9 +75,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ColorListBox_InsertControl(AObj: TColorListBox; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ColorListBox_Invalidate(AObj: TColorListBox); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure ColorListBox_RemoveControl(AObj: TColorListBox; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ColorListBox_Realign(AObj: TColorListBox); extdecl;
@@ -68,6 +103,11 @@ end;
 procedure ColorListBox_ScaleBy(AObj: TColorListBox; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure ColorListBox_ScrollBy(AObj: TColorListBox; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure ColorListBox_SetBounds(AObj: TColorListBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -153,6 +193,11 @@ end;
 function ColorListBox_GetTextLen(AObj: TColorListBox): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ColorListBox_SetTextBuf(AObj: TColorListBox; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ColorListBox_FindComponent(AObj: TColorListBox; AName: PChar): TComponent; extdecl;
@@ -642,6 +687,11 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ColorListBox_GetDockClientCount(AObj: TColorListBox): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ColorListBox_GetDockSite(AObj: TColorListBox): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -650,6 +700,11 @@ end;
 procedure ColorListBox_SetDockSite(AObj: TColorListBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ColorListBox_GetVisibleDockClientCount(AObj: TColorListBox): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ColorListBox_GetBrush(AObj: TColorListBox): TBrush; extdecl;
@@ -717,6 +772,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ColorListBox_GetClientOrigin(AObj: TColorListBox; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ColorListBox_GetClientRect(AObj: TColorListBox; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -730,6 +790,26 @@ end;
 procedure ColorListBox_SetClientWidth(AObj: TColorListBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ColorListBox_GetControlState(AObj: TColorListBox): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ColorListBox_SetControlState(AObj: TColorListBox; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ColorListBox_GetControlStyle(AObj: TColorListBox): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ColorListBox_SetControlStyle(AObj: TColorListBox; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ColorListBox_GetFloating(AObj: TColorListBox): LongBool; extdecl;
@@ -857,6 +937,11 @@ begin
   Result :=  PChar(AObj.ColorNames[Index]);
 end;
 
+function ColorListBox_GetDockClients(AObj: TColorListBox; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ColorListBox_GetControls(AObj: TColorListBox; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -879,13 +964,21 @@ exports
   ColorListBox_ClearSelection,
   ColorListBox_SelectAll,
   ColorListBox_CanFocus,
+  ColorListBox_ContainsControl,
+  ColorListBox_ControlAtPos,
+  ColorListBox_DisableAlign,
+  ColorListBox_EnableAlign,
+  ColorListBox_FindChildControl,
   ColorListBox_FlipChildren,
   ColorListBox_Focused,
   ColorListBox_HandleAllocated,
+  ColorListBox_InsertControl,
   ColorListBox_Invalidate,
+  ColorListBox_RemoveControl,
   ColorListBox_Realign,
   ColorListBox_Repaint,
   ColorListBox_ScaleBy,
+  ColorListBox_ScrollBy,
   ColorListBox_SetBounds,
   ColorListBox_SetFocus,
   ColorListBox_Update,
@@ -903,6 +996,7 @@ exports
   ColorListBox_Show,
   ColorListBox_GetTextBuf,
   ColorListBox_GetTextLen,
+  ColorListBox_SetTextBuf,
   ColorListBox_FindComponent,
   ColorListBox_GetNamePath,
   ColorListBox_Assign,
@@ -978,8 +1072,10 @@ exports
   ColorListBox_GetSelCount,
   ColorListBox_GetItemIndex,
   ColorListBox_SetItemIndex,
+  ColorListBox_GetDockClientCount,
   ColorListBox_GetDockSite,
   ColorListBox_SetDockSite,
+  ColorListBox_GetVisibleDockClientCount,
   ColorListBox_GetBrush,
   ColorListBox_GetControlCount,
   ColorListBox_GetHandle,
@@ -993,9 +1089,14 @@ exports
   ColorListBox_SetBoundsRect,
   ColorListBox_GetClientHeight,
   ColorListBox_SetClientHeight,
+  ColorListBox_GetClientOrigin,
   ColorListBox_GetClientRect,
   ColorListBox_GetClientWidth,
   ColorListBox_SetClientWidth,
+  ColorListBox_GetControlState,
+  ColorListBox_SetControlState,
+  ColorListBox_GetControlStyle,
+  ColorListBox_SetControlStyle,
   ColorListBox_GetFloating,
   ColorListBox_GetParent,
   ColorListBox_SetParent,
@@ -1021,6 +1122,7 @@ exports
   ColorListBox_SetTag,
   ColorListBox_GetColors,
   ColorListBox_GetColorNames,
+  ColorListBox_GetDockClients,
   ColorListBox_GetControls,
   ColorListBox_GetComponents,
   ColorListBox_StaticClassType;

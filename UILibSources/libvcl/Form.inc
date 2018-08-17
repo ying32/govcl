@@ -50,6 +50,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function Form_ContainsControl(AObj: TForm; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function Form_ControlAtPos(AObj: TForm; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure Form_DisableAlign(AObj: TForm); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure Form_EnableAlign(AObj: TForm); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function Form_FindChildControl(AObj: TForm; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure Form_FlipChildren(AObj: TForm; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -65,9 +90,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure Form_InsertControl(AObj: TForm; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure Form_Invalidate(AObj: TForm); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure Form_PaintTo(AObj: TForm; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure Form_RemoveControl(AObj: TForm; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure Form_Realign(AObj: TForm); stdcall;
@@ -85,6 +125,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure Form_ScrollBy(AObj: TForm; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure Form_SetBounds(AObj: TForm; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -93,6 +138,11 @@ end;
 procedure Form_Update(AObj: TForm); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure Form_UpdateControlState(AObj: TForm); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure Form_BringToFront(AObj: TForm); stdcall;
@@ -153,6 +203,11 @@ end;
 function Form_GetTextLen(AObj: TForm): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure Form_SetTextBuf(AObj: TForm; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function Form_FindComponent(AObj: TForm; AName: PChar): TComponent; stdcall;
@@ -698,6 +753,18 @@ begin
   TEventClass.Add(AObj, geEndDock, AEventId);
 end;
 
+procedure Form_SetOnGesture(AObj: TForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure Form_SetOnGetSiteInfo(AObj: TForm; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -768,6 +835,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure Form_SetOnMouseActivate(AObj: TForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure Form_SetOnMouseDown(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -983,6 +1062,26 @@ begin
   AObj.Top := AValue;
 end;
 
+function Form_GetDockClientCount(AObj: TForm): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function Form_GetAlignDisabled(AObj: TForm): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function Form_GetMouseInClient(AObj: TForm): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function Form_GetVisibleDockClientCount(AObj: TForm): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function Form_GetBrush(AObj: TForm): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -1048,9 +1147,34 @@ begin
   AObj.BoundsRect := AValue;
 end;
 
+procedure Form_GetClientOrigin(AObj: TForm; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Form_GetClientRect(AObj: TForm; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
+end;
+
+function Form_GetControlState(AObj: TForm): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Form_SetControlState(AObj: TForm; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Form_GetControlStyle(AObj: TForm): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Form_SetControlStyle(AObj: TForm; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Form_GetExplicitLeft(AObj: TForm): Integer; stdcall;
@@ -1178,6 +1302,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Form_GetDockClients(AObj: TForm; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function Form_GetControls(AObj: TForm; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1203,15 +1332,25 @@ exports
   Form_Show,
   Form_ShowModal,
   Form_CanFocus,
+  Form_ContainsControl,
+  Form_ControlAtPos,
+  Form_DisableAlign,
+  Form_EnableAlign,
+  Form_FindChildControl,
   Form_FlipChildren,
   Form_Focused,
   Form_HandleAllocated,
+  Form_InsertControl,
   Form_Invalidate,
+  Form_PaintTo,
+  Form_RemoveControl,
   Form_Realign,
   Form_Repaint,
   Form_ScaleBy,
+  Form_ScrollBy,
   Form_SetBounds,
   Form_Update,
+  Form_UpdateControlState,
   Form_BringToFront,
   Form_ClientToScreen,
   Form_ClientToParent,
@@ -1224,6 +1363,7 @@ exports
   Form_SendToBack,
   Form_GetTextBuf,
   Form_GetTextLen,
+  Form_SetTextBuf,
   Form_FindComponent,
   Form_GetNamePath,
   Form_Assign,
@@ -1320,12 +1460,14 @@ exports
   Form_SetOnDragDrop,
   Form_SetOnDragOver,
   Form_SetOnEndDock,
+  Form_SetOnGesture,
   Form_SetOnGetSiteInfo,
   Form_SetOnHide,
   Form_SetOnHelp,
   Form_SetOnKeyDown,
   Form_SetOnKeyPress,
   Form_SetOnKeyUp,
+  Form_SetOnMouseActivate,
   Form_SetOnMouseDown,
   Form_SetOnMouseEnter,
   Form_SetOnMouseLeave,
@@ -1349,6 +1491,10 @@ exports
   Form_SetLeft,
   Form_GetTop,
   Form_SetTop,
+  Form_GetDockClientCount,
+  Form_GetAlignDisabled,
+  Form_GetMouseInClient,
+  Form_GetVisibleDockClientCount,
   Form_GetBrush,
   Form_GetControlCount,
   Form_GetHandle,
@@ -1362,7 +1508,12 @@ exports
   Form_SetTabStop,
   Form_GetBoundsRect,
   Form_SetBoundsRect,
+  Form_GetClientOrigin,
   Form_GetClientRect,
+  Form_GetControlState,
+  Form_SetControlState,
+  Form_GetControlStyle,
+  Form_SetControlStyle,
   Form_GetExplicitLeft,
   Form_GetExplicitTop,
   Form_GetExplicitWidth,
@@ -1388,6 +1539,7 @@ exports
   Form_SetName,
   Form_GetTag,
   Form_SetTag,
+  Form_GetDockClients,
   Form_GetControls,
   Form_GetComponents,
   Form_StaticClassType;

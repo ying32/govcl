@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function StaticText_ContainsControl(AObj: TStaticText; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function StaticText_ControlAtPos(AObj: TStaticText; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure StaticText_DisableAlign(AObj: TStaticText); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure StaticText_EnableAlign(AObj: TStaticText); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function StaticText_FindChildControl(AObj: TStaticText; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure StaticText_FlipChildren(AObj: TStaticText; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure StaticText_InsertControl(AObj: TStaticText; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure StaticText_Invalidate(AObj: TStaticText); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure StaticText_RemoveControl(AObj: TStaticText; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure StaticText_Realign(AObj: TStaticText); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure StaticText_ScaleBy(AObj: TStaticText; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure StaticText_ScrollBy(AObj: TStaticText; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure StaticText_SetBounds(AObj: TStaticText; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function StaticText_GetTextLen(AObj: TStaticText): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure StaticText_SetTextBuf(AObj: TStaticText; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function StaticText_FindComponent(AObj: TStaticText; AName: PChar): TComponent; extdecl;
@@ -562,6 +607,11 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function StaticText_GetDockClientCount(AObj: TStaticText): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function StaticText_GetDockSite(AObj: TStaticText): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -570,6 +620,11 @@ end;
 procedure StaticText_SetDockSite(AObj: TStaticText; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function StaticText_GetVisibleDockClientCount(AObj: TStaticText): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function StaticText_GetBrush(AObj: TStaticText): TBrush; extdecl;
@@ -637,6 +692,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure StaticText_GetClientOrigin(AObj: TStaticText; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure StaticText_GetClientRect(AObj: TStaticText; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -650,6 +710,26 @@ end;
 procedure StaticText_SetClientWidth(AObj: TStaticText; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function StaticText_GetControlState(AObj: TStaticText): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure StaticText_SetControlState(AObj: TStaticText; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function StaticText_GetControlStyle(AObj: TStaticText): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure StaticText_SetControlStyle(AObj: TStaticText; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function StaticText_GetFloating(AObj: TStaticText): LongBool; extdecl;
@@ -767,6 +847,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function StaticText_GetDockClients(AObj: TStaticText; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function StaticText_GetControls(AObj: TStaticText; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -786,13 +871,21 @@ exports
   StaticText_Create,
   StaticText_Free,
   StaticText_CanFocus,
+  StaticText_ContainsControl,
+  StaticText_ControlAtPos,
+  StaticText_DisableAlign,
+  StaticText_EnableAlign,
+  StaticText_FindChildControl,
   StaticText_FlipChildren,
   StaticText_Focused,
   StaticText_HandleAllocated,
+  StaticText_InsertControl,
   StaticText_Invalidate,
+  StaticText_RemoveControl,
   StaticText_Realign,
   StaticText_Repaint,
   StaticText_ScaleBy,
+  StaticText_ScrollBy,
   StaticText_SetBounds,
   StaticText_SetFocus,
   StaticText_Update,
@@ -810,6 +903,7 @@ exports
   StaticText_Show,
   StaticText_GetTextBuf,
   StaticText_GetTextLen,
+  StaticText_SetTextBuf,
   StaticText_FindComponent,
   StaticText_GetNamePath,
   StaticText_Assign,
@@ -879,8 +973,10 @@ exports
   StaticText_SetOnMouseLeave,
   StaticText_SetOnMouseMove,
   StaticText_SetOnMouseUp,
+  StaticText_GetDockClientCount,
   StaticText_GetDockSite,
   StaticText_SetDockSite,
+  StaticText_GetVisibleDockClientCount,
   StaticText_GetBrush,
   StaticText_GetControlCount,
   StaticText_GetHandle,
@@ -894,9 +990,14 @@ exports
   StaticText_SetBoundsRect,
   StaticText_GetClientHeight,
   StaticText_SetClientHeight,
+  StaticText_GetClientOrigin,
   StaticText_GetClientRect,
   StaticText_GetClientWidth,
   StaticText_SetClientWidth,
+  StaticText_GetControlState,
+  StaticText_SetControlState,
+  StaticText_GetControlStyle,
+  StaticText_SetControlStyle,
   StaticText_GetFloating,
   StaticText_GetParent,
   StaticText_SetParent,
@@ -920,6 +1021,7 @@ exports
   StaticText_SetName,
   StaticText_GetTag,
   StaticText_SetTag,
+  StaticText_GetDockClients,
   StaticText_GetControls,
   StaticText_GetComponents,
   StaticText_StaticClassType;

@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function HeaderControl_ContainsControl(AObj: THeaderControl; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function HeaderControl_ControlAtPos(AObj: THeaderControl; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure HeaderControl_DisableAlign(AObj: THeaderControl); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure HeaderControl_EnableAlign(AObj: THeaderControl); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function HeaderControl_FindChildControl(AObj: THeaderControl; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 function HeaderControl_Focused(AObj: THeaderControl): LongBool; stdcall;
 begin
   Result :=  AObj.Focused;
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure HeaderControl_InsertControl(AObj: THeaderControl; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure HeaderControl_Invalidate(AObj: THeaderControl); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure HeaderControl_PaintTo(AObj: THeaderControl; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure HeaderControl_RemoveControl(AObj: THeaderControl; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure HeaderControl_Realign(AObj: THeaderControl); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure HeaderControl_ScrollBy(AObj: THeaderControl; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure HeaderControl_SetBounds(AObj: THeaderControl; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure HeaderControl_Update(AObj: THeaderControl); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure HeaderControl_UpdateControlState(AObj: THeaderControl); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure HeaderControl_BringToFront(AObj: THeaderControl); stdcall;
@@ -138,6 +188,11 @@ end;
 function HeaderControl_GetTextLen(AObj: THeaderControl): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure HeaderControl_SetTextBuf(AObj: THeaderControl; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function HeaderControl_FindComponent(AObj: THeaderControl; AName: PChar): TComponent; stdcall;
@@ -465,6 +520,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure HeaderControl_SetOnGesture(AObj: THeaderControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure HeaderControl_SetOnMouseActivate(AObj: THeaderControl; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure HeaderControl_SetOnMouseDown(AObj: THeaderControl; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -638,6 +717,11 @@ begin
   TEventClass.Add(AObj, geSectionCheck, AEventId);
 end;
 
+function HeaderControl_GetDockClientCount(AObj: THeaderControl): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function HeaderControl_GetDockSite(AObj: THeaderControl): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -646,6 +730,21 @@ end;
 procedure HeaderControl_SetDockSite(AObj: THeaderControl; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function HeaderControl_GetAlignDisabled(AObj: THeaderControl): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function HeaderControl_GetMouseInClient(AObj: THeaderControl): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function HeaderControl_GetVisibleDockClientCount(AObj: THeaderControl): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function HeaderControl_GetBrush(AObj: THeaderControl): TBrush; stdcall;
@@ -733,6 +832,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure HeaderControl_GetClientOrigin(AObj: THeaderControl; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure HeaderControl_GetClientRect(AObj: THeaderControl; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -746,6 +850,26 @@ end;
 procedure HeaderControl_SetClientWidth(AObj: THeaderControl; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function HeaderControl_GetControlState(AObj: THeaderControl): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure HeaderControl_SetControlState(AObj: THeaderControl; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function HeaderControl_GetControlStyle(AObj: THeaderControl): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure HeaderControl_SetControlStyle(AObj: THeaderControl; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function HeaderControl_GetExplicitLeft(AObj: THeaderControl): Integer; stdcall;
@@ -913,6 +1037,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function HeaderControl_GetDockClients(AObj: THeaderControl; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function HeaderControl_GetControls(AObj: THeaderControl; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -933,15 +1062,25 @@ exports
   HeaderControl_Free,
   HeaderControl_FlipChildren,
   HeaderControl_CanFocus,
+  HeaderControl_ContainsControl,
+  HeaderControl_ControlAtPos,
+  HeaderControl_DisableAlign,
+  HeaderControl_EnableAlign,
+  HeaderControl_FindChildControl,
   HeaderControl_Focused,
   HeaderControl_HandleAllocated,
+  HeaderControl_InsertControl,
   HeaderControl_Invalidate,
+  HeaderControl_PaintTo,
+  HeaderControl_RemoveControl,
   HeaderControl_Realign,
   HeaderControl_Repaint,
   HeaderControl_ScaleBy,
+  HeaderControl_ScrollBy,
   HeaderControl_SetBounds,
   HeaderControl_SetFocus,
   HeaderControl_Update,
+  HeaderControl_UpdateControlState,
   HeaderControl_BringToFront,
   HeaderControl_ClientToScreen,
   HeaderControl_ClientToParent,
@@ -956,6 +1095,7 @@ exports
   HeaderControl_Show,
   HeaderControl_GetTextBuf,
   HeaderControl_GetTextLen,
+  HeaderControl_SetTextBuf,
   HeaderControl_FindComponent,
   HeaderControl_GetNamePath,
   HeaderControl_Assign,
@@ -1014,6 +1154,8 @@ exports
   HeaderControl_SetOnDragOver,
   HeaderControl_SetOnEndDock,
   HeaderControl_SetOnEndDrag,
+  HeaderControl_SetOnGesture,
+  HeaderControl_SetOnMouseActivate,
   HeaderControl_SetOnMouseDown,
   HeaderControl_SetOnMouseEnter,
   HeaderControl_SetOnMouseLeave,
@@ -1029,8 +1171,12 @@ exports
   HeaderControl_SetOnStartDock,
   HeaderControl_GetCanvas,
   HeaderControl_SetOnSectionCheck,
+  HeaderControl_GetDockClientCount,
   HeaderControl_GetDockSite,
   HeaderControl_SetDockSite,
+  HeaderControl_GetAlignDisabled,
+  HeaderControl_GetMouseInClient,
+  HeaderControl_GetVisibleDockClientCount,
   HeaderControl_GetBrush,
   HeaderControl_GetControlCount,
   HeaderControl_GetHandle,
@@ -1048,9 +1194,14 @@ exports
   HeaderControl_SetBoundsRect,
   HeaderControl_GetClientHeight,
   HeaderControl_SetClientHeight,
+  HeaderControl_GetClientOrigin,
   HeaderControl_GetClientRect,
   HeaderControl_GetClientWidth,
   HeaderControl_SetClientWidth,
+  HeaderControl_GetControlState,
+  HeaderControl_SetControlState,
+  HeaderControl_GetControlStyle,
+  HeaderControl_SetControlStyle,
   HeaderControl_GetExplicitLeft,
   HeaderControl_GetExplicitTop,
   HeaderControl_GetExplicitWidth,
@@ -1084,6 +1235,7 @@ exports
   HeaderControl_SetName,
   HeaderControl_GetTag,
   HeaderControl_SetTag,
+  HeaderControl_GetDockClients,
   HeaderControl_GetControls,
   HeaderControl_GetComponents,
   HeaderControl_StaticClassType;

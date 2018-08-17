@@ -110,6 +110,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure SpeedButton_SetTextBuf(AObj: TSpeedButton; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function SpeedButton_FindComponent(AObj: TSpeedButton; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -409,6 +414,18 @@ begin
   TEventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure SpeedButton_SetOnMouseActivate(AObj: TSpeedButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure SpeedButton_SetOnMouseDown(AObj: TSpeedButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -489,6 +506,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure SpeedButton_GetClientOrigin(AObj: TSpeedButton; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure SpeedButton_GetClientRect(AObj: TSpeedButton; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -502,6 +524,26 @@ end;
 procedure SpeedButton_SetClientWidth(AObj: TSpeedButton; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function SpeedButton_GetControlState(AObj: TSpeedButton): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure SpeedButton_SetControlState(AObj: TSpeedButton; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function SpeedButton_GetControlStyle(AObj: TSpeedButton): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure SpeedButton_SetControlStyle(AObj: TSpeedButton; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function SpeedButton_GetExplicitLeft(AObj: TSpeedButton): Integer; stdcall;
@@ -537,6 +579,18 @@ end;
 procedure SpeedButton_SetParent(AObj: TSpeedButton; AValue: TWinControl); stdcall;
 begin
   AObj.Parent := AValue;
+end;
+
+procedure SpeedButton_SetOnGesture(AObj: TSpeedButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function SpeedButton_GetAlignWithMargins(AObj: TSpeedButton): LongBool; stdcall;
@@ -701,6 +755,7 @@ exports
   SpeedButton_Update,
   SpeedButton_GetTextBuf,
   SpeedButton_GetTextLen,
+  SpeedButton_SetTextBuf,
   SpeedButton_FindComponent,
   SpeedButton_GetNamePath,
   SpeedButton_Assign,
@@ -758,6 +813,7 @@ exports
   SpeedButton_SetStyleElements,
   SpeedButton_SetOnClick,
   SpeedButton_SetOnDblClick,
+  SpeedButton_SetOnMouseActivate,
   SpeedButton_SetOnMouseDown,
   SpeedButton_SetOnMouseEnter,
   SpeedButton_SetOnMouseLeave,
@@ -767,9 +823,14 @@ exports
   SpeedButton_SetBoundsRect,
   SpeedButton_GetClientHeight,
   SpeedButton_SetClientHeight,
+  SpeedButton_GetClientOrigin,
   SpeedButton_GetClientRect,
   SpeedButton_GetClientWidth,
   SpeedButton_SetClientWidth,
+  SpeedButton_GetControlState,
+  SpeedButton_SetControlState,
+  SpeedButton_GetControlStyle,
+  SpeedButton_SetControlStyle,
   SpeedButton_GetExplicitLeft,
   SpeedButton_GetExplicitTop,
   SpeedButton_GetExplicitWidth,
@@ -777,6 +838,7 @@ exports
   SpeedButton_GetFloating,
   SpeedButton_GetParent,
   SpeedButton_SetParent,
+  SpeedButton_SetOnGesture,
   SpeedButton_GetAlignWithMargins,
   SpeedButton_SetAlignWithMargins,
   SpeedButton_GetLeft,

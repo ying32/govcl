@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function WinControl_ContainsControl(AObj: TWinControl; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function WinControl_ControlAtPos(AObj: TWinControl; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure WinControl_DisableAlign(AObj: TWinControl); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure WinControl_EnableAlign(AObj: TWinControl); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function WinControl_FindChildControl(AObj: TWinControl; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure WinControl_FlipChildren(AObj: TWinControl; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure WinControl_InsertControl(AObj: TWinControl; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure WinControl_Invalidate(AObj: TWinControl); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure WinControl_RemoveControl(AObj: TWinControl; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure WinControl_Realign(AObj: TWinControl); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure WinControl_ScaleBy(AObj: TWinControl; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure WinControl_ScrollBy(AObj: TWinControl; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure WinControl_SetBounds(AObj: TWinControl; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -140,6 +180,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure WinControl_SetTextBuf(AObj: TWinControl; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function WinControl_FindComponent(AObj: TWinControl; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -190,6 +235,11 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function WinControl_GetDockClientCount(AObj: TWinControl): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function WinControl_GetDockSite(AObj: TWinControl): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -208,6 +258,11 @@ end;
 procedure WinControl_SetDoubleBuffered(AObj: TWinControl; AValue: LongBool); extdecl;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function WinControl_GetVisibleDockClientCount(AObj: TWinControl): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function WinControl_GetBrush(AObj: TWinControl): TBrush; extdecl;
@@ -335,6 +390,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure WinControl_GetClientOrigin(AObj: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure WinControl_GetClientRect(AObj: TWinControl; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -348,6 +408,26 @@ end;
 procedure WinControl_SetClientWidth(AObj: TWinControl; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function WinControl_GetControlState(AObj: TWinControl): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure WinControl_SetControlState(AObj: TWinControl; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function WinControl_GetControlStyle(AObj: TWinControl): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure WinControl_SetControlStyle(AObj: TWinControl; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function WinControl_GetFloating(AObj: TWinControl): LongBool; extdecl;
@@ -485,6 +565,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function WinControl_GetDockClients(AObj: TWinControl; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function WinControl_GetControls(AObj: TWinControl; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -504,13 +589,21 @@ exports
   WinControl_Create,
   WinControl_Free,
   WinControl_CanFocus,
+  WinControl_ContainsControl,
+  WinControl_ControlAtPos,
+  WinControl_DisableAlign,
+  WinControl_EnableAlign,
+  WinControl_FindChildControl,
   WinControl_FlipChildren,
   WinControl_Focused,
   WinControl_HandleAllocated,
+  WinControl_InsertControl,
   WinControl_Invalidate,
+  WinControl_RemoveControl,
   WinControl_Realign,
   WinControl_Repaint,
   WinControl_ScaleBy,
+  WinControl_ScrollBy,
   WinControl_SetBounds,
   WinControl_SetFocus,
   WinControl_Update,
@@ -528,6 +621,7 @@ exports
   WinControl_Show,
   WinControl_GetTextBuf,
   WinControl_GetTextLen,
+  WinControl_SetTextBuf,
   WinControl_FindComponent,
   WinControl_GetNamePath,
   WinControl_Assign,
@@ -538,10 +632,12 @@ exports
   WinControl_Equals,
   WinControl_GetHashCode,
   WinControl_ToString,
+  WinControl_GetDockClientCount,
   WinControl_GetDockSite,
   WinControl_SetDockSite,
   WinControl_GetDoubleBuffered,
   WinControl_SetDoubleBuffered,
+  WinControl_GetVisibleDockClientCount,
   WinControl_GetBrush,
   WinControl_GetControlCount,
   WinControl_GetHandle,
@@ -567,9 +663,14 @@ exports
   WinControl_SetBoundsRect,
   WinControl_GetClientHeight,
   WinControl_SetClientHeight,
+  WinControl_GetClientOrigin,
   WinControl_GetClientRect,
   WinControl_GetClientWidth,
   WinControl_SetClientWidth,
+  WinControl_GetControlState,
+  WinControl_SetControlState,
+  WinControl_GetControlStyle,
+  WinControl_SetControlStyle,
   WinControl_GetFloating,
   WinControl_GetShowHint,
   WinControl_SetShowHint,
@@ -597,6 +698,7 @@ exports
   WinControl_SetName,
   WinControl_GetTag,
   WinControl_SetTag,
+  WinControl_GetDockClients,
   WinControl_GetControls,
   WinControl_GetComponents,
   WinControl_StaticClassType;

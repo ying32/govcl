@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Bevel_SetTextBuf(AObj: TBevel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Bevel_FindComponent(AObj: TBevel; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -230,6 +235,18 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure Bevel_SetOnGesture(AObj: TBevel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 function Bevel_GetEnabled(AObj: TBevel): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -280,6 +297,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Bevel_GetClientOrigin(AObj: TBevel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Bevel_GetClientRect(AObj: TBevel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -293,6 +315,26 @@ end;
 procedure Bevel_SetClientWidth(AObj: TBevel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Bevel_GetControlState(AObj: TBevel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Bevel_SetControlState(AObj: TBevel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Bevel_GetControlStyle(AObj: TBevel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Bevel_SetControlStyle(AObj: TBevel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Bevel_GetExplicitLeft(AObj: TBevel): Integer; stdcall;
@@ -501,6 +543,7 @@ exports
   Bevel_Update,
   Bevel_GetTextBuf,
   Bevel_GetTextLen,
+  Bevel_SetTextBuf,
   Bevel_FindComponent,
   Bevel_GetNamePath,
   Bevel_Assign,
@@ -526,6 +569,7 @@ exports
   Bevel_SetStyle,
   Bevel_GetVisible,
   Bevel_SetVisible,
+  Bevel_SetOnGesture,
   Bevel_GetEnabled,
   Bevel_SetEnabled,
   Bevel_GetAction,
@@ -536,9 +580,14 @@ exports
   Bevel_SetBoundsRect,
   Bevel_GetClientHeight,
   Bevel_SetClientHeight,
+  Bevel_GetClientOrigin,
   Bevel_GetClientRect,
   Bevel_GetClientWidth,
   Bevel_SetClientWidth,
+  Bevel_GetControlState,
+  Bevel_SetControlState,
+  Bevel_GetControlStyle,
+  Bevel_SetControlStyle,
   Bevel_GetExplicitLeft,
   Bevel_GetExplicitTop,
   Bevel_GetExplicitWidth,

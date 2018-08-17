@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Shape_SetTextBuf(AObj: TShape; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Shape_FindComponent(AObj: TShape; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -340,6 +345,18 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure Shape_SetOnMouseActivate(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure Shape_SetOnMouseDown(AObj: TShape; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -400,6 +417,18 @@ begin
   TEventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+procedure Shape_SetOnGesture(AObj: TShape; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure Shape_SetOnStartDock(AObj: TShape; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -452,6 +481,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Shape_GetClientOrigin(AObj: TShape; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Shape_GetClientRect(AObj: TShape; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -465,6 +499,26 @@ end;
 procedure Shape_SetClientWidth(AObj: TShape; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Shape_GetControlState(AObj: TShape): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Shape_SetControlState(AObj: TShape; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Shape_GetControlStyle(AObj: TShape): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Shape_SetControlStyle(AObj: TShape; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Shape_GetExplicitLeft(AObj: TShape): Integer; stdcall;
@@ -673,6 +727,7 @@ exports
   Shape_Update,
   Shape_GetTextBuf,
   Shape_GetTextLen,
+  Shape_SetTextBuf,
   Shape_FindComponent,
   Shape_GetNamePath,
   Shape_Assign,
@@ -713,11 +768,13 @@ exports
   Shape_SetOnDragOver,
   Shape_SetOnEndDock,
   Shape_SetOnEndDrag,
+  Shape_SetOnMouseActivate,
   Shape_SetOnMouseDown,
   Shape_SetOnMouseEnter,
   Shape_SetOnMouseLeave,
   Shape_SetOnMouseMove,
   Shape_SetOnMouseUp,
+  Shape_SetOnGesture,
   Shape_SetOnStartDock,
   Shape_GetAction,
   Shape_SetAction,
@@ -727,9 +784,14 @@ exports
   Shape_SetBoundsRect,
   Shape_GetClientHeight,
   Shape_SetClientHeight,
+  Shape_GetClientOrigin,
   Shape_GetClientRect,
   Shape_GetClientWidth,
   Shape_SetClientWidth,
+  Shape_GetControlState,
+  Shape_SetControlState,
+  Shape_GetControlStyle,
+  Shape_SetControlStyle,
   Shape_GetExplicitLeft,
   Shape_GetExplicitTop,
   Shape_GetExplicitWidth,

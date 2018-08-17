@@ -35,6 +35,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function CategoryPanel_ContainsControl(AObj: TCategoryPanel; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function CategoryPanel_ControlAtPos(AObj: TCategoryPanel; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure CategoryPanel_DisableAlign(AObj: TCategoryPanel); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure CategoryPanel_EnableAlign(AObj: TCategoryPanel); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function CategoryPanel_FindChildControl(AObj: TCategoryPanel; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure CategoryPanel_FlipChildren(AObj: TCategoryPanel; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -50,9 +75,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure CategoryPanel_InsertControl(AObj: TCategoryPanel; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure CategoryPanel_Invalidate(AObj: TCategoryPanel); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure CategoryPanel_PaintTo(AObj: TCategoryPanel; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure CategoryPanel_RemoveControl(AObj: TCategoryPanel; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure CategoryPanel_Realign(AObj: TCategoryPanel); stdcall;
@@ -70,6 +110,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure CategoryPanel_ScrollBy(AObj: TCategoryPanel; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure CategoryPanel_SetFocus(AObj: TCategoryPanel); stdcall;
 begin
   AObj.SetFocus;
@@ -78,6 +123,11 @@ end;
 procedure CategoryPanel_Update(AObj: TCategoryPanel); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure CategoryPanel_UpdateControlState(AObj: TCategoryPanel); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure CategoryPanel_BringToFront(AObj: TCategoryPanel); stdcall;
@@ -148,6 +198,11 @@ end;
 function CategoryPanel_GetTextLen(AObj: TCategoryPanel): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure CategoryPanel_SetTextBuf(AObj: TCategoryPanel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function CategoryPanel_FindComponent(AObj: TCategoryPanel; AName: PChar): TComponent; stdcall;
@@ -675,6 +730,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure CategoryPanel_SetOnGesture(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure CategoryPanel_SetOnGetSiteInfo(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -685,6 +752,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure CategoryPanel_SetOnMouseActivate(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure CategoryPanel_SetOnMouseDown(AObj: TCategoryPanel; AEventId: NativeUInt); stdcall;
@@ -781,6 +860,26 @@ begin
   AObj.PanelGroup := AValue;
 end;
 
+function CategoryPanel_GetDockClientCount(AObj: TCategoryPanel): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function CategoryPanel_GetAlignDisabled(AObj: TCategoryPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function CategoryPanel_GetMouseInClient(AObj: TCategoryPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function CategoryPanel_GetVisibleDockClientCount(AObj: TCategoryPanel): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function CategoryPanel_GetBrush(AObj: TCategoryPanel): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -856,6 +955,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure CategoryPanel_GetClientOrigin(AObj: TCategoryPanel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure CategoryPanel_GetClientRect(AObj: TCategoryPanel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -869,6 +973,26 @@ end;
 procedure CategoryPanel_SetClientWidth(AObj: TCategoryPanel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function CategoryPanel_GetControlState(AObj: TCategoryPanel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure CategoryPanel_SetControlState(AObj: TCategoryPanel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function CategoryPanel_GetControlStyle(AObj: TCategoryPanel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure CategoryPanel_SetControlStyle(AObj: TCategoryPanel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function CategoryPanel_GetExplicitLeft(AObj: TCategoryPanel): Integer; stdcall;
@@ -1006,6 +1130,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function CategoryPanel_GetDockClients(AObj: TCategoryPanel; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function CategoryPanel_GetControls(AObj: TCategoryPanel; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1028,15 +1157,25 @@ exports
   CategoryPanel_Expand,
   CategoryPanel_SetBounds,
   CategoryPanel_CanFocus,
+  CategoryPanel_ContainsControl,
+  CategoryPanel_ControlAtPos,
+  CategoryPanel_DisableAlign,
+  CategoryPanel_EnableAlign,
+  CategoryPanel_FindChildControl,
   CategoryPanel_FlipChildren,
   CategoryPanel_Focused,
   CategoryPanel_HandleAllocated,
+  CategoryPanel_InsertControl,
   CategoryPanel_Invalidate,
+  CategoryPanel_PaintTo,
+  CategoryPanel_RemoveControl,
   CategoryPanel_Realign,
   CategoryPanel_Repaint,
   CategoryPanel_ScaleBy,
+  CategoryPanel_ScrollBy,
   CategoryPanel_SetFocus,
   CategoryPanel_Update,
+  CategoryPanel_UpdateControlState,
   CategoryPanel_BringToFront,
   CategoryPanel_ClientToScreen,
   CategoryPanel_ClientToParent,
@@ -1051,6 +1190,7 @@ exports
   CategoryPanel_Show,
   CategoryPanel_GetTextBuf,
   CategoryPanel_GetTextLen,
+  CategoryPanel_SetTextBuf,
   CategoryPanel_FindComponent,
   CategoryPanel_GetNamePath,
   CategoryPanel_Assign,
@@ -1142,7 +1282,9 @@ exports
   CategoryPanel_SetOnEndDrag,
   CategoryPanel_SetOnEnter,
   CategoryPanel_SetOnExit,
+  CategoryPanel_SetOnGesture,
   CategoryPanel_SetOnGetSiteInfo,
+  CategoryPanel_SetOnMouseActivate,
   CategoryPanel_SetOnMouseDown,
   CategoryPanel_SetOnMouseEnter,
   CategoryPanel_SetOnMouseLeave,
@@ -1152,6 +1294,10 @@ exports
   CategoryPanel_SetOnUnDock,
   CategoryPanel_GetPanelGroup,
   CategoryPanel_SetPanelGroup,
+  CategoryPanel_GetDockClientCount,
+  CategoryPanel_GetAlignDisabled,
+  CategoryPanel_GetMouseInClient,
+  CategoryPanel_GetVisibleDockClientCount,
   CategoryPanel_GetBrush,
   CategoryPanel_GetControlCount,
   CategoryPanel_GetHandle,
@@ -1167,9 +1313,14 @@ exports
   CategoryPanel_SetBoundsRect,
   CategoryPanel_GetClientHeight,
   CategoryPanel_SetClientHeight,
+  CategoryPanel_GetClientOrigin,
   CategoryPanel_GetClientRect,
   CategoryPanel_GetClientWidth,
   CategoryPanel_SetClientWidth,
+  CategoryPanel_GetControlState,
+  CategoryPanel_SetControlState,
+  CategoryPanel_GetControlStyle,
+  CategoryPanel_SetControlStyle,
   CategoryPanel_GetExplicitLeft,
   CategoryPanel_GetExplicitTop,
   CategoryPanel_GetExplicitWidth,
@@ -1197,6 +1348,7 @@ exports
   CategoryPanel_SetName,
   CategoryPanel_GetTag,
   CategoryPanel_SetTag,
+  CategoryPanel_GetDockClients,
   CategoryPanel_GetControls,
   CategoryPanel_GetComponents,
   CategoryPanel_StaticClassType;

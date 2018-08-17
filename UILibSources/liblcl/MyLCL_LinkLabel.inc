@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure LinkLabel_SetTextBuf(AObj: TLinkLabel; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function LinkLabel_FindComponent(AObj: TLinkLabel; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -509,6 +514,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure LinkLabel_GetClientOrigin(AObj: TLinkLabel; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure LinkLabel_GetClientRect(AObj: TLinkLabel; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -522,6 +532,26 @@ end;
 procedure LinkLabel_SetClientWidth(AObj: TLinkLabel; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function LinkLabel_GetControlState(AObj: TLinkLabel): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure LinkLabel_SetControlState(AObj: TLinkLabel; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function LinkLabel_GetControlStyle(AObj: TLinkLabel): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure LinkLabel_SetControlStyle(AObj: TLinkLabel; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function LinkLabel_GetFloating(AObj: TLinkLabel): LongBool; extdecl;
@@ -660,6 +690,7 @@ exports
   LinkLabel_Show,
   LinkLabel_GetTextBuf,
   LinkLabel_GetTextLen,
+  LinkLabel_SetTextBuf,
   LinkLabel_FindComponent,
   LinkLabel_GetNamePath,
   LinkLabel_Assign,
@@ -724,9 +755,14 @@ exports
   LinkLabel_SetBoundsRect,
   LinkLabel_GetClientHeight,
   LinkLabel_SetClientHeight,
+  LinkLabel_GetClientOrigin,
   LinkLabel_GetClientRect,
   LinkLabel_GetClientWidth,
   LinkLabel_SetClientWidth,
+  LinkLabel_GetControlState,
+  LinkLabel_SetControlState,
+  LinkLabel_GetControlStyle,
+  LinkLabel_SetControlStyle,
   LinkLabel_GetFloating,
   LinkLabel_GetParent,
   LinkLabel_SetParent,

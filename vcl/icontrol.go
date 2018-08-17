@@ -1,8 +1,6 @@
 package vcl
 
-import (
-	. "github.com/ying32/govcl/vcl/types"
-)
+import . "github.com/ying32/govcl/vcl/types"
 
 type IControl interface {
 	IComponent
@@ -15,7 +13,7 @@ type IControl interface {
 	Refresh()
 	Repaint()
 	Invalidate()
-
+	Realign()
 	// ---------------------属性
 
 	Align() TAlign
@@ -45,10 +43,70 @@ type IControl interface {
 	ShowHint() bool
 	SetShowHint(bool)
 
-	//Parent() *TControl
-	//(IControl)
+	Parent() *TWinControl
+	SetParent(IWinControl)
 
 	SetBounds(int32, int32, int32, int32)
+
+	Caption() string
+	SetCaption(string)
+
+	Cursor() TCursor
+	SetCursor(TCursor)
+
+	Action() *TAction
+	SetAction(IComponent)
+
+	Anchors() TAnchors
+	SetAnchors(TAnchors)
+
+	BoundsRect() TRect
+	SetBoundsRect(TRect)
+
+	ClientHeight() int32
+	SetClientHeight(int32)
+
+	ClientWidth() int32
+	SetClientWidth(int32)
+
+	ClientOrigin() TPoint
+	ClientRect() TRect
+
+	SetTextBuf(string)
+
+	AlignWithMargins() bool
+	SetAlignWithMargins(bool)
+
+	Margins() *TMargins
+	SetMargins(*TMargins)
+
+	PopupMenu() *TPopupMenu
+	SetPopupMenu(IComponent)
+
+	Font() *TFont
+	SetFont(*TFont)
+
+	CustomHint() *TCustomHint
+	SetCustomHint(IComponent)
+
+	ParentCustomHint() bool
+	SetParentCustomHint(bool)
+
+	StyleElements() TStyleElements
+	SetStyleElements(TStyleElements)
+
+	Floating() bool
+	SetFloating(bool)
+
+	Color() TColor
+	SetColor(TColor)
+
+	ControlStyle() TControlStyle
+	SetControlStyle(TControlStyle)
+
+	ControlState() TControlState
+	SetControlState(TControlState)
+
 	// ---------------------事件
 
 	//SetOnClick(TNotifyEvent)

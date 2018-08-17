@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Splitter_SetTextBuf(AObj: TSplitter; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Splitter_FindComponent(AObj: TSplitter; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -307,6 +312,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Splitter_GetClientOrigin(AObj: TSplitter; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Splitter_GetClientRect(AObj: TSplitter; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -320,6 +330,26 @@ end;
 procedure Splitter_SetClientWidth(AObj: TSplitter; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Splitter_GetControlState(AObj: TSplitter): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Splitter_SetControlState(AObj: TSplitter; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Splitter_GetControlStyle(AObj: TSplitter): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Splitter_SetControlStyle(AObj: TSplitter; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Splitter_GetExplicitLeft(AObj: TSplitter): Integer; stdcall;
@@ -365,6 +395,18 @@ end;
 procedure Splitter_SetParent(AObj: TSplitter; AValue: TWinControl); stdcall;
 begin
   AObj.Parent := AValue;
+end;
+
+procedure Splitter_SetOnGesture(AObj: TSplitter; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function Splitter_GetAlignWithMargins(AObj: TSplitter): LongBool; stdcall;
@@ -508,6 +550,7 @@ exports
   Splitter_Update,
   Splitter_GetTextBuf,
   Splitter_GetTextLen,
+  Splitter_SetTextBuf,
   Splitter_FindComponent,
   Splitter_GetNamePath,
   Splitter_Assign,
@@ -547,9 +590,14 @@ exports
   Splitter_SetBoundsRect,
   Splitter_GetClientHeight,
   Splitter_SetClientHeight,
+  Splitter_GetClientOrigin,
   Splitter_GetClientRect,
   Splitter_GetClientWidth,
   Splitter_SetClientWidth,
+  Splitter_GetControlState,
+  Splitter_SetControlState,
+  Splitter_GetControlStyle,
+  Splitter_SetControlStyle,
   Splitter_GetExplicitLeft,
   Splitter_GetExplicitTop,
   Splitter_GetExplicitWidth,
@@ -559,6 +607,7 @@ exports
   Splitter_SetShowHint,
   Splitter_GetParent,
   Splitter_SetParent,
+  Splitter_SetOnGesture,
   Splitter_GetAlignWithMargins,
   Splitter_SetAlignWithMargins,
   Splitter_GetLeft,

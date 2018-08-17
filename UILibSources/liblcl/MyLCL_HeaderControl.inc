@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function HeaderControl_ContainsControl(AObj: THeaderControl; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function HeaderControl_ControlAtPos(AObj: THeaderControl; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure HeaderControl_DisableAlign(AObj: THeaderControl); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure HeaderControl_EnableAlign(AObj: THeaderControl); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function HeaderControl_FindChildControl(AObj: THeaderControl; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 function HeaderControl_Focused(AObj: THeaderControl): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure HeaderControl_InsertControl(AObj: THeaderControl; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure HeaderControl_Invalidate(AObj: THeaderControl); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure HeaderControl_RemoveControl(AObj: THeaderControl; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure HeaderControl_Realign(AObj: THeaderControl); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure HeaderControl_ScaleBy(AObj: THeaderControl; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure HeaderControl_ScrollBy(AObj: THeaderControl; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure HeaderControl_SetBounds(AObj: THeaderControl; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function HeaderControl_GetTextLen(AObj: THeaderControl): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure HeaderControl_SetTextBuf(AObj: THeaderControl; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function HeaderControl_FindComponent(AObj: THeaderControl; AName: PChar): TComponent; extdecl;
@@ -537,6 +582,11 @@ begin
   Result :=  AObj.Canvas;
 end;
 
+function HeaderControl_GetDockClientCount(AObj: THeaderControl): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function HeaderControl_GetDockSite(AObj: THeaderControl): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -545,6 +595,11 @@ end;
 procedure HeaderControl_SetDockSite(AObj: THeaderControl; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function HeaderControl_GetVisibleDockClientCount(AObj: THeaderControl): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function HeaderControl_GetBrush(AObj: THeaderControl): TBrush; extdecl;
@@ -632,6 +687,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure HeaderControl_GetClientOrigin(AObj: THeaderControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure HeaderControl_GetClientRect(AObj: THeaderControl; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -645,6 +705,26 @@ end;
 procedure HeaderControl_SetClientWidth(AObj: THeaderControl; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function HeaderControl_GetControlState(AObj: THeaderControl): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure HeaderControl_SetControlState(AObj: THeaderControl; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function HeaderControl_GetControlStyle(AObj: THeaderControl): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure HeaderControl_SetControlStyle(AObj: THeaderControl; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function HeaderControl_GetFloating(AObj: THeaderControl): LongBool; extdecl;
@@ -762,6 +842,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function HeaderControl_GetDockClients(AObj: THeaderControl; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function HeaderControl_GetControls(AObj: THeaderControl; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -782,12 +867,20 @@ exports
   HeaderControl_Free,
   HeaderControl_FlipChildren,
   HeaderControl_CanFocus,
+  HeaderControl_ContainsControl,
+  HeaderControl_ControlAtPos,
+  HeaderControl_DisableAlign,
+  HeaderControl_EnableAlign,
+  HeaderControl_FindChildControl,
   HeaderControl_Focused,
   HeaderControl_HandleAllocated,
+  HeaderControl_InsertControl,
   HeaderControl_Invalidate,
+  HeaderControl_RemoveControl,
   HeaderControl_Realign,
   HeaderControl_Repaint,
   HeaderControl_ScaleBy,
+  HeaderControl_ScrollBy,
   HeaderControl_SetBounds,
   HeaderControl_SetFocus,
   HeaderControl_Update,
@@ -805,6 +898,7 @@ exports
   HeaderControl_Show,
   HeaderControl_GetTextBuf,
   HeaderControl_GetTextLen,
+  HeaderControl_SetTextBuf,
   HeaderControl_FindComponent,
   HeaderControl_GetNamePath,
   HeaderControl_Assign,
@@ -862,8 +956,10 @@ exports
   HeaderControl_SetOnSectionDrag,
   HeaderControl_SetOnSectionEndDrag,
   HeaderControl_GetCanvas,
+  HeaderControl_GetDockClientCount,
   HeaderControl_GetDockSite,
   HeaderControl_SetDockSite,
+  HeaderControl_GetVisibleDockClientCount,
   HeaderControl_GetBrush,
   HeaderControl_GetControlCount,
   HeaderControl_GetHandle,
@@ -881,9 +977,14 @@ exports
   HeaderControl_SetBoundsRect,
   HeaderControl_GetClientHeight,
   HeaderControl_SetClientHeight,
+  HeaderControl_GetClientOrigin,
   HeaderControl_GetClientRect,
   HeaderControl_GetClientWidth,
   HeaderControl_SetClientWidth,
+  HeaderControl_GetControlState,
+  HeaderControl_SetControlState,
+  HeaderControl_GetControlStyle,
+  HeaderControl_SetControlStyle,
   HeaderControl_GetFloating,
   HeaderControl_GetParent,
   HeaderControl_SetParent,
@@ -907,6 +1008,7 @@ exports
   HeaderControl_SetName,
   HeaderControl_GetTag,
   HeaderControl_SetTag,
+  HeaderControl_GetDockClients,
   HeaderControl_GetControls,
   HeaderControl_GetComponents,
   HeaderControl_StaticClassType;

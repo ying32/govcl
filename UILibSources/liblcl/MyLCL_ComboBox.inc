@@ -40,6 +40,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ComboBox_ContainsControl(AObj: TComboBox; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ComboBox_ControlAtPos(AObj: TComboBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure ComboBox_DisableAlign(AObj: TComboBox); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ComboBox_EnableAlign(AObj: TComboBox); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function ComboBox_FindChildControl(AObj: TComboBox; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ComboBox_FlipChildren(AObj: TComboBox; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -50,9 +75,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ComboBox_InsertControl(AObj: TComboBox; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ComboBox_Invalidate(AObj: TComboBox); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure ComboBox_RemoveControl(AObj: TComboBox; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ComboBox_Realign(AObj: TComboBox); extdecl;
@@ -68,6 +103,11 @@ end;
 procedure ComboBox_ScaleBy(AObj: TComboBox; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure ComboBox_ScrollBy(AObj: TComboBox; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure ComboBox_SetBounds(AObj: TComboBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -153,6 +193,11 @@ end;
 function ComboBox_GetTextLen(AObj: TComboBox): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ComboBox_SetTextBuf(AObj: TComboBox; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ComboBox_FindComponent(AObj: TComboBox; AName: PChar): TComponent; extdecl;
@@ -641,6 +686,18 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure ComboBox_SetOnMeasureItem(AObj: TComboBox; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    EventClass.Remove(AObj, geListBoxMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := @EventClass.ListBoxOnMeasureItem;
+  EventClass.Add(AObj, geListBoxMeasureItem, AEventId);
+end;
+
 procedure ComboBox_SetOnMouseEnter(AObj: TComboBox; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -720,6 +777,11 @@ begin
   AObj.SelStart := AValue;
 end;
 
+function ComboBox_GetDockClientCount(AObj: TComboBox): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ComboBox_GetDockSite(AObj: TComboBox): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -728,6 +790,11 @@ end;
 procedure ComboBox_SetDockSite(AObj: TComboBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ComboBox_GetVisibleDockClientCount(AObj: TComboBox): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ComboBox_GetBrush(AObj: TComboBox): TBrush; extdecl;
@@ -795,6 +862,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ComboBox_GetClientOrigin(AObj: TComboBox; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ComboBox_GetClientRect(AObj: TComboBox; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -808,6 +880,26 @@ end;
 procedure ComboBox_SetClientWidth(AObj: TComboBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ComboBox_GetControlState(AObj: TComboBox): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ComboBox_SetControlState(AObj: TComboBox; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ComboBox_GetControlStyle(AObj: TComboBox): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ComboBox_SetControlStyle(AObj: TComboBox; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ComboBox_GetFloating(AObj: TComboBox): LongBool; extdecl;
@@ -925,6 +1017,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ComboBox_GetDockClients(AObj: TComboBox; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ComboBox_GetControls(AObj: TComboBox; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -948,12 +1045,20 @@ exports
   ComboBox_Focused,
   ComboBox_SelectAll,
   ComboBox_CanFocus,
+  ComboBox_ContainsControl,
+  ComboBox_ControlAtPos,
+  ComboBox_DisableAlign,
+  ComboBox_EnableAlign,
+  ComboBox_FindChildControl,
   ComboBox_FlipChildren,
   ComboBox_HandleAllocated,
+  ComboBox_InsertControl,
   ComboBox_Invalidate,
+  ComboBox_RemoveControl,
   ComboBox_Realign,
   ComboBox_Repaint,
   ComboBox_ScaleBy,
+  ComboBox_ScrollBy,
   ComboBox_SetBounds,
   ComboBox_SetFocus,
   ComboBox_Update,
@@ -971,6 +1076,7 @@ exports
   ComboBox_Show,
   ComboBox_GetTextBuf,
   ComboBox_GetTextLen,
+  ComboBox_SetTextBuf,
   ComboBox_FindComponent,
   ComboBox_GetNamePath,
   ComboBox_Assign,
@@ -1050,6 +1156,7 @@ exports
   ComboBox_SetOnKeyDown,
   ComboBox_SetOnKeyPress,
   ComboBox_SetOnKeyUp,
+  ComboBox_SetOnMeasureItem,
   ComboBox_SetOnMouseEnter,
   ComboBox_SetOnMouseLeave,
   ComboBox_GetItems,
@@ -1063,8 +1170,10 @@ exports
   ComboBox_SetSelLength,
   ComboBox_GetSelStart,
   ComboBox_SetSelStart,
+  ComboBox_GetDockClientCount,
   ComboBox_GetDockSite,
   ComboBox_SetDockSite,
+  ComboBox_GetVisibleDockClientCount,
   ComboBox_GetBrush,
   ComboBox_GetControlCount,
   ComboBox_GetHandle,
@@ -1078,9 +1187,14 @@ exports
   ComboBox_SetBoundsRect,
   ComboBox_GetClientHeight,
   ComboBox_SetClientHeight,
+  ComboBox_GetClientOrigin,
   ComboBox_GetClientRect,
   ComboBox_GetClientWidth,
   ComboBox_SetClientWidth,
+  ComboBox_GetControlState,
+  ComboBox_SetControlState,
+  ComboBox_GetControlStyle,
+  ComboBox_SetControlStyle,
   ComboBox_GetFloating,
   ComboBox_GetParent,
   ComboBox_SetParent,
@@ -1104,6 +1218,7 @@ exports
   ComboBox_SetName,
   ComboBox_GetTag,
   ComboBox_SetTag,
+  ComboBox_GetDockClients,
   ComboBox_GetControls,
   ComboBox_GetComponents,
   ComboBox_StaticClassType;

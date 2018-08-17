@@ -110,6 +110,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure ImageButton_SetTextBuf(AObj: TImageButton; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function ImageButton_FindComponent(AObj: TImageButton; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -439,6 +444,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure ImageButton_SetOnGesture(AObj: TImageButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure ImageButton_SetOnMouseActivate(AObj: TImageButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure ImageButton_SetOnMouseDown(AObj: TImageButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -529,6 +558,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ImageButton_GetClientOrigin(AObj: TImageButton; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ImageButton_GetClientRect(AObj: TImageButton; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -542,6 +576,26 @@ end;
 procedure ImageButton_SetClientWidth(AObj: TImageButton; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ImageButton_GetControlState(AObj: TImageButton): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ImageButton_SetControlState(AObj: TImageButton; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ImageButton_GetControlStyle(AObj: TImageButton): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ImageButton_SetControlStyle(AObj: TImageButton; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ImageButton_GetExplicitLeft(AObj: TImageButton): Integer; stdcall;
@@ -751,6 +805,7 @@ exports
   ImageButton_Update,
   ImageButton_GetTextBuf,
   ImageButton_GetTextLen,
+  ImageButton_SetTextBuf,
   ImageButton_FindComponent,
   ImageButton_GetNamePath,
   ImageButton_Assign,
@@ -807,6 +862,8 @@ exports
   ImageButton_SetOnDragOver,
   ImageButton_SetOnEndDock,
   ImageButton_SetOnEndDrag,
+  ImageButton_SetOnGesture,
+  ImageButton_SetOnMouseActivate,
   ImageButton_SetOnMouseDown,
   ImageButton_SetOnMouseEnter,
   ImageButton_SetOnMouseLeave,
@@ -818,9 +875,14 @@ exports
   ImageButton_SetBoundsRect,
   ImageButton_GetClientHeight,
   ImageButton_SetClientHeight,
+  ImageButton_GetClientOrigin,
   ImageButton_GetClientRect,
   ImageButton_GetClientWidth,
   ImageButton_SetClientWidth,
+  ImageButton_GetControlState,
+  ImageButton_SetControlState,
+  ImageButton_GetControlStyle,
+  ImageButton_SetControlStyle,
   ImageButton_GetExplicitLeft,
   ImageButton_GetExplicitTop,
   ImageButton_GetExplicitWidth,

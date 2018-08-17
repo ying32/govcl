@@ -15,6 +15,16 @@ begin
   AObj.Free;
 end;
 
+procedure Screen_DisableAlign(AObj: TScreen); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure Screen_EnableAlign(AObj: TScreen); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
 procedure Screen_Realign(AObj: TScreen); stdcall;
 begin
   AObj.Realign;
@@ -283,6 +293,8 @@ end;
 exports
   Screen_Create,
   Screen_Free,
+  Screen_DisableAlign,
+  Screen_EnableAlign,
   Screen_Realign,
   Screen_FindComponent,
   Screen_GetNamePath,

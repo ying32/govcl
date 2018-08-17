@@ -30,6 +30,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function StatusBar_ContainsControl(AObj: TStatusBar; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function StatusBar_ControlAtPos(AObj: TStatusBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure StatusBar_DisableAlign(AObj: TStatusBar); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure StatusBar_EnableAlign(AObj: TStatusBar); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function StatusBar_FindChildControl(AObj: TStatusBar; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 function StatusBar_Focused(AObj: TStatusBar): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
@@ -40,9 +65,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure StatusBar_InsertControl(AObj: TStatusBar; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure StatusBar_Invalidate(AObj: TStatusBar); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure StatusBar_RemoveControl(AObj: TStatusBar; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure StatusBar_Realign(AObj: TStatusBar); extdecl;
@@ -58,6 +93,11 @@ end;
 procedure StatusBar_ScaleBy(AObj: TStatusBar; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure StatusBar_ScrollBy(AObj: TStatusBar; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure StatusBar_SetFocus(AObj: TStatusBar); extdecl;
@@ -138,6 +178,11 @@ end;
 function StatusBar_GetTextLen(AObj: TStatusBar): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure StatusBar_SetTextBuf(AObj: TStatusBar; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function StatusBar_FindComponent(AObj: TStatusBar; AName: PChar): TComponent; extdecl;
@@ -615,6 +660,11 @@ begin
   Result :=  AObj.Canvas;
 end;
 
+function StatusBar_GetDockClientCount(AObj: TStatusBar): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function StatusBar_GetDockSite(AObj: TStatusBar): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -623,6 +673,11 @@ end;
 procedure StatusBar_SetDockSite(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function StatusBar_GetVisibleDockClientCount(AObj: TStatusBar): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function StatusBar_GetBrush(AObj: TStatusBar): TBrush; extdecl;
@@ -700,6 +755,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure StatusBar_GetClientOrigin(AObj: TStatusBar; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure StatusBar_GetClientRect(AObj: TStatusBar; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -713,6 +773,26 @@ end;
 procedure StatusBar_SetClientWidth(AObj: TStatusBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function StatusBar_GetControlState(AObj: TStatusBar): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure StatusBar_SetControlState(AObj: TStatusBar; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function StatusBar_GetControlStyle(AObj: TStatusBar): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure StatusBar_SetControlStyle(AObj: TStatusBar; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function StatusBar_GetFloating(AObj: TStatusBar): LongBool; extdecl;
@@ -830,6 +910,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function StatusBar_GetDockClients(AObj: TStatusBar; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function StatusBar_GetControls(AObj: TStatusBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -851,12 +936,20 @@ exports
   StatusBar_FlipChildren,
   StatusBar_SetBounds,
   StatusBar_CanFocus,
+  StatusBar_ContainsControl,
+  StatusBar_ControlAtPos,
+  StatusBar_DisableAlign,
+  StatusBar_EnableAlign,
+  StatusBar_FindChildControl,
   StatusBar_Focused,
   StatusBar_HandleAllocated,
+  StatusBar_InsertControl,
   StatusBar_Invalidate,
+  StatusBar_RemoveControl,
   StatusBar_Realign,
   StatusBar_Repaint,
   StatusBar_ScaleBy,
+  StatusBar_ScrollBy,
   StatusBar_SetFocus,
   StatusBar_Update,
   StatusBar_BringToFront,
@@ -873,6 +966,7 @@ exports
   StatusBar_Show,
   StatusBar_GetTextBuf,
   StatusBar_GetTextLen,
+  StatusBar_SetTextBuf,
   StatusBar_FindComponent,
   StatusBar_GetNamePath,
   StatusBar_Assign,
@@ -947,8 +1041,10 @@ exports
   StatusBar_SetOnResize,
   StatusBar_SetOnStartDock,
   StatusBar_GetCanvas,
+  StatusBar_GetDockClientCount,
   StatusBar_GetDockSite,
   StatusBar_SetDockSite,
+  StatusBar_GetVisibleDockClientCount,
   StatusBar_GetBrush,
   StatusBar_GetControlCount,
   StatusBar_GetHandle,
@@ -964,9 +1060,14 @@ exports
   StatusBar_SetBoundsRect,
   StatusBar_GetClientHeight,
   StatusBar_SetClientHeight,
+  StatusBar_GetClientOrigin,
   StatusBar_GetClientRect,
   StatusBar_GetClientWidth,
   StatusBar_SetClientWidth,
+  StatusBar_GetControlState,
+  StatusBar_SetControlState,
+  StatusBar_GetControlStyle,
+  StatusBar_SetControlStyle,
   StatusBar_GetFloating,
   StatusBar_GetParent,
   StatusBar_SetParent,
@@ -990,6 +1091,7 @@ exports
   StatusBar_SetName,
   StatusBar_GetTag,
   StatusBar_SetTag,
+  StatusBar_GetDockClients,
   StatusBar_GetControls,
   StatusBar_GetComponents,
   StatusBar_StaticClassType;

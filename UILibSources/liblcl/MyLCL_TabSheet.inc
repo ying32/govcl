@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function TabSheet_ContainsControl(AObj: TTabSheet; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function TabSheet_ControlAtPos(AObj: TTabSheet; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure TabSheet_DisableAlign(AObj: TTabSheet); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure TabSheet_EnableAlign(AObj: TTabSheet); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function TabSheet_FindChildControl(AObj: TTabSheet; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure TabSheet_FlipChildren(AObj: TTabSheet; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure TabSheet_InsertControl(AObj: TTabSheet; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure TabSheet_Invalidate(AObj: TTabSheet); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure TabSheet_RemoveControl(AObj: TTabSheet; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure TabSheet_Realign(AObj: TTabSheet); extdecl;
@@ -53,6 +88,11 @@ end;
 procedure TabSheet_ScaleBy(AObj: TTabSheet; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure TabSheet_ScrollBy(AObj: TTabSheet; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure TabSheet_SetBounds(AObj: TTabSheet; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -138,6 +178,11 @@ end;
 function TabSheet_GetTextLen(AObj: TTabSheet): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure TabSheet_SetTextBuf(AObj: TTabSheet; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function TabSheet_FindComponent(AObj: TTabSheet; AName: PChar): TComponent; extdecl;
@@ -543,6 +588,11 @@ begin
   EventClass.Add(AObj, geShow, AEventId);
 end;
 
+function TabSheet_GetDockClientCount(AObj: TTabSheet): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function TabSheet_GetDockSite(AObj: TTabSheet): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -551,6 +601,11 @@ end;
 procedure TabSheet_SetDockSite(AObj: TTabSheet; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function TabSheet_GetVisibleDockClientCount(AObj: TTabSheet): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function TabSheet_GetBrush(AObj: TTabSheet): TBrush; extdecl;
@@ -668,6 +723,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure TabSheet_GetClientOrigin(AObj: TTabSheet; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure TabSheet_GetClientRect(AObj: TTabSheet; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -681,6 +741,26 @@ end;
 procedure TabSheet_SetClientWidth(AObj: TTabSheet; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function TabSheet_GetControlState(AObj: TTabSheet): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure TabSheet_SetControlState(AObj: TTabSheet; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function TabSheet_GetControlStyle(AObj: TTabSheet): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure TabSheet_SetControlStyle(AObj: TTabSheet; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function TabSheet_GetFloating(AObj: TTabSheet): LongBool; extdecl;
@@ -758,6 +838,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function TabSheet_GetDockClients(AObj: TTabSheet; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function TabSheet_GetControls(AObj: TTabSheet; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -777,13 +862,21 @@ exports
   TabSheet_Create,
   TabSheet_Free,
   TabSheet_CanFocus,
+  TabSheet_ContainsControl,
+  TabSheet_ControlAtPos,
+  TabSheet_DisableAlign,
+  TabSheet_EnableAlign,
+  TabSheet_FindChildControl,
   TabSheet_FlipChildren,
   TabSheet_Focused,
   TabSheet_HandleAllocated,
+  TabSheet_InsertControl,
   TabSheet_Invalidate,
+  TabSheet_RemoveControl,
   TabSheet_Realign,
   TabSheet_Repaint,
   TabSheet_ScaleBy,
+  TabSheet_ScrollBy,
   TabSheet_SetBounds,
   TabSheet_SetFocus,
   TabSheet_Update,
@@ -801,6 +894,7 @@ exports
   TabSheet_Show,
   TabSheet_GetTextBuf,
   TabSheet_GetTextLen,
+  TabSheet_SetTextBuf,
   TabSheet_FindComponent,
   TabSheet_GetNamePath,
   TabSheet_Assign,
@@ -862,8 +956,10 @@ exports
   TabSheet_SetOnMouseUp,
   TabSheet_SetOnResize,
   TabSheet_SetOnShow,
+  TabSheet_GetDockClientCount,
   TabSheet_GetDockSite,
   TabSheet_SetDockSite,
+  TabSheet_GetVisibleDockClientCount,
   TabSheet_GetBrush,
   TabSheet_GetControlCount,
   TabSheet_GetHandle,
@@ -887,9 +983,14 @@ exports
   TabSheet_SetBoundsRect,
   TabSheet_GetClientHeight,
   TabSheet_SetClientHeight,
+  TabSheet_GetClientOrigin,
   TabSheet_GetClientRect,
   TabSheet_GetClientWidth,
   TabSheet_SetClientWidth,
+  TabSheet_GetControlState,
+  TabSheet_SetControlState,
+  TabSheet_GetControlStyle,
+  TabSheet_SetControlStyle,
   TabSheet_GetFloating,
   TabSheet_GetParent,
   TabSheet_SetParent,
@@ -905,6 +1006,7 @@ exports
   TabSheet_SetName,
   TabSheet_GetTag,
   TabSheet_SetTag,
+  TabSheet_GetDockClients,
   TabSheet_GetControls,
   TabSheet_GetComponents,
   TabSheet_StaticClassType;

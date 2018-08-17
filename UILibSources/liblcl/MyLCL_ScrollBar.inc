@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ScrollBar_ContainsControl(AObj: TScrollBar; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ScrollBar_ControlAtPos(AObj: TScrollBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure ScrollBar_DisableAlign(AObj: TScrollBar); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ScrollBar_EnableAlign(AObj: TScrollBar); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function ScrollBar_FindChildControl(AObj: TScrollBar; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ScrollBar_FlipChildren(AObj: TScrollBar; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -40,9 +65,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ScrollBar_InsertControl(AObj: TScrollBar; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ScrollBar_Invalidate(AObj: TScrollBar); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure ScrollBar_RemoveControl(AObj: TScrollBar; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ScrollBar_Realign(AObj: TScrollBar); extdecl;
@@ -58,6 +93,11 @@ end;
 procedure ScrollBar_ScaleBy(AObj: TScrollBar; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure ScrollBar_ScrollBy(AObj: TScrollBar; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure ScrollBar_SetBounds(AObj: TScrollBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -143,6 +183,11 @@ end;
 function ScrollBar_GetTextLen(AObj: TScrollBar): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ScrollBar_SetTextBuf(AObj: TScrollBar; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ScrollBar_FindComponent(AObj: TScrollBar; AName: PChar): TComponent; extdecl;
@@ -515,6 +560,11 @@ begin
   EventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+function ScrollBar_GetDockClientCount(AObj: TScrollBar): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ScrollBar_GetDockSite(AObj: TScrollBar): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -523,6 +573,11 @@ end;
 procedure ScrollBar_SetDockSite(AObj: TScrollBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ScrollBar_GetVisibleDockClientCount(AObj: TScrollBar): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ScrollBar_GetBrush(AObj: TScrollBar): TBrush; extdecl;
@@ -590,6 +645,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ScrollBar_GetClientOrigin(AObj: TScrollBar; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ScrollBar_GetClientRect(AObj: TScrollBar; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -603,6 +663,26 @@ end;
 procedure ScrollBar_SetClientWidth(AObj: TScrollBar; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ScrollBar_GetControlState(AObj: TScrollBar): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ScrollBar_SetControlState(AObj: TScrollBar; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ScrollBar_GetControlStyle(AObj: TScrollBar): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ScrollBar_SetControlStyle(AObj: TScrollBar; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ScrollBar_GetFloating(AObj: TScrollBar): LongBool; extdecl;
@@ -720,6 +800,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ScrollBar_GetDockClients(AObj: TScrollBar; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ScrollBar_GetControls(AObj: TScrollBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -740,13 +825,21 @@ exports
   ScrollBar_Free,
   ScrollBar_SetParams,
   ScrollBar_CanFocus,
+  ScrollBar_ContainsControl,
+  ScrollBar_ControlAtPos,
+  ScrollBar_DisableAlign,
+  ScrollBar_EnableAlign,
+  ScrollBar_FindChildControl,
   ScrollBar_FlipChildren,
   ScrollBar_Focused,
   ScrollBar_HandleAllocated,
+  ScrollBar_InsertControl,
   ScrollBar_Invalidate,
+  ScrollBar_RemoveControl,
   ScrollBar_Realign,
   ScrollBar_Repaint,
   ScrollBar_ScaleBy,
+  ScrollBar_ScrollBy,
   ScrollBar_SetBounds,
   ScrollBar_SetFocus,
   ScrollBar_Update,
@@ -764,6 +857,7 @@ exports
   ScrollBar_Show,
   ScrollBar_GetTextBuf,
   ScrollBar_GetTextLen,
+  ScrollBar_SetTextBuf,
   ScrollBar_FindComponent,
   ScrollBar_GetNamePath,
   ScrollBar_Assign,
@@ -824,8 +918,10 @@ exports
   ScrollBar_SetOnKeyDown,
   ScrollBar_SetOnKeyPress,
   ScrollBar_SetOnKeyUp,
+  ScrollBar_GetDockClientCount,
   ScrollBar_GetDockSite,
   ScrollBar_SetDockSite,
+  ScrollBar_GetVisibleDockClientCount,
   ScrollBar_GetBrush,
   ScrollBar_GetControlCount,
   ScrollBar_GetHandle,
@@ -839,9 +935,14 @@ exports
   ScrollBar_SetBoundsRect,
   ScrollBar_GetClientHeight,
   ScrollBar_SetClientHeight,
+  ScrollBar_GetClientOrigin,
   ScrollBar_GetClientRect,
   ScrollBar_GetClientWidth,
   ScrollBar_SetClientWidth,
+  ScrollBar_GetControlState,
+  ScrollBar_SetControlState,
+  ScrollBar_GetControlStyle,
+  ScrollBar_SetControlStyle,
   ScrollBar_GetFloating,
   ScrollBar_GetParent,
   ScrollBar_SetParent,
@@ -865,6 +966,7 @@ exports
   ScrollBar_SetName,
   ScrollBar_GetTag,
   ScrollBar_SetTag,
+  ScrollBar_GetDockClients,
   ScrollBar_GetControls,
   ScrollBar_GetComponents,
   ScrollBar_StaticClassType;

@@ -110,6 +110,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure SpeedButton_SetTextBuf(AObj: TSpeedButton; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function SpeedButton_FindComponent(AObj: TSpeedButton; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -474,6 +479,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure SpeedButton_GetClientOrigin(AObj: TSpeedButton; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure SpeedButton_GetClientRect(AObj: TSpeedButton; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -487,6 +497,26 @@ end;
 procedure SpeedButton_SetClientWidth(AObj: TSpeedButton; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function SpeedButton_GetControlState(AObj: TSpeedButton): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure SpeedButton_SetControlState(AObj: TSpeedButton; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function SpeedButton_GetControlStyle(AObj: TSpeedButton): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure SpeedButton_SetControlStyle(AObj: TSpeedButton; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function SpeedButton_GetFloating(AObj: TSpeedButton): LongBool; extdecl;
@@ -636,6 +666,7 @@ exports
   SpeedButton_Update,
   SpeedButton_GetTextBuf,
   SpeedButton_GetTextLen,
+  SpeedButton_SetTextBuf,
   SpeedButton_FindComponent,
   SpeedButton_GetNamePath,
   SpeedButton_Assign,
@@ -699,9 +730,14 @@ exports
   SpeedButton_SetBoundsRect,
   SpeedButton_GetClientHeight,
   SpeedButton_SetClientHeight,
+  SpeedButton_GetClientOrigin,
   SpeedButton_GetClientRect,
   SpeedButton_GetClientWidth,
   SpeedButton_SetClientWidth,
+  SpeedButton_GetControlState,
+  SpeedButton_SetControlState,
+  SpeedButton_GetControlStyle,
+  SpeedButton_SetControlStyle,
   SpeedButton_GetFloating,
   SpeedButton_GetParent,
   SpeedButton_SetParent,

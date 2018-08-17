@@ -3,6 +3,8 @@ package vcl
 import (
 	"reflect"
 
+	"fmt"
+
 	"github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
@@ -11,6 +13,10 @@ import (
 // ShowMessage 显示一个消息框
 func ShowMessage(msg string) {
 	api.DShowMessage(msg)
+}
+
+func ShowMessageFmt(format string, args ...interface{}) {
+	ShowMessage(fmt.Sprintf(format, args...))
 }
 
 // MessageDlg 消息框，Buttons为按钮样式，祥见types.TMsgDlgButtons

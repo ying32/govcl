@@ -90,6 +90,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function TreeView_ContainsControl(AObj: TTreeView; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function TreeView_ControlAtPos(AObj: TTreeView; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure TreeView_DisableAlign(AObj: TTreeView); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure TreeView_EnableAlign(AObj: TTreeView); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function TreeView_FindChildControl(AObj: TTreeView; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure TreeView_FlipChildren(AObj: TTreeView; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -105,9 +130,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure TreeView_InsertControl(AObj: TTreeView; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure TreeView_Invalidate(AObj: TTreeView); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure TreeView_PaintTo(AObj: TTreeView; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure TreeView_RemoveControl(AObj: TTreeView; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure TreeView_Realign(AObj: TTreeView); stdcall;
@@ -125,6 +165,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure TreeView_ScrollBy(AObj: TTreeView; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure TreeView_SetBounds(AObj: TTreeView; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -138,6 +183,11 @@ end;
 procedure TreeView_Update(AObj: TTreeView); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure TreeView_UpdateControlState(AObj: TTreeView); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure TreeView_BringToFront(AObj: TTreeView); stdcall;
@@ -208,6 +258,11 @@ end;
 function TreeView_GetTextLen(AObj: TTreeView): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure TreeView_SetTextBuf(AObj: TTreeView; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function TreeView_FindComponent(AObj: TTreeView; AName: PChar): TComponent; stdcall;
@@ -705,6 +760,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure TreeView_SetOnAddition(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAddition := nil;
+    TEventClass.Remove(AObj, geTreeViewAddition);
+    Exit;
+  end;
+  AObj.OnAddition := TEventClass.TreeViewOnAddition;
+  TEventClass.Add(AObj, geTreeViewAddition, AEventId);
+end;
+
 procedure TreeView_SetOnAdvancedCustomDraw(AObj: TTreeView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -729,6 +796,18 @@ begin
   TEventClass.Add(AObj, geTreeViewAdvancedCustomDrawItem, AEventId);
 end;
 
+procedure TreeView_SetOnCancelEdit(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCancelEdit := nil;
+    TEventClass.Remove(AObj, geTreeViewCancelEdit);
+    Exit;
+  end;
+  AObj.OnCancelEdit := TEventClass.TreeViewOnCancelEdit;
+  TEventClass.Add(AObj, geTreeViewCancelEdit, AEventId);
+end;
+
 procedure TreeView_SetOnChange(AObj: TTreeView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -741,6 +820,18 @@ begin
   TEventClass.Add(AObj, geTreeViewChange, AEventId);
 end;
 
+procedure TreeView_SetOnChanging(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    TEventClass.Remove(AObj, geTreeViewChanging);
+    Exit;
+  end;
+  AObj.OnChanging := TEventClass.TreeViewOnChanging;
+  TEventClass.Add(AObj, geTreeViewChanging, AEventId);
+end;
+
 procedure TreeView_SetOnClick(AObj: TTreeView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -751,6 +842,30 @@ begin
   end;
   AObj.OnClick := TEventClass.OnClick;
   TEventClass.Add(AObj, geClick, AEventId);
+end;
+
+procedure TreeView_SetOnCollapsed(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCollapsed := nil;
+    TEventClass.Remove(AObj, geTreeViewCollapsed);
+    Exit;
+  end;
+  AObj.OnCollapsed := TEventClass.TreeViewOnCollapsed;
+  TEventClass.Add(AObj, geTreeViewCollapsed, AEventId);
+end;
+
+procedure TreeView_SetOnCollapsing(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCollapsing := nil;
+    TEventClass.Remove(AObj, geTreeViewCollapsing);
+    Exit;
+  end;
+  AObj.OnCollapsing := TEventClass.TreeViewOnCollapsing;
+  TEventClass.Add(AObj, geTreeViewCollapsing, AEventId);
 end;
 
 procedure TreeView_SetOnCompare(AObj: TTreeView; AEventId: NativeUInt); stdcall;
@@ -789,6 +904,18 @@ begin
   TEventClass.Add(AObj, geDblClick, AEventId);
 end;
 
+procedure TreeView_SetOnDeletion(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDeletion := nil;
+    TEventClass.Remove(AObj, geTreeViewDeletion);
+    Exit;
+  end;
+  AObj.OnDeletion := TEventClass.TreeViewOnDeletion;
+  TEventClass.Add(AObj, geTreeViewDeletion, AEventId);
+end;
+
 procedure TreeView_SetOnDragDrop(AObj: TTreeView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -811,6 +938,30 @@ begin
   end;
   AObj.OnDragOver := TEventClass.OnDragOver;
   TEventClass.Add(AObj, geDragOver, AEventId);
+end;
+
+procedure TreeView_SetOnEdited(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEdited := nil;
+    TEventClass.Remove(AObj, geTreeViewEdited);
+    Exit;
+  end;
+  AObj.OnEdited := TEventClass.TreeViewOnEdited;
+  TEventClass.Add(AObj, geTreeViewEdited, AEventId);
+end;
+
+procedure TreeView_SetOnEditing(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEditing := nil;
+    TEventClass.Remove(AObj, geTreeViewEditing);
+    Exit;
+  end;
+  AObj.OnEditing := TEventClass.TreeViewOnEditing;
+  TEventClass.Add(AObj, geTreeViewEditing, AEventId);
 end;
 
 procedure TreeView_SetOnEndDock(AObj: TTreeView; AEventId: NativeUInt); stdcall;
@@ -861,6 +1012,42 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure TreeView_SetOnExpanding(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnExpanding := nil;
+    TEventClass.Remove(AObj, geTreeViewExpanding);
+    Exit;
+  end;
+  AObj.OnExpanding := TEventClass.TreeViewOnExpanding;
+  TEventClass.Add(AObj, geTreeViewExpanding, AEventId);
+end;
+
+procedure TreeView_SetOnExpanded(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnExpanded := nil;
+    TEventClass.Remove(AObj, geTreeViewExpanded);
+    Exit;
+  end;
+  AObj.OnExpanded := TEventClass.TreeViewOnExpanded;
+  TEventClass.Add(AObj, geTreeViewExpanded, AEventId);
+end;
+
+procedure TreeView_SetOnGesture(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure TreeView_SetOnGetImageIndex(AObj: TTreeView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -883,6 +1070,18 @@ begin
   end;
   AObj.OnGetSelectedIndex := TEventClass.TreeViewOnGetSelectedIndex;
   TEventClass.Add(AObj, geTreeViewGetSelectedIndex, AEventId);
+end;
+
+procedure TreeView_SetOnHint(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnHint := nil;
+    TEventClass.Remove(AObj, geTreeViewHint);
+    Exit;
+  end;
+  AObj.OnHint := TEventClass.TreeViewOnHint;
+  TEventClass.Add(AObj, geTreeViewHint, AEventId);
 end;
 
 procedure TreeView_SetOnKeyDown(AObj: TTreeView; AEventId: NativeUInt); stdcall;
@@ -919,6 +1118,18 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure TreeView_SetOnMouseActivate(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure TreeView_SetOnMouseDown(AObj: TTreeView; AEventId: NativeUInt); stdcall;
@@ -1043,6 +1254,11 @@ begin
   Result :=  AObj.SelectionCount;
 end;
 
+function TreeView_GetDockClientCount(AObj: TTreeView): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function TreeView_GetDockSite(AObj: TTreeView): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -1051,6 +1267,21 @@ end;
 procedure TreeView_SetDockSite(AObj: TTreeView; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function TreeView_GetAlignDisabled(AObj: TTreeView): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function TreeView_GetMouseInClient(AObj: TTreeView): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function TreeView_GetVisibleDockClientCount(AObj: TTreeView): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function TreeView_GetBrush(AObj: TTreeView): TBrush; stdcall;
@@ -1118,6 +1349,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure TreeView_GetClientOrigin(AObj: TTreeView; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure TreeView_GetClientRect(AObj: TTreeView; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -1131,6 +1367,26 @@ end;
 procedure TreeView_SetClientWidth(AObj: TTreeView; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function TreeView_GetControlState(AObj: TTreeView): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure TreeView_SetControlState(AObj: TTreeView; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function TreeView_GetControlStyle(AObj: TTreeView): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure TreeView_SetControlStyle(AObj: TTreeView; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function TreeView_GetExplicitLeft(AObj: TTreeView): Integer; stdcall;
@@ -1303,6 +1559,11 @@ begin
   Result :=  AObj.Selections[Index];
 end;
 
+function TreeView_GetDockClients(AObj: TTreeView; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function TreeView_GetControls(AObj: TTreeView; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1336,16 +1597,26 @@ exports
   TreeView_FindNextToSelect,
   TreeView_CustomSort,
   TreeView_CanFocus,
+  TreeView_ContainsControl,
+  TreeView_ControlAtPos,
+  TreeView_DisableAlign,
+  TreeView_EnableAlign,
+  TreeView_FindChildControl,
   TreeView_FlipChildren,
   TreeView_Focused,
   TreeView_HandleAllocated,
+  TreeView_InsertControl,
   TreeView_Invalidate,
+  TreeView_PaintTo,
+  TreeView_RemoveControl,
   TreeView_Realign,
   TreeView_Repaint,
   TreeView_ScaleBy,
+  TreeView_ScrollBy,
   TreeView_SetBounds,
   TreeView_SetFocus,
   TreeView_Update,
+  TreeView_UpdateControlState,
   TreeView_BringToFront,
   TreeView_ClientToScreen,
   TreeView_ClientToParent,
@@ -1360,6 +1631,7 @@ exports
   TreeView_Show,
   TreeView_GetTextBuf,
   TreeView_GetTextLen,
+  TreeView_SetTextBuf,
   TreeView_FindComponent,
   TreeView_GetNamePath,
   TreeView_Assign,
@@ -1459,24 +1731,37 @@ exports
   TreeView_SetVisible,
   TreeView_GetStyleElements,
   TreeView_SetStyleElements,
+  TreeView_SetOnAddition,
   TreeView_SetOnAdvancedCustomDraw,
   TreeView_SetOnAdvancedCustomDrawItem,
+  TreeView_SetOnCancelEdit,
   TreeView_SetOnChange,
+  TreeView_SetOnChanging,
   TreeView_SetOnClick,
+  TreeView_SetOnCollapsed,
+  TreeView_SetOnCollapsing,
   TreeView_SetOnCompare,
   TreeView_SetOnContextPopup,
   TreeView_SetOnDblClick,
+  TreeView_SetOnDeletion,
   TreeView_SetOnDragDrop,
   TreeView_SetOnDragOver,
+  TreeView_SetOnEdited,
+  TreeView_SetOnEditing,
   TreeView_SetOnEndDock,
   TreeView_SetOnEndDrag,
   TreeView_SetOnEnter,
   TreeView_SetOnExit,
+  TreeView_SetOnExpanding,
+  TreeView_SetOnExpanded,
+  TreeView_SetOnGesture,
   TreeView_SetOnGetImageIndex,
   TreeView_SetOnGetSelectedIndex,
+  TreeView_SetOnHint,
   TreeView_SetOnKeyDown,
   TreeView_SetOnKeyPress,
   TreeView_SetOnKeyUp,
+  TreeView_SetOnMouseActivate,
   TreeView_SetOnMouseDown,
   TreeView_SetOnMouseEnter,
   TreeView_SetOnMouseLeave,
@@ -1493,8 +1778,12 @@ exports
   TreeView_GetTopItem,
   TreeView_SetTopItem,
   TreeView_GetSelectionCount,
+  TreeView_GetDockClientCount,
   TreeView_GetDockSite,
   TreeView_SetDockSite,
+  TreeView_GetAlignDisabled,
+  TreeView_GetMouseInClient,
+  TreeView_GetVisibleDockClientCount,
   TreeView_GetBrush,
   TreeView_GetControlCount,
   TreeView_GetHandle,
@@ -1508,9 +1797,14 @@ exports
   TreeView_SetBoundsRect,
   TreeView_GetClientHeight,
   TreeView_SetClientHeight,
+  TreeView_GetClientOrigin,
   TreeView_GetClientRect,
   TreeView_GetClientWidth,
   TreeView_SetClientWidth,
+  TreeView_GetControlState,
+  TreeView_SetControlState,
+  TreeView_GetControlStyle,
+  TreeView_SetControlStyle,
   TreeView_GetExplicitLeft,
   TreeView_GetExplicitTop,
   TreeView_GetExplicitWidth,
@@ -1545,6 +1839,7 @@ exports
   TreeView_GetTag,
   TreeView_SetTag,
   TreeView_GetSelections,
+  TreeView_GetDockClients,
   TreeView_GetControls,
   TreeView_GetComponents,
   TreeView_StaticClassType;

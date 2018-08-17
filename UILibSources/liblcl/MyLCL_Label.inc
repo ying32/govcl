@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Label_SetTextBuf(AObj: TLabel; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Label_FindComponent(AObj: TLabel; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -542,6 +547,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Label_GetClientOrigin(AObj: TLabel; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Label_GetClientRect(AObj: TLabel; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -555,6 +565,26 @@ end;
 procedure Label_SetClientWidth(AObj: TLabel; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Label_GetControlState(AObj: TLabel): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Label_SetControlState(AObj: TLabel; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Label_GetControlStyle(AObj: TLabel): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Label_SetControlStyle(AObj: TLabel; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Label_GetFloating(AObj: TLabel): LongBool; extdecl;
@@ -703,6 +733,7 @@ exports
   Label_Update,
   Label_GetTextBuf,
   Label_GetTextLen,
+  Label_SetTextBuf,
   Label_FindComponent,
   Label_GetNamePath,
   Label_Assign,
@@ -775,9 +806,14 @@ exports
   Label_SetBoundsRect,
   Label_GetClientHeight,
   Label_SetClientHeight,
+  Label_GetClientOrigin,
   Label_GetClientRect,
   Label_GetClientWidth,
   Label_SetClientWidth,
+  Label_GetControlState,
+  Label_SetControlState,
+  Label_GetControlStyle,
+  Label_SetControlStyle,
   Label_GetFloating,
   Label_GetParent,
   Label_SetParent,

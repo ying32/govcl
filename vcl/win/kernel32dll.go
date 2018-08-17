@@ -53,6 +53,12 @@ var (
 	_VirtualAlloc   = kernel32dll.NewProc("VirtualAlloc")
 	_VirtualProtect = kernel32dll.NewProc("VirtualProtect")
 	_IsBadReadPtr   = kernel32dll.NewProc("IsBadReadPtr")
+
+	_TerminateProcess    = kernel32dll.NewProc("TerminateProcess")
+	_TerminateThread     = kernel32dll.NewProc("TerminateThread")
+	_ExitThread          = kernel32dll.NewProc("ExitThread")
+	_ExitProcess         = kernel32dll.NewProc("ExitProcess")
+	_WaitForSingleObject = kernel32dll.NewProc("WaitForSingleObject")
 )
 
 // GetLastError
@@ -254,4 +260,27 @@ func VirtualProtect(lpAddress uintptr, dwSize uintptr, flNewProtect uint32, lpfl
 func IsBadReadPtr(lp uintptr, ucb uintptr) bool {
 	r, _, _ := _IsBadReadPtr.Call(lp, ucb)
 	return r != 0
+}
+
+func TerminateProcess(hProcess uintptr, uExitCode uint32) bool {
+	r, _, _ := _TerminateProcess.Call(hProcess, uintptr(uExitCode))
+	return r != 0
+}
+
+func TerminateThread(hThread uintptr, dwExitCode uint32) bool {
+	r, _, _ := _TerminateThread.Call(hThread, uintptr(dwExitCode))
+	return r != 0
+}
+
+func ExitThread(dwExitCode uint32) {
+	_ExitThread.Call(uintptr(dwExitCode))
+}
+
+func ExitProcess(uExitCode uint32) {
+	_ExitProcess.Call(uintptr(uExitCode))
+}
+
+func WaitForSingleObject(hHandle uintptr, dwMilliseconds uint32) uint32 {
+	r, _, _ := _WaitForSingleObject.Call(hHandle, uintptr(dwMilliseconds))
+	return uint32(r)
 }

@@ -110,6 +110,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Gauge_SetTextBuf(AObj: TGauge; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Gauge_FindComponent(AObj: TGauge; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -385,6 +390,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Gauge_GetClientOrigin(AObj: TGauge; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Gauge_GetClientRect(AObj: TGauge; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -398,6 +408,26 @@ end;
 procedure Gauge_SetClientWidth(AObj: TGauge; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Gauge_GetControlState(AObj: TGauge): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Gauge_SetControlState(AObj: TGauge; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Gauge_GetControlStyle(AObj: TGauge): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Gauge_SetControlStyle(AObj: TGauge; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Gauge_GetFloating(AObj: TGauge): LongBool; extdecl;
@@ -547,6 +577,7 @@ exports
   Gauge_Update,
   Gauge_GetTextBuf,
   Gauge_GetTextLen,
+  Gauge_SetTextBuf,
   Gauge_FindComponent,
   Gauge_GetNamePath,
   Gauge_Assign,
@@ -602,9 +633,14 @@ exports
   Gauge_SetBoundsRect,
   Gauge_GetClientHeight,
   Gauge_SetClientHeight,
+  Gauge_GetClientOrigin,
   Gauge_GetClientRect,
   Gauge_GetClientWidth,
   Gauge_SetClientWidth,
+  Gauge_GetControlState,
+  Gauge_SetControlState,
+  Gauge_GetControlStyle,
+  Gauge_SetControlStyle,
   Gauge_GetFloating,
   Gauge_GetParent,
   Gauge_SetParent,

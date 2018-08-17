@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function Button_ContainsControl(AObj: TButton; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function Button_ControlAtPos(AObj: TButton; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure Button_DisableAlign(AObj: TButton); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure Button_EnableAlign(AObj: TButton); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function Button_FindChildControl(AObj: TButton; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure Button_FlipChildren(AObj: TButton; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -40,9 +65,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure Button_InsertControl(AObj: TButton; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure Button_Invalidate(AObj: TButton); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure Button_RemoveControl(AObj: TButton; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure Button_Realign(AObj: TButton); extdecl;
@@ -58,6 +93,11 @@ end;
 procedure Button_ScaleBy(AObj: TButton; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure Button_ScrollBy(AObj: TButton; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure Button_SetBounds(AObj: TButton; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -143,6 +183,11 @@ end;
 function Button_GetTextLen(AObj: TButton): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure Button_SetTextBuf(AObj: TButton; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function Button_FindComponent(AObj: TButton; AName: PChar): TComponent; extdecl;
@@ -585,6 +630,11 @@ begin
   EventClass.Add(AObj, geMouseUp, AEventId);
 end;
 
+function Button_GetDockClientCount(AObj: TButton): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function Button_GetDockSite(AObj: TButton): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -593,6 +643,11 @@ end;
 procedure Button_SetDockSite(AObj: TButton; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function Button_GetVisibleDockClientCount(AObj: TButton): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function Button_GetBrush(AObj: TButton): TBrush; extdecl;
@@ -650,6 +705,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Button_GetClientOrigin(AObj: TButton; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Button_GetClientRect(AObj: TButton; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -663,6 +723,26 @@ end;
 procedure Button_SetClientWidth(AObj: TButton; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Button_GetControlState(AObj: TButton): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Button_SetControlState(AObj: TButton; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Button_GetControlStyle(AObj: TButton): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Button_SetControlStyle(AObj: TButton; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Button_GetFloating(AObj: TButton): LongBool; extdecl;
@@ -780,6 +860,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Button_GetDockClients(AObj: TButton; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function Button_GetControls(AObj: TButton; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -800,13 +885,21 @@ exports
   Button_Free,
   Button_Click,
   Button_CanFocus,
+  Button_ContainsControl,
+  Button_ControlAtPos,
+  Button_DisableAlign,
+  Button_EnableAlign,
+  Button_FindChildControl,
   Button_FlipChildren,
   Button_Focused,
   Button_HandleAllocated,
+  Button_InsertControl,
   Button_Invalidate,
+  Button_RemoveControl,
   Button_Realign,
   Button_Repaint,
   Button_ScaleBy,
+  Button_ScrollBy,
   Button_SetBounds,
   Button_SetFocus,
   Button_Update,
@@ -824,6 +917,7 @@ exports
   Button_Show,
   Button_GetTextBuf,
   Button_GetTextLen,
+  Button_SetTextBuf,
   Button_FindComponent,
   Button_GetNamePath,
   Button_Assign,
@@ -891,8 +985,10 @@ exports
   Button_SetOnMouseLeave,
   Button_SetOnMouseMove,
   Button_SetOnMouseUp,
+  Button_GetDockClientCount,
   Button_GetDockSite,
   Button_SetDockSite,
+  Button_GetVisibleDockClientCount,
   Button_GetBrush,
   Button_GetControlCount,
   Button_GetHandle,
@@ -904,9 +1000,14 @@ exports
   Button_SetBoundsRect,
   Button_GetClientHeight,
   Button_SetClientHeight,
+  Button_GetClientOrigin,
   Button_GetClientRect,
   Button_GetClientWidth,
   Button_SetClientWidth,
+  Button_GetControlState,
+  Button_SetControlState,
+  Button_GetControlStyle,
+  Button_SetControlStyle,
   Button_GetFloating,
   Button_GetParent,
   Button_SetParent,
@@ -930,6 +1031,7 @@ exports
   Button_SetName,
   Button_GetTag,
   Button_SetTag,
+  Button_GetDockClients,
   Button_GetControls,
   Button_GetComponents,
   Button_StaticClassType;

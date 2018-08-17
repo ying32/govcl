@@ -7,6 +7,11 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
+var (
+	// SysLocale 本地化相关
+	SysLocale types.TSysLocale
+)
+
 // Move Delphi中的内存操作，不过这里传入的是指针
 func Move(src, dest uintptr, llen int) {
 	api.DMove(src, dest, llen)
@@ -122,4 +127,15 @@ func FileExists(filename string) bool {
 // LcLLoaded 是否加载的为lcl库，true表是是，false表示不是
 func LcLLoaded() bool {
 	return api.IsloadedLcl
+}
+
+// SetProperty
+// SetPropertyValue 设置对象属性
+func SetPropertyValue(instance uintptr, propName, value string) {
+	api.DSetPropertyValue(instance, propName, value)
+}
+
+// SetPropertySecValue 设置对象二级属性
+func SetPropertySecValue(instance uintptr, propName, secPropName, value string) {
+	api.DSetPropertySecValue(instance, propName, secPropName, value)
 }

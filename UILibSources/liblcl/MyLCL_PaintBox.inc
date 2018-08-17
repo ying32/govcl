@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure PaintBox_SetTextBuf(AObj: TPaintBox; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function PaintBox_FindComponent(AObj: TPaintBox; AName: PChar): TComponent; extdecl;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -462,6 +467,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure PaintBox_GetClientOrigin(AObj: TPaintBox; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure PaintBox_GetClientRect(AObj: TPaintBox; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -475,6 +485,26 @@ end;
 procedure PaintBox_SetClientWidth(AObj: TPaintBox; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function PaintBox_GetControlState(AObj: TPaintBox): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure PaintBox_SetControlState(AObj: TPaintBox; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function PaintBox_GetControlStyle(AObj: TPaintBox): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure PaintBox_SetControlStyle(AObj: TPaintBox; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function PaintBox_GetFloating(AObj: TPaintBox): LongBool; extdecl;
@@ -623,6 +653,7 @@ exports
   PaintBox_Update,
   PaintBox_GetTextBuf,
   PaintBox_GetTextLen,
+  PaintBox_SetTextBuf,
   PaintBox_FindComponent,
   PaintBox_GetNamePath,
   PaintBox_Assign,
@@ -679,9 +710,14 @@ exports
   PaintBox_SetBoundsRect,
   PaintBox_GetClientHeight,
   PaintBox_SetClientHeight,
+  PaintBox_GetClientOrigin,
   PaintBox_GetClientRect,
   PaintBox_GetClientWidth,
   PaintBox_SetClientWidth,
+  PaintBox_GetControlState,
+  PaintBox_SetControlState,
+  PaintBox_GetControlStyle,
+  PaintBox_SetControlStyle,
   PaintBox_GetFloating,
   PaintBox_GetParent,
   PaintBox_SetParent,

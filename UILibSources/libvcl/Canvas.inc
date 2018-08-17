@@ -217,6 +217,18 @@ begin
   TEventClass.Add(AObj, geChange, AEventId);
 end;
 
+procedure Canvas_SetOnChanging(AObj: TCanvas; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChanging := nil;
+    TEventClass.Remove(AObj, geChanging);
+    Exit;
+  end;
+  AObj.OnChanging := TEventClass.OnChanging;
+  TEventClass.Add(AObj, geChanging, AEventId);
+end;
+
 function Canvas_StaticClassType: TClass; stdcall;
 begin
   Result := TCanvas;
@@ -264,5 +276,6 @@ exports
   Canvas_GetPen,
   Canvas_SetPen,
   Canvas_SetOnChange,
+  Canvas_SetOnChanging,
   Canvas_StaticClassType;
 

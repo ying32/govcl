@@ -25,6 +25,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ToolBar_ContainsControl(AObj: TToolBar; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ToolBar_ControlAtPos(AObj: TToolBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure ToolBar_DisableAlign(AObj: TToolBar); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ToolBar_EnableAlign(AObj: TToolBar); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function ToolBar_FindChildControl(AObj: TToolBar; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 function ToolBar_Focused(AObj: TToolBar): LongBool; stdcall;
 begin
   Result :=  AObj.Focused;
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ToolBar_InsertControl(AObj: TToolBar; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ToolBar_Invalidate(AObj: TToolBar); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure ToolBar_PaintTo(AObj: TToolBar; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure ToolBar_RemoveControl(AObj: TToolBar; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ToolBar_Realign(AObj: TToolBar); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure ToolBar_ScrollBy(AObj: TToolBar; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure ToolBar_SetBounds(AObj: TToolBar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure ToolBar_Update(AObj: TToolBar); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure ToolBar_UpdateControlState(AObj: TToolBar); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure ToolBar_BringToFront(AObj: TToolBar); stdcall;
@@ -138,6 +188,11 @@ end;
 function ToolBar_GetTextLen(AObj: TToolBar): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ToolBar_SetTextBuf(AObj: TToolBar; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ToolBar_FindComponent(AObj: TToolBar; AName: PChar): TComponent; stdcall;
@@ -814,6 +869,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ToolBar_SetOnGesture(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ToolBar_SetOnGetSiteInfo(AObj: TToolBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -824,6 +891,18 @@ begin
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
   TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+end;
+
+procedure ToolBar_SetOnMouseActivate(AObj: TToolBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ToolBar_SetOnMouseDown(AObj: TToolBar; AEventId: NativeUInt); stdcall;
@@ -922,6 +1001,26 @@ begin
   TEventClass.Add(AObj, geUnDock, AEventId);
 end;
 
+function ToolBar_GetDockClientCount(AObj: TToolBar): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function ToolBar_GetAlignDisabled(AObj: TToolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function ToolBar_GetMouseInClient(AObj: TToolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function ToolBar_GetVisibleDockClientCount(AObj: TToolBar): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
 function ToolBar_GetBrush(AObj: TToolBar): TBrush; stdcall;
 begin
   Result :=  AObj.Brush;
@@ -997,6 +1096,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ToolBar_GetClientOrigin(AObj: TToolBar; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ToolBar_GetClientRect(AObj: TToolBar; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -1010,6 +1114,26 @@ end;
 procedure ToolBar_SetClientWidth(AObj: TToolBar; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ToolBar_GetControlState(AObj: TToolBar): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ToolBar_SetControlState(AObj: TToolBar; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ToolBar_GetControlStyle(AObj: TToolBar): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ToolBar_SetControlStyle(AObj: TToolBar; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ToolBar_GetExplicitLeft(AObj: TToolBar): Integer; stdcall;
@@ -1172,6 +1296,11 @@ begin
   Result :=  AObj.Buttons[Index];
 end;
 
+function ToolBar_GetDockClients(AObj: TToolBar; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ToolBar_GetControls(AObj: TToolBar; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1192,15 +1321,25 @@ exports
   ToolBar_Free,
   ToolBar_FlipChildren,
   ToolBar_CanFocus,
+  ToolBar_ContainsControl,
+  ToolBar_ControlAtPos,
+  ToolBar_DisableAlign,
+  ToolBar_EnableAlign,
+  ToolBar_FindChildControl,
   ToolBar_Focused,
   ToolBar_HandleAllocated,
+  ToolBar_InsertControl,
   ToolBar_Invalidate,
+  ToolBar_PaintTo,
+  ToolBar_RemoveControl,
   ToolBar_Realign,
   ToolBar_Repaint,
   ToolBar_ScaleBy,
+  ToolBar_ScrollBy,
   ToolBar_SetBounds,
   ToolBar_SetFocus,
   ToolBar_Update,
+  ToolBar_UpdateControlState,
   ToolBar_BringToFront,
   ToolBar_ClientToScreen,
   ToolBar_ClientToParent,
@@ -1215,6 +1354,7 @@ exports
   ToolBar_Show,
   ToolBar_GetTextBuf,
   ToolBar_GetTextLen,
+  ToolBar_SetTextBuf,
   ToolBar_FindComponent,
   ToolBar_GetNamePath,
   ToolBar_Assign,
@@ -1333,7 +1473,9 @@ exports
   ToolBar_SetOnEndDrag,
   ToolBar_SetOnEnter,
   ToolBar_SetOnExit,
+  ToolBar_SetOnGesture,
   ToolBar_SetOnGetSiteInfo,
+  ToolBar_SetOnMouseActivate,
   ToolBar_SetOnMouseDown,
   ToolBar_SetOnMouseEnter,
   ToolBar_SetOnMouseLeave,
@@ -1342,6 +1484,10 @@ exports
   ToolBar_SetOnResize,
   ToolBar_SetOnStartDock,
   ToolBar_SetOnUnDock,
+  ToolBar_GetDockClientCount,
+  ToolBar_GetAlignDisabled,
+  ToolBar_GetMouseInClient,
+  ToolBar_GetVisibleDockClientCount,
   ToolBar_GetBrush,
   ToolBar_GetControlCount,
   ToolBar_GetHandle,
@@ -1357,9 +1503,14 @@ exports
   ToolBar_SetBoundsRect,
   ToolBar_GetClientHeight,
   ToolBar_SetClientHeight,
+  ToolBar_GetClientOrigin,
   ToolBar_GetClientRect,
   ToolBar_GetClientWidth,
   ToolBar_SetClientWidth,
+  ToolBar_GetControlState,
+  ToolBar_SetControlState,
+  ToolBar_GetControlStyle,
+  ToolBar_SetControlStyle,
   ToolBar_GetExplicitLeft,
   ToolBar_GetExplicitTop,
   ToolBar_GetExplicitWidth,
@@ -1392,6 +1543,7 @@ exports
   ToolBar_GetTag,
   ToolBar_SetTag,
   ToolBar_GetButtons,
+  ToolBar_GetDockClients,
   ToolBar_GetControls,
   ToolBar_GetComponents,
   ToolBar_StaticClassType;

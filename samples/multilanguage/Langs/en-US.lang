@@ -1,0 +1,50 @@
+{
+	"!language": {
+		"Id": 1033,
+		"Name": "en-US",
+		"Description": "English",
+		"Author": "",
+		"AuthorEmail": ""
+	},
+	"!resources": {
+		"SOpenFileTitle": "Open",
+		"SOKButton": "OK",
+		"SCancelButton": "Cancel",
+		"SYesButton": "&Yes",
+		"SNoButton": "&No",
+		"SHelpButton": "&Help",
+		"SCloseButton": "&Close",
+		"SIgnoreButton": "&Ignore",
+		"SRetryButton": "&Retry",
+		"SAbortButton": "Abort",
+		"SAllButton": "&All",
+		"SMsgDlgWarning": "Warning",
+		"SMsgDlgError": "Error",
+		"SMsgDlgInformation": "Information",
+		"SMsgDlgConfirm": "Confirm",
+		"SMsgDlgYes": "&Yes",
+		"SMsgDlgNo": "&No",
+		"SMsgDlgOK": "OK",
+		"SMsgDlgCancel": "Cancel",
+		"SMsgDlgHelp": "&Help",
+		"SMsgDlgHelpNone": "No help available",
+		"SMsgDlgHelpHelp": "Help",
+		"SMsgDlgAbort": "&Abort",
+		"SMsgDlgRetry": "&Retry",
+		"SMsgDlgIgnore": "&Ignore",
+		"SMsgDlgAll": "&All",
+		"SMsgDlgNoToAll": "N&o to All",
+		"SMsgDlgYesToAll": "Yes to &All",
+		"SMsgDlgClose": "&Close"
+	},
+	"govcldesigner": {
+		"!resources": {
+			"rsMessageRestartApplication": "You need to restart the application after switching languages. Do you want to reboot now?"
+		},
+		"Form1": {
+			"Caption": "MultiLang",
+			"Button1.Caption": "Button",
+			"MenuItem1.Caption": "&File"
+		}
+	}
+}

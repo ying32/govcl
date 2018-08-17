@@ -400,6 +400,29 @@ func Form_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Form_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := form_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func Form_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := form_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func Form_DisableAlign(obj uintptr)  {
+    form_DisableAlign.Call(obj)
+}
+
+func Form_EnableAlign(obj uintptr)  {
+    form_EnableAlign.Call(obj)
+}
+
+func Form_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := form_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func Form_FlipChildren(obj uintptr, AllLevels bool)  {
     form_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -414,8 +437,20 @@ func Form_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Form_InsertControl(obj uintptr, AControl uintptr)  {
+    form_InsertControl.Call(obj, AControl )
+}
+
 func Form_Invalidate(obj uintptr)  {
     form_Invalidate.Call(obj)
+}
+
+func Form_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    form_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func Form_RemoveControl(obj uintptr, AControl uintptr)  {
+    form_RemoveControl.Call(obj, AControl )
 }
 
 func Form_Realign(obj uintptr)  {
@@ -430,12 +465,20 @@ func Form_ScaleBy(obj uintptr, M int32, D int32)  {
     form_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func Form_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    form_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func Form_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     form_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func Form_Update(obj uintptr)  {
     form_Update.Call(obj)
+}
+
+func Form_UpdateControlState(obj uintptr)  {
+    form_UpdateControlState.Call(obj)
 }
 
 func Form_BringToFront(obj uintptr)  {
@@ -497,6 +540,10 @@ func Form_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Form_GetTextLen(obj uintptr) int32 {
     ret, _, _ := form_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Form_SetTextBuf(obj uintptr, Buffer string)  {
+    form_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Form_FindComponent(obj uintptr, AName string) uintptr {
@@ -930,6 +977,10 @@ func Form_SetOnEndDock(obj uintptr, fn interface{}) {
     form_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnGesture(obj uintptr, fn interface{}) {
+    form_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     form_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
@@ -952,6 +1003,10 @@ func Form_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Form_SetOnKeyUp(obj uintptr, fn interface{}) {
     form_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func Form_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    form_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Form_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -1051,6 +1106,26 @@ func Form_SetTop(obj uintptr, value int32) {
    form_SetTop.Call(obj, uintptr(value))
 }
 
+func Form_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := form_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func Form_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := form_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Form_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := form_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Form_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := form_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func Form_GetBrush(obj uintptr) uintptr {
     ret, _, _ := form_GetBrush.Call(obj)
     return ret
@@ -1084,12 +1159,12 @@ func Form_SetParentWindow(obj uintptr, value HWND) {
    form_SetParentWindow.Call(obj, uintptr(value))
 }
 
-func Form_GetTabOrder(obj uintptr) uint16 {
+func Form_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := form_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func Form_SetTabOrder(obj uintptr, value uint16) {
+func Form_SetTabOrder(obj uintptr, value TTabOrder) {
    form_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -1112,10 +1187,34 @@ func Form_SetBoundsRect(obj uintptr, value TRect) {
    form_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
 }
 
+func Form_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    form_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Form_GetClientRect(obj uintptr) TRect {
     var ret TRect
     form_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
     return ret
+}
+
+func Form_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := form_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Form_SetControlState(obj uintptr, value TControlState) {
+   form_SetControlState.Call(obj, uintptr(value))
+}
+
+func Form_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := form_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Form_SetControlStyle(obj uintptr, value TControlStyle) {
+   form_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Form_GetExplicitLeft(obj uintptr) int32 {
@@ -1234,6 +1333,11 @@ func Form_SetTag(obj uintptr, value int) {
    form_SetTag.Call(obj, uintptr(value))
 }
 
+func Form_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := form_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func Form_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := form_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -1269,6 +1373,29 @@ func Button_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Button_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := button_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func Button_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := button_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func Button_DisableAlign(obj uintptr)  {
+    button_DisableAlign.Call(obj)
+}
+
+func Button_EnableAlign(obj uintptr)  {
+    button_EnableAlign.Call(obj)
+}
+
+func Button_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := button_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func Button_FlipChildren(obj uintptr, AllLevels bool)  {
     button_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -1283,8 +1410,20 @@ func Button_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Button_InsertControl(obj uintptr, AControl uintptr)  {
+    button_InsertControl.Call(obj, AControl )
+}
+
 func Button_Invalidate(obj uintptr)  {
     button_Invalidate.Call(obj)
+}
+
+func Button_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    button_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func Button_RemoveControl(obj uintptr, AControl uintptr)  {
+    button_RemoveControl.Call(obj, AControl )
 }
 
 func Button_Realign(obj uintptr)  {
@@ -1299,6 +1438,10 @@ func Button_ScaleBy(obj uintptr, M int32, D int32)  {
     button_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func Button_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    button_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func Button_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     button_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -1309,6 +1452,10 @@ func Button_SetFocus(obj uintptr)  {
 
 func Button_Update(obj uintptr)  {
     button_Update.Call(obj)
+}
+
+func Button_UpdateControlState(obj uintptr)  {
+    button_UpdateControlState.Call(obj)
 }
 
 func Button_BringToFront(obj uintptr)  {
@@ -1378,6 +1525,10 @@ func Button_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Button_GetTextLen(obj uintptr) int32 {
     ret, _, _ := button_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Button_SetTextBuf(obj uintptr, Buffer string)  {
+    button_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Button_FindComponent(obj uintptr, AName string) uintptr {
@@ -1703,12 +1854,12 @@ func Button_SetStylusHotImageIndex(obj uintptr, value int32) {
    button_SetStylusHotImageIndex.Call(obj, uintptr(value))
 }
 
-func Button_GetTabOrder(obj uintptr) uint16 {
+func Button_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := button_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func Button_SetTabOrder(obj uintptr, value uint16) {
+func Button_SetTabOrder(obj uintptr, value TTabOrder) {
    button_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -1792,6 +1943,10 @@ func Button_SetOnKeyUp(obj uintptr, fn interface{}) {
     button_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
+func Button_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    button_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func Button_SetOnMouseDown(obj uintptr, fn interface{}) {
     button_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -1816,6 +1971,11 @@ func Button_SetOnStartDock(obj uintptr, fn interface{}) {
     button_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func Button_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := button_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func Button_GetDockSite(obj uintptr) bool {
     ret, _, _ := button_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -1823,6 +1983,21 @@ func Button_GetDockSite(obj uintptr) bool {
 
 func Button_SetDockSite(obj uintptr, value bool) {
    button_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func Button_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := button_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Button_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := button_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Button_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := button_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func Button_GetBrush(obj uintptr) uintptr {
@@ -1877,6 +2052,12 @@ func Button_SetClientHeight(obj uintptr, value int32) {
    button_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Button_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    button_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Button_GetClientRect(obj uintptr) TRect {
     var ret TRect
     button_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -1890,6 +2071,24 @@ func Button_GetClientWidth(obj uintptr) int32 {
 
 func Button_SetClientWidth(obj uintptr, value int32) {
    button_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Button_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := button_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Button_SetControlState(obj uintptr, value TControlState) {
+   button_SetControlState.Call(obj, uintptr(value))
+}
+
+func Button_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := button_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Button_SetControlStyle(obj uintptr, value TControlStyle) {
+   button_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Button_GetExplicitLeft(obj uintptr) int32 {
@@ -1924,6 +2123,10 @@ func Button_GetParent(obj uintptr) uintptr {
 
 func Button_SetParent(obj uintptr, value uintptr) {
    button_SetParent.Call(obj, value)
+}
+
+func Button_SetOnGesture(obj uintptr, fn interface{}) {
+    button_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Button_GetAlignWithMargins(obj uintptr) bool {
@@ -2044,6 +2247,11 @@ func Button_SetTag(obj uintptr, value int) {
    button_SetTag.Call(obj, uintptr(value))
 }
 
+func Button_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := button_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func Button_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := button_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -2112,6 +2320,29 @@ func Edit_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Edit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := edit_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func Edit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := edit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func Edit_DisableAlign(obj uintptr)  {
+    edit_DisableAlign.Call(obj)
+}
+
+func Edit_EnableAlign(obj uintptr)  {
+    edit_EnableAlign.Call(obj)
+}
+
+func Edit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := edit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func Edit_FlipChildren(obj uintptr, AllLevels bool)  {
     edit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -2126,8 +2357,20 @@ func Edit_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Edit_InsertControl(obj uintptr, AControl uintptr)  {
+    edit_InsertControl.Call(obj, AControl )
+}
+
 func Edit_Invalidate(obj uintptr)  {
     edit_Invalidate.Call(obj)
+}
+
+func Edit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    edit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func Edit_RemoveControl(obj uintptr, AControl uintptr)  {
+    edit_RemoveControl.Call(obj, AControl )
 }
 
 func Edit_Realign(obj uintptr)  {
@@ -2142,6 +2385,10 @@ func Edit_ScaleBy(obj uintptr, M int32, D int32)  {
     edit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func Edit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    edit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func Edit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     edit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -2152,6 +2399,10 @@ func Edit_SetFocus(obj uintptr)  {
 
 func Edit_Update(obj uintptr)  {
     edit_Update.Call(obj)
+}
+
+func Edit_UpdateControlState(obj uintptr)  {
+    edit_UpdateControlState.Call(obj)
 }
 
 func Edit_BringToFront(obj uintptr)  {
@@ -2221,6 +2472,10 @@ func Edit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Edit_GetTextLen(obj uintptr) int32 {
     ret, _, _ := edit_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Edit_SetTextBuf(obj uintptr, Buffer string)  {
+    edit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Edit_FindComponent(obj uintptr, AName string) uintptr {
@@ -2555,12 +2810,12 @@ func Edit_SetShowHint(obj uintptr, value bool) {
    edit_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func Edit_GetTabOrder(obj uintptr) uint16 {
+func Edit_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := edit_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func Edit_SetTabOrder(obj uintptr, value uint16) {
+func Edit_SetTabOrder(obj uintptr, value TTabOrder) {
    edit_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -2649,6 +2904,10 @@ func Edit_SetOnExit(obj uintptr, fn interface{}) {
     edit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func Edit_SetOnGesture(obj uintptr, fn interface{}) {
+    edit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Edit_SetOnKeyDown(obj uintptr, fn interface{}) {
     edit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -2659,6 +2918,10 @@ func Edit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Edit_SetOnKeyUp(obj uintptr, fn interface{}) {
     edit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func Edit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    edit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Edit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -2726,6 +2989,11 @@ func Edit_SetSelText(obj uintptr, value string) {
    edit_SetSelText.Call(obj, GoStrToDStr(value))
 }
 
+func Edit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := edit_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func Edit_GetDockSite(obj uintptr) bool {
     ret, _, _ := edit_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -2733,6 +3001,21 @@ func Edit_GetDockSite(obj uintptr) bool {
 
 func Edit_SetDockSite(obj uintptr, value bool) {
    edit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func Edit_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := edit_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Edit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := edit_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Edit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := edit_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func Edit_GetBrush(obj uintptr) uintptr {
@@ -2796,6 +3079,12 @@ func Edit_SetClientHeight(obj uintptr, value int32) {
    edit_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Edit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    edit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Edit_GetClientRect(obj uintptr) TRect {
     var ret TRect
     edit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -2809,6 +3098,24 @@ func Edit_GetClientWidth(obj uintptr) int32 {
 
 func Edit_SetClientWidth(obj uintptr, value int32) {
    edit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Edit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := edit_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Edit_SetControlState(obj uintptr, value TControlState) {
+   edit_SetControlState.Call(obj, uintptr(value))
+}
+
+func Edit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := edit_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Edit_SetControlStyle(obj uintptr, value TControlStyle) {
+   edit_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Edit_GetExplicitLeft(obj uintptr) int32 {
@@ -2961,6 +3268,11 @@ func Edit_GetTag(obj uintptr) int {
 
 func Edit_SetTag(obj uintptr, value int) {
    edit_SetTag.Call(obj, uintptr(value))
+}
+
+func Edit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := edit_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func Edit_GetControls(obj uintptr, Index int32) uintptr {
@@ -3399,6 +3711,29 @@ func Memo_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Memo_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := memo_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func Memo_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := memo_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func Memo_DisableAlign(obj uintptr)  {
+    memo_DisableAlign.Call(obj)
+}
+
+func Memo_EnableAlign(obj uintptr)  {
+    memo_EnableAlign.Call(obj)
+}
+
+func Memo_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := memo_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func Memo_FlipChildren(obj uintptr, AllLevels bool)  {
     memo_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -3413,8 +3748,20 @@ func Memo_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Memo_InsertControl(obj uintptr, AControl uintptr)  {
+    memo_InsertControl.Call(obj, AControl )
+}
+
 func Memo_Invalidate(obj uintptr)  {
     memo_Invalidate.Call(obj)
+}
+
+func Memo_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    memo_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func Memo_RemoveControl(obj uintptr, AControl uintptr)  {
+    memo_RemoveControl.Call(obj, AControl )
 }
 
 func Memo_Realign(obj uintptr)  {
@@ -3429,6 +3776,10 @@ func Memo_ScaleBy(obj uintptr, M int32, D int32)  {
     memo_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func Memo_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    memo_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func Memo_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     memo_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -3439,6 +3790,10 @@ func Memo_SetFocus(obj uintptr)  {
 
 func Memo_Update(obj uintptr)  {
     memo_Update.Call(obj)
+}
+
+func Memo_UpdateControlState(obj uintptr)  {
+    memo_UpdateControlState.Call(obj)
 }
 
 func Memo_BringToFront(obj uintptr)  {
@@ -3508,6 +3863,10 @@ func Memo_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Memo_GetTextLen(obj uintptr) int32 {
     ret, _, _ := memo_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Memo_SetTextBuf(obj uintptr, Buffer string)  {
+    memo_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Memo_FindComponent(obj uintptr, AName string) uintptr {
@@ -3824,12 +4183,12 @@ func Memo_SetShowHint(obj uintptr, value bool) {
    memo_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func Memo_GetTabOrder(obj uintptr) uint16 {
+func Memo_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := memo_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func Memo_SetTabOrder(obj uintptr, value uint16) {
+func Memo_SetTabOrder(obj uintptr, value TTabOrder) {
    memo_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -3927,6 +4286,10 @@ func Memo_SetOnExit(obj uintptr, fn interface{}) {
     memo_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func Memo_SetOnGesture(obj uintptr, fn interface{}) {
+    memo_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Memo_SetOnKeyDown(obj uintptr, fn interface{}) {
     memo_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -3937,6 +4300,10 @@ func Memo_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Memo_SetOnKeyUp(obj uintptr, fn interface{}) {
     memo_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func Memo_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    memo_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Memo_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -4032,6 +4399,11 @@ func Memo_SetTextHint(obj uintptr, value string) {
    memo_SetTextHint.Call(obj, GoStrToDStr(value))
 }
 
+func Memo_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := memo_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func Memo_GetDockSite(obj uintptr) bool {
     ret, _, _ := memo_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -4039,6 +4411,21 @@ func Memo_GetDockSite(obj uintptr) bool {
 
 func Memo_SetDockSite(obj uintptr, value bool) {
    memo_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func Memo_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := memo_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Memo_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := memo_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Memo_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := memo_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func Memo_GetBrush(obj uintptr) uintptr {
@@ -4102,6 +4489,12 @@ func Memo_SetClientHeight(obj uintptr, value int32) {
    memo_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Memo_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    memo_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Memo_GetClientRect(obj uintptr) TRect {
     var ret TRect
     memo_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -4115,6 +4508,24 @@ func Memo_GetClientWidth(obj uintptr) int32 {
 
 func Memo_SetClientWidth(obj uintptr, value int32) {
    memo_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Memo_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := memo_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Memo_SetControlState(obj uintptr, value TControlState) {
+   memo_SetControlState.Call(obj, uintptr(value))
+}
+
+func Memo_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := memo_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Memo_SetControlStyle(obj uintptr, value TControlStyle) {
+   memo_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Memo_GetExplicitLeft(obj uintptr) int32 {
@@ -4269,6 +4680,11 @@ func Memo_SetTag(obj uintptr, value int) {
    memo_SetTag.Call(obj, uintptr(value))
 }
 
+func Memo_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := memo_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func Memo_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := memo_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -4300,6 +4716,29 @@ func CheckBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CheckBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := checkBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func CheckBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := checkBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func CheckBox_DisableAlign(obj uintptr)  {
+    checkBox_DisableAlign.Call(obj)
+}
+
+func CheckBox_EnableAlign(obj uintptr)  {
+    checkBox_EnableAlign.Call(obj)
+}
+
+func CheckBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := checkBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func CheckBox_FlipChildren(obj uintptr, AllLevels bool)  {
     checkBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -4314,8 +4753,20 @@ func CheckBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CheckBox_InsertControl(obj uintptr, AControl uintptr)  {
+    checkBox_InsertControl.Call(obj, AControl )
+}
+
 func CheckBox_Invalidate(obj uintptr)  {
     checkBox_Invalidate.Call(obj)
+}
+
+func CheckBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    checkBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func CheckBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    checkBox_RemoveControl.Call(obj, AControl )
 }
 
 func CheckBox_Realign(obj uintptr)  {
@@ -4330,6 +4781,10 @@ func CheckBox_ScaleBy(obj uintptr, M int32, D int32)  {
     checkBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func CheckBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    checkBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func CheckBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     checkBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -4340,6 +4795,10 @@ func CheckBox_SetFocus(obj uintptr)  {
 
 func CheckBox_Update(obj uintptr)  {
     checkBox_Update.Call(obj)
+}
+
+func CheckBox_UpdateControlState(obj uintptr)  {
+    checkBox_UpdateControlState.Call(obj)
 }
 
 func CheckBox_BringToFront(obj uintptr)  {
@@ -4409,6 +4868,10 @@ func CheckBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func CheckBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := checkBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func CheckBox_SetTextBuf(obj uintptr, Buffer string)  {
+    checkBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func CheckBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -4671,12 +5134,12 @@ func CheckBox_SetState(obj uintptr, value TCheckBoxState) {
    checkBox_SetState.Call(obj, uintptr(value))
 }
 
-func CheckBox_GetTabOrder(obj uintptr) uint16 {
+func CheckBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := checkBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func CheckBox_SetTabOrder(obj uintptr, value uint16) {
+func CheckBox_SetTabOrder(obj uintptr, value TTabOrder) {
    checkBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -4760,6 +5223,10 @@ func CheckBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     checkBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
+func CheckBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    checkBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func CheckBox_SetOnMouseDown(obj uintptr, fn interface{}) {
     checkBox_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -4784,6 +5251,11 @@ func CheckBox_SetOnStartDock(obj uintptr, fn interface{}) {
     checkBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func CheckBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := checkBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func CheckBox_GetDockSite(obj uintptr) bool {
     ret, _, _ := checkBox_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -4791,6 +5263,21 @@ func CheckBox_GetDockSite(obj uintptr) bool {
 
 func CheckBox_SetDockSite(obj uintptr, value bool) {
    checkBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := checkBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := checkBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := checkBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func CheckBox_GetBrush(obj uintptr) uintptr {
@@ -4845,6 +5332,12 @@ func CheckBox_SetClientHeight(obj uintptr, value int32) {
    checkBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func CheckBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    checkBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CheckBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     checkBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -4858,6 +5351,24 @@ func CheckBox_GetClientWidth(obj uintptr) int32 {
 
 func CheckBox_SetClientWidth(obj uintptr, value int32) {
    checkBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func CheckBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := checkBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func CheckBox_SetControlState(obj uintptr, value TControlState) {
+   checkBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func CheckBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := checkBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func CheckBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   checkBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func CheckBox_GetExplicitLeft(obj uintptr) int32 {
@@ -4892,6 +5403,10 @@ func CheckBox_GetParent(obj uintptr) uintptr {
 
 func CheckBox_SetParent(obj uintptr, value uintptr) {
    checkBox_SetParent.Call(obj, value)
+}
+
+func CheckBox_SetOnGesture(obj uintptr, fn interface{}) {
+    checkBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func CheckBox_GetAlignWithMargins(obj uintptr) bool {
@@ -5012,6 +5527,11 @@ func CheckBox_SetTag(obj uintptr, value int) {
    checkBox_SetTag.Call(obj, uintptr(value))
 }
 
+func CheckBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := checkBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func CheckBox_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := checkBox_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -5043,6 +5563,29 @@ func RadioButton_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func RadioButton_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := radioButton_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func RadioButton_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := radioButton_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func RadioButton_DisableAlign(obj uintptr)  {
+    radioButton_DisableAlign.Call(obj)
+}
+
+func RadioButton_EnableAlign(obj uintptr)  {
+    radioButton_EnableAlign.Call(obj)
+}
+
+func RadioButton_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := radioButton_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func RadioButton_FlipChildren(obj uintptr, AllLevels bool)  {
     radioButton_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -5057,8 +5600,20 @@ func RadioButton_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func RadioButton_InsertControl(obj uintptr, AControl uintptr)  {
+    radioButton_InsertControl.Call(obj, AControl )
+}
+
 func RadioButton_Invalidate(obj uintptr)  {
     radioButton_Invalidate.Call(obj)
+}
+
+func RadioButton_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    radioButton_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func RadioButton_RemoveControl(obj uintptr, AControl uintptr)  {
+    radioButton_RemoveControl.Call(obj, AControl )
 }
 
 func RadioButton_Realign(obj uintptr)  {
@@ -5073,6 +5628,10 @@ func RadioButton_ScaleBy(obj uintptr, M int32, D int32)  {
     radioButton_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func RadioButton_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    radioButton_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func RadioButton_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     radioButton_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -5083,6 +5642,10 @@ func RadioButton_SetFocus(obj uintptr)  {
 
 func RadioButton_Update(obj uintptr)  {
     radioButton_Update.Call(obj)
+}
+
+func RadioButton_UpdateControlState(obj uintptr)  {
+    radioButton_UpdateControlState.Call(obj)
 }
 
 func RadioButton_BringToFront(obj uintptr)  {
@@ -5152,6 +5715,10 @@ func RadioButton_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func RadioButton_GetTextLen(obj uintptr) int32 {
     ret, _, _ := radioButton_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func RadioButton_SetTextBuf(obj uintptr, Buffer string)  {
+    radioButton_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func RadioButton_FindComponent(obj uintptr, AName string) uintptr {
@@ -5396,12 +5963,12 @@ func RadioButton_SetShowHint(obj uintptr, value bool) {
    radioButton_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func RadioButton_GetTabOrder(obj uintptr) uint16 {
+func RadioButton_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := radioButton_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func RadioButton_SetTabOrder(obj uintptr, value uint16) {
+func RadioButton_SetTabOrder(obj uintptr, value TTabOrder) {
    radioButton_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -5489,6 +6056,10 @@ func RadioButton_SetOnKeyUp(obj uintptr, fn interface{}) {
     radioButton_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
+func RadioButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    radioButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func RadioButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     radioButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -5513,6 +6084,11 @@ func RadioButton_SetOnStartDock(obj uintptr, fn interface{}) {
     radioButton_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func RadioButton_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := radioButton_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func RadioButton_GetDockSite(obj uintptr) bool {
     ret, _, _ := radioButton_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -5520,6 +6096,21 @@ func RadioButton_GetDockSite(obj uintptr) bool {
 
 func RadioButton_SetDockSite(obj uintptr, value bool) {
    radioButton_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func RadioButton_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := radioButton_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioButton_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := radioButton_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioButton_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := radioButton_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func RadioButton_GetBrush(obj uintptr) uintptr {
@@ -5574,6 +6165,12 @@ func RadioButton_SetClientHeight(obj uintptr, value int32) {
    radioButton_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func RadioButton_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    radioButton_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func RadioButton_GetClientRect(obj uintptr) TRect {
     var ret TRect
     radioButton_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -5587,6 +6184,24 @@ func RadioButton_GetClientWidth(obj uintptr) int32 {
 
 func RadioButton_SetClientWidth(obj uintptr, value int32) {
    radioButton_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func RadioButton_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := radioButton_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func RadioButton_SetControlState(obj uintptr, value TControlState) {
+   radioButton_SetControlState.Call(obj, uintptr(value))
+}
+
+func RadioButton_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := radioButton_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func RadioButton_SetControlStyle(obj uintptr, value TControlStyle) {
+   radioButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func RadioButton_GetExplicitLeft(obj uintptr) int32 {
@@ -5621,6 +6236,10 @@ func RadioButton_GetParent(obj uintptr) uintptr {
 
 func RadioButton_SetParent(obj uintptr, value uintptr) {
    radioButton_SetParent.Call(obj, value)
+}
+
+func RadioButton_SetOnGesture(obj uintptr, fn interface{}) {
+    radioButton_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func RadioButton_GetAlignWithMargins(obj uintptr) bool {
@@ -5741,6 +6360,11 @@ func RadioButton_SetTag(obj uintptr, value int) {
    radioButton_SetTag.Call(obj, uintptr(value))
 }
 
+func RadioButton_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := radioButton_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func RadioButton_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := radioButton_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -5772,6 +6396,29 @@ func GroupBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func GroupBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := groupBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func GroupBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := groupBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func GroupBox_DisableAlign(obj uintptr)  {
+    groupBox_DisableAlign.Call(obj)
+}
+
+func GroupBox_EnableAlign(obj uintptr)  {
+    groupBox_EnableAlign.Call(obj)
+}
+
+func GroupBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := groupBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func GroupBox_FlipChildren(obj uintptr, AllLevels bool)  {
     groupBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -5786,8 +6433,20 @@ func GroupBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func GroupBox_InsertControl(obj uintptr, AControl uintptr)  {
+    groupBox_InsertControl.Call(obj, AControl )
+}
+
 func GroupBox_Invalidate(obj uintptr)  {
     groupBox_Invalidate.Call(obj)
+}
+
+func GroupBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    groupBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func GroupBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    groupBox_RemoveControl.Call(obj, AControl )
 }
 
 func GroupBox_Realign(obj uintptr)  {
@@ -5802,6 +6461,10 @@ func GroupBox_ScaleBy(obj uintptr, M int32, D int32)  {
     groupBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func GroupBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    groupBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func GroupBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     groupBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -5812,6 +6475,10 @@ func GroupBox_SetFocus(obj uintptr)  {
 
 func GroupBox_Update(obj uintptr)  {
     groupBox_Update.Call(obj)
+}
+
+func GroupBox_UpdateControlState(obj uintptr)  {
+    groupBox_UpdateControlState.Call(obj)
 }
 
 func GroupBox_BringToFront(obj uintptr)  {
@@ -5881,6 +6548,10 @@ func GroupBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func GroupBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := groupBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func GroupBox_SetTextBuf(obj uintptr, Buffer string)  {
+    groupBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func GroupBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -6116,12 +6787,12 @@ func GroupBox_SetShowHint(obj uintptr, value bool) {
    groupBox_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func GroupBox_GetTabOrder(obj uintptr) uint16 {
+func GroupBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := groupBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func GroupBox_SetTabOrder(obj uintptr, value uint16) {
+func GroupBox_SetTabOrder(obj uintptr, value TTabOrder) {
    groupBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -6192,8 +6863,16 @@ func GroupBox_SetOnExit(obj uintptr, fn interface{}) {
     groupBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func GroupBox_SetOnGesture(obj uintptr, fn interface{}) {
+    groupBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func GroupBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     groupBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    groupBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func GroupBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -6222,6 +6901,26 @@ func GroupBox_SetOnStartDock(obj uintptr, fn interface{}) {
 
 func GroupBox_SetOnUnDock(obj uintptr, fn interface{}) {
     groupBox_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
+func GroupBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := groupBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func GroupBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := groupBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GroupBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := groupBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func GroupBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := groupBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func GroupBox_GetBrush(obj uintptr) uintptr {
@@ -6285,6 +6984,12 @@ func GroupBox_SetClientHeight(obj uintptr, value int32) {
    groupBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func GroupBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    groupBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func GroupBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     groupBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -6298,6 +7003,24 @@ func GroupBox_GetClientWidth(obj uintptr) int32 {
 
 func GroupBox_SetClientWidth(obj uintptr, value int32) {
    groupBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func GroupBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := groupBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func GroupBox_SetControlState(obj uintptr, value TControlState) {
+   groupBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func GroupBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := groupBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func GroupBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   groupBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func GroupBox_GetExplicitLeft(obj uintptr) int32 {
@@ -6452,6 +7175,11 @@ func GroupBox_SetTag(obj uintptr, value int) {
    groupBox_SetTag.Call(obj, uintptr(value))
 }
 
+func GroupBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := groupBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func GroupBox_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := groupBox_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -6561,6 +7289,10 @@ func Label_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Label_GetTextLen(obj uintptr) int32 {
     ret, _, _ := label_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Label_SetTextBuf(obj uintptr, Buffer string)  {
+    label_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Label_FindComponent(obj uintptr, AName string) uintptr {
@@ -6869,6 +7601,14 @@ func Label_SetOnEndDrag(obj uintptr, fn interface{}) {
     label_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func Label_SetOnGesture(obj uintptr, fn interface{}) {
+    label_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func Label_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    label_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func Label_SetOnMouseDown(obj uintptr, fn interface{}) {
     label_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -6926,6 +7666,12 @@ func Label_SetClientHeight(obj uintptr, value int32) {
    label_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Label_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    label_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Label_GetClientRect(obj uintptr) TRect {
     var ret TRect
     label_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -6939,6 +7685,24 @@ func Label_GetClientWidth(obj uintptr) int32 {
 
 func Label_SetClientWidth(obj uintptr, value int32) {
    label_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Label_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := label_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Label_SetControlState(obj uintptr, value TControlState) {
+   label_SetControlState.Call(obj, uintptr(value))
+}
+
+func Label_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := label_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Label_SetControlStyle(obj uintptr, value TControlStyle) {
+   label_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Label_GetExplicitLeft(obj uintptr) int32 {
@@ -7139,6 +7903,29 @@ func ListBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ListBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := listBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := listBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ListBox_DisableAlign(obj uintptr)  {
+    listBox_DisableAlign.Call(obj)
+}
+
+func ListBox_EnableAlign(obj uintptr)  {
+    listBox_EnableAlign.Call(obj)
+}
+
+func ListBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := listBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ListBox_FlipChildren(obj uintptr, AllLevels bool)  {
     listBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -7153,8 +7940,20 @@ func ListBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ListBox_InsertControl(obj uintptr, AControl uintptr)  {
+    listBox_InsertControl.Call(obj, AControl )
+}
+
 func ListBox_Invalidate(obj uintptr)  {
     listBox_Invalidate.Call(obj)
+}
+
+func ListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    listBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ListBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    listBox_RemoveControl.Call(obj, AControl )
 }
 
 func ListBox_Realign(obj uintptr)  {
@@ -7169,6 +7968,10 @@ func ListBox_ScaleBy(obj uintptr, M int32, D int32)  {
     listBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ListBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    listBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ListBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     listBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -7179,6 +7982,10 @@ func ListBox_SetFocus(obj uintptr)  {
 
 func ListBox_Update(obj uintptr)  {
     listBox_Update.Call(obj)
+}
+
+func ListBox_UpdateControlState(obj uintptr)  {
+    listBox_UpdateControlState.Call(obj)
 }
 
 func ListBox_BringToFront(obj uintptr)  {
@@ -7248,6 +8055,10 @@ func ListBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ListBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := listBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ListBox_SetTextBuf(obj uintptr, Buffer string)  {
+    listBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ListBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -7573,12 +8384,12 @@ func ListBox_SetSorted(obj uintptr, value bool) {
    listBox_SetSorted.Call(obj, GoBoolToDBool(value))
 }
 
-func ListBox_GetTabOrder(obj uintptr) uint16 {
+func ListBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := listBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ListBox_SetTabOrder(obj uintptr, value uint16) {
+func ListBox_SetTabOrder(obj uintptr, value TTabOrder) {
    listBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -7626,6 +8437,18 @@ func ListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
     listBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
+func ListBox_SetOnData(obj uintptr, fn interface{}) {
+    listBox_SetOnData.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnDataFind(obj uintptr, fn interface{}) {
+    listBox_SetOnDataFind.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnDataObject(obj uintptr, fn interface{}) {
+    listBox_SetOnDataObject.Call(obj, addEventToMap(fn))
+}
+
 func ListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     listBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -7658,6 +8481,10 @@ func ListBox_SetOnExit(obj uintptr, fn interface{}) {
     listBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ListBox_SetOnGesture(obj uintptr, fn interface{}) {
+    listBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     listBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -7668,6 +8495,14 @@ func ListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     listBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    listBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
+}
+
+func ListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    listBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -7722,6 +8557,11 @@ func ListBox_SetItemIndex(obj uintptr, value int32) {
    listBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ListBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := listBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ListBox_GetDockSite(obj uintptr) bool {
     ret, _, _ := listBox_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -7729,6 +8569,21 @@ func ListBox_GetDockSite(obj uintptr) bool {
 
 func ListBox_SetDockSite(obj uintptr, value bool) {
    listBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ListBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := listBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := listBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := listBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ListBox_GetBrush(obj uintptr) uintptr {
@@ -7792,6 +8647,12 @@ func ListBox_SetClientHeight(obj uintptr, value int32) {
    listBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ListBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    listBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ListBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     listBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -7805,6 +8666,24 @@ func ListBox_GetClientWidth(obj uintptr) int32 {
 
 func ListBox_SetClientWidth(obj uintptr, value int32) {
    listBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ListBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := listBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ListBox_SetControlState(obj uintptr, value TControlState) {
+   listBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func ListBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := listBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ListBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   listBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ListBox_GetExplicitLeft(obj uintptr) int32 {
@@ -7968,6 +8847,11 @@ func ListBox_SetSelected(obj uintptr, Index int32, value bool) {
    listBox_SetSelected.Call(obj, uintptr(Index), GoBoolToDBool(value))
 }
 
+func ListBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := listBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ListBox_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := listBox_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -8024,6 +8908,29 @@ func ComboBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ComboBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := comboBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ComboBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := comboBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ComboBox_DisableAlign(obj uintptr)  {
+    comboBox_DisableAlign.Call(obj)
+}
+
+func ComboBox_EnableAlign(obj uintptr)  {
+    comboBox_EnableAlign.Call(obj)
+}
+
+func ComboBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := comboBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ComboBox_FlipChildren(obj uintptr, AllLevels bool)  {
     comboBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -8033,8 +8940,20 @@ func ComboBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ComboBox_InsertControl(obj uintptr, AControl uintptr)  {
+    comboBox_InsertControl.Call(obj, AControl )
+}
+
 func ComboBox_Invalidate(obj uintptr)  {
     comboBox_Invalidate.Call(obj)
+}
+
+func ComboBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    comboBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ComboBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    comboBox_RemoveControl.Call(obj, AControl )
 }
 
 func ComboBox_Realign(obj uintptr)  {
@@ -8049,6 +8968,10 @@ func ComboBox_ScaleBy(obj uintptr, M int32, D int32)  {
     comboBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ComboBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    comboBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ComboBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     comboBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -8059,6 +8982,10 @@ func ComboBox_SetFocus(obj uintptr)  {
 
 func ComboBox_Update(obj uintptr)  {
     comboBox_Update.Call(obj)
+}
+
+func ComboBox_UpdateControlState(obj uintptr)  {
+    comboBox_UpdateControlState.Call(obj)
 }
 
 func ComboBox_BringToFront(obj uintptr)  {
@@ -8128,6 +9055,10 @@ func ComboBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ComboBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := comboBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ComboBox_SetTextBuf(obj uintptr, Buffer string)  {
+    comboBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ComboBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -8471,12 +9402,12 @@ func ComboBox_SetSorted(obj uintptr, value bool) {
    comboBox_SetSorted.Call(obj, GoBoolToDBool(value))
 }
 
-func ComboBox_GetTabOrder(obj uintptr) uint16 {
+func ComboBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := comboBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ComboBox_SetTabOrder(obj uintptr, value uint16) {
+func ComboBox_SetTabOrder(obj uintptr, value TTabOrder) {
    comboBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -8569,6 +9500,10 @@ func ComboBox_SetOnExit(obj uintptr, fn interface{}) {
     comboBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ComboBox_SetOnGesture(obj uintptr, fn interface{}) {
+    comboBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ComboBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     comboBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -8579,6 +9514,10 @@ func ComboBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ComboBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     comboBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ComboBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    comboBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
 }
 
 func ComboBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
@@ -8643,6 +9582,11 @@ func ComboBox_SetSelStart(obj uintptr, value int32) {
    comboBox_SetSelStart.Call(obj, uintptr(value))
 }
 
+func ComboBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := comboBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ComboBox_GetDockSite(obj uintptr) bool {
     ret, _, _ := comboBox_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -8650,6 +9594,21 @@ func ComboBox_GetDockSite(obj uintptr) bool {
 
 func ComboBox_SetDockSite(obj uintptr, value bool) {
    comboBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ComboBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := comboBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ComboBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := comboBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ComboBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := comboBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ComboBox_GetBrush(obj uintptr) uintptr {
@@ -8713,6 +9672,12 @@ func ComboBox_SetClientHeight(obj uintptr, value int32) {
    comboBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ComboBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    comboBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ComboBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     comboBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -8726,6 +9691,24 @@ func ComboBox_GetClientWidth(obj uintptr) int32 {
 
 func ComboBox_SetClientWidth(obj uintptr, value int32) {
    comboBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ComboBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := comboBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ComboBox_SetControlState(obj uintptr, value TControlState) {
+   comboBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func ComboBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := comboBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ComboBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   comboBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ComboBox_GetExplicitLeft(obj uintptr) int32 {
@@ -8880,6 +9863,11 @@ func ComboBox_SetTag(obj uintptr, value int) {
    comboBox_SetTag.Call(obj, uintptr(value))
 }
 
+func ComboBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := comboBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ComboBox_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := comboBox_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -8911,6 +9899,29 @@ func Panel_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Panel_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := panel_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func Panel_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := panel_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func Panel_DisableAlign(obj uintptr)  {
+    panel_DisableAlign.Call(obj)
+}
+
+func Panel_EnableAlign(obj uintptr)  {
+    panel_EnableAlign.Call(obj)
+}
+
+func Panel_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := panel_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func Panel_FlipChildren(obj uintptr, AllLevels bool)  {
     panel_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -8925,8 +9936,20 @@ func Panel_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func Panel_InsertControl(obj uintptr, AControl uintptr)  {
+    panel_InsertControl.Call(obj, AControl )
+}
+
 func Panel_Invalidate(obj uintptr)  {
     panel_Invalidate.Call(obj)
+}
+
+func Panel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    panel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func Panel_RemoveControl(obj uintptr, AControl uintptr)  {
+    panel_RemoveControl.Call(obj, AControl )
 }
 
 func Panel_Realign(obj uintptr)  {
@@ -8941,6 +9964,10 @@ func Panel_ScaleBy(obj uintptr, M int32, D int32)  {
     panel_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func Panel_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    panel_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func Panel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     panel_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -8951,6 +9978,10 @@ func Panel_SetFocus(obj uintptr)  {
 
 func Panel_Update(obj uintptr)  {
     panel_Update.Call(obj)
+}
+
+func Panel_UpdateControlState(obj uintptr)  {
+    panel_UpdateControlState.Call(obj)
 }
 
 func Panel_BringToFront(obj uintptr)  {
@@ -9020,6 +10051,10 @@ func Panel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Panel_GetTextLen(obj uintptr) int32 {
     ret, _, _ := panel_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Panel_SetTextBuf(obj uintptr, Buffer string)  {
+    panel_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Panel_FindComponent(obj uintptr, AName string) uintptr {
@@ -9363,12 +10398,12 @@ func Panel_SetShowHint(obj uintptr, value bool) {
    panel_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func Panel_GetTabOrder(obj uintptr) uint16 {
+func Panel_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := panel_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func Panel_SetTabOrder(obj uintptr, value uint16) {
+func Panel_SetTabOrder(obj uintptr, value TTabOrder) {
    panel_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -9439,8 +10474,16 @@ func Panel_SetOnExit(obj uintptr, fn interface{}) {
     panel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func Panel_SetOnGesture(obj uintptr, fn interface{}) {
+    panel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Panel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     panel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func Panel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    panel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Panel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -9473,6 +10516,26 @@ func Panel_SetOnStartDock(obj uintptr, fn interface{}) {
 
 func Panel_SetOnUnDock(obj uintptr, fn interface{}) {
     panel_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
+func Panel_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := panel_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func Panel_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := panel_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Panel_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := panel_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Panel_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := panel_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func Panel_GetBrush(obj uintptr) uintptr {
@@ -9527,6 +10590,12 @@ func Panel_SetClientHeight(obj uintptr, value int32) {
    panel_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Panel_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    panel_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Panel_GetClientRect(obj uintptr) TRect {
     var ret TRect
     panel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -9540,6 +10609,24 @@ func Panel_GetClientWidth(obj uintptr) int32 {
 
 func Panel_SetClientWidth(obj uintptr, value int32) {
    panel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Panel_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := panel_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Panel_SetControlState(obj uintptr, value TControlState) {
+   panel_SetControlState.Call(obj, uintptr(value))
+}
+
+func Panel_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := panel_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Panel_SetControlStyle(obj uintptr, value TControlStyle) {
+   panel_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Panel_GetExplicitLeft(obj uintptr) int32 {
@@ -9694,6 +10781,11 @@ func Panel_SetTag(obj uintptr, value int) {
    panel_SetTag.Call(obj, uintptr(value))
 }
 
+func Panel_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := panel_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func Panel_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := panel_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -9803,6 +10895,10 @@ func Image_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Image_GetTextLen(obj uintptr) int32 {
     ret, _, _ := image_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Image_SetTextBuf(obj uintptr, Buffer string)  {
+    image_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Image_FindComponent(obj uintptr, AName string) uintptr {
@@ -10044,6 +11140,14 @@ func Image_SetOnEndDrag(obj uintptr, fn interface{}) {
     image_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func Image_SetOnGesture(obj uintptr, fn interface{}) {
+    image_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func Image_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    image_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func Image_SetOnMouseDown(obj uintptr, fn interface{}) {
     image_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -10105,6 +11209,12 @@ func Image_SetClientHeight(obj uintptr, value int32) {
    image_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Image_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    image_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Image_GetClientRect(obj uintptr) TRect {
     var ret TRect
     image_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -10118,6 +11228,24 @@ func Image_GetClientWidth(obj uintptr) int32 {
 
 func Image_SetClientWidth(obj uintptr, value int32) {
    image_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Image_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := image_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Image_SetControlState(obj uintptr, value TControlState) {
+   image_SetControlState.Call(obj, uintptr(value))
+}
+
+func Image_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := image_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Image_SetControlStyle(obj uintptr, value TControlStyle) {
+   image_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Image_GetExplicitLeft(obj uintptr) int32 {
@@ -10307,6 +11435,29 @@ func LinkLabel_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func LinkLabel_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := linkLabel_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func LinkLabel_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := linkLabel_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func LinkLabel_DisableAlign(obj uintptr)  {
+    linkLabel_DisableAlign.Call(obj)
+}
+
+func LinkLabel_EnableAlign(obj uintptr)  {
+    linkLabel_EnableAlign.Call(obj)
+}
+
+func LinkLabel_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := linkLabel_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func LinkLabel_FlipChildren(obj uintptr, AllLevels bool)  {
     linkLabel_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -10321,8 +11472,20 @@ func LinkLabel_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func LinkLabel_InsertControl(obj uintptr, AControl uintptr)  {
+    linkLabel_InsertControl.Call(obj, AControl )
+}
+
 func LinkLabel_Invalidate(obj uintptr)  {
     linkLabel_Invalidate.Call(obj)
+}
+
+func LinkLabel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    linkLabel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func LinkLabel_RemoveControl(obj uintptr, AControl uintptr)  {
+    linkLabel_RemoveControl.Call(obj, AControl )
 }
 
 func LinkLabel_Realign(obj uintptr)  {
@@ -10337,6 +11500,10 @@ func LinkLabel_ScaleBy(obj uintptr, M int32, D int32)  {
     linkLabel_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func LinkLabel_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    linkLabel_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func LinkLabel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     linkLabel_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -10347,6 +11514,10 @@ func LinkLabel_SetFocus(obj uintptr)  {
 
 func LinkLabel_Update(obj uintptr)  {
     linkLabel_Update.Call(obj)
+}
+
+func LinkLabel_UpdateControlState(obj uintptr)  {
+    linkLabel_UpdateControlState.Call(obj)
 }
 
 func LinkLabel_BringToFront(obj uintptr)  {
@@ -10416,6 +11587,10 @@ func LinkLabel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func LinkLabel_GetTextLen(obj uintptr) int32 {
     ret, _, _ := linkLabel_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func LinkLabel_SetTextBuf(obj uintptr, Buffer string)  {
+    linkLabel_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func LinkLabel_FindComponent(obj uintptr, AName string) uintptr {
@@ -10651,12 +11826,12 @@ func LinkLabel_SetShowHint(obj uintptr, value bool) {
    linkLabel_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func LinkLabel_GetTabOrder(obj uintptr) uint16 {
+func LinkLabel_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := linkLabel_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func LinkLabel_SetTabOrder(obj uintptr, value uint16) {
+func LinkLabel_SetTabOrder(obj uintptr, value TTabOrder) {
    linkLabel_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -10715,6 +11890,14 @@ func LinkLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
     linkLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func LinkLabel_SetOnGesture(obj uintptr, fn interface{}) {
+    linkLabel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func LinkLabel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    linkLabel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func LinkLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
     linkLabel_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -10743,6 +11926,11 @@ func LinkLabel_SetOnLinkClick(obj uintptr, fn interface{}) {
     linkLabel_SetOnLinkClick.Call(obj, addEventToMap(fn))
 }
 
+func LinkLabel_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := linkLabel_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func LinkLabel_GetDockSite(obj uintptr) bool {
     ret, _, _ := linkLabel_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -10759,6 +11947,21 @@ func LinkLabel_GetDoubleBuffered(obj uintptr) bool {
 
 func LinkLabel_SetDoubleBuffered(obj uintptr, value bool) {
    linkLabel_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func LinkLabel_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := linkLabel_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LinkLabel_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := linkLabel_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LinkLabel_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := linkLabel_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func LinkLabel_GetBrush(obj uintptr) uintptr {
@@ -10840,6 +12043,12 @@ func LinkLabel_SetClientHeight(obj uintptr, value int32) {
    linkLabel_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func LinkLabel_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    linkLabel_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func LinkLabel_GetClientRect(obj uintptr) TRect {
     var ret TRect
     linkLabel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -10853,6 +12062,24 @@ func LinkLabel_GetClientWidth(obj uintptr) int32 {
 
 func LinkLabel_SetClientWidth(obj uintptr, value int32) {
    linkLabel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func LinkLabel_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := linkLabel_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func LinkLabel_SetControlState(obj uintptr, value TControlState) {
+   linkLabel_SetControlState.Call(obj, uintptr(value))
+}
+
+func LinkLabel_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := linkLabel_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func LinkLabel_SetControlStyle(obj uintptr, value TControlStyle) {
+   linkLabel_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func LinkLabel_GetExplicitLeft(obj uintptr) int32 {
@@ -11016,6 +12243,11 @@ func LinkLabel_SetTag(obj uintptr, value int) {
    linkLabel_SetTag.Call(obj, uintptr(value))
 }
 
+func LinkLabel_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := linkLabel_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func LinkLabel_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := linkLabel_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -11129,6 +12361,10 @@ func SpeedButton_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func SpeedButton_GetTextLen(obj uintptr) int32 {
     ret, _, _ := speedButton_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func SpeedButton_SetTextBuf(obj uintptr, Buffer string)  {
+    speedButton_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func SpeedButton_FindComponent(obj uintptr, AName string) uintptr {
@@ -11390,6 +12626,10 @@ func SpeedButton_SetOnDblClick(obj uintptr, fn interface{}) {
     speedButton_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func SpeedButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    speedButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func SpeedButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     speedButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -11429,6 +12669,12 @@ func SpeedButton_SetClientHeight(obj uintptr, value int32) {
    speedButton_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func SpeedButton_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    speedButton_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func SpeedButton_GetClientRect(obj uintptr) TRect {
     var ret TRect
     speedButton_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -11442,6 +12688,24 @@ func SpeedButton_GetClientWidth(obj uintptr) int32 {
 
 func SpeedButton_SetClientWidth(obj uintptr, value int32) {
    speedButton_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func SpeedButton_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := speedButton_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func SpeedButton_SetControlState(obj uintptr, value TControlState) {
+   speedButton_SetControlState.Call(obj, uintptr(value))
+}
+
+func SpeedButton_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := speedButton_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func SpeedButton_SetControlStyle(obj uintptr, value TControlStyle) {
+   speedButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func SpeedButton_GetExplicitLeft(obj uintptr) int32 {
@@ -11476,6 +12740,10 @@ func SpeedButton_GetParent(obj uintptr) uintptr {
 
 func SpeedButton_SetParent(obj uintptr, value uintptr) {
    speedButton_SetParent.Call(obj, value)
+}
+
+func SpeedButton_SetOnGesture(obj uintptr, fn interface{}) {
+    speedButton_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func SpeedButton_GetAlignWithMargins(obj uintptr) bool {
@@ -11702,6 +12970,10 @@ func Splitter_GetTextLen(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Splitter_SetTextBuf(obj uintptr, Buffer string)  {
+    splitter_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
 func Splitter_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := splitter_FindComponent.Call(obj, GoStrToDStr(AName) )
     return ret
@@ -11882,6 +13154,12 @@ func Splitter_SetClientHeight(obj uintptr, value int32) {
    splitter_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Splitter_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    splitter_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Splitter_GetClientRect(obj uintptr) TRect {
     var ret TRect
     splitter_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -11895,6 +13173,24 @@ func Splitter_GetClientWidth(obj uintptr) int32 {
 
 func Splitter_SetClientWidth(obj uintptr, value int32) {
    splitter_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Splitter_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := splitter_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Splitter_SetControlState(obj uintptr, value TControlState) {
+   splitter_SetControlState.Call(obj, uintptr(value))
+}
+
+func Splitter_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := splitter_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Splitter_SetControlStyle(obj uintptr, value TControlStyle) {
+   splitter_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Splitter_GetExplicitLeft(obj uintptr) int32 {
@@ -11938,6 +13234,10 @@ func Splitter_GetParent(obj uintptr) uintptr {
 
 func Splitter_SetParent(obj uintptr, value uintptr) {
    splitter_SetParent.Call(obj, value)
+}
+
+func Splitter_SetOnGesture(obj uintptr, fn interface{}) {
+    splitter_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Splitter_GetAlignWithMargins(obj uintptr) bool {
@@ -12070,6 +13370,29 @@ func RadioGroup_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func RadioGroup_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := radioGroup_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func RadioGroup_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := radioGroup_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func RadioGroup_DisableAlign(obj uintptr)  {
+    radioGroup_DisableAlign.Call(obj)
+}
+
+func RadioGroup_EnableAlign(obj uintptr)  {
+    radioGroup_EnableAlign.Call(obj)
+}
+
+func RadioGroup_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := radioGroup_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func RadioGroup_Focused(obj uintptr) bool {
     ret, _, _ := radioGroup_Focused.Call(obj)
     return DBoolToGoBool(ret)
@@ -12080,8 +13403,20 @@ func RadioGroup_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func RadioGroup_InsertControl(obj uintptr, AControl uintptr)  {
+    radioGroup_InsertControl.Call(obj, AControl )
+}
+
 func RadioGroup_Invalidate(obj uintptr)  {
     radioGroup_Invalidate.Call(obj)
+}
+
+func RadioGroup_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    radioGroup_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func RadioGroup_RemoveControl(obj uintptr, AControl uintptr)  {
+    radioGroup_RemoveControl.Call(obj, AControl )
 }
 
 func RadioGroup_Realign(obj uintptr)  {
@@ -12096,6 +13431,10 @@ func RadioGroup_ScaleBy(obj uintptr, M int32, D int32)  {
     radioGroup_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func RadioGroup_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    radioGroup_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func RadioGroup_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     radioGroup_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -12106,6 +13445,10 @@ func RadioGroup_SetFocus(obj uintptr)  {
 
 func RadioGroup_Update(obj uintptr)  {
     radioGroup_Update.Call(obj)
+}
+
+func RadioGroup_UpdateControlState(obj uintptr)  {
+    radioGroup_UpdateControlState.Call(obj)
 }
 
 func RadioGroup_BringToFront(obj uintptr)  {
@@ -12175,6 +13518,10 @@ func RadioGroup_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func RadioGroup_GetTextLen(obj uintptr) int32 {
     ret, _, _ := radioGroup_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func RadioGroup_SetTextBuf(obj uintptr, Buffer string)  {
+    radioGroup_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func RadioGroup_FindComponent(obj uintptr, AName string) uintptr {
@@ -12428,12 +13775,12 @@ func RadioGroup_SetShowHint(obj uintptr, value bool) {
    radioGroup_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func RadioGroup_GetTabOrder(obj uintptr) uint16 {
+func RadioGroup_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := radioGroup_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func RadioGroup_SetTabOrder(obj uintptr, value uint16) {
+func RadioGroup_SetTabOrder(obj uintptr, value TTabOrder) {
    radioGroup_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -12505,8 +13852,17 @@ func RadioGroup_SetOnExit(obj uintptr, fn interface{}) {
     radioGroup_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func RadioGroup_SetOnGesture(obj uintptr, fn interface{}) {
+    radioGroup_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func RadioGroup_SetOnStartDock(obj uintptr, fn interface{}) {
     radioGroup_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func RadioGroup_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := radioGroup_GetDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func RadioGroup_GetDockSite(obj uintptr) bool {
@@ -12516,6 +13872,21 @@ func RadioGroup_GetDockSite(obj uintptr) bool {
 
 func RadioGroup_SetDockSite(obj uintptr, value bool) {
    radioGroup_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func RadioGroup_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := radioGroup_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioGroup_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := radioGroup_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RadioGroup_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := radioGroup_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func RadioGroup_GetBrush(obj uintptr) uintptr {
@@ -12579,6 +13950,12 @@ func RadioGroup_SetClientHeight(obj uintptr, value int32) {
    radioGroup_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func RadioGroup_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    radioGroup_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func RadioGroup_GetClientRect(obj uintptr) TRect {
     var ret TRect
     radioGroup_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -12592,6 +13969,24 @@ func RadioGroup_GetClientWidth(obj uintptr) int32 {
 
 func RadioGroup_SetClientWidth(obj uintptr, value int32) {
    radioGroup_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func RadioGroup_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := radioGroup_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func RadioGroup_SetControlState(obj uintptr, value TControlState) {
+   radioGroup_SetControlState.Call(obj, uintptr(value))
+}
+
+func RadioGroup_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := radioGroup_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func RadioGroup_SetControlStyle(obj uintptr, value TControlStyle) {
+   radioGroup_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func RadioGroup_GetExplicitLeft(obj uintptr) int32 {
@@ -12751,6 +14146,11 @@ func RadioGroup_GetButtons(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func RadioGroup_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := radioGroup_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func RadioGroup_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := radioGroup_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -12782,6 +14182,29 @@ func StaticText_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func StaticText_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := staticText_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func StaticText_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := staticText_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func StaticText_DisableAlign(obj uintptr)  {
+    staticText_DisableAlign.Call(obj)
+}
+
+func StaticText_EnableAlign(obj uintptr)  {
+    staticText_EnableAlign.Call(obj)
+}
+
+func StaticText_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := staticText_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func StaticText_FlipChildren(obj uintptr, AllLevels bool)  {
     staticText_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -12796,8 +14219,20 @@ func StaticText_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func StaticText_InsertControl(obj uintptr, AControl uintptr)  {
+    staticText_InsertControl.Call(obj, AControl )
+}
+
 func StaticText_Invalidate(obj uintptr)  {
     staticText_Invalidate.Call(obj)
+}
+
+func StaticText_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    staticText_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func StaticText_RemoveControl(obj uintptr, AControl uintptr)  {
+    staticText_RemoveControl.Call(obj, AControl )
 }
 
 func StaticText_Realign(obj uintptr)  {
@@ -12812,6 +14247,10 @@ func StaticText_ScaleBy(obj uintptr, M int32, D int32)  {
     staticText_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func StaticText_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    staticText_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func StaticText_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     staticText_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -12822,6 +14261,10 @@ func StaticText_SetFocus(obj uintptr)  {
 
 func StaticText_Update(obj uintptr)  {
     staticText_Update.Call(obj)
+}
+
+func StaticText_UpdateControlState(obj uintptr)  {
+    staticText_UpdateControlState.Call(obj)
 }
 
 func StaticText_BringToFront(obj uintptr)  {
@@ -12891,6 +14334,10 @@ func StaticText_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func StaticText_GetTextLen(obj uintptr) int32 {
     ret, _, _ := staticText_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func StaticText_SetTextBuf(obj uintptr, Buffer string)  {
+    staticText_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func StaticText_FindComponent(obj uintptr, AName string) uintptr {
@@ -13171,12 +14618,12 @@ func StaticText_SetShowHint(obj uintptr, value bool) {
    staticText_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func StaticText_GetTabOrder(obj uintptr) uint16 {
+func StaticText_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := staticText_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func StaticText_SetTabOrder(obj uintptr, value uint16) {
+func StaticText_SetTabOrder(obj uintptr, value TTabOrder) {
    staticText_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -13244,6 +14691,14 @@ func StaticText_SetOnEndDrag(obj uintptr, fn interface{}) {
     staticText_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func StaticText_SetOnGesture(obj uintptr, fn interface{}) {
+    staticText_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func StaticText_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    staticText_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func StaticText_SetOnMouseDown(obj uintptr, fn interface{}) {
     staticText_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -13268,6 +14723,11 @@ func StaticText_SetOnStartDock(obj uintptr, fn interface{}) {
     staticText_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func StaticText_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := staticText_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func StaticText_GetDockSite(obj uintptr) bool {
     ret, _, _ := staticText_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -13275,6 +14735,21 @@ func StaticText_GetDockSite(obj uintptr) bool {
 
 func StaticText_SetDockSite(obj uintptr, value bool) {
    staticText_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func StaticText_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := staticText_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StaticText_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := staticText_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StaticText_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := staticText_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func StaticText_GetBrush(obj uintptr) uintptr {
@@ -13338,6 +14813,12 @@ func StaticText_SetClientHeight(obj uintptr, value int32) {
    staticText_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func StaticText_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    staticText_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func StaticText_GetClientRect(obj uintptr) TRect {
     var ret TRect
     staticText_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -13351,6 +14832,24 @@ func StaticText_GetClientWidth(obj uintptr) int32 {
 
 func StaticText_SetClientWidth(obj uintptr, value int32) {
    staticText_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func StaticText_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := staticText_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func StaticText_SetControlState(obj uintptr, value TControlState) {
+   staticText_SetControlState.Call(obj, uintptr(value))
+}
+
+func StaticText_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := staticText_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func StaticText_SetControlStyle(obj uintptr, value TControlStyle) {
+   staticText_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func StaticText_GetExplicitLeft(obj uintptr) int32 {
@@ -13505,6 +15004,11 @@ func StaticText_SetTag(obj uintptr, value int) {
    staticText_SetTag.Call(obj, uintptr(value))
 }
 
+func StaticText_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := staticText_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func StaticText_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := staticText_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -13561,6 +15065,29 @@ func ColorBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ColorBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := colorBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ColorBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := colorBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ColorBox_DisableAlign(obj uintptr)  {
+    colorBox_DisableAlign.Call(obj)
+}
+
+func ColorBox_EnableAlign(obj uintptr)  {
+    colorBox_EnableAlign.Call(obj)
+}
+
+func ColorBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := colorBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ColorBox_FlipChildren(obj uintptr, AllLevels bool)  {
     colorBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -13570,8 +15097,20 @@ func ColorBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ColorBox_InsertControl(obj uintptr, AControl uintptr)  {
+    colorBox_InsertControl.Call(obj, AControl )
+}
+
 func ColorBox_Invalidate(obj uintptr)  {
     colorBox_Invalidate.Call(obj)
+}
+
+func ColorBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    colorBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ColorBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    colorBox_RemoveControl.Call(obj, AControl )
 }
 
 func ColorBox_Realign(obj uintptr)  {
@@ -13586,6 +15125,10 @@ func ColorBox_ScaleBy(obj uintptr, M int32, D int32)  {
     colorBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ColorBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    colorBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ColorBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     colorBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -13596,6 +15139,10 @@ func ColorBox_SetFocus(obj uintptr)  {
 
 func ColorBox_Update(obj uintptr)  {
     colorBox_Update.Call(obj)
+}
+
+func ColorBox_UpdateControlState(obj uintptr)  {
+    colorBox_UpdateControlState.Call(obj)
 }
 
 func ColorBox_BringToFront(obj uintptr)  {
@@ -13665,6 +15212,10 @@ func ColorBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ColorBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := colorBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ColorBox_SetTextBuf(obj uintptr, Buffer string)  {
+    colorBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ColorBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -13954,12 +15505,12 @@ func ColorBox_SetShowHint(obj uintptr, value bool) {
    colorBox_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func ColorBox_GetTabOrder(obj uintptr) uint16 {
+func ColorBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := colorBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ColorBox_SetTabOrder(obj uintptr, value uint16) {
+func ColorBox_SetTabOrder(obj uintptr, value TTabOrder) {
    colorBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -14024,6 +15575,10 @@ func ColorBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ColorBox_SetOnExit(obj uintptr, fn interface{}) {
     colorBox_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func ColorBox_SetOnGesture(obj uintptr, fn interface{}) {
+    colorBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ColorBox_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -14145,6 +15700,11 @@ func ColorBox_SetItemIndex(obj uintptr, value int32) {
    colorBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ColorBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := colorBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ColorBox_GetDockSite(obj uintptr) bool {
     ret, _, _ := colorBox_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -14152,6 +15712,21 @@ func ColorBox_GetDockSite(obj uintptr) bool {
 
 func ColorBox_SetDockSite(obj uintptr, value bool) {
    colorBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ColorBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := colorBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := colorBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := colorBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ColorBox_GetBrush(obj uintptr) uintptr {
@@ -14215,6 +15790,12 @@ func ColorBox_SetClientHeight(obj uintptr, value int32) {
    colorBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ColorBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    colorBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ColorBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     colorBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -14228,6 +15809,24 @@ func ColorBox_GetClientWidth(obj uintptr) int32 {
 
 func ColorBox_SetClientWidth(obj uintptr, value int32) {
    colorBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ColorBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := colorBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ColorBox_SetControlState(obj uintptr, value TControlState) {
+   colorBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func ColorBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := colorBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ColorBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   colorBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ColorBox_GetExplicitLeft(obj uintptr) int32 {
@@ -14392,6 +15991,11 @@ func ColorBox_GetColorNames(obj uintptr, Index int32) string {
     return DStrToGoStr(ret)
 }
 
+func ColorBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := colorBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ColorBox_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := colorBox_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -14443,6 +16047,29 @@ func ColorListBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ColorListBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := colorListBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ColorListBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := colorListBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ColorListBox_DisableAlign(obj uintptr)  {
+    colorListBox_DisableAlign.Call(obj)
+}
+
+func ColorListBox_EnableAlign(obj uintptr)  {
+    colorListBox_EnableAlign.Call(obj)
+}
+
+func ColorListBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := colorListBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ColorListBox_FlipChildren(obj uintptr, AllLevels bool)  {
     colorListBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -14457,8 +16084,20 @@ func ColorListBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ColorListBox_InsertControl(obj uintptr, AControl uintptr)  {
+    colorListBox_InsertControl.Call(obj, AControl )
+}
+
 func ColorListBox_Invalidate(obj uintptr)  {
     colorListBox_Invalidate.Call(obj)
+}
+
+func ColorListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    colorListBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ColorListBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    colorListBox_RemoveControl.Call(obj, AControl )
 }
 
 func ColorListBox_Realign(obj uintptr)  {
@@ -14473,6 +16112,10 @@ func ColorListBox_ScaleBy(obj uintptr, M int32, D int32)  {
     colorListBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ColorListBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    colorListBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ColorListBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     colorListBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -14483,6 +16126,10 @@ func ColorListBox_SetFocus(obj uintptr)  {
 
 func ColorListBox_Update(obj uintptr)  {
     colorListBox_Update.Call(obj)
+}
+
+func ColorListBox_UpdateControlState(obj uintptr)  {
+    colorListBox_UpdateControlState.Call(obj)
 }
 
 func ColorListBox_BringToFront(obj uintptr)  {
@@ -14552,6 +16199,10 @@ func ColorListBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ColorListBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := colorListBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ColorListBox_SetTextBuf(obj uintptr, Buffer string)  {
+    colorListBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ColorListBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -14823,12 +16474,12 @@ func ColorListBox_SetShowHint(obj uintptr, value bool) {
    colorListBox_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func ColorListBox_GetTabOrder(obj uintptr) uint16 {
+func ColorListBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := colorListBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ColorListBox_SetTabOrder(obj uintptr, value uint16) {
+func ColorListBox_SetTabOrder(obj uintptr, value TTabOrder) {
    colorListBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -14895,6 +16546,10 @@ func ColorListBox_SetOnExit(obj uintptr, fn interface{}) {
     colorListBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ColorListBox_SetOnGesture(obj uintptr, fn interface{}) {
+    colorListBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ColorListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     colorListBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -14905,6 +16560,10 @@ func ColorListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ColorListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     colorListBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ColorListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    colorListBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ColorListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -14986,6 +16645,11 @@ func ColorListBox_SetItemIndex(obj uintptr, value int32) {
    colorListBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ColorListBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := colorListBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ColorListBox_GetDockSite(obj uintptr) bool {
     ret, _, _ := colorListBox_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -14993,6 +16657,21 @@ func ColorListBox_GetDockSite(obj uintptr) bool {
 
 func ColorListBox_SetDockSite(obj uintptr, value bool) {
    colorListBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ColorListBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := colorListBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorListBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := colorListBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ColorListBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := colorListBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ColorListBox_GetBrush(obj uintptr) uintptr {
@@ -15056,6 +16735,12 @@ func ColorListBox_SetClientHeight(obj uintptr, value int32) {
    colorListBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ColorListBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    colorListBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ColorListBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     colorListBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -15069,6 +16754,24 @@ func ColorListBox_GetClientWidth(obj uintptr) int32 {
 
 func ColorListBox_SetClientWidth(obj uintptr, value int32) {
    colorListBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ColorListBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := colorListBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ColorListBox_SetControlState(obj uintptr, value TControlState) {
+   colorListBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func ColorListBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := colorListBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ColorListBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   colorListBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ColorListBox_GetExplicitLeft(obj uintptr) int32 {
@@ -15231,6 +16934,11 @@ func ColorListBox_GetColors(obj uintptr, Index int32) TColor {
 func ColorListBox_GetColorNames(obj uintptr, Index int32) string {
     ret, _, _ := colorListBox_GetColorNames.Call(obj, uintptr(Index))
     return DStrToGoStr(ret)
+}
+
+func ColorListBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := colorListBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func ColorListBox_GetControls(obj uintptr, Index int32) uintptr {
@@ -15715,6 +17423,29 @@ func CategoryPanelGroup_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CategoryPanelGroup_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := categoryPanelGroup_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanelGroup_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := categoryPanelGroup_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func CategoryPanelGroup_DisableAlign(obj uintptr)  {
+    categoryPanelGroup_DisableAlign.Call(obj)
+}
+
+func CategoryPanelGroup_EnableAlign(obj uintptr)  {
+    categoryPanelGroup_EnableAlign.Call(obj)
+}
+
+func CategoryPanelGroup_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := categoryPanelGroup_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func CategoryPanelGroup_FlipChildren(obj uintptr, AllLevels bool)  {
     categoryPanelGroup_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -15729,8 +17460,20 @@ func CategoryPanelGroup_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CategoryPanelGroup_InsertControl(obj uintptr, AControl uintptr)  {
+    categoryPanelGroup_InsertControl.Call(obj, AControl )
+}
+
 func CategoryPanelGroup_Invalidate(obj uintptr)  {
     categoryPanelGroup_Invalidate.Call(obj)
+}
+
+func CategoryPanelGroup_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    categoryPanelGroup_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func CategoryPanelGroup_RemoveControl(obj uintptr, AControl uintptr)  {
+    categoryPanelGroup_RemoveControl.Call(obj, AControl )
 }
 
 func CategoryPanelGroup_Realign(obj uintptr)  {
@@ -15745,6 +17488,10 @@ func CategoryPanelGroup_ScaleBy(obj uintptr, M int32, D int32)  {
     categoryPanelGroup_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func CategoryPanelGroup_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    categoryPanelGroup_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func CategoryPanelGroup_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     categoryPanelGroup_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -15755,6 +17502,10 @@ func CategoryPanelGroup_SetFocus(obj uintptr)  {
 
 func CategoryPanelGroup_Update(obj uintptr)  {
     categoryPanelGroup_Update.Call(obj)
+}
+
+func CategoryPanelGroup_UpdateControlState(obj uintptr)  {
+    categoryPanelGroup_UpdateControlState.Call(obj)
 }
 
 func CategoryPanelGroup_BringToFront(obj uintptr)  {
@@ -15824,6 +17575,10 @@ func CategoryPanelGroup_GetTextBuf(obj uintptr, Buffer string, BufSize int32) in
 func CategoryPanelGroup_GetTextLen(obj uintptr) int32 {
     ret, _, _ := categoryPanelGroup_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func CategoryPanelGroup_SetTextBuf(obj uintptr, Buffer string)  {
+    categoryPanelGroup_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func CategoryPanelGroup_FindComponent(obj uintptr, AName string) uintptr {
@@ -16203,12 +17958,12 @@ func CategoryPanelGroup_SetShowHint(obj uintptr, value bool) {
    categoryPanelGroup_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func CategoryPanelGroup_GetTabOrder(obj uintptr) uint16 {
+func CategoryPanelGroup_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := categoryPanelGroup_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func CategoryPanelGroup_SetTabOrder(obj uintptr, value uint16) {
+func CategoryPanelGroup_SetTabOrder(obj uintptr, value TTabOrder) {
    categoryPanelGroup_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -16288,8 +18043,16 @@ func CategoryPanelGroup_SetOnExit(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func CategoryPanelGroup_SetOnGesture(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CategoryPanelGroup_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     categoryPanelGroup_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanelGroup_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanelGroup_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -16339,6 +18102,26 @@ func CategoryPanelGroup_SetOnUnDock(obj uintptr, fn interface{}) {
 func CategoryPanelGroup_GetPanels(obj uintptr) uintptr {
     ret, _, _ := categoryPanelGroup_GetPanels.Call(obj)
     return ret
+}
+
+func CategoryPanelGroup_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := categoryPanelGroup_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func CategoryPanelGroup_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := categoryPanelGroup_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanelGroup_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := categoryPanelGroup_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanelGroup_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := categoryPanelGroup_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func CategoryPanelGroup_GetBrush(obj uintptr) uintptr {
@@ -16402,6 +18185,12 @@ func CategoryPanelGroup_SetClientHeight(obj uintptr, value int32) {
    categoryPanelGroup_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func CategoryPanelGroup_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    categoryPanelGroup_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CategoryPanelGroup_GetClientRect(obj uintptr) TRect {
     var ret TRect
     categoryPanelGroup_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -16415,6 +18204,24 @@ func CategoryPanelGroup_GetClientWidth(obj uintptr) int32 {
 
 func CategoryPanelGroup_SetClientWidth(obj uintptr, value int32) {
    categoryPanelGroup_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func CategoryPanelGroup_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := categoryPanelGroup_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func CategoryPanelGroup_SetControlState(obj uintptr, value TControlState) {
+   categoryPanelGroup_SetControlState.Call(obj, uintptr(value))
+}
+
+func CategoryPanelGroup_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := categoryPanelGroup_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func CategoryPanelGroup_SetControlStyle(obj uintptr, value TControlStyle) {
+   categoryPanelGroup_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func CategoryPanelGroup_GetExplicitLeft(obj uintptr) int32 {
@@ -16551,6 +18358,11 @@ func CategoryPanelGroup_SetTag(obj uintptr, value int) {
    categoryPanelGroup_SetTag.Call(obj, uintptr(value))
 }
 
+func CategoryPanelGroup_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := categoryPanelGroup_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func CategoryPanelGroup_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := categoryPanelGroup_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -16594,6 +18406,29 @@ func CategoryPanel_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CategoryPanel_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := categoryPanel_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanel_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := categoryPanel_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func CategoryPanel_DisableAlign(obj uintptr)  {
+    categoryPanel_DisableAlign.Call(obj)
+}
+
+func CategoryPanel_EnableAlign(obj uintptr)  {
+    categoryPanel_EnableAlign.Call(obj)
+}
+
+func CategoryPanel_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := categoryPanel_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func CategoryPanel_FlipChildren(obj uintptr, AllLevels bool)  {
     categoryPanel_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -16608,8 +18443,20 @@ func CategoryPanel_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CategoryPanel_InsertControl(obj uintptr, AControl uintptr)  {
+    categoryPanel_InsertControl.Call(obj, AControl )
+}
+
 func CategoryPanel_Invalidate(obj uintptr)  {
     categoryPanel_Invalidate.Call(obj)
+}
+
+func CategoryPanel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    categoryPanel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func CategoryPanel_RemoveControl(obj uintptr, AControl uintptr)  {
+    categoryPanel_RemoveControl.Call(obj, AControl )
 }
 
 func CategoryPanel_Realign(obj uintptr)  {
@@ -16624,12 +18471,20 @@ func CategoryPanel_ScaleBy(obj uintptr, M int32, D int32)  {
     categoryPanel_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func CategoryPanel_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    categoryPanel_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func CategoryPanel_SetFocus(obj uintptr)  {
     categoryPanel_SetFocus.Call(obj)
 }
 
 func CategoryPanel_Update(obj uintptr)  {
     categoryPanel_Update.Call(obj)
+}
+
+func CategoryPanel_UpdateControlState(obj uintptr)  {
+    categoryPanel_UpdateControlState.Call(obj)
 }
 
 func CategoryPanel_BringToFront(obj uintptr)  {
@@ -16699,6 +18554,10 @@ func CategoryPanel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func CategoryPanel_GetTextLen(obj uintptr) int32 {
     ret, _, _ := categoryPanel_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func CategoryPanel_SetTextBuf(obj uintptr, Buffer string)  {
+    categoryPanel_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func CategoryPanel_FindComponent(obj uintptr, AName string) uintptr {
@@ -17024,12 +18883,12 @@ func CategoryPanel_SetShowHint(obj uintptr, value bool) {
    categoryPanel_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func CategoryPanel_GetTabOrder(obj uintptr) uint16 {
+func CategoryPanel_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := categoryPanel_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func CategoryPanel_SetTabOrder(obj uintptr, value uint16) {
+func CategoryPanel_SetTabOrder(obj uintptr, value TTabOrder) {
    categoryPanel_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -17109,8 +18968,16 @@ func CategoryPanel_SetOnExit(obj uintptr, fn interface{}) {
     categoryPanel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func CategoryPanel_SetOnGesture(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CategoryPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     categoryPanel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func CategoryPanel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    categoryPanel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -17148,6 +19015,26 @@ func CategoryPanel_GetPanelGroup(obj uintptr) uintptr {
 
 func CategoryPanel_SetPanelGroup(obj uintptr, value uintptr) {
    categoryPanel_SetPanelGroup.Call(obj, value)
+}
+
+func CategoryPanel_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := categoryPanel_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func CategoryPanel_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := categoryPanel_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanel_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := categoryPanel_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CategoryPanel_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := categoryPanel_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func CategoryPanel_GetBrush(obj uintptr) uintptr {
@@ -17220,6 +19107,12 @@ func CategoryPanel_SetClientHeight(obj uintptr, value int32) {
    categoryPanel_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func CategoryPanel_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    categoryPanel_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CategoryPanel_GetClientRect(obj uintptr) TRect {
     var ret TRect
     categoryPanel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -17233,6 +19126,24 @@ func CategoryPanel_GetClientWidth(obj uintptr) int32 {
 
 func CategoryPanel_SetClientWidth(obj uintptr, value int32) {
    categoryPanel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func CategoryPanel_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := categoryPanel_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func CategoryPanel_SetControlState(obj uintptr, value TControlState) {
+   categoryPanel_SetControlState.Call(obj, uintptr(value))
+}
+
+func CategoryPanel_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := categoryPanel_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func CategoryPanel_SetControlStyle(obj uintptr, value TControlStyle) {
+   categoryPanel_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func CategoryPanel_GetExplicitLeft(obj uintptr) int32 {
@@ -17358,6 +19269,11 @@ func CategoryPanel_GetTag(obj uintptr) int {
 
 func CategoryPanel_SetTag(obj uintptr, value int) {
    categoryPanel_SetTag.Call(obj, uintptr(value))
+}
+
+func CategoryPanel_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := categoryPanel_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func CategoryPanel_GetControls(obj uintptr, Index int32) uintptr {
@@ -19222,6 +21138,29 @@ func RichEdit_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func RichEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := richEdit_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := richEdit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func RichEdit_DisableAlign(obj uintptr)  {
+    richEdit_DisableAlign.Call(obj)
+}
+
+func RichEdit_EnableAlign(obj uintptr)  {
+    richEdit_EnableAlign.Call(obj)
+}
+
+func RichEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := richEdit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func RichEdit_FlipChildren(obj uintptr, AllLevels bool)  {
     richEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -19236,8 +21175,20 @@ func RichEdit_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func RichEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    richEdit_InsertControl.Call(obj, AControl )
+}
+
 func RichEdit_Invalidate(obj uintptr)  {
     richEdit_Invalidate.Call(obj)
+}
+
+func RichEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    richEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func RichEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    richEdit_RemoveControl.Call(obj, AControl )
 }
 
 func RichEdit_Realign(obj uintptr)  {
@@ -19252,6 +21203,10 @@ func RichEdit_ScaleBy(obj uintptr, M int32, D int32)  {
     richEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func RichEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    richEdit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func RichEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     richEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -19262,6 +21217,10 @@ func RichEdit_SetFocus(obj uintptr)  {
 
 func RichEdit_Update(obj uintptr)  {
     richEdit_Update.Call(obj)
+}
+
+func RichEdit_UpdateControlState(obj uintptr)  {
+    richEdit_UpdateControlState.Call(obj)
 }
 
 func RichEdit_BringToFront(obj uintptr)  {
@@ -19331,6 +21290,10 @@ func RichEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func RichEdit_GetTextLen(obj uintptr) int32 {
     ret, _, _ := richEdit_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func RichEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    richEdit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func RichEdit_FindComponent(obj uintptr, AName string) uintptr {
@@ -19647,12 +21610,12 @@ func RichEdit_SetShowHint(obj uintptr, value bool) {
    richEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func RichEdit_GetTabOrder(obj uintptr) uint16 {
+func RichEdit_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := richEdit_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func RichEdit_SetTabOrder(obj uintptr, value uint16) {
+func RichEdit_SetTabOrder(obj uintptr, value TTabOrder) {
    richEdit_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -19759,6 +21722,10 @@ func RichEdit_SetOnExit(obj uintptr, fn interface{}) {
     richEdit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func RichEdit_SetOnGesture(obj uintptr, fn interface{}) {
+    richEdit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func RichEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     richEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -19769,6 +21736,10 @@ func RichEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func RichEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     richEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func RichEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -19914,6 +21885,11 @@ func RichEdit_SetTextHint(obj uintptr, value string) {
    richEdit_SetTextHint.Call(obj, GoStrToDStr(value))
 }
 
+func RichEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func RichEdit_GetDockSite(obj uintptr) bool {
     ret, _, _ := richEdit_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -19930,6 +21906,21 @@ func RichEdit_GetDoubleBuffered(obj uintptr) bool {
 
 func RichEdit_SetDoubleBuffered(obj uintptr, value bool) {
    richEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := richEdit_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := richEdit_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func RichEdit_GetBrush(obj uintptr) uintptr {
@@ -20002,6 +21993,12 @@ func RichEdit_SetClientHeight(obj uintptr, value int32) {
    richEdit_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func RichEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    richEdit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func RichEdit_GetClientRect(obj uintptr) TRect {
     var ret TRect
     richEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -20015,6 +22012,24 @@ func RichEdit_GetClientWidth(obj uintptr) int32 {
 
 func RichEdit_SetClientWidth(obj uintptr, value int32) {
    richEdit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := richEdit_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func RichEdit_SetControlState(obj uintptr, value TControlState) {
+   richEdit_SetControlState.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := richEdit_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func RichEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+   richEdit_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func RichEdit_GetExplicitLeft(obj uintptr) int32 {
@@ -20169,6 +22184,11 @@ func RichEdit_SetTag(obj uintptr, value int) {
    richEdit_SetTag.Call(obj, uintptr(value))
 }
 
+func RichEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := richEdit_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func RichEdit_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := richEdit_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -20204,6 +22224,29 @@ func TrackBar_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func TrackBar_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := trackBar_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func TrackBar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := trackBar_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func TrackBar_DisableAlign(obj uintptr)  {
+    trackBar_DisableAlign.Call(obj)
+}
+
+func TrackBar_EnableAlign(obj uintptr)  {
+    trackBar_EnableAlign.Call(obj)
+}
+
+func TrackBar_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := trackBar_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func TrackBar_FlipChildren(obj uintptr, AllLevels bool)  {
     trackBar_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -20218,8 +22261,20 @@ func TrackBar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func TrackBar_InsertControl(obj uintptr, AControl uintptr)  {
+    trackBar_InsertControl.Call(obj, AControl )
+}
+
 func TrackBar_Invalidate(obj uintptr)  {
     trackBar_Invalidate.Call(obj)
+}
+
+func TrackBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    trackBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func TrackBar_RemoveControl(obj uintptr, AControl uintptr)  {
+    trackBar_RemoveControl.Call(obj, AControl )
 }
 
 func TrackBar_Realign(obj uintptr)  {
@@ -20234,6 +22289,10 @@ func TrackBar_ScaleBy(obj uintptr, M int32, D int32)  {
     trackBar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func TrackBar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    trackBar_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func TrackBar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     trackBar_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -20244,6 +22303,10 @@ func TrackBar_SetFocus(obj uintptr)  {
 
 func TrackBar_Update(obj uintptr)  {
     trackBar_Update.Call(obj)
+}
+
+func TrackBar_UpdateControlState(obj uintptr)  {
+    trackBar_UpdateControlState.Call(obj)
 }
 
 func TrackBar_BringToFront(obj uintptr)  {
@@ -20313,6 +22376,10 @@ func TrackBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func TrackBar_GetTextLen(obj uintptr) int32 {
     ret, _, _ := trackBar_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func TrackBar_SetTextBuf(obj uintptr, Buffer string)  {
+    trackBar_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func TrackBar_FindComponent(obj uintptr, AName string) uintptr {
@@ -20593,12 +22660,12 @@ func TrackBar_SetShowSelRange(obj uintptr, value bool) {
    trackBar_SetShowSelRange.Call(obj, GoBoolToDBool(value))
 }
 
-func TrackBar_GetTabOrder(obj uintptr) uint16 {
+func TrackBar_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := trackBar_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func TrackBar_SetTabOrder(obj uintptr, value uint16) {
+func TrackBar_SetTabOrder(obj uintptr, value TTabOrder) {
    trackBar_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -20688,6 +22755,10 @@ func TrackBar_SetOnExit(obj uintptr, fn interface{}) {
     trackBar_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func TrackBar_SetOnGesture(obj uintptr, fn interface{}) {
+    trackBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func TrackBar_SetOnKeyDown(obj uintptr, fn interface{}) {
     trackBar_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -20704,6 +22775,11 @@ func TrackBar_SetOnStartDock(obj uintptr, fn interface{}) {
     trackBar_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func TrackBar_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := trackBar_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func TrackBar_GetDockSite(obj uintptr) bool {
     ret, _, _ := trackBar_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -20711,6 +22787,21 @@ func TrackBar_GetDockSite(obj uintptr) bool {
 
 func TrackBar_SetDockSite(obj uintptr, value bool) {
    trackBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func TrackBar_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := trackBar_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TrackBar_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := trackBar_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TrackBar_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := trackBar_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func TrackBar_GetBrush(obj uintptr) uintptr {
@@ -20783,6 +22874,12 @@ func TrackBar_SetClientHeight(obj uintptr, value int32) {
    trackBar_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func TrackBar_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    trackBar_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func TrackBar_GetClientRect(obj uintptr) TRect {
     var ret TRect
     trackBar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -20796,6 +22893,24 @@ func TrackBar_GetClientWidth(obj uintptr) int32 {
 
 func TrackBar_SetClientWidth(obj uintptr, value int32) {
    trackBar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func TrackBar_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := trackBar_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func TrackBar_SetControlState(obj uintptr, value TControlState) {
+   trackBar_SetControlState.Call(obj, uintptr(value))
+}
+
+func TrackBar_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := trackBar_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func TrackBar_SetControlStyle(obj uintptr, value TControlStyle) {
+   trackBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func TrackBar_GetExplicitLeft(obj uintptr) int32 {
@@ -20948,6 +23063,11 @@ func TrackBar_GetTag(obj uintptr) int {
 
 func TrackBar_SetTag(obj uintptr, value int) {
    trackBar_SetTag.Call(obj, uintptr(value))
+}
+
+func TrackBar_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := trackBar_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func TrackBar_GetControls(obj uintptr, Index int32) uintptr {
@@ -21359,6 +23479,29 @@ func UpDown_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func UpDown_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := upDown_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func UpDown_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := upDown_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func UpDown_DisableAlign(obj uintptr)  {
+    upDown_DisableAlign.Call(obj)
+}
+
+func UpDown_EnableAlign(obj uintptr)  {
+    upDown_EnableAlign.Call(obj)
+}
+
+func UpDown_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := upDown_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func UpDown_FlipChildren(obj uintptr, AllLevels bool)  {
     upDown_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -21373,8 +23516,20 @@ func UpDown_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func UpDown_InsertControl(obj uintptr, AControl uintptr)  {
+    upDown_InsertControl.Call(obj, AControl )
+}
+
 func UpDown_Invalidate(obj uintptr)  {
     upDown_Invalidate.Call(obj)
+}
+
+func UpDown_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    upDown_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func UpDown_RemoveControl(obj uintptr, AControl uintptr)  {
+    upDown_RemoveControl.Call(obj, AControl )
 }
 
 func UpDown_Realign(obj uintptr)  {
@@ -21389,6 +23544,10 @@ func UpDown_ScaleBy(obj uintptr, M int32, D int32)  {
     upDown_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func UpDown_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    upDown_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func UpDown_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     upDown_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -21399,6 +23558,10 @@ func UpDown_SetFocus(obj uintptr)  {
 
 func UpDown_Update(obj uintptr)  {
     upDown_Update.Call(obj)
+}
+
+func UpDown_UpdateControlState(obj uintptr)  {
+    upDown_UpdateControlState.Call(obj)
 }
 
 func UpDown_BringToFront(obj uintptr)  {
@@ -21468,6 +23631,10 @@ func UpDown_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func UpDown_GetTextLen(obj uintptr) int32 {
     ret, _, _ := upDown_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func UpDown_SetTextBuf(obj uintptr, Buffer string)  {
+    upDown_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func UpDown_FindComponent(obj uintptr, AName string) uintptr {
@@ -21631,12 +23798,12 @@ func UpDown_SetShowHint(obj uintptr, value bool) {
    upDown_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func UpDown_GetTabOrder(obj uintptr) uint16 {
+func UpDown_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := upDown_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func UpDown_SetTabOrder(obj uintptr, value uint16) {
+func UpDown_SetTabOrder(obj uintptr, value TTabOrder) {
    upDown_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -21676,6 +23843,10 @@ func UpDown_SetStyleElements(obj uintptr, value TStyleElements) {
    upDown_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func UpDown_SetOnChanging(obj uintptr, fn interface{}) {
+    upDown_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func UpDown_SetOnContextPopup(obj uintptr, fn interface{}) {
     upDown_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -21690,6 +23861,10 @@ func UpDown_SetOnEnter(obj uintptr, fn interface{}) {
 
 func UpDown_SetOnExit(obj uintptr, fn interface{}) {
     upDown_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func UpDown_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    upDown_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func UpDown_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -21712,6 +23887,11 @@ func UpDown_SetOnMouseUp(obj uintptr, fn interface{}) {
     upDown_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func UpDown_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := upDown_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func UpDown_GetDockSite(obj uintptr) bool {
     ret, _, _ := upDown_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -21719,6 +23899,21 @@ func UpDown_GetDockSite(obj uintptr) bool {
 
 func UpDown_SetDockSite(obj uintptr, value bool) {
    upDown_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func UpDown_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := upDown_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func UpDown_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := upDown_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func UpDown_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := upDown_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func UpDown_GetBrush(obj uintptr) uintptr {
@@ -21800,6 +23995,12 @@ func UpDown_SetClientHeight(obj uintptr, value int32) {
    upDown_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func UpDown_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    upDown_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func UpDown_GetClientRect(obj uintptr) TRect {
     var ret TRect
     upDown_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -21813,6 +24014,24 @@ func UpDown_GetClientWidth(obj uintptr) int32 {
 
 func UpDown_SetClientWidth(obj uintptr, value int32) {
    upDown_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func UpDown_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := upDown_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func UpDown_SetControlState(obj uintptr, value TControlState) {
+   upDown_SetControlState.Call(obj, uintptr(value))
+}
+
+func UpDown_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := upDown_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func UpDown_SetControlStyle(obj uintptr, value TControlStyle) {
+   upDown_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func UpDown_GetExplicitLeft(obj uintptr) int32 {
@@ -21847,6 +24066,10 @@ func UpDown_GetParent(obj uintptr) uintptr {
 
 func UpDown_SetParent(obj uintptr, value uintptr) {
    upDown_SetParent.Call(obj, value)
+}
+
+func UpDown_SetOnGesture(obj uintptr, fn interface{}) {
+    upDown_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func UpDown_GetAlignWithMargins(obj uintptr) bool {
@@ -21958,6 +24181,11 @@ func UpDown_SetTag(obj uintptr, value int) {
    upDown_SetTag.Call(obj, uintptr(value))
 }
 
+func UpDown_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := upDown_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func UpDown_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := upDown_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -21997,6 +24225,29 @@ func ProgressBar_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ProgressBar_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := progressBar_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ProgressBar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := progressBar_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ProgressBar_DisableAlign(obj uintptr)  {
+    progressBar_DisableAlign.Call(obj)
+}
+
+func ProgressBar_EnableAlign(obj uintptr)  {
+    progressBar_EnableAlign.Call(obj)
+}
+
+func ProgressBar_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := progressBar_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ProgressBar_FlipChildren(obj uintptr, AllLevels bool)  {
     progressBar_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -22011,8 +24262,20 @@ func ProgressBar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ProgressBar_InsertControl(obj uintptr, AControl uintptr)  {
+    progressBar_InsertControl.Call(obj, AControl )
+}
+
 func ProgressBar_Invalidate(obj uintptr)  {
     progressBar_Invalidate.Call(obj)
+}
+
+func ProgressBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    progressBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ProgressBar_RemoveControl(obj uintptr, AControl uintptr)  {
+    progressBar_RemoveControl.Call(obj, AControl )
 }
 
 func ProgressBar_Realign(obj uintptr)  {
@@ -22027,6 +24290,10 @@ func ProgressBar_ScaleBy(obj uintptr, M int32, D int32)  {
     progressBar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ProgressBar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    progressBar_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ProgressBar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     progressBar_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -22037,6 +24304,10 @@ func ProgressBar_SetFocus(obj uintptr)  {
 
 func ProgressBar_Update(obj uintptr)  {
     progressBar_Update.Call(obj)
+}
+
+func ProgressBar_UpdateControlState(obj uintptr)  {
+    progressBar_UpdateControlState.Call(obj)
 }
 
 func ProgressBar_BringToFront(obj uintptr)  {
@@ -22106,6 +24377,10 @@ func ProgressBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ProgressBar_GetTextLen(obj uintptr) int32 {
     ret, _, _ := progressBar_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ProgressBar_SetTextBuf(obj uintptr, Buffer string)  {
+    progressBar_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ProgressBar_FindComponent(obj uintptr, AName string) uintptr {
@@ -22386,12 +24661,12 @@ func ProgressBar_SetShowHint(obj uintptr, value bool) {
    progressBar_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func ProgressBar_GetTabOrder(obj uintptr) uint16 {
+func ProgressBar_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := progressBar_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ProgressBar_SetTabOrder(obj uintptr, value uint16) {
+func ProgressBar_SetTabOrder(obj uintptr, value TTabOrder) {
    progressBar_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -22450,6 +24725,14 @@ func ProgressBar_SetOnExit(obj uintptr, fn interface{}) {
     progressBar_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ProgressBar_SetOnGesture(obj uintptr, fn interface{}) {
+    progressBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func ProgressBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    progressBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func ProgressBar_SetOnMouseDown(obj uintptr, fn interface{}) {
     progressBar_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -22474,6 +24757,11 @@ func ProgressBar_SetOnStartDock(obj uintptr, fn interface{}) {
     progressBar_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func ProgressBar_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := progressBar_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ProgressBar_GetDockSite(obj uintptr) bool {
     ret, _, _ := progressBar_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -22481,6 +24769,21 @@ func ProgressBar_GetDockSite(obj uintptr) bool {
 
 func ProgressBar_SetDockSite(obj uintptr, value bool) {
    progressBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ProgressBar_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := progressBar_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ProgressBar_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := progressBar_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ProgressBar_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := progressBar_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ProgressBar_GetBrush(obj uintptr) uintptr {
@@ -22553,6 +24856,12 @@ func ProgressBar_SetClientHeight(obj uintptr, value int32) {
    progressBar_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ProgressBar_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    progressBar_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ProgressBar_GetClientRect(obj uintptr) TRect {
     var ret TRect
     progressBar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -22566,6 +24875,24 @@ func ProgressBar_GetClientWidth(obj uintptr) int32 {
 
 func ProgressBar_SetClientWidth(obj uintptr, value int32) {
    progressBar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ProgressBar_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := progressBar_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ProgressBar_SetControlState(obj uintptr, value TControlState) {
+   progressBar_SetControlState.Call(obj, uintptr(value))
+}
+
+func ProgressBar_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := progressBar_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ProgressBar_SetControlStyle(obj uintptr, value TControlStyle) {
+   progressBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ProgressBar_GetExplicitLeft(obj uintptr) int32 {
@@ -22711,6 +25038,11 @@ func ProgressBar_SetTag(obj uintptr, value int) {
    progressBar_SetTag.Call(obj, uintptr(value))
 }
 
+func ProgressBar_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := progressBar_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ProgressBar_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := progressBar_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -22742,6 +25074,29 @@ func HotKey_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func HotKey_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := hotKey_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func HotKey_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := hotKey_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func HotKey_DisableAlign(obj uintptr)  {
+    hotKey_DisableAlign.Call(obj)
+}
+
+func HotKey_EnableAlign(obj uintptr)  {
+    hotKey_EnableAlign.Call(obj)
+}
+
+func HotKey_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := hotKey_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func HotKey_FlipChildren(obj uintptr, AllLevels bool)  {
     hotKey_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -22756,8 +25111,20 @@ func HotKey_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func HotKey_InsertControl(obj uintptr, AControl uintptr)  {
+    hotKey_InsertControl.Call(obj, AControl )
+}
+
 func HotKey_Invalidate(obj uintptr)  {
     hotKey_Invalidate.Call(obj)
+}
+
+func HotKey_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    hotKey_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func HotKey_RemoveControl(obj uintptr, AControl uintptr)  {
+    hotKey_RemoveControl.Call(obj, AControl )
 }
 
 func HotKey_Realign(obj uintptr)  {
@@ -22772,6 +25139,10 @@ func HotKey_ScaleBy(obj uintptr, M int32, D int32)  {
     hotKey_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func HotKey_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    hotKey_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func HotKey_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     hotKey_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -22782,6 +25153,10 @@ func HotKey_SetFocus(obj uintptr)  {
 
 func HotKey_Update(obj uintptr)  {
     hotKey_Update.Call(obj)
+}
+
+func HotKey_UpdateControlState(obj uintptr)  {
+    hotKey_UpdateControlState.Call(obj)
 }
 
 func HotKey_BringToFront(obj uintptr)  {
@@ -22851,6 +25226,10 @@ func HotKey_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func HotKey_GetTextLen(obj uintptr) int32 {
     ret, _, _ := hotKey_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func HotKey_SetTextBuf(obj uintptr, Buffer string)  {
+    hotKey_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func HotKey_FindComponent(obj uintptr, AName string) uintptr {
@@ -22978,12 +25357,12 @@ func HotKey_SetShowHint(obj uintptr, value bool) {
    hotKey_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func HotKey_GetTabOrder(obj uintptr) uint16 {
+func HotKey_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := hotKey_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func HotKey_SetTabOrder(obj uintptr, value uint16) {
+func HotKey_SetTabOrder(obj uintptr, value TTabOrder) {
    hotKey_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -23030,6 +25409,14 @@ func HotKey_SetOnExit(obj uintptr, fn interface{}) {
     hotKey_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func HotKey_SetOnGesture(obj uintptr, fn interface{}) {
+    hotKey_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func HotKey_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    hotKey_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func HotKey_SetOnMouseDown(obj uintptr, fn interface{}) {
     hotKey_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -23050,6 +25437,11 @@ func HotKey_SetOnMouseUp(obj uintptr, fn interface{}) {
     hotKey_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
+func HotKey_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := hotKey_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func HotKey_GetDockSite(obj uintptr) bool {
     ret, _, _ := hotKey_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -23066,6 +25458,21 @@ func HotKey_GetDoubleBuffered(obj uintptr) bool {
 
 func HotKey_SetDoubleBuffered(obj uintptr, value bool) {
    hotKey_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func HotKey_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := hotKey_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HotKey_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := hotKey_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HotKey_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := hotKey_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func HotKey_GetBrush(obj uintptr) uintptr {
@@ -23147,6 +25554,12 @@ func HotKey_SetClientHeight(obj uintptr, value int32) {
    hotKey_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func HotKey_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    hotKey_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func HotKey_GetClientRect(obj uintptr) TRect {
     var ret TRect
     hotKey_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -23160,6 +25573,24 @@ func HotKey_GetClientWidth(obj uintptr) int32 {
 
 func HotKey_SetClientWidth(obj uintptr, value int32) {
    hotKey_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func HotKey_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := hotKey_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func HotKey_SetControlState(obj uintptr, value TControlState) {
+   hotKey_SetControlState.Call(obj, uintptr(value))
+}
+
+func HotKey_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := hotKey_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func HotKey_SetControlStyle(obj uintptr, value TControlStyle) {
+   hotKey_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func HotKey_GetExplicitLeft(obj uintptr) int32 {
@@ -23305,6 +25736,11 @@ func HotKey_SetTag(obj uintptr, value int) {
    hotKey_SetTag.Call(obj, uintptr(value))
 }
 
+func HotKey_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := hotKey_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func HotKey_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := hotKey_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -23336,6 +25772,29 @@ func DateTimePicker_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func DateTimePicker_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := dateTimePicker_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := dateTimePicker_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func DateTimePicker_DisableAlign(obj uintptr)  {
+    dateTimePicker_DisableAlign.Call(obj)
+}
+
+func DateTimePicker_EnableAlign(obj uintptr)  {
+    dateTimePicker_EnableAlign.Call(obj)
+}
+
+func DateTimePicker_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := dateTimePicker_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func DateTimePicker_FlipChildren(obj uintptr, AllLevels bool)  {
     dateTimePicker_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -23350,8 +25809,20 @@ func DateTimePicker_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func DateTimePicker_InsertControl(obj uintptr, AControl uintptr)  {
+    dateTimePicker_InsertControl.Call(obj, AControl )
+}
+
 func DateTimePicker_Invalidate(obj uintptr)  {
     dateTimePicker_Invalidate.Call(obj)
+}
+
+func DateTimePicker_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    dateTimePicker_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func DateTimePicker_RemoveControl(obj uintptr, AControl uintptr)  {
+    dateTimePicker_RemoveControl.Call(obj, AControl )
 }
 
 func DateTimePicker_Realign(obj uintptr)  {
@@ -23366,6 +25837,10 @@ func DateTimePicker_ScaleBy(obj uintptr, M int32, D int32)  {
     dateTimePicker_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func DateTimePicker_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    dateTimePicker_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func DateTimePicker_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     dateTimePicker_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -23376,6 +25851,10 @@ func DateTimePicker_SetFocus(obj uintptr)  {
 
 func DateTimePicker_Update(obj uintptr)  {
     dateTimePicker_Update.Call(obj)
+}
+
+func DateTimePicker_UpdateControlState(obj uintptr)  {
+    dateTimePicker_UpdateControlState.Call(obj)
 }
 
 func DateTimePicker_BringToFront(obj uintptr)  {
@@ -23445,6 +25924,10 @@ func DateTimePicker_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 
 func DateTimePicker_GetTextLen(obj uintptr) int32 {
     ret, _, _ := dateTimePicker_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func DateTimePicker_SetTextBuf(obj uintptr, Buffer string)  {
+    dateTimePicker_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func DateTimePicker_FindComponent(obj uintptr, AName string) uintptr {
@@ -23802,12 +26285,12 @@ func DateTimePicker_SetShowHint(obj uintptr, value bool) {
    dateTimePicker_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func DateTimePicker_GetTabOrder(obj uintptr) uint16 {
+func DateTimePicker_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := dateTimePicker_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func DateTimePicker_SetTabOrder(obj uintptr, value uint16) {
+func DateTimePicker_SetTabOrder(obj uintptr, value TTabOrder) {
    dateTimePicker_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -23874,6 +26357,10 @@ func DateTimePicker_SetOnExit(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func DateTimePicker_SetOnGesture(obj uintptr, fn interface{}) {
+    dateTimePicker_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func DateTimePicker_SetOnKeyDown(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -23898,6 +26385,11 @@ func DateTimePicker_SetOnStartDock(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func DateTimePicker_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := dateTimePicker_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func DateTimePicker_GetDockSite(obj uintptr) bool {
     ret, _, _ := dateTimePicker_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -23905,6 +26397,21 @@ func DateTimePicker_GetDockSite(obj uintptr) bool {
 
 func DateTimePicker_SetDockSite(obj uintptr, value bool) {
    dateTimePicker_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func DateTimePicker_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DateTimePicker_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := dateTimePicker_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func DateTimePicker_GetBrush(obj uintptr) uintptr {
@@ -23968,6 +26475,12 @@ func DateTimePicker_SetClientHeight(obj uintptr, value int32) {
    dateTimePicker_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func DateTimePicker_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    dateTimePicker_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func DateTimePicker_GetClientRect(obj uintptr) TRect {
     var ret TRect
     dateTimePicker_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -23981,6 +26494,24 @@ func DateTimePicker_GetClientWidth(obj uintptr) int32 {
 
 func DateTimePicker_SetClientWidth(obj uintptr, value int32) {
    dateTimePicker_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := dateTimePicker_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func DateTimePicker_SetControlState(obj uintptr, value TControlState) {
+   dateTimePicker_SetControlState.Call(obj, uintptr(value))
+}
+
+func DateTimePicker_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := dateTimePicker_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func DateTimePicker_SetControlStyle(obj uintptr, value TControlStyle) {
+   dateTimePicker_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func DateTimePicker_GetExplicitLeft(obj uintptr) int32 {
@@ -24135,6 +26666,11 @@ func DateTimePicker_SetTag(obj uintptr, value int) {
    dateTimePicker_SetTag.Call(obj, uintptr(value))
 }
 
+func DateTimePicker_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := dateTimePicker_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func DateTimePicker_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := dateTimePicker_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -24166,6 +26702,29 @@ func MonthCalendar_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func MonthCalendar_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := monthCalendar_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func MonthCalendar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := monthCalendar_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func MonthCalendar_DisableAlign(obj uintptr)  {
+    monthCalendar_DisableAlign.Call(obj)
+}
+
+func MonthCalendar_EnableAlign(obj uintptr)  {
+    monthCalendar_EnableAlign.Call(obj)
+}
+
+func MonthCalendar_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := monthCalendar_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func MonthCalendar_FlipChildren(obj uintptr, AllLevels bool)  {
     monthCalendar_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -24180,8 +26739,20 @@ func MonthCalendar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func MonthCalendar_InsertControl(obj uintptr, AControl uintptr)  {
+    monthCalendar_InsertControl.Call(obj, AControl )
+}
+
 func MonthCalendar_Invalidate(obj uintptr)  {
     monthCalendar_Invalidate.Call(obj)
+}
+
+func MonthCalendar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    monthCalendar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func MonthCalendar_RemoveControl(obj uintptr, AControl uintptr)  {
+    monthCalendar_RemoveControl.Call(obj, AControl )
 }
 
 func MonthCalendar_Realign(obj uintptr)  {
@@ -24196,6 +26767,10 @@ func MonthCalendar_ScaleBy(obj uintptr, M int32, D int32)  {
     monthCalendar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func MonthCalendar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    monthCalendar_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func MonthCalendar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     monthCalendar_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -24206,6 +26781,10 @@ func MonthCalendar_SetFocus(obj uintptr)  {
 
 func MonthCalendar_Update(obj uintptr)  {
     monthCalendar_Update.Call(obj)
+}
+
+func MonthCalendar_UpdateControlState(obj uintptr)  {
+    monthCalendar_UpdateControlState.Call(obj)
 }
 
 func MonthCalendar_BringToFront(obj uintptr)  {
@@ -24275,6 +26854,10 @@ func MonthCalendar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func MonthCalendar_GetTextLen(obj uintptr) int32 {
     ret, _, _ := monthCalendar_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func MonthCalendar_SetTextBuf(obj uintptr, Buffer string)  {
+    monthCalendar_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func MonthCalendar_FindComponent(obj uintptr, AName string) uintptr {
@@ -24555,12 +27138,12 @@ func MonthCalendar_SetShowTodayCircle(obj uintptr, value bool) {
    monthCalendar_SetShowTodayCircle.Call(obj, GoBoolToDBool(value))
 }
 
-func MonthCalendar_GetTabOrder(obj uintptr) uint16 {
+func MonthCalendar_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := monthCalendar_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func MonthCalendar_SetTabOrder(obj uintptr, value uint16) {
+func MonthCalendar_SetTabOrder(obj uintptr, value TTabOrder) {
    monthCalendar_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -24627,6 +27210,10 @@ func MonthCalendar_SetOnExit(obj uintptr, fn interface{}) {
     monthCalendar_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func MonthCalendar_SetOnGesture(obj uintptr, fn interface{}) {
+    monthCalendar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func MonthCalendar_SetOnKeyDown(obj uintptr, fn interface{}) {
     monthCalendar_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -24651,6 +27238,11 @@ func MonthCalendar_SetOnStartDock(obj uintptr, fn interface{}) {
     monthCalendar_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func MonthCalendar_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := monthCalendar_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func MonthCalendar_GetDockSite(obj uintptr) bool {
     ret, _, _ := monthCalendar_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -24658,6 +27250,21 @@ func MonthCalendar_GetDockSite(obj uintptr) bool {
 
 func MonthCalendar_SetDockSite(obj uintptr, value bool) {
    monthCalendar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func MonthCalendar_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := monthCalendar_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MonthCalendar_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := monthCalendar_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MonthCalendar_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := monthCalendar_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func MonthCalendar_GetBrush(obj uintptr) uintptr {
@@ -24721,6 +27328,12 @@ func MonthCalendar_SetClientHeight(obj uintptr, value int32) {
    monthCalendar_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func MonthCalendar_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    monthCalendar_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func MonthCalendar_GetClientRect(obj uintptr) TRect {
     var ret TRect
     monthCalendar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -24734,6 +27347,24 @@ func MonthCalendar_GetClientWidth(obj uintptr) int32 {
 
 func MonthCalendar_SetClientWidth(obj uintptr, value int32) {
    monthCalendar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func MonthCalendar_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := monthCalendar_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func MonthCalendar_SetControlState(obj uintptr, value TControlState) {
+   monthCalendar_SetControlState.Call(obj, uintptr(value))
+}
+
+func MonthCalendar_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := monthCalendar_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func MonthCalendar_SetControlStyle(obj uintptr, value TControlStyle) {
+   monthCalendar_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func MonthCalendar_GetExplicitLeft(obj uintptr) int32 {
@@ -24897,6 +27528,11 @@ func MonthCalendar_SetTag(obj uintptr, value int) {
    monthCalendar_SetTag.Call(obj, uintptr(value))
 }
 
+func MonthCalendar_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := monthCalendar_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func MonthCalendar_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := monthCalendar_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -24972,6 +27608,29 @@ func ListView_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ListView_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := listView_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ListView_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := listView_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ListView_DisableAlign(obj uintptr)  {
+    listView_DisableAlign.Call(obj)
+}
+
+func ListView_EnableAlign(obj uintptr)  {
+    listView_EnableAlign.Call(obj)
+}
+
+func ListView_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := listView_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ListView_FlipChildren(obj uintptr, AllLevels bool)  {
     listView_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -24986,8 +27645,20 @@ func ListView_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ListView_InsertControl(obj uintptr, AControl uintptr)  {
+    listView_InsertControl.Call(obj, AControl )
+}
+
 func ListView_Invalidate(obj uintptr)  {
     listView_Invalidate.Call(obj)
+}
+
+func ListView_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    listView_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ListView_RemoveControl(obj uintptr, AControl uintptr)  {
+    listView_RemoveControl.Call(obj, AControl )
 }
 
 func ListView_Realign(obj uintptr)  {
@@ -25002,6 +27673,10 @@ func ListView_ScaleBy(obj uintptr, M int32, D int32)  {
     listView_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ListView_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    listView_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ListView_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     listView_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -25012,6 +27687,10 @@ func ListView_SetFocus(obj uintptr)  {
 
 func ListView_Update(obj uintptr)  {
     listView_Update.Call(obj)
+}
+
+func ListView_UpdateControlState(obj uintptr)  {
+    listView_UpdateControlState.Call(obj)
 }
 
 func ListView_BringToFront(obj uintptr)  {
@@ -25081,6 +27760,10 @@ func ListView_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ListView_GetTextLen(obj uintptr) int32 {
     ret, _, _ := listView_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ListView_SetTextBuf(obj uintptr, Buffer string)  {
+    listView_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ListView_FindComponent(obj uintptr, AName string) uintptr {
@@ -25433,6 +28116,15 @@ func ListView_SetStyleElements(obj uintptr, value TStyleElements) {
    listView_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func ListView_GetOwnerData(obj uintptr) bool {
+    ret, _, _ := listView_GetOwnerData.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetOwnerData(obj uintptr, value bool) {
+   listView_SetOwnerData.Call(obj, GoBoolToDBool(value))
+}
+
 func ListView_GetGroupHeaderImages(obj uintptr) uintptr {
     ret, _, _ := listView_GetGroupHeaderImages.Call(obj)
     return ret
@@ -25568,12 +28260,12 @@ func ListView_SetStateImages(obj uintptr, value uintptr) {
    listView_SetStateImages.Call(obj, value)
 }
 
-func ListView_GetTabOrder(obj uintptr) uint16 {
+func ListView_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := listView_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ListView_SetTabOrder(obj uintptr, value uint16) {
+func ListView_SetTabOrder(obj uintptr, value TTabOrder) {
    listView_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -25620,6 +28312,10 @@ func ListView_SetOnChange(obj uintptr, fn interface{}) {
     listView_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnChanging(obj uintptr, fn interface{}) {
+    listView_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnClick(obj uintptr, fn interface{}) {
     listView_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -25640,8 +28336,28 @@ func ListView_SetOnContextPopup(obj uintptr, fn interface{}) {
     listView_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnData(obj uintptr, fn interface{}) {
+    listView_SetOnData.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnDataFind(obj uintptr, fn interface{}) {
+    listView_SetOnDataFind.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnDblClick(obj uintptr, fn interface{}) {
     listView_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnDeletion(obj uintptr, fn interface{}) {
+    listView_SetOnDeletion.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnEdited(obj uintptr, fn interface{}) {
+    listView_SetOnEdited.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnEditing(obj uintptr, fn interface{}) {
+    listView_SetOnEditing.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnEndDock(obj uintptr, fn interface{}) {
@@ -25660,6 +28376,10 @@ func ListView_SetOnExit(obj uintptr, fn interface{}) {
     listView_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnGesture(obj uintptr, fn interface{}) {
+    listView_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     listView_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
 }
@@ -25672,6 +28392,10 @@ func ListView_SetOnDragOver(obj uintptr, fn interface{}) {
     listView_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnInsert(obj uintptr, fn interface{}) {
+    listView_SetOnInsert.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnKeyDown(obj uintptr, fn interface{}) {
     listView_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -25682,6 +28406,10 @@ func ListView_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ListView_SetOnKeyUp(obj uintptr, fn interface{}) {
     listView_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    listView_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -25776,6 +28504,11 @@ func ListView_SetItemIndex(obj uintptr, value int32) {
    listView_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func ListView_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := listView_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ListView_GetDockSite(obj uintptr) bool {
     ret, _, _ := listView_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -25783,6 +28516,21 @@ func ListView_GetDockSite(obj uintptr) bool {
 
 func ListView_SetDockSite(obj uintptr, value bool) {
    listView_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := listView_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := listView_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := listView_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ListView_GetBrush(obj uintptr) uintptr {
@@ -25837,6 +28585,12 @@ func ListView_SetClientHeight(obj uintptr, value int32) {
    listView_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ListView_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    listView_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ListView_GetClientRect(obj uintptr) TRect {
     var ret TRect
     listView_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -25850,6 +28604,24 @@ func ListView_GetClientWidth(obj uintptr) int32 {
 
 func ListView_SetClientWidth(obj uintptr, value int32) {
    listView_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ListView_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := listView_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ListView_SetControlState(obj uintptr, value TControlState) {
+   listView_SetControlState.Call(obj, uintptr(value))
+}
+
+func ListView_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := listView_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ListView_SetControlStyle(obj uintptr, value TControlStyle) {
+   listView_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ListView_GetExplicitLeft(obj uintptr) int32 {
@@ -26009,6 +28781,11 @@ func ListView_GetColumn(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func ListView_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := listView_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ListView_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := listView_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -26101,6 +28878,29 @@ func TreeView_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func TreeView_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := treeView_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := treeView_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func TreeView_DisableAlign(obj uintptr)  {
+    treeView_DisableAlign.Call(obj)
+}
+
+func TreeView_EnableAlign(obj uintptr)  {
+    treeView_EnableAlign.Call(obj)
+}
+
+func TreeView_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := treeView_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func TreeView_FlipChildren(obj uintptr, AllLevels bool)  {
     treeView_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -26115,8 +28915,20 @@ func TreeView_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func TreeView_InsertControl(obj uintptr, AControl uintptr)  {
+    treeView_InsertControl.Call(obj, AControl )
+}
+
 func TreeView_Invalidate(obj uintptr)  {
     treeView_Invalidate.Call(obj)
+}
+
+func TreeView_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    treeView_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func TreeView_RemoveControl(obj uintptr, AControl uintptr)  {
+    treeView_RemoveControl.Call(obj, AControl )
 }
 
 func TreeView_Realign(obj uintptr)  {
@@ -26131,6 +28943,10 @@ func TreeView_ScaleBy(obj uintptr, M int32, D int32)  {
     treeView_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func TreeView_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    treeView_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func TreeView_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     treeView_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -26141,6 +28957,10 @@ func TreeView_SetFocus(obj uintptr)  {
 
 func TreeView_Update(obj uintptr)  {
     treeView_Update.Call(obj)
+}
+
+func TreeView_UpdateControlState(obj uintptr)  {
+    treeView_UpdateControlState.Call(obj)
 }
 
 func TreeView_BringToFront(obj uintptr)  {
@@ -26210,6 +29030,10 @@ func TreeView_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func TreeView_GetTextLen(obj uintptr) int32 {
     ret, _, _ := treeView_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func TreeView_SetTextBuf(obj uintptr, Buffer string)  {
+    treeView_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func TreeView_FindComponent(obj uintptr, AName string) uintptr {
@@ -26616,12 +29440,12 @@ func TreeView_SetStateImages(obj uintptr, value uintptr) {
    treeView_SetStateImages.Call(obj, value)
 }
 
-func TreeView_GetTabOrder(obj uintptr) uint16 {
+func TreeView_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := treeView_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func TreeView_SetTabOrder(obj uintptr, value uint16) {
+func TreeView_SetTabOrder(obj uintptr, value TTabOrder) {
    treeView_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -26661,6 +29485,10 @@ func TreeView_SetStyleElements(obj uintptr, value TStyleElements) {
    treeView_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func TreeView_SetOnAddition(obj uintptr, fn interface{}) {
+    treeView_SetOnAddition.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnAdvancedCustomDraw(obj uintptr, fn interface{}) {
     treeView_SetOnAdvancedCustomDraw.Call(obj, addEventToMap(fn))
 }
@@ -26669,12 +29497,28 @@ func TreeView_SetOnAdvancedCustomDrawItem(obj uintptr, fn interface{}) {
     treeView_SetOnAdvancedCustomDrawItem.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnCancelEdit(obj uintptr, fn interface{}) {
+    treeView_SetOnCancelEdit.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnChange(obj uintptr, fn interface{}) {
     treeView_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnChanging(obj uintptr, fn interface{}) {
+    treeView_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnClick(obj uintptr, fn interface{}) {
     treeView_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnCollapsed(obj uintptr, fn interface{}) {
+    treeView_SetOnCollapsed.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnCollapsing(obj uintptr, fn interface{}) {
+    treeView_SetOnCollapsing.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnCompare(obj uintptr, fn interface{}) {
@@ -26689,12 +29533,24 @@ func TreeView_SetOnDblClick(obj uintptr, fn interface{}) {
     treeView_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnDeletion(obj uintptr, fn interface{}) {
+    treeView_SetOnDeletion.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnDragDrop(obj uintptr, fn interface{}) {
     treeView_SetOnDragDrop.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnDragOver(obj uintptr, fn interface{}) {
     treeView_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnEdited(obj uintptr, fn interface{}) {
+    treeView_SetOnEdited.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnEditing(obj uintptr, fn interface{}) {
+    treeView_SetOnEditing.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnEndDock(obj uintptr, fn interface{}) {
@@ -26713,12 +29569,28 @@ func TreeView_SetOnExit(obj uintptr, fn interface{}) {
     treeView_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func TreeView_SetOnExpanding(obj uintptr, fn interface{}) {
+    treeView_SetOnExpanding.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnExpanded(obj uintptr, fn interface{}) {
+    treeView_SetOnExpanded.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnGesture(obj uintptr, fn interface{}) {
+    treeView_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func TreeView_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     treeView_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnGetSelectedIndex(obj uintptr, fn interface{}) {
     treeView_SetOnGetSelectedIndex.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnHint(obj uintptr, fn interface{}) {
+    treeView_SetOnHint.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -26731,6 +29603,10 @@ func TreeView_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func TreeView_SetOnKeyUp(obj uintptr, fn interface{}) {
     treeView_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    treeView_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -26803,6 +29679,11 @@ func TreeView_GetSelectionCount(obj uintptr) uint32 {
     return uint32(ret)
 }
 
+func TreeView_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := treeView_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func TreeView_GetDockSite(obj uintptr) bool {
     ret, _, _ := treeView_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -26810,6 +29691,21 @@ func TreeView_GetDockSite(obj uintptr) bool {
 
 func TreeView_SetDockSite(obj uintptr, value bool) {
    treeView_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func TreeView_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := treeView_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := treeView_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := treeView_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func TreeView_GetBrush(obj uintptr) uintptr {
@@ -26873,6 +29769,12 @@ func TreeView_SetClientHeight(obj uintptr, value int32) {
    treeView_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func TreeView_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    treeView_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func TreeView_GetClientRect(obj uintptr) TRect {
     var ret TRect
     treeView_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -26886,6 +29788,24 @@ func TreeView_GetClientWidth(obj uintptr) int32 {
 
 func TreeView_SetClientWidth(obj uintptr, value int32) {
    treeView_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func TreeView_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := treeView_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func TreeView_SetControlState(obj uintptr, value TControlState) {
+   treeView_SetControlState.Call(obj, uintptr(value))
+}
+
+func TreeView_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := treeView_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func TreeView_SetControlStyle(obj uintptr, value TControlStyle) {
+   treeView_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func TreeView_GetExplicitLeft(obj uintptr) int32 {
@@ -27045,6 +29965,11 @@ func TreeView_GetSelections(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func TreeView_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := treeView_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func TreeView_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := treeView_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -27084,6 +30009,29 @@ func StatusBar_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func StatusBar_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := statusBar_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func StatusBar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := statusBar_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func StatusBar_DisableAlign(obj uintptr)  {
+    statusBar_DisableAlign.Call(obj)
+}
+
+func StatusBar_EnableAlign(obj uintptr)  {
+    statusBar_EnableAlign.Call(obj)
+}
+
+func StatusBar_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := statusBar_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func StatusBar_Focused(obj uintptr) bool {
     ret, _, _ := statusBar_Focused.Call(obj)
     return DBoolToGoBool(ret)
@@ -27094,8 +30042,20 @@ func StatusBar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func StatusBar_InsertControl(obj uintptr, AControl uintptr)  {
+    statusBar_InsertControl.Call(obj, AControl )
+}
+
 func StatusBar_Invalidate(obj uintptr)  {
     statusBar_Invalidate.Call(obj)
+}
+
+func StatusBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    statusBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func StatusBar_RemoveControl(obj uintptr, AControl uintptr)  {
+    statusBar_RemoveControl.Call(obj, AControl )
 }
 
 func StatusBar_Realign(obj uintptr)  {
@@ -27110,12 +30070,20 @@ func StatusBar_ScaleBy(obj uintptr, M int32, D int32)  {
     statusBar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func StatusBar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    statusBar_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func StatusBar_SetFocus(obj uintptr)  {
     statusBar_SetFocus.Call(obj)
 }
 
 func StatusBar_Update(obj uintptr)  {
     statusBar_Update.Call(obj)
+}
+
+func StatusBar_UpdateControlState(obj uintptr)  {
+    statusBar_UpdateControlState.Call(obj)
 }
 
 func StatusBar_BringToFront(obj uintptr)  {
@@ -27185,6 +30153,10 @@ func StatusBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func StatusBar_GetTextLen(obj uintptr) int32 {
     ret, _, _ := statusBar_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func StatusBar_SetTextBuf(obj uintptr, Buffer string)  {
+    statusBar_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func StatusBar_FindComponent(obj uintptr, AName string) uintptr {
@@ -27502,8 +30474,16 @@ func StatusBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     statusBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func StatusBar_SetOnGesture(obj uintptr, fn interface{}) {
+    statusBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func StatusBar_SetOnHint(obj uintptr, fn interface{}) {
     statusBar_SetOnHint.Call(obj, addEventToMap(fn))
+}
+
+func StatusBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    statusBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StatusBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -27539,6 +30519,11 @@ func StatusBar_GetCanvas(obj uintptr) uintptr {
     return ret
 }
 
+func StatusBar_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := statusBar_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func StatusBar_GetDockSite(obj uintptr) bool {
     ret, _, _ := statusBar_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -27546,6 +30531,21 @@ func StatusBar_GetDockSite(obj uintptr) bool {
 
 func StatusBar_SetDockSite(obj uintptr, value bool) {
    statusBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func StatusBar_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := statusBar_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StatusBar_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := statusBar_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StatusBar_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := statusBar_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func StatusBar_GetBrush(obj uintptr) uintptr {
@@ -27572,12 +30572,12 @@ func StatusBar_SetParentWindow(obj uintptr, value HWND) {
    statusBar_SetParentWindow.Call(obj, uintptr(value))
 }
 
-func StatusBar_GetTabOrder(obj uintptr) uint16 {
+func StatusBar_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := statusBar_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func StatusBar_SetTabOrder(obj uintptr, value uint16) {
+func StatusBar_SetTabOrder(obj uintptr, value TTabOrder) {
    statusBar_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -27618,6 +30618,12 @@ func StatusBar_SetClientHeight(obj uintptr, value int32) {
    statusBar_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func StatusBar_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    statusBar_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func StatusBar_GetClientRect(obj uintptr) TRect {
     var ret TRect
     statusBar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -27631,6 +30637,24 @@ func StatusBar_GetClientWidth(obj uintptr) int32 {
 
 func StatusBar_SetClientWidth(obj uintptr, value int32) {
    statusBar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func StatusBar_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := statusBar_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func StatusBar_SetControlState(obj uintptr, value TControlState) {
+   statusBar_SetControlState.Call(obj, uintptr(value))
+}
+
+func StatusBar_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := statusBar_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func StatusBar_SetControlStyle(obj uintptr, value TControlStyle) {
+   statusBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func StatusBar_GetExplicitLeft(obj uintptr) int32 {
@@ -27785,6 +30809,11 @@ func StatusBar_SetTag(obj uintptr, value int) {
    statusBar_SetTag.Call(obj, uintptr(value))
 }
 
+func StatusBar_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := statusBar_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func StatusBar_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := statusBar_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -27820,6 +30849,29 @@ func ToolBar_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ToolBar_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := toolBar_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ToolBar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := toolBar_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ToolBar_DisableAlign(obj uintptr)  {
+    toolBar_DisableAlign.Call(obj)
+}
+
+func ToolBar_EnableAlign(obj uintptr)  {
+    toolBar_EnableAlign.Call(obj)
+}
+
+func ToolBar_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := toolBar_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ToolBar_Focused(obj uintptr) bool {
     ret, _, _ := toolBar_Focused.Call(obj)
     return DBoolToGoBool(ret)
@@ -27830,8 +30882,20 @@ func ToolBar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ToolBar_InsertControl(obj uintptr, AControl uintptr)  {
+    toolBar_InsertControl.Call(obj, AControl )
+}
+
 func ToolBar_Invalidate(obj uintptr)  {
     toolBar_Invalidate.Call(obj)
+}
+
+func ToolBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    toolBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ToolBar_RemoveControl(obj uintptr, AControl uintptr)  {
+    toolBar_RemoveControl.Call(obj, AControl )
 }
 
 func ToolBar_Realign(obj uintptr)  {
@@ -27846,6 +30910,10 @@ func ToolBar_ScaleBy(obj uintptr, M int32, D int32)  {
     toolBar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ToolBar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    toolBar_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ToolBar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     toolBar_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -27856,6 +30924,10 @@ func ToolBar_SetFocus(obj uintptr)  {
 
 func ToolBar_Update(obj uintptr)  {
     toolBar_Update.Call(obj)
+}
+
+func ToolBar_UpdateControlState(obj uintptr)  {
+    toolBar_UpdateControlState.Call(obj)
 }
 
 func ToolBar_BringToFront(obj uintptr)  {
@@ -27925,6 +30997,10 @@ func ToolBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ToolBar_GetTextLen(obj uintptr) int32 {
     ret, _, _ := toolBar_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ToolBar_SetTextBuf(obj uintptr, Buffer string)  {
+    toolBar_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ToolBar_FindComponent(obj uintptr, AName string) uintptr {
@@ -28355,12 +31431,12 @@ func ToolBar_SetShowHint(obj uintptr, value bool) {
    toolBar_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func ToolBar_GetTabOrder(obj uintptr) uint16 {
+func ToolBar_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := toolBar_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ToolBar_SetTabOrder(obj uintptr, value uint16) {
+func ToolBar_SetTabOrder(obj uintptr, value TTabOrder) {
    toolBar_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -28457,8 +31533,16 @@ func ToolBar_SetOnExit(obj uintptr, fn interface{}) {
     toolBar_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ToolBar_SetOnGesture(obj uintptr, fn interface{}) {
+    toolBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ToolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     toolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    toolBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ToolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -28491,6 +31575,26 @@ func ToolBar_SetOnStartDock(obj uintptr, fn interface{}) {
 
 func ToolBar_SetOnUnDock(obj uintptr, fn interface{}) {
     toolBar_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
+func ToolBar_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := toolBar_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func ToolBar_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := toolBar_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToolBar_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := toolBar_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToolBar_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := toolBar_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ToolBar_GetBrush(obj uintptr) uintptr {
@@ -28563,6 +31667,12 @@ func ToolBar_SetClientHeight(obj uintptr, value int32) {
    toolBar_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ToolBar_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    toolBar_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ToolBar_GetClientRect(obj uintptr) TRect {
     var ret TRect
     toolBar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -28576,6 +31686,24 @@ func ToolBar_GetClientWidth(obj uintptr) int32 {
 
 func ToolBar_SetClientWidth(obj uintptr, value int32) {
    toolBar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ToolBar_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := toolBar_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ToolBar_SetControlState(obj uintptr, value TControlState) {
+   toolBar_SetControlState.Call(obj, uintptr(value))
+}
+
+func ToolBar_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := toolBar_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ToolBar_SetControlStyle(obj uintptr, value TControlStyle) {
+   toolBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ToolBar_GetExplicitLeft(obj uintptr) int32 {
@@ -28726,6 +31854,11 @@ func ToolBar_GetButtons(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func ToolBar_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := toolBar_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ToolBar_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := toolBar_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -28803,6 +31936,29 @@ func MaskEdit_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func MaskEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := maskEdit_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := maskEdit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func MaskEdit_DisableAlign(obj uintptr)  {
+    maskEdit_DisableAlign.Call(obj)
+}
+
+func MaskEdit_EnableAlign(obj uintptr)  {
+    maskEdit_EnableAlign.Call(obj)
+}
+
+func MaskEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := maskEdit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func MaskEdit_FlipChildren(obj uintptr, AllLevels bool)  {
     maskEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -28817,8 +31973,20 @@ func MaskEdit_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func MaskEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    maskEdit_InsertControl.Call(obj, AControl )
+}
+
 func MaskEdit_Invalidate(obj uintptr)  {
     maskEdit_Invalidate.Call(obj)
+}
+
+func MaskEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    maskEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func MaskEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    maskEdit_RemoveControl.Call(obj, AControl )
 }
 
 func MaskEdit_Realign(obj uintptr)  {
@@ -28833,6 +32001,10 @@ func MaskEdit_ScaleBy(obj uintptr, M int32, D int32)  {
     maskEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func MaskEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    maskEdit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func MaskEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     maskEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -28843,6 +32015,10 @@ func MaskEdit_SetFocus(obj uintptr)  {
 
 func MaskEdit_Update(obj uintptr)  {
     maskEdit_Update.Call(obj)
+}
+
+func MaskEdit_UpdateControlState(obj uintptr)  {
+    maskEdit_UpdateControlState.Call(obj)
 }
 
 func MaskEdit_BringToFront(obj uintptr)  {
@@ -28907,6 +32083,10 @@ func MaskEdit_Show(obj uintptr)  {
 func MaskEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
     ret, _, _ := maskEdit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
     return int32(ret)
+}
+
+func MaskEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    maskEdit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func MaskEdit_FindComponent(obj uintptr, AName string) uintptr {
@@ -29223,12 +32403,12 @@ func MaskEdit_SetShowHint(obj uintptr, value bool) {
    maskEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func MaskEdit_GetTabOrder(obj uintptr) uint16 {
+func MaskEdit_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := maskEdit_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func MaskEdit_SetTabOrder(obj uintptr, value uint16) {
+func MaskEdit_SetTabOrder(obj uintptr, value TTabOrder) {
    maskEdit_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -29313,6 +32493,10 @@ func MaskEdit_SetOnExit(obj uintptr, fn interface{}) {
     maskEdit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func MaskEdit_SetOnGesture(obj uintptr, fn interface{}) {
+    maskEdit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func MaskEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     maskEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -29323,6 +32507,10 @@ func MaskEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func MaskEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     maskEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    maskEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func MaskEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -29404,6 +32592,11 @@ func MaskEdit_SetSelText(obj uintptr, value string) {
    maskEdit_SetSelText.Call(obj, GoStrToDStr(value))
 }
 
+func MaskEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func MaskEdit_GetDockSite(obj uintptr) bool {
     ret, _, _ := maskEdit_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -29411,6 +32604,21 @@ func MaskEdit_GetDockSite(obj uintptr) bool {
 
 func MaskEdit_SetDockSite(obj uintptr, value bool) {
    maskEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func MaskEdit_GetBrush(obj uintptr) uintptr {
@@ -29474,6 +32682,12 @@ func MaskEdit_SetClientHeight(obj uintptr, value int32) {
    maskEdit_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func MaskEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    maskEdit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func MaskEdit_GetClientRect(obj uintptr) TRect {
     var ret TRect
     maskEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -29487,6 +32701,24 @@ func MaskEdit_GetClientWidth(obj uintptr) int32 {
 
 func MaskEdit_SetClientWidth(obj uintptr, value int32) {
    maskEdit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := maskEdit_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func MaskEdit_SetControlState(obj uintptr, value TControlState) {
+   maskEdit_SetControlState.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := maskEdit_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func MaskEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+   maskEdit_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func MaskEdit_GetExplicitLeft(obj uintptr) int32 {
@@ -29641,6 +32873,11 @@ func MaskEdit_SetTag(obj uintptr, value int) {
    maskEdit_SetTag.Call(obj, uintptr(value))
 }
 
+func MaskEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := maskEdit_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func MaskEdit_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := maskEdit_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -29676,6 +32913,29 @@ func BitBtn_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func BitBtn_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := bitBtn_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func BitBtn_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := bitBtn_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func BitBtn_DisableAlign(obj uintptr)  {
+    bitBtn_DisableAlign.Call(obj)
+}
+
+func BitBtn_EnableAlign(obj uintptr)  {
+    bitBtn_EnableAlign.Call(obj)
+}
+
+func BitBtn_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := bitBtn_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func BitBtn_FlipChildren(obj uintptr, AllLevels bool)  {
     bitBtn_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -29690,8 +32950,20 @@ func BitBtn_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func BitBtn_InsertControl(obj uintptr, AControl uintptr)  {
+    bitBtn_InsertControl.Call(obj, AControl )
+}
+
 func BitBtn_Invalidate(obj uintptr)  {
     bitBtn_Invalidate.Call(obj)
+}
+
+func BitBtn_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    bitBtn_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func BitBtn_RemoveControl(obj uintptr, AControl uintptr)  {
+    bitBtn_RemoveControl.Call(obj, AControl )
 }
 
 func BitBtn_Realign(obj uintptr)  {
@@ -29706,6 +32978,10 @@ func BitBtn_ScaleBy(obj uintptr, M int32, D int32)  {
     bitBtn_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func BitBtn_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    bitBtn_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func BitBtn_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     bitBtn_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -29716,6 +32992,10 @@ func BitBtn_SetFocus(obj uintptr)  {
 
 func BitBtn_Update(obj uintptr)  {
     bitBtn_Update.Call(obj)
+}
+
+func BitBtn_UpdateControlState(obj uintptr)  {
+    bitBtn_UpdateControlState.Call(obj)
 }
 
 func BitBtn_BringToFront(obj uintptr)  {
@@ -29785,6 +33065,10 @@ func BitBtn_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func BitBtn_GetTextLen(obj uintptr) int32 {
     ret, _, _ := bitBtn_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func BitBtn_SetTextBuf(obj uintptr, Buffer string)  {
+    bitBtn_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func BitBtn_FindComponent(obj uintptr, AName string) uintptr {
@@ -30065,12 +33349,12 @@ func BitBtn_SetSpacing(obj uintptr, value int32) {
    bitBtn_SetSpacing.Call(obj, uintptr(value))
 }
 
-func BitBtn_GetTabOrder(obj uintptr) uint16 {
+func BitBtn_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := bitBtn_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func BitBtn_SetTabOrder(obj uintptr, value uint16) {
+func BitBtn_SetTabOrder(obj uintptr, value TTabOrder) {
    bitBtn_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -30152,6 +33436,10 @@ func BitBtn_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func BitBtn_SetOnKeyUp(obj uintptr, fn interface{}) {
     bitBtn_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func BitBtn_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    bitBtn_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func BitBtn_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -30268,6 +33556,11 @@ func BitBtn_SetStylusHotImageIndex(obj uintptr, value int32) {
    bitBtn_SetStylusHotImageIndex.Call(obj, uintptr(value))
 }
 
+func BitBtn_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := bitBtn_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func BitBtn_GetDockSite(obj uintptr) bool {
     ret, _, _ := bitBtn_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -30275,6 +33568,21 @@ func BitBtn_GetDockSite(obj uintptr) bool {
 
 func BitBtn_SetDockSite(obj uintptr, value bool) {
    bitBtn_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func BitBtn_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BitBtn_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BitBtn_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := bitBtn_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func BitBtn_GetBrush(obj uintptr) uintptr {
@@ -30329,6 +33637,12 @@ func BitBtn_SetClientHeight(obj uintptr, value int32) {
    bitBtn_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func BitBtn_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    bitBtn_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func BitBtn_GetClientRect(obj uintptr) TRect {
     var ret TRect
     bitBtn_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -30342,6 +33656,24 @@ func BitBtn_GetClientWidth(obj uintptr) int32 {
 
 func BitBtn_SetClientWidth(obj uintptr, value int32) {
    bitBtn_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := bitBtn_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func BitBtn_SetControlState(obj uintptr, value TControlState) {
+   bitBtn_SetControlState.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := bitBtn_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func BitBtn_SetControlStyle(obj uintptr, value TControlStyle) {
+   bitBtn_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func BitBtn_GetExplicitLeft(obj uintptr) int32 {
@@ -30376,6 +33708,10 @@ func BitBtn_GetParent(obj uintptr) uintptr {
 
 func BitBtn_SetParent(obj uintptr, value uintptr) {
    bitBtn_SetParent.Call(obj, value)
+}
+
+func BitBtn_SetOnGesture(obj uintptr, fn interface{}) {
+    bitBtn_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func BitBtn_GetAlignWithMargins(obj uintptr) bool {
@@ -30494,6 +33830,11 @@ func BitBtn_GetTag(obj uintptr) int {
 
 func BitBtn_SetTag(obj uintptr, value int) {
    bitBtn_SetTag.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := bitBtn_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func BitBtn_GetControls(obj uintptr, Index int32) uintptr {
@@ -31520,6 +34861,10 @@ func StringList_SetOnChange(obj uintptr, fn interface{}) {
     stringList_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func StringList_SetOnChanging(obj uintptr, fn interface{}) {
+    stringList_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func StringList_GetCapacity(obj uintptr) int32 {
     ret, _, _ := stringList_GetCapacity.Call(obj)
     return int32(ret)
@@ -32079,6 +35424,10 @@ func MenuItem_SetOnClick(obj uintptr, fn interface{}) {
 
 func MenuItem_SetOnDrawItem(obj uintptr, fn interface{}) {
     menuItem_SetOnDrawItem.Call(obj, addEventToMap(fn))
+}
+
+func MenuItem_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    menuItem_SetOnMeasureItem.Call(obj, addEventToMap(fn))
 }
 
 func MenuItem_GetComponentCount(obj uintptr) int32 {
@@ -33379,6 +36728,29 @@ func PageControl_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func PageControl_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := pageControl_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func PageControl_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := pageControl_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func PageControl_DisableAlign(obj uintptr)  {
+    pageControl_DisableAlign.Call(obj)
+}
+
+func PageControl_EnableAlign(obj uintptr)  {
+    pageControl_EnableAlign.Call(obj)
+}
+
+func PageControl_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := pageControl_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func PageControl_FlipChildren(obj uintptr, AllLevels bool)  {
     pageControl_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -33393,8 +36765,20 @@ func PageControl_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func PageControl_InsertControl(obj uintptr, AControl uintptr)  {
+    pageControl_InsertControl.Call(obj, AControl )
+}
+
 func PageControl_Invalidate(obj uintptr)  {
     pageControl_Invalidate.Call(obj)
+}
+
+func PageControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    pageControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func PageControl_RemoveControl(obj uintptr, AControl uintptr)  {
+    pageControl_RemoveControl.Call(obj, AControl )
 }
 
 func PageControl_Realign(obj uintptr)  {
@@ -33409,6 +36793,10 @@ func PageControl_ScaleBy(obj uintptr, M int32, D int32)  {
     pageControl_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func PageControl_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    pageControl_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func PageControl_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     pageControl_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -33419,6 +36807,10 @@ func PageControl_SetFocus(obj uintptr)  {
 
 func PageControl_Update(obj uintptr)  {
     pageControl_Update.Call(obj)
+}
+
+func PageControl_UpdateControlState(obj uintptr)  {
+    pageControl_UpdateControlState.Call(obj)
 }
 
 func PageControl_BringToFront(obj uintptr)  {
@@ -33488,6 +36880,10 @@ func PageControl_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func PageControl_GetTextLen(obj uintptr) int32 {
     ret, _, _ := pageControl_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func PageControl_SetTextBuf(obj uintptr, Buffer string)  {
+    pageControl_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func PageControl_FindComponent(obj uintptr, AName string) uintptr {
@@ -33746,12 +37142,12 @@ func PageControl_SetTabIndex(obj uintptr, value int32) {
    pageControl_SetTabIndex.Call(obj, uintptr(value))
 }
 
-func PageControl_GetTabOrder(obj uintptr) uint16 {
+func PageControl_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := pageControl_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func PageControl_SetTabOrder(obj uintptr, value uint16) {
+func PageControl_SetTabOrder(obj uintptr, value TTabOrder) {
    pageControl_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -33804,6 +37200,10 @@ func PageControl_SetOnChange(obj uintptr, fn interface{}) {
     pageControl_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
+func PageControl_SetOnChanging(obj uintptr, fn interface{}) {
+    pageControl_SetOnChanging.Call(obj, addEventToMap(fn))
+}
+
 func PageControl_SetOnContextPopup(obj uintptr, fn interface{}) {
     pageControl_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -33836,12 +37236,20 @@ func PageControl_SetOnExit(obj uintptr, fn interface{}) {
     pageControl_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func PageControl_SetOnGesture(obj uintptr, fn interface{}) {
+    pageControl_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func PageControl_SetOnGetImageIndex(obj uintptr, fn interface{}) {
     pageControl_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
 }
 
 func PageControl_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     pageControl_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func PageControl_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    pageControl_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func PageControl_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -33879,6 +37287,26 @@ func PageControl_SetOnUnDock(obj uintptr, fn interface{}) {
 func PageControl_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := pageControl_GetCanvas.Call(obj)
     return ret
+}
+
+func PageControl_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := pageControl_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func PageControl_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := pageControl_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PageControl_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := pageControl_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PageControl_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := pageControl_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func PageControl_GetBrush(obj uintptr) uintptr {
@@ -33942,6 +37370,12 @@ func PageControl_SetClientHeight(obj uintptr, value int32) {
    pageControl_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func PageControl_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    pageControl_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func PageControl_GetClientRect(obj uintptr) TRect {
     var ret TRect
     pageControl_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -33955,6 +37389,24 @@ func PageControl_GetClientWidth(obj uintptr) int32 {
 
 func PageControl_SetClientWidth(obj uintptr, value int32) {
    pageControl_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func PageControl_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := pageControl_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func PageControl_SetControlState(obj uintptr, value TControlState) {
+   pageControl_SetControlState.Call(obj, uintptr(value))
+}
+
+func PageControl_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := pageControl_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func PageControl_SetControlStyle(obj uintptr, value TControlStyle) {
+   pageControl_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func PageControl_GetExplicitLeft(obj uintptr) int32 {
@@ -34114,6 +37566,11 @@ func PageControl_GetPages(obj uintptr, Index int32) uintptr {
     return ret
 }
 
+func PageControl_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := pageControl_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func PageControl_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := pageControl_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -34145,6 +37602,29 @@ func TabSheet_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func TabSheet_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := tabSheet_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func TabSheet_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := tabSheet_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func TabSheet_DisableAlign(obj uintptr)  {
+    tabSheet_DisableAlign.Call(obj)
+}
+
+func TabSheet_EnableAlign(obj uintptr)  {
+    tabSheet_EnableAlign.Call(obj)
+}
+
+func TabSheet_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := tabSheet_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func TabSheet_FlipChildren(obj uintptr, AllLevels bool)  {
     tabSheet_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -34159,8 +37639,20 @@ func TabSheet_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func TabSheet_InsertControl(obj uintptr, AControl uintptr)  {
+    tabSheet_InsertControl.Call(obj, AControl )
+}
+
 func TabSheet_Invalidate(obj uintptr)  {
     tabSheet_Invalidate.Call(obj)
+}
+
+func TabSheet_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    tabSheet_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func TabSheet_RemoveControl(obj uintptr, AControl uintptr)  {
+    tabSheet_RemoveControl.Call(obj, AControl )
 }
 
 func TabSheet_Realign(obj uintptr)  {
@@ -34175,6 +37667,10 @@ func TabSheet_ScaleBy(obj uintptr, M int32, D int32)  {
     tabSheet_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func TabSheet_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    tabSheet_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func TabSheet_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     tabSheet_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -34185,6 +37681,10 @@ func TabSheet_SetFocus(obj uintptr)  {
 
 func TabSheet_Update(obj uintptr)  {
     tabSheet_Update.Call(obj)
+}
+
+func TabSheet_UpdateControlState(obj uintptr)  {
+    tabSheet_UpdateControlState.Call(obj)
 }
 
 func TabSheet_BringToFront(obj uintptr)  {
@@ -34254,6 +37754,10 @@ func TabSheet_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func TabSheet_GetTextLen(obj uintptr) int32 {
     ret, _, _ := tabSheet_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func TabSheet_SetTextBuf(obj uintptr, Buffer string)  {
+    tabSheet_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func TabSheet_FindComponent(obj uintptr, AName string) uintptr {
@@ -34527,8 +38031,16 @@ func TabSheet_SetOnExit(obj uintptr, fn interface{}) {
     tabSheet_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func TabSheet_SetOnGesture(obj uintptr, fn interface{}) {
+    tabSheet_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func TabSheet_SetOnHide(obj uintptr, fn interface{}) {
     tabSheet_SetOnHide.Call(obj, addEventToMap(fn))
+}
+
+func TabSheet_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    tabSheet_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func TabSheet_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -34559,6 +38071,11 @@ func TabSheet_SetOnShow(obj uintptr, fn interface{}) {
     tabSheet_SetOnShow.Call(obj, addEventToMap(fn))
 }
 
+func TabSheet_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := tabSheet_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func TabSheet_GetDockSite(obj uintptr) bool {
     ret, _, _ := tabSheet_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -34566,6 +38083,21 @@ func TabSheet_GetDockSite(obj uintptr) bool {
 
 func TabSheet_SetDockSite(obj uintptr, value bool) {
    tabSheet_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func TabSheet_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := tabSheet_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TabSheet_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := tabSheet_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TabSheet_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := tabSheet_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func TabSheet_GetBrush(obj uintptr) uintptr {
@@ -34592,12 +38124,12 @@ func TabSheet_SetParentWindow(obj uintptr, value HWND) {
    tabSheet_SetParentWindow.Call(obj, uintptr(value))
 }
 
-func TabSheet_GetTabOrder(obj uintptr) uint16 {
+func TabSheet_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := tabSheet_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func TabSheet_SetTabOrder(obj uintptr, value uint16) {
+func TabSheet_SetTabOrder(obj uintptr, value TTabOrder) {
    tabSheet_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -34674,6 +38206,12 @@ func TabSheet_SetClientHeight(obj uintptr, value int32) {
    tabSheet_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func TabSheet_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    tabSheet_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func TabSheet_GetClientRect(obj uintptr) TRect {
     var ret TRect
     tabSheet_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -34687,6 +38225,24 @@ func TabSheet_GetClientWidth(obj uintptr) int32 {
 
 func TabSheet_SetClientWidth(obj uintptr, value int32) {
    tabSheet_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func TabSheet_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := tabSheet_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func TabSheet_SetControlState(obj uintptr, value TControlState) {
+   tabSheet_SetControlState.Call(obj, uintptr(value))
+}
+
+func TabSheet_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := tabSheet_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func TabSheet_SetControlStyle(obj uintptr, value TControlStyle) {
+   tabSheet_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func TabSheet_GetExplicitLeft(obj uintptr) int32 {
@@ -34814,6 +38370,11 @@ func TabSheet_SetTag(obj uintptr, value int) {
    tabSheet_SetTag.Call(obj, uintptr(value))
 }
 
+func TabSheet_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := tabSheet_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func TabSheet_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := tabSheet_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -34923,6 +38484,10 @@ func Control_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Control_GetTextLen(obj uintptr) int32 {
     ret, _, _ := control_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Control_SetTextBuf(obj uintptr, Buffer string)  {
+    control_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Control_FindComponent(obj uintptr, AName string) uintptr {
@@ -35042,6 +38607,12 @@ func Control_SetClientHeight(obj uintptr, value int32) {
    control_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Control_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    control_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Control_GetClientRect(obj uintptr) TRect {
     var ret TRect
     control_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -35055,6 +38626,24 @@ func Control_GetClientWidth(obj uintptr) int32 {
 
 func Control_SetClientWidth(obj uintptr, value int32) {
    control_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Control_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := control_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Control_SetControlState(obj uintptr, value TControlState) {
+   control_SetControlState.Call(obj, uintptr(value))
+}
+
+func Control_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := control_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Control_SetControlStyle(obj uintptr, value TControlStyle) {
+   control_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Control_GetExplicitLeft(obj uintptr) int32 {
@@ -35116,6 +38705,10 @@ func Control_GetStyleElements(obj uintptr) TStyleElements {
 
 func Control_SetStyleElements(obj uintptr, value TStyleElements) {
    control_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func Control_SetOnGesture(obj uintptr, fn interface{}) {
+    control_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Control_GetAlignWithMargins(obj uintptr) bool {
@@ -35262,6 +38855,29 @@ func WinControl_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func WinControl_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := winControl_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := winControl_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func WinControl_DisableAlign(obj uintptr)  {
+    winControl_DisableAlign.Call(obj)
+}
+
+func WinControl_EnableAlign(obj uintptr)  {
+    winControl_EnableAlign.Call(obj)
+}
+
+func WinControl_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := winControl_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func WinControl_FlipChildren(obj uintptr, AllLevels bool)  {
     winControl_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -35276,8 +38892,20 @@ func WinControl_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func WinControl_InsertControl(obj uintptr, AControl uintptr)  {
+    winControl_InsertControl.Call(obj, AControl )
+}
+
 func WinControl_Invalidate(obj uintptr)  {
     winControl_Invalidate.Call(obj)
+}
+
+func WinControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    winControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func WinControl_RemoveControl(obj uintptr, AControl uintptr)  {
+    winControl_RemoveControl.Call(obj, AControl )
 }
 
 func WinControl_Realign(obj uintptr)  {
@@ -35292,6 +38920,10 @@ func WinControl_ScaleBy(obj uintptr, M int32, D int32)  {
     winControl_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func WinControl_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    winControl_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func WinControl_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     winControl_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -35302,6 +38934,10 @@ func WinControl_SetFocus(obj uintptr)  {
 
 func WinControl_Update(obj uintptr)  {
     winControl_Update.Call(obj)
+}
+
+func WinControl_UpdateControlState(obj uintptr)  {
+    winControl_UpdateControlState.Call(obj)
 }
 
 func WinControl_BringToFront(obj uintptr)  {
@@ -35373,6 +39009,10 @@ func WinControl_GetTextLen(obj uintptr) int32 {
     return int32(ret)
 }
 
+func WinControl_SetTextBuf(obj uintptr, Buffer string)  {
+    winControl_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
 func WinControl_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := winControl_FindComponent.Call(obj, GoStrToDStr(AName) )
     return ret
@@ -35426,6 +39066,11 @@ func WinControl_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func WinControl_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := winControl_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func WinControl_GetDockSite(obj uintptr) bool {
     ret, _, _ := winControl_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -35442,6 +39087,21 @@ func WinControl_GetDoubleBuffered(obj uintptr) bool {
 
 func WinControl_SetDoubleBuffered(obj uintptr, value bool) {
    winControl_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func WinControl_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := winControl_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := winControl_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func WinControl_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := winControl_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func WinControl_GetBrush(obj uintptr) uintptr {
@@ -35477,12 +39137,12 @@ func WinControl_SetParentWindow(obj uintptr, value HWND) {
    winControl_SetParentWindow.Call(obj, uintptr(value))
 }
 
-func WinControl_GetTabOrder(obj uintptr) uint16 {
+func WinControl_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := winControl_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func WinControl_SetTabOrder(obj uintptr, value uint16) {
+func WinControl_SetTabOrder(obj uintptr, value TTabOrder) {
    winControl_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -35568,6 +39228,12 @@ func WinControl_SetClientHeight(obj uintptr, value int32) {
    winControl_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func WinControl_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    winControl_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func WinControl_GetClientRect(obj uintptr) TRect {
     var ret TRect
     winControl_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -35581,6 +39247,24 @@ func WinControl_GetClientWidth(obj uintptr) int32 {
 
 func WinControl_SetClientWidth(obj uintptr, value int32) {
    winControl_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func WinControl_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := winControl_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func WinControl_SetControlState(obj uintptr, value TControlState) {
+   winControl_SetControlState.Call(obj, uintptr(value))
+}
+
+func WinControl_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := winControl_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func WinControl_SetControlStyle(obj uintptr, value TControlStyle) {
+   winControl_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func WinControl_GetExplicitLeft(obj uintptr) int32 {
@@ -35642,6 +39326,10 @@ func WinControl_GetStyleElements(obj uintptr) TStyleElements {
 
 func WinControl_SetStyleElements(obj uintptr, value TStyleElements) {
    winControl_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func WinControl_SetOnGesture(obj uintptr, fn interface{}) {
+    winControl_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func WinControl_GetAlignWithMargins(obj uintptr) bool {
@@ -35762,6 +39450,11 @@ func WinControl_SetTag(obj uintptr, value int) {
    winControl_SetTag.Call(obj, uintptr(value))
 }
 
+func WinControl_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := winControl_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func WinControl_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := winControl_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -35786,6 +39479,14 @@ func Screen_Create(obj uintptr) uintptr {
 
 func Screen_Free(obj uintptr) {
     screen_Free.Call(obj)
+}
+
+func Screen_DisableAlign(obj uintptr)  {
+    screen_DisableAlign.Call(obj)
+}
+
+func Screen_EnableAlign(obj uintptr)  {
+    screen_EnableAlign.Call(obj)
 }
 
 func Screen_Realign(obj uintptr)  {
@@ -36927,6 +40628,10 @@ func Canvas_SetPen(obj uintptr, value uintptr) {
 
 func Canvas_SetOnChange(obj uintptr, fn interface{}) {
     canvas_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func Canvas_SetOnChanging(obj uintptr, fn interface{}) {
+    canvas_SetOnChanging.Call(obj, addEventToMap(fn))
 }
 
 func Canvas_StaticClassType() TClass {
@@ -38232,6 +41937,10 @@ func ToolButton_GetTextLen(obj uintptr) int32 {
     return int32(ret)
 }
 
+func ToolButton_SetTextBuf(obj uintptr, Buffer string)  {
+    toolButton_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
 func ToolButton_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := toolButton_FindComponent.Call(obj, GoStrToDStr(AName) )
     return ret
@@ -38521,6 +42230,10 @@ func ToolButton_SetOnEndDrag(obj uintptr, fn interface{}) {
     toolButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func ToolButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    toolButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func ToolButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     toolButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -38591,6 +42304,12 @@ func ToolButton_SetClientHeight(obj uintptr, value int32) {
    toolButton_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ToolButton_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    toolButton_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ToolButton_GetClientRect(obj uintptr) TRect {
     var ret TRect
     toolButton_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -38604,6 +42323,24 @@ func ToolButton_GetClientWidth(obj uintptr) int32 {
 
 func ToolButton_SetClientWidth(obj uintptr, value int32) {
    toolButton_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ToolButton_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := toolButton_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ToolButton_SetControlState(obj uintptr, value TControlState) {
+   toolButton_SetControlState.Call(obj, uintptr(value))
+}
+
+func ToolButton_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := toolButton_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ToolButton_SetControlStyle(obj uintptr, value TControlStyle) {
+   toolButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ToolButton_GetExplicitLeft(obj uintptr) int32 {
@@ -38647,6 +42384,10 @@ func ToolButton_GetStyleElements(obj uintptr) TStyleElements {
 
 func ToolButton_SetStyleElements(obj uintptr, value TStyleElements) {
    toolButton_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func ToolButton_SetOnGesture(obj uintptr, fn interface{}) {
+    toolButton_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ToolButton_GetAlignWithMargins(obj uintptr) bool {
@@ -39220,6 +42961,10 @@ func Clipboard_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
     return int32(ret)
 }
 
+func Clipboard_SetTextBuf(obj uintptr, Buffer string)  {
+    clipboard_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
 func Clipboard_GetNamePath(obj uintptr) string {
     ret, _, _ := clipboard_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
@@ -39639,6 +43384,10 @@ func PaintBox_GetTextLen(obj uintptr) int32 {
     return int32(ret)
 }
 
+func PaintBox_SetTextBuf(obj uintptr, Buffer string)  {
+    paintBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
 func PaintBox_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := paintBox_FindComponent.Call(obj, GoStrToDStr(AName) )
     return ret
@@ -39851,6 +43600,14 @@ func PaintBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     paintBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func PaintBox_SetOnGesture(obj uintptr, fn interface{}) {
+    paintBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func PaintBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    paintBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func PaintBox_SetOnMouseDown(obj uintptr, fn interface{}) {
     paintBox_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -39916,6 +43673,12 @@ func PaintBox_SetClientHeight(obj uintptr, value int32) {
    paintBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func PaintBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    paintBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func PaintBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     paintBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -39929,6 +43692,24 @@ func PaintBox_GetClientWidth(obj uintptr) int32 {
 
 func PaintBox_SetClientWidth(obj uintptr, value int32) {
    paintBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func PaintBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := paintBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func PaintBox_SetControlState(obj uintptr, value TControlState) {
+   paintBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func PaintBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := paintBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func PaintBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   paintBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func PaintBox_GetExplicitLeft(obj uintptr) int32 {
@@ -41103,6 +44884,29 @@ func ScrollBar_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ScrollBar_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := scrollBar_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := scrollBar_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ScrollBar_DisableAlign(obj uintptr)  {
+    scrollBar_DisableAlign.Call(obj)
+}
+
+func ScrollBar_EnableAlign(obj uintptr)  {
+    scrollBar_EnableAlign.Call(obj)
+}
+
+func ScrollBar_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := scrollBar_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ScrollBar_FlipChildren(obj uintptr, AllLevels bool)  {
     scrollBar_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -41117,8 +44921,20 @@ func ScrollBar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ScrollBar_InsertControl(obj uintptr, AControl uintptr)  {
+    scrollBar_InsertControl.Call(obj, AControl )
+}
+
 func ScrollBar_Invalidate(obj uintptr)  {
     scrollBar_Invalidate.Call(obj)
+}
+
+func ScrollBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    scrollBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ScrollBar_RemoveControl(obj uintptr, AControl uintptr)  {
+    scrollBar_RemoveControl.Call(obj, AControl )
 }
 
 func ScrollBar_Realign(obj uintptr)  {
@@ -41133,6 +44949,10 @@ func ScrollBar_ScaleBy(obj uintptr, M int32, D int32)  {
     scrollBar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ScrollBar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    scrollBar_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ScrollBar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     scrollBar_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -41143,6 +44963,10 @@ func ScrollBar_SetFocus(obj uintptr)  {
 
 func ScrollBar_Update(obj uintptr)  {
     scrollBar_Update.Call(obj)
+}
+
+func ScrollBar_UpdateControlState(obj uintptr)  {
+    scrollBar_UpdateControlState.Call(obj)
 }
 
 func ScrollBar_BringToFront(obj uintptr)  {
@@ -41212,6 +45036,10 @@ func ScrollBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ScrollBar_GetTextLen(obj uintptr) int32 {
     ret, _, _ := scrollBar_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ScrollBar_SetTextBuf(obj uintptr, Buffer string)  {
+    scrollBar_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ScrollBar_FindComponent(obj uintptr, AName string) uintptr {
@@ -41447,12 +45275,12 @@ func ScrollBar_SetSmallChange(obj uintptr, value TScrollBarInc) {
    scrollBar_SetSmallChange.Call(obj, uintptr(value))
 }
 
-func ScrollBar_GetTabOrder(obj uintptr) uint16 {
+func ScrollBar_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := scrollBar_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ScrollBar_SetTabOrder(obj uintptr, value uint16) {
+func ScrollBar_SetTabOrder(obj uintptr, value TTabOrder) {
    scrollBar_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -41539,6 +45367,11 @@ func ScrollBar_SetOnStartDock(obj uintptr, fn interface{}) {
     scrollBar_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBar_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := scrollBar_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ScrollBar_GetDockSite(obj uintptr) bool {
     ret, _, _ := scrollBar_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -41546,6 +45379,21 @@ func ScrollBar_GetDockSite(obj uintptr) bool {
 
 func ScrollBar_SetDockSite(obj uintptr, value bool) {
    scrollBar_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ScrollBar_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := scrollBar_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBar_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := scrollBar_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBar_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := scrollBar_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ScrollBar_GetBrush(obj uintptr) uintptr {
@@ -41609,6 +45457,12 @@ func ScrollBar_SetClientHeight(obj uintptr, value int32) {
    scrollBar_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ScrollBar_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    scrollBar_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ScrollBar_GetClientRect(obj uintptr) TRect {
     var ret TRect
     scrollBar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -41622,6 +45476,24 @@ func ScrollBar_GetClientWidth(obj uintptr) int32 {
 
 func ScrollBar_SetClientWidth(obj uintptr, value int32) {
    scrollBar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ScrollBar_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := scrollBar_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ScrollBar_SetControlState(obj uintptr, value TControlState) {
+   scrollBar_SetControlState.Call(obj, uintptr(value))
+}
+
+func ScrollBar_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := scrollBar_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ScrollBar_SetControlStyle(obj uintptr, value TControlStyle) {
+   scrollBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ScrollBar_GetExplicitLeft(obj uintptr) int32 {
@@ -41656,6 +45528,10 @@ func ScrollBar_GetParent(obj uintptr) uintptr {
 
 func ScrollBar_SetParent(obj uintptr, value uintptr) {
    scrollBar_SetParent.Call(obj, value)
+}
+
+func ScrollBar_SetOnGesture(obj uintptr, fn interface{}) {
+    scrollBar_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBar_GetAlignWithMargins(obj uintptr) bool {
@@ -41774,6 +45650,11 @@ func ScrollBar_GetTag(obj uintptr) int {
 
 func ScrollBar_SetTag(obj uintptr, value int) {
    scrollBar_SetTag.Call(obj, uintptr(value))
+}
+
+func ScrollBar_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := scrollBar_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func ScrollBar_GetControls(obj uintptr, Index int32) uintptr {
@@ -42079,6 +45960,10 @@ func Shape_GetTextLen(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Shape_SetTextBuf(obj uintptr, Buffer string)  {
+    shape_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
 func Shape_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := shape_FindComponent.Call(obj, GoStrToDStr(AName) )
     return ret
@@ -42260,6 +46145,10 @@ func Shape_SetOnEndDrag(obj uintptr, fn interface{}) {
     shape_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func Shape_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    shape_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func Shape_SetOnMouseDown(obj uintptr, fn interface{}) {
     shape_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -42278,6 +46167,10 @@ func Shape_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Shape_SetOnMouseUp(obj uintptr, fn interface{}) {
     shape_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func Shape_SetOnGesture(obj uintptr, fn interface{}) {
+    shape_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Shape_SetOnStartDock(obj uintptr, fn interface{}) {
@@ -42321,6 +46214,12 @@ func Shape_SetClientHeight(obj uintptr, value int32) {
    shape_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Shape_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    shape_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Shape_GetClientRect(obj uintptr) TRect {
     var ret TRect
     shape_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -42334,6 +46233,24 @@ func Shape_GetClientWidth(obj uintptr) int32 {
 
 func Shape_SetClientWidth(obj uintptr, value int32) {
    shape_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Shape_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := shape_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Shape_SetControlState(obj uintptr, value TControlState) {
+   shape_SetControlState.Call(obj, uintptr(value))
+}
+
+func Shape_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := shape_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Shape_SetControlStyle(obj uintptr, value TControlStyle) {
+   shape_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Shape_GetExplicitLeft(obj uintptr) int32 {
@@ -42603,6 +46520,10 @@ func Bevel_GetTextLen(obj uintptr) int32 {
     return int32(ret)
 }
 
+func Bevel_SetTextBuf(obj uintptr, Buffer string)  {
+    bevel_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
 func Bevel_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := bevel_FindComponent.Call(obj, GoStrToDStr(AName) )
     return ret
@@ -42719,6 +46640,10 @@ func Bevel_SetVisible(obj uintptr, value bool) {
    bevel_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
+func Bevel_SetOnGesture(obj uintptr, fn interface{}) {
+    bevel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func Bevel_GetEnabled(obj uintptr) bool {
     ret, _, _ := bevel_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -42765,6 +46690,12 @@ func Bevel_SetClientHeight(obj uintptr, value int32) {
    bevel_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Bevel_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    bevel_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Bevel_GetClientRect(obj uintptr) TRect {
     var ret TRect
     bevel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -42778,6 +46709,24 @@ func Bevel_GetClientWidth(obj uintptr) int32 {
 
 func Bevel_SetClientWidth(obj uintptr, value int32) {
    bevel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Bevel_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := bevel_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Bevel_SetControlState(obj uintptr, value TControlState) {
+   bevel_SetControlState.Call(obj, uintptr(value))
+}
+
+func Bevel_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := bevel_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Bevel_SetControlStyle(obj uintptr, value TControlStyle) {
+   bevel_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Bevel_GetExplicitLeft(obj uintptr) int32 {
@@ -42967,6 +46916,29 @@ func ScrollBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ScrollBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := scrollBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := scrollBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ScrollBox_DisableAlign(obj uintptr)  {
+    scrollBox_DisableAlign.Call(obj)
+}
+
+func ScrollBox_EnableAlign(obj uintptr)  {
+    scrollBox_EnableAlign.Call(obj)
+}
+
+func ScrollBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := scrollBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ScrollBox_FlipChildren(obj uintptr, AllLevels bool)  {
     scrollBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -42981,8 +46953,20 @@ func ScrollBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ScrollBox_InsertControl(obj uintptr, AControl uintptr)  {
+    scrollBox_InsertControl.Call(obj, AControl )
+}
+
 func ScrollBox_Invalidate(obj uintptr)  {
     scrollBox_Invalidate.Call(obj)
+}
+
+func ScrollBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    scrollBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ScrollBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    scrollBox_RemoveControl.Call(obj, AControl )
 }
 
 func ScrollBox_Realign(obj uintptr)  {
@@ -42997,6 +46981,10 @@ func ScrollBox_ScaleBy(obj uintptr, M int32, D int32)  {
     scrollBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ScrollBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    scrollBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ScrollBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     scrollBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -43007,6 +46995,10 @@ func ScrollBox_SetFocus(obj uintptr)  {
 
 func ScrollBox_Update(obj uintptr)  {
     scrollBox_Update.Call(obj)
+}
+
+func ScrollBox_UpdateControlState(obj uintptr)  {
+    scrollBox_UpdateControlState.Call(obj)
 }
 
 func ScrollBox_BringToFront(obj uintptr)  {
@@ -43076,6 +47068,10 @@ func ScrollBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ScrollBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := scrollBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ScrollBox_SetTextBuf(obj uintptr, Buffer string)  {
+    scrollBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ScrollBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -43356,12 +47352,12 @@ func ScrollBox_SetShowHint(obj uintptr, value bool) {
    scrollBox_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func ScrollBox_GetTabOrder(obj uintptr) uint16 {
+func ScrollBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := scrollBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ScrollBox_SetTabOrder(obj uintptr, value uint16) {
+func ScrollBox_SetTabOrder(obj uintptr, value TTabOrder) {
    scrollBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -43432,8 +47428,16 @@ func ScrollBox_SetOnExit(obj uintptr, fn interface{}) {
     scrollBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBox_SetOnGesture(obj uintptr, fn interface{}) {
+    scrollBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     scrollBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    scrollBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -43478,6 +47482,26 @@ func ScrollBox_SetOnStartDock(obj uintptr, fn interface{}) {
 
 func ScrollBox_SetOnUnDock(obj uintptr, fn interface{}) {
     scrollBox_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
+func ScrollBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := scrollBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func ScrollBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := scrollBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := scrollBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ScrollBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := scrollBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ScrollBox_GetBrush(obj uintptr) uintptr {
@@ -43541,6 +47565,12 @@ func ScrollBox_SetClientHeight(obj uintptr, value int32) {
    scrollBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ScrollBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    scrollBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ScrollBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     scrollBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -43554,6 +47584,24 @@ func ScrollBox_GetClientWidth(obj uintptr) int32 {
 
 func ScrollBox_SetClientWidth(obj uintptr, value int32) {
    scrollBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ScrollBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := scrollBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ScrollBox_SetControlState(obj uintptr, value TControlState) {
+   scrollBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func ScrollBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := scrollBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ScrollBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   scrollBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ScrollBox_GetExplicitLeft(obj uintptr) int32 {
@@ -43708,6 +47756,11 @@ func ScrollBox_SetTag(obj uintptr, value int) {
    scrollBox_SetTag.Call(obj, uintptr(value))
 }
 
+func ScrollBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := scrollBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ScrollBox_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := scrollBox_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -43763,6 +47816,29 @@ func CheckListBox_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CheckListBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := checkListBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func CheckListBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := checkListBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func CheckListBox_DisableAlign(obj uintptr)  {
+    checkListBox_DisableAlign.Call(obj)
+}
+
+func CheckListBox_EnableAlign(obj uintptr)  {
+    checkListBox_EnableAlign.Call(obj)
+}
+
+func CheckListBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := checkListBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func CheckListBox_FlipChildren(obj uintptr, AllLevels bool)  {
     checkListBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -43777,8 +47853,20 @@ func CheckListBox_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CheckListBox_InsertControl(obj uintptr, AControl uintptr)  {
+    checkListBox_InsertControl.Call(obj, AControl )
+}
+
 func CheckListBox_Invalidate(obj uintptr)  {
     checkListBox_Invalidate.Call(obj)
+}
+
+func CheckListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    checkListBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func CheckListBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    checkListBox_RemoveControl.Call(obj, AControl )
 }
 
 func CheckListBox_Realign(obj uintptr)  {
@@ -43793,6 +47881,10 @@ func CheckListBox_ScaleBy(obj uintptr, M int32, D int32)  {
     checkListBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func CheckListBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    checkListBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func CheckListBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     checkListBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -43803,6 +47895,10 @@ func CheckListBox_SetFocus(obj uintptr)  {
 
 func CheckListBox_Update(obj uintptr)  {
     checkListBox_Update.Call(obj)
+}
+
+func CheckListBox_UpdateControlState(obj uintptr)  {
+    checkListBox_UpdateControlState.Call(obj)
 }
 
 func CheckListBox_BringToFront(obj uintptr)  {
@@ -43872,6 +47968,10 @@ func CheckListBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func CheckListBox_GetTextLen(obj uintptr) int32 {
     ret, _, _ := checkListBox_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func CheckListBox_SetTextBuf(obj uintptr, Buffer string)  {
+    checkListBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func CheckListBox_FindComponent(obj uintptr, AName string) uintptr {
@@ -44219,12 +48319,12 @@ func CheckListBox_SetStyle(obj uintptr, value TListBoxStyle) {
    checkListBox_SetStyle.Call(obj, uintptr(value))
 }
 
-func CheckListBox_GetTabOrder(obj uintptr) uint16 {
+func CheckListBox_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := checkListBox_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func CheckListBox_SetTabOrder(obj uintptr, value uint16) {
+func CheckListBox_SetTabOrder(obj uintptr, value TTabOrder) {
    checkListBox_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -44272,6 +48372,18 @@ func CheckListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
     checkListBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
+func CheckListBox_SetOnData(obj uintptr, fn interface{}) {
+    checkListBox_SetOnData.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnDataFind(obj uintptr, fn interface{}) {
+    checkListBox_SetOnDataFind.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnDataObject(obj uintptr, fn interface{}) {
+    checkListBox_SetOnDataObject.Call(obj, addEventToMap(fn))
+}
+
 func CheckListBox_SetOnDblClick(obj uintptr, fn interface{}) {
     checkListBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -44300,6 +48412,10 @@ func CheckListBox_SetOnExit(obj uintptr, fn interface{}) {
     checkListBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func CheckListBox_SetOnGesture(obj uintptr, fn interface{}) {
+    checkListBox_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CheckListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     checkListBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -44310,6 +48426,14 @@ func CheckListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func CheckListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     checkListBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
+    checkListBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
+}
+
+func CheckListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    checkListBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -44382,6 +48506,11 @@ func CheckListBox_SetItemIndex(obj uintptr, value int32) {
    checkListBox_SetItemIndex.Call(obj, uintptr(value))
 }
 
+func CheckListBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := checkListBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func CheckListBox_GetDockSite(obj uintptr) bool {
     ret, _, _ := checkListBox_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -44389,6 +48518,21 @@ func CheckListBox_GetDockSite(obj uintptr) bool {
 
 func CheckListBox_SetDockSite(obj uintptr, value bool) {
    checkListBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckListBox_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := checkListBox_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckListBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := checkListBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckListBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := checkListBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func CheckListBox_GetBrush(obj uintptr) uintptr {
@@ -44452,6 +48596,12 @@ func CheckListBox_SetClientHeight(obj uintptr, value int32) {
    checkListBox_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func CheckListBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    checkListBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CheckListBox_GetClientRect(obj uintptr) TRect {
     var ret TRect
     checkListBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -44465,6 +48615,24 @@ func CheckListBox_GetClientWidth(obj uintptr) int32 {
 
 func CheckListBox_SetClientWidth(obj uintptr, value int32) {
    checkListBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func CheckListBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := checkListBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func CheckListBox_SetControlState(obj uintptr, value TControlState) {
+   checkListBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func CheckListBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := checkListBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func CheckListBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   checkListBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func CheckListBox_GetExplicitLeft(obj uintptr) int32 {
@@ -44664,6 +48832,11 @@ func CheckListBox_SetSelected(obj uintptr, Index int32, value bool) {
    checkListBox_SetSelected.Call(obj, uintptr(Index), GoBoolToDBool(value))
 }
 
+func CheckListBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := checkListBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func CheckListBox_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := checkListBox_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -44777,6 +48950,10 @@ func Gauge_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func Gauge_GetTextLen(obj uintptr) int32 {
     ret, _, _ := gauge_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func Gauge_SetTextBuf(obj uintptr, Buffer string)  {
+    gauge_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func Gauge_FindComponent(obj uintptr, AName string) uintptr {
@@ -45045,6 +49222,12 @@ func Gauge_SetClientHeight(obj uintptr, value int32) {
    gauge_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func Gauge_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    gauge_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func Gauge_GetClientRect(obj uintptr) TRect {
     var ret TRect
     gauge_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -45058,6 +49241,24 @@ func Gauge_GetClientWidth(obj uintptr) int32 {
 
 func Gauge_SetClientWidth(obj uintptr, value int32) {
    gauge_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func Gauge_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := gauge_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func Gauge_SetControlState(obj uintptr, value TControlState) {
+   gauge_SetControlState.Call(obj, uintptr(value))
+}
+
+func Gauge_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := gauge_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func Gauge_SetControlStyle(obj uintptr, value TControlStyle) {
+   gauge_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func Gauge_GetExplicitLeft(obj uintptr) int32 {
@@ -45101,6 +49302,10 @@ func Gauge_GetStyleElements(obj uintptr) TStyleElements {
 
 func Gauge_SetStyleElements(obj uintptr, value TStyleElements) {
    gauge_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func Gauge_SetOnGesture(obj uintptr, fn interface{}) {
+    gauge_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func Gauge_GetAlignWithMargins(obj uintptr) bool {
@@ -45329,6 +49534,10 @@ func ImageButton_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func ImageButton_GetTextLen(obj uintptr) int32 {
     ret, _, _ := imageButton_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ImageButton_SetTextBuf(obj uintptr, Buffer string)  {
+    imageButton_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ImageButton_FindComponent(obj uintptr, AName string) uintptr {
@@ -45583,6 +49792,14 @@ func ImageButton_SetOnEndDrag(obj uintptr, fn interface{}) {
     imageButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func ImageButton_SetOnGesture(obj uintptr, fn interface{}) {
+    imageButton_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func ImageButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    imageButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func ImageButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     imageButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -45631,6 +49848,12 @@ func ImageButton_SetClientHeight(obj uintptr, value int32) {
    imageButton_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ImageButton_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    imageButton_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ImageButton_GetClientRect(obj uintptr) TRect {
     var ret TRect
     imageButton_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -45644,6 +49867,24 @@ func ImageButton_GetClientWidth(obj uintptr) int32 {
 
 func ImageButton_SetClientWidth(obj uintptr, value int32) {
    imageButton_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ImageButton_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := imageButton_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ImageButton_SetControlState(obj uintptr, value TControlState) {
+   imageButton_SetControlState.Call(obj, uintptr(value))
+}
+
+func ImageButton_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := imageButton_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ImageButton_SetControlStyle(obj uintptr, value TControlStyle) {
+   imageButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ImageButton_GetExplicitLeft(obj uintptr) int32 {
@@ -46984,6 +51225,29 @@ func StringGrid_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func StringGrid_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := stringGrid_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := stringGrid_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func StringGrid_DisableAlign(obj uintptr)  {
+    stringGrid_DisableAlign.Call(obj)
+}
+
+func StringGrid_EnableAlign(obj uintptr)  {
+    stringGrid_EnableAlign.Call(obj)
+}
+
+func StringGrid_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := stringGrid_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func StringGrid_FlipChildren(obj uintptr, AllLevels bool)  {
     stringGrid_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -46998,8 +51262,20 @@ func StringGrid_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func StringGrid_InsertControl(obj uintptr, AControl uintptr)  {
+    stringGrid_InsertControl.Call(obj, AControl )
+}
+
 func StringGrid_Invalidate(obj uintptr)  {
     stringGrid_Invalidate.Call(obj)
+}
+
+func StringGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    stringGrid_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func StringGrid_RemoveControl(obj uintptr, AControl uintptr)  {
+    stringGrid_RemoveControl.Call(obj, AControl )
 }
 
 func StringGrid_Realign(obj uintptr)  {
@@ -47014,6 +51290,10 @@ func StringGrid_ScaleBy(obj uintptr, M int32, D int32)  {
     stringGrid_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func StringGrid_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    stringGrid_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func StringGrid_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     stringGrid_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -47024,6 +51304,10 @@ func StringGrid_SetFocus(obj uintptr)  {
 
 func StringGrid_Update(obj uintptr)  {
     stringGrid_Update.Call(obj)
+}
+
+func StringGrid_UpdateControlState(obj uintptr)  {
+    stringGrid_UpdateControlState.Call(obj)
 }
 
 func StringGrid_BringToFront(obj uintptr)  {
@@ -47093,6 +51377,10 @@ func StringGrid_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func StringGrid_GetTextLen(obj uintptr) int32 {
     ret, _, _ := stringGrid_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func StringGrid_SetTextBuf(obj uintptr, Buffer string)  {
+    stringGrid_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func StringGrid_FindComponent(obj uintptr, AName string) uintptr {
@@ -47472,12 +51760,12 @@ func StringGrid_SetShowHint(obj uintptr, value bool) {
    stringGrid_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func StringGrid_GetTabOrder(obj uintptr) uint16 {
+func StringGrid_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := stringGrid_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func StringGrid_SetTabOrder(obj uintptr, value uint16) {
+func StringGrid_SetTabOrder(obj uintptr, value TTabOrder) {
    stringGrid_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -47557,6 +51845,10 @@ func StringGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
     stringGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
 }
 
+func StringGrid_SetOnGesture(obj uintptr, fn interface{}) {
+    stringGrid_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func StringGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     stringGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -47575,6 +51867,10 @@ func StringGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func StringGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     stringGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func StringGrid_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    stringGrid_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StringGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -47704,6 +52000,11 @@ func StringGrid_SetTabStop(obj uintptr, value bool) {
    stringGrid_SetTabStop.Call(obj, GoBoolToDBool(value))
 }
 
+func StringGrid_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func StringGrid_GetDockSite(obj uintptr) bool {
     ret, _, _ := stringGrid_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -47711,6 +52012,21 @@ func StringGrid_GetDockSite(obj uintptr) bool {
 
 func StringGrid_SetDockSite(obj uintptr, value bool) {
    stringGrid_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func StringGrid_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func StringGrid_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := stringGrid_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func StringGrid_GetBrush(obj uintptr) uintptr {
@@ -47774,6 +52090,12 @@ func StringGrid_SetClientHeight(obj uintptr, value int32) {
    stringGrid_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func StringGrid_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    stringGrid_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func StringGrid_GetClientRect(obj uintptr) TRect {
     var ret TRect
     stringGrid_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -47787,6 +52109,24 @@ func StringGrid_GetClientWidth(obj uintptr) int32 {
 
 func StringGrid_SetClientWidth(obj uintptr, value int32) {
    stringGrid_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := stringGrid_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func StringGrid_SetControlState(obj uintptr, value TControlState) {
+   stringGrid_SetControlState.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := stringGrid_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func StringGrid_SetControlStyle(obj uintptr, value TControlStyle) {
+   stringGrid_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func StringGrid_GetExplicitLeft(obj uintptr) int32 {
@@ -48004,6 +52344,11 @@ func StringGrid_SetTabStops(obj uintptr, Index int32, value bool) {
    stringGrid_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
 }
 
+func StringGrid_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := stringGrid_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func StringGrid_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := stringGrid_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -48051,6 +52396,29 @@ func DrawGrid_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func DrawGrid_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := drawGrid_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := drawGrid_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func DrawGrid_DisableAlign(obj uintptr)  {
+    drawGrid_DisableAlign.Call(obj)
+}
+
+func DrawGrid_EnableAlign(obj uintptr)  {
+    drawGrid_EnableAlign.Call(obj)
+}
+
+func DrawGrid_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := drawGrid_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func DrawGrid_FlipChildren(obj uintptr, AllLevels bool)  {
     drawGrid_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -48065,8 +52433,20 @@ func DrawGrid_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func DrawGrid_InsertControl(obj uintptr, AControl uintptr)  {
+    drawGrid_InsertControl.Call(obj, AControl )
+}
+
 func DrawGrid_Invalidate(obj uintptr)  {
     drawGrid_Invalidate.Call(obj)
+}
+
+func DrawGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    drawGrid_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func DrawGrid_RemoveControl(obj uintptr, AControl uintptr)  {
+    drawGrid_RemoveControl.Call(obj, AControl )
 }
 
 func DrawGrid_Realign(obj uintptr)  {
@@ -48081,6 +52461,10 @@ func DrawGrid_ScaleBy(obj uintptr, M int32, D int32)  {
     drawGrid_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func DrawGrid_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    drawGrid_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func DrawGrid_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     drawGrid_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -48091,6 +52475,10 @@ func DrawGrid_SetFocus(obj uintptr)  {
 
 func DrawGrid_Update(obj uintptr)  {
     drawGrid_Update.Call(obj)
+}
+
+func DrawGrid_UpdateControlState(obj uintptr)  {
+    drawGrid_UpdateControlState.Call(obj)
 }
 
 func DrawGrid_BringToFront(obj uintptr)  {
@@ -48160,6 +52548,10 @@ func DrawGrid_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func DrawGrid_GetTextLen(obj uintptr) int32 {
     ret, _, _ := drawGrid_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func DrawGrid_SetTextBuf(obj uintptr, Buffer string)  {
+    drawGrid_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func DrawGrid_FindComponent(obj uintptr, AName string) uintptr {
@@ -48539,12 +52931,12 @@ func DrawGrid_SetShowHint(obj uintptr, value bool) {
    drawGrid_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func DrawGrid_GetTabOrder(obj uintptr) uint16 {
+func DrawGrid_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := drawGrid_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func DrawGrid_SetTabOrder(obj uintptr, value uint16) {
+func DrawGrid_SetTabOrder(obj uintptr, value TTabOrder) {
    drawGrid_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -48624,6 +53016,10 @@ func DrawGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
     drawGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
 }
 
+func DrawGrid_SetOnGesture(obj uintptr, fn interface{}) {
+    drawGrid_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func DrawGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     drawGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -48642,6 +53038,10 @@ func DrawGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func DrawGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     drawGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func DrawGrid_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    drawGrid_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func DrawGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -48771,6 +53171,11 @@ func DrawGrid_SetTabStop(obj uintptr, value bool) {
    drawGrid_SetTabStop.Call(obj, GoBoolToDBool(value))
 }
 
+func DrawGrid_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func DrawGrid_GetDockSite(obj uintptr) bool {
     ret, _, _ := drawGrid_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -48778,6 +53183,21 @@ func DrawGrid_GetDockSite(obj uintptr) bool {
 
 func DrawGrid_SetDockSite(obj uintptr, value bool) {
    drawGrid_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func DrawGrid_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func DrawGrid_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := drawGrid_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func DrawGrid_GetBrush(obj uintptr) uintptr {
@@ -48841,6 +53261,12 @@ func DrawGrid_SetClientHeight(obj uintptr, value int32) {
    drawGrid_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func DrawGrid_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    drawGrid_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func DrawGrid_GetClientRect(obj uintptr) TRect {
     var ret TRect
     drawGrid_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -48854,6 +53280,24 @@ func DrawGrid_GetClientWidth(obj uintptr) int32 {
 
 func DrawGrid_SetClientWidth(obj uintptr, value int32) {
    drawGrid_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := drawGrid_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func DrawGrid_SetControlState(obj uintptr, value TControlState) {
+   drawGrid_SetControlState.Call(obj, uintptr(value))
+}
+
+func DrawGrid_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := drawGrid_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func DrawGrid_SetControlStyle(obj uintptr, value TControlStyle) {
+   drawGrid_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func DrawGrid_GetExplicitLeft(obj uintptr) int32 {
@@ -49035,6 +53479,11 @@ func DrawGrid_SetTabStops(obj uintptr, Index int32, value bool) {
    drawGrid_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
 }
 
+func DrawGrid_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := drawGrid_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func DrawGrid_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := drawGrid_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -49086,6 +53535,29 @@ func ValueListEditor_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ValueListEditor_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := valueListEditor_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := valueListEditor_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ValueListEditor_DisableAlign(obj uintptr)  {
+    valueListEditor_DisableAlign.Call(obj)
+}
+
+func ValueListEditor_EnableAlign(obj uintptr)  {
+    valueListEditor_EnableAlign.Call(obj)
+}
+
+func ValueListEditor_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := valueListEditor_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func ValueListEditor_FlipChildren(obj uintptr, AllLevels bool)  {
     valueListEditor_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -49100,8 +53572,20 @@ func ValueListEditor_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func ValueListEditor_InsertControl(obj uintptr, AControl uintptr)  {
+    valueListEditor_InsertControl.Call(obj, AControl )
+}
+
 func ValueListEditor_Invalidate(obj uintptr)  {
     valueListEditor_Invalidate.Call(obj)
+}
+
+func ValueListEditor_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    valueListEditor_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func ValueListEditor_RemoveControl(obj uintptr, AControl uintptr)  {
+    valueListEditor_RemoveControl.Call(obj, AControl )
 }
 
 func ValueListEditor_Realign(obj uintptr)  {
@@ -49116,6 +53600,10 @@ func ValueListEditor_ScaleBy(obj uintptr, M int32, D int32)  {
     valueListEditor_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func ValueListEditor_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    valueListEditor_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func ValueListEditor_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     valueListEditor_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -49126,6 +53614,10 @@ func ValueListEditor_SetFocus(obj uintptr)  {
 
 func ValueListEditor_Update(obj uintptr)  {
     valueListEditor_Update.Call(obj)
+}
+
+func ValueListEditor_UpdateControlState(obj uintptr)  {
+    valueListEditor_UpdateControlState.Call(obj)
 }
 
 func ValueListEditor_BringToFront(obj uintptr)  {
@@ -49191,6 +53683,10 @@ func ValueListEditor_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32
 func ValueListEditor_GetTextLen(obj uintptr) int32 {
     ret, _, _ := valueListEditor_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func ValueListEditor_SetTextBuf(obj uintptr, Buffer string)  {
+    valueListEditor_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func ValueListEditor_FindComponent(obj uintptr, AName string) uintptr {
@@ -49540,12 +54036,12 @@ func ValueListEditor_SetStrings(obj uintptr, value uintptr) {
    valueListEditor_SetStrings.Call(obj, value)
 }
 
-func ValueListEditor_GetTabOrder(obj uintptr) uint16 {
+func ValueListEditor_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := valueListEditor_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func ValueListEditor_SetTabOrder(obj uintptr, value uint16) {
+func ValueListEditor_SetTabOrder(obj uintptr, value TTabOrder) {
    valueListEditor_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -49607,6 +54103,10 @@ func ValueListEditor_SetOnExit(obj uintptr, fn interface{}) {
     valueListEditor_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func ValueListEditor_SetOnGesture(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func ValueListEditor_SetOnGetEditMask(obj uintptr, fn interface{}) {
     valueListEditor_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -49625,6 +54125,10 @@ func ValueListEditor_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ValueListEditor_SetOnKeyUp(obj uintptr, fn interface{}) {
     valueListEditor_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func ValueListEditor_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    valueListEditor_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ValueListEditor_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -49754,6 +54258,11 @@ func ValueListEditor_SetTabStop(obj uintptr, value bool) {
    valueListEditor_SetTabStop.Call(obj, GoBoolToDBool(value))
 }
 
+func ValueListEditor_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func ValueListEditor_GetDockSite(obj uintptr) bool {
     ret, _, _ := valueListEditor_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -49761,6 +54270,21 @@ func ValueListEditor_GetDockSite(obj uintptr) bool {
 
 func ValueListEditor_SetDockSite(obj uintptr, value bool) {
    valueListEditor_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ValueListEditor_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ValueListEditor_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := valueListEditor_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func ValueListEditor_GetBrush(obj uintptr) uintptr {
@@ -49824,6 +54348,12 @@ func ValueListEditor_SetClientHeight(obj uintptr, value int32) {
    valueListEditor_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func ValueListEditor_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    valueListEditor_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ValueListEditor_GetClientRect(obj uintptr) TRect {
     var ret TRect
     valueListEditor_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -49837,6 +54367,24 @@ func ValueListEditor_GetClientWidth(obj uintptr) int32 {
 
 func ValueListEditor_SetClientWidth(obj uintptr, value int32) {
    valueListEditor_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := valueListEditor_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ValueListEditor_SetControlState(obj uintptr, value TControlState) {
+   valueListEditor_SetControlState.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := valueListEditor_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ValueListEditor_SetControlStyle(obj uintptr, value TControlStyle) {
+   valueListEditor_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func ValueListEditor_GetExplicitLeft(obj uintptr) int32 {
@@ -50036,6 +54584,11 @@ func ValueListEditor_SetTabStops(obj uintptr, Index int32, value bool) {
    valueListEditor_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
 }
 
+func ValueListEditor_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := valueListEditor_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func ValueListEditor_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := valueListEditor_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -50071,6 +54624,29 @@ func HeaderControl_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func HeaderControl_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := headerControl_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := headerControl_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func HeaderControl_DisableAlign(obj uintptr)  {
+    headerControl_DisableAlign.Call(obj)
+}
+
+func HeaderControl_EnableAlign(obj uintptr)  {
+    headerControl_EnableAlign.Call(obj)
+}
+
+func HeaderControl_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := headerControl_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func HeaderControl_Focused(obj uintptr) bool {
     ret, _, _ := headerControl_Focused.Call(obj)
     return DBoolToGoBool(ret)
@@ -50081,8 +54657,20 @@ func HeaderControl_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func HeaderControl_InsertControl(obj uintptr, AControl uintptr)  {
+    headerControl_InsertControl.Call(obj, AControl )
+}
+
 func HeaderControl_Invalidate(obj uintptr)  {
     headerControl_Invalidate.Call(obj)
+}
+
+func HeaderControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    headerControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func HeaderControl_RemoveControl(obj uintptr, AControl uintptr)  {
+    headerControl_RemoveControl.Call(obj, AControl )
 }
 
 func HeaderControl_Realign(obj uintptr)  {
@@ -50097,6 +54685,10 @@ func HeaderControl_ScaleBy(obj uintptr, M int32, D int32)  {
     headerControl_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func HeaderControl_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    headerControl_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func HeaderControl_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     headerControl_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -50107,6 +54699,10 @@ func HeaderControl_SetFocus(obj uintptr)  {
 
 func HeaderControl_Update(obj uintptr)  {
     headerControl_Update.Call(obj)
+}
+
+func HeaderControl_UpdateControlState(obj uintptr)  {
+    headerControl_UpdateControlState.Call(obj)
 }
 
 func HeaderControl_BringToFront(obj uintptr)  {
@@ -50176,6 +54772,10 @@ func HeaderControl_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func HeaderControl_GetTextLen(obj uintptr) int32 {
     ret, _, _ := headerControl_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func HeaderControl_SetTextBuf(obj uintptr, Buffer string)  {
+    headerControl_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func HeaderControl_FindComponent(obj uintptr, AName string) uintptr {
@@ -50440,6 +55040,14 @@ func HeaderControl_SetOnEndDrag(obj uintptr, fn interface{}) {
     headerControl_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func HeaderControl_SetOnGesture(obj uintptr, fn interface{}) {
+    headerControl_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func HeaderControl_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    headerControl_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func HeaderControl_SetOnMouseDown(obj uintptr, fn interface{}) {
     headerControl_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -50501,6 +55109,11 @@ func HeaderControl_SetOnSectionCheck(obj uintptr, fn interface{}) {
     headerControl_SetOnSectionCheck.Call(obj, addEventToMap(fn))
 }
 
+func HeaderControl_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func HeaderControl_GetDockSite(obj uintptr) bool {
     ret, _, _ := headerControl_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -50508,6 +55121,21 @@ func HeaderControl_GetDockSite(obj uintptr) bool {
 
 func HeaderControl_SetDockSite(obj uintptr, value bool) {
    headerControl_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func HeaderControl_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := headerControl_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := headerControl_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func HeaderControl_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := headerControl_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func HeaderControl_GetBrush(obj uintptr) uintptr {
@@ -50534,12 +55162,12 @@ func HeaderControl_SetParentWindow(obj uintptr, value HWND) {
    headerControl_SetParentWindow.Call(obj, uintptr(value))
 }
 
-func HeaderControl_GetTabOrder(obj uintptr) uint16 {
+func HeaderControl_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := headerControl_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func HeaderControl_SetTabOrder(obj uintptr, value uint16) {
+func HeaderControl_SetTabOrder(obj uintptr, value TTabOrder) {
    headerControl_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -50589,6 +55217,12 @@ func HeaderControl_SetClientHeight(obj uintptr, value int32) {
    headerControl_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func HeaderControl_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    headerControl_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func HeaderControl_GetClientRect(obj uintptr) TRect {
     var ret TRect
     headerControl_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -50602,6 +55236,24 @@ func HeaderControl_GetClientWidth(obj uintptr) int32 {
 
 func HeaderControl_SetClientWidth(obj uintptr, value int32) {
    headerControl_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := headerControl_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func HeaderControl_SetControlState(obj uintptr, value TControlState) {
+   headerControl_SetControlState.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := headerControl_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func HeaderControl_SetControlStyle(obj uintptr, value TControlStyle) {
+   headerControl_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func HeaderControl_GetExplicitLeft(obj uintptr) int32 {
@@ -50754,6 +55406,11 @@ func HeaderControl_GetTag(obj uintptr) int {
 
 func HeaderControl_SetTag(obj uintptr, value int) {
    headerControl_SetTag.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := headerControl_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func HeaderControl_GetControls(obj uintptr, Index int32) uintptr {
@@ -51155,6 +55812,29 @@ func LabeledEdit_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func LabeledEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := labeledEdit_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := labeledEdit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func LabeledEdit_DisableAlign(obj uintptr)  {
+    labeledEdit_DisableAlign.Call(obj)
+}
+
+func LabeledEdit_EnableAlign(obj uintptr)  {
+    labeledEdit_EnableAlign.Call(obj)
+}
+
+func LabeledEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := labeledEdit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func LabeledEdit_FlipChildren(obj uintptr, AllLevels bool)  {
     labeledEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -51169,8 +55849,20 @@ func LabeledEdit_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func LabeledEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    labeledEdit_InsertControl.Call(obj, AControl )
+}
+
 func LabeledEdit_Invalidate(obj uintptr)  {
     labeledEdit_Invalidate.Call(obj)
+}
+
+func LabeledEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    labeledEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func LabeledEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    labeledEdit_RemoveControl.Call(obj, AControl )
 }
 
 func LabeledEdit_Realign(obj uintptr)  {
@@ -51185,12 +55877,20 @@ func LabeledEdit_ScaleBy(obj uintptr, M int32, D int32)  {
     labeledEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func LabeledEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    labeledEdit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func LabeledEdit_SetFocus(obj uintptr)  {
     labeledEdit_SetFocus.Call(obj)
 }
 
 func LabeledEdit_Update(obj uintptr)  {
     labeledEdit_Update.Call(obj)
+}
+
+func LabeledEdit_UpdateControlState(obj uintptr)  {
+    labeledEdit_UpdateControlState.Call(obj)
 }
 
 func LabeledEdit_BringToFront(obj uintptr)  {
@@ -51260,6 +55960,10 @@ func LabeledEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func LabeledEdit_GetTextLen(obj uintptr) int32 {
     ret, _, _ := labeledEdit_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func LabeledEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    labeledEdit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func LabeledEdit_FindComponent(obj uintptr, AName string) uintptr {
@@ -51608,12 +56312,12 @@ func LabeledEdit_SetShowHint(obj uintptr, value bool) {
    labeledEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func LabeledEdit_GetTabOrder(obj uintptr) uint16 {
+func LabeledEdit_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := labeledEdit_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func LabeledEdit_SetTabOrder(obj uintptr, value uint16) {
+func LabeledEdit_SetTabOrder(obj uintptr, value TTabOrder) {
    labeledEdit_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -51702,6 +56406,10 @@ func LabeledEdit_SetOnExit(obj uintptr, fn interface{}) {
     labeledEdit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func LabeledEdit_SetOnGesture(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func LabeledEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     labeledEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -51712,6 +56420,10 @@ func LabeledEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func LabeledEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     labeledEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func LabeledEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    labeledEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func LabeledEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -51779,6 +56491,11 @@ func LabeledEdit_SetSelText(obj uintptr, value string) {
    labeledEdit_SetSelText.Call(obj, GoStrToDStr(value))
 }
 
+func LabeledEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func LabeledEdit_GetDockSite(obj uintptr) bool {
     ret, _, _ := labeledEdit_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -51786,6 +56503,21 @@ func LabeledEdit_GetDockSite(obj uintptr) bool {
 
 func LabeledEdit_SetDockSite(obj uintptr, value bool) {
    labeledEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func LabeledEdit_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func LabeledEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := labeledEdit_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func LabeledEdit_GetBrush(obj uintptr) uintptr {
@@ -51858,6 +56590,12 @@ func LabeledEdit_SetClientHeight(obj uintptr, value int32) {
    labeledEdit_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func LabeledEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    labeledEdit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func LabeledEdit_GetClientRect(obj uintptr) TRect {
     var ret TRect
     labeledEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -51871,6 +56609,24 @@ func LabeledEdit_GetClientWidth(obj uintptr) int32 {
 
 func LabeledEdit_SetClientWidth(obj uintptr, value int32) {
    labeledEdit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := labeledEdit_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func LabeledEdit_SetControlState(obj uintptr, value TControlState) {
+   labeledEdit_SetControlState.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := labeledEdit_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func LabeledEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+   labeledEdit_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func LabeledEdit_GetExplicitLeft(obj uintptr) int32 {
@@ -52025,6 +56781,11 @@ func LabeledEdit_SetTag(obj uintptr, value int) {
    labeledEdit_SetTag.Call(obj, uintptr(value))
 }
 
+func LabeledEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := labeledEdit_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func LabeledEdit_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := labeledEdit_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -52134,6 +56895,10 @@ func BoundLabel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func BoundLabel_GetTextLen(obj uintptr) int32 {
     ret, _, _ := boundLabel_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func BoundLabel_SetTextBuf(obj uintptr, Buffer string)  {
+    boundLabel_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func BoundLabel_FindComponent(obj uintptr, AName string) uintptr {
@@ -52389,6 +57154,14 @@ func BoundLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
     boundLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func BoundLabel_SetOnGesture(obj uintptr, fn interface{}) {
+    boundLabel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func BoundLabel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    boundLabel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
+}
+
 func BoundLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
     boundLabel_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -52474,6 +57247,12 @@ func BoundLabel_SetClientHeight(obj uintptr, value int32) {
    boundLabel_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func BoundLabel_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    boundLabel_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func BoundLabel_GetClientRect(obj uintptr) TRect {
     var ret TRect
     boundLabel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -52487,6 +57266,24 @@ func BoundLabel_GetClientWidth(obj uintptr) int32 {
 
 func BoundLabel_SetClientWidth(obj uintptr, value int32) {
    boundLabel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := boundLabel_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func BoundLabel_SetControlState(obj uintptr, value TControlState) {
+   boundLabel_SetControlState.Call(obj, uintptr(value))
+}
+
+func BoundLabel_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := boundLabel_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func BoundLabel_SetControlStyle(obj uintptr, value TControlStyle) {
+   boundLabel_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func BoundLabel_GetExplicitLeft(obj uintptr) int32 {
@@ -52658,6 +57455,29 @@ func FlowPanel_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func FlowPanel_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := flowPanel_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := flowPanel_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func FlowPanel_DisableAlign(obj uintptr)  {
+    flowPanel_DisableAlign.Call(obj)
+}
+
+func FlowPanel_EnableAlign(obj uintptr)  {
+    flowPanel_EnableAlign.Call(obj)
+}
+
+func FlowPanel_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := flowPanel_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func FlowPanel_FlipChildren(obj uintptr, AllLevels bool)  {
     flowPanel_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
 }
@@ -52672,8 +57492,20 @@ func FlowPanel_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func FlowPanel_InsertControl(obj uintptr, AControl uintptr)  {
+    flowPanel_InsertControl.Call(obj, AControl )
+}
+
 func FlowPanel_Invalidate(obj uintptr)  {
     flowPanel_Invalidate.Call(obj)
+}
+
+func FlowPanel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    flowPanel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func FlowPanel_RemoveControl(obj uintptr, AControl uintptr)  {
+    flowPanel_RemoveControl.Call(obj, AControl )
 }
 
 func FlowPanel_Realign(obj uintptr)  {
@@ -52688,6 +57520,10 @@ func FlowPanel_ScaleBy(obj uintptr, M int32, D int32)  {
     flowPanel_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func FlowPanel_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    flowPanel_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func FlowPanel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     flowPanel_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -52698,6 +57534,10 @@ func FlowPanel_SetFocus(obj uintptr)  {
 
 func FlowPanel_Update(obj uintptr)  {
     flowPanel_Update.Call(obj)
+}
+
+func FlowPanel_UpdateControlState(obj uintptr)  {
+    flowPanel_UpdateControlState.Call(obj)
 }
 
 func FlowPanel_BringToFront(obj uintptr)  {
@@ -52767,6 +57607,10 @@ func FlowPanel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func FlowPanel_GetTextLen(obj uintptr) int32 {
     ret, _, _ := flowPanel_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func FlowPanel_SetTextBuf(obj uintptr, Buffer string)  {
+    flowPanel_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func FlowPanel_FindComponent(obj uintptr, AName string) uintptr {
@@ -53128,12 +57972,12 @@ func FlowPanel_SetShowHint(obj uintptr, value bool) {
    flowPanel_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func FlowPanel_GetTabOrder(obj uintptr) uint16 {
+func FlowPanel_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := flowPanel_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func FlowPanel_SetTabOrder(obj uintptr, value uint16) {
+func FlowPanel_SetTabOrder(obj uintptr, value TTabOrder) {
    flowPanel_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -53204,8 +58048,16 @@ func FlowPanel_SetOnExit(obj uintptr, fn interface{}) {
     flowPanel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
+func FlowPanel_SetOnGesture(obj uintptr, fn interface{}) {
+    flowPanel_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func FlowPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     flowPanel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    flowPanel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func FlowPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -53238,6 +58090,26 @@ func FlowPanel_SetOnStartDock(obj uintptr, fn interface{}) {
 
 func FlowPanel_SetOnUnDock(obj uintptr, fn interface{}) {
     flowPanel_SetOnUnDock.Call(obj, addEventToMap(fn))
+}
+
+func FlowPanel_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func FlowPanel_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func FlowPanel_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := flowPanel_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
 }
 
 func FlowPanel_GetBrush(obj uintptr) uintptr {
@@ -53292,6 +58164,12 @@ func FlowPanel_SetClientHeight(obj uintptr, value int32) {
    flowPanel_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func FlowPanel_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    flowPanel_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func FlowPanel_GetClientRect(obj uintptr) TRect {
     var ret TRect
     flowPanel_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -53305,6 +58183,24 @@ func FlowPanel_GetClientWidth(obj uintptr) int32 {
 
 func FlowPanel_SetClientWidth(obj uintptr, value int32) {
    flowPanel_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := flowPanel_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func FlowPanel_SetControlState(obj uintptr, value TControlState) {
+   flowPanel_SetControlState.Call(obj, uintptr(value))
+}
+
+func FlowPanel_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := flowPanel_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func FlowPanel_SetControlStyle(obj uintptr, value TControlStyle) {
+   flowPanel_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func FlowPanel_GetExplicitLeft(obj uintptr) int32 {
@@ -53459,6 +58355,11 @@ func FlowPanel_SetTag(obj uintptr, value int) {
    flowPanel_SetTag.Call(obj, uintptr(value))
 }
 
+func FlowPanel_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := flowPanel_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
 func FlowPanel_GetControls(obj uintptr, Index int32) uintptr {
     ret, _, _ := flowPanel_GetControls.Call(obj, uintptr(Index))
     return ret
@@ -53494,6 +58395,29 @@ func CoolBar_CanFocus(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CoolBar_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := coolBar_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := coolBar_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func CoolBar_DisableAlign(obj uintptr)  {
+    coolBar_DisableAlign.Call(obj)
+}
+
+func CoolBar_EnableAlign(obj uintptr)  {
+    coolBar_EnableAlign.Call(obj)
+}
+
+func CoolBar_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := coolBar_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
 func CoolBar_Focused(obj uintptr) bool {
     ret, _, _ := coolBar_Focused.Call(obj)
     return DBoolToGoBool(ret)
@@ -53504,8 +58428,20 @@ func CoolBar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
+func CoolBar_InsertControl(obj uintptr, AControl uintptr)  {
+    coolBar_InsertControl.Call(obj, AControl )
+}
+
 func CoolBar_Invalidate(obj uintptr)  {
     coolBar_Invalidate.Call(obj)
+}
+
+func CoolBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    coolBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func CoolBar_RemoveControl(obj uintptr, AControl uintptr)  {
+    coolBar_RemoveControl.Call(obj, AControl )
 }
 
 func CoolBar_Realign(obj uintptr)  {
@@ -53520,6 +58456,10 @@ func CoolBar_ScaleBy(obj uintptr, M int32, D int32)  {
     coolBar_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
 }
 
+func CoolBar_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    coolBar_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
 func CoolBar_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     coolBar_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
@@ -53530,6 +58470,10 @@ func CoolBar_SetFocus(obj uintptr)  {
 
 func CoolBar_Update(obj uintptr)  {
     coolBar_Update.Call(obj)
+}
+
+func CoolBar_UpdateControlState(obj uintptr)  {
+    coolBar_UpdateControlState.Call(obj)
 }
 
 func CoolBar_BringToFront(obj uintptr)  {
@@ -53599,6 +58543,10 @@ func CoolBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
 func CoolBar_GetTextLen(obj uintptr) int32 {
     ret, _, _ := coolBar_GetTextLen.Call(obj)
     return int32(ret)
+}
+
+func CoolBar_SetTextBuf(obj uintptr, Buffer string)  {
+    coolBar_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
 }
 
 func CoolBar_FindComponent(obj uintptr, AName string) uintptr {
@@ -53978,8 +58926,16 @@ func CoolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     coolBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
+func CoolBar_SetOnGesture(obj uintptr, fn interface{}) {
+    coolBar_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
 func CoolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     coolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
+}
+
+func CoolBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
+    coolBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CoolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -54014,6 +58970,26 @@ func CoolBar_SetOnUnDock(obj uintptr, fn interface{}) {
     coolBar_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
+func CoolBar_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func CoolBar_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := coolBar_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := coolBar_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CoolBar_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := coolBar_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
 func CoolBar_GetBrush(obj uintptr) uintptr {
     ret, _, _ := coolBar_GetBrush.Call(obj)
     return ret
@@ -54038,12 +59014,12 @@ func CoolBar_SetParentWindow(obj uintptr, value HWND) {
    coolBar_SetParentWindow.Call(obj, uintptr(value))
 }
 
-func CoolBar_GetTabOrder(obj uintptr) uint16 {
+func CoolBar_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := coolBar_GetTabOrder.Call(obj)
-    return uint16(ret)
+    return TTabOrder(ret)
 }
 
-func CoolBar_SetTabOrder(obj uintptr, value uint16) {
+func CoolBar_SetTabOrder(obj uintptr, value TTabOrder) {
    coolBar_SetTabOrder.Call(obj, uintptr(value))
 }
 
@@ -54102,6 +59078,12 @@ func CoolBar_SetClientHeight(obj uintptr, value int32) {
    coolBar_SetClientHeight.Call(obj, uintptr(value))
 }
 
+func CoolBar_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    coolBar_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func CoolBar_GetClientRect(obj uintptr) TRect {
     var ret TRect
     coolBar_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -54115,6 +59097,24 @@ func CoolBar_GetClientWidth(obj uintptr) int32 {
 
 func CoolBar_SetClientWidth(obj uintptr, value int32) {
    coolBar_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := coolBar_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func CoolBar_SetControlState(obj uintptr, value TControlState) {
+   coolBar_SetControlState.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := coolBar_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func CoolBar_SetControlStyle(obj uintptr, value TControlStyle) {
+   coolBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
 func CoolBar_GetExplicitLeft(obj uintptr) int32 {
@@ -54267,6 +59267,11 @@ func CoolBar_GetTag(obj uintptr) int {
 
 func CoolBar_SetTag(obj uintptr, value int) {
    coolBar_SetTag.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := coolBar_GetDockClients.Call(obj, uintptr(Index))
+    return ret
 }
 
 func CoolBar_GetControls(obj uintptr, Index int32) uintptr {

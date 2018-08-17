@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function DateTimePicker_ContainsControl(AObj: TDateTimePicker; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function DateTimePicker_ControlAtPos(AObj: TDateTimePicker; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure DateTimePicker_DisableAlign(AObj: TDateTimePicker); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure DateTimePicker_EnableAlign(AObj: TDateTimePicker); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function DateTimePicker_FindChildControl(AObj: TDateTimePicker; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure DateTimePicker_FlipChildren(AObj: TDateTimePicker; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure DateTimePicker_InsertControl(AObj: TDateTimePicker; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure DateTimePicker_Invalidate(AObj: TDateTimePicker); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure DateTimePicker_PaintTo(AObj: TDateTimePicker; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure DateTimePicker_RemoveControl(AObj: TDateTimePicker; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure DateTimePicker_Realign(AObj: TDateTimePicker); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure DateTimePicker_ScrollBy(AObj: TDateTimePicker; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure DateTimePicker_SetBounds(AObj: TDateTimePicker; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure DateTimePicker_Update(AObj: TDateTimePicker); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure DateTimePicker_UpdateControlState(AObj: TDateTimePicker); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure DateTimePicker_BringToFront(AObj: TDateTimePicker); stdcall;
@@ -138,6 +188,11 @@ end;
 function DateTimePicker_GetTextLen(AObj: TDateTimePicker): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure DateTimePicker_SetTextBuf(AObj: TDateTimePicker; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function DateTimePicker_FindComponent(AObj: TDateTimePicker; AName: PChar): TComponent; stdcall;
@@ -678,6 +733,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure DateTimePicker_SetOnGesture(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure DateTimePicker_SetOnKeyDown(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -750,6 +817,11 @@ begin
   TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
+function DateTimePicker_GetDockClientCount(AObj: TDateTimePicker): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function DateTimePicker_GetDockSite(AObj: TDateTimePicker): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -758,6 +830,21 @@ end;
 procedure DateTimePicker_SetDockSite(AObj: TDateTimePicker; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function DateTimePicker_GetAlignDisabled(AObj: TDateTimePicker): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function DateTimePicker_GetMouseInClient(AObj: TDateTimePicker): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function DateTimePicker_GetVisibleDockClientCount(AObj: TDateTimePicker): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function DateTimePicker_GetBrush(AObj: TDateTimePicker): TBrush; stdcall;
@@ -825,6 +912,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure DateTimePicker_GetClientOrigin(AObj: TDateTimePicker; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure DateTimePicker_GetClientRect(AObj: TDateTimePicker; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -838,6 +930,26 @@ end;
 procedure DateTimePicker_SetClientWidth(AObj: TDateTimePicker; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function DateTimePicker_GetControlState(AObj: TDateTimePicker): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure DateTimePicker_SetControlState(AObj: TDateTimePicker; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function DateTimePicker_GetControlStyle(AObj: TDateTimePicker): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure DateTimePicker_SetControlStyle(AObj: TDateTimePicker; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function DateTimePicker_GetExplicitLeft(AObj: TDateTimePicker): Integer; stdcall;
@@ -1005,6 +1117,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function DateTimePicker_GetDockClients(AObj: TDateTimePicker; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function DateTimePicker_GetControls(AObj: TDateTimePicker; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1024,16 +1141,26 @@ exports
   DateTimePicker_Create,
   DateTimePicker_Free,
   DateTimePicker_CanFocus,
+  DateTimePicker_ContainsControl,
+  DateTimePicker_ControlAtPos,
+  DateTimePicker_DisableAlign,
+  DateTimePicker_EnableAlign,
+  DateTimePicker_FindChildControl,
   DateTimePicker_FlipChildren,
   DateTimePicker_Focused,
   DateTimePicker_HandleAllocated,
+  DateTimePicker_InsertControl,
   DateTimePicker_Invalidate,
+  DateTimePicker_PaintTo,
+  DateTimePicker_RemoveControl,
   DateTimePicker_Realign,
   DateTimePicker_Repaint,
   DateTimePicker_ScaleBy,
+  DateTimePicker_ScrollBy,
   DateTimePicker_SetBounds,
   DateTimePicker_SetFocus,
   DateTimePicker_Update,
+  DateTimePicker_UpdateControlState,
   DateTimePicker_BringToFront,
   DateTimePicker_ClientToScreen,
   DateTimePicker_ClientToParent,
@@ -1048,6 +1175,7 @@ exports
   DateTimePicker_Show,
   DateTimePicker_GetTextBuf,
   DateTimePicker_GetTextLen,
+  DateTimePicker_SetTextBuf,
   DateTimePicker_FindComponent,
   DateTimePicker_GetNamePath,
   DateTimePicker_Assign,
@@ -1143,14 +1271,19 @@ exports
   DateTimePicker_SetOnEndDrag,
   DateTimePicker_SetOnEnter,
   DateTimePicker_SetOnExit,
+  DateTimePicker_SetOnGesture,
   DateTimePicker_SetOnKeyDown,
   DateTimePicker_SetOnKeyPress,
   DateTimePicker_SetOnKeyUp,
   DateTimePicker_SetOnMouseEnter,
   DateTimePicker_SetOnMouseLeave,
   DateTimePicker_SetOnStartDock,
+  DateTimePicker_GetDockClientCount,
   DateTimePicker_GetDockSite,
   DateTimePicker_SetDockSite,
+  DateTimePicker_GetAlignDisabled,
+  DateTimePicker_GetMouseInClient,
+  DateTimePicker_GetVisibleDockClientCount,
   DateTimePicker_GetBrush,
   DateTimePicker_GetControlCount,
   DateTimePicker_GetHandle,
@@ -1164,9 +1297,14 @@ exports
   DateTimePicker_SetBoundsRect,
   DateTimePicker_GetClientHeight,
   DateTimePicker_SetClientHeight,
+  DateTimePicker_GetClientOrigin,
   DateTimePicker_GetClientRect,
   DateTimePicker_GetClientWidth,
   DateTimePicker_SetClientWidth,
+  DateTimePicker_GetControlState,
+  DateTimePicker_SetControlState,
+  DateTimePicker_GetControlStyle,
+  DateTimePicker_SetControlStyle,
   DateTimePicker_GetExplicitLeft,
   DateTimePicker_GetExplicitTop,
   DateTimePicker_GetExplicitWidth,
@@ -1200,6 +1338,7 @@ exports
   DateTimePicker_SetName,
   DateTimePicker_GetTag,
   DateTimePicker_SetTag,
+  DateTimePicker_GetDockClients,
   DateTimePicker_GetControls,
   DateTimePicker_GetComponents,
   DateTimePicker_StaticClassType;

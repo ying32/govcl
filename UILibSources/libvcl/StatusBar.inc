@@ -30,6 +30,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function StatusBar_ContainsControl(AObj: TStatusBar; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function StatusBar_ControlAtPos(AObj: TStatusBar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure StatusBar_DisableAlign(AObj: TStatusBar); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure StatusBar_EnableAlign(AObj: TStatusBar); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function StatusBar_FindChildControl(AObj: TStatusBar; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 function StatusBar_Focused(AObj: TStatusBar): LongBool; stdcall;
 begin
   Result :=  AObj.Focused;
@@ -40,9 +65,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure StatusBar_InsertControl(AObj: TStatusBar; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure StatusBar_Invalidate(AObj: TStatusBar); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure StatusBar_PaintTo(AObj: TStatusBar; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure StatusBar_RemoveControl(AObj: TStatusBar; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure StatusBar_Realign(AObj: TStatusBar); stdcall;
@@ -60,6 +100,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure StatusBar_ScrollBy(AObj: TStatusBar; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure StatusBar_SetFocus(AObj: TStatusBar); stdcall;
 begin
   AObj.SetFocus;
@@ -68,6 +113,11 @@ end;
 procedure StatusBar_Update(AObj: TStatusBar); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure StatusBar_UpdateControlState(AObj: TStatusBar); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure StatusBar_BringToFront(AObj: TStatusBar); stdcall;
@@ -138,6 +188,11 @@ end;
 function StatusBar_GetTextLen(AObj: TStatusBar): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure StatusBar_SetTextBuf(AObj: TStatusBar; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function StatusBar_FindComponent(AObj: TStatusBar; AName: PChar): TComponent; stdcall;
@@ -539,6 +594,18 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure StatusBar_SetOnGesture(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure StatusBar_SetOnHint(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -549,6 +616,18 @@ begin
   end;
   AObj.OnHint := TEventClass.OnHint;
   TEventClass.Add(AObj, geHint, AEventId);
+end;
+
+procedure StatusBar_SetOnMouseActivate(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure StatusBar_SetOnMouseDown(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -640,6 +719,11 @@ begin
   Result :=  AObj.Canvas;
 end;
 
+function StatusBar_GetDockClientCount(AObj: TStatusBar): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function StatusBar_GetDockSite(AObj: TStatusBar): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -648,6 +732,21 @@ end;
 procedure StatusBar_SetDockSite(AObj: TStatusBar; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function StatusBar_GetAlignDisabled(AObj: TStatusBar): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function StatusBar_GetMouseInClient(AObj: TStatusBar): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function StatusBar_GetVisibleDockClientCount(AObj: TStatusBar): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function StatusBar_GetBrush(AObj: TStatusBar): TBrush; stdcall;
@@ -725,6 +824,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure StatusBar_GetClientOrigin(AObj: TStatusBar; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure StatusBar_GetClientRect(AObj: TStatusBar; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -738,6 +842,26 @@ end;
 procedure StatusBar_SetClientWidth(AObj: TStatusBar; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function StatusBar_GetControlState(AObj: TStatusBar): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure StatusBar_SetControlState(AObj: TStatusBar; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function StatusBar_GetControlStyle(AObj: TStatusBar): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure StatusBar_SetControlStyle(AObj: TStatusBar; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function StatusBar_GetExplicitLeft(AObj: TStatusBar): Integer; stdcall;
@@ -905,6 +1029,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function StatusBar_GetDockClients(AObj: TStatusBar; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function StatusBar_GetControls(AObj: TStatusBar; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -926,14 +1055,24 @@ exports
   StatusBar_FlipChildren,
   StatusBar_SetBounds,
   StatusBar_CanFocus,
+  StatusBar_ContainsControl,
+  StatusBar_ControlAtPos,
+  StatusBar_DisableAlign,
+  StatusBar_EnableAlign,
+  StatusBar_FindChildControl,
   StatusBar_Focused,
   StatusBar_HandleAllocated,
+  StatusBar_InsertControl,
   StatusBar_Invalidate,
+  StatusBar_PaintTo,
+  StatusBar_RemoveControl,
   StatusBar_Realign,
   StatusBar_Repaint,
   StatusBar_ScaleBy,
+  StatusBar_ScrollBy,
   StatusBar_SetFocus,
   StatusBar_Update,
+  StatusBar_UpdateControlState,
   StatusBar_BringToFront,
   StatusBar_ClientToScreen,
   StatusBar_ClientToParent,
@@ -948,6 +1087,7 @@ exports
   StatusBar_Show,
   StatusBar_GetTextBuf,
   StatusBar_GetTextLen,
+  StatusBar_SetTextBuf,
   StatusBar_FindComponent,
   StatusBar_GetNamePath,
   StatusBar_Assign,
@@ -1018,7 +1158,9 @@ exports
   StatusBar_SetOnDragOver,
   StatusBar_SetOnEndDock,
   StatusBar_SetOnEndDrag,
+  StatusBar_SetOnGesture,
   StatusBar_SetOnHint,
+  StatusBar_SetOnMouseActivate,
   StatusBar_SetOnMouseDown,
   StatusBar_SetOnMouseEnter,
   StatusBar_SetOnMouseLeave,
@@ -1027,8 +1169,12 @@ exports
   StatusBar_SetOnResize,
   StatusBar_SetOnStartDock,
   StatusBar_GetCanvas,
+  StatusBar_GetDockClientCount,
   StatusBar_GetDockSite,
   StatusBar_SetDockSite,
+  StatusBar_GetAlignDisabled,
+  StatusBar_GetMouseInClient,
+  StatusBar_GetVisibleDockClientCount,
   StatusBar_GetBrush,
   StatusBar_GetControlCount,
   StatusBar_GetHandle,
@@ -1044,9 +1190,14 @@ exports
   StatusBar_SetBoundsRect,
   StatusBar_GetClientHeight,
   StatusBar_SetClientHeight,
+  StatusBar_GetClientOrigin,
   StatusBar_GetClientRect,
   StatusBar_GetClientWidth,
   StatusBar_SetClientWidth,
+  StatusBar_GetControlState,
+  StatusBar_SetControlState,
+  StatusBar_GetControlStyle,
+  StatusBar_SetControlStyle,
   StatusBar_GetExplicitLeft,
   StatusBar_GetExplicitTop,
   StatusBar_GetExplicitWidth,
@@ -1080,6 +1231,7 @@ exports
   StatusBar_SetName,
   StatusBar_GetTag,
   StatusBar_SetTag,
+  StatusBar_GetDockClients,
   StatusBar_GetControls,
   StatusBar_GetComponents,
   StatusBar_StaticClassType;

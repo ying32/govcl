@@ -19,7 +19,7 @@ var globalFormScaled bool = false
       Button1 *vcl.TButton
    }
 
-   var form1 *vcl.TForm1
+   var form1 *TForm1
 
    vcl.Application.Create(&form1)
 

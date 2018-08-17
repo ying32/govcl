@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function LinkLabel_ContainsControl(AObj: TLinkLabel; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function LinkLabel_ControlAtPos(AObj: TLinkLabel; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure LinkLabel_DisableAlign(AObj: TLinkLabel); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure LinkLabel_EnableAlign(AObj: TLinkLabel); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function LinkLabel_FindChildControl(AObj: TLinkLabel; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure LinkLabel_FlipChildren(AObj: TLinkLabel; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure LinkLabel_InsertControl(AObj: TLinkLabel; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure LinkLabel_Invalidate(AObj: TLinkLabel); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure LinkLabel_PaintTo(AObj: TLinkLabel; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure LinkLabel_RemoveControl(AObj: TLinkLabel; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure LinkLabel_Realign(AObj: TLinkLabel); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure LinkLabel_ScrollBy(AObj: TLinkLabel; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure LinkLabel_SetBounds(AObj: TLinkLabel; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure LinkLabel_Update(AObj: TLinkLabel); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure LinkLabel_UpdateControlState(AObj: TLinkLabel); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure LinkLabel_BringToFront(AObj: TLinkLabel); stdcall;
@@ -138,6 +188,11 @@ end;
 function LinkLabel_GetTextLen(AObj: TLinkLabel): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure LinkLabel_SetTextBuf(AObj: TLinkLabel; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function LinkLabel_FindComponent(AObj: TLinkLabel; AName: PChar): TComponent; stdcall;
@@ -519,6 +574,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure LinkLabel_SetOnGesture(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure LinkLabel_SetOnMouseActivate(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure LinkLabel_SetOnMouseDown(AObj: TLinkLabel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -603,6 +682,11 @@ begin
   TEventClass.Add(AObj, geLinkClick, AEventId);
 end;
 
+function LinkLabel_GetDockClientCount(AObj: TLinkLabel): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function LinkLabel_GetDockSite(AObj: TLinkLabel): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -621,6 +705,21 @@ end;
 procedure LinkLabel_SetDoubleBuffered(AObj: TLinkLabel; AValue: LongBool); stdcall;
 begin
   AObj.DoubleBuffered := AValue;
+end;
+
+function LinkLabel_GetAlignDisabled(AObj: TLinkLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function LinkLabel_GetMouseInClient(AObj: TLinkLabel): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function LinkLabel_GetVisibleDockClientCount(AObj: TLinkLabel): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function LinkLabel_GetBrush(AObj: TLinkLabel): TBrush; stdcall;
@@ -708,6 +807,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure LinkLabel_GetClientOrigin(AObj: TLinkLabel; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure LinkLabel_GetClientRect(AObj: TLinkLabel; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -721,6 +825,26 @@ end;
 procedure LinkLabel_SetClientWidth(AObj: TLinkLabel; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function LinkLabel_GetControlState(AObj: TLinkLabel): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure LinkLabel_SetControlState(AObj: TLinkLabel; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function LinkLabel_GetControlStyle(AObj: TLinkLabel): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure LinkLabel_SetControlStyle(AObj: TLinkLabel; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function LinkLabel_GetExplicitLeft(AObj: TLinkLabel): Integer; stdcall;
@@ -898,6 +1022,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function LinkLabel_GetDockClients(AObj: TLinkLabel; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function LinkLabel_GetControls(AObj: TLinkLabel; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -917,16 +1046,26 @@ exports
   LinkLabel_Create,
   LinkLabel_Free,
   LinkLabel_CanFocus,
+  LinkLabel_ContainsControl,
+  LinkLabel_ControlAtPos,
+  LinkLabel_DisableAlign,
+  LinkLabel_EnableAlign,
+  LinkLabel_FindChildControl,
   LinkLabel_FlipChildren,
   LinkLabel_Focused,
   LinkLabel_HandleAllocated,
+  LinkLabel_InsertControl,
   LinkLabel_Invalidate,
+  LinkLabel_PaintTo,
+  LinkLabel_RemoveControl,
   LinkLabel_Realign,
   LinkLabel_Repaint,
   LinkLabel_ScaleBy,
+  LinkLabel_ScrollBy,
   LinkLabel_SetBounds,
   LinkLabel_SetFocus,
   LinkLabel_Update,
+  LinkLabel_UpdateControlState,
   LinkLabel_BringToFront,
   LinkLabel_ClientToScreen,
   LinkLabel_ClientToParent,
@@ -941,6 +1080,7 @@ exports
   LinkLabel_Show,
   LinkLabel_GetTextBuf,
   LinkLabel_GetTextLen,
+  LinkLabel_SetTextBuf,
   LinkLabel_FindComponent,
   LinkLabel_GetNamePath,
   LinkLabel_Assign,
@@ -1007,6 +1147,8 @@ exports
   LinkLabel_SetOnDragOver,
   LinkLabel_SetOnEndDock,
   LinkLabel_SetOnEndDrag,
+  LinkLabel_SetOnGesture,
+  LinkLabel_SetOnMouseActivate,
   LinkLabel_SetOnMouseDown,
   LinkLabel_SetOnMouseEnter,
   LinkLabel_SetOnMouseLeave,
@@ -1014,10 +1156,14 @@ exports
   LinkLabel_SetOnMouseUp,
   LinkLabel_SetOnStartDock,
   LinkLabel_SetOnLinkClick,
+  LinkLabel_GetDockClientCount,
   LinkLabel_GetDockSite,
   LinkLabel_SetDockSite,
   LinkLabel_GetDoubleBuffered,
   LinkLabel_SetDoubleBuffered,
+  LinkLabel_GetAlignDisabled,
+  LinkLabel_GetMouseInClient,
+  LinkLabel_GetVisibleDockClientCount,
   LinkLabel_GetBrush,
   LinkLabel_GetControlCount,
   LinkLabel_GetHandle,
@@ -1035,9 +1181,14 @@ exports
   LinkLabel_SetBoundsRect,
   LinkLabel_GetClientHeight,
   LinkLabel_SetClientHeight,
+  LinkLabel_GetClientOrigin,
   LinkLabel_GetClientRect,
   LinkLabel_GetClientWidth,
   LinkLabel_SetClientWidth,
+  LinkLabel_GetControlState,
+  LinkLabel_SetControlState,
+  LinkLabel_GetControlStyle,
+  LinkLabel_SetControlStyle,
   LinkLabel_GetExplicitLeft,
   LinkLabel_GetExplicitTop,
   LinkLabel_GetExplicitWidth,
@@ -1073,6 +1224,7 @@ exports
   LinkLabel_SetName,
   LinkLabel_GetTag,
   LinkLabel_SetTag,
+  LinkLabel_GetDockClients,
   LinkLabel_GetControls,
   LinkLabel_GetComponents,
   LinkLabel_StaticClassType;

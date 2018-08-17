@@ -105,6 +105,11 @@ begin
   Result :=  AObj.GetTextLen;
 end;
 
+procedure Image_SetTextBuf(AObj: TImage; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
 function Image_FindComponent(AObj: TImage; AName: PChar): TComponent; stdcall;
 begin
   Result :=  AObj.FindComponent(AName);
@@ -419,6 +424,30 @@ begin
   TEventClass.Add(AObj, geEndDrag, AEventId);
 end;
 
+procedure Image_SetOnGesture(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
+procedure Image_SetOnMouseActivate(AObj: TImage; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure Image_SetOnMouseDown(AObj: TImage; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -531,6 +560,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure Image_GetClientOrigin(AObj: TImage; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure Image_GetClientRect(AObj: TImage; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -544,6 +578,26 @@ end;
 procedure Image_SetClientWidth(AObj: TImage; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function Image_GetControlState(AObj: TImage): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure Image_SetControlState(AObj: TImage; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function Image_GetControlStyle(AObj: TImage): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure Image_SetControlStyle(AObj: TImage; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function Image_GetExplicitLeft(AObj: TImage): Integer; stdcall;
@@ -752,6 +806,7 @@ exports
   Image_Update,
   Image_GetTextBuf,
   Image_GetTextLen,
+  Image_SetTextBuf,
   Image_FindComponent,
   Image_GetNamePath,
   Image_Assign,
@@ -805,6 +860,8 @@ exports
   Image_SetOnDragOver,
   Image_SetOnEndDock,
   Image_SetOnEndDrag,
+  Image_SetOnGesture,
+  Image_SetOnMouseActivate,
   Image_SetOnMouseDown,
   Image_SetOnMouseEnter,
   Image_SetOnMouseLeave,
@@ -819,9 +876,14 @@ exports
   Image_SetBoundsRect,
   Image_GetClientHeight,
   Image_SetClientHeight,
+  Image_GetClientOrigin,
   Image_GetClientRect,
   Image_GetClientWidth,
   Image_SetClientWidth,
+  Image_GetControlState,
+  Image_SetControlState,
+  Image_GetControlStyle,
+  Image_SetControlStyle,
   Image_GetExplicitLeft,
   Image_GetExplicitTop,
   Image_GetExplicitWidth,

@@ -23,13 +23,19 @@ begin
   TPicture.RegisterFileFormat(TPngImage.GetFileExtensions, rsPortableNetworkGraphic, TPngImage);
 end;
 
+
+// SysLocale  14byte
+procedure DSysLocale(var AInfo: TSysLocale); extdecl;
+begin
+  AInfo := SysLocale;
+end;
+
+
 // TApplication
 function Application_Instance: TApplication; extdecl;
 begin
   Result := Application;
 end;
-
-
 
 {$IFDEF WINDOWS}
 // 当IsLibrary = True时，是不会调用WidgetSet.CreateAppHandle方法
@@ -721,6 +727,109 @@ begin
   Application.Scaled := AVal;
 end;
 
+
+{$IFDEF WINDOWS}
+// 路径合并
+function PathCombine(A1, A2: string): string; inline;
+begin
+  if A1[Length(A1)] <> PathDelim then
+    A1 := A1 + PathDelim;
+  if (Length(A2) > 0) and (A2[1] = PathDelim) then
+    Delete(A2, 1, 1);
+  Result := A1 + A2;
+end;
+
+// 创建URL快捷方式
+procedure DCreateURLShortCut(ADestPath, AShortCutName, AURL: PChar); extdecl;
+var
+  Ini: TIniFile;
+begin
+  Ini := TIniFile.Create(PathCombine(ADestPath, AShortCutName) + '.url');
+  try
+    Ini.WriteString('{000214A0-0000-0000-C000-000000000046}', 'Prop3', '19,2');
+    Ini.WriteString('InternetShortcut', 'URL', AURL);
+  finally
+    Ini.Free;
+  end;
+end;
+
+// 创建快捷方式
+function DCreateShortCut(ADestPath, AShortCutName, ASrcFileName, AIconFileName, ADescription, ACmdArgs: PChar): LongBool; extdecl;
+var
+  LObject : IUnknown;
+  LPLink : IShellLink;
+  LPPFile : IPersistFile;
+  LinkFilename : WideString;
+begin
+  CoInitializeEx(nil, 0);
+  try
+    LObject := CreateComObject(CLSID_ShellLink);
+    LPLink := LObject as IShellLink;
+    LPPFile := LObject as IPersistFile;
+    LPLink.SetPath(ASrcFileName);
+    LPLink.SetWorkingDirectory(PChar(ExtractFilePath(ASrcFileName)));
+    LPLink.SetDescription(ADescription);
+    if AIconFileName = '' then
+      LPLink.SetIconLocation(ASrcFileName, 0)
+    else LPLink.SetIconLocation(AIconFileName, 0);
+    LPLink.SetArguments(ACmdArgs);
+    LinkFilename := WideString(PathCombine(ADestPath, AShortCutName) + '.lnk');
+    Result := LPPFile.Save(PWideChar(LinkFilename), FALSE) = S_OK;
+  finally
+    CoUninitialize;
+  end;
+end;
+
+{$ENDIF}
+
+
+// 属性设置，这里主要提供给多语言使用
+procedure DSetPropertyValue(Instance: TObject; PropName, Value: PChar); extdecl;
+var
+  LPropInfo: PPropInfo;
+begin
+  LPropInfo := GetPropInfo(Instance, PropName);
+  if LPropInfo <> nil then
+    SetStrProp(Instance, LPropInfo, Value);
+end;
+
+procedure DSetPropertySecValue(Instance: TObject; PropName, SecPropName, Value: PChar); extdecl;
+type
+  TCallIndexGetClassProc = function(AData: Pointer; AIndex: Integer): Pointer;
+var
+  LPropInfo: PPropInfo;
+  LObj: TObject;
+  LPropName: string;
+  LP, LIndex: Integer;
+begin
+  LPropName := PropName;
+  LIndex := -1;
+  LP := LPropName.IndexOf('[');
+  if LP > 0 then
+  begin
+    LIndex := StrToIntDef(LPropName.Substring(LP + 1, LPropName.IndexOf(']') - LP - 1), -1);
+    LPropName := LPropName.Substring(0, LP);
+  end;
+  LPropInfo := GetPropInfo(Instance, LPropName);
+  if LPropInfo <> nil then
+  begin
+    LObj := GetObjectProp(Instance, LPropInfo);
+    if LObj <> nil then
+    begin
+      if LIndex <> -1 then
+      begin
+        if LPropInfo^.PropType^.Kind = tkClass then
+        begin
+          if (LObj is TListColumns) and (LIndex >= 0) and (LIndex < TListColumns(LObj).Count) and string(SecPropName).Equals('Caption') then
+            TListColumns(LObj)[LIndex].Caption := Value;
+        end;
+      end else
+        DSetPropertyValue(LObj, SecPropName, Value);
+    end;
+  end;
+end;
+
+
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -780,6 +889,9 @@ exports
   // 导出动态调用的
   MySyscall,
 
+  // SysLocaled
+  DSysLocale,
+
   // TApplication
   Application_Instance,
   Application_CreateForm,
@@ -832,6 +944,16 @@ exports
   DSelectDirectory2,
   DInputBox,
   DInputQuery,
+
+{$IFDEF WINDOWS}
+  // ShortCut
+  DCreateURLShortCut,
+  DCreateShortCut,
+{$ENDIF}
+
+  // SetProperty
+  DSetPropertyValue,
+  DSetPropertySecValue,
 
   // TMemoryStream
   MemoryStream_Write,

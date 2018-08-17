@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function RadioButton_ContainsControl(AObj: TRadioButton; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function RadioButton_ControlAtPos(AObj: TRadioButton; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure RadioButton_DisableAlign(AObj: TRadioButton); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure RadioButton_EnableAlign(AObj: TRadioButton); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function RadioButton_FindChildControl(AObj: TRadioButton; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure RadioButton_FlipChildren(AObj: TRadioButton; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure RadioButton_InsertControl(AObj: TRadioButton; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure RadioButton_Invalidate(AObj: TRadioButton); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure RadioButton_PaintTo(AObj: TRadioButton; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure RadioButton_RemoveControl(AObj: TRadioButton; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure RadioButton_Realign(AObj: TRadioButton); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure RadioButton_ScrollBy(AObj: TRadioButton; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure RadioButton_SetBounds(AObj: TRadioButton; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure RadioButton_Update(AObj: TRadioButton); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure RadioButton_UpdateControlState(AObj: TRadioButton); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure RadioButton_BringToFront(AObj: TRadioButton); stdcall;
@@ -138,6 +188,11 @@ end;
 function RadioButton_GetTextLen(AObj: TRadioButton): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure RadioButton_SetTextBuf(AObj: TRadioButton; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function RadioButton_FindComponent(AObj: TRadioButton; AName: PChar): TComponent; stdcall;
@@ -599,6 +654,18 @@ begin
   TEventClass.Add(AObj, geKeyUp, AEventId);
 end;
 
+procedure RadioButton_SetOnMouseActivate(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
+end;
+
 procedure RadioButton_SetOnMouseDown(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -671,6 +738,11 @@ begin
   TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
+function RadioButton_GetDockClientCount(AObj: TRadioButton): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function RadioButton_GetDockSite(AObj: TRadioButton): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -679,6 +751,21 @@ end;
 procedure RadioButton_SetDockSite(AObj: TRadioButton; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function RadioButton_GetAlignDisabled(AObj: TRadioButton): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function RadioButton_GetMouseInClient(AObj: TRadioButton): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function RadioButton_GetVisibleDockClientCount(AObj: TRadioButton): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function RadioButton_GetBrush(AObj: TRadioButton): TBrush; stdcall;
@@ -736,6 +823,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure RadioButton_GetClientOrigin(AObj: TRadioButton; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure RadioButton_GetClientRect(AObj: TRadioButton; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -749,6 +841,26 @@ end;
 procedure RadioButton_SetClientWidth(AObj: TRadioButton; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function RadioButton_GetControlState(AObj: TRadioButton): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure RadioButton_SetControlState(AObj: TRadioButton; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function RadioButton_GetControlStyle(AObj: TRadioButton): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure RadioButton_SetControlStyle(AObj: TRadioButton; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function RadioButton_GetExplicitLeft(AObj: TRadioButton): Integer; stdcall;
@@ -784,6 +896,18 @@ end;
 procedure RadioButton_SetParent(AObj: TRadioButton; AValue: TWinControl); stdcall;
 begin
   AObj.Parent := AValue;
+end;
+
+procedure RadioButton_SetOnGesture(AObj: TRadioButton; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
 end;
 
 function RadioButton_GetAlignWithMargins(AObj: TRadioButton): LongBool; stdcall;
@@ -916,6 +1040,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function RadioButton_GetDockClients(AObj: TRadioButton; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function RadioButton_GetControls(AObj: TRadioButton; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -935,16 +1064,26 @@ exports
   RadioButton_Create,
   RadioButton_Free,
   RadioButton_CanFocus,
+  RadioButton_ContainsControl,
+  RadioButton_ControlAtPos,
+  RadioButton_DisableAlign,
+  RadioButton_EnableAlign,
+  RadioButton_FindChildControl,
   RadioButton_FlipChildren,
   RadioButton_Focused,
   RadioButton_HandleAllocated,
+  RadioButton_InsertControl,
   RadioButton_Invalidate,
+  RadioButton_PaintTo,
+  RadioButton_RemoveControl,
   RadioButton_Realign,
   RadioButton_Repaint,
   RadioButton_ScaleBy,
+  RadioButton_ScrollBy,
   RadioButton_SetBounds,
   RadioButton_SetFocus,
   RadioButton_Update,
+  RadioButton_UpdateControlState,
   RadioButton_BringToFront,
   RadioButton_ClientToScreen,
   RadioButton_ClientToParent,
@@ -959,6 +1098,7 @@ exports
   RadioButton_Show,
   RadioButton_GetTextBuf,
   RadioButton_GetTextLen,
+  RadioButton_SetTextBuf,
   RadioButton_FindComponent,
   RadioButton_GetNamePath,
   RadioButton_Assign,
@@ -1034,14 +1174,19 @@ exports
   RadioButton_SetOnKeyDown,
   RadioButton_SetOnKeyPress,
   RadioButton_SetOnKeyUp,
+  RadioButton_SetOnMouseActivate,
   RadioButton_SetOnMouseDown,
   RadioButton_SetOnMouseEnter,
   RadioButton_SetOnMouseLeave,
   RadioButton_SetOnMouseMove,
   RadioButton_SetOnMouseUp,
   RadioButton_SetOnStartDock,
+  RadioButton_GetDockClientCount,
   RadioButton_GetDockSite,
   RadioButton_SetDockSite,
+  RadioButton_GetAlignDisabled,
+  RadioButton_GetMouseInClient,
+  RadioButton_GetVisibleDockClientCount,
   RadioButton_GetBrush,
   RadioButton_GetControlCount,
   RadioButton_GetHandle,
@@ -1053,9 +1198,14 @@ exports
   RadioButton_SetBoundsRect,
   RadioButton_GetClientHeight,
   RadioButton_SetClientHeight,
+  RadioButton_GetClientOrigin,
   RadioButton_GetClientRect,
   RadioButton_GetClientWidth,
   RadioButton_SetClientWidth,
+  RadioButton_GetControlState,
+  RadioButton_SetControlState,
+  RadioButton_GetControlStyle,
+  RadioButton_SetControlStyle,
   RadioButton_GetExplicitLeft,
   RadioButton_GetExplicitTop,
   RadioButton_GetExplicitWidth,
@@ -1063,6 +1213,7 @@ exports
   RadioButton_GetFloating,
   RadioButton_GetParent,
   RadioButton_SetParent,
+  RadioButton_SetOnGesture,
   RadioButton_GetAlignWithMargins,
   RadioButton_SetAlignWithMargins,
   RadioButton_GetLeft,
@@ -1089,6 +1240,7 @@ exports
   RadioButton_SetName,
   RadioButton_GetTag,
   RadioButton_SetTag,
+  RadioButton_GetDockClients,
   RadioButton_GetControls,
   RadioButton_GetComponents,
   RadioButton_StaticClassType;

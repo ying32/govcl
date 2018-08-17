@@ -45,6 +45,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ListBox_ContainsControl(AObj: TListBox; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ListBox_ControlAtPos(AObj: TListBox; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure ListBox_DisableAlign(AObj: TListBox); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ListBox_EnableAlign(AObj: TListBox); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function ListBox_FindChildControl(AObj: TListBox; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ListBox_FlipChildren(AObj: TListBox; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -60,9 +85,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ListBox_InsertControl(AObj: TListBox; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ListBox_Invalidate(AObj: TListBox); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure ListBox_PaintTo(AObj: TListBox; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure ListBox_RemoveControl(AObj: TListBox; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ListBox_Realign(AObj: TListBox); stdcall;
@@ -80,6 +120,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure ListBox_ScrollBy(AObj: TListBox; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure ListBox_SetBounds(AObj: TListBox; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -93,6 +138,11 @@ end;
 procedure ListBox_Update(AObj: TListBox); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure ListBox_UpdateControlState(AObj: TListBox); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure ListBox_BringToFront(AObj: TListBox); stdcall;
@@ -163,6 +213,11 @@ end;
 function ListBox_GetTextLen(AObj: TListBox): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ListBox_SetTextBuf(AObj: TListBox; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ListBox_FindComponent(AObj: TListBox; AName: PChar): TComponent; stdcall;
@@ -594,6 +649,42 @@ begin
   TEventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure ListBox_SetOnData(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnData := nil;
+    TEventClass.Remove(AObj, geListBoxData);
+    Exit;
+  end;
+  AObj.OnData := TEventClass.ListBoxOnData;
+  TEventClass.Add(AObj, geListBoxData, AEventId);
+end;
+
+procedure ListBox_SetOnDataFind(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataFind := nil;
+    TEventClass.Remove(AObj, geListBoxDataFind);
+    Exit;
+  end;
+  AObj.OnDataFind := TEventClass.ListBoxOnDataFind;
+  TEventClass.Add(AObj, geListBoxDataFind, AEventId);
+end;
+
+procedure ListBox_SetOnDataObject(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDataObject := nil;
+    TEventClass.Remove(AObj, geListBoxDataObject);
+    Exit;
+  end;
+  AObj.OnDataObject := TEventClass.ListBoxOnDataObject;
+  TEventClass.Add(AObj, geListBoxDataObject, AEventId);
+end;
+
 procedure ListBox_SetOnDblClick(AObj: TListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -690,6 +781,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure ListBox_SetOnGesture(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure ListBox_SetOnKeyDown(AObj: TListBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -724,6 +827,30 @@ begin
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
   TEventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure ListBox_SetOnMeasureItem(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMeasureItem := nil;
+    TEventClass.Remove(AObj, geListBoxMeasureItem);
+    Exit;
+  end;
+  AObj.OnMeasureItem := TEventClass.ListBoxOnMeasureItem;
+  TEventClass.Add(AObj, geListBoxMeasureItem, AEventId);
+end;
+
+procedure ListBox_SetOnMouseActivate(AObj: TListBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseActivate := nil;
+    TEventClass.Remove(AObj, geMouseActivate);
+    Exit;
+  end;
+  AObj.OnMouseActivate := TEventClass.OnMouseActivate;
+  TEventClass.Add(AObj, geMouseActivate, AEventId);
 end;
 
 procedure ListBox_SetOnMouseDown(AObj: TListBox; AEventId: NativeUInt); stdcall;
@@ -828,6 +955,11 @@ begin
   AObj.ItemIndex := AValue;
 end;
 
+function ListBox_GetDockClientCount(AObj: TListBox): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ListBox_GetDockSite(AObj: TListBox): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -836,6 +968,21 @@ end;
 procedure ListBox_SetDockSite(AObj: TListBox; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ListBox_GetAlignDisabled(AObj: TListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function ListBox_GetMouseInClient(AObj: TListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function ListBox_GetVisibleDockClientCount(AObj: TListBox): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ListBox_GetBrush(AObj: TListBox): TBrush; stdcall;
@@ -903,6 +1050,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ListBox_GetClientOrigin(AObj: TListBox; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ListBox_GetClientRect(AObj: TListBox; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -916,6 +1068,26 @@ end;
 procedure ListBox_SetClientWidth(AObj: TListBox; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ListBox_GetControlState(AObj: TListBox): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ListBox_SetControlState(AObj: TListBox; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ListBox_GetControlStyle(AObj: TListBox): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ListBox_SetControlStyle(AObj: TListBox; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ListBox_GetExplicitLeft(AObj: TListBox): Integer; stdcall;
@@ -1093,6 +1265,11 @@ begin
   AObj.Selected[Index] := AValue;
 end;
 
+function ListBox_GetDockClients(AObj: TListBox; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ListBox_GetControls(AObj: TListBox; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -1117,16 +1294,26 @@ exports
   ListBox_DeleteSelected,
   ListBox_SelectAll,
   ListBox_CanFocus,
+  ListBox_ContainsControl,
+  ListBox_ControlAtPos,
+  ListBox_DisableAlign,
+  ListBox_EnableAlign,
+  ListBox_FindChildControl,
   ListBox_FlipChildren,
   ListBox_Focused,
   ListBox_HandleAllocated,
+  ListBox_InsertControl,
   ListBox_Invalidate,
+  ListBox_PaintTo,
+  ListBox_RemoveControl,
   ListBox_Realign,
   ListBox_Repaint,
   ListBox_ScaleBy,
+  ListBox_ScrollBy,
   ListBox_SetBounds,
   ListBox_SetFocus,
   ListBox_Update,
+  ListBox_UpdateControlState,
   ListBox_BringToFront,
   ListBox_ClientToScreen,
   ListBox_ClientToParent,
@@ -1141,6 +1328,7 @@ exports
   ListBox_Show,
   ListBox_GetTextBuf,
   ListBox_GetTextLen,
+  ListBox_SetTextBuf,
   ListBox_FindComponent,
   ListBox_GetNamePath,
   ListBox_Assign,
@@ -1224,6 +1412,9 @@ exports
   ListBox_SetStyleElements,
   ListBox_SetOnClick,
   ListBox_SetOnContextPopup,
+  ListBox_SetOnData,
+  ListBox_SetOnDataFind,
+  ListBox_SetOnDataObject,
   ListBox_SetOnDblClick,
   ListBox_SetOnDragDrop,
   ListBox_SetOnDragOver,
@@ -1232,9 +1423,12 @@ exports
   ListBox_SetOnEndDrag,
   ListBox_SetOnEnter,
   ListBox_SetOnExit,
+  ListBox_SetOnGesture,
   ListBox_SetOnKeyDown,
   ListBox_SetOnKeyPress,
   ListBox_SetOnKeyUp,
+  ListBox_SetOnMeasureItem,
+  ListBox_SetOnMouseActivate,
   ListBox_SetOnMouseDown,
   ListBox_SetOnMouseEnter,
   ListBox_SetOnMouseLeave,
@@ -1247,8 +1441,12 @@ exports
   ListBox_GetSelCount,
   ListBox_GetItemIndex,
   ListBox_SetItemIndex,
+  ListBox_GetDockClientCount,
   ListBox_GetDockSite,
   ListBox_SetDockSite,
+  ListBox_GetAlignDisabled,
+  ListBox_GetMouseInClient,
+  ListBox_GetVisibleDockClientCount,
   ListBox_GetBrush,
   ListBox_GetControlCount,
   ListBox_GetHandle,
@@ -1262,9 +1460,14 @@ exports
   ListBox_SetBoundsRect,
   ListBox_GetClientHeight,
   ListBox_SetClientHeight,
+  ListBox_GetClientOrigin,
   ListBox_GetClientRect,
   ListBox_GetClientWidth,
   ListBox_SetClientWidth,
+  ListBox_GetControlState,
+  ListBox_SetControlState,
+  ListBox_GetControlStyle,
+  ListBox_SetControlStyle,
   ListBox_GetExplicitLeft,
   ListBox_GetExplicitTop,
   ListBox_GetExplicitWidth,
@@ -1300,6 +1503,7 @@ exports
   ListBox_SetTag,
   ListBox_GetSelected,
   ListBox_SetSelected,
+  ListBox_GetDockClients,
   ListBox_GetControls,
   ListBox_GetComponents,
   ListBox_StaticClassType;

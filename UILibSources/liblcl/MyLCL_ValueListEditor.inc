@@ -40,6 +40,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function ValueListEditor_ContainsControl(AObj: TValueListEditor; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ValueListEditor_ControlAtPos(AObj: TValueListEditor; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure ValueListEditor_DisableAlign(AObj: TValueListEditor); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ValueListEditor_EnableAlign(AObj: TValueListEditor); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function ValueListEditor_FindChildControl(AObj: TValueListEditor; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure ValueListEditor_FlipChildren(AObj: TValueListEditor; AllLevels: LongBool); extdecl;
 begin
   AObj.FlipChildren(AllLevels);
@@ -55,9 +80,19 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure ValueListEditor_InsertControl(AObj: TValueListEditor; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure ValueListEditor_Invalidate(AObj: TValueListEditor); extdecl;
 begin
   AObj.Invalidate;
+end;
+
+procedure ValueListEditor_RemoveControl(AObj: TValueListEditor; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure ValueListEditor_Realign(AObj: TValueListEditor); extdecl;
@@ -73,6 +108,11 @@ end;
 procedure ValueListEditor_ScaleBy(AObj: TValueListEditor; M: Integer; D: Integer); extdecl;
 begin
   AObj.ScaleBy(M, D);
+end;
+
+procedure ValueListEditor_ScrollBy(AObj: TValueListEditor; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
 end;
 
 procedure ValueListEditor_SetBounds(AObj: TValueListEditor; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
@@ -153,6 +193,11 @@ end;
 function ValueListEditor_GetTextLen(AObj: TValueListEditor): Integer; extdecl;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure ValueListEditor_SetTextBuf(AObj: TValueListEditor; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function ValueListEditor_FindComponent(AObj: TValueListEditor; AName: PChar): TComponent; extdecl;
@@ -897,6 +942,11 @@ begin
   AObj.TabStop := AValue;
 end;
 
+function ValueListEditor_GetDockClientCount(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function ValueListEditor_GetDockSite(AObj: TValueListEditor): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -905,6 +955,11 @@ end;
 procedure ValueListEditor_SetDockSite(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ValueListEditor_GetVisibleDockClientCount(AObj: TValueListEditor): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function ValueListEditor_GetBrush(AObj: TValueListEditor): TBrush; extdecl;
@@ -972,6 +1027,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure ValueListEditor_GetClientOrigin(AObj: TValueListEditor; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure ValueListEditor_GetClientRect(AObj: TValueListEditor; var Result: TRect); extdecl;
 begin
   Result :=  AObj.ClientRect;
@@ -985,6 +1045,26 @@ end;
 procedure ValueListEditor_SetClientWidth(AObj: TValueListEditor; AValue: Integer); extdecl;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function ValueListEditor_GetControlState(AObj: TValueListEditor): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ValueListEditor_SetControlState(AObj: TValueListEditor; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ValueListEditor_GetControlStyle(AObj: TValueListEditor): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ValueListEditor_SetControlStyle(AObj: TValueListEditor; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function ValueListEditor_GetFloating(AObj: TValueListEditor): LongBool; extdecl;
@@ -1142,6 +1222,11 @@ begin
   AObj.RowHeights[Index] := AValue;
 end;
 
+function ValueListEditor_GetDockClients(AObj: TValueListEditor; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function ValueListEditor_GetControls(AObj: TValueListEditor; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.Controls[Index];
@@ -1165,13 +1250,21 @@ exports
   ValueListEditor_MouseToCell,
   ValueListEditor_MouseCoord,
   ValueListEditor_CanFocus,
+  ValueListEditor_ContainsControl,
+  ValueListEditor_ControlAtPos,
+  ValueListEditor_DisableAlign,
+  ValueListEditor_EnableAlign,
+  ValueListEditor_FindChildControl,
   ValueListEditor_FlipChildren,
   ValueListEditor_Focused,
   ValueListEditor_HandleAllocated,
+  ValueListEditor_InsertControl,
   ValueListEditor_Invalidate,
+  ValueListEditor_RemoveControl,
   ValueListEditor_Realign,
   ValueListEditor_Repaint,
   ValueListEditor_ScaleBy,
+  ValueListEditor_ScrollBy,
   ValueListEditor_SetBounds,
   ValueListEditor_SetFocus,
   ValueListEditor_Update,
@@ -1188,6 +1281,7 @@ exports
   ValueListEditor_Show,
   ValueListEditor_GetTextBuf,
   ValueListEditor_GetTextLen,
+  ValueListEditor_SetTextBuf,
   ValueListEditor_FindComponent,
   ValueListEditor_GetNamePath,
   ValueListEditor_Assign,
@@ -1300,8 +1394,10 @@ exports
   ValueListEditor_SetTopRow,
   ValueListEditor_GetTabStop,
   ValueListEditor_SetTabStop,
+  ValueListEditor_GetDockClientCount,
   ValueListEditor_GetDockSite,
   ValueListEditor_SetDockSite,
+  ValueListEditor_GetVisibleDockClientCount,
   ValueListEditor_GetBrush,
   ValueListEditor_GetControlCount,
   ValueListEditor_GetHandle,
@@ -1315,9 +1411,14 @@ exports
   ValueListEditor_SetBoundsRect,
   ValueListEditor_GetClientHeight,
   ValueListEditor_SetClientHeight,
+  ValueListEditor_GetClientOrigin,
   ValueListEditor_GetClientRect,
   ValueListEditor_GetClientWidth,
   ValueListEditor_SetClientWidth,
+  ValueListEditor_GetControlState,
+  ValueListEditor_SetControlState,
+  ValueListEditor_GetControlStyle,
+  ValueListEditor_SetControlStyle,
   ValueListEditor_GetFloating,
   ValueListEditor_GetParent,
   ValueListEditor_SetParent,
@@ -1349,6 +1450,7 @@ exports
   ValueListEditor_SetColWidths,
   ValueListEditor_GetRowHeights,
   ValueListEditor_SetRowHeights,
+  ValueListEditor_GetDockClients,
   ValueListEditor_GetControls,
   ValueListEditor_GetComponents,
   ValueListEditor_StaticClassType;

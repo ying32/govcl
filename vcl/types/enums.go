@@ -1796,3 +1796,90 @@ const (
 	TsTrackMove
 	TsTrackEnd
 )
+
+type TControlState uint32
+
+const (
+	CsLButtonDown = iota + 0
+	CsClicked
+	CsPalette
+	CsReadingState
+	CsAlignmentNeeded
+	CsFocusing
+	CsCreating
+	CsPaintCopy
+	CsCustomPaint
+	CsDestroyingHandle
+	CsDocking
+	CsDesignerHide
+	CsPanning
+	CsRecreating
+	CsAligning
+	CsGlassPaint
+	CsPrintClient
+)
+
+/* New TControlStyles: csNeedsBorderPaint and csParentBackground.
+
+   These two ControlStyles are only applicable when Themes are Enabled
+   in applications on Windows XP. csNeedsBorderPaint causes the
+   ThemeServices to paint the border of a control with the current theme.
+   csParentBackground causes the parent to draw its background into the
+   Control's background; this is useful for controls which need to show their
+   parent's theme elements, such as a TPanel or TFrame that appear on a
+   TPageControl. TWinControl introduces a protected ParentBackground
+   property which includes/excludes the csParentBackground control style.
+*/
+
+type TControlStyle uint32
+
+const (
+	CsAcceptsControls = iota + 0
+	CsCaptureMouse
+	CsDesignInteractive
+	CsClickEvents
+	CsFramed
+	CsSetCaption
+	CsOpaque
+	CsDoubleClicks
+	CsFixedWidth
+	CsFixedHeight
+	CsNoDesignVisible
+	CsReplicatable
+	CsNoStdEvents
+	CsDisplayDragImage
+	CsReflector
+	CsActionClient
+	CsMenuEvents
+	CsNeedsBorderPaint
+	CsParentBackground
+	CsPannable
+	CsAlignWithMargins
+	CsGestures
+	CsPaintBlackOpaqueOnGlass
+	CsOverrideStylePaint
+)
+
+type TGestureID int32 // rgiFirst..igiLast;
+
+// Corresponds to GF_* flags
+
+type TInteractiveGestureFlag int32
+
+const (
+	GfBegin = iota + 0
+	GfInertia
+	GfEnd
+)
+
+type TInteractiveGestureFlags uint32
+
+type TMouseActivate int32
+
+const (
+	MaDefault = iota + 0
+	MaActivate
+	MaActivateAndEat
+	MaNoActivate
+	MaNoActivateAndEat
+)

@@ -34,4 +34,25 @@ type TGridCoord struct {
 	Y int32
 }
 
+type TCustomData uintptr
+
 type TGridRect TRect
+
+type TSysLocale struct {
+	//Delphi compat fields
+	DefaultLCID int32
+	PriLangID   int32
+	SubLangID   int32
+
+	// win32 names
+	FarEast    bool
+	MiddleEast bool
+
+	// LCL
+	// real meaning  2: (MBCS: boolean; RightToLeft: Boolean);
+}
+
+type TSmallPoint struct {
+	X int16
+	Y int16
+}

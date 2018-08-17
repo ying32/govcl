@@ -20,6 +20,31 @@ begin
   Result :=  AObj.CanFocus;
 end;
 
+function MonthCalendar_ContainsControl(AObj: TMonthCalendar; Control: TControl): LongBool; stdcall;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function MonthCalendar_ControlAtPos(AObj: TMonthCalendar; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool; AllLevels: LongBool): TControl; stdcall;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls, AllLevels);
+end;
+
+procedure MonthCalendar_DisableAlign(AObj: TMonthCalendar); stdcall;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure MonthCalendar_EnableAlign(AObj: TMonthCalendar); stdcall;
+begin
+  AObj.EnableAlign;
+end;
+
+function MonthCalendar_FindChildControl(AObj: TMonthCalendar; ControlName: PChar): TControl; stdcall;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
 procedure MonthCalendar_FlipChildren(AObj: TMonthCalendar; AllLevels: LongBool); stdcall;
 begin
   AObj.FlipChildren(AllLevels);
@@ -35,9 +60,24 @@ begin
   Result :=  AObj.HandleAllocated;
 end;
 
+procedure MonthCalendar_InsertControl(AObj: TMonthCalendar; AControl: TControl); stdcall;
+begin
+  AObj.InsertControl(AControl);
+end;
+
 procedure MonthCalendar_Invalidate(AObj: TMonthCalendar); stdcall;
 begin
   AObj.Invalidate;
+end;
+
+procedure MonthCalendar_PaintTo(AObj: TMonthCalendar; DC: HDC; X: Integer; Y: Integer); stdcall;
+begin
+  AObj.PaintTo(DC, X, Y);
+end;
+
+procedure MonthCalendar_RemoveControl(AObj: TMonthCalendar; AControl: TControl); stdcall;
+begin
+  AObj.RemoveControl(AControl);
 end;
 
 procedure MonthCalendar_Realign(AObj: TMonthCalendar); stdcall;
@@ -55,6 +95,11 @@ begin
   AObj.ScaleBy(M, D);
 end;
 
+procedure MonthCalendar_ScrollBy(AObj: TMonthCalendar; DeltaX: Integer; DeltaY: Integer); stdcall;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
 procedure MonthCalendar_SetBounds(AObj: TMonthCalendar; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); stdcall;
 begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
@@ -68,6 +113,11 @@ end;
 procedure MonthCalendar_Update(AObj: TMonthCalendar); stdcall;
 begin
   AObj.Update;
+end;
+
+procedure MonthCalendar_UpdateControlState(AObj: TMonthCalendar); stdcall;
+begin
+  AObj.UpdateControlState;
 end;
 
 procedure MonthCalendar_BringToFront(AObj: TMonthCalendar); stdcall;
@@ -138,6 +188,11 @@ end;
 function MonthCalendar_GetTextLen(AObj: TMonthCalendar): Integer; stdcall;
 begin
   Result :=  AObj.GetTextLen;
+end;
+
+procedure MonthCalendar_SetTextBuf(AObj: TMonthCalendar; Buffer: PWideChar); stdcall;
+begin
+  AObj.SetTextBuf(Buffer);
 end;
 
 function MonthCalendar_FindComponent(AObj: TMonthCalendar; AName: PChar): TComponent; stdcall;
@@ -593,6 +648,18 @@ begin
   TEventClass.Add(AObj, geExit, AEventId);
 end;
 
+procedure MonthCalendar_SetOnGesture(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnGesture := nil;
+    TEventClass.Remove(AObj, geGesture);
+    Exit;
+  end;
+  AObj.OnGesture := TEventClass.OnGesture;
+  TEventClass.Add(AObj, geGesture, AEventId);
+end;
+
 procedure MonthCalendar_SetOnKeyDown(AObj: TMonthCalendar; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -665,6 +732,11 @@ begin
   TEventClass.Add(AObj, geStartDock, AEventId);
 end;
 
+function MonthCalendar_GetDockClientCount(AObj: TMonthCalendar): Integer; stdcall;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
 function MonthCalendar_GetDockSite(AObj: TMonthCalendar): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -673,6 +745,21 @@ end;
 procedure MonthCalendar_SetDockSite(AObj: TMonthCalendar; AValue: LongBool); stdcall;
 begin
   AObj.DockSite := AValue;
+end;
+
+function MonthCalendar_GetAlignDisabled(AObj: TMonthCalendar): LongBool; stdcall;
+begin
+  Result :=  AObj.AlignDisabled;
+end;
+
+function MonthCalendar_GetMouseInClient(AObj: TMonthCalendar): LongBool; stdcall;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function MonthCalendar_GetVisibleDockClientCount(AObj: TMonthCalendar): Integer; stdcall;
+begin
+  Result :=  AObj.VisibleDockClientCount;
 end;
 
 function MonthCalendar_GetBrush(AObj: TMonthCalendar): TBrush; stdcall;
@@ -740,6 +827,11 @@ begin
   AObj.ClientHeight := AValue;
 end;
 
+procedure MonthCalendar_GetClientOrigin(AObj: TMonthCalendar; var Result: TPoint); stdcall;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
 procedure MonthCalendar_GetClientRect(AObj: TMonthCalendar; var Result: TRect); stdcall;
 begin
   Result :=  AObj.ClientRect;
@@ -753,6 +845,26 @@ end;
 procedure MonthCalendar_SetClientWidth(AObj: TMonthCalendar; AValue: Integer); stdcall;
 begin
   AObj.ClientWidth := AValue;
+end;
+
+function MonthCalendar_GetControlState(AObj: TMonthCalendar): TControlState; stdcall;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure MonthCalendar_SetControlState(AObj: TMonthCalendar; AValue: TControlState); stdcall;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function MonthCalendar_GetControlStyle(AObj: TMonthCalendar): TControlStyle; stdcall;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure MonthCalendar_SetControlStyle(AObj: TMonthCalendar; AValue: TControlStyle); stdcall;
+begin
+  AObj.ControlStyle := AValue;
 end;
 
 function MonthCalendar_GetExplicitLeft(AObj: TMonthCalendar): Integer; stdcall;
@@ -930,6 +1042,11 @@ begin
   AObj.Tag := AValue;
 end;
 
+function MonthCalendar_GetDockClients(AObj: TMonthCalendar; Index: Integer): TControl; stdcall;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
 function MonthCalendar_GetControls(AObj: TMonthCalendar; Index: Integer): TControl; stdcall;
 begin
   Result :=  AObj.Controls[Index];
@@ -949,16 +1066,26 @@ exports
   MonthCalendar_Create,
   MonthCalendar_Free,
   MonthCalendar_CanFocus,
+  MonthCalendar_ContainsControl,
+  MonthCalendar_ControlAtPos,
+  MonthCalendar_DisableAlign,
+  MonthCalendar_EnableAlign,
+  MonthCalendar_FindChildControl,
   MonthCalendar_FlipChildren,
   MonthCalendar_Focused,
   MonthCalendar_HandleAllocated,
+  MonthCalendar_InsertControl,
   MonthCalendar_Invalidate,
+  MonthCalendar_PaintTo,
+  MonthCalendar_RemoveControl,
   MonthCalendar_Realign,
   MonthCalendar_Repaint,
   MonthCalendar_ScaleBy,
+  MonthCalendar_ScrollBy,
   MonthCalendar_SetBounds,
   MonthCalendar_SetFocus,
   MonthCalendar_Update,
+  MonthCalendar_UpdateControlState,
   MonthCalendar_BringToFront,
   MonthCalendar_ClientToScreen,
   MonthCalendar_ClientToParent,
@@ -973,6 +1100,7 @@ exports
   MonthCalendar_Show,
   MonthCalendar_GetTextBuf,
   MonthCalendar_GetTextLen,
+  MonthCalendar_SetTextBuf,
   MonthCalendar_FindComponent,
   MonthCalendar_GetNamePath,
   MonthCalendar_Assign,
@@ -1051,14 +1179,19 @@ exports
   MonthCalendar_SetOnEndDrag,
   MonthCalendar_SetOnEnter,
   MonthCalendar_SetOnExit,
+  MonthCalendar_SetOnGesture,
   MonthCalendar_SetOnKeyDown,
   MonthCalendar_SetOnKeyPress,
   MonthCalendar_SetOnKeyUp,
   MonthCalendar_SetOnMouseEnter,
   MonthCalendar_SetOnMouseLeave,
   MonthCalendar_SetOnStartDock,
+  MonthCalendar_GetDockClientCount,
   MonthCalendar_GetDockSite,
   MonthCalendar_SetDockSite,
+  MonthCalendar_GetAlignDisabled,
+  MonthCalendar_GetMouseInClient,
+  MonthCalendar_GetVisibleDockClientCount,
   MonthCalendar_GetBrush,
   MonthCalendar_GetControlCount,
   MonthCalendar_GetHandle,
@@ -1072,9 +1205,14 @@ exports
   MonthCalendar_SetBoundsRect,
   MonthCalendar_GetClientHeight,
   MonthCalendar_SetClientHeight,
+  MonthCalendar_GetClientOrigin,
   MonthCalendar_GetClientRect,
   MonthCalendar_GetClientWidth,
   MonthCalendar_SetClientWidth,
+  MonthCalendar_GetControlState,
+  MonthCalendar_SetControlState,
+  MonthCalendar_GetControlStyle,
+  MonthCalendar_SetControlStyle,
   MonthCalendar_GetExplicitLeft,
   MonthCalendar_GetExplicitTop,
   MonthCalendar_GetExplicitWidth,
@@ -1110,6 +1248,7 @@ exports
   MonthCalendar_SetName,
   MonthCalendar_GetTag,
   MonthCalendar_SetTag,
+  MonthCalendar_GetDockClients,
   MonthCalendar_GetControls,
   MonthCalendar_GetComponents,
   MonthCalendar_StaticClassType;
