@@ -55,6 +55,11 @@ begin
   AObj.EndUpdate;
 end;
 
+function HeaderSections_FindItemID(AObj: THeaderSections; ID: Integer): TCollectionItem; extdecl;
+begin
+  Result :=  AObj.FindItemID(ID);
+end;
+
 function HeaderSections_GetNamePath(AObj: THeaderSections): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -126,6 +131,7 @@ exports
   HeaderSections_Clear,
   HeaderSections_Delete,
   HeaderSections_EndUpdate,
+  HeaderSections_FindItemID,
   HeaderSections_GetNamePath,
   HeaderSections_ClassType,
   HeaderSections_ClassName,

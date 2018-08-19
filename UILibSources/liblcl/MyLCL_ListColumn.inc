@@ -140,6 +140,16 @@ begin
   AObj.Width := AValue;
 end;
 
+function ListColumn_GetCollection(AObj: TListColumn): TCollection; extdecl;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure ListColumn_SetCollection(AObj: TListColumn; AValue: TCollection); extdecl;
+begin
+  AObj.Collection := AValue;
+end;
+
 function ListColumn_GetIndex(AObj: TListColumn): Integer; extdecl;
 begin
   Result :=  AObj.Index;
@@ -183,6 +193,8 @@ exports
   ListColumn_SetTag,
   ListColumn_GetWidth,
   ListColumn_SetWidth,
+  ListColumn_GetCollection,
+  ListColumn_SetCollection,
   ListColumn_GetIndex,
   ListColumn_SetIndex,
   ListColumn_StaticClassType;

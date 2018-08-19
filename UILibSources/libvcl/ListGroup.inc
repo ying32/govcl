@@ -145,6 +145,16 @@ begin
   AObj.TitleImage := AValue;
 end;
 
+function ListGroup_GetCollection(AObj: TListGroup): TCollection; stdcall;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure ListGroup_SetCollection(AObj: TListGroup; AValue: TCollection); stdcall;
+begin
+  AObj.Collection := AValue;
+end;
+
 function ListGroup_GetIndex(AObj: TListGroup): Integer; stdcall;
 begin
   Result :=  AObj.Index;
@@ -189,6 +199,8 @@ exports
   ListGroup_SetSubtitle,
   ListGroup_GetTitleImage,
   ListGroup_SetTitleImage,
+  ListGroup_GetCollection,
+  ListGroup_SetCollection,
   ListGroup_GetIndex,
   ListGroup_SetIndex,
   ListGroup_StaticClassType;

@@ -70,9 +70,15 @@ end;
 constructor TGoForm.Create(AOwner: TComponent);
 var
   LPPI: Integer;
-  LR: TRect;
 begin
-  CreateNew(AOwner, 0);
+  try
+    // 这里需要屏蔽对资源查找的错误
+    inherited Create(AOwner);
+  except
+  end;
+  if OldCreateOrder then
+    DoCreate;
+//  Create(AOwner, 0);
   if uInitScale and GetGlobalFormScaled then
   begin
     LPPI := Screen.PixelsPerInch;
@@ -80,6 +86,7 @@ begin
     ClientHeight := MulDiv(ClientHeight, LPPI, 96);
     ScaleForPPI(LPPI);
   end;
+  ControlStyle := ControlStyle + [csPaintBlackOpaqueOnGlass];
 end;
 
 procedure TGoForm.InitializeNewForm;

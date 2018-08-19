@@ -225,6 +225,16 @@ begin
   AObj.Width := AValue;
 end;
 
+function CoolBand_GetCollection(AObj: TCoolBand): TCollection; extdecl;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure CoolBand_SetCollection(AObj: TCoolBand; AValue: TCollection); extdecl;
+begin
+  AObj.Collection := AValue;
+end;
+
 function CoolBand_GetIndex(AObj: TCoolBand): Integer; extdecl;
 begin
   Result :=  AObj.Index;
@@ -285,6 +295,8 @@ exports
   CoolBand_SetVisible,
   CoolBand_GetWidth,
   CoolBand_SetWidth,
+  CoolBand_GetCollection,
+  CoolBand_SetCollection,
   CoolBand_GetIndex,
   CoolBand_SetIndex,
   CoolBand_StaticClassType;

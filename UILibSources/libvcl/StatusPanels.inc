@@ -50,6 +50,11 @@ begin
   AObj.Clear;
 end;
 
+procedure StatusPanels_ClearAndResetID(AObj: TStatusPanels); stdcall;
+begin
+  AObj.ClearAndResetID;
+end;
+
 procedure StatusPanels_Delete(AObj: TStatusPanels; Index: Integer); stdcall;
 begin
   AObj.Delete(Index);
@@ -58,6 +63,11 @@ end;
 procedure StatusPanels_EndUpdate(AObj: TStatusPanels); stdcall;
 begin
   AObj.EndUpdate;
+end;
+
+function StatusPanels_FindItemID(AObj: TStatusPanels; ID: Integer): TCollectionItem; stdcall;
+begin
+  Result :=  AObj.FindItemID(ID);
 end;
 
 function StatusPanels_GetNamePath(AObj: TStatusPanels): PChar; stdcall;
@@ -145,8 +155,10 @@ exports
   StatusPanels_Assign,
   StatusPanels_BeginUpdate,
   StatusPanels_Clear,
+  StatusPanels_ClearAndResetID,
   StatusPanels_Delete,
   StatusPanels_EndUpdate,
+  StatusPanels_FindItemID,
   StatusPanels_GetNamePath,
   StatusPanels_DisposeOf,
   StatusPanels_ClassType,

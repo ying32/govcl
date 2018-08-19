@@ -55,6 +55,11 @@ begin
   AObj.EndUpdate;
 end;
 
+function CoolBands_FindItemID(AObj: TCoolBands; ID: Integer): TCollectionItem; extdecl;
+begin
+  Result :=  AObj.FindItemID(ID);
+end;
+
 function CoolBands_GetNamePath(AObj: TCoolBands): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -131,6 +136,7 @@ exports
   CoolBands_Clear,
   CoolBands_Delete,
   CoolBands_EndUpdate,
+  CoolBands_FindItemID,
   CoolBands_GetNamePath,
   CoolBands_Insert,
   CoolBands_ClassType,

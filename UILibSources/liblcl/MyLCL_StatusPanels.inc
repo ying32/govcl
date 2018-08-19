@@ -55,6 +55,11 @@ begin
   AObj.EndUpdate;
 end;
 
+function StatusPanels_FindItemID(AObj: TStatusPanels; ID: Integer): TCollectionItem; extdecl;
+begin
+  Result :=  AObj.FindItemID(ID);
+end;
+
 function StatusPanels_GetNamePath(AObj: TStatusPanels): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -126,6 +131,7 @@ exports
   StatusPanels_Clear,
   StatusPanels_Delete,
   StatusPanels_EndUpdate,
+  StatusPanels_FindItemID,
   StatusPanels_GetNamePath,
   StatusPanels_ClassType,
   StatusPanels_ClassName,

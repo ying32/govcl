@@ -15,6 +15,9 @@ uses
   System.Classes,
   System.SysUtils,
   System.Types,
+  Vcl.JumpList,
+  System.Win.TaskbarCore,
+  Vcl.Taskbar,
   System.Generics.Collections;
 
 var
@@ -61,7 +64,10 @@ type
               geTreeViewChanging, geTreeViewCancelEdit, geTreeViewAddition, geTreeViewCollapsed, geTreeViewCollapsing,
               geTreeViewDeletion, geTreeViewEdited, geTreeViewEditing, geTreeViewExpanded, geTreeViewExpanding, geTreeViewHint,
 
-              geMenuItemMeasureItem, gePageControlChanging
+              geMenuItemMeasureItem, gePageControlChanging,
+
+              geJumpListItemDeleted, geJumpListListUpdateError, geJumpListItemsLoaded,
+              geTaskbarThumbPreviewRequest, geTaskbarWindowPreviewItemRequest, geTaskbarThumbButtonClick
               );
 
   TEventKey = packed record
@@ -215,7 +221,13 @@ type
     class procedure MenuItemOnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);
     class procedure PageControlOnChanging(Sender: TObject; var AllowChange: Boolean);
 
+    class procedure JumpListOnItemDeleted(Sender: TObject; const Item: TJumpListItem; const CategoryName: string; FromTasks: Boolean);
+    class procedure JumpListOnListUpdateError(Sender: TObject; WinErrorCode: Cardinal; const ErrorDescription: string; var Handled: Boolean);
+    class procedure JumpListOnItemsLoaded(Sender: TObject);
 
+    class procedure TaskbarOnThumbPreviewRequest(Sender: TObject; APreviewHeight, APreviewWidth: Integer; PreviewBitmap: TBitmap);
+    class procedure TaskbarOnWindowPreviewItemRequest(Sender: TObject; var Position: TPoint; PreviewBitmap: TBitmap);
+    class procedure TaskbarOnThumbButtonClick(Sender: TObject; AButtonID: Integer);
     // grid
 
     class procedure OnColumnMoved(Sender: TObject; FromIndex, ToIndex: Longint);
@@ -717,7 +729,41 @@ end;
 
 
 
+class procedure TEventClass.JumpListOnItemDeleted(Sender: TObject;
+  const Item: TJumpListItem; const CategoryName: string; FromTasks: Boolean);
+begin
+  SendEvent(Sender, geJumpListItemDeleted, [Sender, Item, PChar(CategoryName), Integer(FromTasks)]);
+end;
 
+class procedure TEventClass.JumpListOnListUpdateError(Sender: TObject;
+  WinErrorCode: Cardinal; const ErrorDescription: string; var Handled: Boolean);
+begin
+  SendEvent(Sender, geJumpListListUpdateError, [Sender, WinErrorCode, PChar(ErrorDescription), @Handled]);
+end;
+
+class procedure TEventClass.JumpListOnItemsLoaded(Sender: TObject);
+begin
+  SendEvent(Sender, geJumpListItemsLoaded, [Sender]);
+end;
+
+
+class procedure TEventClass.TaskbarOnThumbPreviewRequest(Sender: TObject; APreviewHeight, APreviewWidth: Integer; PreviewBitmap: TBitmap);
+begin
+  SendEvent(Sender, geTaskbarThumbPreviewRequest, [Sender, APreviewHeight, APreviewWidth, PreviewBitmap]);
+end;
+
+class procedure TEventClass.TaskbarOnWindowPreviewItemRequest(Sender: TObject; var Position: TPoint; PreviewBitmap: TBitmap);
+begin
+  SendEvent(Sender, geTaskbarWindowPreviewItemRequest, [Sender, @Position, PreviewBitmap]);
+end;
+
+class procedure TEventClass.TaskbarOnThumbButtonClick(Sender: TObject; AButtonID: Integer);
+begin
+  // 这里要处理下
+  if Sender = nil then
+    Exit;
+  SendEvent(TThumbBarButton(Sender).Collection.Owner, geTaskbarThumbButtonClick, [Sender, AButtonID]);
+end;
 
 // grid
 class procedure TEventClass.OnColumnMoved(Sender: TObject; FromIndex, ToIndex: Longint);

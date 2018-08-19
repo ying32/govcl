@@ -190,6 +190,7 @@ uses
 {$I MyLCL_CoolBar.inc}
 {$I MyLCL_CoolBands.inc}
 {$I MyLCL_CoolBand.inc}
+{$I MyLCL_Collection.inc}
 
 begin
   InitLazarusDef;

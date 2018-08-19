@@ -40,6 +40,11 @@ begin
   AObj.Clear;
 end;
 
+procedure ListColumns_ClearAndResetID(AObj: TListColumns); stdcall;
+begin
+  AObj.ClearAndResetID;
+end;
+
 procedure ListColumns_Delete(AObj: TListColumns; Index: Integer); stdcall;
 begin
   AObj.Delete(Index);
@@ -48,6 +53,11 @@ end;
 procedure ListColumns_EndUpdate(AObj: TListColumns); stdcall;
 begin
   AObj.EndUpdate;
+end;
+
+function ListColumns_FindItemID(AObj: TListColumns; ID: Integer): TCollectionItem; stdcall;
+begin
+  Result :=  AObj.FindItemID(ID);
 end;
 
 function ListColumns_GetNamePath(AObj: TListColumns): PChar; stdcall;
@@ -138,8 +148,10 @@ exports
   ListColumns_Assign,
   ListColumns_BeginUpdate,
   ListColumns_Clear,
+  ListColumns_ClearAndResetID,
   ListColumns_Delete,
   ListColumns_EndUpdate,
+  ListColumns_FindItemID,
   ListColumns_GetNamePath,
   ListColumns_Insert,
   ListColumns_DisposeOf,
