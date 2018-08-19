@@ -132,6 +132,11 @@ func (l *TListColumns) Clear() {
     ListColumns_Clear(l.instance)
 }
 
+// ClearAndResetID
+func (l *TListColumns) ClearAndResetID() {
+    ListColumns_ClearAndResetID(l.instance)
+}
+
 // Delete
 func (l *TListColumns) Delete(Index int32) {
     ListColumns_Delete(l.instance, Index)
@@ -140,6 +145,11 @@ func (l *TListColumns) Delete(Index int32) {
 // EndUpdate
 func (l *TListColumns) EndUpdate() {
     ListColumns_EndUpdate(l.instance)
+}
+
+// FindItemID
+func (l *TListColumns) FindItemID(ID int32) *TCollectionItem {
+    return CollectionItemFromInst(ListColumns_FindItemID(l.instance, ID))
 }
 
 // GetNamePath

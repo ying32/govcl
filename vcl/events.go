@@ -275,3 +275,18 @@ type TTVHintEvent func(sender IObject, node *TTreeNode, hint *string)
 
 // TUDChangingEvent = procedure (Sender: TObject; var AllowChange: Boolean) of object;
 type TUDChangingEvent func(sender IObject, allowChange *bool)
+
+// TItemDeletedByUserEvent = procedure (Sender: TObject; const Item: TJumpListItem; const CategoryName: string; FromTasks: Boolean) of object;
+type TItemDeletedByUserEvent func(sender IObject, item *TJumpListItem, categoryName string, fromTasks bool)
+
+// TCreatingListErrorEvent = procedure (Sender: TObject; WinErrorCode: Cardinal; const ErrorDescription: string; var Handled: Boolean) of object;
+type TCreatingListErrorEvent func(sender IObject, winErrorCode uint32, errorDescription string, handled *bool)
+
+//TThumbPreviewItemRequestEvent = procedure (Sender: TObject; APreviewHeight: Integer; APreviewWidth: Integer; PreviewBitmap: TBitmap) of object;
+type TThumbPreviewItemRequestEvent func(sender IObject, aPreviewHeight, aPreviewWidth int32, previewBitmap *TBitmap)
+
+//TWindowPreviewItemRequestEvent = procedure (Sender: TObject; var Position: TPoint; PreviewBitmap: TBitmap) of object;
+type TWindowPreviewItemRequestEvent func(sender IObject, position *TPoint, previewBitmap *TBitmap)
+
+//TThumbButtonNotifyEvent = procedure (Sender: TObject; AButtonID: Integer) of object;
+type TThumbButtonNotifyEvent func(sender IObject, aButtonID int32)

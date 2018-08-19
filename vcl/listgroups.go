@@ -132,6 +132,11 @@ func (l *TListGroups) Clear() {
     ListGroups_Clear(l.instance)
 }
 
+// ClearAndResetID
+func (l *TListGroups) ClearAndResetID() {
+    ListGroups_ClearAndResetID(l.instance)
+}
+
 // Delete
 func (l *TListGroups) Delete(Index int32) {
     ListGroups_Delete(l.instance, Index)
@@ -140,6 +145,11 @@ func (l *TListGroups) Delete(Index int32) {
 // EndUpdate
 func (l *TListGroups) EndUpdate() {
     ListGroups_EndUpdate(l.instance)
+}
+
+// FindItemID
+func (l *TListGroups) FindItemID(ID int32) *TCollectionItem {
+    return CollectionItemFromInst(ListGroups_FindItemID(l.instance, ID))
 }
 
 // GetNamePath

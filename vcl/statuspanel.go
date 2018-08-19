@@ -233,6 +233,16 @@ func (s *TStatusPanel) SetWidth(value int32) {
     StatusPanel_SetWidth(s.instance, value)
 }
 
+// Collection
+func (s *TStatusPanel) Collection() *TCollection {
+    return CollectionFromInst(StatusPanel_GetCollection(s.instance))
+}
+
+// SetCollection
+func (s *TStatusPanel) SetCollection(value *TCollection) {
+    StatusPanel_SetCollection(s.instance, CheckPtr(value))
+}
+
 // Index
 func (s *TStatusPanel) Index() int32 {
     return StatusPanel_GetIndex(s.instance)

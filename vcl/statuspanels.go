@@ -142,6 +142,11 @@ func (s *TStatusPanels) Clear() {
     StatusPanels_Clear(s.instance)
 }
 
+// ClearAndResetID
+func (s *TStatusPanels) ClearAndResetID() {
+    StatusPanels_ClearAndResetID(s.instance)
+}
+
 // Delete
 func (s *TStatusPanels) Delete(Index int32) {
     StatusPanels_Delete(s.instance, Index)
@@ -150,6 +155,11 @@ func (s *TStatusPanels) Delete(Index int32) {
 // EndUpdate
 func (s *TStatusPanels) EndUpdate() {
     StatusPanels_EndUpdate(s.instance)
+}
+
+// FindItemID
+func (s *TStatusPanels) FindItemID(ID int32) *TCollectionItem {
+    return CollectionItemFromInst(StatusPanels_FindItemID(s.instance, ID))
 }
 
 // GetNamePath

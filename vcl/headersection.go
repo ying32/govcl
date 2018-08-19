@@ -337,6 +337,16 @@ func (h *THeaderSection) SetWidth(value int32) {
     HeaderSection_SetWidth(h.instance, value)
 }
 
+// Collection
+func (h *THeaderSection) Collection() *TCollection {
+    return CollectionFromInst(HeaderSection_GetCollection(h.instance))
+}
+
+// SetCollection
+func (h *THeaderSection) SetCollection(value *TCollection) {
+    HeaderSection_SetCollection(h.instance, CheckPtr(value))
+}
+
 // Index
 func (h *THeaderSection) Index() int32 {
     return HeaderSection_GetIndex(h.instance)

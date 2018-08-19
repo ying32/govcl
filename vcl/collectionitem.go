@@ -171,6 +171,16 @@ func (c *TCollectionItem) ToString() string {
     return CollectionItem_ToString(c.instance)
 }
 
+// Collection
+func (c *TCollectionItem) Collection() *TCollection {
+    return CollectionFromInst(CollectionItem_GetCollection(c.instance))
+}
+
+// SetCollection
+func (c *TCollectionItem) SetCollection(value *TCollection) {
+    CollectionItem_SetCollection(c.instance, CheckPtr(value))
+}
+
 // Index
 func (c *TCollectionItem) Index() int32 {
     return CollectionItem_GetIndex(c.instance)

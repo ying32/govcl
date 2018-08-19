@@ -142,6 +142,11 @@ func (h *THeaderSections) Clear() {
     HeaderSections_Clear(h.instance)
 }
 
+// ClearAndResetID
+func (h *THeaderSections) ClearAndResetID() {
+    HeaderSections_ClearAndResetID(h.instance)
+}
+
 // Delete
 func (h *THeaderSections) Delete(Index int32) {
     HeaderSections_Delete(h.instance, Index)
@@ -150,6 +155,11 @@ func (h *THeaderSections) Delete(Index int32) {
 // EndUpdate
 func (h *THeaderSections) EndUpdate() {
     HeaderSections_EndUpdate(h.instance)
+}
+
+// FindItemID
+func (h *THeaderSections) FindItemID(ID int32) *TCollectionItem {
+    return CollectionItemFromInst(HeaderSections_FindItemID(h.instance, ID))
 }
 
 // GetNamePath
