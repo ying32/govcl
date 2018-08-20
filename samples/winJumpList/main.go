@@ -27,7 +27,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("MainForm.Handle:", vcl.Application.MainForm().Handle())
 	fmt.Println("Application.Handle:", vcl.Application.Handle())
 	f.JumpList1 = vcl.NewJumpList(f)
-	f.JumpList1.SetOnItemsLoaded(f.OnJumpList1ItemsLoaded) // 只有使用设计器的才会生效。。。,因为发生在Loaded函数中
+
 	f.JumpList1.SetEnabled(true)
 	f.JumpList1.SetAutoRefresh(true)
 	f.JumpList1.SetApplicationID("jumplistProject")
@@ -58,8 +58,4 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	task.SetFriendlyName("task2")
 	task.SetPath("calc.exe")
 	item.SetIcon("calc.exe,0")
-}
-
-func (f *TMainForm) OnJumpList1ItemsLoaded(sender vcl.IObject) {
-	fmt.Println("item on loaded")
 }
