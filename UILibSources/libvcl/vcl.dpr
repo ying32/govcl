@@ -15,6 +15,7 @@ uses
   Winapi.CommCtrl,
   Winapi.ActiveX,
   Winapi.ShlObj,
+  Winapi.ObjectArray,
   System.SysUtils,
   System.Classes,
   System.UITypes,

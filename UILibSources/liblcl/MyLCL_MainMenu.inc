@@ -90,6 +90,16 @@ begin
   AObj.Images := AValue;
 end;
 
+function MainMenu_GetOwnerDraw(AObj: TMainMenu): LongBool; extdecl;
+begin
+  Result :=  AObj.OwnerDraw;
+end;
+
+procedure MainMenu_SetOwnerDraw(AObj: TMainMenu; AValue: LongBool); extdecl;
+begin
+  AObj.OwnerDraw := AValue;
+end;
+
 procedure MainMenu_SetOnChange(AObj: TMainMenu; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -180,6 +190,8 @@ exports
   MainMenu_SetBiDiMode,
   MainMenu_GetImages,
   MainMenu_SetImages,
+  MainMenu_GetOwnerDraw,
+  MainMenu_SetOwnerDraw,
   MainMenu_SetOnChange,
   MainMenu_GetHandle,
   MainMenu_GetItems,

@@ -410,6 +410,16 @@ begin
   AObj.MultiLine := AValue;
 end;
 
+function PageControl_GetOwnerDraw(AObj: TPageControl): LongBool; stdcall;
+begin
+  Result :=  AObj.OwnerDraw;
+end;
+
+procedure PageControl_SetOwnerDraw(AObj: TPageControl; AValue: LongBool); stdcall;
+begin
+  AObj.OwnerDraw := AValue;
+end;
+
 function PageControl_GetParentDoubleBuffered(AObj: TPageControl): LongBool; stdcall;
 begin
   Result :=  AObj.ParentDoubleBuffered;
@@ -1216,6 +1226,8 @@ exports
   PageControl_SetImages,
   PageControl_GetMultiLine,
   PageControl_SetMultiLine,
+  PageControl_GetOwnerDraw,
+  PageControl_SetOwnerDraw,
   PageControl_GetParentDoubleBuffered,
   PageControl_SetParentDoubleBuffered,
   PageControl_GetParentFont,

@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms;
+  Vcl.Controls, Vcl.Forms, Winapi.ActiveX;
 
 type
   TDropFilesEvent = procedure(Sender: TObject; const FileNames: array of String) of object;
@@ -140,8 +140,10 @@ exports
 
 initialization
   uLockObj := TObject.Create;
+  CoInitializeEx(nil, 0);
 
 finalization
+  CoUninitialize;
   uLockObj.Free;
 
 

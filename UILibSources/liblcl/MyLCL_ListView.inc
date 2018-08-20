@@ -531,6 +531,16 @@ begin
   AObj.OwnerData := AValue;
 end;
 
+function ListView_GetOwnerDraw(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.OwnerDraw;
+end;
+
+procedure ListView_SetOwnerDraw(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.OwnerDraw := AValue;
+end;
+
 function ListView_GetReadOnly(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.ReadOnly;
@@ -1488,6 +1498,8 @@ exports
   ListView_SetMultiSelect,
   ListView_GetOwnerData,
   ListView_SetOwnerData,
+  ListView_GetOwnerDraw,
+  ListView_SetOwnerDraw,
   ListView_GetReadOnly,
   ListView_SetReadOnly,
   ListView_GetRowSelect,

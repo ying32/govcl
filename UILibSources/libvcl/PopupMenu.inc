@@ -140,6 +140,16 @@ begin
   AObj.Images := AValue;
 end;
 
+function PopupMenu_GetOwnerDraw(AObj: TPopupMenu): LongBool; stdcall;
+begin
+  Result :=  AObj.OwnerDraw;
+end;
+
+procedure PopupMenu_SetOwnerDraw(AObj: TPopupMenu; AValue: LongBool); stdcall;
+begin
+  AObj.OwnerDraw := AValue;
+end;
+
 procedure PopupMenu_SetOnChange(AObj: TPopupMenu; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -262,6 +272,8 @@ exports
   PopupMenu_SetBiDiMode,
   PopupMenu_GetImages,
   PopupMenu_SetImages,
+  PopupMenu_GetOwnerDraw,
+  PopupMenu_SetOwnerDraw,
   PopupMenu_SetOnChange,
   PopupMenu_SetOnPopup,
   PopupMenu_GetHandle,
