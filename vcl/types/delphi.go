@@ -38,6 +38,9 @@ type TCustomData uintptr
 
 type TGridRect TRect
 
+// 伪造，实际为一个接口类型
+type IObjectArray uintptr
+
 type TSysLocale struct {
 	//Delphi compat fields
 	DefaultLCID int32
