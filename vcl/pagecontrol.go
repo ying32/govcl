@@ -628,6 +628,16 @@ func (p *TPageControl) SetMultiLine(value bool) {
     PageControl_SetMultiLine(p.instance, value)
 }
 
+// OwnerDraw
+func (p *TPageControl) OwnerDraw() bool {
+    return PageControl_GetOwnerDraw(p.instance)
+}
+
+// SetOwnerDraw
+func (p *TPageControl) SetOwnerDraw(value bool) {
+    PageControl_SetOwnerDraw(p.instance, value)
+}
+
 // ParentDoubleBuffered
 // CN: 获取父容器双缓冲。
 // EN: Get Parent container double buffering.

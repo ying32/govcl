@@ -3386,6 +3386,15 @@ func MainMenu_SetImages(obj uintptr, value uintptr) {
    mainMenu_SetImages.Call(obj, value)
 }
 
+func MainMenu_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := mainMenu_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MainMenu_SetOwnerDraw(obj uintptr, value bool) {
+   mainMenu_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
+}
+
 func MainMenu_SetOnChange(obj uintptr, fn interface{}) {
     mainMenu_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -3582,6 +3591,15 @@ func PopupMenu_GetImages(obj uintptr) uintptr {
 
 func PopupMenu_SetImages(obj uintptr, value uintptr) {
    popupMenu_SetImages.Call(obj, value)
+}
+
+func PopupMenu_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := popupMenu_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PopupMenu_SetOwnerDraw(obj uintptr, value bool) {
+   popupMenu_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
 }
 
 func PopupMenu_SetOnChange(obj uintptr, fn interface{}) {
@@ -28125,6 +28143,15 @@ func ListView_SetOwnerData(obj uintptr, value bool) {
    listView_SetOwnerData.Call(obj, GoBoolToDBool(value))
 }
 
+func ListView_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := listView_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetOwnerDraw(obj uintptr, value bool) {
+   listView_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
+}
+
 func ListView_GetGroupHeaderImages(obj uintptr) uintptr {
     ret, _, _ := listView_GetGroupHeaderImages.Call(obj)
     return ret
@@ -37086,6 +37113,15 @@ func PageControl_GetMultiLine(obj uintptr) bool {
 
 func PageControl_SetMultiLine(obj uintptr, value bool) {
    pageControl_SetMultiLine.Call(obj, GoBoolToDBool(value))
+}
+
+func PageControl_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := pageControl_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PageControl_SetOwnerDraw(obj uintptr, value bool) {
+   pageControl_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
 }
 
 func PageControl_GetParentDoubleBuffered(obj uintptr) bool {
@@ -59749,6 +59785,20 @@ func JumpList_Free(obj uintptr) {
     jumpList_Free.Call(obj)
 }
 
+func JumpList_AddToRecent(obj uintptr, Path string)  {
+    jumpList_AddToRecent.Call(obj, GoStrToDStr(Path) )
+}
+
+func JumpList_RemoveFromRecent(obj uintptr, Path string, AppModelID string) bool {
+    ret, _, _ := jumpList_RemoveFromRecent.Call(obj, GoStrToDStr(Path) , GoStrToDStr(AppModelID) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_RemoveAllFromRecent(obj uintptr, AppModelID string) bool {
+    ret, _, _ := jumpList_RemoveAllFromRecent.Call(obj, GoStrToDStr(AppModelID) )
+    return DBoolToGoBool(ret)
+}
+
 func JumpList_AddCategory(obj uintptr, CategoryName string) int32 {
     ret, _, _ := jumpList_AddCategory.Call(obj, GoStrToDStr(CategoryName) )
     return int32(ret)
@@ -61047,6 +61097,15 @@ func JumpCategoryItem_GetVisible(obj uintptr) bool {
 
 func JumpCategoryItem_SetVisible(obj uintptr, value bool) {
    jumpCategoryItem_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpCategoryItem_GetCategoryName(obj uintptr) string {
+    ret, _, _ := jumpCategoryItem_GetCategoryName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategoryItem_SetCategoryName(obj uintptr, value string) {
+   jumpCategoryItem_SetCategoryName.Call(obj, GoStrToDStr(value))
 }
 
 func JumpCategoryItem_GetItems(obj uintptr) uintptr {

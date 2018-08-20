@@ -258,6 +258,16 @@ func (p *TPopupMenu) SetImages(value IComponent) {
     PopupMenu_SetImages(p.instance, CheckPtr(value))
 }
 
+// OwnerDraw
+func (p *TPopupMenu) OwnerDraw() bool {
+    return PopupMenu_GetOwnerDraw(p.instance)
+}
+
+// SetOwnerDraw
+func (p *TPopupMenu) SetOwnerDraw(value bool) {
+    PopupMenu_SetOwnerDraw(p.instance, value)
+}
+
 // SetOnChange
 // CN: 设置改变事件。
 // EN: Set changed event.

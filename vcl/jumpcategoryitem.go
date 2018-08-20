@@ -185,6 +185,16 @@ func (j *TJumpCategoryItem) SetVisible(value bool) {
     JumpCategoryItem_SetVisible(j.instance, value)
 }
 
+// CategoryName
+func (j *TJumpCategoryItem) CategoryName() string {
+    return JumpCategoryItem_GetCategoryName(j.instance)
+}
+
+// SetCategoryName
+func (j *TJumpCategoryItem) SetCategoryName(value string) {
+    JumpCategoryItem_SetCategoryName(j.instance, value)
+}
+
 // Items
 func (j *TJumpCategoryItem) Items() *TJumpListCollection {
     return JumpListCollectionFromInst(JumpCategoryItem_GetItems(j.instance))

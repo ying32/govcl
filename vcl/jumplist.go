@@ -101,6 +101,21 @@ func TJumpListClass() TClass {
     return JumpList_StaticClassType()
 }
 
+// AddToRecent
+func (j *TJumpList) AddToRecent(Path string) {
+    JumpList_AddToRecent(j.instance, Path)
+}
+
+// RemoveFromRecent
+func (j *TJumpList) RemoveFromRecent(Path string, AppModelID string) bool {
+    return JumpList_RemoveFromRecent(j.instance, Path , AppModelID)
+}
+
+// RemoveAllFromRecent
+func (j *TJumpList) RemoveAllFromRecent(AppModelID string) bool {
+    return JumpList_RemoveAllFromRecent(j.instance, AppModelID)
+}
+
 // AddCategory
 func (j *TJumpList) AddCategory(CategoryName string) int32 {
     return JumpList_AddCategory(j.instance, CategoryName)

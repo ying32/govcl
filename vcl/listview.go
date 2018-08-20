@@ -876,6 +876,16 @@ func (l *TListView) SetOwnerData(value bool) {
     ListView_SetOwnerData(l.instance, value)
 }
 
+// OwnerDraw
+func (l *TListView) OwnerDraw() bool {
+    return ListView_GetOwnerDraw(l.instance)
+}
+
+// SetOwnerDraw
+func (l *TListView) SetOwnerDraw(value bool) {
+    ListView_SetOwnerDraw(l.instance, value)
+}
+
 // GroupHeaderImages
 func (l *TListView) GroupHeaderImages() *TImageList {
     return ImageListFromInst(ListView_GetGroupHeaderImages(l.instance))
