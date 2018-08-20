@@ -48,4 +48,5 @@
 | shortcut | 快捷方式相关 | Windows | 
 | winole | 使用go-ole库操作ole | Windows | 
 | virtuallistview | 虚拟TListView，用于大数据显示 |   |
-
+| winTaskbar | windows任务栏相关，只支持libvcl，win7+ | Windows,libvcl,win7+  |
+| winJumpList | windows任务栏，跳转列表，只支持libvcl，win7+ | Windows,libvcl,win7+  |
