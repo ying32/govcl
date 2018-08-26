@@ -57,7 +57,16 @@ func main() {
 
 ### 注意:  
 
-**当使用"liblcl"库时，是以兼容"libvcl"库形式运行的，所以有部分组件和组件的方法、属性及事件不可用。**
+**当使用"liblcl"库时，是以兼容"libvcl"库形式运行的，所以有部分组件和组件的方法、属性及事件不可用。**  
+
+----
+
+
+### API文档
+
+* [Delphi VCL组件文档WIKI](http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Category:VCL_Reference)  
+* [Lazarus LCL组件文档WIKI](http://wiki.freepascal.org/LCL_Components)  
+* [Windows API文档](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)
 
 ----
 

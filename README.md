@@ -66,6 +66,14 @@ A: My English is bad. You can try using Google Translate Chinese WIKI.
 
 ---
 
+### API document
+
+* [Delphi VCL component document  WIKI](http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Category:VCL_Reference)  
+* [Lazarus LCL component document  WIKI](http://wiki.freepascal.org/LCL_Components)  
+* [Windows API document](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)
+
+----
+
 * Windows: Copy "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.
 
 * Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).
