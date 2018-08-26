@@ -60,6 +60,11 @@ Q: Why is there no English WIKI?
 A: My English is bad. You can try using Google Translate Chinese WIKI.    
  
 ---  
+### Note:  
+
+**When using the "liblcl" library, it is run in a compatible "libvcl" library, so some methods and properties of components and components are not available.**  
+
+---
 
 * Windows: Copy "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.
 
