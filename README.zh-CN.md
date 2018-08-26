@@ -51,13 +51,15 @@ func main() {
     mainForm.ScreenCenter()
     vcl.Application.Run()
 }
+```
 
----  
+----
+
 ### 注意:  
 
 **当使用"liblcl"库时，是以兼容"libvcl"库形式运行的，所以有部分组件和组件的方法、属性及事件不可用。**
 
----
+----
 
 * Windows: 复制"libvcl.dll"或者"libvclx64.dll"或者“liblcl.dll”到当前exe目录或系统环境路径下。    
 
