@@ -17,7 +17,7 @@
 
 GUI库二进制下载：   
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.21.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.21/Librarys-1.1.21.zip)  
-**注: 压缩包中下载的二进制只包含liblcl库，libvcl则需要你自己编译，具体编译方法参考UILIbSrcources中的说明。**  
+**注: 压缩包中下载的二进制只包含liblcl库，libvcl则需要你自己编译，具体编译方法参考[UILIbSrcources](UILibSources/README.zh-CN.md)中的说明。**  
 
 
 res2go工具下载  
