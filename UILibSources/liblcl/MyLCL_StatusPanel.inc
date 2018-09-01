@@ -110,6 +110,16 @@ begin
   AObj.Width := AValue;
 end;
 
+function StatusPanel_GetCollection(AObj: TStatusPanel): TCollection; extdecl;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure StatusPanel_SetCollection(AObj: TStatusPanel; AValue: TCollection); extdecl;
+begin
+  AObj.Collection := AValue;
+end;
+
 function StatusPanel_GetIndex(AObj: TStatusPanel): Integer; extdecl;
 begin
   Result :=  AObj.Index;
@@ -147,6 +157,8 @@ exports
   StatusPanel_SetText,
   StatusPanel_GetWidth,
   StatusPanel_SetWidth,
+  StatusPanel_GetCollection,
+  StatusPanel_SetCollection,
   StatusPanel_GetIndex,
   StatusPanel_SetIndex,
   StatusPanel_StaticClassType;

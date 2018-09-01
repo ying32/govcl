@@ -640,6 +640,16 @@ begin
   AObj.OwnerData := AValue;
 end;
 
+function ListView_GetOwnerDraw(AObj: TListView): LongBool; stdcall;
+begin
+  Result :=  AObj.OwnerDraw;
+end;
+
+procedure ListView_SetOwnerDraw(AObj: TListView; AValue: LongBool); stdcall;
+begin
+  AObj.OwnerDraw := AValue;
+end;
+
 function ListView_GetGroupHeaderImages(AObj: TListView): TCustomImageList; stdcall;
 begin
   Result :=  AObj.GroupHeaderImages;
@@ -1789,6 +1799,8 @@ exports
   ListView_SetStyleElements,
   ListView_GetOwnerData,
   ListView_SetOwnerData,
+  ListView_GetOwnerDraw,
+  ListView_SetOwnerDraw,
   ListView_GetGroupHeaderImages,
   ListView_SetGroupHeaderImages,
   ListView_GetGroupView,

@@ -648,6 +648,43 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				ObjectFromInst(getVal(0)),
 				(*bool)(unsafe.Pointer(getVal(1))))
 
+			//type TItemDeletedByUserEvent func(sender IObject, item *TJumpListItem, categoryName string, fromTasks bool)
+		case TItemDeletedByUserEvent:
+			v.(TItemDeletedByUserEvent)(
+				ObjectFromInst(getVal(0)),
+				JumpListItemFromInst(getVal(1)),
+				DStrToGoStr(getVal(2)),
+				DBoolToGoBool(getVal(3)))
+
+			//type TCreatingListErrorEvent func(sender IObject, winErrorCode uint32, errorDescription string, handled *bool)
+		case TCreatingListErrorEvent:
+			v.(TCreatingListErrorEvent)(
+				ObjectFromInst(getVal(0)),
+				uint32(getVal(1)),
+				DStrToGoStr(getVal(2)),
+				(*bool)(unsafe.Pointer(getVal(3))))
+
+			//type TThumbPreviewItemRequestEvent func(sender IObject, aPreviewHeight, aPreviewWidth int32, previewBitmap *TBitmap)
+		case TThumbPreviewItemRequestEvent:
+			v.(TThumbPreviewItemRequestEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)),
+				BitmapFromInst(getVal(3)))
+
+			//type TWindowPreviewItemRequestEvent func(sender IObject, position *TPoint, previewBitmap *TBitmap)
+		case TWindowPreviewItemRequestEvent:
+			v.(TWindowPreviewItemRequestEvent)(
+				ObjectFromInst(getVal(0)),
+				(*TPoint)(unsafe.Pointer(getVal(1))),
+				BitmapFromInst(getVal(2)))
+
+			//type TThumbButtonNotifyEvent func(sender IObject, aButtonID int32)
+		case TThumbButtonNotifyEvent:
+			v.(TThumbButtonNotifyEvent)(
+				ObjectFromInst(getVal(0)),
+				int32(getVal(1)))
+
 		default:
 		}
 	}

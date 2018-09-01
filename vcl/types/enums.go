@@ -1883,3 +1883,41 @@ const (
 	MaNoActivate
 	MaNoActivateAndEat
 )
+
+type TTaskBarProgressState int32
+
+const (
+	None = iota + 0
+	Indeterminate
+	Normal
+	Error
+	Paused
+)
+
+//TThumbButtonState = (Enabled, DismissOnClick, NoBackground, Hidden, NonInteractive);
+type TThumbButtonState int32
+
+const (
+	Enabled = iota + 0
+	DismissOnClick
+	NoBackground
+	Hidden
+	NonInteractive
+)
+
+//TThumbButtonStates = set of TThumbButtonState;
+type TThumbButtonStates uint32
+
+//TThumbTabProperty = (AppThumbAlways, AppThumbWhenActive, AppPeekAlways, AppPeekWhenActive, CustomizedPreview);
+type TThumbTabProperty int32
+
+const (
+	AppThumbAlways = iota + 0
+	AppThumbWhenActive
+	AppPeekAlways
+	AppPeekWhenActive
+	CustomizedPreview
+)
+
+//TThumbTabProperties = set of TThumbTabProperty;
+type TThumbTabProperties uint32

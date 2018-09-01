@@ -251,6 +251,16 @@ func (l *TListGroup) SetTitleImage(value int32) {
     ListGroup_SetTitleImage(l.instance, value)
 }
 
+// Collection
+func (l *TListGroup) Collection() *TCollection {
+    return CollectionFromInst(ListGroup_GetCollection(l.instance))
+}
+
+// SetCollection
+func (l *TListGroup) SetCollection(value *TCollection) {
+    ListGroup_SetCollection(l.instance, CheckPtr(value))
+}
+
 // Index
 func (l *TListGroup) Index() int32 {
     return ListGroup_GetIndex(l.instance)

@@ -65,6 +65,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function CollectionItem_GetCollection(AObj: TCollectionItem): TCollection; stdcall;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure CollectionItem_SetCollection(AObj: TCollectionItem; AValue: TCollection); stdcall;
+begin
+  AObj.Collection := AValue;
+end;
+
 function CollectionItem_GetIndex(AObj: TCollectionItem): Integer; stdcall;
 begin
   Result :=  AObj.Index;
@@ -93,6 +103,8 @@ exports
   CollectionItem_Equals,
   CollectionItem_GetHashCode,
   CollectionItem_ToString,
+  CollectionItem_GetCollection,
+  CollectionItem_SetCollection,
   CollectionItem_GetIndex,
   CollectionItem_SetIndex,
   CollectionItem_StaticClassType;

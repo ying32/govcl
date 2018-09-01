@@ -45,6 +45,11 @@ begin
   AObj.Clear;
 end;
 
+procedure CoolBands_ClearAndResetID(AObj: TCoolBands); stdcall;
+begin
+  AObj.ClearAndResetID;
+end;
+
 procedure CoolBands_Delete(AObj: TCoolBands; Index: Integer); stdcall;
 begin
   AObj.Delete(Index);
@@ -53,6 +58,11 @@ end;
 procedure CoolBands_EndUpdate(AObj: TCoolBands); stdcall;
 begin
   AObj.EndUpdate;
+end;
+
+function CoolBands_FindItemID(AObj: TCoolBands; ID: Integer): TCollectionItem; stdcall;
+begin
+  Result :=  AObj.FindItemID(ID);
 end;
 
 function CoolBands_GetNamePath(AObj: TCoolBands): PChar; stdcall;
@@ -149,8 +159,10 @@ exports
   CoolBands_Assign,
   CoolBands_BeginUpdate,
   CoolBands_Clear,
+  CoolBands_ClearAndResetID,
   CoolBands_Delete,
   CoolBands_EndUpdate,
+  CoolBands_FindItemID,
   CoolBands_GetNamePath,
   CoolBands_Insert,
   CoolBands_DisposeOf,

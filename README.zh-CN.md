@@ -17,7 +17,7 @@
 
 GUI库二进制下载：   
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.21.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.21/Librarys-1.1.21.zip)  
-**注: 压缩包中下载的二进制只包含liblcl库，libvcl则需要你自己编译，具体编译方法参考UILIbSrcources中的说明。**  
+**注: 压缩包中下载的二进制只包含liblcl库，libvcl则需要你自己编译，具体编译方法参考[UILIbSrcources](UILibSources/README.zh-CN.md)中的说明。**  
 
 
 res2go工具下载  
@@ -51,8 +51,24 @@ func main() {
     mainForm.ScreenCenter()
     vcl.Application.Run()
 }
+```
 
-```    
+----
+
+### 注意:  
+
+**当使用"liblcl"库时，是以兼容"libvcl"库形式运行的，所以有部分组件和组件的方法、属性及事件不可用。**  
+
+----
+
+
+### API文档
+
+* [Delphi VCL组件文档WIKI](http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Category:VCL_Reference)  
+* [Lazarus LCL组件文档WIKI](http://wiki.freepascal.org/LCL_Components)  
+* [Windows API文档](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)
+
+----
 
 * Windows: 复制"libvcl.dll"或者"libvclx64.dll"或者“liblcl.dll”到当前exe目录或系统环境路径下。    
 

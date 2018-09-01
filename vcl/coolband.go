@@ -366,6 +366,16 @@ func (c *TCoolBand) SetWidth(value int32) {
     CoolBand_SetWidth(c.instance, value)
 }
 
+// Collection
+func (c *TCoolBand) Collection() *TCollection {
+    return CollectionFromInst(CoolBand_GetCollection(c.instance))
+}
+
+// SetCollection
+func (c *TCoolBand) SetCollection(value *TCollection) {
+    CoolBand_SetCollection(c.instance, CheckPtr(value))
+}
+
 // Index
 func (c *TCoolBand) Index() int32 {
     return CoolBand_GetIndex(c.instance)

@@ -130,6 +130,16 @@ begin
   AObj.Width := AValue;
 end;
 
+function HeaderSection_GetCollection(AObj: THeaderSection): TCollection; extdecl;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure HeaderSection_SetCollection(AObj: THeaderSection; AValue: TCollection); extdecl;
+begin
+  AObj.Collection := AValue;
+end;
+
 function HeaderSection_GetIndex(AObj: THeaderSection): Integer; extdecl;
 begin
   Result :=  AObj.Index;
@@ -171,6 +181,8 @@ exports
   HeaderSection_SetText,
   HeaderSection_GetWidth,
   HeaderSection_SetWidth,
+  HeaderSection_GetCollection,
+  HeaderSection_SetCollection,
   HeaderSection_GetIndex,
   HeaderSection_SetIndex,
   HeaderSection_StaticClassType;

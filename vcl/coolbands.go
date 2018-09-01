@@ -137,6 +137,11 @@ func (c *TCoolBands) Clear() {
     CoolBands_Clear(c.instance)
 }
 
+// ClearAndResetID
+func (c *TCoolBands) ClearAndResetID() {
+    CoolBands_ClearAndResetID(c.instance)
+}
+
 // Delete
 func (c *TCoolBands) Delete(Index int32) {
     CoolBands_Delete(c.instance, Index)
@@ -145,6 +150,11 @@ func (c *TCoolBands) Delete(Index int32) {
 // EndUpdate
 func (c *TCoolBands) EndUpdate() {
     CoolBands_EndUpdate(c.instance)
+}
+
+// FindItemID
+func (c *TCoolBands) FindItemID(ID int32) *TCollectionItem {
+    return CollectionItemFromInst(CoolBands_FindItemID(c.instance, ID))
 }
 
 // GetNamePath

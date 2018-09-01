@@ -17,7 +17,7 @@
 
 Librarys binaries  
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.21.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.21/Librarys-1.1.21.zip)  
-**Note: The attachment contains liblcl three platform binary, libvcl does not currently provide, you need to compile.**  
+**Note: The attachment contains liblcl three platform binary, libvcl does not currently provide, you need to compile. For the compilation steps, please refer to the instructions in [UILIbSrcources](UILibSources/README.md)**  
 
 
 res2go Tool  
@@ -60,11 +60,24 @@ Q: Why is there no English WIKI?
 A: My English is bad. You can try using Google Translate Chinese WIKI.    
  
 ---  
+### Note:  
+
+**When using the "liblcl" library, it is run in a compatible "libvcl" library, so some methods and properties of components and components are not available.**  
+
+---
+
+### API document
+
+* [Delphi VCL component document  WIKI](http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Category:VCL_Reference)  
+* [Lazarus LCL component document  WIKI](http://wiki.freepascal.org/LCL_Components)  
+* [Windows API document](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)
+
+----
 
 * Windows: Copy "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.
 
 * Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).
 
-* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/Wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac)
+* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS)
 
 ---  

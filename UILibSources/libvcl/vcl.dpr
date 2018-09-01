@@ -15,6 +15,7 @@ uses
   Winapi.CommCtrl,
   Winapi.ActiveX,
   Winapi.ShlObj,
+  Winapi.ObjectArray,
   System.SysUtils,
   System.Classes,
   System.UITypes,
@@ -24,6 +25,7 @@ uses
   System.IniFiles,
   System.Win.Registry,
   System.Win.ComObj,
+  System.Win.TaskbarCore,
   System.Actions,
   System.Generics.Collections,
   System.TypInfo,
@@ -53,6 +55,8 @@ uses
   Vcl.FileCtrl,
   Vcl.Grids,
   Vcl.ValEdit,
+  Vcl.JumpList,
+  Vcl.Taskbar,
   uFormDesignerFile,
   uEventCallback in 'uEventCallback.pas',
   ufrmGo in 'ufrmGo.pas' {GoForm},
@@ -196,6 +200,16 @@ uses
 {$I CoolBar.inc}
 {$I CoolBands.inc}
 {$I CoolBand.inc}
+{$I JumpList.inc}
+{$I JumpListItem.inc}
+{$I Taskbar.inc}
+{$I ThumbBarButtonList.inc}
+{$I PreviewClipRegion.inc}
+{$I ThumbBarButton.inc}
+{$I JumpListCollection.inc}
+{$I JumpCategories.inc}
+{$I JumpCategoryItem.inc}
+{$I Collection.inc}
 
 begin
 end.

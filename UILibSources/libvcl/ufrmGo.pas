@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms;
+  Vcl.Controls, Vcl.Forms, Winapi.ActiveX;
 
 type
   TDropFilesEvent = procedure(Sender: TObject; const FileNames: array of String) of object;
@@ -70,9 +70,15 @@ end;
 constructor TGoForm.Create(AOwner: TComponent);
 var
   LPPI: Integer;
-  LR: TRect;
 begin
-  CreateNew(AOwner, 0);
+  try
+    // 这里需要屏蔽对资源查找的错误
+    inherited Create(AOwner);
+  except
+  end;
+  if OldCreateOrder then
+    DoCreate;
+//  Create(AOwner, 0);
   if uInitScale and GetGlobalFormScaled then
   begin
     LPPI := Screen.PixelsPerInch;
@@ -80,6 +86,7 @@ begin
     ClientHeight := MulDiv(ClientHeight, LPPI, 96);
     ScaleForPPI(LPPI);
   end;
+  ControlStyle := ControlStyle + [csPaintBlackOpaqueOnGlass];
 end;
 
 procedure TGoForm.InitializeNewForm;
@@ -133,8 +140,10 @@ exports
 
 initialization
   uLockObj := TObject.Create;
+  CoInitializeEx(nil, 0);
 
 finalization
+  CoUninitialize;
   uLockObj.Free;
 
 

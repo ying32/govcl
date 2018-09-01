@@ -40,6 +40,11 @@ begin
   AObj.Clear;
 end;
 
+procedure ListGroups_ClearAndResetID(AObj: TListGroups); stdcall;
+begin
+  AObj.ClearAndResetID;
+end;
+
 procedure ListGroups_Delete(AObj: TListGroups; Index: Integer); stdcall;
 begin
   AObj.Delete(Index);
@@ -48,6 +53,11 @@ end;
 procedure ListGroups_EndUpdate(AObj: TListGroups); stdcall;
 begin
   AObj.EndUpdate;
+end;
+
+function ListGroups_FindItemID(AObj: TListGroups; ID: Integer): TCollectionItem; stdcall;
+begin
+  Result :=  AObj.FindItemID(ID);
 end;
 
 function ListGroups_GetNamePath(AObj: TListGroups): PChar; stdcall;
@@ -138,8 +148,10 @@ exports
   ListGroups_Assign,
   ListGroups_BeginUpdate,
   ListGroups_Clear,
+  ListGroups_ClearAndResetID,
   ListGroups_Delete,
   ListGroups_EndUpdate,
+  ListGroups_FindItemID,
   ListGroups_GetNamePath,
   ListGroups_Insert,
   ListGroups_DisposeOf,

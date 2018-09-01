@@ -219,6 +219,16 @@ func (m *TMainMenu) SetImages(value IComponent) {
     MainMenu_SetImages(m.instance, CheckPtr(value))
 }
 
+// OwnerDraw
+func (m *TMainMenu) OwnerDraw() bool {
+    return MainMenu_GetOwnerDraw(m.instance)
+}
+
+// SetOwnerDraw
+func (m *TMainMenu) SetOwnerDraw(value bool) {
+    MainMenu_SetOwnerDraw(m.instance, value)
+}
+
 // SetOnChange
 // CN: 设置改变事件。
 // EN: Set changed event.

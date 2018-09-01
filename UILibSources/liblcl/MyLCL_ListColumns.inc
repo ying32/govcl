@@ -50,6 +50,11 @@ begin
   AObj.EndUpdate;
 end;
 
+function ListColumns_FindItemID(AObj: TListColumns; ID: Integer): TCollectionItem; extdecl;
+begin
+  Result :=  AObj.FindItemID(ID);
+end;
+
 function ListColumns_GetNamePath(AObj: TListColumns): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -125,6 +130,7 @@ exports
   ListColumns_Clear,
   ListColumns_Delete,
   ListColumns_EndUpdate,
+  ListColumns_FindItemID,
   ListColumns_GetNamePath,
   ListColumns_Insert,
   ListColumns_ClassType,

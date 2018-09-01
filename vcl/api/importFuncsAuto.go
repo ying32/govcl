@@ -3386,6 +3386,15 @@ func MainMenu_SetImages(obj uintptr, value uintptr) {
    mainMenu_SetImages.Call(obj, value)
 }
 
+func MainMenu_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := mainMenu_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MainMenu_SetOwnerDraw(obj uintptr, value bool) {
+   mainMenu_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
+}
+
 func MainMenu_SetOnChange(obj uintptr, fn interface{}) {
     mainMenu_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -3582,6 +3591,15 @@ func PopupMenu_GetImages(obj uintptr) uintptr {
 
 func PopupMenu_SetImages(obj uintptr, value uintptr) {
    popupMenu_SetImages.Call(obj, value)
+}
+
+func PopupMenu_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := popupMenu_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PopupMenu_SetOwnerDraw(obj uintptr, value bool) {
+   popupMenu_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
 }
 
 func PopupMenu_SetOnChange(obj uintptr, fn interface{}) {
@@ -28125,6 +28143,15 @@ func ListView_SetOwnerData(obj uintptr, value bool) {
    listView_SetOwnerData.Call(obj, GoBoolToDBool(value))
 }
 
+func ListView_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := listView_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetOwnerDraw(obj uintptr, value bool) {
+   listView_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
+}
+
 func ListView_GetGroupHeaderImages(obj uintptr) uintptr {
     ret, _, _ := listView_GetGroupHeaderImages.Call(obj)
     return ret
@@ -35515,12 +35542,21 @@ func ListGroups_Clear(obj uintptr)  {
     listGroups_Clear.Call(obj)
 }
 
+func ListGroups_ClearAndResetID(obj uintptr)  {
+    listGroups_ClearAndResetID.Call(obj)
+}
+
 func ListGroups_Delete(obj uintptr, Index int32)  {
     listGroups_Delete.Call(obj, uintptr(Index) )
 }
 
 func ListGroups_EndUpdate(obj uintptr)  {
     listGroups_EndUpdate.Call(obj)
+}
+
+func ListGroups_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := listGroups_FindItemID.Call(obj, uintptr(ID) )
+    return ret
 }
 
 func ListGroups_GetNamePath(obj uintptr) string {
@@ -35754,12 +35790,21 @@ func ListColumns_Clear(obj uintptr)  {
     listColumns_Clear.Call(obj)
 }
 
+func ListColumns_ClearAndResetID(obj uintptr)  {
+    listColumns_ClearAndResetID.Call(obj)
+}
+
 func ListColumns_Delete(obj uintptr, Index int32)  {
     listColumns_Delete.Call(obj, uintptr(Index) )
 }
 
 func ListColumns_EndUpdate(obj uintptr)  {
     listColumns_EndUpdate.Call(obj)
+}
+
+func ListColumns_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := listColumns_FindItemID.Call(obj, uintptr(ID) )
+    return ret
 }
 
 func ListColumns_GetNamePath(obj uintptr) string {
@@ -37068,6 +37113,15 @@ func PageControl_GetMultiLine(obj uintptr) bool {
 
 func PageControl_SetMultiLine(obj uintptr, value bool) {
    pageControl_SetMultiLine.Call(obj, GoBoolToDBool(value))
+}
+
+func PageControl_GetOwnerDraw(obj uintptr) bool {
+    ret, _, _ := pageControl_GetOwnerDraw.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func PageControl_SetOwnerDraw(obj uintptr, value bool) {
+   pageControl_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
 }
 
 func PageControl_GetParentDoubleBuffered(obj uintptr) bool {
@@ -39972,6 +40026,15 @@ func ListGroup_SetTitleImage(obj uintptr, value int32) {
    listGroup_SetTitleImage.Call(obj, uintptr(value))
 }
 
+func ListGroup_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := listGroup_GetCollection.Call(obj)
+    return ret
+}
+
+func ListGroup_SetCollection(obj uintptr, value uintptr) {
+   listGroup_SetCollection.Call(obj, value)
+}
+
 func ListGroup_GetIndex(obj uintptr) int32 {
     ret, _, _ := listGroup_GetIndex.Call(obj)
     return int32(ret)
@@ -40117,6 +40180,15 @@ func ListColumn_SetWidth(obj uintptr, value int32) {
    listColumn_SetWidth.Call(obj, uintptr(value))
 }
 
+func ListColumn_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := listColumn_GetCollection.Call(obj)
+    return ret
+}
+
+func ListColumn_SetCollection(obj uintptr, value uintptr) {
+   listColumn_SetCollection.Call(obj, value)
+}
+
 func ListColumn_GetIndex(obj uintptr) int32 {
     ret, _, _ := listColumn_GetIndex.Call(obj)
     return int32(ret)
@@ -40190,6 +40262,15 @@ func CollectionItem_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func CollectionItem_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := collectionItem_GetCollection.Call(obj)
+    return ret
+}
+
+func CollectionItem_SetCollection(obj uintptr, value uintptr) {
+   collectionItem_SetCollection.Call(obj, value)
+}
+
 func CollectionItem_GetIndex(obj uintptr) int32 {
     ret, _, _ := collectionItem_GetIndex.Call(obj)
     return int32(ret)
@@ -40247,12 +40328,21 @@ func StatusPanels_Clear(obj uintptr)  {
     statusPanels_Clear.Call(obj)
 }
 
+func StatusPanels_ClearAndResetID(obj uintptr)  {
+    statusPanels_ClearAndResetID.Call(obj)
+}
+
 func StatusPanels_Delete(obj uintptr, Index int32)  {
     statusPanels_Delete.Call(obj, uintptr(Index) )
 }
 
 func StatusPanels_EndUpdate(obj uintptr)  {
     statusPanels_EndUpdate.Call(obj)
+}
+
+func StatusPanels_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := statusPanels_FindItemID.Call(obj, uintptr(ID) )
+    return ret
 }
 
 func StatusPanels_GetNamePath(obj uintptr) string {
@@ -40429,6 +40519,15 @@ func StatusPanel_GetWidth(obj uintptr) int32 {
 
 func StatusPanel_SetWidth(obj uintptr, value int32) {
    statusPanel_SetWidth.Call(obj, uintptr(value))
+}
+
+func StatusPanel_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := statusPanel_GetCollection.Call(obj)
+    return ret
+}
+
+func StatusPanel_SetCollection(obj uintptr, value uintptr) {
+   statusPanel_SetCollection.Call(obj, value)
 }
 
 func StatusPanel_GetIndex(obj uintptr) int32 {
@@ -55614,6 +55713,15 @@ func HeaderSection_SetWidth(obj uintptr, value int32) {
    headerSection_SetWidth.Call(obj, uintptr(value))
 }
 
+func HeaderSection_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := headerSection_GetCollection.Call(obj)
+    return ret
+}
+
+func HeaderSection_SetCollection(obj uintptr, value uintptr) {
+   headerSection_SetCollection.Call(obj, value)
+}
+
 func HeaderSection_GetIndex(obj uintptr) int32 {
     ret, _, _ := headerSection_GetIndex.Call(obj)
     return int32(ret)
@@ -55671,12 +55779,21 @@ func HeaderSections_Clear(obj uintptr)  {
     headerSections_Clear.Call(obj)
 }
 
+func HeaderSections_ClearAndResetID(obj uintptr)  {
+    headerSections_ClearAndResetID.Call(obj)
+}
+
 func HeaderSections_Delete(obj uintptr, Index int32)  {
     headerSections_Delete.Call(obj, uintptr(Index) )
 }
 
 func HeaderSections_EndUpdate(obj uintptr)  {
     headerSections_EndUpdate.Call(obj)
+}
+
+func HeaderSections_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := headerSections_FindItemID.Call(obj, uintptr(ID) )
+    return ret
 }
 
 func HeaderSections_GetNamePath(obj uintptr) string {
@@ -59327,12 +59444,21 @@ func CoolBands_Clear(obj uintptr)  {
     coolBands_Clear.Call(obj)
 }
 
+func CoolBands_ClearAndResetID(obj uintptr)  {
+    coolBands_ClearAndResetID.Call(obj)
+}
+
 func CoolBands_Delete(obj uintptr, Index int32)  {
     coolBands_Delete.Call(obj, uintptr(Index) )
 }
 
 func CoolBands_EndUpdate(obj uintptr)  {
     coolBands_EndUpdate.Call(obj)
+}
+
+func CoolBands_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := coolBands_FindItemID.Call(obj, uintptr(ID) )
+    return ret
 }
 
 func CoolBands_GetNamePath(obj uintptr) string {
@@ -59625,6 +59751,15 @@ func CoolBand_SetWidth(obj uintptr, value int32) {
    coolBand_SetWidth.Call(obj, uintptr(value))
 }
 
+func CoolBand_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := coolBand_GetCollection.Call(obj)
+    return ret
+}
+
+func CoolBand_SetCollection(obj uintptr, value uintptr) {
+   coolBand_SetCollection.Call(obj, value)
+}
+
 func CoolBand_GetIndex(obj uintptr) int32 {
     ret, _, _ := coolBand_GetIndex.Call(obj)
     return int32(ret)
@@ -59636,5 +59771,1498 @@ func CoolBand_SetIndex(obj uintptr, value int32) {
 
 func CoolBand_StaticClassType() TClass {
     r, _, _:= coolBand_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TJumpList ---------------------------
+
+func JumpList_Create(obj uintptr) uintptr {
+    ret, _, _ := jumpList_Create.Call(obj)
+    return ret
+}
+
+func JumpList_Free(obj uintptr) {
+    jumpList_Free.Call(obj)
+}
+
+func JumpList_AddToRecent(obj uintptr, Path string)  {
+    jumpList_AddToRecent.Call(obj, GoStrToDStr(Path) )
+}
+
+func JumpList_RemoveFromRecent(obj uintptr, Path string, AppModelID string) bool {
+    ret, _, _ := jumpList_RemoveFromRecent.Call(obj, GoStrToDStr(Path) , GoStrToDStr(AppModelID) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_RemoveAllFromRecent(obj uintptr, AppModelID string) bool {
+    ret, _, _ := jumpList_RemoveAllFromRecent.Call(obj, GoStrToDStr(AppModelID) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_AddCategory(obj uintptr, CategoryName string) int32 {
+    ret, _, _ := jumpList_AddCategory.Call(obj, GoStrToDStr(CategoryName) )
+    return int32(ret)
+}
+
+func JumpList_AddTask(obj uintptr, FriendlyName string, Path string, Arguments string, Icon string) uintptr {
+    ret, _, _ := jumpList_AddTask.Call(obj, GoStrToDStr(FriendlyName) , GoStrToDStr(Path) , GoStrToDStr(Arguments) , GoStrToDStr(Icon) )
+    return ret
+}
+
+func JumpList_AddTaskSeparator(obj uintptr) uintptr {
+    ret, _, _ := jumpList_AddTaskSeparator.Call(obj)
+    return ret
+}
+
+func JumpList_AddItemToCategory(obj uintptr, CategoryIndex int32, FriendlyName string, Path string, Arguments string, Icon string) uintptr {
+    ret, _, _ := jumpList_AddItemToCategory.Call(obj, uintptr(CategoryIndex) , GoStrToDStr(FriendlyName) , GoStrToDStr(Path) , GoStrToDStr(Arguments) , GoStrToDStr(Icon) )
+    return ret
+}
+
+func JumpList_UpdateList(obj uintptr) bool {
+    ret, _, _ := jumpList_UpdateList.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_DeleteList(obj uintptr) bool {
+    ret, _, _ := jumpList_DeleteList.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := jumpList_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func JumpList_GetNamePath(obj uintptr) string {
+    ret, _, _ := jumpList_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpList_HasParent(obj uintptr) bool {
+    ret, _, _ := jumpList_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_Assign(obj uintptr, Source uintptr)  {
+    jumpList_Assign.Call(obj, Source )
+}
+
+func JumpList_DisposeOf(obj uintptr)  {
+    jumpList_DisposeOf.Call(obj)
+}
+
+func JumpList_ClassType(obj uintptr) TClass {
+    ret, _, _ := jumpList_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func JumpList_ClassName(obj uintptr) string {
+    ret, _, _ := jumpList_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpList_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := jumpList_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func JumpList_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := jumpList_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := jumpList_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := jumpList_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func JumpList_ToString(obj uintptr) string {
+    ret, _, _ := jumpList_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpList_GetAutoRefresh(obj uintptr) bool {
+    ret, _, _ := jumpList_GetAutoRefresh.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_SetAutoRefresh(obj uintptr, value bool) {
+   jumpList_SetAutoRefresh.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpList_GetEnabled(obj uintptr) bool {
+    ret, _, _ := jumpList_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_SetEnabled(obj uintptr, value bool) {
+   jumpList_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpList_GetApplicationID(obj uintptr) string {
+    ret, _, _ := jumpList_GetApplicationID.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpList_SetApplicationID(obj uintptr, value string) {
+   jumpList_SetApplicationID.Call(obj, GoStrToDStr(value))
+}
+
+func JumpList_GetCustomCategories(obj uintptr) uintptr {
+    ret, _, _ := jumpList_GetCustomCategories.Call(obj)
+    return ret
+}
+
+func JumpList_SetCustomCategories(obj uintptr, value uintptr) {
+   jumpList_SetCustomCategories.Call(obj, value)
+}
+
+func JumpList_GetShowRecent(obj uintptr) bool {
+    ret, _, _ := jumpList_GetShowRecent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_SetShowRecent(obj uintptr, value bool) {
+   jumpList_SetShowRecent.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpList_GetShowFrequent(obj uintptr) bool {
+    ret, _, _ := jumpList_GetShowFrequent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpList_SetShowFrequent(obj uintptr, value bool) {
+   jumpList_SetShowFrequent.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpList_GetTaskList(obj uintptr) uintptr {
+    ret, _, _ := jumpList_GetTaskList.Call(obj)
+    return ret
+}
+
+func JumpList_SetTaskList(obj uintptr, value uintptr) {
+   jumpList_SetTaskList.Call(obj, value)
+}
+
+func JumpList_SetOnItemDeleted(obj uintptr, fn interface{}) {
+    jumpList_SetOnItemDeleted.Call(obj, addEventToMap(fn))
+}
+
+func JumpList_SetOnListUpdateError(obj uintptr, fn interface{}) {
+    jumpList_SetOnListUpdateError.Call(obj, addEventToMap(fn))
+}
+
+func JumpList_SetOnItemsLoaded(obj uintptr, fn interface{}) {
+    jumpList_SetOnItemsLoaded.Call(obj, addEventToMap(fn))
+}
+
+func JumpList_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := jumpList_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func JumpList_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := jumpList_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func JumpList_SetComponentIndex(obj uintptr, value int32) {
+   jumpList_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func JumpList_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := jumpList_GetOwner.Call(obj)
+    return ret
+}
+
+func JumpList_GetName(obj uintptr) string {
+    ret, _, _ := jumpList_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpList_SetName(obj uintptr, value string) {
+   jumpList_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func JumpList_GetTag(obj uintptr) int {
+    ret, _, _ := jumpList_GetTag.Call(obj)
+    return int(ret)
+}
+
+func JumpList_SetTag(obj uintptr, value int) {
+   jumpList_SetTag.Call(obj, uintptr(value))
+}
+
+func JumpList_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := jumpList_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func JumpList_StaticClassType() TClass {
+    r, _, _:= jumpList_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TJumpListItem ---------------------------
+
+func JumpListItem_Create() uintptr {
+    ret, _, _ := jumpListItem_Create.Call()
+    return ret
+}
+
+func JumpListItem_Free(obj uintptr) {
+    jumpListItem_Free.Call(obj)
+}
+
+func JumpListItem_GetNamePath(obj uintptr) string {
+    ret, _, _ := jumpListItem_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListItem_Assign(obj uintptr, Source uintptr)  {
+    jumpListItem_Assign.Call(obj, Source )
+}
+
+func JumpListItem_DisposeOf(obj uintptr)  {
+    jumpListItem_DisposeOf.Call(obj)
+}
+
+func JumpListItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := jumpListItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func JumpListItem_ClassName(obj uintptr) string {
+    ret, _, _ := jumpListItem_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := jumpListItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func JumpListItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := jumpListItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpListItem_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := jumpListItem_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func JumpListItem_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := jumpListItem_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func JumpListItem_ToString(obj uintptr) string {
+    ret, _, _ := jumpListItem_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListItem_GetIsSeparator(obj uintptr) bool {
+    ret, _, _ := jumpListItem_GetIsSeparator.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpListItem_SetIsSeparator(obj uintptr, value bool) {
+   jumpListItem_SetIsSeparator.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpListItem_GetIcon(obj uintptr) string {
+    ret, _, _ := jumpListItem_GetIcon.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListItem_SetIcon(obj uintptr, value string) {
+   jumpListItem_SetIcon.Call(obj, GoStrToDStr(value))
+}
+
+func JumpListItem_GetPath(obj uintptr) string {
+    ret, _, _ := jumpListItem_GetPath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListItem_SetPath(obj uintptr, value string) {
+   jumpListItem_SetPath.Call(obj, GoStrToDStr(value))
+}
+
+func JumpListItem_GetFriendlyName(obj uintptr) string {
+    ret, _, _ := jumpListItem_GetFriendlyName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListItem_SetFriendlyName(obj uintptr, value string) {
+   jumpListItem_SetFriendlyName.Call(obj, GoStrToDStr(value))
+}
+
+func JumpListItem_GetArguments(obj uintptr) string {
+    ret, _, _ := jumpListItem_GetArguments.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListItem_SetArguments(obj uintptr, value string) {
+   jumpListItem_SetArguments.Call(obj, GoStrToDStr(value))
+}
+
+func JumpListItem_GetVisible(obj uintptr) bool {
+    ret, _, _ := jumpListItem_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpListItem_SetVisible(obj uintptr, value bool) {
+   jumpListItem_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpListItem_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := jumpListItem_GetCollection.Call(obj)
+    return ret
+}
+
+func JumpListItem_SetCollection(obj uintptr, value uintptr) {
+   jumpListItem_SetCollection.Call(obj, value)
+}
+
+func JumpListItem_GetIndex(obj uintptr) int32 {
+    ret, _, _ := jumpListItem_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func JumpListItem_SetIndex(obj uintptr, value int32) {
+   jumpListItem_SetIndex.Call(obj, uintptr(value))
+}
+
+func JumpListItem_StaticClassType() TClass {
+    r, _, _:= jumpListItem_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TTaskbar ---------------------------
+
+func Taskbar_Create(obj uintptr) uintptr {
+    ret, _, _ := taskbar_Create.Call(obj)
+    return ret
+}
+
+func Taskbar_Free(obj uintptr) {
+    taskbar_Free.Call(obj)
+}
+
+func Taskbar_DoThumbButtonNotify(obj uintptr, ItemID uint16)  {
+    taskbar_DoThumbButtonNotify.Call(obj, uintptr(ItemID) )
+}
+
+func Taskbar_DoThumbPreviewRequest(obj uintptr, APreviewHeight uint16, APreviewWidth uint16)  {
+    taskbar_DoThumbPreviewRequest.Call(obj, uintptr(APreviewHeight) , uintptr(APreviewWidth) )
+}
+
+func Taskbar_DoWindowPreviewRequest(obj uintptr)  {
+    taskbar_DoWindowPreviewRequest.Call(obj)
+}
+
+func Taskbar_UnregisterTab(obj uintptr)  {
+    taskbar_UnregisterTab.Call(obj)
+}
+
+func Taskbar_ApplyButtonsChanges(obj uintptr)  {
+    taskbar_ApplyButtonsChanges.Call(obj)
+}
+
+func Taskbar_GetMainWindowHwnd(obj uintptr) HWND {
+    ret, _, _ := taskbar_GetMainWindowHwnd.Call(obj)
+    return HWND(ret)
+}
+
+func Taskbar_GetOverlayHIcon(obj uintptr) HICON {
+    ret, _, _ := taskbar_GetOverlayHIcon.Call(obj)
+    return HICON(ret)
+}
+
+func Taskbar_ActivateTab(obj uintptr) bool {
+    ret, _, _ := taskbar_ActivateTab.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Taskbar_InvalidateThumbPreview(obj uintptr)  {
+    taskbar_InvalidateThumbPreview.Call(obj)
+}
+
+func Taskbar_UpdateTab(obj uintptr)  {
+    taskbar_UpdateTab.Call(obj)
+}
+
+func Taskbar_CheckApplyChanges(obj uintptr)  {
+    taskbar_CheckApplyChanges.Call(obj)
+}
+
+func Taskbar_ApplyChanges(obj uintptr)  {
+    taskbar_ApplyChanges.Call(obj)
+}
+
+func Taskbar_ApplyOverlayChanges(obj uintptr)  {
+    taskbar_ApplyOverlayChanges.Call(obj)
+}
+
+func Taskbar_ApplyProgressChanges(obj uintptr)  {
+    taskbar_ApplyProgressChanges.Call(obj)
+}
+
+func Taskbar_ApplyTabsChanges(obj uintptr)  {
+    taskbar_ApplyTabsChanges.Call(obj)
+}
+
+func Taskbar_ApplyClipAreaChanges(obj uintptr)  {
+    taskbar_ApplyClipAreaChanges.Call(obj)
+}
+
+func Taskbar_ClearClipArea(obj uintptr)  {
+    taskbar_ClearClipArea.Call(obj)
+}
+
+func Taskbar_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := taskbar_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func Taskbar_GetNamePath(obj uintptr) string {
+    ret, _, _ := taskbar_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Taskbar_HasParent(obj uintptr) bool {
+    ret, _, _ := taskbar_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Taskbar_Assign(obj uintptr, Source uintptr)  {
+    taskbar_Assign.Call(obj, Source )
+}
+
+func Taskbar_DisposeOf(obj uintptr)  {
+    taskbar_DisposeOf.Call(obj)
+}
+
+func Taskbar_ClassType(obj uintptr) TClass {
+    ret, _, _ := taskbar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func Taskbar_ClassName(obj uintptr) string {
+    ret, _, _ := taskbar_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Taskbar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := taskbar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Taskbar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := taskbar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func Taskbar_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := taskbar_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func Taskbar_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := taskbar_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func Taskbar_ToString(obj uintptr) string {
+    ret, _, _ := taskbar_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Taskbar_GetTaskBarButtons(obj uintptr) uintptr {
+    ret, _, _ := taskbar_GetTaskBarButtons.Call(obj)
+    return ret
+}
+
+func Taskbar_SetTaskBarButtons(obj uintptr, value uintptr) {
+   taskbar_SetTaskBarButtons.Call(obj, value)
+}
+
+func Taskbar_GetProgressState(obj uintptr) TTaskBarProgressState {
+    ret, _, _ := taskbar_GetProgressState.Call(obj)
+    return TTaskBarProgressState(ret)
+}
+
+func Taskbar_SetProgressState(obj uintptr, value TTaskBarProgressState) {
+   taskbar_SetProgressState.Call(obj, uintptr(value))
+}
+
+func Taskbar_GetProgressMaxValue(obj uintptr) int64 {
+    var ret int64
+    taskbar_GetProgressMaxValue.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Taskbar_SetProgressMaxValue(obj uintptr, value int64) {
+   taskbar_SetProgressMaxValue.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func Taskbar_GetProgressValue(obj uintptr) int64 {
+    var ret int64
+    taskbar_GetProgressValue.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func Taskbar_SetProgressValue(obj uintptr, value int64) {
+   taskbar_SetProgressValue.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func Taskbar_GetOverlayIcon(obj uintptr) uintptr {
+    ret, _, _ := taskbar_GetOverlayIcon.Call(obj)
+    return ret
+}
+
+func Taskbar_SetOverlayIcon(obj uintptr, value uintptr) {
+   taskbar_SetOverlayIcon.Call(obj, value)
+}
+
+func Taskbar_GetOverlayHint(obj uintptr) string {
+    ret, _, _ := taskbar_GetOverlayHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Taskbar_SetOverlayHint(obj uintptr, value string) {
+   taskbar_SetOverlayHint.Call(obj, GoStrToDStr(value))
+}
+
+func Taskbar_GetPreviewClipRegion(obj uintptr) uintptr {
+    ret, _, _ := taskbar_GetPreviewClipRegion.Call(obj)
+    return ret
+}
+
+func Taskbar_SetPreviewClipRegion(obj uintptr, value uintptr) {
+   taskbar_SetPreviewClipRegion.Call(obj, value)
+}
+
+func Taskbar_GetTabProperties(obj uintptr) TThumbTabProperties {
+    ret, _, _ := taskbar_GetTabProperties.Call(obj)
+    return TThumbTabProperties(ret)
+}
+
+func Taskbar_SetTabProperties(obj uintptr, value TThumbTabProperties) {
+   taskbar_SetTabProperties.Call(obj, uintptr(value))
+}
+
+func Taskbar_GetToolTip(obj uintptr) string {
+    ret, _, _ := taskbar_GetToolTip.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Taskbar_SetToolTip(obj uintptr, value string) {
+   taskbar_SetToolTip.Call(obj, GoStrToDStr(value))
+}
+
+func Taskbar_SetOnThumbPreviewRequest(obj uintptr, fn interface{}) {
+    taskbar_SetOnThumbPreviewRequest.Call(obj, addEventToMap(fn))
+}
+
+func Taskbar_SetOnWindowPreviewItemRequest(obj uintptr, fn interface{}) {
+    taskbar_SetOnWindowPreviewItemRequest.Call(obj, addEventToMap(fn))
+}
+
+func Taskbar_SetOnThumbButtonClick(obj uintptr, fn interface{}) {
+    taskbar_SetOnThumbButtonClick.Call(obj, addEventToMap(fn))
+}
+
+func Taskbar_GetTaskbarIsAvailable(obj uintptr) bool {
+    ret, _, _ := taskbar_GetTaskbarIsAvailable.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Taskbar_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := taskbar_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func Taskbar_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := taskbar_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func Taskbar_SetComponentIndex(obj uintptr, value int32) {
+   taskbar_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func Taskbar_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := taskbar_GetOwner.Call(obj)
+    return ret
+}
+
+func Taskbar_GetName(obj uintptr) string {
+    ret, _, _ := taskbar_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Taskbar_SetName(obj uintptr, value string) {
+   taskbar_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func Taskbar_GetTag(obj uintptr) int {
+    ret, _, _ := taskbar_GetTag.Call(obj)
+    return int(ret)
+}
+
+func Taskbar_SetTag(obj uintptr, value int) {
+   taskbar_SetTag.Call(obj, uintptr(value))
+}
+
+func Taskbar_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := taskbar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Taskbar_StaticClassType() TClass {
+    r, _, _:= taskbar_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TThumbBarButtonList ---------------------------
+
+func ThumbBarButtonList_Create() uintptr {
+    ret, _, _ := thumbBarButtonList_Create.Call()
+    return ret
+}
+
+func ThumbBarButtonList_Free(obj uintptr) {
+    thumbBarButtonList_Free.Call(obj)
+}
+
+func ThumbBarButtonList_Add(obj uintptr) uintptr {
+    ret, _, _ := thumbBarButtonList_Add.Call(obj)
+    return ret
+}
+
+func ThumbBarButtonList_Owner(obj uintptr) uintptr {
+    ret, _, _ := thumbBarButtonList_Owner.Call(obj)
+    return ret
+}
+
+func ThumbBarButtonList_Assign(obj uintptr, Source uintptr)  {
+    thumbBarButtonList_Assign.Call(obj, Source )
+}
+
+func ThumbBarButtonList_BeginUpdate(obj uintptr)  {
+    thumbBarButtonList_BeginUpdate.Call(obj)
+}
+
+func ThumbBarButtonList_Clear(obj uintptr)  {
+    thumbBarButtonList_Clear.Call(obj)
+}
+
+func ThumbBarButtonList_ClearAndResetID(obj uintptr)  {
+    thumbBarButtonList_ClearAndResetID.Call(obj)
+}
+
+func ThumbBarButtonList_Delete(obj uintptr, Index int32)  {
+    thumbBarButtonList_Delete.Call(obj, uintptr(Index) )
+}
+
+func ThumbBarButtonList_EndUpdate(obj uintptr)  {
+    thumbBarButtonList_EndUpdate.Call(obj)
+}
+
+func ThumbBarButtonList_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := thumbBarButtonList_FindItemID.Call(obj, uintptr(ID) )
+    return ret
+}
+
+func ThumbBarButtonList_GetNamePath(obj uintptr) string {
+    ret, _, _ := thumbBarButtonList_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ThumbBarButtonList_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := thumbBarButtonList_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func ThumbBarButtonList_DisposeOf(obj uintptr)  {
+    thumbBarButtonList_DisposeOf.Call(obj)
+}
+
+func ThumbBarButtonList_ClassType(obj uintptr) TClass {
+    ret, _, _ := thumbBarButtonList_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func ThumbBarButtonList_ClassName(obj uintptr) string {
+    ret, _, _ := thumbBarButtonList_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ThumbBarButtonList_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := thumbBarButtonList_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ThumbBarButtonList_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := thumbBarButtonList_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func ThumbBarButtonList_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := thumbBarButtonList_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func ThumbBarButtonList_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := thumbBarButtonList_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func ThumbBarButtonList_ToString(obj uintptr) string {
+    ret, _, _ := thumbBarButtonList_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ThumbBarButtonList_SetOnChange(obj uintptr, fn interface{}) {
+    thumbBarButtonList_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func ThumbBarButtonList_GetCapacity(obj uintptr) int32 {
+    ret, _, _ := thumbBarButtonList_GetCapacity.Call(obj)
+    return int32(ret)
+}
+
+func ThumbBarButtonList_SetCapacity(obj uintptr, value int32) {
+   thumbBarButtonList_SetCapacity.Call(obj, uintptr(value))
+}
+
+func ThumbBarButtonList_GetCount(obj uintptr) int32 {
+    ret, _, _ := thumbBarButtonList_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func ThumbBarButtonList_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := thumbBarButtonList_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func ThumbBarButtonList_SetItems(obj uintptr, Index int32, value uintptr) {
+   thumbBarButtonList_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func ThumbBarButtonList_StaticClassType() TClass {
+    r, _, _:= thumbBarButtonList_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TPreviewClipRegion ---------------------------
+
+func PreviewClipRegion_Create() uintptr {
+    ret, _, _ := previewClipRegion_Create.Call()
+    return ret
+}
+
+func PreviewClipRegion_Free(obj uintptr) {
+    previewClipRegion_Free.Call(obj)
+}
+
+func PreviewClipRegion_Assign(obj uintptr, Source uintptr)  {
+    previewClipRegion_Assign.Call(obj, Source )
+}
+
+func PreviewClipRegion_GetNamePath(obj uintptr) string {
+    ret, _, _ := previewClipRegion_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func PreviewClipRegion_DisposeOf(obj uintptr)  {
+    previewClipRegion_DisposeOf.Call(obj)
+}
+
+func PreviewClipRegion_ClassType(obj uintptr) TClass {
+    ret, _, _ := previewClipRegion_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func PreviewClipRegion_ClassName(obj uintptr) string {
+    ret, _, _ := previewClipRegion_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func PreviewClipRegion_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := previewClipRegion_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func PreviewClipRegion_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := previewClipRegion_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func PreviewClipRegion_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := previewClipRegion_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func PreviewClipRegion_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := previewClipRegion_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func PreviewClipRegion_ToString(obj uintptr) string {
+    ret, _, _ := previewClipRegion_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func PreviewClipRegion_SetOnChange(obj uintptr, fn interface{}) {
+    previewClipRegion_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func PreviewClipRegion_GetBounds(obj uintptr) TRect {
+    var ret TRect
+    previewClipRegion_GetBounds.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func PreviewClipRegion_GetLeft(obj uintptr) int32 {
+    ret, _, _ := previewClipRegion_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func PreviewClipRegion_SetLeft(obj uintptr, value int32) {
+   previewClipRegion_SetLeft.Call(obj, uintptr(value))
+}
+
+func PreviewClipRegion_GetTop(obj uintptr) int32 {
+    ret, _, _ := previewClipRegion_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func PreviewClipRegion_SetTop(obj uintptr, value int32) {
+   previewClipRegion_SetTop.Call(obj, uintptr(value))
+}
+
+func PreviewClipRegion_GetHeight(obj uintptr) int32 {
+    ret, _, _ := previewClipRegion_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func PreviewClipRegion_SetHeight(obj uintptr, value int32) {
+   previewClipRegion_SetHeight.Call(obj, uintptr(value))
+}
+
+func PreviewClipRegion_GetWidth(obj uintptr) int32 {
+    ret, _, _ := previewClipRegion_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func PreviewClipRegion_SetWidth(obj uintptr, value int32) {
+   previewClipRegion_SetWidth.Call(obj, uintptr(value))
+}
+
+func PreviewClipRegion_StaticClassType() TClass {
+    r, _, _:= previewClipRegion_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TThumbBarButton ---------------------------
+
+func ThumbBarButton_Create() uintptr {
+    ret, _, _ := thumbBarButton_Create.Call()
+    return ret
+}
+
+func ThumbBarButton_Free(obj uintptr) {
+    thumbBarButton_Free.Call(obj)
+}
+
+func ThumbBarButton_GetNamePath(obj uintptr) string {
+    ret, _, _ := thumbBarButton_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ThumbBarButton_Assign(obj uintptr, Source uintptr)  {
+    thumbBarButton_Assign.Call(obj, Source )
+}
+
+func ThumbBarButton_DisposeOf(obj uintptr)  {
+    thumbBarButton_DisposeOf.Call(obj)
+}
+
+func ThumbBarButton_ClassType(obj uintptr) TClass {
+    ret, _, _ := thumbBarButton_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func ThumbBarButton_ClassName(obj uintptr) string {
+    ret, _, _ := thumbBarButton_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ThumbBarButton_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := thumbBarButton_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ThumbBarButton_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := thumbBarButton_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func ThumbBarButton_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := thumbBarButton_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func ThumbBarButton_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := thumbBarButton_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func ThumbBarButton_ToString(obj uintptr) string {
+    ret, _, _ := thumbBarButton_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ThumbBarButton_GetAction(obj uintptr) uintptr {
+    ret, _, _ := thumbBarButton_GetAction.Call(obj)
+    return ret
+}
+
+func ThumbBarButton_SetAction(obj uintptr, value uintptr) {
+   thumbBarButton_SetAction.Call(obj, value)
+}
+
+func ThumbBarButton_GetHint(obj uintptr) string {
+    ret, _, _ := thumbBarButton_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ThumbBarButton_SetHint(obj uintptr, value string) {
+   thumbBarButton_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func ThumbBarButton_GetIcon(obj uintptr) uintptr {
+    ret, _, _ := thumbBarButton_GetIcon.Call(obj)
+    return ret
+}
+
+func ThumbBarButton_SetIcon(obj uintptr, value uintptr) {
+   thumbBarButton_SetIcon.Call(obj, value)
+}
+
+func ThumbBarButton_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := thumbBarButton_GetCollection.Call(obj)
+    return ret
+}
+
+func ThumbBarButton_SetCollection(obj uintptr, value uintptr) {
+   thumbBarButton_SetCollection.Call(obj, value)
+}
+
+func ThumbBarButton_GetIndex(obj uintptr) int32 {
+    ret, _, _ := thumbBarButton_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func ThumbBarButton_SetIndex(obj uintptr, value int32) {
+   thumbBarButton_SetIndex.Call(obj, uintptr(value))
+}
+
+func ThumbBarButton_StaticClassType() TClass {
+    r, _, _:= thumbBarButton_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TJumpListCollection ---------------------------
+
+func JumpListCollection_Owner(obj uintptr) uintptr {
+    ret, _, _ := jumpListCollection_Owner.Call(obj)
+    return ret
+}
+
+func JumpListCollection_Add(obj uintptr) uintptr {
+    ret, _, _ := jumpListCollection_Add.Call(obj)
+    return ret
+}
+
+func JumpListCollection_Assign(obj uintptr, Source uintptr)  {
+    jumpListCollection_Assign.Call(obj, Source )
+}
+
+func JumpListCollection_BeginUpdate(obj uintptr)  {
+    jumpListCollection_BeginUpdate.Call(obj)
+}
+
+func JumpListCollection_Clear(obj uintptr)  {
+    jumpListCollection_Clear.Call(obj)
+}
+
+func JumpListCollection_ClearAndResetID(obj uintptr)  {
+    jumpListCollection_ClearAndResetID.Call(obj)
+}
+
+func JumpListCollection_Delete(obj uintptr, Index int32)  {
+    jumpListCollection_Delete.Call(obj, uintptr(Index) )
+}
+
+func JumpListCollection_EndUpdate(obj uintptr)  {
+    jumpListCollection_EndUpdate.Call(obj)
+}
+
+func JumpListCollection_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := jumpListCollection_FindItemID.Call(obj, uintptr(ID) )
+    return ret
+}
+
+func JumpListCollection_GetNamePath(obj uintptr) string {
+    ret, _, _ := jumpListCollection_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListCollection_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := jumpListCollection_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func JumpListCollection_DisposeOf(obj uintptr)  {
+    jumpListCollection_DisposeOf.Call(obj)
+}
+
+func JumpListCollection_ClassType(obj uintptr) TClass {
+    ret, _, _ := jumpListCollection_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func JumpListCollection_ClassName(obj uintptr) string {
+    ret, _, _ := jumpListCollection_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListCollection_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := jumpListCollection_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func JumpListCollection_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := jumpListCollection_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpListCollection_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := jumpListCollection_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func JumpListCollection_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := jumpListCollection_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func JumpListCollection_ToString(obj uintptr) string {
+    ret, _, _ := jumpListCollection_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpListCollection_SetOnChange(obj uintptr, fn interface{}) {
+    jumpListCollection_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func JumpListCollection_GetCapacity(obj uintptr) int32 {
+    ret, _, _ := jumpListCollection_GetCapacity.Call(obj)
+    return int32(ret)
+}
+
+func JumpListCollection_SetCapacity(obj uintptr, value int32) {
+   jumpListCollection_SetCapacity.Call(obj, uintptr(value))
+}
+
+func JumpListCollection_GetCount(obj uintptr) int32 {
+    ret, _, _ := jumpListCollection_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func JumpListCollection_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := jumpListCollection_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func JumpListCollection_SetItems(obj uintptr, Index int32, value uintptr) {
+   jumpListCollection_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func JumpListCollection_StaticClassType() TClass {
+    r, _, _:= jumpListCollection_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TJumpCategories ---------------------------
+
+func JumpCategories_GetCategoryIndex(obj uintptr, CategoryName string) int32 {
+    ret, _, _ := jumpCategories_GetCategoryIndex.Call(obj, GoStrToDStr(CategoryName) )
+    return int32(ret)
+}
+
+func JumpCategories_Owner(obj uintptr) uintptr {
+    ret, _, _ := jumpCategories_Owner.Call(obj)
+    return ret
+}
+
+func JumpCategories_Add(obj uintptr) uintptr {
+    ret, _, _ := jumpCategories_Add.Call(obj)
+    return ret
+}
+
+func JumpCategories_Assign(obj uintptr, Source uintptr)  {
+    jumpCategories_Assign.Call(obj, Source )
+}
+
+func JumpCategories_BeginUpdate(obj uintptr)  {
+    jumpCategories_BeginUpdate.Call(obj)
+}
+
+func JumpCategories_Clear(obj uintptr)  {
+    jumpCategories_Clear.Call(obj)
+}
+
+func JumpCategories_ClearAndResetID(obj uintptr)  {
+    jumpCategories_ClearAndResetID.Call(obj)
+}
+
+func JumpCategories_Delete(obj uintptr, Index int32)  {
+    jumpCategories_Delete.Call(obj, uintptr(Index) )
+}
+
+func JumpCategories_EndUpdate(obj uintptr)  {
+    jumpCategories_EndUpdate.Call(obj)
+}
+
+func JumpCategories_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := jumpCategories_FindItemID.Call(obj, uintptr(ID) )
+    return ret
+}
+
+func JumpCategories_GetNamePath(obj uintptr) string {
+    ret, _, _ := jumpCategories_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategories_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := jumpCategories_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func JumpCategories_DisposeOf(obj uintptr)  {
+    jumpCategories_DisposeOf.Call(obj)
+}
+
+func JumpCategories_ClassType(obj uintptr) TClass {
+    ret, _, _ := jumpCategories_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func JumpCategories_ClassName(obj uintptr) string {
+    ret, _, _ := jumpCategories_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategories_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := jumpCategories_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func JumpCategories_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := jumpCategories_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpCategories_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := jumpCategories_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func JumpCategories_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := jumpCategories_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func JumpCategories_ToString(obj uintptr) string {
+    ret, _, _ := jumpCategories_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategories_SetOnChange(obj uintptr, fn interface{}) {
+    jumpCategories_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func JumpCategories_GetCapacity(obj uintptr) int32 {
+    ret, _, _ := jumpCategories_GetCapacity.Call(obj)
+    return int32(ret)
+}
+
+func JumpCategories_SetCapacity(obj uintptr, value int32) {
+   jumpCategories_SetCapacity.Call(obj, uintptr(value))
+}
+
+func JumpCategories_GetCount(obj uintptr) int32 {
+    ret, _, _ := jumpCategories_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func JumpCategories_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := jumpCategories_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func JumpCategories_SetItems(obj uintptr, Index int32, value uintptr) {
+   jumpCategories_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func JumpCategories_StaticClassType() TClass {
+    r, _, _:= jumpCategories_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TJumpCategoryItem ---------------------------
+
+func JumpCategoryItem_Create() uintptr {
+    ret, _, _ := jumpCategoryItem_Create.Call()
+    return ret
+}
+
+func JumpCategoryItem_Free(obj uintptr) {
+    jumpCategoryItem_Free.Call(obj)
+}
+
+func JumpCategoryItem_GetNamePath(obj uintptr) string {
+    ret, _, _ := jumpCategoryItem_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategoryItem_Assign(obj uintptr, Source uintptr)  {
+    jumpCategoryItem_Assign.Call(obj, Source )
+}
+
+func JumpCategoryItem_DisposeOf(obj uintptr)  {
+    jumpCategoryItem_DisposeOf.Call(obj)
+}
+
+func JumpCategoryItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := jumpCategoryItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func JumpCategoryItem_ClassName(obj uintptr) string {
+    ret, _, _ := jumpCategoryItem_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategoryItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := jumpCategoryItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func JumpCategoryItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := jumpCategoryItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func JumpCategoryItem_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := jumpCategoryItem_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func JumpCategoryItem_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := jumpCategoryItem_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func JumpCategoryItem_ToString(obj uintptr) string {
+    ret, _, _ := jumpCategoryItem_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategoryItem_GetVisible(obj uintptr) bool {
+    ret, _, _ := jumpCategoryItem_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func JumpCategoryItem_SetVisible(obj uintptr, value bool) {
+   jumpCategoryItem_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func JumpCategoryItem_GetCategoryName(obj uintptr) string {
+    ret, _, _ := jumpCategoryItem_GetCategoryName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func JumpCategoryItem_SetCategoryName(obj uintptr, value string) {
+   jumpCategoryItem_SetCategoryName.Call(obj, GoStrToDStr(value))
+}
+
+func JumpCategoryItem_GetItems(obj uintptr) uintptr {
+    ret, _, _ := jumpCategoryItem_GetItems.Call(obj)
+    return ret
+}
+
+func JumpCategoryItem_SetItems(obj uintptr, value uintptr) {
+   jumpCategoryItem_SetItems.Call(obj, value)
+}
+
+func JumpCategoryItem_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := jumpCategoryItem_GetCollection.Call(obj)
+    return ret
+}
+
+func JumpCategoryItem_SetCollection(obj uintptr, value uintptr) {
+   jumpCategoryItem_SetCollection.Call(obj, value)
+}
+
+func JumpCategoryItem_GetIndex(obj uintptr) int32 {
+    ret, _, _ := jumpCategoryItem_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func JumpCategoryItem_SetIndex(obj uintptr, value int32) {
+   jumpCategoryItem_SetIndex.Call(obj, uintptr(value))
+}
+
+func JumpCategoryItem_StaticClassType() TClass {
+    r, _, _:= jumpCategoryItem_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TCollection ---------------------------
+
+func Collection_Create() uintptr {
+    ret, _, _ := collection_Create.Call()
+    return ret
+}
+
+func Collection_Free(obj uintptr) {
+    collection_Free.Call(obj)
+}
+
+func Collection_Owner(obj uintptr) uintptr {
+    ret, _, _ := collection_Owner.Call(obj)
+    return ret
+}
+
+func Collection_Add(obj uintptr) uintptr {
+    ret, _, _ := collection_Add.Call(obj)
+    return ret
+}
+
+func Collection_Assign(obj uintptr, Source uintptr)  {
+    collection_Assign.Call(obj, Source )
+}
+
+func Collection_BeginUpdate(obj uintptr)  {
+    collection_BeginUpdate.Call(obj)
+}
+
+func Collection_Clear(obj uintptr)  {
+    collection_Clear.Call(obj)
+}
+
+func Collection_ClearAndResetID(obj uintptr)  {
+    collection_ClearAndResetID.Call(obj)
+}
+
+func Collection_Delete(obj uintptr, Index int32)  {
+    collection_Delete.Call(obj, uintptr(Index) )
+}
+
+func Collection_EndUpdate(obj uintptr)  {
+    collection_EndUpdate.Call(obj)
+}
+
+func Collection_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := collection_FindItemID.Call(obj, uintptr(ID) )
+    return ret
+}
+
+func Collection_GetNamePath(obj uintptr) string {
+    ret, _, _ := collection_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Collection_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := collection_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func Collection_DisposeOf(obj uintptr)  {
+    collection_DisposeOf.Call(obj)
+}
+
+func Collection_ClassType(obj uintptr) TClass {
+    ret, _, _ := collection_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func Collection_ClassName(obj uintptr) string {
+    ret, _, _ := collection_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Collection_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := collection_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Collection_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := collection_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func Collection_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := collection_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func Collection_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := collection_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func Collection_ToString(obj uintptr) string {
+    ret, _, _ := collection_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Collection_GetCapacity(obj uintptr) int32 {
+    ret, _, _ := collection_GetCapacity.Call(obj)
+    return int32(ret)
+}
+
+func Collection_SetCapacity(obj uintptr, value int32) {
+   collection_SetCapacity.Call(obj, uintptr(value))
+}
+
+func Collection_GetCount(obj uintptr) int32 {
+    ret, _, _ := collection_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func Collection_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := collection_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func Collection_SetItems(obj uintptr, Index int32, value uintptr) {
+   collection_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func Collection_StaticClassType() TClass {
+    r, _, _:= collection_StaticClassType.Call()
     return TClass(r)
 }

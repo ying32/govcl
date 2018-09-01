@@ -50,6 +50,11 @@ begin
   AObj.Clear;
 end;
 
+procedure HeaderSections_ClearAndResetID(AObj: THeaderSections); stdcall;
+begin
+  AObj.ClearAndResetID;
+end;
+
 procedure HeaderSections_Delete(AObj: THeaderSections; Index: Integer); stdcall;
 begin
   AObj.Delete(Index);
@@ -58,6 +63,11 @@ end;
 procedure HeaderSections_EndUpdate(AObj: THeaderSections); stdcall;
 begin
   AObj.EndUpdate;
+end;
+
+function HeaderSections_FindItemID(AObj: THeaderSections; ID: Integer): TCollectionItem; stdcall;
+begin
+  Result :=  AObj.FindItemID(ID);
 end;
 
 function HeaderSections_GetNamePath(AObj: THeaderSections): PChar; stdcall;
@@ -145,8 +155,10 @@ exports
   HeaderSections_Assign,
   HeaderSections_BeginUpdate,
   HeaderSections_Clear,
+  HeaderSections_ClearAndResetID,
   HeaderSections_Delete,
   HeaderSections_EndUpdate,
+  HeaderSections_FindItemID,
   HeaderSections_GetNamePath,
   HeaderSections_DisposeOf,
   HeaderSections_ClassType,

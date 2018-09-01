@@ -275,6 +275,16 @@ func (l *TListColumn) SetWidth(value int32) {
     ListColumn_SetWidth(l.instance, value)
 }
 
+// Collection
+func (l *TListColumn) Collection() *TCollection {
+    return CollectionFromInst(ListColumn_GetCollection(l.instance))
+}
+
+// SetCollection
+func (l *TListColumn) SetCollection(value *TCollection) {
+    ListColumn_SetCollection(l.instance, CheckPtr(value))
+}
+
 // Index
 func (l *TListColumn) Index() int32 {
     return ListColumn_GetIndex(l.instance)

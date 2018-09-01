@@ -626,3 +626,13 @@ const (
 const (
 	INVALID_HANDLE_VALUE = ^(-1)
 )
+
+/* Init/Uninit */
+
+const (
+	// flags passed as the coInit parameter to CoInitializeEx.
+	COINIT_MULTITHREADED     = 0 // OLE calls objects on any thread.
+	COINIT_APARTMENTTHREADED = 2 // Apartment model
+	COINIT_DISABLE_OLE1DDE   = 4 // Dont use DDE for Ole1 support.
+	COINIT_SPEED_OVER_MEMORY = 8 // Trade memory for speed
+)
