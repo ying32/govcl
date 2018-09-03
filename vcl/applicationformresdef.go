@@ -72,11 +72,11 @@ func (a *TApplication) fullFiledVal(f *TForm, out interface{}) {
 	// out是一个 **TXXForm的变量指针，未进行分配内存，表现形式为 **TXXX，每使用一个Elem()减少一个
 	vt := reflect.TypeOf(out).Elem()
 	v := reflect.New(vt.Elem())
-	// 将分实例化后的值填充到out指针变量中，这里要能修改的需要使用Elem()方法获取
+	// 将实例化后的值填充到out指针变量中，这里要能修改的需要使用Elem()方法获取
 	reflect.ValueOf(out).Elem().Set(v)
 	// 获取指针类型
 	vPtr := v.Elem()
-	// 检查是否不效，并且可以被设置
+	// 检查是否有效，并且可以被设置
 	if vPtr.IsValid() && vPtr.CanSet() {
 		// 如果没有名字，就指定一个名字，名字以当前类，如果首个为T则去除
 		if f.Name() == "" {
