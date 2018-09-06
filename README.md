@@ -32,7 +32,9 @@ VCL style files
 
 > go get github.com/ying32/govcl    
 
-```go
+* Method 1: 
+
+```golang
 package main
 
 import (
@@ -51,8 +53,87 @@ func main() {
     mainForm.ScreenCenter()
     vcl.Application.Run()
 }
+```  
+
+* Method 2:  
+
+```golang
+package main
+
+
+import (
+   "github.com/ying32/govcl/vcl"
+)
+
+type TMainForm struct {
+	*vcl.TForm
+	Btn1     *vcl.TButton
+}
+
+var (
+	mainForm *TMainForm
+)
+
+func main() {
+    vcl.Application.Initialize()
+	vcl.Application.SetMainFormOnTaskBar(true)
+	vcl.Application.CreateForm(&mainForm)
+	vcl.Application.Run()
+}
+
+
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
+    f.SetCaption("Hello")
+    f.Btn1 = vcl.NewButton(f)
+	f.Btn1.SetParent(f)
+	f.Btn1.SetBounds(10, 10, 88, 28)
+	f.Btn1.SetCaption("Button1")
+	f.Btn1.SetOnClick(f.OnButtonClick)  
+}
+
+func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
+	vcl.ShowMessage("Hello!")
+}
 
 ```
+
+* Method 3: 
+
+```golang
+package main
+
+
+import (
+   "github.com/ying32/govcl/vcl"
+)
+
+type TMainForm struct {
+	*vcl.TForm
+	Btn1     *vcl.TButton
+}
+
+var (
+	mainForm *TMainForm
+)
+
+func main() {
+    vcl.Application.Initialize()
+	vcl.Application.SetMainFormOnTaskBar(true)
+	vcl.Application.CreateForm(mainFormBytes, &mainForm)
+	vcl.Application.Run()
+}
+
+
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
+    
+}
+
+func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
+	vcl.ShowMessage("Hello!")
+}
+```
+**Method 3 needs to be used in conjunction with the UI designer or the res2go tool.**  
+
 ---   
 ### FAQ
 
