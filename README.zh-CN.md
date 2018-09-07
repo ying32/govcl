@@ -6,7 +6,7 @@
 ----
 
 [![license](https://img.shields.io/badge/开源协议-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
-![Recommended Golang Version](https://img.shields.io/badge/推荐Goland版本->=1.9.0-green.svg)
+![Recommended Golang Version](https://img.shields.io/badge/推荐Golang版本->=1.9.0-green.svg)
 [![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 [![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)  
@@ -32,6 +32,8 @@ VCL样式文件
 ### 使用方法
 > go get github.com/ying32/govcl  
 
+* 方法一：  
+
 ```golang
 package main
 
@@ -51,7 +53,87 @@ func main() {
     mainForm.ScreenCenter()
     vcl.Application.Run()
 }
+```  
+
+* 方法二：  
+
+```golang
+package main
+
+
+import (
+   "github.com/ying32/govcl/vcl"
+)
+
+type TMainForm struct {
+    *vcl.TForm
+    Btn1     *vcl.TButton
+}
+
+var (
+    mainForm *TMainForm
+)
+
+func main() {
+    vcl.Application.Initialize()
+    vcl.Application.SetMainFormOnTaskBar(true)
+    vcl.Application.CreateForm(&mainForm)
+    vcl.Application.Run()
+}
+
+
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
+    f.SetCaption("Hello")
+    f.Btn1 = vcl.NewButton(f)
+    f.Btn1.SetParent(f)
+    f.Btn1.SetBounds(10, 10, 88, 28)
+    f.Btn1.SetCaption("Button1")
+    f.Btn1.SetOnClick(f.OnButtonClick)  
+}
+
+func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+
 ```
+
+* 方法三：  
+
+```golang
+package main
+
+
+import (
+   "github.com/ying32/govcl/vcl"
+)
+
+type TMainForm struct {
+    *vcl.TForm
+    Btn1     *vcl.TButton
+}
+
+var (
+    mainForm *TMainForm
+)
+
+func main() {
+    vcl.Application.Initialize()
+    vcl.Application.SetMainFormOnTaskBar(true)
+    vcl.Application.CreateForm(mainFormBytes, &mainForm)
+    vcl.Application.Run()
+}
+
+
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
+    
+}
+
+func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+```
+**方法三需要配合UI设计器或者res2go工具使用。**  
+
 
 ----
 
