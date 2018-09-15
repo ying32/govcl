@@ -63,10 +63,11 @@ type
               (*geGesture, geMouseActivate, geListBoxData, geListBoxDataFind, geListBoxDataObject,*) geListBoxMeasureItem,
               geChanging, geUpDownChanging,
               geListViewChanging, geListViewData, geListViewDataFind, geListViewEdited, geListViewEditing, geListViewInsert,
-              geListViewDeletion,
+              geListViewDeletion, geListViewCustomDraw, geListViewCustomDrawItem, geListViewCustomDrawSubItem, geListViewDrawItem,
 
               geTreeViewChanging(*, geTreeViewCancelEdit*), geTreeViewAddition, geTreeViewCollapsed, geTreeViewCollapsing,
               geTreeViewDeletion, geTreeViewEdited, geTreeViewEditing, geTreeViewExpanded, geTreeViewExpanding, (*geTreeViewHint, *)
+              geTreeViewCustomDraw, geTreeViewCustomDrawItem,
 
               geMenuItemMeasureItem, gePageControlChanging);
 
@@ -130,6 +131,9 @@ type
     procedure ListViewOnAdvancedCustomDrawSubItem(Sender: TCustomListView;
       Item: TListItem; SubItem: Integer; State: TCustomDrawState;
       Stage: TCustomDrawStage; var DefaultDraw: Boolean);
+
+
+
 
     procedure PageControlOnGetImageIndex(Sender: TObject; TabIndex: Integer; var ImageIndex: Integer);
 
@@ -209,6 +213,13 @@ type
     procedure ListViewOnInsert(Sender: TObject; Item: TListItem);
     procedure ListViewOnDeletion(Sender: TObject; Item: TListItem);
 
+    procedure ListViewOnCustomDraw(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean);
+    procedure ListViewOnCustomDrawItem(Sender: TCustomListView; Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);
+    procedure ListViewOnCustomDrawSubItem(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
+    procedure ListViewOnDrawItem(Sender: TCustomListView; Item: TListItem; ARect: TRect; State: TOwnerDrawState);
+
+
+
 
     procedure TreeViewOnChanging(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean);
     //procedure TreeViewOnCancelEdit(Sender: TObject; Node: TTreeNode);
@@ -221,6 +232,10 @@ type
     procedure TreeViewOnExpanded(Sender: TObject; Node: TTreeNode);
     procedure TreeViewOnExpanding(Sender: TObject; Node: TTreeNode; var AllowExpansion: Boolean);
     //procedure TreeViewOnHint(Sender: TObject; const Node: TTreeNode; var Hint: string);
+    procedure TreeViewOnCustomDraw(Sender: TCustomTreeView; const ARect: TRect; var DefaultDraw: Boolean);
+    procedure TreeViewOnCustomDrawItem(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
+
+
 
     procedure MenuItemOnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);
     procedure PageControlOnChanging(Sender: TObject; var AllowChange: Boolean);
@@ -569,6 +584,30 @@ begin
 end;
 
 
+procedure TEventClass.ListViewOnCustomDraw(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, geListViewCustomDraw, [Sender, @ARect, @DefaultDraw]);
+end;
+
+procedure TEventClass.ListViewOnCustomDrawItem(Sender: TCustomListView;
+  Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, geListViewCustomDrawItem, [Sender, Item, PWord(@State)^, @DefaultDraw]);
+end;
+
+procedure TEventClass.ListViewOnCustomDrawSubItem(Sender: TCustomListView;
+  Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, geListViewCustomDrawSubItem, [Sender, Item, SubItem, PWord(@State)^, @DefaultDraw]);
+end;
+
+procedure TEventClass.ListViewOnDrawItem(Sender: TCustomListView; Item: TListItem; ARect: TRect; State: TOwnerDrawState);
+begin
+  SendEvent(Sender, geListViewDrawItem, [Sender, Item, @ARect, PWord(@State)^]);
+end;
+
+
+
 procedure TEventClass.TreeViewOnChanging(Sender: TObject; Node: TTreeNode; var AllowChange: Boolean);
 begin
   SendEvent(Sender, geTreeViewChanging, [Sender, Node, @AllowChange]);
@@ -631,6 +670,16 @@ end;
 //  SendEvent(Sender, geTreeViewHint, [Sender, Node, @LHint]);
 //  Hint := LHint;
 //end;
+
+procedure TEventClass.TreeViewOnCustomDraw(Sender: TCustomTreeView; const ARect: TRect; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, geTreeViewCustomDraw, [Sender, @ARect, @DefaultDraw]);
+end;
+
+procedure TEventClass.TreeViewOnCustomDrawItem(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean);
+begin
+  SendEvent(Sender, geTreeViewCustomDrawItem, [Sender, Node, PWord(@State)^, @DefaultDraw]);
+end;
 
 
 procedure TEventClass.MenuItemOnMeasureItem(Sender: TObject; ACanvas: TCanvas; var Width, Height: Integer);

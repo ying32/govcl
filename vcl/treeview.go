@@ -1101,6 +1101,16 @@ func (t *TTreeView) SetOnContextPopup(fn TContextPopupEvent) {
     TreeView_SetOnContextPopup(t.instance, fn)
 }
 
+// SetOnCustomDraw
+func (t *TTreeView) SetOnCustomDraw(fn TTVCustomDrawEvent) {
+    TreeView_SetOnCustomDraw(t.instance, fn)
+}
+
+// SetOnCustomDrawItem
+func (t *TTreeView) SetOnCustomDrawItem(fn TTVCustomDrawItemEvent) {
+    TreeView_SetOnCustomDrawItem(t.instance, fn)
+}
+
 // SetOnDblClick
 // CN: 设置双击事件。
 // EN: .

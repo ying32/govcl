@@ -787,6 +787,42 @@ begin
   EventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure ListView_SetOnCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDraw := nil;
+    EventClass.Remove(AObj, geListViewCustomDraw);
+    Exit;
+  end;
+  AObj.OnCustomDraw := @EventClass.ListViewOnCustomDraw;
+  EventClass.Add(AObj, geListViewCustomDraw, AEventId);
+end;
+
+procedure ListView_SetOnCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDrawItem := nil;
+    EventClass.Remove(AObj, geListViewCustomDrawItem);
+    Exit;
+  end;
+  AObj.OnCustomDrawItem := @EventClass.ListViewOnCustomDrawItem;
+  EventClass.Add(AObj, geListViewCustomDrawItem, AEventId);
+end;
+
+procedure ListView_SetOnCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDrawSubItem := nil;
+    EventClass.Remove(AObj, geListViewCustomDrawSubItem);
+    Exit;
+  end;
+  AObj.OnCustomDrawSubItem := @EventClass.ListViewOnCustomDrawSubItem;
+  EventClass.Add(AObj, geListViewCustomDrawSubItem, AEventId);
+end;
+
 procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -1538,6 +1574,9 @@ exports
   ListView_SetOnColumnClick,
   ListView_SetOnCompare,
   ListView_SetOnContextPopup,
+  ListView_SetOnCustomDraw,
+  ListView_SetOnCustomDrawItem,
+  ListView_SetOnCustomDrawSubItem,
   ListView_SetOnData,
   ListView_SetOnDataFind,
   ListView_SetOnDblClick,

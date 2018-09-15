@@ -28363,6 +28363,18 @@ func ListView_SetOnContextPopup(obj uintptr, fn interface{}) {
     listView_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnCustomDraw(obj uintptr, fn interface{}) {
+    listView_SetOnCustomDraw.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnCustomDrawItem(obj uintptr, fn interface{}) {
+    listView_SetOnCustomDrawItem.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnCustomDrawSubItem(obj uintptr, fn interface{}) {
+    listView_SetOnCustomDrawSubItem.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnData(obj uintptr, fn interface{}) {
     listView_SetOnData.Call(obj, addEventToMap(fn))
 }
@@ -28377,6 +28389,10 @@ func ListView_SetOnDblClick(obj uintptr, fn interface{}) {
 
 func ListView_SetOnDeletion(obj uintptr, fn interface{}) {
     listView_SetOnDeletion.Call(obj, addEventToMap(fn))
+}
+
+func ListView_SetOnDrawItem(obj uintptr, fn interface{}) {
+    listView_SetOnDrawItem.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnEdited(obj uintptr, fn interface{}) {
@@ -29554,6 +29570,14 @@ func TreeView_SetOnCompare(obj uintptr, fn interface{}) {
 
 func TreeView_SetOnContextPopup(obj uintptr, fn interface{}) {
     treeView_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnCustomDraw(obj uintptr, fn interface{}) {
+    treeView_SetOnCustomDraw.Call(obj, addEventToMap(fn))
+}
+
+func TreeView_SetOnCustomDrawItem(obj uintptr, fn interface{}) {
+    treeView_SetOnCustomDrawItem.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnDblClick(obj uintptr, fn interface{}) {

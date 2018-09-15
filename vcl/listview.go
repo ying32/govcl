@@ -1168,6 +1168,21 @@ func (l *TListView) SetOnContextPopup(fn TContextPopupEvent) {
     ListView_SetOnContextPopup(l.instance, fn)
 }
 
+// SetOnCustomDraw
+func (l *TListView) SetOnCustomDraw(fn TLVCustomDrawEvent) {
+    ListView_SetOnCustomDraw(l.instance, fn)
+}
+
+// SetOnCustomDrawItem
+func (l *TListView) SetOnCustomDrawItem(fn TLVCustomDrawItemEvent) {
+    ListView_SetOnCustomDrawItem(l.instance, fn)
+}
+
+// SetOnCustomDrawSubItem
+func (l *TListView) SetOnCustomDrawSubItem(fn TLVCustomDrawSubItemEvent) {
+    ListView_SetOnCustomDrawSubItem(l.instance, fn)
+}
+
 // SetOnData
 func (l *TListView) SetOnData(fn TLVOwnerDataEvent) {
     ListView_SetOnData(l.instance, fn)
@@ -1188,6 +1203,11 @@ func (l *TListView) SetOnDblClick(fn TNotifyEvent) {
 // SetOnDeletion
 func (l *TListView) SetOnDeletion(fn TLVDeletedEvent) {
     ListView_SetOnDeletion(l.instance, fn)
+}
+
+// SetOnDrawItem
+func (l *TListView) SetOnDrawItem(fn TLVDrawItemEvent) {
+    ListView_SetOnDrawItem(l.instance, fn)
 }
 
 // SetOnEdited

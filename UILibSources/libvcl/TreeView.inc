@@ -892,6 +892,30 @@ begin
   TEventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure TreeView_SetOnCustomDraw(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDraw := nil;
+    TEventClass.Remove(AObj, geTreeViewCustomDraw);
+    Exit;
+  end;
+  AObj.OnCustomDraw := TEventClass.TreeViewOnCustomDraw;
+  TEventClass.Add(AObj, geTreeViewCustomDraw, AEventId);
+end;
+
+procedure TreeView_SetOnCustomDrawItem(AObj: TTreeView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDrawItem := nil;
+    TEventClass.Remove(AObj, geTreeViewCustomDrawItem);
+    Exit;
+  end;
+  AObj.OnCustomDrawItem := TEventClass.TreeViewOnCustomDrawItem;
+  TEventClass.Add(AObj, geTreeViewCustomDrawItem, AEventId);
+end;
+
 procedure TreeView_SetOnDblClick(AObj: TTreeView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1742,6 +1766,8 @@ exports
   TreeView_SetOnCollapsing,
   TreeView_SetOnCompare,
   TreeView_SetOnContextPopup,
+  TreeView_SetOnCustomDraw,
+  TreeView_SetOnCustomDrawItem,
   TreeView_SetOnDblClick,
   TreeView_SetOnDeletion,
   TreeView_SetOnDragDrop,

@@ -685,6 +685,55 @@ func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				ObjectFromInst(getVal(0)),
 				int32(getVal(1)))
 
+			//--
+
+			//type TLVCustomDrawEvent func(sender *TListView, aRect TRect, defaultDraw *bool)
+		case TLVCustomDrawEvent:
+			v.(TLVCustomDrawEvent)(
+				ListViewFromInst(getVal(0)),
+				*(*TRect)(unsafe.Pointer(getVal(1))),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TLVCustomDrawItemEvent func(sender *TListView, item *TListItem, state TCustomDrawStage, defaultDraw *bool)
+		case TLVCustomDrawItemEvent:
+			v.(TLVCustomDrawItemEvent)(
+				ListViewFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)),
+				TCustomDrawStage(getVal(2)),
+				(*bool)(unsafe.Pointer(getVal(3))))
+
+			//type TLVCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem int32, state TCustomDrawStage, defaultDraw *bool)
+		case TLVCustomDrawSubItemEvent:
+			v.(TLVCustomDrawSubItemEvent)(
+				ListViewFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)),
+				int32(getVal(2)),
+				TCustomDrawStage(getVal(3)),
+				(*bool)(unsafe.Pointer(getVal(4))))
+
+			//type TLVDrawItemEvent func(sender *TListView, item *TListItem, rect TRect, state TOwnerDrawState)
+		case TLVDrawItemEvent:
+			v.(TLVDrawItemEvent)(
+				ListViewFromInst(getVal(0)),
+				ListItemFromInst(getVal(1)),
+				*(*TRect)(unsafe.Pointer(getVal(2))),
+				TOwnerDrawState(getVal(3)))
+
+			//type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
+		case TTVCustomDrawEvent:
+			v.(TTVCustomDrawEvent)(
+				TreeViewFromInst(getVal(0)),
+				*(*TRect)(unsafe.Pointer(getVal(1))),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawStage, defaultDraw *bool)
+		case TTVCustomDrawItemEvent:
+			v.(TTVCustomDrawItemEvent)(
+				TreeViewFromInst(getVal(0)),
+				TreeNodeFromInst(getVal(1)),
+				TCustomDrawStage(getVal(2)),
+				(*bool)(unsafe.Pointer(getVal(3))))
+
 		default:
 		}
 	}

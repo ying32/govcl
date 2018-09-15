@@ -290,3 +290,22 @@ type TWindowPreviewItemRequestEvent func(sender IObject, position *TPoint, previ
 
 //TThumbButtonNotifyEvent = procedure (Sender: TObject; AButtonID: Integer) of object;
 type TThumbButtonNotifyEvent func(sender IObject, aButtonID int32)
+
+//--
+//TLVCustomDrawEvent = procedure(Sender: TCustomListView; const ARect: TRect; var DefaultDraw: Boolean) of object;
+type TLVCustomDrawEvent func(sender *TListView, aRect TRect, defaultDraw *bool)
+
+//TLVCustomDrawItemEvent = procedure(Sender: TCustomListView; Item: TListItem; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
+type TLVCustomDrawItemEvent func(sender *TListView, item *TListItem, state TCustomDrawStage, defaultDraw *bool)
+
+//TLVCustomDrawSubItemEvent = procedure(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
+type TLVCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem int32, state TCustomDrawStage, defaultDraw *bool)
+
+//TLVDrawItemEvent = procedure(Sender: TCustomListView; Item: TListItem; Rect: TRect; State: TOwnerDrawState) of object;
+type TLVDrawItemEvent func(sender *TListView, item *TListItem, rect TRect, state TOwnerDrawState)
+
+//TTVCustomDrawEvent = procedure(Sender: TCustomTreeView; const ARect: TRect;var DefaultDraw: Boolean) of object;
+type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
+
+//TTVCustomDrawItemEvent = procedure(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
+type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawStage, defaultDraw *bool)
