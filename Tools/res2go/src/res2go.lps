@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="44">
+      <Unit0>
+        <Filename Value="res2go.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="6" Y="16"/>
+        <UsageCount Value="35"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="uFormDesignerFile.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="103"/>
+        <CursorPos X="52" Y="178"/>
+        <UsageCount Value="46"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="uresourceformtogo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uResourceFormToGo"/>
+        <TopLine Value="91"/>
+        <CursorPos X="15" Y="118"/>
+        <UsageCount Value="42"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="winResData.inc"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="34"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="supportsComponents.inc"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="35" Y="4"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="udelphiwriter.pas"/>
+        <UnitName Value="uDelphiWriter"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="248"/>
+        <CursorPos X="38" Y="295"/>
+        <UsageCount Value="22"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="lprtogo.lpr"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="3" Y="16"/>
+        <UsageCount Value="30"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="Gauges.pas"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="ImageButton.pas"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="ulinklabel.pas"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\fcl-base\src\custapp.pp"/>
+        <UnitName Value="CustApp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="267"/>
+        <CursorPos X="3" Y="270"/>
+        <UsageCount Value="10"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\fcl-base\src\singleinstance.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="9"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\filutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="10" Y="131"/>
+        <UsageCount Value="9"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\osutilsh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10"/>
+        <CursorPos X="13" Y="59"/>
+        <UsageCount Value="10"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\filutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="252"/>
+        <CursorPos X="3" Y="254"/>
+        <UsageCount Value="9"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="ucomponents.pas"/>
+        <UnitName Value="uComponents"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="3" Y="18"/>
+        <UsageCount Value="9"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1147"/>
+        <CursorPos X="36" Y="1546"/>
+        <UsageCount Value="18"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\reader.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="899"/>
+        <CursorPos X="32" Y="839"/>
+        <FoldState Value=" T3=50!1 pjHj12I1 T1/Q0/;"/>
+        <UsageCount Value="10"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\cregist.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="50"/>
+        <CursorPos X="10" Y="79"/>
+        <UsageCount Value="9"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\parser.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="381"/>
+        <CursorPos X="30" Y="390"/>
+        <UsageCount Value="14"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\classes.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2091"/>
+        <CursorPos X="91" Y="2304"/>
+        <FoldState Value=" T3ijO2X033!"/>
+        <UsageCount Value="11"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\rtl-objpas\src\inc\strutils.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="19"/>
+        <CursorPos X="14" Y="46"/>
+        <UsageCount Value="9"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\paszlib\src\zbase.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="270"/>
+        <CursorPos X="3" Y="288"/>
+        <UsageCount Value="9"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\paszlib\src\paszlib.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="47"/>
+        <CursorPos X="10" Y="64"/>
+        <UsageCount Value="9"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\syshelph.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="20"/>
+        <CursorPos X="36" Y="39"/>
+        <UsageCount Value="10"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\syshelp.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1318"/>
+        <CursorPos X="39" Y="1320"/>
+        <UsageCount Value="9"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysstrh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="208"/>
+        <CursorPos X="14" Y="242"/>
+        <UsageCount Value="9"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysstr.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2774"/>
+        <CursorPos X="61" Y="2774"/>
+        <FoldState Value=" T3i@B0}By"/>
+        <UsageCount Value="9"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\objpas.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="246"/>
+        <CursorPos X="3" Y="249"/>
+        <UsageCount Value="9"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="253"/>
+        <CursorPos X="3" Y="270"/>
+        <UsageCount Value="9"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win64\system.pp"/>
+        <UnitName Value="System"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="16"/>
+        <UsageCount Value="9"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysencodingh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="81"/>
+        <CursorPos X="20" Y="97"/>
+        <UsageCount Value="9"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\inc\objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="177"/>
+        <CursorPos X="23" Y="194"/>
+        <UsageCount Value="9"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\rtlconst.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="210"/>
+        <CursorPos X="3" Y="228"/>
+        <UsageCount Value="10"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win\sysutils.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="705"/>
+        <CursorPos X="40" Y="756"/>
+        <UsageCount Value="13"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win\wininc\func.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="958"/>
+        <CursorPos X="55" Y="987"/>
+        <UsageCount Value="10"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysinth.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="130"/>
+        <CursorPos X="5" Y="174"/>
+        <UsageCount Value="13"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="supportsComponents.txt"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\rtl-console\src\win\crt.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\rtl-console\src\inc\crth.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="24" Y="46"/>
+        <UsageCount Value="10"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win\wininc\defines.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1294"/>
+        <CursorPos X="22" Y="1315"/>
+        <UsageCount Value="10"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win32\system.pp"/>
+        <UnitName Value="System"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="625"/>
+        <CursorPos X="14" Y="669"/>
+        <UsageCount Value="10"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win\sysosh.inc"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="39"/>
+        <CursorPos X="3" Y="68"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\inc\heap.inc"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="1497"/>
+        <CursorPos X="11" Y="1526"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit43>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="331" Column="31" TopLine="317"/>
+      </Position1>
+      <Position2>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="124" Column="20" TopLine="106"/>
+      </Position2>
+      <Position3>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="139" Column="45" TopLine="97"/>
+      </Position3>
+      <Position4>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="131" Column="56" TopLine="97"/>
+      </Position4>
+      <Position5>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="130" Column="8" TopLine="109"/>
+      </Position5>
+      <Position6>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="348" Column="24" TopLine="330"/>
+      </Position6>
+      <Position7>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="132" Column="10" TopLine="112"/>
+      </Position7>
+      <Position8>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="347" Column="31" TopLine="337"/>
+      </Position8>
+      <Position9>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="345" Column="29" TopLine="324"/>
+      </Position9>
+      <Position10>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="358" Column="19" TopLine="344"/>
+      </Position10>
+      <Position11>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="359" Column="22" TopLine="314"/>
+      </Position11>
+      <Position12>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="9" Column="16"/>
+      </Position12>
+      <Position13>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="671" Column="14" TopLine="659"/>
+      </Position13>
+      <Position14>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="10" Column="12"/>
+      </Position14>
+      <Position15>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="9" Column="17"/>
+      </Position15>
+      <Position16>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="15" Column="15" TopLine="7"/>
+      </Position16>
+      <Position17>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="130" Column="26" TopLine="115"/>
+      </Position17>
+      <Position18>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="15" Column="20"/>
+      </Position18>
+      <Position19>
+        <Filename Value="res2go.lpr"/>
+        <Caret Line="10" Column="19"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="246" Column="44" TopLine="220"/>
+      </Position20>
+      <Position21>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="252" Column="11" TopLine="245"/>
+      </Position21>
+      <Position22>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="9" Column="17"/>
+      </Position22>
+      <Position23>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="298" Column="23" TopLine="290"/>
+      </Position23>
+      <Position24>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="322" Column="138" TopLine="290"/>
+      </Position24>
+      <Position25>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="573" Column="28" TopLine="529"/>
+      </Position25>
+      <Position26>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="605" Column="54" TopLine="541"/>
+      </Position26>
+      <Position27>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="118" Column="15" TopLine="91"/>
+      </Position27>
+      <Position28>
+        <Filename Value="supportsComponents.inc"/>
+        <Caret Line="128" Column="15" TopLine="94"/>
+      </Position28>
+      <Position29>
+        <Filename Value="supportsComponents.inc"/>
+        <Caret Line="127" Column="16" TopLine="94"/>
+      </Position29>
+      <Position30>
+        <Filename Value="supportsComponents.inc"/>
+        <Caret Line="4" Column="35"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
