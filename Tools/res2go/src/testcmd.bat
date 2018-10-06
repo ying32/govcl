@@ -1,0 +1,1 @@
+res2go -path "J:\MyGitRepo\GoVCLDesigner\LazarusProjectToGo\" -outpath ".\testcmd\" -outmain true -scale

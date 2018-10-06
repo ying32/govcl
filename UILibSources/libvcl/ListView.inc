@@ -960,6 +960,42 @@ begin
   TEventClass.Add(AObj, geContextPopup, AEventId);
 end;
 
+procedure ListView_SetOnCustomDraw(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDraw := nil;
+    TEventClass.Remove(AObj, geListViewCustomDraw);
+    Exit;
+  end;
+  AObj.OnCustomDraw := TEventClass.ListViewOnCustomDraw;
+  TEventClass.Add(AObj, geListViewCustomDraw, AEventId);
+end;
+
+procedure ListView_SetOnCustomDrawItem(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDrawItem := nil;
+    TEventClass.Remove(AObj, geListViewCustomDrawItem);
+    Exit;
+  end;
+  AObj.OnCustomDrawItem := TEventClass.ListViewOnCustomDrawItem;
+  TEventClass.Add(AObj, geListViewCustomDrawItem, AEventId);
+end;
+
+procedure ListView_SetOnCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnCustomDrawSubItem := nil;
+    TEventClass.Remove(AObj, geListViewCustomDrawSubItem);
+    Exit;
+  end;
+  AObj.OnCustomDrawSubItem := TEventClass.ListViewOnCustomDrawSubItem;
+  TEventClass.Add(AObj, geListViewCustomDrawSubItem, AEventId);
+end;
+
 procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1006,6 +1042,18 @@ begin
   end;
   AObj.OnDeletion := TEventClass.ListViewOnDeletion;
   TEventClass.Add(AObj, geListViewDeletion, AEventId);
+end;
+
+procedure ListView_SetOnDrawItem(AObj: TListView; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDrawItem := nil;
+    TEventClass.Remove(AObj, geListViewDrawItem);
+    Exit;
+  end;
+  AObj.OnDrawItem := TEventClass.ListViewOnDrawItem;
+  TEventClass.Add(AObj, geListViewDrawItem, AEventId);
 end;
 
 procedure ListView_SetOnEdited(AObj: TListView; AEventId: NativeUInt); stdcall;
@@ -1849,10 +1897,14 @@ exports
   ListView_SetOnColumnRightClick,
   ListView_SetOnCompare,
   ListView_SetOnContextPopup,
+  ListView_SetOnCustomDraw,
+  ListView_SetOnCustomDrawItem,
+  ListView_SetOnCustomDrawSubItem,
   ListView_SetOnData,
   ListView_SetOnDataFind,
   ListView_SetOnDblClick,
   ListView_SetOnDeletion,
+  ListView_SetOnDrawItem,
   ListView_SetOnEdited,
   ListView_SetOnEditing,
   ListView_SetOnEndDock,
