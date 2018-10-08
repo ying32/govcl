@@ -8,7 +8,6 @@
       <Unit0>
         <Filename Value="res2go.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <CursorPos X="6" Y="16"/>
         <UsageCount Value="35"/>
@@ -26,8 +25,9 @@
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uResourceFormToGo"/>
-        <TopLine Value="91"/>
-        <CursorPos X="15" Y="118"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="431"/>
+        <CursorPos X="19" Y="449"/>
         <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -326,123 +326,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="331" Column="31" TopLine="317"/>
+        <Caret Line="124" Column="20" TopLine="106"/>
       </Position1>
       <Position2>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="124" Column="20" TopLine="106"/>
+        <Caret Line="139" Column="45" TopLine="97"/>
       </Position2>
       <Position3>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="139" Column="45" TopLine="97"/>
+        <Caret Line="131" Column="56" TopLine="97"/>
       </Position3>
       <Position4>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="131" Column="56" TopLine="97"/>
+        <Caret Line="130" Column="8" TopLine="109"/>
       </Position4>
       <Position5>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="130" Column="8" TopLine="109"/>
+        <Caret Line="348" Column="24" TopLine="330"/>
       </Position5>
       <Position6>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="348" Column="24" TopLine="330"/>
+        <Caret Line="132" Column="10" TopLine="112"/>
       </Position6>
       <Position7>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="132" Column="10" TopLine="112"/>
+        <Caret Line="347" Column="31" TopLine="337"/>
       </Position7>
       <Position8>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="347" Column="31" TopLine="337"/>
+        <Caret Line="345" Column="29" TopLine="324"/>
       </Position8>
       <Position9>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="345" Column="29" TopLine="324"/>
+        <Caret Line="358" Column="19" TopLine="344"/>
       </Position9>
       <Position10>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="358" Column="19" TopLine="344"/>
+        <Caret Line="359" Column="22" TopLine="314"/>
       </Position10>
       <Position11>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="359" Column="22" TopLine="314"/>
+        <Caret Line="9" Column="16"/>
       </Position11>
       <Position12>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="9" Column="16"/>
+        <Caret Line="671" Column="14" TopLine="659"/>
       </Position12>
       <Position13>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="671" Column="14" TopLine="659"/>
+        <Caret Line="10" Column="12"/>
       </Position13>
       <Position14>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="10" Column="12"/>
+        <Caret Line="9" Column="17"/>
       </Position14>
       <Position15>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="9" Column="17"/>
+        <Caret Line="15" Column="15" TopLine="7"/>
       </Position15>
       <Position16>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="15" Column="15" TopLine="7"/>
+        <Caret Line="130" Column="26" TopLine="115"/>
       </Position16>
       <Position17>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="130" Column="26" TopLine="115"/>
+        <Caret Line="15" Column="20"/>
       </Position17>
       <Position18>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="15" Column="20"/>
-      </Position18>
-      <Position19>
         <Filename Value="res2go.lpr"/>
         <Caret Line="10" Column="19"/>
+      </Position18>
+      <Position19>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="246" Column="44" TopLine="220"/>
       </Position19>
       <Position20>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="246" Column="44" TopLine="220"/>
+        <Caret Line="252" Column="11" TopLine="245"/>
       </Position20>
       <Position21>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="252" Column="11" TopLine="245"/>
+        <Caret Line="9" Column="17"/>
       </Position21>
       <Position22>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="9" Column="17"/>
+        <Caret Line="298" Column="23" TopLine="290"/>
       </Position22>
       <Position23>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="298" Column="23" TopLine="290"/>
+        <Caret Line="322" Column="138" TopLine="290"/>
       </Position23>
       <Position24>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="322" Column="138" TopLine="290"/>
+        <Caret Line="573" Column="28" TopLine="529"/>
       </Position24>
       <Position25>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="573" Column="28" TopLine="529"/>
+        <Caret Line="605" Column="54" TopLine="541"/>
       </Position25>
       <Position26>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="605" Column="54" TopLine="541"/>
+        <Caret Line="118" Column="15" TopLine="91"/>
       </Position26>
       <Position27>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="118" Column="15" TopLine="91"/>
+        <Filename Value="supportsComponents.inc"/>
+        <Caret Line="128" Column="15" TopLine="94"/>
       </Position27>
       <Position28>
         <Filename Value="supportsComponents.inc"/>
-        <Caret Line="128" Column="15" TopLine="94"/>
+        <Caret Line="127" Column="16" TopLine="94"/>
       </Position28>
       <Position29>
         <Filename Value="supportsComponents.inc"/>
-        <Caret Line="127" Column="16" TopLine="94"/>
+        <Caret Line="4" Column="35"/>
       </Position29>
       <Position30>
-        <Filename Value="supportsComponents.inc"/>
-        <Caret Line="4" Column="35"/>
+        <Filename Value="res2go.lpr"/>
+        <Caret Line="16" Column="6"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
