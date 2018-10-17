@@ -18,7 +18,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.4';
+  APPVERSION = '1.0.5';
 
 type
   TComponentItem = record
