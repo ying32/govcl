@@ -140,7 +140,7 @@ exports
 
 initialization
   uLockObj := TObject.Create;
-  CoInitializeEx(nil, 0);
+  CoInitialize(nil);
 
 finalization
   CoUninitialize;
