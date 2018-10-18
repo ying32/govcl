@@ -29,7 +29,7 @@ type TWkeWebBrowser struct {
 
 func NewWkeWebBrowser(hWnd types.HWND) *TWkeWebBrowser {
 	w := new(TWkeWebBrowser)
-	r := win.GetClientRect(hWnd)
+	r, _ := win.GetClientRect2(hWnd)
 	w.wkePtr = wkeCreateWebWindow(WKE_WINDOW_TYPE_CONTROL, hWnd, 0, 0, r.Right-r.Left, r.Bottom-r.Top)
 	ptr := uintptr(unsafe.Pointer(w))
 	wkeOnTitleChanged(w.wkePtr, _wkeTitleChangedCallback, ptr)
