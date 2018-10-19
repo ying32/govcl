@@ -346,6 +346,16 @@ func (g *TGIFImage) SetModified(value bool) {
     GIFImage_SetModified(g.instance, value)
 }
 
+// Palette
+func (g *TGIFImage) Palette() HPALETTE {
+    return GIFImage_GetPalette(g.instance)
+}
+
+// SetPalette
+func (g *TGIFImage) SetPalette(value HPALETTE) {
+    GIFImage_SetPalette(g.instance, value)
+}
+
 // PaletteModified
 func (g *TGIFImage) PaletteModified() bool {
     return GIFImage_GetPaletteModified(g.instance)

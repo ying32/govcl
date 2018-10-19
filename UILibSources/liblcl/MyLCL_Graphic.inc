@@ -105,6 +105,16 @@ begin
   AObj.Modified := AValue;
 end;
 
+function Graphic_GetPalette(AObj: TGraphic): HPALETTE; extdecl;
+begin
+  Result :=  AObj.Palette;
+end;
+
+procedure Graphic_SetPalette(AObj: TGraphic; AValue: HPALETTE); extdecl;
+begin
+  AObj.Palette := AValue;
+end;
+
 function Graphic_GetPaletteModified(AObj: TGraphic): LongBool; extdecl;
 begin
   Result :=  AObj.PaletteModified;
@@ -173,6 +183,8 @@ exports
   Graphic_SetHeight,
   Graphic_GetModified,
   Graphic_SetModified,
+  Graphic_GetPalette,
+  Graphic_SetPalette,
   Graphic_GetPaletteModified,
   Graphic_SetPaletteModified,
   Graphic_GetTransparent,

@@ -293,6 +293,16 @@ func (p *TPngImage) SetModified(value bool) {
     PngImage_SetModified(p.instance, value)
 }
 
+// Palette
+func (p *TPngImage) Palette() HPALETTE {
+    return PngImage_GetPalette(p.instance)
+}
+
+// SetPalette
+func (p *TPngImage) SetPalette(value HPALETTE) {
+    PngImage_SetPalette(p.instance, value)
+}
+
 // PaletteModified
 func (p *TPngImage) PaletteModified() bool {
     return PngImage_GetPaletteModified(p.instance)

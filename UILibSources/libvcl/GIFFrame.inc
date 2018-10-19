@@ -185,6 +185,16 @@ begin
   AObj.Bitmap := AValue;
 end;
 
+function GIFFrame_GetPalette(AObj: TGIFFrame): HPALETTE; stdcall;
+begin
+  Result :=  AObj.Palette;
+end;
+
+procedure GIFFrame_SetPalette(AObj: TGIFFrame; AValue: HPALETTE); stdcall;
+begin
+  AObj.Palette := AValue;
+end;
+
 function GIFFrame_GetEmpty(AObj: TGIFFrame): LongBool; stdcall;
 begin
   Result :=  AObj.Empty;
@@ -237,6 +247,8 @@ exports
   GIFFrame_GetBitsPerPixel,
   GIFFrame_GetBitmap,
   GIFFrame_SetBitmap,
+  GIFFrame_GetPalette,
+  GIFFrame_SetPalette,
   GIFFrame_GetEmpty,
   GIFFrame_GetTransparent,
   GIFFrame_StaticClassType;

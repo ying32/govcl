@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="10"/>
-    <BuildModes Count="5" Active="ReleaseWindows32">
+    <BuildModes Count="5" Active="ReleaseWindows64">
       <Item1 Name="Release">
         <CompilerOptions>
           <Version Value="11"/>
@@ -41,14 +41,19 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
             <RelocatableUnit Value="True"/>
             <TargetCPU Value="i386"/>
             <TargetOS Value="win32"/>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
             </Debugging>
+            <LinkSmart Value="True"/>
             <Options>
               <ExecutableType Value="Library"/>
             </Options>
@@ -68,14 +73,19 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
             <RelocatableUnit Value="True"/>
             <TargetCPU Value="x86_64"/>
             <TargetOS Value="win64"/>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
             </Debugging>
+            <LinkSmart Value="True"/>
             <Options>
               <ExecutableType Value="Library"/>
             </Options>
@@ -95,13 +105,18 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
             <RelocatableUnit Value="True"/>
             <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
             </Debugging>
+            <LinkSmart Value="True"/>
             <Options>
               <ExecutableType Value="Library"/>
             </Options>
@@ -121,13 +136,18 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
             <RelocatableUnit Value="True"/>
             <TargetCPU Value="i386"/>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
             </Debugging>
+            <LinkSmart Value="True"/>
             <Options>
               <ExecutableType Value="Library"/>
             </Options>
@@ -140,8 +160,8 @@
         <Filename Value="lcl.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="130"/>
-        <CursorPos X="48" Y="134"/>
+        <TopLine Value="162"/>
+        <CursorPos Y="197"/>
         <UsageCount Value="81"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -1306,7 +1326,7 @@
         <UsageCount Value="20"/>
       </Unit168>
     </Units>
-    <JumpHistory Count="12" HistoryIndex="11">
+    <JumpHistory Count="13" HistoryIndex="12">
       <Position1>
         <Filename Value="lcl.lpr"/>
         <Caret Line="71" Column="14" TopLine="53"/>
@@ -1355,6 +1375,10 @@
         <Filename Value="lcl.lpr"/>
         <Caret Line="88" Column="126" TopLine="69"/>
       </Position12>
+      <Position13>
+        <Filename Value="lcl.lpr"/>
+        <Caret Line="134" Column="48" TopLine="130"/>
+      </Position13>
     </JumpHistory>
   </ProjectSession>
   <Debugging>

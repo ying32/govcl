@@ -239,6 +239,16 @@ func (g *TGraphic) SetModified(value bool) {
     Graphic_SetModified(g.instance, value)
 }
 
+// Palette
+func (g *TGraphic) Palette() HPALETTE {
+    return Graphic_GetPalette(g.instance)
+}
+
+// SetPalette
+func (g *TGraphic) SetPalette(value HPALETTE) {
+    Graphic_SetPalette(g.instance, value)
+}
+
 // PaletteModified
 func (g *TGraphic) PaletteModified() bool {
     return Graphic_GetPaletteModified(g.instance)

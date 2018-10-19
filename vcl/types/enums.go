@@ -1921,3 +1921,12 @@ const (
 
 //TThumbTabProperties = set of TThumbTabProperty;
 type TThumbTabProperties uint32
+
+
+// TBitmapHandleType
+type TBitmapHandleType int32
+
+const (
+	BmDIB = iota+0
+	BmDDB
+)

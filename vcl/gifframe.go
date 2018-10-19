@@ -319,6 +319,16 @@ func (g *TGIFFrame) SetBitmap(value *TBitmap) {
     GIFFrame_SetBitmap(g.instance, CheckPtr(value))
 }
 
+// Palette
+func (g *TGIFFrame) Palette() HPALETTE {
+    return GIFFrame_GetPalette(g.instance)
+}
+
+// SetPalette
+func (g *TGIFFrame) SetPalette(value HPALETTE) {
+    GIFFrame_SetPalette(g.instance, value)
+}
+
 // Empty
 func (g *TGIFFrame) Empty() bool {
     return GIFFrame_GetEmpty(g.instance)

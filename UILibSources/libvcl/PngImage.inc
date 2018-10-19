@@ -167,6 +167,16 @@ begin
   AObj.Modified := AValue;
 end;
 
+function PngImage_GetPalette(AObj: TPngImage): HPALETTE; stdcall;
+begin
+  Result :=  AObj.Palette;
+end;
+
+procedure PngImage_SetPalette(AObj: TPngImage; AValue: HPALETTE); stdcall;
+begin
+  AObj.Palette := AValue;
+end;
+
 function PngImage_GetPaletteModified(AObj: TPngImage): LongBool; stdcall;
 begin
   Result :=  AObj.PaletteModified;
@@ -237,6 +247,8 @@ exports
   PngImage_GetVersion,
   PngImage_GetModified,
   PngImage_SetModified,
+  PngImage_GetPalette,
+  PngImage_SetPalette,
   PngImage_GetPaletteModified,
   PngImage_SetPaletteModified,
   PngImage_GetTransparent,

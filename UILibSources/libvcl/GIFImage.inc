@@ -227,6 +227,16 @@ begin
   AObj.Modified := AValue;
 end;
 
+function GIFImage_GetPalette(AObj: TGIFImage): HPALETTE; stdcall;
+begin
+  Result :=  AObj.Palette;
+end;
+
+procedure GIFImage_SetPalette(AObj: TGIFImage; AValue: HPALETTE); stdcall;
+begin
+  AObj.Palette := AValue;
+end;
+
 function GIFImage_GetPaletteModified(AObj: TGIFImage): LongBool; stdcall;
 begin
   Result :=  AObj.PaletteModified;
@@ -318,6 +328,8 @@ exports
   GIFImage_SetHeight,
   GIFImage_GetModified,
   GIFImage_SetModified,
+  GIFImage_GetPalette,
+  GIFImage_SetPalette,
   GIFImage_GetPaletteModified,
   GIFImage_SetPaletteModified,
   GIFImage_GetTransparent,
