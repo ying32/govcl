@@ -1,5 +1,5 @@
 * [中文](README.zh-CN.md)   
-* [English](README.md)   
+* English     
 
 ----  
 

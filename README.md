@@ -1,15 +1,13 @@
 ## A cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
 
-* [中文](README.zh-CN.md)   
-* [English](README.md)   
+* [??](README.zh-CN.md)   
+* English  
 
 ----
 
-[![license](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
 ![Recommended Golang Version](https://img.shields.io/badge/recommended%20golang%20version->=1.9.0-green.svg)
-[![screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
-[![Chinese Wiki](https://img.shields.io/badge/wiki-中文WIKI(Chinese%20WIKI)-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
-[![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)  
+[![Screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 
 ![Support Platform](https://img.shields.io/badge/Platform-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
 **Note: linux and macOS only part of the components, properties, events and methods are valid**   
@@ -138,7 +136,7 @@ func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
 ### FAQ
 
 Q: Why is there no English WIKI?   
-A: My English is bad. You can try using Google Translate Chinese WIKI.    
+A: My English is bad. You can try using Google Translate [Chinese WIKI](https://gitee.com/ying32/govcl/wikis/pages).    
  
 ---  
 ### Note:  
