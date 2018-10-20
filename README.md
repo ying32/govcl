@@ -1,6 +1,6 @@
 ## A cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
 
-* [??](README.zh-CN.md)   
+* [中文](README.zh-CN.md)   
 * English  
 
 ----
