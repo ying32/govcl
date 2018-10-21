@@ -91,4 +91,7 @@ var (
 	// SetProperty
 	dSetPropertyValue    = libvcl.NewProc("DSetPropertyValue")
 	dSetPropertySecValue = libvcl.NewProc("DSetPropertySecValue")
+
+	// Printer
+	printer_Instance = libvcl.NewProc("Printer_Instance")
 )

@@ -1,0 +1,195 @@
+
+//----------------------------------------
+// 代码由GenlibLcl工具自动生成。
+// Copyright © ying32. All Rights Reserved.
+//
+//----------------------------------------
+
+function Printer_Create: TPrinter; extdecl;
+begin
+  Result :=  TPrinter.Create;
+end;
+
+procedure Printer_Free(AObj: TPrinter); extdecl;
+begin
+  AObj.Free;
+end;
+
+procedure Printer_Abort(AObj: TPrinter); extdecl;
+begin
+  AObj.Abort;
+end;
+
+procedure Printer_BeginDoc(AObj: TPrinter); extdecl;
+begin
+  AObj.BeginDoc;
+end;
+
+procedure Printer_EndDoc(AObj: TPrinter); extdecl;
+begin
+  AObj.EndDoc;
+end;
+
+procedure Printer_NewPage(AObj: TPrinter); extdecl;
+begin
+  AObj.NewPage;
+end;
+
+procedure Printer_Refresh(AObj: TPrinter); extdecl;
+begin
+  AObj.Refresh;
+end;
+
+function Printer_ClassType(AObj: TPrinter): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
+function Printer_ClassName(AObj: TPrinter): PChar; extdecl;
+begin
+  Result :=  ToPChar(AObj.ClassName);
+end;
+
+function Printer_InstanceSize(AObj: TPrinter): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function Printer_InheritsFrom(AObj: TPrinter; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
+end;
+
+function Printer_Equals(AObj: TPrinter; Obj: TObject): LongBool; extdecl;
+begin
+  Result :=  AObj.Equals(Obj);
+end;
+
+function Printer_GetHashCode(AObj: TPrinter): Integer; extdecl;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function Printer_ToString(AObj: TPrinter): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function Printer_GetAborted(AObj: TPrinter): LongBool; extdecl;
+begin
+  Result :=  AObj.Aborted;
+end;
+
+function Printer_GetCanvas(AObj: TPrinter): TCanvas; extdecl;
+begin
+  Result :=  AObj.Canvas;
+end;
+
+function Printer_GetCopies(AObj: TPrinter): Integer; extdecl;
+begin
+  Result :=  AObj.Copies;
+end;
+
+procedure Printer_SetCopies(AObj: TPrinter; AValue: Integer); extdecl;
+begin
+  AObj.Copies := AValue;
+end;
+
+function Printer_GetFonts(AObj: TPrinter): TStrings; extdecl;
+begin
+  Result :=  AObj.Fonts;
+end;
+
+function Printer_GetOrientation(AObj: TPrinter): TPrinterOrientation; extdecl;
+begin
+  Result :=  AObj.Orientation;
+end;
+
+procedure Printer_SetOrientation(AObj: TPrinter; AValue: TPrinterOrientation); extdecl;
+begin
+  AObj.Orientation := AValue;
+end;
+
+function Printer_GetPageHeight(AObj: TPrinter): Integer; extdecl;
+begin
+  Result :=  AObj.PageHeight;
+end;
+
+function Printer_GetPageWidth(AObj: TPrinter): Integer; extdecl;
+begin
+  Result :=  AObj.PageWidth;
+end;
+
+function Printer_GetPageNumber(AObj: TPrinter): Integer; extdecl;
+begin
+  Result :=  AObj.PageNumber;
+end;
+
+function Printer_GetPrinterIndex(AObj: TPrinter): Integer; extdecl;
+begin
+  Result :=  AObj.PrinterIndex;
+end;
+
+procedure Printer_SetPrinterIndex(AObj: TPrinter; AValue: Integer); extdecl;
+begin
+  AObj.PrinterIndex := AValue;
+end;
+
+function Printer_GetPrinting(AObj: TPrinter): LongBool; extdecl;
+begin
+  Result :=  AObj.Printing;
+end;
+
+function Printer_GetPrinters(AObj: TPrinter): TStrings; extdecl;
+begin
+  Result :=  AObj.Printers;
+end;
+
+function Printer_GetTitle(AObj: TPrinter): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Title);
+end;
+
+procedure Printer_SetTitle(AObj: TPrinter; AValue: PChar); extdecl;
+begin
+  AObj.Title := AValue;
+end;
+
+function Printer_StaticClassType: TClass; extdecl;
+begin
+  Result := TPrinter;
+end;
+
+exports
+  Printer_Create,
+  Printer_Free,
+  Printer_Abort,
+  Printer_BeginDoc,
+  Printer_EndDoc,
+  Printer_NewPage,
+  Printer_Refresh,
+  Printer_ClassType,
+  Printer_ClassName,
+  Printer_InstanceSize,
+  Printer_InheritsFrom,
+  Printer_Equals,
+  Printer_GetHashCode,
+  Printer_ToString,
+  Printer_GetAborted,
+  Printer_GetCanvas,
+  Printer_GetCopies,
+  Printer_SetCopies,
+  Printer_GetFonts,
+  Printer_GetOrientation,
+  Printer_SetOrientation,
+  Printer_GetPageHeight,
+  Printer_GetPageWidth,
+  Printer_GetPageNumber,
+  Printer_GetPrinterIndex,
+  Printer_SetPrinterIndex,
+  Printer_GetPrinting,
+  Printer_GetPrinters,
+  Printer_GetTitle,
+  Printer_SetTitle,
+  Printer_StaticClassType;
+

@@ -12,6 +12,7 @@ var (
 	Screen      *TScreen
 	Mouse       *TMouse
 	Clipboard   *TClipboard
+	Printer     *TPrinter
 )
 
 func init() {
@@ -30,6 +31,7 @@ func init() {
 	Screen = ScreenFromInst(Screen_Instance())
 	Mouse = MouseFromInst(Mouse_Instance())
 	Clipboard = ClipboardFromInst(Clipboard_Instance())
+	Printer = PrinterFromInst(Printer_Instance())
 
 	// 尝试加载ICON，仅Windows下有限，尝试加载名为MAINICON的
 	tryLoadAppIcon()

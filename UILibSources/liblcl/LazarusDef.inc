@@ -830,6 +830,23 @@ begin
 end;
 
 
+// Printer
+function Printer_Instance: TPrinter; extdecl;
+begin
+  Result := Printer;
+end;
+
+//function DPrinter_SetPrinter(NewPrinter: TPrinter): TPrinter; extdecl;
+//begin
+//  Result := SetPrinter(NewPrinter);
+//end;
+//
+// 因参数与Delphi中不一致，这里要伪造下参数，后面  ADriver, APort, ADeviceMode 三个参数无效
+procedure SetPrinter(Obj: TPrinter; aName, ADriver, APort: PChar; ADeviceMode: NativeUInt); extdecl;
+begin
+  Obj.SetPrinter(aName);
+end;
+
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -1016,5 +1033,8 @@ exports
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,
   ResFormLoadFromFile,
-  ResFormLoadFromResourceName
+  ResFormLoadFromResourceName,
+
+  // Printer
+  Printer_Instance
 ;

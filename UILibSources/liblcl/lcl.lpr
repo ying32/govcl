@@ -62,6 +62,7 @@ uses
   Grids,
   ValEdit,
   fgl,
+  Printers,
   uFormDesignerFile,
   uLinkLabel in 'uLinkLabel.pas',
   uEventCallback in 'uEventCallback.pas',
@@ -191,6 +192,7 @@ uses
 {$I MyLCL_CoolBands.inc}
 {$I MyLCL_CoolBand.inc}
 {$I MyLCL_Collection.inc}
+{$I MyLCL_Printer.inc}
 
 begin
   InitLazarusDef;

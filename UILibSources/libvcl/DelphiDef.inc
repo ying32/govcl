@@ -694,6 +694,19 @@ begin
     Result := PChar(LArr[AIndex]);
 end;
 
+// Printer
+function Printer_Instance: TPrinter; stdcall;
+begin
+  Result := Printer;
+end;
+
+//function DPrinter_SetPrinter(NewPrinter: TPrinter): TPrinter; stdcall;
+//begin
+//  Result := SetPrinter(NewPrinter);
+//end;
+
+
+
 // dylib
 type
   TSyscall0  = function: UInt64; stdcall;
@@ -856,4 +869,9 @@ exports
   StyleManager_RegisterStyle,
   StyleManager_Style,
   StyleManager_StyleDescriptor,
-  StyleManager_StyleNamesOf;
+  StyleManager_StyleNamesOf,
+
+  // Printer
+  Printer_Instance
+//  DPrinter_SetPrinter
+  ;
