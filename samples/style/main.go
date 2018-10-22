@@ -329,6 +329,21 @@ func main() {
 		mdtp.SetDate(time.Now().AddDate(-20, 0, 0))
 	})
 
+	// 样式已改变
+	mainForm.SetOnStyleChanged(func(sender vcl.IObject) {
+		fmt.Println("样式已经改变")
+		mainForm.SetAllowDropFiles(false)
+		mainForm.SetAllowDropFiles(true)
+	})
+
+	mainForm.SetAllowDropFiles(true)
+	mainForm.SetOnDropFiles(func(sender vcl.IObject, aFileNames []string) {
+		fmt.Println("当前拖放文件事件执行，文件数：", len(aFileNames))
+		for i, s := range aFileNames {
+			fmt.Println("index:", i, ", filename:", s)
+		}
+	})
+
 	// run
 	vcl.Application.Run()
 }
