@@ -830,6 +830,26 @@ begin
 end;
 
 
+//
+//GUIDToString
+function DGUIDToString(var AGUID: TGUID): PChar; extdecl;
+begin
+  Result := PChar(GUIDToString(AGUID));
+end;
+//StringToGUID
+procedure DStringToGUID(AGUIDStr: PChar; out AGUID: TGUID); extdecl;
+begin
+  AGUID := StringToGUID(AGUIDStr);
+end;
+
+//CreateGUID
+procedure DCreateGUID(out AGUID: TGUID); extdecl;
+begin
+  CreateGUID(AGUID);//TGUID.NewGuid;
+end;
+
+
+
 // Printer
 function Printer_Instance: TPrinter; extdecl;
 begin
@@ -1034,6 +1054,11 @@ exports
   ResFormLoadFromStream,
   ResFormLoadFromFile,
   ResFormLoadFromResourceName,
+
+  // TGUID
+  DGUIDToString,
+  DStringToGUID,
+  DCreateGUID,
 
   // Printer
   Printer_Instance,

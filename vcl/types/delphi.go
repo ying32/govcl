@@ -59,3 +59,10 @@ type TSmallPoint struct {
 	X int16
 	Y int16
 }
+
+type TGUID struct {
+	D1 uint32
+	D2 uint16
+	D3 uint16
+	D4 [8]uint8
+}

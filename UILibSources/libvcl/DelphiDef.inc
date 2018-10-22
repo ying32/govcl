@@ -584,6 +584,26 @@ begin
 end;
 
 
+//
+//GUIDToString
+function DGUIDToString(var AGUID: TGUID): PChar; stdcall;
+begin
+  Result := PChar(AGUID.ToString);
+end;
+//StringToGUID
+procedure DStringToGUID(AGUIDStr: PChar; out AGUID: TGUID); stdcall;
+begin
+  AGUID := TGUID.Create(AGUIDStr);
+end;
+
+//CreateGUID
+procedure DCreateGUID(out AGUID: TGUID); stdcall;
+begin
+  AGUID := TGUID.NewGuid;
+end;
+
+
+
 
 // TStyleManager
 // StyleManager_Initialize
@@ -835,6 +855,11 @@ exports
   // SetProperty
   DSetPropertyValue,
   DSetPropertySecValue,
+
+  // TGUID
+  DGUIDToString,
+  DStringToGUID,
+  DCreateGUID,
 
   // TMemoryStream
   MemoryStream_Write,

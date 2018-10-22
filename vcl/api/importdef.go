@@ -95,4 +95,9 @@ var (
 
 	// Printer
 	printer_Instance = libvcl.NewProc("Printer_Instance")
+
+	// guid
+	dGUIDToString = libvcl.NewProc("DGUIDToString")
+	dStringToGUID = libvcl.NewProc("DStringToGUID")
+	dCreateGUID   = libvcl.NewProc("DCreateGUID")
 )

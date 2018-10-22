@@ -35,6 +35,12 @@ func main() {
 	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TComponentClass()))
 	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TControlClass()))
 
+	guid := rtl.CreateGUID()
+	fmt.Println("guid:", guid)
+	guidstr := rtl.GUIDToString(guid)
+	fmt.Println("guidToStr:", guidstr)
+	fmt.Println("strToGUID: ", rtl.StringToGUID(guidstr))
+
 	fmt.Println("main")
 	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()

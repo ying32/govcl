@@ -172,3 +172,24 @@ func DSetPropertyValue(instance uintptr, propName, value string) {
 func DSetPropertySecValue(instance uintptr, propName, secPropName, value string) {
 	dSetPropertySecValue.Call(instance, GoStrToDStr(propName), GoStrToDStr(secPropName), GoStrToDStr(value))
 }
+
+// guid
+// DGUIDToString
+func DGUIDToString(guid TGUID) string {
+	r, _, _ := dGUIDToString.Call(uintptr(unsafe.Pointer(&guid)))
+	return DStrToGoStr(r)
+}
+
+// DStringToGUID
+func DStringToGUID(str string) TGUID {
+	var guid TGUID
+	dStringToGUID.Call(GoStrToDStr(str), uintptr(unsafe.Pointer(&guid)))
+	return guid
+}
+
+// DCreateGUID
+func DCreateGUID() TGUID {
+	var guid TGUID
+	dCreateGUID.Call(uintptr(unsafe.Pointer(&guid)))
+	return guid
+}
