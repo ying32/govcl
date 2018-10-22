@@ -110,6 +110,16 @@ func ShortCutToText(val types.TShortCut) string {
 }
 
 // SysOpen 打开，windows下调用ShellExecute
+/*
+	// windows
+	rtl.SysOpen("http://www.xxx.com")
+	rtl.SysOpen("c:\")
+	rtl.SysOpen("c:\xxx.exe")
+
+	// linux or macOS
+	rtl.SysOpen("https://wwww.xxx.com")
+	rtl.SysOpen("file:///xxx.png");
+*/
 func SysOpen(filename string) {
 	api.DSysOpen(filename)
 }
