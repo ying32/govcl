@@ -80,7 +80,7 @@ func Func1(a1, a2 int) int {
 }
 
 // 浮点类型的, 切记不要直接在共享库中直接返回浮点类型的，要返回记得使用指针参数进行传递
-func ()Func2() float32 {
+func Func2() float32 {
     var f float32
     _Func2.Call(uintptr(unsafe.Pointer(&f)))
     return f
@@ -94,7 +94,7 @@ type TPoint struct {
    Y int32
 }
 
-func ()Func3(p1 TPoint) TPoint {
+func Func3(p1 TPoint) TPoint {
     var pret TPoint
     _Func3.Call(uintptr(unsafe.Pointer(&p1)), uintptr(unsafe.Pointer(&pret)))
     return pret
