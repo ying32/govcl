@@ -68,7 +68,8 @@ type
               geMenuItemMeasureItem, gePageControlChanging,
 
               geJumpListItemDeleted, geJumpListListUpdateError, geJumpListItemsLoaded,
-              geTaskbarThumbPreviewRequest, geTaskbarWindowPreviewItemRequest, geTaskbarThumbButtonClick
+              geTaskbarThumbPreviewRequest, geTaskbarWindowPreviewItemRequest, geTaskbarThumbButtonClick,
+              geStyleChanged
               );
 
   TEventKey = packed record
@@ -284,6 +285,8 @@ type
 
 
     class procedure OnLinkClick(Sender: TObject; const Link: string; LinkType: TSysLinkType);
+
+    class procedure OnStyleChanged(Sender: TObject);
 
     class procedure MenuOnChange(Sender: TObject; Source: TMenuItem; Rebuild: Boolean);
     class procedure Add(AObj: TObject; AEvent: TGoEvent; AId: NativeUInt);
@@ -546,6 +549,8 @@ class procedure TEventClass.OnStartDock(Sender: TObject; var DragObject: TDragDo
 begin
   SendEvent(Sender, geStartDock, [Sender, DragObject]);
 end;
+
+
 
 class procedure TEventClass.OnUnDock(Sender: TObject; Client: TControl; NewTarget: TWinControl; var Allow: Boolean);
 begin
@@ -973,6 +978,11 @@ class procedure TEventClass.OnLinkClick(Sender: TObject; const Link: string;
   LinkType: TSysLinkType);
 begin
   SendEvent(Sender, geLinkClick, [Sender, Link, Ord(LinkType)]);
+end;
+
+class procedure TEventClass.OnStyleChanged(Sender: TObject);
+begin
+  SendEvent(Sender, geStyleChanged, [Sender]);
 end;
 
 class procedure TEventClass.OnPaint(Sender: TObject);

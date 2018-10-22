@@ -13,8 +13,10 @@ type
   private
     FAllowDropFiles: Boolean;
     FOnDropFiles: TDropFilesEvent;
+    FOnStyleChanged: TNotifyEvent;
     procedure SetAllowDropFiles(const Value: Boolean);
     procedure WMDropFiles(var Msg: TWMDropFiles); message WM_DROPFILES;
+    procedure CMStyleChanged(var Msg: TMessage); message CM_STYLECHANGED;
   protected
     procedure InitializeNewForm; override;
   public
@@ -22,6 +24,7 @@ type
   published
     property AllowDropFiles: Boolean read FAllowDropFiles write SetAllowDropFiles;
     property OnDropFiles: TDropFilesEvent read FOnDropFiles write FOnDropFiles;
+    property OnStyleChanged: TNotifyEvent read FOnStyleChanged write FOnStyleChanged;
   end;
 
   procedure LockInitScale;
@@ -66,6 +69,13 @@ end;
 
 
 { TGoForm }
+
+procedure TGoForm.CMStyleChanged(var Msg: TMessage);
+begin
+  inherited;
+  if Assigned(FOnStyleChanged) then
+    FOnStyleChanged(Self);
+end;
 
 constructor TGoForm.Create(AOwner: TComponent);
 var

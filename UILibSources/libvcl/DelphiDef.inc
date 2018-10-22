@@ -193,6 +193,18 @@ begin
   TEventClass.Add(AObj, geActivate, AEventId);
 end;
 
+procedure Form_SetOnStyleChanged(AObj: TGoForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStyleChanged := nil;
+    TEventClass.Remove(AObj, geStyleChanged);
+    Exit;
+  end;
+  AObj.OnStyleChanged := TEventClass.OnStyleChanged;
+  TEventClass.Add(AObj, geStyleChanged, AEventId);
+end;
+
 // mouse
 function Mouse_Instance: TMouse; stdcall;
 begin
@@ -786,6 +798,7 @@ exports
   Form_SetOnConstrainedResize,
   Form_SetOnDeactivate,
   Form_SetOnActivate,
+  Form_SetOnStyleChanged,
 
   // TMouse
   Mouse_Instance,
