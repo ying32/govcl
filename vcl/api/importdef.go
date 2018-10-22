@@ -16,6 +16,7 @@ var (
 	form_SetOnConstrainedResize = libvcl.NewProc("Form_SetOnConstrainedResize")
 	form_SetOnDeactivate        = libvcl.NewProc("Form_SetOnDeactivate")
 	form_SetOnActivate          = libvcl.NewProc("Form_SetOnActivate")
+	form_SetOnStyleChanged      = libvcl.NewProc("Form_SetOnStyleChanged")
 
 	setEventCallback = libvcl.NewProc("SetEventCallback")
 	dGetParam        = libvcl.NewProc("DGetParam")

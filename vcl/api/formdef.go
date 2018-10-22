@@ -41,6 +41,10 @@ func Form_SetOnActivate(obj uintptr, fn interface{}) {
 	form_SetOnActivate.Call(obj, addEventToMap(fn))
 }
 
+func Form_SetOnStyleChanged(obj uintptr, fn interface{}) {
+	form_SetOnStyleChanged.Call(obj, addEventToMap(fn))
+}
+
 // 下面两个函数放在Application下面吧，直接调用实例类
 
 func SetGlobalFormScaled(val bool) {
