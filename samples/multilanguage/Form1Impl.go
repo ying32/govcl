@@ -7,15 +7,17 @@ import (
 
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/exts/multilang"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 var (
-	testRes = "fdddd"
+	testMessage = "这是一个测试消息！"
 )
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	multilang.InitComponentLang(f)
 
+	f.MainMenu1.SetAutoHotkeys(types.MaManual)
 	item := vcl.NewMenuItem(f)
 	item.SetCaption("Languages")
 	for key, val := range multilang.LocalLangs {
@@ -32,11 +34,16 @@ func (f *TForm1) OnLanguageMenuItemClick(sender vcl.IObject) {
 	id := vcl.MenuItemFromObj(sender).Tag()
 	if lang, ok := multilang.LocalLangs[id]; ok {
 		fmt.Println(lang)
+		multilang.ChangeLang(lang.Language.Name)
 	}
+}
+
+func (f *TForm1) OnButton1Click(sender vcl.IObject) {
+	vcl.ShowMessage(testMessage)
 }
 
 // 初始就注册
 func init() {
-	//multilang.RegsiterVarString("testRes", &testRes)
-	multilang.RegsiterVar(&testRes)
+	multilang.RegsiterVarString("testMessage", &testMessage)
+	//multilang.RegsiterVar(&testMessage)
 }

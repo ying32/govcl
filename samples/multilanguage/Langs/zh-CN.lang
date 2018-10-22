@@ -39,13 +39,22 @@
 	},
 	"multilanguage": {
 		"!resources": {
-			"testRes": "切换语言后需要重启应用程序，是否现在重启？"
+			"testMessage": "这是一个测试消息！"
 		},
 
 		"Form1": {
 		   "Caption": "多语言测试",
 		   "Button1.Caption": "按钮",
-		   "MenuItem1.Caption": "文件(&F)"
+		   "MenuItem1.Caption": "文件(&F)",
+           "MenuItem2.Caption": "菜单项目2",
+           "MenuItem3.Caption": "菜单项目3",
+           "MenuItem4.Caption": "菜单项目4",
+           "MenuItem5.Caption": "菜单项目5",
+           "MenuItem6.Caption": "菜单项目6",
+           "MenuItem7.Caption": "菜单项目7",
+           "MenuItem8.Caption": "菜单项目8",
+           "MenuItem9.Caption": "菜单项目9",
+           "MenuItem10.Caption": "菜单项目10"
 		}
 	}
 }

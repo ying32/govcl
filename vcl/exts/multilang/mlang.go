@@ -55,6 +55,9 @@ var (
 
 	// 需要注册的资源
 	regResouces = make(map[string]*string, 0)
+
+	// 语言已改变事件
+	langChangedEvent func()
 )
 
 func extractFilePath(path string) string {
@@ -94,7 +97,19 @@ func parseLangFile(lang string) {
 
 // 翻译资源，这里不UI上的资源，只是一些常量什么的
 func translateStrings() {
-
+	// 没有待翻译的，不进行翻译
+	if len(commonResouces) == 0 && len(appResouces) == 0 {
+		return
+	}
+	for key, val := range regResouces {
+		if v, ok := appResouces[key]; ok {
+			*val = v
+		} else {
+			if v, ok := commonResouces[key]; ok {
+				*val = v
+			}
+		}
+	}
 }
 
 func InitDefaultLang() {
@@ -116,6 +131,21 @@ func ChangeLang(lang string) {
 	parseLangFile(CurrentLang)
 	// 翻译语言
 	translateStrings()
+
+	// 重新翻译已注册的TForm
+	for _, c := range regForms {
+		InitComponentLang(c)
+	}
+
+	// 回调事件
+	if langChangedEvent != nil {
+		langChangedEvent()
+	}
+}
+
+// 注册一个语言改变事件，用于当语言切换后，更新Delphi/Lazarus的常量值
+func RegisterLangChnaged(fn func()) {
+	langChangedEvent = fn
 }
 
 // 初始一个Form的语言
