@@ -30,7 +30,6 @@ uses
   LCLType,
   Types,
 {$ENDIF}
-  LCLStrConsts,
   typinfo,
   LCLProc,
   LCLIntf,

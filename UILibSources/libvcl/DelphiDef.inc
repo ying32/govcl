@@ -611,40 +611,36 @@ type
   end;
 
 const
-  GLibResouces: array[0..1] of TResItem = (
+  GLibResouces: array[0..28] of TResItem = (
+    (Name: 'SOpenFileTitle'; ValuePtr: @SOpenFileTitle),
+    (Name: 'SOKButton'; ValuePtr: @SOKButton),
+    (Name: 'SCancelButton'; ValuePtr: @SCancelButton),
+    (Name: 'SYesButton'; ValuePtr: @SYesButton),
+    (Name: 'SNoButton'; ValuePtr: @SNoButton),
+    (Name: 'SHelpButton'; ValuePtr: @SHelpButton),
+    (Name: 'SCloseButton'; ValuePtr: @SCloseButton),
+    (Name: 'SIgnoreButton'; ValuePtr: @SIgnoreButton),
+    (Name: 'SRetryButton'; ValuePtr: @SRetryButton),
+    (Name: 'SAbortButton'; ValuePtr: @SAbortButton),
+    (Name: 'SAllButton'; ValuePtr: @SAllButton),
+    (Name: 'SMsgDlgWarning'; ValuePtr: @SMsgDlgWarning),
+    (Name: 'SMsgDlgError'; ValuePtr: @SMsgDlgError),
+    (Name: 'SMsgDlgInformation'; ValuePtr: @SMsgDlgInformation),
+    (Name: 'SMsgDlgConfirm'; ValuePtr: @SMsgDlgConfirm),
+    (Name: 'SMsgDlgYes'; ValuePtr: @SMsgDlgYes),
+    (Name: 'SMsgDlgNo'; ValuePtr: @SMsgDlgNo),
     (Name: 'SMsgDlgOK'; ValuePtr: @SMsgDlgOK),
-    (Name: 'SOKButton'; ValuePtr: @SOKButton)
-
-
-//    		"SOpenFileTitle": "打开",
-//		"SOKButton": "确定",
-//		"SCancelButton": "取消",
-//		"SYesButton": "是(&Y)",
-//		"SNoButton": "否(&N)",
-//		"SHelpButton": "帮助(&H)",
-//		"SCloseButton": "帮助(&C)",
-//		"SIgnoreButton": "忽略(&I)",
-//		"SRetryButton": "重试(&R)",
-//		"SAbortButton": "终止",
-//		"SAllButton": "全部(&A)",
-//		"SMsgDlgWarning": "警告",
-//		"SMsgDlgError": "错误",
-//		"SMsgDlgInformation": "信息",
-//		"SMsgDlgConfirm": "询问",
-//		"SMsgDlgYes": "是(&Y)",
-//		"SMsgDlgNo": "否(&N)",
-//		"SMsgDlgOK": "确定",
-//		"SMsgDlgCancel": "取消",
-//		"SMsgDlgHelp": "帮助(&H)",
-//		"SMsgDlgHelpNone": "没有有效的帮助",
-//		"SMsgDlgHelpHelp": "帮助",
-//		"SMsgDlgAbort": "终止(&A)",
-//		"SMsgDlgRetry": "重试(&R)",
-//		"SMsgDlgIgnore": "忽略(&I)",
-//		"SMsgDlgAll": "全部(&A)",
-//		"SMsgDlgNoToAll": "全否(&o)",
-//		"SMsgDlgYesToAll": "全是(&A)",
-//		"SMsgDlgClose": "关闭(&C)"
+    (Name: 'SMsgDlgCancel'; ValuePtr: @SMsgDlgCancel),
+    (Name: 'SMsgDlgHelp'; ValuePtr: @SMsgDlgHelp),
+    (Name: 'SMsgDlgHelpNone'; ValuePtr: @SMsgDlgHelpNone),
+    (Name: 'SMsgDlgHelpHelp'; ValuePtr: @SMsgDlgHelpHelp),
+    (Name: 'SMsgDlgAbort'; ValuePtr: @SMsgDlgAbort),
+    (Name: 'SMsgDlgRetry'; ValuePtr: @SMsgDlgRetry),
+    (Name: 'SMsgDlgIgnore'; ValuePtr: @SMsgDlgIgnore),
+    (Name: 'SMsgDlgAll'; ValuePtr: @SMsgDlgAll),
+    (Name: 'SMsgDlgNoToAll'; ValuePtr: @SMsgDlgNoToAll),
+    (Name: 'SMsgDlgYesToAll'; ValuePtr: @SMsgDlgYesToAll),
+    (Name: 'SMsgDlgClose'; ValuePtr: @SMsgDlgClose)
 
   );
 
