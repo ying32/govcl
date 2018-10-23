@@ -56,6 +56,10 @@ func (f *TForm1) OnButton2Click(sender vcl.IObject) {
 	}
 }
 
+func (f *TForm1) OnButton3Click(sender vcl.IObject) {
+	vcl.ShowMessage(multilang.IdRes("testMessage3"))
+}
+
 // 初始就注册
 func init() {
 	multilang.RegsiterVarString("testMessage", &testMessage)

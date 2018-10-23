@@ -44,13 +44,15 @@
 	"multilanguage": {
 		"!resources": {
 			"testMessage": "这是一个测试消息！",
-			"testMessage2":"你确定么？"
+			"testMessage2":"你确定么？",
+			"testMessage3": "你好!"
 		},
 
 		"Form1": {
 		   "Caption": "多语言测试",
 		   "Button1.Caption": "按钮1",
 		   "Button2.Caption": "按钮2",
+		   "Button3.Caption": "按钮3",
 		   "MenuItem1.Caption": "文件(&F)",
            "MenuItem2.Caption": "菜单项目2",
            "MenuItem3.Caption": "菜单项目3",

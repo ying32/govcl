@@ -44,12 +44,14 @@
 	"multilanguage": {
 		"!resources": {
 			"testMessage": "This is a test message!",
-			"testMessage2":"Are you sure?"
+			"testMessage2":"Are you sure?",
+			"testMessage3": "Hello!"
 		},
 		"Form1": {
 			"Caption": "MultiLang",
 			"Button1.Caption": "Button1",
 			"Button2.Caption": "Button2",
+			"Button3.Caption": "Button3",
 			"MenuItem1.Caption": "&File",
 			"MenuItem2.Caption": "MenuItem2",
 			"MenuItem3.Caption": "MenuItem3",
