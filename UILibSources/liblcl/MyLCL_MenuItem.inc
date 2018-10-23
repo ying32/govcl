@@ -205,6 +205,16 @@ begin
   AObj.ImageIndex := AValue;
 end;
 
+function MenuItem_GetRadioItem(AObj: TMenuItem): LongBool; extdecl;
+begin
+  Result :=  AObj.RadioItem;
+end;
+
+procedure MenuItem_SetRadioItem(AObj: TMenuItem; AValue: LongBool); extdecl;
+begin
+  AObj.RadioItem := AValue;
+end;
+
 function MenuItem_GetShortCut(AObj: TMenuItem): TShortCut; extdecl;
 begin
   Result :=  AObj.ShortCut;
@@ -345,6 +355,8 @@ exports
   MenuItem_SetHint,
   MenuItem_GetImageIndex,
   MenuItem_SetImageIndex,
+  MenuItem_GetRadioItem,
+  MenuItem_SetRadioItem,
   MenuItem_GetShortCut,
   MenuItem_SetShortCut,
   MenuItem_GetVisible,
