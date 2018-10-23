@@ -185,6 +185,20 @@ func ChangeLang(lang string) {
 	}
 }
 
+// IdRes 通过key查询当前资源中的，顺序为 当前app资源 -> 共享资源 -> lib资源
+func IdRes(key string) string {
+	if v, ok := appResouces[key]; ok {
+		return v
+	}
+	if v, ok := commonResouces[key]; ok {
+		return v
+	}
+	if v, ok := libResouces[key]; ok {
+		return v
+	}
+	return ""
+}
+
 // 注册lib中的资源
 func RegisterLibResouces(ress []types.TLibResouce, setFunc func(aPtr uintptr, aValue string)) {
 	regLibResouces = ress
