@@ -372,6 +372,16 @@ func (m *TMenuItem) SetImageIndex(value int32) {
     MenuItem_SetImageIndex(m.instance, value)
 }
 
+// RadioItem
+func (m *TMenuItem) RadioItem() bool {
+    return MenuItem_GetRadioItem(m.instance)
+}
+
+// SetRadioItem
+func (m *TMenuItem) SetRadioItem(value bool) {
+    MenuItem_SetRadioItem(m.instance, value)
+}
+
 // ShortCut
 // CN: 获取快捷键。
 // EN: .
