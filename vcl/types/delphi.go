@@ -66,3 +66,9 @@ type TGUID struct {
 	D3 uint16
 	D4 [8]uint8
 }
+
+// LibResouces
+type TLibResouce struct {
+	Name string
+	Ptr  uintptr
+}

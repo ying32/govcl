@@ -6,7 +6,7 @@
 		"Author": "ying32",
 		"AuthorEmail": "1444386932@qq.com"
 	},
-	"!resources": {
+	"!libresources": {
 		"SOpenFileTitle": "打开",
 		"SOKButton": "确定",
 		"SCancelButton": "取消",
@@ -37,6 +37,10 @@
 		"SMsgDlgYesToAll": "全是(&A)",
 		"SMsgDlgClose": "关闭(&C)"
 	},
+
+	"!resources": {
+	},
+
 	"multilanguage": {
 		"!resources": {
 			"testMessage": "这是一个测试消息！"

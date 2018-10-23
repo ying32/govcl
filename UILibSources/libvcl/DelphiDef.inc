@@ -603,6 +603,74 @@ begin
 end;
 
 
+// 一些lib的资源
+type
+  TResItem = record
+    Name: PChar;
+    ValuePtr: Pointer;
+  end;
+
+const
+  GLibResouces: array[0..1] of TResItem = (
+    (Name: 'SMsgDlgOK'; ValuePtr: @SMsgDlgOK),
+    (Name: 'SOKButton'; ValuePtr: @SOKButton)
+
+
+//    		"SOpenFileTitle": "打开",
+//		"SOKButton": "确定",
+//		"SCancelButton": "取消",
+//		"SYesButton": "是(&Y)",
+//		"SNoButton": "否(&N)",
+//		"SHelpButton": "帮助(&H)",
+//		"SCloseButton": "帮助(&C)",
+//		"SIgnoreButton": "忽略(&I)",
+//		"SRetryButton": "重试(&R)",
+//		"SAbortButton": "终止",
+//		"SAllButton": "全部(&A)",
+//		"SMsgDlgWarning": "警告",
+//		"SMsgDlgError": "错误",
+//		"SMsgDlgInformation": "信息",
+//		"SMsgDlgConfirm": "询问",
+//		"SMsgDlgYes": "是(&Y)",
+//		"SMsgDlgNo": "否(&N)",
+//		"SMsgDlgOK": "确定",
+//		"SMsgDlgCancel": "取消",
+//		"SMsgDlgHelp": "帮助(&H)",
+//		"SMsgDlgHelpNone": "没有有效的帮助",
+//		"SMsgDlgHelpHelp": "帮助",
+//		"SMsgDlgAbort": "终止(&A)",
+//		"SMsgDlgRetry": "重试(&R)",
+//		"SMsgDlgIgnore": "忽略(&I)",
+//		"SMsgDlgAll": "全部(&A)",
+//		"SMsgDlgNoToAll": "全否(&o)",
+//		"SMsgDlgYesToAll": "全是(&A)",
+//		"SMsgDlgClose": "关闭(&C)"
+
+  );
+
+function DGetLibResouceCount: Integer; stdcall;
+begin
+  Result := Length(GLibResouces);
+end;
+
+procedure DGetLibResouceItem(AIndex: Integer; out AResult: TResItem); stdcall;
+begin
+  if (AIndex >= 0)  and (AIndex < Length(GLibResouces)) then
+    AResult := GLibResouces[AIndex];
+end;
+
+// // 说不好有没有内存泄露，啊，先这样呗， Delphi的不像Lazarus可以直接设置。。。
+procedure DModifyLibResouce(APtr: Pointer; AValue: PChar); stdcall;
+var
+  OldProtect: Cardinal;
+begin
+  if APtr <> nil then
+  begin
+    VirtualProtect(APtr, SizeOf(TResStringRec), PAGE_EXECUTE_READWRITE, @OldProtect);
+    PResStringRec(APtr)^.Identifier := NativeUint(AValue);
+    VirtualProtect(APtr, SizeOf(TResStringRec), OldProtect, nil);
+  end;
+end;
 
 
 // TStyleManager
@@ -910,6 +978,12 @@ exports
   StyleManager_StyleNamesOf,
 
   // Printer
-  Printer_Instance
-//  DPrinter_SetPrinter
+  Printer_Instance,
+  //  DPrinter_SetPrinter
+
+  // libResouces
+  DGetLibResouceCount,
+  DGetLibResouceItem,
+  DModifyLibResouce
+
   ;

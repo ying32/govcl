@@ -193,3 +193,24 @@ func DCreateGUID() TGUID {
 	dCreateGUID.Call(uintptr(unsafe.Pointer(&guid)))
 	return guid
 }
+
+// LibResouces
+func DGetLibResouceCount() int32 {
+	r, _, _ := dGetLibResouceCount.Call()
+	return int32(r)
+}
+
+func DGetLibResouceItem(aIndex int32) (ret TLibResouce) {
+	item := struct {
+		Name     uintptr
+		ValuePtr uintptr
+	}{}
+	dGetLibResouceItem.Call(uintptr(aIndex), uintptr(unsafe.Pointer(&item)))
+	ret.Name = DStrToGoStr(item.Name)
+	ret.Ptr = item.ValuePtr
+	return
+}
+
+func DModifyLibResouce(aPtr uintptr, aValue string) {
+	dModifyLibResouce.Call(aPtr, GoStrToDStr(aValue))
+}

@@ -29,6 +29,7 @@ uses
   System.Actions,
   System.Generics.Collections,
   System.TypInfo,
+  Vcl.Consts,
   Vcl.Forms,
   Vcl.StdCtrls,
   Vcl.Dialogs,

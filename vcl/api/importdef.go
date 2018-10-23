@@ -100,4 +100,9 @@ var (
 	dGUIDToString = libvcl.NewProc("DGUIDToString")
 	dStringToGUID = libvcl.NewProc("DStringToGUID")
 	dCreateGUID   = libvcl.NewProc("DCreateGUID")
+
+	// libResouces
+	dGetLibResouceCount = libvcl.NewProc("DGetLibResouceCount")
+	dGetLibResouceItem  = libvcl.NewProc("DGetLibResouceItem")
+	dModifyLibResouce   = libvcl.NewProc("DModifyLibResouce")
 )

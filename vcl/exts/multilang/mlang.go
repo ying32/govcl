@@ -14,6 +14,7 @@ import (
 
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 // TLangItem 本地已经存在语言列表的项目定义
@@ -41,6 +42,9 @@ var (
 	// 当前app资源
 	appResouces map[string]string
 
+	// lib中的资源
+	libResouces map[string]string
+
 	// 当前app节点信息
 	appNode map[string]interface{}
 
@@ -56,8 +60,11 @@ var (
 	// 需要注册的资源
 	regResouces = make(map[string]*string, 0)
 
-	// 语言已改变事件
-	langChangedEvent func()
+	// lib中注册的资源
+	regLibResouces []types.TLibResouce
+
+	// 修改lib中资源的函数
+	modifyLibResouceFN func(aPtr uintptr, aValue string)
 )
 
 func extractFilePath(path string) string {
@@ -73,13 +80,24 @@ func parseLangFile(lang string) {
 			// 公共资源
 			commonResouces = make(map[string]string, 0)
 			appResouces = make(map[string]string, 0)
+			libResouces = make(map[string]string, 0)
+
 			appNode = make(map[string]interface{}, 0)
 
+			// 共享资源
 			if v, ok := temp.(map[string]interface{}); ok {
 				for key, val := range v["!resources"].(map[string]interface{}) {
 					commonResouces[key] = val.(string)
 				}
 			}
+
+			// 共享的Lib中的资源
+			if v, ok := temp.(map[string]interface{}); ok {
+				for key, val := range v["!libresources"].(map[string]interface{}) {
+					libResouces[key] = val.(string)
+				}
+			}
+
 			// 当前app资源
 			if v, ok := temp.(map[string]interface{}); ok {
 				if node, ok := v[strings.ToLower(AppNodeName)]; ok {
@@ -97,16 +115,26 @@ func parseLangFile(lang string) {
 
 // 翻译资源，这里不UI上的资源，只是一些常量什么的
 func translateStrings() {
-	// 没有待翻译的，不进行翻译
-	if len(commonResouces) == 0 && len(appResouces) == 0 {
-		return
+	// 这里先翻译lib中的资源
+	if len(regLibResouces) > 0 && len(libResouces) > 0 {
+		for _, item := range regLibResouces {
+			if v, ok := libResouces[item.Name]; ok {
+				if modifyLibResouceFN != nil {
+					modifyLibResouceFN(item.Ptr, v)
+				}
+			}
+		}
 	}
-	for key, val := range regResouces {
-		if v, ok := appResouces[key]; ok {
-			*val = v
-		} else {
-			if v, ok := commonResouces[key]; ok {
+
+	// 没有待翻译的，不进行翻译
+	if len(commonResouces) > 0 || len(appResouces) > 0 {
+		for key, val := range regResouces {
+			if v, ok := appResouces[key]; ok {
 				*val = v
+			} else {
+				if v, ok := commonResouces[key]; ok {
+					*val = v
+				}
 			}
 		}
 	}
@@ -136,16 +164,12 @@ func ChangeLang(lang string) {
 	for _, c := range regForms {
 		InitComponentLang(c)
 	}
-
-	// 回调事件
-	if langChangedEvent != nil {
-		langChangedEvent()
-	}
 }
 
-// 注册一个语言改变事件，用于当语言切换后，更新Delphi/Lazarus的常量值
-func RegisterLangChnaged(fn func()) {
-	langChangedEvent = fn
+// 注册lib中的资源
+func RegisterLibResouces(ress []types.TLibResouce, setFunc func(aPtr uintptr, aValue string)) {
+	regLibResouces = ress
+	modifyLibResouceFN = setFunc
 }
 
 // 初始一个Form的语言

@@ -149,3 +149,24 @@ func SetPropertyValue(instance uintptr, propName, value string) {
 func SetPropertySecValue(instance uintptr, propName, secPropName, value string) {
 	api.DSetPropertySecValue(instance, propName, secPropName, value)
 }
+
+// LibResouces
+func GetLibResouceCount() int32 {
+	return api.DGetLibResouceCount()
+}
+
+func GetLibResouceItem(aIndex int32) types.TLibResouce {
+	return api.DGetLibResouceItem(aIndex)
+}
+
+func GetLibResouceItems() []types.TLibResouce {
+	ret := make([]types.TLibResouce, GetLibResouceCount())
+	for i := 0; i < len(ret); i++ {
+		ret[i] = GetLibResouceItem(int32(i))
+	}
+	return ret
+}
+
+func ModifyLibResouce(aPtr uintptr, aValue string) {
+	api.DModifyLibResouce(aPtr, aValue)
+}

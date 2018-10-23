@@ -1,19 +1,15 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/exts/multilang"
+	"github.com/ying32/govcl/vcl/rtl"
 )
 
 func main() {
 
-	multilang.RegisterLangChnaged(func() {
-		// 这里还没想好怎么更新库中的常量，光是Windows还好做，涉及到跨平台这个得想想了
-		fmt.Println("语言已改变")
-	})
-
+	// 首先设置lib中资源
+	multilang.RegisterLibResouces(rtl.GetLibResouceItems(), rtl.ModifyLibResouce)
 	//multilang.AppNodeName
 	multilang.InitDefaultLang()
 

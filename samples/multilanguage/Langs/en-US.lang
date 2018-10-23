@@ -6,7 +6,7 @@
 		"Author": "",
 		"AuthorEmail": ""
 	},
-	"!resources": {
+	"!libresources": {
 		"SOpenFileTitle": "Open",
 		"SOKButton": "OK",
 		"SCancelButton": "Cancel",
@@ -37,6 +37,10 @@
 		"SMsgDlgYesToAll": "Yes to &All",
 		"SMsgDlgClose": "&Close"
 	},
+
+	"!resources": {
+	},
+
 	"multilanguage": {
 		"!resources": {
 			"testMessage": "This is a test message!"
