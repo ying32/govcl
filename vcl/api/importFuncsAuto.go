@@ -35491,6 +35491,15 @@ func MenuItem_SetImageIndex(obj uintptr, value int32) {
    menuItem_SetImageIndex.Call(obj, uintptr(value))
 }
 
+func MenuItem_GetRadioItem(obj uintptr) bool {
+    ret, _, _ := menuItem_GetRadioItem.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MenuItem_SetRadioItem(obj uintptr, value bool) {
+   menuItem_SetRadioItem.Call(obj, GoBoolToDBool(value))
+}
+
 func MenuItem_GetShortCut(obj uintptr) TShortCut {
     ret, _, _ := menuItem_GetShortCut.Call(obj)
     return TShortCut(ret)

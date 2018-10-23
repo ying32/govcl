@@ -10,9 +10,7 @@ func main() {
 
 	// 首先设置lib中资源
 	multilang.RegisterLibResouces(rtl.GetLibResouceItems(), rtl.ModifyLibResouce)
-	//multilang.AppNodeName
 	multilang.InitDefaultLang()
-
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 	vcl.Application.CreateForm(form1Bytes, &Form1)

@@ -9,9 +9,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	"fmt"
-	"reflect"
-
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
@@ -35,6 +32,9 @@ var (
 
 	// 语言存放目录
 	langsPath = extractFilePath(os.Args[0]) + "Langs" + string(filepath.Separator)
+
+	// 强制显示的语言文件名
+	langSetFileName = langsPath + "lang.s"
 
 	// 公共资源
 	commonResouces map[string]string
@@ -141,9 +141,28 @@ func translateStrings() {
 }
 
 func InitDefaultLang() {
+	slang := ReadSetLang()
+	if slang != "" {
+		ChangeLang(slang)
+		return
+	}
 	if v, ok := LocalLangs[int(rtl.SysLocale.DefaultLCID)]; ok {
 		ChangeLang(v.Language.Name)
 	}
+}
+
+// 读当前强制显示语言
+func ReadSetLang() string {
+	bs, err := ioutil.ReadFile(langSetFileName)
+	if err == nil {
+		return string(bs)
+	}
+	return ""
+}
+
+// 写入强显示制语言
+func WriteSetLang(lang string) {
+	ioutil.WriteFile(langSetFileName, []byte(lang), 0775)
 }
 
 // 改变语言
@@ -208,12 +227,6 @@ func InitComponentLang(aOwner vcl.IComponent) {
 // RegsiterVarString 注册需要翻译的字符
 func RegsiterVarString(name string, value *string) {
 	regResouces[name] = value
-}
-
-// RegsiterVarString 注册需要翻译的字符
-func RegsiterVar(value *string) {
-	v := reflect.TypeOf(value)
-	fmt.Println("ttt:", v)
 }
 
 func initLoadLocalLangsInfo() {

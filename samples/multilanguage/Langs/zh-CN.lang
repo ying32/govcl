@@ -13,7 +13,7 @@
 		"SYesButton": "是(&Y)",
 		"SNoButton": "否(&N)",
 		"SHelpButton": "帮助(&H)",
-		"SCloseButton": "帮助(&C)",
+		"SCloseButton": "关闭(&C)",
 		"SIgnoreButton": "忽略(&I)",
 		"SRetryButton": "重试(&R)",
 		"SAbortButton": "终止",
@@ -43,12 +43,14 @@
 
 	"multilanguage": {
 		"!resources": {
-			"testMessage": "这是一个测试消息！"
+			"testMessage": "这是一个测试消息！",
+			"testMessage2":"你确定么？"
 		},
 
 		"Form1": {
 		   "Caption": "多语言测试",
-		   "Button1.Caption": "按钮",
+		   "Button1.Caption": "按钮1",
+		   "Button2.Caption": "按钮2",
 		   "MenuItem1.Caption": "文件(&F)",
            "MenuItem2.Caption": "菜单项目2",
            "MenuItem3.Caption": "菜单项目3",

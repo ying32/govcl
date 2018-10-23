@@ -7903,6 +7903,8 @@ var (
     menuItem_SetHint = libvcl.NewProc("MenuItem_SetHint")
     menuItem_GetImageIndex = libvcl.NewProc("MenuItem_GetImageIndex")
     menuItem_SetImageIndex = libvcl.NewProc("MenuItem_SetImageIndex")
+    menuItem_GetRadioItem = libvcl.NewProc("MenuItem_GetRadioItem")
+    menuItem_SetRadioItem = libvcl.NewProc("MenuItem_SetRadioItem")
     menuItem_GetShortCut = libvcl.NewProc("MenuItem_GetShortCut")
     menuItem_SetShortCut = libvcl.NewProc("MenuItem_SetShortCut")
     menuItem_GetVisible = libvcl.NewProc("MenuItem_GetVisible")
