@@ -14,8 +14,8 @@
 
 
 Librarys binaries  
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.21.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.21/Librarys-1.1.21.zip)  
-**Note: The attachment contains liblcl three platform binary, libvcl does not currently provide, you need to compile. For the compilation steps, please refer to the instructions in [UILIbSrcources](UILibSources/README.md)**  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.23.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.23/Librarys-1.1.23.zip)  
+**Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.md).**  
 
 
 res2go Tool  
