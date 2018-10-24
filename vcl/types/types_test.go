@@ -1,6 +1,7 @@
 package types
 
 import (
+	"fmt"
 	"runtime"
 	"testing"
 	"unsafe"
@@ -21,5 +22,8 @@ func TestSize(t *testing.T) {
 			t.Fatal("size: ", unsafe.Sizeof(val))
 		}
 	}
+
+	var guid TGUID
+	fmt.Println("guid ssizeOf: ", unsafe.Sizeof(guid))
 
 }

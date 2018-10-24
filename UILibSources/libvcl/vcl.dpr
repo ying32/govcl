@@ -29,6 +29,7 @@ uses
   System.Actions,
   System.Generics.Collections,
   System.TypInfo,
+  Vcl.Consts,
   Vcl.Forms,
   Vcl.StdCtrls,
   Vcl.Dialogs,
@@ -57,6 +58,7 @@ uses
   Vcl.ValEdit,
   Vcl.JumpList,
   Vcl.Taskbar,
+  Vcl.Printers,
   uFormDesignerFile,
   uEventCallback in 'uEventCallback.pas',
   ufrmGo in 'ufrmGo.pas' {GoForm},
@@ -210,6 +212,7 @@ uses
 {$I JumpCategories.inc}
 {$I JumpCategoryItem.inc}
 {$I Collection.inc}
+{$I Printer.inc}
 
 begin
 end.

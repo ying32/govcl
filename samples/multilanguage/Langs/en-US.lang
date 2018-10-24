@@ -6,7 +6,7 @@
 		"Author": "",
 		"AuthorEmail": ""
 	},
-	"!resources": {
+	"!libresources": {
 		"SOpenFileTitle": "Open",
 		"SOKButton": "OK",
 		"SCancelButton": "Cancel",
@@ -37,14 +37,31 @@
 		"SMsgDlgYesToAll": "Yes to &All",
 		"SMsgDlgClose": "&Close"
 	},
-	"govcldesigner": {
+
+	"!resources": {
+	},
+
+	"multilanguage": {
 		"!resources": {
-			"rsMessageRestartApplication": "You need to restart the application after switching languages. Do you want to reboot now?"
+			"testMessage": "This is a test message!",
+			"testMessage2":"Are you sure?",
+			"testMessage3": "Hello!"
 		},
 		"Form1": {
 			"Caption": "MultiLang",
-			"Button1.Caption": "Button",
-			"MenuItem1.Caption": "&File"
+			"Button1.Caption": "Button1",
+			"Button2.Caption": "Button2",
+			"Button3.Caption": "Button3",
+			"MenuItem1.Caption": "&File",
+			"MenuItem2.Caption": "MenuItem2",
+			"MenuItem3.Caption": "MenuItem3",
+			"MenuItem4.Caption": "MenuItem4",
+			"MenuItem5.Caption": "MenuItem5",
+			"MenuItem6.Caption": "MenuItem6",
+			"MenuItem7.Caption": "MenuItem7",
+			"MenuItem8.Caption": "MenuItem8",
+			"MenuItem9.Caption": "MenuItem9",
+			"MenuItem10.Caption": "MenuItem10"
 		}
 	}
 }

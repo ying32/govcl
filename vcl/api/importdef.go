@@ -16,6 +16,7 @@ var (
 	form_SetOnConstrainedResize = libvcl.NewProc("Form_SetOnConstrainedResize")
 	form_SetOnDeactivate        = libvcl.NewProc("Form_SetOnDeactivate")
 	form_SetOnActivate          = libvcl.NewProc("Form_SetOnActivate")
+	form_SetOnStyleChanged      = libvcl.NewProc("Form_SetOnStyleChanged")
 
 	setEventCallback = libvcl.NewProc("SetEventCallback")
 	dGetParam        = libvcl.NewProc("DGetParam")
@@ -91,4 +92,17 @@ var (
 	// SetProperty
 	dSetPropertyValue    = libvcl.NewProc("DSetPropertyValue")
 	dSetPropertySecValue = libvcl.NewProc("DSetPropertySecValue")
+
+	// Printer
+	printer_Instance = libvcl.NewProc("Printer_Instance")
+
+	// guid
+	dGUIDToString = libvcl.NewProc("DGUIDToString")
+	dStringToGUID = libvcl.NewProc("DStringToGUID")
+	dCreateGUID   = libvcl.NewProc("DCreateGUID")
+
+	// libResouces
+	dGetLibResouceCount = libvcl.NewProc("DGetLibResouceCount")
+	dGetLibResouceItem  = libvcl.NewProc("DGetLibResouceItem")
+	dModifyLibResouce   = libvcl.NewProc("DModifyLibResouce")
 )

@@ -1,6 +1,6 @@
 ### res2go  
 
-* [中文](README.zh-CN.md)  
+* 中文    
 * [English](README.md)  
 
 ----

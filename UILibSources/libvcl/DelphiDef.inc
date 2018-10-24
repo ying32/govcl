@@ -193,6 +193,18 @@ begin
   TEventClass.Add(AObj, geActivate, AEventId);
 end;
 
+procedure Form_SetOnStyleChanged(AObj: TGoForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnStyleChanged := nil;
+    TEventClass.Remove(AObj, geStyleChanged);
+    Exit;
+  end;
+  AObj.OnStyleChanged := TEventClass.OnStyleChanged;
+  TEventClass.Add(AObj, geStyleChanged, AEventId);
+end;
+
 // mouse
 function Mouse_Instance: TMouse; stdcall;
 begin
@@ -572,6 +584,90 @@ begin
 end;
 
 
+//
+//GUIDToString
+function DGUIDToString(var AGUID: TGUID): PChar; stdcall;
+begin
+  Result := PChar(AGUID.ToString);
+end;
+//StringToGUID
+procedure DStringToGUID(AGUIDStr: PChar; out AGUID: TGUID); stdcall;
+begin
+  AGUID := TGUID.Create(AGUIDStr);
+end;
+
+//CreateGUID
+procedure DCreateGUID(out AGUID: TGUID); stdcall;
+begin
+  AGUID := TGUID.NewGuid;
+end;
+
+
+// 一些lib的资源
+type
+  TResItem = record
+    Name: PChar;
+    ValuePtr: Pointer;
+  end;
+
+const
+  GLibResouces: array[0..28] of TResItem = (
+    (Name: 'SOpenFileTitle'; ValuePtr: @SOpenFileTitle),
+    (Name: 'SOKButton'; ValuePtr: @SOKButton),
+    (Name: 'SCancelButton'; ValuePtr: @SCancelButton),
+    (Name: 'SYesButton'; ValuePtr: @SYesButton),
+    (Name: 'SNoButton'; ValuePtr: @SNoButton),
+    (Name: 'SHelpButton'; ValuePtr: @SHelpButton),
+    (Name: 'SCloseButton'; ValuePtr: @SCloseButton),
+    (Name: 'SIgnoreButton'; ValuePtr: @SIgnoreButton),
+    (Name: 'SRetryButton'; ValuePtr: @SRetryButton),
+    (Name: 'SAbortButton'; ValuePtr: @SAbortButton),
+    (Name: 'SAllButton'; ValuePtr: @SAllButton),
+    (Name: 'SMsgDlgWarning'; ValuePtr: @SMsgDlgWarning),
+    (Name: 'SMsgDlgError'; ValuePtr: @SMsgDlgError),
+    (Name: 'SMsgDlgInformation'; ValuePtr: @SMsgDlgInformation),
+    (Name: 'SMsgDlgConfirm'; ValuePtr: @SMsgDlgConfirm),
+    (Name: 'SMsgDlgYes'; ValuePtr: @SMsgDlgYes),
+    (Name: 'SMsgDlgNo'; ValuePtr: @SMsgDlgNo),
+    (Name: 'SMsgDlgOK'; ValuePtr: @SMsgDlgOK),
+    (Name: 'SMsgDlgCancel'; ValuePtr: @SMsgDlgCancel),
+    (Name: 'SMsgDlgHelp'; ValuePtr: @SMsgDlgHelp),
+    (Name: 'SMsgDlgHelpNone'; ValuePtr: @SMsgDlgHelpNone),
+    (Name: 'SMsgDlgHelpHelp'; ValuePtr: @SMsgDlgHelpHelp),
+    (Name: 'SMsgDlgAbort'; ValuePtr: @SMsgDlgAbort),
+    (Name: 'SMsgDlgRetry'; ValuePtr: @SMsgDlgRetry),
+    (Name: 'SMsgDlgIgnore'; ValuePtr: @SMsgDlgIgnore),
+    (Name: 'SMsgDlgAll'; ValuePtr: @SMsgDlgAll),
+    (Name: 'SMsgDlgNoToAll'; ValuePtr: @SMsgDlgNoToAll),
+    (Name: 'SMsgDlgYesToAll'; ValuePtr: @SMsgDlgYesToAll),
+    (Name: 'SMsgDlgClose'; ValuePtr: @SMsgDlgClose)
+
+  );
+
+function DGetLibResouceCount: Integer; stdcall;
+begin
+  Result := Length(GLibResouces);
+end;
+
+procedure DGetLibResouceItem(AIndex: Integer; out AResult: TResItem); stdcall;
+begin
+  if (AIndex >= 0)  and (AIndex < Length(GLibResouces)) then
+    AResult := GLibResouces[AIndex];
+end;
+
+// // 说不好有没有内存泄露，啊，先这样呗， Delphi的不像Lazarus可以直接设置。。。
+procedure DModifyLibResouce(APtr: Pointer; AValue: PChar); stdcall;
+var
+  OldProtect: Cardinal;
+begin
+  if APtr <> nil then
+  begin
+    VirtualProtect(APtr, SizeOf(TResStringRec), PAGE_EXECUTE_READWRITE, @OldProtect);
+    PResStringRec(APtr)^.Identifier := NativeUint(AValue);
+    VirtualProtect(APtr, SizeOf(TResStringRec), OldProtect, nil);
+  end;
+end;
+
 
 // TStyleManager
 // StyleManager_Initialize
@@ -694,6 +790,19 @@ begin
     Result := PChar(LArr[AIndex]);
 end;
 
+// Printer
+function Printer_Instance: TPrinter; stdcall;
+begin
+  Result := Printer;
+end;
+
+//function DPrinter_SetPrinter(NewPrinter: TPrinter): TPrinter; stdcall;
+//begin
+//  Result := SetPrinter(NewPrinter);
+//end;
+
+
+
 // dylib
 type
   TSyscall0  = function: UInt64; stdcall;
@@ -773,6 +882,7 @@ exports
   Form_SetOnConstrainedResize,
   Form_SetOnDeactivate,
   Form_SetOnActivate,
+  Form_SetOnStyleChanged,
 
   // TMouse
   Mouse_Instance,
@@ -809,6 +919,11 @@ exports
   // SetProperty
   DSetPropertyValue,
   DSetPropertySecValue,
+
+  // TGUID
+  DGUIDToString,
+  DStringToGUID,
+  DCreateGUID,
 
   // TMemoryStream
   MemoryStream_Write,
@@ -856,4 +971,15 @@ exports
   StyleManager_RegisterStyle,
   StyleManager_Style,
   StyleManager_StyleDescriptor,
-  StyleManager_StyleNamesOf;
+  StyleManager_StyleNamesOf,
+
+  // Printer
+  Printer_Instance,
+  //  DPrinter_SetPrinter
+
+  // libResouces
+  DGetLibResouceCount,
+  DGetLibResouceItem,
+  DModifyLibResouce
+
+  ;

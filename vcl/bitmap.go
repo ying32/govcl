@@ -108,6 +108,11 @@ func (b *TBitmap) Assign(Source IObject) {
     Bitmap_Assign(b.instance, CheckPtr(Source))
 }
 
+// FreeImage
+func (b *TBitmap) FreeImage() {
+    Bitmap_FreeImage(b.instance)
+}
+
 // HandleAllocated
 // CN: 句柄是否已经分配。
 // EN: Is the handle already allocated.
@@ -242,6 +247,26 @@ func (b *TBitmap) SetHandle(value HBITMAP) {
     Bitmap_SetHandle(b.instance, value)
 }
 
+// HandleType
+func (b *TBitmap) HandleType() TBitmapHandleType {
+    return Bitmap_GetHandleType(b.instance)
+}
+
+// SetHandleType
+func (b *TBitmap) SetHandleType(value TBitmapHandleType) {
+    Bitmap_SetHandleType(b.instance, value)
+}
+
+// MaskHandle
+func (b *TBitmap) MaskHandle() HBITMAP {
+    return Bitmap_GetMaskHandle(b.instance)
+}
+
+// SetMaskHandle
+func (b *TBitmap) SetMaskHandle(value HBITMAP) {
+    Bitmap_SetMaskHandle(b.instance, value)
+}
+
 // PixelFormat
 func (b *TBitmap) PixelFormat() TPixelFormat {
     return Bitmap_GetPixelFormat(b.instance)
@@ -297,6 +322,16 @@ func (b *TBitmap) Modified() bool {
 // EN: Set modified.
 func (b *TBitmap) SetModified(value bool) {
     Bitmap_SetModified(b.instance, value)
+}
+
+// Palette
+func (b *TBitmap) Palette() HPALETTE {
+    return Bitmap_GetPalette(b.instance)
+}
+
+// SetPalette
+func (b *TBitmap) SetPalette(value HPALETTE) {
+    Bitmap_SetPalette(b.instance, value)
 }
 
 // PaletteModified

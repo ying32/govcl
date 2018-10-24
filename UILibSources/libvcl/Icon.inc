@@ -142,6 +142,16 @@ begin
   AObj.Modified := AValue;
 end;
 
+function Icon_GetPalette(AObj: TIcon): HPALETTE; stdcall;
+begin
+  Result :=  AObj.Palette;
+end;
+
+procedure Icon_SetPalette(AObj: TIcon; AValue: HPALETTE); stdcall;
+begin
+  AObj.Palette := AValue;
+end;
+
 function Icon_GetPaletteModified(AObj: TIcon): LongBool; stdcall;
 begin
   Result :=  AObj.PaletteModified;
@@ -217,6 +227,8 @@ exports
   Icon_SetHeight,
   Icon_GetModified,
   Icon_SetModified,
+  Icon_GetPalette,
+  Icon_SetPalette,
   Icon_GetPaletteModified,
   Icon_SetPaletteModified,
   Icon_GetTransparent,

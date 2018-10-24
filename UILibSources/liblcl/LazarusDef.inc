@@ -830,6 +830,104 @@ begin
 end;
 
 
+//
+//GUIDToString
+function DGUIDToString(var AGUID: TGUID): PChar; extdecl;
+begin
+  Result := PChar(GUIDToString(AGUID));
+end;
+//StringToGUID
+procedure DStringToGUID(AGUIDStr: PChar; out AGUID: TGUID); extdecl;
+begin
+  AGUID := StringToGUID(AGUIDStr);
+end;
+
+//CreateGUID
+procedure DCreateGUID(out AGUID: TGUID); extdecl;
+begin
+  CreateGUID(AGUID);//TGUID.NewGuid;
+end;
+
+// Printer
+function Printer_Instance: TPrinter; extdecl;
+begin
+  Result := Printer;
+end;
+
+//function DPrinter_SetPrinter(NewPrinter: TPrinter): TPrinter; extdecl;
+//begin
+//  Result := SetPrinter(NewPrinter);
+//end;
+//
+// 因参数与Delphi中不一致，这里要伪造下参数，后面  ADriver, APort, ADeviceMode 三个参数无效
+procedure Printer_SetPrinter(Obj: TPrinter; aName, ADriver, APort: PChar; ADeviceMode: NativeUInt); extdecl;
+begin
+  Obj.SetPrinter(aName);
+end;
+
+
+
+//----------------------------------------------------
+// 一些lib的资源
+type
+  TResItem = record
+    Name: PChar;
+    ValuePtr: Pointer;
+  end;
+
+const
+  GLibResouces: array[0..26] of TResItem = (
+    (Name: 'SOpenFileTitle'; ValuePtr: @rsmbOpen),
+    (Name: 'SOKButton'; ValuePtr: @rsMbOK),
+    (Name: 'SCancelButton'; ValuePtr: @rsMbCancel),
+    (Name: 'SYesButton'; ValuePtr: @rsMbYes),
+    (Name: 'SNoButton'; ValuePtr: @rsMbNo),
+    (Name: 'SHelpButton'; ValuePtr: @rsMbHelp),
+    (Name: 'SCloseButton'; ValuePtr: @rsMbClose),
+    (Name: 'SIgnoreButton'; ValuePtr: @rsMbIgnore),
+    (Name: 'SRetryButton'; ValuePtr: @rsMbRetry),
+    (Name: 'SAbortButton'; ValuePtr: @rsMbAbort),
+    (Name: 'SAllButton'; ValuePtr: @rsMbAll),
+    (Name: 'SMsgDlgWarning'; ValuePtr: @rsMtWarning),
+    (Name: 'SMsgDlgError'; ValuePtr: @rsMtError),
+    (Name: 'SMsgDlgInformation'; ValuePtr: @rsMtInformation),
+    (Name: 'SMsgDlgConfirm'; ValuePtr: @rsMtConfirmation),
+    (Name: 'SMsgDlgYes'; ValuePtr: @rsMbYes),
+    (Name: 'SMsgDlgNo'; ValuePtr: @rsMbNo),
+    (Name: 'SMsgDlgOK'; ValuePtr: @rsMbOK),
+    (Name: 'SMsgDlgCancel'; ValuePtr: @rsMbCancel),
+    (Name: 'SMsgDlgHelp'; ValuePtr: @rsMbHelp),
+    //(Name: 'SMsgDlgHelpNone'; ValuePtr: @SMsgDlgHelpNone),
+    //(Name: 'SMsgDlgHelpHelp'; ValuePtr: @SMsgDlgHelpHelp),
+    (Name: 'SMsgDlgAbort'; ValuePtr: @rsMbAbort),
+    (Name: 'SMsgDlgRetry'; ValuePtr: @rsMbRetry),
+    (Name: 'SMsgDlgIgnore'; ValuePtr: @rsMbIgnore),
+    (Name: 'SMsgDlgAll'; ValuePtr: @rsMbAll),
+    (Name: 'SMsgDlgNoToAll'; ValuePtr: @rsMbNoToAll),
+    (Name: 'SMsgDlgYesToAll'; ValuePtr: @rsMbYesToAll),
+    (Name: 'SMsgDlgClose'; ValuePtr: @rsMbClose)
+
+  );
+
+function DGetLibResouceCount: Integer; extdecl;
+begin
+  Result := Length(GLibResouces);
+end;
+
+procedure DGetLibResouceItem(AIndex: Integer; out AResult: TResItem); extdecl;
+begin
+  if (AIndex >= 0)  and (AIndex < Length(GLibResouces)) then
+    AResult := GLibResouces[AIndex];
+end;
+
+// 说不好有没有内存泄露，啊，先这样呗
+procedure DModifyLibResouce(APtr: Pointer; AValue: PChar); extdecl;
+begin
+  if APtr <> nil then
+    PResStringRec(APtr)^ := string(AValue);
+end;
+
+
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -1016,5 +1114,19 @@ exports
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,
   ResFormLoadFromFile,
-  ResFormLoadFromResourceName
+  ResFormLoadFromResourceName,
+
+  // TGUID
+  DGUIDToString,
+  DStringToGUID,
+  DCreateGUID,
+
+  // Printer
+  Printer_Instance,
+  Printer_SetPrinter,
+
+  // libResouces
+  DGetLibResouceCount,
+  DGetLibResouceItem,
+  DModifyLibResouce
 ;

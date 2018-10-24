@@ -9,11 +9,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"fmt"
-	"reflect"
-
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 // TLangItem 本地已经存在语言列表的项目定义
@@ -35,11 +33,17 @@ var (
 	// 语言存放目录
 	langsPath = extractFilePath(os.Args[0]) + "Langs" + string(filepath.Separator)
 
+	// 强制显示的语言文件名
+	langSetFileName = langsPath + "lang.s"
+
 	// 公共资源
 	commonResouces map[string]string
 
 	// 当前app资源
 	appResouces map[string]string
+
+	// lib中的资源
+	libResouces map[string]string
 
 	// 当前app节点信息
 	appNode map[string]interface{}
@@ -55,6 +59,12 @@ var (
 
 	// 需要注册的资源
 	regResouces = make(map[string]*string, 0)
+
+	// lib中注册的资源
+	regLibResouces []types.TLibResouce
+
+	// 修改lib中资源的函数
+	modifyLibResouceFN func(aPtr uintptr, aValue string)
 )
 
 func extractFilePath(path string) string {
@@ -70,13 +80,24 @@ func parseLangFile(lang string) {
 			// 公共资源
 			commonResouces = make(map[string]string, 0)
 			appResouces = make(map[string]string, 0)
+			libResouces = make(map[string]string, 0)
+
 			appNode = make(map[string]interface{}, 0)
 
+			// 共享资源
 			if v, ok := temp.(map[string]interface{}); ok {
 				for key, val := range v["!resources"].(map[string]interface{}) {
 					commonResouces[key] = val.(string)
 				}
 			}
+
+			// 共享的Lib中的资源
+			if v, ok := temp.(map[string]interface{}); ok {
+				for key, val := range v["!libresources"].(map[string]interface{}) {
+					libResouces[key] = val.(string)
+				}
+			}
+
 			// 当前app资源
 			if v, ok := temp.(map[string]interface{}); ok {
 				if node, ok := v[strings.ToLower(AppNodeName)]; ok {
@@ -94,13 +115,54 @@ func parseLangFile(lang string) {
 
 // 翻译资源，这里不UI上的资源，只是一些常量什么的
 func translateStrings() {
+	// 这里先翻译lib中的资源
+	if len(regLibResouces) > 0 && len(libResouces) > 0 {
+		for _, item := range regLibResouces {
+			if v, ok := libResouces[item.Name]; ok {
+				if modifyLibResouceFN != nil {
+					modifyLibResouceFN(item.Ptr, v)
+				}
+			}
+		}
+	}
 
+	// 没有待翻译的，不进行翻译
+	if len(commonResouces) > 0 || len(appResouces) > 0 {
+		for key, val := range regResouces {
+			if v, ok := appResouces[key]; ok {
+				*val = v
+			} else {
+				if v, ok := commonResouces[key]; ok {
+					*val = v
+				}
+			}
+		}
+	}
 }
 
 func InitDefaultLang() {
+	slang := ReadSetLang()
+	if slang != "" {
+		ChangeLang(slang)
+		return
+	}
 	if v, ok := LocalLangs[int(rtl.SysLocale.DefaultLCID)]; ok {
 		ChangeLang(v.Language.Name)
 	}
+}
+
+// 读当前强制显示语言
+func ReadSetLang() string {
+	bs, err := ioutil.ReadFile(langSetFileName)
+	if err == nil {
+		return string(bs)
+	}
+	return ""
+}
+
+// 写入强显示制语言
+func WriteSetLang(lang string) {
+	ioutil.WriteFile(langSetFileName, []byte(lang), 0775)
 }
 
 // 改变语言
@@ -116,6 +178,31 @@ func ChangeLang(lang string) {
 	parseLangFile(CurrentLang)
 	// 翻译语言
 	translateStrings()
+
+	// 重新翻译已注册的TForm
+	for _, c := range regForms {
+		InitComponentLang(c)
+	}
+}
+
+// IdRes 通过key查询当前资源中的，顺序为 当前app资源 -> 共享资源 -> lib资源
+func IdRes(key string) string {
+	if v, ok := appResouces[key]; ok {
+		return v
+	}
+	if v, ok := commonResouces[key]; ok {
+		return v
+	}
+	if v, ok := libResouces[key]; ok {
+		return v
+	}
+	return ""
+}
+
+// 注册lib中的资源
+func RegisterLibResouces(ress []types.TLibResouce, setFunc func(aPtr uintptr, aValue string)) {
+	regLibResouces = ress
+	modifyLibResouceFN = setFunc
 }
 
 // 初始一个Form的语言
@@ -154,12 +241,6 @@ func InitComponentLang(aOwner vcl.IComponent) {
 // RegsiterVarString 注册需要翻译的字符
 func RegsiterVarString(name string, value *string) {
 	regResouces[name] = value
-}
-
-// RegsiterVarString 注册需要翻译的字符
-func RegsiterVar(value *string) {
-	v := reflect.TypeOf(value)
-	fmt.Println("ttt:", v)
 }
 
 func initLoadLocalLangsInfo() {

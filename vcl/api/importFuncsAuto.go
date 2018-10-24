@@ -34027,6 +34027,15 @@ func Icon_SetModified(obj uintptr, value bool) {
    icon_SetModified.Call(obj, GoBoolToDBool(value))
 }
 
+func Icon_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := icon_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func Icon_SetPalette(obj uintptr, value HPALETTE) {
+   icon_SetPalette.Call(obj, uintptr(value))
+}
+
 func Icon_GetPaletteModified(obj uintptr) bool {
     ret, _, _ := icon_GetPaletteModified.Call(obj)
     return DBoolToGoBool(ret)
@@ -34076,6 +34085,10 @@ func Bitmap_Free(obj uintptr) {
 
 func Bitmap_Assign(obj uintptr, Source uintptr)  {
     bitmap_Assign.Call(obj, Source )
+}
+
+func Bitmap_FreeImage(obj uintptr)  {
+    bitmap_FreeImage.Call(obj)
 }
 
 func Bitmap_HandleAllocated(obj uintptr) bool {
@@ -34169,6 +34182,24 @@ func Bitmap_SetHandle(obj uintptr, value HBITMAP) {
    bitmap_SetHandle.Call(obj, uintptr(value))
 }
 
+func Bitmap_GetHandleType(obj uintptr) TBitmapHandleType {
+    ret, _, _ := bitmap_GetHandleType.Call(obj)
+    return TBitmapHandleType(ret)
+}
+
+func Bitmap_SetHandleType(obj uintptr, value TBitmapHandleType) {
+   bitmap_SetHandleType.Call(obj, uintptr(value))
+}
+
+func Bitmap_GetMaskHandle(obj uintptr) HBITMAP {
+    ret, _, _ := bitmap_GetMaskHandle.Call(obj)
+    return HBITMAP(ret)
+}
+
+func Bitmap_SetMaskHandle(obj uintptr, value HBITMAP) {
+   bitmap_SetMaskHandle.Call(obj, uintptr(value))
+}
+
 func Bitmap_GetPixelFormat(obj uintptr) TPixelFormat {
     ret, _, _ := bitmap_GetPixelFormat.Call(obj)
     return TPixelFormat(ret)
@@ -34208,6 +34239,15 @@ func Bitmap_GetModified(obj uintptr) bool {
 
 func Bitmap_SetModified(obj uintptr, value bool) {
    bitmap_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func Bitmap_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := bitmap_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func Bitmap_SetPalette(obj uintptr, value HPALETTE) {
+   bitmap_SetPalette.Call(obj, uintptr(value))
 }
 
 func Bitmap_GetPaletteModified(obj uintptr) bool {
@@ -35449,6 +35489,15 @@ func MenuItem_GetImageIndex(obj uintptr) int32 {
 
 func MenuItem_SetImageIndex(obj uintptr, value int32) {
    menuItem_SetImageIndex.Call(obj, uintptr(value))
+}
+
+func MenuItem_GetRadioItem(obj uintptr) bool {
+    ret, _, _ := menuItem_GetRadioItem.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MenuItem_SetRadioItem(obj uintptr, value bool) {
+   menuItem_SetRadioItem.Call(obj, GoBoolToDBool(value))
 }
 
 func MenuItem_GetShortCut(obj uintptr) TShortCut {
@@ -40965,6 +41014,15 @@ func PngImage_SetModified(obj uintptr, value bool) {
    pngImage_SetModified.Call(obj, GoBoolToDBool(value))
 }
 
+func PngImage_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := pngImage_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func PngImage_SetPalette(obj uintptr, value HPALETTE) {
+   pngImage_SetPalette.Call(obj, uintptr(value))
+}
+
 func PngImage_GetPaletteModified(obj uintptr) bool {
     ret, _, _ := pngImage_GetPaletteModified.Call(obj)
     return DBoolToGoBool(ret)
@@ -41142,6 +41200,15 @@ func JPEGImage_GetModified(obj uintptr) bool {
 
 func JPEGImage_SetModified(obj uintptr, value bool) {
    jPEGImage_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func JPEGImage_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := jPEGImage_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func JPEGImage_SetPalette(obj uintptr, value HPALETTE) {
+   jPEGImage_SetPalette.Call(obj, uintptr(value))
 }
 
 func JPEGImage_GetPaletteModified(obj uintptr) bool {
@@ -41377,6 +41444,15 @@ func GIFImage_SetModified(obj uintptr, value bool) {
    gIFImage_SetModified.Call(obj, GoBoolToDBool(value))
 }
 
+func GIFImage_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := gIFImage_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func GIFImage_SetPalette(obj uintptr, value HPALETTE) {
+   gIFImage_SetPalette.Call(obj, uintptr(value))
+}
+
 func GIFImage_GetPaletteModified(obj uintptr) bool {
     ret, _, _ := gIFImage_GetPaletteModified.Call(obj)
     return DBoolToGoBool(ret)
@@ -41580,6 +41656,15 @@ func GIFFrame_GetBitmap(obj uintptr) uintptr {
 
 func GIFFrame_SetBitmap(obj uintptr, value uintptr) {
    gIFFrame_SetBitmap.Call(obj, value)
+}
+
+func GIFFrame_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := gIFFrame_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func GIFFrame_SetPalette(obj uintptr, value HPALETTE) {
+   gIFFrame_SetPalette.Call(obj, uintptr(value))
 }
 
 func GIFFrame_GetEmpty(obj uintptr) bool {
@@ -44362,6 +44447,15 @@ func Graphic_GetModified(obj uintptr) bool {
 
 func Graphic_SetModified(obj uintptr, value bool) {
    graphic_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func Graphic_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := graphic_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func Graphic_SetPalette(obj uintptr, value HPALETTE) {
+   graphic_SetPalette.Call(obj, uintptr(value))
 }
 
 func Graphic_GetPaletteModified(obj uintptr) bool {
@@ -61288,5 +61382,174 @@ func Collection_SetItems(obj uintptr, Index int32, value uintptr) {
 
 func Collection_StaticClassType() TClass {
     r, _, _:= collection_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TPrinter ---------------------------
+
+func Printer_Create() uintptr {
+    ret, _, _ := printer_Create.Call()
+    return ret
+}
+
+func Printer_Free(obj uintptr) {
+    printer_Free.Call(obj)
+}
+
+func Printer_Abort(obj uintptr)  {
+    printer_Abort.Call(obj)
+}
+
+func Printer_BeginDoc(obj uintptr)  {
+    printer_BeginDoc.Call(obj)
+}
+
+func Printer_EndDoc(obj uintptr)  {
+    printer_EndDoc.Call(obj)
+}
+
+func Printer_NewPage(obj uintptr)  {
+    printer_NewPage.Call(obj)
+}
+
+func Printer_Refresh(obj uintptr)  {
+    printer_Refresh.Call(obj)
+}
+
+func Printer_GetPrinter(obj uintptr, ADevice string, ADriver string, APort string, ADeviceMode *uintptr)  {
+    printer_GetPrinter.Call(obj, GoStrToDStr(ADevice) , GoStrToDStr(ADriver) , GoStrToDStr(APort) , uintptr(unsafe.Pointer(ADeviceMode)))
+}
+
+func Printer_SetPrinter(obj uintptr, ADevice string, ADriver string, APort string, ADeviceMode uintptr)  {
+    printer_SetPrinter.Call(obj, GoStrToDStr(ADevice) , GoStrToDStr(ADriver) , GoStrToDStr(APort) , ADeviceMode )
+}
+
+func Printer_DisposeOf(obj uintptr)  {
+    printer_DisposeOf.Call(obj)
+}
+
+func Printer_ClassType(obj uintptr) TClass {
+    ret, _, _ := printer_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func Printer_ClassName(obj uintptr) string {
+    ret, _, _ := printer_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Printer_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := printer_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Printer_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := printer_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func Printer_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := printer_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func Printer_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := printer_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func Printer_ToString(obj uintptr) string {
+    ret, _, _ := printer_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Printer_GetAborted(obj uintptr) bool {
+    ret, _, _ := printer_GetAborted.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Printer_GetCanvas(obj uintptr) uintptr {
+    ret, _, _ := printer_GetCanvas.Call(obj)
+    return ret
+}
+
+func Printer_GetCapabilities(obj uintptr) TPrinterCapabilities {
+    ret, _, _ := printer_GetCapabilities.Call(obj)
+    return TPrinterCapabilities(ret)
+}
+
+func Printer_GetCopies(obj uintptr) int32 {
+    ret, _, _ := printer_GetCopies.Call(obj)
+    return int32(ret)
+}
+
+func Printer_SetCopies(obj uintptr, value int32) {
+   printer_SetCopies.Call(obj, uintptr(value))
+}
+
+func Printer_GetFonts(obj uintptr) uintptr {
+    ret, _, _ := printer_GetFonts.Call(obj)
+    return ret
+}
+
+func Printer_GetHandle(obj uintptr) HDC {
+    ret, _, _ := printer_GetHandle.Call(obj)
+    return HDC(ret)
+}
+
+func Printer_GetOrientation(obj uintptr) TPrinterOrientation {
+    ret, _, _ := printer_GetOrientation.Call(obj)
+    return TPrinterOrientation(ret)
+}
+
+func Printer_SetOrientation(obj uintptr, value TPrinterOrientation) {
+   printer_SetOrientation.Call(obj, uintptr(value))
+}
+
+func Printer_GetPageHeight(obj uintptr) int32 {
+    ret, _, _ := printer_GetPageHeight.Call(obj)
+    return int32(ret)
+}
+
+func Printer_GetPageWidth(obj uintptr) int32 {
+    ret, _, _ := printer_GetPageWidth.Call(obj)
+    return int32(ret)
+}
+
+func Printer_GetPageNumber(obj uintptr) int32 {
+    ret, _, _ := printer_GetPageNumber.Call(obj)
+    return int32(ret)
+}
+
+func Printer_GetPrinterIndex(obj uintptr) int32 {
+    ret, _, _ := printer_GetPrinterIndex.Call(obj)
+    return int32(ret)
+}
+
+func Printer_SetPrinterIndex(obj uintptr, value int32) {
+   printer_SetPrinterIndex.Call(obj, uintptr(value))
+}
+
+func Printer_GetPrinting(obj uintptr) bool {
+    ret, _, _ := printer_GetPrinting.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Printer_GetPrinters(obj uintptr) uintptr {
+    ret, _, _ := printer_GetPrinters.Call(obj)
+    return ret
+}
+
+func Printer_GetTitle(obj uintptr) string {
+    ret, _, _ := printer_GetTitle.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Printer_SetTitle(obj uintptr, value string) {
+   printer_SetTitle.Call(obj, GoStrToDStr(value))
+}
+
+func Printer_StaticClassType() TClass {
+    r, _, _:= printer_StaticClassType.Call()
     return TClass(r)
 }

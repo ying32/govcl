@@ -151,7 +151,7 @@ func wkeCreateViewCallback(webView, param, info uintptr) uintptr {
 	if p != nil {
 		p(info)
 	}
-	return param
+	return webView
 }
 
 //wkeAlertBoxCallback = procedure(webView: wkeWebView; param: Pointer; msg: wkeString); cdecl;

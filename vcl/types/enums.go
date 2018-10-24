@@ -1921,3 +1921,39 @@ const (
 
 //TThumbTabProperties = set of TThumbTabProperty;
 type TThumbTabProperties uint32
+
+// TBitmapHandleType
+type TBitmapHandleType int32
+
+const (
+	BmDIB = iota + 0
+	BmDDB
+)
+
+// TPrinterState = (psNoHandle, psHandleIC, psHandleDC);
+type TPrinterState int32
+
+const (
+	PsNoHandle = iota + 0
+	PsHandleIC
+	PsHandleDC
+)
+
+// TPrinterOrientation = (poPortrait, poLandscape);
+type TPrinterOrientation int32
+
+const (
+	PoPortrait = iota + 0
+	PoLandscape
+)
+
+//TPrinterCapability = (pcCopies, pcOrientation, pcCollation);
+type TPrinterCapability int32
+
+const (
+	PcCopies = iota + 0
+	PcOrientation
+	PcCollation
+)
+
+type TPrinterCapabilities uint32

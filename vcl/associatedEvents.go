@@ -77,6 +77,7 @@ var (
 		"MouseWheelDown":    {onMouseWheelDown, nil},
 		"MouseWheelUp":      {onMouseWheelUp, nil},
 		"Timer":             {onTimer, nil},
+		"StyleChanged":      {onStyleChanged, nil},
 		// Grid
 		"ColumnMoved":    {onColumnMoved, nil},
 		"DrawCell":       {onDrawCell, nil},
@@ -397,6 +398,10 @@ func onMouseWheelUp(sender IObject, shift TShiftState, mousePos TPoint, handled 
 
 func onTimer(sender IObject) {
 	mcall("Timer", sender)
+}
+
+func onStyleChanged(sender IObject) {
+	mcall("StyleChanged", sender)
 }
 
 // Grid

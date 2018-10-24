@@ -268,6 +268,16 @@ func (i *TIcon) SetModified(value bool) {
     Icon_SetModified(i.instance, value)
 }
 
+// Palette
+func (i *TIcon) Palette() HPALETTE {
+    return Icon_GetPalette(i.instance)
+}
+
+// SetPalette
+func (i *TIcon) SetPalette(value HPALETTE) {
+    Icon_SetPalette(i.instance, value)
+}
+
 // PaletteModified
 func (i *TIcon) PaletteModified() bool {
     return Icon_GetPaletteModified(i.instance)

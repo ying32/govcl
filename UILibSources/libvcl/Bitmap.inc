@@ -20,6 +20,11 @@ begin
   AObj.Assign(Source);
 end;
 
+procedure Bitmap_FreeImage(AObj: TBitmap); stdcall;
+begin
+  AObj.FreeImage;
+end;
+
 function Bitmap_HandleAllocated(AObj: TBitmap): LongBool; stdcall;
 begin
   Result :=  AObj.HandleAllocated;
@@ -122,6 +127,26 @@ begin
   AObj.Handle := AValue;
 end;
 
+function Bitmap_GetHandleType(AObj: TBitmap): TBitmapHandleType; stdcall;
+begin
+  Result :=  AObj.HandleType;
+end;
+
+procedure Bitmap_SetHandleType(AObj: TBitmap; AValue: TBitmapHandleType); stdcall;
+begin
+  AObj.HandleType := AValue;
+end;
+
+function Bitmap_GetMaskHandle(AObj: TBitmap): HBITMAP; stdcall;
+begin
+  Result :=  AObj.MaskHandle;
+end;
+
+procedure Bitmap_SetMaskHandle(AObj: TBitmap; AValue: HBITMAP); stdcall;
+begin
+  AObj.MaskHandle := AValue;
+end;
+
 function Bitmap_GetPixelFormat(AObj: TBitmap): TPixelFormat; stdcall;
 begin
   Result :=  AObj.PixelFormat;
@@ -165,6 +190,16 @@ end;
 procedure Bitmap_SetModified(AObj: TBitmap; AValue: LongBool); stdcall;
 begin
   AObj.Modified := AValue;
+end;
+
+function Bitmap_GetPalette(AObj: TBitmap): HPALETTE; stdcall;
+begin
+  Result :=  AObj.Palette;
+end;
+
+procedure Bitmap_SetPalette(AObj: TBitmap; AValue: HPALETTE); stdcall;
+begin
+  AObj.Palette := AValue;
 end;
 
 function Bitmap_GetPaletteModified(AObj: TBitmap): LongBool; stdcall;
@@ -223,6 +258,7 @@ exports
   Bitmap_Create,
   Bitmap_Free,
   Bitmap_Assign,
+  Bitmap_FreeImage,
   Bitmap_HandleAllocated,
   Bitmap_LoadFromStream,
   Bitmap_SaveToStream,
@@ -243,6 +279,10 @@ exports
   Bitmap_GetCanvas,
   Bitmap_GetHandle,
   Bitmap_SetHandle,
+  Bitmap_GetHandleType,
+  Bitmap_SetHandleType,
+  Bitmap_GetMaskHandle,
+  Bitmap_SetMaskHandle,
   Bitmap_GetPixelFormat,
   Bitmap_SetPixelFormat,
   Bitmap_GetTransparentColor,
@@ -252,6 +292,8 @@ exports
   Bitmap_SetHeight,
   Bitmap_GetModified,
   Bitmap_SetModified,
+  Bitmap_GetPalette,
+  Bitmap_SetPalette,
   Bitmap_GetPaletteModified,
   Bitmap_SetPaletteModified,
   Bitmap_GetTransparent,

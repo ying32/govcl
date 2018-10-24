@@ -294,6 +294,16 @@ func (j *TJPEGImage) SetModified(value bool) {
     JPEGImage_SetModified(j.instance, value)
 }
 
+// Palette
+func (j *TJPEGImage) Palette() HPALETTE {
+    return JPEGImage_GetPalette(j.instance)
+}
+
+// SetPalette
+func (j *TJPEGImage) SetPalette(value HPALETTE) {
+    JPEGImage_SetPalette(j.instance, value)
+}
+
 // PaletteModified
 func (j *TJPEGImage) PaletteModified() bool {
     return JPEGImage_GetPaletteModified(j.instance)

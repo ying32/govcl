@@ -110,6 +110,16 @@ func ShortCutToText(val types.TShortCut) string {
 }
 
 // SysOpen 打开，windows下调用ShellExecute
+/*
+	// windows
+	rtl.SysOpen("http://www.xxx.com")
+	rtl.SysOpen("c:\")
+	rtl.SysOpen("c:\xxx.exe")
+
+	// linux or macOS
+	rtl.SysOpen("https://wwww.xxx.com")
+	rtl.SysOpen("file:///xxx.png");
+*/
 func SysOpen(filename string) {
 	api.DSysOpen(filename)
 }
@@ -138,4 +148,25 @@ func SetPropertyValue(instance uintptr, propName, value string) {
 // SetPropertySecValue 设置对象二级属性
 func SetPropertySecValue(instance uintptr, propName, secPropName, value string) {
 	api.DSetPropertySecValue(instance, propName, secPropName, value)
+}
+
+// LibResouces
+func GetLibResouceCount() int32 {
+	return api.DGetLibResouceCount()
+}
+
+func GetLibResouceItem(aIndex int32) types.TLibResouce {
+	return api.DGetLibResouceItem(aIndex)
+}
+
+func GetLibResouceItems() []types.TLibResouce {
+	ret := make([]types.TLibResouce, GetLibResouceCount())
+	for i := 0; i < len(ret); i++ {
+		ret[i] = GetLibResouceItem(int32(i))
+	}
+	return ret
+}
+
+func ModifyLibResouce(aPtr uintptr, aValue string) {
+	api.DModifyLibResouce(aPtr, aValue)
 }

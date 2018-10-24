@@ -135,6 +135,16 @@ begin
   AObj.Modified := AValue;
 end;
 
+function JPEGImage_GetPalette(AObj: TJPEGImage): HPALETTE; extdecl;
+begin
+  Result :=  AObj.Palette;
+end;
+
+procedure JPEGImage_SetPalette(AObj: TJPEGImage; AValue: HPALETTE); extdecl;
+begin
+  AObj.Palette := AValue;
+end;
+
 function JPEGImage_GetPaletteModified(AObj: TJPEGImage): LongBool; extdecl;
 begin
   Result :=  AObj.PaletteModified;
@@ -209,6 +219,8 @@ exports
   JPEGImage_SetHeight,
   JPEGImage_GetModified,
   JPEGImage_SetModified,
+  JPEGImage_GetPalette,
+  JPEGImage_SetPalette,
   JPEGImage_GetPaletteModified,
   JPEGImage_SetPaletteModified,
   JPEGImage_GetTransparent,
