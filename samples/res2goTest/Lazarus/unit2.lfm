@@ -1,0 +1,10 @@
+object About: TAbout
+  Left = 1065
+  Height = 300
+  Top = 558
+  Width = 400
+  Caption = 'About'
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  LCLVersion = '1.8.0.6'
+end
