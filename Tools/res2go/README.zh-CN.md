@@ -15,6 +15,7 @@
   -outpath    输出目录，可为空，默认为当前目录。
   -outmain    是否输出“main.go”，此为解析lpr或者dpr文件，默认输出。
   -outres     输出一个Windows默认资源文件，如果存在则不创建，默认输出。
+  -outbytes   将gfm文件以字节形式保存至go文件中，默认输出。
   -scale      缩放窗口选项，默认为不缩放。  
   -encrypt    使用加密格式的*.gfm文件，默认为true。  
   -h -help    显示帮助。

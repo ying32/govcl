@@ -18,7 +18,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.5';
+  APPVERSION = '1.0.6';
 
 type
   TComponentItem = record
@@ -585,7 +585,7 @@ var
 
  var
    LInput, LOutput, LEnStream: TMemoryStream;
-   LUseEncrypt: Boolean;
+   LUseEncrypt, LOutbytes: Boolean;
  begin
    LInput := TMemoryStream.Create;
    try
@@ -607,13 +607,26 @@ var
                 LUseEncrypt := True;
                 if FindCmdLineSwitch('encrypt') then
                   LUseEncrypt := SameText(GetNextParam('encrypt'), 'True');
+
+                LOutbytes := True;
+                if FindCmdLineSwitch('outbytes') then
+                  LOutbytes := SameText(GetNextParam('outbytes'), 'True');
+
                 // 使用加密格式的
                 if LUseEncrypt then
                 begin
                   TFormResFile.Encrypt(LOutput, LEnStream);
-                  SaveToGoFile(LComponents, LEventList, AOutPath, LEnStream);
+                  if LOutbytes then
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LEnStream)
+                  else
+                    SaveToGoFile(LComponents, LEventList, AOutPath, nil)
                 end else
-                  SaveToGoFile(LComponents, LEventList, AOutPath, LOutput);
+                begin
+                  if LOutbytes then
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LOutput)
+                  else
+                    SaveToGoFile(LComponents, LEventList, AOutPath, nil)
+                end;
               finally
                 LEnStream.Free;;
               end;
@@ -803,11 +816,12 @@ begin
     TextColor(tfWhite);
     Writeln('res2go是一个将Lazarus/Delphi资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。');
     Writeln('');
-    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-scale] [-encrypt true]');
+    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
     Writeln('  -path       待转换的工程路径，可为空，默认以当前目录为准。');
     Writeln('  -outpath    输出目录，可为空，默认为当前目录。');
     Writeln('  -outmain    是否输出“main.go”，此为解析lpr或者dpr文件，默认输出。');
     Writeln('  -outres     输出一个Windows默认资源文件，如果存在则不创建，默认输出。');
+    Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认输出。');
     Writeln('  -scale      缩放窗口选项，默认为不缩放。');
     Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为true。');
     Writeln('  -h -help    显示帮助。');
@@ -824,11 +838,12 @@ begin
     TextColor(tfWhite);
     Writeln('res2go is a Lazarus/Delphi resource window to go tool, can automatically resolve the lfm, dfm component name, component type and event name. Parse window information in lpr, dpr file.');
     Writeln('');
-    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-scale] [-encrypt true]');
+    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
     Writeln('  -path       The project path to be converted can be empty. The default is the current directory.');
     Writeln('  -outpath    Output directory, can be empty, the default is the current directory.');
     Writeln('  -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default output.');
     Writeln('  -outres     Outputs a Windows default resource file, if it does not exist, the default output.');
+    Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default output.');
     Writeln('  -scale      The windoscale option, the default is false.');
     Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is true.');
     Writeln('  -h -help    Show help.');
