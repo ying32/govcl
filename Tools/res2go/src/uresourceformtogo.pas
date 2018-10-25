@@ -140,6 +140,9 @@ const
   tbRed   =$40;
   tbIntensity = $80;
 
+  PrivateFiledsFlagStr = '//::private::';
+  PrivateFiledsStr = 'T%sFields';
+
 procedure TextColor(AColor: Byte);
 begin
 {$IFDEF WINDOWS}
@@ -230,10 +233,10 @@ end;
 
 procedure CreateImplFile(AFileName: string; AEvents: array of TEventItem; AFormName: string);
 var
-  LImplFileName, LMName, LTemp, LCode: string;
+  LImplFileName, LMName, LTemp, LCode, LPrivateName, LFlags: string;
   LItem: TEventItem;
   LStream: TStringStream;
-  LExists: Boolean;
+  LExists, LB: Boolean;
   LListStr: TStringList;
   I: Integer;
 begin
@@ -260,17 +263,43 @@ begin
         LListStr.Add('');
         LListStr.Add('package main');
         LListStr.Add('');
-        LListStr.Add('import (');
-        LListStr.Add('    "github.com/ying32/govcl/vcl"');
-        //LListStr.Add('    "github.com/ying32/govcl/vcl/types"');
-        LListStr.Add(')');
+        if Length(AEvents) > 0 then
+        begin
+          LListStr.Add('import (');
+          LListStr.Add('    "github.com/ying32/govcl/vcl"');
+          LListStr.Add(')');
+        end;
       end else
       begin
         // 反之加载
         LStream.LoadFromFile(LImplFileName);
         LTemp := LStream.DataString;
         LListStr.Text := LTemp;
+
+        // 有事件时检查下有没有添加govcl包
+        if Length(AEvents) > 0 then
+        begin
+           if Pos('import', LTemp) = 0 then
+           begin
+             I := 0;
+             while I < LListStr.Count do
+             begin
+               if Trim(LListStr[I]).StartsWith('package') then
+               begin
+                 Inc(I);
+                 LListStr.Insert(I, ')');
+                 LListStr.Insert(I, '    "github.com/ying32/govcl/vcl"');
+                 LListStr.Insert(I, 'import (');
+                 LListStr.Insert(I, '');
+                 Break;
+               end;
+               Inc(I);
+             end;
+           end;
+        end;
       end;
+
+
       // 添加事件
       for LItem in AEvents do
       begin
@@ -279,9 +308,10 @@ begin
         LCode := Format(#13#10'func (f *T%s) %s(%s) {'#13#10#13#10'}'#13#10, [AFormName, LMName, GetEventParam(LItem)]);
         // 不存在不查找了
         if not LExists then
+        begin
           if Pos(LMName, LListStr.Text) = 0 then
             LListStr.Add(LCode)
-        else
+        end else
         begin
           // 没有找到，则添加
           if Pos(LMName, LListStr.Text) = 0 then
@@ -310,6 +340,55 @@ begin
         end;
       end;
 
+      // 检查私有变量结构是否存在
+      LPrivateName := Format(PrivateFiledsStr, [AFormName]);
+      // 不存在，则添加
+      if Pos(PrivateFiledsFlagStr, LListStr.Text) = 0 then
+      begin
+        I := 0;
+        while I < LListStr.Count do
+        begin
+          // 在首个func前几行插入
+          LFlags := 'import';
+          LB := (not LExists) and (Length(AEvents) = 0);
+          if LB then
+            LFlags := 'package';
+          if Trim(LListStr[I]).StartsWith(LFlags) then
+          begin
+            if not LB then
+            begin
+              repeat
+                Inc(I);
+              until Trim(LListStr[I]).StartsWith(')') ;
+            end;
+            Inc(I);
+            LListStr.Insert(I, '');
+            LListStr.Insert(I, '}');
+            LListStr.Insert(I, 'type ' + LPrivateName + ' struct {');
+            LListStr.Insert(I, PrivateFiledsFlagStr);
+            LListStr.Insert(I, '');
+            Break;
+          end;
+          Inc(I);
+        end;
+      end else
+      begin
+        // 如果存在，则更新，因为防止把窗口名称改了，这里同步更新
+        for I := 0 to LListStr.Count - 1 do
+        begin
+          // 在首个func前几行插入
+          if Trim(LListStr[I]).CompareTo(PrivateFiledsFlagStr) = 0 then
+          begin
+            LListStr[I+1] := 'type ' + LPrivateName + ' struct {';
+            Break;
+          end;
+        end;
+      end;
+
+      // 这里是不是还得处理下，将窗口名称做一次替换
+      //f *TFrmMain
+
+
       LStream.Clear;
       LStream.WriteString(LListStr.Text);
     finally
@@ -324,7 +403,7 @@ end;
 
 procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AOutPath: string; AMem: TMemoryStream);
 var
-  LStrStream{, LResStrStream}: TStringStream;
+  LStrStream: TStringStream;
 {$IFDEF FPC}
   LLines: TStringList;
 {$ENDIF}
@@ -337,12 +416,6 @@ var
     LStrStream.WriteString(s + sLineBreak);
   {$ENDIF}
   end;
-
-  //procedure WResLine(s: string = '');
-  //begin
-  //  LResStrStream.WriteString(s + sLineBreak);
-  //end;
-
 
   function GetMaxLength: Integer;
   var
@@ -360,10 +433,9 @@ var
 var
   I, LMaxLen: Integer;
   C: PComponentItem;
-  LBS, LVarName, LFormName, LFileName{, LBytesResFileName}: string;
+  LBS, LVarName, LFormName, LFileName: string;
 begin
   LStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
-  //LResStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
   LLines := TStringList.Create;
   try
     if SysIsZhCN then
@@ -409,11 +481,10 @@ begin
       //Writeln(C^.Name, ': ', C^.ClassName);
       WLine(Format('    %s *vcl.%s', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName]));
     end;
-    // 添加一个隐式字段，用于私有
     WLine;
-
-    WLine('    //::private');
-    WLine(Format('    T%sPrivate', [LFormName]));
+    // 添加一个隐式字段，用于私有，方便写一些结构定自定义的变量什么的
+    WLine('    ' + PrivateFiledsFlagStr); // 这是一个查找标识
+    WLine(Format('    ' + PrivateFiledsStr, [LFormName]));
     WLine('}');
     WLine;
     WLine(Format('var %s *T%s', [LFormName, LFormName]));
@@ -444,16 +515,8 @@ begin
         WLine('// Loaded in bytes.');
       WLine(Format('// vcl.Application.CreateForm(%s, &%s)', [LVarName, LFormName]));
       WLine;
-
-      // 资源文件
-      //if SysIsZhCN then
-      //  WResLine('// 由res2go自动生成，不要编辑。')
-      //else
-      //  WResLine('// Automatically generated by the res2go, do not edit.');
-      //WResLine;
-
-      WLine('var (');     // WResLine('var (');
-      WLine(Format('    %s = []byte {', [LVarName])); // WResLine(Format('    %s = []byte {', [LVarName]));
+      WLine('var (');
+      WLine(Format('    %s = []byte {', [LVarName]));
       LBS := '';
       for I := 0 to AMem.Size - 1 do
       begin
@@ -464,12 +527,9 @@ begin
         LBS := LBS + '0x' + PByte(PByte(AMem.Memory) + I)^.ToHexString(2);
       end;
       LBS := LBS + '}';
-      WLine(LBS); // WResLine(LBS);
-      WLine(')'); // WResLine(')');
+      WLine(LBS);
+      WLine(')');
     end;
-    //LBytesResFileName := AOutPath + LFormName + 'Res.go';
-    //LResStrStream.SaveToFile(LBytesResFileName);
-
     LFileName := AOutPath + LFormName + '.go';
   {$IFDEF FPC}
     LStrStream.WriteString(LLines.Text);
@@ -477,12 +537,10 @@ begin
     LStrStream.SaveToFile(LFileName);
   finally
     LLines.Free;
-    //LResStrStream.Free;
     LStrStream.Free;
   end;
   // 一定创建，因为多加了个
-  //if Length(AEvents) > 0 then
-    CreateImplFile(LFileName, AEvents, LFormName);
+  CreateImplFile(LFileName, AEvents, LFormName);
 end;
 
 
