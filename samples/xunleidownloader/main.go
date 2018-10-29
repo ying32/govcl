@@ -69,14 +69,14 @@ func main() {
 
 	MainForm.ActStart.SetOnExecute(func(vcl.IObject) {
 		item := MainForm.LVDlList.Selected()
-		if item != nil && item.IsValid() && item.Data() != 0 {
+		if item != nil && item.IsValid() && item.Data() != nil {
 			(*xldl.XLTask)(unsafe.Pointer(item.Data())).Start()
 		}
 	})
 
 	MainForm.ActStop.SetOnExecute(func(vcl.IObject) {
 		item := MainForm.LVDlList.Selected()
-		if item != nil && item.IsValid() && item.Data() != 0 {
+		if item != nil && item.IsValid() && item.Data() != nil {
 			(*xldl.XLTask)(unsafe.Pointer(item.Data())).Stop()
 		}
 	})
@@ -106,7 +106,7 @@ func getURLFileName(s string) string {
 func startTask(dlURL string, item *vcl.TListItem) {
 	task := dloader.AddTask(dlURL, getURLFileName(dlURL))
 	if task.Start() {
-		item.SetData(uintptr(unsafe.Pointer(task)))
+		item.SetData(unsafe.Pointer(task))
 		go func() {
 			for {
 				info, ret := task.Info()
