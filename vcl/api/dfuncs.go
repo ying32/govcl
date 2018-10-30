@@ -2,6 +2,7 @@ package api
 
 import (
 	"reflect"
+	"sync"
 	"unsafe"
 
 	. "github.com/ying32/govcl/vcl/types"
@@ -14,6 +15,7 @@ type TGoParam struct {
 
 var (
 	CallbackMap = map[uintptr]interface{}{}
+	threadSync  sync.Mutex
 )
 
 func DBoolToGoBool(val uintptr) bool {
@@ -124,6 +126,8 @@ func DSelectDirectory2(caption, root string, options TSelectDirExtOpts, parent u
 }
 
 func DSynchronize(fn interface{}) {
+	threadSync.Lock()
+	defer threadSync.Unlock()
 	dSynchronize.Call(addEventToMap(fn))
 }
 
