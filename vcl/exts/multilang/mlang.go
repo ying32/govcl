@@ -259,5 +259,7 @@ func initLoadLocalLangsInfo() {
 }
 
 func init() {
+	// 首先设置lib中资源
+	RegisterLibResouces(rtl.GetLibResouceItems(), rtl.ModifyLibResouce)
 	initLoadLocalLangsInfo()
 }
