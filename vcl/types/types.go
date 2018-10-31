@@ -58,6 +58,10 @@ type HResult uintptr
 
 type HPALETTE uintptr
 
+type HRSRC uintptr
+
+type HGLOBAL uintptr
+
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect
 

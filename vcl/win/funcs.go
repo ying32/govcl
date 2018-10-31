@@ -7,6 +7,8 @@ import (
 
 	"fmt"
 	"syscall"
+
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 const MAX_VERS = 20
@@ -151,4 +153,23 @@ func GetDesktopPath() string {
 		return lpPath
 	}
 	return ""
+}
+
+// ResouceToBytes
+func ResouceToBytes(instance uintptr, resName string, resType uintptr) ([]byte, bool) {
+	resInfo := FindResource(HMODULE(instance), resName, resType)
+	if resInfo == 0 {
+		return nil, false
+	}
+	hGlobal := LoadResource(instance, resInfo)
+	if hGlobal == 0 {
+		return nil, false
+	}
+	ptr := LockResource(hGlobal)
+	size := SizeofResource(instance, resInfo)
+	bytes := make([]byte, size)
+	Memcpy(uintptr(unsafe.Pointer(&bytes[0])), ptr, uintptr(size))
+	//UnlockResource(hGlobal);
+	FreeResource(hGlobal)
+	return bytes, true
 }
