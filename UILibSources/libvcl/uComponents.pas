@@ -60,6 +60,7 @@ uses
   Vcl.FileCtrl,
   Vcl.JumpList,
   Vcl.Taskbar,
+  Vcl.Samples.Spin,
   ImageButton;
 
 var
@@ -69,7 +70,7 @@ var
 //--------------------- Ô­DelphiResForm.incÄÚÈÝ
 
 const
-  ClassRefArrs: array[0..125] of TClass = (
+  ClassRefArrs: array[0..126] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -91,7 +92,7 @@ const
     TPrinterSetupDialog,
     TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
-    TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList
+    TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList,TSpinEdit
   );
 
 

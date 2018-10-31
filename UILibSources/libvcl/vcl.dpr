@@ -59,6 +59,7 @@ uses
   Vcl.JumpList,
   Vcl.Taskbar,
   Vcl.Printers,
+  Vcl.Samples.Spin,
   uFormDesignerFile,
   uEventCallback in 'uEventCallback.pas',
   ufrmGo in 'ufrmGo.pas' {GoForm},
@@ -152,6 +153,7 @@ uses
 {$I CollectionItem.inc}
 {$I StatusPanels.inc}
 {$I StatusPanel.inc}
+{$I SpinEdit.inc}
 {$I Canvas.inc}
 {$I Object.inc}
 {$I PngImage.inc}

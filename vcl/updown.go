@@ -504,6 +504,16 @@ func (u *TUpDown) SetMax(value int32) {
     UpDown_SetMax(u.instance, value)
 }
 
+// Increment
+func (u *TUpDown) Increment() int32 {
+    return UpDown_GetIncrement(u.instance)
+}
+
+// SetIncrement
+func (u *TUpDown) SetIncrement(value int32) {
+    UpDown_SetIncrement(u.instance, value)
+}
+
 // Orientation
 func (u *TUpDown) Orientation() TUDOrientation {
     return UpDown_GetOrientation(u.instance)

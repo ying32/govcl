@@ -1,0 +1,1135 @@
+
+//----------------------------------------
+// 代码由GenlibLcl工具自动生成。
+// Copyright © ying32. All Rights Reserved.
+//
+//----------------------------------------
+
+function SpinEdit_Create(AOwner: TComponent): TSpinEdit; extdecl;
+begin
+  Result :=  TSpinEdit.Create(AOwner);
+end;
+
+procedure SpinEdit_Free(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Free;
+end;
+
+procedure SpinEdit_Clear(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Clear;
+end;
+
+procedure SpinEdit_ClearSelection(AObj: TSpinEdit); extdecl;
+begin
+  AObj.ClearSelection;
+end;
+
+procedure SpinEdit_CopyToClipboard(AObj: TSpinEdit); extdecl;
+begin
+  AObj.CopyToClipboard;
+end;
+
+procedure SpinEdit_CutToClipboard(AObj: TSpinEdit); extdecl;
+begin
+  AObj.CutToClipboard;
+end;
+
+procedure SpinEdit_PasteFromClipboard(AObj: TSpinEdit); extdecl;
+begin
+  AObj.PasteFromClipboard;
+end;
+
+procedure SpinEdit_Undo(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Undo;
+end;
+
+procedure SpinEdit_SelectAll(AObj: TSpinEdit); extdecl;
+begin
+  AObj.SelectAll;
+end;
+
+function SpinEdit_CanFocus(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.CanFocus;
+end;
+
+function SpinEdit_ContainsControl(AObj: TSpinEdit; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function SpinEdit_ControlAtPos(AObj: TSpinEdit; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure SpinEdit_DisableAlign(AObj: TSpinEdit); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure SpinEdit_EnableAlign(AObj: TSpinEdit); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function SpinEdit_FindChildControl(AObj: TSpinEdit; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
+procedure SpinEdit_FlipChildren(AObj: TSpinEdit; AllLevels: LongBool); extdecl;
+begin
+  AObj.FlipChildren(AllLevels);
+end;
+
+function SpinEdit_Focused(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Focused;
+end;
+
+function SpinEdit_HandleAllocated(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
+procedure SpinEdit_InsertControl(AObj: TSpinEdit; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
+procedure SpinEdit_Invalidate(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Invalidate;
+end;
+
+procedure SpinEdit_RemoveControl(AObj: TSpinEdit; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
+end;
+
+procedure SpinEdit_Realign(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Realign;
+end;
+
+procedure SpinEdit_Repaint(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Repaint;
+end;
+
+procedure SpinEdit_ScaleBy(AObj: TSpinEdit; M: Integer; D: Integer); extdecl;
+begin
+  AObj.ScaleBy(M, D);
+end;
+
+procedure SpinEdit_ScrollBy(AObj: TSpinEdit; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
+procedure SpinEdit_SetBounds(AObj: TSpinEdit; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
+begin
+  AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+end;
+
+procedure SpinEdit_SetFocus(AObj: TSpinEdit); extdecl;
+begin
+  AObj.SetFocus;
+end;
+
+procedure SpinEdit_Update(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Update;
+end;
+
+procedure SpinEdit_BringToFront(AObj: TSpinEdit); extdecl;
+begin
+  AObj.BringToFront;
+end;
+
+procedure SpinEdit_ClientToScreen(AObj: TSpinEdit; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure SpinEdit_ClientToParent(AObj: TSpinEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
+function SpinEdit_Dragging(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
+function SpinEdit_HasParent(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.HasParent;
+end;
+
+procedure SpinEdit_Hide(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Hide;
+end;
+
+function SpinEdit_Perform(AObj: TSpinEdit; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
+begin
+  Result :=  AObj.Perform(Msg, WParam, LParam);
+end;
+
+procedure SpinEdit_Refresh(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Refresh;
+end;
+
+procedure SpinEdit_ScreenToClient(AObj: TSpinEdit; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure SpinEdit_ParentToClient(AObj: TSpinEdit; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
+end;
+
+procedure SpinEdit_SendToBack(AObj: TSpinEdit); extdecl;
+begin
+  AObj.SendToBack;
+end;
+
+procedure SpinEdit_Show(AObj: TSpinEdit); extdecl;
+begin
+  AObj.Show;
+end;
+
+function SpinEdit_GetTextBuf(AObj: TSpinEdit; Buffer: PChar; BufSize: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.GetTextBuf(Buffer, BufSize);
+end;
+
+function SpinEdit_GetTextLen(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.GetTextLen;
+end;
+
+procedure SpinEdit_SetTextBuf(AObj: TSpinEdit; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
+function SpinEdit_FindComponent(AObj: TSpinEdit; AName: PChar): TComponent; extdecl;
+begin
+  Result :=  AObj.FindComponent(AName);
+end;
+
+function SpinEdit_GetNamePath(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.GetNamePath);
+end;
+
+procedure SpinEdit_Assign(AObj: TSpinEdit; Source: TPersistent); extdecl;
+begin
+  AObj.Assign(Source);
+end;
+
+function SpinEdit_ClassType(AObj: TSpinEdit): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
+function SpinEdit_ClassName(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  ToPChar(AObj.ClassName);
+end;
+
+function SpinEdit_InstanceSize(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function SpinEdit_InheritsFrom(AObj: TSpinEdit; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
+end;
+
+function SpinEdit_Equals(AObj: TSpinEdit; Obj: TObject): LongBool; extdecl;
+begin
+  Result :=  AObj.Equals(Obj);
+end;
+
+function SpinEdit_GetHashCode(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function SpinEdit_ToString(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function SpinEdit_GetAnchors(AObj: TSpinEdit): TAnchors; extdecl;
+begin
+  Result :=  AObj.Anchors;
+end;
+
+procedure SpinEdit_SetAnchors(AObj: TSpinEdit; AValue: TAnchors); extdecl;
+begin
+  AObj.Anchors := AValue;
+end;
+
+function SpinEdit_GetAutoSelect(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSelect;
+end;
+
+procedure SpinEdit_SetAutoSelect(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSelect := AValue;
+end;
+
+function SpinEdit_GetAutoSize(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSize;
+end;
+
+procedure SpinEdit_SetAutoSize(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSize := AValue;
+end;
+
+function SpinEdit_GetColor(AObj: TSpinEdit): TColor; extdecl;
+begin
+  Result :=  AObj.Color;
+end;
+
+procedure SpinEdit_SetColor(AObj: TSpinEdit; AValue: TColor); extdecl;
+begin
+  AObj.Color := AValue;
+end;
+
+function SpinEdit_GetEnabled(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Enabled;
+end;
+
+procedure SpinEdit_SetEnabled(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.Enabled := AValue;
+end;
+
+function SpinEdit_GetFont(AObj: TSpinEdit): TFont; extdecl;
+begin
+  Result :=  AObj.Font;
+end;
+
+procedure SpinEdit_SetFont(AObj: TSpinEdit; AValue: TFont); extdecl;
+begin
+  AObj.Font := AValue;
+end;
+
+function SpinEdit_GetIncrement(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Increment;
+end;
+
+procedure SpinEdit_SetIncrement(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.Increment := AValue;
+end;
+
+function SpinEdit_GetMaxLength(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.MaxLength;
+end;
+
+procedure SpinEdit_SetMaxLength(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.MaxLength := AValue;
+end;
+
+function SpinEdit_GetMaxValue(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.MaxValue;
+end;
+
+procedure SpinEdit_SetMaxValue(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.MaxValue := AValue;
+end;
+
+function SpinEdit_GetMinValue(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.MinValue;
+end;
+
+procedure SpinEdit_SetMinValue(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.MinValue := AValue;
+end;
+
+function SpinEdit_GetParentColor(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentColor;
+end;
+
+procedure SpinEdit_SetParentColor(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentColor := AValue;
+end;
+
+function SpinEdit_GetParentFont(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentFont;
+end;
+
+procedure SpinEdit_SetParentFont(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentFont := AValue;
+end;
+
+function SpinEdit_GetParentShowHint(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentShowHint;
+end;
+
+procedure SpinEdit_SetParentShowHint(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentShowHint := AValue;
+end;
+
+function SpinEdit_GetPopupMenu(AObj: TSpinEdit): TPopupMenu; extdecl;
+begin
+  Result :=  AObj.PopupMenu;
+end;
+
+procedure SpinEdit_SetPopupMenu(AObj: TSpinEdit; AValue: TPopupMenu); extdecl;
+begin
+  AObj.PopupMenu := AValue;
+end;
+
+function SpinEdit_GetReadOnly(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ReadOnly;
+end;
+
+procedure SpinEdit_SetReadOnly(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ReadOnly := AValue;
+end;
+
+function SpinEdit_GetShowHint(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ShowHint;
+end;
+
+procedure SpinEdit_SetShowHint(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ShowHint := AValue;
+end;
+
+function SpinEdit_GetTabOrder(AObj: TSpinEdit): TTabOrder; extdecl;
+begin
+  Result :=  AObj.TabOrder;
+end;
+
+procedure SpinEdit_SetTabOrder(AObj: TSpinEdit; AValue: TTabOrder); extdecl;
+begin
+  AObj.TabOrder := AValue;
+end;
+
+function SpinEdit_GetTabStop(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.TabStop;
+end;
+
+procedure SpinEdit_SetTabStop(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.TabStop := AValue;
+end;
+
+function SpinEdit_GetValue(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Value;
+end;
+
+procedure SpinEdit_SetValue(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.Value := AValue;
+end;
+
+function SpinEdit_GetVisible(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Visible;
+end;
+
+procedure SpinEdit_SetVisible(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.Visible := AValue;
+end;
+
+procedure SpinEdit_SetOnChange(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnChange := nil;
+    EventClass.Remove(AObj, geChange);
+    Exit;
+  end;
+  AObj.OnChange := @EventClass.OnChange;
+  EventClass.Add(AObj, geChange, AEventId);
+end;
+
+procedure SpinEdit_SetOnClick(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnClick := nil;
+    EventClass.Remove(AObj, geClick);
+    Exit;
+  end;
+  AObj.OnClick := @EventClass.OnClick;
+  EventClass.Add(AObj, geClick, AEventId);
+end;
+
+procedure SpinEdit_SetOnEnter(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnEnter := nil;
+    EventClass.Remove(AObj, geEnter);
+    Exit;
+  end;
+  AObj.OnEnter := @EventClass.OnEnter;
+  EventClass.Add(AObj, geEnter, AEventId);
+end;
+
+procedure SpinEdit_SetOnExit(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnExit := nil;
+    EventClass.Remove(AObj, geExit);
+    Exit;
+  end;
+  AObj.OnExit := @EventClass.OnExit;
+  EventClass.Add(AObj, geExit, AEventId);
+end;
+
+procedure SpinEdit_SetOnKeyDown(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnKeyDown := nil;
+    EventClass.Remove(AObj, geKeyDown);
+    Exit;
+  end;
+  AObj.OnKeyDown := @EventClass.OnKeyDown;
+  EventClass.Add(AObj, geKeyDown, AEventId);
+end;
+
+procedure SpinEdit_SetOnKeyPress(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnKeyPress := nil;
+    EventClass.Remove(AObj, geKeyPress);
+    Exit;
+  end;
+  AObj.OnKeyPress := @EventClass.OnKeyPress;
+  EventClass.Add(AObj, geKeyPress, AEventId);
+end;
+
+procedure SpinEdit_SetOnKeyUp(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnKeyUp := nil;
+    EventClass.Remove(AObj, geKeyUp);
+    Exit;
+  end;
+  AObj.OnKeyUp := @EventClass.OnKeyUp;
+  EventClass.Add(AObj, geKeyUp, AEventId);
+end;
+
+procedure SpinEdit_SetOnMouseDown(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseDown := nil;
+    EventClass.Remove(AObj, geMouseDown);
+    Exit;
+  end;
+  AObj.OnMouseDown := @EventClass.OnMouseDown;
+  EventClass.Add(AObj, geMouseDown, AEventId);
+end;
+
+procedure SpinEdit_SetOnMouseMove(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseMove := nil;
+    EventClass.Remove(AObj, geMouseMove);
+    Exit;
+  end;
+  AObj.OnMouseMove := @EventClass.OnMouseMove;
+  EventClass.Add(AObj, geMouseMove, AEventId);
+end;
+
+procedure SpinEdit_SetOnMouseUp(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnMouseUp := nil;
+    EventClass.Remove(AObj, geMouseUp);
+    Exit;
+  end;
+  AObj.OnMouseUp := @EventClass.OnMouseUp;
+  EventClass.Add(AObj, geMouseUp, AEventId);
+end;
+
+function SpinEdit_GetAlignment(AObj: TSpinEdit): TAlignment; extdecl;
+begin
+  Result :=  AObj.Alignment;
+end;
+
+procedure SpinEdit_SetAlignment(AObj: TSpinEdit; AValue: TAlignment); extdecl;
+begin
+  AObj.Alignment := AValue;
+end;
+
+function SpinEdit_GetCanUndo(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.CanUndo;
+end;
+
+function SpinEdit_GetModified(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Modified;
+end;
+
+procedure SpinEdit_SetModified(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.Modified := AValue;
+end;
+
+function SpinEdit_GetSelLength(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.SelLength;
+end;
+
+procedure SpinEdit_SetSelLength(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.SelLength := AValue;
+end;
+
+function SpinEdit_GetSelStart(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.SelStart;
+end;
+
+procedure SpinEdit_SetSelStart(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.SelStart := AValue;
+end;
+
+function SpinEdit_GetSelText(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.SelText);
+end;
+
+procedure SpinEdit_SetSelText(AObj: TSpinEdit; AValue: PChar); extdecl;
+begin
+  AObj.SelText := AValue;
+end;
+
+function SpinEdit_GetText(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Text);
+end;
+
+procedure SpinEdit_SetText(AObj: TSpinEdit; AValue: PChar); extdecl;
+begin
+  AObj.Text := AValue;
+end;
+
+function SpinEdit_GetTextHint(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.TextHint);
+end;
+
+procedure SpinEdit_SetTextHint(AObj: TSpinEdit; AValue: PChar); extdecl;
+begin
+  AObj.TextHint := AValue;
+end;
+
+function SpinEdit_GetDockClientCount(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function SpinEdit_GetDockSite(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure SpinEdit_SetDockSite(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
+function SpinEdit_GetDoubleBuffered(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.DoubleBuffered;
+end;
+
+procedure SpinEdit_SetDoubleBuffered(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.DoubleBuffered := AValue;
+end;
+
+function SpinEdit_GetVisibleDockClientCount(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
+function SpinEdit_GetBrush(AObj: TSpinEdit): TBrush; extdecl;
+begin
+  Result :=  AObj.Brush;
+end;
+
+function SpinEdit_GetControlCount(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ControlCount;
+end;
+
+function SpinEdit_GetHandle(AObj: TSpinEdit): HWND; extdecl;
+begin
+  Result :=  AObj.Handle;
+end;
+
+function SpinEdit_GetParentWindow(AObj: TSpinEdit): HWND; extdecl;
+begin
+  Result :=  AObj.ParentWindow;
+end;
+
+procedure SpinEdit_SetParentWindow(AObj: TSpinEdit; AValue: HWND); extdecl;
+begin
+  AObj.ParentWindow := AValue;
+end;
+
+function SpinEdit_GetUseDockManager(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure SpinEdit_SetUseDockManager(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
+end;
+
+function SpinEdit_GetAction(AObj: TSpinEdit): TBasicAction; extdecl;
+begin
+  Result :=  AObj.Action;
+end;
+
+procedure SpinEdit_SetAction(AObj: TSpinEdit; AValue: TBasicAction); extdecl;
+begin
+  AObj.Action := AValue;
+end;
+
+function SpinEdit_GetAlign(AObj: TSpinEdit): TAlign; extdecl;
+begin
+  Result :=  AObj.Align;
+end;
+
+procedure SpinEdit_SetAlign(AObj: TSpinEdit; AValue: TAlign); extdecl;
+begin
+  AObj.Align := AValue;
+end;
+
+function SpinEdit_GetBiDiMode(AObj: TSpinEdit): TBiDiMode; extdecl;
+begin
+  Result :=  AObj.BiDiMode;
+end;
+
+procedure SpinEdit_SetBiDiMode(AObj: TSpinEdit; AValue: TBiDiMode); extdecl;
+begin
+  AObj.BiDiMode := AValue;
+end;
+
+procedure SpinEdit_GetBoundsRect(AObj: TSpinEdit; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.BoundsRect;
+end;
+
+procedure SpinEdit_SetBoundsRect(AObj: TSpinEdit; var AValue: TRect); extdecl;
+begin
+  AObj.BoundsRect := AValue;
+end;
+
+function SpinEdit_GetClientHeight(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ClientHeight;
+end;
+
+procedure SpinEdit_SetClientHeight(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.ClientHeight := AValue;
+end;
+
+procedure SpinEdit_GetClientOrigin(AObj: TSpinEdit; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
+procedure SpinEdit_GetClientRect(AObj: TSpinEdit; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.ClientRect;
+end;
+
+function SpinEdit_GetClientWidth(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ClientWidth;
+end;
+
+procedure SpinEdit_SetClientWidth(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.ClientWidth := AValue;
+end;
+
+function SpinEdit_GetControlState(AObj: TSpinEdit): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure SpinEdit_SetControlState(AObj: TSpinEdit; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function SpinEdit_GetControlStyle(AObj: TSpinEdit): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure SpinEdit_SetControlStyle(AObj: TSpinEdit; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
+end;
+
+function SpinEdit_GetFloating(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
+function SpinEdit_GetParent(AObj: TSpinEdit): TWinControl; extdecl;
+begin
+  Result :=  AObj.Parent;
+end;
+
+procedure SpinEdit_SetParent(AObj: TSpinEdit; AValue: TWinControl); extdecl;
+begin
+  AObj.Parent := AValue;
+end;
+
+function SpinEdit_GetLeft(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Left;
+end;
+
+procedure SpinEdit_SetLeft(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.Left := AValue;
+end;
+
+function SpinEdit_GetTop(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Top;
+end;
+
+procedure SpinEdit_SetTop(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.Top := AValue;
+end;
+
+function SpinEdit_GetWidth(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Width;
+end;
+
+procedure SpinEdit_SetWidth(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.Width := AValue;
+end;
+
+function SpinEdit_GetHeight(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.Height;
+end;
+
+procedure SpinEdit_SetHeight(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.Height := AValue;
+end;
+
+function SpinEdit_GetCursor(AObj: TSpinEdit): TCursor; extdecl;
+begin
+  Result :=  AObj.Cursor;
+end;
+
+procedure SpinEdit_SetCursor(AObj: TSpinEdit; AValue: TCursor); extdecl;
+begin
+  AObj.Cursor := AValue;
+end;
+
+function SpinEdit_GetHint(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Hint);
+end;
+
+procedure SpinEdit_SetHint(AObj: TSpinEdit; AValue: PChar); extdecl;
+begin
+  AObj.Hint := AValue;
+end;
+
+function SpinEdit_GetComponentCount(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ComponentCount;
+end;
+
+function SpinEdit_GetComponentIndex(AObj: TSpinEdit): Integer; extdecl;
+begin
+  Result :=  AObj.ComponentIndex;
+end;
+
+procedure SpinEdit_SetComponentIndex(AObj: TSpinEdit; AValue: Integer); extdecl;
+begin
+  AObj.ComponentIndex := AValue;
+end;
+
+function SpinEdit_GetOwner(AObj: TSpinEdit): TComponent; extdecl;
+begin
+  Result :=  AObj.Owner;
+end;
+
+function SpinEdit_GetName(AObj: TSpinEdit): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Name);
+end;
+
+procedure SpinEdit_SetName(AObj: TSpinEdit; AValue: PChar); extdecl;
+begin
+  AObj.Name := AValue;
+end;
+
+function SpinEdit_GetTag(AObj: TSpinEdit): NativeInt; extdecl;
+begin
+  Result :=  AObj.Tag;
+end;
+
+procedure SpinEdit_SetTag(AObj: TSpinEdit; AValue: NativeInt); extdecl;
+begin
+  AObj.Tag := AValue;
+end;
+
+function SpinEdit_GetDockClients(AObj: TSpinEdit; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
+function SpinEdit_GetControls(AObj: TSpinEdit; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.Controls[Index];
+end;
+
+function SpinEdit_GetComponents(AObj: TSpinEdit; AIndex: Integer): TComponent; extdecl;
+begin
+  Result :=  AObj.Components[AIndex];
+end;
+
+function SpinEdit_StaticClassType: TClass; extdecl;
+begin
+  Result := TSpinEdit;
+end;
+
+exports
+  SpinEdit_Create,
+  SpinEdit_Free,
+  SpinEdit_Clear,
+  SpinEdit_ClearSelection,
+  SpinEdit_CopyToClipboard,
+  SpinEdit_CutToClipboard,
+  SpinEdit_PasteFromClipboard,
+  SpinEdit_Undo,
+  SpinEdit_SelectAll,
+  SpinEdit_CanFocus,
+  SpinEdit_ContainsControl,
+  SpinEdit_ControlAtPos,
+  SpinEdit_DisableAlign,
+  SpinEdit_EnableAlign,
+  SpinEdit_FindChildControl,
+  SpinEdit_FlipChildren,
+  SpinEdit_Focused,
+  SpinEdit_HandleAllocated,
+  SpinEdit_InsertControl,
+  SpinEdit_Invalidate,
+  SpinEdit_RemoveControl,
+  SpinEdit_Realign,
+  SpinEdit_Repaint,
+  SpinEdit_ScaleBy,
+  SpinEdit_ScrollBy,
+  SpinEdit_SetBounds,
+  SpinEdit_SetFocus,
+  SpinEdit_Update,
+  SpinEdit_BringToFront,
+  SpinEdit_ClientToScreen,
+  SpinEdit_ClientToParent,
+  SpinEdit_Dragging,
+  SpinEdit_HasParent,
+  SpinEdit_Hide,
+  SpinEdit_Perform,
+  SpinEdit_Refresh,
+  SpinEdit_ScreenToClient,
+  SpinEdit_ParentToClient,
+  SpinEdit_SendToBack,
+  SpinEdit_Show,
+  SpinEdit_GetTextBuf,
+  SpinEdit_GetTextLen,
+  SpinEdit_SetTextBuf,
+  SpinEdit_FindComponent,
+  SpinEdit_GetNamePath,
+  SpinEdit_Assign,
+  SpinEdit_ClassType,
+  SpinEdit_ClassName,
+  SpinEdit_InstanceSize,
+  SpinEdit_InheritsFrom,
+  SpinEdit_Equals,
+  SpinEdit_GetHashCode,
+  SpinEdit_ToString,
+  SpinEdit_GetAnchors,
+  SpinEdit_SetAnchors,
+  SpinEdit_GetAutoSelect,
+  SpinEdit_SetAutoSelect,
+  SpinEdit_GetAutoSize,
+  SpinEdit_SetAutoSize,
+  SpinEdit_GetColor,
+  SpinEdit_SetColor,
+  SpinEdit_GetEnabled,
+  SpinEdit_SetEnabled,
+  SpinEdit_GetFont,
+  SpinEdit_SetFont,
+  SpinEdit_GetIncrement,
+  SpinEdit_SetIncrement,
+  SpinEdit_GetMaxLength,
+  SpinEdit_SetMaxLength,
+  SpinEdit_GetMaxValue,
+  SpinEdit_SetMaxValue,
+  SpinEdit_GetMinValue,
+  SpinEdit_SetMinValue,
+  SpinEdit_GetParentColor,
+  SpinEdit_SetParentColor,
+  SpinEdit_GetParentFont,
+  SpinEdit_SetParentFont,
+  SpinEdit_GetParentShowHint,
+  SpinEdit_SetParentShowHint,
+  SpinEdit_GetPopupMenu,
+  SpinEdit_SetPopupMenu,
+  SpinEdit_GetReadOnly,
+  SpinEdit_SetReadOnly,
+  SpinEdit_GetShowHint,
+  SpinEdit_SetShowHint,
+  SpinEdit_GetTabOrder,
+  SpinEdit_SetTabOrder,
+  SpinEdit_GetTabStop,
+  SpinEdit_SetTabStop,
+  SpinEdit_GetValue,
+  SpinEdit_SetValue,
+  SpinEdit_GetVisible,
+  SpinEdit_SetVisible,
+  SpinEdit_SetOnChange,
+  SpinEdit_SetOnClick,
+  SpinEdit_SetOnEnter,
+  SpinEdit_SetOnExit,
+  SpinEdit_SetOnKeyDown,
+  SpinEdit_SetOnKeyPress,
+  SpinEdit_SetOnKeyUp,
+  SpinEdit_SetOnMouseDown,
+  SpinEdit_SetOnMouseMove,
+  SpinEdit_SetOnMouseUp,
+  SpinEdit_GetAlignment,
+  SpinEdit_SetAlignment,
+  SpinEdit_GetCanUndo,
+  SpinEdit_GetModified,
+  SpinEdit_SetModified,
+  SpinEdit_GetSelLength,
+  SpinEdit_SetSelLength,
+  SpinEdit_GetSelStart,
+  SpinEdit_SetSelStart,
+  SpinEdit_GetSelText,
+  SpinEdit_SetSelText,
+  SpinEdit_GetText,
+  SpinEdit_SetText,
+  SpinEdit_GetTextHint,
+  SpinEdit_SetTextHint,
+  SpinEdit_GetDockClientCount,
+  SpinEdit_GetDockSite,
+  SpinEdit_SetDockSite,
+  SpinEdit_GetDoubleBuffered,
+  SpinEdit_SetDoubleBuffered,
+  SpinEdit_GetVisibleDockClientCount,
+  SpinEdit_GetBrush,
+  SpinEdit_GetControlCount,
+  SpinEdit_GetHandle,
+  SpinEdit_GetParentWindow,
+  SpinEdit_SetParentWindow,
+  SpinEdit_GetUseDockManager,
+  SpinEdit_SetUseDockManager,
+  SpinEdit_GetAction,
+  SpinEdit_SetAction,
+  SpinEdit_GetAlign,
+  SpinEdit_SetAlign,
+  SpinEdit_GetBiDiMode,
+  SpinEdit_SetBiDiMode,
+  SpinEdit_GetBoundsRect,
+  SpinEdit_SetBoundsRect,
+  SpinEdit_GetClientHeight,
+  SpinEdit_SetClientHeight,
+  SpinEdit_GetClientOrigin,
+  SpinEdit_GetClientRect,
+  SpinEdit_GetClientWidth,
+  SpinEdit_SetClientWidth,
+  SpinEdit_GetControlState,
+  SpinEdit_SetControlState,
+  SpinEdit_GetControlStyle,
+  SpinEdit_SetControlStyle,
+  SpinEdit_GetFloating,
+  SpinEdit_GetParent,
+  SpinEdit_SetParent,
+  SpinEdit_GetLeft,
+  SpinEdit_SetLeft,
+  SpinEdit_GetTop,
+  SpinEdit_SetTop,
+  SpinEdit_GetWidth,
+  SpinEdit_SetWidth,
+  SpinEdit_GetHeight,
+  SpinEdit_SetHeight,
+  SpinEdit_GetCursor,
+  SpinEdit_SetCursor,
+  SpinEdit_GetHint,
+  SpinEdit_SetHint,
+  SpinEdit_GetComponentCount,
+  SpinEdit_GetComponentIndex,
+  SpinEdit_SetComponentIndex,
+  SpinEdit_GetOwner,
+  SpinEdit_GetName,
+  SpinEdit_SetName,
+  SpinEdit_GetTag,
+  SpinEdit_SetTag,
+  SpinEdit_GetDockClients,
+  SpinEdit_GetControls,
+  SpinEdit_GetComponents,
+  SpinEdit_StaticClassType;
+
