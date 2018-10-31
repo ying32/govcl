@@ -277,6 +277,19 @@ func main() {
 		mdtp.SetDate(time.Now().AddDate(-20, 0, 0))
 	})
 
+	top += btn.Height() + 10
+	spinedit := vcl.NewSpinEdit(mainForm)
+	spinedit.SetParent(mainForm)
+	spinedit.SetLeft(left)
+	spinedit.SetTop(top)
+	spinedit.SetWidth(100)
+	spinedit.SetMaxValue(10000)
+	spinedit.SetMinValue(50)
+	spinedit.SetValue(100)
+	spinedit.SetOnChange(func(sender vcl.IObject) {
+		fmt.Println(spinedit.Value())
+	})
+
 	// run
 	vcl.Application.Run()
 }
