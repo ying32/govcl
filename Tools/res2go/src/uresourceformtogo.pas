@@ -814,7 +814,7 @@ begin
     if FindCmdLineSwitch('outres') then
       LOutWinRes := SameText(GetNextParam('outres'), 'True');
 
-    LPath := ExtractFilePath(ParamStr(0));
+    LPath := '.' + DirectorySeparator;// ExtractFilePath(ParamStr(0));
     if FindCmdLineSwitch('path') then
     begin
       LPath := GetNextParam('path');
@@ -833,7 +833,7 @@ begin
     end;
     //Writeln('LPath:', LPath);
 
-    LOutPath := ExtractFilePath(ParamStr(0));
+    LOutPath := '.' + DirectorySeparator;// ExtractFilePath(ParamStr(0));
     if FindCmdLineSwitch('outpath') then
     begin
       LOutPath := GetNextParam('outpath');
