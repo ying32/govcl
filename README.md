@@ -5,7 +5,7 @@
 
 ----
 
-**The 1.1.24 version begins with govcl will have a minimum requirement of go1.9.**  
+**The 1.1.24 version begins with govcl with a minimum requirement of go1.9.**  
 ----
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
 ![Recommended Golang Version](https://img.shields.io/badge/Minimum%20Go%20version-1.9.0-green.svg)
