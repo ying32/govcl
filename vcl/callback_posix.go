@@ -19,13 +19,13 @@ import (
 
 //export doEventCallbackProc
 func doEventCallbackProc(f unsafe.Pointer, args unsafe.Pointer, argcount C.long) unsafe.Pointer {
-	callbackProc(uintptr(f), uintptr(args), int(argcount))
+	eventCallbackProc(uintptr(f), uintptr(args), int(argcount))
 	return unsafe.Pointer(uintptr(0))
 }
 
 //export doMessageCallbackProc
 func doMessageCallbackProc(f unsafe.Pointer, msg, handled unsafe.Pointer) unsafe.Pointer {
-	messageCallbackProc(uintptr(f), uintptr(msg), int(handled))
+	messageCallbackProc(uintptr(f), uintptr(msg), uintptr(handled))
 	return unsafe.Pointer(uintptr(0))
 }
 
