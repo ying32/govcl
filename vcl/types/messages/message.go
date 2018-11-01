@@ -1,4 +1,4 @@
-package message
+package messages
 
 const (
 	/* Window Messages */

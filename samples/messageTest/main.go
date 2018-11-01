@@ -5,7 +5,7 @@ import (
 
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
-	"github.com/ying32/govcl/vcl/types/message"
+	"github.com/ying32/govcl/vcl/types/messages"
 )
 
 type TForm1 struct {
@@ -32,24 +32,24 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 
 func (f *TForm1) OnFormWindProc(msg *types.TMessage, handled *bool) {
 	switch msg.Msg {
-	case message.WM_MOUSEMOVE:
+	case messages.WM_MOUSEMOVE:
 
-	case message.WM_LBUTTONDOWN:
+	case messages.WM_LBUTTONDOWN:
 		fmt.Println("左键接下")
 
-	case message.WM_LBUTTONUP:
+	case messages.WM_LBUTTONUP:
 		fmt.Println("左键抬起")
 
-	case message.WM_LBUTTONDBLCLK:
+	case messages.WM_LBUTTONDBLCLK:
 		fmt.Println("左键双击")
 
-	case message.WM_RBUTTONDOWN:
+	case messages.WM_RBUTTONDOWN:
 		fmt.Println("右键接下")
 
-	case message.WM_RBUTTONUP:
+	case messages.WM_RBUTTONUP:
 		fmt.Println("右键抬起")
 
-	case message.WM_RBUTTONDBLCLK:
+	case messages.WM_RBUTTONDBLCLK:
 		fmt.Println("右键双击")
 
 	}
