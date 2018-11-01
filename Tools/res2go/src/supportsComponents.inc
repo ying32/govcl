@@ -1,7 +1,7 @@
 
 const
 
-  supportsComponents: array[0..123] of string = (
+  supportsComponents: array[0..124] of string = (
     'TButton',
     'TBitBtn',
     'TMaskEdit',
@@ -125,5 +125,6 @@ const
     'TCoolBands',
     'TCoolBan',
     'TTaskBar',
-    'TJumpList'
+    'TJumpList',
+	'TSpinEdit'
   );
