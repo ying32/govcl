@@ -5,6 +5,7 @@ import (
 
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/types/message"
 )
 
 type TForm1 struct {
@@ -29,30 +30,27 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	form1.SetOnWndProc(f.OnFormWindProc)
 }
 
-const (
-	WM_MOUSEMOVE     = 0x0200
-	WM_LBUTTONDOWN   = 0x0201
-	WM_LBUTTONUP     = 0x0202
-	WM_LBUTTONDBLCLK = 0x0203
-	WM_RBUTTONDOWN   = 0x0204
-	WM_RBUTTONUP     = 0x0205
-	WM_RBUTTONDBLCLK = 0x0206
-)
-
 func (f *TForm1) OnFormWindProc(msg *types.TMessage, handled *bool) {
 	switch msg.Msg {
-	case WM_MOUSEMOVE:
-	case WM_LBUTTONDOWN:
+	case message.WM_MOUSEMOVE:
+
+	case message.WM_LBUTTONDOWN:
 		fmt.Println("左键接下")
-	case WM_LBUTTONUP:
+
+	case message.WM_LBUTTONUP:
 		fmt.Println("左键抬起")
-	case WM_LBUTTONDBLCLK:
+
+	case message.WM_LBUTTONDBLCLK:
 		fmt.Println("左键双击")
-	case WM_RBUTTONDOWN:
+
+	case message.WM_RBUTTONDOWN:
 		fmt.Println("右键接下")
-	case WM_RBUTTONUP:
+
+	case message.WM_RBUTTONUP:
 		fmt.Println("右键抬起")
-	case WM_RBUTTONDBLCLK:
+
+	case message.WM_RBUTTONDBLCLK:
 		fmt.Println("右键双击")
+
 	}
 }
