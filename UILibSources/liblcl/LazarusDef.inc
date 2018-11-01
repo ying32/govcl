@@ -230,6 +230,18 @@ begin
   EventClass.Add(AObj, geActivate, AEventId);
 end;
 
+procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); extdecl;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnWndProc := nil;
+    MessageEventClass.Remove(AObj);
+    Exit;
+  end;
+  AObj.OnWndProc := @MessageEventClass.OnWndProc;
+  MessageEventClass.Add(AObj, AEventId);
+end;
+
 // TEdit
 //procedure Edit_SetTextHint(AObj: TEdit; AValue: PChar); extdecl;
 //begin
@@ -602,7 +614,12 @@ end;
 
 procedure SetEventCallback(APtr: Pointer); extdecl;
 begin
-  GCallbackPtr := TCallbackPtr(APtr);
+  GEventCallbackPtr := TEventCallbackPtr(APtr);
+end;
+
+procedure SetMessageCallback(APtr: Pointer); extdecl;
+begin
+  GMessageCallbackPtr := TMessageCallbackPtr(APtr);
 end;
 
 procedure DGetParam(Index: NativeInt; AArr: Pointer; out P: TGoParam); extdecl;
@@ -1012,6 +1029,7 @@ exports
   Form_SetOnConstrainedResize,
   Form_SetOnDeactivate,
   Form_SetOnActivate,
+  Form_SetOnWndProc,
 
   // TEdit
   //Edit_SetTextHint,
@@ -1023,6 +1041,8 @@ exports
 
   // Other
   SetEventCallback,
+  SetMessageCallback,
+
   DGetParam,
   DGetStringArrOf,
   DStrLen,

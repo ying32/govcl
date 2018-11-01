@@ -9,11 +9,14 @@ uses
 type
   TDropFilesEvent = procedure(Sender: TObject; const FileNames: array of String) of object;
 
+  TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean) of object;
+
   TGoForm = class(TForm)
   private
     FAllowDropFiles: Boolean;
     FOnDropFiles: TDropFilesEvent;
     FOnStyleChanged: TNotifyEvent;
+    FOnWndProc: TWndProcEvent;
     procedure SetAllowDropFiles(const Value: Boolean);
     procedure WMDropFiles(var Msg: TWMDropFiles); message WM_DROPFILES;
     procedure CMStyleChanged(var Msg: TMessage); message CM_STYLECHANGED;
@@ -21,10 +24,12 @@ type
     procedure InitializeNewForm; override;
   public
     constructor Create(AOwner: TComponent); override;
+    procedure WndProc(var AMsg: TMessage); override;
   published
     property AllowDropFiles: Boolean read FAllowDropFiles write SetAllowDropFiles;
     property OnDropFiles: TDropFilesEvent read FOnDropFiles write FOnDropFiles;
     property OnStyleChanged: TNotifyEvent read FOnStyleChanged write FOnStyleChanged;
+    property OnWndProc: TWndProcEvent read FOnWndProc write FOnWndProc;
   end;
 
   procedure LockInitScale;
@@ -141,6 +146,17 @@ begin
       FOnDropFiles(Self, LFileNames);
     end;
   end;
+end;
+
+procedure TGoForm.WndProc(var AMsg: TMessage);
+var
+  LHandled: Boolean;
+begin
+  LHandled := True;
+  if Assigned(FOnWndProc) then
+    FOnWndProc(Self, AMsg, LHandled);
+  if LHandled then
+    inherited;
 end;
 
 exports

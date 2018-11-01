@@ -34,12 +34,12 @@ func main() {
 
 	richEdit.SetSelStart(9)
 	richEdit.SetSelLength(2)
-	style := types.TFontStyles(rtl.Include(0, types.FsBold))
+	style := rtl.Include(0, types.FsBold)
 	richEdit.SelAttributes().SetStyle(style)
 
 	richEdit.SetSelStart(12)
 	richEdit.SetSelLength(2)
-	style = types.TFontStyles(rtl.Include(0, types.FsItalic))
+	style = rtl.Include(0, types.FsItalic)
 	richEdit.SelAttributes().SetStyle(style)
 
 	richEdit.SetSelStart(15)

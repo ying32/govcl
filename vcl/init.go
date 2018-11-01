@@ -24,7 +24,9 @@ func init() {
 	// 这个似乎得默认加上，锁定主线程，防止中间被改变
 	runtime.LockOSThread()
 	// 设置事件的回调函数，因go中callback数量有限，只好折中处理
-	SetEventCallback(callbackStdcall)
+	SetEventCallback(eventCallback)
+	// 消息回调
+	SetMessageCallback(messageCallback)
 
 	// 导入几个实例类
 	Application = ApplicationFromInst(Application_Instance())

@@ -205,6 +205,18 @@ begin
   TEventClass.Add(AObj, geStyleChanged, AEventId);
 end;
 
+procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnWndProc := nil;
+    TMessageEventClass.Remove(AObj);
+    Exit;
+  end;
+  AObj.OnWndProc := TMessageEventClass.OnWndProc;
+  TMessageEventClass.Add(AObj, AEventId);
+end;
+
 // mouse
 function Mouse_Instance: TMouse; stdcall;
 begin
@@ -372,7 +384,12 @@ end;
 
 procedure SetEventCallback(APtr: Pointer); stdcall;
 begin
-  GCallbackPtr := APtr;
+  GEventCallbackPtr := APtr;
+end;
+
+procedure SetMessageCallback(APtr: Pointer); stdcall;
+begin
+  GMessageCallbackPtr := APtr;
 end;
 
 procedure DGetParam(Index: NativeInt; AArr: Pointer; out P: TGoParam); stdcall;
@@ -431,7 +448,7 @@ begin
   TThread.Synchronize(nil,
     procedure
     begin
-      GCallbackPtr(AId, nil, 0);
+      GEventCallbackPtr(AId, nil, 0);
     end);
 end;
 
@@ -883,6 +900,7 @@ exports
   Form_SetOnDeactivate,
   Form_SetOnActivate,
   Form_SetOnStyleChanged,
+  Form_SetOnWndProc,
 
   // TMouse
   Mouse_Instance,
@@ -890,6 +908,8 @@ exports
 
   // other
   SetEventCallback,
+  SetMessageCallback,
+
   DGetParam,
   DGetStringArrOf,
   DStrLen,

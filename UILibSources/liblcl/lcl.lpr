@@ -69,7 +69,7 @@ uses
   uEventCallback in 'uEventCallback.pas',
   ImageButton in 'ImageButton.pas',
   Gauges in 'Gauges.pas',
-  uComponents;
+  uComponents, uGoForm;
 
 {$IFDEF WINDOWS}
   {$R *.res}

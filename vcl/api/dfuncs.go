@@ -14,8 +14,9 @@ type TGoParam struct {
 }
 
 var (
-	CallbackMap = map[uintptr]interface{}{}
-	threadSync  sync.Mutex
+	EventCallbackMap   sync.Map
+	MessageCallbackMap sync.Map
+	threadSync         sync.Mutex
 )
 
 func DBoolToGoBool(val uintptr) bool {
@@ -34,12 +35,22 @@ func GoBoolToDBool(val bool) uintptr {
 
 func addEventToMap(f interface{}) uintptr {
 	p := reflect.ValueOf(f).Pointer()
-	CallbackMap[p] = f
+	EventCallbackMap.Store(p, f)
+	return p
+}
+
+func addMessageEventToMap(f interface{}) uintptr {
+	p := reflect.ValueOf(f).Pointer()
+	MessageCallbackMap.Store(p, f)
 	return p
 }
 
 func SetEventCallback(ptr uintptr) {
 	setEventCallback.Call(ptr)
+}
+
+func SetMessageCallback(ptr uintptr) {
+	setMessageCallback.Call(ptr)
 }
 
 func DGetParam(index int, ptr uintptr) TGoParam {

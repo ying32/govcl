@@ -1,9 +1,11 @@
 package vcl
 
+import "C"
 import (
 	"syscall"
 )
 
 var (
-	callbackStdcall = syscall.NewCallback(callbackProc)
+	eventCallback   = syscall.NewCallback(eventCallbackProc)
+	messageCallback = syscall.NewCallback(messageCallbackProc)
 )

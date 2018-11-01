@@ -309,3 +309,7 @@ type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
 
 //TTVCustomDrawItemEvent = procedure(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
 type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawStage, defaultDraw *bool)
+
+// 消息过程 AHandled 默认为 true
+//TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean) of object;
+type TWndProcEvent func(msg *TMessage, handled *bool)

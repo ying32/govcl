@@ -67,6 +67,11 @@ func (f *TForm) SetOnStyleChanged(fn TNotifyEvent) {
 	Form_SetOnStyleChanged(f.instance, fn)
 }
 
+// SetOnWndProc 窗口消息过程
+func (f *TForm) SetOnWndProc(fn TWndProcEvent) {
+	Form_SetOnWndProc(f.instance, fn)
+}
+
 // ScaleSelf 这个方法主要是用于当不使用资源窗口创建时用，这个方法要用于设置了Width, Height或者ClientWidth、ClientHeight之后
 func (f *TForm) ScaleSelf() {
 	if globalFormScaled {

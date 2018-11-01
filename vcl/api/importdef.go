@@ -17,12 +17,15 @@ var (
 	form_SetOnDeactivate        = libvcl.NewProc("Form_SetOnDeactivate")
 	form_SetOnActivate          = libvcl.NewProc("Form_SetOnActivate")
 	form_SetOnStyleChanged      = libvcl.NewProc("Form_SetOnStyleChanged")
+	form_SetOnWndProc           = libvcl.NewProc("Form_SetOnWndProc")
 
-	setEventCallback = libvcl.NewProc("SetEventCallback")
-	dGetParam        = libvcl.NewProc("DGetParam")
-	dGetStringArrOf  = libvcl.NewProc("DGetStringArrOf")
-	dStrLen          = libvcl.NewProc("DStrLen")
-	dMove            = libvcl.NewProc("DMove")
+	setEventCallback   = libvcl.NewProc("SetEventCallback")
+	setMessageCallback = libvcl.NewProc("SetMessageCallback")
+
+	dGetParam       = libvcl.NewProc("DGetParam")
+	dGetStringArrOf = libvcl.NewProc("DGetStringArrOf")
+	dStrLen         = libvcl.NewProc("DStrLen")
+	dMove           = libvcl.NewProc("DMove")
 
 	dShowMessage     = libvcl.NewProc("DShowMessage")
 	dGetMainInstance = libvcl.NewProc("DGetMainInstance")
