@@ -528,3 +528,135 @@ const (
 	PSM_PAGEINFO  = WM_USER + 100
 	PSM_SHEETINFO = WM_USER + 101
 )
+
+//--------------------------- VCL 消息------------------------------
+
+const (
+	/* VCL control message IDs */
+
+	CM_BASE = 0xB000
+	//CM_CLROFFSET                   = 0x100  CRL
+	CM_CLROFFSET                   = 0x0 // Only applicable in CLR
+	CM_ACTIVATE                    = CM_BASE + 0
+	CM_DEACTIVATE                  = CM_BASE + 1
+	CM_GOTFOCUS                    = CM_BASE + 2
+	CM_LOSTFOCUS                   = CM_BASE + 3
+	CM_CANCELMODE                  = CM_BASE + CM_CLROFFSET + 4
+	CM_DIALOGKEY                   = CM_BASE + 5
+	CM_DIALOGCHAR                  = CM_BASE + 6
+	CM_FOCUSCHANGED                = CM_BASE + 7
+	CM_PARENTFONTCHANGED           = CM_BASE + CM_CLROFFSET + 8
+	CM_PARENTCOLORCHANGED          = CM_BASE + 9
+	CM_HITTEST                     = CM_BASE + 10
+	CM_VISIBLECHANGED              = CM_BASE + 11
+	CM_ENABLEDCHANGED              = CM_BASE + 12
+	CM_COLORCHANGED                = CM_BASE + 13
+	CM_FONTCHANGED                 = CM_BASE + 14
+	CM_CURSORCHANGED               = CM_BASE + 15
+	CM_CTL3DCHANGED                = CM_BASE + 16
+	CM_PARENTCTL3DCHANGED          = CM_BASE + 17
+	CM_TEXTCHANGED                 = CM_BASE + 18
+	CM_MOUSEENTER                  = CM_BASE + 19
+	CM_MOUSELEAVE                  = CM_BASE + 20
+	CM_MENUCHANGED                 = CM_BASE + 21
+	CM_APPKEYDOWN                  = CM_BASE + 22
+	CM_APPSYSCOMMAND               = CM_BASE + 23
+	CM_BUTTONPRESSED               = CM_BASE + 24
+	CM_SHOWINGCHANGED              = CM_BASE + 25
+	CM_ENTER                       = CM_BASE + 26
+	CM_EXIT                        = CM_BASE + 27
+	CM_DESIGNHITTEST               = CM_BASE + 28
+	CM_ICONCHANGED                 = CM_BASE + 29
+	CM_WANTSPECIALKEY              = CM_BASE + 30
+	CM_INVOKEHELP                  = CM_BASE + 31
+	CM_WINDOWHOOK                  = CM_BASE + 32
+	CM_RELEASE                     = CM_BASE + 33
+	CM_SHOWHINTCHANGED             = CM_BASE + 34
+	CM_PARENTSHOWHINTCHANGED       = CM_BASE + 35
+	CM_SYSCOLORCHANGE              = CM_BASE + 36
+	CM_WININICHANGE                = CM_BASE + 37
+	CM_FONTCHANGE                  = CM_BASE + 38
+	CM_TIMECHANGE                  = CM_BASE + 39
+	CM_TABSTOPCHANGED              = CM_BASE + 40
+	CM_UIACTIVATE                  = CM_BASE + 41
+	CM_UIDEACTIVATE                = CM_BASE + 42
+	CM_DOCWINDOWACTIVATE           = CM_BASE + 43
+	CM_CONTROLLISTCHANGE           = CM_BASE + 44
+	CM_GETDATALINK                 = CM_BASE + 45
+	CM_CHILDKEY                    = CM_BASE + 46
+	CM_DRAG                        = CM_BASE + CM_CLROFFSET + 47
+	CM_HINTSHOW                    = CM_BASE + CM_CLROFFSET + 48
+	CM_DIALOGHANDLE                = CM_BASE + 49
+	CM_ISTOOLCONTROL               = CM_BASE + 50
+	CM_RECREATEWND                 = CM_BASE + 51
+	CM_INVALIDATE                  = CM_BASE + 52
+	CM_SYSFONTCHANGED              = CM_BASE + 53
+	CM_CONTROLCHANGE               = CM_BASE + 54
+	CM_CHANGED                     = CM_BASE + 55
+	CM_DOCKCLIENT                  = CM_BASE + 56
+	CM_UNDOCKCLIENT                = CM_BASE + 57
+	CM_FLOAT                       = CM_BASE + 58
+	CM_BORDERCHANGED               = CM_BASE + 59
+	CM_BIDIMODECHANGED             = CM_BASE + 60
+	CM_PARENTBIDIMODECHANGED       = CM_BASE + 61
+	CM_ALLCHILDRENFLIPPED          = CM_BASE + 62
+	CM_ACTIONUPDATE                = CM_BASE + 63
+	CM_ACTIONEXECUTE               = CM_BASE + 64
+	CM_HINTSHOWPAUSE               = CM_BASE + 65
+	CM_DOCKNOTIFICATION            = CM_BASE + CM_CLROFFSET + 66
+	CM_MOUSEWHEEL                  = CM_BASE + 67
+	CM_ISSHORTCUT                  = CM_BASE + 68
+	CM_UPDATEACTIONS               = CM_BASE + 69
+	CM_RAWX11EVENT                 = CM_BASE + 69
+	CM_INVALIDATEDOCKHOST          = CM_BASE + CM_CLROFFSET + 70
+	CM_SETACTIVECONTROL            = CM_BASE + 71
+	CM_POPUPHWNDDESTROY            = CM_BASE + 72
+	CM_CREATEPOPUP                 = CM_BASE + 73
+	CM_DESTROYHANDLE               = CM_BASE + 74
+	CM_MOUSEACTIVATE               = CM_BASE + 75
+	CM_CONTROLLISTCHANGING         = CM_BASE + 76
+	CM_BUFFEREDPRINTCLIENT         = CM_BASE + 77
+	CM_UNTHEMECONTROL              = CM_BASE + 78
+	CM_DOUBLEBUFFEREDCHANGED       = CM_BASE + 79
+	CM_PARENTDOUBLEBUFFEREDCHANGED = CM_BASE + 80
+	CM_STYLECHANGED                = CM_BASE + 81
+	CM_THEMECHANGED                = CM_STYLECHANGED //deprecated 'Use CM_STYLECHANGED'
+	CM_GESTURE                     = CM_BASE + 82
+	CM_CUSTOMGESTURESCHANGED       = CM_BASE + 83
+	CM_GESTUREMANAGERCHANGED       = CM_BASE + 84
+	CM_STANDARDGESTURESCHANGED     = CM_BASE + 85
+	CM_INPUTLANGCHANGE             = CM_BASE + 86
+	CM_TABLETOPTIONSCHANGED        = CM_BASE + 87
+	CM_PARENTTABLETOPTIONSCHANGED  = CM_BASE + 88
+	CM_CUSTOMSTYLECHANGED          = CM_BASE + 89
+	CM_SYSFONTSALLCHANGED          = CM_BASE + 90
+)
+
+const (
+	/* VCL control notification IDs */
+
+	CN_BASE              = 0xBC00
+	CN_CHARTOITEM        = CN_BASE + WM_CHARTOITEM
+	CN_COMMAND           = CN_BASE + WM_COMMAND
+	CN_COMPAREITEM       = CN_BASE + WM_COMPAREITEM
+	CN_CTLCOLORBTN       = CN_BASE + WM_CTLCOLORBTN
+	CN_CTLCOLORDLG       = CN_BASE + WM_CTLCOLORDLG
+	CN_CTLCOLOREDIT      = CN_BASE + WM_CTLCOLOREDIT
+	CN_CTLCOLORLISTBOX   = CN_BASE + WM_CTLCOLORLISTBOX
+	CN_CTLCOLORMSGBOX    = CN_BASE + WM_CTLCOLORMSGBOX
+	CN_CTLCOLORSCROLLBAR = CN_BASE + WM_CTLCOLORSCROLLBAR
+	CN_CTLCOLORSTATIC    = CN_BASE + WM_CTLCOLORSTATIC
+	CN_DELETEITEM        = CN_BASE + WM_DELETEITEM
+	CN_DRAWITEM          = CN_BASE + WM_DRAWITEM
+	CN_HSCROLL           = CN_BASE + WM_HSCROLL
+	CN_MEASUREITEM       = CN_BASE + WM_MEASUREITEM
+	CN_PARENTNOTIFY      = CN_BASE + WM_PARENTNOTIFY
+	CN_VKEYTOITEM        = CN_BASE + WM_VKEYTOITEM
+	CN_VSCROLL           = CN_BASE + WM_VSCROLL
+	CN_KEYDOWN           = CN_BASE + WM_KEYDOWN
+	CN_KEYUP             = CN_BASE + WM_KEYUP
+	CN_CHAR              = CN_BASE + WM_CHAR
+	CN_SYSKEYDOWN        = CN_BASE + WM_SYSKEYDOWN
+	CN_SYSCHAR           = CN_BASE + WM_SYSCHAR
+	CN_NOTIFY            = CN_BASE + WM_NOTIFY
+)
