@@ -5,12 +5,17 @@
 
 ----
 
+**The 1.1.24 version begins with govcl which will limit the minimum support only to go1.9.**  
+
+----
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
-![Recommended Golang Version](https://img.shields.io/badge/recommended%20golang%20version->=1.9.0-green.svg)
+![Recommended Golang Version](https://img.shields.io/badge/Minimum%20Go%20version-1.9.0-green.svg)
 [![Screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 
 ![Support Platform](https://img.shields.io/badge/Platform-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
-**Note: linux and macOS only part of the components, properties, events and methods are valid**   
+**Note: linux and macOS only part of the components, properties, events and methods are valid.**  
+
+**If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.**   
 
 
 Librarys binaries  

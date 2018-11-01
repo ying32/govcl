@@ -5,14 +5,20 @@
 
 ----
 
+**从1.1.24版本开始govcl将限制最低只支持go1.9。**  
+
+----
+
 [![license](https://img.shields.io/badge/开源协议-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
-![Recommended Golang Version](https://img.shields.io/badge/推荐Golang版本->=1.9.0-green.svg)
+![Recommended Golang Version](https://img.shields.io/badge/最低Go版本-1.9.0-green.svg)
 [![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 [![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)  
 
 ![Support Platform](https://img.shields.io/badge/支持的平台-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
-**注: linux和macOS由于底层使用了lcl库，则部分组件、属性和方法无效。**   
+**注: linux和macOS由于底层使用了lcl库，则部分组件、属性和方法无效。**
+
+**如果想要支持linux arm及linux 32bit则需要自己编译对应的liblcl二进制。**   
 
 
 GUI库二进制下载：   
