@@ -1,6 +1,5 @@
 package vcl
 
-import "C"
 import (
 	"syscall"
 )
