@@ -10,7 +10,7 @@
 ----
 
 [![license](https://img.shields.io/badge/开源协议-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
-![Recommended Golang Version](https://img.shields.io/badge/最低Go版本-1.9.0-green.svg)
+![Minimum Go version](https://img.shields.io/badge/最低Go版本-1.9.0-green.svg)
 [![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 [![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)  
@@ -22,12 +22,12 @@
 
 
 GUI库二进制下载：   
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.23.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.23/Librarys-1.1.23.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.0/Librarys-1.2.0.zip)  
 **注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.zh-CN.md)中的说明。**  
 
 
 res2go工具下载  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.5-blue.svg)](Tools/res2go)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.6-blue.svg)](Tools/res2go)  
 **注：用Delphi/Lazarus设计界面，用Golang写代码。**    
 
 

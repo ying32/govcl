@@ -8,7 +8,7 @@
 **The 1.2.0 version begins with govcl with a minimum requirement of go1.9.**  
 ----
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
-![Recommended Golang Version](https://img.shields.io/badge/Minimum%20Go%20version-1.9.0-green.svg)
+![Minimum Go version](https://img.shields.io/badge/Minimum%20Go%20version-1.9.0-green.svg)
 [![Screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 
 ![Support Platform](https://img.shields.io/badge/Platform-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
@@ -18,12 +18,12 @@
 
 
 Librarys binaries  
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.1.23.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.1.23/Librarys-1.1.23.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.0/Librarys-1.2.0.zip)  
 **Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.md).**  
 
 
 res2go Tool  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.5-blue.svg)](Tools/res2go)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.6-blue.svg)](Tools/res2go)  
 **Note: Designed in Delphi/Lazarus, code written in Golang.**  
 
 
