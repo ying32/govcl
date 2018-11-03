@@ -61,7 +61,10 @@
 			"MenuItem7.Caption": "MenuItem7",
 			"MenuItem8.Caption": "MenuItem8",
 			"MenuItem9.Caption": "MenuItem9",
-			"MenuItem10.Caption": "MenuItem10"
+			"MenuItem10.Caption": "MenuItem10",
+            "ListView1.Columns[0].Caption": "Id",
+            "ListView1.Columns[1].Caption": "Name",
+            "ListView1.Columns[2].Caption": "Address"
 		}
 	}
 }

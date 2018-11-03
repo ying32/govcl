@@ -12,51 +12,57 @@ type TSize struct {
 	Cx, Cy int32
 }
 
-type HWND uintptr
+type HWND = uintptr
 
-type HBITMAP uintptr
+type HBITMAP = uintptr
 
-type HMENU uintptr
+type HMENU = uintptr
 
-type HICON uintptr
+type HICON = uintptr
 
-type HDC uintptr
+type HDC = uintptr
 
-type HFONT uintptr
+type HFONT = uintptr
 
-type HBRUSH uintptr
+type HBRUSH = uintptr
 
-type HPEN uintptr
+type HPEN = uintptr
 
-type HKEY uintptr
+type HKEY = uintptr
 
-type HMONITOR uintptr
+type HMONITOR = uintptr
 
-type HGDIOBJ uintptr
+type HGDIOBJ = uintptr
 
-type HMODULE uintptr
+type HMODULE = uintptr
 
-type COLORREF uint32
+type COLORREF = uint32
 
-type DWORD uint32
+type DWORD = uint32
 
-type HCURSOR HICON
+type HCURSOR = HICON
 
-type HINST uintptr
+type HINST = uintptr
 
-type LPCWSTR uintptr
+type LPCWSTR = uintptr
 
-type HRGN uintptr
+type HRGN = uintptr
 
-type UINT uint32
+type UINT = uint32
 
-type LPARAM uintptr
+type LPARAM = uintptr
 
-type WAPRAM uintptr
+type WAPRAM = uintptr
 
-type HResult uintptr
+type LRESULT = uintptr
 
-type HPALETTE uintptr
+type HResult = uintptr
+
+type HPALETTE = uintptr
+
+type HRSRC = uintptr
+
+type HGLOBAL = uintptr
 
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect

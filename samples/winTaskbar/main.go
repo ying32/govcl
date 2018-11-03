@@ -40,8 +40,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.Taskbar1.SetProgressValue(50)
 	f.Taskbar1.OverlayIcon().LoadFromFile("pause.ico")
 
-	porp := types.TThumbTabProperties(rtl.Include(0, types.CustomizedPreview))
-	f.Taskbar1.SetTabProperties(porp)
+	f.Taskbar1.SetTabProperties(rtl.Include(0, types.CustomizedPreview))
 	//f.Taskbar1.SetProgressState(types.Error)
 	f.Taskbar1.SetProgressState(types.Normal)
 	f.Taskbar1.SetOnThumbButtonClick(f.OnTaskbar1ThumbButtonClick)

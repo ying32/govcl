@@ -310,6 +310,16 @@ begin
   AObj.Max := AValue;
 end;
 
+function UpDown_GetIncrement(AObj: TUpDown): Integer; stdcall;
+begin
+  Result :=  AObj.Increment;
+end;
+
+procedure UpDown_SetIncrement(AObj: TUpDown; AValue: Integer); stdcall;
+begin
+  AObj.Increment := AValue;
+end;
+
 function UpDown_GetOrientation(AObj: TUpDown): TUDOrientation; stdcall;
 begin
   Result :=  AObj.Orientation;
@@ -956,6 +966,8 @@ exports
   UpDown_SetMin,
   UpDown_GetMax,
   UpDown_SetMax,
+  UpDown_GetIncrement,
+  UpDown_SetIncrement,
   UpDown_GetOrientation,
   UpDown_SetOrientation,
   UpDown_GetParentDoubleBuffered,

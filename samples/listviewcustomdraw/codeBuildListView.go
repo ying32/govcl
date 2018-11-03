@@ -60,7 +60,7 @@ func codeBuildistViewInstance(trainData *TTrainSearchResultData) {
 		g.SetHeaderAlign(types.TaCenter)
 		g.SetHeader(caption)
 		//state := g.State() //默认为0
-		state := types.TListGroupStateSet(rtl.Include(0, types.LgsCollapsible))
+		state := rtl.Include(0, types.LgsCollapsible)
 		g.SetState(state)
 		g.SetTitleImage(-1)
 	}

@@ -1,0 +1,21 @@
+object MainForm: TMainForm
+  Left = 1055
+  Height = 300
+  Top = 691
+  Width = 400
+  Caption = 'MainForm'
+  ClientHeight = 300
+  ClientWidth = 400
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  LCLVersion = '1.8.0.6'
+  object Button1: TButton
+    Left = 144
+    Height = 31
+    Top = 120
+    Width = 94
+    Caption = 'Button1'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+end

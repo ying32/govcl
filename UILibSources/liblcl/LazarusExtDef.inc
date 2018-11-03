@@ -9,26 +9,4 @@ type
   TJPEGPixelFormat = TPixelFormat;
   TPageMeasureUnits = type TMeasureUnits;
 
-  // 重定一个，主要是为了修改相关默认
-  TGoForm = class(TForm)
-  protected
-    procedure ProcessResource; override;
-  public
-    constructor CreateNew(AOwner: TComponent; Num: Integer = 0); override;
-  end;
 
-
-constructor TGoForm.CreateNew(AOwner: TComponent; Num: Integer);
-begin
-  inherited CreateNew(AOwner, Num);
-{$IFDEF WINDOWS}
-  // Windows下统一VCL/LCL默认字体
-  Font.Name := 'Tahoma';
-  Font.Size := 8;
-{$ENDIF}
-end;
-
-procedure TGoForm.ProcessResource;
-begin
-  // 没有使用窗口资源，不处理，处理就会报错的。
-end;

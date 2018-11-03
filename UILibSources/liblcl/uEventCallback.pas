@@ -22,10 +22,12 @@ uses
   fgl;
 
 type
-  TCallbackPtr = function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; extdecl;
+  TEventCallbackPtr = function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; extdecl;
+  TMessageCallbackPtr = function(f: NativeUInt; msg, handled: Pointer): Pointer; extdecl;
 
 var
-  GCallbackPtr: TCallbackPtr;
+  GEventCallbackPtr: TEventCallbackPtr;
+  GMessageCallbackPtr: TMessageCallbackPtr;
 
 type
   TGoParam = record
@@ -297,9 +299,27 @@ type
     property ThreadEvtId: NativeUInt read FThreadEvtId write FThreadEvtId;
   end;
 
+  // 窗口消息的，不与之前的事件混在一起。
+  TMessageEventList = specialize  TFPGMap<NativeUInt, NativeUInt>;
+
+  { TMessageEventClass }
+
+  TMessageEventClass = class
+  private
+    FMsgEvents: TMessageEventList;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    procedure Add(AObj: TObject; AId: NativeUInt);
+    procedure Remove(AObj: TObject);
+
+    procedure OnWndProc(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean);
+  end;
+
 
 var
   EventClass: TEventClass;
+  MessageEventClass: TMessageEventClass;
 
 implementation
 
@@ -340,6 +360,7 @@ end;
 destructor TEventClass.Destroy;
 begin
   FEvents.Free;
+  inherited Destroy;
 end;
 
 procedure TEventClass.Add(AObj: TObject; AEvent: TGoEvent; AId: NativeUInt);
@@ -359,7 +380,7 @@ end;
 
 procedure TEventClass.ThreadProc;
 begin
-  GCallbackPtr(ThreadEvtId, nil, 0);
+  GEventCallbackPtr(ThreadEvtId, nil, 0);
 end;
 
 procedure TEventClass.AddClick(Sender: TObject; AId: NativeUInt);
@@ -1064,7 +1085,7 @@ procedure TEventClass.SendEvent(Sender: TObject; AEvent: TGoEvent; AArgs: array 
     LV: TVarRec;
     I: Integer;
   begin
-    if Assigned(GCallbackPtr) and (EventId > 0) then
+    if Assigned(GEventCallbackPtr) and (EventId > 0) then
     begin
       LArgLen := Length(AArgs);
       if LArgLen <= Length(LParams) then
@@ -1096,7 +1117,7 @@ procedure TEventClass.SendEvent(Sender: TObject; AEvent: TGoEvent; AArgs: array 
             vtUnicodeString : LParams[I].Value := LV.VUnicodeString;
           end;
         end;
-        GCallbackPtr(EventId, @LParams[0], LArgLen);
+        GEventCallbackPtr(EventId, @LParams[0], LArgLen);
       end;
     end;
   end;
@@ -1170,11 +1191,49 @@ begin
 end;
 
 
+{ TMessageEventClass }
+
+constructor TMessageEventClass.Create;
+begin
+  inherited;
+  FMsgEvents := TEventList.Create;
+end;
+
+destructor TMessageEventClass.Destroy;
+begin
+  FMsgEvents.Free;
+  inherited Destroy;
+end;
+
+procedure TMessageEventClass.OnWndProc(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean);
+var
+  LId: NativeUInt;
+begin
+  if Assigned(GMessageCallbackPtr) then
+  begin
+    if FMsgEvents.TryGetData(NativeUInt(Sender), LId) then
+      GMessageCallbackPtr(LId, @TheMessage, @AHandled);
+  end;
+end;
+
+procedure TMessageEventClass.Remove(AObj: TObject);
+begin
+  FMsgEvents.Remove(NativeUInt(AObj));
+end;
+
+procedure TMessageEventClass.Add(AObj: TObject; AId: NativeUInt);
+begin
+  FMsgEvents.AddOrSetData(NativeUInt(AObj), AId);
+end;
+
+
 initialization
 
   EventClass := TEventClass.Create;
+  MessageEventClass := TMessageEventClass.Create;
 
 finalization
+  MessageEventClass.Free;
   EventClass.Free;
 
 end.

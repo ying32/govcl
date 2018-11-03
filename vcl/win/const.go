@@ -636,3 +636,32 @@ const (
 	COINIT_DISABLE_OLE1DDE   = 4 // Dont use DDE for Ole1 support.
 	COINIT_SPEED_OVER_MEMORY = 8 // Trade memory for speed
 )
+
+const (
+
+	/* Predefined Resource Types */
+	RT_CURSOR       = 1
+	RT_BITMAP       = 2
+	RT_ICON         = 3
+	RT_MENU         = 4
+	RT_DIALOG       = 5
+	RT_STRING       = 6
+	RT_FONTDIR      = 7
+	RT_FONT         = 8
+	RT_ACCELERATOR  = 9
+	RT_RCDATA       = 10
+	RT_MESSAGETABLE = 11
+
+	DIFFERENCE = 11
+
+	RT_GROUP_CURSOR = RT_CURSOR + DIFFERENCE
+	RT_GROUP_ICON   = RT_ICON + DIFFERENCE
+	RT_VERSION      = 16
+	RT_DLGINCLUDE   = 17
+	RT_PLUGPLAY     = 19
+	RT_VXD          = 20
+	RT_ANICURSOR    = 21
+	RT_ANIICON      = 22
+	RT_HTML         = 23
+	RT_MANIFEST     = 24
+)

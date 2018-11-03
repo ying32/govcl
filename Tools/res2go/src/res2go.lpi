@@ -6,6 +6,7 @@
     <General>
       <Flags>
         <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
         <MainUnitHasScaledStatement Value="False"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
@@ -17,7 +18,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <RevisionNr Value="5"/>
+      <RevisionNr Value="6"/>
       <Language Value="0804"/>
       <StringTable Comments="Lazarus/Delphi资源窗口转go" CompanyName="ying32" FileDescription="Lazarus/Delphi资源窗口转go" LegalCopyright="ying32" OriginalFilename="res2go.exe" ProductName="res2go"/>
     </VersionInfo>

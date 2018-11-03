@@ -21,7 +21,8 @@ uses
   System.Generics.Collections;
 
 var
-  GCallbackPtr: function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; stdcall;
+  GEventCallbackPtr: function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; stdcall;
+  GMessageCallbackPtr: function(f: NativeUInt; msg, handled: Pointer): Pointer; stdcall;
 
 type
   TGoParam = record
@@ -292,6 +293,20 @@ type
     class procedure Add(AObj: TObject; AEvent: TGoEvent; AId: NativeUInt);
     class procedure AddClick(Sender: TObject; AId: NativeUInt);
     class procedure Remove(AObj: TObject; AEvent: TGoEvent);
+  end;
+
+  // 窗口消息的，不与之前的事件混在一起。 
+  TMessageEventList =  TDictionary<TObject, NativeUInt>;
+
+  TMessageEventClass = class
+  private class var
+    FMsgEvents: TMessageEventList;
+    class constructor Create;
+    class destructor Destroy;
+  public
+    class procedure Add(AObj: TObject; AId: NativeUInt);
+    class procedure Remove(AObj: TObject);
+    class procedure OnWndProc(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean);
   end;
 
 implementation
@@ -1053,7 +1068,7 @@ class procedure TEventClass.SendEvent(Sender: TObject; AEvent: TGoEvent; AArgs: 
     LV: TVarRec;
     I: Integer;
   begin
-    if Assigned(GCallbackPtr) and (EventId > 0) then
+    if Assigned(GEventCallbackPtr) and (EventId > 0) then
     begin
       LArgLen := Length(AArgs);
       if LArgLen <= Length(LParams) then
@@ -1085,7 +1100,7 @@ class procedure TEventClass.SendEvent(Sender: TObject; AEvent: TGoEvent; AArgs: 
             vtUnicodeString : LParams[I].Value := LV.VUnicodeString;
           end;
         end;
-        GCallbackPtr(EventId, @LParams[0], LArgLen);
+        GEventCallbackPtr(EventId, @LParams[0], LArgLen);
       end;
     end;
   end;
@@ -1167,5 +1182,39 @@ begin
   Event := AEvent;
 end;
 
+
+{ TMessageEventClass }
+
+class constructor TMessageEventClass.Create;
+begin
+  FMsgEvents := TMessageEventList.Create;
+end;
+
+class destructor TMessageEventClass.Destroy;
+begin
+  FreeAndNil(FMsgEvents);
+end;
+
+class procedure TMessageEventClass.OnWndProc(Sender: TObject; var AMsg: TMessage;
+  var AHandled: Boolean);
+var
+  LId: NativeUInt;
+begin
+  if Assigned(GMessageCallbackPtr) then
+  begin
+    if FMsgEvents.TryGetValue(Sender, LId) then
+      GMessageCallbackPtr(LId, @AMsg, @AHandled);
+  end;
+end;
+
+class procedure TMessageEventClass.Remove(AObj: TObject);
+begin
+  FMsgEvents.Remove(AObj);
+end;
+
+class procedure TMessageEventClass.Add(AObj: TObject; AId: NativeUInt);
+begin
+  FMsgEvents.AddOrSetValue(AObj, AId);
+end;
 
 end.

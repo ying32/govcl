@@ -61,6 +61,7 @@ uses
   MaskEdit,
   Grids,
   ValEdit,
+  Spin,
   fgl,
   Printers,
   uFormDesignerFile,
@@ -68,7 +69,7 @@ uses
   uEventCallback in 'uEventCallback.pas',
   ImageButton in 'ImageButton.pas',
   Gauges in 'Gauges.pas',
-  uComponents;
+  uComponents, uGoForm;
 
 {$IFDEF WINDOWS}
   {$R *.res}
@@ -146,6 +147,7 @@ uses
 {$I MyLCL_CollectionItem.inc}
 {$I MyLCL_StatusPanels.inc}
 {$I MyLCL_StatusPanel.inc}
+{$I MyLCL_SpinEdit.inc}
 {$I MyLCL_Canvas.inc}
 {$I MyLCL_Object.inc}
 {$I MyLCL_Graphic.inc}

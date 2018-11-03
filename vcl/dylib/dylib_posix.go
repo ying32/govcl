@@ -1,4 +1,5 @@
-// +build linux,cgo darwin,cgo
+// +build !windows
+// +build cgo
 
 package dylib
 

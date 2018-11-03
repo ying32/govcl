@@ -25,7 +25,7 @@ func main() {
 	//    dlgOpen.SetInitialDir()
 	//	dlgOpen.SetFilterIndex()
 
-	dlgOpen.SetOptions(types.TOpenOptions(rtl.Include(uint32(dlgOpen.Options()), types.OfShowHelp)))
+	dlgOpen.SetOptions(rtl.Include(dlgOpen.Options(), types.OfShowHelp))
 	dlgOpen.SetTitle("打开")
 
 	btn := vcl.NewButton(mainForm)
@@ -40,7 +40,7 @@ func main() {
 
 	dlSave := vcl.NewSaveDialog(mainForm)
 	dlSave.SetFilter("文本文件(*.txt)|*.txt|所有文件(*.*)|*.*")
-	dlSave.SetOptions(types.TOpenOptions(rtl.Include(uint32(dlSave.Options()), types.OfShowHelp)))
+	dlSave.SetOptions(rtl.Include(dlSave.Options(), types.OfShowHelp))
 	dlSave.SetTitle("保存")
 
 	btn = vcl.NewButton(mainForm)
@@ -135,7 +135,7 @@ func main() {
 	btn.SetParent(mainForm)
 	btn.SetCaption("SelectDirectory2")
 	btn.SetOnClick(func(vcl.IObject) {
-		options := types.TSelectDirExtOpts(rtl.Include(0, types.SdNewFolder, types.SdShowEdit, types.SdNewUI))
+		options := rtl.Include(0, types.SdNewFolder, types.SdShowEdit, types.SdNewUI)
 		if ok, dir := vcl.SelectDirectory2("标题了", "C:/", options, nil); ok {
 			fmt.Println("选择的目录为：", dir)
 		}

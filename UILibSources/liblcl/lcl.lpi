@@ -7,6 +7,7 @@
       <Flags>
         <MainUnitHasCreateFormStatements Value="False"/>
         <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
@@ -53,7 +54,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="lcl.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -80,6 +81,10 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uComponents"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="ugoform.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

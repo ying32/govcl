@@ -92,7 +92,7 @@ func main() {
 	mainForm.WorkAreaCenter()
 	mainForm.SetKeyPreview(true)
 	mainForm.SetOnKeyDown(func(Sender vcl.IObject, Key *types.Char, Shift types.TShiftState) {
-		fmt.Println(rtl.InSets(uint32(Shift), types.SsCtrl))
+		fmt.Println(rtl.InSets(Shift, types.SsCtrl))
 		fmt.Println("key:", *Key)
 	})
 

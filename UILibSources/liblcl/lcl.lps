@@ -155,13 +155,13 @@
         </CompilerOptions>
       </Item5>
     </BuildModes>
-    <Units Count="169">
+    <Units Count="170">
       <Unit0>
         <Filename Value="lcl.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="162"/>
-        <CursorPos Y="197"/>
+        <TopLine Value="9"/>
+        <CursorPos X="61" Y="188"/>
         <UsageCount Value="81"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -1325,6 +1325,15 @@
         <CursorPos X="12" Y="10"/>
         <UsageCount Value="20"/>
       </Unit168>
+      <Unit169>
+        <Filename Value="ugoform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit169>
     </Units>
     <JumpHistory Count="13" HistoryIndex="12">
       <Position1>

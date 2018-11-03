@@ -27,8 +27,18 @@ type TLangItem struct {
 }
 
 var (
+	//-------- 导出
+
 	// 本地已经添加了的语言列表
 	LocalLangs = make(map[int]TLangItem, 0)
+
+	// 默认应用的节点名称
+	AppNodeName string
+
+	// 当前语言
+	CurrentLang string
+
+	//-------- 不导出
 
 	// 语言存放目录
 	langsPath = extractFilePath(os.Args[0]) + "Langs" + string(filepath.Separator)
@@ -47,12 +57,6 @@ var (
 
 	// 当前app节点信息
 	appNode map[string]interface{}
-
-	// 默认应用的节点名称
-	AppNodeName string
-
-	// 当前语言
-	CurrentLang string
 
 	// 已经注册的Form
 	regForms = make(map[uintptr]vcl.IComponent, 0)
@@ -199,12 +203,6 @@ func IdRes(key string) string {
 	return ""
 }
 
-// 注册lib中的资源
-func RegisterLibResouces(ress []types.TLibResouce, setFunc func(aPtr uintptr, aValue string)) {
-	regLibResouces = ress
-	modifyLibResouceFN = setFunc
-}
-
 // 初始一个Form的语言
 func InitComponentLang(aOwner vcl.IComponent) {
 	ptr := vcl.CheckPtr(aOwner)
@@ -259,5 +257,8 @@ func initLoadLocalLangsInfo() {
 }
 
 func init() {
+	// 首先设置lib中资源
+	regLibResouces = rtl.GetLibResouceItems()
+	modifyLibResouceFN = rtl.ModifyLibResouce
 	initLoadLocalLangsInfo()
 }

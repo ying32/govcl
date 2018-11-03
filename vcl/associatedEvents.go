@@ -205,7 +205,7 @@ func callFormCreate(vv reflect.Value) {
 		}
 	}()
 	// 查找默认的Form创建，命名规则以 On+组件名+方法名
-	m := vv.MethodByName(fmt.Sprintf("OnFormCreate"))
+	m := vv.MethodByName("OnFormCreate")
 	if m.IsValid() {
 		m.Call([]reflect.Value{vv})
 	}

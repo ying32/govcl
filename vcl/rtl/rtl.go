@@ -1,8 +1,6 @@
 package rtl
 
 import (
-	"reflect"
-
 	"github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -28,6 +26,7 @@ func GetStringArrOf(p uintptr, index int) string {
 }
 
 //----------------------------Delphi/Lazarus集合操作-------------------------------------------------------
+/*
 // getInterfaceUint32Val 从一个interface{}中获取一个整型并转为uint32类型
 func getInterfaceUint32Val(val interface{}) uint32 {
 	if val == nil {
@@ -68,11 +67,10 @@ func getInterfaceUint32Val(val interface{}) uint32 {
 		}
 	}
 	return 0
-}
+}*/
 
 // Include Delphi集合加法，val...中存储为位的索引，下标为0
-func Include(in interface{}, val ...uint8) uint32 {
-	r := getInterfaceUint32Val(in)
+func Include(r uint32, val ...uint8) uint32 {
 	for _, v := range val {
 		r |= (1 << uint8(v))
 	}
@@ -80,8 +78,7 @@ func Include(in interface{}, val ...uint8) uint32 {
 }
 
 // Exclude Delphi集合减法，val...中存储为位的索引，下标为0
-func Exclude(in interface{}, val ...uint8) uint32 {
-	r := getInterfaceUint32Val(in)
+func Exclude(r uint32, val ...uint8) uint32 {
 	for _, v := range val {
 		r &= ^(1 << uint8(v))
 	}
@@ -89,8 +86,7 @@ func Exclude(in interface{}, val ...uint8) uint32 {
 }
 
 // InSets Delphi集合类型的判断,类型，然后后面是第几位，下标为0
-func InSets(in interface{}, s uint32) bool {
-	r := getInterfaceUint32Val(in)
+func InSets(r uint32, s uint32) bool {
 	if r&(1<<uint8(s)) != 0 {
 		return true
 	}

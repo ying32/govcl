@@ -8,8 +8,8 @@ import (
 )
 
 // 回调过程
-func callbackProc(f uintptr, args uintptr, argcount int) uintptr {
-	v, ok := CallbackMap[f]
+func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
+	v, ok := EventCallbackMap.Load(f)
 	if ok {
 
 		getVal := func(i int) uintptr {

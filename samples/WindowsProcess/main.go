@@ -5,12 +5,13 @@ package main
 import (
 	"unsafe"
 
+	"github.com/ying32/govcl/vcl/rtl"
+
 	"path/filepath"
 
 	"fmt"
 
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/win"
 )
@@ -71,19 +72,26 @@ func fullListView(lv *vcl.TListView, imgList *vcl.TImageList) {
 	defer lv.Items().EndUpdate()
 
 	ico := vcl.NewIcon()
+	ico.SetTransparent(true)
 	defer ico.Free()
-	var index int32
 	for continueLoop {
 		item := lv.Items().Add()
 		exeFileName := win.GoStr(fProcessEntry32.SzExeFile[:])
 		item.SubItems().Add(filepath.Base(exeFileName))
 		item.SubItems().Add(fmt.Sprintf("%.4X", fProcessEntry32.Th32ProcessID))
-		hIcon := win.ExtractIcon(rtl.MainInstance(), exeFileName, 0)
-		if hIcon != 0 {
-			ico.SetHandle(hIcon)
-			imgList.AddIcon(ico)
-			item.SetImageIndex(index)
-			index++
+
+		hProcess := win.OpenProcess(win.PROCESS_QUERY_INFORMATION|win.PROCESS_VM_READ, false, fProcessEntry32.Th32ProcessID)
+		if hProcess > 0 {
+			fullFileName, _ := win.GetModuleFileNameEx(hProcess, 0)
+			fmt.Println(fullFileName)
+
+			hIcon := win.ExtractIcon(rtl.MainInstance(), fullFileName, 0)
+			if hIcon != 0 {
+				ico.SetHandle(hIcon)
+				index := imgList.AddIcon(ico)
+				item.SetImageIndex(index)
+			}
+			win.CloseHandle(hProcess)
 		}
 
 		continueLoop = win.Process32Next(fSnapShotHandle, &fProcessEntry32)

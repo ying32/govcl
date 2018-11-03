@@ -62,7 +62,10 @@
            "MenuItem7.Caption": "菜单项目7",
            "MenuItem8.Caption": "菜单项目8",
            "MenuItem9.Caption": "菜单项目9",
-           "MenuItem10.Caption": "菜单项目10"
+           "MenuItem10.Caption": "菜单项目10",
+           "ListView1.Columns[0].Caption": "编号",
+           "ListView1.Columns[1].Caption": "姓名",
+           "ListView1.Columns[2].Caption": "地址"
 		}
 	}
 }

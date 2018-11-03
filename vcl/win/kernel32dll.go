@@ -5,6 +5,8 @@ package win
 import (
 	"syscall"
 	"unsafe"
+
+	. "github.com/ying32/govcl/vcl/types"
 )
 
 var (
@@ -59,6 +61,12 @@ var (
 	_ExitThread          = kernel32dll.NewProc("ExitThread")
 	_ExitProcess         = kernel32dll.NewProc("ExitProcess")
 	_WaitForSingleObject = kernel32dll.NewProc("WaitForSingleObject")
+
+	_FindResource   = kernel32dll.NewProc("FindResourceW")
+	_LoadResource   = kernel32dll.NewProc("LoadResource")
+	_LockResource   = kernel32dll.NewProc("LockResource")
+	_SizeofResource = kernel32dll.NewProc("SizeofResource")
+	_FreeResource   = kernel32dll.NewProc("FreeResource")
 )
 
 // GetLastError
@@ -283,4 +291,29 @@ func ExitProcess(uExitCode uint32) {
 func WaitForSingleObject(hHandle uintptr, dwMilliseconds uint32) uint32 {
 	r, _, _ := _WaitForSingleObject.Call(hHandle, uintptr(dwMilliseconds))
 	return uint32(r)
+}
+
+func FindResource(hModule HMODULE, lpName string, lpType uintptr) HRSRC {
+	r, _, _ := _FindResource.Call(uintptr(hModule), CStr(lpName), lpType)
+	return HRSRC(r)
+}
+
+func LoadResource(hModule uintptr, hResInfo HRSRC) HGLOBAL {
+	r, _, _ := _LoadResource.Call(hModule, uintptr(hResInfo))
+	return HGLOBAL(r)
+}
+
+func LockResource(hResData HGLOBAL) uintptr {
+	r, _, _ := _LockResource.Call(uintptr(hResData))
+	return r
+}
+
+func SizeofResource(hModule uintptr, hResInfo HRSRC) uint32 {
+	r, _, _ := _SizeofResource.Call(hModule, uintptr(hResInfo))
+	return uint32(r)
+}
+
+func FreeResource(hResData HGLOBAL) bool {
+	r, _, _ := _FreeResource.Call(uintptr(hResData))
+	return r != 0
 }

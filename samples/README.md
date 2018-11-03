@@ -49,4 +49,10 @@
 | winole | 使用go-ole库操作ole | Windows | 
 | virtuallistview | 虚拟TListView，用于大数据显示 |   |
 | winTaskbar | windows任务栏相关，只支持libvcl，win7+ | Windows,libvcl,win7+  |
-| winJumpList | windows任务栏，跳转列表，只支持libvcl，win7+ | Windows,libvcl,win7+  |
+| winJumpList | windows任务栏，跳转列表，只支持libvcl，win7+ | Windows,libvcl,win7+  |  
+| res2goTest | res2go 工具测试例程 | |  
+| messageTest | 跨平台的窗口消息捕获，与WindowsMessages例程功能一样，只是可以跨平台 | |  
+| printer | 打印机操作 | |  
+| multilanguage | 多国语言演示例程 | |
+
+

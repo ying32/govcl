@@ -23762,6 +23762,15 @@ func UpDown_SetMax(obj uintptr, value int32) {
    upDown_SetMax.Call(obj, uintptr(value))
 }
 
+func UpDown_GetIncrement(obj uintptr) int32 {
+    ret, _, _ := upDown_GetIncrement.Call(obj)
+    return int32(ret)
+}
+
+func UpDown_SetIncrement(obj uintptr, value int32) {
+   upDown_SetIncrement.Call(obj, uintptr(value))
+}
+
 func UpDown_GetOrientation(obj uintptr) TUDOrientation {
     ret, _, _ := upDown_GetOrientation.Call(obj)
     return TUDOrientation(ret)
@@ -40614,6 +40623,960 @@ func StatusPanel_SetIndex(obj uintptr, value int32) {
 
 func StatusPanel_StaticClassType() TClass {
     r, _, _:= statusPanel_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TSpinEdit ---------------------------
+
+func SpinEdit_Create(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_Create.Call(obj)
+    return ret
+}
+
+func SpinEdit_Free(obj uintptr) {
+    spinEdit_Free.Call(obj)
+}
+
+func SpinEdit_Clear(obj uintptr)  {
+    spinEdit_Clear.Call(obj)
+}
+
+func SpinEdit_ClearSelection(obj uintptr)  {
+    spinEdit_ClearSelection.Call(obj)
+}
+
+func SpinEdit_CopyToClipboard(obj uintptr)  {
+    spinEdit_CopyToClipboard.Call(obj)
+}
+
+func SpinEdit_CutToClipboard(obj uintptr)  {
+    spinEdit_CutToClipboard.Call(obj)
+}
+
+func SpinEdit_PasteFromClipboard(obj uintptr)  {
+    spinEdit_PasteFromClipboard.Call(obj)
+}
+
+func SpinEdit_Undo(obj uintptr)  {
+    spinEdit_Undo.Call(obj)
+}
+
+func SpinEdit_ClearUndo(obj uintptr)  {
+    spinEdit_ClearUndo.Call(obj)
+}
+
+func SpinEdit_SelectAll(obj uintptr)  {
+    spinEdit_SelectAll.Call(obj)
+}
+
+func SpinEdit_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := spinEdit_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func SpinEdit_CanFocus(obj uintptr) bool {
+    ret, _, _ := spinEdit_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := spinEdit_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := spinEdit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func SpinEdit_DisableAlign(obj uintptr)  {
+    spinEdit_DisableAlign.Call(obj)
+}
+
+func SpinEdit_EnableAlign(obj uintptr)  {
+    spinEdit_EnableAlign.Call(obj)
+}
+
+func SpinEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := spinEdit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func SpinEdit_FlipChildren(obj uintptr, AllLevels bool)  {
+    spinEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func SpinEdit_Focused(obj uintptr) bool {
+    ret, _, _ := spinEdit_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := spinEdit_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    spinEdit_InsertControl.Call(obj, AControl )
+}
+
+func SpinEdit_Invalidate(obj uintptr)  {
+    spinEdit_Invalidate.Call(obj)
+}
+
+func SpinEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    spinEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func SpinEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    spinEdit_RemoveControl.Call(obj, AControl )
+}
+
+func SpinEdit_Realign(obj uintptr)  {
+    spinEdit_Realign.Call(obj)
+}
+
+func SpinEdit_Repaint(obj uintptr)  {
+    spinEdit_Repaint.Call(obj)
+}
+
+func SpinEdit_ScaleBy(obj uintptr, M int32, D int32)  {
+    spinEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func SpinEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    spinEdit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func SpinEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    spinEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func SpinEdit_SetFocus(obj uintptr)  {
+    spinEdit_SetFocus.Call(obj)
+}
+
+func SpinEdit_Update(obj uintptr)  {
+    spinEdit_Update.Call(obj)
+}
+
+func SpinEdit_UpdateControlState(obj uintptr)  {
+    spinEdit_UpdateControlState.Call(obj)
+}
+
+func SpinEdit_BringToFront(obj uintptr)  {
+    spinEdit_BringToFront.Call(obj)
+}
+
+func SpinEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    spinEdit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpinEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    spinEdit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpinEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := spinEdit_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_HasParent(obj uintptr) bool {
+    ret, _, _ := spinEdit_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_Hide(obj uintptr)  {
+    spinEdit_Hide.Call(obj)
+}
+
+func SpinEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := spinEdit_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func SpinEdit_Refresh(obj uintptr)  {
+    spinEdit_Refresh.Call(obj)
+}
+
+func SpinEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    spinEdit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpinEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    spinEdit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpinEdit_SendToBack(obj uintptr)  {
+    spinEdit_SendToBack.Call(obj)
+}
+
+func SpinEdit_Show(obj uintptr)  {
+    spinEdit_Show.Call(obj)
+}
+
+func SpinEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := spinEdit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func SpinEdit_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    spinEdit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
+func SpinEdit_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := spinEdit_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func SpinEdit_GetNamePath(obj uintptr) string {
+    ret, _, _ := spinEdit_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_Assign(obj uintptr, Source uintptr)  {
+    spinEdit_Assign.Call(obj, Source )
+}
+
+func SpinEdit_DisposeOf(obj uintptr)  {
+    spinEdit_DisposeOf.Call(obj)
+}
+
+func SpinEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := spinEdit_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func SpinEdit_ClassName(obj uintptr) string {
+    ret, _, _ := spinEdit_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := spinEdit_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := spinEdit_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := spinEdit_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_ToString(obj uintptr) string {
+    ret, _, _ := spinEdit_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := spinEdit_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func SpinEdit_SetAnchors(obj uintptr, value TAnchors) {
+   spinEdit_SetAnchors.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetAutoSelect(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetAutoSelect.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetAutoSelect(obj uintptr, value bool) {
+   spinEdit_SetAutoSelect.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetAutoSize(obj uintptr, value bool) {
+   spinEdit_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetColor(obj uintptr) TColor {
+    ret, _, _ := spinEdit_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func SpinEdit_SetColor(obj uintptr, value TColor) {
+   spinEdit_SetColor.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := spinEdit_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func SpinEdit_SetDragCursor(obj uintptr, value TCursor) {
+   spinEdit_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := spinEdit_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func SpinEdit_SetDragMode(obj uintptr, value TDragMode) {
+   spinEdit_SetDragMode.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetEditorEnabled(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetEditorEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetEditorEnabled(obj uintptr, value bool) {
+   spinEdit_SetEditorEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetEnabled(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetEnabled(obj uintptr, value bool) {
+   spinEdit_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetFont(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetFont.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetFont(obj uintptr, value uintptr) {
+   spinEdit_SetFont.Call(obj, value)
+}
+
+func SpinEdit_GetIncrement(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetIncrement.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetIncrement(obj uintptr, value int32) {
+   spinEdit_SetIncrement.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetMaxLength(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetMaxLength.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetMaxLength(obj uintptr, value int32) {
+   spinEdit_SetMaxLength.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetMaxValue(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetMaxValue.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetMaxValue(obj uintptr, value int32) {
+   spinEdit_SetMaxValue.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetMinValue(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetMinValue.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetMinValue(obj uintptr, value int32) {
+   spinEdit_SetMinValue.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetParentColor(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetParentColor(obj uintptr, value bool) {
+   spinEdit_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetParentCtl3D(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetParentCtl3D.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetParentCtl3D(obj uintptr, value bool) {
+   spinEdit_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetParentFont(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetParentFont(obj uintptr, value bool) {
+   spinEdit_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetParentShowHint(obj uintptr, value bool) {
+   spinEdit_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetPopupMenu(obj uintptr, value uintptr) {
+   spinEdit_SetPopupMenu.Call(obj, value)
+}
+
+func SpinEdit_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetReadOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetReadOnly(obj uintptr, value bool) {
+   spinEdit_SetReadOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetShowHint(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetShowHint(obj uintptr, value bool) {
+   spinEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := spinEdit_GetTabOrder.Call(obj)
+    return TTabOrder(ret)
+}
+
+func SpinEdit_SetTabOrder(obj uintptr, value TTabOrder) {
+   spinEdit_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetTabStop(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetTabStop(obj uintptr, value bool) {
+   spinEdit_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetValue(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetValue.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetValue(obj uintptr, value int32) {
+   spinEdit_SetValue.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetVisible(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetVisible(obj uintptr, value bool) {
+   spinEdit_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_SetOnChange(obj uintptr, fn interface{}) {
+    spinEdit_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnClick(obj uintptr, fn interface{}) {
+    spinEdit_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnDblClick(obj uintptr, fn interface{}) {
+    spinEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    spinEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+    spinEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    spinEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnEnter(obj uintptr, fn interface{}) {
+    spinEdit_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnExit(obj uintptr, fn interface{}) {
+    spinEdit_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+    spinEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+    spinEdit_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+    spinEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+    spinEdit_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    spinEdit_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    spinEdit_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := spinEdit_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func SpinEdit_SetAlignment(obj uintptr, value TAlignment) {
+   spinEdit_SetAlignment.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetCanUndo(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetCanUndo.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_GetModified(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetModified.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetModified(obj uintptr, value bool) {
+   spinEdit_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetSelLength(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetSelLength.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetSelLength(obj uintptr, value int32) {
+   spinEdit_SetSelLength.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetSelStart(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetSelStart.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetSelStart(obj uintptr, value int32) {
+   spinEdit_SetSelStart.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetSelText(obj uintptr) string {
+    ret, _, _ := spinEdit_GetSelText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_SetSelText(obj uintptr, value string) {
+   spinEdit_SetSelText.Call(obj, GoStrToDStr(value))
+}
+
+func SpinEdit_GetText(obj uintptr) string {
+    ret, _, _ := spinEdit_GetText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_SetText(obj uintptr, value string) {
+   spinEdit_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func SpinEdit_GetTextHint(obj uintptr) string {
+    ret, _, _ := spinEdit_GetTextHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_SetTextHint(obj uintptr, value string) {
+   spinEdit_SetTextHint.Call(obj, GoStrToDStr(value))
+}
+
+func SpinEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetDockSite(obj uintptr, value bool) {
+   spinEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetDoubleBuffered(obj uintptr, value bool) {
+   spinEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetBrush.Call(obj)
+    return ret
+}
+
+func SpinEdit_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetHandle(obj uintptr) HWND {
+    ret, _, _ := spinEdit_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func SpinEdit_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+   spinEdit_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := spinEdit_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func SpinEdit_SetParentWindow(obj uintptr, value HWND) {
+   spinEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetUseDockManager(obj uintptr, value bool) {
+   spinEdit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetAction(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetAction.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetAction(obj uintptr, value uintptr) {
+   spinEdit_SetAction.Call(obj, value)
+}
+
+func SpinEdit_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := spinEdit_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func SpinEdit_SetAlign(obj uintptr, value TAlign) {
+   spinEdit_SetAlign.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := spinEdit_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func SpinEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   spinEdit_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    spinEdit_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpinEdit_SetBoundsRect(obj uintptr, value TRect) {
+   spinEdit_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func SpinEdit_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetClientHeight(obj uintptr, value int32) {
+   spinEdit_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    spinEdit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpinEdit_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    spinEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func SpinEdit_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetClientWidth(obj uintptr, value int32) {
+   spinEdit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := spinEdit_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func SpinEdit_SetControlState(obj uintptr, value TControlState) {
+   spinEdit_SetControlState.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := spinEdit_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func SpinEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+   spinEdit_SetControlStyle.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_GetParent(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetParent.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetParent(obj uintptr, value uintptr) {
+   spinEdit_SetParent.Call(obj, value)
+}
+
+func SpinEdit_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := spinEdit_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func SpinEdit_SetStyleElements(obj uintptr, value TStyleElements) {
+   spinEdit_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func SpinEdit_SetOnGesture(obj uintptr, fn interface{}) {
+    spinEdit_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func SpinEdit_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpinEdit_SetAlignWithMargins(obj uintptr, value bool) {
+   spinEdit_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func SpinEdit_GetLeft(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetLeft(obj uintptr, value int32) {
+   spinEdit_SetLeft.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetTop(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetTop(obj uintptr, value int32) {
+   spinEdit_SetTop.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetWidth(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetWidth(obj uintptr, value int32) {
+   spinEdit_SetWidth.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetHeight(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetHeight(obj uintptr, value int32) {
+   spinEdit_SetHeight.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := spinEdit_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func SpinEdit_SetCursor(obj uintptr, value TCursor) {
+   spinEdit_SetCursor.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetHint(obj uintptr) string {
+    ret, _, _ := spinEdit_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_SetHint(obj uintptr, value string) {
+   spinEdit_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func SpinEdit_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetMargins.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetMargins(obj uintptr, value uintptr) {
+   spinEdit_SetMargins.Call(obj, value)
+}
+
+func SpinEdit_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetCustomHint.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetCustomHint(obj uintptr, value uintptr) {
+   spinEdit_SetCustomHint.Call(obj, value)
+}
+
+func SpinEdit_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := spinEdit_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func SpinEdit_SetComponentIndex(obj uintptr, value int32) {
+   spinEdit_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetOwner.Call(obj)
+    return ret
+}
+
+func SpinEdit_GetName(obj uintptr) string {
+    ret, _, _ := spinEdit_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SpinEdit_SetName(obj uintptr, value string) {
+   spinEdit_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func SpinEdit_GetTag(obj uintptr) int {
+    ret, _, _ := spinEdit_GetTag.Call(obj)
+    return int(ret)
+}
+
+func SpinEdit_SetTag(obj uintptr, value int) {
+   spinEdit_SetTag.Call(obj, uintptr(value))
+}
+
+func SpinEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := spinEdit_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
+func SpinEdit_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := spinEdit_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func SpinEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := spinEdit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func SpinEdit_StaticClassType() TClass {
+    r, _, _:= spinEdit_StaticClassType.Call()
     return TClass(r)
 }
 

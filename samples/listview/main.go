@@ -132,7 +132,7 @@ func main() {
 	grp.SetSubtitle("这是子标题")
 	grp.SetTitleImage(0)
 	state := grp.State()
-	state = types.TListGroupStateSet(rtl.Include(uint32(state), types.LgsCollapsible))
+	state = rtl.Include(uint32(state), types.LgsCollapsible)
 	grp.SetState(state)
 
 	grp = lv3.Groups().Add()
@@ -142,7 +142,7 @@ func main() {
 	grp.SetFooterAlign(types.TaCenter)
 	grp.SetSubtitle("这是子标题")
 	state = grp.State()
-	state = types.TListGroupStateSet(rtl.Include(uint32(state), types.LgsCollapsible))
+	state = rtl.Include(uint32(state), types.LgsCollapsible)
 	grp.SetState(state)
 
 	lv3.SetOnClick(func(vcl.IObject) {
