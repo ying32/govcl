@@ -27,13 +27,8 @@ type tComponentItem struct {
 	Component *TComponent
 }
 
-type tMethod struct {
-	M    reflect.Method
-	This reflect.Value
-}
-
 var (
-	_eventsTable = make(map[string]tMethod, 0)
+	_eventsTable = make(map[string]reflect.Value, 0)
 	// 这里的事件还不全，以后继续补库，先满足基本需求
 	_events = map[string]struct{ call1, call2 interface{} }{
 		"Click":             {onClick, nil},
@@ -123,16 +118,13 @@ func getComponents(f *TForm) (ret []tComponentItem) {
 }
 
 // addMethod 将相关方法添加到表中
-func addMethod(M reflect.Method, obj IObject, eventTpy string, This reflect.Value) {
+func addMethod(m reflect.Value, obj IObject, eventTpy string) {
 	key := fmt.Sprintf("%d_%s", obj.Instance(), eventTpy)
-	var mm tMethod
-	mm.M = M
-	mm.This = This
-	_eventsTable[key] = mm
+	_eventsTable[key] = m
 }
 
 // getMethod 查表，找此对象事件对应的方法
-func getMethod(sender IObject, eventTpy string) (tMethod, bool) {
+func getMethod(sender IObject, eventTpy string) (reflect.Value, bool) {
 	key := fmt.Sprintf("%d_%s", sender.Instance(), eventTpy)
 	m, ok := _eventsTable[key]
 	return m, ok
@@ -157,15 +149,15 @@ func associatedEvents(vv reflect.Value, comps []tComponentItem) {
 	// 关联事件, 查找组件
 	//vv := reflect.ValueOf(inst)
 	vt := vv.Type()
-	eventMethods := make(map[string]reflect.Method, 0)
+	eventMethods := make(map[string]reflect.Value, 0)
 	for i := 0; i < vt.NumMethod(); i++ {
 		m := vt.Method(i)
 		if strings.HasPrefix(m.Name, "On") {
-			eventMethods[m.Name] = m
+			eventMethods[m.Name] = vv.Method(i)
 		}
 	}
 	// 简化查找
-	findMethod := func(name, event string) (reflect.Method, bool) {
+	findMethod := func(name, event string) (reflect.Value, bool) {
 		v, ok := eventMethods[fmt.Sprintf("On%s%s", name, event)]
 		return v, ok
 	}
@@ -223,12 +215,11 @@ func mcall(eventType string, params ...interface{}) {
 	}()
 	sender := params[0].(IObject)
 	if mmm, ok := getMethod(sender, eventType); ok {
-		ps := make([]reflect.Value, len(params)+1)
-		ps[0] = mmm.This
+		ps := make([]reflect.Value, len(params))
 		for i, p := range params {
-			ps[i+1] = reflect.ValueOf(p)
+			ps[i] = reflect.ValueOf(p)
 		}
-		mmm.M.Func.Call(ps)
+		mmm.Call(ps)
 	}
 }
 
@@ -501,50 +492,42 @@ func onShortCut(msg *TWMKey, handled *bool) {
 }
 
 // callSetEventMethod 公用的call SetOnXXXX方法
-func callSetEventMethod(v reflect.Value, eventType string, component IObject, this reflect.Value, m reflect.Method, fn interface{}) {
+func callSetEventMethod(v reflect.Value, eventType string, component IObject, m reflect.Value, fn interface{}) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("callSetEventMethod ERROR: ", err, ", eventType:", eventType, ", Component:", component, ", this:", this)
+			fmt.Println("callSetEventMethod ERROR: ", err, ", eventType:", eventType, ", Component:", component)
 		}
 	}()
 	event := v.MethodByName("SetOn" + eventType)
 	if event.IsValid() {
-		addMethod(m, component, eventType, this)
+		addMethod(m, component, eventType)
 		event.Call([]reflect.Value{reflect.ValueOf(fn)})
 	}
 }
 
 // addNotifyEvent
-func addNotifyEvent(vv reflect.Value, compName string, m reflect.Method, c IObject, eventType string, fn interface{}) {
+func addNotifyEvent(vv reflect.Value, compName string, m reflect.Value, c IObject, eventType string, fn interface{}) {
 	vCtl := vv.Elem().FieldByName(compName)
 	if !vCtl.IsValid() {
 		return
 	}
-	callSetEventMethod(vCtl, eventType, c, vv, m, fn)
+	callSetEventMethod(vCtl, eventType, c, m, fn)
 }
 
 // addApplicationNotifyEvent
 // 添加Application的关联事件，在一个程序内，application只的事件只有最后一次设置的才会生效。
 // 因为Application是单例存在，推荐在主窗口内处理就行了。
-func addApplicationNotifyEvent(vv reflect.Value, eventMethods map[string]reflect.Method) {
+func addApplicationNotifyEvent(vv reflect.Value, eventMethods map[string]reflect.Value) {
 	app := reflect.ValueOf(Application)
 	if app.IsValid() {
-		findMethod := func(event string) (reflect.Method, bool) {
+		findMethod := func(event string) (reflect.Value, bool) {
 			v, ok := eventMethods[fmt.Sprintf("OnApplication%s", event)]
 			return v, ok
 		}
 		for eventName, fn := range _appEvents {
 			if m, ok := findMethod(eventName); ok {
-				callSetEventMethod(app, eventName, Application, vv, m, fn)
+				callSetEventMethod(app, eventName, Application, m, fn)
 			}
 		}
 	}
 }
-
-//var typ TNotifyEvent
-//var fnx = func(args []reflect.Value) []reflect.Value {
-//	m.Func.Call([]reflect.Value{vv, vCtl})
-//	return nil
-//}
-//fn := reflect.MakeFunc(reflect.TypeOf(typ), fnx)
-//event.Call([]reflect.Value{fn})
