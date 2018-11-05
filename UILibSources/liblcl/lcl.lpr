@@ -7,11 +7,15 @@
 
 library lcl;
 
-{$mode objfpc}{$H+}  
+{$mode objfpc}{$H+}
+
+{$ifndef windows}
+   {$define UseCThreads}
+{$endif}
 
 uses
 {$IFDEF UNIX}{$IFDEF UseCThreads}
-  cthreads,,
+  cthreads,
 {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset,
 {$IFDEF WINDOWS}

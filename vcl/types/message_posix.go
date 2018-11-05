@@ -1,4 +1,5 @@
-// +build linux,amd64 darwin,amd64
+// +build !windows
+// +build amd64
 
 package types
 

@@ -23,26 +23,29 @@ import (
 	"github.com/ying32/govcl/vcl/types/keys"
 )
 
-var (
+//::private::
+type TMainFormFields struct {
 	isMouseDown    bool
 	mouseDownPos   types.TPoint
-	canAcceptTypes = []string{".jpg", ".gif", ".png", ".bmp", ".ico", ".psd"}
+	canAcceptTypes []string
 	isAutoCenter   bool // 首次加载图片后，如果不改变ImageViewer的位置，则窗口调整大小时居中显示
 	imgMousePos    types.TPoint
 	orgTitle       string // 保存
 	//imgBuffer      *vcl.TPicture
-	ImgThumb      *vcl.TBitmap
+	imgThumb      *vcl.TBitmap
 	curDirImages  []string // 以当前打开的文件检索当前目标下的
 	curImageIndex int      // 当前浏览的图片索引
-)
+}
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	hookMainFormWndPrc()
 
+	f.canAcceptTypes = []string{".jpg", ".gif", ".png", ".bmp", ".ico", ".psd"}
+
 	f.SetAllowDropFiles(true)
 	//imgBuffer = vcl.NewPicture()
 	//imgBuffer.SetOnChange(f.OnPicChanged)
-	ImgThumb = vcl.NewBitmap()
+	f.imgThumb = vcl.NewBitmap()
 	//f.setPBPreViewPos()
 	// 调试下，先显示
 	//f.PBPreview.Show()
@@ -64,7 +67,7 @@ func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
 	unHookMainFormWndPrc()
 
 	f.SetAllowDropFiles(false)
-	ImgThumb.Free()
+	f.imgThumb.Free()
 	//imgBuffer.Free()
 }
 
@@ -86,7 +89,7 @@ func (f *TMainForm) setWindowState(state types.TWindowState) {
 }
 
 func (f *TMainForm) getFileIndex(aFileName string) int {
-	for i, fname := range curDirImages {
+	for i, fname := range f.curDirImages {
 		if strings.Compare(fname, aFileName) == 0 {
 			return i
 		}
@@ -97,7 +100,7 @@ func (f *TMainForm) getFileIndex(aFileName string) int {
 func (f *TMainForm) getCurrentImages(aFileName string) {
 	// curDirImages
 	// 清零
-	curDirImages = make([]string, 0)
+	f.curDirImages = make([]string, 0)
 	path := aFileName[:len(aFileName)-len(filepath.Base(aFileName))]
 	fd, err := os.Open(path)
 	if err != nil {
@@ -113,7 +116,7 @@ func (f *TMainForm) getCurrentImages(aFileName string) {
 			if !file.IsDir() {
 				fname := path + file.Name()
 				if f.canAccept(fname) {
-					curDirImages = append(curDirImages, fname)
+					f.curDirImages = append(f.curDirImages, fname)
 				}
 			}
 		}
@@ -125,7 +128,7 @@ func (f *TMainForm) getCurrentImages(aFileName string) {
 		}
 	}
 	// 排序下
-	sort.Strings(curDirImages)
+	sort.Strings(f.curDirImages)
 }
 
 func (f *TMainForm) getRatio() int {
@@ -224,7 +227,7 @@ func (f *TMainForm) loadImage(aFileName string) {
 	}
 
 	// 首次加载后居中
-	isAutoCenter = true
+	f.isAutoCenter = true
 	// 首次设置为true
 	f.zoom(0.0)
 
@@ -232,15 +235,15 @@ func (f *TMainForm) loadImage(aFileName string) {
 	imgH := f.ImgViewer.Picture().Height()
 	//f.ImgViewer.SetBounds((f.Width()-imgW)/2, (f.Height()-imgH)/2, imgW, imgH)
 
-	if ImgThumb.IsValid() {
-		ImgThumb.Free()
+	if f.imgThumb.IsValid() {
+		f.imgThumb.Free()
 	}
 
 	thumbW := f.PBPreview.Width()
 	thumbH := int32(float64(thumbW) / float64(imgW) * float64(imgH))
-	ImgThumb = vcl.NewBitmap()
-	ImgThumb.SetSize(thumbW, thumbH)
-	ImgThumb.Canvas().StretchDraw(types.TRect{0, 0, thumbW, thumbH}, f.ImgViewer.Picture().Graphic())
+	f.imgThumb = vcl.NewBitmap()
+	f.imgThumb.SetSize(thumbW, thumbH)
+	f.imgThumb.Canvas().StretchDraw(types.TRect{0, 0, thumbW, thumbH}, f.ImgViewer.Picture().Graphic())
 
 	// libvcl下可以动的gif
 	if !rtl.LcLLoaded() && f.ImgViewer.Picture().Graphic().ClassName() == "TGIFImage" {
@@ -249,17 +252,17 @@ func (f *TMainForm) loadImage(aFileName string) {
 
 	// 获取本目录下的文件名
 	f.getCurrentImages(aFileName)
-	curImageIndex = f.getFileIndex(aFileName)
+	f.curImageIndex = f.getFileIndex(aFileName)
 	stat, _ := os.Stat(aFileName)
-	orgTitle = fmt.Sprintf("%s (%dKB, %dx%d像素) - 第%d/%d张 ", filepath.Base(aFileName), stat.Size()/1024, imgW, imgH, curImageIndex+1, len(curDirImages))
+	f.orgTitle = fmt.Sprintf("%s (%dKB, %dx%d像素) - 第%d/%d张 ", filepath.Base(aFileName), stat.Size()/1024, imgW, imgH, f.curImageIndex+1, len(f.curDirImages))
 	f.updateTitle()
 
 }
 
 func (f *TMainForm) OnFormResize(sender vcl.IObject) {
 	// 首次加载后居中
-	if isAutoCenter {
-		fmt.Println("isAutoCenter:", isAutoCenter)
+	if f.isAutoCenter {
+		fmt.Println("isAutoCenter:", f.isAutoCenter)
 		f.zoom(0)
 	}
 	f.setPBPreViewPos()
@@ -293,7 +296,7 @@ func (f *TMainForm) setPBPreViewPos() {
 }
 
 func (f *TMainForm) updateTitle() {
-	title := orgTitle
+	title := f.orgTitle
 	ratio := f.getRatio()
 	if ratio != 100 {
 		title += fmt.Sprintf(" - %d%%", f.getRatio())
@@ -306,7 +309,7 @@ func (f *TMainForm) updateTitle() {
 
 func (f *TMainForm) canAccept(aFileName string) bool {
 	ext := strings.ToLower(filepath.Ext(aFileName))
-	for _, s := range canAcceptTypes {
+	for _, s := range f.canAcceptTypes {
 		if ext == s {
 			return true
 		}
@@ -349,7 +352,7 @@ func (f *TMainForm) OnBtnMenuClick(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnLblCaptionMouseUp(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
-	isMouseDown = false
+	f.isMouseDown = false
 }
 
 func (f *TMainForm) OnLblCaptionMouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
@@ -357,23 +360,23 @@ func (f *TMainForm) OnLblCaptionMouseDown(sender vcl.IObject, button types.TMous
 		// windows下可以用这种，貌似只对libvcl生效，lcl不生效的
 		//win.ReleaseCapture()
 		//f.Perform(win.WM_SYSCOMMAND, win.SC_MOVE+1, 0)
-		isMouseDown = true
-		mouseDownPos.X = x
-		mouseDownPos.Y = y
+		f.isMouseDown = true
+		f.mouseDownPos.X = x
+		f.mouseDownPos.Y = y
 	}
 }
 
 func (f *TMainForm) OnLblCaptionMouseMove(sender vcl.IObject, shift types.TShiftState, x, y int32) {
-	if isMouseDown {
+	if f.isMouseDown {
 		if f.isMax() {
 			f.setWindowState(types.WsNormal)
 			// 这里做，主要是修复还原后鼠标位置
 			ratio := float64(f.Width()) / float64(vcl.Screen.Width())
 			x = int32(float64(x) * ratio)
-			mouseDownPos.X = x
+			f.mouseDownPos.X = x
 		}
-		f.SetLeft(f.Left() + (x - mouseDownPos.X))
-		f.SetTop(f.Top() + (y - mouseDownPos.Y))
+		f.SetLeft(f.Left() + (x - f.mouseDownPos.X))
+		f.SetTop(f.Top() + (y - f.mouseDownPos.Y))
 	}
 }
 
@@ -391,23 +394,23 @@ func (f *TMainForm) OnLblCaptionDblClick(sender vcl.IObject) {
 
 func (f *TMainForm) OnImgViewerMouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 	if button == types.MbLeft {
-		isMouseDown = true
-		mouseDownPos.X = x
-		mouseDownPos.Y = y
+		f.isMouseDown = true
+		f.mouseDownPos.X = x
+		f.mouseDownPos.Y = y
 	}
 }
 
 func (f *TMainForm) OnImgViewerMouseUp(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
-	isMouseDown = false
+	f.isMouseDown = false
 }
 
 func (f *TMainForm) OnImgViewerMouseMove(sender vcl.IObject, shift types.TShiftState, x, y int32) {
-	imgMousePos.X = x
-	imgMousePos.Y = y
-	if isMouseDown {
-		isAutoCenter = false
-		f.ImgViewer.SetLeft(f.ImgViewer.Left() + (x - mouseDownPos.X))
-		f.ImgViewer.SetTop(f.ImgViewer.Top() + (y - mouseDownPos.Y))
+	f.imgMousePos.X = x
+	f.imgMousePos.Y = y
+	if f.isMouseDown {
+		f.isAutoCenter = false
+		f.ImgViewer.SetLeft(f.ImgViewer.Left() + (x - f.mouseDownPos.X))
+		f.ImgViewer.SetTop(f.ImgViewer.Top() + (y - f.mouseDownPos.Y))
 		f.PBPreview.Invalidate()
 	}
 }
@@ -424,13 +427,13 @@ func (f *TMainForm) OnPBPreviewMouseDown(sender vcl.IObject, button types.TMouse
 }
 
 func (f *TMainForm) OnPBPreviewPaint(sender vcl.IObject) {
-	if ImgThumb.IsValid() && f.PBPreview.Visible() {
+	if f.imgThumb.IsValid() && f.PBPreview.Visible() {
 		pb := f.PBPreview
 		canvas := pb.Canvas()
 		canvas.Pen().SetColor(colors.ClBlack)
 		canvas.Brush().SetStyle(types.BsClear)
 		canvas.Rectangle(0, 0, pb.Width(), pb.Height())
-		canvas.Draw(0 /* pb.Height()-ImgThumb.Height()*/, 0, ImgThumb)
+		canvas.Draw(0 /* pb.Height()-ImgThumb.Height()*/, 0, f.imgThumb)
 
 		img := f.ImgViewer
 
@@ -452,8 +455,8 @@ func (f *TMainForm) OnPBPreviewPaint(sender vcl.IObject) {
 			vRect.SetHeight(img.Height())
 		}
 
-		wRatio := float64(ImgThumb.Width()) / float64(img.Width())
-		hRatio := float64(ImgThumb.Height()) / float64(img.Height())
+		wRatio := float64(f.imgThumb.Width()) / float64(img.Width())
+		hRatio := float64(f.imgThumb.Height()) / float64(img.Height())
 
 		r := types.TRect{
 			int32(float64(vRect.Left) * wRatio),
@@ -498,26 +501,26 @@ func (f *TMainForm) OnPnlClientMouseMove(sender vcl.IObject, shift types.TShiftS
 }
 
 func (f *TMainForm) OnBtnPrevClick(sender vcl.IObject) {
-	if len(curDirImages) == 0 {
+	if len(f.curDirImages) == 0 {
 		return
 	}
-	curImageIndex--
-	if curImageIndex < 0 {
-		curImageIndex = len(curDirImages) - 1
+	f.curImageIndex--
+	if f.curImageIndex < 0 {
+		f.curImageIndex = len(f.curDirImages) - 1
 	}
-	f.loadImage(curDirImages[curImageIndex])
+	f.loadImage(f.curDirImages[f.curImageIndex])
 }
 
 func (f *TMainForm) OnBtnNextClick(sender vcl.IObject) {
-	if len(curDirImages) == 0 {
+	if len(f.curDirImages) == 0 {
 		return
 	}
 
-	curImageIndex++
-	if curImageIndex >= len(curDirImages) {
-		curImageIndex = 0
+	f.curImageIndex++
+	if f.curImageIndex >= len(f.curDirImages) {
+		f.curImageIndex = 0
 	}
-	f.loadImage(curDirImages[curImageIndex])
+	f.loadImage(f.curDirImages[f.curImageIndex])
 }
 
 func (f *TMainForm) OnFormConstrainedResize(sender vcl.IObject, minWidth, minHeight, maxWidth, maxHeight *int32) {
