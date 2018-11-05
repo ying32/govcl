@@ -79,3 +79,4 @@ __recovery/
 *.ini
 *.td
 /vcl/dylib/testdll
+*.bak
