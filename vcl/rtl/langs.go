@@ -1,7 +1,7 @@
 package rtl
 
 var (
-	langsMap = map[string]int{
+	langsMap = map[string]int32{
 		"af-ZA":  1078,
 		"am-ET":  1118,
 		"ar-AE":  14337,
@@ -265,7 +265,7 @@ var (
 
 // LocaleIDFromName
 // 从名称获取一个语言的id
-func LocaleIDFromName(name string) int {
+func LocaleIDFromName(name string) int32 {
 	if lang, ok := langsMap[name]; ok {
 		return lang
 	}
