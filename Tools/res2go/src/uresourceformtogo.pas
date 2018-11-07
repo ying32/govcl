@@ -1,7 +1,10 @@
-﻿unit uResourceFormToGo;
+unit uresourceformtogo;
 
 {$IFDEF FPC}
   {$mode objfpc}{$H+}
+  {$IFDEF WINDOWS}
+    {$codepage UTF8}
+  {$ENDIF}
 {$ENDIF}
 
 interface
@@ -13,6 +16,8 @@ implementation
 uses
 {$IFDEF WINDOWS}
   Windows,
+{$ELSE}
+  //crt,
 {$ENDIF}
   Classes, SysUtils, Math, StrUtils, uFormDesignerFile;
 
@@ -129,30 +134,49 @@ var
 
 //控制台文本的颜色常量
 const
-  tfBlue  =1;
   tfGreen =2;
   tfRed   =4;
   tfIntensity = 8;
   tfWhite = $f;
 
-  tbBlue  =$10;
-  tbGreen =$20;
-  tbRed   =$40;
-  tbIntensity = $80;
-
   PrivateFiledsFlagStr = '//::private::';
   PrivateFiledsStr = 'T%sFields';
 
-procedure TextColor(AColor: Byte);
+procedure CrtTextColor(AColor: Byte);
 begin
 {$IFDEF WINDOWS}
    SetConsoleTextAttribute(uConsoleHandle, AColor);
+{$ELSE}
+   //crt.TextColor(AColor);
+   case AColor of
+     tfRed   : write(#27'[0;31m');  // red
+     tfGreen : write(#27'[0;32m');  // green
+     tfWhite : write(#27'[0;37m');  // white
+   end;
 {$ENDIF}
 end;
+
+procedure TextColorRed;
+begin
+  CrtTextColor({$IFDEF WINDOWS}tfIntensity or {$ENDIF}tfRed);
+end;
+
+procedure TextColorGreen;
+begin
+  CrtTextColor(tfGreen);
+end;
+
+procedure TextColorWhite;
+begin
+  CrtTextColor(tfWhite);
+end;
+
 
 // 系统环境是中文的
 function SysIsZhCN: Boolean;
 begin
+  // linux和macOS下这个api有问题，获取不到实际的LCID，所以全都会显示英文的。
+  //Result := SysLocale.DefaultLCID {$IFDEF WINDOWS}={$ELSE}<>{$ENDIF} 2052;  //
   Result := SysLocale.DefaultLCID = 2052;
 end;
 
@@ -458,24 +482,24 @@ begin
 
       if not IsSupportsComponent(C^.ClassName) then
       begin
-        TextColor(tfIntensity or tfRed);
+        TextColorRed;
         if SysIsZhCN then
           Writeln('警告：“', C^.Name, ':', C^.ClassName, '”不被支持，有可能创建失败。')
         else
           Writeln('Warning: "', C^.Name, ':', C^.ClassName, '" is not supported and it may fail to create.');
-        TextColor(tfWhite);
+        TextColorWhite;
       end;
 
       if C^.Name = '' then
         Continue;
       if CharInSet(C^.Name[1], ['a'..'z', '_']) then
       begin
-        TextColor(tfGreen);
+        TextColorGreen;
         if SysIsZhCN then
           Writeln('提示：“', C^.Name, ':', C^.ClassName, '”必须首字母大写才能被导出。')
         else
           Writeln('Hint: "', C^.Name, ':', C^.ClassName, '" must be capitalized first to be exported.');
-        TextColor(tfWhite);
+        TextColorWhite;
         Continue;
       end;
       //Writeln(C^.Name, ': ', C^.ClassName);
@@ -820,7 +844,7 @@ begin
       LPath := GetNextParam('path');
       if not DirectoryExists(LPath) then
       begin
-        TextColor(tfWhite);
+        TextColorWhite;
         if SysIsZhCN then
           Writeln('“-path”目录不存在。')
         else
@@ -851,13 +875,13 @@ begin
       LFileName := LPath + LRec.Name;
       if SameText(LExt, '.lfm') or SameText(LExt, '.dfm') then
       begin
-        TextColor(tfWhite);
+        TextColorWhite;
         Writeln(LFileName);
         ResouceFormToGo(LFileName, LOutPath);
       end else if LConvPro and (SameText(LExt, '.lpr') or SameText(LExt, '.dpr')) and
        (not SameText(LRec.Name, 'res2go.lpr') and not SameText(LRec.Name, 'res2go.dpr')) then
       begin
-        TextColor(tfWhite);
+        TextColorWhite;
         Writeln(LFileName);
         ProjectFileToMainDotGo(LFileName, LOutPath);
       end;
@@ -896,7 +920,7 @@ begin
   if SysIsZhCN then
   begin
     Writeln('');
-    TextColor(tfWhite);
+    TextColorWhite;
     Writeln('res2go是一个将Lazarus/Delphi资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。');
     Writeln('');
     Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
@@ -918,7 +942,7 @@ begin
   begin
     //Writeln('---------------English------------------');
     Writeln('');
-    TextColor(tfWhite);
+    TextColorWhite;
     Writeln('res2go is a Lazarus/Delphi resource window to go tool, can automatically resolve the lfm, dfm component name, component type and event name. Parse window information in lpr, dpr file.');
     Writeln('');
     Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
@@ -974,16 +998,6 @@ begin
 end;
 
 {$ENDIF}
-
-
-
-
-
-
-
-
-
-
 
 
 

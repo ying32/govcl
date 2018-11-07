@@ -22,8 +22,40 @@
       <Language Value="0804"/>
       <StringTable Comments="Lazarus/Delphi资源窗口转go" CompanyName="ying32" FileDescription="Lazarus/Delphi资源窗口转go" LegalCopyright="ying32" OriginalFilename="res2go.exe" ProductName="res2go"/>
     </VersionInfo>
-    <BuildModes Count="1">
-      <Item1 Name="Default" Default="True"/>
+    <BuildModes Count="2">
+      <Item1 Name="win32" Default="True"/>
+      <Item2 Name="linux64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="res2go"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseValgrind Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+          </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -43,16 +75,15 @@
         <IsPartOfProject Value="True"/>
       </Unit1>
       <Unit2>
-        <Filename Value="uresourceformtogo.pas"/>
+        <Filename Value="winResData.inc"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="uResourceFormToGo"/>
       </Unit2>
       <Unit3>
-        <Filename Value="winResData.inc"/>
+        <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
       </Unit3>
       <Unit4>
-        <Filename Value="supportsComponents.inc"/>
+        <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit4>
     </Units>
