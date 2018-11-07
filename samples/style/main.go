@@ -1,5 +1,7 @@
 // +build windows
 
+// +build windows
+
 package main
 
 import (
@@ -17,6 +19,12 @@ import (
 var styleNames = make(map[string]string, 0)
 
 func main() {
+
+	if rtl.LcLLoaded() {
+		vcl.ShowMessage("样式不支持liblcl。")
+		return
+	}
+
 	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
