@@ -177,7 +177,11 @@ function SysIsZhCN: Boolean;
 begin
   // linux和macOS下这个api有问题，获取不到实际的LCID，所以全都会显示英文的。
   //Result := SysLocale.DefaultLCID {$IFDEF WINDOWS}={$ELSE}<>{$ENDIF} 2052;  //
+{$IFDEF WINDOWS}
   Result := SysLocale.DefaultLCID = 2052;
+{$ELSE}
+  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) <> -1;
+{$ENDIF}
 end;
 
 procedure WriteDefaultWindowsRes(APath: string);
