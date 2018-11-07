@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="10"/>
-    <BuildModes Count="1" Active="win32">
+    <BuildModes Count="1" Active="macOS">
       <Item1 Name="macOS">
         <CompilerOptions>
           <Version Value="11"/>
@@ -16,17 +16,14 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
-            <TargetCPU Value="i386"/>
-            <TargetOS Value="macos"/>
+            <TargetOS Value="darwin"/>
             <Optimizations>
-              <OptimizationLevel Value="2"/>
+              <OptimizationLevel Value="4"/>
             </Optimizations>
           </CodeGeneration>
           <Linking>
             <Debugging>
               <GenerateDebugInfo Value="False"/>
-              <UseHeaptrc Value="True"/>
-              <TrashVariables Value="True"/>
               <UseValgrind Value="True"/>
               <UseExternalDbgSyms Value="True"/>
             </Debugging>
@@ -37,7 +34,7 @@
         </CompilerOptions>
       </Item1>
     </BuildModes>
-    <Units Count="47">
+    <Units Count="46">
       <Unit0>
         <Filename Value="res2go.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -52,23 +49,27 @@
         <UsageCount Value="52"/>
       </Unit1>
       <Unit2>
-        <Filename Value="uresourceformtogo.pas"/>
-        <UnitName Value="uResourceFormToGo"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="47"/>
-      </Unit2>
-      <Unit3>
         <Filename Value="winResData.inc"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="40"/>
-      </Unit3>
-      <Unit4>
+      </Unit2>
+      <Unit3>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="35" Y="4"/>
         <UsageCount Value="29"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="uresourceformtogo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="951"/>
+        <CursorPos X="14" Y="976"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="udelphiwriter.pas"/>
@@ -360,16 +361,6 @@
         <CursorPos X="11" Y="324"/>
         <UsageCount Value="10"/>
       </Unit45>
-      <Unit46>
-        <Filename Value="uresourceformtogo.pas"/>
-        <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="970"/>
-        <CursorPos Y="1006"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-      </Unit46>
     </Units>
     <JumpHistory Count="6" HistoryIndex="5">
       <Position1>

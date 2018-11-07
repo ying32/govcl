@@ -484,10 +484,12 @@ begin
       begin
         TextColorRed;
         if SysIsZhCN then
-          Writeln('警告：“', C^.Name, ':', C^.ClassName, '”不被支持，有可能创建失败。')
+          Writeln('错误：“', C^.Name, ':', C^.ClassName, '”不被支持。')
         else
-          Writeln('Warning: "', C^.Name, ':', C^.ClassName, '" is not supported and it may fail to create.');
+          Writeln('Error: "', C^.Name, ':', C^.ClassName, '" is not supported.');
         TextColorWhite;
+        // error: exit;
+        Exit;
       end;
 
       if C^.Name = '' then
