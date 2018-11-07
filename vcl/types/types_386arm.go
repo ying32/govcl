@@ -1,3 +1,5 @@
+// +build arm 386
+
 package types
 
 type TDWordFiller struct {
