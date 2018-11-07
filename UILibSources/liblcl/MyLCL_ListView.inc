@@ -31,6 +31,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ListView_DeleteSelected(AObj: TListView); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
 function ListView_IsEditing(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.IsEditing;
@@ -39,6 +44,11 @@ end;
 procedure ListView_SelectAll(AObj: TListView); extdecl;
 begin
   AObj.SelectAll;
+end;
+
+function ListView_CustomSort(AObj: TListView; SortProc: PFNLVCOMPARE; lParam: NativeInt): LongBool; extdecl;
+begin
+  Result :=  AObj.CustomSort(SortProc, lParam);
 end;
 
 function ListView_CanFocus(AObj: TListView): LongBool; extdecl;
@@ -1434,8 +1444,10 @@ exports
   ListView_AlphaSort,
   ListView_Clear,
   ListView_ClearSelection,
+  ListView_DeleteSelected,
   ListView_IsEditing,
   ListView_SelectAll,
+  ListView_CustomSort,
   ListView_CanFocus,
   ListView_ContainsControl,
   ListView_ControlAtPos,

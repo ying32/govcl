@@ -7,10 +7,10 @@
 
 library lcl;
 
-{$mode objfpc}{$H+}
+{$mode objfpc}{$H+}  
 
 {$ifndef windows}
-   {$define UseCThreads}
+  {$define UseCThreads}
 {$endif}
 
 uses
@@ -73,7 +73,8 @@ uses
   uEventCallback in 'uEventCallback.pas',
   ImageButton in 'ImageButton.pas',
   Gauges in 'Gauges.pas',
-  uComponents, uGoForm;
+  uComponents,
+  uGoForm;
 
 {$IFDEF WINDOWS}
   {$R *.res}

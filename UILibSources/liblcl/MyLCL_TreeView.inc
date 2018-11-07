@@ -61,6 +61,11 @@ begin
   AObj.ClearSelection(KeepPrimary);
 end;
 
+function TreeView_CustomSort(AObj: TTreeView; SortProc: PFNTVCOMPARE; Data: NativeInt; ARecurse: LongBool): LongBool; extdecl;
+begin
+  Result :=  AObj.CustomSort(SortProc, Data, ARecurse);
+end;
+
 function TreeView_CanFocus(AObj: TTreeView): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -1342,6 +1347,7 @@ exports
   TreeView_SaveToFile,
   TreeView_SaveToStream,
   TreeView_ClearSelection,
+  TreeView_CustomSort,
   TreeView_CanFocus,
   TreeView_ContainsControl,
   TreeView_ControlAtPos,

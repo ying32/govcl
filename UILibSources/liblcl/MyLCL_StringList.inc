@@ -55,6 +55,11 @@ begin
   AObj.InsertObject(Index, S, AObject);
 end;
 
+procedure StringList_CustomSort(AObj: TStringList; Compare: TStringListSortCompare); extdecl;
+begin
+  AObj.CustomSort(Compare);
+end;
+
 procedure StringList_Append(AObj: TStringList; S: PChar); extdecl;
 begin
   AObj.Append(S);
@@ -280,6 +285,7 @@ exports
   StringList_IndexOf,
   StringList_Insert,
   StringList_InsertObject,
+  StringList_CustomSort,
   StringList_Append,
   StringList_BeginUpdate,
   StringList_EndUpdate,

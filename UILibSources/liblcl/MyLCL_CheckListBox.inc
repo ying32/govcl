@@ -30,6 +30,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure CheckListBox_DeleteSelected(AObj: TCheckListBox); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
 procedure CheckListBox_SelectAll(AObj: TCheckListBox); extdecl;
 begin
   AObj.SelectAll;
@@ -1062,6 +1067,7 @@ exports
   CheckListBox_CheckAll,
   CheckListBox_Clear,
   CheckListBox_ClearSelection,
+  CheckListBox_DeleteSelected,
   CheckListBox_SelectAll,
   CheckListBox_CanFocus,
   CheckListBox_ContainsControl,

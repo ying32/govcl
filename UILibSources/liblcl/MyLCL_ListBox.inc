@@ -25,6 +25,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ListBox_DeleteSelected(AObj: TListBox); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
 procedure ListBox_SelectAll(AObj: TListBox); extdecl;
 begin
   AObj.SelectAll;
@@ -1016,6 +1021,7 @@ exports
   ListBox_Free,
   ListBox_Clear,
   ListBox_ClearSelection,
+  ListBox_DeleteSelected,
   ListBox_SelectAll,
   ListBox_CanFocus,
   ListBox_ContainsControl,

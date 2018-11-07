@@ -94,17 +94,6 @@ begin
   RemoveAllForms;
 end;
 
-//procedure Application_SetMainFormOnTaskBar(AObj: TApplication; Value: LongBool); extdecl;
-//begin
-//  AObj.MainFormOnTaskBar := Value;
-//end;
-//
-//
-//function Application_GetMainFormOnTaskBar(AObj: TApplication): LongBool; extdecl;
-//begin
-//  Result := AObj.MainFormOnTaskBar;
-//end;
-
 function Application_GetHandle(AObj: TApplication): THandle; extdecl;
 begin
 {$IFDEF WINDOWS}
@@ -242,17 +231,6 @@ begin
   MessageEventClass.Add(AObj, AEventId);
 end;
 
-// TEdit
-//procedure Edit_SetTextHint(AObj: TEdit; AValue: PChar); extdecl;
-//begin
-//  AObj.TextHint := AValue;
-//end;
-//
-//function Edit_GetTextHint(AObj: TEdit): PChar; extdecl;
-//begin
-//  Result := PChar(AObj.TextHint);
-//end;
-//
 // mouse
 function Mouse_Instance: TMouse; extdecl;
 begin
@@ -356,76 +334,6 @@ end;
 procedure Canvas_TextRect1(AObj: TCanvas; var Rect: TRect; X, Y: Integer; const Text: PChar); extdecl;
 begin
   AObj.TextRect(Rect, X, Y, Text);
-end;
-
-
-// TPageSetupDialog
-
-function PageSetupDialog_GetMarginLeft(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result := AObj.Margins.Left;
-end;
-
-procedure PageSetupDialog_SetMarginLeft(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Left := AValue;
-  AObj.Margins := LR;
-end;
-
-function PageSetupDialog_GetMarginTop(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Top;
-end;
-
-procedure PageSetupDialog_SetMarginTop(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Top := AValue;
-  AObj.Margins := LR;
-end;
-
-function PageSetupDialog_GetMarginRight(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Right;
-end;
-
-procedure PageSetupDialog_SetMarginRight(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Right := AValue;
-  AObj.Margins := LR;
-end;
-
-function PageSetupDialog_GetMarginBottom(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Bottom;
-end;
-
-procedure PageSetupDialog_SetMarginBottom(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Bottom := AValue;
-  AObj.Margins := LR;
-end;
-
-
-function DragObject_GetDragTarget(AObj: TDragObject): TControl; extdecl;
-begin
-  Result :=  AObj.DragTarget;
-end;
-
-procedure DragObject_SetDragTarget(AObj: TDragObject; AValue: TControl); extdecl;
-begin
-  AObj.DragTarget := AValue;
 end;
 
 
@@ -536,16 +444,6 @@ end;
 // // AObj.GetIcon(Index, Image, ADrawingStyle, AImageType);
 //end;
 
-//  TMonthCalendar
-function MonthCalendar_GetDate(AObj: TMonthCalendar): TUnixDateTime; extdecl;
-begin
-  Result :=  ToUnixTime(AObj.DateTime);
-end;
-
-procedure MonthCalendar_SetDate(AObj: TMonthCalendar; AValue: TUnixDateTime); extdecl;
-begin
-  AObj.DateTime := UnixToTime(AValue);
-end;
 
 
 // TListView
@@ -559,31 +457,6 @@ begin
   AObj.ScrollBars := AValue;
 end;
 
-// 兼容版
-procedure ListView_CustomSort(AObj: TListView; SortProc: Pointer; lParam: NativeInt); extdecl;
-//var
-  //LVSortProc: TLVCompareEvent;
-begin
-  //if Assigned(SortProc) then
-    //Exit;
-  //LVSortProc := AObj.OnCompare;
-  AObj.SortType := stText;
-  AObj.SortColumn := lParam;
-  //AObj.OnCompare := LVSortProc;
-  //AObj.AlphaSort;
-end;
-
-// TListView
-procedure ListView_DeleteSelected(AObj: TListView); extdecl;
-var
-  I: Integer;
-begin
-  I := AObj.ItemIndex;
-  if I <> -1 then
-     AObj.Items.Delete(I);
-end;
-
-
 // TTreeView
 function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
 begin
@@ -593,20 +466,6 @@ end;
 procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
 begin
   AObj.ScrollBars := AValue;
-end;
-
-function TreeView_AlphaSort(AObj: TTreeView; ARecurse: LongBool): LongBool; extdecl;
-begin
-  Result := AObj.AlphaSort;
-end;
-
-procedure TreeView_DeleteSelected(AObj: TTreeView); extdecl;
-var
-  LNode: TTreeNode;
-begin
-  LNode := AObj.Selected;
-  if LNode <> nil then
-     LNode.Delete;
 end;
 
  
@@ -1012,8 +871,6 @@ exports
   Application_CreateForm,
   Application_Run,
   SetGlobalFormScaled,
-  //Application_SetMainFormOnTaskBar,
-  //Application_GetMainFormOnTaskBar,
   Application_Initialize,
   Application_GetHandle,
   Application_SetHandle,
@@ -1031,9 +888,6 @@ exports
   Form_SetOnActivate,
   Form_SetOnWndProc,
 
-  // TEdit
-  //Edit_SetTextHint,
-  //Edit_GetTextHint,
 
   // TMouse
   Mouse_Instance,
@@ -1101,35 +955,13 @@ exports
   ImageList_GetIcon1,
   //ImageList_GetIcon2,
 
-  // TMonthCalendar
-  MonthCalendar_GetDate,
-  MonthCalendar_SetDate,
-
   // TListView
   ListView_GetScrollBars,
   ListView_SetScrollBars,
-  ListView_CustomSort,
-  ListView_DeleteSelected,
 
   // TTreeView
   TreeView_GetScrollBars,
   TreeView_SetScrollBars,
-  TreeView_AlphaSort,
-  TreeView_DeleteSelected,
-
-  // TPageSetupDialog
-  PageSetupDialog_GetMarginLeft,
-  PageSetupDialog_SetMarginLeft,
-  PageSetupDialog_GetMarginTop,
-  PageSetupDialog_SetMarginTop,
-  PageSetupDialog_GetMarginRight,
-  PageSetupDialog_SetMarginRight,
-  PageSetupDialog_GetMarginBottom,
-  PageSetupDialog_SetMarginBottom,
-
-  // TDragObject
-  DragObject_GetDragTarget,
-  DragObject_SetDragTarget,
 
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,

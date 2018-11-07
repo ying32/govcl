@@ -285,6 +285,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function MonthCalendar_GetDate(AObj: TMonthCalendar): TUnixDateTime; extdecl;
+begin
+  Result :=  ToUnixTime(AObj.Date);
+end;
+
+procedure MonthCalendar_SetDate(AObj: TMonthCalendar; AValue: TUnixDateTime); extdecl;
+begin
+  AObj.Date := UnixToTime(AValue);
+end;
+
 function MonthCalendar_GetDoubleBuffered(AObj: TMonthCalendar): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -892,6 +902,8 @@ exports
   MonthCalendar_SetBorderWidth,
   MonthCalendar_GetBiDiMode,
   MonthCalendar_SetBiDiMode,
+  MonthCalendar_GetDate,
+  MonthCalendar_SetDate,
   MonthCalendar_GetDoubleBuffered,
   MonthCalendar_SetDoubleBuffered,
   MonthCalendar_GetDragCursor,

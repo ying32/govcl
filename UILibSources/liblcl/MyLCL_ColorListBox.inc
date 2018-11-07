@@ -25,6 +25,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ColorListBox_DeleteSelected(AObj: TColorListBox); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
 procedure ColorListBox_SelectAll(AObj: TColorListBox); extdecl;
 begin
   AObj.SelectAll;
@@ -962,6 +967,7 @@ exports
   ColorListBox_Free,
   ColorListBox_Clear,
   ColorListBox_ClearSelection,
+  ColorListBox_DeleteSelected,
   ColorListBox_SelectAll,
   ColorListBox_CanFocus,
   ColorListBox_ContainsControl,

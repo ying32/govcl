@@ -15,6 +15,11 @@ begin
   AObj.Free;
 end;
 
+procedure DragObject_Assign(AObj: TDragObject; Source: TDragObject); extdecl;
+begin
+  AObj.Assign(Source);
+end;
+
 procedure DragObject_HideDragImage(AObj: TDragObject); extdecl;
 begin
   AObj.HideDragImage;
@@ -80,6 +85,16 @@ begin
   AObj.DragPos := AValue;
 end;
 
+function DragObject_GetDragTarget(AObj: TDragObject): Pointer; extdecl;
+begin
+  Result :=  AObj.DragTarget;
+end;
+
+procedure DragObject_SetDragTarget(AObj: TDragObject; AValue: Pointer); extdecl;
+begin
+  AObj.DragTarget := AValue;
+end;
+
 procedure DragObject_GetDragTargetPos(AObj: TDragObject; var Result: TPoint); extdecl;
 begin
   Result :=  AObj.DragTargetPos;
@@ -103,6 +118,7 @@ end;
 exports
   DragObject_Create,
   DragObject_Free,
+  DragObject_Assign,
   DragObject_HideDragImage,
   DragObject_ShowDragImage,
   DragObject_ClassType,
@@ -116,6 +132,8 @@ exports
   DragObject_SetAlwaysShowDragImages,
   DragObject_GetDragPos,
   DragObject_SetDragPos,
+  DragObject_GetDragTarget,
+  DragObject_SetDragTarget,
   DragObject_GetDragTargetPos,
   DragObject_SetDragTargetPos,
   DragObject_GetDropped,

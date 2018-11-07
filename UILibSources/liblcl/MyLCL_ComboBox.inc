@@ -25,6 +25,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ComboBox_DeleteSelected(AObj: TComboBox); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
 function ComboBox_Focused(AObj: TComboBox): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
@@ -1042,6 +1047,7 @@ exports
   ComboBox_Free,
   ComboBox_Clear,
   ComboBox_ClearSelection,
+  ComboBox_DeleteSelected,
   ComboBox_Focused,
   ComboBox_SelectAll,
   ComboBox_CanFocus,

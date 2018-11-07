@@ -25,6 +25,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ColorBox_DeleteSelected(AObj: TColorBox); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
 function ColorBox_Focused(AObj: TColorBox): LongBool; extdecl;
 begin
   Result :=  AObj.Focused;
@@ -986,6 +991,7 @@ exports
   ColorBox_Free,
   ColorBox_Clear,
   ColorBox_ClearSelection,
+  ColorBox_DeleteSelected,
   ColorBox_Focused,
   ColorBox_SelectAll,
   ColorBox_CanFocus,
