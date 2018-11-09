@@ -18,6 +18,8 @@
   -outbytes   将gfm文件以字节形式保存至go文件中，默认输出。
   -scale      缩放窗口选项，默认为不缩放。  
   -encrypt    使用加密格式的*.gfm文件，默认为true。  
+  -gui        此参数表示是gui在调用，那么将在ExitCode上返回成功与否。
+  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节。 
   -h -help    显示帮助。
   -v -version 显示版本号。
 ```
@@ -34,7 +36,7 @@
 Title              菜单栏显示的名字  
 Program            res2go程序全文件名（含路径）  
 Working directory  工作目录，可不填  
-Parameters         命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)\gocode"   
+Parameters         命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)/gocode" -gui    
 ```
 
 * Lazarus IDE  
@@ -44,7 +46,7 @@ Parameters         命令行参数（填这句，运行后会在当前工程目�
 ```
 Title              菜单栏显示的名字   
 Program Filename   res2go程序全文件名（含路径）   
-Parameters 命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$Path($ProjFile())" -outpath "$Path($ProjFile())\gocode"    
+Parameters 命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$Path($ProjFile())" -outpath "$Path($ProjFile())/gocode" -gui     
 Working directory  工作目录，可不填   
 
 Lazarus 还可以额外填写快捷键，在Key分组里面设置。  

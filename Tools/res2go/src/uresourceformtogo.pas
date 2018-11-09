@@ -23,7 +23,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.6';
+  APPVERSION = '1.0.7';
 
 type
   TComponentItem = record
@@ -431,7 +431,7 @@ end;
 
 procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AOutPath: string; AMem: TMemoryStream);
 var
-  LStrStream: TStringStream;
+  LStrStream, LBuffer: TStringStream;
 {$IFDEF FPC}
   LLines: TStringList;
 {$ENDIF}
@@ -461,11 +461,16 @@ var
 var
   I, LMaxLen: Integer;
   C: PComponentItem;
-  LBS, LVarName, LFormName, LFileName: string;
+  LVarName, LFormName, LFileName: string;
+  LUseStr: Boolean;
 begin
   LStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
+  LBuffer := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
   LLines := TStringList.Create;
   try
+    //-usestr
+    LUseStr := FindCmdLineSwitch('usestr');
+
     if SysIsZhCN then
       WLine('// 由res2go自动生成，不要编辑。')
     else
@@ -546,19 +551,23 @@ begin
       WLine(Format('// vcl.Application.CreateForm(%s, &%s)', [LVarName, LFormName]));
       WLine;
       WLine('var (');
-      WLine(Format('    %s = []byte {', [LVarName]));
-      LBS := '';
+      LBuffer.WriteString(Format('    %s = []byte ' + IfThen(LUseStr, '("', '{'+sLineBreak), [LVarName]));
       for I := 0 to AMem.Size - 1 do
       begin
-        if I > 0 then
-          LBS := LBS + ', ';
-        if I mod 12 = 0 then
-          LBS := LBS + IfThen(I > 0, sLineBreak, '') + '        ';
-        LBS := LBS + '0x' + PByte(PByte(AMem.Memory) + I)^.ToHexString(2);
+        if (I > 0) and (not LUseStr) then
+          LBuffer.WriteString(', ');
+        if (I mod 12 = 0) and (not LUseStr) then
+          LBuffer.WriteString(IfThen(I > 0, sLineBreak, '') + '        ');
+        if not LUseStr then
+          LBuffer.WriteString('0x')
+        else
+          LBuffer.WriteString('\x');
+        LBuffer.WriteString(PByte(PByte(AMem.Memory) + I)^.ToHexString(2))
       end;
-      LBS := LBS + '}';
-      WLine(LBS);
+      LBuffer.WriteString(IfThen(LUseStr, '")', '}'));
+      WLine(LBuffer.DataString);
       WLine(')');
+
     end;
     LFileName := AOutPath + LFormName + '.go';
   {$IFDEF FPC}
@@ -567,6 +576,7 @@ begin
     LStrStream.SaveToFile(LFileName);
   finally
     LLines.Free;
+    LBuffer.Free;
     LStrStream.Free;
   end;
   // 一定创建，因为多加了个
@@ -699,6 +709,7 @@ var
  var
    LInput, LOutput, LEnStream: TMemoryStream;
    LUseEncrypt, LOutbytes: Boolean;
+   LGfmFileName: string;
  begin
    LInput := TMemoryStream.Create;
    try
@@ -707,7 +718,7 @@ var
      try
         try
           ObjectTextToBinary(LInput, LOutput);
-          LInput.Position:=0;
+          LInput.Position := 0;
           LParser := TParser.Create(LInput);
           try
             LComponents := TList.Create;
@@ -740,6 +751,20 @@ var
                   else
                     SaveToGoFile(LComponents, LEventList, AOutPath, nil)
                 end;
+                // 保存gfm文件
+                //if not LOutbytes then
+                //begin
+                  LGfmFileName := AOutPath + PComponentItem(LComponents[0])^.Name + '.gfm';
+                  if LUseEncrypt then
+                  begin
+                    LEnStream.Position := 0;
+                    LEnStream.SaveToFile(LGfmFileName);
+                  end else
+                  begin
+                    LOutput.Position := 0;
+                    LOutput.SaveToFile(LGfmFileName);
+                  end;
+                //end;
               finally
                 LEnStream.Free;;
               end;
@@ -937,10 +962,12 @@ begin
     Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认输出。');
     Writeln('  -scale      缩放窗口选项，默认为不缩放。');
     Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为true。');
+    Writeln('  -gui        此参数表示是gui在调用，那么将在ExitCode上返回成功与否。');
+    Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节。 ');
     Writeln('  -h -help    显示帮助。');
     Writeln('  -v -version 显示版本号');
 
-    // Writeln('  -gui     此参数表示是gui在调用，那么将在ExitCode上返回成功与否。');
+    
 
 
     Writeln('');
@@ -959,6 +986,8 @@ begin
     Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default output.');
     Writeln('  -scale      The windoscale option, the default is false.');
     Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is true.');
+    //Writeln('  -gui        此参数表示是gui在调用，那么将在ExitCode上返回成功与否。');
+    //Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节。 ');
     Writeln('  -h -help    Show help.');
     Writeln('  -v -version Show Version.');
     Writeln('');

@@ -12,7 +12,6 @@ uses
 {$ENDIF}
 
 begin
-  //Getenv('HEAPTRC', 'disabled');
   ConvertAll;
 end.
 

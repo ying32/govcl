@@ -34,7 +34,7 @@ Open the IDE: Menu -> Tools -> Configure Tools -> Add
 Title              The name displayed on the menu  
 Program            res2go program full file name (including path) 
 Working directory  Working directory, no need to fill  
-Parameters         Command line arguments (the code will be generated in the gocode directory under the current project directory after running): -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)\gocode"   
+Parameters         Command line arguments (the code will be generated in the gocode directory under the current project directory after running): -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)/gocode" -gui    
 ```
 
 * Lazarus IDE  
@@ -44,7 +44,7 @@ Open the IDE: Menu -> Tools -> Configure External Tools -> Add
 ```
 Title              The name displayed on the menu     
 Program Filename   res2go program full file name (including path) 
-Parameters         Command line arguments (the code will be generated in the gocode directory under the current project directory after running): -path "$Path($ProjFile())" -outpath "$Path($ProjFile())\gocode"    
+Parameters         Command line arguments (the code will be generated in the gocode directory under the current project directory after running): -path "$Path($ProjFile())" -outpath "$Path($ProjFile())/gocode" -gui   
 Working Directory  Working directory, no need to fill     
 
 Lazarus can also fill in the shortcut keys and set them in the Key group.  
