@@ -109,8 +109,8 @@ initialization
    TPicture.UnregisterGraphicClass(Vcl.Imaging.GIFImg.TGIFImage);
 
    // ÖØÐÂ×¢²á
-   TPicture.RegisterFileFormat('PNG', 'Portable Network Graphics', TPngImage);
    TPicture.RegisterFileFormat('PNG', 'Portable Network Graphics', TPortableNetworkGraphic);
+   TPicture.RegisterFileFormat('PNG', 'Portable Network Graphics', TPngImage);
    TPicture.RegisterFileFormat('GIF', sGIFImageFile, TGIFImage);
 
 finalization
