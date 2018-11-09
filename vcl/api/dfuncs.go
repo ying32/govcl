@@ -1,7 +1,6 @@
 package api
 
 import (
-	"reflect"
 	"sync"
 	"unsafe"
 
@@ -33,14 +32,25 @@ func GoBoolToDBool(val bool) uintptr {
 	return 0
 }
 
+// hashOf  Delphi IniFiles.pas中的TStringHash.HashOf
+func hashOf(fn interface{}) uintptr {
+	var result uint32
+	p := (*byte)(unsafe.Pointer(&fn))
+	for i := 0; i < int(unsafe.Sizeof(fn)); i++ {
+		result = ((result << 2) | (result >> (unsafe.Sizeof(result)*8 - 2))) ^ uint32(*p)
+		p = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(p)) + 1))
+	}
+	return uintptr(result)
+}
+
 func addEventToMap(f interface{}) uintptr {
-	p := reflect.ValueOf(f).Pointer()
+	p := hashOf(f)
 	EventCallbackMap.Store(p, f)
 	return p
 }
 
 func addMessageEventToMap(f interface{}) uintptr {
-	p := reflect.ValueOf(f).Pointer()
+	p := hashOf(f)
 	MessageCallbackMap.Store(p, f)
 	return p
 }
