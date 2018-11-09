@@ -27,7 +27,7 @@ GUI库二进制下载：
 
 
 res2go工具下载  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.6-blue.svg)](Tools/res2go)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.7-blue.svg)](Tools/res2go)  
 **注：用Delphi/Lazarus设计界面，用Golang写代码。**    
 
 
