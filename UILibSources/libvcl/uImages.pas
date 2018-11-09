@@ -29,6 +29,10 @@ type
     procedure WriteData(Stream: TStream); override;
   end;
 
+  // 与lazarus保持一致
+  TPortableNetworkGraphic = class(TPngImage)
+  end;
+
 implementation
 
 
@@ -106,6 +110,7 @@ initialization
 
    // 重新注册
    TPicture.RegisterFileFormat('PNG', 'Portable Network Graphics', TPngImage);
+   TPicture.RegisterFileFormat('PNG', 'Portable Network Graphics', TPortableNetworkGraphic);
    TPicture.RegisterFileFormat('GIF', sGIFImageFile, TGIFImage);
 
 finalization
