@@ -38,7 +38,7 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 
 	// 当等于1时使用手动构造的一种
 	if len(fields) == 1 {
-		a.fullFiledVal(form, fields[0])
+		a.fullFiledVal(form, fields[0], false)
 	} else if len(fields) == 2 { // 等于2时，使用资源中的
 		switch fields[0].(type) {
 		case string:
@@ -50,7 +50,7 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 		default:
 			panic("error")
 		}
-		a.fullFiledVal(form, fields[1])
+		a.fullFiledVal(form, fields[1], true)
 		// 使用参数，则不返回
 		return nil
 	}

@@ -113,7 +113,7 @@ func iifstr(b bool, atrue, afalse string) string {
 }
 
 // associatedEvents 关联事件。
-func associatedEvents(vForm reflect.Value, form *TForm) {
+func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("associatedEvents ERROR: ", err)
@@ -151,9 +151,11 @@ func associatedEvents(vForm reflect.Value, form *TForm) {
 	}
 
 	setEvent(form, true)
-	var i int32
-	for i = 0; i < form.ComponentCount(); i++ {
-		setEvent(form.Components(i), false)
+	if subComponentEvent {
+		var i int32
+		for i = 0; i < form.ComponentCount(); i++ {
+			setEvent(form.Components(i), false)
+		}
 	}
 
 	// 一些特殊的，比如Application
