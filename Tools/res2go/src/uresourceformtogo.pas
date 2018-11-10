@@ -430,7 +430,7 @@ begin
 end;
 
 
-procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AOutPath: string; AMem: TMemoryStream);
+procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AOutPath, AOrigFileName: string; AMem: TMemoryStream);
 var
   LStrStream, LBuffer: TStringStream;
 {$IFDEF FPC}
@@ -592,7 +592,10 @@ begin
       WLine(')');
 
     end;
-    LFileName := AOutPath + LFormName + '.go';
+    if AOrigFileName <> '' then
+      LFileName := AOutPath + AOrigFileName + '.go'
+    else
+      LFileName := AOutPath + LFormName + '.go';
   {$IFDEF FPC}
     LStrStream.WriteString(LLines.Text);
   {$ENDIF}
@@ -735,8 +738,8 @@ var
 
  var
    LInput, LOutput, LEnStream: TMemoryStream;
-   LUseEncrypt, LOutbytes: Boolean;
-   LGfmFileName: string;
+   LUseEncrypt, LOutbytes, LOrigfn: Boolean;
+   LGfmFileName, LTempFileName: string;
  begin
    LInput := TMemoryStream.Create;
    try
@@ -763,25 +766,37 @@ var
                 if FindCmdLineSwitch('outbytes') then
                   LOutbytes := SameText(GetNextParam('outbytes'), 'True');
 
+                // 是否使用原始的dfm/lfm文件名。
+                LOrigfn := FindCmdLineSwitch('origfn');
+                // 提取单元名称
+                LtempFileName := '';
+                if LOrigfn then
+                begin
+                  LTempFileName := ExtractFileName(ASrcFileName);
+                  LTempFileName := Copy(LTempFileName, 1, Length(LTempFileName) - Length(ExtractFileExt(LTempFileName)));
+                end;
                 // 使用加密格式的
                 if LUseEncrypt then
                 begin
                   TFormResFile.Encrypt(LOutput, LEnStream);
                   if LOutbytes then
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LEnStream)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, LEnStream)
                   else
-                    SaveToGoFile(LComponents, LEventList, AOutPath, nil)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, nil)
                 end else
                 begin
                   if LOutbytes then
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LOutput)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, LOutput)
                   else
-                    SaveToGoFile(LComponents, LEventList, AOutPath, nil)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, nil)
                 end;
                 // 保存gfm文件
                 //if not LOutbytes then
                 //begin
-                  LGfmFileName := AOutPath + PComponentItem(LComponents[0])^.Name + '.gfm';
+                  if LOrigfn then
+                    LGfmFileName := AOutPath + LTempFileName + '.gfm'
+                  else
+                    LGfmFileName := AOutPath + PComponentItem(LComponents[0])^.Name + '.gfm';
                   if LUseEncrypt then
                   begin
                     LEnStream.Position := 0;
@@ -991,6 +1006,7 @@ begin
     Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为true。');
     Writeln('  -gui        此参数表示是gui在调用，那么将在ExitCode上返回成功与否。');
     Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节。 ');
+    Writeln('  -origfn     生成的.go文件使用原始的delphi/lazarus单元名。 ');
     Writeln('  -h -help    显示帮助。');
     Writeln('  -v -version 显示版本号');
 
@@ -1013,8 +1029,9 @@ begin
     Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default output.');
     Writeln('  -scale      The windoscale option, the default is false.');
     Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is true.');
-    //Writeln('  -gui        此参数表示是gui在调用，那么将在ExitCode上返回成功与否。');
-    //Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节。 ');
+    Writeln('  -gui        This parameter indicates that the gui is calling, then it will return success or failure on ExitCode.');
+    Writeln('  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters.');
+    Writeln('  -origfn     The generated .go file uses the original delphi/lazarus unit name.');
     Writeln('  -h -help    Show help.');
     Writeln('  -v -version Show Version.');
     Writeln('');

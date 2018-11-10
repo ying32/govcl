@@ -17,6 +17,9 @@ usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outre
   -outbytes   Save the gfm file as a byte to the go file, the default output.
   -scale      The window scale option, the default is false.
   -encrypt    Using the encrypted format of the *.gfm file, the default is true.  
+  -gui        This parameter indicates that the gui is calling, then it will return success or failure on ExitCode.
+  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters. 
+  -origfn     The generated .go file uses the original delphi/lazarus unit name.
   -h -help    Show help.
   -v -version Show Version.
 ```

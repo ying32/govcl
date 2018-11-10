@@ -20,6 +20,7 @@
   -encrypt    使用加密格式的*.gfm文件，默认为true。  
   -gui        此参数表示是gui在调用，那么将在ExitCode上返回成功与否。
   -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节。 
+  -origfn     生成的.go文件使用原始的delphi/lazarus单元名。  
   -h -help    显示帮助。
   -v -version 显示版本号。
 ```
