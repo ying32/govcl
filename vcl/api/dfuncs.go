@@ -33,8 +33,19 @@ func GoBoolToDBool(val bool) uintptr {
 	return 0
 }
 
+// IsNil 判断一个接口是否为空
+// interface{}数据类型定义为 typedef struct { void *type; void *value; } GoInterface;
+// 当type与value值都为nil时则为空。
+func IsNil(val interface{}) bool {
+	ptr := unsafe.Pointer(&val)
+	return *(*uintptr)(ptr) == 0 && *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2))) == 0
+}
+
 // hashOf  Delphi IniFiles.pas中的TStringHash.HashOf
 func hashOf(val interface{}) uintptr {
+	//if IsNil(val) {
+	//	return 0
+	//}
 	if reflect.ValueOf(val).Pointer() == 0 {
 		return 0
 	}
