@@ -160,11 +160,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClose := nil;
-    EventClass.Remove(AObj, geClose);
+    TEventClass.Remove(AObj, @TEventClass.OnClose);
     Exit;
   end;
-  AObj.OnClose := @EventClass.OnClose;
-  EventClass.Add(AObj, geClose, AEventId);
+  AObj.OnClose := TEventClass.OnClose;
+  TEventClass.Add(AObj, @TEventClass.OnClose, AEventId);
 end;
 
 procedure PageSetupDialog_SetOnShow(AObj: TPageSetupDialog; AEventId: NativeUInt); extdecl;
@@ -172,11 +172,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShow := nil;
-    EventClass.Remove(AObj, geShow);
+    TEventClass.Remove(AObj, @TEventClass.OnShow);
     Exit;
   end;
-  AObj.OnShow := @EventClass.OnShow;
-  EventClass.Add(AObj, geShow, AEventId);
+  AObj.OnShow := TEventClass.OnShow;
+  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
 end;
 
 function PageSetupDialog_GetComponentCount(AObj: TPageSetupDialog): Integer; extdecl;

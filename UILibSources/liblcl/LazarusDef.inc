@@ -164,11 +164,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDropFiles := nil;
-    EventClass.Remove(AObj, geDropFiles);
+    TEventClass.Remove(AObj, @TEventClass.FormOnDropFiles);
     Exit;
   end;
-  AObj.OnDropFiles := @EventClass.FormOnDropFiles;
-  EventClass.Add(AObj, geDropFiles, AEventId);
+  AObj.OnDropFiles := TEventClass.FormOnDropFiles;
+  TEventClass.Add(AObj, @TEventClass.FormOnDropFiles, AEventId);
 end;
 
 procedure Form_SetOnDestroy(AObj: TGoForm; AEventId: NativeUInt); extdecl;
@@ -176,11 +176,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDestroy := nil;
-    EventClass.Remove(AObj, geDestroy);
+    TEventClass.Remove(AObj, @TEventClass.OnDestroy);
     Exit;
   end;
-  AObj.OnDestroy := @EventClass.OnDestroy;
-  EventClass.Add(AObj, geDestroy, AEventId);
+  AObj.OnDestroy := TEventClass.OnDestroy;
+  TEventClass.Add(AObj, @TEventClass.OnDestroy, AEventId);
 end;
 
 procedure Form_SetOnConstrainedResize(AObj: TGoForm; AEventId: NativeUInt); extdecl;
@@ -188,11 +188,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnConstrainedResize := nil;
-    EventClass.Remove(AObj, geConstrainedResize);
+    TEventClass.Remove(AObj, @TEventClass.OnConstrainedResize);
     Exit;
   end;
-  AObj.OnConstrainedResize := @EventClass.OnConstrainedResize;
-  EventClass.Add(AObj, geConstrainedResize, AEventId);
+  AObj.OnConstrainedResize := TEventClass.OnConstrainedResize;
+  TEventClass.Add(AObj, @TEventClass.OnConstrainedResize, AEventId);
 end;
 
 procedure Form_SetOnDeactivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
@@ -200,11 +200,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDeactivate := nil;
-    EventClass.Remove(AObj, geDeactivate);
+    TEventClass.Remove(AObj, @TEventClass.OnDeactivate);
     Exit;
   end;
-  AObj.OnDeactivate := @EventClass.OnDeactivate;
-  EventClass.Add(AObj, geDeactivate, AEventId);
+  AObj.OnDeactivate := TEventClass.OnDeactivate;
+  TEventClass.Add(AObj, @TEventClass.OnDeactivate, AEventId);
 end;
 
 procedure Form_SetOnActivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
@@ -212,11 +212,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnActivate := nil;
-    EventClass.Remove(AObj, geActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnActivate);
     Exit;
   end;
-  AObj.OnActivate := @EventClass.OnActivate;
-  EventClass.Add(AObj, geActivate, AEventId);
+  AObj.OnActivate := TEventClass.OnActivate;
+  TEventClass.Add(AObj, @TEventClass.OnActivate, AEventId);
 end;
 
 procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); extdecl;
@@ -224,11 +224,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnWndProc := nil;
-    MessageEventClass.Remove(AObj);
+    TMessageEventClass.Remove(AObj);
     Exit;
   end;
-  AObj.OnWndProc := @MessageEventClass.OnWndProc;
-  MessageEventClass.Add(AObj, AEventId);
+  AObj.OnWndProc := TMessageEventClass.OnWndProc;
+  TMessageEventClass.Add(AObj, AEventId);
 end;
 
 // mouse
@@ -530,14 +530,9 @@ end;
 // 在主线程中运行
 procedure DSynchronize(AId: NativeUInt); extdecl;
 begin
-  EventClass.ThreadEvtId := AId;
-  TThread.Synchronize(nil, @EventClass.ThreadProc);
-  EventClass.ThreadEvtId := 0;
-  //TThread.Synchronize(
-  //  procedure
-  //  begin
-  //    GCallbackPtr(AId, nil, 0);
-  //  end of object);
+  TEventClass.ThreadEvtId := AId;
+  TThread.Synchronize(nil, TEventClass.ThreadProc);
+  TEventClass.ThreadEvtId := 0;
 end;
 
 procedure DSysOpen(FileName: PChar); extdecl;

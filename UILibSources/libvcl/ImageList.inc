@@ -315,11 +315,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    TEventClass.Remove(AObj, geChange);
+    TEventClass.Remove(AObj, @TEventClass.OnChange);
     Exit;
   end;
   AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, geChange, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
 end;
 
 function ImageList_GetShareImages(AObj: TImageList): LongBool; stdcall;

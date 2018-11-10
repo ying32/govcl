@@ -7,7 +7,8 @@
 
 library lcl;
 
-{$mode objfpc}{$H+}  
+//{$mode objfpc}{$H+}
+{$mode delphi}
 
 {$ifndef windows}
   {$define UseCThreads}
@@ -24,10 +25,10 @@ uses
   ShellAPI,
   ShlObj,
   ComObj,
-  CommCtrl,
   ActiveX,
   Win32Int,
   win32proc,
+  CommCtrl,
   LazUTF8,
   InterfaceBase,
 {$ELSE}

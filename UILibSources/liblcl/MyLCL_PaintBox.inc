@@ -300,11 +300,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  AObj.OnClick := TEventClass.OnClick;
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure PaintBox_SetOnDblClick(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -312,11 +312,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  AObj.OnDblClick := TEventClass.OnDblClick;
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure PaintBox_SetOnDragDrop(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -324,11 +324,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure PaintBox_SetOnDragOver(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -336,11 +336,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure PaintBox_SetOnEndDrag(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -348,11 +348,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure PaintBox_SetOnMouseDown(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -360,11 +360,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  AObj.OnMouseDown := TEventClass.OnMouseDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure PaintBox_SetOnMouseEnter(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -372,11 +372,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure PaintBox_SetOnMouseLeave(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -384,11 +384,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure PaintBox_SetOnMouseMove(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -396,11 +396,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  AObj.OnMouseMove := TEventClass.OnMouseMove;
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure PaintBox_SetOnMouseUp(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -408,11 +408,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  AObj.OnMouseUp := TEventClass.OnMouseUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure PaintBox_SetOnPaint(AObj: TPaintBox; AEventId: NativeUInt); extdecl;
@@ -420,11 +420,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnPaint := nil;
-    EventClass.Remove(AObj, gePaint);
+    TEventClass.Remove(AObj, @TEventClass.OnPaint);
     Exit;
   end;
-  AObj.OnPaint := @EventClass.OnPaint;
-  EventClass.Add(AObj, gePaint, AEventId);
+  AObj.OnPaint := TEventClass.OnPaint;
+  TEventClass.Add(AObj, @TEventClass.OnPaint, AEventId);
 end;
 
 function PaintBox_GetAction(AObj: TPaintBox): TBasicAction; extdecl;

@@ -100,11 +100,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnReplace := nil;
-    TEventClass.Remove(AObj, geReplace);
+    TEventClass.Remove(AObj, @TEventClass.OnReplace);
     Exit;
   end;
   AObj.OnReplace := TEventClass.OnReplace;
-  TEventClass.Add(AObj, geReplace, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnReplace, AEventId);
 end;
 
 function ReplaceDialog_GetLeft(AObj: TReplaceDialog): Integer; stdcall;
@@ -162,11 +162,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnFind := nil;
-    TEventClass.Remove(AObj, geFind);
+    TEventClass.Remove(AObj, @TEventClass.OnFind);
     Exit;
   end;
   AObj.OnFind := TEventClass.OnFind;
-  TEventClass.Add(AObj, geFind, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnFind, AEventId);
 end;
 
 function ReplaceDialog_GetHandle(AObj: TReplaceDialog): HWND; stdcall;
@@ -179,11 +179,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClose := nil;
-    TEventClass.Remove(AObj, geClose);
+    TEventClass.Remove(AObj, @TEventClass.OnClose);
     Exit;
   end;
   AObj.OnClose := TEventClass.OnClose;
-  TEventClass.Add(AObj, geClose, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClose, AEventId);
 end;
 
 procedure ReplaceDialog_SetOnShow(AObj: TReplaceDialog; AEventId: NativeUInt); stdcall;
@@ -191,11 +191,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShow := nil;
-    TEventClass.Remove(AObj, geShow);
+    TEventClass.Remove(AObj, @TEventClass.OnShow);
     Exit;
   end;
   AObj.OnShow := TEventClass.OnShow;
-  TEventClass.Add(AObj, geShow, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
 end;
 
 function ReplaceDialog_GetComponentCount(AObj: TReplaceDialog): Integer; stdcall;

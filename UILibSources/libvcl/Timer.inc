@@ -100,11 +100,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnTimer := nil;
-    TEventClass.Remove(AObj, geTimer);
+    TEventClass.Remove(AObj, @TEventClass.OnTimer);
     Exit;
   end;
   AObj.OnTimer := TEventClass.OnTimer;
-  TEventClass.Add(AObj, geTimer, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnTimer, AEventId);
 end;
 
 function Timer_GetComponentCount(AObj: TTimer): Integer; stdcall;

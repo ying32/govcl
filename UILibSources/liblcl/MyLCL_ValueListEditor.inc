@@ -550,11 +550,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  AObj.OnClick := TEventClass.OnClick;
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure ValueListEditor_SetOnContextPopup(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -562,11 +562,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure ValueListEditor_SetOnDblClick(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -574,11 +574,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  AObj.OnDblClick := TEventClass.OnDblClick;
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure ValueListEditor_SetOnDragDrop(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -586,11 +586,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure ValueListEditor_SetOnDragOver(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -598,11 +598,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure ValueListEditor_SetOnEndDock(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -610,11 +610,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    EventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
-  AObj.OnEndDock := @EventClass.OnEndDock;
-  EventClass.Add(AObj, geEndDock, AEventId);
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure ValueListEditor_SetOnEndDrag(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -622,11 +622,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure ValueListEditor_SetOnEnter(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -634,11 +634,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  AObj.OnEnter := TEventClass.OnEnter;
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure ValueListEditor_SetOnExit(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -646,11 +646,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  AObj.OnExit := TEventClass.OnExit;
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure ValueListEditor_SetOnGetEditMask(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -658,11 +658,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetEditMask := nil;
-    EventClass.Remove(AObj, geGetEditMask);
+    TEventClass.Remove(AObj, @TEventClass.OnGetEditMask);
     Exit;
   end;
-  AObj.OnGetEditMask := @EventClass.OnGetEditMask;
-  EventClass.Add(AObj, geGetEditMask, AEventId);
+  AObj.OnGetEditMask := TEventClass.OnGetEditMask;
+  TEventClass.Add(AObj, @TEventClass.OnGetEditMask, AEventId);
 end;
 
 procedure ValueListEditor_SetOnGetEditText(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -670,11 +670,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetEditText := nil;
-    EventClass.Remove(AObj, geGetEditText);
+    TEventClass.Remove(AObj, @TEventClass.OnGetEditText);
     Exit;
   end;
-  AObj.OnGetEditText := @EventClass.OnGetEditText;
-  EventClass.Add(AObj, geGetEditText, AEventId);
+  AObj.OnGetEditText := TEventClass.OnGetEditText;
+  TEventClass.Add(AObj, @TEventClass.OnGetEditText, AEventId);
 end;
 
 procedure ValueListEditor_SetOnKeyDown(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -682,11 +682,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
     Exit;
   end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  AObj.OnKeyDown := TEventClass.OnKeyDown;
+  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
 end;
 
 procedure ValueListEditor_SetOnKeyPress(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -694,11 +694,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
     Exit;
   end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  AObj.OnKeyPress := TEventClass.OnKeyPress;
+  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
 end;
 
 procedure ValueListEditor_SetOnKeyUp(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -706,11 +706,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
     Exit;
   end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  AObj.OnKeyUp := TEventClass.OnKeyUp;
+  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseDown(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -718,11 +718,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  AObj.OnMouseDown := TEventClass.OnMouseDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseEnter(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -730,11 +730,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseLeave(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -742,11 +742,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseMove(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -754,11 +754,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  AObj.OnMouseMove := TEventClass.OnMouseMove;
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseUp(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -766,11 +766,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  AObj.OnMouseUp := TEventClass.OnMouseUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseWheelDown(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -778,11 +778,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelDown := nil;
-    EventClass.Remove(AObj, geMouseWheelDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelDown);
     Exit;
   end;
-  AObj.OnMouseWheelDown := @EventClass.OnMouseWheelDown;
-  EventClass.Add(AObj, geMouseWheelDown, AEventId);
+  AObj.OnMouseWheelDown := TEventClass.OnMouseWheelDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelDown, AEventId);
 end;
 
 procedure ValueListEditor_SetOnMouseWheelUp(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -790,11 +790,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelUp := nil;
-    EventClass.Remove(AObj, geMouseWheelUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelUp);
     Exit;
   end;
-  AObj.OnMouseWheelUp := @EventClass.OnMouseWheelUp;
-  EventClass.Add(AObj, geMouseWheelUp, AEventId);
+  AObj.OnMouseWheelUp := TEventClass.OnMouseWheelUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelUp, AEventId);
 end;
 
 procedure ValueListEditor_SetOnRowMoved(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -802,11 +802,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnColRowMoved := nil;
-    EventClass.Remove(AObj, geRowMoved);
+    TEventClass.Remove(AObj, @TEventClass.OnRowMoved);
     Exit;
   end;
-  AObj.OnColRowMoved := @EventClass.OnRowMoved;
-  EventClass.Add(AObj, geRowMoved, AEventId);
+  AObj.OnColRowMoved := TEventClass.OnRowMoved;
+  TEventClass.Add(AObj, @TEventClass.OnRowMoved, AEventId);
 end;
 
 procedure ValueListEditor_SetOnSelectCell(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -814,11 +814,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnSelectCell := nil;
-    EventClass.Remove(AObj, geSelectCell);
+    TEventClass.Remove(AObj, @TEventClass.OnSelectCell);
     Exit;
   end;
-  AObj.OnSelectCell := @EventClass.OnSelectCell;
-  EventClass.Add(AObj, geSelectCell, AEventId);
+  AObj.OnSelectCell := TEventClass.OnSelectCell;
+  TEventClass.Add(AObj, @TEventClass.OnSelectCell, AEventId);
 end;
 
 procedure ValueListEditor_SetOnSetEditText(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -826,11 +826,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnSetEditText := nil;
-    EventClass.Remove(AObj, geSetEditText);
+    TEventClass.Remove(AObj, @TEventClass.OnSetEditText);
     Exit;
   end;
-  AObj.OnSetEditText := @EventClass.OnSetEditText;
-  EventClass.Add(AObj, geSetEditText, AEventId);
+  AObj.OnSetEditText := TEventClass.OnSetEditText;
+  TEventClass.Add(AObj, @TEventClass.OnSetEditText, AEventId);
 end;
 
 procedure ValueListEditor_SetOnStartDock(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -838,11 +838,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    EventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
-  AObj.OnStartDock := @EventClass.OnStartDock;
-  EventClass.Add(AObj, geStartDock, AEventId);
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 procedure ValueListEditor_SetOnTopLeftChanged(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
@@ -850,11 +850,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnTopLeftChanged := nil;
-    EventClass.Remove(AObj, geTopLeftChanged);
+    TEventClass.Remove(AObj, @TEventClass.OnTopLeftChanged);
     Exit;
   end;
-  AObj.OnTopLeftChanged := @EventClass.OnTopLeftChanged;
-  EventClass.Add(AObj, geTopLeftChanged, AEventId);
+  AObj.OnTopLeftChanged := TEventClass.OnTopLeftChanged;
+  TEventClass.Add(AObj, @TEventClass.OnTopLeftChanged, AEventId);
 end;
 
 function ValueListEditor_GetCanvas(AObj: TValueListEditor): TCanvas; extdecl;

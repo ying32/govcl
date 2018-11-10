@@ -270,11 +270,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnException := nil;
-    EventClass.Remove(AObj, geException);
+    TEventClass.Remove(AObj, @TEventClass.OnException);
     Exit;
   end;
-  AObj.OnException := @EventClass.OnException;
-  EventClass.Add(AObj, geException, AEventId);
+  AObj.OnException := TEventClass.OnException;
+  TEventClass.Add(AObj, @TEventClass.OnException, AEventId);
 end;
 
 procedure Application_SetOnHelp(AObj: TApplication; AEventId: NativeUInt); extdecl;
@@ -282,11 +282,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHelp := nil;
-    EventClass.Remove(AObj, geHelp);
+    TEventClass.Remove(AObj, @TEventClass.OnHelp);
     Exit;
   end;
-  AObj.OnHelp := @EventClass.OnHelp;
-  EventClass.Add(AObj, geHelp, AEventId);
+  AObj.OnHelp := TEventClass.OnHelp;
+  TEventClass.Add(AObj, @TEventClass.OnHelp, AEventId);
 end;
 
 procedure Application_SetOnHint(AObj: TApplication; AEventId: NativeUInt); extdecl;
@@ -294,11 +294,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHint := nil;
-    EventClass.Remove(AObj, geHint);
+    TEventClass.Remove(AObj, @TEventClass.OnHint);
     Exit;
   end;
-  AObj.OnHint := @EventClass.OnHint;
-  EventClass.Add(AObj, geHint, AEventId);
+  AObj.OnHint := TEventClass.OnHint;
+  TEventClass.Add(AObj, @TEventClass.OnHint, AEventId);
 end;
 
 procedure Application_SetOnMinimize(AObj: TApplication; AEventId: NativeUInt); extdecl;
@@ -306,11 +306,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMinimize := nil;
-    EventClass.Remove(AObj, geMinimize);
+    TEventClass.Remove(AObj, @TEventClass.OnMinimize);
     Exit;
   end;
-  AObj.OnMinimize := @EventClass.OnMinimize;
-  EventClass.Add(AObj, geMinimize, AEventId);
+  AObj.OnMinimize := TEventClass.OnMinimize;
+  TEventClass.Add(AObj, @TEventClass.OnMinimize, AEventId);
 end;
 
 procedure Application_SetOnRestore(AObj: TApplication; AEventId: NativeUInt); extdecl;
@@ -318,11 +318,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnRestore := nil;
-    EventClass.Remove(AObj, geRestore);
+    TEventClass.Remove(AObj, @TEventClass.OnRestore);
     Exit;
   end;
-  AObj.OnRestore := @EventClass.OnRestore;
-  EventClass.Add(AObj, geRestore, AEventId);
+  AObj.OnRestore := TEventClass.OnRestore;
+  TEventClass.Add(AObj, @TEventClass.OnRestore, AEventId);
 end;
 
 procedure Application_SetOnShortCut(AObj: TApplication; AEventId: NativeUInt); extdecl;
@@ -330,11 +330,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShortCut := nil;
-    EventClass.Remove(AObj, geShortCut);
+    TEventClass.Remove(AObj, @TEventClass.OnShortCut);
     Exit;
   end;
-  AObj.OnShortCut := @EventClass.OnShortCut;
-  EventClass.Add(AObj, geShortCut, AEventId);
+  AObj.OnShortCut := TEventClass.OnShortCut;
+  TEventClass.Add(AObj, @TEventClass.OnShortCut, AEventId);
 end;
 
 function Application_GetComponentCount(AObj: TApplication): Integer; extdecl;

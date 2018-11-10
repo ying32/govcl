@@ -565,11 +565,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    TEventClass.Remove(AObj, geChange);
+    TEventClass.Remove(AObj, @TEventClass.OnChange);
     Exit;
   end;
   AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, geChange, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
 end;
 
 procedure PageControl_SetOnChanging(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -577,11 +577,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChanging := nil;
-    TEventClass.Remove(AObj, gePageControlChanging);
+    TEventClass.Remove(AObj, @TEventClass.PageControlOnChanging);
     Exit;
   end;
   AObj.OnChanging := TEventClass.PageControlOnChanging;
-  TEventClass.Add(AObj, gePageControlChanging, AEventId);
+  TEventClass.Add(AObj, @TEventClass.PageControlOnChanging, AEventId);
 end;
 
 procedure PageControl_SetOnContextPopup(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -589,11 +589,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
   AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, geContextPopup, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure PageControl_SetOnDockDrop(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -601,11 +601,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDockDrop := nil;
-    TEventClass.Remove(AObj, geDockDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDockDrop);
     Exit;
   end;
   AObj.OnDockDrop := TEventClass.OnDockDrop;
-  TEventClass.Add(AObj, geDockDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDockDrop, AEventId);
 end;
 
 procedure PageControl_SetOnDragDrop(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -613,11 +613,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
   AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, geDragDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure PageControl_SetOnDragOver(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -625,11 +625,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
   AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, geDragOver, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure PageControl_SetOnEndDock(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -637,11 +637,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
   AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, geEndDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure PageControl_SetOnEndDrag(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -649,11 +649,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
   AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, geEndDrag, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure PageControl_SetOnEnter(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -661,11 +661,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
   AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, geEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure PageControl_SetOnExit(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -673,11 +673,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    TEventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
   AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, geExit, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure PageControl_SetOnGesture(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -685,11 +685,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 procedure PageControl_SetOnGetImageIndex(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -697,11 +697,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetImageIndex := nil;
-    TEventClass.Remove(AObj, gePageControlGetImageIndex);
+    TEventClass.Remove(AObj, @TEventClass.PageControlOnGetImageIndex);
     Exit;
   end;
   AObj.OnGetImageIndex := TEventClass.PageControlOnGetImageIndex;
-  TEventClass.Add(AObj, gePageControlGetImageIndex, AEventId);
+  TEventClass.Add(AObj, @TEventClass.PageControlOnGetImageIndex, AEventId);
 end;
 
 procedure PageControl_SetOnGetSiteInfo(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -709,11 +709,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetSiteInfo := nil;
-    TEventClass.Remove(AObj, geGetSiteInfo);
+    TEventClass.Remove(AObj, @TEventClass.OnGetSiteInfo);
     Exit;
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
-  TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGetSiteInfo, AEventId);
 end;
 
 procedure PageControl_SetOnMouseActivate(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -721,11 +721,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseActivate := nil;
-    TEventClass.Remove(AObj, geMouseActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseActivate);
     Exit;
   end;
   AObj.OnMouseActivate := TEventClass.OnMouseActivate;
-  TEventClass.Add(AObj, geMouseActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseActivate, AEventId);
 end;
 
 procedure PageControl_SetOnMouseDown(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -733,11 +733,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
   AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, geMouseDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure PageControl_SetOnMouseEnter(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -745,11 +745,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
   AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, geMouseEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure PageControl_SetOnMouseLeave(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -757,11 +757,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, geMouseLeave, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure PageControl_SetOnMouseMove(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -769,11 +769,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
   AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, geMouseMove, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure PageControl_SetOnMouseUp(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -781,11 +781,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, geMouseUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure PageControl_SetOnResize(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -793,11 +793,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnResize := nil;
-    TEventClass.Remove(AObj, geResize);
+    TEventClass.Remove(AObj, @TEventClass.OnResize);
     Exit;
   end;
   AObj.OnResize := TEventClass.OnResize;
-  TEventClass.Add(AObj, geResize, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
 end;
 
 procedure PageControl_SetOnStartDock(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -805,11 +805,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    TEventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
   AObj.OnStartDock := TEventClass.OnStartDock;
-  TEventClass.Add(AObj, geStartDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 procedure PageControl_SetOnUnDock(AObj: TPageControl; AEventId: NativeUInt); stdcall;
@@ -817,11 +817,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnUnDock := nil;
-    TEventClass.Remove(AObj, geUnDock);
+    TEventClass.Remove(AObj, @TEventClass.OnUnDock);
     Exit;
   end;
   AObj.OnUnDock := TEventClass.OnUnDock;
-  TEventClass.Add(AObj, geUnDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnUnDock, AEventId);
 end;
 
 function PageControl_GetCanvas(AObj: TPageControl): TCanvas; stdcall;

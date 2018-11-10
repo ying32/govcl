@@ -255,11 +255,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnThumbPreviewRequest := nil;
-    TEventClass.Remove(AObj, geTaskbarThumbPreviewRequest);
+    TEventClass.Remove(AObj, @TEventClass.TaskbarOnThumbPreviewRequest);
     Exit;
   end;
   AObj.OnThumbPreviewRequest := TEventClass.TaskbarOnThumbPreviewRequest;
-  TEventClass.Add(AObj, geTaskbarThumbPreviewRequest, AEventId);
+  TEventClass.Add(AObj, @TEventClass.TaskbarOnThumbPreviewRequest, AEventId);
 end;
 
 procedure Taskbar_SetOnWindowPreviewItemRequest(AObj: TTaskbar; AEventId: NativeUInt); stdcall;
@@ -267,11 +267,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnWindowPreviewItemRequest := nil;
-    TEventClass.Remove(AObj, geTaskbarWindowPreviewItemRequest);
+    TEventClass.Remove(AObj, @TEventClass.TaskbarOnWindowPreviewItemRequest);
     Exit;
   end;
   AObj.OnWindowPreviewItemRequest := TEventClass.TaskbarOnWindowPreviewItemRequest;
-  TEventClass.Add(AObj, geTaskbarWindowPreviewItemRequest, AEventId);
+  TEventClass.Add(AObj, @TEventClass.TaskbarOnWindowPreviewItemRequest, AEventId);
 end;
 
 procedure Taskbar_SetOnThumbButtonClick(AObj: TTaskbar; AEventId: NativeUInt); stdcall;
@@ -279,11 +279,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnThumbButtonClick := nil;
-    TEventClass.Remove(AObj, geTaskbarThumbButtonClick);
+    TEventClass.Remove(AObj, @TEventClass.TaskbarOnThumbButtonClick);
     Exit;
   end;
   AObj.OnThumbButtonClick := TEventClass.TaskbarOnThumbButtonClick;
-  TEventClass.Add(AObj, geTaskbarThumbButtonClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.TaskbarOnThumbButtonClick, AEventId);
 end;
 
 function Taskbar_GetTaskbarIsAvailable(AObj: TTaskbar): LongBool; stdcall;

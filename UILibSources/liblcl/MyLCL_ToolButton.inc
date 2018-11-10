@@ -400,11 +400,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  AObj.OnClick := TEventClass.OnClick;
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure ToolButton_SetOnContextPopup(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -412,11 +412,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure ToolButton_SetOnDragDrop(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -424,11 +424,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure ToolButton_SetOnDragOver(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -436,11 +436,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure ToolButton_SetOnEndDock(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -448,11 +448,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    EventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
-  AObj.OnEndDock := @EventClass.OnEndDock;
-  EventClass.Add(AObj, geEndDock, AEventId);
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure ToolButton_SetOnEndDrag(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -460,11 +460,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure ToolButton_SetOnMouseDown(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -472,11 +472,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  AObj.OnMouseDown := TEventClass.OnMouseDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure ToolButton_SetOnMouseEnter(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -484,11 +484,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure ToolButton_SetOnMouseLeave(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -496,11 +496,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure ToolButton_SetOnMouseMove(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -508,11 +508,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  AObj.OnMouseMove := TEventClass.OnMouseMove;
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure ToolButton_SetOnMouseUp(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -520,11 +520,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  AObj.OnMouseUp := TEventClass.OnMouseUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure ToolButton_SetOnStartDock(AObj: TToolButton; AEventId: NativeUInt); extdecl;
@@ -532,11 +532,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    EventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
-  AObj.OnStartDock := @EventClass.OnStartDock;
-  EventClass.Add(AObj, geStartDock, AEventId);
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 function ToolButton_GetAlign(AObj: TToolButton): TAlign; extdecl;

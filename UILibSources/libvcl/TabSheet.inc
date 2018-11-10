@@ -470,11 +470,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
   AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, geContextPopup, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure TabSheet_SetOnDragDrop(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -482,11 +482,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
   AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, geDragDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure TabSheet_SetOnDragOver(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -494,11 +494,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
   AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, geDragOver, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure TabSheet_SetOnEndDrag(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -506,11 +506,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
   AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, geEndDrag, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure TabSheet_SetOnEnter(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -518,11 +518,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
   AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, geEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure TabSheet_SetOnExit(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -530,11 +530,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    TEventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
   AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, geExit, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure TabSheet_SetOnGesture(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -542,11 +542,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 procedure TabSheet_SetOnHide(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -554,11 +554,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHide := nil;
-    TEventClass.Remove(AObj, geHide);
+    TEventClass.Remove(AObj, @TEventClass.OnHide);
     Exit;
   end;
   AObj.OnHide := TEventClass.OnHide;
-  TEventClass.Add(AObj, geHide, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnHide, AEventId);
 end;
 
 procedure TabSheet_SetOnMouseActivate(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -566,11 +566,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseActivate := nil;
-    TEventClass.Remove(AObj, geMouseActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseActivate);
     Exit;
   end;
   AObj.OnMouseActivate := TEventClass.OnMouseActivate;
-  TEventClass.Add(AObj, geMouseActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseActivate, AEventId);
 end;
 
 procedure TabSheet_SetOnMouseDown(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -578,11 +578,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
   AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, geMouseDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure TabSheet_SetOnMouseEnter(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -590,11 +590,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
   AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, geMouseEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure TabSheet_SetOnMouseLeave(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -602,11 +602,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, geMouseLeave, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure TabSheet_SetOnMouseMove(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -614,11 +614,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
   AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, geMouseMove, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure TabSheet_SetOnMouseUp(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -626,11 +626,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, geMouseUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure TabSheet_SetOnResize(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -638,11 +638,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnResize := nil;
-    TEventClass.Remove(AObj, geResize);
+    TEventClass.Remove(AObj, @TEventClass.OnResize);
     Exit;
   end;
   AObj.OnResize := TEventClass.OnResize;
-  TEventClass.Add(AObj, geResize, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
 end;
 
 procedure TabSheet_SetOnShow(AObj: TTabSheet; AEventId: NativeUInt); stdcall;
@@ -650,11 +650,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShow := nil;
-    TEventClass.Remove(AObj, geShow);
+    TEventClass.Remove(AObj, @TEventClass.OnShow);
     Exit;
   end;
   AObj.OnShow := TEventClass.OnShow;
-  TEventClass.Add(AObj, geShow, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
 end;
 
 function TabSheet_GetDockClientCount(AObj: TTabSheet): Integer; stdcall;

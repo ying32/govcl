@@ -380,11 +380,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  AObj.OnClick := TEventClass.OnClick;
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure SpeedButton_SetOnDblClick(AObj: TSpeedButton; AEventId: NativeUInt); extdecl;
@@ -392,11 +392,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  AObj.OnDblClick := TEventClass.OnDblClick;
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure SpeedButton_SetOnMouseDown(AObj: TSpeedButton; AEventId: NativeUInt); extdecl;
@@ -404,11 +404,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  AObj.OnMouseDown := TEventClass.OnMouseDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure SpeedButton_SetOnMouseEnter(AObj: TSpeedButton; AEventId: NativeUInt); extdecl;
@@ -416,11 +416,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure SpeedButton_SetOnMouseLeave(AObj: TSpeedButton; AEventId: NativeUInt); extdecl;
@@ -428,11 +428,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure SpeedButton_SetOnMouseMove(AObj: TSpeedButton; AEventId: NativeUInt); extdecl;
@@ -440,11 +440,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  AObj.OnMouseMove := TEventClass.OnMouseMove;
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure SpeedButton_SetOnMouseUp(AObj: TSpeedButton; AEventId: NativeUInt); extdecl;
@@ -452,11 +452,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  AObj.OnMouseUp := TEventClass.OnMouseUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure SpeedButton_GetBoundsRect(AObj: TSpeedButton; var Result: TRect); extdecl;

@@ -165,11 +165,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExecute := nil;
-    EventClass.Remove(AObj, geExecute);
+    TEventClass.Remove(AObj, @TEventClass.OnExecute);
     Exit;
   end;
-  AObj.OnExecute := @EventClass.OnExecute;
-  EventClass.Add(AObj, geExecute, AEventId);
+  AObj.OnExecute := TEventClass.OnExecute;
+  TEventClass.Add(AObj, @TEventClass.OnExecute, AEventId);
 end;
 
 procedure Action_SetOnUpdate(AObj: TAction; AEventId: NativeUInt); extdecl;
@@ -177,11 +177,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnUpdate := nil;
-    EventClass.Remove(AObj, geUpdate);
+    TEventClass.Remove(AObj, @TEventClass.OnUpdate);
     Exit;
   end;
-  AObj.OnUpdate := @EventClass.OnUpdate;
-  EventClass.Add(AObj, geUpdate, AEventId);
+  AObj.OnUpdate := TEventClass.OnUpdate;
+  TEventClass.Add(AObj, @TEventClass.OnUpdate, AEventId);
 end;
 
 function Action_GetIndex(AObj: TAction): Integer; extdecl;

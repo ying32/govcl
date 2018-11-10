@@ -706,11 +706,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnAdvancedCustomDraw := nil;
-    EventClass.Remove(AObj, geListViewAdvancedCustomDraw);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnAdvancedCustomDraw);
     Exit;
   end;
-  AObj.OnAdvancedCustomDraw := @EventClass.ListViewOnAdvancedCustomDraw;
-  EventClass.Add(AObj, geListViewAdvancedCustomDraw, AEventId);
+  AObj.OnAdvancedCustomDraw := TEventClass.ListViewOnAdvancedCustomDraw;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnAdvancedCustomDraw, AEventId);
 end;
 
 procedure ListView_SetOnAdvancedCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -718,11 +718,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnAdvancedCustomDrawItem := nil;
-    EventClass.Remove(AObj, geListViewAdvancedCustomDrawItem);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnAdvancedCustomDrawItem);
     Exit;
   end;
-  AObj.OnAdvancedCustomDrawItem := @EventClass.ListViewOnAdvancedCustomDrawItem;
-  EventClass.Add(AObj, geListViewAdvancedCustomDrawItem, AEventId);
+  AObj.OnAdvancedCustomDrawItem := TEventClass.ListViewOnAdvancedCustomDrawItem;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnAdvancedCustomDrawItem, AEventId);
 end;
 
 procedure ListView_SetOnAdvancedCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -730,11 +730,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnAdvancedCustomDrawSubItem := nil;
-    EventClass.Remove(AObj, geListViewAdvancedCustomDrawSubItem);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnAdvancedCustomDrawSubItem);
     Exit;
   end;
-  AObj.OnAdvancedCustomDrawSubItem := @EventClass.ListViewOnAdvancedCustomDrawSubItem;
-  EventClass.Add(AObj, geListViewAdvancedCustomDrawSubItem, AEventId);
+  AObj.OnAdvancedCustomDrawSubItem := TEventClass.ListViewOnAdvancedCustomDrawSubItem;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnAdvancedCustomDrawSubItem, AEventId);
 end;
 
 procedure ListView_SetOnChange(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -742,11 +742,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    EventClass.Remove(AObj, geListViewChange);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnChange);
     Exit;
   end;
-  AObj.OnChange := @EventClass.ListViewOnChange;
-  EventClass.Add(AObj, geListViewChange, AEventId);
+  AObj.OnChange := TEventClass.ListViewOnChange;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnChange, AEventId);
 end;
 
 procedure ListView_SetOnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -754,11 +754,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  AObj.OnClick := TEventClass.OnClick;
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure ListView_SetOnColumnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -766,11 +766,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnColumnClick := nil;
-    EventClass.Remove(AObj, geListViewColumnClick);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnColumnClick);
     Exit;
   end;
-  AObj.OnColumnClick := @EventClass.ListViewOnColumnClick;
-  EventClass.Add(AObj, geListViewColumnClick, AEventId);
+  AObj.OnColumnClick := TEventClass.ListViewOnColumnClick;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnColumnClick, AEventId);
 end;
 
 procedure ListView_SetOnCompare(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -778,11 +778,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnCompare := nil;
-    EventClass.Remove(AObj, geListViewCompare);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnCompare);
     Exit;
   end;
-  AObj.OnCompare := @EventClass.ListViewOnCompare;
-  EventClass.Add(AObj, geListViewCompare, AEventId);
+  AObj.OnCompare := TEventClass.ListViewOnCompare;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnCompare, AEventId);
 end;
 
 procedure ListView_SetOnContextPopup(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -790,11 +790,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure ListView_SetOnCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -802,11 +802,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnCustomDraw := nil;
-    EventClass.Remove(AObj, geListViewCustomDraw);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnCustomDraw);
     Exit;
   end;
-  AObj.OnCustomDraw := @EventClass.ListViewOnCustomDraw;
-  EventClass.Add(AObj, geListViewCustomDraw, AEventId);
+  AObj.OnCustomDraw := TEventClass.ListViewOnCustomDraw;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnCustomDraw, AEventId);
 end;
 
 procedure ListView_SetOnCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -814,11 +814,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnCustomDrawItem := nil;
-    EventClass.Remove(AObj, geListViewCustomDrawItem);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnCustomDrawItem);
     Exit;
   end;
-  AObj.OnCustomDrawItem := @EventClass.ListViewOnCustomDrawItem;
-  EventClass.Add(AObj, geListViewCustomDrawItem, AEventId);
+  AObj.OnCustomDrawItem := TEventClass.ListViewOnCustomDrawItem;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnCustomDrawItem, AEventId);
 end;
 
 procedure ListView_SetOnCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -826,11 +826,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnCustomDrawSubItem := nil;
-    EventClass.Remove(AObj, geListViewCustomDrawSubItem);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnCustomDrawSubItem);
     Exit;
   end;
-  AObj.OnCustomDrawSubItem := @EventClass.ListViewOnCustomDrawSubItem;
-  EventClass.Add(AObj, geListViewCustomDrawSubItem, AEventId);
+  AObj.OnCustomDrawSubItem := TEventClass.ListViewOnCustomDrawSubItem;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnCustomDrawSubItem, AEventId);
 end;
 
 procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -838,11 +838,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnData := nil;
-    EventClass.Remove(AObj, geListViewData);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnData);
     Exit;
   end;
-  AObj.OnData := @EventClass.ListViewOnData;
-  EventClass.Add(AObj, geListViewData, AEventId);
+  AObj.OnData := TEventClass.ListViewOnData;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnData, AEventId);
 end;
 
 procedure ListView_SetOnDataFind(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -850,11 +850,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDataFind := nil;
-    EventClass.Remove(AObj, geListViewDataFind);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnDataFind);
     Exit;
   end;
-  AObj.OnDataFind := @EventClass.ListViewOnDataFind;
-  EventClass.Add(AObj, geListViewDataFind, AEventId);
+  AObj.OnDataFind := TEventClass.ListViewOnDataFind;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnDataFind, AEventId);
 end;
 
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -862,11 +862,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  AObj.OnDblClick := TEventClass.OnDblClick;
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure ListView_SetOnDeletion(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -874,11 +874,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDeletion := nil;
-    EventClass.Remove(AObj, geListViewDeletion);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnDeletion);
     Exit;
   end;
-  AObj.OnDeletion := @EventClass.ListViewOnDeletion;
-  EventClass.Add(AObj, geListViewDeletion, AEventId);
+  AObj.OnDeletion := TEventClass.ListViewOnDeletion;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnDeletion, AEventId);
 end;
 
 procedure ListView_SetOnEdited(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -886,11 +886,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEdited := nil;
-    EventClass.Remove(AObj, geListViewEdited);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnEdited);
     Exit;
   end;
-  AObj.OnEdited := @EventClass.ListViewOnEdited;
-  EventClass.Add(AObj, geListViewEdited, AEventId);
+  AObj.OnEdited := TEventClass.ListViewOnEdited;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnEdited, AEventId);
 end;
 
 procedure ListView_SetOnEditing(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -898,11 +898,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEditing := nil;
-    EventClass.Remove(AObj, geListViewEditing);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnEditing);
     Exit;
   end;
-  AObj.OnEditing := @EventClass.ListViewOnEditing;
-  EventClass.Add(AObj, geListViewEditing, AEventId);
+  AObj.OnEditing := TEventClass.ListViewOnEditing;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnEditing, AEventId);
 end;
 
 procedure ListView_SetOnEndDock(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -910,11 +910,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    EventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
-  AObj.OnEndDock := @EventClass.OnEndDock;
-  EventClass.Add(AObj, geEndDock, AEventId);
+  AObj.OnEndDock := TEventClass.OnEndDock;
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure ListView_SetOnEndDrag(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -922,11 +922,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure ListView_SetOnEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -934,11 +934,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  AObj.OnEnter := TEventClass.OnEnter;
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure ListView_SetOnExit(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -946,11 +946,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  AObj.OnExit := TEventClass.OnExit;
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure ListView_SetOnDragDrop(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -958,11 +958,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure ListView_SetOnDragOver(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -970,11 +970,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure ListView_SetOnInsert(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -982,11 +982,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnInsert := nil;
-    EventClass.Remove(AObj, geListViewInsert);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnInsert);
     Exit;
   end;
-  AObj.OnInsert := @EventClass.ListViewOnInsert;
-  EventClass.Add(AObj, geListViewInsert, AEventId);
+  AObj.OnInsert := TEventClass.ListViewOnInsert;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnInsert, AEventId);
 end;
 
 procedure ListView_SetOnKeyDown(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -994,11 +994,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
     Exit;
   end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  AObj.OnKeyDown := TEventClass.OnKeyDown;
+  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
 end;
 
 procedure ListView_SetOnKeyPress(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1006,11 +1006,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
     Exit;
   end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  AObj.OnKeyPress := TEventClass.OnKeyPress;
+  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
 end;
 
 procedure ListView_SetOnKeyUp(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1018,11 +1018,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
     Exit;
   end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  AObj.OnKeyUp := TEventClass.OnKeyUp;
+  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
 end;
 
 procedure ListView_SetOnMouseDown(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1030,11 +1030,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  AObj.OnMouseDown := TEventClass.OnMouseDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure ListView_SetOnMouseEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1042,11 +1042,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure ListView_SetOnMouseLeave(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1054,11 +1054,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure ListView_SetOnMouseMove(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1066,11 +1066,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  AObj.OnMouseMove := TEventClass.OnMouseMove;
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure ListView_SetOnMouseUp(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1078,11 +1078,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  AObj.OnMouseUp := TEventClass.OnMouseUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure ListView_SetOnResize(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1090,11 +1090,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnResize := nil;
-    EventClass.Remove(AObj, geResize);
+    TEventClass.Remove(AObj, @TEventClass.OnResize);
     Exit;
   end;
-  AObj.OnResize := @EventClass.OnResize;
-  EventClass.Add(AObj, geResize, AEventId);
+  AObj.OnResize := TEventClass.OnResize;
+  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
 end;
 
 procedure ListView_SetOnSelectItem(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1102,11 +1102,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnSelectItem := nil;
-    EventClass.Remove(AObj, geListViewSelectItem);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnSelectItem);
     Exit;
   end;
-  AObj.OnSelectItem := @EventClass.ListViewOnSelectItem;
-  EventClass.Add(AObj, geListViewSelectItem, AEventId);
+  AObj.OnSelectItem := TEventClass.ListViewOnSelectItem;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnSelectItem, AEventId);
 end;
 
 procedure ListView_SetOnItemChecked(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1114,11 +1114,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnItemChecked := nil;
-    EventClass.Remove(AObj, geListViewItemChecked);
+    TEventClass.Remove(AObj, @TEventClass.ListViewOnItemChecked);
     Exit;
   end;
-  AObj.OnItemChecked := @EventClass.ListViewOnItemChecked;
-  EventClass.Add(AObj, geListViewItemChecked, AEventId);
+  AObj.OnItemChecked := TEventClass.ListViewOnItemChecked;
+  TEventClass.Add(AObj, @TEventClass.ListViewOnItemChecked, AEventId);
 end;
 
 procedure ListView_SetOnStartDock(AObj: TListView; AEventId: NativeUInt); extdecl;
@@ -1126,11 +1126,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    EventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
-  AObj.OnStartDock := @EventClass.OnStartDock;
-  EventClass.Add(AObj, geStartDock, AEventId);
+  AObj.OnStartDock := TEventClass.OnStartDock;
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 function ListView_GetCanvas(AObj: TListView): TCanvas; extdecl;

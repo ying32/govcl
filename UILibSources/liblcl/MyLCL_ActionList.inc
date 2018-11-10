@@ -95,11 +95,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
+    TEventClass.Remove(AObj, @TEventClass.OnChange);
     Exit;
   end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  AObj.OnChange := TEventClass.OnChange;
+  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
 end;
 
 function ActionList_GetComponentCount(AObj: TActionList): Integer; extdecl;

@@ -670,11 +670,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    TEventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
   AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, geClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure DrawGrid_SetOnColumnMoved(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -682,11 +682,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnColumnMoved := nil;
-    TEventClass.Remove(AObj, geColumnMoved);
+    TEventClass.Remove(AObj, @TEventClass.OnColumnMoved);
     Exit;
   end;
   AObj.OnColumnMoved := TEventClass.OnColumnMoved;
-  TEventClass.Add(AObj, geColumnMoved, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnColumnMoved, AEventId);
 end;
 
 procedure DrawGrid_SetOnContextPopup(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -694,11 +694,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
   AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, geContextPopup, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure DrawGrid_SetOnDblClick(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -706,11 +706,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, geDblClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure DrawGrid_SetOnDragDrop(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -718,11 +718,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
   AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, geDragDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure DrawGrid_SetOnDragOver(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -730,11 +730,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
   AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, geDragOver, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure DrawGrid_SetOnDrawCell(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -742,11 +742,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDrawCell := nil;
-    TEventClass.Remove(AObj, geDrawCell);
+    TEventClass.Remove(AObj, @TEventClass.OnDrawCell);
     Exit;
   end;
   AObj.OnDrawCell := TEventClass.OnDrawCell;
-  TEventClass.Add(AObj, geDrawCell, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDrawCell, AEventId);
 end;
 
 procedure DrawGrid_SetOnEndDock(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -754,11 +754,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
   AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, geEndDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure DrawGrid_SetOnEndDrag(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -766,11 +766,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
   AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, geEndDrag, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure DrawGrid_SetOnEnter(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -778,11 +778,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
   AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, geEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure DrawGrid_SetOnExit(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -790,11 +790,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    TEventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
   AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, geExit, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure DrawGrid_SetOnFixedCellClick(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -802,11 +802,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnFixedCellClick := nil;
-    TEventClass.Remove(AObj, geFixedCellClick);
+    TEventClass.Remove(AObj, @TEventClass.OnFixedCellClick);
     Exit;
   end;
   AObj.OnFixedCellClick := TEventClass.OnFixedCellClick;
-  TEventClass.Add(AObj, geFixedCellClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnFixedCellClick, AEventId);
 end;
 
 procedure DrawGrid_SetOnGesture(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -814,11 +814,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 procedure DrawGrid_SetOnGetEditMask(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -826,11 +826,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetEditMask := nil;
-    TEventClass.Remove(AObj, geGetEditMask);
+    TEventClass.Remove(AObj, @TEventClass.OnGetEditMask);
     Exit;
   end;
   AObj.OnGetEditMask := TEventClass.OnGetEditMask;
-  TEventClass.Add(AObj, geGetEditMask, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGetEditMask, AEventId);
 end;
 
 procedure DrawGrid_SetOnGetEditText(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -838,11 +838,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetEditText := nil;
-    TEventClass.Remove(AObj, geGetEditText);
+    TEventClass.Remove(AObj, @TEventClass.OnGetEditText);
     Exit;
   end;
   AObj.OnGetEditText := TEventClass.OnGetEditText;
-  TEventClass.Add(AObj, geGetEditText, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGetEditText, AEventId);
 end;
 
 procedure DrawGrid_SetOnKeyDown(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -850,11 +850,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, geKeyDown);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
     Exit;
   end;
   AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, geKeyDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
 end;
 
 procedure DrawGrid_SetOnKeyPress(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -862,11 +862,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, geKeyPress);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
     Exit;
   end;
   AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, geKeyPress, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
 end;
 
 procedure DrawGrid_SetOnKeyUp(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -874,11 +874,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, geKeyUp);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
     Exit;
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, geKeyUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseActivate(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -886,11 +886,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseActivate := nil;
-    TEventClass.Remove(AObj, geMouseActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseActivate);
     Exit;
   end;
   AObj.OnMouseActivate := TEventClass.OnMouseActivate;
-  TEventClass.Add(AObj, geMouseActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseActivate, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseDown(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -898,11 +898,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
   AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, geMouseDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseEnter(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -910,11 +910,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
   AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, geMouseEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseLeave(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -922,11 +922,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, geMouseLeave, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseMove(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -934,11 +934,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
   AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, geMouseMove, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseUp(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -946,11 +946,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, geMouseUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseWheelDown(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -958,11 +958,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelDown := nil;
-    TEventClass.Remove(AObj, geMouseWheelDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelDown);
     Exit;
   end;
   AObj.OnMouseWheelDown := TEventClass.OnMouseWheelDown;
-  TEventClass.Add(AObj, geMouseWheelDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelDown, AEventId);
 end;
 
 procedure DrawGrid_SetOnMouseWheelUp(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -970,11 +970,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelUp := nil;
-    TEventClass.Remove(AObj, geMouseWheelUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelUp);
     Exit;
   end;
   AObj.OnMouseWheelUp := TEventClass.OnMouseWheelUp;
-  TEventClass.Add(AObj, geMouseWheelUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelUp, AEventId);
 end;
 
 procedure DrawGrid_SetOnRowMoved(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -982,11 +982,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnRowMoved := nil;
-    TEventClass.Remove(AObj, geRowMoved);
+    TEventClass.Remove(AObj, @TEventClass.OnRowMoved);
     Exit;
   end;
   AObj.OnRowMoved := TEventClass.OnRowMoved;
-  TEventClass.Add(AObj, geRowMoved, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnRowMoved, AEventId);
 end;
 
 procedure DrawGrid_SetOnSelectCell(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -994,11 +994,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnSelectCell := nil;
-    TEventClass.Remove(AObj, geSelectCell);
+    TEventClass.Remove(AObj, @TEventClass.OnSelectCell);
     Exit;
   end;
   AObj.OnSelectCell := TEventClass.OnSelectCell;
-  TEventClass.Add(AObj, geSelectCell, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnSelectCell, AEventId);
 end;
 
 procedure DrawGrid_SetOnSetEditText(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -1006,11 +1006,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnSetEditText := nil;
-    TEventClass.Remove(AObj, geSetEditText);
+    TEventClass.Remove(AObj, @TEventClass.OnSetEditText);
     Exit;
   end;
   AObj.OnSetEditText := TEventClass.OnSetEditText;
-  TEventClass.Add(AObj, geSetEditText, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnSetEditText, AEventId);
 end;
 
 procedure DrawGrid_SetOnStartDock(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -1018,11 +1018,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    TEventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
   AObj.OnStartDock := TEventClass.OnStartDock;
-  TEventClass.Add(AObj, geStartDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 procedure DrawGrid_SetOnTopLeftChanged(AObj: TDrawGrid; AEventId: NativeUInt); stdcall;
@@ -1030,11 +1030,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnTopLeftChanged := nil;
-    TEventClass.Remove(AObj, geTopLeftChanged);
+    TEventClass.Remove(AObj, @TEventClass.OnTopLeftChanged);
     Exit;
   end;
   AObj.OnTopLeftChanged := TEventClass.OnTopLeftChanged;
-  TEventClass.Add(AObj, geTopLeftChanged, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnTopLeftChanged, AEventId);
 end;
 
 function DrawGrid_GetCanvas(AObj: TDrawGrid): TCanvas; stdcall;

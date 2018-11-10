@@ -105,11 +105,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    EventClass.Remove(AObj, geMenuChange);
+    TEventClass.Remove(AObj, @TEventClass.MenuOnChange);
     Exit;
   end;
-  AObj.OnChange := @EventClass.MenuOnChange;
-  EventClass.Add(AObj, geMenuChange, AEventId);
+  AObj.OnChange := TEventClass.MenuOnChange;
+  TEventClass.Add(AObj, @TEventClass.MenuOnChange, AEventId);
 end;
 
 function MainMenu_GetHandle(AObj: TMainMenu): HMENU; extdecl;

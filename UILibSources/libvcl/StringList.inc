@@ -165,11 +165,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    TEventClass.Remove(AObj, geChange);
+    TEventClass.Remove(AObj, @TEventClass.OnChange);
     Exit;
   end;
   AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, geChange, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
 end;
 
 procedure StringList_SetOnChanging(AObj: TStringList; AEventId: NativeUInt); stdcall;
@@ -177,11 +177,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChanging := nil;
-    TEventClass.Remove(AObj, geChanging);
+    TEventClass.Remove(AObj, @TEventClass.OnChanging);
     Exit;
   end;
   AObj.OnChanging := TEventClass.OnChanging;
-  TEventClass.Add(AObj, geChanging, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnChanging, AEventId);
 end;
 
 function StringList_GetCapacity(AObj: TStringList): Integer; stdcall;

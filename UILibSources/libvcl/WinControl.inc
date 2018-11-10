@@ -535,11 +535,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 function WinControl_GetAlignWithMargins(AObj: TWinControl): LongBool; stdcall;

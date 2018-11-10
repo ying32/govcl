@@ -155,11 +155,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    TEventClass.Remove(AObj, geMenuChange);
+    TEventClass.Remove(AObj, @TEventClass.MenuOnChange);
     Exit;
   end;
   AObj.OnChange := TEventClass.MenuOnChange;
-  TEventClass.Add(AObj, geMenuChange, AEventId);
+  TEventClass.Add(AObj, @TEventClass.MenuOnChange, AEventId);
 end;
 
 procedure PopupMenu_SetOnPopup(AObj: TPopupMenu; AEventId: NativeUInt); stdcall;
@@ -167,11 +167,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnPopup := nil;
-    TEventClass.Remove(AObj, gePopup);
+    TEventClass.Remove(AObj, @TEventClass.OnPopup);
     Exit;
   end;
   AObj.OnPopup := TEventClass.OnPopup;
-  TEventClass.Add(AObj, gePopup, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnPopup, AEventId);
 end;
 
 function PopupMenu_GetHandle(AObj: TPopupMenu): HMENU; stdcall;

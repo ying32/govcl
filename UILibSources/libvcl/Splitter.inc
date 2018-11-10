@@ -245,11 +245,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnPaint := nil;
-    TEventClass.Remove(AObj, gePaint);
+    TEventClass.Remove(AObj, @TEventClass.OnPaint);
     Exit;
   end;
   AObj.OnPaint := TEventClass.OnPaint;
-  TEventClass.Add(AObj, gePaint, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnPaint, AEventId);
 end;
 
 function Splitter_GetEnabled(AObj: TSplitter): LongBool; stdcall;
@@ -402,11 +402,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 function Splitter_GetAlignWithMargins(AObj: TSplitter): LongBool; stdcall;

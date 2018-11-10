@@ -195,11 +195,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnItemDeleted := nil;
-    TEventClass.Remove(AObj, geJumpListItemDeleted);
+    TEventClass.Remove(AObj, @TEventClass.JumpListOnItemDeleted);
     Exit;
   end;
   AObj.OnItemDeleted := TEventClass.JumpListOnItemDeleted;
-  TEventClass.Add(AObj, geJumpListItemDeleted, AEventId);
+  TEventClass.Add(AObj, @TEventClass.JumpListOnItemDeleted, AEventId);
 end;
 
 procedure JumpList_SetOnListUpdateError(AObj: TJumpList; AEventId: NativeUInt); stdcall;
@@ -207,11 +207,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnListUpdateError := nil;
-    TEventClass.Remove(AObj, geJumpListListUpdateError);
+    TEventClass.Remove(AObj, @TEventClass.JumpListOnListUpdateError);
     Exit;
   end;
   AObj.OnListUpdateError := TEventClass.JumpListOnListUpdateError;
-  TEventClass.Add(AObj, geJumpListListUpdateError, AEventId);
+  TEventClass.Add(AObj, @TEventClass.JumpListOnListUpdateError, AEventId);
 end;
 
 procedure JumpList_SetOnItemsLoaded(AObj: TJumpList; AEventId: NativeUInt); stdcall;
@@ -219,11 +219,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnItemsLoaded := nil;
-    TEventClass.Remove(AObj, geJumpListItemsLoaded);
+    TEventClass.Remove(AObj, @TEventClass.JumpListOnItemsLoaded);
     Exit;
   end;
   AObj.OnItemsLoaded := TEventClass.JumpListOnItemsLoaded;
-  TEventClass.Add(AObj, geJumpListItemsLoaded, AEventId);
+  TEventClass.Add(AObj, @TEventClass.JumpListOnItemsLoaded, AEventId);
 end;
 
 function JumpList_GetComponentCount(AObj: TJumpList): Integer; stdcall;

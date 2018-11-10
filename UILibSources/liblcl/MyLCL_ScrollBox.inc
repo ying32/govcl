@@ -450,11 +450,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  AObj.OnClick := TEventClass.OnClick;
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure ScrollBox_SetOnDblClick(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -462,11 +462,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  AObj.OnDblClick := TEventClass.OnDblClick;
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure ScrollBox_SetOnDockDrop(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -474,11 +474,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDockDrop := nil;
-    EventClass.Remove(AObj, geDockDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDockDrop);
     Exit;
   end;
-  AObj.OnDockDrop := @EventClass.OnDockDrop;
-  EventClass.Add(AObj, geDockDrop, AEventId);
+  AObj.OnDockDrop := TEventClass.OnDockDrop;
+  TEventClass.Add(AObj, @TEventClass.OnDockDrop, AEventId);
 end;
 
 procedure ScrollBox_SetOnDragDrop(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -486,11 +486,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  AObj.OnDragDrop := TEventClass.OnDragDrop;
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure ScrollBox_SetOnDragOver(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -498,11 +498,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  AObj.OnDragOver := TEventClass.OnDragOver;
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure ScrollBox_SetOnEndDrag(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -510,11 +510,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  AObj.OnEndDrag := TEventClass.OnEndDrag;
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure ScrollBox_SetOnEnter(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -522,11 +522,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  AObj.OnEnter := TEventClass.OnEnter;
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure ScrollBox_SetOnExit(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -534,11 +534,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  AObj.OnExit := TEventClass.OnExit;
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure ScrollBox_SetOnGetSiteInfo(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -546,11 +546,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetSiteInfo := nil;
-    EventClass.Remove(AObj, geGetSiteInfo);
+    TEventClass.Remove(AObj, @TEventClass.OnGetSiteInfo);
     Exit;
   end;
-  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
-  EventClass.Add(AObj, geGetSiteInfo, AEventId);
+  AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
+  TEventClass.Add(AObj, @TEventClass.OnGetSiteInfo, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseDown(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -558,11 +558,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  AObj.OnMouseDown := TEventClass.OnMouseDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseEnter(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -570,11 +570,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseLeave(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -582,11 +582,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseMove(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -594,11 +594,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  AObj.OnMouseMove := TEventClass.OnMouseMove;
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseUp(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -606,11 +606,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  AObj.OnMouseUp := TEventClass.OnMouseUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseWheel(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -618,11 +618,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheel := nil;
-    EventClass.Remove(AObj, geMouseWheel);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheel);
     Exit;
   end;
-  AObj.OnMouseWheel := @EventClass.OnMouseWheel;
-  EventClass.Add(AObj, geMouseWheel, AEventId);
+  AObj.OnMouseWheel := TEventClass.OnMouseWheel;
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheel, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseWheelDown(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -630,11 +630,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelDown := nil;
-    EventClass.Remove(AObj, geMouseWheelDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelDown);
     Exit;
   end;
-  AObj.OnMouseWheelDown := @EventClass.OnMouseWheelDown;
-  EventClass.Add(AObj, geMouseWheelDown, AEventId);
+  AObj.OnMouseWheelDown := TEventClass.OnMouseWheelDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelDown, AEventId);
 end;
 
 procedure ScrollBox_SetOnMouseWheelUp(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -642,11 +642,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelUp := nil;
-    EventClass.Remove(AObj, geMouseWheelUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelUp);
     Exit;
   end;
-  AObj.OnMouseWheelUp := @EventClass.OnMouseWheelUp;
-  EventClass.Add(AObj, geMouseWheelUp, AEventId);
+  AObj.OnMouseWheelUp := TEventClass.OnMouseWheelUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelUp, AEventId);
 end;
 
 procedure ScrollBox_SetOnResize(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -654,11 +654,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnResize := nil;
-    EventClass.Remove(AObj, geResize);
+    TEventClass.Remove(AObj, @TEventClass.OnResize);
     Exit;
   end;
-  AObj.OnResize := @EventClass.OnResize;
-  EventClass.Add(AObj, geResize, AEventId);
+  AObj.OnResize := TEventClass.OnResize;
+  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
 end;
 
 procedure ScrollBox_SetOnUnDock(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
@@ -666,11 +666,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnUnDock := nil;
-    EventClass.Remove(AObj, geUnDock);
+    TEventClass.Remove(AObj, @TEventClass.OnUnDock);
     Exit;
   end;
-  AObj.OnUnDock := @EventClass.OnUnDock;
-  EventClass.Add(AObj, geUnDock, AEventId);
+  AObj.OnUnDock := TEventClass.OnUnDock;
+  TEventClass.Add(AObj, @TEventClass.OnUnDock, AEventId);
 end;
 
 function ScrollBox_GetDockClientCount(AObj: TScrollBox): Integer; extdecl;

@@ -8,6 +8,10 @@ type
   TMonthCalendar = type TCalendar;
   TJPEGPixelFormat = TPixelFormat;
   TPageMeasureUnits = type TMeasureUnits;
+{$ifndef windows}
+  PFNLVCOMPARE = Pointer;
+  PFNTVCOMPARE = Pointer;
+{$endif}
 
 
 // 补丁集合
@@ -38,7 +42,7 @@ type
   TListViewHelper = class helper for TListView
   public
     procedure DeleteSelected;
-    function CustomSort(SortProc: Pointer; lParam: NativeInt): Boolean;
+    function CustomSort(SortProc: PFNLVCOMPARE; lParam: NativeInt): Boolean;
   end;
 
 procedure TListViewHelper.DeleteSelected;
@@ -48,7 +52,7 @@ if ItemIndex <> -1 then
 end;
 
 // 兼容版
-function TListViewHelper.CustomSort(SortProc: Pointer; lParam: NativeInt): Boolean;
+function TListViewHelper.CustomSort(SortProc: PFNLVCOMPARE; lParam: NativeInt): Boolean;
 begin
   SortType := stText;
   SortColumn := lParam;

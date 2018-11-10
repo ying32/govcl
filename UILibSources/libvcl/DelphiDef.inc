@@ -138,11 +138,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDropFiles := nil;
-    TEventClass.Remove(AObj, geDropFiles);
+    TEventClass.Remove(AObj, @TEventClass.FormOnDropFiles);
     Exit;
   end;
   AObj.OnDropFiles := TEventClass.FormOnDropFiles;
-  TEventClass.Add(AObj, geDropFiles, AEventId);
+  TEventClass.Add(AObj, @TEventClass.FormOnDropFiles, AEventId);
 end;
 
 procedure Form_SetOnDestroy(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -150,11 +150,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDestroy := nil;
-    TEventClass.Remove(AObj, geDestroy);
+    TEventClass.Remove(AObj, @TEventClass.OnDestroy);
     Exit;
   end;
   AObj.OnDestroy := TEventClass.OnDestroy;
-  TEventClass.Add(AObj, geDestroy, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDestroy, AEventId);
 end;
 
 procedure Form_SetOnConstrainedResize(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -162,11 +162,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnConstrainedResize := nil;
-    TEventClass.Remove(AObj, geConstrainedResize);
+    TEventClass.Remove(AObj, @TEventClass.OnConstrainedResize);
     Exit;
   end;
   AObj.OnConstrainedResize := TEventClass.OnConstrainedResize;
-  TEventClass.Add(AObj, geConstrainedResize, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnConstrainedResize, AEventId);
 end;
 
 procedure Form_SetOnDeactivate(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -174,11 +174,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDeactivate := nil;
-    TEventClass.Remove(AObj, geDeactivate);
+    TEventClass.Remove(AObj, @TEventClass.OnDeactivate);
     Exit;
   end;
   AObj.OnDeactivate := TEventClass.OnDeactivate;
-  TEventClass.Add(AObj, geDeactivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDeactivate, AEventId);
 end;
 
 procedure Form_SetOnActivate(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -186,11 +186,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnActivate := nil;
-    TEventClass.Remove(AObj, geActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnActivate);
     Exit;
   end;
   AObj.OnActivate := TEventClass.OnActivate;
-  TEventClass.Add(AObj, geActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnActivate, AEventId);
 end;
 
 procedure Form_SetOnStyleChanged(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -198,11 +198,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStyleChanged := nil;
-    TEventClass.Remove(AObj, geStyleChanged);
+    TEventClass.Remove(AObj, @TEventClass.OnStyleChanged);
     Exit;
   end;
   AObj.OnStyleChanged := TEventClass.OnStyleChanged;
-  TEventClass.Add(AObj, geStyleChanged, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnStyleChanged, AEventId);
 end;
 
 procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); stdcall;

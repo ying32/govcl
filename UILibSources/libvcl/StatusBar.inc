@@ -515,11 +515,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    TEventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
   AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, geClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure StatusBar_SetOnContextPopup(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -527,11 +527,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
   AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, geContextPopup, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure StatusBar_SetOnDblClick(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -539,11 +539,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, geDblClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure StatusBar_SetOnDragDrop(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -551,11 +551,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
   AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, geDragDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure StatusBar_SetOnDragOver(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -563,11 +563,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
   AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, geDragOver, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure StatusBar_SetOnEndDock(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -575,11 +575,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
   AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, geEndDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure StatusBar_SetOnEndDrag(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -587,11 +587,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
   AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, geEndDrag, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure StatusBar_SetOnGesture(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -599,11 +599,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 procedure StatusBar_SetOnHint(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -611,11 +611,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHint := nil;
-    TEventClass.Remove(AObj, geHint);
+    TEventClass.Remove(AObj, @TEventClass.OnHint);
     Exit;
   end;
   AObj.OnHint := TEventClass.OnHint;
-  TEventClass.Add(AObj, geHint, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnHint, AEventId);
 end;
 
 procedure StatusBar_SetOnMouseActivate(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -623,11 +623,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseActivate := nil;
-    TEventClass.Remove(AObj, geMouseActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseActivate);
     Exit;
   end;
   AObj.OnMouseActivate := TEventClass.OnMouseActivate;
-  TEventClass.Add(AObj, geMouseActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseActivate, AEventId);
 end;
 
 procedure StatusBar_SetOnMouseDown(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -635,11 +635,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
   AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, geMouseDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure StatusBar_SetOnMouseEnter(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -647,11 +647,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
   AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, geMouseEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure StatusBar_SetOnMouseLeave(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -659,11 +659,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, geMouseLeave, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure StatusBar_SetOnMouseMove(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -671,11 +671,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
   AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, geMouseMove, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure StatusBar_SetOnMouseUp(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -683,11 +683,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, geMouseUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure StatusBar_SetOnResize(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -695,11 +695,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnResize := nil;
-    TEventClass.Remove(AObj, geResize);
+    TEventClass.Remove(AObj, @TEventClass.OnResize);
     Exit;
   end;
   AObj.OnResize := TEventClass.OnResize;
-  TEventClass.Add(AObj, geResize, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
 end;
 
 procedure StatusBar_SetOnStartDock(AObj: TStatusBar; AEventId: NativeUInt); stdcall;
@@ -707,11 +707,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    TEventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
   AObj.OnStartDock := TEventClass.OnStartDock;
-  TEventClass.Add(AObj, geStartDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 function StatusBar_GetCanvas(AObj: TStatusBar): TCanvas; stdcall;

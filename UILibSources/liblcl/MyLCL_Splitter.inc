@@ -230,11 +230,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnPaint := nil;
-    EventClass.Remove(AObj, gePaint);
+    TEventClass.Remove(AObj, @TEventClass.OnPaint);
     Exit;
   end;
-  AObj.OnPaint := @EventClass.OnPaint;
-  EventClass.Add(AObj, gePaint, AEventId);
+  AObj.OnPaint := TEventClass.OnPaint;
+  TEventClass.Add(AObj, @TEventClass.OnPaint, AEventId);
 end;
 
 function Splitter_GetEnabled(AObj: TSplitter): LongBool; extdecl;

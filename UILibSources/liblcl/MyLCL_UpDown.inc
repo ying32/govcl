@@ -400,11 +400,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChanging := nil;
-    EventClass.Remove(AObj, geUpDownChanging);
+    TEventClass.Remove(AObj, @TEventClass.UpDownOnChanging);
     Exit;
   end;
-  AObj.OnChanging := @EventClass.UpDownOnChanging;
-  EventClass.Add(AObj, geUpDownChanging, AEventId);
+  AObj.OnChanging := TEventClass.UpDownOnChanging;
+  TEventClass.Add(AObj, @TEventClass.UpDownOnChanging, AEventId);
 end;
 
 procedure UpDown_SetOnContextPopup(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -412,11 +412,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  AObj.OnContextPopup := TEventClass.OnContextPopup;
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure UpDown_SetOnClick(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -424,11 +424,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    EventClass.Remove(AObj, geUpDownClick);
+    TEventClass.Remove(AObj, @TEventClass.UpDownOnClick);
     Exit;
   end;
-  AObj.OnClick := @EventClass.UpDownOnClick;
-  EventClass.Add(AObj, geUpDownClick, AEventId);
+  AObj.OnClick := TEventClass.UpDownOnClick;
+  TEventClass.Add(AObj, @TEventClass.UpDownOnClick, AEventId);
 end;
 
 procedure UpDown_SetOnEnter(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -436,11 +436,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  AObj.OnEnter := TEventClass.OnEnter;
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure UpDown_SetOnExit(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -448,11 +448,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  AObj.OnExit := TEventClass.OnExit;
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure UpDown_SetOnMouseDown(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -460,11 +460,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  AObj.OnMouseDown := TEventClass.OnMouseDown;
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure UpDown_SetOnMouseEnter(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -472,11 +472,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure UpDown_SetOnMouseLeave(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -484,11 +484,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure UpDown_SetOnMouseMove(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -496,11 +496,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  AObj.OnMouseMove := TEventClass.OnMouseMove;
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure UpDown_SetOnMouseUp(AObj: TUpDown; AEventId: NativeUInt); extdecl;
@@ -508,11 +508,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  AObj.OnMouseUp := TEventClass.OnMouseUp;
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 function UpDown_GetDockClientCount(AObj: TUpDown): Integer; extdecl;

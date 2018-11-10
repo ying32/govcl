@@ -140,11 +140,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnPopup := nil;
-    EventClass.Remove(AObj, gePopup);
+    TEventClass.Remove(AObj, @TEventClass.OnPopup);
     Exit;
   end;
-  AObj.OnPopup := @EventClass.OnPopup;
-  EventClass.Add(AObj, gePopup, AEventId);
+  AObj.OnPopup := TEventClass.OnPopup;
+  TEventClass.Add(AObj, @TEventClass.OnPopup, AEventId);
 end;
 
 function PopupMenu_GetHandle(AObj: TPopupMenu): HMENU; extdecl;

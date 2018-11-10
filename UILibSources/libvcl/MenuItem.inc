@@ -265,11 +265,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    TEventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
   AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, geClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure MenuItem_SetOnDrawItem(AObj: TMenuItem; AEventId: NativeUInt); stdcall;
@@ -277,11 +277,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDrawItem := nil;
-    TEventClass.Remove(AObj, geMenuItemDrawItem);
+    TEventClass.Remove(AObj, @TEventClass.MenuItemOnDrawItem);
     Exit;
   end;
   AObj.OnDrawItem := TEventClass.MenuItemOnDrawItem;
-  TEventClass.Add(AObj, geMenuItemDrawItem, AEventId);
+  TEventClass.Add(AObj, @TEventClass.MenuItemOnDrawItem, AEventId);
 end;
 
 procedure MenuItem_SetOnMeasureItem(AObj: TMenuItem; AEventId: NativeUInt); stdcall;
@@ -289,11 +289,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMeasureItem := nil;
-    TEventClass.Remove(AObj, geMenuItemMeasureItem);
+    TEventClass.Remove(AObj, @TEventClass.MenuItemOnMeasureItem);
     Exit;
   end;
   AObj.OnMeasureItem := TEventClass.MenuItemOnMeasureItem;
-  TEventClass.Add(AObj, geMenuItemMeasureItem, AEventId);
+  TEventClass.Add(AObj, @TEventClass.MenuItemOnMeasureItem, AEventId);
 end;
 
 function MenuItem_GetComponentCount(AObj: TMenuItem): Integer; stdcall;
