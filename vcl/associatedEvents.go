@@ -73,11 +73,14 @@ func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) 
 	tempEventTypes := make(map[string]tempItem, 0)
 
 	// 设置事件
-	setEvent := func(component IComponent, name1, name2 string) {
-		if name1 == "" {
-			name1 = component.Name()
-		}
-		if name2 == "" {
+	setEvent := func(component IComponent) {
+		name1 := component.Name()
+		name2 := name1
+		if component.Equals(form) {
+			name1 = "Form"
+			name2 = "TForm"
+		} else if component.Equals(Application) {
+			name1 = "Application"
 			name2 = name1
 		}
 		prefix := "On" + name1
@@ -98,13 +101,13 @@ func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) 
 	}
 
 	// 设置Form事件
-	setEvent(form, "Form", "TForm")
+	setEvent(form)
 
 	// 设置子组件事件
 	if subComponentEvent {
 		var i int32
 		for i = 0; i < form.ComponentCount(); i++ {
-			setEvent(form.Components(i), "", "")
+			setEvent(form.Components(i))
 		}
 
 		// 提取字段中的事件关联
@@ -125,7 +128,7 @@ func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) 
 	}
 
 	// 设置Application事件
-	setEvent(Application, "Application", "")
+	setEvent(Application)
 
 	// 最后调用OnCreate
 	callEvent(formCreate, []reflect.Value{vForm})
