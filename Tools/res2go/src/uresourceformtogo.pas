@@ -23,7 +23,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.7';
+  APPVERSION = '1.0.8';
 
 type
   TComponentItem = record
@@ -35,6 +35,7 @@ type
   TEventItem = record
     Name: string;
     RealName: string;
+    ComponentName: string;
   end;
 
   TEventType = record
@@ -463,6 +464,9 @@ var
   C: PComponentItem;
   LVarName, LFormName, LFileName: string;
   LUseStr: Boolean;
+  LItem: TEventItem;
+  LFindEvent: Boolean;
+  LReadEventName: string;
 begin
   LStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
   LBuffer := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
@@ -514,7 +518,26 @@ begin
         Continue;
       end;
       //Writeln(C^.Name, ': ', C^.ClassName);
-      WLine(Format('    %s *vcl.%s', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName]));
+      // 这里查找下，当前组件有事件，但是这个事件是共享的。
+      LReadEventName := '';
+      LFindEvent := False;
+      for LItem in AEvents do
+      begin
+        if LItem.ComponentName = C^.Name then
+        begin
+         // 当前实际关联的事件不是自己的，比如  Button2Click != Button1Click
+         if C^.Name + LItem.Name <> LItem.RealName then
+         begin
+           LFindEvent := True;
+           LReadEventName := LItem.RealName;
+           Break;
+         end;
+        end;
+      end;
+      if LFindEvent and (LReadEventName <> '') then
+        WLine(Format('    %s *vcl.%s `event:"On%s"`', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName, LReadEventName]))
+      else
+        WLine(Format('    %s *vcl.%s', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName]));
     end;
     WLine;
     // 添加一个隐式字段，用于私有，方便写一些结构定自定义的变量什么的
@@ -589,6 +612,7 @@ var
   LParser: TParser;
   LComponents: TList;
   LEventList: array of TEventItem;
+  LCurObjectName: string;
 
   procedure ProcessProperty;
   var
@@ -621,6 +645,7 @@ var
                 SetLength(LEventList, Length(LEventList)+1);
                 LEventList[High(LEventList)].Name := LPropName.Substring(2);
                 LEventList[High(LEventList)].RealName := LParser.TokenComponentIdent;
+                LEventList[High(LEventList)].ComponentName := LCurObjectName;
               end;
             end;
           end;
@@ -680,6 +705,8 @@ var
          LParser.NextToken;
        end;
      end;
+     // 保存对象名称
+     LCurObjectName := ObjectName;
      //Writeln(ObjectName, ': ', ObjectType);
      New(LItem);
      LItem^.Name := ObjectName;
