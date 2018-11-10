@@ -45,9 +45,14 @@ func main() {
 	vcl.Application.Run()
 }
 
-func (f *TForm1) OnForm1Create(sender vcl.IObject) {
+func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("onCreate")
 	f.Button1 = vcl.NewButton(f)
 	f.Button1.SetParent(f)
 	f.Button1.SetCaption("我是按钮")
+	f.Button1.SetOnClick(f.OnButton1Click)
+}
+
+func (f *TForm1) OnButton1Click(object vcl.IObject) {
+	vcl.ShowMessage("Click")
 }
