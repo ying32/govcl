@@ -23,3 +23,9 @@ func (f *TMainForm) OnButton1Click(sender vcl.IObject) {
 	About.Show()
 }
 
+
+func (f *TMainForm) OnButton2Click(sender vcl.IObject) {
+	btn := vcl.ButtonFromObj(sender)
+	vcl.ShowMessage("Name:"+btn.Name())
+}
+

@@ -1,7 +1,7 @@
 object About: TAbout
-  Left = 1065
+  Left = 745
   Height = 300
-  Top = 558
+  Top = 408
   Width = 400
   Caption = 'About'
   DesignTimePPI = 120

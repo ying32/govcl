@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 1055
+  Left = 766
   Height = 300
-  Top = 691
+  Top = 768
   Width = 400
   Caption = 'MainForm'
   ClientHeight = 300
@@ -12,10 +12,45 @@ object MainForm: TMainForm
   object Button1: TButton
     Left = 144
     Height = 31
-    Top = 120
+    Top = 40
     Width = 94
     Caption = 'Button1'
     OnClick = Button1Click
     TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 61
+    Height = 31
+    Top = 176
+    Width = 94
+    Caption = 'Button2'
+    OnClick = Button2Click
+    TabOrder = 1
+  end
+  object Button3: TButton
+    Left = 168
+    Height = 31
+    Top = 176
+    Width = 94
+    Caption = 'Button3'
+    OnClick = Button2Click
+    TabOrder = 2
+  end
+  object Button4: TButton
+    Left = 280
+    Height = 31
+    Top = 176
+    Width = 94
+    Caption = 'Button4'
+    OnClick = Button2Click
+    TabOrder = 3
+  end
+  object Label1: TLabel
+    Left = 136
+    Height = 20
+    Top = 136
+    Width = 95
+    Caption = 'Shared Event'
+    ParentColor = False
   end
 end
