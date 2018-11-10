@@ -9,7 +9,7 @@ import (
 
 // 回调过程
 func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
-	v, ok := EventCallbackMap.Load(f)
+	v, ok := EventCallbackOf(f)
 	if ok {
 
 		getVal := func(i int) uintptr {

@@ -13,8 +13,8 @@ type TGoParam struct {
 }
 
 var (
-	EventCallbackMap   sync.Map
-	MessageCallbackMap sync.Map
+	eventCallbackMap   sync.Map
+	messageCallbackMap sync.Map
 	threadSync         sync.Mutex
 )
 
@@ -45,14 +45,26 @@ func hashOf(fn interface{}) uintptr {
 
 func addEventToMap(f interface{}) uintptr {
 	p := hashOf(f)
-	EventCallbackMap.Store(p, f)
+	eventCallbackMap.Store(p, f)
 	return p
+}
+
+func EventCallbackOf(Id uintptr) (interface{}, bool) {
+	return eventCallbackMap.Load(Id)
+}
+
+func RemoveEventCallbackOf(Id uintptr) {
+	eventCallbackMap.Delete(Id)
 }
 
 func addMessageEventToMap(f interface{}) uintptr {
 	p := hashOf(f)
-	MessageCallbackMap.Store(p, f)
+	messageCallbackMap.Store(p, f)
 	return p
+}
+
+func MessageCallbackOf(Id uintptr) (interface{}, bool) {
+	return messageCallbackMap.Load(Id)
 }
 
 func SetEventCallback(ptr uintptr) {
@@ -149,7 +161,9 @@ func DSelectDirectory2(caption, root string, options TSelectDirExtOpts, parent u
 func DSynchronize(fn interface{}) {
 	threadSync.Lock()
 	defer threadSync.Unlock()
-	dSynchronize.Call(addEventToMap(fn))
+	id := addEventToMap(fn)
+	dSynchronize.Call(id)
+	RemoveEventCallbackOf(id)
 }
 
 func DInputBox(aCaption, aPrompt, aDefault string) string {

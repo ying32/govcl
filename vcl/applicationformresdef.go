@@ -94,7 +94,7 @@ func (a *TApplication) fullFiledVal(f *TForm, out interface{}) {
 			a.setFiledVal(f.Components(ci).Name(), f.Components(ci).Instance(), vPtr)
 		}
 		// 关联事件
-		associatedEvents(v, getComponents(f))
+		associatedEvents(v, f)
 	}
 }
 

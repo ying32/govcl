@@ -8,8 +8,7 @@ import (
 )
 
 func messageCallbackProc(f uintptr, msg, handled uintptr) uintptr {
-	v, ok := MessageCallbackMap.Load(f)
-	if ok {
+	if v, ok := MessageCallbackOf(f); ok {
 		v.(TWndProcEvent)(
 			(*TMessage)(unsafe.Pointer(msg)),
 			(*bool)(unsafe.Pointer(handled)),
