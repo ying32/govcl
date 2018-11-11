@@ -48,8 +48,9 @@ func main() {
 			  end;
 
 	*/
-
+	fmt.Println("allowDropFiles1:", mainForm.AllowDropFiles())
 	mainForm.SetAllowDropFiles(true)
+	fmt.Println("allowDropFiles2:", mainForm.AllowDropFiles())
 	mainForm.SetOnDropFiles(func(sender vcl.IObject, aFileNames []string) {
 		fmt.Println("当前拖放文件事件执行，文件数：", len(aFileNames))
 		for i, s := range aFileNames {

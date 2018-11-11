@@ -340,7 +340,6 @@ func main() {
 	// 样式已改变
 	mainForm.SetOnStyleChanged(func(sender vcl.IObject) {
 		fmt.Println("样式已经改变")
-		mainForm.SetAllowDropFiles(false)
 		mainForm.SetAllowDropFiles(true)
 	})
 
