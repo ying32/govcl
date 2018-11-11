@@ -332,146 +332,86 @@ end;
 
 procedure LinkLabel_SetOnClick(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClick);
-    Exit;
-  end;
-  AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnContextPopup(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnDblClick(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnDragDrop(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnDragOver(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnEndDrag(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnMouseDown(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnMouseEnter(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnMouseLeave(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnMouseMove(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnMouseUp(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 procedure LinkLabel_SetOnLinkClick(AObj: TLinkLabel; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnLinkClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnLinkClick);
-    Exit;
-  end;
-  AObj.OnLinkClick := TEventClass.OnLinkClick;
-  TEventClass.Add(AObj, @TEventClass.OnLinkClick, AEventId);
+  {$DEFINE EventName := OnLinkClick}
+  {$DEFINE EventMethodName := OnLinkClick}
+  EventMethodCode
 end;
 
 function LinkLabel_GetAction(AObj: TLinkLabel): TBasicAction; extdecl;

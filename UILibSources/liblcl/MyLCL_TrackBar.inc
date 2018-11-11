@@ -492,122 +492,72 @@ end;
 
 procedure TrackBar_SetOnContextPopup(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnChange(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnChange);
-    Exit;
-  end;
-  AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnDragDrop(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnDragOver(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnEndDrag(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnEnter(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEnter);
-    Exit;
-  end;
-  AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnExit(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnExit);
-    Exit;
-  end;
-  AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnKeyDown(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnKeyPress(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure TrackBar_SetOnKeyUp(AObj: TTrackBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 function TrackBar_GetDockClientCount(AObj: TTrackBar): Integer; extdecl;

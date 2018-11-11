@@ -442,122 +442,72 @@ end;
 
 procedure ScrollBar_SetOnContextPopup(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnChange(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnChange);
-    Exit;
-  end;
-  AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnDragDrop(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnDragOver(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnEndDrag(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnEnter(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEnter);
-    Exit;
-  end;
-  AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnExit(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnExit);
-    Exit;
-  end;
-  AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnKeyDown(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnKeyPress(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure ScrollBar_SetOnKeyUp(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 function ScrollBar_GetDockClientCount(AObj: TScrollBar): Integer; extdecl;

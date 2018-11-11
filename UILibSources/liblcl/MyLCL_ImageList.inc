@@ -232,14 +232,9 @@ end;
 
 procedure ImageList_SetOnChange(AObj: TImageList; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnChange);
-    Exit;
-  end;
-  AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 function ImageList_GetShareImages(AObj: TImageList): LongBool; extdecl;

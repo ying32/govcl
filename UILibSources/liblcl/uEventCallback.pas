@@ -327,7 +327,6 @@ end;
 
 class procedure TEventClass.Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
 begin
-  // I服了U
   if AObj is TTrayIcon then
      AObj := Application;
   FEvents.AddOrSetData(CreateEventKey(AObj, AEvent), AId);

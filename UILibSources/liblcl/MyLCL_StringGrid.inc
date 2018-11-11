@@ -552,326 +552,191 @@ end;
 
 procedure StringGrid_SetOnClick(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClick);
-    Exit;
-  end;
-  AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnColumnMoved(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnColRowMoved := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnColumnMoved);
-    Exit;
-  end;
-  AObj.OnColRowMoved := TEventClass.OnColumnMoved;
-  TEventClass.Add(AObj, @TEventClass.OnColumnMoved, AEventId);
+  {$DEFINE EventName := OnColRowMoved}
+  {$DEFINE EventMethodName := OnColumnMoved}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnContextPopup(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnDblClick(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnDragDrop(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnDragOver(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnEndDock(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
-    Exit;
-  end;
-  AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
+  {$DEFINE EventName := OnEndDock}
+  {$DEFINE EventMethodName := OnEndDock}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnEndDrag(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnEnter(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEnter);
-    Exit;
-  end;
-  AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnExit(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnExit);
-    Exit;
-  end;
-  AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnGetEditMask(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnGetEditMask := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnGetEditMask);
-    Exit;
-  end;
-  AObj.OnGetEditMask := TEventClass.OnGetEditMask;
-  TEventClass.Add(AObj, @TEventClass.OnGetEditMask, AEventId);
+  {$DEFINE EventName := OnGetEditMask}
+  {$DEFINE EventMethodName := OnGetEditMask}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnGetEditText(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnGetEditText := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnGetEditText);
-    Exit;
-  end;
-  AObj.OnGetEditText := TEventClass.OnGetEditText;
-  TEventClass.Add(AObj, @TEventClass.OnGetEditText, AEventId);
+  {$DEFINE EventName := OnGetEditText}
+  {$DEFINE EventMethodName := OnGetEditText}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnKeyDown(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnKeyPress(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnKeyUp(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnMouseDown(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnMouseEnter(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnMouseLeave(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnMouseMove(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnMouseUp(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnMouseWheelDown(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseWheelDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelDown);
-    Exit;
-  end;
-  AObj.OnMouseWheelDown := TEventClass.OnMouseWheelDown;
-  TEventClass.Add(AObj, @TEventClass.OnMouseWheelDown, AEventId);
+  {$DEFINE EventName := OnMouseWheelDown}
+  {$DEFINE EventMethodName := OnMouseWheelDown}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnMouseWheelUp(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseWheelUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelUp);
-    Exit;
-  end;
-  AObj.OnMouseWheelUp := TEventClass.OnMouseWheelUp;
-  TEventClass.Add(AObj, @TEventClass.OnMouseWheelUp, AEventId);
+  {$DEFINE EventName := OnMouseWheelUp}
+  {$DEFINE EventMethodName := OnMouseWheelUp}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnRowMoved(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnColRowMoved := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnRowMoved);
-    Exit;
-  end;
-  AObj.OnColRowMoved := TEventClass.OnRowMoved;
-  TEventClass.Add(AObj, @TEventClass.OnRowMoved, AEventId);
+  {$DEFINE EventName := OnColRowMoved}
+  {$DEFINE EventMethodName := OnRowMoved}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnSelectCell(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSelectCell := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnSelectCell);
-    Exit;
-  end;
-  AObj.OnSelectCell := TEventClass.OnSelectCell;
-  TEventClass.Add(AObj, @TEventClass.OnSelectCell, AEventId);
+  {$DEFINE EventName := OnSelectCell}
+  {$DEFINE EventMethodName := OnSelectCell}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnSetEditText(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSetEditText := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnSetEditText);
-    Exit;
-  end;
-  AObj.OnSetEditText := TEventClass.OnSetEditText;
-  TEventClass.Add(AObj, @TEventClass.OnSetEditText, AEventId);
+  {$DEFINE EventName := OnSetEditText}
+  {$DEFINE EventMethodName := OnSetEditText}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnStartDock(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnStartDock := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
-    Exit;
-  end;
-  AObj.OnStartDock := TEventClass.OnStartDock;
-  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
+  {$DEFINE EventName := OnStartDock}
+  {$DEFINE EventMethodName := OnStartDock}
+  EventMethodCode
 end;
 
 procedure StringGrid_SetOnTopLeftChanged(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnTopLeftChanged := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnTopLeftChanged);
-    Exit;
-  end;
-  AObj.OnTopLeftChanged := TEventClass.OnTopLeftChanged;
-  TEventClass.Add(AObj, @TEventClass.OnTopLeftChanged, AEventId);
+  {$DEFINE EventName := OnTopLeftChanged}
+  {$DEFINE EventMethodName := OnTopLeftChanged}
+  EventMethodCode
 end;
 
 function StringGrid_GetCanvas(AObj: TStringGrid): TCanvas; extdecl;

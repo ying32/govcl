@@ -457,194 +457,114 @@ end;
 
 procedure ColorListBox_SetOnClick(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClick);
-    Exit;
-  end;
-  AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnContextPopup(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnDblClick(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnDragDrop(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnDragOver(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnEndDrag(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnEnter(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEnter);
-    Exit;
-  end;
-  AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnExit(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnExit);
-    Exit;
-  end;
-  AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnKeyDown(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnKeyPress(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnKeyUp(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnMouseDown(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnMouseEnter(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnMouseLeave(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnMouseMove(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure ColorListBox_SetOnMouseUp(AObj: TColorListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 function ColorListBox_GetCanvas(AObj: TColorListBox): TCanvas; extdecl;

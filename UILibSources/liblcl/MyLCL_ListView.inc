@@ -703,434 +703,254 @@ end;
 
 procedure ListView_SetOnAdvancedCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnAdvancedCustomDraw := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnAdvancedCustomDraw);
-    Exit;
-  end;
-  AObj.OnAdvancedCustomDraw := TEventClass.ListViewOnAdvancedCustomDraw;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnAdvancedCustomDraw, AEventId);
+  {$DEFINE EventName := OnAdvancedCustomDraw}
+  {$DEFINE EventMethodName := ListViewOnAdvancedCustomDraw}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnAdvancedCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnAdvancedCustomDrawItem := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnAdvancedCustomDrawItem);
-    Exit;
-  end;
-  AObj.OnAdvancedCustomDrawItem := TEventClass.ListViewOnAdvancedCustomDrawItem;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnAdvancedCustomDrawItem, AEventId);
+  {$DEFINE EventName := OnAdvancedCustomDrawItem}
+  {$DEFINE EventMethodName := ListViewOnAdvancedCustomDrawItem}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnAdvancedCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnAdvancedCustomDrawSubItem := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnAdvancedCustomDrawSubItem);
-    Exit;
-  end;
-  AObj.OnAdvancedCustomDrawSubItem := TEventClass.ListViewOnAdvancedCustomDrawSubItem;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnAdvancedCustomDrawSubItem, AEventId);
+  {$DEFINE EventName := OnAdvancedCustomDrawSubItem}
+  {$DEFINE EventMethodName := ListViewOnAdvancedCustomDrawSubItem}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnChange(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnChange);
-    Exit;
-  end;
-  AObj.OnChange := TEventClass.ListViewOnChange;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := ListViewOnChange}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClick);
-    Exit;
-  end;
-  AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnColumnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnColumnClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnColumnClick);
-    Exit;
-  end;
-  AObj.OnColumnClick := TEventClass.ListViewOnColumnClick;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnColumnClick, AEventId);
+  {$DEFINE EventName := OnColumnClick}
+  {$DEFINE EventMethodName := ListViewOnColumnClick}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnCompare(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCompare := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnCompare);
-    Exit;
-  end;
-  AObj.OnCompare := TEventClass.ListViewOnCompare;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnCompare, AEventId);
+  {$DEFINE EventName := OnCompare}
+  {$DEFINE EventMethodName := ListViewOnCompare}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnContextPopup(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCustomDraw := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnCustomDraw);
-    Exit;
-  end;
-  AObj.OnCustomDraw := TEventClass.ListViewOnCustomDraw;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnCustomDraw, AEventId);
+  {$DEFINE EventName := OnCustomDraw}
+  {$DEFINE EventMethodName := ListViewOnCustomDraw}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCustomDrawItem := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnCustomDrawItem);
-    Exit;
-  end;
-  AObj.OnCustomDrawItem := TEventClass.ListViewOnCustomDrawItem;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnCustomDrawItem, AEventId);
+  {$DEFINE EventName := OnCustomDrawItem}
+  {$DEFINE EventMethodName := ListViewOnCustomDrawItem}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCustomDrawSubItem := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnCustomDrawSubItem);
-    Exit;
-  end;
-  AObj.OnCustomDrawSubItem := TEventClass.ListViewOnCustomDrawSubItem;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnCustomDrawSubItem, AEventId);
+  {$DEFINE EventName := OnCustomDrawSubItem}
+  {$DEFINE EventMethodName := ListViewOnCustomDrawSubItem}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnData := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnData);
-    Exit;
-  end;
-  AObj.OnData := TEventClass.ListViewOnData;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnData, AEventId);
+  {$DEFINE EventName := OnData}
+  {$DEFINE EventMethodName := ListViewOnData}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnDataFind(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDataFind := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnDataFind);
-    Exit;
-  end;
-  AObj.OnDataFind := TEventClass.ListViewOnDataFind;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnDataFind, AEventId);
+  {$DEFINE EventName := OnDataFind}
+  {$DEFINE EventMethodName := ListViewOnDataFind}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnDeletion(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDeletion := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnDeletion);
-    Exit;
-  end;
-  AObj.OnDeletion := TEventClass.ListViewOnDeletion;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnDeletion, AEventId);
+  {$DEFINE EventName := OnDeletion}
+  {$DEFINE EventMethodName := ListViewOnDeletion}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnEdited(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEdited := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnEdited);
-    Exit;
-  end;
-  AObj.OnEdited := TEventClass.ListViewOnEdited;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnEdited, AEventId);
+  {$DEFINE EventName := OnEdited}
+  {$DEFINE EventMethodName := ListViewOnEdited}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnEditing(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEditing := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnEditing);
-    Exit;
-  end;
-  AObj.OnEditing := TEventClass.ListViewOnEditing;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnEditing, AEventId);
+  {$DEFINE EventName := OnEditing}
+  {$DEFINE EventMethodName := ListViewOnEditing}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnEndDock(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
-    Exit;
-  end;
-  AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
+  {$DEFINE EventName := OnEndDock}
+  {$DEFINE EventMethodName := OnEndDock}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnEndDrag(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEnter);
-    Exit;
-  end;
-  AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnExit(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnExit);
-    Exit;
-  end;
-  AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnDragDrop(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnDragOver(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnInsert(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnInsert := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnInsert);
-    Exit;
-  end;
-  AObj.OnInsert := TEventClass.ListViewOnInsert;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnInsert, AEventId);
+  {$DEFINE EventName := OnInsert}
+  {$DEFINE EventMethodName := ListViewOnInsert}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnKeyDown(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnKeyPress(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnKeyUp(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnMouseDown(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnMouseEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnMouseLeave(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnMouseMove(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnMouseUp(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnResize(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnResize := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnResize);
-    Exit;
-  end;
-  AObj.OnResize := TEventClass.OnResize;
-  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
+  {$DEFINE EventName := OnResize}
+  {$DEFINE EventMethodName := OnResize}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnSelectItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSelectItem := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnSelectItem);
-    Exit;
-  end;
-  AObj.OnSelectItem := TEventClass.ListViewOnSelectItem;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnSelectItem, AEventId);
+  {$DEFINE EventName := OnSelectItem}
+  {$DEFINE EventMethodName := ListViewOnSelectItem}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnItemChecked(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnItemChecked := nil;
-    TEventClass.Remove(AObj, @TEventClass.ListViewOnItemChecked);
-    Exit;
-  end;
-  AObj.OnItemChecked := TEventClass.ListViewOnItemChecked;
-  TEventClass.Add(AObj, @TEventClass.ListViewOnItemChecked, AEventId);
+  {$DEFINE EventName := OnItemChecked}
+  {$DEFINE EventMethodName := ListViewOnItemChecked}
+  EventMethodCode
 end;
 
 procedure ListView_SetOnStartDock(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnStartDock := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
-    Exit;
-  end;
-  AObj.OnStartDock := TEventClass.OnStartDock;
-  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
+  {$DEFINE EventName := OnStartDock}
+  {$DEFINE EventMethodName := OnStartDock}
+  EventMethodCode
 end;
 
 function ListView_GetCanvas(AObj: TListView): TCanvas; extdecl;

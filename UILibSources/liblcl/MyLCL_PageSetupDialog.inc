@@ -157,26 +157,16 @@ end;
 
 procedure PageSetupDialog_SetOnClose(AObj: TPageSetupDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClose);
-    Exit;
-  end;
-  AObj.OnClose := TEventClass.OnClose;
-  TEventClass.Add(AObj, @TEventClass.OnClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := OnClose}
+  EventMethodCode
 end;
 
 procedure PageSetupDialog_SetOnShow(AObj: TPageSetupDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnShow);
-    Exit;
-  end;
-  AObj.OnShow := TEventClass.OnShow;
-  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 function PageSetupDialog_GetComponentCount(AObj: TPageSetupDialog): Integer; extdecl;

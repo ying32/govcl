@@ -157,26 +157,16 @@ end;
 
 procedure OpenDialog_SetOnClose(AObj: TOpenDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClose);
-    Exit;
-  end;
-  AObj.OnClose := TEventClass.OnClose;
-  TEventClass.Add(AObj, @TEventClass.OnClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := OnClose}
+  EventMethodCode
 end;
 
 procedure OpenDialog_SetOnShow(AObj: TOpenDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnShow);
-    Exit;
-  end;
-  AObj.OnShow := TEventClass.OnShow;
-  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 function OpenDialog_GetComponentCount(AObj: TOpenDialog): Integer; extdecl;

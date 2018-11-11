@@ -162,26 +162,16 @@ end;
 
 procedure Action_SetOnExecute(AObj: TAction; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExecute := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnExecute);
-    Exit;
-  end;
-  AObj.OnExecute := TEventClass.OnExecute;
-  TEventClass.Add(AObj, @TEventClass.OnExecute, AEventId);
+  {$DEFINE EventName := OnExecute}
+  {$DEFINE EventMethodName := OnExecute}
+  EventMethodCode
 end;
 
 procedure Action_SetOnUpdate(AObj: TAction; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnUpdate := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnUpdate);
-    Exit;
-  end;
-  AObj.OnUpdate := TEventClass.OnUpdate;
-  TEventClass.Add(AObj, @TEventClass.OnUpdate, AEventId);
+  {$DEFINE EventName := OnUpdate}
+  {$DEFINE EventMethodName := OnUpdate}
+  EventMethodCode
 end;
 
 function Action_GetIndex(AObj: TAction): Integer; extdecl;

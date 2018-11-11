@@ -387,194 +387,114 @@ end;
 
 procedure HeaderControl_SetOnContextPopup(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnDragDrop(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnDragOver(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnEndDock(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
-    Exit;
-  end;
-  AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
+  {$DEFINE EventName := OnEndDock}
+  {$DEFINE EventMethodName := OnEndDock}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnEndDrag(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnMouseDown(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnMouseEnter(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnMouseLeave(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnMouseMove(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnMouseUp(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnResize(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnResize := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnResize);
-    Exit;
-  end;
-  AObj.OnResize := TEventClass.OnResize;
-  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
+  {$DEFINE EventName := OnResize}
+  {$DEFINE EventMethodName := OnResize}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnSectionClick(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSectionClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnSectionClick);
-    Exit;
-  end;
-  AObj.OnSectionClick := TEventClass.OnSectionClick;
-  TEventClass.Add(AObj, @TEventClass.OnSectionClick, AEventId);
+  {$DEFINE EventName := OnSectionClick}
+  {$DEFINE EventMethodName := OnSectionClick}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnSectionResize(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSectionResize := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnSectionResize);
-    Exit;
-  end;
-  AObj.OnSectionResize := TEventClass.OnSectionResize;
-  TEventClass.Add(AObj, @TEventClass.OnSectionResize, AEventId);
+  {$DEFINE EventName := OnSectionResize}
+  {$DEFINE EventMethodName := OnSectionResize}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnSectionTrack(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSectionTrack := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnSectionTrack);
-    Exit;
-  end;
-  AObj.OnSectionTrack := TEventClass.OnSectionTrack;
-  TEventClass.Add(AObj, @TEventClass.OnSectionTrack, AEventId);
+  {$DEFINE EventName := OnSectionTrack}
+  {$DEFINE EventMethodName := OnSectionTrack}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnSectionDrag(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSectionDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnSectionDrag);
-    Exit;
-  end;
-  AObj.OnSectionDrag := TEventClass.OnSectionDrag;
-  TEventClass.Add(AObj, @TEventClass.OnSectionDrag, AEventId);
+  {$DEFINE EventName := OnSectionDrag}
+  {$DEFINE EventMethodName := OnSectionDrag}
+  EventMethodCode
 end;
 
 procedure HeaderControl_SetOnSectionEndDrag(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnSectionEndDrag := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnSectionEndDrag);
-    Exit;
-  end;
-  AObj.OnSectionEndDrag := TEventClass.OnSectionEndDrag;
-  TEventClass.Add(AObj, @TEventClass.OnSectionEndDrag, AEventId);
+  {$DEFINE EventName := OnSectionEndDrag}
+  {$DEFINE EventMethodName := OnSectionEndDrag}
+  EventMethodCode
 end;
 
 function HeaderControl_GetCanvas(AObj: THeaderControl): TCanvas; extdecl;

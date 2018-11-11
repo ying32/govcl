@@ -237,26 +237,16 @@ end;
 
 procedure MenuItem_SetOnClick(AObj: TMenuItem; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClick);
-    Exit;
-  end;
-  AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure MenuItem_SetOnMeasureItem(AObj: TMenuItem; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMeasureItem := nil;
-    TEventClass.Remove(AObj, @TEventClass.MenuItemOnMeasureItem);
-    Exit;
-  end;
-  AObj.OnMeasureItem := TEventClass.MenuItemOnMeasureItem;
-  TEventClass.Add(AObj, @TEventClass.MenuItemOnMeasureItem, AEventId);
+  {$DEFINE EventName := OnMeasureItem}
+  {$DEFINE EventMethodName := MenuItemOnMeasureItem}
+  EventMethodCode
 end;
 
 function MenuItem_GetComponentCount(AObj: TMenuItem): Integer; extdecl;

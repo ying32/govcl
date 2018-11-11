@@ -161,62 +161,37 @@ end;
 
 procedure Form_SetOnDropFiles(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDropFiles := nil;
-    TEventClass.Remove(AObj, @TEventClass.FormOnDropFiles);
-    Exit;
-  end;
-  AObj.OnDropFiles := TEventClass.FormOnDropFiles;
-  TEventClass.Add(AObj, @TEventClass.FormOnDropFiles, AEventId);
+  {$DEFINE EventName := OnDropFiles}
+  {$DEFINE EventMethodName := FormOnDropFiles}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDestroy(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDestroy := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDestroy);
-    Exit;
-  end;
-  AObj.OnDestroy := TEventClass.OnDestroy;
-  TEventClass.Add(AObj, @TEventClass.OnDestroy, AEventId);
+  {$DEFINE EventName := OnDestroy}
+  {$DEFINE EventMethodName := OnDestroy}
+  EventMethodCode
 end;
 
 procedure Form_SetOnConstrainedResize(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnConstrainedResize := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnConstrainedResize);
-    Exit;
-  end;
-  AObj.OnConstrainedResize := TEventClass.OnConstrainedResize;
-  TEventClass.Add(AObj, @TEventClass.OnConstrainedResize, AEventId);
+  {$DEFINE EventName := OnConstrainedResize}
+  {$DEFINE EventMethodName := OnConstrainedResize}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDeactivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDeactivate := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnDeactivate);
-    Exit;
-  end;
-  AObj.OnDeactivate := TEventClass.OnDeactivate;
-  TEventClass.Add(AObj, @TEventClass.OnDeactivate, AEventId);
+  {$DEFINE EventName := OnDeactivate}
+  {$DEFINE EventMethodName := OnDeactivate}
+  EventMethodCode
 end;
 
 procedure Form_SetOnActivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnActivate := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnActivate);
-    Exit;
-  end;
-  AObj.OnActivate := TEventClass.OnActivate;
-  TEventClass.Add(AObj, @TEventClass.OnActivate, AEventId);
+  {$DEFINE EventName := OnActivate}
+  {$DEFINE EventMethodName := OnActivate}
+  EventMethodCode
 end;
 
 procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); extdecl;

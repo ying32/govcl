@@ -162,26 +162,16 @@ end;
 
 procedure StringList_SetOnChange(AObj: TStringList; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnChange);
-    Exit;
-  end;
-  AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure StringList_SetOnChanging(AObj: TStringList; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChanging := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnChanging);
-    Exit;
-  end;
-  AObj.OnChanging := TEventClass.OnChanging;
-  TEventClass.Add(AObj, @TEventClass.OnChanging, AEventId);
+  {$DEFINE EventName := OnChanging}
+  {$DEFINE EventMethodName := OnChanging}
+  EventMethodCode
 end;
 
 function StringList_GetCapacity(AObj: TStringList): Integer; extdecl;

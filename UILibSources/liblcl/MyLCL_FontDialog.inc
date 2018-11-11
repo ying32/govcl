@@ -102,26 +102,16 @@ end;
 
 procedure FontDialog_SetOnClose(AObj: TFontDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnClose);
-    Exit;
-  end;
-  AObj.OnClose := TEventClass.OnClose;
-  TEventClass.Add(AObj, @TEventClass.OnClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := OnClose}
+  EventMethodCode
 end;
 
 procedure FontDialog_SetOnShow(AObj: TFontDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    TEventClass.Remove(AObj, @TEventClass.OnShow);
-    Exit;
-  end;
-  AObj.OnShow := TEventClass.OnShow;
-  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 function FontDialog_GetComponentCount(AObj: TFontDialog): Integer; extdecl;
