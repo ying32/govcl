@@ -13,20 +13,21 @@ type
 
   TGoForm = class(TForm)
   private
-    FAllowDropFiles: Boolean;
     FOnDropFiles: TDropFilesEvent;
     FOnStyleChanged: TNotifyEvent;
     FOnWndProc: TWndProcEvent;
+    FAllowDropFiles: Boolean;
     procedure SetAllowDropFiles(const Value: Boolean);
     procedure WMDropFiles(var Msg: TWMDropFiles); message WM_DROPFILES;
     procedure CMStyleChanged(var Msg: TMessage); message CM_STYLECHANGED;
+    function GetAllowDropFiles: Boolean;
   protected
     procedure InitializeNewForm; override;
   public
     constructor Create(AOwner: TComponent); override;
     procedure WndProc(var AMsg: TMessage); override;
   published
-    property AllowDropFiles: Boolean read FAllowDropFiles write SetAllowDropFiles;
+    property AllowDropFiles: Boolean read GetAllowDropFiles write SetAllowDropFiles;
     property OnDropFiles: TDropFilesEvent read FOnDropFiles write FOnDropFiles;
     property OnStyleChanged: TNotifyEvent read FOnStyleChanged write FOnStyleChanged;
     property OnWndProc: TWndProcEvent read FOnWndProc write FOnWndProc;
@@ -78,6 +79,10 @@ end;
 procedure TGoForm.CMStyleChanged(var Msg: TMessage);
 begin
   inherited;
+  // 修复样式造成的问题，如果设置了允许拖放，但实际窗口风格中已经不存在了，则
+  // 重新设置。
+  if FAllowDropFiles and not AllowDropFiles then
+    AllowDropFiles := True;
   if Assigned(FOnStyleChanged) then
     FOnStyleChanged(Self);
 end;
@@ -104,6 +109,11 @@ begin
   ControlStyle := ControlStyle + [csPaintBlackOpaqueOnGlass];
 end;
 
+function TGoForm.GetAllowDropFiles: Boolean;
+begin
+  Result := (GetWindowLong(Handle, GWL_EXSTYLE) and WS_EX_ACCEPTFILES) <> 0;
+end;
+
 procedure TGoForm.InitializeNewForm;
 begin
   inherited InitializeNewForm;
@@ -117,11 +127,9 @@ end;
 
 procedure TGoForm.SetAllowDropFiles(const Value: Boolean);
 begin
-  if FAllowDropFiles <> Value then
-  begin
-    FAllowDropFiles := Value;
+  FAllowDropFiles := Value;
+  if AllowDropFiles <> Value then
     DragAcceptFiles(Handle, Value);
-  end;
 end;
 
 procedure TGoForm.WMDropFiles(var Msg: TWMDropFiles);
