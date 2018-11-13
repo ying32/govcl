@@ -53,6 +53,6 @@
 | res2goTest | res2go 工具测试例程 | |  
 | messageTest | 跨平台的窗口消息捕获，与WindowsMessages例程功能一样，只是可以跨平台 | |  
 | printer | 打印机操作 | |  
-| multilanguage | 多国语言演示例程 | |
-
+| multilanguage | 多国语言演示例程 | |  
+| miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl,  liblcl macOS,cocoa |  
 
