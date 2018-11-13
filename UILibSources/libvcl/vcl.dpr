@@ -65,7 +65,8 @@ uses
   ufrmGo in 'ufrmGo.pas' {GoForm},
   ImageButton in 'ImageButton.pas',
   uImages in 'uImages.pas',
-  uComponents in 'uComponents.pas';
+  uComponents in 'uComponents.pas',
+  uMiniWebview in 'uMiniWebview.pas';
 
 {$R *.res}
 
@@ -154,6 +155,7 @@ uses
 {$I StatusPanels.inc}
 {$I StatusPanel.inc}
 {$I SpinEdit.inc}
+{$I MiniWebview.inc}
 {$I Canvas.inc}
 {$I Object.inc}
 {$I PngImage.inc}

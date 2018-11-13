@@ -257,6 +257,9 @@ type
 
     class procedure MenuOnChange(Sender: TObject; Source: TMenuItem; Rebuild: Boolean);
 
+    // webbrowser
+    class procedure OnTitleChange(Sender: TObject; const Text: string);
+
     class procedure Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
     class procedure AddClick(Sender: TObject; AId: NativeUInt);
     class procedure Remove(AObj: TObject; AEvent: Pointer);
@@ -1007,6 +1010,11 @@ end;
 class procedure TEventClass.OnTimer(Sender: TObject);
 begin
   SendEvent(Sender, @TEventClass.OnTimer, [Sender]);
+end;
+
+class procedure TEventClass.OnTitleChange(Sender: TObject; const Text: string);
+begin
+  SendEvent(Sender, @TEventClass.OnTitleChange, [Sender, Text]);
 end;
 
 class procedure TEventClass.OnUpdate(Sender: TObject);

@@ -41580,6 +41580,670 @@ func SpinEdit_StaticClassType() TClass {
     return TClass(r)
 }
 
+//--------------------------- TMiniWebview ---------------------------
+
+func MiniWebview_Create(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_Create.Call(obj)
+    return ret
+}
+
+func MiniWebview_Free(obj uintptr) {
+    miniWebview_Free.Call(obj)
+}
+
+func MiniWebview_Navigate(obj uintptr, AURL string)  {
+    miniWebview_Navigate.Call(obj, GoStrToDStr(AURL) )
+}
+
+func MiniWebview_GoBack(obj uintptr)  {
+    miniWebview_GoBack.Call(obj)
+}
+
+func MiniWebview_GoForward(obj uintptr)  {
+    miniWebview_GoForward.Call(obj)
+}
+
+func MiniWebview_GoHome(obj uintptr)  {
+    miniWebview_GoHome.Call(obj)
+}
+
+func MiniWebview_GoSearch(obj uintptr)  {
+    miniWebview_GoSearch.Call(obj)
+}
+
+func MiniWebview_Refresh(obj uintptr)  {
+    miniWebview_Refresh.Call(obj)
+}
+
+func MiniWebview_Stop(obj uintptr)  {
+    miniWebview_Stop.Call(obj)
+}
+
+func MiniWebview_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    miniWebview_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func MiniWebview_CanFocus(obj uintptr) bool {
+    ret, _, _ := miniWebview_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := miniWebview_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := miniWebview_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func MiniWebview_DisableAlign(obj uintptr)  {
+    miniWebview_DisableAlign.Call(obj)
+}
+
+func MiniWebview_EnableAlign(obj uintptr)  {
+    miniWebview_EnableAlign.Call(obj)
+}
+
+func MiniWebview_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := miniWebview_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func MiniWebview_FlipChildren(obj uintptr, AllLevels bool)  {
+    miniWebview_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func MiniWebview_Focused(obj uintptr) bool {
+    ret, _, _ := miniWebview_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := miniWebview_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_InsertControl(obj uintptr, AControl uintptr)  {
+    miniWebview_InsertControl.Call(obj, AControl )
+}
+
+func MiniWebview_Invalidate(obj uintptr)  {
+    miniWebview_Invalidate.Call(obj)
+}
+
+func MiniWebview_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
+    miniWebview_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
+}
+
+func MiniWebview_RemoveControl(obj uintptr, AControl uintptr)  {
+    miniWebview_RemoveControl.Call(obj, AControl )
+}
+
+func MiniWebview_Realign(obj uintptr)  {
+    miniWebview_Realign.Call(obj)
+}
+
+func MiniWebview_Repaint(obj uintptr)  {
+    miniWebview_Repaint.Call(obj)
+}
+
+func MiniWebview_ScaleBy(obj uintptr, M int32, D int32)  {
+    miniWebview_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func MiniWebview_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    miniWebview_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func MiniWebview_SetFocus(obj uintptr)  {
+    miniWebview_SetFocus.Call(obj)
+}
+
+func MiniWebview_Update(obj uintptr)  {
+    miniWebview_Update.Call(obj)
+}
+
+func MiniWebview_UpdateControlState(obj uintptr)  {
+    miniWebview_UpdateControlState.Call(obj)
+}
+
+func MiniWebview_BringToFront(obj uintptr)  {
+    miniWebview_BringToFront.Call(obj)
+}
+
+func MiniWebview_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    miniWebview_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MiniWebview_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    miniWebview_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MiniWebview_Dragging(obj uintptr) bool {
+    ret, _, _ := miniWebview_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_HasParent(obj uintptr) bool {
+    ret, _, _ := miniWebview_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_Hide(obj uintptr)  {
+    miniWebview_Hide.Call(obj)
+}
+
+func MiniWebview_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := miniWebview_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func MiniWebview_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    miniWebview_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MiniWebview_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    miniWebview_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MiniWebview_SendToBack(obj uintptr)  {
+    miniWebview_SendToBack.Call(obj)
+}
+
+func MiniWebview_Show(obj uintptr)  {
+    miniWebview_Show.Call(obj)
+}
+
+func MiniWebview_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
+    ret, _, _ := miniWebview_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+    return int32(ret)
+}
+
+func MiniWebview_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetTextBuf(obj uintptr, Buffer string)  {
+    miniWebview_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
+func MiniWebview_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := miniWebview_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func MiniWebview_GetNamePath(obj uintptr) string {
+    ret, _, _ := miniWebview_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MiniWebview_Assign(obj uintptr, Source uintptr)  {
+    miniWebview_Assign.Call(obj, Source )
+}
+
+func MiniWebview_DisposeOf(obj uintptr)  {
+    miniWebview_DisposeOf.Call(obj)
+}
+
+func MiniWebview_ClassType(obj uintptr) TClass {
+    ret, _, _ := miniWebview_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func MiniWebview_ClassName(obj uintptr) string {
+    ret, _, _ := miniWebview_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MiniWebview_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := miniWebview_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := miniWebview_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := miniWebview_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_ToString(obj uintptr) string {
+    ret, _, _ := miniWebview_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MiniWebview_GetReadyState(obj uintptr) TReadyState {
+    ret, _, _ := miniWebview_GetReadyState.Call(obj)
+    return TReadyState(ret)
+}
+
+func MiniWebview_SetOnTitleChange(obj uintptr, fn interface{}) {
+    miniWebview_SetOnTitleChange.Call(obj, addEventToMap(fn))
+}
+
+func MiniWebview_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetDockSite(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetDockSite(obj uintptr, value bool) {
+   miniWebview_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetDoubleBuffered(obj uintptr, value bool) {
+   miniWebview_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetAlignDisabled(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetAlignDisabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetBrush.Call(obj)
+    return ret
+}
+
+func MiniWebview_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetHandle(obj uintptr) HWND {
+    ret, _, _ := miniWebview_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func MiniWebview_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetParentDoubleBuffered(obj uintptr, value bool) {
+   miniWebview_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := miniWebview_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func MiniWebview_SetParentWindow(obj uintptr, value HWND) {
+   miniWebview_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := miniWebview_GetTabOrder.Call(obj)
+    return TTabOrder(ret)
+}
+
+func MiniWebview_SetTabOrder(obj uintptr, value TTabOrder) {
+   miniWebview_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetTabStop(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetTabStop(obj uintptr, value bool) {
+   miniWebview_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetUseDockManager(obj uintptr, value bool) {
+   miniWebview_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetEnabled(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetEnabled(obj uintptr, value bool) {
+   miniWebview_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetAction(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetAction.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetAction(obj uintptr, value uintptr) {
+   miniWebview_SetAction.Call(obj, value)
+}
+
+func MiniWebview_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := miniWebview_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func MiniWebview_SetAlign(obj uintptr, value TAlign) {
+   miniWebview_SetAlign.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := miniWebview_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func MiniWebview_SetAnchors(obj uintptr, value TAnchors) {
+   miniWebview_SetAnchors.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := miniWebview_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func MiniWebview_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   miniWebview_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    miniWebview_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MiniWebview_SetBoundsRect(obj uintptr, value TRect) {
+   miniWebview_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func MiniWebview_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetClientHeight(obj uintptr, value int32) {
+   miniWebview_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    miniWebview_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MiniWebview_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    miniWebview_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MiniWebview_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetClientWidth(obj uintptr, value int32) {
+   miniWebview_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := miniWebview_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func MiniWebview_SetControlState(obj uintptr, value TControlState) {
+   miniWebview_SetControlState.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := miniWebview_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func MiniWebview_SetControlStyle(obj uintptr, value TControlStyle) {
+   miniWebview_SetControlStyle.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetFloating(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_GetShowHint(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetShowHint(obj uintptr, value bool) {
+   miniWebview_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetVisible(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetVisible(obj uintptr, value bool) {
+   miniWebview_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetParent(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetParent.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetParent(obj uintptr, value uintptr) {
+   miniWebview_SetParent.Call(obj, value)
+}
+
+func MiniWebview_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := miniWebview_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func MiniWebview_SetStyleElements(obj uintptr, value TStyleElements) {
+   miniWebview_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func MiniWebview_SetOnGesture(obj uintptr, fn interface{}) {
+    miniWebview_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func MiniWebview_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetAlignWithMargins(obj uintptr, value bool) {
+   miniWebview_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetLeft(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetLeft(obj uintptr, value int32) {
+   miniWebview_SetLeft.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetTop(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetTop(obj uintptr, value int32) {
+   miniWebview_SetTop.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetWidth(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetWidth(obj uintptr, value int32) {
+   miniWebview_SetWidth.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetHeight(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetHeight(obj uintptr, value int32) {
+   miniWebview_SetHeight.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := miniWebview_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func MiniWebview_SetCursor(obj uintptr, value TCursor) {
+   miniWebview_SetCursor.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetHint(obj uintptr) string {
+    ret, _, _ := miniWebview_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MiniWebview_SetHint(obj uintptr, value string) {
+   miniWebview_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func MiniWebview_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetMargins.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetMargins(obj uintptr, value uintptr) {
+   miniWebview_SetMargins.Call(obj, value)
+}
+
+func MiniWebview_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetCustomHint.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetCustomHint(obj uintptr, value uintptr) {
+   miniWebview_SetCustomHint.Call(obj, value)
+}
+
+func MiniWebview_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := miniWebview_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func MiniWebview_SetComponentIndex(obj uintptr, value int32) {
+   miniWebview_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetOwner.Call(obj)
+    return ret
+}
+
+func MiniWebview_GetName(obj uintptr) string {
+    ret, _, _ := miniWebview_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MiniWebview_SetName(obj uintptr, value string) {
+   miniWebview_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func MiniWebview_GetTag(obj uintptr) int {
+    ret, _, _ := miniWebview_GetTag.Call(obj)
+    return int(ret)
+}
+
+func MiniWebview_SetTag(obj uintptr, value int) {
+   miniWebview_SetTag.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := miniWebview_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
+func MiniWebview_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := miniWebview_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func MiniWebview_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := miniWebview_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func MiniWebview_StaticClassType() TClass {
+    r, _, _:= miniWebview_StaticClassType.Call()
+    return TClass(r)
+}
+
 //--------------------------- TCanvas ---------------------------
 
 func Canvas_Create() uintptr {

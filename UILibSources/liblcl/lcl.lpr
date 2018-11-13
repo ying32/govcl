@@ -74,6 +74,7 @@ uses
   uEventCallback in 'uEventCallback.pas',
   ImageButton in 'ImageButton.pas',
   Gauges in 'Gauges.pas',
+  uMiniWebview in 'uMiniWebview.pas',
   uComponents,
   uGoForm;
 
@@ -154,6 +155,7 @@ uses
 {$I MyLCL_StatusPanels.inc}
 {$I MyLCL_StatusPanel.inc}
 {$I MyLCL_SpinEdit.inc}
+{$I MyLCL_MiniWebview.inc}
 {$I MyLCL_Canvas.inc}
 {$I MyLCL_Object.inc}
 {$I MyLCL_Graphic.inc}

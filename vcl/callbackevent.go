@@ -734,6 +734,12 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				TCustomDrawStage(getVal(2)),
 				(*bool)(unsafe.Pointer(getVal(3))))
 
+			// type TWebTitleChangeEvent func(sender IObject, text string)
+		case TWebTitleChangeEvent:
+			v.(TWebTitleChangeEvent)(
+				ObjectFromInst(getVal(0)),
+				DStrToGoStr(getVal(1)))
+
 		default:
 		}
 	}

@@ -1957,3 +1957,13 @@ const (
 )
 
 type TPrinterCapabilities = uint32
+
+type TReadyState int32
+
+const (
+	RsUninitialized = iota + 0
+	RsLoading
+	RsLoaded
+	RsInterActive
+	RsComplete
+)

@@ -313,3 +313,6 @@ type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCust
 // 消息过程 AHandled 默认为 true
 //TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean) of object;
 type TWndProcEvent func(msg *TMessage, handled *bool)
+
+// TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
+type TWebTitleChangeEvent func(sender IObject, text string)
