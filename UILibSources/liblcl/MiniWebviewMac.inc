@@ -31,6 +31,9 @@ uses
   {$ENDIF};
 
 type
+   TReadyState = (rsUninitialized, rsLoading, rsLoaded, rsInterActive, rsComplete);
+   
+   TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
 
    { TMiniWebView }
 
@@ -40,6 +43,7 @@ type
      FWebview: Webview;
    {$ENDIF}
      FURL: string;
+     FOnTitleChange: TWebTitleChangeEvent;
      function GetCurWebview: Webview;
    private
    {$IFDEF LCLCocoa}
@@ -48,7 +52,8 @@ type
      FCarbonWeb: HIViewRef;
      procedure CreateCarbonWebView;
    {$ENDIF}
-
+     function GetReadyState: TReadyState;
+   private
      property CurWebView: Webview read GetCurWebview;
    protected
      procedure VisibleChanged; override;
@@ -69,6 +74,15 @@ type
      procedure GoSearch;
      procedure Refresh;
      procedure Stop;
+	 
+    // propertys
+    property ReadyState: TReadyState read GetReadyState;
+
+    // events
+    //property OnStatusTextChange: TWebStatusTextChangeEvent read FOnStatusTextChange write FOnStatusTextChange;
+    property OnTitleChange: TWebTitleChangeEvent read FOnTitleChange write FOnTitleChange;
+    //property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
+    //property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
    end;
 
 implementation
@@ -118,6 +132,11 @@ begin
     CFRelease(FCarbonWeb);
 {$ENDIF}
   inherited Destroy;
+end;
+
+function TMiniWebview.GetReadyState: TReadyState;
+begin
+  Result := rsUninitialized;
 end;
 
 procedure TMiniWebView.Navigate(const AURL: string);
@@ -282,7 +301,6 @@ begin
   try
     view := GetNSObjectView(NSObject(Handle));
     view.addSubview(FWebview);
-    //view.setHidden(false);
   finally
     AutoPool.release;
   end;
@@ -293,10 +311,7 @@ begin
   if LContentView = nil then
     Exit;
 
-  //FCarbonWidget.AddToWidget(TCarbonControl(Handle));
   HIViewGetBounds(LContentView, LBounds);
-                      //showmessagefmt('x=%f,y=%f,w=%f,h=%f',
-                      //[lbounds.origin.x, lbounds.origin.y, lbounds.size.width,lbounds.size.height]);
   HIViewAddSubview(LContentView, FCarbonWeb);
 
   HIViewSetFrame(FCarbonWeb, LBounds);

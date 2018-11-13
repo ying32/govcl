@@ -32,7 +32,13 @@ type
   tagREADYSTATE = TOleEnum;
 
   TReadyState = (rsUninitialized, rsLoading, rsLoaded, rsInterActive, rsComplete);
+  
+  TWebStatusTextChangeEvent = procedure(Sender: TObject; const Text: string) of object;
+  TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
+  TWebDocumentCompleteEvent = procedure(Sender: TObject; const pDisp: Pointer; const URL: string) of object;
+  TWebWindowClosingEvent = procedure(Sender: TObject; IsChildWindow: Boolean; var Cancel: Boolean) of object;
 
+  
 // *********************************************************************//
 // Interface: IWebBrowser
 // Flags:     (4432) Hidden Dual OleAutomation Dispatchable
@@ -217,14 +223,6 @@ type
     procedure WebWorkerStarted(dwUniqueID: LongWord; const bstrWorkerLabel: WideString); dispid 288;
     procedure WebWorkerFinsihed(dwUniqueID: LongWord); dispid 289;
   end;
-
-
-  TWebStatusTextChangeEvent = procedure(Sender: TObject; const Text: string) of object;
-  TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
-  TWebDocumentCompleteEvent = procedure(Sender: TObject; const pDisp: Pointer; const URL: string) of object;
-  TWebWindowClosingEvent = procedure(Sender: TObject; IsChildWindow: Boolean; var Cancel: Boolean) of object;
-
-
 
   TMiniWebview = class(TWinControl, IDispatch, IOleClientSite, IOleControlSite, IOleInPlaceSite, IOleInPlaceFrame)
   private
