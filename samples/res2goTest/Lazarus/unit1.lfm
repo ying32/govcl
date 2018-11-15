@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 766
-  Height = 300
-  Top = 768
-  Width = 400
+  Left = 668
+  Height = 375
+  Top = 683
+  Width = 406
   Caption = 'MainForm'
-  ClientHeight = 300
-  ClientWidth = 400
+  ClientHeight = 375
+  ClientWidth = 406
   DesignTimePPI = 120
   OnCreate = FormCreate
   LCLVersion = '1.8.0.6'
@@ -25,6 +25,7 @@ object MainForm: TMainForm
     Width = 94
     Caption = 'Button2'
     OnClick = Button2Click
+    OnResize = Button2Resize
     TabOrder = 1
   end
   object Button3: TButton
@@ -34,6 +35,7 @@ object MainForm: TMainForm
     Width = 94
     Caption = 'Button3'
     OnClick = Button2Click
+    OnResize = Button2Resize
     TabOrder = 2
   end
   object Button4: TButton
@@ -43,6 +45,7 @@ object MainForm: TMainForm
     Width = 94
     Caption = 'Button4'
     OnClick = Button2Click
+    OnResize = Button2Resize
     TabOrder = 3
   end
   object Label1: TLabel
@@ -52,5 +55,41 @@ object MainForm: TMainForm
     Width = 95
     Caption = 'Shared Event'
     ParentColor = False
+  end
+  object Panel1: TPanel
+    Left = 72
+    Height = 64
+    Top = 256
+    Width = 88
+    Caption = 'Panel1'
+    Color = clRed
+    ParentColor = False
+    TabOrder = 4
+    OnMouseEnter = Panel1MouseEnter
+    OnMouseLeave = Panel1MouseLeave
+  end
+  object Panel2: TPanel
+    Left = 171
+    Height = 64
+    Top = 256
+    Width = 88
+    Caption = 'Panel2'
+    Color = clGreen
+    ParentColor = False
+    TabOrder = 5
+    OnMouseEnter = Panel1MouseEnter
+    OnMouseLeave = Panel1MouseLeave
+  end
+  object Panel3: TPanel
+    Left = 275
+    Height = 64
+    Top = 256
+    Width = 88
+    Caption = 'Panel3'
+    Color = clBlue
+    ParentColor = False
+    TabOrder = 6
+    OnMouseEnter = Panel1MouseEnter
+    OnMouseLeave = Panel1MouseLeave
   end
 end

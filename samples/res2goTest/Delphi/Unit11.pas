@@ -19,9 +19,14 @@ type
     Button3: TButton;
     Button4: TButton;
     Label1: TLabel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Panel3MouseEnter(Sender: TObject);
+    procedure Panel3MouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,6 +53,16 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   //
+end;
+
+procedure TMainForm.Panel3MouseEnter(Sender: TObject);
+begin
+  //
+end;
+
+procedure TMainForm.Panel3MouseLeave(Sender: TObject);
+begin
+//
 end;
 
 end.

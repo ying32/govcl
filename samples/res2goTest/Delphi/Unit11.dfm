@@ -45,6 +45,42 @@ object MainForm: TMainForm
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 2
+    object Panel3: TPanel
+      Left = 26
+      Top = 47
+      Width = 87
+      Height = 41
+      Caption = 'Panel3'
+      Color = clRed
+      ParentBackground = False
+      TabOrder = 0
+      OnMouseEnter = Panel3MouseEnter
+      OnMouseLeave = Panel3MouseLeave
+    end
+    object Panel4: TPanel
+      Left = 26
+      Top = 94
+      Width = 87
+      Height = 41
+      Caption = 'Panel4'
+      Color = clGreen
+      ParentBackground = False
+      TabOrder = 1
+      OnMouseEnter = Panel3MouseEnter
+      OnMouseLeave = Panel3MouseLeave
+    end
+    object Panel5: TPanel
+      Left = 26
+      Top = 141
+      Width = 87
+      Height = 41
+      Caption = 'Panel5'
+      Color = clBlue
+      ParentBackground = False
+      TabOrder = 2
+      OnMouseEnter = Panel3MouseEnter
+      OnMouseLeave = Panel3MouseLeave
+    end
   end
   object Panel2: TPanel
     Left = 188
