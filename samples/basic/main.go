@@ -16,7 +16,7 @@ type TForm1 struct {
 var form1 *TForm1
 
 func main() {
-
+	vcl.Application.SetFormScaled(true)
 	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
@@ -31,7 +31,7 @@ func main() {
 		*CanClose = vcl.MessageDlg("是否退出？", types.MtConfirmation, types.MbYes, types.MbNo) == types.IdYes
 	})
 
-	vcl.Application.CreateForm(&form1)
+	vcl.Application.CreateForm(&form1, true)
 
 	btn := vcl.NewButton(mainForm)
 	btn.SetParent(mainForm)
@@ -48,9 +48,11 @@ func main() {
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("onCreate")
 	f.Button1 = vcl.NewButton(f)
+	fmt.Println("f.Button1:", f.Button1.Instance())
 	f.Button1.SetParent(f)
+	f.Button1.SetName("Button1")
 	f.Button1.SetCaption("我是按钮")
-	f.Button1.SetOnClick(f.OnButton1Click)
+	//f.Button1.SetOnClick(f.OnButton1Click)
 }
 
 func (f *TForm1) OnButton1Click(object vcl.IObject) {
