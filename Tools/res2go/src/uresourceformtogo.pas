@@ -16,14 +16,12 @@ implementation
 uses
 {$IFDEF WINDOWS}
   Windows,
-{$ELSE}
-  //crt,
 {$ENDIF}
   Classes, SysUtils, Math, StrUtils, uFormDesignerFile;
 
 
 const
-  APPVERSION = '1.0.8';
+  APPVERSION = '1.0.9';
 
 type
   TComponentItem = record
@@ -529,13 +527,15 @@ begin
          if C^.Name + LItem.Name <> LItem.RealName then
          begin
            LFindEvent := True;
-           LReadEventName := LItem.RealName;
-           Break;
+           if LReadEventName <> '' then
+             LReadEventName := LReadEventName + ',';
+           LReadEventName := LReadEventName + 'On' + LItem.RealName;
          end;
         end;
       end;
+     // writeln('LReadEventName: ', LReadEventName);
       if LFindEvent and (LReadEventName <> '') then
-        WLine(Format('    %s *vcl.%s `event:"On%s"`', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName, LReadEventName]))
+        WLine(Format('    %s *vcl.%s `events:"%s"`', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName, LReadEventName]))
       else
         WLine(Format('    %s *vcl.%s', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName]));
     end;
@@ -911,7 +911,7 @@ begin
     if FindCmdLineSwitch('outres') then
       LOutWinRes := SameText(GetNextParam('outres'), 'True');
 
-    LPath := '.' + DirectorySeparator;// ExtractFilePath(ParamStr(0));
+    LPath := '.' + DirectorySeparator;
     if FindCmdLineSwitch('path') then
     begin
       LPath := GetNextParam('path');
@@ -930,7 +930,7 @@ begin
     end;
     //Writeln('LPath:', LPath);
 
-    LOutPath := '.' + DirectorySeparator;// ExtractFilePath(ParamStr(0));
+    LOutPath := '.' + DirectorySeparator;
     if FindCmdLineSwitch('outpath') then
     begin
       LOutPath := GetNextParam('outpath');
@@ -949,13 +949,19 @@ begin
       if SameText(LExt, '.lfm') or SameText(LExt, '.dfm') then
       begin
         TextColorWhite;
-        Writeln(LFileName);
+        if SysIsZhCN then
+          Writeln('------转换文件：', LFileName)
+        else
+          Writeln('------Transform file:', LFileName);
         ResouceFormToGo(LFileName, LOutPath);
       end else if LConvPro and (SameText(LExt, '.lpr') or SameText(LExt, '.dpr')) and
        (not SameText(LRec.Name, 'res2go.lpr') and not SameText(LRec.Name, 'res2go.dpr')) then
       begin
         TextColorWhite;
-        Writeln(LFileName);
+        if SysIsZhCN then
+          Writeln('------转换文件：', LFileName)
+        else
+          Writeln('------Transform file:', LFileName);
         ProjectFileToMainDotGo(LFileName, LOutPath);
       end;
      until FindNext(LRec) <> 0;
