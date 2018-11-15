@@ -38,11 +38,11 @@ import (
 	"strings"
 )
 
-// associatedEvents 关联事件。
-func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) {
+// autoBindEvents 关联事件。
+func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterBindSubComponentsEvents bool) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("associatedEvents error: ", err)
+			fmt.Println("autoBindEvents error: ", err)
 		}
 	}()
 	// OnFormCreate
@@ -103,8 +103,9 @@ func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) 
 	// 设置Form事件
 	setEvent(form)
 
-	// 设置子组件事件
-	if subComponentEvent {
+	// 子组件事件
+	bindSubComponentsEvents := func() {
+
 		var i int32
 		for i = 0; i < form.ComponentCount(); i++ {
 			setEvent(form.Components(i))
@@ -135,11 +136,21 @@ func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) 
 		}
 	}
 
+	// 设置子组件事件
+	if subComponenstEvent {
+		bindSubComponentsEvents()
+	}
+
 	// 设置Application事件
 	setEvent(Application)
 
 	// 最后调用OnCreate
 	callEvent(formCreate, []reflect.Value{vForm})
+
+	// 设定了之后绑定子组件事件并且之前没有指定要绑定子组件事件
+	if afterBindSubComponentsEvents && !subComponenstEvent {
+		bindSubComponentsEvents()
+	}
 }
 
 // callEvent 调用事件。
