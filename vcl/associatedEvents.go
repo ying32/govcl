@@ -16,8 +16,8 @@
    type TMainForm struct {
        *vcl.TForm
        Button1 *vcl.TButton
-       Button2 *vcl.TButton `event:"OnButton1Click"`
-       Button3 *vcl.TButton `event:"OnButton1Click"`
+       Button2 *vcl.TButton `events:"OnButton1Click"`
+       Button3 *vcl.TButton `events:"OnButton1Click,OnButton1Resize"`
    }
 
    // 这样只自动关联了Button1的事件，但此时我想将此事件关联到Button2, Button3上
@@ -113,16 +113,24 @@ func associatedEvents(vForm reflect.Value, form *TForm, subComponentEvent bool) 
 		// 提取字段中的事件关联
 		for i := 0; i < vt.Elem().NumField(); i++ {
 			field := vt.Elem().Field(i)
-			eventTag := field.Tag.Get("event")
-			if eventTag == "" {
+			eventsTag := field.Tag.Get("events")
+			if eventsTag == "" {
+				// 兼容前面的
+				eventsTag = field.Tag.Get("event")
+			}
+			if eventsTag == "" {
 				continue
 			}
-			item, ok := tempEventTypes[eventTag]
-			if !ok {
-				continue
-			}
-			if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
-				findAndSetEvent(vCtl, item.Type, item.Method)
+			eventArr := strings.Split(eventsTag, ",")
+			for _, event := range eventArr {
+				event = strings.TrimSpace(event)
+				item, ok := tempEventTypes[event]
+				if !ok {
+					continue
+				}
+				if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
+					findAndSetEvent(vCtl, item.Type, item.Method)
+				}
 			}
 		}
 	}
