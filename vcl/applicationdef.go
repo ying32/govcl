@@ -27,7 +27,7 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	}()
 
 	var fullSubComponent bool
-	var afterBindSubComponent bool
+	var afterBindSubComponentsEvents bool
 	var field1 interface{}
 
 	// 初始创建时是否使用缩放
@@ -48,7 +48,7 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	case 1:
 		field1 = fields[0]
 		fullSubComponent = false
-		afterBindSubComponent = false
+		afterBindSubComponentsEvents = false
 
 	case 2:
 		switch fields[1].(type) {
@@ -56,12 +56,12 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 		case bool:
 			field1 = fields[0]
 			fullSubComponent = false
-			afterBindSubComponent = fields[1].(bool)
+			afterBindSubComponentsEvents = fields[1].(bool)
 		default:
 			// 第二个参数类型不为bool时，填充子组件件为true，之后绑定事件为false
 			field1 = fields[1]
 			fullSubComponent = true
-			afterBindSubComponent = false
+			afterBindSubComponentsEvents = false
 			switch fields[0].(type) {
 			case string:
 				ResFormLoadFromFile(fields[0].(string), CheckPtr(form))
@@ -74,7 +74,7 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	default:
 		return form
 	}
-	a.fullFiledVal(form, field1, fullSubComponent, afterBindSubComponent)
+	a.fullFiledVal(form, field1, fullSubComponent, afterBindSubComponentsEvents)
 	return nil
 }
 
