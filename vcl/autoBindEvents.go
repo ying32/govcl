@@ -38,7 +38,7 @@ import (
 	"strings"
 )
 
-// autoBindEvents 关联事件。
+// autoBindEvents 自动关联事件。
 func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterBindSubComponentsEvents bool) {
 	defer func() {
 		if err := recover(); err != nil {

@@ -41,7 +41,7 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 		}
 	}
 
-	// 参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetFormScaled(true) 后才能生效。
+	// 由参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetFormScaled(true) 后才能生效。
 	form := FormFromInst(Application_CreateForm(a.instance, initScale))
 
 	switch len(fields) {
@@ -52,13 +52,13 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 
 	case 2:
 		switch fields[1].(type) {
-		// 当第二个参数为bool时，表示不填充子组件，但之后绑定事件为true
+		// 当第二个参数为bool时，表示不填充子组件，为true表示之后绑定事件
 		case bool:
 			field1 = fields[0]
 			fullSubComponent = false
 			afterBindSubComponentsEvents = fields[1].(bool)
 		default:
-			// 第二个参数类型不为bool时，填充子组件件为true，之后绑定事件为false
+			// 第二个参数类型不为bool时，填充子组件为true，之后绑定事件为false
 			field1 = fields[1]
 			fullSubComponent = true
 			afterBindSubComponentsEvents = false
