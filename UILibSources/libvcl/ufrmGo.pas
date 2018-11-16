@@ -79,8 +79,8 @@ end;
 procedure TGoForm.CMStyleChanged(var Msg: TMessage);
 begin
   inherited;
-  // ĞŞ¸´ÑùÊ½Ôì³ÉµÄÎÊÌâ£¬Èç¹ûÉèÖÃÁËÔÊĞíÍÏ·Å£¬µ«Êµ¼Ê´°¿Ú·ç¸ñÖĞÒÑ¾­²»´æÔÚÁË£¬Ôò
-  // ÖØĞÂÉèÖÃ¡£
+  // ä¿®å¤æ ·å¼é€ æˆçš„é—®é¢˜ï¼Œå¦‚æœè®¾ç½®äº†å…è®¸æ‹–æ”¾ï¼Œä½†å®é™…çª—å£é£æ ¼ä¸­å·²ç»ä¸å­˜åœ¨äº†ï¼Œåˆ™
+  // é‡æ–°è®¾ç½®ã€‚
   if FAllowDropFiles and not AllowDropFiles then
     AllowDropFiles := True;
   if Assigned(FOnStyleChanged) then
@@ -92,7 +92,7 @@ var
   LPPI: Integer;
 begin
   try
-    // ÕâÀïĞèÒªÆÁ±Î¶Ô×ÊÔ´²éÕÒµÄ´íÎó
+    // è¿™é‡Œéœ€è¦å±è”½å¯¹èµ„æºæŸ¥æ‰¾çš„é”™è¯¯
     inherited Create(AOwner);
   except
   end;

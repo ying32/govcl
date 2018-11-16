@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ´úÂëÓÉGenlibVcl¹¤¾ß×Ô¶¯Éú³É¡£
-// Copyright ? ying32. All Rights Reserved.
+// ä»£ç ç”±GenlibVclå·¥å…·è‡ªåŠ¨ç”Ÿæˆã€‚
+// Copyright Â© ying32. All Rights Reserved.
 //
 //----------------------------------------
 

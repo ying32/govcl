@@ -4,11 +4,11 @@
 {                                                       }
 {       govcl MacOS WebBrowser                          }
 {                                                       }
-{       Ŀǰֻ��cocoa����Ѻã�carbonҲ�ܽ��ͣ���ֻ��   }
-{       ʹ��RootҲ�Ǿ�Form��Ϊ������                    }
+{       目前只对cocoa框架友好，carbon也能将就，但只能   }
+{       使用Root也是就Form作为父容器                    }
 {                                                       }
 {                                                       }
-{       ��Ȩ���� (C) ying32                             }
+{       版权所有 (C) ying32                             }
 {                                                       }
 {*******************************************************}
 

@@ -1,8 +1,8 @@
 {*******************************************************}
 {                                                       }
-{       ÊÂ¼ş»Øµ÷                                        }
+{       äº‹ä»¶å›è°ƒ                                        }
 {                                                       }
-{       °æÈ¨ËùÓĞ (C) 2017 - 2018 ying32                 }
+{       ç‰ˆæƒæ‰€æœ‰ (C) 2017 - 2018 ying32                 }
 {                                                       }
 {*******************************************************}
 
@@ -265,7 +265,7 @@ type
     class procedure Remove(AObj: TObject; AEvent: Pointer);
   end;
 
-  // ´°¿ÚÏûÏ¢µÄ£¬²»ÓëÖ®Ç°µÄÊÂ¼ş»ìÔÚÒ»Æğ¡£ 
+  // çª—å£æ¶ˆæ¯çš„ï¼Œä¸ä¸ä¹‹å‰çš„äº‹ä»¶æ··åœ¨ä¸€èµ·ã€‚ 
   TMessageEventList =  TDictionary<TObject, NativeUInt>;
 
   TMessageEventClass = class
@@ -799,7 +799,7 @@ end;
 
 class procedure TEventClass.TaskbarOnThumbButtonClick(Sender: TObject; AButtonID: Integer);
 begin
-  // ÕâÀïÒª´¦ÀíÏÂ
+  // è¿™é‡Œè¦å¤„ç†ä¸‹
   if Sender = nil then
     Exit;
   SendEvent(TThumbBarButton(Sender).Collection.Owner, @TEventClass.TaskbarOnThumbButtonClick, [Sender, AButtonID]);

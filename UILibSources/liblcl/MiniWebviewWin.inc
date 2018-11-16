@@ -4,10 +4,10 @@
 {                                                       }
 {       govcl windows WebBrowser                        }
 {                                                       }
-{       ¸ù¾ÝVCLÔ­ÓÐµÄTWebBrowser¾«¼òµÄÒ»¸ö£¬ÓÃÓÚÔÚ      }
-{       LazarusÖÐÒ²ÄÜÊ¹ÓÃ                               }
+{       æ ¹æ®VCLåŽŸæœ‰çš„TWebBrowserç²¾ç®€çš„ä¸€ä¸ªï¼Œç”¨äºŽåœ¨      }
+{       Lazarusä¸­ä¹Ÿèƒ½ä½¿ç”¨                               }
 {                                                       }
-{       °æÈ¨ËùÓÐ (C) ying32                             }
+{       ç‰ˆæƒæ‰€æœ‰ (C) ying32                             }
 {                                                       }
 {*******************************************************}
 
@@ -936,7 +936,7 @@ var
 
 initialization
   OleInitialize(nil);
-  // ÕýÊ½¾Í¿ÉÒÔÃâ·Ñ³ýÕâ¸ö
+  // æ­£å¼å°±å¯ä»¥å…è´¹é™¤è¿™ä¸ª
   uOldFPU := GetMXCSR;
   SetMXCSR(uOldFPU or $0080);
 

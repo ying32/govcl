@@ -68,7 +68,7 @@ var
   uGlobalFormScaled: Boolean = False;
 
 
-//--------------------- Ô­DelphiResForm.incÄÚÈÝ
+//--------------------- åŽŸDelphiResForm.incå†…å®¹
 
 const
   ClassRefArrs: array[0..127] of TClass = (
