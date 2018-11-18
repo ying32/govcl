@@ -592,6 +592,13 @@ begin
   EventMethodCode
 end;
 
+procedure DrawGrid_SetOnDrawCell(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnDrawCell}
+  {$DEFINE EventMethodName := OnDrawCell}
+  EventMethodCode
+end;
+
 procedure DrawGrid_SetOnEndDock(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -1220,6 +1227,7 @@ exports
   DrawGrid_SetOnDblClick,
   DrawGrid_SetOnDragDrop,
   DrawGrid_SetOnDragOver,
+  DrawGrid_SetOnDrawCell,
   DrawGrid_SetOnEndDock,
   DrawGrid_SetOnEndDrag,
   DrawGrid_SetOnEnter,

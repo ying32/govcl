@@ -1722,6 +1722,45 @@ const (
 	GoFixedHotTrack
 )
 
+// Lazarus的Grids选项，跟Delphi有点不一样。
+type TGridOptionLz = int32
+
+const (
+	GoLzFixedVertLine = iota + 0
+	GoLzFixedHorzLine
+	GoLzVertLine
+	GoLzHorzLine
+	GoLzRangeSelect
+	GoLzDrawFocusSelected
+	GoLzRowSizing
+	GoLzColSizing
+	GoLzRowMoving
+	GoLzColMoving
+	GoLzEditing
+	GoLzAutoAddRows
+	GoLzTabs
+	GoLzRowSelect
+	GoLzAlwaysShowEditor
+	GoLzThumbTracking
+	// Additional Options
+	GoLzColSpanning                 // Enable cellextent calcs
+	GoLzRelaxedRowSelect            // User can see focused cell on goRowSelect
+	GoLzDblClickAutoSize            // dblclicking columns borders (on hdrs) resize col.
+	GoLzSmoothScroll                // Switch scrolling mode (pixel scroll is by default)
+	GoLzFixedRowNumbering           // Ya
+	GoLzScrollKeepVisible           // keeps focused cell visible while scrolling
+	GoLzHeaderHotTracking           // Header cells change look when mouse is over them
+	GoLzHeaderPushedLook            // Header cells looks pushed when clicked
+	GoLzSelectionActive             // Setting grid.Selection moves also cell cursor
+	GoLzFixedColSizing              // Allow to resize fixed columns
+	GoLzDontScrollPartCell          // clicking partially visible cells will not scroll
+	GoLzCellHints                   // show individual cell hints
+	GoLzTruncCellHints              // show cell hints if cell text is too long
+	GoLzCellEllipsis                // show "..." if cell text is too long
+	GoLzAutoAddRowsSkipContentCheck //BB Also add a row (if AutoAddRows in Options) if last row is empty
+	GoLzRowHighlight                // Highlight the current Row
+)
+
 type TGridOptions = uint32
 
 type TGridDrawState = uint32

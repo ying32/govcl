@@ -592,6 +592,13 @@ begin
   EventMethodCode
 end;
 
+procedure StringGrid_SetOnDrawCell(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnDrawCell}
+  {$DEFINE EventMethodName := OnDrawCell}
+  EventMethodCode
+end;
+
 procedure StringGrid_SetOnEndDock(AObj: TStringGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -1260,6 +1267,7 @@ exports
   StringGrid_SetOnDblClick,
   StringGrid_SetOnDragDrop,
   StringGrid_SetOnDragOver,
+  StringGrid_SetOnDrawCell,
   StringGrid_SetOnEndDock,
   StringGrid_SetOnEndDrag,
   StringGrid_SetOnEnter,

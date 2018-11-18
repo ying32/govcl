@@ -580,6 +580,13 @@ begin
   EventMethodCode
 end;
 
+procedure ValueListEditor_SetOnDrawCell(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnDrawCell}
+  {$DEFINE EventMethodName := OnDrawCell}
+  EventMethodCode
+end;
+
 procedure ValueListEditor_SetOnEndDock(AObj: TValueListEditor; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -1226,6 +1233,7 @@ exports
   ValueListEditor_SetOnDblClick,
   ValueListEditor_SetOnDragDrop,
   ValueListEditor_SetOnDragOver,
+  ValueListEditor_SetOnDrawCell,
   ValueListEditor_SetOnEndDock,
   ValueListEditor_SetOnEndDrag,
   ValueListEditor_SetOnEnter,

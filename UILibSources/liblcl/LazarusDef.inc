@@ -349,6 +349,7 @@ var
   LStyle: TTextStyle;
 begin
   Result := 0;
+  LStyle := AObj.TextStyle;
   if TTextFormats.tfSingleLine in TextFormat then
     LStyle.SingleLine := True;
   if TTextFormats.tfTop in TextFormat then

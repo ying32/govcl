@@ -26,6 +26,7 @@ uses
   Graphics,
   StdCtrls,
   LMessages,
+  Grids,
   uLinkLabel,
   fgl;
 
@@ -214,7 +215,7 @@ type
     // grid
 
     class procedure OnColumnMoved(Sender: TObject; IsColumn: Boolean; FromIndex, ToIndex: Longint);
-    //class procedure OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
+    class procedure OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
     class procedure OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
     class procedure OnGetEditMask(Sender: TObject; ACol, ARow: Integer; var Value: string);
     class procedure OnGetEditText(Sender: TObject; ACol, ARow: Integer; var Value: string);
@@ -815,10 +816,10 @@ begin
     SendEvent(Sender, @TEventClass.OnColumnMoved, [Sender, FromIndex, ToIndex]);
 end;
 
-//class procedure TEventClass.OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
-//begin
-//  SendEvent(Sender, @TEventClass.OnDrawCell, [Sender, ACol, ARow, Pointer(@ARect), PWord(@State)^]);
-//end;
+class procedure TEventClass.OnDrawCell(Sender: TObject; ACol, ARow: Longint; ARect: TRect; State: TGridDrawState);
+begin
+  SendEvent(Sender, @TEventClass.OnDrawCell, [Sender, ACol, ARow, Pointer(@ARect), PWord(@State)^]);
+end;
 
 class procedure TEventClass.OnFixedCellClick(Sender: TObject; ACol, ARow: Integer);
 begin
