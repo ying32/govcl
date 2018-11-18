@@ -5,6 +5,8 @@ package main
 import (
 	"fmt"
 
+	"github.com/ying32/govcl/vcl/types"
+
 	"github.com/ying32/govcl/samples/mp3Player/bass"
 	"github.com/ying32/govcl/vcl"
 )
@@ -12,11 +14,26 @@ import (
 //::private::
 type TForm1Fields struct {
 	bassPlayer *bass.TBass
+	playCtl    *TPlayControl
 }
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
+	f.SetDoubleBuffered(true)
+	f.EnabledMaximize(false)
 	f.bassPlayer = bass.NewBass()
 	f.Timer1.SetEnabled(true)
+	f.playCtl = NewPlayControl(f)
+	f.playCtl.SetParent(f)
+	f.playCtl.SetAlign(types.AlRight)
+	//f.playCtl.SetLeft(320)
+	//f.playCtl.SetTop(12)
+
+	f.playCtl.Add(TPlayListItem{"标题1", "张三", 111111, "", ""})
+	f.playCtl.Add(TPlayListItem{"标题2", "李四", 222222, "", ""})
+	f.playCtl.Add(TPlayListItem{"标题3", "王五", 333333, "", ""})
+	f.playCtl.Add(TPlayListItem{"标题4", "赵六", 444444, "", ""})
+	f.playCtl.Add(TPlayListItem{"标题5", "朱七", 555555, "", ""})
+
 }
 
 func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
