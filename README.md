@@ -26,10 +26,6 @@ res2go Tool
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.8-blue.svg)](Tools/res2go)  
 **Note: Designed in Delphi/Lazarus, code written in Golang.**  
 
-
-VCL style files  
-[![VCL style files](https://img.shields.io/badge/downloads-VCL%20style%20files-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.1.20/vcl-styles.zip)  
-
 ### usage: 
 
 > go get github.com/ying32/govcl    

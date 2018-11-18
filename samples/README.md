@@ -43,7 +43,8 @@
 | gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
 | imageviewer |  一个图片浏览器 |   |
 | windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
-| grid | 表格控件 | |
+| grids/stringgrid | 表格控件1 | |
+| grids/drawgrid | 表格控件2 | |
 | syslocale | 本地化相关 | |
 | shortcut | 快捷方式相关 | Windows | 
 | winole | 使用go-ole库操作ole | Windows | 
