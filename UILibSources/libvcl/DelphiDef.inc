@@ -1,4 +1,4 @@
-
+﻿
 // 枚举都按4字节对齐
 {$Z4+}
 
@@ -329,7 +329,7 @@ begin
   Result := 0;
   S := Text;
   AObj.TextRect(Rect, S, TextFormat);
-  if tfModifyString in TextFormat then
+  if (tfModifyString in TextFormat) and (@AOutStr <> nil) then
   begin
     AOutStr := PChar(S);
     Result := 1;
