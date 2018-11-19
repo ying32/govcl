@@ -1,10 +1,10 @@
-
-// Ã¶¾Ù¶¼°´4×Ö½Ú¶ÔÆë
+ï»¿
+// æšä¸¾éƒ½æŒ‰4å­—èŠ‚å¯¹é½
 {$Z4+}
 
 type
-  // ÖØ¶¨¶¨Òå
-  TUnixDateTime = type LongInt; // int64¸ÄÎªLongInt¡£Ö»¾«È·µ½Ãë
+  // é‡å®šå®šä¹‰
+  TUnixDateTime = type LongInt; // int64æ”¹ä¸ºLongIntã€‚åªç²¾ç¡®åˆ°ç§’
 
 function ToUnixTime(ADateTime: TDateTime): TUnixDateTime; inline;
 begin
@@ -17,7 +17,7 @@ begin
 end;
 
 // SysLocale  14byte
-type  // ÖØĞÂ¶¨Òå£¬Ä¿µØÎª¶ÔÆëgoÖĞµÄ½á¹¹
+type  // é‡æ–°å®šä¹‰ï¼Œç›®åœ°ä¸ºå¯¹é½goä¸­çš„ç»“æ„
   TSysLocaleRedim = record
     DefaultLCID: TLocaleID;
     PriLangID: Integer;
@@ -71,7 +71,7 @@ end;
 procedure Application_Run(AObj: TApplication); stdcall;
 begin
   AObj.Run;
-  // ÔÚRun½áÊøºóÊÖ¶¯ÊÍ·ÅApplicationÖĞµÄForm£¬Ö÷ÒªÊÇ¿¼ÂÇÔÚ·ÇDelphiÔËĞĞ»·¾³ÖĞÔì³ÉµÄÒ»Ğ©×ÊÔ´ÇåÀíÎÊÌâ
+  // åœ¨Runç»“æŸåæ‰‹åŠ¨é‡Šæ”¾Applicationä¸­çš„Formï¼Œä¸»è¦æ˜¯è€ƒè™‘åœ¨éDelphiè¿è¡Œç¯å¢ƒä¸­é€ æˆçš„ä¸€äº›èµ„æºæ¸…ç†é—®é¢˜
   RemoveAllForms;
 end;
 
@@ -138,11 +138,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDropFiles := nil;
-    TEventClass.Remove(AObj, geDropFiles);
+    TEventClass.Remove(AObj, @TEventClass.FormOnDropFiles);
     Exit;
   end;
   AObj.OnDropFiles := TEventClass.FormOnDropFiles;
-  TEventClass.Add(AObj, geDropFiles, AEventId);
+  TEventClass.Add(AObj, @TEventClass.FormOnDropFiles, AEventId);
 end;
 
 procedure Form_SetOnDestroy(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -150,11 +150,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDestroy := nil;
-    TEventClass.Remove(AObj, geDestroy);
+    TEventClass.Remove(AObj, @TEventClass.OnDestroy);
     Exit;
   end;
   AObj.OnDestroy := TEventClass.OnDestroy;
-  TEventClass.Add(AObj, geDestroy, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDestroy, AEventId);
 end;
 
 procedure Form_SetOnConstrainedResize(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -162,11 +162,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnConstrainedResize := nil;
-    TEventClass.Remove(AObj, geConstrainedResize);
+    TEventClass.Remove(AObj, @TEventClass.OnConstrainedResize);
     Exit;
   end;
   AObj.OnConstrainedResize := TEventClass.OnConstrainedResize;
-  TEventClass.Add(AObj, geConstrainedResize, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnConstrainedResize, AEventId);
 end;
 
 procedure Form_SetOnDeactivate(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -174,11 +174,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDeactivate := nil;
-    TEventClass.Remove(AObj, geDeactivate);
+    TEventClass.Remove(AObj, @TEventClass.OnDeactivate);
     Exit;
   end;
   AObj.OnDeactivate := TEventClass.OnDeactivate;
-  TEventClass.Add(AObj, geDeactivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDeactivate, AEventId);
 end;
 
 procedure Form_SetOnActivate(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -186,11 +186,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnActivate := nil;
-    TEventClass.Remove(AObj, geActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnActivate);
     Exit;
   end;
   AObj.OnActivate := TEventClass.OnActivate;
-  TEventClass.Add(AObj, geActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnActivate, AEventId);
 end;
 
 procedure Form_SetOnStyleChanged(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -198,11 +198,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStyleChanged := nil;
-    TEventClass.Remove(AObj, geStyleChanged);
+    TEventClass.Remove(AObj, @TEventClass.OnStyleChanged);
     Exit;
   end;
   AObj.OnStyleChanged := TEventClass.OnStyleChanged;
-  TEventClass.Add(AObj, geStyleChanged, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnStyleChanged, AEventId);
 end;
 
 procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); stdcall;
@@ -329,7 +329,7 @@ begin
   Result := 0;
   S := Text;
   AObj.TextRect(Rect, S, TextFormat);
-  if tfModifyString in TextFormat then
+  if (tfModifyString in TextFormat) and (@AOutStr <> nil) then
   begin
     AOutStr := PChar(S);
     Result := 1;
@@ -397,7 +397,7 @@ begin
   P := PGoParam(PByte(AArr) + Index * SizeOf(TGoParam))^;
 end;
 
-// ´ÓstringÊı×éÖĞ»ñÈ¡³ÉÔ±
+// ä»stringæ•°ç»„ä¸­è·å–æˆå‘˜
 function DGetStringArrOf(P: Pointer; AIndex: NativeInt): PChar; stdcall;
 begin
   Result := PChar(PString(PByte(P) + AIndex * SizeOf(string))^);
@@ -442,7 +442,7 @@ begin
 end;
 
 
-// ÔÚÖ÷Ïß³ÌÖĞÔËĞĞ
+// åœ¨ä¸»çº¿ç¨‹ä¸­è¿è¡Œ
 procedure DSynchronize(AId: NativeUInt); stdcall;
 begin
   TThread.Synchronize(nil,
@@ -457,7 +457,7 @@ begin
   ShellExecute(0, nil, FileName, nil, nil, SW_SHOW);
 end;
 
-// ²»Ïëµ¼Èë°ü£¬ËùÒÔ¸É´àÓÃdelphiµÄµÃÁË
+// ä¸æƒ³å¯¼å…¥åŒ…ï¼Œæ‰€ä»¥å¹²è„†ç”¨delphiçš„å¾—äº†
 function DExtractFilePath(AFileName: PChar): PChar; stdcall;
 begin
   Result := PChar(ExtractFilePath(AFileName));
@@ -503,7 +503,7 @@ begin
     AOut := PChar(S);
 end;
 
-// Â·¾¶ºÏ²¢
+// è·¯å¾„åˆå¹¶
 function PathCombine(A1, A2: string): string; inline;
 begin
   if A1[Length(A1)] <> PathDelim then
@@ -513,7 +513,7 @@ begin
   Result := A1 + A2;
 end;
 
-// ´´½¨URL¿ì½İ·½Ê½
+// åˆ›å»ºURLå¿«æ·æ–¹å¼
 procedure DCreateURLShortCut(ADestPath, AShortCutName, AURL: PChar); stdcall;
 var
   Ini: TIniFile;
@@ -527,7 +527,7 @@ begin
   end;
 end;
 
-// ´´½¨¿ì½İ·½Ê½
+// åˆ›å»ºå¿«æ·æ–¹å¼
 function DCreateShortCut(ADestPath, AShortCutName, ASrcFileName, AIconFileName, ADescription, ACmdArgs: PChar): LongBool; stdcall;
 var
   LObject : IUnknown;
@@ -554,7 +554,7 @@ begin
   end;
 end;
 
-// ÊôĞÔÉèÖÃ£¬ÕâÀïÖ÷ÒªÌá¹©¸ø¶àÓïÑÔÊ¹ÓÃ
+// å±æ€§è®¾ç½®ï¼Œè¿™é‡Œä¸»è¦æä¾›ç»™å¤šè¯­è¨€ä½¿ç”¨
 procedure DSetPropertyValue(Instance: TObject; PropName, Value: PChar); stdcall;
 var
   LPropInfo: PPropInfo;
@@ -620,7 +620,7 @@ begin
 end;
 
 
-// Ò»Ğ©libµÄ×ÊÔ´
+// ä¸€äº›libçš„èµ„æº
 type
   TResItem = record
     Name: PChar;
@@ -672,7 +672,7 @@ begin
     AResult := GLibResouces[AIndex];
 end;
 
-// // Ëµ²»ºÃÓĞÃ»ÓĞÄÚ´æĞ¹Â¶£¬°¡£¬ÏÈÕâÑùßÂ£¬ DelphiµÄ²»ÏñLazarus¿ÉÒÔÖ±½ÓÉèÖÃ¡£¡£¡£
+// // è¯´ä¸å¥½æœ‰æ²¡æœ‰å†…å­˜æ³„éœ²ï¼Œå•Šï¼Œå…ˆè¿™æ ·å‘—ï¼Œ Delphiçš„ä¸åƒLazaruså¯ä»¥ç›´æ¥è®¾ç½®ã€‚ã€‚ã€‚
 procedure DModifyLibResouce(APtr: Pointer; AValue: PChar); stdcall;
 var
   OldProtect: Cardinal;
@@ -876,7 +876,7 @@ end;
 
 
 exports
-  // µ¼³ö¶¯Ì¬µ÷ÓÃµÄ
+  // å¯¼å‡ºåŠ¨æ€è°ƒç”¨çš„
   MySyscall,
 
   // SysLocaled

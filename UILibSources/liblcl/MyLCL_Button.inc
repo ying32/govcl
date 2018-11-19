@@ -452,182 +452,107 @@ end;
 
 procedure Button_SetOnClick(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure Button_SetOnContextPopup(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure Button_SetOnDragDrop(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure Button_SetOnDragOver(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure Button_SetOnEndDrag(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure Button_SetOnEnter(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
-    Exit;
-  end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure Button_SetOnExit(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
-    Exit;
-  end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure Button_SetOnKeyDown(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure Button_SetOnKeyPress(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure Button_SetOnKeyUp(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure Button_SetOnMouseDown(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure Button_SetOnMouseEnter(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure Button_SetOnMouseLeave(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure Button_SetOnMouseMove(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure Button_SetOnMouseUp(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 function Button_GetDockClientCount(AObj: TButton): Integer; extdecl;

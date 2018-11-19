@@ -92,14 +92,9 @@ end;
 
 procedure ActionList_SetOnChange(AObj: TActionList; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 function ActionList_GetComponentCount(AObj: TActionList): Integer; extdecl;

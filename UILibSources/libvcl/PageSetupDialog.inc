@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ¥˙¬Î”…GenlibVclπ§æﬂ◊‘∂Ø…˙≥…°£
-// Copyright ? ying32. All Rights Reserved.
+// ‰ª£Á†ÅÁî±GenlibVclÂ∑•ÂÖ∑Ëá™Âä®ÁîüÊàê„ÄÇ
+// Copyright ¬© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -215,11 +215,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClose := nil;
-    TEventClass.Remove(AObj, geClose);
+    TEventClass.Remove(AObj, @TEventClass.OnClose);
     Exit;
   end;
   AObj.OnClose := TEventClass.OnClose;
-  TEventClass.Add(AObj, geClose, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClose, AEventId);
 end;
 
 procedure PageSetupDialog_SetOnShow(AObj: TPageSetupDialog; AEventId: NativeUInt); stdcall;
@@ -227,11 +227,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShow := nil;
-    TEventClass.Remove(AObj, geShow);
+    TEventClass.Remove(AObj, @TEventClass.OnShow);
     Exit;
   end;
   AObj.OnShow := TEventClass.OnShow;
-  TEventClass.Add(AObj, geShow, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
 end;
 
 function PageSetupDialog_GetComponentCount(AObj: TPageSetupDialog): Integer; stdcall;

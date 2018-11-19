@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	// 几个实例类，不需要Create和Free即可访问
+	// 几个实例类，不需要Create即可访问，同时也不需要手动Free
 	Application *TApplication
 	Screen      *TScreen
 	Mouse       *TMouse
@@ -35,6 +35,6 @@ func init() {
 	Clipboard = ClipboardFromInst(Clipboard_Instance())
 	Printer = PrinterFromInst(Printer_Instance())
 
-	// 尝试加载ICON，仅Windows下有限，尝试加载名为MAINICON的
+	// 尝试加载ICON，仅Windows下有效，尝试加载名为MAINICON的图标
 	tryLoadAppIcon()
 }

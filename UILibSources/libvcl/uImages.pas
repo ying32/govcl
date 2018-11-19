@@ -1,6 +1,6 @@
-// ÎªÁË¼æÈİLazarusÓëDelphi¶ÔÓÚ×ÊÔ´´°¿ÚÊı¾İÖĞÍ¼Æ¬¶ÁÈ¡µÄ´¦Àí
-// ±ÈÈçÔÚDelphiÖĞTPngImageÊÇÃ»ÓĞSize±êÊ¶µÄ£¬µ«LazarusÖĞÒ»¶¨ÓĞ
-// ÓÚÊÇÖ»ÄÜ½øĞĞĞŞ¸Ä£¬Í³Ò»¶¼ÓĞÍ¼Æ¬Size±êÊ¶£¬µ«ÔÚDelphi¶ÁÈ¡Ê±¾­¹ıÅĞ¶ÏºóÌø¹ıÏà¹ØµÄ
+// ä¸ºäº†å…¼å®¹Lazarusä¸Delphiå¯¹äºèµ„æºçª—å£æ•°æ®ä¸­å›¾ç‰‡è¯»å–çš„å¤„ç†
+// æ¯”å¦‚åœ¨Delphiä¸­TPngImageæ˜¯æ²¡æœ‰Sizeæ ‡è¯†çš„ï¼Œä½†Lazarusä¸­ä¸€å®šæœ‰
+// äºæ˜¯åªèƒ½è¿›è¡Œä¿®æ”¹ï¼Œç»Ÿä¸€éƒ½æœ‰å›¾ç‰‡Sizeæ ‡è¯†ï¼Œä½†åœ¨Delphiè¯»å–æ—¶ç»è¿‡åˆ¤æ–­åè·³è¿‡ç›¸å…³çš„
 
 unit uImages;
 
@@ -27,6 +27,10 @@ type
   protected
     procedure ReadData(Stream: TStream); override;
     procedure WriteData(Stream: TStream); override;
+  end;
+
+  // ä¸lazarusä¿æŒä¸€è‡´
+  TPortableNetworkGraphic = class(TPngImage)
   end;
 
 implementation
@@ -104,7 +108,8 @@ initialization
    TPicture.UnregisterGraphicClass(Vcl.Imaging.pngimage.TPngImage);
    TPicture.UnregisterGraphicClass(Vcl.Imaging.GIFImg.TGIFImage);
 
-   // ÖØĞÂ×¢²á
+   // é‡æ–°æ³¨å†Œ
+   TPicture.RegisterFileFormat('PNG', 'Portable Network Graphics', TPortableNetworkGraphic);
    TPicture.RegisterFileFormat('PNG', 'Portable Network Graphics', TPngImage);
    TPicture.RegisterFileFormat('GIF', sGIFImageFile, TGIFImage);
 

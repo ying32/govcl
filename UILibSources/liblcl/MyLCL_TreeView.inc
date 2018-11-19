@@ -61,6 +61,11 @@ begin
   AObj.ClearSelection(KeepPrimary);
 end;
 
+function TreeView_CustomSort(AObj: TTreeView; SortProc: PFNTVCOMPARE; Data: NativeInt; ARecurse: LongBool): LongBool; extdecl;
+begin
+  Result :=  AObj.CustomSort(SortProc, Data, ARecurse);
+end;
+
 function TreeView_CanFocus(AObj: TTreeView): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -643,386 +648,226 @@ end;
 
 procedure TreeView_SetOnAddition(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnAddition := nil;
-    EventClass.Remove(AObj, geTreeViewAddition);
-    Exit;
-  end;
-  AObj.OnAddition := @EventClass.TreeViewOnAddition;
-  EventClass.Add(AObj, geTreeViewAddition, AEventId);
+  {$DEFINE EventName := OnAddition}
+  {$DEFINE EventMethodName := TreeViewOnAddition}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnAdvancedCustomDraw(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnAdvancedCustomDraw := nil;
-    EventClass.Remove(AObj, geTreeViewAdvancedCustomDraw);
-    Exit;
-  end;
-  AObj.OnAdvancedCustomDraw := @EventClass.TreeViewOnAdvancedCustomDraw;
-  EventClass.Add(AObj, geTreeViewAdvancedCustomDraw, AEventId);
+  {$DEFINE EventName := OnAdvancedCustomDraw}
+  {$DEFINE EventMethodName := TreeViewOnAdvancedCustomDraw}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnAdvancedCustomDrawItem(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnAdvancedCustomDrawItem := nil;
-    EventClass.Remove(AObj, geTreeViewAdvancedCustomDrawItem);
-    Exit;
-  end;
-  AObj.OnAdvancedCustomDrawItem := @EventClass.TreeViewOnAdvancedCustomDrawItem;
-  EventClass.Add(AObj, geTreeViewAdvancedCustomDrawItem, AEventId);
+  {$DEFINE EventName := OnAdvancedCustomDrawItem}
+  {$DEFINE EventMethodName := TreeViewOnAdvancedCustomDrawItem}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnChange(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geTreeViewChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.TreeViewOnChange;
-  EventClass.Add(AObj, geTreeViewChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := TreeViewOnChange}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnChanging(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChanging := nil;
-    EventClass.Remove(AObj, geTreeViewChanging);
-    Exit;
-  end;
-  AObj.OnChanging := @EventClass.TreeViewOnChanging;
-  EventClass.Add(AObj, geTreeViewChanging, AEventId);
+  {$DEFINE EventName := OnChanging}
+  {$DEFINE EventMethodName := TreeViewOnChanging}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnClick(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnCollapsed(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCollapsed := nil;
-    EventClass.Remove(AObj, geTreeViewCollapsed);
-    Exit;
-  end;
-  AObj.OnCollapsed := @EventClass.TreeViewOnCollapsed;
-  EventClass.Add(AObj, geTreeViewCollapsed, AEventId);
+  {$DEFINE EventName := OnCollapsed}
+  {$DEFINE EventMethodName := TreeViewOnCollapsed}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnCollapsing(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCollapsing := nil;
-    EventClass.Remove(AObj, geTreeViewCollapsing);
-    Exit;
-  end;
-  AObj.OnCollapsing := @EventClass.TreeViewOnCollapsing;
-  EventClass.Add(AObj, geTreeViewCollapsing, AEventId);
+  {$DEFINE EventName := OnCollapsing}
+  {$DEFINE EventMethodName := TreeViewOnCollapsing}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnCompare(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCompare := nil;
-    EventClass.Remove(AObj, geTreeViewCompare);
-    Exit;
-  end;
-  AObj.OnCompare := @EventClass.TreeViewOnCompare;
-  EventClass.Add(AObj, geTreeViewCompare, AEventId);
+  {$DEFINE EventName := OnCompare}
+  {$DEFINE EventMethodName := TreeViewOnCompare}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnContextPopup(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnCustomDraw(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCustomDraw := nil;
-    EventClass.Remove(AObj, geTreeViewCustomDraw);
-    Exit;
-  end;
-  AObj.OnCustomDraw := @EventClass.TreeViewOnCustomDraw;
-  EventClass.Add(AObj, geTreeViewCustomDraw, AEventId);
+  {$DEFINE EventName := OnCustomDraw}
+  {$DEFINE EventMethodName := TreeViewOnCustomDraw}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnCustomDrawItem(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCustomDrawItem := nil;
-    EventClass.Remove(AObj, geTreeViewCustomDrawItem);
-    Exit;
-  end;
-  AObj.OnCustomDrawItem := @EventClass.TreeViewOnCustomDrawItem;
-  EventClass.Add(AObj, geTreeViewCustomDrawItem, AEventId);
+  {$DEFINE EventName := OnCustomDrawItem}
+  {$DEFINE EventMethodName := TreeViewOnCustomDrawItem}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnDblClick(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnDeletion(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDeletion := nil;
-    EventClass.Remove(AObj, geTreeViewDeletion);
-    Exit;
-  end;
-  AObj.OnDeletion := @EventClass.TreeViewOnDeletion;
-  EventClass.Add(AObj, geTreeViewDeletion, AEventId);
+  {$DEFINE EventName := OnDeletion}
+  {$DEFINE EventMethodName := TreeViewOnDeletion}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnDragDrop(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnDragOver(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnEdited(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEdited := nil;
-    EventClass.Remove(AObj, geTreeViewEdited);
-    Exit;
-  end;
-  AObj.OnEdited := @EventClass.TreeViewOnEdited;
-  EventClass.Add(AObj, geTreeViewEdited, AEventId);
+  {$DEFINE EventName := OnEdited}
+  {$DEFINE EventMethodName := TreeViewOnEdited}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnEditing(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEditing := nil;
-    EventClass.Remove(AObj, geTreeViewEditing);
-    Exit;
-  end;
-  AObj.OnEditing := @EventClass.TreeViewOnEditing;
-  EventClass.Add(AObj, geTreeViewEditing, AEventId);
+  {$DEFINE EventName := OnEditing}
+  {$DEFINE EventMethodName := TreeViewOnEditing}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnEndDrag(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnEnter(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
-    Exit;
-  end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnExit(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
-    Exit;
-  end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnExpanding(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExpanding := nil;
-    EventClass.Remove(AObj, geTreeViewExpanding);
-    Exit;
-  end;
-  AObj.OnExpanding := @EventClass.TreeViewOnExpanding;
-  EventClass.Add(AObj, geTreeViewExpanding, AEventId);
+  {$DEFINE EventName := OnExpanding}
+  {$DEFINE EventMethodName := TreeViewOnExpanding}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnExpanded(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExpanded := nil;
-    EventClass.Remove(AObj, geTreeViewExpanded);
-    Exit;
-  end;
-  AObj.OnExpanded := @EventClass.TreeViewOnExpanded;
-  EventClass.Add(AObj, geTreeViewExpanded, AEventId);
+  {$DEFINE EventName := OnExpanded}
+  {$DEFINE EventMethodName := TreeViewOnExpanded}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnGetSelectedIndex(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnGetSelectedIndex := nil;
-    EventClass.Remove(AObj, geTreeViewGetSelectedIndex);
-    Exit;
-  end;
-  AObj.OnGetSelectedIndex := @EventClass.TreeViewOnGetSelectedIndex;
-  EventClass.Add(AObj, geTreeViewGetSelectedIndex, AEventId);
+  {$DEFINE EventName := OnGetSelectedIndex}
+  {$DEFINE EventMethodName := TreeViewOnGetSelectedIndex}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnKeyDown(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnKeyPress(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnKeyUp(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnMouseDown(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnMouseEnter(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnMouseLeave(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnMouseMove(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure TreeView_SetOnMouseUp(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 function TreeView_GetItems(AObj: TTreeView): TTreeNodes; extdecl;
@@ -1342,6 +1187,7 @@ exports
   TreeView_SaveToFile,
   TreeView_SaveToStream,
   TreeView_ClearSelection,
+  TreeView_CustomSort,
   TreeView_CanFocus,
   TreeView_ContainsControl,
   TreeView_ControlAtPos,

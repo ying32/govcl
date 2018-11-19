@@ -267,74 +267,44 @@ end;
 
 procedure Application_SetOnException(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnException := nil;
-    EventClass.Remove(AObj, geException);
-    Exit;
-  end;
-  AObj.OnException := @EventClass.OnException;
-  EventClass.Add(AObj, geException, AEventId);
+  {$DEFINE EventName := OnException}
+  {$DEFINE EventMethodName := OnException}
+  EventMethodCode
 end;
 
 procedure Application_SetOnHelp(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnHelp := nil;
-    EventClass.Remove(AObj, geHelp);
-    Exit;
-  end;
-  AObj.OnHelp := @EventClass.OnHelp;
-  EventClass.Add(AObj, geHelp, AEventId);
+  {$DEFINE EventName := OnHelp}
+  {$DEFINE EventMethodName := OnHelp}
+  EventMethodCode
 end;
 
 procedure Application_SetOnHint(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnHint := nil;
-    EventClass.Remove(AObj, geHint);
-    Exit;
-  end;
-  AObj.OnHint := @EventClass.OnHint;
-  EventClass.Add(AObj, geHint, AEventId);
+  {$DEFINE EventName := OnHint}
+  {$DEFINE EventMethodName := OnHint}
+  EventMethodCode
 end;
 
 procedure Application_SetOnMinimize(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMinimize := nil;
-    EventClass.Remove(AObj, geMinimize);
-    Exit;
-  end;
-  AObj.OnMinimize := @EventClass.OnMinimize;
-  EventClass.Add(AObj, geMinimize, AEventId);
+  {$DEFINE EventName := OnMinimize}
+  {$DEFINE EventMethodName := OnMinimize}
+  EventMethodCode
 end;
 
 procedure Application_SetOnRestore(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnRestore := nil;
-    EventClass.Remove(AObj, geRestore);
-    Exit;
-  end;
-  AObj.OnRestore := @EventClass.OnRestore;
-  EventClass.Add(AObj, geRestore, AEventId);
+  {$DEFINE EventName := OnRestore}
+  {$DEFINE EventMethodName := OnRestore}
+  EventMethodCode
 end;
 
 procedure Application_SetOnShortCut(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShortCut := nil;
-    EventClass.Remove(AObj, geShortCut);
-    Exit;
-  end;
-  AObj.OnShortCut := @EventClass.OnShortCut;
-  EventClass.Add(AObj, geShortCut, AEventId);
+  {$DEFINE EventName := OnShortCut}
+  {$DEFINE EventMethodName := OnShortCut}
+  EventMethodCode
 end;
 
 function Application_GetComponentCount(AObj: TApplication): Integer; extdecl;

@@ -11,6 +11,9 @@ type
     // 消息过程定义
   TWndProcEvent = procedure(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean) of object;
   // 重定一个，主要是为了修改相关默认
+
+  { TGoForm }
+
   TGoForm = class(TForm)
   private
     FOnWndProc: TWndProcEvent;
@@ -38,6 +41,8 @@ end;
 
 procedure TGoForm.ProcessResource;
 begin
+  Self.ClientHeight := 321;
+  Self.ClientWidth := 678;
   // 没有使用窗口资源，不处理，处理就会报错的。
 end;
 
@@ -52,6 +57,8 @@ begin
   if LHandled then
     inherited WndProc(TheMessage);
 end;
+
+
 
 end.
 

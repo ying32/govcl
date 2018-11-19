@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ´úÂëÓÉGenlibVcl¹¤¾ß×Ô¶¯Éú³É¡£
-// Copyright ? ying32. All Rights Reserved.
+// ä»£ç ç”±GenlibVclå·¥å…·è‡ªåŠ¨ç”Ÿæˆã€‚
+// Copyright Â© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -120,11 +120,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    TEventClass.Remove(AObj, geMenuChange);
+    TEventClass.Remove(AObj, @TEventClass.MenuOnChange);
     Exit;
   end;
   AObj.OnChange := TEventClass.MenuOnChange;
-  TEventClass.Add(AObj, geMenuChange, AEventId);
+  TEventClass.Add(AObj, @TEventClass.MenuOnChange, AEventId);
 end;
 
 function MainMenu_GetHandle(AObj: TMainMenu): HMENU; stdcall;

@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ´úÂëÓÉGenlibVcl¹¤¾ß×Ô¶¯Éú³É¡£
-// Copyright ? ying32. All Rights Reserved.
+// ä»£ç ç”±GenlibVclå·¥å…·è‡ªåŠ¨ç”Ÿæˆã€‚
+// Copyright Â© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -100,11 +100,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnTimer := nil;
-    TEventClass.Remove(AObj, geTimer);
+    TEventClass.Remove(AObj, @TEventClass.OnTimer);
     Exit;
   end;
   AObj.OnTimer := TEventClass.OnTimer;
-  TEventClass.Add(AObj, geTimer, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnTimer, AEventId);
 end;
 
 function Timer_GetComponentCount(AObj: TTimer): Integer; stdcall;

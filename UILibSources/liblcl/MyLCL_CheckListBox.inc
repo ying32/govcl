@@ -30,6 +30,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure CheckListBox_DeleteSelected(AObj: TCheckListBox); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
 procedure CheckListBox_SelectAll(AObj: TCheckListBox); extdecl;
 begin
   AObj.SelectAll;
@@ -257,14 +262,9 @@ end;
 
 procedure CheckListBox_SetOnClickCheck(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClickCheck := nil;
-    EventClass.Remove(AObj, geClickCheck);
-    Exit;
-  end;
-  AObj.OnClickCheck := @EventClass.OnClickCheck;
-  EventClass.Add(AObj, geClickCheck, AEventId);
+  {$DEFINE EventName := OnClickCheck}
+  {$DEFINE EventMethodName := OnClickCheck}
+  EventMethodCode
 end;
 
 function CheckListBox_GetAlign(AObj: TCheckListBox): TAlign; extdecl;
@@ -509,206 +509,121 @@ end;
 
 procedure CheckListBox_SetOnClick(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnContextPopup(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnDblClick(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnDragDrop(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnDragOver(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnEndDrag(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnEnter(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
-    Exit;
-  end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnExit(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
-    Exit;
-  end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnKeyDown(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnKeyPress(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnKeyUp(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnMeasureItem(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMeasureItem := nil;
-    EventClass.Remove(AObj, geListBoxMeasureItem);
-    Exit;
-  end;
-  AObj.OnMeasureItem := @EventClass.ListBoxOnMeasureItem;
-  EventClass.Add(AObj, geListBoxMeasureItem, AEventId);
+  {$DEFINE EventName := OnMeasureItem}
+  {$DEFINE EventMethodName := ListBoxOnMeasureItem}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnMouseDown(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnMouseEnter(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnMouseLeave(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnMouseMove(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure CheckListBox_SetOnMouseUp(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 function CheckListBox_GetCanvas(AObj: TCheckListBox): TCanvas; extdecl;
@@ -1062,6 +977,7 @@ exports
   CheckListBox_CheckAll,
   CheckListBox_Clear,
   CheckListBox_ClearSelection,
+  CheckListBox_DeleteSelected,
   CheckListBox_SelectAll,
   CheckListBox_CanFocus,
   CheckListBox_ContainsControl,

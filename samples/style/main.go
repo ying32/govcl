@@ -1,5 +1,7 @@
 // +build windows
 
+// +build windows
+
 package main
 
 import (
@@ -17,6 +19,12 @@ import (
 var styleNames = make(map[string]string, 0)
 
 func main() {
+
+	if rtl.LcLLoaded() {
+		vcl.ShowMessage("样式不支持liblcl。")
+		return
+	}
+
 	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
@@ -332,8 +340,6 @@ func main() {
 	// 样式已改变
 	mainForm.SetOnStyleChanged(func(sender vcl.IObject) {
 		fmt.Println("样式已经改变")
-		mainForm.SetAllowDropFiles(false)
-		mainForm.SetAllowDropFiles(true)
 	})
 
 	mainForm.SetAllowDropFiles(true)

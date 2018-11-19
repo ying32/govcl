@@ -227,14 +227,9 @@ end;
 
 procedure Splitter_SetOnPaint(AObj: TSplitter; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnPaint := nil;
-    EventClass.Remove(AObj, gePaint);
-    Exit;
-  end;
-  AObj.OnPaint := @EventClass.OnPaint;
-  EventClass.Add(AObj, gePaint, AEventId);
+  {$DEFINE EventName := OnPaint}
+  {$DEFINE EventMethodName := OnPaint}
+  EventMethodCode
 end;
 
 function Splitter_GetEnabled(AObj: TSplitter): LongBool; extdecl;

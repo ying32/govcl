@@ -447,74 +447,44 @@ end;
 
 procedure RadioGroup_SetOnClick(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure RadioGroup_SetOnDragDrop(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure RadioGroup_SetOnDragOver(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure RadioGroup_SetOnEndDrag(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure RadioGroup_SetOnEnter(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
-    Exit;
-  end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure RadioGroup_SetOnExit(AObj: TRadioGroup; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
-    Exit;
-  end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 function RadioGroup_GetDockClientCount(AObj: TRadioGroup): Integer; extdecl;

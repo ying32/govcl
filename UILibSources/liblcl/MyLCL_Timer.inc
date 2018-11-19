@@ -92,14 +92,9 @@ end;
 
 procedure Timer_SetOnTimer(AObj: TTimer; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnTimer := nil;
-    EventClass.Remove(AObj, geTimer);
-    Exit;
-  end;
-  AObj.OnTimer := @EventClass.OnTimer;
-  EventClass.Add(AObj, geTimer, AEventId);
+  {$DEFINE EventName := OnTimer}
+  {$DEFINE EventMethodName := OnTimer}
+  EventMethodCode
 end;
 
 function Timer_GetComponentCount(AObj: TTimer): Integer; extdecl;

@@ -3,8 +3,11 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="10"/>
-    <BuildModes Count="5" Active="ReleaseWindows64">
-      <Item1 Name="Release">
+    <BuildModes Count="5" Active="Win64">
+      <Item1 Name="Win64">
+        <MacroValues Count="1">
+          <Macro4 Name="LCLWidgetType" Value="win32"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -13,63 +16,6 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <RelocatableUnit Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <Options>
-              <ExecutableType Value="Library"/>
-            </Options>
-          </Linking>
-        </CompilerOptions>
-      </Item1>
-      <Item2 Name="ReleaseWindows32">
-        <CompilerOptions>
-          <Version Value="11"/>
-          <PathDelim Value="\"/>
-          <Target>
-            <Filename Value="..\..\..\..\..\bin\liblcl"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="ExtLib\$(TargetCPU)-$(TargetOS)"/>
-            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <SmartLinkUnit Value="True"/>
-            <RelocatableUnit Value="True"/>
-            <TargetCPU Value="i386"/>
-            <TargetOS Value="win32"/>
-            <Optimizations>
-              <OptimizationLevel Value="4"/>
-            </Optimizations>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <ExecutableType Value="Library"/>
-            </Options>
-          </Linking>
-        </CompilerOptions>
-      </Item2>
-      <Item3 Name="ReleaseWindows64">
-        <CompilerOptions>
-          <Version Value="11"/>
-          <PathDelim Value="\"/>
-          <Target>
-            <Filename Value="..\..\..\..\..\bin\liblcl"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="ExtLib\$(TargetCPU)-$(TargetOS)"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -91,8 +37,11 @@
             </Options>
           </Linking>
         </CompilerOptions>
-      </Item3>
-      <Item4 Name="ReleaseLinux64">
+      </Item1>
+      <Item2 Name="Linux64">
+        <MacroValues Count="1">
+          <Macro5 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -101,13 +50,80 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="ExtLib\$(TargetCPU)-$(TargetOS)"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <RelocatableUnit Value="True"/>
             <TargetCPU Value="x86_64"/>
+            <TargetOS Value="linux"/>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <ExecutableType Value="Library"/>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="MacOS32(carbon)">
+        <MacroValues Count="1">
+          <Macro1 Name="LCLWidgetType" Value="carbon"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="..\..\..\..\..\bin\liblcl"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <RelocatableUnit Value="True"/>
+            <TargetOS Value="darwin"/>
+            <Optimizations>
+              <OptimizationLevel Value="4"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <ExecutableType Value="Library"/>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item3>
+      <Item4 Name="Linux32">
+        <MacroValues Count="1">
+          <Macro6 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="..\bin\liblcl"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <RelocatableUnit Value="True"/>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="linux"/>
             <Optimizations>
               <OptimizationLevel Value="4"/>
             </Optimizations>
@@ -123,22 +139,25 @@
           </Linking>
         </CompilerOptions>
       </Item4>
-      <Item5 Name="ReleaseMacOS32">
+      <Item5 Name="LinuxARM">
+        <MacroValues Count="1">
+          <Macro7 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="..\..\..\..\..\bin\liblcl"/>
+            <Filename Value="..\bin\liblcl"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="ExtLib\$(TargetCPU)-$(TargetOS)"/>
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
             <RelocatableUnit Value="True"/>
-            <TargetCPU Value="i386"/>
+            <TargetCPU Value="arm"/>
+            <TargetOS Value="linux"/>
             <Optimizations>
               <OptimizationLevel Value="4"/>
             </Optimizations>
@@ -154,617 +173,639 @@
           </Linking>
         </CompilerOptions>
       </Item5>
+      <SessionEnabledMatrixOptions Count="5">
+        <Item1 Mode="Win64" Option="028265915746"/>
+        <Item2 Mode="Linux64" Option="316477307003"/>
+        <Item3 Mode="MacOS32(carbon)" Option="400096739333"/>
+        <Item4 Mode="Linux32" Option="184723594569"/>
+        <Item5 Mode="LinuxARM" Option="471587070140"/>
+      </SessionEnabledMatrixOptions>
     </BuildModes>
-    <Units Count="170">
+    <Units Count="245">
       <Unit0>
         <Filename Value="lcl.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="9"/>
-        <CursorPos X="61" Y="188"/>
-        <UsageCount Value="81"/>
+        <CursorPos Y="11"/>
+        <UsageCount Value="177"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="uEventCallback.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="132"/>
-        <CursorPos X="24" Y="145"/>
-        <UsageCount Value="81"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="233"/>
+        <CursorPos X="15" Y="330"/>
+        <UsageCount Value="177"/>
+        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="ulinklabel.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uLinkLabel"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="43"/>
+        <TopLine Value="2"/>
+        <CursorPos X="3" Y="20"/>
+        <UsageCount Value="139"/>
       </Unit2>
       <Unit3>
         <Filename Value="ImageButton.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="364"/>
-        <CursorPos X="3" Y="25"/>
-        <UsageCount Value="26"/>
+        <CursorPos X="55" Y="4"/>
+        <UsageCount Value="122"/>
       </Unit3>
       <Unit4>
         <Filename Value="Gauges.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="370"/>
+        <CursorPos X="33" Y="408"/>
+        <UsageCount Value="89"/>
       </Unit4>
       <Unit5>
         <Filename Value="ucomponents.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uComponents"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="86"/>
       </Unit5>
       <Unit6>
-        <Filename Value="uFormDesignerFile.pas"/>
+        <Filename Value="ugoform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGoForm"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="20" Y="3"/>
-        <UsageCount Value="32"/>
+        <TopLine Value="26"/>
+        <CursorPos X="27" Y="45"/>
+        <UsageCount Value="26"/>
       </Unit6>
       <Unit7>
+        <Filename Value="uFormDesignerFile.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="357"/>
+        <CursorPos X="13" Y="42"/>
+        <UsageCount Value="27"/>
+      </Unit7>
+      <Unit8>
         <Filename Value="F:\usr\lib\lazarus\1.6\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1258"/>
         <CursorPos X="3" Y="1266"/>
-        <UsageCount Value="9"/>
-      </Unit7>
-      <Unit8>
+        <UsageCount Value="3"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="F:\usr\share\fpcsrc\3.0.0\packages\fcl-base\src\custapp.pp"/>
         <UnitName Value="CustApp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos X="40" Y="28"/>
-        <UsageCount Value="9"/>
-      </Unit8>
-      <Unit9>
+        <UsageCount Value="3"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="F:\usr\share\fpcsrc\3.0.0\rtl\objpas\classes\classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1702"/>
         <CursorPos X="3" Y="1740"/>
-        <UsageCount Value="9"/>
-      </Unit9>
-      <Unit10>
+        <UsageCount Value="3"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="F:\usr\lib\lazarus\1.6\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1602"/>
         <CursorPos X="28" Y="1603"/>
         <UsageCount Value="9"/>
-      </Unit10>
-      <Unit11>
+      </Unit11>
+      <Unit12>
         <Filename Value="DelphiDef.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="49"/>
         <CursorPos X="64" Y="7"/>
         <UsageCount Value="13"/>
-      </Unit11>
-      <Unit12>
+      </Unit12>
+      <Unit13>
         <Filename Value="F:\lazarus\lcl\menus.pp"/>
         <UnitName Value="Menus"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="393"/>
-        <CursorPos X="18" Y="415"/>
-        <UsageCount Value="13"/>
-      </Unit12>
-      <Unit13>
+        <TopLine Value="390"/>
+        <CursorPos X="33" Y="407"/>
+        <UsageCount Value="8"/>
+      </Unit13>
+      <Unit14>
         <Filename Value="F:\lazarus\lcl\graphics.pp"/>
         <UnitName Value="Graphics"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="88"/>
-        <CursorPos X="5" Y="103"/>
-        <UsageCount Value="14"/>
-      </Unit13>
-      <Unit14>
+        <TopLine Value="1349"/>
+        <CursorPos X="31" Y="1378"/>
+        <UsageCount Value="25"/>
+      </Unit14>
+      <Unit15>
         <Filename Value="F:\lazarus\lcl\imglist.pp"/>
         <UnitName Value="ImgList"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="182"/>
         <CursorPos X="49" Y="195"/>
         <UsageCount Value="12"/>
-      </Unit14>
-      <Unit15>
+      </Unit15>
+      <Unit16>
         <Filename Value="F:\lazarus\fpc\3.0.2\source\rtl\objpas\fgl.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="202"/>
         <CursorPos X="10" Y="226"/>
         <UsageCount Value="11"/>
-      </Unit15>
-      <Unit16>
+      </Unit16>
+      <Unit17>
         <Filename Value="F:\lazarus\fpc\3.0.2\source\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="169"/>
         <CursorPos X="23" Y="193"/>
         <UsageCount Value="10"/>
-      </Unit16>
-      <Unit17>
+      </Unit17>
+      <Unit18>
         <Filename Value="F:\lazarus\lcl\interfaces\win32\win32int.pp"/>
         <UnitName Value="Win32Int"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="272"/>
         <CursorPos X="22" Y="297"/>
         <UsageCount Value="9"/>
-      </Unit17>
-      <Unit18>
+      </Unit18>
+      <Unit19>
         <Filename Value="F:\lazarus\fpc\3.0.2\source\rtl\inc\systemh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="371"/>
         <CursorPos X="3" Y="406"/>
         <UsageCount Value="11"/>
-      </Unit18>
-      <Unit19>
+      </Unit19>
+      <Unit20>
         <Filename Value="Application.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="289"/>
         <CursorPos X="22" Y="325"/>
         <UsageCount Value="9"/>
-      </Unit19>
-      <Unit20>
+      </Unit20>
+      <Unit21>
         <Filename Value="F:\lazarus\lcl\forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="412"/>
         <CursorPos X="3" Y="429"/>
         <UsageCount Value="11"/>
-      </Unit20>
-      <Unit21>
+      </Unit21>
+      <Unit22>
         <Filename Value="F:\lazarus\fpc\3.0.2\source\packages\fcl-base\src\custapp.pp"/>
         <UnitName Value="CustApp"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="25"/>
         <UsageCount Value="9"/>
-      </Unit21>
-      <Unit22>
+      </Unit22>
+      <Unit23>
         <Filename Value="Form.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="511"/>
         <CursorPos X="25" Y="535"/>
         <UsageCount Value="9"/>
-      </Unit22>
-      <Unit23>
+      </Unit23>
+      <Unit24>
         <Filename Value="F:\lazarus\fpc\3.0.2\source\rtl\objpas\classes\classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="324"/>
         <CursorPos X="32" Y="347"/>
         <UsageCount Value="10"/>
-      </Unit23>
-      <Unit24>
+      </Unit24>
+      <Unit25>
         <Filename Value="F:\lazarus\fpc\3.0.2\source\packages\rtl-objpas\src\inc\dateutil.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="392"/>
         <CursorPos X="10" Y="416"/>
         <UsageCount Value="11"/>
-      </Unit24>
-      <Unit25>
+      </Unit25>
+      <Unit26>
         <Filename Value="lclApplication.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="86"/>
         <CursorPos X="53" Y="111"/>
         <UsageCount Value="11"/>
-      </Unit25>
-      <Unit26>
+      </Unit26>
+      <Unit27>
         <Filename Value="MyLCL_Form.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="96"/>
         <CursorPos X="36" Y="115"/>
         <UsageCount Value="11"/>
-      </Unit26>
-      <Unit27>
+      </Unit27>
+      <Unit28>
         <Filename Value="MyLCL_Button.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="306"/>
         <CursorPos X="72" Y="316"/>
         <UsageCount Value="11"/>
-      </Unit27>
-      <Unit28>
+      </Unit28>
+      <Unit29>
         <Filename Value="MyLCL_Edit.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="116"/>
         <CursorPos X="34" Y="136"/>
         <UsageCount Value="11"/>
-      </Unit28>
-      <Unit29>
+      </Unit29>
+      <Unit30>
         <Filename Value="F:\lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1289"/>
         <CursorPos X="69" Y="1318"/>
         <UsageCount Value="13"/>
-      </Unit29>
-      <Unit30>
+      </Unit30>
+      <Unit31>
         <Filename Value="MyLCL_MainMenu.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="120"/>
         <CursorPos X="2" Y="162"/>
         <UsageCount Value="10"/>
-      </Unit30>
-      <Unit31>
+      </Unit31>
+      <Unit32>
         <Filename Value="MyLCL_PopupMenu.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="12" Y="20"/>
         <UsageCount Value="12"/>
-      </Unit31>
-      <Unit32>
+      </Unit32>
+      <Unit33>
         <Filename Value="MyLCL_Memo.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="179"/>
         <CursorPos X="14" Y="203"/>
         <UsageCount Value="10"/>
-      </Unit32>
-      <Unit33>
+      </Unit33>
+      <Unit34>
         <Filename Value="MyLCL_CheckBox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="321"/>
         <CursorPos X="27" Y="345"/>
         <UsageCount Value="10"/>
-      </Unit33>
-      <Unit34>
+      </Unit34>
+      <Unit35>
         <Filename Value="MyLCL_RadioButton.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="86"/>
         <CursorPos X="64" Y="108"/>
         <UsageCount Value="10"/>
-      </Unit34>
-      <Unit35>
+      </Unit35>
+      <Unit36>
         <Filename Value="MyLCL_GroupBox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="201"/>
         <CursorPos X="18" Y="223"/>
         <UsageCount Value="10"/>
-      </Unit35>
-      <Unit36>
+      </Unit36>
+      <Unit37>
         <Filename Value="MyLCL_Label.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="561"/>
         <CursorPos X="2" Y="590"/>
         <UsageCount Value="10"/>
-      </Unit36>
-      <Unit37>
+      </Unit37>
+      <Unit38>
         <Filename Value="MyLCL_ListBox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="527"/>
         <CursorPos X="74" Y="548"/>
         <UsageCount Value="10"/>
-      </Unit37>
-      <Unit38>
+      </Unit38>
+      <Unit39>
         <Filename Value="MyLCL_ComboBox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="837"/>
         <CursorPos X="2" Y="861"/>
         <UsageCount Value="10"/>
-      </Unit38>
-      <Unit39>
+      </Unit39>
+      <Unit40>
         <Filename Value="MyLCL_Panel.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="321"/>
         <CursorPos X="30" Y="340"/>
         <UsageCount Value="12"/>
-      </Unit39>
-      <Unit40>
+      </Unit40>
+      <Unit41>
         <Filename Value="MyLCL_Image.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="508"/>
         <CursorPos X="3" Y="533"/>
         <UsageCount Value="10"/>
-      </Unit40>
-      <Unit41>
+      </Unit41>
+      <Unit42>
         <Filename Value="MyLCL_RadioGroup.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="620"/>
         <CursorPos X="3" Y="666"/>
         <UsageCount Value="10"/>
-      </Unit41>
-      <Unit42>
+      </Unit42>
+      <Unit43>
         <Filename Value="MyLCL_ColorBox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="22" Y="35"/>
         <UsageCount Value="10"/>
-      </Unit42>
-      <Unit43>
+      </Unit43>
+      <Unit44>
         <Filename Value="MyLCL_ColorListBox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="495"/>
         <CursorPos X="17" Y="514"/>
         <UsageCount Value="10"/>
-      </Unit43>
-      <Unit44>
+      </Unit44>
+      <Unit45>
         <Filename Value="MyLCL_TrayIcon.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="123"/>
         <CursorPos X="58" Y="140"/>
         <UsageCount Value="12"/>
-      </Unit44>
-      <Unit45>
-        <Filename Value="MyLCL_OpenDialog.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2"/>
-        <CursorPos X="27" Y="20"/>
-        <UsageCount Value="15"/>
       </Unit45>
       <Unit46>
-        <Filename Value="MyLCL_SaveDialog.inc"/>
+        <Filename Value="MyLCL_OpenDialog.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="27" Y="20"/>
         <UsageCount Value="15"/>
       </Unit46>
       <Unit47>
-        <Filename Value="MyLCL_PrintDialog.inc"/>
+        <Filename Value="MyLCL_SaveDialog.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="27" Y="20"/>
         <UsageCount Value="15"/>
       </Unit47>
       <Unit48>
+        <Filename Value="MyLCL_PrintDialog.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2"/>
+        <CursorPos X="27" Y="20"/>
+        <UsageCount Value="15"/>
+      </Unit48>
+      <Unit49>
         <Filename Value="MyLCL_RichEdit.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="56" Y="8"/>
         <UsageCount Value="10"/>
-      </Unit48>
-      <Unit49>
+      </Unit49>
+      <Unit50>
         <Filename Value="MyLCL_TrackBar.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="699"/>
         <CursorPos X="3" Y="724"/>
         <UsageCount Value="10"/>
-      </Unit49>
-      <Unit50>
+      </Unit50>
+      <Unit51>
         <Filename Value="MyLCL_ImageList.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="288"/>
         <CursorPos X="2" Y="328"/>
         <UsageCount Value="10"/>
-      </Unit50>
-      <Unit51>
+      </Unit51>
+      <Unit52>
         <Filename Value="MyLCL_ProgressBar.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="43" Y="12"/>
         <UsageCount Value="10"/>
-      </Unit51>
-      <Unit52>
+      </Unit52>
+      <Unit53>
         <Filename Value="F:\lazarus\lcl\lclclasses.pp"/>
         <UnitName Value="LCLClasses"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="61"/>
         <CursorPos X="25" Y="83"/>
         <UsageCount Value="10"/>
-      </Unit52>
-      <Unit53>
+      </Unit53>
+      <Unit54>
         <Filename Value="F:\lazarus\lcl\lcltype.pp"/>
         <UnitName Value="LCLType"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="127"/>
         <CursorPos X="27" Y="151"/>
         <UsageCount Value="10"/>
-      </Unit53>
-      <Unit54>
+      </Unit54>
+      <Unit55>
         <Filename Value="MyLCL_DateTimePicker.inc"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit54>
-      <Unit55>
+      </Unit55>
+      <Unit56>
         <Filename Value="MyLCL_ListView.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="30" Y="7"/>
         <UsageCount Value="15"/>
-      </Unit55>
-      <Unit56>
+      </Unit56>
+      <Unit57>
         <Filename Value="MyLCL_TreeView.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="628"/>
         <CursorPos X="2" Y="645"/>
         <UsageCount Value="10"/>
-      </Unit56>
-      <Unit57>
+      </Unit57>
+      <Unit58>
         <Filename Value="F:\lazarus\lcl\comctrls.pp"/>
         <UnitName Value="ComCtrls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1357"/>
         <CursorPos X="16" Y="1389"/>
         <UsageCount Value="15"/>
-      </Unit57>
-      <Unit58>
+      </Unit58>
+      <Unit59>
         <Filename Value="MyLCL_ToolBar.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="413"/>
         <CursorPos X="2" Y="435"/>
         <UsageCount Value="10"/>
-      </Unit58>
-      <Unit59>
+      </Unit59>
+      <Unit60>
         <Filename Value="MyLCL_Strings.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="35" Y="11"/>
         <UsageCount Value="10"/>
-      </Unit59>
-      <Unit60>
+      </Unit60>
+      <Unit61>
         <Filename Value="MyLCL_Brush.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="31"/>
         <CursorPos X="49" Y="44"/>
         <UsageCount Value="16"/>
-      </Unit60>
-      <Unit61>
+      </Unit61>
+      <Unit62>
         <Filename Value="MyLCL_ListItems.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="58"/>
         <UsageCount Value="10"/>
-      </Unit61>
-      <Unit62>
+      </Unit62>
+      <Unit63>
         <Filename Value="MyLCL_TreeNodes.inc"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit62>
-      <Unit63>
+      </Unit63>
+      <Unit64>
         <Filename Value="MyLCL_ListItem.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="191"/>
         <CursorPos Y="226"/>
         <UsageCount Value="10"/>
-      </Unit63>
-      <Unit64>
+      </Unit64>
+      <Unit65>
         <Filename Value="MyLCL_TreeNode.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="254"/>
         <CursorPos X="54" Y="281"/>
         <UsageCount Value="16"/>
-      </Unit64>
-      <Unit65>
+      </Unit65>
+      <Unit66>
         <Filename Value="MyLCL_PageControl.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="709"/>
         <CursorPos X="2" Y="716"/>
         <UsageCount Value="10"/>
-      </Unit65>
-      <Unit66>
+      </Unit66>
+      <Unit67>
         <Filename Value="MyLCL_TabSheet.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="664"/>
         <CursorPos X="4" Y="688"/>
         <UsageCount Value="10"/>
-      </Unit66>
-      <Unit67>
+      </Unit67>
+      <Unit68>
         <Filename Value="MyLCL_Screen.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="61"/>
         <CursorPos X="4" Y="80"/>
         <UsageCount Value="12"/>
-      </Unit67>
-      <Unit68>
+      </Unit68>
+      <Unit69>
         <Filename Value="MyLCL_Mouse.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="31"/>
         <CursorPos X="23" Y="76"/>
         <UsageCount Value="10"/>
-      </Unit68>
-      <Unit69>
+      </Unit69>
+      <Unit70>
         <Filename Value="MyLCL_ListGroup.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19" Y="8"/>
         <UsageCount Value="10"/>
-      </Unit69>
-      <Unit70>
+      </Unit70>
+      <Unit71>
         <Filename Value="MyLCL_StatusPanels.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="6"/>
         <CursorPos X="22" Y="23"/>
         <UsageCount Value="12"/>
-      </Unit70>
-      <Unit71>
+      </Unit71>
+      <Unit72>
         <Filename Value="MyLCL_Graphic.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="70" Y="23"/>
         <UsageCount Value="11"/>
-      </Unit71>
-      <Unit72>
+      </Unit72>
+      <Unit73>
         <Filename Value="MyLCL_PngImage.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27" Y="8"/>
         <UsageCount Value="11"/>
-      </Unit72>
-      <Unit73>
+      </Unit73>
+      <Unit74>
         <Filename Value="MyLCL_JPEGImage.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="59"/>
         <CursorPos X="18" Y="72"/>
         <UsageCount Value="15"/>
-      </Unit73>
-      <Unit74>
+      </Unit74>
+      <Unit75>
         <Filename Value="MyLCL_GIFImage.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="101"/>
         <CursorPos X="4" Y="120"/>
         <UsageCount Value="12"/>
-      </Unit74>
-      <Unit75>
+      </Unit75>
+      <Unit76>
         <Filename Value="MyLCL_Action.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="144"/>
         <CursorPos X="2" Y="157"/>
         <UsageCount Value="10"/>
-      </Unit75>
-      <Unit76>
+      </Unit76>
+      <Unit77>
         <Filename Value="MyLCL_ToolButton.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="562"/>
         <CursorPos X="2" Y="586"/>
         <UsageCount Value="10"/>
-      </Unit76>
-      <Unit77>
+      </Unit77>
+      <Unit78>
         <Filename Value="MyLCL_IniFile.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="127"/>
         <CursorPos Y="169"/>
         <UsageCount Value="10"/>
-      </Unit77>
-      <Unit78>
+      </Unit78>
+      <Unit79>
         <Filename Value="MyLCL_Registry.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="203"/>
         <CursorPos X="21" Y="214"/>
         <UsageCount Value="11"/>
-      </Unit78>
-      <Unit79>
+      </Unit79>
+      <Unit80>
         <Filename Value="MyLCL_Clipboard.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="26"/>
         <CursorPos X="36" Y="49"/>
         <UsageCount Value="12"/>
-      </Unit79>
-      <Unit80>
+      </Unit80>
+      <Unit81>
         <Filename Value="MyLCL_List.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="51"/>
         <CursorPos X="36" Y="89"/>
         <UsageCount Value="12"/>
-      </Unit80>
-      <Unit81>
+      </Unit81>
+      <Unit82>
         <Filename Value="MyLCL_MonthCalColors.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="40" Y="10"/>
         <UsageCount Value="10"/>
-      </Unit81>
-      <Unit82>
+      </Unit82>
+      <Unit83>
         <Filename Value="F:\lazarus\lcl\calendar.pp"/>
         <UnitName Value="Calendar"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="69"/>
         <CursorPos X="15" Y="89"/>
         <UsageCount Value="11"/>
-      </Unit82>
-      <Unit83>
+      </Unit83>
+      <Unit84>
         <Filename Value="F:\lazarus\lcl\buttons.pp"/>
         <UnitName Value="Buttons"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <UsageCount Value="10"/>
-      </Unit83>
-      <Unit84>
+      </Unit84>
+      <Unit85>
         <Filename Value="MyLCL_StaticText.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="241"/>
         <CursorPos X="15" Y="273"/>
         <UsageCount Value="10"/>
-      </Unit84>
-      <Unit85>
+      </Unit85>
+      <Unit86>
         <Filename Value="D:\lazarus\fpc\3.0.2\source\rtl\objpas\fgl.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="230"/>
         <CursorPos X="14" Y="255"/>
         <UsageCount Value="10"/>
-      </Unit85>
-      <Unit86>
+      </Unit86>
+      <Unit87>
         <Filename Value="D:\lazarus\fpc\3.0.2\source\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="167"/>
         <CursorPos X="23" Y="193"/>
         <UsageCount Value="10"/>
-      </Unit86>
-      <Unit87>
+      </Unit87>
+      <Unit88>
         <Filename Value="D:\lazarus\lcl\comctrls.pp"/>
         <UnitName Value="ComCtrls"/>
         <EditorIndex Value="-1"/>
@@ -772,566 +813,557 @@
         <CursorPos X="12" Y="3551"/>
         <FoldState Value=" T7i?LK_3@"/>
         <UsageCount Value="10"/>
-      </Unit87>
-      <Unit88>
+      </Unit88>
+      <Unit89>
         <Filename Value="LazarusDef.inc"/>
         <EditorIndex Value="1"/>
         <CursorPos X="25" Y="20"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
-      </Unit88>
-      <Unit89>
+      </Unit89>
+      <Unit90>
         <Filename Value="MyLCL_ColorDialog.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="27" Y="20"/>
         <UsageCount Value="12"/>
-      </Unit89>
-      <Unit90>
+      </Unit90>
+      <Unit91>
         <Filename Value="MyLCL_FontDialog.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="27" Y="20"/>
         <UsageCount Value="15"/>
-      </Unit90>
-      <Unit91>
+      </Unit91>
+      <Unit92>
         <Filename Value="MyLCL_OpenPictureDialog.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="27" Y="20"/>
         <UsageCount Value="16"/>
-      </Unit91>
-      <Unit92>
+      </Unit92>
+      <Unit93>
         <Filename Value="MyLCL_SavePictureDialog.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="200"/>
         <CursorPos Y="233"/>
         <UsageCount Value="10"/>
-      </Unit92>
-      <Unit93>
+      </Unit93>
+      <Unit94>
         <Filename Value="MyLCL_MonthCalendar.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="198"/>
         <CursorPos Y="198"/>
         <UsageCount Value="13"/>
-      </Unit93>
-      <Unit94>
+      </Unit94>
+      <Unit95>
         <Filename Value="MyLCL_Monitor.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="48"/>
         <CursorPos X="22" Y="93"/>
         <UsageCount Value="12"/>
-      </Unit94>
-      <Unit95>
+      </Unit95>
+      <Unit96>
         <Filename Value="MyLCL_PaintBox.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="8"/>
         <UsageCount Value="12"/>
-      </Unit95>
-      <Unit96>
+      </Unit96>
+      <Unit97>
         <Filename Value="MyLCL_Canvas.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="31" Y="13"/>
         <UsageCount Value="15"/>
-      </Unit96>
-      <Unit97>
+      </Unit97>
+      <Unit98>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1699"/>
         <CursorPos X="22" Y="1701"/>
         <UsageCount Value="15"/>
-      </Unit97>
-      <Unit98>
+      </Unit98>
+      <Unit99>
         <Filename Value="ExtDecl.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19" Y="3"/>
         <UsageCount Value="13"/>
-      </Unit98>
-      <Unit99>
+      </Unit99>
+      <Unit100>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\fgl.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="287"/>
         <CursorPos X="24" Y="313"/>
         <UsageCount Value="10"/>
-      </Unit99>
-      <Unit100>
+      </Unit100>
+      <Unit101>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\fcl-stl\src\ghashmap.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="217"/>
         <CursorPos X="34" Y="243"/>
         <UsageCount Value="11"/>
-      </Unit100>
-      <Unit101>
+      </Unit101>
+      <Unit102>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\inc\systemh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="319"/>
         <CursorPos X="3" Y="338"/>
         <UsageCount Value="10"/>
-      </Unit101>
-      <Unit102>
+      </Unit102>
+      <Unit103>
         <Filename Value="F:\lazarus\lcl\extctrls.pp"/>
         <UnitName Value="ExtCtrls"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="28"/>
         <UsageCount Value="10"/>
-      </Unit102>
-      <Unit103>
+      </Unit103>
+      <Unit104>
         <Filename Value="MyLCL_StatusBar.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="369"/>
         <CursorPos X="16" Y="671"/>
         <UsageCount Value="12"/>
-      </Unit103>
-      <Unit104>
+      </Unit104>
+      <Unit105>
         <Filename Value="MyLCL_Application.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="8" Y="6"/>
         <UsageCount Value="10"/>
-      </Unit104>
-      <Unit105>
+      </Unit105>
+      <Unit106>
         <Filename Value="MyLCL_StatusPanel.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="79"/>
         <UsageCount Value="10"/>
-      </Unit105>
-      <Unit106>
+      </Unit106>
+      <Unit107>
         <Filename Value="MyLCL_Object.inc"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit106>
-      <Unit107>
+      </Unit107>
+      <Unit108>
         <Filename Value="F:\lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="6525"/>
         <CursorPos X="3" Y="6519"/>
         <UsageCount Value="10"/>
-      </Unit107>
-      <Unit108>
+      </Unit108>
+      <Unit109>
         <Filename Value="F:\lazarus\lcl\actnlist.pas"/>
         <UnitName Value="ActnList"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="222"/>
         <CursorPos X="14" Y="240"/>
         <UsageCount Value="10"/>
-      </Unit108>
-      <Unit109>
+      </Unit109>
+      <Unit110>
         <Filename Value="MyLCL_ListColumns.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="61"/>
         <CursorPos X="4" Y="85"/>
         <UsageCount Value="10"/>
-      </Unit109>
-      <Unit110>
+      </Unit110>
+      <Unit111>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="215"/>
         <CursorPos X="8" Y="189"/>
         <UsageCount Value="10"/>
-      </Unit110>
-      <Unit111>
+      </Unit111>
+      <Unit112>
         <Filename Value="MyLCL_Exception.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="4" Y="33"/>
         <UsageCount Value="10"/>
-      </Unit111>
-      <Unit112>
+      </Unit112>
+      <Unit113>
         <Filename Value="MyLCL_ScrollBar.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="390"/>
         <CursorPos X="2" Y="412"/>
         <UsageCount Value="10"/>
-      </Unit112>
-      <Unit113>
+      </Unit113>
+      <Unit114>
         <Filename Value="MyLCL_CustomHint.inc"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit113>
-      <Unit114>
+      </Unit114>
+      <Unit115>
         <Filename Value="MyLCL_CheckListBox.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="567"/>
         <CursorPos X="43" Y="598"/>
         <UsageCount Value="10"/>
-      </Unit114>
-      <Unit115>
+      </Unit115>
+      <Unit116>
         <Filename Value="F:\lazarus\lcl\graphtype.pp"/>
         <UnitName Value="GraphType"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="32"/>
         <CursorPos X="8" Y="66"/>
         <UsageCount Value="12"/>
-      </Unit115>
-      <Unit116>
+      </Unit116>
+      <Unit117>
         <Filename Value="MyLCL_LinkLabel.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="381"/>
         <CursorPos X="116" Y="398"/>
         <UsageCount Value="11"/>
-      </Unit116>
-      <Unit117>
+      </Unit117>
+      <Unit118>
         <Filename Value="F:\lazarus\lcl\stdctrls.pp"/>
         <UnitName Value="StdCtrls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="24"/>
         <CursorPos X="49" Y="44"/>
         <UsageCount Value="12"/>
-      </Unit117>
-      <Unit118>
+      </Unit118>
+      <Unit119>
         <Filename Value="F:\lazarus\lcl\lmessages.pp"/>
         <UnitName Value="LMessages"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="56"/>
         <CursorPos X="3" Y="84"/>
         <UsageCount Value="10"/>
-      </Unit118>
-      <Unit119>
+      </Unit119>
+      <Unit120>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win\messages.pp"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit119>
-      <Unit120>
+      </Unit120>
+      <Unit121>
         <Filename Value="F:\lazarus\lcl\include\customlabel.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="199"/>
         <CursorPos X="3" Y="201"/>
         <UsageCount Value="11"/>
-      </Unit120>
-      <Unit121>
+      </Unit121>
+      <Unit122>
         <Filename Value="F:\lazarus\lcl\include\controlconsts.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="5"/>
         <CursorPos X="3" Y="33"/>
         <UsageCount Value="10"/>
-      </Unit121>
-      <Unit122>
+      </Unit122>
+      <Unit123>
         <Filename Value="F:\lazarus\lcl\themes.pas"/>
         <UnitName Value="Themes"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="37"/>
         <UsageCount Value="10"/>
-      </Unit122>
-      <Unit123>
+      </Unit123>
+      <Unit124>
         <Filename Value="F:\lazarus\components\chmhelp\lhelp\chmcontentprovider.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="365"/>
         <CursorPos X="27" Y="395"/>
         <UsageCount Value="10"/>
-      </Unit123>
-      <Unit124>
+      </Unit124>
+      <Unit125>
         <Filename Value="F:\lazarus\components\codetools\ide\codyutils.pas"/>
         <UnitName Value="CodyUtils"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="378"/>
         <CursorPos X="3" Y="397"/>
         <UsageCount Value="10"/>
-      </Unit124>
-      <Unit125>
+      </Unit125>
+      <Unit126>
         <Filename Value="F:\lazarus\components\googleapis\demo\tasks\frmmain.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="213"/>
         <CursorPos X="3" Y="242"/>
         <UsageCount Value="10"/>
-      </Unit125>
-      <Unit126>
+      </Unit126>
+      <Unit127>
         <Filename Value="F:\lazarus\components\jcf2\Ui\fAbout.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="56"/>
         <CursorPos X="3" Y="75"/>
         <UsageCount Value="10"/>
-      </Unit126>
-      <Unit127>
+      </Unit127>
+      <Unit128>
         <Filename Value="F:\lazarus\components\turbopower_ipro\iphtml.pas"/>
         <UnitName Value="IpHtml"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="15625"/>
         <CursorPos X="11" Y="15643"/>
         <UsageCount Value="10"/>
-      </Unit127>
-      <Unit128>
+      </Unit128>
+      <Unit129>
         <Filename Value="F:\lazarus\lcl\include\sysenvapis_win.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="316"/>
         <CursorPos X="33" Y="341"/>
         <UsageCount Value="10"/>
-      </Unit128>
-      <Unit129>
+      </Unit129>
+      <Unit130>
         <Filename Value="F:\lazarus\lcl\include\sysenvapis_unix.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="10" Y="10"/>
         <UsageCount Value="10"/>
-      </Unit129>
-      <Unit130>
+      </Unit130>
+      <Unit131>
         <Filename Value="F:\lazarus\lcl\lclintf.pas"/>
         <UnitName Value="LCLIntf"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="13" Y="38"/>
         <UsageCount Value="10"/>
-      </Unit130>
-      <Unit131>
+      </Unit131>
+      <Unit132>
         <Filename Value="F:\lazarus\lcl\include\popupmenu.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="60"/>
         <CursorPos X="3" Y="71"/>
         <UsageCount Value="12"/>
-      </Unit131>
-      <Unit132>
+      </Unit132>
+      <Unit133>
         <Filename Value="F:\lazarus\lcl\dialogs.pp"/>
         <UnitName Value="Dialogs"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="711"/>
         <CursorPos X="54" Y="729"/>
         <UsageCount Value="11"/>
-      </Unit132>
-      <Unit133>
+      </Unit133>
+      <Unit134>
         <Filename Value="F:\lazarus\lcl\widgetset\wsdialogs.pp"/>
         <UnitName Value="WSDialogs"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="136"/>
         <UsageCount Value="10"/>
-      </Unit133>
-      <Unit134>
+      </Unit134>
+      <Unit135>
         <Filename Value="F:\lazarus\lcl\include\messagedialogs.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="124"/>
         <CursorPos X="35" Y="148"/>
         <UsageCount Value="11"/>
-      </Unit134>
-      <Unit135>
+      </Unit135>
+      <Unit136>
         <Filename Value="F:\lazarus\lcl\include\lclintfh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="75"/>
         <CursorPos X="10" Y="94"/>
         <UsageCount Value="11"/>
-      </Unit135>
-      <Unit136>
+      </Unit136>
+      <Unit137>
         <Filename Value="F:\lazarus\lcl\include\lclintf.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="172"/>
         <CursorPos X="101" Y="13"/>
         <UsageCount Value="11"/>
-      </Unit136>
-      <Unit137>
+      </Unit137>
+      <Unit138>
         <Filename Value="F:\lazarus\lcl\interfacebase.pp"/>
         <UnitName Value="InterfaceBase"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="127"/>
         <CursorPos X="94" Y="127"/>
         <UsageCount Value="11"/>
-      </Unit137>
-      <Unit138>
+      </Unit138>
+      <Unit139>
         <Filename Value="F:\lazarus\lcl\interfaces\carbon\carbonlclintf.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="239"/>
         <CursorPos X="101" Y="300"/>
         <UsageCount Value="11"/>
-      </Unit138>
-      <Unit139>
+      </Unit139>
+      <Unit140>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\univint\src\FileTypesAndCreators.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="66"/>
         <CursorPos X="59" Y="505"/>
         <UsageCount Value="10"/>
-      </Unit139>
-      <Unit140>
+      </Unit140>
+      <Unit141>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win\sysutils.pp"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="14" Y="17"/>
         <UsageCount Value="10"/>
-      </Unit140>
-      <Unit141>
+      </Unit141>
+      <Unit142>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win64\classes.pp"/>
         <UnitName Value="Classes"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit141>
-      <Unit142>
+      </Unit142>
+      <Unit143>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\zlib\src\zlib.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="92"/>
         <CursorPos X="14" Y="121"/>
         <UsageCount Value="10"/>
-      </Unit142>
-      <Unit143>
+      </Unit143>
+      <Unit144>
         <Filename Value="LazarusResForm.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="2"/>
         <UsageCount Value="16"/>
-      </Unit143>
-      <Unit144>
+      </Unit144>
+      <Unit145>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="85"/>
         <CursorPos X="4" Y="104"/>
         <UsageCount Value="10"/>
-      </Unit144>
-      <Unit145>
+      </Unit145>
+      <Unit146>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\inc\heaph.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="64"/>
         <CursorPos X="10" Y="96"/>
         <UsageCount Value="10"/>
-      </Unit145>
-      <Unit146>
+      </Unit146>
+      <Unit147>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\reader.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19" Y="661"/>
         <UsageCount Value="11"/>
-      </Unit146>
-      <Unit147>
+      </Unit147>
+      <Unit148>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\rtlconst.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="156"/>
         <CursorPos X="3" Y="175"/>
         <UsageCount Value="10"/>
-      </Unit147>
-      <Unit148>
+      </Unit148>
+      <Unit149>
         <Filename Value="F:\lazarus\lcl\include\statusbar.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="347"/>
         <UsageCount Value="10"/>
-      </Unit148>
-      <Unit149>
+      </Unit149>
+      <Unit150>
         <Filename Value="F:\lazarus\lcl\widgetset\wscomctrls.pp"/>
         <UnitName Value="WSComCtrls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="800"/>
         <CursorPos X="3" Y="789"/>
         <UsageCount Value="10"/>
-      </Unit149>
-      <Unit150>
+      </Unit150>
+      <Unit151>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\syshelph.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="172"/>
         <CursorPos X="30" Y="40"/>
         <UsageCount Value="10"/>
-      </Unit150>
-      <Unit151>
+      </Unit151>
+      <Unit152>
         <Filename Value="F:\lazarus\lcl\include\listitems.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="519"/>
         <CursorPos X="30" Y="532"/>
         <UsageCount Value="11"/>
-      </Unit151>
-      <Unit152>
+      </Unit152>
+      <Unit153>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\typinfo.pp"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="13" Y="19"/>
         <UsageCount Value="10"/>
-      </Unit152>
-      <Unit153>
+      </Unit153>
+      <Unit154>
         <Filename Value="F:\lazarus\lcl\include\listitem.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="498"/>
         <CursorPos X="3" Y="503"/>
         <UsageCount Value="10"/>
-      </Unit153>
-      <Unit154>
+      </Unit154>
+      <Unit155>
         <Filename Value="F:\lazarus\lcl\include\treeview.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
         <CursorPos X="36" Y="3387"/>
         <UsageCount Value="12"/>
-      </Unit154>
-      <Unit155>
+      </Unit155>
+      <Unit156>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\winunits-base\src\commctrl.pp"/>
         <UnitName Value="CommCtrl"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4533"/>
         <CursorPos X="10" Y="4552"/>
         <UsageCount Value="10"/>
-      </Unit155>
-      <Unit156>
+      </Unit156>
+      <Unit157>
         <Filename Value="F:\lazarus\lcl\include\customlistview.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="887"/>
         <CursorPos X="39" Y="903"/>
         <UsageCount Value="12"/>
-      </Unit156>
-      <Unit157>
+      </Unit157>
+      <Unit158>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win\wininc\base.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos X="6" Y="89"/>
         <UsageCount Value="10"/>
-      </Unit157>
-      <Unit158>
+      </Unit158>
+      <Unit159>
         <Filename Value="zlibh.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2451"/>
         <CursorPos X="24" Y="109"/>
         <UsageCount Value="10"/>
-      </Unit158>
-      <Unit159>
+      </Unit159>
+      <Unit160>
         <Filename Value="jcl.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="622"/>
         <CursorPos X="90" Y="369"/>
         <UsageCount Value="10"/>
-      </Unit159>
-      <Unit160>
+      </Unit160>
+      <Unit161>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win32\classes.pp"/>
         <UnitName Value="Classes"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit160>
-      <Unit161>
+      </Unit161>
+      <Unit162>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\paszlib\src\paszlib.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="91"/>
         <CursorPos X="18" Y="110"/>
         <UsageCount Value="10"/>
-      </Unit161>
-      <Unit162>
+      </Unit162>
+      <Unit163>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\paszlib\src\zbase.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="84"/>
         <CursorPos X="39" Y="272"/>
         <UsageCount Value="10"/>
-      </Unit162>
-      <Unit163>
+      </Unit163>
+      <Unit164>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\paszlib\src\zconf.inc"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit163>
-      <Unit164>
+      </Unit164>
+      <Unit165>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\packages\paszlib\src\zdeflate.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="571"/>
         <UsageCount Value="10"/>
-      </Unit164>
-      <Unit165>
+      </Unit165>
+      <Unit166>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\types.pp"/>
         <UnitName Value="Types"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-      </Unit165>
-      <Unit166>
+      </Unit166>
+      <Unit167>
         <Filename Value="MyLCL_ImageButton.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="8"/>
         <UsageCount Value="10"/>
-      </Unit166>
-      <Unit167>
+      </Unit167>
+      <Unit168>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\classes\classes.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="421"/>
         <CursorPos X="25" Y="453"/>
         <UsageCount Value="11"/>
-      </Unit167>
-      <Unit168>
+      </Unit168>
+      <Unit169>
         <Filename Value="LazarusExtDef.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="12" Y="10"/>
-        <UsageCount Value="20"/>
-      </Unit168>
-      <Unit169>
-        <Filename Value="ugoform.pas"/>
-        <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
         <UsageCount Value="20"/>
       </Unit169>
     </Units>

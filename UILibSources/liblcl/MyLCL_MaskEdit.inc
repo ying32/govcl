@@ -557,218 +557,128 @@ end;
 
 procedure MaskEdit_SetOnChange(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnClick(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnDblClick(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnDragDrop(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnDragOver(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnEndDock(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDock := nil;
-    EventClass.Remove(AObj, geEndDock);
-    Exit;
-  end;
-  AObj.OnEndDock := @EventClass.OnEndDock;
-  EventClass.Add(AObj, geEndDock, AEventId);
+  {$DEFINE EventName := OnEndDock}
+  {$DEFINE EventMethodName := OnEndDock}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnEndDrag(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnEnter(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
-    Exit;
-  end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnExit(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
-    Exit;
-  end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnKeyDown(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnKeyPress(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnKeyUp(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnMouseDown(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnMouseEnter(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnMouseLeave(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnMouseMove(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnMouseUp(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 procedure MaskEdit_SetOnStartDock(AObj: TMaskEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnStartDock := nil;
-    EventClass.Remove(AObj, geStartDock);
-    Exit;
-  end;
-  AObj.OnStartDock := @EventClass.OnStartDock;
-  EventClass.Add(AObj, geStartDock, AEventId);
+  {$DEFINE EventName := OnStartDock}
+  {$DEFINE EventMethodName := OnStartDock}
+  EventMethodCode
 end;
 
 function MaskEdit_GetIsMasked(AObj: TMaskEdit): LongBool; extdecl;

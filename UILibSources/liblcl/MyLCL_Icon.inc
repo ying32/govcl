@@ -179,14 +179,9 @@ end;
 
 procedure Icon_SetOnChange(AObj: TIcon; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 function Icon_StaticClassType: TClass; extdecl;

@@ -472,122 +472,72 @@ end;
 
 procedure SpinEdit_SetOnChange(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnClick(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnEnter(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEnter := nil;
-    EventClass.Remove(AObj, geEnter);
-    Exit;
-  end;
-  AObj.OnEnter := @EventClass.OnEnter;
-  EventClass.Add(AObj, geEnter, AEventId);
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnExit(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnExit := nil;
-    EventClass.Remove(AObj, geExit);
-    Exit;
-  end;
-  AObj.OnExit := @EventClass.OnExit;
-  EventClass.Add(AObj, geExit, AEventId);
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnKeyDown(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnKeyPress(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnKeyUp(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnMouseDown(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnMouseMove(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure SpinEdit_SetOnMouseUp(AObj: TSpinEdit; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 function SpinEdit_GetAlignment(AObj: TSpinEdit): TAlignment; extdecl;

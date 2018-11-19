@@ -9,52 +9,73 @@ import (
 var globalFormScaled bool = false
 
 /*
- CreateForm 一般不建议使用 NewForm，而优先使用CreateForm
- 这里要做兼容
- len(fields) = 1
-   这时，可不加载窗口的资源文件，自己构造一种，如下：
+ TApplication.CreateForm 一般不建议使用NewForm，而优先使用CreateForm
 
-   type TForm1 struct {
-      *vcl.TForm // 必须首个，无需命名，否则失败。
-      Button1 *vcl.TButton
-   }
+ 用法：
+  1、mainForm := vcl.Application.CreateForm()    // 直接返回
+  2、vcl.Application.CreateForm(&mainForm)       // 无资源加载，只会绑定窗口的事件，不会绑定子组件事件
+  3、vcl.Application.CreateForm(&mainForm, true) // 无资源加载，当第二个参数为true时在OnFormCreate调用完后会绑定子组件事件，前提是必须要设置组件的Name。
 
-   var form1 *TForm1
-
-   vcl.Application.Create(&form1)
-
- len(fields) = 2, 首个参数为：文件名或者字节， 第二个参数为输出的目标
-   目前只支持libvcl的，主要是解决dpi问题。
-
+  4、vcl.Application.CreateForm("form1.gfm", &mainForm)  // 从资源文件中填充子组件，并绑定所有事件
+  5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件
 */
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println(err)
+			fmt.Println("TApplication.CreateForm Error: ", err)
 		}
 	}()
-	// 参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetFormScaled(true) 后才能生效。
-	form := FormFromInst(Application_CreateForm(a.instance, len(fields) != 2))
 
-	// 当等于1时使用手动构造的一种
-	if len(fields) == 1 {
-		a.fullFiledVal(form, fields[0])
-	} else if len(fields) == 2 { // 等于2时，使用资源中的
-		switch fields[0].(type) {
-		case string:
-			ResFormLoadFromFile(fields[0].(string), CheckPtr(form))
-		case []byte:
-			mem := NewMemoryStreamFromBytes(fields[0].([]byte))
-			defer mem.Free()
-			ResFormLoadFromStream(CheckPtr(mem), CheckPtr(form))
+	var fullSubComponent bool
+	var afterBindSubComponentsEvents bool
+	var field1 interface{}
+
+	// 初始创建时是否使用缩放
+	initScale := len(fields) != 2
+	if len(fields) >= 2 {
+		switch fields[1].(type) {
+		case bool:
+			initScale = true
 		default:
-			panic("error")
+			initScale = false
 		}
-		a.fullFiledVal(form, fields[1])
-		// 使用参数，则不返回
-		return nil
 	}
-	return form
+
+	// 由参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetFormScaled(true) 后才能生效。
+	form := FormFromInst(Application_CreateForm(a.instance, initScale))
+
+	switch len(fields) {
+	case 1:
+		field1 = fields[0]
+		fullSubComponent = false
+		afterBindSubComponentsEvents = false
+
+	case 2:
+		switch fields[1].(type) {
+		// 当第二个参数为bool时，表示不填充子组件，为true表示之后绑定事件
+		case bool:
+			field1 = fields[0]
+			fullSubComponent = false
+			afterBindSubComponentsEvents = fields[1].(bool)
+		default:
+			// 第二个参数类型不为bool时，填充子组件为true，之后绑定事件为false
+			field1 = fields[1]
+			fullSubComponent = true
+			afterBindSubComponentsEvents = false
+			switch fields[0].(type) {
+			case string:
+				ResFormLoadFromFile(fields[0].(string), CheckPtr(form))
+			case []byte:
+				mem := NewMemoryStreamFromBytes(fields[0].([]byte))
+				defer mem.Free()
+				ResFormLoadFromStream(CheckPtr(mem), CheckPtr(form))
+			}
+		}
+	default:
+		return form
+	}
+	a.fullFiledVal(form, field1, fullSubComponent, afterBindSubComponentsEvents)
+	return nil
 }
 
 // SetFormScaled 设置全局窗口的Scaled
@@ -63,11 +84,12 @@ func (a *TApplication) SetFormScaled(val bool) {
 	SetGlobalFormScaled(val)
 }
 
-//
+// Run 运行APP
 func (a *TApplication) Run() {
 	Application_Run(a.instance)
 }
 
+// Initialize 初始APP信息
 func (a *TApplication) Initialize() {
 	Application_Initialize(a.instance)
 }

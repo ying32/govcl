@@ -75,6 +75,76 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function PageSetupDialog_GetMarginLeft(AObj: TPageSetupDialog): Integer; extdecl;
+begin
+  Result :=  AObj.MarginLeft;
+end;
+
+procedure PageSetupDialog_SetMarginLeft(AObj: TPageSetupDialog; AValue: Integer); extdecl;
+begin
+  AObj.MarginLeft := AValue;
+end;
+
+function PageSetupDialog_GetMarginTop(AObj: TPageSetupDialog): Integer; extdecl;
+begin
+  Result :=  AObj.MarginTop;
+end;
+
+procedure PageSetupDialog_SetMarginTop(AObj: TPageSetupDialog; AValue: Integer); extdecl;
+begin
+  AObj.MarginTop := AValue;
+end;
+
+function PageSetupDialog_GetMarginRight(AObj: TPageSetupDialog): Integer; extdecl;
+begin
+  Result :=  AObj.MarginRight;
+end;
+
+procedure PageSetupDialog_SetMarginRight(AObj: TPageSetupDialog; AValue: Integer); extdecl;
+begin
+  AObj.MarginRight := AValue;
+end;
+
+function PageSetupDialog_GetMarginBottom(AObj: TPageSetupDialog): Integer; extdecl;
+begin
+  Result :=  AObj.MarginBottom;
+end;
+
+procedure PageSetupDialog_SetMarginBottom(AObj: TPageSetupDialog; AValue: Integer); extdecl;
+begin
+  AObj.MarginBottom := AValue;
+end;
+
+function PageSetupDialog_GetOptions(AObj: TPageSetupDialog): TPageSetupDialogOptions; extdecl;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure PageSetupDialog_SetOptions(AObj: TPageSetupDialog; AValue: TPageSetupDialogOptions); extdecl;
+begin
+  AObj.Options := AValue;
+end;
+
+function PageSetupDialog_GetPageWidth(AObj: TPageSetupDialog): Integer; extdecl;
+begin
+  Result :=  AObj.PageWidth;
+end;
+
+procedure PageSetupDialog_SetPageWidth(AObj: TPageSetupDialog; AValue: Integer); extdecl;
+begin
+  AObj.PageWidth := AValue;
+end;
+
+function PageSetupDialog_GetPageHeight(AObj: TPageSetupDialog): Integer; extdecl;
+begin
+  Result :=  AObj.PageHeight;
+end;
+
+procedure PageSetupDialog_SetPageHeight(AObj: TPageSetupDialog; AValue: Integer); extdecl;
+begin
+  AObj.PageHeight := AValue;
+end;
+
 function PageSetupDialog_GetUnits(AObj: TPageSetupDialog): TPageMeasureUnits; extdecl;
 begin
   Result :=  AObj.Units;
@@ -87,26 +157,16 @@ end;
 
 procedure PageSetupDialog_SetOnClose(AObj: TPageSetupDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    EventClass.Remove(AObj, geClose);
-    Exit;
-  end;
-  AObj.OnClose := @EventClass.OnClose;
-  EventClass.Add(AObj, geClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := OnClose}
+  EventMethodCode
 end;
 
 procedure PageSetupDialog_SetOnShow(AObj: TPageSetupDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    EventClass.Remove(AObj, geShow);
-    Exit;
-  end;
-  AObj.OnShow := @EventClass.OnShow;
-  EventClass.Add(AObj, geShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 function PageSetupDialog_GetComponentCount(AObj: TPageSetupDialog): Integer; extdecl;
@@ -174,6 +234,20 @@ exports
   PageSetupDialog_Equals,
   PageSetupDialog_GetHashCode,
   PageSetupDialog_ToString,
+  PageSetupDialog_GetMarginLeft,
+  PageSetupDialog_SetMarginLeft,
+  PageSetupDialog_GetMarginTop,
+  PageSetupDialog_SetMarginTop,
+  PageSetupDialog_GetMarginRight,
+  PageSetupDialog_SetMarginRight,
+  PageSetupDialog_GetMarginBottom,
+  PageSetupDialog_SetMarginBottom,
+  PageSetupDialog_GetOptions,
+  PageSetupDialog_SetOptions,
+  PageSetupDialog_GetPageWidth,
+  PageSetupDialog_SetPageWidth,
+  PageSetupDialog_GetPageHeight,
+  PageSetupDialog_SetPageHeight,
   PageSetupDialog_GetUnits,
   PageSetupDialog_GetHandle,
   PageSetupDialog_SetOnClose,

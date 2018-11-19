@@ -92,26 +92,16 @@ end;
 
 procedure ColorDialog_SetOnClose(AObj: TColorDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    EventClass.Remove(AObj, geClose);
-    Exit;
-  end;
-  AObj.OnClose := @EventClass.OnClose;
-  EventClass.Add(AObj, geClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := OnClose}
+  EventMethodCode
 end;
 
 procedure ColorDialog_SetOnShow(AObj: TColorDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    EventClass.Remove(AObj, geShow);
-    Exit;
-  end;
-  AObj.OnShow := @EventClass.OnShow;
-  EventClass.Add(AObj, geShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 function ColorDialog_GetComponentCount(AObj: TColorDialog): Integer; extdecl;

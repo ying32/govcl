@@ -532,218 +532,128 @@ end;
 
 procedure CoolBar_SetOnChange(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnClick(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnContextPopup(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnDblClick(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnDockDrop(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDockDrop := nil;
-    EventClass.Remove(AObj, geDockDrop);
-    Exit;
-  end;
-  AObj.OnDockDrop := @EventClass.OnDockDrop;
-  EventClass.Add(AObj, geDockDrop, AEventId);
+  {$DEFINE EventName := OnDockDrop}
+  {$DEFINE EventMethodName := OnDockDrop}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnDragDrop(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnDragOver(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnEndDock(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDock := nil;
-    EventClass.Remove(AObj, geEndDock);
-    Exit;
-  end;
-  AObj.OnEndDock := @EventClass.OnEndDock;
-  EventClass.Add(AObj, geEndDock, AEventId);
+  {$DEFINE EventName := OnEndDock}
+  {$DEFINE EventMethodName := OnEndDock}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnEndDrag(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDrag := nil;
-    EventClass.Remove(AObj, geEndDrag);
-    Exit;
-  end;
-  AObj.OnEndDrag := @EventClass.OnEndDrag;
-  EventClass.Add(AObj, geEndDrag, AEventId);
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnGetSiteInfo(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnGetSiteInfo := nil;
-    EventClass.Remove(AObj, geGetSiteInfo);
-    Exit;
-  end;
-  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
-  EventClass.Add(AObj, geGetSiteInfo, AEventId);
+  {$DEFINE EventName := OnGetSiteInfo}
+  {$DEFINE EventMethodName := OnGetSiteInfo}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnMouseDown(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnMouseEnter(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnMouseLeave(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnMouseMove(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnMouseUp(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnResize(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnResize := nil;
-    EventClass.Remove(AObj, geResize);
-    Exit;
-  end;
-  AObj.OnResize := @EventClass.OnResize;
-  EventClass.Add(AObj, geResize, AEventId);
+  {$DEFINE EventName := OnResize}
+  {$DEFINE EventMethodName := OnResize}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnStartDock(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnStartDock := nil;
-    EventClass.Remove(AObj, geStartDock);
-    Exit;
-  end;
-  AObj.OnStartDock := @EventClass.OnStartDock;
-  EventClass.Add(AObj, geStartDock, AEventId);
+  {$DEFINE EventName := OnStartDock}
+  {$DEFINE EventMethodName := OnStartDock}
+  EventMethodCode
 end;
 
 procedure CoolBar_SetOnUnDock(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnUnDock := nil;
-    EventClass.Remove(AObj, geUnDock);
-    Exit;
-  end;
-  AObj.OnUnDock := @EventClass.OnUnDock;
-  EventClass.Add(AObj, geUnDock, AEventId);
+  {$DEFINE EventName := OnUnDock}
+  {$DEFINE EventMethodName := OnUnDock}
+  EventMethodCode
 end;
 
 function CoolBar_GetDockClientCount(AObj: TCoolBar): Integer; extdecl;

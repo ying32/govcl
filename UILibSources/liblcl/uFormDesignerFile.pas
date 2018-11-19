@@ -1,5 +1,5 @@
-// Éè¼ÆÆ÷gfmÎÄ¼ş¸ñÊ½£¬ÕâÀïÊÇ¼ÓÃÜ¸ñÊ½£¬ÖÁÓÚÎªÉ¶Ê¹ÓÃ¼ÓÃÜµÄ£¬Ò»
-// ¿ªÊ¼ÊÇ×öÁËÍâ²¿gfmÎÄ¼ş¼ÓÔØ£¬·ÀÖ¹ÏîÄ¿·¢²¼Ê¹ÓÃÁËÍâ²¿ÎÄ¼şËæÒâ±»ĞŞ¸Ä£¬ËùÒÔÃ»ÓĞ¹«¿ªÏà¹ØµÄ
+// è®¾è®¡å™¨gfmæ–‡ä»¶æ ¼å¼ï¼Œè¿™é‡Œæ˜¯åŠ å¯†æ ¼å¼ï¼Œè‡³äºä¸ºå•¥ä½¿ç”¨åŠ å¯†çš„ï¼Œä¸€
+// å¼€å§‹æ˜¯åšäº†å¤–éƒ¨gfmæ–‡ä»¶åŠ è½½ï¼Œé˜²æ­¢é¡¹ç›®å‘å¸ƒä½¿ç”¨äº†å¤–éƒ¨æ–‡ä»¶éšæ„è¢«ä¿®æ”¹ï¼Œæ‰€ä»¥æ²¡æœ‰å…¬å¼€ç›¸å…³çš„
 
 unit uFormDesignerFile;
 
@@ -104,7 +104,7 @@ begin
         end;
       end;
     end else
-    // Ô­Éú¸ñÊ½
+    // åŸç”Ÿæ ¼å¼
     if CompareMem(@LHeader[0], @HEADERTPF0[0], Length(HEADERTPF0)) then
     begin
       AInStream.Position := 0;
@@ -118,7 +118,7 @@ end;
 
 class procedure TFormResFile.XorStream(AStream: TMemoryStream);
 var
-  EncodedBytes, ZipBytes:array of Byte; //±àÂë×Ö½Ú
+  EncodedBytes, ZipBytes:array of Byte; //ç¼–ç å­—èŠ‚
   BytesLength: Integer;
   I, L:integer;
 const
@@ -136,8 +136,8 @@ begin
     L := I mod 16;
     ZipBytes[i] := EncodedBytes[i] xor EncKey[L];
   end;
-  AStream.Clear; //Çå³ıÒÔÇ°µÄÁ÷
-  AStream.Write(ZipBytes[0], BytesLength); //½«Òì»òºóµÄ×Ö½Ú¼¯Ğ´ÈëÔ­Á÷ÖĞ
+  AStream.Clear; //æ¸…é™¤ä»¥å‰çš„æµ
+  AStream.Write(ZipBytes[0], BytesLength); //å°†å¼‚æˆ–åçš„å­—èŠ‚é›†å†™å…¥åŸæµä¸­
   AStream.Position := 0;
 end;
 

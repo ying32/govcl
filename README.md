@@ -18,17 +18,13 @@
 
 
 Librarys binaries  
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.0/Librarys-1.2.0.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.1/Librarys-1.2.1.zip)  
 **Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.md).**  
 
 
 res2go Tool  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.6-blue.svg)](Tools/res2go)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.10-blue.svg)](Tools/res2go)  
 **Note: Designed in Delphi/Lazarus, code written in Golang.**  
-
-
-VCL style files  
-[![VCL style files](https://img.shields.io/badge/downloads-VCL%20style%20files-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.1.20/vcl-styles.zip)  
 
 ### usage: 
 
@@ -43,16 +39,18 @@ import (
    "github.com/ying32/govcl/vcl"
 )
 
-var (
-   mainForm *vcl.TForm
-)
-
 func main() {
     vcl.Application.Initialize()
-    mainForm = vcl.Application.CreateForm()
+    mainForm := vcl.Application.CreateForm()
     mainForm.SetCaption("Hello")
     mainForm.EnabledMaximize(false)
     mainForm.ScreenCenter()
+    btn := vcl.NewButton(mainForm)
+    btn.SetParent(mainForm)
+    btn.SetCaption("Hello")
+    btn.SetOnClick(func(sender vcl.IObject) {
+        vcl.ShowMessage("Hello!")
+    })
     vcl.Application.Run()
 }
 ```  

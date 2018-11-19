@@ -55,6 +55,11 @@ begin
   AObj.InsertObject(Index, S, AObject);
 end;
 
+procedure StringList_CustomSort(AObj: TStringList; Compare: TStringListSortCompare); extdecl;
+begin
+  AObj.CustomSort(Compare);
+end;
+
 procedure StringList_Append(AObj: TStringList; S: PChar); extdecl;
 begin
   AObj.Append(S);
@@ -157,26 +162,16 @@ end;
 
 procedure StringList_SetOnChange(AObj: TStringList; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure StringList_SetOnChanging(AObj: TStringList; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChanging := nil;
-    EventClass.Remove(AObj, geChanging);
-    Exit;
-  end;
-  AObj.OnChanging := @EventClass.OnChanging;
-  EventClass.Add(AObj, geChanging, AEventId);
+  {$DEFINE EventName := OnChanging}
+  {$DEFINE EventMethodName := OnChanging}
+  EventMethodCode
 end;
 
 function StringList_GetCapacity(AObj: TStringList): Integer; extdecl;
@@ -280,6 +275,7 @@ exports
   StringList_IndexOf,
   StringList_Insert,
   StringList_InsertObject,
+  StringList_CustomSort,
   StringList_Append,
   StringList_BeginUpdate,
   StringList_EndUpdate,

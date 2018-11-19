@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ¥˙¬Î”…GenlibVclπ§æﬂ◊‘∂Ø…˙≥…°£
-// Copyright ? ying32. All Rights Reserved.
+// ‰ª£Á†ÅÁî±GenlibVclÂ∑•ÂÖ∑Ëá™Âä®ÁîüÊàê„ÄÇ
+// Copyright ¬© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -205,11 +205,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnBalloonClick := nil;
-    TEventClass.Remove(AObj, geBalloonClick);
+    TEventClass.Remove(AObj, @TEventClass.OnBalloonClick);
     Exit;
   end;
   AObj.OnBalloonClick := TEventClass.OnBalloonClick;
-  TEventClass.Add(AObj, geBalloonClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnBalloonClick, AEventId);
 end;
 
 procedure TrayIcon_SetOnClick(AObj: TTrayIcon; AEventId: NativeUInt); stdcall;
@@ -217,11 +217,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    TEventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
   AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, geClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure TrayIcon_SetOnDblClick(AObj: TTrayIcon; AEventId: NativeUInt); stdcall;
@@ -229,11 +229,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, geDblClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure TrayIcon_SetOnMouseMove(AObj: TTrayIcon; AEventId: NativeUInt); stdcall;
@@ -241,11 +241,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
   AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, geMouseMove, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure TrayIcon_SetOnMouseUp(AObj: TTrayIcon; AEventId: NativeUInt); stdcall;
@@ -253,11 +253,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, geMouseUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure TrayIcon_SetOnMouseDown(AObj: TTrayIcon; AEventId: NativeUInt); stdcall;
@@ -265,11 +265,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
   AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, geMouseDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 function TrayIcon_GetComponentCount(AObj: TTrayIcon): Integer; stdcall;

@@ -80,3 +80,4 @@ __recovery/
 *.td
 /vcl/dylib/testdll
 *.bak
+/samples/ExtPlugins

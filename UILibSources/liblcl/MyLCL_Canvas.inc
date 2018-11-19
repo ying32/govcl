@@ -202,26 +202,16 @@ end;
 
 procedure Canvas_SetOnChange(AObj: TCanvas; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.OnChange;
-  EventClass.Add(AObj, geChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
 end;
 
 procedure Canvas_SetOnChanging(AObj: TCanvas; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChanging := nil;
-    EventClass.Remove(AObj, geChanging);
-    Exit;
-  end;
-  AObj.OnChanging := @EventClass.OnChanging;
-  EventClass.Add(AObj, geChanging, AEventId);
+  {$DEFINE EventName := OnChanging}
+  {$DEFINE EventMethodName := OnChanging}
+  EventMethodCode
 end;
 
 function Canvas_StaticClassType: TClass; extdecl;

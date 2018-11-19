@@ -1,4 +1,4 @@
-// +build windows linux,386 darwin,386
+// +build windows arm linux,386 darwin,386
 
 package types
 

@@ -57,12 +57,13 @@ uses
   Grids,
   ValEdit,
   Gauges,
-  Spin;
+  Spin,
+  uMiniWebview;
 
 {$I LazarusExtDef.inc}
 
 const
-  ClassRefArrs: array[0..108] of TClass = (
+  ClassRefArrs: array[0..109] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -84,7 +85,7 @@ const
     TPrinterSetupDialog,
     TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
-    TFlowPanel,TCoolBar,TCoolBands,TCoolBand, TSpinEdit
+    TFlowPanel,TCoolBar,TCoolBands,TCoolBand, TSpinEdit,TMiniWebview
   );
 
 procedure InitClassLists;

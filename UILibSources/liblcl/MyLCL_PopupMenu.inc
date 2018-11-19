@@ -137,14 +137,9 @@ end;
 
 procedure PopupMenu_SetOnPopup(AObj: TPopupMenu; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnPopup := nil;
-    EventClass.Remove(AObj, gePopup);
-    Exit;
-  end;
-  AObj.OnPopup := @EventClass.OnPopup;
-  EventClass.Add(AObj, gePopup, AEventId);
+  {$DEFINE EventName := OnPopup}
+  {$DEFINE EventMethodName := OnPopup}
+  EventMethodCode
 end;
 
 function PopupMenu_GetHandle(AObj: TPopupMenu): HMENU; extdecl;

@@ -248,7 +248,7 @@ end;
 
 class procedure TFormResFile.XorStream(AStream: TMemoryStream);
 var
-  EncodedBytes, ZipBytes:array of Byte; //±àÂë×Ö½Ú
+  EncodedBytes, ZipBytes:array of Byte; //ç¼–ç å­—èŠ‚
   BytesLength: Integer;
   I, L:integer;
 const
@@ -266,8 +266,8 @@ begin
     L := I mod 16;
     ZipBytes[i] := EncodedBytes[i] xor EncKey[L];
   end;
-  AStream.Clear; //Çå³ıÒÔÇ°µÄÁ÷
-  AStream.Write(ZipBytes[0], BytesLength); //½«Òì»òºóµÄ×Ö½Ú¼¯Ğ´ÈëÔ­Á÷ÖĞ
+  AStream.Clear; //æ¸…é™¤ä»¥å‰çš„æµ
+  AStream.Write(ZipBytes[0], BytesLength); //å°†å¼‚æˆ–åçš„å­—èŠ‚é›†å†™å…¥åŸæµä¸­
   AStream.Position := 0;
 end;
 

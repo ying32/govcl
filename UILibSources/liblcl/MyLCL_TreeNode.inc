@@ -60,6 +60,11 @@ begin
   AObj.MoveTo(Destination, Mode);
 end;
 
+function TreeNode_CustomSort(AObj: TTreeNode; SortProc: PFNTVCOMPARE; Data: NativeInt; ARecurse: LongBool): LongBool; extdecl;
+begin
+  Result :=  AObj.CustomSort(SortProc, Data, ARecurse);
+end;
+
 function TreeNode_GetNamePath(AObj: TTreeNode): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -272,6 +277,7 @@ exports
   TreeNode_IndexOf,
   TreeNode_MakeVisible,
   TreeNode_MoveTo,
+  TreeNode_CustomSort,
   TreeNode_GetNamePath,
   TreeNode_ClassType,
   TreeNode_ClassName,

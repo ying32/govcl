@@ -100,6 +100,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function StatusPanels_GetCapacity(AObj: TStatusPanels): Integer; extdecl;
+begin
+  Result :=  AObj.Capacity;
+end;
+
+procedure StatusPanels_SetCapacity(AObj: TStatusPanels; AValue: Integer); extdecl;
+begin
+  AObj.Capacity := AValue;
+end;
+
 function StatusPanels_GetCount(AObj: TStatusPanels): Integer; extdecl;
 begin
   Result :=  AObj.Count;
@@ -140,6 +150,8 @@ exports
   StatusPanels_Equals,
   StatusPanels_GetHashCode,
   StatusPanels_ToString,
+  StatusPanels_GetCapacity,
+  StatusPanels_SetCapacity,
   StatusPanels_GetCount,
   StatusPanels_GetItems,
   StatusPanels_SetItems,

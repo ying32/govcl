@@ -1,7 +1,6 @@
 package tools
 
 import (
-	"archive/zip"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -93,41 +92,18 @@ func fileExists(path string) bool {
 	return false
 }
 
-func getdylibzip() string {
+func getdylib() string {
 	env := os.Getenv("GOPATH")
 	if env == "" {
 		return ""
 	}
 	for _, s := range strings.Split(env, ":") {
-		s += "/src/github.com/ying32/govcl/bin/MacOS32/liblcl.zip"
+		s += "/bin/liblcl.dylib"
 		if fileExists(s) {
 			return s
 		}
 	}
 	return ""
-}
-
-func extractdylib(zipFileName, destFileName string) error {
-	z, err := zip.OpenReader(zipFileName)
-	if err != nil {
-		return err
-	}
-	defer z.Close()
-	for _, f := range z.File {
-		if f.Name == "liblcl.dylib" {
-			fc, err := f.Open()
-			if err != nil {
-				return err
-			}
-			defer fc.Close()
-			llbBytes, err := ioutil.ReadAll(fc)
-			if err != nil {
-				return err
-			}
-			return ioutil.WriteFile(destFileName, llbBytes, 0755)
-		}
-	}
-	return nil
 }
 
 func createExecLink(srcFileName, linkFileName string) error {
@@ -164,7 +140,10 @@ func RunWithMacOSApp() error {
 
 			liblclFileName := macOSDir + "/liblcl.dylib"
 			if !fileExists(liblclFileName) {
-				extractdylib(getdylibzip(), liblclFileName)
+				libFileName := getdylib()
+				if fileExists(libFileName) {
+					copyFile(libFileName, liblclFileName)
+				}
 			}
 
 			plistFileName := macContentsDir + "/Info.plist"

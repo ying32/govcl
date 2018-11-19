@@ -61,16 +61,17 @@ uses
   Vcl.JumpList,
   Vcl.Taskbar,
   Vcl.Samples.Spin,
-  ImageButton;
+  ImageButton,
+  uMiniWebview;
 
 var
   uGlobalFormScaled: Boolean = False;
 
 
-//--------------------- Ô­DelphiResForm.incÄÚÈÝ
+//--------------------- åŽŸDelphiResForm.incå†…å®¹
 
 const
-  ClassRefArrs: array[0..126] of TClass = (
+  ClassRefArrs: array[0..127] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -92,7 +93,7 @@ const
     TPrinterSetupDialog,
     TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
-    TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList,TSpinEdit
+    TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList,TSpinEdit,TMiniWebview
   );
 
 

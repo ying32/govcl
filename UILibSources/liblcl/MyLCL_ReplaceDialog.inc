@@ -92,14 +92,9 @@ end;
 
 procedure ReplaceDialog_SetOnReplace(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnReplace := nil;
-    EventClass.Remove(AObj, geReplace);
-    Exit;
-  end;
-  AObj.OnReplace := @EventClass.OnReplace;
-  EventClass.Add(AObj, geReplace, AEventId);
+  {$DEFINE EventName := OnReplace}
+  {$DEFINE EventMethodName := OnReplace}
+  EventMethodCode
 end;
 
 function ReplaceDialog_GetLeft(AObj: TReplaceDialog): Integer; extdecl;
@@ -154,14 +149,9 @@ end;
 
 procedure ReplaceDialog_SetOnFind(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnFind := nil;
-    EventClass.Remove(AObj, geFind);
-    Exit;
-  end;
-  AObj.OnFind := @EventClass.OnFind;
-  EventClass.Add(AObj, geFind, AEventId);
+  {$DEFINE EventName := OnFind}
+  {$DEFINE EventMethodName := OnFind}
+  EventMethodCode
 end;
 
 function ReplaceDialog_GetHandle(AObj: TReplaceDialog): HWND; extdecl;
@@ -171,26 +161,16 @@ end;
 
 procedure ReplaceDialog_SetOnClose(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    EventClass.Remove(AObj, geClose);
-    Exit;
-  end;
-  AObj.OnClose := @EventClass.OnClose;
-  EventClass.Add(AObj, geClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := OnClose}
+  EventMethodCode
 end;
 
 procedure ReplaceDialog_SetOnShow(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    EventClass.Remove(AObj, geShow);
-    Exit;
-  end;
-  AObj.OnShow := @EventClass.OnShow;
-  EventClass.Add(AObj, geShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 function ReplaceDialog_GetComponentCount(AObj: TReplaceDialog): Integer; extdecl;

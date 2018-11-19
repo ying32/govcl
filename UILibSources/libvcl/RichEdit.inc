@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ¥˙¬Î”…GenlibVclπ§æﬂ◊‘∂Ø…˙≥…°£
-// Copyright ? ying32. All Rights Reserved.
+// ‰ª£Á†ÅÁî±GenlibVclÂ∑•ÂÖ∑Ëá™Âä®ÁîüÊàê„ÄÇ
+// Copyright ¬© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -680,11 +680,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    TEventClass.Remove(AObj, geChange);
+    TEventClass.Remove(AObj, @TEventClass.OnChange);
     Exit;
   end;
   AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, geChange, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
 end;
 
 procedure RichEdit_SetOnClick(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -692,11 +692,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    TEventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
   AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, geClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure RichEdit_SetOnContextPopup(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -704,11 +704,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
   AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, geContextPopup, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure RichEdit_SetOnDblClick(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -716,11 +716,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, geDblClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure RichEdit_SetOnDragDrop(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -728,11 +728,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
   AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, geDragDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure RichEdit_SetOnDragOver(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -740,11 +740,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
   AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, geDragOver, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure RichEdit_SetOnEndDock(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -752,11 +752,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
   AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, geEndDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure RichEdit_SetOnEndDrag(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -764,11 +764,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDrag := nil;
-    TEventClass.Remove(AObj, geEndDrag);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDrag);
     Exit;
   end;
   AObj.OnEndDrag := TEventClass.OnEndDrag;
-  TEventClass.Add(AObj, geEndDrag, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDrag, AEventId);
 end;
 
 procedure RichEdit_SetOnEnter(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -776,11 +776,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEnter := nil;
-    TEventClass.Remove(AObj, geEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnEnter);
     Exit;
   end;
   AObj.OnEnter := TEventClass.OnEnter;
-  TEventClass.Add(AObj, geEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEnter, AEventId);
 end;
 
 procedure RichEdit_SetOnExit(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -788,11 +788,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExit := nil;
-    TEventClass.Remove(AObj, geExit);
+    TEventClass.Remove(AObj, @TEventClass.OnExit);
     Exit;
   end;
   AObj.OnExit := TEventClass.OnExit;
-  TEventClass.Add(AObj, geExit, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
 procedure RichEdit_SetOnGesture(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -800,11 +800,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 procedure RichEdit_SetOnKeyDown(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -812,11 +812,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, geKeyDown);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
     Exit;
   end;
   AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, geKeyDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
 end;
 
 procedure RichEdit_SetOnKeyPress(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -824,11 +824,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, geKeyPress);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
     Exit;
   end;
   AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, geKeyPress, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
 end;
 
 procedure RichEdit_SetOnKeyUp(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -836,11 +836,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, geKeyUp);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
     Exit;
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, geKeyUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseActivate(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -848,11 +848,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseActivate := nil;
-    TEventClass.Remove(AObj, geMouseActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseActivate);
     Exit;
   end;
   AObj.OnMouseActivate := TEventClass.OnMouseActivate;
-  TEventClass.Add(AObj, geMouseActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseActivate, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseDown(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -860,11 +860,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
   AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, geMouseDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseEnter(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -872,11 +872,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
   AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, geMouseEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseLeave(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -884,11 +884,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, geMouseLeave, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseMove(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -896,11 +896,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
   AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, geMouseMove, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseUp(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -908,11 +908,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, geMouseUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseWheel(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -920,11 +920,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheel := nil;
-    TEventClass.Remove(AObj, geMouseWheel);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheel);
     Exit;
   end;
   AObj.OnMouseWheel := TEventClass.OnMouseWheel;
-  TEventClass.Add(AObj, geMouseWheel, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheel, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseWheelDown(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -932,11 +932,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelDown := nil;
-    TEventClass.Remove(AObj, geMouseWheelDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelDown);
     Exit;
   end;
   AObj.OnMouseWheelDown := TEventClass.OnMouseWheelDown;
-  TEventClass.Add(AObj, geMouseWheelDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelDown, AEventId);
 end;
 
 procedure RichEdit_SetOnMouseWheelUp(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -944,11 +944,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelUp := nil;
-    TEventClass.Remove(AObj, geMouseWheelUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelUp);
     Exit;
   end;
   AObj.OnMouseWheelUp := TEventClass.OnMouseWheelUp;
-  TEventClass.Add(AObj, geMouseWheelUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelUp, AEventId);
 end;
 
 procedure RichEdit_SetOnStartDock(AObj: TRichEdit; AEventId: NativeUInt); stdcall;
@@ -956,11 +956,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    TEventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
   AObj.OnStartDock := TEventClass.OnStartDock;
-  TEventClass.Add(AObj, geStartDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 function RichEdit_GetActiveLineNo(AObj: TRichEdit): Cardinal; stdcall;

@@ -36,14 +36,18 @@ Compile steps:
 
 * 1. Install Lazarus 1.8.0 64bit version and i386 expansion package  
 * 2. double-click lcl.lpi  
-* 3. Menu -> Project -> Project Options -> Compiler Options -> Build modes Switch the relevant ring mode, the current effective mode is the following four:  
-    * ReleaseWindows64  
-    * ReleaseWindows32  
-    * ReleaseLinux64  
-    * ReleaseMacOS32  
+* 3. Menu -> Project -> Project Options -> Compiler Options -> Build modes Switch the relevant ring mode. The current valid mode is as follows:  
+   * Win32  
+   * Win64  
+   * Linux64  
+   * Linux32
+   * LinuxARM           
+   * MacOS32(carbon)
+   * MacOS32(cocoa)  
 * 4. menu -> Run-> Compile (or Build)  
 
- 
+**Note: If you want to compile ARM and Linux 32-bit liblcl, you need to install the corresponding [Lazarus](http://www.lazarus-ide.org/) and FPC on the corresponding platform. Also consider installing [CodeTyphon](http://www.pilotlogic.com/sitejoom/index.php/codetyphon) for cross-compilation, but it is quite troublesome. Under MacOS, carbon and cocoa are different UI interfaces, but cocoa is unstable, and many components have problems. Generally, carbon components can be used.**    
+
 The compiled binary can be viewed in the following directory:      
 
 > Windows: `"..\..\..\..\..\bin\liblcl"`     

@@ -14,8 +14,8 @@ type TGoParam struct {
 }
 
 var (
-	EventCallbackMap   sync.Map
-	MessageCallbackMap sync.Map
+	eventCallbackMap   sync.Map
+	messageCallbackMap sync.Map
 	threadSync         sync.Mutex
 )
 
@@ -33,16 +33,53 @@ func GoBoolToDBool(val bool) uintptr {
 	return 0
 }
 
+// IsNil 判断一个接口是否为空
+// interface{}数据类型定义为 typedef struct { void *type; void *value; } GoInterface;
+// 当type与value值都为nil时则为空。
+func IsNil(val interface{}) bool {
+	ptr := unsafe.Pointer(&val)
+	return *(*uintptr)(ptr) == 0 && *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2))) == 0
+}
+
+// hashOf  Delphi IniFiles.pas中的TStringHash.HashOf
+func hashOf(val interface{}) uintptr {
+	//if IsNil(val) {
+	//	return 0
+	//}
+	if reflect.ValueOf(val).Pointer() == 0 {
+		return 0
+	}
+	var result uint32
+	p := (*byte)(unsafe.Pointer(&val))
+	for i := 0; i < int(unsafe.Sizeof(val)); i++ {
+		result = ((result << 2) | (result >> (unsafe.Sizeof(result)*8 - 2))) ^ uint32(*p)
+		p = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(p)) + 1))
+	}
+	return uintptr(result)
+}
+
 func addEventToMap(f interface{}) uintptr {
-	p := reflect.ValueOf(f).Pointer()
-	EventCallbackMap.Store(p, f)
+	p := hashOf(f)
+	eventCallbackMap.Store(p, f)
 	return p
 }
 
+func EventCallbackOf(Id uintptr) (interface{}, bool) {
+	return eventCallbackMap.Load(Id)
+}
+
+func RemoveEventCallbackOf(Id uintptr) {
+	eventCallbackMap.Delete(Id)
+}
+
 func addMessageEventToMap(f interface{}) uintptr {
-	p := reflect.ValueOf(f).Pointer()
-	MessageCallbackMap.Store(p, f)
+	p := hashOf(f)
+	messageCallbackMap.Store(p, f)
 	return p
+}
+
+func MessageCallbackOf(Id uintptr) (interface{}, bool) {
+	return messageCallbackMap.Load(Id)
 }
 
 func SetEventCallback(ptr uintptr) {
@@ -139,7 +176,9 @@ func DSelectDirectory2(caption, root string, options TSelectDirExtOpts, parent u
 func DSynchronize(fn interface{}) {
 	threadSync.Lock()
 	defer threadSync.Unlock()
-	dSynchronize.Call(addEventToMap(fn))
+	id := addEventToMap(fn)
+	dSynchronize.Call(id)
+	RemoveEventCallbackOf(id)
 }
 
 func DInputBox(aCaption, aPrompt, aDefault string) string {

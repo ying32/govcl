@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ¥˙¬Î”…GenlibVclπ§æﬂ◊‘∂Ø…˙≥…°£
-// Copyright ? ying32. All Rights Reserved.
+// ‰ª£Á†ÅÁî±GenlibVclÂ∑•ÂÖ∑Ëá™Âä®ÁîüÊàê„ÄÇ
+// Copyright ¬© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -650,11 +650,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClick := nil;
-    TEventClass.Remove(AObj, geClick);
+    TEventClass.Remove(AObj, @TEventClass.OnClick);
     Exit;
   end;
   AObj.OnClick := TEventClass.OnClick;
-  TEventClass.Add(AObj, geClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnClick, AEventId);
 end;
 
 procedure Form_SetOnClose(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -662,11 +662,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnClose := nil;
-    TEventClass.Remove(AObj, geFormClose);
+    TEventClass.Remove(AObj, @TEventClass.FormOnClose);
     Exit;
   end;
   AObj.OnClose := TEventClass.FormOnClose;
-  TEventClass.Add(AObj, geFormClose, AEventId);
+  TEventClass.Add(AObj, @TEventClass.FormOnClose, AEventId);
 end;
 
 procedure Form_SetOnCloseQuery(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -674,11 +674,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnCloseQuery := nil;
-    TEventClass.Remove(AObj, geFormCloseQuery);
+    TEventClass.Remove(AObj, @TEventClass.FormOnCloseQuery);
     Exit;
   end;
   AObj.OnCloseQuery := TEventClass.FormOnCloseQuery;
-  TEventClass.Add(AObj, geFormCloseQuery, AEventId);
+  TEventClass.Add(AObj, @TEventClass.FormOnCloseQuery, AEventId);
 end;
 
 procedure Form_SetOnContextPopup(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -686,11 +686,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnContextPopup := nil;
-    TEventClass.Remove(AObj, geContextPopup);
+    TEventClass.Remove(AObj, @TEventClass.OnContextPopup);
     Exit;
   end;
   AObj.OnContextPopup := TEventClass.OnContextPopup;
-  TEventClass.Add(AObj, geContextPopup, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
 end;
 
 procedure Form_SetOnDblClick(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -698,11 +698,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDblClick := nil;
-    TEventClass.Remove(AObj, geDblClick);
+    TEventClass.Remove(AObj, @TEventClass.OnDblClick);
     Exit;
   end;
   AObj.OnDblClick := TEventClass.OnDblClick;
-  TEventClass.Add(AObj, geDblClick, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDblClick, AEventId);
 end;
 
 procedure Form_SetOnDockDrop(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -710,11 +710,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDockDrop := nil;
-    TEventClass.Remove(AObj, geDockDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDockDrop);
     Exit;
   end;
   AObj.OnDockDrop := TEventClass.OnDockDrop;
-  TEventClass.Add(AObj, geDockDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDockDrop, AEventId);
 end;
 
 procedure Form_SetOnDragDrop(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -722,11 +722,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragDrop := nil;
-    TEventClass.Remove(AObj, geDragDrop);
+    TEventClass.Remove(AObj, @TEventClass.OnDragDrop);
     Exit;
   end;
   AObj.OnDragDrop := TEventClass.OnDragDrop;
-  TEventClass.Add(AObj, geDragDrop, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragDrop, AEventId);
 end;
 
 procedure Form_SetOnDragOver(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -734,11 +734,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnDragOver := nil;
-    TEventClass.Remove(AObj, geDragOver);
+    TEventClass.Remove(AObj, @TEventClass.OnDragOver);
     Exit;
   end;
   AObj.OnDragOver := TEventClass.OnDragOver;
-  TEventClass.Add(AObj, geDragOver, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
 procedure Form_SetOnEndDock(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -746,11 +746,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnEndDock := nil;
-    TEventClass.Remove(AObj, geEndDock);
+    TEventClass.Remove(AObj, @TEventClass.OnEndDock);
     Exit;
   end;
   AObj.OnEndDock := TEventClass.OnEndDock;
-  TEventClass.Add(AObj, geEndDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnEndDock, AEventId);
 end;
 
 procedure Form_SetOnGesture(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -758,11 +758,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGesture := nil;
-    TEventClass.Remove(AObj, geGesture);
+    TEventClass.Remove(AObj, @TEventClass.OnGesture);
     Exit;
   end;
   AObj.OnGesture := TEventClass.OnGesture;
-  TEventClass.Add(AObj, geGesture, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGesture, AEventId);
 end;
 
 procedure Form_SetOnGetSiteInfo(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -770,11 +770,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnGetSiteInfo := nil;
-    TEventClass.Remove(AObj, geGetSiteInfo);
+    TEventClass.Remove(AObj, @TEventClass.OnGetSiteInfo);
     Exit;
   end;
   AObj.OnGetSiteInfo := TEventClass.OnGetSiteInfo;
-  TEventClass.Add(AObj, geGetSiteInfo, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnGetSiteInfo, AEventId);
 end;
 
 procedure Form_SetOnHide(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -782,11 +782,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHide := nil;
-    TEventClass.Remove(AObj, geHide);
+    TEventClass.Remove(AObj, @TEventClass.OnHide);
     Exit;
   end;
   AObj.OnHide := TEventClass.OnHide;
-  TEventClass.Add(AObj, geHide, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnHide, AEventId);
 end;
 
 procedure Form_SetOnHelp(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -794,11 +794,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHelp := nil;
-    TEventClass.Remove(AObj, geHelp);
+    TEventClass.Remove(AObj, @TEventClass.OnHelp);
     Exit;
   end;
   AObj.OnHelp := TEventClass.OnHelp;
-  TEventClass.Add(AObj, geHelp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnHelp, AEventId);
 end;
 
 procedure Form_SetOnKeyDown(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -806,11 +806,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyDown := nil;
-    TEventClass.Remove(AObj, geKeyDown);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyDown);
     Exit;
   end;
   AObj.OnKeyDown := TEventClass.OnKeyDown;
-  TEventClass.Add(AObj, geKeyDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyDown, AEventId);
 end;
 
 procedure Form_SetOnKeyPress(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -818,11 +818,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyPress := nil;
-    TEventClass.Remove(AObj, geKeyPress);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyPress);
     Exit;
   end;
   AObj.OnKeyPress := TEventClass.OnKeyPress;
-  TEventClass.Add(AObj, geKeyPress, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyPress, AEventId);
 end;
 
 procedure Form_SetOnKeyUp(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -830,11 +830,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnKeyUp := nil;
-    TEventClass.Remove(AObj, geKeyUp);
+    TEventClass.Remove(AObj, @TEventClass.OnKeyUp);
     Exit;
   end;
   AObj.OnKeyUp := TEventClass.OnKeyUp;
-  TEventClass.Add(AObj, geKeyUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnKeyUp, AEventId);
 end;
 
 procedure Form_SetOnMouseActivate(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -842,11 +842,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseActivate := nil;
-    TEventClass.Remove(AObj, geMouseActivate);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseActivate);
     Exit;
   end;
   AObj.OnMouseActivate := TEventClass.OnMouseActivate;
-  TEventClass.Add(AObj, geMouseActivate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseActivate, AEventId);
 end;
 
 procedure Form_SetOnMouseDown(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -854,11 +854,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseDown := nil;
-    TEventClass.Remove(AObj, geMouseDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseDown);
     Exit;
   end;
   AObj.OnMouseDown := TEventClass.OnMouseDown;
-  TEventClass.Add(AObj, geMouseDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseDown, AEventId);
 end;
 
 procedure Form_SetOnMouseEnter(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -866,11 +866,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseEnter := nil;
-    TEventClass.Remove(AObj, geMouseEnter);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseEnter);
     Exit;
   end;
   AObj.OnMouseEnter := TEventClass.OnMouseEnter;
-  TEventClass.Add(AObj, geMouseEnter, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseEnter, AEventId);
 end;
 
 procedure Form_SetOnMouseLeave(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -878,11 +878,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseLeave := nil;
-    TEventClass.Remove(AObj, geMouseLeave);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseLeave);
     Exit;
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
-  TEventClass.Add(AObj, geMouseLeave, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
 end;
 
 procedure Form_SetOnMouseMove(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -890,11 +890,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseMove := nil;
-    TEventClass.Remove(AObj, geMouseMove);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseMove);
     Exit;
   end;
   AObj.OnMouseMove := TEventClass.OnMouseMove;
-  TEventClass.Add(AObj, geMouseMove, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseMove, AEventId);
 end;
 
 procedure Form_SetOnMouseUp(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -902,11 +902,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseUp := nil;
-    TEventClass.Remove(AObj, geMouseUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseUp);
     Exit;
   end;
   AObj.OnMouseUp := TEventClass.OnMouseUp;
-  TEventClass.Add(AObj, geMouseUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseUp, AEventId);
 end;
 
 procedure Form_SetOnMouseWheel(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -914,11 +914,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheel := nil;
-    TEventClass.Remove(AObj, geMouseWheel);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheel);
     Exit;
   end;
   AObj.OnMouseWheel := TEventClass.OnMouseWheel;
-  TEventClass.Add(AObj, geMouseWheel, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheel, AEventId);
 end;
 
 procedure Form_SetOnMouseWheelDown(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -926,11 +926,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelDown := nil;
-    TEventClass.Remove(AObj, geMouseWheelDown);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelDown);
     Exit;
   end;
   AObj.OnMouseWheelDown := TEventClass.OnMouseWheelDown;
-  TEventClass.Add(AObj, geMouseWheelDown, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelDown, AEventId);
 end;
 
 procedure Form_SetOnMouseWheelUp(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -938,11 +938,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMouseWheelUp := nil;
-    TEventClass.Remove(AObj, geMouseWheelUp);
+    TEventClass.Remove(AObj, @TEventClass.OnMouseWheelUp);
     Exit;
   end;
   AObj.OnMouseWheelUp := TEventClass.OnMouseWheelUp;
-  TEventClass.Add(AObj, geMouseWheelUp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMouseWheelUp, AEventId);
 end;
 
 procedure Form_SetOnPaint(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -950,11 +950,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnPaint := nil;
-    TEventClass.Remove(AObj, gePaint);
+    TEventClass.Remove(AObj, @TEventClass.OnPaint);
     Exit;
   end;
   AObj.OnPaint := TEventClass.OnPaint;
-  TEventClass.Add(AObj, gePaint, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnPaint, AEventId);
 end;
 
 procedure Form_SetOnResize(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -962,11 +962,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnResize := nil;
-    TEventClass.Remove(AObj, geResize);
+    TEventClass.Remove(AObj, @TEventClass.OnResize);
     Exit;
   end;
   AObj.OnResize := TEventClass.OnResize;
-  TEventClass.Add(AObj, geResize, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnResize, AEventId);
 end;
 
 procedure Form_SetOnShortCut(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -974,11 +974,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShortCut := nil;
-    TEventClass.Remove(AObj, geShortCut);
+    TEventClass.Remove(AObj, @TEventClass.OnShortCut);
     Exit;
   end;
   AObj.OnShortCut := TEventClass.OnShortCut;
-  TEventClass.Add(AObj, geShortCut, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnShortCut, AEventId);
 end;
 
 procedure Form_SetOnShow(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -986,11 +986,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShow := nil;
-    TEventClass.Remove(AObj, geShow);
+    TEventClass.Remove(AObj, @TEventClass.OnShow);
     Exit;
   end;
   AObj.OnShow := TEventClass.OnShow;
-  TEventClass.Add(AObj, geShow, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnShow, AEventId);
 end;
 
 procedure Form_SetOnStartDock(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -998,11 +998,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnStartDock := nil;
-    TEventClass.Remove(AObj, geStartDock);
+    TEventClass.Remove(AObj, @TEventClass.OnStartDock);
     Exit;
   end;
   AObj.OnStartDock := TEventClass.OnStartDock;
-  TEventClass.Add(AObj, geStartDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnStartDock, AEventId);
 end;
 
 procedure Form_SetOnUnDock(AObj: TForm; AEventId: NativeUInt); stdcall;
@@ -1010,11 +1010,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnUnDock := nil;
-    TEventClass.Remove(AObj, geUnDock);
+    TEventClass.Remove(AObj, @TEventClass.OnUnDock);
     Exit;
   end;
   AObj.OnUnDock := TEventClass.OnUnDock;
-  TEventClass.Add(AObj, geUnDock, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnUnDock, AEventId);
 end;
 
 function Form_GetCanvas(AObj: TForm): TCanvas; stdcall;

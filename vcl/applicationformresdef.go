@@ -36,8 +36,6 @@ import (
 	"reflect"
 
 	"unsafe"
-
-	"github.com/ying32/govcl/vcl/api"
 )
 
 func (a *TApplication) setFiledVal(name string, instance uintptr, v reflect.Value) {
@@ -63,7 +61,7 @@ func (a *TApplication) setFiledVal(name string, instance uintptr, v reflect.Valu
 }
 
 // fullFiledVal 动态创设置字段值
-func (a *TApplication) fullFiledVal(f *TForm, out interface{}) {
+func (a *TApplication) fullFiledVal(f *TForm, out interface{}, fullSubComponent, afterBindSubComponentsEvents bool) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("err:", err)
@@ -88,39 +86,15 @@ func (a *TApplication) fullFiledVal(f *TForm, out interface{}) {
 		}
 		// TForm，默认的, 使用隐式嵌入
 		a.setFiledVal("TForm", f.Instance(), vPtr)
-		var ci int32
-		for ci = 0; ci < f.ComponentCount(); ci++ {
-			// 通过资源文件中的组件名字查找
-			a.setFiledVal(f.Components(ci).Name(), f.Components(ci).Instance(), vPtr)
+		// fullComponent 只有当是从资源加载的才进行填充操作。
+		if fullSubComponent {
+			var ci int32
+			for ci = 0; ci < f.ComponentCount(); ci++ {
+				// 通过资源文件中的组件名字查找
+				a.setFiledVal(f.Components(ci).Name(), f.Components(ci).Instance(), vPtr)
+			}
 		}
 		// 关联事件
-		associatedEvents(v, getComponents(f))
+		autoBindEvents(v, f, fullSubComponent, afterBindSubComponentsEvents)
 	}
-}
-
-// CreateFormFromFile
-// Deprecated: Use Application.CreateForm instead.
-func (a *TApplication) CreateFormFromFile(filename string, out interface{}) {
-	f := a.CreateForm()
-	api.ResFormLoadFromFile(filename, CheckPtr(f))
-	a.fullFiledVal(f, out)
-}
-
-// Deprecated: Use Application.CreateForm instead.
-func (a *TApplication) CreateFormFromStream(stream IObject, out interface{}) {
-	f := a.CreateForm()
-	api.ResFormLoadFromStream(CheckPtr(stream), CheckPtr(f))
-	a.fullFiledVal(f, out)
-}
-
-// Deprecated: Use Application.CreateForm instead.
-func (a *TApplication) CreateFormFromBytes(inBytes []byte, out interface{}) {
-	if len(inBytes) == 0 {
-		panic("CreateFormFromBytes失败，无效的窗口资源数据。")
-	}
-	f := a.CreateForm()
-	mem := NewMemoryStreamFromBytes(inBytes)
-	defer mem.Free()
-	api.ResFormLoadFromStream(CheckPtr(mem), CheckPtr(f))
-	a.fullFiledVal(f, out)
 }

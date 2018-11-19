@@ -1,3 +1,12 @@
 /backup
 /lib
 /testcmd
+*.go
+*.bak
+*.zip
+*.exe
+aaa.lpr
+testcmd2.bat
+Unit10.dfm
+ufrmSettings.dfm
+*.syso

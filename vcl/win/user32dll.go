@@ -80,6 +80,8 @@ var (
 	_InvalidateRect             = user32dll.NewProc("InvalidateRect")
 	_InvalidateRgn              = user32dll.NewProc("InvalidateRgn")
 	_RedrawWindow               = user32dll.NewProc("RedrawWindow")
+
+	_SetForegroundWindow = user32dll.NewProc("SetForegroundWindow")
 )
 
 // MessageBox 消息框
@@ -465,5 +467,10 @@ func InvalidateRgn(hWnd HWND, hRgn HRGN, bErase bool) bool {
 
 func RedrawWindow(hWnd HWND, lprcUpdate *TRect, hrgnUpdate HRGN, flags uint32) bool {
 	r, _, _ := _RedrawWindow.Call(uintptr(hWnd), uintptr(unsafe.Pointer(lprcUpdate)), uintptr(hrgnUpdate), uintptr(flags))
+	return r != 0
+}
+
+func SetForegroundWindow(hWnd HWND) bool {
+	r, _, _ := _SetForegroundWindow.Call(uintptr(hWnd))
 	return r != 0
 }

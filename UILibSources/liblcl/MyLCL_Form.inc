@@ -597,350 +597,205 @@ end;
 
 procedure Form_SetOnClick(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClick := nil;
-    EventClass.Remove(AObj, geClick);
-    Exit;
-  end;
-  AObj.OnClick := @EventClass.OnClick;
-  EventClass.Add(AObj, geClick, AEventId);
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
 end;
 
 procedure Form_SetOnClose(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    EventClass.Remove(AObj, geFormClose);
-    Exit;
-  end;
-  AObj.OnClose := @EventClass.FormOnClose;
-  EventClass.Add(AObj, geFormClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := FormOnClose}
+  EventMethodCode
 end;
 
 procedure Form_SetOnCloseQuery(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnCloseQuery := nil;
-    EventClass.Remove(AObj, geFormCloseQuery);
-    Exit;
-  end;
-  AObj.OnCloseQuery := @EventClass.FormOnCloseQuery;
-  EventClass.Add(AObj, geFormCloseQuery, AEventId);
+  {$DEFINE EventName := OnCloseQuery}
+  {$DEFINE EventMethodName := FormOnCloseQuery}
+  EventMethodCode
 end;
 
 procedure Form_SetOnContextPopup(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnContextPopup := nil;
-    EventClass.Remove(AObj, geContextPopup);
-    Exit;
-  end;
-  AObj.OnContextPopup := @EventClass.OnContextPopup;
-  EventClass.Add(AObj, geContextPopup, AEventId);
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDblClick(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDblClick := nil;
-    EventClass.Remove(AObj, geDblClick);
-    Exit;
-  end;
-  AObj.OnDblClick := @EventClass.OnDblClick;
-  EventClass.Add(AObj, geDblClick, AEventId);
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDockDrop(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDockDrop := nil;
-    EventClass.Remove(AObj, geDockDrop);
-    Exit;
-  end;
-  AObj.OnDockDrop := @EventClass.OnDockDrop;
-  EventClass.Add(AObj, geDockDrop, AEventId);
+  {$DEFINE EventName := OnDockDrop}
+  {$DEFINE EventMethodName := OnDockDrop}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDragDrop(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragDrop := nil;
-    EventClass.Remove(AObj, geDragDrop);
-    Exit;
-  end;
-  AObj.OnDragDrop := @EventClass.OnDragDrop;
-  EventClass.Add(AObj, geDragDrop, AEventId);
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDragOver(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDragOver := nil;
-    EventClass.Remove(AObj, geDragOver);
-    Exit;
-  end;
-  AObj.OnDragOver := @EventClass.OnDragOver;
-  EventClass.Add(AObj, geDragOver, AEventId);
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
 end;
 
 procedure Form_SetOnEndDock(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnEndDock := nil;
-    EventClass.Remove(AObj, geEndDock);
-    Exit;
-  end;
-  AObj.OnEndDock := @EventClass.OnEndDock;
-  EventClass.Add(AObj, geEndDock, AEventId);
+  {$DEFINE EventName := OnEndDock}
+  {$DEFINE EventMethodName := OnEndDock}
+  EventMethodCode
 end;
 
 procedure Form_SetOnGetSiteInfo(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnGetSiteInfo := nil;
-    EventClass.Remove(AObj, geGetSiteInfo);
-    Exit;
-  end;
-  AObj.OnGetSiteInfo := @EventClass.OnGetSiteInfo;
-  EventClass.Add(AObj, geGetSiteInfo, AEventId);
+  {$DEFINE EventName := OnGetSiteInfo}
+  {$DEFINE EventMethodName := OnGetSiteInfo}
+  EventMethodCode
 end;
 
 procedure Form_SetOnHide(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnHide := nil;
-    EventClass.Remove(AObj, geHide);
-    Exit;
-  end;
-  AObj.OnHide := @EventClass.OnHide;
-  EventClass.Add(AObj, geHide, AEventId);
+  {$DEFINE EventName := OnHide}
+  {$DEFINE EventMethodName := OnHide}
+  EventMethodCode
 end;
 
 procedure Form_SetOnHelp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnHelp := nil;
-    EventClass.Remove(AObj, geHelp);
-    Exit;
-  end;
-  AObj.OnHelp := @EventClass.OnHelp;
-  EventClass.Add(AObj, geHelp, AEventId);
+  {$DEFINE EventName := OnHelp}
+  {$DEFINE EventMethodName := OnHelp}
+  EventMethodCode
 end;
 
 procedure Form_SetOnKeyDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyDown := nil;
-    EventClass.Remove(AObj, geKeyDown);
-    Exit;
-  end;
-  AObj.OnKeyDown := @EventClass.OnKeyDown;
-  EventClass.Add(AObj, geKeyDown, AEventId);
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
 end;
 
 procedure Form_SetOnKeyPress(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyPress := nil;
-    EventClass.Remove(AObj, geKeyPress);
-    Exit;
-  end;
-  AObj.OnKeyPress := @EventClass.OnKeyPress;
-  EventClass.Add(AObj, geKeyPress, AEventId);
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
 end;
 
 procedure Form_SetOnKeyUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnKeyUp := nil;
-    EventClass.Remove(AObj, geKeyUp);
-    Exit;
-  end;
-  AObj.OnKeyUp := @EventClass.OnKeyUp;
-  EventClass.Add(AObj, geKeyUp, AEventId);
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseDown := nil;
-    EventClass.Remove(AObj, geMouseDown);
-    Exit;
-  end;
-  AObj.OnMouseDown := @EventClass.OnMouseDown;
-  EventClass.Add(AObj, geMouseDown, AEventId);
+  {$DEFINE EventName := OnMouseDown}
+  {$DEFINE EventMethodName := OnMouseDown}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseEnter(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseEnter := nil;
-    EventClass.Remove(AObj, geMouseEnter);
-    Exit;
-  end;
-  AObj.OnMouseEnter := @EventClass.OnMouseEnter;
-  EventClass.Add(AObj, geMouseEnter, AEventId);
+  {$DEFINE EventName := OnMouseEnter}
+  {$DEFINE EventMethodName := OnMouseEnter}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseLeave(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseLeave := nil;
-    EventClass.Remove(AObj, geMouseLeave);
-    Exit;
-  end;
-  AObj.OnMouseLeave := @EventClass.OnMouseLeave;
-  EventClass.Add(AObj, geMouseLeave, AEventId);
+  {$DEFINE EventName := OnMouseLeave}
+  {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseMove(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseMove := nil;
-    EventClass.Remove(AObj, geMouseMove);
-    Exit;
-  end;
-  AObj.OnMouseMove := @EventClass.OnMouseMove;
-  EventClass.Add(AObj, geMouseMove, AEventId);
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseUp := nil;
-    EventClass.Remove(AObj, geMouseUp);
-    Exit;
-  end;
-  AObj.OnMouseUp := @EventClass.OnMouseUp;
-  EventClass.Add(AObj, geMouseUp, AEventId);
+  {$DEFINE EventName := OnMouseUp}
+  {$DEFINE EventMethodName := OnMouseUp}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseWheel(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseWheel := nil;
-    EventClass.Remove(AObj, geMouseWheel);
-    Exit;
-  end;
-  AObj.OnMouseWheel := @EventClass.OnMouseWheel;
-  EventClass.Add(AObj, geMouseWheel, AEventId);
+  {$DEFINE EventName := OnMouseWheel}
+  {$DEFINE EventMethodName := OnMouseWheel}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseWheelDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseWheelDown := nil;
-    EventClass.Remove(AObj, geMouseWheelDown);
-    Exit;
-  end;
-  AObj.OnMouseWheelDown := @EventClass.OnMouseWheelDown;
-  EventClass.Add(AObj, geMouseWheelDown, AEventId);
+  {$DEFINE EventName := OnMouseWheelDown}
+  {$DEFINE EventMethodName := OnMouseWheelDown}
+  EventMethodCode
 end;
 
 procedure Form_SetOnMouseWheelUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnMouseWheelUp := nil;
-    EventClass.Remove(AObj, geMouseWheelUp);
-    Exit;
-  end;
-  AObj.OnMouseWheelUp := @EventClass.OnMouseWheelUp;
-  EventClass.Add(AObj, geMouseWheelUp, AEventId);
+  {$DEFINE EventName := OnMouseWheelUp}
+  {$DEFINE EventMethodName := OnMouseWheelUp}
+  EventMethodCode
 end;
 
 procedure Form_SetOnPaint(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnPaint := nil;
-    EventClass.Remove(AObj, gePaint);
-    Exit;
-  end;
-  AObj.OnPaint := @EventClass.OnPaint;
-  EventClass.Add(AObj, gePaint, AEventId);
+  {$DEFINE EventName := OnPaint}
+  {$DEFINE EventMethodName := OnPaint}
+  EventMethodCode
 end;
 
 procedure Form_SetOnResize(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnResize := nil;
-    EventClass.Remove(AObj, geResize);
-    Exit;
-  end;
-  AObj.OnResize := @EventClass.OnResize;
-  EventClass.Add(AObj, geResize, AEventId);
+  {$DEFINE EventName := OnResize}
+  {$DEFINE EventMethodName := OnResize}
+  EventMethodCode
 end;
 
 procedure Form_SetOnShortCut(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShortCut := nil;
-    EventClass.Remove(AObj, geShortCut);
-    Exit;
-  end;
-  AObj.OnShortCut := @EventClass.OnShortCut;
-  EventClass.Add(AObj, geShortCut, AEventId);
+  {$DEFINE EventName := OnShortCut}
+  {$DEFINE EventMethodName := OnShortCut}
+  EventMethodCode
 end;
 
 procedure Form_SetOnShow(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    EventClass.Remove(AObj, geShow);
-    Exit;
-  end;
-  AObj.OnShow := @EventClass.OnShow;
-  EventClass.Add(AObj, geShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 procedure Form_SetOnStartDock(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnStartDock := nil;
-    EventClass.Remove(AObj, geStartDock);
-    Exit;
-  end;
-  AObj.OnStartDock := @EventClass.OnStartDock;
-  EventClass.Add(AObj, geStartDock, AEventId);
+  {$DEFINE EventName := OnStartDock}
+  {$DEFINE EventMethodName := OnStartDock}
+  EventMethodCode
 end;
 
 procedure Form_SetOnUnDock(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnUnDock := nil;
-    EventClass.Remove(AObj, geUnDock);
-    Exit;
-  end;
-  AObj.OnUnDock := @EventClass.OnUnDock;
-  EventClass.Add(AObj, geUnDock, AEventId);
+  {$DEFINE EventName := OnUnDock}
+  {$DEFINE EventMethodName := OnUnDock}
+  EventMethodCode
 end;
 
 function Form_GetCanvas(AObj: TForm): TCanvas; extdecl;

@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ´úÂëÓÉGenlibVcl¹¤¾ß×Ô¶¯Éú³É¡£
-// Copyright ? ying32. All Rights Reserved.
+// ä»£ç ç”±GenlibVclå·¥å…·è‡ªåŠ¨ç”Ÿæˆã€‚
+// Copyright Â© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -170,11 +170,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnPaint := nil;
-    TEventClass.Remove(AObj, gePaint);
+    TEventClass.Remove(AObj, @TEventClass.OnPaint);
     Exit;
   end;
   AObj.OnPaint := TEventClass.OnPaint;
-  TEventClass.Add(AObj, gePaint, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnPaint, AEventId);
 end;
 
 function GIFImage_GetAnimate(AObj: TGIFImage): LongBool; stdcall;
@@ -272,11 +272,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnChange := nil;
-    TEventClass.Remove(AObj, geChange);
+    TEventClass.Remove(AObj, @TEventClass.OnChange);
     Exit;
   end;
   AObj.OnChange := TEventClass.OnChange;
-  TEventClass.Add(AObj, geChange, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnChange, AEventId);
 end;
 
 function GIFImage_StaticClassType: TClass; stdcall;

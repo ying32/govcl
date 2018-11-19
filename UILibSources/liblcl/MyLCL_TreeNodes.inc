@@ -100,6 +100,11 @@ begin
   Result :=  AObj.InsertObject(Sibling, S, Ptr);
 end;
 
+function TreeNodes_CustomSort(AObj: TTreeNodes; SortProc: PFNTVCOMPARE; Data: NativeInt; ARecurse: LongBool): LongBool; extdecl;
+begin
+  Result :=  AObj.CustomSort(SortProc, Data, ARecurse);
+end;
+
 function TreeNodes_GetNamePath(AObj: TTreeNodes): PChar; extdecl;
 begin
   Result :=  PChar(AObj.GetNamePath);
@@ -180,6 +185,7 @@ exports
   TreeNodes_GetFirstNode,
   TreeNodes_Insert,
   TreeNodes_InsertObject,
+  TreeNodes_CustomSort,
   TreeNodes_GetNamePath,
   TreeNodes_ClassType,
   TreeNodes_ClassName,

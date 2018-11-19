@@ -94,17 +94,6 @@ begin
   RemoveAllForms;
 end;
 
-//procedure Application_SetMainFormOnTaskBar(AObj: TApplication; Value: LongBool); extdecl;
-//begin
-//  AObj.MainFormOnTaskBar := Value;
-//end;
-//
-//
-//function Application_GetMainFormOnTaskBar(AObj: TApplication): LongBool; extdecl;
-//begin
-//  Result := AObj.MainFormOnTaskBar;
-//end;
-
 function Application_GetHandle(AObj: TApplication): THandle; extdecl;
 begin
 {$IFDEF WINDOWS}
@@ -172,62 +161,37 @@ end;
 
 procedure Form_SetOnDropFiles(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDropFiles := nil;
-    EventClass.Remove(AObj, geDropFiles);
-    Exit;
-  end;
-  AObj.OnDropFiles := @EventClass.FormOnDropFiles;
-  EventClass.Add(AObj, geDropFiles, AEventId);
+  {$DEFINE EventName := OnDropFiles}
+  {$DEFINE EventMethodName := FormOnDropFiles}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDestroy(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDestroy := nil;
-    EventClass.Remove(AObj, geDestroy);
-    Exit;
-  end;
-  AObj.OnDestroy := @EventClass.OnDestroy;
-  EventClass.Add(AObj, geDestroy, AEventId);
+  {$DEFINE EventName := OnDestroy}
+  {$DEFINE EventMethodName := OnDestroy}
+  EventMethodCode
 end;
 
 procedure Form_SetOnConstrainedResize(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnConstrainedResize := nil;
-    EventClass.Remove(AObj, geConstrainedResize);
-    Exit;
-  end;
-  AObj.OnConstrainedResize := @EventClass.OnConstrainedResize;
-  EventClass.Add(AObj, geConstrainedResize, AEventId);
+  {$DEFINE EventName := OnConstrainedResize}
+  {$DEFINE EventMethodName := OnConstrainedResize}
+  EventMethodCode
 end;
 
 procedure Form_SetOnDeactivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnDeactivate := nil;
-    EventClass.Remove(AObj, geDeactivate);
-    Exit;
-  end;
-  AObj.OnDeactivate := @EventClass.OnDeactivate;
-  EventClass.Add(AObj, geDeactivate, AEventId);
+  {$DEFINE EventName := OnDeactivate}
+  {$DEFINE EventMethodName := OnDeactivate}
+  EventMethodCode
 end;
 
 procedure Form_SetOnActivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnActivate := nil;
-    EventClass.Remove(AObj, geActivate);
-    Exit;
-  end;
-  AObj.OnActivate := @EventClass.OnActivate;
-  EventClass.Add(AObj, geActivate, AEventId);
+  {$DEFINE EventName := OnActivate}
+  {$DEFINE EventMethodName := OnActivate}
+  EventMethodCode
 end;
 
 procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); extdecl;
@@ -235,24 +199,13 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnWndProc := nil;
-    MessageEventClass.Remove(AObj);
+    TMessageEventClass.Remove(AObj);
     Exit;
   end;
-  AObj.OnWndProc := @MessageEventClass.OnWndProc;
-  MessageEventClass.Add(AObj, AEventId);
+  AObj.OnWndProc := TMessageEventClass.OnWndProc;
+  TMessageEventClass.Add(AObj, AEventId);
 end;
 
-// TEdit
-//procedure Edit_SetTextHint(AObj: TEdit; AValue: PChar); extdecl;
-//begin
-//  AObj.TextHint := AValue;
-//end;
-//
-//function Edit_GetTextHint(AObj: TEdit): PChar; extdecl;
-//begin
-//  Result := PChar(AObj.TextHint);
-//end;
-//
 // mouse
 function Mouse_Instance: TMouse; extdecl;
 begin
@@ -359,76 +312,6 @@ begin
 end;
 
 
-// TPageSetupDialog
-
-function PageSetupDialog_GetMarginLeft(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result := AObj.Margins.Left;
-end;
-
-procedure PageSetupDialog_SetMarginLeft(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Left := AValue;
-  AObj.Margins := LR;
-end;
-
-function PageSetupDialog_GetMarginTop(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Top;
-end;
-
-procedure PageSetupDialog_SetMarginTop(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Top := AValue;
-  AObj.Margins := LR;
-end;
-
-function PageSetupDialog_GetMarginRight(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Right;
-end;
-
-procedure PageSetupDialog_SetMarginRight(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Right := AValue;
-  AObj.Margins := LR;
-end;
-
-function PageSetupDialog_GetMarginBottom(AObj: TPageSetupDialog): Integer; extdecl;
-begin
-  Result :=  AObj.Margins.Bottom;
-end;
-
-procedure PageSetupDialog_SetMarginBottom(AObj: TPageSetupDialog; AValue: Integer); extdecl;
-var
-  LR: TRect;
-begin
-  LR := AObj.Margins;
-  LR.Bottom := AValue;
-  AObj.Margins := LR;
-end;
-
-
-function DragObject_GetDragTarget(AObj: TDragObject): TControl; extdecl;
-begin
-  Result :=  AObj.DragTarget;
-end;
-
-procedure DragObject_SetDragTarget(AObj: TDragObject; AValue: TControl); extdecl;
-begin
-  AObj.DragTarget := AValue;
-end;
-
-
 type
 // Note: tfComposited only supported by ThemeServices.DrawText
   TTextFormats = (tfBottom, tfCalcRect, tfCenter, tfEditControl, tfEndEllipsis,
@@ -466,6 +349,7 @@ var
   LStyle: TTextStyle;
 begin
   Result := 0;
+  LStyle := AObj.TextStyle;
   if TTextFormats.tfSingleLine in TextFormat then
     LStyle.SingleLine := True;
   if TTextFormats.tfTop in TextFormat then
@@ -536,16 +420,6 @@ end;
 // // AObj.GetIcon(Index, Image, ADrawingStyle, AImageType);
 //end;
 
-//  TMonthCalendar
-function MonthCalendar_GetDate(AObj: TMonthCalendar): TUnixDateTime; extdecl;
-begin
-  Result :=  ToUnixTime(AObj.DateTime);
-end;
-
-procedure MonthCalendar_SetDate(AObj: TMonthCalendar; AValue: TUnixDateTime); extdecl;
-begin
-  AObj.DateTime := UnixToTime(AValue);
-end;
 
 
 // TListView
@@ -559,31 +433,6 @@ begin
   AObj.ScrollBars := AValue;
 end;
 
-// 兼容版
-procedure ListView_CustomSort(AObj: TListView; SortProc: Pointer; lParam: NativeInt); extdecl;
-//var
-  //LVSortProc: TLVCompareEvent;
-begin
-  //if Assigned(SortProc) then
-    //Exit;
-  //LVSortProc := AObj.OnCompare;
-  AObj.SortType := stText;
-  AObj.SortColumn := lParam;
-  //AObj.OnCompare := LVSortProc;
-  //AObj.AlphaSort;
-end;
-
-// TListView
-procedure ListView_DeleteSelected(AObj: TListView); extdecl;
-var
-  I: Integer;
-begin
-  I := AObj.ItemIndex;
-  if I <> -1 then
-     AObj.Items.Delete(I);
-end;
-
-
 // TTreeView
 function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
 begin
@@ -593,20 +442,6 @@ end;
 procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
 begin
   AObj.ScrollBars := AValue;
-end;
-
-function TreeView_AlphaSort(AObj: TTreeView; ARecurse: LongBool): LongBool; extdecl;
-begin
-  Result := AObj.AlphaSort;
-end;
-
-procedure TreeView_DeleteSelected(AObj: TTreeView); extdecl;
-var
-  LNode: TTreeNode;
-begin
-  LNode := AObj.Selected;
-  if LNode <> nil then
-     LNode.Delete;
 end;
 
  
@@ -671,14 +506,9 @@ end;
 // 在主线程中运行
 procedure DSynchronize(AId: NativeUInt); extdecl;
 begin
-  EventClass.ThreadEvtId := AId;
-  TThread.Synchronize(nil, @EventClass.ThreadProc);
-  EventClass.ThreadEvtId := 0;
-  //TThread.Synchronize(
-  //  procedure
-  //  begin
-  //    GCallbackPtr(AId, nil, 0);
-  //  end of object);
+  TEventClass.ThreadEvtId := AId;
+  TThread.Synchronize(nil, TEventClass.ThreadProc);
+  TEventClass.ThreadEvtId := 0;
 end;
 
 procedure DSysOpen(FileName: PChar); extdecl;
@@ -1012,8 +842,6 @@ exports
   Application_CreateForm,
   Application_Run,
   SetGlobalFormScaled,
-  //Application_SetMainFormOnTaskBar,
-  //Application_GetMainFormOnTaskBar,
   Application_Initialize,
   Application_GetHandle,
   Application_SetHandle,
@@ -1031,9 +859,6 @@ exports
   Form_SetOnActivate,
   Form_SetOnWndProc,
 
-  // TEdit
-  //Edit_SetTextHint,
-  //Edit_GetTextHint,
 
   // TMouse
   Mouse_Instance,
@@ -1101,35 +926,13 @@ exports
   ImageList_GetIcon1,
   //ImageList_GetIcon2,
 
-  // TMonthCalendar
-  MonthCalendar_GetDate,
-  MonthCalendar_SetDate,
-
   // TListView
   ListView_GetScrollBars,
   ListView_SetScrollBars,
-  ListView_CustomSort,
-  ListView_DeleteSelected,
 
   // TTreeView
   TreeView_GetScrollBars,
   TreeView_SetScrollBars,
-  TreeView_AlphaSort,
-  TreeView_DeleteSelected,
-
-  // TPageSetupDialog
-  PageSetupDialog_GetMarginLeft,
-  PageSetupDialog_SetMarginLeft,
-  PageSetupDialog_GetMarginTop,
-  PageSetupDialog_SetMarginTop,
-  PageSetupDialog_GetMarginRight,
-  PageSetupDialog_SetMarginRight,
-  PageSetupDialog_GetMarginBottom,
-  PageSetupDialog_SetMarginBottom,
-
-  // TDragObject
-  DragObject_GetDragTarget,
-  DragObject_SetDragTarget,
 
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,

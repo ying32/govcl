@@ -12,7 +12,7 @@ func main() {
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 
-	vcl.Application.CreateFormFromBytes(formListViewDrawBytes, &FormListViewDraw)
+	vcl.Application.CreateForm(formListViewDrawBytes, &FormListViewDraw)
 
 	// 加载信息
 	trainData, err := parseFromFile("testtraindata.json")

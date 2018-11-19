@@ -5,16 +5,13 @@ program res2go;
 {$APPTYPE CONSOLE}
 
 uses
-  {$IFDEF UNIX}{$IFDEF UseCThreads}
-  cthreads,
-  {$ENDIF}{$ENDIF}
-  uResourceFormToGo;
+  uresourceformtogo;
 
-
-{$R *.res}
+{$IFDEF WINDOWS}
+  {$R *.res}
+{$ENDIF}
 
 begin
-  //Getenv('HEAPTRC', 'disabled');
   ConvertAll;
 end.
 

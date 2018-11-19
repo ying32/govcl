@@ -22,17 +22,13 @@
 
 
 GUI库二进制下载：   
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.0/Librarys-1.2.0.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.1/Librarys-1.2.1.zip)  
 **注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.zh-CN.md)中的说明。**  
 
 
 res2go工具下载  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.6-blue.svg)](Tools/res2go)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.10-blue.svg)](Tools/res2go)  
 **注：用Delphi/Lazarus设计界面，用Golang写代码。**    
-
-
-VCL样式文件    
-[![VCL style files](https://img.shields.io/badge/downloads-VCL%20style%20files-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.1.20/vcl-styles.zip)  
 
 ---
 ### 使用方法
@@ -47,16 +43,18 @@ import (
    "github.com/ying32/govcl/vcl"
 )
 
-var (
-   mainForm *vcl.TForm
-)
-
 func main() {
     vcl.Application.Initialize()
-    mainForm = vcl.Application.CreateForm()
+    mainForm := vcl.Application.CreateForm()
     mainForm.SetCaption("Hello")
     mainForm.EnabledMaximize(false)
     mainForm.ScreenCenter()
+    btn := vcl.NewButton(mainForm)
+    btn.SetParent(mainForm)
+    btn.SetCaption("Hello")
+    btn.SetOnClick(func(sender vcl.IObject) {
+        vcl.ShowMessage("Hello!")
+    })
     vcl.Application.Run()
 }
 ```  

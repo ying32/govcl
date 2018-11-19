@@ -102,14 +102,9 @@ end;
 
 procedure MainMenu_SetOnChange(AObj: TMainMenu; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnChange := nil;
-    EventClass.Remove(AObj, geMenuChange);
-    Exit;
-  end;
-  AObj.OnChange := @EventClass.MenuOnChange;
-  EventClass.Add(AObj, geMenuChange, AEventId);
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := MenuOnChange}
+  EventMethodCode
 end;
 
 function MainMenu_GetHandle(AObj: TMainMenu): HMENU; extdecl;

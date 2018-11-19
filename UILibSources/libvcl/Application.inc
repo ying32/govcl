@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ¥˙¬Î”…GenlibVclπ§æﬂ◊‘∂Ø…˙≥…°£
-// Copyright ? ying32. All Rights Reserved.
+// ‰ª£Á†ÅÁî±GenlibVclÂ∑•ÂÖ∑Ëá™Âä®ÁîüÊàê„ÄÇ
+// Copyright ¬© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -305,11 +305,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnException := nil;
-    TEventClass.Remove(AObj, geException);
+    TEventClass.Remove(AObj, @TEventClass.OnException);
     Exit;
   end;
   AObj.OnException := TEventClass.OnException;
-  TEventClass.Add(AObj, geException, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnException, AEventId);
 end;
 
 procedure Application_SetOnHelp(AObj: TApplication; AEventId: NativeUInt); stdcall;
@@ -317,11 +317,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHelp := nil;
-    TEventClass.Remove(AObj, geHelp);
+    TEventClass.Remove(AObj, @TEventClass.OnHelp);
     Exit;
   end;
   AObj.OnHelp := TEventClass.OnHelp;
-  TEventClass.Add(AObj, geHelp, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnHelp, AEventId);
 end;
 
 procedure Application_SetOnHint(AObj: TApplication; AEventId: NativeUInt); stdcall;
@@ -329,11 +329,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnHint := nil;
-    TEventClass.Remove(AObj, geHint);
+    TEventClass.Remove(AObj, @TEventClass.OnHint);
     Exit;
   end;
   AObj.OnHint := TEventClass.OnHint;
-  TEventClass.Add(AObj, geHint, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnHint, AEventId);
 end;
 
 procedure Application_SetOnMessage(AObj: TApplication; AEventId: NativeUInt); stdcall;
@@ -341,11 +341,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMessage := nil;
-    TEventClass.Remove(AObj, geMessage);
+    TEventClass.Remove(AObj, @TEventClass.OnMessage);
     Exit;
   end;
   AObj.OnMessage := TEventClass.OnMessage;
-  TEventClass.Add(AObj, geMessage, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMessage, AEventId);
 end;
 
 procedure Application_SetOnMinimize(AObj: TApplication; AEventId: NativeUInt); stdcall;
@@ -353,11 +353,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnMinimize := nil;
-    TEventClass.Remove(AObj, geMinimize);
+    TEventClass.Remove(AObj, @TEventClass.OnMinimize);
     Exit;
   end;
   AObj.OnMinimize := TEventClass.OnMinimize;
-  TEventClass.Add(AObj, geMinimize, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnMinimize, AEventId);
 end;
 
 procedure Application_SetOnRestore(AObj: TApplication; AEventId: NativeUInt); stdcall;
@@ -365,11 +365,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnRestore := nil;
-    TEventClass.Remove(AObj, geRestore);
+    TEventClass.Remove(AObj, @TEventClass.OnRestore);
     Exit;
   end;
   AObj.OnRestore := TEventClass.OnRestore;
-  TEventClass.Add(AObj, geRestore, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnRestore, AEventId);
 end;
 
 procedure Application_SetOnShortCut(AObj: TApplication; AEventId: NativeUInt); stdcall;
@@ -377,11 +377,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnShortCut := nil;
-    TEventClass.Remove(AObj, geShortCut);
+    TEventClass.Remove(AObj, @TEventClass.OnShortCut);
     Exit;
   end;
   AObj.OnShortCut := TEventClass.OnShortCut;
-  TEventClass.Add(AObj, geShortCut, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnShortCut, AEventId);
 end;
 
 function Application_GetHandle(AObj: TApplication): HWND; stdcall;

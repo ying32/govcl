@@ -7,10 +7,11 @@
 
 library lcl;
 
-{$mode objfpc}{$H+}
+//{$mode objfpc}{$H+}
+{$mode delphi}
 
 {$ifndef windows}
-   {$define UseCThreads}
+  {$define UseCThreads}
 {$endif}
 
 uses
@@ -24,10 +25,10 @@ uses
   ShellAPI,
   ShlObj,
   ComObj,
-  CommCtrl,
   ActiveX,
   Win32Int,
   win32proc,
+  CommCtrl,
   LazUTF8,
   InterfaceBase,
 {$ELSE}
@@ -73,7 +74,9 @@ uses
   uEventCallback in 'uEventCallback.pas',
   ImageButton in 'ImageButton.pas',
   Gauges in 'Gauges.pas',
-  uComponents, uGoForm;
+  uMiniWebview in 'uMiniWebview.pas',
+  uComponents,
+  uGoForm;
 
 {$IFDEF WINDOWS}
   {$R *.res}
@@ -152,6 +155,9 @@ uses
 {$I MyLCL_StatusPanels.inc}
 {$I MyLCL_StatusPanel.inc}
 {$I MyLCL_SpinEdit.inc}
+{$IFNDEF LINUX}
+{$I MyLCL_MiniWebview.inc}
+{$ENDIF}
 {$I MyLCL_Canvas.inc}
 {$I MyLCL_Object.inc}
 {$I MyLCL_Graphic.inc}

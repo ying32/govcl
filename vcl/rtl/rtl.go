@@ -25,49 +25,14 @@ func GetStringArrOf(p uintptr, index int) string {
 	return api.DGetStringArrOf(p, index)
 }
 
+// IsNil 判断一个接口是否为空
+// interface{}数据类型定义为 typedef struct { void *type; void *value; } GoInterface;
+// 当type与value值都为nil时则为空。
+func IsNil(val interface{}) bool {
+	return api.IsNil(val)
+}
+
 //----------------------------Delphi/Lazarus集合操作-------------------------------------------------------
-/*
-// getInterfaceUint32Val 从一个interface{}中获取一个整型并转为uint32类型
-func getInterfaceUint32Val(val interface{}) uint32 {
-	if val == nil {
-		return 0
-	}
-	switch f := val.(type) {
-	case int:
-		return uint32(f)
-	case int8:
-		return uint32(f)
-	case int16:
-		return uint32(f)
-	case int32:
-		return uint32(f)
-	case int64:
-		return uint32(f)
-	case uint:
-		return uint32(f)
-	case uint8:
-		return uint32(f)
-	case uint16:
-		return uint32(f)
-	case uint32:
-		return uint32(f)
-	case uint64:
-		return uint32(f)
-	case uintptr:
-		return uint32(f)
-	default:
-		value := reflect.ValueOf(val)
-		if value.IsValid() {
-			switch f2 := value; value.Kind() {
-			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-				return uint32(f2.Int())
-			case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-				return uint32(f2.Uint())
-			}
-		}
-	}
-	return 0
-}*/
 
 // Include Delphi集合加法，val...中存储为位的索引，下标为0
 func Include(r uint32, val ...uint8) uint32 {

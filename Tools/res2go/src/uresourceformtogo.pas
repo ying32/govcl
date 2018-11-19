@@ -1,7 +1,10 @@
-﻿unit uResourceFormToGo;
+unit uresourceformtogo;
 
 {$IFDEF FPC}
   {$mode objfpc}{$H+}
+  {$IFDEF WINDOWS}
+    {$codepage UTF8}
+  {$ENDIF}
 {$ENDIF}
 
 interface
@@ -18,7 +21,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.6';
+  APPVERSION = '1.0.10';
 
 type
   TComponentItem = record
@@ -30,6 +33,7 @@ type
   TEventItem = record
     Name: string;
     RealName: string;
+    ComponentName: string;
   end;
 
   TEventType = record
@@ -129,31 +133,54 @@ var
 
 //控制台文本的颜色常量
 const
-  tfBlue  =1;
   tfGreen =2;
   tfRed   =4;
   tfIntensity = 8;
   tfWhite = $f;
 
-  tbBlue  =$10;
-  tbGreen =$20;
-  tbRed   =$40;
-  tbIntensity = $80;
-
   PrivateFiledsFlagStr = '//::private::';
   PrivateFiledsStr = 'T%sFields';
 
-procedure TextColor(AColor: Byte);
+procedure CrtTextColor(AColor: Byte);
 begin
 {$IFDEF WINDOWS}
    SetConsoleTextAttribute(uConsoleHandle, AColor);
+{$ELSE}
+   //crt.TextColor(AColor);
+   case AColor of
+     tfRed   : write(#27'[0;31m');  // red
+     tfGreen : write(#27'[0;32m');  // green
+     tfWhite : write(#27'[0;37m');  // white
+   end;
 {$ENDIF}
 end;
+
+procedure TextColorRed;
+begin
+  CrtTextColor({$IFDEF WINDOWS}tfIntensity or {$ENDIF}tfRed);
+end;
+
+procedure TextColorGreen;
+begin
+  CrtTextColor(tfGreen);
+end;
+
+procedure TextColorWhite;
+begin
+  CrtTextColor(tfWhite);
+end;
+
 
 // 系统环境是中文的
 function SysIsZhCN: Boolean;
 begin
+  // linux和macOS下这个api有问题，获取不到实际的LCID，所以全都会显示英文的。
+  //Result := SysLocale.DefaultLCID {$IFDEF WINDOWS}={$ELSE}<>{$ENDIF} 2052;  //
+{$IFDEF WINDOWS}
   Result := SysLocale.DefaultLCID = 2052;
+{$ELSE}
+  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) <> -1;
+{$ENDIF}
 end;
 
 procedure WriteDefaultWindowsRes(APath: string);
@@ -401,9 +428,9 @@ begin
 end;
 
 
-procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AOutPath: string; AMem: TMemoryStream);
+procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AOutPath, AOrigFileName: string; AMem: TMemoryStream);
 var
-  LStrStream: TStringStream;
+  LStrStream, LBuffer: TStringStream;
 {$IFDEF FPC}
   LLines: TStringList;
 {$ENDIF}
@@ -433,11 +460,21 @@ var
 var
   I, LMaxLen: Integer;
   C: PComponentItem;
-  LBS, LVarName, LFormName, LFileName: string;
+  LVarName, LFormName, LFileName: string;
+  LUseStr: Boolean;
+  LItem: TEventItem;
+  LFindEvent: Boolean;
+  LReadEventName: string;
 begin
   LStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
+  LBuffer := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
   LLines := TStringList.Create;
   try
+    //-usestr
+    LUseStr := True;
+    if FindCmdLineSwitch('usestr') then
+      LUseStr := SameText(GetNextParam('usestr'), 'True');;
+
     if SysIsZhCN then
       WLine('// 由res2go自动生成，不要编辑。')
     else
@@ -458,28 +495,51 @@ begin
 
       if not IsSupportsComponent(C^.ClassName) then
       begin
-        TextColor(tfIntensity or tfRed);
+        TextColorRed;
         if SysIsZhCN then
-          Writeln('警告：“', C^.Name, ':', C^.ClassName, '”不被支持，有可能创建失败。')
+          Writeln('错误：“', C^.Name, ':', C^.ClassName, '”不被支持。')
         else
-          Writeln('Warning: "', C^.Name, ':', C^.ClassName, '" is not supported and it may fail to create.');
-        TextColor(tfWhite);
+          Writeln('Error: "', C^.Name, ':', C^.ClassName, '" is not supported.');
+        TextColorWhite;
+        // error: exit;
+        Exit;
       end;
 
       if C^.Name = '' then
         Continue;
       if CharInSet(C^.Name[1], ['a'..'z', '_']) then
       begin
-        TextColor(tfGreen);
+        TextColorGreen;
         if SysIsZhCN then
           Writeln('提示：“', C^.Name, ':', C^.ClassName, '”必须首字母大写才能被导出。')
         else
           Writeln('Hint: "', C^.Name, ':', C^.ClassName, '" must be capitalized first to be exported.');
-        TextColor(tfWhite);
+        TextColorWhite;
         Continue;
       end;
       //Writeln(C^.Name, ': ', C^.ClassName);
-      WLine(Format('    %s *vcl.%s', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName]));
+      // 这里查找下，当前组件有事件，但是这个事件是共享的。
+      LReadEventName := '';
+      LFindEvent := False;
+      for LItem in AEvents do
+      begin
+        if LItem.ComponentName = C^.Name then
+        begin
+         // 当前实际关联的事件不是自己的，比如  Button2Click != Button1Click
+         if C^.Name + LItem.Name <> LItem.RealName then
+         begin
+           LFindEvent := True;
+           if LReadEventName <> '' then
+             LReadEventName := LReadEventName + ',';
+           LReadEventName := LReadEventName + 'On' + LItem.RealName;
+         end;
+        end;
+      end;
+     // writeln('LReadEventName: ', LReadEventName);
+      if LFindEvent and (LReadEventName <> '') then
+        WLine(Format('    %s *vcl.%s `events:"%s"`', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName, LReadEventName]))
+      else
+        WLine(Format('    %s *vcl.%s', [Copy(C^.Name + DupeString(#32, LMaxLen), 1, LMaxLen), C^.ClassName]));
     end;
     WLine;
     // 添加一个隐式字段，用于私有，方便写一些结构定自定义的变量什么的
@@ -515,28 +575,43 @@ begin
         WLine('// Loaded in bytes.');
       WLine(Format('// vcl.Application.CreateForm(%s, &%s)', [LVarName, LFormName]));
       WLine;
-      WLine('var (');
-      WLine(Format('    %s = []byte {', [LVarName]));
-      LBS := '';
+      if not LUseStr then
+      begin
+        WLine('var (');
+        LBuffer.WriteString(Format('    %s = []byte ' + '{'+sLineBreak, [LVarName]));
+      end else
+      begin
+        LBuffer.WriteString(Format('var %s = []byte("', [LVarName]));
+      end;
       for I := 0 to AMem.Size - 1 do
       begin
-        if I > 0 then
-          LBS := LBS + ', ';
-        if I mod 12 = 0 then
-          LBS := LBS + IfThen(I > 0, sLineBreak, '') + '        ';
-        LBS := LBS + '0x' + PByte(PByte(AMem.Memory) + I)^.ToHexString(2);
+        if (I > 0) and (not LUseStr) then
+          LBuffer.WriteString(', ');
+        if (I mod 12 = 0) and (not LUseStr) then
+          LBuffer.WriteString(IfThen(I > 0, sLineBreak, '') + '        ');
+        if not LUseStr then
+          LBuffer.WriteString('0x')
+        else
+          LBuffer.WriteString('\x');
+        LBuffer.WriteString(PByte(PByte(AMem.Memory) + I)^.ToHexString(2))
       end;
-      LBS := LBS + '}';
-      WLine(LBS);
-      WLine(')');
+      LBuffer.WriteString(IfThen(LUseStr, '")', '}'));
+      WLine(LBuffer.DataString);
+      if not LUseStr then
+        WLine(')');
+
     end;
-    LFileName := AOutPath + LFormName + '.go';
+    if AOrigFileName <> '' then
+      LFileName := AOutPath + AOrigFileName + '.go'
+    else
+      LFileName := AOutPath + LFormName + '.go';
   {$IFDEF FPC}
     LStrStream.WriteString(LLines.Text);
   {$ENDIF}
     LStrStream.SaveToFile(LFileName);
   finally
     LLines.Free;
+    LBuffer.Free;
     LStrStream.Free;
   end;
   // 一定创建，因为多加了个
@@ -549,6 +624,7 @@ var
   LParser: TParser;
   LComponents: TList;
   LEventList: array of TEventItem;
+  LCurObjectName: string;
 
   procedure ProcessProperty;
   var
@@ -581,6 +657,7 @@ var
                 SetLength(LEventList, Length(LEventList)+1);
                 LEventList[High(LEventList)].Name := LPropName.Substring(2);
                 LEventList[High(LEventList)].RealName := LParser.TokenComponentIdent;
+                LEventList[High(LEventList)].ComponentName := LCurObjectName;
               end;
             end;
           end;
@@ -640,6 +717,8 @@ var
          LParser.NextToken;
        end;
      end;
+     // 保存对象名称
+     LCurObjectName := ObjectName;
      //Writeln(ObjectName, ': ', ObjectType);
      New(LItem);
      LItem^.Name := ObjectName;
@@ -668,7 +747,8 @@ var
 
  var
    LInput, LOutput, LEnStream: TMemoryStream;
-   LUseEncrypt, LOutbytes: Boolean;
+   LUseEncrypt, LOutbytes, LOrigfn: Boolean;
+   LGfmFileName, LTempFileName: string;
  begin
    LInput := TMemoryStream.Create;
    try
@@ -677,7 +757,7 @@ var
      try
         try
           ObjectTextToBinary(LInput, LOutput);
-          LInput.Position:=0;
+          LInput.Position := 0;
           LParser := TParser.Create(LInput);
           try
             LComponents := TList.Create;
@@ -687,7 +767,7 @@ var
               try
                 LOutput.Position := 0;
 
-                LUseEncrypt := True;
+                LUseEncrypt := False;
                 if FindCmdLineSwitch('encrypt') then
                   LUseEncrypt := SameText(GetNextParam('encrypt'), 'True');
 
@@ -695,21 +775,47 @@ var
                 if FindCmdLineSwitch('outbytes') then
                   LOutbytes := SameText(GetNextParam('outbytes'), 'True');
 
+                // 是否使用原始的dfm/lfm文件名。
+                LOrigfn := FindCmdLineSwitch('origfn');
+                // 提取单元名称
+                LtempFileName := '';
+                if LOrigfn then
+                begin
+                  LTempFileName := ExtractFileName(ASrcFileName);
+                  LTempFileName := Copy(LTempFileName, 1, Length(LTempFileName) - Length(ExtractFileExt(LTempFileName)));
+                end;
                 // 使用加密格式的
                 if LUseEncrypt then
                 begin
                   TFormResFile.Encrypt(LOutput, LEnStream);
                   if LOutbytes then
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LEnStream)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, LEnStream)
                   else
-                    SaveToGoFile(LComponents, LEventList, AOutPath, nil)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, nil)
                 end else
                 begin
                   if LOutbytes then
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LOutput)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, LOutput)
                   else
-                    SaveToGoFile(LComponents, LEventList, AOutPath, nil)
+                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, nil)
                 end;
+                // 保存gfm文件
+                //if not LOutbytes then
+                //begin
+                  if LOrigfn then
+                    LGfmFileName := AOutPath + LTempFileName + '.gfm'
+                  else
+                    LGfmFileName := AOutPath + PComponentItem(LComponents[0])^.Name + '.gfm';
+                  if LUseEncrypt then
+                  begin
+                    LEnStream.Position := 0;
+                    LEnStream.SaveToFile(LGfmFileName);
+                  end else
+                  begin
+                    LOutput.Position := 0;
+                    LOutput.SaveToFile(LGfmFileName);
+                  end;
+                //end;
               finally
                 LEnStream.Free;;
               end;
@@ -814,13 +920,13 @@ begin
     if FindCmdLineSwitch('outres') then
       LOutWinRes := SameText(GetNextParam('outres'), 'True');
 
-    LPath := '.' + DirectorySeparator;// ExtractFilePath(ParamStr(0));
+    LPath := '.' + DirectorySeparator;
     if FindCmdLineSwitch('path') then
     begin
       LPath := GetNextParam('path');
       if not DirectoryExists(LPath) then
       begin
-        TextColor(tfWhite);
+        TextColorWhite;
         if SysIsZhCN then
           Writeln('“-path”目录不存在。')
         else
@@ -833,7 +939,7 @@ begin
     end;
     //Writeln('LPath:', LPath);
 
-    LOutPath := '.' + DirectorySeparator;// ExtractFilePath(ParamStr(0));
+    LOutPath := '.' + DirectorySeparator;
     if FindCmdLineSwitch('outpath') then
     begin
       LOutPath := GetNextParam('outpath');
@@ -851,14 +957,20 @@ begin
       LFileName := LPath + LRec.Name;
       if SameText(LExt, '.lfm') or SameText(LExt, '.dfm') then
       begin
-        TextColor(tfWhite);
-        Writeln(LFileName);
+        TextColorWhite;
+        if SysIsZhCN then
+          Writeln('------转换文件：', LFileName)
+        else
+          Writeln('------Transform file:', LFileName);
         ResouceFormToGo(LFileName, LOutPath);
       end else if LConvPro and (SameText(LExt, '.lpr') or SameText(LExt, '.dpr')) and
        (not SameText(LRec.Name, 'res2go.lpr') and not SameText(LRec.Name, 'res2go.dpr')) then
       begin
-        TextColor(tfWhite);
-        Writeln(LFileName);
+        TextColorWhite;
+        if SysIsZhCN then
+          Writeln('------转换文件：', LFileName)
+        else
+          Writeln('------Transform file:', LFileName);
         ProjectFileToMainDotGo(LFileName, LOutPath);
       end;
      until FindNext(LRec) <> 0;
@@ -872,15 +984,6 @@ begin
     else
       Writeln('Done.');
 
-    if not FindCmdLineSwitch('gui') then
-    begin
-      if SysIsZhCN then
-        Writeln('请按回车键退出。')
-      else
-        Writeln('Please press Enter to exit.');
-      Readln;
-    end else
-      ExitCode := 0;
 {$IFDEF WINDOWS}
   finally
     if uConsoleHandle > 0 then
@@ -896,21 +999,23 @@ begin
   if SysIsZhCN then
   begin
     Writeln('');
-    TextColor(tfWhite);
+    TextColorWhite;
     Writeln('res2go是一个将Lazarus/Delphi资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。');
     Writeln('');
-    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
+    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale]');
     Writeln('  -path       待转换的工程路径，可为空，默认以当前目录为准。');
     Writeln('  -outpath    输出目录，可为空，默认为当前目录。');
-    Writeln('  -outmain    是否输出“main.go”，此为解析lpr或者dpr文件，默认输出。');
-    Writeln('  -outres     输出一个Windows默认资源文件，如果存在则不创建，默认输出。');
-    Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认输出。');
-    Writeln('  -scale      缩放窗口选项，默认为不缩放。');
-    Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为true。');
+    Writeln('  -outmain    是否输出“main.go”，此为解析lpr或者dpr文件，默认为true。');
+    Writeln('  -outres     输出一个Windows默认资源文件，如果存在则不创建，默认为true。');
+    Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认为true。');
+    Writeln('  -scale      缩放窗口选项，默认为false，即不缩放。');
+    Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为false。');
+    Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节，默认为true。 ');
+    Writeln('  -origfn     生成的.go文件使用原始的delphi/lazarus单元名，默认为false。 ');
     Writeln('  -h -help    显示帮助。');
     Writeln('  -v -version 显示版本号');
 
-    // Writeln('  -gui     此参数表示是gui在调用，那么将在ExitCode上返回成功与否。');
+    
 
 
     Writeln('');
@@ -918,17 +1023,19 @@ begin
   begin
     //Writeln('---------------English------------------');
     Writeln('');
-    TextColor(tfWhite);
+    TextColorWhite;
     Writeln('res2go is a Lazarus/Delphi resource window to go tool, can automatically resolve the lfm, dfm component name, component type and event name. Parse window information in lpr, dpr file.');
     Writeln('');
-    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
+    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale]');
     Writeln('  -path       The project path to be converted can be empty. The default is the current directory.');
     Writeln('  -outpath    Output directory, can be empty, the default is the current directory.');
-    Writeln('  -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default output.');
-    Writeln('  -outres     Outputs a Windows default resource file, if it does not exist, the default output.');
-    Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default output.');
+    Writeln('  -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default is true.');
+    Writeln('  -outres     Outputs a Windows default resource file, if it does not exist, the default is true.');
+    Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default is true.');
     Writeln('  -scale      The windoscale option, the default is false.');
-    Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is true.');
+    Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is false.');
+    Writeln('  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters, the default is true.');
+    Writeln('  -origfn     The generated .go file uses the original delphi/lazarus unit name, the default is false.');
     Writeln('  -h -help    Show help.');
     Writeln('  -v -version Show Version.');
     Writeln('');
@@ -974,16 +1081,6 @@ begin
 end;
 
 {$ENDIF}
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 
 //----------------------------------------
-// ´úÂëÓÉGenlibVcl¹¤¾ß×Ô¶¯Éú³É¡£
-// Copyright ? ying32. All Rights Reserved.
+// ä»£ç ç”±GenlibVclå·¥å…·è‡ªåŠ¨ç”Ÿæˆã€‚
+// Copyright Â© ying32. All Rights Reserved.
 //
 //----------------------------------------
 
@@ -170,11 +170,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnExecute := nil;
-    TEventClass.Remove(AObj, geExecute);
+    TEventClass.Remove(AObj, @TEventClass.OnExecute);
     Exit;
   end;
   AObj.OnExecute := TEventClass.OnExecute;
-  TEventClass.Add(AObj, geExecute, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnExecute, AEventId);
 end;
 
 procedure Action_SetOnUpdate(AObj: TAction; AEventId: NativeUInt); stdcall;
@@ -182,11 +182,11 @@ begin
   if AEventId = 0 then
   begin
     AObj.OnUpdate := nil;
-    TEventClass.Remove(AObj, geUpdate);
+    TEventClass.Remove(AObj, @TEventClass.OnUpdate);
     Exit;
   end;
   AObj.OnUpdate := TEventClass.OnUpdate;
-  TEventClass.Add(AObj, geUpdate, AEventId);
+  TEventClass.Add(AObj, @TEventClass.OnUpdate, AEventId);
 end;
 
 function Action_GetImages(AObj: TAction): TCustomImageList; stdcall;

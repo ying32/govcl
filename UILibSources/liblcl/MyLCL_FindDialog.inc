@@ -132,14 +132,9 @@ end;
 
 procedure FindDialog_SetOnFind(AObj: TFindDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnFind := nil;
-    EventClass.Remove(AObj, geFind);
-    Exit;
-  end;
-  AObj.OnFind := @EventClass.OnFind;
-  EventClass.Add(AObj, geFind, AEventId);
+  {$DEFINE EventName := OnFind}
+  {$DEFINE EventMethodName := OnFind}
+  EventMethodCode
 end;
 
 function FindDialog_GetHandle(AObj: TFindDialog): HWND; extdecl;
@@ -149,26 +144,16 @@ end;
 
 procedure FindDialog_SetOnClose(AObj: TFindDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnClose := nil;
-    EventClass.Remove(AObj, geClose);
-    Exit;
-  end;
-  AObj.OnClose := @EventClass.OnClose;
-  EventClass.Add(AObj, geClose, AEventId);
+  {$DEFINE EventName := OnClose}
+  {$DEFINE EventMethodName := OnClose}
+  EventMethodCode
 end;
 
 procedure FindDialog_SetOnShow(AObj: TFindDialog; AEventId: NativeUInt); extdecl;
 begin
-  if AEventId = 0 then
-  begin
-    AObj.OnShow := nil;
-    EventClass.Remove(AObj, geShow);
-    Exit;
-  end;
-  AObj.OnShow := @EventClass.OnShow;
-  EventClass.Add(AObj, geShow, AEventId);
+  {$DEFINE EventName := OnShow}
+  {$DEFINE EventMethodName := OnShow}
+  EventMethodCode
 end;
 
 function FindDialog_GetComponentCount(AObj: TFindDialog): Integer; extdecl;

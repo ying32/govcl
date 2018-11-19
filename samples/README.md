@@ -43,7 +43,8 @@
 | gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
 | imageviewer |  一个图片浏览器 |   |
 | windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
-| grid | 表格控件 | |
+| grids/stringgrid | 表格控件1 | |
+| grids/drawgrid | 表格控件2 | |
 | syslocale | 本地化相关 | |
 | shortcut | 快捷方式相关 | Windows | 
 | winole | 使用go-ole库操作ole | Windows | 
@@ -53,6 +54,6 @@
 | res2goTest | res2go 工具测试例程 | |  
 | messageTest | 跨平台的窗口消息捕获，与WindowsMessages例程功能一样，只是可以跨平台 | |  
 | printer | 打印机操作 | |  
-| multilanguage | 多国语言演示例程 | |
-
+| multilanguage | 多国语言演示例程 | |  
+| miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl,  liblcl macOS,cocoa |  
 
