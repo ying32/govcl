@@ -233,6 +233,7 @@ func (d *LazyDLL) call(proc *LazyProc, a ...uintptr) (r1, r2 uintptr, lastErr er
 }
 
 type LazyProc struct {
+	mu    sync.Mutex
 	p     uintptr
 	Name  string
 	lzdll *LazyDLL
@@ -245,6 +246,8 @@ func (p *LazyProc) Addr() uintptr {
 
 func (p *LazyProc) Find() error {
 	if p.p == 0 {
+		p.mu.Lock()
+		defer p.mu.Unlock()
 		cRelName := C.CString(p.Name)
 		defer C.free(unsafe.Pointer(cRelName))
 		p.p = uintptr(C.libLookup(p.lzdll.handle, cRelName))
