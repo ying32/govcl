@@ -1,3 +1,3 @@
-Éè¼ÆÆ÷ÒÑ¾­Í£Ö¹¿ª·¢£¬Ê¹ÓÃres2go¹¤¾ßÌæ´úÉè¼ÆÆ÷¡£ĞèÒª¾É°æ±¾µÄGoVCLÉè¼ÆÆ÷Çë½øÈº£¬ÆäËüµØ·½Ôİ²»Ìá¹©¡£
+è®¾è®¡å™¨å·²ç»åœæ­¢å¼€å‘ï¼Œä½¿ç”¨res2goå·¥å…·æ›¿ä»£è®¾è®¡å™¨ã€‚å› ä¸ºæ²¡æœ‰ç²¾åŠ›å»ç»´æŠ¤è¿™ä¸ªè®¾è®¡å™¨äº†ï¼Œæ‰€ä»¥é€‰æ‹©åœæ­¢å¼€å‘ã€‚éœ€è¦æ—§ç‰ˆæœ¬çš„GoVCLè®¾è®¡å™¨è¯·è¿›ç¾¤ï¼Œå…¶å®ƒåœ°æ–¹æš‚ä¸æä¾›ã€‚
 
-The designer has stopped development and replaced the designer with the res2go tool.
+The designer has stopped development and replaced the designer with the res2go tool. Because there is no effort to maintain this designer, so choose to stop development.
