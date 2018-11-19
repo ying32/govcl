@@ -21,7 +21,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.9';
+  APPVERSION = '1.0.10';
 
 type
   TComponentItem = record
@@ -471,7 +471,9 @@ begin
   LLines := TStringList.Create;
   try
     //-usestr
-    LUseStr := FindCmdLineSwitch('usestr');
+    LUseStr := True;
+    if FindCmdLineSwitch('usestr') then
+      LUseStr := SameText(GetNextParam('usestr'), 'True');;
 
     if SysIsZhCN then
       WLine('// 由res2go自动生成，不要编辑。')
@@ -573,8 +575,14 @@ begin
         WLine('// Loaded in bytes.');
       WLine(Format('// vcl.Application.CreateForm(%s, &%s)', [LVarName, LFormName]));
       WLine;
-      WLine('var (');
-      LBuffer.WriteString(Format('    %s = []byte ' + IfThen(LUseStr, '("', '{'+sLineBreak), [LVarName]));
+      if not LUseStr then
+      begin
+        WLine('var (');
+        LBuffer.WriteString(Format('    %s = []byte ' + '{'+sLineBreak, [LVarName]));
+      end else
+      begin
+        LBuffer.WriteString(Format('var %s = []byte("', [LVarName]));
+      end;
       for I := 0 to AMem.Size - 1 do
       begin
         if (I > 0) and (not LUseStr) then
@@ -589,7 +597,8 @@ begin
       end;
       LBuffer.WriteString(IfThen(LUseStr, '")', '}'));
       WLine(LBuffer.DataString);
-      WLine(')');
+      if not LUseStr then
+        WLine(')');
 
     end;
     if AOrigFileName <> '' then
@@ -758,7 +767,7 @@ var
               try
                 LOutput.Position := 0;
 
-                LUseEncrypt := True;
+                LUseEncrypt := False;
                 if FindCmdLineSwitch('encrypt') then
                   LUseEncrypt := SameText(GetNextParam('encrypt'), 'True');
 
@@ -975,15 +984,6 @@ begin
     else
       Writeln('Done.');
 
-    if not FindCmdLineSwitch('gui') then
-    begin
-      if SysIsZhCN then
-        Writeln('请按回车键退出。')
-      else
-        Writeln('Please press Enter to exit.');
-      Readln;
-    end else
-      ExitCode := 0;
 {$IFDEF WINDOWS}
   finally
     if uConsoleHandle > 0 then
@@ -1002,17 +1002,16 @@ begin
     TextColorWhite;
     Writeln('res2go是一个将Lazarus/Delphi资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。');
     Writeln('');
-    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
+    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale]');
     Writeln('  -path       待转换的工程路径，可为空，默认以当前目录为准。');
     Writeln('  -outpath    输出目录，可为空，默认为当前目录。');
-    Writeln('  -outmain    是否输出“main.go”，此为解析lpr或者dpr文件，默认输出。');
-    Writeln('  -outres     输出一个Windows默认资源文件，如果存在则不创建，默认输出。');
-    Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认输出。');
-    Writeln('  -scale      缩放窗口选项，默认为不缩放。');
-    Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为true。');
-    Writeln('  -gui        此参数表示是gui在调用，那么将在ExitCode上返回成功与否。');
-    Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节。 ');
-    Writeln('  -origfn     生成的.go文件使用原始的delphi/lazarus单元名。 ');
+    Writeln('  -outmain    是否输出“main.go”，此为解析lpr或者dpr文件，默认为true。');
+    Writeln('  -outres     输出一个Windows默认资源文件，如果存在则不创建，默认为true。');
+    Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认为true。');
+    Writeln('  -scale      缩放窗口选项，默认为false，即不缩放。');
+    Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为false。');
+    Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节，默认为true。 ');
+    Writeln('  -origfn     生成的.go文件使用原始的delphi/lazarus单元名，默认为false。 ');
     Writeln('  -h -help    显示帮助。');
     Writeln('  -v -version 显示版本号');
 
@@ -1027,17 +1026,16 @@ begin
     TextColorWhite;
     Writeln('res2go is a Lazarus/Delphi resource window to go tool, can automatically resolve the lfm, dfm component name, component type and event name. Parse window information in lpr, dpr file.');
     Writeln('');
-    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale] [-encrypt true]');
+    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale]');
     Writeln('  -path       The project path to be converted can be empty. The default is the current directory.');
     Writeln('  -outpath    Output directory, can be empty, the default is the current directory.');
-    Writeln('  -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default output.');
-    Writeln('  -outres     Outputs a Windows default resource file, if it does not exist, the default output.');
-    Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default output.');
+    Writeln('  -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default is true.');
+    Writeln('  -outres     Outputs a Windows default resource file, if it does not exist, the default is true.');
+    Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default is true.');
     Writeln('  -scale      The windoscale option, the default is false.');
-    Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is true.');
-    Writeln('  -gui        This parameter indicates that the gui is calling, then it will return success or failure on ExitCode.');
-    Writeln('  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters.');
-    Writeln('  -origfn     The generated .go file uses the original delphi/lazarus unit name.');
+    Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is false.');
+    Writeln('  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters, the default is true.');
+    Writeln('  -origfn     The generated .go file uses the original delphi/lazarus unit name, the default is false.');
     Writeln('  -h -help    Show help.');
     Writeln('  -v -version Show Version.');
     Writeln('');
