@@ -70,17 +70,26 @@ type TMainForm struct {
     Btn1     *vcl.TButton
 }
 
+type TAboutForm struct {
+    *vcl.TForm
+    Btn1    *vcl.TButton
+}
+
 var (
     mainForm *TMainForm
+    aboutForm *TAboutForm
 )
 
 func main() {
     vcl.Application.Initialize()
     vcl.Application.SetMainFormOnTaskBar(true)
     vcl.Application.CreateForm(&mainForm)
+   // Bind subcomponent events after creation, you need to set the component name
+    vcl.Application.CreateForm(&aboutForm, true)
     vcl.Application.Run()
 }
 
+// -- TMainForm
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
     f.SetCaption("Hello")
@@ -95,6 +104,21 @@ func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
     vcl.ShowMessage("Hello!")
 }
 
+
+// -- TAboutForm
+
+func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
+    f.SetCaption("Hello")
+    f.Btn1 = vcl.NewButton(f)
+    f.Btn1.SetName("Btn1")
+    f.Btn1.SetParent(f)
+    f.Btn1.SetBounds(10, 10, 88, 28)
+    f.Btn1.SetCaption("Button1")
+}
+
+func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
 ```
 
 * Method 3: 
