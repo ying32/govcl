@@ -149,6 +149,17 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 
 	// 设定了之后绑定子组件事件并且之前没有指定要绑定子组件事件
 	if afterBindSubComponentsEvents && !subComponenstEvent {
+		// 因为手动创建的组件没有名称，所以这里设置下，唯称是维一的
+		for i := 0; i < vt.Elem().NumField(); i++ {
+			field := vt.Elem().Field(i)
+			if field.Type.Kind() != reflect.Ptr || field.Anonymous ||
+				!strings.HasPrefix(field.Type.String(), "*vcl.") {
+				continue
+			}
+			if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
+				findAndSetComponentName(vCtl, field.Name)
+			}
+		}
 		bindSubComponentsEvents()
 	}
 }
@@ -175,6 +186,18 @@ func findAndSetEvent(v reflect.Value, eventType string, method reflect.Value) {
 	}()
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
 		event.Call([]reflect.Value{method})
+	}
+}
+
+// findAndSetComponentName 查找并设置组件名称
+func findAndSetComponentName(v reflect.Value, name string) {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("findAndSetComponentName error: ", err)
+		}
+	}()
+	if setName := v.MethodByName("SetName"); setName.IsValid() {
+		setName.Call([]reflect.Value{reflect.ValueOf(name)})
 	}
 }
 
