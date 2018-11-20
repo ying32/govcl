@@ -50,7 +50,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.Button1 = vcl.NewButton(f)
 	fmt.Println("f.Button1:", f.Button1.Instance())
 	f.Button1.SetParent(f)
-	f.Button1.SetName("Button1")
+	//f.Button1.SetName("Button1")
 	f.Button1.SetCaption("我是按钮")
 	//f.Button1.SetOnClick(f.OnButton1Click)
 }
