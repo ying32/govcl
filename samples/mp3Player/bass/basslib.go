@@ -136,6 +136,15 @@ func (c *TBass) TimeStrLabel() string {
 	return fmt.Sprintf("%.2d:%.2d/%.2d:%.2d", lPosi/1000/60, lPosi/1000%60, lLen/1000/60, lLen/1000%60)
 }
 
+func GetFileLength(fileName string) int {
+	hstream := BASS_StreamCreateFile(false, fileName, 0, 0, 0)
+	if hstream > 0 {
+		defer BASS_StreamFree(hstream)
+		return int(BASS_ChannelBytes2Seconds(hstream, BASS_ChannelGetLength(hstream, BASS_POS_BYTE)) * 1000)
+	}
+	return 0
+}
+
 func errorFromCode() error {
 	switch BASS_ErrorGetCode() {
 	case BASS_OK:

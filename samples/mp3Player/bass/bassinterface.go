@@ -5,8 +5,6 @@ import (
 
 	"unsafe"
 
-	"fmt"
-
 	"github.com/ying32/govcl/vcl/dylib"
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -102,7 +100,7 @@ func BASS_ChannelGetLength(handle HSTREAM, mode uint32) uint64 {
 
 func BASS_ChannelGetPosition(handle HSTREAM, mode uint32) uint64 {
 	r1, r2, _ := _BASS_ChannelGetPosition.Call(uintptr(handle), uintptr(mode))
-	fmt.Println(r1, r2, ", ", ToUInt64(r1, r2))
+	//fmt.Println(r1, r2, ", ", ToUInt64(r1, r2))
 	return ToUInt64(r1, r2)
 }
 

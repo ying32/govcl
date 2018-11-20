@@ -6,6 +6,7 @@ import (
 	. "github.com/ying32/govcl/vcl"
 	. "github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/types/colors"
 )
 
 type TPlayListItem struct {
@@ -26,6 +27,8 @@ type TPlayControl struct {
 	playingIndex   int32
 	singerPicR     TRect
 	singerPic      *TBitmap
+
+	OnSelect func(sender IObject, item TPlayListItem)
 }
 
 func NewPlayControl(owner IComponent) *TPlayControl {
@@ -54,15 +57,15 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 	// 加载时取消第一行永远被选中
 	m.TDrawGrid.SetSelection(TGridRect{24, 24, 24, 24})
 
-	m.TDrawGrid.SetColWidths(0, int32(float32(m.Width())*0.1))
-	m.TDrawGrid.SetColWidths(1, int32(float32(m.Width())*0.4))
-	m.TDrawGrid.SetColWidths(2, int32(float32(m.Width())*0.2))
-	m.TDrawGrid.SetColWidths(3, int32(float32(m.Width())*0.2))
+	m.TDrawGrid.SetColWidths(0, 60)
+	m.TDrawGrid.SetColWidths(1, 230)
+	m.TDrawGrid.SetColWidths(2, 100)
+	m.TDrawGrid.SetColWidths(3, 80)
 
-	m.TDrawGrid.SetColor(0x00EDEEF9)
+	//m.TDrawGrid.SetColor(0x39302c) //0x00EDEEF9)
 	m.TDrawGrid.SetDoubleBuffered(true)
 
-	m.focusedColor = 0x00C8CBEB
+	m.focusedColor = colors.ClMoneyGreen //0x20302c //0x00C8CBEB
 	m.playColor = m.focusedColor + 12
 	m.mouseMoveColor = m.focusedColor - 12
 
@@ -86,8 +89,12 @@ func (p *TPlayControl) Add(item TPlayListItem) int32 {
 }
 
 func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, state TGridDrawState) {
+	canvas := p.Canvas()
+	//canvas.Brush().SetColor(0x39302c)
+	//canvas.FillRect(p.ClientRect())
+
 	if len(p.datas) > 0 {
-		canvas := p.Canvas()
+
 		if aRow < int32(len(p.datas)) {
 			drawFlags := Include(0, TfVerticalCenter, TfSingleLine, TfEndEllipsis)
 			item := p.datas[int(aRow)]
@@ -129,14 +136,14 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 			case 1:
 				if aRow == p.playingIndex {
 					r.Inflate(-10, 0)
-					canvas.Font().SetSize(12)
+					canvas.Font().SetSize(11)
 					canvas.Font().SetStyle(Include(0, FsBold))
 					canvas.TextRect3(&r, item.Caption, drawFlags)
 				} else {
 					r.Inflate(-5, 0)
 					canvas.TextRect3(&r, item.Caption, drawFlags)
 				}
-				canvas.Font().SetSize(9)
+				canvas.Font().SetSize(8)
 				canvas.Font().SetStyle(0)
 			case 2:
 				r.Inflate(-5, 0)
@@ -148,8 +155,8 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 		}
 
 	} else {
-		p.Canvas().Brush().SetColor(p.Color())
-		p.Canvas().FillRect(rect)
+		//p.Canvas().Brush().SetColor(p.Color())
+		//p.Canvas().FillRect(rect)
 	}
 }
 
@@ -180,6 +187,9 @@ func (p *TPlayControl) onDblClick(sender IObject) {
 	}
 	p.playingIndex = row
 	p.Invalidate()
+	if p.OnSelect != nil {
+		p.OnSelect(p, p.datas[row])
+	}
 }
 
 func (p *TPlayControl) onMouseEnter(sender IObject) {
