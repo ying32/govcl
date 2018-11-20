@@ -84,7 +84,7 @@ func main() {
     vcl.Application.Initialize()
     vcl.Application.SetMainFormOnTaskBar(true)
     vcl.Application.CreateForm(&mainForm)
-   // Bind subcomponent events after creation, you need to set the component name
+   // Bind subcomponent events after creation.
     vcl.Application.CreateForm(&aboutForm, true)
     vcl.Application.Run()
 }

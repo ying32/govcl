@@ -88,7 +88,7 @@ func main() {
     vcl.Application.Initialize()
     vcl.Application.SetMainFormOnTaskBar(true)
     vcl.Application.CreateForm(&mainForm)
-    // 创建完后关联子组件事件，需要设置组件名
+    // 创建完后关联子组件事件
     vcl.Application.CreateForm(&aboutForm, true)
     vcl.Application.Run()
 }
