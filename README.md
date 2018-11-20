@@ -114,7 +114,7 @@ func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
 func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
     f.SetCaption("Hello")
     f.Btn1 = vcl.NewButton(f)
-    f.Btn1.SetName("Btn1")
+    //f.Btn1.SetName("Btn1")
     f.Btn1.SetParent(f)
     f.Btn1.SetBounds(10, 10, 88, 28)
     f.Btn1.SetCaption("Button1")
