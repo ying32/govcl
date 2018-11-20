@@ -5,11 +5,15 @@
 
 ----
 
-**The 1.2.0 version begins with govcl with a minimum requirement of go1.9.**  
+**The 1.2.0 version begins with govcl with a minimum requirement of go1.9.**   
+
+[](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))   
+
 ----
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
 ![Minimum Go version](https://img.shields.io/badge/Minimum%20Go%20version-1.9.0-green.svg)
 [![Screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
+[![Update log](https://img.shields.io/badge/Update%20log-view-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))  
 
 ![Support Platform](https://img.shields.io/badge/Platform-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
 **Note: linux and macOS only part of the components, properties, events and methods are valid.**  
