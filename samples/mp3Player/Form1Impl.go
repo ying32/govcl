@@ -58,7 +58,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.volbar.SetLeft(82)
 	f.volbar.SetTop(318)
 	f.volbar.SetWidth(80)
-	f.volbar.SetPosition(80)
+	f.volbar.SetPosition(60)
 	f.volbar.OnTrackChange = f.OnVolChange
 
 	f.addFoler("F:\\KuGou\\")

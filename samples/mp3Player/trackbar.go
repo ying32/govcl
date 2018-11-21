@@ -39,11 +39,13 @@ func NewImageTrackBar(owner vcl.IComponent) *TImageTrackBar {
 	t.background.SetAlign(types.AlClient)
 	t.background.SetStretch(true)
 
-	//t.fore.SetWidth(100)
+	t.fore.SetWidth(100)
 	t.fore.SetStretch(true)
 
-	t.thumb.SetAutoSize(true)
+	//t.thumb.SetAutoSize(true)
 	t.thumb.SetCursor(types.CrHandPoint)
+
+	//fmt.Println(t.thumb.)
 
 	t.thumb.SetOnMouseDown(t.onMouseDown)
 	t.thumb.SetOnMouseUp(t.onMouseUp)
@@ -55,6 +57,8 @@ func (t *TImageTrackBar) SetImages(thumb, background, fore *vcl.TImage) {
 	t.thumb.Picture().Assign(thumb.Picture())
 	t.background.Picture().Assign(background.Picture())
 	t.fore.Picture().Assign(fore.Picture())
+	t.thumb.SetWidth(thumb.Picture().Width())
+	t.thumb.SetHeight(thumb.Picture().Height())
 }
 
 func (t *TImageTrackBar) Free() {
