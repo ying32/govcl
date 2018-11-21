@@ -3,5 +3,5 @@
 package vcl
 
 func (a *TApplication) SetIconResId(id int) {
-	// no code
+	// 不支持此方法
 }

@@ -42,16 +42,26 @@ func SelectDirectory2(caption, root string, options TSelectDirExtOpts, parent IO
 	return api.DSelectDirectory2(caption, root, options, CheckPtr(parent))
 }
 
+// SelectDirectory3 选择目录， options默认是SdNewUI，parent默认为nil
+func SelectDirectory3(caption, root string, options ...uint8) (bool, string) {
+	opts := rtl.Include(0, options...)
+	if len(options) == 0 {
+		opts = rtl.Include(opts, SdNewUI)
+	}
+	return SelectDirectory2(caption, root, opts, nil)
+}
+
 // ThreadSync 主线程中执行
 func ThreadSync(fn TThreadProc) {
 	api.DSynchronize(fn)
 }
 
-//
+// InputBox 输入框
 func InputBox(aCaption, aPrompt, aDefault string) string {
 	return api.DInputBox(aCaption, aPrompt, aDefault)
 }
 
+// InputQuery 输入框
 func InputQuery(aCaption, aPrompt string, value *string) bool {
 	return api.DInputQuery(aCaption, aPrompt, value)
 }
