@@ -14,7 +14,7 @@ var globalFormScaled bool = false
  用法：
   1、mainForm := vcl.Application.CreateForm()    // 直接返回
   2、vcl.Application.CreateForm(&mainForm)       // 无资源加载，只会绑定窗口的事件，不会绑定子组件事件
-  3、vcl.Application.CreateForm(&mainForm, true) // 无资源加载，当第二个参数为true时在OnFormCreate调用完后会绑定子组件事件，前提是必须要设置组件的Name。
+  3、vcl.Application.CreateForm(&mainForm, true) // 无资源加载，当第二个参数为true时在OnFormCreate调用完后会绑定子组件事件
 
   4、vcl.Application.CreateForm("form1.gfm", &mainForm)  // 从资源文件中填充子组件，并绑定所有事件
   5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件

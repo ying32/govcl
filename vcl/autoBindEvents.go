@@ -149,7 +149,7 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 
 	// 设定了之后绑定子组件事件并且之前没有指定要绑定子组件事件
 	if afterBindSubComponentsEvents && !subComponenstEvent {
-		// 因为手动创建的组件没有名称，所以这里设置下，唯称是维一的
+		// 因为手动创建的组件没有名称，所以这里设置下，名称在当前TForm必须是唯一的
 		for i := 0; i < vt.Elem().NumField(); i++ {
 			field := vt.Elem().Field(i)
 			if field.Type.Kind() != reflect.Ptr || field.Anonymous ||
