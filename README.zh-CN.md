@@ -142,23 +142,41 @@ type TMainForm struct {
     Btn1     *vcl.TButton
 }
 
+type TAboutForm struct {
+    *vcl.TForm
+    Btn1    *vcl.TButton
+}
+
 var (
     mainForm *TMainForm
+    aboutForm *TAboutForm
 )
 
 func main() {
     vcl.Application.Initialize()
     vcl.Application.SetMainFormOnTaskBar(true)
     vcl.Application.CreateForm(mainFormBytes, &mainForm)
+    vcl.Application.CreateForm("./about.gfm", &aboutForm)
     vcl.Application.Run()
 }
 
+// -- TMainForm
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
     
 }
 
 func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+
+// -- TAboutForm
+
+func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
+ 
+}
+
+func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
     vcl.ShowMessage("Hello!")
 }
 ```
@@ -182,8 +200,11 @@ func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
 
 ----
 
-* Windows: 复制"libvcl.dll"或者"libvclx64.dll"或者“liblcl.dll”到当前exe目录或系统环境路径下。    
+* Windows: 复制"libvcl.dll"或者"libvclx64.dll"或者“liblcl.dll”到当前exe目录或系统环境路径下。 
+  * Go环境变量： `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`   
 
 * Linux: 复制"liblcl.so"可执行文件目录下(也可复制liblcl.so到`/usr/lib/`目录中，作为公共库使用)。  
+  * Go环境变量： `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`
 
 * MacOS: 复制"liblcl.dylib"可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS) 
+  * Go环境变量： `GOARCH = 386` `GOOS = darwin` `CGO_ENABLED=1`

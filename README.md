@@ -140,23 +140,41 @@ type TMainForm struct {
     Btn1     *vcl.TButton
 }
 
+type TAboutForm struct {
+    *vcl.TForm
+    Btn1    *vcl.TButton
+}
+
 var (
     mainForm *TMainForm
+    aboutForm *TAboutForm
 )
 
 func main() {
     vcl.Application.Initialize()
     vcl.Application.SetMainFormOnTaskBar(true)
     vcl.Application.CreateForm(mainFormBytes, &mainForm)
+    vcl.Application.CreateForm("./about.gfm", &aboutForm)
     vcl.Application.Run()
 }
 
+// -- TMainForm
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
     
 }
 
 func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+
+// -- TAboutForm
+
+func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
+ 
+}
+
+func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
     vcl.ShowMessage("Hello!")
 }
 ```
@@ -183,10 +201,13 @@ A: My English is bad. You can try using Google Translate [Chinese WIKI](https://
 
 ----
 
-* Windows: Copy "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.
+* Windows: Copy "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.  
+  * Go environment variable: `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`    
 
-* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).
+* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).  
+  * Go environment variable: `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`  
 
-* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS)
+* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS)  
+  * Go environment variable: `GOARCH = 386` `GOOS = darwin` `CGO_ENABLED=1`  
 
 ---  
