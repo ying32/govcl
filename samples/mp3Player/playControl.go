@@ -25,8 +25,9 @@ type TPlayControl struct {
 	mouseMoveColor TColor
 	mouseMoveIndex int32
 	playingIndex   int32
-	singerPicR     TRect
-	singerPic      *TBitmap
+
+	// 导出，测试用
+	SingerPic *TBitmap
 
 	OnSelect func(sender IObject, item TPlayListItem)
 }
@@ -42,7 +43,7 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 	} else {
 		m.TDrawGrid.SetOptions(Include(0, GoRangeSelect, GoRowSelect))
 	}
-	m.TDrawGrid.SetRowCount(1)
+	m.TDrawGrid.SetRowCount(0)
 	m.TDrawGrid.SetColCount(4)
 	m.TDrawGrid.SetFixedRows(0)
 	m.TDrawGrid.SetFixedCols(0)
@@ -55,7 +56,7 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 
 	m.TDrawGrid.SetDrawingStyle(GdsThemed)
 	// 加载时取消第一行永远被选中
-	m.TDrawGrid.SetSelection(TGridRect{24, 24, 24, 24})
+	m.TDrawGrid.SetSelection(TGridRect{0, 0, 0, -24})
 
 	m.TDrawGrid.SetColWidths(0, 60)
 	m.TDrawGrid.SetColWidths(1, 230)
@@ -88,13 +89,32 @@ func (p *TPlayControl) Add(item TPlayListItem) int32 {
 	return int32(len(p.datas)) - 1
 }
 
+func (p *TPlayControl) Next() {
+	if int(p.playingIndex) < len(p.datas)-1 {
+		p.playingIndex++
+		p.SetRow(p.playingIndex)
+		p.Invalidate()
+		if p.OnSelect != nil {
+			p.OnSelect(p, p.datas[int(p.playingIndex)])
+		}
+	}
+}
+
+func (p *TPlayControl) Prev() {
+	if int(p.playingIndex) > 0 {
+		p.playingIndex--
+		p.SetRow(p.playingIndex)
+		p.Invalidate()
+		if p.OnSelect != nil {
+			p.OnSelect(p, p.datas[int(p.playingIndex)])
+		}
+	}
+}
+
 func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, state TGridDrawState) {
-	canvas := p.Canvas()
-	//canvas.Brush().SetColor(0x39302c)
-	//canvas.FillRect(p.ClientRect())
 
 	if len(p.datas) > 0 {
-
+		canvas := p.Canvas()
 		if aRow < int32(len(p.datas)) {
 			drawFlags := Include(0, TfVerticalCenter, TfSingleLine, TfEndEllipsis)
 			item := p.datas[int(aRow)]
@@ -115,17 +135,19 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 			} else {
 				p.SetRowHeights(aRow, 24)
 			}
+
 			canvas.FillRect(rect)
+
 			r := p.CellRect(aCol, aRow)
 			switch aCol {
 			case 0:
 
 				if aRow == p.playingIndex {
-					if !p.singerPicR.IsEmpty() {
+					if !p.SingerPic.Empty() {
 						r.Left += 1
 						r.Top += +1
 						r.Bottom -= -1
-						//canvas.StretchDraw(r, FSingerPic);
+						canvas.StretchDraw(r, p.SingerPic)
 					}
 				} else {
 					r.Inflate(-10, 0)
@@ -155,8 +177,8 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 		}
 
 	} else {
-		//p.Canvas().Brush().SetColor(p.Color())
-		//p.Canvas().FillRect(rect)
+		p.Canvas().Brush().SetColor(p.Color())
+		p.Canvas().FillRect(rect)
 	}
 }
 

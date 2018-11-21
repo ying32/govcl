@@ -5,7 +5,10 @@ package main
 import (
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
+
+	"github.com/ying32/govcl/vcl/rtl/version"
 
 	"github.com/ying32/govcl/vcl/rtl"
 
@@ -21,6 +24,11 @@ type TForm1Fields struct {
 	playCtl    *TPlayControl
 	progress   *TImageTrackBar
 	volbar     *TImageTrackBar
+
+	// 仅windows
+	taskbar1         *vcl.TTaskbar
+	isSupportTaskbar bool
+	thumbPreviewBmp  *vcl.TBitmap
 }
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
@@ -34,8 +42,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.playCtl.SetParent(f.Panel2)
 	f.playCtl.SetAlign(types.AlClient)
 	f.playCtl.OnSelect = f.OnPlayListSelect
-	//f.playCtl.SetLeft(320)
-	//f.playCtl.SetTop(12)
+	f.playCtl.SingerPic = vcl.BitmapFromObj(f.ImgSinger.Picture().Graphic())
 
 	f.progress = NewImageTrackBar(f)
 	f.progress.SetParent(f)
@@ -51,21 +58,101 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.volbar.SetLeft(82)
 	f.volbar.SetTop(318)
 	f.volbar.SetWidth(80)
-	f.volbar.SetPosition(100)
+	f.volbar.SetPosition(80)
 	f.volbar.OnTrackChange = f.OnVolChange
 
 	f.addFoler("F:\\KuGou\\")
-	//for i := 0; i < 10; i++ {
-	//	f.playCtl.Add(TPlayListItem{"标题1", "张三", 111111, "", ""})
-	//f.playCtl.Add(TPlayListItem{"标题2", "李四", 222222, "", ""})
-	//f.playCtl.Add(TPlayListItem{"标题3", "王五", 333333, "", ""})
-	//f.playCtl.Add(TPlayListItem{"标题4", "赵六", 444444, "", ""})
-	//f.playCtl.Add(TPlayListItem{"标题5", "朱七", 555555, "", ""})
-	//}
+
+	f.isSupportTaskbar = runtime.GOOS == "windows" && version.OSVersion.CheckMajorMinor(6, 1) && !rtl.LcLLoaded()
+	if f.isSupportTaskbar {
+		f.thumbPreviewBmp = vcl.NewBitmap()
+		f.thumbPreviewBmp.SetPixelFormat(types.Pf32bit)
+		f.thumbPreviewBmp.SetSize(f.ImgSinger.Width(), f.ImgSinger.Height())
+
+		f.thumbPreviewBmp.Assign(f.ImgSinger.Picture().Graphic())
+		f.taskbar1 = vcl.NewTaskbar(f)
+		f.taskbar1.SetOnThumbPreviewRequest(f.onTaskbar1ThumbPreviewRequest)
+		f.taskbar1.SetOnThumbButtonClick(f.onTaskbar1ThumbButtonClick)
+		f.taskbar1.SetTabProperties(rtl.Include(0, types.CustomizedPreview))
+
+		// buttons
+		tbtn := f.taskbar1.TaskBarButtons().Add()
+		tbtn.SetHint("上一曲")
+		f.ImageList1.GetIcon(0, tbtn.Icon())
+
+		tbtn = f.taskbar1.TaskBarButtons().Add()
+		tbtn.SetHint("播放")
+		f.ImageList1.GetIcon(1, tbtn.Icon())
+
+		tbtn = f.taskbar1.TaskBarButtons().Add()
+		tbtn.SetButtonState(rtl.Include(tbtn.ButtonState(), types.TbsHidden))
+		tbtn.SetHint("暂停")
+		f.ImageList1.GetIcon(2, tbtn.Icon())
+
+		tbtn = f.taskbar1.TaskBarButtons().Add()
+		tbtn.SetHint("下一曲")
+		f.ImageList1.GetIcon(3, tbtn.Icon())
+
+	}
 
 }
 
+func (f *TForm1) onTaskbar1ThumbPreviewRequest(sender vcl.IObject, aPreviewHeight, aPreviewWidth int32, previewBitmap *vcl.TBitmap) {
+	//fmt.Println("OnTaskbar1ThumbPreviewRequest")
+	previewBitmap.Assign(f.thumbPreviewBmp)
+}
+
+func (f *TForm1) onTaskbar1ThumbButtonClick(sender vcl.IObject, aButtonID int32) {
+
+	switch aButtonID {
+	case 0:
+		f.BtnPrev.Click()
+	case 1:
+		f.BtnPlay.Click()
+	case 2:
+		f.BtnPause.Click()
+	case 3:
+		f.BtnNext.Click()
+	}
+}
+
+func (f *TForm1) setTaskbarHint(str string) {
+	if f.isSupportTaskbar {
+		f.taskbar1.SetToolTip(str)
+		f.taskbar1.SetOverlayHint(str)
+	}
+}
+
+func (f *TForm1) setTasbarButtonState(aPlayVisible, aPauseVisible bool) {
+
+	if f.isSupportTaskbar {
+		var state types.TThumbButtonStates
+		// play
+		tbtn := f.taskbar1.TaskBarButtons().Items(1)
+		state = tbtn.ButtonState()
+		if aPlayVisible {
+			state = rtl.Exclude(state, types.TbsHidden)
+		} else {
+			state = rtl.Include(state, types.TbsHidden)
+		}
+		tbtn.SetButtonState(state)
+
+		// pause
+		tbtn = f.taskbar1.TaskBarButtons().Items(2)
+		state = tbtn.ButtonState()
+		if aPauseVisible {
+			state = rtl.Exclude(state, types.TbsHidden)
+		} else {
+			state = rtl.Include(state, types.TbsHidden)
+		}
+		tbtn.SetButtonState(state)
+	}
+}
+
 func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
+	if f.isSupportTaskbar {
+		f.thumbPreviewBmp.Free()
+	}
 	f.bassPlayer.Close()
 	bass.BassFree()
 }
@@ -106,6 +193,9 @@ func (f *TForm1) OnPlayListSelect(sender vcl.IObject, item TPlayListItem) {
 	f.bassPlayer.OpenFile(item.FileName)
 	f.bassPlayer.SetVolume(f.volbar.Position())
 	f.play()
+	str := item.Caption + " - " + item.Singer
+	f.SetCaption(str)
+	f.setTaskbarHint(str)
 }
 
 func (f *TForm1) OnBtnPlayClick(sender vcl.IObject) {
@@ -119,6 +209,14 @@ func (f *TForm1) OnTimer1Timer(sender vcl.IObject) {
 		mLen, _ := f.bassPlayer.GetLength()
 
 		f.progress.SetPosition(int(float32(pos) / float32(mLen) * 100))
+
+		caption := []rune(f.Caption())
+		if len(caption) > 0 {
+			temp := caption
+			c := temp[:1]
+			temp = temp[1:]
+			f.SetCaption(string(temp) + string(c))
+		}
 	}
 }
 
@@ -146,6 +244,8 @@ func (f *TForm1) stopPlay() {
 
 	f.BtnPause.Hide()
 	f.BtnPlay.Show()
+
+	f.setTasbarButtonState(true, false)
 }
 
 func (f *TForm1) play() {
@@ -154,6 +254,8 @@ func (f *TForm1) play() {
 	f.BtnPlay.Hide()
 	f.BtnPause.Show()
 	f.Timer1.SetEnabled(true)
+
+	f.setTasbarButtonState(false, true)
 }
 
 func (f *TForm1) pause() {
@@ -161,10 +263,20 @@ func (f *TForm1) pause() {
 	f.BtnPause.Hide()
 	f.BtnPlay.Show()
 	f.Timer1.SetEnabled(false)
+
+	f.setTasbarButtonState(true, false)
 }
 
 func (f *TForm1) OnPanel1MouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 	if button == types.MbLeft {
 		//f.Perform(messages.WM_SYSCOMMAND, message)
 	}
+}
+
+func (f *TForm1) OnBtnPrevClick(sender vcl.IObject) {
+	f.playCtl.Prev()
+}
+
+func (f *TForm1) OnBtnNextClick(sender vcl.IObject) {
+	f.playCtl.Next()
 }
