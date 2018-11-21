@@ -62486,6 +62486,15 @@ func ThumbBarButton_SetAction(obj uintptr, value uintptr) {
    thumbBarButton_SetAction.Call(obj, value)
 }
 
+func ThumbBarButton_GetButtonState(obj uintptr) TThumbButtonStates {
+    ret, _, _ := thumbBarButton_GetButtonState.Call(obj)
+    return TThumbButtonStates(ret)
+}
+
+func ThumbBarButton_SetButtonState(obj uintptr, value TThumbButtonStates) {
+   thumbBarButton_SetButtonState.Call(obj, uintptr(value))
+}
+
 func ThumbBarButton_GetHint(obj uintptr) string {
     ret, _, _ := thumbBarButton_GetHint.Call(obj)
     return DStrToGoStr(ret)

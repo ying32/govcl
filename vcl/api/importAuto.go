@@ -13912,6 +13912,8 @@ var (
     thumbBarButton_ToString = libvcl.NewProc("ThumbBarButton_ToString")
     thumbBarButton_GetAction = libvcl.NewProc("ThumbBarButton_GetAction")
     thumbBarButton_SetAction = libvcl.NewProc("ThumbBarButton_SetAction")
+    thumbBarButton_GetButtonState = libvcl.NewProc("ThumbBarButton_GetButtonState")
+    thumbBarButton_SetButtonState = libvcl.NewProc("ThumbBarButton_SetButtonState")
     thumbBarButton_GetHint = libvcl.NewProc("ThumbBarButton_GetHint")
     thumbBarButton_SetHint = libvcl.NewProc("ThumbBarButton_SetHint")
     thumbBarButton_GetIcon = libvcl.NewProc("ThumbBarButton_GetIcon")
