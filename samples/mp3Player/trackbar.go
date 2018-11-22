@@ -93,6 +93,12 @@ func (t *TImageTrackBar) Position() int {
 
 func (t *TImageTrackBar) setPosition(value float32) {
 	t.position = value
+	if t.position < 0 {
+		t.position = 0
+	}
+	if t.position > 100 {
+		t.position = 100
+	}
 	t.adjust()
 	if t.OnTrackChange != nil {
 		t.OnTrackChange(t)

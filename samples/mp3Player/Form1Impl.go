@@ -3,6 +3,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -61,7 +62,15 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.volbar.SetPosition(60)
 	f.volbar.OnTrackChange = f.OnVolChange
 
-	f.addFoler("F:\\KuGou\\")
+	// 我的测试
+	switch runtime.GOOS {
+	case "windows":
+		f.addFoler("F:\\KuGou")
+	case "darwin":
+		f.addFoler("~/Music/网易云音乐")
+		f.addFoler("~/Music/ITunes Media/Music")
+
+	}
 
 	f.isSupportTaskbar = runtime.GOOS == "windows" && version.OSVersion.CheckMajorMinor(6, 1) && !rtl.LcLLoaded()
 	if f.isSupportTaskbar {
@@ -119,13 +128,17 @@ func (f *TForm1) onTaskbar1ThumbButtonClick(sender vcl.IObject, aButtonID int32)
 func (f *TForm1) setTaskbarHint(str string) {
 	if f.isSupportTaskbar {
 		f.taskbar1.SetToolTip(str)
-		f.taskbar1.SetOverlayHint(str)
 	}
 }
 
 func (f *TForm1) setTasbarButtonState(aPlayVisible, aPauseVisible bool) {
 
 	if f.isSupportTaskbar {
+
+		// 更新完后再提交，不然就会出现闪烁
+		f.taskbar1.TaskBarButtons().BeginUpdate()
+		defer f.taskbar1.TaskBarButtons().EndUpdate()
+
 		var state types.TThumbButtonStates
 		// play
 		tbtn := f.taskbar1.TaskBarButtons().Items(1)
@@ -171,6 +184,9 @@ func (f *TForm1) OnMIAddFolderClick(sender vcl.IObject) {
 
 func (f *TForm1) addFile(fileName string) {
 	name := filepath.Base(fileName)
+	if len(name) < 5 {
+		return
+	}
 	nameArr := strings.Split(name[:len(name)-4], "-")
 	if len(nameArr) >= 2 {
 		lenVal := int32(bass.GetFileLength(fileName))
@@ -179,6 +195,11 @@ func (f *TForm1) addFile(fileName string) {
 }
 
 func (f *TForm1) addFoler(rootPath string) {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("addFoler: ", err)
+		}
+	}()
 	filepath.Walk(rootPath, func(path string, info os.FileInfo, err error) error {
 		if filepath.Ext(info.Name()) == ".mp3" {
 			f.addFile(path)
