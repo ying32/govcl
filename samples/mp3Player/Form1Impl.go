@@ -67,8 +67,9 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	case "windows":
 		f.addFoler("F:\\KuGou")
 	case "darwin":
-		f.addFoler("~/Music/网易云音乐")
-		f.addFoler("~/Music/ITunes Media/Music")
+		usrHome := os.Getenv("HOME")
+		f.addFoler(usrHome + "/Music/网易云音乐")
+		f.addFoler(usrHome + "/Music/iTunes/iTunes Media/Music")
 
 	}
 
@@ -200,6 +201,10 @@ func (f *TForm1) addFoler(rootPath string) {
 			fmt.Println("addFoler: ", err)
 		}
 	}()
+	_, err := os.Stat(rootPath)
+	if os.IsNotExist(err) {
+		return
+	}
 	filepath.Walk(rootPath, func(path string, info os.FileInfo, err error) error {
 		if filepath.Ext(info.Name()) == ".mp3" {
 			f.addFile(path)
