@@ -21,7 +21,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.10';
+  APPVERSION = '1.0.11';
 
 type
   TComponentItem = record
@@ -140,6 +140,9 @@ const
 
   PrivateFiledsFlagStr = '//::private::';
   PrivateFiledsStr = 'T%sFields';
+
+var
+  uErrorPause, uWaringPause: Boolean;
 
 procedure CrtTextColor(AColor: Byte);
 begin
@@ -495,6 +498,7 @@ begin
 
       if not IsSupportsComponent(C^.ClassName) then
       begin
+        uErrorPause := True;
         TextColorRed;
         if SysIsZhCN then
           Writeln('错误：“', C^.Name, ':', C^.ClassName, '”不被支持。')
@@ -509,6 +513,7 @@ begin
         Continue;
       if CharInSet(C^.Name[1], ['a'..'z', '_']) then
       begin
+        uWaringPause := True;
         TextColorGreen;
         if SysIsZhCN then
           Writeln('提示：“', C^.Name, ':', C^.ClassName, '”必须首字母大写才能被导出。')
@@ -893,7 +898,7 @@ end;
 procedure ConvertAll;
 var
   LRec: {$IFDEF FPC}TRawbyteSearchRec{$ELSE}TSearchRec{$ENDIF};
-  LPath, LOutPath, LExt, LFileName: string;
+  LPath, LOutPath, LExt, LFileName, LPause: string;
   LConvPro, LOutWinRes: Boolean;
 begin
   if FindCmdLineSwitch('help') or FindCmdLineSwitch('h') then
@@ -984,6 +989,22 @@ begin
     else
       Writeln('Done.');
 
+    if FindCmdLineSwitch('pause') then
+    begin
+      LPause := GetNextParam('pause');
+      if (Pos('a', LPause) <> 0) or
+         (uErrorPause and (Pos('e', LPause) <> 0)) or
+         (uWaringPause and (Pos('w', LPause) <> 0)) then
+      begin
+        if SysIsZhCN then
+          Writeln('请按回车键退出。')
+        else
+          Writeln('Please press Enter to exit.');
+        Readln;
+      end;
+    end;
+
+
 {$IFDEF WINDOWS}
   finally
     if uConsoleHandle > 0 then
@@ -1012,6 +1033,7 @@ begin
     Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为false。');
     Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节，默认为true。 ');
     Writeln('  -origfn     生成的.go文件使用原始的delphi/lazarus单元名，默认为false。 ');
+    Writeln('  -pause      结束后根据选项暂停，比如： -pause "ew"，表示有错或者警告，可选为“e”,“w”,“a” e=错误，w=警告，a=忽略其它选项，总是显示。');
     Writeln('  -h -help    显示帮助。');
     Writeln('  -v -version 显示版本号');
 
@@ -1036,6 +1058,7 @@ begin
     Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is false.');
     Writeln('  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters, the default is true.');
     Writeln('  -origfn     The generated .go file uses the original delphi/lazarus unit name, the default is false.');
+    Writeln('  -pause      After the end, pause according to the option, for example: -pause "ew", indicating that there is a fault or warning, you can choose "e", "w", "a" e=error, w=warning, a=ignore other options, always display.');
     Writeln('  -h -help    Show help.');
     Writeln('  -v -version Show Version.');
     Writeln('');
