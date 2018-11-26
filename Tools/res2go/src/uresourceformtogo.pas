@@ -1,4 +1,4 @@
-unit uresourceformtogo;
+﻿unit uresourceformtogo;
 
 {$IFDEF FPC}
   {$mode objfpc}{$H+}
@@ -14,7 +14,7 @@ interface
 implementation
 
 uses
-{$IFDEF WINDOWS}
+{$IFDEF MSWINDOWS}
   Windows,
 {$ENDIF}
   Classes, SysUtils, Math, StrUtils, uFormDesignerFile;
@@ -124,9 +124,9 @@ const
 {$I winResData.inc}
 
 
-{$IFDEF WINDOWS}
+{$IFDEF MSWINDOWS}
 var
-  uConsoleHandle: HANDLE;
+  uConsoleHandle: THandle;
 {$ENDIF}
 
 
@@ -146,7 +146,7 @@ var
 
 procedure CrtTextColor(AColor: Byte);
 begin
-{$IFDEF WINDOWS}
+{$IFDEF MSWINDOWS}
    SetConsoleTextAttribute(uConsoleHandle, AColor);
 {$ELSE}
    //crt.TextColor(AColor);
@@ -160,7 +160,7 @@ end;
 
 procedure TextColorRed;
 begin
-  CrtTextColor({$IFDEF WINDOWS}tfIntensity or {$ENDIF}tfRed);
+  CrtTextColor({$IFDEF MSWINDOWS}tfIntensity or {$ENDIF}tfRed);
 end;
 
 procedure TextColorGreen;
@@ -178,8 +178,8 @@ end;
 function SysIsZhCN: Boolean;
 begin
   // linux和macOS下这个api有问题，获取不到实际的LCID，所以全都会显示英文的。
-  //Result := SysLocale.DefaultLCID {$IFDEF WINDOWS}={$ELSE}<>{$ENDIF} 2052;  //
-{$IFDEF WINDOWS}
+  //Result := SysLocale.DefaultLCID {$IFDEF MSWINDOWS}={$ELSE}<>{$ENDIF} 2052;  //
+{$IFDEF MSWINDOWS}
   Result := SysLocale.DefaultLCID = 2052;
 {$ELSE}
   Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) <> -1;
@@ -471,7 +471,9 @@ var
 begin
   LStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
   LBuffer := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
+{$IFDEF FPC}
   LLines := TStringList.Create;
+{$ENDIF}
   try
     //-usestr
     LUseStr := True;
@@ -615,7 +617,9 @@ begin
   {$ENDIF}
     LStrStream.SaveToFile(LFileName);
   finally
+  {$IFDEF FPC}
     LLines.Free;
+  {$ENDIF}
     LBuffer.Free;
     LStrStream.Free;
   end;
@@ -914,7 +918,7 @@ begin
       Writeln('Version:', APPVERSION);
     Exit;
   end;
-{$IFDEF WINDOWS}
+{$IFDEF MSWINDOWS}
   uConsoleHandle := GetStdHandle(STD_OUTPUT_HANDLE);
   try
 {$ENDIF}
@@ -925,7 +929,7 @@ begin
     if FindCmdLineSwitch('outres') then
       LOutWinRes := SameText(GetNextParam('outres'), 'True');
 
-    LPath := '.' + DirectorySeparator;
+    LPath := '.' +  {$IFDEF FPC}DirectorySeparator{$ELSE}PathDelim{$ENDIF};
     if FindCmdLineSwitch('path') then
     begin
       LPath := GetNextParam('path');
@@ -944,7 +948,7 @@ begin
     end;
     //Writeln('LPath:', LPath);
 
-    LOutPath := '.' + DirectorySeparator;
+    LOutPath := '.' + {$IFDEF FPC}DirectorySeparator{$ELSE}PathDelim{$ENDIF};
     if FindCmdLineSwitch('outpath') then
     begin
       LOutPath := GetNextParam('outpath');
@@ -1005,7 +1009,7 @@ begin
     end;
 
 
-{$IFDEF WINDOWS}
+{$IFDEF MSWINDOWS}
   finally
     if uConsoleHandle > 0 then
       CloseHandle(uConsoleHandle);
