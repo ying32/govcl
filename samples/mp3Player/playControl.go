@@ -94,8 +94,12 @@ func (p *TPlayControl) Add(item TPlayListItem) int32 {
 	return int32(len(p.datas)) - 1
 }
 
+func (p *TPlayControl) CanNext() bool {
+	return int(p.playingIndex) < len(p.datas)-1
+}
+
 func (p *TPlayControl) Next() {
-	if int(p.playingIndex) < len(p.datas)-1 {
+	if p.CanNext() {
 		p.playingIndex++
 		p.SetRow(p.playingIndex)
 		p.Invalidate()
@@ -105,8 +109,12 @@ func (p *TPlayControl) Next() {
 	}
 }
 
+func (p *TPlayControl) CanPrev() bool {
+	return int(p.playingIndex) > 0
+}
+
 func (p *TPlayControl) Prev() {
-	if int(p.playingIndex) > 0 {
+	if p.CanPrev() {
 		p.playingIndex--
 		p.SetRow(p.playingIndex)
 		p.Invalidate()
@@ -114,6 +122,11 @@ func (p *TPlayControl) Prev() {
 			p.OnSelect(p, p.datas[int(p.playingIndex)])
 		}
 	}
+}
+
+func (p *TPlayControl) Stop() {
+	p.playingIndex = -1
+	p.Invalidate()
 }
 
 func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, state TGridDrawState) {

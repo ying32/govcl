@@ -35,10 +35,9 @@ type TForm1Fields struct {
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.SetDoubleBuffered(true)
 	f.EnabledMaximize(false)
-	f.SetColor(0x39302c)
+	//f.SetColor(0x39302c)
 
 	f.bassPlayer = bass.NewBass()
-	f.Timer1.SetEnabled(true)
 	f.playCtl = NewPlayControl(f)
 	f.playCtl.SetParent(f.Panel2)
 	f.playCtl.SetAlign(types.AlClient)
@@ -85,6 +84,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 		f.taskbar1.SetOnThumbButtonClick(f.onTaskbar1ThumbButtonClick)
 		f.taskbar1.SetTabProperties(rtl.Include(0, types.CustomizedPreview))
 
+		f.taskbar1.TaskBarButtons().BeginUpdate()
 		// buttons
 		tbtn := f.taskbar1.TaskBarButtons().Add()
 		tbtn.SetHint("上一曲")
@@ -102,6 +102,8 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 		tbtn = f.taskbar1.TaskBarButtons().Add()
 		tbtn.SetHint("下一曲")
 		f.ImageList1.GetIcon(3, tbtn.Icon())
+
+		f.taskbar1.TaskBarButtons().EndUpdate()
 
 	}
 
@@ -230,9 +232,19 @@ func (f *TForm1) OnBtnPlayClick(sender vcl.IObject) {
 
 func (f *TForm1) OnTimer1Timer(sender vcl.IObject) {
 	if f.bassPlayer.IsValid() && f.bassPlayer.State == bass.PsPlaying {
+
 		f.LblTime.SetCaption(f.bassPlayer.TimeStrLabel())
 		pos, _ := f.bassPlayer.GetPosition()
 		mLen, _ := f.bassPlayer.GetLength()
+
+		if pos >= mLen {
+			if f.playCtl.CanNext() {
+				f.playCtl.Next()
+			} else {
+				f.stopPlay()
+				f.playCtl.Stop()
+			}
+		}
 
 		f.progress.SetPosition(int(float32(pos) / float32(mLen) * 100))
 
@@ -263,8 +275,10 @@ func (f *TForm1) OnBtnCloseClick(sender vcl.IObject) {
 }
 
 func (f *TForm1) stopPlay() {
-	f.bassPlayer.Stop()
 	f.Timer1.SetEnabled(false)
+
+	f.bassPlayer.Stop()
+
 	f.bassPlayer.SetPosition(0)
 	f.progress.SetPosition(0)
 
@@ -272,6 +286,8 @@ func (f *TForm1) stopPlay() {
 	f.BtnPlay.Show()
 
 	f.setTasbarButtonState(true, false)
+
+	f.SetCaption("Mp3Player")
 }
 
 func (f *TForm1) play() {
