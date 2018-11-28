@@ -139,6 +139,6 @@ func LibStringEncoding() types.TStringEncoding {
 }
 
 // // 共8位，2位2位的，如：$01020100 表示 1.2.1.0
-func DLibVersion() uint32 {
+func LibVersion() uint32 {
 	return api.DLibVersion()
 }
