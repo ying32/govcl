@@ -16,6 +16,21 @@ begin
   Result := PChar(AStr);
 end;
 
+// 一些关于库的信息
+type
+  TStringEncoding = (seUnknown, seANSI, seUnicode, seUTF8);
+
+function DLibStringEncoding: TStringEncoding; extdecl;
+begin
+  Result := seUTF8;
+end;
+
+function DLibVersion: Cardinal; extdecl;
+begin
+  // 共8位，2位2位的
+  Result := $01020100;
+end;
+
 // 一些初始
 procedure InitLazarusDef;
 begin
@@ -836,6 +851,10 @@ exports
 
   // SysLocaled
   DSysLocale,
+
+  // 库的信息
+  DLibStringEncoding,
+  DLibVersion,
 
   // TApplication
   Application_Instance,

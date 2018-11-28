@@ -268,3 +268,15 @@ func DGetLibResouceItem(aIndex int32) (ret TLibResouce) {
 func DModifyLibResouce(aPtr uintptr, aValue string) {
 	dModifyLibResouce.Call(aPtr, GoStrToDStr(aValue))
 }
+
+// 库的信息
+// 获取当前库使用的字符串编码
+func DLibStringEncoding() TStringEncoding {
+	r, _, _ := dLibStringEncoding.Call()
+	return TStringEncoding(r)
+}
+
+func DLibVersion() uint32 {
+	r, _, _ := dLibVersion.Call()
+	return uint32(r)
+}

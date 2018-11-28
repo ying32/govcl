@@ -36,6 +36,25 @@ begin
 end;
 
 
+// 一些关于库的信息
+type
+  TStringEncoding = (seUnknown, seANSI, seUnicode, seUTF8);
+
+function DLibStringEncoding: TStringEncoding; stdcall;
+begin
+{$IFDEF UNICODE}
+  Result := seUnicode;
+{$ELSE}
+  Result := seANSI;
+{$ENDIF}
+end;
+
+function DLibVersion: Cardinal; stdcall;
+begin
+  // 共8位，2位2位的
+  Result := $01020100;
+end;
+
 // TApplication
 
 function Application_Instance: TApplication; stdcall;
@@ -881,6 +900,10 @@ exports
 
   // SysLocaled
   DSysLocale,
+
+  // 库的信息
+  DLibStringEncoding,
+  DLibVersion,
 
   // TApplication
   Application_Instance,
