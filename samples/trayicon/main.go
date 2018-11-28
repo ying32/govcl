@@ -47,7 +47,7 @@ func main() {
 	trayicon.SetPopupMenu(pm)
 	// lcl库得手指定
 	if rtl.LcLLoaded() {
-		if runtime.GOOS == "darwin" {
+		if runtime.GOOS != "windows" {
 			icon := vcl.NewIcon()
 			icon.LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "/2.ico")
 			trayicon.SetIcon(icon)
@@ -59,7 +59,7 @@ func main() {
 	trayicon.SetHint(mainForm.Caption())
 	trayicon.SetVisible(true)
 
-	if runtime.GOOS == "windows" {
+	if runtime.GOOS != "darwin" {
 		trayicon.SetOnDblClick(func(vcl.IObject) {
 			// macOS似乎不支持双击
 			trayicon.SetBalloonTitle("test")

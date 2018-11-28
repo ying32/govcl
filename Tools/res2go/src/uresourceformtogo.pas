@@ -185,7 +185,7 @@ begin
 {$IFDEF MSWINDOWS}
   Result := SysLocale.DefaultLCID = 2052;
 {$ELSE}
-  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) <> -1;
+  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) > 0;
 {$ENDIF}
 end;
 
@@ -924,7 +924,6 @@ begin
           LMainDotGo.Delete(I);
       end;
 
-      // 则找Run方法的。
       for I := 0 to LMainDotGo.Count - 1 do
       begin
         // 找初始语句
