@@ -34,29 +34,29 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.JumpList1.SetAutoRefresh(true)
 	f.JumpList1.SetApplicationID("jumplistProject")
 
-	categ := vcl.JumpCategoryItemFromObj(f.JumpList1.CustomCategories().Add())
+	categ := f.JumpList1.CustomCategories().Add2()
 	categ.SetCategoryName("分类1")
 
-	item := vcl.JumpListItemFromObj(categ.Items().Add())
+	item := categ.Items().Add2()
 	item.SetFriendlyName("notepad")
 	item.SetPath("notepad.exe")
 	item.SetArguments("C:\\Windows\\System32\\drivers\\etc\\hosts")
 	item.SetIcon("notepad.exe,0")
 
-	item = vcl.JumpListItemFromObj(categ.Items().Add())
+	item = categ.Items().Add2()
 	item.SetFriendlyName("calc")
 	item.SetPath("calc.exe")
 	item.SetIcon("calc.exe,0")
 
-	task := vcl.JumpListItemFromObj(f.JumpList1.TaskList().Add())
+	task := f.JumpList1.TaskList().Add2()
 	task.SetFriendlyName("task1")
 	task.SetPath("notepad.exe")
 	item.SetIcon("notepad.exe,0")
 
-	task = vcl.JumpListItemFromObj(f.JumpList1.TaskList().Add())
+	task = f.JumpList1.TaskList().Add2()
 	task.SetIsSeparator(true)
 
-	task = vcl.JumpListItemFromObj(f.JumpList1.TaskList().Add())
+	task = f.JumpList1.TaskList().Add2()
 	task.SetFriendlyName("task2")
 	task.SetPath("calc.exe")
 	item.SetIcon("calc.exe,0")
