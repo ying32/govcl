@@ -56,4 +56,6 @@
 | printer | 打印机操作 | |  
 | multilanguage | 多国语言演示例程 | |  
 | miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl,  liblcl macOS,cocoa |  
+| jsonTogo | 将一段json数据转为Go的结构，以方便json.Unmarshal填充 |  |  
+| jsonViewer | 将一段json数据以树的形式显示 |  |  
 
