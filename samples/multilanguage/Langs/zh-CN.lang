@@ -65,7 +65,13 @@
            "MenuItem10.Caption": "菜单项目10",
            "ListView1.Columns[0].Caption": "编号",
            "ListView1.Columns[1].Caption": "姓名",
-           "ListView1.Columns[2].Caption": "地址"
+           "ListView1.Columns[2].Caption": "地址",
+           "ComboBox1.Items[0].": "项目1",
+           "ComboBox1.Items[1].": "项目2",
+           "ComboBox1.Items[2].": "项目3",
+           "ListBox1.Items[0].String": "项目1",
+           "ListBox1.Items[1].String": "项目2",
+           "ListBox1.Items[2].String": "项目3"
 		}
 	}
 }

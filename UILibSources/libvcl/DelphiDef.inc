@@ -52,7 +52,7 @@ end;
 function DLibVersion: Cardinal; stdcall;
 begin
   // 共8位，2位2位的
-  Result := $01020100;
+  Result := $01020200;
 end;
 
 // TApplication
@@ -580,7 +580,14 @@ var
 begin
   LPropInfo := GetPropInfo(Instance, PropName);
   if LPropInfo <> nil then
-    SetStrProp(Instance, LPropInfo, Value);
+  begin
+    case LPropInfo^.PropType^.Kind of
+      tkInteger, tkInt64:
+        SetInt64Prop(Instance, LPropInfo, StrToIntDef(Value, -1));
+      tkChar, tkString, tkWChar, tkLString, tkWString, tkUString:
+        SetStrProp(Instance, LPropInfo, Value);
+    end;
+  end;
 end;
 
 procedure DSetPropertySecValue(Instance: TObject; PropName, SecPropName, Value: PChar); stdcall;
@@ -610,8 +617,16 @@ begin
       begin
         if LPropInfo^.PropType^.Kind = tkClass then
         begin
-          if (LObj is TListColumns) and (LIndex >= 0) and (LIndex < TListColumns(LObj).Count) and string(SecPropName).Equals('Caption') then
-            TListColumns(LObj)[LIndex].Caption := Value;
+          if LObj is TListColumns then
+          begin
+            if (LIndex >= 0) and (LIndex < TListColumns(LObj).Count) and string(SecPropName).Equals('Caption') then
+              TListColumns(LObj)[LIndex].Caption := Value;
+          end else
+          if LObj is TStrings then
+          begin
+            if (LIndex >= 0) and (LIndex < TStrings(LObj).Count) and (string(SecPropName).Equals('String') or string(SecPropName).IsEmpty) then
+              TStrings(LObj)[LIndex] := Value;
+          end;
         end;
       end else
         DSetPropertyValue(LObj, SecPropName, Value);
