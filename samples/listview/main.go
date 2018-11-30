@@ -53,7 +53,12 @@ func main() {
 			fmt.Println(item.Caption(), ", ", item.SubItems().Strings(0))
 		}
 	})
-
+	// 双击删除选中项
+	lv1.SetOnDblClick(func(sender vcl.IObject) {
+		if lv1.ItemIndex() != -1 {
+			lv1.Items().Delete(lv1.ItemIndex())
+		}
+	})
 	lv1.SetOnColumnClick(func(sender vcl.IObject, column *vcl.TListColumn) {
 		// 按柱头索引排序, lcl兼容版第二个参数永远为 column
 		lv1.CustomSort(0, int(column.Index()))
@@ -97,6 +102,12 @@ func main() {
 		if lv2.ItemIndex() != -1 {
 			item := lv2.Selected()
 			fmt.Println(item.Caption(), ", ", item.SubItems().Strings(0))
+		}
+	})
+	// 双击删除选中项
+	lv2.SetOnDblClick(func(sender vcl.IObject) {
+		if lv2.ItemIndex() != -1 {
+			lv2.Items().Delete(lv2.ItemIndex())
 		}
 	})
 	lv2.Items().BeginUpdate()
