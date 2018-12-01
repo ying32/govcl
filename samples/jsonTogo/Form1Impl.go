@@ -49,7 +49,7 @@ func (f *TMainForm) firstUpCase(str string) string {
 	if str[0] >= 'a' && str[0] <= 'z' {
 		return string(str[0]-('a'-'A')) + str[1:]
 	}
-	return ""
+	return str
 }
 
 func (f *TMainForm) jsonToGo(str string) (string, error) {
@@ -62,7 +62,6 @@ func (f *TMainForm) jsonToGo(str string) (string, error) {
 		// 主要是转以结构为准的，也就是起始为 {}
 		buff := bytes.NewBufferString("type ")
 		f.buildCode(buff, data, "Data", "", "")
-		//buff.WriteString("}\r\n")
 		return buff.String(), nil
 	default:
 		return "", errors.New("json起始格式必须为对象。")
@@ -77,6 +76,9 @@ var (
 func (f *TMainForm) buildCode(buff *bytes.Buffer, data interface{}, keyName, jsonKeyName, spaceStr string) {
 
 	if keyName != "" {
+		if keyName[0] >= '0' && keyName[0] <= '9' {
+			keyName = "_" + keyName
+		}
 		buff.WriteString(spaceStr)
 		buff.WriteString(keyName + " ")
 	}
