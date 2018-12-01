@@ -131,3 +131,14 @@ func GetLibResouceItems() []types.TLibResouce {
 func ModifyLibResouce(aPtr uintptr, aValue string) {
 	api.DModifyLibResouce(aPtr, aValue)
 }
+
+// 库的信息
+// 获取当前库使用的字符串编码
+func LibStringEncoding() types.TStringEncoding {
+	return api.DLibStringEncoding()
+}
+
+// // 共8位，2位2位的，如：$01020100 表示 1.2.1.0
+func LibVersion() uint32 {
+	return api.DLibVersion()
+}

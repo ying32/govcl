@@ -20,6 +20,7 @@
   -encrypt    使用加密格式的*.gfm文件，默认为false。
   -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节，默认为true。 
   -origfn     生成的.go文件使用原始的delphi/lazarus单元名，默认为false。  
+  -pause      结束后根据选项暂停，比如： -pause "ew"，表示有错或者警告，可选为“e”,“w”,“a” e=错误，w=警告，a=忽略其它选项，总是显示。
   -h -help    显示帮助。
   -v -version 显示版本号。
 ```
@@ -36,7 +37,7 @@
 Title              菜单栏显示的名字  
 Program            res2go程序全文件名（含路径）  
 Working directory  工作目录，可不填  
-Parameters         命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)/gocode"    
+Parameters         命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)/gocode" -pause "ew"   
 ```
 
 * Lazarus IDE  
@@ -46,7 +47,7 @@ Parameters         命令行参数（填这句，运行后会在当前工程目�
 ```
 Title              菜单栏显示的名字   
 Program Filename   res2go程序全文件名（含路径）   
-Parameters 命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$Path($ProjFile())" -outpath "$Path($ProjFile())/gocode"     
+Parameters 命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$Path($ProjFile())" -outpath "$Path($ProjFile())/gocode" -pause "ew"     
 Working directory  工作目录，可不填   
 
 Lazarus 还可以额外填写快捷键，在Key分组里面设置。  

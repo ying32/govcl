@@ -60,7 +60,15 @@ func main() {
 			fmt.Println("Text:", node.Text(), ", Level:", node.Level(), ", Index:", node.Index(), ", hasChild:", node.HasChildren())
 		}
 	})
-
+	// 双击删除
+	tv.SetOnDblClick(func(sender vcl.IObject) {
+		sel := tv.Selected()
+		if sel.IsValid() {
+			sel.Delete()
+		}
+		// 或者
+		//tv.Items().Delete(sel)
+	})
 	tv.SetOnMouseDown(func(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 		if button == types.MbRight {
 			node := tv.GetNodeAt(x, y)

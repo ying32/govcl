@@ -2006,3 +2006,12 @@ const (
 	RsInterActive
 	RsComplete
 )
+
+type TStringEncoding int32
+
+const (
+	SeUnknown = iota + 0
+	SeANSI
+	SeUnicode
+	SeUTF8
+)

@@ -64,7 +64,13 @@
 			"MenuItem10.Caption": "MenuItem10",
             "ListView1.Columns[0].Caption": "Id",
             "ListView1.Columns[1].Caption": "Name",
-            "ListView1.Columns[2].Caption": "Address"
+            "ListView1.Columns[2].Caption": "Address",
+            "ComboBox1.Items[0].": "Item 1",
+            "ComboBox1.Items[1].": "Item 2",
+            "ComboBox1.Items[2].": "Item 3",
+            "ListBox1.Items[0].String": "Item 1",
+            "ListBox1.Items[1].String": "Item 2",
+            "ListBox1.Items[2].String": "Item 3"
 		}
 	}
 }

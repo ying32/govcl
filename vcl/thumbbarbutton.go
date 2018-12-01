@@ -181,6 +181,16 @@ func (t *TThumbBarButton) SetAction(value IComponent) {
     ThumbBarButton_SetAction(t.instance, CheckPtr(value))
 }
 
+// ButtonState
+func (t *TThumbBarButton) ButtonState() TThumbButtonStates {
+    return ThumbBarButton_GetButtonState(t.instance)
+}
+
+// SetButtonState
+func (t *TThumbBarButton) SetButtonState(value TThumbButtonStates) {
+    ThumbBarButton_SetButtonState(t.instance, value)
+}
+
 // Hint
 // CN: 获取组件鼠标悬停提示。
 // EN: Get component mouse hints.

@@ -15,6 +15,10 @@ var (
 	testMessage2 = "你确定么？"
 )
 
+//::private::
+type TForm1Fields struct {
+}
+
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	multilang.InitComponentLang(f)
 

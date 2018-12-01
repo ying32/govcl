@@ -3,6 +3,7 @@
 
 | 项目名(Project) | 说明(Description) | 平台限制(Platform limit) |
 | :------ | :------ | ---- | 
+| govcl | 开发govcl时的总测试例程，包含很多功能的演示 | |  
 | action | "动作"组件演示，演示action的公用使用 | |
 | basic | 基础窗口 | |
 | basicResForm | 演示设计器输出的UI | |
@@ -56,4 +57,6 @@
 | printer | 打印机操作 | |  
 | multilanguage | 多国语言演示例程 | |  
 | miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl,  liblcl macOS,cocoa |  
+| jsonTogo | 将一段json数据转为Go的结构，以方便json.Unmarshal填充 |  |  
+| jsonViewer | 将一段json数据以树的形式显示 |  |  
 

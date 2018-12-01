@@ -94,7 +94,7 @@ func IsAdministrator() bool {
 	return true
 }
 
-// OpenInExplorer
+// OpenInExplorer 在资源管理器中定位文件
 func OpenInExplorer(aFileName string) {
 	ShellExecute(0, "OPEN", "Explorer.exe",
 		fmt.Sprintf("/e, /select, \"%s\"", aFileName), "", SW_SHOW)
@@ -127,7 +127,7 @@ func GoBool(b uintptr) bool {
 	return false
 }
 
-// UTF8ToANSI
+// UTF8ToANSI 将UTF-8字符转为ANSI格式
 func UTF8ToANSI(str string) []uint8 {
 	if str == "" {
 		return nil
@@ -146,7 +146,7 @@ func UTF8ToANSI(str string) []uint8 {
 	return aCharBuffer
 }
 
-// GetDesktopPath
+// GetDesktopPath 获取桌面路径
 func GetDesktopPath() string {
 	var lpPath string
 	if SHGetSpecialFolderPath(0, &lpPath, CSIDL_DESKTOP, false) {
@@ -155,7 +155,7 @@ func GetDesktopPath() string {
 	return ""
 }
 
-// ResouceToBytes
+// ResouceToBytes 查找指定实例中 指定名称、指定类型 资源，并返回资源字节
 func ResouceToBytes(instance uintptr, resName string, resType uintptr) ([]byte, bool) {
 	resInfo := FindResource(HMODULE(instance), resName, resType)
 	if resInfo == 0 {

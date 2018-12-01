@@ -75,6 +75,16 @@ begin
   AObj.Action := AValue;
 end;
 
+function ThumbBarButton_GetButtonState(AObj: TThumbBarButton): TThumbButtonStates; stdcall;
+begin
+  Result :=  AObj.ButtonState;
+end;
+
+procedure ThumbBarButton_SetButtonState(AObj: TThumbBarButton; AValue: TThumbButtonStates); stdcall;
+begin
+  AObj.ButtonState := AValue;
+end;
+
 function ThumbBarButton_GetHint(AObj: TThumbBarButton): PChar; stdcall;
 begin
   Result :=  PChar(AObj.Hint);
@@ -135,6 +145,8 @@ exports
   ThumbBarButton_ToString,
   ThumbBarButton_GetAction,
   ThumbBarButton_SetAction,
+  ThumbBarButton_GetButtonState,
+  ThumbBarButton_SetButtonState,
   ThumbBarButton_GetHint,
   ThumbBarButton_SetHint,
   ThumbBarButton_GetIcon,

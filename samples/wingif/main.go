@@ -1,11 +1,11 @@
-// +build windows
-
 package main
 
 import (
-	"github.com/ying32/govcl/vcl"
+	"runtime"
 
+	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
+
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -26,7 +26,11 @@ func main() {
 	img.SetParent(mainForm)
 	img.SetBounds(20, 20, 60, 60)
 	img.Picture().LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "test.gif")
-	vcl.GIFImageFromObj(img.Picture().Graphic()).SetAnimate(true)
+	// 动画只支持Windows下的libvcl
+	if runtime.GOOS == "windows" && !rtl.LcLLoaded() {
+		vcl.GIFImageFromObj(img.Picture().Graphic()).SetAnimate(true)
+
+	}
 
 	vcl.Application.Run()
 }

@@ -23,7 +23,14 @@
 * 四态图像按钮(image button)  
 ![图像按钮](imagebutton.jpg)   
 * 从资源中加载窗口(resouce form)   
-![basicResForm_Windows](basicResForm_windows_vcl.jpg) 
+![basicResForm_Windows](basicResForm_windows_vcl.jpg)  
+* libvcl MiniWebview   
+![miniweb_libvcl_win](miniweb_libvcl_win.jpg) 
+* liblcl MiniWebview 
+![miniweb_liblcl_win](miniweb_liblcl_win.jpg) 
+* 基于bass的mp3Player
+![mp3Player_win](mp3Player_win.jpg) 
+
 ---
 ## Linux
 ### Ubuntu 16.04 
@@ -40,6 +47,8 @@
 ![截图5](5_linux.jpg)  
 * 四态图像按钮  
 ![截图6](6_linux.jpg)  
+* 基于bass的mp3Player Linux Mint
+![mp3Player_linux](mp3Player_linux.jpg) 
 
 * Deepin  
 ![basicResForm_Deepin](basicResForm_linux_deepin.jpg)  
@@ -55,16 +64,20 @@
 ## MacOS
 
 * test1  
-<img src="1_macOS.jpg" width="602" height="424" /> 
+![1_macOS](1_macOS.jpg)  
 * test2   
-<img src="2_macOS.jpg" width="602" height="424" /> 
+![2_macOS](2_macOS.jpg)  
 * 自绘   
-<img src="3_macOS.jpg" width="400" height="621" /> 
+![3_macOS](3_macOS.jpg)   
 * 复选列表框    
-<img src="4_macOS.jpg" width="324" height="263" /> 
+![4_macOS](4_macOS.jpg)  
 * 标准控件   
-<img src="5_macOS.jpg" width="501" height="725" />   
+![5_macOS](5_macOS.jpg)  
 * 四态图像按钮  
-<img src="6_macOS.jpg" width="306" height="422" />   
+![6_macOS](6_macOS.jpg)  
 * 资源窗口    
-<img src="basicResForm_macos.jpg" width="987" height="620" />  
+![basicResForm_macos](basicResForm_macos.jpg)  
+* liblcl MiniWebview cocoa接口
+![miniweb_liblcl_win](miniweb_liblcl_macOS_cocoa.jpg) 
+* 基于bass的mp3Player  
+![mp3Player_liblcl_macOS](mp3Player_liblcl_macOS.jpg) 

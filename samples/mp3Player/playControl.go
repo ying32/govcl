@@ -6,6 +6,7 @@ import (
 	. "github.com/ying32/govcl/vcl"
 	. "github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/types/colors"
 )
 
 type TPlayListItem struct {
@@ -24,8 +25,11 @@ type TPlayControl struct {
 	mouseMoveColor TColor
 	mouseMoveIndex int32
 	playingIndex   int32
-	singerPicR     TRect
-	singerPic      *TBitmap
+
+	// 导出，测试用
+	SingerPic *TBitmap
+
+	OnSelect func(sender IObject, item TPlayListItem)
 }
 
 func NewPlayControl(owner IComponent) *TPlayControl {
@@ -39,7 +43,7 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 	} else {
 		m.TDrawGrid.SetOptions(Include(0, GoRangeSelect, GoRowSelect))
 	}
-	m.TDrawGrid.SetRowCount(1)
+	m.TDrawGrid.SetRowCount(0)
 	m.TDrawGrid.SetColCount(4)
 	m.TDrawGrid.SetFixedRows(0)
 	m.TDrawGrid.SetFixedCols(0)
@@ -52,17 +56,22 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 
 	m.TDrawGrid.SetDrawingStyle(GdsThemed)
 	// 加载时取消第一行永远被选中
-	m.TDrawGrid.SetSelection(TGridRect{24, 24, 24, 24})
+	m.TDrawGrid.SetSelection(TGridRect{-24, -24, -24, -24})
 
-	m.TDrawGrid.SetColWidths(0, int32(float32(m.Width())*0.1))
-	m.TDrawGrid.SetColWidths(1, int32(float32(m.Width())*0.4))
-	m.TDrawGrid.SetColWidths(2, int32(float32(m.Width())*0.2))
-	m.TDrawGrid.SetColWidths(3, int32(float32(m.Width())*0.2))
+	m.TDrawGrid.SetColWidths(0, 60)
+	if LcLLoaded() {
+		m.TDrawGrid.SetColWidths(1, 215)
+	} else {
+		m.TDrawGrid.SetColWidths(1, 230)
+	}
 
-	m.TDrawGrid.SetColor(0x00EDEEF9)
+	m.TDrawGrid.SetColWidths(2, 100)
+	m.TDrawGrid.SetColWidths(3, 80)
+
+	//m.TDrawGrid.SetColor(0x39302c) //0x00EDEEF9)
 	m.TDrawGrid.SetDoubleBuffered(true)
 
-	m.focusedColor = 0x00C8CBEB
+	m.focusedColor = colors.ClMoneyGreen //0x20302c //0x00C8CBEB
 	m.playColor = m.focusedColor + 12
 	m.mouseMoveColor = m.focusedColor - 12
 
@@ -85,7 +94,43 @@ func (p *TPlayControl) Add(item TPlayListItem) int32 {
 	return int32(len(p.datas)) - 1
 }
 
+func (p *TPlayControl) CanNext() bool {
+	return int(p.playingIndex) < len(p.datas)-1
+}
+
+func (p *TPlayControl) Next() {
+	if p.CanNext() {
+		p.playingIndex++
+		p.SetRow(p.playingIndex)
+		p.Invalidate()
+		if p.OnSelect != nil {
+			p.OnSelect(p, p.datas[int(p.playingIndex)])
+		}
+	}
+}
+
+func (p *TPlayControl) CanPrev() bool {
+	return int(p.playingIndex) > 0
+}
+
+func (p *TPlayControl) Prev() {
+	if p.CanPrev() {
+		p.playingIndex--
+		p.SetRow(p.playingIndex)
+		p.Invalidate()
+		if p.OnSelect != nil {
+			p.OnSelect(p, p.datas[int(p.playingIndex)])
+		}
+	}
+}
+
+func (p *TPlayControl) Stop() {
+	p.playingIndex = -1
+	p.Invalidate()
+}
+
 func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, state TGridDrawState) {
+
 	if len(p.datas) > 0 {
 		canvas := p.Canvas()
 		if aRow < int32(len(p.datas)) {
@@ -108,17 +153,19 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 			} else {
 				p.SetRowHeights(aRow, 24)
 			}
+
 			canvas.FillRect(rect)
+
 			r := p.CellRect(aCol, aRow)
 			switch aCol {
 			case 0:
 
 				if aRow == p.playingIndex {
-					if !p.singerPicR.IsEmpty() {
+					if !p.SingerPic.Empty() {
 						r.Left += 1
 						r.Top += +1
 						r.Bottom -= -1
-						//canvas.StretchDraw(r, FSingerPic);
+						canvas.StretchDraw(r, p.SingerPic)
 					}
 				} else {
 					r.Inflate(-10, 0)
@@ -129,14 +176,14 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 			case 1:
 				if aRow == p.playingIndex {
 					r.Inflate(-10, 0)
-					canvas.Font().SetSize(12)
+					canvas.Font().SetSize(11)
 					canvas.Font().SetStyle(Include(0, FsBold))
 					canvas.TextRect3(&r, item.Caption, drawFlags)
 				} else {
 					r.Inflate(-5, 0)
 					canvas.TextRect3(&r, item.Caption, drawFlags)
 				}
-				canvas.Font().SetSize(9)
+				canvas.Font().SetSize(8)
 				canvas.Font().SetStyle(0)
 			case 2:
 				r.Inflate(-5, 0)
@@ -180,6 +227,9 @@ func (p *TPlayControl) onDblClick(sender IObject) {
 	}
 	p.playingIndex = row
 	p.Invalidate()
+	if p.OnSelect != nil {
+		p.OnSelect(p, p.datas[row])
+	}
 }
 
 func (p *TPlayControl) onMouseEnter(sender IObject) {

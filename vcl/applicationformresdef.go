@@ -41,16 +41,22 @@ import (
 func (a *TApplication) setFiledVal(name string, instance uintptr, v reflect.Value) {
 	field := v.FieldByName(name)
 	if field.IsValid() && field.CanSet() {
-		// 获取这个字段的类型  field.Type() 为指针类弄，后面再使用Elem()后返回的为非指针类型的
+		// 获取这个字段的类型  field.Type() 为指针类，后面再使用Elem()后返回的为非指针类型的
 		fv := reflect.New(field.Type().Elem())
 		// 这里用循环去找 instance实例是因为防止以后加字段用，一般情况索引为1，先不使用循环吧。
 		//for j := 0; j < fv.Elem().Type().NumField(); j++ {
 		//	if fv.Elem().Type().Field(j).Name == "instance" {
 		// 因为反射不能设置未导出的，所以直接使用指针来设置
+		setVal := func(idx int, value uintptr) {
+			*(*uintptr)(unsafe.Pointer(fv.Elem().Field(idx).UnsafeAddr())) = value
+		}
+		// idx = 0 = TForm
+		setVal(1, instance) // idx = 1 = instance
+		setVal(2, instance) // idx = 2 = ptr
 		// instance ord = 1
-		*(*uintptr)(unsafe.Pointer(fv.Elem().Field(1).UnsafeAddr())) = instance
+		//*(*uintptr)(unsafe.Pointer(fv.Elem().Field(1).UnsafeAddr())) = instance
 		// ptr ord = 2
-		*(*uintptr)(unsafe.Pointer(fv.Elem().Field(2).UnsafeAddr())) = instance
+		//*(*uintptr)(unsafe.Pointer(fv.Elem().Field(2).UnsafeAddr())) = instance
 
 		//		break
 		//	}

@@ -242,6 +242,10 @@ func RegsiterVarString(name string, value *string) {
 }
 
 func initLoadLocalLangsInfo() {
+	_, err := os.Stat(langsPath)
+	if os.IsNotExist(err) {
+		return
+	}
 	filepath.Walk(langsPath, func(path string, info os.FileInfo, err error) error {
 		if strings.ToLower(filepath.Ext(info.Name())) == ".lang" {
 			bs, err := ioutil.ReadFile(path)
