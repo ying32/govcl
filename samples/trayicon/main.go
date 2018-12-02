@@ -37,8 +37,18 @@ func main() {
 	})
 
 	pm := vcl.NewPopupMenu(mainForm)
-
 	item := vcl.NewMenuItem(mainForm)
+	item.SetCaption("显示(&S)")
+	item.SetOnClick(func(vcl.IObject) {
+		mainForm.Show()
+		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
+		// 这两个也可以看看
+		//		vcl.Application.Restore()
+		//		vcl.Application.RestoreTopMosts()
+	})
+	pm.Items().Add(item)
+
+	item = vcl.NewMenuItem(mainForm)
 	item.SetCaption("退出(&E)")
 	item.SetOnClick(func(vcl.IObject) {
 		mainForm.Close()
@@ -59,6 +69,12 @@ func main() {
 	trayicon.SetHint(mainForm.Caption())
 	trayicon.SetVisible(true)
 
+	// 捕捉最小化
+	vcl.Application.SetOnMinimize(func(sender vcl.IObject) {
+		mainForm.Hide() // 主窗口最小化掉
+	})
+
+	// 这里写啥好呢，macOS下似乎这些事件跟PopupMenu有冲突
 	if runtime.GOOS != "darwin" {
 		trayicon.SetOnDblClick(func(vcl.IObject) {
 			// macOS似乎不支持双击
