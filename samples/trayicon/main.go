@@ -21,6 +21,11 @@ func main() {
 	mainForm.SetCaption("Hello")
 	mainForm.SetPosition(types.PoScreenCenter)
 
+	mMenu := vcl.NewMainMenu(mainForm)
+	mmItem := vcl.NewMenuItem(mainForm)
+	mmItem.SetCaption("File")
+	mMenu.Items().Add(mmItem)
+
 	trayicon := vcl.NewTrayIcon(mainForm)
 
 	btn := vcl.NewButton(mainForm)
@@ -42,6 +47,7 @@ func main() {
 	item.SetOnClick(func(vcl.IObject) {
 		mainForm.Show()
 		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
+		// 比如：win.SetForegroundWindow(mainForm.Handle())
 		// 这两个也可以看看
 		//		vcl.Application.Restore()
 		//		vcl.Application.RestoreTopMosts()
@@ -51,7 +57,10 @@ func main() {
 	item = vcl.NewMenuItem(mainForm)
 	item.SetCaption("退出(&E)")
 	item.SetOnClick(func(vcl.IObject) {
+		// 主窗口关闭
 		mainForm.Close()
+		// 或者使用
+		//		vcl.Application.Terminate()
 	})
 	pm.Items().Add(item)
 	trayicon.SetPopupMenu(pm)
@@ -71,7 +80,8 @@ func main() {
 
 	// 捕捉最小化
 	vcl.Application.SetOnMinimize(func(sender vcl.IObject) {
-		mainForm.Hide() // 主窗口最小化掉
+		//vcl.Application.Minimize() // 这个也可以试试，恢恢复时配合vcl.Application.Restore
+		mainForm.Hide() // 主窗口最隐藏掉
 	})
 
 	// 这里写啥好呢，macOS下似乎这些事件跟PopupMenu有冲突
