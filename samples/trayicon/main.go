@@ -13,7 +13,7 @@ import (
 
 func main() {
 	tools.RunWithMacOSApp()
-	vcl.Application.SetIconResId(3)
+
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 
@@ -48,9 +48,6 @@ func main() {
 		mainForm.Show()
 		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
 		// 比如：win.SetForegroundWindow(mainForm.Handle())
-		// 这两个也可以看看
-		//		vcl.Application.Restore()
-		//		vcl.Application.RestoreTopMosts()
 	})
 	pm.Items().Add(item)
 
@@ -64,13 +61,19 @@ func main() {
 	})
 	pm.Items().Add(item)
 	trayicon.SetPopupMenu(pm)
-	// lcl库得手指定
+	// lcl库得手指定，在windows下，如果实例资源中存在一个名为 MAINICON 的图标资源，则会自动加载，下面只是应对于linux与macOS下
 	if rtl.LcLLoaded() {
 		if runtime.GOOS != "windows" {
-			icon := vcl.NewIcon()
-			icon.LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "/2.ico")
-			trayicon.SetIcon(icon)
-			icon.Free()
+			// 这是使用文件加载方法，不考虑外部文件的话，可以用新的内存方法加载
+			//icon := vcl.NewIcon()
+			//icon.LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "/2.ico")
+			//trayicon.SetIcon(icon)
+			//icon.Free()
+			// 将图标应用到Application中的Icon中，到时候随时可以使用
+			// 但也可不使用
+			//loadMainIconFromStream(vcl.Application.Icon())
+			loadMainIconFromStream(trayicon.Icon())
+
 		} else {
 			trayicon.SetIcon(vcl.Application.Icon())
 		}
@@ -80,7 +83,6 @@ func main() {
 
 	// 捕捉最小化
 	vcl.Application.SetOnMinimize(func(sender vcl.IObject) {
-		//vcl.Application.Minimize() // 这个也可以试试，恢恢复时配合vcl.Application.Restore
 		mainForm.Hide() // 主窗口最隐藏掉
 	})
 
@@ -96,4 +98,14 @@ func main() {
 		})
 	}
 	vcl.Application.Run()
+}
+
+// 主要是用于linux跟macOS下，因为不能像Windows一样直接内置到资源中
+func loadMainIconFromStream(outIcon *vcl.TIcon) {
+	if outIcon.IsValid() {
+		mem := vcl.NewMemoryStreamFromBytes(mainIconBytes)
+		defer mem.Free() // 不要在阻塞的时候使用defer不然会一直到阻塞结束才释放，这里使用是因为这个函数结束了就释放了
+		mem.SetPosition(0)
+		outIcon.LoadFromStream(mem)
+	}
 }
