@@ -573,11 +573,17 @@ begin
     else
     begin
       LVarName := LFormName + 'Bytes';
+
+      // 包名不为main时，起始不变为小写。
+      if uGoPkgName = 'main' then
+      begin
     {$IFDEF FPC}
       LVarName[1] := LowerCase(LVarName[1]);
     {$ELSE}
       LVarName[1] := LowerCase(LVarName[1])[1];
     {$ENDIF}
+      end;
+
       if SysIsZhCN then
         WLine('// 以字节形式加载')
       else
@@ -906,11 +912,15 @@ begin
         LP := S.IndexOf(',');
         LFormName := Trim(S.Substring(LP + 1, S.IndexOf(')') - LP - 1));
         LVarName := LFormName + 'Bytes';
+        // 包名不为main时，起始不变为小写。
+        if uGoPkgName = 'main' then
+        begin
         {$IFDEF FPC}
           LVarName[1] := LowerCase(LVarName[1]);
         {$ELSE}
           LVarName[1] := LowerCase(LVarName[1])[1];
         {$ENDIF}
+        end;
         SetLength(LForms, Length(LForms) + 1);
         LForms[High(LForms)] := Format('    vcl.Application.CreateForm(%s, &%s)', [LPkg+LVarName, LPkg+LFormName]);
         // main.go文件不存在则直接添加
