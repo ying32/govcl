@@ -20,6 +20,7 @@ usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outre
   -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters, the default is false. 
   -origfn     The generated .go file uses the original delphi/lazarus unit name, the default is false.
   -pause      After the end, pause according to the option, for example: -pause "ew", indicating that there is a fault or warning, you can choose "e", "w", "a" e=error, w=warning, a=ignore other options, always display.
+  -pkgname    Specifies the name of the generated go file package. The default is main.
   -h -help    Show help.
   -v -version Show Version.
 ```
