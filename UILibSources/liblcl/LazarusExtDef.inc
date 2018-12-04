@@ -369,4 +369,18 @@ end;
 //  Result := 0;
 //end;
 
+// --------------- TApplication ------------------
+type
+
+  { TApplicationHelper }
+
+  TApplicationHelper = class helper for TApplication
+  public
+    procedure RestoreTopMosts;
+  end;
+
+procedure TApplicationHelper.RestoreTopMosts;
+begin
+  Self.RestoreStayOnTop(False);
+end;
 
