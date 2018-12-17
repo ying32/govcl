@@ -21,7 +21,7 @@
 **If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.**   
 
 
-Librarys binaries  
+Pre-compiled GUI library binary download     
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.2/Librarys-1.2.2.zip)  
 **Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.md).**  
 
