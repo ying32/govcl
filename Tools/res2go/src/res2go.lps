@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="10"/>
-    <BuildModes Count="1" Active="win32Dev">
+    <BuildModes Count="1" Active="macOS">
       <Item1 Name="macOS">
         <CompilerOptions>
           <Version Value="11"/>
@@ -67,8 +67,8 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="915"/>
-        <CursorPos X="25" Y="949"/>
+        <TopLine Value="1102"/>
+        <CursorPos X="92" Y="1120"/>
         <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -363,7 +363,7 @@
         <UsageCount Value="10"/>
       </Unit45>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="520" Column="25" TopLine="502"/>
@@ -454,36 +454,32 @@
       </Position22>
       <Position23>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="13" TopLine="91"/>
+        <Caret Line="867" Column="5" TopLine="845"/>
       </Position23>
       <Position24>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="867" Column="5" TopLine="845"/>
+        <Caret Line="929" Column="34" TopLine="881"/>
       </Position24>
       <Position25>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="929" Column="34" TopLine="881"/>
+        <Caret Line="934" Column="39" TopLine="909"/>
       </Position25>
       <Position26>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="934" Column="39" TopLine="909"/>
+        <Caret Line="931" Column="18" TopLine="914"/>
       </Position26>
       <Position27>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="931" Column="18" TopLine="914"/>
+        <Caret Line="938" Column="19" TopLine="914"/>
       </Position27>
       <Position28>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="938" Column="19" TopLine="914"/>
+        <Caret Line="948" Column="35" TopLine="922"/>
       </Position28>
       <Position29>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="948" Column="35" TopLine="922"/>
-      </Position29>
-      <Position30>
-        <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="949" Column="25" TopLine="924"/>
-      </Position30>
+      </Position29>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

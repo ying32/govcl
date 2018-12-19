@@ -13,13 +13,18 @@ import (
 
 func main() {
 	tools.RunWithMacOSApp()
-	vcl.Application.SetIconResId(3)
+
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 
 	mainForm := vcl.Application.CreateForm()
 	mainForm.SetCaption("Hello")
 	mainForm.SetPosition(types.PoScreenCenter)
+
+	mMenu := vcl.NewMainMenu(mainForm)
+	mmItem := vcl.NewMenuItem(mainForm)
+	mmItem.SetCaption("File")
+	mMenu.Items().Add(mmItem)
 
 	trayicon := vcl.NewTrayIcon(mainForm)
 
@@ -37,21 +42,38 @@ func main() {
 	})
 
 	pm := vcl.NewPopupMenu(mainForm)
-
 	item := vcl.NewMenuItem(mainForm)
+	item.SetCaption("显示(&S)")
+	item.SetOnClick(func(vcl.IObject) {
+		mainForm.Show()
+		// Windows上为了最前面显示，有时候要调用SetForegroundWindow
+		// 比如：win.SetForegroundWindow(mainForm.Handle())
+	})
+	pm.Items().Add(item)
+
+	item = vcl.NewMenuItem(mainForm)
 	item.SetCaption("退出(&E)")
 	item.SetOnClick(func(vcl.IObject) {
+		// 主窗口关闭
 		mainForm.Close()
+		// 或者使用
+		//		vcl.Application.Terminate()
 	})
 	pm.Items().Add(item)
 	trayicon.SetPopupMenu(pm)
-	// lcl库得手指定
+	// lcl库得手指定，在windows下，如果实例资源中存在一个名为 MAINICON 的图标资源，则会自动加载，下面只是应对于linux与macOS下
 	if rtl.LcLLoaded() {
 		if runtime.GOOS != "windows" {
-			icon := vcl.NewIcon()
-			icon.LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "/2.ico")
-			trayicon.SetIcon(icon)
-			icon.Free()
+			// 这是使用文件加载方法，不考虑外部文件的话，可以用新的内存方法加载
+			//icon := vcl.NewIcon()
+			//icon.LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "/2.ico")
+			//trayicon.SetIcon(icon)
+			//icon.Free()
+			// 将图标应用到Application中的Icon中，到时候随时可以使用
+			// 但也可不使用
+			//loadMainIconFromStream(vcl.Application.Icon())
+			loadMainIconFromStream(trayicon.Icon())
+
 		} else {
 			trayicon.SetIcon(vcl.Application.Icon())
 		}
@@ -59,6 +81,12 @@ func main() {
 	trayicon.SetHint(mainForm.Caption())
 	trayicon.SetVisible(true)
 
+	// 捕捉最小化
+	vcl.Application.SetOnMinimize(func(sender vcl.IObject) {
+		mainForm.Hide() // 主窗口最隐藏掉
+	})
+
+	// 这里写啥好呢，macOS下似乎这些事件跟PopupMenu有冲突
 	if runtime.GOOS != "darwin" {
 		trayicon.SetOnDblClick(func(vcl.IObject) {
 			// macOS似乎不支持双击
@@ -70,4 +98,14 @@ func main() {
 		})
 	}
 	vcl.Application.Run()
+}
+
+// 主要是用于linux跟macOS下，因为不能像Windows一样直接内置到资源中
+func loadMainIconFromStream(outIcon *vcl.TIcon) {
+	if outIcon.IsValid() {
+		mem := vcl.NewMemoryStreamFromBytes(mainIconBytes)
+		defer mem.Free() // 不要在阻塞的时候使用defer不然会一直到阻塞结束才释放，这里使用是因为这个函数结束了就释放了
+		mem.SetPosition(0)
+		outIcon.LoadFromStream(mem)
+	}
 }

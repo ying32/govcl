@@ -21,6 +21,7 @@
   -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节，默认为true。 
   -origfn     生成的.go文件使用原始的delphi/lazarus单元名，默认为false。  
   -pause      结束后根据选项暂停，比如： -pause "ew"，表示有错或者警告，可选为“e”,“w”,“a” e=错误，w=警告，a=忽略其它选项，总是显示。
+  -pkgname    指定生成的go文件包名，默认为main。
   -h -help    显示帮助。
   -v -version 显示版本号。
 ```

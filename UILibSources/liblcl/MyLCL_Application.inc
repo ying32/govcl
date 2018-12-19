@@ -65,6 +65,11 @@ begin
   AObj.Restore;
 end;
 
+procedure Application_RestoreTopMosts(AObj: TApplication); extdecl;
+begin
+  AObj.RestoreTopMosts;
+end;
+
 procedure Application_Terminate(AObj: TApplication); extdecl;
 begin
   AObj.Terminate;
@@ -370,6 +375,7 @@ exports
   Application_ModalFinished,
   Application_ProcessMessages,
   Application_Restore,
+  Application_RestoreTopMosts,
   Application_Terminate,
   Application_MessageBox,
   Application_FindComponent,

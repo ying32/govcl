@@ -22,7 +22,7 @@
 **如果你想要支持linux arm及linux 32bit则需要自己编译对应的liblcl二进制。**   
 
 
-GUI库二进制下载：   
+预编译GUI库二进制下载：     
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.2/Librarys-1.2.2.zip)  
 **注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.zh-CN.md)中的说明。**  
 

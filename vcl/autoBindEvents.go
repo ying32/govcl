@@ -130,7 +130,7 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 					continue
 				}
 				if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
-					findAndSetEvent(vCtl, item.Type, item.Method)
+					findAndSetEvent(vCtl, field.Name, item.Type, item.Method)
 				}
 			}
 		}
@@ -178,7 +178,7 @@ func callEvent(event reflect.Value, params []reflect.Value) {
 }
 
 // findAndSetEvent 公用的call SetOnXXXX方法
-func findAndSetEvent(v reflect.Value, eventType string, method reflect.Value) {
+func findAndSetEvent(v reflect.Value, name, eventType string, method reflect.Value) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("findAndSetEvent error: ", err, ", eventType:", eventType)
@@ -186,6 +186,8 @@ func findAndSetEvent(v reflect.Value, eventType string, method reflect.Value) {
 	}()
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
 		event.Call([]reflect.Value{method})
+	} else {
+		fmt.Printf("\"%s\" does not support the \"%s\" event.\n", name, eventType)
 	}
 }
 
@@ -204,15 +206,15 @@ func findAndSetComponentName(v reflect.Value, name string) {
 // addComponentNotifyEvent
 func addComponentNotifyEvent(vForm reflect.Value, compName string, method reflect.Value, eventType string) {
 	if vCtl := vForm.Elem().FieldByName(compName); vCtl.IsValid() {
-		findAndSetEvent(vCtl, eventType, method)
+		findAndSetEvent(vCtl, compName, eventType, method)
 	}
 }
 
 // addApplicationNotifyEvent
-// 添加Application的关联事件，在一个程序内，application只的事件只有最后一次设置的才会生效。
+// 添加Application的关联事件，在一个程序内，application中的事件只有最后一次设置的才会生效。
 // 因为Application是单例存在，推荐在主窗口内处理就行了。
 func addApplicationNotifyEvent(eventType string, method reflect.Value) {
 	if app := reflect.ValueOf(Application); app.IsValid() {
-		findAndSetEvent(app, eventType, method)
+		findAndSetEvent(app, "Application", eventType, method)
 	}
 }
