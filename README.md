@@ -15,7 +15,7 @@
 [![Screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 [![Update log](https://img.shields.io/badge/Update%20log-view-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))  
 
-![Support Platform](https://img.shields.io/badge/Platform-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
+![Support Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
 **Note: linux and macOS only part of the components, properties, events and methods are valid.**  
 
 **If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.**   
