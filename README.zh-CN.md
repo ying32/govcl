@@ -16,7 +16,7 @@
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)
 [![Update log](https://img.shields.io/badge/更新日志-查看-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))  
 
-![Support Platform](https://img.shields.io/badge/支持的平台-win--32%20%7C%20win--64%20%7C%20linux--64%20%7C%20osx--32-green.svg)  
+![Support Platform](https://img.shields.io/badge/支持的平台-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
 **注: linux和macOS由于底层使用了lcl库，则部分组件、属性和方法无效。**
 
 **如果你想要支持linux arm及linux 32bit则需要自己编译对应的liblcl二进制。**   
