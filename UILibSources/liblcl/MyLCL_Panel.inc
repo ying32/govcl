@@ -445,6 +445,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function Panel_GetParentDoubleBuffered(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure Panel_SetParentDoubleBuffered(AObj: TPanel; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function Panel_GetParentFont(AObj: TPanel): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -651,6 +661,11 @@ end;
 function Panel_GetDockClientCount(AObj: TPanel): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
+end;
+
+function Panel_GetMouseInClient(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function Panel_GetVisibleDockClientCount(AObj: TPanel): Integer; extdecl;
@@ -977,6 +992,8 @@ exports
   Panel_SetFont,
   Panel_GetParentColor,
   Panel_SetParentColor,
+  Panel_GetParentDoubleBuffered,
+  Panel_SetParentDoubleBuffered,
   Panel_GetParentFont,
   Panel_SetParentFont,
   Panel_GetParentShowHint,
@@ -1011,6 +1028,7 @@ exports
   Panel_SetOnStartDock,
   Panel_SetOnUnDock,
   Panel_GetDockClientCount,
+  Panel_GetMouseInClient,
   Panel_GetVisibleDockClientCount,
   Panel_GetBrush,
   Panel_GetControlCount,

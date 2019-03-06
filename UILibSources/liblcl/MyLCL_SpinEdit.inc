@@ -640,6 +640,11 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function SpinEdit_GetMouseInClient(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function SpinEdit_GetVisibleDockClientCount(AObj: TSpinEdit): Integer; extdecl;
 begin
   Result :=  AObj.VisibleDockClientCount;
@@ -658,6 +663,16 @@ end;
 function SpinEdit_GetHandle(AObj: TSpinEdit): HWND; extdecl;
 begin
   Result :=  AObj.Handle;
+end;
+
+function SpinEdit_GetParentDoubleBuffered(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure SpinEdit_SetParentDoubleBuffered(AObj: TSpinEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
 end;
 
 function SpinEdit_GetParentWindow(AObj: TSpinEdit): HWND; extdecl;
@@ -1029,10 +1044,13 @@ exports
   SpinEdit_SetDockSite,
   SpinEdit_GetDoubleBuffered,
   SpinEdit_SetDoubleBuffered,
+  SpinEdit_GetMouseInClient,
   SpinEdit_GetVisibleDockClientCount,
   SpinEdit_GetBrush,
   SpinEdit_GetControlCount,
   SpinEdit_GetHandle,
+  SpinEdit_GetParentDoubleBuffered,
+  SpinEdit_SetParentDoubleBuffered,
   SpinEdit_GetParentWindow,
   SpinEdit_SetParentWindow,
   SpinEdit_GetUseDockManager,

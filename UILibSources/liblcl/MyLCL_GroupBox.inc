@@ -365,6 +365,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function GroupBox_GetParentDoubleBuffered(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure GroupBox_SetParentDoubleBuffered(AObj: TGroupBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function GroupBox_GetParentFont(AObj: TGroupBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -564,6 +574,11 @@ end;
 function GroupBox_GetDockClientCount(AObj: TGroupBox): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
+end;
+
+function GroupBox_GetMouseInClient(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function GroupBox_GetVisibleDockClientCount(AObj: TGroupBox): Integer; extdecl;
@@ -884,6 +899,8 @@ exports
   GroupBox_SetFont,
   GroupBox_GetParentColor,
   GroupBox_SetParentColor,
+  GroupBox_GetParentDoubleBuffered,
+  GroupBox_SetParentDoubleBuffered,
   GroupBox_GetParentFont,
   GroupBox_SetParentFont,
   GroupBox_GetParentShowHint,
@@ -917,6 +934,7 @@ exports
   GroupBox_SetOnStartDock,
   GroupBox_SetOnUnDock,
   GroupBox_GetDockClientCount,
+  GroupBox_GetMouseInClient,
   GroupBox_GetVisibleDockClientCount,
   GroupBox_GetBrush,
   GroupBox_GetControlCount,

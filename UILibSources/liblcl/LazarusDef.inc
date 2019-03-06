@@ -448,6 +448,11 @@ begin
   AObj.ScrollBars := AValue;
 end;
 
+function ListView_CustomSort(AObj: TListView; SortProc: TLVCompare; lParam: NativeInt): LongBool; extdecl;
+begin
+  Result :=  AObj.CustomSort2(SortProc, lParam);
+end;
+
 // TTreeView
 function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
 begin
@@ -963,6 +968,7 @@ exports
   // TListView
   ListView_GetScrollBars,
   ListView_SetScrollBars,
+  ListView_CustomSort,
 
   // TTreeView
   TreeView_GetScrollBars,

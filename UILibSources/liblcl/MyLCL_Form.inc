@@ -838,6 +838,11 @@ begin
   Result :=  AObj.DockClientCount;
 end;
 
+function Form_GetMouseInClient(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function Form_GetVisibleDockClientCount(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.VisibleDockClientCount;
@@ -856,6 +861,16 @@ end;
 function Form_GetHandle(AObj: TForm): HWND; extdecl;
 begin
   Result :=  AObj.Handle;
+end;
+
+function Form_GetParentDoubleBuffered(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure Form_SetParentDoubleBuffered(AObj: TForm; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
 end;
 
 function Form_GetParentWindow(AObj: TForm): HWND; extdecl;
@@ -1179,10 +1194,13 @@ exports
   Form_GetTop,
   Form_SetTop,
   Form_GetDockClientCount,
+  Form_GetMouseInClient,
   Form_GetVisibleDockClientCount,
   Form_GetBrush,
   Form_GetControlCount,
   Form_GetHandle,
+  Form_GetParentDoubleBuffered,
+  Form_SetParentDoubleBuffered,
   Form_GetParentWindow,
   Form_SetParentWindow,
   Form_GetTabOrder,

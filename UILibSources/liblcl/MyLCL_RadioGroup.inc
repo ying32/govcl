@@ -375,6 +375,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function RadioGroup_GetParentDoubleBuffered(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure RadioGroup_SetParentDoubleBuffered(AObj: TRadioGroup; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function RadioGroup_GetParentFont(AObj: TRadioGroup): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -500,6 +510,11 @@ end;
 procedure RadioGroup_SetDockSite(AObj: TRadioGroup; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function RadioGroup_GetMouseInClient(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function RadioGroup_GetVisibleDockClientCount(AObj: TRadioGroup): Integer; extdecl;
@@ -822,6 +837,8 @@ exports
   RadioGroup_SetItems,
   RadioGroup_GetParentColor,
   RadioGroup_SetParentColor,
+  RadioGroup_GetParentDoubleBuffered,
+  RadioGroup_SetParentDoubleBuffered,
   RadioGroup_GetParentFont,
   RadioGroup_SetParentFont,
   RadioGroup_GetParentShowHint,
@@ -845,6 +862,7 @@ exports
   RadioGroup_GetDockClientCount,
   RadioGroup_GetDockSite,
   RadioGroup_SetDockSite,
+  RadioGroup_GetMouseInClient,
   RadioGroup_GetVisibleDockClientCount,
   RadioGroup_GetBrush,
   RadioGroup_GetControlCount,

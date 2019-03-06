@@ -375,6 +375,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function ScrollBox_GetParentDoubleBuffered(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ScrollBox_SetParentDoubleBuffered(AObj: TScrollBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ScrollBox_GetParentFont(AObj: TScrollBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -581,6 +591,11 @@ end;
 function ScrollBox_GetDockClientCount(AObj: TScrollBox): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
+end;
+
+function ScrollBox_GetMouseInClient(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ScrollBox_GetVisibleDockClientCount(AObj: TScrollBox): Integer; extdecl;
@@ -903,6 +918,8 @@ exports
   ScrollBox_SetFont,
   ScrollBox_GetParentColor,
   ScrollBox_SetParentColor,
+  ScrollBox_GetParentDoubleBuffered,
+  ScrollBox_SetParentDoubleBuffered,
   ScrollBox_GetParentFont,
   ScrollBox_SetParentFont,
   ScrollBox_GetParentShowHint,
@@ -937,6 +954,7 @@ exports
   ScrollBox_SetOnResize,
   ScrollBox_SetOnUnDock,
   ScrollBox_GetDockClientCount,
+  ScrollBox_GetMouseInClient,
   ScrollBox_GetVisibleDockClientCount,
   ScrollBox_GetBrush,
   ScrollBox_GetControlCount,

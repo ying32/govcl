@@ -340,6 +340,16 @@ begin
   AObj.PageIndex := AValue;
 end;
 
+function TabSheet_GetParentDoubleBuffered(AObj: TTabSheet): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure TabSheet_SetParentDoubleBuffered(AObj: TTabSheet; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function TabSheet_GetParentFont(AObj: TTabSheet): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -531,6 +541,11 @@ end;
 procedure TabSheet_SetDockSite(AObj: TTabSheet; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function TabSheet_GetMouseInClient(AObj: TTabSheet): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function TabSheet_GetVisibleDockClientCount(AObj: TTabSheet): Integer; extdecl;
@@ -856,6 +871,8 @@ exports
   TabSheet_SetLeft,
   TabSheet_GetPageIndex,
   TabSheet_SetPageIndex,
+  TabSheet_GetParentDoubleBuffered,
+  TabSheet_SetParentDoubleBuffered,
   TabSheet_GetParentFont,
   TabSheet_SetParentFont,
   TabSheet_GetParentShowHint,
@@ -889,6 +906,7 @@ exports
   TabSheet_GetDockClientCount,
   TabSheet_GetDockSite,
   TabSheet_SetDockSite,
+  TabSheet_GetMouseInClient,
   TabSheet_GetVisibleDockClientCount,
   TabSheet_GetBrush,
   TabSheet_GetControlCount,

@@ -380,6 +380,16 @@ begin
   AObj.ModalResult := AValue;
 end;
 
+function Button_GetParentDoubleBuffered(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure Button_SetParentDoubleBuffered(AObj: TButton; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function Button_GetParentFont(AObj: TButton): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -568,6 +578,11 @@ end;
 procedure Button_SetDockSite(AObj: TButton; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function Button_GetMouseInClient(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function Button_GetVisibleDockClientCount(AObj: TButton): Integer; extdecl;
@@ -881,6 +896,8 @@ exports
   Button_SetFont,
   Button_GetModalResult,
   Button_SetModalResult,
+  Button_GetParentDoubleBuffered,
+  Button_SetParentDoubleBuffered,
   Button_GetParentFont,
   Button_SetParentFont,
   Button_GetParentShowHint,
@@ -913,6 +930,7 @@ exports
   Button_GetDockClientCount,
   Button_GetDockSite,
   Button_SetDockSite,
+  Button_GetMouseInClient,
   Button_GetVisibleDockClientCount,
   Button_GetBrush,
   Button_GetControlCount,

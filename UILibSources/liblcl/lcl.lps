@@ -2,7 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <PathDelim Value="\"/>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <BuildModes Count="5" Active="Win64">
       <Item1 Name="Win64">
         <MacroValues Count="1">
@@ -181,7 +181,7 @@
         <Item5 Mode="LinuxARM" Option="471587070140"/>
       </SessionEnabledMatrixOptions>
     </BuildModes>
-    <Units Count="245">
+    <Units Count="172">
       <Unit0>
         <Filename Value="lcl.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -193,7 +193,7 @@
         <Filename Value="uEventCallback.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="233"/>
         <CursorPos X="15" Y="330"/>
         <UsageCount Value="177"/>
@@ -1366,6 +1366,20 @@
         <CursorPos X="12" Y="10"/>
         <UsageCount Value="20"/>
       </Unit169>
+      <Unit170>
+        <Filename Value=""/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit170>
+      <Unit171>
+        <Filename Value="uMiniWebview.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit171>
     </Units>
     <JumpHistory Count="13" HistoryIndex="12">
       <Position1>
@@ -1421,6 +1435,10 @@
         <Caret Line="134" Column="48" TopLine="130"/>
       </Position13>
     </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
   <Debugging>
     <BreakPoints Count="1">

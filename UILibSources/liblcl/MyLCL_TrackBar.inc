@@ -350,6 +350,16 @@ begin
   AObj.Orientation := AValue;
 end;
 
+function TrackBar_GetParentDoubleBuffered(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure TrackBar_SetParentDoubleBuffered(AObj: TTrackBar; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function TrackBar_GetParentShowHint(AObj: TTrackBar): LongBool; extdecl;
 begin
   Result :=  AObj.ParentShowHint;
@@ -573,6 +583,11 @@ end;
 procedure TrackBar_SetDockSite(AObj: TTrackBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function TrackBar_GetMouseInClient(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function TrackBar_GetVisibleDockClientCount(AObj: TTrackBar): Integer; extdecl;
@@ -900,6 +915,8 @@ exports
   TrackBar_SetMin,
   TrackBar_GetOrientation,
   TrackBar_SetOrientation,
+  TrackBar_GetParentDoubleBuffered,
+  TrackBar_SetParentDoubleBuffered,
   TrackBar_GetParentShowHint,
   TrackBar_SetParentShowHint,
   TrackBar_GetPageSize,
@@ -941,6 +958,7 @@ exports
   TrackBar_GetDockClientCount,
   TrackBar_GetDockSite,
   TrackBar_SetDockSite,
+  TrackBar_GetMouseInClient,
   TrackBar_GetVisibleDockClientCount,
   TrackBar_GetBrush,
   TrackBar_GetControlCount,

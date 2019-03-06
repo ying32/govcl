@@ -7,7 +7,7 @@ type
   TPngImage = type TPortableNetworkGraphic;
   TMonthCalendar = type TCalendar;
   TJPEGPixelFormat = TPixelFormat;
-  TPageMeasureUnits = type TMeasureUnits;
+  //TPageMeasureUnits = type TMeasureUnits;
 {$ifndef windows}
   PFNLVCOMPARE = Pointer;
   PFNTVCOMPARE = Pointer;
@@ -42,7 +42,7 @@ type
   TListViewHelper = class helper for TListView
   public
     procedure DeleteSelected;
-    function CustomSort(SortProc: PFNLVCOMPARE; lParam: NativeInt): Boolean;
+    function CustomSort2(SortProc: TLVCompare; lParam: PtrInt): Boolean;
   end;
 
 procedure TListViewHelper.DeleteSelected;
@@ -51,12 +51,20 @@ if ItemIndex <> -1 then
   Items.Delete(ItemIndex);
 end;
 
-// 兼容版
-function TListViewHelper.CustomSort(SortProc: PFNLVCOMPARE; lParam: NativeInt): Boolean;
+
+// 兼容版，因为内部Lazarus2.0起后有个兼容版本，但实际使用中并不兼容。
+function DefaultListViewSortProc(Item1, Item2: TListItem; AOptionalParam: PtrInt): Integer stdcall;
 begin
-  SortType := stText;
-  SortColumn := lParam;
-  Result := True;
+  with Item1 do
+    if Assigned(TListView(ListView).OnCompare) then
+      TListView(ListView).OnCompare(ListView, Item1, Item2, AOptionalParam, Result)
+    else Result := CompareText(Item1.Caption, Item2.Caption);
+end;
+
+function TListViewHelper.CustomSort2(SortProc: TLVCompare; lParam: PtrInt): Boolean;
+begin
+   if not Assigned(SortProc) then SortProc := @DefaultListViewSortProc;
+   Result := Self.CustomSort(SortProc, lParam);
 end;
 
 // --------------- TTreeView ------------------
@@ -231,124 +239,6 @@ end;
 
 procedure TStatusPanelsHelper.SetCapacity(AValue: Integer);
 begin
-end;
-
-
-// --------------- TPageSetupDialog ------------------
-type
-
-  TPageSetupDialogOptions = type Cardinal;
-  { TPageSetupDialogHelper }
-
-  TPageSetupDialogHelper = class helper for TPageSetupDialog
-  private
-    function GetOptions: TPageSetupDialogOptions;
-    function GetPageHeight: Integer;
-    function GetPageWidth: Integer;
-    procedure SetOptions(AValue: TPageSetupDialogOptions);
-    procedure SetPageHeight(AValue: Integer);
-    procedure SetPageWidth(AValue: Integer);
-    function GetMarginLeft: Integer;
-    procedure SetMarginLeft(AValue: Integer);
-    function GetMarginTop: Integer;
-    procedure SetMarginTop(AValue: Integer);
-    function GetMarginRight: Integer;
-    procedure SetMarginRight(AValue: Integer);
-    function GetMarginBottom: Integer;
-    procedure SetMarginBottom(AValue: Integer);
-  public
-    property Options: TPageSetupDialogOptions read GetOptions write SetOptions;
-    property PageWidth: Integer read GetPageWidth write SetPageWidth;
-    property PageHeight: Integer read GetPageHeight write SetPageHeight;
-    property MarginLeft: Integer read GetMarginLeft write SetMarginLeft;
-    property MarginTop: Integer read GetMarginTop write SetMarginTop;
-    property MarginRight: Integer read GetMarginRight write SetMarginRight;
-    property MarginBottom: Integer read GetMarginBottom write SetMarginBottom;
-  end;
-
-function TPageSetupDialogHelper.GetOptions: TPageSetupDialogOptions;
-begin
-  Result := 0;
-end;
-
-function TPageSetupDialogHelper.GetPageHeight: Integer;
-begin
-  Result := 0;
-end;
-
-function TPageSetupDialogHelper.GetPageWidth: Integer;
-begin
-  Result := 0;
-end;
-
-procedure TPageSetupDialogHelper.SetOptions(AValue: TPageSetupDialogOptions);
-begin
-end;
-
-procedure TPageSetupDialogHelper.SetPageHeight(AValue: Integer);
-begin
-
-end;
-
-procedure TPageSetupDialogHelper.SetPageWidth(AValue: Integer);
-begin
-
-end;
-
-function TPageSetupDialogHelper.GetMarginLeft: Integer;
-begin
-  Result := Margins.Left;
-end;
-
-procedure TPageSetupDialogHelper.SetMarginLeft(AValue: Integer);
-var
-  LR: TRect;
-begin
-  LR := Margins;
-  LR.Left := AValue;
-  Margins := LR;
-end;
-
-function TPageSetupDialogHelper.GetMarginTop: Integer;
-begin
-  Result := Margins.Top;
-end;
-
-procedure TPageSetupDialogHelper.SetMarginTop(AValue: Integer);
-var
-  LR: TRect;
-begin
-  LR := Margins;
-  LR.Top := AValue;
-  Margins := LR;
-end;
-
-function TPageSetupDialogHelper.GetMarginRight: Integer;
-begin
-  Result := Margins.Right;
-end;
-
-procedure TPageSetupDialogHelper.SetMarginRight(AValue: Integer);
-var
-  LR: TRect;
-begin
-  LR := Margins;
-  LR.Right := AValue;
-  Margins := LR;
-end;
-
-function TPageSetupDialogHelper.GetMarginBottom: Integer;
-begin
-  Result :=  Margins.Bottom;
-end;
-
-procedure TPageSetupDialogHelper.SetMarginBottom(AValue: Integer);
-var
-  LR: TRect;
-begin
-  LR := Margins;
-  LR.Bottom := AValue;
-  Margins := LR;
 end;
 
 

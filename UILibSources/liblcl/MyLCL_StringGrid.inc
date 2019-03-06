@@ -470,6 +470,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function StringGrid_GetParentDoubleBuffered(AObj: TStringGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure StringGrid_SetParentDoubleBuffered(AObj: TStringGrid; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function StringGrid_GetParentFont(AObj: TStringGrid): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -844,6 +854,11 @@ end;
 procedure StringGrid_SetDockSite(AObj: TStringGrid; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function StringGrid_GetMouseInClient(AObj: TStringGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function StringGrid_GetVisibleDockClientCount(AObj: TStringGrid): Integer; extdecl;
@@ -1245,6 +1260,8 @@ exports
   StringGrid_SetOptions,
   StringGrid_GetParentColor,
   StringGrid_SetParentColor,
+  StringGrid_GetParentDoubleBuffered,
+  StringGrid_SetParentDoubleBuffered,
   StringGrid_GetParentFont,
   StringGrid_SetParentFont,
   StringGrid_GetParentShowHint,
@@ -1309,6 +1326,7 @@ exports
   StringGrid_GetDockClientCount,
   StringGrid_GetDockSite,
   StringGrid_SetDockSite,
+  StringGrid_GetMouseInClient,
   StringGrid_GetVisibleDockClientCount,
   StringGrid_GetBrush,
   StringGrid_GetControlCount,

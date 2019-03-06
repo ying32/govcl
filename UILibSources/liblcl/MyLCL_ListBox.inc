@@ -425,6 +425,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function ListBox_GetParentDoubleBuffered(AObj: TListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ListBox_SetParentDoubleBuffered(AObj: TListBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ListBox_GetParentFont(AObj: TListBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -669,6 +679,11 @@ end;
 procedure ListBox_SetDockSite(AObj: TListBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ListBox_GetMouseInClient(AObj: TListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ListBox_GetVisibleDockClientCount(AObj: TListBox): Integer; extdecl;
@@ -1011,6 +1026,8 @@ exports
   ListBox_SetMultiSelect,
   ListBox_GetParentColor,
   ListBox_SetParentColor,
+  ListBox_GetParentDoubleBuffered,
+  ListBox_SetParentDoubleBuffered,
   ListBox_GetParentFont,
   ListBox_SetParentFont,
   ListBox_GetParentShowHint,
@@ -1053,6 +1070,7 @@ exports
   ListBox_GetDockClientCount,
   ListBox_GetDockSite,
   ListBox_SetDockSite,
+  ListBox_GetMouseInClient,
   ListBox_GetVisibleDockClientCount,
   ListBox_GetBrush,
   ListBox_GetControlCount,

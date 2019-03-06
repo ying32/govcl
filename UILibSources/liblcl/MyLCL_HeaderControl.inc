@@ -345,6 +345,16 @@ begin
   AObj.ShowHint := AValue;
 end;
 
+function HeaderControl_GetParentDoubleBuffered(AObj: THeaderControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure HeaderControl_SetParentDoubleBuffered(AObj: THeaderControl; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function HeaderControl_GetParentFont(AObj: THeaderControl): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -515,6 +525,11 @@ end;
 procedure HeaderControl_SetDockSite(AObj: THeaderControl; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function HeaderControl_GetMouseInClient(AObj: THeaderControl): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function HeaderControl_GetVisibleDockClientCount(AObj: THeaderControl): Integer; extdecl;
@@ -851,6 +866,8 @@ exports
   HeaderControl_SetImages,
   HeaderControl_GetShowHint,
   HeaderControl_SetShowHint,
+  HeaderControl_GetParentDoubleBuffered,
+  HeaderControl_SetParentDoubleBuffered,
   HeaderControl_GetParentFont,
   HeaderControl_SetParentFont,
   HeaderControl_GetParentShowHint,
@@ -879,6 +896,7 @@ exports
   HeaderControl_GetDockClientCount,
   HeaderControl_GetDockSite,
   HeaderControl_SetDockSite,
+  HeaderControl_GetMouseInClient,
   HeaderControl_GetVisibleDockClientCount,
   HeaderControl_GetBrush,
   HeaderControl_GetControlCount,

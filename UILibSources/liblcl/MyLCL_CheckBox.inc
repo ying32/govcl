@@ -395,6 +395,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function CheckBox_GetParentDoubleBuffered(AObj: TCheckBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure CheckBox_SetParentDoubleBuffered(AObj: TCheckBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function CheckBox_GetParentFont(AObj: TCheckBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -593,6 +603,11 @@ end;
 procedure CheckBox_SetDockSite(AObj: TCheckBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function CheckBox_GetMouseInClient(AObj: TCheckBox): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function CheckBox_GetVisibleDockClientCount(AObj: TCheckBox): Integer; extdecl;
@@ -909,6 +924,8 @@ exports
   CheckBox_SetFont,
   CheckBox_GetParentColor,
   CheckBox_SetParentColor,
+  CheckBox_GetParentDoubleBuffered,
+  CheckBox_SetParentDoubleBuffered,
   CheckBox_GetParentFont,
   CheckBox_SetParentFont,
   CheckBox_GetParentShowHint,
@@ -943,6 +960,7 @@ exports
   CheckBox_GetDockClientCount,
   CheckBox_GetDockSite,
   CheckBox_SetDockSite,
+  CheckBox_GetMouseInClient,
   CheckBox_GetVisibleDockClientCount,
   CheckBox_GetBrush,
   CheckBox_GetControlCount,

@@ -315,6 +315,16 @@ begin
   AObj.Orientation := AValue;
 end;
 
+function UpDown_GetParentDoubleBuffered(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure UpDown_SetParentDoubleBuffered(AObj: TUpDown; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function UpDown_GetParentShowHint(AObj: TUpDown): LongBool; extdecl;
 begin
   Result :=  AObj.ParentShowHint;
@@ -478,6 +488,11 @@ end;
 procedure UpDown_SetDockSite(AObj: TUpDown; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function UpDown_GetMouseInClient(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function UpDown_GetVisibleDockClientCount(AObj: TUpDown): Integer; extdecl;
@@ -798,6 +813,8 @@ exports
   UpDown_SetIncrement,
   UpDown_GetOrientation,
   UpDown_SetOrientation,
+  UpDown_GetParentDoubleBuffered,
+  UpDown_SetParentDoubleBuffered,
   UpDown_GetParentShowHint,
   UpDown_SetParentShowHint,
   UpDown_GetPopupMenu,
@@ -827,6 +844,7 @@ exports
   UpDown_GetDockClientCount,
   UpDown_GetDockSite,
   UpDown_SetDockSite,
+  UpDown_GetMouseInClient,
   UpDown_GetVisibleDockClientCount,
   UpDown_GetBrush,
   UpDown_GetControlCount,

@@ -445,6 +445,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function ComboBox_GetParentDoubleBuffered(AObj: TComboBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ComboBox_SetParentDoubleBuffered(AObj: TComboBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ComboBox_GetParentFont(AObj: TComboBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -715,6 +725,11 @@ end;
 procedure ComboBox_SetDockSite(AObj: TComboBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ComboBox_GetMouseInClient(AObj: TComboBox): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ComboBox_GetVisibleDockClientCount(AObj: TComboBox): Integer; extdecl;
@@ -1051,6 +1066,8 @@ exports
   ComboBox_SetMaxLength,
   ComboBox_GetParentColor,
   ComboBox_SetParentColor,
+  ComboBox_GetParentDoubleBuffered,
+  ComboBox_SetParentDoubleBuffered,
   ComboBox_GetParentFont,
   ComboBox_SetParentFont,
   ComboBox_GetParentShowHint,
@@ -1099,6 +1116,7 @@ exports
   ComboBox_GetDockClientCount,
   ComboBox_GetDockSite,
   ComboBox_SetDockSite,
+  ComboBox_GetMouseInClient,
   ComboBox_GetVisibleDockClientCount,
   ComboBox_GetBrush,
   ComboBox_GetControlCount,

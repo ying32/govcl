@@ -415,6 +415,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function ColorBox_GetParentDoubleBuffered(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ColorBox_SetParentDoubleBuffered(AObj: TColorBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ColorBox_GetParentFont(AObj: TColorBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -664,6 +674,11 @@ end;
 procedure ColorBox_SetDockSite(AObj: TColorBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ColorBox_GetMouseInClient(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ColorBox_GetVisibleDockClientCount(AObj: TColorBox): Integer; extdecl;
@@ -1004,6 +1019,8 @@ exports
   ColorBox_SetItemHeight,
   ColorBox_GetParentColor,
   ColorBox_SetParentColor,
+  ColorBox_GetParentDoubleBuffered,
+  ColorBox_SetParentDoubleBuffered,
   ColorBox_GetParentFont,
   ColorBox_SetParentFont,
   ColorBox_GetParentShowHint,
@@ -1049,6 +1066,7 @@ exports
   ColorBox_GetDockClientCount,
   ColorBox_GetDockSite,
   ColorBox_SetDockSite,
+  ColorBox_GetMouseInClient,
   ColorBox_GetVisibleDockClientCount,
   ColorBox_GetBrush,
   ColorBox_GetControlCount,

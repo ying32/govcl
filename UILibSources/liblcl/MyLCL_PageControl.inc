@@ -380,6 +380,16 @@ begin
   AObj.MultiLine := AValue;
 end;
 
+function PageControl_GetParentDoubleBuffered(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure PageControl_SetParentDoubleBuffered(AObj: TPageControl; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function PageControl_GetParentFont(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -626,6 +636,11 @@ end;
 function PageControl_GetDockClientCount(AObj: TPageControl): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
+end;
+
+function PageControl_GetMouseInClient(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function PageControl_GetVisibleDockClientCount(AObj: TPageControl): Integer; extdecl;
@@ -954,6 +969,8 @@ exports
   PageControl_SetImages,
   PageControl_GetMultiLine,
   PageControl_SetMultiLine,
+  PageControl_GetParentDoubleBuffered,
+  PageControl_SetParentDoubleBuffered,
   PageControl_GetParentFont,
   PageControl_SetParentFont,
   PageControl_GetParentShowHint,
@@ -996,6 +1013,7 @@ exports
   PageControl_SetOnStartDock,
   PageControl_SetOnUnDock,
   PageControl_GetDockClientCount,
+  PageControl_GetMouseInClient,
   PageControl_GetVisibleDockClientCount,
   PageControl_GetBrush,
   PageControl_GetControlCount,

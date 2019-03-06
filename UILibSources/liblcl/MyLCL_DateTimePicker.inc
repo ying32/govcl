@@ -400,6 +400,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function DateTimePicker_GetParentDoubleBuffered(AObj: TDateTimePicker): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure DateTimePicker_SetParentDoubleBuffered(AObj: TDateTimePicker; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function DateTimePicker_GetParentFont(AObj: TDateTimePicker): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -553,6 +563,11 @@ end;
 procedure DateTimePicker_SetDockSite(AObj: TDateTimePicker; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function DateTimePicker_GetMouseInClient(AObj: TDateTimePicker): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function DateTimePicker_GetVisibleDockClientCount(AObj: TDateTimePicker): Integer; extdecl;
@@ -880,6 +895,8 @@ exports
   DateTimePicker_SetMinDate,
   DateTimePicker_GetParentColor,
   DateTimePicker_SetParentColor,
+  DateTimePicker_GetParentDoubleBuffered,
+  DateTimePicker_SetParentDoubleBuffered,
   DateTimePicker_GetParentFont,
   DateTimePicker_SetParentFont,
   DateTimePicker_GetParentShowHint,
@@ -907,6 +924,7 @@ exports
   DateTimePicker_GetDockClientCount,
   DateTimePicker_GetDockSite,
   DateTimePicker_SetDockSite,
+  DateTimePicker_GetMouseInClient,
   DateTimePicker_GetVisibleDockClientCount,
   DateTimePicker_GetBrush,
   DateTimePicker_GetControlCount,
