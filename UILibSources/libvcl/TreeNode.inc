@@ -300,6 +300,11 @@ begin
   AObj.Text := AValue;
 end;
 
+function TreeNode_GetTreeView(AObj: TTreeNode): TCustomTreeView; stdcall;
+begin
+  Result :=  AObj.TreeView;
+end;
+
 function TreeNode_GetItem(AObj: TTreeNode; Index: Integer): TTreeNode; stdcall;
 begin
   Result :=  AObj.Item[Index];
@@ -375,6 +380,7 @@ exports
   TreeNode_SetStateIndex,
   TreeNode_GetText,
   TreeNode_SetText,
+  TreeNode_GetTreeView,
   TreeNode_GetItem,
   TreeNode_SetItem,
   TreeNode_StaticClassType;
