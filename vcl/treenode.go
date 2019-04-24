@@ -428,6 +428,11 @@ func (t *TTreeNode) SetText(value string) {
     TreeNode_SetText(t.instance, value)
 }
 
+// TreeView
+func (t *TTreeNode) TreeView() *TWinControl {
+    return WinControlFromInst(TreeNode_GetTreeView(t.instance))
+}
+
 // Item
 func (t *TTreeNode) Item(Index int32) *TTreeNode {
     return TreeNodeFromInst(TreeNode_GetItem(t.instance, Index))

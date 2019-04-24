@@ -665,3 +665,101 @@ const (
 	RT_HTML         = 23
 	RT_MANIFEST     = 24
 )
+
+/* ====== TREEVIEW CONTROL =================== */
+
+const (
+	TVS_HASBUTTONS      = 0x0001
+	TVS_HASLINES        = 0x0002
+	TVS_LINESATROOT     = 0x0004
+	TVS_EDITLABELS      = 0x0008
+	TVS_DISABLEDRAGDROP = 0x0010
+	TVS_SHOWSELALWAYS   = 0x0020
+	TVS_RTLREADING      = 0x0040
+	TVS_NOTOOLTIPS      = 0x0080
+	TVS_CHECKBOXES      = 0x0100
+	TVS_TRACKSELECT     = 0x0200
+	TVS_SINGLEEXPAND    = 0x0400
+	TVS_INFOTIP         = 0x0800
+	TVS_FULLROWSELECT   = 0x1000
+	TVS_NOSCROLL        = 0x2000
+	TVS_NONEVENHEIGHT   = 0x4000
+	/* For IE >= 0x0500 */
+	TVS_NOHSCROLL = 0x8000 // TVS_NOSCROLL overrides this
+
+	/* For Windows >= Vista */
+	TVS_EX_MULTISELECT         = 0x0002
+	TVS_EX_DOUBLEBUFFER        = 0x0004
+	TVS_EX_NOINDENTSTATE       = 0x0008
+	TVS_EX_RICHTOOLTIP         = 0x0010
+	TVS_EX_AUTOHSCROLL         = 0x0020
+	TVS_EX_FADEINOUTEXPANDOS   = 0x0040
+	TVS_EX_PARTIALCHECKBOXES   = 0x0080
+	TVS_EX_EXCLUSIONCHECKBOXES = 0x0100
+	TVS_EX_DIMMEDCHECKBOXES    = 0x0200
+	TVS_EX_DRAWIMAGEASYNC      = 0x0400
+)
+
+const (
+	TVIF_TEXT          = 0x0001
+	TVIF_IMAGE         = 0x0002
+	TVIF_PARAM         = 0x0004
+	TVIF_STATE         = 0x0008
+	TVIF_HANDLE        = 0x0010
+	TVIF_SELECTEDIMAGE = 0x0020
+	TVIF_CHILDREN      = 0x0040
+	TVIF_INTEGRAL      = 0x0080
+	/* For Windows >= Vista */
+	TVIF_STATEEX       = 0x0100
+	TVIF_EXPANDEDIMAGE = 0x0200
+
+	TVIS_FOCUSED       = 0x0001
+	TVIS_SELECTED      = 0x0002
+	TVIS_CUT           = 0x0004
+	TVIS_DROPHILITED   = 0x0008
+	TVIS_BOLD          = 0x0010
+	TVIS_EXPANDED      = 0x0020
+	TVIS_EXPANDEDONCE  = 0x0040
+	TVIS_EXPANDPARTIAL = 0x0080
+
+	TVIS_OVERLAYMASK    = 0x0F00
+	TVIS_STATEIMAGEMASK = 0xF000
+	TVIS_USERMASK       = 0xF000
+
+	/* For IE >= 0x0600 */
+	TVIS_EX_FLAT = 0x0001
+	TVIS_EX_ALL  = 0x0002
+	/* For Windows >= Vista */
+	TVIS_EX_DISABLED = 0x0002
+
+	//
+
+	TVIS_CHECKED = 0x2000
+)
+
+/* ====== Ranges for control message IDs ======================= */
+
+const (
+	LVM_FIRST = 0x1000 /* ListView messages */
+	TV_FIRST  = 0x1100 /* TreeView messages */
+	HDM_FIRST = 0x1200 /* Header messages */
+	TCM_FIRST = 0x1300 /* Tab control messages */
+	PGM_FIRST = 0x1400 /* Pager control messages */
+	/* For Windows >= XP */
+	ECM_FIRST = 0x1500 /* Edit control messages */
+	BCM_FIRST = 0x1600 /* Button control messages */
+	CBM_FIRST = 0x1700 /* Combobox control messages */
+
+	CCM_FIRST = 0x2000 /* Common control shared messages */
+	CCM_LAST  = CCM_FIRST + 0x200
+
+	CCM_SETBKCOLOR = CCM_FIRST + 1 // lParam is bkColo
+)
+
+const (
+	TVM_GETITEMW = TV_FIRST + 62
+	TVM_GETITEM  = TVM_GETITEMW
+
+	TVM_SETITEMW = TV_FIRST + 63
+	TVM_SETITEM  = TVM_SETITEMW
+)

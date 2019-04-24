@@ -345,6 +345,11 @@ func (l *TListItem) SetLeft(value int32) {
     ListItem_SetLeft(l.instance, value)
 }
 
+// ListView
+func (l *TListItem) ListView() *TWinControl {
+    return WinControlFromInst(ListItem_GetListView(l.instance))
+}
+
 // Owner
 // CN: 获取组件所有者。
 // EN: Get component owner.

@@ -36460,6 +36460,11 @@ func ListItem_SetLeft(obj uintptr, value int32) {
    listItem_SetLeft.Call(obj, uintptr(value))
 }
 
+func ListItem_GetListView(obj uintptr) uintptr {
+    ret, _, _ := listItem_GetListView.Call(obj)
+    return ret
+}
+
 func ListItem_GetOwner(obj uintptr) uintptr {
     ret, _, _ := listItem_GetOwner.Call(obj)
     return ret
@@ -36808,6 +36813,11 @@ func TreeNode_GetText(obj uintptr) string {
 
 func TreeNode_SetText(obj uintptr, value string) {
    treeNode_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func TreeNode_GetTreeView(obj uintptr) uintptr {
+    ret, _, _ := treeNode_GetTreeView.Call(obj)
+    return ret
 }
 
 func TreeNode_GetItem(obj uintptr, Index int32) uintptr {
