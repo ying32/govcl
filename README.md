@@ -5,7 +5,7 @@
 
 ----
 
-**The 1.2.0 version begins with govcl with a minimum requirement of go1.9.**   
+**The govcl version >=1.2.0 must require the go version >=1.9.0.**   
 
 [](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))   
 
