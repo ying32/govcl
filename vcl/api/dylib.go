@@ -1,6 +1,9 @@
 package api
 
 import (
+	"os"
+	"os/exec"
+	"path/filepath"
 	"runtime"
 
 	"fmt"
@@ -23,31 +26,61 @@ const (
 	liblcldylib  = "liblcl.dylib"
 )
 
+// Windows下专用的
+func windowsDLLExists(name string) bool {
+	file, _ := exec.LookPath(os.Args[0])
+	dllFileName := filepath.Dir(file) + "\\" + name
+	_, err := os.Stat(dllFileName)
+	if err == nil {
+		return true
+	}
+	if os.IsNotExist(err) {
+		return false
+	}
+	return false
+}
+
 // 加载库
 func loadUILib() *dylib.LazyDLL {
-	libname := ""
+	libName := ""
 	switch runtime.GOOS {
 	case "windows":
 		if runtime.GOARCH == "amd64" {
-			libname = libvclx64dll
+			libName = libvclx64dll
 		} else {
-			libname = libvcldll
+			libName = libvcldll
 		}
+
+		// 如果exe目录下存在libvclx64.dll且为x64系统
+		if runtime.GOARCH == "amd64" && windowsDLLExists(libvclx64dll) {
+			libName = libvclx64dll
+		} else
+		// 如果当前存在
+		if runtime.GOARCH == "386" && windowsDLLExists(libvcldll) {
+			libName = libvcldll
+		} else
+		// 如果当下目录存在liblcl则加载
+		if windowsDLLExists(liblcldll) {
+			libName = liblcldll
+			IsloadedLcl = true
+		}
+
 	case "linux":
-		libname = liblclso
+		libName = liblclso
 		IsloadedLcl = true
 
 	case "darwin":
-		libname = liblcldylib
+		libName = liblcldylib
 		IsloadedLcl = true
 
 	}
-	lib := dylib.NewLazyDLL(libname)
+	fmt.Println("LoadLibrary:", libName)
+	lib := dylib.NewLazyDLL(libName)
 	// 这里做个判断，当libvcl.dll或者libvclx64.dll加载失败时尝试加载liblcl.dll
 	// 这样做主要为以后考虑，对于某些人来说怕什么的来说，可以使用非Delphi的组件
 	err := lib.Load()
-	if err != nil && runtime.GOOS == "windows" && (libname == libvcldll || libname == libvclx64dll) {
-		fmt.Println(fmt.Sprintf("\"%s\" does not exist, trying to load liblcl.dll.", libname))
+	if err != nil && runtime.GOOS == "windows" && (libName == libvcldll || libName == libvclx64dll) {
+		fmt.Println(fmt.Sprintf("\"%s\" does not exist, trying to load liblcl.dll.", libName))
 		lib = dylib.NewLazyDLL(liblcldll)
 		IsloadedLcl = true
 	}
