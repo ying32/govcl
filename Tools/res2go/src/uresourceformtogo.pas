@@ -17,11 +17,16 @@ uses
 {$IFDEF MSWINDOWS}
   Windows,
 {$ENDIF}
-  Classes, SysUtils, Math, StrUtils, uFormDesignerFile;
+  Classes, SysUtils, Math, StrUtils, uFormDesignerFile
+{$IFNDEF FPC}
+  ,System.Generics.Collections
+{$ELSE}
+  ,fgl
+{$ENDIF};
 
 
 const
-  APPVERSION = '1.0.11';
+  APPVERSION = '1.0.12';
 
 type
   TComponentItem = record
@@ -982,10 +987,45 @@ begin
 end;
 
 procedure ConvertAll;
+type
+{$IFDEF FPC}
+  TWatchFileList = specialize  TFPGMap<string, LongInt>;
+{$ELSE}
+  TWatchFileList = TDictionary<string, LongInt>;
+{$ENDIF}
+
 var
   LRec: {$IFDEF FPC}TRawbyteSearchRec{$ELSE}TSearchRec{$ENDIF};
   LPath, LOutPath, LExt, LFileName, LPause: string;
-  LConvPro, LOutWinRes: Boolean;
+  LConvPro, LOutWinRes, LWatch: Boolean;
+  LWatchList: TWatchFileList;
+
+  // 从监视列表中查找
+  function WatchFile(const AFileName: string; ACurTime: LongInt): Boolean;
+  var
+    LTime: LongInt;
+  begin
+    Result := False;
+  {$IFDEF FPC}
+    if LWatchList.TryGetData(AFileName, LTime) then
+  {$ELSE}
+    if LWatchList.TryGetValue(AFileName, LTime) then
+  {$ENDIF}
+    begin
+      if LTime = ACurTime then
+        Result := True;
+       //writeln('Result:', Result, ', AFileName:', AFileName, ', Time:', LTime, ', CurTime:', ACurTime);
+    end;
+  // 当前列表中没有或者有，则更新或添加此文件及时间
+  {$IFDEF FPC}
+    LWatchList.AddOrSetData(AFileName, ACurTime);
+  {$ELSE}
+    LWatchList.AddOrSetValue(AFileName, ACurTime);
+  {$ENDIF}
+  end;
+
+
+
 begin
   if FindCmdLineSwitch('help') or FindCmdLineSwitch('h') then
   begin
@@ -1037,7 +1077,6 @@ begin
       if not LPath.EndsWith(PathDelim) then
         LPath := LPath + PathDelim;
     end;
-    //Writeln('LPath:', LPath);
 
     LOutPath := '.' + {$IFDEF FPC}DirectorySeparator{$ELSE}PathDelim{$ENDIF};
     if FindCmdLineSwitch('outpath') then
@@ -1048,33 +1087,53 @@ begin
       if not LOutPath.EndsWith(PathDelim) then
         LOutPath := LOutPath + PathDelim;
     end;
-    //Writeln('LOutPath:', LOutPath);
 
-    if FindFirst(LPath + '*.*', faAnyFile, LRec) = 0 then
-    begin
-     repeat
-      LExt := ExtractFileExt(LRec.Name);
-      LFileName := LPath + LRec.Name;
-      if SameText(LExt, '.lfm') or SameText(LExt, '.dfm') then
-      begin
-        TextColorWhite;
-        if SysIsZhCN then
-          Writeln('------转换文件：', LFileName)
-        else
-          Writeln('------Transform file:', LFileName);
-        ResouceFormToGo(LFileName, LOutPath);
-      end else if LConvPro and (SameText(LExt, '.lpr') or SameText(LExt, '.dpr')) and
-       (not SameText(LRec.Name, 'res2go.lpr') and not SameText(LRec.Name, 'res2go.dpr')) then
-      begin
-        TextColorWhite;
-        if SysIsZhCN then
-          Writeln('------转换文件：', LFileName)
-        else
-          Writeln('------Transform file:', LFileName);
-        ProjectFileToMainDotGo(LFileName, LOutPath);
-      end;
-     until FindNext(LRec) <> 0;
-     FindClose(LRec);
+    // 是否监视指定文件夹，有这个参数则表示监视，没有则不监视
+    LWatch := FindCmdLineSwitch('watch');
+    if LWatch then
+      LWatchList := TWatchFileList.Create;
+    try
+      repeat
+        // 搜索文件
+        if FindFirst(LPath + '*.*', faAnyFile, LRec) = 0 then
+        begin
+         repeat
+          LExt := ExtractFileExt(LRec.Name);
+          LFileName := LPath + LRec.Name;
+          if SameText(LExt, '.lfm') or SameText(LExt, '.dfm') then
+          begin
+            if WatchFile(LFileName, LRec.Time) then
+              Continue;
+
+            TextColorWhite;
+            if SysIsZhCN then
+              Writeln('------转换文件：', LFileName)
+            else
+              Writeln('------Transform file:', LFileName);
+            ResouceFormToGo(LFileName, LOutPath);
+          end else if LConvPro and (SameText(LExt, '.lpr') or SameText(LExt, '.dpr')) and
+           (not SameText(LRec.Name, 'res2go.lpr') and not SameText(LRec.Name, 'res2go.dpr')) then
+          begin
+            if WatchFile(LFileName, LRec.Time) then
+              Continue;
+
+            TextColorWhite;
+            if SysIsZhCN then
+              Writeln('------转换文件：', LFileName)
+            else
+              Writeln('------Transform file:', LFileName);
+            ProjectFileToMainDotGo(LFileName, LOutPath);
+          end;
+         until FindNext(LRec) <> 0;
+         FindClose(LRec);
+        end;
+        // 嗯。。。1000ms频率吧
+        if LWatch then
+          Sleep(1000);
+      until not LWatch;
+    finally
+      if LWatch then
+         LWatchList.Free;
     end;
 
     if LOutWinRes then
@@ -1130,6 +1189,7 @@ begin
     Writeln('  -origfn     生成的.go文件使用原始的delphi/lazarus单元名，默认为false。 ');
     Writeln('  -pause      结束后根据选项暂停，比如： -pause "ew"，表示有错或者警告，可选为“e”,“w”,“a” e=错误，w=警告，a=忽略其它选项，总是显示。');
     Writeln('  -pkgname    指定生成的go文件包名，默认为main。');
+    Writeln('  -watch      监视“-path”目录的文件，如果有改变则进行转换。');
     Writeln('  -h -help    显示帮助。');
     Writeln('  -v -version 显示版本号');
 
@@ -1156,6 +1216,7 @@ begin
     Writeln('  -origfn     The generated .go file uses the original delphi/lazarus unit name, the default is false.');
     Writeln('  -pause      After the end, pause according to the option, for example: -pause "ew", indicating that there is a fault or warning, you can choose "e", "w", "a" e=error, w=warning, a=ignore other options, always display.');
     Writeln('  -pkgname    Specifies the name of the generated go file package. The default is main.');
+    Writeln('  -watch      Monitor files in the "-path" directory and convert if there are changes.');
     Writeln('  -h -help    Show help.');
     Writeln('  -v -version Show Version.');
     Writeln('');
