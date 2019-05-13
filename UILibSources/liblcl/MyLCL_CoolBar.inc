@@ -450,6 +450,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function CoolBar_GetParentDoubleBuffered(AObj: TCoolBar): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure CoolBar_SetParentDoubleBuffered(AObj: TCoolBar; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function CoolBar_GetParentFont(AObj: TCoolBar): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -659,6 +669,11 @@ end;
 function CoolBar_GetDockClientCount(AObj: TCoolBar): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
+end;
+
+function CoolBar_GetMouseInClient(AObj: TCoolBar): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function CoolBar_GetVisibleDockClientCount(AObj: TCoolBar): Integer; extdecl;
@@ -1026,6 +1041,8 @@ exports
   CoolBar_SetImages,
   CoolBar_GetParentColor,
   CoolBar_SetParentColor,
+  CoolBar_GetParentDoubleBuffered,
+  CoolBar_SetParentDoubleBuffered,
   CoolBar_GetParentFont,
   CoolBar_SetParentFont,
   CoolBar_GetParentShowHint,
@@ -1061,6 +1078,7 @@ exports
   CoolBar_SetOnStartDock,
   CoolBar_SetOnUnDock,
   CoolBar_GetDockClientCount,
+  CoolBar_GetMouseInClient,
   CoolBar_GetVisibleDockClientCount,
   CoolBar_GetBrush,
   CoolBar_GetControlCount,

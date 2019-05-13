@@ -445,6 +445,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function MaskEdit_GetParentDoubleBuffered(AObj: TMaskEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure MaskEdit_SetParentDoubleBuffered(AObj: TMaskEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function MaskEdit_GetParentFont(AObj: TMaskEdit): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -754,6 +764,11 @@ end;
 procedure MaskEdit_SetDockSite(AObj: TMaskEdit; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function MaskEdit_GetMouseInClient(AObj: TMaskEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function MaskEdit_GetVisibleDockClientCount(AObj: TMaskEdit): Integer; extdecl;
@@ -1090,6 +1105,8 @@ exports
   MaskEdit_SetMaxLength,
   MaskEdit_GetParentColor,
   MaskEdit_SetParentColor,
+  MaskEdit_GetParentDoubleBuffered,
+  MaskEdit_SetParentDoubleBuffered,
   MaskEdit_GetParentFont,
   MaskEdit_SetParentFont,
   MaskEdit_GetParentShowHint,
@@ -1145,6 +1162,7 @@ exports
   MaskEdit_GetDockClientCount,
   MaskEdit_GetDockSite,
   MaskEdit_SetDockSite,
+  MaskEdit_GetMouseInClient,
   MaskEdit_GetVisibleDockClientCount,
   MaskEdit_GetBrush,
   MaskEdit_GetControlCount,

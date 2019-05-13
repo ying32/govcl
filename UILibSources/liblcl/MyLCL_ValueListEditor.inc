@@ -465,6 +465,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function ValueListEditor_GetParentDoubleBuffered(AObj: TValueListEditor): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ValueListEditor_SetParentDoubleBuffered(AObj: TValueListEditor; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ValueListEditor_GetParentFont(AObj: TValueListEditor): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -832,6 +842,11 @@ end;
 procedure ValueListEditor_SetDockSite(AObj: TValueListEditor; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ValueListEditor_GetMouseInClient(AObj: TValueListEditor): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ValueListEditor_GetVisibleDockClientCount(AObj: TValueListEditor): Integer; extdecl;
@@ -1212,6 +1227,8 @@ exports
   ValueListEditor_SetOptions,
   ValueListEditor_GetParentColor,
   ValueListEditor_SetParentColor,
+  ValueListEditor_GetParentDoubleBuffered,
+  ValueListEditor_SetParentDoubleBuffered,
   ValueListEditor_GetParentFont,
   ValueListEditor_SetParentFont,
   ValueListEditor_GetParentShowHint,
@@ -1275,6 +1292,7 @@ exports
   ValueListEditor_GetDockClientCount,
   ValueListEditor_GetDockSite,
   ValueListEditor_SetDockSite,
+  ValueListEditor_GetMouseInClient,
   ValueListEditor_GetVisibleDockClientCount,
   ValueListEditor_GetBrush,
   ValueListEditor_GetControlCount,

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
@@ -23,7 +24,11 @@ func main() {
 
 	icon := vcl.NewIcon()
 	defer icon.Free()
-	icon.LoadFromResourceID(rtl.MainInstance(), 3)
+	if runtime.GOOS == "windows" {
+		icon.LoadFromResourceID(rtl.MainInstance(), 3)
+	} else {
+		icon.LoadFromFile("./brown.ico")
+	}
 
 	imglist := vcl.NewImageList(mainForm)
 	imglist.AddIcon(icon)

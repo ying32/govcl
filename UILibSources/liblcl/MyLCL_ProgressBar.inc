@@ -365,6 +365,16 @@ begin
   AObj.Orientation := AValue;
 end;
 
+function ProgressBar_GetParentDoubleBuffered(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ProgressBar_SetParentDoubleBuffered(AObj: TProgressBar; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ProgressBar_GetParentShowHint(AObj: TProgressBar): LongBool; extdecl;
 begin
   Result :=  AObj.ParentShowHint;
@@ -555,6 +565,11 @@ end;
 procedure ProgressBar_SetDockSite(AObj: TProgressBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ProgressBar_GetMouseInClient(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ProgressBar_GetVisibleDockClientCount(AObj: TProgressBar): Integer; extdecl;
@@ -875,6 +890,8 @@ exports
   ProgressBar_SetMax,
   ProgressBar_GetOrientation,
   ProgressBar_SetOrientation,
+  ProgressBar_GetParentDoubleBuffered,
+  ProgressBar_SetParentDoubleBuffered,
   ProgressBar_GetParentShowHint,
   ProgressBar_SetParentShowHint,
   ProgressBar_GetPopupMenu,
@@ -909,6 +926,7 @@ exports
   ProgressBar_GetDockClientCount,
   ProgressBar_GetDockSite,
   ProgressBar_SetDockSite,
+  ProgressBar_GetMouseInClient,
   ProgressBar_GetVisibleDockClientCount,
   ProgressBar_GetBrush,
   ProgressBar_GetControlCount,

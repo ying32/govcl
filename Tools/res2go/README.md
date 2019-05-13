@@ -21,6 +21,7 @@ usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outre
   -origfn     The generated .go file uses the original delphi/lazarus unit name, the default is false.
   -pause      After the end, pause according to the option, for example: -pause "ew", indicating that there is a fault or warning, you can choose "e", "w", "a" e=error, w=warning, a=ignore other options, always display.
   -pkgname    Specifies the name of the generated go file package. The default is main.
+  -watch      Monitor files in the "-path" directory and convert if there are changes.
   -h -help    Show help.
   -v -version Show Version.
 ```

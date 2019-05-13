@@ -385,6 +385,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function StaticText_GetParentDoubleBuffered(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure StaticText_SetParentDoubleBuffered(AObj: TStaticText; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function StaticText_GetParentFont(AObj: TStaticText): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -565,6 +575,11 @@ end;
 procedure StaticText_SetDockSite(AObj: TStaticText; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function StaticText_GetMouseInClient(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function StaticText_GetVisibleDockClientCount(AObj: TStaticText): Integer; extdecl;
@@ -889,6 +904,8 @@ exports
   StaticText_SetFont,
   StaticText_GetParentColor,
   StaticText_SetParentColor,
+  StaticText_GetParentDoubleBuffered,
+  StaticText_SetParentDoubleBuffered,
   StaticText_GetParentFont,
   StaticText_SetParentFont,
   StaticText_GetParentShowHint,
@@ -921,6 +938,7 @@ exports
   StaticText_GetDockClientCount,
   StaticText_GetDockSite,
   StaticText_SetDockSite,
+  StaticText_GetMouseInClient,
   StaticText_GetVisibleDockClientCount,
   StaticText_GetBrush,
   StaticText_GetControlCount,

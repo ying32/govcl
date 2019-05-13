@@ -46,11 +46,6 @@ begin
   AObj.SelectAll;
 end;
 
-function ListView_CustomSort(AObj: TListView; SortProc: PFNLVCOMPARE; lParam: NativeInt): LongBool; extdecl;
-begin
-  Result :=  AObj.CustomSort(SortProc, lParam);
-end;
-
 function ListView_CanFocus(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -581,6 +576,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function ListView_GetParentDoubleBuffered(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ListView_SetParentDoubleBuffered(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ListView_GetParentFont(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -1018,6 +1023,11 @@ begin
   AObj.DockSite := AValue;
 end;
 
+function ListView_GetMouseInClient(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function ListView_GetVisibleDockClientCount(AObj: TListView): Integer; extdecl;
 begin
   Result :=  AObj.VisibleDockClientCount;
@@ -1267,7 +1277,6 @@ exports
   ListView_DeleteSelected,
   ListView_IsEditing,
   ListView_SelectAll,
-  ListView_CustomSort,
   ListView_CanFocus,
   ListView_ContainsControl,
   ListView_ControlAtPos,
@@ -1374,6 +1383,8 @@ exports
   ListView_SetRowSelect,
   ListView_GetParentColor,
   ListView_SetParentColor,
+  ListView_GetParentDoubleBuffered,
+  ListView_SetParentDoubleBuffered,
   ListView_GetParentFont,
   ListView_SetParentFont,
   ListView_GetParentShowHint,
@@ -1447,6 +1458,7 @@ exports
   ListView_GetDockClientCount,
   ListView_GetDockSite,
   ListView_SetDockSite,
+  ListView_GetMouseInClient,
   ListView_GetVisibleDockClientCount,
   ListView_GetBrush,
   ListView_GetControlCount,

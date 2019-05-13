@@ -500,6 +500,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function ToolBar_GetParentDoubleBuffered(AObj: TToolBar): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ToolBar_SetParentDoubleBuffered(AObj: TToolBar; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ToolBar_GetParentFont(AObj: TToolBar): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -715,6 +725,11 @@ end;
 function ToolBar_GetDockClientCount(AObj: TToolBar): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
+end;
+
+function ToolBar_GetMouseInClient(AObj: TToolBar): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ToolBar_GetVisibleDockClientCount(AObj: TToolBar): Integer; extdecl;
@@ -1067,6 +1082,8 @@ exports
   ToolBar_SetList,
   ToolBar_GetParentColor,
   ToolBar_SetParentColor,
+  ToolBar_GetParentDoubleBuffered,
+  ToolBar_SetParentDoubleBuffered,
   ToolBar_GetParentFont,
   ToolBar_SetParentFont,
   ToolBar_GetParentShowHint,
@@ -1104,6 +1121,7 @@ exports
   ToolBar_SetOnResize,
   ToolBar_SetOnUnDock,
   ToolBar_GetDockClientCount,
+  ToolBar_GetMouseInClient,
   ToolBar_GetVisibleDockClientCount,
   ToolBar_GetBrush,
   ToolBar_GetControlCount,

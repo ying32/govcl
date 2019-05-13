@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
@@ -26,7 +26,7 @@
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="2"/>
-      <RevisionNr Value="1"/>
+      <RevisionNr Value="3"/>
       <StringTable Comments="Golang Binding LCL for Windows" CompanyName="ying32" FileDescription="Golang Binding LCL for Windows" InternalName="golcl" LegalCopyright="Copyright ying32 All...." OriginalFilename="liblcl.dll" ProductName="golcl"/>
     </VersionInfo>
     <MacroValues Count="1">
@@ -81,9 +81,10 @@
       <Version Value="2"/>
     </PublishOptions>
     <RunParams>
-      <local>
-        <FormatVersion Value="1"/>
-      </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default"/>
+      </Modes>
     </RunParams>
     <RequiredPackages Count="4">
       <Item1>
@@ -99,7 +100,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="8">
       <Unit0>
         <Filename Value="lcl.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -131,6 +132,10 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uGoForm"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="uMiniWebview.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

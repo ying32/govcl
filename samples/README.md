@@ -30,6 +30,7 @@
 | sysdialog | 各种系统对话框演示  | |
 | trayicon | 系统拖盘图标演示  | Windows  MacOS |
 | treeview |  树型列表框演示  | |
+| treeview_checkbox |  树型列表框 + 复选框 演示  | windows |
 | wingif | windows下gif图片播放演示  | 部分限Windows |
 | wkeWebBrowser | windows下wke浏览器嵌入演示  | Windows,32bit |
 | xunleidownloader | 迅雷下载引擎演示    | Windows,32bit |
@@ -59,4 +60,6 @@
 | miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl,  liblcl macOS,cocoa |  
 | jsonTogo | 将一段json数据转为Go的结构，以方便json.Unmarshal填充 |  |  
 | jsonViewer | 将一段json数据以树的形式显示 |  |  
+| pageControlWizard | PageControl向导程序演示 | |  
+| rproxy | 简单的反向代理用于内网穿透，支持HTTP/HTTPS转发 | |  
 

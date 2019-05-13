@@ -155,6 +155,11 @@ begin
   AObj.Left := AValue;
 end;
 
+function ListItem_GetListView(AObj: TListItem): TCustomListView; extdecl;
+begin
+  Result :=  AObj.ListView;
+end;
+
 function ListItem_GetOwner(AObj: TListItem): TListItems; extdecl;
 begin
   Result :=  AObj.Owner;
@@ -256,6 +261,7 @@ exports
   ListItem_GetIndex,
   ListItem_GetLeft,
   ListItem_SetLeft,
+  ListItem_GetListView,
   ListItem_GetOwner,
   ListItem_GetPosition,
   ListItem_SetPosition,

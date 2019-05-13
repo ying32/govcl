@@ -380,6 +380,16 @@ begin
   AObj.NumGlyphs := AValue;
 end;
 
+function BitBtn_GetParentDoubleBuffered(AObj: TBitBtn): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure BitBtn_SetParentDoubleBuffered(AObj: TBitBtn; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function BitBtn_GetParentFont(AObj: TBitBtn): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -578,6 +588,11 @@ end;
 procedure BitBtn_SetDockSite(AObj: TBitBtn; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function BitBtn_GetMouseInClient(AObj: TBitBtn): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function BitBtn_GetVisibleDockClientCount(AObj: TBitBtn): Integer; extdecl;
@@ -891,6 +906,8 @@ exports
   BitBtn_SetModalResult,
   BitBtn_GetNumGlyphs,
   BitBtn_SetNumGlyphs,
+  BitBtn_GetParentDoubleBuffered,
+  BitBtn_SetParentDoubleBuffered,
   BitBtn_GetParentFont,
   BitBtn_SetParentFont,
   BitBtn_GetParentShowHint,
@@ -925,6 +942,7 @@ exports
   BitBtn_GetDockClientCount,
   BitBtn_GetDockSite,
   BitBtn_SetDockSite,
+  BitBtn_GetMouseInClient,
   BitBtn_GetVisibleDockClientCount,
   BitBtn_GetBrush,
   BitBtn_GetControlCount,

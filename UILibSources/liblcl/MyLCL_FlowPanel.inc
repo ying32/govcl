@@ -455,6 +455,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function FlowPanel_GetParentDoubleBuffered(AObj: TFlowPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure FlowPanel_SetParentDoubleBuffered(AObj: TFlowPanel; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function FlowPanel_GetParentFont(AObj: TFlowPanel): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -661,6 +671,11 @@ end;
 function FlowPanel_GetDockClientCount(AObj: TFlowPanel): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
+end;
+
+function FlowPanel_GetMouseInClient(AObj: TFlowPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function FlowPanel_GetVisibleDockClientCount(AObj: TFlowPanel): Integer; extdecl;
@@ -989,6 +1004,8 @@ exports
   FlowPanel_SetFont,
   FlowPanel_GetParentColor,
   FlowPanel_SetParentColor,
+  FlowPanel_GetParentDoubleBuffered,
+  FlowPanel_SetParentDoubleBuffered,
   FlowPanel_GetParentFont,
   FlowPanel_SetParentFont,
   FlowPanel_GetParentShowHint,
@@ -1023,6 +1040,7 @@ exports
   FlowPanel_SetOnStartDock,
   FlowPanel_SetOnUnDock,
   FlowPanel_GetDockClientCount,
+  FlowPanel_GetMouseInClient,
   FlowPanel_GetVisibleDockClientCount,
   FlowPanel_GetBrush,
   FlowPanel_GetControlCount,

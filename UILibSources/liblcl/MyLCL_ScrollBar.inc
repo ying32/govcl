@@ -360,6 +360,16 @@ begin
   AObj.PageSize := AValue;
 end;
 
+function ScrollBar_GetParentDoubleBuffered(AObj: TScrollBar): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ScrollBar_SetParentDoubleBuffered(AObj: TScrollBar; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function ScrollBar_GetParentShowHint(AObj: TScrollBar): LongBool; extdecl;
 begin
   Result :=  AObj.ParentShowHint;
@@ -523,6 +533,11 @@ end;
 procedure ScrollBar_SetDockSite(AObj: TScrollBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function ScrollBar_GetMouseInClient(AObj: TScrollBar): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function ScrollBar_GetVisibleDockClientCount(AObj: TScrollBar): Integer; extdecl;
@@ -842,6 +857,8 @@ exports
   ScrollBar_SetMin,
   ScrollBar_GetPageSize,
   ScrollBar_SetPageSize,
+  ScrollBar_GetParentDoubleBuffered,
+  ScrollBar_SetParentDoubleBuffered,
   ScrollBar_GetParentShowHint,
   ScrollBar_SetParentShowHint,
   ScrollBar_GetPopupMenu,
@@ -871,6 +888,7 @@ exports
   ScrollBar_GetDockClientCount,
   ScrollBar_GetDockSite,
   ScrollBar_SetDockSite,
+  ScrollBar_GetMouseInClient,
   ScrollBar_GetVisibleDockClientCount,
   ScrollBar_GetBrush,
   ScrollBar_GetControlCount,

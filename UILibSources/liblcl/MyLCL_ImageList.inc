@@ -65,11 +65,6 @@ begin
   AObj.Delete(Index);
 end;
 
-function ImageList_HandleAllocated(AObj: TImageList): LongBool; extdecl;
-begin
-  Result :=  AObj.HandleAllocated;
-end;
-
 procedure ImageList_Insert(AObj: TImageList; Index: Integer; Image: TBitmap; Mask: TBitmap); extdecl;
 begin
   AObj.Insert(Index, Image, Mask);
@@ -340,7 +335,6 @@ exports
   ImageList_AddMasked,
   ImageList_Clear,
   ImageList_Delete,
-  ImageList_HandleAllocated,
   ImageList_Insert,
   ImageList_InsertIcon,
   ImageList_InsertMasked,

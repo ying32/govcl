@@ -2,13 +2,13 @@ package main
 
 import (
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/exts/tools"
+	//"github.com/ying32/govcl/vcl/exts/tools"
 	"github.com/ying32/govcl/vcl/rtl"
 )
 
 func main() {
 	// mac下发布时去掉，只在测试时使用
-	tools.RunWithMacOSApp()
+	//tools.RunWithMacOSApp()
 
 	vcl.Application.SetFormScaled(true)
 	vcl.Application.SetIconResId(3)

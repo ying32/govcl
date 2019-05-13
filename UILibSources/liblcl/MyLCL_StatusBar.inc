@@ -385,6 +385,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function StatusBar_GetParentDoubleBuffered(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure StatusBar_SetParentDoubleBuffered(AObj: TStatusBar; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function StatusBar_GetParentFont(AObj: TStatusBar): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -598,6 +608,11 @@ end;
 procedure StatusBar_SetDockSite(AObj: TStatusBar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function StatusBar_GetMouseInClient(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function StatusBar_GetVisibleDockClientCount(AObj: TStatusBar): Integer; extdecl;
@@ -932,6 +947,8 @@ exports
   StatusBar_SetPanels,
   StatusBar_GetParentColor,
   StatusBar_SetParentColor,
+  StatusBar_GetParentDoubleBuffered,
+  StatusBar_SetParentDoubleBuffered,
   StatusBar_GetParentFont,
   StatusBar_SetParentFont,
   StatusBar_GetParentShowHint,
@@ -969,6 +986,7 @@ exports
   StatusBar_GetDockClientCount,
   StatusBar_GetDockSite,
   StatusBar_SetDockSite,
+  StatusBar_GetMouseInClient,
   StatusBar_GetVisibleDockClientCount,
   StatusBar_GetBrush,
   StatusBar_GetControlCount,

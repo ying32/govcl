@@ -440,6 +440,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function Memo_GetParentDoubleBuffered(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure Memo_SetParentDoubleBuffered(AObj: TMemo; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function Memo_GetParentFont(AObj: TMemo): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -767,6 +777,11 @@ end;
 procedure Memo_SetDockSite(AObj: TMemo; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function Memo_GetMouseInClient(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function Memo_GetVisibleDockClientCount(AObj: TMemo): Integer; extdecl;
@@ -1102,6 +1117,8 @@ exports
   Memo_SetMaxLength,
   Memo_GetParentColor,
   Memo_SetParentColor,
+  Memo_GetParentDoubleBuffered,
+  Memo_SetParentDoubleBuffered,
   Memo_GetParentFont,
   Memo_SetParentFont,
   Memo_GetParentShowHint,
@@ -1161,6 +1178,7 @@ exports
   Memo_GetDockClientCount,
   Memo_GetDockSite,
   Memo_SetDockSite,
+  Memo_GetMouseInClient,
   Memo_GetVisibleDockClientCount,
   Memo_GetBrush,
   Memo_GetControlCount,

@@ -28,7 +28,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $01020200;
+  Result := $01020300;
 end;
 
 // 一些初始
@@ -446,6 +446,11 @@ end;
 procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
 begin
   AObj.ScrollBars := AValue;
+end;
+
+function ListView_CustomSort(AObj: TListView; SortProc: TLVCompare; lParam: NativeInt): LongBool; extdecl;
+begin
+  Result :=  AObj.CustomSort2(SortProc, lParam);
 end;
 
 // TTreeView
@@ -963,6 +968,7 @@ exports
   // TListView
   ListView_GetScrollBars,
   ListView_SetScrollBars,
+  ListView_CustomSort,
 
   // TTreeView
   TreeView_GetScrollBars,

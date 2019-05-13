@@ -460,6 +460,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function Edit_GetParentDoubleBuffered(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure Edit_SetParentDoubleBuffered(AObj: TEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function Edit_GetParentFont(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -747,6 +757,11 @@ end;
 procedure Edit_SetDockSite(AObj: TEdit; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function Edit_GetMouseInClient(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function Edit_GetVisibleDockClientCount(AObj: TEdit): Integer; extdecl;
@@ -1086,6 +1101,8 @@ exports
   Edit_SetNumbersOnly,
   Edit_GetParentColor,
   Edit_SetParentColor,
+  Edit_GetParentDoubleBuffered,
+  Edit_SetParentDoubleBuffered,
   Edit_GetParentFont,
   Edit_SetParentFont,
   Edit_GetParentShowHint,
@@ -1137,6 +1154,7 @@ exports
   Edit_GetDockClientCount,
   Edit_GetDockSite,
   Edit_SetDockSite,
+  Edit_GetMouseInClient,
   Edit_GetVisibleDockClientCount,
   Edit_GetBrush,
   Edit_GetControlCount,

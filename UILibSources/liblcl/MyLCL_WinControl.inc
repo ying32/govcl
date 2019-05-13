@@ -260,6 +260,11 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function WinControl_GetMouseInClient(AObj: TWinControl): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function WinControl_GetVisibleDockClientCount(AObj: TWinControl): Integer; extdecl;
 begin
   Result :=  AObj.VisibleDockClientCount;
@@ -278,6 +283,16 @@ end;
 function WinControl_GetHandle(AObj: TWinControl): HWND; extdecl;
 begin
   Result :=  AObj.Handle;
+end;
+
+function WinControl_GetParentDoubleBuffered(AObj: TWinControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure WinControl_SetParentDoubleBuffered(AObj: TWinControl; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
 end;
 
 function WinControl_GetParentWindow(AObj: TWinControl): HWND; extdecl;
@@ -637,10 +652,13 @@ exports
   WinControl_SetDockSite,
   WinControl_GetDoubleBuffered,
   WinControl_SetDoubleBuffered,
+  WinControl_GetMouseInClient,
   WinControl_GetVisibleDockClientCount,
   WinControl_GetBrush,
   WinControl_GetControlCount,
   WinControl_GetHandle,
+  WinControl_GetParentDoubleBuffered,
+  WinControl_SetParentDoubleBuffered,
   WinControl_GetParentWindow,
   WinControl_SetParentWindow,
   WinControl_GetTabOrder,

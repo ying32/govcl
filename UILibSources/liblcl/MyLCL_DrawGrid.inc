@@ -470,6 +470,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function DrawGrid_GetParentDoubleBuffered(AObj: TDrawGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure DrawGrid_SetParentDoubleBuffered(AObj: TDrawGrid; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function DrawGrid_GetParentFont(AObj: TDrawGrid): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -846,6 +856,11 @@ begin
   AObj.DockSite := AValue;
 end;
 
+function DrawGrid_GetMouseInClient(AObj: TDrawGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function DrawGrid_GetVisibleDockClientCount(AObj: TDrawGrid): Integer; extdecl;
 begin
   Result :=  AObj.VisibleDockClientCount;
@@ -1205,6 +1220,8 @@ exports
   DrawGrid_SetOptions,
   DrawGrid_GetParentColor,
   DrawGrid_SetParentColor,
+  DrawGrid_GetParentDoubleBuffered,
+  DrawGrid_SetParentDoubleBuffered,
   DrawGrid_GetParentFont,
   DrawGrid_SetParentFont,
   DrawGrid_GetParentShowHint,
@@ -1269,6 +1286,7 @@ exports
   DrawGrid_GetDockClientCount,
   DrawGrid_GetDockSite,
   DrawGrid_SetDockSite,
+  DrawGrid_GetMouseInClient,
   DrawGrid_GetVisibleDockClientCount,
   DrawGrid_GetBrush,
   DrawGrid_GetControlCount,

@@ -486,6 +486,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function TreeView_GetParentDoubleBuffered(AObj: TTreeView): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure TreeView_SetParentDoubleBuffered(AObj: TTreeView; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function TreeView_GetParentFont(AObj: TTreeView): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -925,6 +935,11 @@ begin
   AObj.DockSite := AValue;
 end;
 
+function TreeView_GetMouseInClient(AObj: TTreeView): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function TreeView_GetVisibleDockClientCount(AObj: TTreeView): Integer; extdecl;
 begin
   Result :=  AObj.VisibleDockClientCount;
@@ -1272,6 +1287,8 @@ exports
   TreeView_SetMultiSelectStyle,
   TreeView_GetParentColor,
   TreeView_SetParentColor,
+  TreeView_GetParentDoubleBuffered,
+  TreeView_SetParentDoubleBuffered,
   TreeView_GetParentFont,
   TreeView_SetParentFont,
   TreeView_GetParentShowHint,
@@ -1347,6 +1364,7 @@ exports
   TreeView_GetDockClientCount,
   TreeView_GetDockSite,
   TreeView_SetDockSite,
+  TreeView_GetMouseInClient,
   TreeView_GetVisibleDockClientCount,
   TreeView_GetBrush,
   TreeView_GetControlCount,

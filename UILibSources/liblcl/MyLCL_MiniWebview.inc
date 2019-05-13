@@ -302,6 +302,11 @@ begin
   AObj.DoubleBuffered := AValue;
 end;
 
+function MiniWebview_GetMouseInClient(AObj: TMiniWebview): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function MiniWebview_GetVisibleDockClientCount(AObj: TMiniWebview): Integer; extdecl;
 begin
   Result :=  AObj.VisibleDockClientCount;
@@ -320,6 +325,16 @@ end;
 function MiniWebview_GetHandle(AObj: TMiniWebview): HWND; extdecl;
 begin
   Result :=  AObj.Handle;
+end;
+
+function MiniWebview_GetParentDoubleBuffered(AObj: TMiniWebview): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure MiniWebview_SetParentDoubleBuffered(AObj: TMiniWebview; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
 end;
 
 function MiniWebview_GetParentWindow(AObj: TMiniWebview): HWND; extdecl;
@@ -687,10 +702,13 @@ exports
   MiniWebview_SetDockSite,
   MiniWebview_GetDoubleBuffered,
   MiniWebview_SetDoubleBuffered,
+  MiniWebview_GetMouseInClient,
   MiniWebview_GetVisibleDockClientCount,
   MiniWebview_GetBrush,
   MiniWebview_GetControlCount,
   MiniWebview_GetHandle,
+  MiniWebview_GetParentDoubleBuffered,
+  MiniWebview_SetParentDoubleBuffered,
   MiniWebview_GetParentWindow,
   MiniWebview_SetParentWindow,
   MiniWebview_GetTabOrder,

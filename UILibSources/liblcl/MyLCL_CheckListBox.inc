@@ -417,6 +417,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function CheckListBox_GetParentDoubleBuffered(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure CheckListBox_SetParentDoubleBuffered(AObj: TCheckListBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function CheckListBox_GetParentFont(AObj: TCheckListBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -674,6 +684,11 @@ end;
 procedure CheckListBox_SetDockSite(AObj: TCheckListBox; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function CheckListBox_GetMouseInClient(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function CheckListBox_GetVisibleDockClientCount(AObj: TCheckListBox): Integer; extdecl;
@@ -1054,6 +1069,8 @@ exports
   CheckListBox_SetItems,
   CheckListBox_GetParentColor,
   CheckListBox_SetParentColor,
+  CheckListBox_GetParentDoubleBuffered,
+  CheckListBox_SetParentDoubleBuffered,
   CheckListBox_GetParentFont,
   CheckListBox_SetParentFont,
   CheckListBox_GetParentShowHint,
@@ -1099,6 +1116,7 @@ exports
   CheckListBox_GetDockClientCount,
   CheckListBox_GetDockSite,
   CheckListBox_SetDockSite,
+  CheckListBox_GetMouseInClient,
   CheckListBox_GetVisibleDockClientCount,
   CheckListBox_GetBrush,
   CheckListBox_GetControlCount,

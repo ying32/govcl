@@ -355,6 +355,16 @@ begin
   AObj.Font := AValue;
 end;
 
+function MonthCalendar_GetParentDoubleBuffered(AObj: TMonthCalendar): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure MonthCalendar_SetParentDoubleBuffered(AObj: TMonthCalendar; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function MonthCalendar_GetPopupMenu(AObj: TMonthCalendar): TPopupMenu; extdecl;
 begin
   Result :=  AObj.PopupMenu;
@@ -523,6 +533,11 @@ end;
 procedure MonthCalendar_SetDockSite(AObj: TMonthCalendar; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function MonthCalendar_GetMouseInClient(AObj: TMonthCalendar): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function MonthCalendar_GetVisibleDockClientCount(AObj: TMonthCalendar): Integer; extdecl;
@@ -841,6 +856,8 @@ exports
   MonthCalendar_SetEnabled,
   MonthCalendar_GetFont,
   MonthCalendar_SetFont,
+  MonthCalendar_GetParentDoubleBuffered,
+  MonthCalendar_SetParentDoubleBuffered,
   MonthCalendar_GetPopupMenu,
   MonthCalendar_SetPopupMenu,
   MonthCalendar_GetShowHint,
@@ -869,6 +886,7 @@ exports
   MonthCalendar_GetDockClientCount,
   MonthCalendar_GetDockSite,
   MonthCalendar_SetDockSite,
+  MonthCalendar_GetMouseInClient,
   MonthCalendar_GetVisibleDockClientCount,
   MonthCalendar_GetBrush,
   MonthCalendar_GetControlCount,

@@ -414,6 +414,11 @@ begin
   EventMethodCode
 end;
 
+function LinkLabel_GetMouseInClient(AObj: TLinkLabel): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
 function LinkLabel_GetAction(AObj: TLinkLabel): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -687,6 +692,7 @@ exports
   LinkLabel_SetOnMouseMove,
   LinkLabel_SetOnMouseUp,
   LinkLabel_SetOnLinkClick,
+  LinkLabel_GetMouseInClient,
   LinkLabel_GetAction,
   LinkLabel_SetAction,
   LinkLabel_GetBiDiMode,

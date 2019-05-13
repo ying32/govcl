@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -60,21 +59,18 @@ func main() {
 		}
 	})
 	lv1.SetOnColumnClick(func(sender vcl.IObject, column *vcl.TListColumn) {
+		fmt.Println("index:", column.Index())
 		// 按柱头索引排序, lcl兼容版第二个参数永远为 column
 		lv1.CustomSort(0, int(column.Index()))
 	})
 
-	// 排序事件, lcl自动的，vcl才需要
-	if !api.IsloadedLcl {
-		lv1.SetOnCompare(func(sender vcl.IObject, item1, item2 *vcl.TListItem, data int32, compare *int32) {
-			// lcl data 无效
-			if data == 0 {
-				*compare = int32(strings.Compare(item1.Caption(), item2.Caption()))
-			} else {
-				*compare = int32(strings.Compare(item1.SubItems().Strings(data-1), item2.SubItems().Strings(data-1)))
-			}
-		})
-	}
+	lv1.SetOnCompare(func(sender vcl.IObject, item1, item2 *vcl.TListItem, data int32, compare *int32) {
+		if data == 0 {
+			*compare = int32(strings.Compare(item1.Caption(), item2.Caption()))
+		} else {
+			*compare = int32(strings.Compare(item1.SubItems().Strings(data-1), item2.SubItems().Strings(data-1)))
+		}
+	})
 
 	//	lv1.Clear()
 	lv1.Items().BeginUpdate()

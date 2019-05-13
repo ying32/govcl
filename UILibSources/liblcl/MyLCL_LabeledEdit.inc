@@ -465,6 +465,16 @@ begin
   AObj.ParentColor := AValue;
 end;
 
+function LabeledEdit_GetParentDoubleBuffered(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure LabeledEdit_SetParentDoubleBuffered(AObj: TLabeledEdit; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
 function LabeledEdit_GetParentFont(AObj: TLabeledEdit): LongBool; extdecl;
 begin
   Result :=  AObj.ParentFont;
@@ -745,6 +755,11 @@ end;
 procedure LabeledEdit_SetDockSite(AObj: TLabeledEdit; AValue: LongBool); extdecl;
 begin
   AObj.DockSite := AValue;
+end;
+
+function LabeledEdit_GetMouseInClient(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
 end;
 
 function LabeledEdit_GetVisibleDockClientCount(AObj: TLabeledEdit): Integer; extdecl;
@@ -1095,6 +1110,8 @@ exports
   LabeledEdit_SetNumbersOnly,
   LabeledEdit_GetParentColor,
   LabeledEdit_SetParentColor,
+  LabeledEdit_GetParentDoubleBuffered,
+  LabeledEdit_SetParentDoubleBuffered,
   LabeledEdit_GetParentFont,
   LabeledEdit_SetParentFont,
   LabeledEdit_GetParentShowHint,
@@ -1145,6 +1162,7 @@ exports
   LabeledEdit_GetDockClientCount,
   LabeledEdit_GetDockSite,
   LabeledEdit_SetDockSite,
+  LabeledEdit_GetMouseInClient,
   LabeledEdit_GetVisibleDockClientCount,
   LabeledEdit_GetBrush,
   LabeledEdit_GetControlCount,
