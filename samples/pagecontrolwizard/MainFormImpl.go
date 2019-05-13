@@ -12,7 +12,8 @@ type TMainFormFields struct {
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.hideAllTab()
-	f.setPage(0)
+	//f.setPage(0)
+	f.PageControl1.SetActivePageIndex(0)
 }
 
 func (f *TMainForm) hideAllTab() {
@@ -24,7 +25,7 @@ func (f *TMainForm) hideAllTab() {
 	}
 }
 
-func (f *TMainForm) setPage(idx int32) {
+/*func (f *TMainForm) setPage(idx int32) {
 	if idx != 0 && idx != -1 && idx != 1 {
 		return
 	}
@@ -40,11 +41,11 @@ func (f *TMainForm) setPage(idx int32) {
 	f.PageControl1.SetActivePageIndex(curIdx + idx)
 	sheet = f.PageControl1.Pages(curIdx + idx)
 	sheet.SetVisible(true)
-}
+}*/
 
 func (f *TMainForm) OnActPagePrevExecute(sender vcl.IObject) {
-	//f.PageControl1.SetActivePageIndex(f.PageControl1.ActivePageIndex() - 1)
-	f.setPage(-1)
+	f.PageControl1.SetActivePageIndex(f.PageControl1.ActivePageIndex() - 1)
+	//f.setPage(-1)
 }
 
 func (f *TMainForm) OnActPagePrevUpdate(sender vcl.IObject) {
@@ -52,8 +53,8 @@ func (f *TMainForm) OnActPagePrevUpdate(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActPageNextExecute(sender vcl.IObject) {
-	//f.PageControl1.SetActivePageIndex(f.PageControl1.ActivePageIndex() + 1)
-	f.setPage(1)
+	f.PageControl1.SetActivePageIndex(f.PageControl1.ActivePageIndex() + 1)
+	//f.setPage(1)
 }
 
 func (f *TMainForm) OnActPageNextUpdate(sender vcl.IObject) {
