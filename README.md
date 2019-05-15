@@ -27,7 +27,7 @@ Pre-compiled GUI library binary download
 
 
 res2go Tool  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.12-blue.svg)](Tools/res2go)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.13-blue.svg)](Tools/res2go)  
 **Note: Designed in Delphi/Lazarus, code written in Golang.**  
 
 ### usage: 

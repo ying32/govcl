@@ -26,7 +26,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.12';
+  APPVERSION = '1.0.13';
 
 type
   TComponentItem = record
@@ -1006,6 +1006,8 @@ var
     LTime: LongInt;
   begin
     Result := False;
+    if (not LWatch) or (LWatchList = nil) then
+      Exit;
   {$IFDEF FPC}
     if LWatchList.TryGetData(AFileName, LTime) then
   {$ELSE}
