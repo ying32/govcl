@@ -26,7 +26,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.13';
+  APPVERSION = '1.0.14';
 
 type
   TComponentItem = record
@@ -1090,6 +1090,13 @@ begin
         LOutPath := LOutPath + PathDelim;
     end;
 
+    if LOutWinRes then
+      WriteDefaultWindowsRes(LOutPath);
+    if SysIsZhCN then
+      Writeln('转换完成。')
+    else
+      Writeln('Done.');
+
     // 是否监视指定文件夹，有这个参数则表示监视，没有则不监视
     LWatch := FindCmdLineSwitch('watch');
     if LWatch then
@@ -1137,13 +1144,6 @@ begin
       if LWatch then
          LWatchList.Free;
     end;
-
-    if LOutWinRes then
-      WriteDefaultWindowsRes(LOutPath);
-    if SysIsZhCN then
-      Writeln('转换完成。')
-    else
-      Writeln('Done.');
 
     if FindCmdLineSwitch('pause') then
     begin
