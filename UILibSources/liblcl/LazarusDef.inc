@@ -28,7 +28,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $01020300;
+  Result := $01020301;
 end;
 
 // 一些初始
@@ -80,6 +80,7 @@ procedure Application_Initialize(AObj: TApplication); extdecl;
 begin
   AObj.Initialize;
 {$IFDEF WINDOWS}
+  WidgetSet.ThemeServices.UpdateThemes;
   WidgetSet.AppHandle := CreateWindowsAppHandle;
 {$ENDIF}
 end;
