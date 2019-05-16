@@ -64,6 +64,8 @@ type HRSRC = uintptr
 
 type HGLOBAL = uintptr
 
+type TFNWndEnumProc = uintptr
+
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect
 

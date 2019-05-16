@@ -82,6 +82,9 @@ var (
 	_RedrawWindow               = user32dll.NewProc("RedrawWindow")
 
 	_SetForegroundWindow = user32dll.NewProc("SetForegroundWindow")
+
+	_EnumWindows      = user32dll.NewProc("EnumWindows")
+	_EnumChildWindows = user32dll.NewProc("EnumChildWindows")
 )
 
 // MessageBox 消息框
@@ -472,5 +475,15 @@ func RedrawWindow(hWnd HWND, lprcUpdate *TRect, hrgnUpdate HRGN, flags uint32) b
 
 func SetForegroundWindow(hWnd HWND) bool {
 	r, _, _ := _SetForegroundWindow.Call(uintptr(hWnd))
+	return r != 0
+}
+
+func EnumWindows(lpEnumFunc TFNWndEnumProc, lParam uintptr) bool {
+	r, _, _ := _EnumWindows.Call(uintptr(lpEnumFunc), lParam)
+	return r != 0
+}
+
+func EnumChildWindows(hWndParent HWND, lpEnumFunc TFNWndEnumProc, lParam uintptr) bool {
+	r, _, _ := _EnumChildWindows.Call(uintptr(hWndParent), uintptr(lpEnumFunc), lParam)
 	return r != 0
 }
