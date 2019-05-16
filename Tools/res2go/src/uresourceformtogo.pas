@@ -768,13 +768,14 @@ var
    end;
 
  var
-   LInput, LOutput, LEnStream: TMemoryStream;
+   LOutput, LEnStream: TMemoryStream;
+   LInput: TFileStream;
    LUseEncrypt, LOutbytes, LOrigfn: Boolean;
    LGfmFileName, LTempFileName: string;
  begin
-   LInput := TMemoryStream.Create;
+   LInput := TFileStream.Create(ASrcFileName, fmOpenRead or fmShareDenyNone);
    try
-     LInput.LoadFromFile(ASrcFileName);
+     //LInput.LoadFromFile(ASrcFileName);
      LOutput := TMemoryStream.Create;
      try
         try
@@ -871,14 +872,20 @@ var
   LForms: array of string;
   LIndex, I: Integer;
   LPkg: string;
+  LProjFile: TFileStream;
 begin
   LStrs := TStringList.Create;
   LMainDotGo := TStringList.Create;
   try
     LSaveFileName := AOutPath + 'main.go';
     LMainFileExists := FileExists(LSaveFileName);
-
-    LStrs.LoadFromFile(AFileName);
+    LProjFile := TFileStream.Create(AFileName, fmOpenRead or fmShareDenyNone);
+    try
+      LProjFile.Position := 0;
+      LStrs.LoadFromStream(LProjFile);
+    finally
+      LProjFile.Free;
+    end;
     // 如果不存在 main.go文件，则新建一个
     if not LMainFileExists then
     begin
