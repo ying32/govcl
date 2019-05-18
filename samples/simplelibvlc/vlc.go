@@ -129,7 +129,8 @@ func (v *TVLCMediaPlayer) Position() float32 {
 	if !v.checkMediaPlayer() {
 		return 0
 	}
-	return libvlc_media_player_get_position(v.mediaPlayerInstance)
+	psi := libvlc_media_player_get_position(v.mediaPlayerInstance)
+	return psi
 }
 
 func (v *TVLCMediaPlayer) SetPosition(pos float32) {

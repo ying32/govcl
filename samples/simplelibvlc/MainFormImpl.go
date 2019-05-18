@@ -3,7 +3,7 @@
 package main
 
 import (
-	"fmt"
+	"math"
 
 	"github.com/ying32/govcl/vcl"
 )
@@ -21,7 +21,8 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 		return
 	}
 	f.player.SethWnd(f.PnlVideo.Handle())
-	f.player.LoadFromFile("I:\\30分钟教你学会超火的日语歌曲- PLANET.mp4")
+	//f.player.LoadFromFile("I:\\30分钟教你学会超火的日语歌曲- PLANET.mp4")
+	f.player.LoadFromFile("test.mp4")
 
 }
 
@@ -65,6 +66,9 @@ func (f *TMainForm) OnTimer1Timer(sender vcl.IObject) {
 	if f.player != nil && f.player.checkMediaPlayer() {
 		f.LblCurTime.SetCaption(f.player.MediaTimeString())
 		f.LblTotalTime.SetCaption(f.player.MediaLengthString())
-		fmt.Println("pos:", f.player.Position())
+		f.TrackBar1.SetPosition(int32(math.Ceil(float64(f.player.Position() * 100.0))))
+		if f.player.MediaTime() >= f.player.MediaLength() {
+			//	f.ActStop.Execute()
+		}
 	}
 }

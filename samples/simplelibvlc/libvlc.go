@@ -9,6 +9,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"runtime"
 	"unsafe"
 
@@ -665,6 +666,13 @@ var (
 	_libvlc_playlist_play                            = libvlcdll.NewProc("libvlc_playlist_play")
 )
 
+// asm函数申明
+// floatcall_amd64.s
+func getfloat32() float32
+
+func getfloat64() float64
+
+//
 func toCStr(s string) uintptr {
 	return uintptr(unsafe.Pointer(&([]byte(s + "\x00")[0])))
 }
@@ -1295,12 +1303,12 @@ func libvlc_video_set_adjust_int(p_mi plibvlc_media_player_t, option uint, value
 }
 
 func libvlc_video_get_adjust_float(p_mi plibvlc_media_player_t, option uint) float32 {
-	r, _, _ := _libvlc_video_get_adjust_float.Call(uintptr(p_mi), uintptr(option))
-	return float32(r)
+	_libvlc_video_get_adjust_float.Call(uintptr(p_mi), uintptr(option))
+	return getfloat32()
 }
 
 func libvlc_video_set_adjust_float(p_mi plibvlc_media_player_t, option uint, value float32) {
-	_libvlc_video_set_adjust_float.Call(uintptr(p_mi), uintptr(option), uintptr(value))
+	_libvlc_video_set_adjust_float.Call(uintptr(p_mi), uintptr(option), uintptr(math.Float32bits(value)))
 }
 
 func libvlc_video_get_logo_int(p_mi plibvlc_media_player_t, option uint) int {
@@ -1339,13 +1347,12 @@ func libvlc_media_player_set_time(p_mi plibvlc_media_player_t, i_time libvlc_tim
 }
 
 func libvlc_media_player_get_position(p_mi plibvlc_media_player_t) float32 {
-	r, r2, r3 := _libvlc_media_player_get_position.Call(uintptr(p_mi))
-	fmt.Println("r:", r, ", r2:", r2, ",r3:", r3)
-	return float32(r)
+	_libvlc_media_player_get_position.Call(uintptr(p_mi))
+	return getfloat32()
 }
 
 func libvlc_media_player_set_position(p_mi plibvlc_media_player_t, f_pos float32) {
-	_libvlc_media_player_set_position.Call(uintptr(p_mi), uintptr(f_pos))
+	_libvlc_media_player_set_position.Call(uintptr(p_mi), uintptr(math.Float32bits(f_pos)))
 }
 
 func libvlc_media_player_set_chapter(p_mi plibvlc_media_player_t, i_chapter int) {
@@ -1395,12 +1402,12 @@ func libvlc_media_player_next_chapter(p_mi plibvlc_media_player_t) {
 }
 
 func libvlc_media_player_get_rate(p_mi plibvlc_media_player_t) float32 {
-	r, _, _ := _libvlc_media_player_get_rate.Call(uintptr(p_mi))
-	return float32(r)
+	_libvlc_media_player_get_rate.Call(uintptr(p_mi))
+	return getfloat32()
 }
 
 func libvlc_media_player_set_rate(p_mi plibvlc_media_player_t, rate float32) int {
-	r, _, _ := _libvlc_media_player_set_rate.Call(uintptr(p_mi), uintptr(rate))
+	r, _, _ := _libvlc_media_player_set_rate.Call(uintptr(p_mi), uintptr(math.Float32bits(rate)))
 	return int(r)
 }
 
@@ -1410,8 +1417,8 @@ func libvlc_media_player_get_state(p_mi plibvlc_media_player_t) libvlc_state_t {
 }
 
 func libvlc_media_player_get_fps(p_mi plibvlc_media_player_t) float32 {
-	r, _, _ := _libvlc_media_player_get_fps.Call(uintptr(p_mi))
-	return float32(r)
+	_libvlc_media_player_get_fps.Call(uintptr(p_mi))
+	return getfloat32()
 }
 
 func libvlc_media_player_has_vout(p_mi plibvlc_media_player_t) uint {
@@ -1487,12 +1494,12 @@ func libvlc_video_get_cursor(p_mi plibvlc_media_player_t, num uint, px *int, py 
 }
 
 func libvlc_video_get_scale(p_mi plibvlc_media_player_t) float32 {
-	r, _, _ := _libvlc_video_get_scale.Call(uintptr(p_mi))
-	return float32(r)
+	_libvlc_video_get_scale.Call(uintptr(p_mi))
+	return getfloat32()
 }
 
 func libvlc_video_set_scale(p_mi plibvlc_media_player_t, f_factor float32) {
-	_libvlc_video_set_scale.Call(uintptr(p_mi), uintptr(f_factor))
+	_libvlc_video_set_scale.Call(uintptr(p_mi), uintptr(math.Float32bits(f_factor)))
 }
 
 func libvlc_video_get_aspect_ratio(p_mi plibvlc_media_player_t) string {
@@ -1773,7 +1780,7 @@ func libvlc_vlm_pause_media(p_instance plibvlc_instance_t, psz_name string) int 
 }
 
 func libvlc_vlm_seek_media(p_instance plibvlc_instance_t, psz_name string, f_percentage float32) int {
-	r, _, _ := _libvlc_vlm_seek_media.Call(uintptr(p_instance), toCStr(psz_name), uintptr(f_percentage))
+	r, _, _ := _libvlc_vlm_seek_media.Call(uintptr(p_instance), toCStr(psz_name), uintptr(math.Float32bits(f_percentage)))
 	return int(r)
 }
 
@@ -1783,8 +1790,8 @@ func libvlc_vlm_show_media(p_instance plibvlc_instance_t, psz_name string) strin
 }
 
 func libvlc_vlm_get_media_instance_position(p_instance plibvlc_instance_t, psz_name string, i_instance int) float32 {
-	r, _, _ := _libvlc_vlm_get_media_instance_position.Call(uintptr(p_instance), toCStr(psz_name), uintptr(i_instance))
-	return float32(r)
+	_libvlc_vlm_get_media_instance_position.Call(uintptr(p_instance), toCStr(psz_name), uintptr(i_instance))
+	return getfloat32()
 }
 
 func libvlc_vlm_get_media_instance_time(p_instance plibvlc_instance_t, psz_name string, i_instance int) int {
