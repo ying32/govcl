@@ -4,8 +4,12 @@ package main
 
 import (
 	"math"
+	"os"
+	"runtime"
 
 	"github.com/ying32/govcl/vcl"
+	"github.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/types/colors"
 )
 
 //::private::
@@ -15,7 +19,12 @@ type TMainFormFields struct {
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
-	f.player = NewVLCMediaPlayer()
+	os.Setenv("VLC_PLUGIN_PATH", rtl.ExtractFilePath(vcl.Application.ExeName())+"/plugins/")
+	args := []string{}
+	if runtime.GOOS == "darwin" {
+		//	args = append(args, "-I", "macosx")
+	}
+	f.player = NewVLCMediaPlayer(args...)
 	if f.player == nil {
 		vcl.ShowMessage("创建MediaPlayer失败。")
 		return
@@ -23,6 +32,9 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.player.SethWnd(f.PnlVideo.Handle())
 	//f.player.LoadFromFile("I:\\30分钟教你学会超火的日语歌曲- PLANET.mp4")
 	f.player.LoadFromFile("test.mp4")
+	f.PnlVideo.SetShowCaption(true)
+	f.PnlVideo.SetCaption("fff")
+	f.PnlVideo.SetColor(colors.ClBlack)
 
 }
 

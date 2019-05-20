@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -12,8 +13,10 @@ type TVLCMediaPlayer struct {
 }
 
 func NewVLCMediaPlayer(args ...string) *TVLCMediaPlayer {
+	fmt.Println("load:", libvlcdll.Load())
 	v := new(TVLCMediaPlayer)
 	v.vlcInstance = libvlc_new(args...)
+	fmt.Println(libvlc_errmsg())
 	if !v.checkVLCInstance() {
 		return nil
 	}
@@ -74,7 +77,14 @@ func (v *TVLCMediaPlayer) SethWnd(parenthWnd types.HWND) {
 	if !v.checkMediaPlayer() {
 		return
 	}
-	libvlc_media_player_set_hwnd(v.mediaPlayerInstance, parenthWnd)
+	switch runtime.GOOS {
+	case "windows":
+		libvlc_media_player_set_hwnd(v.mediaPlayerInstance, parenthWnd)
+	case "linux":
+		libvlc_media_player_set_xwindow(v.mediaPlayerInstance, uint32(parenthWnd))
+	case "darwin":
+		libvlc_media_player_set_nsobject(v.mediaPlayerInstance, parenthWnd)
+	}
 }
 
 func (v *TVLCMediaPlayer) LoadFromFile(aFileName string) {

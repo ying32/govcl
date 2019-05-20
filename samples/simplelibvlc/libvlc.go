@@ -689,7 +689,7 @@ func getDLLName() string {
 	case "linux":
 		return "libvlc.so.5"
 	case "darwin":
-		return "libvlc.dylib"
+		return "./lib/libvlc.dylib"
 	}
 	return ""
 }
