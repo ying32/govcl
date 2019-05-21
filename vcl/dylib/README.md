@@ -87,16 +87,17 @@ func Func2() float32 {
 }
 
 // 如果是外部的共享库返回float32或者float64则另使用补丁方式，暂时不支持arm
+// import "github.com/ying32/govcl/dylib/floatpatch"
 // float32
 func Func2() float32 {
     _Func2.Call()  
-    return dylib.Getfloat32() // 注，在此函数前面不要调用其他函数了，不然就获取不到结果
+    return floatpatch.Getfloat32() // 注，在此函数前面不要调用其他函数了，不然就获取不到结果
 }
 
 // float64
 func Func2() float64 {
     _Func2.Call()  
-    return dylib.Getfloat64() // 注，在此函数前面不要调用其他函数了，不然就获取不到结果
+    return floatpatch.Getfloat64() // 注，在此函数前面不要调用其他函数了，不然就获取不到结果
 }
 
 

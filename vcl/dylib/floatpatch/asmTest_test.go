@@ -1,11 +1,13 @@
-package dylib
+package floatpatch
 
 import (
 	"testing"
+
+	"github.com/ying32/govcl/vcl/dylib"
 )
 
 var (
-	libTest               = NewLazyDLL("Project12.dll")
+	libTest               = dylib.NewLazyDLL("Project12.dll")
 	_testFloat32_MaxValue = libTest.NewProc("testFloat32_MaxValue")
 	_testFloat32_MinValue = libTest.NewProc("testFloat32_MinValue")
 	_testFloat32_Epsilon  = libTest.NewProc("testFloat32_Epsilon")

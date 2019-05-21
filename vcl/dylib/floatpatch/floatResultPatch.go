@@ -5,7 +5,7 @@
 
 */
 
-package dylib
+package floatpatch
 
 func Getfloat32() float32
 
