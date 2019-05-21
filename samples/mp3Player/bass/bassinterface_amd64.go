@@ -1,5 +1,7 @@
 package bass
 
+import "github.com/ying32/govcl/vcl/dylib/floatpatch"
+
 func ToUInt64(r1, r2 uintptr) uint64 {
 	return uint64(r1)
 }
@@ -24,15 +26,12 @@ func BASS_ChannelSetPosition(handle HSTREAM, pos uint64, mode uint32) bool {
 	return r != 0
 }
 
-//func BASS_ChannelBytes2Seconds(handle HSTREAM, pos uint64) float64 {
-//	r, r2, _ := _BASS_ChannelBytes2Seconds.Call(uintptr(handle), uintptr(pos))
-//	var result float64
-//	*(*uint64)(unsafe.Pointer(&result)) = uint64(r)
-//	fmt.Println("result:", r, r2, result, ", pos:", pos)
-//	return result
-//}
+func BASS_ChannelBytes2Seconds(handle HSTREAM, pos uint64) float64 {
+	_BASS_ChannelBytes2Seconds.Call(uintptr(handle), uintptr(pos))
+	return floatpatch.Getfloat64()
+}
 
-//func BASS_ChannelSeconds2Bytes(handle HSTREAM, pos float64) uint64 {
-//	r, _, _ := _BASS_ChannelSeconds2Bytes.Call(uintptr(handle), uintptr(pos))
-//	return uint64(r)
-//}
+func BASS_ChannelSeconds2Bytes(handle HSTREAM, pos float64) uint64 {
+	r, _, _ := _BASS_ChannelSeconds2Bytes.Call(uintptr(handle), uintptr(pos))
+	return uint64(r)
+}

@@ -40,10 +40,13 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 	m.TDrawGrid.SetDefaultRowHeight(24)
 	if LcLLoaded() {
 		m.TDrawGrid.SetOptions(Include(0, GoLzRangeSelect, GoLzRowSelect))
+		// 2.0及之后的版本出现此bug了。。。
+		//m.TDrawGrid.SetRowCount(1)
 	} else {
 		m.TDrawGrid.SetOptions(Include(0, GoRangeSelect, GoRowSelect))
+		m.TDrawGrid.SetRowCount(0)
 	}
-	m.TDrawGrid.SetRowCount(0)
+
 	m.TDrawGrid.SetColCount(4)
 	m.TDrawGrid.SetFixedRows(0)
 	m.TDrawGrid.SetFixedCols(0)

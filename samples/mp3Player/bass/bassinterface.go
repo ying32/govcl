@@ -1,6 +1,7 @@
 package bass
 
 import (
+	"math"
 	"runtime"
 
 	"unsafe"
@@ -23,14 +24,14 @@ var (
 
 	// 这个因为返回的是double，暂时没找到可解决的办法，只能自己伪造一个了，伪造的函数是猜测的
 	// 因为不知道怎么才好吧
-	//_BASS_ChannelBytes2Seconds = libbass.NewProc("BASS_ChannelBytes2Seconds")
-	_BASS_ChannelGetLength    = libbass.NewProc("BASS_ChannelGetLength")
-	_BASS_ChannelGetPosition  = libbass.NewProc("BASS_ChannelGetPosition")
-	_BASS_ChannelSetAttribute = libbass.NewProc("BASS_ChannelSetAttribute")
-	_BASS_ChannelGetAttribute = libbass.NewProc("BASS_ChannelGetAttribute")
-	_BASS_ErrorGetCode        = libbass.NewProc("BASS_ErrorGetCode")
-	_BASS_ChannelSetPosition  = libbass.NewProc("BASS_ChannelSetPosition")
-	//_BASS_ChannelSeconds2Bytes = libbass.NewProc("BASS_ChannelSeconds2Bytes")
+	_BASS_ChannelBytes2Seconds = libbass.NewProc("BASS_ChannelBytes2Seconds")
+	_BASS_ChannelGetLength     = libbass.NewProc("BASS_ChannelGetLength")
+	_BASS_ChannelGetPosition   = libbass.NewProc("BASS_ChannelGetPosition")
+	_BASS_ChannelSetAttribute  = libbass.NewProc("BASS_ChannelSetAttribute")
+	_BASS_ChannelGetAttribute  = libbass.NewProc("BASS_ChannelGetAttribute")
+	_BASS_ErrorGetCode         = libbass.NewProc("BASS_ErrorGetCode")
+	_BASS_ChannelSetPosition   = libbass.NewProc("BASS_ChannelSetPosition")
+	_BASS_ChannelSeconds2Bytes = libbass.NewProc("BASS_ChannelSeconds2Bytes")
 )
 
 const (
@@ -105,11 +106,7 @@ func BASS_ChannelGetPosition(handle HSTREAM, mode uint32) uint64 {
 }
 
 func BASS_ChannelSetAttribute(handle HSTREAM, attrib uint32, value float32) bool {
-	// 这里估计得修改哦
-	// float32会有问题吧？
-	var val uintptr
-	*(*float32)(unsafe.Pointer(&val)) = value
-	r, _, _ := _BASS_ChannelSetAttribute.Call(uintptr(handle), uintptr(attrib), val)
+	r, _, _ := _BASS_ChannelSetAttribute.Call(uintptr(handle), uintptr(attrib), uintptr(math.Float32bits(value)))
 	return r != 0
 }
 
@@ -125,10 +122,10 @@ func BASS_ErrorGetCode() int {
 
 // 伪造的，经过简单的测试出一个值
 
-func BASS_ChannelBytes2Seconds(handle HSTREAM, pos uint64) float64 {
-	return float64(pos) / 176400.0
-}
+//func BASS_ChannelBytes2Seconds(handle HSTREAM, pos uint64) float64 {
+//	return float64(pos) / 176400.0
+//}
 
-func BASS_ChannelSeconds2Bytes(handle HSTREAM, pos float64) uint64 {
-	return uint64(pos * 176400)
-}
+//func BASS_ChannelSeconds2Bytes(handle HSTREAM, pos float64) uint64 {
+//	return uint64(pos * 176400)
+//}

@@ -69,7 +69,8 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 		usrHome := os.Getenv("HOME")
 		f.addFoler(usrHome + "/Music/网易云音乐")
 		f.addFoler(usrHome + "/Music/iTunes/iTunes Media/Music")
-
+	case "linux":
+		f.addFoler("/home/ying32/音乐")
 	}
 
 	f.isSupportTaskbar = runtime.GOOS == "windows" && version.OSVersion.CheckMajorMinor(6, 1) && !rtl.LcLLoaded()
@@ -208,7 +209,8 @@ func (f *TForm1) addFoler(rootPath string) {
 		return
 	}
 	filepath.Walk(rootPath, func(path string, info os.FileInfo, err error) error {
-		if filepath.Ext(info.Name()) == ".mp3" {
+		ext := filepath.Ext(info.Name())
+		if ext == ".mp3" || ext == ".m4a" {
 			f.addFile(path)
 		}
 		return nil
