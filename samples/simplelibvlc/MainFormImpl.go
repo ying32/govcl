@@ -6,6 +6,9 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"runtime"
+
+	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/ying32/govcl/vcl/rtl"
 
@@ -28,7 +31,12 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 		vcl.ShowMessage(fmt.Sprint("创建MediaPlayer失败:", libvlc.ErrMsg()))
 		return
 	}
-	f.player.SethWnd(f.PnlVideo.Handle())
+	if runtime.GOOS == "linux" {
+		f.player.SethWnd(types.HWND(rtl.GetGDKWindowXID(f.PnlVideo.Handle())))
+	} else {
+		f.player.SethWnd(f.PnlVideo.Handle())
+	}
+
 	//f.player.LoadFromFile("I:\\30分钟教你学会超火的日语歌曲- PLANET.mp4")
 	f.player.LoadFromFile("test.mp4")
 	f.PnlVideo.SetColor(colors.ClBlack)
