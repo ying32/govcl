@@ -31,12 +31,9 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 		vcl.ShowMessage(fmt.Sprint("创建MediaPlayer失败:", libvlc.ErrMsg()))
 		return
 	}
-	if runtime.GOOS == "linux" {
-		f.player.SethWnd(types.HWND(rtl.GetGDKWindowXID(f.PnlVideo.Handle())))
-	} else {
+	if runtime.GOOS != "linux" {
 		f.player.SethWnd(f.PnlVideo.Handle())
 	}
-
 	//f.player.LoadFromFile("I:\\30分钟教你学会超火的日语歌曲- PLANET.mp4")
 	f.player.LoadFromFile("test.mp4")
 	f.PnlVideo.SetColor(colors.ClBlack)
@@ -50,6 +47,10 @@ func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActPlayExecute(sender vcl.IObject) {
+	if runtime.GOOS == "linux" {
+		// 不太好使。。。
+		f.player.SethWnd(types.HWND(rtl.GetGDKWindowXID(f.PnlVideo.Handle())))
+	}
 	f.Timer1.SetEnabled(true)
 	f.player.Play()
 }
