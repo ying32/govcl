@@ -23,6 +23,39 @@ uses
   Windows, Messages, SysUtils, Variants, Classes,
   Controls, Forms, ActiveX, Menus, ComObj;
 
+const
+
+  DOCHOSTUIFLAG_DIALOG                     = $00000001;
+  DOCHOSTUIFLAG_DISABLE_HELP_MENU          = $00000002;
+  DOCHOSTUIFLAG_NO3DBORDER                 = $00000004;
+  DOCHOSTUIFLAG_SCROLL_NO                  = $00000008;
+  DOCHOSTUIFLAG_DISABLE_SCRIPT_INACTIVE    = $00000010;
+  DOCHOSTUIFLAG_OPENNEWWIN                 = $00000020;
+  DOCHOSTUIFLAG_DISABLE_OFFSCREEN          = $00000040;
+  DOCHOSTUIFLAG_FLAT_SCROLLBAR             = $00000080;
+  DOCHOSTUIFLAG_DIV_BLOCKDEFAULT           = $00000100;
+  DOCHOSTUIFLAG_ACTIVATE_CLIENTHIT_ONLY    = $00000200;
+  DOCHOSTUIFLAG_OVERRIDEBEHAVIORFACTORY    = $00000400;
+  DOCHOSTUIFLAG_CODEPAGELINKEDFONTS        = $00000800;
+  DOCHOSTUIFLAG_URL_ENCODING_DISABLE_UTF8  = $00001000;
+  DOCHOSTUIFLAG_URL_ENCODING_ENABLE_UTF8   = $00002000;
+  DOCHOSTUIFLAG_ENABLE_FORMS_AUTOCOMPLETE  = $00004000;
+  DOCHOSTUIFLAG_ENABLE_INPLACE_NAVIGATION  = $00010000;
+  DOCHOSTUIFLAG_IME_ENABLE_RECONVERSION    = $00020000;
+  DOCHOSTUIFLAG_THEME                      = $00040000;
+  DOCHOSTUIFLAG_NOTHEME                    = $00080000;
+  DOCHOSTUIFLAG_NOPICS                     = $00100000;
+  DOCHOSTUIFLAG_NO3DOUTERBORDER            = $00200000;
+  DOCHOSTUIFLAG_DISABLE_EDIT_NS_FIXUP      = $1;
+  DOCHOSTUIFLAG_LOCAL_MACHINE_ACCESS_CHECK = $1;
+  DOCHOSTUIFLAG_DISABLE_UNTRUSTEDPROTOCOL  = $1;
+  DOCHOSTUIDBLCLK_DEFAULT                  = 0;
+  DOCHOSTUIDBLCLK_SHOWPROPERTIES           = 1;
+  DOCHOSTUIDBLCLK_SHOWCODE                 = 2;
+  DOCHOSTUITYPE_BROWSE                     = 0;
+  DOCHOSTUITYPE_AUTHOR                     = 1;
+
+
 type
 
 
@@ -224,7 +257,35 @@ type
     procedure WebWorkerFinsihed(dwUniqueID: LongWord); dispid 289;
   end;
 
-  TMiniWebview = class(TWinControl, IDispatch, IOleClientSite, IOleControlSite, IOleInPlaceSite, IOleInPlaceFrame)
+
+  TDocHostUIInfo = record
+    cbSize: ULONG;
+    dwFlags: DWORD;
+    dwDoubleClick: DWORD;
+    pchHostCss: PWChar;
+    pchHostNS: PWChar;
+  end;
+
+  IDocHostUIHandler  = interface(IUnknown)
+    ['{BD3F23C0-D43E-11CF-893B-00AA00BDCE1A}']
+    function ShowContextMenu(const dwID: DWORD; const ppt: PPOINT; const pcmdtReserved: IUnknown; const pdispReserved: IDispatch): HRESULT; stdcall;
+    function GetHostInfo(var pInfo: TDocHostUIInfo): HRESULT; stdcall;
+    function ShowUI(const dwID: DWORD; const pActiveObject: IOleInPlaceActiveObject; const pCommandTarget: IOleCommandTarget; const pFrame: IOleInPlaceFrame; const pDoc: IOleInPlaceUIWindow): HRESULT; stdcall;
+    function HideUI: HRESULT; stdcall;
+    function UpdateUI: HRESULT; stdcall;
+    function EnableModeless(const fEnable: BOOL): HRESULT; stdcall;
+    function OnDocWindowActivate(const fActivate: BOOL): HRESULT; stdcall;
+    function OnFrameWindowActivate(const fActivate: BOOL): HRESULT; stdcall;
+    function ResizeBorder(const prcBorder: PRECT; const pUIWindow: IOleInPlaceUIWindow; const FrameWindow: BOOL): HRESULT; stdcall;
+    function TranslateAccelerator(const lpMsg: PMSG; const pguidCmdGroup:  PGUID; const nCmdID: DWORD): HRESULT; stdcall;
+    function GetOptionKeyPath(var pchKey: POLESTR; const dw: DWORD): HRESULT; stdcall;
+    function GetDropTarget(const pDropTarget: IDropTarget; out ppDropTarget: IDropTarget): HRESULT; stdcall;
+    function GetExternal(out ppDispatch: IDispatch): HRESULT; stdcall;
+    function TranslateUrl(const dwTranslate: DWORD; const pchURLIn: POLESTR; var ppchURLOut: POLESTR): HRESULT; stdcall;
+    function FilterDataObject(const pDO: IDataObject; out ppDORet: IDataObject): HRESULT; stdcall;
+  end;
+
+  TMiniWebview = class(TWinControl, IDispatch, IOleClientSite, IOleControlSite, IOleInPlaceSite, IOleInPlaceFrame, IDocHostUIHandler)
   private
     FWebBrowser: IWebBrowser2;
     FOleInPlaceObject: IOleInPlaceObject;
@@ -330,6 +391,28 @@ type
       pszObjName: POleStr): HResult; stdcall;
 
 
+    // IDocHostUIHandler
+      function ShowContextMenu(const dwID: DWORD; const ppt: PPOINT; const pcmdtReserved: IUnknown; const pdispReserved: IDispatch): HRESULT; stdcall;
+      function GetHostInfo(var pInfo: TDocHostUIInfo): HRESULT; stdcall;
+      function ShowUI(const dwID: DWORD; const pActiveObject: IOleInPlaceActiveObject; const pCommandTarget: IOleCommandTarget; const pFrame: IOleInPlaceFrame; const pDoc: IOleInPlaceUIWindow): HRESULT; stdcall;
+      function HideUI: HRESULT; stdcall;
+      function UpdateUI: HRESULT; stdcall;
+
+      function IDocHostUIHandler_EnableModeless(const fEnable: BOOL): HRESULT; stdcall;
+      function IDocHostUIHandler.EnableModeless = IDocHostUIHandler_EnableModeless;
+
+      function OnDocWindowActivate(const fActivate: BOOL): HRESULT; stdcall;
+      function OnFrameWindowActivate(const fActivate: BOOL): HRESULT; stdcall;
+      function ResizeBorder(const prcBorder: PRECT; const pUIWindow: IOleInPlaceUIWindow; const FrameWindow: BOOL): HRESULT; stdcall;
+      function TranslateAccelerator(const lpMsg: PMSG; const pguidCmdGroup:  PGUID; const nCmdID: DWORD): HRESULT; stdcall;
+      function GetOptionKeyPath(var pchKey: POLESTR; const dw: DWORD): HRESULT; stdcall;
+      function GetDropTarget(const pDropTarget: IDropTarget; out ppDropTarget: IDropTarget): HRESULT; stdcall;
+      function GetExternal(out ppDispatch: IDispatch): HRESULT; stdcall;
+      function TranslateUrl(const dwTranslate: DWORD; const pchURLIn: POLESTR; var ppchURLOut: POLESTR): HRESULT; stdcall;
+      function FilterDataObject(const pDO: IDataObject; out ppDORet: IDataObject): HRESULT; stdcall;
+
+
+
     procedure SetUIActive(Active: Boolean);
     procedure Resize; override;
     procedure SetParent(AParent: TWinControl); override;
@@ -387,7 +470,8 @@ begin
     OnInPlaceDeactivate;
     FOleObject.Close(OLECLOSE_NOSAVE);
     FOleObject.SetClientSite(nil);
-  end;  FWebBrowser := nil;
+    FWebBrowser := nil;
+  end;
   if FWebBrowser = nil then
   begin
     OleCheck(FOleObject.SetClientSite(Self));
@@ -928,6 +1012,90 @@ begin
   FOleObject.DoVerb(Flag, nil, Self, -1, Handle, ClientRect);
 end;
 
+function TMiniWebview.ShowContextMenu(const dwID: DWORD; const ppt: PPOINT; const pcmdtReserved: IUnknown; const pdispReserved: IDispatch): HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.GetHostInfo(var pInfo: TDocHostUIInfo): HRESULT;
+begin
+  pInfo.cbSize := sizeof(TDocHostUIInfo);
+  pInfo.dwFlags := DOCHOSTUIFLAG_DIALOG or DOCHOSTUIFLAG_DISABLE_HELP_MENU or
+    DOCHOSTUIFLAG_NO3DBORDER;
+  // 这里暂时不能禁用滚动啊，不然鼠标没法用了
+  //pInfo.dwFlags := pInfo.dwFlags or DOCHOSTUIFLAG_SCROLL_NO;
+
+  pInfo.dwDoubleClick := DOCHOSTUIDBLCLK_DEFAULT;
+  Result := S_OK;
+end;
+
+function TMiniWebview.ShowUI(const dwID: DWORD; const pActiveObject: IOleInPlaceActiveObject; const pCommandTarget: IOleCommandTarget; const pFrame: IOleInPlaceFrame; const pDoc: IOleInPlaceUIWindow): HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.HideUI: HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.UpdateUI: HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.IDocHostUIHandler_EnableModeless(const fEnable: BOOL): HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.OnDocWindowActivate(const fActivate: BOOL): HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.OnFrameWindowActivate(const fActivate: BOOL): HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.ResizeBorder(const prcBorder: PRECT; const pUIWindow: IOleInPlaceUIWindow; const FrameWindow: BOOL): HRESULT;
+begin
+  Result := S_OK;
+end;
+
+function TMiniWebview.TranslateAccelerator(const lpMsg: PMSG; const pguidCmdGroup:  PGUID; const nCmdID: DWORD): HRESULT;
+begin
+  Result := S_FALSE;
+end;
+
+function TMiniWebview.GetOptionKeyPath(var pchKey: POLESTR; const dw: DWORD): HRESULT;
+begin
+  Result := E_FAIL;
+end;
+
+function TMiniWebview.GetDropTarget(const pDropTarget: IDropTarget; out ppDropTarget: IDropTarget): HRESULT;
+begin
+  ppDropTarget := nil;
+  Result := E_FAIL;
+end;
+
+function TMiniWebview.GetExternal(out ppDispatch: IDispatch): HRESULT;
+begin
+  ppDispatch := nil;
+  Result := E_FAIL;
+end;
+
+function TMiniWebview.TranslateUrl(const dwTranslate: DWORD; const pchURLIn: POLESTR; var ppchURLOut: POLESTR): HRESULT;
+begin
+  Result := S_FALSE;
+end;
+
+function TMiniWebview.FilterDataObject(const pDO: IDataObject; out ppDORet: IDataObject): HRESULT;
+begin
+  ppDORet := nil;
+  Result := S_FALSE;
+end;
 
 {$IFDEF WINDOWS}
 {$IFDEF FPC}
