@@ -810,6 +810,12 @@ begin
     PResStringRec(APtr)^ := string(AValue);
 end;
 
+{$IFDEF LCLGTK2}
+function GetGDKWindowXID(Handle: HWND): TXID; extdecl;
+begin
+  Result := GDK_WINDOW_XID(PGtkWidget(Handle)^.window);
+end;
+{$ENDIF}
 
 // dylib
 type
@@ -993,4 +999,8 @@ exports
   DGetLibResouceCount,
   DGetLibResouceItem,
   DModifyLibResouce
+
+{$IFDEF LCLGTK2}
+  ,GetGDKWindowXID
+{$ENDIF}
 ;

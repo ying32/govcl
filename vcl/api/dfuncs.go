@@ -280,3 +280,8 @@ func DLibVersion() uint32 {
 	r, _, _ := dLibVersion.Call()
 	return uint32(r)
 }
+
+func DGetGDKWindowXID(handle uintptr) TXID {
+	r, _, _ := dGetGDKWindowXID.Call(handle)
+	return TXID(r)
+}

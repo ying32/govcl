@@ -142,3 +142,8 @@ func LibStringEncoding() types.TStringEncoding {
 func LibVersion() uint32 {
 	return api.DLibVersion()
 }
+
+// Linux下liblcl使用GTK2用
+func GetGDKWindowXID(handle types.HWND) types.TXID {
+	return api.DGetGDKWindowXID(handle)
+}
