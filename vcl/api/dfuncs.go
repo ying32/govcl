@@ -282,6 +282,7 @@ func DLibVersion() uint32 {
 }
 
 func DGetGDKWindowXID(handle uintptr) TXID {
-	r, _, _ := dGetGDKWindowXID.Call(handle)
-	return TXID(r)
+	var aResult TXID
+	dGetGDKWindowXID.Call(handle, uintptr(unsafe.Pointer(&aResult)))
+	return aResult
 }

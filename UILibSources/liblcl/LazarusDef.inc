@@ -811,9 +811,9 @@ begin
 end;
 
 {$IFDEF LCLGTK2}
-function GetGDKWindowXID(Handle: HWND): TXID; extdecl;
+procedure GetGDKWindowXID(Handle: HWND; out AResult: TXID); extdecl;
 begin
-  Result := GDK_WINDOW_XID(PGtkWidget(Handle)^.window);
+  AResult := GDK_WINDOW_XID(PGtkWidget(Handle)^.window);
 end;
 {$ENDIF}
 
