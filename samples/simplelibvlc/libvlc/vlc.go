@@ -1,4 +1,4 @@
-package main
+package libvlc
 
 import (
 	"fmt"
@@ -17,11 +17,11 @@ func NewVLCMediaPlayer(args ...string) *TVLCMediaPlayer {
 	v := new(TVLCMediaPlayer)
 	v.vlcInstance = libvlc_new(args...)
 	fmt.Println(libvlc_errmsg())
-	if !v.checkVLCInstance() {
+	if !v.VLCValid() {
 		return nil
 	}
 	v.mediaPlayerInstance = libvlc_media_player_new(v.vlcInstance)
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return nil
 	}
 	return v
@@ -37,44 +37,44 @@ func (v *TVLCMediaPlayer) Free() {
 	}
 }
 
-func (v *TVLCMediaPlayer) checkVLCInstance() bool {
+func (v *TVLCMediaPlayer) VLCValid() bool {
 	return v.vlcInstance != 0
 }
 
-func (v *TVLCMediaPlayer) checkMediaPlayer() bool {
+func (v *TVLCMediaPlayer) MediaPlayerValid() bool {
 	return v.mediaPlayerInstance != 0
 }
 
 func (v *TVLCMediaPlayer) Playing() bool {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return false
 	}
 	return toGoBool(libvlc_media_player_is_playing(v.mediaPlayerInstance))
 }
 
 func (v *TVLCMediaPlayer) Play() {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return
 	}
 	libvlc_media_player_play(v.mediaPlayerInstance)
 }
 
 func (v *TVLCMediaPlayer) Pause() {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return
 	}
 	libvlc_media_player_pause(v.mediaPlayerInstance)
 }
 
 func (v *TVLCMediaPlayer) Stop() {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return
 	}
 	libvlc_media_player_stop(v.mediaPlayerInstance)
 }
 
 func (v *TVLCMediaPlayer) SethWnd(parenthWnd types.HWND) {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return
 	}
 	switch runtime.GOOS {
@@ -104,7 +104,7 @@ func (v *TVLCMediaPlayer) LoadFromURL(aURL string) {
 }
 
 func (v *TVLCMediaPlayer) MediaTime() int64 {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return 0
 	}
 	return int64(libvlc_media_player_get_time(v.mediaPlayerInstance))
@@ -120,7 +120,7 @@ func (v *TVLCMediaPlayer) MediaTimeString() string {
 }
 
 func (v *TVLCMediaPlayer) MediaLength() int64 {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return 0
 	}
 	return int64(libvlc_media_player_get_length(v.mediaPlayerInstance))
@@ -136,7 +136,7 @@ func (v *TVLCMediaPlayer) MediaLengthString() string {
 }
 
 func (v *TVLCMediaPlayer) Position() float32 {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return 0
 	}
 	psi := libvlc_media_player_get_position(v.mediaPlayerInstance)
@@ -144,7 +144,7 @@ func (v *TVLCMediaPlayer) Position() float32 {
 }
 
 func (v *TVLCMediaPlayer) SetPosition(pos float32) {
-	if !v.checkMediaPlayer() {
+	if !v.MediaPlayerValid() {
 		return
 	}
 	libvlc_media_player_set_position(v.mediaPlayerInstance, pos)

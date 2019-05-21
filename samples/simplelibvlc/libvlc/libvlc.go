@@ -5,7 +5,7 @@
   By:ying32
 */
 
-package main
+package libvlc
 
 import (
 	"fmt"

@@ -6,6 +6,8 @@ import (
 	"math"
 	"os"
 
+	"github.com/ying32/govcl/samples/simplelibvlc/libvlc"
+
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types/colors"
@@ -13,13 +15,13 @@ import (
 
 //::private::
 type TMainFormFields struct {
-	player *TVLCMediaPlayer
+	player *libvlc.TVLCMediaPlayer
 }
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
 	os.Setenv("VLC_PLUGIN_PATH", rtl.ExtractFilePath(vcl.Application.ExeName())+"/plugins/")
-	f.player = NewVLCMediaPlayer()
+	f.player = libvlc.NewVLCMediaPlayer()
 	if f.player == nil {
 		vcl.ShowMessage("创建MediaPlayer失败。")
 		return
@@ -68,7 +70,7 @@ func (f *TMainForm) OnActPauseUpdate(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnTimer1Timer(sender vcl.IObject) {
-	if f.player != nil && f.player.checkMediaPlayer() {
+	if f.player != nil && f.player.MediaPlayerValid() {
 		f.LblCurTime.SetCaption(f.player.MediaTimeString())
 		f.LblTotalTime.SetCaption(f.player.MediaLengthString())
 		f.TrackBar1.SetPosition(int32(math.Ceil(float64(f.player.Position() * 100.0))))
