@@ -3,13 +3,15 @@
 package main
 
 import (
+	"fmt"
 	"math"
 	"os"
+
+	"github.com/ying32/govcl/vcl/rtl"
 
 	"github.com/ying32/govcl/samples/simplelibvlc/libvlc"
 
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types/colors"
 )
 
@@ -23,7 +25,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	os.Setenv("VLC_PLUGIN_PATH", rtl.ExtractFilePath(vcl.Application.ExeName())+"/plugins/")
 	f.player = libvlc.NewVLCMediaPlayer()
 	if f.player == nil {
-		vcl.ShowMessage("创建MediaPlayer失败。")
+		vcl.ShowMessage(fmt.Sprint("创建MediaPlayer失败:", libvlc.ErrMsg()))
 		return
 	}
 	f.player.SethWnd(f.PnlVideo.Handle())

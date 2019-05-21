@@ -672,6 +672,17 @@ func toCStr(s string) uintptr {
 	return uintptr(unsafe.Pointer(&([]byte(s + "\x00")[0])))
 }
 
+func strLen(sptr uintptr) int {
+	if sptr <= 0 {
+		return 0
+	}
+	i := 0
+	for *(*byte)(unsafe.Pointer(sptr + uintptr(i))) != '0' {
+		i++
+	}
+	return i
+}
+
 func toGoBool(i int) bool {
 	return i == 1
 }
@@ -875,8 +886,9 @@ func libvlc_clock() int64 {
 }
 
 func libvlc_errmsg() string {
-	r, _, _ := _libvlc_errmsg.Call()
-	fmt.Println(r)
+	r, r2, r3 := _libvlc_errmsg.Call()
+	fmt.Println(r, r2, r3, "strLen:")
+	// 这个问题还有待解决。
 	return ""
 }
 
@@ -889,16 +901,12 @@ func libvlc_printerr(fmtStr string) string {
 	return string(r)
 }
 
-//func libvlc_new(argc int, argv Pstring) plibvlc_instance_t {
-//	r, _, _ := _libvlc_new.Call(uintptr(argc), uintptr(argv))
-//	return plibvlc_instance_t(r)
-//}
 func libvlc_new(args ...string) plibvlc_instance_t {
 	var ptr uintptr
 	if len(args) > 0 {
 		ps := make([]uintptr, len(args))
 		for i := 0; i < len(ps); i++ {
-			ps[i] = toCStr(args[i]) //uintptr(unsafe.Pointer(&([]byte(args[i] + "\x00")[0])))
+			ps[i] = toCStr(args[i])
 		}
 		ptr = uintptr(unsafe.Pointer(&ps[0]))
 	}
@@ -1812,118 +1820,3 @@ func libvlc_vlm_get_event_manager(p_instance plibvlc_instance_t) plibvlc_event_m
 func libvlc_playlist_play(p_instance plibvlc_instance_t, i_id int, i_options int, ppsz_options Pstring) {
 	_libvlc_playlist_play.Call(uintptr(p_instance), uintptr(i_id), uintptr(i_options), uintptr(ppsz_options))
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-//var (
-//	//libvlccoredll = dylib.NewLazyDLL("libvlccore.dll")
-//	libvlc = dylib.NewLazyDLL("libvlc.dll")
-//
-//	_libvlc_new     = libvlc.NewProc("libvlc_new")
-//	_libvlc_release = libvlc.NewProc("libvlc_release")
-//	_libvlc_errmsg  = libvlc.NewProc("libvlc_errmsg")
-//
-//	_libvlc_media_player_new        = libvlc.NewProc("libvlc_media_player_new")
-//	_libvlc_media_player_release    = libvlc.NewProc("libvlc_media_player_release")
-//	_libvlc_media_player_play       = libvlc.NewProc("libvlc_media_player_play")
-//	_libvlc_media_player_is_playing = libvlc.NewProc("libvlc_media_player_is_playing")
-//	_libvlc_media_player_stop       = libvlc.NewProc("libvlc_media_player_stop")
-//	_libvlc_media_player_set_pause  = libvlc.NewProc("libvlc_media_player_set_pause")
-//	_libvlc_media_player_pause      = libvlc.NewProc("libvlc_media_player_pause")
-//
-//	_libvlc_media_player_set_xwindow = libvlc.NewProc("libvlc_media_player_set_xwindow")
-//	_libvlc_media_player_set_hwnd    = libvlc.NewProc("libvlc_media_player_set_hwnd")
-//
-//	_libvlc_media_new_path         = libvlc.NewProc("libvlc_media_new_path")
-//	_libvlc_media_new_location     = libvlc.NewProc("libvlc_media_new_location")
-//	_libvlc_media_release          = libvlc.NewProc("libvlc_media_release")
-//	_libvlc_media_player_set_media = libvlc.NewProc("libvlc_media_player_set_media")
-//	_libvlc_media_player_get_media = libvlc.NewProc("libvlc_media_player_get_media")
-//)
-//
-//func libvlc_new(args ...string) plibvlc_instance_t {
-//	var ptr uintptr
-//	if len(args) > 0 {
-//		ps := make([]uintptr, len(args))
-//		for i := 0; i < len(ps); i++ {
-//			ps[i] = uintptr(unsafe.Pointer(&([]byte(args[i] + "\x00")[0])))
-//		}
-//		ptr = uintptr(unsafe.Pointer(&ps[0]))
-//	}
-//	ret, _, _ := _libvlc_new.Call(uintptr(len(args)), ptr)
-//	return ret
-//}
-//
-//func libvlc_release(p_instance plibvlc_instance_t) {
-//	_libvlc_release.Call(p_instance)
-//}
-//
-//func libvlc_errmsg() {
-//
-//	fmt.Println(_libvlc_errmsg.Call())
-//
-//}
-//
-//// player
-//
-//func libvlc_media_player_new(p_libvlc_instance plibvlc_instance_t) plibvlc_media_player_t {
-//	fmt.Println("p_libvlc_instance:", p_libvlc_instance)
-//	ret, _, _ := _libvlc_media_player_new.Call(p_libvlc_instance)
-//	return ret
-//}
-//
-//func libvlc_media_player_release(p_mi plibvlc_media_player_t) {
-//	_libvlc_media_player_release.Call(p_mi)
-//}
-//
-//func libvlc_media_player_play(p_mi plibvlc_media_player_t) int {
-//	ret, _, _ := _libvlc_media_player_play.Call(p_mi)
-//	return int(ret)
-//}
-//
-//func libvlc_media_player_is_playing(p_mi plibvlc_media_player_t) int {
-//	ret, _, _ := _libvlc_media_player_is_playing.Call(p_mi)
-//	return int(ret)
-//}
-//
-//func libvlc_media_player_stop(p_mi plibvlc_media_player_t) {
-//	_libvlc_media_player_stop.Call(p_mi)
-//}
-//
-//func libvlc_media_player_set_pause(mp plibvlc_media_player_t, do_pause int) {
-//	_libvlc_media_player_set_pause.Call(mp, uintptr(do_pause))
-//}
-//
-//func libvlc_media_player_pause(p_mi plibvlc_media_player_t) {
-//	_libvlc_media_player_pause.Call(p_mi)
-//}
-//
-//func libvlc_media_player_set_xwindow(p_mi plibvlc_media_player_t, drawable uint32) {
-//	_libvlc_media_player_set_xwindow.Call(p_mi, uintptr(drawable))
-//}
-//
-//func libvlc_media_player_set_hwnd(p_mi plibvlc_media_player_t, drawable uintptr) {
-//	_libvlc_media_player_set_hwnd.Call(p_mi, drawable)
-//}
-//
-//func libvlc_media_new_path(p_instance plibvlc_instance_t, path string) plibvlc_media_t {
-//	ret, _, _ := _libvlc_media_new_path.Call(p_instance, uintptr(unsafe.Pointer(&([]byte(path + "\x00")[0]))))
-//	return ret
-//}
-//
-//func libvlc_media_new_location(p_instance plibvlc_instance_t, psz_mrl string) plibvlc_media_t {
-//	ret, _, _ := _libvlc_media_new_location.Call(p_instance, uintptr(unsafe.Pointer(&([]byte(psz_mrl + "\x00")[0]))))
-//	return ret
-//}
-//
-//func libvlc_media_release(p_md plibvlc_media_t) {
-//	_libvlc_media_release.Call(p_md)
-//}
-//
-//func libvlc_media_player_set_media(p_mi plibvlc_media_player_t, p_md plibvlc_media_t) {
-//	_libvlc_media_player_set_media.Call(p_mi, p_md)
-//}
-//
-//func libvlc_media_player_get_media(p_mi plibvlc_media_player_t) plibvlc_media_t {
-//	ret, _, _ := _libvlc_media_player_get_media.Call(p_mi)
-//	return ret
-//}

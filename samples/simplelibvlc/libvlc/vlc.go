@@ -13,10 +13,8 @@ type TVLCMediaPlayer struct {
 }
 
 func NewVLCMediaPlayer(args ...string) *TVLCMediaPlayer {
-	fmt.Println("load:", libvlcdll.Load())
 	v := new(TVLCMediaPlayer)
 	v.vlcInstance = libvlc_new(args...)
-	fmt.Println(libvlc_errmsg())
 	if !v.VLCValid() {
 		return nil
 	}
@@ -29,10 +27,10 @@ func NewVLCMediaPlayer(args ...string) *TVLCMediaPlayer {
 
 func (v *TVLCMediaPlayer) Free() {
 	v.Stop()
-	if v.mediaPlayerInstance != 0 {
+	if v.MediaPlayerValid() {
 		libvlc_media_player_release(v.mediaPlayerInstance)
 	}
-	if v.vlcInstance != 0 {
+	if v.VLCValid() {
 		libvlc_release(v.vlcInstance)
 	}
 }
