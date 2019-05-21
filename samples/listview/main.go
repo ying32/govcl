@@ -37,6 +37,7 @@ func main() {
 	lv1.SetViewStyle(types.VsReport)
 	lv1.SetGridLines(true)
 	//lv1.SetColumnClick(false)
+	lv1.SetHideSelection(false)
 
 	col := lv1.Columns().Add()
 	col.SetCaption("序号")
@@ -176,6 +177,36 @@ func main() {
 		item.SubItems().Add(fmt.Sprintf("值：%d", i))
 	}
 	lv3.Items().EndUpdate()
+
+	pnlbottom := vcl.NewPanel(mainForm)
+	pnlbottom.SetParent(mainForm)
+	pnlbottom.SetAlign(types.AlBottom)
+	btnTest := vcl.NewButton(mainForm)
+	btnTest.SetParent(pnlbottom)
+	btnTest.SetCaption("SetSelected")
+	btnTest.SetTop(10)
+	btnTest.SetLeft(10)
+	btnTest.SetOnClick(func(sender vcl.IObject) {
+
+		if lv1.Items().Count() > 5 {
+			fmt.Println("click select")
+			item := lv1.Items().Item(3) // 第四个
+			lv1.SetSelected(item)
+		}
+	})
+
+	btnTest2 := vcl.NewButton(mainForm)
+	btnTest2.SetParent(pnlbottom)
+	btnTest2.SetTop(10)
+	btnTest2.SetLeft(120)
+	btnTest2.SetCaption("DeleteSelected")
+	btnTest2.SetOnClick(func(sender vcl.IObject) {
+
+		if lv1.SelCount() > 0 {
+			fmt.Println("click delete")
+			lv1.DeleteSelected()
+		}
+	})
 
 	vcl.Application.Run()
 }
