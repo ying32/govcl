@@ -1,18 +1,18 @@
 ### res2go  
 
-* [中文](README.zh-CN.md)  
-* [English](README.md)  
+* 中文 
+* [English](README.en-US.md)  
 
 ----
 
-The res2go tool is mainly compiled with Lazarus, and Delphi can also be compiled.
+res2go工具主要是使用Lazarus编译，Delphi也可以编译。
 
-#### Compilation method
+#### 自行编译方法
 
 #### Delphi
 
-Compile with the project file res2go.dpr using Delphi that supports Unicode or higher.
+打开工程文件res2go.dpr，使用高级并支持Unicode的Delphi版本进行编译。
 
-#### Lazarus
+#### Lazarus 
 
-Open the project file res2go.lpi and select the corresponding platform to compile in the menu bar -> Project -> Project Options -> Compiler Options -> Build modes.
+打开工程文件res2go.lpi，在 菜单栏 -> Project -> Project Options -> Compiler Options -> Build modes中可选择相对应的平台进行编译。
