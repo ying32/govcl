@@ -757,9 +757,31 @@ const (
 )
 
 const (
+	// ListView
+	LVM_GETSUBITEMRECT = LVM_FIRST + 56
+
+	LVIR_BOUNDS       = 0
+	LVIR_ICON         = 1
+	LVIR_LABEL        = 2
+	LVIR_SELECTBOUNDS = 3
+)
+
+const (
 	TVM_GETITEMW = TV_FIRST + 62
 	TVM_GETITEM  = TVM_GETITEMW
 
 	TVM_SETITEMW = TV_FIRST + 63
 	TVM_SETITEM  = TVM_SETITEMW
+)
+
+const (
+	/* Background Modes */
+	TRANSPARENT = 1
+	OPAQUE      = 2
+	BKMODE_LAST = 2
+
+	/* Graphics Modes */
+	GM_COMPATIBLE = 1
+	GM_ADVANCED   = 2
+	GM_LAST       = 2
 )
