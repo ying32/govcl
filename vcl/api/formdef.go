@@ -1,5 +1,7 @@
 package api
 
+import "github.com/ying32/govcl/vcl/types"
+
 func Form_EnabledMaximize(obj uintptr, val bool) {
 	form_EnabledMaximize.Call(obj, GoBoolToDBool(val))
 }
@@ -47,6 +49,15 @@ func Form_SetOnStyleChanged(obj uintptr, fn interface{}) {
 
 func Form_SetOnWndProc(obj uintptr, fn interface{}) {
 	form_SetOnWndProc.Call(obj, addMessageEventToMap(fn))
+}
+
+func Form_SetShowInTaskBar(obj uintptr, val types.TShowInTaskbar) {
+	form_SetShowInTaskBar.Call(obj, uintptr(val))
+}
+
+func Form_ShowInTaskBar(obj uintptr) types.TShowInTaskbar {
+	r, _, _ := form_ShowInTaskBar.Call(obj)
+	return types.TShowInTaskbar(r)
 }
 
 // 下面两个函数放在Application下面吧，直接调用实例类

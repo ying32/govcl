@@ -28,7 +28,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $01020301;
+  Result := $01020400;
 end;
 
 // 一些初始
@@ -222,6 +222,16 @@ begin
   TMessageEventClass.Add(AObj, AEventId);
 end;
 
+procedure Form_SetShowInTaskBar(AObj: TGoForm; AVal: TShowInTaskbar); extdecl;
+begin
+  AObj.ShowInTaskBar := AVal;
+end;
+
+function Form_ShowInTaskBar(AObj: TGoForm): TShowInTaskbar; extdecl;
+begin
+  Result := AObj.ShowInTaskBar;
+end;
+
 // mouse
 function Mouse_Instance: TMouse; extdecl;
 begin
@@ -412,7 +422,7 @@ end;
 //begin
 //  AObj.Draw(Canvas, X, Y, Index, ADrawingStyle, AImageType, Enabled);
 //end;
-  
+
 procedure ImageList_DrawOverlay1(AObj: TImageList; Canvas: TCanvas; X, Y: Integer;
   ImageIndex: Integer; Overlay: TOverlay; Enabled: LongBool); extdecl;
 begin
@@ -904,6 +914,9 @@ exports
   Form_SetOnDeactivate,
   Form_SetOnActivate,
   Form_SetOnWndProc,
+  Form_SetShowInTaskBar,
+  Form_ShowInTaskBar,
+
 
 
   // TMouse

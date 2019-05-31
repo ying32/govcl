@@ -2015,3 +2015,12 @@ const (
 	SeUnicode
 	SeUTF8
 )
+
+// 原为Lazarus中TForm所有，现做了Delphi的兼容
+type TShowInTaskbar int32
+
+const (
+	StDefault = iota + 0 // use default rules for showing taskbar item
+	StAlways             // always show taskbar item for the form
+	StNever              // never show taskbar item for the form
+)

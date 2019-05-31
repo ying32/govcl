@@ -52,7 +52,7 @@ end;
 function DLibVersion: Cardinal; stdcall;
 begin
   // 共8位，2位2位的
-  Result := $01020300;
+  Result := $01020400;
 end;
 
 // TApplication
@@ -234,6 +234,16 @@ begin
   end;
   AObj.OnWndProc := TMessageEventClass.OnWndProc;
   TMessageEventClass.Add(AObj, AEventId);
+end;
+
+procedure Form_SetShowInTaskBar(AObj: TGoForm; AVal: TShowInTaskbar); stdcall;
+begin
+  AObj.ShowInTaskBar := AVal;
+end;
+
+function Form_ShowInTaskBar(AObj: TGoForm): TShowInTaskbar; stdcall;
+begin
+  Result := AObj.ShowInTaskBar;
 end;
 
 // mouse
@@ -939,6 +949,8 @@ exports
   Form_SetOnActivate,
   Form_SetOnStyleChanged,
   Form_SetOnWndProc,
+  Form_SetShowInTaskBar,
+  Form_ShowInTaskBar,
 
   // TMouse
   Mouse_Instance,

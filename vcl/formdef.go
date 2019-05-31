@@ -2,6 +2,7 @@ package vcl
 
 import (
 	. "github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 // ScreenCenter 居于当前屏幕中心
@@ -83,6 +84,16 @@ func (f *TForm) SetOnStyleChanged(fn TNotifyEvent) {
 // SetOnWndProc 窗口消息过程
 func (f *TForm) SetOnWndProc(fn TWndProcEvent) {
 	Form_SetOnWndProc(f.instance, fn)
+}
+
+// SetShowInTaskBar 设置窗口显示在任务栏上
+func (f *TForm) SetShowInTaskBar(val types.TShowInTaskbar) {
+	Form_SetShowInTaskBar(f.instance, val)
+}
+
+// ShowInTaskBar 获取当前窗口是否显示在任务栏上
+func (f *TForm) ShowInTaskBar() types.TShowInTaskbar {
+	return Form_ShowInTaskBar(f.instance)
 }
 
 // ScaleSelf 这个方法主要是用于当不使用资源窗口创建时用，这个方法要用于设置了Width, Height或者ClientWidth、ClientHeight之后

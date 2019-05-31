@@ -11,8 +11,7 @@ import (
 )
 
 func (f *TLoginForm) OnFormCreate(sender vcl.IObject) {
-	//f.SetParentWindow(0)
-	SetShowInTaskBar(f)
+	f.SetShowInTaskBar(types.StAlways)
 }
 
 func (f *TLoginForm) OnFormClose(sender vcl.IObject, action *types.TCloseAction) {

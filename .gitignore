@@ -81,3 +81,5 @@ __recovery/
 /vcl/dylib/testdll
 *.bak
 /samples/ExtPlugins
+/samples/cef3browser
+/samples/ipscanner

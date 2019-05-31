@@ -1,4 +1,4 @@
-unit ufrmGo;
+﻿unit ufrmGo;
 
 interface
 
@@ -11,16 +11,29 @@ type
 
   TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean) of object;
 
+
+  // 兼容Lazarus的
+  TShowInTaskbar = (
+    stDefault,  // use default rules for showing taskbar item
+    stAlways,   // always show taskbar item for the form
+    stNever     // never show taskbar item for the form
+  );
+
+
+
   TGoForm = class(TForm)
   private
     FOnDropFiles: TDropFilesEvent;
     FOnStyleChanged: TNotifyEvent;
     FOnWndProc: TWndProcEvent;
     FAllowDropFiles: Boolean;
+    FShowInTaskBar: TShowInTaskbar;
     procedure SetAllowDropFiles(const Value: Boolean);
     procedure WMDropFiles(var Msg: TWMDropFiles); message WM_DROPFILES;
     procedure CMStyleChanged(var Msg: TMessage); message CM_STYLECHANGED;
     function GetAllowDropFiles: Boolean;
+    procedure SetShowInTaskBar(const Value: TShowInTaskbar);
+    procedure UpdateShowInTaskBar;
   protected
     procedure InitializeNewForm; override;
   public
@@ -31,6 +44,7 @@ type
     property OnDropFiles: TDropFilesEvent read FOnDropFiles write FOnDropFiles;
     property OnStyleChanged: TNotifyEvent read FOnStyleChanged write FOnStyleChanged;
     property OnWndProc: TWndProcEvent read FOnWndProc write FOnWndProc;
+    property ShowInTaskBar: TShowInTaskbar read FShowInTaskBar write SetShowInTaskBar default stDefault;
   end;
 
   procedure LockInitScale;
@@ -107,6 +121,7 @@ begin
     ScaleForPPI(LPPI);
   end;
   ControlStyle := ControlStyle + [csPaintBlackOpaqueOnGlass];
+  FShowInTaskBar := stDefault;
 end;
 
 function TGoForm.GetAllowDropFiles: Boolean;
@@ -130,6 +145,36 @@ begin
   FAllowDropFiles := Value;
   if AllowDropFiles <> Value then
     DragAcceptFiles(Handle, Value);
+end;
+
+procedure TGoForm.SetShowInTaskBar(const Value: TShowInTaskbar);
+begin
+  if FShowInTaskBar <> Value then
+  begin
+    FShowInTaskBar := Value;
+    UpdateShowInTaskBar;
+  end;
+end;
+
+procedure TGoForm.UpdateShowInTaskBar;
+  function IsSetVal: Boolean;
+  begin
+    Result := (GetWindowLong(Handle, GWL_EXSTYLE) and WS_EX_ACCEPTFILES) <> 0;
+  end;
+begin
+  if (Assigned(Application) and (Application.MainForm = Self)) or
+   (not HandleAllocated) or Assigned(Parent) or
+   (FormStyle = fsMDIChild){ or not Showing} then
+    Exit;
+  if FShowInTaskBar = stAlways then
+  begin
+    if not IsSetVal then
+      SetWindowLong(Handle, GWL_EXSTYLE, GetWindowLong(Handle, GWL_EXSTYLE) or WS_EX_APPWINDOW);
+  end else
+  begin
+    if IsSetVal then
+      SetWindowLong(Handle, GWL_EXSTYLE, GetWindowLong(Handle, GWL_EXSTYLE) and not WS_EX_APPWINDOW);
+  end;
 end;
 
 procedure TGoForm.WMDropFiles(var Msg: TWMDropFiles);

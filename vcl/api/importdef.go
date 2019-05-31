@@ -18,6 +18,8 @@ var (
 	form_SetOnActivate          = libvcl.NewProc("Form_SetOnActivate")
 	form_SetOnStyleChanged      = libvcl.NewProc("Form_SetOnStyleChanged")
 	form_SetOnWndProc           = libvcl.NewProc("Form_SetOnWndProc")
+	form_SetShowInTaskBar       = libvcl.NewProc("Form_SetShowInTaskBar")
+	form_ShowInTaskBar          = libvcl.NewProc("Form_ShowInTaskBar")
 
 	setEventCallback   = libvcl.NewProc("SetEventCallback")
 	setMessageCallback = libvcl.NewProc("SetMessageCallback")
