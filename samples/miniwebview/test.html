@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>
+  测试
+</title>
+</head>
+<script type="text/javascript">
+   // 这里的参数随便你整了
+   function testCall() {
+      alert(window.external.JSExternal("testCall", "xarg1, xarg2"))
+   }
+   
+   function runScript() {
+     window.external.JSExternal("runScript", "alert('hello!')")
+   }
+</script>
+
+<body>
+  <button onclick="alert('hello!');">alert</button><br /><br />
+  <button onclick="testCall();">testCall</button><br /><br />
+  <button onclick="runScript();">runScript</button><br /><br />
+</body>
+</html>

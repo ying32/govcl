@@ -740,6 +740,15 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				ObjectFromInst(getVal(0)),
 				DStrToGoStr(getVal(1)))
 
+		case TWebJSExternalEvent:
+			str := DStrToGoStr(*(*uintptr)(unsafe.Pointer(getVal(3))))
+			v.(TWebJSExternalEvent)(
+				ObjectFromInst(getVal(0)),
+				DStrToGoStr(getVal(1)),
+				DStrToGoStr(getVal(2)),
+				&str)
+			*(*uintptr)(unsafe.Pointer(getVal(3))) = GoStrToDStr(str)
+
 		default:
 		}
 	}

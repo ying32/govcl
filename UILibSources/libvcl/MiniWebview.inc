@@ -55,6 +55,16 @@ begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
 end;
 
+procedure MiniWebview_ExecuteScript(AObj: TMiniWebview; AScriptText: PChar; AScriptType: PChar); stdcall;
+begin
+  AObj.ExecuteScript(AScriptText, AScriptType);
+end;
+
+procedure MiniWebview_ExecuteJS(AObj: TMiniWebview; AScriptText: PChar); stdcall;
+begin
+  AObj.ExecuteJS(AScriptText);
+end;
+
 function MiniWebview_CanFocus(AObj: TMiniWebview): LongBool; stdcall;
 begin
   Result :=  AObj.CanFocus;
@@ -295,6 +305,18 @@ begin
   end;
   AObj.OnTitleChange := TEventClass.OnTitleChange;
   TEventClass.Add(AObj, @TEventClass.OnTitleChange, AEventId);
+end;
+
+procedure MiniWebview_SetOnJSExternal(AObj: TMiniWebview; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnJSExternal := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnJSExternal);
+    Exit;
+  end;
+  AObj.OnJSExternal := TEventClass.OnJSExternal;
+  TEventClass.Add(AObj, @TEventClass.OnJSExternal, AEventId);
 end;
 
 function MiniWebview_GetDockClientCount(AObj: TMiniWebview): Integer; stdcall;
@@ -750,6 +772,8 @@ exports
   MiniWebview_Refresh,
   MiniWebview_Stop,
   MiniWebview_SetBounds,
+  MiniWebview_ExecuteScript,
+  MiniWebview_ExecuteJS,
   MiniWebview_CanFocus,
   MiniWebview_ContainsControl,
   MiniWebview_ControlAtPos,
@@ -797,6 +821,7 @@ exports
   MiniWebview_ToString,
   MiniWebview_GetReadyState,
   MiniWebview_SetOnTitleChange,
+  MiniWebview_SetOnJSExternal,
   MiniWebview_GetDockClientCount,
   MiniWebview_GetDockSite,
   MiniWebview_SetDockSite,

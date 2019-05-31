@@ -55,6 +55,16 @@ begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
 end;
 
+procedure MiniWebview_ExecuteScript(AObj: TMiniWebview; AScriptText: PChar; AScriptType: PChar); extdecl;
+begin
+  AObj.ExecuteScript(AScriptText, AScriptType);
+end;
+
+procedure MiniWebview_ExecuteJS(AObj: TMiniWebview; AScriptText: PChar); extdecl;
+begin
+  AObj.ExecuteJS(AScriptText);
+end;
+
 function MiniWebview_CanFocus(AObj: TMiniWebview): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -274,6 +284,13 @@ procedure MiniWebview_SetOnTitleChange(AObj: TMiniWebview; AEventId: NativeUInt)
 begin
   {$DEFINE EventName := OnTitleChange}
   {$DEFINE EventMethodName := OnTitleChange}
+  EventMethodCode
+end;
+
+procedure MiniWebview_SetOnJSExternal(AObj: TMiniWebview; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnJSExternal}
+  {$DEFINE EventMethodName := OnJSExternal}
   EventMethodCode
 end;
 
@@ -653,6 +670,8 @@ exports
   MiniWebview_Refresh,
   MiniWebview_Stop,
   MiniWebview_SetBounds,
+  MiniWebview_ExecuteScript,
+  MiniWebview_ExecuteJS,
   MiniWebview_CanFocus,
   MiniWebview_ContainsControl,
   MiniWebview_ControlAtPos,
@@ -697,6 +716,7 @@ exports
   MiniWebview_ToString,
   MiniWebview_GetReadyState,
   MiniWebview_SetOnTitleChange,
+  MiniWebview_SetOnJSExternal,
   MiniWebview_GetDockClientCount,
   MiniWebview_GetDockSite,
   MiniWebview_SetDockSite,

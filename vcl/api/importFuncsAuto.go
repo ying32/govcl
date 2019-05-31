@@ -41633,6 +41633,14 @@ func MiniWebview_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, A
     miniWebview_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
+func MiniWebview_ExecuteScript(obj uintptr, AScriptText string, AScriptType string)  {
+    miniWebview_ExecuteScript.Call(obj, GoStrToDStr(AScriptText) , GoStrToDStr(AScriptType) )
+}
+
+func MiniWebview_ExecuteJS(obj uintptr, AScriptText string)  {
+    miniWebview_ExecuteJS.Call(obj, GoStrToDStr(AScriptText) )
+}
+
 func MiniWebview_CanFocus(obj uintptr) bool {
     ret, _, _ := miniWebview_CanFocus.Call(obj)
     return DBoolToGoBool(ret)
@@ -41848,6 +41856,10 @@ func MiniWebview_GetReadyState(obj uintptr) TReadyState {
 
 func MiniWebview_SetOnTitleChange(obj uintptr, fn interface{}) {
     miniWebview_SetOnTitleChange.Call(obj, addEventToMap(fn))
+}
+
+func MiniWebview_SetOnJSExternal(obj uintptr, fn interface{}) {
+    miniWebview_SetOnJSExternal.Call(obj, addEventToMap(fn))
 }
 
 func MiniWebview_GetDockClientCount(obj uintptr) int32 {

@@ -262,6 +262,7 @@ type
 
     // webbrowser
     class procedure OnTitleChange(Sender: TObject; const Text: string);
+    class procedure OnJSExternal(Sender: TObject; const Afunc: string; const AArgs: WideString; var ARetval: WideString);
 
     class procedure Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
     class procedure AddClick(Sender: TObject; AId: NativeUInt);
@@ -755,6 +756,16 @@ end;
 class procedure TEventClass.OnTitleChange(Sender: TObject; const Text: string);
 begin
   SendEvent(Sender, @TEventClass.OnTitleChange, [Sender, Text]);
+end;
+
+class procedure TEventClass.OnJSExternal(Sender: TObject; const Afunc: string;
+  const AArgs: WideString; var ARetval: WideString);
+var
+  LRet: PChar;
+begin
+  LRet := PChar(ARetval);
+  SendEvent(Sender, @TEventClass.OnJSExternal, [Sender, string(Afunc), string(AArgs), @LRet]);
+  ARetval := WideString(LRet);
 end;
 
 class procedure TEventClass.OnClose(Sender: TObject);

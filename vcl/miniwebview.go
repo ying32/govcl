@@ -145,6 +145,16 @@ func (m *TMiniWebview) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight 
     MiniWebview_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
 }
 
+// ExecuteScript
+func (m *TMiniWebview) ExecuteScript(AScriptText string, AScriptType string) {
+    MiniWebview_ExecuteScript(m.instance, AScriptText , AScriptType)
+}
+
+// ExecuteJS
+func (m *TMiniWebview) ExecuteJS(AScriptText string) {
+    MiniWebview_ExecuteJS(m.instance, AScriptText)
+}
+
 // CanFocus
 // CN: 是否可以获得焦点。
 // EN: .
@@ -466,6 +476,11 @@ func (m *TMiniWebview) ReadyState() TReadyState {
 // SetOnTitleChange
 func (m *TMiniWebview) SetOnTitleChange(fn TWebTitleChangeEvent) {
     MiniWebview_SetOnTitleChange(m.instance, fn)
+}
+
+// SetOnJSExternal
+func (m *TMiniWebview) SetOnJSExternal(fn TWebJSExternalEvent) {
+    MiniWebview_SetOnJSExternal(m.instance, fn)
 }
 
 // DockClientCount

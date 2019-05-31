@@ -21,7 +21,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes,
-  Controls, Forms, ActiveX, Menus, ComObj;
+  Controls, Forms, ActiveX, Menus, ComObj, MSHTML, WebJSExternal_TLB;
 
 const
 
@@ -70,6 +70,7 @@ type
   TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
   TWebDocumentCompleteEvent = procedure(Sender: TObject; const pDisp: Pointer; const URL: string) of object;
   TWebWindowClosingEvent = procedure(Sender: TObject; IsChildWindow: Boolean; var Cancel: Boolean) of object;
+  TWebJSExternalEvent = procedure(Sender: TObject; const func: string; const args: WideString; var retval: WideString) of object;
 
   
 // *********************************************************************//
@@ -285,6 +286,17 @@ type
     function FilterDataObject(const pDO: IDataObject; out ppDORet: IDataObject): HRESULT; stdcall;
   end;
 
+
+  TJsExternal = class(TAutoIntfObject, IWebJSExternal, IDispatch)
+  private
+    FWebForm: Pointer;
+  protected
+    function JSExternal(const func: WideString; const args: WideString): WideString; safecall;
+  public
+    constructor Create(AWebForm: Pointer);
+    destructor Destroy; override;
+  end;
+
   TMiniWebview = class(TWinControl, IDispatch, IOleClientSite, IOleControlSite, IOleInPlaceSite, IOleInPlaceFrame, IDocHostUIHandler)
   private
     FWebBrowser: IWebBrowser2;
@@ -295,10 +307,14 @@ type
     FConnected: Boolean;
     FDwCookie: {$IFDEF FPC} DWord {$ELSE} Integer {$ENDIF};
     FConPpoint: IConnectionPoint;
+    FExternalObj: IDispatch;
+
     FOnStatusTextChange: TWebStatusTextChangeEvent;
     FOnWindowClosing: TWebWindowClosingEvent;
     FOnOnDocumentComplete: TWebDocumentCompleteEvent;
     FOnTitleChange: TWebTitleChangeEvent;
+    FOnJSExternal: TWebJSExternalEvent;
+
     function GetReadyState: TReadyState;
     function GetMainMenu: TMainMenu;
     procedure DisconnectPpoint;
@@ -432,6 +448,10 @@ type
     procedure Refresh;
     procedure Stop;
     procedure SetBounds(ALeft, ATop, AWidth, AHeight: Integer); override;
+
+    procedure ExecuteScript(AScriptText, AScriptType: string);
+    procedure ExecuteJS(AScriptText: string);
+
     // propertys
     property ReadyState: TReadyState read GetReadyState;
 
@@ -440,6 +460,7 @@ type
     property OnTitleChange: TWebTitleChangeEvent read FOnTitleChange write FOnTitleChange;
     property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
     property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
+    property OnJSExternal: TWebJSExternalEvent read FOnJSExternal write FOnJSExternal;
   end;
 
 implementation
@@ -449,6 +470,34 @@ const
   IID_IOleObject: TGUID = '{00000112-0000-0000-C000-000000000046}';
   IID_IWebBrowser2: TGUID = '{D30C1661-CDAF-11D0-8A3E-00C04FC9E26E}';
 
+{$R WebBrowser.tlb}
+
+{ TJsExternal }
+
+constructor TJsExternal.Create(AWebForm: Pointer);
+var
+  TypeLib: ITypeLib;
+  ExeName: WideString;
+begin
+  ExeName := GetModuleName(HInstance);
+  FWebForm := AWebForm;
+  OleCheck(LoadTypeLib(PWideChar(ExeName), TypeLib));
+  inherited Create(TypeLib, IWebJSExternal);
+end;
+
+destructor TJsExternal.Destroy;
+begin
+  inherited;
+end;
+
+function TJsExternal.JSExternal(const func: WideString; const args: WideString): WideString; safecall;
+begin
+  Result := EmptyWideStr;
+
+  if Assigned(FWebForm) and Assigned(TMiniWebview(FWebForm).OnJSExternal) then
+    TMiniWebview(FWebForm).OnJSExternal(FWebForm, func, args, Result);
+end;
+
 { TMiniWebview }
 
 constructor TMiniWebview.Create(AOwner: TComponent);
@@ -456,6 +505,7 @@ begin
   inherited Create(AOwner);
   ControlStyle := ControlStyle - [csAcceptsControls, csSetCaption];
   OleCheck(CoCreateInstance(CLSID_WebBrowser, nil, CLSCTX_INPROC, IID_IOleObject, FOleObject));
+  FExternalObj := TJsExternal.Create(Self);
 end;
 
 
@@ -495,6 +545,7 @@ begin
     FOleObject.Close(OLECLOSE_NOSAVE);
     FOleObject.SetClientSite(nil);
   end;
+  FExternalObj := nil;
   FOleObject := nil;
   FWebBrowser := nil;
   inherited;
@@ -923,6 +974,28 @@ begin
   end;
 end;
 
+procedure TMiniWebview.ExecuteScript(AScriptText, AScriptType: string);
+var
+  LDocument: IHTMLDocument2;
+  LParent: IHTMLWindow2;
+begin
+  try
+    LDocument := FWebBrowser.Document as IHTMLDocument2;
+    if Assigned(LDocument) then
+    begin
+      LParent := LDocument.parentWindow;
+      if Assigned(LParent) then
+        LParent.execScript(AScriptText, AScriptType);
+    end;
+  except
+  end;
+end;
+
+procedure TMiniWebview.ExecuteJS(AScriptText: string);
+begin
+  ExecuteScript(AScriptText, 'javascript');
+end;
+
 function TMiniWebview.SetMenu(hmenuShared, holemenu: HMenu;
   hwndActiveObject: HWnd): HResult;
 {$IFDEF FPC}
@@ -1082,8 +1155,8 @@ end;
 
 function TMiniWebview.GetExternal(out ppDispatch: IDispatch): HRESULT;
 begin
-  ppDispatch := nil;
-  Result := E_FAIL;
+  ppDispatch := FExternalObj;
+  Result := S_OK;
 end;
 
 function TMiniWebview.TranslateUrl(const dwTranslate: DWORD; const pchURLIn: POLESTR; var ppchURLOut: POLESTR): HRESULT;

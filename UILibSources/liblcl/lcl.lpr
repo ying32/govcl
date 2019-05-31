@@ -36,11 +36,11 @@ uses
   Types,
 {$ENDIF}
 {$IFDEF LCLGTK2}
-  gtk2,
-  {$IFDEF UNIX}
-    Gdk2x,
-    X,
-  {$ENDIF}
+  gtk2,,
+{$IFDEF UNIX}
+  Gdk2x,,
+  X,,
+{$ENDIF}
 {$ENDIF}
   typinfo,
   LCLProc,

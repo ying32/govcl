@@ -316,3 +316,6 @@ type TWndProcEvent func(msg *TMessage, handled *bool)
 
 // TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
 type TWebTitleChangeEvent func(sender IObject, text string)
+
+// TWebJSExternalEvent = procedure(Sender: TObject; const func: string; const args: WideString; var retval: WideString) of object;
+type TWebJSExternalEvent func(sender IObject, funcName, args string, retVal *string)
