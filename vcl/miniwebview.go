@@ -155,6 +155,11 @@ func (m *TMiniWebview) ExecuteJS(AScriptText string) {
     MiniWebview_ExecuteJS(m.instance, AScriptText)
 }
 
+// LoadHTML
+func (m *TMiniWebview) LoadHTML(AStr string) {
+    MiniWebview_LoadHTML(m.instance, AStr)
+}
+
 // CanFocus
 // CN: 是否可以获得焦点。
 // EN: .

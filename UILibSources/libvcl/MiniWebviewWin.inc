@@ -452,6 +452,8 @@ type
     procedure ExecuteScript(AScriptText, AScriptType: string);
     procedure ExecuteJS(AScriptText: string);
 
+    procedure LoadHTML(const AStr: string);
+
     // propertys
     property ReadyState: TReadyState read GetReadyState;
 
@@ -509,6 +511,7 @@ begin
 end;
 
 
+// 没有考虑设计时的，所以尽量不要安装成控件使用
 procedure TMiniWebview.CreateWnd;
 var
   con: IConnectionPointContainer;
@@ -979,6 +982,8 @@ var
   LDocument: IHTMLDocument2;
   LParent: IHTMLWindow2;
 begin
+  if FWebBrowser = nil then
+    Exit;
   try
     LDocument := FWebBrowser.Document as IHTMLDocument2;
     if Assigned(LDocument) then
@@ -994,6 +999,31 @@ end;
 procedure TMiniWebview.ExecuteJS(AScriptText: string);
 begin
   ExecuteScript(AScriptText, 'javascript');
+end;
+
+procedure TMiniWebview.LoadHTML(const AStr: string);
+var
+  LMem: TMemoryStream;
+  LBs: TBytes;
+begin
+  if FWebBrowser = nil then
+    Exit;
+  LMem := TMemoryStream.Create;
+  try
+    LBs := BytesOf(AStr);
+    LMem.Write(LBs[0], Length(LBs));
+    LMem.Position := 0;
+    Navigate('about:blank');
+    while ReadyState < rsInterActive do
+    begin
+      Application.ProcessMessages;
+      Sleep(1);
+    end;
+    if Assigned(FWebBrowser.Document) then
+      (FWebBrowser.Document as IPersistStreamInit).Load(TStreamAdapter.Create(LMem));
+  finally
+    LMem.Free;;
+  end;
 end;
 
 function TMiniWebview.SetMenu(hmenuShared, holemenu: HMenu;
@@ -1177,7 +1207,7 @@ var
 
 initialization
   OleInitialize(nil);
-  // 正式就可以免费除这个
+  // 正式就可以免除这个
   uOldFPU := GetMXCSR;
   SetMXCSR(uOldFPU or $0080);
 

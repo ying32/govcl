@@ -65,6 +65,11 @@ begin
   AObj.ExecuteJS(AScriptText);
 end;
 
+procedure MiniWebview_LoadHTML(AObj: TMiniWebview; AStr: PChar); stdcall;
+begin
+  AObj.LoadHTML(AStr);
+end;
+
 function MiniWebview_CanFocus(AObj: TMiniWebview): LongBool; stdcall;
 begin
   Result :=  AObj.CanFocus;
@@ -774,6 +779,7 @@ exports
   MiniWebview_SetBounds,
   MiniWebview_ExecuteScript,
   MiniWebview_ExecuteJS,
+  MiniWebview_LoadHTML,
   MiniWebview_CanFocus,
   MiniWebview_ContainsControl,
   MiniWebview_ControlAtPos,

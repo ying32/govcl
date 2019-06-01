@@ -41641,6 +41641,10 @@ func MiniWebview_ExecuteJS(obj uintptr, AScriptText string)  {
     miniWebview_ExecuteJS.Call(obj, GoStrToDStr(AScriptText) )
 }
 
+func MiniWebview_LoadHTML(obj uintptr, AStr string)  {
+    miniWebview_LoadHTML.Call(obj, GoStrToDStr(AStr) )
+}
+
 func MiniWebview_CanFocus(obj uintptr) bool {
     ret, _, _ := miniWebview_CanFocus.Call(obj)
     return DBoolToGoBool(ret)

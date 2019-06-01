@@ -9270,6 +9270,7 @@ var (
     miniWebview_SetBounds = libvcl.NewProc("MiniWebview_SetBounds")
     miniWebview_ExecuteScript = libvcl.NewProc("MiniWebview_ExecuteScript")
     miniWebview_ExecuteJS = libvcl.NewProc("MiniWebview_ExecuteJS")
+    miniWebview_LoadHTML = libvcl.NewProc("MiniWebview_LoadHTML")
     miniWebview_CanFocus = libvcl.NewProc("MiniWebview_CanFocus")
     miniWebview_ContainsControl = libvcl.NewProc("MiniWebview_ContainsControl")
     miniWebview_ControlAtPos = libvcl.NewProc("MiniWebview_ControlAtPos")
