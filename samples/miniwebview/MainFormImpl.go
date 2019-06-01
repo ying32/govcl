@@ -23,7 +23,10 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.webView.SetParent(f.PnlWebview)
 	f.webView.SetAlign(types.AlClient)
 	//f.webView.Navigate("about:blank")
-	f.webView.Navigate("file:///" + strings.Replace(rtl.ExtractFilePath(vcl.Application.ExeName()), "\\", "/", -1) + "test.html")
+
+	URL := "file:///" + strings.Replace(rtl.ExtractFilePath(vcl.Application.ExeName()), "\\", "/", -1) + "test.html"
+	f.EdtURL.SetText(URL)
+	f.webView.Navigate(URL)
 	f.webView.SetOnTitleChange(f.OnWebTitleChange)
 	f.webView.SetOnJSExternal(f.OnWebJsExternal)
 }
@@ -60,4 +63,28 @@ func (f *TMainForm) OnWebJsExternal(sender vcl.IObject, funcName, args string, r
 		f.webView.ExecuteJS(args)
 	}
 
+}
+
+func (f *TMainForm) OnButton2Click(sender vcl.IObject) {
+	f.webView.ExecuteJS("alert('执行脚本。');")
+}
+
+func (f *TMainForm) OnButton3Click(sender vcl.IObject) {
+	f.EdtURL.SetText("about:blank")
+	encoding := ""
+	if rtl.LcLLoaded() {
+		encoding = ";charset=utf-8"
+	}
+	f.webView.LoadHTML(`
+    <html>
+      <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="content-type" content="text/html` + encoding + `">       
+        <title>从字符串加载HTML</title>
+      </head>
+      <body>
+         <p>这是一个从字符串加载的HTML。</p>
+      </body> 
+    </html>
+`)
 }
