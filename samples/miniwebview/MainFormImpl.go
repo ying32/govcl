@@ -22,13 +22,16 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.webView = vcl.NewMiniWebview(f)
 	f.webView.SetParent(f.PnlWebview)
 	f.webView.SetAlign(types.AlClient)
-	//f.webView.Navigate("about:blank")
+
+	f.webView.SetOnTitleChange(f.OnWebTitleChange)
+	f.webView.SetOnJSExternal(f.OnWebJsExternal)
+
+	//f.webView.Navigate("https://github.com/ying32/govcl")
 
 	URL := "file:///" + strings.Replace(rtl.ExtractFilePath(vcl.Application.ExeName()), "\\", "/", -1) + "test.html"
 	f.EdtURL.SetText(URL)
 	f.webView.Navigate(URL)
-	f.webView.SetOnTitleChange(f.OnWebTitleChange)
-	f.webView.SetOnJSExternal(f.OnWebJsExternal)
+	//f.Button3.Click()
 }
 
 func (f *TMainForm) OnBtnGoForwardClick(sender vcl.IObject) {
