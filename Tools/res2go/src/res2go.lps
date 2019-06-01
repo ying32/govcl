@@ -57,17 +57,17 @@
       <Unit3>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <CursorPos X="35" Y="4"/>
         <UsageCount Value="40"/>
+        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="845"/>
-        <CursorPos X="30" Y="884"/>
+        <TopLine Value="121"/>
         <UsageCount Value="32"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -391,7 +391,7 @@
         <UsageCount Value="10"/>
       </Unit49>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="1195" Column="12" TopLine="1162"/>
@@ -490,24 +490,28 @@
       </Position24>
       <Position25>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="644" Column="11" TopLine="767"/>
+        <Caret Line="1130" Column="22" TopLine="1095"/>
       </Position25>
       <Position26>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="1130" Column="22" TopLine="1095"/>
+        <Caret Line="882" Column="18" TopLine="847"/>
       </Position26>
       <Position27>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="882" Column="18" TopLine="847"/>
+        <Caret Line="883" Column="10" TopLine="847"/>
       </Position27>
       <Position28>
         <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="883" Column="10" TopLine="847"/>
+        <Caret Line="882" Column="77" TopLine="845"/>
       </Position28>
       <Position29>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="882" Column="77" TopLine="845"/>
+        <Filename Value="res2go.lpr"/>
+        <Caret Line="16"/>
       </Position29>
+      <Position30>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret TopLine="121"/>
+      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
