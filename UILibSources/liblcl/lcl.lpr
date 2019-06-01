@@ -215,6 +215,7 @@ uses
 {$I MyLCL_TaskDialog.inc}
 {$I MyLCL_TaskDialogButtons.inc}
 {$I MyLCL_TaskDialogButtonItem.inc}
+{$I MyLCL_TaskDialogRadioButtonItem.inc}
 {$I MyLCL_TaskDialogBaseButtonItem.inc}
 
 begin

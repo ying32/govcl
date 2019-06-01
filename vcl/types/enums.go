@@ -2062,7 +2062,16 @@ const (
 )
 
 // TTaskDialogIcon = Low(Integer)..High(Integer);
-type TTaskDialogIcon = int32
+type TTaskDialogIcon int32
+
+const (
+	TdiNone = iota + 0
+	TdiWarning
+	TdiError
+	TdiInformation
+	TdiShield
+	TdiQuestion // Lazarus所有
+)
 
 // TProgressBarState = Vcl.ComCtrls.TProgressBarState; // for compatibility
 //type TProgressBarState = TProgressBarState
