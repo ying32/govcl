@@ -568,37 +568,55 @@ end;
 procedure TMiniWebview.GoBack;
 begin
   if Assigned(FWebBrowser) then
+  try
     FWebBrowser.GoBack;
+  except
+  end;
 end;
 
 procedure TMiniWebview.GoForward;
 begin
   if Assigned(FWebBrowser) then
+  try
     FWebBrowser.GoForward;
+  except
+  end;
 end;
 
 procedure TMiniWebview.GoHome;
 begin
   if Assigned(FWebBrowser) then
+  try
     FWebBrowser.GoHome;
+  except
+  end;
 end;
 
 procedure TMiniWebview.GoSearch;
 begin
   if Assigned(FWebBrowser) then
+  try
     FWebBrowser.GoSearch;
+  except
+  end;
 end;
 
 procedure TMiniWebview.Refresh;
 begin
   if Assigned(FWebBrowser) then
+  try
     FWebBrowser.Refresh;
+  except
+  end;
 end;
 
 procedure TMiniWebview.Stop;
 begin
   if Assigned(FWebBrowser) then
+  try
     FWebBrowser.Stop;
+  except
+  end;
 end;
 
 procedure TMiniWebview.SetParent(AParent: TWinControl);
@@ -982,6 +1000,8 @@ var
   LDocument: IHTMLDocument2;
   LParent: IHTMLWindow2;
 begin
+  if not HandleAllocated then
+    HandleNeeded;
   if FWebBrowser = nil then
     Exit;
   try
@@ -1006,6 +1026,8 @@ var
   LMem: TMemoryStream;
   LBs: TBytes;
 begin
+  if not HandleAllocated then
+    HandleNeeded;
   if FWebBrowser = nil then
     Exit;
   LMem := TMemoryStream.Create;
