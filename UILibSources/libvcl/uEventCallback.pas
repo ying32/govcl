@@ -23,6 +23,7 @@ uses
   System.Classes,
   System.SysUtils,
   System.Types,
+  System.UITypes,
   Vcl.JumpList,
   System.Win.TaskbarCore,
   Vcl.Taskbar,
@@ -260,6 +261,19 @@ type
     // webbrowser
     class procedure OnTitleChange(Sender: TObject; const Text: string);
     class procedure OnJSExternal(Sender: TObject; const Afunc: string; const AArgs: WideString; var ARetval: WideString);
+
+    // TaskDialog
+    class procedure TaskDialogOnButtonClicked(Sender: TObject; ModalResult: TModalResult; var CanClose: Boolean);
+    class procedure TaskDialogOnDialogConstructed(Sender: TObject);
+    class procedure TaskDialogOnDialogCreated(Sender: TObject);
+    class procedure TaskDialogOnDialogDestroyed(Sender: TObject);
+    class procedure TaskDialogOnExpanded(Sender: TObject);
+    class procedure TaskDialogOnHyperlinkClicked(Sender: TObject);
+    class procedure TaskDialogOnNavigated(Sender: TObject);
+    class procedure TaskDialogOnRadioButtonClicked(Sender: TObject);
+    class procedure TaskDialogOnTimer(Sender: TObject; TickCount: Cardinal; var Reset: Boolean);
+    class procedure TaskDialogOnVerificationClicked(Sender: TObject);
+
 
     class procedure Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
     class procedure AddClick(Sender: TObject; AId: NativeUInt);
@@ -1028,6 +1042,60 @@ begin
   SendEvent(Sender, @TEventClass.OnJSExternal, [Sender, string(Afunc), string(AArgs), @LRet]);
   ARetval := WideString(LRet);
 end;
+
+
+// TaskDialog
+class procedure TEventClass.TaskDialogOnButtonClicked(Sender: TObject; ModalResult: TModalResult; var CanClose: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnButtonClicked, [Sender, ModalResult, @CanClose]);
+end;
+
+class procedure TEventClass.TaskDialogOnDialogConstructed(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnDialogConstructed, [Sender]);
+end;
+
+class procedure TEventClass.TaskDialogOnDialogCreated(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnDialogCreated, [Sender]);
+end;
+
+class procedure TEventClass.TaskDialogOnDialogDestroyed(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnDialogDestroyed, [Sender]);
+end;
+
+class procedure TEventClass.TaskDialogOnExpanded(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnExpanded, [Sender]);
+end;
+
+class procedure TEventClass.TaskDialogOnHyperlinkClicked(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnHyperlinkClicked, [Sender]);
+end;
+
+class procedure TEventClass.TaskDialogOnNavigated(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnNavigated, [Sender]);
+end;
+
+class procedure TEventClass.TaskDialogOnRadioButtonClicked(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnRadioButtonClicked, [Sender]);
+end;
+
+class procedure TEventClass.TaskDialogOnTimer(Sender: TObject; TickCount: Cardinal; var Reset: Boolean);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnTimer, [Sender, TickCount, @Reset]);
+end;
+
+class procedure TEventClass.TaskDialogOnVerificationClicked(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.TaskDialogOnVerificationClicked, [Sender]);
+end;
+
+// -------------- end TaskDialog -----------------------
 
 
 class procedure TEventClass.OnUpdate(Sender: TObject);

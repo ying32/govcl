@@ -63211,3 +63211,980 @@ func Printer_StaticClassType() TClass {
     r, _, _:= printer_StaticClassType.Call()
     return TClass(r)
 }
+
+//--------------------------- TTaskDialog ---------------------------
+
+func TaskDialog_Create(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_Create.Call(obj)
+    return ret
+}
+
+func TaskDialog_Free(obj uintptr) {
+    taskDialog_Free.Call(obj)
+}
+
+func TaskDialog_Execute(obj uintptr) bool {
+    ret, _, _ := taskDialog_Execute.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialog_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := taskDialog_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func TaskDialog_GetNamePath(obj uintptr) string {
+    ret, _, _ := taskDialog_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_HasParent(obj uintptr) bool {
+    ret, _, _ := taskDialog_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialog_Assign(obj uintptr, Source uintptr)  {
+    taskDialog_Assign.Call(obj, Source )
+}
+
+func TaskDialog_DisposeOf(obj uintptr)  {
+    taskDialog_DisposeOf.Call(obj)
+}
+
+func TaskDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := taskDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func TaskDialog_ClassName(obj uintptr) string {
+    ret, _, _ := taskDialog_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := taskDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := taskDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialog_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := taskDialog_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialog_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := taskDialog_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialog_ToString(obj uintptr) string {
+    ret, _, _ := taskDialog_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_GetButtons(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetButtons.Call(obj)
+    return ret
+}
+
+func TaskDialog_SetButtons(obj uintptr, value uintptr) {
+   taskDialog_SetButtons.Call(obj, value)
+}
+
+func TaskDialog_GetCaption(obj uintptr) string {
+    ret, _, _ := taskDialog_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetCaption(obj uintptr, value string) {
+   taskDialog_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_GetCommonButtons(obj uintptr) TTaskDialogCommonButtons {
+    ret, _, _ := taskDialog_GetCommonButtons.Call(obj)
+    return TTaskDialogCommonButtons(ret)
+}
+
+func TaskDialog_SetCommonButtons(obj uintptr, value TTaskDialogCommonButtons) {
+   taskDialog_SetCommonButtons.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetCustomFooterIcon(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetCustomFooterIcon.Call(obj)
+    return ret
+}
+
+func TaskDialog_SetCustomFooterIcon(obj uintptr, value uintptr) {
+   taskDialog_SetCustomFooterIcon.Call(obj, value)
+}
+
+func TaskDialog_GetCustomMainIcon(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetCustomMainIcon.Call(obj)
+    return ret
+}
+
+func TaskDialog_SetCustomMainIcon(obj uintptr, value uintptr) {
+   taskDialog_SetCustomMainIcon.Call(obj, value)
+}
+
+func TaskDialog_GetDefaultButton(obj uintptr) TTaskDialogCommonButton {
+    ret, _, _ := taskDialog_GetDefaultButton.Call(obj)
+    return TTaskDialogCommonButton(ret)
+}
+
+func TaskDialog_SetDefaultButton(obj uintptr, value TTaskDialogCommonButton) {
+   taskDialog_SetDefaultButton.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetExpandButtonCaption(obj uintptr) string {
+    ret, _, _ := taskDialog_GetExpandButtonCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetExpandButtonCaption(obj uintptr, value string) {
+   taskDialog_SetExpandButtonCaption.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_GetExpandedText(obj uintptr) string {
+    ret, _, _ := taskDialog_GetExpandedText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetExpandedText(obj uintptr, value string) {
+   taskDialog_SetExpandedText.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_GetFlags(obj uintptr) TTaskDialogFlags {
+    ret, _, _ := taskDialog_GetFlags.Call(obj)
+    return TTaskDialogFlags(ret)
+}
+
+func TaskDialog_SetFlags(obj uintptr, value TTaskDialogFlags) {
+   taskDialog_SetFlags.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetFooterIcon(obj uintptr) TTaskDialogIcon {
+    ret, _, _ := taskDialog_GetFooterIcon.Call(obj)
+    return TTaskDialogIcon(ret)
+}
+
+func TaskDialog_SetFooterIcon(obj uintptr, value TTaskDialogIcon) {
+   taskDialog_SetFooterIcon.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetFooterText(obj uintptr) string {
+    ret, _, _ := taskDialog_GetFooterText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetFooterText(obj uintptr, value string) {
+   taskDialog_SetFooterText.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_GetMainIcon(obj uintptr) TTaskDialogIcon {
+    ret, _, _ := taskDialog_GetMainIcon.Call(obj)
+    return TTaskDialogIcon(ret)
+}
+
+func TaskDialog_SetMainIcon(obj uintptr, value TTaskDialogIcon) {
+   taskDialog_SetMainIcon.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetProgressBar(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetProgressBar.Call(obj)
+    return ret
+}
+
+func TaskDialog_SetProgressBar(obj uintptr, value uintptr) {
+   taskDialog_SetProgressBar.Call(obj, value)
+}
+
+func TaskDialog_GetRadioButtons(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetRadioButtons.Call(obj)
+    return ret
+}
+
+func TaskDialog_SetRadioButtons(obj uintptr, value uintptr) {
+   taskDialog_SetRadioButtons.Call(obj, value)
+}
+
+func TaskDialog_GetText(obj uintptr) string {
+    ret, _, _ := taskDialog_GetText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetText(obj uintptr, value string) {
+   taskDialog_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_GetTitle(obj uintptr) string {
+    ret, _, _ := taskDialog_GetTitle.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetTitle(obj uintptr, value string) {
+   taskDialog_SetTitle.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_GetVerificationText(obj uintptr) string {
+    ret, _, _ := taskDialog_GetVerificationText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetVerificationText(obj uintptr, value string) {
+   taskDialog_SetVerificationText.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_SetOnButtonClicked(obj uintptr, fn interface{}) {
+    taskDialog_SetOnButtonClicked.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnDialogConstructed(obj uintptr, fn interface{}) {
+    taskDialog_SetOnDialogConstructed.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnDialogCreated(obj uintptr, fn interface{}) {
+    taskDialog_SetOnDialogCreated.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnDialogDestroyed(obj uintptr, fn interface{}) {
+    taskDialog_SetOnDialogDestroyed.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnExpanded(obj uintptr, fn interface{}) {
+    taskDialog_SetOnExpanded.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnHyperlinkClicked(obj uintptr, fn interface{}) {
+    taskDialog_SetOnHyperlinkClicked.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnNavigated(obj uintptr, fn interface{}) {
+    taskDialog_SetOnNavigated.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnRadioButtonClicked(obj uintptr, fn interface{}) {
+    taskDialog_SetOnRadioButtonClicked.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnTimer(obj uintptr, fn interface{}) {
+    taskDialog_SetOnTimer.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_SetOnVerificationClicked(obj uintptr, fn interface{}) {
+    taskDialog_SetOnVerificationClicked.Call(obj, addEventToMap(fn))
+}
+
+func TaskDialog_GetButton(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetButton.Call(obj)
+    return ret
+}
+
+func TaskDialog_SetButton(obj uintptr, value uintptr) {
+   taskDialog_SetButton.Call(obj, value)
+}
+
+func TaskDialog_GetExpanded(obj uintptr) bool {
+    ret, _, _ := taskDialog_GetExpanded.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialog_GetHandle(obj uintptr) HWND {
+    ret, _, _ := taskDialog_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func TaskDialog_GetModalResult(obj uintptr) TModalResult {
+    ret, _, _ := taskDialog_GetModalResult.Call(obj)
+    return TModalResult(ret)
+}
+
+func TaskDialog_SetModalResult(obj uintptr, value TModalResult) {
+   taskDialog_SetModalResult.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetRadioButton(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetRadioButton.Call(obj)
+    return ret
+}
+
+func TaskDialog_GetURL(obj uintptr) string {
+    ret, _, _ := taskDialog_GetURL.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := taskDialog_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialog_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := taskDialog_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialog_SetComponentIndex(obj uintptr, value int32) {
+   taskDialog_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := taskDialog_GetOwner.Call(obj)
+    return ret
+}
+
+func TaskDialog_GetName(obj uintptr) string {
+    ret, _, _ := taskDialog_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialog_SetName(obj uintptr, value string) {
+   taskDialog_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialog_GetTag(obj uintptr) int {
+    ret, _, _ := taskDialog_GetTag.Call(obj)
+    return int(ret)
+}
+
+func TaskDialog_SetTag(obj uintptr, value int) {
+   taskDialog_SetTag.Call(obj, uintptr(value))
+}
+
+func TaskDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := taskDialog_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func TaskDialog_StaticClassType() TClass {
+    r, _, _:= taskDialog_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TTaskDialogButtons ---------------------------
+
+func TaskDialogButtons_Create() uintptr {
+    ret, _, _ := taskDialogButtons_Create.Call()
+    return ret
+}
+
+func TaskDialogButtons_Free(obj uintptr) {
+    taskDialogButtons_Free.Call(obj)
+}
+
+func TaskDialogButtons_Add(obj uintptr) uintptr {
+    ret, _, _ := taskDialogButtons_Add.Call(obj)
+    return ret
+}
+
+func TaskDialogButtons_Buttons(obj uintptr) uintptr {
+    ret, _, _ := taskDialogButtons_Buttons.Call(obj)
+    return ret
+}
+
+func TaskDialogButtons_Owner(obj uintptr) uintptr {
+    ret, _, _ := taskDialogButtons_Owner.Call(obj)
+    return ret
+}
+
+func TaskDialogButtons_Assign(obj uintptr, Source uintptr)  {
+    taskDialogButtons_Assign.Call(obj, Source )
+}
+
+func TaskDialogButtons_BeginUpdate(obj uintptr)  {
+    taskDialogButtons_BeginUpdate.Call(obj)
+}
+
+func TaskDialogButtons_Clear(obj uintptr)  {
+    taskDialogButtons_Clear.Call(obj)
+}
+
+func TaskDialogButtons_ClearAndResetID(obj uintptr)  {
+    taskDialogButtons_ClearAndResetID.Call(obj)
+}
+
+func TaskDialogButtons_Delete(obj uintptr, Index int32)  {
+    taskDialogButtons_Delete.Call(obj, uintptr(Index) )
+}
+
+func TaskDialogButtons_EndUpdate(obj uintptr)  {
+    taskDialogButtons_EndUpdate.Call(obj)
+}
+
+func TaskDialogButtons_FindItemID(obj uintptr, ID int32) uintptr {
+    ret, _, _ := taskDialogButtons_FindItemID.Call(obj, uintptr(ID) )
+    return ret
+}
+
+func TaskDialogButtons_GetNamePath(obj uintptr) string {
+    ret, _, _ := taskDialogButtons_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtons_Insert(obj uintptr, Index int32) uintptr {
+    ret, _, _ := taskDialogButtons_Insert.Call(obj, uintptr(Index) )
+    return ret
+}
+
+func TaskDialogButtons_DisposeOf(obj uintptr)  {
+    taskDialogButtons_DisposeOf.Call(obj)
+}
+
+func TaskDialogButtons_ClassType(obj uintptr) TClass {
+    ret, _, _ := taskDialogButtons_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func TaskDialogButtons_ClassName(obj uintptr) string {
+    ret, _, _ := taskDialogButtons_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtons_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := taskDialogButtons_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogButtons_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := taskDialogButtons_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogButtons_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := taskDialogButtons_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogButtons_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := taskDialogButtons_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogButtons_ToString(obj uintptr) string {
+    ret, _, _ := taskDialogButtons_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtons_GetDefaultButton(obj uintptr) uintptr {
+    ret, _, _ := taskDialogButtons_GetDefaultButton.Call(obj)
+    return ret
+}
+
+func TaskDialogButtons_SetDefaultButton(obj uintptr, value uintptr) {
+   taskDialogButtons_SetDefaultButton.Call(obj, value)
+}
+
+func TaskDialogButtons_GetCapacity(obj uintptr) int32 {
+    ret, _, _ := taskDialogButtons_GetCapacity.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogButtons_SetCapacity(obj uintptr, value int32) {
+   taskDialogButtons_SetCapacity.Call(obj, uintptr(value))
+}
+
+func TaskDialogButtons_GetCount(obj uintptr) int32 {
+    ret, _, _ := taskDialogButtons_GetCount.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogButtons_GetItems(obj uintptr, Index int32) uintptr {
+    ret, _, _ := taskDialogButtons_GetItems.Call(obj, uintptr(Index))
+    return ret
+}
+
+func TaskDialogButtons_SetItems(obj uintptr, Index int32, value uintptr) {
+   taskDialogButtons_SetItems.Call(obj, uintptr(Index), value)
+}
+
+func TaskDialogButtons_StaticClassType() TClass {
+    r, _, _:= taskDialogButtons_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TTaskDialogProgressBar ---------------------------
+
+func TaskDialogProgressBar_Create() uintptr {
+    ret, _, _ := taskDialogProgressBar_Create.Call()
+    return ret
+}
+
+func TaskDialogProgressBar_Free(obj uintptr) {
+    taskDialogProgressBar_Free.Call(obj)
+}
+
+func TaskDialogProgressBar_Assign(obj uintptr, Source uintptr)  {
+    taskDialogProgressBar_Assign.Call(obj, Source )
+}
+
+func TaskDialogProgressBar_GetNamePath(obj uintptr) string {
+    ret, _, _ := taskDialogProgressBar_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogProgressBar_DisposeOf(obj uintptr)  {
+    taskDialogProgressBar_DisposeOf.Call(obj)
+}
+
+func TaskDialogProgressBar_ClassType(obj uintptr) TClass {
+    ret, _, _ := taskDialogProgressBar_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func TaskDialogProgressBar_ClassName(obj uintptr) string {
+    ret, _, _ := taskDialogProgressBar_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogProgressBar_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := taskDialogProgressBar_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogProgressBar_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := taskDialogProgressBar_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogProgressBar_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := taskDialogProgressBar_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogProgressBar_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := taskDialogProgressBar_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogProgressBar_ToString(obj uintptr) string {
+    ret, _, _ := taskDialogProgressBar_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogProgressBar_GetMax(obj uintptr) int32 {
+    ret, _, _ := taskDialogProgressBar_GetMax.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogProgressBar_SetMax(obj uintptr, value int32) {
+   taskDialogProgressBar_SetMax.Call(obj, uintptr(value))
+}
+
+func TaskDialogProgressBar_GetMin(obj uintptr) int32 {
+    ret, _, _ := taskDialogProgressBar_GetMin.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogProgressBar_SetMin(obj uintptr, value int32) {
+   taskDialogProgressBar_SetMin.Call(obj, uintptr(value))
+}
+
+func TaskDialogProgressBar_GetPosition(obj uintptr) int32 {
+    ret, _, _ := taskDialogProgressBar_GetPosition.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogProgressBar_SetPosition(obj uintptr, value int32) {
+   taskDialogProgressBar_SetPosition.Call(obj, uintptr(value))
+}
+
+func TaskDialogProgressBar_GetState(obj uintptr) TProgressBarState {
+    ret, _, _ := taskDialogProgressBar_GetState.Call(obj)
+    return TProgressBarState(ret)
+}
+
+func TaskDialogProgressBar_SetState(obj uintptr, value TProgressBarState) {
+   taskDialogProgressBar_SetState.Call(obj, uintptr(value))
+}
+
+func TaskDialogProgressBar_StaticClassType() TClass {
+    r, _, _:= taskDialogProgressBar_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TTaskDialogButtonItem ---------------------------
+
+func TaskDialogButtonItem_Create() uintptr {
+    ret, _, _ := taskDialogButtonItem_Create.Call()
+    return ret
+}
+
+func TaskDialogButtonItem_Free(obj uintptr) {
+    taskDialogButtonItem_Free.Call(obj)
+}
+
+func TaskDialogButtonItem_Click(obj uintptr)  {
+    taskDialogButtonItem_Click.Call(obj)
+}
+
+func TaskDialogButtonItem_GetNamePath(obj uintptr) string {
+    ret, _, _ := taskDialogButtonItem_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtonItem_Assign(obj uintptr, Source uintptr)  {
+    taskDialogButtonItem_Assign.Call(obj, Source )
+}
+
+func TaskDialogButtonItem_DisposeOf(obj uintptr)  {
+    taskDialogButtonItem_DisposeOf.Call(obj)
+}
+
+func TaskDialogButtonItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := taskDialogButtonItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func TaskDialogButtonItem_ClassName(obj uintptr) string {
+    ret, _, _ := taskDialogButtonItem_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtonItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := taskDialogButtonItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogButtonItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := taskDialogButtonItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogButtonItem_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := taskDialogButtonItem_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogButtonItem_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := taskDialogButtonItem_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogButtonItem_ToString(obj uintptr) string {
+    ret, _, _ := taskDialogButtonItem_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtonItem_GetCommandLinkHint(obj uintptr) string {
+    ret, _, _ := taskDialogButtonItem_GetCommandLinkHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtonItem_SetCommandLinkHint(obj uintptr, value string) {
+   taskDialogButtonItem_SetCommandLinkHint.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialogButtonItem_GetElevationRequired(obj uintptr) bool {
+    ret, _, _ := taskDialogButtonItem_GetElevationRequired.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogButtonItem_SetElevationRequired(obj uintptr, value bool) {
+   taskDialogButtonItem_SetElevationRequired.Call(obj, GoBoolToDBool(value))
+}
+
+func TaskDialogButtonItem_GetModalResult(obj uintptr) TModalResult {
+    ret, _, _ := taskDialogButtonItem_GetModalResult.Call(obj)
+    return TModalResult(ret)
+}
+
+func TaskDialogButtonItem_SetModalResult(obj uintptr, value TModalResult) {
+   taskDialogButtonItem_SetModalResult.Call(obj, uintptr(value))
+}
+
+func TaskDialogButtonItem_GetCaption(obj uintptr) string {
+    ret, _, _ := taskDialogButtonItem_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogButtonItem_SetCaption(obj uintptr, value string) {
+   taskDialogButtonItem_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialogButtonItem_GetDefault(obj uintptr) bool {
+    ret, _, _ := taskDialogButtonItem_GetDefault.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogButtonItem_SetDefault(obj uintptr, value bool) {
+   taskDialogButtonItem_SetDefault.Call(obj, GoBoolToDBool(value))
+}
+
+func TaskDialogButtonItem_GetEnabled(obj uintptr) bool {
+    ret, _, _ := taskDialogButtonItem_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogButtonItem_SetEnabled(obj uintptr, value bool) {
+   taskDialogButtonItem_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func TaskDialogButtonItem_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := taskDialogButtonItem_GetCollection.Call(obj)
+    return ret
+}
+
+func TaskDialogButtonItem_SetCollection(obj uintptr, value uintptr) {
+   taskDialogButtonItem_SetCollection.Call(obj, value)
+}
+
+func TaskDialogButtonItem_GetIndex(obj uintptr) int32 {
+    ret, _, _ := taskDialogButtonItem_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogButtonItem_SetIndex(obj uintptr, value int32) {
+   taskDialogButtonItem_SetIndex.Call(obj, uintptr(value))
+}
+
+func TaskDialogButtonItem_StaticClassType() TClass {
+    r, _, _:= taskDialogButtonItem_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TTaskDialogRadioButtonItem ---------------------------
+
+func TaskDialogRadioButtonItem_Create() uintptr {
+    ret, _, _ := taskDialogRadioButtonItem_Create.Call()
+    return ret
+}
+
+func TaskDialogRadioButtonItem_Free(obj uintptr) {
+    taskDialogRadioButtonItem_Free.Call(obj)
+}
+
+func TaskDialogRadioButtonItem_Click(obj uintptr)  {
+    taskDialogRadioButtonItem_Click.Call(obj)
+}
+
+func TaskDialogRadioButtonItem_GetNamePath(obj uintptr) string {
+    ret, _, _ := taskDialogRadioButtonItem_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogRadioButtonItem_Assign(obj uintptr, Source uintptr)  {
+    taskDialogRadioButtonItem_Assign.Call(obj, Source )
+}
+
+func TaskDialogRadioButtonItem_DisposeOf(obj uintptr)  {
+    taskDialogRadioButtonItem_DisposeOf.Call(obj)
+}
+
+func TaskDialogRadioButtonItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := taskDialogRadioButtonItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func TaskDialogRadioButtonItem_ClassName(obj uintptr) string {
+    ret, _, _ := taskDialogRadioButtonItem_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogRadioButtonItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := taskDialogRadioButtonItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogRadioButtonItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := taskDialogRadioButtonItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogRadioButtonItem_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := taskDialogRadioButtonItem_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogRadioButtonItem_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := taskDialogRadioButtonItem_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogRadioButtonItem_ToString(obj uintptr) string {
+    ret, _, _ := taskDialogRadioButtonItem_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogRadioButtonItem_GetModalResult(obj uintptr) TModalResult {
+    ret, _, _ := taskDialogRadioButtonItem_GetModalResult.Call(obj)
+    return TModalResult(ret)
+}
+
+func TaskDialogRadioButtonItem_SetModalResult(obj uintptr, value TModalResult) {
+   taskDialogRadioButtonItem_SetModalResult.Call(obj, uintptr(value))
+}
+
+func TaskDialogRadioButtonItem_GetCaption(obj uintptr) string {
+    ret, _, _ := taskDialogRadioButtonItem_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogRadioButtonItem_SetCaption(obj uintptr, value string) {
+   taskDialogRadioButtonItem_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialogRadioButtonItem_GetDefault(obj uintptr) bool {
+    ret, _, _ := taskDialogRadioButtonItem_GetDefault.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogRadioButtonItem_SetDefault(obj uintptr, value bool) {
+   taskDialogRadioButtonItem_SetDefault.Call(obj, GoBoolToDBool(value))
+}
+
+func TaskDialogRadioButtonItem_GetEnabled(obj uintptr) bool {
+    ret, _, _ := taskDialogRadioButtonItem_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogRadioButtonItem_SetEnabled(obj uintptr, value bool) {
+   taskDialogRadioButtonItem_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func TaskDialogRadioButtonItem_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := taskDialogRadioButtonItem_GetCollection.Call(obj)
+    return ret
+}
+
+func TaskDialogRadioButtonItem_SetCollection(obj uintptr, value uintptr) {
+   taskDialogRadioButtonItem_SetCollection.Call(obj, value)
+}
+
+func TaskDialogRadioButtonItem_GetIndex(obj uintptr) int32 {
+    ret, _, _ := taskDialogRadioButtonItem_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogRadioButtonItem_SetIndex(obj uintptr, value int32) {
+   taskDialogRadioButtonItem_SetIndex.Call(obj, uintptr(value))
+}
+
+func TaskDialogRadioButtonItem_StaticClassType() TClass {
+    r, _, _:= taskDialogRadioButtonItem_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TTaskDialogBaseButtonItem ---------------------------
+
+func TaskDialogBaseButtonItem_Create() uintptr {
+    ret, _, _ := taskDialogBaseButtonItem_Create.Call()
+    return ret
+}
+
+func TaskDialogBaseButtonItem_Free(obj uintptr) {
+    taskDialogBaseButtonItem_Free.Call(obj)
+}
+
+func TaskDialogBaseButtonItem_Click(obj uintptr)  {
+    taskDialogBaseButtonItem_Click.Call(obj)
+}
+
+func TaskDialogBaseButtonItem_GetNamePath(obj uintptr) string {
+    ret, _, _ := taskDialogBaseButtonItem_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogBaseButtonItem_Assign(obj uintptr, Source uintptr)  {
+    taskDialogBaseButtonItem_Assign.Call(obj, Source )
+}
+
+func TaskDialogBaseButtonItem_DisposeOf(obj uintptr)  {
+    taskDialogBaseButtonItem_DisposeOf.Call(obj)
+}
+
+func TaskDialogBaseButtonItem_ClassType(obj uintptr) TClass {
+    ret, _, _ := taskDialogBaseButtonItem_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func TaskDialogBaseButtonItem_ClassName(obj uintptr) string {
+    ret, _, _ := taskDialogBaseButtonItem_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogBaseButtonItem_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := taskDialogBaseButtonItem_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogBaseButtonItem_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := taskDialogBaseButtonItem_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogBaseButtonItem_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := taskDialogBaseButtonItem_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogBaseButtonItem_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := taskDialogBaseButtonItem_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogBaseButtonItem_ToString(obj uintptr) string {
+    ret, _, _ := taskDialogBaseButtonItem_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogBaseButtonItem_GetModalResult(obj uintptr) TModalResult {
+    ret, _, _ := taskDialogBaseButtonItem_GetModalResult.Call(obj)
+    return TModalResult(ret)
+}
+
+func TaskDialogBaseButtonItem_SetModalResult(obj uintptr, value TModalResult) {
+   taskDialogBaseButtonItem_SetModalResult.Call(obj, uintptr(value))
+}
+
+func TaskDialogBaseButtonItem_GetCaption(obj uintptr) string {
+    ret, _, _ := taskDialogBaseButtonItem_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TaskDialogBaseButtonItem_SetCaption(obj uintptr, value string) {
+   taskDialogBaseButtonItem_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func TaskDialogBaseButtonItem_GetDefault(obj uintptr) bool {
+    ret, _, _ := taskDialogBaseButtonItem_GetDefault.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogBaseButtonItem_SetDefault(obj uintptr, value bool) {
+   taskDialogBaseButtonItem_SetDefault.Call(obj, GoBoolToDBool(value))
+}
+
+func TaskDialogBaseButtonItem_GetEnabled(obj uintptr) bool {
+    ret, _, _ := taskDialogBaseButtonItem_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TaskDialogBaseButtonItem_SetEnabled(obj uintptr, value bool) {
+   taskDialogBaseButtonItem_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func TaskDialogBaseButtonItem_GetCollection(obj uintptr) uintptr {
+    ret, _, _ := taskDialogBaseButtonItem_GetCollection.Call(obj)
+    return ret
+}
+
+func TaskDialogBaseButtonItem_SetCollection(obj uintptr, value uintptr) {
+   taskDialogBaseButtonItem_SetCollection.Call(obj, value)
+}
+
+func TaskDialogBaseButtonItem_GetIndex(obj uintptr) int32 {
+    ret, _, _ := taskDialogBaseButtonItem_GetIndex.Call(obj)
+    return int32(ret)
+}
+
+func TaskDialogBaseButtonItem_SetIndex(obj uintptr, value int32) {
+   taskDialogBaseButtonItem_SetIndex.Call(obj, uintptr(value))
+}
+
+func TaskDialogBaseButtonItem_StaticClassType() TClass {
+    r, _, _:= taskDialogBaseButtonItem_StaticClassType.Call()
+    return TClass(r)
+}

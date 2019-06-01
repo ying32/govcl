@@ -319,3 +319,9 @@ type TWebTitleChangeEvent func(sender IObject, text string)
 
 // TWebJSExternalEvent = procedure(Sender: TObject; const func: string; const args: WideString; var retval: WideString) of object;
 type TWebJSExternalEvent func(sender IObject, funcName, args string, retVal *string)
+
+//TTaskDlgClickEvent = procedure(Sender: TObject; ModalResult: TModalResult; var CanClose: Boolean) of object;
+type TTaskDlgClickEvent func(sender IObject, modalResult TModalResult, canClose *bool)
+
+//TTaskDlgTimerEvent = procedure(Sender: TObject; TickCount: Cardinal; var Reset: Boolean) of object;
+type TTaskDlgTimerEvent func(sender IObject, tickCount uint32, reset *bool)

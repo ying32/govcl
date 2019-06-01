@@ -493,6 +493,7 @@ end;
 function TJsExternal.JSExternal(const func: WideString; const args: WideString): WideString; safecall;
 begin
   Result := EmptyWideStr;
+
   if Assigned(FWebForm) and Assigned(TMiniWebview(FWebForm).OnJSExternal) then
     TMiniWebview(FWebForm).OnJSExternal(FWebForm, func, args, Result);
 end;

@@ -212,6 +212,10 @@ uses
 {$I MyLCL_CoolBand.inc}
 {$I MyLCL_Collection.inc}
 {$I MyLCL_Printer.inc}
+{$I MyLCL_TaskDialog.inc}
+{$I MyLCL_TaskDialogButtons.inc}
+{$I MyLCL_TaskDialogButtonItem.inc}
+{$I MyLCL_TaskDialogBaseButtonItem.inc}
 
 begin
   InitLazarusDef;

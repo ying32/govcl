@@ -749,6 +749,20 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				&str)
 			*(*uintptr)(unsafe.Pointer(getVal(3))) = GoStrToDStr(str)
 
+			//type TTaskDlgClickEvent func(sender IObject, modalResult TModalResult, canClose *bool)
+		case TTaskDlgClickEvent:
+			v.(TTaskDlgClickEvent)(
+				ObjectFromInst(getVal(0)),
+				TModalResult(getVal(1)),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
+			//type TTaskDlgTimerEvent func(sender IObject, tickCount uint32, reset *bool)
+		case TTaskDlgTimerEvent:
+			v.(TTaskDlgTimerEvent)(
+				ObjectFromInst(getVal(0)),
+				uint32(getVal(1)),
+				(*bool)(unsafe.Pointer(getVal(2))))
+
 		default:
 		}
 	}

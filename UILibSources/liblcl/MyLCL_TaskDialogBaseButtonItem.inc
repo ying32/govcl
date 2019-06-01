@@ -1,0 +1,141 @@
+
+//----------------------------------------
+// 代码由GenlibLcl工具自动生成。
+// Copyright © ying32. All Rights Reserved.
+//
+//----------------------------------------
+
+function TaskDialogBaseButtonItem_Create(AOwner: TCollection): TTaskDialogBaseButtonItem; extdecl;
+begin
+  Result :=  TTaskDialogBaseButtonItem.Create(AOwner);
+end;
+
+procedure TaskDialogBaseButtonItem_Free(AObj: TTaskDialogBaseButtonItem); extdecl;
+begin
+  AObj.Free;
+end;
+
+function TaskDialogBaseButtonItem_GetNamePath(AObj: TTaskDialogBaseButtonItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.GetNamePath);
+end;
+
+procedure TaskDialogBaseButtonItem_Assign(AObj: TTaskDialogBaseButtonItem; Source: TPersistent); extdecl;
+begin
+  AObj.Assign(Source);
+end;
+
+function TaskDialogBaseButtonItem_ClassType(AObj: TTaskDialogBaseButtonItem): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
+function TaskDialogBaseButtonItem_ClassName(AObj: TTaskDialogBaseButtonItem): PChar; extdecl;
+begin
+  Result :=  ToPChar(AObj.ClassName);
+end;
+
+function TaskDialogBaseButtonItem_InstanceSize(AObj: TTaskDialogBaseButtonItem): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function TaskDialogBaseButtonItem_InheritsFrom(AObj: TTaskDialogBaseButtonItem; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
+end;
+
+function TaskDialogBaseButtonItem_Equals(AObj: TTaskDialogBaseButtonItem; Obj: TObject): LongBool; extdecl;
+begin
+  Result :=  AObj.Equals(Obj);
+end;
+
+function TaskDialogBaseButtonItem_GetHashCode(AObj: TTaskDialogBaseButtonItem): Integer; extdecl;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function TaskDialogBaseButtonItem_ToString(AObj: TTaskDialogBaseButtonItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function TaskDialogBaseButtonItem_GetModalResult(AObj: TTaskDialogBaseButtonItem): TModalResult; extdecl;
+begin
+  Result :=  AObj.ModalResult;
+end;
+
+procedure TaskDialogBaseButtonItem_SetModalResult(AObj: TTaskDialogBaseButtonItem; AValue: TModalResult); extdecl;
+begin
+  AObj.ModalResult := AValue;
+end;
+
+function TaskDialogBaseButtonItem_GetCaption(AObj: TTaskDialogBaseButtonItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Caption);
+end;
+
+procedure TaskDialogBaseButtonItem_SetCaption(AObj: TTaskDialogBaseButtonItem; AValue: PChar); extdecl;
+begin
+  AObj.Caption := AValue;
+end;
+
+function TaskDialogBaseButtonItem_GetDefault(AObj: TTaskDialogBaseButtonItem): LongBool; extdecl;
+begin
+  Result :=  AObj.Default;
+end;
+
+procedure TaskDialogBaseButtonItem_SetDefault(AObj: TTaskDialogBaseButtonItem; AValue: LongBool); extdecl;
+begin
+  AObj.Default := AValue;
+end;
+
+function TaskDialogBaseButtonItem_GetCollection(AObj: TTaskDialogBaseButtonItem): TCollection; extdecl;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure TaskDialogBaseButtonItem_SetCollection(AObj: TTaskDialogBaseButtonItem; AValue: TCollection); extdecl;
+begin
+  AObj.Collection := AValue;
+end;
+
+function TaskDialogBaseButtonItem_GetIndex(AObj: TTaskDialogBaseButtonItem): Integer; extdecl;
+begin
+  Result :=  AObj.Index;
+end;
+
+procedure TaskDialogBaseButtonItem_SetIndex(AObj: TTaskDialogBaseButtonItem; AValue: Integer); extdecl;
+begin
+  AObj.Index := AValue;
+end;
+
+function TaskDialogBaseButtonItem_StaticClassType: TClass; extdecl;
+begin
+  Result := TTaskDialogBaseButtonItem;
+end;
+
+exports
+  TaskDialogBaseButtonItem_Create,
+  TaskDialogBaseButtonItem_Free,
+  TaskDialogBaseButtonItem_GetNamePath,
+  TaskDialogBaseButtonItem_Assign,
+  TaskDialogBaseButtonItem_ClassType,
+  TaskDialogBaseButtonItem_ClassName,
+  TaskDialogBaseButtonItem_InstanceSize,
+  TaskDialogBaseButtonItem_InheritsFrom,
+  TaskDialogBaseButtonItem_Equals,
+  TaskDialogBaseButtonItem_GetHashCode,
+  TaskDialogBaseButtonItem_ToString,
+  TaskDialogBaseButtonItem_GetModalResult,
+  TaskDialogBaseButtonItem_SetModalResult,
+  TaskDialogBaseButtonItem_GetCaption,
+  TaskDialogBaseButtonItem_SetCaption,
+  TaskDialogBaseButtonItem_GetDefault,
+  TaskDialogBaseButtonItem_SetDefault,
+  TaskDialogBaseButtonItem_GetCollection,
+  TaskDialogBaseButtonItem_SetCollection,
+  TaskDialogBaseButtonItem_GetIndex,
+  TaskDialogBaseButtonItem_SetIndex,
+  TaskDialogBaseButtonItem_StaticClassType;
+

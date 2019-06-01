@@ -2024,3 +2024,45 @@ const (
 	StAlways             // always show taskbar item for the form
 	StNever              // never show taskbar item for the form
 )
+
+type TTaskDialogCommonButtons = uint32
+
+type TTaskDialogCommonButton int32
+
+const (
+	TcbOk = iota + 0
+	TcbYes
+	TcbNo
+	TcbCancel
+	TcbRetry
+	TcbClose
+)
+
+type TTaskDialogFlags = uint32 // set of TTaskDialogFlag;
+
+type TTaskDialogFlag int32
+
+const (
+	TfEnableHyperlinks = iota + 0
+	TfUseHiconMain
+	TfUseHiconFooter
+	TfAllowDialogCancellation
+	TfUseCommandLinks
+	TfUseCommandLinksNoIcon
+	TfExpandFooterArea
+	TfExpandedByDefault
+	TfVerificationFlagChecked
+	TfShowProgressBar
+	TfShowMarqueeProgressBar
+	TfCallbackTimer
+	TfPositionRelativeToWindow
+	TfRtlLayout
+	TfNoDefaultRadioButton
+	TfCanBeMinimized
+)
+
+// TTaskDialogIcon = Low(Integer)..High(Integer);
+type TTaskDialogIcon = int32
+
+// TProgressBarState = Vcl.ComCtrls.TProgressBarState; // for compatibility
+//type TProgressBarState = TProgressBarState

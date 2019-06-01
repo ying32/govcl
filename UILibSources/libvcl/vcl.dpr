@@ -217,6 +217,12 @@ uses
 {$I JumpCategoryItem.inc}
 {$I Collection.inc}
 {$I Printer.inc}
+{$I TaskDialog.inc}
+{$I TaskDialogButtons.inc}
+{$I TaskDialogProgressBar.inc}
+{$I TaskDialogButtonItem.inc}
+{$I TaskDialogRadioButtonItem.inc}
+{$I TaskDialogBaseButtonItem.inc}
 
 begin
 end.
