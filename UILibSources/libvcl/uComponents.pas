@@ -1,4 +1,4 @@
-unit uComponents;
+﻿unit uComponents;
 
 interface
 
@@ -71,7 +71,7 @@ var
 //--------------------- 原DelphiResForm.inc内容
 
 const
-  ClassRefArrs: array[0..127] of TClass = (
+  ClassRefArrs: array[0..133] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -93,7 +93,8 @@ const
     TPrinterSetupDialog,
     TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
-    TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList,TSpinEdit,TMiniWebview
+    TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList,TSpinEdit,TMiniWebview,
+    TTaskDialog, TTaskDialogButtons, TTaskDialogProgressBar, TTaskDialogButtonItem, TTaskDialogRadioButtonItem, TTaskDialogBaseButtonItem
   );
 
 
