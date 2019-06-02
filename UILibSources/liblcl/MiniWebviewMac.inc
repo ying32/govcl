@@ -4,8 +4,7 @@
 {                                                       }
 {       govcl MacOS WebBrowser                          }
 {                                                       }
-{       目前只对cocoa框架友好，carbon也能将就，但只能   }
-{       使用Root也是就Form作为父容器                    }
+{       目前只支持cocoa                                 }
 {                                                       }
 {                                                       }
 {       版权所有 (C) ying32                             }
@@ -21,37 +20,42 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs,
-  MacOSAll, CocoaAll, WebKit,
-  {$IFDEF LCLcocoa}
-    CocoaUtils
-  {$ELSE}
-    //CarbonDef,
-    CarbonProc,
-    CarbonPrivate
-  {$ENDIF};
+  MacOSAll, CocoaAll, WebKit, CocoaUtils;
 
 type
    TReadyState = (rsUninitialized, rsLoading, rsLoaded, rsInterActive, rsComplete);
    
    TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
+   TWebStatusTextChangeEvent = procedure(Sender: TObject; const Text: string) of object;
+   TWebJSExternalEvent = procedure(Sender: TObject; const func: string; const args: WideString; var retval: WideString) of object;
+
+
+   { TWebviewUIDelegate }
+
+   TWebviewUIDelegate = objcclass(NSObject) //external (WebUIDelegateCategory)
+   private
+     FWeb: Pointer;
+   public
+     procedure webView_runJavaScriptAlertPanelWithMessage_initiatedByFrame(sender: WebView; message: NSString; frame: WebFrame); message 'webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:'; override;
+     procedure webView_didReceiveTitle_forFrame(sender: WebView; title: NSString; frame: WebFrame); message 'webView:didReceiveTitle:forFrame:'; override;
+     procedure webView_didFinishLoadForFrame(sender: WebView; frame: WebFrame); message 'webView:didFinishLoadForFrame:'; override;
+   end;
+
+
 
    { TMiniWebView }
 
    TMiniWebView = class(TWinControl)
    private
-   {$IFDEF LCLCocoa}
      FWebview: Webview;
-   {$ENDIF}
      FURL: string;
      FOnTitleChange: TWebTitleChangeEvent;
+     FOnStatusTextChange: TWebStatusTextChangeEvent;
+     FOnJSExternal: TWebJSExternalEvent;
+
      function GetCurWebview: Webview;
    private
-   {$IFDEF LCLCocoa}
      procedure CreateCocoaWebView;
-   {$ELSE}
-     FCarbonWeb: HIViewRef;
-     procedure CreateCarbonWebView;
-   {$ENDIF}
      function GetReadyState: TReadyState;
    private
      property CurWebView: Webview read GetCurWebview;
@@ -74,34 +78,47 @@ type
      procedure GoSearch;
      procedure Refresh;
      procedure Stop;
-	 
-    // propertys
-    property ReadyState: TReadyState read GetReadyState;
 
-    // events
-    //property OnStatusTextChange: TWebStatusTextChangeEvent read FOnStatusTextChange write FOnStatusTextChange;
-    property OnTitleChange: TWebTitleChangeEvent read FOnTitleChange write FOnTitleChange;
-    //property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
-    //property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
+     procedure ExecuteScript(AScriptText, AScriptType: string);
+     procedure ExecuteJS(AScriptText: string);
+
+     procedure LoadHTML(const AStr: string);
+
+     // propertys
+     property ReadyState: TReadyState read GetReadyState;
+
+     // events
+     property OnStatusTextChange: TWebStatusTextChangeEvent read FOnStatusTextChange write FOnStatusTextChange;  // no support????
+     property OnTitleChange: TWebTitleChangeEvent read FOnTitleChange write FOnTitleChange;
+     //property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
+     //property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
+     property OnJSExternal: TWebJSExternalEvent read FOnJSExternal write FOnJSExternal;
    end;
 
 implementation
 
-{$IFDEF LCLCarbon}
-  function HIWebViewCreate(var outControl: HIViewRef): OSStatus; cdecl; external name 'HIWebViewCreate';
-  function HIWebViewGetWebView(inView: HIViewRef): WebView; cdecl; external name 'HIWebViewGetWebView';
-  procedure WebInitForCarbon; cdecl; external name 'WebInitForCarbon';
+{ TWebviewUIDelegate }
 
-  // LCLCocoa
-  function NSStringUTF8(AStr: string): NSString;
-  var
-    cf: CFStringRef;
-  begin
-    cf := CFStringCreateWithCString(nil, Pointer(PChar(AStr)), kCFStringEncodingUTF8);
-    Result := NSString(cf);
-  end;
-{$ENDIF}
+procedure TWebviewUIDelegate.webView_runJavaScriptAlertPanelWithMessage_initiatedByFrame(sender: WebView; message: NSString; frame: WebFrame);
+begin
+  ShowMessage(NSStringToString(message));
+end;
 
+procedure TWebviewUIDelegate.webView_didReceiveTitle_forFrame(sender: WebView; title: NSString; frame: WebFrame);
+begin
+  if (FWeb <> nil) and Assigned(TMiniWebView(FWeb).OnTitleChange) then
+    TMiniWebView(Self.FWeb).OnTitleChange(TMiniWebView(FWeb), NSStringToString(title));
+end;
+
+procedure TWebviewUIDelegate.webView_didFinishLoadForFrame(sender: WebView; frame: WebFrame);
+var
+  context: id;
+begin
+  //contextm:= sender.valueForKeyPath(NSStringUtf8('documentView.webView.mainFrame.javasScriptContext'));
+  //sender.mainFrame.globalContext;
+end;
+
+{ TMiniWebView }
 
 constructor TMiniWebView.Create(AOwner: TComponent);
 begin
@@ -109,34 +126,20 @@ begin
   Width := 300;
   Height := 200;
   Visible := True;
-{$IFDEF LCLCarbon}
-  WebInitForCarbon;
-{$ENDIF}
-{$IFDEF LCLCocoa}
   CreateCocoaWebView;
-{$ENDIF}
-{$IFDEF LCLCarbon}
-  CreateCarbonWebView;
-{$ENDIF}
   Navigate(FURL);
 end;
 
 destructor TMiniWebView.Destroy;
 begin
-{$IFDEF LCLCocoa}
   if FWebview <> nil then
     FWebview.release;
-{$ENDIF}
-{$IFDEF LCLCarbon}
-  if FCarbonWeb <> nil then
-    CFRelease(FCarbonWeb);
-{$ENDIF}
   inherited Destroy;
 end;
 
 function TMiniWebview.GetReadyState: TReadyState;
 begin
-  Result := rsUninitialized;
+  Result := rsUninitialized;  //?????
 end;
 
 procedure TMiniWebView.Navigate(const AURL: string);
@@ -176,10 +179,12 @@ end;
 
 procedure TMiniWebView.GoHome;
 begin
+  // no support
 end;
 
 procedure TMiniWebView.GoSearch;
 begin
+  // no support
 end;
 
 procedure TMiniWebView.Refresh;
@@ -194,12 +199,35 @@ begin
     CurWebview.mainFrame.stopLoading;
 end;
 
-{$IFDEF LCLCocoa}
+// AScriptType no support
+procedure TMiniWebView.ExecuteScript(AScriptText, AScriptType: string);
+begin
+  if not HandleAllocated then
+    HandleNeeded;
+  if CurwebView = nil then
+    Exit;
+  Curwebview.stringByEvaluatingJavaScriptFromString(NSStringUtf8(AScriptText));
+end;
+
+procedure TMiniWebView.ExecuteJS(AScriptText: string);
+begin
+  ExecuteScript(AScriptText, 'javascript');
+end;
+
+procedure TMiniWebView.LoadHTML(const AStr: string);
+begin
+  if not HandleAllocated then
+    HandleNeeded;
+  if Curwebview = nil then
+    Exit;
+  Curwebview.mainFrame.loadHTMLString_baseURL(NSStringUtf8(AStr), nil);
+end;
+
 procedure TMiniWebView.CreateCocoaWebView;
 var
   AutoPool: NSAutoreleasePool;
   LR: NSRect;
-  view: NSView;
+  LDelegate: TWebviewUIDelegate;
 begin
   AutoPool := NSAutoreleasePool.alloc.init;
   try
@@ -208,63 +236,39 @@ begin
     LR.size.width := Width;
     LR.size.height := Height;
     FWebview := WebView.alloc.initWithFrame(LR);
+    LDelegate := TWebviewUIDelegate.alloc.init;
+    LDelegate.FWeb := Self;
+    FWebview.setUIDelegate(LDelegate);
+    FWebview.setFrameLoadDelegate(LDelegate);
   finally
     AutoPool.release;
   end;
 end;
-{$ENDIF}
 
-{$IFDEF LCLCarbon}
-procedure TMiniWebView.CreateCarbonWebView;
-begin
-  HIWebViewCreate(FCarbonWeb);
-end;
-{$ENDIF}
 
 function TMiniWebView.GetCurWebview: Webview;
 begin
-  Result := nil;
-{$IFDEF LCLCocoa}
-   Result := FWebView;
-{$ENDIF}
-{$IFDEF LCLCarbon}
-  if FCarbonWeb <> nil then
-    Result := HIWebViewGetWebView(FCarbonWeb);
-{$ENDIF}
+  Result := FWebView;
 end;
 
 procedure TMiniWebView.VisibleChanged;
 begin
   inherited VisibleChanged;
-{$IFDEF LCLCocoa}
   if FWebview <> nil then
     FWebView.setHidden(Visible);
-{$ENDIF}
-{$IFDEF LCLCarbon}
-  //if FCarbonWeb <> nil then
-    //HIViewSetVisible(FCarbonWeb, Visible);
-{$ENDIF}
 end;
 
 procedure TMiniWebView.RealizeBounds;
 begin
   inherited RealizeBounds;
-  {$IFDEF LCLCarbon}
-    //if FCarbonWeb <> nil then
-    //  HIViewSetNeedsDisplay(FCarbonWeb, True);
-    //Self.Invalidate;
-  {$ENDIF}
 end;
 
 
 procedure TMiniWebView.Resize;
-{$IFDEF LCLCocoa}
 var
   LR: NSRect;
-{$ENDIF}
 begin
   inherited Resize;
-{$IFDEF LCLCocoa}
   if CurWebView <> nil then
   begin
     LR.origin.x := 0;
@@ -273,30 +277,14 @@ begin
     LR.size.height := Height;
     CurWebView.setFrame(LR);
   end;
-{$ENDIF}
-
-{$IFDEF LCLCarbon}
-  if FCarbonWeb <> nil then
-  begin
-    HIViewSetFrame(FCarbonWeb, RectToCGRect(Self.BoundsRect));
-  end;
-{$ENDIF}
 end;
 
 procedure TMiniWebView.CreateWnd;
-{$IFDEF LCLCocoa}
 var
   view: NSView;
   AutoPool: NSAutoreleasePool;
-{$ENDIF}
-{$IFDEF LCLCarbon}
- var
-  LContentView: HIViewRef;
-  LBounds: HIRect;
-{$ENDIF}
 begin
   inherited CreateWnd;
-{$IFDEF LCLCocoa}
   AutoPool := NSAutoreleasePool.alloc.init;
   try
     view := GetNSObjectView(NSObject(Handle));
@@ -304,19 +292,6 @@ begin
   finally
     AutoPool.release;
   end;
-{$ENDIF}
-{$IFDEF LCLCarbon}
-  //LContentView := TCarbonControl(Handle).Content;
-  HIViewFindByID(HIViewGetRoot(TCarbonWindow(Parent.Handle).Window), kHIViewWindowContentID, LContentView);
-  if LContentView = nil then
-    Exit;
-
-  HIViewGetBounds(LContentView, LBounds);
-  HIViewAddSubview(LContentView, FCarbonWeb);
-
-  HIViewSetFrame(FCarbonWeb, LBounds);
-  HIViewSetVisible(FCarbonWeb, True);
-{$ENDIF}
 end;
 
 
