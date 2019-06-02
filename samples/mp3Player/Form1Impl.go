@@ -37,7 +37,6 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.EnabledMaximize(false)
 	//f.SetColor(0x39302c)
 
-	f.bassPlayer = bass.NewBass()
 	f.playCtl = NewPlayControl(f)
 	f.playCtl.SetParent(f.Panel2)
 	f.playCtl.SetAlign(types.AlClient)
@@ -60,18 +59,6 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.volbar.SetWidth(80)
 	f.volbar.SetPosition(60)
 	f.volbar.OnTrackChange = f.OnVolChange
-
-	// 我的测试
-	switch runtime.GOOS {
-	case "windows":
-		f.addFoler("F:\\KuGou")
-	case "darwin":
-		usrHome := os.Getenv("HOME")
-		f.addFoler(usrHome + "/Music/网易云音乐")
-		f.addFoler(usrHome + "/Music/iTunes/iTunes Media/Music")
-	case "linux":
-		f.addFoler("/home/ying32/音乐")
-	}
 
 	f.isSupportTaskbar = runtime.GOOS == "windows" && version.OSVersion.CheckMajorMinor(6, 1) && !rtl.LcLLoaded()
 	if f.isSupportTaskbar {
@@ -108,6 +95,18 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 
 	}
 
+	f.bassPlayer = bass.NewBass()
+	// 我的测试
+	switch runtime.GOOS {
+	case "windows":
+		f.addFoler("F:\\KuGou")
+	case "darwin":
+		usrHome := os.Getenv("HOME")
+		f.addFoler(usrHome + "/Music/网易云音乐")
+		f.addFoler(usrHome + "/Music/iTunes/iTunes Media/Music")
+	case "linux":
+		f.addFoler("/home/ying32/音乐")
+	}
 }
 
 func (f *TForm1) onTaskbar1ThumbPreviewRequest(sender vcl.IObject, aPreviewHeight, aPreviewWidth int32, previewBitmap *vcl.TBitmap) {
