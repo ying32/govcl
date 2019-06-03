@@ -207,4 +207,16 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
   * Go环境变量： `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`
 
 * MacOS: 复制"liblcl.dylib"可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS) 
-  * Go环境变量： `GOARCH = 386` `GOOS = darwin` `CGO_ENABLED=1`
+  * Go环境变量： `GOARCH = 386` `GOOS = darwin` `CGO_ENABLED=1`  
+
+### 支持govcl  
+
+非常感谢您使用govcl，如果您喜欢这个项目而且觉得作者辛苦了可以请作者喝瓶饮料什么的，可以扫描下面的二维码支持下我。提前感谢你的慷概支持，您的支持将是保持项目发展的动力。  
+
+* 微信  
+
+![wechatpay](https://ying32.github.io/imgs/wechatpay.jpg)  
+
+* 支付宝   
+
+![alipay](https://ying32.github.io/imgs/alipay.jpg)  
