@@ -14,7 +14,7 @@
 [![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 [![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)
-[![Update log](https://img.shields.io/badge/更新日志-查看-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))  
+[![Update log](https://img.shields.io/badge/更新日志-查看-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))
 [![Support govcl](https://img.shields.io/badge/支持govcl-赞助作者-blueviolet.svg)](Donation.md)  
 
 ![Support Platform](https://img.shields.io/badge/支持的平台-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
