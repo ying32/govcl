@@ -15,6 +15,7 @@
 [![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)
 [![Update log](https://img.shields.io/badge/更新日志-查看-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))  
+[![Support govcl](https://img.shields.io/badge/支持govcl-赞助作者-blueviolet.svg)](Donation.md)  
 
 ![Support Platform](https://img.shields.io/badge/支持的平台-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
 **注: linux和macOS由于底层使用了lcl库，则部分组件、属性和方法无效。**
@@ -209,6 +210,3 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 * MacOS: 复制"liblcl.dylib"可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS) 
   * Go环境变量： `GOARCH = 386` `GOOS = darwin` `CGO_ENABLED=1`  
 
-### 支持govcl  
-
-[赞助作者](Donation.md)  
