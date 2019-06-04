@@ -209,6 +209,6 @@ A: My English is bad. You can try using Google Translate [Chinese WIKI](https://
   * Go environment variable: `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`  
 
 * MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS)  
-  * Go environment variable: `GOARCH = 386` `GOOS = darwin` `CGO_ENABLED=1`  
+  * Go environment variable: `GOARCH = amd64` `GOOS = darwin` `CGO_ENABLED=1`  
 
 ---  

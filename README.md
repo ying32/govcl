@@ -208,5 +208,5 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
   * Go环境变量： `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`
 
 * MacOS: 复制"liblcl.dylib"可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS) 
-  * Go环境变量： `GOARCH = 386` `GOOS = darwin` `CGO_ENABLED=1`  
+  * Go环境变量： `GOARCH = amd64` `GOOS = darwin` `CGO_ENABLED=1`  
 
