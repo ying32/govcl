@@ -52,6 +52,7 @@ var (
 	_GetProcessHeap = kernel32dll.NewProc("GetProcessHeap")
 	_VirtualFree    = kernel32dll.NewProc("VirtualFree")
 	_lstrlen        = kernel32dll.NewProc("lstrlenA")
+	_lstrlenW       = kernel32dll.NewProc("lstrlenW")
 	_VirtualAlloc   = kernel32dll.NewProc("VirtualAlloc")
 	_VirtualProtect = kernel32dll.NewProc("VirtualProtect")
 	_IsBadReadPtr   = kernel32dll.NewProc("IsBadReadPtr")
@@ -252,6 +253,11 @@ func VirtualFree(lpAddress uintptr, dwSize uintptr, dwFreeType uint32) bool {
 
 func Lstrlen(lpString uintptr) int32 {
 	r, _, _ := _lstrlen.Call(lpString)
+	return int32(r)
+}
+
+func LstrlenW(lpString uintptr) int32 {
+	r, _, _ := _lstrlenW.Call(lpString)
 	return int32(r)
 }
 
