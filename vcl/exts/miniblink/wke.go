@@ -214,11 +214,11 @@ func (w WkeWebView) KillFocus() {
 	wkeKillFocus(w)
 }
 
-func (w WkeWebView) RunJS(script string) {
+func (w WkeWebView) RunJS(script string) JsValue {
 	if isLcl {
-		wkeRunJS(w, script)
+		return wkeRunJS(w, script)
 	} else {
-		wkeRunJSW(w, script)
+		return wkeRunJSW(w, script)
 	}
 }
 

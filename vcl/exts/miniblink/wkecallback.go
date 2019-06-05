@@ -26,7 +26,7 @@ func fnwkeCreateViewCallback(webView WkeWebView, param uintptr, navigationType W
 		obj := getObj(param)
 		proc := obj.OnCreateView
 		if proc != nil {
-			TOnCreateViewEvent(proc)((*TMiniBlinkWebview)(unsafe.Pointer(param)), navigationType, url, windowFeatures, &ret)
+			obj.OnCreateView(obj, navigationType, url, windowFeatures, &ret)
 		}
 	}
 	return ret
@@ -38,8 +38,14 @@ func fnwkeTitleChangedCallback(webView WkeWebView, param uintptr, title WkeStrin
 		obj := getObj(param)
 		proc := obj.OnTitleChanged
 		if proc != nil {
-			TOnTitleChangedEvent(proc)(obj, wkeGetStringW(title))
+			var str string
+			if isLcl {
+				str = wkeGetString(title)
+			} else {
+				str = wkeGetStringW(title)
+			}
+			obj.OnTitleChanged(obj, str)
 		}
 	}
-	return 0
+	return 1
 }

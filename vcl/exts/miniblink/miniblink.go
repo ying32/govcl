@@ -20,7 +20,7 @@ func NewMiniBlinkWebview(hWnd types.HWND) *TMiniBlinkWebview {
 	r, _ := win.GetClientRect2(hWnd)
 	w.Webview = wkeCreateWebWindow(WKE_WINDOW_TYPE_CONTROL, hWnd, 0, 0, int(r.Width()), int(r.Height()))
 	ptr := uintptr(unsafe.Pointer(w))
-	wkeOnCreateView(w.Webview, WkeCreateViewCallback(_wkeCreateViewCallback), ptr)
+	//wkeOnCreateView(w.Webview, WkeCreateViewCallback(_wkeCreateViewCallback), ptr)
 	wkeOnTitleChanged(w.Webview, WkeTitleChangedCallback(_wkeTitleChangedCallback), ptr)
 	return w
 }

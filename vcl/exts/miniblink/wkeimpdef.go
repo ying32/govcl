@@ -24,3 +24,7 @@ func Initialize() int {
 func IsInitialize() bool {
 	return wkeIsInitialize()
 }
+
+func Finalize() {
+	wkeFinalize()
+}

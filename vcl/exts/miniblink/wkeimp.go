@@ -1044,13 +1044,13 @@ func wkeSetEditable(webView WkeWebView, editable bool) {
 	_wkeSetEditable.Call(uintptr(webView), CBool(editable))
 }
 
-func wkeGetString(string WkeString) string {
-	r, _, _ := _wkeGetString.Call(uintptr(string))
+func wkeGetString(str WkeString) string {
+	r, _, _ := _wkeGetString.Call(uintptr(str))
 	return GoAStr(r)
 }
 
-func wkeGetStringW(string WkeString) string {
-	r, _, _ := _wkeGetStringW.Call(uintptr(string))
+func wkeGetStringW(str WkeString) string {
+	r, _, _ := _wkeGetStringW.Call(uintptr(str))
 	return GoWStr(r)
 }
 

@@ -10,5 +10,5 @@ var (
 
 func init() {
 	isLcl = rtl.LcLLoaded()
-	Initialize()
+	//Initialize()
 }
