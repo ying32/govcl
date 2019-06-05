@@ -3,11 +3,10 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/ying32/govcl/vcl/types"
-
-	"github.com/ying32/govcl/vcl/rtl"
 
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/exts/miniblink"
@@ -22,20 +21,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
 	f.web = miniblink.NewMiniBlinkWebview(f.PnlWeb.Handle())
 	f.web.Show(true)
-
-	//if rtl.LcLLoaded() {
-	//	f.web.LoadFile("F:\\Program Files (x86)\\Golang\\go\\doc\\effective_go.html")
-	//} else {
-	//	f.web.LoadFileW("F:\\Program Files (x86)\\Golang\\go\\doc\\effective_go.html")
-	//}
-	//f.web.LoadHTMLW("<html><head><title>标题</title></head><body><p>这是一个测试</p></body></html>")
-	//URL := "https://gitee.com/ying32"
-	//if rtl.LcLLoaded() {
-	//	//f.web.LoadURL(URL)
-	//
-	//} else {
-	//	//f.web.LoadURLW(URL)
-	//}
+	f.web.OnTitleChanged = f.onWkeTitleChanged
 }
 
 func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
@@ -50,8 +36,13 @@ func (f *TMainForm) OnPnlWebResize(sender vcl.IObject) {
 	}
 }
 
+func (f *TMainForm) onWkeTitleChanged(sender *miniblink.TMiniBlinkWebview, title string) {
+	fmt.Println("标题改变")
+	f.SetCaption(title + " - ying32")
+}
+
 func (f *TMainForm) OnBtnReloadClick(sender vcl.IObject) {
-	f.web.Reload()
+	f.web.Webview.Reload()
 }
 
 func (f *TMainForm) OnBtnNavClick(sender vcl.IObject) {
@@ -60,35 +51,27 @@ func (f *TMainForm) OnBtnNavClick(sender vcl.IObject) {
 		vcl.ShowMessage("请输入一个URL！")
 		return
 	}
-	f.web.LoadURL(text)
+	f.web.Webview.LoadURL(text)
 }
 
 func (f *TMainForm) OnBtnLoadFromFileClick(sender vcl.IObject) {
 	if f.OpenDialog1.Execute() {
 		fileName := f.OpenDialog1.FileName()
-		if rtl.LcLLoaded() {
-			f.web.LoadFile(fileName)
-		} else {
-			f.web.LoadFileW(fileName)
-		}
+		f.web.Webview.LoadFile(fileName)
 	}
 }
 
 func (f *TMainForm) OnBtnBackClick(sender vcl.IObject) {
-	f.web.GoBack()
+	f.web.Webview.GoBack()
 }
 
 func (f *TMainForm) OnBtnForwardClick(sender vcl.IObject) {
-	f.web.GoForward()
+	f.web.Webview.GoForward()
 }
 
 func (f *TMainForm) OnBtnLoadFromStringClick(sender vcl.IObject) {
 	result := HTMLForm.ShowModal()
 	if result == types.MrOk {
-		if rtl.LcLLoaded() {
-			f.web.LoadHTML(HTMLForm.Memo1.Text())
-		} else {
-			f.web.LoadHTMLW(HTMLForm.Memo1.Text())
-		}
+		f.web.Webview.LoadHTML(HTMLForm.Memo1.Text())
 	}
 }
