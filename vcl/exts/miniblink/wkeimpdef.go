@@ -2,37 +2,25 @@
 
 package miniblink
 
-import (
-	"syscall"
-	"unsafe"
-
-	"github.com/ying32/govcl/vcl/win"
-)
+import "unsafe"
 
 var (
-	kWkeDllPath string = "node.dll"
+	_wkeInitializeEx = wkedll.NewProc("wkeInitializeEx")
 )
 
-func WkeSetWkeDllPath(dllPath string) {
-	kWkeDllPath = dllPath
+func InitializeEx(settings *WkeSettings) int {
+	r, _, _ := _wkeInitializeEx.Call(uintptr(unsafe.Pointer(settings)))
+	return int(r)
 }
 
-func WkeInitializeEx(settings *WkeSettings) int {
-	hMod := win.LoadLibrary(kWkeDllPath)
-	if hMod != 0 {
-		proc := win.GetProcAddress(hMod, "wkeInitializeEx")
-		if proc != 0 {
-			syscall.Syscall(proc, 1, uintptr(unsafe.Pointer(settings)), 0, 0)
-			return 1
-		}
-	}
-	return 0
+func Init() int {
+	return InitializeEx(nil)
 }
 
-func WkeInit() int {
-	return WkeInitializeEx(nil)
+func Initialize() int {
+	return InitializeEx(nil)
 }
 
-func WkeInitialize() int {
-	return WkeInitializeEx(nil)
+func IsInitialize() bool {
+	return wkeIsInitialize()
 }

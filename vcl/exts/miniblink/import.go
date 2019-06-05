@@ -6,12 +6,16 @@
 package miniblink
 
 import (
+	"fmt"
 	"runtime"
-
-	"github.com/ying32/govcl/vcl/dylib"
+	"syscall"
 )
 
 var (
-	wkedll = dylib.NewLazyDLL("node.dll") //"wke.dll")
+	wkedll = LoadMiniBlinkDLL()
 	is386  = runtime.GOARCH == "386"
 )
+
+func LoadMiniBlinkDLL() *syscall.LazyDLL {
+	return syscall.NewLazyDLL(fmt.Sprintf("node-%s.dll", runtime.GOARCH))
+}

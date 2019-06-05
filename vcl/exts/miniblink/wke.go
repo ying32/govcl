@@ -45,8 +45,56 @@ func (w *TMiniBlinkWebview) Show(val bool) {
 	}
 }
 
-func (w *TMiniBlinkWebview) Load(url string) {
+func (w *TMiniBlinkWebview) LoadURL(url string) {
 	if w.IsValid() {
-		wkeLoadW(w.wkePtr, url)
+		wkeLoadURL(w.wkePtr, url)
+	}
+}
+
+func (w *TMiniBlinkWebview) LoadURLW(url string) {
+	if w.IsValid() {
+		wkeLoadURLW(w.wkePtr, url)
+	}
+}
+
+func (w *TMiniBlinkWebview) LoadHTML(html string) {
+	if w.IsValid() {
+		wkeLoadHTML(w.wkePtr, html)
+	}
+}
+
+func (w *TMiniBlinkWebview) LoadHTMLW(html string) {
+	if w.IsValid() {
+		wkeLoadHTMLW(w.wkePtr, html)
+	}
+}
+
+func (w *TMiniBlinkWebview) LoadFile(html string) {
+	if w.IsValid() {
+		wkeLoadFile(w.wkePtr, html)
+	}
+}
+
+func (w *TMiniBlinkWebview) LoadFileW(html string) {
+	if w.IsValid() {
+		wkeLoadFileW(w.wkePtr, html)
+	}
+}
+
+func (w *TMiniBlinkWebview) Reload() {
+	if w.IsValid() {
+		wkeReload(w.wkePtr)
+	}
+}
+
+func (w *TMiniBlinkWebview) GoBack() {
+	if w.IsValid() {
+		wkeGoBack(w.wkePtr)
+	}
+}
+
+func (w *TMiniBlinkWebview) GoForward() {
+	if w.IsValid() {
+		wkeGoForward(w.wkePtr)
 	}
 }
