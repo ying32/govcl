@@ -3,20 +3,43 @@
 package miniblink
 
 import (
-	"fmt"
 	"syscall"
+	"unsafe"
 )
 
 var (
-	_wkeCreateViewCallback = syscall.NewCallbackCDecl(fnwkeCreateViewCallback)
+	_wkeCreateViewCallback   = syscall.NewCallbackCDecl(fnwkeCreateViewCallback)
+	_wkeTitleChangedCallback = syscall.NewCallbackCDecl(fnwkeTitleChangedCallback)
 )
+
+type TOnCreateViewEvent func(sender *TMiniBlinkWebview, navigationType WkeNavigationType, url WkeString, windowFeatures *WkeWindowFeatures, result *WkeWebView)
+type TOnTitleChangedEvent func(sender *TMiniBlinkWebview, title string)
+
+func getObj(u uintptr) *TMiniBlinkWebview {
+	return (*TMiniBlinkWebview)(unsafe.Pointer(u))
+}
 
 // typedef wkeWebView(WKE_CALL_TYPE*wkeCreateViewCallback)(wkeWebView webView, void* param, wkeNavigationType navigationType, const wkeString url, const wkeWindowFeatures* windowFeatures);
 func fnwkeCreateViewCallback(webView WkeWebView, param uintptr, navigationType WkeNavigationType, url WkeString, windowFeatures *WkeWindowFeatures) WkeWebView {
-	fmt.Println("fnwkeCreateViewCallback")
-	//p := (*TMiniBlinkWebview)(unsafe.Pointer(param)).onCreateView
-	//if p != nil {
-	//	p(info)
-	//}
-	return webView
+	ret := webView
+	if param != 0 {
+		obj := getObj(param)
+		proc := obj.OnCreateView
+		if proc != nil {
+			TOnCreateViewEvent(proc)((*TMiniBlinkWebview)(unsafe.Pointer(param)), navigationType, url, windowFeatures, &ret)
+		}
+	}
+	return ret
+}
+
+// typedef void(WKE_CALL_TYPE*wkeTitleChangedCallback)(wkeWebView webView, void* param, const wkeString title);
+func fnwkeTitleChangedCallback(webView WkeWebView, param uintptr, title WkeString) uintptr {
+	if param != 0 {
+		obj := getObj(param)
+		proc := obj.OnTitleChanged
+		if proc != nil {
+			TOnTitleChangedEvent(proc)(obj, wkeGetStringW(title))
+		}
+	}
+	return 0
 }
