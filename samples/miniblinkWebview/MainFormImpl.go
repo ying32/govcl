@@ -25,7 +25,23 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("OnFormCreate:", win.GetCurrentThreadId())
 	f.web = miniblink.NewMiniBlinkWebview(f.PnlWeb.Handle())
 	f.web.Show(true)
-	f.web.OnTitleChanged = f.onWkeTitleChanged
+	f.web.OnTitleChanged = func(sender *miniblink.TMiniBlinkWebview, title string) {
+		//fmt.Println("标题改变:", title)
+		fmt.Println("onTitleChanged:", win.GetCurrentThreadId())
+		f.SetCaption(title + " - ying32")
+	}
+
+	f.web.OnURLChanged = func(sender *miniblink.TMiniBlinkWebview, url string) {
+		fmt.Println("URL改变:", url)
+	}
+
+	f.web.OnDocumentReady = func(sender *miniblink.TMiniBlinkWebview) {
+		fmt.Println("文档已准备。")
+	}
+
+	f.web.OnLoadingFinish = func(sender *miniblink.TMiniBlinkWebview, url string, result miniblink.WkeLoadingResult, failedReason string) {
+		fmt.Println("加载完成：", url, ", result:", result, ", failedReason:", failedReason)
+	}
 }
 
 func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
@@ -38,12 +54,6 @@ func (f *TMainForm) OnPnlWebResize(sender vcl.IObject) {
 	if f.web != nil && f.web.IsValid() {
 		f.web.MoveWindow(0, 0, int(f.Width()), int(f.Height()))
 	}
-}
-
-func (f *TMainForm) onWkeTitleChanged(sender *miniblink.TMiniBlinkWebview, title string) {
-	fmt.Println("标题改变:", title)
-	fmt.Println("onTitleChanged:", win.GetCurrentThreadId())
-	f.SetCaption(title + " - ying32")
 }
 
 func (f *TMainForm) OnBtnReloadClick(sender vcl.IObject) {

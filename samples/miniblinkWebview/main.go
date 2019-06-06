@@ -9,6 +9,7 @@ func main() {
 
 	miniblink.Init()
 	defer miniblink.Finalize()
+
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 	vcl.Application.CreateForm(mainFormBytes, &MainForm)
