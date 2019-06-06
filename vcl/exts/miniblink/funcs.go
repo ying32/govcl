@@ -27,6 +27,9 @@ func CBool(val bool) uintptr {
 }
 
 func GoWStr(str uintptr) string {
+	if str == 0 {
+		return ""
+	}
 	l := win.LstrlenW(str)
 	buff := make([]uint16, l)
 	win.Memcpy(uintptr(unsafe.Pointer(&buff[0])), str, uintptr(l*2))
@@ -34,6 +37,9 @@ func GoWStr(str uintptr) string {
 }
 
 func GoAStr(str uintptr) string {
+	if str == 0 {
+		return ""
+	}
 	l := win.Lstrlen(str)
 	buff := make([]byte, l)
 	win.Memcpy(uintptr(unsafe.Pointer(&buff[0])), str, uintptr(l))

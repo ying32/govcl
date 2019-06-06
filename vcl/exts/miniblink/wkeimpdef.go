@@ -2,23 +2,29 @@
 
 package miniblink
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 var (
 	_wkeInitializeEx = wkedll.NewProc("wkeInitializeEx")
 )
 
-func InitializeEx(settings *WkeSettings) int {
-	r, _, _ := _wkeInitializeEx.Call(uintptr(unsafe.Pointer(settings)))
-	return int(r)
+func InitializeEx(settings *WkeSettings) {
+	fmt.Println(unsafe.Sizeof(settings))
+	if _wkeInitializeEx.Find() != nil {
+		return
+	}
+	_wkeInitializeEx.Call(uintptr(unsafe.Pointer(settings)))
 }
 
-func Init() int {
-	return InitializeEx(nil)
+func Init() {
+	InitializeEx(nil)
 }
 
-func Initialize() int {
-	return InitializeEx(nil)
+func Initialize() {
+	InitializeEx(nil)
 }
 
 func IsInitialize() bool {

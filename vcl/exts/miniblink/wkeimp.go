@@ -6,6 +6,8 @@
 package miniblink
 
 import (
+	"fmt"
+
 	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/ying32/govcl/vcl/dylib/floatpatch"
@@ -1002,6 +1004,7 @@ func wkeRunJS(webView WkeWebView, script string) JsValue {
 
 func wkeRunJSW(webView WkeWebView, script string) JsValue {
 	r, r2, _ := _wkeRunJSW.Call(uintptr(webView), CWStr(script))
+	fmt.Println("jsVal:", r, r2)
 	if is386 {
 		return JsValue(ToUInt64(r, r2))
 	}
