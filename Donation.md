@@ -8,9 +8,6 @@
 
 ![wechatpay](https://ying32.github.io/imgs/wechatpay.jpg)  
 
-* 支付宝   
-
-![alipay](https://ying32.github.io/imgs/alipay.jpg)  
-
+ 
 * 支付宝扫码领红包   
 ![alipay_s](https://ying32.github.io/imgs/alipay_s.PNG)  
