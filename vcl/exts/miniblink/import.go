@@ -16,6 +16,8 @@ var (
 	is386  = runtime.GOARCH == "386"
 )
 
+func SetFPMask()
+
 func LoadMiniBlinkDLL() *syscall.LazyDLL {
 	return syscall.NewLazyDLL(fmt.Sprintf("node-%s.dll", runtime.GOARCH))
 }

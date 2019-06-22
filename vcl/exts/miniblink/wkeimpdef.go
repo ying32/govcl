@@ -7,12 +7,8 @@ import (
 	"unsafe"
 )
 
-var (
-	_wkeInitializeEx = wkedll.NewProc("wkeInitializeEx")
-)
-
 func InitializeEx(settings *WkeSettings) {
-	fmt.Println(unsafe.Sizeof(settings))
+	fmt.Println("_wkeInitializeEx find:", _wkeInitializeEx.Find())
 	if _wkeInitializeEx.Find() != nil {
 		return
 	}

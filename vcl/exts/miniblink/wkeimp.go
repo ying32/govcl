@@ -7,6 +7,7 @@ package miniblink
 
 import (
 	"fmt"
+	"runtime"
 
 	"github.com/ying32/govcl/vcl/types"
 
@@ -16,6 +17,7 @@ import (
 )
 
 var (
+	_wkeInitializeEx                      = wkedll.NewProc("wkeInitializeEx")
 	_wkeShutdown                          = wkedll.NewProc("wkeShutdown")
 	_wkeVersion                           = wkedll.NewProc("wkeVersion")
 	_wkeVersionString                     = wkedll.NewProc("wkeVersionString")
@@ -1003,7 +1005,10 @@ func wkeRunJS(webView WkeWebView, script string) JsValue {
 }
 
 func wkeRunJSW(webView WkeWebView, script string) JsValue {
+	SetFPMask()
+	runtime.LockOSThread()
 	r, r2, _ := _wkeRunJSW.Call(uintptr(webView), CWStr(script))
+	SetFPMask()
 	fmt.Println("jsVal:", r, r2)
 	if is386 {
 		return JsValue(ToUInt64(r, r2))

@@ -51,7 +51,7 @@ func fnwkeCreateViewCallback(webView WkeWebView, param uintptr, navigationType W
 // typedef void(WKE_CALL_TYPE*wkeTitleChangedCallback)(wkeWebView webView, void* param, const wkeString title);
 
 // export fnwkeTitleChangedCallback
-func fnwkeTitleChangedCallback(webView unsafe.Pointer, param unsafe.Pointer, title unsafe.Pointer) unsafe.Pointer {
+func fnwkeTitleChangedCallback(webView unsafe.Pointer, param unsafe.Pointer, title unsafe.Pointer) uintptr {
 	if param != nil {
 		obj := getObj(uintptr(param))
 		proc := obj.OnTitleChanged
@@ -63,7 +63,7 @@ func fnwkeTitleChangedCallback(webView unsafe.Pointer, param unsafe.Pointer, tit
 			}
 		}
 	}
-	return unsafe.Pointer(uintptr(0))
+	return 0
 }
 
 // 	typedef void(WKE_CALL_TYPE*wkeURLChangedCallback)(wkeWebView webView, void* param, const wkeString url);
