@@ -36,10 +36,10 @@ uses
   Types,
 {$ENDIF}
 {$IFDEF LCLGTK2}
-  gtk2,,
+  gtk2,
 {$IFDEF UNIX}
-  Gdk2x,,
-  X,,
+  Gdk2x,
+  X,
 {$ENDIF}
 {$ENDIF}
   typinfo,

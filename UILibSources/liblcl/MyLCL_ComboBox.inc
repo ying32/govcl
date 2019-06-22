@@ -15,6 +15,11 @@ begin
   AObj.Free;
 end;
 
+procedure ComboBox_AddItem(AObj: TComboBox; Item: PChar; AObject: TObject); extdecl;
+begin
+  AObj.AddItem(Item, AObject);
+end;
+
 procedure ComboBox_Clear(AObj: TComboBox); extdecl;
 begin
   AObj.Clear;
@@ -980,6 +985,7 @@ end;
 exports
   ComboBox_Create,
   ComboBox_Free,
+  ComboBox_AddItem,
   ComboBox_Clear,
   ComboBox_ClearSelection,
   ComboBox_DeleteSelected,

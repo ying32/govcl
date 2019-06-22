@@ -15,6 +15,11 @@ begin
   AObj.Free;
 end;
 
+procedure ColorBox_AddItem(AObj: TColorBox; Item: PChar; AObject: TObject); extdecl;
+begin
+  AObj.AddItem(Item, AObject);
+end;
+
 procedure ColorBox_Clear(AObj: TColorBox); extdecl;
 begin
   AObj.Clear;
@@ -939,6 +944,7 @@ end;
 exports
   ColorBox_Create,
   ColorBox_Free,
+  ColorBox_AddItem,
   ColorBox_Clear,
   ColorBox_ClearSelection,
   ColorBox_DeleteSelected,

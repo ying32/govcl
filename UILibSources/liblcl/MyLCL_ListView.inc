@@ -16,6 +16,11 @@ begin
   AObj.Free;
 end;
 
+procedure ListView_AddItem(AObj: TListView; Item: PChar; AObject: TObject); extdecl;
+begin
+  AObj.AddItem(Item, AObject);
+end;
+
 function ListView_AlphaSort(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.AlphaSort;
@@ -1271,6 +1276,7 @@ end;
 exports
   ListView_Create,
   ListView_Free,
+  ListView_AddItem,
   ListView_AlphaSort,
   ListView_Clear,
   ListView_ClearSelection,

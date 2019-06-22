@@ -20,6 +20,11 @@ begin
   AObj.CheckAll(AState, AllowGrayed, AllowDisabled);
 end;
 
+procedure CheckListBox_AddItem(AObj: TCheckListBox; Item: PChar; AObject: TObject); extdecl;
+begin
+  AObj.AddItem(Item, AObject);
+end;
+
 procedure CheckListBox_Clear(AObj: TCheckListBox); extdecl;
 begin
   AObj.Clear;
@@ -990,6 +995,7 @@ exports
   CheckListBox_Create,
   CheckListBox_Free,
   CheckListBox_CheckAll,
+  CheckListBox_AddItem,
   CheckListBox_Clear,
   CheckListBox_ClearSelection,
   CheckListBox_DeleteSelected,

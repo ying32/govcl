@@ -15,6 +15,11 @@ begin
   AObj.Free;
 end;
 
+procedure ListBox_AddItem(AObj: TListBox; Item: PChar; AObject: TObject); extdecl;
+begin
+  AObj.AddItem(Item, AObject);
+end;
+
 procedure ListBox_Clear(AObj: TListBox); extdecl;
 begin
   AObj.Clear;
@@ -944,6 +949,7 @@ end;
 exports
   ListBox_Create,
   ListBox_Free,
+  ListBox_AddItem,
   ListBox_Clear,
   ListBox_ClearSelection,
   ListBox_DeleteSelected,

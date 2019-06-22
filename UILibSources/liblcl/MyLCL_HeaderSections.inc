@@ -20,6 +20,11 @@ begin
   Result :=  AObj.Add;
 end;
 
+function HeaderSections_AddItem(AObj: THeaderSections; Item: THeaderSection; Index: Integer): THeaderSection; extdecl;
+begin
+  Result :=  AObj.AddItem(Item, Index);
+end;
+
 function HeaderSections_Insert(AObj: THeaderSections; Index: Integer): THeaderSection; extdecl;
 begin
   Result :=  AObj.Insert(Index);
@@ -124,6 +129,7 @@ exports
   HeaderSections_Create,
   HeaderSections_Free,
   HeaderSections_Add,
+  HeaderSections_AddItem,
   HeaderSections_Insert,
   HeaderSections_Owner,
   HeaderSections_Assign,
