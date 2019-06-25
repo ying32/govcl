@@ -266,7 +266,8 @@ func main() {
 	top += mdtp.Height() + 10
 	dtp.SetDateTime(time.Now().Add(time.Hour * 48))
 	dtp.SetDate(time.Now().AddDate(1, 0, 0))
-	fmt.Println("time: ", mdtp.Date())
+
+	fmt.Println("time: ", mdtp.Date(), dtp.DateTime())
 
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(mainForm)
