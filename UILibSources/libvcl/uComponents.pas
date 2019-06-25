@@ -68,10 +68,13 @@ var
   uGlobalFormScaled: Boolean = False;
 
 
+type
+  // 兼容Lazarus设计器的
+  TCalendar = class(TMonthCalendar);
 //--------------------- 原DelphiResForm.inc内容
 
 const
-  ClassRefArrs: array[0..133] of TClass = (
+  ClassRefArrs: array[0..134] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -94,7 +97,8 @@ const
     TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
     TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList,TSpinEdit,TMiniWebview,
-    TTaskDialog, TTaskDialogButtons, TTaskDialogProgressBar, TTaskDialogButtonItem, TTaskDialogRadioButtonItem, TTaskDialogBaseButtonItem
+    TTaskDialog, TTaskDialogButtons, TTaskDialogProgressBar, TTaskDialogButtonItem, TTaskDialogRadioButtonItem, TTaskDialogBaseButtonItem,
+    TCalendar
   );
 
 
