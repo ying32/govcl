@@ -181,6 +181,15 @@ begin
 end;
 
 
+// 做Lazarus和Delphi两边兼容的，同一种组件但名称不一样的。
+function FixClass(AOrgiName: string): string;
+begin
+  if AOrgiName = 'TCalendar' then
+    Result := 'TMonthCalendar'
+  else
+    Result := AOrgiName;
+end;
+
 // 系统环境是中文的
 function SysIsZhCN: Boolean;
 begin
@@ -749,7 +758,8 @@ var
      //Writeln(ObjectName, ': ', ObjectType);
      New(LItem);
      LItem^.Name := ObjectName;
-     LItem^.ClassName := ObjectType;
+     // 修复类
+     LItem^.ClassName := FixClass(ObjectType);
      LComponents.Add(LItem);
      while not (LParser.TokenSymbolIs('END') or
        LParser.TokenSymbolIs('OBJECT') or
