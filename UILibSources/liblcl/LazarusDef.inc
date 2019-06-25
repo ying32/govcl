@@ -3,12 +3,12 @@
 
 function ToUnixTime(ADateTime: TDateTime): TUnixDateTime; inline;
 begin
-  Result := DateTimeToUnix(ADateTime);
+  Result := DateTimeToUnix(LocalTimeToUniversal(ADateTime));
 end;
 
 function UnixToTime(ADateTime: TUnixDateTime): TDateTime; inline;
 begin
-  Result := UnixToDateTime(ADateTime);
+  Result := UniversalTimeToLocal(UnixToDateTime(ADateTime));
 end;
 
 function ToPChar(AStr: string): PChar; inline;
