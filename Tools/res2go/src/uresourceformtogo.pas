@@ -1,4 +1,4 @@
-unit uresourceformtogo;
+﻿unit uresourceformtogo;
 
 {$IFDEF FPC}
   {$mode objfpc}{$H+}
@@ -653,7 +653,12 @@ var
     LPropName, LEventName: String;
     stream: TMemoryStream;
   begin
-    LParser.CheckToken(toSymbol);
+    try
+      LParser.CheckToken(toSymbol);
+    except
+      LParser.NextToken;
+      Exit;
+    end;
     LPropName := LParser.TokenString;
     while True do begin
       LParser.NextToken;

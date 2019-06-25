@@ -38,6 +38,7 @@
       <Unit0>
         <Filename Value="res2go.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <CursorPos Y="16"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
@@ -57,7 +58,6 @@
       <Unit3>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <CursorPos X="35" Y="4"/>
         <UsageCount Value="40"/>
@@ -391,7 +391,7 @@
         <UsageCount Value="10"/>
       </Unit49>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="1195" Column="12" TopLine="1162"/>
@@ -508,10 +508,6 @@
         <Filename Value="res2go.lpr"/>
         <Caret Line="16"/>
       </Position29>
-      <Position30>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret TopLine="121"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
