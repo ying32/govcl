@@ -1268,6 +1268,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ListView_GetMargins(AObj: TListView): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ListView_SetMargins(AObj: TListView; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ListView_StaticClassType: TClass; extdecl;
 begin
   Result := TListView;
@@ -1512,5 +1522,7 @@ exports
   ListView_GetDockClients,
   ListView_GetControls,
   ListView_GetComponents,
-  ListView_StaticClassType;
+  ListView_StaticClassType,
+  ListView_GetMargins,
+  ListView_SetMargins;
 

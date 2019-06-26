@@ -410,6 +410,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Control_GetMargins(AObj: TControl): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Control_SetMargins(AObj: TControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Control_StaticClassType: TClass; extdecl;
 begin
   Result := TControl;
@@ -497,5 +507,7 @@ exports
   Control_GetTag,
   Control_SetTag,
   Control_GetComponents,
-  Control_StaticClassType;
+  Control_StaticClassType,
+  Control_GetMargins,
+  Control_SetMargins;
 

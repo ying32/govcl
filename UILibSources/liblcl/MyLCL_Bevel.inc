@@ -440,6 +440,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Bevel_GetMargins(AObj: TBevel): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Bevel_SetMargins(AObj: TBevel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Bevel_StaticClassType: TClass; extdecl;
 begin
   Result := TBevel;
@@ -533,5 +543,7 @@ exports
   Bevel_GetTag,
   Bevel_SetTag,
   Bevel_GetComponents,
-  Bevel_StaticClassType;
+  Bevel_StaticClassType,
+  Bevel_GetMargins,
+  Bevel_SetMargins;
 

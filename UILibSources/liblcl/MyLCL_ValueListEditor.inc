@@ -1129,6 +1129,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ValueListEditor_GetMargins(AObj: TValueListEditor): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ValueListEditor_SetMargins(AObj: TValueListEditor; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ValueListEditor_StaticClassType: TClass; extdecl;
 begin
   Result := TValueListEditor;
@@ -1349,5 +1359,7 @@ exports
   ValueListEditor_GetDockClients,
   ValueListEditor_GetControls,
   ValueListEditor_GetComponents,
-  ValueListEditor_StaticClassType;
+  ValueListEditor_StaticClassType,
+  ValueListEditor_GetMargins,
+  ValueListEditor_SetMargins;
 

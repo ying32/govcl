@@ -669,6 +669,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ToolButton_GetMargins(AObj: TToolButton): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ToolButton_SetMargins(AObj: TToolButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ToolButton_StaticClassType: TClass; extdecl;
 begin
   Result := TToolButton;
@@ -803,5 +813,7 @@ exports
   ToolButton_GetTag,
   ToolButton_SetTag,
   ToolButton_GetComponents,
-  ToolButton_StaticClassType;
+  ToolButton_StaticClassType,
+  ToolButton_GetMargins,
+  ToolButton_SetMargins;
 

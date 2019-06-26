@@ -604,6 +604,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function SpeedButton_GetMargins(AObj: TSpeedButton): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure SpeedButton_SetMargins(AObj: TSpeedButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function SpeedButton_StaticClassType: TClass; extdecl;
 begin
   Result := TSpeedButton;
@@ -727,5 +737,7 @@ exports
   SpeedButton_GetTag,
   SpeedButton_SetTag,
   SpeedButton_GetComponents,
-  SpeedButton_StaticClassType;
+  SpeedButton_StaticClassType,
+  SpeedButton_GetMargins,
+  SpeedButton_SetMargins;
 

@@ -629,6 +629,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ImageButton_GetMargins(AObj: TImageButton): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ImageButton_SetMargins(AObj: TImageButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ImageButton_StaticClassType: TClass; extdecl;
 begin
   Result := TImageButton;
@@ -755,5 +765,7 @@ exports
   ImageButton_GetTag,
   ImageButton_SetTag,
   ImageButton_GetComponents,
-  ImageButton_StaticClassType;
+  ImageButton_StaticClassType,
+  ImageButton_GetMargins,
+  ImageButton_SetMargins;
 

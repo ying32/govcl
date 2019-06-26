@@ -915,6 +915,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function SpinEdit_GetMargins(AObj: TSpinEdit): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure SpinEdit_SetMargins(AObj: TSpinEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function SpinEdit_StaticClassType: TClass; extdecl;
 begin
   Result := TSpinEdit;
@@ -1099,5 +1109,7 @@ exports
   SpinEdit_GetDockClients,
   SpinEdit_GetControls,
   SpinEdit_GetComponents,
-  SpinEdit_StaticClassType;
+  SpinEdit_StaticClassType,
+  SpinEdit_GetMargins,
+  SpinEdit_SetMargins;
 

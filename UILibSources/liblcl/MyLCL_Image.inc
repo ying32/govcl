@@ -585,6 +585,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Image_GetMargins(AObj: TImage): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Image_SetMargins(AObj: TImage; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Image_StaticClassType: TClass; extdecl;
 begin
   Result := TImage;
@@ -703,5 +713,7 @@ exports
   Image_GetTag,
   Image_SetTag,
   Image_GetComponents,
-  Image_StaticClassType;
+  Image_StaticClassType,
+  Image_GetMargins,
+  Image_SetMargins;
 

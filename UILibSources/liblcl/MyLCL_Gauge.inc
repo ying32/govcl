@@ -550,6 +550,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Gauge_GetMargins(AObj: TGauge): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Gauge_SetMargins(AObj: TGauge; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Gauge_StaticClassType: TClass; extdecl;
 begin
   Result := TGauge;
@@ -665,5 +675,7 @@ exports
   Gauge_GetTag,
   Gauge_SetTag,
   Gauge_GetComponents,
-  Gauge_StaticClassType;
+  Gauge_StaticClassType,
+  Gauge_GetMargins,
+  Gauge_SetMargins;
 

@@ -825,6 +825,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function BitBtn_GetMargins(AObj: TBitBtn): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure BitBtn_SetMargins(AObj: TBitBtn; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function BitBtn_StaticClassType: TClass; extdecl;
 begin
   Result := TBitBtn;
@@ -989,5 +999,7 @@ exports
   BitBtn_GetDockClients,
   BitBtn_GetControls,
   BitBtn_GetComponents,
-  BitBtn_StaticClassType;
+  BitBtn_StaticClassType,
+  BitBtn_GetMargins,
+  BitBtn_SetMargins;
 

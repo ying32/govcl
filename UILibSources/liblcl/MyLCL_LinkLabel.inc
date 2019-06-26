@@ -609,6 +609,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function LinkLabel_GetMargins(AObj: TLinkLabel): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure LinkLabel_SetMargins(AObj: TLinkLabel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function LinkLabel_StaticClassType: TClass; extdecl;
 begin
   Result := TLinkLabel;
@@ -731,5 +741,7 @@ exports
   LinkLabel_GetTag,
   LinkLabel_SetTag,
   LinkLabel_GetComponents,
-  LinkLabel_StaticClassType;
+  LinkLabel_StaticClassType,
+  LinkLabel_GetMargins,
+  LinkLabel_SetMargins;
 

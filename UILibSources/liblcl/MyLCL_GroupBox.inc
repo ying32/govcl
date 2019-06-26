@@ -821,6 +821,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function GroupBox_GetMargins(AObj: TGroupBox): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure GroupBox_SetMargins(AObj: TGroupBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function GroupBox_StaticClassType: TClass; extdecl;
 begin
   Result := TGroupBox;
@@ -983,5 +993,7 @@ exports
   GroupBox_GetDockClients,
   GroupBox_GetControls,
   GroupBox_GetComponents,
-  GroupBox_StaticClassType;
+  GroupBox_StaticClassType,
+  GroupBox_GetMargins,
+  GroupBox_SetMargins;
 

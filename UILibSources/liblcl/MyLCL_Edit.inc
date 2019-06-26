@@ -1004,6 +1004,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Edit_GetMargins(AObj: TEdit): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Edit_SetMargins(AObj: TEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Edit_StaticClassType: TClass; extdecl;
 begin
   Result := TEdit;
@@ -1203,5 +1213,7 @@ exports
   Edit_GetDockClients,
   Edit_GetControls,
   Edit_GetComponents,
-  Edit_StaticClassType;
+  Edit_StaticClassType,
+  Edit_GetMargins,
+  Edit_SetMargins;
 

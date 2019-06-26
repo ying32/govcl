@@ -536,6 +536,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Shape_GetMargins(AObj: TShape): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Shape_SetMargins(AObj: TShape; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Shape_StaticClassType: TClass; extdecl;
 begin
   Result := TShape;
@@ -645,5 +655,7 @@ exports
   Shape_GetTag,
   Shape_SetTag,
   Shape_GetComponents,
-  Shape_StaticClassType;
+  Shape_StaticClassType,
+  Shape_GetMargins,
+  Shape_SetMargins;
 

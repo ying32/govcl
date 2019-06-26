@@ -840,6 +840,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function TrackBar_GetMargins(AObj: TTrackBar): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure TrackBar_SetMargins(AObj: TTrackBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TrackBar_StaticClassType: TClass; extdecl;
 begin
   Result := TTrackBar;
@@ -1009,5 +1019,7 @@ exports
   TrackBar_GetDockClients,
   TrackBar_GetControls,
   TrackBar_GetComponents,
-  TrackBar_StaticClassType;
+  TrackBar_StaticClassType,
+  TrackBar_GetMargins,
+  TrackBar_SetMargins;
 

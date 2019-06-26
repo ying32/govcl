@@ -595,6 +595,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function WinControl_GetMargins(AObj: TWinControl): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure WinControl_SetMargins(AObj: TWinControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function WinControl_StaticClassType: TClass; extdecl;
 begin
   Result := TWinControl;
@@ -719,5 +729,7 @@ exports
   WinControl_GetDockClients,
   WinControl_GetControls,
   WinControl_GetComponents,
-  WinControl_StaticClassType;
+  WinControl_StaticClassType,
+  WinControl_GetMargins,
+  WinControl_SetMargins;
 

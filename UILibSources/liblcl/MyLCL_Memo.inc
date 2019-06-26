@@ -1024,6 +1024,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Memo_GetMargins(AObj: TMemo): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Memo_SetMargins(AObj: TMemo; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Memo_StaticClassType: TClass; extdecl;
 begin
   Result := TMemo;
@@ -1227,5 +1237,7 @@ exports
   Memo_GetDockClients,
   Memo_GetControls,
   Memo_GetComponents,
-  Memo_StaticClassType;
+  Memo_StaticClassType,
+  Memo_GetMargins,
+  Memo_SetMargins;
 

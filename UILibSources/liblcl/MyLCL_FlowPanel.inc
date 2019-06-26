@@ -908,6 +908,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function FlowPanel_GetMargins(AObj: TFlowPanel): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure FlowPanel_SetMargins(AObj: TFlowPanel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function FlowPanel_StaticClassType: TClass; extdecl;
 begin
   Result := TFlowPanel;
@@ -1087,5 +1097,7 @@ exports
   FlowPanel_GetDockClients,
   FlowPanel_GetControls,
   FlowPanel_GetComponents,
-  FlowPanel_StaticClassType;
+  FlowPanel_StaticClassType,
+  FlowPanel_GetMargins,
+  FlowPanel_SetMargins;
 

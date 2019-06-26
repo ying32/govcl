@@ -822,6 +822,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function StaticText_GetMargins(AObj: TStaticText): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure StaticText_SetMargins(AObj: TStaticText; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function StaticText_StaticClassType: TClass; extdecl;
 begin
   Result := TStaticText;
@@ -987,5 +997,7 @@ exports
   StaticText_GetDockClients,
   StaticText_GetControls,
   StaticText_GetComponents,
-  StaticText_StaticClassType;
+  StaticText_StaticClassType,
+  StaticText_GetMargins,
+  StaticText_SetMargins;
 

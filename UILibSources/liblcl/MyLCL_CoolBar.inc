@@ -946,6 +946,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function CoolBar_GetMargins(AObj: TCoolBar): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure CoolBar_SetMargins(AObj: TCoolBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function CoolBar_StaticClassType: TClass; extdecl;
 begin
   Result := TCoolBar;
@@ -1133,5 +1143,7 @@ exports
   CoolBar_GetDockClients,
   CoolBar_GetControls,
   CoolBar_GetComponents,
-  CoolBar_StaticClassType;
+  CoolBar_StaticClassType,
+  CoolBar_GetMargins,
+  CoolBar_SetMargins;
 

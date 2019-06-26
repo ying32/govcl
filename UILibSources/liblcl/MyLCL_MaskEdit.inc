@@ -1011,6 +1011,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function MaskEdit_GetMargins(AObj: TMaskEdit): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure MaskEdit_SetMargins(AObj: TMaskEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function MaskEdit_StaticClassType: TClass; extdecl;
 begin
   Result := TMaskEdit;
@@ -1211,5 +1221,7 @@ exports
   MaskEdit_GetDockClients,
   MaskEdit_GetControls,
   MaskEdit_GetComponents,
-  MaskEdit_StaticClassType;
+  MaskEdit_StaticClassType,
+  MaskEdit_GetMargins,
+  MaskEdit_SetMargins;
 

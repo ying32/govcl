@@ -888,6 +888,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function PageControl_GetMargins(AObj: TPageControl): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure PageControl_SetMargins(AObj: TPageControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function PageControl_StaticClassType: TClass; extdecl;
 begin
   Result := TPageControl;
@@ -1063,5 +1073,7 @@ exports
   PageControl_GetDockClients,
   PageControl_GetControls,
   PageControl_GetComponents,
-  PageControl_StaticClassType;
+  PageControl_StaticClassType,
+  PageControl_GetMargins,
+  PageControl_SetMargins;
 

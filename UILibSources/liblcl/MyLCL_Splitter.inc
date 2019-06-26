@@ -442,6 +442,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Splitter_GetMargins(AObj: TSplitter): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Splitter_SetMargins(AObj: TSplitter; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Splitter_StaticClassType: TClass; extdecl;
 begin
   Result := TSplitter;
@@ -535,5 +545,7 @@ exports
   Splitter_GetTag,
   Splitter_SetTag,
   Splitter_GetComponents,
-  Splitter_StaticClassType;
+  Splitter_StaticClassType,
+  Splitter_GetMargins,
+  Splitter_SetMargins;
 

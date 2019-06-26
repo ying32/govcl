@@ -757,6 +757,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function RadioGroup_GetMargins(AObj: TRadioGroup): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure RadioGroup_SetMargins(AObj: TRadioGroup; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function RadioGroup_StaticClassType: TClass; extdecl;
 begin
   Result := TRadioGroup;
@@ -911,5 +921,7 @@ exports
   RadioGroup_GetDockClients,
   RadioGroup_GetControls,
   RadioGroup_GetComponents,
-  RadioGroup_StaticClassType;
+  RadioGroup_StaticClassType,
+  RadioGroup_GetMargins,
+  RadioGroup_SetMargins;
 

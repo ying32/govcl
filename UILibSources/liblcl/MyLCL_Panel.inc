@@ -898,6 +898,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Panel_GetMargins(AObj: TPanel): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Panel_SetMargins(AObj: TPanel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Panel_StaticClassType: TClass; extdecl;
 begin
   Result := TPanel;
@@ -1075,5 +1085,7 @@ exports
   Panel_GetDockClients,
   Panel_GetControls,
   Panel_GetComponents,
-  Panel_StaticClassType;
+  Panel_StaticClassType,
+  Panel_GetMargins,
+  Panel_SetMargins;
 

@@ -798,6 +798,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function TabSheet_GetMargins(AObj: TTabSheet): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure TabSheet_SetMargins(AObj: TTabSheet; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TabSheet_StaticClassType: TClass; extdecl;
 begin
   Result := TTabSheet;
@@ -957,5 +967,7 @@ exports
   TabSheet_GetDockClients,
   TabSheet_GetControls,
   TabSheet_GetComponents,
-  TabSheet_StaticClassType;
+  TabSheet_StaticClassType,
+  TabSheet_GetMargins,
+  TabSheet_SetMargins;
 

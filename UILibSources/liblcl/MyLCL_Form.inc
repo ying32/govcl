@@ -1033,6 +1033,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Form_GetMargins(AObj: TForm): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Form_SetMargins(AObj: TForm; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Form_StaticClassType: TClass; extdecl;
 begin
   Result := TForm;
@@ -1233,5 +1243,7 @@ exports
   Form_GetDockClients,
   Form_GetControls,
   Form_GetComponents,
-  Form_StaticClassType;
+  Form_StaticClassType,
+  Form_GetMargins,
+  Form_SetMargins;
 

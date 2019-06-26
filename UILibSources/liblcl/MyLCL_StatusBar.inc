@@ -865,6 +865,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function StatusBar_GetMargins(AObj: TStatusBar): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure StatusBar_SetMargins(AObj: TStatusBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function StatusBar_StaticClassType: TClass; extdecl;
 begin
   Result := TStatusBar;
@@ -1037,5 +1047,7 @@ exports
   StatusBar_GetDockClients,
   StatusBar_GetControls,
   StatusBar_GetComponents,
-  StatusBar_StaticClassType;
+  StatusBar_StaticClassType,
+  StatusBar_GetMargins,
+  StatusBar_SetMargins;
 

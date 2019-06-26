@@ -977,6 +977,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ToolBar_GetMargins(AObj: TToolBar): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ToolBar_SetMargins(AObj: TToolBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ToolBar_StaticClassType: TClass; extdecl;
 begin
   Result := TToolBar;
@@ -1171,5 +1181,7 @@ exports
   ToolBar_GetDockClients,
   ToolBar_GetControls,
   ToolBar_GetComponents,
-  ToolBar_StaticClassType;
+  ToolBar_StaticClassType,
+  ToolBar_GetMargins,
+  ToolBar_SetMargins;
 

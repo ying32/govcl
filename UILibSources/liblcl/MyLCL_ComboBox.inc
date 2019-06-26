@@ -977,6 +977,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ComboBox_GetMargins(AObj: TComboBox): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ComboBox_SetMargins(AObj: TComboBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ComboBox_StaticClassType: TClass; extdecl;
 begin
   Result := TComboBox;
@@ -1171,5 +1181,7 @@ exports
   ComboBox_GetDockClients,
   ComboBox_GetControls,
   ComboBox_GetComponents,
-  ComboBox_StaticClassType;
+  ComboBox_StaticClassType,
+  ComboBox_GetMargins,
+  ComboBox_SetMargins;
 

@@ -838,6 +838,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ScrollBox_GetMargins(AObj: TScrollBox): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ScrollBox_SetMargins(AObj: TScrollBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ScrollBox_StaticClassType: TClass; extdecl;
 begin
   Result := TScrollBox;
@@ -1003,5 +1013,7 @@ exports
   ScrollBox_GetDockClients,
   ScrollBox_GetControls,
   ScrollBox_GetComponents,
-  ScrollBox_StaticClassType;
+  ScrollBox_StaticClassType,
+  ScrollBox_GetMargins,
+  ScrollBox_SetMargins;
 

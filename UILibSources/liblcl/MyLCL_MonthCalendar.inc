@@ -780,6 +780,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function MonthCalendar_GetMargins(AObj: TMonthCalendar): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure MonthCalendar_SetMargins(AObj: TMonthCalendar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function MonthCalendar_StaticClassType: TClass; extdecl;
 begin
   Result := TMonthCalendar;
@@ -935,5 +945,7 @@ exports
   MonthCalendar_GetDockClients,
   MonthCalendar_GetControls,
   MonthCalendar_GetComponents,
-  MonthCalendar_StaticClassType;
+  MonthCalendar_StaticClassType,
+  MonthCalendar_GetMargins,
+  MonthCalendar_SetMargins;
 

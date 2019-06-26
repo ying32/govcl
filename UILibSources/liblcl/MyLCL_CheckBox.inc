@@ -840,6 +840,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function CheckBox_GetMargins(AObj: TCheckBox): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure CheckBox_SetMargins(AObj: TCheckBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function CheckBox_StaticClassType: TClass; extdecl;
 begin
   Result := TCheckBox;
@@ -1007,5 +1017,7 @@ exports
   CheckBox_GetDockClients,
   CheckBox_GetControls,
   CheckBox_GetComponents,
-  CheckBox_StaticClassType;
+  CheckBox_StaticClassType,
+  CheckBox_GetMargins,
+  CheckBox_SetMargins;
 

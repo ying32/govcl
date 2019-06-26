@@ -1185,6 +1185,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function TreeView_GetMargins(AObj: TTreeView): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure TreeView_SetMargins(AObj: TTreeView; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TreeView_StaticClassType: TClass; extdecl;
 begin
   Result := TTreeView;
@@ -1414,5 +1424,7 @@ exports
   TreeView_GetDockClients,
   TreeView_GetControls,
   TreeView_GetComponents,
-  TreeView_StaticClassType;
+  TreeView_StaticClassType,
+  TreeView_GetMargins,
+  TreeView_SetMargins;
 

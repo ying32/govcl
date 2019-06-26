@@ -95,6 +95,8 @@ uses
 {$I LazarusExtDef.inc}
 {$I LazarusDef.inc}
 
+{$I MyLCL_Margins.inc}
+
 {$I MyLCL_Application.inc}
 {$I MyLCL_Form.inc}
 {$I MyLCL_Button.inc}

@@ -745,6 +745,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function UpDown_GetMargins(AObj: TUpDown): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure UpDown_SetMargins(AObj: TUpDown; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function UpDown_StaticClassType: TClass; extdecl;
 begin
   Result := TUpDown;
@@ -895,5 +905,7 @@ exports
   UpDown_GetDockClients,
   UpDown_GetControls,
   UpDown_GetComponents,
-  UpDown_StaticClassType;
+  UpDown_StaticClassType,
+  UpDown_GetMargins,
+  UpDown_SetMargins;
 

@@ -1161,6 +1161,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function StringGrid_GetMargins(AObj: TStringGrid): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure StringGrid_SetMargins(AObj: TStringGrid; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function StringGrid_StaticClassType: TClass; extdecl;
 begin
   Result := TStringGrid;
@@ -1387,5 +1397,7 @@ exports
   StringGrid_GetDockClients,
   StringGrid_GetControls,
   StringGrid_GetComponents,
-  StringGrid_StaticClassType;
+  StringGrid_StaticClassType,
+  StringGrid_GetMargins,
+  StringGrid_SetMargins;
 

@@ -812,6 +812,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ProgressBar_GetMargins(AObj: TProgressBar): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ProgressBar_SetMargins(AObj: TProgressBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ProgressBar_StaticClassType: TClass; extdecl;
 begin
   Result := TProgressBar;
@@ -975,5 +985,7 @@ exports
   ProgressBar_GetDockClients,
   ProgressBar_GetControls,
   ProgressBar_GetComponents,
-  ProgressBar_StaticClassType;
+  ProgressBar_StaticClassType,
+  ProgressBar_GetMargins,
+  ProgressBar_SetMargins;
 

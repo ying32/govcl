@@ -652,6 +652,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Label_GetMargins(AObj: TLabel): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Label_SetMargins(AObj: TLabel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Label_StaticClassType: TClass; extdecl;
 begin
   Result := TLabel;
@@ -783,5 +793,7 @@ exports
   Label_GetTag,
   Label_SetTag,
   Label_GetComponents,
-  Label_StaticClassType;
+  Label_StaticClassType,
+  Label_GetMargins,
+  Label_SetMargins;
 

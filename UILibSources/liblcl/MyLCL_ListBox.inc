@@ -941,6 +941,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ListBox_GetMargins(AObj: TListBox): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ListBox_SetMargins(AObj: TListBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ListBox_StaticClassType: TClass; extdecl;
 begin
   Result := TListBox;
@@ -1127,5 +1137,7 @@ exports
   ListBox_GetDockClients,
   ListBox_GetControls,
   ListBox_GetComponents,
-  ListBox_StaticClassType;
+  ListBox_StaticClassType,
+  ListBox_GetMargins,
+  ListBox_SetMargins;
 

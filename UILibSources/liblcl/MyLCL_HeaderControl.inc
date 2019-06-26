@@ -792,6 +792,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function HeaderControl_GetMargins(AObj: THeaderControl): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure HeaderControl_SetMargins(AObj: THeaderControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function HeaderControl_StaticClassType: TClass; extdecl;
 begin
   Result := THeaderControl;
@@ -949,5 +959,7 @@ exports
   HeaderControl_GetDockClients,
   HeaderControl_GetControls,
   HeaderControl_GetComponents,
-  HeaderControl_StaticClassType;
+  HeaderControl_StaticClassType,
+  HeaderControl_GetMargins,
+  HeaderControl_SetMargins;
 

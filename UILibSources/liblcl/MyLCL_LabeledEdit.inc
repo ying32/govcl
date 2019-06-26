@@ -1012,6 +1012,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function LabeledEdit_GetMargins(AObj: TLabeledEdit): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure LabeledEdit_SetMargins(AObj: TLabeledEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function LabeledEdit_StaticClassType: TClass; extdecl;
 begin
   Result := TLabeledEdit;
@@ -1213,5 +1223,7 @@ exports
   LabeledEdit_GetDockClients,
   LabeledEdit_GetControls,
   LabeledEdit_GetComponents,
-  LabeledEdit_StaticClassType;
+  LabeledEdit_StaticClassType,
+  LabeledEdit_GetMargins,
+  LabeledEdit_SetMargins;
 

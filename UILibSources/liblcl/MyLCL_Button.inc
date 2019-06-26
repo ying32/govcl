@@ -815,6 +815,16 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function Button_GetMargins(AObj: TButton): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure Button_SetMargins(AObj: TButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Button_StaticClassType: TClass; extdecl;
 begin
   Result := TButton;
@@ -977,5 +987,7 @@ exports
   Button_GetDockClients,
   Button_GetControls,
   Button_GetComponents,
-  Button_StaticClassType;
+  Button_StaticClassType,
+  Button_GetMargins,
+  Button_SetMargins;
 
