@@ -27,6 +27,8 @@ func init() {
 	SetEventCallback(eventCallback)
 	// 消息回调
 	SetMessageCallback(messageCallback)
+	// 线程同步回调
+	SetThreadSyncCallback(threadSyncCallback)
 
 	// 导入几个实例类
 	Application = ApplicationFromInst(Application_Instance())

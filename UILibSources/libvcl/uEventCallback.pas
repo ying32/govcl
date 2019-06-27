@@ -32,6 +32,7 @@ uses
 var
   GEventCallbackPtr: function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; stdcall;
   GMessageCallbackPtr: function(f: NativeUInt; msg, handled: Pointer): Pointer; stdcall;
+  GThreadSyncCallbackPtr: function: Pointer; stdcall;
 
 type
   TGoParam = record

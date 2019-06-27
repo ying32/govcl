@@ -21,8 +21,9 @@ var (
 	form_SetShowInTaskBar       = libvcl.NewProc("Form_SetShowInTaskBar")
 	form_ShowInTaskBar          = libvcl.NewProc("Form_ShowInTaskBar")
 
-	setEventCallback   = libvcl.NewProc("SetEventCallback")
-	setMessageCallback = libvcl.NewProc("SetMessageCallback")
+	setEventCallback      = libvcl.NewProc("SetEventCallback")
+	setMessageCallback    = libvcl.NewProc("SetMessageCallback")
+	setThreadSyncCallback = libvcl.NewProc("SetThreadSyncCallback")
 
 	dGetParam       = libvcl.NewProc("DGetParam")
 	dGetStringArrOf = libvcl.NewProc("DGetStringArrOf")

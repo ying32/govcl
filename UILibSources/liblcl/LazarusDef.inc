@@ -488,6 +488,12 @@ begin
   GMessageCallbackPtr := TMessageCallbackPtr(APtr);
 end;
 
+procedure SetThreadSyncCallback(APtr: Pointer); extdecl;
+begin
+  GThreadSyncCallbackPtr := APtr;
+end;
+
+
 procedure DGetParam(Index: NativeInt; AArr: Pointer; out P: TGoParam); extdecl;
 begin
   P := PGoParam(PByte(AArr) + Index * SizeOf(TGoParam))^;
@@ -535,11 +541,9 @@ begin
 end;
 
 // 在主线程中运行
-procedure DSynchronize(AId: NativeUInt); extdecl;
+procedure DSynchronize; extdecl;
 begin
-  TEventClass.ThreadEvtId := AId;
   TThread.Synchronize(nil, TEventClass.ThreadProc);
-  TEventClass.ThreadEvtId := 0;
 end;
 
 procedure DSysOpen(FileName: PChar); extdecl;
@@ -926,6 +930,7 @@ exports
   // Other
   SetEventCallback,
   SetMessageCallback,
+  SetThreadSyncCallback,
 
   DGetParam,
   DGetStringArrOf,

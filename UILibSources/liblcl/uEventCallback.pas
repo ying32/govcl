@@ -33,10 +33,12 @@ uses
 type
   TEventCallbackPtr = function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; extdecl;
   TMessageCallbackPtr = function(f: NativeUInt; msg, handled: Pointer): Pointer; extdecl;
+  TThreadSyncCallbackPtr = function{(f: NativeUInt)}: Pointer; extdecl;
 
 var
   GEventCallbackPtr: TEventCallbackPtr;
   GMessageCallbackPtr: TMessageCallbackPtr;
+  GThreadSyncCallbackPtr: TThreadSyncCallbackPtr;
 
 type
   TGoParam = record
@@ -357,7 +359,7 @@ end;
 
 class procedure TEventClass.ThreadProc;
 begin
-  GEventCallbackPtr(ThreadEvtId, nil, 0);
+  GThreadSyncCallbackPtr();
 end;
 
 class procedure TEventClass.AddClick(Sender: TObject; AId: NativeUInt);

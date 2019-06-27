@@ -16,7 +16,9 @@ type TGoParam struct {
 var (
 	eventCallbackMap   sync.Map
 	messageCallbackMap sync.Map
-	threadSync         sync.Mutex
+	// ThreadSync
+	threadSync   sync.Mutex
+	threadSyncFn func()
 )
 
 func DBoolToGoBool(val uintptr) bool {
@@ -82,12 +84,20 @@ func MessageCallbackOf(Id uintptr) (interface{}, bool) {
 	return messageCallbackMap.Load(Id)
 }
 
+func ThreadSyncCallbackFn() func() {
+	return threadSyncFn
+}
+
 func SetEventCallback(ptr uintptr) {
 	setEventCallback.Call(ptr)
 }
 
 func SetMessageCallback(ptr uintptr) {
 	setMessageCallback.Call(ptr)
+}
+
+func SetThreadSyncCallback(ptr uintptr) {
+	setThreadSyncCallback.Call(ptr)
 }
 
 func DGetParam(index int, ptr uintptr) TGoParam {
@@ -173,12 +183,12 @@ func DSelectDirectory2(caption, root string, options TSelectDirExtOpts, parent u
 	return false, ""
 }
 
-func DSynchronize(fn interface{}) {
+func DSynchronize(fn func()) {
 	threadSync.Lock()
 	defer threadSync.Unlock()
-	id := addEventToMap(fn)
-	dSynchronize.Call(id)
-	RemoveEventCallbackOf(id)
+	threadSyncFn = fn
+	dSynchronize.Call()
+	threadSyncFn = nil
 }
 
 func DInputBox(aCaption, aPrompt, aDefault string) string {

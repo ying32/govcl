@@ -52,7 +52,7 @@ end;
 function DLibVersion: Cardinal; stdcall;
 begin
   // 共8位，2位2位的
-  Result := $01020400;
+  Result := $01020500;
 end;
 
 // TApplication
@@ -421,6 +421,12 @@ begin
   GMessageCallbackPtr := APtr;
 end;
 
+procedure SetThreadSyncCallback(APtr: Pointer); stdcall;
+begin
+  GThreadSyncCallbackPtr := APtr;
+end;
+
+
 procedure DGetParam(Index: NativeInt; AArr: Pointer; out P: TGoParam); stdcall;
 begin
   P := PGoParam(PByte(AArr) + Index * SizeOf(TGoParam))^;
@@ -472,12 +478,12 @@ end;
 
 
 // 在主线程中运行
-procedure DSynchronize(AId: NativeUInt); stdcall;
+procedure DSynchronize; stdcall;
 begin
   TThread.Synchronize(nil,
     procedure
     begin
-      GEventCallbackPtr(AId, nil, 0);
+      GThreadSyncCallbackPtr();
     end);
 end;
 
@@ -959,6 +965,7 @@ exports
   // other
   SetEventCallback,
   SetMessageCallback,
+  SetThreadSyncCallback,
 
   DGetParam,
   DGetStringArrOf,
