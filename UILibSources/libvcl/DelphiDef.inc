@@ -480,11 +480,14 @@ end;
 // 在主线程中运行
 procedure DSynchronize; stdcall;
 begin
-  TThread.Synchronize(nil,
-    procedure
-    begin
-      GThreadSyncCallbackPtr();
-    end);
+  if Assigned(Application) and (Application.Handle > 0) then
+    SendMessage(Application.Handle, 0, 0, 0);
+
+//  TThread.Synchronize(nil,
+//    procedure
+//    begin
+//      GThreadSyncCallbackPtr();
+//    end);
 end;
 
 procedure DSysOpen(FileName: PChar); stdcall;

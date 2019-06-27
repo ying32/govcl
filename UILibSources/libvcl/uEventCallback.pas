@@ -279,6 +279,8 @@ type
     class procedure Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
     class procedure AddClick(Sender: TObject; AId: NativeUInt);
     class procedure Remove(AObj: TObject; AEvent: Pointer);
+
+    class function HookApplicationMessage(var Msg: TMessage): Boolean;
   end;
 
   // 窗口消息的，不与之前的事件混在一起。 
@@ -326,10 +328,16 @@ end;
 class constructor TEventClass.Create;
 begin
   FEvents := TEventList.Create;
+  if Application.Handle = 0 then
+    Application.CreateHandle;
+  if Assigned(Application) then
+    Application.HookMainWindow(HookApplicationMessage);
 end;
 
 class destructor TEventClass.Destroy;
 begin
+  if Assigned(Application) then
+    Application.UnhookMainWindow(HookApplicationMessage);
   FreeAndNil(FEvents);
 end;
 
@@ -348,7 +356,12 @@ begin
   FEvents.Remove(CreateEventKey(AObj, AEvent));
 end;
 
-
+class function TEventClass.HookApplicationMessage(var Msg: TMessage): Boolean;
+begin
+  if (GThreadSyncCallbackPtr <> nil) and (Msg.Msg = WM_NULL) then
+    GThreadSyncCallbackPtr();
+  Result := False;
+end;
 
 class procedure TEventClass.OnBalloonClick(Sender: TObject);
 begin
