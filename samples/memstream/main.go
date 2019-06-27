@@ -11,17 +11,6 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
-//var (
-//	kernel32            = syscall.NewLazyDLL("kernel32.dll")
-//	_GetCurrentThreadId = kernel32.NewProc("GetCurrentThreadId")
-//)
-
-func GetCurrentThreadId() uintptr {
-	//r, _, _ := _GetCurrentThreadId.Call()
-	//return r
-	return 0
-}
-
 func main() {
 
 	fmt.Println("main:currentThreadId:", GetCurrentThreadId())
@@ -45,7 +34,7 @@ func main() {
 	// 本地加载
 	mem := vcl.NewMemoryStream()
 	defer mem.Free()
-	mem.LoadFromFile("..\\..\\imgs\\1.jpg")
+	mem.LoadFromFile("../govcl/imgs/1.jpg")
 	img.Picture().LoadFromStream(mem)
 	// 网络图片加载
 	img2 := vcl.NewImage(mainForm)
