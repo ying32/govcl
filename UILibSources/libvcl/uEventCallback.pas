@@ -48,7 +48,7 @@ type
     constructor Create(ASender: TObject; AEvent: Pointer);
   end;
 
-  TEventList = TDictionary<TEventKey, NativeUInt>;
+  TEventList = TDictionary<NativeUInt, NativeUInt>;
 
   TEventClass = class
   private class var
@@ -297,6 +297,30 @@ type
 
 implementation
 
+function HashOf(const Key: TEventKey): NativeUInt; inline;
+var
+  I: Integer;
+  P: PByte;
+begin
+   Result := 0;
+   P := @Key;
+    for I := 1 to SizeOf(Key) do
+    begin
+      Result := ((Result shl 2) or (Result shr (SizeOf(Result) * 8 - 2))) xor P^;
+      Inc(P);
+    end;
+end;
+
+
+function CreateEventKey(ASender: TObject; AEvent: Pointer): NativeUInt; inline;
+var
+  LEvent: TEventKey;
+begin
+  LEvent.Sender := ASender;
+  LEvent.Event := AEvent;
+  Result := HashOf(LEvent);
+end;
+
 { TEventClass }
 
 class constructor TEventClass.Create;
@@ -311,7 +335,7 @@ end;
 
 class procedure TEventClass.Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
 begin
-  FEvents.AddOrSetValue(TEventKey.Create(AObj, AEvent), AId);
+  FEvents.AddOrSetValue(CreateEventKey(AObj, AEvent), AId);
 end;
 
 class procedure TEventClass.AddClick(Sender: TObject; AId: NativeUInt);
@@ -321,7 +345,7 @@ end;
 
 class procedure TEventClass.Remove(AObj: TObject; AEvent: Pointer);
 begin
-  FEvents.Remove(TEventKey.Create(AObj, AEvent));
+  FEvents.Remove(CreateEventKey(AObj, AEvent));
 end;
 
 
@@ -1168,7 +1192,7 @@ var
   LEventId: NativeUInt;
 begin
   if FEvents <> nil then
-    if FEvents.TryGetValue(TEventKey.Create(Sender, AEvent), LEventId) then
+    if FEvents.TryGetValue(CreateEventKey(Sender, AEvent), LEventId) then
       SendEventSrc(LEventId, AArgs);
 end;
 

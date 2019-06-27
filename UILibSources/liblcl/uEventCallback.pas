@@ -307,7 +307,7 @@ type
 
 implementation
 
-function HashOf(const Key: TEventKey): NativeUInt;
+function HashOf(const Key: TEventKey): NativeUInt; inline;
 var
   I: Integer;
   P: PByte;
@@ -322,7 +322,7 @@ begin
 end;
 
 
-function CreateEventKey(ASender: TObject; AEvent: Pointer): NativeUInt;
+function CreateEventKey(ASender: TObject; AEvent: Pointer): NativeUInt; inline;
 var
   LEvent: TEventKey;
 begin
