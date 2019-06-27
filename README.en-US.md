@@ -33,7 +33,11 @@ res2go Tool
 
 ### usage: 
 
+#### Step 1: Get the govcl code  
+
 > go get github.com/ying32/govcl    
+
+#### Step 2: Write the code
 
 * Method 1: 
 
@@ -181,18 +185,29 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 ```
 **Method 3 needs to be used in conjunction with the UI designer or the res2go tool.**  
 
----   
-### FAQ
+#### Step 3: Copy the corresponding binary   
 
-Q: Why is there no English WIKI?   
-A: My English is bad. You can try using Google Translate [Chinese WIKI](https://gitee.com/ying32/govcl/wikis/pages).    
- 
+* Windows: According to whether the compiled binary is 32 or 64 bit, copy the corresponding "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.  
+  * Go environment variable: `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`    
+
+* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).  
+  * Go environment variable: `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`  
+
+* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS)  
+  * Go environment variable: `GOARCH = amd64` `GOOS = darwin` `CGO_ENABLED=1`  
 ---  
 ### Note:  
 
 **When using the "liblcl" library, it is run in a compatible "libvcl" library, so some methods and properties of components and components are not available.**  
 
 ---
+
+### FAQ
+
+Q: Why is there no English WIKI?   
+A: My English is bad. You can try using Google Translate [Chinese WIKI](https://gitee.com/ying32/govcl/wikis/pages).    
+ 
+---  
 
 ### API document
 
@@ -201,14 +216,3 @@ A: My English is bad. You can try using Google Translate [Chinese WIKI](https://
 * [Windows API document](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)
 
 ----
-
-* Windows: Copy "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.  
-  * Go environment variable: `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`    
-
-* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).  
-  * Go environment variable: `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`  
-
-* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS)  
-  * Go environment variable: `GOARCH = amd64` `GOOS = darwin` `CGO_ENABLED=1`  
-
----  
