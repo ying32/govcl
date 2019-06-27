@@ -13,7 +13,7 @@ package vcl
 //    return &doMessageCallbackProc;
 // }
 //
-// extern void* doThreadSyncCallbackProc(void* f);
+// extern void* doThreadSyncCallbackProc();
 // static void* doGetThreadSyncCallbackAddr() {
 //    return &doThreadSyncCallbackProc;
 // }
@@ -36,8 +36,8 @@ func doMessageCallbackProc(f unsafe.Pointer, msg, handled unsafe.Pointer) unsafe
 }
 
 //export doThreadSyncCallbackProc
-func doThreadSyncCallbackProc(f unsafe.Pointer) unsafe.Pointer {
-	threadSybcCallbackProc(uintptr(f))
+func doThreadSyncCallbackProc() unsafe.Pointer {
+	threadSyncCallbackProc()
 	return unsafe.Pointer(uintptr(0))
 }
 

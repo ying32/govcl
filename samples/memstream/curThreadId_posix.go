@@ -2,6 +2,10 @@
 
 package main
 
-func GetCurrentThreadId() uintptr {
-	return 0
+import (
+	"syscall"
+)
+
+func GetCurrentThreadId() int {
+	return syscall.Gettid()
 }
