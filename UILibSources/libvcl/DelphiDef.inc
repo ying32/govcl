@@ -480,8 +480,11 @@ end;
 // 在主线程中运行
 procedure DSynchronize(AUseMsg: LongBool); stdcall;
 begin
-  if AUseMsg and Assigned(Application) and (Application.Handle > 0) then
-    SendMessage(Application.Handle, THREAD_SYNC_MESSAGE, 0, 0)
+  if AUseMsg then
+  begin
+    if Assigned(Application) and (Application.Handle > 0)  then
+      SendMessage(Application.Handle, THREAD_SYNC_MESSAGE, 0, 0);
+  end
   else
     TThread.Synchronize(nil, TEventClass.ThreadProc);
 end;

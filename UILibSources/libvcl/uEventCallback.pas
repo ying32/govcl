@@ -364,9 +364,12 @@ end;
 
 class function TEventClass.HookApplicationMessage(var Msg: TMessage): Boolean;
 begin
-  if (GThreadSyncCallbackPtr <> nil) and (Msg.Msg = THREAD_SYNC_MESSAGE) then
-    GThreadSyncCallbackPtr();
   Result := False;
+  if (GThreadSyncCallbackPtr <> nil) and (Msg.Msg = THREAD_SYNC_MESSAGE) then
+  begin
+    GThreadSyncCallbackPtr();
+    Result := True;
+  end;
 end;
 
 class procedure TEventClass.ThreadProc;
