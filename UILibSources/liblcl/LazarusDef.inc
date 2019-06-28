@@ -541,7 +541,7 @@ begin
 end;
 
 // 在主线程中运行
-procedure DSynchronize; extdecl;
+procedure DSynchronize(AUseMsg: LongBool); extdecl;
 begin
   TThread.Synchronize(nil, TEventClass.ThreadProc);
 end;

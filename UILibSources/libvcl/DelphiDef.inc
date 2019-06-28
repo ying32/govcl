@@ -478,16 +478,12 @@ end;
 
 
 // 在主线程中运行
-procedure DSynchronize; stdcall;
+procedure DSynchronize(AUseMsg: LongBool); stdcall;
 begin
-  if Assigned(Application) and (Application.Handle > 0) then
-    SendMessage(Application.Handle, 0, 0, 0);
-
-//  TThread.Synchronize(nil,
-//    procedure
-//    begin
-//      GThreadSyncCallbackPtr();
-//    end);
+  if AUseMsg and Assigned(Application) and (Application.Handle > 0) then
+    SendMessage(Application.Handle, THREAD_SYNC_MESSAGE, 0, 0)
+  else
+    TThread.Synchronize(nil, TEventClass.ThreadProc);
 end;
 
 procedure DSysOpen(FileName: PChar); stdcall;

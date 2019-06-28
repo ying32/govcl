@@ -183,11 +183,11 @@ func DSelectDirectory2(caption, root string, options TSelectDirExtOpts, parent u
 	return false, ""
 }
 
-func DSynchronize(fn func()) {
+func DSynchronize(fn func(), useMsg uintptr) {
 	threadSync.Lock()
 	defer threadSync.Unlock()
 	threadSyncFn = fn
-	dSynchronize.Call()
+	dSynchronize.Call(useMsg)
 	threadSyncFn = nil
 }
 

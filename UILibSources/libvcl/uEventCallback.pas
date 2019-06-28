@@ -29,6 +29,9 @@ uses
   Vcl.Taskbar,
   System.Generics.Collections;
 
+const
+  THREAD_SYNC_MESSAGE = WM_USER + $9090;
+
 var
   GEventCallbackPtr: function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; stdcall;
   GMessageCallbackPtr: function(f: NativeUInt; msg, handled: Pointer): Pointer; stdcall;
@@ -281,6 +284,7 @@ type
     class procedure Remove(AObj: TObject; AEvent: Pointer);
 
     class function HookApplicationMessage(var Msg: TMessage): Boolean;
+    class procedure ThreadProc;
   end;
 
   // 窗口消息的，不与之前的事件混在一起。 
@@ -328,10 +332,12 @@ end;
 class constructor TEventClass.Create;
 begin
   FEvents := TEventList.Create;
-  if Application.Handle = 0 then
-    Application.CreateHandle;
   if Assigned(Application) then
+  begin
+    if Application.Handle = 0 then
+      Application.CreateHandle;
     Application.HookMainWindow(HookApplicationMessage);
+  end;
 end;
 
 class destructor TEventClass.Destroy;
@@ -358,9 +364,14 @@ end;
 
 class function TEventClass.HookApplicationMessage(var Msg: TMessage): Boolean;
 begin
-  if (GThreadSyncCallbackPtr <> nil) and (Msg.Msg = WM_NULL) then
+  if (GThreadSyncCallbackPtr <> nil) and (Msg.Msg = THREAD_SYNC_MESSAGE) then
     GThreadSyncCallbackPtr();
   Result := False;
+end;
+
+class procedure TEventClass.ThreadProc;
+begin
+  GThreadSyncCallbackPtr();
 end;
 
 class procedure TEventClass.OnBalloonClick(Sender: TObject);
