@@ -153,7 +153,8 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 		for i := 0; i < vt.Elem().NumField(); i++ {
 			field := vt.Elem().Field(i)
 			if field.Type.Kind() != reflect.Ptr || field.Anonymous ||
-				!strings.HasPrefix(field.Type.String(), "*vcl.") {
+				!strings.Contains(field.Type.String(), ".T") {
+				//!strings.HasPrefix(field.Type.String(), "*vcl.") {
 				continue
 			}
 			if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
