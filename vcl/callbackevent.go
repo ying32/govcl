@@ -7,6 +7,20 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
+// 外部回调事件
+// 参数一：函数地址
+// 参数二：获取参数值的函数
+// 返回值：如果为true则终于事件传递，如果为false则继续向后转发事件。
+type TExtEventCallback func(fn interface{}, getVal func(idx int) uintptr) bool
+
+// 外部扩展的事件回调，先不管重复注册的问题
+var extEventCallback []TExtEventCallback
+
+// 注册外部扩展回调事件
+func RegisterExtEventCallback(callback TExtEventCallback) {
+	extEventCallback = append(extEventCallback, callback)
+}
+
 // 回调过程
 func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 	v, ok := EventCallbackOf(f)
@@ -14,6 +28,14 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 		getVal := func(i int) uintptr {
 			return DGetParam(i, args).Value
+		}
+
+		// 调用外部注册的事件回调过程
+		for n := 0; n < len(extEventCallback); n++ {
+			// 外部返回True则不继续下去了
+			if extEventCallback[n](v, getVal) {
+				return 0
+			}
 		}
 
 		switch v.(type) {

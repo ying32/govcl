@@ -5,6 +5,8 @@ import (
 	"sync"
 	"unsafe"
 
+	"github.com/ying32/govcl/vcl/dylib"
+
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -14,13 +16,16 @@ type TGoParam struct {
 }
 
 var (
-	eventCallbackMap   sync.Map
+	// 事件回调查找表
+	eventCallbackMap sync.Map
+	// 独立的消息事件查找表
 	messageCallbackMap sync.Map
 	// ThreadSync
 	threadSync   sync.Mutex
 	threadSyncFn func()
 )
 
+// Delphi或者Lazarus的Bool类型转为Go bool
 func DBoolToGoBool(val uintptr) bool {
 	if val != 0 {
 		return true
@@ -28,6 +33,7 @@ func DBoolToGoBool(val uintptr) bool {
 	return false
 }
 
+// Go bool类型转为Delphi或者Lazarus的Bool类型
 func GoBoolToDBool(val bool) uintptr {
 	if val {
 		return 1
@@ -60,62 +66,75 @@ func hashOf(val interface{}) uintptr {
 	return uintptr(result)
 }
 
+// 将事件添加到查找表中
 func addEventToMap(f interface{}) uintptr {
 	p := hashOf(f)
 	eventCallbackMap.Store(p, f)
 	return p
 }
 
+// 从事件表中查找指定id的函数
 func EventCallbackOf(Id uintptr) (interface{}, bool) {
 	return eventCallbackMap.Load(Id)
 }
 
+// 从事件表中移除指定的函数
 func RemoveEventCallbackOf(Id uintptr) {
 	eventCallbackMap.Delete(Id)
 }
 
+// 添加消息事件到消息表中
 func addMessageEventToMap(f interface{}) uintptr {
 	p := hashOf(f)
 	messageCallbackMap.Store(p, f)
 	return p
 }
 
+// 从消息表中查找指定id的函数
 func MessageCallbackOf(Id uintptr) (interface{}, bool) {
 	return messageCallbackMap.Load(Id)
 }
 
+// 返回当前需要调用的线程同步函数
 func ThreadSyncCallbackFn() func() {
 	return threadSyncFn
 }
 
+// 设置事件回调函数指针
 func SetEventCallback(ptr uintptr) {
 	setEventCallback.Call(ptr)
 }
 
+// 设置消息事件回调函数指针
 func SetMessageCallback(ptr uintptr) {
 	setMessageCallback.Call(ptr)
 }
 
+// 设置线程同步事件回调函数指针
 func SetThreadSyncCallback(ptr uintptr) {
 	setThreadSyncCallback.Call(ptr)
 }
 
+// 从指定索引和地址获取事件中的参数
 func DGetParam(index int, ptr uintptr) TGoParam {
 	p := TGoParam{}
 	dGetParam.Call(uintptr(index), ptr, uintptr(unsafe.Pointer(&p)))
 	return p
 }
 
+// 从Delphi/Lazarus字符串数组中获取指定索引的值
 func DGetStringArrOf(p uintptr, index int) string {
 	r, _, _ := dGetStringArrOf.Call(p, uintptr(index))
 	return DStrToGoStr(r)
 }
 
+// 获取Delphi/Lazarus字符串长度
 func DStrLen(p uintptr) int {
 	ret, _, _ := dStrLen.Call(p)
 	return int(ret)
 }
 
+// Delphi/Lazarus内存操作
 func DMove(src, dest uintptr, llen int) {
 	dMove.Call(src, dest, uintptr(llen))
 }
@@ -124,6 +143,7 @@ func DShowMessage(s string) {
 	dShowMessage.Call(GoStrToDStr(s))
 }
 
+// 应用程序实例
 func DGetMainInstance() uintptr {
 	ret, _, _ := dGetMainInstance.Call()
 	return ret
@@ -183,6 +203,7 @@ func DSelectDirectory2(caption, root string, options TSelectDirExtOpts, parent u
 	return false, ""
 }
 
+// 线程同步
 func DSynchronize(fn func(), useMsg uintptr) {
 	threadSync.Lock()
 	defer threadSync.Unlock()
@@ -286,6 +307,7 @@ func DLibStringEncoding() TStringEncoding {
 	return TStringEncoding(r)
 }
 
+// 库版本信息
 func DLibVersion() uint32 {
 	r, _, _ := dLibVersion.Call()
 	return uint32(r)
@@ -295,4 +317,9 @@ func DGetGDKWindowXID(handle uintptr) TXID {
 	var aResult TXID
 	dGetGDKWindowXID.Call(handle, uintptr(unsafe.Pointer(&aResult)))
 	return aResult
+}
+
+// 获取dll库实例，用于在外扩展第三方组件的
+func GetLIbvcl() *dylib.LazyDLL {
+	return libvcl
 }
