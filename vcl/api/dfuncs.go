@@ -73,6 +73,11 @@ func addEventToMap(f interface{}) uintptr {
 	return p
 }
 
+//
+func GetaddEventToMapFn() func(f interface{}) uintptr {
+	return addEventToMap
+}
+
 // 从事件表中查找指定id的函数
 func EventCallbackOf(Id uintptr) (interface{}, bool) {
 	return eventCallbackMap.Load(Id)
