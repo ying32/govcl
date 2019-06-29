@@ -320,6 +320,6 @@ func DGetGDKWindowXID(handle uintptr) TXID {
 }
 
 // 获取dll库实例，用于在外扩展第三方组件的
-func GetLIbvcl() *dylib.LazyDLL {
+func GetLibVcl() *dylib.LazyDLL {
 	return libvcl
 }
