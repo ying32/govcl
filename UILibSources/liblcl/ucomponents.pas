@@ -58,6 +58,7 @@ uses
   ValEdit,
   Gauges,
   Spin,
+  {$I UserDefineComponentUses.inc}
   uMiniWebview;
 
 {$I LazarusExtDef.inc}
@@ -90,12 +91,18 @@ const
     TControlBorderSpacing
   );
 
+procedure AddComponentClass(AClass: TClass);
+begin
+  uClassLists.AddOrSetData(AClass.ClassName, AClass);
+end;
+
 procedure InitClassLists;
 var
   LB: TClass;
 begin
   for LB in ClassRefArrs do
-    uClassLists.AddOrSetData(LB.ClassName, LB);
+    AddComponentClass(LB);
+  {$I UserDefineComponentsClass.inc}
 end;
 
 initialization

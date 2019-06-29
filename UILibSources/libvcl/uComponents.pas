@@ -62,6 +62,7 @@ uses
   Vcl.Taskbar,
   Vcl.Samples.Spin,
   ImageButton,
+  {$I UserDefineComponentUses.inc}
   uMiniWebview;
 
 var
@@ -121,12 +122,18 @@ begin
   end;
 end;
 
+procedure AddComponentClass(AClass: TClass);
+begin
+  uClassLists.AddOrSetValue(AClass.ClassName, AClass);
+end;
+
 procedure InitClassLists;
 var
   LB: TClass;
 begin
   for LB in ClassRefArrs do
-    uClassLists.AddOrSetValue(LB.ClassName, LB);
+    AddComponentClass(LB);
+  {$I UserDefineComponentsClass.inc}
 end;
 
 exports

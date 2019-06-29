@@ -61,6 +61,7 @@ uses
   Vcl.Printers,
   Vcl.Samples.Spin,
   uFormDesignerFile,
+{$I UserDefineComponentUses.inc}
   uEventCallback in 'uEventCallback.pas',
   ufrmGo in 'ufrmGo.pas' {GoForm},
   ImageButton in 'ImageButton.pas',
@@ -223,6 +224,9 @@ uses
 {$I TaskDialogButtonItem.inc}
 {$I TaskDialogRadioButtonItem.inc}
 {$I TaskDialogBaseButtonItem.inc}
+
+// 用户自己定义的组件
+{$I UserDefineComponents.inc}
 
 begin
 end.

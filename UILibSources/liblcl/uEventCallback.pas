@@ -284,6 +284,8 @@ type
     class procedure Remove(AObj: TObject; AEvent: Pointer);
     class procedure ThreadProc;
 
+    // 用户定义事件声明
+    {$I UserDefineEventsDeclaration.inc}
   public
     class property ThreadEvtId: NativeUInt read FThreadEvtId write FThreadEvtId;
   end;
@@ -1216,6 +1218,8 @@ begin
   SendEvent(Sender, @TEventClass.UpDownOnClick, [Sender, Ord(Button)]);
 end;
 
+// 用户定义事件实现引入
+{$I UserDefineEventsImplement.inc}
 
 { TMessageEventClass }
 

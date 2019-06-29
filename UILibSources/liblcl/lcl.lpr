@@ -77,6 +77,7 @@ uses
   fgl,
   Printers,
   uFormDesignerFile,
+{$I UserDefineComponentUses.inc}
   uLinkLabel in 'uLinkLabel.pas',
   uEventCallback in 'uEventCallback.pas',
   ImageButton in 'ImageButton.pas',
@@ -219,6 +220,9 @@ uses
 {$I MyLCL_TaskDialogButtonItem.inc}
 {$I MyLCL_TaskDialogRadioButtonItem.inc}
 {$I MyLCL_TaskDialogBaseButtonItem.inc}
+
+// 用户自己定义的组件
+{$I UserDefineComponents.inc}
 
 begin
   InitLazarusDef;

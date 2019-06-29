@@ -285,6 +285,9 @@ type
 
     class function HookApplicationMessage(var Msg: TMessage): Boolean;
     class procedure ThreadProc;
+
+    // 用户定义事件声明
+    {$I UserDefineEventsDeclaration.inc}
   end;
 
   // 窗口消息的，不与之前的事件混在一起。 
@@ -1283,6 +1286,9 @@ class procedure TEventClass.UpDownOnClick(Sender: TObject; Button: TUDBtnType);
 begin
   SendEvent(Sender, @TEventClass.UpDownOnClick, [Sender, Ord(Button)]);
 end;
+
+// 用户定义事件实现引入
+{$I UserDefineEventsImplement.inc}
 
 { TEventKey }
 
