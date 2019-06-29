@@ -56,8 +56,8 @@ func ThreadSync(fn TThreadProc) {
 	api.DSynchronize(fn, 1)
 }
 
-// ThreadSyncVCL 主线程中执行，第二个参数决定是否使用Delphi自带的，此也只对libvcl生效，1使用消息，0使用Delphi自带的线程同步方法。
-func ThreadSyncVCL(fn TThreadProc) {
+// ThreadSyncVcl 主线程中执行，第二个参数决定是否使用Delphi自带的，此也只对libvcl生效，1使用消息，0使用Delphi自带的线程同步方法。
+func ThreadSyncVcl(fn TThreadProc) {
 	api.DSynchronize(fn, 0)
 }
 
