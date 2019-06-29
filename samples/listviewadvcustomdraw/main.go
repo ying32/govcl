@@ -115,7 +115,7 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 
 }
 
-func (f *TMainFrom) OnFormDestory(sender vcl.IObject) {
+func (f *TMainFrom) OnFormDestroy(sender vcl.IObject) {
 	if f.tempIco != nil {
 		f.tempIco.Free()
 	}
