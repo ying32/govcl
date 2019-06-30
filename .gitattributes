@@ -1,1 +1,2 @@
-﻿*.pas linguist-language=go
+*.pas linguist-language=go
+*.inc linguist-language=go
