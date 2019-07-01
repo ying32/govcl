@@ -1,6 +1,6 @@
 
 //----------------------------------------
-// 代码由GenlibVcl工具自动生成。
+// 代码由GenlibVcl子工具GenCode自动生成。
 // Copyright © ying32. All Rights Reserved.
 //
 //----------------------------------------
@@ -430,46 +430,6 @@ begin
   TEventClass.Add(AObj, @TEventClass.OnExit, AEventId);
 end;
 
-function MsRdpClient9NotSafeForScripting_GetServer(AObj: TMsRdpClient9NotSafeForScripting): PChar; stdcall;
-begin
-  Result :=  PChar(AObj.Server);
-end;
-
-procedure MsRdpClient9NotSafeForScripting_SetServer(AObj: TMsRdpClient9NotSafeForScripting; AValue: PChar); stdcall;
-begin
-  AObj.Server := AValue;
-end;
-
-function MsRdpClient9NotSafeForScripting_GetUserName(AObj: TMsRdpClient9NotSafeForScripting): PChar; stdcall;
-begin
-  Result :=  PChar(AObj.UserName);
-end;
-
-procedure MsRdpClient9NotSafeForScripting_SetUserName(AObj: TMsRdpClient9NotSafeForScripting; AValue: PChar); stdcall;
-begin
-  AObj.UserName := AValue;
-end;
-
-function MsRdpClient9NotSafeForScripting_GetDisconnectedText(AObj: TMsRdpClient9NotSafeForScripting): PChar; stdcall;
-begin
-  Result :=  PChar(AObj.DisconnectedText);
-end;
-
-procedure MsRdpClient9NotSafeForScripting_SetDisconnectedText(AObj: TMsRdpClient9NotSafeForScripting; AValue: PChar); stdcall;
-begin
-  AObj.DisconnectedText := AValue;
-end;
-
-function MsRdpClient9NotSafeForScripting_GetConnectingText(AObj: TMsRdpClient9NotSafeForScripting): PChar; stdcall;
-begin
-  Result :=  PChar(AObj.ConnectingText);
-end;
-
-procedure MsRdpClient9NotSafeForScripting_SetConnectingText(AObj: TMsRdpClient9NotSafeForScripting; AValue: PChar); stdcall;
-begin
-  AObj.ConnectingText := AValue;
-end;
-
 function MsRdpClient9NotSafeForScripting_GetDesktopWidth(AObj: TMsRdpClient9NotSafeForScripting): Integer; stdcall;
 begin
   Result :=  AObj.DesktopWidth;
@@ -490,16 +450,6 @@ begin
   AObj.DesktopHeight := AValue;
 end;
 
-function MsRdpClient9NotSafeForScripting_GetStartConnected(AObj: TMsRdpClient9NotSafeForScripting): Integer; stdcall;
-begin
-  Result :=  AObj.StartConnected;
-end;
-
-procedure MsRdpClient9NotSafeForScripting_SetStartConnected(AObj: TMsRdpClient9NotSafeForScripting; AValue: Integer); stdcall;
-begin
-  AObj.StartConnected := AValue;
-end;
-
 function MsRdpClient9NotSafeForScripting_GetColorDepth(AObj: TMsRdpClient9NotSafeForScripting): Integer; stdcall;
 begin
   Result :=  AObj.ColorDepth;
@@ -518,6 +468,18 @@ end;
 procedure MsRdpClient9NotSafeForScripting_SetFullScreen(AObj: TMsRdpClient9NotSafeForScripting; AValue: LongBool); stdcall;
 begin
   AObj.FullScreen := AValue;
+end;
+
+procedure MsRdpClient9NotSafeForScripting_SetOnDisconnected(AObj: TMsRdpClient9NotSafeForScripting; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDisconnected := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnDisconnected);
+    Exit;
+  end;
+  AObj.OnDisconnected := TEventClass.OnDisconnected;
+  TEventClass.Add(AObj, @TEventClass.OnDisconnected, AEventId);
 end;
 
 function MsRdpClient9NotSafeForScripting_GetDockClientCount(AObj: TMsRdpClient9NotSafeForScripting): Integer; stdcall;
@@ -981,24 +943,15 @@ exports
   MsRdpClient9NotSafeForScripting_SetOnEndDrag,
   MsRdpClient9NotSafeForScripting_SetOnEnter,
   MsRdpClient9NotSafeForScripting_SetOnExit,
-  MsRdpClient9NotSafeForScripting_GetServer,
-  MsRdpClient9NotSafeForScripting_SetServer,
-  MsRdpClient9NotSafeForScripting_GetUserName,
-  MsRdpClient9NotSafeForScripting_SetUserName,
-  MsRdpClient9NotSafeForScripting_GetDisconnectedText,
-  MsRdpClient9NotSafeForScripting_SetDisconnectedText,
-  MsRdpClient9NotSafeForScripting_GetConnectingText,
-  MsRdpClient9NotSafeForScripting_SetConnectingText,
   MsRdpClient9NotSafeForScripting_GetDesktopWidth,
   MsRdpClient9NotSafeForScripting_SetDesktopWidth,
   MsRdpClient9NotSafeForScripting_GetDesktopHeight,
   MsRdpClient9NotSafeForScripting_SetDesktopHeight,
-  MsRdpClient9NotSafeForScripting_GetStartConnected,
-  MsRdpClient9NotSafeForScripting_SetStartConnected,
   MsRdpClient9NotSafeForScripting_GetColorDepth,
   MsRdpClient9NotSafeForScripting_SetColorDepth,
   MsRdpClient9NotSafeForScripting_GetFullScreen,
   MsRdpClient9NotSafeForScripting_SetFullScreen,
+  MsRdpClient9NotSafeForScripting_SetOnDisconnected,
   MsRdpClient9NotSafeForScripting_GetDockClientCount,
   MsRdpClient9NotSafeForScripting_GetDockSite,
   MsRdpClient9NotSafeForScripting_SetDockSite,

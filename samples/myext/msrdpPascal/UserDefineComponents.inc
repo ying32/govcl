@@ -1,0 +1,7 @@
+﻿// 在这里引入你的组件inc文件。
+// 比如：
+// {$I MsRdpClient9NotSafeForScripting.inc}
+// ...
+// ...
+
+{$I MsRdpClient9NotSafeForScripting.inc}

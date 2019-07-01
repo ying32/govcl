@@ -1,5 +1,5 @@
 //----------------------------------------
-// 代码由GenlibVcl工具自动生成。
+// 代码由GenlibVcl子工具GenCode自动生成。
 // Copyright © ying32. All Rights Reserved.
 //
 //----------------------------------------
@@ -617,46 +617,6 @@ func (m *TMsRdpClient9NotSafeForScripting) SetOnExit(fn TNotifyEvent) {
 	MsRdpClient9NotSafeForScripting_SetOnExit(m.instance, fn)
 }
 
-// Server
-func (m *TMsRdpClient9NotSafeForScripting) Server() string {
-	return MsRdpClient9NotSafeForScripting_GetServer(m.instance)
-}
-
-// SetServer
-func (m *TMsRdpClient9NotSafeForScripting) SetServer(value string) {
-	MsRdpClient9NotSafeForScripting_SetServer(m.instance, value)
-}
-
-// UserName
-func (m *TMsRdpClient9NotSafeForScripting) UserName() string {
-	return MsRdpClient9NotSafeForScripting_GetUserName(m.instance)
-}
-
-// SetUserName
-func (m *TMsRdpClient9NotSafeForScripting) SetUserName(value string) {
-	MsRdpClient9NotSafeForScripting_SetUserName(m.instance, value)
-}
-
-// DisconnectedText
-func (m *TMsRdpClient9NotSafeForScripting) DisconnectedText() string {
-	return MsRdpClient9NotSafeForScripting_GetDisconnectedText(m.instance)
-}
-
-// SetDisconnectedText
-func (m *TMsRdpClient9NotSafeForScripting) SetDisconnectedText(value string) {
-	MsRdpClient9NotSafeForScripting_SetDisconnectedText(m.instance, value)
-}
-
-// ConnectingText
-func (m *TMsRdpClient9NotSafeForScripting) ConnectingText() string {
-	return MsRdpClient9NotSafeForScripting_GetConnectingText(m.instance)
-}
-
-// SetConnectingText
-func (m *TMsRdpClient9NotSafeForScripting) SetConnectingText(value string) {
-	MsRdpClient9NotSafeForScripting_SetConnectingText(m.instance, value)
-}
-
 // DesktopWidth
 func (m *TMsRdpClient9NotSafeForScripting) DesktopWidth() int32 {
 	return MsRdpClient9NotSafeForScripting_GetDesktopWidth(m.instance)
@@ -677,16 +637,6 @@ func (m *TMsRdpClient9NotSafeForScripting) SetDesktopHeight(value int32) {
 	MsRdpClient9NotSafeForScripting_SetDesktopHeight(m.instance, value)
 }
 
-// StartConnected
-func (m *TMsRdpClient9NotSafeForScripting) StartConnected() int32 {
-	return MsRdpClient9NotSafeForScripting_GetStartConnected(m.instance)
-}
-
-// SetStartConnected
-func (m *TMsRdpClient9NotSafeForScripting) SetStartConnected(value int32) {
-	MsRdpClient9NotSafeForScripting_SetStartConnected(m.instance, value)
-}
-
 // ColorDepth
 func (m *TMsRdpClient9NotSafeForScripting) ColorDepth() int32 {
 	return MsRdpClient9NotSafeForScripting_GetColorDepth(m.instance)
@@ -705,6 +655,11 @@ func (m *TMsRdpClient9NotSafeForScripting) FullScreen() bool {
 // SetFullScreen
 func (m *TMsRdpClient9NotSafeForScripting) SetFullScreen(value bool) {
 	MsRdpClient9NotSafeForScripting_SetFullScreen(m.instance, value)
+}
+
+// SetOnDisconnected
+func (m *TMsRdpClient9NotSafeForScripting) SetOnDisconnected(fn TMsRdpClient9NotSafeForScriptingOnDisconnected) {
+	MsRdpClient9NotSafeForScripting_SetOnDisconnected(m.instance, fn)
 }
 
 // DockClientCount
