@@ -2,9 +2,11 @@
 
 如果需要使用则需要自己简单维护一套libvcl或者liblcl。   
 
-**组件生产工具请加入QQ群后，在群文件中获取。**    
-
 目前govcl中提供了一项在不修改原govcl和libvcl/liblcl代码的情况下扩展自己的组件。  
+
+[查看演示例子](https://gitee.com/ying32/govcl/tree/master/samples/myext)    
+
+**组件生产工具请加入QQ群后，在群文件中获取。**  
 
 使用方法：  
 
@@ -91,6 +93,49 @@ var (
 ```  
 
 7、编写导入的实现方法，如：`importFuncsAuto.go`  
+```go
+
+package msrdp
+
+import (
+    "unsafe"
+    . "github.com/ying32/govcl/vcl/types"
+    . "github.com/ying32/govcl/vcl/api"
+)
+
+
+//--------------------------- TMsRdpClient9NotSafeForScripting ---------------------------
+
+func MsRdpClient9NotSafeForScripting_Create(obj uintptr) uintptr {
+    ret, _, _ := msRdpClient9NotSafeForScripting_Create.Call(obj)
+    return ret
+}
+
+func MsRdpClient9NotSafeForScripting_Free(obj uintptr) {
+    msRdpClient9NotSafeForScripting_Free.Call(obj)
+}
+
+func MsRdpClient9NotSafeForScripting_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    msRdpClient9NotSafeForScripting_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func MsRdpClient9NotSafeForScripting_CanFocus(obj uintptr) bool {
+    ret, _, _ := msRdpClient9NotSafeForScripting_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MsRdpClient9NotSafeForScripting_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := msRdpClient9NotSafeForScripting_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func MsRdpClient9NotSafeForScripting_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := msRdpClient9NotSafeForScripting_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+```
+
+8、生成一个伪类，如：`msrdpclient9notsafeforscripting.go`  
 ```go
 package msrdp
 
@@ -227,7 +272,7 @@ func (m *TMsRdpClient9NotSafeForScripting) Realign() {
 ### pascal代码部分  
 ----
 
-**注：libvcl导出函数调用约定为`stdcall`，而liblcl中则为`extdecl`，`extdecl`实际为一个宏指定义，当为Windows时使用`stdcall`当为Linux或者macOS时使用`cdecl`。**  
+**注：libvcl导出函数调用约定为`stdcall`，而liblcl中则为`extdecl`，`extdecl`实际为一个宏定义，当为Windows时使用`stdcall`当为Linux或者macOS时使用`cdecl`。**  
 
 *pascal部分一共有5个默认的inc文件，以UserDefine开头，分别为：*  
 
