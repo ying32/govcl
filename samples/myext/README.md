@@ -1,6 +1,6 @@
 这里只是演示使用方法，实际上此包无效。
 
-如果需要使用则需要自己维一套libvcl或者liblcl。  
+如果需要使用则需要自己简单维护一套libvcl或者liblcl。  
 
 
 目前govcl中提供了一项在不修改原govcl和libvcl/liblcl代码的情况下扩展自己的组件。  
@@ -26,7 +26,7 @@ func init() {
 ``` 
 
 3、在msrdp目录下新建一个callback.go文件，并写入： 
-```
+```go
 package msrdp
 
 import "github.com/ying32/govcl/vcl"
