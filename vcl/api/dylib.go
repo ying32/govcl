@@ -80,7 +80,7 @@ func loadUILib() *dylib.LazyDLL {
 	// 这样做主要为以后考虑，对于某些人来说怕什么的来说，可以使用非Delphi的组件
 	err := lib.Load()
 	if err != nil && runtime.GOOS == "windows" && (libName == libvcldll || libName == libvclx64dll) {
-		fmt.Println(fmt.Sprintf("\"%s\" does not exist, trying to load liblcl.dll.", libName))
+		fmt.Println(fmt.Sprintf("\"%s\"不存在，尝试加载“liblcl.dll”。\r\n(\"%s\" does not exist, trying to load \"liblcl.dll\".)", libName, libName))
 		lib = dylib.NewLazyDLL(liblcldll)
 		IsloadedLcl = true
 	}

@@ -1,6 +1,10 @@
 package vcl
 
-import . "github.com/ying32/govcl/vcl/win"
+import (
+	"fmt"
+
+	. "github.com/ying32/govcl/vcl/win"
+)
 
 var (
 	// StyleManager 没有实例类的，属于静态类
@@ -8,7 +12,7 @@ var (
 )
 
 func showError(err interface{}) {
-	MessageBox(0, err.(error).Error(), "Error", MB_ICONERROR)
+	MessageBox(0, fmt.Sprint(err), "Error", MB_ICONERROR)
 }
 
 // 尝试加载默认Application icon

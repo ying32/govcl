@@ -10,11 +10,6 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-type TGoParam struct {
-	Type  uint8
-	Value uintptr
-}
-
 var (
 	// 事件回调查找表
 	eventCallbackMap sync.Map
@@ -118,13 +113,6 @@ func SetMessageCallback(ptr uintptr) {
 // 设置线程同步事件回调函数指针
 func SetThreadSyncCallback(ptr uintptr) {
 	setThreadSyncCallback.Call(ptr)
-}
-
-// 从指定索引和地址获取事件中的参数
-func DGetParam(index int, ptr uintptr) TGoParam {
-	p := TGoParam{}
-	dGetParam.Call(uintptr(index), ptr, uintptr(unsafe.Pointer(&p)))
-	return p
 }
 
 // 从Delphi/Lazarus字符串数组中获取指定索引的值

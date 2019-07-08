@@ -188,7 +188,7 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method reflect.Val
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
 		event.Call([]reflect.Value{method})
 	} else {
-		fmt.Printf("\"%s\" does not support the \"%s\" event.\n", name, eventType)
+		fmt.Printf("\"%s\"不支持\"%s\"事件。\r\n(\"%s\" does not support the \"%s\" event.)\n", name, eventType, name, eventType)
 	}
 }
 

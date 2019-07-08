@@ -21,13 +21,19 @@ func RegisterExtEventCallback(callback TExtEventCallback) {
 	extEventCallback = append(extEventCallback, callback)
 }
 
+// getParam 从指定索引和地址获取事件中的参数
+// 不再使用Delphi导出的了，直接在这处理
+func getParamOf(index int, ptr uintptr) uintptr {
+	return *(*uintptr)(unsafe.Pointer(ptr + uintptr(index)*unsafe.Sizeof(ptr)))
+}
+
 // 回调过程
 func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 	v, ok := EventCallbackOf(f)
 	if ok {
 
 		getVal := func(i int) uintptr {
-			return DGetParam(i, args).Value
+			return getParamOf(i, args)
 		}
 
 		// 调用外部注册的事件回调过程
