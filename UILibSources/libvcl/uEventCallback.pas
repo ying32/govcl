@@ -30,7 +30,10 @@ uses
   System.Generics.Collections;
 
 const
+  // 线程同步消息
   THREAD_SYNC_MESSAGE = WM_USER + $9090;
+  // call最长参数数，与导出的MySyscall一致，暂定为12个
+  CALL_MAX_PARAM = 12;
 
 var
   GEventCallbackPtr: function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; stdcall;
@@ -38,11 +41,11 @@ var
   GThreadSyncCallbackPtr: function: Pointer; stdcall;
 
 type
-  TGoParam = record
-    &Type: Byte;
-    Value: Pointer;
-  end;
-  PGoParam = ^TGoParam;
+//  TGoParam = record
+//    &Type: Byte;
+//    Value: Pointer;
+//  end;
+//  PGoParam = ^TGoParam;
 
   TEventKey = packed record
     Sender: TObject;
@@ -1176,7 +1179,7 @@ class procedure TEventClass.SendEvent(Sender: TObject; AEvent: Pointer; AArgs: a
 
   procedure SendEventSrc(EventId: NativeUInt; AArgs: array of const);
   var
-    LParams: array[0..29] of TGoParam;
+    LParams: array[0..CALL_MAX_PARAM-1] of Pointer;
     LArgLen: Integer;
     LV: TVarRec;
     I: Integer;
@@ -1189,28 +1192,27 @@ class procedure TEventClass.SendEvent(Sender: TObject; AEvent: Pointer; AArgs: a
         for I := 0 to LArgLen - 1 do
         begin
           LV := AArgs[I];
-          LParams[I].&Type := LV.VType;
           case LV.VType of
-            vtInteger       : LParams[I].Value := Pointer(LV.VInteger);
-            vtBoolean       : LParams[I].Value := Pointer(Byte(LV.VBoolean));
+            vtInteger       : LParams[I] := Pointer(LV.VInteger);
+            vtBoolean       : LParams[I] := Pointer(Byte(LV.VBoolean));
   //          vtChar          = 2;
-            vtExtended      : LParams[I].Value := LV.VExtended;
+            vtExtended      : LParams[I] := LV.VExtended;
 
-            vtString        : LParams[I].Value := {$IFDEF MSWINDOWS}LV.VString{$ELSE}LV.VAnsiString{$ENDIF};
+            vtString        : LParams[I] := {$IFDEF MSWINDOWS}LV.VString{$ELSE}LV.VAnsiString{$ENDIF};
 
-            vtPointer       : LParams[I].Value := LV.VPointer;
-            vtPChar         : LParams[I].Value := LV.VPChar;
-            vtObject        : LParams[I].Value := LV.VObject;
-            vtClass         : LParams[I].Value := LV.VClass;
-            vtWideChar      : LParams[I].Value := Pointer(Ord(LV.VWideChar));
-            vtPWideChar     : LParams[I].Value := LV.VPWideChar;
-            vtAnsiString    : LParams[I].Value := LV.VAnsiString;
+            vtPointer       : LParams[I] := LV.VPointer;
+            vtPChar         : LParams[I] := LV.VPChar;
+            vtObject        : LParams[I] := LV.VObject;
+            vtClass         : LParams[I] := LV.VClass;
+            vtWideChar      : LParams[I] := Pointer(Ord(LV.VWideChar));
+            vtPWideChar     : LParams[I] := LV.VPWideChar;
+            vtAnsiString    : LParams[I] := LV.VAnsiString;
   //          vtCurrency      = 12;
   //          vtVariant       = 13;
-            vtInterface     : LParams[I].Value := LV.VInterface;
-            vtWideString    : LParams[I].Value := LV.VWideString;
-            vtInt64         : LParams[I].Value := LV.VInt64;
-            vtUnicodeString : LParams[I].Value := LV.VUnicodeString;
+            vtInterface     : LParams[I] := LV.VInterface;
+            vtWideString    : LParams[I] := LV.VWideString;
+            vtInt64         : LParams[I] := LV.VInt64;
+            vtUnicodeString : LParams[I] := LV.VUnicodeString;
           end;
         end;
         GEventCallbackPtr(EventId, @LParams[0], LArgLen);

@@ -28,7 +28,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $01020500;
+  Result := $01020600;
 end;
 
 // 一些初始
@@ -493,12 +493,6 @@ begin
   GThreadSyncCallbackPtr := APtr;
 end;
 
-
-procedure DGetParam(Index: NativeInt; AArr: Pointer; out P: TGoParam); extdecl;
-begin
-  P := PGoParam(PByte(AArr) + Index * SizeOf(TGoParam))^;
-end;
-
 // 从string数组中获取成员
 function DGetStringArrOf(P: Pointer; AIndex: NativeInt): PChar; extdecl;
 begin
@@ -932,7 +926,6 @@ exports
   SetMessageCallback,
   SetThreadSyncCallback,
 
-  DGetParam,
   DGetStringArrOf,
   DStrLen,
   DMove,
