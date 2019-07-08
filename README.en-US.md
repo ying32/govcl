@@ -31,6 +31,9 @@ res2go Tool
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.15-blue.svg)](Tools/res2go)  
 **Note: Designed in Delphi/Lazarus, code written in Golang.**  
 
+[govcl extension package](https://github.com/ying32/exts)  
+**Note: The inc or pas file in the extension package needs to be compiled into the libvcl/liblcl directory.**    
+
 ### usage: 
 
 #### Step 1: Get the govcl code  

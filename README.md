@@ -30,7 +30,10 @@
 
 res2go工具下载  
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.15-blue.svg)](Tools/res2go)  
-**注：用Delphi/Lazarus设计界面，用Golang写代码。**    
+**注：用Delphi/Lazarus设计界面，用Golang写代码。**     
+  
+[govcl扩展包](https://github.com/ying32/exts)  
+**注：扩展包里面的inc或者pas文件需要自己放到libvcl/liblcl目录下编译。**    
 
 ---
 ### 使用方法  
