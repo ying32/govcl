@@ -87,3 +87,4 @@ __recovery/
 /samples/miniblinkWebview/LocalStorage/https_www.baidu.com.localstorage
 /samples/miniblinkWebview/cookies.dat
 /samples/wkeWebBrowser/wke.dll.mblink
+/samples/opengl
