@@ -5,8 +5,6 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/ying32/govcl/vcl/dylib"
-
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -310,9 +308,4 @@ func DGetGDKWindowXID(handle uintptr) TXID {
 	var aResult TXID
 	dGetGDKWindowXID.Call(handle, uintptr(unsafe.Pointer(&aResult)))
 	return aResult
-}
-
-// 获取dll库实例，用于在外扩展第三方组件的
-func GetLibVcl() *dylib.LazyDLL {
-	return libvcl
 }
