@@ -5,7 +5,7 @@
 ```
 1 MANIFEST "exe.manifest"
 MAINICON ICON "icon.ico"
-LIBVCL RCDATA "libvcl.dll"
+GOVCLLIB RCDATA "libvcl.dll"
 ```
 
 ### 资源编译 buildRes.bat
