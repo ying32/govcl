@@ -42,3 +42,10 @@ func callLibStringEncoding(lib *memorydll.LazyDLL) types.TStringEncoding {
 func GetLibVcl() *memorydll.LazyDLL {
 	return libvcl
 }
+
+// 释放内存，Memory DLL的最好调用下
+func FeeMemoryDLL() {
+	if libvcl != nil {
+		libvcl.Close()
+	}
+}
