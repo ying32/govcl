@@ -84,7 +84,7 @@ __recovery/
 /samples/cef3browser
 /samples/ipscanner
 /samples/libcefext_x64_test.rar
-/samples/miniblinkWebview/LocalStorage/https_www.baidu.com.localstorage
+/samples/miniblinkWebview/LocalStorage
 /samples/miniblinkWebview/cookies.dat
 /samples/wkeWebBrowser/wke.dll.mblink
 /samples/opengl
