@@ -10,7 +10,7 @@ import (
 // 外部回调事件
 // 参数一：函数地址
 // 参数二：获取参数值的函数
-// 返回值：如果为true则终于事件传递，如果为false则继续向后转发事件。
+// 返回值：如果为true则终止事件传递，如果为false则继续向后转发事件。
 type TExtEventCallback func(fn interface{}, getVal func(idx int) uintptr) bool
 
 // 外部扩展的事件回调，先不管重复注册的问题
