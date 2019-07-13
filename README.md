@@ -212,6 +212,8 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ----
 
+**特别注意：所有UI组件都是非线程/协程安全的，当在goroutine中使用时，请使用`vcl.ThreadSync`来同步更新到UI上。**  
+
 
 ### API文档
 

@@ -203,6 +203,10 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 **When using the "liblcl" library, it is run in a compatible "libvcl" library, so some methods and properties of components and components are not available.**  
 
+---   
+
+**Special Note: All UI components are non-threaded/non-coroutine safe. When used in goroutine, use `vcl.ThreadSync` to synchronize updates to the UI.**
+
 ---
 
 ### FAQ
