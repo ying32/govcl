@@ -46,7 +46,6 @@ func loadUILib() *dylib.LazyDLL {
 		} else {
 			libName = libvcldll
 		}
-
 		// 如果exe目录下存在libvclx64.dll且为x64系统
 		if runtime.GOARCH == "amd64" && windowsDLLExists(libvclx64dll) {
 			libName = libvclx64dll
@@ -58,17 +57,11 @@ func loadUILib() *dylib.LazyDLL {
 		// 如果当下目录存在liblcl则加载
 		if windowsDLLExists(liblcldll) {
 			libName = liblcldll
-			IsloadedLcl = true
 		}
-
 	case "linux":
 		libName = liblclso
-		IsloadedLcl = true
-
 	case "darwin":
 		libName = liblcldylib
-		IsloadedLcl = true
-
 	}
 	fmt.Println("LoadLibrary:", libName)
 	lib := dylib.NewLazyDLL(libName)
@@ -78,9 +71,18 @@ func loadUILib() *dylib.LazyDLL {
 	if err != nil && runtime.GOOS == "windows" && (libName == libvcldll || libName == libvclx64dll) {
 		fmt.Println(fmt.Sprintf("\"%s\"不存在，尝试加载“liblcl.dll”。\r\n(\"%s\" does not exist, trying to load \"liblcl.dll\".)", libName, libName))
 		lib = dylib.NewLazyDLL(liblcldll)
-		IsloadedLcl = true
 	}
+
+	IsloadedLcl = getLibType(lib) == LtLCL
+	fmt.Println("IsloadedLcl:", IsloadedLcl)
+
 	return lib
+}
+
+func getLibType(lib *dylib.LazyDLL) TLibType {
+	proc := lib.NewProc("DGetLibType")
+	r, _, _ := proc.Call()
+	return TLibType(r)
 }
 
 // 获取dll库实例，用于在外扩展第三方组件的。移动来自dfuncs.go

@@ -11,8 +11,6 @@ package api
 import (
 	"fmt"
 
-	"github.com/ying32/govcl/vcl/types"
-
 	"github.com/ying32/govcl/vcl/dylib/memorydll"
 	"github.com/ying32/govcl/vcl/win"
 )
@@ -28,14 +26,15 @@ func loadUILib() *memorydll.LazyDLL {
 		fmt.Println(fmt.Sprintf("无法加载dll，未知原因。\r\n(Unable to load dll, unknown reason.)"))
 		return nil
 	}
-	IsloadedLcl = callLibStringEncoding(lib) == types.SeUTF8
+	IsloadedLcl = getLibType(lib) == LtLCL
+	fmt.Println("IsloadedLcl:", IsloadedLcl)
 	return lib
 }
 
-func callLibStringEncoding(lib *memorydll.LazyDLL) types.TStringEncoding {
-	proc := lib.NewProc("DLibStringEncoding")
+func getLibType(lib *memorydll.LazyDLL) TLibType {
+	proc := lib.NewProc("DGetLibType")
 	r, _, _ := proc.Call()
-	return types.TStringEncoding(r)
+	return TLibType(r)
 }
 
 // 获取dll库实例，用于在外扩展第三方组件的。移动来自dfuncs.go
