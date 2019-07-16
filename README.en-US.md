@@ -23,7 +23,7 @@
 
 
 Pre-compiled GUI library binary download     
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.6-beta.1.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.6-beta.1/Librarys-1.2.6-dev.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.6-beta.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.6-beta.2/Librarys-1.2.6-beta.2.zip)  
 **Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.en-US.md).**  
 
 
