@@ -52,7 +52,7 @@ end;
 function DLibVersion: Cardinal; stdcall;
 begin
   // 共8位，2位2位的
-  Result := $01020600;
+  Result := $01020602;
 end;
 
 // TApplication
@@ -863,7 +863,12 @@ end;
 //begin
 //  Result := SetPrinter(NewPrinter);
 //end;
+type TLibType = (ltVCL, ltLCL);
 
+function DGetLibType: TLibType; stdcall;
+begin
+  Result := ltVCL;
+end;
 
 
 // dylib
@@ -1052,6 +1057,8 @@ exports
   // libResouces
   DGetLibResouceCount,
   DGetLibResouceItem,
-  DModifyLibResouce
+  DModifyLibResouce,
+
+  DGetLibType
 
   ;

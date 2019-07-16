@@ -28,7 +28,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $01020600;
+  Result := $01020602;
 end;
 
 // 一些初始
@@ -825,6 +825,14 @@ begin
 end;
 {$ENDIF}
 
+type TLibType = (ltVCL, ltLCL);
+
+function DGetLibType: TLibType; extdecl;
+begin
+  Result := ltLCL;
+end;
+
+
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -1013,5 +1021,6 @@ exports
 
 {$IFDEF LCLGTK2}
   ,GetGDKWindowXID
-{$ENDIF}
+{$ENDIF},
+  DGetLibType
 ;
