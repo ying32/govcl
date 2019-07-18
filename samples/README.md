@@ -44,12 +44,12 @@
 | printer | 打印机操作 | |  
 | registry | windows注册表演示  | Windows |
 | res2goTest | res2go 工具测试例程 | |  
-| richedit | windows富文本框演示  | Windows |
+| richedit | windows富文本框演示  | Windows,libvcl |
 | rproxy | 简单的反向代理用于内网穿透，支持HTTP/HTTPS转发 | |  
 | shortcut | 创建快捷方式相关 | Windows | 
 | simpleIM | 简单的群聊，基于TCP    |  |
 | simplelibvlc | 基于libvlc库的播放器，主要测试可行性 |  |  
-| SkinsharpTest | skinsharp第三方皮肤演示 | Windows,32bit |
+| SkinsharpTest | skinsharp第三方皮肤演示(不咋好使，特别是在liblcl中) | Windows,32bit |
 | statusbar | 状态条演示  | |
 | stdcontrols | 标准控件示例  | |
 | style | windows下delphi样式演示  | Windows,libvcl |
@@ -58,13 +58,14 @@
 | taskdialog | 任务对话框 | |
 | trayicon | 系统拖盘图标演示  | Windows  MacOS |
 | treeview |  树型列表框演示  | |
-| treeview_checkbox |  树型列表框 + 复选框 演示  | windows |
+| treeview_checkbox |  树型列表框 + 复选框 演示  | windows,libvcl |
+| valuelisteditor |  键值编辑器 | |
 | virtuallistview | 虚拟试TListView，用于大数据显示 |   |
 | WindowsMessages | Windows下消息捕获    | Windows |
 | WindowsProcess | Windows进程列表    | Windows |
 | windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
 | WindowsTest | Windows下的一些测试    | Windows |
-| wingif | windows下gif图片播放演示  | 部分限Windows |
+| wingif | windows下gif图片播放演示  | 动画部分仅限Windows |
 | winole | 使用go-ole库操作ole | Windows | 
 | winTaskbar | windows任务栏相关，只支持libvcl，win7+ | Windows,libvcl,win7+  |
 | winJumpList | windows任务栏，跳转列表，只支持libvcl，win7+ | Windows,libvcl,win7+  |  
