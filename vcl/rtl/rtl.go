@@ -147,3 +147,28 @@ func LibVersion() uint32 {
 func GetGDKWindowXID(handle types.HWND) types.TXID {
 	return api.DGetGDKWindowXID(handle)
 }
+
+func ShiftStateToWord(shift types.TShiftState) uint32 {
+	// 这里不直接使用win包的常量，是考虑要跨平台使用
+	const (
+		MOD_ALT      = 1
+		MOD_CONTROL  = 2
+		MOD_SHIFT    = 4
+		MOD_WIN      = 8
+		MOD_NOREPEAT = 0x4000
+	)
+	var result uint32
+	if InSets(shift, types.SsShift) {
+		result += MOD_SHIFT
+	}
+	if InSets(shift, types.SsCtrl) {
+		result += MOD_CONTROL
+	}
+	if InSets(shift, types.SsAlt) {
+		result += MOD_ALT
+	}
+	if InSets(shift, types.SsCommand) {
+		result += MOD_WIN
+	}
+	return result
+}
