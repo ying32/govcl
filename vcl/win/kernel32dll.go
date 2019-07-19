@@ -68,6 +68,9 @@ var (
 	_LockResource   = kernel32dll.NewProc("LockResource")
 	_SizeofResource = kernel32dll.NewProc("SizeofResource")
 	_FreeResource   = kernel32dll.NewProc("FreeResource")
+
+	_GlobalAddAtom    = kernel32dll.NewProc("GlobalAddAtomW")
+	_GlobalDeleteAtom = kernel32dll.NewProc("GlobalDeleteAtom")
 )
 
 // GetLastError
@@ -322,4 +325,14 @@ func SizeofResource(hModule uintptr, hResInfo HRSRC) uint32 {
 func FreeResource(hResData HGLOBAL) bool {
 	r, _, _ := _FreeResource.Call(uintptr(hResData))
 	return r != 0
+}
+
+func GlobalAddAtom(lpString string) ATOM {
+	r, _, _ := _GlobalAddAtom.Call(CStr(lpString))
+	return ATOM(r)
+}
+
+func GlobalDeleteAtom(nAtom ATOM) ATOM {
+	r, _, _ := _GlobalDeleteAtom.Call(uintptr(nAtom))
+	return ATOM(r)
 }

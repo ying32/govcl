@@ -85,6 +85,9 @@ var (
 
 	_EnumWindows      = user32dll.NewProc("EnumWindows")
 	_EnumChildWindows = user32dll.NewProc("EnumChildWindows")
+
+	_UnregisterHotKey = user32dll.NewProc("UnregisterHotKey")
+	_RegisterHotKey   = user32dll.NewProc("RegisterHotKey")
 )
 
 // MessageBox 消息框
@@ -485,5 +488,15 @@ func EnumWindows(lpEnumFunc TFNWndEnumProc, lParam uintptr) bool {
 
 func EnumChildWindows(hWndParent HWND, lpEnumFunc TFNWndEnumProc, lParam uintptr) bool {
 	r, _, _ := _EnumChildWindows.Call(uintptr(hWndParent), uintptr(lpEnumFunc), lParam)
+	return r != 0
+}
+
+func UnregisterHotKey(hWnd HWND, id int32) bool {
+	r, _, _ := _UnregisterHotKey.Call(uintptr(hWnd), uintptr(id))
+	return r != 0
+}
+
+func RegisterHotKey(hWnd HWND, id int32, fsModifiers, vk uint32) bool {
+	r, _, _ := _RegisterHotKey.Call(uintptr(hWnd), uintptr(id), uintptr(fsModifiers), uintptr(vk))
 	return r != 0
 }

@@ -785,3 +785,11 @@ const (
 	GM_ADVANCED   = 2
 	GM_LAST       = 2
 )
+
+const (
+	MOD_ALT      = 1
+	MOD_CONTROL  = 2
+	MOD_SHIFT    = 4
+	MOD_WIN      = 8
+	MOD_NOREPEAT = 0x4000
+)
