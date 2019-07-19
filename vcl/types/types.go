@@ -68,6 +68,10 @@ type TFNWndEnumProc = uintptr
 
 type TXID = uint64
 
+type ATOM = uint16
+
+type TAtom = uint16
+
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect
 
