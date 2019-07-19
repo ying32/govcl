@@ -42,6 +42,7 @@
 | OSVersion | 系统版本信息获取    |  |
 | pageControlWizard | PageControl向导程序演示 | |  
 | printer | 打印机操作 | |  
+| registerHotkey | windows注册热键  | Windows |
 | registry | windows注册表演示  | Windows |
 | res2goTest | res2go 工具测试例程 | |  
 | richedit | windows富文本框演示  | Windows,libvcl |
