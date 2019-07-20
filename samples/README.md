@@ -7,6 +7,7 @@
 | basic | 基础窗口 | |
 | basicResForm | 演示设计器输出的UI | |
 | checklistbox | 复选列表框演示 | |
+| clock | 自绘的时钟 | |
 | draganddrop | 数据拖放 | |
 | draw | canvas自绘演示 | |
 | dropfiles | 鼠标拖放文件演示  | |
