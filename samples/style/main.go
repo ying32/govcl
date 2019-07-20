@@ -16,7 +16,10 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
-var styleNames = make(map[string]string, 0)
+var (
+	styleNames = make(map[string]string, 0)
+	stylesPath string
+)
 
 func main() {
 
@@ -25,14 +28,18 @@ func main() {
 		return
 	}
 
-	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 
-	vcl.StyleManager.SetStyle(vcl.StyleManager.LoadFromFile("..\\..\\bin\\styles\\TabletLight.vsf"))
+	// 样式文件路么
+	stylesPath = rtl.ExtractFilePath(vcl.Application.ExeName()) + "styles\\"
+
+	fmt.Println("style Path:", stylesPath)
+
+	vcl.StyleManager.SetStyle(vcl.StyleManager.LoadFromFile(stylesPath + "TabletLight.vsf"))
 
 	mainForm := vcl.Application.CreateForm()
-	mainForm.SetCaption("Hello")
+	mainForm.SetCaption("libvcl Style Test")
 	mainForm.SetPosition(types.PoScreenCenter)
 	mainForm.SetWidth(500)
 	mainForm.SetHeight(700)
@@ -289,7 +296,7 @@ func main() {
 				vcl.StyleManager.SetStyle2(name)
 				return
 			}
-			styleFileName := "..\\..\\bin\\styles\\" + text
+			styleFileName := stylesPath + text
 			if rtl.FileExists(styleFileName) {
 				if ok, name := vcl.StyleManager.IsValidStyle2(styleFileName); ok {
 					styleNames[text] = name
@@ -355,7 +362,8 @@ func main() {
 }
 
 func addStyleFileName(list *vcl.TListBox) {
-	fd, err := os.Open("..\\..\\bin\\styles\\")
+
+	fd, err := os.Open(stylesPath)
 	if err != nil {
 		fmt.Println(err)
 		if os.IsNotExist(err) {

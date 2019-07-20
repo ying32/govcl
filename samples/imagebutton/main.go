@@ -13,7 +13,6 @@ func main() {
 
 	path := rtl.ExtractFilePath(vcl.Application.ExeName())
 
-	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 

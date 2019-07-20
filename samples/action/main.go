@@ -2,19 +2,13 @@ package main
 
 import (
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 )
 
 func main() {
 
-	icon := vcl.NewIcon()
-	defer icon.Free()
-	icon.LoadFromResourceID(rtl.MainInstance(), 3)
-
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.SetIcon(icon)
 
 	mainForm := vcl.Application.CreateForm()
 	mainForm.SetCaption("Hello")
@@ -26,7 +20,7 @@ func main() {
 	mainForm.SetShowHint(true)
 
 	imgList := vcl.NewImageList(mainForm)
-	imgList.AddIcon(icon)
+	imgList.AddIcon(vcl.Application.Icon())
 
 	actList := vcl.NewActionList(mainForm)
 	actList.SetImages(imgList)

@@ -42,7 +42,7 @@ func main() {
 	fmt.Println("strToGUID: ", rtl.StringToGUID(guidstr))
 
 	fmt.Println("main")
-	vcl.Application.SetIconResId(3)
+
 	vcl.Application.Initialize()
 
 	vcl.Application.SetOnException(func(sender vcl.IObject, e *vcl.Exception) {

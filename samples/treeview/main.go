@@ -25,7 +25,7 @@ func main() {
 	icon := vcl.NewIcon()
 	defer icon.Free()
 	if runtime.GOOS == "windows" {
-		icon.LoadFromResourceID(rtl.MainInstance(), 3)
+		icon.LoadFromResourceName(rtl.MainInstance(), "MAINICON")
 	} else {
 		icon.LoadFromFile("./brown.ico")
 	}

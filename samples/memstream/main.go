@@ -7,20 +7,15 @@ import (
 	//	"syscall"
 
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 )
 
 func main() {
 
 	fmt.Println("main:currentThreadId:", GetCurrentThreadId())
-	icon := vcl.NewIcon()
-	defer icon.Free()
-	icon.LoadFromResourceID(rtl.MainInstance(), 3)
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.SetIcon(icon)
 
 	mainForm := vcl.Application.CreateForm()
 	mainForm.SetCaption("Hello")
@@ -34,7 +29,7 @@ func main() {
 	// 本地加载
 	mem := vcl.NewMemoryStream()
 	defer mem.Free()
-	mem.LoadFromFile("../govcl/imgs/1.jpg")
+	mem.LoadFromFile("1.jpg")
 	img.Picture().LoadFromStream(mem)
 	// 网络图片加载
 	img2 := vcl.NewImage(mainForm)

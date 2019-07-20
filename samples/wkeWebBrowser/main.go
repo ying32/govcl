@@ -29,7 +29,6 @@ func main() {
 	wke.Initialize()
 	defer wke.Finalize()
 
-	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 

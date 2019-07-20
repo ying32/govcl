@@ -6,7 +6,6 @@ import (
 
 func main() {
 
-	vcl.Application.SetIconResId(3) // 具体资源id根据rsrc.exe编译的为准
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 	vcl.Application.CreateForm(form1Bytes, &Form1)

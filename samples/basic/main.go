@@ -17,7 +17,6 @@ var form1 *TForm1
 
 func main() {
 	vcl.Application.SetFormScaled(true)
-	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 

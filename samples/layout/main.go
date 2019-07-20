@@ -13,7 +13,6 @@ func main() {
 	// mac下发布时去掉，只在测试时使用
 	tools.RunWithMacOSApp()
 
-	vcl.Application.SetIconResId(3)
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 

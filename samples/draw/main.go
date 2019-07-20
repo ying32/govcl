@@ -18,13 +18,13 @@ var (
 )
 
 func main() {
-	vcl.Application.SetIconResId(3)
+
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 
 	jpgimg := vcl.NewJPEGImage()
 	defer jpgimg.Free()
-	jpgimg.LoadFromFile("../govcl/imgs/1.jpg")
+	jpgimg.LoadFromFile("imgs/1.jpg")
 
 	mainForm := vcl.Application.CreateForm()
 	mainForm.SetCaption("Hello")

@@ -31,7 +31,7 @@ func main() {
 	vcl.Application.SetOnException(func(sender vcl.IObject, e *vcl.Exception) {
 		// 在这里自行处理VCL中的异常
 	})
-	vcl.Application.SetIconResId(3) // 具体资源id根据rsrc.exe编译的为准
+
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
 	vcl.Application.CreateForm(gdipFormBytes, &GdipForm)

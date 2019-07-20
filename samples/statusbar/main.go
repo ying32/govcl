@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	vcl.Application.SetIconResId(3)
+
 	vcl.Application.Initialize()
 	vcl.Application.SetShowHint(true)
 
@@ -39,7 +39,7 @@ func main() {
 	button.SetParent(mainForm)
 	button.SetCaption("按钮2")
 	button.SetHint("提示。好好好好好。。。。。。。。。。。。。")
-	button.SetBounds(20, 60, 100, 30)
+	button.SetBounds(10, 60, 100, 30)
 
 	statusbar := vcl.NewStatusBar(mainForm)
 	statusbar.SetParent(mainForm)
