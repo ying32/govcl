@@ -1,0 +1,1199 @@
+
+//----------------------------------------
+// 代码由GenlibLcl工具自动生成。
+// Copyright © ying32. All Rights Reserved.
+//
+//----------------------------------------
+
+function ComboBoxEx_Create(AOwner: TComponent): TComboBoxEx; extdecl;
+begin
+  Result :=  TComboBoxEx.Create(AOwner);
+end;
+
+procedure ComboBoxEx_Free(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Free;
+end;
+
+function ComboBoxEx_Focused(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.Focused;
+end;
+
+procedure ComboBoxEx_AddItem(AObj: TComboBoxEx; Item: PChar; AObject: TObject); extdecl;
+begin
+  AObj.AddItem(Item, AObject);
+end;
+
+procedure ComboBoxEx_Clear(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Clear;
+end;
+
+procedure ComboBoxEx_ClearSelection(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.ClearSelection;
+end;
+
+procedure ComboBoxEx_DeleteSelected(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.DeleteSelected;
+end;
+
+procedure ComboBoxEx_SelectAll(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.SelectAll;
+end;
+
+function ComboBoxEx_CanFocus(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.CanFocus;
+end;
+
+function ComboBoxEx_ContainsControl(AObj: TComboBoxEx; Control: TControl): LongBool; extdecl;
+begin
+  Result :=  AObj.ContainsControl(Control);
+end;
+
+function ComboBoxEx_ControlAtPos(AObj: TComboBoxEx; var Pos: TPoint; AllowDisabled: LongBool; AllowWinControls: LongBool): TControl; extdecl;
+begin
+  Result :=  AObj.ControlAtPos(Pos, AllowDisabled, AllowWinControls);
+end;
+
+procedure ComboBoxEx_DisableAlign(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.DisableAlign;
+end;
+
+procedure ComboBoxEx_EnableAlign(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.EnableAlign;
+end;
+
+function ComboBoxEx_FindChildControl(AObj: TComboBoxEx; ControlName: PChar): TControl; extdecl;
+begin
+  Result :=  AObj.FindChildControl(ControlName);
+end;
+
+procedure ComboBoxEx_FlipChildren(AObj: TComboBoxEx; AllLevels: LongBool); extdecl;
+begin
+  AObj.FlipChildren(AllLevels);
+end;
+
+function ComboBoxEx_HandleAllocated(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.HandleAllocated;
+end;
+
+procedure ComboBoxEx_InsertControl(AObj: TComboBoxEx; AControl: TControl); extdecl;
+begin
+  AObj.InsertControl(AControl);
+end;
+
+procedure ComboBoxEx_Invalidate(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Invalidate;
+end;
+
+procedure ComboBoxEx_RemoveControl(AObj: TComboBoxEx; AControl: TControl); extdecl;
+begin
+  AObj.RemoveControl(AControl);
+end;
+
+procedure ComboBoxEx_Realign(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Realign;
+end;
+
+procedure ComboBoxEx_Repaint(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Repaint;
+end;
+
+procedure ComboBoxEx_ScaleBy(AObj: TComboBoxEx; M: Integer; D: Integer); extdecl;
+begin
+  AObj.ScaleBy(M, D);
+end;
+
+procedure ComboBoxEx_ScrollBy(AObj: TComboBoxEx; DeltaX: Integer; DeltaY: Integer); extdecl;
+begin
+  AObj.ScrollBy(DeltaX, DeltaY);
+end;
+
+procedure ComboBoxEx_SetBounds(AObj: TComboBoxEx; ALeft: Integer; ATop: Integer; AWidth: Integer; AHeight: Integer); extdecl;
+begin
+  AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
+end;
+
+procedure ComboBoxEx_SetFocus(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.SetFocus;
+end;
+
+procedure ComboBoxEx_Update(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Update;
+end;
+
+procedure ComboBoxEx_BringToFront(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.BringToFront;
+end;
+
+procedure ComboBoxEx_ClientToScreen(AObj: TComboBoxEx; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToScreen(Point);
+end;
+
+procedure ComboBoxEx_ClientToParent(AObj: TComboBoxEx; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientToParent(Point, AParent);
+end;
+
+function ComboBoxEx_Dragging(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.Dragging;
+end;
+
+function ComboBoxEx_HasParent(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.HasParent;
+end;
+
+procedure ComboBoxEx_Hide(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Hide;
+end;
+
+function ComboBoxEx_Perform(AObj: TComboBoxEx; Msg: Cardinal; WParam: NativeUInt; LParam: NativeInt): NativeInt; extdecl;
+begin
+  Result :=  AObj.Perform(Msg, WParam, LParam);
+end;
+
+procedure ComboBoxEx_Refresh(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Refresh;
+end;
+
+procedure ComboBoxEx_ScreenToClient(AObj: TComboBoxEx; var Point: TPoint; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ScreenToClient(Point);
+end;
+
+procedure ComboBoxEx_ParentToClient(AObj: TComboBoxEx; var Point: TPoint; AParent: TWinControl; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ParentToClient(Point, AParent);
+end;
+
+procedure ComboBoxEx_SendToBack(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.SendToBack;
+end;
+
+procedure ComboBoxEx_Show(AObj: TComboBoxEx); extdecl;
+begin
+  AObj.Show;
+end;
+
+function ComboBoxEx_GetTextBuf(AObj: TComboBoxEx; Buffer: PChar; BufSize: Integer): Integer; extdecl;
+begin
+  Result :=  AObj.GetTextBuf(Buffer, BufSize);
+end;
+
+function ComboBoxEx_GetTextLen(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.GetTextLen;
+end;
+
+procedure ComboBoxEx_SetTextBuf(AObj: TComboBoxEx; Buffer: PChar); extdecl;
+begin
+  AObj.SetTextBuf(Buffer);
+end;
+
+function ComboBoxEx_FindComponent(AObj: TComboBoxEx; AName: PChar): TComponent; extdecl;
+begin
+  Result :=  AObj.FindComponent(AName);
+end;
+
+function ComboBoxEx_GetNamePath(AObj: TComboBoxEx): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.GetNamePath);
+end;
+
+procedure ComboBoxEx_Assign(AObj: TComboBoxEx; Source: TPersistent); extdecl;
+begin
+  AObj.Assign(Source);
+end;
+
+function ComboBoxEx_ClassType(AObj: TComboBoxEx): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
+function ComboBoxEx_ClassName(AObj: TComboBoxEx): PChar; extdecl;
+begin
+  Result :=  ToPChar(AObj.ClassName);
+end;
+
+function ComboBoxEx_InstanceSize(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ComboBoxEx_InheritsFrom(AObj: TComboBoxEx; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
+end;
+
+function ComboBoxEx_Equals(AObj: TComboBoxEx; Obj: TObject): LongBool; extdecl;
+begin
+  Result :=  AObj.Equals(Obj);
+end;
+
+function ComboBoxEx_GetHashCode(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function ComboBoxEx_ToString(AObj: TComboBoxEx): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function ComboBoxEx_GetAlign(AObj: TComboBoxEx): TAlign; extdecl;
+begin
+  Result :=  AObj.Align;
+end;
+
+procedure ComboBoxEx_SetAlign(AObj: TComboBoxEx; AValue: TAlign); extdecl;
+begin
+  AObj.Align := AValue;
+end;
+
+function ComboBoxEx_GetAutoCompleteOptions(AObj: TComboBoxEx): TAutoCompleteOptions; extdecl;
+begin
+  Result :=  AObj.AutoCompleteOptions;
+end;
+
+procedure ComboBoxEx_SetAutoCompleteOptions(AObj: TComboBoxEx; AValue: TAutoCompleteOptions); extdecl;
+begin
+  AObj.AutoCompleteOptions := AValue;
+end;
+
+function ComboBoxEx_GetItemsEx(AObj: TComboBoxEx): TComboExItems; extdecl;
+begin
+  Result :=  AObj.ItemsEx;
+end;
+
+procedure ComboBoxEx_SetItemsEx(AObj: TComboBoxEx; AValue: TComboExItems); extdecl;
+begin
+  AObj.ItemsEx := AValue;
+end;
+
+function ComboBoxEx_GetStyle(AObj: TComboBoxEx): TComboBoxExStyle; extdecl;
+begin
+  Result :=  AObj.Style;
+end;
+
+procedure ComboBoxEx_SetStyle(AObj: TComboBoxEx; AValue: TComboBoxExStyle); extdecl;
+begin
+  AObj.Style := AValue;
+end;
+
+function ComboBoxEx_GetStyleEx(AObj: TComboBoxEx): TComboBoxExStyles; extdecl;
+begin
+  Result :=  AObj.StyleEx;
+end;
+
+procedure ComboBoxEx_SetStyleEx(AObj: TComboBoxEx; AValue: TComboBoxExStyles); extdecl;
+begin
+  AObj.StyleEx := AValue;
+end;
+
+function ComboBoxEx_GetAction(AObj: TComboBoxEx): TBasicAction; extdecl;
+begin
+  Result :=  AObj.Action;
+end;
+
+procedure ComboBoxEx_SetAction(AObj: TComboBoxEx; AValue: TBasicAction); extdecl;
+begin
+  AObj.Action := AValue;
+end;
+
+function ComboBoxEx_GetAnchors(AObj: TComboBoxEx): TAnchors; extdecl;
+begin
+  Result :=  AObj.Anchors;
+end;
+
+procedure ComboBoxEx_SetAnchors(AObj: TComboBoxEx; AValue: TAnchors); extdecl;
+begin
+  AObj.Anchors := AValue;
+end;
+
+function ComboBoxEx_GetBiDiMode(AObj: TComboBoxEx): TBiDiMode; extdecl;
+begin
+  Result :=  AObj.BiDiMode;
+end;
+
+procedure ComboBoxEx_SetBiDiMode(AObj: TComboBoxEx; AValue: TBiDiMode); extdecl;
+begin
+  AObj.BiDiMode := AValue;
+end;
+
+function ComboBoxEx_GetColor(AObj: TComboBoxEx): TColor; extdecl;
+begin
+  Result :=  AObj.Color;
+end;
+
+procedure ComboBoxEx_SetColor(AObj: TComboBoxEx; AValue: TColor); extdecl;
+begin
+  AObj.Color := AValue;
+end;
+
+function ComboBoxEx_GetConstraints(AObj: TComboBoxEx): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ComboBoxEx_SetConstraints(AObj: TComboBoxEx; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function ComboBoxEx_GetDoubleBuffered(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.DoubleBuffered;
+end;
+
+procedure ComboBoxEx_SetDoubleBuffered(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.DoubleBuffered := AValue;
+end;
+
+function ComboBoxEx_GetDragCursor(AObj: TComboBoxEx): TCursor; extdecl;
+begin
+  Result :=  AObj.DragCursor;
+end;
+
+procedure ComboBoxEx_SetDragCursor(AObj: TComboBoxEx; AValue: TCursor); extdecl;
+begin
+  AObj.DragCursor := AValue;
+end;
+
+function ComboBoxEx_GetDragKind(AObj: TComboBoxEx): TDragKind; extdecl;
+begin
+  Result :=  AObj.DragKind;
+end;
+
+procedure ComboBoxEx_SetDragKind(AObj: TComboBoxEx; AValue: TDragKind); extdecl;
+begin
+  AObj.DragKind := AValue;
+end;
+
+function ComboBoxEx_GetDragMode(AObj: TComboBoxEx): TDragMode; extdecl;
+begin
+  Result :=  AObj.DragMode;
+end;
+
+procedure ComboBoxEx_SetDragMode(AObj: TComboBoxEx; AValue: TDragMode); extdecl;
+begin
+  AObj.DragMode := AValue;
+end;
+
+function ComboBoxEx_GetEnabled(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.Enabled;
+end;
+
+procedure ComboBoxEx_SetEnabled(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.Enabled := AValue;
+end;
+
+function ComboBoxEx_GetFont(AObj: TComboBoxEx): TFont; extdecl;
+begin
+  Result :=  AObj.Font;
+end;
+
+procedure ComboBoxEx_SetFont(AObj: TComboBoxEx; AValue: TFont); extdecl;
+begin
+  AObj.Font := AValue;
+end;
+
+function ComboBoxEx_GetItemHeight(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.ItemHeight;
+end;
+
+procedure ComboBoxEx_SetItemHeight(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.ItemHeight := AValue;
+end;
+
+function ComboBoxEx_GetMaxLength(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.MaxLength;
+end;
+
+procedure ComboBoxEx_SetMaxLength(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.MaxLength := AValue;
+end;
+
+function ComboBoxEx_GetParentColor(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentColor;
+end;
+
+procedure ComboBoxEx_SetParentColor(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.ParentColor := AValue;
+end;
+
+function ComboBoxEx_GetParentDoubleBuffered(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentDoubleBuffered;
+end;
+
+procedure ComboBoxEx_SetParentDoubleBuffered(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.ParentDoubleBuffered := AValue;
+end;
+
+function ComboBoxEx_GetParentFont(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentFont;
+end;
+
+procedure ComboBoxEx_SetParentFont(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.ParentFont := AValue;
+end;
+
+function ComboBoxEx_GetParentShowHint(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentShowHint;
+end;
+
+procedure ComboBoxEx_SetParentShowHint(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.ParentShowHint := AValue;
+end;
+
+function ComboBoxEx_GetPopupMenu(AObj: TComboBoxEx): TPopupMenu; extdecl;
+begin
+  Result :=  AObj.PopupMenu;
+end;
+
+procedure ComboBoxEx_SetPopupMenu(AObj: TComboBoxEx; AValue: TPopupMenu); extdecl;
+begin
+  AObj.PopupMenu := AValue;
+end;
+
+function ComboBoxEx_GetShowHint(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.ShowHint;
+end;
+
+procedure ComboBoxEx_SetShowHint(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.ShowHint := AValue;
+end;
+
+function ComboBoxEx_GetTabOrder(AObj: TComboBoxEx): TTabOrder; extdecl;
+begin
+  Result :=  AObj.TabOrder;
+end;
+
+procedure ComboBoxEx_SetTabOrder(AObj: TComboBoxEx; AValue: TTabOrder); extdecl;
+begin
+  AObj.TabOrder := AValue;
+end;
+
+function ComboBoxEx_GetTabStop(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.TabStop;
+end;
+
+procedure ComboBoxEx_SetTabStop(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.TabStop := AValue;
+end;
+
+function ComboBoxEx_GetText(AObj: TComboBoxEx): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Text);
+end;
+
+procedure ComboBoxEx_SetText(AObj: TComboBoxEx; AValue: PChar); extdecl;
+begin
+  AObj.Text := AValue;
+end;
+
+function ComboBoxEx_GetVisible(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.Visible;
+end;
+
+procedure ComboBoxEx_SetVisible(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.Visible := AValue;
+end;
+
+procedure ComboBoxEx_SetOnChange(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnClick(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnClick}
+  {$DEFINE EventMethodName := OnClick}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnContextPopup(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnContextPopup}
+  {$DEFINE EventMethodName := OnContextPopup}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnDblClick(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnDblClick}
+  {$DEFINE EventMethodName := OnDblClick}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnDragDrop(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnDragDrop}
+  {$DEFINE EventMethodName := OnDragDrop}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnDragOver(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnDragOver}
+  {$DEFINE EventMethodName := OnDragOver}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnEndDock(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnEndDock}
+  {$DEFINE EventMethodName := OnEndDock}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnEndDrag(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnEndDrag}
+  {$DEFINE EventMethodName := OnEndDrag}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnEnter(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnEnter}
+  {$DEFINE EventMethodName := OnEnter}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnExit(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnExit}
+  {$DEFINE EventMethodName := OnExit}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnKeyDown(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnKeyDown}
+  {$DEFINE EventMethodName := OnKeyDown}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnKeyPress(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnKeyPress}
+  {$DEFINE EventMethodName := OnKeyPress}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnKeyUp(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnKeyUp}
+  {$DEFINE EventMethodName := OnKeyUp}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnMouseMove(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnMouseMove}
+  {$DEFINE EventMethodName := OnMouseMove}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnSelect(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnSelect}
+  {$DEFINE EventMethodName := OnSelect}
+  EventMethodCode
+end;
+
+procedure ComboBoxEx_SetOnStartDock(AObj: TComboBoxEx; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnStartDock}
+  {$DEFINE EventMethodName := OnStartDock}
+  EventMethodCode
+end;
+
+function ComboBoxEx_GetImages(AObj: TComboBoxEx): TCustomImageList; extdecl;
+begin
+  Result :=  AObj.Images;
+end;
+
+procedure ComboBoxEx_SetImages(AObj: TComboBoxEx; AValue: TCustomImageList); extdecl;
+begin
+  AObj.Images := AValue;
+end;
+
+function ComboBoxEx_GetDropDownCount(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.DropDownCount;
+end;
+
+procedure ComboBoxEx_SetDropDownCount(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.DropDownCount := AValue;
+end;
+
+function ComboBoxEx_GetSelText(AObj: TComboBoxEx): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.SelText);
+end;
+
+procedure ComboBoxEx_SetSelText(AObj: TComboBoxEx; AValue: PChar); extdecl;
+begin
+  AObj.SelText := AValue;
+end;
+
+function ComboBoxEx_GetCanvas(AObj: TComboBoxEx): TCanvas; extdecl;
+begin
+  Result :=  AObj.Canvas;
+end;
+
+function ComboBoxEx_GetDroppedDown(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.DroppedDown;
+end;
+
+procedure ComboBoxEx_SetDroppedDown(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.DroppedDown := AValue;
+end;
+
+function ComboBoxEx_GetItems(AObj: TComboBoxEx): TStrings; extdecl;
+begin
+  Result :=  AObj.Items;
+end;
+
+procedure ComboBoxEx_SetItems(AObj: TComboBoxEx; AValue: TStrings); extdecl;
+begin
+  AObj.Items := AValue;
+end;
+
+function ComboBoxEx_GetSelLength(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.SelLength;
+end;
+
+procedure ComboBoxEx_SetSelLength(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.SelLength := AValue;
+end;
+
+function ComboBoxEx_GetSelStart(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.SelStart;
+end;
+
+procedure ComboBoxEx_SetSelStart(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.SelStart := AValue;
+end;
+
+function ComboBoxEx_GetItemIndex(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.ItemIndex;
+end;
+
+procedure ComboBoxEx_SetItemIndex(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.ItemIndex := AValue;
+end;
+
+function ComboBoxEx_GetDockClientCount(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.DockClientCount;
+end;
+
+function ComboBoxEx_GetDockSite(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.DockSite;
+end;
+
+procedure ComboBoxEx_SetDockSite(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.DockSite := AValue;
+end;
+
+function ComboBoxEx_GetMouseInClient(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.MouseInClient;
+end;
+
+function ComboBoxEx_GetVisibleDockClientCount(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.VisibleDockClientCount;
+end;
+
+function ComboBoxEx_GetBrush(AObj: TComboBoxEx): TBrush; extdecl;
+begin
+  Result :=  AObj.Brush;
+end;
+
+function ComboBoxEx_GetControlCount(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.ControlCount;
+end;
+
+function ComboBoxEx_GetHandle(AObj: TComboBoxEx): HWND; extdecl;
+begin
+  Result :=  AObj.Handle;
+end;
+
+function ComboBoxEx_GetParentWindow(AObj: TComboBoxEx): HWND; extdecl;
+begin
+  Result :=  AObj.ParentWindow;
+end;
+
+procedure ComboBoxEx_SetParentWindow(AObj: TComboBoxEx; AValue: HWND); extdecl;
+begin
+  AObj.ParentWindow := AValue;
+end;
+
+function ComboBoxEx_GetUseDockManager(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.UseDockManager;
+end;
+
+procedure ComboBoxEx_SetUseDockManager(AObj: TComboBoxEx; AValue: LongBool); extdecl;
+begin
+  AObj.UseDockManager := AValue;
+end;
+
+procedure ComboBoxEx_GetBoundsRect(AObj: TComboBoxEx; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.BoundsRect;
+end;
+
+procedure ComboBoxEx_SetBoundsRect(AObj: TComboBoxEx; var AValue: TRect); extdecl;
+begin
+  AObj.BoundsRect := AValue;
+end;
+
+function ComboBoxEx_GetClientHeight(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.ClientHeight;
+end;
+
+procedure ComboBoxEx_SetClientHeight(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.ClientHeight := AValue;
+end;
+
+procedure ComboBoxEx_GetClientOrigin(AObj: TComboBoxEx; var Result: TPoint); extdecl;
+begin
+  Result :=  AObj.ClientOrigin;
+end;
+
+procedure ComboBoxEx_GetClientRect(AObj: TComboBoxEx; var Result: TRect); extdecl;
+begin
+  Result :=  AObj.ClientRect;
+end;
+
+function ComboBoxEx_GetClientWidth(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.ClientWidth;
+end;
+
+procedure ComboBoxEx_SetClientWidth(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.ClientWidth := AValue;
+end;
+
+function ComboBoxEx_GetControlState(AObj: TComboBoxEx): TControlState; extdecl;
+begin
+  Result :=  AObj.ControlState;
+end;
+
+procedure ComboBoxEx_SetControlState(AObj: TComboBoxEx; AValue: TControlState); extdecl;
+begin
+  AObj.ControlState := AValue;
+end;
+
+function ComboBoxEx_GetControlStyle(AObj: TComboBoxEx): TControlStyle; extdecl;
+begin
+  Result :=  AObj.ControlStyle;
+end;
+
+procedure ComboBoxEx_SetControlStyle(AObj: TComboBoxEx; AValue: TControlStyle); extdecl;
+begin
+  AObj.ControlStyle := AValue;
+end;
+
+function ComboBoxEx_GetFloating(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.Floating;
+end;
+
+function ComboBoxEx_GetParent(AObj: TComboBoxEx): TWinControl; extdecl;
+begin
+  Result :=  AObj.Parent;
+end;
+
+procedure ComboBoxEx_SetParent(AObj: TComboBoxEx; AValue: TWinControl); extdecl;
+begin
+  AObj.Parent := AValue;
+end;
+
+function ComboBoxEx_GetLeft(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.Left;
+end;
+
+procedure ComboBoxEx_SetLeft(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.Left := AValue;
+end;
+
+function ComboBoxEx_GetTop(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.Top;
+end;
+
+procedure ComboBoxEx_SetTop(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.Top := AValue;
+end;
+
+function ComboBoxEx_GetWidth(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.Width;
+end;
+
+procedure ComboBoxEx_SetWidth(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.Width := AValue;
+end;
+
+function ComboBoxEx_GetHeight(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.Height;
+end;
+
+procedure ComboBoxEx_SetHeight(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.Height := AValue;
+end;
+
+function ComboBoxEx_GetCursor(AObj: TComboBoxEx): TCursor; extdecl;
+begin
+  Result :=  AObj.Cursor;
+end;
+
+procedure ComboBoxEx_SetCursor(AObj: TComboBoxEx; AValue: TCursor); extdecl;
+begin
+  AObj.Cursor := AValue;
+end;
+
+function ComboBoxEx_GetHint(AObj: TComboBoxEx): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Hint);
+end;
+
+procedure ComboBoxEx_SetHint(AObj: TComboBoxEx; AValue: PChar); extdecl;
+begin
+  AObj.Hint := AValue;
+end;
+
+function ComboBoxEx_GetComponentCount(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.ComponentCount;
+end;
+
+function ComboBoxEx_GetComponentIndex(AObj: TComboBoxEx): Integer; extdecl;
+begin
+  Result :=  AObj.ComponentIndex;
+end;
+
+procedure ComboBoxEx_SetComponentIndex(AObj: TComboBoxEx; AValue: Integer); extdecl;
+begin
+  AObj.ComponentIndex := AValue;
+end;
+
+function ComboBoxEx_GetOwner(AObj: TComboBoxEx): TComponent; extdecl;
+begin
+  Result :=  AObj.Owner;
+end;
+
+function ComboBoxEx_GetName(AObj: TComboBoxEx): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Name);
+end;
+
+procedure ComboBoxEx_SetName(AObj: TComboBoxEx; AValue: PChar); extdecl;
+begin
+  AObj.Name := AValue;
+end;
+
+function ComboBoxEx_GetTag(AObj: TComboBoxEx): NativeInt; extdecl;
+begin
+  Result :=  AObj.Tag;
+end;
+
+procedure ComboBoxEx_SetTag(AObj: TComboBoxEx; AValue: NativeInt); extdecl;
+begin
+  AObj.Tag := AValue;
+end;
+
+function ComboBoxEx_GetDockClients(AObj: TComboBoxEx; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.DockClients[Index];
+end;
+
+function ComboBoxEx_GetControls(AObj: TComboBoxEx; Index: Integer): TControl; extdecl;
+begin
+  Result :=  AObj.Controls[Index];
+end;
+
+function ComboBoxEx_GetComponents(AObj: TComboBoxEx; AIndex: Integer): TComponent; extdecl;
+begin
+  Result :=  AObj.Components[AIndex];
+end;
+
+function ComboBoxEx_GetMargins(AObj: TComboBoxEx): TControlBorderSpacing; extdecl;
+begin
+  Result := AObj.BorderSpacing;
+end;
+
+procedure ComboBoxEx_SetMargins(AObj: TComboBoxEx; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
+function ComboBoxEx_StaticClassType: TClass; extdecl;
+begin
+  Result := TComboBoxEx;
+end;
+
+exports
+  ComboBoxEx_Create,
+  ComboBoxEx_Free,
+  ComboBoxEx_Focused,
+  ComboBoxEx_AddItem,
+  ComboBoxEx_Clear,
+  ComboBoxEx_ClearSelection,
+  ComboBoxEx_DeleteSelected,
+  ComboBoxEx_SelectAll,
+  ComboBoxEx_CanFocus,
+  ComboBoxEx_ContainsControl,
+  ComboBoxEx_ControlAtPos,
+  ComboBoxEx_DisableAlign,
+  ComboBoxEx_EnableAlign,
+  ComboBoxEx_FindChildControl,
+  ComboBoxEx_FlipChildren,
+  ComboBoxEx_HandleAllocated,
+  ComboBoxEx_InsertControl,
+  ComboBoxEx_Invalidate,
+  ComboBoxEx_RemoveControl,
+  ComboBoxEx_Realign,
+  ComboBoxEx_Repaint,
+  ComboBoxEx_ScaleBy,
+  ComboBoxEx_ScrollBy,
+  ComboBoxEx_SetBounds,
+  ComboBoxEx_SetFocus,
+  ComboBoxEx_Update,
+  ComboBoxEx_BringToFront,
+  ComboBoxEx_ClientToScreen,
+  ComboBoxEx_ClientToParent,
+  ComboBoxEx_Dragging,
+  ComboBoxEx_HasParent,
+  ComboBoxEx_Hide,
+  ComboBoxEx_Perform,
+  ComboBoxEx_Refresh,
+  ComboBoxEx_ScreenToClient,
+  ComboBoxEx_ParentToClient,
+  ComboBoxEx_SendToBack,
+  ComboBoxEx_Show,
+  ComboBoxEx_GetTextBuf,
+  ComboBoxEx_GetTextLen,
+  ComboBoxEx_SetTextBuf,
+  ComboBoxEx_FindComponent,
+  ComboBoxEx_GetNamePath,
+  ComboBoxEx_Assign,
+  ComboBoxEx_ClassType,
+  ComboBoxEx_ClassName,
+  ComboBoxEx_InstanceSize,
+  ComboBoxEx_InheritsFrom,
+  ComboBoxEx_Equals,
+  ComboBoxEx_GetHashCode,
+  ComboBoxEx_ToString,
+  ComboBoxEx_GetAlign,
+  ComboBoxEx_SetAlign,
+  ComboBoxEx_GetAutoCompleteOptions,
+  ComboBoxEx_SetAutoCompleteOptions,
+  ComboBoxEx_GetItemsEx,
+  ComboBoxEx_SetItemsEx,
+  ComboBoxEx_GetStyle,
+  ComboBoxEx_SetStyle,
+  ComboBoxEx_GetStyleEx,
+  ComboBoxEx_SetStyleEx,
+  ComboBoxEx_GetAction,
+  ComboBoxEx_SetAction,
+  ComboBoxEx_GetAnchors,
+  ComboBoxEx_SetAnchors,
+  ComboBoxEx_GetBiDiMode,
+  ComboBoxEx_SetBiDiMode,
+  ComboBoxEx_GetColor,
+  ComboBoxEx_SetColor,
+  ComboBoxEx_GetConstraints,
+  ComboBoxEx_SetConstraints,
+  ComboBoxEx_GetDoubleBuffered,
+  ComboBoxEx_SetDoubleBuffered,
+  ComboBoxEx_GetDragCursor,
+  ComboBoxEx_SetDragCursor,
+  ComboBoxEx_GetDragKind,
+  ComboBoxEx_SetDragKind,
+  ComboBoxEx_GetDragMode,
+  ComboBoxEx_SetDragMode,
+  ComboBoxEx_GetEnabled,
+  ComboBoxEx_SetEnabled,
+  ComboBoxEx_GetFont,
+  ComboBoxEx_SetFont,
+  ComboBoxEx_GetItemHeight,
+  ComboBoxEx_SetItemHeight,
+  ComboBoxEx_GetMaxLength,
+  ComboBoxEx_SetMaxLength,
+  ComboBoxEx_GetParentColor,
+  ComboBoxEx_SetParentColor,
+  ComboBoxEx_GetParentDoubleBuffered,
+  ComboBoxEx_SetParentDoubleBuffered,
+  ComboBoxEx_GetParentFont,
+  ComboBoxEx_SetParentFont,
+  ComboBoxEx_GetParentShowHint,
+  ComboBoxEx_SetParentShowHint,
+  ComboBoxEx_GetPopupMenu,
+  ComboBoxEx_SetPopupMenu,
+  ComboBoxEx_GetShowHint,
+  ComboBoxEx_SetShowHint,
+  ComboBoxEx_GetTabOrder,
+  ComboBoxEx_SetTabOrder,
+  ComboBoxEx_GetTabStop,
+  ComboBoxEx_SetTabStop,
+  ComboBoxEx_GetText,
+  ComboBoxEx_SetText,
+  ComboBoxEx_GetVisible,
+  ComboBoxEx_SetVisible,
+  ComboBoxEx_SetOnChange,
+  ComboBoxEx_SetOnClick,
+  ComboBoxEx_SetOnContextPopup,
+  ComboBoxEx_SetOnDblClick,
+  ComboBoxEx_SetOnDragDrop,
+  ComboBoxEx_SetOnDragOver,
+  ComboBoxEx_SetOnEndDock,
+  ComboBoxEx_SetOnEndDrag,
+  ComboBoxEx_SetOnEnter,
+  ComboBoxEx_SetOnExit,
+  ComboBoxEx_SetOnKeyDown,
+  ComboBoxEx_SetOnKeyPress,
+  ComboBoxEx_SetOnKeyUp,
+  ComboBoxEx_SetOnMouseMove,
+  ComboBoxEx_SetOnSelect,
+  ComboBoxEx_SetOnStartDock,
+  ComboBoxEx_GetImages,
+  ComboBoxEx_SetImages,
+  ComboBoxEx_GetDropDownCount,
+  ComboBoxEx_SetDropDownCount,
+  ComboBoxEx_GetSelText,
+  ComboBoxEx_SetSelText,
+  ComboBoxEx_GetCanvas,
+  ComboBoxEx_GetDroppedDown,
+  ComboBoxEx_SetDroppedDown,
+  ComboBoxEx_GetItems,
+  ComboBoxEx_SetItems,
+  ComboBoxEx_GetSelLength,
+  ComboBoxEx_SetSelLength,
+  ComboBoxEx_GetSelStart,
+  ComboBoxEx_SetSelStart,
+  ComboBoxEx_GetItemIndex,
+  ComboBoxEx_SetItemIndex,
+  ComboBoxEx_GetDockClientCount,
+  ComboBoxEx_GetDockSite,
+  ComboBoxEx_SetDockSite,
+  ComboBoxEx_GetMouseInClient,
+  ComboBoxEx_GetVisibleDockClientCount,
+  ComboBoxEx_GetBrush,
+  ComboBoxEx_GetControlCount,
+  ComboBoxEx_GetHandle,
+  ComboBoxEx_GetParentWindow,
+  ComboBoxEx_SetParentWindow,
+  ComboBoxEx_GetUseDockManager,
+  ComboBoxEx_SetUseDockManager,
+  ComboBoxEx_GetBoundsRect,
+  ComboBoxEx_SetBoundsRect,
+  ComboBoxEx_GetClientHeight,
+  ComboBoxEx_SetClientHeight,
+  ComboBoxEx_GetClientOrigin,
+  ComboBoxEx_GetClientRect,
+  ComboBoxEx_GetClientWidth,
+  ComboBoxEx_SetClientWidth,
+  ComboBoxEx_GetControlState,
+  ComboBoxEx_SetControlState,
+  ComboBoxEx_GetControlStyle,
+  ComboBoxEx_SetControlStyle,
+  ComboBoxEx_GetFloating,
+  ComboBoxEx_GetParent,
+  ComboBoxEx_SetParent,
+  ComboBoxEx_GetLeft,
+  ComboBoxEx_SetLeft,
+  ComboBoxEx_GetTop,
+  ComboBoxEx_SetTop,
+  ComboBoxEx_GetWidth,
+  ComboBoxEx_SetWidth,
+  ComboBoxEx_GetHeight,
+  ComboBoxEx_SetHeight,
+  ComboBoxEx_GetCursor,
+  ComboBoxEx_SetCursor,
+  ComboBoxEx_GetHint,
+  ComboBoxEx_SetHint,
+  ComboBoxEx_GetComponentCount,
+  ComboBoxEx_GetComponentIndex,
+  ComboBoxEx_SetComponentIndex,
+  ComboBoxEx_GetOwner,
+  ComboBoxEx_GetName,
+  ComboBoxEx_SetName,
+  ComboBoxEx_GetTag,
+  ComboBoxEx_SetTag,
+  ComboBoxEx_GetDockClients,
+  ComboBoxEx_GetControls,
+  ComboBoxEx_GetComponents,
+  ComboBoxEx_StaticClassType,
+  ComboBoxEx_GetMargins,
+  ComboBoxEx_SetMargins;
+

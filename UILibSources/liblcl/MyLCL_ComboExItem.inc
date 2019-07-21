@@ -1,0 +1,158 @@
+procedure ComboExItem_Assign(AObj: TComboExItem; Source: TPersistent); extdecl;
+begin
+  AObj.Assign(Source);
+end;
+
+function ComboExItem_GetNamePath(AObj: TComboExItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.GetNamePath);
+end;
+
+function ComboExItem_ClassType(AObj: TComboExItem): TClass; extdecl;
+begin
+  Result :=  AObj.ClassType;
+end;
+
+function ComboExItem_ClassName(AObj: TComboExItem): PChar; extdecl;
+begin
+  Result :=  ToPChar(AObj.ClassName);
+end;
+
+function ComboExItem_InstanceSize(AObj: TComboExItem): Integer; extdecl;
+begin
+  Result :=  AObj.InstanceSize;
+end;
+
+function ComboExItem_InheritsFrom(AObj: TComboExItem; AClass: TClass): LongBool; extdecl;
+begin
+  Result :=  AObj.InheritsFrom(AClass);
+end;
+
+function ComboExItem_Equals(AObj: TComboExItem; Obj: TObject): LongBool; extdecl;
+begin
+  Result :=  AObj.Equals(Obj);
+end;
+
+function ComboExItem_GetHashCode(AObj: TComboExItem): Integer; extdecl;
+begin
+  Result :=  AObj.GetHashCode;
+end;
+
+function ComboExItem_ToString(AObj: TComboExItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.ToString);
+end;
+
+function ComboExItem_GetIndent(AObj: TComboExItem): Integer; extdecl;
+begin
+  Result :=  AObj.Indent;
+end;
+
+procedure ComboExItem_SetIndent(AObj: TComboExItem; AValue: Integer); extdecl;
+begin
+  AObj.Indent := AValue;
+end;
+
+function ComboExItem_GetOverlayImageIndex(AObj: TComboExItem): TImageIndex; extdecl;
+begin
+  Result :=  AObj.OverlayImageIndex;
+end;
+
+procedure ComboExItem_SetOverlayImageIndex(AObj: TComboExItem; AValue: TImageIndex); extdecl;
+begin
+  AObj.OverlayImageIndex := AValue;
+end;
+
+function ComboExItem_GetData(AObj: TComboExItem): Pointer; extdecl;
+begin
+  Result :=  AObj.Data;
+end;
+
+procedure ComboExItem_SetData(AObj: TComboExItem; AValue: Pointer); extdecl;
+begin
+  AObj.Data := AValue;
+end;
+
+function ComboExItem_GetCaption(AObj: TComboExItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Caption);
+end;
+
+procedure ComboExItem_SetCaption(AObj: TComboExItem; AValue: PChar); extdecl;
+begin
+  AObj.Caption := AValue;
+end;
+
+function ComboExItem_GetImageIndex(AObj: TComboExItem): TImageIndex; extdecl;
+begin
+  Result :=  AObj.ImageIndex;
+end;
+
+procedure ComboExItem_SetImageIndex(AObj: TComboExItem; AValue: TImageIndex); extdecl;
+begin
+  AObj.ImageIndex := AValue;
+end;
+
+function ComboExItem_GetCollection(AObj: TComboExItem): TCollection; extdecl;
+begin
+  Result :=  AObj.Collection;
+end;
+
+procedure ComboExItem_SetCollection(AObj: TComboExItem; AValue: TCollection); extdecl;
+begin
+  AObj.Collection := AValue;
+end;
+
+function ComboExItem_GetIndex(AObj: TComboExItem): Integer; extdecl;
+begin
+  Result :=  AObj.Index;
+end;
+
+procedure ComboExItem_SetIndex(AObj: TComboExItem; AValue: Integer); extdecl;
+begin
+  AObj.Index := AValue;
+end;
+
+function ComboExItem_GetDisplayName(AObj: TComboExItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure ComboExItem_SetDisplayName(AObj: TComboExItem; AValue: PChar); extdecl;
+begin
+  AObj.DisplayName := AValue;
+end;
+
+function ComboExItem_StaticClassType: TClass; extdecl;
+begin
+  Result := TComboExItem;
+end;
+
+exports
+  ComboExItem_Assign,
+  ComboExItem_GetNamePath,
+  ComboExItem_ClassType,
+  ComboExItem_ClassName,
+  ComboExItem_InstanceSize,
+  ComboExItem_InheritsFrom,
+  ComboExItem_Equals,
+  ComboExItem_GetHashCode,
+  ComboExItem_ToString,
+  ComboExItem_GetIndent,
+  ComboExItem_SetIndent,
+  ComboExItem_GetOverlayImageIndex,
+  ComboExItem_SetOverlayImageIndex,
+  ComboExItem_GetData,
+  ComboExItem_SetData,
+  ComboExItem_GetCaption,
+  ComboExItem_SetCaption,
+  ComboExItem_GetImageIndex,
+  ComboExItem_SetImageIndex,
+  ComboExItem_GetCollection,
+  ComboExItem_SetCollection,
+  ComboExItem_GetIndex,
+  ComboExItem_SetIndex,
+  ComboExItem_GetDisplayName,
+  ComboExItem_SetDisplayName,
+  ComboExItem_StaticClassType;
+
