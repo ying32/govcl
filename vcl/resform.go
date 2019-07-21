@@ -91,8 +91,12 @@ func fullFiledVal(f IComponent, out interface{}, fullSubComponent, afterBindSubC
 			}
 			f.SetName(newName)
 		}
-		// TForm，默认的, 使用隐式嵌入
-		setFiledVal("TForm", f.Instance(), vPtr)
+		// TForm/TFrame，默认的, 使用隐式嵌入
+		className := "TForm"
+		if f.ClassName() == "TFrame" {
+			className = "TFrame"
+		}
+		setFiledVal(className, f.Instance(), vPtr)
 		// fullComponent 只有当是从资源加载的才进行填充操作。
 		if fullSubComponent {
 			var ci int32

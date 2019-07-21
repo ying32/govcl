@@ -90,6 +90,10 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 		if component.Equals(root) {
 			name1 = "Form"
 			name2 = "TForm"
+			if root.ClassName() == "TFrame" {
+				name1 = "Frame"
+				name2 = "TFrame"
+			}
 		} else if component.Equals(Application) {
 			name1 = "Application"
 			name2 = name1
