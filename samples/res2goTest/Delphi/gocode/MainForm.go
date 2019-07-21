@@ -33,8 +33,8 @@ var MainForm *TMainForm
 // 以字节形式加载
 // vcl.Application.CreateForm(mainFormBytes, &MainForm)
 
-func NewMainForm(owner vcl.IComponent) (form *TMainForm)  {
-    vcl.CreateResForm(owner, mainFormBytes, &form)
+func NewMainForm(owner vcl.IComponent) (root *TMainForm)  {
+    vcl.CreateResForm(owner, mainFormBytes, &root)
     return
 }
 

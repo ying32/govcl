@@ -20,8 +20,8 @@ var About *TAbout
 // 以字节形式加载
 // vcl.Application.CreateForm(aboutBytes, &About)
 
-func NewAbout(owner vcl.IComponent) (form *TAbout)  {
-    vcl.CreateResForm(owner, aboutBytes, &form)
+func NewAbout(owner vcl.IComponent) (root *TAbout)  {
+    vcl.CreateResForm(owner, aboutBytes, &root)
     return
 }
 
