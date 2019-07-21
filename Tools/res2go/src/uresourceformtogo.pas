@@ -504,6 +504,7 @@ var
   LFindEvent: Boolean;
   LReadEventName: string;
   LSCPkgName: string;
+  LIsFrame: Boolean; // 这个没办法判断准确
 begin
   LStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
   LBuffer := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
@@ -527,8 +528,16 @@ begin
     WLine(')');
     WLine;
     LFormName := PComponentItem(AComponents[0])^.Name;
+
+    LIsFrame := False;
+    if Pos('Frame', LFormName) <> 0 then
+      LIsFrame := True;
+
     WLine(Format('type T%s struct {', [LFormName]));
-    WLine('    *vcl.TForm');
+    if LIsFrame then
+      WLine('    *vcl.TFrame')
+    else
+      WLine('    *vcl.TForm');
     LMaxLen := GetMaxLength;
     for I := 1 to AComponents.Count - 1 do
     begin
@@ -600,11 +609,24 @@ begin
     // AMem = nil表示不以字节输出到go文件
     if AMem = nil then
     begin
-      if SysIsZhCN then
-        Wline('// 以文件形式加载')
+      if not LIsFrame then
+      begin
+        if SysIsZhCN then
+          Wline('// 以文件形式加载')
+        else
+          WLine('// Loaded as a file.');
+        WLine(Format('// vcl.Application.CreateForm("%s.gfm", &%s)', [LFormName, LFormName]));
+      end;
+
+      // 添加一个默认构建的，不使用Application.CreateForm
+      WLine(Format('func New%s(owner vcl.IComponent) (root *T%s)  {', [LFormName, LFormName]));
+      if not LIsFrame then
+        WLine(Format('    vcl.CreateResForm(owner, "%s.gfm", &root)', [LFormName]))
       else
-        WLine('// Loaded as a file.');
-      WLine(Format('// vcl.Application.CreateForm("%s.gfm", &%s)', [LFormName, LFormName]));
+        WLine(Format('    vcl.CreateResFrame(owner, "%s.gfm", &root)', [LFormName]));
+      WLine('    return');
+      WLine('}');
+      WLine('');
     end
     else
     begin
@@ -620,12 +642,26 @@ begin
     {$ENDIF}
       end;
 
-      if SysIsZhCN then
-        WLine('// 以字节形式加载')
+      if not LIsFrame then
+      begin
+        if SysIsZhCN then
+          WLine('// 以字节形式加载')
+        else
+          WLine('// Loaded in bytes.');
+        WLine(Format('// vcl.Application.CreateForm(%s, &%s)', [LVarName, LFormName]));
+        WLine;
+      end;
+      // 添加一个默认构建的，不使用Application.CreateForm
+      WLine(Format('func New%s(owner vcl.IComponent) (root *T%s)  {', [LFormName, LFormName]));
+      if not LIsFrame then
+        WLine(Format('    vcl.CreateResForm(owner, %s, &root)', [LVarName]))
       else
-        WLine('// Loaded in bytes.');
-      WLine(Format('// vcl.Application.CreateForm(%s, &%s)', [LVarName, LFormName]));
-      WLine;
+        WLine(Format('    vcl.CreateResFrame(owner, %s, &root)', [LVarName]));
+      WLine('    return');
+      WLine('}');
+      WLine('');
+
+
       if not LUseStr then
       begin
         WLine('var (');
