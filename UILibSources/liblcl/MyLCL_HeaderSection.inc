@@ -150,6 +150,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function HeaderSection_GetDisplayName(AObj: THeaderSection): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure HeaderSection_SetDisplayName(AObj: THeaderSection; AValue: PChar); extdecl;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function HeaderSection_StaticClassType: TClass; extdecl;
 begin
   Result := THeaderSection;
@@ -185,5 +195,7 @@ exports
   HeaderSection_SetCollection,
   HeaderSection_GetIndex,
   HeaderSection_SetIndex,
+  HeaderSection_GetDisplayName,
+  HeaderSection_SetDisplayName,
   HeaderSection_StaticClassType;
 

@@ -360,6 +360,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function ColorBox_GetConstraints(AObj: TColorBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ColorBox_SetConstraints(AObj: TColorBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ColorBox_GetDoubleBuffered(AObj: TColorBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -588,6 +598,13 @@ procedure ColorBox_SetOnMouseLeave(AObj: TColorBox; AEventId: NativeUInt); extde
 begin
   {$DEFINE EventName := OnMouseLeave}
   {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
+end;
+
+procedure ColorBox_SetOnSelect(AObj: TColorBox; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnSelect}
+  {$DEFINE EventMethodName := OnSelect}
   EventMethodCode
 end;
 
@@ -1023,6 +1040,8 @@ exports
   ColorBox_SetBiDiMode,
   ColorBox_GetColor,
   ColorBox_SetColor,
+  ColorBox_GetConstraints,
+  ColorBox_SetConstraints,
   ColorBox_GetDoubleBuffered,
   ColorBox_SetDoubleBuffered,
   ColorBox_GetDropDownCount,
@@ -1064,6 +1083,7 @@ exports
   ColorBox_SetOnKeyUp,
   ColorBox_SetOnMouseEnter,
   ColorBox_SetOnMouseLeave,
+  ColorBox_SetOnSelect,
   ColorBox_GetCharCase,
   ColorBox_SetCharCase,
   ColorBox_GetSelText,

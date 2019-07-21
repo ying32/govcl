@@ -310,6 +310,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function CoolBar_GetConstraints(AObj: TCoolBar): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CoolBar_SetConstraints(AObj: TCoolBar; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function CoolBar_GetDockSite(AObj: TCoolBar): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -1023,6 +1033,8 @@ exports
   CoolBar_SetBorderWidth,
   CoolBar_GetColor,
   CoolBar_SetColor,
+  CoolBar_GetConstraints,
+  CoolBar_SetConstraints,
   CoolBar_GetDockSite,
   CoolBar_SetDockSite,
   CoolBar_GetDoubleBuffered,

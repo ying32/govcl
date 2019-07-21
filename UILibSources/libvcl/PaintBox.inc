@@ -200,6 +200,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function PaintBox_GetConstraints(AObj: TPaintBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure PaintBox_SetConstraints(AObj: TPaintBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function PaintBox_GetDragCursor(AObj: TPaintBox): TCursor; stdcall;
 begin
   Result :=  AObj.DragCursor;
@@ -807,6 +817,8 @@ exports
   PaintBox_SetAnchors,
   PaintBox_GetColor,
   PaintBox_SetColor,
+  PaintBox_GetConstraints,
+  PaintBox_SetConstraints,
   PaintBox_GetDragCursor,
   PaintBox_SetDragCursor,
   PaintBox_GetDragKind,

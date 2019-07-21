@@ -58,13 +58,14 @@ uses
   ValEdit,
   Gauges,
   Spin,
+  ComboEx,
   {$I UserDefineComponentUses.inc}
   uMiniWebview;
 
 {$I LazarusExtDef.inc}
 
 const
-  ClassRefArrs: array[0..116] of TClass = (
+  ClassRefArrs: array[0..120] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -88,7 +89,7 @@ const
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
     TFlowPanel,TCoolBar,TCoolBands,TCoolBand, TSpinEdit,TMiniWebview,
     TTaskDialog, TTaskDialogButtons, {TTaskDialogProgressBar, }TTaskDialogButtonItem, TTaskDialogRadioButtonItem, TTaskDialogBaseButtonItem,TCalendar,
-    TControlBorderSpacing
+    TControlBorderSpacing,TComboBoxEx,TFrame,TControlScrollBar,TSizeConstraints
   );
 
 procedure AddComponentClass(AClass: TClass);

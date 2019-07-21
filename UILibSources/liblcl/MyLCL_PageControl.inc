@@ -290,6 +290,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function PageControl_GetConstraints(AObj: TPageControl): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure PageControl_SetConstraints(AObj: TPageControl; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function PageControl_GetDockSite(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -961,6 +971,8 @@ exports
   PageControl_SetAnchors,
   PageControl_GetBiDiMode,
   PageControl_SetBiDiMode,
+  PageControl_GetConstraints,
+  PageControl_SetConstraints,
   PageControl_GetDockSite,
   PageControl_SetDockSite,
   PageControl_GetDoubleBuffered,

@@ -365,6 +365,16 @@ begin
   AObj.Items := AValue;
 end;
 
+function RadioGroup_GetConstraints(AObj: TRadioGroup): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure RadioGroup_SetConstraints(AObj: TRadioGroup; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function RadioGroup_GetParentColor(AObj: TRadioGroup): LongBool; extdecl;
 begin
   Result :=  AObj.ParentColor;
@@ -845,6 +855,8 @@ exports
   RadioGroup_SetItemIndex,
   RadioGroup_GetItems,
   RadioGroup_SetItems,
+  RadioGroup_GetConstraints,
+  RadioGroup_SetConstraints,
   RadioGroup_GetParentColor,
   RadioGroup_SetParentColor,
   RadioGroup_GetParentDoubleBuffered,

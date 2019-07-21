@@ -30,6 +30,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ColorListBox_CopySelection(AObj: TColorListBox; Destination: TCustomListControl); stdcall;
+begin
+  AObj.CopySelection(Destination);
+end;
+
 procedure ColorListBox_DeleteSelected(AObj: TColorListBox); stdcall;
 begin
   AObj.DeleteSelected;
@@ -403,6 +408,26 @@ end;
 procedure ColorListBox_SetColor(AObj: TColorListBox; AValue: TColor); stdcall;
 begin
   AObj.Color := AValue;
+end;
+
+function ColorListBox_GetConstraints(AObj: TColorListBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ColorListBox_SetConstraints(AObj: TColorListBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function ColorListBox_GetCtl3D(AObj: TColorListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ColorListBox_SetCtl3D(AObj: TColorListBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
 end;
 
 function ColorListBox_GetDoubleBuffered(AObj: TColorListBox): LongBool; stdcall;
@@ -1191,6 +1216,7 @@ exports
   ColorListBox_AddItem,
   ColorListBox_Clear,
   ColorListBox_ClearSelection,
+  ColorListBox_CopySelection,
   ColorListBox_DeleteSelected,
   ColorListBox_SelectAll,
   ColorListBox_CanFocus,
@@ -1266,6 +1292,10 @@ exports
   ColorListBox_SetBiDiMode,
   ColorListBox_GetColor,
   ColorListBox_SetColor,
+  ColorListBox_GetConstraints,
+  ColorListBox_SetConstraints,
+  ColorListBox_GetCtl3D,
+  ColorListBox_SetCtl3D,
   ColorListBox_GetDoubleBuffered,
   ColorListBox_SetDoubleBuffered,
   ColorListBox_GetEnabled,

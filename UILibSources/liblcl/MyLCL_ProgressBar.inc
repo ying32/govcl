@@ -335,6 +335,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ProgressBar_GetConstraints(AObj: TProgressBar): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ProgressBar_SetConstraints(AObj: TProgressBar; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ProgressBar_GetMin(AObj: TProgressBar): Integer; extdecl;
 begin
   Result :=  AObj.Min;
@@ -894,6 +904,8 @@ exports
   ProgressBar_SetEnabled,
   ProgressBar_GetHint,
   ProgressBar_SetHint,
+  ProgressBar_GetConstraints,
+  ProgressBar_SetConstraints,
   ProgressBar_GetMin,
   ProgressBar_SetMin,
   ProgressBar_GetMax,

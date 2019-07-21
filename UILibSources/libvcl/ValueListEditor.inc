@@ -340,6 +340,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function ValueListEditor_GetConstraints(AObj: TValueListEditor): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ValueListEditor_SetConstraints(AObj: TValueListEditor; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function ValueListEditor_GetCtl3D(AObj: TValueListEditor): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ValueListEditor_SetCtl3D(AObj: TValueListEditor; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function ValueListEditor_GetDefaultColWidth(AObj: TValueListEditor): Integer; stdcall;
 begin
   Result :=  AObj.DefaultColWidth;
@@ -1491,6 +1511,10 @@ exports
   ValueListEditor_SetBorderStyle,
   ValueListEditor_GetColor,
   ValueListEditor_SetColor,
+  ValueListEditor_GetConstraints,
+  ValueListEditor_SetConstraints,
+  ValueListEditor_GetCtl3D,
+  ValueListEditor_SetCtl3D,
   ValueListEditor_GetDefaultColWidth,
   ValueListEditor_SetDefaultColWidth,
   ValueListEditor_GetDefaultDrawing,

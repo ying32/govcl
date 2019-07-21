@@ -170,6 +170,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function SaveDialog_GetCtl3D(AObj: TSaveDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure SaveDialog_SetCtl3D(AObj: TSaveDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure SaveDialog_SetOnClose(AObj: TSaveDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -278,6 +288,8 @@ exports
   SaveDialog_GetTitle,
   SaveDialog_SetTitle,
   SaveDialog_GetHandle,
+  SaveDialog_GetCtl3D,
+  SaveDialog_SetCtl3D,
   SaveDialog_SetOnClose,
   SaveDialog_SetOnShow,
   SaveDialog_GetComponentCount,

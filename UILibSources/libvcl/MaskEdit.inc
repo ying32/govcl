@@ -430,6 +430,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function MaskEdit_GetConstraints(AObj: TMaskEdit): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure MaskEdit_SetConstraints(AObj: TMaskEdit; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function MaskEdit_GetCtl3D(AObj: TMaskEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure MaskEdit_SetCtl3D(AObj: TMaskEdit; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function MaskEdit_GetDoubleBuffered(AObj: TMaskEdit): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1356,6 +1376,10 @@ exports
   MaskEdit_SetCharCase,
   MaskEdit_GetColor,
   MaskEdit_SetColor,
+  MaskEdit_GetConstraints,
+  MaskEdit_SetConstraints,
+  MaskEdit_GetCtl3D,
+  MaskEdit_SetCtl3D,
   MaskEdit_GetDoubleBuffered,
   MaskEdit_SetDoubleBuffered,
   MaskEdit_GetDragCursor,

@@ -165,6 +165,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function ListGroup_GetDisplayName(AObj: TListGroup): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure ListGroup_SetDisplayName(AObj: TListGroup; AValue: PChar); stdcall;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function ListGroup_StaticClassType: TClass; stdcall;
 begin
   Result := TListGroup;
@@ -203,5 +213,7 @@ exports
   ListGroup_SetCollection,
   ListGroup_GetIndex,
   ListGroup_SetIndex,
+  ListGroup_GetDisplayName,
+  ListGroup_SetDisplayName,
   ListGroup_StaticClassType;
 

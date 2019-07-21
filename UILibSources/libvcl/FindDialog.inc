@@ -152,6 +152,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function FindDialog_GetCtl3D(AObj: TFindDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure FindDialog_SetCtl3D(AObj: TFindDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure FindDialog_SetOnClose(AObj: TFindDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -255,6 +265,8 @@ exports
   FindDialog_SetOptions,
   FindDialog_SetOnFind,
   FindDialog_GetHandle,
+  FindDialog_GetCtl3D,
+  FindDialog_SetCtl3D,
   FindDialog_SetOnClose,
   FindDialog_SetOnShow,
   FindDialog_GetComponentCount,

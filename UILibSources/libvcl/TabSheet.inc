@@ -365,6 +365,16 @@ begin
   AObj.Left := AValue;
 end;
 
+function TabSheet_GetConstraints(AObj: TTabSheet): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure TabSheet_SetConstraints(AObj: TTabSheet; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function TabSheet_GetPageIndex(AObj: TTabSheet): Integer; stdcall;
 begin
   Result :=  AObj.PageIndex;
@@ -1070,6 +1080,8 @@ exports
   TabSheet_SetImageIndex,
   TabSheet_GetLeft,
   TabSheet_SetLeft,
+  TabSheet_GetConstraints,
+  TabSheet_SetConstraints,
   TabSheet_GetPageIndex,
   TabSheet_SetPageIndex,
   TabSheet_GetParentDoubleBuffered,

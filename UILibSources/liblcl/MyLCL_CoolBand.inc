@@ -245,6 +245,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function CoolBand_GetDisplayName(AObj: TCoolBand): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure CoolBand_SetDisplayName(AObj: TCoolBand; AValue: PChar); extdecl;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function CoolBand_StaticClassType: TClass; extdecl;
 begin
   Result := TCoolBand;
@@ -299,5 +309,7 @@ exports
   CoolBand_SetCollection,
   CoolBand_GetIndex,
   CoolBand_SetIndex,
+  CoolBand_GetDisplayName,
+  CoolBand_SetDisplayName,
   CoolBand_StaticClassType;
 

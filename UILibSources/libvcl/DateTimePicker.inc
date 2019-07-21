@@ -355,6 +355,16 @@ begin
   AObj.CalColors := AValue;
 end;
 
+function DateTimePicker_GetConstraints(AObj: TDateTimePicker): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure DateTimePicker_SetConstraints(AObj: TDateTimePicker; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function DateTimePicker_GetDate(AObj: TDateTimePicker): TUnixDateTime; stdcall;
 begin
   Result :=  ToUnixTime(AObj.Date);
@@ -659,6 +669,18 @@ begin
   end;
   AObj.OnContextPopup := TEventClass.OnContextPopup;
   TEventClass.Add(AObj, @TEventClass.OnContextPopup, AEventId);
+end;
+
+procedure DateTimePicker_SetOnDropDown(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDropDown := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnDropDown);
+    Exit;
+  end;
+  AObj.OnDropDown := TEventClass.OnDropDown;
+  TEventClass.Add(AObj, @TEventClass.OnDropDown, AEventId);
 end;
 
 procedure DateTimePicker_SetOnDragDrop(AObj: TDateTimePicker; AEventId: NativeUInt); stdcall;
@@ -1208,6 +1230,8 @@ exports
   DateTimePicker_SetCalAlignment,
   DateTimePicker_GetCalColors,
   DateTimePicker_SetCalColors,
+  DateTimePicker_GetConstraints,
+  DateTimePicker_SetConstraints,
   DateTimePicker_GetDate,
   DateTimePicker_SetDate,
   DateTimePicker_GetFormat,
@@ -1265,6 +1289,7 @@ exports
   DateTimePicker_SetOnClick,
   DateTimePicker_SetOnChange,
   DateTimePicker_SetOnContextPopup,
+  DateTimePicker_SetOnDropDown,
   DateTimePicker_SetOnDragDrop,
   DateTimePicker_SetOnDragOver,
   DateTimePicker_SetOnEndDock,

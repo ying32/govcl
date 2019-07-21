@@ -340,6 +340,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function ComboBox_GetConstraints(AObj: TComboBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ComboBox_SetConstraints(AObj: TComboBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ComboBox_GetDoubleBuffered(AObj: TComboBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -659,6 +669,13 @@ procedure ComboBox_SetOnMouseLeave(AObj: TComboBox; AEventId: NativeUInt); extde
 begin
   {$DEFINE EventName := OnMouseLeave}
   {$DEFINE EventMethodName := OnMouseLeave}
+  EventMethodCode
+end;
+
+procedure ComboBox_SetOnSelect(AObj: TComboBox; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnSelect}
+  {$DEFINE EventMethodName := OnSelect}
   EventMethodCode
 end;
 
@@ -1060,6 +1077,8 @@ exports
   ComboBox_SetCharCase,
   ComboBox_GetColor,
   ComboBox_SetColor,
+  ComboBox_GetConstraints,
+  ComboBox_SetConstraints,
   ComboBox_GetDoubleBuffered,
   ComboBox_SetDoubleBuffered,
   ComboBox_GetDragCursor,
@@ -1118,6 +1137,7 @@ exports
   ComboBox_SetOnMeasureItem,
   ComboBox_SetOnMouseEnter,
   ComboBox_SetOnMouseLeave,
+  ComboBox_SetOnSelect,
   ComboBox_GetItems,
   ComboBox_SetItems,
   ComboBox_GetSelText,

@@ -400,6 +400,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function FlowPanel_GetConstraints(AObj: TFlowPanel): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure FlowPanel_SetConstraints(AObj: TFlowPanel; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function FlowPanel_GetCtl3D(AObj: TFlowPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure FlowPanel_SetCtl3D(AObj: TFlowPanel; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function FlowPanel_GetUseDockManager(AObj: TFlowPanel): LongBool; stdcall;
 begin
   Result :=  AObj.UseDockManager;
@@ -1272,6 +1292,10 @@ exports
   FlowPanel_SetCaption,
   FlowPanel_GetColor,
   FlowPanel_SetColor,
+  FlowPanel_GetConstraints,
+  FlowPanel_SetConstraints,
+  FlowPanel_GetCtl3D,
+  FlowPanel_SetCtl3D,
   FlowPanel_GetUseDockManager,
   FlowPanel_SetUseDockManager,
   FlowPanel_GetDockSite,

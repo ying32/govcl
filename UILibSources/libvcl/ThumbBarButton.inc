@@ -125,6 +125,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function ThumbBarButton_GetDisplayName(AObj: TThumbBarButton): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure ThumbBarButton_SetDisplayName(AObj: TThumbBarButton; AValue: PChar); stdcall;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function ThumbBarButton_StaticClassType: TClass; stdcall;
 begin
   Result := TThumbBarButton;
@@ -155,5 +165,7 @@ exports
   ThumbBarButton_SetCollection,
   ThumbBarButton_GetIndex,
   ThumbBarButton_SetIndex,
+  ThumbBarButton_GetDisplayName,
+  ThumbBarButton_SetDisplayName,
   ThumbBarButton_StaticClassType;
 

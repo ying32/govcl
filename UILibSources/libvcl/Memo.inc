@@ -405,6 +405,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function Memo_GetConstraints(AObj: TMemo): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Memo_SetConstraints(AObj: TMemo; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function Memo_GetCtl3D(AObj: TMemo): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure Memo_SetCtl3D(AObj: TMemo; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function Memo_GetDoubleBuffered(AObj: TMemo): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1383,6 +1403,10 @@ exports
   Memo_SetCharCase,
   Memo_GetColor,
   Memo_SetColor,
+  Memo_GetConstraints,
+  Memo_SetConstraints,
+  Memo_GetCtl3D,
+  Memo_SetCtl3D,
   Memo_GetDoubleBuffered,
   Memo_SetDoubleBuffered,
   Memo_GetDragCursor,

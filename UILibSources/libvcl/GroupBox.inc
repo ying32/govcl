@@ -300,6 +300,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function GroupBox_GetConstraints(AObj: TGroupBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure GroupBox_SetConstraints(AObj: TGroupBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function GroupBox_GetCtl3D(AObj: TGroupBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure GroupBox_SetCtl3D(AObj: TGroupBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function GroupBox_GetDockSite(AObj: TGroupBox): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -1100,6 +1120,10 @@ exports
   GroupBox_SetCaption,
   GroupBox_GetColor,
   GroupBox_SetColor,
+  GroupBox_GetConstraints,
+  GroupBox_SetConstraints,
+  GroupBox_GetCtl3D,
+  GroupBox_SetCtl3D,
   GroupBox_GetDockSite,
   GroupBox_SetDockSite,
   GroupBox_GetDoubleBuffered,

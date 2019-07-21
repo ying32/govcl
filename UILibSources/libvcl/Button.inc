@@ -325,6 +325,16 @@ begin
   AObj.CommandLinkHint := AValue;
 end;
 
+function Button_GetConstraints(AObj: TButton): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Button_SetConstraints(AObj: TButton; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Button_GetDefault(AObj: TButton): LongBool; stdcall;
 begin
   Result :=  AObj.Default;
@@ -1208,6 +1218,8 @@ exports
   Button_SetCaption,
   Button_GetCommandLinkHint,
   Button_SetCommandLinkHint,
+  Button_GetConstraints,
+  Button_SetConstraints,
   Button_GetDefault,
   Button_SetDefault,
   Button_GetDisabledImageIndex,

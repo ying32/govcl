@@ -174,6 +174,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function ReplaceDialog_GetCtl3D(AObj: TReplaceDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ReplaceDialog_SetCtl3D(AObj: TReplaceDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure ReplaceDialog_SetOnClose(AObj: TReplaceDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -280,6 +290,8 @@ exports
   ReplaceDialog_SetOptions,
   ReplaceDialog_SetOnFind,
   ReplaceDialog_GetHandle,
+  ReplaceDialog_GetCtl3D,
+  ReplaceDialog_SetCtl3D,
   ReplaceDialog_SetOnClose,
   ReplaceDialog_SetOnShow,
   ReplaceDialog_GetComponentCount,

@@ -60,6 +60,7 @@ uses
   Vcl.Taskbar,
   Vcl.Printers,
   Vcl.Samples.Spin,
+  Vcl.ListActns,
   uFormDesignerFile,
 {$I UserDefineComponentUses.inc}
   uEventCallback in 'uEventCallback.pas',
@@ -224,6 +225,12 @@ uses
 {$I TaskDialogButtonItem.inc}
 {$I TaskDialogRadioButtonItem.inc}
 {$I TaskDialogBaseButtonItem.inc}
+{$I ComboBoxEx.inc}
+{$I ComboExItems.inc}
+{$I ComboExItem.inc}
+{$I Frame.inc}
+{$I ControlScrollBar.inc}
+{$I SizeConstraints.inc}
 
 // 用户自己定义的组件
 {$I UserDefineComponents.inc}

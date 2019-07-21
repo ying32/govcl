@@ -345,6 +345,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function Panel_GetConstraints(AObj: TPanel): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Panel_SetConstraints(AObj: TPanel; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Panel_GetUseDockManager(AObj: TPanel): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -982,6 +992,8 @@ exports
   Panel_SetCaption,
   Panel_GetColor,
   Panel_SetColor,
+  Panel_GetConstraints,
+  Panel_SetConstraints,
   Panel_GetUseDockManager,
   Panel_SetUseDockManager,
   Panel_GetDockSite,

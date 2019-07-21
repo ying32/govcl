@@ -340,6 +340,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function ColorListBox_GetConstraints(AObj: TColorListBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ColorListBox_SetConstraints(AObj: TColorListBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ColorListBox_GetDoubleBuffered(AObj: TColorListBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -980,6 +990,8 @@ exports
   ColorListBox_SetBiDiMode,
   ColorListBox_GetColor,
   ColorListBox_SetColor,
+  ColorListBox_GetConstraints,
+  ColorListBox_SetConstraints,
   ColorListBox_GetDoubleBuffered,
   ColorListBox_SetDoubleBuffered,
   ColorListBox_GetEnabled,

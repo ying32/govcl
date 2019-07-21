@@ -110,6 +110,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function TaskDialogBaseButtonItem_GetDisplayName(AObj: TTaskDialogBaseButtonItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure TaskDialogBaseButtonItem_SetDisplayName(AObj: TTaskDialogBaseButtonItem; AValue: PChar); extdecl;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function TaskDialogBaseButtonItem_StaticClassType: TClass; extdecl;
 begin
   Result := TTaskDialogBaseButtonItem;
@@ -137,5 +147,7 @@ exports
   TaskDialogBaseButtonItem_SetCollection,
   TaskDialogBaseButtonItem_GetIndex,
   TaskDialogBaseButtonItem_SetIndex,
+  TaskDialogBaseButtonItem_GetDisplayName,
+  TaskDialogBaseButtonItem_SetDisplayName,
   TaskDialogBaseButtonItem_StaticClassType;
 

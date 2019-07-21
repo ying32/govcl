@@ -210,6 +210,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function PageSetupDialog_GetCtl3D(AObj: TPageSetupDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure PageSetupDialog_SetCtl3D(AObj: TPageSetupDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure PageSetupDialog_SetOnClose(AObj: TPageSetupDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -326,6 +336,8 @@ exports
   PageSetupDialog_GetUnits,
   PageSetupDialog_SetUnits,
   PageSetupDialog_GetHandle,
+  PageSetupDialog_GetCtl3D,
+  PageSetupDialog_SetCtl3D,
   PageSetupDialog_SetOnClose,
   PageSetupDialog_SetOnShow,
   PageSetupDialog_GetComponentCount,

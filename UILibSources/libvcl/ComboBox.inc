@@ -30,6 +30,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ComboBox_CopySelection(AObj: TComboBox; Destination: TCustomListControl); stdcall;
+begin
+  AObj.CopySelection(Destination);
+end;
+
 procedure ComboBox_DeleteSelected(AObj: TComboBox); stdcall;
 begin
   AObj.DeleteSelected;
@@ -415,6 +420,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function ComboBox_GetConstraints(AObj: TComboBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ComboBox_SetConstraints(AObj: TComboBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function ComboBox_GetCtl3D(AObj: TComboBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ComboBox_SetCtl3D(AObj: TComboBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function ComboBox_GetDoubleBuffered(AObj: TComboBox): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -739,6 +764,18 @@ begin
   TEventClass.Add(AObj, @TEventClass.ListBoxOnDrawItem, AEventId);
 end;
 
+procedure ComboBox_SetOnDropDown(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDropDown := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnDropDown);
+    Exit;
+  end;
+  AObj.OnDropDown := TEventClass.OnDropDown;
+  TEventClass.Add(AObj, @TEventClass.OnDropDown, AEventId);
+end;
+
 procedure ComboBox_SetOnEndDock(AObj: TComboBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -869,6 +906,18 @@ begin
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
   TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
+end;
+
+procedure ComboBox_SetOnSelect(AObj: TComboBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnSelect := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnSelect);
+    Exit;
+  end;
+  AObj.OnSelect := TEventClass.OnSelect;
+  TEventClass.Add(AObj, @TEventClass.OnSelect, AEventId);
 end;
 
 procedure ComboBox_SetOnStartDock(AObj: TComboBox; AEventId: NativeUInt); stdcall;
@@ -1264,6 +1313,7 @@ exports
   ComboBox_AddItem,
   ComboBox_Clear,
   ComboBox_ClearSelection,
+  ComboBox_CopySelection,
   ComboBox_DeleteSelected,
   ComboBox_Focused,
   ComboBox_SelectAll,
@@ -1341,6 +1391,10 @@ exports
   ComboBox_SetCharCase,
   ComboBox_GetColor,
   ComboBox_SetColor,
+  ComboBox_GetConstraints,
+  ComboBox_SetConstraints,
+  ComboBox_GetCtl3D,
+  ComboBox_SetCtl3D,
   ComboBox_GetDoubleBuffered,
   ComboBox_SetDoubleBuffered,
   ComboBox_GetDragCursor,
@@ -1396,6 +1450,7 @@ exports
   ComboBox_SetOnDragDrop,
   ComboBox_SetOnDragOver,
   ComboBox_SetOnDrawItem,
+  ComboBox_SetOnDropDown,
   ComboBox_SetOnEndDock,
   ComboBox_SetOnEndDrag,
   ComboBox_SetOnEnter,
@@ -1407,6 +1462,7 @@ exports
   ComboBox_SetOnMeasureItem,
   ComboBox_SetOnMouseEnter,
   ComboBox_SetOnMouseLeave,
+  ComboBox_SetOnSelect,
   ComboBox_SetOnStartDock,
   ComboBox_GetItems,
   ComboBox_SetItems,

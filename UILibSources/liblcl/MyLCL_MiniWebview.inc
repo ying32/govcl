@@ -489,6 +489,16 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function MiniWebview_GetConstraints(AObj: TMiniWebview): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure MiniWebview_SetConstraints(AObj: TMiniWebview; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function MiniWebview_GetControlState(AObj: TMiniWebview): TControlState; extdecl;
 begin
   Result :=  AObj.ControlState;
@@ -771,6 +781,8 @@ exports
   MiniWebview_GetClientRect,
   MiniWebview_GetClientWidth,
   MiniWebview_SetClientWidth,
+  MiniWebview_GetConstraints,
+  MiniWebview_SetConstraints,
   MiniWebview_GetControlState,
   MiniWebview_SetControlState,
   MiniWebview_GetControlStyle,

@@ -370,6 +370,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function StaticText_GetConstraints(AObj: TStaticText): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure StaticText_SetConstraints(AObj: TStaticText; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function StaticText_GetDoubleBuffered(AObj: TStaticText): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1124,6 +1134,8 @@ exports
   StaticText_SetCaption,
   StaticText_GetColor,
   StaticText_SetColor,
+  StaticText_GetConstraints,
+  StaticText_SetConstraints,
   StaticText_GetDoubleBuffered,
   StaticText_SetDoubleBuffered,
   StaticText_GetDragCursor,

@@ -365,6 +365,16 @@ begin
   AObj.Font := AValue;
 end;
 
+function StatusBar_GetConstraints(AObj: TStatusBar): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure StatusBar_SetConstraints(AObj: TStatusBar; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function StatusBar_GetPanels(AObj: TStatusBar): TStatusPanels; extdecl;
 begin
   Result :=  AObj.Panels;
@@ -953,6 +963,8 @@ exports
   StatusBar_SetEnabled,
   StatusBar_GetFont,
   StatusBar_SetFont,
+  StatusBar_GetConstraints,
+  StatusBar_SetConstraints,
   StatusBar_GetPanels,
   StatusBar_SetPanels,
   StatusBar_GetParentColor,

@@ -365,6 +365,26 @@ begin
   AObj.ColCount := AValue;
 end;
 
+function StringGrid_GetConstraints(AObj: TStringGrid): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure StringGrid_SetConstraints(AObj: TStringGrid; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function StringGrid_GetCtl3D(AObj: TStringGrid): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure StringGrid_SetCtl3D(AObj: TStringGrid; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function StringGrid_GetDefaultColWidth(AObj: TStringGrid): Integer; stdcall;
 begin
   Result :=  AObj.DefaultColWidth;
@@ -1585,6 +1605,10 @@ exports
   StringGrid_SetColor,
   StringGrid_GetColCount,
   StringGrid_SetColCount,
+  StringGrid_GetConstraints,
+  StringGrid_SetConstraints,
+  StringGrid_GetCtl3D,
+  StringGrid_SetCtl3D,
   StringGrid_GetDefaultColWidth,
   StringGrid_SetDefaultColWidth,
   StringGrid_GetDefaultRowHeight,

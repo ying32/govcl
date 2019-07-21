@@ -170,6 +170,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function OpenDialog_GetCtl3D(AObj: TOpenDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure OpenDialog_SetCtl3D(AObj: TOpenDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure OpenDialog_SetOnClose(AObj: TOpenDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -278,6 +288,8 @@ exports
   OpenDialog_GetTitle,
   OpenDialog_SetTitle,
   OpenDialog_GetHandle,
+  OpenDialog_GetCtl3D,
+  OpenDialog_SetCtl3D,
   OpenDialog_SetOnClose,
   OpenDialog_SetOnShow,
   OpenDialog_GetComponentCount,

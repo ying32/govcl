@@ -335,6 +335,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function SpinEdit_GetConstraints(AObj: TSpinEdit): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure SpinEdit_SetConstraints(AObj: TSpinEdit; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function SpinEdit_GetCtl3D(AObj: TSpinEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure SpinEdit_SetCtl3D(AObj: TSpinEdit; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function SpinEdit_GetDragCursor(AObj: TSpinEdit): TCursor; stdcall;
 begin
   Result :=  AObj.DragCursor;
@@ -1227,6 +1247,10 @@ exports
   SpinEdit_SetAutoSize,
   SpinEdit_GetColor,
   SpinEdit_SetColor,
+  SpinEdit_GetConstraints,
+  SpinEdit_SetConstraints,
+  SpinEdit_GetCtl3D,
+  SpinEdit_SetCtl3D,
   SpinEdit_GetDragCursor,
   SpinEdit_SetDragCursor,
   SpinEdit_GetDragMode,

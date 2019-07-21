@@ -335,6 +335,16 @@ begin
   AObj.Images := AValue;
 end;
 
+function HeaderControl_GetConstraints(AObj: THeaderControl): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure HeaderControl_SetConstraints(AObj: THeaderControl; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function HeaderControl_GetShowHint(AObj: THeaderControl): LongBool; extdecl;
 begin
   Result :=  AObj.ShowHint;
@@ -874,6 +884,8 @@ exports
   HeaderControl_SetFont,
   HeaderControl_GetImages,
   HeaderControl_SetImages,
+  HeaderControl_GetConstraints,
+  HeaderControl_SetConstraints,
   HeaderControl_GetShowHint,
   HeaderControl_SetShowHint,
   HeaderControl_GetParentDoubleBuffered,

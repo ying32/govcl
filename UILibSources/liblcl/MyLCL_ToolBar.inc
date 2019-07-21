@@ -330,6 +330,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function ToolBar_GetConstraints(AObj: TToolBar): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ToolBar_SetConstraints(AObj: TToolBar; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ToolBar_GetDoubleBuffered(AObj: TToolBar): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1058,6 +1068,8 @@ exports
   ToolBar_SetCaption,
   ToolBar_GetColor,
   ToolBar_SetColor,
+  ToolBar_GetConstraints,
+  ToolBar_SetConstraints,
   ToolBar_GetDoubleBuffered,
   ToolBar_SetDoubleBuffered,
   ToolBar_GetDockSite,

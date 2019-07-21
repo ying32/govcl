@@ -40,6 +40,11 @@ begin
   Result :=  AObj.ShowModal;
 end;
 
+procedure Form_ScrollInView(AObj: TForm; AControl: TControl); extdecl;
+begin
+  AObj.ScrollInView(AControl);
+end;
+
 function Form_CanFocus(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -295,6 +300,16 @@ begin
   AObj.Anchors := AValue;
 end;
 
+function Form_GetAutoScroll(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoScroll;
+end;
+
+procedure Form_SetAutoScroll(AObj: TForm; AValue: LongBool); extdecl;
+begin
+  AObj.AutoScroll := AValue;
+end;
+
 function Form_GetAutoSize(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.AutoSize;
@@ -383,6 +398,16 @@ end;
 procedure Form_SetColor(AObj: TForm; AValue: TColor); extdecl;
 begin
   AObj.Color := AValue;
+end;
+
+function Form_GetConstraints(AObj: TForm): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Form_SetConstraints(AObj: TForm; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
 end;
 
 function Form_GetUseDockManager(AObj: TForm): LongBool; extdecl;
@@ -485,6 +510,16 @@ begin
   AObj.Height := AValue;
 end;
 
+function Form_GetHorzScrollBar(AObj: TForm): TControlScrollBar; extdecl;
+begin
+  Result :=  AObj.HorzScrollBar;
+end;
+
+procedure Form_SetHorzScrollBar(AObj: TForm; AValue: TControlScrollBar); extdecl;
+begin
+  AObj.HorzScrollBar := AValue;
+end;
+
 function Form_GetIcon(AObj: TForm): TIcon; extdecl;
 begin
   Result :=  AObj.Icon;
@@ -563,6 +598,16 @@ end;
 procedure Form_SetShowHint(AObj: TForm; AValue: LongBool); extdecl;
 begin
   AObj.ShowHint := AValue;
+end;
+
+function Form_GetVertScrollBar(AObj: TForm): TControlScrollBar; extdecl;
+begin
+  Result :=  AObj.VertScrollBar;
+end;
+
+procedure Form_SetVertScrollBar(AObj: TForm; AValue: TControlScrollBar); extdecl;
+begin
+  AObj.VertScrollBar := AValue;
 end;
 
 function Form_GetVisible(AObj: TForm): LongBool; extdecl;
@@ -1056,6 +1101,7 @@ exports
   Form_SetFocus,
   Form_Show,
   Form_ShowModal,
+  Form_ScrollInView,
   Form_CanFocus,
   Form_ContainsControl,
   Form_ControlAtPos,
@@ -1107,6 +1153,8 @@ exports
   Form_SetAlphaBlendValue,
   Form_GetAnchors,
   Form_SetAnchors,
+  Form_GetAutoScroll,
+  Form_SetAutoScroll,
   Form_GetAutoSize,
   Form_SetAutoSize,
   Form_GetBiDiMode,
@@ -1125,6 +1173,8 @@ exports
   Form_SetClientWidth,
   Form_GetColor,
   Form_SetColor,
+  Form_GetConstraints,
+  Form_SetConstraints,
   Form_GetUseDockManager,
   Form_SetUseDockManager,
   Form_GetDockSite,
@@ -1145,6 +1195,8 @@ exports
   Form_SetFormStyle,
   Form_GetHeight,
   Form_SetHeight,
+  Form_GetHorzScrollBar,
+  Form_SetHorzScrollBar,
   Form_GetIcon,
   Form_SetIcon,
   Form_GetKeyPreview,
@@ -1161,6 +1213,8 @@ exports
   Form_SetScaled,
   Form_GetShowHint,
   Form_SetShowHint,
+  Form_GetVertScrollBar,
+  Form_SetVertScrollBar,
   Form_GetVisible,
   Form_SetVisible,
   Form_GetWidth,

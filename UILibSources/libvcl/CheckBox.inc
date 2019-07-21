@@ -340,6 +340,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function CheckBox_GetConstraints(AObj: TCheckBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CheckBox_SetConstraints(AObj: TCheckBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function CheckBox_GetCtl3D(AObj: TCheckBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure CheckBox_SetCtl3D(AObj: TCheckBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function CheckBox_GetDoubleBuffered(AObj: TCheckBox): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1136,6 +1156,10 @@ exports
   CheckBox_SetChecked,
   CheckBox_GetColor,
   CheckBox_SetColor,
+  CheckBox_GetConstraints,
+  CheckBox_SetConstraints,
+  CheckBox_GetCtl3D,
+  CheckBox_SetCtl3D,
   CheckBox_GetDoubleBuffered,
   CheckBox_SetDoubleBuffered,
   CheckBox_GetDragCursor,

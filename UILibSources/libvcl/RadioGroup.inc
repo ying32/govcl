@@ -310,6 +310,16 @@ begin
   AObj.Columns := AValue;
 end;
 
+function RadioGroup_GetCtl3D(AObj: TRadioGroup): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure RadioGroup_SetCtl3D(AObj: TRadioGroup; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function RadioGroup_GetDoubleBuffered(AObj: TRadioGroup): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -388,6 +398,16 @@ end;
 procedure RadioGroup_SetItems(AObj: TRadioGroup; AValue: TStrings); stdcall;
 begin
   AObj.Items := AValue;
+end;
+
+function RadioGroup_GetConstraints(AObj: TRadioGroup): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure RadioGroup_SetConstraints(AObj: TRadioGroup; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
 end;
 
 function RadioGroup_GetParentBackground(AObj: TRadioGroup): LongBool; stdcall;
@@ -1027,6 +1047,8 @@ exports
   RadioGroup_SetColor,
   RadioGroup_GetColumns,
   RadioGroup_SetColumns,
+  RadioGroup_GetCtl3D,
+  RadioGroup_SetCtl3D,
   RadioGroup_GetDoubleBuffered,
   RadioGroup_SetDoubleBuffered,
   RadioGroup_GetDragCursor,
@@ -1043,6 +1065,8 @@ exports
   RadioGroup_SetItemIndex,
   RadioGroup_GetItems,
   RadioGroup_SetItems,
+  RadioGroup_GetConstraints,
+  RadioGroup_SetConstraints,
   RadioGroup_GetParentBackground,
   RadioGroup_SetParentBackground,
   RadioGroup_GetParentColor,

@@ -76,6 +76,7 @@ uses
   Spin,
   fgl,
   Printers,
+  ComboEx,
   uFormDesignerFile,
 {$I UserDefineComponentUses.inc}
   uLinkLabel in 'uLinkLabel.pas',
@@ -220,6 +221,12 @@ uses
 {$I MyLCL_TaskDialogButtonItem.inc}
 {$I MyLCL_TaskDialogRadioButtonItem.inc}
 {$I MyLCL_TaskDialogBaseButtonItem.inc}
+{$I MyLCL_ComboBoxEx.inc}
+{$I MyLCL_ComboExItems.inc}
+{$I MyLCL_ComboExItem.inc}
+{$I MyLCL_Frame.inc}
+{$I MyLCL_ControlScrollBar.inc}
+{$I MyLCL_SizeConstraints.inc}
 
 // 用户自己定义的组件
 {$I UserDefineComponents.inc}

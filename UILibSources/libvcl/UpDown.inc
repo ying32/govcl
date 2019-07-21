@@ -320,6 +320,16 @@ begin
   AObj.Increment := AValue;
 end;
 
+function UpDown_GetConstraints(AObj: TUpDown): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure UpDown_SetConstraints(AObj: TUpDown; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function UpDown_GetOrientation(AObj: TUpDown): TUDOrientation; stdcall;
 begin
   Result :=  AObj.Orientation;
@@ -968,6 +978,8 @@ exports
   UpDown_SetMax,
   UpDown_GetIncrement,
   UpDown_SetIncrement,
+  UpDown_GetConstraints,
+  UpDown_SetConstraints,
   UpDown_GetOrientation,
   UpDown_SetOrientation,
   UpDown_GetParentDoubleBuffered,

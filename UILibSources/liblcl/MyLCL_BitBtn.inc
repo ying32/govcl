@@ -300,6 +300,16 @@ begin
   AObj.Caption := AValue;
 end;
 
+function BitBtn_GetConstraints(AObj: TBitBtn): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure BitBtn_SetConstraints(AObj: TBitBtn; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function BitBtn_GetDefault(AObj: TBitBtn): LongBool; extdecl;
 begin
   Result :=  AObj.Default;
@@ -900,6 +910,8 @@ exports
   BitBtn_SetCancel,
   BitBtn_GetCaption,
   BitBtn_SetCaption,
+  BitBtn_GetConstraints,
+  BitBtn_SetConstraints,
   BitBtn_GetDefault,
   BitBtn_SetDefault,
   BitBtn_GetDoubleBuffered,

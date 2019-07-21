@@ -310,6 +310,16 @@ begin
   AObj.ColCount := AValue;
 end;
 
+function DrawGrid_GetConstraints(AObj: TDrawGrid): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure DrawGrid_SetConstraints(AObj: TDrawGrid; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function DrawGrid_GetDefaultColWidth(AObj: TDrawGrid): Integer; extdecl;
 begin
   Result :=  AObj.DefaultColWidth;
@@ -1198,6 +1208,8 @@ exports
   DrawGrid_SetColor,
   DrawGrid_GetColCount,
   DrawGrid_SetColCount,
+  DrawGrid_GetConstraints,
+  DrawGrid_SetConstraints,
   DrawGrid_GetDefaultColWidth,
   DrawGrid_SetDefaultColWidth,
   DrawGrid_GetDefaultRowHeight,

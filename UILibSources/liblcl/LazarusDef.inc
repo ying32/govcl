@@ -28,7 +28,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $01020602;
+  Result := $01020603;
 end;
 
 // 一些初始
@@ -125,6 +125,11 @@ begin
 end;
 
 // TForm
+
+function Form_Create2(AOwner: TComponent; AInitScale: LongBool): TGoForm; extdecl;
+begin
+  Result := TGoForm.Create(AOwner);
+end;
 
 procedure Form_EnabledMaximize(AObj: TGoForm; AValue: Boolean); extdecl;
 begin
@@ -909,6 +914,7 @@ exports
   Application_SetHandle,
 
   // TForm
+  Form_Create2,
   Form_EnabledMaximize,
   Form_EnabledMinimize,
   Form_EnabledSystemMenu,

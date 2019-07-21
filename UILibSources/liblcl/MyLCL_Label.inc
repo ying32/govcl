@@ -230,6 +230,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function Label_GetConstraints(AObj: TLabel): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Label_SetConstraints(AObj: TLabel; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Label_GetDragCursor(AObj: TLabel): TCursor; extdecl;
 begin
   Result :=  AObj.DragCursor;
@@ -713,6 +723,8 @@ exports
   Label_SetCaption,
   Label_GetColor,
   Label_SetColor,
+  Label_GetConstraints,
+  Label_SetConstraints,
   Label_GetDragCursor,
   Label_SetDragCursor,
   Label_GetDragKind,

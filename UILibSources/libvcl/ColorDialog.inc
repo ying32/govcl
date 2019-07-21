@@ -90,6 +90,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function ColorDialog_GetCtl3D(AObj: TColorDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ColorDialog_SetCtl3D(AObj: TColorDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function ColorDialog_GetOptions(AObj: TColorDialog): TColorDialogOptions; stdcall;
 begin
   Result :=  AObj.Options;
@@ -197,6 +207,8 @@ exports
   ColorDialog_ToString,
   ColorDialog_GetColor,
   ColorDialog_SetColor,
+  ColorDialog_GetCtl3D,
+  ColorDialog_SetCtl3D,
   ColorDialog_GetOptions,
   ColorDialog_SetOptions,
   ColorDialog_GetHandle,

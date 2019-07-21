@@ -445,6 +445,16 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function WinControl_GetConstraints(AObj: TWinControl): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure WinControl_SetConstraints(AObj: TWinControl; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function WinControl_GetControlState(AObj: TWinControl): TControlState; stdcall;
 begin
   Result :=  AObj.ControlState;
@@ -781,6 +791,8 @@ exports
   WinControl_GetClientRect,
   WinControl_GetClientWidth,
   WinControl_SetClientWidth,
+  WinControl_GetConstraints,
+  WinControl_SetConstraints,
   WinControl_GetControlState,
   WinControl_SetControlState,
   WinControl_GetControlStyle,

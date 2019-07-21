@@ -15,6 +15,11 @@ begin
   AObj.Free;
 end;
 
+procedure ScrollBox_ScrollInView(AObj: TScrollBox; AControl: TControl); extdecl;
+begin
+  AObj.ScrollInView(AControl);
+end;
+
 function ScrollBox_CanFocus(AObj: TScrollBox): LongBool; extdecl;
 begin
   Result :=  AObj.CanFocus;
@@ -255,6 +260,16 @@ begin
   AObj.Anchors := AValue;
 end;
 
+function ScrollBox_GetAutoScroll(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoScroll;
+end;
+
+procedure ScrollBox_SetAutoScroll(AObj: TScrollBox; AValue: LongBool); extdecl;
+begin
+  AObj.AutoScroll := AValue;
+end;
+
 function ScrollBox_GetAutoSize(AObj: TScrollBox): LongBool; extdecl;
 begin
   Result :=  AObj.AutoSize;
@@ -283,6 +298,16 @@ end;
 procedure ScrollBox_SetBorderStyle(AObj: TScrollBox; AValue: TBorderStyle); extdecl;
 begin
   AObj.BorderStyle := AValue;
+end;
+
+function ScrollBox_GetConstraints(AObj: TScrollBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ScrollBox_SetConstraints(AObj: TScrollBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
 end;
 
 function ScrollBox_GetDockSite(AObj: TScrollBox): LongBool; extdecl;
@@ -588,6 +613,26 @@ begin
   EventMethodCode
 end;
 
+function ScrollBox_GetHorzScrollBar(AObj: TScrollBox): TControlScrollBar; extdecl;
+begin
+  Result :=  AObj.HorzScrollBar;
+end;
+
+procedure ScrollBox_SetHorzScrollBar(AObj: TScrollBox; AValue: TControlScrollBar); extdecl;
+begin
+  AObj.HorzScrollBar := AValue;
+end;
+
+function ScrollBox_GetVertScrollBar(AObj: TScrollBox): TControlScrollBar; extdecl;
+begin
+  Result :=  AObj.VertScrollBar;
+end;
+
+procedure ScrollBox_SetVertScrollBar(AObj: TScrollBox; AValue: TControlScrollBar); extdecl;
+begin
+  AObj.VertScrollBar := AValue;
+end;
+
 function ScrollBox_GetDockClientCount(AObj: TScrollBox): Integer; extdecl;
 begin
   Result :=  AObj.DockClientCount;
@@ -856,6 +901,7 @@ end;
 exports
   ScrollBox_Create,
   ScrollBox_Free,
+  ScrollBox_ScrollInView,
   ScrollBox_CanFocus,
   ScrollBox_ContainsControl,
   ScrollBox_ControlAtPos,
@@ -904,12 +950,16 @@ exports
   ScrollBox_SetAlign,
   ScrollBox_GetAnchors,
   ScrollBox_SetAnchors,
+  ScrollBox_GetAutoScroll,
+  ScrollBox_SetAutoScroll,
   ScrollBox_GetAutoSize,
   ScrollBox_SetAutoSize,
   ScrollBox_GetBiDiMode,
   ScrollBox_SetBiDiMode,
   ScrollBox_GetBorderStyle,
   ScrollBox_SetBorderStyle,
+  ScrollBox_GetConstraints,
+  ScrollBox_SetConstraints,
   ScrollBox_GetDockSite,
   ScrollBox_SetDockSite,
   ScrollBox_GetDoubleBuffered,
@@ -963,6 +1013,10 @@ exports
   ScrollBox_SetOnMouseWheelUp,
   ScrollBox_SetOnResize,
   ScrollBox_SetOnUnDock,
+  ScrollBox_GetHorzScrollBar,
+  ScrollBox_SetHorzScrollBar,
+  ScrollBox_GetVertScrollBar,
+  ScrollBox_SetVertScrollBar,
   ScrollBox_GetDockClientCount,
   ScrollBox_GetMouseInClient,
   ScrollBox_GetVisibleDockClientCount,

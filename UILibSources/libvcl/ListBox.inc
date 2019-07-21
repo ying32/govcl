@@ -30,6 +30,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ListBox_CopySelection(AObj: TListBox; Destination: TCustomListControl); stdcall;
+begin
+  AObj.CopySelection(Destination);
+end;
+
 procedure ListBox_DeleteSelected(AObj: TListBox); stdcall;
 begin
   AObj.DeleteSelected;
@@ -403,6 +408,26 @@ end;
 procedure ListBox_SetColumns(AObj: TListBox; AValue: Integer); stdcall;
 begin
   AObj.Columns := AValue;
+end;
+
+function ListBox_GetConstraints(AObj: TListBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ListBox_SetConstraints(AObj: TListBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function ListBox_GetCtl3D(AObj: TListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ListBox_SetCtl3D(AObj: TListBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
 end;
 
 function ListBox_GetDoubleBuffered(AObj: TListBox): LongBool; stdcall;
@@ -1291,6 +1316,7 @@ exports
   ListBox_AddItem,
   ListBox_Clear,
   ListBox_ClearSelection,
+  ListBox_CopySelection,
   ListBox_DeleteSelected,
   ListBox_SelectAll,
   ListBox_CanFocus,
@@ -1366,6 +1392,10 @@ exports
   ListBox_SetColor,
   ListBox_GetColumns,
   ListBox_SetColumns,
+  ListBox_GetConstraints,
+  ListBox_SetConstraints,
+  ListBox_GetCtl3D,
+  ListBox_SetCtl3D,
   ListBox_GetDoubleBuffered,
   ListBox_SetDoubleBuffered,
   ListBox_GetDragCursor,

@@ -25,6 +25,21 @@ begin
   AObj.ExpandAll;
 end;
 
+procedure CategoryPanelGroup_DisableAutoRange(AObj: TCategoryPanelGroup); stdcall;
+begin
+  AObj.DisableAutoRange;
+end;
+
+procedure CategoryPanelGroup_EnableAutoRange(AObj: TCategoryPanelGroup); stdcall;
+begin
+  AObj.EnableAutoRange;
+end;
+
+procedure CategoryPanelGroup_ScrollInView(AObj: TCategoryPanelGroup; AControl: TControl); stdcall;
+begin
+  AObj.ScrollInView(AControl);
+end;
+
 function CategoryPanelGroup_CanFocus(AObj: TCategoryPanelGroup): LongBool; stdcall;
 begin
   Result :=  AObj.CanFocus;
@@ -360,6 +375,16 @@ begin
   AObj.ChevronHotColor := AValue;
 end;
 
+function CategoryPanelGroup_GetConstraints(AObj: TCategoryPanelGroup): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CategoryPanelGroup_SetConstraints(AObj: TCategoryPanelGroup; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function CategoryPanelGroup_GetDockSite(AObj: TCategoryPanelGroup): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -428,6 +453,16 @@ end;
 procedure CategoryPanelGroup_SetColor(AObj: TCategoryPanelGroup; AValue: TColor); stdcall;
 begin
   AObj.Color := AValue;
+end;
+
+function CategoryPanelGroup_GetCtl3D(AObj: TCategoryPanelGroup): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure CategoryPanelGroup_SetCtl3D(AObj: TCategoryPanelGroup; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
 end;
 
 function CategoryPanelGroup_GetFont(AObj: TCategoryPanelGroup): TFont; stdcall;
@@ -963,6 +998,26 @@ begin
   Result :=  AObj.Panels;
 end;
 
+function CategoryPanelGroup_GetHorzScrollBar(AObj: TCategoryPanelGroup): TControlScrollBar; stdcall;
+begin
+  Result :=  AObj.HorzScrollBar;
+end;
+
+procedure CategoryPanelGroup_SetHorzScrollBar(AObj: TCategoryPanelGroup; AValue: TControlScrollBar); stdcall;
+begin
+  AObj.HorzScrollBar := AValue;
+end;
+
+function CategoryPanelGroup_GetVertScrollBar(AObj: TCategoryPanelGroup): TControlScrollBar; stdcall;
+begin
+  Result :=  AObj.VertScrollBar;
+end;
+
+procedure CategoryPanelGroup_SetVertScrollBar(AObj: TCategoryPanelGroup; AValue: TControlScrollBar); stdcall;
+begin
+  AObj.VertScrollBar := AValue;
+end;
+
 function CategoryPanelGroup_GetDockClientCount(AObj: TCategoryPanelGroup): Integer; stdcall;
 begin
   Result :=  AObj.DockClientCount;
@@ -1258,6 +1313,9 @@ exports
   CategoryPanelGroup_Free,
   CategoryPanelGroup_CollapseAll,
   CategoryPanelGroup_ExpandAll,
+  CategoryPanelGroup_DisableAutoRange,
+  CategoryPanelGroup_EnableAutoRange,
+  CategoryPanelGroup_ScrollInView,
   CategoryPanelGroup_CanFocus,
   CategoryPanelGroup_ContainsControl,
   CategoryPanelGroup_ControlAtPos,
@@ -1325,6 +1383,8 @@ exports
   CategoryPanelGroup_SetChevronColor,
   CategoryPanelGroup_GetChevronHotColor,
   CategoryPanelGroup_SetChevronHotColor,
+  CategoryPanelGroup_GetConstraints,
+  CategoryPanelGroup_SetConstraints,
   CategoryPanelGroup_GetDockSite,
   CategoryPanelGroup_SetDockSite,
   CategoryPanelGroup_GetDoubleBuffered,
@@ -1339,6 +1399,8 @@ exports
   CategoryPanelGroup_SetEnabled,
   CategoryPanelGroup_GetColor,
   CategoryPanelGroup_SetColor,
+  CategoryPanelGroup_GetCtl3D,
+  CategoryPanelGroup_SetCtl3D,
   CategoryPanelGroup_GetFont,
   CategoryPanelGroup_SetFont,
   CategoryPanelGroup_GetGradientBaseColor,
@@ -1412,6 +1474,10 @@ exports
   CategoryPanelGroup_SetOnStartDock,
   CategoryPanelGroup_SetOnUnDock,
   CategoryPanelGroup_GetPanels,
+  CategoryPanelGroup_GetHorzScrollBar,
+  CategoryPanelGroup_SetHorzScrollBar,
+  CategoryPanelGroup_GetVertScrollBar,
+  CategoryPanelGroup_SetVertScrollBar,
   CategoryPanelGroup_GetDockClientCount,
   CategoryPanelGroup_GetAlignDisabled,
   CategoryPanelGroup_GetMouseInClient,

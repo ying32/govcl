@@ -425,6 +425,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function Edit_GetConstraints(AObj: TEdit): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Edit_SetConstraints(AObj: TEdit; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function Edit_GetCtl3D(AObj: TEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure Edit_SetCtl3D(AObj: TEdit; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function Edit_GetDoubleBuffered(AObj: TEdit): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1367,6 +1387,10 @@ exports
   Edit_SetCharCase,
   Edit_GetColor,
   Edit_SetColor,
+  Edit_GetConstraints,
+  Edit_SetConstraints,
+  Edit_GetCtl3D,
+  Edit_SetCtl3D,
   Edit_GetDoubleBuffered,
   Edit_SetDoubleBuffered,
   Edit_GetDragCursor,

@@ -175,6 +175,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function PrintDialog_GetCtl3D(AObj: TPrintDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure PrintDialog_SetCtl3D(AObj: TPrintDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure PrintDialog_SetOnClose(AObj: TPrintDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -284,6 +294,8 @@ exports
   PrintDialog_GetToPage,
   PrintDialog_SetToPage,
   PrintDialog_GetHandle,
+  PrintDialog_GetCtl3D,
+  PrintDialog_SetCtl3D,
   PrintDialog_SetOnClose,
   PrintDialog_SetOnShow,
   PrintDialog_GetComponentCount,

@@ -105,6 +105,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function FontDialog_GetCtl3D(AObj: TFontDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure FontDialog_SetCtl3D(AObj: TFontDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure FontDialog_SetOnClose(AObj: TFontDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -200,6 +210,8 @@ exports
   FontDialog_GetOptions,
   FontDialog_SetOptions,
   FontDialog_GetHandle,
+  FontDialog_GetCtl3D,
+  FontDialog_SetCtl3D,
   FontDialog_SetOnClose,
   FontDialog_SetOnShow,
   FontDialog_GetComponentCount,

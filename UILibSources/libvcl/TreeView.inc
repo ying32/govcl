@@ -440,6 +440,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function TreeView_GetCtl3D(AObj: TTreeView): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure TreeView_SetCtl3D(AObj: TTreeView; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
+function TreeView_GetConstraints(AObj: TTreeView): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure TreeView_SetConstraints(AObj: TTreeView; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function TreeView_GetDoubleBuffered(AObj: TTreeView): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1691,6 +1711,10 @@ exports
   TreeView_SetChangeDelay,
   TreeView_GetColor,
   TreeView_SetColor,
+  TreeView_GetCtl3D,
+  TreeView_SetCtl3D,
+  TreeView_GetConstraints,
+  TreeView_SetConstraints,
   TreeView_GetDoubleBuffered,
   TreeView_SetDoubleBuffered,
   TreeView_GetDragKind,

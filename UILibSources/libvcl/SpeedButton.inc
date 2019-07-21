@@ -220,6 +220,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function SpeedButton_GetConstraints(AObj: TSpeedButton): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure SpeedButton_SetConstraints(AObj: TSpeedButton; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function SpeedButton_GetGroupIndex(AObj: TSpeedButton): Integer; stdcall;
 begin
   Result :=  AObj.GroupIndex;
@@ -777,6 +787,8 @@ exports
   SpeedButton_SetAnchors,
   SpeedButton_GetBiDiMode,
   SpeedButton_SetBiDiMode,
+  SpeedButton_GetConstraints,
+  SpeedButton_SetConstraints,
   SpeedButton_GetGroupIndex,
   SpeedButton_SetGroupIndex,
   SpeedButton_GetDown,

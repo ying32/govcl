@@ -85,6 +85,16 @@ begin
   Result :=  AObj.Handle;
 end;
 
+function PrinterSetupDialog_GetCtl3D(AObj: TPrinterSetupDialog): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure PrinterSetupDialog_SetCtl3D(AObj: TPrinterSetupDialog; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 procedure PrinterSetupDialog_SetOnClose(AObj: TPrinterSetupDialog; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -176,6 +186,8 @@ exports
   PrinterSetupDialog_GetHashCode,
   PrinterSetupDialog_ToString,
   PrinterSetupDialog_GetHandle,
+  PrinterSetupDialog_GetCtl3D,
+  PrinterSetupDialog_SetCtl3D,
   PrinterSetupDialog_SetOnClose,
   PrinterSetupDialog_SetOnShow,
   PrinterSetupDialog_GetComponentCount,

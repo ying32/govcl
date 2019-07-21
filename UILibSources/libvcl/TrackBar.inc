@@ -285,6 +285,16 @@ begin
   AObj.BorderWidth := AValue;
 end;
 
+function TrackBar_GetCtl3D(AObj: TTrackBar): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure TrackBar_SetCtl3D(AObj: TTrackBar; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function TrackBar_GetDoubleBuffered(AObj: TTrackBar): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -333,6 +343,16 @@ end;
 procedure TrackBar_SetEnabled(AObj: TTrackBar; AValue: LongBool); stdcall;
 begin
   AObj.Enabled := AValue;
+end;
+
+function TrackBar_GetConstraints(AObj: TTrackBar): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure TrackBar_SetConstraints(AObj: TTrackBar; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
 end;
 
 function TrackBar_GetLineSize(AObj: TTrackBar): Integer; stdcall;
@@ -1118,6 +1138,8 @@ exports
   TrackBar_SetAnchors,
   TrackBar_GetBorderWidth,
   TrackBar_SetBorderWidth,
+  TrackBar_GetCtl3D,
+  TrackBar_SetCtl3D,
   TrackBar_GetDoubleBuffered,
   TrackBar_SetDoubleBuffered,
   TrackBar_GetDragCursor,
@@ -1128,6 +1150,8 @@ exports
   TrackBar_SetDragMode,
   TrackBar_GetEnabled,
   TrackBar_SetEnabled,
+  TrackBar_GetConstraints,
+  TrackBar_SetConstraints,
   TrackBar_GetLineSize,
   TrackBar_SetLineSize,
   TrackBar_GetMax,

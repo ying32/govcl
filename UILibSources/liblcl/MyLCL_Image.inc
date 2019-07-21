@@ -205,6 +205,16 @@ begin
   AObj.Center := AValue;
 end;
 
+function Image_GetConstraints(AObj: TImage): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Image_SetConstraints(AObj: TImage; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Image_GetDragCursor(AObj: TImage): TCursor; extdecl;
 begin
   Result :=  AObj.DragCursor;
@@ -641,6 +651,8 @@ exports
   Image_SetAutoSize,
   Image_GetCenter,
   Image_SetCenter,
+  Image_GetConstraints,
+  Image_SetConstraints,
   Image_GetDragCursor,
   Image_SetDragCursor,
   Image_GetDragMode,

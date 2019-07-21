@@ -45,6 +45,21 @@ begin
   Result :=  AObj.ShowModal;
 end;
 
+procedure Form_DisableAutoRange(AObj: TForm); stdcall;
+begin
+  AObj.DisableAutoRange;
+end;
+
+procedure Form_EnableAutoRange(AObj: TForm); stdcall;
+begin
+  AObj.EnableAutoRange;
+end;
+
+procedure Form_ScrollInView(AObj: TForm; AControl: TControl); stdcall;
+begin
+  AObj.ScrollInView(AControl);
+end;
+
 function Form_CanFocus(AObj: TForm): LongBool; stdcall;
 begin
   Result :=  AObj.CanFocus;
@@ -315,6 +330,16 @@ begin
   AObj.Anchors := AValue;
 end;
 
+function Form_GetAutoScroll(AObj: TForm): LongBool; stdcall;
+begin
+  Result :=  AObj.AutoScroll;
+end;
+
+procedure Form_SetAutoScroll(AObj: TForm; AValue: LongBool); stdcall;
+begin
+  AObj.AutoScroll := AValue;
+end;
+
 function Form_GetAutoSize(AObj: TForm): LongBool; stdcall;
 begin
   Result :=  AObj.AutoSize;
@@ -425,6 +450,26 @@ begin
   AObj.TransparentColorValue := AValue;
 end;
 
+function Form_GetConstraints(AObj: TForm): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Form_SetConstraints(AObj: TForm; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function Form_GetCtl3D(AObj: TForm): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure Form_SetCtl3D(AObj: TForm; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function Form_GetUseDockManager(AObj: TForm): LongBool; stdcall;
 begin
   Result :=  AObj.UseDockManager;
@@ -525,6 +570,16 @@ begin
   AObj.Height := AValue;
 end;
 
+function Form_GetHorzScrollBar(AObj: TForm): TControlScrollBar; stdcall;
+begin
+  Result :=  AObj.HorzScrollBar;
+end;
+
+procedure Form_SetHorzScrollBar(AObj: TForm; AValue: TControlScrollBar); stdcall;
+begin
+  AObj.HorzScrollBar := AValue;
+end;
+
 function Form_GetIcon(AObj: TForm): TIcon; stdcall;
 begin
   Result :=  AObj.Icon;
@@ -603,6 +658,16 @@ end;
 procedure Form_SetShowHint(AObj: TForm; AValue: LongBool); stdcall;
 begin
   AObj.ShowHint := AValue;
+end;
+
+function Form_GetVertScrollBar(AObj: TForm): TControlScrollBar; stdcall;
+begin
+  Result :=  AObj.VertScrollBar;
+end;
+
+procedure Form_SetVertScrollBar(AObj: TForm; AValue: TControlScrollBar); stdcall;
+begin
+  AObj.VertScrollBar := AValue;
 end;
 
 function Form_GetVisible(AObj: TForm): LongBool; stdcall;
@@ -1331,6 +1396,9 @@ exports
   Form_SetFocus,
   Form_Show,
   Form_ShowModal,
+  Form_DisableAutoRange,
+  Form_EnableAutoRange,
+  Form_ScrollInView,
   Form_CanFocus,
   Form_ContainsControl,
   Form_ControlAtPos,
@@ -1385,6 +1453,8 @@ exports
   Form_SetAlphaBlendValue,
   Form_GetAnchors,
   Form_SetAnchors,
+  Form_GetAutoScroll,
+  Form_SetAutoScroll,
   Form_GetAutoSize,
   Form_SetAutoSize,
   Form_GetBiDiMode,
@@ -1407,6 +1477,10 @@ exports
   Form_SetTransparentColor,
   Form_GetTransparentColorValue,
   Form_SetTransparentColorValue,
+  Form_GetConstraints,
+  Form_SetConstraints,
+  Form_GetCtl3D,
+  Form_SetCtl3D,
   Form_GetUseDockManager,
   Form_SetUseDockManager,
   Form_GetDockSite,
@@ -1427,6 +1501,8 @@ exports
   Form_SetFormStyle,
   Form_GetHeight,
   Form_SetHeight,
+  Form_GetHorzScrollBar,
+  Form_SetHorzScrollBar,
   Form_GetIcon,
   Form_SetIcon,
   Form_GetKeyPreview,
@@ -1443,6 +1519,8 @@ exports
   Form_SetScaled,
   Form_GetShowHint,
   Form_SetShowHint,
+  Form_GetVertScrollBar,
+  Form_SetVertScrollBar,
   Form_GetVisible,
   Form_SetVisible,
   Form_GetWidth,

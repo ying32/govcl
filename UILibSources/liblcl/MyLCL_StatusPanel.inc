@@ -130,6 +130,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function StatusPanel_GetDisplayName(AObj: TStatusPanel): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure StatusPanel_SetDisplayName(AObj: TStatusPanel; AValue: PChar); extdecl;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function StatusPanel_StaticClassType: TClass; extdecl;
 begin
   Result := TStatusPanel;
@@ -161,5 +171,7 @@ exports
   StatusPanel_SetCollection,
   StatusPanel_GetIndex,
   StatusPanel_SetIndex,
+  StatusPanel_GetDisplayName,
+  StatusPanel_SetDisplayName,
   StatusPanel_StaticClassType;
 

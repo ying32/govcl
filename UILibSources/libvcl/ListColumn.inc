@@ -165,6 +165,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function ListColumn_GetDisplayName(AObj: TListColumn): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure ListColumn_SetDisplayName(AObj: TListColumn; AValue: PChar); stdcall;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function ListColumn_StaticClassType: TClass; stdcall;
 begin
   Result := TListColumn;
@@ -203,5 +213,7 @@ exports
   ListColumn_SetCollection,
   ListColumn_GetIndex,
   ListColumn_SetIndex,
+  ListColumn_GetDisplayName,
+  ListColumn_SetDisplayName,
   ListColumn_StaticClassType;
 

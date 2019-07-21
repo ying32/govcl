@@ -290,6 +290,16 @@ begin
   AObj.CalAlignment := AValue;
 end;
 
+function DateTimePicker_GetConstraints(AObj: TDateTimePicker): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure DateTimePicker_SetConstraints(AObj: TDateTimePicker; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function DateTimePicker_GetDate(AObj: TDateTimePicker): TUnixDateTime; extdecl;
 begin
   Result :=  ToUnixTime(AObj.Date);
@@ -883,6 +893,8 @@ exports
   DateTimePicker_SetBiDiMode,
   DateTimePicker_GetCalAlignment,
   DateTimePicker_SetCalAlignment,
+  DateTimePicker_GetConstraints,
+  DateTimePicker_SetConstraints,
   DateTimePicker_GetDate,
   DateTimePicker_SetDate,
   DateTimePicker_GetTime,

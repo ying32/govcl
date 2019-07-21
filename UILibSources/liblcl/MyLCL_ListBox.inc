@@ -330,6 +330,16 @@ begin
   AObj.Columns := AValue;
 end;
 
+function ListBox_GetConstraints(AObj: TListBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ListBox_SetConstraints(AObj: TListBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ListBox_GetDoubleBuffered(AObj: TListBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1022,6 +1032,8 @@ exports
   ListBox_SetColor,
   ListBox_GetColumns,
   ListBox_SetColumns,
+  ListBox_GetConstraints,
+  ListBox_SetConstraints,
   ListBox_GetDoubleBuffered,
   ListBox_SetDoubleBuffered,
   ListBox_GetDragCursor,

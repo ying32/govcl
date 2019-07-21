@@ -35,6 +35,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure CheckListBox_CopySelection(AObj: TCheckListBox; Destination: TCustomListControl); stdcall;
+begin
+  AObj.CopySelection(Destination);
+end;
+
 procedure CheckListBox_DeleteSelected(AObj: TCheckListBox); stdcall;
 begin
   AObj.DeleteSelected;
@@ -410,6 +415,26 @@ end;
 procedure CheckListBox_SetColumns(AObj: TCheckListBox; AValue: Integer); stdcall;
 begin
   AObj.Columns := AValue;
+end;
+
+function CheckListBox_GetConstraints(AObj: TCheckListBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CheckListBox_SetConstraints(AObj: TCheckListBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function CheckListBox_GetCtl3D(AObj: TCheckListBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure CheckListBox_SetCtl3D(AObj: TCheckListBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
 end;
 
 function CheckListBox_GetDoubleBuffered(AObj: TCheckListBox): LongBool; stdcall;
@@ -1377,6 +1402,7 @@ exports
   CheckListBox_AddItem,
   CheckListBox_Clear,
   CheckListBox_ClearSelection,
+  CheckListBox_CopySelection,
   CheckListBox_DeleteSelected,
   CheckListBox_SelectAll,
   CheckListBox_CanFocus,
@@ -1451,6 +1477,10 @@ exports
   CheckListBox_SetColor,
   CheckListBox_GetColumns,
   CheckListBox_SetColumns,
+  CheckListBox_GetConstraints,
+  CheckListBox_SetConstraints,
+  CheckListBox_GetCtl3D,
+  CheckListBox_SetCtl3D,
   CheckListBox_GetDoubleBuffered,
   CheckListBox_SetDoubleBuffered,
   CheckListBox_GetDragCursor,

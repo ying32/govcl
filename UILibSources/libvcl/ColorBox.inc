@@ -30,6 +30,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ColorBox_CopySelection(AObj: TColorBox; Destination: TCustomListControl); stdcall;
+begin
+  AObj.CopySelection(Destination);
+end;
+
 procedure ColorBox_DeleteSelected(AObj: TColorBox); stdcall;
 begin
   AObj.DeleteSelected;
@@ -415,6 +420,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function ColorBox_GetConstraints(AObj: TColorBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ColorBox_SetConstraints(AObj: TColorBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function ColorBox_GetCtl3D(AObj: TColorBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ColorBox_SetCtl3D(AObj: TColorBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function ColorBox_GetDoubleBuffered(AObj: TColorBox): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -635,6 +660,18 @@ begin
   TEventClass.Add(AObj, @TEventClass.OnDragOver, AEventId);
 end;
 
+procedure ColorBox_SetOnDropDown(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnDropDown := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnDropDown);
+    Exit;
+  end;
+  AObj.OnDropDown := TEventClass.OnDropDown;
+  TEventClass.Add(AObj, @TEventClass.OnDropDown, AEventId);
+end;
+
 procedure ColorBox_SetOnEndDock(AObj: TColorBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -753,6 +790,18 @@ begin
   end;
   AObj.OnMouseLeave := TEventClass.OnMouseLeave;
   TEventClass.Add(AObj, @TEventClass.OnMouseLeave, AEventId);
+end;
+
+procedure ColorBox_SetOnSelect(AObj: TColorBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnSelect := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnSelect);
+    Exit;
+  end;
+  AObj.OnSelect := TEventClass.OnSelect;
+  TEventClass.Add(AObj, @TEventClass.OnSelect, AEventId);
 end;
 
 procedure ColorBox_SetOnStartDock(AObj: TColorBox; AEventId: NativeUInt); stdcall;
@@ -1208,6 +1257,7 @@ exports
   ColorBox_AddItem,
   ColorBox_Clear,
   ColorBox_ClearSelection,
+  ColorBox_CopySelection,
   ColorBox_DeleteSelected,
   ColorBox_Focused,
   ColorBox_SelectAll,
@@ -1285,6 +1335,10 @@ exports
   ColorBox_SetBiDiMode,
   ColorBox_GetColor,
   ColorBox_SetColor,
+  ColorBox_GetConstraints,
+  ColorBox_SetConstraints,
+  ColorBox_GetCtl3D,
+  ColorBox_SetCtl3D,
   ColorBox_GetDoubleBuffered,
   ColorBox_SetDoubleBuffered,
   ColorBox_GetDropDownCount,
@@ -1322,6 +1376,7 @@ exports
   ColorBox_SetOnContextPopup,
   ColorBox_SetOnDragDrop,
   ColorBox_SetOnDragOver,
+  ColorBox_SetOnDropDown,
   ColorBox_SetOnEndDock,
   ColorBox_SetOnEndDrag,
   ColorBox_SetOnEnter,
@@ -1332,6 +1387,7 @@ exports
   ColorBox_SetOnKeyUp,
   ColorBox_SetOnMouseEnter,
   ColorBox_SetOnMouseLeave,
+  ColorBox_SetOnSelect,
   ColorBox_SetOnStartDock,
   ColorBox_GetAutoCompleteDelay,
   ColorBox_SetAutoCompleteDelay,

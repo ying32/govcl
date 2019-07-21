@@ -285,6 +285,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function MonthCalendar_GetConstraints(AObj: TMonthCalendar): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure MonthCalendar_SetConstraints(AObj: TMonthCalendar; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function MonthCalendar_GetDate(AObj: TMonthCalendar): TUnixDateTime; extdecl;
 begin
   Result :=  ToUnixTime(AObj.Date);
@@ -852,6 +862,8 @@ exports
   MonthCalendar_SetBorderWidth,
   MonthCalendar_GetBiDiMode,
   MonthCalendar_SetBiDiMode,
+  MonthCalendar_GetConstraints,
+  MonthCalendar_SetConstraints,
   MonthCalendar_GetDate,
   MonthCalendar_SetDate,
   MonthCalendar_GetDoubleBuffered,

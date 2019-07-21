@@ -115,6 +115,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function JumpCategoryItem_GetDisplayName(AObj: TJumpCategoryItem): PChar; stdcall;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure JumpCategoryItem_SetDisplayName(AObj: TJumpCategoryItem; AValue: PChar); stdcall;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function JumpCategoryItem_StaticClassType: TClass; stdcall;
 begin
   Result := TJumpCategoryItem;
@@ -143,5 +153,7 @@ exports
   JumpCategoryItem_SetCollection,
   JumpCategoryItem_GetIndex,
   JumpCategoryItem_SetIndex,
+  JumpCategoryItem_GetDisplayName,
+  JumpCategoryItem_SetDisplayName,
   JumpCategoryItem_StaticClassType;
 

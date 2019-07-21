@@ -300,6 +300,16 @@ begin
   AObj.Caption := AValue;
 end;
 
+function Button_GetConstraints(AObj: TButton): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Button_SetConstraints(AObj: TButton; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Button_GetDefault(AObj: TButton): LongBool; extdecl;
 begin
   Result :=  AObj.Default;
@@ -890,6 +900,8 @@ exports
   Button_SetCancel,
   Button_GetCaption,
   Button_SetCaption,
+  Button_GetConstraints,
+  Button_SetConstraints,
   Button_GetDefault,
   Button_SetDefault,
   Button_GetDoubleBuffered,

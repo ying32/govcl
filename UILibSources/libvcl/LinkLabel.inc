@@ -350,6 +350,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function LinkLabel_GetConstraints(AObj: TLinkLabel): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure LinkLabel_SetConstraints(AObj: TLinkLabel; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function LinkLabel_GetDragCursor(AObj: TLinkLabel): TCursor; stdcall;
 begin
   Result :=  AObj.DragCursor;
@@ -1112,6 +1122,8 @@ exports
   LinkLabel_SetCaption,
   LinkLabel_GetColor,
   LinkLabel_SetColor,
+  LinkLabel_GetConstraints,
+  LinkLabel_SetConstraints,
   LinkLabel_GetDragCursor,
   LinkLabel_SetDragCursor,
   LinkLabel_GetDragKind,

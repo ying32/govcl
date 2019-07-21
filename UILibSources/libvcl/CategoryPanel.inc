@@ -330,6 +330,16 @@ begin
   AObj.CollapsedPressedImageIndex := AValue;
 end;
 
+function CategoryPanel_GetCtl3D(AObj: TCategoryPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure CategoryPanel_SetCtl3D(AObj: TCategoryPanel; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function CategoryPanel_GetUseDockManager(AObj: TCategoryPanel): LongBool; stdcall;
 begin
   Result :=  AObj.UseDockManager;
@@ -975,6 +985,16 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function CategoryPanel_GetConstraints(AObj: TCategoryPanel): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CategoryPanel_SetConstraints(AObj: TCategoryPanel; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function CategoryPanel_GetControlState(AObj: TCategoryPanel): TControlState; stdcall;
 begin
   Result :=  AObj.ControlState;
@@ -1216,6 +1236,8 @@ exports
   CategoryPanel_SetCollapsedImageIndex,
   CategoryPanel_GetCollapsedPressedImageIndex,
   CategoryPanel_SetCollapsedPressedImageIndex,
+  CategoryPanel_GetCtl3D,
+  CategoryPanel_SetCtl3D,
   CategoryPanel_GetUseDockManager,
   CategoryPanel_SetUseDockManager,
   CategoryPanel_GetDockSite,
@@ -1317,6 +1339,8 @@ exports
   CategoryPanel_GetClientRect,
   CategoryPanel_GetClientWidth,
   CategoryPanel_SetClientWidth,
+  CategoryPanel_GetConstraints,
+  CategoryPanel_SetConstraints,
   CategoryPanel_GetControlState,
   CategoryPanel_SetControlState,
   CategoryPanel_GetControlStyle,

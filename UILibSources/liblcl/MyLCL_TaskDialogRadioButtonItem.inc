@@ -110,6 +110,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function TaskDialogRadioButtonItem_GetDisplayName(AObj: TTaskDialogRadioButtonItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure TaskDialogRadioButtonItem_SetDisplayName(AObj: TTaskDialogRadioButtonItem; AValue: PChar); extdecl;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function TaskDialogRadioButtonItem_StaticClassType: TClass; extdecl;
 begin
   Result := TTaskDialogRadioButtonItem;
@@ -137,5 +147,7 @@ exports
   TaskDialogRadioButtonItem_SetCollection,
   TaskDialogRadioButtonItem_GetIndex,
   TaskDialogRadioButtonItem_SetIndex,
+  TaskDialogRadioButtonItem_GetDisplayName,
+  TaskDialogRadioButtonItem_SetDisplayName,
   TaskDialogRadioButtonItem_StaticClassType;
 

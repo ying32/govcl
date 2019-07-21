@@ -365,6 +365,26 @@ begin
   AObj.ColCount := AValue;
 end;
 
+function DrawGrid_GetConstraints(AObj: TDrawGrid): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure DrawGrid_SetConstraints(AObj: TDrawGrid; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function DrawGrid_GetCtl3D(AObj: TDrawGrid): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure DrawGrid_SetCtl3D(AObj: TDrawGrid; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function DrawGrid_GetDefaultColWidth(AObj: TDrawGrid): Integer; stdcall;
 begin
   Result :=  AObj.DefaultColWidth;
@@ -1545,6 +1565,10 @@ exports
   DrawGrid_SetColor,
   DrawGrid_GetColCount,
   DrawGrid_SetColCount,
+  DrawGrid_GetConstraints,
+  DrawGrid_SetConstraints,
+  DrawGrid_GetCtl3D,
+  DrawGrid_SetCtl3D,
   DrawGrid_GetDefaultColWidth,
   DrawGrid_SetDefaultColWidth,
   DrawGrid_GetDefaultRowHeight,

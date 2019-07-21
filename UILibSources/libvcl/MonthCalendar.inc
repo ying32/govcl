@@ -310,6 +310,16 @@ begin
   AObj.CalColors := AValue;
 end;
 
+function MonthCalendar_GetConstraints(AObj: TMonthCalendar): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure MonthCalendar_SetConstraints(AObj: TMonthCalendar; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function MonthCalendar_GetMultiSelect(AObj: TMonthCalendar): LongBool; stdcall;
 begin
   Result :=  AObj.MultiSelect;
@@ -1124,6 +1134,8 @@ exports
   MonthCalendar_SetBiDiMode,
   MonthCalendar_GetCalColors,
   MonthCalendar_SetCalColors,
+  MonthCalendar_GetConstraints,
+  MonthCalendar_SetConstraints,
   MonthCalendar_GetMultiSelect,
   MonthCalendar_SetMultiSelect,
   MonthCalendar_GetDate,

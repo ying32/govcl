@@ -342,6 +342,16 @@ begin
   AObj.Columns := AValue;
 end;
 
+function CheckListBox_GetConstraints(AObj: TCheckListBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CheckListBox_SetConstraints(AObj: TCheckListBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function CheckListBox_GetDoubleBuffered(AObj: TCheckListBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1069,6 +1079,8 @@ exports
   CheckListBox_SetColor,
   CheckListBox_GetColumns,
   CheckListBox_SetColumns,
+  CheckListBox_GetConstraints,
+  CheckListBox_SetConstraints,
   CheckListBox_GetDoubleBuffered,
   CheckListBox_SetDoubleBuffered,
   CheckListBox_GetDragCursor,

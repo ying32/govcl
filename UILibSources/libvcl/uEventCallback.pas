@@ -281,6 +281,14 @@ type
     class procedure TaskDialogOnTimer(Sender: TObject; TickCount: Cardinal; var Reset: Boolean);
     class procedure TaskDialogOnVerificationClicked(Sender: TObject);
 
+//    class function OnAlignInsertBefore(Sender: TWinControl; C1, C2: TControl): Boolean;
+//    class procedure OnAlignPosition(Sender: TWinControl; Control: TControl;
+//      var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo);
+
+    class procedure OnDropDown(Sender: TObject);
+    class procedure OnSelect(Sender: TObject);
+    class procedure OnBeginEdit(Sender: TObject);
+    class procedure OnEndEdit(Sender: TObject);
 
     class procedure Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
     class procedure AddClick(Sender: TObject; AId: NativeUInt);
@@ -1154,6 +1162,32 @@ begin
 end;
 
 // -------------- end TaskDialog -----------------------
+
+//class function TEventClass.OnAlignInsertBefore(Sender: TWinControl; C1, C2: TControl): Boolean;
+//begin
+//  SendEvent(Sender, @TEventClass.OnAlignInsertBefore, [Sender, C1, C2, @Result]);
+//end;
+
+class procedure TEventClass.OnDropDown(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnDropDown, [Sender]);
+end;
+
+class procedure TEventClass.OnSelect(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnSelect, [Sender]);
+end;
+
+class procedure TEventClass.OnBeginEdit(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnBeginEdit, [Sender]);
+end;
+
+class procedure TEventClass.OnEndEdit(Sender: TObject);
+begin
+  SendEvent(Sender, @TEventClass.OnEndEdit, [Sender]);
+end;
+
 
 
 class procedure TEventClass.OnUpdate(Sender: TObject);

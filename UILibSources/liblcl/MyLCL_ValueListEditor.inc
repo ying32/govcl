@@ -325,6 +325,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function ValueListEditor_GetConstraints(AObj: TValueListEditor): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ValueListEditor_SetConstraints(AObj: TValueListEditor; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ValueListEditor_GetDefaultColWidth(AObj: TValueListEditor): Integer; extdecl;
 begin
   Result :=  AObj.DefaultColWidth;
@@ -1209,6 +1219,8 @@ exports
   ValueListEditor_SetBorderStyle,
   ValueListEditor_GetColor,
   ValueListEditor_SetColor,
+  ValueListEditor_GetConstraints,
+  ValueListEditor_SetConstraints,
   ValueListEditor_GetDefaultColWidth,
   ValueListEditor_SetDefaultColWidth,
   ValueListEditor_GetDefaultDrawing,

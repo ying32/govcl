@@ -80,6 +80,16 @@ begin
   AObj.Index := AValue;
 end;
 
+function CollectionItem_GetDisplayName(AObj: TCollectionItem): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.DisplayName);
+end;
+
+procedure CollectionItem_SetDisplayName(AObj: TCollectionItem; AValue: PChar); extdecl;
+begin
+  AObj.DisplayName := AValue;
+end;
+
 function CollectionItem_StaticClassType: TClass; extdecl;
 begin
   Result := TCollectionItem;
@@ -101,5 +111,7 @@ exports
   CollectionItem_SetCollection,
   CollectionItem_GetIndex,
   CollectionItem_SetIndex,
+  CollectionItem_GetDisplayName,
+  CollectionItem_SetDisplayName,
   CollectionItem_StaticClassType;
 

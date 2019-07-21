@@ -310,6 +310,16 @@ begin
   AObj.ColCount := AValue;
 end;
 
+function StringGrid_GetConstraints(AObj: TStringGrid): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure StringGrid_SetConstraints(AObj: TStringGrid; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function StringGrid_GetDefaultColWidth(AObj: TStringGrid): Integer; extdecl;
 begin
   Result :=  AObj.DefaultColWidth;
@@ -1238,6 +1248,8 @@ exports
   StringGrid_SetColor,
   StringGrid_GetColCount,
   StringGrid_SetColCount,
+  StringGrid_GetConstraints,
+  StringGrid_SetConstraints,
   StringGrid_GetDefaultColWidth,
   StringGrid_SetDefaultColWidth,
   StringGrid_GetDefaultRowHeight,

@@ -255,6 +255,16 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function Control_GetConstraints(AObj: TControl): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Control_SetConstraints(AObj: TControl; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Control_GetControlState(AObj: TControl): TControlState; stdcall;
 begin
   Result :=  AObj.ControlState;
@@ -543,6 +553,8 @@ exports
   Control_GetClientRect,
   Control_GetClientWidth,
   Control_SetClientWidth,
+  Control_GetConstraints,
+  Control_SetConstraints,
   Control_GetControlState,
   Control_SetControlState,
   Control_GetControlStyle,

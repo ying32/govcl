@@ -330,6 +330,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function CoolBar_GetConstraints(AObj: TCoolBar): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CoolBar_SetConstraints(AObj: TCoolBar; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function CoolBar_GetCtl3D(AObj: TCoolBar): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure CoolBar_SetCtl3D(AObj: TCoolBar; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function CoolBar_GetDockSite(AObj: TCoolBar): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -1216,6 +1236,10 @@ exports
   CoolBar_SetBorderWidth,
   CoolBar_GetColor,
   CoolBar_SetColor,
+  CoolBar_GetConstraints,
+  CoolBar_SetConstraints,
+  CoolBar_GetCtl3D,
+  CoolBar_SetCtl3D,
   CoolBar_GetDockSite,
   CoolBar_SetDockSite,
   CoolBar_GetDoubleBuffered,

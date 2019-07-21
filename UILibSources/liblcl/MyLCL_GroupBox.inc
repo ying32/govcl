@@ -285,6 +285,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function GroupBox_GetConstraints(AObj: TGroupBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure GroupBox_SetConstraints(AObj: TGroupBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function GroupBox_GetDockSite(AObj: TGroupBox): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -893,6 +903,8 @@ exports
   GroupBox_SetCaption,
   GroupBox_GetColor,
   GroupBox_SetColor,
+  GroupBox_GetConstraints,
+  GroupBox_SetConstraints,
   GroupBox_GetDockSite,
   GroupBox_SetDockSite,
   GroupBox_GetDoubleBuffered,

@@ -420,6 +420,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function LabeledEdit_GetConstraints(AObj: TLabeledEdit): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure LabeledEdit_SetConstraints(AObj: TLabeledEdit; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function LabeledEdit_GetCtl3D(AObj: TLabeledEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure LabeledEdit_SetCtl3D(AObj: TLabeledEdit; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function LabeledEdit_GetDoubleBuffered(AObj: TLabeledEdit): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1396,6 +1416,10 @@ exports
   LabeledEdit_SetCharCase,
   LabeledEdit_GetColor,
   LabeledEdit_SetColor,
+  LabeledEdit_GetConstraints,
+  LabeledEdit_SetConstraints,
+  LabeledEdit_GetCtl3D,
+  LabeledEdit_SetCtl3D,
   LabeledEdit_GetDoubleBuffered,
   LabeledEdit_SetDoubleBuffered,
   LabeledEdit_GetDragCursor,

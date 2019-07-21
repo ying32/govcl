@@ -549,6 +549,16 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function ToolButton_GetConstraints(AObj: TToolButton): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ToolButton_SetConstraints(AObj: TToolButton; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ToolButton_GetControlState(AObj: TToolButton): TControlState; extdecl;
 begin
   Result :=  AObj.ControlState;
@@ -789,6 +799,8 @@ exports
   ToolButton_GetClientRect,
   ToolButton_GetClientWidth,
   ToolButton_SetClientWidth,
+  ToolButton_GetConstraints,
+  ToolButton_SetConstraints,
   ToolButton_GetControlState,
   ToolButton_SetControlState,
   ToolButton_GetControlStyle,

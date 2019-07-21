@@ -220,6 +220,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function Gauge_GetConstraints(AObj: TGauge): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Gauge_SetConstraints(AObj: TGauge; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Gauge_GetEnabled(AObj: TGauge): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -609,6 +619,8 @@ exports
   Gauge_SetBorderStyle,
   Gauge_GetColor,
   Gauge_SetColor,
+  Gauge_GetConstraints,
+  Gauge_SetConstraints,
   Gauge_GetEnabled,
   Gauge_SetEnabled,
   Gauge_GetForeColor,

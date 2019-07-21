@@ -330,6 +330,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function RadioButton_GetConstraints(AObj: TRadioButton): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure RadioButton_SetConstraints(AObj: TRadioButton; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function RadioButton_GetCtl3D(AObj: TRadioButton): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure RadioButton_SetCtl3D(AObj: TRadioButton; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function RadioButton_GetDoubleBuffered(AObj: TRadioButton): LongBool; stdcall;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1126,6 +1146,10 @@ exports
   RadioButton_SetChecked,
   RadioButton_GetColor,
   RadioButton_SetColor,
+  RadioButton_GetConstraints,
+  RadioButton_SetConstraints,
+  RadioButton_GetCtl3D,
+  RadioButton_SetCtl3D,
   RadioButton_GetDoubleBuffered,
   RadioButton_SetDoubleBuffered,
   RadioButton_GetDragCursor,

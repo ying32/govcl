@@ -345,6 +345,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function FlowPanel_GetConstraints(AObj: TFlowPanel): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure FlowPanel_SetConstraints(AObj: TFlowPanel; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function FlowPanel_GetUseDockManager(AObj: TFlowPanel): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -992,6 +1002,8 @@ exports
   FlowPanel_SetCaption,
   FlowPanel_GetColor,
   FlowPanel_SetColor,
+  FlowPanel_GetConstraints,
+  FlowPanel_SetConstraints,
   FlowPanel_GetUseDockManager,
   FlowPanel_SetUseDockManager,
   FlowPanel_GetDockSite,

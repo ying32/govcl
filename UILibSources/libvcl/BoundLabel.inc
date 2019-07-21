@@ -606,6 +606,16 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
+function BoundLabel_GetConstraints(AObj: TBoundLabel): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure BoundLabel_SetConstraints(AObj: TBoundLabel; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function BoundLabel_GetControlState(AObj: TBoundLabel): TControlState; stdcall;
 begin
   Result :=  AObj.ControlState;
@@ -884,6 +894,8 @@ exports
   BoundLabel_GetClientRect,
   BoundLabel_GetClientWidth,
   BoundLabel_SetClientWidth,
+  BoundLabel_GetConstraints,
+  BoundLabel_SetConstraints,
   BoundLabel_GetControlState,
   BoundLabel_SetControlState,
   BoundLabel_GetControlStyle,

@@ -380,6 +380,26 @@ begin
   AObj.Color := AValue;
 end;
 
+function Panel_GetConstraints(AObj: TPanel): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Panel_SetConstraints(AObj: TPanel; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function Panel_GetCtl3D(AObj: TPanel): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure Panel_SetCtl3D(AObj: TPanel; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function Panel_GetUseDockManager(AObj: TPanel): LongBool; stdcall;
 begin
   Result :=  AObj.UseDockManager;
@@ -1238,6 +1258,10 @@ exports
   Panel_SetCaption,
   Panel_GetColor,
   Panel_SetColor,
+  Panel_GetConstraints,
+  Panel_SetConstraints,
+  Panel_GetCtl3D,
+  Panel_SetCtl3D,
   Panel_GetUseDockManager,
   Panel_SetUseDockManager,
   Panel_GetDockSite,

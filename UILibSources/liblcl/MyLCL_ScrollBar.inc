@@ -270,6 +270,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function ScrollBar_GetConstraints(AObj: TScrollBar): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ScrollBar_SetConstraints(AObj: TScrollBar; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ScrollBar_GetDoubleBuffered(AObj: TScrollBar): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -849,6 +859,8 @@ exports
   ScrollBar_SetAnchors,
   ScrollBar_GetBiDiMode,
   ScrollBar_SetBiDiMode,
+  ScrollBar_GetConstraints,
+  ScrollBar_SetConstraints,
   ScrollBar_GetDoubleBuffered,
   ScrollBar_SetDoubleBuffered,
   ScrollBar_GetDragCursor,

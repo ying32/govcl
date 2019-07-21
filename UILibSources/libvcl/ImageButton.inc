@@ -210,6 +210,16 @@ begin
   AObj.AutoSize := AValue;
 end;
 
+function ImageButton_GetConstraints(AObj: TImageButton): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ImageButton_SetConstraints(AObj: TImageButton; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ImageButton_GetCaption(AObj: TImageButton): PChar; stdcall;
 begin
   Result :=  PChar(AObj.Caption);
@@ -825,6 +835,8 @@ exports
   ImageButton_SetAnchors,
   ImageButton_GetAutoSize,
   ImageButton_SetAutoSize,
+  ImageButton_GetConstraints,
+  ImageButton_SetConstraints,
   ImageButton_GetCaption,
   ImageButton_SetCaption,
   ImageButton_GetDragCursor,

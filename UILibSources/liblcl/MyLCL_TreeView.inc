@@ -356,6 +356,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function TreeView_GetConstraints(AObj: TTreeView): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure TreeView_SetConstraints(AObj: TTreeView; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function TreeView_GetDoubleBuffered(AObj: TTreeView): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1271,6 +1281,8 @@ exports
   TreeView_SetBorderWidth,
   TreeView_GetColor,
   TreeView_SetColor,
+  TreeView_GetConstraints,
+  TreeView_SetConstraints,
   TreeView_GetDoubleBuffered,
   TreeView_SetDoubleBuffered,
   TreeView_GetDragKind,

@@ -325,6 +325,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function CheckBox_GetConstraints(AObj: TCheckBox): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure CheckBox_SetConstraints(AObj: TCheckBox; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function CheckBox_GetDoubleBuffered(AObj: TCheckBox): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -920,6 +930,8 @@ exports
   CheckBox_SetChecked,
   CheckBox_GetColor,
   CheckBox_SetColor,
+  CheckBox_GetConstraints,
+  CheckBox_SetConstraints,
   CheckBox_GetDoubleBuffered,
   CheckBox_SetDoubleBuffered,
   CheckBox_GetDragCursor,

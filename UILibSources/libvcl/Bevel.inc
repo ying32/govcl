@@ -185,6 +185,16 @@ begin
   AObj.Anchors := AValue;
 end;
 
+function Bevel_GetConstraints(AObj: TBevel): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Bevel_SetConstraints(AObj: TBevel; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Bevel_GetParentShowHint(AObj: TBevel): LongBool; stdcall;
 begin
   Result :=  AObj.ParentShowHint;
@@ -559,6 +569,8 @@ exports
   Bevel_SetAlign,
   Bevel_GetAnchors,
   Bevel_SetAnchors,
+  Bevel_GetConstraints,
+  Bevel_SetConstraints,
   Bevel_GetParentShowHint,
   Bevel_SetParentShowHint,
   Bevel_GetShape,

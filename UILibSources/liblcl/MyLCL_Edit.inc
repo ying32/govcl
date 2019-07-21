@@ -360,6 +360,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function Edit_GetConstraints(AObj: TEdit): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Edit_SetConstraints(AObj: TEdit; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Edit_GetDoubleBuffered(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1091,6 +1101,8 @@ exports
   Edit_SetCharCase,
   Edit_GetColor,
   Edit_SetColor,
+  Edit_GetConstraints,
+  Edit_SetConstraints,
   Edit_GetDoubleBuffered,
   Edit_SetDoubleBuffered,
   Edit_GetDragCursor,

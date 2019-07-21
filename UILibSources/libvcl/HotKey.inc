@@ -280,6 +280,16 @@ begin
   AObj.BiDiMode := AValue;
 end;
 
+function HotKey_GetConstraints(AObj: THotKey): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure HotKey_SetConstraints(AObj: THotKey; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function HotKey_GetEnabled(AObj: THotKey): LongBool; stdcall;
 begin
   Result :=  AObj.Enabled;
@@ -898,6 +908,8 @@ exports
   HotKey_SetAutoSize,
   HotKey_GetBiDiMode,
   HotKey_SetBiDiMode,
+  HotKey_GetConstraints,
+  HotKey_SetConstraints,
   HotKey_GetEnabled,
   HotKey_SetEnabled,
   HotKey_GetHint,

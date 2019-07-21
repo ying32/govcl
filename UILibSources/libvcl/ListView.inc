@@ -35,6 +35,11 @@ begin
   AObj.ClearSelection;
 end;
 
+procedure ListView_CopySelection(AObj: TListView; Destination: TCustomListControl); stdcall;
+begin
+  AObj.CopySelection(Destination);
+end;
+
 procedure ListView_DeleteSelected(AObj: TListView); stdcall;
 begin
   AObj.DeleteSelected;
@@ -448,6 +453,26 @@ end;
 procedure ListView_SetColumnClick(AObj: TListView; AValue: LongBool); stdcall;
 begin
   AObj.ColumnClick := AValue;
+end;
+
+function ListView_GetConstraints(AObj: TListView): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ListView_SetConstraints(AObj: TListView; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function ListView_GetCtl3D(AObj: TListView): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ListView_SetCtl3D(AObj: TListView; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
 end;
 
 function ListView_GetDoubleBuffered(AObj: TListView): LongBool; stdcall;
@@ -1726,6 +1751,7 @@ exports
   ListView_AlphaSort,
   ListView_Clear,
   ListView_ClearSelection,
+  ListView_CopySelection,
   ListView_DeleteSelected,
   ListView_GetSearchString,
   ListView_IsEditing,
@@ -1809,6 +1835,10 @@ exports
   ListView_SetColumns,
   ListView_GetColumnClick,
   ListView_SetColumnClick,
+  ListView_GetConstraints,
+  ListView_SetConstraints,
+  ListView_GetCtl3D,
+  ListView_SetCtl3D,
   ListView_GetDoubleBuffered,
   ListView_SetDoubleBuffered,
   ListView_GetDragCursor,

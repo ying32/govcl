@@ -340,6 +340,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function Memo_GetConstraints(AObj: TMemo): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Memo_SetConstraints(AObj: TMemo; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Memo_GetDoubleBuffered(AObj: TMemo): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1107,6 +1117,8 @@ exports
   Memo_SetCharCase,
   Memo_GetColor,
   Memo_SetColor,
+  Memo_GetConstraints,
+  Memo_SetConstraints,
   Memo_GetDoubleBuffered,
   Memo_SetDoubleBuffered,
   Memo_GetDragCursor,

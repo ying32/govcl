@@ -310,6 +310,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function SpinEdit_GetConstraints(AObj: TSpinEdit): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure SpinEdit_SetConstraints(AObj: TSpinEdit; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function SpinEdit_GetEnabled(AObj: TSpinEdit): LongBool; extdecl;
 begin
   Result :=  AObj.Enabled;
@@ -992,6 +1002,8 @@ exports
   SpinEdit_SetAutoSize,
   SpinEdit_GetColor,
   SpinEdit_SetColor,
+  SpinEdit_GetConstraints,
+  SpinEdit_SetConstraints,
   SpinEdit_GetEnabled,
   SpinEdit_SetEnabled,
   SpinEdit_GetFont,

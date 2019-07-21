@@ -315,6 +315,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function RadioButton_GetConstraints(AObj: TRadioButton): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure RadioButton_SetConstraints(AObj: TRadioButton; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function RadioButton_GetDoubleBuffered(AObj: TRadioButton): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -898,6 +908,8 @@ exports
   RadioButton_SetChecked,
   RadioButton_GetColor,
   RadioButton_SetColor,
+  RadioButton_GetConstraints,
+  RadioButton_SetConstraints,
   RadioButton_GetDoubleBuffered,
   RadioButton_SetDoubleBuffered,
   RadioButton_GetDragCursor,

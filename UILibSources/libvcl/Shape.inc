@@ -235,6 +235,16 @@ begin
   AObj.Enabled := AValue;
 end;
 
+function Shape_GetConstraints(AObj: TShape): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Shape_SetConstraints(AObj: TShape; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Shape_GetParentShowHint(AObj: TShape): LongBool; stdcall;
 begin
   Result :=  AObj.ParentShowHint;
@@ -753,6 +763,8 @@ exports
   Shape_SetDragMode,
   Shape_GetEnabled,
   Shape_SetEnabled,
+  Shape_GetConstraints,
+  Shape_SetConstraints,
   Shape_GetParentShowHint,
   Shape_SetParentShowHint,
   Shape_GetPen,

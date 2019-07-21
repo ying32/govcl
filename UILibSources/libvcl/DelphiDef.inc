@@ -52,7 +52,7 @@ end;
 function DLibVersion: Cardinal; stdcall;
 begin
   // 共8位，2位2位的
-  Result := $01020602;
+  Result := $01020603;
 end;
 
 // TApplication
@@ -102,6 +102,18 @@ begin
 end;
 
 // TForm
+
+function Form_Create2(AOwner: TComponent; AInitScale: LongBool): TGoForm; stdcall;
+begin
+  LockInitScale;
+  try
+    SetInitScale(AInitScale);
+    Result := TGoForm.Create(AOwner);
+    SetInitScale(False);
+  finally
+    UnLockInitScale;
+  end;
+end;
 
 procedure Form_EnabledMaximize(AObj: TGoForm; AValue: LongBool); stdcall;
 begin
@@ -944,6 +956,7 @@ exports
   Application_Initialize,
 
   // TForm
+  Form_Create2,
   Form_EnabledMaximize,
   Form_EnabledMinimize,
   Form_EnabledSystemMenu,

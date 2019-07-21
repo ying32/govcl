@@ -195,6 +195,16 @@ begin
   AObj.Cursor := AValue;
 end;
 
+function Splitter_GetConstraints(AObj: TSplitter): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure Splitter_SetConstraints(AObj: TSplitter; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function Splitter_GetParentColor(AObj: TSplitter): LongBool; extdecl;
 begin
   Result :=  AObj.ParentColor;
@@ -496,6 +506,8 @@ exports
   Splitter_SetColor,
   Splitter_GetCursor,
   Splitter_SetCursor,
+  Splitter_GetConstraints,
+  Splitter_SetConstraints,
   Splitter_GetParentColor,
   Splitter_SetParentColor,
   Splitter_GetVisible,

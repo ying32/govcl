@@ -310,6 +310,16 @@ begin
   AObj.Enabled := AValue;
 end;
 
+function TrackBar_GetConstraints(AObj: TTrackBar): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure TrackBar_SetConstraints(AObj: TTrackBar; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function TrackBar_GetLineSize(AObj: TTrackBar): Integer; extdecl;
 begin
   Result :=  AObj.LineSize;
@@ -917,6 +927,8 @@ exports
   TrackBar_SetDragMode,
   TrackBar_GetEnabled,
   TrackBar_SetEnabled,
+  TrackBar_GetConstraints,
+  TrackBar_SetConstraints,
   TrackBar_GetLineSize,
   TrackBar_SetLineSize,
   TrackBar_GetMax,

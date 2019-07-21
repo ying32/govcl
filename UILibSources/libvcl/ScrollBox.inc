@@ -15,6 +15,21 @@ begin
   AObj.Free;
 end;
 
+procedure ScrollBox_DisableAutoRange(AObj: TScrollBox); stdcall;
+begin
+  AObj.DisableAutoRange;
+end;
+
+procedure ScrollBox_EnableAutoRange(AObj: TScrollBox); stdcall;
+begin
+  AObj.EnableAutoRange;
+end;
+
+procedure ScrollBox_ScrollInView(AObj: TScrollBox; AControl: TControl); stdcall;
+begin
+  AObj.ScrollInView(AControl);
+end;
+
 function ScrollBox_CanFocus(AObj: TScrollBox): LongBool; stdcall;
 begin
   Result :=  AObj.CanFocus;
@@ -270,6 +285,16 @@ begin
   AObj.Anchors := AValue;
 end;
 
+function ScrollBox_GetAutoScroll(AObj: TScrollBox): LongBool; stdcall;
+begin
+  Result :=  AObj.AutoScroll;
+end;
+
+procedure ScrollBox_SetAutoScroll(AObj: TScrollBox; AValue: LongBool); stdcall;
+begin
+  AObj.AutoScroll := AValue;
+end;
+
 function ScrollBox_GetAutoSize(AObj: TScrollBox): LongBool; stdcall;
 begin
   Result :=  AObj.AutoSize;
@@ -340,6 +365,16 @@ begin
   AObj.BorderStyle := AValue;
 end;
 
+function ScrollBox_GetConstraints(AObj: TScrollBox): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ScrollBox_SetConstraints(AObj: TScrollBox; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ScrollBox_GetDockSite(AObj: TScrollBox): LongBool; stdcall;
 begin
   Result :=  AObj.DockSite;
@@ -408,6 +443,16 @@ end;
 procedure ScrollBox_SetColor(AObj: TScrollBox; AValue: TColor); stdcall;
 begin
   AObj.Color := AValue;
+end;
+
+function ScrollBox_GetCtl3D(AObj: TScrollBox): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure ScrollBox_SetCtl3D(AObj: TScrollBox; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
 end;
 
 function ScrollBox_GetFont(AObj: TScrollBox): TFont; stdcall;
@@ -828,6 +873,26 @@ begin
   TEventClass.Add(AObj, @TEventClass.OnUnDock, AEventId);
 end;
 
+function ScrollBox_GetHorzScrollBar(AObj: TScrollBox): TControlScrollBar; stdcall;
+begin
+  Result :=  AObj.HorzScrollBar;
+end;
+
+procedure ScrollBox_SetHorzScrollBar(AObj: TScrollBox; AValue: TControlScrollBar); stdcall;
+begin
+  AObj.HorzScrollBar := AValue;
+end;
+
+function ScrollBox_GetVertScrollBar(AObj: TScrollBox): TControlScrollBar; stdcall;
+begin
+  Result :=  AObj.VertScrollBar;
+end;
+
+procedure ScrollBox_SetVertScrollBar(AObj: TScrollBox; AValue: TControlScrollBar); stdcall;
+begin
+  AObj.VertScrollBar := AValue;
+end;
+
 function ScrollBox_GetDockClientCount(AObj: TScrollBox): Integer; stdcall;
 begin
   Result :=  AObj.DockClientCount;
@@ -1141,6 +1206,9 @@ end;
 exports
   ScrollBox_Create,
   ScrollBox_Free,
+  ScrollBox_DisableAutoRange,
+  ScrollBox_EnableAutoRange,
+  ScrollBox_ScrollInView,
   ScrollBox_CanFocus,
   ScrollBox_ContainsControl,
   ScrollBox_ControlAtPos,
@@ -1192,6 +1260,8 @@ exports
   ScrollBox_SetAlign,
   ScrollBox_GetAnchors,
   ScrollBox_SetAnchors,
+  ScrollBox_GetAutoScroll,
+  ScrollBox_SetAutoScroll,
   ScrollBox_GetAutoSize,
   ScrollBox_SetAutoSize,
   ScrollBox_GetBevelEdges,
@@ -1206,6 +1276,8 @@ exports
   ScrollBox_SetBiDiMode,
   ScrollBox_GetBorderStyle,
   ScrollBox_SetBorderStyle,
+  ScrollBox_GetConstraints,
+  ScrollBox_SetConstraints,
   ScrollBox_GetDockSite,
   ScrollBox_SetDockSite,
   ScrollBox_GetDoubleBuffered,
@@ -1220,6 +1292,8 @@ exports
   ScrollBox_SetEnabled,
   ScrollBox_GetColor,
   ScrollBox_SetColor,
+  ScrollBox_GetCtl3D,
+  ScrollBox_SetCtl3D,
   ScrollBox_GetFont,
   ScrollBox_SetFont,
   ScrollBox_GetParentBackground,
@@ -1270,6 +1344,10 @@ exports
   ScrollBox_SetOnResize,
   ScrollBox_SetOnStartDock,
   ScrollBox_SetOnUnDock,
+  ScrollBox_GetHorzScrollBar,
+  ScrollBox_SetHorzScrollBar,
+  ScrollBox_GetVertScrollBar,
+  ScrollBox_SetVertScrollBar,
   ScrollBox_GetDockClientCount,
   ScrollBox_GetAlignDisabled,
   ScrollBox_GetMouseInClient,

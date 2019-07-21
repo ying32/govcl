@@ -415,6 +415,16 @@ begin
   AObj.Color := AValue;
 end;
 
+function RichEdit_GetCtl3D(AObj: TRichEdit): LongBool; stdcall;
+begin
+  Result :=  AObj.Ctl3D;
+end;
+
+procedure RichEdit_SetCtl3D(AObj: TRichEdit; AValue: LongBool); stdcall;
+begin
+  AObj.Ctl3D := AValue;
+end;
+
 function RichEdit_GetDragCursor(AObj: TRichEdit): TCursor; stdcall;
 begin
   Result :=  AObj.DragCursor;
@@ -483,6 +493,16 @@ end;
 procedure RichEdit_SetHideScrollBars(AObj: TRichEdit; AValue: LongBool); stdcall;
 begin
   AObj.HideScrollBars := AValue;
+end;
+
+function RichEdit_GetConstraints(AObj: TRichEdit): TSizeConstraints; stdcall;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure RichEdit_SetConstraints(AObj: TRichEdit; AValue: TSizeConstraints); stdcall;
+begin
+  AObj.Constraints := AValue;
 end;
 
 function RichEdit_GetLines(AObj: TRichEdit): TStrings; stdcall;
@@ -1501,6 +1521,8 @@ exports
   RichEdit_SetBorderWidth,
   RichEdit_GetColor,
   RichEdit_SetColor,
+  RichEdit_GetCtl3D,
+  RichEdit_SetCtl3D,
   RichEdit_GetDragCursor,
   RichEdit_SetDragCursor,
   RichEdit_GetDragKind,
@@ -1515,6 +1537,8 @@ exports
   RichEdit_SetHideSelection,
   RichEdit_GetHideScrollBars,
   RichEdit_SetHideScrollBars,
+  RichEdit_GetConstraints,
+  RichEdit_SetConstraints,
   RichEdit_GetLines,
   RichEdit_SetLines,
   RichEdit_GetMaxLength,

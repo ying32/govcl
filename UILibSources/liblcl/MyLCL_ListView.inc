@@ -381,6 +381,16 @@ begin
   AObj.ColumnClick := AValue;
 end;
 
+function ListView_GetConstraints(AObj: TListView): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure ListView_SetConstraints(AObj: TListView; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
 function ListView_GetDoubleBuffered(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.DoubleBuffered;
@@ -1359,6 +1369,8 @@ exports
   ListView_SetColumns,
   ListView_GetColumnClick,
   ListView_SetColumnClick,
+  ListView_GetConstraints,
+  ListView_SetConstraints,
   ListView_GetDoubleBuffered,
   ListView_SetDoubleBuffered,
   ListView_GetDragCursor,
