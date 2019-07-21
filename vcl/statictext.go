@@ -576,6 +576,16 @@ func (s *TStaticText) SetColor(value TColor) {
     StaticText_SetColor(s.instance, value)
 }
 
+// Constraints
+func (s *TStaticText) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(StaticText_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TStaticText) SetConstraints(value *TSizeConstraints) {
+    StaticText_SetConstraints(s.instance, CheckPtr(value))
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

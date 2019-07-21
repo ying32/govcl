@@ -466,6 +466,16 @@ func (h *THotKey) SetBiDiMode(value TBiDiMode) {
     HotKey_SetBiDiMode(h.instance, value)
 }
 
+// Constraints
+func (h *THotKey) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(HotKey_GetConstraints(h.instance))
+}
+
+// SetConstraints
+func (h *THotKey) SetConstraints(value *TSizeConstraints) {
+    HotKey_SetConstraints(h.instance, CheckPtr(value))
+}
+
 // Enabled
 // CN: 获取控件启用。
 // EN: Get the control enabled.

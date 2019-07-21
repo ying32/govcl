@@ -552,6 +552,16 @@ func (l *TLinkLabel) SetColor(value TColor) {
     LinkLabel_SetColor(l.instance, value)
 }
 
+// Constraints
+func (l *TLinkLabel) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(LinkLabel_GetConstraints(l.instance))
+}
+
+// SetConstraints
+func (l *TLinkLabel) SetConstraints(value *TSizeConstraints) {
+    LinkLabel_SetConstraints(l.instance, CheckPtr(value))
+}
+
 // DragCursor
 // CN: 获取设置控件拖拽时的光标。
 // EN: Get Set the cursor when the control is dragged.

@@ -559,6 +559,26 @@ func (s *TStringGrid) SetColCount(value int32) {
     StringGrid_SetColCount(s.instance, value)
 }
 
+// Constraints
+func (s *TStringGrid) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(StringGrid_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TStringGrid) SetConstraints(value *TSizeConstraints) {
+    StringGrid_SetConstraints(s.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (s *TStringGrid) Ctl3D() bool {
+    return StringGrid_GetCtl3D(s.instance)
+}
+
+// SetCtl3D
+func (s *TStringGrid) SetCtl3D(value bool) {
+    StringGrid_SetCtl3D(s.instance, value)
+}
+
 // DefaultColWidth
 func (s *TStringGrid) DefaultColWidth() int32 {
     return StringGrid_GetDefaultColWidth(s.instance)

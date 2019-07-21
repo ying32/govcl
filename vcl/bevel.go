@@ -339,6 +339,16 @@ func (b *TBevel) SetAnchors(value TAnchors) {
     Bevel_SetAnchors(b.instance, value)
 }
 
+// Constraints
+func (b *TBevel) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Bevel_GetConstraints(b.instance))
+}
+
+// SetConstraints
+func (b *TBevel) SetConstraints(value *TSizeConstraints) {
+    Bevel_SetConstraints(b.instance, CheckPtr(value))
+}
+
 // ParentShowHint
 func (b *TBevel) ParentShowHint() bool {
     return Bevel_GetParentShowHint(b.instance)

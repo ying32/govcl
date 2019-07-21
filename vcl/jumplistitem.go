@@ -259,3 +259,13 @@ func (j *TJumpListItem) SetIndex(value int32) {
     JumpListItem_SetIndex(j.instance, value)
 }
 
+// DisplayName
+func (j *TJumpListItem) DisplayName() string {
+    return JumpListItem_GetDisplayName(j.instance)
+}
+
+// SetDisplayName
+func (j *TJumpListItem) SetDisplayName(value string) {
+    JumpListItem_SetDisplayName(j.instance, value)
+}
+

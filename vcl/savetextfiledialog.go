@@ -284,6 +284,16 @@ func (s *TSaveTextFileDialog) Handle() HWND {
     return SaveTextFileDialog_GetHandle(s.instance)
 }
 
+// Ctl3D
+func (s *TSaveTextFileDialog) Ctl3D() bool {
+    return SaveTextFileDialog_GetCtl3D(s.instance)
+}
+
+// SetCtl3D
+func (s *TSaveTextFileDialog) SetCtl3D(value bool) {
+    SaveTextFileDialog_SetCtl3D(s.instance, value)
+}
+
 // SetOnClose
 func (s *TSaveTextFileDialog) SetOnClose(fn TNotifyEvent) {
     SaveTextFileDialog_SetOnClose(s.instance, fn)

@@ -514,6 +514,16 @@ func (u *TUpDown) SetIncrement(value int32) {
     UpDown_SetIncrement(u.instance, value)
 }
 
+// Constraints
+func (u *TUpDown) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(UpDown_GetConstraints(u.instance))
+}
+
+// SetConstraints
+func (u *TUpDown) SetConstraints(value *TSizeConstraints) {
+    UpDown_SetConstraints(u.instance, CheckPtr(value))
+}
+
 // Orientation
 func (u *TUpDown) Orientation() TUDOrientation {
     return UpDown_GetOrientation(u.instance)

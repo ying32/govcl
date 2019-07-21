@@ -6,6 +6,7 @@ var (
 	application_Run        = libvcl.NewProc("Application_Run")
 	application_Initialize = libvcl.NewProc("Application_Initialize")
 
+	form_Create2                = libvcl.NewProc("Form_Create2")
 	form_EnabledMaximize        = libvcl.NewProc("Form_EnabledMaximize")
 	form_EnabledMinimize        = libvcl.NewProc("Form_EnabledMinimize")
 	form_EnabledSystemMenu      = libvcl.NewProc("Form_EnabledSystemMenu")

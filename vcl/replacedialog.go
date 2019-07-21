@@ -282,6 +282,16 @@ func (r *TReplaceDialog) Handle() HWND {
     return ReplaceDialog_GetHandle(r.instance)
 }
 
+// Ctl3D
+func (r *TReplaceDialog) Ctl3D() bool {
+    return ReplaceDialog_GetCtl3D(r.instance)
+}
+
+// SetCtl3D
+func (r *TReplaceDialog) SetCtl3D(value bool) {
+    ReplaceDialog_SetCtl3D(r.instance, value)
+}
+
 // SetOnClose
 func (r *TReplaceDialog) SetOnClose(fn TNotifyEvent) {
     ReplaceDialog_SetOnClose(r.instance, fn)

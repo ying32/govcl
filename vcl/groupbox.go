@@ -494,6 +494,26 @@ func (g *TGroupBox) SetColor(value TColor) {
     GroupBox_SetColor(g.instance, value)
 }
 
+// Constraints
+func (g *TGroupBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(GroupBox_GetConstraints(g.instance))
+}
+
+// SetConstraints
+func (g *TGroupBox) SetConstraints(value *TSizeConstraints) {
+    GroupBox_SetConstraints(g.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (g *TGroupBox) Ctl3D() bool {
+    return GroupBox_GetCtl3D(g.instance)
+}
+
+// SetCtl3D
+func (g *TGroupBox) SetCtl3D(value bool) {
+    GroupBox_SetCtl3D(g.instance, value)
+}
+
 // DockSite
 // CN: 获取停靠站点。
 // EN: Get Docking site.

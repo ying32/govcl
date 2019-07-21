@@ -120,6 +120,11 @@ func (l *TListBox) ClearSelection() {
     ListBox_ClearSelection(l.instance)
 }
 
+// CopySelection
+func (l *TListBox) CopySelection(Destination IWinControl) {
+    ListBox_CopySelection(l.instance, CheckPtr(Destination))
+}
+
 // DeleteSelected
 func (l *TListBox) DeleteSelected() {
     ListBox_DeleteSelected(l.instance)
@@ -603,6 +608,26 @@ func (l *TListBox) Columns() int32 {
 // SetColumns
 func (l *TListBox) SetColumns(value int32) {
     ListBox_SetColumns(l.instance, value)
+}
+
+// Constraints
+func (l *TListBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ListBox_GetConstraints(l.instance))
+}
+
+// SetConstraints
+func (l *TListBox) SetConstraints(value *TSizeConstraints) {
+    ListBox_SetConstraints(l.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (l *TListBox) Ctl3D() bool {
+    return ListBox_GetCtl3D(l.instance)
+}
+
+// SetCtl3D
+func (l *TListBox) SetCtl3D(value bool) {
+    ListBox_SetCtl3D(l.instance, value)
 }
 
 // DoubleBuffered

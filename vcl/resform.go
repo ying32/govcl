@@ -34,11 +34,12 @@ package vcl
 import (
 	"fmt"
 	"reflect"
-
 	"unsafe"
+
+	. "github.com/ying32/govcl/vcl/api"
 )
 
-func (a *TApplication) setFiledVal(name string, instance uintptr, v reflect.Value) {
+func setFiledVal(name string, instance uintptr, v reflect.Value) {
 	field := v.FieldByName(name)
 	if field.IsValid() && field.CanSet() {
 		// 获取这个字段的类型  field.Type() 为指针类，后面再使用Elem()后返回的为非指针类型的
@@ -67,7 +68,7 @@ func (a *TApplication) setFiledVal(name string, instance uintptr, v reflect.Valu
 }
 
 // fullFiledVal 动态创设置字段值
-func (a *TApplication) fullFiledVal(f *TForm, out interface{}, fullSubComponent, afterBindSubComponentsEvents bool) {
+func fullFiledVal(f IComponent, out interface{}, fullSubComponent, afterBindSubComponentsEvents bool) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("err:", err)
@@ -91,16 +92,86 @@ func (a *TApplication) fullFiledVal(f *TForm, out interface{}, fullSubComponent,
 			f.SetName(newName)
 		}
 		// TForm，默认的, 使用隐式嵌入
-		a.setFiledVal("TForm", f.Instance(), vPtr)
+		setFiledVal("TForm", f.Instance(), vPtr)
 		// fullComponent 只有当是从资源加载的才进行填充操作。
 		if fullSubComponent {
 			var ci int32
 			for ci = 0; ci < f.ComponentCount(); ci++ {
 				// 通过资源文件中的组件名字查找
-				a.setFiledVal(f.Components(ci).Name(), f.Components(ci).Instance(), vPtr)
+				setFiledVal(f.Components(ci).Name(), f.Components(ci).Instance(), vPtr)
 			}
 		}
 		// 关联事件
 		autoBindEvents(v, f, fullSubComponent, afterBindSubComponentsEvents)
 	}
+}
+
+// 共用的一个从资源中加载构建对象
+func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interface{}) IComponent {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("resCreateForm Error: ", err)
+		}
+	}()
+
+	var fullSubComponent bool
+	var afterBindSubComponentsEvents bool
+	var field1 interface{}
+
+	// 初始创建时是否使用缩放
+	initScale := len(fields) != 2
+	if len(fields) >= 2 {
+		switch fields[1].(type) {
+		case bool:
+			initScale = true
+		default:
+			initScale = false
+		}
+	}
+
+	var resObj IComponent
+
+	switch typ {
+	case 0:
+		// 由参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetFormScaled(true) 后才能生效。
+		resObj = FormFromInst(Application_CreateForm(appInst, initScale))
+	case 1:
+		resObj = FormFromInst(Form_Create2(CheckPtr(owner), initScale))
+	case 2:
+		// TFrame
+		resObj = NewFrame(owner)
+	}
+
+	switch len(fields) {
+	case 1:
+		field1 = fields[0]
+		fullSubComponent = false
+		afterBindSubComponentsEvents = false
+
+	case 2:
+		switch fields[1].(type) {
+		// 当第二个参数为bool时，表示不填充子组件，为true表示之后绑定事件
+		case bool:
+			field1 = fields[0]
+			fullSubComponent = false
+			afterBindSubComponentsEvents = fields[1].(bool)
+		default:
+			// 第二个参数类型不为bool时，填充子组件为true，之后绑定事件为false
+			field1 = fields[1]
+			fullSubComponent = true
+			afterBindSubComponentsEvents = false
+			switch fields[0].(type) {
+			case string:
+				ResFormLoadFromFile(fields[0].(string), CheckPtr(resObj))
+			case []byte:
+				mem := NewMemoryStreamFromBytes(fields[0].([]byte))
+				defer mem.Free()
+				ResFormLoadFromStream(CheckPtr(mem), CheckPtr(resObj))
+			}
+		}
+	default:
+		return resObj
+	}
+	fullFiledVal(resObj, field1, fullSubComponent, afterBindSubComponentsEvents)
+	return nil
 }

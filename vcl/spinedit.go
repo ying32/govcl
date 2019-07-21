@@ -545,6 +545,26 @@ func (s *TSpinEdit) SetColor(value TColor) {
     SpinEdit_SetColor(s.instance, value)
 }
 
+// Constraints
+func (s *TSpinEdit) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(SpinEdit_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TSpinEdit) SetConstraints(value *TSizeConstraints) {
+    SpinEdit_SetConstraints(s.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (s *TSpinEdit) Ctl3D() bool {
+    return SpinEdit_GetCtl3D(s.instance)
+}
+
+// SetCtl3D
+func (s *TSpinEdit) SetCtl3D(value bool) {
+    SpinEdit_SetCtl3D(s.instance, value)
+}
+
 // DragCursor
 // CN: 获取设置控件拖拽时的光标。
 // EN: Get Set the cursor when the control is dragged.

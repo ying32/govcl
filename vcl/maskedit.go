@@ -652,6 +652,26 @@ func (m *TMaskEdit) SetColor(value TColor) {
     MaskEdit_SetColor(m.instance, value)
 }
 
+// Constraints
+func (m *TMaskEdit) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(MaskEdit_GetConstraints(m.instance))
+}
+
+// SetConstraints
+func (m *TMaskEdit) SetConstraints(value *TSizeConstraints) {
+    MaskEdit_SetConstraints(m.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (m *TMaskEdit) Ctl3D() bool {
+    return MaskEdit_GetCtl3D(m.instance)
+}
+
+// SetCtl3D
+func (m *TMaskEdit) SetCtl3D(value bool) {
+    MaskEdit_SetCtl3D(m.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

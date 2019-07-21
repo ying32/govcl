@@ -376,6 +376,16 @@ func (s *TSpeedButton) SetBiDiMode(value TBiDiMode) {
     SpeedButton_SetBiDiMode(s.instance, value)
 }
 
+// Constraints
+func (s *TSpeedButton) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(SpeedButton_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TSpeedButton) SetConstraints(value *TSizeConstraints) {
+    SpeedButton_SetConstraints(s.instance, CheckPtr(value))
+}
+
 // GroupIndex
 // CN: 获取团组索引。
 // EN: .

@@ -610,6 +610,26 @@ func (f *TFlowPanel) SetColor(value TColor) {
     FlowPanel_SetColor(f.instance, value)
 }
 
+// Constraints
+func (f *TFlowPanel) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(FlowPanel_GetConstraints(f.instance))
+}
+
+// SetConstraints
+func (f *TFlowPanel) SetConstraints(value *TSizeConstraints) {
+    FlowPanel_SetConstraints(f.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (f *TFlowPanel) Ctl3D() bool {
+    return FlowPanel_GetCtl3D(f.instance)
+}
+
+// SetCtl3D
+func (f *TFlowPanel) SetCtl3D(value bool) {
+    FlowPanel_SetCtl3D(f.instance, value)
+}
+
 // UseDockManager
 // CN: 获取使用停靠管理。
 // EN: .

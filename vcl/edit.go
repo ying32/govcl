@@ -647,6 +647,26 @@ func (e *TEdit) SetColor(value TColor) {
     Edit_SetColor(e.instance, value)
 }
 
+// Constraints
+func (e *TEdit) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Edit_GetConstraints(e.instance))
+}
+
+// SetConstraints
+func (e *TEdit) SetConstraints(value *TSizeConstraints) {
+    Edit_SetConstraints(e.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (e *TEdit) Ctl3D() bool {
+    return Edit_GetCtl3D(e.instance)
+}
+
+// SetCtl3D
+func (e *TEdit) SetCtl3D(value bool) {
+    Edit_SetCtl3D(e.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

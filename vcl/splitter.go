@@ -360,6 +360,16 @@ func (s *TSplitter) SetCursor(value TCursor) {
     Splitter_SetCursor(s.instance, value)
 }
 
+// Constraints
+func (s *TSplitter) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Splitter_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TSplitter) SetConstraints(value *TSizeConstraints) {
+    Splitter_SetConstraints(s.instance, CheckPtr(value))
+}
+
 // ParentColor
 // CN: 获取父容器颜色。
 // EN: Get parent color.

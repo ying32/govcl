@@ -72,3 +72,6 @@ type TLibResouce struct {
 	Name string
 	Ptr  uintptr
 }
+
+// TConstraintSize = 0..MaxInt;
+type TConstraintSize int32

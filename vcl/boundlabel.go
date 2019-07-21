@@ -767,6 +767,16 @@ func (b *TBoundLabel) SetClientWidth(value int32) {
     BoundLabel_SetClientWidth(b.instance, value)
 }
 
+// Constraints
+func (b *TBoundLabel) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(BoundLabel_GetConstraints(b.instance))
+}
+
+// SetConstraints
+func (b *TBoundLabel) SetConstraints(value *TSizeConstraints) {
+    BoundLabel_SetConstraints(b.instance, CheckPtr(value))
+}
+
 // ControlState
 // CN: 获取控件状态。
 // EN: Get control state.

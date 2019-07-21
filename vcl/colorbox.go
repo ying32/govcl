@@ -120,6 +120,11 @@ func (c *TColorBox) ClearSelection() {
     ColorBox_ClearSelection(c.instance)
 }
 
+// CopySelection
+func (c *TColorBox) CopySelection(Destination IWinControl) {
+    ColorBox_CopySelection(c.instance, CheckPtr(Destination))
+}
+
 // DeleteSelected
 func (c *TColorBox) DeleteSelected() {
     ColorBox_DeleteSelected(c.instance)
@@ -611,6 +616,26 @@ func (c *TColorBox) SetColor(value TColor) {
     ColorBox_SetColor(c.instance, value)
 }
 
+// Constraints
+func (c *TColorBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ColorBox_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TColorBox) SetConstraints(value *TSizeConstraints) {
+    ColorBox_SetConstraints(c.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (c *TColorBox) Ctl3D() bool {
+    return ColorBox_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TColorBox) SetCtl3D(value bool) {
+    ColorBox_SetCtl3D(c.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.
@@ -854,6 +879,11 @@ func (c *TColorBox) SetOnDragOver(fn TDragOverEvent) {
     ColorBox_SetOnDragOver(c.instance, fn)
 }
 
+// SetOnDropDown
+func (c *TColorBox) SetOnDropDown(fn TNotifyEvent) {
+    ColorBox_SetOnDropDown(c.instance, fn)
+}
+
 // SetOnEndDock
 // CN: 设置停靠结束事件。
 // EN: Set Dock end event.
@@ -918,6 +948,11 @@ func (c *TColorBox) SetOnMouseEnter(fn TNotifyEvent) {
 // EN: Set Mouse leave event.
 func (c *TColorBox) SetOnMouseLeave(fn TNotifyEvent) {
     ColorBox_SetOnMouseLeave(c.instance, fn)
+}
+
+// SetOnSelect
+func (c *TColorBox) SetOnSelect(fn TNotifyEvent) {
+    ColorBox_SetOnSelect(c.instance, fn)
 }
 
 // SetOnStartDock

@@ -648,6 +648,26 @@ func (t *TTreeView) SetColor(value TColor) {
     TreeView_SetColor(t.instance, value)
 }
 
+// Ctl3D
+func (t *TTreeView) Ctl3D() bool {
+    return TreeView_GetCtl3D(t.instance)
+}
+
+// SetCtl3D
+func (t *TTreeView) SetCtl3D(value bool) {
+    TreeView_SetCtl3D(t.instance, value)
+}
+
+// Constraints
+func (t *TTreeView) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(TreeView_GetConstraints(t.instance))
+}
+
+// SetConstraints
+func (t *TTreeView) SetConstraints(value *TSizeConstraints) {
+    TreeView_SetConstraints(t.instance, CheckPtr(value))
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

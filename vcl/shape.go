@@ -409,6 +409,16 @@ func (s *TShape) SetEnabled(value bool) {
     Shape_SetEnabled(s.instance, value)
 }
 
+// Constraints
+func (s *TShape) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Shape_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TShape) SetConstraints(value *TSizeConstraints) {
+    Shape_SetConstraints(s.instance, CheckPtr(value))
+}
+
 // ParentShowHint
 func (s *TShape) ParentShowHint() bool {
     return Shape_GetParentShowHint(s.instance)

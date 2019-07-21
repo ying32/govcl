@@ -507,6 +507,16 @@ func (b *TBitBtn) SetCaption(value string) {
     BitBtn_SetCaption(b.instance, value)
 }
 
+// Constraints
+func (b *TBitBtn) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(BitBtn_GetConstraints(b.instance))
+}
+
+// SetConstraints
+func (b *TBitBtn) SetConstraints(value *TSizeConstraints) {
+    BitBtn_SetConstraints(b.instance, CheckPtr(value))
+}
+
 // Default
 func (b *TBitBtn) Default() bool {
     return BitBtn_GetDefault(b.instance)

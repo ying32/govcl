@@ -505,6 +505,16 @@ func (m *TMonthCalendar) SetCalColors(value *TMonthCalColors) {
     MonthCalendar_SetCalColors(m.instance, CheckPtr(value))
 }
 
+// Constraints
+func (m *TMonthCalendar) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(MonthCalendar_GetConstraints(m.instance))
+}
+
+// SetConstraints
+func (m *TMonthCalendar) SetConstraints(value *TSizeConstraints) {
+    MonthCalendar_SetConstraints(m.instance, CheckPtr(value))
+}
+
 // MultiSelect
 func (m *TMonthCalendar) MultiSelect() bool {
     return MonthCalendar_GetMultiSelect(m.instance)

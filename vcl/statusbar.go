@@ -598,6 +598,16 @@ func (s *TStatusBar) SetFont(value *TFont) {
     StatusBar_SetFont(s.instance, CheckPtr(value))
 }
 
+// Constraints
+func (s *TStatusBar) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(StatusBar_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TStatusBar) SetConstraints(value *TSizeConstraints) {
+    StatusBar_SetConstraints(s.instance, CheckPtr(value))
+}
+
 // Panels
 func (s *TStatusBar) Panels() *TStatusPanels {
     return StatusPanelsFromInst(StatusBar_GetPanels(s.instance))

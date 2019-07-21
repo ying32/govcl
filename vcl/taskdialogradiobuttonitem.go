@@ -250,3 +250,13 @@ func (t *TTaskDialogRadioButtonItem) SetIndex(value int32) {
     TaskDialogRadioButtonItem_SetIndex(t.instance, value)
 }
 
+// DisplayName
+func (t *TTaskDialogRadioButtonItem) DisplayName() string {
+    return TaskDialogRadioButtonItem_GetDisplayName(t.instance)
+}
+
+// SetDisplayName
+func (t *TTaskDialogRadioButtonItem) SetDisplayName(value string) {
+    TaskDialogRadioButtonItem_SetDisplayName(t.instance, value)
+}
+

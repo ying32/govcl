@@ -496,6 +496,16 @@ func (p *TPageControl) SetBiDiMode(value TBiDiMode) {
     PageControl_SetBiDiMode(p.instance, value)
 }
 
+// Constraints
+func (p *TPageControl) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(PageControl_GetConstraints(p.instance))
+}
+
+// SetConstraints
+func (p *TPageControl) SetConstraints(value *TSizeConstraints) {
+    PageControl_SetConstraints(p.instance, CheckPtr(value))
+}
+
 // DockSite
 // CN: 获取停靠站点。
 // EN: Get Docking site.

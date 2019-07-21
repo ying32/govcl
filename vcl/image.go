@@ -370,6 +370,16 @@ func (i *TImage) SetCenter(value bool) {
     Image_SetCenter(i.instance, value)
 }
 
+// Constraints
+func (i *TImage) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Image_GetConstraints(i.instance))
+}
+
+// SetConstraints
+func (i *TImage) SetConstraints(value *TSizeConstraints) {
+    Image_SetConstraints(i.instance, CheckPtr(value))
+}
+
 // DragCursor
 // CN: 获取设置控件拖拽时的光标。
 // EN: Get Set the cursor when the control is dragged.

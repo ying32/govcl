@@ -284,6 +284,16 @@ func (o *TOpenTextFileDialog) Handle() HWND {
     return OpenTextFileDialog_GetHandle(o.instance)
 }
 
+// Ctl3D
+func (o *TOpenTextFileDialog) Ctl3D() bool {
+    return OpenTextFileDialog_GetCtl3D(o.instance)
+}
+
+// SetCtl3D
+func (o *TOpenTextFileDialog) SetCtl3D(value bool) {
+    OpenTextFileDialog_SetCtl3D(o.instance, value)
+}
+
 // SetOnClose
 func (o *TOpenTextFileDialog) SetOnClose(fn TNotifyEvent) {
     OpenTextFileDialog_SetOnClose(o.instance, fn)

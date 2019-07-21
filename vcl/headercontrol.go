@@ -598,6 +598,16 @@ func (h *THeaderControl) SetImages(value IComponent) {
     HeaderControl_SetImages(h.instance, CheckPtr(value))
 }
 
+// Constraints
+func (h *THeaderControl) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(HeaderControl_GetConstraints(h.instance))
+}
+
+// SetConstraints
+func (h *THeaderControl) SetConstraints(value *TSizeConstraints) {
+    HeaderControl_SetConstraints(h.instance, CheckPtr(value))
+}
+
 // ShowHint
 // CN: 获取显示鼠标悬停提示。
 // EN: Get Show mouseover tips.

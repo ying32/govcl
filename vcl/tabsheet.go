@@ -579,6 +579,16 @@ func (t *TTabSheet) SetLeft(value int32) {
     TabSheet_SetLeft(t.instance, value)
 }
 
+// Constraints
+func (t *TTabSheet) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(TabSheet_GetConstraints(t.instance))
+}
+
+// SetConstraints
+func (t *TTabSheet) SetConstraints(value *TSizeConstraints) {
+    TabSheet_SetConstraints(t.instance, CheckPtr(value))
+}
+
 // PageIndex
 func (t *TTabSheet) PageIndex() int32 {
     return TabSheet_GetPageIndex(t.instance)

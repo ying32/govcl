@@ -619,6 +619,26 @@ func (m *TMemo) SetColor(value TColor) {
     Memo_SetColor(m.instance, value)
 }
 
+// Constraints
+func (m *TMemo) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Memo_GetConstraints(m.instance))
+}
+
+// SetConstraints
+func (m *TMemo) SetConstraints(value *TSizeConstraints) {
+    Memo_SetConstraints(m.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (m *TMemo) Ctl3D() bool {
+    return Memo_GetCtl3D(m.instance)
+}
+
+// SetCtl3D
+func (m *TMemo) SetCtl3D(value bool) {
+    Memo_SetCtl3D(m.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

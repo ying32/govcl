@@ -475,6 +475,16 @@ func (t *TTrackBar) SetBorderWidth(value int32) {
     TrackBar_SetBorderWidth(t.instance, value)
 }
 
+// Ctl3D
+func (t *TTrackBar) Ctl3D() bool {
+    return TrackBar_GetCtl3D(t.instance)
+}
+
+// SetCtl3D
+func (t *TTrackBar) SetCtl3D(value bool) {
+    TrackBar_SetCtl3D(t.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.
@@ -543,6 +553,16 @@ func (t *TTrackBar) Enabled() bool {
 // EN: Set the control enabled.
 func (t *TTrackBar) SetEnabled(value bool) {
     TrackBar_SetEnabled(t.instance, value)
+}
+
+// Constraints
+func (t *TTrackBar) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(TrackBar_GetConstraints(t.instance))
+}
+
+// SetConstraints
+func (t *TTrackBar) SetConstraints(value *TSizeConstraints) {
+    TrackBar_SetConstraints(t.instance, CheckPtr(value))
 }
 
 // LineSize

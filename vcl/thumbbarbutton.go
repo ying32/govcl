@@ -239,3 +239,13 @@ func (t *TThumbBarButton) SetIndex(value int32) {
     ThumbBarButton_SetIndex(t.instance, value)
 }
 
+// DisplayName
+func (t *TThumbBarButton) DisplayName() string {
+    return ThumbBarButton_GetDisplayName(t.instance)
+}
+
+// SetDisplayName
+func (t *TThumbBarButton) SetDisplayName(value string) {
+    ThumbBarButton_SetDisplayName(t.instance, value)
+}
+

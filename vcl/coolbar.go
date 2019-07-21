@@ -528,6 +528,26 @@ func (c *TCoolBar) SetColor(value TColor) {
     CoolBar_SetColor(c.instance, value)
 }
 
+// Constraints
+func (c *TCoolBar) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(CoolBar_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TCoolBar) SetConstraints(value *TSizeConstraints) {
+    CoolBar_SetConstraints(c.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (c *TCoolBar) Ctl3D() bool {
+    return CoolBar_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TCoolBar) SetCtl3D(value bool) {
+    CoolBar_SetCtl3D(c.instance, value)
+}
+
 // DockSite
 // CN: 获取停靠站点。
 // EN: Get Docking site.

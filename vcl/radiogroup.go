@@ -504,6 +504,16 @@ func (r *TRadioGroup) SetColumns(value int32) {
     RadioGroup_SetColumns(r.instance, value)
 }
 
+// Ctl3D
+func (r *TRadioGroup) Ctl3D() bool {
+    return RadioGroup_GetCtl3D(r.instance)
+}
+
+// SetCtl3D
+func (r *TRadioGroup) SetCtl3D(value bool) {
+    RadioGroup_SetCtl3D(r.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.
@@ -606,6 +616,16 @@ func (r *TRadioGroup) Items() *TStrings {
 // SetItems
 func (r *TRadioGroup) SetItems(value IObject) {
     RadioGroup_SetItems(r.instance, CheckPtr(value))
+}
+
+// Constraints
+func (r *TRadioGroup) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(RadioGroup_GetConstraints(r.instance))
+}
+
+// SetConstraints
+func (r *TRadioGroup) SetConstraints(value *TSizeConstraints) {
+    RadioGroup_SetConstraints(r.instance, CheckPtr(value))
 }
 
 // ParentBackground

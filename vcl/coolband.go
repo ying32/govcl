@@ -386,3 +386,13 @@ func (c *TCoolBand) SetIndex(value int32) {
     CoolBand_SetIndex(c.instance, value)
 }
 
+// DisplayName
+func (c *TCoolBand) DisplayName() string {
+    return CoolBand_GetDisplayName(c.instance)
+}
+
+// SetDisplayName
+func (c *TCoolBand) SetDisplayName(value string) {
+    CoolBand_SetDisplayName(c.instance, value)
+}
+

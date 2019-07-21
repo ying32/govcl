@@ -120,6 +120,11 @@ func (c *TColorListBox) ClearSelection() {
     ColorListBox_ClearSelection(c.instance)
 }
 
+// CopySelection
+func (c *TColorListBox) CopySelection(Destination IWinControl) {
+    ColorListBox_CopySelection(c.instance, CheckPtr(Destination))
+}
+
 // DeleteSelected
 func (c *TColorListBox) DeleteSelected() {
     ColorListBox_DeleteSelected(c.instance)
@@ -599,6 +604,26 @@ func (c *TColorListBox) Color() TColor {
 // EN: Set color.
 func (c *TColorListBox) SetColor(value TColor) {
     ColorListBox_SetColor(c.instance, value)
+}
+
+// Constraints
+func (c *TColorListBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ColorListBox_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TColorListBox) SetConstraints(value *TSizeConstraints) {
+    ColorListBox_SetConstraints(c.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (c *TColorListBox) Ctl3D() bool {
+    return ColorListBox_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TColorListBox) SetCtl3D(value bool) {
+    ColorListBox_SetCtl3D(c.instance, value)
 }
 
 // DoubleBuffered

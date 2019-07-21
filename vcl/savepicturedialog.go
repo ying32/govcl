@@ -284,6 +284,16 @@ func (s *TSavePictureDialog) Handle() HWND {
     return SavePictureDialog_GetHandle(s.instance)
 }
 
+// Ctl3D
+func (s *TSavePictureDialog) Ctl3D() bool {
+    return SavePictureDialog_GetCtl3D(s.instance)
+}
+
+// SetCtl3D
+func (s *TSavePictureDialog) SetCtl3D(value bool) {
+    SavePictureDialog_SetCtl3D(s.instance, value)
+}
+
 // SetOnClose
 func (s *TSavePictureDialog) SetOnClose(fn TNotifyEvent) {
     SavePictureDialog_SetOnClose(s.instance, fn)

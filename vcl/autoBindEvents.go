@@ -39,7 +39,7 @@ import (
 )
 
 // autoBindEvents 自动关联事件。
-func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterBindSubComponentsEvents bool) {
+func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, afterBindSubComponentsEvents bool) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("autoBindEvents error: ", err)
@@ -52,6 +52,7 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 
 	// 提取所有符合规则的事件
 	eventMethods := make(map[string]reflect.Value, 0)
+	// 遍历当前结构的方法
 	for i := 0; i < vt.NumMethod(); i++ {
 		m := vt.Method(i)
 		// 保存窗口创建事件
@@ -64,51 +65,63 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 		}
 	}
 
-	type tempItem struct {
+	type EventItem struct {
 		Type   string
 		Method reflect.Value
 	}
 
 	// 临时方法表
-	tempEventTypes := make(map[string]tempItem, 0)
+	tempEventTypes := make(map[string]EventItem, 0)
+
+	// 遍历结构中的字段
+	//for i := 0; i < vt.Elem().NumField(); i++ {
+	//	field := vt.Elem().Field(i)
+	//	fmt.Println("field.Name:", field.Name)
+	//
+	//}
+
+	// 用于之后显示提示的
+	formName := root.Name()
 
 	// 设置事件
 	setEvent := func(component IComponent) {
 		name1 := component.Name()
 		name2 := name1
-		if component.Equals(form) {
+		if component.Equals(root) {
 			name1 = "Form"
 			name2 = "TForm"
 		} else if component.Equals(Application) {
 			name1 = "Application"
 			name2 = name1
 		}
+		// 前缀 On + 组件名
 		prefix := "On" + name1
+
 		for mName, method := range eventMethods {
 			if !strings.HasPrefix(mName, prefix) {
 				continue
 			}
 			eventType := mName[len(prefix):]
 			// 将事件名与事件类型对应，之后会用到的
-			tempEventTypes[mName] = tempItem{eventType, method}
+			tempEventTypes[mName] = EventItem{eventType, method}
 
 			if component.Equals(Application) {
 				addApplicationNotifyEvent(eventType, method)
 			} else {
-				addComponentNotifyEvent(vForm, name2, method, eventType)
+				addComponentNotifyEvent(vForm, name2, method, eventType, formName)
 			}
 		}
 	}
 
-	// 设置Form事件
-	setEvent(form)
+	// 设置Root事件
+	setEvent(root)
 
 	// 子组件事件
 	bindSubComponentsEvents := func() {
 
 		var i int32
-		for i = 0; i < form.ComponentCount(); i++ {
-			setEvent(form.Components(i))
+		for i = 0; i < root.ComponentCount(); i++ {
+			setEvent(root.Components(i))
 		}
 
 		// 提取字段中的事件关联
@@ -130,14 +143,14 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 					continue
 				}
 				if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
-					findAndSetEvent(vCtl, field.Name, item.Type, item.Method)
+					findAndSetEvent(vCtl, field.Name, item.Type, item.Method, formName)
 				}
 			}
 		}
 	}
 
 	// 设置子组件事件
-	if subComponenstEvent {
+	if subComponentsEvent {
 		bindSubComponentsEvents()
 	}
 
@@ -148,7 +161,7 @@ func autoBindEvents(vForm reflect.Value, form *TForm, subComponenstEvent, afterB
 	callEvent(formCreate, []reflect.Value{vForm})
 
 	// 设定了之后绑定子组件事件并且之前没有指定要绑定子组件事件
-	if afterBindSubComponentsEvents && !subComponenstEvent {
+	if afterBindSubComponentsEvents && !subComponentsEvent {
 		// 因为手动创建的组件没有名称，所以这里设置下，名称在当前TForm必须是唯一的
 		for i := 0; i < vt.Elem().NumField(); i++ {
 			field := vt.Elem().Field(i)
@@ -179,16 +192,16 @@ func callEvent(event reflect.Value, params []reflect.Value) {
 }
 
 // findAndSetEvent 公用的call SetOnXXXX方法
-func findAndSetEvent(v reflect.Value, name, eventType string, method reflect.Value) {
+func findAndSetEvent(v reflect.Value, name, eventType string, method reflect.Value, rootName string) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("findAndSetEvent error: ", err, ", eventType:", eventType)
+			fmt.Println("findAndSetEvent error: ", err, ", eventType:", eventType, ", rootName:", rootName)
 		}
 	}()
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
 		event.Call([]reflect.Value{method})
 	} else {
-		fmt.Printf("\"%s\"不支持\"%s\"事件。\r\n(\"%s\" does not support the \"%s\" event.)\n", name, eventType, name, eventType)
+		fmt.Printf("\"%s.%s\"不支持\"%s\"事件。\r\n(\"%s.%s\" does not support the \"%s\" event.)\n", rootName, name, eventType, rootName, name, eventType)
 	}
 }
 
@@ -205,9 +218,9 @@ func findAndSetComponentName(v reflect.Value, name string) {
 }
 
 // addComponentNotifyEvent
-func addComponentNotifyEvent(vForm reflect.Value, compName string, method reflect.Value, eventType string) {
+func addComponentNotifyEvent(vForm reflect.Value, compName string, method reflect.Value, eventType, rootName string) {
 	if vCtl := vForm.Elem().FieldByName(compName); vCtl.IsValid() {
-		findAndSetEvent(vCtl, compName, eventType, method)
+		findAndSetEvent(vCtl, compName, eventType, method, rootName)
 	}
 }
 
@@ -216,6 +229,6 @@ func addComponentNotifyEvent(vForm reflect.Value, compName string, method reflec
 // 因为Application是单例存在，推荐在主窗口内处理就行了。
 func addApplicationNotifyEvent(eventType string, method reflect.Value) {
 	if app := reflect.ValueOf(Application); app.IsValid() {
-		findAndSetEvent(app, "Application", eventType, method)
+		findAndSetEvent(app, "Application", eventType, method, "Application")
 	}
 }

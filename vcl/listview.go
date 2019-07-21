@@ -125,6 +125,11 @@ func (l *TListView) ClearSelection() {
     ListView_ClearSelection(l.instance)
 }
 
+// CopySelection
+func (l *TListView) CopySelection(Destination IWinControl) {
+    ListView_CopySelection(l.instance, CheckPtr(Destination))
+}
+
 // DeleteSelected
 func (l *TListView) DeleteSelected() {
     ListView_DeleteSelected(l.instance)
@@ -652,6 +657,26 @@ func (l *TListView) ColumnClick() bool {
 // SetColumnClick
 func (l *TListView) SetColumnClick(value bool) {
     ListView_SetColumnClick(l.instance, value)
+}
+
+// Constraints
+func (l *TListView) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ListView_GetConstraints(l.instance))
+}
+
+// SetConstraints
+func (l *TListView) SetConstraints(value *TSizeConstraints) {
+    ListView_SetConstraints(l.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (l *TListView) Ctl3D() bool {
+    return ListView_GetCtl3D(l.instance)
+}
+
+// SetCtl3D
+func (l *TListView) SetCtl3D(value bool) {
+    ListView_SetCtl3D(l.instance, value)
 }
 
 // DoubleBuffered

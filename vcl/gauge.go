@@ -387,6 +387,16 @@ func (g *TGauge) SetColor(value TColor) {
     Gauge_SetColor(g.instance, value)
 }
 
+// Constraints
+func (g *TGauge) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Gauge_GetConstraints(g.instance))
+}
+
+// SetConstraints
+func (g *TGauge) SetConstraints(value *TSizeConstraints) {
+    Gauge_SetConstraints(g.instance, CheckPtr(value))
+}
+
 // Enabled
 // CN: 获取控件启用。
 // EN: Get the control enabled.

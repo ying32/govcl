@@ -111,6 +111,21 @@ func (c *TCategoryPanelGroup) ExpandAll() {
     CategoryPanelGroup_ExpandAll(c.instance)
 }
 
+// DisableAutoRange
+func (c *TCategoryPanelGroup) DisableAutoRange() {
+    CategoryPanelGroup_DisableAutoRange(c.instance)
+}
+
+// EnableAutoRange
+func (c *TCategoryPanelGroup) EnableAutoRange() {
+    CategoryPanelGroup_EnableAutoRange(c.instance)
+}
+
+// ScrollInView
+func (c *TCategoryPanelGroup) ScrollInView(AControl IControl) {
+    CategoryPanelGroup_ScrollInView(c.instance, CheckPtr(AControl))
+}
+
 // CanFocus
 // CN: 是否可以获得焦点。
 // EN: .
@@ -546,6 +561,16 @@ func (c *TCategoryPanelGroup) SetChevronHotColor(value TColor) {
     CategoryPanelGroup_SetChevronHotColor(c.instance, value)
 }
 
+// Constraints
+func (c *TCategoryPanelGroup) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(CategoryPanelGroup_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TCategoryPanelGroup) SetConstraints(value *TSizeConstraints) {
+    CategoryPanelGroup_SetConstraints(c.instance, CheckPtr(value))
+}
+
 // DockSite
 // CN: 获取停靠站点。
 // EN: Get Docking site.
@@ -642,6 +667,16 @@ func (c *TCategoryPanelGroup) Color() TColor {
 // EN: Set color.
 func (c *TCategoryPanelGroup) SetColor(value TColor) {
     CategoryPanelGroup_SetColor(c.instance, value)
+}
+
+// Ctl3D
+func (c *TCategoryPanelGroup) Ctl3D() bool {
+    return CategoryPanelGroup_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TCategoryPanelGroup) SetCtl3D(value bool) {
+    CategoryPanelGroup_SetCtl3D(c.instance, value)
 }
 
 // Font
@@ -1101,6 +1136,26 @@ func (c *TCategoryPanelGroup) SetOnUnDock(fn TUnDockEvent) {
 // Panels
 func (c *TCategoryPanelGroup) Panels() *TList {
     return ListFromInst(CategoryPanelGroup_GetPanels(c.instance))
+}
+
+// HorzScrollBar
+func (c *TCategoryPanelGroup) HorzScrollBar() *TControlScrollBar {
+    return ControlScrollBarFromInst(CategoryPanelGroup_GetHorzScrollBar(c.instance))
+}
+
+// SetHorzScrollBar
+func (c *TCategoryPanelGroup) SetHorzScrollBar(value *TControlScrollBar) {
+    CategoryPanelGroup_SetHorzScrollBar(c.instance, CheckPtr(value))
+}
+
+// VertScrollBar
+func (c *TCategoryPanelGroup) VertScrollBar() *TControlScrollBar {
+    return ControlScrollBarFromInst(CategoryPanelGroup_GetVertScrollBar(c.instance))
+}
+
+// SetVertScrollBar
+func (c *TCategoryPanelGroup) SetVertScrollBar(value *TControlScrollBar) {
+    CategoryPanelGroup_SetVertScrollBar(c.instance, CheckPtr(value))
 }
 
 // DockClientCount

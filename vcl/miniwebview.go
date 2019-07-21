@@ -747,6 +747,16 @@ func (m *TMiniWebview) SetClientWidth(value int32) {
     MiniWebview_SetClientWidth(m.instance, value)
 }
 
+// Constraints
+func (m *TMiniWebview) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(MiniWebview_GetConstraints(m.instance))
+}
+
+// SetConstraints
+func (m *TMiniWebview) SetConstraints(value *TSizeConstraints) {
+    MiniWebview_SetConstraints(m.instance, CheckPtr(value))
+}
+
 // ControlState
 // CN: 获取控件状态。
 // EN: Get control state.

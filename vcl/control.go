@@ -423,6 +423,16 @@ func (c *TControl) SetClientWidth(value int32) {
     Control_SetClientWidth(c.instance, value)
 }
 
+// Constraints
+func (c *TControl) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Control_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TControl) SetConstraints(value *TSizeConstraints) {
+    Control_SetConstraints(c.instance, CheckPtr(value))
+}
+
 // ControlState
 // CN: 获取控件状态。
 // EN: Get control state.

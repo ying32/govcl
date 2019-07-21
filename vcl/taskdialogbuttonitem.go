@@ -270,3 +270,13 @@ func (t *TTaskDialogButtonItem) SetIndex(value int32) {
     TaskDialogButtonItem_SetIndex(t.instance, value)
 }
 
+// DisplayName
+func (t *TTaskDialogButtonItem) DisplayName() string {
+    return TaskDialogButtonItem_GetDisplayName(t.instance)
+}
+
+// SetDisplayName
+func (t *TTaskDialogButtonItem) SetDisplayName(value string) {
+    TaskDialogButtonItem_SetDisplayName(t.instance, value)
+}
+

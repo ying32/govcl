@@ -271,3 +271,13 @@ func (l *TListGroup) SetIndex(value int32) {
     ListGroup_SetIndex(l.instance, value)
 }
 
+// DisplayName
+func (l *TListGroup) DisplayName() string {
+    return ListGroup_GetDisplayName(l.instance)
+}
+
+// SetDisplayName
+func (l *TListGroup) SetDisplayName(value string) {
+    ListGroup_SetDisplayName(l.instance, value)
+}
+

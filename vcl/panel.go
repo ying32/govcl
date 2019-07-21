@@ -590,6 +590,26 @@ func (p *TPanel) SetColor(value TColor) {
     Panel_SetColor(p.instance, value)
 }
 
+// Constraints
+func (p *TPanel) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Panel_GetConstraints(p.instance))
+}
+
+// SetConstraints
+func (p *TPanel) SetConstraints(value *TSizeConstraints) {
+    Panel_SetConstraints(p.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (p *TPanel) Ctl3D() bool {
+    return Panel_GetCtl3D(p.instance)
+}
+
+// SetCtl3D
+func (p *TPanel) SetCtl3D(value bool) {
+    Panel_SetCtl3D(p.instance, value)
+}
+
 // UseDockManager
 // CN: 获取使用停靠管理。
 // EN: .

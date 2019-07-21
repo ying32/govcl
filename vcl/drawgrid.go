@@ -559,6 +559,26 @@ func (d *TDrawGrid) SetColCount(value int32) {
     DrawGrid_SetColCount(d.instance, value)
 }
 
+// Constraints
+func (d *TDrawGrid) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(DrawGrid_GetConstraints(d.instance))
+}
+
+// SetConstraints
+func (d *TDrawGrid) SetConstraints(value *TSizeConstraints) {
+    DrawGrid_SetConstraints(d.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (d *TDrawGrid) Ctl3D() bool {
+    return DrawGrid_GetCtl3D(d.instance)
+}
+
+// SetCtl3D
+func (d *TDrawGrid) SetCtl3D(value bool) {
+    DrawGrid_SetCtl3D(d.instance, value)
+}
+
 // DefaultColWidth
 func (d *TDrawGrid) DefaultColWidth() int32 {
     return DrawGrid_GetDefaultColWidth(d.instance)

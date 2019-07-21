@@ -284,6 +284,16 @@ func (o *TOpenPictureDialog) Handle() HWND {
     return OpenPictureDialog_GetHandle(o.instance)
 }
 
+// Ctl3D
+func (o *TOpenPictureDialog) Ctl3D() bool {
+    return OpenPictureDialog_GetCtl3D(o.instance)
+}
+
+// SetCtl3D
+func (o *TOpenPictureDialog) SetCtl3D(value bool) {
+    OpenPictureDialog_SetCtl3D(o.instance, value)
+}
+
 // SetOnClose
 func (o *TOpenPictureDialog) SetOnClose(fn TNotifyEvent) {
     OpenPictureDialog_SetOnClose(o.instance, fn)

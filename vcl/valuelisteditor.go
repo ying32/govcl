@@ -534,6 +534,26 @@ func (v *TValueListEditor) SetColor(value TColor) {
     ValueListEditor_SetColor(v.instance, value)
 }
 
+// Constraints
+func (v *TValueListEditor) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ValueListEditor_GetConstraints(v.instance))
+}
+
+// SetConstraints
+func (v *TValueListEditor) SetConstraints(value *TSizeConstraints) {
+    ValueListEditor_SetConstraints(v.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (v *TValueListEditor) Ctl3D() bool {
+    return ValueListEditor_GetCtl3D(v.instance)
+}
+
+// SetCtl3D
+func (v *TValueListEditor) SetCtl3D(value bool) {
+    ValueListEditor_SetCtl3D(v.instance, value)
+}
+
 // DefaultColWidth
 func (v *TValueListEditor) DefaultColWidth() int32 {
     return ValueListEditor_GetDefaultColWidth(v.instance)

@@ -516,6 +516,16 @@ func (c *TCategoryPanel) SetCollapsedPressedImageIndex(value int32) {
     CategoryPanel_SetCollapsedPressedImageIndex(c.instance, value)
 }
 
+// Ctl3D
+func (c *TCategoryPanel) Ctl3D() bool {
+    return CategoryPanel_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TCategoryPanel) SetCtl3D(value bool) {
+    CategoryPanel_SetCtl3D(c.instance, value)
+}
+
 // UseDockManager
 // CN: 获取使用停靠管理。
 // EN: .
@@ -1165,6 +1175,16 @@ func (c *TCategoryPanel) ClientWidth() int32 {
 // EN: Set client width.
 func (c *TCategoryPanel) SetClientWidth(value int32) {
     CategoryPanel_SetClientWidth(c.instance, value)
+}
+
+// Constraints
+func (c *TCategoryPanel) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(CategoryPanel_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TCategoryPanel) SetConstraints(value *TSizeConstraints) {
+    CategoryPanel_SetConstraints(c.instance, CheckPtr(value))
 }
 
 // ControlState

@@ -2075,3 +2075,37 @@ const (
 
 // TProgressBarState = Vcl.ComCtrls.TProgressBarState; // for compatibility
 //type TProgressBarState = TProgressBarState
+
+type TComboBoxExStyle int32
+
+const (
+	CsExDropDown = iota + 0
+	CsExSimple
+	CsExDropDownList
+)
+
+type TComboBoxExStyleEx int32
+
+const (
+	CsExCaseSensitive = iota + 0
+	CsExNoEditImage
+	CsExNoEditImageIndent
+	CsExNoSizeLimit
+	CsExPathWordBreak
+)
+
+type TComboBoxExStyles = uint32 //= set of TComboBoxExStyleEx;
+
+type TAutoCompleteOption int32
+
+const (
+	AcoAutoSuggest = iota + 0
+	AcoAutoAppend
+	AcoSearch
+	AcoFilterPrefixes
+	AcoUseTab
+	AcoUpDownKeyDropsList
+	AcoRtlReading
+)
+
+type TAutoCompleteOptions = uint32 // = set of TAutoCompleteOption;

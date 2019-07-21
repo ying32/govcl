@@ -223,6 +223,16 @@ func (f *TFontDialog) Handle() HWND {
     return FontDialog_GetHandle(f.instance)
 }
 
+// Ctl3D
+func (f *TFontDialog) Ctl3D() bool {
+    return FontDialog_GetCtl3D(f.instance)
+}
+
+// SetCtl3D
+func (f *TFontDialog) SetCtl3D(value bool) {
+    FontDialog_SetCtl3D(f.instance, value)
+}
+
 // SetOnClose
 func (f *TFontDialog) SetOnClose(fn TNotifyEvent) {
     FontDialog_SetOnClose(f.instance, fn)

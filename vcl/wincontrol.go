@@ -687,6 +687,16 @@ func (w *TWinControl) SetClientWidth(value int32) {
     WinControl_SetClientWidth(w.instance, value)
 }
 
+// Constraints
+func (w *TWinControl) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(WinControl_GetConstraints(w.instance))
+}
+
+// SetConstraints
+func (w *TWinControl) SetConstraints(value *TSizeConstraints) {
+    WinControl_SetConstraints(w.instance, CheckPtr(value))
+}
+
 // ControlState
 // CN: 获取控件状态。
 // EN: Get control state.

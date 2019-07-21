@@ -120,6 +120,11 @@ func (c *TComboBox) ClearSelection() {
     ComboBox_ClearSelection(c.instance)
 }
 
+// CopySelection
+func (c *TComboBox) CopySelection(Destination IWinControl) {
+    ComboBox_CopySelection(c.instance, CheckPtr(Destination))
+}
+
 // DeleteSelected
 func (c *TComboBox) DeleteSelected() {
     ComboBox_DeleteSelected(c.instance)
@@ -611,6 +616,26 @@ func (c *TComboBox) SetColor(value TColor) {
     ComboBox_SetColor(c.instance, value)
 }
 
+// Constraints
+func (c *TComboBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ComboBox_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TComboBox) SetConstraints(value *TSizeConstraints) {
+    ComboBox_SetConstraints(c.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (c *TComboBox) Ctl3D() bool {
+    return ComboBox_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TComboBox) SetCtl3D(value bool) {
+    ComboBox_SetCtl3D(c.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.
@@ -970,6 +995,11 @@ func (c *TComboBox) SetOnDrawItem(fn TDrawItemEvent) {
     ComboBox_SetOnDrawItem(c.instance, fn)
 }
 
+// SetOnDropDown
+func (c *TComboBox) SetOnDropDown(fn TNotifyEvent) {
+    ComboBox_SetOnDropDown(c.instance, fn)
+}
+
 // SetOnEndDock
 // CN: 设置停靠结束事件。
 // EN: Set Dock end event.
@@ -1039,6 +1069,11 @@ func (c *TComboBox) SetOnMouseEnter(fn TNotifyEvent) {
 // EN: Set Mouse leave event.
 func (c *TComboBox) SetOnMouseLeave(fn TNotifyEvent) {
     ComboBox_SetOnMouseLeave(c.instance, fn)
+}
+
+// SetOnSelect
+func (c *TComboBox) SetOnSelect(fn TNotifyEvent) {
+    ComboBox_SetOnSelect(c.instance, fn)
 }
 
 // SetOnStartDock

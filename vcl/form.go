@@ -143,6 +143,21 @@ func (f *TForm) ShowModal() int32 {
     return Form_ShowModal(f.instance)
 }
 
+// DisableAutoRange
+func (f *TForm) DisableAutoRange() {
+    Form_DisableAutoRange(f.instance)
+}
+
+// EnableAutoRange
+func (f *TForm) EnableAutoRange() {
+    Form_EnableAutoRange(f.instance)
+}
+
+// ScrollInView
+func (f *TForm) ScrollInView(AControl IControl) {
+    Form_ScrollInView(f.instance, CheckPtr(AControl))
+}
+
 // CanFocus
 // CN: 是否可以获得焦点。
 // EN: .
@@ -515,6 +530,16 @@ func (f *TForm) SetAnchors(value TAnchors) {
     Form_SetAnchors(f.instance, value)
 }
 
+// AutoScroll
+func (f *TForm) AutoScroll() bool {
+    return Form_GetAutoScroll(f.instance)
+}
+
+// SetAutoScroll
+func (f *TForm) SetAutoScroll(value bool) {
+    Form_SetAutoScroll(f.instance, value)
+}
+
 // AutoSize
 // CN: 获取自动调整大小。
 // EN: .
@@ -665,6 +690,26 @@ func (f *TForm) SetTransparentColorValue(value TColor) {
     Form_SetTransparentColorValue(f.instance, value)
 }
 
+// Constraints
+func (f *TForm) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Form_GetConstraints(f.instance))
+}
+
+// SetConstraints
+func (f *TForm) SetConstraints(value *TSizeConstraints) {
+    Form_SetConstraints(f.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (f *TForm) Ctl3D() bool {
+    return Form_GetCtl3D(f.instance)
+}
+
+// SetCtl3D
+func (f *TForm) SetCtl3D(value bool) {
+    Form_SetCtl3D(f.instance, value)
+}
+
 // UseDockManager
 // CN: 获取使用停靠管理。
 // EN: .
@@ -805,6 +850,16 @@ func (f *TForm) SetHeight(value int32) {
     Form_SetHeight(f.instance, value)
 }
 
+// HorzScrollBar
+func (f *TForm) HorzScrollBar() *TControlScrollBar {
+    return ControlScrollBarFromInst(Form_GetHorzScrollBar(f.instance))
+}
+
+// SetHorzScrollBar
+func (f *TForm) SetHorzScrollBar(value *TControlScrollBar) {
+    Form_SetHorzScrollBar(f.instance, CheckPtr(value))
+}
+
 // Icon
 // CN: 获取图标。
 // EN: Get icon.
@@ -915,6 +970,16 @@ func (f *TForm) ShowHint() bool {
 // EN: Set Show mouseover tips.
 func (f *TForm) SetShowHint(value bool) {
     Form_SetShowHint(f.instance, value)
+}
+
+// VertScrollBar
+func (f *TForm) VertScrollBar() *TControlScrollBar {
+    return ControlScrollBarFromInst(Form_GetVertScrollBar(f.instance))
+}
+
+// SetVertScrollBar
+func (f *TForm) SetVertScrollBar(value *TControlScrollBar) {
+    Form_SetVertScrollBar(f.instance, CheckPtr(value))
 }
 
 // Visible

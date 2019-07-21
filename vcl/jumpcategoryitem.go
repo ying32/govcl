@@ -225,3 +225,13 @@ func (j *TJumpCategoryItem) SetIndex(value int32) {
     JumpCategoryItem_SetIndex(j.instance, value)
 }
 
+// DisplayName
+func (j *TJumpCategoryItem) DisplayName() string {
+    return JumpCategoryItem_GetDisplayName(j.instance)
+}
+
+// SetDisplayName
+func (j *TJumpCategoryItem) SetDisplayName(value string) {
+    JumpCategoryItem_SetDisplayName(j.instance, value)
+}
+

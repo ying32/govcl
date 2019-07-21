@@ -569,6 +569,26 @@ func (t *TToolBar) SetColor(value TColor) {
     ToolBar_SetColor(t.instance, value)
 }
 
+// Constraints
+func (t *TToolBar) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ToolBar_GetConstraints(t.instance))
+}
+
+// SetConstraints
+func (t *TToolBar) SetConstraints(value *TSizeConstraints) {
+    ToolBar_SetConstraints(t.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (t *TToolBar) Ctl3D() bool {
+    return ToolBar_GetCtl3D(t.instance)
+}
+
+// SetCtl3D
+func (t *TToolBar) SetCtl3D(value bool) {
+    ToolBar_SetCtl3D(t.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

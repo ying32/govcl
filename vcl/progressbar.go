@@ -564,6 +564,16 @@ func (p *TProgressBar) SetHint(value string) {
     ProgressBar_SetHint(p.instance, value)
 }
 
+// Constraints
+func (p *TProgressBar) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ProgressBar_GetConstraints(p.instance))
+}
+
+// SetConstraints
+func (p *TProgressBar) SetConstraints(value *TSizeConstraints) {
+    ProgressBar_SetConstraints(p.instance, CheckPtr(value))
+}
+
 // Min
 func (p *TProgressBar) Min() int32 {
     return ProgressBar_GetMin(p.instance)

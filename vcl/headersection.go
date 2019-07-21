@@ -357,3 +357,13 @@ func (h *THeaderSection) SetIndex(value int32) {
     HeaderSection_SetIndex(h.instance, value)
 }
 
+// DisplayName
+func (h *THeaderSection) DisplayName() string {
+    return HeaderSection_GetDisplayName(h.instance)
+}
+
+// SetDisplayName
+func (h *THeaderSection) SetDisplayName(value string) {
+    HeaderSection_SetDisplayName(h.instance, value)
+}
+

@@ -284,6 +284,16 @@ func (s *TSaveDialog) Handle() HWND {
     return SaveDialog_GetHandle(s.instance)
 }
 
+// Ctl3D
+func (s *TSaveDialog) Ctl3D() bool {
+    return SaveDialog_GetCtl3D(s.instance)
+}
+
+// SetCtl3D
+func (s *TSaveDialog) SetCtl3D(value bool) {
+    SaveDialog_SetCtl3D(s.instance, value)
+}
+
 // SetOnClose
 func (s *TSaveDialog) SetOnClose(fn TNotifyEvent) {
     SaveDialog_SetOnClose(s.instance, fn)

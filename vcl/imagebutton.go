@@ -370,6 +370,16 @@ func (i *TImageButton) SetAutoSize(value bool) {
     ImageButton_SetAutoSize(i.instance, value)
 }
 
+// Constraints
+func (i *TImageButton) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ImageButton_GetConstraints(i.instance))
+}
+
+// SetConstraints
+func (i *TImageButton) SetConstraints(value *TSizeConstraints) {
+    ImageButton_SetConstraints(i.instance, CheckPtr(value))
+}
+
 // Caption
 // CN: 获取控件标题。
 // EN: Get the control title.

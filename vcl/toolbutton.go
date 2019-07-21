@@ -783,6 +783,16 @@ func (t *TToolButton) SetClientWidth(value int32) {
     ToolButton_SetClientWidth(t.instance, value)
 }
 
+// Constraints
+func (t *TToolButton) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ToolButton_GetConstraints(t.instance))
+}
+
+// SetConstraints
+func (t *TToolButton) SetConstraints(value *TSizeConstraints) {
+    ToolButton_SetConstraints(t.instance, CheckPtr(value))
+}
+
 // ControlState
 // CN: 获取控件状态。
 // EN: Get control state.

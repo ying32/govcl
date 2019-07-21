@@ -191,3 +191,13 @@ func (c *TCollectionItem) SetIndex(value int32) {
     CollectionItem_SetIndex(c.instance, value)
 }
 
+// DisplayName
+func (c *TCollectionItem) DisplayName() string {
+    return CollectionItem_GetDisplayName(c.instance)
+}
+
+// SetDisplayName
+func (c *TCollectionItem) SetDisplayName(value string) {
+    CollectionItem_SetDisplayName(c.instance, value)
+}
+

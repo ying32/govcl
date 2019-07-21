@@ -253,3 +253,13 @@ func (s *TStatusPanel) SetIndex(value int32) {
     StatusPanel_SetIndex(s.instance, value)
 }
 
+// DisplayName
+func (s *TStatusPanel) DisplayName() string {
+    return StatusPanel_GetDisplayName(s.instance)
+}
+
+// SetDisplayName
+func (s *TStatusPanel) SetDisplayName(value string) {
+    StatusPanel_SetDisplayName(s.instance, value)
+}
+

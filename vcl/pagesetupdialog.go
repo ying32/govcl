@@ -324,6 +324,16 @@ func (p *TPageSetupDialog) Handle() HWND {
     return PageSetupDialog_GetHandle(p.instance)
 }
 
+// Ctl3D
+func (p *TPageSetupDialog) Ctl3D() bool {
+    return PageSetupDialog_GetCtl3D(p.instance)
+}
+
+// SetCtl3D
+func (p *TPageSetupDialog) SetCtl3D(value bool) {
+    PageSetupDialog_SetCtl3D(p.instance, value)
+}
+
 // SetOnClose
 func (p *TPageSetupDialog) SetOnClose(fn TNotifyEvent) {
     PageSetupDialog_SetOnClose(p.instance, fn)

@@ -5,6 +5,11 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
+// 从资源中创建Form，不使用Application.CreateForm
+func CreateResForm(owner IComponent, fields ...interface{}) {
+	resObjtBuild(1, owner, 0, fields...)
+}
+
 // ScreenCenter 居于当前屏幕中心
 func (f *TForm) ScreenCenter() {
 	f.SetLeft((Screen.Width() - f.Width()) / 2)

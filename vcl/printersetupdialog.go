@@ -199,6 +199,16 @@ func (p *TPrinterSetupDialog) Handle() HWND {
     return PrinterSetupDialog_GetHandle(p.instance)
 }
 
+// Ctl3D
+func (p *TPrinterSetupDialog) Ctl3D() bool {
+    return PrinterSetupDialog_GetCtl3D(p.instance)
+}
+
+// SetCtl3D
+func (p *TPrinterSetupDialog) SetCtl3D(value bool) {
+    PrinterSetupDialog_SetCtl3D(p.instance, value)
+}
+
 // SetOnClose
 func (p *TPrinterSetupDialog) SetOnClose(fn TNotifyEvent) {
     PrinterSetupDialog_SetOnClose(p.instance, fn)

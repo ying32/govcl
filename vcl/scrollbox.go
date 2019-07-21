@@ -101,6 +101,21 @@ func TScrollBoxClass() TClass {
     return ScrollBox_StaticClassType()
 }
 
+// DisableAutoRange
+func (s *TScrollBox) DisableAutoRange() {
+    ScrollBox_DisableAutoRange(s.instance)
+}
+
+// EnableAutoRange
+func (s *TScrollBox) EnableAutoRange() {
+    ScrollBox_EnableAutoRange(s.instance)
+}
+
+// ScrollInView
+func (s *TScrollBox) ScrollInView(AControl IControl) {
+    ScrollBox_ScrollInView(s.instance, CheckPtr(AControl))
+}
+
 // CanFocus
 // CN: 是否可以获得焦点。
 // EN: .
@@ -456,6 +471,16 @@ func (s *TScrollBox) SetAnchors(value TAnchors) {
     ScrollBox_SetAnchors(s.instance, value)
 }
 
+// AutoScroll
+func (s *TScrollBox) AutoScroll() bool {
+    return ScrollBox_GetAutoScroll(s.instance)
+}
+
+// SetAutoScroll
+func (s *TScrollBox) SetAutoScroll(value bool) {
+    ScrollBox_SetAutoScroll(s.instance, value)
+}
+
 // AutoSize
 // CN: 获取自动调整大小。
 // EN: .
@@ -532,6 +557,16 @@ func (s *TScrollBox) BorderStyle() TBorderStyle {
 // EN: .
 func (s *TScrollBox) SetBorderStyle(value TBorderStyle) {
     ScrollBox_SetBorderStyle(s.instance, value)
+}
+
+// Constraints
+func (s *TScrollBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ScrollBox_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TScrollBox) SetConstraints(value *TSizeConstraints) {
+    ScrollBox_SetConstraints(s.instance, CheckPtr(value))
 }
 
 // DockSite
@@ -630,6 +665,16 @@ func (s *TScrollBox) Color() TColor {
 // EN: Set color.
 func (s *TScrollBox) SetColor(value TColor) {
     ScrollBox_SetColor(s.instance, value)
+}
+
+// Ctl3D
+func (s *TScrollBox) Ctl3D() bool {
+    return ScrollBox_GetCtl3D(s.instance)
+}
+
+// SetCtl3D
+func (s *TScrollBox) SetCtl3D(value bool) {
+    ScrollBox_SetCtl3D(s.instance, value)
 }
 
 // Font
@@ -958,6 +1003,26 @@ func (s *TScrollBox) SetOnStartDock(fn TStartDockEvent) {
 // SetOnUnDock
 func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {
     ScrollBox_SetOnUnDock(s.instance, fn)
+}
+
+// HorzScrollBar
+func (s *TScrollBox) HorzScrollBar() *TControlScrollBar {
+    return ControlScrollBarFromInst(ScrollBox_GetHorzScrollBar(s.instance))
+}
+
+// SetHorzScrollBar
+func (s *TScrollBox) SetHorzScrollBar(value *TControlScrollBar) {
+    ScrollBox_SetHorzScrollBar(s.instance, CheckPtr(value))
+}
+
+// VertScrollBar
+func (s *TScrollBox) VertScrollBar() *TControlScrollBar {
+    return ControlScrollBarFromInst(ScrollBox_GetVertScrollBar(s.instance))
+}
+
+// SetVertScrollBar
+func (s *TScrollBox) SetVertScrollBar(value *TControlScrollBar) {
+    ScrollBox_SetVertScrollBar(s.instance, CheckPtr(value))
 }
 
 // DockClientCount

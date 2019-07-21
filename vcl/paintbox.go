@@ -360,6 +360,16 @@ func (p *TPaintBox) SetColor(value TColor) {
     PaintBox_SetColor(p.instance, value)
 }
 
+// Constraints
+func (p *TPaintBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(PaintBox_GetConstraints(p.instance))
+}
+
+// SetConstraints
+func (p *TPaintBox) SetConstraints(value *TSizeConstraints) {
+    PaintBox_SetConstraints(p.instance, CheckPtr(value))
+}
+
 // DragCursor
 // CN: 获取设置控件拖拽时的光标。
 // EN: Get Set the cursor when the control is dragged.

@@ -405,6 +405,16 @@ func (l *TLabel) SetColor(value TColor) {
     Label_SetColor(l.instance, value)
 }
 
+// Constraints
+func (l *TLabel) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Label_GetConstraints(l.instance))
+}
+
+// SetConstraints
+func (l *TLabel) SetConstraints(value *TSizeConstraints) {
+    Label_SetConstraints(l.instance, CheckPtr(value))
+}
+
 // DragCursor
 // CN: 获取设置控件拖拽时的光标。
 // EN: Get Set the cursor when the control is dragged.

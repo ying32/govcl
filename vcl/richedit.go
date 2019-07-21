@@ -633,6 +633,16 @@ func (r *TRichEdit) SetColor(value TColor) {
     RichEdit_SetColor(r.instance, value)
 }
 
+// Ctl3D
+func (r *TRichEdit) Ctl3D() bool {
+    return RichEdit_GetCtl3D(r.instance)
+}
+
+// SetCtl3D
+func (r *TRichEdit) SetCtl3D(value bool) {
+    RichEdit_SetCtl3D(r.instance, value)
+}
+
 // DragCursor
 // CN: 获取设置控件拖拽时的光标。
 // EN: Get Set the cursor when the control is dragged.
@@ -725,6 +735,16 @@ func (r *TRichEdit) HideScrollBars() bool {
 // SetHideScrollBars
 func (r *TRichEdit) SetHideScrollBars(value bool) {
     RichEdit_SetHideScrollBars(r.instance, value)
+}
+
+// Constraints
+func (r *TRichEdit) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(RichEdit_GetConstraints(r.instance))
+}
+
+// SetConstraints
+func (r *TRichEdit) SetConstraints(value *TSizeConstraints) {
+    RichEdit_SetConstraints(r.instance, CheckPtr(value))
 }
 
 // Lines

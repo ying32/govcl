@@ -542,6 +542,16 @@ func (d *TDateTimePicker) SetCalColors(value *TMonthCalColors) {
     DateTimePicker_SetCalColors(d.instance, CheckPtr(value))
 }
 
+// Constraints
+func (d *TDateTimePicker) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(DateTimePicker_GetConstraints(d.instance))
+}
+
+// SetConstraints
+func (d *TDateTimePicker) SetConstraints(value *TSizeConstraints) {
+    DateTimePicker_SetConstraints(d.instance, CheckPtr(value))
+}
+
 // Date
 func (d *TDateTimePicker) Date() time.Time {
     return DateTimePicker_GetDate(d.instance)
@@ -899,6 +909,11 @@ func (d *TDateTimePicker) SetOnChange(fn TNotifyEvent) {
 // EN: Set Context popup event, usually pop up when right click.
 func (d *TDateTimePicker) SetOnContextPopup(fn TContextPopupEvent) {
     DateTimePicker_SetOnContextPopup(d.instance, fn)
+}
+
+// SetOnDropDown
+func (d *TDateTimePicker) SetOnDropDown(fn TNotifyEvent) {
+    DateTimePicker_SetOnDropDown(d.instance, fn)
 }
 
 // SetOnDragDrop

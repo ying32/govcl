@@ -284,6 +284,16 @@ func (o *TOpenDialog) Handle() HWND {
     return OpenDialog_GetHandle(o.instance)
 }
 
+// Ctl3D
+func (o *TOpenDialog) Ctl3D() bool {
+    return OpenDialog_GetCtl3D(o.instance)
+}
+
+// SetCtl3D
+func (o *TOpenDialog) SetCtl3D(value bool) {
+    OpenDialog_SetCtl3D(o.instance, value)
+}
+
 // SetOnClose
 func (o *TOpenDialog) SetOnClose(fn TNotifyEvent) {
     OpenDialog_SetOnClose(o.instance, fn)

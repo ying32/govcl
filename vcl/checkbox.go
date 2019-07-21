@@ -542,6 +542,26 @@ func (c *TCheckBox) SetColor(value TColor) {
     CheckBox_SetColor(c.instance, value)
 }
 
+// Constraints
+func (c *TCheckBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(CheckBox_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TCheckBox) SetConstraints(value *TSizeConstraints) {
+    CheckBox_SetConstraints(c.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (c *TCheckBox) Ctl3D() bool {
+    return CheckBox_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TCheckBox) SetCtl3D(value bool) {
+    CheckBox_SetCtl3D(c.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

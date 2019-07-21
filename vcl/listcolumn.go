@@ -295,3 +295,13 @@ func (l *TListColumn) SetIndex(value int32) {
     ListColumn_SetIndex(l.instance, value)
 }
 
+// DisplayName
+func (l *TListColumn) DisplayName() string {
+    return ListColumn_GetDisplayName(l.instance)
+}
+
+// SetDisplayName
+func (l *TListColumn) SetDisplayName(value string) {
+    ListColumn_SetDisplayName(l.instance, value)
+}
+

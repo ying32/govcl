@@ -2,6 +2,11 @@ package api
 
 import "github.com/ying32/govcl/vcl/types"
 
+func Form_Create2(owner uintptr, initScale bool) uintptr {
+	ret, _, _ := form_Create2.Call(owner, GoBoolToDBool(initScale))
+	return ret
+}
+
 func Form_EnabledMaximize(obj uintptr, val bool) {
 	form_EnabledMaximize.Call(obj, GoBoolToDBool(val))
 }

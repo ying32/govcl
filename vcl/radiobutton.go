@@ -532,6 +532,26 @@ func (r *TRadioButton) SetColor(value TColor) {
     RadioButton_SetColor(r.instance, value)
 }
 
+// Constraints
+func (r *TRadioButton) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(RadioButton_GetConstraints(r.instance))
+}
+
+// SetConstraints
+func (r *TRadioButton) SetConstraints(value *TSizeConstraints) {
+    RadioButton_SetConstraints(r.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (r *TRadioButton) Ctl3D() bool {
+    return RadioButton_GetCtl3D(r.instance)
+}
+
+// SetCtl3D
+func (r *TRadioButton) SetCtl3D(value bool) {
+    RadioButton_SetCtl3D(r.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

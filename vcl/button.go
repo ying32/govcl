@@ -517,6 +517,16 @@ func (b *TButton) SetCommandLinkHint(value string) {
     Button_SetCommandLinkHint(b.instance, value)
 }
 
+// Constraints
+func (b *TButton) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(Button_GetConstraints(b.instance))
+}
+
+// SetConstraints
+func (b *TButton) SetConstraints(value *TSizeConstraints) {
+    Button_SetConstraints(b.instance, CheckPtr(value))
+}
+
 // Default
 func (b *TButton) Default() bool {
     return Button_GetDefault(b.instance)

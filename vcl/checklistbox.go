@@ -125,6 +125,11 @@ func (c *TCheckListBox) ClearSelection() {
     CheckListBox_ClearSelection(c.instance)
 }
 
+// CopySelection
+func (c *TCheckListBox) CopySelection(Destination IWinControl) {
+    CheckListBox_CopySelection(c.instance, CheckPtr(Destination))
+}
+
 // DeleteSelected
 func (c *TCheckListBox) DeleteSelected() {
     CheckListBox_DeleteSelected(c.instance)
@@ -603,6 +608,26 @@ func (c *TCheckListBox) Columns() int32 {
 // SetColumns
 func (c *TCheckListBox) SetColumns(value int32) {
     CheckListBox_SetColumns(c.instance, value)
+}
+
+// Constraints
+func (c *TCheckListBox) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(CheckListBox_GetConstraints(c.instance))
+}
+
+// SetConstraints
+func (c *TCheckListBox) SetConstraints(value *TSizeConstraints) {
+    CheckListBox_SetConstraints(c.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (c *TCheckListBox) Ctl3D() bool {
+    return CheckListBox_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TCheckListBox) SetCtl3D(value bool) {
+    CheckListBox_SetCtl3D(c.instance, value)
 }
 
 // DoubleBuffered

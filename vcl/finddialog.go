@@ -267,6 +267,16 @@ func (f *TFindDialog) Handle() HWND {
     return FindDialog_GetHandle(f.instance)
 }
 
+// Ctl3D
+func (f *TFindDialog) Ctl3D() bool {
+    return FindDialog_GetCtl3D(f.instance)
+}
+
+// SetCtl3D
+func (f *TFindDialog) SetCtl3D(value bool) {
+    FindDialog_SetCtl3D(f.instance, value)
+}
+
 // SetOnClose
 func (f *TFindDialog) SetOnClose(fn TNotifyEvent) {
     FindDialog_SetOnClose(f.instance, fn)

@@ -206,6 +206,16 @@ func (c *TColorDialog) SetColor(value TColor) {
     ColorDialog_SetColor(c.instance, value)
 }
 
+// Ctl3D
+func (c *TColorDialog) Ctl3D() bool {
+    return ColorDialog_GetCtl3D(c.instance)
+}
+
+// SetCtl3D
+func (c *TColorDialog) SetCtl3D(value bool) {
+    ColorDialog_SetCtl3D(c.instance, value)
+}
+
 // Options
 func (c *TColorDialog) Options() TColorDialogOptions {
     return ColorDialog_GetOptions(c.instance)

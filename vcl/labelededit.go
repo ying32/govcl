@@ -638,6 +638,26 @@ func (l *TLabeledEdit) SetColor(value TColor) {
     LabeledEdit_SetColor(l.instance, value)
 }
 
+// Constraints
+func (l *TLabeledEdit) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(LabeledEdit_GetConstraints(l.instance))
+}
+
+// SetConstraints
+func (l *TLabeledEdit) SetConstraints(value *TSizeConstraints) {
+    LabeledEdit_SetConstraints(l.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (l *TLabeledEdit) Ctl3D() bool {
+    return LabeledEdit_GetCtl3D(l.instance)
+}
+
+// SetCtl3D
+func (l *TLabeledEdit) SetCtl3D(value bool) {
+    LabeledEdit_SetCtl3D(l.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.

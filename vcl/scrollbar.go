@@ -471,6 +471,26 @@ func (s *TScrollBar) SetBiDiMode(value TBiDiMode) {
     ScrollBar_SetBiDiMode(s.instance, value)
 }
 
+// Constraints
+func (s *TScrollBar) Constraints() *TSizeConstraints {
+    return SizeConstraintsFromInst(ScrollBar_GetConstraints(s.instance))
+}
+
+// SetConstraints
+func (s *TScrollBar) SetConstraints(value *TSizeConstraints) {
+    ScrollBar_SetConstraints(s.instance, CheckPtr(value))
+}
+
+// Ctl3D
+func (s *TScrollBar) Ctl3D() bool {
+    return ScrollBar_GetCtl3D(s.instance)
+}
+
+// SetCtl3D
+func (s *TScrollBar) SetCtl3D(value bool) {
+    ScrollBar_SetCtl3D(s.instance, value)
+}
+
 // DoubleBuffered
 // CN: 获取设置控件双缓冲。
 // EN: Get Set control double buffering.
