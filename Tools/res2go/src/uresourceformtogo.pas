@@ -601,10 +601,13 @@ begin
     WLine(Format('    ' + PrivateFiledsStr, [LFormName]));
     WLine('}');
     WLine;
-    WLine(Format('var %s *T%s', [LFormName, LFormName]));
-    WLine;
-    WLine;
-    WLine;
+    if not LIsFrame then
+    begin
+      WLine(Format('var %s *T%s', [LFormName, LFormName]));
+      WLine;
+      WLine;
+      WLine;
+    end;
     WLine;
     // AMem = nil表示不以字节输出到go文件
     if AMem = nil then
