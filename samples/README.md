@@ -46,7 +46,9 @@
 | printer | 打印机操作 | |  
 | registerHotkey | windows注册热键  | Windows |
 | registry | windows注册表演示  | Windows |
-| res2goTest | res2go 工具测试例程 | |  
+| res2goTest/Delphi |  res2go工具测试例程，演示使用Delphi设计器构建的UI  | |  
+| res2goTest/Lazarus | res2go工具测试例程，演示使用Lazarus设计器构建的UI | |  
+| res2goTest/Test | res2go工具测试例程，演示不通过Application.CreateForm创建窗口、TFrame演示| |  
 | richedit | windows富文本框演示  | Windows,libvcl |
 | rproxy | 简单的反向代理用于内网穿透，支持HTTP/HTTPS转发 | |  
 | shortcut | 创建快捷方式相关 | Windows | 
