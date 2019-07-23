@@ -38,7 +38,7 @@
       <Unit0>
         <Filename Value="res2go.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos Y="16"/>
+        <CursorPos X="55" Y="13"/>
         <UsageCount Value="54"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -68,8 +68,7 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="580"/>
-        <CursorPos X="3" Y="607"/>
+        <CursorPos X="23" Y="29"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit4>
