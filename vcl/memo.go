@@ -1183,7 +1183,12 @@ func (m *TMemo) SetSelText(value string) {
 // CN: 获取文本。
 // EN: .
 func (m *TMemo) Text() string {
-    return Memo_GetText(m.instance)
+    strLen := m.GetTextLen()
+    var buffStr string
+    if strLen != 0 {
+        m.GetTextBuf(&buffStr, strLen + 1)
+    }
+    return buffStr
 }
 
 // SetText

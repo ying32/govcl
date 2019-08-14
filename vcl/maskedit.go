@@ -920,7 +920,12 @@ func (m *TMaskEdit) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (m *TMaskEdit) Text() string {
-    return MaskEdit_GetText(m.instance)
+    strLen := m.GetTextLen()
+    var buffStr string
+    if strLen != 0 {
+        m.GetTextBuf(&buffStr, strLen + 1)
+    }
+    return buffStr
 }
 
 // SetText

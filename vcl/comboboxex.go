@@ -816,7 +816,12 @@ func (c *TComboBoxEx) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (c *TComboBoxEx) Text() string {
-    return ComboBoxEx_GetText(c.instance)
+    strLen := c.GetTextLen()
+    var buffStr string
+    if strLen != 0 {
+        c.GetTextBuf(&buffStr, strLen + 1)
+    }
+    return buffStr
 }
 
 // SetText

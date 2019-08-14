@@ -943,7 +943,12 @@ func (e *TEdit) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (e *TEdit) Text() string {
-    return Edit_GetText(e.instance)
+    strLen := e.GetTextLen()
+    var buffStr string
+    if strLen != 0 {
+        e.GetTextBuf(&buffStr, strLen + 1)
+    }
+    return buffStr
 }
 
 // SetText
