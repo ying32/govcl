@@ -369,7 +369,7 @@ func (c *TComboBox) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (c *TComboBox) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (c *TComboBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ComboBox_GetTextBuf(c.instance, Buffer , BufSize)
 }
 

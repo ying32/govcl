@@ -369,7 +369,7 @@ func (l *TListBox) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (l *TListBox) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (l *TListBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ListBox_GetTextBuf(l.instance, Buffer , BufSize)
 }
 

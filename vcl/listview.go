@@ -394,7 +394,7 @@ func (l *TListView) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (l *TListView) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (l *TListView) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ListView_GetTextBuf(l.instance, Buffer , BufSize)
 }
 

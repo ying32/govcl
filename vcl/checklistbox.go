@@ -374,7 +374,7 @@ func (c *TCheckListBox) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (c *TCheckListBox) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (c *TCheckListBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return CheckListBox_GetTextBuf(c.instance, Buffer , BufSize)
 }
 

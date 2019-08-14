@@ -333,7 +333,7 @@ func (l *TLinkLabel) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (l *TLinkLabel) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (l *TLinkLabel) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return LinkLabel_GetTextBuf(l.instance, Buffer , BufSize)
 }
 

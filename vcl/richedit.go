@@ -119,7 +119,7 @@ func (r *TRichEdit) Print(Caption string) {
 }
 
 // GetSelTextBuf
-func (r *TRichEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
+func (r *TRichEdit) GetSelTextBuf(Buffer *string, BufSize int32) int32 {
     return RichEdit_GetSelTextBuf(r.instance, Buffer , BufSize)
 }
 
@@ -404,7 +404,7 @@ func (r *TRichEdit) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (r *TRichEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (r *TRichEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return RichEdit_GetTextBuf(r.instance, Buffer , BufSize)
 }
 

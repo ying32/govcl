@@ -158,7 +158,7 @@ func (m *TMemo) SelectAll() {
 }
 
 // GetSelTextBuf
-func (m *TMemo) GetSelTextBuf(Buffer string, BufSize int32) int32 {
+func (m *TMemo) GetSelTextBuf(Buffer *string, BufSize int32) int32 {
     return Memo_GetSelTextBuf(m.instance, Buffer , BufSize)
 }
 
@@ -394,7 +394,7 @@ func (m *TMemo) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (m *TMemo) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (m *TMemo) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return Memo_GetTextBuf(m.instance, Buffer , BufSize)
 }
 

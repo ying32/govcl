@@ -378,7 +378,7 @@ func (m *TMiniWebview) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (m *TMiniWebview) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (m *TMiniWebview) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return MiniWebview_GetTextBuf(m.instance, Buffer , BufSize)
 }
 

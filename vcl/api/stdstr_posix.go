@@ -22,3 +22,16 @@ func GoStrToDStr(s string) uintptr {
 	}
 	return uintptr(unsafe.Pointer(&([]byte(s + "\x00")[0])))
 }
+
+func getBuff(size int32) interface{}  {
+	buff := make([]uint8, size + 1)
+	return uintptr(unsafe.Pointer(&buff[0]))
+}
+
+func getBuffPtr(buff interface{}) uintptr  {
+	return uintptr(unsafe.Pointer(&(buff.([]uint8))[0]))
+}
+
+func getTextBuf(strBuff interface{}, Buffer *string) {
+	*Buffer = string(strBuff.([]uint8))
+}

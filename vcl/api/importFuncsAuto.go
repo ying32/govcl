@@ -544,8 +544,13 @@ func Form_SendToBack(obj uintptr)  {
     form_SendToBack.Call(obj)
 }
 
-func Form_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := form_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Form_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := form_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -1574,8 +1579,13 @@ func Button_Show(obj uintptr)  {
     button_Show.Call(obj)
 }
 
-func Button_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := button_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Button_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := button_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -2376,8 +2386,13 @@ func Edit_SelectAll(obj uintptr)  {
     edit_SelectAll.Call(obj)
 }
 
-func Edit_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := edit_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Edit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := edit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -2530,8 +2545,13 @@ func Edit_Show(obj uintptr)  {
     edit_Show.Call(obj)
 }
 
-func Edit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := edit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Edit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := edit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -3803,8 +3823,13 @@ func Memo_SelectAll(obj uintptr)  {
     memo_SelectAll.Call(obj)
 }
 
-func Memo_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := memo_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Memo_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := memo_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -3957,8 +3982,13 @@ func Memo_Show(obj uintptr)  {
     memo_Show.Call(obj)
 }
 
-func Memo_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := memo_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Memo_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := memo_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -4980,8 +5010,13 @@ func CheckBox_Show(obj uintptr)  {
     checkBox_Show.Call(obj)
 }
 
-func CheckBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := checkBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func CheckBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := checkBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -5845,8 +5880,13 @@ func RadioButton_Show(obj uintptr)  {
     radioButton_Show.Call(obj)
 }
 
-func RadioButton_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := radioButton_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func RadioButton_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := radioButton_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -6696,8 +6736,13 @@ func GroupBox_Show(obj uintptr)  {
     groupBox_Show.Call(obj)
 }
 
-func GroupBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := groupBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func GroupBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := groupBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -7455,8 +7500,13 @@ func Label_Update(obj uintptr)  {
     label_Update.Call(obj)
 }
 
-func Label_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := label_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Label_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := label_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -8234,8 +8284,13 @@ func ListBox_Show(obj uintptr)  {
     listBox_Show.Call(obj)
 }
 
-func ListBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := listBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ListBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := listBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -9256,8 +9311,13 @@ func ComboBox_Show(obj uintptr)  {
     comboBox_Show.Call(obj)
 }
 
-func ComboBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := comboBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ComboBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := comboBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -10278,8 +10338,13 @@ func Panel_Show(obj uintptr)  {
     panel_Show.Call(obj)
 }
 
-func Panel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := panel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Panel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := panel_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -11140,8 +11205,13 @@ func Image_Update(obj uintptr)  {
     image_Update.Call(obj)
 }
 
-func Image_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := image_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Image_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := image_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -11841,8 +11911,13 @@ func LinkLabel_Show(obj uintptr)  {
     linkLabel_Show.Call(obj)
 }
 
-func LinkLabel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := linkLabel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func LinkLabel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := linkLabel_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -12624,8 +12699,13 @@ func SpeedButton_Update(obj uintptr)  {
     speedButton_Update.Call(obj)
 }
 
-func SpeedButton_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := speedButton_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func SpeedButton_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := speedButton_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -13240,8 +13320,13 @@ func Splitter_Update(obj uintptr)  {
     splitter_Update.Call(obj)
 }
 
-func Splitter_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := splitter_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Splitter_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := splitter_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -13799,8 +13884,13 @@ func RadioGroup_Show(obj uintptr)  {
     radioGroup_Show.Call(obj)
 }
 
-func RadioGroup_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := radioGroup_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func RadioGroup_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := radioGroup_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -14633,8 +14723,13 @@ func StaticText_Show(obj uintptr)  {
     staticText_Show.Call(obj)
 }
 
-func StaticText_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := staticText_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func StaticText_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := staticText_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -15524,8 +15619,13 @@ func ColorBox_Show(obj uintptr)  {
     colorBox_Show.Call(obj)
 }
 
-func ColorBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := colorBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ColorBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := colorBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -16541,8 +16641,13 @@ func ColorListBox_Show(obj uintptr)  {
     colorListBox_Show.Call(obj)
 }
 
-func ColorListBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := colorListBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ColorListBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := colorListBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -17947,8 +18052,13 @@ func CategoryPanelGroup_Show(obj uintptr)  {
     categoryPanelGroup_Show.Call(obj)
 }
 
-func CategoryPanelGroup_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := categoryPanelGroup_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func CategoryPanelGroup_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := categoryPanelGroup_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -18962,8 +19072,13 @@ func CategoryPanel_Show(obj uintptr)  {
     categoryPanel_Show.Call(obj)
 }
 
-func CategoryPanel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := categoryPanel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func CategoryPanel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := categoryPanel_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -21615,8 +21730,13 @@ func RichEdit_Print(obj uintptr, Caption string)  {
     richEdit_Print.Call(obj, GoStrToDStr(Caption) )
 }
 
-func RichEdit_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := richEdit_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func RichEdit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := richEdit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -21797,8 +21917,13 @@ func RichEdit_Show(obj uintptr)  {
     richEdit_Show.Call(obj)
 }
 
-func RichEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := richEdit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func RichEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := richEdit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -22901,8 +23026,13 @@ func TrackBar_Show(obj uintptr)  {
     trackBar_Show.Call(obj)
 }
 
-func TrackBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := trackBar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func TrackBar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := trackBar_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -24174,8 +24304,13 @@ func UpDown_Show(obj uintptr)  {
     upDown_Show.Call(obj)
 }
 
-func UpDown_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := upDown_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func UpDown_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := upDown_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -24938,8 +25073,13 @@ func ProgressBar_Show(obj uintptr)  {
     progressBar_Show.Call(obj)
 }
 
-func ProgressBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := progressBar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ProgressBar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := progressBar_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -25796,8 +25936,13 @@ func HotKey_Show(obj uintptr)  {
     hotKey_Show.Call(obj)
 }
 
-func HotKey_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := hotKey_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func HotKey_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := hotKey_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -26503,8 +26648,13 @@ func DateTimePicker_Show(obj uintptr)  {
     dateTimePicker_Show.Call(obj)
 }
 
-func DateTimePicker_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := dateTimePicker_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func DateTimePicker_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := dateTimePicker_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -27446,8 +27596,13 @@ func MonthCalendar_Show(obj uintptr)  {
     monthCalendar_Show.Call(obj)
 }
 
-func MonthCalendar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := monthCalendar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func MonthCalendar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := monthCalendar_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -28365,8 +28520,13 @@ func ListView_Show(obj uintptr)  {
     listView_Show.Call(obj)
 }
 
-func ListView_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := listView_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ListView_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := listView_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -29678,8 +29838,13 @@ func TreeView_Show(obj uintptr)  {
     treeView_Show.Call(obj)
 }
 
-func TreeView_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := treeView_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func TreeView_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := treeView_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -30827,8 +30992,13 @@ func StatusBar_Show(obj uintptr)  {
     statusBar_Show.Call(obj)
 }
 
-func StatusBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := statusBar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func StatusBar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := statusBar_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -31680,8 +31850,13 @@ func ToolBar_Show(obj uintptr)  {
     toolBar_Show.Call(obj)
 }
 
-func ToolBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := toolBar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ToolBar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := toolBar_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -32635,8 +32810,13 @@ func MaskEdit_SelectAll(obj uintptr)  {
     maskEdit_SelectAll.Call(obj)
 }
 
-func MaskEdit_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := maskEdit_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func MaskEdit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := maskEdit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -32789,8 +32969,13 @@ func MaskEdit_Show(obj uintptr)  {
     maskEdit_Show.Call(obj)
 }
 
-func MaskEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := maskEdit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func MaskEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := maskEdit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -33784,8 +33969,13 @@ func BitBtn_Show(obj uintptr)  {
     bitBtn_Show.Call(obj)
 }
 
-func BitBtn_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := bitBtn_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func BitBtn_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := bitBtn_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -37685,8 +37875,13 @@ func PageControl_Show(obj uintptr)  {
     pageControl_Show.Call(obj)
 }
 
-func PageControl_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := pageControl_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func PageControl_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := pageControl_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -38577,8 +38772,13 @@ func TabSheet_Show(obj uintptr)  {
     tabSheet_Show.Call(obj)
 }
 
-func TabSheet_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := tabSheet_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func TabSheet_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := tabSheet_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -39316,8 +39516,13 @@ func Control_Update(obj uintptr)  {
     control_Update.Call(obj)
 }
 
-func Control_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := control_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Control_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := control_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -39848,8 +40053,13 @@ func WinControl_Show(obj uintptr)  {
     winControl_Show.Call(obj)
 }
 
-func WinControl_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := winControl_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func WinControl_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := winControl_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -41427,8 +41637,13 @@ func SpinEdit_SelectAll(obj uintptr)  {
     spinEdit_SelectAll.Call(obj)
 }
 
-func SpinEdit_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := spinEdit_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func SpinEdit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := spinEdit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -41581,8 +41796,13 @@ func SpinEdit_Show(obj uintptr)  {
     spinEdit_Show.Call(obj)
 }
 
-func SpinEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := spinEdit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func SpinEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := spinEdit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -42552,8 +42772,13 @@ func MiniWebview_Show(obj uintptr)  {
     miniWebview_Show.Call(obj)
 }
 
-func MiniWebview_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := miniWebview_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func MiniWebview_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := miniWebview_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -44563,8 +44788,13 @@ func ToolButton_Update(obj uintptr)  {
     toolButton_Update.Call(obj)
 }
 
-func ToolButton_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := toolButton_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ToolButton_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := toolButton_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -46019,8 +46249,13 @@ func PaintBox_Update(obj uintptr)  {
     paintBox_Update.Call(obj)
 }
 
-func PaintBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := paintBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func PaintBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := paintBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -47691,8 +47926,13 @@ func ScrollBar_Show(obj uintptr)  {
     scrollBar_Show.Call(obj)
 }
 
-func ScrollBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := scrollBar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ScrollBar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := scrollBar_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -48631,8 +48871,13 @@ func Shape_Update(obj uintptr)  {
     shape_Update.Call(obj)
 }
 
-func Shape_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := shape_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Shape_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := shape_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -49200,8 +49445,13 @@ func Bevel_Update(obj uintptr)  {
     bevel_Update.Call(obj)
 }
 
-func Bevel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := bevel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Bevel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := bevel_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -49771,8 +50021,13 @@ func ScrollBox_Show(obj uintptr)  {
     scrollBox_Show.Call(obj)
 }
 
-func ScrollBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := scrollBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ScrollBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := scrollBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -50720,8 +50975,13 @@ func CheckListBox_Show(obj uintptr)  {
     checkListBox_Show.Call(obj)
 }
 
-func CheckListBox_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := checkListBox_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func CheckListBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := checkListBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -51720,8 +51980,13 @@ func Gauge_Update(obj uintptr)  {
     gauge_Update.Call(obj)
 }
 
-func Gauge_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := gauge_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Gauge_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := gauge_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -52313,8 +52578,13 @@ func ImageButton_Update(obj uintptr)  {
     imageButton_Update.Call(obj)
 }
 
-func ImageButton_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := imageButton_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ImageButton_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := imageButton_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -54201,8 +54471,13 @@ func StringGrid_Show(obj uintptr)  {
     stringGrid_Show.Call(obj)
 }
 
-func StringGrid_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := stringGrid_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func StringGrid_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := stringGrid_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -55390,8 +55665,13 @@ func DrawGrid_Show(obj uintptr)  {
     drawGrid_Show.Call(obj)
 }
 
-func DrawGrid_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := drawGrid_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func DrawGrid_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := drawGrid_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -56543,8 +56823,13 @@ func ValueListEditor_Show(obj uintptr)  {
     valueListEditor_Show.Call(obj)
 }
 
-func ValueListEditor_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := valueListEditor_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ValueListEditor_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := valueListEditor_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -57650,8 +57935,13 @@ func HeaderControl_Show(obj uintptr)  {
     headerControl_Show.Call(obj)
 }
 
-func HeaderControl_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := headerControl_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func HeaderControl_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := headerControl_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -58724,8 +59014,13 @@ func LabeledEdit_SelectAll(obj uintptr)  {
     labeledEdit_SelectAll.Call(obj)
 }
 
-func LabeledEdit_GetSelTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := labeledEdit_GetSelTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func LabeledEdit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := labeledEdit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -58874,8 +59169,13 @@ func LabeledEdit_Show(obj uintptr)  {
     labeledEdit_Show.Call(obj)
 }
 
-func LabeledEdit_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := labeledEdit_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func LabeledEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := labeledEdit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -59827,8 +60127,13 @@ func BoundLabel_Update(obj uintptr)  {
     boundLabel_Update.Call(obj)
 }
 
-func BoundLabel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := boundLabel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func BoundLabel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := boundLabel_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -60548,8 +60853,13 @@ func FlowPanel_Show(obj uintptr)  {
     flowPanel_Show.Call(obj)
 }
 
-func FlowPanel_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := flowPanel_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func FlowPanel_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := flowPanel_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -61502,8 +61812,13 @@ func CoolBar_Show(obj uintptr)  {
     coolBar_Show.Call(obj)
 }
 
-func CoolBar_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := coolBar_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func CoolBar_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := coolBar_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -65537,8 +65852,13 @@ func ComboBoxEx_Show(obj uintptr)  {
     comboBoxEx_Show.Call(obj)
 }
 
-func ComboBoxEx_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := comboBoxEx_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func ComboBoxEx_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := comboBoxEx_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 
@@ -66759,8 +67079,13 @@ func Frame_Show(obj uintptr)  {
     frame_Show.Call(obj)
 }
 
-func Frame_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
-    ret, _, _ := frame_GetTextBuf.Call(obj, GoStrToDStr(Buffer) , uintptr(BufSize) )
+func Frame_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := frame_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer)
     return int32(ret)
 }
 

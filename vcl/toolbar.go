@@ -333,7 +333,7 @@ func (t *TToolBar) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (t *TToolBar) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (t *TToolBar) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ToolBar_GetTextBuf(t.instance, Buffer , BufSize)
 }
 

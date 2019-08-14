@@ -338,7 +338,7 @@ func (s *TScrollBar) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (s *TScrollBar) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (s *TScrollBar) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ScrollBar_GetTextBuf(s.instance, Buffer , BufSize)
 }
 

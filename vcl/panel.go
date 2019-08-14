@@ -333,7 +333,7 @@ func (p *TPanel) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (p *TPanel) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (p *TPanel) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return Panel_GetTextBuf(p.instance, Buffer , BufSize)
 }
 

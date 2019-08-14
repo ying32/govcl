@@ -333,7 +333,7 @@ func (g *TGroupBox) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (g *TGroupBox) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (g *TGroupBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return GroupBox_GetTextBuf(g.instance, Buffer , BufSize)
 }
 

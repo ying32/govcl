@@ -348,7 +348,7 @@ func (v *TValueListEditor) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (v *TValueListEditor) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (v *TValueListEditor) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ValueListEditor_GetTextBuf(v.instance, Buffer , BufSize)
 }
 

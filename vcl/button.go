@@ -340,7 +340,7 @@ func (b *TButton) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (b *TButton) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (b *TButton) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return Button_GetTextBuf(b.instance, Buffer , BufSize)
 }
 

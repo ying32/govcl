@@ -216,7 +216,7 @@ func (s *TSplitter) Update() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (s *TSplitter) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (s *TSplitter) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return Splitter_GetTextBuf(s.instance, Buffer , BufSize)
 }
 

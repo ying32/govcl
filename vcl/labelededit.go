@@ -170,7 +170,7 @@ func (l *TLabeledEdit) SelectAll() {
 }
 
 // GetSelTextBuf
-func (l *TLabeledEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
+func (l *TLabeledEdit) GetSelTextBuf(Buffer *string, BufSize int32) int32 {
     return LabeledEdit_GetSelTextBuf(l.instance, Buffer , BufSize)
 }
 
@@ -399,7 +399,7 @@ func (l *TLabeledEdit) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (l *TLabeledEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (l *TLabeledEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return LabeledEdit_GetTextBuf(l.instance, Buffer , BufSize)
 }
 

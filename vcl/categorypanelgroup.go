@@ -358,7 +358,7 @@ func (c *TCategoryPanelGroup) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (c *TCategoryPanelGroup) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (c *TCategoryPanelGroup) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return CategoryPanelGroup_GetTextBuf(c.instance, Buffer , BufSize)
 }
 

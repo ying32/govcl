@@ -216,7 +216,7 @@ func (p *TPaintBox) Update() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (p *TPaintBox) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (p *TPaintBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return PaintBox_GetTextBuf(p.instance, Buffer , BufSize)
 }
 

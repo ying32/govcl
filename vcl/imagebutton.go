@@ -223,7 +223,7 @@ func (i *TImageButton) Update() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (i *TImageButton) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (i *TImageButton) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ImageButton_GetTextBuf(i.instance, Buffer , BufSize)
 }
 

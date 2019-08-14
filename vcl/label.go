@@ -216,7 +216,7 @@ func (l *TLabel) Update() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (l *TLabel) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (l *TLabel) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return Label_GetTextBuf(l.instance, Buffer , BufSize)
 }
 

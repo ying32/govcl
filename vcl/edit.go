@@ -158,7 +158,7 @@ func (e *TEdit) SelectAll() {
 }
 
 // GetSelTextBuf
-func (e *TEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
+func (e *TEdit) GetSelTextBuf(Buffer *string, BufSize int32) int32 {
     return Edit_GetSelTextBuf(e.instance, Buffer , BufSize)
 }
 
@@ -394,7 +394,7 @@ func (e *TEdit) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (e *TEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (e *TEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return Edit_GetTextBuf(e.instance, Buffer , BufSize)
 }
 

@@ -343,7 +343,7 @@ func (f *TFlowPanel) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (f *TFlowPanel) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (f *TFlowPanel) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return FlowPanel_GetTextBuf(f.instance, Buffer , BufSize)
 }
 

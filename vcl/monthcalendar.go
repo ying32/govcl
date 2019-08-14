@@ -334,7 +334,7 @@ func (m *TMonthCalendar) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (m *TMonthCalendar) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (m *TMonthCalendar) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return MonthCalendar_GetTextBuf(m.instance, Buffer , BufSize)
 }
 

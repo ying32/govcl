@@ -340,7 +340,7 @@ func (b *TBitBtn) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (b *TBitBtn) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (b *TBitBtn) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return BitBtn_GetTextBuf(b.instance, Buffer , BufSize)
 }
 

@@ -369,7 +369,7 @@ func (c *TColorListBox) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (c *TColorListBox) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (c *TColorListBox) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return ColorListBox_GetTextBuf(c.instance, Buffer , BufSize)
 }
 

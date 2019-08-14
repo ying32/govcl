@@ -158,7 +158,7 @@ func (s *TSpinEdit) SelectAll() {
 }
 
 // GetSelTextBuf
-func (s *TSpinEdit) GetSelTextBuf(Buffer string, BufSize int32) int32 {
+func (s *TSpinEdit) GetSelTextBuf(Buffer *string, BufSize int32) int32 {
     return SpinEdit_GetSelTextBuf(s.instance, Buffer , BufSize)
 }
 
@@ -394,7 +394,7 @@ func (s *TSpinEdit) Show() {
 // GetTextBuf
 // CN: 获取控件的字符，如果有。
 // EN: Get the characters of the control, if any.
-func (s *TSpinEdit) GetTextBuf(Buffer string, BufSize int32) int32 {
+func (s *TSpinEdit) GetTextBuf(Buffer *string, BufSize int32) int32 {
     return SpinEdit_GetTextBuf(s.instance, Buffer , BufSize)
 }
 
