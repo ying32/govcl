@@ -1,14 +1,12 @@
-// +build windows
+// +build windows,cgo
 
 package miniblink
 
 import (
-	"fmt"
 	"unsafe"
 )
 
 func InitializeEx(settings *WkeSettings) {
-	fmt.Println("_wkeInitializeEx find:", _wkeInitializeEx.Find())
 	if _wkeInitializeEx.Find() != nil {
 		return
 	}
