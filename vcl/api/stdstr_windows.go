@@ -35,10 +35,10 @@ func GoStrToDStr(s string) uintptr {
 
 func getBuff(size int32) interface{}  {
 	if IsloadedLcl {
-		buff := make([]uint8, size)
+		buff := make([]uint8, size + 1)
 		return buff
 	} else {
-		buff := make([]uint16, size)
+		buff := make([]uint16, size + 1)
 		return buff
 	}
 }

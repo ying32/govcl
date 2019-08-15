@@ -24,7 +24,7 @@ func GoStrToDStr(s string) uintptr {
 }
 
 func getBuff(size int32) interface{}  {
-	buff := make([]uint8, size)
+	buff := make([]uint8, size + 1)
 	return uintptr(unsafe.Pointer(&buff[0]))
 }
 
