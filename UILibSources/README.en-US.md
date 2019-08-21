@@ -29,12 +29,12 @@ The compiled binary can be viewed in the following directory:
 
 ### liblcl 
 
-liblcl Based on Lazarus 2.0.2 version FPC 3.0.4, the specific installation method of each platform refers to the official website installation instructions.  
+liblcl Based on Lazarus 2.0.4 version FPC 3.0.4, the specific installation method of each platform refers to the official website installation instructions.  
 
 
 Compile steps:     
 
-* 1. Install Lazarus 2.0.2 64bit version and i386 expansion package  
+* 1. Install Lazarus 2.0.4 64bit version and i386 expansion package  
 * 2. double-click lcl.lpi  
 * 3. Menu -> Project -> Project Options -> Compiler Options -> Build modes Switch the relevant ring mode. The current valid mode is as follows:  
    * Win32  
