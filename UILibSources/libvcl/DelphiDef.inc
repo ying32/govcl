@@ -52,7 +52,7 @@ end;
 function DLibVersion: Cardinal; stdcall;
 begin
   // 共8位，2位2位的
-  Result := $01020603;
+  Result := $01020604;
 end;
 
 // TApplication
