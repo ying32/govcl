@@ -31,6 +31,6 @@ func getBuffPtr(buff interface{}) uintptr  {
 	return uintptr(unsafe.Pointer(&(buff.([]uint8))[0]))
 }
 
-func getTextBuf(strBuff interface{}, Buffer *string) {
-	*Buffer = string(strBuff.([]uint8))
+func getTextBuf(strBuff interface{}, Buffer *string, slen int) {
+	*Buffer = string((strBuff.([]uint8))[:slen])
 }

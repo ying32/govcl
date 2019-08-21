@@ -49,11 +49,11 @@ func getBuffPtr(buff interface{}) uintptr  {
 	}
 }
 
-func getTextBuf(strBuff interface{}, Buffer *string) {
+func getTextBuf(strBuff interface{}, Buffer *string, slen int) {
 	if IsloadedLcl {
-		*Buffer = string(strBuff.([]uint8))
+		*Buffer = string((strBuff.([]uint8))[:slen])
 	} else {
-		*Buffer = syscall.UTF16ToString(strBuff.([]uint16))
+		*Buffer = syscall.UTF16ToString((strBuff.([]uint16))[:slen])
 	}
 }
 
