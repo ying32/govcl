@@ -44,6 +44,7 @@
 | OSVersion | 系统版本信息获取    |  |
 | pageControlWizard | PageControl向导程序演示 | |  
 | printer | 打印机操作 | |  
+| redisViewer | Redis视图客户端  | |  
 | registerHotkey | windows注册热键  | Windows |
 | registry | windows注册表演示  | Windows |
 | res2goTest/Delphi |  res2go工具测试例程，演示使用Delphi设计器构建的UI  | |  
