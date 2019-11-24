@@ -1,4 +1,4 @@
-// +build windows,cgo
+// +build windows
 
 package miniblink
 
@@ -26,12 +26,12 @@ func NewMiniBlinkWebview(hWnd types.HWND) *TMiniBlinkWebview {
 	r, _ := win.GetClientRect2(hWnd)
 	w.Webview = wkeCreateWebWindow(WKE_WINDOW_TYPE_CONTROL, hWnd, 0, 0, int(r.Width()), int(r.Height()))
 	ptr := uintptr(unsafe.Pointer(w))
-	//wkeOnCreateView(w.Webview, WkeCreateViewCallback(_wkeCreateViewCallback), ptr)
+	wkeOnCreateView(w.Webview, WkeCreateViewCallback(_wkeCreateViewCallback), ptr)
 	wkeOnTitleChanged(w.Webview, WkeTitleChangedCallback(_wkeTitleChangedCallback), ptr)
-	//wkeOnURLChanged(w.Webview, WkeURLChangedCallback(_wkeURLChangedCallback), ptr)
-	//wkeOnNavigation(w.Webview, WkeNavigationCallback(_wkeNavigationCallback), ptr)
-	//wkeOnLoadingFinish(w.Webview, WkeLoadingFinishCallback(_wkeLoadingFinishCallback), ptr)
-	//wkeOnDocumentReady(w.Webview, WkeDocumentReadyCallback(_wkeDocumentReadyCallback), ptr)
+	wkeOnURLChanged(w.Webview, WkeURLChangedCallback(_wkeURLChangedCallback), ptr)
+	wkeOnNavigation(w.Webview, WkeNavigationCallback(_wkeNavigationCallback), ptr)
+	wkeOnLoadingFinish(w.Webview, WkeLoadingFinishCallback(_wkeLoadingFinishCallback), ptr)
+	wkeOnDocumentReady(w.Webview, WkeDocumentReadyCallback(_wkeDocumentReadyCallback), ptr)
 
 	return w
 }

@@ -1,4 +1,4 @@
-// +build windows,cgo
+// +build windows
 
 // miniblink及wke头文件导入
 // 由ying32翻译，应用于govcl
@@ -31,6 +31,9 @@ func GoWStr(str uintptr) string {
 		return ""
 	}
 	l := win.LstrlenW(str)
+	if l == 0 {
+		return ""
+	}
 	buff := make([]uint16, l)
 	win.Memcpy(uintptr(unsafe.Pointer(&buff[0])), str, uintptr(l*2))
 	return syscall.UTF16ToString(buff)
@@ -41,6 +44,9 @@ func GoAStr(str uintptr) string {
 		return ""
 	}
 	l := win.Lstrlen(str)
+	if l == 0 {
+		return ""
+	}
 	buff := make([]byte, l)
 	win.Memcpy(uintptr(unsafe.Pointer(&buff[0])), str, uintptr(l))
 	return string(buff)

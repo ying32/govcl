@@ -1,4 +1,4 @@
-// +build windows,cgo
+// +build windows
 
 // miniblink及wke头文件导入
 // 由ying32翻译，应用于govcl，因为没有完整测试，所以不保证100%正确
@@ -6,20 +6,12 @@
 package miniblink
 
 import (
-	"fmt"
-	"runtime"
-
 	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/ying32/govcl/vcl/dylib/floatpatch"
 
 	"unsafe"
 )
-
-/*
-  #include "import.h"
-*/
-import "C"
 
 var (
 	_wkeInitializeEx                      = wkedll.NewProc("wkeInitializeEx")
@@ -1010,9 +1002,7 @@ func wkeRunJS(webView WkeWebView, script string) JsValue {
 }
 
 func wkeRunJSW(webView WkeWebView, script string) JsValue {
-	runtime.LockOSThread()
 	r, r2, _ := _wkeRunJSW.Call(uintptr(webView), CWStr(script))
-	fmt.Println("jsVal:", r, r2)
 	if is386 {
 		return JsValue(ToUInt64(r, r2))
 	}

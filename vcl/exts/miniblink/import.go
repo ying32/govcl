@@ -1,4 +1,4 @@
-// +build windows,cgo
+// +build windows
 
 // miniblink及wke头文件导入
 // 由ying32翻译，应用于govcl
@@ -6,7 +6,6 @@
 package miniblink
 
 import (
-	"fmt"
 	"runtime"
 	"syscall"
 )
@@ -17,5 +16,8 @@ var (
 )
 
 func LoadMiniBlinkDLL() *syscall.LazyDLL {
-	return syscall.NewLazyDLL(fmt.Sprintf("node-%s.dll", runtime.GOARCH))
+	if !is386 {
+		return syscall.NewLazyDLL("miniblink_x64.dll")
+	}
+	return syscall.NewLazyDLL("node.dll")
 }

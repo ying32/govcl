@@ -1,4 +1,4 @@
-// +build windows,cgo
+// +build windows
 
 // miniblink及wke头文件导入
 // 由ying32翻译，应用于govcl，因为没有完整测试，所以不保证100%正确

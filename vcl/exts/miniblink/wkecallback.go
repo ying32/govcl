@@ -1,14 +1,6 @@
-// +build windows,cgo
+// +build windows
 
 package miniblink
-
-/*
-   extern void* fnwkeTitleChangedCallback(void  *webView, void *param , void *title);
-   static void* getfnwkeTitleChangedCallbackAddr() {
-		return &fnwkeTitleChangedCallback;
-   }
-*/
-//import "C"
 
 import (
 	"syscall"
@@ -17,7 +9,7 @@ import (
 
 var (
 	_wkeCreateViewCallback    = syscall.NewCallbackCDecl(fnwkeCreateViewCallback)
-	_wkeTitleChangedCallback  = /* C.getfnwkeTitleChangedCallbackAddr() */ syscall.NewCallbackCDecl(fnwkeTitleChangedCallback)
+	_wkeTitleChangedCallback  = syscall.NewCallbackCDecl(fnwkeTitleChangedCallback)
 	_wkeURLChangedCallback    = syscall.NewCallbackCDecl(fnwkeURLChangedCallback)
 	_wkeNavigationCallback    = syscall.NewCallbackCDecl(fnwkeNavigationCallback)
 	_wkeLoadingFinishCallback = syscall.NewCallbackCDecl(fnwkeLoadingFinishCallback)
@@ -35,7 +27,7 @@ func getObj(u uintptr) *TMiniBlinkWebview {
 	return (*TMiniBlinkWebview)(unsafe.Pointer(u))
 }
 
-// typedef wkeWebView(WKE_CALL_TYPE*wkeCreateViewCallback)(wkeWebView webView, void* param, wkeNavigationType navigationType, const wkeString url, const wkeWindowFeatures* windowFeatures);
+/// typedef wkeWebView(WKE_CALL_TYPE*wkeCreateViewCallback)(wkeWebView webView, void* param, wkeNavigationType navigationType, const wkeString url, const wkeWindowFeatures* windowFeatures);
 func fnwkeCreateViewCallback(webView WkeWebView, param uintptr, navigationType WkeNavigationType, url WkeString, windowFeatures *WkeWindowFeatures) WkeWebView {
 	ret := webView
 	if param != 0 {
@@ -48,9 +40,9 @@ func fnwkeCreateViewCallback(webView WkeWebView, param uintptr, navigationType W
 	return ret
 }
 
-// typedef void(WKE_CALL_TYPE*wkeTitleChangedCallback)(wkeWebView webView, void* param, const wkeString title);
+/// typedef void(WKE_CALL_TYPE*wkeTitleChangedCallback)(wkeWebView webView, void* param, const wkeString title);
 
-// export fnwkeTitleChangedCallback
+/// export fnwkeTitleChangedCallback
 func fnwkeTitleChangedCallback(webView unsafe.Pointer, param unsafe.Pointer, title unsafe.Pointer) uintptr {
 	if param != nil {
 		obj := getObj(uintptr(param))
@@ -66,7 +58,7 @@ func fnwkeTitleChangedCallback(webView unsafe.Pointer, param unsafe.Pointer, tit
 	return 0
 }
 
-// 	typedef void(WKE_CALL_TYPE*wkeURLChangedCallback)(wkeWebView webView, void* param, const wkeString url);
+/// 	typedef void(WKE_CALL_TYPE*wkeURLChangedCallback)(wkeWebView webView, void* param, const wkeString url);
 func fnwkeURLChangedCallback(view WkeWebView, param uintptr, url WkeString) uintptr {
 	if param != 0 {
 		obj := getObj(param)
@@ -82,7 +74,7 @@ func fnwkeURLChangedCallback(view WkeWebView, param uintptr, url WkeString) uint
 	return 1
 }
 
-// typedef bool(WKE_CALL_TYPE*wkeNavigationCallback)(wkeWebView webView, void* param, wkeNavigationType navigationType, wkeString url);
+/// typedef bool(WKE_CALL_TYPE*wkeNavigationCallback)(wkeWebView webView, void* param, wkeNavigationType navigationType, wkeString url);
 func fnwkeNavigationCallback(view WkeWebView, param uintptr, navigationType WkeNavigationType, url WkeString) uintptr {
 	if param != 0 {
 		obj := getObj(param)
@@ -98,7 +90,7 @@ func fnwkeNavigationCallback(view WkeWebView, param uintptr, navigationType WkeN
 	return 1
 }
 
-// typedef void(WKE_CALL_TYPE*wkeLoadingFinishCallback)(wkeWebView webView, void* param, const wkeString url, wkeLoadingResult result, const wkeString failedReason);
+/// typedef void(WKE_CALL_TYPE*wkeLoadingFinishCallback)(wkeWebView webView, void* param, const wkeString url, wkeLoadingResult result, const wkeString failedReason);
 func fnwkeLoadingFinishCallback(view WkeWebView, param uintptr, url WkeString, result WkeLoadingResult, failedReason WkeString) uintptr {
 	if param != 0 {
 		obj := getObj(param)
@@ -114,7 +106,7 @@ func fnwkeLoadingFinishCallback(view WkeWebView, param uintptr, url WkeString, r
 	return 1
 }
 
-// typedef void(WKE_CALL_TYPE*wkeDocumentReadyCallback)(wkeWebView webView, void* param);
+/// typedef void(WKE_CALL_TYPE*wkeDocumentReadyCallback)(wkeWebView webView, void* param);
 func fnwkeDocumentReadyCallback(view WkeWebView, param uintptr) uintptr {
 	if param != 0 {
 		obj := getObj(param)
