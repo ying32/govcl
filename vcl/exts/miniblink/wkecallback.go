@@ -14,6 +14,7 @@ var (
 	_wkeNavigationCallback    = syscall.NewCallbackCDecl(fnwkeNavigationCallback)
 	_wkeLoadingFinishCallback = syscall.NewCallbackCDecl(fnwkeLoadingFinishCallback)
 	_wkeDocumentReadyCallback = syscall.NewCallbackCDecl(fnwkeDocumentReadyCallback)
+	_wkeConsoleCallback       = syscall.NewCallbackCDecl(fnwkeConsoleCallback)
 )
 
 type TOnCreateViewEvent func(sender *TMiniBlinkWebview, navigationType WkeNavigationType, url WkeString, windowFeatures *WkeWindowFeatures, result *WkeWebView)
@@ -22,6 +23,7 @@ type TOnURLChangedEvent func(sender *TMiniBlinkWebview, url string)
 type TOnNavigationEvent func(sender *TMiniBlinkWebview, navigationType WkeNavigationType, url string)
 type TOnLoadingFinishEvent func(sender *TMiniBlinkWebview, url string, result WkeLoadingResult, failedReason string)
 type TOnDocumentReadyEvent func(sender *TMiniBlinkWebview)
+type TOnConsoleEvent func(sender *TMiniBlinkWebview, param uintptr, level WkeConsoleLevel, message string, sourceName string, sourceLine uintptr, stackTrace string)
 
 func getObj(u uintptr) *TMiniBlinkWebview {
 	return (*TMiniBlinkWebview)(unsafe.Pointer(u))
@@ -113,6 +115,18 @@ func fnwkeDocumentReadyCallback(view WkeWebView, param uintptr) uintptr {
 		proc := obj.OnDocumentReady
 		if proc != nil {
 			proc(obj)
+		}
+	}
+	return 1
+}
+
+// typedef void(WKE_CALL_TYPE*wkeConsoleCallback)(wkeWebView webView, void* param, wkeConsoleLevel level, const wkeString message, const wkeString sourceName, unsigned sourceLine, const wkeString stackTrace);
+func fnwkeConsoleCallback(view WkeWebView, param uintptr, level WkeConsoleLevel, message WkeString, sourceName WkeString, sourceLine uintptr, stackTrace WkeString) uintptr {
+	if param != 0 {
+		obj := getObj(param)
+		proc := obj.OnConsole
+		if proc != nil {
+			proc(obj, param, level, wkeGetString(message), wkeGetString(sourceName), sourceLine, wkeGetString(stackTrace))
 		}
 	}
 	return 1

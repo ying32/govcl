@@ -19,6 +19,7 @@ type TMiniBlinkWebview struct {
 	OnNavigation    TOnNavigationEvent
 	OnLoadingFinish TOnLoadingFinishEvent
 	OnDocumentReady TOnDocumentReadyEvent
+	OnConsole       TOnConsoleEvent
 }
 
 func NewMiniBlinkWebview(hWnd types.HWND) *TMiniBlinkWebview {
@@ -32,7 +33,7 @@ func NewMiniBlinkWebview(hWnd types.HWND) *TMiniBlinkWebview {
 	wkeOnNavigation(w.Webview, WkeNavigationCallback(_wkeNavigationCallback), ptr)
 	wkeOnLoadingFinish(w.Webview, WkeLoadingFinishCallback(_wkeLoadingFinishCallback), ptr)
 	wkeOnDocumentReady(w.Webview, WkeDocumentReadyCallback(_wkeDocumentReadyCallback), ptr)
-
+	wkeOnConsole(w.Webview, WkeConsoleCallback(_wkeConsoleCallback), ptr)
 	return w
 }
 
@@ -68,5 +69,26 @@ func (w *TMiniBlinkWebview) Show(val bool) {
 func (w *TMiniBlinkWebview) Load(url string) {
 	if w.IsValid() {
 		wkeLoadW(w.Webview, url)
+	}
+}
+
+func (w *TMiniBlinkWebview) LoadUrl(url string) {
+	if w.IsValid() {
+		wkeLoadURLW(w.Webview, url)
+	}
+}
+func (w *TMiniBlinkWebview) SetZoomFactor(factor float32) {
+	if w.IsValid() {
+		wkeSetZoomFactor(w.Webview, factor)
+	}
+}
+func (w *TMiniBlinkWebview) SetDeviceParameter(device string, paramStr string, paramInt int, paramFloat float32) {
+	if w.IsValid() {
+		wkeSetDeviceParameter(w.Webview, device, paramStr, paramInt, paramFloat)
+	}
+}
+func (w *TMiniBlinkWebview) SetUserAgent(userAgent string) {
+	if w.IsValid() {
+		wkeSetUserAgentW(w.Webview, userAgent)
 	}
 }
