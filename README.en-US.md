@@ -42,7 +42,7 @@ res2go Tool([Document](Tools/res2go))
 
 #### Step 2: Write the code
 
-* Method 1: 
+* Method 1(Pure code. Not recommended): 
 
 ```golang
 package main
@@ -67,7 +67,7 @@ func main() {
 }
 ```  
 
-* Method 2:  
+* Method 2(Pure code, imitating the way of Delphi class, can automatically bind events.):  
 
 ```golang
 package main
@@ -133,7 +133,7 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 }
 ```
 
-* Method 3: 
+* Method 3(Use Delphi / Lazarus or GoVCLDesigner to design the interface. recommend): 
 
 ```golang
 package main

@@ -44,7 +44,7 @@ res2go工具下载（[文档](Tools/res2go)）
 
 #### 步骤二：编写代码    
 
-* 方法一：  
+* 方法一(Pure code. Not recommended)：  
 
 ```golang
 package main
@@ -69,7 +69,7 @@ func main() {
 }
 ```  
 
-* 方法二：  
+* 方法二(纯代码，仿照Delphi类的方式，可自动绑定事件。)：  
 
 ```golang
 package main
@@ -136,7 +136,7 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ```
 
-* 方法三：  
+* 方法三(使用Delphi/Lazarus或者GoVCLDesigner设计界面。推荐)：  
 
 ```golang
 package main
