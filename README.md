@@ -44,7 +44,7 @@ res2go工具下载（[文档](Tools/res2go)）
 
 #### 步骤二：编写代码    
 
-* 方法一(Pure code. Not recommended)：  
+* 方法一(纯代码。不推荐方式)：  
 
 ```golang
 package main
