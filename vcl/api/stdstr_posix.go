@@ -20,14 +20,14 @@ func GoStrToDStr(s string) uintptr {
 	if s == "" {
 		return 0
 	}
-	return uintptr(unsafe.Pointer(&([]byte(s + "\x00")[0])))
+	return uintptr(unsafe.Pointer(&([]byte(s + nullChar())[0])))
 }
 
-func getBuff(size int32) interface{}  {
-	return make([]uint8, size + 1)
+func getBuff(size int32) interface{} {
+	return make([]uint8, size+1)
 }
 
-func getBuffPtr(buff interface{}) uintptr  {
+func getBuffPtr(buff interface{}) uintptr {
 	return uintptr(unsafe.Pointer(&(buff.([]uint8))[0]))
 }
 

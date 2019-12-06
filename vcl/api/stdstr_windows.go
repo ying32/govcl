@@ -27,21 +27,21 @@ func GoStrToDStr(s string) uintptr {
 		return 0
 	}
 	if IsloadedLcl {
-		return uintptr(unsafe.Pointer(&([]byte(s + "\x00")[0])))
+		return uintptr(unsafe.Pointer(&([]byte(s + nullChar())[0])))
 	} else {
 		return uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(s)))
 	}
 }
 
-func getBuff(size int32) interface{}  {
+func getBuff(size int32) interface{} {
 	if IsloadedLcl {
-		return make([]uint8, size + 1)
+		return make([]uint8, size+1)
 	} else {
-		return make([]uint16, size + 1)
+		return make([]uint16, size+1)
 	}
 }
 
-func getBuffPtr(buff interface{}) uintptr  {
+func getBuffPtr(buff interface{}) uintptr {
 	if IsloadedLcl {
 		return uintptr(unsafe.Pointer(&(buff.([]uint8))[0]))
 	} else {
@@ -56,4 +56,3 @@ func getTextBuf(strBuff interface{}, Buffer *string, slen int) {
 		*Buffer = syscall.UTF16ToString((strBuff.([]uint16))[:slen])
 	}
 }
-
