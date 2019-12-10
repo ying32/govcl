@@ -20,7 +20,7 @@ func GoStrToDStr(s string) uintptr {
 	if s == "" {
 		return 0
 	}
-	return uintptr(StringToUTF8Ptr(s))
+	return uintptr(unsafe.Pointer(StringToUTF8Ptr(s)))
 }
 
 func getBuff(size int32) interface{} {
