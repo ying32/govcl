@@ -133,7 +133,7 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 }
 ```
 
-* Method 3(Use Delphi / Lazarus or GoVCLDesigner to design the interface. recommend): 
+* Method 3(Use Delphi / Lazarus or GoVCLDesigner to design the GUI. recommend): 
 
 ```golang
 package main
