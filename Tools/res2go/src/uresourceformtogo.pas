@@ -26,7 +26,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.16';
+  APPVERSION = '1.0.17';
 
 type
   TComponentItem = record
@@ -530,7 +530,7 @@ begin
     LFormName := PComponentItem(AComponents[0])^.Name;
 
     LIsFrame := False;
-    if Pos('Frame', LFormName) <> 0 then
+    if PComponentItem(AComponents[0])^.ClassName.StartsWith('TFrame') then
       LIsFrame := True;
 
     WLine(Format('type T%s struct {', [LFormName]));
