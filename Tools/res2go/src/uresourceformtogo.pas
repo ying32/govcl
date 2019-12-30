@@ -466,7 +466,7 @@ begin
 end;
 
 
-procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AOutPath, AOrigFileName: string; AMem: TMemoryStream);
+procedure SaveToGoFile(AComponents: TList; AEvents: array of TEventItem; const AResFileName, AOutPath, AOrigFileName: string; AMem: TMemoryStream);
 var
   LStrStream, LBuffer: TStringStream;
 {$IFDEF FPC}
@@ -495,6 +495,25 @@ var
     end;
   end;
 
+  function GetIsFrame(AClassName: string): Boolean;
+  var
+    LStrs: TStringList;
+    LFileName: string;
+  begin
+    Result := False;
+    LFileName := AResFileName.Remove(AResFileName.LastIndexOf('.'), 4) + '.pas';
+    if FileExists(LFileName) then
+    begin
+      LStrs := TStringList.Create;
+      try
+        LStrs.LoadFromFile(LFileName);
+        Result := LStrs.Text.Contains(Format('%s = class(TFrame)', [AClassName]));
+      finally
+        LStrs.Free;;
+      end;
+    end;
+  end;
+
 var
   I, LMaxLen: Integer;
   C: PComponentItem;
@@ -504,7 +523,7 @@ var
   LFindEvent: Boolean;
   LReadEventName: string;
   LSCPkgName: string;
-  LIsFrame: Boolean; // 这个没办法判断准确
+  LIsFrame: Boolean;
 begin
   LStrStream := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
   LBuffer := TStringStream.Create(''{$IFNDEF FPC}, TEncoding.UTF8{$ENDIF});
@@ -530,7 +549,8 @@ begin
     LFormName := PComponentItem(AComponents[0])^.Name;
 
     LIsFrame := False;
-    if PComponentItem(AComponents[0])^.ClassName.StartsWith('TFrame') then
+    //if PComponentItem(AComponents[0])^.ClassName.StartsWith('TFrame') then
+    if GetIsFrame(PComponentItem(AComponents[0])^.ClassName) then
       LIsFrame := True;
 
     WLine(Format('type T%s struct {', [LFormName]));
@@ -888,15 +908,15 @@ var
                 begin
                   TFormResFile.Encrypt(LOutput, LEnStream);
                   if LOutbytes then
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, LEnStream)
+                    SaveToGoFile(LComponents, LEventList, ASrcFileName, AOutPath, LtempFileName, LEnStream)
                   else
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, nil)
+                    SaveToGoFile(LComponents, LEventList, ASrcFileName, AOutPath, LtempFileName, nil)
                 end else
                 begin
                   if LOutbytes then
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, LOutput)
+                    SaveToGoFile(LComponents, LEventList, ASrcFileName, AOutPath, LtempFileName, LOutput)
                   else
-                    SaveToGoFile(LComponents, LEventList, AOutPath, LtempFileName, nil)
+                    SaveToGoFile(LComponents, LEventList, ASrcFileName, AOutPath, LtempFileName, nil)
                 end;
                 // 保存gfm文件
                 //if not LOutbytes then
