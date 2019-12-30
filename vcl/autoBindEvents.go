@@ -45,8 +45,8 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 			fmt.Println("autoBindEvents error: ", err)
 		}
 	}()
-	// OnFormCreate
-	var formCreate reflect.Value
+	// OnFormCreate or OnFrameCreate
+	var doCreate reflect.Value
 
 	vt := vForm.Type()
 
@@ -56,8 +56,8 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 	for i := 0; i < vt.NumMethod(); i++ {
 		m := vt.Method(i)
 		// 保存窗口创建事件
-		if m.Name == "OnFormCreate" {
-			formCreate = vForm.Method(i)
+		if m.Name == "OnFormCreate" || m.Name == "OnFrameCreate" {
+			doCreate = vForm.Method(i)
 			continue
 		}
 		if strings.HasPrefix(m.Name, "On") {
@@ -162,7 +162,7 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 	setEvent(Application)
 
 	// 最后调用OnCreate
-	callEvent(formCreate, []reflect.Value{vForm})
+	callEvent(doCreate, []reflect.Value{vForm})
 
 	// 设定了之后绑定子组件事件并且之前没有指定要绑定子组件事件
 	if afterBindSubComponentsEvents && !subComponentsEvent {
