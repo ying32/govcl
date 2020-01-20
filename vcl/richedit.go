@@ -1260,12 +1260,16 @@ func (r *TRichEdit) SetSelText(value string) {
 // CN: 获取文本。
 // EN: .
 func (r *TRichEdit) Text() string {
-    strLen := r.GetTextLen()
-    var buffStr string
-    if strLen != 0 {
-        r.GetTextBuf(&buffStr, strLen + 1)
+    if !IsloadedLcl {
+        strLen := r.GetTextLen()
+        var buffStr string
+        if strLen != 0 {
+            r.GetTextBuf(&buffStr, strLen + 1)
+        }
+        return buffStr
+    } else { 
+        return RichEdit_GetText(r.instance)
     }
-    return buffStr
 }
 
 // SetText
