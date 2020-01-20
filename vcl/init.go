@@ -9,7 +9,7 @@ import (
 
 const (
 	// 要求最小liblcl或者libvcl二进制版本为1.2.6
-	requireBinaryVersion = 0x01020600
+	requireMinBinaryVersion = 0x01020600
 )
 
 var (
@@ -29,7 +29,7 @@ func init() {
 		}
 	}()
 
-	if DLibVersion() < requireBinaryVersion {
+	if DLibVersion() < requireMinBinaryVersion {
 		panic("要求libvcl或liblcl二进制版本>=1.2.6。\r\n(Require libvcl or liblcl binary version >=1.2.6.)")
 	}
 	// 这个似乎得默认加上，锁定主线程，防止中间被改变

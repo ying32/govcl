@@ -3,7 +3,7 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="11"/>
-    <BuildModes Count="1" Active="win32Dev">
+    <BuildModes Count="1" Active="win32">
       <Item1 Name="macOS">
         <CompilerOptions>
           <Version Value="11"/>
