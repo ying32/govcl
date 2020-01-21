@@ -1183,7 +1183,7 @@ func (m *TMemo) SetSelText(value string) {
 // CN: 获取文本。
 // EN: .
 func (m *TMemo) Text() string {
-    if !IsloadedLcl {
+    if IsWindows {
         strLen := m.GetTextLen()
         var buffStr string
         if strLen != 0 {

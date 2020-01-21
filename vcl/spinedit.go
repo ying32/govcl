@@ -994,7 +994,7 @@ func (s *TSpinEdit) SetSelText(value string) {
 // CN: 获取文本。
 // EN: .
 func (s *TSpinEdit) Text() string {
-    if !IsloadedLcl {
+    if IsWindows {
         strLen := s.GetTextLen()
         var buffStr string
         if strLen != 0 {

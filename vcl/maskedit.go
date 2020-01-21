@@ -920,7 +920,7 @@ func (m *TMaskEdit) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (m *TMaskEdit) Text() string {
-    if !IsloadedLcl {
+    if IsWindows {
         strLen := m.GetTextLen()
         var buffStr string
         if strLen != 0 {

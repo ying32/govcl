@@ -1260,7 +1260,7 @@ func (r *TRichEdit) SetSelText(value string) {
 // CN: 获取文本。
 // EN: .
 func (r *TRichEdit) Text() string {
-    if !IsloadedLcl {
+    if IsWindows {
         strLen := r.GetTextLen()
         var buffStr string
         if strLen != 0 {

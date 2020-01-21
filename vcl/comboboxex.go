@@ -816,7 +816,7 @@ func (c *TComboBoxEx) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (c *TComboBoxEx) Text() string {
-    if !IsloadedLcl {
+    if IsWindows {
         strLen := c.GetTextLen()
         var buffStr string
         if strLen != 0 {

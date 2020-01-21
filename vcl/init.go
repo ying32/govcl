@@ -1,6 +1,7 @@
 package vcl
 
 import (
+	"fmt"
 	"os"
 	"runtime"
 
@@ -21,6 +22,10 @@ var (
 	Printer     *TPrinter
 )
 
+func toVersionString(ver uint32) string {
+	return fmt.Sprintf("%d.%d.%d.%d", byte(ver>>24), byte(ver>>16), byte(ver>>8), byte(ver))
+}
+
 func init() {
 	defer func() {
 		if err := recover(); err != nil {
@@ -28,8 +33,9 @@ func init() {
 			os.Exit(1)
 		}
 	}()
-
-	if DLibVersion() < requireMinBinaryVersion {
+	libVersion := DLibVersion()
+	fmt.Println("library Version:", toVersionString(libVersion))
+	if libVersion < requireMinBinaryVersion {
 		panic("要求libvcl或liblcl二进制版本>=1.2.6。\r\n(Require libvcl or liblcl binary version >=1.2.6.)")
 	}
 	// 这个似乎得默认加上，锁定主线程，防止中间被改变

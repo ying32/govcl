@@ -943,7 +943,7 @@ func (e *TEdit) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (e *TEdit) Text() string {
-    if !IsloadedLcl {
+    if IsWindows {
         strLen := e.GetTextLen()
         var buffStr string
         if strLen != 0 {
