@@ -31,13 +31,13 @@ libvcl工程源码位于"govcl\UILibSources\libvcl"目录。`libvcl限仅于wind
 
 ### liblcl 
 
-liblcl 基于Lazarus 2.0.4版本 FPC 3.0.4，具体各个平台的安装方式自行参考官网安装说明, 其它版本编译出现的问题请自行解决相关。。
+liblcl 基于Lazarus 2.0.6版本 FPC 3.0.4，具体各个平台的安装方式自行参考官网安装说明, 其它版本编译出现的问题请自行解决相关。。
 
 libvcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Win32、Win64、Linux64、MacOS32`     
 
 编译步骤：  
 
-* 1、安装好Lazarus 2.0.4 64bit版本及i386扩展包   
+* 1、安装好Lazarus 2.0.6 64bit版本及i386扩展包   
 * 2、双击lcl.lpi  
 * 3、菜单->Project->Project Options -> Compiler Options -> Build modes 切换相关编环模式，当前有效模式为以下几种种：   
    * Win32  

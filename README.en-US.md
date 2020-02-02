@@ -42,30 +42,61 @@ res2go Tool([Document](Tools/res2go))
 
 #### Step 2: Write the code
 
-* Method 1(Pure code. Not recommended): 
+* Method 1(Use Delphi / Lazarus or GoVCLDesigner to design the GUI. recommend): 
 
 ```golang
 package main
+
 
 import (
    "github.com/ying32/govcl/vcl"
 )
 
+type TMainForm struct {
+    *vcl.TForm
+    Btn1     *vcl.TButton
+}
+
+type TAboutForm struct {
+    *vcl.TForm
+    Btn1    *vcl.TButton
+}
+
+var (
+    mainForm *TMainForm
+    aboutForm *TAboutForm
+)
+
 func main() {
     vcl.Application.Initialize()
-    mainForm := vcl.Application.CreateForm()
-    mainForm.SetCaption("Hello")
-    mainForm.EnabledMaximize(false)
-    mainForm.ScreenCenter()
-    btn := vcl.NewButton(mainForm)
-    btn.SetParent(mainForm)
-    btn.SetCaption("Hello")
-    btn.SetOnClick(func(sender vcl.IObject) {
-        vcl.ShowMessage("Hello!")
-    })
+    vcl.Application.SetMainFormOnTaskBar(true)
+    vcl.Application.CreateForm(mainFormBytes, &mainForm)
+    vcl.Application.CreateForm("./about.gfm", &aboutForm)
     vcl.Application.Run()
 }
-```  
+
+// -- TMainForm
+
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
+    
+}
+
+func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+
+// -- TAboutForm
+
+func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
+ 
+}
+
+func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+```
+**Method 1 needs to be used in conjunction with the UI designer or the res2go tool.**  
+
 
 * Method 2(Pure code, imitating the way of Delphi class, can automatically bind events.):  
 
@@ -133,60 +164,31 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 }
 ```
 
-* Method 3(Use Delphi / Lazarus or GoVCLDesigner to design the GUI. recommend): 
+
+* Method 3(Pure code. Not recommended): 
 
 ```golang
 package main
-
 
 import (
    "github.com/ying32/govcl/vcl"
 )
 
-type TMainForm struct {
-    *vcl.TForm
-    Btn1     *vcl.TButton
-}
-
-type TAboutForm struct {
-    *vcl.TForm
-    Btn1    *vcl.TButton
-}
-
-var (
-    mainForm *TMainForm
-    aboutForm *TAboutForm
-)
-
 func main() {
     vcl.Application.Initialize()
-    vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(mainFormBytes, &mainForm)
-    vcl.Application.CreateForm("./about.gfm", &aboutForm)
+    mainForm := vcl.Application.CreateForm()
+    mainForm.SetCaption("Hello")
+    mainForm.EnabledMaximize(false)
+    mainForm.ScreenCenter()
+    btn := vcl.NewButton(mainForm)
+    btn.SetParent(mainForm)
+    btn.SetCaption("Hello")
+    btn.SetOnClick(func(sender vcl.IObject) {
+        vcl.ShowMessage("Hello!")
+    })
     vcl.Application.Run()
 }
-
-// -- TMainForm
-
-func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
-    
-}
-
-func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
-    vcl.ShowMessage("Hello!")
-}
-
-// -- TAboutForm
-
-func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
- 
-}
-
-func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
-    vcl.ShowMessage("Hello!")
-}
-```
-**Method 3 needs to be used in conjunction with the UI designer or the res2go tool.**  
+```  
 
 #### Step 3: Copy the corresponding binary   
 

@@ -44,30 +44,61 @@ res2go工具下载（[文档](Tools/res2go)）
 
 #### 步骤二：编写代码    
 
-* 方法一(纯代码。不推荐方式)：  
+* 方法一(使用Delphi/Lazarus或者GoVCLDesigner设计界面。推荐)：  
 
 ```golang
 package main
+
 
 import (
    "github.com/ying32/govcl/vcl"
 )
 
+type TMainForm struct {
+    *vcl.TForm
+    Btn1     *vcl.TButton
+}
+
+type TAboutForm struct {
+    *vcl.TForm
+    Btn1    *vcl.TButton
+}
+
+var (
+    mainForm *TMainForm
+    aboutForm *TAboutForm
+)
+
 func main() {
     vcl.Application.Initialize()
-    mainForm := vcl.Application.CreateForm()
-    mainForm.SetCaption("Hello")
-    mainForm.EnabledMaximize(false)
-    mainForm.ScreenCenter()
-    btn := vcl.NewButton(mainForm)
-    btn.SetParent(mainForm)
-    btn.SetCaption("Hello")
-    btn.SetOnClick(func(sender vcl.IObject) {
-        vcl.ShowMessage("Hello!")
-    })
+    vcl.Application.SetMainFormOnTaskBar(true)
+    vcl.Application.CreateForm(mainFormBytes, &mainForm)
+    vcl.Application.CreateForm("./about.gfm", &aboutForm)
     vcl.Application.Run()
 }
-```  
+
+// -- TMainForm
+
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
+    
+}
+
+func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+
+// -- TAboutForm
+
+func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
+ 
+}
+
+func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
+    vcl.ShowMessage("Hello!")
+}
+```
+**方法一需要配合UI设计器或者res2go工具使用。**  
+
 
 * 方法二(纯代码，仿照Delphi类的方式，可自动绑定事件。)：  
 
@@ -136,60 +167,31 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ```
 
-* 方法三(使用Delphi/Lazarus或者GoVCLDesigner设计界面。推荐)：  
+
+* 方法三(纯代码。不推荐方式)：  
 
 ```golang
 package main
-
 
 import (
    "github.com/ying32/govcl/vcl"
 )
 
-type TMainForm struct {
-    *vcl.TForm
-    Btn1     *vcl.TButton
-}
-
-type TAboutForm struct {
-    *vcl.TForm
-    Btn1    *vcl.TButton
-}
-
-var (
-    mainForm *TMainForm
-    aboutForm *TAboutForm
-)
-
 func main() {
     vcl.Application.Initialize()
-    vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(mainFormBytes, &mainForm)
-    vcl.Application.CreateForm("./about.gfm", &aboutForm)
+    mainForm := vcl.Application.CreateForm()
+    mainForm.SetCaption("Hello")
+    mainForm.EnabledMaximize(false)
+    mainForm.ScreenCenter()
+    btn := vcl.NewButton(mainForm)
+    btn.SetParent(mainForm)
+    btn.SetCaption("Hello")
+    btn.SetOnClick(func(sender vcl.IObject) {
+        vcl.ShowMessage("Hello!")
+    })
     vcl.Application.Run()
 }
-
-// -- TMainForm
-
-func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
-    
-}
-
-func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
-    vcl.ShowMessage("Hello!")
-}
-
-// -- TAboutForm
-
-func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
- 
-}
-
-func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
-    vcl.ShowMessage("Hello!")
-}
-```
-**方法三需要配合UI设计器或者res2go工具使用。**  
+```  
 
 
 #### 步骤三：复制对应的二进制    
