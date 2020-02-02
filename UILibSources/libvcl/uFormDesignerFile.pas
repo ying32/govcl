@@ -1,4 +1,4 @@
-// 设计器gfm文件格式，这里是加密格式，至于为啥使用加密的，一
+﻿// 设计器gfm文件格式，这里是加密格式，至于为啥使用加密的，一
 // 开始是做了外部gfm文件加载，防止项目发布使用了外部文件随意被修改，所以没有公开相关的
 
 
@@ -9,7 +9,8 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  System.Zlib;
+  System.Zlib,
+  Vcl.Forms;
 
 type
 
@@ -142,20 +143,75 @@ end;
 
 procedure TResForm.OnReaderError(Reader: TReader; const Message: string; var Handled: Boolean);
 begin
+{$IFDEF DEBUG}
   OutputDebugString(PChar('ReaderError: ' + Message));
+{$ENDIF}
   Handled := True; // 跳过不显示错误。
 end;
 
 procedure TResForm.OnFindMethod(Reader: TReader; const MethodName: string; var Address: Pointer; var Error: Boolean);
 begin
+{$IFDEF DEBUG}
   OutputDebugString(PChar('FindMethod: ' + MethodName));
+{$ENDIF}
   Error := False;
 end;
 
 procedure TResForm.OnFindMethodInstance(Reader: TReader; const MethodName: string; var AMethod: TMethod; var Error: Boolean);
 begin
+{$IFDEF DEBUG}
   OutputDebugString(PChar('FindMethodInstance: ' + MethodName));
+{$ENDIF}
   Error := False;
+end;
+
+
+
+
+function InitInheritedComponent(AReader: TReader; Instance: TComponent; RootAncestor: TClass): Boolean;
+
+  function InitComponent(ClassType: TClass): Boolean;
+  begin
+    Result := False;
+    if (ClassType = TComponent) or (ClassType = RootAncestor) then Exit;
+    Result := InitComponent(ClassType.ClassParent);
+    AReader.ReadRootComponent(Instance);
+  end;
+
+var
+  LocalizeLoading: Boolean;
+begin
+  GlobalNameSpace.BeginWrite;  // hold lock across all ancestor loads (performance)
+  try
+    LocalizeLoading := (Instance.ComponentState * [csInline, csLoading]) = [];
+    if LocalizeLoading then BeginGlobalLoading;  // push new loadlist onto stack
+    try
+      Result := InitComponent(Instance.ClassType);
+      //if Result then Instance.ReadDeltaState;
+      if LocalizeLoading then NotifyGlobalLoading;  // call Loaded
+    finally
+      if LocalizeLoading then EndGlobalLoading;  // pop loadlist off stack
+    end;
+  finally
+    GlobalNameSpace.EndWrite;
+  end;
+end;
+
+type
+   TFormPatch = class(TForm)
+   public
+     procedure FormStateIncludeCreating;
+     procedure FormStateExcludeCreating;
+   end;
+
+procedure TFormPatch.FormStateIncludeCreating;
+begin
+  Include(FFormState, fsCreating);
+end;
+
+procedure TFormPatch.FormStateExcludeCreating;
+begin
+  Exclude(FFormState, fsCreating);
 end;
 
 procedure TResForm.LoadFromStream(AStream: TStream; ARoot: TComponent);
@@ -169,15 +225,29 @@ begin
   LMem := TMemoryStream.Create;
   try
     TFormResFile.Decrypt(AStream, LMem);
-    LR := TReader.Create(LMem, LMem.Size);
+    LR := TReader.Create(LMem, 4096);
     try
       LR.OnFindComponentClass := OnFindComponentClass;
       LR.OnError := OnReaderError;
       LR.OnFindMethod := OnFindMethod;
       LR.OnAncestorNotFound := OnAncestorNotFound;
       LR.OnFindMethodInstance := OnFindMethodInstance;
-      LR.ReadRootComponent(ARoot);
-      ScaledForm(ARoot);
+
+      GlobalNameSpace.BeginWrite;
+      try
+        if (ARoot.ClassType <> TForm) and not (csDesigning in ARoot.ComponentState) then
+        begin
+          TFormPatch(ARoot).FormStateIncludeCreating;
+          try
+            // 这里换地方处理吧
+             InitInheritedComponent(LR, ARoot, TForm);
+          finally
+            TFormPatch(ARoot).FormStateExcludeCreating;
+          end;
+        end;
+      finally
+        GlobalNameSpace.EndWrite;
+      end;
     finally
       LR.Free;
     end;

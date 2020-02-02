@@ -11,15 +11,12 @@ type
 
   TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean) of object;
 
-
   // 兼容Lazarus的
   TShowInTaskbar = (
     stDefault,  // use default rules for showing taskbar item
     stAlways,   // always show taskbar item for the form
     stNever     // never show taskbar item for the form
   );
-
-
 
   TGoForm = class(TForm)
   private
@@ -34,8 +31,6 @@ type
     function GetAllowDropFiles: Boolean;
     procedure SetShowInTaskBar(const Value: TShowInTaskbar);
     procedure UpdateShowInTaskBar;
-  protected
-    procedure InitializeNewForm; override;
   public
     constructor Create(AOwner: TComponent); override;
     procedure WndProc(var AMsg: TMessage); override;
@@ -47,9 +42,9 @@ type
     property ShowInTaskBar: TShowInTaskbar read FShowInTaskBar write SetShowInTaskBar default stDefault;
   end;
 
-  procedure LockInitScale;
-  procedure UnLockInitScale;
-  procedure SetInitScale(AValue: Boolean);
+//  procedure LockInitScale;
+//  procedure UnLockInitScale;
+//  procedure SetInitScale(AValue: Boolean);
 implementation
 
 //{$R *.dfm}
@@ -58,24 +53,24 @@ uses
   uComponents,
   Winapi.ShellAPI;
 
-var
-  uLockObj: TObject;
-  uInitScale: Boolean;
+//var
+//  uLockObj: TObject;
+//  uInitScale: Boolean;
 
-procedure LockInitScale;
-begin
-  System.TMonitor.Enter(uLockObj);
-end;
+//procedure LockInitScale;
+//begin
+//  System.TMonitor.Enter(uLockObj);
+//end;
 
-procedure UnLockInitScale;
-begin
-  System.TMonitor.Exit(uLockObj);
-end;
+//procedure UnLockInitScale;
+//begin
+//  System.TMonitor.Exit(uLockObj);
+//end;
 
-procedure SetInitScale(AValue: Boolean);
-begin
-  uInitScale := AValue;
-end;
+//procedure SetInitScale(AValue: Boolean);
+//begin
+//  uInitScale := AValue;
+//end;
 
 procedure Form_ScaleForPPI(AObj: TGoForm; ANewPPI: Integer); stdcall;
 begin
@@ -102,23 +97,11 @@ begin
 end;
 
 constructor TGoForm.Create(AOwner: TComponent);
-var
-  LPPI: Integer;
 begin
   try
-    // 这里需要屏蔽对资源查找的错误
     inherited Create(AOwner);
   except
-  end;
-  if OldCreateOrder then
-    DoCreate;
-//  Create(AOwner, 0);
-  if uInitScale and GetGlobalFormScaled then
-  begin
-    LPPI := Screen.PixelsPerInch;
-    ClientWidth := MulDiv(ClientWidth, LPPI, 96);
-    ClientHeight := MulDiv(ClientHeight, LPPI, 96);
-    ScaleForPPI(LPPI);
+    // 不处理这个异常
   end;
   ControlStyle := ControlStyle + [csPaintBlackOpaqueOnGlass];
   FShowInTaskBar := stDefault;
@@ -127,17 +110,6 @@ end;
 function TGoForm.GetAllowDropFiles: Boolean;
 begin
   Result := (GetWindowLong(Handle, GWL_EXSTYLE) and WS_EX_ACCEPTFILES) <> 0;
-end;
-
-procedure TGoForm.InitializeNewForm;
-begin
-  inherited InitializeNewForm;
-  Self.ClientHeight := 321;
-  Self.ClientWidth := 678;
-  if GetGlobalFormScaled then
-    Self.PixelsPerInch := 96
-  else Self.PixelsPerInch := Screen.PixelsPerInch;
-  Scaled := False;
 end;
 
 procedure TGoForm.SetAllowDropFiles(const Value: Boolean);
@@ -218,12 +190,9 @@ exports
 
 
 initialization
-  uLockObj := TObject.Create;
   CoInitialize(nil);
 
 finalization
   CoUninitialize;
-  uLockObj.Free;
-
 
 end.

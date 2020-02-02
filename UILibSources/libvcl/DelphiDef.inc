@@ -64,14 +64,15 @@ end;
 
 function Application_CreateForm(App: TApplication; AInitScale: LongBool): TGoForm; stdcall;
 begin
-  LockInitScale;
-  try
-    SetInitScale(AInitScale);
+  // 先移除掉，待后我有2k屏再说吧。
+//  LockInitScale;
+//  try
+//    SetInitScale(AInitScale);
     App.CreateForm(TGoForm, Result);
-    SetInitScale(False);
-  finally
-    UnLockInitScale;
-  end;
+//    SetInitScale(False);
+//  finally
+//    UnLockInitScale;
+//  end;
 end;
 
 procedure RemoveAllForms;
@@ -105,14 +106,14 @@ end;
 
 function Form_Create2(AOwner: TComponent; AInitScale: LongBool): TGoForm; stdcall;
 begin
-  LockInitScale;
-  try
-    SetInitScale(AInitScale);
+//  LockInitScale;
+//  try
+//    SetInitScale(AInitScale);
     Result := TGoForm.Create(AOwner);
-    SetInitScale(False);
-  finally
-    UnLockInitScale;
-  end;
+//    SetInitScale(False);
+//  finally
+//    UnLockInitScale;
+//  end;
 end;
 
 procedure Form_EnabledMaximize(AObj: TGoForm; AValue: LongBool); stdcall;

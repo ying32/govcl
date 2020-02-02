@@ -390,6 +390,16 @@ begin
   AObj.Font := AValue;
 end;
 
+function ScrollBox_GetParentBackground(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentBackground;
+end;
+
+procedure ScrollBox_SetParentBackground(AObj: TScrollBox; AValue: LongBool); extdecl;
+begin
+  AObj.ParentBackground := AValue;
+end;
+
 function ScrollBox_GetParentColor(AObj: TScrollBox): LongBool; extdecl;
 begin
   Result :=  AObj.ParentColor;
@@ -976,6 +986,8 @@ exports
   ScrollBox_SetColor,
   ScrollBox_GetFont,
   ScrollBox_SetFont,
+  ScrollBox_GetParentBackground,
+  ScrollBox_SetParentBackground,
   ScrollBox_GetParentColor,
   ScrollBox_SetParentColor,
   ScrollBox_GetParentDoubleBuffered,

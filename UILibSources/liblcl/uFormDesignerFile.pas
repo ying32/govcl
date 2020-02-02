@@ -8,6 +8,7 @@ unit uFormDesignerFile;
 interface
 
 uses
+  Forms,
   sysutils,
   Classes,
   zbase,
@@ -282,6 +283,52 @@ begin
 
 end;
 
+type
+   TFormPatch = class(TForm)
+   public
+     procedure FormStateIncludeCreating;
+     procedure FormStateExcludeCreating;
+   end;
+
+procedure TFormPatch.FormStateIncludeCreating;
+begin
+  Include(FFormState, fsCreating);
+end;
+
+procedure TFormPatch.FormStateExcludeCreating;
+begin
+  Exclude(FFormState, fsCreating);
+end;
+
+function InitLazResourceComponent(AReader: TReader; Instance: TComponent; RootAncestor: TClass): Boolean;
+
+  function InitComponent(ClassType: TClass): Boolean;
+  begin
+    Result := False;
+    if (ClassType = TComponent) or (ClassType = RootAncestor) then
+      Exit;
+    if Assigned(ClassType.ClassParent) then
+      Result := InitComponent(ClassType.ClassParent);
+    AReader.ReadRootComponent(Instance);
+    Result := True;
+  end;
+
+begin
+  if Instance.ComponentState * [csLoading, csInline] <> []
+  then begin
+    // global loading not needed
+    Result := InitComponent(Instance.ClassType);
+  end
+  else try
+    BeginGlobalLoading;
+    Result := InitComponent(Instance.ClassType);
+    NotifyGlobalLoading;
+  finally
+    EndGlobalLoading;
+  end;
+end;
+
+
 procedure TResForm.LoadFromStream(AStream: TStream; ARoot: TComponent);
 var
   LR: TReader;
@@ -293,16 +340,29 @@ begin
   LMem := TMemoryStream.Create;
   try
     TFormResFile.Decrypt(AStream, LMem);
-    LR := TReader.Create(LMem, LMem.Size);
+    LR := TReader.Create(LMem, 4096);
     try
-
       LR.OnFindComponentClass := @OnFindComponentClass;
       LR.OnPropertyNotFound := @OnPropertyNotFound;
       LR.OnAncestorNotFound := @OnAncestorNotFound;
       LR.OnError:= @OnReaderError;
       LR.OnReadStringProperty := @OnReadWriteStringProperty;
       LR.OnCreateComponent := @OnCreateComponentEvent;
-      LR.ReadRootComponent(ARoot);
+
+      GlobalNameSpace.BeginWrite;
+      try
+        if (ClassType <> TForm) and not (csDesigning in ARoot.ComponentState) then
+        begin
+          TFormPatch(ARoot).FormStateIncludeCreating;
+          try
+            InitLazResourceComponent(LR, ARoot, TForm);
+          finally
+            TFormPatch(ARoot).FormStateExcludeCreating;
+          end;
+        end;
+      finally
+        GlobalNameSpace.EndWrite;
+      end;
     finally
       LR.Free;
     end;

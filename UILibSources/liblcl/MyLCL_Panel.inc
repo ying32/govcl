@@ -445,6 +445,16 @@ begin
   AObj.Font := AValue;
 end;
 
+function Panel_GetParentBackground(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentBackground;
+end;
+
+procedure Panel_SetParentBackground(AObj: TPanel; AValue: LongBool); extdecl;
+begin
+  AObj.ParentBackground := AValue;
+end;
+
 function Panel_GetParentColor(AObj: TPanel): LongBool; extdecl;
 begin
   Result :=  AObj.ParentColor;
@@ -1012,6 +1022,8 @@ exports
   Panel_SetFullRepaint,
   Panel_GetFont,
   Panel_SetFont,
+  Panel_GetParentBackground,
+  Panel_SetParentBackground,
   Panel_GetParentColor,
   Panel_SetParentColor,
   Panel_GetParentDoubleBuffered,

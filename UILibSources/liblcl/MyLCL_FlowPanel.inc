@@ -455,6 +455,16 @@ begin
   AObj.Font := AValue;
 end;
 
+function FlowPanel_GetParentBackground(AObj: TFlowPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.ParentBackground;
+end;
+
+procedure FlowPanel_SetParentBackground(AObj: TFlowPanel; AValue: LongBool); extdecl;
+begin
+  AObj.ParentBackground := AValue;
+end;
+
 function FlowPanel_GetParentColor(AObj: TFlowPanel): LongBool; extdecl;
 begin
   Result :=  AObj.ParentColor;
@@ -1024,6 +1034,8 @@ exports
   FlowPanel_SetFullRepaint,
   FlowPanel_GetFont,
   FlowPanel_SetFont,
+  FlowPanel_GetParentBackground,
+  FlowPanel_SetParentBackground,
   FlowPanel_GetParentColor,
   FlowPanel_SetParentColor,
   FlowPanel_GetParentDoubleBuffered,

@@ -605,7 +605,8 @@ end;
 
 procedure SetGlobalFormScaled(AVal: LongBool); extdecl;
 begin
-  Application.Scaled := AVal;
+  // 先移除掉，待后我有2k屏再说吧。
+  // Application.Scaled := AVal;
 end;
 
 
