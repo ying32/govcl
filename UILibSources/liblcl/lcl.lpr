@@ -167,7 +167,9 @@ uses
 {$I MyLCL_StatusPanel.inc}
 {$I MyLCL_SpinEdit.inc}
 {$IFNDEF LINUX}
+  {$IFNDEF LCLCarbon}
 {$I MyLCL_MiniWebview.inc}
+  {$ENDIF}
 {$ENDIF}
 {$I MyLCL_Canvas.inc}
 {$I MyLCL_Object.inc}

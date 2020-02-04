@@ -14,7 +14,12 @@ unit uMiniWebview;
 {$IF Defined(MSWINDOWS)}
   {$I MiniWebviewWin.inc}
 {$ELSEIF Defined(DARWIN) or Defined(MACOS)}
-  {$I MiniWebviewMac.inc}
+  {$IFDEF LCLcocoa}
+    {$I MiniWebviewMac.inc}
+  {$ELSE}
+     interface
+     implementation
+  {$ENDIF}
 {$ELSEIF Defined(LINUX)}
   {$I MiniWebviewLinux.inc}
 {$ELSE}
