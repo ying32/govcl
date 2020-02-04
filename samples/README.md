@@ -35,7 +35,7 @@
 | menu | 菜单演示  | |
 | messageTest | 跨平台的窗口消息捕获，与WindowsMessages例程功能一样，只是可以跨平台 | |  
 | miniblinkWebview | 基于miniblink内核的浏览器  | Windows，目前还有问题，很多不能正常使用 |
-| miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl,  liblcl macOS,cocoa |  
+| miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl win32/win64,  liblcl macOS-cocoa, liblcl linux-gtk2 |  
 | mp3Player | 基于bass.dll的音频播放器 |  |  
 | msgbox | 各种消息框演示  | |
 | multilanguage | 多国语言演示例程 | |  
