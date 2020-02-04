@@ -166,10 +166,8 @@ uses
 {$I MyLCL_StatusPanels.inc}
 {$I MyLCL_StatusPanel.inc}
 {$I MyLCL_SpinEdit.inc}
-{$IFNDEF LINUX}
-  {$IFNDEF LCLCarbon}
+{$IF Defined(LCLcocoa) or Defined(LCLgtk2) or Defined(WINDOWS)}
 {$I MyLCL_MiniWebview.inc}
-  {$ENDIF}
 {$ENDIF}
 {$I MyLCL_Canvas.inc}
 {$I MyLCL_Object.inc}

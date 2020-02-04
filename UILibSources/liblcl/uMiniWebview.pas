@@ -18,12 +18,20 @@ unit uMiniWebview;
     {$I MiniWebviewMac.inc}
   {$ELSE}
      interface
+       type TMiniWebview = class end;
      implementation
   {$ENDIF}
 {$ELSEIF Defined(LINUX)}
-  {$I MiniWebviewLinux.inc}
+     {$IFDEF LCLgtk2}
+        {$I MiniWebviewLinux.inc}
+     {$ELSE}
+        interface
+          type TMiniWebview = class end;
+        implementation
+     {$ENDIF}
 {$ELSE}
 interface
+  type TMiniWebview = class end;
 implementation
 {$ENDIF}
 
