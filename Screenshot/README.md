@@ -50,6 +50,10 @@
 * 基于bass的mp3Player Linux Mint
 ![mp3Player_linux](mp3Player_linux.jpg) 
 
+
+* liblcl MiniWebview gtk2接口
+![miniweb_liblcl_linux](miniweb_liblcl_linux.jpg) 
+
 * Deepin  
 ![basicResForm_Deepin](basicResForm_linux_deepin.jpg)  
 * Mint  
@@ -78,6 +82,6 @@
 * 资源窗口    
 ![basicResForm_macos](basicResForm_macos.jpg)  
 * liblcl MiniWebview cocoa接口
-![miniweb_liblcl_win](miniweb_liblcl_macOS_cocoa.jpg) 
+![miniweb_liblcl_macOS](miniweb_liblcl_macOS_cocoa.jpg) 
 * 基于bass的mp3Player  
 ![mp3Player_liblcl_macOS](mp3Player_liblcl_macOS.jpg) 
