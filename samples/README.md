@@ -28,9 +28,10 @@
 | listboxcustomdraw | ListBox部分自绘演示  | |
 | listview | ListView部分功能演示  | 部分限Windows |
 | listviewadvcustomdraw | ListView高级自绘 | windows |  
-| listviewcustomdraw |  ListView部分自绘演示  | 部分限Windows |
-| login |  登录窗口演示  | | 
-| memloaddll |  内存加载dll（单文件）  | Windows 32bit | 
+| listviewcustomdraw |  ListView部分自绘演示  | 部分限Windows |   
+| listviewitemedit |  用于双击项目直接编辑ListView数据。  | Windows |  
+| login |  登录窗口演示  | |   
+| memloaddll |  内存加载dll（单文件）  | Windows 32bit |   
 | memstream | 内存流演示  | |
 | menu | 菜单演示  | |
 | messageTest | 跨平台的窗口消息捕获，与WindowsMessages例程功能一样，只是可以跨平台 | |  
