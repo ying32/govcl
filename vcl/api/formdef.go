@@ -78,3 +78,7 @@ func Form_ScaleForPPI(obj uintptr, newPPI int32) {
 func Form_ScaleControlsForDpi(obj uintptr, newPPI int32) {
 	form_ScaleControlsForDpi.Call(obj, uintptr(newPPI))
 }
+
+func Form_ScaleForCurrentDpi(obj uintptr) {
+	form_ScaleForCurrentDpi.Call(obj)
+}

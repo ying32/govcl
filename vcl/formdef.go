@@ -108,3 +108,12 @@ func (f *TForm) ScaleSelf() {
 		f.SetClientHeight(int32(float64(f.ClientHeight()) * (float64(Screen.PixelsPerInch()) / 96.0)))
 	}
 }
+
+// Delphi Loaded方法中的
+/// <summary>
+/// Checks if there is a change in dpi and perform the necessary changes to scale all
+/// the controls for the new dpi
+/// </summary>
+func (f *TForm) ScaleForCurrentDpi() {
+	Form_ScaleForCurrentDpi(f.instance)
+}
