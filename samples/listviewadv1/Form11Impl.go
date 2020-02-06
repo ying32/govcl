@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
-	"unsafe"
 
 	"github.com/ying32/govcl/vcl/win"
 
@@ -33,16 +32,8 @@ func (f *TForm11) OnFormCreate(sender vcl.IObject) {
 	}
 }
 
-func ListView_GetSubItemRect(hwndLV types.HWND, iItem, iSubItem int32, code uint32, prc *types.TRect) bool {
-	if prc != nil {
-		prc.Top = iSubItem
-		prc.Left = int32(code)
-	}
-	return win.SendMessage(hwndLV, win.LVM_GETSUBITEMRECT, uintptr(iItem), uintptr(unsafe.Pointer(prc))) != 0
-}
-
 func (f *TForm11) GetSubItemRect(iItem, iSubItem int32) (ret types.TRect) {
-	ListView_GetSubItemRect(f.ListView1.Handle(), iItem, iSubItem /*win.LVIR_LABEL*/, win.LVIR_BOUNDS, &ret)
+	win.ListView_GetSubItemRect(f.ListView1.Handle(), iItem, iSubItem /*win.LVIR_LABEL*/, win.LVIR_BOUNDS, &ret)
 	return
 }
 

@@ -7,7 +7,6 @@ import (
 	"math"
 	"os"
 	"path/filepath"
-	"unsafe"
 
 	"github.com/ying32/govcl/vcl/types/colors"
 
@@ -110,7 +109,7 @@ func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 		tempData[i].Sub4 = fmt.Sprintf("%dM", rand.Intn(100))
 	}
 	ns := time.Now().UnixNano() - t // 1e-6
-	fmt.Println("t:", ns, "ns, ", ns/1E6, "ms")
+	fmt.Println("t:", ns, "ns, ", ns/1e6, "ms")
 	f.ListView.Items().SetCount(int32(len(tempData))) //   必须主动的设置Virtual List的行数
 
 }
@@ -130,16 +129,8 @@ func (f *TMainFrom) OnFormDestroy(sender vcl.IObject) {
 //	item.SubItems().Add(data.Sub4)
 //}
 
-func ListView_GetSubItemRect(hwndLV types.HWND, iItem, iSubItem int32, code uint32, prc *types.TRect) bool {
-	if prc != nil {
-		prc.Top = iSubItem
-		prc.Left = int32(code)
-	}
-	return win.SendMessage(hwndLV, win.LVM_GETSUBITEMRECT, uintptr(iItem), uintptr(unsafe.Pointer(prc))) != 0
-}
-
 func (f *TMainFrom) GetSubItemRect(hwndLV types.HWND, iItem, iSubItem int32) (ret types.TRect) {
-	ListView_GetSubItemRect(hwndLV, iItem, iSubItem, win.LVIR_LABEL, &ret)
+	win.ListView_GetSubItemRect(hwndLV, iItem, iSubItem, win.LVIR_LABEL, &ret)
 	return
 }
 
