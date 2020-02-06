@@ -7,72 +7,67 @@ var globalFormScaled bool = false
 /*
  TApplication.CreateForm 一般不建议使用NewForm，而优先使用CreateForm
 
- 用法：
-  1、mainForm := vcl.Application.CreateForm()    // 直接返回
-  2、vcl.Application.CreateForm(&mainForm)       // 无资源加载，只会绑定窗口的事件，不会绑定子组件事件
-  3、vcl.Application.CreateForm(&mainForm, true) // 无资源加载，当第二个参数为true时在OnFormCreate调用完后会绑定子组件事件
+  -------------------- 用法一--------------------------------------
+  1、mainForm := vcl.Application.CreateForm()    // 直接返回，不推荐使用
+  例:
+    mainForm := vcl.Application.CreateForm()
+    mainForm.SetOnClick(func(sender vcl.IObject) {
+        vcl.ShowMessage("msg")
+    })
 
+
+  -------------------- 用法二--------------------------------------
+  2、vcl.Application.CreateForm(&mainForm)       // 无资源加载，只会绑定窗口的事件，不会绑定子组件事件
+  例：
+    type TMainForm struct {
+        *vcl.TForm
+    }
+
+    var mainForm *TMainForm
+    vcl.Application.CreateForm(&mainForm)
+
+    func (f *TMainForm)OnFormCreate(sender vcl.IObject) {
+        fmt.Println("FormCreate")
+    }
+
+    func (f *TMainForm)OnFormClick(sender vcl.IObject) {
+        vcl.ShowMessage("click")
+    }
+
+
+  -------------------- 用法三--------------------------------------
+  3、vcl.Application.CreateForm(&mainForm, true) // 无资源加载，当第二个参数为true时在OnFormCreate调用完后会绑定子组件事件
+  例：
+    type TMainForm struct {
+        *vcl.TForm
+        Btn1 *vcl.TButton
+    }
+
+    var mainForm *TMainForm
+    vcl.Application.CreateForm(&mainForm, true)
+
+    func (f *TMainForm)OnFormCreate(sender vcl.IObject) {
+        fmt.Println("FormCreate")
+        f.Btn1 = vcl.NewButton(f)
+        f.Btn1.SetParent(f)
+    }
+
+    func (f *TMainForm)OnFormClick(sender vcl.IObject) {
+        vcl.ShowMessage("click")
+    }
+
+    func (f *TMainForm)OnBtn1Click(Sender vcl.IObject) {
+        vcl.ShowMessage("Btn1 Click")
+    }
+
+
+  -------------------- 用法四--------------------------------------
   4、vcl.Application.CreateForm("form1.gfm", &mainForm)  // 从资源文件中填充子组件，并绑定所有事件
+  -------------------- 用法五--------------------------------------
   5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件
 */
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	return FormFromObj(resObjtBuild(0, nil, a.instance, fields...))
-	//defer func() {
-	//	if err := recover(); err != nil {
-	//		fmt.Println("TApplication.CreateForm Error: ", err)
-	//	}
-	//}()
-	//
-	//var fullSubComponent bool
-	//var afterBindSubComponentsEvents bool
-	//var field1 interface{}
-	//
-	//// 初始创建时是否使用缩放
-	//initScale := len(fields) != 2
-	//if len(fields) >= 2 {
-	//	switch fields[1].(type) {
-	//	case bool:
-	//		initScale = true
-	//	default:
-	//		initScale = false
-	//	}
-	//}
-	//
-	//// 由参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetFormScaled(true) 后才能生效。
-	//form := FormFromInst(Application_CreateForm(a.instance, initScale))
-	//
-	//switch len(fields) {
-	//case 1:
-	//	field1 = fields[0]
-	//	fullSubComponent = false
-	//	afterBindSubComponentsEvents = false
-	//
-	//case 2:
-	//	switch fields[1].(type) {
-	//	// 当第二个参数为bool时，表示不填充子组件，为true表示之后绑定事件
-	//	case bool:
-	//		field1 = fields[0]
-	//		fullSubComponent = false
-	//		afterBindSubComponentsEvents = fields[1].(bool)
-	//	default:
-	//		// 第二个参数类型不为bool时，填充子组件为true，之后绑定事件为false
-	//		field1 = fields[1]
-	//		fullSubComponent = true
-	//		afterBindSubComponentsEvents = false
-	//		switch fields[0].(type) {
-	//		case string:
-	//			ResFormLoadFromFile(fields[0].(string), CheckPtr(form))
-	//		case []byte:
-	//			mem := NewMemoryStreamFromBytes(fields[0].([]byte))
-	//			defer mem.Free()
-	//			ResFormLoadFromStream(CheckPtr(mem), CheckPtr(form))
-	//		}
-	//	}
-	//default:
-	//	return form
-	//}
-	//fullFiledVal(form, field1, fullSubComponent, afterBindSubComponentsEvents)
-	//return nil
 }
 
 // SetFormScaled 设置全局窗口的Scaled
