@@ -2,6 +2,7 @@
 
 package types
 
+// 消息值参见 types/messages包
 type TMessage struct {
 	Msg    Cardinal
 	WParam WAPRAM

@@ -20,3 +20,10 @@ const (
 	LtVCL TLibType = iota + 0
 	LtLCL
 )
+
+func guiLibTypeString() string {
+	if IsloadedLcl {
+		return "GUI: Lazarus/LCL"
+	}
+	return "GUI: Delphi/VCL"
+}

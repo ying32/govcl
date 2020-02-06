@@ -34,7 +34,7 @@ func init() {
 		}
 	}()
 	libVersion := DLibVersion()
-	fmt.Println("library Version:", toVersionString(libVersion))
+	fmt.Println("Library Version:", toVersionString(libVersion))
 	if libVersion < requireMinBinaryVersion {
 		panic("要求libvcl或liblcl二进制版本>=1.2.6。\r\n(Require libvcl or liblcl binary version >=1.2.6.)")
 	}

@@ -27,7 +27,7 @@ type Byte = uint8
 
 type TFontCharset = uint8
 
-// Unicode
+// Unicode 主要用于keymap, 参见types/keys包
 type Char = uint16
 
 type TClass uintptr

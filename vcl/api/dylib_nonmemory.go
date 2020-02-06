@@ -74,7 +74,7 @@ func loadUILib() *dylib.LazyDLL {
 	}
 
 	IsloadedLcl = getLibType(lib) == LtLCL
-	fmt.Println("IsloadedLcl:", IsloadedLcl)
+	fmt.Println(guiLibTypeString())
 
 	return lib
 }

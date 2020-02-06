@@ -27,7 +27,7 @@ func loadUILib() *memorydll.LazyDLL {
 		return nil
 	}
 	IsloadedLcl = getLibType(lib) == LtLCL
-	fmt.Println("IsloadedLcl:", IsloadedLcl)
+	fmt.Println(guiLibTypeString())
 	return lib
 }
 
