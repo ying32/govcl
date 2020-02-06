@@ -1,5 +1,7 @@
 package types
 
+import "fmt"
+
 type TModalResult = int32
 
 // 常用值请见 types/colors 包
@@ -92,4 +94,34 @@ func (c TColor) B() byte {
 
 func (c TColor) RGB(r, g, b byte) TColor {
 	return TColor(uint32(r) | (uint32(g) << 8) | (uint32(b) << 16))
+}
+
+// TGUID
+
+func (g TGUID) FromString(str string) (result TGUID) {
+	fmt.Sscanf(str, "{%8X-%4X-%4X-%2X%2X-%2X%2X%2X%2X%2X%2X}", &result.D1, &result.D2, &result.D3, &result.D4[0],
+		&result.D4[1], &result.D4[2], &result.D4[3], &result.D4[4], &result.D4[5], &result.D4[6], &result.D4[7])
+	return
+}
+
+func (g TGUID) ToString() string {
+	return fmt.Sprintf("{%.8X-%.4X-%.4X-%.2X%.2X-%.2X%.2X%.2X%.2X%.2X%.2X}",
+		g.D1, g.D2, g.D3, g.D4[0], g.D4[1], g.D4[2], g.D4[3], g.D4[4], g.D4[5], g.D4[6], g.D4[7])
+}
+
+func (g TGUID) Empty() TGUID {
+	return TGUID{}
+}
+
+func (g TGUID) IsEqual(val TGUID) bool {
+	return (g.D1 == val.D1) && (g.D2 == val.D2) && (g.D3 == val.D3) && (g.D4 == val.D4)
+}
+
+// TSmallPoint
+func (s TSmallPoint) Empty() TSmallPoint {
+	return TSmallPoint{}
+}
+
+func (s TSmallPoint) IsEqual(val TSmallPoint) bool {
+	return s.Y == val.Y && s.Y == val.Y
 }
