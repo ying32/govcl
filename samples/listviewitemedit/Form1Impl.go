@@ -58,11 +58,17 @@ func (f *TForm1) OnListView1DblClick(sender vcl.IObject) {
 	if f.subItemHit.iItem != -1 {
 		fmt.Println(fmt.Sprintf("f.subItemHit.iItem=%d, f.subItemHit.iSubItem=%d", f.subItemHit.iItem, f.subItemHit.iSubItem))
 
-		//var r types.TRect
-		//ListView_GetItemRect(f.ListView1.Handle(), f.subItemHit.iItem, &r, 0)
-		r := f.ListView1.Selected().DisplayRect(types.DrBounds)
+		var r types.TRect
 
-		colWidht := ListView_GetColumnWidth(f.ListView1.Handle(), f.subItemHit.iSubItem)
+		if f.ListView1.RowSelect() {
+			r = f.ListView1.Selected().DisplayRect(types.DrBounds)
+		} else {
+			ListView_GetItemRect(f.ListView1.Handle(), f.subItemHit.iItem, &r, 0)
+		}
+
+		//colWidht := ListView_GetColumnWidth(f.ListView1.Handle(), f.subItemHit.iSubItem)
+		colWidht := f.ListView1.Column(f.subItemHit.iSubItem).Width()
+
 		//var itemPoint types.TPoint
 		//ListView_GetItemPosition(f.ListView1.Handle(), f.subItemHit.iItem, &itemPoint)
 
