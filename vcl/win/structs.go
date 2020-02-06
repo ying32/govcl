@@ -58,21 +58,3 @@ type TSecurityAttributes struct {
 	lpSecurityDescriptor uintptr
 	bInheritHandle       bool // BOOL
 }
-
-type _TREEITEM struct {
-}
-
-type HTreeItem = uintptr // _TREEITEM ptr
-
-type TTVItem struct {
-	Mask           uint32
-	HItem          HTreeItem
-	State          uint32
-	StateMask      uint32
-	PszText        uintptr
-	CchTextMax     int32
-	IImage         int32
-	ISelectedImage int32
-	CChildren      int32
-	LParam         uintptr
-}

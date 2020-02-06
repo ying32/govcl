@@ -6,7 +6,6 @@ package main
 
 import (
 	"fmt"
-	"unsafe"
 
 	"github.com/ying32/govcl/vcl/win"
 
@@ -81,22 +80,12 @@ func main() {
 	vcl.Application.Run()
 }
 
-// 下面这类api参考  Winapi.CommCtrl单元
-// treeview api
-func TreeView_GetItem(hWd types.HWND, pitem *win.TTVItem) bool {
-	return win.SendMessage(hWd, win.TVM_GETITEM, 0, uintptr(unsafe.Pointer(pitem))) != 0
-}
-
-func TreeView_SetItem(hWd types.HWND, pitem win.TTVItem) bool {
-	return win.SendMessage(hWd, win.TVM_SETITEM, 0, uintptr(unsafe.Pointer(&pitem))) != 0
-}
-
 // 判断某个节点的checkbox是否选中
 func IsNodeChecked(node *vcl.TTreeNode) bool {
 	item := win.TTVItem{}
 	item.Mask = win.TVIF_STATE
 	item.HItem = node.ItemId()
-	TreeView_GetItem(node.TreeView().Handle(), &item)
+	win.TreeView_GetItem(node.TreeView().Handle(), &item)
 	return item.State&win.TVIS_CHECKED == win.TVIS_CHECKED
 }
 
@@ -112,5 +101,5 @@ func NodeChecked(node *vcl.TTreeNode, checked bool) {
 	} else {
 		item.State = win.TVIS_CHECKED >> 1
 	}
-	TreeView_SetItem(node.TreeView().Handle(), item)
+	win.TreeView_SetItem(node.TreeView().Handle(), item)
 }
