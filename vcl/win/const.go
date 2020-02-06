@@ -740,8 +740,6 @@ const (
 /* ====== Ranges for control message IDs ======================= */
 
 const (
-	LVM_FIRST = 0x1000 /* ListView messages */
-	TV_FIRST  = 0x1100 /* TreeView messages */
 	HDM_FIRST = 0x1200 /* Header messages */
 	TCM_FIRST = 0x1300 /* Tab control messages */
 	PGM_FIRST = 0x1400 /* Pager control messages */
@@ -754,24 +752,6 @@ const (
 	CCM_LAST  = CCM_FIRST + 0x200
 
 	CCM_SETBKCOLOR = CCM_FIRST + 1 // lParam is bkColo
-)
-
-const (
-	// ListView
-	LVM_GETSUBITEMRECT = LVM_FIRST + 56
-
-	LVIR_BOUNDS       = 0
-	LVIR_ICON         = 1
-	LVIR_LABEL        = 2
-	LVIR_SELECTBOUNDS = 3
-)
-
-const (
-	TVM_GETITEMW = TV_FIRST + 62
-	TVM_GETITEM  = TVM_GETITEMW
-
-	TVM_SETITEMW = TV_FIRST + 63
-	TVM_SETITEM  = TVM_SETITEMW
 )
 
 const (
