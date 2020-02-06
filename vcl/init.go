@@ -15,11 +15,12 @@ const (
 
 var (
 	// 几个实例类，不需要Create即可访问，同时也不需要手动Free
-	Application *TApplication
-	Screen      *TScreen
-	Mouse       *TMouse
-	Clipboard   *TClipboard
-	Printer     *TPrinter
+
+	Application *TApplication // 应用程序管理
+	Screen      *TScreen      // 屏幕
+	Mouse       *TMouse       // 鼠标
+	Clipboard   *TClipboard   // 剪切板
+	Printer     *TPrinter     // 打印机
 )
 
 func toVersionString(ver uint32) string {
