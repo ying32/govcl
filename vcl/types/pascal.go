@@ -2,7 +2,8 @@ package types
 
 type TModalResult = int32
 
-type TColor = uint32
+// 常用值请见 types/colors 包
+type TColor uint32
 
 type THelpEventData = uintptr
 
@@ -75,3 +76,20 @@ type TLibResouce struct {
 
 // TConstraintSize = 0..MaxInt;
 type TConstraintSize int32
+
+// TColor
+func (c TColor) R() byte {
+	return byte(c)
+}
+
+func (c TColor) G() byte {
+	return byte(c >> 8)
+}
+
+func (c TColor) B() byte {
+	return byte(c >> 16)
+}
+
+func (c TColor) RGB(r, g, b byte) TColor {
+	return TColor(uint32(r) | (uint32(g) << 8) | (uint32(b) << 16))
+}
