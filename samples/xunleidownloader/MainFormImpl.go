@@ -19,7 +19,7 @@ type TMainFormFields struct {
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.dloader = xldl.NewXLDownloader(rtl.ExtractFilePath(vcl.Application.ExeName()))
 
-	f.EditdlURL.SetText("http://sw.bos.baidu.com/sw-search-sp/software/19de58890ffb8/QQ_8.6.18804.0_setup.exe")
+	f.EditdlURL.SetText("https://qd.myapp.com/myapp/qqteam/pcqq/PCQQ2020.exe")
 }
 
 func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
@@ -121,5 +121,16 @@ func (f *TMainForm) startTask(dlURL string, item *vcl.TListItem) {
 				time.Sleep(time.Millisecond * 500)
 			}
 		}()
+	}
+}
+
+func (f *TMainForm) OnActDeleteExecute(sender vcl.IObject) {
+	item := f.LVDlList.Selected()
+	if item != nil && item.IsValid() && item.Data() != nil {
+		task := (*xldl.XLTask)(unsafe.Pointer(item.Data()))
+		task.Stop()
+		task.Delete()
+		task.DeleteTempFile()
+		item.Delete()
 	}
 }
