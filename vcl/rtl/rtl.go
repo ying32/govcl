@@ -1,6 +1,10 @@
 package rtl
 
 import (
+	"os"
+	"path/filepath"
+	"strings"
+
 	"github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -94,6 +98,52 @@ func ExtractFilePath(filename string) string {
 func FileExists(filename string) bool {
 	return api.DFileExists(filename)
 }
+
+// Ext 获取文件扩展名
+func ExtractFileExt(path string) string {
+	return filepath.Ext(path)
+}
+
+// GetFileName 获取一个文件名
+func ExtractFileName(path string) string {
+	return filepath.Base(path)
+}
+
+// GetFileNameWithoutExt 获取一个无扩展的文件名
+func GetFileNameWithoutExt(path string) string {
+	filename := ExtractFileName(path)
+	return filename[:len(filename)-len(ExtractFileExt(filename))]
+}
+
+// ExtractFilePath 提取文件名路径
+//func ExtractFilePath(path string) string {
+//	filename := GetFileName(path)
+//	return path[:len(path)-len(filename)]
+//	//return filepath.Dir(path) + string(filepath.Separator)
+//}
+
+// Combine 合并
+func Combine(path, name string) string {
+	if path != "" && !strings.HasSuffix(path, string(os.PathSeparator)) {
+		path += string(os.PathSeparator)
+	}
+	if name != "" && strings.HasPrefix(name, string(os.PathSeparator)) {
+		name = name[1:]
+	}
+	return path + name
+}
+
+// FileExists
+//func FileExists(path string) bool  {
+//	_, err := os.Stat(path)
+//	if err == nil {
+//		return true
+//	}
+//	if os.IsNotExist(err) {
+//		return false
+//	}
+//	return false
+//}
 
 // LcLLoaded 是否加载的为lcl库，true表是是，false表示不是
 func LcLLoaded() bool {

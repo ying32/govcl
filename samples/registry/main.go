@@ -12,7 +12,7 @@ import (
 func main() {
 
 	// 64位下传入KEY_WOW64_64KEY
-	//reg := vcl.NewRegistry(types.KEY_ALL_ACCESS|types.KEY_WOW64_64KEY)
+	//reg := vcl.NewRegistry(win.KEY_ALL_ACCESS|win.KEY_WOW64_64KEY)
 	reg := vcl.NewRegistryAllAccess()
 	defer reg.Free()
 	reg.SetRootKey(win.HKEY_CURRENT_USER)
