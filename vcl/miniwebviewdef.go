@@ -3,6 +3,8 @@
 package vcl
 
 import (
+	"runtime"
+
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/win"
 )
@@ -17,10 +19,14 @@ func (m *TMiniWebview) SetIEVersion(version int32) {
 	// 默认的就是7
 	// HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION
 	if version >= 7 && version <= 11 {
-		reg := NewRegistry(win.KEY_ALL_ACCESS | win.KEY_WOW64_64KEY)
+		var access uint32 = win.KEY_ALL_ACCESS
+		if runtime.GOARCH == "amd64" {
+			access |= win.KEY_WOW64_64KEY
+		}
+		reg := NewRegistry(access)
 		defer reg.Free()
 		reg.SetRootKey(win.HKEY_CURRENT_USER)
-		if reg.OpenKeyReadOnly("Software\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION") {
+		if reg.OpenKey("Software\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION", false) {
 			defer reg.CloseKey()
 			reg.WriteInteger(rtl.ExtractFileName(Application.ExeName()), version*1000)
 		}
