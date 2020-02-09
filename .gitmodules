@@ -1,0 +1,3 @@
+[submodule "vcl/dylib"]
+	path = vcl/dylib
+	url = https://github.com/ying32/dylib.git
