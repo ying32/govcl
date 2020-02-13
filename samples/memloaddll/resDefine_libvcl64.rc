@@ -1,6 +1,6 @@
 1 MANIFEST "exe.manifest"
 MAINICON ICON "icon.ico"
-GOVCLLIB RCDATA "libvclx64.dll"
+GOVCLLIB RCDATA "x64\\libvclx64.dll"
 
 1 VERSIONINFO
 FILEVERSION 1,1,1,0
