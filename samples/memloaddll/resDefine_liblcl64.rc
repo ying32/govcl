@@ -1,0 +1,31 @@
+1 MANIFEST "exe.manifest"
+MAINICON ICON "icon.ico"
+GOVCLLIB RCDATA "liblcl.dll"
+
+1 VERSIONINFO
+FILEVERSION 1,1,1,0
+PRODUCTVERSION 1,1,1,0
+FILEOS 0x4
+FILETYPE 0x1
+
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+			VALUE "CompanyName", "ying32"
+			VALUE "FileDescription", "memloaddll"
+			VALUE "FileVersion", "1.1.1.1"
+			VALUE "InternalName", "memloaddll"
+			VALUE "LegalCopyright", "Copyright (C) ying32. All Rights Reserved."
+			VALUE "OriginalFilename", "memloaddll.exe"
+			VALUE "ProductName", "memloaddll"
+			VALUE "ProductVersion", "1.1.1.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+            VALUE "Translation", 0x0409, 0x04B0
+    END
+END
+ 

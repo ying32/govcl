@@ -1,17 +1,16 @@
 // +build windows
-// +build 386
 // +build memorydll
 
 // 编译时加上 -tags memorydll
 
-// 内存加载libvcl.dll或者liblcl.dll，只支持win32。
+// 内存加载libvcl.dll或者liblcl.dll
 // 注：内存加载dll容易被杀毒软件杀掉。。。
 package api
 
 import (
 	"fmt"
 
-	"github.com/ying32/govcl/vcl/dylib/memorydll"
+	"github.com/ying32/govcl/vcl/api/memorydll"
 	"github.com/ying32/govcl/vcl/win"
 )
 
