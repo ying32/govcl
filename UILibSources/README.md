@@ -33,7 +33,7 @@ libvcl工程源码位于"govcl\UILibSources\libvcl"目录。`libvcl限仅于wind
 
 liblcl 基于Lazarus 2.0.6版本 FPC 3.0.4，具体各个平台的安装方式自行参考官网安装说明, 其它版本编译出现的问题请自行解决相关。。
 
-libvcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Win32、Win64、Linux64、MacOS32`     
+libvcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Windows、Linux、MacOS`。       
 
 编译步骤：  
 

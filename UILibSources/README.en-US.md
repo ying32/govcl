@@ -29,8 +29,9 @@ The compiled binary can be viewed in the following directory:
 
 ### liblcl 
 
-liblcl Based on Lazarus 2.0.6 version FPC 3.0.4, the specific installation method of each platform refers to the official website installation instructions.  
+liblcl Based on Lazarus 2.0.6 version FPC 3.0.4, the specific installation method of each platform refers to the official website installation instructions.   
 
+The libvcl project source code is located in the "govcl \ UILibSources \ liblcl" directory. `liblcl for Windows, Linux, MacOS`.   
 
 Compile steps:     
 
