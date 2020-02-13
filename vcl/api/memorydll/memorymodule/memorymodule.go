@@ -21,7 +21,7 @@ import "unsafe"
 type MemoryModule C.HMEMORYMODULE
 
 func MemoryLoadLibrary(data []byte) MemoryModule {
-	return MemoryModule(C.MemoryLoadLibrary(unsafe.Pointer(&data[0]), C.ulonglong(len(data))))
+	return MemoryModule(C.MemoryLoadLibrary(unsafe.Pointer(&data[0]), C.size_t(len(data))))
 }
 
 func MemoryGetProcAddress(handle MemoryModule, name string) uintptr {
@@ -30,7 +30,7 @@ func MemoryGetProcAddress(handle MemoryModule, name string) uintptr {
 	}
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))
-	return uintptr(unsafe.Pointer(C.MemoryGetProcAddress(C.HMEMORYMODULE(handle), cname)))
+	return uintptr(unsafe.Pointer(C.MemoryGetProcAddress(C.HMEMORYMODULE(handle), (*C.CHAR)(cname))))
 }
 
 func MemoryFreeLibrary(handle MemoryModule) {
