@@ -34,6 +34,8 @@ res2go Tool([Document](Tools/res2go))
 [govcl extension package](https://github.com/ying32/exts)  
 **Note: The inc or pas file in the extension package needs to be compiled into the libvcl/liblcl directory.**    
 
+[govcl video tutorial (third party)](https://video.0-w.cc/videos/1)    
+
 ### usage: 
 
 #### Step 1: Get the govcl code  

@@ -35,6 +35,8 @@ res2go工具下载（[文档](Tools/res2go)）
 [govcl扩展包](https://github.com/ying32/exts)  
 **注：扩展包里面的inc或者pas文件需要自己放到libvcl/liblcl目录下编译。**    
 
+[govcl视频教程(第三方)](https://video.0-w.cc/videos/1)   
+
 ---
 ### 使用方法  
 
