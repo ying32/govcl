@@ -1,4 +1,4 @@
-
+﻿
 //----------------------------------------
 // 代码由GenlibVcl工具自动生成。
 // Copyright © ying32. All Rights Reserved.
