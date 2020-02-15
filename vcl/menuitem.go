@@ -248,6 +248,16 @@ func (m *TMenuItem) SetAction(value IComponent) {
     MenuItem_SetAction(m.instance, CheckPtr(value))
 }
 
+// AutoCheck
+func (m *TMenuItem) AutoCheck() bool {
+    return MenuItem_GetAutoCheck(m.instance)
+}
+
+// SetAutoCheck
+func (m *TMenuItem) SetAutoCheck(value bool) {
+    MenuItem_SetAutoCheck(m.instance, value)
+}
+
 // AutoHotkeys
 func (m *TMenuItem) AutoHotkeys() TMenuItemAutoFlag {
     return MenuItem_GetAutoHotkeys(m.instance)

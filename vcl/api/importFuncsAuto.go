@@ -36276,6 +36276,15 @@ func MenuItem_SetAction(obj uintptr, value uintptr) {
    menuItem_SetAction.Call(obj, value)
 }
 
+func MenuItem_GetAutoCheck(obj uintptr) bool {
+    ret, _, _ := menuItem_GetAutoCheck.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MenuItem_SetAutoCheck(obj uintptr, value bool) {
+   menuItem_SetAutoCheck.Call(obj, GoBoolToDBool(value))
+}
+
 func MenuItem_GetAutoHotkeys(obj uintptr) TMenuItemAutoFlag {
     ret, _, _ := menuItem_GetAutoHotkeys.Call(obj)
     return TMenuItemAutoFlag(ret)
@@ -44550,6 +44559,15 @@ func Action_GetHashCode(obj uintptr) int32 {
 func Action_ToString(obj uintptr) string {
     ret, _, _ := action_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Action_GetAutoCheck(obj uintptr) bool {
+    ret, _, _ := action_GetAutoCheck.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Action_SetAutoCheck(obj uintptr, value bool) {
+   action_SetAutoCheck.Call(obj, GoBoolToDBool(value))
 }
 
 func Action_GetCaption(obj uintptr) string {

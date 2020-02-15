@@ -34,6 +34,12 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     procedure WndProc(var AMsg: TMessage); override;
+
+    /// <summary>
+    /// Checks if there is a change in dpi and perform the necessary changes to scale all
+    /// the controls for the new dpi
+    /// </summary>
+    procedure ScaleForCurrentDpi; override;
   published
     property AllowDropFiles: Boolean read GetAllowDropFiles write SetAllowDropFiles;
     property OnDropFiles: TDropFilesEvent read FOnDropFiles write FOnDropFiles;
@@ -82,6 +88,11 @@ begin
   AObj.ScaleControlsForDpi(ANewPPI);
 end;
 
+procedure Form_ScaleForCurrentDpi(AObj: TGoForm); stdcall;
+begin
+  AObj.ScaleForCurrentDpi;
+end;
+
 
 { TGoForm }
 
@@ -110,6 +121,11 @@ end;
 function TGoForm.GetAllowDropFiles: Boolean;
 begin
   Result := (GetWindowLong(Handle, GWL_EXSTYLE) and WS_EX_ACCEPTFILES) <> 0;
+end;
+
+procedure TGoForm.ScaleForCurrentDpi;
+begin
+  inherited;
 end;
 
 procedure TGoForm.SetAllowDropFiles(const Value: Boolean);
@@ -186,7 +202,8 @@ end;
 
 exports
    Form_ScaleForPPI,
-   Form_ScaleControlsForDpi;
+   Form_ScaleControlsForDpi,
+   Form_ScaleForCurrentDpi;
 
 
 initialization

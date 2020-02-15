@@ -85,6 +85,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function Action_GetAutoCheck(AObj: TAction): LongBool; stdcall;
+begin
+  Result :=  AObj.AutoCheck;
+end;
+
+procedure Action_SetAutoCheck(AObj: TAction; AValue: LongBool); stdcall;
+begin
+  AObj.AutoCheck := AValue;
+end;
+
 function Action_GetCaption(AObj: TAction): PChar; stdcall;
 begin
   Result :=  PChar(AObj.Caption);
@@ -271,6 +281,8 @@ exports
   Action_Equals,
   Action_GetHashCode,
   Action_ToString,
+  Action_GetAutoCheck,
+  Action_SetAutoCheck,
   Action_GetCaption,
   Action_SetCaption,
   Action_GetChecked,

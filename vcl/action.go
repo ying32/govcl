@@ -199,6 +199,16 @@ func (a *TAction) ToString() string {
     return Action_ToString(a.instance)
 }
 
+// AutoCheck
+func (a *TAction) AutoCheck() bool {
+    return Action_GetAutoCheck(a.instance)
+}
+
+// SetAutoCheck
+func (a *TAction) SetAutoCheck(value bool) {
+    Action_SetAutoCheck(a.instance, value)
+}
+
 // Caption
 // CN: 获取控件标题。
 // EN: Get the control title.

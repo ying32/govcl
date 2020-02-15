@@ -125,6 +125,16 @@ begin
   AObj.Action := AValue;
 end;
 
+function MenuItem_GetAutoCheck(AObj: TMenuItem): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoCheck;
+end;
+
+procedure MenuItem_SetAutoCheck(AObj: TMenuItem; AValue: LongBool); extdecl;
+begin
+  AObj.AutoCheck := AValue;
+end;
+
 function MenuItem_GetBitmap(AObj: TMenuItem): TBitmap; extdecl;
 begin
   Result :=  AObj.Bitmap;
@@ -329,6 +339,8 @@ exports
   MenuItem_GetParent,
   MenuItem_GetAction,
   MenuItem_SetAction,
+  MenuItem_GetAutoCheck,
+  MenuItem_SetAutoCheck,
   MenuItem_GetBitmap,
   MenuItem_SetBitmap,
   MenuItem_GetCaption,

@@ -130,6 +130,16 @@ begin
   AObj.Action := AValue;
 end;
 
+function MenuItem_GetAutoCheck(AObj: TMenuItem): LongBool; stdcall;
+begin
+  Result :=  AObj.AutoCheck;
+end;
+
+procedure MenuItem_SetAutoCheck(AObj: TMenuItem; AValue: LongBool); stdcall;
+begin
+  AObj.AutoCheck := AValue;
+end;
+
 function MenuItem_GetAutoHotkeys(AObj: TMenuItem): TMenuItemAutoFlag; stdcall;
 begin
   Result :=  AObj.AutoHotkeys;
@@ -377,6 +387,8 @@ exports
   MenuItem_GetParent,
   MenuItem_GetAction,
   MenuItem_SetAction,
+  MenuItem_GetAutoCheck,
+  MenuItem_SetAutoCheck,
   MenuItem_GetAutoHotkeys,
   MenuItem_SetAutoHotkeys,
   MenuItem_GetBitmap,
