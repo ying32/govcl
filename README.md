@@ -42,7 +42,7 @@ res2go工具下载（[文档](Tools/res2go)）
 
 #### 步骤一：获取govcl代码  
 
-> go get github.com/ying32/govcl  
+> go get -u github.com/ying32/govcl  
 
 #### 步骤二：编写代码    
 

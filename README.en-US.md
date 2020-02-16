@@ -40,7 +40,7 @@ res2go Tool([Document](Tools/res2go))
 
 #### Step 1: Get the govcl code  
 
-> go get github.com/ying32/govcl    
+> go get -u github.com/ying32/govcl    
 
 #### Step 2: Write the code
 
