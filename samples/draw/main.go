@@ -30,7 +30,7 @@ func main() {
 	mainForm.SetCaption("Hello")
 	mainForm.SetPosition(types.PoScreenCenter)
 	mainForm.EnabledMaximize(false)
-	mainForm.SetWidth(400)
+	mainForm.SetWidth(600)
 	mainForm.SetHeight(600)
 	mainForm.SetDoubleBuffered(true)
 
@@ -79,6 +79,12 @@ func main() {
 		canvas.Draw(0, 80, jpgimg)
 		//canvas.Draw2(0, 200, jpgimg, 10)
 
+		// 画多边形
+
+		canvas.Brush().SetColor(colors.ClYellow)
+		canvas.Polygon([]types.TPoint{{15, 40}, {43, 123}, {81, 42}, {45, 11}})
+
+		canvas.Polyline([]types.TPoint{{15 + 100, 40}, {43 + 100, 123}, {81 + 100, 42}, {45 + 100, 11}})
 	})
 
 	paintbox := vcl.NewPaintBox(mainForm)

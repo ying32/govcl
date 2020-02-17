@@ -408,6 +408,28 @@ begin
   AObj.TextRect(Rect, Rect.Left, Rect.Top, Text, LStyle);
 end;
 
+
+//  Canvas.Polygon();
+//  Canvas.Polyline();
+//  canvas.PolyBezier();
+//  Canvas.PolyBezierTo();
+
+procedure Canvas_Polygon(AObj: TCanvas; APoints: PPoint; ALen: Integer); extdecl;
+begin
+  AObj.Polygon(APoints, ALen);
+end;
+
+procedure Canvas_Polyline(AObj: TCanvas; APoints: PPoint; ALen: Integer); extdecl;
+begin
+  AObj.Polyline(APoints, ALen);
+end;
+
+procedure Canvas_PolyBezier(AObj: TCanvas; APoints: PPoint; ALen: Integer); extdecl;
+begin
+  AObj.PolyBezier(APoints, ALen);
+end;
+
+
 // TImageList
 // ImageList_Draw1
 // ImageList_Draw2
@@ -989,6 +1011,11 @@ exports
   Canvas_StretchDraw,
   Canvas_TextRect1,
   Canvas_TextRect2,
+  Canvas_Polygon,
+  Canvas_Polyline,
+  canvas_PolyBezier,
+  //Canvas_PolyBezierTo,
+
 
   // TImageList
   ImageList_Draw1,

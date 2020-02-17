@@ -378,6 +378,70 @@ begin
   end;
 end;
 
+//  Canvas.Polygon();
+//  Canvas.Polyline();
+//  canvas.PolyBezier();
+//  Canvas.PolyBezierTo();
+//type
+//  TCanvasHelper = class helper for TCanvas
+//  public
+//    procedure Polygon2(const Points: array of TPoint);
+//    procedure Polyline2(const Points: array of TPoint);
+//    procedure PolyBezier2(const Points: array of TPoint);
+//    procedure PolyBezierTo2(const Points: array of TPoint);
+//  end;
+//
+//
+//procedure TCanvasHelper.Polygon2(APoints: PPoint; ALen: Integer);
+//begin
+//  Changing;
+//  RequiredState([csHandleValid, csPenValid, csBrushValid]);
+//  Winapi.Windows.Polygon(FHandle, APoints, ALen);
+//  Changed;
+//end;
+//
+//procedure TCanvasHelper.Polyline2(APoints: PPoint; ALen: Integer);
+//begin
+//end;
+//procedure TCanvasHelper.PolyBezier2(APoints: PPoint; ALen: Integer);
+//begin
+//end;
+//
+//procedure TCanvasHelper.PolyBezierTo2(APoints: PPoint; ALen: Integer);
+//begin
+//end;
+
+function GetPoints(APoint: PPoint; ALen: Integer): TArray<TPoint>;
+var
+  I: Integer;
+begin
+  SetLength(Result, ALen);
+  for I := 0 to ALen - 1 do
+    Result[I] := PPoint(PByte(APoint) + I * SizeOf(TPoint))^;
+end;
+
+procedure Canvas_Polygon(AObj: TCanvas; APoints: PPoint; ALen: Integer); stdcall;
+begin
+  AObj.Polygon(GetPoints(APoints, ALen));
+end;
+
+procedure Canvas_Polyline(AObj: TCanvas; APoints: PPoint; ALen: Integer); stdcall;
+begin
+  AObj.Polyline(GetPoints(APoints, ALen));
+end;
+
+procedure Canvas_PolyBezier(AObj: TCanvas; APoints: PPoint; ALen: Integer); stdcall;
+begin
+  AObj.PolyBezier(GetPoints(APoints, ALen));
+end;
+
+procedure Canvas_PolyBezierTo(AObj: TCanvas; APoints: PPoint; ALen: Integer); stdcall;
+begin
+  AObj.PolyBezierTo(GetPoints(APoints, ALen));
+end;
+
+
+
 // TImageList
 // ImageList_Draw1
 // ImageList_Draw2
@@ -1035,6 +1099,11 @@ exports
   Canvas_StretchDraw,
   Canvas_TextRect1,
   Canvas_TextRect2,
+  Canvas_Polygon,
+  Canvas_Polyline,
+  canvas_PolyBezier,
+  Canvas_PolyBezierTo,
+
 
   // TImageList
   ImageList_Draw1,

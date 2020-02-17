@@ -68,6 +68,10 @@ var (
 	canvas_StretchDraw   = libvcl.NewProc("Canvas_StretchDraw")
 	canvas_TextRect1     = libvcl.NewProc("Canvas_TextRect1")
 	canvas_TextRect2     = libvcl.NewProc("Canvas_TextRect2")
+	canvas_Polygon       = libvcl.NewProc("Canvas_Polygon")
+	canvas_Polyline      = libvcl.NewProc("Canvas_Polyline")
+	canvas_PolyBezier    = libvcl.NewProc("canvas_PolyBezier")
+	canvas_PolyBezierTo  = libvcl.NewProc("Canvas_PolyBezierTo")
 
 	// TImageList
 	imageList_Draw1        = libvcl.NewProc("ImageList_Draw1")

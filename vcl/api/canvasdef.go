@@ -53,3 +53,31 @@ func Canvas_TextRect3(obj uintptr, aRect *TRect, text string, textFormat TTextFo
 func Canvas_TextRect1(obj uintptr, aRect TRect, x, y int32, text string) {
 	canvas_TextRect1.Call(obj, uintptr(unsafe.Pointer(&aRect)), uintptr(x), uintptr(y), GoStrToDStr(text))
 }
+
+func Canvas_Polygon(obj uintptr, points []TPoint) {
+	if len(points) == 0 {
+		return
+	}
+	canvas_Polygon.Call(obj, uintptr(unsafe.Pointer(&points[0])), uintptr(len(points)))
+}
+
+func Canvas_Polyline(obj uintptr, points []TPoint) {
+	if len(points) == 0 {
+		return
+	}
+	canvas_Polyline.Call(obj, uintptr(unsafe.Pointer(&points[0])), uintptr(len(points)))
+}
+
+func Canvas_PolyBezier(obj uintptr, points []TPoint) {
+	if len(points) == 0 {
+		return
+	}
+	canvas_PolyBezier.Call(obj, uintptr(unsafe.Pointer(&points[0])), uintptr(len(points)))
+}
+
+func Canvas_PolyBezierTo(obj uintptr, points []TPoint) {
+	if len(points) == 0 {
+		return
+	}
+	canvas_PolyBezierTo.Call(obj, uintptr(unsafe.Pointer(&points[0])), uintptr(len(points)))
+}

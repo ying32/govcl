@@ -59,3 +59,22 @@ func (c *TCanvas) TextRect2(aRect *TRect, text *string, textFormat TTextFormat) 
 func (c *TCanvas) TextRect3(aRect *TRect, text string, textFormat TTextFormat) {
 	Canvas_TextRect3(c.instance, aRect, text, textFormat)
 }
+
+// Polygon填充多边形
+func (c *TCanvas) Polygon(points []TPoint) {
+	Canvas_Polygon(c.instance, points)
+}
+
+// 画多边形，不填充
+func (c *TCanvas) Polyline(points []TPoint) {
+	Canvas_Polyline(c.instance, points)
+}
+
+// 多边形贝塞尔曲线
+func (c *TCanvas) PolyBezier(points []TPoint) {
+	Canvas_PolyBezier(c.instance, points)
+}
+
+func (c *TCanvas) PolyBezierTo(points []TPoint) {
+	Canvas_PolyBezierTo(c.instance, points)
+}
