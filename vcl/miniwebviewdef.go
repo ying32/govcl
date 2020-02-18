@@ -3,12 +3,15 @@
 package vcl
 
 import (
+	"strconv"
+	"strings"
+
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/win"
 )
 
-// Windows下设置TMiiWebview的IE内核版本，好像是需管理员权限才可以写注册表
-func (m *TMiniWebview) SetIEVersion(version int32) {
+// Windows下设置TMiiWebview的IE内核版本，需管理员权限才可以写注册表
+func (m *TMiniWebview) SetIEVersion(version int) {
 	// 7000   Webpages containing standards-based !DOCTYPE directives are displayed in IE7 Standards mode.
 	// 8000   Webpages containing standards-based !DOCTYPE directives are displayed in IE8 mode.
 	// 9000   Internet Explorer 9. Webpages containing standards-based !DOCTYPE directives are displayed in IE9 mode.
@@ -27,7 +30,31 @@ func (m *TMiniWebview) SetIEVersion(version int32) {
 		reg.SetRootKey(win.HKEY_CURRENT_USER)
 		if reg.OpenKey("Software\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION", false) {
 			defer reg.CloseKey()
-			reg.WriteInteger(rtl.ExtractFileName(Application.ExeName()), version*1000)
+			reg.WriteInteger(rtl.ExtractFileName(Application.ExeName()), int32(version*1000))
 		}
 	}
+}
+
+// Windows下读取IE内核版本，需管理员权限才可以写注册表
+func (m *TMiniWebview) GetIEVersion() int {
+	reg := NewRegistryAllAccess()
+	defer reg.Free()
+	reg.SetRootKey(win.HKEY_LOCAL_MACHINE)
+	if reg.OpenKey("SOFTWARE\\Microsoft\\Internet Explorer", false) {
+		defer reg.CloseKey()
+		verStr := ""
+		if reg.ValueExists("svcVersion") {
+			verStr = reg.ReadString("svcVersion")
+		} else if reg.ValueExists("Version") {
+			verStr = reg.ReadString("Version")
+		}
+		if verStr != "" {
+			vArr := strings.Split(verStr, ".")
+			if len(vArr) >= 1 {
+				v, _ := strconv.Atoi(vArr[0])
+				return v
+			}
+		}
+	}
+	return 0
 }

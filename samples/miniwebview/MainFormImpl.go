@@ -23,6 +23,8 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.webView.SetParent(f.PnlWebview)
 	f.webView.SetAlign(types.AlClient)
 
+	SetIEVersion(f.webView)
+
 	f.webView.SetOnTitleChange(f.OnWebTitleChange)
 	f.webView.SetOnJSExternal(f.OnWebJsExternal)
 
