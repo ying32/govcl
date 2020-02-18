@@ -3,8 +3,6 @@
 package vcl
 
 import (
-	"runtime"
-
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/win"
 )
@@ -20,7 +18,8 @@ func (m *TMiniWebview) SetIEVersion(version int32) {
 	// HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION
 	if version >= 7 && version <= 11 {
 		var access uint32 = win.KEY_ALL_ACCESS
-		if runtime.GOARCH == "amd64" {
+		// 当前是32位的程序运行在x64下面
+		if win.IsWow64() {
 			access |= win.KEY_WOW64_64KEY
 		}
 		reg := NewRegistry(access)
