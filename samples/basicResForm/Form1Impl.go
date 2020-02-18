@@ -3,12 +3,15 @@ package main
 import (
 	"fmt"
 
+	"github.com/ying32/govcl/vcl/rtl"
+	"github.com/ying32/govcl/vcl/types/keys"
+
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
 )
 
-func (m *TForm1) OnFormCreate(sender vcl.IObject) {
-	fmt.Println(Form1.Caption(), m.PixelsPerInch())
+func (f *TForm1) OnFormCreate(sender vcl.IObject) {
+	fmt.Println(Form1.Caption(), f.PixelsPerInch())
 	Form1.Button1.SetOnClick(func(sender vcl.IObject) {
 		//vcl.ShowMessage("Hello!")
 		jpg := vcl.NewJPEGImage()
@@ -41,4 +44,23 @@ func (m *TForm1) OnFormCreate(sender vcl.IObject) {
 	Form1.ActExit.SetOnExecute(func(vcl.IObject) {
 		vcl.Application.Terminate()
 	})
+
+	// 遍历组件
+	// 只要owner设置为Form的都可以通过这个方法来遍历。
+	var i int32
+	for i = 0; i < f.ComponentCount(); i++ {
+		comp := f.Components(i)
+		//fmt.Println(i, "=", comp.Name())
+		if comp.InheritsFrom(vcl.TMemoClass()) {
+			fmt.Println(i, "=", comp.Name(), ", 继承自TMemo")
+			mem := vcl.MemoFromObj(comp)
+			mem.SetOnKeyUp(f.memoOnKeyup)
+		}
+	}
+}
+
+func (f *TForm1) memoOnKeyup(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
+	if rtl.InSets(shift, types.SsCtrl) && *key == /*keys.VkA*/ keys.VkB {
+		vcl.MemoFromObj(sender).SelectAll()
+	}
 }
