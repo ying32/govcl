@@ -267,10 +267,98 @@ type
   TApplicationHelper = class helper for TApplication
   public
     procedure RestoreTopMosts;
+  {$IFDEF WINDOWS}
+    // 重写这个方法，因为要拦截一些东西
+    procedure MyRunLoop;
+    procedure MyHandleMessage;
+    function IsKeyMsg(var Msg: TMsg): Boolean;
+  {$ENDIF}
   end;
 
 procedure TApplicationHelper.RestoreTopMosts;
 begin
   Self.RestoreStayOnTop(False);
 end;
+
+{$IFDEF WINDOWS}
+function TApplicationHelper.IsKeyMsg(var Msg: TMsg): Boolean;
+
+  function IsLCLWebviewControl(AhWnd: HWND; out AWeb: TMiniWebview): Boolean;
+  var
+    LCtl: TWinControl;
+  begin
+    Result := False;
+    LCtl := FindControl(AhWnd);
+    if Assigned(LCtl) then
+       Result := LCtl is TMiniWebview;
+    if Result then
+       AWeb := LCtl as TMiniWebview;
+  end;
+
+
+var
+  LWnd: HWND;
+  LWebview: TMiniWebview;
+  LMessage: TMessage;
+begin
+  Result := False;
+  // 这里只拦截key的消息，因为只用于IE浏览器
+  if (Msg.Message >= WM_KEYFIRST) and (Msg.Message <= WM_KEYLAST) then
+  begin
+     LWnd := GetCapture;
+     if LWnd <> 0 then
+       Exit;
+     if not IsLCLWebviewControl(Msg.hwnd, LWebview) then
+     begin
+       LWnd := Msg.hwnd;
+       repeat
+         LWnd := GetParent(LWnd);
+       until IsLCLWebviewControl(LWnd, LWebview) or (LWnd = 0);
+       if Assigned(LWebview) then
+       begin
+         LMessage.msg := CN_BASE + Msg.message;
+         LMessage.wParam := Msg.wParam;
+         Lmessage.lParam := Msg.lParam;
+         Lmessage.Result := 0;
+         LWebview.WndProc(Lmessage);
+       end;
+     end;
+  end;
+end;
+
+procedure TApplicationHelper.MyHandleMessage;
+var
+  LMsg: Windows.TMsg;
+  LHandled: Boolean;
+begin
+  LHandled := True;
+  if GWebviewCount > 0 then
+  begin
+    // 这里只拦截，不移除消息
+    if Windows.PeekMessageW(LMsg, 0, 0, 0, PM_NOREMOVE) then
+      // 这里是要另处理的，先不处理吧。
+    if IsKeyMsg(LMsg) then
+      LHandled := False;
+    if not Terminated then
+      Idle(True);
+  end;
+  if LHandled then HandleMessage;
+end;
+
+procedure TApplicationHelper.MyRunLoop;
+begin
+  repeat
+    if CaptureExceptions then
+      try // run with try..except
+        MyHandleMessage;
+      except
+        HandleException(Self);
+      end
+    else
+      MyHandleMessage; // run without try..except
+  until Terminated;
+end;
+{$ENDIF}
+
+
 

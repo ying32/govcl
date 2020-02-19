@@ -436,7 +436,7 @@ type
       Flags: Word; var Params; VarResult, ExcepInfo, ArgErr: Pointer): HResult; stdcall;
   public
      procedure CreateWnd; override;
-	 procedure WndProc(var Message: TMessage); override;
+     procedure WndProc(var Message: TMessage); override;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -464,6 +464,10 @@ type
     property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
     property OnJSExternal: TWebJSExternalEvent read FOnJSExternal write FOnJSExternal;
   end;
+
+var
+  // 特殊用处，用于消息处理，没有浏览器就不管去处理
+  GWebviewCount: Integer = 0;
 
 implementation
 
@@ -508,6 +512,7 @@ begin
   ControlStyle := ControlStyle - [csAcceptsControls, csSetCaption];
   OleCheck(CoCreateInstance(CLSID_WebBrowser, nil, CLSCTX_INPROC, IID_IOleObject, FOleObject));
   FExternalObj := TJsExternal.Create(Self);
+  Inc(GWebviewCount);
 end;
 
 
@@ -576,6 +581,7 @@ begin
   FExternalObj := nil;
   FOleObject := nil;
   FWebBrowser := nil;
+  Dec(GWebviewCount);
   inherited;
 end;
 
