@@ -24,7 +24,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.webView.SetAlign(types.AlClient)
 
 	SetIEVersion(f.webView)
-
+	
 	f.webView.SetOnTitleChange(f.OnWebTitleChange)
 	f.webView.SetOnJSExternal(f.OnWebJsExternal)
 
@@ -33,8 +33,21 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	URL := "file:///" + strings.Replace(rtl.ExtractFilePath(vcl.Application.ExeName()), "\\", "/", -1) + "test.html"
 	f.EdtURL.SetText(URL)
 	f.webView.Navigate(URL)
+
+	//vcl.Application.SetOnMessage(f.onApplicationMessage)
 	//f.Button3.Click()
 }
+
+//func (f *TMainForm) onApplicationMessage(msg *types.TMsg, handled *bool) {
+//	if msg.Hwnd != f.Handle() {
+//		if msg.Message == messages.WM_KEYDOWN {
+//			fmt.Println("按下", msg.WParam)
+//			f.webView.Perform(msg.Message, msg.WParam, int(msg.LParam))
+//			*handled = false
+//
+//		}
+//	}
+//}
 
 func (f *TMainForm) OnBtnGoForwardClick(sender vcl.IObject) {
 	f.webView.GoForward()

@@ -320,7 +320,6 @@ type
     procedure DisconnectPpoint;
   protected
     procedure VisibleChanging; override;
-
     // IOleClientSite
     function SaveObject: HResult; stdcall;
     function GetMoniker(dwAssign: Longint; dwWhichMoniker: Longint;
@@ -437,6 +436,7 @@ type
       Flags: Word; var Params; VarResult, ExcepInfo, ArgErr: Pointer): HResult; stdcall;
   public
      procedure CreateWnd; override;
+	 procedure WndProc(var Message: TMessage); override;
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -538,6 +538,31 @@ begin
     if FURL <> '' then
       Navigate(FURL);
   end;
+end;
+
+// Vcl.OleCtrls
+procedure TMiniWebview.WndProc(var Message: TMessage);
+var
+  WinMsg: TMsg;
+begin
+  if (Message.Msg >= CN_BASE + WM_KEYFIRST) and
+    (Message.Msg <= CN_BASE + WM_KEYLAST) and
+    (FOleInPlaceActiveObject <> nil) then
+  begin
+    WinMsg.HWnd := Handle;
+    WinMsg.Message := Message.Msg - CN_BASE;
+    WinMsg.WParam := Message.WParam;
+    WinMsg.LParam := Message.LParam;
+    WinMsg.Time := GetMessageTime;
+    WinMsg.Pt.X := $115DE1F1;
+    WinMsg.Pt.Y := $115DE1F1;
+    if FOleInPlaceActiveObject.TranslateAccelerator(WinMsg) = S_OK then
+    begin
+      Message.Result := 1;
+      Exit;
+    end;
+  end;
+  inherited WndProc(Message);
 end;
 
 destructor TMiniWebview.Destroy;
@@ -1078,6 +1103,7 @@ end;
 procedure TMiniWebview.SetUIActive(Active: Boolean);
 {$IFDEF FPC}
 begin
+
 end;
 {$ELSE}
 var
@@ -1146,7 +1172,7 @@ function TMiniWebview.GetHostInfo(var pInfo: TDocHostUIInfo): HRESULT;
 begin
   pInfo.cbSize := sizeof(TDocHostUIInfo);
   pInfo.dwFlags := DOCHOSTUIFLAG_DIALOG or DOCHOSTUIFLAG_DISABLE_HELP_MENU or
-    DOCHOSTUIFLAG_NO3DBORDER;
+    DOCHOSTUIFLAG_NO3DBORDER or DOCHOSTUIFLAG_THEME;
   // 这里暂时不能禁用滚动啊，不然鼠标没法用了
   //pInfo.dwFlags := pInfo.dwFlags or DOCHOSTUIFLAG_SCROLL_NO;
 

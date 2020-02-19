@@ -1,23 +1,45 @@
 <html>
 <head>
-<title>
-  ²âÊÔ
-</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>
+    æµ‹è¯•
+  </title>
 </head>
 <script type="text/javascript">
-   // ÕâÀïµÄ²ÎÊıËæ±ãÄãÕûÁË
-   function testCall() {
-      alert(window.external.JSExternal("testCall", "xarg1, xarg2"))
-   }
-   
-   function runScript() {
-     window.external.JSExternal("runScript", "alert('hello!')")
-   }
+  // è¿™é‡Œçš„å‚æ•°éšä¾¿ä½ æ•´äº†
+  function testCall() {
+    alert(window.external.JSExternal("testCall", "xarg1, xarg2"))
+  }
+
+  function runScript() {
+    window.external.JSExternal("runScript", "alert('hello!')")
+  }
+  
+ 
+
+  document.onkeydown=function(event){
+     var e = event || window.event || arguments.callee.caller.arguments[0];
+     if(e && e.keyCode==27){
+       alert("esc")
+     }if(e && e.keyCode==113){ // æŒ‰ F2
+        alert("f2")
+     }if(e && e.keyCode==13){ // enter é”®
+        alert("enter")
+     }
+  };
+
+ 
+ 
+ 
+
+  
+  
 </script>
 
 <body>
-  <button onclick="alert('hello!');">alert</button><br /><br />
-  <button onclick="testCall();">testCall</button><br /><br />
-  <button onclick="runScript();">runScript</button><br /><br />
+<button onclick="alert('hello!');">alert</button><br /><br />
+<button onclick="testCall();">testCall</button><br /><br />
+<button onclick="runScript();">runScript</button><br /><br />
+<input value="test">
 </body>
 </html>
