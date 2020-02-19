@@ -297,6 +297,8 @@ type
     destructor Destroy; override;
   end;
 
+  { TMiniWebview }
+
   TMiniWebview = class(TWinControl, IDispatch, IOleClientSite, IOleControlSite, IOleInPlaceSite, IOleInPlaceFrame, IDocHostUIHandler)
   private
     FWebBrowser: IWebBrowser2;
@@ -318,6 +320,8 @@ type
     function GetReadyState: TReadyState;
     function GetMainMenu: TMainMenu;
     procedure DisconnectPpoint;
+
+
   protected
     procedure VisibleChanging; override;
     // IOleClientSite
@@ -739,28 +743,28 @@ begin
 end;
 
 
-function TMiniWebview.LockInPlaceActive(fLock: BOOL): HResult;
+function TMiniWebview.LockInPlaceActive(fLock: BOOL): HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
 
-function TMiniWebview.CanInPlaceActivate: HResult;
+function TMiniWebview.CanInPlaceActivate: HResult; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.ContextSensitiveHelp(fEnterMode: BOOL): HResult;
+function TMiniWebview.ContextSensitiveHelp(fEnterMode: BOOL): HResult; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.DeactivateAndUndo: HResult;
+function TMiniWebview.DeactivateAndUndo: HResult; stdcall;
 begin
   FOleInPlaceObject.UIDeactivate;
   Result := S_OK;
 end;
 
-function TMiniWebview.DiscardUndoState: HResult;
+function TMiniWebview.DiscardUndoState: HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
@@ -776,22 +780,23 @@ begin
   end;
 end;
 
-function TMiniWebview.EnableModeless(fEnable: BOOL): HResult;
+function TMiniWebview.EnableModeless(fEnable: BOOL): HResult; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.GetBorder(out rectBorder: TRect): HResult;
+function TMiniWebview.GetBorder(out rectBorder: TRect): HResult; stdcall;
 begin
   Result := INPLACE_E_NOTOOLSPACE;
 end;
 
 function TMiniWebview.GetContainer(out container: IOleContainer): HResult;
+  stdcall;
 begin
   Result := E_NOINTERFACE;
 end;
 
-function TMiniWebview.GetExtendedControl(out disp: IDispatch): HResult;
+function TMiniWebview.GetExtendedControl(out disp: IDispatch): HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
@@ -810,8 +815,8 @@ begin
         Result := Application.MainForm.Menu;
 end;
 
-function TMiniWebview.GetMoniker(dwAssign, dwWhichMoniker: Longint;
-  out mk: IMoniker): HResult;
+function TMiniWebview.GetMoniker(dwAssign: Longint; dwWhichMoniker: Longint;
+  out mk: IMoniker): HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
@@ -823,7 +828,7 @@ begin
     Result := TReadyState(FWebBrowser.ReadyState);
 end;
 
-function TMiniWebview.OleInPlaceSite_GetWindow(out wnd: HWnd): HResult;
+function TMiniWebview.OleInPlaceSite_GetWindow(out wnd: HWnd): HResult; stdcall;
 begin
   Result := S_OK;
   wnd := Handle;
@@ -831,8 +836,9 @@ begin
 end;
 
 {$IFDEF FPC}
-function TMiniWebview.GetWindowContext(out ppframe:IOleInPlaceFrame;out ppdoc:IOleInPlaceUIWindow;
-    lprcposrect:LPRECT;lprccliprect:LPRECT;lpframeinfo:LPOLEINPLACEFRAMEINFO):hresult;
+function TMiniWebview.GetWindowContext(out ppframe: IOleInPlaceFrame; out
+  ppdoc: IOleInPlaceUIWindow; lprcposrect: LPRECT; lprccliprect: LPRECT;
+  lpframeinfo: LPOLEINPLACEFRAMEINFO): hresult; stdcall;
 begin
   ppframe := Self;
   ppdoc := nil;
@@ -870,7 +876,7 @@ end;
 
 
 function TMiniWebview.InsertMenus(hmenuShared: HMenu;
-  var menuWidths: TOleMenuGroupWidths): HResult;
+  var menuWidths: TOleMenuGroupWidths): HResult; stdcall;
 {$IFDEF FPC}
 begin
   Result := E_NOTIMPL;
@@ -887,7 +893,8 @@ end;
 {$ENDIF}
 
 {$IFDEF FPC}
-function TMiniWebview.OleControlSite_TranslateAccelerator(var pMsg:tagMSG;grfModifiers:LongWord):HRESULT;
+function TMiniWebview.OleControlSite_TranslateAccelerator(var pMsg: tagMSG;
+  grfModifiers: LongWord): HRESULT; stdcall;
 {$ELSE}
 function TMiniWebview.OleControlSite_TranslateAccelerator(msg: PMsg; grfModifiers: Longint): HResult;
 {$ENDIF}
@@ -896,35 +903,36 @@ begin
 end;
 
 function TMiniWebview.OleInPlaceFrame_GetWindow(out wnd: HWnd): HResult;
+  stdcall;
 begin
   wnd := GetTopParentHandle;
   Result := S_OK;
 end;
 
 function TMiniWebview.OleInPlaceFrame_TranslateAccelerator(var msg: TMsg;
-  wID: Word): HResult;
+  wID: Word): HResult; stdcall;
 begin
   Result := S_FALSE;
 end;
 
-function TMiniWebview.OnControlInfoChanged: HResult;
+function TMiniWebview.OnControlInfoChanged: HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
 
-function TMiniWebview.OnFocus(fGotFocus: BOOL): HResult;
+function TMiniWebview.OnFocus(fGotFocus: BOOL): HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
 
-function TMiniWebview.OnInPlaceActivate: HResult;
+function TMiniWebview.OnInPlaceActivate: HResult; stdcall;
 begin
   FOleObject.QueryInterface(IOleInPlaceObject, FOleInPlaceObject);
   FOleObject.QueryInterface(IOleInPlaceActiveObject, FOleInPlaceActiveObject);
   Result := S_OK;
 end;
 
-function TMiniWebview.OnInPlaceDeactivate: HResult;
+function TMiniWebview.OnInPlaceDeactivate: HResult; stdcall;
 begin
   FOleInPlaceObject := nil;
   FOleInPlaceActiveObject := nil;
@@ -932,7 +940,7 @@ begin
 end;
 
 {$IFDEF FPC}
-function TMiniWebview.OnPosRectChange(lprcPosRect:LPRect):hresult;
+function TMiniWebview.OnPosRectChange(lprcPosRect: LPRect): hresult; stdcall;
 var
   LR: TRect;
 begin
@@ -950,25 +958,25 @@ end;
 
 
 
-function TMiniWebview.OnShowWindow(fShow: BOOL): HResult;
+function TMiniWebview.OnShowWindow(fShow: BOOL): HResult; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.OnUIActivate: HResult;
+function TMiniWebview.OnUIActivate: HResult; stdcall;
 begin
   SetUIActive(True);
   Result := S_OK;
 end;
 
-function TMiniWebview.OnUIDeactivate(fUndoable: BOOL): HResult;
+function TMiniWebview.OnUIDeactivate(fUndoable: BOOL): HResult; stdcall;
 begin
   SetMenu(0, 0, 0);
   SetUIActive(False);
   Result := S_OK;
 end;
 
-function TMiniWebview.RemoveMenus(hmenuShared: HMenu): HResult;
+function TMiniWebview.RemoveMenus(hmenuShared: HMenu): HResult; stdcall;
 begin
   while GetMenuItemCount(hmenuShared) > 0 do
     RemoveMenu(hmenuShared, 0, MF_BYPOSITION);
@@ -976,22 +984,23 @@ begin
 end;
 
 function TMiniWebview.RequestBorderSpace(const borderwidths: TRect): HResult;
+  stdcall;
 begin
   Result := INPLACE_E_NOTOOLSPACE;
 end;
 
-function TMiniWebview.RequestNewObjectLayout: HResult;
+function TMiniWebview.RequestNewObjectLayout: HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
 
-function TMiniWebview.SaveObject: HResult;
+function TMiniWebview.SaveObject: HResult; stdcall;
 begin
   Result := S_OK;
 end;
 
 {$IFDEF FPC}
-function TMiniWebview.Scroll(scrollExtant:TSIZE):hresult;
+function TMiniWebview.Scroll(scrollExtant: TSIZE): hresult; stdcall;
 {$ELSE}
 function TMiniWebview.Scroll(scrollExtent: TPoint): HResult;
 {$ENDIF}
@@ -1001,6 +1010,7 @@ end;
 
 function TMiniWebview.SetActiveObject(
   const activeObject: IOleInPlaceActiveObject; pszObjName: POleStr): HResult;
+  stdcall;
 begin
   Result := S_OK;
 end;
@@ -1079,8 +1089,8 @@ begin
   end;
 end;
 
-function TMiniWebview.SetMenu(hmenuShared, holemenu: HMenu;
-  hwndActiveObject: HWnd): HResult;
+function TMiniWebview.SetMenu(hmenuShared: HMenu; holemenu: HMenu;
+  hwndActiveObject: HWnd): HResult; stdcall;
 {$IFDEF FPC}
 begin
   Result := E_NOTIMPL;
@@ -1100,7 +1110,7 @@ begin
 end;
 {$ENDIF}
 
-function TMiniWebview.SetStatusText(pszStatusText: POleStr): HResult;
+function TMiniWebview.SetStatusText(pszStatusText: POleStr): HResult; stdcall;
 begin
   Result := S_OK;
 end;
@@ -1139,18 +1149,19 @@ begin
 end;
 {$ENDIF}
 
-function TMiniWebview.ShowObject: HResult;
+function TMiniWebview.ShowObject: HResult; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.ShowPropertyFrame: HResult;
+function TMiniWebview.ShowPropertyFrame: HResult; stdcall;
 begin
   Result := E_NOTIMPL;
 end;
 
 {$IFDEF FPC}
-function TMiniWebview.TransformCoords(var ptlHimetric: _POINTL; var ptfContainer: tagPOINTF; flags: LongWord): HResult;
+function TMiniWebview.TransformCoords(var ptlHimetric: _POINTL;
+  var ptfContainer: tagPOINTF; flags: LongWord): HResult; stdcall;
 {$ELSE}
 function TMiniWebview.TransformCoords(var ptlHimetric: TPoint; var ptfContainer: TPointF; flags: Longint): HResult;
 {$ENDIF}
@@ -1180,12 +1191,14 @@ begin
   FOleObject.DoVerb(Flag, nil, Self, -1, Handle, ClientRect);
 end;
 
-function TMiniWebview.ShowContextMenu(const dwID: DWORD; const ppt: PPOINT; const pcmdtReserved: IUnknown; const pdispReserved: IDispatch): HRESULT;
+function TMiniWebview.ShowContextMenu(const dwID: DWORD; const ppt: PPOINT;
+  const pcmdtReserved: IUnknown; const pdispReserved: IDispatch): HRESULT;
+  stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.GetHostInfo(var pInfo: TDocHostUIInfo): HRESULT;
+function TMiniWebview.GetHostInfo(var pInfo: TDocHostUIInfo): HRESULT; stdcall;
 begin
   pInfo.cbSize := sizeof(TDocHostUIInfo);
   pInfo.dwFlags := DOCHOSTUIFLAG_DIALOG or DOCHOSTUIFLAG_DISABLE_HELP_MENU or
@@ -1197,69 +1210,82 @@ begin
   Result := S_OK;
 end;
 
-function TMiniWebview.ShowUI(const dwID: DWORD; const pActiveObject: IOleInPlaceActiveObject; const pCommandTarget: IOleCommandTarget; const pFrame: IOleInPlaceFrame; const pDoc: IOleInPlaceUIWindow): HRESULT;
+function TMiniWebview.ShowUI(const dwID: DWORD;
+  const pActiveObject: IOleInPlaceActiveObject;
+  const pCommandTarget: IOleCommandTarget; const pFrame: IOleInPlaceFrame;
+  const pDoc: IOleInPlaceUIWindow): HRESULT; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.HideUI: HRESULT;
+function TMiniWebview.HideUI: HRESULT; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.UpdateUI: HRESULT;
+function TMiniWebview.UpdateUI: HRESULT; stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.IDocHostUIHandler_EnableModeless(const fEnable: BOOL): HRESULT;
+function TMiniWebview.IDocHostUIHandler_EnableModeless(const fEnable: BOOL
+  ): HRESULT; stdcall;
 begin
   Result := S_OK;
 end;
 
 function TMiniWebview.OnDocWindowActivate(const fActivate: BOOL): HRESULT;
+  stdcall;
 begin
   Result := S_OK;
 end;
 
 function TMiniWebview.OnFrameWindowActivate(const fActivate: BOOL): HRESULT;
+  stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.ResizeBorder(const prcBorder: PRECT; const pUIWindow: IOleInPlaceUIWindow; const FrameWindow: BOOL): HRESULT;
+function TMiniWebview.ResizeBorder(const prcBorder: PRECT;
+  const pUIWindow: IOleInPlaceUIWindow; const FrameWindow: BOOL): HRESULT;
+  stdcall;
 begin
   Result := S_OK;
 end;
 
-function TMiniWebview.TranslateAccelerator(const lpMsg: PMSG; const pguidCmdGroup:  PGUID; const nCmdID: DWORD): HRESULT;
+function TMiniWebview.TranslateAccelerator(const lpMsg: PMSG;
+  const pguidCmdGroup: PGUID; const nCmdID: DWORD): HRESULT; stdcall;
 begin
   Result := S_FALSE;
 end;
 
-function TMiniWebview.GetOptionKeyPath(var pchKey: POLESTR; const dw: DWORD): HRESULT;
+function TMiniWebview.GetOptionKeyPath(var pchKey: POLESTR; const dw: DWORD
+  ): HRESULT; stdcall;
 begin
   Result := E_FAIL;
 end;
 
-function TMiniWebview.GetDropTarget(const pDropTarget: IDropTarget; out ppDropTarget: IDropTarget): HRESULT;
+function TMiniWebview.GetDropTarget(const pDropTarget: IDropTarget; out
+  ppDropTarget: IDropTarget): HRESULT; stdcall;
 begin
   ppDropTarget := nil;
   Result := E_FAIL;
 end;
 
-function TMiniWebview.GetExternal(out ppDispatch: IDispatch): HRESULT;
+function TMiniWebview.GetExternal(out ppDispatch: IDispatch): HRESULT; stdcall;
 begin
   ppDispatch := FExternalObj;
   Result := S_OK;
 end;
 
-function TMiniWebview.TranslateUrl(const dwTranslate: DWORD; const pchURLIn: POLESTR; var ppchURLOut: POLESTR): HRESULT;
+function TMiniWebview.TranslateUrl(const dwTranslate: DWORD;
+  const pchURLIn: POLESTR; var ppchURLOut: POLESTR): HRESULT; stdcall;
 begin
   Result := S_FALSE;
 end;
 
-function TMiniWebview.FilterDataObject(const pDO: IDataObject; out ppDORet: IDataObject): HRESULT;
+function TMiniWebview.FilterDataObject(const pDO: IDataObject; out
+  ppDORet: IDataObject): HRESULT; stdcall;
 begin
   ppDORet := nil;
   Result := S_FALSE;

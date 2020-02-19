@@ -303,8 +303,8 @@ var
 begin
   Result := False;
   // 这里只拦截key的消息，因为只用于IE浏览器
-  if (Msg.Message >= WM_KEYFIRST) and (Msg.Message <= WM_KEYLAST) then
-  begin
+  //if (Msg.Message >= WM_KEYFIRST) and (Msg.Message <= WM_KEYLAST) then
+  //begin
      LWnd := GetCapture;
      if LWnd <> 0 then
        Exit;
@@ -314,16 +314,13 @@ begin
        repeat
          LWnd := GetParent(LWnd);
        until IsLCLWebviewControl(LWnd, LWebview) or (LWnd = 0);
-       if Assigned(LWebview) then
+       if LWnd <> 0 then
        begin
-         LMessage.msg := CN_BASE + Msg.message;
-         LMessage.wParam := Msg.wParam;
-         Lmessage.lParam := Msg.lParam;
-         Lmessage.Result := 0;
-         LWebview.WndProc(Lmessage);
+         //Windows.PeekMessageW(Msg, 0, WM_KEYFIRST, WM_KEYLAST, PM_REMOVE);
+         SendMessageW(LWnd, Msg.message+CN_BASE, Msg.wParam, Msg.lParam);
        end;
      end;
-  end;
+  //end;
 end;
 
 procedure TApplicationHelper.MyHandleMessage;
@@ -335,10 +332,12 @@ begin
   if GWebviewCount > 0 then
   begin
     // 这里只拦截，不移除消息
-    if Windows.PeekMessageW(LMsg, 0, 0, 0, PM_NOREMOVE) then
+    if Windows.PeekMessageW(LMsg, 0, WM_KEYFIRST, WM_KEYLAST, PM_NOREMOVE) then
+    begin
       // 这里是要另处理的，先不处理吧。
-    if IsKeyMsg(LMsg) then
-      LHandled := False;
+      if IsKeyMsg(LMsg) then
+        LHandled := False;
+    end;
     if not Terminated then
       Idle(True);
   end;
