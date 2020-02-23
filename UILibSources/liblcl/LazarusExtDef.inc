@@ -303,8 +303,8 @@ var
 begin
   Result := False;
   // 这里只拦截key的消息，因为只用于IE浏览器
-  //if (Msg.Message >= WM_KEYFIRST) and (Msg.Message <= WM_KEYLAST) then
-  //begin
+  if (Msg.Message >= WM_KEYFIRST) and (Msg.Message <= WM_KEYLAST) then
+  begin
      LWnd := GetCapture;
      if LWnd <> 0 then
        Exit;
@@ -320,7 +320,7 @@ begin
          SendMessageW(LWnd, Msg.message+CN_BASE, Msg.wParam, Msg.lParam);
        end;
      end;
-  //end;
+  end;
 end;
 
 procedure TApplicationHelper.MyHandleMessage;
@@ -337,8 +337,7 @@ begin
       // 这里是要另处理的，先不处理吧。
       if IsKeyMsg(LMsg) then
         LHandled := False;
-    end;
-    if not Terminated then
+    end;    if not Terminated then
       Idle(True);
   end;
   if LHandled then HandleMessage;

@@ -105,12 +105,13 @@ end;
 
 procedure Application_Run(AObj: TApplication); extdecl;
 begin
-{$IFDEF WINDOWS}
-  if (AObj.MainForm <> nil) and AObj.ShowMainForm then AObj.MainForm.Show;
-     WidgetSet.AppRun(AObj.MyRunLoop);
-{$ELSE}
+// 先不用这里的了
+//{$IFDEF WINDOWS}
+  //if (AObj.MainForm <> nil) and AObj.ShowMainForm then AObj.MainForm.Show;
+     //WidgetSet.AppRun(AObj.MyRunLoop);
+//{$ELSE}
   AObj.Run;
-{$ENDIF}
+//{$ENDIF}
   // 在Run结束后手动释放Application中的Form，主要是考虑在非Delphi运行环境中造成的一些资源清理问题
   RemoveAllForms;
 end;
