@@ -58,3 +58,12 @@ type TSecurityAttributes struct {
 	lpSecurityDescriptor uintptr
 	bInheritHandle       bool // BOOL
 }
+
+type TSHItemID struct {
+	Cb   uint16  // Size of the ID (including cb itself)
+	AbID [1]byte // The item ID (variable length)
+}
+
+type TItemIDList struct {
+	Mkid TSHItemID
+}
