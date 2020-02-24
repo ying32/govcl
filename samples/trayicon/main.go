@@ -75,7 +75,7 @@ func main() {
 			loadMainIconFromStream(trayicon.Icon())
 
 		} else {
-			trayicon.SetIcon(vcl.Application.Icon())
+			//trayicon.SetIcon(vcl.Application.Icon())
 		}
 	}
 	trayicon.SetHint(mainForm.Caption())
