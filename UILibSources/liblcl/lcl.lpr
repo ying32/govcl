@@ -85,7 +85,8 @@ uses
   Gauges in 'Gauges.pas',
   uMiniWebview in 'uMiniWebview.pas',
   uComponents,
-  uGoForm;
+  uGoForm,
+  uControlPatchs;
 
 {$IFDEF WINDOWS}
   {$R *.res}
