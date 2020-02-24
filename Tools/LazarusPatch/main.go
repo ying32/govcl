@@ -7,7 +7,6 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	"runtime"
 	"strings"
 	"time"
 )
@@ -19,16 +18,9 @@ var (
 )
 
 func main() {
-	// lazarus的路径
 
-	switch runtime.GOOS {
-	case "windows":
-		lazarusPath = "F:\\lazarus"
-	case "linux":
-		lazarusPath = ""
-	case "darwin":
-		lazarusPath = ""
-	}
+	// lazarus的路径
+	lazarusPath = GetLazarusPath()
 	checkLazarusPath()
 
 	// 开始进行文的补丁操作
@@ -48,7 +40,7 @@ func checkLazarusPath() {
 	if !checkFileExists(lazarusPath) {
 		panic("不存在路径：" + lazarusPath)
 	}
-	fmt.Println("Lazarus: ", lazarusPath)
+	fmt.Println("Lazarus Root: ", lazarusPath)
 }
 
 func checkFileExists(path string) bool {
