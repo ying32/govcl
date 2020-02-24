@@ -87,15 +87,23 @@ func cmpFile(file1, file2 string) bool {
 	return sha1.Sum(f1) == sha1.Sum(f2)
 }
 
+func restoreBackupFile(fileName string) bool {
+	return false
+}
+
 func patchFile(fileName string, datas []PatchItem) {
 
+	fn := lazarusPath + fileName
+	fmt.Println("patch File: ", fn)
+
+	//if restoreBackupFile(fn) {
+	//
+	//}
 	if len(datas) == 0 {
 		fmt.Println("find1和content不能为空。")
 		return
 	}
 
-	fn := lazarusPath + fileName
-	fmt.Println("patch File: ", fn)
 	if !checkFileExists(fn) {
 		fmt.Println("文件：", fn, "不存在。")
 		return

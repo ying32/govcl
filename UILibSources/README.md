@@ -37,6 +37,8 @@ libvcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Wind
 
 编译步骤：  
 
+**注：如果有需要可以运行“govcl\Tools\LazarusPatch”工具给Lazarus源代码打补丁。**     
+
 * 1、安装好Lazarus 2.0.6 64bit版本及i386扩展包   
 * 2、双击lcl.lpi  
 * 3、菜单->Project->Project Options -> Compiler Options -> Build modes 切换相关编环模式，当前有效模式为以下几种种：   

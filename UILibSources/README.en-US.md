@@ -33,7 +33,9 @@ liblcl Based on Lazarus 2.0.6 version FPC 3.0.4, the specific installation metho
 
 The libvcl project source code is located in the "govcl\UILibSources\liblcl" directory. `liblcl for Windows, Linux, MacOS`.   
 
-Compile steps:     
+Compile steps:    
+
+**Note: If necessary, you can run the "govcl\Tools\LazarusPatch" tool to patch the Lazarus source code.**   
 
 * 1. Install Lazarus 2.0.6 64bit version and i386 expansion package  
 * 2. double-click lcl.lpi  
