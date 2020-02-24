@@ -1,5 +1,15 @@
 // +build windows,386
 
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
 /*
   此项功能稳定性还有待观查。
 

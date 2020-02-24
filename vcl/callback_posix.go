@@ -1,6 +1,16 @@
 // +build !windows
 // +build cgo
 
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
 package vcl
 
 // extern void* doEventCallbackProc(void* f, void* args, long argcount);

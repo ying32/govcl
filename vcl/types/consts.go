@@ -1,3 +1,13 @@
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
 package types
 
 // MessageBox or MessageDlg 返回值

@@ -1,3 +1,13 @@
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
 // govcl wke测试头文件，by: ying32
 // https://github.com/ying32/ying32
 

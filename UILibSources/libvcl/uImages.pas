@@ -1,3 +1,11 @@
+//----------------------------------------
+//
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
 // 为了兼容Lazarus与Delphi对于资源窗口数据中图片读取的处理
 // 比如在Delphi中TPngImage是没有Size标识的，但Lazarus中一定有
 // 于是只能进行修改，统一都有图片Size标识，但在Delphi读取时经过判断后跳过相关的

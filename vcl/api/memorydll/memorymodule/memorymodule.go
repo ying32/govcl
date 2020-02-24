@@ -1,5 +1,15 @@
 // +build windows
 
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
 /*
 
   作者：ying32，本为govcl项目中的一个dylib扩展包

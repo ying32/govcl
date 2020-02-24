@@ -1,6 +1,16 @@
 // +build windows
 
-// 正体改自Delphi TOSVersion
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
+// 改自Delphi TOSVersion
 package version
 
 import (

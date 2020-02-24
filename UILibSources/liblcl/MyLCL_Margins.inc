@@ -1,9 +1,12 @@
 
 //----------------------------------------
-// 代码由GenlibVcl工具自动生成。
 // Copyright © ying32. All Rights Reserved.
-// 用来兼容Delphi的TMargins的，不是自动生成
+// 
+// Licensed under Apache License 2.0
 //
+//----------------------------------------
+//----------------------------------------
+// 用来兼容Delphi的TMargins的，不是自动生成
 //----------------------------------------
 
 function Margins_Create(AOwner: TControl): TControlBorderSpacing; extdecl;

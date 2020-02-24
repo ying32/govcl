@@ -1,3 +1,13 @@
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
 // 多语言包，用于本地化操作
 
 package multilang

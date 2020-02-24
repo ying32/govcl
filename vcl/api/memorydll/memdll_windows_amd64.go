@@ -1,5 +1,15 @@
 // +build windows,amd64
 
+
+//----------------------------------------
+// 
+// Copyright © ying32. All Rights Reserved.
+// 
+// Licensed under Apache License 2.0
+//
+//----------------------------------------
+
+
 package memorydll
 
 import "github.com/ying32/govcl/vcl/api/memorydll/memorymodule"
