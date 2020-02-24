@@ -64,6 +64,15 @@ uses
 
 {$I LazarusExtDef.inc}
 
+{$IFDEF WINDOWS}
+ type
+   TTrayIcon = class(ExtCtrls.TTrayIcon)
+   public
+     constructor Create(TheOwner: TComponent); override;
+   end;
+
+{$ENDIF}
+
 const
   ClassRefArrs: array[0..120] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
@@ -105,6 +114,16 @@ begin
     AddComponentClass(LB);
   {$I UserDefineComponentsClass.inc}
 end;
+
+{$IFDEF WINDOWS}
+constructor TTrayIcon.Create(TheOwner: TComponent);
+begin
+  inherited Create(TheOwner);
+  if not Application.Icon.Empty then
+    Icon.Assign(Application.Icon);
+end;
+
+{$ENDIF}
 
 initialization
   uClassLists := TClassLists.Create;
