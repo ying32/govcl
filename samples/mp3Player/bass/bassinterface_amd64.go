@@ -1,6 +1,6 @@
 package bass
 
-import "github.com/ying32/govcl/vcl/dylib/floatpatch"
+import "github.com/ying32/dylib/floatpatch"
 
 func ToUInt64(r1, r2 uintptr) uint64 {
 	return uint64(r1)

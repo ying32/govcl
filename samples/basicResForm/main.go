@@ -15,12 +15,9 @@ func main() {
 		vcl.ShowMessage(e.Message())
 	})
 	//   Form1.gfm
-	//vcl.Application.CreateForm(rtl.ExtractFilePath(vcl.Application.ExeName())+"Form1.gfm", &Form1)
-	vcl.Application.CreateForm(form1Bytes, &Form1)
-	// 文件加载方式
-	//vcl.Application.CreateForm("Form2.gfm", &Form2)
+	vcl.Application.CreateForm(&Form1)
 	// 字节加载方式
-	vcl.Application.CreateForm(form2Bytes, &Form2)
+	vcl.Application.CreateForm(&Form2)
 
 	vcl.Application.Run()
 

@@ -13,8 +13,8 @@ func main() {
 	vcl.Application.SetOnException(func(sender vcl.IObject, e *vcl.Exception) {
 		vcl.ShowMessage(e.Message())
 	})
-	vcl.Application.CreateForm(form1Bytes, &Form1)
-	vcl.Application.CreateForm(form2Bytes, &Form2)
+	vcl.Application.CreateForm(&Form1)
+	vcl.Application.CreateForm(&Form2)
 	vcl.Application.Run()
 
 }

@@ -13,9 +13,9 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/ying32/govcl/vcl/dylib/floatpatch"
+	"github.com/ying32/dylib/floatpatch"
 
-	"github.com/ying32/govcl/vcl/dylib"
+	"github.com/ying32/dylib"
 )
 
 type (

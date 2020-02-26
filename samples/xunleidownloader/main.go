@@ -20,7 +20,7 @@ func main() {
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateForm(mainFormBytes, &MainForm)
+	vcl.Application.CreateForm(&MainForm)
 
 	vcl.Application.Run()
 

@@ -6,7 +6,7 @@
 package miniblink
 
 import (
-	"github.com/ying32/govcl/vcl/dylib/floatpatch"
+	"github.com/ying32/dylib/floatpatch"
 
 	"unsafe"
 )

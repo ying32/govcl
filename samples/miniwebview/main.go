@@ -8,6 +8,6 @@ import (
 func main() {
 	tools.RunWithMacOSApp()
 	vcl.Application.Initialize()
-	vcl.Application.CreateForm(mainFormBytes, &MainForm)
+	vcl.Application.CreateForm(&MainForm)
 	vcl.Application.Run()
 }

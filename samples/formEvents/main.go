@@ -11,8 +11,8 @@ func main() {
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateForm(form1Bytes, &Form1)
-	vcl.Application.CreateForm(form2Bytes, &Form2)
+	vcl.Application.CreateForm(&Form1)
+	vcl.Application.CreateForm(&Form2)
 
 	vcl.Application.Run()
 

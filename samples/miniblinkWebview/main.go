@@ -12,9 +12,9 @@ func main() {
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateForm(mainFormBytes, &MainForm)
-	vcl.Application.CreateForm(hTMLFormBytes, &HTMLForm)
-	vcl.Application.CreateForm(jsFormBytes, &JsForm)
+	vcl.Application.CreateForm(&MainForm)
+	vcl.Application.CreateForm(&HTMLForm)
+	vcl.Application.CreateForm(&JsForm)
 	vcl.Application.Run()
 
 }

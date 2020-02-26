@@ -13,7 +13,7 @@ func main() {
 		vcl.Application.SetFormScaled(true)
 	}
     vcl.Application.Initialize()
-    vcl.Application.CreateForm(mainFormBytes, &MainForm)
-    vcl.Application.CreateForm(aboutBytes, &About)
+    vcl.Application.CreateForm(&MainForm)
+    vcl.Application.CreateForm(&About)
     vcl.Application.Run()
 }

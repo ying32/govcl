@@ -9,6 +9,6 @@ func main() {
     vcl.Application.SetFormScaled(true)
     vcl.Application.Initialize()
     vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(form11Bytes, &Form11)
+    vcl.Application.CreateForm(&Form11)
     vcl.Application.Run()
 }

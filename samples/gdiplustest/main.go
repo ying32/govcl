@@ -34,7 +34,7 @@ func main() {
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateForm(gdipFormBytes, &GdipForm)
+	vcl.Application.CreateForm(&GdipForm)
 	vcl.Application.Run()
 
 }

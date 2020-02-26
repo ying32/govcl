@@ -8,8 +8,8 @@ func main() {
 
 	vcl.Application.Initialize()
 	vcl.Application.SetMainFormOnTaskBar(true)
-	vcl.Application.CreateForm(mainFormBytes, &MainForm)
-	vcl.Application.CreateForm(loginFormBytes, &LoginForm)
+	vcl.Application.CreateForm(&MainForm)
+	vcl.Application.CreateForm(&LoginForm)
 
 	// 这里可以决定是不是显示主窗口
 	vcl.Application.SetShowMainForm(false)
