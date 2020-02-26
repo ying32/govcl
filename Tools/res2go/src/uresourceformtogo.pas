@@ -26,7 +26,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.17';
+  APPVERSION = '1.0.18';
 
 type
   TComponentItem = record
@@ -632,24 +632,25 @@ begin
     // AMem = nil表示不以字节输出到go文件
     if AMem = nil then
     begin
-      if not LIsFrame then
-      begin
-        if SysIsZhCN then
-          Wline('// 以文件形式加载')
-        else
-          WLine('// Loaded as a file.');
-        WLine(Format('// vcl.Application.CreateForm("%s.gfm", &%s)', [LFormName, LFormName]));
-      end;
-
-      // 添加一个默认构建的，不使用Application.CreateForm
-      WLine(Format('func New%s(owner vcl.IComponent) (root *T%s)  {', [LFormName, LFormName]));
-      if not LIsFrame then
-        WLine(Format('    vcl.CreateResForm(owner, "%s.gfm", &root)', [LFormName]))
-      else
-        WLine(Format('    vcl.CreateResFrame(owner, "%s.gfm", &root)', [LFormName]));
-      WLine('    return');
-      WLine('}');
-      WLine('');
+      // 不支持这种方式了输出了
+      //if not LIsFrame then
+      //begin
+      //  if SysIsZhCN then
+      //    Wline('// 以文件形式加载')
+      //  else
+      //    WLine('// Loaded as a file.');
+      //  WLine(Format('// vcl.Application.CreateForm("%s.gfm", &%s)', [LFormName, LFormName]));
+      //end;
+      //
+      //// 添加一个默认构建的，不使用Application.CreateForm
+      //WLine(Format('func New%s(owner vcl.IComponent) (root *T%s)  {', [LFormName, LFormName]));
+      //if not LIsFrame then
+      //  WLine(Format('    vcl.CreateResForm(owner, "%s.gfm", &root)', [LFormName]))
+      //else
+      //  WLine(Format('    vcl.CreateResFrame(owner, "%s.gfm", &root)', [LFormName]));
+      //WLine('    return');
+      //WLine('}');
+      //WLine('');
     end
     else
     begin
@@ -671,15 +672,15 @@ begin
           WLine('// 以字节形式加载')
         else
           WLine('// Loaded in bytes.');
-        WLine(Format('// vcl.Application.CreateForm(%s, &%s)', [LVarName, LFormName]));
+        WLine(Format('// vcl.Application.CreateForm(&%s)', [LFormName]));
         WLine;
       end;
       // 添加一个默认构建的，不使用Application.CreateForm
       WLine(Format('func New%s(owner vcl.IComponent) (root *T%s)  {', [LFormName, LFormName]));
       if not LIsFrame then
-        WLine(Format('    vcl.CreateResForm(owner, %s, &root)', [LVarName]))
+        WLine(Format('    vcl.CreateResForm(owner, &root)', []))
       else
-        WLine(Format('    vcl.CreateResFrame(owner, %s, &root)', [LVarName]));
+        WLine(Format('    vcl.CreateResFrame(owner, &root)', []));
       WLine('    return');
       WLine('}');
       WLine('');
@@ -710,6 +711,12 @@ begin
       if not LUseStr then
         WLine(')');
 
+      WLine('');
+      if SysIsZhCN then
+        WLine('// 注册Form资源')
+      else
+        WLine('// Register Form Resources');
+      WLine(Format('var _ = vcl.RegisterFormResource(%s, &%s)', [LFormName, LVarName]));
     end;
     if AOrigFileName <> '' then
       LFileName := AOutPath + AOrigFileName + '.go'
@@ -890,9 +897,10 @@ var
                 if FindCmdLineSwitch('encrypt') then
                   LUseEncrypt := SameText(GetNextParam('encrypt'), 'True');
 
+                // 总是为True
                 LOutbytes := True;
-                if FindCmdLineSwitch('outbytes') then
-                  LOutbytes := SameText(GetNextParam('outbytes'), 'True');
+                //if FindCmdLineSwitch('outbytes') then
+                //  LOutbytes := SameText(GetNextParam('outbytes'), 'True');
 
                 // 是否使用原始的dfm/lfm文件名。
                 LOrigfn := FindCmdLineSwitch('origfn');
@@ -1030,7 +1038,7 @@ begin
         {$ENDIF}
         end;
         SetLength(LForms, Length(LForms) + 1);
-        LForms[High(LForms)] := Format('    vcl.Application.CreateForm(%s, &%s)', [LPkg+LVarName, LPkg+LFormName]);
+        LForms[High(LForms)] := Format('    vcl.Application.CreateForm(&%s)', [{LPkg+LVarName, }LPkg+LFormName]);
         // main.go文件不存在则直接添加
         if not LMainFileExists then
           LMainDotGo.Add(LForms[High(LForms)]);
@@ -1282,12 +1290,12 @@ begin
     TextColorWhite;
     Writeln('res2go是一个将Lazarus/Delphi资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。');
     Writeln('');
-    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale]');
+    Writeln('用法：res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-scale]');
     Writeln('  -path       待转换的工程路径，可为空，默认以当前目录为准。');
     Writeln('  -outpath    输出目录，可为空，默认为当前目录。');
     Writeln('  -outmain    是否输出“main.go”，此为解析lpr或者dpr文件，默认为true。');
     Writeln('  -outres     输出一个Windows默认资源文件，如果存在则不创建，默认为true。');
-    Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认为true。');
+    //Writeln('  -outbytes   将gfm文件以字节形式保存至go文件中，默认为true。');
     Writeln('  -scale      缩放窗口选项，默认为false，即不缩放。');
     Writeln('  -encrypt    使用加密格式的*.gfm文件，默认为false。');
     Writeln('  -usestr     当-outbytes标识为true时，加上此参数会以字符形式输出字节，默认为true。 ');
@@ -1309,12 +1317,12 @@ begin
     TextColorWhite;
     Writeln('res2go is a Lazarus/Delphi resource window to go tool, can automatically resolve the lfm, dfm component name, component type and event name. Parse window information in lpr, dpr file.');
     Writeln('');
-    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-outbytes true] [-scale]');
+    Writeln('usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outres true] [-scale]');
     Writeln('  -path       The project path to be converted can be empty. The default is the current directory.');
     Writeln('  -outpath    Output directory, can be empty, the default is the current directory.');
     Writeln('  -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default is true.');
     Writeln('  -outres     Outputs a Windows default resource file, if it does not exist, the default is true.');
-    Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default is true.');
+    //Writeln('  -outbytes   Save the gfm file as a byte to the go file, the default is true.');
     Writeln('  -scale      The windoscale option, the default is false.');
     Writeln('  -encrypt    Using the encrypted format of the *.gfm file, the default is false.');
     Writeln('  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters, the default is true.');
