@@ -89,3 +89,4 @@ __recovery/
 /samples/wkeWebBrowser/wke.dll.mblink
 /samples/opengl
 /bin
+/Tools/libBuild
