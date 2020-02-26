@@ -14,10 +14,9 @@ usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outre
   -outpath    Output directory, can be empty, the default is the current directory.
   -outmain    Whether to output "main.go", this is parsing lpr or dpr file, the default is true.
   -outres     Outputs a Windows default resource file, if it does not exist, the default is true.
-  -outbytes   Save the gfm file as a byte to the go file, the default is true.
   -scale      The window scale option, the default is false.
   -encrypt    Using the encrypted format of the *.gfm file, the default is false.  
-  -usestr     When the -outbytes flag is true, adding this parameter will output the bytes as characters, the default is false. 
+  -usestr     adding this parameter will output the bytes as characters, the default is false. 
   -origfn     The generated .go file uses the original delphi/lazarus unit name, the default is false.
   -pause      After the end, pause according to the option, for example: -pause "ew", indicating that there is a fault or warning, you can choose "e", "w", "a" e=error, w=warning, a=ignore other options, always display.
   -pkgname    Specifies the name of the generated go file package. The default is main.
