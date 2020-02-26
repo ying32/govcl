@@ -72,8 +72,8 @@ var (
 func main() {
     vcl.Application.Initialize()
     vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(mainFormBytes, &mainForm)
-    vcl.Application.CreateForm("./about.gfm", &aboutForm)
+    vcl.Application.CreateForm(&mainForm)
+    vcl.Application.CreateForm(&aboutForm)
     vcl.Application.Run()
 }
 
