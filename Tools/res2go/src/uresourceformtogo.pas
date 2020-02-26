@@ -716,7 +716,10 @@ begin
         WLine('// 注册Form资源')
       else
         WLine('// Register Form Resources');
-      WLine(Format('var _ = vcl.RegisterFormResource(%s, &%s)', [LFormName, LVarName]));
+      if LIsFrame then
+        WLine(Format('var _ = vcl.RegisterFormResource(T%s{}, &%s)', [LFormName, LVarName]))
+      else
+        WLine(Format('var _ = vcl.RegisterFormResource(%s, &%s)', [LFormName, LVarName]));
     end;
     if AOrigFileName <> '' then
       LFileName := AOutPath + AOrigFileName + '.go'
