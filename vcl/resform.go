@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 //----------------------------------------
 // 加载文件或者内存中的窗口资源文件功能
@@ -156,12 +154,24 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 		resObj = NewFrame(owner)
 	}
 
+	// 查找并构建Form
+	findAndBuildForm := func(field interface{}) {
+		res, err := findFormResource(field)
+		// 找到了对应的Form资源
+		if err == nil {
+			fullSubComponent = true
+			afterBindSubComponentsEvents = false
+			loadFormResourceStream(*res.Data, resObj)
+		}
+	}
+
 	switch len(fields) {
 	case 1:
 		field1 = fields[0]
 		fullSubComponent = false
 		afterBindSubComponentsEvents = false
-
+		// 查找并构建Form
+		findAndBuildForm(field1)
 	case 2:
 		switch fields[1].(type) {
 		// 当第二个参数为bool时，表示不填充子组件，为true表示之后绑定事件
@@ -169,6 +179,8 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 			field1 = fields[0]
 			fullSubComponent = false
 			afterBindSubComponentsEvents = fields[1].(bool)
+			// 查找并构建Form
+			findAndBuildForm(field1)
 		default:
 			// 第二个参数类型不为bool时，填充子组件为true，之后绑定事件为false
 			field1 = fields[1]
@@ -178,9 +190,7 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 			case string:
 				ResFormLoadFromFile(fields[0].(string), CheckPtr(resObj))
 			case []byte:
-				mem := NewMemoryStreamFromBytes(fields[0].([]byte))
-				defer mem.Free()
-				ResFormLoadFromStream(CheckPtr(mem), CheckPtr(resObj))
+				loadFormResourceStream(fields[0].([]byte), resObj)
 			}
 		}
 	default:
@@ -188,4 +198,11 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 	}
 	fullFiledVal(resObj, field1, fullSubComponent, afterBindSubComponentsEvents)
 	return nil
+}
+
+// 从Stream中加载Form资源
+func loadFormResourceStream(data []byte, obj IComponent) {
+	mem := NewMemoryStreamFromBytes(data)
+	defer mem.Free()
+	ResFormLoadFromStream(CheckPtr(mem), CheckPtr(obj))
 }

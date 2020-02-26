@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -27,7 +25,7 @@ var globalFormScaled bool = false
 
 
   -------------------- 用法二--------------------------------------
-  2、vcl.Application.CreateForm(&mainForm)       // 无资源加载，只会绑定窗口的事件，不会绑定子组件事件
+  2、vcl.Application.CreateForm(&mainForm)       // 无资源或者自动加载对应类名的资源，当无资源时只会绑定窗口的事件，不会绑定子组件事件，有资源则自动绑定所有事件
   例：
     type TMainForm struct {
         *vcl.TForm
@@ -46,7 +44,7 @@ var globalFormScaled bool = false
 
 
   -------------------- 用法三--------------------------------------
-  3、vcl.Application.CreateForm(&mainForm, true) // 无资源加载，当第二个参数为true时在OnFormCreate调用完后会绑定子组件事件
+  3、vcl.Application.CreateForm(&mainForm, true) // 无资源或者自动加载对应类名的资源，当第二个参数为true时在OnFormCreate调用完后会绑定子组件事件(当查找到对应的资源则第二个参数无效)
   例：
     type TMainForm struct {
         *vcl.TForm
@@ -72,8 +70,10 @@ var globalFormScaled bool = false
 
 
   -------------------- 用法四--------------------------------------
+  // 将来准备废弃
   4、vcl.Application.CreateForm("form1.gfm", &mainForm)  // 从资源文件中填充子组件，并绑定所有事件
   -------------------- 用法五--------------------------------------
+  // 将来准备废弃
   5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件
 */
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
