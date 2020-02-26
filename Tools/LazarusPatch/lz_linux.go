@@ -1,5 +1,5 @@
 package main
 
 func GetLazarusPath() string {
-	return ""
+	return "/usr/share/lazarus/2.0.6/"
 }

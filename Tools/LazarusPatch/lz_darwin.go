@@ -1,5 +1,5 @@
 package main
 
 func GetLazarusPath() string {
-	return ""
+	return "/Developer/lazarus/"
 }
