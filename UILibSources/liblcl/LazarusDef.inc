@@ -243,6 +243,21 @@ begin
   Result := AObj.ShowInTaskBar;
 end;
 
+procedure Form_ScaleForPPI(AObj: TGoForm; ANewPPI: Integer); extdecl;
+begin
+  AObj.ScaleForPPI(ANewPPI);
+end;
+
+procedure Form_ScaleControlsForDpi(AObj: TGoForm; ANewPPI: Integer); extdecl;
+begin
+  // no support
+end;
+
+procedure Form_ScaleForCurrentDpi(AObj: TGoForm); extdecl;
+begin
+  AObj.ScaleForCurrentDpi;
+end;
+
 // mouse
 function Mouse_Instance: TMouse; extdecl;
 begin
@@ -957,7 +972,9 @@ exports
   Form_SetOnWndProc,
   Form_SetShowInTaskBar,
   Form_ShowInTaskBar,
-
+  Form_ScaleForPPI,
+  Form_ScaleControlsForDpi,
+  Form_ScaleForCurrentDpi,
 
 
   // TMouse

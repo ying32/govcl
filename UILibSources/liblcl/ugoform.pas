@@ -13,7 +13,7 @@ unit uGoForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, LMessages;
+  Classes, SysUtils, Forms, Controls, LMessages, LCLType;
 
 type
     // 消息过程定义
@@ -30,6 +30,8 @@ type
     procedure WndProc(var TheMessage: TLMessage); override;
   public
     constructor CreateNew(AOwner: TComponent; Num: Integer = 0); override;
+    procedure ScaleForPPI(ANewPPI: Integer);
+    procedure ScaleForCurrentDpi;
   published
     property OnWndProc: TWndProcEvent read FOnWndProc write FOnWndProc;
   end;
@@ -45,6 +47,33 @@ begin
   Font.Name := 'Tahoma';
   Font.Size := 8;
 {$ENDIF}
+end;
+
+procedure TGoForm.ScaleForPPI(ANewPPI: Integer);
+begin
+  if ANewPPI < 30 then
+    Exit;
+  if ANewPPI <> PixelsPerInch then
+  begin
+    AutoAdjustLayout(lapAutoAdjustForDPI, PixelsPerInch, ANewPPI,
+      MulDiv(Width, ANewPPI, PixelsPerInch),
+      MulDiv(Height, ANewPPI, PixelsPerInch));
+  end;
+end;
+
+procedure TGoForm.ScaleForCurrentDpi;
+begin
+  if not Scaled then
+  begin
+    Scaled := True;
+    Exit;
+  end;
+  if PixelsPerInch <> Monitor.PixelsPerInch then
+  begin
+    AutoAdjustLayout(lapAutoAdjustForDPI, PixelsPerInch, Monitor.PixelsPerInch,
+      MulDiv(Width, Monitor.PixelsPerInch, PixelsPerInch),
+      MulDiv(Height, Monitor.PixelsPerInch, PixelsPerInch));
+  end;
 end;
 
 procedure TGoForm.ProcessResource;
