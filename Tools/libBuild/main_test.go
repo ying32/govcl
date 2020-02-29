@@ -8,7 +8,7 @@ import (
 func TestAll(t *testing.T) {
 
 	testVCL(t)
-	testLCL(t)
+	//testLCL(t)
 }
 
 func testLCL(t *testing.T) {

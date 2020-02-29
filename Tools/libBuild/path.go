@@ -4,21 +4,28 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"runtime"
 	"strings"
 )
 
-func GetLibProjectFile(file string) string {
-	gopath := strings.Split(os.Getenv("GOPATH"), ";")
-	for _, path := range gopath {
-		pp := path + "/src/github.com/ying32/govcl/UILibSources"
+func GetGoVCLDir() string {
+	for _, path := range strings.Split(os.Getenv("GOPATH"), ";") {
+		pp := path + "/src/github.com/ying32/govcl"
 		if checkFileExists(pp) {
-			pp += file
-			if runtime.GOOS == "windows" {
-				return strings.Replace(pp, "/", "\\", -1)
-			} else {
-				return strings.Replace(pp, "\\", "/", -1)
-			}
+			return pp
+		}
+	}
+	return ""
+}
+
+func GetLibProjectFile(file string) string {
+	path := GetGoVCLDir() + "/UILibSources" + file
+	if checkFileExists(path) {
+		if runtime.GOOS == "windows" {
+			return strings.Replace(path, "/", "\\", -1)
+		} else {
+			return strings.Replace(path, "\\", "/", -1)
 		}
 	}
 	return ""
@@ -46,6 +53,11 @@ func fixDirName(dir string) string {
 	return dir
 }
 
+func ExtractFilePath(path string) string {
+	filename := filepath.Base(path)
+	return path[:len(path)-len(filename)]
+}
+
 func execCmd(objFileDir, cmdStr string) error {
 	extName := ""
 	if runtime.GOOS == "windows" {
@@ -53,7 +65,10 @@ func execCmd(objFileDir, cmdStr string) error {
 	}
 	bashFileName := objFileDir + string(os.PathSeparator) + "compile" + extName
 	if err := ioutil.WriteFile(bashFileName, []byte(cmdStr), 0755); err != nil {
-		os.Chmod(bashFileName, 0755)
+		return err
+	}
+	if err := os.Chmod(bashFileName, 0755); err != nil {
+		return err
 	}
 	cmd := exec.Command(bashFileName)
 	cmd.Stderr = os.Stderr
