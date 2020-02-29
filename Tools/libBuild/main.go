@@ -2,8 +2,7 @@ package main
 
 import (
 	"flag"
-	"os"
-	"strings"
+	"log"
 )
 
 var (
@@ -13,24 +12,8 @@ var (
 )
 
 func main() {
-	// HKEY_CURRENT_USER\Software\Embarcadero\BDS\19.0
-
-}
-
-func checkFileExists(path string) bool {
-	_, err := os.Stat(path)
-	if err == nil {
-		return true
+	flag.Parse()
+	if *libType == "" {
+		log.Fatal("lib参数不能为空。")
 	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	return false
-}
-
-func fixDirName(dir string) string {
-	if strings.HasSuffix(dir, "/") || strings.HasSuffix(dir, "\\") {
-		dir = dir[:len(dir)-1]
-	}
-	return dir
 }

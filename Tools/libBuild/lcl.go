@@ -81,5 +81,5 @@ func buildLCL(fpcExe, arch, platform, lazarusDir, projectFileName, objFileDir, b
 	}
 
 	fmt.Println(buf.String())
-	return nil
+	return execCmd(objFileDir, buf.String())
 }

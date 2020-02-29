@@ -62,5 +62,5 @@ func buildVCL(bsdDir, UserDir, arch, projectFileName, objFileDir, binFileDir str
 	}
 
 	fmt.Println(buf.String())
-	return nil
+	return execCmd(objFileDir, buf.String())
 }
