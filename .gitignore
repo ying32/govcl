@@ -90,3 +90,9 @@ __recovery/
 /samples/opengl
 /bin
 /samples/markdownEd/icons/
+/samples/cef2goTest
+/samples/eventsTest
+*.res
+/samples/testbindevents
+/samples/memloaddll/defaultRes_windows_386.syso
+/samples/memloaddll/defaultRes_windows_amd64.syso
