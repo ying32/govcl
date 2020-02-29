@@ -8,7 +8,7 @@ import (
 func TestAll(t *testing.T) {
 
 	testVCL(t)
-	//testLCL(t)
+	testLCL(t)
 }
 
 func testLCL(t *testing.T) {
@@ -20,7 +20,6 @@ func testLCL(t *testing.T) {
 	// 32位的
 	t.Log(buildLCL(fpcExe,
 		"i386",
-		"win32",
 		lazarusDir,
 		libSrcFileName,
 		GetObjFileDir("liblcl"),
@@ -29,11 +28,28 @@ func testLCL(t *testing.T) {
 	// 64位的
 	t.Log(buildLCL(fpcExe,
 		"x86_64",
-		"win64",
 		lazarusDir,
 		libSrcFileName,
 		GetObjFileDir("liblcl"),
 		"F:/Golang/src/github.com/ying32/govcl/Tools/libBuild/x64"))
+
+	// 64位的 linux
+	//t.Log(buildLCL(fpcExe,
+	//	"x86_64",
+	//	"linux",
+	//	lazarusDir,
+	//	libSrcFileName,
+	//	GetObjFileDir("liblcl"),
+	//	"F:/Golang/src/github.com/ying32/govcl/Tools/libBuild/x64"))
+
+	// 64位的 macOS
+	//t.Log(buildLCL(fpcExe,
+	//	"x86_64",
+	//	"darwin",
+	//	lazarusDir,
+	//	libSrcFileName,
+	//	GetObjFileDir("liblcl"),
+	//	"F:/Golang/src/github.com/ying32/govcl/Tools/libBuild/x64"))
 }
 
 func testVCL(t *testing.T) {

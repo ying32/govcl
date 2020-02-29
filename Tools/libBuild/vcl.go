@@ -24,7 +24,9 @@ func buildVCL(bsdDir, UserDir, arch, projectFileName, objFileDir, binFileDir str
 	if !checkFileExists(projectFileName) {
 		return errors.New("libvcl工程文件未找到。")
 	}
-
+	if arch != "32" && arch != "64" {
+		return errors.New("arch错误，只能为32或者64")
+	}
 	bsdDir = fixDirName(bsdDir)
 	objFileDir = fixDirName(objFileDir)
 	binFileDir = fixDirName(binFileDir)

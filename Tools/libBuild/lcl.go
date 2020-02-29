@@ -13,7 +13,7 @@ const (
 	lclCompileCommandline = "\"{{.fpc}}\" -T{{.platform}} -P{{.arch}} -MObjFPC -Scghi -CX -Cg -O4 -XX -l -vewnhibq -Fi{{.objFileDir}}/lib/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/components/printers/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/lazcontrols/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/cairocanvas/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/lcl/units/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/DateTimeCtrls/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/lcl/units/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/components/lazutils/lib/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/packager/units/{{.arch}}-{{.platform}} -Fu{{.objFileDir}}/ -FU{{.objFileDir}}/lib/{{.arch}}-{{.platform}}/ -FE{{.binFileDir}}/ -o{{.binFileDir}}/liblcl.{{.ext}} -dLCL -dLCL{{.lclType}} \"{{.projectFileName}}\""
 )
 
-func buildLCL(fpcExe, arch, platform, lazarusDir, projectFileName, objFileDir, binFileDir string) error {
+func buildLCL(fpcExe, arch, lazarusDir, projectFileName, objFileDir, binFileDir string) error {
 
 	// lcl.lpi 这里面要修改版本号之类的
 	// ProductVersion="1.2.8.0"
@@ -23,6 +23,9 @@ func buildLCL(fpcExe, arch, platform, lazarusDir, projectFileName, objFileDir, b
 	}
 	if !checkFileExists(projectFileName) {
 		return errors.New("liblcl工程文件未找到。")
+	}
+	if arch != "i386" && arch != "x86_64" {
+		return errors.New("arch错误，只能为i386或者x86_64")
 	}
 
 	lazarusDir = fixDirName(lazarusDir)
@@ -36,18 +39,29 @@ func buildLCL(fpcExe, arch, platform, lazarusDir, projectFileName, objFileDir, b
 
 	extName := ""
 	lclType := ""
+	platform := ""
 	switch runtime.GOOS {
 	case "linux":
 		extName = "so"
 		lclType = "gtk2"
+		platform = "linux"
 
 	case "darwin":
 		extName = "dylib"
 		lclType = "cocoa"
+		if arch == "i386" {
+			lclType = "carbon"
+		}
+		platform = "darwin"
 
 	default:
 		extName = "dll"
 		lclType = "win32"
+		if arch == "i386" {
+			platform = "win32"
+		} else {
+			platform = "win64"
+		}
 	}
 
 	var buf bytes.Buffer
