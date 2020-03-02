@@ -92,10 +92,21 @@ func runWithMacOSApp() error {
 		}
 
 		liblclFileName := macOSDir + "/liblcl.dylib"
+		// 文件不存在，复制
 		if !fileExists(liblclFileName) {
 			libFileName := getdylib()
 			if fileExists(libFileName) {
 				copyFile(libFileName, liblclFileName)
+			}
+		} else {
+			// 文件存在，对比后更新
+			libFileName := getdylib()
+			if fileExists(libFileName) {
+				f1, _ := os.Stat(libFileName)
+				f2, _ := os.Stat(liblclFileName)
+				if f1.Size() != f2.Size() {
+					copyFile(libFileName, liblclFileName)
+				}
 			}
 		}
 
