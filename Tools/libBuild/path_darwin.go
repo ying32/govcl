@@ -1,7 +1,7 @@
 package main
 
-func GetLazarusDir() string {
-	return ""
+func GetLazarusPath() string {
+	return "/Developer/lazarus/"
 }
 
 func GetBsdDir() (bsdDir string, userDir string) {
