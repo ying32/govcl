@@ -72,6 +72,7 @@ func execCmd(objFileDir, cmdStr string) error {
 		extName = ".bat"
 	} else {
 		extName = ".sh"
+		cmdStr = "#!/bin/sh\n" + cmdStr
 	}
 	bashFileName := objFileDir + string(os.PathSeparator) + "compile" + extName
 	if err := ioutil.WriteFile(bashFileName, []byte(cmdStr), 0755); err != nil {

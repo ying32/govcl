@@ -25,12 +25,12 @@ func testLCL(t *testing.T) {
 
 	case "linux":
 		// 64位的 linux
-		t.Log(buildLCL("x86_64", "/home/ying32/genliblcl2"))
+		t.Log(buildLCL("x86_64", "/home/ying32/genliblcl2/bin"))
 
 	case "darwin":
 		usrHome := os.Getenv("HOME")
 		// 64位的 macOS
-		t.Log(buildLCL("x86_64", usrHome+"/godev/gosrc/bin/"))
+		t.Log(buildLCL("x86_64", usrHome+"/godev/gosrc/bin"))
 	}
 
 }
