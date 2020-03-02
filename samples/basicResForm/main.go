@@ -2,12 +2,11 @@ package main
 
 import (
 	"github.com/ying32/govcl/vcl"
+	_ "github.com/ying32/govcl/vcl/exts/macapp"
 	_ "github.com/ying32/govcl/vcl/exts/winappres"
 )
 
 func main() {
-	// mac下发布时去掉，只在测试时使用
-	//tools.RunWithMacOSApp()
 
 	vcl.Application.SetFormScaled(true)
 	vcl.Application.Initialize()
