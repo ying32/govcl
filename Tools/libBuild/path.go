@@ -17,6 +17,12 @@ func GetGoVCLDir() string {
 			return pp
 		}
 	}
+	for _, path := range strings.Split(os.Getenv("GOROOT"), ";") {
+		pp := path + "/src/github.com/ying32/govcl"
+		if checkFileExists(pp) {
+			return pp
+		}
+	}
 	return ""
 }
 
