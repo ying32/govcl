@@ -206,7 +206,7 @@ func main() {
 * Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).  
   * Go environment variable: `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`  
 
-* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?title=APP%E6%89%93%E5%8C%85&parent=FAQ%2FMac-OS)  
+* MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420)  
   * Go environment variable: `GOARCH = amd64` `GOOS = darwin` `CGO_ENABLED=1`  
 ---  
 ### Note:  
