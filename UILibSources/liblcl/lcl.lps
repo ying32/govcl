@@ -36,6 +36,12 @@
               <ExecutableType Value="Library"/>
             </Options>
           </Linking>
+          <Other>
+            <CustomOptions Value="-dUSED_BY_LAZLOGGER_DUMMY"/>
+            <OtherDefines Count="1">
+              <Define0 Value="USED_BY_LAZLOGGER_DUMMY"/>
+            </OtherDefines>
+          </Other>
         </CompilerOptions>
       </Item1>
       <Item2 Name="Linux64">
