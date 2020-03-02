@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/ying32/govcl/vcl"
+	_ "github.com/ying32/govcl/vcl/exts/winappres"
 )
 
 func main() {
