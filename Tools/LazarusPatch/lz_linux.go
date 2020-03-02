@@ -1,5 +1,21 @@
 package main
 
+import (
+	"io/ioutil"
+	"regexp"
+)
+
 func GetLazarusPath() string {
-	return "/usr/share/lazarus/2.0.6/"
+	envFile := szPath + "/etc/lazarus/environmentoptions.xml"
+	if checkFileExists(envFile) {
+		bs, err := ioutil.ReadFile(envFile)
+		if err == nil {
+			reg := regexp.MustCompile(`\<LazarusDirectory Value\=\"(.+?)"\>`)
+			matchs := reg.FindSubmatch(bs)
+			if len(matchs) >= 2 {
+				lazarusDir = string(matchs[1])
+			}
+		}
+	}
+	return ""
 }
