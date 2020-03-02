@@ -132,7 +132,6 @@ const
 
 {$I supportsComponents.inc}
 
-{$I winResData.inc}
 
 var
 {$IFDEF MSWINDOWS}
@@ -206,22 +205,6 @@ begin
 {$ELSE}
   Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) > 0;
 {$ENDIF}
-end;
-
-procedure WriteDefaultWindowsRes(APath: string);
-var
-  LFileStream: TFileStream;
-  LFileName: string;
-begin
-  LFileName := APath + 'defaultRes_windows.syso';
-  if FileExists(LFileName) then
-    Exit;
-  LFileStream := TFileStream.Create(LFileName, fmCreate);
-  try
-    LFileStream.Write(WinResData[0], Length(WinResData));
-  finally
-    LFileStream.Free
-  end;
 end;
 
 // 获取指命令行的一下个参数
@@ -975,7 +958,7 @@ var
   S, LVarName, LFormName, LSaveFileName: string;
   LP: Integer;
   LFile: TStringStream;
-  LMainFileExists: Boolean;
+  LMainFileExists, LOutWinRes: Boolean;
   LForms: array of string;
   LIndex, I: Integer;
   LPkg: string;
@@ -1004,6 +987,13 @@ begin
       LMainDotGo.Add('');
       LMainDotGo.Add('import (');
       LMainDotGo.Add('    "github.com/ying32/govcl/vcl"');
+
+      LOutWinRes := True;
+      if FindCmdLineSwitch('outres') then
+        LOutWinRes := SameText(GetNextParam('outres'), 'True');
+      // winappres
+      if LOutWinRes then
+         LMainDotGo.Add('    _ "github.com/ying32/govcl/vcl/exts/winappres"');
       LMainDotGo.Add(')');
       LMainDotGo.Add('');
       LMainDotGo.Add('func main() {');
@@ -1111,7 +1101,7 @@ type
 var
   LRec: {$IFDEF FPC}TRawbyteSearchRec{$ELSE}TSearchRec{$ENDIF};
   LPath, LOutPath, LExt, LFileName, LPause: string;
-  LConvPro, LOutWinRes, LWatch: Boolean;
+  LConvPro, LWatch: Boolean;
   LWatchList: TWatchFileList;
 
   // 从监视列表中查找
@@ -1172,9 +1162,6 @@ begin
     LConvPro := True;
     if FindCmdLineSwitch('outmain') then
       LConvPro := SameText(GetNextParam('outmain'), 'True');
-    LOutWinRes := True;
-    if FindCmdLineSwitch('outres') then
-      LOutWinRes := SameText(GetNextParam('outres'), 'True');
 
     LPath := '.' +  {$IFDEF FPC}DirectorySeparator{$ELSE}PathDelim{$ENDIF};
     if FindCmdLineSwitch('path') then
@@ -1204,8 +1191,8 @@ begin
         LOutPath := LOutPath + PathDelim;
     end;
 
-    if LOutWinRes then
-      WriteDefaultWindowsRes(LOutPath);
+    //if LOutWinRes then
+    //  WriteDefaultWindowsRes(LOutPath);
     if SysIsZhCN then
       Writeln('转换完成。')
     else
