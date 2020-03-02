@@ -1,6 +1,6 @@
 package main
 
-func GetLazarusPath() (lazarusDir string, fpcExe string) {
+func GetLazarusDir() (lazarusDir string, fpcExe string) {
 	return "/Developer/lazarus/", "/usr/local/bin/fpc"
 }
 
