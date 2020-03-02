@@ -11,19 +11,20 @@ import (
 )
 
 func GetGoVCLDir() string {
-	for _, path := range strings.Split(os.Getenv("GOPATH"), ";") {
-		pp := path + "/src/github.com/ying32/govcl"
-		if checkFileExists(pp) {
-			return pp
+	getPath := func(key string) string {
+		for _, path := range strings.Split(os.Getenv(key), ";") {
+			pp := path + "/src/github.com/ying32/govcl"
+			if checkFileExists(pp) {
+				return pp
+			}
 		}
+		return ""
 	}
-	for _, path := range strings.Split(os.Getenv("GOROOT"), ";") {
-		pp := path + "/src/github.com/ying32/govcl"
-		if checkFileExists(pp) {
-			return pp
-		}
+	ret := getPath("GOPATH")
+	if ret == "" {
+		return getPath("GOROOT")
 	}
-	return ""
+	return ret
 }
 
 func GetLibProjectFile(file string) string {
@@ -69,6 +70,8 @@ func execCmd(objFileDir, cmdStr string) error {
 	extName := ""
 	if runtime.GOOS == "windows" {
 		extName = ".bat"
+	} else {
+		extName = ".sh"
 	}
 	bashFileName := objFileDir + string(os.PathSeparator) + "compile" + extName
 	if err := ioutil.WriteFile(bashFileName, []byte(cmdStr), 0755); err != nil {
