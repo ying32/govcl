@@ -1182,13 +1182,14 @@ end;
 
 function TMiniWebview.ShowContextMenu(const dwID: DWORD; const ppt: PPOINT; const pcmdtReserved: IUnknown; const pdispReserved: IDispatch): HRESULT;
 begin
-  Result := S_OK;
+  Result := S_FALSE;
 end;
 
 function TMiniWebview.GetHostInfo(var pInfo: TDocHostUIInfo): HRESULT;
 begin
   pInfo.cbSize := sizeof(TDocHostUIInfo);
-  pInfo.dwFlags := DOCHOSTUIFLAG_DIALOG or DOCHOSTUIFLAG_DISABLE_HELP_MENU or
+  pInfo.dwFlags := 0;
+  pInfo.dwFlags :={ DOCHOSTUIFLAG_DIALOG or }DOCHOSTUIFLAG_DISABLE_HELP_MENU or
     DOCHOSTUIFLAG_NO3DBORDER or DOCHOSTUIFLAG_THEME;
   // 这里暂时不能禁用滚动啊，不然鼠标没法用了
   //pInfo.dwFlags := pInfo.dwFlags or DOCHOSTUIFLAG_SCROLL_NO;
@@ -1229,7 +1230,7 @@ end;
 
 function TMiniWebview.ResizeBorder(const prcBorder: PRECT; const pUIWindow: IOleInPlaceUIWindow; const FrameWindow: BOOL): HRESULT;
 begin
-  Result := S_OK;
+  Result := S_FALSE;
 end;
 
 function TMiniWebview.TranslateAccelerator(const lpMsg: PMSG; const pguidCmdGroup:  PGUID; const nCmdID: DWORD): HRESULT;
