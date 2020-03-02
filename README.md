@@ -210,7 +210,7 @@ func main() {
 * Linux: 复制"liblcl.so"可执行文件目录下(也可复制liblcl.so到`/usr/lib/`目录中，作为公共库使用)。  
   * Go环境变量： `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`
 
-* MacOS: 复制"liblcl.dylib"可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420 
+* MacOS: 复制"liblcl.dylib"可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420)   
   * Go环境变量： `GOARCH = amd64` `GOOS = darwin` `CGO_ENABLED=1`  
 
 
