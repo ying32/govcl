@@ -13,10 +13,10 @@ const (
 	vclCompileCommandline = `"{{.bsdDir}}\bin\dcc{{.arch}}.exe" -$Z4 {{if eq .arch "64"}}-$B+ {{end}}-$D0 -$L- -$Y- --no-config -B -Q -TX.dll -AGenerics.Collections=System.Generics.Collections;Generics.Defaults=System.Generics.Defaults;WinTypes=Winapi.Windows;WinProcs=Winapi.Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE -DLIBVCL;RELEASE -E"{{.binFileDir}}" -I"{{.bsdDir}}\lib\Win{{.arch}}\release";{{.UserDir}}\Imports;"{{.bsdDir}}\Imports";{{.UserDir}}\Dcp;"{{.bsdDir}}\include"; -LE{{.UserDir}}\Bpl -LN{{.UserDir}}\Dcp -NU"{{.objFileDir}}\Win{{.arch}}\Release" -NSWinapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell; -O"{{.bsdDir}}\lib\Win{{.arch}}\release";{{.UserDir}}\Imports;"{{.bsdDir}}\Imports";{{.UserDir}}\Dcp;"{{.bsdDir}}\include"; -R"{{.bsdDir}}\lib\Win{{.arch}}\release";{{.UserDir}}\Imports;"{{.bsdDir}}\Imports";{{.UserDir}}\Dcp;"{{.bsdDir}}\include"; -U"{{.bsdDir}}\lib\Win{{.arch}}\release";{{.UserDir}}\Imports;"{{.bsdDir}}\Imports";{{.UserDir}}\Dcp;"{{.bsdDir}}\include"; -NB{{.UserDir}}\Dcp -NH{{.UserDir}}\hpp\Win{{.arch}} -NO"{{.objFileDir}}\Win{{.arch}}\Release" "{{.projectFileName}}"&&Move /Y "{{.binFileDir}}\vcl.dll" "{{.binFileDir}}\libvcl{{if eq .arch "64"}}x64{{end}}.dll"`
 )
 
-func buildVCL(bsdDir, UserDir, arch, projectFileName, objFileDir, binFileDir string) error {
+func buildVCL(arch, binFileDir string) error {
 
-	// lcl.lpi 这里面要修改版本号之类的
-	// ProductVersion="1.2.8.0"
+	bsdDir, userDir := GetBsdDir()
+	projectFileName := GetLibProjectFile("/libvcl/vcl.dpr")
 
 	if !checkFileExists(bsdDir) {
 		return errors.New("未找到bsd目录。")
@@ -28,9 +28,9 @@ func buildVCL(bsdDir, UserDir, arch, projectFileName, objFileDir, binFileDir str
 		return errors.New("arch错误，只能为32或者64")
 	}
 	bsdDir = fixDirName(bsdDir)
-	objFileDir = fixDirName(objFileDir)
+	objFileDir := fixDirName(GetObjFileDir("libvcl"))
 	binFileDir = fixDirName(binFileDir)
-	UserDir = fixDirName(UserDir)
+	userDir = fixDirName(userDir)
 
 	fmt.Println("bsdDir:", bsdDir)
 	fmt.Println("projectFileName: ", projectFileName)
@@ -47,7 +47,7 @@ func buildVCL(bsdDir, UserDir, arch, projectFileName, objFileDir, binFileDir str
 		"projectFilePath": ExtractFilePath(projectFileName),
 		"objFileDir":      objFileDir, // 编译时中间文件目录
 		"binFileDir":      binFileDir,
-		"UserDir":         UserDir,
+		"UserDir":         userDir,
 	})
 
 	// libvcl二进制输出目录不存在，则创建

@@ -1,73 +1,45 @@
 package main
 
 import (
-	"fmt"
+	"os"
+	"runtime"
 	"testing"
 )
 
 func TestAll(t *testing.T) {
-
-	testVCL(t)
+	if runtime.GOOS == "windows" {
+		testVCL(t)
+	}
 	testLCL(t)
 }
 
 func testLCL(t *testing.T) {
 
-	lazarusDir := GetLazarusDir()
-	fpcExe := fmt.Sprintf("%s\\fpc\\3.0.4\\bin\\x86_64-win64\\fpc.exe", lazarusDir)
-	libSrcFileName := GetLibProjectFile("/liblcl/lcl.lpr")
+	switch runtime.GOOS {
+	case "windows":
+		// 32位的
+		t.Log(buildLCL("i386", "F:/Golang/src/github.com/ying32/govcl/Tools/libBuild"))
 
-	// 32位的
-	t.Log(buildLCL(fpcExe,
-		"i386",
-		lazarusDir,
-		libSrcFileName,
-		GetObjFileDir("liblcl"),
-		"F:/Golang/src/github.com/ying32/govcl/Tools/libBuild"))
+		// 64位的
+		t.Log(buildLCL("x86_64", "F:/Golang/src/github.com/ying32/govcl/Tools/libBuild/x64"))
 
-	// 64位的
-	t.Log(buildLCL(fpcExe,
-		"x86_64",
-		lazarusDir,
-		libSrcFileName,
-		GetObjFileDir("liblcl"),
-		"F:/Golang/src/github.com/ying32/govcl/Tools/libBuild/x64"))
+	case "linux":
+		// 64位的 linux
+		t.Log(buildLCL("x86_64", "/home/ying32/genliblcl2"))
 
-	// 64位的 linux
-	//t.Log(buildLCL(fpcExe,
-	//	"x86_64",
-	//	"linux",
-	//	lazarusDir,
-	//	libSrcFileName,
-	//	GetObjFileDir("liblcl"),
-	//	"F:/Golang/src/github.com/ying32/govcl/Tools/libBuild/x64"))
+	case "darwin":
+		usrHome := os.Getenv("HOME")
+		// 64位的 macOS
+		t.Log(buildLCL("x86_64", usrHome+"/godev/gosrc/bin/"))
+	}
 
-	// 64位的 macOS
-	//t.Log(buildLCL(fpcExe,
-	//	"x86_64",
-	//	"darwin",
-	//	lazarusDir,
-	//	libSrcFileName,
-	//	GetObjFileDir("liblcl"),
-	//	"F:/Golang/src/github.com/ying32/govcl/Tools/libBuild/x64"))
 }
 
 func testVCL(t *testing.T) {
 
-	bsdDir, userDir := GetBsdDir()
-	libSrcFileName := GetLibProjectFile("/libvcl/vcl.dpr")
+	//   f:\program files (x86)\embarcadero\studio\19.0\bin\cgrc.exe -c65001 vcl.vrc -fovcl.res
+	t.Log(buildVCL("32", "F:\\Golang\\src\\github.com\\ying32\\govcl\\Tools\\libBuild"))
 
 	//   f:\program files (x86)\embarcadero\studio\19.0\bin\cgrc.exe -c65001 vcl.vrc -fovcl.res
-	t.Log(buildVCL(bsdDir, userDir,
-		"32",
-		libSrcFileName,
-		GetObjFileDir("libvcl"),
-		"F:\\Golang\\src\\github.com\\ying32\\govcl\\Tools\\libBuild"))
-
-	//   f:\program files (x86)\embarcadero\studio\19.0\bin\cgrc.exe -c65001 vcl.vrc -fovcl.res
-	t.Log(buildVCL(bsdDir, userDir,
-		"64",
-		libSrcFileName,
-		GetObjFileDir("libvcl"),
-		"F:\\Golang\\src\\github.com\\ying32\\govcl\\Tools\\libBuild"))
+	t.Log(buildVCL("64", "F:\\Golang\\src\\github.com\\ying32\\govcl\\Tools\\libBuild"))
 }

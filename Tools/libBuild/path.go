@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strings"
 )
@@ -75,4 +76,27 @@ func execCmd(objFileDir, cmdStr string) error {
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	return cmd.Run()
+}
+
+func readLazarusEnvFile(szPath string) (lazarusDir string, fpcExe string) {
+	envFile := szPath + "\\lazarus\\environmentoptions.xml"
+	if runtime.GOOS != "windows" {
+		envFile = strings.Replace(envFile, "\\", "/", -1)
+	}
+	if checkFileExists(envFile) {
+		bs, err := ioutil.ReadFile(envFile)
+		if err == nil {
+			reg := regexp.MustCompile(`\<LazarusDirectory Value\=\"(.+?)"\>`)
+			matchs := reg.FindSubmatch(bs)
+			if len(matchs) >= 2 {
+				lazarusDir = string(matchs[1])
+			}
+			reg = regexp.MustCompile(`\<CompilerFilename Value\=\"(.+?)\"\>`)
+			matchs = reg.FindSubmatch(bs)
+			if len(matchs) >= 2 {
+				fpcExe = string(matchs[1])
+			}
+		}
+	}
+	return
 }

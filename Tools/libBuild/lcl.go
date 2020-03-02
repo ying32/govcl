@@ -10,10 +10,13 @@ import (
 )
 
 const (
-	lclCompileCommandline = "\"{{.fpc}}\" -T{{.platform}} -P{{.arch}} -MObjFPC -Scghi -CX -Cg -O4 -XX -l -vewnhibq -Fi{{.objFileDir}}/lib/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/components/printers/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/lazcontrols/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/cairocanvas/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/lcl/units/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/DateTimeCtrls/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/lcl/units/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/components/lazutils/lib/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/packager/units/{{.arch}}-{{.platform}} -Fu{{.objFileDir}}/ -FU{{.objFileDir}}/lib/{{.arch}}-{{.platform}}/ -FE{{.binFileDir}}/ -o{{.binFileDir}}/liblcl.{{.ext}} -dLCL -dLCL{{.lclType}} -dUSED_BY_LAZLOGGER_DUMMY \"{{.projectFileName}}\""
+	lclCompileCommandline = `"{{.fpc}}" -T{{.platform}} -P{{.arch}} -MObjFPC -Scghi -CX -Cg -O4 -XX{{if eq .platform "darwin"}} -k-framework -kCocoa{{end}} -l -vewnhibq -Fi{{.objFileDir}}/lib/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/components/printers/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/lazcontrols/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/cairocanvas/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/lcl/units/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/components/DateTimeCtrls/lib/{{.arch}}-{{.platform}}/{{.lclType}} -Fu{{.lazarusDir}}/lcl/units/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/components/lazutils/lib/{{.arch}}-{{.platform}} -Fu{{.lazarusDir}}/packager/units/{{.arch}}-{{.platform}} -Fu{{.objFileDir}}/ -FU{{.objFileDir}}/lib/{{.arch}}-{{.platform}}/ -FE{{.binFileDir}}/ -o{{.binFileDir}}/liblcl.{{.ext}} -dLCL -dLCL{{.lclType}} -dUSED_BY_LAZLOGGER_DUMMY "{{.projectFileName}}"`
 )
 
-func buildLCL(fpcExe, arch, lazarusDir, projectFileName, objFileDir, binFileDir string) error {
+func buildLCL(arch, binFileDir string) error {
+
+	lazarusDir, fpcExe := GetLazarusDir()
+	projectFileName := GetLibProjectFile("/liblcl/lcl.lpr")
 
 	// lcl.lpi 这里面要修改版本号之类的
 	// ProductVersion="1.2.8.0"
@@ -29,7 +32,7 @@ func buildLCL(fpcExe, arch, lazarusDir, projectFileName, objFileDir, binFileDir 
 	}
 
 	lazarusDir = fixDirName(lazarusDir)
-	objFileDir = fixDirName(objFileDir)
+	objFileDir := fixDirName(GetObjFileDir("liblcl"))
 	binFileDir = fixDirName(binFileDir)
 
 	fmt.Println("lazarusDir:", lazarusDir)
@@ -49,9 +52,9 @@ func buildLCL(fpcExe, arch, lazarusDir, projectFileName, objFileDir, binFileDir 
 	case "darwin":
 		extName = "dylib"
 		lclType = "cocoa"
-		if arch == "i386" {
-			lclType = "carbon"
-		}
+		//if arch == "i386" {
+		//	lclType = "carbon"
+		//}
 		platform = "darwin"
 
 	default:

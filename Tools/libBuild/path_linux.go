@@ -1,7 +1,8 @@
 package main
 
-func GetLazarusPath() string {
-	return "/usr/share/lazarus/2.0.6/"
+func GetLazarusDir() (lazarusDir string, fpcExe string) {
+	lazarusDir, fpcExe = readLazarusEnvFile("/etc")
+	return
 }
 
 func GetBsdDir() (bsdDir string, userDir string) {
