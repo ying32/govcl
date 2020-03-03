@@ -6,14 +6,14 @@ import (
 )
 
 func GetLazarusPath() string {
-	envFile := szPath + "/etc/lazarus/environmentoptions.xml"
+	envFile := "/etc/lazarus/environmentoptions.xml"
 	if checkFileExists(envFile) {
 		bs, err := ioutil.ReadFile(envFile)
 		if err == nil {
 			reg := regexp.MustCompile(`\<LazarusDirectory Value\=\"(.+?)"\>`)
 			matchs := reg.FindSubmatch(bs)
 			if len(matchs) >= 2 {
-				lazarusDir = string(matchs[1])
+				return string(matchs[1])
 			}
 		}
 	}
