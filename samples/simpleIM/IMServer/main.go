@@ -51,9 +51,9 @@ func main() {
 }
 
 func updateOnlineClient() {
-	//vcl.ThreadSync(func() {
-	onlineClientlbl.SetCaption(fmt.Sprintf("当前在线人数：%d", onlineClientCount))
-	//})
+	vcl.ThreadSync(func() {
+		onlineClientlbl.SetCaption(fmt.Sprintf("当前在线人数：%d", onlineClientCount))
+	})
 }
 
 func initTCP() {
