@@ -1,13 +1,4 @@
 
-//----------------------------------------
-// 
-// Copyright © ying32. All Rights Reserved.
-// 
-// Licensed under Apache License 2.0
-//
-//----------------------------------------
-
-
 package api
 
 import (
@@ -805,6 +796,15 @@ func Form_SetUseDockManager(obj uintptr, value bool) {
    form_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
+func Form_GetDefaultMonitor(obj uintptr) TDefaultMonitor {
+    ret, _, _ := form_GetDefaultMonitor.Call(obj)
+    return TDefaultMonitor(ret)
+}
+
+func Form_SetDefaultMonitor(obj uintptr, value TDefaultMonitor) {
+   form_SetDefaultMonitor.Call(obj, uintptr(value))
+}
+
 func Form_GetDockSite(obj uintptr) bool {
     ret, _, _ := form_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -1157,6 +1157,11 @@ func Form_GetModalResult(obj uintptr) TModalResult {
 
 func Form_SetModalResult(obj uintptr, value TModalResult) {
    form_SetModalResult.Call(obj, uintptr(value))
+}
+
+func Form_GetMonitor(obj uintptr) uintptr {
+    ret, _, _ := form_GetMonitor.Call(obj)
+    return ret
 }
 
 func Form_GetLeft(obj uintptr) int32 {

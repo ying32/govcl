@@ -726,6 +726,16 @@ func (f *TForm) SetUseDockManager(value bool) {
     Form_SetUseDockManager(f.instance, value)
 }
 
+// DefaultMonitor
+func (f *TForm) DefaultMonitor() TDefaultMonitor {
+    return Form_GetDefaultMonitor(f.instance)
+}
+
+// SetDefaultMonitor
+func (f *TForm) SetDefaultMonitor(value TDefaultMonitor) {
+    Form_SetDefaultMonitor(f.instance, value)
+}
+
 // DockSite
 // CN: 获取停靠站点。
 // EN: Get Docking site.
@@ -1270,6 +1280,11 @@ func (f *TForm) ModalResult() TModalResult {
 // EN: .
 func (f *TForm) SetModalResult(value TModalResult) {
     Form_SetModalResult(f.instance, value)
+}
+
+// Monitor
+func (f *TForm) Monitor() *TMonitor {
+    return MonitorFromInst(Form_GetMonitor(f.instance))
 }
 
 // Left

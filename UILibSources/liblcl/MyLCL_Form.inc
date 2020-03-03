@@ -422,6 +422,16 @@ begin
   AObj.UseDockManager := AValue;
 end;
 
+function Form_GetDefaultMonitor(AObj: TForm): TDefaultMonitor; extdecl;
+begin
+  Result :=  AObj.DefaultMonitor;
+end;
+
+procedure Form_SetDefaultMonitor(AObj: TForm; AValue: TDefaultMonitor); extdecl;
+begin
+  AObj.DefaultMonitor := AValue;
+end;
+
 function Form_GetDockSite(AObj: TForm): LongBool; extdecl;
 begin
   Result :=  AObj.DockSite;
@@ -860,6 +870,11 @@ begin
   AObj.ModalResult := AValue;
 end;
 
+function Form_GetMonitor(AObj: TForm): TMonitor; extdecl;
+begin
+  Result :=  AObj.Monitor;
+end;
+
 function Form_GetLeft(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.Left;
@@ -1179,6 +1194,8 @@ exports
   Form_SetConstraints,
   Form_GetUseDockManager,
   Form_SetUseDockManager,
+  Form_GetDefaultMonitor,
+  Form_SetDefaultMonitor,
   Form_GetDockSite,
   Form_SetDockSite,
   Form_GetDoubleBuffered,
@@ -1255,6 +1272,7 @@ exports
   Form_GetCanvas,
   Form_GetModalResult,
   Form_SetModalResult,
+  Form_GetMonitor,
   Form_GetLeft,
   Form_SetLeft,
   Form_GetTop,

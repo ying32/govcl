@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package types
 
@@ -2119,3 +2117,12 @@ const (
 )
 
 type TAutoCompleteOptions = uint32 // = set of TAutoCompleteOption;
+
+type TDefaultMonitor int32
+
+const (
+	DmDesktop = iota + 0
+	DmPrimary
+	DmMainForm
+	DmActiveForm
+)
