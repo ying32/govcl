@@ -14,7 +14,7 @@
 [![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 [![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)
-[![Update log](https://img.shields.io/badge/更新日志-查看-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))
+[![Update log](https://img.shields.io/badge/更新日志-查看-blue.svg)](https://z-kit.cc/changelog.html)
 [![Support govcl](https://img.shields.io/badge/支持govcl-赞助作者-blueviolet.svg)](https://z-kit.cc/sponsor.html)  
 
 ![Support Platform](https://img.shields.io/badge/支持的平台-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
@@ -24,12 +24,12 @@
 
 
 预编译GUI库二进制下载：     
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.7.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.7/Librarys-1.2.7.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.8.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/Librarys-1.2.8.zip)  
 **注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.md)中的说明。**  
 
 
 res2go工具下载（[文档](Tools/res2go)）  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.17-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.7/res2go-1.0.17.zip)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.18-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/res2go-1.0.18.zip)  
 **注：用Delphi/Lazarus设计界面，用Golang写代码。**     
   
 [govcl扩展包](https://github.com/ying32/exts)  

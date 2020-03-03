@@ -13,7 +13,7 @@
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
 ![Minimum Go version](https://img.shields.io/badge/Minimum%20Go%20version-1.9.0-green.svg)
 [![Screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
-[![Update log](https://img.shields.io/badge/Update%20log-view-blue.svg)](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))
+[![Update log](https://img.shields.io/badge/Update%20log-view-blue.svg)](https://z-kit.cc/changelog.html)
 [![Support govcl](https://img.shields.io/badge/Support%20govcl-Donation-blueviolet.svg)](https://z-kit.cc/sponsor.html)  
 
 ![Support Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
@@ -23,12 +23,12 @@
 
 
 Pre-compiled GUI library binary download     
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.7.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.7/Librarys-1.2.7.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.8.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/Librarys-1.2.8.zip)  
 **Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.en-US.md).**  
 
 
 res2go Tool([Document](Tools/res2go))    
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.17-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.7/res2go-1.0.17.zip)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.18-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/res2go-1.0.18.zip)  
 **Note: Designed in Delphi/Lazarus, code written in Golang.**  
 
 [govcl extension package](https://github.com/ying32/exts)  
