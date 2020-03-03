@@ -1,17 +1,14 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
 
-
 package api
 
 import (
-	"reflect"
 	"sync"
 	"unsafe"
 
@@ -26,6 +23,8 @@ var (
 	// ThreadSync
 	threadSync   sync.Mutex
 	threadSyncFn func()
+	// eventId， 2000 起
+	eventIds uintptr = 2000
 )
 
 // Delphi或者Lazarus的Bool类型转为Go bool
@@ -52,21 +51,19 @@ func IsNil(val interface{}) bool {
 	return *(*uintptr)(ptr) == 0 && *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2))) == 0
 }
 
-// hashOf  Delphi IniFiles.pas中的TStringHash.HashOf
-func hashOf(val interface{}) uintptr {
-	//if IsNil(val) {
-	//	return 0
-	//}
-	if reflect.ValueOf(val).Pointer() == 0 {
+func getFuncId(val interface{}) uintptr {
+	ptr := unsafe.Pointer(&val)
+	if *(*uintptr)(ptr) == 0 {
 		return 0
 	}
-	var result uint32
-	p := (*byte)(unsafe.Pointer(&val))
-	for i := 0; i < int(unsafe.Sizeof(val)); i++ {
-		result = ((result << 2) | (result >> (unsafe.Sizeof(result)*8 - 2))) ^ uint32(*p)
-		p = (*byte)(unsafe.Pointer(uintptr(unsafe.Pointer(p)) + 1))
-	}
-	return uintptr(result)
+	return *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2)))
+}
+
+// hashOf 管不了了，先直接这样吧，防止重复的，虽然会产生很多
+func hashOf(val interface{}) uintptr {
+	//result := getFuncId(val)
+	eventIds++
+	return eventIds
 }
 
 // 将事件添加到查找表中
