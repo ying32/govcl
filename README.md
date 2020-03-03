@@ -1,4 +1,4 @@
-## 一个跨平台的Golang GUI库，底层绑定自Delphi VCL和Lazarus LCL  
+## 跨平台的Golang GUI库，底层绑定自Delphi VCL和Lazarus LCL  
 
 * 中文   
 * [English](README.en-US.md)   
@@ -9,8 +9,6 @@
 
 ----
 
-[![license](https://img.shields.io/badge/开源协议-Apache%20License%202.0-green.svg)](https://github.com/ying32/govcl/blob/master/LICENSE)
-![Minimum Go version](https://img.shields.io/badge/最低Go版本-1.9.0-green.svg)
 [![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
 [![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
 [![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)
