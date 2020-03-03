@@ -7,6 +7,14 @@
 //----------------------------------------
 // +build darwin
 
+/*
+  使用方法: 根据go同一个包中的执行顺序，创建一个最小文件名的go文件，然后在里面写入，如：
+
+package main
+
+import _ "github.com/ying32/govcl/vcl/exts/macapp"
+*/
+
 package macapp
 
 import (
@@ -123,6 +131,9 @@ func runWithMacOSApp() {
 		os.Chmod(execFile, 0755)
 		args := os.Args[:len(os.Args)-1]
 		cmd := exec.Command(execFile, args...)
+		cmd.Stderr = os.Stderr
+		cmd.Stdin = os.Stdin
+		cmd.Stdout = os.Stdout
 		cmd.Run()
 		os.Exit(0)
 	}
