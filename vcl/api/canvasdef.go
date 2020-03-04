@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package api
 
@@ -90,4 +88,13 @@ func Canvas_PolyBezierTo(obj uintptr, points []TPoint) {
 		return
 	}
 	canvas_PolyBezierTo.Call(obj, uintptr(unsafe.Pointer(&points[0])), uintptr(len(points)))
+}
+
+func Canvas_Pixels(obj uintptr, x, y int32) TColor {
+	r, _, _ := canvas_Pixels.Call(obj, uintptr(x), uintptr(y))
+	return TColor(r)
+}
+
+func Canvas_SetPixels(obj uintptr, x, y int32, value TColor) {
+	canvas_SetPixels.Call(obj, uintptr(x), uintptr(y), uintptr(value))
 }

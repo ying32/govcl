@@ -450,6 +450,17 @@ begin
   AObj.PolyBezier(APoints, ALen);
 end;
 
+//
+function Canvas_Pixels(AObj: TCanvas; X, Y: Integer): TColor; extdecl;
+begin
+  Result := AObj.Pixels[X, Y];
+end;
+
+procedure Canvas_SetPixels(AObj: TCanvas; X, Y: Integer; AColor: TColor); extdecl;
+begin
+  AObj.Pixels[X, Y] := AColor;
+end;
+
 
 // TImageList
 // ImageList_Draw1
@@ -1038,7 +1049,8 @@ exports
   Canvas_Polyline,
   canvas_PolyBezier,
   //Canvas_PolyBezierTo,
-
+  Canvas_Pixels,
+  Canvas_SetPixels,
 
   // TImageList
   ImageList_Draw1,

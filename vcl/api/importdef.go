@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package api
 
@@ -82,6 +80,8 @@ var (
 	canvas_Polyline      = libvcl.NewProc("Canvas_Polyline")
 	canvas_PolyBezier    = libvcl.NewProc("canvas_PolyBezier")
 	canvas_PolyBezierTo  = libvcl.NewProc("Canvas_PolyBezierTo")
+	canvas_Pixels        = libvcl.NewProc("Canvas_Pixels")
+	canvas_SetPixels     = libvcl.NewProc("Canvas_SetPixels")
 
 	// TImageList
 	imageList_Draw1        = libvcl.NewProc("ImageList_Draw1")

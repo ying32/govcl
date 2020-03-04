@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -87,4 +85,12 @@ func (c *TCanvas) PolyBezier(points []TPoint) {
 
 func (c *TCanvas) PolyBezierTo(points []TPoint) {
 	Canvas_PolyBezierTo(c.instance, points)
+}
+
+func (c *TCanvas) Pixels(x, y int32) TColor {
+	return Canvas_Pixels(c.instance, x, y)
+}
+
+func (c *TCanvas) SetPixels(x, y int32, value TColor) {
+	Canvas_SetPixels(c.instance, x, y, value)
 }

@@ -9,8 +9,10 @@
 | checklistbox | 复选列表框演示 | |
 | clock | 自绘的时钟 | |
 | comboboxEx | 可显示图标的combobox | |
+| customLibTest | 自定义加载指定位置的libvcl或者liblcl | |
 | draganddrop | 数据拖放 | |
 | draw | canvas自绘演示 | |
+| drawrose | canvas自绘一朵玫瑰花 | |
 | dropfiles | 鼠标拖放文件演示  | |
 | eventpublic | 控件事件的公用演示  | |
 | formEvents | 演示自动关联事件    |  |
