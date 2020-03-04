@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -79,4 +77,14 @@ func InputBox(aCaption, aPrompt, aDefault string) string {
 // InputQuery 输入框
 func InputQuery(aCaption, aPrompt string, value *string) bool {
 	return api.DInputQuery(aCaption, aPrompt, value)
+}
+
+// 简化运行
+func RunApp(forms ...interface{}) {
+	Application.Initialize()
+	Application.SetMainFormOnTaskBar(true)
+	for i := 0; i < len(forms); i++ {
+		Application.CreateForm(forms[i])
+	}
+	Application.Run()
 }
