@@ -167,9 +167,21 @@ func (l *LazyDLL) libFullPath(name string) string {
 	if fileExists(name) {
 		return name
 	} else {
-		path := "/usr/lib/" + name
-		if fileExists(path) {
-			return path
+		_x86path := "/usr/lib/" + name
+		_x64path := "/usr/lib/x86_64-linux-gnu/" + name
+		if runtime.GOARCH == "amd64" {
+			if fileExists(_x64path) {
+				return _x64path
+			} else {
+				// 先兼容之前的，以后要移除，因为以前的不熟造成的错误。
+				if fileExists(_x86path) {
+					return _x86path
+				}
+			}
+		} else {
+			if fileExists(_x86path) {
+				return _x86path
+			}
 		}
 	}
 	return name
