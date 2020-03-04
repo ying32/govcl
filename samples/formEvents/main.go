@@ -1,8 +1,8 @@
 package main
 
 import (
+	_ "github.com/ying32/govcl/pkgs/macapp"
 	"github.com/ying32/govcl/vcl"
-	_ "github.com/ying32/govcl/vcl/exts/macapp"
 	_ "github.com/ying32/govcl/vcl/exts/winappres"
 )
 

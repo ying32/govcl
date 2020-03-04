@@ -16,6 +16,8 @@ import (
 	"path/filepath"
 	"runtime"
 
+	"github.com/ying32/govcl/pkgs/libname"
+
 	"fmt"
 
 	"github.com/ying32/dylib"
@@ -47,29 +49,33 @@ func windowsDLLExists(name string) bool {
 // 加载库
 func loadUILib() *dylib.LazyDLL {
 	libName := ""
-	switch runtime.GOOS {
-	case "windows":
-		if runtime.GOARCH == "amd64" {
-			libName = libvclx64dll
-		} else {
-			libName = libvcldll
+	if libname.LibName == "" {
+		switch runtime.GOOS {
+		case "windows":
+			if runtime.GOARCH == "amd64" {
+				libName = libvclx64dll
+			} else {
+				libName = libvcldll
+			}
+			// 如果exe目录下存在libvclx64.dll且为x64系统
+			if runtime.GOARCH == "amd64" && windowsDLLExists(libvclx64dll) {
+				libName = libvclx64dll
+			} else
+			// 如果当前存在
+			if runtime.GOARCH == "386" && windowsDLLExists(libvcldll) {
+				libName = libvcldll
+			} else
+			// 如果当下目录存在liblcl则加载
+			if windowsDLLExists(liblcldll) {
+				libName = liblcldll
+			}
+		case "linux":
+			libName = liblclso
+		case "darwin":
+			libName = liblcldylib
 		}
-		// 如果exe目录下存在libvclx64.dll且为x64系统
-		if runtime.GOARCH == "amd64" && windowsDLLExists(libvclx64dll) {
-			libName = libvclx64dll
-		} else
-		// 如果当前存在
-		if runtime.GOARCH == "386" && windowsDLLExists(libvcldll) {
-			libName = libvcldll
-		} else
-		// 如果当下目录存在liblcl则加载
-		if windowsDLLExists(liblcldll) {
-			libName = liblcldll
-		}
-	case "linux":
-		libName = liblclso
-	case "darwin":
-		libName = liblcldylib
+	} else {
+		libName = libname.LibName
 	}
 	fmt.Println("LoadLibrary:", libName)
 	lib := dylib.NewLazyDLL(libName)
