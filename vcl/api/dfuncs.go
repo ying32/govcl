@@ -9,6 +9,7 @@
 package api
 
 import (
+	"reflect"
 	"sync"
 	"unsafe"
 
@@ -61,6 +62,9 @@ func getFuncId(val interface{}) uintptr {
 
 // hashOf 管不了了，先直接这样吧，防止重复的，虽然会产生很多
 func hashOf(val interface{}) uintptr {
+	if reflect.ValueOf(val).Pointer() == 0 {
+		return 0
+	}
 	//result := getFuncId(val)
 	eventIds++
 	return eventIds
