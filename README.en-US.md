@@ -202,7 +202,7 @@ func main() {
 * Windows: According to whether the compiled binary is 32 or 64 bit, copy the corresponding "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.  
   * Go environment variable: `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`    
 
-* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` directory and use it as a public library).  
+* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` or `/usr/lib/x86_64-linux-gnu/` directory and use it as a public library).  
   * Go environment variable: `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`  
 
 * MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420)  

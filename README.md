@@ -205,7 +205,7 @@ func main() {
 * Windows: 根据编译的二进制是32还是64位的，复制对应的"libvcl.dll"或者"libvclx64.dll"或者“liblcl.dll”到当前exe目录或系统环境路径下。 
   * Go环境变量： `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`   
 
-* Linux: 复制"liblcl.so"可执行文件目录下(也可复制liblcl.so到`/usr/lib/`目录中，作为公共库使用)。  
+* Linux: 复制"liblcl.so"可执行文件目录下(也可复制liblcl.so到`/usr/lib/`或者`/usr/lib/x86_64-linux-gnu/`目录中，作为公共库使用)。  
   * Go环境变量： `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`
 
 * MacOS: 复制"liblcl.dylib"可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420)   
