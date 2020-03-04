@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package api
 
@@ -22,6 +20,8 @@ func Application_CreateForm(app uintptr, initScale bool) uintptr {
 
 func Application_Run(app uintptr) {
 	application_Run.Call(app)
+	// 运行完后free下
+	closeLib()
 }
 
 func Application_Initialize(obj uintptr) {

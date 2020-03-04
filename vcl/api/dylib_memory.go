@@ -1,16 +1,13 @@
 // +build windows
 // +build memorydll
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
-
 
 // 编译时加上 -tags memorydll
 
@@ -56,5 +53,10 @@ func GetLibVcl() *memorydll.LazyDLL {
 func FeeMemoryDLL() {
 	if libvcl != nil {
 		libvcl.Close()
+		libvcl = nil
 	}
+}
+
+func closeLib() {
+	FeeMemoryDLL()
 }

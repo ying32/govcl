@@ -1,14 +1,12 @@
 // +build !memorydll
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package api
 
@@ -98,4 +96,11 @@ func getLibType(lib *dylib.LazyDLL) TLibType {
 // 获取dll库实例，用于在外扩展第三方组件的。移动来自dfuncs.go
 func GetLibVcl() *dylib.LazyDLL {
 	return libvcl
+}
+
+func closeLib() {
+	if libvcl != nil {
+		libvcl.Close()
+		libvcl = nil
+	}
 }
