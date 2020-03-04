@@ -12,7 +12,7 @@
 
 package main
 
-import _ "github.com/ying32/govcl/vcl/exts/macapp"
+import _ "github.com/ying32/govcl/pkgs/macapp"
 */
 
 package macapp
