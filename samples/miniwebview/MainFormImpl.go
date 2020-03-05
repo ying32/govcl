@@ -23,8 +23,9 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.webView.SetParent(f.PnlWebview)
 	f.webView.SetAlign(types.AlClient)
 
-	SetIEVersion(f.webView)
-	
+	// 不知道原因，有些不设置有些反而好些。。。
+	//SetIEVersion(f.webView)
+
 	f.webView.SetOnTitleChange(f.OnWebTitleChange)
 	f.webView.SetOnJSExternal(f.OnWebJsExternal)
 

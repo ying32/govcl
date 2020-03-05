@@ -1,18 +1,17 @@
 // +build windows
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
 
-
 package vcl
 
 import (
+	"runtime"
 	"strconv"
 	"strings"
 
@@ -32,9 +31,11 @@ func (m *TMiniWebview) SetIEVersion(version int) {
 	if version >= 7 && version <= 11 {
 		var access uint32 = win.KEY_ALL_ACCESS
 		// 当前是32位的程序运行在x64下面
-		if win.IsWow64() {
+		//if win.IsWow64() {
+		if runtime.GOARCH == "amd64" {
 			access |= win.KEY_WOW64_64KEY
 		}
+		//}
 		reg := NewRegistry(access)
 		defer reg.Free()
 		reg.SetRootKey(win.HKEY_CURRENT_USER)
