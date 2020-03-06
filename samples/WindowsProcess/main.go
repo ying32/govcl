@@ -11,8 +11,8 @@ import (
 
 	"fmt"
 
+	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	_ "github.com/ying32/govcl/vcl/exts/winappres"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/win"
 )

@@ -1,7 +1,7 @@
 package main
 
 import "github.com/ying32/govcl/vcl"
-import _ "github.com/ying32/govcl/vcl/exts/winappres"
+import _ "github.com/ying32/govcl/pkgs/winappres"
 
 func main() {
 	vcl.Application.Initialize()

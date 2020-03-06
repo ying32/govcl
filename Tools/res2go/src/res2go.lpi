@@ -18,10 +18,10 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <RevisionNr Value="18"/>
+      <RevisionNr Value="19"/>
       <Language Value="0804"/>
       <CharSet Value="03B6"/>
-      <StringTable Comments="Lazarus/Delphi资源窗口转go" CompanyName="ying32" FileDescription="Lazarus/Delphi资源窗口转go" LegalCopyright="ying32" OriginalFilename="res2go.exe" ProductName="res2go"/>
+      <StringTable Comments="Lazarus/Delphi资源窗口转go" CompanyName="ying32" FileDescription="Lazarus/Delphi资源窗口转go" LegalCopyright="ying32" OriginalFilename="res2go.exe" ProductName="res2go" ProductVersion="1.0.19.0"/>
     </VersionInfo>
     <BuildModes Count="3">
       <Item1 Name="win32" Default="True"/>

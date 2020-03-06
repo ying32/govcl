@@ -7,8 +7,8 @@ import (
 
 	"github.com/tryor/gdiplus"
 	"github.com/tryor/winapi"
+	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	_ "github.com/ying32/govcl/vcl/exts/winappres"
 )
 
 var (

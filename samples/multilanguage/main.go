@@ -1,9 +1,9 @@
 package main
 
 import (
+	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/exts/multilang"
-	_ "github.com/ying32/govcl/vcl/exts/winappres"
+	"github.com/ying32/govcl/vcl/multilang"
 )
 
 func main() {

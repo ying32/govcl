@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/exts/multilang"
+	"github.com/ying32/govcl/vcl/multilang"
 	"github.com/ying32/govcl/vcl/types"
 )
 

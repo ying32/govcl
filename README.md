@@ -54,7 +54,7 @@ package main
 import (
    "github.com/ying32/govcl/vcl"
    // 如果你使用自定义的syso文件则不要引用此包
-   _ "github.com/ying32/govcl/vcl/exts/winappres"
+   _ "github.com/ying32/govcl/pkgs/winappres"
 )
 
 type TMainForm struct {
@@ -112,7 +112,7 @@ package main
 import (
    "github.com/ying32/govcl/vcl"
    // 如果你使用自定义的syso文件则不要引用此包
-   _ "github.com/ying32/govcl/vcl/exts/winappres"
+   _ "github.com/ying32/govcl/pkgs/winappres"
 )
 
 type TMainForm struct {
@@ -181,7 +181,7 @@ package main
 import (
    "github.com/ying32/govcl/vcl"
    // 如果你使用自定义的syso文件则不要引用此包
-   _ "github.com/ying32/govcl/vcl/exts/winappres"
+   _ "github.com/ying32/govcl/pkgs/winappres"
 )
 
 func main() {

@@ -7,7 +7,7 @@ package main
 import (
 	"fmt"
 
-	_ "github.com/ying32/govcl/vcl/exts/winappres"
+	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl/win"
 
 	"github.com/ying32/govcl/vcl"

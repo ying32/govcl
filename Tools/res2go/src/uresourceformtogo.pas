@@ -26,7 +26,7 @@ uses
 
 
 const
-  APPVERSION = '1.0.18';
+  APPVERSION = '1.0.19';
 
 type
   TComponentItem = record
@@ -993,7 +993,7 @@ begin
         LOutWinRes := SameText(GetNextParam('outres'), 'True');
       // winappres
       if LOutWinRes then
-         LMainDotGo.Add('    _ "github.com/ying32/govcl/vcl/exts/winappres"');
+         LMainDotGo.Add('    _ "github.com/ying32/govcl/pkgs/winappres"');
       LMainDotGo.Add(')');
       LMainDotGo.Add('');
       LMainDotGo.Add('func main() {');
