@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/ying32/govcl/pkgs/miniblink"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/exts/miniblink"
 	_ "github.com/ying32/govcl/vcl/exts/winappres"
 )
 

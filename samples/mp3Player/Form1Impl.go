@@ -15,7 +15,7 @@ import (
 
 	"github.com/ying32/govcl/vcl/types"
 
-	"github.com/ying32/govcl/samples/mp3Player/bass"
+	"github.com/ying32/govcl/pkgs/bass"
 	"github.com/ying32/govcl/vcl"
 )
 

@@ -1,14 +1,12 @@
 // +build windows
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package win
 
@@ -119,6 +117,17 @@ func CStr(str string) uintptr {
 // CStrToGoStr
 func GoStr(str []uint16) string {
 	return syscall.UTF16ToString(str)
+}
+
+// CStrToGoStr
+func GoPtrStr(str uintptr) string {
+	l := LstrlenW(str)
+	if l == 0 {
+		return ""
+	}
+	buff := make([]uint16, l)
+	Memcpy(uintptr(unsafe.Pointer(&buff[0])), str, uintptr(l*2))
+	return GoStr(buff)
 }
 
 // GoBoolToCBool

@@ -4,8 +4,8 @@
 package main
 
 import (
+	"github.com/ying32/govcl/pkgs/skinh"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/exts/skinh"
 )
 
 func (f *TForm6) OnFormCreate(sender vcl.IObject) {

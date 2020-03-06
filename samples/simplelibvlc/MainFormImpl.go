@@ -12,7 +12,7 @@ import (
 
 	"github.com/ying32/govcl/vcl/rtl"
 
-	"github.com/ying32/govcl/samples/simplelibvlc/libvlc"
+	"github.com/ying32/govcl/pkgs/libvlc"
 
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types/colors"

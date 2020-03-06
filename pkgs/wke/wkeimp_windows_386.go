@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 // govcl wke测试头文件，by: ying32
 // https://github.com/ying32/ying32
@@ -16,9 +14,10 @@ package wke
 import (
 	"syscall"
 
+	"github.com/ying32/govcl/vcl/win"
+
 	"unsafe"
 
-	"github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -187,7 +186,7 @@ func wkeCreateWebWindow(aType WindowType, hWd types.HWND, x, y, width, height in
 }
 
 func wkeShowWindow(webWindow uintptr, show bool) {
-	_wkeShowWindow.Call(webWindow, api.GoBoolToDBool(show))
+	_wkeShowWindow.Call(webWindow, win.CBool(show))
 }
 
 func wkeDestroyWebWindow(webWindow uintptr) {
@@ -199,12 +198,12 @@ func wkeMoveWindow(webWindow uintptr, x, y, width, height int32) {
 }
 
 func wkeLoadW(webWindow uintptr, url string) {
-	_wkeLoadW.Call(webWindow, api.GoStrToDStr(url))
+	_wkeLoadW.Call(webWindow, win.CStr(url))
 }
 
 func RepaintAllNeeded() bool {
 	r, _, _ := _wkeRepaintAllNeeded.Call()
-	return api.DBoolToGoBool(r)
+	return win.GoBool(r)
 
 }
 
@@ -214,7 +213,7 @@ func wkeReload(webWindow uintptr) {
 
 func wkeCanGoBack(webWindow uintptr) bool {
 	r, _, _ := _wkeCanGoBack.Call(webWindow)
-	return api.DBoolToGoBool(r)
+	return win.GoBool(r)
 }
 
 func wkeGoBack(webWindow uintptr) {
@@ -223,7 +222,7 @@ func wkeGoBack(webWindow uintptr) {
 
 func wkeCanGoForward(webWindow uintptr) bool {
 	r, _, _ := _wkeCanGoForward.Call(webWindow)
-	return api.DBoolToGoBool(r)
+	return win.GoBool(r)
 }
 
 func wkeGoForward(webWindow uintptr) {
@@ -232,7 +231,7 @@ func wkeGoForward(webWindow uintptr) {
 
 func wkeGetStringW(wkeStr uintptr) string {
 	r, _, _ := _wkeGetStringW.Call(wkeStr)
-	return api.DStrToGoStr(r)
+	return win.GoPtrStr(r)
 }
 
 func wkeOnTitleChanged(webView, callback, callbackParam uintptr) {
