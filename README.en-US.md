@@ -1,39 +1,38 @@
-## Cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
-
 * [中文](README.md)   
 * English  
 
 ----
 
-**The govcl version >=1.2.0 must require the go version >=1.9.0.**   
+## Cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
 
-[](https://github.com/ying32/govcl/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97(What's-new))   
+> The govcl version >=1.2.0 must require the go version >=1.9.0.  
+
+[Screenshots](https://github.com/ying32/govcl/tree/master/Screenshot) | 
+[What's-new](https://z-kit.cc/changelog.html) | 
+[GoVCL video tutorial (third party)](https://video.0-w.cc/videos/1) | 
+[Sponsor govcl](https://z-kit.cc/sponsor.html)  
 
 ----
 
-[![Screenshots](https://img.shields.io/badge/screenshots-view-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
-[![Update log](https://img.shields.io/badge/Update%20log-view-blue.svg)](https://z-kit.cc/changelog.html)
-[![Support govcl](https://img.shields.io/badge/Support%20govcl-Sponsor-blueviolet.svg)](https://z-kit.cc/sponsor.html)  
+### Support Platform    
+Windows | Linux | macOS  
 
-![Support Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
-**Note: linux and macOS only part of the components, properties, events and methods are valid.**  
-
-**If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.**   
+> Note: linux and macOS only part of the components, properties, events and methods are valid.  
+> If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
 
-Pre-compiled GUI library binary download     
+### Pre-compiled GUI library binary download     
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.8.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/Librarys-1.2.8.zip)  
-**Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.en-US.md).**  
+> Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.en-US.md).   
 
-
-res2go Tool([Document](Tools/res2go))    
+### res2go Tool([doc](Tools/res2go))    
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.18-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/res2go-1.0.18.zip)  
-**Note: Designed in Delphi/Lazarus, code written in Golang.**  
+> Note: Designed in Delphi/Lazarus, code written in Golang.  
 
-[govcl extension package](https://github.com/ying32/exts)  
-**Note: The inc or pas file in the extension package needs to be compiled into the libvcl/liblcl directory.**    
+[GoVCL extension package](https://github.com/ying32/exts)  
+> Note: The inc or pas file in the extension package needs to be compiled into the libvcl/liblcl directory.     
 
-[govcl video tutorial (third party)](https://video.0-w.cc/videos/1)    
+ 
 
 ### usage: 
 

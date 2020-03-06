@@ -1,39 +1,40 @@
-## 跨平台的Golang GUI库，底层绑定自Delphi VCL和Lazarus LCL  
-
 * 中文   
 * [English](README.en-US.md)   
 
 ----
 
-**从1.2.0版本开始govcl将最低要求go1.9。**  
+### 跨平台的Golang GUI库，底层绑定自Delphi VCL和Lazarus LCL  
+
+> 从1.2.0版本开始govcl将最低要求go1.9。  
+
+[截图查看](https://github.com/ying32/govcl/tree/master/Screenshot) | 
+[中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 
+[更新日志](https://z-kit.cc/changelog.html) | 
+[加入QQ群](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq) | 
+[GoVCL视频教程(第三方)](https://video.0-w.cc/videos/1) | 
+[赞助GoVCL](https://z-kit.cc/sponsor.html)   
 
 ----
 
-[![screenshots](https://img.shields.io/badge/例程截图-查看-green.svg)](https://github.com/ying32/govcl/tree/master/Screenshot)
-[![Chinese Wiki](https://img.shields.io/badge/维基-中文WIKI-green.svg)](https://gitee.com/ying32/govcl/wikis/pages)
-[![Chinese Chat](https://img.shields.io/badge/QQ群-点击加入：263106281-red.svg)](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq)
-[![Update log](https://img.shields.io/badge/更新日志-查看-blue.svg)](https://z-kit.cc/changelog.html)
-[![Support govcl](https://img.shields.io/badge/支持govcl-赞助作者-blueviolet.svg)](https://z-kit.cc/sponsor.html)  
+### 支持的平台  
+Windows | Linux | macOS  
 
-![Support Platform](https://img.shields.io/badge/支持的平台-Windows%20%7C%20Linux%20%7C%20Mac%20OS-green.svg)  
-**注: linux和macOS由于底层使用了lcl库，则部分组件、属性和方法无效。**
+> 注: linux和macOS由于底层使用了lcl库，则部分组件、属性和方法无效。  
+> 如果你想要支持linux arm及linux 32bit则需要自己编译对应的liblcl二进制。  
 
-**如果你想要支持linux arm及linux 32bit则需要自己编译对应的liblcl二进制。**   
+----
 
-
-预编译GUI库二进制下载：     
+### 预编译GUI库二进制下载       
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.8.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/Librarys-1.2.8.zip)  
-**注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.md)中的说明。**  
+> 注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.md)中的说明。  
 
-
-res2go工具下载（[文档](Tools/res2go)）  
+### res2go工具下载（[文档](Tools/res2go)）  
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.18-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/res2go-1.0.18.zip)  
-**注：用Delphi/Lazarus设计界面，用Golang写代码。**     
+> 注：用Delphi/Lazarus设计界面，用Golang写代码。    
   
-[govcl扩展包](https://github.com/ying32/exts)  
-**注：扩展包里面的inc或者pas文件需要自己放到libvcl/liblcl目录下编译。**    
+[GoVCL扩展包](https://github.com/ying32/exts)  
+> 注：扩展包里面的inc或者pas文件需要自己放到libvcl/liblcl目录下编译。    
 
-[govcl视频教程(第三方)](https://video.0-w.cc/videos/1)   
 
 ---
 ### 使用方法  
@@ -216,15 +217,13 @@ func main() {
 
 ### 注意:  
 
-**当使用"liblcl"库时，是以兼容"libvcl"库形式运行的，所以有部分组件和组件的方法、属性及事件不可用。**  
+> 当使用"liblcl"库时，是以兼容"libvcl"库形式运行的，所以有部分组件和组件的方法、属性及事件不可用。  
 
-----
-
-**特别注意：所有UI组件都是非线程/协程安全的，当在goroutine中使用时，请使用`vcl.ThreadSync`来同步更新到UI上。**  
+> 特别注意：所有UI组件都是非线程/协程安全的，当在goroutine中使用时，请使用`vcl.ThreadSync`来同步更新到UI上。  
 
 
 ### API文档
 
-* [Delphi VCL组件文档WIKI](http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Category:VCL_Reference)  
-* [Lazarus LCL组件文档WIKI](http://wiki.freepascal.org/LCL_Components)  
-* [Windows API文档](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)
+* [Delphi VCL组件文档WIKI](http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Category:VCL_Reference)
+* [Lazarus LCL组件文档WIKI](http://wiki.freepascal.org/LCL_Components)
+* [Windows API文档](https://msdn.microsoft.com/zh-cn/library/ms123401.aspx)  
