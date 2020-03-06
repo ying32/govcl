@@ -25,11 +25,11 @@ Windows | Linux | macOS
 ----
 
 ### 预编译GUI库二进制下载       
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.8.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/Librarys-1.2.8.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.9.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.9/Librarys-1.2.9.zip)  
 > 注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.md)中的说明。  
 
 ### res2go工具下载（[文档](Tools/res2go)）  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.18-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/res2go-1.0.18.zip)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.18-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.9/res2go-1.0.19.zip)  
 > 注：用Delphi/Lazarus设计界面，用Golang写代码。    
   
 [GoVCL扩展包](https://github.com/ying32/exts)  

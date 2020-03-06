@@ -22,11 +22,11 @@ Windows | Linux | macOS
 
 
 ### Pre-compiled GUI library binary download     
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.8.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/Librarys-1.2.8.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.9.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.9/Librarys-1.2.9.zip)  
 > Note: The "libvcl" library binary (libvcl. dll, libvclx64. dll) contained in the compression package is only for preview and test purposes. Please compile the "libvcl" source code for official use. please refer to the instructions in [UILIbSrcources](UILibSources/README.en-US.md).   
 
 ### res2go Tool([doc](Tools/res2go))    
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.18-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.8/res2go-1.0.18.zip)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.19-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.9/res2go-1.0.19.zip)  
 > Note: Designed in Delphi/Lazarus, code written in Golang.  
 
 [GoVCL extension package](https://github.com/ying32/exts)  
