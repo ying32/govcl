@@ -13,7 +13,7 @@ unit uControlPatchs;
 interface
 
 uses
-  Classes, SysUtils, ExtCtrls, Forms;
+  Classes, SysUtils, ExtCtrls, Forms, ComCtrls, StdCtrls, Graphics;
 
 {$IFDEF WINDOWS}
  type
@@ -23,6 +23,22 @@ uses
    end;
 
 {$ENDIF}
+
+type
+
+  { TListView }
+
+  TListView = class(ComCtrls.TListView)
+  public
+    constructor Create(AOwner: TComponent); override;
+  end;
+
+  { TTreeView }
+
+  TTreeView = class(ComCtrls.TTreeView)
+  public
+    constructor Create(AOwner: TComponent); override;
+  end;
 
 implementation
 
@@ -35,6 +51,27 @@ begin
 end;
 
 {$ENDIF}
+
+{ TTreeView }
+
+constructor TTreeView.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  Self.ScrollBars := TScrollStyle.ssAutoBoth;
+  Self.TreeLinePenStyle := TPenStyle.psSolid;
+{$IFDEF LCLCocoa}
+
+{$ENDIF}
+end;
+
+
+{ TListView }
+
+constructor TListView.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  Self.ScrollBars := TScrollStyle.ssAutoBoth;
+end;
 
 end.
 
