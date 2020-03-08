@@ -4,6 +4,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"image/color"
 	"log"
 	"math"
@@ -19,6 +20,7 @@ import (
 
 //::private::
 type TForm1Fields struct {
+	drawFunds map[string]func()
 }
 
 // 使用gg 2d图形库来绘制，最终显示到govcl控件上。
@@ -34,6 +36,26 @@ func ifThen(val bool, atrue, afalse float64) float64 {
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
+	f.drawFunds = map[string]func(){
+		"ggDrawLines":          f.ggDrawLines,
+		"ggDrawEllipse":        f.ggDrawEllipse,
+		"ggDrawGradientLinear": f.ggDrawGradientLinear,
+		"ggDrawGradientRadial": f.ggDrawGradientRadial,
+		"ggDrawBeziers":        f.ggDrawBeziers,
+		"ggDrawCircle":         f.ggDrawCircle,
+		"ggDrawCrisp":          f.ggDrawCrisp,
+		"ggDrawCubic":          f.ggDrawCubic,
+		"ggDrawFont":           f.ggDrawFont,
+		"ggDrawGradientText":   f.ggDrawGradientText,
+		"ggDrawInvertMask":     f.ggDrawInvertMask,
+		"ggDrawLineWidth":      f.ggDrawLineWidth,
+		"ggDrawLorem":          f.ggDrawLorem,
+		"ggDrawRotatedText":    f.ggDrawRotatedText,
+		"ggDrawRotatedImage":   f.ggDrawRotatedImage,
+		"ggDrawWarpText":       f.ggDrawWarpText,
+		"ggDrawStar":           f.ggDrawStar,
+		"ggDrawStars":          f.ggDrawStars,
+	}
 
 }
 
@@ -88,7 +110,7 @@ func ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 }
 
 func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
-	f.Repaint()
+	//f.Repaint()
 	//if isPng {
 	png := ggImageToPng(dc)
 	if png != nil {
@@ -689,78 +711,18 @@ func (f *TForm1) ggDrawStars() {
 	f.ggDrawImage(dc, false)
 }
 
-func (f *TForm1) OnButton1Click(sender vcl.IObject) {
-	f.ggDrawLines()
-}
-
 func (f *TForm1) OnFormPaint(sender vcl.IObject) {
-
+	if f.ListBox1.ItemIndex() == -1 {
+		return
+	}
+	fn, ok := f.drawFunds[f.ListBox1.Items().Strings(f.ListBox1.ItemIndex())]
+	if !ok {
+		fmt.Println("没有找到指定的滤镜。")
+		return
+	}
+	fn()
 }
 
-func (f *TForm1) OnButton2Click(sender vcl.IObject) {
-	f.ggDrawEllipse()
-}
-
-func (f *TForm1) OnButton3Click(sender vcl.IObject) {
-	f.ggDrawGradientLinear()
-}
-
-func (f *TForm1) OnButton4Click(sender vcl.IObject) {
-	f.ggDrawGradientRadial()
-}
-
-func (f *TForm1) OnButton5Click(sender vcl.IObject) {
-	f.ggDrawBeziers()
-}
-
-func (f *TForm1) OnButton6Click(sender vcl.IObject) {
-	f.ggDrawCircle()
-}
-
-func (f *TForm1) OnButton7Click(sender vcl.IObject) {
-	f.ggDrawCrisp()
-}
-
-func (f *TForm1) OnButton8Click(sender vcl.IObject) {
-	f.ggDrawCubic()
-}
-
-func (f *TForm1) OnButton9Click(sender vcl.IObject) {
-	f.ggDrawFont()
-}
-
-func (f *TForm1) OnButton10Click(sender vcl.IObject) {
-	f.ggDrawGradientText()
-}
-
-func (f *TForm1) OnButton11Click(sender vcl.IObject) {
-	f.ggDrawInvertMask()
-}
-
-func (f *TForm1) OnButton12Click(sender vcl.IObject) {
-	f.ggDrawLineWidth()
-}
-
-func (f *TForm1) OnButton13Click(sender vcl.IObject) {
-	f.ggDrawLorem()
-}
-
-func (f *TForm1) OnButton14Click(sender vcl.IObject) {
-	f.ggDrawRotatedText()
-}
-
-func (f *TForm1) OnButton15Click(sender vcl.IObject) {
-	f.ggDrawRotatedImage()
-}
-
-func (f *TForm1) OnButton16Click(sender vcl.IObject) {
-	f.ggDrawWarpText()
-}
-
-func (f *TForm1) OnButton17Click(sender vcl.IObject) {
-	f.ggDrawStar()
-}
-
-func (f *TForm1) OnButton18Click(sender vcl.IObject) {
-	f.ggDrawStars()
+func (f *TForm1) OnListBox1Click(sender vcl.IObject) {
+	f.Repaint()
 }
