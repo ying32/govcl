@@ -4,6 +4,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"image"
 	"image/color"
 	"image/png"
@@ -127,25 +128,22 @@ var (
 	}
 )
 
-func (f *TForm1) OnListBox1Click(sender vcl.IObject) {
-	f.Repaint()
-	if f.srcImage == nil {
-		f.srcImage = loadImage("applogo.png")
-	}
-
-	if f.srcImage == nil {
-		vcl.ShowMessage("没有加载applog.png。")
+func (f *TForm1) OnFormPaint(sender vcl.IObject) {
+	if f.ListBox1.ItemIndex() == -1 {
 		return
 	}
 
-	if f.ListBox1.ItemIndex() == -1 {
-		vcl.ShowMessage("选择一个吧。")
+	if f.srcImage == nil {
+		f.srcImage = loadImage("applogo.png")
+	}
+	if f.srcImage == nil {
+		fmt.Println("没有加载applog.png。")
 		return
 	}
 
 	fi, ok := filters[f.ListBox1.Items().Strings(f.ListBox1.ItemIndex())]
 	if !ok {
-		vcl.ShowMessage("没有找到对应的滤镜。")
+		fmt.Println("没有找到指定的滤镜。")
 		return
 	}
 
@@ -175,4 +173,8 @@ func (f *TForm1) OnListBox1Click(sender vcl.IObject) {
 			f.Canvas().Draw(0, 0, bmp)
 		}
 	}
+}
+
+func (f *TForm1) OnListBox1Click(sender vcl.IObject) {
+	f.Repaint()
 }
