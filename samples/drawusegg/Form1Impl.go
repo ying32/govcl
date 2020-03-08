@@ -5,10 +5,15 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"image"
 	"image/color"
 	"log"
 	"math"
 	"math/rand"
+	"runtime"
+	"unsafe"
+
+	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font/gofont/goregular"
@@ -59,42 +64,44 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 
 }
 
-// 24bit bmp，丢失透明度
-// 这个在linux和macOS下还得修改，windows是正常的
-//func imageToBitmap24(img image.Image) *vcl.TBitmap {
-//	srcData, ok := img.(*image.RGBA)
-//	if !ok {
-//		return nil
-//	}
-//	bmp := vcl.NewBitmap()
-//	bmp.SetPixelFormat(types.Pf24bit)
-//	srcP := img.Bounds().Size()
-//	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
-//	//bmp.SetHandleType(types.BmDIB)
-//	// 透明，看情况了
-//	//bmp.SetTransparent(true)
-//	//bmp.SetTransparentColor(colors.ClBlack)
-//
-//	setValue := func(ptr uintptr, x int, v uint8) {
-//		*((*uint8)(unsafe.Pointer(ptr + uintptr(x)))) = v
-//	}
-//
-//	for y := 0; y < srcP.Y; y++ {
-//		DestPtr := bmp.ScanLine(int32(y))
-//		pos := srcData.PixOffset(0, y)
-//		for x := 0; x < srcP.X; x++ {
-//			// Delphi BGR  Go: RGBA
-//			setValue(DestPtr, x*3+0, srcData.Pix[pos+x*4+2])
-//			setValue(DestPtr, x*3+1, srcData.Pix[pos+x*4+1])
-//			setValue(DestPtr, x*3+2, srcData.Pix[pos+x*4+0])
-//		}
-//	}
-//	return bmp
-//}
+// 32bit bmp，丢失透明度
+func imageToBitmap(img image.Image) *vcl.TBitmap {
+	srcData, ok := img.(*image.RGBA)
+	if !ok {
+		return nil
+	}
+	srcP := img.Bounds().Size()
+	bmp := vcl.NewBitmap()
+	bmp.SetPixelFormat(types.Pf32bit)
+	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
 
-//func ggImageToBitmap24(dc *gg.Context) *vcl.TBitmap {
-//	return imageToBitmap24(dc.Image())
-//}
+	if runtime.GOOS == "windows" || runtime.GOOS == "linux" {
+		for h := srcP.Y - 1; h >= 0; h-- {
+			ptr := bmp.ScanLine(int32(h))
+			for w := 0; w < srcP.X*4; w++ {
+				index := h*(srcP.X*4) + w
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w))) = srcData.Pix[index]
+			}
+		}
+	} else {
+		// 填充，左下角为起点
+		for h := srcP.Y - 1; h >= 0; h-- {
+			ptr := bmp.ScanLine(int32(h))
+			for w := 0; w < int(srcP.X); w++ {
+				index := (h*int(srcP.X) + w) * 4
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = srcData.Pix[index+3]
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = srcData.Pix[index+2]
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = srcData.Pix[index+1]
+				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = srcData.Pix[index]
+			}
+		}
+	}
+	return bmp
+}
+
+func ggImageToBitmap(dc *gg.Context) *vcl.TBitmap {
+	return imageToBitmap(dc.Image())
+}
 
 func ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 	bs := bytes.NewBuffer([]byte{})
@@ -110,7 +117,6 @@ func ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 }
 
 func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
-	//f.Repaint()
 	//if isPng {
 	png := ggImageToPng(dc)
 	if png != nil {
@@ -118,7 +124,7 @@ func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
 		f.Canvas().Draw(0, 0, png)
 	}
 	//} else {
-	//	bmp := ggImageToBitmap24(dc)
+	//	bmp := ggImageToBitmap(dc)
 	//	if bmp != nil {
 	//		defer bmp.Free()
 	//		f.Canvas().Draw(0, 0, bmp)
@@ -126,24 +132,17 @@ func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
 	//}
 }
 
-// 32bit bmp
-//func imageToBitmap32(img image.Image) *vcl.TBitmap {
-//	srcData, ok := img.(*image.RGBA)
-//	if !ok {
-//		return nil
-//	}
-//	bmp := vcl.NewBitmap()
-//	bmp.SetPixelFormat(types.Pf32bit)
-//	srcP := img.Bounds().Size()
-//	bmp.SetSize(int32(srcP.Y), int32(srcP.X))
-//	//bmp.SetTransparent(true)
-//	for y := 0; y < srcP.Y; y++ {
-//		DestPtr := bmp.ScanLine(int32(y))
-//		pos := srcData.PixOffset(0, y)
-//		rtl.Move(uintptr(unsafe.Pointer(&srcData.Pix[pos])), DestPtr, srcData.Stride)
-//	}
-//	return bmp
-//}
+func getFontFullPathName(name string) string {
+	switch runtime.GOOS {
+	case "windows":
+		return "C:\\Windows\\Fonts\\" + name
+	case "linux":
+		return " /user/share/fonts/" + name
+	case "darwin":
+		return "/Library/Fonts/" + name
+	}
+	return name
+}
 
 // Lines
 func (f *TForm1) ggDrawLines() {
@@ -446,7 +445,8 @@ func (f *TForm1) ggDrawGradientText() {
 
 	// draw text
 	dc.SetRGB(0, 0, 0)
-	dc.LoadFontFace("C:\\Windows\\Fonts\\impact.ttf", 128)
+
+	dc.LoadFontFace(getFontFullPathName("impact.ttf"), 128)
 	dc.DrawStringAnchored("Gradient Text", W/2, H/2, 0.5, 0.5)
 
 	// get the context as an alpha mask
@@ -608,7 +608,7 @@ func (f *TForm1) ggDrawWarpText() {
 	dc.SetRGB(0, 0, 0)
 	// impact.ttf Arial Bold.ttf
 	// 没粗体的，就两种吧
-	if err := dc.LoadFontFace("C:\\Windows\\Fonts\\impact.ttf", 22); err != nil {
+	if err := dc.LoadFontFace(getFontFullPathName("impact.ttf"), 22); err != nil {
 		log.Println(err)
 		return
 	}
@@ -620,7 +620,7 @@ func (f *TForm1) ggDrawWarpText() {
 	dc.DrawStringWrapped("LOWER MIDDLE", W/2, H-P, 0.5, 1, 0, 1.5, gg.AlignCenter)
 	dc.DrawStringWrapped("LEFT MIDDLE", P, H/2, 0, 0.5, 0, 1.5, gg.AlignLeft)
 	dc.DrawStringWrapped("RIGHT MIDDLE", W-P, H/2, 1, 0.5, 0, 1.5, gg.AlignRight)
-	if err := dc.LoadFontFace("C:\\Windows\\Fonts\\Arial.ttf", 12); err != nil {
+	if err := dc.LoadFontFace(getFontFullPathName("Arial.ttf"), 12); err != nil {
 		log.Println(err)
 		return
 	}
