@@ -137,7 +137,7 @@ func getFontFullPathName(name string) string {
 	case "windows":
 		return "C:\\Windows\\Fonts\\" + name
 	case "linux":
-		return " /user/share/fonts/" + name
+		return " /usr/share/fonts/" + name
 	case "darwin":
 		return "/Library/Fonts/" + name
 	}
