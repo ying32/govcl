@@ -10,11 +10,8 @@ import (
 	"image/png"
 	"log"
 	"os"
-	"unsafe"
 
 	"github.com/disintegration/gift"
-
-	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/ying32/govcl/vcl"
 )
@@ -34,38 +31,39 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 }
 
 // 24bit bmp，丢失透明度
-func imageToBitmap24(img image.Image) *vcl.TBitmap {
-
-	srcData, ok := img.(*image.RGBA) // RGBA
-	if !ok {
-
-		return nil
-	}
-	bmp := vcl.NewBitmap()
-	bmp.SetPixelFormat(types.Pf24bit)
-	srcP := img.Bounds().Size()
-	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
-	//bmp.SetHandleType(types.BmDIB)
-	// 透明，看情况了
-	//bmp.SetTransparent(true)
-	//bmp.SetTransparentColor(colors.ClBlack)
-
-	setValue := func(ptr uintptr, x int, v uint8) {
-		*((*uint8)(unsafe.Pointer(ptr + uintptr(x)))) = v
-	}
-
-	for y := 0; y < srcP.Y; y++ {
-		DestPtr := bmp.ScanLine(int32(y))
-		pos := srcData.PixOffset(0, y)
-		for x := 0; x < srcP.X; x++ {
-			// Delphi BGR  Go: RGBA
-			setValue(DestPtr, x*3+0, srcData.Pix[pos+x*4+2])
-			setValue(DestPtr, x*3+1, srcData.Pix[pos+x*4+1])
-			setValue(DestPtr, x*3+2, srcData.Pix[pos+x*4+0])
-		}
-	}
-	return bmp
-}
+// 这个在linux和macOS下还得修改，windows是正常的
+//func imageToBitmap24(img image.Image) *vcl.TBitmap {
+//
+//	srcData, ok := img.(*image.RGBA) // RGBA
+//	if !ok {
+//
+//		return nil
+//	}
+//	bmp := vcl.NewBitmap()
+//	bmp.SetPixelFormat(types.Pf24bit)
+//	srcP := img.Bounds().Size()
+//	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
+//	//bmp.SetHandleType(types.BmDIB)
+//	// 透明，看情况了
+//	//bmp.SetTransparent(true)
+//	//bmp.SetTransparentColor(colors.ClBlack)
+//
+//	setValue := func(ptr uintptr, x int, v uint8) {
+//		*((*uint8)(unsafe.Pointer(ptr + uintptr(x)))) = v
+//	}
+//
+//	for y := 0; y < srcP.Y; y++ {
+//		DestPtr := bmp.ScanLine(int32(y))
+//		pos := srcData.PixOffset(0, y)
+//		for x := 0; x < srcP.X; x++ {
+//			// Delphi BGR  Go: RGBA
+//			setValue(DestPtr, x*3+0, srcData.Pix[pos+x*4+2])
+//			setValue(DestPtr, x*3+1, srcData.Pix[pos+x*4+1])
+//			setValue(DestPtr, x*3+2, srcData.Pix[pos+x*4+0])
+//		}
+//	}
+//	return bmp
+//}
 
 func loadImage(filename string) image.Image {
 	f, err := os.Open(filename)
@@ -154,25 +152,25 @@ func (f *TForm1) OnFormPaint(sender vcl.IObject) {
 	dst := image.NewRGBA(g.Bounds(f.srcImage.Bounds()))
 	g.Draw(dst, f.srcImage)
 
-	if f.ChkUsePng.Checked() {
-		bs := bytes.NewBuffer([]byte{})
-		if err := png.Encode(bs, dst); err != nil {
-			return
-		}
-		mem := vcl.NewMemoryStreamFromBytes(bs.Bytes())
-		defer mem.Free()
-		mem.SetPosition(0)
-		pngObj := vcl.NewPngImage()
-		defer pngObj.Free()
-		pngObj.LoadFromStream(mem)
-		f.Canvas().Draw(0, 0, pngObj)
-	} else {
-		bmp := imageToBitmap24(dst)
-		if bmp != nil {
-			defer bmp.Free()
-			f.Canvas().Draw(0, 0, bmp)
-		}
+	//if f.ChkUsePng.Checked() {
+	bs := bytes.NewBuffer([]byte{})
+	if err := png.Encode(bs, dst); err != nil {
+		return
 	}
+	mem := vcl.NewMemoryStreamFromBytes(bs.Bytes())
+	defer mem.Free()
+	mem.SetPosition(0)
+	pngObj := vcl.NewPngImage()
+	defer pngObj.Free()
+	pngObj.LoadFromStream(mem)
+	f.Canvas().Draw(0, 0, pngObj)
+	//} else {
+	//bmp := imageToBitmap24(dst)
+	//if bmp != nil {
+	//	defer bmp.Free()
+	//	f.Canvas().Draw(0, 0, bmp)
+	//}
+	//}
 }
 
 func (f *TForm1) OnListBox1Click(sender vcl.IObject) {

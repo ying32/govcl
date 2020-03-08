@@ -4,19 +4,15 @@ package main
 
 import (
 	"bytes"
-	"image"
 	"image/color"
 	"log"
 	"math"
 	"math/rand"
-	"unsafe"
 
 	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font/gofont/goregular"
 
 	"github.com/fogleman/gg"
-
-	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/ying32/govcl/vcl"
 )
@@ -42,40 +38,41 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 }
 
 // 24bit bmp，丢失透明度
-func imageToBitmap24(img image.Image) *vcl.TBitmap {
-	srcData, ok := img.(*image.RGBA)
-	if !ok {
-		return nil
-	}
-	bmp := vcl.NewBitmap()
-	bmp.SetPixelFormat(types.Pf24bit)
-	srcP := img.Bounds().Size()
-	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
-	//bmp.SetHandleType(types.BmDIB)
-	// 透明，看情况了
-	//bmp.SetTransparent(true)
-	//bmp.SetTransparentColor(colors.ClBlack)
+// 这个在linux和macOS下还得修改，windows是正常的
+//func imageToBitmap24(img image.Image) *vcl.TBitmap {
+//	srcData, ok := img.(*image.RGBA)
+//	if !ok {
+//		return nil
+//	}
+//	bmp := vcl.NewBitmap()
+//	bmp.SetPixelFormat(types.Pf24bit)
+//	srcP := img.Bounds().Size()
+//	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
+//	//bmp.SetHandleType(types.BmDIB)
+//	// 透明，看情况了
+//	//bmp.SetTransparent(true)
+//	//bmp.SetTransparentColor(colors.ClBlack)
+//
+//	setValue := func(ptr uintptr, x int, v uint8) {
+//		*((*uint8)(unsafe.Pointer(ptr + uintptr(x)))) = v
+//	}
+//
+//	for y := 0; y < srcP.Y; y++ {
+//		DestPtr := bmp.ScanLine(int32(y))
+//		pos := srcData.PixOffset(0, y)
+//		for x := 0; x < srcP.X; x++ {
+//			// Delphi BGR  Go: RGBA
+//			setValue(DestPtr, x*3+0, srcData.Pix[pos+x*4+2])
+//			setValue(DestPtr, x*3+1, srcData.Pix[pos+x*4+1])
+//			setValue(DestPtr, x*3+2, srcData.Pix[pos+x*4+0])
+//		}
+//	}
+//	return bmp
+//}
 
-	setValue := func(ptr uintptr, x int, v uint8) {
-		*((*uint8)(unsafe.Pointer(ptr + uintptr(x)))) = v
-	}
-
-	for y := 0; y < srcP.Y; y++ {
-		DestPtr := bmp.ScanLine(int32(y))
-		pos := srcData.PixOffset(0, y)
-		for x := 0; x < srcP.X; x++ {
-			// Delphi BGR  Go: RGBA
-			setValue(DestPtr, x*3+0, srcData.Pix[pos+x*4+2])
-			setValue(DestPtr, x*3+1, srcData.Pix[pos+x*4+1])
-			setValue(DestPtr, x*3+2, srcData.Pix[pos+x*4+0])
-		}
-	}
-	return bmp
-}
-
-func ggImageToBitmap24(dc *gg.Context) *vcl.TBitmap {
-	return imageToBitmap24(dc.Image())
-}
+//func ggImageToBitmap24(dc *gg.Context) *vcl.TBitmap {
+//	return imageToBitmap24(dc.Image())
+//}
 
 func ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 	bs := bytes.NewBuffer([]byte{})
@@ -92,19 +89,19 @@ func ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 
 func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
 	f.Repaint()
-	if isPng {
-		png := ggImageToPng(dc)
-		if png != nil {
-			defer png.Free()
-			f.Canvas().Draw(0, 0, png)
-		}
-	} else {
-		bmp := ggImageToBitmap24(dc)
-		if bmp != nil {
-			defer bmp.Free()
-			f.Canvas().Draw(0, 0, bmp)
-		}
+	//if isPng {
+	png := ggImageToPng(dc)
+	if png != nil {
+		defer png.Free()
+		f.Canvas().Draw(0, 0, png)
 	}
+	//} else {
+	//	bmp := ggImageToBitmap24(dc)
+	//	if bmp != nil {
+	//		defer bmp.Free()
+	//		f.Canvas().Draw(0, 0, bmp)
+	//	}
+	//}
 }
 
 // 32bit bmp
