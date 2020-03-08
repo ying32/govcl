@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 /*
    这里主要是窗口资源用来反射关联事件，就可以简化相关代码。
@@ -215,6 +213,14 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method reflect.Val
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
 		event.Call([]reflect.Value{method})
 	} else {
+		if len(eventType) > 0 {
+			// 也许分析错误，所不打印错误消息。
+			s := eventType[0]
+			switch {
+			case s >= '0' && s <= '9' || s == '_':
+				return
+			}
+		}
 		fmt.Printf("\"%s.%s\"不支持\"%s\"事件。\r\n(\"%s.%s\" does not support the \"%s\" event.)\n", rootName, name, eventType, rootName, name, eventType)
 	}
 }
