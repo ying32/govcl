@@ -187,7 +187,7 @@ begin
   if Assigned(FWebView) then
   begin
     webkit_web_view_load_uri(FWebView, PChar(AURL));
-    gtk_widget_grab_focus(GTK_WIDGET(FWebView));
+    //gtk_widget_grab_focus(GTK_WIDGET(FWebView));
   end;
 end;
 
