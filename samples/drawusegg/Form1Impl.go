@@ -75,27 +75,31 @@ func imageToBitmap(img image.Image) *vcl.TBitmap {
 	bmp.SetPixelFormat(types.Pf32bit)
 	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
 
-	if runtime.GOOS == "windows" || runtime.GOOS == "linux" {
-		for h := srcP.Y - 1; h >= 0; h-- {
-			ptr := bmp.ScanLine(int32(h))
-			for w := 0; w < srcP.X*4; w++ {
-				index := h*(srcP.X*4) + w
-				*(*byte)(unsafe.Pointer(ptr + uintptr(w))) = srcData.Pix[index]
-			}
-		}
+	isDrawwin := runtime.GOOS == "darwin"
+	var pixIndex [4]int
+	if isDrawwin {
+		pixIndex[0] = 3
+		pixIndex[1] = 0
+		pixIndex[2] = 1
+		pixIndex[3] = 2
 	} else {
-		// 填充，左下角为起点
-		for h := srcP.Y - 1; h >= 0; h-- {
-			ptr := bmp.ScanLine(int32(h))
-			for w := 0; w < int(srcP.X); w++ {
-				index := (h*int(srcP.X) + w) * 4
-				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = srcData.Pix[index+3]
-				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = srcData.Pix[index+2]
-				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = srcData.Pix[index+1]
-				*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = srcData.Pix[index]
-			}
+		pixIndex[0] = 2
+		pixIndex[1] = 1
+		pixIndex[2] = 0
+		pixIndex[3] = 3
+	}
+	// 填充，左下角为起点
+	for h := srcP.Y - 1; h >= 0; h-- {
+		ptr := bmp.ScanLine(int32(h))
+		for w := 0; w < int(srcP.X); w++ {
+			index := (h*int(srcP.X) + w) * 4
+			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = srcData.Pix[index+pixIndex[0]]
+			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = srcData.Pix[index+pixIndex[1]]
+			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = srcData.Pix[index+pixIndex[2]]
+			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = srcData.Pix[index+pixIndex[3]]
 		}
 	}
+
 	return bmp
 }
 
