@@ -12,6 +12,7 @@
 | customLibTest | 自定义加载指定位置的libvcl或者liblcl | |
 | draganddrop | 数据拖放 | |
 | draw | canvas自绘演示 | |
+| drawfilterusegift | 使用[Go Image Filtering Toolkit](https://github.com/disintegration/gift)处理图片滤镜并显示到GoVCL的控件上，演示视频见`drawfilterusegift/video.mp4` | |
 | drawrose | canvas自绘一朵玫瑰花 | |
 | drawusegg | 使用[Go Graphics - 2D](github.com/fogleman/gg)绘制并显示到GoVCL的控件上，演示视频见`drawusegg/video.mp4` | |
 | dropfiles | 鼠标拖放文件演示  | |
