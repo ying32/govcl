@@ -129,14 +129,18 @@ func runWithMacOSApp() {
 
 	if copyFile(os.Args[0], execFile) == nil {
 		os.Chmod(execFile, 0755)
-		args := os.Args[:len(os.Args)-1]
+		var args []string
+		if len(os.Args) > 1 {
+			args = os.Args[1:]
+		}
 		cmd := exec.Command(execFile, args...)
 		cmd.Stderr = os.Stderr
 		cmd.Stdin = os.Stdin
 		cmd.Stdout = os.Stdout
-		cmd.Run()
-		os.Exit(0)
+		if err := cmd.Run(); err != nil {
+			os.Exit(1)
+		} else {
+			os.Exit(0)
+		}
 	}
-
-	return
 }

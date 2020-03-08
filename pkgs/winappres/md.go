@@ -11,7 +11,7 @@ package winappres
 // 这是一个空的文件，用于导入，也只用于测试用
 // 生成的方式请前往wiki查看： https://gitee.com/ying32/govcl/wikis/Icon%E5%8F%8Amanifest%E6%96%87%E4%BB%B6%E9%9B%86%E6%88%90?sort_id=410058
 
-// 使用方法为  import _ "github.com/ying32/govcl/vcl/exts/winappres
+// 使用方法为  import _ "github.com/ying32/govcl/pkgs/winappres
 
 // 只有windows下有效，里面包含默认的一些东西
 
