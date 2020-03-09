@@ -18,12 +18,14 @@ import _ "github.com/ying32/govcl/pkgs/macapp"
 package macapp
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"strings"
+	"text/template"
 )
 
 func copyFile(src, dest string) error {
@@ -119,7 +121,17 @@ func runWithMacOSApp() {
 
 	plistFileName := macContentsDir + "/Info.plist"
 	if !fileExists(plistFileName) {
-		ioutil.WriteFile(plistFileName, []byte(fmt.Sprintf(infoplist, execName, execName, execName, execName)), 0666)
+		datas := map[string]string{
+			"execName":  execName,
+			"devRegion": "China", // China English
+			"locale":    "zh_CN", //os.Getenv("LANG"),
+			"copyright": "copyright xxxx",
+		}
+		buff := bytes.NewBuffer([]byte{})
+		tmp := template.New("file")
+		tmp.Parse(infoplist)
+		tmp.Execute(buff, datas)
+		ioutil.WriteFile(plistFileName, buff.Bytes(), 0666)
 	}
 
 	pkgInfoFileName := macContentsDir + "/PkgInfo"

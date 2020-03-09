@@ -20,13 +20,17 @@ const (
 		<true/>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>zh_CN</string>
+	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>%s</string>
+	<string>{{.execName}}</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+       <string>{{.locale}}</string>
+    </array>
 	<key>CFBundleName</key>
-	<string>%s</string>
+	<string>{{.execName}}</string>
 	<key>CFBundleIdentifier</key>
-	<string>ying32.%s</string>
+	<string>com.{{.execName}}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -40,7 +44,7 @@ const (
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>CFBundleIconFile</key>
-	<string>%s.icns</string>
+	<string>{{.execName}}.icns</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -61,7 +65,7 @@ const (
 	<key>NSHighResolutionCapable</key>
 	<true/>
     <key>NSHumanReadableCopyright</key>
-	<string>copyright 2017-2018 ying32.com</string>
+	<string>{{.copyright}}></string>
 </dict>
 </plist>`
 )
