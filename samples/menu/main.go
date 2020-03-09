@@ -45,7 +45,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 		// 动态添加的，静态好像是通过设计器将顶级的菜单标题设置为应用程序名，但动态的就是另一种方式
 		appMenu := vcl.NewMenuItem(f)
 		// 动态添加的，设置一个Unicode Apple logo char
-		appMenu.SetCaption(string([]byte{0xEF, 0xA3, 0xBF}))
+		appMenu.SetCaption(types.AppleLogoChar)
 		subItem := vcl.NewMenuItem(f)
 		// ----
 		subItem.SetCaption("关于")
