@@ -17,3 +17,6 @@ All type definitions.
 
 * win  
 A winapi interface, constants, etc. under Windows.  
+
+* bitmap
+Convert Go's Image to VCL/LCL image object.

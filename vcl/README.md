@@ -19,4 +19,5 @@ App多语言设置。
 * win  
 Windows下的一个winapi接口、常量等等。  
 
- 
+* bitmap  
+将Go的Image转为VCL/LCL图像对象。  
