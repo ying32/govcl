@@ -1758,9 +1758,11 @@ const (
 	GoLzRowHighlight                // Highlight the current Row
 )
 
-type TGridOptions = uint32
+// Delphi set of TGridOption,  Lazarus set of TGridOptionLz
+type TGridOptions = TSet
 
-type TGridDrawState = uint32
+// Set of = ( gdSelected, gdFocused, gdFixed, gdRowSelected, gdHotTrack, gdPressed)
+type TGridDrawState = TSet
 
 const (
 	GdSelected = iota + 0
