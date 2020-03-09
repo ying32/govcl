@@ -258,6 +258,11 @@ begin
   AObj.ScaleForCurrentDpi;
 end;
 
+procedure Form_InheritedWndProc(AObj: TGoForm; var AMsg: TMessage); extdecl;
+begin
+  AObj.InheritedWndProc(AMsg);
+end;
+
 // mouse
 function Mouse_Instance: TMouse; extdecl;
 begin
@@ -986,6 +991,7 @@ exports
   Form_ScaleForPPI,
   Form_ScaleControlsForDpi,
   Form_ScaleForCurrentDpi,
+  Form_InheritedWndProc,
 
 
   // TMouse

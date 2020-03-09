@@ -17,7 +17,7 @@ uses
 type
   TDropFilesEvent = procedure(Sender: TObject; const FileNames: array of String) of object;
 
-  TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean) of object;
+  TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage) of object;
 
   // 兼容Lazarus的
   TShowInTaskbar = (
@@ -48,6 +48,7 @@ type
     /// the controls for the new dpi
     /// </summary>
     procedure ScaleForCurrentDpi; override;
+    procedure InheritedWndProc(var AMsg: TMessage);
   published
     property AllowDropFiles: Boolean read GetAllowDropFiles write SetAllowDropFiles;
     property OnDropFiles: TDropFilesEvent read FOnDropFiles write FOnDropFiles;
@@ -101,6 +102,11 @@ begin
   AObj.ScaleForCurrentDpi;
 end;
 
+procedure Form_InheritedWndProc(AObj: TGoForm; var AMsg: TMessage); stdcall;
+begin
+  AObj.InheritedWndProc(AMsg);
+end;
+
 
 { TGoForm }
 
@@ -129,6 +135,11 @@ end;
 function TGoForm.GetAllowDropFiles: Boolean;
 begin
   Result := (GetWindowLong(Handle, GWL_EXSTYLE) and WS_EX_ACCEPTFILES) <> 0;
+end;
+
+procedure TGoForm.InheritedWndProc(var AMsg: TMessage);
+begin
+  inherited WndProc(AMsg);
 end;
 
 procedure TGoForm.ScaleForCurrentDpi;
@@ -198,20 +209,18 @@ begin
 end;
 
 procedure TGoForm.WndProc(var AMsg: TMessage);
-var
-  LHandled: Boolean;
 begin
-  LHandled := True;
   if Assigned(FOnWndProc) then
-    FOnWndProc(Self, AMsg, LHandled);
-  if LHandled then
+    FOnWndProc(Self, AMsg)
+  else
     inherited;
 end;
 
 exports
    Form_ScaleForPPI,
    Form_ScaleControlsForDpi,
-   Form_ScaleForCurrentDpi;
+   Form_ScaleForCurrentDpi,
+   Form_InheritedWndProc;
 
 
 initialization

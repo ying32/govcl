@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -126,4 +124,9 @@ func (f *TForm) ScaleSelf() {
 /// </summary>
 func (f *TForm) ScaleForCurrentDpi() {
 	Form_ScaleForCurrentDpi(f.instance)
+}
+
+// OnWndProc必须要调用的， 内部为  inherited WndProc(msg)
+func (f *TForm) InheritedWndProc(msg *types.TMessage) {
+	Form_InheritedWndProc(f.instance, msg)
 }

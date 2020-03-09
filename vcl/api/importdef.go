@@ -30,6 +30,7 @@ var (
 	form_SetShowInTaskBar       = libvcl.NewProc("Form_SetShowInTaskBar")
 	form_ShowInTaskBar          = libvcl.NewProc("Form_ShowInTaskBar")
 	form_ScaleForCurrentDpi     = libvcl.NewProc("Form_ScaleForCurrentDpi")
+	form_InheritedWndProc       = libvcl.NewProc("Form_InheritedWndProc")
 
 	setEventCallback      = libvcl.NewProc("SetEventCallback")
 	setMessageCallback    = libvcl.NewProc("SetMessageCallback")

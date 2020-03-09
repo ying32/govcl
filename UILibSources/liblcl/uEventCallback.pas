@@ -40,7 +40,7 @@ const
 
 type
   TEventCallbackPtr = function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; extdecl;
-  TMessageCallbackPtr = function(f: NativeUInt; msg, handled: Pointer): Pointer; extdecl;
+  TMessageCallbackPtr = function(f: NativeUInt; msg: Pointer): Pointer; extdecl;
   TThreadSyncCallbackPtr = function{(f: NativeUInt)}: Pointer; extdecl;
 
 var
@@ -318,7 +318,7 @@ type
     class procedure Add(AObj: TObject; AId: NativeUInt);
     class procedure Remove(AObj: TObject);
 
-    class procedure OnWndProc(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean);
+    class procedure OnWndProc(Sender: TObject; var TheMessage: TLMessage);
   end;
 
 implementation
@@ -1272,14 +1272,14 @@ begin
   FMsgEvents.Free;
 end;
 
-class procedure TMessageEventClass.OnWndProc(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean);
+class procedure TMessageEventClass.OnWndProc(Sender: TObject; var TheMessage: TLMessage);
 var
   LId: NativeUInt;
 begin
   if Assigned(GMessageCallbackPtr) then
   begin
     if FMsgEvents.TryGetData(NativeUInt(Sender), LId) then
-      GMessageCallbackPtr(LId, @TheMessage, @AHandled);
+      GMessageCallbackPtr(LId, @TheMessage);
   end;
 end;
 

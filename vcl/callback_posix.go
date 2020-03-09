@@ -1,15 +1,13 @@
 // +build !windows
 // +build cgo
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -18,7 +16,7 @@ package vcl
 //    return &doEventCallbackProc;
 // }
 //
-// extern void* doMessageCallbackProc(void* f, void* msg, void* handled);
+// extern void* doMessageCallbackProc(void* f, void* msg);
 // static void* doGetMessageCallbackAddr() {
 //    return &doMessageCallbackProc;
 // }
@@ -40,8 +38,8 @@ func doEventCallbackProc(f unsafe.Pointer, args unsafe.Pointer, argcount C.long)
 }
 
 //export doMessageCallbackProc
-func doMessageCallbackProc(f unsafe.Pointer, msg, handled unsafe.Pointer) unsafe.Pointer {
-	messageCallbackProc(uintptr(f), uintptr(msg), uintptr(handled))
+func doMessageCallbackProc(f unsafe.Pointer, msg unsafe.Pointer) unsafe.Pointer {
+	messageCallbackProc(uintptr(f), uintptr(msg))
 	return unsafe.Pointer(uintptr(0))
 }
 
