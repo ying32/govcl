@@ -45,7 +45,7 @@ func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 
 // 32bit bmp，丢失透明度
 // 返回的Bmp对象用完记得Free掉
-// LCL貌似不分丢失透明度，VCL会。。。。
+// LCL貌似不会丢失透明度，VCL会。。。。
 func ToBitmap(img image.Image) (*vcl.TBitmap, error) {
 	switch img.(type) {
 	case *image.RGBA:
