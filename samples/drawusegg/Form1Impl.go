@@ -3,17 +3,14 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
-	"image"
 	"image/color"
 	"log"
 	"math"
 	"math/rand"
 	"runtime"
-	"unsafe"
 
-	"github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/bitmap"
 
 	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font/gofont/goregular"
@@ -31,13 +28,6 @@ type TForm1Fields struct {
 // 使用gg 2d图形库来绘制，最终显示到govcl控件上。
 // gg部分的代码来自gg的例子
 // https://github.com/fogleman/gg
-
-func ifThen(val bool, atrue, afalse float64) float64 {
-	if val {
-		return atrue
-	}
-	return afalse
-}
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
@@ -64,75 +54,35 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 
 }
 
-// 32bit bmp，丢失透明度
-func imageToBitmap(img image.Image) *vcl.TBitmap {
-	srcData, ok := img.(*image.RGBA)
-	if !ok {
+func ggImageToBitmap(dc *gg.Context) *vcl.TBitmap {
+	obj, err := bitmap.ToBitmap(dc.Image())
+	if err != nil {
 		return nil
 	}
-	srcP := img.Bounds().Size()
-	bmp := vcl.NewBitmap()
-	bmp.SetPixelFormat(types.Pf32bit)
-	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
-
-	isDrawwin := runtime.GOOS == "darwin"
-	var pixIndex [4]int
-	if isDrawwin {
-		pixIndex[0] = 3
-		pixIndex[1] = 0
-		pixIndex[2] = 1
-		pixIndex[3] = 2
-	} else {
-		pixIndex[0] = 2
-		pixIndex[1] = 1
-		pixIndex[2] = 0
-		pixIndex[3] = 3
-	}
-	// 填充，左下角为起点
-	for h := srcP.Y - 1; h >= 0; h-- {
-		ptr := bmp.ScanLine(int32(h))
-		for w := 0; w < int(srcP.X); w++ {
-			index := (h*int(srcP.X) + w) * 4
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = srcData.Pix[index+pixIndex[0]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = srcData.Pix[index+pixIndex[1]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = srcData.Pix[index+pixIndex[2]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = srcData.Pix[index+pixIndex[3]]
-		}
-	}
-
-	return bmp
-}
-
-func ggImageToBitmap(dc *gg.Context) *vcl.TBitmap {
-	return imageToBitmap(dc.Image())
+	return obj
 }
 
 func ggImageToPng(dc *gg.Context) *vcl.TPngImage {
-	bs := bytes.NewBuffer([]byte{})
-	if err := dc.EncodePNG(bs); err != nil {
+	obj, err := bitmap.ToPngImage(dc.Image())
+	if err != nil {
 		return nil
 	}
-	mem := vcl.NewMemoryStreamFromBytes(bs.Bytes())
-	defer mem.Free()
-	mem.SetPosition(0)
-	pngObj := vcl.NewPngImage()
-	pngObj.LoadFromStream(mem)
-	return pngObj
+	return obj
 }
 
 func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
 	//if isPng {
-	png := ggImageToPng(dc)
-	if png != nil {
-		defer png.Free()
-		f.Canvas().Draw(0, 0, png)
-	}
-	//} else {
-	//	bmp := ggImageToBitmap(dc)
-	//	if bmp != nil {
-	//		defer bmp.Free()
-	//		f.Canvas().Draw(0, 0, bmp)
+	//	png := ggImageToPng(dc)
+	//	if png != nil {
+	//		defer png.Free()
+	//		f.Canvas().Draw(0, 0, png)
 	//	}
+	//} else {
+	bmp := ggImageToBitmap(dc)
+	if bmp != nil {
+		defer bmp.Free()
+		f.Canvas().Draw(0, 0, bmp)
+	}
 	//}
 }
 

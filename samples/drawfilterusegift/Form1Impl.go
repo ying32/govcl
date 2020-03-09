@@ -3,17 +3,13 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"image"
 	"image/color"
-	"image/png"
 	"log"
 	"os"
-	"runtime"
-	"unsafe"
 
-	"github.com/ying32/govcl/vcl/types"
+	"github.com/ying32/govcl/vcl/bitmap"
 
 	"github.com/disintegration/gift"
 
@@ -33,45 +29,6 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
 	// 先不使用吧
 	//f.ChkUsePng.SetChecked(false)
-}
-
-// 32bit bmp，丢失透明度
-func imageToBitmap(img image.Image) *vcl.TBitmap {
-	srcData, ok := img.(*image.RGBA)
-	if !ok {
-		return nil
-	}
-	srcP := img.Bounds().Size()
-	bmp := vcl.NewBitmap()
-	bmp.SetPixelFormat(types.Pf32bit)
-	bmp.SetSize(int32(srcP.X), int32(srcP.Y))
-
-	isDrawwin := runtime.GOOS == "darwin"
-	var pixIndex [4]int
-	if isDrawwin {
-		pixIndex[0] = 3
-		pixIndex[1] = 0
-		pixIndex[2] = 1
-		pixIndex[3] = 2
-	} else {
-		pixIndex[0] = 2
-		pixIndex[1] = 1
-		pixIndex[2] = 0
-		pixIndex[3] = 3
-	}
-	// 填充，左下角为起点
-	for h := srcP.Y - 1; h >= 0; h-- {
-		ptr := bmp.ScanLine(int32(h))
-		for w := 0; w < int(srcP.X); w++ {
-			index := (h*int(srcP.X) + w) * 4
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = srcData.Pix[index+pixIndex[0]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = srcData.Pix[index+pixIndex[1]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = srcData.Pix[index+pixIndex[2]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = srcData.Pix[index+pixIndex[3]]
-		}
-	}
-
-	return bmp
 }
 
 func loadImage(filename string) image.Image {
@@ -162,19 +119,19 @@ func (f *TForm1) OnFormPaint(sender vcl.IObject) {
 	g.Draw(dst, f.srcImage)
 
 	if f.ChkUsePng.Checked() {
-		bs := bytes.NewBuffer([]byte{})
-		if err := png.Encode(bs, dst); err != nil {
+		pngObj, err := bitmap.ToPngImage(dst)
+		if err != nil {
 			return
 		}
-		mem := vcl.NewMemoryStreamFromBytes(bs.Bytes())
-		defer mem.Free()
-		mem.SetPosition(0)
-		pngObj := vcl.NewPngImage()
-		defer pngObj.Free()
-		pngObj.LoadFromStream(mem)
-		f.Canvas().Draw(0, 0, pngObj)
+		if pngObj != nil {
+			defer pngObj.Free()
+			f.Canvas().Draw(0, 0, pngObj)
+		}
 	} else {
-		bmp := imageToBitmap(dst)
+		bmp, err := bitmap.ToBitmap(dst)
+		if err != nil {
+			return
+		}
 		if bmp != nil {
 			defer bmp.Free()
 			f.Canvas().Draw(0, 0, bmp)
