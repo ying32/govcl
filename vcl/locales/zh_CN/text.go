@@ -73,5 +73,5 @@ var resItems = map[string]string{
 }
 
 func init() {
-	locales.ModifyResouces(resItems)
+	locales.ModifyResources(resItems)
 }

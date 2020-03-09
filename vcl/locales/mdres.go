@@ -11,9 +11,9 @@ package locales
 import "github.com/ying32/govcl/vcl/api"
 
 // 修改资源
-func ModifyResouces(data map[string]string) {
-	for i := 0; i < int(api.DGetLibResouceCount()); i++ {
-		item := api.DGetLibResouceItem(int32(i))
+func ModifyResources(data map[string]string) {
+	for i := int32(0); i < api.DGetLibResouceCount(); i++ {
+		item := api.DGetLibResouceItem(i)
 		if value, ok := data[item.Name]; ok {
 			api.DModifyLibResouce(item.Ptr, value)
 		}
