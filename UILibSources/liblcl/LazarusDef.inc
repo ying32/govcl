@@ -258,7 +258,7 @@ begin
   AObj.ScaleForCurrentDpi;
 end;
 
-procedure Form_InheritedWndProc(AObj: TGoForm; var AMsg: TMessage); extdecl;
+procedure Form_InheritedWndProc(AObj: TGoForm; var AMsg: TLMessage); extdecl;
 begin
   AObj.InheritedWndProc(AMsg);
 end;
@@ -832,7 +832,7 @@ type
   end;
 
 const
-  GLibResouces: array[0..38] of TResItem = (
+  GLibResouces: array[0..40] of TResItem = (
      // 27
     (Name: 'SOpenFileTitle'; ValuePtr: @rsmbOpen),
     (Name: 'SOKButton'; ValuePtr: @rsMbOK),
@@ -878,7 +878,10 @@ const
 
     (Name: 'rsFindMore'; ValuePtr: @rsFindMore),
     (Name: 'rsReplace'; ValuePtr: @rsReplace),
-    (Name: 'rsReplaceAll'; ValuePtr: @rsReplaceAll)
+    (Name: 'rsReplaceAll'; ValuePtr: @rsReplaceAll),
+
+    (Name: 'rsSelectcolorTitle'; ValuePtr: @rsSelectcolorTitle),
+    (Name: 'rsSelectFontTitle'; ValuePtr: @rsSelectFontTitle)
 
   );
 

@@ -67,6 +67,9 @@ var resItems = map[string]string{
 	"rsFindMore":   "查找更多",
 	"rsReplace":    "替换",
 	"rsReplaceAll": "替换所有",
+
+	"rsSelectcolorTitle": "选择颜色",
+	"rsSelectFontTitle":  "选择一个字体",
 }
 
 func init() {

@@ -50,6 +50,7 @@ uses
   LCLStrConsts,
   SysUtils,
   Classes,
+  LMessages,
   DateUtils,
   IniFiles,
   Registry,
