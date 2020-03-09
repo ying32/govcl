@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package types
 
@@ -81,6 +79,9 @@ type TXID = uint64
 type ATOM = uint16
 
 type TAtom = uint16
+
+// Pascal集合类型 set of xxx
+type TSet uint32
 
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect
@@ -222,4 +223,38 @@ type TGestureEventInfo struct {
 	//	1: (TapLocation: TSmallPoint);
 	//	end;
 	TapLocation TSmallPoint
+}
+
+// -------------- TSet
+
+// 新建TSet，初始值为0，然后添加元素
+func NewSet(opts ...uint8) TSet {
+	var s TSet
+	return s.Include(opts...)
+}
+
+// Include Delphi/Lazarus集合加法，val...中存储为位的索引，下标为0
+func (s TSet) Include(val ...uint8) TSet {
+	r := uint32(s)
+	for _, v := range val {
+		r |= (1 << uint8(v))
+	}
+	return TSet(r)
+}
+
+// Exclude Delphi/Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+func (s TSet) Exclude(val ...uint8) TSet {
+	r := uint32(s)
+	for _, v := range val {
+		r &= ^(1 << uint8(v))
+	}
+	return TSet(r)
+}
+
+// In Delphi/Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+func (s TSet) In(val uint32) bool {
+	if s&(1<<uint8(val)) != 0 {
+		return true
+	}
+	return false
 }

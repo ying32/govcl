@@ -14,7 +14,6 @@ import (
 	"fmt"
 
 	"github.com/ying32/govcl/vcl/api"
-	"github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -29,7 +28,7 @@ func ShowMessageFmt(format string, args ...interface{}) {
 
 // MessageDlg 消息框，Buttons为按钮样式，祥见types.TMsgDlgButtons
 func MessageDlg(Msg string, DlgType TMsgDlgType, Buttons ...uint8) int32 {
-	return api.DMessageDlg(Msg, DlgType, TMsgDlgButtons(rtl.Include(0, Buttons...)), 0)
+	return api.DMessageDlg(Msg, DlgType, NewSet(Buttons...), 0)
 }
 
 // CheckPtr 检测接口是否被实例化，如果已经实例化则返回实例指针
@@ -52,9 +51,9 @@ func SelectDirectory2(caption, root string, options TSelectDirExtOpts, parent IO
 
 // SelectDirectory3 选择目录， options默认是SdNewUI，parent默认为nil
 func SelectDirectory3(caption, root string, options ...uint8) (bool, string) {
-	opts := rtl.Include(0, options...)
+	opts := NewSet(options...)
 	if len(options) == 0 {
-		opts = rtl.Include(opts, SdNewUI)
+		opts = opts.Include(SdNewUI)
 	}
 	return SelectDirectory2(caption, root, opts, nil)
 }

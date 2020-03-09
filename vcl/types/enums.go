@@ -9,7 +9,7 @@
 package types
 
 /*
-  注意：Delphi中所有集合这里全部使用uint32表示，也就是说最多32个元素
+  注意：Delphi中所有集合这里全部使用TSet(uint32)表示，也就是说最多32个元素
 
 */
 
@@ -26,8 +26,7 @@ const (
 	AlCustom
 )
 
-//  TFormBorderStyle = (bsNone, bsSingle, bsSizeable, bsDialog, bsToolWindow,
-//    bsSizeToolWin);
+//  TFormBorderStyle = (bsNone, bsSingle, bsSizeable, bsDialog, bsToolWindow, bsSizeToolWin);
 //  TBorderStyle = bsNone..bsSingle;
 type TBorderStyle int32
 
@@ -52,8 +51,7 @@ const (
 	FsStayOnTop
 )
 
-//  TPosition = (poDesigned, poDefault, poDefaultPosOnly, poDefaultSizeOnly,
-//    poScreenCenter, poDesktopCenter, poMainFormCenter, poOwnerFormCenter);
+//  TPosition = (poDesigned, poDefault, poDefaultPosOnly, poDefaultSizeOnly, poScreenCenter, poDesktopCenter, poMainFormCenter, poOwnerFormCenter);
 type TPosition int32
 
 const (
@@ -143,8 +141,7 @@ const (
 //  TLeftRight = TAlignment.taLeftJustify..TAlignment.taRightJustify;
 type TLeftRight int32
 
-//  TBiDiMode = (bdLeftToRight, bdRightToLeft, bdRightToLeftNoAlign,
-//    bdRightToLeftReadingOnly);
+//  TBiDiMode = (bdLeftToRight, bdRightToLeft, bdRightToLeftNoAlign, bdRightToLeftReadingOnly);
 type TBiDiMode int32
 
 const (
@@ -174,8 +171,7 @@ const (
 
 type TColorBoxStyle int32
 
-//  TComboBoxStyle = (csDropDown, csSimple, csDropDownList, csOwnerDrawFixed,
-//    csOwnerDrawVariable);
+//  TComboBoxStyle = (csDropDown, csSimple, csDropDownList, csOwnerDrawFixed, csOwnerDrawVariable);
 type TComboBoxStyle int32
 
 const (
@@ -219,8 +215,7 @@ const (
 
 type TLinkAlignment TAlignment
 
-//  TListBoxStyle = (lbStandard, lbOwnerDrawFixed, lbOwnerDrawVariable,
-//    lbVirtual, lbVirtualOwnerDraw);
+//  TListBoxStyle = (lbStandard, lbOwnerDrawFixed, lbOwnerDrawVariable, lbVirtual, lbVirtualOwnerDraw);
 type TListBoxStyle int32
 
 const (
@@ -305,7 +300,7 @@ const (
 	BsExclusive
 )
 
-//  TButtonStyle = (bsAutoDetect, bsWin31, bsNew);
+// TButtonStyle = (bsAutoDetect, bsWin31, bsNew);
 //type TButtonStyle int32
 
 const (
@@ -336,7 +331,8 @@ const (
 	FsStrikeOut
 )
 
-type TFontStyles = uint32
+// TFontStyles = set of TFontStyle
+type TFontStyles = TSet
 
 // TScrollStyle = (ssNone, ssHorizontal, ssVertical, ssBoth);
 type TScrollStyle int32
@@ -362,8 +358,7 @@ const (
 	StBoth
 )
 
-//  TMultiSelectStyles = (msControlSelect, msShiftSelect,
-//                        msVisibleOnly, msSiblingOnly);
+//  TMultiSelectStyles = (msControlSelect, msShiftSelect, msVisibleOnly, msSiblingOnly);
 type TMultiSelectStyles int32
 
 const (
@@ -373,8 +368,7 @@ const (
 	MsSiblingOnly
 )
 
-//  TListArrangement = (arAlignBottom, arAlignLeft, arAlignRight,
-//    arAlignTop, arDefault, arSnapToGrid);
+//  TListArrangement = (arAlignBottom, arAlignLeft, arAlignRight, arAlignTop, arDefault, arSnapToGrid);
 type TListArrangement int32
 
 const (
@@ -409,7 +403,7 @@ const (
 )
 
 //  TItemStates = set of TItemState;
-type TItemStates = uint32
+type TItemStates = TSet
 
 //  TItemChange = (ctText, ctImage, ctState);
 type TItemChange int32
@@ -451,7 +445,7 @@ const (
 )
 
 //  TListHotTrackStyles = set of TListHotTrackStyle;
-type TListHotTrackStyles = uint32
+type TListHotTrackStyles = TSet
 
 //  TItemRequests = (irText, irImage, irParam, irState, irIndent);
 type TItemRequests int32
@@ -637,7 +631,7 @@ const (
 )
 
 //  TMsgDlgButtons = set of TMsgDlgBtn;
-type TMsgDlgButtons = uint32
+type TMsgDlgButtons = TSet
 
 // TSysLinkType = (sltURL, sltID);
 type TSysLinkType int32
@@ -827,7 +821,7 @@ const (
 )
 
 //   TLoadResources = set of TLoadResource;
-type TLoadResources = uint32
+type TLoadResources = TSet
 
 // TColorDepth = (cdDefault, cdDeviceDependent, cd4Bit, cd8Bit, cd16Bit, cd24Bit, cd32Bit);
 type TColorDepth int32
@@ -877,7 +871,7 @@ const (
 )
 
 //  TListGroupStateSet = set of TListGroupState;
-type TListGroupStateSet = uint32
+type TListGroupStateSet = TSet
 
 // TTBDrawingStyle = (dsNormal, dsGradient);
 type TTBDrawingStyle int32
@@ -887,8 +881,7 @@ const (
 	DsGradient
 )
 
-//TToolButtonStyle = (tbsButton, tbsCheck, tbsDropDown, tbsSeparator,
-//    tbsDivider, tbsTextButton);
+//TToolButtonStyle = (tbsButton, tbsCheck, tbsDropDown, tbsSeparator, tbsDivider, tbsTextButton);
 type TToolButtonStyle int32
 
 const (
@@ -900,8 +893,7 @@ const (
 	TbsTextButton
 )
 
-//  TToolButtonState = (tbsChecked, tbsPressed, tbsEnabled, tbsHidden,
-//    tbsIndeterminate, tbsWrap, tbsEllipses, tbsMarked);
+//  TToolButtonState = (tbsChecked, tbsPressed, tbsEnabled, tbsHidden, tbsIndeterminate, tbsWrap, tbsEllipses, tbsMarked);
 type TToolButtonState int32
 
 const (
@@ -924,7 +916,7 @@ const (
 )
 
 // TTBGradientDrawingOptions = set of (gdoHotTrack, gdoGradient);
-type TTBGradientDrawingOptions = uint32
+type TTBGradientDrawingOptions = TSet
 
 // TColorDialogOption = (cdFullOpen, cdPreventFullOpen, cdShowHelp,
 // cdSolidColor, cdAnyColor);
@@ -938,7 +930,7 @@ const (
 	CdAnyColor
 )
 
-type TColorDialogOptions = uint32
+type TColorDialogOptions = TSet
 
 // TBorderIcon = (biSystemMenu, biMinimize, biMaximize, biHelp);
 type TBorderIcon int32
@@ -951,7 +943,7 @@ const (
 )
 
 // TBorderIcons = set of TBorderIcon;
-type TBorderIcons = uint32
+type TBorderIcons = TSet
 
 // TFontDialogOption = (fdAnsiOnly, fdTrueTypeOnly, fdEffects,
 //     fdFixedPitchOnly, fdForceFontExist, fdNoFaceSel, fdNoOEMFonts,
@@ -979,7 +971,7 @@ const (
 )
 
 //   TFontDialogOptions = set of TFontDialogOption;
-type TFontDialogOptions = uint32
+type TFontDialogOptions = TSet
 
 // { TOpenDialog }
 // TOpenOption = (ofReadOnly, ofOverwritePrompt, ofHideReadOnly,
@@ -1016,7 +1008,7 @@ const (
 )
 
 // TOpenOptions = set of TOpenOption;
-type TOpenOptions = uint32
+type TOpenOptions = TSet
 
 // TOpenOptionEx = (ofExNoPlacesBar);
 type TOpenOptionEx int32
@@ -1026,7 +1018,7 @@ const (
 )
 
 // TOpenOptionsEx = set of TOpenOptionEx;
-type TOpenOptionsEx = uint32
+type TOpenOptionsEx = TSet
 
 // { TPrintDialog }
 // TPrintRange = (prAllPages, prSelection, prPageNums);
@@ -1052,7 +1044,7 @@ const (
 )
 
 // TPrintDialogOptions = set of TPrintDialogOption;
-type TPrintDialogOptions = uint32
+type TPrintDialogOptions = TSet
 
 // TPageSetupDialogOption = (psoDefaultMinMargins, psoDisableMargins,
 //   psoDisableOrientation, psoDisablePagePainting, psoDisablePaper, psoDisablePrinter,
@@ -1074,7 +1066,7 @@ const (
 )
 
 // TPageSetupDialogOptions = set of TPageSetupDialogOption;
-type TPageSetupDialogOptions = uint32
+type TPageSetupDialogOptions = TSet
 
 // TPrinterKind = (pkDotMatrix, pkHPPCL);
 type TPrinterKind int32
@@ -1101,8 +1093,7 @@ const (
 	PmInches
 )
 
-//   TStringsOption = (soStrictDelimiter, soWriteBOM, soTrailingLineBreak,
-//     soUseLocale);
+//   TStringsOption = (soStrictDelimiter, soWriteBOM, soTrailingLineBreak, soUseLocale);
 type TStringsOption = uint32
 
 const (
@@ -1113,11 +1104,10 @@ const (
 )
 
 //   TStringsOptions = set of TStringsOption;
-type TStringsOptions = uint32
+type TStringsOptions = TSet
 
-// TShiftState = set of (ssShift, ssAlt, ssCtrl,
-//     ssLeft, ssRight, ssMiddle, ssDouble, ssTouch, ssPen, ssCommand, ssHorizontal);
-type TShiftState = uint32
+// TShiftState = set of (ssShift, ssAlt, ssCtrl, ssLeft, ssRight, ssMiddle, ssDouble, ssTouch, ssPen, ssCommand, ssHorizontal);
+type TShiftState = TSet
 
 const (
 	SsShift = iota + 0
@@ -1171,7 +1161,7 @@ const (
 )
 
 // TCanvasState = set of TCanvasStates;
-type TCanvasState = uint32
+type TCanvasState = TSet
 
 // TCanvasOrientation = (coLeftToRight, coRightToLeft);
 type TCanvasOrientation int32
@@ -1217,10 +1207,10 @@ const (
 )
 
 // TTextFormat = set of TTextFormats;
-type TTextFormat = uint32
+type TTextFormat = TSet
 
 // TStyleElements = set of (seFont, seClient, seBorder);
-type TStyleElements = uint32
+type TStyleElements = TSet
 
 const (
 	SeFont = iota + 0
@@ -1249,7 +1239,7 @@ const (
 )
 
 // TBevelEdges = set of TBevelEdge;
-type TBevelEdges = uint32
+type TBevelEdges = TSet
 
 // TBevelKind = (bkNone, bkTile, bkSoft, bkFlat);
 type TBevelKind int32
@@ -1348,7 +1338,7 @@ const (
 
 // TSearchTypes = set of TSearchType;
 
-type TSearchTypes = uint32
+type TSearchTypes = TSet
 
 // TNumberingStyle = (nsNone, nsBullet);
 type TNumberingStyle int32
@@ -1382,7 +1372,7 @@ const (
 )
 
 // TConsistentAttributes = set of TConsistentAttribute;
-type TConsistentAttributes = uint32
+type TConsistentAttributes = TSet
 
 // TIconArrangement = (iaTop, iaLeft);
 type TIconArrangement int32
@@ -1423,12 +1413,12 @@ const (
 )
 
 //  TAnchors = set of TAnchorKind;
-type TAnchors = uint32
+type TAnchors = TSet
 
 // TOwnerDrawState = set of (odSelected, odGrayed, odDisabled, odChecked,
 //    odFocused, odDefault, odHotLight, odInactive, odNoAccel, odNoFocusRect,
 //    odReserved1, odReserved2, odComboBoxEdit);
-type TOwnerDrawState = uint32
+type TOwnerDrawState = TSet
 
 const (
 	OdSelected = iota + 0
@@ -1552,7 +1542,7 @@ const (
 //TCustomDrawState = set of (cdsSelected, cdsGrayed, cdsDisabled, cdsChecked,
 //  cdsFocused, cdsDefault, cdsHot, cdsMarked, cdsIndeterminate,
 //  cdsShowKeyboardCues, cdsNearHot, cdsOtherSideHot, cdsDropHilited);
-type TCustomDrawState = uint32
+type TCustomDrawState = TSet
 
 const (
 	CdsSelected = iota + 0
@@ -1570,9 +1560,8 @@ const (
 	CdsDropHilited
 )
 
-//TTBCustomDrawFlags = set of (tbNoEdges, tbHiliteHotTrack, tbNoOffset,
-//  tbNoMark, tbNoEtchedEffect);
-type TTBCustomDrawFlags = uint32
+//TTBCustomDrawFlags = set of (tbNoEdges, tbHiliteHotTrack, tbNoOffset, tbNoMark, tbNoEtchedEffect);
+type TTBCustomDrawFlags = TSet
 
 const (
 	TbNoEdges = iota + 0
@@ -1602,7 +1591,7 @@ const (
 )
 
 //TSelectDirOpts = set of TSelectDirOpt;
-type TSelectDirOpts = uint32
+type TSelectDirOpts = TSet
 
 //TSelectDirExtOpt = (sdNewFolder, sdShowEdit, sdShowShares, sdNewUI, sdShowFiles,
 //sdValidateDir);
@@ -1618,7 +1607,7 @@ const (
 )
 
 //TSelectDirExtOpts = set of TSelectDirExtOpt;
-type TSelectDirExtOpts = uint32
+type TSelectDirExtOpts = TSet
 
 // TFindOption
 type TFindOption = uint32
@@ -1647,7 +1636,7 @@ const (
 )
 
 // TFindOptions = set of TFindOption
-type TFindOptions = uint32
+type TFindOptions = TSet
 
 type TDragMode int32
 
@@ -1844,7 +1833,12 @@ const (
 	TsTrackEnd
 )
 
-type TControlState = uint32
+// TControlState = set of (csLButtonDown, csClicked, csPalette,
+//  csReadingState, csAlignmentNeeded, csFocusing, csCreating,
+//  csPaintCopy, csCustomPaint, csDestroyingHandle, csDocking,
+//  csDesignerHide, csPanning, csRecreating, csAligning, csGlassPaint,
+//  csPrintClient);
+type TControlState = TSet
 
 const (
 	CsLButtonDown = iota + 0
@@ -1878,10 +1872,17 @@ const (
    property which includes/excludes the csParentBackground control style.
 */
 
-type TControlStyle = uint32
+// TControlStyle = set of (csAcceptsControls, csCaptureMouse,
+//  csDesignInteractive, csClickEvents, csFramed, csSetCaption, csOpaque,
+//  csDoubleClicks, csFixedWidth, csFixedHeight, csNoDesignVisible,
+//  csReplicatable, csNoStdEvents, csDisplayDragImage, csReflector,
+//  csActionClient, csMenuEvents, csNeedsBorderPaint, csParentBackground,
+//  csPannable, csAlignWithMargins, csGestures, csPaintBlackOpaqueOnGlass,
+//  csOverrideStylePaint);
+type TControlStyle = TSet
 
 const (
-	CsAcceptsControls = iota + 0
+	CsAcsControls = iota + 0
 	CsCaptureMouse
 	CsDesignInteractive
 	CsClickEvents
@@ -1919,7 +1920,8 @@ const (
 	GfEnd
 )
 
-type TInteractiveGestureFlags = uint32
+// set of TInteractiveGestureFlag;
+type TInteractiveGestureFlags = TSet
 
 type TMouseActivate int32
 
@@ -1953,7 +1955,7 @@ const (
 )
 
 //TThumbButtonStates = set of TThumbButtonState;
-type TThumbButtonStates = uint32
+type TThumbButtonStates = TSet
 
 //TThumbTabProperty = (AppThumbAlways, AppThumbWhenActive, AppPeekAlways, AppPeekWhenActive, CustomizedPreview);
 type TThumbTabProperty int32
@@ -1967,7 +1969,7 @@ const (
 )
 
 //TThumbTabProperties = set of TThumbTabProperty;
-type TThumbTabProperties = uint32
+type TThumbTabProperties = TSet
 
 // TBitmapHandleType
 type TBitmapHandleType int32
@@ -2003,7 +2005,8 @@ const (
 	PcCollation
 )
 
-type TPrinterCapabilities = uint32
+// Set of TPrinterCapability
+type TPrinterCapabilities = TSet
 
 type TReadyState int32
 
@@ -2033,7 +2036,8 @@ const (
 	StNever              // never show taskbar item for the form
 )
 
-type TTaskDialogCommonButtons = uint32
+// Set of TTaskDialogCommonButton
+type TTaskDialogCommonButtons = TSet
 
 type TTaskDialogCommonButton int32
 
@@ -2046,7 +2050,8 @@ const (
 	TcbClose
 )
 
-type TTaskDialogFlags = uint32 // set of TTaskDialogFlag;
+// set of TTaskDialogFlag;
+type TTaskDialogFlags = TSet
 
 type TTaskDialogFlag int32
 
@@ -2102,7 +2107,8 @@ const (
 	CsExPathWordBreak
 )
 
-type TComboBoxExStyles = uint32 //= set of TComboBoxExStyleEx;
+// set of TComboBoxExStyleEx;
+type TComboBoxExStyles = TSet
 
 type TAutoCompleteOption int32
 
@@ -2116,7 +2122,8 @@ const (
 	AcoRtlReading
 )
 
-type TAutoCompleteOptions = uint32 // = set of TAutoCompleteOption;
+// set of TAutoCompleteOption;
+type TAutoCompleteOptions = TSet
 
 type TDefaultMonitor int32
 
