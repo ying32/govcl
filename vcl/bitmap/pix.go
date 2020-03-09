@@ -11,5 +11,7 @@
 package bitmap
 
 var (
+	// B G R A
+	// Little Endian
 	pixIndex = [4]int{2, 1, 0, 3}
 )

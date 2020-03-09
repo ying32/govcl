@@ -10,5 +10,7 @@
 package bitmap
 
 var (
+	// A R G B
+	// Big Endian
 	pixIndex = [4]int{3, 0, 1, 2}
 )

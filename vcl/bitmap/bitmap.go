@@ -24,8 +24,8 @@ import (
 )
 
 var (
-	ErrPixelDataEmpty        = errors.New("The pixel data is empty")
-	ErrUnsupportedDataFormat = errors.New("Unsupported pixel data format")
+	ErrPixelDataEmpty        = errors.New("the pixel data is empty")
+	ErrUnsupportedDataFormat = errors.New("unsupported pixel data format")
 )
 
 // 将Go的Image转为VCL/LCL的 TPngImage
@@ -110,4 +110,44 @@ func toBitmap(width, height int, pix []uint8) (*vcl.TBitmap, error) {
 		}
 	}
 	return bmp, nil
+}
+
+// 将vcl/lcl的Graphic对象转为Go的Image
+func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
+	if obj == nil || !obj.IsValid() {
+		return nil, errors.New("obj is invalid")
+	}
+	buff := bytes.NewBuffer([]byte{})
+	mem := vcl.NewMemoryStream()
+	defer mem.Free()
+	obj.SaveToStream(mem)
+	mem.SetPosition(0)
+	_, bs := mem.Read(int32(mem.Size()))
+	buff.Write(bs)
+	if obj.InheritsFrom(vcl.TBitmapClass()) {
+		img := image.NewRGBA(image.Rect(0, 0, int(obj.Width()), int(obj.Height())))
+		// 复制数据到Pix中。。。
+		// 先不管他了，以后再说
+		//img.Pix
+		return img, nil
+	} else if obj.InheritsFrom(vcl.TPngImageClass()) {
+		img, err := png.Decode(buff)
+		if err != nil {
+			return nil, err
+		}
+		return img, nil
+	} else if obj.InheritsFrom(vcl.TJPEGImageClass()) {
+		img, err := jpeg.Decode(buff)
+		if err != nil {
+			return nil, err
+		}
+		return img, nil
+	} else if obj.InheritsFrom(vcl.TGIFImageClass()) {
+		img, err := gif.Decode(buff)
+		if err != nil {
+			return nil, err
+		}
+		return img, nil
+	}
+	return nil, errors.New("unknown error")
 }
