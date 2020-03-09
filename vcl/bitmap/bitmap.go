@@ -78,7 +78,7 @@ func ToJPEGImage(img image.Image, quality int) (*vcl.TJPEGImage, error) {
 
 // 将Go的Image转为VCL/LCL的 TGIFImage
 // 返回的gif对象用完记得Free掉
-func ToGIFImage(img image.Image, quality int) (*vcl.TGIFImage, error) {
+func ToGIFImage(img image.Image) (*vcl.TGIFImage, error) {
 	buff := bytes.NewBuffer([]byte{})
 	if err := gif.Encode(buff, img, &gif.Options{NumColors: 256}); err != nil {
 		return nil, err
