@@ -1678,7 +1678,8 @@ const (
 	EbBottom
 )
 
-type TEdgeBorders = uint32
+// set of TEdgeBorder
+type TEdgeBorders = TSet
 
 type TEdgeStyle int32
 
