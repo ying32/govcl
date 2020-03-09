@@ -22,7 +22,7 @@ type TForm1Fields struct {
 }
 
 // 使用gift来对图片做滤镜处理
-//
+// gift部分的代码来自gift的例子
 // https://github.com/disintegration/gift
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
