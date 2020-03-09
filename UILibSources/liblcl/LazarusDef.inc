@@ -832,7 +832,8 @@ type
   end;
 
 const
-  GLibResouces: array[0..26] of TResItem = (
+  GLibResouces: array[0..38] of TResItem = (
+     // 27
     (Name: 'SOpenFileTitle'; ValuePtr: @rsmbOpen),
     (Name: 'SOKButton'; ValuePtr: @rsMbOK),
     (Name: 'SCancelButton'; ValuePtr: @rsMbCancel),
@@ -861,7 +862,23 @@ const
     (Name: 'SMsgDlgAll'; ValuePtr: @rsMbAll),
     (Name: 'SMsgDlgNoToAll'; ValuePtr: @rsMbNoToAll),
     (Name: 'SMsgDlgYesToAll'; ValuePtr: @rsMbYesToAll),
-    (Name: 'SMsgDlgClose'; ValuePtr: @rsMbClose)
+    (Name: 'SMsgDlgClose'; ValuePtr: @rsMbClose),
+
+     // TFindDialog And TReplaceDialog
+     // 9
+    (Name: 'rsFind'; ValuePtr: @rsFind),
+    (Name: 'rsHelp'; ValuePtr: @rsHelp),
+    (Name: 'rsWholeWordsOnly'; ValuePtr: @rsWholeWordsOnly),
+    (Name: 'rsCaseSensitive'; ValuePtr: @rsCaseSensitive),
+    (Name: 'rsEntireScope'; ValuePtr: @rsEntireScope),
+    (Name: 'rsText'; ValuePtr: @rsText),
+    (Name: 'rsDirection'; ValuePtr: @rsDirection),
+    (Name: 'rsForward'; ValuePtr: @rsForward),
+    (Name: 'rsBackward'; ValuePtr: @rsBackward),
+
+    (Name: 'rsFindMore'; ValuePtr: @rsFindMore),
+    (Name: 'rsReplace'; ValuePtr: @rsReplace),
+    (Name: 'rsReplaceAll'; ValuePtr: @rsReplaceAll)
 
   );
 

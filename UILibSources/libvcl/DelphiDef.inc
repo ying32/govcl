@@ -761,7 +761,7 @@ type
   end;
 
 const
-  GLibResouces: array[0..28] of TResItem = (
+  GLibResouces: array[0..35] of TResItem = (
     (Name: 'SOpenFileTitle'; ValuePtr: @SOpenFileTitle),
     (Name: 'SOKButton'; ValuePtr: @SOKButton),
     (Name: 'SCancelButton'; ValuePtr: @SCancelButton),
@@ -790,8 +790,14 @@ const
     (Name: 'SMsgDlgAll'; ValuePtr: @SMsgDlgAll),
     (Name: 'SMsgDlgNoToAll'; ValuePtr: @SMsgDlgNoToAll),
     (Name: 'SMsgDlgYesToAll'; ValuePtr: @SMsgDlgYesToAll),
-    (Name: 'SMsgDlgClose'; ValuePtr: @SMsgDlgClose)
-
+    (Name: 'SMsgDlgClose'; ValuePtr: @SMsgDlgClose),
+    (Name: 'SSelectDirCap'; ValuePtr: @SSelectDirCap),
+    (Name: 'SDirNameCap'; ValuePtr: @SDirNameCap),
+    (Name: 'SDrivesCap'; ValuePtr: @SDrivesCap),
+    (Name: 'SDirsCap'; ValuePtr: @SDirsCap),
+    (Name: 'SFilesCap'; ValuePtr: @SFilesCap),
+    (Name: 'SNetworkCap'; ValuePtr: @SNetworkCap),
+    (Name: 'SEncodingLabel'; ValuePtr: @SEncodingLabel)
   );
 
 function DGetLibResouceCount: Integer; stdcall;

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/ying32/govcl/vcl"
-
 	_ "github.com/ying32/govcl/pkgs/winappres"
+	"github.com/ying32/govcl/vcl"
+	_ "github.com/ying32/govcl/vcl/locales/zh_CN"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/win"
 )
