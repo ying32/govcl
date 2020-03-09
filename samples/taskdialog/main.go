@@ -67,7 +67,7 @@ func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
 
 	if !rtl.LcLLoaded() {
 		f := taskdlg.Flags()
-		taskdlg.SetFlags(rtl.Include(f, types.TfShowProgressBar, types.TfShowMarqueeProgressBar))
+		taskdlg.SetFlags(f.Include(types.TfShowProgressBar, types.TfShowMarqueeProgressBar))
 		taskdlg.ProgressBar().SetPosition(50)
 	}
 

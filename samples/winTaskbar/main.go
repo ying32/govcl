@@ -7,7 +7,6 @@ import (
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -41,11 +40,12 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.Taskbar1.SetProgressValue(50)
 	f.Taskbar1.OverlayIcon().LoadFromFile("pause.ico")
 
-	f.Taskbar1.SetTabProperties(rtl.Include(0, types.CustomizedPreview))
+	f.Taskbar1.SetTabProperties(types.NewSet(types.CustomizedPreview))
 	//f.Taskbar1.SetProgressState(types.Error)
 	f.Taskbar1.SetProgressState(types.Normal)
 	f.Taskbar1.SetOnThumbButtonClick(f.OnTaskbar1ThumbButtonClick)
-	f.Taskbar1.SetOnThumbPreviewRequest(f.OnTaskbar1ThumbPreviewRequest)
+	// 这玩意现在因为系统更新了，貌似用不了了，唉。。。。
+	//f.Taskbar1.SetOnThumbPreviewRequest(f.OnTaskbar1ThumbPreviewRequest)
 	f.Taskbar1.SetOnWindowPreviewItemRequest(f.OnTaskbar1WindowPreviewItemRequest)
 
 	// 预览窗口的修改

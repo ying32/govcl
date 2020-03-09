@@ -94,7 +94,7 @@ func main() {
 	lbl.SetTop(top)
 	lbl.SetCaption("标签1")
 	// 解除样式对Label Font的Hook
-	lbl.SetStyleElements(rtl.Include(0, types.SeClient, types.SeBorder))
+	lbl.SetStyleElements(types.NewSet(types.SeClient, types.SeBorder))
 	lbl.Font().SetColor(255)
 
 	top += lbl.Height() + 5
@@ -320,7 +320,7 @@ func main() {
 	dtp.SetFormat("yyyy-MM-dd HH:mm:ss")
 
 	// 在xp下应用了style需要解除一个样式属性，应该是冲突引起的
-	dtp.SetStyleElements(rtl.Include(0, types.SeFont))
+	dtp.SetStyleElements(types.NewSet(types.SeFont))
 
 	top += dtp.Height() + 10
 

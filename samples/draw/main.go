@@ -3,7 +3,6 @@ package main
 import (
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/types/colors"
 )
@@ -45,7 +44,7 @@ func main() {
 		canvas.Font().SetColor(colors.ClRed) // red
 		canvas.Font().SetSize(20)
 		style := canvas.Font().Style()
-		canvas.Font().SetStyle(rtl.Include(style, types.FsBold, types.FsItalic))
+		canvas.Font().SetStyle(style.Include(types.FsBold, types.FsItalic))
 		canvas.TextOut(100, 30, s)
 
 		r := types.TRect{0, 0, 80, 80}
@@ -53,7 +52,7 @@ func main() {
 		// 计算文字
 		//fmt.Println("TfSingleLine: ", types.TfSingleLine)
 		s = "由于现有第三方的Go UI库不是太宠大就是用的不习惯，或者组件太少。"
-		canvas.TextRect2(&r, &s, rtl.Include(0, types.TfCenter, types.TfVerticalCenter, types.TfSingleLine))
+		canvas.TextRect2(&r, &s, types.NewSet(types.TfCenter, types.TfVerticalCenter, types.TfSingleLine))
 		//fmt.Println("r: ", r, ", s: ", s)
 
 		s = "测试输出"
@@ -72,7 +71,7 @@ func main() {
 		canvas.Pen().SetColor(colors.ClFuchsia)
 		canvas.Rectangle(r.Left, r.Top, r.Right, r.Bottom)
 
-		textFmt := rtl.Include(0, types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
+		textFmt := types.NewSet(types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
 		//fmt.Println("format: ", textFmt)
 		//		canvas.TextRect(r, 0, 0, s)
 		canvas.TextRect2(&r, &s, textFmt)
@@ -101,7 +100,7 @@ func main() {
 		canvas.Font().SetColor(colors.ClSkyblue)
 		rect := paintbox.ClientRect()
 		s := "在这可以用鼠标绘制"
-		textFmt := rtl.Include(0, types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
+		textFmt := types.NewSet(types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
 		canvas.TextRect2(&rect, &s, textFmt)
 
 		canvas.Pen().SetColor(colors.ClGreen)

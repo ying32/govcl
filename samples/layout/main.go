@@ -163,24 +163,21 @@ func main() {
 	btn.SetParent(sheet)
 	btn.SetCaption("右")
 	btn.SetLeft(w - btn.Width() - 10)
-	a := types.TAnchors(rtl.Include(0, types.AkTop, types.AkRight))
-	btn.SetAnchors(a)
+	btn.SetAnchors(types.NewSet(types.AkTop, types.AkRight))
 
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(sheet)
 	btn.SetCaption("左下")
 	btn.SetLeft(10)
 	btn.SetTop(h - btn.Height() - 10)
-	a = types.TAnchors(rtl.Include(0, types.AkLeft, types.AkBottom))
-	btn.SetAnchors(a)
+	btn.SetAnchors(types.NewSet(types.AkLeft, types.AkBottom))
 
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(sheet)
 	btn.SetCaption("右下")
 	btn.SetLeft(w - btn.Width() - 10)
 	btn.SetTop(h - btn.Height() - 10)
-	a = types.TAnchors(rtl.Include(0, types.AkRight, types.AkBottom))
-	btn.SetAnchors(a)
+	btn.SetAnchors(types.NewSet(types.AkRight, types.AkBottom))
 
 	//----------------------------------Margins----------------------------------
 

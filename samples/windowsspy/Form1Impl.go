@@ -6,7 +6,6 @@ import (
 	"fmt"
 
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/win"
 )
@@ -28,7 +27,7 @@ func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 }
 
 func (f *TForm1) OnImg1MouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
-	if rtl.InSets(shift, types.SsLeft) {
+	if shift.In(types.SsLeft) {
 		lasthWnd = 0 //win.WindowFromPoint(vcl.Mouse.CursorPos())
 		vcl.Screen.SetCursor(types.TCursor(1))
 		f.Img2.SetVisible(true)
@@ -71,7 +70,7 @@ func (f *TForm1) drawDesktopRect(rc types.TRect) {
 }
 
 func (f *TForm1) OnImg1MouseMove(sender vcl.IObject, shift types.TShiftState, x, y int32) {
-	if rtl.InSets(shift, types.SsLeft) {
+	if shift.In(types.SsLeft) {
 		pt, _ := win.GetCursorPos2()
 		hWnd := win.WindowFromPoint(pt)
 		if hWnd != lasthWnd {

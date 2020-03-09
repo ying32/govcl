@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -60,8 +59,7 @@ func codeBuildistViewInstance(trainData *TTrainSearchResultData) {
 		g.SetHeaderAlign(types.TaCenter)
 		g.SetHeader(caption)
 		//state := g.State() //默认为0
-		state := rtl.Include(0, types.LgsCollapsible)
-		g.SetState(state)
+		g.SetState(types.NewSet(types.LgsCollapsible))
 		g.SetTitleImage(-1)
 	}
 	addGroup("高铁/城际")

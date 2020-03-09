@@ -51,10 +51,10 @@ func main() {
 
 func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 
-	f.ScreenCenter()
 	f.SetDoubleBuffered(true)
 	f.SetHeight(600)
-
+	f.SetWidth(800)
+	f.ScreenCenter()
 	rand.Seed(time.Now().Unix())
 
 	f.tempIco = vcl.NewIcon()
@@ -150,7 +150,7 @@ func (f *TMainFrom) OnListView1AdvancedCustomDrawSubItem(sender *vcl.TListView, 
 	}
 	canvas.FillRect(boundRect)
 	data := tempData[item.Index()]
-	drawFlags := rtl.Include(0, types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
+	drawFlags := types.NewSet(types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
 	var i int32
 	for i = 0; i < sender.Columns().Count(); i++ {
 		r := f.GetSubItemRect(sender.Handle(), item.Index(), i)
@@ -181,7 +181,7 @@ func (f *TMainFrom) OnListView1AdvancedCustomDrawSubItem(sender *vcl.TListView, 
 
 			canvas.FillRect(progRect)
 
-			//flags := rtl.Include(0, types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
+			//flags := types.NewSet(types.TfCenter, types.TfSingleLine, types.TfVerticalCenter)
 			canvas.Brush().SetStyle(types.BsClear)
 			win.SetBkMode(canvas.Handle(), win.TRANSPARENT)
 			canvas.TextRect3(&r, fmt.Sprintf("%d%%", data.Progress), drawFlags)

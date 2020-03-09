@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types/keys"
 
 	"github.com/ying32/govcl/vcl"
@@ -60,7 +59,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 }
 
 func (f *TForm1) memoOnKeyup(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
-	if rtl.InSets(shift, types.SsCtrl) && *key == /*keys.VkA*/ keys.VkB {
+	if shift.In(types.SsCtrl) && *key == /*keys.VkA*/ keys.VkB {
 		vcl.MemoFromObj(sender).SelectAll()
 	}
 }
