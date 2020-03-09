@@ -10,8 +10,6 @@ import (
 
 	"github.com/ying32/govcl/vcl/types/colors"
 
-	"github.com/ying32/govcl/vcl/rtl"
-
 	"github.com/ying32/govcl/vcl/win"
 
 	"time"
@@ -142,7 +140,7 @@ func (f *TMainFrom) OnListView1AdvancedCustomDrawSubItem(sender *vcl.TListView, 
 	canvas := sender.Canvas()
 
 	boundRect := item.DisplayRect(types.DrBounds)
-	if rtl.InSets(uint32(state), types.CdsFocused) {
+	if state.In(types.CdsFocused) {
 		canvas.Brush().SetColor(0x00C5F1FF)
 
 	} else {
