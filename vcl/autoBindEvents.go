@@ -57,7 +57,7 @@ type eventMethod struct {
 func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, afterBindSubComponentsEvents bool) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("autoBindEvents error: ", err)
+			fmt.Println("Calling autoBindEvents exception:", err)
 		}
 	}()
 
@@ -201,7 +201,7 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 func callEvent(event reflect.Value, params []reflect.Value) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("callEvent error:", err)
+			fmt.Println("Calling callEvent exception:", err)
 		}
 	}()
 	if !event.IsValid() {
@@ -214,7 +214,7 @@ func callEvent(event reflect.Value, params []reflect.Value) {
 func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod, rootName string) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("findAndSetEvent error: ", err, ", eventType:", eventType, ", rootName:", rootName)
+			fmt.Println("Calling findAndSetEvent exception:", err, ", eventType:", eventType, ", rootName:", rootName)
 		}
 	}()
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
@@ -233,7 +233,7 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod
 				return
 			}
 		}
-		fmt.Printf("\"%s.%s\"不支持\"%s\"事件。\r\n(\"%s.%s\" does not support the \"%s\" event.)\n", rootName, name, eventType, rootName, name, eventType)
+		fmt.Printf("%s.%s does not support the %s event.\n", rootName, name, eventType)
 	}
 }
 
@@ -241,7 +241,7 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod
 func findAndSetComponentName(v reflect.Value, name string) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("findAndSetComponentName error: ", err)
+			fmt.Println("Calling findAndSetComponentName exception:", err)
 		}
 	}()
 	if setName := v.MethodByName("SetName"); setName.IsValid() {

@@ -55,7 +55,7 @@ func IsNil(val interface{}) bool {
 	return *(*uintptr)(ptr) == 0 && *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2))) == 0
 }
 
-// hashOf 管不了了，先直接这样吧，防止重复的，虽然会产生很多
+// hashOf
 func hashOf(val interface{}) uintptr {
 	// 如果正在使用beginAddEvent和EndAddEvent则直接取这个值。
 	// 反之使用默认的行为。
