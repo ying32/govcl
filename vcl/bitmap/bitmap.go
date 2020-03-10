@@ -44,9 +44,8 @@ func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 	return obj, nil
 }
 
-// 32bit bmp，丢失透明度
+// 32bit bmp
 // 返回的Bmp对象用完记得Free掉
-// LCL默认Transparent为True，VCL默认为False
 func ToBitmap(img image.Image) (*vcl.TBitmap, error) {
 	bmp := vcl.NewBitmap()
 	if err := ToBitmap2(img, bmp); err != nil {
