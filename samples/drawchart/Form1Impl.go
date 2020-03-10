@@ -4,6 +4,9 @@ package main
 
 import (
 	"fmt"
+	"image"
+
+	"github.com/ying32/govcl/vcl/bitmap"
 
 	"github.com/ying32/govcl/vcl"
 )
@@ -11,6 +14,7 @@ import (
 //::private::
 type TForm1Fields struct {
 	drawFuncs map[string]func()
+	buffBmp   *vcl.TBitmap
 }
 
 // 使用chart来生成图表
@@ -19,6 +23,7 @@ type TForm1Fields struct {
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
+	f.buffBmp = vcl.NewBitmap()
 	f.drawFuncs = map[string]func(){
 		"stripChart":          f.stripChart,
 		"keyStyles":           f.keyStyles,
@@ -41,6 +46,22 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 		"testGraphics":        f.testGraphics,
 		"bestOf":              f.bestOf,
 		"mietenChart":         f.mietenChart,
+	}
+}
+
+func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
+	if f.buffBmp != nil && f.buffBmp.IsValid() {
+		f.buffBmp.Free()
+	}
+}
+
+type TDrawFunc = func(img image.Image)
+
+func (f *TForm1) drawImage(img image.Image) {
+	if f.buffBmp != nil {
+		if bitmap.ToBitmap2(img, f.buffBmp) == nil {
+			f.Canvas().Draw(0, 0, f.buffBmp)
+		}
 	}
 }
 

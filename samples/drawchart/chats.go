@@ -21,8 +21,6 @@ import (
 	"github.com/vdobler/chart"
 	"github.com/vdobler/chart/imgg"
 	"github.com/vdobler/chart/txtg"
-	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/bitmap"
 )
 
 // chart例子代码
@@ -44,12 +42,12 @@ var Background = color.RGBA{0xff, 0xff, 0xff, 0xff}
 type Dumper struct {
 	N, M, W, H, Cnt int
 	I               *image.RGBA
-	canvas          *vcl.TCanvas
+	drawFunc        TDrawFunc
 }
 
-func NewDumper(name string, n, m, w, h int, canvas *vcl.TCanvas) *Dumper {
+func NewDumper(name string, n, m, w, h int, drawFunc TDrawFunc) *Dumper {
 	dumper := Dumper{N: n, M: m, W: w, H: h}
-	dumper.canvas = canvas
+	dumper.drawFunc = drawFunc
 	dumper.I = image.NewRGBA(image.Rect(0, 0, n*w, m*h))
 	bg := image.NewUniform(color.RGBA{0xff, 0xff, 0xff, 0xff})
 	draw.Draw(dumper.I, dumper.I.Bounds(), bg, image.ZP, draw.Src)
@@ -57,14 +55,8 @@ func NewDumper(name string, n, m, w, h int, canvas *vcl.TCanvas) *Dumper {
 	return &dumper
 }
 func (d *Dumper) Close() {
-
-	obj, err := bitmap.ToPngImage(d.I)
-	if err != nil {
-		return
-	}
-	if obj != nil {
-		defer obj.Free()
-		d.canvas.Draw(0, 0, obj)
+	if d.drawFunc != nil {
+		d.drawFunc(d.I)
 	}
 }
 
@@ -87,7 +79,7 @@ func (d *Dumper) Plot(c chart.Chart) {
 // Some sample strip charts
 //
 func (f *TForm1) stripChart() {
-	dumper := NewDumper("xstrip1", 2, 2, 400, 300, f.Canvas())
+	dumper := NewDumper("xstrip1", 2, 2, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	c := chart.StripChart{}
@@ -116,7 +108,7 @@ func (f *TForm1) stripChart() {
 // All different key styles
 //
 func (f *TForm1) keyStyles() {
-	dumper := NewDumper("xkey", 6, 6, 400, 300, f.Canvas())
+	dumper := NewDumper("xkey", 6, 6, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	p := chart.ScatterChart{Title: "Key Placement"}
@@ -166,7 +158,7 @@ func (f *TForm1) keyStyles() {
 // Scatter plots with different tic/grid settings
 //
 func (f *TForm1) scatterTics() {
-	dumper := NewDumper("xstrip1", 3, 3, 400, 300, f.Canvas())
+	dumper := NewDumper("xstrip1", 3, 3, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	p := chart.ScatterChart{Title: "Sample Scatter Chart"}
@@ -218,7 +210,7 @@ func (f *TForm1) scatterTics() {
 // Full fletched scatter plots
 //
 func (f *TForm1) scatterChart() {
-	dumper := NewDumper("xscatter2", 1, 1, 800, 600, f.Canvas())
+	dumper := NewDumper("xscatter2", 1, 1, 800, 600, f.drawImage)
 	defer dumper.Close()
 
 	pl := chart.ScatterChart{Title: "Scatter + Lines"}
@@ -270,7 +262,7 @@ func (f *TForm1) scatterChart() {
 // Function plots with fancy clippings
 //
 func (f *TForm1) functionPlots() {
-	dumper := NewDumper("xscatter3", 2, 1, 500, 400, f.Canvas())
+	dumper := NewDumper("xscatter3", 2, 1, 500, 400, f.drawImage)
 	defer dumper.Close()
 
 	p := chart.ScatterChart{Title: "Functions"}
@@ -324,7 +316,7 @@ func (f *TForm1) functionPlots() {
 // Autoscaling
 //
 func (f *TForm1) autoscale() {
-	dumper := NewDumper("xautoscale", 2, 2, 600, 400, f.Canvas())
+	dumper := NewDumper("xautoscale", 2, 2, 600, 400, f.drawImage)
 	defer dumper.Close()
 
 	N := 200
@@ -394,7 +386,7 @@ func (f *TForm1) autoscale() {
 // Box Charts
 //
 func (f *TForm1) boxChart() {
-	dumper := NewDumper("xbox1", 2, 2, 400, 300, f.Canvas())
+	dumper := NewDumper("xbox1", 2, 2, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	p := chart.BoxChart{Title: "Box Chart"}
@@ -474,7 +466,7 @@ func bigauss(n1, n2 int, s1, a1, s2, a2, l, u float64) []float64 {
 }
 
 func (f *TForm1) kernels() {
-	dumper := NewDumper("xkernels", 1, 1, 600, 400, f.Canvas())
+	dumper := NewDumper("xkernels", 1, 1, 600, 400, f.drawImage)
 	defer dumper.Close()
 
 	p := chart.ScatterChart{Title: "Kernels"}
@@ -529,7 +521,7 @@ func (f *TForm1) histChartohistTrue() {
 
 //
 func (f *TForm1) histChart(name, title string, stacked, counts, shifted bool) {
-	dumper := NewDumper("xhist", 2, 2, 400, 300, f.Canvas())
+	dumper := NewDumper("xhist", 2, 2, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	hc := chart.HistChart{Title: title, Stacked: stacked, Counts: counts, Shifted: shifted}
@@ -570,7 +562,7 @@ func (f *TForm1) histChart(name, title string, stacked, counts, shifted bool) {
 // Bar Charts
 //
 func (f *TForm1) barChart() {
-	dumper := NewDumper("xbar1", 3, 2, 400, 300, f.Canvas())
+	dumper := NewDumper("xbar1", 3, 2, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	red := chart.Style{Symbol: 'o', LineColor: color.NRGBA{0xcc, 0x00, 0x00, 0xff},
@@ -620,7 +612,7 @@ func (f *TForm1) barChart() {
 // Categorical Bar Charts
 //
 func (f *TForm1) categoricalBarChart() {
-	dumper := NewDumper("xbar2", 3, 2, 400, 300, f.Canvas())
+	dumper := NewDumper("xbar2", 3, 2, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	x := []float64{0, 1, 2, 3}
@@ -661,7 +653,7 @@ func (f *TForm1) categoricalBarChart() {
 	dumper.Plot(&c)
 
 	// Including negative ones
-	dumper2 := NewDumper("xbar3", 3, 2, 400, 300, f.Canvas())
+	dumper2 := NewDumper("xbar3", 3, 2, 400, 300, f.drawImage)
 	defer dumper2.Close()
 
 	c = chart.BarChart{Title: "Income"}
@@ -719,7 +711,7 @@ func (f *TForm1) categoricalBarChart() {
 // Logarithmic axes
 //
 func (f *TForm1) logAxis() {
-	dumper := NewDumper("xlog1", 2, 2, 400, 300, f.Canvas())
+	dumper := NewDumper("xlog1", 2, 2, 400, 300, f.drawImage)
 	defer dumper.Close()
 
 	lc := chart.ScatterChart{}
@@ -759,7 +751,7 @@ func (f *TForm1) logAxis() {
 // Pie Charts
 //
 func (f *TForm1) pieChart() {
-	dumper := NewDumper("xpie1", 2, 2, 500, 250, f.Canvas())
+	dumper := NewDumper("xpie1", 2, 2, 500, 250, f.drawImage)
 	defer dumper.Close()
 
 	pc := chart.PieChart{Title: "Some Pies"}
@@ -784,7 +776,7 @@ func (f *TForm1) pieChart() {
 	chart.PieChartShrinkage = 0.45
 	dumper.Plot(&piec)
 
-	dumper2 := NewDumper("xpie2", 2, 1, 500, 400, f.Canvas())
+	dumper2 := NewDumper("xpie2", 2, 1, 500, 400, f.drawImage)
 	defer dumper2.Close()
 	pie := chart.PieChart{Title: "Some Pies"}
 	data := []chart.CatValue{{"D", 10, false}, {"GB", 20, true}, {"CH", 30, false}, {"F", 60, false}}
@@ -833,7 +825,7 @@ func (f *TForm1) pieChart() {
 // Test of graphic primitives
 //
 func (f *TForm1) testGraphics() {
-	dumper := NewDumper("xgraphics", 1, 1, 900, 416, f.Canvas())
+	dumper := NewDumper("xgraphics", 1, 1, 900, 416, f.drawImage)
 	defer dumper.Close()
 
 	igr := imgg.AddTo(dumper.I, 0, 0, 900, 416, color.RGBA{0xff, 0xff, 0xff, 0xff}, nil, nil)
@@ -1232,7 +1224,7 @@ func (f *TForm1) bestOf() {
 		chart.Style{Symbol: 'O', LineColor: color.NRGBA{0xe0, 0x44, 0x44, 0xff}, LineWidth: 2, FillColor: color.NRGBA{0xf6, 0xb5, 0xcc, 0xff}})
 	charts = append(charts, &ebit)
 
-	dumper := NewDumper("bestof", N, M, width, height, f.Canvas())
+	dumper := NewDumper("bestof", N, M, width, height, f.drawImage)
 	defer dumper.Close()
 	for _, c := range charts {
 		dumper.Plot(c)
@@ -1270,7 +1262,7 @@ func timeRange() {
 // Nettomieten
 //
 func (f *TForm1) mietenChart() {
-	dumper := NewDumper("xmieten", 2, 3, 600, 250, f.Canvas())
+	dumper := NewDumper("xmieten", 2, 3, 600, 250, f.drawImage)
 	defer dumper.Close()
 
 	hc := chart.HistChart{Title: "Nettomieten", Stacked: false, Counts: false}
