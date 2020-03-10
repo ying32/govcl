@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 
 	"github.com/ying32/govcl/vcl/bitmap"
 
@@ -70,18 +71,20 @@ func (f *TForm1) ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 	return obj
 }
 
-func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
-	//if isPng {
-	//png := f.ggImageToPng(dc)
-	//if png != nil {
-	//	defer png.Free()
-	//	f.Canvas().Draw(0, 0, png)
-	//}
-	//} else {
-	if f.ggImageToBitmap(dc) == nil {
-		f.Canvas().Draw(0, 0, f.bufBmp)
+func (f *TForm1) ggDrawImage(dc *gg.Context) {
+	// linux下有些效果不太好，所以用png
+	if runtime.GOOS == "linux" {
+		pngObj := f.ggImageToPng(dc)
+		if pngObj != nil {
+			defer pngObj.Free()
+			f.Canvas().Draw(0, 0, pngObj)
+		}
+	} else {
+		if f.ggImageToBitmap(dc) == nil {
+			f.Canvas().Draw(0, 0, f.bufBmp)
+		}
 	}
-	//}
+
 }
 
 func (f *TForm1) OnFormPaint(sender vcl.IObject) {

@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"image"
+	"runtime"
 
 	"github.com/ying32/govcl/vcl/bitmap"
 
@@ -62,7 +63,8 @@ func (f *TForm1) OnFormPaint(sender vcl.IObject) {
 	dst := image.NewRGBA(g.Bounds(f.srcImage.Bounds()))
 	g.Draw(dst, f.srcImage)
 
-	if f.ChkUsePng.Checked() {
+	// linux有些不太好，所以转为png
+	if runtime.GOOS == "linux" {
 		pngObj, err := bitmap.ToPngImage(dst)
 		if err != nil {
 			return
@@ -76,6 +78,7 @@ func (f *TForm1) OnFormPaint(sender vcl.IObject) {
 			f.Canvas().Draw(0, 0, f.buffBmp)
 		}
 	}
+
 }
 
 func (f *TForm1) OnListBox1Click(sender vcl.IObject) {

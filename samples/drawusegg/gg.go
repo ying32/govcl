@@ -56,7 +56,7 @@ func (f *TForm1) ggDrawLines() {
 		dc.Stroke()
 	}
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // Gradient Linear
@@ -90,7 +90,7 @@ func (f *TForm1) ggDrawGradientLinear() {
 	dc.ClosePath()
 	dc.Fill()
 
-	f.ggDrawImage(dc, true)
+	f.ggDrawImage(dc)
 }
 
 // Gradient Radial
@@ -112,7 +112,7 @@ func (f *TForm1) ggDrawGradientRadial() {
 	dc.DrawCircle(100, 120, 80)
 	dc.Stroke()
 
-	f.ggDrawImage(dc, true)
+	f.ggDrawImage(dc)
 }
 
 //beziers
@@ -193,7 +193,7 @@ func (f *TForm1) ggDrawBeziers() {
 		}
 	}
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // Circle
@@ -204,7 +204,7 @@ func (f *TForm1) ggDrawCircle() {
 	dc.SetRGB(1, 0, 0)
 	dc.Fill()
 
-	f.ggDrawImage(dc, true)
+	f.ggDrawImage(dc)
 }
 
 // Crisp
@@ -245,7 +245,7 @@ func (f *TForm1) ggDrawCrisp() {
 	dc.SetRGBA(0, 0, 0, 0.5)
 	dc.Stroke()
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawCubic
@@ -281,7 +281,7 @@ func (f *TForm1) ggDrawCubic() {
 	dc.SetDash(4, 8, 1, 8)
 	dc.Stroke()
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawEllipse
@@ -299,7 +299,7 @@ func (f *TForm1) ggDrawEllipse() {
 	if im, err := gg.LoadImage("gopher.png"); err == nil {
 		dc.DrawImageAnchored(im, S/2, S/2, 0.5, 0.5)
 	}
-	f.ggDrawImage(dc, true)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawEllipse
@@ -320,7 +320,7 @@ func (f *TForm1) ggDrawFont() {
 	dc.SetRGB(0, 0, 0)
 	dc.DrawStringAnchored("Hello, World!", 200, 200, 0.5, 0.5)
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // Gradient text
@@ -355,7 +355,7 @@ func (f *TForm1) ggDrawGradientText() {
 	dc.DrawRectangle(0, 0, W, H)
 	dc.Fill()
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawInvertMask
@@ -372,7 +372,7 @@ func (f *TForm1) ggDrawInvertMask() {
 	dc.SetRGB(0, 0, 0)
 	dc.Fill()
 
-	f.ggDrawImage(dc, true)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawLineWidth
@@ -391,7 +391,7 @@ func (f *TForm1) ggDrawLineWidth() {
 		w += 0.1
 	}
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawLorem
@@ -416,7 +416,7 @@ func (f *TForm1) ggDrawLorem() {
 		y := H/2 - h*len(lines)/2 + i*h
 		dc.DrawStringAnchored(line, 400, float64(y), 0.5, 0.5)
 	}
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawRotatedText
@@ -441,7 +441,7 @@ func (f *TForm1) ggDrawRotatedText() {
 	dc.Stroke()
 	dc.DrawStringAnchored(text, 100, 180, 0.0, 0.0)
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawRotatedImage
@@ -474,7 +474,7 @@ func (f *TForm1) ggDrawRotatedImage() {
 	dc.Clip()
 	dc.DrawImageAnchored(im, 100, 0, 0.0, 0.0)
 
-	f.ggDrawImage(dc, true)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawWarpText
@@ -517,7 +517,7 @@ func (f *TForm1) ggDrawWarpText() {
 	dc.DrawStringWrapped(TEXT, W/2-P, H/2+P, 1, 0, W/3, 2.25, gg.AlignLeft)
 	dc.DrawStringWrapped(TEXT, W/2+P, H/2+P, 0, 0, W/3, 2.5, gg.AlignLeft)
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawStar
@@ -554,7 +554,7 @@ func (f *TForm1) ggDrawStar() {
 	dc.SetLineWidth(16)
 	dc.Stroke()
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
 
 // ggDrawStars
@@ -596,5 +596,5 @@ func (f *TForm1) ggDrawStars() {
 		dc.Pop()
 	}
 
-	f.ggDrawImage(dc, false)
+	f.ggDrawImage(dc)
 }
