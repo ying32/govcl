@@ -122,6 +122,9 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 		bmp.SetAlphaFormat(types.AfDefined)
 	}
 	bmp.SetSize(int32(width), int32(height))
+	if vcl.LclLoaded() {
+		bmp.BeginUpdate(false)
+	}
 	// 填充，左下角为起点
 	for h := height - 1; h >= 0; h-- {
 		ptr := bmp.ScanLine(int32(h))
@@ -133,6 +136,9 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 			c.B = pix[index+2]
 			c.A = pix[index+3]
 		}
+	}
+	if vcl.LclLoaded() {
+		bmp.EndUpdate(false)
 	}
 	return nil
 }

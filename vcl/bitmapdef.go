@@ -14,3 +14,13 @@ import . "github.com/ying32/govcl/vcl/api"
 func (b *TBitmap) Clear() {
 	Bitmap_Clear(b.instance)
 }
+
+// LCL下的 用于ScanLine属性，aCanvasOnly 默认为 false
+func (b *TBitmap) BeginUpdate(aCanvasOnly bool) {
+	Bitmap_BeginUpdate(b.instance, aCanvasOnly)
+}
+
+// LCL下的 用于ScanLine属性，aStreamIsValid 默认为 false
+func (b *TBitmap) EndUpdate(aStreamIsValid bool) {
+	Bitmap_EndUpdate(b.instance, aStreamIsValid)
+}

@@ -544,7 +544,19 @@ procedure Bitmap_Clear(AObj: TBitmap); extdecl;
 begin
   AObj.Clear;
 end;
- 
+
+procedure Bitmap_BeginUpdate(AObj: TBitmap; ACanvasOnly: LongBool); extdecl;
+begin
+  AObj.BeginUpdate(ACanvasOnly);
+end;
+
+procedure Bitmap_EndUpdate(AObj: TBitmap; AStreamIsValid: LongBool); extdecl;
+begin
+  AObj.EndUpdate(AStreamIsValid);
+end;
+
+
+
 // Other
 
 procedure SetEventCallback(APtr: Pointer); extdecl;
@@ -1102,6 +1114,8 @@ exports
 
   // TBitmap
   Bitmap_Clear,
+  Bitmap_BeginUpdate,
+  Bitmap_EndUpdate,
 
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,

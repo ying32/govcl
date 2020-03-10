@@ -501,7 +501,19 @@ begin
   // 有待实现
   //AObj.Clear;
 end;
-	
+
+procedure Bitmap_BeginUpdate(AObj: TBitmap; ACanvasOnly: LongBool); stdcall;
+begin
+  //AObj.BeginUpdate(ACanvasOnly);
+  // 不支持，fake
+end;
+
+procedure Bitmap_EndUpdate(AObj: TBitmap; AStreamIsValid: LongBool); stdcall;
+begin
+  //AObj.EndUpdate(AStreamIsValid);
+  // 不支持，fake
+end;
+
  
 // Other
 
@@ -1140,6 +1152,8 @@ exports
 
   // TBitmap
   Bitmap_Clear,
+  Bitmap_BeginUpdate,
+  Bitmap_EndUpdate,
 
   // TStyleManager
   StyleManager_IsValidStyle,
