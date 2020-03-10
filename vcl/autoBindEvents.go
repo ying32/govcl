@@ -44,7 +44,14 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+
+	"github.com/ying32/govcl/vcl/api"
 )
+
+type eventMethod struct {
+	Method  reflect.Value
+	FuncPtr uintptr
+}
 
 // autoBindEvents 自动关联事件。
 func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, afterBindSubComponentsEvents bool) {
@@ -53,13 +60,14 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 			fmt.Println("autoBindEvents error: ", err)
 		}
 	}()
+
 	// OnFormCreate or OnFrameCreate
 	var doCreate reflect.Value
 
 	vt := vForm.Type()
 
 	// 提取所有符合规则的事件
-	eventMethods := make(map[string]reflect.Value, 0)
+	eventMethods := make(map[string]eventMethod, 0)
 	// 遍历当前结构的方法
 	for i := 0; i < vt.NumMethod(); i++ {
 		m := vt.Method(i)
@@ -69,17 +77,17 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 			continue
 		}
 		if strings.HasPrefix(m.Name, "On") {
-			eventMethods[m.Name] = vForm.Method(i)
+			eventMethods[m.Name] = eventMethod{Method: vForm.Method(i), FuncPtr: m.Func.Pointer()}
 		}
 	}
 
-	type EventItem struct {
+	type eventItem struct {
 		Type   string
-		Method reflect.Value
+		Method eventMethod
 	}
 
 	// 临时方法表
-	tempEventTypes := make(map[string]EventItem, 0)
+	tempEventTypes := make(map[string]eventItem, 0)
 
 	// 遍历结构中的字段
 	//for i := 0; i < vt.Elem().NumField(); i++ {
@@ -115,7 +123,7 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 			}
 			eventType := mName[len(prefix):]
 			// 将事件名与事件类型对应，之后会用到的
-			tempEventTypes[mName] = EventItem{eventType, method}
+			tempEventTypes[mName] = eventItem{eventType, method}
 
 			if component.Equals(Application) {
 				addApplicationNotifyEvent(eventType, method)
@@ -130,7 +138,6 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 
 	// 子组件事件
 	bindSubComponentsEvents := func() {
-
 		var i int32
 		for i = 0; i < root.ComponentCount(); i++ {
 			setEvent(root.Components(i))
@@ -204,14 +211,19 @@ func callEvent(event reflect.Value, params []reflect.Value) {
 }
 
 // findAndSetEvent 公用的call SetOnXXXX方法
-func findAndSetEvent(v reflect.Value, name, eventType string, method reflect.Value, rootName string) {
+func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod, rootName string) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("findAndSetEvent error: ", err, ", eventType:", eventType, ", rootName:", rootName)
 		}
 	}()
 	if event := v.MethodByName("SetOn" + eventType); event.IsValid() {
-		event.Call([]reflect.Value{method})
+		// 设置EventId
+		api.BeginAddEvent()
+		defer api.EndAddEvent()
+		api.SetCurrentEventId(method.FuncPtr)
+
+		event.Call([]reflect.Value{method.Method})
 	} else {
 		if len(eventType) > 0 {
 			// 也许分析错误，所不打印错误消息。
@@ -238,7 +250,7 @@ func findAndSetComponentName(v reflect.Value, name string) {
 }
 
 // addComponentNotifyEvent
-func addComponentNotifyEvent(vForm reflect.Value, compName string, method reflect.Value, eventType, rootName string) {
+func addComponentNotifyEvent(vForm reflect.Value, compName string, method eventMethod, eventType, rootName string) {
 	if vCtl := vForm.Elem().FieldByName(compName); vCtl.IsValid() {
 		findAndSetEvent(vCtl, compName, eventType, method, rootName)
 	}
@@ -247,7 +259,7 @@ func addComponentNotifyEvent(vForm reflect.Value, compName string, method reflec
 // addApplicationNotifyEvent
 // 添加Application的关联事件，在一个程序内，application中的事件只有最后一次设置的才会生效。
 // 因为Application是单例存在，推荐在主窗口内处理就行了。
-func addApplicationNotifyEvent(eventType string, method reflect.Value) {
+func addApplicationNotifyEvent(eventType string, method eventMethod) {
 	if app := reflect.ValueOf(Application); app.IsValid() {
 		findAndSetEvent(app, "Application", eventType, method, "Application")
 	}
