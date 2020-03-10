@@ -9,12 +9,12 @@
 package bitmap
 
 //var (
-//	// A R G B
-//	// Big Endian
-//	pixIndex = [4]int{3, 0, 1, 2}
+//	// B G R A
+//	// Little Endian
+//	pixIndex = [4]int{2, 1, 0, 3}
 //)
 
-// Big Endian
+// Little Endian
 type rgba struct {
-	A, R, G, B uint8
+	B, G, R, A uint8
 }

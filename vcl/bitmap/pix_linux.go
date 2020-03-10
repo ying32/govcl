@@ -6,17 +6,15 @@
 //
 //----------------------------------------
 
-// +build !darwin
-
 package bitmap
 
 //var (
-//	// B G R A
+//	// R G B A
 //	// Little Endian
-//	pixIndex = [4]int{2, 1, 0, 3}
+//	pixIndex = [4]int{0, 1, 2, 3}
 //)
 
 // Little Endian
-type bgra struct {
-	B, G, R, A uint8
+type rgba struct {
+	R, G, B, A uint8
 }

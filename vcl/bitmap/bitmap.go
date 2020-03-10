@@ -127,7 +127,7 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 		ptr := bmp.ScanLine(int32(h))
 		for w := 0; w < width; w++ {
 			index := (h*width + w) * 4
-			c := (*bgra)(unsafe.Pointer(ptr + uintptr(w*4)))
+			c := (*rgba)(unsafe.Pointer(ptr + uintptr(w*4)))
 			c.R = pix[index+0]
 			c.G = pix[index+1]
 			c.B = pix[index+2]
