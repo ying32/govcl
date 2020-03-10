@@ -539,6 +539,11 @@ begin
   AObj.ScrollBars := AValue;
 end;
 
+// TBitmap
+procedure Bitmap_Clear(AObj: TBitmap); extdecl;
+begin
+  AObj.Clear;
+end;
  
 // Other
 
@@ -1094,6 +1099,9 @@ exports
   // TTreeView
   TreeView_GetScrollBars,
   TreeView_SetScrollBars,
+
+  // TBitmap
+  Bitmap_Clear,
 
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,

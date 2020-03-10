@@ -92,6 +92,9 @@ var (
 	imageList_GetIcon1     = libvcl.NewProc("ImageList_GetIcon1")
 	imageList_GetIcon2     = libvcl.NewProc("ImageList_GetIcon2")
 
+	// TBitmap
+	bitmap_Clear = libvcl.NewProc("Bitmap_Clear")
+
 	dExtractFilePath = libvcl.NewProc("DExtractFilePath")
 	dFileExists      = libvcl.NewProc("DFileExists")
 

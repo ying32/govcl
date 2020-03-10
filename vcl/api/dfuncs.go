@@ -320,3 +320,8 @@ func DGetGDKWindowXID(handle uintptr) TXID {
 	dGetGDKWindowXID.Call(handle, uintptr(unsafe.Pointer(&aResult)))
 	return aResult
 }
+
+// TBitmap
+func Bitmap_Clear(obj uintptr) {
+	bitmap_Clear.Call(obj)
+}

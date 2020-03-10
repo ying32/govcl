@@ -494,6 +494,13 @@ procedure ImageList_GetIcon2(AObj: TImageList; Index: Integer; Image: TIcon; ADr
 begin
   AObj.GetIcon(Index, Image, ADrawingStyle, AImageType);
 end;
+
+// TBitmap
+procedure Bitmap_Clear(AObj: TBitmap); stdcall;
+begin
+  // 有待实现
+  //AObj.Clear;
+end;
 	
  
 // Other
@@ -1130,6 +1137,9 @@ exports
   ImageList_DrawOverlay2,
   ImageList_GetIcon1,
   ImageList_GetIcon2,
+
+  // TBitmap
+  Bitmap_Clear,
 
   // TStyleManager
   StyleManager_IsValidStyle,
