@@ -115,15 +115,19 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 	if bmp == nil || !bmp.IsValid() {
 		return ErrBitmapInvalid
 	}
+
+	bmp.SetSize(int32(width), int32(height))
 	// 总是32位，不然没办法透明。
 	bmp.SetPixelFormat(types.Pf32bit)
+	bmp.SetHandleType(types.BmDIB)
 	if !vcl.LclLoaded() {
 		// libvcl开启这个就会透明，liblcl无此属性，自动透明
 		bmp.SetAlphaFormat(types.AfDefined)
 	}
-	bmp.SetSize(int32(width), int32(height))
+
 	if vcl.LclLoaded() {
 		bmp.BeginUpdate(false)
+		defer bmp.EndUpdate(false)
 	}
 	// 填充，左下角为起点
 	for h := height - 1; h >= 0; h-- {
@@ -136,9 +140,6 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 			c.B = pix[index+2]
 			c.A = pix[index+3]
 		}
-	}
-	if vcl.LclLoaded() {
-		bmp.EndUpdate(false)
 	}
 	return nil
 }
