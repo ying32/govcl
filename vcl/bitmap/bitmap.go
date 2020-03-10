@@ -26,6 +26,7 @@ import (
 var (
 	ErrPixelDataEmpty        = errors.New("the pixel data is empty")
 	ErrUnsupportedDataFormat = errors.New("unsupported pixel data format")
+	ErrBitmapInvalid         = errors.New("bitmap invalid")
 )
 
 // 将Go的Image转为VCL/LCL的 TPngImage
@@ -47,18 +48,35 @@ func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 // 返回的Bmp对象用完记得Free掉
 // LCL默认Transparent为True，VCL默认为False
 func ToBitmap(img image.Image) (*vcl.TBitmap, error) {
+	bmp := vcl.NewBitmap()
+	if err := ToBitmap2(img, bmp); err != nil {
+		defer bmp.Free()
+		return nil, err
+	}
+	return bmp, nil
+}
+
+func ToBitmap2(img image.Image, bmp *vcl.TBitmap) error {
+	if bmp == nil || !bmp.IsValid() {
+		return ErrBitmapInvalid
+	}
 	switch img.(type) {
 	case *image.RGBA:
 		data, _ := img.(*image.RGBA)
-		return toBitmap(img.Bounds().Size().X, img.Bounds().Size().Y, data.Pix)
-
+		err := toBitmap(img.Bounds().Size().X, img.Bounds().Size().Y, data.Pix, bmp)
+		if err != nil {
+			return err
+		}
 	case *image.NRGBA:
 		data, _ := img.(*image.NRGBA)
-		return toBitmap(img.Bounds().Size().X, img.Bounds().Size().Y, data.Pix)
-
+		err := toBitmap(img.Bounds().Size().X, img.Bounds().Size().Y, data.Pix, bmp)
+		if err != nil {
+			return err
+		}
 	default:
-		return nil, ErrUnsupportedDataFormat
+		return ErrUnsupportedDataFormat
 	}
+	return nil
 }
 
 // 将Go的Image转为VCL/LCL的 TJPEGImage
@@ -91,11 +109,14 @@ func ToGIFImage(img image.Image) (*vcl.TGIFImage, error) {
 	return obj, nil
 }
 
-func toBitmap(width, height int, pix []uint8) (*vcl.TBitmap, error) {
+func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 	if len(pix) == 0 {
-		return nil, ErrPixelDataEmpty
+		return ErrPixelDataEmpty
 	}
-	bmp := vcl.NewBitmap()
+	if bmp == nil || !bmp.IsValid() {
+		return ErrBitmapInvalid
+	}
+	// 总是32位，不然没办法透明。
 	bmp.SetPixelFormat(types.Pf32bit)
 	if !vcl.LclLoaded() {
 		// libvcl开启这个就会透明，liblcl无此属性，自动透明
@@ -107,20 +128,14 @@ func toBitmap(width, height int, pix []uint8) (*vcl.TBitmap, error) {
 		ptr := bmp.ScanLine(int32(h))
 		for w := 0; w < width; w++ {
 			index := (h*width + w) * 4
-
 			c := (*bgra)(unsafe.Pointer(ptr + uintptr(w*4)))
 			c.R = pix[index+0]
 			c.G = pix[index+1]
 			c.B = pix[index+2]
 			c.A = pix[index+3]
-
-			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = pix[index+pixIndex[0]]
-			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = pix[index+pixIndex[1]]
-			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = pix[index+pixIndex[2]]
-			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = pix[index+pixIndex[3]]
 		}
 	}
-	return bmp, nil
+	return nil
 }
 
 // 将vcl/lcl的Graphic对象转为Go的Image
