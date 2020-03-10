@@ -87,3 +87,8 @@ func RunApp(forms ...interface{}) {
 	}
 	Application.Run()
 }
+
+// 必须引用rtl包来判断是否为lcl库
+func LclLoaded() bool {
+	return api.IsloadedLcl
+}
