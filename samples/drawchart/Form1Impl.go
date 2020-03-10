@@ -59,8 +59,8 @@ func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 type TDrawFunc = func(img image.Image)
 
 func (f *TForm1) drawImage(img image.Image) {
-	// linux有些效果不太好，所以用png
-	if runtime.GOOS == "linux" {
+	// linux跟macOS下有些效果不太好，所以用png，具体原因还待分析。
+	if runtime.GOOS != "windows" {
 		pngObj, err := bitmap.ToPngImage(img)
 		if err == nil && pngObj != nil {
 			defer pngObj.Free()

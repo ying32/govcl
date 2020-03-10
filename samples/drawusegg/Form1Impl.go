@@ -72,8 +72,8 @@ func (f *TForm1) ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 }
 
 func (f *TForm1) ggDrawImage(dc *gg.Context) {
-	// linux下有些效果不太好，所以用png
-	if runtime.GOOS == "linux" {
+	// linux跟macOS下有些效果不太好，所以用png，具体原因还待分析。
+	if runtime.GOOS != "windows" {
 		pngObj := f.ggImageToPng(dc)
 		if pngObj != nil {
 			defer pngObj.Free()

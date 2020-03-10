@@ -63,8 +63,8 @@ func (f *TForm1) OnFormPaint(sender vcl.IObject) {
 	dst := image.NewRGBA(g.Bounds(f.srcImage.Bounds()))
 	g.Draw(dst, f.srcImage)
 
-	// linux有些不太好，所以转为png
-	if runtime.GOOS == "linux" {
+	// linux跟macOS下有些效果不太好，所以用png，具体原因还待分析。
+	if runtime.GOOS != "windows" {
 		pngObj, err := bitmap.ToPngImage(dst)
 		if err != nil {
 			return
