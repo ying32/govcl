@@ -158,6 +158,17 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 	buff.Write(bs)
 	if obj.InheritsFrom(vcl.TBitmapClass()) {
 		img := image.NewRGBA(image.Rect(0, 0, int(obj.Width()), int(obj.Height())))
+		bmp := vcl.BitmapFromObj(obj)
+		switch bmp.PixelFormat() {
+		case types.Pf1bit:
+		case types.Pf4bit:
+		case types.Pf8bit:
+		case types.Pf15bit:
+		case types.Pf16bit:
+		case types.Pf24bit:
+		case types.Pf32bit:
+		case types.PfCustom:
+		}
 		// 复制数据到Pix中。。。
 		// 先不管他了，以后再说
 		//img.Pix
