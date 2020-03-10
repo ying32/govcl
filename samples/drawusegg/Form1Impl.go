@@ -72,17 +72,17 @@ func ggImageToPng(dc *gg.Context) *vcl.TPngImage {
 
 func (f *TForm1) ggDrawImage(dc *gg.Context, isPng bool) {
 	//if isPng {
-	png := ggImageToPng(dc)
-	if png != nil {
-		defer png.Free()
-		f.Canvas().Draw(0, 0, png)
-	}
+	//png := ggImageToPng(dc)
+	//if png != nil {
+	//	defer png.Free()
+	//	f.Canvas().Draw(0, 0, png)
+	//}
 	//} else {
-	//	bmp := ggImageToBitmap(dc)
-	//	if bmp != nil {
-	//		defer bmp.Free()
-	//		f.Canvas().Draw(0, 0, bmp)
-	//	}
+	bmp := ggImageToBitmap(dc)
+	if bmp != nil {
+		defer bmp.Free()
+		f.Canvas().Draw(0, 0, bmp)
+	}
 	//}
 }
 
