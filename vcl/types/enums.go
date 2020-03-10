@@ -2136,3 +2136,24 @@ const (
 	DmMainForm
 	DmActiveForm
 )
+
+// TTransparentMode = (tmAuto, tmFixed);
+type TTransparentMode int32
+
+const (
+	TmAuto = iota + 0
+	TmFixed
+)
+
+// libvcl
+// TAlphaFormat = (afIgnored, afDefined, afPremultiplied);
+type TAlphaFormat int32
+
+// afIgnored  The Reserved byte in the TRGBQuad is ignored.
+// afDefined  The reserved byte in the TRGBQuad contains an alpha value.
+// afPremultiplied The reserved byte in the TRGBQuad contains an alpha value. The red, green, and blue values have been premultiplied with the alpha value.
+const (
+	AfIgnored = iota + 0
+	AfDefined
+	AfPremultiplied
+)

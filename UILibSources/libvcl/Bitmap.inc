@@ -169,6 +169,26 @@ begin
   AObj.TransparentColor := AValue;
 end;
 
+function Bitmap_GetTransparentMode(AObj: TBitmap): TTransparentMode; stdcall;
+begin
+  Result :=  AObj.TransparentMode;
+end;
+
+procedure Bitmap_SetTransparentMode(AObj: TBitmap; AValue: TTransparentMode); stdcall;
+begin
+  AObj.TransparentMode := AValue;
+end;
+
+function Bitmap_GetAlphaFormat(AObj: TBitmap): TAlphaFormat; stdcall;
+begin
+  Result :=  AObj.AlphaFormat;
+end;
+
+procedure Bitmap_SetAlphaFormat(AObj: TBitmap; AValue: TAlphaFormat); stdcall;
+begin
+  AObj.AlphaFormat := AValue;
+end;
+
 function Bitmap_GetEmpty(AObj: TBitmap): LongBool; stdcall;
 begin
   Result :=  AObj.Empty;
@@ -289,6 +309,10 @@ exports
   Bitmap_SetPixelFormat,
   Bitmap_GetTransparentColor,
   Bitmap_SetTransparentColor,
+  Bitmap_GetTransparentMode,
+  Bitmap_SetTransparentMode,
+  Bitmap_GetAlphaFormat,
+  Bitmap_SetAlphaFormat,
   Bitmap_GetEmpty,
   Bitmap_GetHeight,
   Bitmap_SetHeight,

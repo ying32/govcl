@@ -154,6 +154,16 @@ begin
   AObj.PixelFormat := AValue;
 end;
 
+function Bitmap_GetTransparentMode(AObj: TBitmap): TTransparentMode; extdecl;
+begin
+  Result :=  AObj.TransparentMode;
+end;
+
+procedure Bitmap_SetTransparentMode(AObj: TBitmap; AValue: TTransparentMode); extdecl;
+begin
+  AObj.TransparentMode := AValue;
+end;
+
 function Bitmap_GetEmpty(AObj: TBitmap): LongBool; extdecl;
 begin
   Result :=  AObj.Empty;
@@ -266,6 +276,8 @@ exports
   Bitmap_SetMaskHandle,
   Bitmap_GetPixelFormat,
   Bitmap_SetPixelFormat,
+  Bitmap_GetTransparentMode,
+  Bitmap_SetTransparentMode,
   Bitmap_GetEmpty,
   Bitmap_GetHeight,
   Bitmap_SetHeight,

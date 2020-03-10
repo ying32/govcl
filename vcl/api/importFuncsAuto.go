@@ -35107,6 +35107,24 @@ func Bitmap_SetTransparentColor(obj uintptr, value TColor) {
    bitmap_SetTransparentColor.Call(obj, uintptr(value))
 }
 
+func Bitmap_GetTransparentMode(obj uintptr) TTransparentMode {
+    ret, _, _ := bitmap_GetTransparentMode.Call(obj)
+    return TTransparentMode(ret)
+}
+
+func Bitmap_SetTransparentMode(obj uintptr, value TTransparentMode) {
+   bitmap_SetTransparentMode.Call(obj, uintptr(value))
+}
+
+func Bitmap_GetAlphaFormat(obj uintptr) TAlphaFormat {
+    ret, _, _ := bitmap_GetAlphaFormat.Call(obj)
+    return TAlphaFormat(ret)
+}
+
+func Bitmap_SetAlphaFormat(obj uintptr, value TAlphaFormat) {
+   bitmap_SetAlphaFormat.Call(obj, uintptr(value))
+}
+
 func Bitmap_GetEmpty(obj uintptr) bool {
     ret, _, _ := bitmap_GetEmpty.Call(obj)
     return DBoolToGoBool(ret)

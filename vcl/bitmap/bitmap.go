@@ -45,7 +45,7 @@ func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 
 // 32bit bmp，丢失透明度
 // 返回的Bmp对象用完记得Free掉
-// LCL貌似不会丢失透明度，VCL会。。。。
+// LCL默认Transparent为True，VCL默认为False
 func ToBitmap(img image.Image) (*vcl.TBitmap, error) {
 	switch img.(type) {
 	case *image.RGBA:
@@ -97,16 +97,27 @@ func toBitmap(width, height int, pix []uint8) (*vcl.TBitmap, error) {
 	}
 	bmp := vcl.NewBitmap()
 	bmp.SetPixelFormat(types.Pf32bit)
+	if !vcl.LclLoaded() {
+		// libvcl开启这个就会透明，liblcl无此属性，自动透明
+		bmp.SetAlphaFormat(types.AfDefined)
+	}
 	bmp.SetSize(int32(width), int32(height))
 	// 填充，左下角为起点
 	for h := height - 1; h >= 0; h-- {
 		ptr := bmp.ScanLine(int32(h))
 		for w := 0; w < width; w++ {
 			index := (h*width + w) * 4
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = pix[index+pixIndex[0]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = pix[index+pixIndex[1]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = pix[index+pixIndex[2]]
-			*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = pix[index+pixIndex[3]]
+
+			c := (*bgra)(unsafe.Pointer(ptr + uintptr(w*4)))
+			c.R = pix[index+0]
+			c.G = pix[index+1]
+			c.B = pix[index+2]
+			c.A = pix[index+3]
+
+			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4))) = pix[index+pixIndex[0]]
+			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+1))) = pix[index+pixIndex[1]]
+			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+2))) = pix[index+pixIndex[2]]
+			//*(*byte)(unsafe.Pointer(ptr + uintptr(w*4+3))) = pix[index+pixIndex[3]]
 		}
 	}
 	return bmp, nil
