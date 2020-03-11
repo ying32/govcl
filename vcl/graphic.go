@@ -35,8 +35,8 @@ func NewGraphic() *TGraphic {
 }
 
 // AsGraphic
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsGraphic(obj interface{}) *TGraphic {
     g := new(TGraphic)
     g.instance, g.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (g *TGraphic) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (g *TGraphic) Is(AClass TClass) bool {
-    return g.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (g *TGraphic) Is() TIs {
+    return TIs(g.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (g *TGraphic) As() TAs {
+    return TAs(g.instance)
 }
 
 // TGraphicClass

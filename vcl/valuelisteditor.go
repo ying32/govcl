@@ -35,8 +35,8 @@ func NewValueListEditor(owner IComponent) *TValueListEditor {
 }
 
 // AsValueListEditor
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsValueListEditor(obj interface{}) *TValueListEditor {
     v := new(TValueListEditor)
     v.instance, v.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (v *TValueListEditor) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (v *TValueListEditor) Is(AClass TClass) bool {
-    return v.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (v *TValueListEditor) Is() TIs {
+    return TIs(v.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (v *TValueListEditor) As() TAs {
+    return TAs(v.instance)
 }
 
 // TValueListEditorClass

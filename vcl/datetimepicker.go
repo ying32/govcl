@@ -36,8 +36,8 @@ func NewDateTimePicker(owner IComponent) *TDateTimePicker {
 }
 
 // AsDateTimePicker
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsDateTimePicker(obj interface{}) *TDateTimePicker {
     d := new(TDateTimePicker)
     d.instance, d.ptr = getInstance(obj)
@@ -103,10 +103,17 @@ func (d *TDateTimePicker) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (d *TDateTimePicker) Is(AClass TClass) bool {
-    return d.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (d *TDateTimePicker) Is() TIs {
+    return TIs(d.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (d *TDateTimePicker) As() TAs {
+    return TAs(d.instance)
 }
 
 // TDateTimePickerClass

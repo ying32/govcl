@@ -35,8 +35,8 @@ func NewMainMenu(owner IComponent) *TMainMenu {
 }
 
 // AsMainMenu
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsMainMenu(obj interface{}) *TMainMenu {
     m := new(TMainMenu)
     m.instance, m.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (m *TMainMenu) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (m *TMainMenu) Is(AClass TClass) bool {
-    return m.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (m *TMainMenu) Is() TIs {
+    return TIs(m.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (m *TMainMenu) As() TAs {
+    return TAs(m.instance)
 }
 
 // TMainMenuClass

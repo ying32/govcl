@@ -161,7 +161,7 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 		width := int(obj.Width())
 		img := image.NewRGBA(image.Rect(0, 0, width, height))
 
-		bmp := vcl.AsBitmap(obj)
+		bmp := obj.As().Bitmap()
 		switch bmp.PixelFormat() {
 
 		// 还有待测试。。。
@@ -201,19 +201,19 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 			return nil, ErrUnsupportedDataFormat
 		}
 		return img, nil
-	} else if obj.Is(vcl.TPngImageClass()) {
+	} else if obj.Is().PngImage() {
 		img, err := png.Decode(buff)
 		if err != nil {
 			return nil, err
 		}
 		return img, nil
-	} else if obj.Is(vcl.TJPEGImageClass()) {
+	} else if obj.Is().JPEGImage() {
 		img, err := jpeg.Decode(buff)
 		if err != nil {
 			return nil, err
 		}
 		return img, nil
-	} else if obj.Is(vcl.TGIFImageClass()) {
+	} else if obj.Is().GIFImage() {
 		img, err := gif.Decode(buff)
 		if err != nil {
 			return nil, err

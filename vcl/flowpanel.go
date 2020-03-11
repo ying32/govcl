@@ -35,8 +35,8 @@ func NewFlowPanel(owner IComponent) *TFlowPanel {
 }
 
 // AsFlowPanel
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsFlowPanel(obj interface{}) *TFlowPanel {
     f := new(TFlowPanel)
     f.instance, f.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (f *TFlowPanel) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (f *TFlowPanel) Is(AClass TClass) bool {
-    return f.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (f *TFlowPanel) Is() TIs {
+    return TIs(f.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (f *TFlowPanel) As() TAs {
+    return TAs(f.instance)
 }
 
 // TFlowPanelClass

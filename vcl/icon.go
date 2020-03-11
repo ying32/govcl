@@ -35,8 +35,8 @@ func NewIcon() *TIcon {
 }
 
 // AsIcon
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsIcon(obj interface{}) *TIcon {
     i := new(TIcon)
     i.instance, i.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (i *TIcon) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (i *TIcon) Is(AClass TClass) bool {
-    return i.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (i *TIcon) Is() TIs {
+    return TIs(i.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (i *TIcon) As() TAs {
+    return TAs(i.instance)
 }
 
 // TIconClass

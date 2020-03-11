@@ -35,8 +35,8 @@ func NewOpenDialog(owner IComponent) *TOpenDialog {
 }
 
 // AsOpenDialog
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsOpenDialog(obj interface{}) *TOpenDialog {
     o := new(TOpenDialog)
     o.instance, o.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (o *TOpenDialog) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (o *TOpenDialog) Is(AClass TClass) bool {
-    return o.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (o *TOpenDialog) Is() TIs {
+    return TIs(o.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (o *TOpenDialog) As() TAs {
+    return TAs(o.instance)
 }
 
 // TOpenDialogClass

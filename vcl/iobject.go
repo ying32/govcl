@@ -28,6 +28,9 @@ type IObject interface {
 	ClassType() types.TClass
 	InstanceSize() int32
 	InheritsFrom(types.TClass) bool
-	Is(types.TClass) bool
+
+	Is() TIs
+	As() TAs
+
 	ToString() string
 }

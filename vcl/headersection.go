@@ -35,8 +35,8 @@ func NewHeaderSection() *THeaderSection {
 }
 
 // AsHeaderSection
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsHeaderSection(obj interface{}) *THeaderSection {
     h := new(THeaderSection)
     h.instance, h.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (h *THeaderSection) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (h *THeaderSection) Is(AClass TClass) bool {
-    return h.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (h *THeaderSection) Is() TIs {
+    return TIs(h.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (h *THeaderSection) As() TAs {
+    return TAs(h.instance)
 }
 
 // THeaderSectionClass

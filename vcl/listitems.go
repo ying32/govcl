@@ -35,8 +35,8 @@ func NewListItems() *TListItems {
 }
 
 // AsListItems
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsListItems(obj interface{}) *TListItems {
     l := new(TListItems)
     l.instance, l.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (l *TListItems) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (l *TListItems) Is(AClass TClass) bool {
-    return l.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (l *TListItems) Is() TIs {
+    return TIs(l.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (l *TListItems) As() TAs {
+    return TAs(l.instance)
 }
 
 // TListItemsClass

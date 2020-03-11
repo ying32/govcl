@@ -35,8 +35,8 @@ func NewApplication(owner IComponent) *TApplication {
 }
 
 // AsApplication
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsApplication(obj interface{}) *TApplication {
     a := new(TApplication)
     a.instance, a.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (a *TApplication) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (a *TApplication) Is(AClass TClass) bool {
-    return a.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (a *TApplication) Is() TIs {
+    return TIs(a.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (a *TApplication) As() TAs {
+    return TAs(a.instance)
 }
 
 // TApplicationClass

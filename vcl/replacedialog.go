@@ -35,8 +35,8 @@ func NewReplaceDialog(owner IComponent) *TReplaceDialog {
 }
 
 // AsReplaceDialog
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsReplaceDialog(obj interface{}) *TReplaceDialog {
     r := new(TReplaceDialog)
     r.instance, r.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (r *TReplaceDialog) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (r *TReplaceDialog) Is(AClass TClass) bool {
-    return r.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (r *TReplaceDialog) Is() TIs {
+    return TIs(r.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (r *TReplaceDialog) As() TAs {
+    return TAs(r.instance)
 }
 
 // TReplaceDialogClass

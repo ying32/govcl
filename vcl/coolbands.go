@@ -35,8 +35,8 @@ func NewCoolBands() *TCoolBands {
 }
 
 // AsCoolBands
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsCoolBands(obj interface{}) *TCoolBands {
     c := new(TCoolBands)
     c.instance, c.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (c *TCoolBands) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (c *TCoolBands) Is(AClass TClass) bool {
-    return c.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (c *TCoolBands) Is() TIs {
+    return TIs(c.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (c *TCoolBands) As() TAs {
+    return TAs(c.instance)
 }
 
 // TCoolBandsClass

@@ -35,8 +35,8 @@ func NewTaskDialogBaseButtonItem() *TTaskDialogBaseButtonItem {
 }
 
 // AsTaskDialogBaseButtonItem
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsTaskDialogBaseButtonItem(obj interface{}) *TTaskDialogBaseButtonItem {
     t := new(TTaskDialogBaseButtonItem)
     t.instance, t.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (t *TTaskDialogBaseButtonItem) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (t *TTaskDialogBaseButtonItem) Is(AClass TClass) bool {
-    return t.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (t *TTaskDialogBaseButtonItem) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (t *TTaskDialogBaseButtonItem) As() TAs {
+    return TAs(t.instance)
 }
 
 // TTaskDialogBaseButtonItemClass

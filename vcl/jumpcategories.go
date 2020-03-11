@@ -25,8 +25,8 @@ type TJumpCategories struct {
 }
 
 // AsJumpCategories
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsJumpCategories(obj interface{}) *TJumpCategories {
     j := new(TJumpCategories)
     j.instance, j.ptr = getInstance(obj)
@@ -81,10 +81,17 @@ func (j *TJumpCategories) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (j *TJumpCategories) Is(AClass TClass) bool {
-    return j.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (j *TJumpCategories) Is() TIs {
+    return TIs(j.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (j *TJumpCategories) As() TAs {
+    return TAs(j.instance)
 }
 
 // TJumpCategoriesClass

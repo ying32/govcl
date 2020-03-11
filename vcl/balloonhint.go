@@ -35,8 +35,8 @@ func NewBalloonHint(owner IComponent) *TBalloonHint {
 }
 
 // AsBalloonHint
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsBalloonHint(obj interface{}) *TBalloonHint {
     b := new(TBalloonHint)
     b.instance, b.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (b *TBalloonHint) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (b *TBalloonHint) Is(AClass TClass) bool {
-    return b.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (b *TBalloonHint) Is() TIs {
+    return TIs(b.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (b *TBalloonHint) As() TAs {
+    return TAs(b.instance)
 }
 
 // TBalloonHintClass

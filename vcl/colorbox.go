@@ -35,8 +35,8 @@ func NewColorBox(owner IComponent) *TColorBox {
 }
 
 // AsColorBox
-// CN: 新建一个对象来自已经存在的对象实例。
-// EN: Create a new object from an existing object instance.
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsColorBox(obj interface{}) *TColorBox {
     c := new(TColorBox)
     c.instance, c.ptr = getInstance(obj)
@@ -102,10 +102,17 @@ func (c *TColorBox) IsValid() bool {
 }
 
 // Is 
-// CN: InheritsFrom的别名。
-// EN: Alias of InheritsFrom.
-func (c *TColorBox) Is(AClass TClass) bool {
-    return c.InheritsFrom(AClass)
+// CN: Is操作。
+// EN: Is.
+func (c *TColorBox) Is() TIs {
+    return TIs(c.instance)
+}
+
+// As 
+// CN: As操作。
+// EN: As.
+func (c *TColorBox) As() TAs {
+    return TAs(c.instance)
 }
 
 // TColorBoxClass
