@@ -22,16 +22,16 @@ func (f *TMainForm) OnButton1Click(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnButton2Click(sender vcl.IObject) {
-	btn := vcl.ButtonFromObj(sender)
+	btn := vcl.AsButton(sender)
 	vcl.ShowMessage("Name:" + btn.Name())
 }
 
 func (f *TMainForm) OnPanel3MouseEnter(sender vcl.IObject) {
-	pnl := vcl.PanelFromObj(sender)
+	pnl := vcl.AsPanel(sender)
 	pnl.SetLeft(pnl.Left() + 5)
 }
 
 func (f *TMainForm) OnPanel3MouseLeave(sender vcl.IObject) {
-	pnl := vcl.PanelFromObj(sender)
+	pnl := vcl.AsPanel(sender)
 	pnl.SetLeft(pnl.Left() - 5)
 }

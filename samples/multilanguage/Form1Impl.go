@@ -41,12 +41,12 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 }
 
 func (f *TForm1) OnLanguageMenuItemClick(sender vcl.IObject) {
-	id := vcl.MenuItemFromObj(sender).Tag()
+	id := vcl.AsMenuItem(sender).Tag()
 	if lang, ok := multilang.LocalLangs[id]; ok {
 		fmt.Println(lang)
 		multilang.ChangeLang(lang.Language.Name)
 		multilang.WriteSetLang(lang.Language.Name)
-		vcl.MenuItemFromObj(sender).SetChecked(true)
+		vcl.AsMenuItem(sender).SetChecked(true)
 	}
 }
 

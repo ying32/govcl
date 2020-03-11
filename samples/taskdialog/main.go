@@ -50,19 +50,19 @@ func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
 
 	taskdlg.SetFooterText("底部文本")
 
-	rd := vcl.TaskDialogRadioButtonItemFromObj(taskdlg.RadioButtons().Add())
+	rd := vcl.AsTaskDialogRadioButtonItem(taskdlg.RadioButtons().Add())
 	rd.SetCaption("单选按钮1")
-	rd = vcl.TaskDialogRadioButtonItemFromObj(taskdlg.RadioButtons().Add())
+	rd = vcl.AsTaskDialogRadioButtonItem(taskdlg.RadioButtons().Add())
 	rd.SetCaption("单选按钮2")
-	rd = vcl.TaskDialogRadioButtonItemFromObj(taskdlg.RadioButtons().Add())
+	rd = vcl.AsTaskDialogRadioButtonItem(taskdlg.RadioButtons().Add())
 	rd.SetCaption("单选按钮3")
 
 	taskdlg.SetCommonButtons(0) //rtl.Include(0, 0))
-	btn := vcl.TaskDialogButtonItemFromObj(taskdlg.Buttons().Add())
+	btn := vcl.AsTaskDialogButtonItem(taskdlg.Buttons().Add())
 	btn.SetCaption("移除")
 	btn.SetModalResult(types.MrYes)
 
-	btn = vcl.TaskDialogButtonItemFromObj(taskdlg.Buttons().Add())
+	btn = vcl.AsTaskDialogButtonItem(taskdlg.Buttons().Add())
 	btn.SetCaption("保持")
 	btn.SetModalResult(types.MrNo)
 

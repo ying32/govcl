@@ -56,7 +56,7 @@ func (f *TMainForm) OnActPlayExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActPlayUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.player != nil && !f.player.Playing())
+	vcl.AsAction(sender).SetEnabled(f.player != nil && !f.player.Playing())
 }
 
 func (f *TMainForm) OnActStopExecute(sender vcl.IObject) {
@@ -68,7 +68,7 @@ func (f *TMainForm) OnActStopExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActStopUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.player != nil && f.player.Playing())
+	vcl.AsAction(sender).SetEnabled(f.player != nil && f.player.Playing())
 }
 
 func (f *TMainForm) OnActPauseExecute(sender vcl.IObject) {
@@ -77,7 +77,7 @@ func (f *TMainForm) OnActPauseExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActPauseUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.player != nil && f.player.Playing())
+	vcl.AsAction(sender).SetEnabled(f.player != nil && f.player.Playing())
 }
 
 func (f *TMainForm) OnTimer1Timer(sender vcl.IObject) {

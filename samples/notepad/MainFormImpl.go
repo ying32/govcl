@@ -17,7 +17,7 @@ func (m *TMainForm) OnFormCreate(sender vcl.IObject) {
 // File
 
 func (m *TMainForm) OnActEditCopyUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(MainForm.MemoBody.SelLength() > 0)
+	vcl.AsAction(sender).SetEnabled(MainForm.MemoBody.SelLength() > 0)
 }
 
 func (m *TMainForm) OnActFileNewExecute(sender vcl.IObject) {
@@ -60,7 +60,7 @@ func (m *TMainForm) OnActEditUndoExecute(sender vcl.IObject) {
 }
 
 func (m *TMainForm) OnActEditUndoUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(m.MemoBody.CanUndo())
+	vcl.AsAction(sender).SetEnabled(m.MemoBody.CanUndo())
 }
 
 func (m *TMainForm) OnActEditCopyExecute(sender vcl.IObject) {
@@ -111,7 +111,7 @@ func (m *TMainForm) OnActEditSelectAllExecute(sender vcl.IObject) {
 }
 
 func (m *TMainForm) OnActEditSelectAllUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(m.MemoBody.GetTextLen() > 0)
+	vcl.AsAction(sender).SetEnabled(m.MemoBody.GetTextLen() > 0)
 }
 
 func (m *TMainForm) OnActEditTimeOrDateExecute(sender vcl.IObject) {
@@ -121,8 +121,8 @@ func (m *TMainForm) OnActEditTimeOrDateExecute(sender vcl.IObject) {
 // Format
 
 func (m *TMainForm) OnActFormatWordWapExecute(sender vcl.IObject) {
-	val := !vcl.ActionFromObj(sender).Checked()
-	vcl.ActionFromObj(sender).SetChecked(val)
+	val := !vcl.AsAction(sender).Checked()
+	vcl.AsAction(sender).SetChecked(val)
 	m.StatusBar1.SetVisible(!val && m.ActViewStatusBar.Checked())
 	m.MemoBody.SetWordWrap(val)
 }
@@ -134,11 +134,11 @@ func (m *TMainForm) OnActFormatFontExecute(sender vcl.IObject) {
 }
 
 func (m *TMainForm) OnActViewStatusBarExecute(sender vcl.IObject) {
-	val := !vcl.ActionFromObj(sender).Checked()
-	vcl.ActionFromObj(sender).SetChecked(val)
+	val := !vcl.AsAction(sender).Checked()
+	vcl.AsAction(sender).SetChecked(val)
 	m.StatusBar1.SetVisible(val)
 }
 
 func (m *TMainForm) OnActViewStatusBarUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(!m.ActFormatWordWap.Checked())
+	vcl.AsAction(sender).SetEnabled(!m.ActFormatWordWap.Checked())
 }

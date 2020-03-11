@@ -113,7 +113,7 @@ func main() {
 	action := vcl.NewAction(mainForm)
 	action.SetCaption("action1")
 	action.SetOnUpdate(func(sender vcl.IObject) {
-		vcl.ActionFromObj(sender).SetEnabled(chk.Checked())
+		vcl.AsAction(sender).SetEnabled(chk.Checked())
 	})
 	action.SetOnExecute(func(vcl.IObject) {
 		fmt.Println("action execute")

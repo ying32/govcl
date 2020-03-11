@@ -36,7 +36,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 }
 
 func (f *TMainForm) onToolBtnClick(sender vcl.IObject) {
-	btn := vcl.ButtonFromObj(sender)
+	btn := vcl.AsButton(sender)
 
 	setSelText := func(s string) {
 		f.MemoEditor.SetSelText(fmt.Sprintf("%s%s%s", s, f.MemoEditor.SelText(), s))
@@ -94,7 +94,7 @@ func (f *TMainForm) setToolBtnClickEvent() {
 	for i = 0; i < f.ToolBar1.ControlCount(); i++ {
 		ctl := f.ToolBar1.Controls(i)
 		if ctl.InheritsFrom(vcl.TToolButtonClass()) {
-			btn := vcl.ToolButtonFromObj(ctl)
+			btn := vcl.AsToolButton(ctl)
 			if btn.Style() == types.TbsButton {
 				btn.SetOnClick(f.onToolBtnClick)
 			}

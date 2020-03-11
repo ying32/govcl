@@ -52,7 +52,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 		//fmt.Println(i, "=", comp.Name())
 		if comp.InheritsFrom(vcl.TMemoClass()) {
 			fmt.Println(i, "=", comp.Name(), ", 继承自TMemo")
-			mem := vcl.MemoFromObj(comp)
+			mem := vcl.AsMemo(comp)
 			mem.SetOnKeyUp(f.memoOnKeyup)
 		}
 	}
@@ -60,6 +60,6 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 
 func (f *TForm1) memoOnKeyup(sender vcl.IObject, key *types.Char, shift types.TShiftState) {
 	if shift.In(types.SsCtrl) && *key == /*keys.VkA*/ keys.VkB {
-		vcl.MemoFromObj(sender).SelectAll()
+		vcl.AsMemo(sender).SelectAll()
 	}
 }

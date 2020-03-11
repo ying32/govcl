@@ -39,7 +39,7 @@ func (f *TForm11) GetSubItemRect(iItem, iSubItem int32) (ret types.TRect) {
 
 func (f *TForm11) ColorLblClick(sender vcl.IObject) {
 	if f.ColorDialog1.Execute() {
-		vcl.LabelFromObj(sender).SetColor(f.ColorDialog1.Color())
+		vcl.AsLabel(sender).SetColor(f.ColorDialog1.Color())
 	}
 }
 

@@ -41,7 +41,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.playCtl.SetParent(f.Panel2)
 	f.playCtl.SetAlign(types.AlClient)
 	f.playCtl.OnSelect = f.OnPlayListSelect
-	f.playCtl.SingerPic = vcl.BitmapFromObj(f.ImgSinger.Picture().Graphic())
+	f.playCtl.SingerPic = vcl.AsBitmap(f.ImgSinger.Picture().Graphic())
 
 	f.progress = NewImageTrackBar(f)
 	f.progress.SetParent(f)
