@@ -102,15 +102,15 @@ func (s *TStrings) IsValid() bool {
 }
 
 // Is 
-// CN: Is操作。
-// EN: Is.
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
 func (s *TStrings) Is() TIs {
     return TIs(s.instance)
 }
 
 // As 
-// CN: As操作。
-// EN: As.
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
 func (s *TStrings) As() TAs {
     return TAs(s.instance)
 }
@@ -120,6 +120,20 @@ func (s *TStrings) As() TAs {
 // EN: Get class information pointer.
 func TStringsClass() TClass {
     return Strings_StaticClassType()
+}
+
+// S 
+// CN: Strings()的别名。
+// EN: Alias of Strings().
+func (s *TStrings) S(Index int32) string {
+    return s.Strings(Index)
+}
+
+// SetS 
+// CN: SetStrings()的别名。
+// EN: Alias of SetStrings().
+func (s *TStrings) SetS(Index int32, value string) {
+    s.SetStrings(Index, value)
 }
 
 // Add

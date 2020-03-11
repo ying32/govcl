@@ -102,15 +102,15 @@ func (f *TFlowPanel) IsValid() bool {
 }
 
 // Is 
-// CN: Is操作。
-// EN: Is.
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
 func (f *TFlowPanel) Is() TIs {
     return TIs(f.instance)
 }
 
 // As 
-// CN: As操作。
-// EN: As.
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
 func (f *TFlowPanel) As() TAs {
     return TAs(f.instance)
 }
