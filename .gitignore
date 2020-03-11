@@ -97,3 +97,4 @@ __recovery/
 /samples/memloaddll/defaultRes_windows_386.syso
 /samples/memloaddll/defaultRes_windows_amd64.syso
 /samples/directUITest/
+/samples/cgoTest/
