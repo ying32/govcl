@@ -34,36 +34,41 @@ func NewStringList() *TStringList {
     return s
 }
 
+// AsStringList
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsStringList(obj interface{}) *TStringList {
+    s := new(TStringList)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // StringListFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsStringList.
 func StringListFromInst(inst uintptr) *TStringList {
-    s := new(TStringList)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsStringList(inst)
 }
 
 // StringListFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsStringList.
 func StringListFromObj(obj IObject) *TStringList {
-    s := new(TStringList)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsStringList(obj)
 }
 
 // StringListFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsStringList.
 func StringListFromUnsafePointer(ptr unsafe.Pointer) *TStringList {
-    s := new(TStringList)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsStringList(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -368,7 +373,7 @@ func (s *TStringList) SetOptions(value TStringsOptions) {
 
 // Objects
 func (s *TStringList) Objects(Index int32) *TObject {
-    return ObjectFromInst(StringList_GetObjects(s.instance, Index))
+    return AsObject(StringList_GetObjects(s.instance, Index))
 }
 
 // Objects

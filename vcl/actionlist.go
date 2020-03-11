@@ -34,36 +34,41 @@ func NewActionList(owner IComponent) *TActionList {
     return a
 }
 
+// AsActionList
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsActionList(obj interface{}) *TActionList {
+    a := new(TActionList)
+    a.instance, a.ptr = getInstance(obj)
+    return a
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ActionListFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsActionList.
 func ActionListFromInst(inst uintptr) *TActionList {
-    a := new(TActionList)
-    a.instance = inst
-    a.ptr = unsafe.Pointer(inst)
-    return a
+    return AsActionList(inst)
 }
 
 // ActionListFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsActionList.
 func ActionListFromObj(obj IObject) *TActionList {
-    a := new(TActionList)
-    a.instance = CheckPtr(obj)
-    a.ptr = unsafe.Pointer(a.instance)
-    return a
+    return AsActionList(obj)
 }
 
 // ActionListFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsActionList.
 func ActionListFromUnsafePointer(ptr unsafe.Pointer) *TActionList {
-    a := new(TActionList)
-    a.instance = uintptr(ptr)
-    a.ptr = ptr
-    return a
+    return AsActionList(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -114,7 +119,7 @@ func TActionListClass() TClass {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (a *TActionList) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ActionList_FindComponent(a.instance, AName))
+    return AsComponent(ActionList_FindComponent(a.instance, AName))
 }
 
 // GetNamePath
@@ -198,7 +203,7 @@ func (a *TActionList) ToString() string {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (a *TActionList) Images() *TImageList {
-    return ImageListFromInst(ActionList_GetImages(a.instance))
+    return AsImageList(ActionList_GetImages(a.instance))
 }
 
 // SetImages
@@ -250,7 +255,7 @@ func (a *TActionList) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (a *TActionList) Owner() *TComponent {
-    return ComponentFromInst(ActionList_GetOwner(a.instance))
+    return AsComponent(ActionList_GetOwner(a.instance))
 }
 
 // Name
@@ -285,6 +290,6 @@ func (a *TActionList) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (a *TActionList) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ActionList_GetComponents(a.instance, AIndex))
+    return AsComponent(ActionList_GetComponents(a.instance, AIndex))
 }
 

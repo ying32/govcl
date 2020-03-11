@@ -34,36 +34,41 @@ func NewComboBoxEx(owner IComponent) *TComboBoxEx {
     return c
 }
 
+// AsComboBoxEx
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsComboBoxEx(obj interface{}) *TComboBoxEx {
+    c := new(TComboBoxEx)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ComboBoxExFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsComboBoxEx.
 func ComboBoxExFromInst(inst uintptr) *TComboBoxEx {
-    c := new(TComboBoxEx)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsComboBoxEx(inst)
 }
 
 // ComboBoxExFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsComboBoxEx.
 func ComboBoxExFromObj(obj IObject) *TComboBoxEx {
-    c := new(TComboBoxEx)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsComboBoxEx(obj)
 }
 
 // ComboBoxExFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsComboBoxEx.
 func ComboBoxExFromUnsafePointer(ptr unsafe.Pointer) *TComboBoxEx {
-    c := new(TComboBoxEx)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsComboBoxEx(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -171,7 +176,7 @@ func (c *TComboBoxEx) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TComboBoxEx) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ComboBoxEx_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ComboBoxEx_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -192,7 +197,7 @@ func (c *TComboBoxEx) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (c *TComboBoxEx) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ComboBoxEx_FindChildControl(c.instance, ControlName))
+    return AsControl(ComboBoxEx_FindChildControl(c.instance, ControlName))
 }
 
 // FlipChildren
@@ -400,7 +405,7 @@ func (c *TComboBoxEx) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TComboBoxEx) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ComboBoxEx_FindComponent(c.instance, AName))
+    return AsComponent(ComboBoxEx_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -499,7 +504,7 @@ func (c *TComboBoxEx) SetAutoCompleteOptions(value TAutoCompleteOptions) {
 
 // ItemsEx
 func (c *TComboBoxEx) ItemsEx() *TComboExItems {
-    return ComboExItemsFromInst(ComboBoxEx_GetItemsEx(c.instance))
+    return AsComboExItems(ComboBoxEx_GetItemsEx(c.instance))
 }
 
 // SetItemsEx
@@ -529,7 +534,7 @@ func (c *TComboBoxEx) SetStyleEx(value TComboBoxExStyles) {
 
 // Action
 func (c *TComboBoxEx) Action() *TAction {
-    return ActionFromInst(ComboBoxEx_GetAction(c.instance))
+    return AsAction(ComboBoxEx_GetAction(c.instance))
 }
 
 // SetAction
@@ -577,7 +582,7 @@ func (c *TComboBoxEx) SetColor(value TColor) {
 
 // Constraints
 func (c *TComboBoxEx) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ComboBoxEx_GetConstraints(c.instance))
+    return AsSizeConstraints(ComboBoxEx_GetConstraints(c.instance))
 }
 
 // SetConstraints
@@ -669,7 +674,7 @@ func (c *TComboBoxEx) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (c *TComboBoxEx) Font() *TFont {
-    return FontFromInst(ComboBoxEx_GetFont(c.instance))
+    return AsFont(ComboBoxEx_GetFont(c.instance))
 }
 
 // SetFont
@@ -769,7 +774,7 @@ func (c *TComboBoxEx) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (c *TComboBoxEx) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ComboBoxEx_GetPopupMenu(c.instance))
+    return AsPopupMenu(ComboBoxEx_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
@@ -1004,7 +1009,7 @@ func (c *TComboBoxEx) SetOnStartDock(fn TStartDockEvent) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (c *TComboBoxEx) Images() *TImageList {
-    return ImageListFromInst(ComboBoxEx_GetImages(c.instance))
+    return AsImageList(ComboBoxEx_GetImages(c.instance))
 }
 
 // SetImages
@@ -1042,7 +1047,7 @@ func (c *TComboBoxEx) SetSelText(value string) {
 // CN: 获取画布。
 // EN: .
 func (c *TComboBoxEx) Canvas() *TCanvas {
-    return CanvasFromInst(ComboBoxEx_GetCanvas(c.instance))
+    return AsCanvas(ComboBoxEx_GetCanvas(c.instance))
 }
 
 // DroppedDown
@@ -1057,7 +1062,7 @@ func (c *TComboBoxEx) SetDroppedDown(value bool) {
 
 // Items
 func (c *TComboBoxEx) Items() *TStrings {
-    return StringsFromInst(ComboBoxEx_GetItems(c.instance))
+    return AsStrings(ComboBoxEx_GetItems(c.instance))
 }
 
 // SetItems
@@ -1149,7 +1154,7 @@ func (c *TComboBoxEx) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (c *TComboBoxEx) Brush() *TBrush {
-    return BrushFromInst(ComboBoxEx_GetBrush(c.instance))
+    return AsBrush(ComboBoxEx_GetBrush(c.instance))
 }
 
 // ControlCount
@@ -1301,7 +1306,7 @@ func (c *TComboBoxEx) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (c *TComboBoxEx) Parent() *TWinControl {
-    return WinControlFromInst(ComboBoxEx_GetParent(c.instance))
+    return AsWinControl(ComboBoxEx_GetParent(c.instance))
 }
 
 // SetParent
@@ -1413,7 +1418,7 @@ func (c *TComboBoxEx) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (c *TComboBoxEx) Margins() *TMargins {
-    return MarginsFromInst(ComboBoxEx_GetMargins(c.instance))
+    return AsMargins(ComboBoxEx_GetMargins(c.instance))
 }
 
 // SetMargins
@@ -1427,7 +1432,7 @@ func (c *TComboBoxEx) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (c *TComboBoxEx) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ComboBoxEx_GetCustomHint(c.instance))
+    return AsCustomHint(ComboBoxEx_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
@@ -1462,7 +1467,7 @@ func (c *TComboBoxEx) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TComboBoxEx) Owner() *TComponent {
-    return ComponentFromInst(ComboBoxEx_GetOwner(c.instance))
+    return AsComponent(ComboBoxEx_GetOwner(c.instance))
 }
 
 // Name
@@ -1497,20 +1502,20 @@ func (c *TComboBoxEx) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TComboBoxEx) DockClients(Index int32) *TControl {
-    return ControlFromInst(ComboBoxEx_GetDockClients(c.instance, Index))
+    return AsControl(ComboBoxEx_GetDockClients(c.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (c *TComboBoxEx) Controls(Index int32) *TControl {
-    return ControlFromInst(ComboBoxEx_GetControls(c.instance, Index))
+    return AsControl(ComboBoxEx_GetControls(c.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TComboBoxEx) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ComboBoxEx_GetComponents(c.instance, AIndex))
+    return AsComponent(ComboBoxEx_GetComponents(c.instance, AIndex))
 }
 

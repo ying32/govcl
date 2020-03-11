@@ -34,36 +34,41 @@ func NewSplitter(owner IComponent) *TSplitter {
     return s
 }
 
+// AsSplitter
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsSplitter(obj interface{}) *TSplitter {
+    s := new(TSplitter)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // SplitterFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsSplitter.
 func SplitterFromInst(inst uintptr) *TSplitter {
-    s := new(TSplitter)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsSplitter(inst)
 }
 
 // SplitterFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsSplitter.
 func SplitterFromObj(obj IObject) *TSplitter {
-    s := new(TSplitter)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsSplitter(obj)
 }
 
 // SplitterFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsSplitter.
 func SplitterFromUnsafePointer(ptr unsafe.Pointer) *TSplitter {
-    s := new(TSplitter)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsSplitter(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -247,7 +252,7 @@ func (s *TSplitter) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TSplitter) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Splitter_FindComponent(s.instance, AName))
+    return AsComponent(Splitter_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -324,7 +329,7 @@ func (s *TSplitter) ToString() string {
 // CN: 获取画布。
 // EN: .
 func (s *TSplitter) Canvas() *TCanvas {
-    return CanvasFromInst(Splitter_GetCanvas(s.instance))
+    return AsCanvas(Splitter_GetCanvas(s.instance))
 }
 
 // Align
@@ -371,7 +376,7 @@ func (s *TSplitter) SetCursor(value TCursor) {
 
 // Constraints
 func (s *TSplitter) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Splitter_GetConstraints(s.instance))
+    return AsSizeConstraints(Splitter_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -458,7 +463,7 @@ func (s *TSplitter) SetEnabled(value bool) {
 
 // Action
 func (s *TSplitter) Action() *TAction {
-    return ActionFromInst(Splitter_GetAction(s.instance))
+    return AsAction(Splitter_GetAction(s.instance))
 }
 
 // SetAction
@@ -611,7 +616,7 @@ func (s *TSplitter) SetShowHint(value bool) {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TSplitter) Parent() *TWinControl {
-    return WinControlFromInst(Splitter_GetParent(s.instance))
+    return AsWinControl(Splitter_GetParent(s.instance))
 }
 
 // SetParent
@@ -700,7 +705,7 @@ func (s *TSplitter) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TSplitter) Margins() *TMargins {
-    return MarginsFromInst(Splitter_GetMargins(s.instance))
+    return AsMargins(Splitter_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -714,7 +719,7 @@ func (s *TSplitter) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TSplitter) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Splitter_GetCustomHint(s.instance))
+    return AsCustomHint(Splitter_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -749,7 +754,7 @@ func (s *TSplitter) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TSplitter) Owner() *TComponent {
-    return ComponentFromInst(Splitter_GetOwner(s.instance))
+    return AsComponent(Splitter_GetOwner(s.instance))
 }
 
 // Name
@@ -784,6 +789,6 @@ func (s *TSplitter) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TSplitter) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Splitter_GetComponents(s.instance, AIndex))
+    return AsComponent(Splitter_GetComponents(s.instance, AIndex))
 }
 

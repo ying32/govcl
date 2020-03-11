@@ -34,36 +34,41 @@ func NewBoundLabel(owner IComponent) *TBoundLabel {
     return b
 }
 
+// AsBoundLabel
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsBoundLabel(obj interface{}) *TBoundLabel {
+    b := new(TBoundLabel)
+    b.instance, b.ptr = getInstance(obj)
+    return b
+}
+
+// -------------------------- Deprecated begin --------------------------
 // BoundLabelFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsBoundLabel.
 func BoundLabelFromInst(inst uintptr) *TBoundLabel {
-    b := new(TBoundLabel)
-    b.instance = inst
-    b.ptr = unsafe.Pointer(inst)
-    return b
+    return AsBoundLabel(inst)
 }
 
 // BoundLabelFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsBoundLabel.
 func BoundLabelFromObj(obj IObject) *TBoundLabel {
-    b := new(TBoundLabel)
-    b.instance = CheckPtr(obj)
-    b.ptr = unsafe.Pointer(b.instance)
-    return b
+    return AsBoundLabel(obj)
 }
 
 // BoundLabelFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsBoundLabel.
 func BoundLabelFromUnsafePointer(ptr unsafe.Pointer) *TBoundLabel {
-    b := new(TBoundLabel)
-    b.instance = uintptr(ptr)
-    b.ptr = ptr
-    return b
+    return AsBoundLabel(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -247,7 +252,7 @@ func (b *TBoundLabel) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (b *TBoundLabel) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(BoundLabel_FindComponent(b.instance, AName))
+    return AsComponent(BoundLabel_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
@@ -404,7 +409,7 @@ func (b *TBoundLabel) SetDragMode(value TDragMode) {
 // CN: 获取字体。
 // EN: Get Font.
 func (b *TBoundLabel) Font() *TFont {
-    return FontFromInst(BoundLabel_GetFont(b.instance))
+    return AsFont(BoundLabel_GetFont(b.instance))
 }
 
 // SetFont
@@ -477,7 +482,7 @@ func (b *TBoundLabel) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (b *TBoundLabel) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(BoundLabel_GetPopupMenu(b.instance))
+    return AsPopupMenu(BoundLabel_GetPopupMenu(b.instance))
 }
 
 // SetPopupMenu
@@ -661,7 +666,7 @@ func (b *TBoundLabel) SetOnStartDock(fn TStartDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (b *TBoundLabel) Canvas() *TCanvas {
-    return CanvasFromInst(BoundLabel_GetCanvas(b.instance))
+    return AsCanvas(BoundLabel_GetCanvas(b.instance))
 }
 
 // GlowSize
@@ -690,7 +695,7 @@ func (b *TBoundLabel) SetEnabled(value bool) {
 
 // Action
 func (b *TBoundLabel) Action() *TAction {
-    return ActionFromInst(BoundLabel_GetAction(b.instance))
+    return AsAction(BoundLabel_GetAction(b.instance))
 }
 
 // SetAction
@@ -778,7 +783,7 @@ func (b *TBoundLabel) SetClientWidth(value int32) {
 
 // Constraints
 func (b *TBoundLabel) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(BoundLabel_GetConstraints(b.instance))
+    return AsSizeConstraints(BoundLabel_GetConstraints(b.instance))
 }
 
 // SetConstraints
@@ -857,7 +862,7 @@ func (b *TBoundLabel) SetVisible(value bool) {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (b *TBoundLabel) Parent() *TWinControl {
-    return WinControlFromInst(BoundLabel_GetParent(b.instance))
+    return AsWinControl(BoundLabel_GetParent(b.instance))
 }
 
 // SetParent
@@ -927,7 +932,7 @@ func (b *TBoundLabel) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (b *TBoundLabel) Margins() *TMargins {
-    return MarginsFromInst(BoundLabel_GetMargins(b.instance))
+    return AsMargins(BoundLabel_GetMargins(b.instance))
 }
 
 // SetMargins
@@ -941,7 +946,7 @@ func (b *TBoundLabel) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (b *TBoundLabel) CustomHint() *TCustomHint {
-    return CustomHintFromInst(BoundLabel_GetCustomHint(b.instance))
+    return AsCustomHint(BoundLabel_GetCustomHint(b.instance))
 }
 
 // SetCustomHint
@@ -976,7 +981,7 @@ func (b *TBoundLabel) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (b *TBoundLabel) Owner() *TComponent {
-    return ComponentFromInst(BoundLabel_GetOwner(b.instance))
+    return AsComponent(BoundLabel_GetOwner(b.instance))
 }
 
 // Name
@@ -1011,6 +1016,6 @@ func (b *TBoundLabel) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (b *TBoundLabel) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(BoundLabel_GetComponents(b.instance, AIndex))
+    return AsComponent(BoundLabel_GetComponents(b.instance, AIndex))
 }
 

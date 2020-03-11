@@ -34,36 +34,41 @@ func NewIcon() *TIcon {
     return i
 }
 
+// AsIcon
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsIcon(obj interface{}) *TIcon {
+    i := new(TIcon)
+    i.instance, i.ptr = getInstance(obj)
+    return i
+}
+
+// -------------------------- Deprecated begin --------------------------
 // IconFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsIcon.
 func IconFromInst(inst uintptr) *TIcon {
-    i := new(TIcon)
-    i.instance = inst
-    i.ptr = unsafe.Pointer(inst)
-    return i
+    return AsIcon(inst)
 }
 
 // IconFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsIcon.
 func IconFromObj(obj IObject) *TIcon {
-    i := new(TIcon)
-    i.instance = CheckPtr(obj)
-    i.ptr = unsafe.Pointer(i.instance)
-    return i
+    return AsIcon(obj)
 }
 
 // IconFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsIcon.
 func IconFromUnsafePointer(ptr unsafe.Pointer) *TIcon {
-    i := new(TIcon)
-    i.instance = uintptr(ptr)
-    i.ptr = ptr
-    return i
+    return AsIcon(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

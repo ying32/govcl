@@ -60,11 +60,11 @@ func init() {
 	SetThreadSyncCallback(threadSyncCallback)
 
 	// 导入几个实例类
-	Application = ApplicationFromInst(Application_Instance())
-	Screen = ScreenFromInst(Screen_Instance())
-	Mouse = MouseFromInst(Mouse_Instance())
-	Clipboard = ClipboardFromInst(Clipboard_Instance())
-	Printer = PrinterFromInst(Printer_Instance())
+	Application = AsApplication(Application_Instance())
+	Screen = AsScreen(Screen_Instance())
+	Mouse = AsMouse(Mouse_Instance())
+	Clipboard = AsClipboard(Clipboard_Instance())
+	Printer = AsPrinter(Printer_Instance())
 
 	// 尝试加载ICON，仅Windows下有效，尝试加载名为MAINICON的图标
 	tryLoadAppIcon()

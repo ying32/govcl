@@ -34,36 +34,41 @@ func NewStatusBar(owner IComponent) *TStatusBar {
     return s
 }
 
+// AsStatusBar
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsStatusBar(obj interface{}) *TStatusBar {
+    s := new(TStatusBar)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // StatusBarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsStatusBar.
 func StatusBarFromInst(inst uintptr) *TStatusBar {
-    s := new(TStatusBar)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsStatusBar(inst)
 }
 
 // StatusBarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsStatusBar.
 func StatusBarFromObj(obj IObject) *TStatusBar {
-    s := new(TStatusBar)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsStatusBar(obj)
 }
 
 // StatusBarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsStatusBar.
 func StatusBarFromUnsafePointer(ptr unsafe.Pointer) *TStatusBar {
-    s := new(TStatusBar)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsStatusBar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -140,7 +145,7 @@ func (s *TStatusBar) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TStatusBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(StatusBar_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(StatusBar_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -161,7 +166,7 @@ func (s *TStatusBar) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (s *TStatusBar) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(StatusBar_FindChildControl(s.instance, ControlName))
+    return AsControl(StatusBar_FindChildControl(s.instance, ControlName))
 }
 
 // Focused
@@ -364,7 +369,7 @@ func (s *TStatusBar) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TStatusBar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(StatusBar_FindComponent(s.instance, AName))
+    return AsComponent(StatusBar_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -439,7 +444,7 @@ func (s *TStatusBar) ToString() string {
 
 // Action
 func (s *TStatusBar) Action() *TAction {
-    return ActionFromInst(StatusBar_GetAction(s.instance))
+    return AsAction(StatusBar_GetAction(s.instance))
 }
 
 // SetAction
@@ -597,7 +602,7 @@ func (s *TStatusBar) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (s *TStatusBar) Font() *TFont {
-    return FontFromInst(StatusBar_GetFont(s.instance))
+    return AsFont(StatusBar_GetFont(s.instance))
 }
 
 // SetFont
@@ -609,7 +614,7 @@ func (s *TStatusBar) SetFont(value *TFont) {
 
 // Constraints
 func (s *TStatusBar) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(StatusBar_GetConstraints(s.instance))
+    return AsSizeConstraints(StatusBar_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -619,7 +624,7 @@ func (s *TStatusBar) SetConstraints(value *TSizeConstraints) {
 
 // Panels
 func (s *TStatusBar) Panels() *TStatusPanels {
-    return StatusPanelsFromInst(StatusBar_GetPanels(s.instance))
+    return AsStatusPanels(StatusBar_GetPanels(s.instance))
 }
 
 // SetPanels
@@ -683,7 +688,7 @@ func (s *TStatusBar) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (s *TStatusBar) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(StatusBar_GetPopupMenu(s.instance))
+    return AsPopupMenu(StatusBar_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
@@ -894,7 +899,7 @@ func (s *TStatusBar) SetOnStartDock(fn TStartDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (s *TStatusBar) Canvas() *TCanvas {
-    return CanvasFromInst(StatusBar_GetCanvas(s.instance))
+    return AsCanvas(StatusBar_GetCanvas(s.instance))
 }
 
 // DockClientCount
@@ -943,7 +948,7 @@ func (s *TStatusBar) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (s *TStatusBar) Brush() *TBrush {
-    return BrushFromInst(StatusBar_GetBrush(s.instance))
+    return AsBrush(StatusBar_GetBrush(s.instance))
 }
 
 // ControlCount
@@ -1123,7 +1128,7 @@ func (s *TStatusBar) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TStatusBar) Parent() *TWinControl {
-    return WinControlFromInst(StatusBar_GetParent(s.instance))
+    return AsWinControl(StatusBar_GetParent(s.instance))
 }
 
 // SetParent
@@ -1235,7 +1240,7 @@ func (s *TStatusBar) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TStatusBar) Margins() *TMargins {
-    return MarginsFromInst(StatusBar_GetMargins(s.instance))
+    return AsMargins(StatusBar_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -1249,7 +1254,7 @@ func (s *TStatusBar) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TStatusBar) CustomHint() *TCustomHint {
-    return CustomHintFromInst(StatusBar_GetCustomHint(s.instance))
+    return AsCustomHint(StatusBar_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -1284,7 +1289,7 @@ func (s *TStatusBar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TStatusBar) Owner() *TComponent {
-    return ComponentFromInst(StatusBar_GetOwner(s.instance))
+    return AsComponent(StatusBar_GetOwner(s.instance))
 }
 
 // Name
@@ -1319,20 +1324,20 @@ func (s *TStatusBar) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TStatusBar) DockClients(Index int32) *TControl {
-    return ControlFromInst(StatusBar_GetDockClients(s.instance, Index))
+    return AsControl(StatusBar_GetDockClients(s.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (s *TStatusBar) Controls(Index int32) *TControl {
-    return ControlFromInst(StatusBar_GetControls(s.instance, Index))
+    return AsControl(StatusBar_GetControls(s.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TStatusBar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(StatusBar_GetComponents(s.instance, AIndex))
+    return AsComponent(StatusBar_GetComponents(s.instance, AIndex))
 }
 

@@ -34,36 +34,41 @@ func NewGauge(owner IComponent) *TGauge {
     return g
 }
 
+// AsGauge
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsGauge(obj interface{}) *TGauge {
+    g := new(TGauge)
+    g.instance, g.ptr = getInstance(obj)
+    return g
+}
+
+// -------------------------- Deprecated begin --------------------------
 // GaugeFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsGauge.
 func GaugeFromInst(inst uintptr) *TGauge {
-    g := new(TGauge)
-    g.instance = inst
-    g.ptr = unsafe.Pointer(inst)
-    return g
+    return AsGauge(inst)
 }
 
 // GaugeFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsGauge.
 func GaugeFromObj(obj IObject) *TGauge {
-    g := new(TGauge)
-    g.instance = CheckPtr(obj)
-    g.ptr = unsafe.Pointer(g.instance)
-    return g
+    return AsGauge(obj)
 }
 
 // GaugeFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsGauge.
 func GaugeFromUnsafePointer(ptr unsafe.Pointer) *TGauge {
-    g := new(TGauge)
-    g.instance = uintptr(ptr)
-    g.ptr = ptr
-    return g
+    return AsGauge(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -252,7 +257,7 @@ func (g *TGauge) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (g *TGauge) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Gauge_FindComponent(g.instance, AName))
+    return AsComponent(Gauge_FindComponent(g.instance, AName))
 }
 
 // GetNamePath
@@ -398,7 +403,7 @@ func (g *TGauge) SetColor(value TColor) {
 
 // Constraints
 func (g *TGauge) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Gauge_GetConstraints(g.instance))
+    return AsSizeConstraints(Gauge_GetConstraints(g.instance))
 }
 
 // SetConstraints
@@ -434,7 +439,7 @@ func (g *TGauge) SetForeColor(value TColor) {
 // CN: 获取字体。
 // EN: Get Font.
 func (g *TGauge) Font() *TFont {
-    return FontFromInst(Gauge_GetFont(g.instance))
+    return AsFont(Gauge_GetFont(g.instance))
 }
 
 // SetFont
@@ -516,7 +521,7 @@ func (g *TGauge) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (g *TGauge) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Gauge_GetPopupMenu(g.instance))
+    return AsPopupMenu(Gauge_GetPopupMenu(g.instance))
 }
 
 // SetPopupMenu
@@ -576,7 +581,7 @@ func (g *TGauge) SetVisible(value bool) {
 
 // Action
 func (g *TGauge) Action() *TAction {
-    return ActionFromInst(Gauge_GetAction(g.instance))
+    return AsAction(Gauge_GetAction(g.instance))
 }
 
 // SetAction
@@ -701,7 +706,7 @@ func (g *TGauge) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (g *TGauge) Parent() *TWinControl {
-    return WinControlFromInst(Gauge_GetParent(g.instance))
+    return AsWinControl(Gauge_GetParent(g.instance))
 }
 
 // SetParent
@@ -832,7 +837,7 @@ func (g *TGauge) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (g *TGauge) Margins() *TMargins {
-    return MarginsFromInst(Gauge_GetMargins(g.instance))
+    return AsMargins(Gauge_GetMargins(g.instance))
 }
 
 // SetMargins
@@ -846,7 +851,7 @@ func (g *TGauge) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (g *TGauge) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Gauge_GetCustomHint(g.instance))
+    return AsCustomHint(Gauge_GetCustomHint(g.instance))
 }
 
 // SetCustomHint
@@ -881,7 +886,7 @@ func (g *TGauge) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (g *TGauge) Owner() *TComponent {
-    return ComponentFromInst(Gauge_GetOwner(g.instance))
+    return AsComponent(Gauge_GetOwner(g.instance))
 }
 
 // Name
@@ -916,6 +921,6 @@ func (g *TGauge) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (g *TGauge) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Gauge_GetComponents(g.instance, AIndex))
+    return AsComponent(Gauge_GetComponents(g.instance, AIndex))
 }
 

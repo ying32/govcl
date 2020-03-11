@@ -24,36 +24,41 @@ type TTextAttributes struct {
     ptr unsafe.Pointer
 }
 
+// AsTextAttributes
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsTextAttributes(obj interface{}) *TTextAttributes {
+    t := new(TTextAttributes)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TextAttributesFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTextAttributes.
 func TextAttributesFromInst(inst uintptr) *TTextAttributes {
-    t := new(TTextAttributes)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTextAttributes(inst)
 }
 
 // TextAttributesFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTextAttributes.
 func TextAttributesFromObj(obj IObject) *TTextAttributes {
-    t := new(TTextAttributes)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTextAttributes(obj)
 }
 
 // TextAttributesFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTextAttributes.
 func TextAttributesFromUnsafePointer(ptr unsafe.Pointer) *TTextAttributes {
-    t := new(TTextAttributes)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTextAttributes(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.

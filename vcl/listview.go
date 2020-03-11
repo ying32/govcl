@@ -34,36 +34,41 @@ func NewListView(owner IComponent) *TListView {
     return l
 }
 
+// AsListView
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsListView(obj interface{}) *TListView {
+    l := new(TListView)
+    l.instance, l.ptr = getInstance(obj)
+    return l
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ListViewFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsListView.
 func ListViewFromInst(inst uintptr) *TListView {
-    l := new(TListView)
-    l.instance = inst
-    l.ptr = unsafe.Pointer(inst)
-    return l
+    return AsListView(inst)
 }
 
 // ListViewFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsListView.
 func ListViewFromObj(obj IObject) *TListView {
-    l := new(TListView)
-    l.instance = CheckPtr(obj)
-    l.ptr = unsafe.Pointer(l.instance)
-    return l
+    return AsListView(obj)
 }
 
 // ListViewFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsListView.
 func ListViewFromUnsafePointer(ptr unsafe.Pointer) *TListView {
-    l := new(TListView)
-    l.instance = uintptr(ptr)
-    l.ptr = ptr
-    return l
+    return AsListView(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -189,7 +194,7 @@ func (l *TListView) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (l *TListView) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ListView_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ListView_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -210,7 +215,7 @@ func (l *TListView) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (l *TListView) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ListView_FindChildControl(l.instance, ControlName))
+    return AsControl(ListView_FindChildControl(l.instance, ControlName))
 }
 
 // FlipChildren
@@ -425,7 +430,7 @@ func (l *TListView) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (l *TListView) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ListView_FindComponent(l.instance, AName))
+    return AsComponent(ListView_FindComponent(l.instance, AName))
 }
 
 // GetNamePath
@@ -500,7 +505,7 @@ func (l *TListView) ToString() string {
 
 // Action
 func (l *TListView) Action() *TAction {
-    return ActionFromInst(ListView_GetAction(l.instance))
+    return AsAction(ListView_GetAction(l.instance))
 }
 
 // SetAction
@@ -650,7 +655,7 @@ func (l *TListView) SetColor(value TColor) {
 
 // Columns
 func (l *TListView) Columns() *TListColumns {
-    return ListColumnsFromInst(ListView_GetColumns(l.instance))
+    return AsListColumns(ListView_GetColumns(l.instance))
 }
 
 // SetColumns
@@ -670,7 +675,7 @@ func (l *TListView) SetColumnClick(value bool) {
 
 // Constraints
 func (l *TListView) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ListView_GetConstraints(l.instance))
+    return AsSizeConstraints(ListView_GetConstraints(l.instance))
 }
 
 // SetConstraints
@@ -762,7 +767,7 @@ func (l *TListView) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (l *TListView) Font() *TFont {
-    return FontFromInst(ListView_GetFont(l.instance))
+    return AsFont(ListView_GetFont(l.instance))
 }
 
 // SetFont
@@ -804,7 +809,7 @@ func (l *TListView) SetGridLines(value bool) {
 
 // Groups
 func (l *TListView) Groups() *TListGroups {
-    return ListGroupsFromInst(ListView_GetGroups(l.instance))
+    return AsListGroups(ListView_GetGroups(l.instance))
 }
 
 // SetGroups
@@ -848,7 +853,7 @@ func (l *TListView) SetHoverTime(value int32) {
 
 // IconOptions
 func (l *TListView) IconOptions() *TIconOptions {
-    return IconOptionsFromInst(ListView_GetIconOptions(l.instance))
+    return AsIconOptions(ListView_GetIconOptions(l.instance))
 }
 
 // SetIconOptions
@@ -858,7 +863,7 @@ func (l *TListView) SetIconOptions(value IObject) {
 
 // Items
 func (l *TListView) Items() *TListItems {
-    return ListItemsFromInst(ListView_GetItems(l.instance))
+    return AsListItems(ListView_GetItems(l.instance))
 }
 
 // SetItems
@@ -868,7 +873,7 @@ func (l *TListView) SetItems(value *TListItems) {
 
 // LargeImages
 func (l *TListView) LargeImages() *TImageList {
-    return ImageListFromInst(ListView_GetLargeImages(l.instance))
+    return AsImageList(ListView_GetLargeImages(l.instance))
 }
 
 // SetLargeImages
@@ -922,7 +927,7 @@ func (l *TListView) SetOwnerDraw(value bool) {
 
 // GroupHeaderImages
 func (l *TListView) GroupHeaderImages() *TImageList {
-    return ImageListFromInst(ListView_GetGroupHeaderImages(l.instance))
+    return AsImageList(ListView_GetGroupHeaderImages(l.instance))
 }
 
 // SetGroupHeaderImages
@@ -1020,7 +1025,7 @@ func (l *TListView) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (l *TListView) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ListView_GetPopupMenu(l.instance))
+    return AsPopupMenu(ListView_GetPopupMenu(l.instance))
 }
 
 // SetPopupMenu
@@ -1066,7 +1071,7 @@ func (l *TListView) SetShowHint(value bool) {
 
 // SmallImages
 func (l *TListView) SmallImages() *TImageList {
-    return ImageListFromInst(ListView_GetSmallImages(l.instance))
+    return AsImageList(ListView_GetSmallImages(l.instance))
 }
 
 // SetSmallImages
@@ -1086,7 +1091,7 @@ func (l *TListView) SetSortType(value TSortType) {
 
 // StateImages
 func (l *TListView) StateImages() *TImageList {
-    return ImageListFromInst(ListView_GetStateImages(l.instance))
+    return AsImageList(ListView_GetStateImages(l.instance))
 }
 
 // SetStateImages
@@ -1398,12 +1403,12 @@ func (l *TListView) SetOnStartDock(fn TStartDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (l *TListView) Canvas() *TCanvas {
-    return CanvasFromInst(ListView_GetCanvas(l.instance))
+    return AsCanvas(ListView_GetCanvas(l.instance))
 }
 
 // DropTarget
 func (l *TListView) DropTarget() *TListItem {
-    return ListItemFromInst(ListView_GetDropTarget(l.instance))
+    return AsListItem(ListView_GetDropTarget(l.instance))
 }
 
 // SetDropTarget
@@ -1413,7 +1418,7 @@ func (l *TListView) SetDropTarget(value *TListItem) {
 
 // ItemFocused
 func (l *TListView) ItemFocused() *TListItem {
-    return ListItemFromInst(ListView_GetItemFocused(l.instance))
+    return AsListItem(ListView_GetItemFocused(l.instance))
 }
 
 // SetItemFocused
@@ -1428,7 +1433,7 @@ func (l *TListView) SelCount() int32 {
 
 // Selected
 func (l *TListView) Selected() *TListItem {
-    return ListItemFromInst(ListView_GetSelected(l.instance))
+    return AsListItem(ListView_GetSelected(l.instance))
 }
 
 // SetSelected
@@ -1438,7 +1443,7 @@ func (l *TListView) SetSelected(value *TListItem) {
 
 // TopItem
 func (l *TListView) TopItem() *TListItem {
-    return ListItemFromInst(ListView_GetTopItem(l.instance))
+    return AsListItem(ListView_GetTopItem(l.instance))
 }
 
 // VisibleRowCount
@@ -1502,7 +1507,7 @@ func (l *TListView) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (l *TListView) Brush() *TBrush {
-    return BrushFromInst(ListView_GetBrush(l.instance))
+    return AsBrush(ListView_GetBrush(l.instance))
 }
 
 // ControlCount
@@ -1654,7 +1659,7 @@ func (l *TListView) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (l *TListView) Parent() *TWinControl {
-    return WinControlFromInst(ListView_GetParent(l.instance))
+    return AsWinControl(ListView_GetParent(l.instance))
 }
 
 // SetParent
@@ -1766,7 +1771,7 @@ func (l *TListView) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (l *TListView) Margins() *TMargins {
-    return MarginsFromInst(ListView_GetMargins(l.instance))
+    return AsMargins(ListView_GetMargins(l.instance))
 }
 
 // SetMargins
@@ -1780,7 +1785,7 @@ func (l *TListView) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (l *TListView) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ListView_GetCustomHint(l.instance))
+    return AsCustomHint(ListView_GetCustomHint(l.instance))
 }
 
 // SetCustomHint
@@ -1815,7 +1820,7 @@ func (l *TListView) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (l *TListView) Owner() *TComponent {
-    return ComponentFromInst(ListView_GetOwner(l.instance))
+    return AsComponent(ListView_GetOwner(l.instance))
 }
 
 // Name
@@ -1848,27 +1853,27 @@ func (l *TListView) SetTag(value int) {
 
 // Column
 func (l *TListView) Column(Index int32) *TListColumn {
-    return ListColumnFromInst(ListView_GetColumn(l.instance, Index))
+    return AsListColumn(ListView_GetColumn(l.instance, Index))
 }
 
 // DockClients
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (l *TListView) DockClients(Index int32) *TControl {
-    return ControlFromInst(ListView_GetDockClients(l.instance, Index))
+    return AsControl(ListView_GetDockClients(l.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (l *TListView) Controls(Index int32) *TControl {
-    return ControlFromInst(ListView_GetControls(l.instance, Index))
+    return AsControl(ListView_GetControls(l.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (l *TListView) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ListView_GetComponents(l.instance, AIndex))
+    return AsComponent(ListView_GetComponents(l.instance, AIndex))
 }
 

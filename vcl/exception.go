@@ -24,36 +24,41 @@ type Exception struct {
     ptr unsafe.Pointer
 }
 
+// AsException
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsException(obj interface{}) *Exception {
+    e := new(Exception)
+    e.instance, e.ptr = getInstance(obj)
+    return e
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ExceptionFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsException.
 func ExceptionFromInst(inst uintptr) *Exception {
-    e := new(Exception)
-    e.instance = inst
-    e.ptr = unsafe.Pointer(inst)
-    return e
+    return AsException(inst)
 }
 
 // ExceptionFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsException.
 func ExceptionFromObj(obj IObject) *Exception {
-    e := new(Exception)
-    e.instance = CheckPtr(obj)
-    e.ptr = unsafe.Pointer(e.instance)
-    return e
+    return AsException(obj)
 }
 
 // ExceptionFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsException.
 func ExceptionFromUnsafePointer(ptr unsafe.Pointer) *Exception {
-    e := new(Exception)
-    e.instance = uintptr(ptr)
-    e.ptr = ptr
-    return e
+    return AsException(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.
@@ -147,12 +152,12 @@ func (e *Exception) GetHashCode() int32 {
 
 // BaseException
 func (e *Exception) BaseException() *Exception {
-    return ExceptionFromInst(Exception_GetBaseException(e.instance))
+    return AsException(Exception_GetBaseException(e.instance))
 }
 
 // InnerException
 func (e *Exception) InnerException() *Exception {
-    return ExceptionFromInst(Exception_GetInnerException(e.instance))
+    return AsException(Exception_GetInnerException(e.instance))
 }
 
 // Message

@@ -34,36 +34,41 @@ func NewPrintDialog(owner IComponent) *TPrintDialog {
     return p
 }
 
+// AsPrintDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPrintDialog(obj interface{}) *TPrintDialog {
+    p := new(TPrintDialog)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PrintDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPrintDialog.
 func PrintDialogFromInst(inst uintptr) *TPrintDialog {
-    p := new(TPrintDialog)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPrintDialog(inst)
 }
 
 // PrintDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPrintDialog.
 func PrintDialogFromObj(obj IObject) *TPrintDialog {
-    p := new(TPrintDialog)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPrintDialog(obj)
 }
 
 // PrintDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPrintDialog.
 func PrintDialogFromUnsafePointer(ptr unsafe.Pointer) *TPrintDialog {
-    p := new(TPrintDialog)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPrintDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -121,7 +126,7 @@ func (p *TPrintDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TPrintDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(PrintDialog_FindComponent(p.instance, AName))
+    return AsComponent(PrintDialog_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -345,7 +350,7 @@ func (p *TPrintDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TPrintDialog) Owner() *TComponent {
-    return ComponentFromInst(PrintDialog_GetOwner(p.instance))
+    return AsComponent(PrintDialog_GetOwner(p.instance))
 }
 
 // Name
@@ -380,6 +385,6 @@ func (p *TPrintDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPrintDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(PrintDialog_GetComponents(p.instance, AIndex))
+    return AsComponent(PrintDialog_GetComponents(p.instance, AIndex))
 }
 

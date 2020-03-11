@@ -34,36 +34,41 @@ func NewImage(owner IComponent) *TImage {
     return i
 }
 
+// AsImage
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsImage(obj interface{}) *TImage {
+    i := new(TImage)
+    i.instance, i.ptr = getInstance(obj)
+    return i
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ImageFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsImage.
 func ImageFromInst(inst uintptr) *TImage {
-    i := new(TImage)
-    i.instance = inst
-    i.ptr = unsafe.Pointer(inst)
-    return i
+    return AsImage(inst)
 }
 
 // ImageFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsImage.
 func ImageFromObj(obj IObject) *TImage {
-    i := new(TImage)
-    i.instance = CheckPtr(obj)
-    i.ptr = unsafe.Pointer(i.instance)
-    return i
+    return AsImage(obj)
 }
 
 // ImageFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsImage.
 func ImageFromUnsafePointer(ptr unsafe.Pointer) *TImage {
-    i := new(TImage)
-    i.instance = uintptr(ptr)
-    i.ptr = ptr
-    return i
+    return AsImage(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -247,7 +252,7 @@ func (i *TImage) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (i *TImage) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Image_FindComponent(i.instance, AName))
+    return AsComponent(Image_FindComponent(i.instance, AName))
 }
 
 // GetNamePath
@@ -324,7 +329,7 @@ func (i *TImage) ToString() string {
 // CN: 获取画布。
 // EN: .
 func (i *TImage) Canvas() *TCanvas {
-    return CanvasFromInst(Image_GetCanvas(i.instance))
+    return AsCanvas(Image_GetCanvas(i.instance))
 }
 
 // Align
@@ -381,7 +386,7 @@ func (i *TImage) SetCenter(value bool) {
 
 // Constraints
 func (i *TImage) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Image_GetConstraints(i.instance))
+    return AsSizeConstraints(Image_GetConstraints(i.instance))
 }
 
 // SetConstraints
@@ -467,7 +472,7 @@ func (i *TImage) SetParentShowHint(value bool) {
 
 // Picture
 func (i *TImage) Picture() *TPicture {
-    return PictureFromInst(Image_GetPicture(i.instance))
+    return AsPicture(Image_GetPicture(i.instance))
 }
 
 // SetPicture
@@ -479,7 +484,7 @@ func (i *TImage) SetPicture(value *TPicture) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (i *TImage) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Image_GetPopupMenu(i.instance))
+    return AsPopupMenu(Image_GetPopupMenu(i.instance))
 }
 
 // SetPopupMenu
@@ -654,7 +659,7 @@ func (i *TImage) SetOnStartDock(fn TStartDockEvent) {
 
 // Action
 func (i *TImage) Action() *TAction {
-    return ActionFromInst(Image_GetAction(i.instance))
+    return AsAction(Image_GetAction(i.instance))
 }
 
 // SetAction
@@ -779,7 +784,7 @@ func (i *TImage) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (i *TImage) Parent() *TWinControl {
-    return WinControlFromInst(Image_GetParent(i.instance))
+    return AsWinControl(Image_GetParent(i.instance))
 }
 
 // SetParent
@@ -905,7 +910,7 @@ func (i *TImage) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (i *TImage) Margins() *TMargins {
-    return MarginsFromInst(Image_GetMargins(i.instance))
+    return AsMargins(Image_GetMargins(i.instance))
 }
 
 // SetMargins
@@ -919,7 +924,7 @@ func (i *TImage) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (i *TImage) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Image_GetCustomHint(i.instance))
+    return AsCustomHint(Image_GetCustomHint(i.instance))
 }
 
 // SetCustomHint
@@ -954,7 +959,7 @@ func (i *TImage) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (i *TImage) Owner() *TComponent {
-    return ComponentFromInst(Image_GetOwner(i.instance))
+    return AsComponent(Image_GetOwner(i.instance))
 }
 
 // Name
@@ -989,6 +994,6 @@ func (i *TImage) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (i *TImage) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Image_GetComponents(i.instance, AIndex))
+    return AsComponent(Image_GetComponents(i.instance, AIndex))
 }
 

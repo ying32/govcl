@@ -34,36 +34,41 @@ func NewStatusPanels() *TStatusPanels {
     return s
 }
 
+// AsStatusPanels
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsStatusPanels(obj interface{}) *TStatusPanels {
+    s := new(TStatusPanels)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // StatusPanelsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsStatusPanels.
 func StatusPanelsFromInst(inst uintptr) *TStatusPanels {
-    s := new(TStatusPanels)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsStatusPanels(inst)
 }
 
 // StatusPanelsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsStatusPanels.
 func StatusPanelsFromObj(obj IObject) *TStatusPanels {
-    s := new(TStatusPanels)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsStatusPanels(obj)
 }
 
 // StatusPanelsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsStatusPanels.
 func StatusPanelsFromUnsafePointer(ptr unsafe.Pointer) *TStatusPanels {
-    s := new(TStatusPanels)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsStatusPanels(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -112,24 +117,24 @@ func TStatusPanelsClass() TClass {
 
 // Add
 func (s *TStatusPanels) Add() *TStatusPanel {
-    return StatusPanelFromInst(StatusPanels_Add(s.instance))
+    return AsStatusPanel(StatusPanels_Add(s.instance))
 }
 
 // AddItem
 func (s *TStatusPanels) AddItem(Item *TStatusPanel, Index int32) *TStatusPanel {
-    return StatusPanelFromInst(StatusPanels_AddItem(s.instance, CheckPtr(Item), Index))
+    return AsStatusPanel(StatusPanels_AddItem(s.instance, CheckPtr(Item), Index))
 }
 
 // Insert
 func (s *TStatusPanels) Insert(Index int32) *TStatusPanel {
-    return StatusPanelFromInst(StatusPanels_Insert(s.instance, Index))
+    return AsStatusPanel(StatusPanels_Insert(s.instance, Index))
 }
 
 // Owner
 // CN: 组件所有者。
 // EN: component owner.
 func (s *TStatusPanels) Owner() *TObject {
-    return ObjectFromInst(StatusPanels_Owner(s.instance))
+    return AsObject(StatusPanels_Owner(s.instance))
 }
 
 // Assign
@@ -168,7 +173,7 @@ func (s *TStatusPanels) EndUpdate() {
 
 // FindItemID
 func (s *TStatusPanels) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(StatusPanels_FindItemID(s.instance, ID))
+    return AsCollectionItem(StatusPanels_FindItemID(s.instance, ID))
 }
 
 // GetNamePath
@@ -251,7 +256,7 @@ func (s *TStatusPanels) Count() int32 {
 
 // Items
 func (s *TStatusPanels) Items(Index int32) *TStatusPanel {
-    return StatusPanelFromInst(StatusPanels_GetItems(s.instance, Index))
+    return AsStatusPanel(StatusPanels_GetItems(s.instance, Index))
 }
 
 // Items

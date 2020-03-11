@@ -35,36 +35,41 @@ func NewIniFile(filename string) *TIniFile {
     return i
 }
 
+// AsIniFile
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsIniFile(obj interface{}) *TIniFile {
+    i := new(TIniFile)
+    i.instance, i.ptr = getInstance(obj)
+    return i
+}
+
+// -------------------------- Deprecated begin --------------------------
 // IniFileFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsIniFile.
 func IniFileFromInst(inst uintptr) *TIniFile {
-    i := new(TIniFile)
-    i.instance = inst
-    i.ptr = unsafe.Pointer(inst)
-    return i
+    return AsIniFile(inst)
 }
 
 // IniFileFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsIniFile.
 func IniFileFromObj(obj IObject) *TIniFile {
-    i := new(TIniFile)
-    i.instance = CheckPtr(obj)
-    i.ptr = unsafe.Pointer(i.instance)
-    return i
+    return AsIniFile(obj)
 }
 
 // IniFileFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsIniFile.
 func IniFileFromUnsafePointer(ptr unsafe.Pointer) *TIniFile {
-    i := new(TIniFile)
-    i.instance = uintptr(ptr)
-    i.ptr = ptr
-    return i
+    return AsIniFile(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

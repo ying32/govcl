@@ -34,36 +34,41 @@ func NewPaintBox(owner IComponent) *TPaintBox {
     return p
 }
 
+// AsPaintBox
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPaintBox(obj interface{}) *TPaintBox {
+    p := new(TPaintBox)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PaintBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPaintBox.
 func PaintBoxFromInst(inst uintptr) *TPaintBox {
-    p := new(TPaintBox)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPaintBox(inst)
 }
 
 // PaintBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPaintBox.
 func PaintBoxFromObj(obj IObject) *TPaintBox {
-    p := new(TPaintBox)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPaintBox(obj)
 }
 
 // PaintBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPaintBox.
 func PaintBoxFromUnsafePointer(ptr unsafe.Pointer) *TPaintBox {
-    p := new(TPaintBox)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPaintBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -247,7 +252,7 @@ func (p *TPaintBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TPaintBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(PaintBox_FindComponent(p.instance, AName))
+    return AsComponent(PaintBox_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -324,7 +329,7 @@ func (p *TPaintBox) ToString() string {
 // CN: 获取画布。
 // EN: .
 func (p *TPaintBox) Canvas() *TCanvas {
-    return CanvasFromInst(PaintBox_GetCanvas(p.instance))
+    return AsCanvas(PaintBox_GetCanvas(p.instance))
 }
 
 // Align
@@ -371,7 +376,7 @@ func (p *TPaintBox) SetColor(value TColor) {
 
 // Constraints
 func (p *TPaintBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(PaintBox_GetConstraints(p.instance))
+    return AsSizeConstraints(PaintBox_GetConstraints(p.instance))
 }
 
 // SetConstraints
@@ -439,7 +444,7 @@ func (p *TPaintBox) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (p *TPaintBox) Font() *TFont {
-    return FontFromInst(PaintBox_GetFont(p.instance))
+    return AsFont(PaintBox_GetFont(p.instance))
 }
 
 // SetFont
@@ -491,7 +496,7 @@ func (p *TPaintBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (p *TPaintBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(PaintBox_GetPopupMenu(p.instance))
+    return AsPopupMenu(PaintBox_GetPopupMenu(p.instance))
 }
 
 // SetPopupMenu
@@ -639,7 +644,7 @@ func (p *TPaintBox) SetOnStartDock(fn TStartDockEvent) {
 
 // Action
 func (p *TPaintBox) Action() *TAction {
-    return ActionFromInst(PaintBox_GetAction(p.instance))
+    return AsAction(PaintBox_GetAction(p.instance))
 }
 
 // SetAction
@@ -764,7 +769,7 @@ func (p *TPaintBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (p *TPaintBox) Parent() *TWinControl {
-    return WinControlFromInst(PaintBox_GetParent(p.instance))
+    return AsWinControl(PaintBox_GetParent(p.instance))
 }
 
 // SetParent
@@ -890,7 +895,7 @@ func (p *TPaintBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (p *TPaintBox) Margins() *TMargins {
-    return MarginsFromInst(PaintBox_GetMargins(p.instance))
+    return AsMargins(PaintBox_GetMargins(p.instance))
 }
 
 // SetMargins
@@ -904,7 +909,7 @@ func (p *TPaintBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (p *TPaintBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(PaintBox_GetCustomHint(p.instance))
+    return AsCustomHint(PaintBox_GetCustomHint(p.instance))
 }
 
 // SetCustomHint
@@ -939,7 +944,7 @@ func (p *TPaintBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TPaintBox) Owner() *TComponent {
-    return ComponentFromInst(PaintBox_GetOwner(p.instance))
+    return AsComponent(PaintBox_GetOwner(p.instance))
 }
 
 // Name
@@ -974,6 +979,6 @@ func (p *TPaintBox) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPaintBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(PaintBox_GetComponents(p.instance, AIndex))
+    return AsComponent(PaintBox_GetComponents(p.instance, AIndex))
 }
 

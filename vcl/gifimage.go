@@ -34,36 +34,41 @@ func NewGIFImage() *TGIFImage {
     return g
 }
 
+// AsGIFImage
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsGIFImage(obj interface{}) *TGIFImage {
+    g := new(TGIFImage)
+    g.instance, g.ptr = getInstance(obj)
+    return g
+}
+
+// -------------------------- Deprecated begin --------------------------
 // GIFImageFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsGIFImage.
 func GIFImageFromInst(inst uintptr) *TGIFImage {
-    g := new(TGIFImage)
-    g.instance = inst
-    g.ptr = unsafe.Pointer(inst)
-    return g
+    return AsGIFImage(inst)
 }
 
 // GIFImageFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsGIFImage.
 func GIFImageFromObj(obj IObject) *TGIFImage {
-    g := new(TGIFImage)
-    g.instance = CheckPtr(obj)
-    g.ptr = unsafe.Pointer(g.instance)
-    return g
+    return AsGIFImage(obj)
 }
 
 // GIFImageFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsGIFImage.
 func GIFImageFromUnsafePointer(ptr unsafe.Pointer) *TGIFImage {
-    g := new(TGIFImage)
-    g.instance = uintptr(ptr)
-    g.ptr = ptr
-    return g
+    return AsGIFImage(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -126,7 +131,7 @@ func (g *TGIFImage) LoadFromStream(Stream IObject) {
 
 // Add
 func (g *TGIFImage) Add(Source IObject) *TGIFFrame {
-    return GIFFrameFromInst(GIFImage_Add(g.instance, CheckPtr(Source)))
+    return AsGIFFrame(GIFImage_Add(g.instance, CheckPtr(Source)))
 }
 
 // Clear
@@ -287,7 +292,7 @@ func (g *TGIFImage) SetAnimationSpeed(value int32) {
 
 // Bitmap
 func (g *TGIFImage) Bitmap() *TBitmap {
-    return BitmapFromInst(GIFImage_GetBitmap(g.instance))
+    return AsBitmap(GIFImage_GetBitmap(g.instance))
 }
 
 // SetOnPaint

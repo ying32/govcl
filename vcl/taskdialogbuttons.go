@@ -34,36 +34,41 @@ func NewTaskDialogButtons() *TTaskDialogButtons {
     return t
 }
 
+// AsTaskDialogButtons
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsTaskDialogButtons(obj interface{}) *TTaskDialogButtons {
+    t := new(TTaskDialogButtons)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TaskDialogButtonsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTaskDialogButtons.
 func TaskDialogButtonsFromInst(inst uintptr) *TTaskDialogButtons {
-    t := new(TTaskDialogButtons)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTaskDialogButtons(inst)
 }
 
 // TaskDialogButtonsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTaskDialogButtons.
 func TaskDialogButtonsFromObj(obj IObject) *TTaskDialogButtons {
-    t := new(TTaskDialogButtons)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTaskDialogButtons(obj)
 }
 
 // TaskDialogButtonsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTaskDialogButtons.
 func TaskDialogButtonsFromUnsafePointer(ptr unsafe.Pointer) *TTaskDialogButtons {
-    t := new(TTaskDialogButtons)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTaskDialogButtons(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -112,7 +117,7 @@ func TTaskDialogButtonsClass() TClass {
 
 // Add
 func (t *TTaskDialogButtons) Add() *TTaskDialogBaseButtonItem {
-    return TaskDialogBaseButtonItemFromInst(TaskDialogButtons_Add(t.instance))
+    return AsTaskDialogBaseButtonItem(TaskDialogButtons_Add(t.instance))
 }
 
 // Buttons
@@ -124,7 +129,7 @@ func (t *TTaskDialogButtons) Buttons() uintptr {
 // CN: 组件所有者。
 // EN: component owner.
 func (t *TTaskDialogButtons) Owner() *TObject {
-    return ObjectFromInst(TaskDialogButtons_Owner(t.instance))
+    return AsObject(TaskDialogButtons_Owner(t.instance))
 }
 
 // Assign
@@ -163,7 +168,7 @@ func (t *TTaskDialogButtons) EndUpdate() {
 
 // FindItemID
 func (t *TTaskDialogButtons) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(TaskDialogButtons_FindItemID(t.instance, ID))
+    return AsCollectionItem(TaskDialogButtons_FindItemID(t.instance, ID))
 }
 
 // GetNamePath
@@ -175,7 +180,7 @@ func (t *TTaskDialogButtons) GetNamePath() string {
 
 // Insert
 func (t *TTaskDialogButtons) Insert(Index int32) *TCollectionItem {
-    return CollectionItemFromInst(TaskDialogButtons_Insert(t.instance, Index))
+    return AsCollectionItem(TaskDialogButtons_Insert(t.instance, Index))
 }
 
 // DisposeOf
@@ -236,7 +241,7 @@ func (t *TTaskDialogButtons) ToString() string {
 
 // DefaultButton
 func (t *TTaskDialogButtons) DefaultButton() *TTaskDialogBaseButtonItem {
-    return TaskDialogBaseButtonItemFromInst(TaskDialogButtons_GetDefaultButton(t.instance))
+    return AsTaskDialogBaseButtonItem(TaskDialogButtons_GetDefaultButton(t.instance))
 }
 
 // SetDefaultButton
@@ -261,7 +266,7 @@ func (t *TTaskDialogButtons) Count() int32 {
 
 // Items
 func (t *TTaskDialogButtons) Items(Index int32) *TTaskDialogBaseButtonItem {
-    return TaskDialogBaseButtonItemFromInst(TaskDialogButtons_GetItems(t.instance, Index))
+    return AsTaskDialogBaseButtonItem(TaskDialogButtons_GetItems(t.instance, Index))
 }
 
 // Items

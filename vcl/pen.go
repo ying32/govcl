@@ -34,36 +34,41 @@ func NewPen() *TPen {
     return p
 }
 
+// AsPen
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPen(obj interface{}) *TPen {
+    p := new(TPen)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PenFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPen.
 func PenFromInst(inst uintptr) *TPen {
-    p := new(TPen)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPen(inst)
 }
 
 // PenFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPen.
 func PenFromObj(obj IObject) *TPen {
-    p := new(TPen)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPen(obj)
 }
 
 // PenFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPen.
 func PenFromUnsafePointer(ptr unsafe.Pointer) *TPen {
-    p := new(TPen)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPen(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

@@ -34,36 +34,41 @@ func NewGIFFrame() *TGIFFrame {
     return g
 }
 
+// AsGIFFrame
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsGIFFrame(obj interface{}) *TGIFFrame {
+    g := new(TGIFFrame)
+    g.instance, g.ptr = getInstance(obj)
+    return g
+}
+
+// -------------------------- Deprecated begin --------------------------
 // GIFFrameFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsGIFFrame.
 func GIFFrameFromInst(inst uintptr) *TGIFFrame {
-    g := new(TGIFFrame)
-    g.instance = inst
-    g.ptr = unsafe.Pointer(inst)
-    return g
+    return AsGIFFrame(inst)
 }
 
 // GIFFrameFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsGIFFrame.
 func GIFFrameFromObj(obj IObject) *TGIFFrame {
-    g := new(TGIFFrame)
-    g.instance = CheckPtr(obj)
-    g.ptr = unsafe.Pointer(g.instance)
-    return g
+    return AsGIFFrame(obj)
 }
 
 // GIFFrameFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsGIFFrame.
 func GIFFrameFromUnsafePointer(ptr unsafe.Pointer) *TGIFFrame {
-    g := new(TGIFFrame)
-    g.instance = uintptr(ptr)
-    g.ptr = ptr
-    return g
+    return AsGIFFrame(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -320,7 +325,7 @@ func (g *TGIFFrame) BitsPerPixel() int32 {
 
 // Bitmap
 func (g *TGIFFrame) Bitmap() *TBitmap {
-    return BitmapFromInst(GIFFrame_GetBitmap(g.instance))
+    return AsBitmap(GIFFrame_GetBitmap(g.instance))
 }
 
 // SetBitmap

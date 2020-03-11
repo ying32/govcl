@@ -34,36 +34,41 @@ func NewScreen(owner IComponent) *TScreen {
     return s
 }
 
+// AsScreen
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsScreen(obj interface{}) *TScreen {
+    s := new(TScreen)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ScreenFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsScreen.
 func ScreenFromInst(inst uintptr) *TScreen {
-    s := new(TScreen)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsScreen(inst)
 }
 
 // ScreenFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsScreen.
 func ScreenFromObj(obj IObject) *TScreen {
-    s := new(TScreen)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsScreen(obj)
 }
 
 // ScreenFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsScreen.
 func ScreenFromUnsafePointer(ptr unsafe.Pointer) *TScreen {
-    s := new(TScreen)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsScreen(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -135,7 +140,7 @@ func (s *TScreen) Realign() {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TScreen) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Screen_FindComponent(s.instance, AName))
+    return AsComponent(Screen_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -217,7 +222,7 @@ func (s *TScreen) ToString() string {
 
 // ActiveForm
 func (s *TScreen) ActiveForm() *TForm {
-    return FormFromInst(Screen_GetActiveForm(s.instance))
+    return AsForm(Screen_GetActiveForm(s.instance))
 }
 
 // CustomFormCount
@@ -246,7 +251,7 @@ func (s *TScreen) SetCursor(value TCursor) {
 
 // FocusedForm
 func (s *TScreen) FocusedForm() *TForm {
-    return FormFromInst(Screen_GetFocusedForm(s.instance))
+    return AsForm(Screen_GetFocusedForm(s.instance))
 }
 
 // SetFocusedForm
@@ -311,7 +316,7 @@ func (s *TScreen) WorkAreaWidth() int32 {
 
 // Fonts
 func (s *TScreen) Fonts() *TStrings {
-    return StringsFromInst(Screen_GetFonts(s.instance))
+    return AsStrings(Screen_GetFonts(s.instance))
 }
 
 // FormCount
@@ -321,7 +326,7 @@ func (s *TScreen) FormCount() int32 {
 
 // Imes
 func (s *TScreen) Imes() *TStrings {
-    return StringsFromInst(Screen_GetImes(s.instance))
+    return AsStrings(Screen_GetImes(s.instance))
 }
 
 // DefaultIme
@@ -343,7 +348,7 @@ func (s *TScreen) PixelsPerInch() int32 {
 
 // PrimaryMonitor
 func (s *TScreen) PrimaryMonitor() *TMonitor {
-    return MonitorFromInst(Screen_GetPrimaryMonitor(s.instance))
+    return AsMonitor(Screen_GetPrimaryMonitor(s.instance))
 }
 
 // Width
@@ -378,7 +383,7 @@ func (s *TScreen) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TScreen) Owner() *TComponent {
-    return ComponentFromInst(Screen_GetOwner(s.instance))
+    return AsComponent(Screen_GetOwner(s.instance))
 }
 
 // Name
@@ -421,18 +426,18 @@ func (s *TScreen) SetCursors(Index int32, value HICON) {
 
 // Monitors
 func (s *TScreen) Monitors(Index int32) *TMonitor {
-    return MonitorFromInst(Screen_GetMonitors(s.instance, Index))
+    return AsMonitor(Screen_GetMonitors(s.instance, Index))
 }
 
 // Forms
 func (s *TScreen) Forms(Index int32) *TForm {
-    return FormFromInst(Screen_GetForms(s.instance, Index))
+    return AsForm(Screen_GetForms(s.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TScreen) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Screen_GetComponents(s.instance, AIndex))
+    return AsComponent(Screen_GetComponents(s.instance, AIndex))
 }
 

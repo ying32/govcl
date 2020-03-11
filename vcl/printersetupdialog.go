@@ -34,36 +34,41 @@ func NewPrinterSetupDialog(owner IComponent) *TPrinterSetupDialog {
     return p
 }
 
+// AsPrinterSetupDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPrinterSetupDialog(obj interface{}) *TPrinterSetupDialog {
+    p := new(TPrinterSetupDialog)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PrinterSetupDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPrinterSetupDialog.
 func PrinterSetupDialogFromInst(inst uintptr) *TPrinterSetupDialog {
-    p := new(TPrinterSetupDialog)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPrinterSetupDialog(inst)
 }
 
 // PrinterSetupDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPrinterSetupDialog.
 func PrinterSetupDialogFromObj(obj IObject) *TPrinterSetupDialog {
-    p := new(TPrinterSetupDialog)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPrinterSetupDialog(obj)
 }
 
 // PrinterSetupDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPrinterSetupDialog.
 func PrinterSetupDialogFromUnsafePointer(ptr unsafe.Pointer) *TPrinterSetupDialog {
-    p := new(TPrinterSetupDialog)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPrinterSetupDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -121,7 +126,7 @@ func (p *TPrinterSetupDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TPrinterSetupDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(PrinterSetupDialog_FindComponent(p.instance, AName))
+    return AsComponent(PrinterSetupDialog_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -255,7 +260,7 @@ func (p *TPrinterSetupDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TPrinterSetupDialog) Owner() *TComponent {
-    return ComponentFromInst(PrinterSetupDialog_GetOwner(p.instance))
+    return AsComponent(PrinterSetupDialog_GetOwner(p.instance))
 }
 
 // Name
@@ -290,6 +295,6 @@ func (p *TPrinterSetupDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPrinterSetupDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(PrinterSetupDialog_GetComponents(p.instance, AIndex))
+    return AsComponent(PrinterSetupDialog_GetComponents(p.instance, AIndex))
 }
 

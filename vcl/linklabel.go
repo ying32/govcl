@@ -34,36 +34,41 @@ func NewLinkLabel(owner IComponent) *TLinkLabel {
     return l
 }
 
+// AsLinkLabel
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsLinkLabel(obj interface{}) *TLinkLabel {
+    l := new(TLinkLabel)
+    l.instance, l.ptr = getInstance(obj)
+    return l
+}
+
+// -------------------------- Deprecated begin --------------------------
 // LinkLabelFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsLinkLabel.
 func LinkLabelFromInst(inst uintptr) *TLinkLabel {
-    l := new(TLinkLabel)
-    l.instance = inst
-    l.ptr = unsafe.Pointer(inst)
-    return l
+    return AsLinkLabel(inst)
 }
 
 // LinkLabelFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsLinkLabel.
 func LinkLabelFromObj(obj IObject) *TLinkLabel {
-    l := new(TLinkLabel)
-    l.instance = CheckPtr(obj)
-    l.ptr = unsafe.Pointer(l.instance)
-    return l
+    return AsLinkLabel(obj)
 }
 
 // LinkLabelFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsLinkLabel.
 func LinkLabelFromUnsafePointer(ptr unsafe.Pointer) *TLinkLabel {
-    l := new(TLinkLabel)
-    l.instance = uintptr(ptr)
-    l.ptr = ptr
-    return l
+    return AsLinkLabel(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -128,7 +133,7 @@ func (l *TLinkLabel) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (l *TLinkLabel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(LinkLabel_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(LinkLabel_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -149,7 +154,7 @@ func (l *TLinkLabel) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (l *TLinkLabel) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(LinkLabel_FindChildControl(l.instance, ControlName))
+    return AsControl(LinkLabel_FindChildControl(l.instance, ControlName))
 }
 
 // FlipChildren
@@ -364,7 +369,7 @@ func (l *TLinkLabel) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (l *TLinkLabel) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(LinkLabel_FindComponent(l.instance, AName))
+    return AsComponent(LinkLabel_FindComponent(l.instance, AName))
 }
 
 // GetNamePath
@@ -563,7 +568,7 @@ func (l *TLinkLabel) SetColor(value TColor) {
 
 // Constraints
 func (l *TLinkLabel) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(LinkLabel_GetConstraints(l.instance))
+    return AsSizeConstraints(LinkLabel_GetConstraints(l.instance))
 }
 
 // SetConstraints
@@ -631,7 +636,7 @@ func (l *TLinkLabel) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (l *TLinkLabel) Font() *TFont {
-    return FontFromInst(LinkLabel_GetFont(l.instance))
+    return AsFont(LinkLabel_GetFont(l.instance))
 }
 
 // SetFont
@@ -683,7 +688,7 @@ func (l *TLinkLabel) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (l *TLinkLabel) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(LinkLabel_GetPopupMenu(l.instance))
+    return AsPopupMenu(LinkLabel_GetPopupMenu(l.instance))
 }
 
 // SetPopupMenu
@@ -925,7 +930,7 @@ func (l *TLinkLabel) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (l *TLinkLabel) Brush() *TBrush {
-    return BrushFromInst(LinkLabel_GetBrush(l.instance))
+    return AsBrush(LinkLabel_GetBrush(l.instance))
 }
 
 // ControlCount
@@ -986,7 +991,7 @@ func (l *TLinkLabel) SetUseDockManager(value bool) {
 
 // Action
 func (l *TLinkLabel) Action() *TAction {
-    return ActionFromInst(LinkLabel_GetAction(l.instance))
+    return AsAction(LinkLabel_GetAction(l.instance))
 }
 
 // SetAction
@@ -1111,7 +1116,7 @@ func (l *TLinkLabel) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (l *TLinkLabel) Parent() *TWinControl {
-    return WinControlFromInst(LinkLabel_GetParent(l.instance))
+    return AsWinControl(LinkLabel_GetParent(l.instance))
 }
 
 // SetParent
@@ -1237,7 +1242,7 @@ func (l *TLinkLabel) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (l *TLinkLabel) Margins() *TMargins {
-    return MarginsFromInst(LinkLabel_GetMargins(l.instance))
+    return AsMargins(LinkLabel_GetMargins(l.instance))
 }
 
 // SetMargins
@@ -1251,7 +1256,7 @@ func (l *TLinkLabel) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (l *TLinkLabel) CustomHint() *TCustomHint {
-    return CustomHintFromInst(LinkLabel_GetCustomHint(l.instance))
+    return AsCustomHint(LinkLabel_GetCustomHint(l.instance))
 }
 
 // SetCustomHint
@@ -1286,7 +1291,7 @@ func (l *TLinkLabel) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (l *TLinkLabel) Owner() *TComponent {
-    return ComponentFromInst(LinkLabel_GetOwner(l.instance))
+    return AsComponent(LinkLabel_GetOwner(l.instance))
 }
 
 // Name
@@ -1321,20 +1326,20 @@ func (l *TLinkLabel) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (l *TLinkLabel) DockClients(Index int32) *TControl {
-    return ControlFromInst(LinkLabel_GetDockClients(l.instance, Index))
+    return AsControl(LinkLabel_GetDockClients(l.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (l *TLinkLabel) Controls(Index int32) *TControl {
-    return ControlFromInst(LinkLabel_GetControls(l.instance, Index))
+    return AsControl(LinkLabel_GetControls(l.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (l *TLinkLabel) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(LinkLabel_GetComponents(l.instance, AIndex))
+    return AsComponent(LinkLabel_GetComponents(l.instance, AIndex))
 }
 

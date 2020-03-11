@@ -34,36 +34,41 @@ func NewMonthCalColors() *TMonthCalColors {
     return m
 }
 
+// AsMonthCalColors
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsMonthCalColors(obj interface{}) *TMonthCalColors {
+    m := new(TMonthCalColors)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MonthCalColorsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMonthCalColors.
 func MonthCalColorsFromInst(inst uintptr) *TMonthCalColors {
-    m := new(TMonthCalColors)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMonthCalColors(inst)
 }
 
 // MonthCalColorsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMonthCalColors.
 func MonthCalColorsFromObj(obj IObject) *TMonthCalColors {
-    m := new(TMonthCalColors)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMonthCalColors(obj)
 }
 
 // MonthCalColorsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMonthCalColors.
 func MonthCalColorsFromUnsafePointer(ptr unsafe.Pointer) *TMonthCalColors {
-    m := new(TMonthCalColors)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMonthCalColors(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

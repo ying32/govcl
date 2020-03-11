@@ -34,36 +34,41 @@ func NewMonitor() *TMonitor {
     return m
 }
 
+// AsMonitor
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsMonitor(obj interface{}) *TMonitor {
+    m := new(TMonitor)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MonitorFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMonitor.
 func MonitorFromInst(inst uintptr) *TMonitor {
-    m := new(TMonitor)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMonitor(inst)
 }
 
 // MonitorFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMonitor.
 func MonitorFromObj(obj IObject) *TMonitor {
-    m := new(TMonitor)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMonitor(obj)
 }
 
 // MonitorFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMonitor.
 func MonitorFromUnsafePointer(ptr unsafe.Pointer) *TMonitor {
-    m := new(TMonitor)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMonitor(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

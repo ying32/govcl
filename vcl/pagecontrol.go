@@ -34,36 +34,41 @@ func NewPageControl(owner IComponent) *TPageControl {
     return p
 }
 
+// AsPageControl
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPageControl(obj interface{}) *TPageControl {
+    p := new(TPageControl)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PageControlFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPageControl.
 func PageControlFromInst(inst uintptr) *TPageControl {
-    p := new(TPageControl)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPageControl(inst)
 }
 
 // PageControlFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPageControl.
 func PageControlFromObj(obj IObject) *TPageControl {
-    p := new(TPageControl)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPageControl(obj)
 }
 
 // PageControlFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPageControl.
 func PageControlFromUnsafePointer(ptr unsafe.Pointer) *TPageControl {
-    p := new(TPageControl)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPageControl(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -143,7 +148,7 @@ func (p *TPageControl) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (p *TPageControl) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(PageControl_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(PageControl_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -164,7 +169,7 @@ func (p *TPageControl) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (p *TPageControl) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(PageControl_FindChildControl(p.instance, ControlName))
+    return AsControl(PageControl_FindChildControl(p.instance, ControlName))
 }
 
 // FlipChildren
@@ -379,7 +384,7 @@ func (p *TPageControl) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TPageControl) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(PageControl_FindComponent(p.instance, AName))
+    return AsComponent(PageControl_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -507,7 +512,7 @@ func (p *TPageControl) SetBiDiMode(value TBiDiMode) {
 
 // Constraints
 func (p *TPageControl) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(PageControl_GetConstraints(p.instance))
+    return AsSizeConstraints(PageControl_GetConstraints(p.instance))
 }
 
 // SetConstraints
@@ -603,7 +608,7 @@ func (p *TPageControl) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (p *TPageControl) Font() *TFont {
-    return FontFromInst(PageControl_GetFont(p.instance))
+    return AsFont(PageControl_GetFont(p.instance))
 }
 
 // SetFont
@@ -627,7 +632,7 @@ func (p *TPageControl) SetHotTrack(value bool) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (p *TPageControl) Images() *TImageList {
-    return ImageListFromInst(PageControl_GetImages(p.instance))
+    return AsImageList(PageControl_GetImages(p.instance))
 }
 
 // SetImages
@@ -699,7 +704,7 @@ func (p *TPageControl) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (p *TPageControl) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(PageControl_GetPopupMenu(p.instance))
+    return AsPopupMenu(PageControl_GetPopupMenu(p.instance))
 }
 
 // SetPopupMenu
@@ -973,7 +978,7 @@ func (p *TPageControl) SetOnUnDock(fn TUnDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (p *TPageControl) Canvas() *TCanvas {
-    return CanvasFromInst(PageControl_GetCanvas(p.instance))
+    return AsCanvas(PageControl_GetCanvas(p.instance))
 }
 
 // DockClientCount
@@ -1008,7 +1013,7 @@ func (p *TPageControl) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (p *TPageControl) Brush() *TBrush {
-    return BrushFromInst(PageControl_GetBrush(p.instance))
+    return AsBrush(PageControl_GetBrush(p.instance))
 }
 
 // ControlCount
@@ -1055,7 +1060,7 @@ func (p *TPageControl) SetUseDockManager(value bool) {
 
 // Action
 func (p *TPageControl) Action() *TAction {
-    return ActionFromInst(PageControl_GetAction(p.instance))
+    return AsAction(PageControl_GetAction(p.instance))
 }
 
 // SetAction
@@ -1170,7 +1175,7 @@ func (p *TPageControl) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (p *TPageControl) Parent() *TWinControl {
-    return WinControlFromInst(PageControl_GetParent(p.instance))
+    return AsWinControl(PageControl_GetParent(p.instance))
 }
 
 // SetParent
@@ -1282,7 +1287,7 @@ func (p *TPageControl) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (p *TPageControl) Margins() *TMargins {
-    return MarginsFromInst(PageControl_GetMargins(p.instance))
+    return AsMargins(PageControl_GetMargins(p.instance))
 }
 
 // SetMargins
@@ -1296,7 +1301,7 @@ func (p *TPageControl) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (p *TPageControl) CustomHint() *TCustomHint {
-    return CustomHintFromInst(PageControl_GetCustomHint(p.instance))
+    return AsCustomHint(PageControl_GetCustomHint(p.instance))
 }
 
 // SetCustomHint
@@ -1331,7 +1336,7 @@ func (p *TPageControl) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TPageControl) Owner() *TComponent {
-    return ComponentFromInst(PageControl_GetOwner(p.instance))
+    return AsComponent(PageControl_GetOwner(p.instance))
 }
 
 // Name
@@ -1364,27 +1369,27 @@ func (p *TPageControl) SetTag(value int) {
 
 // Pages
 func (p *TPageControl) Pages(Index int32) *TTabSheet {
-    return TabSheetFromInst(PageControl_GetPages(p.instance, Index))
+    return AsTabSheet(PageControl_GetPages(p.instance, Index))
 }
 
 // DockClients
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (p *TPageControl) DockClients(Index int32) *TControl {
-    return ControlFromInst(PageControl_GetDockClients(p.instance, Index))
+    return AsControl(PageControl_GetDockClients(p.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (p *TPageControl) Controls(Index int32) *TControl {
-    return ControlFromInst(PageControl_GetControls(p.instance, Index))
+    return AsControl(PageControl_GetControls(p.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPageControl) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(PageControl_GetComponents(p.instance, AIndex))
+    return AsComponent(PageControl_GetComponents(p.instance, AIndex))
 }
 

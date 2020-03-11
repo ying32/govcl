@@ -34,36 +34,41 @@ func NewColorDialog(owner IComponent) *TColorDialog {
     return c
 }
 
+// AsColorDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsColorDialog(obj interface{}) *TColorDialog {
+    c := new(TColorDialog)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ColorDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsColorDialog.
 func ColorDialogFromInst(inst uintptr) *TColorDialog {
-    c := new(TColorDialog)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsColorDialog(inst)
 }
 
 // ColorDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsColorDialog.
 func ColorDialogFromObj(obj IObject) *TColorDialog {
-    c := new(TColorDialog)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsColorDialog(obj)
 }
 
 // ColorDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsColorDialog.
 func ColorDialogFromUnsafePointer(ptr unsafe.Pointer) *TColorDialog {
-    c := new(TColorDialog)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsColorDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -121,7 +126,7 @@ func (c *TColorDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TColorDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ColorDialog_FindComponent(c.instance, AName))
+    return AsComponent(ColorDialog_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -279,7 +284,7 @@ func (c *TColorDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TColorDialog) Owner() *TComponent {
-    return ComponentFromInst(ColorDialog_GetOwner(c.instance))
+    return AsComponent(ColorDialog_GetOwner(c.instance))
 }
 
 // Name
@@ -314,6 +319,6 @@ func (c *TColorDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TColorDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ColorDialog_GetComponents(c.instance, AIndex))
+    return AsComponent(ColorDialog_GetComponents(c.instance, AIndex))
 }
 

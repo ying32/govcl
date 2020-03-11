@@ -34,36 +34,41 @@ func NewGraphic() *TGraphic {
     return g
 }
 
+// AsGraphic
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsGraphic(obj interface{}) *TGraphic {
+    g := new(TGraphic)
+    g.instance, g.ptr = getInstance(obj)
+    return g
+}
+
+// -------------------------- Deprecated begin --------------------------
 // GraphicFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsGraphic.
 func GraphicFromInst(inst uintptr) *TGraphic {
-    g := new(TGraphic)
-    g.instance = inst
-    g.ptr = unsafe.Pointer(inst)
-    return g
+    return AsGraphic(inst)
 }
 
 // GraphicFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsGraphic.
 func GraphicFromObj(obj IObject) *TGraphic {
-    g := new(TGraphic)
-    g.instance = CheckPtr(obj)
-    g.ptr = unsafe.Pointer(g.instance)
-    return g
+    return AsGraphic(obj)
 }
 
 // GraphicFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsGraphic.
 func GraphicFromUnsafePointer(ptr unsafe.Pointer) *TGraphic {
-    g := new(TGraphic)
-    g.instance = uintptr(ptr)
-    g.ptr = ptr
-    return g
+    return AsGraphic(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

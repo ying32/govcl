@@ -34,36 +34,41 @@ func NewScrollBox(owner IComponent) *TScrollBox {
     return s
 }
 
+// AsScrollBox
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsScrollBox(obj interface{}) *TScrollBox {
+    s := new(TScrollBox)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ScrollBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsScrollBox.
 func ScrollBoxFromInst(inst uintptr) *TScrollBox {
-    s := new(TScrollBox)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsScrollBox(inst)
 }
 
 // ScrollBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsScrollBox.
 func ScrollBoxFromObj(obj IObject) *TScrollBox {
-    s := new(TScrollBox)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsScrollBox(obj)
 }
 
 // ScrollBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsScrollBox.
 func ScrollBoxFromUnsafePointer(ptr unsafe.Pointer) *TScrollBox {
-    s := new(TScrollBox)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsScrollBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -143,7 +148,7 @@ func (s *TScrollBox) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TScrollBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ScrollBox_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ScrollBox_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -164,7 +169,7 @@ func (s *TScrollBox) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (s *TScrollBox) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ScrollBox_FindChildControl(s.instance, ControlName))
+    return AsControl(ScrollBox_FindChildControl(s.instance, ControlName))
 }
 
 // FlipChildren
@@ -379,7 +384,7 @@ func (s *TScrollBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TScrollBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ScrollBox_FindComponent(s.instance, AName))
+    return AsComponent(ScrollBox_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -570,7 +575,7 @@ func (s *TScrollBox) SetBorderStyle(value TBorderStyle) {
 
 // Constraints
 func (s *TScrollBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ScrollBox_GetConstraints(s.instance))
+    return AsSizeConstraints(ScrollBox_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -690,7 +695,7 @@ func (s *TScrollBox) SetCtl3D(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (s *TScrollBox) Font() *TFont {
-    return FontFromInst(ScrollBox_GetFont(s.instance))
+    return AsFont(ScrollBox_GetFont(s.instance))
 }
 
 // SetFont
@@ -776,7 +781,7 @@ func (s *TScrollBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (s *TScrollBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ScrollBox_GetPopupMenu(s.instance))
+    return AsPopupMenu(ScrollBox_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
@@ -1016,7 +1021,7 @@ func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {
 
 // HorzScrollBar
 func (s *TScrollBox) HorzScrollBar() *TControlScrollBar {
-    return ControlScrollBarFromInst(ScrollBox_GetHorzScrollBar(s.instance))
+    return AsControlScrollBar(ScrollBox_GetHorzScrollBar(s.instance))
 }
 
 // SetHorzScrollBar
@@ -1026,7 +1031,7 @@ func (s *TScrollBox) SetHorzScrollBar(value *TControlScrollBar) {
 
 // VertScrollBar
 func (s *TScrollBox) VertScrollBar() *TControlScrollBar {
-    return ControlScrollBarFromInst(ScrollBox_GetVertScrollBar(s.instance))
+    return AsControlScrollBar(ScrollBox_GetVertScrollBar(s.instance))
 }
 
 // SetVertScrollBar
@@ -1066,7 +1071,7 @@ func (s *TScrollBox) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (s *TScrollBox) Brush() *TBrush {
-    return BrushFromInst(ScrollBox_GetBrush(s.instance))
+    return AsBrush(ScrollBox_GetBrush(s.instance))
 }
 
 // ControlCount
@@ -1113,7 +1118,7 @@ func (s *TScrollBox) SetUseDockManager(value bool) {
 
 // Action
 func (s *TScrollBox) Action() *TAction {
-    return ActionFromInst(ScrollBox_GetAction(s.instance))
+    return AsAction(ScrollBox_GetAction(s.instance))
 }
 
 // SetAction
@@ -1228,7 +1233,7 @@ func (s *TScrollBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TScrollBox) Parent() *TWinControl {
-    return WinControlFromInst(ScrollBox_GetParent(s.instance))
+    return AsWinControl(ScrollBox_GetParent(s.instance))
 }
 
 // SetParent
@@ -1340,7 +1345,7 @@ func (s *TScrollBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TScrollBox) Margins() *TMargins {
-    return MarginsFromInst(ScrollBox_GetMargins(s.instance))
+    return AsMargins(ScrollBox_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -1354,7 +1359,7 @@ func (s *TScrollBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TScrollBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ScrollBox_GetCustomHint(s.instance))
+    return AsCustomHint(ScrollBox_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -1389,7 +1394,7 @@ func (s *TScrollBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TScrollBox) Owner() *TComponent {
-    return ComponentFromInst(ScrollBox_GetOwner(s.instance))
+    return AsComponent(ScrollBox_GetOwner(s.instance))
 }
 
 // Name
@@ -1424,20 +1429,20 @@ func (s *TScrollBox) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TScrollBox) DockClients(Index int32) *TControl {
-    return ControlFromInst(ScrollBox_GetDockClients(s.instance, Index))
+    return AsControl(ScrollBox_GetDockClients(s.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (s *TScrollBox) Controls(Index int32) *TControl {
-    return ControlFromInst(ScrollBox_GetControls(s.instance, Index))
+    return AsControl(ScrollBox_GetControls(s.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TScrollBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ScrollBox_GetComponents(s.instance, AIndex))
+    return AsComponent(ScrollBox_GetComponents(s.instance, AIndex))
 }
 

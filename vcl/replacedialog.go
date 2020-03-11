@@ -34,36 +34,41 @@ func NewReplaceDialog(owner IComponent) *TReplaceDialog {
     return r
 }
 
+// AsReplaceDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsReplaceDialog(obj interface{}) *TReplaceDialog {
+    r := new(TReplaceDialog)
+    r.instance, r.ptr = getInstance(obj)
+    return r
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ReplaceDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsReplaceDialog.
 func ReplaceDialogFromInst(inst uintptr) *TReplaceDialog {
-    r := new(TReplaceDialog)
-    r.instance = inst
-    r.ptr = unsafe.Pointer(inst)
-    return r
+    return AsReplaceDialog(inst)
 }
 
 // ReplaceDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsReplaceDialog.
 func ReplaceDialogFromObj(obj IObject) *TReplaceDialog {
-    r := new(TReplaceDialog)
-    r.instance = CheckPtr(obj)
-    r.ptr = unsafe.Pointer(r.instance)
-    return r
+    return AsReplaceDialog(obj)
 }
 
 // ReplaceDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsReplaceDialog.
 func ReplaceDialogFromUnsafePointer(ptr unsafe.Pointer) *TReplaceDialog {
-    r := new(TReplaceDialog)
-    r.instance = uintptr(ptr)
-    r.ptr = ptr
-    return r
+    return AsReplaceDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -126,7 +131,7 @@ func (r *TReplaceDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (r *TReplaceDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ReplaceDialog_FindComponent(r.instance, AName))
+    return AsComponent(ReplaceDialog_FindComponent(r.instance, AName))
 }
 
 // GetNamePath
@@ -338,7 +343,7 @@ func (r *TReplaceDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (r *TReplaceDialog) Owner() *TComponent {
-    return ComponentFromInst(ReplaceDialog_GetOwner(r.instance))
+    return AsComponent(ReplaceDialog_GetOwner(r.instance))
 }
 
 // Name
@@ -373,6 +378,6 @@ func (r *TReplaceDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (r *TReplaceDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ReplaceDialog_GetComponents(r.instance, AIndex))
+    return AsComponent(ReplaceDialog_GetComponents(r.instance, AIndex))
 }
 

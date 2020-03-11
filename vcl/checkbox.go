@@ -34,36 +34,41 @@ func NewCheckBox(owner IComponent) *TCheckBox {
     return c
 }
 
+// AsCheckBox
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsCheckBox(obj interface{}) *TCheckBox {
+    c := new(TCheckBox)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // CheckBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsCheckBox.
 func CheckBoxFromInst(inst uintptr) *TCheckBox {
-    c := new(TCheckBox)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsCheckBox(inst)
 }
 
 // CheckBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsCheckBox.
 func CheckBoxFromObj(obj IObject) *TCheckBox {
-    c := new(TCheckBox)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsCheckBox(obj)
 }
 
 // CheckBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsCheckBox.
 func CheckBoxFromUnsafePointer(ptr unsafe.Pointer) *TCheckBox {
-    c := new(TCheckBox)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsCheckBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -128,7 +133,7 @@ func (c *TCheckBox) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TCheckBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(CheckBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(CheckBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -149,7 +154,7 @@ func (c *TCheckBox) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (c *TCheckBox) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(CheckBox_FindChildControl(c.instance, ControlName))
+    return AsControl(CheckBox_FindChildControl(c.instance, ControlName))
 }
 
 // FlipChildren
@@ -364,7 +369,7 @@ func (c *TCheckBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TCheckBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(CheckBox_FindComponent(c.instance, AName))
+    return AsComponent(CheckBox_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -439,7 +444,7 @@ func (c *TCheckBox) ToString() string {
 
 // Action
 func (c *TCheckBox) Action() *TAction {
-    return ActionFromInst(CheckBox_GetAction(c.instance))
+    return AsAction(CheckBox_GetAction(c.instance))
 }
 
 // SetAction
@@ -553,7 +558,7 @@ func (c *TCheckBox) SetColor(value TColor) {
 
 // Constraints
 func (c *TCheckBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(CheckBox_GetConstraints(c.instance))
+    return AsSizeConstraints(CheckBox_GetConstraints(c.instance))
 }
 
 // SetConstraints
@@ -645,7 +650,7 @@ func (c *TCheckBox) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (c *TCheckBox) Font() *TFont {
-    return FontFromInst(CheckBox_GetFont(c.instance))
+    return AsFont(CheckBox_GetFont(c.instance))
 }
 
 // SetFont
@@ -721,7 +726,7 @@ func (c *TCheckBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (c *TCheckBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(CheckBox_GetPopupMenu(c.instance))
+    return AsPopupMenu(CheckBox_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
@@ -993,7 +998,7 @@ func (c *TCheckBox) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (c *TCheckBox) Brush() *TBrush {
-    return BrushFromInst(CheckBox_GetBrush(c.instance))
+    return AsBrush(CheckBox_GetBrush(c.instance))
 }
 
 // ControlCount
@@ -1145,7 +1150,7 @@ func (c *TCheckBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (c *TCheckBox) Parent() *TWinControl {
-    return WinControlFromInst(CheckBox_GetParent(c.instance))
+    return AsWinControl(CheckBox_GetParent(c.instance))
 }
 
 // SetParent
@@ -1262,7 +1267,7 @@ func (c *TCheckBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (c *TCheckBox) Margins() *TMargins {
-    return MarginsFromInst(CheckBox_GetMargins(c.instance))
+    return AsMargins(CheckBox_GetMargins(c.instance))
 }
 
 // SetMargins
@@ -1276,7 +1281,7 @@ func (c *TCheckBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (c *TCheckBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(CheckBox_GetCustomHint(c.instance))
+    return AsCustomHint(CheckBox_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
@@ -1311,7 +1316,7 @@ func (c *TCheckBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TCheckBox) Owner() *TComponent {
-    return ComponentFromInst(CheckBox_GetOwner(c.instance))
+    return AsComponent(CheckBox_GetOwner(c.instance))
 }
 
 // Name
@@ -1346,20 +1351,20 @@ func (c *TCheckBox) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TCheckBox) DockClients(Index int32) *TControl {
-    return ControlFromInst(CheckBox_GetDockClients(c.instance, Index))
+    return AsControl(CheckBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (c *TCheckBox) Controls(Index int32) *TControl {
-    return ControlFromInst(CheckBox_GetControls(c.instance, Index))
+    return AsControl(CheckBox_GetControls(c.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TCheckBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(CheckBox_GetComponents(c.instance, AIndex))
+    return AsComponent(CheckBox_GetComponents(c.instance, AIndex))
 }
 

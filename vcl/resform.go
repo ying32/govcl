@@ -146,9 +146,9 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 	switch typ {
 	case 0:
 		// 由参数的个数决定，创建窗口时是否使用缩放，此值需要 vcl.Application.SetFormScaled(true) 后才能生效。
-		resObj = FormFromInst(Application_CreateForm(appInst, initScale))
+		resObj = AsForm(Application_CreateForm(appInst, initScale))
 	case 1:
-		resObj = FormFromInst(Form_Create2(CheckPtr(owner), initScale))
+		resObj = AsForm(Form_Create2(CheckPtr(owner), initScale))
 	case 2:
 		// TFrame
 		resObj = NewFrame(owner)

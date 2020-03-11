@@ -24,36 +24,41 @@ type TSizeConstraints struct {
     ptr unsafe.Pointer
 }
 
+// AsSizeConstraints
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsSizeConstraints(obj interface{}) *TSizeConstraints {
+    s := new(TSizeConstraints)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // SizeConstraintsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsSizeConstraints.
 func SizeConstraintsFromInst(inst uintptr) *TSizeConstraints {
-    s := new(TSizeConstraints)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsSizeConstraints(inst)
 }
 
 // SizeConstraintsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsSizeConstraints.
 func SizeConstraintsFromObj(obj IObject) *TSizeConstraints {
-    s := new(TSizeConstraints)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsSizeConstraints(obj)
 }
 
 // SizeConstraintsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsSizeConstraints.
 func SizeConstraintsFromUnsafePointer(ptr unsafe.Pointer) *TSizeConstraints {
-    s := new(TSizeConstraints)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsSizeConstraints(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.

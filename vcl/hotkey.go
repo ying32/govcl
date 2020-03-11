@@ -34,36 +34,41 @@ func NewHotKey(owner IComponent) *THotKey {
     return h
 }
 
+// AsHotKey
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsHotKey(obj interface{}) *THotKey {
+    h := new(THotKey)
+    h.instance, h.ptr = getInstance(obj)
+    return h
+}
+
+// -------------------------- Deprecated begin --------------------------
 // HotKeyFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsHotKey.
 func HotKeyFromInst(inst uintptr) *THotKey {
-    h := new(THotKey)
-    h.instance = inst
-    h.ptr = unsafe.Pointer(inst)
-    return h
+    return AsHotKey(inst)
 }
 
 // HotKeyFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsHotKey.
 func HotKeyFromObj(obj IObject) *THotKey {
-    h := new(THotKey)
-    h.instance = CheckPtr(obj)
-    h.ptr = unsafe.Pointer(h.instance)
-    return h
+    return AsHotKey(obj)
 }
 
 // HotKeyFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsHotKey.
 func HotKeyFromUnsafePointer(ptr unsafe.Pointer) *THotKey {
-    h := new(THotKey)
-    h.instance = uintptr(ptr)
-    h.ptr = ptr
-    return h
+    return AsHotKey(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -128,7 +133,7 @@ func (h *THotKey) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (h *THotKey) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(HotKey_ControlAtPos(h.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(HotKey_ControlAtPos(h.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -149,7 +154,7 @@ func (h *THotKey) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (h *THotKey) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(HotKey_FindChildControl(h.instance, ControlName))
+    return AsControl(HotKey_FindChildControl(h.instance, ControlName))
 }
 
 // FlipChildren
@@ -364,7 +369,7 @@ func (h *THotKey) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (h *THotKey) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(HotKey_FindComponent(h.instance, AName))
+    return AsComponent(HotKey_FindComponent(h.instance, AName))
 }
 
 // GetNamePath
@@ -477,7 +482,7 @@ func (h *THotKey) SetBiDiMode(value TBiDiMode) {
 
 // Constraints
 func (h *THotKey) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(HotKey_GetConstraints(h.instance))
+    return AsSizeConstraints(HotKey_GetConstraints(h.instance))
 }
 
 // SetConstraints
@@ -527,7 +532,7 @@ func (h *THotKey) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (h *THotKey) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(HotKey_GetPopupMenu(h.instance))
+    return AsPopupMenu(HotKey_GetPopupMenu(h.instance))
 }
 
 // SetPopupMenu
@@ -740,7 +745,7 @@ func (h *THotKey) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (h *THotKey) Brush() *TBrush {
-    return BrushFromInst(HotKey_GetBrush(h.instance))
+    return AsBrush(HotKey_GetBrush(h.instance))
 }
 
 // ControlCount
@@ -801,7 +806,7 @@ func (h *THotKey) SetUseDockManager(value bool) {
 
 // Action
 func (h *THotKey) Action() *TAction {
-    return ActionFromInst(HotKey_GetAction(h.instance))
+    return AsAction(HotKey_GetAction(h.instance))
 }
 
 // SetAction
@@ -930,7 +935,7 @@ func (h *THotKey) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (h *THotKey) Parent() *TWinControl {
-    return WinControlFromInst(HotKey_GetParent(h.instance))
+    return AsWinControl(HotKey_GetParent(h.instance))
 }
 
 // SetParent
@@ -1028,7 +1033,7 @@ func (h *THotKey) SetCursor(value TCursor) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (h *THotKey) Margins() *TMargins {
-    return MarginsFromInst(HotKey_GetMargins(h.instance))
+    return AsMargins(HotKey_GetMargins(h.instance))
 }
 
 // SetMargins
@@ -1042,7 +1047,7 @@ func (h *THotKey) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (h *THotKey) CustomHint() *TCustomHint {
-    return CustomHintFromInst(HotKey_GetCustomHint(h.instance))
+    return AsCustomHint(HotKey_GetCustomHint(h.instance))
 }
 
 // SetCustomHint
@@ -1077,7 +1082,7 @@ func (h *THotKey) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (h *THotKey) Owner() *TComponent {
-    return ComponentFromInst(HotKey_GetOwner(h.instance))
+    return AsComponent(HotKey_GetOwner(h.instance))
 }
 
 // Name
@@ -1112,20 +1117,20 @@ func (h *THotKey) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (h *THotKey) DockClients(Index int32) *TControl {
-    return ControlFromInst(HotKey_GetDockClients(h.instance, Index))
+    return AsControl(HotKey_GetDockClients(h.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (h *THotKey) Controls(Index int32) *TControl {
-    return ControlFromInst(HotKey_GetControls(h.instance, Index))
+    return AsControl(HotKey_GetControls(h.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (h *THotKey) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(HotKey_GetComponents(h.instance, AIndex))
+    return AsComponent(HotKey_GetComponents(h.instance, AIndex))
 }
 

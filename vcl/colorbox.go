@@ -34,36 +34,41 @@ func NewColorBox(owner IComponent) *TColorBox {
     return c
 }
 
+// AsColorBox
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsColorBox(obj interface{}) *TColorBox {
+    c := new(TColorBox)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ColorBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsColorBox.
 func ColorBoxFromInst(inst uintptr) *TColorBox {
-    c := new(TColorBox)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsColorBox(inst)
 }
 
 // ColorBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsColorBox.
 func ColorBoxFromObj(obj IObject) *TColorBox {
-    c := new(TColorBox)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsColorBox(obj)
 }
 
 // ColorBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsColorBox.
 func ColorBoxFromUnsafePointer(ptr unsafe.Pointer) *TColorBox {
-    c := new(TColorBox)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsColorBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -171,7 +176,7 @@ func (c *TColorBox) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TColorBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ColorBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ColorBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -192,7 +197,7 @@ func (c *TColorBox) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (c *TColorBox) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ColorBox_FindChildControl(c.instance, ControlName))
+    return AsControl(ColorBox_FindChildControl(c.instance, ControlName))
 }
 
 // FlipChildren
@@ -400,7 +405,7 @@ func (c *TColorBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TColorBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ColorBox_FindComponent(c.instance, AName))
+    return AsComponent(ColorBox_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -627,7 +632,7 @@ func (c *TColorBox) SetColor(value TColor) {
 
 // Constraints
 func (c *TColorBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ColorBox_GetConstraints(c.instance))
+    return AsSizeConstraints(ColorBox_GetConstraints(c.instance))
 }
 
 // SetConstraints
@@ -687,7 +692,7 @@ func (c *TColorBox) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (c *TColorBox) Font() *TFont {
-    return FontFromInst(ColorBox_GetFont(c.instance))
+    return AsFont(ColorBox_GetFont(c.instance))
 }
 
 // SetFont
@@ -773,7 +778,7 @@ func (c *TColorBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (c *TColorBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ColorBox_GetPopupMenu(c.instance))
+    return AsPopupMenu(ColorBox_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
@@ -1033,7 +1038,7 @@ func (c *TColorBox) SetTextHint(value string) {
 // CN: 获取画布。
 // EN: .
 func (c *TColorBox) Canvas() *TCanvas {
-    return CanvasFromInst(ColorBox_GetCanvas(c.instance))
+    return AsCanvas(ColorBox_GetCanvas(c.instance))
 }
 
 // DroppedDown
@@ -1048,7 +1053,7 @@ func (c *TColorBox) SetDroppedDown(value bool) {
 
 // Items
 func (c *TColorBox) Items() *TStrings {
-    return StringsFromInst(ColorBox_GetItems(c.instance))
+    return AsStrings(ColorBox_GetItems(c.instance))
 }
 
 // SetItems
@@ -1140,7 +1145,7 @@ func (c *TColorBox) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (c *TColorBox) Brush() *TBrush {
-    return BrushFromInst(ColorBox_GetBrush(c.instance))
+    return AsBrush(ColorBox_GetBrush(c.instance))
 }
 
 // ControlCount
@@ -1187,7 +1192,7 @@ func (c *TColorBox) SetUseDockManager(value bool) {
 
 // Action
 func (c *TColorBox) Action() *TAction {
-    return ActionFromInst(ColorBox_GetAction(c.instance))
+    return AsAction(ColorBox_GetAction(c.instance))
 }
 
 // SetAction
@@ -1302,7 +1307,7 @@ func (c *TColorBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (c *TColorBox) Parent() *TWinControl {
-    return WinControlFromInst(ColorBox_GetParent(c.instance))
+    return AsWinControl(ColorBox_GetParent(c.instance))
 }
 
 // SetParent
@@ -1414,7 +1419,7 @@ func (c *TColorBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (c *TColorBox) Margins() *TMargins {
-    return MarginsFromInst(ColorBox_GetMargins(c.instance))
+    return AsMargins(ColorBox_GetMargins(c.instance))
 }
 
 // SetMargins
@@ -1428,7 +1433,7 @@ func (c *TColorBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (c *TColorBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ColorBox_GetCustomHint(c.instance))
+    return AsCustomHint(ColorBox_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
@@ -1463,7 +1468,7 @@ func (c *TColorBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TColorBox) Owner() *TComponent {
-    return ComponentFromInst(ColorBox_GetOwner(c.instance))
+    return AsComponent(ColorBox_GetOwner(c.instance))
 }
 
 // Name
@@ -1508,20 +1513,20 @@ func (c *TColorBox) ColorNames(Index int32) string {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TColorBox) DockClients(Index int32) *TControl {
-    return ControlFromInst(ColorBox_GetDockClients(c.instance, Index))
+    return AsControl(ColorBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (c *TColorBox) Controls(Index int32) *TControl {
-    return ControlFromInst(ColorBox_GetControls(c.instance, Index))
+    return AsControl(ColorBox_GetControls(c.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TColorBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ColorBox_GetComponents(c.instance, AIndex))
+    return AsComponent(ColorBox_GetComponents(c.instance, AIndex))
 }
 

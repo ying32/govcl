@@ -34,36 +34,41 @@ func NewThumbBarButtonList() *TThumbBarButtonList {
     return t
 }
 
+// AsThumbBarButtonList
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsThumbBarButtonList(obj interface{}) *TThumbBarButtonList {
+    t := new(TThumbBarButtonList)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ThumbBarButtonListFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsThumbBarButtonList.
 func ThumbBarButtonListFromInst(inst uintptr) *TThumbBarButtonList {
-    t := new(TThumbBarButtonList)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsThumbBarButtonList(inst)
 }
 
 // ThumbBarButtonListFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsThumbBarButtonList.
 func ThumbBarButtonListFromObj(obj IObject) *TThumbBarButtonList {
-    t := new(TThumbBarButtonList)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsThumbBarButtonList(obj)
 }
 
 // ThumbBarButtonListFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsThumbBarButtonList.
 func ThumbBarButtonListFromUnsafePointer(ptr unsafe.Pointer) *TThumbBarButtonList {
-    t := new(TThumbBarButtonList)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsThumbBarButtonList(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -112,14 +117,14 @@ func TThumbBarButtonListClass() TClass {
 
 // Add
 func (t *TThumbBarButtonList) Add() *TThumbBarButton {
-    return ThumbBarButtonFromInst(ThumbBarButtonList_Add(t.instance))
+    return AsThumbBarButton(ThumbBarButtonList_Add(t.instance))
 }
 
 // Owner
 // CN: 组件所有者。
 // EN: component owner.
 func (t *TThumbBarButtonList) Owner() *TObject {
-    return ObjectFromInst(ThumbBarButtonList_Owner(t.instance))
+    return AsObject(ThumbBarButtonList_Owner(t.instance))
 }
 
 // Assign
@@ -158,7 +163,7 @@ func (t *TThumbBarButtonList) EndUpdate() {
 
 // FindItemID
 func (t *TThumbBarButtonList) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(ThumbBarButtonList_FindItemID(t.instance, ID))
+    return AsCollectionItem(ThumbBarButtonList_FindItemID(t.instance, ID))
 }
 
 // GetNamePath
@@ -170,7 +175,7 @@ func (t *TThumbBarButtonList) GetNamePath() string {
 
 // Insert
 func (t *TThumbBarButtonList) Insert(Index int32) *TCollectionItem {
-    return CollectionItemFromInst(ThumbBarButtonList_Insert(t.instance, Index))
+    return AsCollectionItem(ThumbBarButtonList_Insert(t.instance, Index))
 }
 
 // DisposeOf
@@ -253,7 +258,7 @@ func (t *TThumbBarButtonList) Count() int32 {
 
 // Items
 func (t *TThumbBarButtonList) Items(Index int32) *TThumbBarButton {
-    return ThumbBarButtonFromInst(ThumbBarButtonList_GetItems(t.instance, Index))
+    return AsThumbBarButton(ThumbBarButtonList_GetItems(t.instance, Index))
 }
 
 // Items

@@ -35,36 +35,41 @@ func NewMonthCalendar(owner IComponent) *TMonthCalendar {
     return m
 }
 
+// AsMonthCalendar
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsMonthCalendar(obj interface{}) *TMonthCalendar {
+    m := new(TMonthCalendar)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MonthCalendarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMonthCalendar.
 func MonthCalendarFromInst(inst uintptr) *TMonthCalendar {
-    m := new(TMonthCalendar)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMonthCalendar(inst)
 }
 
 // MonthCalendarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMonthCalendar.
 func MonthCalendarFromObj(obj IObject) *TMonthCalendar {
-    m := new(TMonthCalendar)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMonthCalendar(obj)
 }
 
 // MonthCalendarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMonthCalendar.
 func MonthCalendarFromUnsafePointer(ptr unsafe.Pointer) *TMonthCalendar {
-    m := new(TMonthCalendar)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMonthCalendar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -129,7 +134,7 @@ func (m *TMonthCalendar) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (m *TMonthCalendar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(MonthCalendar_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(MonthCalendar_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -150,7 +155,7 @@ func (m *TMonthCalendar) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (m *TMonthCalendar) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(MonthCalendar_FindChildControl(m.instance, ControlName))
+    return AsControl(MonthCalendar_FindChildControl(m.instance, ControlName))
 }
 
 // FlipChildren
@@ -365,7 +370,7 @@ func (m *TMonthCalendar) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (m *TMonthCalendar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(MonthCalendar_FindComponent(m.instance, AName))
+    return AsComponent(MonthCalendar_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
@@ -506,7 +511,7 @@ func (m *TMonthCalendar) SetBiDiMode(value TBiDiMode) {
 
 // CalColors
 func (m *TMonthCalendar) CalColors() *TMonthCalColors {
-    return MonthCalColorsFromInst(MonthCalendar_GetCalColors(m.instance))
+    return AsMonthCalColors(MonthCalendar_GetCalColors(m.instance))
 }
 
 // SetCalColors
@@ -516,7 +521,7 @@ func (m *TMonthCalendar) SetCalColors(value *TMonthCalColors) {
 
 // Constraints
 func (m *TMonthCalendar) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(MonthCalendar_GetConstraints(m.instance))
+    return AsSizeConstraints(MonthCalendar_GetConstraints(m.instance))
 }
 
 // SetConstraints
@@ -628,7 +633,7 @@ func (m *TMonthCalendar) SetFirstDayOfWeek(value TCalDayOfWeek) {
 // CN: 获取字体。
 // EN: Get Font.
 func (m *TMonthCalendar) Font() *TFont {
-    return FontFromInst(MonthCalendar_GetFont(m.instance))
+    return AsFont(MonthCalendar_GetFont(m.instance))
 }
 
 // SetFont
@@ -710,7 +715,7 @@ func (m *TMonthCalendar) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (m *TMonthCalendar) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(MonthCalendar_GetPopupMenu(m.instance))
+    return AsPopupMenu(MonthCalendar_GetPopupMenu(m.instance))
 }
 
 // SetPopupMenu
@@ -960,7 +965,7 @@ func (m *TMonthCalendar) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (m *TMonthCalendar) Brush() *TBrush {
-    return BrushFromInst(MonthCalendar_GetBrush(m.instance))
+    return AsBrush(MonthCalendar_GetBrush(m.instance))
 }
 
 // ControlCount
@@ -1007,7 +1012,7 @@ func (m *TMonthCalendar) SetUseDockManager(value bool) {
 
 // Action
 func (m *TMonthCalendar) Action() *TAction {
-    return ActionFromInst(MonthCalendar_GetAction(m.instance))
+    return AsAction(MonthCalendar_GetAction(m.instance))
 }
 
 // SetAction
@@ -1122,7 +1127,7 @@ func (m *TMonthCalendar) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (m *TMonthCalendar) Parent() *TWinControl {
-    return WinControlFromInst(MonthCalendar_GetParent(m.instance))
+    return AsWinControl(MonthCalendar_GetParent(m.instance))
 }
 
 // SetParent
@@ -1248,7 +1253,7 @@ func (m *TMonthCalendar) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (m *TMonthCalendar) Margins() *TMargins {
-    return MarginsFromInst(MonthCalendar_GetMargins(m.instance))
+    return AsMargins(MonthCalendar_GetMargins(m.instance))
 }
 
 // SetMargins
@@ -1262,7 +1267,7 @@ func (m *TMonthCalendar) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (m *TMonthCalendar) CustomHint() *TCustomHint {
-    return CustomHintFromInst(MonthCalendar_GetCustomHint(m.instance))
+    return AsCustomHint(MonthCalendar_GetCustomHint(m.instance))
 }
 
 // SetCustomHint
@@ -1297,7 +1302,7 @@ func (m *TMonthCalendar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (m *TMonthCalendar) Owner() *TComponent {
-    return ComponentFromInst(MonthCalendar_GetOwner(m.instance))
+    return AsComponent(MonthCalendar_GetOwner(m.instance))
 }
 
 // Name
@@ -1332,20 +1337,20 @@ func (m *TMonthCalendar) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMonthCalendar) DockClients(Index int32) *TControl {
-    return ControlFromInst(MonthCalendar_GetDockClients(m.instance, Index))
+    return AsControl(MonthCalendar_GetDockClients(m.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (m *TMonthCalendar) Controls(Index int32) *TControl {
-    return ControlFromInst(MonthCalendar_GetControls(m.instance, Index))
+    return AsControl(MonthCalendar_GetControls(m.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (m *TMonthCalendar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(MonthCalendar_GetComponents(m.instance, AIndex))
+    return AsComponent(MonthCalendar_GetComponents(m.instance, AIndex))
 }
 

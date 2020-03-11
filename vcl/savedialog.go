@@ -34,36 +34,41 @@ func NewSaveDialog(owner IComponent) *TSaveDialog {
     return s
 }
 
+// AsSaveDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsSaveDialog(obj interface{}) *TSaveDialog {
+    s := new(TSaveDialog)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // SaveDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsSaveDialog.
 func SaveDialogFromInst(inst uintptr) *TSaveDialog {
-    s := new(TSaveDialog)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsSaveDialog(inst)
 }
 
 // SaveDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsSaveDialog.
 func SaveDialogFromObj(obj IObject) *TSaveDialog {
-    s := new(TSaveDialog)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsSaveDialog(obj)
 }
 
 // SaveDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsSaveDialog.
 func SaveDialogFromUnsafePointer(ptr unsafe.Pointer) *TSaveDialog {
-    s := new(TSaveDialog)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsSaveDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -121,7 +126,7 @@ func (s *TSaveDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TSaveDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(SaveDialog_FindComponent(s.instance, AName))
+    return AsComponent(SaveDialog_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -203,7 +208,7 @@ func (s *TSaveDialog) ToString() string {
 
 // Files
 func (s *TSaveDialog) Files() *TStrings {
-    return StringsFromInst(SaveDialog_GetFiles(s.instance))
+    return AsStrings(SaveDialog_GetFiles(s.instance))
 }
 
 // DefaultExt
@@ -340,7 +345,7 @@ func (s *TSaveDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TSaveDialog) Owner() *TComponent {
-    return ComponentFromInst(SaveDialog_GetOwner(s.instance))
+    return AsComponent(SaveDialog_GetOwner(s.instance))
 }
 
 // Name
@@ -375,6 +380,6 @@ func (s *TSaveDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TSaveDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(SaveDialog_GetComponents(s.instance, AIndex))
+    return AsComponent(SaveDialog_GetComponents(s.instance, AIndex))
 }
 

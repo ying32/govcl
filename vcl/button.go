@@ -34,36 +34,41 @@ func NewButton(owner IComponent) *TButton {
     return b
 }
 
+// AsButton
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsButton(obj interface{}) *TButton {
+    b := new(TButton)
+    b.instance, b.ptr = getInstance(obj)
+    return b
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ButtonFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsButton.
 func ButtonFromInst(inst uintptr) *TButton {
-    b := new(TButton)
-    b.instance = inst
-    b.ptr = unsafe.Pointer(inst)
-    return b
+    return AsButton(inst)
 }
 
 // ButtonFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsButton.
 func ButtonFromObj(obj IObject) *TButton {
-    b := new(TButton)
-    b.instance = CheckPtr(obj)
-    b.ptr = unsafe.Pointer(b.instance)
-    return b
+    return AsButton(obj)
 }
 
 // ButtonFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsButton.
 func ButtonFromUnsafePointer(ptr unsafe.Pointer) *TButton {
-    b := new(TButton)
-    b.instance = uintptr(ptr)
-    b.ptr = ptr
-    return b
+    return AsButton(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -135,7 +140,7 @@ func (b *TButton) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (b *TButton) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(Button_ControlAtPos(b.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Button_ControlAtPos(b.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -156,7 +161,7 @@ func (b *TButton) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (b *TButton) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(Button_FindChildControl(b.instance, ControlName))
+    return AsControl(Button_FindChildControl(b.instance, ControlName))
 }
 
 // FlipChildren
@@ -371,7 +376,7 @@ func (b *TButton) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (b *TButton) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Button_FindComponent(b.instance, AName))
+    return AsComponent(Button_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
@@ -446,7 +451,7 @@ func (b *TButton) ToString() string {
 
 // Action
 func (b *TButton) Action() *TAction {
-    return ActionFromInst(Button_GetAction(b.instance))
+    return AsAction(Button_GetAction(b.instance))
 }
 
 // SetAction
@@ -528,7 +533,7 @@ func (b *TButton) SetCommandLinkHint(value string) {
 
 // Constraints
 func (b *TButton) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Button_GetConstraints(b.instance))
+    return AsSizeConstraints(Button_GetConstraints(b.instance))
 }
 
 // SetConstraints
@@ -640,7 +645,7 @@ func (b *TButton) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (b *TButton) Font() *TFont {
-    return FontFromInst(Button_GetFont(b.instance))
+    return AsFont(Button_GetFont(b.instance))
 }
 
 // SetFont
@@ -688,7 +693,7 @@ func (b *TButton) SetImageIndex(value int32) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (b *TButton) Images() *TImageList {
-    return ImageListFromInst(Button_GetImages(b.instance))
+    return AsImageList(Button_GetImages(b.instance))
 }
 
 // SetImages
@@ -754,7 +759,7 @@ func (b *TButton) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (b *TButton) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Button_GetPopupMenu(b.instance))
+    return AsPopupMenu(Button_GetPopupMenu(b.instance))
 }
 
 // SetPopupMenu
@@ -1056,7 +1061,7 @@ func (b *TButton) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (b *TButton) Brush() *TBrush {
-    return BrushFromInst(Button_GetBrush(b.instance))
+    return AsBrush(Button_GetBrush(b.instance))
 }
 
 // ControlCount
@@ -1208,7 +1213,7 @@ func (b *TButton) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (b *TButton) Parent() *TWinControl {
-    return WinControlFromInst(Button_GetParent(b.instance))
+    return AsWinControl(Button_GetParent(b.instance))
 }
 
 // SetParent
@@ -1325,7 +1330,7 @@ func (b *TButton) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (b *TButton) Margins() *TMargins {
-    return MarginsFromInst(Button_GetMargins(b.instance))
+    return AsMargins(Button_GetMargins(b.instance))
 }
 
 // SetMargins
@@ -1339,7 +1344,7 @@ func (b *TButton) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (b *TButton) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Button_GetCustomHint(b.instance))
+    return AsCustomHint(Button_GetCustomHint(b.instance))
 }
 
 // SetCustomHint
@@ -1374,7 +1379,7 @@ func (b *TButton) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (b *TButton) Owner() *TComponent {
-    return ComponentFromInst(Button_GetOwner(b.instance))
+    return AsComponent(Button_GetOwner(b.instance))
 }
 
 // Name
@@ -1409,20 +1414,20 @@ func (b *TButton) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (b *TButton) DockClients(Index int32) *TControl {
-    return ControlFromInst(Button_GetDockClients(b.instance, Index))
+    return AsControl(Button_GetDockClients(b.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (b *TButton) Controls(Index int32) *TControl {
-    return ControlFromInst(Button_GetControls(b.instance, Index))
+    return AsControl(Button_GetControls(b.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (b *TButton) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Button_GetComponents(b.instance, AIndex))
+    return AsComponent(Button_GetComponents(b.instance, AIndex))
 }
 

@@ -34,36 +34,41 @@ func NewJumpListItem() *TJumpListItem {
     return j
 }
 
+// AsJumpListItem
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsJumpListItem(obj interface{}) *TJumpListItem {
+    j := new(TJumpListItem)
+    j.instance, j.ptr = getInstance(obj)
+    return j
+}
+
+// -------------------------- Deprecated begin --------------------------
 // JumpListItemFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsJumpListItem.
 func JumpListItemFromInst(inst uintptr) *TJumpListItem {
-    j := new(TJumpListItem)
-    j.instance = inst
-    j.ptr = unsafe.Pointer(inst)
-    return j
+    return AsJumpListItem(inst)
 }
 
 // JumpListItemFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsJumpListItem.
 func JumpListItemFromObj(obj IObject) *TJumpListItem {
-    j := new(TJumpListItem)
-    j.instance = CheckPtr(obj)
-    j.ptr = unsafe.Pointer(j.instance)
-    return j
+    return AsJumpListItem(obj)
 }
 
 // JumpListItemFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsJumpListItem.
 func JumpListItemFromUnsafePointer(ptr unsafe.Pointer) *TJumpListItem {
-    j := new(TJumpListItem)
-    j.instance = uintptr(ptr)
-    j.ptr = ptr
-    return j
+    return AsJumpListItem(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -250,7 +255,7 @@ func (j *TJumpListItem) SetVisible(value bool) {
 
 // Collection
 func (j *TJumpListItem) Collection() *TCollection {
-    return CollectionFromInst(JumpListItem_GetCollection(j.instance))
+    return AsCollection(JumpListItem_GetCollection(j.instance))
 }
 
 // SetCollection

@@ -34,36 +34,41 @@ func NewRichEdit(owner IComponent) *TRichEdit {
     return r
 }
 
+// AsRichEdit
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsRichEdit(obj interface{}) *TRichEdit {
+    r := new(TRichEdit)
+    r.instance, r.ptr = getInstance(obj)
+    return r
+}
+
+// -------------------------- Deprecated begin --------------------------
 // RichEditFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsRichEdit.
 func RichEditFromInst(inst uintptr) *TRichEdit {
-    r := new(TRichEdit)
-    r.instance = inst
-    r.ptr = unsafe.Pointer(inst)
-    return r
+    return AsRichEdit(inst)
 }
 
 // RichEditFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsRichEdit.
 func RichEditFromObj(obj IObject) *TRichEdit {
-    r := new(TRichEdit)
-    r.instance = CheckPtr(obj)
-    r.ptr = unsafe.Pointer(r.instance)
-    return r
+    return AsRichEdit(obj)
 }
 
 // RichEditFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsRichEdit.
 func RichEditFromUnsafePointer(ptr unsafe.Pointer) *TRichEdit {
-    r := new(TRichEdit)
-    r.instance = uintptr(ptr)
-    r.ptr = ptr
-    return r
+    return AsRichEdit(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -199,7 +204,7 @@ func (r *TRichEdit) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (r *TRichEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(RichEdit_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(RichEdit_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -220,7 +225,7 @@ func (r *TRichEdit) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (r *TRichEdit) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(RichEdit_FindChildControl(r.instance, ControlName))
+    return AsControl(RichEdit_FindChildControl(r.instance, ControlName))
 }
 
 // FlipChildren
@@ -435,7 +440,7 @@ func (r *TRichEdit) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (r *TRichEdit) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(RichEdit_FindComponent(r.instance, AName))
+    return AsComponent(RichEdit_FindComponent(r.instance, AName))
 }
 
 // GetNamePath
@@ -712,7 +717,7 @@ func (r *TRichEdit) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (r *TRichEdit) Font() *TFont {
-    return FontFromInst(RichEdit_GetFont(r.instance))
+    return AsFont(RichEdit_GetFont(r.instance))
 }
 
 // SetFont
@@ -748,7 +753,7 @@ func (r *TRichEdit) SetHideScrollBars(value bool) {
 
 // Constraints
 func (r *TRichEdit) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(RichEdit_GetConstraints(r.instance))
+    return AsSizeConstraints(RichEdit_GetConstraints(r.instance))
 }
 
 // SetConstraints
@@ -758,7 +763,7 @@ func (r *TRichEdit) SetConstraints(value *TSizeConstraints) {
 
 // Lines
 func (r *TRichEdit) Lines() *TStrings {
-    return StringsFromInst(RichEdit_GetLines(r.instance))
+    return AsStrings(RichEdit_GetLines(r.instance))
 }
 
 // SetLines
@@ -842,7 +847,7 @@ func (r *TRichEdit) SetPlainText(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (r *TRichEdit) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(RichEdit_GetPopupMenu(r.instance))
+    return AsPopupMenu(RichEdit_GetPopupMenu(r.instance))
 }
 
 // SetPopupMenu
@@ -1159,7 +1164,7 @@ func (r *TRichEdit) ActiveLineNo() uint32 {
 
 // DefAttributes
 func (r *TRichEdit) DefAttributes() *TTextAttributes {
-    return TextAttributesFromInst(RichEdit_GetDefAttributes(r.instance))
+    return AsTextAttributes(RichEdit_GetDefAttributes(r.instance))
 }
 
 // SetDefAttributes
@@ -1169,7 +1174,7 @@ func (r *TRichEdit) SetDefAttributes(value *TTextAttributes) {
 
 // SelAttributes
 func (r *TRichEdit) SelAttributes() *TTextAttributes {
-    return TextAttributesFromInst(RichEdit_GetSelAttributes(r.instance))
+    return AsTextAttributes(RichEdit_GetSelAttributes(r.instance))
 }
 
 // SetSelAttributes
@@ -1189,7 +1194,7 @@ func (r *TRichEdit) SetPageRect(value TRect) {
 
 // Paragraph
 func (r *TRichEdit) Paragraph() *TParaAttributes {
-    return ParaAttributesFromInst(RichEdit_GetParagraph(r.instance))
+    return AsParaAttributes(RichEdit_GetParagraph(r.instance))
 }
 
 // CaretPos
@@ -1362,7 +1367,7 @@ func (r *TRichEdit) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (r *TRichEdit) Brush() *TBrush {
-    return BrushFromInst(RichEdit_GetBrush(r.instance))
+    return AsBrush(RichEdit_GetBrush(r.instance))
 }
 
 // ControlCount
@@ -1423,7 +1428,7 @@ func (r *TRichEdit) SetUseDockManager(value bool) {
 
 // Action
 func (r *TRichEdit) Action() *TAction {
-    return ActionFromInst(RichEdit_GetAction(r.instance))
+    return AsAction(RichEdit_GetAction(r.instance))
 }
 
 // SetAction
@@ -1538,7 +1543,7 @@ func (r *TRichEdit) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (r *TRichEdit) Parent() *TWinControl {
-    return WinControlFromInst(RichEdit_GetParent(r.instance))
+    return AsWinControl(RichEdit_GetParent(r.instance))
 }
 
 // SetParent
@@ -1650,7 +1655,7 @@ func (r *TRichEdit) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (r *TRichEdit) Margins() *TMargins {
-    return MarginsFromInst(RichEdit_GetMargins(r.instance))
+    return AsMargins(RichEdit_GetMargins(r.instance))
 }
 
 // SetMargins
@@ -1664,7 +1669,7 @@ func (r *TRichEdit) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (r *TRichEdit) CustomHint() *TCustomHint {
-    return CustomHintFromInst(RichEdit_GetCustomHint(r.instance))
+    return AsCustomHint(RichEdit_GetCustomHint(r.instance))
 }
 
 // SetCustomHint
@@ -1699,7 +1704,7 @@ func (r *TRichEdit) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (r *TRichEdit) Owner() *TComponent {
-    return ComponentFromInst(RichEdit_GetOwner(r.instance))
+    return AsComponent(RichEdit_GetOwner(r.instance))
 }
 
 // Name
@@ -1734,20 +1739,20 @@ func (r *TRichEdit) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRichEdit) DockClients(Index int32) *TControl {
-    return ControlFromInst(RichEdit_GetDockClients(r.instance, Index))
+    return AsControl(RichEdit_GetDockClients(r.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (r *TRichEdit) Controls(Index int32) *TControl {
-    return ControlFromInst(RichEdit_GetControls(r.instance, Index))
+    return AsControl(RichEdit_GetControls(r.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (r *TRichEdit) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(RichEdit_GetComponents(r.instance, AIndex))
+    return AsComponent(RichEdit_GetComponents(r.instance, AIndex))
 }
 

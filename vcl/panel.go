@@ -34,36 +34,41 @@ func NewPanel(owner IComponent) *TPanel {
     return p
 }
 
+// AsPanel
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPanel(obj interface{}) *TPanel {
+    p := new(TPanel)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PanelFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPanel.
 func PanelFromInst(inst uintptr) *TPanel {
-    p := new(TPanel)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPanel(inst)
 }
 
 // PanelFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPanel.
 func PanelFromObj(obj IObject) *TPanel {
-    p := new(TPanel)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPanel(obj)
 }
 
 // PanelFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPanel.
 func PanelFromUnsafePointer(ptr unsafe.Pointer) *TPanel {
-    p := new(TPanel)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPanel(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -128,7 +133,7 @@ func (p *TPanel) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (p *TPanel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(Panel_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Panel_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -149,7 +154,7 @@ func (p *TPanel) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (p *TPanel) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(Panel_FindChildControl(p.instance, ControlName))
+    return AsControl(Panel_FindChildControl(p.instance, ControlName))
 }
 
 // FlipChildren
@@ -364,7 +369,7 @@ func (p *TPanel) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TPanel) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Panel_FindComponent(p.instance, AName))
+    return AsComponent(Panel_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -601,7 +606,7 @@ func (p *TPanel) SetColor(value TColor) {
 
 // Constraints
 func (p *TPanel) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Panel_GetConstraints(p.instance))
+    return AsSizeConstraints(Panel_GetConstraints(p.instance))
 }
 
 // SetConstraints
@@ -731,7 +736,7 @@ func (p *TPanel) SetFullRepaint(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (p *TPanel) Font() *TFont {
-    return FontFromInst(Panel_GetFont(p.instance))
+    return AsFont(Panel_GetFont(p.instance))
 }
 
 // SetFont
@@ -827,7 +832,7 @@ func (p *TPanel) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (p *TPanel) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Panel_GetPopupMenu(p.instance))
+    return AsPopupMenu(Panel_GetPopupMenu(p.instance))
 }
 
 // SetPopupMenu
@@ -1086,7 +1091,7 @@ func (p *TPanel) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (p *TPanel) Brush() *TBrush {
-    return BrushFromInst(Panel_GetBrush(p.instance))
+    return AsBrush(Panel_GetBrush(p.instance))
 }
 
 // ControlCount
@@ -1119,7 +1124,7 @@ func (p *TPanel) SetParentWindow(value HWND) {
 
 // Action
 func (p *TPanel) Action() *TAction {
-    return ActionFromInst(Panel_GetAction(p.instance))
+    return AsAction(Panel_GetAction(p.instance))
 }
 
 // SetAction
@@ -1234,7 +1239,7 @@ func (p *TPanel) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (p *TPanel) Parent() *TWinControl {
-    return WinControlFromInst(Panel_GetParent(p.instance))
+    return AsWinControl(Panel_GetParent(p.instance))
 }
 
 // SetParent
@@ -1346,7 +1351,7 @@ func (p *TPanel) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (p *TPanel) Margins() *TMargins {
-    return MarginsFromInst(Panel_GetMargins(p.instance))
+    return AsMargins(Panel_GetMargins(p.instance))
 }
 
 // SetMargins
@@ -1360,7 +1365,7 @@ func (p *TPanel) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (p *TPanel) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Panel_GetCustomHint(p.instance))
+    return AsCustomHint(Panel_GetCustomHint(p.instance))
 }
 
 // SetCustomHint
@@ -1395,7 +1400,7 @@ func (p *TPanel) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TPanel) Owner() *TComponent {
-    return ComponentFromInst(Panel_GetOwner(p.instance))
+    return AsComponent(Panel_GetOwner(p.instance))
 }
 
 // Name
@@ -1430,20 +1435,20 @@ func (p *TPanel) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (p *TPanel) DockClients(Index int32) *TControl {
-    return ControlFromInst(Panel_GetDockClients(p.instance, Index))
+    return AsControl(Panel_GetDockClients(p.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (p *TPanel) Controls(Index int32) *TControl {
-    return ControlFromInst(Panel_GetControls(p.instance, Index))
+    return AsControl(Panel_GetControls(p.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPanel) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Panel_GetComponents(p.instance, AIndex))
+    return AsComponent(Panel_GetComponents(p.instance, AIndex))
 }
 

@@ -34,36 +34,41 @@ func NewStrings() *TStrings {
     return s
 }
 
+// AsStrings
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsStrings(obj interface{}) *TStrings {
+    s := new(TStrings)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // StringsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsStrings.
 func StringsFromInst(inst uintptr) *TStrings {
-    s := new(TStrings)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsStrings(inst)
 }
 
 // StringsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsStrings.
 func StringsFromObj(obj IObject) *TStrings {
-    s := new(TStrings)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsStrings(obj)
 }
 
 // StringsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsStrings.
 func StringsFromUnsafePointer(ptr unsafe.Pointer) *TStrings {
-    s := new(TStrings)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsStrings(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -346,7 +351,7 @@ func (s *TStrings) SetOptions(value TStringsOptions) {
 
 // Objects
 func (s *TStrings) Objects(Index int32) *TObject {
-    return ObjectFromInst(Strings_GetObjects(s.instance, Index))
+    return AsObject(Strings_GetObjects(s.instance, Index))
 }
 
 // Objects

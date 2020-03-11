@@ -34,36 +34,41 @@ func NewTreeNode() *TTreeNode {
     return t
 }
 
+// AsTreeNode
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsTreeNode(obj interface{}) *TTreeNode {
+    t := new(TTreeNode)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TreeNodeFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTreeNode.
 func TreeNodeFromInst(inst uintptr) *TTreeNode {
-    t := new(TTreeNode)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTreeNode(inst)
 }
 
 // TreeNodeFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTreeNode.
 func TreeNodeFromObj(obj IObject) *TTreeNode {
-    t := new(TTreeNode)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTreeNode(obj)
 }
 
 // TreeNodeFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTreeNode.
 func TreeNodeFromUnsafePointer(ptr unsafe.Pointer) *TTreeNode {
-    t := new(TTreeNode)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTreeNode(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -379,14 +384,14 @@ func (t *TTreeNode) SetOverlayIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTreeNode) Owner() *TTreeNodes {
-    return TreeNodesFromInst(TreeNode_GetOwner(t.instance))
+    return AsTreeNodes(TreeNode_GetOwner(t.instance))
 }
 
 // Parent
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (t *TTreeNode) Parent() *TTreeNode {
-    return TreeNodeFromInst(TreeNode_GetParent(t.instance))
+    return AsTreeNode(TreeNode_GetParent(t.instance))
 }
 
 // SelectedIndex
@@ -439,12 +444,12 @@ func (t *TTreeNode) SetText(value string) {
 
 // TreeView
 func (t *TTreeNode) TreeView() *TWinControl {
-    return WinControlFromInst(TreeNode_GetTreeView(t.instance))
+    return AsWinControl(TreeNode_GetTreeView(t.instance))
 }
 
 // Item
 func (t *TTreeNode) Item(Index int32) *TTreeNode {
-    return TreeNodeFromInst(TreeNode_GetItem(t.instance, Index))
+    return AsTreeNode(TreeNode_GetItem(t.instance, Index))
 }
 
 // Item

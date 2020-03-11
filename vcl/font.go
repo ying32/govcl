@@ -34,36 +34,41 @@ func NewFont() *TFont {
     return f
 }
 
+// AsFont
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsFont(obj interface{}) *TFont {
+    f := new(TFont)
+    f.instance, f.ptr = getInstance(obj)
+    return f
+}
+
+// -------------------------- Deprecated begin --------------------------
 // FontFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsFont.
 func FontFromInst(inst uintptr) *TFont {
-    f := new(TFont)
-    f.instance = inst
-    f.ptr = unsafe.Pointer(inst)
-    return f
+    return AsFont(inst)
 }
 
 // FontFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsFont.
 func FontFromObj(obj IObject) *TFont {
-    f := new(TFont)
-    f.instance = CheckPtr(obj)
-    f.ptr = unsafe.Pointer(f.instance)
-    return f
+    return AsFont(obj)
 }
 
 // FontFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsFont.
 func FontFromUnsafePointer(ptr unsafe.Pointer) *TFont {
-    f := new(TFont)
-    f.instance = uintptr(ptr)
-    f.ptr = ptr
-    return f
+    return AsFont(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

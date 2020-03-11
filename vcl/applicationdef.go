@@ -77,7 +77,7 @@ var globalFormScaled bool = false
   5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件
 */
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
-	return FormFromObj(resObjtBuild(0, nil, a.instance, fields...))
+	return AsForm(resObjtBuild(0, nil, a.instance, fields...))
 }
 
 // SetFormScaled 设置全局窗口的Scaled

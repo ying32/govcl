@@ -34,36 +34,41 @@ func NewFontDialog(owner IComponent) *TFontDialog {
     return f
 }
 
+// AsFontDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsFontDialog(obj interface{}) *TFontDialog {
+    f := new(TFontDialog)
+    f.instance, f.ptr = getInstance(obj)
+    return f
+}
+
+// -------------------------- Deprecated begin --------------------------
 // FontDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsFontDialog.
 func FontDialogFromInst(inst uintptr) *TFontDialog {
-    f := new(TFontDialog)
-    f.instance = inst
-    f.ptr = unsafe.Pointer(inst)
-    return f
+    return AsFontDialog(inst)
 }
 
 // FontDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsFontDialog.
 func FontDialogFromObj(obj IObject) *TFontDialog {
-    f := new(TFontDialog)
-    f.instance = CheckPtr(obj)
-    f.ptr = unsafe.Pointer(f.instance)
-    return f
+    return AsFontDialog(obj)
 }
 
 // FontDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsFontDialog.
 func FontDialogFromUnsafePointer(ptr unsafe.Pointer) *TFontDialog {
-    f := new(TFontDialog)
-    f.instance = uintptr(ptr)
-    f.ptr = ptr
-    return f
+    return AsFontDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -121,7 +126,7 @@ func (f *TFontDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (f *TFontDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(FontDialog_FindComponent(f.instance, AName))
+    return AsComponent(FontDialog_FindComponent(f.instance, AName))
 }
 
 // GetNamePath
@@ -205,7 +210,7 @@ func (f *TFontDialog) ToString() string {
 // CN: 获取字体。
 // EN: Get Font.
 func (f *TFontDialog) Font() *TFont {
-    return FontFromInst(FontDialog_GetFont(f.instance))
+    return AsFont(FontDialog_GetFont(f.instance))
 }
 
 // SetFont
@@ -279,7 +284,7 @@ func (f *TFontDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (f *TFontDialog) Owner() *TComponent {
-    return ComponentFromInst(FontDialog_GetOwner(f.instance))
+    return AsComponent(FontDialog_GetOwner(f.instance))
 }
 
 // Name
@@ -314,6 +319,6 @@ func (f *TFontDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (f *TFontDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(FontDialog_GetComponents(f.instance, AIndex))
+    return AsComponent(FontDialog_GetComponents(f.instance, AIndex))
 }
 

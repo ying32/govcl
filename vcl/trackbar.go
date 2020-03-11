@@ -34,36 +34,41 @@ func NewTrackBar(owner IComponent) *TTrackBar {
     return t
 }
 
+// AsTrackBar
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsTrackBar(obj interface{}) *TTrackBar {
+    t := new(TTrackBar)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TrackBarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTrackBar.
 func TrackBarFromInst(inst uintptr) *TTrackBar {
-    t := new(TTrackBar)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTrackBar(inst)
 }
 
 // TrackBarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTrackBar.
 func TrackBarFromObj(obj IObject) *TTrackBar {
-    t := new(TTrackBar)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTrackBar(obj)
 }
 
 // TrackBarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTrackBar.
 func TrackBarFromUnsafePointer(ptr unsafe.Pointer) *TTrackBar {
-    t := new(TTrackBar)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTrackBar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -133,7 +138,7 @@ func (t *TTrackBar) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (t *TTrackBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(TrackBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(TrackBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -154,7 +159,7 @@ func (t *TTrackBar) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (t *TTrackBar) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(TrackBar_FindChildControl(t.instance, ControlName))
+    return AsControl(TrackBar_FindChildControl(t.instance, ControlName))
 }
 
 // FlipChildren
@@ -369,7 +374,7 @@ func (t *TTrackBar) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TTrackBar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(TrackBar_FindComponent(t.instance, AName))
+    return AsComponent(TrackBar_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -566,7 +571,7 @@ func (t *TTrackBar) SetEnabled(value bool) {
 
 // Constraints
 func (t *TTrackBar) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(TrackBar_GetConstraints(t.instance))
+    return AsSizeConstraints(TrackBar_GetConstraints(t.instance))
 }
 
 // SetConstraints
@@ -662,7 +667,7 @@ func (t *TTrackBar) SetPageSize(value int32) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (t *TTrackBar) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(TrackBar_GetPopupMenu(t.instance))
+    return AsPopupMenu(TrackBar_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
@@ -979,7 +984,7 @@ func (t *TTrackBar) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (t *TTrackBar) Brush() *TBrush {
-    return BrushFromInst(TrackBar_GetBrush(t.instance))
+    return AsBrush(TrackBar_GetBrush(t.instance))
 }
 
 // ControlCount
@@ -1026,7 +1031,7 @@ func (t *TTrackBar) SetUseDockManager(value bool) {
 
 // Action
 func (t *TTrackBar) Action() *TAction {
-    return ActionFromInst(TrackBar_GetAction(t.instance))
+    return AsAction(TrackBar_GetAction(t.instance))
 }
 
 // SetAction
@@ -1151,7 +1156,7 @@ func (t *TTrackBar) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (t *TTrackBar) Parent() *TWinControl {
-    return WinControlFromInst(TrackBar_GetParent(t.instance))
+    return AsWinControl(TrackBar_GetParent(t.instance))
 }
 
 // SetParent
@@ -1263,7 +1268,7 @@ func (t *TTrackBar) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (t *TTrackBar) Margins() *TMargins {
-    return MarginsFromInst(TrackBar_GetMargins(t.instance))
+    return AsMargins(TrackBar_GetMargins(t.instance))
 }
 
 // SetMargins
@@ -1277,7 +1282,7 @@ func (t *TTrackBar) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (t *TTrackBar) CustomHint() *TCustomHint {
-    return CustomHintFromInst(TrackBar_GetCustomHint(t.instance))
+    return AsCustomHint(TrackBar_GetCustomHint(t.instance))
 }
 
 // SetCustomHint
@@ -1312,7 +1317,7 @@ func (t *TTrackBar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTrackBar) Owner() *TComponent {
-    return ComponentFromInst(TrackBar_GetOwner(t.instance))
+    return AsComponent(TrackBar_GetOwner(t.instance))
 }
 
 // Name
@@ -1347,20 +1352,20 @@ func (t *TTrackBar) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (t *TTrackBar) DockClients(Index int32) *TControl {
-    return ControlFromInst(TrackBar_GetDockClients(t.instance, Index))
+    return AsControl(TrackBar_GetDockClients(t.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (t *TTrackBar) Controls(Index int32) *TControl {
-    return ControlFromInst(TrackBar_GetControls(t.instance, Index))
+    return AsControl(TrackBar_GetControls(t.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TTrackBar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(TrackBar_GetComponents(t.instance, AIndex))
+    return AsComponent(TrackBar_GetComponents(t.instance, AIndex))
 }
 

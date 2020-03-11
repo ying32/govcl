@@ -34,36 +34,41 @@ func NewPopupMenu(owner IComponent) *TPopupMenu {
     return p
 }
 
+// AsPopupMenu
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPopupMenu(obj interface{}) *TPopupMenu {
+    p := new(TPopupMenu)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PopupMenuFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPopupMenu.
 func PopupMenuFromInst(inst uintptr) *TPopupMenu {
-    p := new(TPopupMenu)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPopupMenu(inst)
 }
 
 // PopupMenuFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPopupMenu.
 func PopupMenuFromObj(obj IObject) *TPopupMenu {
-    p := new(TPopupMenu)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPopupMenu(obj)
 }
 
 // PopupMenuFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPopupMenu.
 func PopupMenuFromUnsafePointer(ptr unsafe.Pointer) *TPopupMenu {
-    p := new(TPopupMenu)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPopupMenu(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -124,7 +129,7 @@ func (p *TPopupMenu) Popup(X int32, Y int32) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TPopupMenu) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(PopupMenu_FindComponent(p.instance, AName))
+    return AsComponent(PopupMenu_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -206,7 +211,7 @@ func (p *TPopupMenu) ToString() string {
 
 // PopupComponent
 func (p *TPopupMenu) PopupComponent() *TComponent {
-    return ComponentFromInst(PopupMenu_GetPopupComponent(p.instance))
+    return AsComponent(PopupMenu_GetPopupComponent(p.instance))
 }
 
 // SetPopupComponent
@@ -257,7 +262,7 @@ func (p *TPopupMenu) SetBiDiMode(value TBiDiMode) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (p *TPopupMenu) Images() *TImageList {
-    return ImageListFromInst(PopupMenu_GetImages(p.instance))
+    return AsImageList(PopupMenu_GetImages(p.instance))
 }
 
 // SetImages
@@ -308,7 +313,7 @@ func (p *TPopupMenu) SetWindowHandle(value HWND) {
 
 // Items
 func (p *TPopupMenu) Items() *TMenuItem {
-    return MenuItemFromInst(PopupMenu_GetItems(p.instance))
+    return AsMenuItem(PopupMenu_GetItems(p.instance))
 }
 
 // ComponentCount
@@ -336,7 +341,7 @@ func (p *TPopupMenu) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TPopupMenu) Owner() *TComponent {
-    return ComponentFromInst(PopupMenu_GetOwner(p.instance))
+    return AsComponent(PopupMenu_GetOwner(p.instance))
 }
 
 // Name
@@ -371,6 +376,6 @@ func (p *TPopupMenu) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPopupMenu) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(PopupMenu_GetComponents(p.instance, AIndex))
+    return AsComponent(PopupMenu_GetComponents(p.instance, AIndex))
 }
 

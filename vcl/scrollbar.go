@@ -34,36 +34,41 @@ func NewScrollBar(owner IComponent) *TScrollBar {
     return s
 }
 
+// AsScrollBar
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsScrollBar(obj interface{}) *TScrollBar {
+    s := new(TScrollBar)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ScrollBarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsScrollBar.
 func ScrollBarFromInst(inst uintptr) *TScrollBar {
-    s := new(TScrollBar)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsScrollBar(inst)
 }
 
 // ScrollBarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsScrollBar.
 func ScrollBarFromObj(obj IObject) *TScrollBar {
-    s := new(TScrollBar)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsScrollBar(obj)
 }
 
 // ScrollBarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsScrollBar.
 func ScrollBarFromUnsafePointer(ptr unsafe.Pointer) *TScrollBar {
-    s := new(TScrollBar)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsScrollBar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -133,7 +138,7 @@ func (s *TScrollBar) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TScrollBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ScrollBar_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ScrollBar_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -154,7 +159,7 @@ func (s *TScrollBar) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (s *TScrollBar) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ScrollBar_FindChildControl(s.instance, ControlName))
+    return AsControl(ScrollBar_FindChildControl(s.instance, ControlName))
 }
 
 // FlipChildren
@@ -369,7 +374,7 @@ func (s *TScrollBar) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TScrollBar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ScrollBar_FindComponent(s.instance, AName))
+    return AsComponent(ScrollBar_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -482,7 +487,7 @@ func (s *TScrollBar) SetBiDiMode(value TBiDiMode) {
 
 // Constraints
 func (s *TScrollBar) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ScrollBar_GetConstraints(s.instance))
+    return AsSizeConstraints(ScrollBar_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -658,7 +663,7 @@ func (s *TScrollBar) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (s *TScrollBar) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ScrollBar_GetPopupMenu(s.instance))
+    return AsPopupMenu(ScrollBar_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
@@ -900,7 +905,7 @@ func (s *TScrollBar) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (s *TScrollBar) Brush() *TBrush {
-    return BrushFromInst(ScrollBar_GetBrush(s.instance))
+    return AsBrush(ScrollBar_GetBrush(s.instance))
 }
 
 // ControlCount
@@ -947,7 +952,7 @@ func (s *TScrollBar) SetUseDockManager(value bool) {
 
 // Action
 func (s *TScrollBar) Action() *TAction {
-    return ActionFromInst(ScrollBar_GetAction(s.instance))
+    return AsAction(ScrollBar_GetAction(s.instance))
 }
 
 // SetAction
@@ -1062,7 +1067,7 @@ func (s *TScrollBar) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TScrollBar) Parent() *TWinControl {
-    return WinControlFromInst(ScrollBar_GetParent(s.instance))
+    return AsWinControl(ScrollBar_GetParent(s.instance))
 }
 
 // SetParent
@@ -1179,7 +1184,7 @@ func (s *TScrollBar) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TScrollBar) Margins() *TMargins {
-    return MarginsFromInst(ScrollBar_GetMargins(s.instance))
+    return AsMargins(ScrollBar_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -1193,7 +1198,7 @@ func (s *TScrollBar) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TScrollBar) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ScrollBar_GetCustomHint(s.instance))
+    return AsCustomHint(ScrollBar_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -1228,7 +1233,7 @@ func (s *TScrollBar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TScrollBar) Owner() *TComponent {
-    return ComponentFromInst(ScrollBar_GetOwner(s.instance))
+    return AsComponent(ScrollBar_GetOwner(s.instance))
 }
 
 // Name
@@ -1263,20 +1268,20 @@ func (s *TScrollBar) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TScrollBar) DockClients(Index int32) *TControl {
-    return ControlFromInst(ScrollBar_GetDockClients(s.instance, Index))
+    return AsControl(ScrollBar_GetDockClients(s.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (s *TScrollBar) Controls(Index int32) *TControl {
-    return ControlFromInst(ScrollBar_GetControls(s.instance, Index))
+    return AsControl(ScrollBar_GetControls(s.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TScrollBar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ScrollBar_GetComponents(s.instance, AIndex))
+    return AsComponent(ScrollBar_GetComponents(s.instance, AIndex))
 }
 

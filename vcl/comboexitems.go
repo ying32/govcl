@@ -24,36 +24,41 @@ type TComboExItems struct {
     ptr unsafe.Pointer
 }
 
+// AsComboExItems
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsComboExItems(obj interface{}) *TComboExItems {
+    c := new(TComboExItems)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ComboExItemsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsComboExItems.
 func ComboExItemsFromInst(inst uintptr) *TComboExItems {
-    c := new(TComboExItems)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsComboExItems(inst)
 }
 
 // ComboExItemsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsComboExItems.
 func ComboExItemsFromObj(obj IObject) *TComboExItems {
-    c := new(TComboExItems)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsComboExItems(obj)
 }
 
 // ComboExItemsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsComboExItems.
 func ComboExItemsFromUnsafePointer(ptr unsafe.Pointer) *TComboExItems {
-    c := new(TComboExItems)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsComboExItems(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.
@@ -91,24 +96,24 @@ func TComboExItemsClass() TClass {
 
 // Add
 func (c *TComboExItems) Add() *TComboExItem {
-    return ComboExItemFromInst(ComboExItems_Add(c.instance))
+    return AsComboExItem(ComboExItems_Add(c.instance))
 }
 
 // AddItem
 func (c *TComboExItems) AddItem(Caption string, ImageIndex int32, SelectedImageIndex int32, OverlayImageIndex int32, Indent int32, Data uintptr) *TComboExItem {
-    return ComboExItemFromInst(ComboExItems_AddItem(c.instance, Caption , ImageIndex , SelectedImageIndex , OverlayImageIndex , Indent , Data))
+    return AsComboExItem(ComboExItems_AddItem(c.instance, Caption , ImageIndex , SelectedImageIndex , OverlayImageIndex , Indent , Data))
 }
 
 // Insert
 func (c *TComboExItems) Insert(Index int32) *TComboExItem {
-    return ComboExItemFromInst(ComboExItems_Insert(c.instance, Index))
+    return AsComboExItem(ComboExItems_Insert(c.instance, Index))
 }
 
 // Owner
 // CN: 组件所有者。
 // EN: component owner.
 func (c *TComboExItems) Owner() *TObject {
-    return ObjectFromInst(ComboExItems_Owner(c.instance))
+    return AsObject(ComboExItems_Owner(c.instance))
 }
 
 // Assign
@@ -147,7 +152,7 @@ func (c *TComboExItems) EndUpdate() {
 
 // FindItemID
 func (c *TComboExItems) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(ComboExItems_FindItemID(c.instance, ID))
+    return AsCollectionItem(ComboExItems_FindItemID(c.instance, ID))
 }
 
 // GetNamePath
@@ -230,6 +235,6 @@ func (c *TComboExItems) Count() int32 {
 
 // ComboItems
 func (c *TComboExItems) ComboItems(Index int32) *TComboExItem {
-    return ComboExItemFromInst(ComboExItems_GetComboItems(c.instance, Index))
+    return AsComboExItem(ComboExItems_GetComboItems(c.instance, Index))
 }
 

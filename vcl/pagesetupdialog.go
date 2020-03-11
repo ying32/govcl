@@ -34,36 +34,41 @@ func NewPageSetupDialog(owner IComponent) *TPageSetupDialog {
     return p
 }
 
+// AsPageSetupDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPageSetupDialog(obj interface{}) *TPageSetupDialog {
+    p := new(TPageSetupDialog)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PageSetupDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPageSetupDialog.
 func PageSetupDialogFromInst(inst uintptr) *TPageSetupDialog {
-    p := new(TPageSetupDialog)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPageSetupDialog(inst)
 }
 
 // PageSetupDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPageSetupDialog.
 func PageSetupDialogFromObj(obj IObject) *TPageSetupDialog {
-    p := new(TPageSetupDialog)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPageSetupDialog(obj)
 }
 
 // PageSetupDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPageSetupDialog.
 func PageSetupDialogFromUnsafePointer(ptr unsafe.Pointer) *TPageSetupDialog {
-    p := new(TPageSetupDialog)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPageSetupDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -126,7 +131,7 @@ func (p *TPageSetupDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TPageSetupDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(PageSetupDialog_FindComponent(p.instance, AName))
+    return AsComponent(PageSetupDialog_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -380,7 +385,7 @@ func (p *TPageSetupDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TPageSetupDialog) Owner() *TComponent {
-    return ComponentFromInst(PageSetupDialog_GetOwner(p.instance))
+    return AsComponent(PageSetupDialog_GetOwner(p.instance))
 }
 
 // Name
@@ -415,6 +420,6 @@ func (p *TPageSetupDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPageSetupDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(PageSetupDialog_GetComponents(p.instance, AIndex))
+    return AsComponent(PageSetupDialog_GetComponents(p.instance, AIndex))
 }
 

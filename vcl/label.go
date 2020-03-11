@@ -34,36 +34,41 @@ func NewLabel(owner IComponent) *TLabel {
     return l
 }
 
+// AsLabel
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsLabel(obj interface{}) *TLabel {
+    l := new(TLabel)
+    l.instance, l.ptr = getInstance(obj)
+    return l
+}
+
+// -------------------------- Deprecated begin --------------------------
 // LabelFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsLabel.
 func LabelFromInst(inst uintptr) *TLabel {
-    l := new(TLabel)
-    l.instance = inst
-    l.ptr = unsafe.Pointer(inst)
-    return l
+    return AsLabel(inst)
 }
 
 // LabelFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsLabel.
 func LabelFromObj(obj IObject) *TLabel {
-    l := new(TLabel)
-    l.instance = CheckPtr(obj)
-    l.ptr = unsafe.Pointer(l.instance)
-    return l
+    return AsLabel(obj)
 }
 
 // LabelFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsLabel.
 func LabelFromUnsafePointer(ptr unsafe.Pointer) *TLabel {
-    l := new(TLabel)
-    l.instance = uintptr(ptr)
-    l.ptr = ptr
-    return l
+    return AsLabel(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -247,7 +252,7 @@ func (l *TLabel) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (l *TLabel) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Label_FindComponent(l.instance, AName))
+    return AsComponent(Label_FindComponent(l.instance, AName))
 }
 
 // GetNamePath
@@ -416,7 +421,7 @@ func (l *TLabel) SetColor(value TColor) {
 
 // Constraints
 func (l *TLabel) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Label_GetConstraints(l.instance))
+    return AsSizeConstraints(Label_GetConstraints(l.instance))
 }
 
 // SetConstraints
@@ -494,7 +499,7 @@ func (l *TLabel) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (l *TLabel) Font() *TFont {
-    return FontFromInst(Label_GetFont(l.instance))
+    return AsFont(Label_GetFont(l.instance))
 }
 
 // SetFont
@@ -556,7 +561,7 @@ func (l *TLabel) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (l *TLabel) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Label_GetPopupMenu(l.instance))
+    return AsPopupMenu(Label_GetPopupMenu(l.instance))
 }
 
 // SetPopupMenu
@@ -761,12 +766,12 @@ func (l *TLabel) SetOnStartDock(fn TStartDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (l *TLabel) Canvas() *TCanvas {
-    return CanvasFromInst(Label_GetCanvas(l.instance))
+    return AsCanvas(Label_GetCanvas(l.instance))
 }
 
 // Action
 func (l *TLabel) Action() *TAction {
-    return ActionFromInst(Label_GetAction(l.instance))
+    return AsAction(Label_GetAction(l.instance))
 }
 
 // SetAction
@@ -881,7 +886,7 @@ func (l *TLabel) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (l *TLabel) Parent() *TWinControl {
-    return WinControlFromInst(Label_GetParent(l.instance))
+    return AsWinControl(Label_GetParent(l.instance))
 }
 
 // SetParent
@@ -993,7 +998,7 @@ func (l *TLabel) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (l *TLabel) Margins() *TMargins {
-    return MarginsFromInst(Label_GetMargins(l.instance))
+    return AsMargins(Label_GetMargins(l.instance))
 }
 
 // SetMargins
@@ -1007,7 +1012,7 @@ func (l *TLabel) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (l *TLabel) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Label_GetCustomHint(l.instance))
+    return AsCustomHint(Label_GetCustomHint(l.instance))
 }
 
 // SetCustomHint
@@ -1042,7 +1047,7 @@ func (l *TLabel) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (l *TLabel) Owner() *TComponent {
-    return ComponentFromInst(Label_GetOwner(l.instance))
+    return AsComponent(Label_GetOwner(l.instance))
 }
 
 // Name
@@ -1077,6 +1082,6 @@ func (l *TLabel) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (l *TLabel) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Label_GetComponents(l.instance, AIndex))
+    return AsComponent(Label_GetComponents(l.instance, AIndex))
 }
 

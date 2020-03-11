@@ -34,36 +34,41 @@ func NewMainMenu(owner IComponent) *TMainMenu {
     return m
 }
 
+// AsMainMenu
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsMainMenu(obj interface{}) *TMainMenu {
+    m := new(TMainMenu)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MainMenuFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMainMenu.
 func MainMenuFromInst(inst uintptr) *TMainMenu {
-    m := new(TMainMenu)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMainMenu(inst)
 }
 
 // MainMenuFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMainMenu.
 func MainMenuFromObj(obj IObject) *TMainMenu {
-    m := new(TMainMenu)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMainMenu(obj)
 }
 
 // MainMenuFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMainMenu.
 func MainMenuFromUnsafePointer(ptr unsafe.Pointer) *TMainMenu {
-    m := new(TMainMenu)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMainMenu(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -114,7 +119,7 @@ func TMainMenuClass() TClass {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (m *TMainMenu) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(MainMenu_FindComponent(m.instance, AName))
+    return AsComponent(MainMenu_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
@@ -218,7 +223,7 @@ func (m *TMainMenu) SetBiDiMode(value TBiDiMode) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (m *TMainMenu) Images() *TImageList {
-    return ImageListFromInst(MainMenu_GetImages(m.instance))
+    return AsImageList(MainMenu_GetImages(m.instance))
 }
 
 // SetImages
@@ -264,7 +269,7 @@ func (m *TMainMenu) SetWindowHandle(value HWND) {
 
 // Items
 func (m *TMainMenu) Items() *TMenuItem {
-    return MenuItemFromInst(MainMenu_GetItems(m.instance))
+    return AsMenuItem(MainMenu_GetItems(m.instance))
 }
 
 // ComponentCount
@@ -292,7 +297,7 @@ func (m *TMainMenu) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (m *TMainMenu) Owner() *TComponent {
-    return ComponentFromInst(MainMenu_GetOwner(m.instance))
+    return AsComponent(MainMenu_GetOwner(m.instance))
 }
 
 // Name
@@ -327,6 +332,6 @@ func (m *TMainMenu) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (m *TMainMenu) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(MainMenu_GetComponents(m.instance, AIndex))
+    return AsComponent(MainMenu_GetComponents(m.instance, AIndex))
 }
 

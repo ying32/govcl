@@ -34,36 +34,41 @@ func NewFrame(owner IComponent) *TFrame {
     return f
 }
 
+// AsFrame
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsFrame(obj interface{}) *TFrame {
+    f := new(TFrame)
+    f.instance, f.ptr = getInstance(obj)
+    return f
+}
+
+// -------------------------- Deprecated begin --------------------------
 // FrameFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsFrame.
 func FrameFromInst(inst uintptr) *TFrame {
-    f := new(TFrame)
-    f.instance = inst
-    f.ptr = unsafe.Pointer(inst)
-    return f
+    return AsFrame(inst)
 }
 
 // FrameFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsFrame.
 func FrameFromObj(obj IObject) *TFrame {
-    f := new(TFrame)
-    f.instance = CheckPtr(obj)
-    f.ptr = unsafe.Pointer(f.instance)
-    return f
+    return AsFrame(obj)
 }
 
 // FrameFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsFrame.
 func FrameFromUnsafePointer(ptr unsafe.Pointer) *TFrame {
-    f := new(TFrame)
-    f.instance = uintptr(ptr)
-    f.ptr = ptr
-    return f
+    return AsFrame(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -143,7 +148,7 @@ func (f *TFrame) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (f *TFrame) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(Frame_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Frame_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -164,7 +169,7 @@ func (f *TFrame) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (f *TFrame) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(Frame_FindChildControl(f.instance, ControlName))
+    return AsControl(Frame_FindChildControl(f.instance, ControlName))
 }
 
 // FlipChildren
@@ -379,7 +384,7 @@ func (f *TFrame) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (f *TFrame) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Frame_FindComponent(f.instance, AName))
+    return AsComponent(Frame_FindComponent(f.instance, AName))
 }
 
 // GetNamePath
@@ -516,7 +521,7 @@ func (f *TFrame) SetBiDiMode(value TBiDiMode) {
 
 // Constraints
 func (f *TFrame) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Frame_GetConstraints(f.instance))
+    return AsSizeConstraints(Frame_GetConstraints(f.instance))
 }
 
 // SetConstraints
@@ -636,7 +641,7 @@ func (f *TFrame) SetCtl3D(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (f *TFrame) Font() *TFont {
-    return FontFromInst(Frame_GetFont(f.instance))
+    return AsFont(Frame_GetFont(f.instance))
 }
 
 // SetFont
@@ -722,7 +727,7 @@ func (f *TFrame) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (f *TFrame) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Frame_GetPopupMenu(f.instance))
+    return AsPopupMenu(Frame_GetPopupMenu(f.instance))
 }
 
 // SetPopupMenu
@@ -948,7 +953,7 @@ func (f *TFrame) SetOnUnDock(fn TUnDockEvent) {
 
 // HorzScrollBar
 func (f *TFrame) HorzScrollBar() *TControlScrollBar {
-    return ControlScrollBarFromInst(Frame_GetHorzScrollBar(f.instance))
+    return AsControlScrollBar(Frame_GetHorzScrollBar(f.instance))
 }
 
 // SetHorzScrollBar
@@ -958,7 +963,7 @@ func (f *TFrame) SetHorzScrollBar(value *TControlScrollBar) {
 
 // VertScrollBar
 func (f *TFrame) VertScrollBar() *TControlScrollBar {
-    return ControlScrollBarFromInst(Frame_GetVertScrollBar(f.instance))
+    return AsControlScrollBar(Frame_GetVertScrollBar(f.instance))
 }
 
 // SetVertScrollBar
@@ -998,7 +1003,7 @@ func (f *TFrame) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (f *TFrame) Brush() *TBrush {
-    return BrushFromInst(Frame_GetBrush(f.instance))
+    return AsBrush(Frame_GetBrush(f.instance))
 }
 
 // ControlCount
@@ -1045,7 +1050,7 @@ func (f *TFrame) SetUseDockManager(value bool) {
 
 // Action
 func (f *TFrame) Action() *TAction {
-    return ActionFromInst(Frame_GetAction(f.instance))
+    return AsAction(Frame_GetAction(f.instance))
 }
 
 // SetAction
@@ -1160,7 +1165,7 @@ func (f *TFrame) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (f *TFrame) Parent() *TWinControl {
-    return WinControlFromInst(Frame_GetParent(f.instance))
+    return AsWinControl(Frame_GetParent(f.instance))
 }
 
 // SetParent
@@ -1286,7 +1291,7 @@ func (f *TFrame) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (f *TFrame) Margins() *TMargins {
-    return MarginsFromInst(Frame_GetMargins(f.instance))
+    return AsMargins(Frame_GetMargins(f.instance))
 }
 
 // SetMargins
@@ -1300,7 +1305,7 @@ func (f *TFrame) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (f *TFrame) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Frame_GetCustomHint(f.instance))
+    return AsCustomHint(Frame_GetCustomHint(f.instance))
 }
 
 // SetCustomHint
@@ -1335,7 +1340,7 @@ func (f *TFrame) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (f *TFrame) Owner() *TComponent {
-    return ComponentFromInst(Frame_GetOwner(f.instance))
+    return AsComponent(Frame_GetOwner(f.instance))
 }
 
 // Name
@@ -1370,20 +1375,20 @@ func (f *TFrame) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (f *TFrame) DockClients(Index int32) *TControl {
-    return ControlFromInst(Frame_GetDockClients(f.instance, Index))
+    return AsControl(Frame_GetDockClients(f.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (f *TFrame) Controls(Index int32) *TControl {
-    return ControlFromInst(Frame_GetControls(f.instance, Index))
+    return AsControl(Frame_GetControls(f.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (f *TFrame) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Frame_GetComponents(f.instance, AIndex))
+    return AsComponent(Frame_GetComponents(f.instance, AIndex))
 }
 

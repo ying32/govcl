@@ -34,36 +34,41 @@ func NewOpenDialog(owner IComponent) *TOpenDialog {
     return o
 }
 
+// AsOpenDialog
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsOpenDialog(obj interface{}) *TOpenDialog {
+    o := new(TOpenDialog)
+    o.instance, o.ptr = getInstance(obj)
+    return o
+}
+
+// -------------------------- Deprecated begin --------------------------
 // OpenDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsOpenDialog.
 func OpenDialogFromInst(inst uintptr) *TOpenDialog {
-    o := new(TOpenDialog)
-    o.instance = inst
-    o.ptr = unsafe.Pointer(inst)
-    return o
+    return AsOpenDialog(inst)
 }
 
 // OpenDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsOpenDialog.
 func OpenDialogFromObj(obj IObject) *TOpenDialog {
-    o := new(TOpenDialog)
-    o.instance = CheckPtr(obj)
-    o.ptr = unsafe.Pointer(o.instance)
-    return o
+    return AsOpenDialog(obj)
 }
 
 // OpenDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsOpenDialog.
 func OpenDialogFromUnsafePointer(ptr unsafe.Pointer) *TOpenDialog {
-    o := new(TOpenDialog)
-    o.instance = uintptr(ptr)
-    o.ptr = ptr
-    return o
+    return AsOpenDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -121,7 +126,7 @@ func (o *TOpenDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (o *TOpenDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(OpenDialog_FindComponent(o.instance, AName))
+    return AsComponent(OpenDialog_FindComponent(o.instance, AName))
 }
 
 // GetNamePath
@@ -203,7 +208,7 @@ func (o *TOpenDialog) ToString() string {
 
 // Files
 func (o *TOpenDialog) Files() *TStrings {
-    return StringsFromInst(OpenDialog_GetFiles(o.instance))
+    return AsStrings(OpenDialog_GetFiles(o.instance))
 }
 
 // DefaultExt
@@ -340,7 +345,7 @@ func (o *TOpenDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (o *TOpenDialog) Owner() *TComponent {
-    return ComponentFromInst(OpenDialog_GetOwner(o.instance))
+    return AsComponent(OpenDialog_GetOwner(o.instance))
 }
 
 // Name
@@ -375,6 +380,6 @@ func (o *TOpenDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (o *TOpenDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(OpenDialog_GetComponents(o.instance, AIndex))
+    return AsComponent(OpenDialog_GetComponents(o.instance, AIndex))
 }
 

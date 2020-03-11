@@ -34,36 +34,41 @@ func NewStaticText(owner IComponent) *TStaticText {
     return s
 }
 
+// AsStaticText
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsStaticText(obj interface{}) *TStaticText {
+    s := new(TStaticText)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // StaticTextFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsStaticText.
 func StaticTextFromInst(inst uintptr) *TStaticText {
-    s := new(TStaticText)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsStaticText(inst)
 }
 
 // StaticTextFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsStaticText.
 func StaticTextFromObj(obj IObject) *TStaticText {
-    s := new(TStaticText)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsStaticText(obj)
 }
 
 // StaticTextFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsStaticText.
 func StaticTextFromUnsafePointer(ptr unsafe.Pointer) *TStaticText {
-    s := new(TStaticText)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsStaticText(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -128,7 +133,7 @@ func (s *TStaticText) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TStaticText) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(StaticText_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(StaticText_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -149,7 +154,7 @@ func (s *TStaticText) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (s *TStaticText) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(StaticText_FindChildControl(s.instance, ControlName))
+    return AsControl(StaticText_FindChildControl(s.instance, ControlName))
 }
 
 // FlipChildren
@@ -364,7 +369,7 @@ func (s *TStaticText) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TStaticText) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(StaticText_FindComponent(s.instance, AName))
+    return AsComponent(StaticText_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -587,7 +592,7 @@ func (s *TStaticText) SetColor(value TColor) {
 
 // Constraints
 func (s *TStaticText) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(StaticText_GetConstraints(s.instance))
+    return AsSizeConstraints(StaticText_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -669,7 +674,7 @@ func (s *TStaticText) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (s *TStaticText) Font() *TFont {
-    return FontFromInst(StaticText_GetFont(s.instance))
+    return AsFont(StaticText_GetFont(s.instance))
 }
 
 // SetFont
@@ -735,7 +740,7 @@ func (s *TStaticText) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (s *TStaticText) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(StaticText_GetPopupMenu(s.instance))
+    return AsPopupMenu(StaticText_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
@@ -986,7 +991,7 @@ func (s *TStaticText) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (s *TStaticText) Brush() *TBrush {
-    return BrushFromInst(StaticText_GetBrush(s.instance))
+    return AsBrush(StaticText_GetBrush(s.instance))
 }
 
 // ControlCount
@@ -1033,7 +1038,7 @@ func (s *TStaticText) SetUseDockManager(value bool) {
 
 // Action
 func (s *TStaticText) Action() *TAction {
-    return ActionFromInst(StaticText_GetAction(s.instance))
+    return AsAction(StaticText_GetAction(s.instance))
 }
 
 // SetAction
@@ -1148,7 +1153,7 @@ func (s *TStaticText) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TStaticText) Parent() *TWinControl {
-    return WinControlFromInst(StaticText_GetParent(s.instance))
+    return AsWinControl(StaticText_GetParent(s.instance))
 }
 
 // SetParent
@@ -1260,7 +1265,7 @@ func (s *TStaticText) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TStaticText) Margins() *TMargins {
-    return MarginsFromInst(StaticText_GetMargins(s.instance))
+    return AsMargins(StaticText_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -1274,7 +1279,7 @@ func (s *TStaticText) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TStaticText) CustomHint() *TCustomHint {
-    return CustomHintFromInst(StaticText_GetCustomHint(s.instance))
+    return AsCustomHint(StaticText_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -1309,7 +1314,7 @@ func (s *TStaticText) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TStaticText) Owner() *TComponent {
-    return ComponentFromInst(StaticText_GetOwner(s.instance))
+    return AsComponent(StaticText_GetOwner(s.instance))
 }
 
 // Name
@@ -1344,20 +1349,20 @@ func (s *TStaticText) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TStaticText) DockClients(Index int32) *TControl {
-    return ControlFromInst(StaticText_GetDockClients(s.instance, Index))
+    return AsControl(StaticText_GetDockClients(s.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (s *TStaticText) Controls(Index int32) *TControl {
-    return ControlFromInst(StaticText_GetControls(s.instance, Index))
+    return AsControl(StaticText_GetControls(s.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TStaticText) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(StaticText_GetComponents(s.instance, AIndex))
+    return AsComponent(StaticText_GetComponents(s.instance, AIndex))
 }
 

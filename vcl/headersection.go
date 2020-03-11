@@ -34,36 +34,41 @@ func NewHeaderSection() *THeaderSection {
     return h
 }
 
+// AsHeaderSection
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsHeaderSection(obj interface{}) *THeaderSection {
+    h := new(THeaderSection)
+    h.instance, h.ptr = getInstance(obj)
+    return h
+}
+
+// -------------------------- Deprecated begin --------------------------
 // HeaderSectionFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsHeaderSection.
 func HeaderSectionFromInst(inst uintptr) *THeaderSection {
-    h := new(THeaderSection)
-    h.instance = inst
-    h.ptr = unsafe.Pointer(inst)
-    return h
+    return AsHeaderSection(inst)
 }
 
 // HeaderSectionFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsHeaderSection.
 func HeaderSectionFromObj(obj IObject) *THeaderSection {
-    h := new(THeaderSection)
-    h.instance = CheckPtr(obj)
-    h.ptr = unsafe.Pointer(h.instance)
-    return h
+    return AsHeaderSection(obj)
 }
 
 // HeaderSectionFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsHeaderSection.
 func HeaderSectionFromUnsafePointer(ptr unsafe.Pointer) *THeaderSection {
-    h := new(THeaderSection)
-    h.instance = uintptr(ptr)
-    h.ptr = ptr
-    return h
+    return AsHeaderSection(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -348,7 +353,7 @@ func (h *THeaderSection) SetWidth(value int32) {
 
 // Collection
 func (h *THeaderSection) Collection() *TCollection {
-    return CollectionFromInst(HeaderSection_GetCollection(h.instance))
+    return AsCollection(HeaderSection_GetCollection(h.instance))
 }
 
 // SetCollection

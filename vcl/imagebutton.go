@@ -34,36 +34,41 @@ func NewImageButton(owner IComponent) *TImageButton {
     return i
 }
 
+// AsImageButton
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsImageButton(obj interface{}) *TImageButton {
+    i := new(TImageButton)
+    i.instance, i.ptr = getInstance(obj)
+    return i
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ImageButtonFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsImageButton.
 func ImageButtonFromInst(inst uintptr) *TImageButton {
-    i := new(TImageButton)
-    i.instance = inst
-    i.ptr = unsafe.Pointer(inst)
-    return i
+    return AsImageButton(inst)
 }
 
 // ImageButtonFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsImageButton.
 func ImageButtonFromObj(obj IObject) *TImageButton {
-    i := new(TImageButton)
-    i.instance = CheckPtr(obj)
-    i.ptr = unsafe.Pointer(i.instance)
-    return i
+    return AsImageButton(obj)
 }
 
 // ImageButtonFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsImageButton.
 func ImageButtonFromUnsafePointer(ptr unsafe.Pointer) *TImageButton {
-    i := new(TImageButton)
-    i.instance = uintptr(ptr)
-    i.ptr = ptr
-    return i
+    return AsImageButton(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -254,7 +259,7 @@ func (i *TImageButton) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (i *TImageButton) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ImageButton_FindComponent(i.instance, AName))
+    return AsComponent(ImageButton_FindComponent(i.instance, AName))
 }
 
 // GetNamePath
@@ -329,7 +334,7 @@ func (i *TImageButton) ToString() string {
 
 // Action
 func (i *TImageButton) Action() *TAction {
-    return ActionFromInst(ImageButton_GetAction(i.instance))
+    return AsAction(ImageButton_GetAction(i.instance))
 }
 
 // SetAction
@@ -381,7 +386,7 @@ func (i *TImageButton) SetAutoSize(value bool) {
 
 // Constraints
 func (i *TImageButton) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ImageButton_GetConstraints(i.instance))
+    return AsSizeConstraints(ImageButton_GetConstraints(i.instance))
 }
 
 // SetConstraints
@@ -463,7 +468,7 @@ func (i *TImageButton) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (i *TImageButton) Font() *TFont {
-    return FontFromInst(ImageButton_GetFont(i.instance))
+    return AsFont(ImageButton_GetFont(i.instance))
 }
 
 // SetFont
@@ -523,7 +528,7 @@ func (i *TImageButton) SetParentFont(value bool) {
 
 // Picture
 func (i *TImageButton) Picture() *TPicture {
-    return PictureFromInst(ImageButton_GetPicture(i.instance))
+    return AsPicture(ImageButton_GetPicture(i.instance))
 }
 
 // SetPicture
@@ -535,7 +540,7 @@ func (i *TImageButton) SetPicture(value *TPicture) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (i *TImageButton) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ImageButton_GetPopupMenu(i.instance))
+    return AsPopupMenu(ImageButton_GetPopupMenu(i.instance))
 }
 
 // SetPopupMenu
@@ -794,7 +799,7 @@ func (i *TImageButton) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (i *TImageButton) Parent() *TWinControl {
-    return WinControlFromInst(ImageButton_GetParent(i.instance))
+    return AsWinControl(ImageButton_GetParent(i.instance))
 }
 
 // SetParent
@@ -920,7 +925,7 @@ func (i *TImageButton) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (i *TImageButton) Margins() *TMargins {
-    return MarginsFromInst(ImageButton_GetMargins(i.instance))
+    return AsMargins(ImageButton_GetMargins(i.instance))
 }
 
 // SetMargins
@@ -934,7 +939,7 @@ func (i *TImageButton) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (i *TImageButton) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ImageButton_GetCustomHint(i.instance))
+    return AsCustomHint(ImageButton_GetCustomHint(i.instance))
 }
 
 // SetCustomHint
@@ -969,7 +974,7 @@ func (i *TImageButton) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (i *TImageButton) Owner() *TComponent {
-    return ComponentFromInst(ImageButton_GetOwner(i.instance))
+    return AsComponent(ImageButton_GetOwner(i.instance))
 }
 
 // Name
@@ -1004,6 +1009,6 @@ func (i *TImageButton) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (i *TImageButton) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ImageButton_GetComponents(i.instance, AIndex))
+    return AsComponent(ImageButton_GetComponents(i.instance, AIndex))
 }
 

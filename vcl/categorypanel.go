@@ -34,36 +34,41 @@ func NewCategoryPanel(owner IComponent) *TCategoryPanel {
     return c
 }
 
+// AsCategoryPanel
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsCategoryPanel(obj interface{}) *TCategoryPanel {
+    c := new(TCategoryPanel)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // CategoryPanelFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsCategoryPanel.
 func CategoryPanelFromInst(inst uintptr) *TCategoryPanel {
-    c := new(TCategoryPanel)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsCategoryPanel(inst)
 }
 
 // CategoryPanelFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsCategoryPanel.
 func CategoryPanelFromObj(obj IObject) *TCategoryPanel {
-    c := new(TCategoryPanel)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsCategoryPanel(obj)
 }
 
 // CategoryPanelFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsCategoryPanel.
 func CategoryPanelFromUnsafePointer(ptr unsafe.Pointer) *TCategoryPanel {
-    c := new(TCategoryPanel)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsCategoryPanel(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -145,7 +150,7 @@ func (c *TCategoryPanel) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TCategoryPanel) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(CategoryPanel_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(CategoryPanel_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -166,7 +171,7 @@ func (c *TCategoryPanel) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (c *TCategoryPanel) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(CategoryPanel_FindChildControl(c.instance, ControlName))
+    return AsControl(CategoryPanel_FindChildControl(c.instance, ControlName))
 }
 
 // FlipChildren
@@ -374,7 +379,7 @@ func (c *TCategoryPanel) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TCategoryPanel) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(CategoryPanel_FindComponent(c.instance, AName))
+    return AsComponent(CategoryPanel_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -677,7 +682,7 @@ func (c *TCategoryPanel) SetFullRepaint(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (c *TCategoryPanel) Font() *TFont {
-    return FontFromInst(CategoryPanel_GetFont(c.instance))
+    return AsFont(CategoryPanel_GetFont(c.instance))
 }
 
 // SetFont
@@ -801,7 +806,7 @@ func (c *TCategoryPanel) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (c *TCategoryPanel) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(CategoryPanel_GetPopupMenu(c.instance))
+    return AsPopupMenu(CategoryPanel_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
@@ -1027,7 +1032,7 @@ func (c *TCategoryPanel) SetOnUnDock(fn TUnDockEvent) {
 
 // PanelGroup
 func (c *TCategoryPanel) PanelGroup() *TCategoryPanelGroup {
-    return CategoryPanelGroupFromInst(CategoryPanel_GetPanelGroup(c.instance))
+    return AsCategoryPanelGroup(CategoryPanel_GetPanelGroup(c.instance))
 }
 
 // SetPanelGroup
@@ -1067,7 +1072,7 @@ func (c *TCategoryPanel) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (c *TCategoryPanel) Brush() *TBrush {
-    return BrushFromInst(CategoryPanel_GetBrush(c.instance))
+    return AsBrush(CategoryPanel_GetBrush(c.instance))
 }
 
 // ControlCount
@@ -1100,7 +1105,7 @@ func (c *TCategoryPanel) SetParentWindow(value HWND) {
 
 // Action
 func (c *TCategoryPanel) Action() *TAction {
-    return ActionFromInst(CategoryPanel_GetAction(c.instance))
+    return AsAction(CategoryPanel_GetAction(c.instance))
 }
 
 // SetAction
@@ -1188,7 +1193,7 @@ func (c *TCategoryPanel) SetClientWidth(value int32) {
 
 // Constraints
 func (c *TCategoryPanel) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(CategoryPanel_GetConstraints(c.instance))
+    return AsSizeConstraints(CategoryPanel_GetConstraints(c.instance))
 }
 
 // SetConstraints
@@ -1253,7 +1258,7 @@ func (c *TCategoryPanel) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (c *TCategoryPanel) Parent() *TWinControl {
-    return WinControlFromInst(CategoryPanel_GetParent(c.instance))
+    return AsWinControl(CategoryPanel_GetParent(c.instance))
 }
 
 // SetParent
@@ -1323,7 +1328,7 @@ func (c *TCategoryPanel) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (c *TCategoryPanel) Margins() *TMargins {
-    return MarginsFromInst(CategoryPanel_GetMargins(c.instance))
+    return AsMargins(CategoryPanel_GetMargins(c.instance))
 }
 
 // SetMargins
@@ -1337,7 +1342,7 @@ func (c *TCategoryPanel) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (c *TCategoryPanel) CustomHint() *TCustomHint {
-    return CustomHintFromInst(CategoryPanel_GetCustomHint(c.instance))
+    return AsCustomHint(CategoryPanel_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
@@ -1372,7 +1377,7 @@ func (c *TCategoryPanel) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TCategoryPanel) Owner() *TComponent {
-    return ComponentFromInst(CategoryPanel_GetOwner(c.instance))
+    return AsComponent(CategoryPanel_GetOwner(c.instance))
 }
 
 // Name
@@ -1407,20 +1412,20 @@ func (c *TCategoryPanel) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TCategoryPanel) DockClients(Index int32) *TControl {
-    return ControlFromInst(CategoryPanel_GetDockClients(c.instance, Index))
+    return AsControl(CategoryPanel_GetDockClients(c.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (c *TCategoryPanel) Controls(Index int32) *TControl {
-    return ControlFromInst(CategoryPanel_GetControls(c.instance, Index))
+    return AsControl(CategoryPanel_GetControls(c.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TCategoryPanel) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(CategoryPanel_GetComponents(c.instance, AIndex))
+    return AsComponent(CategoryPanel_GetComponents(c.instance, AIndex))
 }
 

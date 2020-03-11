@@ -34,36 +34,41 @@ func NewApplication(owner IComponent) *TApplication {
     return a
 }
 
+// AsApplication
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsApplication(obj interface{}) *TApplication {
+    a := new(TApplication)
+    a.instance, a.ptr = getInstance(obj)
+    return a
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ApplicationFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsApplication.
 func ApplicationFromInst(inst uintptr) *TApplication {
-    a := new(TApplication)
-    a.instance = inst
-    a.ptr = unsafe.Pointer(inst)
-    return a
+    return AsApplication(inst)
 }
 
 // ApplicationFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsApplication.
 func ApplicationFromObj(obj IObject) *TApplication {
-    a := new(TApplication)
-    a.instance = CheckPtr(obj)
-    a.ptr = unsafe.Pointer(a.instance)
-    return a
+    return AsApplication(obj)
 }
 
 // ApplicationFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsApplication.
 func ApplicationFromUnsafePointer(ptr unsafe.Pointer) *TApplication {
-    a := new(TApplication)
-    a.instance = uintptr(ptr)
-    a.ptr = ptr
-    return a
+    return AsApplication(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -211,7 +216,7 @@ func (a *TApplication) MessageBox(Text string, Caption string, Flags int32) int3
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (a *TApplication) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Application_FindComponent(a.instance, AName))
+    return AsComponent(Application_FindComponent(a.instance, AName))
 }
 
 // GetNamePath
@@ -392,7 +397,7 @@ func (a *TApplication) SetHintShortPause(value int32) {
 // CN: 获取图标。
 // EN: Get icon.
 func (a *TApplication) Icon() *TIcon {
-    return IconFromInst(Application_GetIcon(a.instance))
+    return AsIcon(Application_GetIcon(a.instance))
 }
 
 // SetIcon
@@ -409,7 +414,7 @@ func (a *TApplication) IsMetropolisUI() bool {
 
 // MainForm
 func (a *TApplication) MainForm() *TForm {
-    return FormFromInst(Application_GetMainForm(a.instance))
+    return AsForm(Application_GetMainForm(a.instance))
 }
 
 // MainFormHandle
@@ -563,7 +568,7 @@ func (a *TApplication) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (a *TApplication) Owner() *TComponent {
-    return ComponentFromInst(Application_GetOwner(a.instance))
+    return AsComponent(Application_GetOwner(a.instance))
 }
 
 // Name
@@ -598,6 +603,6 @@ func (a *TApplication) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (a *TApplication) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Application_GetComponents(a.instance, AIndex))
+    return AsComponent(Application_GetComponents(a.instance, AIndex))
 }
 

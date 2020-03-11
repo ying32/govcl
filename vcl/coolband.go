@@ -34,36 +34,41 @@ func NewCoolBand() *TCoolBand {
     return c
 }
 
+// AsCoolBand
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsCoolBand(obj interface{}) *TCoolBand {
+    c := new(TCoolBand)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // CoolBandFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsCoolBand.
 func CoolBandFromInst(inst uintptr) *TCoolBand {
-    c := new(TCoolBand)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsCoolBand(inst)
 }
 
 // CoolBandFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsCoolBand.
 func CoolBandFromObj(obj IObject) *TCoolBand {
-    c := new(TCoolBand)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsCoolBand(obj)
 }
 
 // CoolBandFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsCoolBand.
 func CoolBandFromUnsafePointer(ptr unsafe.Pointer) *TCoolBand {
-    c := new(TCoolBand)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsCoolBand(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -189,7 +194,7 @@ func (c *TCoolBand) Height() int32 {
 
 // Bitmap
 func (c *TCoolBand) Bitmap() *TBitmap {
-    return BitmapFromInst(CoolBand_GetBitmap(c.instance))
+    return AsBitmap(CoolBand_GetBitmap(c.instance))
 }
 
 // SetBitmap
@@ -237,7 +242,7 @@ func (c *TCoolBand) SetColor(value TColor) {
 
 // Control
 func (c *TCoolBand) Control() *TWinControl {
-    return WinControlFromInst(CoolBand_GetControl(c.instance))
+    return AsWinControl(CoolBand_GetControl(c.instance))
 }
 
 // SetControl
@@ -377,7 +382,7 @@ func (c *TCoolBand) SetWidth(value int32) {
 
 // Collection
 func (c *TCoolBand) Collection() *TCollection {
-    return CollectionFromInst(CoolBand_GetCollection(c.instance))
+    return AsCollection(CoolBand_GetCollection(c.instance))
 }
 
 // SetCollection

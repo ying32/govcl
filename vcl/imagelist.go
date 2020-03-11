@@ -34,36 +34,41 @@ func NewImageList(owner IComponent) *TImageList {
     return i
 }
 
+// AsImageList
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsImageList(obj interface{}) *TImageList {
+    i := new(TImageList)
+    i.instance, i.ptr = getInstance(obj)
+    return i
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ImageListFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsImageList.
 func ImageListFromInst(inst uintptr) *TImageList {
-    i := new(TImageList)
-    i.instance = inst
-    i.ptr = unsafe.Pointer(inst)
-    return i
+    return AsImageList(inst)
 }
 
 // ImageListFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsImageList.
 func ImageListFromObj(obj IObject) *TImageList {
-    i := new(TImageList)
-    i.instance = CheckPtr(obj)
-    i.ptr = unsafe.Pointer(i.instance)
-    return i
+    return AsImageList(obj)
 }
 
 // ImageListFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsImageList.
 func ImageListFromUnsafePointer(ptr unsafe.Pointer) *TImageList {
-    i := new(TImageList)
-    i.instance = uintptr(ptr)
-    i.ptr = ptr
-    return i
+    return AsImageList(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -270,7 +275,7 @@ func (i *TImageList) EndUpdate() {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (i *TImageList) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ImageList_FindComponent(i.instance, AName))
+    return AsComponent(ImageList_FindComponent(i.instance, AName))
 }
 
 // GetNamePath
@@ -533,7 +538,7 @@ func (i *TImageList) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (i *TImageList) Owner() *TComponent {
-    return ComponentFromInst(ImageList_GetOwner(i.instance))
+    return AsComponent(ImageList_GetOwner(i.instance))
 }
 
 // Name
@@ -568,6 +573,6 @@ func (i *TImageList) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (i *TImageList) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ImageList_GetComponents(i.instance, AIndex))
+    return AsComponent(ImageList_GetComponents(i.instance, AIndex))
 }
 

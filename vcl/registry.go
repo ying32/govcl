@@ -35,36 +35,41 @@ func NewRegistry(aAccess uint32) *TRegistry {
     return r
 }
 
+// AsRegistry
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsRegistry(obj interface{}) *TRegistry {
+    r := new(TRegistry)
+    r.instance, r.ptr = getInstance(obj)
+    return r
+}
+
+// -------------------------- Deprecated begin --------------------------
 // RegistryFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsRegistry.
 func RegistryFromInst(inst uintptr) *TRegistry {
-    r := new(TRegistry)
-    r.instance = inst
-    r.ptr = unsafe.Pointer(inst)
-    return r
+    return AsRegistry(inst)
 }
 
 // RegistryFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsRegistry.
 func RegistryFromObj(obj IObject) *TRegistry {
-    r := new(TRegistry)
-    r.instance = CheckPtr(obj)
-    r.ptr = unsafe.Pointer(r.instance)
-    return r
+    return AsRegistry(obj)
 }
 
 // RegistryFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsRegistry.
 func RegistryFromUnsafePointer(ptr unsafe.Pointer) *TRegistry {
-    r := new(TRegistry)
-    r.instance = uintptr(ptr)
-    r.ptr = ptr
-    return r
+    return AsRegistry(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

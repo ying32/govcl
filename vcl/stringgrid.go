@@ -34,36 +34,41 @@ func NewStringGrid(owner IComponent) *TStringGrid {
     return s
 }
 
+// AsStringGrid
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsStringGrid(obj interface{}) *TStringGrid {
+    s := new(TStringGrid)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // StringGridFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsStringGrid.
 func StringGridFromInst(inst uintptr) *TStringGrid {
-    s := new(TStringGrid)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsStringGrid(inst)
 }
 
 // StringGridFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsStringGrid.
 func StringGridFromObj(obj IObject) *TStringGrid {
-    s := new(TStringGrid)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsStringGrid(obj)
 }
 
 // StringGridFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsStringGrid.
 func StringGridFromUnsafePointer(ptr unsafe.Pointer) *TStringGrid {
-    s := new(TStringGrid)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsStringGrid(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -143,7 +148,7 @@ func (s *TStringGrid) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TStringGrid) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(StringGrid_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(StringGrid_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -164,7 +169,7 @@ func (s *TStringGrid) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (s *TStringGrid) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(StringGrid_FindChildControl(s.instance, ControlName))
+    return AsControl(StringGrid_FindChildControl(s.instance, ControlName))
 }
 
 // FlipChildren
@@ -379,7 +384,7 @@ func (s *TStringGrid) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TStringGrid) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(StringGrid_FindComponent(s.instance, AName))
+    return AsComponent(StringGrid_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -570,7 +575,7 @@ func (s *TStringGrid) SetColCount(value int32) {
 
 // Constraints
 func (s *TStringGrid) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(StringGrid_GetConstraints(s.instance))
+    return AsSizeConstraints(StringGrid_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -742,7 +747,7 @@ func (s *TStringGrid) SetFixedRows(value int32) {
 // CN: 获取字体。
 // EN: Get Font.
 func (s *TStringGrid) Font() *TFont {
-    return FontFromInst(StringGrid_GetFont(s.instance))
+    return AsFont(StringGrid_GetFont(s.instance))
 }
 
 // SetFont
@@ -866,7 +871,7 @@ func (s *TStringGrid) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (s *TStringGrid) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(StringGrid_GetPopupMenu(s.instance))
+    return AsPopupMenu(StringGrid_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
@@ -1149,7 +1154,7 @@ func (s *TStringGrid) SetOnTopLeftChanged(fn TNotifyEvent) {
 // CN: 获取画布。
 // EN: .
 func (s *TStringGrid) Canvas() *TCanvas {
-    return CanvasFromInst(StringGrid_GetCanvas(s.instance))
+    return AsCanvas(StringGrid_GetCanvas(s.instance))
 }
 
 // Col
@@ -1282,7 +1287,7 @@ func (s *TStringGrid) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (s *TStringGrid) Brush() *TBrush {
-    return BrushFromInst(StringGrid_GetBrush(s.instance))
+    return AsBrush(StringGrid_GetBrush(s.instance))
 }
 
 // ControlCount
@@ -1329,7 +1334,7 @@ func (s *TStringGrid) SetUseDockManager(value bool) {
 
 // Action
 func (s *TStringGrid) Action() *TAction {
-    return ActionFromInst(StringGrid_GetAction(s.instance))
+    return AsAction(StringGrid_GetAction(s.instance))
 }
 
 // SetAction
@@ -1444,7 +1449,7 @@ func (s *TStringGrid) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TStringGrid) Parent() *TWinControl {
-    return WinControlFromInst(StringGrid_GetParent(s.instance))
+    return AsWinControl(StringGrid_GetParent(s.instance))
 }
 
 // SetParent
@@ -1556,7 +1561,7 @@ func (s *TStringGrid) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TStringGrid) Margins() *TMargins {
-    return MarginsFromInst(StringGrid_GetMargins(s.instance))
+    return AsMargins(StringGrid_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -1570,7 +1575,7 @@ func (s *TStringGrid) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TStringGrid) CustomHint() *TCustomHint {
-    return CustomHintFromInst(StringGrid_GetCustomHint(s.instance))
+    return AsCustomHint(StringGrid_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -1605,7 +1610,7 @@ func (s *TStringGrid) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TStringGrid) Owner() *TComponent {
-    return ComponentFromInst(StringGrid_GetOwner(s.instance))
+    return AsComponent(StringGrid_GetOwner(s.instance))
 }
 
 // Name
@@ -1648,7 +1653,7 @@ func (s *TStringGrid) SetCells(ACol int32, ARow int32, value string) {
 
 // Cols
 func (s *TStringGrid) Cols(Index int32) *TStrings {
-    return StringsFromInst(StringGrid_GetCols(s.instance, Index))
+    return AsStrings(StringGrid_GetCols(s.instance, Index))
 }
 
 // Cols
@@ -1658,7 +1663,7 @@ func (s *TStringGrid) SetCols(Index int32, value IObject) {
 
 // Objects
 func (s *TStringGrid) Objects(ACol int32, ARow int32) *TObject {
-    return ObjectFromInst(StringGrid_GetObjects(s.instance, ACol, ARow))
+    return AsObject(StringGrid_GetObjects(s.instance, ACol, ARow))
 }
 
 // Objects
@@ -1668,7 +1673,7 @@ func (s *TStringGrid) SetObjects(ACol int32, ARow int32, value IObject) {
 
 // Rows
 func (s *TStringGrid) Rows(Index int32) *TStrings {
-    return StringsFromInst(StringGrid_GetRows(s.instance, Index))
+    return AsStrings(StringGrid_GetRows(s.instance, Index))
 }
 
 // Rows
@@ -1710,20 +1715,20 @@ func (s *TStringGrid) SetTabStops(Index int32, value bool) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TStringGrid) DockClients(Index int32) *TControl {
-    return ControlFromInst(StringGrid_GetDockClients(s.instance, Index))
+    return AsControl(StringGrid_GetDockClients(s.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (s *TStringGrid) Controls(Index int32) *TControl {
-    return ControlFromInst(StringGrid_GetControls(s.instance, Index))
+    return AsControl(StringGrid_GetControls(s.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TStringGrid) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(StringGrid_GetComponents(s.instance, AIndex))
+    return AsComponent(StringGrid_GetComponents(s.instance, AIndex))
 }
 

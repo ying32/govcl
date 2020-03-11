@@ -34,36 +34,41 @@ func NewDrawGrid(owner IComponent) *TDrawGrid {
     return d
 }
 
+// AsDrawGrid
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsDrawGrid(obj interface{}) *TDrawGrid {
+    d := new(TDrawGrid)
+    d.instance, d.ptr = getInstance(obj)
+    return d
+}
+
+// -------------------------- Deprecated begin --------------------------
 // DrawGridFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsDrawGrid.
 func DrawGridFromInst(inst uintptr) *TDrawGrid {
-    d := new(TDrawGrid)
-    d.instance = inst
-    d.ptr = unsafe.Pointer(inst)
-    return d
+    return AsDrawGrid(inst)
 }
 
 // DrawGridFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsDrawGrid.
 func DrawGridFromObj(obj IObject) *TDrawGrid {
-    d := new(TDrawGrid)
-    d.instance = CheckPtr(obj)
-    d.ptr = unsafe.Pointer(d.instance)
-    return d
+    return AsDrawGrid(obj)
 }
 
 // DrawGridFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsDrawGrid.
 func DrawGridFromUnsafePointer(ptr unsafe.Pointer) *TDrawGrid {
-    d := new(TDrawGrid)
-    d.instance = uintptr(ptr)
-    d.ptr = ptr
-    return d
+    return AsDrawGrid(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -143,7 +148,7 @@ func (d *TDrawGrid) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (d *TDrawGrid) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(DrawGrid_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(DrawGrid_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -164,7 +169,7 @@ func (d *TDrawGrid) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (d *TDrawGrid) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(DrawGrid_FindChildControl(d.instance, ControlName))
+    return AsControl(DrawGrid_FindChildControl(d.instance, ControlName))
 }
 
 // FlipChildren
@@ -379,7 +384,7 @@ func (d *TDrawGrid) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (d *TDrawGrid) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(DrawGrid_FindComponent(d.instance, AName))
+    return AsComponent(DrawGrid_FindComponent(d.instance, AName))
 }
 
 // GetNamePath
@@ -570,7 +575,7 @@ func (d *TDrawGrid) SetColCount(value int32) {
 
 // Constraints
 func (d *TDrawGrid) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(DrawGrid_GetConstraints(d.instance))
+    return AsSizeConstraints(DrawGrid_GetConstraints(d.instance))
 }
 
 // SetConstraints
@@ -742,7 +747,7 @@ func (d *TDrawGrid) SetFixedRows(value int32) {
 // CN: 获取字体。
 // EN: Get Font.
 func (d *TDrawGrid) Font() *TFont {
-    return FontFromInst(DrawGrid_GetFont(d.instance))
+    return AsFont(DrawGrid_GetFont(d.instance))
 }
 
 // SetFont
@@ -866,7 +871,7 @@ func (d *TDrawGrid) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (d *TDrawGrid) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(DrawGrid_GetPopupMenu(d.instance))
+    return AsPopupMenu(DrawGrid_GetPopupMenu(d.instance))
 }
 
 // SetPopupMenu
@@ -1149,7 +1154,7 @@ func (d *TDrawGrid) SetOnTopLeftChanged(fn TNotifyEvent) {
 // CN: 获取画布。
 // EN: .
 func (d *TDrawGrid) Canvas() *TCanvas {
-    return CanvasFromInst(DrawGrid_GetCanvas(d.instance))
+    return AsCanvas(DrawGrid_GetCanvas(d.instance))
 }
 
 // Col
@@ -1282,7 +1287,7 @@ func (d *TDrawGrid) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (d *TDrawGrid) Brush() *TBrush {
-    return BrushFromInst(DrawGrid_GetBrush(d.instance))
+    return AsBrush(DrawGrid_GetBrush(d.instance))
 }
 
 // ControlCount
@@ -1329,7 +1334,7 @@ func (d *TDrawGrid) SetUseDockManager(value bool) {
 
 // Action
 func (d *TDrawGrid) Action() *TAction {
-    return ActionFromInst(DrawGrid_GetAction(d.instance))
+    return AsAction(DrawGrid_GetAction(d.instance))
 }
 
 // SetAction
@@ -1444,7 +1449,7 @@ func (d *TDrawGrid) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (d *TDrawGrid) Parent() *TWinControl {
-    return WinControlFromInst(DrawGrid_GetParent(d.instance))
+    return AsWinControl(DrawGrid_GetParent(d.instance))
 }
 
 // SetParent
@@ -1556,7 +1561,7 @@ func (d *TDrawGrid) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (d *TDrawGrid) Margins() *TMargins {
-    return MarginsFromInst(DrawGrid_GetMargins(d.instance))
+    return AsMargins(DrawGrid_GetMargins(d.instance))
 }
 
 // SetMargins
@@ -1570,7 +1575,7 @@ func (d *TDrawGrid) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (d *TDrawGrid) CustomHint() *TCustomHint {
-    return CustomHintFromInst(DrawGrid_GetCustomHint(d.instance))
+    return AsCustomHint(DrawGrid_GetCustomHint(d.instance))
 }
 
 // SetCustomHint
@@ -1605,7 +1610,7 @@ func (d *TDrawGrid) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (d *TDrawGrid) Owner() *TComponent {
-    return ComponentFromInst(DrawGrid_GetOwner(d.instance))
+    return AsComponent(DrawGrid_GetOwner(d.instance))
 }
 
 // Name
@@ -1670,20 +1675,20 @@ func (d *TDrawGrid) SetTabStops(Index int32, value bool) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (d *TDrawGrid) DockClients(Index int32) *TControl {
-    return ControlFromInst(DrawGrid_GetDockClients(d.instance, Index))
+    return AsControl(DrawGrid_GetDockClients(d.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (d *TDrawGrid) Controls(Index int32) *TControl {
-    return ControlFromInst(DrawGrid_GetControls(d.instance, Index))
+    return AsControl(DrawGrid_GetControls(d.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (d *TDrawGrid) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(DrawGrid_GetComponents(d.instance, AIndex))
+    return AsComponent(DrawGrid_GetComponents(d.instance, AIndex))
 }
 

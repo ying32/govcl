@@ -34,36 +34,41 @@ func NewTabSheet(owner IComponent) *TTabSheet {
     return t
 }
 
+// AsTabSheet
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsTabSheet(obj interface{}) *TTabSheet {
+    t := new(TTabSheet)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TabSheetFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTabSheet.
 func TabSheetFromInst(inst uintptr) *TTabSheet {
-    t := new(TTabSheet)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTabSheet(inst)
 }
 
 // TabSheetFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTabSheet.
 func TabSheetFromObj(obj IObject) *TTabSheet {
-    t := new(TTabSheet)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTabSheet(obj)
 }
 
 // TabSheetFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTabSheet.
 func TabSheetFromUnsafePointer(ptr unsafe.Pointer) *TTabSheet {
-    t := new(TTabSheet)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTabSheet(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -128,7 +133,7 @@ func (t *TTabSheet) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (t *TTabSheet) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(TabSheet_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(TabSheet_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -149,7 +154,7 @@ func (t *TTabSheet) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (t *TTabSheet) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(TabSheet_FindChildControl(t.instance, ControlName))
+    return AsControl(TabSheet_FindChildControl(t.instance, ControlName))
 }
 
 // FlipChildren
@@ -364,7 +369,7 @@ func (t *TTabSheet) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TTabSheet) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(TabSheet_FindComponent(t.instance, AName))
+    return AsComponent(TabSheet_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -439,7 +444,7 @@ func (t *TTabSheet) ToString() string {
 
 // PageControl
 func (t *TTabSheet) PageControl() *TPageControl {
-    return PageControlFromInst(TabSheet_GetPageControl(t.instance))
+    return AsPageControl(TabSheet_GetPageControl(t.instance))
 }
 
 // SetPageControl
@@ -526,7 +531,7 @@ func (t *TTabSheet) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (t *TTabSheet) Font() *TFont {
-    return FontFromInst(TabSheet_GetFont(t.instance))
+    return AsFont(TabSheet_GetFont(t.instance))
 }
 
 // SetFont
@@ -590,7 +595,7 @@ func (t *TTabSheet) SetLeft(value int32) {
 
 // Constraints
 func (t *TTabSheet) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(TabSheet_GetConstraints(t.instance))
+    return AsSizeConstraints(TabSheet_GetConstraints(t.instance))
 }
 
 // SetConstraints
@@ -650,7 +655,7 @@ func (t *TTabSheet) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (t *TTabSheet) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(TabSheet_GetPopupMenu(t.instance))
+    return AsPopupMenu(TabSheet_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
@@ -880,7 +885,7 @@ func (t *TTabSheet) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (t *TTabSheet) Brush() *TBrush {
-    return BrushFromInst(TabSheet_GetBrush(t.instance))
+    return AsBrush(TabSheet_GetBrush(t.instance))
 }
 
 // ControlCount
@@ -955,7 +960,7 @@ func (t *TTabSheet) SetUseDockManager(value bool) {
 
 // Action
 func (t *TTabSheet) Action() *TAction {
-    return ActionFromInst(TabSheet_GetAction(t.instance))
+    return AsAction(TabSheet_GetAction(t.instance))
 }
 
 // SetAction
@@ -1108,7 +1113,7 @@ func (t *TTabSheet) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (t *TTabSheet) Parent() *TWinControl {
-    return WinControlFromInst(TabSheet_GetParent(t.instance))
+    return AsWinControl(TabSheet_GetParent(t.instance))
 }
 
 // SetParent
@@ -1178,7 +1183,7 @@ func (t *TTabSheet) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (t *TTabSheet) Margins() *TMargins {
-    return MarginsFromInst(TabSheet_GetMargins(t.instance))
+    return AsMargins(TabSheet_GetMargins(t.instance))
 }
 
 // SetMargins
@@ -1192,7 +1197,7 @@ func (t *TTabSheet) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (t *TTabSheet) CustomHint() *TCustomHint {
-    return CustomHintFromInst(TabSheet_GetCustomHint(t.instance))
+    return AsCustomHint(TabSheet_GetCustomHint(t.instance))
 }
 
 // SetCustomHint
@@ -1227,7 +1232,7 @@ func (t *TTabSheet) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTabSheet) Owner() *TComponent {
-    return ComponentFromInst(TabSheet_GetOwner(t.instance))
+    return AsComponent(TabSheet_GetOwner(t.instance))
 }
 
 // Name
@@ -1262,20 +1267,20 @@ func (t *TTabSheet) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (t *TTabSheet) DockClients(Index int32) *TControl {
-    return ControlFromInst(TabSheet_GetDockClients(t.instance, Index))
+    return AsControl(TabSheet_GetDockClients(t.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (t *TTabSheet) Controls(Index int32) *TControl {
-    return ControlFromInst(TabSheet_GetControls(t.instance, Index))
+    return AsControl(TabSheet_GetControls(t.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TTabSheet) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(TabSheet_GetComponents(t.instance, AIndex))
+    return AsComponent(TabSheet_GetComponents(t.instance, AIndex))
 }
 

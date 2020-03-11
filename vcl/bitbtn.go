@@ -34,36 +34,41 @@ func NewBitBtn(owner IComponent) *TBitBtn {
     return b
 }
 
+// AsBitBtn
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsBitBtn(obj interface{}) *TBitBtn {
+    b := new(TBitBtn)
+    b.instance, b.ptr = getInstance(obj)
+    return b
+}
+
+// -------------------------- Deprecated begin --------------------------
 // BitBtnFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsBitBtn.
 func BitBtnFromInst(inst uintptr) *TBitBtn {
-    b := new(TBitBtn)
-    b.instance = inst
-    b.ptr = unsafe.Pointer(inst)
-    return b
+    return AsBitBtn(inst)
 }
 
 // BitBtnFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsBitBtn.
 func BitBtnFromObj(obj IObject) *TBitBtn {
-    b := new(TBitBtn)
-    b.instance = CheckPtr(obj)
-    b.ptr = unsafe.Pointer(b.instance)
-    return b
+    return AsBitBtn(obj)
 }
 
 // BitBtnFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsBitBtn.
 func BitBtnFromUnsafePointer(ptr unsafe.Pointer) *TBitBtn {
-    b := new(TBitBtn)
-    b.instance = uintptr(ptr)
-    b.ptr = ptr
-    return b
+    return AsBitBtn(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -135,7 +140,7 @@ func (b *TBitBtn) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (b *TBitBtn) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(BitBtn_ControlAtPos(b.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(BitBtn_ControlAtPos(b.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -156,7 +161,7 @@ func (b *TBitBtn) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (b *TBitBtn) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(BitBtn_FindChildControl(b.instance, ControlName))
+    return AsControl(BitBtn_FindChildControl(b.instance, ControlName))
 }
 
 // FlipChildren
@@ -371,7 +376,7 @@ func (b *TBitBtn) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (b *TBitBtn) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(BitBtn_FindComponent(b.instance, AName))
+    return AsComponent(BitBtn_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
@@ -446,7 +451,7 @@ func (b *TBitBtn) ToString() string {
 
 // Action
 func (b *TBitBtn) Action() *TAction {
-    return ActionFromInst(BitBtn_GetAction(b.instance))
+    return AsAction(BitBtn_GetAction(b.instance))
 }
 
 // SetAction
@@ -518,7 +523,7 @@ func (b *TBitBtn) SetCaption(value string) {
 
 // Constraints
 func (b *TBitBtn) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(BitBtn_GetConstraints(b.instance))
+    return AsSizeConstraints(BitBtn_GetConstraints(b.instance))
 }
 
 // SetConstraints
@@ -610,7 +615,7 @@ func (b *TBitBtn) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (b *TBitBtn) Font() *TFont {
-    return FontFromInst(BitBtn_GetFont(b.instance))
+    return AsFont(BitBtn_GetFont(b.instance))
 }
 
 // SetFont
@@ -622,7 +627,7 @@ func (b *TBitBtn) SetFont(value *TFont) {
 
 // Glyph
 func (b *TBitBtn) Glyph() *TBitmap {
-    return BitmapFromInst(BitBtn_GetGlyph(b.instance))
+    return AsBitmap(BitBtn_GetGlyph(b.instance))
 }
 
 // SetGlyph
@@ -716,7 +721,7 @@ func (b *TBitBtn) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (b *TBitBtn) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(BitBtn_GetPopupMenu(b.instance))
+    return AsPopupMenu(BitBtn_GetPopupMenu(b.instance))
 }
 
 // SetPopupMenu
@@ -996,7 +1001,7 @@ func (b *TBitBtn) SetHotImageIndex(value int32) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (b *TBitBtn) Images() *TImageList {
-    return ImageListFromInst(BitBtn_GetImages(b.instance))
+    return AsImageList(BitBtn_GetImages(b.instance))
 }
 
 // SetImages
@@ -1106,7 +1111,7 @@ func (b *TBitBtn) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (b *TBitBtn) Brush() *TBrush {
-    return BrushFromInst(BitBtn_GetBrush(b.instance))
+    return AsBrush(BitBtn_GetBrush(b.instance))
 }
 
 // ControlCount
@@ -1258,7 +1263,7 @@ func (b *TBitBtn) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (b *TBitBtn) Parent() *TWinControl {
-    return WinControlFromInst(BitBtn_GetParent(b.instance))
+    return AsWinControl(BitBtn_GetParent(b.instance))
 }
 
 // SetParent
@@ -1375,7 +1380,7 @@ func (b *TBitBtn) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (b *TBitBtn) Margins() *TMargins {
-    return MarginsFromInst(BitBtn_GetMargins(b.instance))
+    return AsMargins(BitBtn_GetMargins(b.instance))
 }
 
 // SetMargins
@@ -1389,7 +1394,7 @@ func (b *TBitBtn) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (b *TBitBtn) CustomHint() *TCustomHint {
-    return CustomHintFromInst(BitBtn_GetCustomHint(b.instance))
+    return AsCustomHint(BitBtn_GetCustomHint(b.instance))
 }
 
 // SetCustomHint
@@ -1424,7 +1429,7 @@ func (b *TBitBtn) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (b *TBitBtn) Owner() *TComponent {
-    return ComponentFromInst(BitBtn_GetOwner(b.instance))
+    return AsComponent(BitBtn_GetOwner(b.instance))
 }
 
 // Name
@@ -1459,20 +1464,20 @@ func (b *TBitBtn) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (b *TBitBtn) DockClients(Index int32) *TControl {
-    return ControlFromInst(BitBtn_GetDockClients(b.instance, Index))
+    return AsControl(BitBtn_GetDockClients(b.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (b *TBitBtn) Controls(Index int32) *TControl {
-    return ControlFromInst(BitBtn_GetControls(b.instance, Index))
+    return AsControl(BitBtn_GetControls(b.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (b *TBitBtn) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(BitBtn_GetComponents(b.instance, AIndex))
+    return AsComponent(BitBtn_GetComponents(b.instance, AIndex))
 }
 

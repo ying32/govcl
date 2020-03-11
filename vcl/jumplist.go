@@ -34,36 +34,41 @@ func NewJumpList(owner IComponent) *TJumpList {
     return j
 }
 
+// AsJumpList
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsJumpList(obj interface{}) *TJumpList {
+    j := new(TJumpList)
+    j.instance, j.ptr = getInstance(obj)
+    return j
+}
+
+// -------------------------- Deprecated begin --------------------------
 // JumpListFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsJumpList.
 func JumpListFromInst(inst uintptr) *TJumpList {
-    j := new(TJumpList)
-    j.instance = inst
-    j.ptr = unsafe.Pointer(inst)
-    return j
+    return AsJumpList(inst)
 }
 
 // JumpListFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsJumpList.
 func JumpListFromObj(obj IObject) *TJumpList {
-    j := new(TJumpList)
-    j.instance = CheckPtr(obj)
-    j.ptr = unsafe.Pointer(j.instance)
-    return j
+    return AsJumpList(obj)
 }
 
 // JumpListFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsJumpList.
 func JumpListFromUnsafePointer(ptr unsafe.Pointer) *TJumpList {
-    j := new(TJumpList)
-    j.instance = uintptr(ptr)
-    j.ptr = ptr
-    return j
+    return AsJumpList(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -132,17 +137,17 @@ func (j *TJumpList) AddCategory(CategoryName string) int32 {
 
 // AddTask
 func (j *TJumpList) AddTask(FriendlyName string, Path string, Arguments string, Icon string) *TJumpListItem {
-    return JumpListItemFromInst(JumpList_AddTask(j.instance, FriendlyName , Path , Arguments , Icon))
+    return AsJumpListItem(JumpList_AddTask(j.instance, FriendlyName , Path , Arguments , Icon))
 }
 
 // AddTaskSeparator
 func (j *TJumpList) AddTaskSeparator() *TJumpListItem {
-    return JumpListItemFromInst(JumpList_AddTaskSeparator(j.instance))
+    return AsJumpListItem(JumpList_AddTaskSeparator(j.instance))
 }
 
 // AddItemToCategory
 func (j *TJumpList) AddItemToCategory(CategoryIndex int32, FriendlyName string, Path string, Arguments string, Icon string) *TJumpListItem {
-    return JumpListItemFromInst(JumpList_AddItemToCategory(j.instance, CategoryIndex , FriendlyName , Path , Arguments , Icon))
+    return AsJumpListItem(JumpList_AddItemToCategory(j.instance, CategoryIndex , FriendlyName , Path , Arguments , Icon))
 }
 
 // UpdateList
@@ -159,7 +164,7 @@ func (j *TJumpList) DeleteList() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (j *TJumpList) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(JumpList_FindComponent(j.instance, AName))
+    return AsComponent(JumpList_FindComponent(j.instance, AName))
 }
 
 // GetNamePath
@@ -275,7 +280,7 @@ func (j *TJumpList) SetApplicationID(value string) {
 
 // CustomCategories
 func (j *TJumpList) CustomCategories() *TJumpCategories {
-    return JumpCategoriesFromInst(JumpList_GetCustomCategories(j.instance))
+    return AsJumpCategories(JumpList_GetCustomCategories(j.instance))
 }
 
 // SetCustomCategories
@@ -305,7 +310,7 @@ func (j *TJumpList) SetShowFrequent(value bool) {
 
 // TaskList
 func (j *TJumpList) TaskList() *TJumpListCollection {
-    return JumpListCollectionFromInst(JumpList_GetTaskList(j.instance))
+    return AsJumpListCollection(JumpList_GetTaskList(j.instance))
 }
 
 // SetTaskList
@@ -353,7 +358,7 @@ func (j *TJumpList) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (j *TJumpList) Owner() *TComponent {
-    return ComponentFromInst(JumpList_GetOwner(j.instance))
+    return AsComponent(JumpList_GetOwner(j.instance))
 }
 
 // Name
@@ -388,6 +393,6 @@ func (j *TJumpList) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (j *TJumpList) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(JumpList_GetComponents(j.instance, AIndex))
+    return AsComponent(JumpList_GetComponents(j.instance, AIndex))
 }
 

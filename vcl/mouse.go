@@ -34,36 +34,41 @@ func NewMouse() *TMouse {
     return m
 }
 
+// AsMouse
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsMouse(obj interface{}) *TMouse {
+    m := new(TMouse)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MouseFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMouse.
 func MouseFromInst(inst uintptr) *TMouse {
-    m := new(TMouse)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMouse(inst)
 }
 
 // MouseFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMouse.
 func MouseFromObj(obj IObject) *TMouse {
-    m := new(TMouse)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMouse(obj)
 }
 
 // MouseFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMouse.
 func MouseFromUnsafePointer(ptr unsafe.Pointer) *TMouse {
-    m := new(TMouse)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMouse(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

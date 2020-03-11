@@ -34,36 +34,41 @@ func NewHeaderSections() *THeaderSections {
     return h
 }
 
+// AsHeaderSections
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsHeaderSections(obj interface{}) *THeaderSections {
+    h := new(THeaderSections)
+    h.instance, h.ptr = getInstance(obj)
+    return h
+}
+
+// -------------------------- Deprecated begin --------------------------
 // HeaderSectionsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsHeaderSections.
 func HeaderSectionsFromInst(inst uintptr) *THeaderSections {
-    h := new(THeaderSections)
-    h.instance = inst
-    h.ptr = unsafe.Pointer(inst)
-    return h
+    return AsHeaderSections(inst)
 }
 
 // HeaderSectionsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsHeaderSections.
 func HeaderSectionsFromObj(obj IObject) *THeaderSections {
-    h := new(THeaderSections)
-    h.instance = CheckPtr(obj)
-    h.ptr = unsafe.Pointer(h.instance)
-    return h
+    return AsHeaderSections(obj)
 }
 
 // HeaderSectionsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsHeaderSections.
 func HeaderSectionsFromUnsafePointer(ptr unsafe.Pointer) *THeaderSections {
-    h := new(THeaderSections)
-    h.instance = uintptr(ptr)
-    h.ptr = ptr
-    return h
+    return AsHeaderSections(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -112,24 +117,24 @@ func THeaderSectionsClass() TClass {
 
 // Add
 func (h *THeaderSections) Add() *THeaderSection {
-    return HeaderSectionFromInst(HeaderSections_Add(h.instance))
+    return AsHeaderSection(HeaderSections_Add(h.instance))
 }
 
 // AddItem
 func (h *THeaderSections) AddItem(Item *THeaderSection, Index int32) *THeaderSection {
-    return HeaderSectionFromInst(HeaderSections_AddItem(h.instance, CheckPtr(Item), Index))
+    return AsHeaderSection(HeaderSections_AddItem(h.instance, CheckPtr(Item), Index))
 }
 
 // Insert
 func (h *THeaderSections) Insert(Index int32) *THeaderSection {
-    return HeaderSectionFromInst(HeaderSections_Insert(h.instance, Index))
+    return AsHeaderSection(HeaderSections_Insert(h.instance, Index))
 }
 
 // Owner
 // CN: 组件所有者。
 // EN: component owner.
 func (h *THeaderSections) Owner() *TObject {
-    return ObjectFromInst(HeaderSections_Owner(h.instance))
+    return AsObject(HeaderSections_Owner(h.instance))
 }
 
 // Assign
@@ -168,7 +173,7 @@ func (h *THeaderSections) EndUpdate() {
 
 // FindItemID
 func (h *THeaderSections) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(HeaderSections_FindItemID(h.instance, ID))
+    return AsCollectionItem(HeaderSections_FindItemID(h.instance, ID))
 }
 
 // GetNamePath
@@ -251,7 +256,7 @@ func (h *THeaderSections) Count() int32 {
 
 // Items
 func (h *THeaderSections) Items(Index int32) *THeaderSection {
-    return HeaderSectionFromInst(HeaderSections_GetItems(h.instance, Index))
+    return AsHeaderSection(HeaderSections_GetItems(h.instance, Index))
 }
 
 // Items

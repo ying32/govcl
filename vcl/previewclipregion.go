@@ -34,36 +34,41 @@ func NewPreviewClipRegion() *TPreviewClipRegion {
     return p
 }
 
+// AsPreviewClipRegion
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsPreviewClipRegion(obj interface{}) *TPreviewClipRegion {
+    p := new(TPreviewClipRegion)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PreviewClipRegionFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPreviewClipRegion.
 func PreviewClipRegionFromInst(inst uintptr) *TPreviewClipRegion {
-    p := new(TPreviewClipRegion)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPreviewClipRegion(inst)
 }
 
 // PreviewClipRegionFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPreviewClipRegion.
 func PreviewClipRegionFromObj(obj IObject) *TPreviewClipRegion {
-    p := new(TPreviewClipRegion)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPreviewClipRegion(obj)
 }
 
 // PreviewClipRegionFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPreviewClipRegion.
 func PreviewClipRegionFromUnsafePointer(ptr unsafe.Pointer) *TPreviewClipRegion {
-    p := new(TPreviewClipRegion)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPreviewClipRegion(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

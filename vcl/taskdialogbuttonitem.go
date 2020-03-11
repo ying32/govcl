@@ -34,36 +34,41 @@ func NewTaskDialogButtonItem() *TTaskDialogButtonItem {
     return t
 }
 
+// AsTaskDialogButtonItem
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsTaskDialogButtonItem(obj interface{}) *TTaskDialogButtonItem {
+    t := new(TTaskDialogButtonItem)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TaskDialogButtonItemFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTaskDialogButtonItem.
 func TaskDialogButtonItemFromInst(inst uintptr) *TTaskDialogButtonItem {
-    t := new(TTaskDialogButtonItem)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTaskDialogButtonItem(inst)
 }
 
 // TaskDialogButtonItemFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTaskDialogButtonItem.
 func TaskDialogButtonItemFromObj(obj IObject) *TTaskDialogButtonItem {
-    t := new(TTaskDialogButtonItem)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTaskDialogButtonItem(obj)
 }
 
 // TaskDialogButtonItemFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTaskDialogButtonItem.
 func TaskDialogButtonItemFromUnsafePointer(ptr unsafe.Pointer) *TTaskDialogButtonItem {
-    t := new(TTaskDialogButtonItem)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTaskDialogButtonItem(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -261,7 +266,7 @@ func (t *TTaskDialogButtonItem) SetEnabled(value bool) {
 
 // Collection
 func (t *TTaskDialogButtonItem) Collection() *TCollection {
-    return CollectionFromInst(TaskDialogButtonItem_GetCollection(t.instance))
+    return AsCollection(TaskDialogButtonItem_GetCollection(t.instance))
 }
 
 // SetCollection

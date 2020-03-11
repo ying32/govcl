@@ -34,36 +34,41 @@ func NewSpinEdit(owner IComponent) *TSpinEdit {
     return s
 }
 
+// AsSpinEdit
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsSpinEdit(obj interface{}) *TSpinEdit {
+    s := new(TSpinEdit)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // SpinEditFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsSpinEdit.
 func SpinEditFromInst(inst uintptr) *TSpinEdit {
-    s := new(TSpinEdit)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsSpinEdit(inst)
 }
 
 // SpinEditFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsSpinEdit.
 func SpinEditFromObj(obj IObject) *TSpinEdit {
-    s := new(TSpinEdit)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsSpinEdit(obj)
 }
 
 // SpinEditFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsSpinEdit.
 func SpinEditFromUnsafePointer(ptr unsafe.Pointer) *TSpinEdit {
-    s := new(TSpinEdit)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsSpinEdit(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -189,7 +194,7 @@ func (s *TSpinEdit) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (s *TSpinEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(SpinEdit_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(SpinEdit_ControlAtPos(s.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -210,7 +215,7 @@ func (s *TSpinEdit) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (s *TSpinEdit) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(SpinEdit_FindChildControl(s.instance, ControlName))
+    return AsControl(SpinEdit_FindChildControl(s.instance, ControlName))
 }
 
 // FlipChildren
@@ -425,7 +430,7 @@ func (s *TSpinEdit) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TSpinEdit) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(SpinEdit_FindComponent(s.instance, AName))
+    return AsComponent(SpinEdit_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -556,7 +561,7 @@ func (s *TSpinEdit) SetColor(value TColor) {
 
 // Constraints
 func (s *TSpinEdit) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(SpinEdit_GetConstraints(s.instance))
+    return AsSizeConstraints(SpinEdit_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -630,7 +635,7 @@ func (s *TSpinEdit) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (s *TSpinEdit) Font() *TFont {
-    return FontFromInst(SpinEdit_GetFont(s.instance))
+    return AsFont(SpinEdit_GetFont(s.instance))
 }
 
 // SetFont
@@ -736,7 +741,7 @@ func (s *TSpinEdit) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (s *TSpinEdit) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(SpinEdit_GetPopupMenu(s.instance))
+    return AsPopupMenu(SpinEdit_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
@@ -1096,7 +1101,7 @@ func (s *TSpinEdit) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (s *TSpinEdit) Brush() *TBrush {
-    return BrushFromInst(SpinEdit_GetBrush(s.instance))
+    return AsBrush(SpinEdit_GetBrush(s.instance))
 }
 
 // ControlCount
@@ -1157,7 +1162,7 @@ func (s *TSpinEdit) SetUseDockManager(value bool) {
 
 // Action
 func (s *TSpinEdit) Action() *TAction {
-    return ActionFromInst(SpinEdit_GetAction(s.instance))
+    return AsAction(SpinEdit_GetAction(s.instance))
 }
 
 // SetAction
@@ -1296,7 +1301,7 @@ func (s *TSpinEdit) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TSpinEdit) Parent() *TWinControl {
-    return WinControlFromInst(SpinEdit_GetParent(s.instance))
+    return AsWinControl(SpinEdit_GetParent(s.instance))
 }
 
 // SetParent
@@ -1427,7 +1432,7 @@ func (s *TSpinEdit) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TSpinEdit) Margins() *TMargins {
-    return MarginsFromInst(SpinEdit_GetMargins(s.instance))
+    return AsMargins(SpinEdit_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -1441,7 +1446,7 @@ func (s *TSpinEdit) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TSpinEdit) CustomHint() *TCustomHint {
-    return CustomHintFromInst(SpinEdit_GetCustomHint(s.instance))
+    return AsCustomHint(SpinEdit_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -1476,7 +1481,7 @@ func (s *TSpinEdit) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TSpinEdit) Owner() *TComponent {
-    return ComponentFromInst(SpinEdit_GetOwner(s.instance))
+    return AsComponent(SpinEdit_GetOwner(s.instance))
 }
 
 // Name
@@ -1511,20 +1516,20 @@ func (s *TSpinEdit) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TSpinEdit) DockClients(Index int32) *TControl {
-    return ControlFromInst(SpinEdit_GetDockClients(s.instance, Index))
+    return AsControl(SpinEdit_GetDockClients(s.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (s *TSpinEdit) Controls(Index int32) *TControl {
-    return ControlFromInst(SpinEdit_GetControls(s.instance, Index))
+    return AsControl(SpinEdit_GetControls(s.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TSpinEdit) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(SpinEdit_GetComponents(s.instance, AIndex))
+    return AsComponent(SpinEdit_GetComponents(s.instance, AIndex))
 }
 

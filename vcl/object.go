@@ -34,36 +34,41 @@ func NewObject() *TObject {
     return o
 }
 
+// AsObject
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsObject(obj interface{}) *TObject {
+    o := new(TObject)
+    o.instance, o.ptr = getInstance(obj)
+    return o
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ObjectFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsObject.
 func ObjectFromInst(inst uintptr) *TObject {
-    o := new(TObject)
-    o.instance = inst
-    o.ptr = unsafe.Pointer(inst)
-    return o
+    return AsObject(inst)
 }
 
 // ObjectFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsObject.
 func ObjectFromObj(obj IObject) *TObject {
-    o := new(TObject)
-    o.instance = CheckPtr(obj)
-    o.ptr = unsafe.Pointer(o.instance)
-    return o
+    return AsObject(obj)
 }
 
 // ObjectFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsObject.
 func ObjectFromUnsafePointer(ptr unsafe.Pointer) *TObject {
-    o := new(TObject)
-    o.instance = uintptr(ptr)
-    o.ptr = ptr
-    return o
+    return AsObject(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.

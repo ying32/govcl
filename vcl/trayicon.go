@@ -34,36 +34,41 @@ func NewTrayIcon(owner IComponent) *TTrayIcon {
     return t
 }
 
+// AsTrayIcon
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsTrayIcon(obj interface{}) *TTrayIcon {
+    t := new(TTrayIcon)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TrayIconFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTrayIcon.
 func TrayIconFromInst(inst uintptr) *TTrayIcon {
-    t := new(TTrayIcon)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTrayIcon(inst)
 }
 
 // TrayIconFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTrayIcon.
 func TrayIconFromObj(obj IObject) *TTrayIcon {
-    t := new(TTrayIcon)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTrayIcon(obj)
 }
 
 // TrayIconFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTrayIcon.
 func TrayIconFromUnsafePointer(ptr unsafe.Pointer) *TTrayIcon {
-    t := new(TTrayIcon)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTrayIcon(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -131,7 +136,7 @@ func (t *TTrayIcon) ShowBalloonHint() {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TTrayIcon) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(TrayIcon_FindComponent(t.instance, AName))
+    return AsComponent(TrayIcon_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -289,7 +294,7 @@ func (t *TTrayIcon) SetBalloonFlags(value TBalloonFlags) {
 // CN: 获取图标。
 // EN: Get icon.
 func (t *TTrayIcon) Icon() *TIcon {
-    return IconFromInst(TrayIcon_GetIcon(t.instance))
+    return AsIcon(TrayIcon_GetIcon(t.instance))
 }
 
 // SetIcon
@@ -313,7 +318,7 @@ func (t *TTrayIcon) SetIconIndex(value int32) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (t *TTrayIcon) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(TrayIcon_GetPopupMenu(t.instance))
+    return AsPopupMenu(TrayIcon_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
@@ -402,7 +407,7 @@ func (t *TTrayIcon) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTrayIcon) Owner() *TComponent {
-    return ComponentFromInst(TrayIcon_GetOwner(t.instance))
+    return AsComponent(TrayIcon_GetOwner(t.instance))
 }
 
 // Name
@@ -437,6 +442,6 @@ func (t *TTrayIcon) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TTrayIcon) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(TrayIcon_GetComponents(t.instance, AIndex))
+    return AsComponent(TrayIcon_GetComponents(t.instance, AIndex))
 }
 

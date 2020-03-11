@@ -9,7 +9,7 @@
 package vcl
 
 import (
-	"reflect"
+	"unsafe"
 
 	"fmt"
 
@@ -32,11 +32,29 @@ func MessageDlg(Msg string, DlgType TMsgDlgType, Buttons ...uint8) int32 {
 }
 
 // CheckPtr 检测接口是否被实例化，如果已经实例化则返回实例指针
-func CheckPtr(value IObject) uintptr {
-	if value == nil || reflect.ValueOf(value).Pointer() == 0 {
-		return 0
+func CheckPtr(value interface{}) uintptr {
+	switch value.(type) {
+	case IObject:
+		return value.(IObject).Instance()
 	}
-	return value.Instance()
+	return 0
+}
+
+// As操作的简化
+func getInstance(value interface{}) (uintptr, unsafe.Pointer) {
+	var ptr uintptr
+	switch value.(type) {
+	case uintptr:
+		// 一个对象来自已经存在的对象实例指针
+		ptr = value.(uintptr)
+	case unsafe.Pointer:
+		// 一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+		ptr = uintptr(value.(unsafe.Pointer))
+	case IObject:
+		// 一个对象来自已经存在的对象实例
+		ptr = value.(IObject).Instance()
+	}
+	return ptr, unsafe.Pointer(ptr)
 }
 
 // SelectDirectory1 选择目录

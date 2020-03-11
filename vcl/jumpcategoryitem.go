@@ -34,36 +34,41 @@ func NewJumpCategoryItem() *TJumpCategoryItem {
     return j
 }
 
+// AsJumpCategoryItem
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsJumpCategoryItem(obj interface{}) *TJumpCategoryItem {
+    j := new(TJumpCategoryItem)
+    j.instance, j.ptr = getInstance(obj)
+    return j
+}
+
+// -------------------------- Deprecated begin --------------------------
 // JumpCategoryItemFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsJumpCategoryItem.
 func JumpCategoryItemFromInst(inst uintptr) *TJumpCategoryItem {
-    j := new(TJumpCategoryItem)
-    j.instance = inst
-    j.ptr = unsafe.Pointer(inst)
-    return j
+    return AsJumpCategoryItem(inst)
 }
 
 // JumpCategoryItemFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsJumpCategoryItem.
 func JumpCategoryItemFromObj(obj IObject) *TJumpCategoryItem {
-    j := new(TJumpCategoryItem)
-    j.instance = CheckPtr(obj)
-    j.ptr = unsafe.Pointer(j.instance)
-    return j
+    return AsJumpCategoryItem(obj)
 }
 
 // JumpCategoryItemFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsJumpCategoryItem.
 func JumpCategoryItemFromUnsafePointer(ptr unsafe.Pointer) *TJumpCategoryItem {
-    j := new(TJumpCategoryItem)
-    j.instance = uintptr(ptr)
-    j.ptr = ptr
-    return j
+    return AsJumpCategoryItem(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -206,7 +211,7 @@ func (j *TJumpCategoryItem) SetCategoryName(value string) {
 
 // Items
 func (j *TJumpCategoryItem) Items() *TJumpListCollection {
-    return JumpListCollectionFromInst(JumpCategoryItem_GetItems(j.instance))
+    return AsJumpListCollection(JumpCategoryItem_GetItems(j.instance))
 }
 
 // SetItems
@@ -216,7 +221,7 @@ func (j *TJumpCategoryItem) SetItems(value *TJumpListCollection) {
 
 // Collection
 func (j *TJumpCategoryItem) Collection() *TCollection {
-    return CollectionFromInst(JumpCategoryItem_GetCollection(j.instance))
+    return AsCollection(JumpCategoryItem_GetCollection(j.instance))
 }
 
 // SetCollection

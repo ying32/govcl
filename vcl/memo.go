@@ -34,36 +34,41 @@ func NewMemo(owner IComponent) *TMemo {
     return m
 }
 
+// AsMemo
+// CN: 新建一个对象来自已经存在的对象实例。
+// EN: Create a new object from an existing object instance.
+func AsMemo(obj interface{}) *TMemo {
+    m := new(TMemo)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MemoFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMemo.
 func MemoFromInst(inst uintptr) *TMemo {
-    m := new(TMemo)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMemo(inst)
 }
 
 // MemoFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMemo.
 func MemoFromObj(obj IObject) *TMemo {
-    m := new(TMemo)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMemo(obj)
 }
 
 // MemoFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMemo.
 func MemoFromUnsafePointer(ptr unsafe.Pointer) *TMemo {
-    m := new(TMemo)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMemo(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -189,7 +194,7 @@ func (m *TMemo) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (m *TMemo) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(Memo_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Memo_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -210,7 +215,7 @@ func (m *TMemo) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (m *TMemo) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(Memo_FindChildControl(m.instance, ControlName))
+    return AsControl(Memo_FindChildControl(m.instance, ControlName))
 }
 
 // FlipChildren
@@ -425,7 +430,7 @@ func (m *TMemo) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (m *TMemo) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Memo_FindComponent(m.instance, AName))
+    return AsComponent(Memo_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
@@ -630,7 +635,7 @@ func (m *TMemo) SetColor(value TColor) {
 
 // Constraints
 func (m *TMemo) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Memo_GetConstraints(m.instance))
+    return AsSizeConstraints(Memo_GetConstraints(m.instance))
 }
 
 // SetConstraints
@@ -722,7 +727,7 @@ func (m *TMemo) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (m *TMemo) Font() *TFont {
-    return FontFromInst(Memo_GetFont(m.instance))
+    return AsFont(Memo_GetFont(m.instance))
 }
 
 // SetFont
@@ -748,7 +753,7 @@ func (m *TMemo) SetHideSelection(value bool) {
 
 // Lines
 func (m *TMemo) Lines() *TStrings {
-    return StringsFromInst(Memo_GetLines(m.instance))
+    return AsStrings(Memo_GetLines(m.instance))
 }
 
 // SetLines
@@ -836,7 +841,7 @@ func (m *TMemo) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (m *TMemo) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Memo_GetPopupMenu(m.instance))
+    return AsPopupMenu(Memo_GetPopupMenu(m.instance))
 }
 
 // SetPopupMenu
@@ -1271,7 +1276,7 @@ func (m *TMemo) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (m *TMemo) Brush() *TBrush {
-    return BrushFromInst(Memo_GetBrush(m.instance))
+    return AsBrush(Memo_GetBrush(m.instance))
 }
 
 // ControlCount
@@ -1318,7 +1323,7 @@ func (m *TMemo) SetUseDockManager(value bool) {
 
 // Action
 func (m *TMemo) Action() *TAction {
-    return ActionFromInst(Memo_GetAction(m.instance))
+    return AsAction(Memo_GetAction(m.instance))
 }
 
 // SetAction
@@ -1433,7 +1438,7 @@ func (m *TMemo) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (m *TMemo) Parent() *TWinControl {
-    return WinControlFromInst(Memo_GetParent(m.instance))
+    return AsWinControl(Memo_GetParent(m.instance))
 }
 
 // SetParent
@@ -1545,7 +1550,7 @@ func (m *TMemo) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (m *TMemo) Margins() *TMargins {
-    return MarginsFromInst(Memo_GetMargins(m.instance))
+    return AsMargins(Memo_GetMargins(m.instance))
 }
 
 // SetMargins
@@ -1559,7 +1564,7 @@ func (m *TMemo) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (m *TMemo) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Memo_GetCustomHint(m.instance))
+    return AsCustomHint(Memo_GetCustomHint(m.instance))
 }
 
 // SetCustomHint
@@ -1594,7 +1599,7 @@ func (m *TMemo) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (m *TMemo) Owner() *TComponent {
-    return ComponentFromInst(Memo_GetOwner(m.instance))
+    return AsComponent(Memo_GetOwner(m.instance))
 }
 
 // Name
@@ -1629,20 +1634,20 @@ func (m *TMemo) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMemo) DockClients(Index int32) *TControl {
-    return ControlFromInst(Memo_GetDockClients(m.instance, Index))
+    return AsControl(Memo_GetDockClients(m.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (m *TMemo) Controls(Index int32) *TControl {
-    return ControlFromInst(Memo_GetControls(m.instance, Index))
+    return AsControl(Memo_GetControls(m.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (m *TMemo) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Memo_GetComponents(m.instance, AIndex))
+    return AsComponent(Memo_GetComponents(m.instance, AIndex))
 }
 
