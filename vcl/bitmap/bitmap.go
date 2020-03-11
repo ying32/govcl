@@ -157,21 +157,49 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 	_, bs := mem.Read(int32(mem.Size()))
 	buff.Write(bs)
 	if obj.InheritsFrom(vcl.TBitmapClass()) {
-		img := image.NewRGBA(image.Rect(0, 0, int(obj.Width()), int(obj.Height())))
+		height := int(obj.Height())
+		width := int(obj.Width())
+		img := image.NewRGBA(image.Rect(0, 0, width, height))
+
 		bmp := vcl.BitmapFromObj(obj)
 		switch bmp.PixelFormat() {
-		case types.Pf1bit:
-		case types.Pf4bit:
-		case types.Pf8bit:
-		case types.Pf15bit:
-		case types.Pf16bit:
+
+		// 还有待测试。。。
 		case types.Pf24bit:
+
+			for h := height - 1; h >= 0; h-- {
+				ptr := bmp.ScanLine(int32(h))
+				for w := 0; w < width; w++ {
+					index := (h*width + w) * 4
+					c := (*rgb)(unsafe.Pointer(ptr + uintptr(w*3)))
+					img.Pix[index+0] = c.R
+					img.Pix[index+1] = c.G
+					img.Pix[index+2] = c.B
+					img.Pix[index+3] = 0
+				}
+			}
+
 		case types.Pf32bit:
-		case types.PfCustom:
+			for h := height - 1; h >= 0; h-- {
+				ptr := bmp.ScanLine(int32(h))
+				for w := 0; w < width; w++ {
+					index := (h*width + w) * 4
+					c := (*rgba)(unsafe.Pointer(ptr + uintptr(w*4)))
+					img.Pix[index+0] = c.R
+					img.Pix[index+1] = c.G
+					img.Pix[index+2] = c.B
+					img.Pix[index+3] = c.A
+				}
+			}
+		default:
+			//case types.Pf1bit:
+			//case types.Pf4bit:
+			//case types.Pf8bit:
+			//case types.Pf15bit:
+			//case types.Pf16bit:
+			//case types.PfCustom:
+			return nil, ErrUnsupportedDataFormat
 		}
-		// 复制数据到Pix中。。。
-		// 先不管他了，以后再说
-		//img.Pix
 		return img, nil
 	} else if obj.Is(vcl.TPngImageClass()) {
 		img, err := png.Decode(buff)

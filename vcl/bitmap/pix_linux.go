@@ -18,3 +18,7 @@ package bitmap
 type rgba struct {
 	R, G, B, A uint8
 }
+
+type rgb struct {
+	R, G, B uint8
+}
