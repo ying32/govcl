@@ -96,6 +96,13 @@ func (l *TListGroups) IsValid() bool {
     return l.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (l *TListGroups) Is(AClass TClass) bool {
+    return l.InheritsFrom(AClass)
+}
+
 // TListGroupsClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

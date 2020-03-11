@@ -96,6 +96,13 @@ func (b *TBrush) IsValid() bool {
     return b.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (b *TBrush) Is(AClass TClass) bool {
+    return b.InheritsFrom(AClass)
+}
+
 // TBrushClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

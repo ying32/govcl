@@ -96,6 +96,13 @@ func (g *TGIFImage) IsValid() bool {
     return g.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (g *TGIFImage) Is(AClass TClass) bool {
+    return g.InheritsFrom(AClass)
+}
+
 // TGIFImageClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

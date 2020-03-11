@@ -97,6 +97,13 @@ func (d *TDateTimePicker) IsValid() bool {
     return d.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (d *TDateTimePicker) Is(AClass TClass) bool {
+    return d.InheritsFrom(AClass)
+}
+
 // TDateTimePickerClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

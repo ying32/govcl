@@ -96,6 +96,13 @@ func (b *TBoundLabel) IsValid() bool {
     return b.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (b *TBoundLabel) Is(AClass TClass) bool {
+    return b.InheritsFrom(AClass)
+}
+
 // TBoundLabelClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

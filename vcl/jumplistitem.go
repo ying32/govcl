@@ -96,6 +96,13 @@ func (j *TJumpListItem) IsValid() bool {
     return j.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (j *TJumpListItem) Is(AClass TClass) bool {
+    return j.InheritsFrom(AClass)
+}
+
 // TJumpListItemClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

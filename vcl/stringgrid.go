@@ -96,6 +96,13 @@ func (s *TStringGrid) IsValid() bool {
     return s.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (s *TStringGrid) Is(AClass TClass) bool {
+    return s.InheritsFrom(AClass)
+}
+
 // TStringGridClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

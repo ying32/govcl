@@ -96,6 +96,13 @@ func (s *TStaticText) IsValid() bool {
     return s.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (s *TStaticText) Is(AClass TClass) bool {
+    return s.InheritsFrom(AClass)
+}
+
 // TStaticTextClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

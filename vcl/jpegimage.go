@@ -96,6 +96,13 @@ func (j *TJPEGImage) IsValid() bool {
     return j.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (j *TJPEGImage) Is(AClass TClass) bool {
+    return j.InheritsFrom(AClass)
+}
+
 // TJPEGImageClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

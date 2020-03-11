@@ -96,6 +96,13 @@ func (f *TFont) IsValid() bool {
     return f.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (f *TFont) Is(AClass TClass) bool {
+    return f.InheritsFrom(AClass)
+}
+
 // TFontClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

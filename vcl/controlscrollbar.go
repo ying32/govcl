@@ -75,6 +75,13 @@ func (c *TControlScrollBar) IsValid() bool {
     return c.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (c *TControlScrollBar) Is(AClass TClass) bool {
+    return c.InheritsFrom(AClass)
+}
+
 // TControlScrollBarClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

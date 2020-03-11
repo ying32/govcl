@@ -96,6 +96,13 @@ func (s *TScreen) IsValid() bool {
     return s.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (s *TScreen) Is(AClass TClass) bool {
+    return s.InheritsFrom(AClass)
+}
+
 // TScreenClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

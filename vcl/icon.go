@@ -96,6 +96,13 @@ func (i *TIcon) IsValid() bool {
     return i.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (i *TIcon) Is(AClass TClass) bool {
+    return i.InheritsFrom(AClass)
+}
+
 // TIconClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

@@ -96,6 +96,13 @@ func (a *TAction) IsValid() bool {
     return a.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (a *TAction) Is(AClass TClass) bool {
+    return a.InheritsFrom(AClass)
+}
+
 // TActionClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

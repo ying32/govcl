@@ -96,6 +96,13 @@ func (a *TApplication) IsValid() bool {
     return a.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (a *TApplication) Is(AClass TClass) bool {
+    return a.InheritsFrom(AClass)
+}
+
 // TApplicationClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

@@ -96,6 +96,13 @@ func (c *TCheckBox) IsValid() bool {
     return c.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (c *TCheckBox) Is(AClass TClass) bool {
+    return c.InheritsFrom(AClass)
+}
+
 // TCheckBoxClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

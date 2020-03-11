@@ -96,6 +96,13 @@ func (r *TRadioButton) IsValid() bool {
     return r.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (r *TRadioButton) Is(AClass TClass) bool {
+    return r.InheritsFrom(AClass)
+}
+
 // TRadioButtonClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

@@ -75,6 +75,13 @@ func (s *TSizeConstraints) IsValid() bool {
     return s.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (s *TSizeConstraints) Is(AClass TClass) bool {
+    return s.InheritsFrom(AClass)
+}
+
 // TSizeConstraintsClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

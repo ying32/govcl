@@ -96,6 +96,13 @@ func (g *TGauge) IsValid() bool {
     return g.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (g *TGauge) Is(AClass TClass) bool {
+    return g.InheritsFrom(AClass)
+}
+
 // TGaugeClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

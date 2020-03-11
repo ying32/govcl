@@ -96,6 +96,13 @@ func (t *TTimer) IsValid() bool {
     return t.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (t *TTimer) Is(AClass TClass) bool {
+    return t.InheritsFrom(AClass)
+}
+
 // TTimerClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

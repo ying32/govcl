@@ -173,19 +173,19 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 		// 先不管他了，以后再说
 		//img.Pix
 		return img, nil
-	} else if obj.InheritsFrom(vcl.TPngImageClass()) {
+	} else if obj.Is(vcl.TPngImageClass()) {
 		img, err := png.Decode(buff)
 		if err != nil {
 			return nil, err
 		}
 		return img, nil
-	} else if obj.InheritsFrom(vcl.TJPEGImageClass()) {
+	} else if obj.Is(vcl.TJPEGImageClass()) {
 		img, err := jpeg.Decode(buff)
 		if err != nil {
 			return nil, err
 		}
 		return img, nil
-	} else if obj.InheritsFrom(vcl.TGIFImageClass()) {
+	} else if obj.Is(vcl.TGIFImageClass()) {
 		img, err := gif.Decode(buff)
 		if err != nil {
 			return nil, err

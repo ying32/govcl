@@ -96,6 +96,13 @@ func (o *TOpenTextFileDialog) IsValid() bool {
     return o.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (o *TOpenTextFileDialog) Is(AClass TClass) bool {
+    return o.InheritsFrom(AClass)
+}
+
 // TOpenTextFileDialogClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

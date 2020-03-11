@@ -96,6 +96,13 @@ func (m *TMaskEdit) IsValid() bool {
     return m.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (m *TMaskEdit) Is(AClass TClass) bool {
+    return m.InheritsFrom(AClass)
+}
+
 // TMaskEditClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

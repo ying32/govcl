@@ -96,6 +96,13 @@ func (l *TLinkLabel) IsValid() bool {
     return l.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (l *TLinkLabel) Is(AClass TClass) bool {
+    return l.InheritsFrom(AClass)
+}
+
 // TLinkLabelClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

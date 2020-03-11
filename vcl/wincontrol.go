@@ -96,6 +96,13 @@ func (w *TWinControl) IsValid() bool {
     return w.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (w *TWinControl) Is(AClass TClass) bool {
+    return w.InheritsFrom(AClass)
+}
+
 // TWinControlClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

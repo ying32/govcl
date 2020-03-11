@@ -96,6 +96,13 @@ func (g *TGraphic) IsValid() bool {
     return g.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (g *TGraphic) Is(AClass TClass) bool {
+    return g.InheritsFrom(AClass)
+}
+
 // TGraphicClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

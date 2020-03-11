@@ -96,6 +96,13 @@ func (h *THotKey) IsValid() bool {
     return h.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (h *THotKey) Is(AClass TClass) bool {
+    return h.InheritsFrom(AClass)
+}
+
 // THotKeyClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

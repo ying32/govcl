@@ -96,6 +96,13 @@ func (d *TDragObject) IsValid() bool {
     return d.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (d *TDragObject) Is(AClass TClass) bool {
+    return d.InheritsFrom(AClass)
+}
+
 // TDragObjectClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.

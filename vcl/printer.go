@@ -96,6 +96,13 @@ func (p *TPrinter) IsValid() bool {
     return p.instance != 0
 }
 
+// Is 
+// CN: InheritsFrom的别名。
+// EN: Alias of InheritsFrom.
+func (p *TPrinter) Is(AClass TClass) bool {
+    return p.InheritsFrom(AClass)
+}
+
 // TPrinterClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
