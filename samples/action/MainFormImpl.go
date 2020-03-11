@@ -89,6 +89,5 @@ func (f *TMainForm) OnActExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActUpdate(sender vcl.IObject) {
-	//vcl.AsAction(sender).SetEnabled(f.Chk.Checked())
-	sender.As().Action().SetEnabled(f.Chk.Checked())
+	vcl.AsAction(sender).SetEnabled(f.Chk.Checked())
 }
