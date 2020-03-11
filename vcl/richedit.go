@@ -111,9 +111,9 @@ func (r *TRichEdit) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (r *TRichEdit) As() TAs {
-    return TAs(r.instance)
-}
+//func (r *TRichEdit) As() TAs {
+//    return TAs(r.instance)
+//}
 
 // TRichEditClass
 // CN: 获取类信息指针。

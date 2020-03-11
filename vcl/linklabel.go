@@ -111,9 +111,9 @@ func (l *TLinkLabel) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (l *TLinkLabel) As() TAs {
-    return TAs(l.instance)
-}
+//func (l *TLinkLabel) As() TAs {
+//    return TAs(l.instance)
+//}
 
 // TLinkLabelClass
 // CN: 获取类信息指针。

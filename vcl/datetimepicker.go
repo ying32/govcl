@@ -112,9 +112,9 @@ func (d *TDateTimePicker) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (d *TDateTimePicker) As() TAs {
-    return TAs(d.instance)
-}
+//func (d *TDateTimePicker) As() TAs {
+//    return TAs(d.instance)
+//}
 
 // TDateTimePickerClass
 // CN: 获取类信息指针。

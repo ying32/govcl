@@ -111,9 +111,9 @@ func (a *TAction) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (a *TAction) As() TAs {
-    return TAs(a.instance)
-}
+//func (a *TAction) As() TAs {
+//    return TAs(a.instance)
+//}
 
 // TActionClass
 // CN: 获取类信息指针。

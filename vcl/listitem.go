@@ -111,9 +111,9 @@ func (l *TListItem) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (l *TListItem) As() TAs {
-    return TAs(l.instance)
-}
+//func (l *TListItem) As() TAs {
+//    return TAs(l.instance)
+//}
 
 // TListItemClass
 // CN: 获取类信息指针。

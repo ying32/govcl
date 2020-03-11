@@ -111,9 +111,9 @@ func (v *TValueListEditor) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (v *TValueListEditor) As() TAs {
-    return TAs(v.instance)
-}
+//func (v *TValueListEditor) As() TAs {
+//    return TAs(v.instance)
+//}
 
 // TValueListEditorClass
 // CN: 获取类信息指针。

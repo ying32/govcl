@@ -111,9 +111,9 @@ func (o *TOpenPictureDialog) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (o *TOpenPictureDialog) As() TAs {
-    return TAs(o.instance)
-}
+//func (o *TOpenPictureDialog) As() TAs {
+//    return TAs(o.instance)
+//}
 
 // TOpenPictureDialogClass
 // CN: 获取类信息指针。

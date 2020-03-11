@@ -111,9 +111,9 @@ func (p *TPopupMenu) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (p *TPopupMenu) As() TAs {
-    return TAs(p.instance)
-}
+//func (p *TPopupMenu) As() TAs {
+//    return TAs(p.instance)
+//}
 
 // TPopupMenuClass
 // CN: 获取类信息指针。

@@ -90,9 +90,9 @@ func (j *TJumpListCollection) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (j *TJumpListCollection) As() TAs {
-    return TAs(j.instance)
-}
+//func (j *TJumpListCollection) As() TAs {
+//    return TAs(j.instance)
+//}
 
 // TJumpListCollectionClass
 // CN: 获取类信息指针。

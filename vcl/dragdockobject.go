@@ -111,9 +111,9 @@ func (d *TDragDockObject) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (d *TDragDockObject) As() TAs {
-    return TAs(d.instance)
-}
+//func (d *TDragDockObject) As() TAs {
+//    return TAs(d.instance)
+//}
 
 // TDragDockObjectClass
 // CN: 获取类信息指针。

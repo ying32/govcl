@@ -111,9 +111,9 @@ func (p *TPrinter) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (p *TPrinter) As() TAs {
-    return TAs(p.instance)
-}
+//func (p *TPrinter) As() TAs {
+//    return TAs(p.instance)
+//}
 
 // TPrinterClass
 // CN: 获取类信息指针。

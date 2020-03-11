@@ -111,9 +111,9 @@ func (c *TClipboard) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (c *TClipboard) As() TAs {
-    return TAs(c.instance)
-}
+//func (c *TClipboard) As() TAs {
+//    return TAs(c.instance)
+//}
 
 // TClipboardClass
 // CN: 获取类信息指针。

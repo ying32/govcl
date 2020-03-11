@@ -111,9 +111,9 @@ func (e *TEdit) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (e *TEdit) As() TAs {
-    return TAs(e.instance)
-}
+//func (e *TEdit) As() TAs {
+//    return TAs(e.instance)
+//}
 
 // TEditClass
 // CN: 获取类信息指针。

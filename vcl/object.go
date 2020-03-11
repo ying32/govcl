@@ -111,9 +111,9 @@ func (o *TObject) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (o *TObject) As() TAs {
-    return TAs(o.instance)
-}
+//func (o *TObject) As() TAs {
+//    return TAs(o.instance)
+//}
 
 // TObjectClass
 // CN: 获取类信息指针。

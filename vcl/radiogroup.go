@@ -111,9 +111,9 @@ func (r *TRadioGroup) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (r *TRadioGroup) As() TAs {
-    return TAs(r.instance)
-}
+//func (r *TRadioGroup) As() TAs {
+//    return TAs(r.instance)
+//}
 
 // TRadioGroupClass
 // CN: 获取类信息指针。

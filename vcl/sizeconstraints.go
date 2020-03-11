@@ -90,9 +90,9 @@ func (s *TSizeConstraints) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (s *TSizeConstraints) As() TAs {
-    return TAs(s.instance)
-}
+//func (s *TSizeConstraints) As() TAs {
+//    return TAs(s.instance)
+//}
 
 // TSizeConstraintsClass
 // CN: 获取类信息指针。

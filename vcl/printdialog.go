@@ -111,9 +111,9 @@ func (p *TPrintDialog) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (p *TPrintDialog) As() TAs {
-    return TAs(p.instance)
-}
+//func (p *TPrintDialog) As() TAs {
+//    return TAs(p.instance)
+//}
 
 // TPrintDialogClass
 // CN: 获取类信息指针。

@@ -111,9 +111,9 @@ func (m *TMemo) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (m *TMemo) As() TAs {
-    return TAs(m.instance)
-}
+//func (m *TMemo) As() TAs {
+//    return TAs(m.instance)
+//}
 
 // TMemoClass
 // CN: 获取类信息指针。

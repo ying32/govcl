@@ -90,9 +90,9 @@ func (t *TTextAttributes) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (t *TTextAttributes) As() TAs {
-    return TAs(t.instance)
-}
+//func (t *TTextAttributes) As() TAs {
+//    return TAs(t.instance)
+//}
 
 // TTextAttributesClass
 // CN: 获取类信息指针。

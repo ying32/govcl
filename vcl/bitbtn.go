@@ -111,9 +111,9 @@ func (b *TBitBtn) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (b *TBitBtn) As() TAs {
-    return TAs(b.instance)
-}
+//func (b *TBitBtn) As() TAs {
+//    return TAs(b.instance)
+//}
 
 // TBitBtnClass
 // CN: 获取类信息指针。

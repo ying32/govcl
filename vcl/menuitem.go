@@ -111,9 +111,9 @@ func (m *TMenuItem) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (m *TMenuItem) As() TAs {
-    return TAs(m.instance)
-}
+//func (m *TMenuItem) As() TAs {
+//    return TAs(m.instance)
+//}
 
 // TMenuItemClass
 // CN: 获取类信息指针。

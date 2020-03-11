@@ -112,9 +112,9 @@ func (m *TMonthCalendar) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (m *TMonthCalendar) As() TAs {
-    return TAs(m.instance)
-}
+//func (m *TMonthCalendar) As() TAs {
+//    return TAs(m.instance)
+//}
 
 // TMonthCalendarClass
 // CN: 获取类信息指针。

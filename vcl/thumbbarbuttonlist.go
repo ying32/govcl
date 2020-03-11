@@ -111,9 +111,9 @@ func (t *TThumbBarButtonList) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (t *TThumbBarButtonList) As() TAs {
-    return TAs(t.instance)
-}
+//func (t *TThumbBarButtonList) As() TAs {
+//    return TAs(t.instance)
+//}
 
 // TThumbBarButtonListClass
 // CN: 获取类信息指针。

@@ -111,9 +111,9 @@ func (t *TTreeView) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (t *TTreeView) As() TAs {
-    return TAs(t.instance)
-}
+//func (t *TTreeView) As() TAs {
+//    return TAs(t.instance)
+//}
 
 // TTreeViewClass
 // CN: 获取类信息指针。

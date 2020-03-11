@@ -111,9 +111,9 @@ func (p *TPanel) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (p *TPanel) As() TAs {
-    return TAs(p.instance)
-}
+//func (p *TPanel) As() TAs {
+//    return TAs(p.instance)
+//}
 
 // TPanelClass
 // CN: 获取类信息指针。

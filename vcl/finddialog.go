@@ -111,9 +111,9 @@ func (f *TFindDialog) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (f *TFindDialog) As() TAs {
-    return TAs(f.instance)
-}
+//func (f *TFindDialog) As() TAs {
+//    return TAs(f.instance)
+//}
 
 // TFindDialogClass
 // CN: 获取类信息指针。

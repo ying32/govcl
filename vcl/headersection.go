@@ -111,9 +111,9 @@ func (h *THeaderSection) Is() TIs {
 // As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
-func (h *THeaderSection) As() TAs {
-    return TAs(h.instance)
-}
+//func (h *THeaderSection) As() TAs {
+//    return TAs(h.instance)
+//}
 
 // THeaderSectionClass
 // CN: 获取类信息指针。
