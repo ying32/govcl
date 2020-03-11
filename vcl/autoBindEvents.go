@@ -148,10 +148,6 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 			field := vt.Elem().Field(i)
 			eventsTag := field.Tag.Get("events")
 			if eventsTag == "" {
-				// 兼容前面的
-				eventsTag = field.Tag.Get("event")
-			}
-			if eventsTag == "" {
 				continue
 			}
 			eventArr := strings.Split(eventsTag, ",")
@@ -244,6 +240,9 @@ func findAndSetComponentName(v reflect.Value, name string) {
 			fmt.Println("Calling findAndSetComponentName exception:", err)
 		}
 	}()
+	if v.Pointer() == 0 {
+		return
+	}
 	if setName := v.MethodByName("SetName"); setName.IsValid() {
 		setName.Call([]reflect.Value{reflect.ValueOf(name)})
 	}

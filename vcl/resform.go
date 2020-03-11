@@ -131,15 +131,16 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 	var field1 interface{}
 
 	// 初始创建时是否使用缩放
-	initScale := len(fields) != 2
-	if len(fields) >= 2 {
-		switch fields[1].(type) {
-		case bool:
-			initScale = true
-		default:
-			initScale = false
-		}
-	}
+	initScale := false
+	//initScale := len(fields) != 2
+	//if len(fields) >= 2 {
+	//	switch fields[1].(type) {
+	//	case bool:
+	//		initScale = true
+	//	default:
+	//		initScale = false
+	//	}
+	//}
 
 	var resObj IComponent
 
@@ -154,38 +155,48 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 		resObj = NewFrame(owner)
 	}
 
+	//条件设置用
+	bindSubs := func(sub, afterSub bool) {
+		fullSubComponent = sub
+		afterBindSubComponentsEvents = afterSub
+	}
+
 	// 查找并构建Form
-	findAndBuildForm := func(field interface{}) {
+	findAndBuildForm := func(field interface{}) error {
 		res, err := findFormResource(field)
 		// 找到了对应的Form资源
 		if err == nil {
-			fullSubComponent = true
-			afterBindSubComponentsEvents = false
+			bindSubs(true, false)
 			loadFormResourceStream(*res.Data, resObj)
 		}
+		return err
 	}
 
 	switch len(fields) {
 	case 1:
 		field1 = fields[0]
-		fullSubComponent = false
-		afterBindSubComponentsEvents = false
+		bindSubs(false, false)
 		// 查找并构建Form
-		findAndBuildForm(field1)
+		if findAndBuildForm(field1) != nil {
+			// 没有找到对应的资源，估计是手动创建的，将这个永远设置为true
+			bindSubs(false, true)
+		}
 	case 2:
 		switch fields[1].(type) {
 		// 当第二个参数为bool时，表示不填充子组件，为true表示之后绑定事件
 		case bool:
 			field1 = fields[0]
-			fullSubComponent = false
-			afterBindSubComponentsEvents = fields[1].(bool)
+			bindSubs(false, false) //fields[1].(bool)
 			// 查找并构建Form
-			findAndBuildForm(field1)
+			if findAndBuildForm(field1) != nil {
+				// 没有找到对应的资源，估计是手动创建的
+				// 如果指定为false则不绑定
+				bindSubs(false, fields[1].(bool))
+			}
 		default:
 			// 第二个参数类型不为bool时，填充子组件为true，之后绑定事件为false
 			field1 = fields[1]
-			fullSubComponent = true
-			afterBindSubComponentsEvents = false
+			bindSubs(true, false)
 			switch fields[0].(type) {
 			case string:
 				ResFormLoadFromFile(fields[0].(string), CheckPtr(resObj))
