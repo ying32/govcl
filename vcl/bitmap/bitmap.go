@@ -161,7 +161,7 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 		width := int(obj.Width())
 		img := image.NewRGBA(image.Rect(0, 0, width, height))
 
-		bmp := obj.As().Bitmap()
+		bmp := vcl.AsBitmap(obj)
 		switch bmp.PixelFormat() {
 
 		// 还有待测试。。。
