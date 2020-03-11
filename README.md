@@ -17,7 +17,7 @@
 ----
 
 ### 支持的平台  
-Windows | Linux | macOS  
+**Windows** | **Linux** | **macOS**  
 
 > 注: linux和macOS由于底层使用了lcl库，则部分组件、属性和方法无效。  
 > 如果你想要支持linux arm及linux 32bit则需要自己编译对应的liblcl二进制。  
@@ -131,26 +131,22 @@ var (
 )
 
 func main() {
-    vcl.Application.Initialize()
-    vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(&mainForm)
-    // 创建完后关联子组件事件
-    vcl.Application.CreateForm(&aboutForm, true)
-    vcl.Application.Run()
+    vcl.RunApp(&mainForm, &aboutForm)
 }
 
 // -- TMainForm
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
-    f.SetCaption("Hello")
+    f.SetCaption("MainForm")
+    
     f.Btn1 = vcl.NewButton(f)
     f.Btn1.SetParent(f)
     f.Btn1.SetBounds(10, 10, 88, 28)
     f.Btn1.SetCaption("Button1")
-    f.Btn1.SetOnClick(f.OnButtonClick)  
+    //f.Btn1.SetOnClick(f.OnBtn1Click)  
 }
 
-func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
+func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
     vcl.ShowMessage("Hello!")
 }
 
@@ -158,7 +154,7 @@ func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
 // -- TAboutForm
 
 func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
-    f.SetCaption("Hello")
+    f.SetCaption("About")
     f.Btn1 = vcl.NewButton(f)
     //f.Btn1.SetName("Btn1")
     f.Btn1.SetParent(f)
@@ -172,34 +168,7 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ```
 
-
-* 方法三(纯代码。不推荐方式)：  
-
-```golang
-package main
-
-import (
-   "github.com/ying32/govcl/vcl"
-   // 如果你使用自定义的syso文件则不要引用此包
-   _ "github.com/ying32/govcl/pkgs/winappres"
-)
-
-func main() {
-    vcl.Application.Initialize()
-    mainForm := vcl.Application.CreateForm()
-    mainForm.SetCaption("Hello")
-    mainForm.EnabledMaximize(false)
-    mainForm.ScreenCenter()
-    btn := vcl.NewButton(mainForm)
-    btn.SetParent(mainForm)
-    btn.SetCaption("Hello")
-    btn.SetOnClick(func(sender vcl.IObject) {
-        vcl.ShowMessage("Hello!")
-    })
-    vcl.Application.Run()
-}
-```  
-
+* 方法三：不推荐，所以不给出示例了。  
 
 #### 步骤三：复制对应的二进制    
 

@@ -15,7 +15,7 @@
 ----
 
 ### Support Platform    
-Windows | Linux | macOS  
+**Windows** | **Linux** | **macOS**  
 
 > Note: linux and macOS only part of the components, properties, events and methods are valid.  
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
@@ -128,26 +128,21 @@ var (
 )
 
 func main() {
-    vcl.Application.Initialize()
-    vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(&mainForm)
-   // Bind subcomponent events after creation.
-    vcl.Application.CreateForm(&aboutForm, true)
-    vcl.Application.Run()
+    vcl.RunApp(&mainForm, &aboutForm)
 }
 
 // -- TMainForm
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
-    f.SetCaption("Hello")
+    f.SetCaption("MainForm")
     f.Btn1 = vcl.NewButton(f)
     f.Btn1.SetParent(f)
     f.Btn1.SetBounds(10, 10, 88, 28)
     f.Btn1.SetCaption("Button1")
-    f.Btn1.SetOnClick(f.OnButtonClick)  
+    //f.Btn1.SetOnClick(f.OnBtn1Click)  
 }
 
-func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
+func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
     vcl.ShowMessage("Hello!")
 }
 
@@ -155,7 +150,7 @@ func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
 // -- TAboutForm
 
 func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
-    f.SetCaption("Hello")
+    f.SetCaption("About")
     f.Btn1 = vcl.NewButton(f)
     //f.Btn1.SetName("Btn1")
     f.Btn1.SetParent(f)
@@ -166,35 +161,9 @@ func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
 func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
     vcl.ShowMessage("Hello!")
 }
-```
+``` 
 
-
-* Method 3(Pure code. Not recommended): 
-
-```golang
-package main
-
-import (
-   "github.com/ying32/govcl/vcl"
-   // Do not reference this package if you use custom syso files
-   _ "github.com/ying32/govcl/pkgs/winappres"
-)
-
-func main() {
-    vcl.Application.Initialize()
-    mainForm := vcl.Application.CreateForm()
-    mainForm.SetCaption("Hello")
-    mainForm.EnabledMaximize(false)
-    mainForm.ScreenCenter()
-    btn := vcl.NewButton(mainForm)
-    btn.SetParent(mainForm)
-    btn.SetCaption("Hello")
-    btn.SetOnClick(func(sender vcl.IObject) {
-        vcl.ShowMessage("Hello!")
-    })
-    vcl.Application.Run()
-}
-```  
+* Method 3: Not recommended, so no examples are given.
 
 #### Step 3: Copy the corresponding binary   
 
