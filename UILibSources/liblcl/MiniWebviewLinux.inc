@@ -121,7 +121,7 @@ procedure LoadLibWebkitGtk;
 begin
   if LibWebkitGtkHandle <> 0 then
     Exit;
-  LibWebkitGtkHandle := dynlibs.SafeLoadLibrary(libwebkitgtk1_0);
+  LibWebkitGtkHandle := dynlibs.SafeLoadLibrary(libwebkitgtkso);
   if LibWebkitGtkHandle <> 0 then
   begin
     {$IFDEF LCLgtk3}
