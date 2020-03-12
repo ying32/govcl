@@ -58183,6 +58183,15 @@ func HeaderControl_SetConstraints(obj uintptr, value uintptr) {
    headerControl_SetConstraints.Call(obj, value)
 }
 
+func HeaderControl_GetSections(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetSections.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetSections(obj uintptr, value uintptr) {
+   headerControl_SetSections.Call(obj, value)
+}
+
 func HeaderControl_GetShowHint(obj uintptr) bool {
     ret, _, _ := headerControl_GetShowHint.Call(obj)
     return DBoolToGoBool(ret)

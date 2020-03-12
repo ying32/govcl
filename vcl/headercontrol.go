@@ -629,6 +629,16 @@ func (h *THeaderControl) SetConstraints(value *TSizeConstraints) {
     HeaderControl_SetConstraints(h.instance, CheckPtr(value))
 }
 
+// Sections
+func (h *THeaderControl) Sections() *THeaderSections {
+    return AsHeaderSections(HeaderControl_GetSections(h.instance))
+}
+
+// SetSections
+func (h *THeaderControl) SetSections(value *THeaderSections) {
+    HeaderControl_SetSections(h.instance, CheckPtr(value))
+}
+
 // ShowHint
 // CN: 获取显示鼠标悬停提示。
 // EN: Get Show mouseover tips.

@@ -347,6 +347,16 @@ begin
   AObj.Constraints := AValue;
 end;
 
+function HeaderControl_GetSections(AObj: THeaderControl): THeaderSections; extdecl;
+begin
+  Result :=  AObj.Sections;
+end;
+
+procedure HeaderControl_SetSections(AObj: THeaderControl; AValue: THeaderSections); extdecl;
+begin
+  AObj.Sections := AValue;
+end;
+
 function HeaderControl_GetShowHint(AObj: THeaderControl): LongBool; extdecl;
 begin
   Result :=  AObj.ShowHint;
@@ -888,6 +898,8 @@ exports
   HeaderControl_SetImages,
   HeaderControl_GetConstraints,
   HeaderControl_SetConstraints,
+  HeaderControl_GetSections,
+  HeaderControl_SetSections,
   HeaderControl_GetShowHint,
   HeaderControl_SetShowHint,
   HeaderControl_GetParentDoubleBuffered,

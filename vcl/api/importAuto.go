@@ -12890,6 +12890,8 @@ var (
     headerControl_SetImages = libvcl.NewProc("HeaderControl_SetImages")
     headerControl_GetConstraints = libvcl.NewProc("HeaderControl_GetConstraints")
     headerControl_SetConstraints = libvcl.NewProc("HeaderControl_SetConstraints")
+    headerControl_GetSections = libvcl.NewProc("HeaderControl_GetSections")
+    headerControl_SetSections = libvcl.NewProc("HeaderControl_SetSections")
     headerControl_GetShowHint = libvcl.NewProc("HeaderControl_GetShowHint")
     headerControl_SetShowHint = libvcl.NewProc("HeaderControl_SetShowHint")
     headerControl_GetStyle = libvcl.NewProc("HeaderControl_GetStyle")
