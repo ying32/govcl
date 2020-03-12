@@ -21,7 +21,14 @@
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, gtk2, Gdk2, Glib2, dynlibs;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs,
+{$IFDEF LCLgtk2}
+  gtk2, Gdk2, Glib2, Gtk2Proc
+{$ENDIF}
+{$IFDEF LClgtk3}
+  LazGtk3, LazGObject2, LazGLib2, gtk3procs, gtk3widgets// ,LazWebKit3
+{$ENDIF}
+  , dynlibs;
 
 type
    TReadyState = (rsUninitialized, rsLoading, rsLoaded, rsInterActive, rsComplete);
@@ -34,13 +41,18 @@ type
 
    WebKitWebView = PGtkWidget;
 
-   TMiniWebview = class(TWinControl)
+   TMiniWebview = class({$IFDEF LCLgtk3}TCustomControl{$ELSE}TWinControl{$ENDIF})
    private
      FOnJSExternal: TWebJSExternalEvent;
      FOnStatusTextChange: TWebStatusTextChangeEvent;
      FOnTitleChange: TWebTitleChangeEvent;
      FWebView: WebKitWebView;
+   {$IFDEF LCLgtk2}
      FScrolledWindow: PGtkWidget;
+   {$ENDIF}
+   {$IFDEF LCLgtk3}
+     FScrolledWindow: PGtkScrolledWindow;
+   {$ENDIF}
      function GetReadyState: TReadyState;
    public
      constructor Create(AOwner: TComponent); override;
@@ -77,7 +89,13 @@ uses
   Math;
 
 const
-  libwebkitgtk1_0 = 'libwebkitgtk-1.0.so.0';
+{$IF Defined(LCLgtk2)}
+  libwebkitgtkso = 'libwebkitgtk-1.0.so.0';
+{$ELSEIF Defined(LCLGtk3) }
+  libwebkitgtkso = 'libwebkitgtk-3.0.so.0';
+{$ELSE}
+  libwebkitgtkso = '';
+{$ENDIF}
 
 var
   LibWebkitGtkHandle: TLibHandle;
@@ -106,6 +124,9 @@ begin
   LibWebkitGtkHandle := dynlibs.SafeLoadLibrary(libwebkitgtk1_0);
   if LibWebkitGtkHandle <> 0 then
   begin
+    {$IFDEF LCLgtk3}
+      //dynlibs.SafeLoadLibrary('libjavascriptcoregtk-3.0.so.0');
+    {$ENDIF}
     Pointer(webkit_web_view_new) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_new');
     Pointer(webkit_web_view_load_uri) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_load_uri');
     Pointer(webkit_web_view_get_title) := dynlibs.GetProcAddress(LibWebkitGtkHandle, 'webkit_web_view_get_title');
@@ -141,8 +162,14 @@ begin
   if FWebView = nil then
     raise Exception.Create('WebView Create Failed.');
   FScrolledWindow := gtk_scrolled_window_new(nil, nil);
+{$IFDEF LCLgtk2}
   gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(FScrolledWindow), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_container_add(GTK_CONTAINER(FScrolledWindow), GTK_WIDGET(FWebView));
+{$ENDIF}
+{$IFDEF LClgtk3}
+  gtk_scrolled_window_set_policy(FScrolledWindow, GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+  gtk_container_add(FScrolledWindow, FWebView);
+{$ENDIF}
 end;
 
 destructor TMiniWebview.Destroy;
@@ -158,7 +185,12 @@ procedure TMiniWebview.Resize;
 begin
   inherited Resize;
   if FScrolledWindow <> nil then
-    gtk_widget_set_usize(FScrolledWindow, Width, Height);
+{$IFDEF LCLgtk3}
+  gtk_widget_set_size_request(FScrolledWindow, Width, Height);
+{$ENDIF}
+{$IFDEF LCLgtk2}
+  gtk_widget_set_usize(FScrolledWindow, Width, Height);
+{$ENDIF}
 end;
 
 procedure TMiniWebview.CreateWnd;
@@ -166,14 +198,16 @@ var
   LChild: PGtkWidget;
 begin
   inherited CreateWnd;
-  if (Handle <> 0) and (FWebView <> nil) and (FScrolledWindow <> nil) and GTK_IS_BIN(Pointer(Handle)) then
+  if (Handle <> 0) and (FWebView <> nil) and (FScrolledWindow <> nil)
   begin
-    LChild := gtk_bin_get_child(GTK_BIN(Pointer(Handle)));
-    if LChild <> nil then
-    begin
-      gtk_container_add(GTK_CONTAINER(LChild), GTK_WIDGET(FScrolledWindow));
-      gtk_widget_show_all(LChild);
-    end;
+{$IFDEF LCLgtk2}
+  LChild := GetFixedWidget(PGtkWidget(Handle));
+  FixedPutControl(LChild, FScrolledWindow);
+  gtk_widget_show_all(LChild);
+{$ENDIF}
+{$IFDEF LCLgtk3}
+  PGtkFixed(TGtk3Widget(Handle).GetContainerWidget)^.put(FScrolledWindow, 0, 0);
+{$ENDIF}
   end;
 end;
 

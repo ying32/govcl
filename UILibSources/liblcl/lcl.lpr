@@ -170,7 +170,7 @@ uses
 {$I MyLCL_StatusPanels.inc}
 {$I MyLCL_StatusPanel.inc}
 {$I MyLCL_SpinEdit.inc}
-{$IF Defined(LCLcocoa) or Defined(LCLgtk2) or Defined(WINDOWS)}
+{$IF Defined(LCLcocoa) or Defined(LCLgtk2) or Defined(LCLgtk3) or Defined(WINDOWS)}
 {$I MyLCL_MiniWebview.inc}
 {$ENDIF}
 {$I MyLCL_Canvas.inc}

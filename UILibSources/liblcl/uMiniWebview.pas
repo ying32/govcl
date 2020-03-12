@@ -30,7 +30,7 @@ unit uMiniWebview;
      implementation
   {$ENDIF}
 {$ELSEIF Defined(LINUX)}
-     {$IFDEF LCLgtk2}
+     {$IF Defined(LCLgtk2) or Defined(LCLgtk3)}
         {$I MiniWebviewLinux.inc}
      {$ELSE}
         interface
