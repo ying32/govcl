@@ -160,12 +160,6 @@ func DShowMessage(s string) {
 	dShowMessage.Call(GoStrToDStr(s))
 }
 
-// 应用程序实例
-func DGetMainInstance() uintptr {
-	ret, _, _ := dGetMainInstance.Call()
-	return ret
-}
-
 func DMessageDlg(Msg string, DlgType TMsgDlgType, Buttons TMsgDlgButtons, HelpCtx int32) int32 {
 	ret, _, _ := dMessageDlg.Call(GoStrToDStr(Msg), uintptr(DlgType), uintptr(Buttons), uintptr(HelpCtx))
 	return int32(ret)

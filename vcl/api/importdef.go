@@ -36,14 +36,12 @@ var (
 	setMessageCallback    = libvcl.NewProc("SetMessageCallback")
 	setThreadSyncCallback = libvcl.NewProc("SetThreadSyncCallback")
 
-	dGetParam       = libvcl.NewProc("DGetParam")
 	dGetStringArrOf = libvcl.NewProc("DGetStringArrOf")
 	dStrLen         = libvcl.NewProc("DStrLen")
 	dMove           = libvcl.NewProc("DMove")
 
-	dShowMessage     = libvcl.NewProc("DShowMessage")
-	dGetMainInstance = libvcl.NewProc("DGetMainInstance")
-	dMessageDlg      = libvcl.NewProc("DMessageDlg")
+	dShowMessage = libvcl.NewProc("DShowMessage")
+	dMessageDlg  = libvcl.NewProc("DMessageDlg")
 
 	mouse_Instance  = libvcl.NewProc("Mouse_Instance")
 	screen_Instance = libvcl.NewProc("Screen_Instance")
