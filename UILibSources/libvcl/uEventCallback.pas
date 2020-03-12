@@ -283,8 +283,8 @@ type
     class procedure TaskDialogOnVerificationClicked(Sender: TObject);
 
 //    class function OnAlignInsertBefore(Sender: TWinControl; C1, C2: TControl): Boolean;
-//    class procedure OnAlignPosition(Sender: TWinControl; Control: TControl;
-//      var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo);
+    class procedure OnAlignPosition(Sender: TWinControl; Control: TControl;
+      var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo);
 
     class procedure OnDropDown(Sender: TObject);
     class procedure OnSelect(Sender: TObject);
@@ -549,6 +549,13 @@ end;
 class procedure TEventClass.OnActivate(Sender: TObject);
 begin
   SendEvent(Sender, @TEventClass.OnActivate, [Sender]);
+end;
+
+class procedure TEventClass.OnAlignPosition(Sender: TWinControl;
+  Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer;
+  var AlignRect: TRect; AlignInfo: TAlignInfo);
+begin
+  SendEvent(Sender, @TEventClass.OnAlignPosition, [Sender, Control, @NewLeft, @NewTop, @NewWidth, @NewHeight, @AlignRect, @AlignInfo]);
 end;
 
 class procedure TEventClass.OnDeactivate(Sender: TObject);

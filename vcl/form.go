@@ -1069,6 +1069,11 @@ func (f *TForm) SetStyleElements(value TStyleElements) {
     Form_SetStyleElements(f.instance, value)
 }
 
+// SetOnAlignPosition
+func (f *TForm) SetOnAlignPosition(fn TAlignPositionEvent) {
+    Form_SetOnAlignPosition(f.instance, fn)
+}
+
 // SetOnClick
 // CN: 设置控件单击事件。
 // EN: Set control click event.

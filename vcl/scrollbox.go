@@ -1026,6 +1026,11 @@ func (s *TScrollBox) SetOnUnDock(fn TUnDockEvent) {
     ScrollBox_SetOnUnDock(s.instance, fn)
 }
 
+// SetOnAlignPosition
+func (s *TScrollBox) SetOnAlignPosition(fn TAlignPositionEvent) {
+    ScrollBox_SetOnAlignPosition(s.instance, fn)
+}
+
 // HorzScrollBar
 func (s *TScrollBox) HorzScrollBar() *TControlScrollBar {
     return AsControlScrollBar(ScrollBox_GetHorzScrollBar(s.instance))

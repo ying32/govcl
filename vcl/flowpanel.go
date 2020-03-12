@@ -959,6 +959,11 @@ func (f *TFlowPanel) SetStyleElements(value TStyleElements) {
     FlowPanel_SetStyleElements(f.instance, value)
 }
 
+// SetOnAlignPosition
+func (f *TFlowPanel) SetOnAlignPosition(fn TAlignPositionEvent) {
+    FlowPanel_SetOnAlignPosition(f.instance, fn)
+}
+
 // SetOnClick
 // CN: 设置控件单击事件。
 // EN: Set control click event.

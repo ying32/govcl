@@ -800,6 +800,11 @@ func (f *TFrame) SetVisible(value bool) {
     Frame_SetVisible(f.instance, value)
 }
 
+// SetOnAlignPosition
+func (f *TFrame) SetOnAlignPosition(fn TAlignPositionEvent) {
+    Frame_SetOnAlignPosition(f.instance, fn)
+}
+
 // SetOnClick
 // CN: 设置控件单击事件。
 // EN: Set control click event.

@@ -929,6 +929,11 @@ func (p *TPanel) SetStyleElements(value TStyleElements) {
     Panel_SetStyleElements(p.instance, value)
 }
 
+// SetOnAlignPosition
+func (p *TPanel) SetOnAlignPosition(fn TAlignPositionEvent) {
+    Panel_SetOnAlignPosition(p.instance, fn)
+}
+
 // SetOnClick
 // CN: 设置控件单击事件。
 // EN: Set control click event.

@@ -557,6 +557,13 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure FlowPanel_SetOnAlignPosition(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnAlignPosition}
+  {$DEFINE EventMethodName := OnAlignPosition}
+  EventMethodCode
+end;
+
 procedure FlowPanel_SetOnClick(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -1056,6 +1063,7 @@ exports
   FlowPanel_SetTabStop,
   FlowPanel_GetVisible,
   FlowPanel_SetVisible,
+  FlowPanel_SetOnAlignPosition,
   FlowPanel_SetOnClick,
   FlowPanel_SetOnContextPopup,
   FlowPanel_SetOnDockDrop,

@@ -1000,6 +1000,18 @@ begin
   Result :=  AObj.Panels;
 end;
 
+procedure CategoryPanelGroup_SetOnAlignPosition(AObj: TCategoryPanelGroup; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAlignPosition := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnAlignPosition);
+    Exit;
+  end;
+  AObj.OnAlignPosition := TEventClass.OnAlignPosition;
+  TEventClass.Add(AObj, @TEventClass.OnAlignPosition, AEventId);
+end;
+
 function CategoryPanelGroup_GetHorzScrollBar(AObj: TCategoryPanelGroup): TControlScrollBar; stdcall;
 begin
   Result :=  AObj.HorzScrollBar;
@@ -1476,6 +1488,7 @@ exports
   CategoryPanelGroup_SetOnStartDock,
   CategoryPanelGroup_SetOnUnDock,
   CategoryPanelGroup_GetPanels,
+  CategoryPanelGroup_SetOnAlignPosition,
   CategoryPanelGroup_GetHorzScrollBar,
   CategoryPanelGroup_SetHorzScrollBar,
   CategoryPanelGroup_GetVertScrollBar,

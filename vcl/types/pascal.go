@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package types
 
@@ -88,6 +86,13 @@ type TLibResouce struct {
 
 // TConstraintSize = 0..MaxInt;
 type TConstraintSize int32
+
+type TAlignInfo struct {
+	AlignList    uintptr //: TList;
+	ControlIndex int32
+	Align        TAlign
+	Scratch      int32
+}
 
 // TColor
 func (c TColor) R() byte {

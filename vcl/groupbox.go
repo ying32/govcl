@@ -789,6 +789,11 @@ func (g *TGroupBox) SetStyleElements(value TStyleElements) {
     GroupBox_SetStyleElements(g.instance, value)
 }
 
+// SetOnAlignPosition
+func (g *TGroupBox) SetOnAlignPosition(fn TAlignPositionEvent) {
+    GroupBox_SetOnAlignPosition(g.instance, fn)
+}
+
 // SetOnClick
 // CN: 设置控件单击事件。
 // EN: Set control click event.

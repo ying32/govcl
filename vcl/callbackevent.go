@@ -795,6 +795,17 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				uint32(getVal(1)),
 				(*bool)(unsafe.Pointer(getVal(2))))
 
+		// type TAlignPositionEvent func(sender *TWinControl, control *TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *TRect, alignInfo TAlignInfo)
+		case TAlignPositionEvent:
+			v.(TAlignPositionEvent)(
+				AsWinControl(getVal(0)),
+				AsControl(getVal(1)),
+				(*int32)(unsafe.Pointer(getVal(2))),
+				(*int32)(unsafe.Pointer(getVal(3))),
+				(*int32)(unsafe.Pointer(getVal(4))),
+				(*int32)(unsafe.Pointer(getVal(5))),
+				(*TRect)(unsafe.Pointer(getVal(6))),
+				*(*TAlignInfo)(unsafe.Pointer(getVal(7))))
 		default:
 		}
 	}

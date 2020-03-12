@@ -333,3 +333,6 @@ type TTaskDlgClickEvent func(sender IObject, modalResult TModalResult, canClose 
 
 //TTaskDlgTimerEvent = procedure(Sender: TObject; TickCount: Cardinal; var Reset: Boolean) of object;
 type TTaskDlgTimerEvent func(sender IObject, tickCount uint32, reset *bool)
+
+//TAlignPositionEvent = procedure(Sender: TWinControl; Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo) of object;
+type TAlignPositionEvent func(sender *TWinControl, control *TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *TRect, alignInfo TAlignInfo)

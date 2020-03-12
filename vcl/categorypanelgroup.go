@@ -1159,6 +1159,11 @@ func (c *TCategoryPanelGroup) Panels() *TList {
     return AsList(CategoryPanelGroup_GetPanels(c.instance))
 }
 
+// SetOnAlignPosition
+func (c *TCategoryPanelGroup) SetOnAlignPosition(fn TAlignPositionEvent) {
+    CategoryPanelGroup_SetOnAlignPosition(c.instance, fn)
+}
+
 // HorzScrollBar
 func (c *TCategoryPanelGroup) HorzScrollBar() *TControlScrollBar {
     return AsControlScrollBar(CategoryPanelGroup_GetHorzScrollBar(c.instance))

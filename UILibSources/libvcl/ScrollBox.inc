@@ -875,6 +875,18 @@ begin
   TEventClass.Add(AObj, @TEventClass.OnUnDock, AEventId);
 end;
 
+procedure ScrollBox_SetOnAlignPosition(AObj: TScrollBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAlignPosition := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnAlignPosition);
+    Exit;
+  end;
+  AObj.OnAlignPosition := TEventClass.OnAlignPosition;
+  TEventClass.Add(AObj, @TEventClass.OnAlignPosition, AEventId);
+end;
+
 function ScrollBox_GetHorzScrollBar(AObj: TScrollBox): TControlScrollBar; stdcall;
 begin
   Result :=  AObj.HorzScrollBar;
@@ -1346,6 +1358,7 @@ exports
   ScrollBox_SetOnResize,
   ScrollBox_SetOnStartDock,
   ScrollBox_SetOnUnDock,
+  ScrollBox_SetOnAlignPosition,
   ScrollBox_GetHorzScrollBar,
   ScrollBox_SetHorzScrollBar,
   ScrollBox_GetVertScrollBar,

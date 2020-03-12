@@ -1012,6 +1012,10 @@ func Form_SetStyleElements(obj uintptr, value TStyleElements) {
    form_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func Form_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    form_SetOnAlignPosition.Call(obj, addEventToMap(fn))
+}
+
 func Form_SetOnClick(obj uintptr, fn interface{}) {
     form_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -7056,6 +7060,10 @@ func GroupBox_SetStyleElements(obj uintptr, value TStyleElements) {
    groupBox_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func GroupBox_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    groupBox_SetOnAlignPosition.Call(obj, addEventToMap(fn))
+}
+
 func GroupBox_SetOnClick(obj uintptr, fn interface{}) {
     groupBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -10764,6 +10772,10 @@ func Panel_GetStyleElements(obj uintptr) TStyleElements {
 
 func Panel_SetStyleElements(obj uintptr, value TStyleElements) {
    panel_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func Panel_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    panel_SetOnAlignPosition.Call(obj, addEventToMap(fn))
 }
 
 func Panel_SetOnClick(obj uintptr, fn interface{}) {
@@ -18624,6 +18636,10 @@ func CategoryPanelGroup_SetOnUnDock(obj uintptr, fn interface{}) {
 func CategoryPanelGroup_GetPanels(obj uintptr) uintptr {
     ret, _, _ := categoryPanelGroup_GetPanels.Call(obj)
     return ret
+}
+
+func CategoryPanelGroup_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    categoryPanelGroup_SetOnAlignPosition.Call(obj, addEventToMap(fn))
 }
 
 func CategoryPanelGroup_GetHorzScrollBar(obj uintptr) uintptr {
@@ -50527,6 +50543,10 @@ func ScrollBox_SetOnUnDock(obj uintptr, fn interface{}) {
     scrollBox_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
+func ScrollBox_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    scrollBox_SetOnAlignPosition.Call(obj, addEventToMap(fn))
+}
+
 func ScrollBox_GetHorzScrollBar(obj uintptr) uintptr {
     ret, _, _ := scrollBox_GetHorzScrollBar.Call(obj)
     return ret
@@ -61344,6 +61364,10 @@ func FlowPanel_SetStyleElements(obj uintptr, value TStyleElements) {
    flowPanel_SetStyleElements.Call(obj, uintptr(value))
 }
 
+func FlowPanel_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    flowPanel_SetOnAlignPosition.Call(obj, addEventToMap(fn))
+}
+
 func FlowPanel_SetOnClick(obj uintptr, fn interface{}) {
     flowPanel_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -67442,6 +67466,10 @@ func Frame_GetVisible(obj uintptr) bool {
 
 func Frame_SetVisible(obj uintptr, value bool) {
    frame_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func Frame_SetOnAlignPosition(obj uintptr, fn interface{}) {
+    frame_SetOnAlignPosition.Call(obj, addEventToMap(fn))
 }
 
 func Frame_SetOnClick(obj uintptr, fn interface{}) {

@@ -472,6 +472,13 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure Frame_SetOnAlignPosition(AObj: TFrame; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnAlignPosition}
+  {$DEFINE EventMethodName := OnAlignPosition}
+  EventMethodCode
+end;
+
 procedure Frame_SetOnClick(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -1005,6 +1012,7 @@ exports
   Frame_SetTabStop,
   Frame_GetVisible,
   Frame_SetVisible,
+  Frame_SetOnAlignPosition,
   Frame_SetOnClick,
   Frame_SetOnContextPopup,
   Frame_SetOnDblClick,

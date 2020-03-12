@@ -632,6 +632,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure Panel_SetOnAlignPosition(AObj: TPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAlignPosition := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnAlignPosition);
+    Exit;
+  end;
+  AObj.OnAlignPosition := TEventClass.OnAlignPosition;
+  TEventClass.Add(AObj, @TEventClass.OnAlignPosition, AEventId);
+end;
+
 procedure Panel_SetOnClick(AObj: TPanel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1310,6 +1322,7 @@ exports
   Panel_SetVisible,
   Panel_GetStyleElements,
   Panel_SetStyleElements,
+  Panel_SetOnAlignPosition,
   Panel_SetOnClick,
   Panel_SetOnContextPopup,
   Panel_SetOnDockDrop,

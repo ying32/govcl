@@ -527,6 +527,18 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure Frame_SetOnAlignPosition(AObj: TFrame; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAlignPosition := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnAlignPosition);
+    Exit;
+  end;
+  AObj.OnAlignPosition := TEventClass.OnAlignPosition;
+  TEventClass.Add(AObj, @TEventClass.OnAlignPosition, AEventId);
+end;
+
 procedure Frame_SetOnClick(AObj: TFrame; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1260,6 +1272,7 @@ exports
   Frame_SetTabStop,
   Frame_GetVisible,
   Frame_SetVisible,
+  Frame_SetOnAlignPosition,
   Frame_SetOnClick,
   Frame_SetOnContextPopup,
   Frame_SetOnDblClick,
