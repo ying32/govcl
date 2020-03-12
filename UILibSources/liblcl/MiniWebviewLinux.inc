@@ -198,11 +198,11 @@ var
   LChild: PGtkWidget;
 begin
   inherited CreateWnd;
-  if (Handle <> 0) and (FWebView <> nil) and (FScrolledWindow <> nil)
+  if (Handle <> 0) and (FWebView <> nil) and (FScrolledWindow <> nil) then
   begin
 {$IFDEF LCLgtk2}
   LChild := GetFixedWidget(PGtkWidget(Handle));
-  FixedPutControl(LChild, FScrolledWindow);
+  FixedPutControl(LChild, FScrolledWindow, 0, 0);
   gtk_widget_show_all(LChild);
 {$ENDIF}
 {$IFDEF LCLgtk3}
