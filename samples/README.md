@@ -33,7 +33,7 @@
 | listboxcustomdraw | ListBox部分自绘演示  | |
 | listview | ListView部分功能演示  | 部分限Windows |
 | listviewadvcustomdraw | ListView高级自绘 | windows |  
-| listviewcustomdraw |  ListView部分自绘演示  | 部分限Windows |   
+| listviewcustomdraw |  ListView部分自绘演示  | 自绘部分限Windows,Group部分限libvcl |   
 | listviewitemedit |  用于双击项目直接编辑ListView数据。  | Windows |  
 | login |  登录窗口演示  | |   
 | markdownEd |  简单的markdown编辑器  | |   
@@ -69,7 +69,7 @@
 | sysdialog | 各种系统对话框演示  | |
 | syslocale | 本地化相关 | |
 | taskdialog | 任务对话框 | |
-| trayicon | 系统拖盘图标演示  | Windows  MacOS |
+| trayicon | 系统拖盘图标演示  | Windows  MacOS 部分linux |
 | treeview |  树型列表框演示  | |
 | treeview_checkbox |  树型列表框 + 复选框 演示  | windows,libvcl |
 | valuelisteditor |  键值编辑器 | |
