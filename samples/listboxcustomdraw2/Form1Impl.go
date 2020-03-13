@@ -60,36 +60,48 @@ func (f *TForm1) OnLstLeftDrawItem(control vcl.IWinControl, index int32, aRect t
 	pen := canvas.Pen()
 	font := canvas.Font()
 
+	//设置填充的背景颜色并填充背景
 	brush.SetColor(colors.ClWhite)
 	canvas.FillRect(aRect)
+
+	//绘制圆角矩形
 	if state.In(types.OdSelected) {
-		pen.SetColor(0xFFB2B5)
+		pen.SetColor(0xFFB2B5) //选中项的圆角矩形颜色
 	} else {
-		pen.SetColor(colors.ClSilver)
+		pen.SetColor(colors.ClSilver) //未选中项的圆角矩形颜色
 	}
 	brush.SetStyle(types.BsClear)
 
 	r = types.TRect{Left: aRect.Left + 3, Top: aRect.Top + 3, Right: aRect.Right - 3, Bottom: aRect.Bottom - 3}
 	canvas.RoundRect(r.Left, r.Top, r.Right, r.Bottom, 10, 10)
 
+	//画出图标
 	if state.In(types.OdSelected) {
 		pic := f.Image1.Picture()
-		canvas.Draw(r.Left+(r.Right-r.Left-pic.Width())/2, r.Top+2, pic.Graphic())
+		canvas.Draw(r.Left+(r.Right-r.Left-pic.Width())/2, r.Top+2, pic.Graphic()) //选中项的图像
 	} else {
 		pic := f.Image2.Picture()
-		canvas.Draw(r.Left+(r.Right-r.Left-pic.Width())/2, r.Top+2, pic.Graphic())
+		canvas.Draw(r.Left+(r.Right-r.Left-pic.Width())/2, r.Top+2, pic.Graphic()) //未选中项的图像
 	}
+
+	//填充文字区背景
 	r.Top = r.Bottom - int32(math.Abs(float64(font.Height()))) - 4
 	brush.SetStyle(types.BsSolid)
 	if state.In(types.OdSelected) {
-		brush.SetColor(0xFFB2B5)
+		brush.SetColor(0xFFB2B5) //选中项的背景颜色
 	} else {
-		brush.SetColor(colors.ClSilver)
+		brush.SetColor(colors.ClSilver) //未选中项的背景颜色
 	}
 	canvas.FillRect(r)
+
+	//输出文字，仅支持单行
 	font.SetColor(colors.ClBlack)
+
+	//计算文字顶点位置， 水平，垂直居中，文字超出绘制圆点
 	r.Top += 2
 	canvas.TextRect3(&r, f.LstLeft.Items().S(index), types.NewSet(types.TfVerticalCenter, types.TfCenter, types.TfWordEllipsis))
+
+	//画焦点虚框，当系统再绘制时，变成XOR运算，从而达到擦除焦点虚框的目的
 	if state.In(types.OdFocused) {
 		canvas.DrawFocusRect(aRect)
 	}
@@ -102,18 +114,31 @@ func (f *TForm1) OnLstRightDrawItem(control vcl.IWinControl, index int32, aRect 
 	pen := canvas.Pen()
 	font := canvas.Font()
 
+	//文字颜色
 	font.SetColor(colors.ClBlack)
+
+	//设置背景颜色并填充背景
 	brush.SetColor(colors.ClWhite)
 	canvas.FillRect(aRect)
 
+	//设置圆角矩形颜色并画出圆角矩形
 	brush.SetColor(types.TColor(0x00FFF7F7))
 	pen.SetColor(types.TColor(0x00131315))
 	canvas.RoundRect(aRect.Left+3, aRect.Top+3, aRect.Right-2, aRect.Bottom-2, 8, 8)
+
+	//以不同的宽度和高度再画一次，实现立体效果
 	canvas.RoundRect(aRect.Left+3, aRect.Top+3, aRect.Right-3, aRect.Bottom-3, 5, 5)
+
+	//如果是当前选中项
 	if state.In(types.OdSelected) {
+		//以不同的背景色画出选中项的圆角矩形
 		brush.SetColor(types.TColor(0x00FFB2B5))
 		canvas.RoundRect(aRect.Left+3, aRect.Top+3, aRect.Right-3, aRect.Bottom-3, 5, 5)
+
+		//选中项的文字颜色
 		font.SetColor(colors.ClBlue)
+
+		//如果当前项拥有焦点，画焦点虚框，当系统再绘制时变成XOR运算从而达到擦除焦点虚框的目的
 		if state.In(types.OdFocused) {
 			canvas.DrawFocusRect(aRect)
 		}
@@ -123,33 +148,14 @@ func (f *TForm1) OnLstRightDrawItem(control vcl.IWinControl, index int32, aRect 
 	if index%2 != 0 {
 		idx = 1
 	}
+	//画出图标
 	f.ImageList1.Draw(canvas, aRect.Left+7, aRect.Top+(f.LstRight.ItemHeight()-f.ImageList1.Height())/2, int32(idx), true)
 
+	//分别绘出三行文字
 	sArr := strings.Split(f.LstRight.Items().S(index), "\n")
 	if len(sArr) == 3 {
 		canvas.TextOut(aRect.Left+32+10, aRect.Top+4, sArr[0])
 		canvas.TextOut(aRect.Left+32+10, aRect.Top+18, sArr[1])
 		canvas.TextOut(aRect.Left+32+10, aRect.Top+32, sArr[2])
 	}
-
-	/*
-		var
-		    strTemp: String;
-		begin
-
-		    //画出图标
-		    ImageList1.Draw(lsbRight.Canvas, Rect.Left + 7,
-		            Rect.top + (lsbRight.ItemHeight - ImageList1.Height) div 2, Index, true);
-		    //分别绘出三行文字
-		    strTemp := lsbRight.Items.Strings[Index];
-		    lsbRight.Canvas.TextOut(Rect.Left + 32 + 10, Rect.Top + 4
-		                            , Copy(strTemp, 1, Pos(#13, strTemp)-1));
-		    strTemp := Copy(strTemp, Pos(#13, strTemp)+1, Length(strTemp));
-		    lsbRight.Canvas.TextOut(Rect.Left + 32 + 10, Rect.Top + 18,
-		                            Copy(strTemp, 1, Pos(#13, strTemp)-1));
-		    lsbRight.Canvas.TextOut(Rect.Left + 32 + 10, Rect.Top + 32,
-		                            Copy(strTemp, Pos(#13, strTemp)+1, Length(strTemp)));
-
-
-	*/
 }
