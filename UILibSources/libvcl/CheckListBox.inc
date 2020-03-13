@@ -47,6 +47,16 @@ begin
   AObj.DeleteSelected;
 end;
 
+function CheckListBox_ItemAtPos(AObj: TCheckListBox; var Pos: TPoint; Existing: LongBool): Integer; stdcall;
+begin
+  Result :=  AObj.ItemAtPos(Pos, Existing);
+end;
+
+procedure CheckListBox_ItemRect(AObj: TCheckListBox; Index: Integer; var Result: TRect); stdcall;
+begin
+  Result :=  AObj.ItemRect(Index);
+end;
+
 procedure CheckListBox_SelectAll(AObj: TCheckListBox); stdcall;
 begin
   AObj.SelectAll;
@@ -1406,6 +1416,8 @@ exports
   CheckListBox_ClearSelection,
   CheckListBox_CopySelection,
   CheckListBox_DeleteSelected,
+  CheckListBox_ItemAtPos,
+  CheckListBox_ItemRect,
   CheckListBox_SelectAll,
   CheckListBox_CanFocus,
   CheckListBox_ContainsControl,

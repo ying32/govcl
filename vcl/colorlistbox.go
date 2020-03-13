@@ -151,6 +151,16 @@ func (c *TColorListBox) DeleteSelected() {
     ColorListBox_DeleteSelected(c.instance)
 }
 
+// ItemAtPos
+func (c *TColorListBox) ItemAtPos(Pos TPoint, Existing bool) int32 {
+    return ColorListBox_ItemAtPos(c.instance, Pos , Existing)
+}
+
+// ItemRect
+func (c *TColorListBox) ItemRect(Index int32) TRect {
+    return ColorListBox_ItemRect(c.instance, Index)
+}
+
 // SelectAll
 // CN: 全选。
 // EN: .

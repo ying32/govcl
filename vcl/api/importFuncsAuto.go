@@ -8153,6 +8153,17 @@ func ListBox_DeleteSelected(obj uintptr)  {
     listBox_DeleteSelected.Call(obj)
 }
 
+func ListBox_ItemAtPos(obj uintptr, Pos TPoint, Existing bool) int32 {
+    ret, _, _ := listBox_ItemAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(Existing) )
+    return int32(ret)
+}
+
+func ListBox_ItemRect(obj uintptr, Index int32) TRect {
+    var ret TRect
+    listBox_ItemRect.Call(obj, uintptr(Index) , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
 func ListBox_SelectAll(obj uintptr)  {
     listBox_SelectAll.Call(obj)
 }
@@ -16512,6 +16523,17 @@ func ColorListBox_CopySelection(obj uintptr, Destination uintptr)  {
 
 func ColorListBox_DeleteSelected(obj uintptr)  {
     colorListBox_DeleteSelected.Call(obj)
+}
+
+func ColorListBox_ItemAtPos(obj uintptr, Pos TPoint, Existing bool) int32 {
+    ret, _, _ := colorListBox_ItemAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(Existing) )
+    return int32(ret)
+}
+
+func ColorListBox_ItemRect(obj uintptr, Index int32) TRect {
+    var ret TRect
+    colorListBox_ItemRect.Call(obj, uintptr(Index) , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func ColorListBox_SelectAll(obj uintptr)  {
@@ -50890,6 +50912,17 @@ func CheckListBox_CopySelection(obj uintptr, Destination uintptr)  {
 
 func CheckListBox_DeleteSelected(obj uintptr)  {
     checkListBox_DeleteSelected.Call(obj)
+}
+
+func CheckListBox_ItemAtPos(obj uintptr, Pos TPoint, Existing bool) int32 {
+    ret, _, _ := checkListBox_ItemAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(Existing) )
+    return int32(ret)
+}
+
+func CheckListBox_ItemRect(obj uintptr, Index int32) TRect {
+    var ret TRect
+    checkListBox_ItemRect.Call(obj, uintptr(Index) , uintptr(unsafe.Pointer(&ret)))
+    return ret
 }
 
 func CheckListBox_SelectAll(obj uintptr)  {

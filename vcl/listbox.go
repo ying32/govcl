@@ -151,6 +151,16 @@ func (l *TListBox) DeleteSelected() {
     ListBox_DeleteSelected(l.instance)
 }
 
+// ItemAtPos
+func (l *TListBox) ItemAtPos(Pos TPoint, Existing bool) int32 {
+    return ListBox_ItemAtPos(l.instance, Pos , Existing)
+}
+
+// ItemRect
+func (l *TListBox) ItemRect(Index int32) TRect {
+    return ListBox_ItemRect(l.instance, Index)
+}
+
 // SelectAll
 // CN: 全选。
 // EN: .

@@ -156,6 +156,16 @@ func (c *TCheckListBox) DeleteSelected() {
     CheckListBox_DeleteSelected(c.instance)
 }
 
+// ItemAtPos
+func (c *TCheckListBox) ItemAtPos(Pos TPoint, Existing bool) int32 {
+    return CheckListBox_ItemAtPos(c.instance, Pos , Existing)
+}
+
+// ItemRect
+func (c *TCheckListBox) ItemRect(Index int32) TRect {
+    return CheckListBox_ItemRect(c.instance, Index)
+}
+
 // SelectAll
 // CN: 全选。
 // EN: .
