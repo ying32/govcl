@@ -556,6 +556,61 @@ begin
 end;
 
 
+// win api
+{$IFNDEF WINDOWS}
+function DSendMessage(hWd: HWND; msg: Cardinal; wParam: WParam; lParam: LParam): LResult; extdecl;
+begin
+  Result := LCLIntf.SendMessage(hWd, msg, wParam, lParam);
+end;
+
+function DPostMessage(hWd: HWND; msg: Cardinal; wParam: WParam; lParam: LParam): Boolean; extdecl;
+begin
+  Result := LCLIntf.PostMessage(hWd, msg, wParam, lParam);
+end;
+
+function DIsIconic(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsIconic(hWnd);
+end;
+
+function DIsWindow(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsWindow(hWnd);
+end;
+
+function DIsZoomed(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsZoomed(hWnd);
+end;
+
+function DIsWindowVisible(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsWindowVisible(hWnd);
+end;
+
+function DGetDC(hWnd: HWND): HDC; extdecl;
+begin
+  Result := LCLIntf.GetDC(hWnd);
+end;
+
+function DReleaseDC(hWnd: HWND; dc: HDC): Integer; extdecl;
+begin
+  Result := LCLIntf.ReleaseDC(hWnd, dc);
+end;
+
+function DSetForegroundWindow(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.SetForegroundWindow(hWnd);
+end;
+
+function DWindowFromPoint(point: PPoint): HWND; extdecl;
+begin
+  if point = nil then
+    Exit(0);
+  Result := LCLIntf.WindowFromPoint(PPoint(point)^);
+end;
+{$ENDIF}
+
 
 // Other
 
@@ -1034,6 +1089,19 @@ exports
   // TMouse
   Mouse_Instance,
   Screen_Instance,
+
+{$IFNDEF WINDOWS}
+  DSendMessage,
+  DPostMessage,
+  DIsIconic,
+  DIsWindow,
+  DIsZoomed,
+  DIsWindowVisible,
+  DGetDC,
+  DReleaseDC,
+  DSetForegroundWindow,
+  DWindowFromPoint,
+{$ENDIF}
 
   // Other
   SetEventCallback,
