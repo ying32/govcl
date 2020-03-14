@@ -86,6 +86,10 @@ type TSet uint32
 //----------------------------------------------------------------------------------------------------------------------
 // -- TRect
 
+func Rect(left, top, right, bottom int32) TRect {
+	return TRect{Left: left, Top: top, Right: right, Bottom: bottom}
+}
+
 func (r *TRect) PtInRect(P TPoint) bool {
 	return P.X >= r.Left && P.X < r.Right && P.Y >= r.Top && P.Y < r.Bottom
 }
@@ -160,6 +164,10 @@ func (r *TRect) Scale2(val int) {
 }
 
 // -- TPoint
+
+func Point(x, y int32) TPoint {
+	return TPoint{X: x, Y: y}
+}
 
 func (p *TPoint) IsZero() bool {
 	return p.X == 0 && p.Y == 0
