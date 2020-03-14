@@ -47,12 +47,22 @@ func GoBoolToDBool(val bool) uintptr {
 	return 0
 }
 
-// IsNil 判断一个接口是否为空
-// interface{}数据类型定义为 typedef struct { void *type; void *value; } GoInterface;
-// 当type与value值都为nil时则为空。
+// typedef struct { void *type; void *value; } GoInterface;
+type interfacePtr struct {
+	tpy uintptr
+	val *uintptr
+}
+
+func getInterfaceVal(value interface{}) uintptr {
+	if ptr := (*interfacePtr)(unsafe.Pointer(&value)).val; ptr != nil {
+		return *ptr
+	}
+	return 0
+}
+
 func IsNil(val interface{}) bool {
-	ptr := unsafe.Pointer(&val)
-	return *(*uintptr)(ptr) == 0 && *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2))) == 0
+	ptr := (*interfacePtr)(unsafe.Pointer(&val))
+	return ptr.tpy == 0 || ptr.val == nil
 }
 
 // hashOf
@@ -67,7 +77,7 @@ func hashOf(val interface{}) uintptr {
 		}
 	}
 	// 默认返回ID
-	return reflect.ValueOf(val).Pointer()
+	return reflect.ValueOf(val).Pointer() //getInterfaceVal(val)
 }
 
 // 以下三个函数留给自动绑定事件使用。
