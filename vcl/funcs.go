@@ -9,6 +9,7 @@
 package vcl
 
 import (
+	"reflect"
 	"unsafe"
 
 	"fmt"
@@ -35,6 +36,9 @@ func MessageDlg(Msg string, DlgType TMsgDlgType, Buttons ...uint8) int32 {
 func CheckPtr(value interface{}) uintptr {
 	switch value.(type) {
 	case IObject:
+		if reflect.ValueOf(value).Pointer() == 0 {
+			return 0
+		}
 		return value.(IObject).Instance()
 	}
 	return 0
@@ -52,7 +56,7 @@ func getInstance(value interface{}) (uintptr, unsafe.Pointer) {
 		ptr = uintptr(value.(unsafe.Pointer))
 	case IObject:
 		// 一个对象来自已经存在的对象实例
-		ptr = value.(IObject).Instance()
+		ptr = CheckPtr(value)
 	}
 	return ptr, unsafe.Pointer(ptr)
 }
