@@ -36,6 +36,7 @@
 | listviewadvcustomdraw | ListView高级自绘 | windows |  
 | listviewcustomdraw |  ListView部分自绘演示  | 自绘部分限Windows,Group部分限libvcl |   
 | listviewitemedit |  用于双击项目直接编辑ListView数据。  | Windows |  
+| listviewvirtualdata | TListView虚拟数据，用于大数据显示 |   |
 | login |  登录窗口演示  | |   
 | markdownEd |  简单的markdown编辑器  | |   
 | memloaddll |  内存加载dll（单文件）  | Windows 32bit |   
@@ -74,7 +75,6 @@
 | treeview |  树型列表框演示  | |
 | treeview_checkbox |  树型列表框 + 复选框 演示  | windows,libvcl |
 | valuelisteditor |  键值编辑器 | |
-| virtuallistview | 虚拟试TListView，用于大数据显示 |   |
 | WindowsMessages | Windows下消息捕获    | Windows |
 | WindowsProcess | Windows进程列表    | Windows |
 | windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
