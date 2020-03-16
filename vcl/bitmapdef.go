@@ -8,7 +8,10 @@
 
 package vcl
 
-import . "github.com/ying32/govcl/vcl/api"
+import (
+	. "github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/types"
+)
 
 // LCL下的
 func (b *TBitmap) Clear() {
@@ -23,4 +26,9 @@ func (b *TBitmap) BeginUpdate(aCanvasOnly bool) {
 // LCL下的 用于ScanLine属性，aStreamIsValid 默认为 false
 func (b *TBitmap) EndUpdate(aStreamIsValid bool) {
 	Bitmap_EndUpdate(b.instance, aStreamIsValid)
+}
+
+// LCL下的，Delphi也做相关的兼容
+func (b *TBitmap) LoadFromDevice(dc types.HDC) {
+	Bitmap_LoadFromDevice(b.instance, dc)
 }

@@ -514,6 +514,58 @@ begin
   // 不支持，fake
 end;
 
+procedure Bitmap_LoadFromDevice(AObj: TBitmap; ADc: HDC); stdcall;
+var
+  LCanvas: TCanvas;
+  LP: TPoint;
+  LhWnd: HWND;
+  LRect: TRect;
+  LBitmapInfo: Winapi.Windows.BITMAP;
+  LhBitmap: HBITMAP;
+begin
+  if ADc <= 0 then
+    Exit;
+  LP := TPoint.Zero;
+  case GetObjectType(ADc) of
+    OBJ_MEMDC:
+      begin
+        LhBitmap := GetCurrentObject(ADc, OBJ_BITMAP);
+        if LhBitmap <> 0 then
+        begin
+          GetObject(LhBitmap, SizeOf(BITMAP), @LBitmapInfo);
+          LP.x := LBitmapInfo.bmWidth;
+          LP.y := LBitmapInfo.bmHeight;
+        end;
+      end;
+    OBJ_DC:
+      begin
+        LhWnd := WindowFromDC(ADc);
+        if LhWnd <> 0 then
+        begin
+          if GetClientRect(LhWnd, LRect) then
+          begin
+            LP.x := LRect.Right;
+            LP.y := LRect.Bottom;
+          end;
+        end;
+      end;
+  else
+    Exit;
+  end;
+  if not LP.IsZero then
+  begin
+    LCanvas := TCanvas.Create;
+    try
+      LCanvas.Handle := ADc;
+      AObj.AlphaFormat := TAlphaFormat.afDefined;
+      AObj.PixelFormat := pf32bit;
+      AObj.SetSize(LP.X, LP.Y);
+      AObj.Canvas.CopyRect(Rect(0, 0, LP.X, LP.Y), LCanvas, Rect(0, 0, LP.X, LP.Y));
+    finally
+      LCanvas.Free;
+    end;
+  end;
+end;
  
 // Other
 
@@ -1154,6 +1206,7 @@ exports
   Bitmap_Clear,
   Bitmap_BeginUpdate,
   Bitmap_EndUpdate,
+  Bitmap_LoadFromDevice,
 
   // TStyleManager
   StyleManager_IsValidStyle,

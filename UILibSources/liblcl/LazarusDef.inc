@@ -555,6 +555,10 @@ begin
   AObj.EndUpdate(AStreamIsValid);
 end;
 
+procedure Bitmap_LoadFromDevice(AObj: TBitmap; ADc: HDC); extdecl;
+begin
+  AObj.LoadFromDevice(ADc);
+end;
 
 // win api
 {$IFNDEF WINDOWS}
@@ -1184,6 +1188,7 @@ exports
   Bitmap_Clear,
   Bitmap_BeginUpdate,
   Bitmap_EndUpdate,
+  Bitmap_LoadFromDevice,
 
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,
