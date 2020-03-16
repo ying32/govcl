@@ -89,7 +89,10 @@ uses
   uMiniWebview in 'uMiniWebview.pas',
   uComponents,
   uGoForm,
-  uControlPatchs;
+  uControlPatchs
+{$IFDEF LCLCocoa}
+  ,uMacOSPatchs
+{$ENDIF} ;
 
 {$IFDEF WINDOWS}
   {$R *.res}

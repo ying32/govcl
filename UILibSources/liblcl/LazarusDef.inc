@@ -1107,6 +1107,17 @@ exports
   DWindowFromPoint,
 {$ENDIF}
 
+{$IFDEF LCLCocoa}
+  NSWindow_FromForm,
+  NSWindow_titleVisibility,
+  NSWindow_setTitleVisibility,
+  NSWindow_titlebarAppearsTransparent,
+  NSWindow_setTitlebarAppearsTransparent,
+  NSWindow_styleMask,
+  NSWindow_setStyleMask,
+  NSWindow_setRepresentedURL,
+{$ENDIF}
+
   // Other
   SetEventCallback,
   SetMessageCallback,
