@@ -8,7 +8,7 @@
 
 package types
 
-type NSWindowTitleVisibility int32
+type NSWindowTitleVisibility uint
 
 const (
 	NSWindowTitleVisible NSWindowTitleVisibility = iota + 0

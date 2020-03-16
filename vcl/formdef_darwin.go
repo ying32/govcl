@@ -36,7 +36,7 @@ var (
 */
 
 func (f *TForm) Window() NSWindow {
-	r, _, _ := NSWindow_FromForm.Call(f.Handle())
+	r, _, _ := NSWindow_FromForm.Call(f.instance)
 	return NSWindow(r)
 }
 
@@ -62,11 +62,15 @@ func (n NSWindow) SetRepresentedURL(url NSURL) {
 	NSWindow_setRepresentedURL.Call(uintptr(n), uintptr(url))
 }
 
-func (n NSWindow) StyleMask() int32 {
+func (n NSWindow) StyleMask() uint {
 	r, _, _ := NSWindow_styleMask.Call(uintptr(n))
-	return int32(r)
+	return uint(r)
 }
 
-func (n NSWindow) SetStyleMask(mask int32) {
+func (n NSWindow) SetStyleMask(mask uint) {
 	NSWindow_setStyleMask.Call(uintptr(n), uintptr(mask))
 }
+
+//func (n NSWindow) Release_() {
+//		NSWindow_release.Call(uintptr(n))
+//}

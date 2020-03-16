@@ -18,4 +18,5 @@ var (
 	NSWindow_styleMask                     = libvcl.NewProc("NSWindow_styleMask")
 	NSWindow_setStyleMask                  = libvcl.NewProc("NSWindow_setStyleMask")
 	NSWindow_setRepresentedURL             = libvcl.NewProc("NSWindow_setRepresentedURL")
+	//NSWindow_release                       = libvcl.NewProc("NSWindow_release")
 )

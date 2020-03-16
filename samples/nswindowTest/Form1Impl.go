@@ -3,6 +3,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/types"
 )
@@ -22,13 +24,15 @@ func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 
 func (f *TForm1) OnButton1Click(sender vcl.IObject) {
 	nsWin := f.Window()
-	// 不显示标题栏
+
+	fmt.Println("nsWindow:", nsWin)
+	//	// 不显示标题栏
 	nsWin.SetTitleVisibility(types.NSWindowTitleHidden)
 	// 标题栏上面透明
 	nsWin.SetTitleBarAppearsTransparent(true)
-	// 不显示icon
+	//	// 不显示icon
 	nsWin.SetRepresentedURL(0)
-	// 视图的类型，应该是系统按钮什么的都算在主体视图中了
+	//	// 视图的类型，应该是系统按钮什么的都算在主体视图中了
 	nsWin.SetStyleMask(nsWin.StyleMask() | types.NSWindowStyleMaskFullSizeContentView)
 }
 
