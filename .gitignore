@@ -98,3 +98,4 @@ __recovery/
 /samples/memloaddll/defaultRes_windows_amd64.syso
 /samples/directUITest/
 /samples/cgoTest/
+/go.mod
