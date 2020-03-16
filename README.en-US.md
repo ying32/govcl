@@ -163,7 +163,10 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 }
 ``` 
 
-* Method 3: Not recommended, so no examples are given.
+* Method 3  
+```go
+// Not recommended, so no examples are given.
+```
 
 #### Step 3: Copy the corresponding binary   
 

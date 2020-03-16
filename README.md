@@ -168,7 +168,10 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 ```
 
-* 方法三：不推荐，所以不给出示例了。  
+* 方法三  
+```go
+// 不推荐，所以不给出示例了。  
+```
 
 #### 步骤三：复制对应的二进制    
 
