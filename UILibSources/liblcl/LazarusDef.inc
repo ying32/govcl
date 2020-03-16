@@ -1116,6 +1116,7 @@ exports
   NSWindow_styleMask,
   NSWindow_setStyleMask,
   NSWindow_setRepresentedURL,
+  NSWindow_release,
 {$ENDIF}
 
   // Other

@@ -11,7 +11,7 @@ unit uMacOSPatchs;
 interface
 
 uses
-  Classes, SysUtils, Forms, CocoaAll, CocoaWindows;
+  Classes, SysUtils, Dialogs, Forms, CocoaAll, CocoaWindows;
 
 
 type
@@ -23,6 +23,8 @@ type
     procedure setTitleVisibility(flag: NSWindowTitleVisibility); message 'setTitleVisibility:';
     function titlebarAppearsTransparent: Boolean; message 'titlebarAppearsTransparent';
     procedure setTitlebarAppearsTransparent(flag: Boolean); message 'setTitlebarAppearsTransparent:';
+    //procedure _release; message 'release';
+    //procedure _retain; message 'retain';
   end;
 
 const
@@ -41,14 +43,13 @@ procedure NSWindow_setTitlebarAppearsTransparent(AObj: MyNSWindow; AVal: Boolean
 function NSWindow_styleMask(AObj: MyNSWindow): NSInteger; extdecl;
 procedure NSWindow_setStyleMask(AObj: MyNSWindow; AVal: NSInteger); extdecl;
 procedure NSWindow_setRepresentedURL(AObj: MyNSWindow; AVal: NSURL); extdecl;
-
+procedure NSWindow_release(AObj: MyNSWindow); extdecl;
 
 implementation
 
 function NSWindow_FromForm(AForm: TForm): MyNSWindow; extdecl;
 var
   LWinContent: TCocoaWindowContent = nil;
-  Lwin: MyNSWindow = nil;
 begin
   Result := nil;
   if AForm = nil then
@@ -58,41 +59,48 @@ begin
     Result :=  MyNSWindow(LWinContent.fswin)
   else
     Result := MyNSWindow(LWinContent.window);
+  //if Assigned(Result) then
+  //  Result._retain;   // +1
 end;
 
-function NSWindow_titleVisibility(AObj: MyNSWindow): NSWindowTitleVisibility;
+function NSWindow_titleVisibility(AObj: MyNSWindow): NSWindowTitleVisibility; extdecl;
 begin
   Result := AObj.titleVisibility();
 end;
 
-procedure NSWindow_setTitleVisibility(AObj: MyNSWindow; AVal: NSWindowTitleVisibility);
+procedure NSWindow_setTitleVisibility(AObj: MyNSWindow; AVal: NSWindowTitleVisibility); extdecl;
 begin
   AObj.setTitleVisibility(AVal);
 end;
 
-function NSWindow_titlebarAppearsTransparent(AObj: MyNSWindow): Boolean;
+function NSWindow_titlebarAppearsTransparent(AObj: MyNSWindow): Boolean; extdecl;
 begin
   Result := AObj.titlebarAppearsTransparent();
 end;
 
-procedure NSWindow_setTitlebarAppearsTransparent(AObj: MyNSWindow; AVal: Boolean);
+procedure NSWindow_setTitlebarAppearsTransparent(AObj: MyNSWindow; AVal: Boolean); extdecl;
 begin
   AObj.SetTitlebarAppearsTransparent(AVal);
 end;
 
-function NSWindow_styleMask(AObj: MyNSWindow): NSInteger;
+function NSWindow_styleMask(AObj: MyNSWindow): NSInteger; extdecl;
 begin
   Result := AObj.styleMask();
 end;
 
-procedure NSWindow_setStyleMask(AObj: MyNSWindow; AVal: NSInteger);
+procedure NSWindow_setStyleMask(AObj: MyNSWindow; AVal: NSInteger); extdecl;
 begin
   AObj.setStyleMask(AVal);
 end;
 
-procedure NSWindow_setRepresentedURL(AObj: MyNSWindow; AVal: NSURL);
+procedure NSWindow_setRepresentedURL(AObj: MyNSWindow; AVal: NSURL); extdecl;
 begin
   AObj.setRepresentedURL(AVal);
+end;
+
+procedure NSWindow_release(AObj: MyNSWindow); extdecl;
+begin
+  //AObj._release;
 end;
 
 //procedure SetMacOSWindowProp(AForm: TForm);
