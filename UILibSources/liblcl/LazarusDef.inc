@@ -1216,7 +1216,7 @@ exports
   DModifyLibResouce,
 
 {$IFDEF LINUX}
-  GetGDKWindowXID,
+  GdkWindow_GetXId,
   GtkWidget_GetGtkFixed,
   GdkWindow_FromForm,
 {$ENDIF}
