@@ -9,15 +9,23 @@
 
 package vcl
 
-import "github.com/ying32/govcl/vcl/types"
+import . "github.com/ying32/govcl/vcl/types"
 
-type NSObject uintptr
+type Window HWND
 
 // Handle
-func HandleToPlatformHandle(h types.HWND) types.HWND {
-	return h
+func HandleToPlatformHandle(h HWND) Window {
+	return Window(h)
 }
 
-func (f *TForm) PlatformWindow() types.HWND {
-	return f.Handle()
+func (f *TForm) PlatformWindow() Window {
+	return Window(f.Handle())
 }
+
+//func (w Window) SendMessage(msg uint32, wParam, lParam uintptr) uintptr {
+//	return win.SendMessage(HWND(w), msg, wParam, lParam)
+//}
+//
+//func (w Window) PostMessage(msg uint32, wParam, lParam uintptr) uintptr {
+//	return win.PostMessage(HWND(w), msg, wParam, lParam)
+//}
