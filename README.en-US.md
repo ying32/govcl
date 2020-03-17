@@ -8,7 +8,7 @@
 > The govcl version >=1.2.0 must require the go version >=1.9.0.  
 
 [Screenshots](https://github.com/ying32/govcl/tree/master/Screenshot) | 
-[What's-new](https://z-kit.cc/changelog.html) | 
+[What's-new(Chinese)](https://z-kit.cc/changelog.html) | 
 [GoVCL video tutorial (third party)](https://video.0-w.cc/videos/1) | 
 [Sponsor govcl](https://z-kit.cc/sponsor.html)  
 
