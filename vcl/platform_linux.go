@@ -12,9 +12,8 @@ package vcl
 import (
 	"unsafe"
 
-	"github.com/ying32/govcl/vcl/types"
-
 	. "github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/types"
 )
 
 type GdkWindow uintptr
@@ -44,4 +43,10 @@ func (g GdkWindow) XID() (xid XID) {
 func (g GtkWidget) FixedWidget() GtkFixed {
 	r, _, _ := GtkWidget_GetGtkFixed.Call(uintptr(g))
 	return GtkFixed(r)
+}
+
+func (g GtkWidget) Window() GdkWindow {
+	return 0
+	r, _, _ := GtkWidget_Window.Call(uintptr(g))
+	return GdkWindow(r)
 }
