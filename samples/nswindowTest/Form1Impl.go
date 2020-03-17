@@ -23,7 +23,7 @@ func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 }
 
 func (f *TForm1) OnButton1Click(sender vcl.IObject) {
-	nsWin := f.Window()
+	nsWin := f.PlatformWindow()
 
 	fmt.Println("nsWindow:", nsWin)
 	//	// 不显示标题栏

@@ -5,14 +5,15 @@
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-// +build darwin
 
 package vcl
 
-import (
-	. "github.com/ying32/govcl/vcl/api"
-	. "github.com/ying32/govcl/vcl/types"
-)
+type NSObject uintptr
+
+// NSObject
+//func HandleToPlatformHandle(h types.HWND) NSObject {
+//	return NSObject(h)
+//}
 
 type (
 	// NSWindow
@@ -35,7 +36,7 @@ var (
 
 */
 
-func (f *TForm) Window() NSWindow {
+func (f *TForm) PlatformWindow() NSWindow {
 	r, _, _ := NSWindow_FromForm.Call(f.instance)
 	return NSWindow(r)
 }
