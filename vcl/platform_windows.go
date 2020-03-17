@@ -14,9 +14,9 @@ import "github.com/ying32/govcl/vcl/types"
 type NSObject uintptr
 
 // Handle
-//func HandleToPlatformHandle(h types.HWND) types.HWND {
-//	return h
-//}
+func HandleToPlatformHandle(h types.HWND) types.HWND {
+	return h
+}
 
 func (f *TForm) PlatformWindow() types.HWND {
 	return f.Handle()

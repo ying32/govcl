@@ -37,13 +37,6 @@ uses
   LCLType,
   Types,
 {$ENDIF}
-{$IFDEF LCLGTK2}
-  gtk2,
-{$IFDEF UNIX}
-  Gdk2x,
-  X,
-{$ENDIF}
-{$ENDIF}
   typinfo,
   LCLProc,
   LCLIntf,
@@ -91,8 +84,12 @@ uses
   uGoForm,
   uControlPatchs
 {$IFDEF LCLCocoa}
-  ,uMacOSPatchs
-{$ENDIF} ;
+  ,uMacOSPatchs, uLinuxPatchs
+{$ENDIF}
+{$IFDEF LINUX}
+  ,uLinuxPatchs
+{$ENDIF}
+;
 
 {$IFDEF WINDOWS}
   {$R *.res}

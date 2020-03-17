@@ -16,11 +16,6 @@ import (
 
 type NSObject uintptr
 
-// NSObject
-//func HandleToPlatformHandle(h types.HWND) NSObject {
-//	return NSObject(h)
-//}
-
 type (
 	// NSWindow
 	NSWindow uintptr
@@ -28,19 +23,10 @@ type (
 	NSURL uintptr
 )
 
-/*
-var (
-	NSWindow_FromForm                      = libvcl.NewProc("NSWindow_FromForm")
-	NSWindow_titleVisibility               = libvcl.NewProc("NSWindow_titleVisibility")
-	NSWindow_setTitleVisibility            = libvcl.NewProc("NSWindow_setTitleVisibility")
-	NSWindow_titlebarAppearsTransparent    = libvcl.NewProc("NSWindow_titlebarAppearsTransparent")
-	NSWindow_setTitlebarAppearsTransparent = libvcl.NewProc("NSWindow_setTitlebarAppearsTransparent")
-	NSWindow_styleMask                     = libvcl.NewProc("NSWindow_styleMask")
-	NSWindow_setStyleMask                  = libvcl.NewProc("NSWindow_setStyleMask")
-	NSWindow_setRepresentedURL             = libvcl.NewProc("NSWindow_setRepresentedURL")
-)
-
-*/
+// NSObject
+func HandleToPlatformHandle(h HWND) NSObject {
+	return NSObject(h)
+}
 
 func (f *TForm) PlatformWindow() NSWindow {
 	r, _, _ := NSWindow_FromForm.Call(f.instance)

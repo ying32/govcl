@@ -195,11 +195,6 @@ func LibVersion() uint32 {
 	return api.DLibVersion()
 }
 
-// Linux下liblcl使用GTK2用
-func GetGDKWindowXID(handle types.HWND) types.TXID {
-	return api.DGetGDKWindowXID(handle)
-}
-
 func ShiftStateToWord(shift types.TShiftState) uint32 {
 	// 这里不直接使用win包的常量，是考虑要跨平台使用
 	const (

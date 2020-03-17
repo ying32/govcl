@@ -136,6 +136,4 @@ var (
 	// 库的信息
 	dLibStringEncoding = libvcl.NewProc("DLibStringEncoding")
 	dLibVersion        = libvcl.NewProc("DLibVersion")
-
-	dGetGDKWindowXID = libvcl.NewProc("GetGDKWindowXID")
 )

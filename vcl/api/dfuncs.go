@@ -333,9 +333,3 @@ func DLibVersion() uint32 {
 	r, _, _ := dLibVersion.Call()
 	return uint32(r)
 }
-
-func DGetGDKWindowXID(handle uintptr) TXID {
-	var aResult TXID
-	dGetGDKWindowXID.Call(handle, uintptr(unsafe.Pointer(&aResult)))
-	return aResult
-}

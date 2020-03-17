@@ -979,12 +979,6 @@ begin
     PResStringRec(APtr)^ := string(AValue);
 end;
 
-{$IFDEF LCLGTK2}
-procedure GetGDKWindowXID(Handle: HWND; out AResult: TXID); extdecl;
-begin
-  AResult := GDK_WINDOW_XID(PGtkWidget(Handle)^.window);
-end;
-{$ENDIF}
 
 type TLibType = (ltVCL, ltLCL);
 
@@ -1219,10 +1213,12 @@ exports
   // libResouces
   DGetLibResouceCount,
   DGetLibResouceItem,
-  DModifyLibResouce
+  DModifyLibResouce,
 
-{$IFDEF LCLGTK2}
-  ,GetGDKWindowXID
-{$ENDIF},
+{$IFDEF LINUX}
+  GetGDKWindowXID,
+  GtkWidget_GetGtkFixed,
+  GdkWindow_FromForm,
+{$ENDIF}
   DGetLibType
 ;
