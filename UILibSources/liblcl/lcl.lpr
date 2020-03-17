@@ -84,7 +84,7 @@ uses
   uGoForm,
   uControlPatchs
 {$IFDEF LCLCocoa}
-  ,uMacOSPatchs, uLinuxPatchs
+  ,uMacOSPatchs
 {$ENDIF}
 {$IFDEF LINUX}
   ,uLinuxPatchs
