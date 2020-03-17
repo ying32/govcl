@@ -51,7 +51,7 @@ end;
 procedure GdkWindow_GetXId(AW: PGdkWindow; out AXId: TXId); extdecl;
 begin
 {$IFDEF LCLGTK2}
-  AResult := GDK_WINDOW_XID(AW);
+  AXId := GDK_WINDOW_XID(AW);
 {$ENDIF}
 {$IFDEF LClgtk3}
 
