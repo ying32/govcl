@@ -82,10 +82,14 @@ func loadUILib() *dylib.LazyDLL {
 	// 这里做个判断，当libvcl.dll或者libvclx64.dll加载失败时尝试加载liblcl.dll
 	// 这样做主要为以后考虑，对于某些人来说怕什么的来说，可以使用非Delphi的组件
 	err := lib.Load()
-	if err != nil && runtime.GOOS == "windows" && (libName == libvcldll || libName == libvclx64dll) {
-		fmt.Println(fmt.Sprintf("%s does not exist, trying to load liblcl.dll.", libName))
-		lib = dylib.NewLazyDLL(liblcldll)
-		err = lib.Load()
+
+	// 只有当 libname.LibName 为空的时候才去搜索相关的
+	if libname.LibName == "" {
+		if err != nil && runtime.GOOS == "windows" && (libName == libvcldll || libName == libvclx64dll) {
+			fmt.Println(fmt.Sprintf("%s does not exist, trying to load liblcl.dll.", libName))
+			lib = dylib.NewLazyDLL(liblcldll)
+			err = lib.Load()
+		}
 	}
 	if err != nil {
 		panic(err)
