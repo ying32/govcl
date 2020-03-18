@@ -19,6 +19,7 @@ uses
   function GtkWidget_GetGtkFixed(Ah: HWND): PGtkFixed; extdecl;
   function GdkWindow_FromForm(AForm: TForm): PGdkWindow; extdecl;
   procedure GdkWindow_GetXId(AW: PGdkWindow; out AXId: TXId); extdecl;
+  //function GtkWidget_Window(Ah: HWND): PGdkWindow; extdecl;
 implementation
 
 function GdkWindow_FromForm(AForm: TForm): PGdkWindow; extdecl;
@@ -52,6 +53,7 @@ procedure GdkWindow_GetXId(AW: PGdkWindow; out AXId: TXId); extdecl;
 begin
 {$IFDEF LCLGTK2}
   AXId := GDK_WINDOW_XID(AW);
+  // GDK_WINDOW_XWINDOW
 {$ENDIF}
 {$IFDEF LClgtk3}
 

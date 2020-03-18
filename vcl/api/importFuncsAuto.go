@@ -68196,3 +68196,638 @@ func SizeConstraints_StaticClassType() TClass {
     r, _, _:= sizeConstraints_StaticClassType.Call()
     return TClass(r)
 }
+
+//--------------------------- TXButton ---------------------------
+
+func XButton_Create(obj uintptr) uintptr {
+    ret, _, _ := xButton_Create.Call(obj)
+    return ret
+}
+
+func XButton_Free(obj uintptr) {
+    xButton_Free.Call(obj)
+}
+
+func XButton_BringToFront(obj uintptr)  {
+    xButton_BringToFront.Call(obj)
+}
+
+func XButton_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    xButton_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func XButton_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    xButton_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func XButton_Dragging(obj uintptr) bool {
+    ret, _, _ := xButton_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_HasParent(obj uintptr) bool {
+    ret, _, _ := xButton_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_Hide(obj uintptr)  {
+    xButton_Hide.Call(obj)
+}
+
+func XButton_Invalidate(obj uintptr)  {
+    xButton_Invalidate.Call(obj)
+}
+
+func XButton_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := xButton_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func XButton_Refresh(obj uintptr)  {
+    xButton_Refresh.Call(obj)
+}
+
+func XButton_Repaint(obj uintptr)  {
+    xButton_Repaint.Call(obj)
+}
+
+func XButton_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    xButton_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func XButton_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    xButton_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func XButton_SendToBack(obj uintptr)  {
+    xButton_SendToBack.Call(obj)
+}
+
+func XButton_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    xButton_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func XButton_Show(obj uintptr)  {
+    xButton_Show.Call(obj)
+}
+
+func XButton_Update(obj uintptr)  {
+    xButton_Update.Call(obj)
+}
+
+func XButton_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := xButton_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer, int(ret))
+    return int32(ret)
+}
+
+func XButton_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := xButton_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetTextBuf(obj uintptr, Buffer string)  {
+    xButton_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
+func XButton_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := xButton_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func XButton_GetNamePath(obj uintptr) string {
+    ret, _, _ := xButton_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func XButton_Assign(obj uintptr, Source uintptr)  {
+    xButton_Assign.Call(obj, Source )
+}
+
+func XButton_DisposeOf(obj uintptr)  {
+    xButton_DisposeOf.Call(obj)
+}
+
+func XButton_ClassType(obj uintptr) TClass {
+    ret, _, _ := xButton_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func XButton_ClassName(obj uintptr) string {
+    ret, _, _ := xButton_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func XButton_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := xButton_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func XButton_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := xButton_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func XButton_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := xButton_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func XButton_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := xButton_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func XButton_ToString(obj uintptr) string {
+    ret, _, _ := xButton_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func XButton_GetCaption(obj uintptr) string {
+    ret, _, _ := xButton_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func XButton_SetCaption(obj uintptr, value string) {
+   xButton_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func XButton_GetShowCaption(obj uintptr) bool {
+    ret, _, _ := xButton_GetShowCaption.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_SetShowCaption(obj uintptr, value bool) {
+   xButton_SetShowCaption.Call(obj, GoBoolToDBool(value))
+}
+
+func XButton_GetBackColor(obj uintptr) TColor {
+    ret, _, _ := xButton_GetBackColor.Call(obj)
+    return TColor(ret)
+}
+
+func XButton_SetBackColor(obj uintptr, value TColor) {
+   xButton_SetBackColor.Call(obj, uintptr(value))
+}
+
+func XButton_GetHoverColor(obj uintptr) TColor {
+    ret, _, _ := xButton_GetHoverColor.Call(obj)
+    return TColor(ret)
+}
+
+func XButton_SetHoverColor(obj uintptr, value TColor) {
+   xButton_SetHoverColor.Call(obj, uintptr(value))
+}
+
+func XButton_GetDownColor(obj uintptr) TColor {
+    ret, _, _ := xButton_GetDownColor.Call(obj)
+    return TColor(ret)
+}
+
+func XButton_SetDownColor(obj uintptr, value TColor) {
+   xButton_SetDownColor.Call(obj, uintptr(value))
+}
+
+func XButton_GetBorderWidth(obj uintptr) int32 {
+    ret, _, _ := xButton_GetBorderWidth.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetBorderWidth(obj uintptr, value int32) {
+   xButton_SetBorderWidth.Call(obj, uintptr(value))
+}
+
+func XButton_GetBorderColor(obj uintptr) TColor {
+    ret, _, _ := xButton_GetBorderColor.Call(obj)
+    return TColor(ret)
+}
+
+func XButton_SetBorderColor(obj uintptr, value TColor) {
+   xButton_SetBorderColor.Call(obj, uintptr(value))
+}
+
+func XButton_GetPicture(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetPicture.Call(obj)
+    return ret
+}
+
+func XButton_SetPicture(obj uintptr, value uintptr) {
+   xButton_SetPicture.Call(obj, value)
+}
+
+func XButton_GetDrawMode(obj uintptr) TDrawImageMode {
+    ret, _, _ := xButton_GetDrawMode.Call(obj)
+    return TDrawImageMode(ret)
+}
+
+func XButton_SetDrawMode(obj uintptr, value TDrawImageMode) {
+   xButton_SetDrawMode.Call(obj, uintptr(value))
+}
+
+func XButton_GetNormalFontColor(obj uintptr) TColor {
+    ret, _, _ := xButton_GetNormalFontColor.Call(obj)
+    return TColor(ret)
+}
+
+func XButton_SetNormalFontColor(obj uintptr, value TColor) {
+   xButton_SetNormalFontColor.Call(obj, uintptr(value))
+}
+
+func XButton_GetDownFontColor(obj uintptr) TColor {
+    ret, _, _ := xButton_GetDownFontColor.Call(obj)
+    return TColor(ret)
+}
+
+func XButton_SetDownFontColor(obj uintptr, value TColor) {
+   xButton_SetDownFontColor.Call(obj, uintptr(value))
+}
+
+func XButton_GetHoverFontColor(obj uintptr) TColor {
+    ret, _, _ := xButton_GetHoverFontColor.Call(obj)
+    return TColor(ret)
+}
+
+func XButton_SetHoverFontColor(obj uintptr, value TColor) {
+   xButton_SetHoverFontColor.Call(obj, uintptr(value))
+}
+
+func XButton_GetAction(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetAction.Call(obj)
+    return ret
+}
+
+func XButton_SetAction(obj uintptr, value uintptr) {
+   xButton_SetAction.Call(obj, value)
+}
+
+func XButton_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := xButton_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func XButton_SetAlign(obj uintptr, value TAlign) {
+   xButton_SetAlign.Call(obj, uintptr(value))
+}
+
+func XButton_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := xButton_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func XButton_SetAnchors(obj uintptr, value TAnchors) {
+   xButton_SetAnchors.Call(obj, uintptr(value))
+}
+
+func XButton_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := xButton_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func XButton_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   xButton_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func XButton_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetConstraints.Call(obj)
+    return ret
+}
+
+func XButton_SetConstraints(obj uintptr, value uintptr) {
+   xButton_SetConstraints.Call(obj, value)
+}
+
+func XButton_GetEnabled(obj uintptr) bool {
+    ret, _, _ := xButton_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_SetEnabled(obj uintptr, value bool) {
+   xButton_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func XButton_GetFont(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetFont.Call(obj)
+    return ret
+}
+
+func XButton_SetFont(obj uintptr, value uintptr) {
+   xButton_SetFont.Call(obj, value)
+}
+
+func XButton_GetParentFont(obj uintptr) bool {
+    ret, _, _ := xButton_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_SetParentFont(obj uintptr, value bool) {
+   xButton_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func XButton_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := xButton_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_SetParentShowHint(obj uintptr, value bool) {
+   xButton_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func XButton_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func XButton_SetPopupMenu(obj uintptr, value uintptr) {
+   xButton_SetPopupMenu.Call(obj, value)
+}
+
+func XButton_GetShowHint(obj uintptr) bool {
+    ret, _, _ := xButton_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_SetShowHint(obj uintptr, value bool) {
+   xButton_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func XButton_GetVisible(obj uintptr) bool {
+    ret, _, _ := xButton_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_SetVisible(obj uintptr, value bool) {
+   xButton_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func XButton_SetOnClick(obj uintptr, fn interface{}) {
+    xButton_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func XButton_SetOnDblClick(obj uintptr, fn interface{}) {
+    xButton_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func XButton_SetOnMouseDown(obj uintptr, fn interface{}) {
+    xButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func XButton_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    xButton_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func XButton_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    xButton_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func XButton_SetOnMouseMove(obj uintptr, fn interface{}) {
+    xButton_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func XButton_SetOnMouseUp(obj uintptr, fn interface{}) {
+    xButton_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func XButton_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    xButton_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func XButton_SetBoundsRect(obj uintptr, value TRect) {
+   xButton_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func XButton_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := xButton_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetClientHeight(obj uintptr, value int32) {
+   xButton_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func XButton_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    xButton_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func XButton_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    xButton_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func XButton_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := xButton_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetClientWidth(obj uintptr, value int32) {
+   xButton_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func XButton_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := xButton_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func XButton_SetControlState(obj uintptr, value TControlState) {
+   xButton_SetControlState.Call(obj, uintptr(value))
+}
+
+func XButton_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := xButton_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func XButton_SetControlStyle(obj uintptr, value TControlStyle) {
+   xButton_SetControlStyle.Call(obj, uintptr(value))
+}
+
+func XButton_GetExplicitLeft(obj uintptr) int32 {
+    ret, _, _ := xButton_GetExplicitLeft.Call(obj)
+    return int32(ret)
+}
+
+func XButton_GetExplicitTop(obj uintptr) int32 {
+    ret, _, _ := xButton_GetExplicitTop.Call(obj)
+    return int32(ret)
+}
+
+func XButton_GetExplicitWidth(obj uintptr) int32 {
+    ret, _, _ := xButton_GetExplicitWidth.Call(obj)
+    return int32(ret)
+}
+
+func XButton_GetExplicitHeight(obj uintptr) int32 {
+    ret, _, _ := xButton_GetExplicitHeight.Call(obj)
+    return int32(ret)
+}
+
+func XButton_GetFloating(obj uintptr) bool {
+    ret, _, _ := xButton_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_GetParent(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetParent.Call(obj)
+    return ret
+}
+
+func XButton_SetParent(obj uintptr, value uintptr) {
+   xButton_SetParent.Call(obj, value)
+}
+
+func XButton_GetStyleElements(obj uintptr) TStyleElements {
+    ret, _, _ := xButton_GetStyleElements.Call(obj)
+    return TStyleElements(ret)
+}
+
+func XButton_SetStyleElements(obj uintptr, value TStyleElements) {
+   xButton_SetStyleElements.Call(obj, uintptr(value))
+}
+
+func XButton_SetOnGesture(obj uintptr, fn interface{}) {
+    xButton_SetOnGesture.Call(obj, addEventToMap(fn))
+}
+
+func XButton_GetAlignWithMargins(obj uintptr) bool {
+    ret, _, _ := xButton_GetAlignWithMargins.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func XButton_SetAlignWithMargins(obj uintptr, value bool) {
+   xButton_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
+}
+
+func XButton_GetLeft(obj uintptr) int32 {
+    ret, _, _ := xButton_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetLeft(obj uintptr, value int32) {
+   xButton_SetLeft.Call(obj, uintptr(value))
+}
+
+func XButton_GetTop(obj uintptr) int32 {
+    ret, _, _ := xButton_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetTop(obj uintptr, value int32) {
+   xButton_SetTop.Call(obj, uintptr(value))
+}
+
+func XButton_GetWidth(obj uintptr) int32 {
+    ret, _, _ := xButton_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetWidth(obj uintptr, value int32) {
+   xButton_SetWidth.Call(obj, uintptr(value))
+}
+
+func XButton_GetHeight(obj uintptr) int32 {
+    ret, _, _ := xButton_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetHeight(obj uintptr, value int32) {
+   xButton_SetHeight.Call(obj, uintptr(value))
+}
+
+func XButton_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := xButton_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func XButton_SetCursor(obj uintptr, value TCursor) {
+   xButton_SetCursor.Call(obj, uintptr(value))
+}
+
+func XButton_GetHint(obj uintptr) string {
+    ret, _, _ := xButton_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func XButton_SetHint(obj uintptr, value string) {
+   xButton_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func XButton_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetMargins.Call(obj)
+    return ret
+}
+
+func XButton_SetMargins(obj uintptr, value uintptr) {
+   xButton_SetMargins.Call(obj, value)
+}
+
+func XButton_GetCustomHint(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetCustomHint.Call(obj)
+    return ret
+}
+
+func XButton_SetCustomHint(obj uintptr, value uintptr) {
+   xButton_SetCustomHint.Call(obj, value)
+}
+
+func XButton_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := xButton_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func XButton_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := xButton_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func XButton_SetComponentIndex(obj uintptr, value int32) {
+   xButton_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func XButton_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetOwner.Call(obj)
+    return ret
+}
+
+func XButton_GetName(obj uintptr) string {
+    ret, _, _ := xButton_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func XButton_SetName(obj uintptr, value string) {
+   xButton_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func XButton_GetTag(obj uintptr) int {
+    ret, _, _ := xButton_GetTag.Call(obj)
+    return int(ret)
+}
+
+func XButton_SetTag(obj uintptr, value int) {
+   xButton_SetTag.Call(obj, uintptr(value))
+}
+
+func XButton_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := xButton_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func XButton_StaticClassType() TClass {
+    r, _, _:= xButton_StaticClassType.Call()
+    return TClass(r)
+}

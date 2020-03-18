@@ -69,6 +69,7 @@ uses
   ComboEx,
   {$I UserDefineComponentUses.inc}
   uMiniWebview,
+  XButton,
   uControlPatchs;
 
 {$I LazarusExtDef.inc}
@@ -76,7 +77,7 @@ uses
 
 
 const
-  ClassRefArrs: array[0..120] of TClass = (
+  ClassRefArrs: array[0..121] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -100,7 +101,7 @@ const
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
     TFlowPanel,TCoolBar,TCoolBands,TCoolBand, TSpinEdit,TMiniWebview,
     TTaskDialog, TTaskDialogButtons, {TTaskDialogProgressBar, }TTaskDialogButtonItem, TTaskDialogRadioButtonItem, TTaskDialogBaseButtonItem,TCalendar,
-    TControlBorderSpacing,TComboBoxEx,TFrame,TControlScrollBar,TSizeConstraints
+    TControlBorderSpacing,TComboBoxEx,TFrame,TControlScrollBar,TSizeConstraints,TXButton
   );
 
 procedure AddComponentClass(AClass: TClass);

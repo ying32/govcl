@@ -80,16 +80,16 @@ uses
   ImageButton in 'ImageButton.pas',
   Gauges in 'Gauges.pas',
   uMiniWebview in 'uMiniWebview.pas',
+  xButton in 'xButton.pas',
   uComponents,
   uGoForm,
-  uControlPatchs
 {$IFDEF LCLCocoa}
-  ,uMacOSPatchs
+  uMacOSPatchs,
 {$ENDIF}
 {$IFDEF LINUX}
-  ,uLinuxPatchs
+  uLinuxPatchs,
 {$ENDIF}
-;
+  uControlPatchs;
 
 {$IFDEF WINDOWS}
   {$R *.res}
@@ -170,7 +170,7 @@ uses
 {$I MyLCL_StatusPanels.inc}
 {$I MyLCL_StatusPanel.inc}
 {$I MyLCL_SpinEdit.inc}
-{$IF Defined(LCLcocoa) or Defined(LCLgtk2) or Defined(WINDOWS)}
+{$IF Defined(LCLcocoa) or Defined(LCLgtk2) or Defined(LCLgtk3) or Defined(WINDOWS)}
 {$I MyLCL_MiniWebview.inc}
 {$ENDIF}
 {$I MyLCL_Canvas.inc}
@@ -231,6 +231,7 @@ uses
 {$I MyLCL_Frame.inc}
 {$I MyLCL_ControlScrollBar.inc}
 {$I MyLCL_SizeConstraints.inc}
+{$I MyLCL_XButton.inc}
 
 // 用户自己定义的组件
 {$I UserDefineComponents.inc}

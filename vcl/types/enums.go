@@ -2157,3 +2157,12 @@ const (
 	AfDefined
 	AfPremultiplied
 )
+
+// TDrawImageMode = (dimNormal, dimCenter, dimStretch);
+type TDrawImageMode int32
+
+const (
+	DimNormal = iota + 0
+	DimCenter
+	DimStretch
+)

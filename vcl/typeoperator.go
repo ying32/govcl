@@ -1522,3 +1522,13 @@ func (i TIs) SizeConstraints() bool {
 //    return AsSizeConstraints(uintptr(a))
 //}
 
+// TXButton
+
+func (i TIs) XButton() bool {
+    return XButton_InheritsFrom(uintptr(i), TXButtonClass())
+}
+
+//func (a TAs) XButton() *TXButton {
+//    return AsXButton(uintptr(a))
+//}
+
