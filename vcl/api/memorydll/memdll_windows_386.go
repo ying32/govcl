@@ -1,14 +1,12 @@
 // +build windows,386
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package memorydll
 
@@ -20,8 +18,8 @@ import (
 
 type moduleHandle = *btmemorymodule.TBTMemoryModule
 
-func memoryLoadLibary(data []byte) moduleHandle {
-	return btmemorymodule.BTMemoryLoadLibary(uintptr(unsafe.Pointer(&data[0])), int64(len(data)))
+func memoryLoadLibrary(data []byte) moduleHandle {
+	return btmemorymodule.BTMemoryLoadLibrary(uintptr(unsafe.Pointer(&data[0])), int64(len(data)))
 }
 
 func memoryGetLastError() string {

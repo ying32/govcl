@@ -1,14 +1,12 @@
 // +build windows
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 /*
   此项功能稳定性还有待观查。
@@ -47,7 +45,7 @@ func NewMemoryDLL(data []byte) *LazyDLL {
 		m.mu.Lock()
 		defer m.mu.Unlock()
 
-		m.handle = memoryLoadLibary(data)
+		m.handle = memoryLoadLibrary(data)
 		if m.handle != nil && handleIsValid(m.handle) {
 			//runtime.SetFinalizer(m, (*LazyDLL).Close)
 			// 导入调用的, 实现一个动态调用call的，主要是为了解决异常问题
