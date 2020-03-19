@@ -28,6 +28,18 @@ import (
 	"text/template"
 )
 
+// 自定义包信息
+type pkgFile struct {
+	Copyright    string // copy right ....
+	Locale       string // zh_CN en_US
+	DevRegion    string // China En English
+	IconFileName string // .icns file
+}
+
+const (
+	defaultPkgName = "apppkg.conf" // 打包的文件，一个json格式的。
+)
+
 func copyFile(src, dest string) error {
 	filedest, err := os.Create(dest)
 	if err != nil {
