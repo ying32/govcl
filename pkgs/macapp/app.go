@@ -34,6 +34,10 @@ type pkgFile struct {
 	Locale       string // zh_CN en_US
 	DevRegion    string // China En English
 	IconFileName string // .icns file
+	Files        []struct {
+		Src  string // C:/xxx/a.txt
+		Dest string // /Contents/MacOS/a.txt or /Contents/a.txt or /Contents/Resources/a.txt
+	}
 }
 
 const (
