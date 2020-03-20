@@ -102,6 +102,20 @@ func IsAdministrator() bool {
 	return true
 }
 
+// 以管理员权限运行一个程序
+func RunAsAdministrator(file, params, dir string) bool {
+	var sei TShellExecuteInfo
+	sei.CbSize = uint32(unsafe.Sizeof(sei))
+	sei.Wnd = 0
+	sei.FMask = SEE_MASK_FLAG_DDEWAIT | SEE_MASK_FLAG_NO_UI
+	sei.LpVerb = CStr("runas")
+	sei.LpFile = CStr(file)
+	sei.LpParameters = CStr(params)
+	sei.LpDirectory = CStr(dir)
+	sei.NShow = SW_SHOWNORMAL
+	return ShellExecuteEx(&sei)
+}
+
 // OpenInExplorer 在资源管理器中定位文件
 func OpenInExplorer(aFileName string) {
 	ShellExecute(0, "OPEN", "Explorer.exe",
@@ -174,8 +188,8 @@ func GetDesktopPath() string {
 	return ""
 }
 
-// ResouceToBytes 查找指定实例中 指定名称、指定类型 资源，并返回资源字节
-func ResouceToBytes(instance uintptr, resName string, resType uintptr) ([]byte, bool) {
+// ResourceToBytes 查找指定实例中 指定名称、指定类型 资源，并返回资源字节
+func ResourceToBytes(instance uintptr, resName string, resType uintptr) ([]byte, bool) {
 	resInfo := FindResource(HMODULE(instance), resName, resType)
 	if resInfo == 0 {
 		return nil, false

@@ -23,7 +23,7 @@ import (
 )
 
 func loadUILib() *memorydll.LazyDLL {
-	dllBytes, ok := win.ResouceToBytes(win.GetSelfModuleHandle(), "GOVCLLIB", win.RT_RCDATA)
+	dllBytes, ok := win.ResourceToBytes(win.GetSelfModuleHandle(), "GOVCLLIB", win.RT_RCDATA)
 	if !ok {
 		panic("\"GOVCLLIB\" resource does not exist.")
 		return nil
