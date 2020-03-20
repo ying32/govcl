@@ -1,14 +1,12 @@
 // +build windows
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package win
 
@@ -25,8 +23,9 @@ var (
 	// shell32.dll
 	shell32dll = syscall.NewLazyDLL("shell32.dll")
 
-	_ShellExecute = shell32dll.NewProc("ShellExecuteW")
-	_ExtractIcon  = shell32dll.NewProc("ExtractIconW")
+	_ShellExecute   = shell32dll.NewProc("ShellExecuteW")
+	_ShellExecuteEx = shell32dll.NewProc("ShellExecuteExW")
+	_ExtractIcon    = shell32dll.NewProc("ExtractIconW")
 
 	_SHChangeNotify             = shell32dll.NewProc("SHChangeNotify")
 	_SHGetSpecialFolderPath     = shell32dll.NewProc("SHGetSpecialFolderPathW")
@@ -38,6 +37,11 @@ var (
 func ShellExecute(hWnd HWND, Operation, FileName, Parameters, Directory string, ShowCmd int32) uintptr {
 	r, _, _ := _ShellExecute.Call(uintptr(hWnd), CStr(Operation), CStr(FileName), CStr(Parameters), CStr(Directory), uintptr(ShowCmd))
 	return r
+}
+
+func ShellExecuteEx(lpExecInfo *TShellExecuteInfo) bool {
+	r, _, _ := _ShellExecuteEx.Call(uintptr(unsafe.Pointer(lpExecInfo)))
+	return r != 0
 }
 
 // ExtractIcon
