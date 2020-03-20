@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package colors
 
@@ -173,3 +171,13 @@ const (
 	ClBtnFace              = 0xFF00000F
 	ClNull                 = 0x00000000
 )
+
+// RGB
+func RGB(r, g, b byte) uint32 {
+	return uint32(r) | (uint32(g) << 8) | (uint32(b) << 16)
+}
+
+// RGBToBGR
+func RGBToBGR(rgb uint32) uint32 {
+	return uint32(byte(rgb>>16)) | (uint32(byte(rgb>>8)) << 8) | (uint32(byte(rgb)) << 16)
+}
