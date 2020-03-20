@@ -5,7 +5,7 @@ import (
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
+	_ "github.com/ying32/govcl/vcl/locales/zh_CN"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -26,7 +26,7 @@ func main() {
 	//    dlgOpen.SetInitialDir()
 	//	dlgOpen.SetFilterIndex()
 
-	dlgOpen.SetOptions(rtl.Include(dlgOpen.Options(), types.OfShowHelp))
+	dlgOpen.SetOptions(dlgOpen.Options().Include(types.OfShowHelp, types.OfAllowMultiSelect)) //rtl.Include(, types.OfShowHelp))
 	dlgOpen.SetTitle("打开")
 
 	btn := vcl.NewButton(mainForm)
@@ -41,7 +41,7 @@ func main() {
 
 	dlSave := vcl.NewSaveDialog(mainForm)
 	dlSave.SetFilter("文本文件(*.txt)|*.txt|所有文件(*.*)|*.*")
-	dlSave.SetOptions(rtl.Include(dlSave.Options(), types.OfShowHelp))
+	dlSave.SetOptions(dlSave.Options().Include(types.OfShowHelp))
 	dlSave.SetTitle("保存")
 
 	btn = vcl.NewButton(mainForm)
@@ -136,7 +136,7 @@ func main() {
 	btn.SetParent(mainForm)
 	btn.SetCaption("SelectDirectory2")
 	btn.SetOnClick(func(vcl.IObject) {
-		options := rtl.Include(0, types.SdNewFolder, types.SdShowEdit, types.SdNewUI)
+		options := types.NewSet(types.SdNewFolder, types.SdShowEdit, types.SdNewUI)
 		if ok, dir := vcl.SelectDirectory2("标题了", "C:/", options, nil); ok {
 			fmt.Println("选择的目录为：", dir)
 		}
@@ -149,7 +149,7 @@ func main() {
 	findDialog := vcl.NewFindDialog(mainForm)
 	findDialog.SetOnFind(func(sender vcl.IObject) {
 		fmt.Println("FindText: ", findDialog.FindText())
-		opt := uint32(findDialog.Options())
+		opt := findDialog.Options()
 		/*
 			FrDown = iota + 0
 			FrFindNext
@@ -165,15 +165,15 @@ func main() {
 			FrWholeWord
 			FrShowHelp
 		*/
-		if rtl.InSets(opt, types.FrDown) {
+		if opt.In(types.FrDown) {
 			fmt.Println("向下")
 		} else {
 			fmt.Println("向上")
 		}
-		if rtl.InSets(opt, types.FrFindNext) {
+		if opt.In(types.FrFindNext) {
 			fmt.Println("查找下一个")
 		}
-		if rtl.InSets(opt, types.FrMatchCase) {
+		if opt.In(types.FrMatchCase) {
 			fmt.Println("区分大小写")
 		}
 	})
@@ -188,7 +188,7 @@ func main() {
 	replaceDialog := vcl.NewReplaceDialog(mainForm)
 	replaceDialog.SetOnFind(func(sender vcl.IObject) {
 		fmt.Println("FindText:", replaceDialog.FindText(), ", Relpace: ", replaceDialog.ReplaceText())
-		opt := uint32(replaceDialog.Options())
+		opt := replaceDialog.Options()
 		/*
 			FrDown = iota + 0
 			FrFindNext
@@ -204,25 +204,25 @@ func main() {
 			FrWholeWord
 			FrShowHelp
 		*/
-		if rtl.InSets(opt, types.FrDown) {
+		if opt.In(types.FrDown) {
 			fmt.Println("向下")
 		} else {
 			fmt.Println("向上")
 		}
-		if rtl.InSets(opt, types.FrFindNext) {
+		if opt.In(types.FrFindNext) {
 			fmt.Println("查找下一个")
 		}
-		if rtl.InSets(opt, types.FrMatchCase) {
+		if opt.In(types.FrMatchCase) {
 			fmt.Println("区分大小写")
 		}
 	})
 
 	replaceDialog.SetOnReplace(func(sender vcl.IObject) {
-		opt := uint32(replaceDialog.Options())
-		if rtl.InSets(opt, types.FrReplaceAll) {
+		opt := replaceDialog.Options()
+		if opt.In(types.FrReplaceAll) {
 			fmt.Println("替换全部")
 		}
-		if rtl.InSets(opt, types.FrReplace) {
+		if opt.In(types.FrReplace) {
 			fmt.Println("替换一次")
 		}
 		fmt.Println("替换字符：", replaceDialog.ReplaceText())

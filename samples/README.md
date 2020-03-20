@@ -12,7 +12,10 @@
 | customLibTest | 自定义加载指定位置的libvcl或者liblcl | |
 | draganddrop | 数据拖放 | |
 | draw | canvas自绘演示 | |
+| drawchart | 使用[Charts for Go](https://github.com/vdobler/chart)绘制图表并显示到GoVCL的控件上 | |
+| drawfilterusegift | 使用[Go Image Filtering Toolkit](https://github.com/disintegration/gift)处理图片滤镜并显示到GoVCL的控件上，演示视频见`drawfilterusegift/video.mp4` | |
 | drawrose | canvas自绘一朵玫瑰花 | |
+| drawusegg | 使用[Go Graphics - 2D](github.com/fogleman/gg)绘制并显示到GoVCL的控件上，演示视频见`drawusegg/video.mp4` | |
 | dropfiles | 鼠标拖放文件演示  | |
 | eventpublic | 控件事件的公用演示  | |
 | formEvents | 演示自动关联事件    |  |
@@ -28,10 +31,12 @@
 | jsonViewer | 将一段json数据以树的形式显示 |  |  
 | layout | 基础布局演示  | 部分限Windows |
 | listboxcustomdraw | ListBox部分自绘演示  | |
+| listboxcustomdraw2 | ListBox部分自绘演示  | |
 | listview | ListView部分功能演示  | 部分限Windows |
 | listviewadvcustomdraw | ListView高级自绘 | windows |  
-| listviewcustomdraw |  ListView部分自绘演示  | 部分限Windows |   
+| listviewcustomdraw |  ListView部分自绘演示  | 自绘部分限Windows,Group部分限libvcl |   
 | listviewitemedit |  用于双击项目直接编辑ListView数据。  | Windows |  
+| listviewvirtualdata | TListView虚拟数据，用于大数据显示 |   |
 | login |  登录窗口演示  | |   
 | markdownEd |  简单的markdown编辑器  | |   
 | memloaddll |  内存加载dll（单文件）  | Windows 32bit |   
@@ -45,6 +50,7 @@
 | multilanguage | 多国语言演示例程 | |  
 | myext | 为libvcl/liblcl扩展组件示例 | |  
 | notepad | 简单仿Windows记事本    |  |
+| nswindowTest | 一个macOS下无标题栏样式窗口（不是无边框窗口）   | macOS,cocoa  |
 | OSVersion | 系统版本信息获取    |  |
 | pageControlWizard | PageControl向导程序演示 | |  
 | printer | 打印机操作 | |  
@@ -66,11 +72,10 @@
 | sysdialog | 各种系统对话框演示  | |
 | syslocale | 本地化相关 | |
 | taskdialog | 任务对话框 | |
-| trayicon | 系统拖盘图标演示  | Windows  MacOS |
+| trayicon | 系统拖盘图标演示  | Windows  MacOS 部分linux |
 | treeview |  树型列表框演示  | |
 | treeview_checkbox |  树型列表框 + 复选框 演示  | windows,libvcl |
 | valuelisteditor |  键值编辑器 | |
-| virtuallistview | 虚拟试TListView，用于大数据显示 |   |
 | WindowsMessages | Windows下消息捕获    | Windows |
 | WindowsProcess | Windows进程列表    | Windows |
 | windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |

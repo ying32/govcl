@@ -34,36 +34,41 @@ func NewGraphic() *TGraphic {
     return g
 }
 
+// AsGraphic
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsGraphic(obj interface{}) *TGraphic {
+    g := new(TGraphic)
+    g.instance, g.ptr = getInstance(obj)
+    return g
+}
+
+// -------------------------- Deprecated begin --------------------------
 // GraphicFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsGraphic.
 func GraphicFromInst(inst uintptr) *TGraphic {
-    g := new(TGraphic)
-    g.instance = inst
-    g.ptr = unsafe.Pointer(inst)
-    return g
+    return AsGraphic(inst)
 }
 
 // GraphicFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsGraphic.
 func GraphicFromObj(obj IObject) *TGraphic {
-    g := new(TGraphic)
-    g.instance = CheckPtr(obj)
-    g.ptr = unsafe.Pointer(g.instance)
-    return g
+    return AsGraphic(obj)
 }
 
 // GraphicFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsGraphic.
 func GraphicFromUnsafePointer(ptr unsafe.Pointer) *TGraphic {
-    g := new(TGraphic)
-    g.instance = uintptr(ptr)
-    g.ptr = ptr
-    return g
+    return AsGraphic(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (g *TGraphic) UnsafeAddr() unsafe.Pointer {
 func (g *TGraphic) IsValid() bool {
     return g.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (g *TGraphic) Is() TIs {
+    return TIs(g.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (g *TGraphic) As() TAs {
+//    return TAs(g.instance)
+//}
 
 // TGraphicClass
 // CN: 获取类信息指针。

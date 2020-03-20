@@ -52,7 +52,7 @@ end;
 function DLibVersion: Cardinal; stdcall;
 begin
   // 共8位，2位2位的
-  Result := $01021000;
+  Result := $01020A00;
 end;
 
 // TApplication
@@ -494,7 +494,78 @@ procedure ImageList_GetIcon2(AObj: TImageList; Index: Integer; Image: TIcon; ADr
 begin
   AObj.GetIcon(Index, Image, ADrawingStyle, AImageType);
 end;
-	
+
+// TBitmap
+procedure Bitmap_Clear(AObj: TBitmap); stdcall;
+begin
+  // 有待实现
+  //AObj.Clear;
+end;
+
+procedure Bitmap_BeginUpdate(AObj: TBitmap; ACanvasOnly: LongBool); stdcall;
+begin
+  //AObj.BeginUpdate(ACanvasOnly);
+  // 不支持，fake
+end;
+
+procedure Bitmap_EndUpdate(AObj: TBitmap; AStreamIsValid: LongBool); stdcall;
+begin
+  //AObj.EndUpdate(AStreamIsValid);
+  // 不支持，fake
+end;
+
+procedure Bitmap_LoadFromDevice(AObj: TBitmap; ADc: HDC); stdcall;
+var
+  LCanvas: TCanvas;
+  LP: TPoint;
+  LhWnd: HWND;
+  LRect: TRect;
+  LBitmapInfo: Winapi.Windows.BITMAP;
+  LhBitmap: HBITMAP;
+begin
+  if ADc <= 0 then
+    Exit;
+  LP := TPoint.Zero;
+  case GetObjectType(ADc) of
+    OBJ_MEMDC:
+      begin
+        LhBitmap := GetCurrentObject(ADc, OBJ_BITMAP);
+        if LhBitmap <> 0 then
+        begin
+          GetObject(LhBitmap, SizeOf(BITMAP), @LBitmapInfo);
+          LP.x := LBitmapInfo.bmWidth;
+          LP.y := LBitmapInfo.bmHeight;
+        end;
+      end;
+    OBJ_DC:
+      begin
+        LhWnd := WindowFromDC(ADc);
+        if LhWnd <> 0 then
+        begin
+          if GetClientRect(LhWnd, LRect) then
+          begin
+            LP.x := LRect.Right;
+            LP.y := LRect.Bottom;
+          end;
+        end;
+      end;
+  else
+    Exit;
+  end;
+  if not LP.IsZero then
+  begin
+    LCanvas := TCanvas.Create;
+    try
+      LCanvas.Handle := ADc;
+      AObj.AlphaFormat := TAlphaFormat.afDefined;
+      AObj.PixelFormat := pf32bit;
+      AObj.SetSize(LP.X, LP.Y);
+      AObj.Canvas.CopyRect(Rect(0, 0, LP.X, LP.Y), LCanvas, Rect(0, 0, LP.X, LP.Y));
+    finally
+      LCanvas.Free;
+    end;
+  end;
+end;
  
 // Other
 
@@ -761,7 +832,7 @@ type
   end;
 
 const
-  GLibResouces: array[0..28] of TResItem = (
+  GLibResouces: array[0..35] of TResItem = (
     (Name: 'SOpenFileTitle'; ValuePtr: @SOpenFileTitle),
     (Name: 'SOKButton'; ValuePtr: @SOKButton),
     (Name: 'SCancelButton'; ValuePtr: @SCancelButton),
@@ -790,8 +861,14 @@ const
     (Name: 'SMsgDlgAll'; ValuePtr: @SMsgDlgAll),
     (Name: 'SMsgDlgNoToAll'; ValuePtr: @SMsgDlgNoToAll),
     (Name: 'SMsgDlgYesToAll'; ValuePtr: @SMsgDlgYesToAll),
-    (Name: 'SMsgDlgClose'; ValuePtr: @SMsgDlgClose)
-
+    (Name: 'SMsgDlgClose'; ValuePtr: @SMsgDlgClose),
+    (Name: 'SSelectDirCap'; ValuePtr: @SSelectDirCap),
+    (Name: 'SDirNameCap'; ValuePtr: @SDirNameCap),
+    (Name: 'SDrivesCap'; ValuePtr: @SDrivesCap),
+    (Name: 'SDirsCap'; ValuePtr: @SDirsCap),
+    (Name: 'SFilesCap'; ValuePtr: @SFilesCap),
+    (Name: 'SNetworkCap'; ValuePtr: @SNetworkCap),
+    (Name: 'SEncodingLabel'; ValuePtr: @SEncodingLabel)
   );
 
 function DGetLibResouceCount: Integer; stdcall;
@@ -1124,6 +1201,12 @@ exports
   ImageList_DrawOverlay2,
   ImageList_GetIcon1,
   ImageList_GetIcon2,
+
+  // TBitmap
+  Bitmap_Clear,
+  Bitmap_BeginUpdate,
+  Bitmap_EndUpdate,
+  Bitmap_LoadFromDevice,
 
   // TStyleManager
   StyleManager_IsValidStyle,

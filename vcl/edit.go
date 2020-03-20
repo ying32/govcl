@@ -34,36 +34,41 @@ func NewEdit(owner IComponent) *TEdit {
     return e
 }
 
+// AsEdit
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsEdit(obj interface{}) *TEdit {
+    e := new(TEdit)
+    e.instance, e.ptr = getInstance(obj)
+    return e
+}
+
+// -------------------------- Deprecated begin --------------------------
 // EditFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsEdit.
 func EditFromInst(inst uintptr) *TEdit {
-    e := new(TEdit)
-    e.instance = inst
-    e.ptr = unsafe.Pointer(inst)
-    return e
+    return AsEdit(inst)
 }
 
 // EditFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsEdit.
 func EditFromObj(obj IObject) *TEdit {
-    e := new(TEdit)
-    e.instance = CheckPtr(obj)
-    e.ptr = unsafe.Pointer(e.instance)
-    return e
+    return AsEdit(obj)
 }
 
 // EditFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsEdit.
 func EditFromUnsafePointer(ptr unsafe.Pointer) *TEdit {
-    e := new(TEdit)
-    e.instance = uintptr(ptr)
-    e.ptr = ptr
-    return e
+    return AsEdit(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (e *TEdit) UnsafeAddr() unsafe.Pointer {
 func (e *TEdit) IsValid() bool {
     return e.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (e *TEdit) Is() TIs {
+    return TIs(e.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (e *TEdit) As() TAs {
+//    return TAs(e.instance)
+//}
 
 // TEditClass
 // CN: 获取类信息指针。
@@ -182,7 +201,7 @@ func (e *TEdit) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (e *TEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(Edit_ControlAtPos(e.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Edit_ControlAtPos(e.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -203,7 +222,7 @@ func (e *TEdit) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (e *TEdit) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(Edit_FindChildControl(e.instance, ControlName))
+    return AsControl(Edit_FindChildControl(e.instance, ControlName))
 }
 
 // FlipChildren
@@ -418,7 +437,7 @@ func (e *TEdit) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (e *TEdit) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Edit_FindComponent(e.instance, AName))
+    return AsComponent(Edit_FindComponent(e.instance, AName))
 }
 
 // GetNamePath
@@ -651,7 +670,7 @@ func (e *TEdit) SetColor(value TColor) {
 
 // Constraints
 func (e *TEdit) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Edit_GetConstraints(e.instance))
+    return AsSizeConstraints(Edit_GetConstraints(e.instance))
 }
 
 // SetConstraints
@@ -743,7 +762,7 @@ func (e *TEdit) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (e *TEdit) Font() *TFont {
-    return FontFromInst(Edit_GetFont(e.instance))
+    return AsFont(Edit_GetFont(e.instance))
 }
 
 // SetFont
@@ -875,7 +894,7 @@ func (e *TEdit) SetPasswordChar(value uint16) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (e *TEdit) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Edit_GetPopupMenu(e.instance))
+    return AsPopupMenu(Edit_GetPopupMenu(e.instance))
 }
 
 // SetPopupMenu
@@ -1256,7 +1275,7 @@ func (e *TEdit) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (e *TEdit) Brush() *TBrush {
-    return BrushFromInst(Edit_GetBrush(e.instance))
+    return AsBrush(Edit_GetBrush(e.instance))
 }
 
 // ControlCount
@@ -1303,7 +1322,7 @@ func (e *TEdit) SetUseDockManager(value bool) {
 
 // Action
 func (e *TEdit) Action() *TAction {
-    return ActionFromInst(Edit_GetAction(e.instance))
+    return AsAction(Edit_GetAction(e.instance))
 }
 
 // SetAction
@@ -1418,7 +1437,7 @@ func (e *TEdit) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (e *TEdit) Parent() *TWinControl {
-    return WinControlFromInst(Edit_GetParent(e.instance))
+    return AsWinControl(Edit_GetParent(e.instance))
 }
 
 // SetParent
@@ -1530,7 +1549,7 @@ func (e *TEdit) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (e *TEdit) Margins() *TMargins {
-    return MarginsFromInst(Edit_GetMargins(e.instance))
+    return AsMargins(Edit_GetMargins(e.instance))
 }
 
 // SetMargins
@@ -1544,7 +1563,7 @@ func (e *TEdit) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (e *TEdit) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Edit_GetCustomHint(e.instance))
+    return AsCustomHint(Edit_GetCustomHint(e.instance))
 }
 
 // SetCustomHint
@@ -1579,7 +1598,7 @@ func (e *TEdit) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (e *TEdit) Owner() *TComponent {
-    return ComponentFromInst(Edit_GetOwner(e.instance))
+    return AsComponent(Edit_GetOwner(e.instance))
 }
 
 // Name
@@ -1614,20 +1633,20 @@ func (e *TEdit) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (e *TEdit) DockClients(Index int32) *TControl {
-    return ControlFromInst(Edit_GetDockClients(e.instance, Index))
+    return AsControl(Edit_GetDockClients(e.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (e *TEdit) Controls(Index int32) *TControl {
-    return ControlFromInst(Edit_GetControls(e.instance, Index))
+    return AsControl(Edit_GetControls(e.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (e *TEdit) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Edit_GetComponents(e.instance, AIndex))
+    return AsComponent(Edit_GetComponents(e.instance, AIndex))
 }
 

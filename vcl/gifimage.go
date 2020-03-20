@@ -34,36 +34,41 @@ func NewGIFImage() *TGIFImage {
     return g
 }
 
+// AsGIFImage
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsGIFImage(obj interface{}) *TGIFImage {
+    g := new(TGIFImage)
+    g.instance, g.ptr = getInstance(obj)
+    return g
+}
+
+// -------------------------- Deprecated begin --------------------------
 // GIFImageFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsGIFImage.
 func GIFImageFromInst(inst uintptr) *TGIFImage {
-    g := new(TGIFImage)
-    g.instance = inst
-    g.ptr = unsafe.Pointer(inst)
-    return g
+    return AsGIFImage(inst)
 }
 
 // GIFImageFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsGIFImage.
 func GIFImageFromObj(obj IObject) *TGIFImage {
-    g := new(TGIFImage)
-    g.instance = CheckPtr(obj)
-    g.ptr = unsafe.Pointer(g.instance)
-    return g
+    return AsGIFImage(obj)
 }
 
 // GIFImageFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsGIFImage.
 func GIFImageFromUnsafePointer(ptr unsafe.Pointer) *TGIFImage {
-    g := new(TGIFImage)
-    g.instance = uintptr(ptr)
-    g.ptr = ptr
-    return g
+    return AsGIFImage(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (g *TGIFImage) IsValid() bool {
     return g.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (g *TGIFImage) Is() TIs {
+    return TIs(g.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (g *TGIFImage) As() TAs {
+//    return TAs(g.instance)
+//}
+
 // TGIFImageClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -119,7 +138,7 @@ func (g *TGIFImage) LoadFromStream(Stream IObject) {
 
 // Add
 func (g *TGIFImage) Add(Source IObject) *TGIFFrame {
-    return GIFFrameFromInst(GIFImage_Add(g.instance, CheckPtr(Source)))
+    return AsGIFFrame(GIFImage_Add(g.instance, CheckPtr(Source)))
 }
 
 // Clear
@@ -280,7 +299,7 @@ func (g *TGIFImage) SetAnimationSpeed(value int32) {
 
 // Bitmap
 func (g *TGIFImage) Bitmap() *TBitmap {
-    return BitmapFromInst(GIFImage_GetBitmap(g.instance))
+    return AsBitmap(GIFImage_GetBitmap(g.instance))
 }
 
 // SetOnPaint

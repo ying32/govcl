@@ -5,7 +5,6 @@ package main
 import (
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/types/colors"
 )
@@ -35,13 +34,13 @@ func main() {
 
 	richEdit.SetSelStart(9)
 	richEdit.SetSelLength(2)
-	style := rtl.Include(0, types.FsBold)
-	richEdit.SelAttributes().SetStyle(style)
+
+	richEdit.SelAttributes().SetStyle(types.NewSet(types.FsBold))
 
 	richEdit.SetSelStart(12)
 	richEdit.SetSelLength(2)
-	style = rtl.Include(0, types.FsItalic)
-	richEdit.SelAttributes().SetStyle(style)
+
+	richEdit.SelAttributes().SetStyle(types.NewSet(types.FsItalic))
 
 	richEdit.SetSelStart(15)
 

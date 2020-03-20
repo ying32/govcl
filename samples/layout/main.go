@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
@@ -163,24 +165,21 @@ func main() {
 	btn.SetParent(sheet)
 	btn.SetCaption("右")
 	btn.SetLeft(w - btn.Width() - 10)
-	a := types.TAnchors(rtl.Include(0, types.AkTop, types.AkRight))
-	btn.SetAnchors(a)
+	btn.SetAnchors(types.NewSet(types.AkTop, types.AkRight))
 
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(sheet)
 	btn.SetCaption("左下")
 	btn.SetLeft(10)
 	btn.SetTop(h - btn.Height() - 10)
-	a = types.TAnchors(rtl.Include(0, types.AkLeft, types.AkBottom))
-	btn.SetAnchors(a)
+	btn.SetAnchors(types.NewSet(types.AkLeft, types.AkBottom))
 
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(sheet)
 	btn.SetCaption("右下")
 	btn.SetLeft(w - btn.Width() - 10)
 	btn.SetTop(h - btn.Height() - 10)
-	a = types.TAnchors(rtl.Include(0, types.AkRight, types.AkBottom))
-	btn.SetAnchors(a)
+	btn.SetAnchors(types.NewSet(types.AkRight, types.AkBottom))
 
 	//----------------------------------Margins----------------------------------
 
@@ -208,5 +207,40 @@ func main() {
 	m.SetBottom(40)
 	m.SetRight(50)
 
+	//----------------------------------OnAlignPosition----------------------------------
+
+	sheet = vcl.NewTabSheet(mainForm)
+	sheet.SetPageControl(pgc)
+	sheet.SetCaption("Align = alCustom = OnAlignPosition")
+
+	pnl = vcl.NewPanel(mainForm)
+	pnl.SetParent(sheet)
+	pnl.SetAlign(types.AlClient)
+	// 子控件如果有设置为AlCustom的，则会触发这个事件
+	pnl.SetOnAlignPosition(onCustomAlignPosiion)
+
+	pnl2 := vcl.NewPanel(mainForm)
+	pnl2.SetParent(pnl)
+	pnl2.SetAlign(types.AlCustom)
+	pnl2.SetBounds(10, 10, 300, 300)
+	// 子控件如果有设置为AlCustom的，则会触发这个事件
+	pnl2.SetOnAlignPosition(onCustomAlignPosiion)
+
+	btn = vcl.NewButton(mainForm)
+	btn.SetParent(pnl2)
+	btn.SetAlign(types.AlCustom) // 自定义
+	btn.SetCaption("按钮。")
+
 	vcl.Application.Run()
+}
+
+// sender 调用此事件的控件
+// control 被调整的控件
+// newLeft, newTop, newWidth, newHeight 保存被调整的控件原始位置和大小
+// alignRect 保存对齐的矩形范围
+// alignInfo 对齐信息
+func onCustomAlignPosiion(sender *vcl.TWinControl, control *vcl.TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *types.TRect, alignInfo types.TAlignInfo) {
+	*newLeft = (alignRect.Width() - *newWidth) / 2
+	*newTop = (alignRect.Height() - *newHeight) / 2
+	fmt.Println(*newLeft, *newTop)
 }

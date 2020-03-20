@@ -86,7 +86,7 @@ func fullListViewDataAndSetEvent(lv *vcl.TListView, trainData *TTrainSearchResul
 	lv.SetOnColumnClick(lvTraiColumnClick)
 	lv.SetOnCompare(lvTraiCompare)
 	lv.SetOnClick(func(sender vcl.IObject) {
-		sel := vcl.ListViewFromObj(sender).Selected()
+		sel := vcl.AsListView(sender).Selected()
 		if sel.IsValid() {
 			fmt.Println("select, index:", sel.Index(), ", caption:", sel.Caption(), ", data:", sel.Data())
 		}
@@ -141,8 +141,8 @@ func lvTraiAdvancedCustomDrawItem(sender *vcl.TListView, item *vcl.TListItem, st
 // 柱头单击
 func lvTraiColumnClick(sender vcl.IObject, column *vcl.TListColumn) {
 	fSortOrder = !fSortOrder
-	//vcl.ListViewFromObj(sender).AlphaSort()
-	vcl.ListViewFromObj(sender).CustomSort(0, int(column.Index()))
+	//vcl.AsListView(sender).AlphaSort()
+	vcl.AsListView(sender).CustomSort(0, int(column.Index()))
 }
 
 // 排序

@@ -72,7 +72,7 @@ func main() {
 // 两个按钮使用同一个事件回调,Delphi里称为方法(method)
 func buttonOnClick(sender vcl.IObject) {
 	// 这里就可以根据sender去做选择了
-	btn := vcl.ButtonFromObj(sender)
+	btn := vcl.AsButton(sender)
 	switch btn.Tag() {
 	case 1:
 		fmt.Println("按钮1的")
@@ -84,12 +84,12 @@ func buttonOnClick(sender vcl.IObject) {
 
 func pnlOnMouseEnter(sender vcl.IObject) {
 	fmt.Println("鼠标进入")
-	pnl := vcl.PanelFromObj(sender)
+	pnl := vcl.AsPanel(sender)
 	pnl.SetLeft(pnl.Left() + 10)
 }
 
 func pnlOnMouseLeave(sender vcl.IObject) {
 	fmt.Println("鼠标离开")
-	pnl := vcl.PanelFromObj(sender)
+	pnl := vcl.AsPanel(sender)
 	pnl.SetLeft(pnl.Left() - 10)
 }

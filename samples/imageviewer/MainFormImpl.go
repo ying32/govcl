@@ -247,7 +247,7 @@ func (f *TMainForm) loadImage(aFileName string) {
 
 	// libvcl下可以动的gif
 	if !rtl.LcLLoaded() && f.ImgViewer.Picture().Graphic().ClassName() == "TGIFImage" {
-		vcl.GIFImageFromObj(f.ImgViewer.Picture().Graphic()).SetAnimate(true)
+		vcl.AsGIFImage(f.ImgViewer.Picture().Graphic()).SetAnimate(true)
 	}
 
 	// 获取本目录下的文件名

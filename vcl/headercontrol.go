@@ -34,36 +34,41 @@ func NewHeaderControl(owner IComponent) *THeaderControl {
     return h
 }
 
+// AsHeaderControl
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsHeaderControl(obj interface{}) *THeaderControl {
+    h := new(THeaderControl)
+    h.instance, h.ptr = getInstance(obj)
+    return h
+}
+
+// -------------------------- Deprecated begin --------------------------
 // HeaderControlFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsHeaderControl.
 func HeaderControlFromInst(inst uintptr) *THeaderControl {
-    h := new(THeaderControl)
-    h.instance = inst
-    h.ptr = unsafe.Pointer(inst)
-    return h
+    return AsHeaderControl(inst)
 }
 
 // HeaderControlFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsHeaderControl.
 func HeaderControlFromObj(obj IObject) *THeaderControl {
-    h := new(THeaderControl)
-    h.instance = CheckPtr(obj)
-    h.ptr = unsafe.Pointer(h.instance)
-    return h
+    return AsHeaderControl(obj)
 }
 
 // HeaderControlFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsHeaderControl.
 func HeaderControlFromUnsafePointer(ptr unsafe.Pointer) *THeaderControl {
-    h := new(THeaderControl)
-    h.instance = uintptr(ptr)
-    h.ptr = ptr
-    return h
+    return AsHeaderControl(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (h *THeaderControl) IsValid() bool {
     return h.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (h *THeaderControl) Is() TIs {
+    return TIs(h.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (h *THeaderControl) As() TAs {
+//    return TAs(h.instance)
+//}
+
 // THeaderControlClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -126,7 +145,7 @@ func (h *THeaderControl) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (h *THeaderControl) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(HeaderControl_ControlAtPos(h.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(HeaderControl_ControlAtPos(h.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -147,7 +166,7 @@ func (h *THeaderControl) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (h *THeaderControl) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(HeaderControl_FindChildControl(h.instance, ControlName))
+    return AsControl(HeaderControl_FindChildControl(h.instance, ControlName))
 }
 
 // Focused
@@ -357,7 +376,7 @@ func (h *THeaderControl) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (h *THeaderControl) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(HeaderControl_FindComponent(h.instance, AName))
+    return AsComponent(HeaderControl_FindComponent(h.instance, AName))
 }
 
 // GetNamePath
@@ -556,7 +575,7 @@ func (h *THeaderControl) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (h *THeaderControl) Font() *TFont {
-    return FontFromInst(HeaderControl_GetFont(h.instance))
+    return AsFont(HeaderControl_GetFont(h.instance))
 }
 
 // SetFont
@@ -590,7 +609,7 @@ func (h *THeaderControl) SetHotTrack(value bool) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (h *THeaderControl) Images() *TImageList {
-    return ImageListFromInst(HeaderControl_GetImages(h.instance))
+    return AsImageList(HeaderControl_GetImages(h.instance))
 }
 
 // SetImages
@@ -602,12 +621,22 @@ func (h *THeaderControl) SetImages(value IComponent) {
 
 // Constraints
 func (h *THeaderControl) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(HeaderControl_GetConstraints(h.instance))
+    return AsSizeConstraints(HeaderControl_GetConstraints(h.instance))
 }
 
 // SetConstraints
 func (h *THeaderControl) SetConstraints(value *TSizeConstraints) {
     HeaderControl_SetConstraints(h.instance, CheckPtr(value))
+}
+
+// Sections
+func (h *THeaderControl) Sections() *THeaderSections {
+    return AsHeaderSections(HeaderControl_GetSections(h.instance))
+}
+
+// SetSections
+func (h *THeaderControl) SetSections(value *THeaderSections) {
+    HeaderControl_SetSections(h.instance, CheckPtr(value))
 }
 
 // ShowHint
@@ -676,7 +705,7 @@ func (h *THeaderControl) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (h *THeaderControl) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(HeaderControl_GetPopupMenu(h.instance))
+    return AsPopupMenu(HeaderControl_GetPopupMenu(h.instance))
 }
 
 // SetPopupMenu
@@ -842,7 +871,7 @@ func (h *THeaderControl) SetOnStartDock(fn TStartDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (h *THeaderControl) Canvas() *TCanvas {
-    return CanvasFromInst(HeaderControl_GetCanvas(h.instance))
+    return AsCanvas(HeaderControl_GetCanvas(h.instance))
 }
 
 // SetOnSectionCheck
@@ -896,7 +925,7 @@ func (h *THeaderControl) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (h *THeaderControl) Brush() *TBrush {
-    return BrushFromInst(HeaderControl_GetBrush(h.instance))
+    return AsBrush(HeaderControl_GetBrush(h.instance))
 }
 
 // ControlCount
@@ -971,7 +1000,7 @@ func (h *THeaderControl) SetUseDockManager(value bool) {
 
 // Action
 func (h *THeaderControl) Action() *TAction {
-    return ActionFromInst(HeaderControl_GetAction(h.instance))
+    return AsAction(HeaderControl_GetAction(h.instance))
 }
 
 // SetAction
@@ -1086,7 +1115,7 @@ func (h *THeaderControl) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (h *THeaderControl) Parent() *TWinControl {
-    return WinControlFromInst(HeaderControl_GetParent(h.instance))
+    return AsWinControl(HeaderControl_GetParent(h.instance))
 }
 
 // SetParent
@@ -1198,7 +1227,7 @@ func (h *THeaderControl) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (h *THeaderControl) Margins() *TMargins {
-    return MarginsFromInst(HeaderControl_GetMargins(h.instance))
+    return AsMargins(HeaderControl_GetMargins(h.instance))
 }
 
 // SetMargins
@@ -1212,7 +1241,7 @@ func (h *THeaderControl) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (h *THeaderControl) CustomHint() *TCustomHint {
-    return CustomHintFromInst(HeaderControl_GetCustomHint(h.instance))
+    return AsCustomHint(HeaderControl_GetCustomHint(h.instance))
 }
 
 // SetCustomHint
@@ -1247,7 +1276,7 @@ func (h *THeaderControl) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (h *THeaderControl) Owner() *TComponent {
-    return ComponentFromInst(HeaderControl_GetOwner(h.instance))
+    return AsComponent(HeaderControl_GetOwner(h.instance))
 }
 
 // Name
@@ -1282,20 +1311,20 @@ func (h *THeaderControl) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (h *THeaderControl) DockClients(Index int32) *TControl {
-    return ControlFromInst(HeaderControl_GetDockClients(h.instance, Index))
+    return AsControl(HeaderControl_GetDockClients(h.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (h *THeaderControl) Controls(Index int32) *TControl {
-    return ControlFromInst(HeaderControl_GetControls(h.instance, Index))
+    return AsControl(HeaderControl_GetControls(h.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (h *THeaderControl) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(HeaderControl_GetComponents(h.instance, AIndex))
+    return AsComponent(HeaderControl_GetComponents(h.instance, AIndex))
 }
 

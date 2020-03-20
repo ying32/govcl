@@ -34,36 +34,41 @@ func NewRadioButton(owner IComponent) *TRadioButton {
     return r
 }
 
+// AsRadioButton
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsRadioButton(obj interface{}) *TRadioButton {
+    r := new(TRadioButton)
+    r.instance, r.ptr = getInstance(obj)
+    return r
+}
+
+// -------------------------- Deprecated begin --------------------------
 // RadioButtonFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsRadioButton.
 func RadioButtonFromInst(inst uintptr) *TRadioButton {
-    r := new(TRadioButton)
-    r.instance = inst
-    r.ptr = unsafe.Pointer(inst)
-    return r
+    return AsRadioButton(inst)
 }
 
 // RadioButtonFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsRadioButton.
 func RadioButtonFromObj(obj IObject) *TRadioButton {
-    r := new(TRadioButton)
-    r.instance = CheckPtr(obj)
-    r.ptr = unsafe.Pointer(r.instance)
-    return r
+    return AsRadioButton(obj)
 }
 
 // RadioButtonFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsRadioButton.
 func RadioButtonFromUnsafePointer(ptr unsafe.Pointer) *TRadioButton {
-    r := new(TRadioButton)
-    r.instance = uintptr(ptr)
-    r.ptr = ptr
-    return r
+    return AsRadioButton(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (r *TRadioButton) IsValid() bool {
     return r.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (r *TRadioButton) Is() TIs {
+    return TIs(r.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (r *TRadioButton) As() TAs {
+//    return TAs(r.instance)
+//}
+
 // TRadioButtonClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -121,7 +140,7 @@ func (r *TRadioButton) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (r *TRadioButton) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(RadioButton_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(RadioButton_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -142,7 +161,7 @@ func (r *TRadioButton) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (r *TRadioButton) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(RadioButton_FindChildControl(r.instance, ControlName))
+    return AsControl(RadioButton_FindChildControl(r.instance, ControlName))
 }
 
 // FlipChildren
@@ -357,7 +376,7 @@ func (r *TRadioButton) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (r *TRadioButton) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(RadioButton_FindComponent(r.instance, AName))
+    return AsComponent(RadioButton_FindComponent(r.instance, AName))
 }
 
 // GetNamePath
@@ -432,7 +451,7 @@ func (r *TRadioButton) ToString() string {
 
 // Action
 func (r *TRadioButton) Action() *TAction {
-    return ActionFromInst(RadioButton_GetAction(r.instance))
+    return AsAction(RadioButton_GetAction(r.instance))
 }
 
 // SetAction
@@ -536,7 +555,7 @@ func (r *TRadioButton) SetColor(value TColor) {
 
 // Constraints
 func (r *TRadioButton) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(RadioButton_GetConstraints(r.instance))
+    return AsSizeConstraints(RadioButton_GetConstraints(r.instance))
 }
 
 // SetConstraints
@@ -628,7 +647,7 @@ func (r *TRadioButton) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (r *TRadioButton) Font() *TFont {
-    return FontFromInst(RadioButton_GetFont(r.instance))
+    return AsFont(RadioButton_GetFont(r.instance))
 }
 
 // SetFont
@@ -704,7 +723,7 @@ func (r *TRadioButton) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (r *TRadioButton) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(RadioButton_GetPopupMenu(r.instance))
+    return AsPopupMenu(RadioButton_GetPopupMenu(r.instance))
 }
 
 // SetPopupMenu
@@ -973,7 +992,7 @@ func (r *TRadioButton) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (r *TRadioButton) Brush() *TBrush {
-    return BrushFromInst(RadioButton_GetBrush(r.instance))
+    return AsBrush(RadioButton_GetBrush(r.instance))
 }
 
 // ControlCount
@@ -1125,7 +1144,7 @@ func (r *TRadioButton) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (r *TRadioButton) Parent() *TWinControl {
-    return WinControlFromInst(RadioButton_GetParent(r.instance))
+    return AsWinControl(RadioButton_GetParent(r.instance))
 }
 
 // SetParent
@@ -1242,7 +1261,7 @@ func (r *TRadioButton) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (r *TRadioButton) Margins() *TMargins {
-    return MarginsFromInst(RadioButton_GetMargins(r.instance))
+    return AsMargins(RadioButton_GetMargins(r.instance))
 }
 
 // SetMargins
@@ -1256,7 +1275,7 @@ func (r *TRadioButton) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (r *TRadioButton) CustomHint() *TCustomHint {
-    return CustomHintFromInst(RadioButton_GetCustomHint(r.instance))
+    return AsCustomHint(RadioButton_GetCustomHint(r.instance))
 }
 
 // SetCustomHint
@@ -1291,7 +1310,7 @@ func (r *TRadioButton) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (r *TRadioButton) Owner() *TComponent {
-    return ComponentFromInst(RadioButton_GetOwner(r.instance))
+    return AsComponent(RadioButton_GetOwner(r.instance))
 }
 
 // Name
@@ -1326,20 +1345,20 @@ func (r *TRadioButton) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRadioButton) DockClients(Index int32) *TControl {
-    return ControlFromInst(RadioButton_GetDockClients(r.instance, Index))
+    return AsControl(RadioButton_GetDockClients(r.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (r *TRadioButton) Controls(Index int32) *TControl {
-    return ControlFromInst(RadioButton_GetControls(r.instance, Index))
+    return AsControl(RadioButton_GetControls(r.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (r *TRadioButton) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(RadioButton_GetComponents(r.instance, AIndex))
+    return AsComponent(RadioButton_GetComponents(r.instance, AIndex))
 }
 

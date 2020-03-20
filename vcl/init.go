@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -34,6 +32,9 @@ var (
 )
 
 func toVersionString(ver uint32) string {
+	if byte(ver) == 0 {
+		return fmt.Sprintf("%d.%d.%d", byte(ver>>24), byte(ver>>16), byte(ver>>8))
+	}
 	return fmt.Sprintf("%d.%d.%d.%d", byte(ver>>24), byte(ver>>16), byte(ver>>8), byte(ver))
 }
 
@@ -47,7 +48,7 @@ func init() {
 	libVersion := DLibVersion()
 	fmt.Println("Library Version:", toVersionString(libVersion))
 	if libVersion < requireMinBinaryVersion {
-		panic("要求libvcl或liblcl二进制版本>=1.2.6。\r\n(Require libvcl or liblcl binary version >=1.2.6.)")
+		panic("Require libvcl or liblcl binary version >=1.2.6.")
 	}
 	// 这个似乎得默认加上，锁定主线程，防止中间被改变
 	runtime.LockOSThread()
@@ -59,11 +60,11 @@ func init() {
 	SetThreadSyncCallback(threadSyncCallback)
 
 	// 导入几个实例类
-	Application = ApplicationFromInst(Application_Instance())
-	Screen = ScreenFromInst(Screen_Instance())
-	Mouse = MouseFromInst(Mouse_Instance())
-	Clipboard = ClipboardFromInst(Clipboard_Instance())
-	Printer = PrinterFromInst(Printer_Instance())
+	Application = AsApplication(Application_Instance())
+	Screen = AsScreen(Screen_Instance())
+	Mouse = AsMouse(Mouse_Instance())
+	Clipboard = AsClipboard(Clipboard_Instance())
+	Printer = AsPrinter(Printer_Instance())
 
 	// 尝试加载ICON，仅Windows下有效，尝试加载名为MAINICON的图标
 	tryLoadAppIcon()

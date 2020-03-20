@@ -34,36 +34,41 @@ func NewProgressBar(owner IComponent) *TProgressBar {
     return p
 }
 
+// AsProgressBar
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsProgressBar(obj interface{}) *TProgressBar {
+    p := new(TProgressBar)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ProgressBarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsProgressBar.
 func ProgressBarFromInst(inst uintptr) *TProgressBar {
-    p := new(TProgressBar)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsProgressBar(inst)
 }
 
 // ProgressBarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsProgressBar.
 func ProgressBarFromObj(obj IObject) *TProgressBar {
-    p := new(TProgressBar)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsProgressBar(obj)
 }
 
 // ProgressBarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsProgressBar.
 func ProgressBarFromUnsafePointer(ptr unsafe.Pointer) *TProgressBar {
-    p := new(TProgressBar)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsProgressBar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (p *TProgressBar) UnsafeAddr() unsafe.Pointer {
 func (p *TProgressBar) IsValid() bool {
     return p.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (p *TProgressBar) Is() TIs {
+    return TIs(p.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (p *TProgressBar) As() TAs {
+//    return TAs(p.instance)
+//}
 
 // TProgressBarClass
 // CN: 获取类信息指针。
@@ -131,7 +150,7 @@ func (p *TProgressBar) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (p *TProgressBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ProgressBar_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ProgressBar_ControlAtPos(p.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -152,7 +171,7 @@ func (p *TProgressBar) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (p *TProgressBar) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ProgressBar_FindChildControl(p.instance, ControlName))
+    return AsControl(ProgressBar_FindChildControl(p.instance, ControlName))
 }
 
 // FlipChildren
@@ -367,7 +386,7 @@ func (p *TProgressBar) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (p *TProgressBar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ProgressBar_FindComponent(p.instance, AName))
+    return AsComponent(ProgressBar_FindComponent(p.instance, AName))
 }
 
 // GetNamePath
@@ -568,7 +587,7 @@ func (p *TProgressBar) SetHint(value string) {
 
 // Constraints
 func (p *TProgressBar) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ProgressBar_GetConstraints(p.instance))
+    return AsSizeConstraints(ProgressBar_GetConstraints(p.instance))
 }
 
 // SetConstraints
@@ -634,7 +653,7 @@ func (p *TProgressBar) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (p *TProgressBar) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ProgressBar_GetPopupMenu(p.instance))
+    return AsPopupMenu(ProgressBar_GetPopupMenu(p.instance))
 }
 
 // SetPopupMenu
@@ -951,7 +970,7 @@ func (p *TProgressBar) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (p *TProgressBar) Brush() *TBrush {
-    return BrushFromInst(ProgressBar_GetBrush(p.instance))
+    return AsBrush(ProgressBar_GetBrush(p.instance))
 }
 
 // ControlCount
@@ -998,7 +1017,7 @@ func (p *TProgressBar) SetUseDockManager(value bool) {
 
 // Action
 func (p *TProgressBar) Action() *TAction {
-    return ActionFromInst(ProgressBar_GetAction(p.instance))
+    return AsAction(ProgressBar_GetAction(p.instance))
 }
 
 // SetAction
@@ -1123,7 +1142,7 @@ func (p *TProgressBar) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (p *TProgressBar) Parent() *TWinControl {
-    return WinControlFromInst(ProgressBar_GetParent(p.instance))
+    return AsWinControl(ProgressBar_GetParent(p.instance))
 }
 
 // SetParent
@@ -1221,7 +1240,7 @@ func (p *TProgressBar) SetCursor(value TCursor) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (p *TProgressBar) Margins() *TMargins {
-    return MarginsFromInst(ProgressBar_GetMargins(p.instance))
+    return AsMargins(ProgressBar_GetMargins(p.instance))
 }
 
 // SetMargins
@@ -1235,7 +1254,7 @@ func (p *TProgressBar) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (p *TProgressBar) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ProgressBar_GetCustomHint(p.instance))
+    return AsCustomHint(ProgressBar_GetCustomHint(p.instance))
 }
 
 // SetCustomHint
@@ -1270,7 +1289,7 @@ func (p *TProgressBar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (p *TProgressBar) Owner() *TComponent {
-    return ComponentFromInst(ProgressBar_GetOwner(p.instance))
+    return AsComponent(ProgressBar_GetOwner(p.instance))
 }
 
 // Name
@@ -1305,20 +1324,20 @@ func (p *TProgressBar) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (p *TProgressBar) DockClients(Index int32) *TControl {
-    return ControlFromInst(ProgressBar_GetDockClients(p.instance, Index))
+    return AsControl(ProgressBar_GetDockClients(p.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (p *TProgressBar) Controls(Index int32) *TControl {
-    return ControlFromInst(ProgressBar_GetControls(p.instance, Index))
+    return AsControl(ProgressBar_GetControls(p.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TProgressBar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ProgressBar_GetComponents(p.instance, AIndex))
+    return AsComponent(ProgressBar_GetComponents(p.instance, AIndex))
 }
 

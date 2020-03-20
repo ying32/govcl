@@ -34,36 +34,41 @@ func NewToolBar(owner IComponent) *TToolBar {
     return t
 }
 
+// AsToolBar
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsToolBar(obj interface{}) *TToolBar {
+    t := new(TToolBar)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ToolBarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsToolBar.
 func ToolBarFromInst(inst uintptr) *TToolBar {
-    t := new(TToolBar)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsToolBar(inst)
 }
 
 // ToolBarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsToolBar.
 func ToolBarFromObj(obj IObject) *TToolBar {
-    t := new(TToolBar)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsToolBar(obj)
 }
 
 // ToolBarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsToolBar.
 func ToolBarFromUnsafePointer(ptr unsafe.Pointer) *TToolBar {
-    t := new(TToolBar)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsToolBar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (t *TToolBar) IsValid() bool {
     return t.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TToolBar) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TToolBar) As() TAs {
+//    return TAs(t.instance)
+//}
+
 // TToolBarClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -126,7 +145,7 @@ func (t *TToolBar) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (t *TToolBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ToolBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ToolBar_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -147,7 +166,7 @@ func (t *TToolBar) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (t *TToolBar) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ToolBar_FindChildControl(t.instance, ControlName))
+    return AsControl(ToolBar_FindChildControl(t.instance, ControlName))
 }
 
 // Focused
@@ -357,7 +376,7 @@ func (t *TToolBar) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TToolBar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ToolBar_FindComponent(t.instance, AName))
+    return AsComponent(ToolBar_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -439,7 +458,7 @@ func (t *TToolBar) ButtonCount() int32 {
 // CN: 获取画布。
 // EN: .
 func (t *TToolBar) Canvas() *TCanvas {
-    return CanvasFromInst(ToolBar_GetCanvas(t.instance))
+    return AsCanvas(ToolBar_GetCanvas(t.instance))
 }
 
 // CustomizeKeyName
@@ -573,7 +592,7 @@ func (t *TToolBar) SetColor(value TColor) {
 
 // Constraints
 func (t *TToolBar) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ToolBar_GetConstraints(t.instance))
+    return AsSizeConstraints(ToolBar_GetConstraints(t.instance))
 }
 
 // SetConstraints
@@ -733,7 +752,7 @@ func (t *TToolBar) SetFlat(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (t *TToolBar) Font() *TFont {
-    return FontFromInst(ToolBar_GetFont(t.instance))
+    return AsFont(ToolBar_GetFont(t.instance))
 }
 
 // SetFont
@@ -797,7 +816,7 @@ func (t *TToolBar) SetHideClippedButtons(value bool) {
 
 // HotImages
 func (t *TToolBar) HotImages() *TImageList {
-    return ImageListFromInst(ToolBar_GetHotImages(t.instance))
+    return AsImageList(ToolBar_GetHotImages(t.instance))
 }
 
 // SetHotImages
@@ -809,7 +828,7 @@ func (t *TToolBar) SetHotImages(value IComponent) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (t *TToolBar) Images() *TImageList {
-    return ImageListFromInst(ToolBar_GetImages(t.instance))
+    return AsImageList(ToolBar_GetImages(t.instance))
 }
 
 // SetImages
@@ -841,7 +860,7 @@ func (t *TToolBar) SetList(value bool) {
 
 // Menu
 func (t *TToolBar) Menu() *TMainMenu {
-    return MainMenuFromInst(ToolBar_GetMenu(t.instance))
+    return AsMainMenu(ToolBar_GetMenu(t.instance))
 }
 
 // SetMenu
@@ -933,7 +952,7 @@ func (t *TToolBar) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (t *TToolBar) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ToolBar_GetPopupMenu(t.instance))
+    return AsPopupMenu(ToolBar_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
@@ -1230,7 +1249,7 @@ func (t *TToolBar) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (t *TToolBar) Brush() *TBrush {
-    return BrushFromInst(ToolBar_GetBrush(t.instance))
+    return AsBrush(ToolBar_GetBrush(t.instance))
 }
 
 // ControlCount
@@ -1277,7 +1296,7 @@ func (t *TToolBar) SetUseDockManager(value bool) {
 
 // Action
 func (t *TToolBar) Action() *TAction {
-    return ActionFromInst(ToolBar_GetAction(t.instance))
+    return AsAction(ToolBar_GetAction(t.instance))
 }
 
 // SetAction
@@ -1402,7 +1421,7 @@ func (t *TToolBar) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (t *TToolBar) Parent() *TWinControl {
-    return WinControlFromInst(ToolBar_GetParent(t.instance))
+    return AsWinControl(ToolBar_GetParent(t.instance))
 }
 
 // SetParent
@@ -1500,7 +1519,7 @@ func (t *TToolBar) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (t *TToolBar) Margins() *TMargins {
-    return MarginsFromInst(ToolBar_GetMargins(t.instance))
+    return AsMargins(ToolBar_GetMargins(t.instance))
 }
 
 // SetMargins
@@ -1514,7 +1533,7 @@ func (t *TToolBar) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (t *TToolBar) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ToolBar_GetCustomHint(t.instance))
+    return AsCustomHint(ToolBar_GetCustomHint(t.instance))
 }
 
 // SetCustomHint
@@ -1549,7 +1568,7 @@ func (t *TToolBar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TToolBar) Owner() *TComponent {
-    return ComponentFromInst(ToolBar_GetOwner(t.instance))
+    return AsComponent(ToolBar_GetOwner(t.instance))
 }
 
 // Name
@@ -1582,27 +1601,27 @@ func (t *TToolBar) SetTag(value int) {
 
 // Buttons
 func (t *TToolBar) Buttons(Index int32) *TToolButton {
-    return ToolButtonFromInst(ToolBar_GetButtons(t.instance, Index))
+    return AsToolButton(ToolBar_GetButtons(t.instance, Index))
 }
 
 // DockClients
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (t *TToolBar) DockClients(Index int32) *TControl {
-    return ControlFromInst(ToolBar_GetDockClients(t.instance, Index))
+    return AsControl(ToolBar_GetDockClients(t.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (t *TToolBar) Controls(Index int32) *TControl {
-    return ControlFromInst(ToolBar_GetControls(t.instance, Index))
+    return AsControl(ToolBar_GetControls(t.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TToolBar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ToolBar_GetComponents(t.instance, AIndex))
+    return AsComponent(ToolBar_GetComponents(t.instance, AIndex))
 }
 

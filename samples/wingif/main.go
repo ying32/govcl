@@ -27,7 +27,7 @@ func main() {
 	img.Picture().LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "test.gif")
 	// 动画只支持Windows下的libvcl
 	if runtime.GOOS == "windows" && !rtl.LcLLoaded() {
-		vcl.GIFImageFromObj(img.Picture().Graphic()).SetAnimate(true)
+		vcl.AsGIFImage(img.Picture().Graphic()).SetAnimate(true)
 
 	}
 

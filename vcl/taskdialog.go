@@ -34,36 +34,41 @@ func NewTaskDialog(owner IComponent) *TTaskDialog {
     return t
 }
 
+// AsTaskDialog
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsTaskDialog(obj interface{}) *TTaskDialog {
+    t := new(TTaskDialog)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TaskDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTaskDialog.
 func TaskDialogFromInst(inst uintptr) *TTaskDialog {
-    t := new(TTaskDialog)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTaskDialog(inst)
 }
 
 // TaskDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTaskDialog.
 func TaskDialogFromObj(obj IObject) *TTaskDialog {
-    t := new(TTaskDialog)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTaskDialog(obj)
 }
 
 // TaskDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTaskDialog.
 func TaskDialogFromUnsafePointer(ptr unsafe.Pointer) *TTaskDialog {
-    t := new(TTaskDialog)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTaskDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (t *TTaskDialog) IsValid() bool {
     return t.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TTaskDialog) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TTaskDialog) As() TAs {
+//    return TAs(t.instance)
+//}
+
 // TTaskDialogClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -114,7 +133,7 @@ func (t *TTaskDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TTaskDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(TaskDialog_FindComponent(t.instance, AName))
+    return AsComponent(TaskDialog_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -196,7 +215,7 @@ func (t *TTaskDialog) ToString() string {
 
 // Buttons
 func (t *TTaskDialog) Buttons() *TTaskDialogButtons {
-    return TaskDialogButtonsFromInst(TaskDialog_GetButtons(t.instance))
+    return AsTaskDialogButtons(TaskDialog_GetButtons(t.instance))
 }
 
 // SetButtons
@@ -230,7 +249,7 @@ func (t *TTaskDialog) SetCommonButtons(value TTaskDialogCommonButtons) {
 
 // CustomFooterIcon
 func (t *TTaskDialog) CustomFooterIcon() *TIcon {
-    return IconFromInst(TaskDialog_GetCustomFooterIcon(t.instance))
+    return AsIcon(TaskDialog_GetCustomFooterIcon(t.instance))
 }
 
 // SetCustomFooterIcon
@@ -240,7 +259,7 @@ func (t *TTaskDialog) SetCustomFooterIcon(value *TIcon) {
 
 // CustomMainIcon
 func (t *TTaskDialog) CustomMainIcon() *TIcon {
-    return IconFromInst(TaskDialog_GetCustomMainIcon(t.instance))
+    return AsIcon(TaskDialog_GetCustomMainIcon(t.instance))
 }
 
 // SetCustomMainIcon
@@ -320,7 +339,7 @@ func (t *TTaskDialog) SetMainIcon(value TTaskDialogIcon) {
 
 // ProgressBar
 func (t *TTaskDialog) ProgressBar() *TTaskDialogProgressBar {
-    return TaskDialogProgressBarFromInst(TaskDialog_GetProgressBar(t.instance))
+    return AsTaskDialogProgressBar(TaskDialog_GetProgressBar(t.instance))
 }
 
 // SetProgressBar
@@ -330,7 +349,7 @@ func (t *TTaskDialog) SetProgressBar(value *TTaskDialogProgressBar) {
 
 // RadioButtons
 func (t *TTaskDialog) RadioButtons() *TTaskDialogButtons {
-    return TaskDialogButtonsFromInst(TaskDialog_GetRadioButtons(t.instance))
+    return AsTaskDialogButtons(TaskDialog_GetRadioButtons(t.instance))
 }
 
 // SetRadioButtons
@@ -424,7 +443,7 @@ func (t *TTaskDialog) SetOnVerificationClicked(fn TNotifyEvent) {
 
 // Button
 func (t *TTaskDialog) Button() *TTaskDialogButtonItem {
-    return TaskDialogButtonItemFromInst(TaskDialog_GetButton(t.instance))
+    return AsTaskDialogButtonItem(TaskDialog_GetButton(t.instance))
 }
 
 // SetButton
@@ -460,7 +479,7 @@ func (t *TTaskDialog) SetModalResult(value TModalResult) {
 
 // RadioButton
 func (t *TTaskDialog) RadioButton() *TTaskDialogRadioButtonItem {
-    return TaskDialogRadioButtonItemFromInst(TaskDialog_GetRadioButton(t.instance))
+    return AsTaskDialogRadioButtonItem(TaskDialog_GetRadioButton(t.instance))
 }
 
 // URL
@@ -493,7 +512,7 @@ func (t *TTaskDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTaskDialog) Owner() *TComponent {
-    return ComponentFromInst(TaskDialog_GetOwner(t.instance))
+    return AsComponent(TaskDialog_GetOwner(t.instance))
 }
 
 // Name
@@ -528,6 +547,6 @@ func (t *TTaskDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TTaskDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(TaskDialog_GetComponents(t.instance, AIndex))
+    return AsComponent(TaskDialog_GetComponents(t.instance, AIndex))
 }
 

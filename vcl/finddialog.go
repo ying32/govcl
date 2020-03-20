@@ -34,36 +34,41 @@ func NewFindDialog(owner IComponent) *TFindDialog {
     return f
 }
 
+// AsFindDialog
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsFindDialog(obj interface{}) *TFindDialog {
+    f := new(TFindDialog)
+    f.instance, f.ptr = getInstance(obj)
+    return f
+}
+
+// -------------------------- Deprecated begin --------------------------
 // FindDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsFindDialog.
 func FindDialogFromInst(inst uintptr) *TFindDialog {
-    f := new(TFindDialog)
-    f.instance = inst
-    f.ptr = unsafe.Pointer(inst)
-    return f
+    return AsFindDialog(inst)
 }
 
 // FindDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsFindDialog.
 func FindDialogFromObj(obj IObject) *TFindDialog {
-    f := new(TFindDialog)
-    f.instance = CheckPtr(obj)
-    f.ptr = unsafe.Pointer(f.instance)
-    return f
+    return AsFindDialog(obj)
 }
 
 // FindDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsFindDialog.
 func FindDialogFromUnsafePointer(ptr unsafe.Pointer) *TFindDialog {
-    f := new(TFindDialog)
-    f.instance = uintptr(ptr)
-    f.ptr = ptr
-    return f
+    return AsFindDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (f *TFindDialog) IsValid() bool {
     return f.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (f *TFindDialog) Is() TIs {
+    return TIs(f.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (f *TFindDialog) As() TAs {
+//    return TAs(f.instance)
+//}
+
 // TFindDialogClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -119,7 +138,7 @@ func (f *TFindDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (f *TFindDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(FindDialog_FindComponent(f.instance, AName))
+    return AsComponent(FindDialog_FindComponent(f.instance, AName))
 }
 
 // GetNamePath
@@ -316,7 +335,7 @@ func (f *TFindDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (f *TFindDialog) Owner() *TComponent {
-    return ComponentFromInst(FindDialog_GetOwner(f.instance))
+    return AsComponent(FindDialog_GetOwner(f.instance))
 }
 
 // Name
@@ -351,6 +370,6 @@ func (f *TFindDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (f *TFindDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(FindDialog_GetComponents(f.instance, AIndex))
+    return AsComponent(FindDialog_GetComponents(f.instance, AIndex))
 }
 

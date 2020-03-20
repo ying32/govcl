@@ -83,7 +83,7 @@ func (f *TMainForm) OnActGoBackExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActGoBackUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.web != nil && f.web.IsValid() && f.web.Webview.CanGoBack())
+	vcl.AsAction(sender).SetEnabled(f.web != nil && f.web.IsValid() && f.web.Webview.CanGoBack())
 }
 
 func (f *TMainForm) OnActGoForwardExecute(sender vcl.IObject) {
@@ -91,7 +91,7 @@ func (f *TMainForm) OnActGoForwardExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActGoForwardUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.web != nil && f.web.IsValid() && f.web.Webview.CanGoForward())
+	vcl.AsAction(sender).SetEnabled(f.web != nil && f.web.IsValid() && f.web.Webview.CanGoForward())
 }
 
 func (f *TMainForm) OnActNavExecute(sender vcl.IObject) {
@@ -104,7 +104,7 @@ func (f *TMainForm) OnActNavExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActNavUpdate(sender vcl.IObject) {
-	//vcl.ActionFromObj(sender).SetEnabled(f.web != nil && f.web.IsValid() && f.web.Webview.CanGoForward())
+	//vcl.AsAction(sender).SetEnabled(f.web != nil && f.web.IsValid() && f.web.Webview.CanGoForward())
 }
 
 func (f *TMainForm) OnFormKeyDown(sender vcl.IObject, key *types.Char, shift types.TShiftState) {

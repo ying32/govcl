@@ -722,6 +722,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure Form_SetOnAlignPosition(AObj: TForm; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAlignPosition := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnAlignPosition);
+    Exit;
+  end;
+  AObj.OnAlignPosition := TEventClass.OnAlignPosition;
+  TEventClass.Add(AObj, @TEventClass.OnAlignPosition, AEventId);
+end;
+
 procedure Form_SetOnClick(AObj: TForm; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1548,6 +1560,7 @@ exports
   Form_SetWindowState,
   Form_GetStyleElements,
   Form_SetStyleElements,
+  Form_SetOnAlignPosition,
   Form_SetOnClick,
   Form_SetOnClose,
   Form_SetOnCloseQuery,

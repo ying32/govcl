@@ -34,36 +34,41 @@ func NewUpDown(owner IComponent) *TUpDown {
     return u
 }
 
+// AsUpDown
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsUpDown(obj interface{}) *TUpDown {
+    u := new(TUpDown)
+    u.instance, u.ptr = getInstance(obj)
+    return u
+}
+
+// -------------------------- Deprecated begin --------------------------
 // UpDownFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsUpDown.
 func UpDownFromInst(inst uintptr) *TUpDown {
-    u := new(TUpDown)
-    u.instance = inst
-    u.ptr = unsafe.Pointer(inst)
-    return u
+    return AsUpDown(inst)
 }
 
 // UpDownFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsUpDown.
 func UpDownFromObj(obj IObject) *TUpDown {
-    u := new(TUpDown)
-    u.instance = CheckPtr(obj)
-    u.ptr = unsafe.Pointer(u.instance)
-    return u
+    return AsUpDown(obj)
 }
 
 // UpDownFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsUpDown.
 func UpDownFromUnsafePointer(ptr unsafe.Pointer) *TUpDown {
-    u := new(TUpDown)
-    u.instance = uintptr(ptr)
-    u.ptr = ptr
-    return u
+    return AsUpDown(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (u *TUpDown) IsValid() bool {
     return u.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (u *TUpDown) Is() TIs {
+    return TIs(u.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (u *TUpDown) As() TAs {
+//    return TAs(u.instance)
+//}
+
 // TUpDownClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -121,7 +140,7 @@ func (u *TUpDown) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (u *TUpDown) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(UpDown_ControlAtPos(u.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(UpDown_ControlAtPos(u.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -142,7 +161,7 @@ func (u *TUpDown) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (u *TUpDown) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(UpDown_FindChildControl(u.instance, ControlName))
+    return AsControl(UpDown_FindChildControl(u.instance, ControlName))
 }
 
 // FlipChildren
@@ -357,7 +376,7 @@ func (u *TUpDown) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (u *TUpDown) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(UpDown_FindComponent(u.instance, AName))
+    return AsComponent(UpDown_FindComponent(u.instance, AName))
 }
 
 // GetNamePath
@@ -518,7 +537,7 @@ func (u *TUpDown) SetIncrement(value int32) {
 
 // Constraints
 func (u *TUpDown) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(UpDown_GetConstraints(u.instance))
+    return AsSizeConstraints(UpDown_GetConstraints(u.instance))
 }
 
 // SetConstraints
@@ -564,7 +583,7 @@ func (u *TUpDown) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (u *TUpDown) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(UpDown_GetPopupMenu(u.instance))
+    return AsPopupMenu(UpDown_GetPopupMenu(u.instance))
 }
 
 // SetPopupMenu
@@ -783,7 +802,7 @@ func (u *TUpDown) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (u *TUpDown) Brush() *TBrush {
-    return BrushFromInst(UpDown_GetBrush(u.instance))
+    return AsBrush(UpDown_GetBrush(u.instance))
 }
 
 // ControlCount
@@ -830,7 +849,7 @@ func (u *TUpDown) SetUseDockManager(value bool) {
 
 // Action
 func (u *TUpDown) Action() *TAction {
-    return ActionFromInst(UpDown_GetAction(u.instance))
+    return AsAction(UpDown_GetAction(u.instance))
 }
 
 // SetAction
@@ -969,7 +988,7 @@ func (u *TUpDown) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (u *TUpDown) Parent() *TWinControl {
-    return WinControlFromInst(UpDown_GetParent(u.instance))
+    return AsWinControl(UpDown_GetParent(u.instance))
 }
 
 // SetParent
@@ -1072,7 +1091,7 @@ func (u *TUpDown) SetCursor(value TCursor) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (u *TUpDown) Margins() *TMargins {
-    return MarginsFromInst(UpDown_GetMargins(u.instance))
+    return AsMargins(UpDown_GetMargins(u.instance))
 }
 
 // SetMargins
@@ -1086,7 +1105,7 @@ func (u *TUpDown) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (u *TUpDown) CustomHint() *TCustomHint {
-    return CustomHintFromInst(UpDown_GetCustomHint(u.instance))
+    return AsCustomHint(UpDown_GetCustomHint(u.instance))
 }
 
 // SetCustomHint
@@ -1121,7 +1140,7 @@ func (u *TUpDown) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (u *TUpDown) Owner() *TComponent {
-    return ComponentFromInst(UpDown_GetOwner(u.instance))
+    return AsComponent(UpDown_GetOwner(u.instance))
 }
 
 // Name
@@ -1156,20 +1175,20 @@ func (u *TUpDown) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (u *TUpDown) DockClients(Index int32) *TControl {
-    return ControlFromInst(UpDown_GetDockClients(u.instance, Index))
+    return AsControl(UpDown_GetDockClients(u.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (u *TUpDown) Controls(Index int32) *TControl {
-    return ControlFromInst(UpDown_GetControls(u.instance, Index))
+    return AsControl(UpDown_GetControls(u.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (u *TUpDown) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(UpDown_GetComponents(u.instance, AIndex))
+    return AsComponent(UpDown_GetComponents(u.instance, AIndex))
 }
 

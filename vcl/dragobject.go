@@ -34,36 +34,41 @@ func NewDragObject() *TDragObject {
     return d
 }
 
+// AsDragObject
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsDragObject(obj interface{}) *TDragObject {
+    d := new(TDragObject)
+    d.instance, d.ptr = getInstance(obj)
+    return d
+}
+
+// -------------------------- Deprecated begin --------------------------
 // DragObjectFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsDragObject.
 func DragObjectFromInst(inst uintptr) *TDragObject {
-    d := new(TDragObject)
-    d.instance = inst
-    d.ptr = unsafe.Pointer(inst)
-    return d
+    return AsDragObject(inst)
 }
 
 // DragObjectFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsDragObject.
 func DragObjectFromObj(obj IObject) *TDragObject {
-    d := new(TDragObject)
-    d.instance = CheckPtr(obj)
-    d.ptr = unsafe.Pointer(d.instance)
-    return d
+    return AsDragObject(obj)
 }
 
 // DragObjectFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsDragObject.
 func DragObjectFromUnsafePointer(ptr unsafe.Pointer) *TDragObject {
-    d := new(TDragObject)
-    d.instance = uintptr(ptr)
-    d.ptr = ptr
-    return d
+    return AsDragObject(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (d *TDragObject) UnsafeAddr() unsafe.Pointer {
 func (d *TDragObject) IsValid() bool {
     return d.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (d *TDragObject) Is() TIs {
+    return TIs(d.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (d *TDragObject) As() TAs {
+//    return TAs(d.instance)
+//}
 
 // TDragObjectClass
 // CN: 获取类信息指针。

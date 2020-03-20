@@ -34,36 +34,41 @@ func NewBevel(owner IComponent) *TBevel {
     return b
 }
 
+// AsBevel
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsBevel(obj interface{}) *TBevel {
+    b := new(TBevel)
+    b.instance, b.ptr = getInstance(obj)
+    return b
+}
+
+// -------------------------- Deprecated begin --------------------------
 // BevelFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsBevel.
 func BevelFromInst(inst uintptr) *TBevel {
-    b := new(TBevel)
-    b.instance = inst
-    b.ptr = unsafe.Pointer(inst)
-    return b
+    return AsBevel(inst)
 }
 
 // BevelFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsBevel.
 func BevelFromObj(obj IObject) *TBevel {
-    b := new(TBevel)
-    b.instance = CheckPtr(obj)
-    b.ptr = unsafe.Pointer(b.instance)
-    return b
+    return AsBevel(obj)
 }
 
 // BevelFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsBevel.
 func BevelFromUnsafePointer(ptr unsafe.Pointer) *TBevel {
-    b := new(TBevel)
-    b.instance = uintptr(ptr)
-    b.ptr = ptr
-    return b
+    return AsBevel(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (b *TBevel) UnsafeAddr() unsafe.Pointer {
 func (b *TBevel) IsValid() bool {
     return b.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (b *TBevel) Is() TIs {
+    return TIs(b.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (b *TBevel) As() TAs {
+//    return TAs(b.instance)
+//}
 
 // TBevelClass
 // CN: 获取类信息指针。
@@ -240,7 +259,7 @@ func (b *TBevel) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (b *TBevel) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Bevel_FindComponent(b.instance, AName))
+    return AsComponent(Bevel_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
@@ -343,7 +362,7 @@ func (b *TBevel) SetAnchors(value TAnchors) {
 
 // Constraints
 func (b *TBevel) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Bevel_GetConstraints(b.instance))
+    return AsSizeConstraints(Bevel_GetConstraints(b.instance))
 }
 
 // SetConstraints
@@ -430,7 +449,7 @@ func (b *TBevel) SetEnabled(value bool) {
 
 // Action
 func (b *TBevel) Action() *TAction {
-    return ActionFromInst(Bevel_GetAction(b.instance))
+    return AsAction(Bevel_GetAction(b.instance))
 }
 
 // SetAction
@@ -555,7 +574,7 @@ func (b *TBevel) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (b *TBevel) Parent() *TWinControl {
-    return WinControlFromInst(Bevel_GetParent(b.instance))
+    return AsWinControl(Bevel_GetParent(b.instance))
 }
 
 // SetParent
@@ -681,7 +700,7 @@ func (b *TBevel) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (b *TBevel) Margins() *TMargins {
-    return MarginsFromInst(Bevel_GetMargins(b.instance))
+    return AsMargins(Bevel_GetMargins(b.instance))
 }
 
 // SetMargins
@@ -695,7 +714,7 @@ func (b *TBevel) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (b *TBevel) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Bevel_GetCustomHint(b.instance))
+    return AsCustomHint(Bevel_GetCustomHint(b.instance))
 }
 
 // SetCustomHint
@@ -730,7 +749,7 @@ func (b *TBevel) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (b *TBevel) Owner() *TComponent {
-    return ComponentFromInst(Bevel_GetOwner(b.instance))
+    return AsComponent(Bevel_GetOwner(b.instance))
 }
 
 // Name
@@ -765,6 +784,6 @@ func (b *TBevel) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (b *TBevel) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Bevel_GetComponents(b.instance, AIndex))
+    return AsComponent(Bevel_GetComponents(b.instance, AIndex))
 }
 

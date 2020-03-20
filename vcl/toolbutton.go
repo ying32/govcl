@@ -34,36 +34,41 @@ func NewToolButton(owner IComponent) *TToolButton {
     return t
 }
 
+// AsToolButton
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsToolButton(obj interface{}) *TToolButton {
+    t := new(TToolButton)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ToolButtonFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsToolButton.
 func ToolButtonFromInst(inst uintptr) *TToolButton {
-    t := new(TToolButton)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsToolButton(inst)
 }
 
 // ToolButtonFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsToolButton.
 func ToolButtonFromObj(obj IObject) *TToolButton {
-    t := new(TToolButton)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsToolButton(obj)
 }
 
 // ToolButtonFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsToolButton.
 func ToolButtonFromUnsafePointer(ptr unsafe.Pointer) *TToolButton {
-    t := new(TToolButton)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsToolButton(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (t *TToolButton) UnsafeAddr() unsafe.Pointer {
 func (t *TToolButton) IsValid() bool {
     return t.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TToolButton) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TToolButton) As() TAs {
+//    return TAs(t.instance)
+//}
 
 // TToolButtonClass
 // CN: 获取类信息指针。
@@ -252,7 +271,7 @@ func (t *TToolButton) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TToolButton) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ToolButton_FindComponent(t.instance, AName))
+    return AsComponent(ToolButton_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -332,7 +351,7 @@ func (t *TToolButton) Index() int32 {
 
 // Action
 func (t *TToolButton) Action() *TAction {
-    return ActionFromInst(ToolButton_GetAction(t.instance))
+    return AsAction(ToolButton_GetAction(t.instance))
 }
 
 // SetAction
@@ -432,7 +451,7 @@ func (t *TToolButton) SetDragMode(value TDragMode) {
 
 // DropdownMenu
 func (t *TToolButton) DropdownMenu() *TPopupMenu {
-    return PopupMenuFromInst(ToolButton_GetDropdownMenu(t.instance))
+    return AsPopupMenu(ToolButton_GetDropdownMenu(t.instance))
 }
 
 // SetDropdownMenu
@@ -536,7 +555,7 @@ func (t *TToolButton) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (t *TToolButton) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ToolButton_GetPopupMenu(t.instance))
+    return AsPopupMenu(ToolButton_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
@@ -787,7 +806,7 @@ func (t *TToolButton) SetClientWidth(value int32) {
 
 // Constraints
 func (t *TToolButton) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ToolButton_GetConstraints(t.instance))
+    return AsSizeConstraints(ToolButton_GetConstraints(t.instance))
 }
 
 // SetConstraints
@@ -852,7 +871,7 @@ func (t *TToolButton) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (t *TToolButton) Parent() *TWinControl {
-    return WinControlFromInst(ToolButton_GetParent(t.instance))
+    return AsWinControl(ToolButton_GetParent(t.instance))
 }
 
 // SetParent
@@ -955,7 +974,7 @@ func (t *TToolButton) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (t *TToolButton) Margins() *TMargins {
-    return MarginsFromInst(ToolButton_GetMargins(t.instance))
+    return AsMargins(ToolButton_GetMargins(t.instance))
 }
 
 // SetMargins
@@ -969,7 +988,7 @@ func (t *TToolButton) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (t *TToolButton) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ToolButton_GetCustomHint(t.instance))
+    return AsCustomHint(ToolButton_GetCustomHint(t.instance))
 }
 
 // SetCustomHint
@@ -1004,7 +1023,7 @@ func (t *TToolButton) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TToolButton) Owner() *TComponent {
-    return ComponentFromInst(ToolButton_GetOwner(t.instance))
+    return AsComponent(ToolButton_GetOwner(t.instance))
 }
 
 // Name
@@ -1039,6 +1058,6 @@ func (t *TToolButton) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TToolButton) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ToolButton_GetComponents(t.instance, AIndex))
+    return AsComponent(ToolButton_GetComponents(t.instance, AIndex))
 }
 

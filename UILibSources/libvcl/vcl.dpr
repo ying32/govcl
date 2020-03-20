@@ -70,7 +70,8 @@ uses
   ImageButton in 'ImageButton.pas',
   uImages in 'uImages.pas',
   uComponents in 'uComponents.pas',
-  uMiniWebview in 'uMiniWebview.pas';
+  uMiniWebview in 'uMiniWebview.pas',
+  xButton in 'xButton.pas';
 
 {$R *.res}
 
@@ -233,6 +234,7 @@ uses
 {$I Frame.inc}
 {$I ControlScrollBar.inc}
 {$I SizeConstraints.inc}
+{$I XButton.inc}
 
 // 用户自己定义的组件
 {$I UserDefineComponents.inc}

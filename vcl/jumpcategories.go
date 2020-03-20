@@ -24,36 +24,41 @@ type TJumpCategories struct {
     ptr unsafe.Pointer
 }
 
+// AsJumpCategories
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsJumpCategories(obj interface{}) *TJumpCategories {
+    j := new(TJumpCategories)
+    j.instance, j.ptr = getInstance(obj)
+    return j
+}
+
+// -------------------------- Deprecated begin --------------------------
 // JumpCategoriesFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsJumpCategories.
 func JumpCategoriesFromInst(inst uintptr) *TJumpCategories {
-    j := new(TJumpCategories)
-    j.instance = inst
-    j.ptr = unsafe.Pointer(inst)
-    return j
+    return AsJumpCategories(inst)
 }
 
 // JumpCategoriesFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsJumpCategories.
 func JumpCategoriesFromObj(obj IObject) *TJumpCategories {
-    j := new(TJumpCategories)
-    j.instance = CheckPtr(obj)
-    j.ptr = unsafe.Pointer(j.instance)
-    return j
+    return AsJumpCategories(obj)
 }
 
 // JumpCategoriesFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsJumpCategories.
 func JumpCategoriesFromUnsafePointer(ptr unsafe.Pointer) *TJumpCategories {
-    j := new(TJumpCategories)
-    j.instance = uintptr(ptr)
-    j.ptr = ptr
-    return j
+    return AsJumpCategories(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.
@@ -75,6 +80,20 @@ func (j *TJumpCategories) IsValid() bool {
     return j.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (j *TJumpCategories) Is() TIs {
+    return TIs(j.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (j *TJumpCategories) As() TAs {
+//    return TAs(j.instance)
+//}
+
 // TJumpCategoriesClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -91,12 +110,12 @@ func (j *TJumpCategories) GetCategoryIndex(CategoryName string) int32 {
 // CN: 组件所有者。
 // EN: component owner.
 func (j *TJumpCategories) Owner() *TObject {
-    return ObjectFromInst(JumpCategories_Owner(j.instance))
+    return AsObject(JumpCategories_Owner(j.instance))
 }
 
 // Add
 func (j *TJumpCategories) Add() *TCollectionItem {
-    return CollectionItemFromInst(JumpCategories_Add(j.instance))
+    return AsCollectionItem(JumpCategories_Add(j.instance))
 }
 
 // Assign
@@ -135,7 +154,7 @@ func (j *TJumpCategories) EndUpdate() {
 
 // FindItemID
 func (j *TJumpCategories) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(JumpCategories_FindItemID(j.instance, ID))
+    return AsCollectionItem(JumpCategories_FindItemID(j.instance, ID))
 }
 
 // GetNamePath
@@ -147,7 +166,7 @@ func (j *TJumpCategories) GetNamePath() string {
 
 // Insert
 func (j *TJumpCategories) Insert(Index int32) *TCollectionItem {
-    return CollectionItemFromInst(JumpCategories_Insert(j.instance, Index))
+    return AsCollectionItem(JumpCategories_Insert(j.instance, Index))
 }
 
 // DisposeOf
@@ -230,7 +249,7 @@ func (j *TJumpCategories) Count() int32 {
 
 // Items
 func (j *TJumpCategories) Items(Index int32) *TJumpCategoryItem {
-    return JumpCategoryItemFromInst(JumpCategories_GetItems(j.instance, Index))
+    return AsJumpCategoryItem(JumpCategories_GetItems(j.instance, Index))
 }
 
 // Items

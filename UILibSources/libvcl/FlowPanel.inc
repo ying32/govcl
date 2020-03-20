@@ -662,6 +662,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure FlowPanel_SetOnAlignPosition(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAlignPosition := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnAlignPosition);
+    Exit;
+  end;
+  AObj.OnAlignPosition := TEventClass.OnAlignPosition;
+  TEventClass.Add(AObj, @TEventClass.OnAlignPosition, AEventId);
+end;
+
 procedure FlowPanel_SetOnClick(AObj: TFlowPanel; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1346,6 +1358,7 @@ exports
   FlowPanel_SetVisible,
   FlowPanel_GetStyleElements,
   FlowPanel_SetStyleElements,
+  FlowPanel_SetOnAlignPosition,
   FlowPanel_SetOnClick,
   FlowPanel_SetOnContextPopup,
   FlowPanel_SetOnDockDrop,

@@ -10,11 +10,11 @@ package vcl
 
 import (
 	"reflect"
+	"unsafe"
 
 	"fmt"
 
 	"github.com/ying32/govcl/vcl/api"
-	"github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -29,15 +29,36 @@ func ShowMessageFmt(format string, args ...interface{}) {
 
 // MessageDlg 消息框，Buttons为按钮样式，祥见types.TMsgDlgButtons
 func MessageDlg(Msg string, DlgType TMsgDlgType, Buttons ...uint8) int32 {
-	return api.DMessageDlg(Msg, DlgType, TMsgDlgButtons(rtl.Include(0, Buttons...)), 0)
+	return api.DMessageDlg(Msg, DlgType, NewSet(Buttons...), 0)
 }
 
 // CheckPtr 检测接口是否被实例化，如果已经实例化则返回实例指针
-func CheckPtr(value IObject) uintptr {
-	if value == nil || reflect.ValueOf(value).Pointer() == 0 {
-		return 0
+func CheckPtr(value interface{}) uintptr {
+	switch value.(type) {
+	case IObject:
+		if reflect.ValueOf(value).Pointer() == 0 {
+			return 0
+		}
+		return value.(IObject).Instance()
 	}
-	return value.Instance()
+	return 0
+}
+
+// As操作的简化
+func getInstance(value interface{}) (uintptr, unsafe.Pointer) {
+	var ptr uintptr
+	switch value.(type) {
+	case uintptr:
+		// 一个对象来自已经存在的对象实例指针
+		ptr = value.(uintptr)
+	case unsafe.Pointer:
+		// 一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+		ptr = uintptr(value.(unsafe.Pointer))
+	case IObject:
+		// 一个对象来自已经存在的对象实例
+		ptr = CheckPtr(value)
+	}
+	return ptr, unsafe.Pointer(ptr)
 }
 
 // SelectDirectory1 选择目录
@@ -52,9 +73,9 @@ func SelectDirectory2(caption, root string, options TSelectDirExtOpts, parent IO
 
 // SelectDirectory3 选择目录， options默认是SdNewUI，parent默认为nil
 func SelectDirectory3(caption, root string, options ...uint8) (bool, string) {
-	opts := rtl.Include(0, options...)
+	opts := NewSet(options...)
 	if len(options) == 0 {
-		opts = rtl.Include(opts, SdNewUI)
+		opts = opts.Include(SdNewUI)
 	}
 	return SelectDirectory2(caption, root, opts, nil)
 }
@@ -87,4 +108,9 @@ func RunApp(forms ...interface{}) {
 		Application.CreateForm(forms[i])
 	}
 	Application.Run()
+}
+
+// 不必引用rtl包来判断是否为lcl库
+func LclLoaded() bool {
+	return api.IsloadedLcl
 }

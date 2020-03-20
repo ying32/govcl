@@ -34,36 +34,41 @@ func NewTaskbar(owner IComponent) *TTaskbar {
     return t
 }
 
+// AsTaskbar
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsTaskbar(obj interface{}) *TTaskbar {
+    t := new(TTaskbar)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TaskbarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTaskbar.
 func TaskbarFromInst(inst uintptr) *TTaskbar {
-    t := new(TTaskbar)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTaskbar(inst)
 }
 
 // TaskbarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTaskbar.
 func TaskbarFromObj(obj IObject) *TTaskbar {
-    t := new(TTaskbar)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTaskbar(obj)
 }
 
 // TaskbarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTaskbar.
 func TaskbarFromUnsafePointer(ptr unsafe.Pointer) *TTaskbar {
-    t := new(TTaskbar)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTaskbar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (t *TTaskbar) UnsafeAddr() unsafe.Pointer {
 func (t *TTaskbar) IsValid() bool {
     return t.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TTaskbar) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TTaskbar) As() TAs {
+//    return TAs(t.instance)
+//}
 
 // TTaskbarClass
 // CN: 获取类信息指针。
@@ -192,7 +211,7 @@ func (t *TTaskbar) ClearClipArea() {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TTaskbar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Taskbar_FindComponent(t.instance, AName))
+    return AsComponent(Taskbar_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -274,7 +293,7 @@ func (t *TTaskbar) ToString() string {
 
 // TaskBarButtons
 func (t *TTaskbar) TaskBarButtons() *TThumbBarButtonList {
-    return ThumbBarButtonListFromInst(Taskbar_GetTaskBarButtons(t.instance))
+    return AsThumbBarButtonList(Taskbar_GetTaskBarButtons(t.instance))
 }
 
 // SetTaskBarButtons
@@ -314,7 +333,7 @@ func (t *TTaskbar) SetProgressValue(value int64) {
 
 // OverlayIcon
 func (t *TTaskbar) OverlayIcon() *TIcon {
-    return IconFromInst(Taskbar_GetOverlayIcon(t.instance))
+    return AsIcon(Taskbar_GetOverlayIcon(t.instance))
 }
 
 // SetOverlayIcon
@@ -334,7 +353,7 @@ func (t *TTaskbar) SetOverlayHint(value string) {
 
 // PreviewClipRegion
 func (t *TTaskbar) PreviewClipRegion() *TPreviewClipRegion {
-    return PreviewClipRegionFromInst(Taskbar_GetPreviewClipRegion(t.instance))
+    return AsPreviewClipRegion(Taskbar_GetPreviewClipRegion(t.instance))
 }
 
 // SetPreviewClipRegion
@@ -407,7 +426,7 @@ func (t *TTaskbar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTaskbar) Owner() *TComponent {
-    return ComponentFromInst(Taskbar_GetOwner(t.instance))
+    return AsComponent(Taskbar_GetOwner(t.instance))
 }
 
 // Name
@@ -442,6 +461,6 @@ func (t *TTaskbar) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TTaskbar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Taskbar_GetComponents(t.instance, AIndex))
+    return AsComponent(Taskbar_GetComponents(t.instance, AIndex))
 }
 

@@ -34,36 +34,41 @@ func NewSpeedButton(owner IComponent) *TSpeedButton {
     return s
 }
 
+// AsSpeedButton
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsSpeedButton(obj interface{}) *TSpeedButton {
+    s := new(TSpeedButton)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // SpeedButtonFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsSpeedButton.
 func SpeedButtonFromInst(inst uintptr) *TSpeedButton {
-    s := new(TSpeedButton)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsSpeedButton(inst)
 }
 
 // SpeedButtonFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsSpeedButton.
 func SpeedButtonFromObj(obj IObject) *TSpeedButton {
-    s := new(TSpeedButton)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsSpeedButton(obj)
 }
 
 // SpeedButtonFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsSpeedButton.
 func SpeedButtonFromUnsafePointer(ptr unsafe.Pointer) *TSpeedButton {
-    s := new(TSpeedButton)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsSpeedButton(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (s *TSpeedButton) UnsafeAddr() unsafe.Pointer {
 func (s *TSpeedButton) IsValid() bool {
     return s.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (s *TSpeedButton) Is() TIs {
+    return TIs(s.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (s *TSpeedButton) As() TAs {
+//    return TAs(s.instance)
+//}
 
 // TSpeedButtonClass
 // CN: 获取类信息指针。
@@ -247,7 +266,7 @@ func (s *TSpeedButton) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TSpeedButton) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(SpeedButton_FindComponent(s.instance, AName))
+    return AsComponent(SpeedButton_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -322,7 +341,7 @@ func (s *TSpeedButton) ToString() string {
 
 // Action
 func (s *TSpeedButton) Action() *TAction {
-    return ActionFromInst(SpeedButton_GetAction(s.instance))
+    return AsAction(SpeedButton_GetAction(s.instance))
 }
 
 // SetAction
@@ -380,7 +399,7 @@ func (s *TSpeedButton) SetBiDiMode(value TBiDiMode) {
 
 // Constraints
 func (s *TSpeedButton) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(SpeedButton_GetConstraints(s.instance))
+    return AsSizeConstraints(SpeedButton_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -458,7 +477,7 @@ func (s *TSpeedButton) SetFlat(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (s *TSpeedButton) Font() *TFont {
-    return FontFromInst(SpeedButton_GetFont(s.instance))
+    return AsFont(SpeedButton_GetFont(s.instance))
 }
 
 // SetFont
@@ -470,7 +489,7 @@ func (s *TSpeedButton) SetFont(value *TFont) {
 
 // Glyph
 func (s *TSpeedButton) Glyph() *TBitmap {
-    return BitmapFromInst(SpeedButton_GetGlyph(s.instance))
+    return AsBitmap(SpeedButton_GetGlyph(s.instance))
 }
 
 // SetGlyph
@@ -526,7 +545,7 @@ func (s *TSpeedButton) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (s *TSpeedButton) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(SpeedButton_GetPopupMenu(s.instance))
+    return AsPopupMenu(SpeedButton_GetPopupMenu(s.instance))
 }
 
 // SetPopupMenu
@@ -763,7 +782,7 @@ func (s *TSpeedButton) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TSpeedButton) Parent() *TWinControl {
-    return WinControlFromInst(SpeedButton_GetParent(s.instance))
+    return AsWinControl(SpeedButton_GetParent(s.instance))
 }
 
 // SetParent
@@ -880,7 +899,7 @@ func (s *TSpeedButton) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TSpeedButton) Margins() *TMargins {
-    return MarginsFromInst(SpeedButton_GetMargins(s.instance))
+    return AsMargins(SpeedButton_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -894,7 +913,7 @@ func (s *TSpeedButton) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TSpeedButton) CustomHint() *TCustomHint {
-    return CustomHintFromInst(SpeedButton_GetCustomHint(s.instance))
+    return AsCustomHint(SpeedButton_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -929,7 +948,7 @@ func (s *TSpeedButton) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TSpeedButton) Owner() *TComponent {
-    return ComponentFromInst(SpeedButton_GetOwner(s.instance))
+    return AsComponent(SpeedButton_GetOwner(s.instance))
 }
 
 // Name
@@ -964,6 +983,6 @@ func (s *TSpeedButton) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TSpeedButton) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(SpeedButton_GetComponents(s.instance, AIndex))
+    return AsComponent(SpeedButton_GetComponents(s.instance, AIndex))
 }
 

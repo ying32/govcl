@@ -8,8 +8,6 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/ying32/govcl/vcl/types"
-
 	"github.com/ying32/govcl/vcl/rtl"
 
 	"github.com/ying32/govcl/pkgs/libvlc"
@@ -49,14 +47,14 @@ func (f *TMainForm) OnFormDestroy(sender vcl.IObject) {
 func (f *TMainForm) OnActPlayExecute(sender vcl.IObject) {
 	if runtime.GOOS == "linux" {
 		// 不太好使。。。
-		f.player.SethWnd(types.HWND(rtl.GetGDKWindowXID(f.PnlVideo.Handle())))
+		//f.player.SethWnd(types.HWND(f.PlatformWindow().XID()))
 	}
 	f.Timer1.SetEnabled(true)
 	f.player.Play()
 }
 
 func (f *TMainForm) OnActPlayUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.player != nil && !f.player.Playing())
+	vcl.AsAction(sender).SetEnabled(f.player != nil && !f.player.Playing())
 }
 
 func (f *TMainForm) OnActStopExecute(sender vcl.IObject) {
@@ -68,7 +66,7 @@ func (f *TMainForm) OnActStopExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActStopUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.player != nil && f.player.Playing())
+	vcl.AsAction(sender).SetEnabled(f.player != nil && f.player.Playing())
 }
 
 func (f *TMainForm) OnActPauseExecute(sender vcl.IObject) {
@@ -77,7 +75,7 @@ func (f *TMainForm) OnActPauseExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActPauseUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.player != nil && f.player.Playing())
+	vcl.AsAction(sender).SetEnabled(f.player != nil && f.player.Playing())
 }
 
 func (f *TMainForm) OnTimer1Timer(sender vcl.IObject) {

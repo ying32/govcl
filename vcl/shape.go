@@ -34,36 +34,41 @@ func NewShape(owner IComponent) *TShape {
     return s
 }
 
+// AsShape
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsShape(obj interface{}) *TShape {
+    s := new(TShape)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ShapeFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsShape.
 func ShapeFromInst(inst uintptr) *TShape {
-    s := new(TShape)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsShape(inst)
 }
 
 // ShapeFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsShape.
 func ShapeFromObj(obj IObject) *TShape {
-    s := new(TShape)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsShape(obj)
 }
 
 // ShapeFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsShape.
 func ShapeFromUnsafePointer(ptr unsafe.Pointer) *TShape {
-    s := new(TShape)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsShape(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (s *TShape) UnsafeAddr() unsafe.Pointer {
 func (s *TShape) IsValid() bool {
     return s.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (s *TShape) Is() TIs {
+    return TIs(s.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (s *TShape) As() TAs {
+//    return TAs(s.instance)
+//}
 
 // TShapeClass
 // CN: 获取类信息指针。
@@ -240,7 +259,7 @@ func (s *TShape) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TShape) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Shape_FindComponent(s.instance, AName))
+    return AsComponent(Shape_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -345,7 +364,7 @@ func (s *TShape) SetAnchors(value TAnchors) {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (s *TShape) Brush() *TBrush {
-    return BrushFromInst(Shape_GetBrush(s.instance))
+    return AsBrush(Shape_GetBrush(s.instance))
 }
 
 // SetBrush
@@ -413,7 +432,7 @@ func (s *TShape) SetEnabled(value bool) {
 
 // Constraints
 func (s *TShape) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Shape_GetConstraints(s.instance))
+    return AsSizeConstraints(Shape_GetConstraints(s.instance))
 }
 
 // SetConstraints
@@ -433,7 +452,7 @@ func (s *TShape) SetParentShowHint(value bool) {
 
 // Pen
 func (s *TShape) Pen() *TPen {
-    return PenFromInst(Shape_GetPen(s.instance))
+    return AsPen(Shape_GetPen(s.instance))
 }
 
 // SetPen
@@ -568,7 +587,7 @@ func (s *TShape) SetOnStartDock(fn TStartDockEvent) {
 
 // Action
 func (s *TShape) Action() *TAction {
-    return ActionFromInst(Shape_GetAction(s.instance))
+    return AsAction(Shape_GetAction(s.instance))
 }
 
 // SetAction
@@ -693,7 +712,7 @@ func (s *TShape) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (s *TShape) Parent() *TWinControl {
-    return WinControlFromInst(Shape_GetParent(s.instance))
+    return AsWinControl(Shape_GetParent(s.instance))
 }
 
 // SetParent
@@ -819,7 +838,7 @@ func (s *TShape) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (s *TShape) Margins() *TMargins {
-    return MarginsFromInst(Shape_GetMargins(s.instance))
+    return AsMargins(Shape_GetMargins(s.instance))
 }
 
 // SetMargins
@@ -833,7 +852,7 @@ func (s *TShape) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (s *TShape) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Shape_GetCustomHint(s.instance))
+    return AsCustomHint(Shape_GetCustomHint(s.instance))
 }
 
 // SetCustomHint
@@ -868,7 +887,7 @@ func (s *TShape) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TShape) Owner() *TComponent {
-    return ComponentFromInst(Shape_GetOwner(s.instance))
+    return AsComponent(Shape_GetOwner(s.instance))
 }
 
 // Name
@@ -903,6 +922,6 @@ func (s *TShape) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TShape) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Shape_GetComponents(s.instance, AIndex))
+    return AsComponent(Shape_GetComponents(s.instance, AIndex))
 }
 

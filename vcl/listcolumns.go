@@ -34,36 +34,41 @@ func NewListColumns() *TListColumns {
     return l
 }
 
+// AsListColumns
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsListColumns(obj interface{}) *TListColumns {
+    l := new(TListColumns)
+    l.instance, l.ptr = getInstance(obj)
+    return l
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ListColumnsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsListColumns.
 func ListColumnsFromInst(inst uintptr) *TListColumns {
-    l := new(TListColumns)
-    l.instance = inst
-    l.ptr = unsafe.Pointer(inst)
-    return l
+    return AsListColumns(inst)
 }
 
 // ListColumnsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsListColumns.
 func ListColumnsFromObj(obj IObject) *TListColumns {
-    l := new(TListColumns)
-    l.instance = CheckPtr(obj)
-    l.ptr = unsafe.Pointer(l.instance)
-    return l
+    return AsListColumns(obj)
 }
 
 // ListColumnsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsListColumns.
 func ListColumnsFromUnsafePointer(ptr unsafe.Pointer) *TListColumns {
-    l := new(TListColumns)
-    l.instance = uintptr(ptr)
-    l.ptr = ptr
-    return l
+    return AsListColumns(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (l *TListColumns) IsValid() bool {
     return l.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (l *TListColumns) Is() TIs {
+    return TIs(l.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (l *TListColumns) As() TAs {
+//    return TAs(l.instance)
+//}
+
 // TListColumnsClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -105,14 +124,14 @@ func TListColumnsClass() TClass {
 
 // Add
 func (l *TListColumns) Add() *TListColumn {
-    return ListColumnFromInst(ListColumns_Add(l.instance))
+    return AsListColumn(ListColumns_Add(l.instance))
 }
 
 // Owner
 // CN: 组件所有者。
 // EN: component owner.
 func (l *TListColumns) Owner() *TWinControl {
-    return WinControlFromInst(ListColumns_Owner(l.instance))
+    return AsWinControl(ListColumns_Owner(l.instance))
 }
 
 // Assign
@@ -151,7 +170,7 @@ func (l *TListColumns) EndUpdate() {
 
 // FindItemID
 func (l *TListColumns) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(ListColumns_FindItemID(l.instance, ID))
+    return AsCollectionItem(ListColumns_FindItemID(l.instance, ID))
 }
 
 // GetNamePath
@@ -163,7 +182,7 @@ func (l *TListColumns) GetNamePath() string {
 
 // Insert
 func (l *TListColumns) Insert(Index int32) *TCollectionItem {
-    return CollectionItemFromInst(ListColumns_Insert(l.instance, Index))
+    return AsCollectionItem(ListColumns_Insert(l.instance, Index))
 }
 
 // DisposeOf
@@ -239,7 +258,7 @@ func (l *TListColumns) Count() int32 {
 
 // Items
 func (l *TListColumns) Items(Index int32) *TListColumn {
-    return ListColumnFromInst(ListColumns_GetItems(l.instance, Index))
+    return AsListColumn(ListColumns_GetItems(l.instance, Index))
 }
 
 // Items

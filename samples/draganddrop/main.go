@@ -30,8 +30,8 @@ func main() {
 	tv.SetOnDragOver(func(sender, source vcl.IObject, x, y int32, state types.TDragState, accept *bool) {
 		*accept = false
 		if source.IsValid() {
-			node := vcl.TreeViewFromObj(source).GetNodeAt(x, y)
-			selnode := vcl.TreeViewFromObj(source).Selected()
+			node := vcl.AsTreeView(source).GetNodeAt(x, y)
+			selnode := vcl.AsTreeView(source).Selected()
 			if node.IsValid() && selnode.IsValid() {
 				*accept = selnode.Parent().Instance() != node.Parent().Instance()
 			}

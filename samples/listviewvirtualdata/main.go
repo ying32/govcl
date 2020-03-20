@@ -39,6 +39,8 @@ func main() {
 
 func (f *TMainFrom) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("OnCreate")
+	f.SetWidth(800)
+	f.SetHeight(600)
 	f.ScreenCenter()
 	f.SetDoubleBuffered(true)
 

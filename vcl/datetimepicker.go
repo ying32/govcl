@@ -35,36 +35,41 @@ func NewDateTimePicker(owner IComponent) *TDateTimePicker {
     return d
 }
 
+// AsDateTimePicker
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsDateTimePicker(obj interface{}) *TDateTimePicker {
+    d := new(TDateTimePicker)
+    d.instance, d.ptr = getInstance(obj)
+    return d
+}
+
+// -------------------------- Deprecated begin --------------------------
 // DateTimePickerFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsDateTimePicker.
 func DateTimePickerFromInst(inst uintptr) *TDateTimePicker {
-    d := new(TDateTimePicker)
-    d.instance = inst
-    d.ptr = unsafe.Pointer(inst)
-    return d
+    return AsDateTimePicker(inst)
 }
 
 // DateTimePickerFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsDateTimePicker.
 func DateTimePickerFromObj(obj IObject) *TDateTimePicker {
-    d := new(TDateTimePicker)
-    d.instance = CheckPtr(obj)
-    d.ptr = unsafe.Pointer(d.instance)
-    return d
+    return AsDateTimePicker(obj)
 }
 
 // DateTimePickerFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsDateTimePicker.
 func DateTimePickerFromUnsafePointer(ptr unsafe.Pointer) *TDateTimePicker {
-    d := new(TDateTimePicker)
-    d.instance = uintptr(ptr)
-    d.ptr = ptr
-    return d
+    return AsDateTimePicker(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -97,6 +102,20 @@ func (d *TDateTimePicker) IsValid() bool {
     return d.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (d *TDateTimePicker) Is() TIs {
+    return TIs(d.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (d *TDateTimePicker) As() TAs {
+//    return TAs(d.instance)
+//}
+
 // TDateTimePickerClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -122,7 +141,7 @@ func (d *TDateTimePicker) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (d *TDateTimePicker) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(DateTimePicker_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(DateTimePicker_ControlAtPos(d.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -143,7 +162,7 @@ func (d *TDateTimePicker) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (d *TDateTimePicker) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(DateTimePicker_FindChildControl(d.instance, ControlName))
+    return AsControl(DateTimePicker_FindChildControl(d.instance, ControlName))
 }
 
 // FlipChildren
@@ -358,7 +377,7 @@ func (d *TDateTimePicker) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (d *TDateTimePicker) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(DateTimePicker_FindComponent(d.instance, AName))
+    return AsComponent(DateTimePicker_FindComponent(d.instance, AName))
 }
 
 // GetNamePath
@@ -536,7 +555,7 @@ func (d *TDateTimePicker) SetCalAlignment(value TDTCalAlignment) {
 
 // CalColors
 func (d *TDateTimePicker) CalColors() *TMonthCalColors {
-    return MonthCalColorsFromInst(DateTimePicker_GetCalColors(d.instance))
+    return AsMonthCalColors(DateTimePicker_GetCalColors(d.instance))
 }
 
 // SetCalColors
@@ -546,7 +565,7 @@ func (d *TDateTimePicker) SetCalColors(value *TMonthCalColors) {
 
 // Constraints
 func (d *TDateTimePicker) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(DateTimePicker_GetConstraints(d.instance))
+    return AsSizeConstraints(DateTimePicker_GetConstraints(d.instance))
 }
 
 // SetConstraints
@@ -706,7 +725,7 @@ func (d *TDateTimePicker) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (d *TDateTimePicker) Font() *TFont {
-    return FontFromInst(DateTimePicker_GetFont(d.instance))
+    return AsFont(DateTimePicker_GetFont(d.instance))
 }
 
 // SetFont
@@ -812,7 +831,7 @@ func (d *TDateTimePicker) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (d *TDateTimePicker) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(DateTimePicker_GetPopupMenu(d.instance))
+    return AsPopupMenu(DateTimePicker_GetPopupMenu(d.instance))
 }
 
 // SetPopupMenu
@@ -1051,7 +1070,7 @@ func (d *TDateTimePicker) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (d *TDateTimePicker) Brush() *TBrush {
-    return BrushFromInst(DateTimePicker_GetBrush(d.instance))
+    return AsBrush(DateTimePicker_GetBrush(d.instance))
 }
 
 // ControlCount
@@ -1098,7 +1117,7 @@ func (d *TDateTimePicker) SetUseDockManager(value bool) {
 
 // Action
 func (d *TDateTimePicker) Action() *TAction {
-    return ActionFromInst(DateTimePicker_GetAction(d.instance))
+    return AsAction(DateTimePicker_GetAction(d.instance))
 }
 
 // SetAction
@@ -1213,7 +1232,7 @@ func (d *TDateTimePicker) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (d *TDateTimePicker) Parent() *TWinControl {
-    return WinControlFromInst(DateTimePicker_GetParent(d.instance))
+    return AsWinControl(DateTimePicker_GetParent(d.instance))
 }
 
 // SetParent
@@ -1325,7 +1344,7 @@ func (d *TDateTimePicker) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (d *TDateTimePicker) Margins() *TMargins {
-    return MarginsFromInst(DateTimePicker_GetMargins(d.instance))
+    return AsMargins(DateTimePicker_GetMargins(d.instance))
 }
 
 // SetMargins
@@ -1339,7 +1358,7 @@ func (d *TDateTimePicker) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (d *TDateTimePicker) CustomHint() *TCustomHint {
-    return CustomHintFromInst(DateTimePicker_GetCustomHint(d.instance))
+    return AsCustomHint(DateTimePicker_GetCustomHint(d.instance))
 }
 
 // SetCustomHint
@@ -1374,7 +1393,7 @@ func (d *TDateTimePicker) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (d *TDateTimePicker) Owner() *TComponent {
-    return ComponentFromInst(DateTimePicker_GetOwner(d.instance))
+    return AsComponent(DateTimePicker_GetOwner(d.instance))
 }
 
 // Name
@@ -1409,20 +1428,20 @@ func (d *TDateTimePicker) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (d *TDateTimePicker) DockClients(Index int32) *TControl {
-    return ControlFromInst(DateTimePicker_GetDockClients(d.instance, Index))
+    return AsControl(DateTimePicker_GetDockClients(d.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (d *TDateTimePicker) Controls(Index int32) *TControl {
-    return ControlFromInst(DateTimePicker_GetControls(d.instance, Index))
+    return AsControl(DateTimePicker_GetControls(d.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (d *TDateTimePicker) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(DateTimePicker_GetComponents(d.instance, AIndex))
+    return AsComponent(DateTimePicker_GetComponents(d.instance, AIndex))
 }
 

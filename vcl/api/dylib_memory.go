@@ -25,12 +25,12 @@ import (
 func loadUILib() *memorydll.LazyDLL {
 	dllBytes, ok := win.ResouceToBytes(win.GetSelfModuleHandle(), "GOVCLLIB", win.RT_RCDATA)
 	if !ok {
-		fmt.Println(fmt.Sprintf("\"GOVCLLIB\"资源不存在。\r\n(\"GOVCLLIB\" resource does not exist.)"))
+		panic("\"GOVCLLIB\" resource does not exist.")
 		return nil
 	}
 	lib := memorydll.NewMemoryDLL(dllBytes)
 	if lib.Load() != nil {
-		fmt.Println(fmt.Sprintf("无法加载dll，未知原因。\r\n(Unable to load dll, unknown reason.)"))
+		panic("Unable to load dll, unknown reason.")
 		return nil
 	}
 	IsloadedLcl = getLibType(lib) == LtLCL

@@ -34,36 +34,41 @@ func NewTreeView(owner IComponent) *TTreeView {
     return t
 }
 
+// AsTreeView
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsTreeView(obj interface{}) *TTreeView {
+    t := new(TTreeView)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TreeViewFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTreeView.
 func TreeViewFromInst(inst uintptr) *TTreeView {
-    t := new(TTreeView)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTreeView(inst)
 }
 
 // TreeViewFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTreeView.
 func TreeViewFromObj(obj IObject) *TTreeView {
-    t := new(TTreeView)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTreeView(obj)
 }
 
 // TreeViewFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTreeView.
 func TreeViewFromUnsafePointer(ptr unsafe.Pointer) *TTreeView {
-    t := new(TTreeView)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTreeView(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (t *TTreeView) IsValid() bool {
     return t.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TTreeView) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TTreeView) As() TAs {
+//    return TAs(t.instance)
+//}
+
 // TTreeViewClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -120,7 +139,7 @@ func (t *TTreeView) FullExpand() {
 
 // GetNodeAt
 func (t *TTreeView) GetNodeAt(X int32, Y int32) *TTreeNode {
-    return TreeNodeFromInst(TreeView_GetNodeAt(t.instance, X , Y))
+    return AsTreeNode(TreeView_GetNodeAt(t.instance, X , Y))
 }
 
 // IsEditing
@@ -175,7 +194,7 @@ func (t *TTreeView) ClearSelection(KeepPrimary bool) {
 
 // FindNextToSelect
 func (t *TTreeView) FindNextToSelect() *TTreeNode {
-    return TreeNodeFromInst(TreeView_FindNextToSelect(t.instance))
+    return AsTreeNode(TreeView_FindNextToSelect(t.instance))
 }
 
 // CustomSort
@@ -201,7 +220,7 @@ func (t *TTreeView) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (t *TTreeView) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(TreeView_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(TreeView_ControlAtPos(t.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -222,7 +241,7 @@ func (t *TTreeView) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (t *TTreeView) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(TreeView_FindChildControl(t.instance, ControlName))
+    return AsControl(TreeView_FindChildControl(t.instance, ControlName))
 }
 
 // FlipChildren
@@ -437,7 +456,7 @@ func (t *TTreeView) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (t *TTreeView) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(TreeView_FindComponent(t.instance, AName))
+    return AsComponent(TreeView_FindComponent(t.instance, AName))
 }
 
 // GetNamePath
@@ -662,7 +681,7 @@ func (t *TTreeView) SetCtl3D(value bool) {
 
 // Constraints
 func (t *TTreeView) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(TreeView_GetConstraints(t.instance))
+    return AsSizeConstraints(TreeView_GetConstraints(t.instance))
 }
 
 // SetConstraints
@@ -744,7 +763,7 @@ func (t *TTreeView) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (t *TTreeView) Font() *TFont {
-    return FontFromInst(TreeView_GetFont(t.instance))
+    return AsFont(TreeView_GetFont(t.instance))
 }
 
 // SetFont
@@ -782,7 +801,7 @@ func (t *TTreeView) SetHotTrack(value bool) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (t *TTreeView) Images() *TImageList {
-    return ImageListFromInst(TreeView_GetImages(t.instance))
+    return AsImageList(TreeView_GetImages(t.instance))
 }
 
 // SetImages
@@ -888,7 +907,7 @@ func (t *TTreeView) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (t *TTreeView) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(TreeView_GetPopupMenu(t.instance))
+    return AsPopupMenu(TreeView_GetPopupMenu(t.instance))
 }
 
 // SetPopupMenu
@@ -988,7 +1007,7 @@ func (t *TTreeView) SetSortType(value TSortType) {
 
 // StateImages
 func (t *TTreeView) StateImages() *TImageList {
-    return ImageListFromInst(TreeView_GetStateImages(t.instance))
+    return AsImageList(TreeView_GetStateImages(t.instance))
 }
 
 // SetStateImages
@@ -1297,7 +1316,7 @@ func (t *TTreeView) SetOnStartDock(fn TStartDockEvent) {
 
 // Items
 func (t *TTreeView) Items() *TTreeNodes {
-    return TreeNodesFromInst(TreeView_GetItems(t.instance))
+    return AsTreeNodes(TreeView_GetItems(t.instance))
 }
 
 // SetItems
@@ -1309,12 +1328,12 @@ func (t *TTreeView) SetItems(value *TTreeNodes) {
 // CN: 获取画布。
 // EN: .
 func (t *TTreeView) Canvas() *TCanvas {
-    return CanvasFromInst(TreeView_GetCanvas(t.instance))
+    return AsCanvas(TreeView_GetCanvas(t.instance))
 }
 
 // DropTarget
 func (t *TTreeView) DropTarget() *TTreeNode {
-    return TreeNodeFromInst(TreeView_GetDropTarget(t.instance))
+    return AsTreeNode(TreeView_GetDropTarget(t.instance))
 }
 
 // SetDropTarget
@@ -1324,7 +1343,7 @@ func (t *TTreeView) SetDropTarget(value *TTreeNode) {
 
 // Selected
 func (t *TTreeView) Selected() *TTreeNode {
-    return TreeNodeFromInst(TreeView_GetSelected(t.instance))
+    return AsTreeNode(TreeView_GetSelected(t.instance))
 }
 
 // SetSelected
@@ -1334,7 +1353,7 @@ func (t *TTreeView) SetSelected(value *TTreeNode) {
 
 // TopItem
 func (t *TTreeView) TopItem() *TTreeNode {
-    return TreeNodeFromInst(TreeView_GetTopItem(t.instance))
+    return AsTreeNode(TreeView_GetTopItem(t.instance))
 }
 
 // SetTopItem
@@ -1393,7 +1412,7 @@ func (t *TTreeView) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (t *TTreeView) Brush() *TBrush {
-    return BrushFromInst(TreeView_GetBrush(t.instance))
+    return AsBrush(TreeView_GetBrush(t.instance))
 }
 
 // ControlCount
@@ -1440,7 +1459,7 @@ func (t *TTreeView) SetUseDockManager(value bool) {
 
 // Action
 func (t *TTreeView) Action() *TAction {
-    return ActionFromInst(TreeView_GetAction(t.instance))
+    return AsAction(TreeView_GetAction(t.instance))
 }
 
 // SetAction
@@ -1555,7 +1574,7 @@ func (t *TTreeView) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (t *TTreeView) Parent() *TWinControl {
-    return WinControlFromInst(TreeView_GetParent(t.instance))
+    return AsWinControl(TreeView_GetParent(t.instance))
 }
 
 // SetParent
@@ -1667,7 +1686,7 @@ func (t *TTreeView) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (t *TTreeView) Margins() *TMargins {
-    return MarginsFromInst(TreeView_GetMargins(t.instance))
+    return AsMargins(TreeView_GetMargins(t.instance))
 }
 
 // SetMargins
@@ -1681,7 +1700,7 @@ func (t *TTreeView) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (t *TTreeView) CustomHint() *TCustomHint {
-    return CustomHintFromInst(TreeView_GetCustomHint(t.instance))
+    return AsCustomHint(TreeView_GetCustomHint(t.instance))
 }
 
 // SetCustomHint
@@ -1716,7 +1735,7 @@ func (t *TTreeView) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTreeView) Owner() *TComponent {
-    return ComponentFromInst(TreeView_GetOwner(t.instance))
+    return AsComponent(TreeView_GetOwner(t.instance))
 }
 
 // Name
@@ -1749,27 +1768,27 @@ func (t *TTreeView) SetTag(value int) {
 
 // Selections
 func (t *TTreeView) Selections(Index int32) *TTreeNode {
-    return TreeNodeFromInst(TreeView_GetSelections(t.instance, Index))
+    return AsTreeNode(TreeView_GetSelections(t.instance, Index))
 }
 
 // DockClients
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (t *TTreeView) DockClients(Index int32) *TControl {
-    return ControlFromInst(TreeView_GetDockClients(t.instance, Index))
+    return AsControl(TreeView_GetDockClients(t.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (t *TTreeView) Controls(Index int32) *TControl {
-    return ControlFromInst(TreeView_GetControls(t.instance, Index))
+    return AsControl(TreeView_GetControls(t.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TTreeView) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(TreeView_GetComponents(t.instance, AIndex))
+    return AsComponent(TreeView_GetComponents(t.instance, AIndex))
 }
 

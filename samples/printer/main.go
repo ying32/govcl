@@ -5,7 +5,6 @@ import (
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/types/colors"
 )
@@ -92,7 +91,7 @@ func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
 	r := types.TRect{0, 0, 2000, 2000}
 	canvas.TextRect3(&r,
 		"这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。这是一段文字，只是用来做测试。",
-		rtl.Include(0, types.TfCenter, types.TfWordBreak, types.TfVerticalCenter))
+		types.NewSet(types.TfCenter, types.TfWordBreak, types.TfVerticalCenter))
 }
 
 func (f *TMainForm) OnCbbChange(sender vcl.IObject) {

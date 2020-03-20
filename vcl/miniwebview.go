@@ -34,36 +34,41 @@ func NewMiniWebview(owner IComponent) *TMiniWebview {
     return m
 }
 
+// AsMiniWebview
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsMiniWebview(obj interface{}) *TMiniWebview {
+    m := new(TMiniWebview)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MiniWebviewFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMiniWebview.
 func MiniWebviewFromInst(inst uintptr) *TMiniWebview {
-    m := new(TMiniWebview)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMiniWebview(inst)
 }
 
 // MiniWebviewFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMiniWebview.
 func MiniWebviewFromObj(obj IObject) *TMiniWebview {
-    m := new(TMiniWebview)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMiniWebview(obj)
 }
 
 // MiniWebviewFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMiniWebview.
 func MiniWebviewFromUnsafePointer(ptr unsafe.Pointer) *TMiniWebview {
-    m := new(TMiniWebview)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMiniWebview(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (m *TMiniWebview) UnsafeAddr() unsafe.Pointer {
 func (m *TMiniWebview) IsValid() bool {
     return m.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (m *TMiniWebview) Is() TIs {
+    return TIs(m.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (m *TMiniWebview) As() TAs {
+//    return TAs(m.instance)
+//}
 
 // TMiniWebviewClass
 // CN: 获取类信息指针。
@@ -180,7 +199,7 @@ func (m *TMiniWebview) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (m *TMiniWebview) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(MiniWebview_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(MiniWebview_ControlAtPos(m.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -201,7 +220,7 @@ func (m *TMiniWebview) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (m *TMiniWebview) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(MiniWebview_FindChildControl(m.instance, ControlName))
+    return AsControl(MiniWebview_FindChildControl(m.instance, ControlName))
 }
 
 // FlipChildren
@@ -402,7 +421,7 @@ func (m *TMiniWebview) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (m *TMiniWebview) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(MiniWebview_FindComponent(m.instance, AName))
+    return AsComponent(MiniWebview_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
@@ -550,7 +569,7 @@ func (m *TMiniWebview) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (m *TMiniWebview) Brush() *TBrush {
-    return BrushFromInst(MiniWebview_GetBrush(m.instance))
+    return AsBrush(MiniWebview_GetBrush(m.instance))
 }
 
 // ControlCount
@@ -653,7 +672,7 @@ func (m *TMiniWebview) SetEnabled(value bool) {
 
 // Action
 func (m *TMiniWebview) Action() *TAction {
-    return ActionFromInst(MiniWebview_GetAction(m.instance))
+    return AsAction(MiniWebview_GetAction(m.instance))
 }
 
 // SetAction
@@ -751,7 +770,7 @@ func (m *TMiniWebview) SetClientWidth(value int32) {
 
 // Constraints
 func (m *TMiniWebview) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(MiniWebview_GetConstraints(m.instance))
+    return AsSizeConstraints(MiniWebview_GetConstraints(m.instance))
 }
 
 // SetConstraints
@@ -844,7 +863,7 @@ func (m *TMiniWebview) SetVisible(value bool) {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (m *TMiniWebview) Parent() *TWinControl {
-    return WinControlFromInst(MiniWebview_GetParent(m.instance))
+    return AsWinControl(MiniWebview_GetParent(m.instance))
 }
 
 // SetParent
@@ -975,7 +994,7 @@ func (m *TMiniWebview) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (m *TMiniWebview) Margins() *TMargins {
-    return MarginsFromInst(MiniWebview_GetMargins(m.instance))
+    return AsMargins(MiniWebview_GetMargins(m.instance))
 }
 
 // SetMargins
@@ -989,7 +1008,7 @@ func (m *TMiniWebview) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (m *TMiniWebview) CustomHint() *TCustomHint {
-    return CustomHintFromInst(MiniWebview_GetCustomHint(m.instance))
+    return AsCustomHint(MiniWebview_GetCustomHint(m.instance))
 }
 
 // SetCustomHint
@@ -1024,7 +1043,7 @@ func (m *TMiniWebview) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (m *TMiniWebview) Owner() *TComponent {
-    return ComponentFromInst(MiniWebview_GetOwner(m.instance))
+    return AsComponent(MiniWebview_GetOwner(m.instance))
 }
 
 // Name
@@ -1059,20 +1078,20 @@ func (m *TMiniWebview) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMiniWebview) DockClients(Index int32) *TControl {
-    return ControlFromInst(MiniWebview_GetDockClients(m.instance, Index))
+    return AsControl(MiniWebview_GetDockClients(m.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (m *TMiniWebview) Controls(Index int32) *TControl {
-    return ControlFromInst(MiniWebview_GetControls(m.instance, Index))
+    return AsControl(MiniWebview_GetControls(m.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (m *TMiniWebview) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(MiniWebview_GetComponents(m.instance, AIndex))
+    return AsComponent(MiniWebview_GetComponents(m.instance, AIndex))
 }
 

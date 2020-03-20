@@ -34,36 +34,41 @@ func NewSavePictureDialog(owner IComponent) *TSavePictureDialog {
     return s
 }
 
+// AsSavePictureDialog
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsSavePictureDialog(obj interface{}) *TSavePictureDialog {
+    s := new(TSavePictureDialog)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // SavePictureDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsSavePictureDialog.
 func SavePictureDialogFromInst(inst uintptr) *TSavePictureDialog {
-    s := new(TSavePictureDialog)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsSavePictureDialog(inst)
 }
 
 // SavePictureDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsSavePictureDialog.
 func SavePictureDialogFromObj(obj IObject) *TSavePictureDialog {
-    s := new(TSavePictureDialog)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsSavePictureDialog(obj)
 }
 
 // SavePictureDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsSavePictureDialog.
 func SavePictureDialogFromUnsafePointer(ptr unsafe.Pointer) *TSavePictureDialog {
-    s := new(TSavePictureDialog)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsSavePictureDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (s *TSavePictureDialog) IsValid() bool {
     return s.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (s *TSavePictureDialog) Is() TIs {
+    return TIs(s.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (s *TSavePictureDialog) As() TAs {
+//    return TAs(s.instance)
+//}
+
 // TSavePictureDialogClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -114,7 +133,7 @@ func (s *TSavePictureDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (s *TSavePictureDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(SavePictureDialog_FindComponent(s.instance, AName))
+    return AsComponent(SavePictureDialog_FindComponent(s.instance, AName))
 }
 
 // GetNamePath
@@ -206,7 +225,7 @@ func (s *TSavePictureDialog) SetFilter(value string) {
 
 // Files
 func (s *TSavePictureDialog) Files() *TStrings {
-    return StringsFromInst(SavePictureDialog_GetFiles(s.instance))
+    return AsStrings(SavePictureDialog_GetFiles(s.instance))
 }
 
 // DefaultExt
@@ -333,7 +352,7 @@ func (s *TSavePictureDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (s *TSavePictureDialog) Owner() *TComponent {
-    return ComponentFromInst(SavePictureDialog_GetOwner(s.instance))
+    return AsComponent(SavePictureDialog_GetOwner(s.instance))
 }
 
 // Name
@@ -368,6 +387,6 @@ func (s *TSavePictureDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TSavePictureDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(SavePictureDialog_GetComponents(s.instance, AIndex))
+    return AsComponent(SavePictureDialog_GetComponents(s.instance, AIndex))
 }
 

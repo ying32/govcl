@@ -34,36 +34,41 @@ func NewReplaceDialog(owner IComponent) *TReplaceDialog {
     return r
 }
 
+// AsReplaceDialog
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsReplaceDialog(obj interface{}) *TReplaceDialog {
+    r := new(TReplaceDialog)
+    r.instance, r.ptr = getInstance(obj)
+    return r
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ReplaceDialogFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsReplaceDialog.
 func ReplaceDialogFromInst(inst uintptr) *TReplaceDialog {
-    r := new(TReplaceDialog)
-    r.instance = inst
-    r.ptr = unsafe.Pointer(inst)
-    return r
+    return AsReplaceDialog(inst)
 }
 
 // ReplaceDialogFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsReplaceDialog.
 func ReplaceDialogFromObj(obj IObject) *TReplaceDialog {
-    r := new(TReplaceDialog)
-    r.instance = CheckPtr(obj)
-    r.ptr = unsafe.Pointer(r.instance)
-    return r
+    return AsReplaceDialog(obj)
 }
 
 // ReplaceDialogFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsReplaceDialog.
 func ReplaceDialogFromUnsafePointer(ptr unsafe.Pointer) *TReplaceDialog {
-    r := new(TReplaceDialog)
-    r.instance = uintptr(ptr)
-    r.ptr = ptr
-    return r
+    return AsReplaceDialog(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (r *TReplaceDialog) IsValid() bool {
     return r.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (r *TReplaceDialog) Is() TIs {
+    return TIs(r.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (r *TReplaceDialog) As() TAs {
+//    return TAs(r.instance)
+//}
+
 // TReplaceDialogClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -119,7 +138,7 @@ func (r *TReplaceDialog) Execute() bool {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (r *TReplaceDialog) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ReplaceDialog_FindComponent(r.instance, AName))
+    return AsComponent(ReplaceDialog_FindComponent(r.instance, AName))
 }
 
 // GetNamePath
@@ -331,7 +350,7 @@ func (r *TReplaceDialog) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (r *TReplaceDialog) Owner() *TComponent {
-    return ComponentFromInst(ReplaceDialog_GetOwner(r.instance))
+    return AsComponent(ReplaceDialog_GetOwner(r.instance))
 }
 
 // Name
@@ -366,6 +385,6 @@ func (r *TReplaceDialog) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (r *TReplaceDialog) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ReplaceDialog_GetComponents(r.instance, AIndex))
+    return AsComponent(ReplaceDialog_GetComponents(r.instance, AIndex))
 }
 

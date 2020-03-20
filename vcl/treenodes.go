@@ -34,36 +34,41 @@ func NewTreeNodes() *TTreeNodes {
     return t
 }
 
+// AsTreeNodes
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsTreeNodes(obj interface{}) *TTreeNodes {
+    t := new(TTreeNodes)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TreeNodesFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTreeNodes.
 func TreeNodesFromInst(inst uintptr) *TTreeNodes {
-    t := new(TTreeNodes)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTreeNodes(inst)
 }
 
 // TreeNodesFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTreeNodes.
 func TreeNodesFromObj(obj IObject) *TTreeNodes {
-    t := new(TTreeNodes)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTreeNodes(obj)
 }
 
 // TreeNodesFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTreeNodes.
 func TreeNodesFromUnsafePointer(ptr unsafe.Pointer) *TTreeNodes {
-    t := new(TTreeNodes)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTreeNodes(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (t *TTreeNodes) IsValid() bool {
     return t.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TTreeNodes) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TTreeNodes) As() TAs {
+//    return TAs(t.instance)
+//}
+
 // TTreeNodesClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -105,47 +124,47 @@ func TTreeNodesClass() TClass {
 
 // AddChildFirst
 func (t *TTreeNodes) AddChildFirst(Parent *TTreeNode, S string) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddChildFirst(t.instance, CheckPtr(Parent), S))
+    return AsTreeNode(TreeNodes_AddChildFirst(t.instance, CheckPtr(Parent), S))
 }
 
 // AddChild
 func (t *TTreeNodes) AddChild(Parent *TTreeNode, S string) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddChild(t.instance, CheckPtr(Parent), S))
+    return AsTreeNode(TreeNodes_AddChild(t.instance, CheckPtr(Parent), S))
 }
 
 // AddChildObjectFirst
 func (t *TTreeNodes) AddChildObjectFirst(Parent *TTreeNode, S string, Ptr uintptr) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddChildObjectFirst(t.instance, CheckPtr(Parent), S , Ptr))
+    return AsTreeNode(TreeNodes_AddChildObjectFirst(t.instance, CheckPtr(Parent), S , Ptr))
 }
 
 // AddChildObject
 func (t *TTreeNodes) AddChildObject(Parent *TTreeNode, S string, Ptr uintptr) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddChildObject(t.instance, CheckPtr(Parent), S , Ptr))
+    return AsTreeNode(TreeNodes_AddChildObject(t.instance, CheckPtr(Parent), S , Ptr))
 }
 
 // AddObjectFirst
 func (t *TTreeNodes) AddObjectFirst(Sibling *TTreeNode, S string, Ptr uintptr) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddObjectFirst(t.instance, CheckPtr(Sibling), S , Ptr))
+    return AsTreeNode(TreeNodes_AddObjectFirst(t.instance, CheckPtr(Sibling), S , Ptr))
 }
 
 // AddObject
 func (t *TTreeNodes) AddObject(Sibling *TTreeNode, S string, Ptr uintptr) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddObject(t.instance, CheckPtr(Sibling), S , Ptr))
+    return AsTreeNode(TreeNodes_AddObject(t.instance, CheckPtr(Sibling), S , Ptr))
 }
 
 // AddNode
 func (t *TTreeNodes) AddNode(Node *TTreeNode, Relative *TTreeNode, S string, Ptr uintptr, Method TNodeAttachMode) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddNode(t.instance, CheckPtr(Node), CheckPtr(Relative), S , Ptr , Method))
+    return AsTreeNode(TreeNodes_AddNode(t.instance, CheckPtr(Node), CheckPtr(Relative), S , Ptr , Method))
 }
 
 // AddFirst
 func (t *TTreeNodes) AddFirst(Sibling *TTreeNode, S string) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_AddFirst(t.instance, CheckPtr(Sibling), S))
+    return AsTreeNode(TreeNodes_AddFirst(t.instance, CheckPtr(Sibling), S))
 }
 
 // Add
 func (t *TTreeNodes) Add(Sibling *TTreeNode, S string) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_Add(t.instance, CheckPtr(Sibling), S))
+    return AsTreeNode(TreeNodes_Add(t.instance, CheckPtr(Sibling), S))
 }
 
 // AlphaSort
@@ -184,22 +203,22 @@ func (t *TTreeNodes) EndUpdate() {
 
 // GetFirstNode
 func (t *TTreeNodes) GetFirstNode() *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_GetFirstNode(t.instance))
+    return AsTreeNode(TreeNodes_GetFirstNode(t.instance))
 }
 
 // GetNode
 func (t *TTreeNodes) GetNode(ItemId uintptr) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_GetNode(t.instance, ItemId))
+    return AsTreeNode(TreeNodes_GetNode(t.instance, ItemId))
 }
 
 // Insert
 func (t *TTreeNodes) Insert(Sibling *TTreeNode, S string) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_Insert(t.instance, CheckPtr(Sibling), S))
+    return AsTreeNode(TreeNodes_Insert(t.instance, CheckPtr(Sibling), S))
 }
 
 // InsertObject
 func (t *TTreeNodes) InsertObject(Sibling *TTreeNode, S string, Ptr uintptr) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_InsertObject(t.instance, CheckPtr(Sibling), S , Ptr))
+    return AsTreeNode(TreeNodes_InsertObject(t.instance, CheckPtr(Sibling), S , Ptr))
 }
 
 // GetNamePath
@@ -281,11 +300,11 @@ func (t *TTreeNodes) Handle() HWND {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (t *TTreeNodes) Owner() *TWinControl {
-    return WinControlFromInst(TreeNodes_GetOwner(t.instance))
+    return AsWinControl(TreeNodes_GetOwner(t.instance))
 }
 
 // Item
 func (t *TTreeNodes) Item(Index int32) *TTreeNode {
-    return TreeNodeFromInst(TreeNodes_GetItem(t.instance, Index))
+    return AsTreeNode(TreeNodes_GetItem(t.instance, Index))
 }
 

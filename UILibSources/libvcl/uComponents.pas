@@ -70,6 +70,7 @@ uses
   Vcl.Taskbar,
   Vcl.Samples.Spin,
   ImageButton,
+  xButton,
   {$I UserDefineComponentUses.inc}
   uMiniWebview;
 
@@ -83,7 +84,7 @@ type
 //--------------------- 原DelphiResForm.inc内容
 
 const
-  ClassRefArrs: array[0..138] of TClass = (
+  ClassRefArrs: array[0..139] of TClass = (
     TApplication,TForm,TButton,TBitBtn,TMaskEdit,TEdit,TMainMenu,TPopupMenu,TMemo,TCheckBox,
     TRadioButton,TGroupBox,TLabel,TListBox,TComboBox,TPanel,TImage,TLinkLabel,
     TSpeedButton,TSplitter,TRadioGroup,TStaticText,TColorBox,TColorListBox,
@@ -107,7 +108,7 @@ const
     THeaderSection,THeaderSections,TLabeledEdit,TBoundLabel,
     TFlowPanel,TCoolBar,TCoolBands,TCoolBand,TTaskbar,TJumpList,TSpinEdit,TMiniWebview,
     TTaskDialog, TTaskDialogButtons, TTaskDialogProgressBar, TTaskDialogButtonItem, TTaskDialogRadioButtonItem, TTaskDialogBaseButtonItem,
-    TCalendar,TComboBoxEx,TFrame,TControlScrollBar,TSizeConstraints
+    TCalendar,TComboBoxEx,TFrame,TControlScrollBar,TSizeConstraints,TXButton
   );
 
 

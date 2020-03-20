@@ -34,36 +34,41 @@ func NewDragDockObject() *TDragDockObject {
     return d
 }
 
+// AsDragDockObject
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsDragDockObject(obj interface{}) *TDragDockObject {
+    d := new(TDragDockObject)
+    d.instance, d.ptr = getInstance(obj)
+    return d
+}
+
+// -------------------------- Deprecated begin --------------------------
 // DragDockObjectFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsDragDockObject.
 func DragDockObjectFromInst(inst uintptr) *TDragDockObject {
-    d := new(TDragDockObject)
-    d.instance = inst
-    d.ptr = unsafe.Pointer(inst)
-    return d
+    return AsDragDockObject(inst)
 }
 
 // DragDockObjectFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsDragDockObject.
 func DragDockObjectFromObj(obj IObject) *TDragDockObject {
-    d := new(TDragDockObject)
-    d.instance = CheckPtr(obj)
-    d.ptr = unsafe.Pointer(d.instance)
-    return d
+    return AsDragDockObject(obj)
 }
 
 // DragDockObjectFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsDragDockObject.
 func DragDockObjectFromUnsafePointer(ptr unsafe.Pointer) *TDragDockObject {
-    d := new(TDragDockObject)
-    d.instance = uintptr(ptr)
-    d.ptr = ptr
-    return d
+    return AsDragDockObject(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (d *TDragDockObject) UnsafeAddr() unsafe.Pointer {
 func (d *TDragDockObject) IsValid() bool {
     return d.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (d *TDragDockObject) Is() TIs {
+    return TIs(d.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (d *TDragDockObject) As() TAs {
+//    return TAs(d.instance)
+//}
 
 // TDragDockObjectClass
 // CN: 获取类信息指针。
@@ -180,7 +199,7 @@ func (d *TDragDockObject) ToString() string {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (d *TDragDockObject) Brush() *TBrush {
-    return BrushFromInst(DragDockObject_GetBrush(d.instance))
+    return AsBrush(DragDockObject_GetBrush(d.instance))
 }
 
 // SetBrush
@@ -207,7 +226,7 @@ func (d *TDragDockObject) DropAlign() TAlign {
 
 // DropOnControl
 func (d *TDragDockObject) DropOnControl() *TControl {
-    return ControlFromInst(DragDockObject_GetDropOnControl(d.instance))
+    return AsControl(DragDockObject_GetDropOnControl(d.instance))
 }
 
 // EraseDockRect
@@ -242,7 +261,7 @@ func (d *TDragDockObject) FrameWidth() int32 {
 
 // Control
 func (d *TDragDockObject) Control() *TControl {
-    return ControlFromInst(DragDockObject_GetControl(d.instance))
+    return AsControl(DragDockObject_GetControl(d.instance))
 }
 
 // SetControl

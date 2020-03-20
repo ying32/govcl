@@ -34,36 +34,41 @@ func NewMenuItem(owner IComponent) *TMenuItem {
     return m
 }
 
+// AsMenuItem
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsMenuItem(obj interface{}) *TMenuItem {
+    m := new(TMenuItem)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MenuItemFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMenuItem.
 func MenuItemFromInst(inst uintptr) *TMenuItem {
-    m := new(TMenuItem)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMenuItem(inst)
 }
 
 // MenuItemFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMenuItem.
 func MenuItemFromObj(obj IObject) *TMenuItem {
-    m := new(TMenuItem)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMenuItem(obj)
 }
 
 // MenuItemFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMenuItem.
 func MenuItemFromUnsafePointer(ptr unsafe.Pointer) *TMenuItem {
-    m := new(TMenuItem)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMenuItem(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (m *TMenuItem) UnsafeAddr() unsafe.Pointer {
 func (m *TMenuItem) IsValid() bool {
     return m.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (m *TMenuItem) Is() TIs {
+    return TIs(m.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (m *TMenuItem) As() TAs {
+//    return TAs(m.instance)
+//}
 
 // TMenuItemClass
 // CN: 获取类信息指针。
@@ -148,7 +167,7 @@ func (m *TMenuItem) Add(Item IComponent) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (m *TMenuItem) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(MenuItem_FindComponent(m.instance, AName))
+    return AsComponent(MenuItem_FindComponent(m.instance, AName))
 }
 
 // GetNamePath
@@ -237,12 +256,12 @@ func (m *TMenuItem) Count() int32 {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (m *TMenuItem) Parent() *TMenuItem {
-    return MenuItemFromInst(MenuItem_GetParent(m.instance))
+    return AsMenuItem(MenuItem_GetParent(m.instance))
 }
 
 // Action
 func (m *TMenuItem) Action() *TAction {
-    return ActionFromInst(MenuItem_GetAction(m.instance))
+    return AsAction(MenuItem_GetAction(m.instance))
 }
 
 // SetAction
@@ -272,7 +291,7 @@ func (m *TMenuItem) SetAutoHotkeys(value TMenuItemAutoFlag) {
 
 // Bitmap
 func (m *TMenuItem) Bitmap() *TBitmap {
-    return BitmapFromInst(MenuItem_GetBitmap(m.instance))
+    return AsBitmap(MenuItem_GetBitmap(m.instance))
 }
 
 // SetBitmap
@@ -464,7 +483,7 @@ func (m *TMenuItem) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (m *TMenuItem) Owner() *TComponent {
-    return ComponentFromInst(MenuItem_GetOwner(m.instance))
+    return AsComponent(MenuItem_GetOwner(m.instance))
 }
 
 // Name
@@ -497,13 +516,13 @@ func (m *TMenuItem) SetTag(value int) {
 
 // Items
 func (m *TMenuItem) Items(Index int32) *TMenuItem {
-    return MenuItemFromInst(MenuItem_GetItems(m.instance, Index))
+    return AsMenuItem(MenuItem_GetItems(m.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (m *TMenuItem) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(MenuItem_GetComponents(m.instance, AIndex))
+    return AsComponent(MenuItem_GetComponents(m.instance, AIndex))
 }
 

@@ -34,36 +34,41 @@ func NewGroupBox(owner IComponent) *TGroupBox {
     return g
 }
 
+// AsGroupBox
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsGroupBox(obj interface{}) *TGroupBox {
+    g := new(TGroupBox)
+    g.instance, g.ptr = getInstance(obj)
+    return g
+}
+
+// -------------------------- Deprecated begin --------------------------
 // GroupBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsGroupBox.
 func GroupBoxFromInst(inst uintptr) *TGroupBox {
-    g := new(TGroupBox)
-    g.instance = inst
-    g.ptr = unsafe.Pointer(inst)
-    return g
+    return AsGroupBox(inst)
 }
 
 // GroupBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsGroupBox.
 func GroupBoxFromObj(obj IObject) *TGroupBox {
-    g := new(TGroupBox)
-    g.instance = CheckPtr(obj)
-    g.ptr = unsafe.Pointer(g.instance)
-    return g
+    return AsGroupBox(obj)
 }
 
 // GroupBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsGroupBox.
 func GroupBoxFromUnsafePointer(ptr unsafe.Pointer) *TGroupBox {
-    g := new(TGroupBox)
-    g.instance = uintptr(ptr)
-    g.ptr = ptr
-    return g
+    return AsGroupBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (g *TGroupBox) IsValid() bool {
     return g.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (g *TGroupBox) Is() TIs {
+    return TIs(g.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (g *TGroupBox) As() TAs {
+//    return TAs(g.instance)
+//}
+
 // TGroupBoxClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -121,7 +140,7 @@ func (g *TGroupBox) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (g *TGroupBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(GroupBox_ControlAtPos(g.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(GroupBox_ControlAtPos(g.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -142,7 +161,7 @@ func (g *TGroupBox) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (g *TGroupBox) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(GroupBox_FindChildControl(g.instance, ControlName))
+    return AsControl(GroupBox_FindChildControl(g.instance, ControlName))
 }
 
 // FlipChildren
@@ -357,7 +376,7 @@ func (g *TGroupBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (g *TGroupBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(GroupBox_FindComponent(g.instance, AName))
+    return AsComponent(GroupBox_FindComponent(g.instance, AName))
 }
 
 // GetNamePath
@@ -498,7 +517,7 @@ func (g *TGroupBox) SetColor(value TColor) {
 
 // Constraints
 func (g *TGroupBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(GroupBox_GetConstraints(g.instance))
+    return AsSizeConstraints(GroupBox_GetConstraints(g.instance))
 }
 
 // SetConstraints
@@ -604,7 +623,7 @@ func (g *TGroupBox) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (g *TGroupBox) Font() *TFont {
-    return FontFromInst(GroupBox_GetFont(g.instance))
+    return AsFont(GroupBox_GetFont(g.instance))
 }
 
 // SetFont
@@ -690,7 +709,7 @@ func (g *TGroupBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (g *TGroupBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(GroupBox_GetPopupMenu(g.instance))
+    return AsPopupMenu(GroupBox_GetPopupMenu(g.instance))
 }
 
 // SetPopupMenu
@@ -768,6 +787,11 @@ func (g *TGroupBox) StyleElements() TStyleElements {
 // EN: Set Style element.
 func (g *TGroupBox) SetStyleElements(value TStyleElements) {
     GroupBox_SetStyleElements(g.instance, value)
+}
+
+// SetOnAlignPosition
+func (g *TGroupBox) SetOnAlignPosition(fn TAlignPositionEvent) {
+    GroupBox_SetOnAlignPosition(g.instance, fn)
 }
 
 // SetOnClick
@@ -932,7 +956,7 @@ func (g *TGroupBox) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (g *TGroupBox) Brush() *TBrush {
-    return BrushFromInst(GroupBox_GetBrush(g.instance))
+    return AsBrush(GroupBox_GetBrush(g.instance))
 }
 
 // ControlCount
@@ -979,7 +1003,7 @@ func (g *TGroupBox) SetUseDockManager(value bool) {
 
 // Action
 func (g *TGroupBox) Action() *TAction {
-    return ActionFromInst(GroupBox_GetAction(g.instance))
+    return AsAction(GroupBox_GetAction(g.instance))
 }
 
 // SetAction
@@ -1094,7 +1118,7 @@ func (g *TGroupBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (g *TGroupBox) Parent() *TWinControl {
-    return WinControlFromInst(GroupBox_GetParent(g.instance))
+    return AsWinControl(GroupBox_GetParent(g.instance))
 }
 
 // SetParent
@@ -1206,7 +1230,7 @@ func (g *TGroupBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (g *TGroupBox) Margins() *TMargins {
-    return MarginsFromInst(GroupBox_GetMargins(g.instance))
+    return AsMargins(GroupBox_GetMargins(g.instance))
 }
 
 // SetMargins
@@ -1220,7 +1244,7 @@ func (g *TGroupBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (g *TGroupBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(GroupBox_GetCustomHint(g.instance))
+    return AsCustomHint(GroupBox_GetCustomHint(g.instance))
 }
 
 // SetCustomHint
@@ -1255,7 +1279,7 @@ func (g *TGroupBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (g *TGroupBox) Owner() *TComponent {
-    return ComponentFromInst(GroupBox_GetOwner(g.instance))
+    return AsComponent(GroupBox_GetOwner(g.instance))
 }
 
 // Name
@@ -1290,20 +1314,20 @@ func (g *TGroupBox) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (g *TGroupBox) DockClients(Index int32) *TControl {
-    return ControlFromInst(GroupBox_GetDockClients(g.instance, Index))
+    return AsControl(GroupBox_GetDockClients(g.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (g *TGroupBox) Controls(Index int32) *TControl {
-    return ControlFromInst(GroupBox_GetControls(g.instance, Index))
+    return AsControl(GroupBox_GetControls(g.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (g *TGroupBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(GroupBox_GetComponents(g.instance, AIndex))
+    return AsComponent(GroupBox_GetComponents(g.instance, AIndex))
 }
 

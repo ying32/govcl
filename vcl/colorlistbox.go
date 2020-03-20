@@ -34,36 +34,41 @@ func NewColorListBox(owner IComponent) *TColorListBox {
     return c
 }
 
+// AsColorListBox
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsColorListBox(obj interface{}) *TColorListBox {
+    c := new(TColorListBox)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ColorListBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsColorListBox.
 func ColorListBoxFromInst(inst uintptr) *TColorListBox {
-    c := new(TColorListBox)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsColorListBox(inst)
 }
 
 // ColorListBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsColorListBox.
 func ColorListBoxFromObj(obj IObject) *TColorListBox {
-    c := new(TColorListBox)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsColorListBox(obj)
 }
 
 // ColorListBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsColorListBox.
 func ColorListBoxFromUnsafePointer(ptr unsafe.Pointer) *TColorListBox {
-    c := new(TColorListBox)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsColorListBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (c *TColorListBox) UnsafeAddr() unsafe.Pointer {
 func (c *TColorListBox) IsValid() bool {
     return c.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (c *TColorListBox) Is() TIs {
+    return TIs(c.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (c *TColorListBox) As() TAs {
+//    return TAs(c.instance)
+//}
 
 // TColorListBoxClass
 // CN: 获取类信息指针。
@@ -132,6 +151,16 @@ func (c *TColorListBox) DeleteSelected() {
     ColorListBox_DeleteSelected(c.instance)
 }
 
+// ItemAtPos
+func (c *TColorListBox) ItemAtPos(Pos TPoint, Existing bool) int32 {
+    return ColorListBox_ItemAtPos(c.instance, Pos , Existing)
+}
+
+// ItemRect
+func (c *TColorListBox) ItemRect(Index int32) TRect {
+    return ColorListBox_ItemRect(c.instance, Index)
+}
+
 // SelectAll
 // CN: 全选。
 // EN: .
@@ -157,7 +186,7 @@ func (c *TColorListBox) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TColorListBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ColorListBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ColorListBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -178,7 +207,7 @@ func (c *TColorListBox) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (c *TColorListBox) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ColorListBox_FindChildControl(c.instance, ControlName))
+    return AsControl(ColorListBox_FindChildControl(c.instance, ControlName))
 }
 
 // FlipChildren
@@ -393,7 +422,7 @@ func (c *TColorListBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TColorListBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ColorListBox_FindComponent(c.instance, AName))
+    return AsComponent(ColorListBox_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -610,7 +639,7 @@ func (c *TColorListBox) SetColor(value TColor) {
 
 // Constraints
 func (c *TColorListBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ColorListBox_GetConstraints(c.instance))
+    return AsSizeConstraints(ColorListBox_GetConstraints(c.instance))
 }
 
 // SetConstraints
@@ -660,7 +689,7 @@ func (c *TColorListBox) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (c *TColorListBox) Font() *TFont {
-    return FontFromInst(ColorListBox_GetFont(c.instance))
+    return AsFont(ColorListBox_GetFont(c.instance))
 }
 
 // SetFont
@@ -746,7 +775,7 @@ func (c *TColorListBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (c *TColorListBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ColorListBox_GetPopupMenu(c.instance))
+    return AsPopupMenu(ColorListBox_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
@@ -974,7 +1003,7 @@ func (c *TColorListBox) SetAutoCompleteDelay(value uint32) {
 // CN: 获取画布。
 // EN: .
 func (c *TColorListBox) Canvas() *TCanvas {
-    return CanvasFromInst(ColorListBox_GetCanvas(c.instance))
+    return AsCanvas(ColorListBox_GetCanvas(c.instance))
 }
 
 // Count
@@ -989,7 +1018,7 @@ func (c *TColorListBox) SetCount(value int32) {
 
 // Items
 func (c *TColorListBox) Items() *TStrings {
-    return StringsFromInst(ColorListBox_GetItems(c.instance))
+    return AsStrings(ColorListBox_GetItems(c.instance))
 }
 
 // SetItems
@@ -1068,7 +1097,7 @@ func (c *TColorListBox) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (c *TColorListBox) Brush() *TBrush {
-    return BrushFromInst(ColorListBox_GetBrush(c.instance))
+    return AsBrush(ColorListBox_GetBrush(c.instance))
 }
 
 // ControlCount
@@ -1115,7 +1144,7 @@ func (c *TColorListBox) SetUseDockManager(value bool) {
 
 // Action
 func (c *TColorListBox) Action() *TAction {
-    return ActionFromInst(ColorListBox_GetAction(c.instance))
+    return AsAction(ColorListBox_GetAction(c.instance))
 }
 
 // SetAction
@@ -1230,7 +1259,7 @@ func (c *TColorListBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (c *TColorListBox) Parent() *TWinControl {
-    return WinControlFromInst(ColorListBox_GetParent(c.instance))
+    return AsWinControl(ColorListBox_GetParent(c.instance))
 }
 
 // SetParent
@@ -1342,7 +1371,7 @@ func (c *TColorListBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (c *TColorListBox) Margins() *TMargins {
-    return MarginsFromInst(ColorListBox_GetMargins(c.instance))
+    return AsMargins(ColorListBox_GetMargins(c.instance))
 }
 
 // SetMargins
@@ -1356,7 +1385,7 @@ func (c *TColorListBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (c *TColorListBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ColorListBox_GetCustomHint(c.instance))
+    return AsCustomHint(ColorListBox_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
@@ -1391,7 +1420,7 @@ func (c *TColorListBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TColorListBox) Owner() *TComponent {
-    return ComponentFromInst(ColorListBox_GetOwner(c.instance))
+    return AsComponent(ColorListBox_GetOwner(c.instance))
 }
 
 // Name
@@ -1436,20 +1465,20 @@ func (c *TColorListBox) ColorNames(Index int32) string {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TColorListBox) DockClients(Index int32) *TControl {
-    return ControlFromInst(ColorListBox_GetDockClients(c.instance, Index))
+    return AsControl(ColorListBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (c *TColorListBox) Controls(Index int32) *TControl {
-    return ControlFromInst(ColorListBox_GetControls(c.instance, Index))
+    return AsControl(ColorListBox_GetControls(c.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TColorListBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ColorListBox_GetComponents(c.instance, AIndex))
+    return AsComponent(ColorListBox_GetComponents(c.instance, AIndex))
 }
 

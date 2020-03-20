@@ -42,6 +42,16 @@ begin
   AObj.DeleteSelected;
 end;
 
+function ColorListBox_ItemAtPos(AObj: TColorListBox; var Pos: TPoint; Existing: LongBool): Integer; stdcall;
+begin
+  Result :=  AObj.ItemAtPos(Pos, Existing);
+end;
+
+procedure ColorListBox_ItemRect(AObj: TColorListBox; Index: Integer; var Result: TRect); stdcall;
+begin
+  Result :=  AObj.ItemRect(Index);
+end;
+
 procedure ColorListBox_SelectAll(AObj: TColorListBox); stdcall;
 begin
   AObj.SelectAll;
@@ -1220,6 +1230,8 @@ exports
   ColorListBox_ClearSelection,
   ColorListBox_CopySelection,
   ColorListBox_DeleteSelected,
+  ColorListBox_ItemAtPos,
+  ColorListBox_ItemRect,
   ColorListBox_SelectAll,
   ColorListBox_CanFocus,
   ColorListBox_ContainsControl,

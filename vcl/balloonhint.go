@@ -34,36 +34,41 @@ func NewBalloonHint(owner IComponent) *TBalloonHint {
     return b
 }
 
+// AsBalloonHint
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsBalloonHint(obj interface{}) *TBalloonHint {
+    b := new(TBalloonHint)
+    b.instance, b.ptr = getInstance(obj)
+    return b
+}
+
+// -------------------------- Deprecated begin --------------------------
 // BalloonHintFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsBalloonHint.
 func BalloonHintFromInst(inst uintptr) *TBalloonHint {
-    b := new(TBalloonHint)
-    b.instance = inst
-    b.ptr = unsafe.Pointer(inst)
-    return b
+    return AsBalloonHint(inst)
 }
 
 // BalloonHintFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsBalloonHint.
 func BalloonHintFromObj(obj IObject) *TBalloonHint {
-    b := new(TBalloonHint)
-    b.instance = CheckPtr(obj)
-    b.ptr = unsafe.Pointer(b.instance)
-    return b
+    return AsBalloonHint(obj)
 }
 
 // BalloonHintFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsBalloonHint.
 func BalloonHintFromUnsafePointer(ptr unsafe.Pointer) *TBalloonHint {
-    b := new(TBalloonHint)
-    b.instance = uintptr(ptr)
-    b.ptr = ptr
-    return b
+    return AsBalloonHint(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (b *TBalloonHint) IsValid() bool {
     return b.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (b *TBalloonHint) Is() TIs {
+    return TIs(b.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (b *TBalloonHint) As() TAs {
+//    return TAs(b.instance)
+//}
+
 // TBalloonHintClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -121,7 +140,7 @@ func (b *TBalloonHint) HideHint() {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (b *TBalloonHint) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(BalloonHint_FindComponent(b.instance, AName))
+    return AsComponent(BalloonHint_FindComponent(b.instance, AName))
 }
 
 // GetNamePath
@@ -244,7 +263,7 @@ func (b *TBalloonHint) SetImageIndex(value int32) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (b *TBalloonHint) Images() *TImageList {
-    return ImageListFromInst(BalloonHint_GetImages(b.instance))
+    return AsImageList(BalloonHint_GetImages(b.instance))
 }
 
 // SetImages
@@ -309,7 +328,7 @@ func (b *TBalloonHint) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (b *TBalloonHint) Owner() *TComponent {
-    return ComponentFromInst(BalloonHint_GetOwner(b.instance))
+    return AsComponent(BalloonHint_GetOwner(b.instance))
 }
 
 // Name
@@ -344,6 +363,6 @@ func (b *TBalloonHint) SetTag(value int) {
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (b *TBalloonHint) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(BalloonHint_GetComponents(b.instance, AIndex))
+    return AsComponent(BalloonHint_GetComponents(b.instance, AIndex))
 }
 

@@ -34,36 +34,41 @@ func NewRadioGroup(owner IComponent) *TRadioGroup {
     return r
 }
 
+// AsRadioGroup
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsRadioGroup(obj interface{}) *TRadioGroup {
+    r := new(TRadioGroup)
+    r.instance, r.ptr = getInstance(obj)
+    return r
+}
+
+// -------------------------- Deprecated begin --------------------------
 // RadioGroupFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsRadioGroup.
 func RadioGroupFromInst(inst uintptr) *TRadioGroup {
-    r := new(TRadioGroup)
-    r.instance = inst
-    r.ptr = unsafe.Pointer(inst)
-    return r
+    return AsRadioGroup(inst)
 }
 
 // RadioGroupFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsRadioGroup.
 func RadioGroupFromObj(obj IObject) *TRadioGroup {
-    r := new(TRadioGroup)
-    r.instance = CheckPtr(obj)
-    r.ptr = unsafe.Pointer(r.instance)
-    return r
+    return AsRadioGroup(obj)
 }
 
 // RadioGroupFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsRadioGroup.
 func RadioGroupFromUnsafePointer(ptr unsafe.Pointer) *TRadioGroup {
-    r := new(TRadioGroup)
-    r.instance = uintptr(ptr)
-    r.ptr = ptr
-    return r
+    return AsRadioGroup(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (r *TRadioGroup) IsValid() bool {
     return r.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (r *TRadioGroup) Is() TIs {
+    return TIs(r.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (r *TRadioGroup) As() TAs {
+//    return TAs(r.instance)
+//}
+
 // TRadioGroupClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -126,7 +145,7 @@ func (r *TRadioGroup) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (r *TRadioGroup) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(RadioGroup_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(RadioGroup_ControlAtPos(r.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -147,7 +166,7 @@ func (r *TRadioGroup) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (r *TRadioGroup) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(RadioGroup_FindChildControl(r.instance, ControlName))
+    return AsControl(RadioGroup_FindChildControl(r.instance, ControlName))
 }
 
 // Focused
@@ -357,7 +376,7 @@ func (r *TRadioGroup) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (r *TRadioGroup) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(RadioGroup_FindComponent(r.instance, AName))
+    return AsComponent(RadioGroup_FindComponent(r.instance, AName))
 }
 
 // GetNamePath
@@ -590,7 +609,7 @@ func (r *TRadioGroup) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (r *TRadioGroup) Font() *TFont {
-    return FontFromInst(RadioGroup_GetFont(r.instance))
+    return AsFont(RadioGroup_GetFont(r.instance))
 }
 
 // SetFont
@@ -612,7 +631,7 @@ func (r *TRadioGroup) SetItemIndex(value int32) {
 
 // Items
 func (r *TRadioGroup) Items() *TStrings {
-    return StringsFromInst(RadioGroup_GetItems(r.instance))
+    return AsStrings(RadioGroup_GetItems(r.instance))
 }
 
 // SetItems
@@ -622,7 +641,7 @@ func (r *TRadioGroup) SetItems(value IObject) {
 
 // Constraints
 func (r *TRadioGroup) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(RadioGroup_GetConstraints(r.instance))
+    return AsSizeConstraints(RadioGroup_GetConstraints(r.instance))
 }
 
 // SetConstraints
@@ -706,7 +725,7 @@ func (r *TRadioGroup) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (r *TRadioGroup) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(RadioGroup_GetPopupMenu(r.instance))
+    return AsPopupMenu(RadioGroup_GetPopupMenu(r.instance))
 }
 
 // SetPopupMenu
@@ -914,7 +933,7 @@ func (r *TRadioGroup) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (r *TRadioGroup) Brush() *TBrush {
-    return BrushFromInst(RadioGroup_GetBrush(r.instance))
+    return AsBrush(RadioGroup_GetBrush(r.instance))
 }
 
 // ControlCount
@@ -961,7 +980,7 @@ func (r *TRadioGroup) SetUseDockManager(value bool) {
 
 // Action
 func (r *TRadioGroup) Action() *TAction {
-    return ActionFromInst(RadioGroup_GetAction(r.instance))
+    return AsAction(RadioGroup_GetAction(r.instance))
 }
 
 // SetAction
@@ -1076,7 +1095,7 @@ func (r *TRadioGroup) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (r *TRadioGroup) Parent() *TWinControl {
-    return WinControlFromInst(RadioGroup_GetParent(r.instance))
+    return AsWinControl(RadioGroup_GetParent(r.instance))
 }
 
 // SetParent
@@ -1188,7 +1207,7 @@ func (r *TRadioGroup) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (r *TRadioGroup) Margins() *TMargins {
-    return MarginsFromInst(RadioGroup_GetMargins(r.instance))
+    return AsMargins(RadioGroup_GetMargins(r.instance))
 }
 
 // SetMargins
@@ -1202,7 +1221,7 @@ func (r *TRadioGroup) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (r *TRadioGroup) CustomHint() *TCustomHint {
-    return CustomHintFromInst(RadioGroup_GetCustomHint(r.instance))
+    return AsCustomHint(RadioGroup_GetCustomHint(r.instance))
 }
 
 // SetCustomHint
@@ -1237,7 +1256,7 @@ func (r *TRadioGroup) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (r *TRadioGroup) Owner() *TComponent {
-    return ComponentFromInst(RadioGroup_GetOwner(r.instance))
+    return AsComponent(RadioGroup_GetOwner(r.instance))
 }
 
 // Name
@@ -1270,27 +1289,27 @@ func (r *TRadioGroup) SetTag(value int) {
 
 // Buttons
 func (r *TRadioGroup) Buttons(Index int32) *TRadioButton {
-    return RadioButtonFromInst(RadioGroup_GetButtons(r.instance, Index))
+    return AsRadioButton(RadioGroup_GetButtons(r.instance, Index))
 }
 
 // DockClients
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRadioGroup) DockClients(Index int32) *TControl {
-    return ControlFromInst(RadioGroup_GetDockClients(r.instance, Index))
+    return AsControl(RadioGroup_GetDockClients(r.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (r *TRadioGroup) Controls(Index int32) *TControl {
-    return ControlFromInst(RadioGroup_GetControls(r.instance, Index))
+    return AsControl(RadioGroup_GetControls(r.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (r *TRadioGroup) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(RadioGroup_GetComponents(r.instance, AIndex))
+    return AsComponent(RadioGroup_GetComponents(r.instance, AIndex))
 }
 

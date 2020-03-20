@@ -42,6 +42,16 @@ begin
   AObj.DeleteSelected;
 end;
 
+function ListBox_ItemAtPos(AObj: TListBox; var Pos: TPoint; Existing: LongBool): Integer; stdcall;
+begin
+  Result :=  AObj.ItemAtPos(Pos, Existing);
+end;
+
+procedure ListBox_ItemRect(AObj: TListBox; Index: Integer; var Result: TRect); stdcall;
+begin
+  Result :=  AObj.ItemRect(Index);
+end;
+
 procedure ListBox_SelectAll(AObj: TListBox); stdcall;
 begin
   AObj.SelectAll;
@@ -1320,6 +1330,8 @@ exports
   ListBox_ClearSelection,
   ListBox_CopySelection,
   ListBox_DeleteSelected,
+  ListBox_ItemAtPos,
+  ListBox_ItemRect,
   ListBox_SelectAll,
   ListBox_CanFocus,
   ListBox_ContainsControl,

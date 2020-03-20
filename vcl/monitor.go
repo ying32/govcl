@@ -34,36 +34,41 @@ func NewMonitor() *TMonitor {
     return m
 }
 
+// AsMonitor
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsMonitor(obj interface{}) *TMonitor {
+    m := new(TMonitor)
+    m.instance, m.ptr = getInstance(obj)
+    return m
+}
+
+// -------------------------- Deprecated begin --------------------------
 // MonitorFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsMonitor.
 func MonitorFromInst(inst uintptr) *TMonitor {
-    m := new(TMonitor)
-    m.instance = inst
-    m.ptr = unsafe.Pointer(inst)
-    return m
+    return AsMonitor(inst)
 }
 
 // MonitorFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsMonitor.
 func MonitorFromObj(obj IObject) *TMonitor {
-    m := new(TMonitor)
-    m.instance = CheckPtr(obj)
-    m.ptr = unsafe.Pointer(m.instance)
-    return m
+    return AsMonitor(obj)
 }
 
 // MonitorFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsMonitor.
 func MonitorFromUnsafePointer(ptr unsafe.Pointer) *TMonitor {
-    m := new(TMonitor)
-    m.instance = uintptr(ptr)
-    m.ptr = ptr
-    return m
+    return AsMonitor(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (m *TMonitor) UnsafeAddr() unsafe.Pointer {
 func (m *TMonitor) IsValid() bool {
     return m.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (m *TMonitor) Is() TIs {
+    return TIs(m.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (m *TMonitor) As() TAs {
+//    return TAs(m.instance)
+//}
 
 // TMonitorClass
 // CN: 获取类信息指针。

@@ -34,36 +34,41 @@ func NewForm(owner IComponent) *TForm {
     return f
 }
 
+// AsForm
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsForm(obj interface{}) *TForm {
+    f := new(TForm)
+    f.instance, f.ptr = getInstance(obj)
+    return f
+}
+
+// -------------------------- Deprecated begin --------------------------
 // FormFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsForm.
 func FormFromInst(inst uintptr) *TForm {
-    f := new(TForm)
-    f.instance = inst
-    f.ptr = unsafe.Pointer(inst)
-    return f
+    return AsForm(inst)
 }
 
 // FormFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsForm.
 func FormFromObj(obj IObject) *TForm {
-    f := new(TForm)
-    f.instance = CheckPtr(obj)
-    f.ptr = unsafe.Pointer(f.instance)
-    return f
+    return AsForm(obj)
 }
 
 // FormFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsForm.
 func FormFromUnsafePointer(ptr unsafe.Pointer) *TForm {
-    f := new(TForm)
-    f.instance = uintptr(ptr)
-    f.ptr = ptr
-    return f
+    return AsForm(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (f *TForm) UnsafeAddr() unsafe.Pointer {
 func (f *TForm) IsValid() bool {
     return f.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (f *TForm) Is() TIs {
+    return TIs(f.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (f *TForm) As() TAs {
+//    return TAs(f.instance)
+//}
 
 // TFormClass
 // CN: 获取类信息指针。
@@ -178,7 +197,7 @@ func (f *TForm) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (f *TForm) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(Form_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(Form_ControlAtPos(f.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -199,7 +218,7 @@ func (f *TForm) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (f *TForm) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(Form_FindChildControl(f.instance, ControlName))
+    return AsControl(Form_FindChildControl(f.instance, ControlName))
 }
 
 // FlipChildren
@@ -393,7 +412,7 @@ func (f *TForm) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (f *TForm) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(Form_FindComponent(f.instance, AName))
+    return AsComponent(Form_FindComponent(f.instance, AName))
 }
 
 // GetNamePath
@@ -468,7 +487,7 @@ func (f *TForm) ToString() string {
 
 // Action
 func (f *TForm) Action() *TAction {
-    return ActionFromInst(Form_GetAction(f.instance))
+    return AsAction(Form_GetAction(f.instance))
 }
 
 // SetAction
@@ -694,7 +713,7 @@ func (f *TForm) SetTransparentColorValue(value TColor) {
 
 // Constraints
 func (f *TForm) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(Form_GetConstraints(f.instance))
+    return AsSizeConstraints(Form_GetConstraints(f.instance))
 }
 
 // SetConstraints
@@ -824,7 +843,7 @@ func (f *TForm) SetParentFont(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (f *TForm) Font() *TFont {
-    return FontFromInst(Form_GetFont(f.instance))
+    return AsFont(Form_GetFont(f.instance))
 }
 
 // SetFont
@@ -864,7 +883,7 @@ func (f *TForm) SetHeight(value int32) {
 
 // HorzScrollBar
 func (f *TForm) HorzScrollBar() *TControlScrollBar {
-    return ControlScrollBarFromInst(Form_GetHorzScrollBar(f.instance))
+    return AsControlScrollBar(Form_GetHorzScrollBar(f.instance))
 }
 
 // SetHorzScrollBar
@@ -876,7 +895,7 @@ func (f *TForm) SetHorzScrollBar(value *TControlScrollBar) {
 // CN: 获取图标。
 // EN: Get icon.
 func (f *TForm) Icon() *TIcon {
-    return IconFromInst(Form_GetIcon(f.instance))
+    return AsIcon(Form_GetIcon(f.instance))
 }
 
 // SetIcon
@@ -904,7 +923,7 @@ func (f *TForm) SetKeyPreview(value bool) {
 // CN: 获取窗口主菜单。
 // EN: .
 func (f *TForm) Menu() *TMainMenu {
-    return MainMenuFromInst(Form_GetMenu(f.instance))
+    return AsMainMenu(Form_GetMenu(f.instance))
 }
 
 // SetMenu
@@ -932,7 +951,7 @@ func (f *TForm) SetPixelsPerInch(value int32) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (f *TForm) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(Form_GetPopupMenu(f.instance))
+    return AsPopupMenu(Form_GetPopupMenu(f.instance))
 }
 
 // SetPopupMenu
@@ -986,7 +1005,7 @@ func (f *TForm) SetShowHint(value bool) {
 
 // VertScrollBar
 func (f *TForm) VertScrollBar() *TControlScrollBar {
-    return ControlScrollBarFromInst(Form_GetVertScrollBar(f.instance))
+    return AsControlScrollBar(Form_GetVertScrollBar(f.instance))
 }
 
 // SetVertScrollBar
@@ -1048,6 +1067,11 @@ func (f *TForm) StyleElements() TStyleElements {
 // EN: Set Style element.
 func (f *TForm) SetStyleElements(value TStyleElements) {
     Form_SetStyleElements(f.instance, value)
+}
+
+// SetOnAlignPosition
+func (f *TForm) SetOnAlignPosition(fn TAlignPositionEvent) {
+    Form_SetOnAlignPosition(f.instance, fn)
 }
 
 // SetOnClick
@@ -1255,7 +1279,7 @@ func (f *TForm) SetOnUnDock(fn TUnDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (f *TForm) Canvas() *TCanvas {
-    return CanvasFromInst(Form_GetCanvas(f.instance))
+    return AsCanvas(Form_GetCanvas(f.instance))
 }
 
 // DropTarget
@@ -1284,7 +1308,7 @@ func (f *TForm) SetModalResult(value TModalResult) {
 
 // Monitor
 func (f *TForm) Monitor() *TMonitor {
-    return MonitorFromInst(Form_GetMonitor(f.instance))
+    return AsMonitor(Form_GetMonitor(f.instance))
 }
 
 // Left
@@ -1347,7 +1371,7 @@ func (f *TForm) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (f *TForm) Brush() *TBrush {
-    return BrushFromInst(Form_GetBrush(f.instance))
+    return AsBrush(Form_GetBrush(f.instance))
 }
 
 // ControlCount
@@ -1499,7 +1523,7 @@ func (f *TForm) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (f *TForm) Parent() *TWinControl {
-    return WinControlFromInst(Form_GetParent(f.instance))
+    return AsWinControl(Form_GetParent(f.instance))
 }
 
 // SetParent
@@ -1555,7 +1579,7 @@ func (f *TForm) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (f *TForm) Margins() *TMargins {
-    return MarginsFromInst(Form_GetMargins(f.instance))
+    return AsMargins(Form_GetMargins(f.instance))
 }
 
 // SetMargins
@@ -1569,7 +1593,7 @@ func (f *TForm) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (f *TForm) CustomHint() *TCustomHint {
-    return CustomHintFromInst(Form_GetCustomHint(f.instance))
+    return AsCustomHint(Form_GetCustomHint(f.instance))
 }
 
 // SetCustomHint
@@ -1604,7 +1628,7 @@ func (f *TForm) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (f *TForm) Owner() *TComponent {
-    return ComponentFromInst(Form_GetOwner(f.instance))
+    return AsComponent(Form_GetOwner(f.instance))
 }
 
 // Name
@@ -1639,20 +1663,20 @@ func (f *TForm) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (f *TForm) DockClients(Index int32) *TControl {
-    return ControlFromInst(Form_GetDockClients(f.instance, Index))
+    return AsControl(Form_GetDockClients(f.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (f *TForm) Controls(Index int32) *TControl {
-    return ControlFromInst(Form_GetControls(f.instance, Index))
+    return AsControl(Form_GetControls(f.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (f *TForm) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(Form_GetComponents(f.instance, AIndex))
+    return AsComponent(Form_GetComponents(f.instance, AIndex))
 }
 

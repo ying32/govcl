@@ -28,10 +28,12 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	form1.EnabledMaximize(false)
 	form1.SetWidth(500)
 	form1.SetHeight(400)
-	form1.SetOnWndProc(f.OnFormWindProc)
+	form1.SetOnWndProc(f.OnFormWndProc)
 }
 
-func (f *TForm1) OnFormWindProc(msg *types.TMessage, handled *bool) {
+func (f *TForm1) OnFormWndProc(msg *types.TMessage) {
+	// 这句一定要
+	f.InheritedWndProc(msg)
 	switch msg.Msg {
 	case messages.WM_MOUSEMOVE:
 

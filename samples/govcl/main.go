@@ -7,6 +7,7 @@ import (
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
+	_ "github.com/ying32/govcl/vcl/locales/zh_CN"
 	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/rtl/version"
 	"github.com/ying32/govcl/vcl/types"
@@ -90,7 +91,7 @@ func main() {
 	mainForm.WorkAreaCenter()
 	mainForm.SetKeyPreview(true)
 	mainForm.SetOnKeyDown(func(Sender vcl.IObject, Key *types.Char, Shift types.TShiftState) {
-		fmt.Println(rtl.InSets(Shift, types.SsCtrl))
+		fmt.Println(Shift.In(types.SsCtrl))
 		fmt.Println("key:", *Key)
 	})
 
@@ -113,7 +114,7 @@ func main() {
 	action := vcl.NewAction(mainForm)
 	action.SetCaption("action1")
 	action.SetOnUpdate(func(sender vcl.IObject) {
-		vcl.ActionFromObj(sender).SetEnabled(chk.Checked())
+		vcl.AsAction(sender).SetEnabled(chk.Checked())
 	})
 	action.SetOnExecute(func(vcl.IObject) {
 		fmt.Println("action execute")

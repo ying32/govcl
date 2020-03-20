@@ -8,14 +8,14 @@
 > The govcl version >=1.2.0 must require the go version >=1.9.0.  
 
 [Screenshots](https://github.com/ying32/govcl/tree/master/Screenshot) | 
-[What's-new](https://z-kit.cc/changelog.html) | 
+[What's-new(Chinese)](https://z-kit.cc/changelog.html) | 
 [GoVCL video tutorial (third party)](https://video.0-w.cc/videos/1) | 
 [Sponsor govcl](https://z-kit.cc/sponsor.html)  
 
 ----
 
 ### Support Platform    
-Windows | Linux | macOS  
+**Windows** | **Linux** | **macOS**  
 
 > Note: linux and macOS only part of the components, properties, events and methods are valid.  
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
@@ -128,34 +128,29 @@ var (
 )
 
 func main() {
-    vcl.Application.Initialize()
-    vcl.Application.SetMainFormOnTaskBar(true)
-    vcl.Application.CreateForm(&mainForm)
-   // Bind subcomponent events after creation.
-    vcl.Application.CreateForm(&aboutForm, true)
-    vcl.Application.Run()
+    vcl.RunApp(&mainForm, &aboutForm)
 }
 
 // -- TMainForm
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
-    f.SetCaption("Hello")
+    f.SetCaption("MainForm")
     f.Btn1 = vcl.NewButton(f)
     f.Btn1.SetParent(f)
     f.Btn1.SetBounds(10, 10, 88, 28)
     f.Btn1.SetCaption("Button1")
-    f.Btn1.SetOnClick(f.OnButtonClick)  
+    //f.Btn1.SetOnClick(f.OnBtn1Click)  
 }
 
-func (f *TMainForm) OnButtonClick(sender vcl.IObject) {
-    vcl.ShowMessage("Hello!")
+func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
+    aboutForm.Show()
 }
 
 
 // -- TAboutForm
 
 func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
-    f.SetCaption("Hello")
+    f.SetCaption("About")
     f.Btn1 = vcl.NewButton(f)
     //f.Btn1.SetName("Btn1")
     f.Btn1.SetParent(f)
@@ -166,42 +161,19 @@ func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
 func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
     vcl.ShowMessage("Hello!")
 }
+``` 
+
+* Method 3  
+```go
+// Not recommended, so no examples are given.
 ```
-
-
-* Method 3(Pure code. Not recommended): 
-
-```golang
-package main
-
-import (
-   "github.com/ying32/govcl/vcl"
-   // Do not reference this package if you use custom syso files
-   _ "github.com/ying32/govcl/pkgs/winappres"
-)
-
-func main() {
-    vcl.Application.Initialize()
-    mainForm := vcl.Application.CreateForm()
-    mainForm.SetCaption("Hello")
-    mainForm.EnabledMaximize(false)
-    mainForm.ScreenCenter()
-    btn := vcl.NewButton(mainForm)
-    btn.SetParent(mainForm)
-    btn.SetCaption("Hello")
-    btn.SetOnClick(func(sender vcl.IObject) {
-        vcl.ShowMessage("Hello!")
-    })
-    vcl.Application.Run()
-}
-```  
 
 #### Step 3: Copy the corresponding binary   
 
 * Windows: According to whether the compiled binary is 32 or 64 bit, copy the corresponding "libvcl.dll" or "libvclx64.dll" or "liblcl.dll" to the current exe directory or system environment path.  
   * Go environment variable: `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`    
 
-* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/` or `/usr/lib/x86_64-linux-gnu/` directory and use it as a public library).  
+* Linux: Copy the "liblcl.so" executable directory (you can also copy liblcl.so to the `/usr/lib/`(32bit liblcl) or `/usr/lib/x86_64-linux-gnu/`(64bit liblcl) directory and use it as a public library).  
   * Go environment variable: `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`  
 
 * MacOS: Copy the "liblcl.dylib" executable directory (Note for MacOS: you need to create the info.plist file yourself), or refer to: [App packaging on MacOS](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420)  

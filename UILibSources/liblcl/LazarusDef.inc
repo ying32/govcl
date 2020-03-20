@@ -28,7 +28,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $01021000;
+  Result := $01020A00;
 end;
 
 // 一些初始
@@ -256,6 +256,11 @@ end;
 procedure Form_ScaleForCurrentDpi(AObj: TGoForm); extdecl;
 begin
   AObj.ScaleForCurrentDpi;
+end;
+
+procedure Form_InheritedWndProc(AObj: TGoForm; var AMsg: TLMessage); extdecl;
+begin
+  AObj.InheritedWndProc(AMsg);
 end;
 
 // mouse
@@ -534,7 +539,83 @@ begin
   AObj.ScrollBars := AValue;
 end;
 
- 
+// TBitmap
+procedure Bitmap_Clear(AObj: TBitmap); extdecl;
+begin
+  AObj.Clear;
+end;
+
+procedure Bitmap_BeginUpdate(AObj: TBitmap; ACanvasOnly: LongBool); extdecl;
+begin
+  AObj.BeginUpdate(ACanvasOnly);
+end;
+
+procedure Bitmap_EndUpdate(AObj: TBitmap; AStreamIsValid: LongBool); extdecl;
+begin
+  AObj.EndUpdate(AStreamIsValid);
+end;
+
+procedure Bitmap_LoadFromDevice(AObj: TBitmap; ADc: HDC); extdecl;
+begin
+  AObj.LoadFromDevice(ADc);
+end;
+
+// win api
+{$IFNDEF WINDOWS}
+function DSendMessage(hWd: HWND; msg: Cardinal; wParam: WParam; lParam: LParam): LResult; extdecl;
+begin
+  Result := LCLIntf.SendMessage(hWd, msg, wParam, lParam);
+end;
+
+function DPostMessage(hWd: HWND; msg: Cardinal; wParam: WParam; lParam: LParam): Boolean; extdecl;
+begin
+  Result := LCLIntf.PostMessage(hWd, msg, wParam, lParam);
+end;
+
+function DIsIconic(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsIconic(hWnd);
+end;
+
+function DIsWindow(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsWindow(hWnd);
+end;
+
+function DIsZoomed(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsZoomed(hWnd);
+end;
+
+function DIsWindowVisible(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.IsWindowVisible(hWnd);
+end;
+
+function DGetDC(hWnd: HWND): HDC; extdecl;
+begin
+  Result := LCLIntf.GetDC(hWnd);
+end;
+
+function DReleaseDC(hWnd: HWND; dc: HDC): Integer; extdecl;
+begin
+  Result := LCLIntf.ReleaseDC(hWnd, dc);
+end;
+
+function DSetForegroundWindow(hWnd: HWND): LongBool; extdecl;
+begin
+  Result := LCLIntf.SetForegroundWindow(hWnd);
+end;
+
+function DWindowFromPoint(point: PPoint): HWND; extdecl;
+begin
+  if point = nil then
+    Exit(0);
+  Result := LCLIntf.WindowFromPoint(PPoint(point)^);
+end;
+{$ENDIF}
+
+
 // Other
 
 procedure SetEventCallback(APtr: Pointer); extdecl;
@@ -827,7 +908,8 @@ type
   end;
 
 const
-  GLibResouces: array[0..26] of TResItem = (
+  GLibResouces: array[0..40] of TResItem = (
+     // 27
     (Name: 'SOpenFileTitle'; ValuePtr: @rsmbOpen),
     (Name: 'SOKButton'; ValuePtr: @rsMbOK),
     (Name: 'SCancelButton'; ValuePtr: @rsMbCancel),
@@ -856,7 +938,26 @@ const
     (Name: 'SMsgDlgAll'; ValuePtr: @rsMbAll),
     (Name: 'SMsgDlgNoToAll'; ValuePtr: @rsMbNoToAll),
     (Name: 'SMsgDlgYesToAll'; ValuePtr: @rsMbYesToAll),
-    (Name: 'SMsgDlgClose'; ValuePtr: @rsMbClose)
+    (Name: 'SMsgDlgClose'; ValuePtr: @rsMbClose),
+
+     // TFindDialog And TReplaceDialog
+     // 9
+    (Name: 'rsFind'; ValuePtr: @rsFind),
+    (Name: 'rsHelp'; ValuePtr: @rsHelp),
+    (Name: 'rsWholeWordsOnly'; ValuePtr: @rsWholeWordsOnly),
+    (Name: 'rsCaseSensitive'; ValuePtr: @rsCaseSensitive),
+    (Name: 'rsEntireScope'; ValuePtr: @rsEntireScope),
+    (Name: 'rsText'; ValuePtr: @rsText),
+    (Name: 'rsDirection'; ValuePtr: @rsDirection),
+    (Name: 'rsForward'; ValuePtr: @rsForward),
+    (Name: 'rsBackward'; ValuePtr: @rsBackward),
+
+    (Name: 'rsFindMore'; ValuePtr: @rsFindMore),
+    (Name: 'rsReplace'; ValuePtr: @rsReplace),
+    (Name: 'rsReplaceAll'; ValuePtr: @rsReplaceAll),
+
+    (Name: 'rsSelectcolorTitle'; ValuePtr: @rsSelectcolorTitle),
+    (Name: 'rsSelectFontTitle'; ValuePtr: @rsSelectFontTitle)
 
   );
 
@@ -878,12 +979,6 @@ begin
     PResStringRec(APtr)^ := string(AValue);
 end;
 
-{$IFDEF LCLGTK2}
-procedure GetGDKWindowXID(Handle: HWND; out AResult: TXID); extdecl;
-begin
-  AResult := GDK_WINDOW_XID(PGtkWidget(Handle)^.window);
-end;
-{$ENDIF}
 
 type TLibType = (ltVCL, ltLCL);
 
@@ -986,11 +1081,37 @@ exports
   Form_ScaleForPPI,
   Form_ScaleControlsForDpi,
   Form_ScaleForCurrentDpi,
+  Form_InheritedWndProc,
 
 
   // TMouse
   Mouse_Instance,
   Screen_Instance,
+
+{$IFNDEF WINDOWS}
+  DSendMessage,
+  DPostMessage,
+  DIsIconic,
+  DIsWindow,
+  DIsZoomed,
+  DIsWindowVisible,
+  DGetDC,
+  DReleaseDC,
+  DSetForegroundWindow,
+  DWindowFromPoint,
+{$ENDIF}
+
+{$IFDEF LCLCocoa}
+  NSWindow_FromForm,
+  NSWindow_titleVisibility,
+  NSWindow_setTitleVisibility,
+  NSWindow_titlebarAppearsTransparent,
+  NSWindow_setTitlebarAppearsTransparent,
+  NSWindow_styleMask,
+  NSWindow_setStyleMask,
+  NSWindow_setRepresentedURL,
+  NSWindow_release,
+{$ENDIF}
 
   // Other
   SetEventCallback,
@@ -1069,6 +1190,12 @@ exports
   TreeView_GetScrollBars,
   TreeView_SetScrollBars,
 
+  // TBitmap
+  Bitmap_Clear,
+  Bitmap_BeginUpdate,
+  Bitmap_EndUpdate,
+  Bitmap_LoadFromDevice,
+
   // Form uFormDesignerFile.pas
   ResFormLoadFromStream,
   ResFormLoadFromFile,
@@ -1086,10 +1213,12 @@ exports
   // libResouces
   DGetLibResouceCount,
   DGetLibResouceItem,
-  DModifyLibResouce
+  DModifyLibResouce,
 
-{$IFDEF LCLGTK2}
-  ,GetGDKWindowXID
-{$ENDIF},
+{$IFDEF LINUX}
+  GdkWindow_GetXId,
+  GtkWidget_GetGtkFixed,
+  GdkWindow_FromForm,
+{$ENDIF}
   DGetLibType
 ;

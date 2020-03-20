@@ -20,7 +20,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.ScreenCenter()
 	f.hotKeyId = win.GlobalAddAtom("HotKeyId") - 0xC000
 	//rtl.ShortCutToText()
-	shift := rtl.Include(0, types.SsCtrl)
+	shift := types.NewSet(types.SsCtrl)
 	// 注册Ctrl+F1
 	// rtl.ShiftStateToWord(shift) 这个只是更容易理解，也可以使用 MOD_CONTROL | MOD_ALT 方法
 	if !win.RegisterHotKey(f.Handle(), int32(f.hotKeyId), rtl.ShiftStateToWord(shift), keys.VkF1) {
@@ -36,7 +36,9 @@ func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 	}
 }
 
-func (f *TForm1) OnFormWndProc(msg *types.TMessage, handled *bool) {
+func (f *TForm1) OnFormWndProc(msg *types.TMessage) {
+
+	f.InheritedWndProc(msg)
 	/*
 	  TWMHotKey = record
 	    Msg: Cardinal;

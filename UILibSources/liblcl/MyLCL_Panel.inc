@@ -547,6 +547,13 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure Panel_SetOnAlignPosition(AObj: TPanel; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnAlignPosition}
+  {$DEFINE EventMethodName := OnAlignPosition}
+  EventMethodCode
+end;
+
 procedure Panel_SetOnClick(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -1044,6 +1051,7 @@ exports
   Panel_SetTabStop,
   Panel_GetVisible,
   Panel_SetVisible,
+  Panel_SetOnAlignPosition,
   Panel_SetOnClick,
   Panel_SetOnContextPopup,
   Panel_SetOnDockDrop,

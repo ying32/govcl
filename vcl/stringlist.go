@@ -34,36 +34,41 @@ func NewStringList() *TStringList {
     return s
 }
 
+// AsStringList
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsStringList(obj interface{}) *TStringList {
+    s := new(TStringList)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // StringListFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsStringList.
 func StringListFromInst(inst uintptr) *TStringList {
-    s := new(TStringList)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsStringList(inst)
 }
 
 // StringListFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsStringList.
 func StringListFromObj(obj IObject) *TStringList {
-    s := new(TStringList)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsStringList(obj)
 }
 
 // StringListFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsStringList.
 func StringListFromUnsafePointer(ptr unsafe.Pointer) *TStringList {
-    s := new(TStringList)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsStringList(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,11 +101,39 @@ func (s *TStringList) IsValid() bool {
     return s.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (s *TStringList) Is() TIs {
+    return TIs(s.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (s *TStringList) As() TAs {
+//    return TAs(s.instance)
+//}
+
 // TStringListClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
 func TStringListClass() TClass {
     return StringList_StaticClassType()
+}
+
+// S 
+// CN: Strings()的别名。
+// EN: Alias of Strings().
+func (s *TStringList) S(Index int32) string {
+    return s.Strings(Index)
+}
+
+// SetS 
+// CN: SetStrings()的别名。
+// EN: Alias of SetStrings().
+func (s *TStringList) SetS(Index int32, value string) {
+    s.SetStrings(Index, value)
 }
 
 // Add
@@ -361,7 +394,7 @@ func (s *TStringList) SetOptions(value TStringsOptions) {
 
 // Objects
 func (s *TStringList) Objects(Index int32) *TObject {
-    return ObjectFromInst(StringList_GetObjects(s.instance, Index))
+    return AsObject(StringList_GetObjects(s.instance, Index))
 }
 
 // Objects

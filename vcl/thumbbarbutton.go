@@ -34,36 +34,41 @@ func NewThumbBarButton() *TThumbBarButton {
     return t
 }
 
+// AsThumbBarButton
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsThumbBarButton(obj interface{}) *TThumbBarButton {
+    t := new(TThumbBarButton)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ThumbBarButtonFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsThumbBarButton.
 func ThumbBarButtonFromInst(inst uintptr) *TThumbBarButton {
-    t := new(TThumbBarButton)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsThumbBarButton(inst)
 }
 
 // ThumbBarButtonFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsThumbBarButton.
 func ThumbBarButtonFromObj(obj IObject) *TThumbBarButton {
-    t := new(TThumbBarButton)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsThumbBarButton(obj)
 }
 
 // ThumbBarButtonFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsThumbBarButton.
 func ThumbBarButtonFromUnsafePointer(ptr unsafe.Pointer) *TThumbBarButton {
-    t := new(TThumbBarButton)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsThumbBarButton(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (t *TThumbBarButton) UnsafeAddr() unsafe.Pointer {
 func (t *TThumbBarButton) IsValid() bool {
     return t.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TThumbBarButton) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TThumbBarButton) As() TAs {
+//    return TAs(t.instance)
+//}
 
 // TThumbBarButtonClass
 // CN: 获取类信息指针。
@@ -175,7 +194,7 @@ func (t *TThumbBarButton) ToString() string {
 
 // Action
 func (t *TThumbBarButton) Action() *TAction {
-    return ActionFromInst(ThumbBarButton_GetAction(t.instance))
+    return AsAction(ThumbBarButton_GetAction(t.instance))
 }
 
 // SetAction
@@ -211,7 +230,7 @@ func (t *TThumbBarButton) SetHint(value string) {
 // CN: 获取图标。
 // EN: Get icon.
 func (t *TThumbBarButton) Icon() *TIcon {
-    return IconFromInst(ThumbBarButton_GetIcon(t.instance))
+    return AsIcon(ThumbBarButton_GetIcon(t.instance))
 }
 
 // SetIcon
@@ -223,7 +242,7 @@ func (t *TThumbBarButton) SetIcon(value *TIcon) {
 
 // Collection
 func (t *TThumbBarButton) Collection() *TCollection {
-    return CollectionFromInst(ThumbBarButton_GetCollection(t.instance))
+    return AsCollection(ThumbBarButton_GetCollection(t.instance))
 }
 
 // SetCollection

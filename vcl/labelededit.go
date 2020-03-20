@@ -34,36 +34,41 @@ func NewLabeledEdit(owner IComponent) *TLabeledEdit {
     return l
 }
 
+// AsLabeledEdit
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsLabeledEdit(obj interface{}) *TLabeledEdit {
+    l := new(TLabeledEdit)
+    l.instance, l.ptr = getInstance(obj)
+    return l
+}
+
+// -------------------------- Deprecated begin --------------------------
 // LabeledEditFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsLabeledEdit.
 func LabeledEditFromInst(inst uintptr) *TLabeledEdit {
-    l := new(TLabeledEdit)
-    l.instance = inst
-    l.ptr = unsafe.Pointer(inst)
-    return l
+    return AsLabeledEdit(inst)
 }
 
 // LabeledEditFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsLabeledEdit.
 func LabeledEditFromObj(obj IObject) *TLabeledEdit {
-    l := new(TLabeledEdit)
-    l.instance = CheckPtr(obj)
-    l.ptr = unsafe.Pointer(l.instance)
-    return l
+    return AsLabeledEdit(obj)
 }
 
 // LabeledEditFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsLabeledEdit.
 func LabeledEditFromUnsafePointer(ptr unsafe.Pointer) *TLabeledEdit {
-    l := new(TLabeledEdit)
-    l.instance = uintptr(ptr)
-    l.ptr = ptr
-    return l
+    return AsLabeledEdit(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (l *TLabeledEdit) UnsafeAddr() unsafe.Pointer {
 func (l *TLabeledEdit) IsValid() bool {
     return l.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (l *TLabeledEdit) Is() TIs {
+    return TIs(l.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (l *TLabeledEdit) As() TAs {
+//    return TAs(l.instance)
+//}
 
 // TLabeledEditClass
 // CN: 获取类信息指针。
@@ -194,7 +213,7 @@ func (l *TLabeledEdit) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (l *TLabeledEdit) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(LabeledEdit_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(LabeledEdit_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -215,7 +234,7 @@ func (l *TLabeledEdit) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (l *TLabeledEdit) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(LabeledEdit_FindChildControl(l.instance, ControlName))
+    return AsControl(LabeledEdit_FindChildControl(l.instance, ControlName))
 }
 
 // FlipChildren
@@ -423,7 +442,7 @@ func (l *TLabeledEdit) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (l *TLabeledEdit) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(LabeledEdit_FindComponent(l.instance, AName))
+    return AsComponent(LabeledEdit_FindComponent(l.instance, AName))
 }
 
 // GetNamePath
@@ -642,7 +661,7 @@ func (l *TLabeledEdit) SetColor(value TColor) {
 
 // Constraints
 func (l *TLabeledEdit) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(LabeledEdit_GetConstraints(l.instance))
+    return AsSizeConstraints(LabeledEdit_GetConstraints(l.instance))
 }
 
 // SetConstraints
@@ -718,7 +737,7 @@ func (l *TLabeledEdit) SetDragMode(value TDragMode) {
 
 // EditLabel
 func (l *TLabeledEdit) EditLabel() *TBoundLabel {
-    return BoundLabelFromInst(LabeledEdit_GetEditLabel(l.instance))
+    return AsBoundLabel(LabeledEdit_GetEditLabel(l.instance))
 }
 
 // Enabled
@@ -739,7 +758,7 @@ func (l *TLabeledEdit) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (l *TLabeledEdit) Font() *TFont {
-    return FontFromInst(LabeledEdit_GetFont(l.instance))
+    return AsFont(LabeledEdit_GetFont(l.instance))
 }
 
 // SetFont
@@ -891,7 +910,7 @@ func (l *TLabeledEdit) SetPasswordChar(value uint16) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (l *TLabeledEdit) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(LabeledEdit_GetPopupMenu(l.instance))
+    return AsPopupMenu(LabeledEdit_GetPopupMenu(l.instance))
 }
 
 // SetPopupMenu
@@ -1272,7 +1291,7 @@ func (l *TLabeledEdit) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (l *TLabeledEdit) Brush() *TBrush {
-    return BrushFromInst(LabeledEdit_GetBrush(l.instance))
+    return AsBrush(LabeledEdit_GetBrush(l.instance))
 }
 
 // ControlCount
@@ -1319,7 +1338,7 @@ func (l *TLabeledEdit) SetUseDockManager(value bool) {
 
 // Action
 func (l *TLabeledEdit) Action() *TAction {
-    return ActionFromInst(LabeledEdit_GetAction(l.instance))
+    return AsAction(LabeledEdit_GetAction(l.instance))
 }
 
 // SetAction
@@ -1448,7 +1467,7 @@ func (l *TLabeledEdit) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (l *TLabeledEdit) Parent() *TWinControl {
-    return WinControlFromInst(LabeledEdit_GetParent(l.instance))
+    return AsWinControl(LabeledEdit_GetParent(l.instance))
 }
 
 // SetParent
@@ -1560,7 +1579,7 @@ func (l *TLabeledEdit) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (l *TLabeledEdit) Margins() *TMargins {
-    return MarginsFromInst(LabeledEdit_GetMargins(l.instance))
+    return AsMargins(LabeledEdit_GetMargins(l.instance))
 }
 
 // SetMargins
@@ -1574,7 +1593,7 @@ func (l *TLabeledEdit) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (l *TLabeledEdit) CustomHint() *TCustomHint {
-    return CustomHintFromInst(LabeledEdit_GetCustomHint(l.instance))
+    return AsCustomHint(LabeledEdit_GetCustomHint(l.instance))
 }
 
 // SetCustomHint
@@ -1609,7 +1628,7 @@ func (l *TLabeledEdit) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (l *TLabeledEdit) Owner() *TComponent {
-    return ComponentFromInst(LabeledEdit_GetOwner(l.instance))
+    return AsComponent(LabeledEdit_GetOwner(l.instance))
 }
 
 // Name
@@ -1644,20 +1663,20 @@ func (l *TLabeledEdit) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (l *TLabeledEdit) DockClients(Index int32) *TControl {
-    return ControlFromInst(LabeledEdit_GetDockClients(l.instance, Index))
+    return AsControl(LabeledEdit_GetDockClients(l.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (l *TLabeledEdit) Controls(Index int32) *TControl {
-    return ControlFromInst(LabeledEdit_GetControls(l.instance, Index))
+    return AsControl(LabeledEdit_GetControls(l.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (l *TLabeledEdit) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(LabeledEdit_GetComponents(l.instance, AIndex))
+    return AsComponent(LabeledEdit_GetComponents(l.instance, AIndex))
 }
 

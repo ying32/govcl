@@ -34,36 +34,41 @@ func NewTaskDialogBaseButtonItem() *TTaskDialogBaseButtonItem {
     return t
 }
 
+// AsTaskDialogBaseButtonItem
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsTaskDialogBaseButtonItem(obj interface{}) *TTaskDialogBaseButtonItem {
+    t := new(TTaskDialogBaseButtonItem)
+    t.instance, t.ptr = getInstance(obj)
+    return t
+}
+
+// -------------------------- Deprecated begin --------------------------
 // TaskDialogBaseButtonItemFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsTaskDialogBaseButtonItem.
 func TaskDialogBaseButtonItemFromInst(inst uintptr) *TTaskDialogBaseButtonItem {
-    t := new(TTaskDialogBaseButtonItem)
-    t.instance = inst
-    t.ptr = unsafe.Pointer(inst)
-    return t
+    return AsTaskDialogBaseButtonItem(inst)
 }
 
 // TaskDialogBaseButtonItemFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsTaskDialogBaseButtonItem.
 func TaskDialogBaseButtonItemFromObj(obj IObject) *TTaskDialogBaseButtonItem {
-    t := new(TTaskDialogBaseButtonItem)
-    t.instance = CheckPtr(obj)
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
+    return AsTaskDialogBaseButtonItem(obj)
 }
 
 // TaskDialogBaseButtonItemFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsTaskDialogBaseButtonItem.
 func TaskDialogBaseButtonItemFromUnsafePointer(ptr unsafe.Pointer) *TTaskDialogBaseButtonItem {
-    t := new(TTaskDialogBaseButtonItem)
-    t.instance = uintptr(ptr)
-    t.ptr = ptr
-    return t
+    return AsTaskDialogBaseButtonItem(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (t *TTaskDialogBaseButtonItem) UnsafeAddr() unsafe.Pointer {
 func (t *TTaskDialogBaseButtonItem) IsValid() bool {
     return t.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (t *TTaskDialogBaseButtonItem) Is() TIs {
+    return TIs(t.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (t *TTaskDialogBaseButtonItem) As() TAs {
+//    return TAs(t.instance)
+//}
 
 // TTaskDialogBaseButtonItemClass
 // CN: 获取类信息指针。
@@ -234,7 +253,7 @@ func (t *TTaskDialogBaseButtonItem) SetEnabled(value bool) {
 
 // Collection
 func (t *TTaskDialogBaseButtonItem) Collection() *TCollection {
-    return CollectionFromInst(TaskDialogBaseButtonItem_GetCollection(t.instance))
+    return AsCollection(TaskDialogBaseButtonItem_GetCollection(t.instance))
 }
 
 // SetCollection

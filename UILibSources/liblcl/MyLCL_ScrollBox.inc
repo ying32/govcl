@@ -625,6 +625,13 @@ begin
   EventMethodCode
 end;
 
+procedure ScrollBox_SetOnAlignPosition(AObj: TScrollBox; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnAlignPosition}
+  {$DEFINE EventMethodName := OnAlignPosition}
+  EventMethodCode
+end;
+
 function ScrollBox_GetHorzScrollBar(AObj: TScrollBox): TControlScrollBar; extdecl;
 begin
   Result :=  AObj.HorzScrollBar;
@@ -1027,6 +1034,7 @@ exports
   ScrollBox_SetOnMouseWheelUp,
   ScrollBox_SetOnResize,
   ScrollBox_SetOnUnDock,
+  ScrollBox_SetOnAlignPosition,
   ScrollBox_GetHorzScrollBar,
   ScrollBox_SetHorzScrollBar,
   ScrollBox_GetVertScrollBar,

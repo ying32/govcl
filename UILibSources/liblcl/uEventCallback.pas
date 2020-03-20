@@ -40,7 +40,7 @@ const
 
 type
   TEventCallbackPtr = function(f: NativeUInt; args: Pointer; argcout: NativeInt): Pointer; extdecl;
-  TMessageCallbackPtr = function(f: NativeUInt; msg, handled: Pointer): Pointer; extdecl;
+  TMessageCallbackPtr = function(f: NativeUInt; msg: Pointer): Pointer; extdecl;
   TThreadSyncCallbackPtr = function{(f: NativeUInt)}: Pointer; extdecl;
 
 var
@@ -284,8 +284,8 @@ type
 
 
     //    class function OnAlignInsertBefore(Sender: TWinControl; C1, C2: TControl): Boolean;
-    //    class procedure OnAlignPosition(Sender: TWinControl; Control: TControl;
-    //      var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo);
+    class procedure OnAlignPosition(Sender: TWinControl; Control: TControl;
+       var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo);
 
     class procedure OnDropDown(Sender: TObject);
     class procedure OnSelect(Sender: TObject);
@@ -318,7 +318,7 @@ type
     class procedure Add(AObj: TObject; AId: NativeUInt);
     class procedure Remove(AObj: TObject);
 
-    class procedure OnWndProc(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean);
+    class procedure OnWndProc(Sender: TObject; var TheMessage: TLMessage);
   end;
 
 implementation
@@ -806,6 +806,13 @@ begin
   SendEvent(Sender, @TEventClass.TaskDialogOnButtonClicked, [Sender, ModalResult, @CanClose]);
 end;
 
+class procedure TEventClass.OnAlignPosition(Sender: TWinControl;
+  Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer;
+  var AlignRect: TRect; AlignInfo: TAlignInfo);
+begin
+  SendEvent(Sender, @TEventClass.OnAlignPosition, [Sender, Control, @NewLeft, @NewTop, @NewWidth, @NewHeight, @AlignRect, @AlignInfo]);
+end;
+
 //class procedure TEventClass.TaskDialogOnDialogConstructed(Sender: TObject);
 //begin
 //  SendEvent(Sender, @TEventClass.TaskDialogOnDialogConstructed, [Sender]);
@@ -1272,14 +1279,14 @@ begin
   FMsgEvents.Free;
 end;
 
-class procedure TMessageEventClass.OnWndProc(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean);
+class procedure TMessageEventClass.OnWndProc(Sender: TObject; var TheMessage: TLMessage);
 var
   LId: NativeUInt;
 begin
   if Assigned(GMessageCallbackPtr) then
   begin
     if FMsgEvents.TryGetData(NativeUInt(Sender), LId) then
-      GMessageCallbackPtr(LId, @TheMessage, @AHandled);
+      GMessageCallbackPtr(LId, @TheMessage);
   end;
 end;
 

@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package rtl
 
@@ -49,27 +47,21 @@ func IsNil(val interface{}) bool {
 //----------------------------Delphi/Lazarus集合操作-------------------------------------------------------
 
 // Include Delphi集合加法，val...中存储为位的索引，下标为0
+// Deprecated: use value.Include.
 func Include(r uint32, val ...uint8) uint32 {
-	for _, v := range val {
-		r |= (1 << uint8(v))
-	}
-	return r
+	return uint32(types.TSet(r).Include(val...))
 }
 
 // Exclude Delphi集合减法，val...中存储为位的索引，下标为0
+// Deprecated: use value.Exclude.
 func Exclude(r uint32, val ...uint8) uint32 {
-	for _, v := range val {
-		r &= ^(1 << uint8(v))
-	}
-	return r
+	return uint32(types.TSet(r).Exclude(val...))
 }
 
 // InSets Delphi集合类型的判断,类型，然后后面是第几位，下标为0
+// Deprecated: use value.In.
 func InSets(r uint32, s uint32) bool {
-	if r&(1<<uint8(s)) != 0 {
-		return true
-	}
-	return false
+	return types.TSet(r).In(s)
 }
 
 //-------------------------------------------------------------------------------------------------------
@@ -203,11 +195,6 @@ func LibVersion() uint32 {
 	return api.DLibVersion()
 }
 
-// Linux下liblcl使用GTK2用
-func GetGDKWindowXID(handle types.HWND) types.TXID {
-	return api.DGetGDKWindowXID(handle)
-}
-
 func ShiftStateToWord(shift types.TShiftState) uint32 {
 	// 这里不直接使用win包的常量，是考虑要跨平台使用
 	const (
@@ -218,16 +205,16 @@ func ShiftStateToWord(shift types.TShiftState) uint32 {
 		MOD_NOREPEAT = 0x4000
 	)
 	var result uint32
-	if InSets(shift, types.SsShift) {
+	if shift.In(types.SsShift) {
 		result += MOD_SHIFT
 	}
-	if InSets(shift, types.SsCtrl) {
+	if shift.In(types.SsCtrl) {
 		result += MOD_CONTROL
 	}
-	if InSets(shift, types.SsAlt) {
+	if shift.In(types.SsAlt) {
 		result += MOD_ALT
 	}
-	if InSets(shift, types.SsCommand) {
+	if shift.In(types.SsCommand) {
 		result += MOD_WIN
 	}
 	return result

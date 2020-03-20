@@ -30,19 +30,18 @@ var (
 	form_SetShowInTaskBar       = libvcl.NewProc("Form_SetShowInTaskBar")
 	form_ShowInTaskBar          = libvcl.NewProc("Form_ShowInTaskBar")
 	form_ScaleForCurrentDpi     = libvcl.NewProc("Form_ScaleForCurrentDpi")
+	form_InheritedWndProc       = libvcl.NewProc("Form_InheritedWndProc")
 
 	setEventCallback      = libvcl.NewProc("SetEventCallback")
 	setMessageCallback    = libvcl.NewProc("SetMessageCallback")
 	setThreadSyncCallback = libvcl.NewProc("SetThreadSyncCallback")
 
-	dGetParam       = libvcl.NewProc("DGetParam")
 	dGetStringArrOf = libvcl.NewProc("DGetStringArrOf")
 	dStrLen         = libvcl.NewProc("DStrLen")
 	dMove           = libvcl.NewProc("DMove")
 
-	dShowMessage     = libvcl.NewProc("DShowMessage")
-	dGetMainInstance = libvcl.NewProc("DGetMainInstance")
-	dMessageDlg      = libvcl.NewProc("DMessageDlg")
+	dShowMessage = libvcl.NewProc("DShowMessage")
+	dMessageDlg  = libvcl.NewProc("DMessageDlg")
 
 	mouse_Instance  = libvcl.NewProc("Mouse_Instance")
 	screen_Instance = libvcl.NewProc("Screen_Instance")
@@ -91,6 +90,12 @@ var (
 	imageList_GetIcon1     = libvcl.NewProc("ImageList_GetIcon1")
 	imageList_GetIcon2     = libvcl.NewProc("ImageList_GetIcon2")
 
+	// TBitmap
+	bitmap_Clear          = libvcl.NewProc("Bitmap_Clear")
+	bitmap_BeginUpdate    = libvcl.NewProc("Bitmap_BeginUpdate")
+	bitmap_EndUpdate      = libvcl.NewProc("Bitmap_EndUpdate")
+	bitmap_LoadFromDevice = libvcl.NewProc("Bitmap_LoadFromDevice")
+
 	dExtractFilePath = libvcl.NewProc("DExtractFilePath")
 	dFileExists      = libvcl.NewProc("DFileExists")
 
@@ -131,6 +136,4 @@ var (
 	// 库的信息
 	dLibStringEncoding = libvcl.NewProc("DLibStringEncoding")
 	dLibVersion        = libvcl.NewProc("DLibVersion")
-
-	dGetGDKWindowXID = libvcl.NewProc("GetGDKWindowXID")
 )

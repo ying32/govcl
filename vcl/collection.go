@@ -34,36 +34,41 @@ func NewCollection() *TCollection {
     return c
 }
 
+// AsCollection
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsCollection(obj interface{}) *TCollection {
+    c := new(TCollection)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // CollectionFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsCollection.
 func CollectionFromInst(inst uintptr) *TCollection {
-    c := new(TCollection)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsCollection(inst)
 }
 
 // CollectionFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsCollection.
 func CollectionFromObj(obj IObject) *TCollection {
-    c := new(TCollection)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsCollection(obj)
 }
 
 // CollectionFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsCollection.
 func CollectionFromUnsafePointer(ptr unsafe.Pointer) *TCollection {
-    c := new(TCollection)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsCollection(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (c *TCollection) IsValid() bool {
     return c.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (c *TCollection) Is() TIs {
+    return TIs(c.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (c *TCollection) As() TAs {
+//    return TAs(c.instance)
+//}
+
 // TCollectionClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -107,12 +126,12 @@ func TCollectionClass() TClass {
 // CN: 组件所有者。
 // EN: component owner.
 func (c *TCollection) Owner() *TObject {
-    return ObjectFromInst(Collection_Owner(c.instance))
+    return AsObject(Collection_Owner(c.instance))
 }
 
 // Add
 func (c *TCollection) Add() *TCollectionItem {
-    return CollectionItemFromInst(Collection_Add(c.instance))
+    return AsCollectionItem(Collection_Add(c.instance))
 }
 
 // Assign
@@ -151,7 +170,7 @@ func (c *TCollection) EndUpdate() {
 
 // FindItemID
 func (c *TCollection) FindItemID(ID int32) *TCollectionItem {
-    return CollectionItemFromInst(Collection_FindItemID(c.instance, ID))
+    return AsCollectionItem(Collection_FindItemID(c.instance, ID))
 }
 
 // GetNamePath
@@ -163,7 +182,7 @@ func (c *TCollection) GetNamePath() string {
 
 // Insert
 func (c *TCollection) Insert(Index int32) *TCollectionItem {
-    return CollectionItemFromInst(Collection_Insert(c.instance, Index))
+    return AsCollectionItem(Collection_Insert(c.instance, Index))
 }
 
 // DisposeOf
@@ -239,7 +258,7 @@ func (c *TCollection) Count() int32 {
 
 // Items
 func (c *TCollection) Items(Index int32) *TCollectionItem {
-    return CollectionItemFromInst(Collection_GetItems(c.instance, Index))
+    return AsCollectionItem(Collection_GetItems(c.instance, Index))
 }
 
 // Items

@@ -24,36 +24,41 @@ type TSizeConstraints struct {
     ptr unsafe.Pointer
 }
 
+// AsSizeConstraints
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsSizeConstraints(obj interface{}) *TSizeConstraints {
+    s := new(TSizeConstraints)
+    s.instance, s.ptr = getInstance(obj)
+    return s
+}
+
+// -------------------------- Deprecated begin --------------------------
 // SizeConstraintsFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsSizeConstraints.
 func SizeConstraintsFromInst(inst uintptr) *TSizeConstraints {
-    s := new(TSizeConstraints)
-    s.instance = inst
-    s.ptr = unsafe.Pointer(inst)
-    return s
+    return AsSizeConstraints(inst)
 }
 
 // SizeConstraintsFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsSizeConstraints.
 func SizeConstraintsFromObj(obj IObject) *TSizeConstraints {
-    s := new(TSizeConstraints)
-    s.instance = CheckPtr(obj)
-    s.ptr = unsafe.Pointer(s.instance)
-    return s
+    return AsSizeConstraints(obj)
 }
 
 // SizeConstraintsFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsSizeConstraints.
 func SizeConstraintsFromUnsafePointer(ptr unsafe.Pointer) *TSizeConstraints {
-    s := new(TSizeConstraints)
-    s.instance = uintptr(ptr)
-    s.ptr = ptr
-    return s
+    return AsSizeConstraints(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.
@@ -74,6 +79,20 @@ func (s *TSizeConstraints) UnsafeAddr() unsafe.Pointer {
 func (s *TSizeConstraints) IsValid() bool {
     return s.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (s *TSizeConstraints) Is() TIs {
+    return TIs(s.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (s *TSizeConstraints) As() TAs {
+//    return TAs(s.instance)
+//}
 
 // TSizeConstraintsClass
 // CN: 获取类信息指针。

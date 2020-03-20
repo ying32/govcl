@@ -34,36 +34,41 @@ func NewListBox(owner IComponent) *TListBox {
     return l
 }
 
+// AsListBox
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsListBox(obj interface{}) *TListBox {
+    l := new(TListBox)
+    l.instance, l.ptr = getInstance(obj)
+    return l
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ListBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsListBox.
 func ListBoxFromInst(inst uintptr) *TListBox {
-    l := new(TListBox)
-    l.instance = inst
-    l.ptr = unsafe.Pointer(inst)
-    return l
+    return AsListBox(inst)
 }
 
 // ListBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsListBox.
 func ListBoxFromObj(obj IObject) *TListBox {
-    l := new(TListBox)
-    l.instance = CheckPtr(obj)
-    l.ptr = unsafe.Pointer(l.instance)
-    return l
+    return AsListBox(obj)
 }
 
 // ListBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsListBox.
 func ListBoxFromUnsafePointer(ptr unsafe.Pointer) *TListBox {
-    l := new(TListBox)
-    l.instance = uintptr(ptr)
-    l.ptr = ptr
-    return l
+    return AsListBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (l *TListBox) UnsafeAddr() unsafe.Pointer {
 func (l *TListBox) IsValid() bool {
     return l.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (l *TListBox) Is() TIs {
+    return TIs(l.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (l *TListBox) As() TAs {
+//    return TAs(l.instance)
+//}
 
 // TListBoxClass
 // CN: 获取类信息指针。
@@ -132,6 +151,16 @@ func (l *TListBox) DeleteSelected() {
     ListBox_DeleteSelected(l.instance)
 }
 
+// ItemAtPos
+func (l *TListBox) ItemAtPos(Pos TPoint, Existing bool) int32 {
+    return ListBox_ItemAtPos(l.instance, Pos , Existing)
+}
+
+// ItemRect
+func (l *TListBox) ItemRect(Index int32) TRect {
+    return ListBox_ItemRect(l.instance, Index)
+}
+
 // SelectAll
 // CN: 全选。
 // EN: .
@@ -157,7 +186,7 @@ func (l *TListBox) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (l *TListBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ListBox_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ListBox_ControlAtPos(l.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -178,7 +207,7 @@ func (l *TListBox) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (l *TListBox) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ListBox_FindChildControl(l.instance, ControlName))
+    return AsControl(ListBox_FindChildControl(l.instance, ControlName))
 }
 
 // FlipChildren
@@ -393,7 +422,7 @@ func (l *TListBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (l *TListBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ListBox_FindComponent(l.instance, AName))
+    return AsComponent(ListBox_FindComponent(l.instance, AName))
 }
 
 // GetNamePath
@@ -614,7 +643,7 @@ func (l *TListBox) SetColumns(value int32) {
 
 // Constraints
 func (l *TListBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ListBox_GetConstraints(l.instance))
+    return AsSizeConstraints(ListBox_GetConstraints(l.instance))
 }
 
 // SetConstraints
@@ -706,7 +735,7 @@ func (l *TListBox) SetEnabled(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (l *TListBox) Font() *TFont {
-    return FontFromInst(ListBox_GetFont(l.instance))
+    return AsFont(ListBox_GetFont(l.instance))
 }
 
 // SetFont
@@ -728,7 +757,7 @@ func (l *TListBox) SetItemHeight(value int32) {
 
 // Items
 func (l *TListBox) Items() *TStrings {
-    return StringsFromInst(ListBox_GetItems(l.instance))
+    return AsStrings(ListBox_GetItems(l.instance))
 }
 
 // SetItems
@@ -812,7 +841,7 @@ func (l *TListBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (l *TListBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ListBox_GetPopupMenu(l.instance))
+    return AsPopupMenu(ListBox_GetPopupMenu(l.instance))
 }
 
 // SetPopupMenu
@@ -1075,7 +1104,7 @@ func (l *TListBox) SetOnStartDock(fn TStartDockEvent) {
 // CN: 获取画布。
 // EN: .
 func (l *TListBox) Canvas() *TCanvas {
-    return CanvasFromInst(ListBox_GetCanvas(l.instance))
+    return AsCanvas(ListBox_GetCanvas(l.instance))
 }
 
 // Count
@@ -1149,7 +1178,7 @@ func (l *TListBox) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (l *TListBox) Brush() *TBrush {
-    return BrushFromInst(ListBox_GetBrush(l.instance))
+    return AsBrush(ListBox_GetBrush(l.instance))
 }
 
 // ControlCount
@@ -1196,7 +1225,7 @@ func (l *TListBox) SetUseDockManager(value bool) {
 
 // Action
 func (l *TListBox) Action() *TAction {
-    return ActionFromInst(ListBox_GetAction(l.instance))
+    return AsAction(ListBox_GetAction(l.instance))
 }
 
 // SetAction
@@ -1311,7 +1340,7 @@ func (l *TListBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (l *TListBox) Parent() *TWinControl {
-    return WinControlFromInst(ListBox_GetParent(l.instance))
+    return AsWinControl(ListBox_GetParent(l.instance))
 }
 
 // SetParent
@@ -1423,7 +1452,7 @@ func (l *TListBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (l *TListBox) Margins() *TMargins {
-    return MarginsFromInst(ListBox_GetMargins(l.instance))
+    return AsMargins(ListBox_GetMargins(l.instance))
 }
 
 // SetMargins
@@ -1437,7 +1466,7 @@ func (l *TListBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (l *TListBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ListBox_GetCustomHint(l.instance))
+    return AsCustomHint(ListBox_GetCustomHint(l.instance))
 }
 
 // SetCustomHint
@@ -1472,7 +1501,7 @@ func (l *TListBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (l *TListBox) Owner() *TComponent {
-    return ComponentFromInst(ListBox_GetOwner(l.instance))
+    return AsComponent(ListBox_GetOwner(l.instance))
 }
 
 // Name
@@ -1517,20 +1546,20 @@ func (l *TListBox) SetSelected(Index int32, value bool) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (l *TListBox) DockClients(Index int32) *TControl {
-    return ControlFromInst(ListBox_GetDockClients(l.instance, Index))
+    return AsControl(ListBox_GetDockClients(l.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (l *TListBox) Controls(Index int32) *TControl {
-    return ControlFromInst(ListBox_GetControls(l.instance, Index))
+    return AsControl(ListBox_GetControls(l.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (l *TListBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ListBox_GetComponents(l.instance, AIndex))
+    return AsComponent(ListBox_GetComponents(l.instance, AIndex))
 }
 

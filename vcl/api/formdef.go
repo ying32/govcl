@@ -1,16 +1,18 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
 
-
 package api
 
-import "github.com/ying32/govcl/vcl/types"
+import (
+	"unsafe"
+
+	"github.com/ying32/govcl/vcl/types"
+)
 
 func Form_Create2(owner uintptr, initScale bool) uintptr {
 	ret, _, _ := form_Create2.Call(owner, GoBoolToDBool(initScale))
@@ -91,4 +93,8 @@ func Form_ScaleControlsForDpi(obj uintptr, newPPI int32) {
 
 func Form_ScaleForCurrentDpi(obj uintptr) {
 	form_ScaleForCurrentDpi.Call(obj)
+}
+
+func Form_InheritedWndProc(obj uintptr, msg *types.TMessage) {
+	form_InheritedWndProc.Call(obj, uintptr(unsafe.Pointer(msg)))
 }

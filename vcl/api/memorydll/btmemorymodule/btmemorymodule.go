@@ -1,14 +1,12 @@
 // +build windows,386
 
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 /*
   此项功能稳定性还有待观查。
@@ -300,7 +298,7 @@ func FinalizeSections(fp_module *TBTMemoryModule) {
 	}
 }
 
-func BTMemoryLoadLibary(fp_data Pointer, f_size int64) *TBTMemoryModule {
+func BTMemoryLoadLibrary(fp_data Pointer, f_size int64) *TBTMemoryModule {
 	var result *TBTMemoryModule
 	defer func() {
 		if err := recover(); err != nil {

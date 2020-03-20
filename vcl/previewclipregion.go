@@ -34,36 +34,41 @@ func NewPreviewClipRegion() *TPreviewClipRegion {
     return p
 }
 
+// AsPreviewClipRegion
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsPreviewClipRegion(obj interface{}) *TPreviewClipRegion {
+    p := new(TPreviewClipRegion)
+    p.instance, p.ptr = getInstance(obj)
+    return p
+}
+
+// -------------------------- Deprecated begin --------------------------
 // PreviewClipRegionFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsPreviewClipRegion.
 func PreviewClipRegionFromInst(inst uintptr) *TPreviewClipRegion {
-    p := new(TPreviewClipRegion)
-    p.instance = inst
-    p.ptr = unsafe.Pointer(inst)
-    return p
+    return AsPreviewClipRegion(inst)
 }
 
 // PreviewClipRegionFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsPreviewClipRegion.
 func PreviewClipRegionFromObj(obj IObject) *TPreviewClipRegion {
-    p := new(TPreviewClipRegion)
-    p.instance = CheckPtr(obj)
-    p.ptr = unsafe.Pointer(p.instance)
-    return p
+    return AsPreviewClipRegion(obj)
 }
 
 // PreviewClipRegionFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsPreviewClipRegion.
 func PreviewClipRegionFromUnsafePointer(ptr unsafe.Pointer) *TPreviewClipRegion {
-    p := new(TPreviewClipRegion)
-    p.instance = uintptr(ptr)
-    p.ptr = ptr
-    return p
+    return AsPreviewClipRegion(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (p *TPreviewClipRegion) UnsafeAddr() unsafe.Pointer {
 func (p *TPreviewClipRegion) IsValid() bool {
     return p.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (p *TPreviewClipRegion) Is() TIs {
+    return TIs(p.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (p *TPreviewClipRegion) As() TAs {
+//    return TAs(p.instance)
+//}
 
 // TPreviewClipRegionClass
 // CN: 获取类信息指针。

@@ -17,7 +17,7 @@ uses
 
 type
     // 消息过程定义
-  TWndProcEvent = procedure(Sender: TObject; var TheMessage: TLMessage; var AHandled: Boolean) of object;
+  TWndProcEvent = procedure(Sender: TObject; var TheMessage: TLMessage) of object;
   // 重定一个，主要是为了修改相关默认
 
   { TGoForm }
@@ -32,6 +32,7 @@ type
     constructor CreateNew(AOwner: TComponent; Num: Integer = 0); override;
     procedure ScaleForPPI(ANewPPI: Integer);
     procedure ScaleForCurrentDpi;
+    procedure InheritedWndProc(var TheMessage: TLMessage);
   published
     property OnWndProc: TWndProcEvent read FOnWndProc write FOnWndProc;
   end;
@@ -76,6 +77,11 @@ begin
   end;
 end;
 
+procedure TGoForm.InheritedWndProc(var TheMessage: TLMessage);
+begin
+  inherited WndProc(TheMessage);
+end;
+
 procedure TGoForm.ProcessResource;
 begin
   Self.ClientHeight := 321;
@@ -85,13 +91,10 @@ end;
 
 
 procedure TGoForm.WndProc(var TheMessage: TLMessage);
-var
-  LHandled: Boolean;
 begin
-  LHandled := True;
   if Assigned(FOnWndProc) then
-    FOnWndProc(Self, TheMessage, LHandled);
-  if LHandled then
+    FOnWndProc(Self, TheMessage)
+  else
     inherited WndProc(TheMessage);
 end;
 

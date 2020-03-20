@@ -512,6 +512,18 @@ begin
   AObj.StyleElements := AValue;
 end;
 
+procedure GroupBox_SetOnAlignPosition(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
+begin
+  if AEventId = 0 then
+  begin
+    AObj.OnAlignPosition := nil;
+    TEventClass.Remove(AObj, @TEventClass.OnAlignPosition);
+    Exit;
+  end;
+  AObj.OnAlignPosition := TEventClass.OnAlignPosition;
+  TEventClass.Add(AObj, @TEventClass.OnAlignPosition, AEventId);
+end;
+
 procedure GroupBox_SetOnClick(AObj: TGroupBox; AEventId: NativeUInt); stdcall;
 begin
   if AEventId = 0 then
@@ -1164,6 +1176,7 @@ exports
   GroupBox_SetVisible,
   GroupBox_GetStyleElements,
   GroupBox_SetStyleElements,
+  GroupBox_SetOnAlignPosition,
   GroupBox_SetOnClick,
   GroupBox_SetOnContextPopup,
   GroupBox_SetOnDblClick,

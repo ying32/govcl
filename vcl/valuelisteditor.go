@@ -34,36 +34,41 @@ func NewValueListEditor(owner IComponent) *TValueListEditor {
     return v
 }
 
+// AsValueListEditor
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsValueListEditor(obj interface{}) *TValueListEditor {
+    v := new(TValueListEditor)
+    v.instance, v.ptr = getInstance(obj)
+    return v
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ValueListEditorFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsValueListEditor.
 func ValueListEditorFromInst(inst uintptr) *TValueListEditor {
-    v := new(TValueListEditor)
-    v.instance = inst
-    v.ptr = unsafe.Pointer(inst)
-    return v
+    return AsValueListEditor(inst)
 }
 
 // ValueListEditorFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsValueListEditor.
 func ValueListEditorFromObj(obj IObject) *TValueListEditor {
-    v := new(TValueListEditor)
-    v.instance = CheckPtr(obj)
-    v.ptr = unsafe.Pointer(v.instance)
-    return v
+    return AsValueListEditor(obj)
 }
 
 // ValueListEditorFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsValueListEditor.
 func ValueListEditorFromUnsafePointer(ptr unsafe.Pointer) *TValueListEditor {
-    v := new(TValueListEditor)
-    v.instance = uintptr(ptr)
-    v.ptr = ptr
-    return v
+    return AsValueListEditor(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (v *TValueListEditor) UnsafeAddr() unsafe.Pointer {
 func (v *TValueListEditor) IsValid() bool {
     return v.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (v *TValueListEditor) Is() TIs {
+    return TIs(v.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (v *TValueListEditor) As() TAs {
+//    return TAs(v.instance)
+//}
 
 // TValueListEditorClass
 // CN: 获取类信息指针。
@@ -143,7 +162,7 @@ func (v *TValueListEditor) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (v *TValueListEditor) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(ValueListEditor_ControlAtPos(v.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(ValueListEditor_ControlAtPos(v.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -164,7 +183,7 @@ func (v *TValueListEditor) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (v *TValueListEditor) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(ValueListEditor_FindChildControl(v.instance, ControlName))
+    return AsControl(ValueListEditor_FindChildControl(v.instance, ControlName))
 }
 
 // FlipChildren
@@ -372,7 +391,7 @@ func (v *TValueListEditor) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (v *TValueListEditor) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(ValueListEditor_FindComponent(v.instance, AName))
+    return AsComponent(ValueListEditor_FindComponent(v.instance, AName))
 }
 
 // GetNamePath
@@ -538,7 +557,7 @@ func (v *TValueListEditor) SetColor(value TColor) {
 
 // Constraints
 func (v *TValueListEditor) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(ValueListEditor_GetConstraints(v.instance))
+    return AsSizeConstraints(ValueListEditor_GetConstraints(v.instance))
 }
 
 // SetConstraints
@@ -690,7 +709,7 @@ func (v *TValueListEditor) SetFixedCols(value int32) {
 // CN: 获取字体。
 // EN: Get Font.
 func (v *TValueListEditor) Font() *TFont {
-    return FontFromInst(ValueListEditor_GetFont(v.instance))
+    return AsFont(ValueListEditor_GetFont(v.instance))
 }
 
 // SetFont
@@ -814,7 +833,7 @@ func (v *TValueListEditor) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (v *TValueListEditor) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(ValueListEditor_GetPopupMenu(v.instance))
+    return AsPopupMenu(ValueListEditor_GetPopupMenu(v.instance))
 }
 
 // SetPopupMenu
@@ -850,7 +869,7 @@ func (v *TValueListEditor) SetShowHint(value bool) {
 
 // Strings
 func (v *TValueListEditor) Strings() *TStrings {
-    return StringsFromInst(ValueListEditor_GetStrings(v.instance))
+    return AsStrings(ValueListEditor_GetStrings(v.instance))
 }
 
 // SetStrings
@@ -1087,7 +1106,7 @@ func (v *TValueListEditor) SetOnTopLeftChanged(fn TNotifyEvent) {
 // CN: 获取画布。
 // EN: .
 func (v *TValueListEditor) Canvas() *TCanvas {
-    return CanvasFromInst(ValueListEditor_GetCanvas(v.instance))
+    return AsCanvas(ValueListEditor_GetCanvas(v.instance))
 }
 
 // Col
@@ -1220,7 +1239,7 @@ func (v *TValueListEditor) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (v *TValueListEditor) Brush() *TBrush {
-    return BrushFromInst(ValueListEditor_GetBrush(v.instance))
+    return AsBrush(ValueListEditor_GetBrush(v.instance))
 }
 
 // ControlCount
@@ -1267,7 +1286,7 @@ func (v *TValueListEditor) SetUseDockManager(value bool) {
 
 // Action
 func (v *TValueListEditor) Action() *TAction {
-    return ActionFromInst(ValueListEditor_GetAction(v.instance))
+    return AsAction(ValueListEditor_GetAction(v.instance))
 }
 
 // SetAction
@@ -1382,7 +1401,7 @@ func (v *TValueListEditor) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (v *TValueListEditor) Parent() *TWinControl {
-    return WinControlFromInst(ValueListEditor_GetParent(v.instance))
+    return AsWinControl(ValueListEditor_GetParent(v.instance))
 }
 
 // SetParent
@@ -1494,7 +1513,7 @@ func (v *TValueListEditor) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (v *TValueListEditor) Margins() *TMargins {
-    return MarginsFromInst(ValueListEditor_GetMargins(v.instance))
+    return AsMargins(ValueListEditor_GetMargins(v.instance))
 }
 
 // SetMargins
@@ -1508,7 +1527,7 @@ func (v *TValueListEditor) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (v *TValueListEditor) CustomHint() *TCustomHint {
-    return CustomHintFromInst(ValueListEditor_GetCustomHint(v.instance))
+    return AsCustomHint(ValueListEditor_GetCustomHint(v.instance))
 }
 
 // SetCustomHint
@@ -1543,7 +1562,7 @@ func (v *TValueListEditor) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (v *TValueListEditor) Owner() *TComponent {
-    return ComponentFromInst(ValueListEditor_GetOwner(v.instance))
+    return AsComponent(ValueListEditor_GetOwner(v.instance))
 }
 
 // Name
@@ -1628,20 +1647,20 @@ func (v *TValueListEditor) SetTabStops(Index int32, value bool) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (v *TValueListEditor) DockClients(Index int32) *TControl {
-    return ControlFromInst(ValueListEditor_GetDockClients(v.instance, Index))
+    return AsControl(ValueListEditor_GetDockClients(v.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (v *TValueListEditor) Controls(Index int32) *TControl {
-    return ControlFromInst(ValueListEditor_GetControls(v.instance, Index))
+    return AsControl(ValueListEditor_GetControls(v.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (v *TValueListEditor) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(ValueListEditor_GetComponents(v.instance, AIndex))
+    return AsComponent(ValueListEditor_GetComponents(v.instance, AIndex))
 }
 

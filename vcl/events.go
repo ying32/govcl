@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -320,9 +318,9 @@ type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
 //TTVCustomDrawItemEvent = procedure(Sender: TCustomTreeView; Node: TTreeNode; State: TCustomDrawState; var DefaultDraw: Boolean) of object;
 type TTVCustomDrawItemEvent func(sender *TTreeView, node *TTreeNode, state TCustomDrawStage, defaultDraw *bool)
 
-// 消息过程 AHandled 默认为 true
-//TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage; var AHandled: Boolean) of object;
-type TWndProcEvent func(msg *TMessage, handled *bool)
+// 消息过程
+//TWndProcEvent = procedure(Sender: TObject; var AMsg: TMessage) of object;
+type TWndProcEvent func(msg *TMessage)
 
 // TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
 type TWebTitleChangeEvent func(sender IObject, text string)
@@ -335,3 +333,6 @@ type TTaskDlgClickEvent func(sender IObject, modalResult TModalResult, canClose 
 
 //TTaskDlgTimerEvent = procedure(Sender: TObject; TickCount: Cardinal; var Reset: Boolean) of object;
 type TTaskDlgTimerEvent func(sender IObject, tickCount uint32, reset *bool)
+
+//TAlignPositionEvent = procedure(Sender: TWinControl; Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo) of object;
+type TAlignPositionEvent func(sender *TWinControl, control *TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *TRect, alignInfo TAlignInfo)

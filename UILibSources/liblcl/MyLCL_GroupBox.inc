@@ -457,6 +457,13 @@ begin
   AObj.Visible := AValue;
 end;
 
+procedure GroupBox_SetOnAlignPosition(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnAlignPosition}
+  {$DEFINE EventMethodName := OnAlignPosition}
+  EventMethodCode
+end;
+
 procedure GroupBox_SetOnClick(AObj: TGroupBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -939,6 +946,7 @@ exports
   GroupBox_SetTabStop,
   GroupBox_GetVisible,
   GroupBox_SetVisible,
+  GroupBox_SetOnAlignPosition,
   GroupBox_SetOnClick,
   GroupBox_SetOnContextPopup,
   GroupBox_SetOnDblClick,

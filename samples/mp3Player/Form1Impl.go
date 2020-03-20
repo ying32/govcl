@@ -41,7 +41,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.playCtl.SetParent(f.Panel2)
 	f.playCtl.SetAlign(types.AlClient)
 	f.playCtl.OnSelect = f.OnPlayListSelect
-	f.playCtl.SingerPic = vcl.BitmapFromObj(f.ImgSinger.Picture().Graphic())
+	f.playCtl.SingerPic = vcl.AsBitmap(f.ImgSinger.Picture().Graphic())
 
 	f.progress = NewImageTrackBar(f)
 	f.progress.SetParent(f)
@@ -70,7 +70,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 		f.taskbar1 = vcl.NewTaskbar(f)
 		f.taskbar1.SetOnThumbPreviewRequest(f.onTaskbar1ThumbPreviewRequest)
 		f.taskbar1.SetOnThumbButtonClick(f.onTaskbar1ThumbButtonClick)
-		f.taskbar1.SetTabProperties(rtl.Include(0, types.CustomizedPreview))
+		f.taskbar1.SetTabProperties(types.NewSet(types.CustomizedPreview))
 
 		f.taskbar1.TaskBarButtons().BeginUpdate()
 		// buttons
@@ -83,7 +83,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 		f.ImageList1.GetIcon(1, tbtn.Icon())
 
 		tbtn = f.taskbar1.TaskBarButtons().Add()
-		tbtn.SetButtonState(rtl.Include(tbtn.ButtonState(), types.TbsHidden))
+		tbtn.SetButtonState(tbtn.ButtonState().Include(types.TbsHidden))
 		tbtn.SetHint("暂停")
 		f.ImageList1.GetIcon(2, tbtn.Icon())
 
@@ -147,9 +147,9 @@ func (f *TForm1) setTasbarButtonState(aPlayVisible, aPauseVisible bool) {
 		tbtn := f.taskbar1.TaskBarButtons().Items(1)
 		state = tbtn.ButtonState()
 		if aPlayVisible {
-			state = rtl.Exclude(state, types.TbsHidden)
+			state = state.Exclude(types.TbsHidden)
 		} else {
-			state = rtl.Include(state, types.TbsHidden)
+			state = state.Include(types.TbsHidden)
 		}
 		tbtn.SetButtonState(state)
 
@@ -157,9 +157,9 @@ func (f *TForm1) setTasbarButtonState(aPlayVisible, aPauseVisible bool) {
 		tbtn = f.taskbar1.TaskBarButtons().Items(2)
 		state = tbtn.ButtonState()
 		if aPauseVisible {
-			state = rtl.Exclude(state, types.TbsHidden)
+			state = state.Exclude(types.TbsHidden)
 		} else {
-			state = rtl.Include(state, types.TbsHidden)
+			state = state.Include(types.TbsHidden)
 		}
 		tbtn.SetButtonState(state)
 	}
@@ -180,7 +180,7 @@ func (f *TForm1) OnMIAddFileClick(sender vcl.IObject) {
 }
 
 func (f *TForm1) OnMIAddFolderClick(sender vcl.IObject) {
-	if ok, str := vcl.SelectDirectory2("选择目录", "", rtl.Include(0, types.SdNewUI, types.SdShowEdit), nil); ok {
+	if ok, str := vcl.SelectDirectory2("选择目录", "", types.NewSet(types.SdNewUI, types.SdShowEdit), nil); ok {
 		f.addFoler(str)
 	}
 }

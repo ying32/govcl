@@ -24,8 +24,11 @@ var (
 	// ThreadSync
 	threadSync   sync.Mutex
 	threadSyncFn func()
-	// eventId， 2000 起
-	eventIds uintptr = 2000
+
+	// 标识，主要是解决反射时事件的函数地址获取问题
+	// 当标识为true时addEventToMap直接取currentEventId的值。
+	addingEvent    bool
+	currentEventId uintptr
 )
 
 // Delphi或者Lazarus的Bool类型转为Go bool
@@ -44,30 +47,52 @@ func GoBoolToDBool(val bool) uintptr {
 	return 0
 }
 
-// IsNil 判断一个接口是否为空
-// interface{}数据类型定义为 typedef struct { void *type; void *value; } GoInterface;
-// 当type与value值都为nil时则为空。
+// typedef struct { void *type; void *value; } GoInterface;
+type interfacePtr struct {
+	tpy uintptr
+	val *uintptr
+}
+
+func getInterfaceVal(value interface{}) uintptr {
+	if ptr := (*interfacePtr)(unsafe.Pointer(&value)).val; ptr != nil {
+		return *ptr
+	}
+	return 0
+}
+
 func IsNil(val interface{}) bool {
-	ptr := unsafe.Pointer(&val)
-	return *(*uintptr)(ptr) == 0 && *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2))) == 0
+	ptr := (*interfacePtr)(unsafe.Pointer(&val))
+	return ptr.tpy == 0 || ptr.val == nil
 }
 
-func getFuncId(val interface{}) uintptr {
-	ptr := unsafe.Pointer(&val)
-	if *(*uintptr)(ptr) == 0 {
-		return 0
-	}
-	return *(*uintptr)(unsafe.Pointer(uintptr(ptr) + uintptr(unsafe.Sizeof(val)/2)))
-}
-
-// hashOf 管不了了，先直接这样吧，防止重复的，虽然会产生很多
+// hashOf
 func hashOf(val interface{}) uintptr {
-	if reflect.ValueOf(val).Pointer() == 0 {
-		return 0
+	// 如果正在使用beginAddEvent和EndAddEvent则直接取这个值。
+	// 反之使用默认的行为。
+	if addingEvent {
+		if currentEventId > 0 {
+			return currentEventId
+		} else {
+			return 0
+		}
 	}
-	//result := getFuncId(val)
-	eventIds++
-	return eventIds
+	// 默认返回ID
+	return reflect.ValueOf(val).Pointer() //getInterfaceVal(val)
+}
+
+// 以下三个函数留给自动绑定事件使用。
+func BeginAddEvent() {
+	addingEvent = true
+	currentEventId = 0
+}
+
+func EndAddEvent() {
+	addingEvent = false
+	currentEventId = 0
+}
+
+func SetCurrentEventId(id uintptr) {
+	currentEventId = id
 }
 
 // 将事件添加到查找表中
@@ -143,12 +168,6 @@ func DMove(src, dest uintptr, llen int) {
 
 func DShowMessage(s string) {
 	dShowMessage.Call(GoStrToDStr(s))
-}
-
-// 应用程序实例
-func DGetMainInstance() uintptr {
-	ret, _, _ := dGetMainInstance.Call()
-	return ret
 }
 
 func DMessageDlg(Msg string, DlgType TMsgDlgType, Buttons TMsgDlgButtons, HelpCtx int32) int32 {
@@ -313,10 +332,4 @@ func DLibStringEncoding() TStringEncoding {
 func DLibVersion() uint32 {
 	r, _, _ := dLibVersion.Call()
 	return uint32(r)
-}
-
-func DGetGDKWindowXID(handle uintptr) TXID {
-	var aResult TXID
-	dGetGDKWindowXID.Call(handle, uintptr(unsafe.Pointer(&aResult)))
-	return aResult
 }

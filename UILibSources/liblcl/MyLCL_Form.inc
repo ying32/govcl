@@ -652,6 +652,13 @@ begin
   AObj.WindowState := AValue;
 end;
 
+procedure Form_SetOnAlignPosition(AObj: TForm; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnAlignPosition}
+  {$DEFINE EventMethodName := OnAlignPosition}
+  EventMethodCode
+end;
+
 procedure Form_SetOnClick(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -1240,6 +1247,7 @@ exports
   Form_SetWidth,
   Form_GetWindowState,
   Form_SetWindowState,
+  Form_SetOnAlignPosition,
   Form_SetOnClick,
   Form_SetOnClose,
   Form_SetOnCloseQuery,

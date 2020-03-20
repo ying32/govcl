@@ -18,12 +18,30 @@ import _ "github.com/ying32/govcl/pkgs/macapp"
 package macapp
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"strings"
+	"text/template"
+)
+
+// 自定义包信息
+type pkgFile struct {
+	Copyright    string // copy right ....
+	Locale       string // zh_CN en_US
+	DevRegion    string // China En English
+	IconFileName string // .icns file
+	Files        []struct {
+		Src  string // C:/xxx/a.txt
+		Dest string // /Contents/MacOS/a.txt or /Contents/a.txt or /Contents/Resources/a.txt
+	}
+}
+
+const (
+	defaultPkgName = "apppkg.conf" // 打包的文件，一个json格式的。
 )
 
 func copyFile(src, dest string) error {
@@ -119,7 +137,17 @@ func runWithMacOSApp() {
 
 	plistFileName := macContentsDir + "/Info.plist"
 	if !fileExists(plistFileName) {
-		ioutil.WriteFile(plistFileName, []byte(fmt.Sprintf(infoplist, execName, execName, execName, execName)), 0666)
+		datas := map[string]string{
+			"execName":  execName,
+			"devRegion": "China", // China English
+			"locale":    "zh_CN", //os.Getenv("LANG"),
+			"copyright": "copyright xxxx",
+		}
+		buff := bytes.NewBuffer([]byte{})
+		tmp := template.New("file")
+		tmp.Parse(infoplist)
+		tmp.Execute(buff, datas)
+		ioutil.WriteFile(plistFileName, buff.Bytes(), 0666)
 	}
 
 	pkgInfoFileName := macContentsDir + "/PkgInfo"

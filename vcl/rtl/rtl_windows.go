@@ -1,24 +1,14 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
 
-
 package rtl
 
-import (
-	"github.com/ying32/govcl/vcl/api"
-	"github.com/ying32/govcl/vcl/win"
-)
-
-// MainInstance EXE自身的实例
-func MainInstance() uintptr {
-	return win.GetSelfModuleHandle()
-}
+import "github.com/ying32/govcl/vcl/api"
 
 // SetReportMemoryLeaksOnShutdown 程序结束时报告内存泄露，总有2-4字节的未知泄露位置
 func SetReportMemoryLeaksOnShutdown(v bool) {

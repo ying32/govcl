@@ -35,9 +35,9 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 	m.TDrawGrid.SetDefaultDrawing(false)
 	m.TDrawGrid.SetDefaultRowHeight(24)
 	if LcLLoaded() {
-		m.TDrawGrid.SetOptions(Include(0, GoLzRangeSelect, GoLzRowSelect))
+		m.TDrawGrid.SetOptions(NewSet(GoLzRangeSelect, GoLzRowSelect))
 	} else {
-		m.TDrawGrid.SetOptions(Include(0, GoRangeSelect, GoRowSelect))
+		m.TDrawGrid.SetOptions(NewSet(GoRangeSelect, GoRowSelect))
 	}
 	m.TDrawGrid.SetRowCount(1)
 	m.TDrawGrid.SetColCount(4)
@@ -89,11 +89,11 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 	if len(p.datas) > 0 {
 		canvas := p.Canvas()
 		if aRow < int32(len(p.datas)) {
-			drawFlags := Include(0, TfVerticalCenter, TfSingleLine, TfEndEllipsis)
+			drawFlags := NewSet(TfVerticalCenter, TfSingleLine, TfEndEllipsis)
 			item := p.datas[int(aRow)]
-			if p.mouseMoveIndex == aRow && p.playingIndex != aRow && !InSets(state, GdFocused) && !InSets(state, GdSelected) {
+			if p.mouseMoveIndex == aRow && p.playingIndex != aRow && !state.In(GdFocused) && !state.In(GdSelected) {
 				canvas.Brush().SetColor(p.focusedColor - 12)
-			} else if InSets(state, GdFocused) || InSets(state, GdSelected) {
+			} else if state.In(GdFocused) || state.In(GdSelected) {
 				canvas.Brush().SetColor(p.focusedColor)
 			} else {
 				canvas.Brush().SetColor(p.Color())
@@ -123,14 +123,14 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 				} else {
 					r.Inflate(-10, 0)
 					s := fmt.Sprintf("%d.", aRow+1)
-					canvas.TextRect3(&r, s, Include(drawFlags, TfRight))
+					canvas.TextRect3(&r, s, drawFlags.Include(TfRight))
 				}
 
 			case 1:
 				if aRow == p.playingIndex {
 					r.Inflate(-10, 0)
 					canvas.Font().SetSize(12)
-					canvas.Font().SetStyle(Include(0, FsBold))
+					canvas.Font().SetStyle(NewSet(FsBold))
 					canvas.TextRect3(&r, item.Caption, drawFlags)
 				} else {
 					r.Inflate(-5, 0)
@@ -143,7 +143,7 @@ func (p *TPlayControl) onDrawCell(sender IObject, aCol, aRow int32, rect TRect, 
 				canvas.TextRect3(&r, item.Singer, drawFlags)
 			case 3:
 				r.Inflate(-5, 0)
-				canvas.TextRect3(&r, p.mediaLengthToTimeStr(item.Length), Include(drawFlags, TfRight))
+				canvas.TextRect3(&r, p.mediaLengthToTimeStr(item.Length), drawFlags.Include(TfRight))
 			}
 		}
 

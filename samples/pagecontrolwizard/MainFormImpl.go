@@ -49,7 +49,7 @@ func (f *TMainForm) OnActPagePrevExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActPagePrevUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.PageControl1.ActivePageIndex() > 0)
+	vcl.AsAction(sender).SetEnabled(f.PageControl1.ActivePageIndex() > 0)
 }
 
 func (f *TMainForm) OnActPageNextExecute(sender vcl.IObject) {
@@ -58,5 +58,5 @@ func (f *TMainForm) OnActPageNextExecute(sender vcl.IObject) {
 }
 
 func (f *TMainForm) OnActPageNextUpdate(sender vcl.IObject) {
-	vcl.ActionFromObj(sender).SetEnabled(f.PageControl1.ActivePageIndex() < f.PageControl1.PageCount()-1)
+	vcl.AsAction(sender).SetEnabled(f.PageControl1.ActivePageIndex() < f.PageControl1.PageCount()-1)
 }

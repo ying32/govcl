@@ -34,36 +34,41 @@ func NewCheckListBox(owner IComponent) *TCheckListBox {
     return c
 }
 
+// AsCheckListBox
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsCheckListBox(obj interface{}) *TCheckListBox {
+    c := new(TCheckListBox)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // CheckListBoxFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsCheckListBox.
 func CheckListBoxFromInst(inst uintptr) *TCheckListBox {
-    c := new(TCheckListBox)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsCheckListBox(inst)
 }
 
 // CheckListBoxFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsCheckListBox.
 func CheckListBoxFromObj(obj IObject) *TCheckListBox {
-    c := new(TCheckListBox)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsCheckListBox(obj)
 }
 
 // CheckListBoxFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsCheckListBox.
 func CheckListBoxFromUnsafePointer(ptr unsafe.Pointer) *TCheckListBox {
-    c := new(TCheckListBox)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsCheckListBox(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (c *TCheckListBox) UnsafeAddr() unsafe.Pointer {
 func (c *TCheckListBox) IsValid() bool {
     return c.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (c *TCheckListBox) Is() TIs {
+    return TIs(c.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (c *TCheckListBox) As() TAs {
+//    return TAs(c.instance)
+//}
 
 // TCheckListBoxClass
 // CN: 获取类信息指针。
@@ -137,6 +156,16 @@ func (c *TCheckListBox) DeleteSelected() {
     CheckListBox_DeleteSelected(c.instance)
 }
 
+// ItemAtPos
+func (c *TCheckListBox) ItemAtPos(Pos TPoint, Existing bool) int32 {
+    return CheckListBox_ItemAtPos(c.instance, Pos , Existing)
+}
+
+// ItemRect
+func (c *TCheckListBox) ItemRect(Index int32) TRect {
+    return CheckListBox_ItemRect(c.instance, Index)
+}
+
 // SelectAll
 // CN: 全选。
 // EN: .
@@ -162,7 +191,7 @@ func (c *TCheckListBox) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TCheckListBox) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(CheckListBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(CheckListBox_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -183,7 +212,7 @@ func (c *TCheckListBox) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (c *TCheckListBox) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(CheckListBox_FindChildControl(c.instance, ControlName))
+    return AsControl(CheckListBox_FindChildControl(c.instance, ControlName))
 }
 
 // FlipChildren
@@ -398,7 +427,7 @@ func (c *TCheckListBox) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TCheckListBox) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(CheckListBox_FindComponent(c.instance, AName))
+    return AsComponent(CheckListBox_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -614,7 +643,7 @@ func (c *TCheckListBox) SetColumns(value int32) {
 
 // Constraints
 func (c *TCheckListBox) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(CheckListBox_GetConstraints(c.instance))
+    return AsSizeConstraints(CheckListBox_GetConstraints(c.instance))
 }
 
 // SetConstraints
@@ -720,7 +749,7 @@ func (c *TCheckListBox) SetFlat(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (c *TCheckListBox) Font() *TFont {
-    return FontFromInst(CheckListBox_GetFont(c.instance))
+    return AsFont(CheckListBox_GetFont(c.instance))
 }
 
 // SetFont
@@ -762,7 +791,7 @@ func (c *TCheckListBox) SetItemHeight(value int32) {
 
 // Items
 func (c *TCheckListBox) Items() *TStrings {
-    return StringsFromInst(CheckListBox_GetItems(c.instance))
+    return AsStrings(CheckListBox_GetItems(c.instance))
 }
 
 // SetItems
@@ -836,7 +865,7 @@ func (c *TCheckListBox) SetParentShowHint(value bool) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (c *TCheckListBox) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(CheckListBox_GetPopupMenu(c.instance))
+    return AsPopupMenu(CheckListBox_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
@@ -1114,7 +1143,7 @@ func (c *TCheckListBox) SetAutoCompleteDelay(value uint32) {
 // CN: 获取画布。
 // EN: .
 func (c *TCheckListBox) Canvas() *TCanvas {
-    return CanvasFromInst(CheckListBox_GetCanvas(c.instance))
+    return AsCanvas(CheckListBox_GetCanvas(c.instance))
 }
 
 // Count
@@ -1198,7 +1227,7 @@ func (c *TCheckListBox) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (c *TCheckListBox) Brush() *TBrush {
-    return BrushFromInst(CheckListBox_GetBrush(c.instance))
+    return AsBrush(CheckListBox_GetBrush(c.instance))
 }
 
 // ControlCount
@@ -1245,7 +1274,7 @@ func (c *TCheckListBox) SetUseDockManager(value bool) {
 
 // Action
 func (c *TCheckListBox) Action() *TAction {
-    return ActionFromInst(CheckListBox_GetAction(c.instance))
+    return AsAction(CheckListBox_GetAction(c.instance))
 }
 
 // SetAction
@@ -1360,7 +1389,7 @@ func (c *TCheckListBox) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (c *TCheckListBox) Parent() *TWinControl {
-    return WinControlFromInst(CheckListBox_GetParent(c.instance))
+    return AsWinControl(CheckListBox_GetParent(c.instance))
 }
 
 // SetParent
@@ -1472,7 +1501,7 @@ func (c *TCheckListBox) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (c *TCheckListBox) Margins() *TMargins {
-    return MarginsFromInst(CheckListBox_GetMargins(c.instance))
+    return AsMargins(CheckListBox_GetMargins(c.instance))
 }
 
 // SetMargins
@@ -1486,7 +1515,7 @@ func (c *TCheckListBox) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (c *TCheckListBox) CustomHint() *TCustomHint {
-    return CustomHintFromInst(CheckListBox_GetCustomHint(c.instance))
+    return AsCustomHint(CheckListBox_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
@@ -1521,7 +1550,7 @@ func (c *TCheckListBox) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TCheckListBox) Owner() *TComponent {
-    return ComponentFromInst(CheckListBox_GetOwner(c.instance))
+    return AsComponent(CheckListBox_GetOwner(c.instance))
 }
 
 // Name
@@ -1610,20 +1639,20 @@ func (c *TCheckListBox) SetSelected(Index int32, value bool) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TCheckListBox) DockClients(Index int32) *TControl {
-    return ControlFromInst(CheckListBox_GetDockClients(c.instance, Index))
+    return AsControl(CheckListBox_GetDockClients(c.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (c *TCheckListBox) Controls(Index int32) *TControl {
-    return ControlFromInst(CheckListBox_GetControls(c.instance, Index))
+    return AsControl(CheckListBox_GetControls(c.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TCheckListBox) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(CheckListBox_GetComponents(c.instance, AIndex))
+    return AsComponent(CheckListBox_GetComponents(c.instance, AIndex))
 }
 

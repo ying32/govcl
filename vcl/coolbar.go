@@ -34,36 +34,41 @@ func NewCoolBar(owner IComponent) *TCoolBar {
     return c
 }
 
+// AsCoolBar
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsCoolBar(obj interface{}) *TCoolBar {
+    c := new(TCoolBar)
+    c.instance, c.ptr = getInstance(obj)
+    return c
+}
+
+// -------------------------- Deprecated begin --------------------------
 // CoolBarFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsCoolBar.
 func CoolBarFromInst(inst uintptr) *TCoolBar {
-    c := new(TCoolBar)
-    c.instance = inst
-    c.ptr = unsafe.Pointer(inst)
-    return c
+    return AsCoolBar(inst)
 }
 
 // CoolBarFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsCoolBar.
 func CoolBarFromObj(obj IObject) *TCoolBar {
-    c := new(TCoolBar)
-    c.instance = CheckPtr(obj)
-    c.ptr = unsafe.Pointer(c.instance)
-    return c
+    return AsCoolBar(obj)
 }
 
 // CoolBarFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsCoolBar.
 func CoolBarFromUnsafePointer(ptr unsafe.Pointer) *TCoolBar {
-    c := new(TCoolBar)
-    c.instance = uintptr(ptr)
-    c.ptr = ptr
-    return c
+    return AsCoolBar(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -96,6 +101,20 @@ func (c *TCoolBar) IsValid() bool {
     return c.instance != 0
 }
 
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (c *TCoolBar) Is() TIs {
+    return TIs(c.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (c *TCoolBar) As() TAs {
+//    return TAs(c.instance)
+//}
+
 // TCoolBarClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
@@ -126,7 +145,7 @@ func (c *TCoolBar) ContainsControl(Control IControl) bool {
 // CN: 返回指定坐标及相关属性位置控件。
 // EN: Returns the specified coordinate and the relevant attribute position control..
 func (c *TCoolBar) ControlAtPos(Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) *TControl {
-    return ControlFromInst(CoolBar_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
+    return AsControl(CoolBar_ControlAtPos(c.instance, Pos , AllowDisabled , AllowWinControls , AllLevels))
 }
 
 // DisableAlign
@@ -147,7 +166,7 @@ func (c *TCoolBar) EnableAlign() {
 // CN: 查找子控件。
 // EN: Find sub controls.
 func (c *TCoolBar) FindChildControl(ControlName string) *TControl {
-    return ControlFromInst(CoolBar_FindChildControl(c.instance, ControlName))
+    return AsControl(CoolBar_FindChildControl(c.instance, ControlName))
 }
 
 // Focused
@@ -357,7 +376,7 @@ func (c *TCoolBar) SetTextBuf(Buffer string) {
 // CN: 查找指定名称的组件。
 // EN: Find the component with the specified name.
 func (c *TCoolBar) FindComponent(AName string) *TComponent {
-    return ComponentFromInst(CoolBar_FindComponent(c.instance, AName))
+    return AsComponent(CoolBar_FindComponent(c.instance, AName))
 }
 
 // GetNamePath
@@ -494,7 +513,7 @@ func (c *TCoolBar) SetBandMaximize(value TCoolBandMaximize) {
 
 // Bands
 func (c *TCoolBar) Bands() *TCoolBands {
-    return CoolBandsFromInst(CoolBar_GetBands(c.instance))
+    return AsCoolBands(CoolBar_GetBands(c.instance))
 }
 
 // SetBands
@@ -532,7 +551,7 @@ func (c *TCoolBar) SetColor(value TColor) {
 
 // Constraints
 func (c *TCoolBar) Constraints() *TSizeConstraints {
-    return SizeConstraintsFromInst(CoolBar_GetConstraints(c.instance))
+    return AsSizeConstraints(CoolBar_GetConstraints(c.instance))
 }
 
 // SetConstraints
@@ -688,7 +707,7 @@ func (c *TCoolBar) SetFixedOrder(value bool) {
 // CN: 获取字体。
 // EN: Get Font.
 func (c *TCoolBar) Font() *TFont {
-    return FontFromInst(CoolBar_GetFont(c.instance))
+    return AsFont(CoolBar_GetFont(c.instance))
 }
 
 // SetFont
@@ -702,7 +721,7 @@ func (c *TCoolBar) SetFont(value *TFont) {
 // CN: 获取图标索引列表对象。
 // EN: .
 func (c *TCoolBar) Images() *TImageList {
-    return ImageListFromInst(CoolBar_GetImages(c.instance))
+    return AsImageList(CoolBar_GetImages(c.instance))
 }
 
 // SetImages
@@ -766,7 +785,7 @@ func (c *TCoolBar) SetParentShowHint(value bool) {
 
 // Bitmap
 func (c *TCoolBar) Bitmap() *TBitmap {
-    return BitmapFromInst(CoolBar_GetBitmap(c.instance))
+    return AsBitmap(CoolBar_GetBitmap(c.instance))
 }
 
 // SetBitmap
@@ -778,7 +797,7 @@ func (c *TCoolBar) SetBitmap(value *TBitmap) {
 // CN: 获取右键菜单。
 // EN: Get Right click menu.
 func (c *TCoolBar) PopupMenu() *TPopupMenu {
-    return PopupMenuFromInst(CoolBar_GetPopupMenu(c.instance))
+    return AsPopupMenu(CoolBar_GetPopupMenu(c.instance))
 }
 
 // SetPopupMenu
@@ -1012,7 +1031,7 @@ func (c *TCoolBar) VisibleDockClientCount() int32 {
 // CN: 获取画刷对象。
 // EN: Get Brush.
 func (c *TCoolBar) Brush() *TBrush {
-    return BrushFromInst(CoolBar_GetBrush(c.instance))
+    return AsBrush(CoolBar_GetBrush(c.instance))
 }
 
 // ControlCount
@@ -1087,7 +1106,7 @@ func (c *TCoolBar) SetUseDockManager(value bool) {
 
 // Action
 func (c *TCoolBar) Action() *TAction {
-    return ActionFromInst(CoolBar_GetAction(c.instance))
+    return AsAction(CoolBar_GetAction(c.instance))
 }
 
 // SetAction
@@ -1212,7 +1231,7 @@ func (c *TCoolBar) Floating() bool {
 // CN: 获取控件父容器。
 // EN: Get control parent container.
 func (c *TCoolBar) Parent() *TWinControl {
-    return WinControlFromInst(CoolBar_GetParent(c.instance))
+    return AsWinControl(CoolBar_GetParent(c.instance))
 }
 
 // SetParent
@@ -1324,7 +1343,7 @@ func (c *TCoolBar) SetHint(value string) {
 // CN: 获取边矩，仅VCL有效。
 // EN: Get Edge moment, only VCL is valid.
 func (c *TCoolBar) Margins() *TMargins {
-    return MarginsFromInst(CoolBar_GetMargins(c.instance))
+    return AsMargins(CoolBar_GetMargins(c.instance))
 }
 
 // SetMargins
@@ -1338,7 +1357,7 @@ func (c *TCoolBar) SetMargins(value *TMargins) {
 // CN: 获取自定义提示。
 // EN: Get custom hint.
 func (c *TCoolBar) CustomHint() *TCustomHint {
-    return CustomHintFromInst(CoolBar_GetCustomHint(c.instance))
+    return AsCustomHint(CoolBar_GetCustomHint(c.instance))
 }
 
 // SetCustomHint
@@ -1373,7 +1392,7 @@ func (c *TCoolBar) SetComponentIndex(value int32) {
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (c *TCoolBar) Owner() *TComponent {
-    return ComponentFromInst(CoolBar_GetOwner(c.instance))
+    return AsComponent(CoolBar_GetOwner(c.instance))
 }
 
 // Name
@@ -1408,20 +1427,20 @@ func (c *TCoolBar) SetTag(value int) {
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TCoolBar) DockClients(Index int32) *TControl {
-    return ControlFromInst(CoolBar_GetDockClients(c.instance, Index))
+    return AsControl(CoolBar_GetDockClients(c.instance, Index))
 }
 
 // Controls
 // CN: 获取指定索引子控件。
 // EN: .
 func (c *TCoolBar) Controls(Index int32) *TControl {
-    return ControlFromInst(CoolBar_GetControls(c.instance, Index))
+    return AsControl(CoolBar_GetControls(c.instance, Index))
 }
 
 // Components
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TCoolBar) Components(AIndex int32) *TComponent {
-    return ComponentFromInst(CoolBar_GetComponents(c.instance, AIndex))
+    return AsComponent(CoolBar_GetComponents(c.instance, AIndex))
 }
 

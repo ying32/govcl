@@ -34,36 +34,41 @@ func NewListItem() *TListItem {
     return l
 }
 
+// AsListItem
+// CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
+// EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
+func AsListItem(obj interface{}) *TListItem {
+    l := new(TListItem)
+    l.instance, l.ptr = getInstance(obj)
+    return l
+}
+
+// -------------------------- Deprecated begin --------------------------
 // ListItemFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
+// Deprecated: use AsListItem.
 func ListItemFromInst(inst uintptr) *TListItem {
-    l := new(TListItem)
-    l.instance = inst
-    l.ptr = unsafe.Pointer(inst)
-    return l
+    return AsListItem(inst)
 }
 
 // ListItemFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
+// Deprecated: use AsListItem.
 func ListItemFromObj(obj IObject) *TListItem {
-    l := new(TListItem)
-    l.instance = CheckPtr(obj)
-    l.ptr = unsafe.Pointer(l.instance)
-    return l
+    return AsListItem(obj)
 }
 
 // ListItemFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// Deprecated: use AsListItem.
 func ListItemFromUnsafePointer(ptr unsafe.Pointer) *TListItem {
-    l := new(TListItem)
-    l.instance = uintptr(ptr)
-    l.ptr = ptr
-    return l
+    return AsListItem(ptr)
 }
 
+// -------------------------- Deprecated end --------------------------
 // Free 
 // CN: 释放对象。
 // EN: Free object.
@@ -95,6 +100,20 @@ func (l *TListItem) UnsafeAddr() unsafe.Pointer {
 func (l *TListItem) IsValid() bool {
     return l.instance != 0
 }
+
+// Is 
+// CN: 检测当前对象是否继承自目标对象。
+// EN: Checks whether the current object is inherited from the target object.
+func (l *TListItem) Is() TIs {
+    return TIs(l.instance)
+}
+
+// As 
+// CN: 动态转换当前对象为目标对象。
+// EN: Dynamically convert the current object to the target object.
+//func (l *TListItem) As() TAs {
+//    return TAs(l.instance)
+//}
 
 // TListItemClass
 // CN: 获取类信息指针。
@@ -349,14 +368,14 @@ func (l *TListItem) SetLeft(value int32) {
 
 // ListView
 func (l *TListItem) ListView() *TWinControl {
-    return WinControlFromInst(ListItem_GetListView(l.instance))
+    return AsWinControl(ListItem_GetListView(l.instance))
 }
 
 // Owner
 // CN: 获取组件所有者。
 // EN: Get component owner.
 func (l *TListItem) Owner() *TListItems {
-    return ListItemsFromInst(ListItem_GetOwner(l.instance))
+    return AsListItems(ListItem_GetOwner(l.instance))
 }
 
 // OverlayIndex
@@ -401,7 +420,7 @@ func (l *TListItem) SetStateIndex(value int32) {
 
 // SubItems
 func (l *TListItem) SubItems() *TStrings {
-    return StringsFromInst(ListItem_GetSubItems(l.instance))
+    return AsStrings(ListItem_GetSubItems(l.instance))
 }
 
 // SetSubItems
