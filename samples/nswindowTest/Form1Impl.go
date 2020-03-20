@@ -15,37 +15,45 @@ package main
 
   static void resizeAction(void *ptr) {
      if(ptr == nil) return;
-     //NSLog(@"resize\n");
-     NSWindow *win = toNSWindow(ptr);
-     // 修改系统按钮位置
-     NSView *themeFrameView = win.contentView.superview;
-     NSView *titleBarView = themeFrameView.subviews.count > 1 ? themeFrameView.subviews[1] : nil;
-     if(titleBarView == nil) return;
-     //NSLog(@"titleBarView.superviews: %@\n", titleBarView.superview);
+     // MRC方式
+     // NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+     // [pool release];
+     // ARC方式。 以防万一，我还是这么加个，也不知道这个有效还是MRC方式有效果。。。
+     @autoreleasepool {
+		 //NSLog(@"resize\n");
+		 NSWindow *win = toNSWindow(ptr);
+		 // 修改系统按钮位置
+		 NSView *themeFrameView = win.contentView.superview;
+		 NSView *titleBarView = themeFrameView.subviews.count > 1 ? themeFrameView.subviews[1] : nil;
+		 if(titleBarView == nil) return;
+		 //NSLog(@"titleBarView.superviews: %@\n", titleBarView.superview);
 
-     // 原始的方式操作。。。
-     //NSRect r = win.frame;
-     //titleBarView.autoresizesSubviews = YES;
-     //[titleBarView setFrame: CGRectMake(10, r.size.height - 40, 60, 30)];
+		 // 原始的方式操作。。。
+		 //NSRect r = win.frame;
+		 //titleBarView.autoresizesSubviews = YES;
+		 //[titleBarView setFrame: CGRectMake(10, r.size.height - 40, 60, 30)];
 
-     // VFL 方式约束
-     NSDictionary *views = NSDictionaryOfVariableBindings(titleBarView);
-     titleBarView.translatesAutoresizingMaskIntoConstraints = NO;
-     // 横向，距离父视图左边8位置，titleView视图宽为60
-     [themeFrameView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-8-[titleBarView(60)]" options:0 metrics:nil views: views]];
-     // 纵向，距离父视图顶部11位置，titleView视图高为30
-     [themeFrameView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat: @"V:|-11-[titleBarView(30)]" options:0 metrics:nil views: views]];
+		 // VFL 方式约束
+		 NSDictionary *views = NSDictionaryOfVariableBindings(titleBarView);
+		 titleBarView.translatesAutoresizingMaskIntoConstraints = NO;
+		 // 横向，距离父视图左边8位置，titleView视图宽为60
+		 [themeFrameView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat: @"H:|-8-[titleBarView(60)]" options:0 metrics:nil views: views]];
+		 // 纵向，距离父视图顶部11位置，titleView视图高为30
+		 [themeFrameView addConstraints: [NSLayoutConstraint constraintsWithVisualFormat: @"V:|-11-[titleBarView(30)]" options:0 metrics:nil views: views]];
 
+     }
   }
 
   static void setNoTitlebarWindow(void* ptr) {
      if(ptr == nil) return;
-     NSWindow *win = toNSWindow(ptr);
-     win.movableByWindowBackground = YES;
-     win.titleVisibility = NSWindowTitleHidden;
-     win.titlebarAppearsTransparent = YES;
-     win.representedURL = nil;
-     win.styleMask = win.styleMask | NSWindowStyleMaskFullSizeContentView;
+     @autoreleasepool{
+		 NSWindow *win = toNSWindow(ptr);
+		 win.movableByWindowBackground = YES;
+		 win.titleVisibility = NSWindowTitleHidden;
+		 win.titlebarAppearsTransparent = YES;
+		 win.representedURL = nil;
+		 win.styleMask = win.styleMask | NSWindowStyleMaskFullSizeContentView;
+     }
   }
 
 */
