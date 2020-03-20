@@ -9,15 +9,34 @@
 
 package vcl
 
+/*
+
+   #cgo CFLAGS: -x objective-c
+   #cgo LDFLAGS: -framework Cocoa
+
+   #include <Cocoa/Cocoa.h>
+
+  static NSWindow* toNSWindow(void* ptr) {
+      return ((__bridge NSWindow*)ptr); //
+  }
+
+  // test
+  static void NSWindow_setTitleVisibility(void *ptr) {
+     NSWindow *win = toNSWindow(ptr);
+     win.TitleVisibility = NSWindowTitleHidden;
+  }
+
+*/
+//import "C"
+
 import (
 	. "github.com/ying32/govcl/vcl/api"
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-type NSObject uintptr
-
 type (
-	// NSWindow
+	NSObject uintptr
+
 	NSWindow uintptr
 
 	NSURL uintptr
@@ -39,6 +58,7 @@ func (n NSWindow) TitleVisibility() NSWindowTitleVisibility {
 }
 
 func (n NSWindow) SetTitleVisibility(flag NSWindowTitleVisibility) {
+	//C.NSWindow_setTitleVisibility(unsafe.Pointer(n))
 	NSWindow_setTitleVisibility.Call(uintptr(n), uintptr(flag))
 }
 
@@ -63,7 +83,3 @@ func (n NSWindow) StyleMask() uint {
 func (n NSWindow) SetStyleMask(mask uint) {
 	NSWindow_setStyleMask.Call(uintptr(n), uintptr(mask))
 }
-
-//func (n NSWindow) Release_() {
-//		NSWindow_release.Call(uintptr(n))
-//}
