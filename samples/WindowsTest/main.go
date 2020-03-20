@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl/win"
@@ -39,5 +40,10 @@ func main() {
 	// win.OpenInExplorer("F:\\Golang\\bin\\libvclx64.dll")
 	var s string
 	fmt.Scan(&s)
+
+	// 以管理员权限运行一个程序
+	if cmdFileName, ok := os.LookupEnv("ComSpec"); ok {
+		fmt.Println(win.RunAsAdministrator(cmdFileName, "/c ping 192.168.1.1", ""))
+	}
 
 }
