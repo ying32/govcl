@@ -188,8 +188,8 @@ func GetDesktopPath() string {
 	return ""
 }
 
-// ResouceToBytes 查找指定实例中 指定名称、指定类型 资源，并返回资源字节
-func ResouceToBytes(instance uintptr, resName string, resType uintptr) ([]byte, bool) {
+// ResourceToBytes 查找指定实例中 指定名称、指定类型 资源，并返回资源字节
+func ResourceToBytes(instance uintptr, resName string, resType uintptr) ([]byte, bool) {
 	resInfo := FindResource(HMODULE(instance), resName, resType)
 	if resInfo == 0 {
 		return nil, false
