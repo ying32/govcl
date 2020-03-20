@@ -1,4 +1,6 @@
-// +build windows,amd64
+// +build ignore
+
+/// +build windows,amd64
 
 //----------------------------------------
 //
