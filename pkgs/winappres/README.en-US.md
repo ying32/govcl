@@ -1,3 +1,7 @@
+* [中文](README.md)   
+* English  
+
+----
 
 **How to generate it, please go to the wiki: https://gitee.com/ying32/govcl/wikis/pages?sort_id=410058&doc_id=102420** 
 

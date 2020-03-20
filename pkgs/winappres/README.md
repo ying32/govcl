@@ -1,3 +1,7 @@
+* 中文   
+* [English](README.en-US.md)   
+
+----
 
 **生成的方式请前往wiki查看： https://gitee.com/ying32/govcl/wikis/pages?sort_id=410058&doc_id=102420** 
 
