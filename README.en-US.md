@@ -42,7 +42,7 @@
 
 #### Step 2: Write the code
 
-* Method 1(Use Delphi / Lazarus or GoVCLDesigner to design the GUI. recommend): 
+* Method 1(Use Delphi/Lazarus to design the GUI. recommend): 
 
 ```golang
 package main
