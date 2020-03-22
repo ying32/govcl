@@ -45,7 +45,7 @@
 
 #### 步骤二：编写代码    
 
-* 方法一(使用Delphi/Lazarus或者GoVCLDesigner设计界面。推荐)：  
+* 方法一(使用Delphi/Lazarus设计界面。推荐)：  
 
 ```golang
 package main
