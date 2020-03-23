@@ -34,19 +34,19 @@ import (
 //export doEventCallbackProc
 func doEventCallbackProc(f unsafe.Pointer, args unsafe.Pointer, argcount C.long) unsafe.Pointer {
 	eventCallbackProc(uintptr(f), uintptr(args), int(argcount))
-	return unsafe.Pointer(uintptr(0))
+	return nullptr
 }
 
 //export doMessageCallbackProc
 func doMessageCallbackProc(f unsafe.Pointer, msg unsafe.Pointer) unsafe.Pointer {
 	messageCallbackProc(uintptr(f), uintptr(msg))
-	return unsafe.Pointer(uintptr(0))
+	return nullptr
 }
 
 //export doThreadSyncCallbackProc
 func doThreadSyncCallbackProc() unsafe.Pointer {
 	threadSyncCallbackProc()
-	return unsafe.Pointer(uintptr(0))
+	return nullptr
 }
 
 var (

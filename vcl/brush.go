@@ -24,7 +24,6 @@ type TBrush struct {
     ptr unsafe.Pointer
 }
 
-// NewBrush
 // CN: 创建一个新的对象。
 // EN: Create a new object.
 func NewBrush() *TBrush {
@@ -34,17 +33,16 @@ func NewBrush() *TBrush {
     return b
 }
 
-// AsBrush
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsBrush(obj interface{}) *TBrush {
     b := new(TBrush)
     b.instance, b.ptr = getInstance(obj)
+    if b.instance == 0 { return nil }
     return b
 }
 
 // -------------------------- Deprecated begin --------------------------
-// BrushFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
 // Deprecated: use AsBrush.
@@ -52,7 +50,6 @@ func BrushFromInst(inst uintptr) *TBrush {
     return AsBrush(inst)
 }
 
-// BrushFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
 // Deprecated: use AsBrush.
@@ -60,7 +57,6 @@ func BrushFromObj(obj IObject) *TBrush {
     return AsBrush(obj)
 }
 
-// BrushFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsBrush.
@@ -69,185 +65,157 @@ func BrushFromUnsafePointer(ptr unsafe.Pointer) *TBrush {
 }
 
 // -------------------------- Deprecated end --------------------------
-// Free 
 // CN: 释放对象。
 // EN: Free object.
 func (b *TBrush) Free() {
     if b.instance != 0 {
         Brush_Free(b.instance)
-        b.instance = 0
-        b.ptr = unsafe.Pointer(uintptr(0))
+        b.instance, b.ptr = 0, nullptr
     }
 }
 
-// Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.
 func (b *TBrush) Instance() uintptr {
     return b.instance
 }
 
-// UnsafeAddr 
 // CN: 获取一个不安全的地址。
 // EN: Get an unsafe address.
 func (b *TBrush) UnsafeAddr() unsafe.Pointer {
     return b.ptr
 }
 
-// IsValid 
 // CN: 检测地址是否为空。
 // EN: Check if the address is empty.
 func (b *TBrush) IsValid() bool {
     return b.instance != 0
 }
 
-// Is 
 // CN: 检测当前对象是否继承自目标对象。
 // EN: Checks whether the current object is inherited from the target object.
 func (b *TBrush) Is() TIs {
     return TIs(b.instance)
 }
 
-// As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
 //func (b *TBrush) As() TAs {
 //    return TAs(b.instance)
 //}
 
-// TBrushClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
 func TBrushClass() TClass {
     return Brush_StaticClassType()
 }
 
-// Assign
 // CN: 复制一个对象，如果对象实现了此方法的话。
 // EN: Copy an object, if the object implements this method.
 func (b *TBrush) Assign(Source IObject) {
     Brush_Assign(b.instance, CheckPtr(Source))
 }
 
-// HandleAllocated
 // CN: 句柄是否已经分配。
 // EN: Is the handle already allocated.
 func (b *TBrush) HandleAllocated() bool {
     return Brush_HandleAllocated(b.instance)
 }
 
-// GetNamePath
 // CN: 获取类名路径。
 // EN: Get the class name path.
 func (b *TBrush) GetNamePath() string {
     return Brush_GetNamePath(b.instance)
 }
 
-// DisposeOf
 // CN: 丢弃当前对象。
 // EN: Discard the current object.
 func (b *TBrush) DisposeOf() {
     Brush_DisposeOf(b.instance)
 }
 
-// ClassType
 // CN: 获取类的类型信息。
 // EN: Get class type information.
 func (b *TBrush) ClassType() TClass {
     return Brush_ClassType(b.instance)
 }
 
-// ClassName
 // CN: 获取当前对象类名称。
 // EN: Get the current object class name.
 func (b *TBrush) ClassName() string {
     return Brush_ClassName(b.instance)
 }
 
-// InstanceSize
 // CN: 获取当前对象实例大小。
 // EN: Get the current object instance size.
 func (b *TBrush) InstanceSize() int32 {
     return Brush_InstanceSize(b.instance)
 }
 
-// InheritsFrom
 // CN: 判断当前类是否继承自指定类。
 // EN: Determine whether the current class inherits from the specified class.
 func (b *TBrush) InheritsFrom(AClass TClass) bool {
     return Brush_InheritsFrom(b.instance, AClass)
 }
 
-// Equals
 // CN: 与一个对象进行比较。
 // EN: Compare with an object.
 func (b *TBrush) Equals(Obj IObject) bool {
     return Brush_Equals(b.instance, CheckPtr(Obj))
 }
 
-// GetHashCode
 // CN: 获取类的哈希值。
 // EN: Get the hash value of the class.
 func (b *TBrush) GetHashCode() int32 {
     return Brush_GetHashCode(b.instance)
 }
 
-// ToString
 // CN: 文本类信息。
 // EN: Text information.
 func (b *TBrush) ToString() string {
     return Brush_ToString(b.instance)
 }
 
-// Bitmap
 func (b *TBrush) Bitmap() *TBitmap {
     return AsBitmap(Brush_GetBitmap(b.instance))
 }
 
-// SetBitmap
 func (b *TBrush) SetBitmap(value *TBitmap) {
     Brush_SetBitmap(b.instance, CheckPtr(value))
 }
 
-// Handle
 // CN: 获取控件句柄。
 // EN: Get Control handle.
 func (b *TBrush) Handle() HBRUSH {
     return Brush_GetHandle(b.instance)
 }
 
-// SetHandle
 // CN: 设置控件句柄。
 // EN: Set Control handle.
 func (b *TBrush) SetHandle(value HBRUSH) {
     Brush_SetHandle(b.instance, value)
 }
 
-// Color
 // CN: 获取颜色。
 // EN: Get color.
 func (b *TBrush) Color() TColor {
     return Brush_GetColor(b.instance)
 }
 
-// SetColor
 // CN: 设置颜色。
 // EN: Set color.
 func (b *TBrush) SetColor(value TColor) {
     Brush_SetColor(b.instance, value)
 }
 
-// Style
 func (b *TBrush) Style() TBrushStyle {
     return Brush_GetStyle(b.instance)
 }
 
-// SetStyle
 func (b *TBrush) SetStyle(value TBrushStyle) {
     Brush_SetStyle(b.instance, value)
 }
 
-// SetOnChange
 // CN: 设置改变事件。
 // EN: Set changed event.
 func (b *TBrush) SetOnChange(fn TNotifyEvent) {

@@ -8,8 +8,9 @@
 
 package vcl
 
-import . "github.com/ying32/govcl/vcl/api"
+import "unsafe"
 
-func (j *TJumpCategories) Add2() *TJumpCategoryItem {
-	return AsJumpCategoryItem(JumpCategories_Add(j.instance))
-}
+var (
+	// nullptr
+	nullptr = unsafe.Pointer(uintptr(0))
+)

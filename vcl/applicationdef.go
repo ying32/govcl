@@ -80,18 +80,19 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	return AsForm(resObjtBuild(0, nil, a.instance, fields...))
 }
 
-// SetFormScaled 设置全局窗口的Scaled
+// 设置全局窗口的Scaled
 func (a *TApplication) SetFormScaled(val bool) {
-	globalFormScaled = val
-	SetGlobalFormScaled(val)
+	// disabled
+	//globalFormScaled = val
+	//SetGlobalFormScaled(val)
 }
 
-// Run 运行APP
+// 运行APP
 func (a *TApplication) Run() {
 	Application_Run(a.instance)
 }
 
-// Initialize 初始APP信息
+// 初始APP信息
 func (a *TApplication) Initialize() {
 	Application_Initialize(a.instance)
 }

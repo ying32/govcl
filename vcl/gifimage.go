@@ -24,7 +24,6 @@ type TGIFImage struct {
     ptr unsafe.Pointer
 }
 
-// NewGIFImage
 // CN: 创建一个新的对象。
 // EN: Create a new object.
 func NewGIFImage() *TGIFImage {
@@ -34,17 +33,16 @@ func NewGIFImage() *TGIFImage {
     return g
 }
 
-// AsGIFImage
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsGIFImage(obj interface{}) *TGIFImage {
     g := new(TGIFImage)
     g.instance, g.ptr = getInstance(obj)
+    if g.instance == 0 { return nil }
     return g
 }
 
 // -------------------------- Deprecated begin --------------------------
-// GIFImageFromInst
 // CN: 新建一个对象来自已经存在的对象实例指针。
 // EN: Create a new object from an existing object instance pointer.
 // Deprecated: use AsGIFImage.
@@ -52,7 +50,6 @@ func GIFImageFromInst(inst uintptr) *TGIFImage {
     return AsGIFImage(inst)
 }
 
-// GIFImageFromObj
 // CN: 新建一个对象来自已经存在的对象实例。
 // EN: Create a new object from an existing object instance.
 // Deprecated: use AsGIFImage.
@@ -60,7 +57,6 @@ func GIFImageFromObj(obj IObject) *TGIFImage {
     return AsGIFImage(obj)
 }
 
-// GIFImageFromUnsafePointer
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
 // EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsGIFImage.
@@ -69,353 +65,295 @@ func GIFImageFromUnsafePointer(ptr unsafe.Pointer) *TGIFImage {
 }
 
 // -------------------------- Deprecated end --------------------------
-// Free 
 // CN: 释放对象。
 // EN: Free object.
 func (g *TGIFImage) Free() {
     if g.instance != 0 {
         GIFImage_Free(g.instance)
-        g.instance = 0
-        g.ptr = unsafe.Pointer(uintptr(0))
+        g.instance, g.ptr = 0, nullptr
     }
 }
 
-// Instance 
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.
 func (g *TGIFImage) Instance() uintptr {
     return g.instance
 }
 
-// UnsafeAddr 
 // CN: 获取一个不安全的地址。
 // EN: Get an unsafe address.
 func (g *TGIFImage) UnsafeAddr() unsafe.Pointer {
     return g.ptr
 }
 
-// IsValid 
 // CN: 检测地址是否为空。
 // EN: Check if the address is empty.
 func (g *TGIFImage) IsValid() bool {
     return g.instance != 0
 }
 
-// Is 
 // CN: 检测当前对象是否继承自目标对象。
 // EN: Checks whether the current object is inherited from the target object.
 func (g *TGIFImage) Is() TIs {
     return TIs(g.instance)
 }
 
-// As 
 // CN: 动态转换当前对象为目标对象。
 // EN: Dynamically convert the current object to the target object.
 //func (g *TGIFImage) As() TAs {
 //    return TAs(g.instance)
 //}
 
-// TGIFImageClass
 // CN: 获取类信息指针。
 // EN: Get class information pointer.
 func TGIFImageClass() TClass {
     return GIFImage_StaticClassType()
 }
 
-// SaveToStream
 // CN: 保存至流。
 // EN: .
 func (g *TGIFImage) SaveToStream(Stream IObject) {
     GIFImage_SaveToStream(g.instance, CheckPtr(Stream))
 }
 
-// LoadFromStream
 // CN: 文件流加载。
 // EN: .
 func (g *TGIFImage) LoadFromStream(Stream IObject) {
     GIFImage_LoadFromStream(g.instance, CheckPtr(Stream))
 }
 
-// Add
 func (g *TGIFImage) Add(Source IObject) *TGIFFrame {
     return AsGIFFrame(GIFImage_Add(g.instance, CheckPtr(Source)))
 }
 
-// Clear
 // CN: 清除。
 // EN: .
 func (g *TGIFImage) Clear() {
     GIFImage_Clear(g.instance)
 }
 
-// Assign
 // CN: 复制一个对象，如果对象实现了此方法的话。
 // EN: Copy an object, if the object implements this method.
 func (g *TGIFImage) Assign(Source IObject) {
     GIFImage_Assign(g.instance, CheckPtr(Source))
 }
 
-// StopDraw
 func (g *TGIFImage) StopDraw() {
     GIFImage_StopDraw(g.instance)
 }
 
-// SuspendDraw
 func (g *TGIFImage) SuspendDraw() {
     GIFImage_SuspendDraw(g.instance)
 }
 
-// ResumeDraw
 func (g *TGIFImage) ResumeDraw() {
     GIFImage_ResumeDraw(g.instance)
 }
 
-// Equals
 // CN: 与一个对象进行比较。
 // EN: Compare with an object.
 func (g *TGIFImage) Equals(Obj IObject) bool {
     return GIFImage_Equals(g.instance, CheckPtr(Obj))
 }
 
-// LoadFromFile
 // CN: 从文件加载。
 // EN: .
 func (g *TGIFImage) LoadFromFile(Filename string) {
     GIFImage_LoadFromFile(g.instance, Filename)
 }
 
-// SaveToFile
 // CN: 保存至文件。
 // EN: .
 func (g *TGIFImage) SaveToFile(Filename string) {
     GIFImage_SaveToFile(g.instance, Filename)
 }
 
-// SetSize
 func (g *TGIFImage) SetSize(AWidth int32, AHeight int32) {
     GIFImage_SetSize(g.instance, AWidth , AHeight)
 }
 
-// GetNamePath
 // CN: 获取类名路径。
 // EN: Get the class name path.
 func (g *TGIFImage) GetNamePath() string {
     return GIFImage_GetNamePath(g.instance)
 }
 
-// DisposeOf
 // CN: 丢弃当前对象。
 // EN: Discard the current object.
 func (g *TGIFImage) DisposeOf() {
     GIFImage_DisposeOf(g.instance)
 }
 
-// ClassType
 // CN: 获取类的类型信息。
 // EN: Get class type information.
 func (g *TGIFImage) ClassType() TClass {
     return GIFImage_ClassType(g.instance)
 }
 
-// ClassName
 // CN: 获取当前对象类名称。
 // EN: Get the current object class name.
 func (g *TGIFImage) ClassName() string {
     return GIFImage_ClassName(g.instance)
 }
 
-// InstanceSize
 // CN: 获取当前对象实例大小。
 // EN: Get the current object instance size.
 func (g *TGIFImage) InstanceSize() int32 {
     return GIFImage_InstanceSize(g.instance)
 }
 
-// InheritsFrom
 // CN: 判断当前类是否继承自指定类。
 // EN: Determine whether the current class inherits from the specified class.
 func (g *TGIFImage) InheritsFrom(AClass TClass) bool {
     return GIFImage_InheritsFrom(g.instance, AClass)
 }
 
-// GetHashCode
 // CN: 获取类的哈希值。
 // EN: Get the hash value of the class.
 func (g *TGIFImage) GetHashCode() int32 {
     return GIFImage_GetHashCode(g.instance)
 }
 
-// ToString
 // CN: 文本类信息。
 // EN: Text information.
 func (g *TGIFImage) ToString() string {
     return GIFImage_ToString(g.instance)
 }
 
-// Version
 func (g *TGIFImage) Version() TGIFVersion {
     return GIFImage_GetVersion(g.instance)
 }
 
-// BitsPerPixel
 func (g *TGIFImage) BitsPerPixel() int32 {
     return GIFImage_GetBitsPerPixel(g.instance)
 }
 
-// BackgroundColor
 func (g *TGIFImage) BackgroundColor() TColor {
     return GIFImage_GetBackgroundColor(g.instance)
 }
 
-// SetBackgroundColor
 func (g *TGIFImage) SetBackgroundColor(value TColor) {
     GIFImage_SetBackgroundColor(g.instance, value)
 }
 
-// AspectRatio
 func (g *TGIFImage) AspectRatio() uint8 {
     return GIFImage_GetAspectRatio(g.instance)
 }
 
-// SetAspectRatio
 func (g *TGIFImage) SetAspectRatio(value uint8) {
     GIFImage_SetAspectRatio(g.instance, value)
 }
 
-// IsTransparent
 func (g *TGIFImage) IsTransparent() bool {
     return GIFImage_GetIsTransparent(g.instance)
 }
 
-// AnimationSpeed
 func (g *TGIFImage) AnimationSpeed() int32 {
     return GIFImage_GetAnimationSpeed(g.instance)
 }
 
-// SetAnimationSpeed
 func (g *TGIFImage) SetAnimationSpeed(value int32) {
     GIFImage_SetAnimationSpeed(g.instance, value)
 }
 
-// Bitmap
 func (g *TGIFImage) Bitmap() *TBitmap {
     return AsBitmap(GIFImage_GetBitmap(g.instance))
 }
 
-// SetOnPaint
 // CN: 设置绘画事件。
 // EN: .
 func (g *TGIFImage) SetOnPaint(fn TNotifyEvent) {
     GIFImage_SetOnPaint(g.instance, fn)
 }
 
-// Animate
 func (g *TGIFImage) Animate() bool {
     return GIFImage_GetAnimate(g.instance)
 }
 
-// SetAnimate
 func (g *TGIFImage) SetAnimate(value bool) {
     GIFImage_SetAnimate(g.instance, value)
 }
 
-// AnimateLoop
 func (g *TGIFImage) AnimateLoop() TGIFAnimationLoop {
     return GIFImage_GetAnimateLoop(g.instance)
 }
 
-// SetAnimateLoop
 func (g *TGIFImage) SetAnimateLoop(value TGIFAnimationLoop) {
     GIFImage_SetAnimateLoop(g.instance, value)
 }
 
-// ShouldDither
 func (g *TGIFImage) ShouldDither() bool {
     return GIFImage_GetShouldDither(g.instance)
 }
 
-// Empty
 func (g *TGIFImage) Empty() bool {
     return GIFImage_GetEmpty(g.instance)
 }
 
-// Height
 // CN: 获取高度。
 // EN: Get height.
 func (g *TGIFImage) Height() int32 {
     return GIFImage_GetHeight(g.instance)
 }
 
-// SetHeight
 // CN: 设置高度。
 // EN: Set height.
 func (g *TGIFImage) SetHeight(value int32) {
     GIFImage_SetHeight(g.instance, value)
 }
 
-// Modified
 // CN: 获取修改。
 // EN: Get modified.
 func (g *TGIFImage) Modified() bool {
     return GIFImage_GetModified(g.instance)
 }
 
-// SetModified
 // CN: 设置修改。
 // EN: Set modified.
 func (g *TGIFImage) SetModified(value bool) {
     GIFImage_SetModified(g.instance, value)
 }
 
-// Palette
 func (g *TGIFImage) Palette() HPALETTE {
     return GIFImage_GetPalette(g.instance)
 }
 
-// SetPalette
 func (g *TGIFImage) SetPalette(value HPALETTE) {
     GIFImage_SetPalette(g.instance, value)
 }
 
-// PaletteModified
 func (g *TGIFImage) PaletteModified() bool {
     return GIFImage_GetPaletteModified(g.instance)
 }
 
-// SetPaletteModified
 func (g *TGIFImage) SetPaletteModified(value bool) {
     GIFImage_SetPaletteModified(g.instance, value)
 }
 
-// Transparent
 // CN: 获取透明。
 // EN: Get transparent.
 func (g *TGIFImage) Transparent() bool {
     return GIFImage_GetTransparent(g.instance)
 }
 
-// SetTransparent
 // CN: 设置透明。
 // EN: Set transparent.
 func (g *TGIFImage) SetTransparent(value bool) {
     GIFImage_SetTransparent(g.instance, value)
 }
 
-// Width
 // CN: 获取宽度。
 // EN: Get width.
 func (g *TGIFImage) Width() int32 {
     return GIFImage_GetWidth(g.instance)
 }
 
-// SetWidth
 // CN: 设置宽度。
 // EN: Set width.
 func (g *TGIFImage) SetWidth(value int32) {
     GIFImage_SetWidth(g.instance, value)
 }
 
-// SetOnChange
 // CN: 设置改变事件。
 // EN: Set changed event.
 func (g *TGIFImage) SetOnChange(fn TNotifyEvent) {
