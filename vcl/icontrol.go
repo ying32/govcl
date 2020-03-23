@@ -117,5 +117,7 @@ type IControl interface {
 
 	// ---------------------事件
 
+	ScreenToClient(Point TPoint) TPoint
+	ParentToClient(Point TPoint, AParent IWinControl) TPoint
 	//SetOnClick(TNotifyEvent)
 }

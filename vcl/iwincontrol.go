@@ -1,12 +1,10 @@
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
-
 
 package vcl
 
@@ -67,4 +65,13 @@ type IWinControl interface {
 	//Invalidate()
 
 	UpdateControlState()
+
+	HandleAllocated() bool
+	PaintTo(DC HDC, X int32, Y int32)
+
+	ClientToScreen(Point TPoint) TPoint
+	ClientToParent(Point TPoint, AParent IWinControl) TPoint
+
+	UseDockManager() bool
+	SetUseDockManager(value bool)
 }

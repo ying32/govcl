@@ -10,14 +10,22 @@ package vcl
 
 type IComponent interface {
 	IObject
+
+	FindComponent(string) *TComponent
+	GetNamePath() string
+	HasParent() bool
+	Assign(IObject)
+
+	ComponentCount() int32
+	ComponentIndex() int32
+	SetComponentIndex(int32)
+	Components(int32) *TComponent
+
+	Owner() *TComponent
+
 	Name() string
 	SetName(string)
-	FindComponent(string) *TComponent
+
 	Tag() int
 	SetTag(int)
-	Components(int32) *TComponent
-	Owner() *TComponent
-	SetComponentIndex(int32)
-	ComponentIndex() int32
-	ComponentCount() int32
 }
