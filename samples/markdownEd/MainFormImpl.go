@@ -93,7 +93,7 @@ func (f *TMainForm) setToolBtnClickEvent() {
 	var i int32
 	for i = 0; i < f.ToolBar1.ControlCount(); i++ {
 		ctl := f.ToolBar1.Controls(i)
-		if ctl.InheritsFrom(vcl.TToolButtonClass()) {
+		if ctl.Is().ToolButton() {
 			btn := vcl.AsToolButton(ctl)
 			if btn.Style() == types.TbsButton {
 				btn.SetOnClick(f.onToolBtnClick)

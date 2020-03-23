@@ -30,9 +30,9 @@ func main() {
 		}
 	}()
 
-	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TObjectClass()))
-	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TComponentClass()))
-	fmt.Println("InheritsFrom：", vcl.Application.InheritsFrom(vcl.TControlClass()))
+	fmt.Println("InheritsFrom：", vcl.Application.Is().Object())
+	fmt.Println("InheritsFrom：", vcl.Application.Is().Component())
+	fmt.Println("InheritsFrom：", vcl.Application.Is().Control())
 
 	guid := rtl.CreateGUID()
 	fmt.Println("guid:", guid)
@@ -348,10 +348,10 @@ func main() {
 	lbl := vcl.NewLabel(mainForm)
 	lbl.SetCaption("标签")
 	lbl.SetAlign(types.AlBottom)
-	fmt.Println("InheritsFromControl:", mainForm.InheritsFrom(vcl.TControlClass()))
-	fmt.Println("InheritsFromWinControl:", mainForm.InheritsFrom(vcl.TWinControlClass()))
-	fmt.Println("InheritsFromComponent:", mainForm.InheritsFrom(vcl.TComponentClass()))
-	fmt.Println("InheritsFromWinControl:", lbl.InheritsFrom(vcl.TWinControlClass()))
+	fmt.Println("InheritsFromControl:", mainForm.Is().Control())
+	fmt.Println("InheritsFromWinControl:", mainForm.Is().WinControl())
+	fmt.Println("InheritsFromComponent:", mainForm.Is().Component())
+	fmt.Println("InheritsFromWinControl:", lbl.Is().WinControl())
 
 	vcl.Application.Run()
 }

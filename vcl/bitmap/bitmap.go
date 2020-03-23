@@ -156,7 +156,7 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 	mem.SetPosition(0)
 	_, bs := mem.Read(int32(mem.Size()))
 	buff.Write(bs)
-	if obj.InheritsFrom(vcl.TBitmapClass()) {
+	if obj.Is().Bitmap() {
 		height := int(obj.Height())
 		width := int(obj.Width())
 		img := image.NewRGBA(image.Rect(0, 0, width, height))
