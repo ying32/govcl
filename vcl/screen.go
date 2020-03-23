@@ -36,10 +36,9 @@ func NewScreen(owner IComponent) *TScreen {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsScreen(obj interface{}) *TScreen {
-    s := new(TScreen)
-    s.instance, s.ptr = getInstance(obj)
-    if s.instance == 0 { return nil }
-    return s
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TScreen{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

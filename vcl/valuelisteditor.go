@@ -36,10 +36,9 @@ func NewValueListEditor(owner IComponent) *TValueListEditor {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsValueListEditor(obj interface{}) *TValueListEditor {
-    v := new(TValueListEditor)
-    v.instance, v.ptr = getInstance(obj)
-    if v.instance == 0 { return nil }
-    return v
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TValueListEditor{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

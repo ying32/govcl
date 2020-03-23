@@ -36,10 +36,9 @@ func NewActionList(owner IComponent) *TActionList {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsActionList(obj interface{}) *TActionList {
-    a := new(TActionList)
-    a.instance, a.ptr = getInstance(obj)
-    if a.instance == 0 { return nil }
-    return a
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TActionList{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

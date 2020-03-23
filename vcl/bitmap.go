@@ -36,10 +36,9 @@ func NewBitmap() *TBitmap {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsBitmap(obj interface{}) *TBitmap {
-    b := new(TBitmap)
-    b.instance, b.ptr = getInstance(obj)
-    if b.instance == 0 { return nil }
-    return b
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TBitmap{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

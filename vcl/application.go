@@ -36,10 +36,9 @@ func NewApplication(owner IComponent) *TApplication {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsApplication(obj interface{}) *TApplication {
-    a := new(TApplication)
-    a.instance, a.ptr = getInstance(obj)
-    if a.instance == 0 { return nil }
-    return a
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TApplication{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

@@ -36,10 +36,9 @@ func NewImageButton(owner IComponent) *TImageButton {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsImageButton(obj interface{}) *TImageButton {
-    i := new(TImageButton)
-    i.instance, i.ptr = getInstance(obj)
-    if i.instance == 0 { return nil }
-    return i
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TImageButton{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

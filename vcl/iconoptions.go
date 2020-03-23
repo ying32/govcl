@@ -27,10 +27,9 @@ type TIconOptions struct {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsIconOptions(obj interface{}) *TIconOptions {
-    i := new(TIconOptions)
-    i.instance, i.ptr = getInstance(obj)
-    if i.instance == 0 { return nil }
-    return i
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TIconOptions{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

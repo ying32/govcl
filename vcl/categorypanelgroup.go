@@ -36,10 +36,9 @@ func NewCategoryPanelGroup(owner IComponent) *TCategoryPanelGroup {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsCategoryPanelGroup(obj interface{}) *TCategoryPanelGroup {
-    c := new(TCategoryPanelGroup)
-    c.instance, c.ptr = getInstance(obj)
-    if c.instance == 0 { return nil }
-    return c
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TCategoryPanelGroup{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

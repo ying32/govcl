@@ -37,10 +37,9 @@ func NewDateTimePicker(owner IComponent) *TDateTimePicker {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsDateTimePicker(obj interface{}) *TDateTimePicker {
-    d := new(TDateTimePicker)
-    d.instance, d.ptr = getInstance(obj)
-    if d.instance == 0 { return nil }
-    return d
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TDateTimePicker{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

@@ -36,10 +36,9 @@ func NewStatusBar(owner IComponent) *TStatusBar {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsStatusBar(obj interface{}) *TStatusBar {
-    s := new(TStatusBar)
-    s.instance, s.ptr = getInstance(obj)
-    if s.instance == 0 { return nil }
-    return s
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TStatusBar{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

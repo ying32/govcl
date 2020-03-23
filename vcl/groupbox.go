@@ -36,10 +36,9 @@ func NewGroupBox(owner IComponent) *TGroupBox {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsGroupBox(obj interface{}) *TGroupBox {
-    g := new(TGroupBox)
-    g.instance, g.ptr = getInstance(obj)
-    if g.instance == 0 { return nil }
-    return g
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TGroupBox{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

@@ -36,10 +36,9 @@ func NewThumbBarButton() *TThumbBarButton {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsThumbBarButton(obj interface{}) *TThumbBarButton {
-    t := new(TThumbBarButton)
-    t.instance, t.ptr = getInstance(obj)
-    if t.instance == 0 { return nil }
-    return t
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TThumbBarButton{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

@@ -36,10 +36,9 @@ func NewHotKey(owner IComponent) *THotKey {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsHotKey(obj interface{}) *THotKey {
-    h := new(THotKey)
-    h.instance, h.ptr = getInstance(obj)
-    if h.instance == 0 { return nil }
-    return h
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &THotKey{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

@@ -36,10 +36,9 @@ func NewGIFImage() *TGIFImage {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsGIFImage(obj interface{}) *TGIFImage {
-    g := new(TGIFImage)
-    g.instance, g.ptr = getInstance(obj)
-    if g.instance == 0 { return nil }
-    return g
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TGIFImage{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

@@ -36,10 +36,9 @@ func NewWinControl(owner IComponent) *TWinControl {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsWinControl(obj interface{}) *TWinControl {
-    w := new(TWinControl)
-    w.instance, w.ptr = getInstance(obj)
-    if w.instance == 0 { return nil }
-    return w
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TWinControl{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------

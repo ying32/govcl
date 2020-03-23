@@ -36,10 +36,9 @@ func NewPngImage() *TPngImage {
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsPngImage(obj interface{}) *TPngImage {
-    p := new(TPngImage)
-    p.instance, p.ptr = getInstance(obj)
-    if p.instance == 0 { return nil }
-    return p
+    instance, ptr := getInstance(obj)
+    if instance == 0 { return nil }
+    return &TPngImage{instance: instance, ptr: ptr}
 }
 
 // -------------------------- Deprecated begin --------------------------
