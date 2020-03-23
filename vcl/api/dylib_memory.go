@@ -1,6 +1,3 @@
-// +build windows
-// +build memorydll
-
 //----------------------------------------
 //
 // Copyright © ying32. All Rights Reserved.
@@ -8,6 +5,9 @@
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
+
+// +build windows
+// +build memorydll
 
 // 编译时加上 -tags memorydll
 

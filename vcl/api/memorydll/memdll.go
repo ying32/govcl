@@ -1,5 +1,3 @@
-// +build windows
-
 //----------------------------------------
 //
 // Copyright © ying32. All Rights Reserved.
@@ -7,6 +5,8 @@
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
+
+// +build windows
 
 /*
   此项功能稳定性还有待观查。
