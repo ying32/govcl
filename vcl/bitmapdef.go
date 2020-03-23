@@ -14,21 +14,25 @@ import (
 )
 
 // LCL下的
+// LCL only. Clear bitmap data.
 func (b *TBitmap) Clear() {
 	Bitmap_Clear(b.instance)
 }
 
-// LCL下的 用于ScanLine属性，aCanvasOnly 默认为 false
+// CN: LCL下的 用于ScanLine属性，aCanvasOnly 默认为 false
+// EN: LCL only. Used for ScanLine properties, aCanvasOnly defaults to false.
 func (b *TBitmap) BeginUpdate(aCanvasOnly bool) {
 	Bitmap_BeginUpdate(b.instance, aCanvasOnly)
 }
 
-// LCL下的 用于ScanLine属性，aStreamIsValid 默认为 false
+// CN: LCL下的 用于ScanLine属性，aStreamIsValid 默认为 false
+// EN: LCL only. Used for ScanLine property, aStreamIsValid defaults to false.
 func (b *TBitmap) EndUpdate(aStreamIsValid bool) {
 	Bitmap_EndUpdate(b.instance, aStreamIsValid)
 }
 
-// LCL下的，Delphi也做相关的兼容
+// CN：从设备驱动中加载Bitmap。
+// EN: Load the Bitmap from the device driver.
 func (b *TBitmap) LoadFromDevice(dc types.HDC) {
 	Bitmap_LoadFromDevice(b.instance, dc)
 }

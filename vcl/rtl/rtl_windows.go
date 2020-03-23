@@ -10,14 +10,13 @@ package rtl
 
 import "github.com/ying32/govcl/vcl/api"
 
-// SetReportMemoryLeaksOnShutdown 程序结束时报告内存泄露，总有2-4字节的未知泄露位置
+// 程序结束时报告内存泄露，总有2-4字节的未知泄露位置
 func SetReportMemoryLeaksOnShutdown(v bool) {
 	api.DSetReportMemoryLeaksOnShutdown(v)
 }
 
 // Shortcut
 
-//CreateURLShortCut
 /*
    CN: 创建一个url的快捷方式
    EN: Create a shortcut to a URL
@@ -28,7 +27,6 @@ func CreateURLShortCut(aDestPath, aShortCutName, aURL string) {
 	api.DCreateURLShortCut(aDestPath, aShortCutName, aURL)
 }
 
-// CreateShortCut
 /*
    CN: 创建一个快捷方式
    EN: Create a shortcut

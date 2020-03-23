@@ -24,7 +24,8 @@ type TExtEventCallback func(fn interface{}, getVal func(idx int) uintptr) bool
 // 外部扩展的事件回调，先不管重复注册的问题
 var extEventCallback []TExtEventCallback
 
-// 注册外部扩展回调事件
+// CN: 注册外部扩展回调事件
+// EN: Registering external extension callback events.
 func RegisterExtEventCallback(callback TExtEventCallback) {
 	extEventCallback = append(extEventCallback, callback)
 }

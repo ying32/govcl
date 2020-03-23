@@ -12,12 +12,14 @@ import (
 	. "github.com/ying32/govcl/vcl/api"
 )
 
-// 设置快捷键字符
+// CN: 设置快捷键字符
+// EN: Set shortcut key characters.
 func (m *TMenuItem) SetShortCutFromString(s string) {
 	MenuItem_SetShortCut(m.instance, DTextToShortCut(s))
 }
 
-// 获取快捷键字符
+// CN: 获取快捷键字符
+// EN: Get shortcut key characters.
 func (m *TMenuItem) ShortCutFromString() string {
 	return DShortCutToText(MenuItem_GetShortCut(m.instance))
 }

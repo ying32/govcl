@@ -18,21 +18,28 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-// ShowMessage 显示一个消息框
+// CN: 显示一个消息框。
+// EN: Show a message box.
 func ShowMessage(msg string) {
 	api.DShowMessage(msg)
 }
 
+// CN: 显示一个格式化文本的消息框。
+// EN: Show a message box with formatted text.
+//go:noinline
 func ShowMessageFmt(format string, args ...interface{}) {
 	ShowMessage(fmt.Sprintf(format, args...))
 }
 
-// MessageDlg 消息框，Buttons为按钮样式，祥见types.TMsgDlgButtons
+// CN: 消息框，Buttons为按钮样式，详见types.TMsgDlgButtons。
+// EN: Message box, Buttons is the button style. For details, see types.TMsgDlgButtons.
 func MessageDlg(Msg string, DlgType TMsgDlgType, Buttons ...uint8) int32 {
 	return api.DMessageDlg(Msg, DlgType, NewSet(Buttons...), 0)
 }
 
-// CheckPtr 检测接口是否被实例化，如果已经实例化则返回实例指针
+// CN: 检测接口是否被实例化，如果已经实例化则返回实例指针。
+// EN: Checks if the interface is instantiated, and returns an instance pointer if it has been instantiated.
+//go:noinline
 func CheckPtr(value interface{}) uintptr {
 	switch value.(type) {
 	case IObject:
@@ -44,34 +51,42 @@ func CheckPtr(value interface{}) uintptr {
 	return 0
 }
 
-// As操作的简化
+// CN: As操作的简化。
+// EN: Simplification of As operation.
+//go:noinline
 func getInstance(value interface{}) (uintptr, unsafe.Pointer) {
 	var ptr uintptr
 	switch value.(type) {
 	case uintptr:
-		// 一个对象来自已经存在的对象实例指针
+		// CN: 一个对象来自已经存在的对象实例指针
+		// EN: an object from a pointer to an existing object instance
 		ptr = value.(uintptr)
 	case unsafe.Pointer:
-		// 一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+		// CN: 一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
+		// EN: An object from an unsafe address. Note: Using this function may cause some unknown situations. Use it with caution.
 		ptr = uintptr(value.(unsafe.Pointer))
 	case IObject:
-		// 一个对象来自已经存在的对象实例
+		// CN: 一个对象来自已经存在的对象实例。
+		// EN: An object from an existing object instance.
 		ptr = CheckPtr(value)
 	}
 	return ptr, unsafe.Pointer(ptr)
 }
 
-// SelectDirectory1 选择目录
+// CN: 选择目录。
+// EN: Select directory.
 func SelectDirectory1(options TSelectDirOpts) (bool, string) {
 	return api.DSelectDirectory1(options)
 }
 
-// SelectDirectory2 选择目录，一般 options默认是SdNewUI，parent默认为nil
+// CN: 选择目录，一般options默认是SdNewUI，parent默认为nil。
+// EN: Select directory, options defaults to SdNewUI, parent defaults to nil.
 func SelectDirectory2(caption, root string, options TSelectDirExtOpts, parent IObject) (bool, string) {
 	return api.DSelectDirectory2(caption, root, options, CheckPtr(parent))
 }
 
-// SelectDirectory3 选择目录， options默认是SdNewUI，parent默认为nil
+// CN: 选择目录， options默认是SdNewUI，parent默认为nil。
+// EN: Select directory, options defaults to SdNewUI, parent defaults to nil.
 func SelectDirectory3(caption, root string, options ...uint8) (bool, string) {
 	opts := NewSet(options...)
 	if len(options) == 0 {
@@ -80,27 +95,32 @@ func SelectDirectory3(caption, root string, options ...uint8) (bool, string) {
 	return SelectDirectory2(caption, root, opts, nil)
 }
 
-// ThreadSync 主线程中执行
+// CN: 主线程中执行。
+// EN: Executed in the main thread.
 func ThreadSync(fn TThreadProc) {
 	api.DSynchronize(fn, 1)
 }
 
-// ThreadSyncVcl 主线程中执行，第二个参数决定是否使用Delphi自带的，此也只对libvcl生效，1使用消息，0使用Delphi自带的线程同步方法。
+// CN: 主线程中执行，第二个参数决定是否使用Delphi自带的，此也只对libvcl生效，1使用消息，0使用Delphi自带的线程同步方法。
+// EN: The main thread is executed, and only takes effect on libvcl, using the thread synchronization method that comes with Delphi.
 func ThreadSyncVcl(fn TThreadProc) {
 	api.DSynchronize(fn, 0)
 }
 
-// InputBox 输入框
+// CN: 输入框。
+// EN: Input box.
 func InputBox(aCaption, aPrompt, aDefault string) string {
 	return api.DInputBox(aCaption, aPrompt, aDefault)
 }
 
-// InputQuery 输入框
+// CN: 输入框。
+// EN: Input box.
 func InputQuery(aCaption, aPrompt string, value *string) bool {
 	return api.DInputQuery(aCaption, aPrompt, value)
 }
 
-// 简化运行
+// CN: 简化运行。
+// EN: simplify running.
 func RunApp(forms ...interface{}) {
 	Application.Initialize()
 	Application.SetMainFormOnTaskBar(true)
@@ -110,7 +130,8 @@ func RunApp(forms ...interface{}) {
 	Application.Run()
 }
 
-// 不必引用rtl包来判断是否为lcl库
+// CN: 当前是否使用LCL库。
+// EN: Whether it is currently an LCL library.
 func LclLoaded() bool {
 	return api.IsloadedLcl
 }

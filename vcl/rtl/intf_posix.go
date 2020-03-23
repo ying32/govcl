@@ -14,7 +14,6 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-// MainInstance EXE自身的实例
 func MainInstance() uintptr {
 	return 0
 }
