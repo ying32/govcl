@@ -30,6 +30,19 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	// 全局设置提示
 	f.SetShowHint(true)
 
+	// 动态创建
+	f.initComponents()
+}
+
+func (f *TMainForm) OnActExecute(sender vcl.IObject) {
+	vcl.ShowMessage("点击了action")
+}
+
+func (f *TMainForm) OnActUpdate(sender vcl.IObject) {
+	vcl.AsAction(sender).SetEnabled(f.Chk.Checked())
+}
+
+func (f *TMainForm) initComponents() {
 	f.ImgList = vcl.NewImageList(f)
 	f.ImgList.AddIcon(vcl.Application.Icon())
 
@@ -82,12 +95,4 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 
 	f.Btn.SetAction(f.Act)
 	f.Tlbtn.SetAction(f.Act)
-}
-
-func (f *TMainForm) OnActExecute(sender vcl.IObject) {
-	vcl.ShowMessage("点击了action")
-}
-
-func (f *TMainForm) OnActUpdate(sender vcl.IObject) {
-	vcl.AsAction(sender).SetEnabled(f.Chk.Checked())
 }

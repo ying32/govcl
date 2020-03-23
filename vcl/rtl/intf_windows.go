@@ -13,7 +13,8 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
-// MainInstance EXE自身的实例
+// CN: exe自身实例。
+// EN: Instance of an EXE.
 func MainInstance() uintptr {
 	return win.GetSelfModuleHandle()
 }

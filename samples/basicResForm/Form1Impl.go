@@ -11,38 +11,6 @@ import (
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	fmt.Println(Form1.Caption(), f.PixelsPerInch())
-	Form1.Button1.SetOnClick(func(sender vcl.IObject) {
-		//vcl.ShowMessage("Hello!")
-		jpg := vcl.NewJPEGImage()
-		defer jpg.Free()
-		jpg.LoadFromFile("a.jpg")
-	})
-
-	Form1.CheckBox1.SetOnClick(func(sender vcl.IObject) {
-		Form1.Button1.SetEnabled(Form1.CheckBox1.Checked())
-
-	})
-
-	Form1.SetOnCloseQuery(func(sender vcl.IObject, canClose *bool) {
-		fmt.Println("关闭。")
-	})
-
-	Form1.ActFileNew.SetOnExecute(func(vcl.IObject) {
-		vcl.ShowMessage("ActFileNew Execute.")
-	})
-	Form1.Button2.SetOnClick(func(vcl.IObject) {
-		result := Form2.ShowModal()
-		if result == types.MrOk {
-			vcl.ShowMessage("Form2返回了OK")
-		} else if result == types.MrClose || result == types.MrNone {
-			vcl.ShowMessage("Form2返回了Close")
-		} else if result == types.MrCancel {
-			vcl.ShowMessage("Form2返回了Cancel")
-		}
-	})
-	Form1.ActExit.SetOnExecute(func(vcl.IObject) {
-		vcl.Application.Terminate()
-	})
 
 	// 遍历组件
 	// 只要owner设置为Form的都可以通过这个方法来遍历。
@@ -62,4 +30,38 @@ func (f *TForm1) memoOnKeyup(sender vcl.IObject, key *types.Char, shift types.TS
 	if shift.In(types.SsCtrl) && *key == /*keys.VkA*/ keys.VkB {
 		vcl.AsMemo(sender).SelectAll()
 	}
+}
+
+func (f *TForm1) OnActExitExecute(vcl.IObject) {
+	vcl.Application.Terminate()
+}
+
+func (f *TForm1) OnButton2Click(vcl.IObject) {
+	result := Form2.ShowModal()
+	if result == types.MrOk {
+		vcl.ShowMessage("Form2返回了OK")
+	} else if result == types.MrClose || result == types.MrNone {
+		vcl.ShowMessage("Form2返回了Close")
+	} else if result == types.MrCancel {
+		vcl.ShowMessage("Form2返回了Cancel")
+	}
+}
+
+func (f *TForm1) OnActFileNewExecute(vcl.IObject) {
+	vcl.ShowMessage("ActFileNew Execute.")
+}
+
+func (f *TForm1) OnFormCloseQuery(sender vcl.IObject, canClose *bool) {
+	fmt.Println("关闭。")
+}
+
+func (f *TForm1) OnCheckBox1Click(sender vcl.IObject) {
+	f.Button1.SetEnabled(f.CheckBox1.Checked())
+}
+
+func (f *TForm1) OnButton1Click(sender vcl.IObject) {
+	//vcl.ShowMessage("Hello!")
+	jpg := vcl.NewJPEGImage()
+	defer jpg.Free()
+	jpg.LoadFromFile("a.jpg")
 }

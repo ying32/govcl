@@ -8,9 +8,10 @@
 
 // +build !windows
 
-package vcl
+package main
 
-func (a *TApplication) SetIconResId(id int) {
-	// 不支持此方法
-	// This method is not supported
+import "github.com/ying32/govcl/vcl/types"
+
+func windowsUACMessageFilter(handle types.HWND) {
+	// fake
 }

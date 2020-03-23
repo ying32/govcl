@@ -1,7 +1,3 @@
-// +build ignore
-
-/// +build windows,amd64
-
 //----------------------------------------
 //
 // Copyright © ying32. All Rights Reserved.
@@ -9,6 +5,10 @@
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
+
+// +build ignore
+
+/// +build windows,amd64
 
 package memorydll
 

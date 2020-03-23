@@ -17,7 +17,8 @@ import (
 )
 
 const (
-	// 要求最小liblcl或者libvcl二进制版本为1.2.6
+	// CN: 要求最小liblcl或者libvcl二进制版本为1.2.6
+	// EN: Requires a minimum liblcl or libvcl binary version of 1.2.6.
 	requireMinBinaryVersion = 0x01020600
 )
 

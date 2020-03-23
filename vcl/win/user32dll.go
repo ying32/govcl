@@ -1,14 +1,12 @@
-// +build windows
-
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
 
+// +build windows
 
 package win
 
@@ -164,14 +162,12 @@ func SendMessage(hWd HWND, msg uint32, wParam, lParam uintptr) uintptr {
 	return r
 }
 
-// 两个Windows未公开函数
-
 const (
-	// ChangeWindowMessageFilter  的常量
+	// ChangeWindowMessageFilter  的常量, vista+
 	MSGFLT_ADD    = 1
 	MSGFLT_REMOVE = 2
 
-	// ChangeWindowMessageFilterEx的常量
+	// ChangeWindowMessageFilterEx的常量, win7+
 	MSGFLT_RESET    = 0
 	MSGFLT_ALLOW    = 1
 	MSGFLT_DISALLOW = 2

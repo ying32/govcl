@@ -1,15 +1,13 @@
-// +build !windows
-// +build amd64
-
-
 //----------------------------------------
-// 
+//
 // Copyright © ying32. All Rights Reserved.
-// 
+//
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
 
+// +build !windows
+// +build amd64
 
 package types
 

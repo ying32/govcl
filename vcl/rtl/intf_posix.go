@@ -5,6 +5,7 @@
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
+
 // +build !windows
 
 package rtl
@@ -14,7 +15,6 @@ import (
 	. "github.com/ying32/govcl/vcl/types"
 )
 
-// MainInstance EXE自身的实例
 func MainInstance() uintptr {
 	return 0
 }

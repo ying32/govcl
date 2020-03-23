@@ -1,6 +1,3 @@
-// +build !windows
-// +build cgo
-
 //----------------------------------------
 //
 // Copyright © ying32. All Rights Reserved.
@@ -8,6 +5,9 @@
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
+
+// +build !windows
+// +build cgo
 
 package vcl
 
@@ -34,19 +34,19 @@ import (
 //export doEventCallbackProc
 func doEventCallbackProc(f unsafe.Pointer, args unsafe.Pointer, argcount C.long) unsafe.Pointer {
 	eventCallbackProc(uintptr(f), uintptr(args), int(argcount))
-	return unsafe.Pointer(uintptr(0))
+	return nullptr
 }
 
 //export doMessageCallbackProc
 func doMessageCallbackProc(f unsafe.Pointer, msg unsafe.Pointer) unsafe.Pointer {
 	messageCallbackProc(uintptr(f), uintptr(msg))
-	return unsafe.Pointer(uintptr(0))
+	return nullptr
 }
 
 //export doThreadSyncCallbackProc
 func doThreadSyncCallbackProc() unsafe.Pointer {
 	threadSyncCallbackProc()
-	return unsafe.Pointer(uintptr(0))
+	return nullptr
 }
 
 var (

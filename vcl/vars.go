@@ -6,11 +6,11 @@
 //
 //----------------------------------------
 
-// +build !windows
-
 package vcl
 
-func (a *TApplication) SetIconResId(id int) {
-	// 不支持此方法
-	// This method is not supported
-}
+import "unsafe"
+
+var (
+	// nullptr
+	nullptr = unsafe.Pointer(uintptr(0))
+)

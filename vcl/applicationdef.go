@@ -76,22 +76,27 @@ var globalFormScaled bool = false
   // 将来准备废弃
   5、vcl.Application.CreateForm(form1Bytes, &mainForm)   // 从字节中填充子组件，并绑定所有事件
 */
+
+// CN: 创建一个TForm。
+// EN: Create a TForm.
 func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	return AsForm(resObjtBuild(0, nil, a.instance, fields...))
 }
 
-// SetFormScaled 设置全局窗口的Scaled
 func (a *TApplication) SetFormScaled(val bool) {
-	globalFormScaled = val
-	SetGlobalFormScaled(val)
+	// disabled
+	//globalFormScaled = val
+	//SetGlobalFormScaled(val)
 }
 
-// Run 运行APP
+// CN: 运行APP。
+// EN: Run the app.
 func (a *TApplication) Run() {
 	Application_Run(a.instance)
 }
 
-// Initialize 初始APP信息
+// CN: 初始APP信息。
+// EN: Initial APP information.
 func (a *TApplication) Initialize() {
 	Application_Initialize(a.instance)
 }

@@ -5,6 +5,7 @@
 // Licensed under Apache License 2.0
 //
 //----------------------------------------
+
 // +build linux
 
 package vcl
@@ -12,7 +13,6 @@ package vcl
 import (
 	"unsafe"
 
-	. "github.com/ying32/govcl/vcl/api"
 	"github.com/ying32/govcl/vcl/types"
 )
 

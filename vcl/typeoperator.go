@@ -12,7 +12,6 @@ package vcl
 
 import . "github.com/ying32/govcl/vcl/api"
 
-// TApplication
 
 func (i TIs) Application() bool {
     return Application_InheritsFrom(uintptr(i), TApplicationClass())
@@ -22,7 +21,6 @@ func (i TIs) Application() bool {
 //    return AsApplication(uintptr(a))
 //}
 
-// TForm
 
 func (i TIs) Form() bool {
     return Form_InheritsFrom(uintptr(i), TFormClass())
@@ -32,7 +30,6 @@ func (i TIs) Form() bool {
 //    return AsForm(uintptr(a))
 //}
 
-// TButton
 
 func (i TIs) Button() bool {
     return Button_InheritsFrom(uintptr(i), TButtonClass())
@@ -42,7 +39,6 @@ func (i TIs) Button() bool {
 //    return AsButton(uintptr(a))
 //}
 
-// TEdit
 
 func (i TIs) Edit() bool {
     return Edit_InheritsFrom(uintptr(i), TEditClass())
@@ -52,7 +48,6 @@ func (i TIs) Edit() bool {
 //    return AsEdit(uintptr(a))
 //}
 
-// TMainMenu
 
 func (i TIs) MainMenu() bool {
     return MainMenu_InheritsFrom(uintptr(i), TMainMenuClass())
@@ -62,7 +57,6 @@ func (i TIs) MainMenu() bool {
 //    return AsMainMenu(uintptr(a))
 //}
 
-// TPopupMenu
 
 func (i TIs) PopupMenu() bool {
     return PopupMenu_InheritsFrom(uintptr(i), TPopupMenuClass())
@@ -72,7 +66,6 @@ func (i TIs) PopupMenu() bool {
 //    return AsPopupMenu(uintptr(a))
 //}
 
-// TMemo
 
 func (i TIs) Memo() bool {
     return Memo_InheritsFrom(uintptr(i), TMemoClass())
@@ -82,7 +75,6 @@ func (i TIs) Memo() bool {
 //    return AsMemo(uintptr(a))
 //}
 
-// TCheckBox
 
 func (i TIs) CheckBox() bool {
     return CheckBox_InheritsFrom(uintptr(i), TCheckBoxClass())
@@ -92,7 +84,6 @@ func (i TIs) CheckBox() bool {
 //    return AsCheckBox(uintptr(a))
 //}
 
-// TRadioButton
 
 func (i TIs) RadioButton() bool {
     return RadioButton_InheritsFrom(uintptr(i), TRadioButtonClass())
@@ -102,7 +93,6 @@ func (i TIs) RadioButton() bool {
 //    return AsRadioButton(uintptr(a))
 //}
 
-// TGroupBox
 
 func (i TIs) GroupBox() bool {
     return GroupBox_InheritsFrom(uintptr(i), TGroupBoxClass())
@@ -112,7 +102,6 @@ func (i TIs) GroupBox() bool {
 //    return AsGroupBox(uintptr(a))
 //}
 
-// TLabel
 
 func (i TIs) Label() bool {
     return Label_InheritsFrom(uintptr(i), TLabelClass())
@@ -122,7 +111,6 @@ func (i TIs) Label() bool {
 //    return AsLabel(uintptr(a))
 //}
 
-// TListBox
 
 func (i TIs) ListBox() bool {
     return ListBox_InheritsFrom(uintptr(i), TListBoxClass())
@@ -132,7 +120,6 @@ func (i TIs) ListBox() bool {
 //    return AsListBox(uintptr(a))
 //}
 
-// TComboBox
 
 func (i TIs) ComboBox() bool {
     return ComboBox_InheritsFrom(uintptr(i), TComboBoxClass())
@@ -142,7 +129,6 @@ func (i TIs) ComboBox() bool {
 //    return AsComboBox(uintptr(a))
 //}
 
-// TPanel
 
 func (i TIs) Panel() bool {
     return Panel_InheritsFrom(uintptr(i), TPanelClass())
@@ -152,7 +138,6 @@ func (i TIs) Panel() bool {
 //    return AsPanel(uintptr(a))
 //}
 
-// TImage
 
 func (i TIs) Image() bool {
     return Image_InheritsFrom(uintptr(i), TImageClass())
@@ -162,7 +147,6 @@ func (i TIs) Image() bool {
 //    return AsImage(uintptr(a))
 //}
 
-// TLinkLabel
 
 func (i TIs) LinkLabel() bool {
     return LinkLabel_InheritsFrom(uintptr(i), TLinkLabelClass())
@@ -172,7 +156,6 @@ func (i TIs) LinkLabel() bool {
 //    return AsLinkLabel(uintptr(a))
 //}
 
-// TSpeedButton
 
 func (i TIs) SpeedButton() bool {
     return SpeedButton_InheritsFrom(uintptr(i), TSpeedButtonClass())
@@ -182,7 +165,6 @@ func (i TIs) SpeedButton() bool {
 //    return AsSpeedButton(uintptr(a))
 //}
 
-// TSplitter
 
 func (i TIs) Splitter() bool {
     return Splitter_InheritsFrom(uintptr(i), TSplitterClass())
@@ -192,7 +174,6 @@ func (i TIs) Splitter() bool {
 //    return AsSplitter(uintptr(a))
 //}
 
-// TRadioGroup
 
 func (i TIs) RadioGroup() bool {
     return RadioGroup_InheritsFrom(uintptr(i), TRadioGroupClass())
@@ -202,7 +183,6 @@ func (i TIs) RadioGroup() bool {
 //    return AsRadioGroup(uintptr(a))
 //}
 
-// TStaticText
 
 func (i TIs) StaticText() bool {
     return StaticText_InheritsFrom(uintptr(i), TStaticTextClass())
@@ -212,7 +192,6 @@ func (i TIs) StaticText() bool {
 //    return AsStaticText(uintptr(a))
 //}
 
-// TColorBox
 
 func (i TIs) ColorBox() bool {
     return ColorBox_InheritsFrom(uintptr(i), TColorBoxClass())
@@ -222,7 +201,6 @@ func (i TIs) ColorBox() bool {
 //    return AsColorBox(uintptr(a))
 //}
 
-// TColorListBox
 
 func (i TIs) ColorListBox() bool {
     return ColorListBox_InheritsFrom(uintptr(i), TColorListBoxClass())
@@ -232,7 +210,6 @@ func (i TIs) ColorListBox() bool {
 //    return AsColorListBox(uintptr(a))
 //}
 
-// TTrayIcon
 
 func (i TIs) TrayIcon() bool {
     return TrayIcon_InheritsFrom(uintptr(i), TTrayIconClass())
@@ -242,7 +219,6 @@ func (i TIs) TrayIcon() bool {
 //    return AsTrayIcon(uintptr(a))
 //}
 
-// TBalloonHint
 
 func (i TIs) BalloonHint() bool {
     return BalloonHint_InheritsFrom(uintptr(i), TBalloonHintClass())
@@ -252,7 +228,6 @@ func (i TIs) BalloonHint() bool {
 //    return AsBalloonHint(uintptr(a))
 //}
 
-// TCategoryPanelGroup
 
 func (i TIs) CategoryPanelGroup() bool {
     return CategoryPanelGroup_InheritsFrom(uintptr(i), TCategoryPanelGroupClass())
@@ -262,7 +237,6 @@ func (i TIs) CategoryPanelGroup() bool {
 //    return AsCategoryPanelGroup(uintptr(a))
 //}
 
-// TCategoryPanel
 
 func (i TIs) CategoryPanel() bool {
     return CategoryPanel_InheritsFrom(uintptr(i), TCategoryPanelClass())
@@ -272,7 +246,6 @@ func (i TIs) CategoryPanel() bool {
 //    return AsCategoryPanel(uintptr(a))
 //}
 
-// TOpenDialog
 
 func (i TIs) OpenDialog() bool {
     return OpenDialog_InheritsFrom(uintptr(i), TOpenDialogClass())
@@ -282,7 +255,6 @@ func (i TIs) OpenDialog() bool {
 //    return AsOpenDialog(uintptr(a))
 //}
 
-// TSaveDialog
 
 func (i TIs) SaveDialog() bool {
     return SaveDialog_InheritsFrom(uintptr(i), TSaveDialogClass())
@@ -292,7 +264,6 @@ func (i TIs) SaveDialog() bool {
 //    return AsSaveDialog(uintptr(a))
 //}
 
-// TColorDialog
 
 func (i TIs) ColorDialog() bool {
     return ColorDialog_InheritsFrom(uintptr(i), TColorDialogClass())
@@ -302,7 +273,6 @@ func (i TIs) ColorDialog() bool {
 //    return AsColorDialog(uintptr(a))
 //}
 
-// TFontDialog
 
 func (i TIs) FontDialog() bool {
     return FontDialog_InheritsFrom(uintptr(i), TFontDialogClass())
@@ -312,7 +282,6 @@ func (i TIs) FontDialog() bool {
 //    return AsFontDialog(uintptr(a))
 //}
 
-// TPrintDialog
 
 func (i TIs) PrintDialog() bool {
     return PrintDialog_InheritsFrom(uintptr(i), TPrintDialogClass())
@@ -322,7 +291,6 @@ func (i TIs) PrintDialog() bool {
 //    return AsPrintDialog(uintptr(a))
 //}
 
-// TOpenPictureDialog
 
 func (i TIs) OpenPictureDialog() bool {
     return OpenPictureDialog_InheritsFrom(uintptr(i), TOpenPictureDialogClass())
@@ -332,7 +300,6 @@ func (i TIs) OpenPictureDialog() bool {
 //    return AsOpenPictureDialog(uintptr(a))
 //}
 
-// TSavePictureDialog
 
 func (i TIs) SavePictureDialog() bool {
     return SavePictureDialog_InheritsFrom(uintptr(i), TSavePictureDialogClass())
@@ -342,7 +309,6 @@ func (i TIs) SavePictureDialog() bool {
 //    return AsSavePictureDialog(uintptr(a))
 //}
 
-// TSaveTextFileDialog
 
 func (i TIs) SaveTextFileDialog() bool {
     return SaveTextFileDialog_InheritsFrom(uintptr(i), TSaveTextFileDialogClass())
@@ -352,7 +318,6 @@ func (i TIs) SaveTextFileDialog() bool {
 //    return AsSaveTextFileDialog(uintptr(a))
 //}
 
-// TOpenTextFileDialog
 
 func (i TIs) OpenTextFileDialog() bool {
     return OpenTextFileDialog_InheritsFrom(uintptr(i), TOpenTextFileDialogClass())
@@ -362,7 +327,6 @@ func (i TIs) OpenTextFileDialog() bool {
 //    return AsOpenTextFileDialog(uintptr(a))
 //}
 
-// TRichEdit
 
 func (i TIs) RichEdit() bool {
     return RichEdit_InheritsFrom(uintptr(i), TRichEditClass())
@@ -372,7 +336,6 @@ func (i TIs) RichEdit() bool {
 //    return AsRichEdit(uintptr(a))
 //}
 
-// TTrackBar
 
 func (i TIs) TrackBar() bool {
     return TrackBar_InheritsFrom(uintptr(i), TTrackBarClass())
@@ -382,7 +345,6 @@ func (i TIs) TrackBar() bool {
 //    return AsTrackBar(uintptr(a))
 //}
 
-// TImageList
 
 func (i TIs) ImageList() bool {
     return ImageList_InheritsFrom(uintptr(i), TImageListClass())
@@ -392,7 +354,6 @@ func (i TIs) ImageList() bool {
 //    return AsImageList(uintptr(a))
 //}
 
-// TUpDown
 
 func (i TIs) UpDown() bool {
     return UpDown_InheritsFrom(uintptr(i), TUpDownClass())
@@ -402,7 +363,6 @@ func (i TIs) UpDown() bool {
 //    return AsUpDown(uintptr(a))
 //}
 
-// TProgressBar
 
 func (i TIs) ProgressBar() bool {
     return ProgressBar_InheritsFrom(uintptr(i), TProgressBarClass())
@@ -412,7 +372,6 @@ func (i TIs) ProgressBar() bool {
 //    return AsProgressBar(uintptr(a))
 //}
 
-// THotKey
 
 func (i TIs) HotKey() bool {
     return HotKey_InheritsFrom(uintptr(i), THotKeyClass())
@@ -422,7 +381,6 @@ func (i TIs) HotKey() bool {
 //    return AsHotKey(uintptr(a))
 //}
 
-// TDateTimePicker
 
 func (i TIs) DateTimePicker() bool {
     return DateTimePicker_InheritsFrom(uintptr(i), TDateTimePickerClass())
@@ -432,7 +390,6 @@ func (i TIs) DateTimePicker() bool {
 //    return AsDateTimePicker(uintptr(a))
 //}
 
-// TMonthCalendar
 
 func (i TIs) MonthCalendar() bool {
     return MonthCalendar_InheritsFrom(uintptr(i), TMonthCalendarClass())
@@ -442,7 +399,6 @@ func (i TIs) MonthCalendar() bool {
 //    return AsMonthCalendar(uintptr(a))
 //}
 
-// TListView
 
 func (i TIs) ListView() bool {
     return ListView_InheritsFrom(uintptr(i), TListViewClass())
@@ -452,7 +408,6 @@ func (i TIs) ListView() bool {
 //    return AsListView(uintptr(a))
 //}
 
-// TTreeView
 
 func (i TIs) TreeView() bool {
     return TreeView_InheritsFrom(uintptr(i), TTreeViewClass())
@@ -462,7 +417,6 @@ func (i TIs) TreeView() bool {
 //    return AsTreeView(uintptr(a))
 //}
 
-// TStatusBar
 
 func (i TIs) StatusBar() bool {
     return StatusBar_InheritsFrom(uintptr(i), TStatusBarClass())
@@ -472,7 +426,6 @@ func (i TIs) StatusBar() bool {
 //    return AsStatusBar(uintptr(a))
 //}
 
-// TToolBar
 
 func (i TIs) ToolBar() bool {
     return ToolBar_InheritsFrom(uintptr(i), TToolBarClass())
@@ -482,7 +435,6 @@ func (i TIs) ToolBar() bool {
 //    return AsToolBar(uintptr(a))
 //}
 
-// TMaskEdit
 
 func (i TIs) MaskEdit() bool {
     return MaskEdit_InheritsFrom(uintptr(i), TMaskEditClass())
@@ -492,7 +444,6 @@ func (i TIs) MaskEdit() bool {
 //    return AsMaskEdit(uintptr(a))
 //}
 
-// TBitBtn
 
 func (i TIs) BitBtn() bool {
     return BitBtn_InheritsFrom(uintptr(i), TBitBtnClass())
@@ -502,7 +453,6 @@ func (i TIs) BitBtn() bool {
 //    return AsBitBtn(uintptr(a))
 //}
 
-// TIcon
 
 func (i TIs) Icon() bool {
     return Icon_InheritsFrom(uintptr(i), TIconClass())
@@ -512,7 +462,6 @@ func (i TIs) Icon() bool {
 //    return AsIcon(uintptr(a))
 //}
 
-// TBitmap
 
 func (i TIs) Bitmap() bool {
     return Bitmap_InheritsFrom(uintptr(i), TBitmapClass())
@@ -522,7 +471,6 @@ func (i TIs) Bitmap() bool {
 //    return AsBitmap(uintptr(a))
 //}
 
-// TMemoryStream
 
 func (i TIs) MemoryStream() bool {
     return MemoryStream_InheritsFrom(uintptr(i), TMemoryStreamClass())
@@ -532,7 +480,6 @@ func (i TIs) MemoryStream() bool {
 //    return AsMemoryStream(uintptr(a))
 //}
 
-// TFont
 
 func (i TIs) Font() bool {
     return Font_InheritsFrom(uintptr(i), TFontClass())
@@ -542,7 +489,6 @@ func (i TIs) Font() bool {
 //    return AsFont(uintptr(a))
 //}
 
-// TStrings
 
 func (i TIs) Strings() bool {
     return Strings_InheritsFrom(uintptr(i), TStringsClass())
@@ -552,7 +498,6 @@ func (i TIs) Strings() bool {
 //    return AsStrings(uintptr(a))
 //}
 
-// TStringList
 
 func (i TIs) StringList() bool {
     return StringList_InheritsFrom(uintptr(i), TStringListClass())
@@ -562,7 +507,6 @@ func (i TIs) StringList() bool {
 //    return AsStringList(uintptr(a))
 //}
 
-// TBrush
 
 func (i TIs) Brush() bool {
     return Brush_InheritsFrom(uintptr(i), TBrushClass())
@@ -572,7 +516,6 @@ func (i TIs) Brush() bool {
 //    return AsBrush(uintptr(a))
 //}
 
-// TPen
 
 func (i TIs) Pen() bool {
     return Pen_InheritsFrom(uintptr(i), TPenClass())
@@ -582,7 +525,6 @@ func (i TIs) Pen() bool {
 //    return AsPen(uintptr(a))
 //}
 
-// TMenuItem
 
 func (i TIs) MenuItem() bool {
     return MenuItem_InheritsFrom(uintptr(i), TMenuItemClass())
@@ -592,7 +534,6 @@ func (i TIs) MenuItem() bool {
 //    return AsMenuItem(uintptr(a))
 //}
 
-// TListGroups
 
 func (i TIs) ListGroups() bool {
     return ListGroups_InheritsFrom(uintptr(i), TListGroupsClass())
@@ -602,7 +543,6 @@ func (i TIs) ListGroups() bool {
 //    return AsListGroups(uintptr(a))
 //}
 
-// TPicture
 
 func (i TIs) Picture() bool {
     return Picture_InheritsFrom(uintptr(i), TPictureClass())
@@ -612,7 +552,6 @@ func (i TIs) Picture() bool {
 //    return AsPicture(uintptr(a))
 //}
 
-// TListColumns
 
 func (i TIs) ListColumns() bool {
     return ListColumns_InheritsFrom(uintptr(i), TListColumnsClass())
@@ -622,7 +561,6 @@ func (i TIs) ListColumns() bool {
 //    return AsListColumns(uintptr(a))
 //}
 
-// TListItems
 
 func (i TIs) ListItems() bool {
     return ListItems_InheritsFrom(uintptr(i), TListItemsClass())
@@ -632,7 +570,6 @@ func (i TIs) ListItems() bool {
 //    return AsListItems(uintptr(a))
 //}
 
-// TTreeNodes
 
 func (i TIs) TreeNodes() bool {
     return TreeNodes_InheritsFrom(uintptr(i), TTreeNodesClass())
@@ -642,7 +579,6 @@ func (i TIs) TreeNodes() bool {
 //    return AsTreeNodes(uintptr(a))
 //}
 
-// TListItem
 
 func (i TIs) ListItem() bool {
     return ListItem_InheritsFrom(uintptr(i), TListItemClass())
@@ -652,7 +588,6 @@ func (i TIs) ListItem() bool {
 //    return AsListItem(uintptr(a))
 //}
 
-// TTreeNode
 
 func (i TIs) TreeNode() bool {
     return TreeNode_InheritsFrom(uintptr(i), TTreeNodeClass())
@@ -662,7 +597,6 @@ func (i TIs) TreeNode() bool {
 //    return AsTreeNode(uintptr(a))
 //}
 
-// TPageControl
 
 func (i TIs) PageControl() bool {
     return PageControl_InheritsFrom(uintptr(i), TPageControlClass())
@@ -672,7 +606,6 @@ func (i TIs) PageControl() bool {
 //    return AsPageControl(uintptr(a))
 //}
 
-// TTabSheet
 
 func (i TIs) TabSheet() bool {
     return TabSheet_InheritsFrom(uintptr(i), TTabSheetClass())
@@ -682,7 +615,6 @@ func (i TIs) TabSheet() bool {
 //    return AsTabSheet(uintptr(a))
 //}
 
-// TControl
 
 func (i TIs) Control() bool {
     return Control_InheritsFrom(uintptr(i), TControlClass())
@@ -692,7 +624,6 @@ func (i TIs) Control() bool {
 //    return AsControl(uintptr(a))
 //}
 
-// TWinControl
 
 func (i TIs) WinControl() bool {
     return WinControl_InheritsFrom(uintptr(i), TWinControlClass())
@@ -702,7 +633,6 @@ func (i TIs) WinControl() bool {
 //    return AsWinControl(uintptr(a))
 //}
 
-// TScreen
 
 func (i TIs) Screen() bool {
     return Screen_InheritsFrom(uintptr(i), TScreenClass())
@@ -712,7 +642,6 @@ func (i TIs) Screen() bool {
 //    return AsScreen(uintptr(a))
 //}
 
-// TMouse
 
 func (i TIs) Mouse() bool {
     return Mouse_InheritsFrom(uintptr(i), TMouseClass())
@@ -722,7 +651,6 @@ func (i TIs) Mouse() bool {
 //    return AsMouse(uintptr(a))
 //}
 
-// TListGroup
 
 func (i TIs) ListGroup() bool {
     return ListGroup_InheritsFrom(uintptr(i), TListGroupClass())
@@ -732,7 +660,6 @@ func (i TIs) ListGroup() bool {
 //    return AsListGroup(uintptr(a))
 //}
 
-// TListColumn
 
 func (i TIs) ListColumn() bool {
     return ListColumn_InheritsFrom(uintptr(i), TListColumnClass())
@@ -742,7 +669,6 @@ func (i TIs) ListColumn() bool {
 //    return AsListColumn(uintptr(a))
 //}
 
-// TCollectionItem
 
 func (i TIs) CollectionItem() bool {
     return CollectionItem_InheritsFrom(uintptr(i), TCollectionItemClass())
@@ -752,7 +678,6 @@ func (i TIs) CollectionItem() bool {
 //    return AsCollectionItem(uintptr(a))
 //}
 
-// TStatusPanels
 
 func (i TIs) StatusPanels() bool {
     return StatusPanels_InheritsFrom(uintptr(i), TStatusPanelsClass())
@@ -762,7 +687,6 @@ func (i TIs) StatusPanels() bool {
 //    return AsStatusPanels(uintptr(a))
 //}
 
-// TStatusPanel
 
 func (i TIs) StatusPanel() bool {
     return StatusPanel_InheritsFrom(uintptr(i), TStatusPanelClass())
@@ -772,7 +696,6 @@ func (i TIs) StatusPanel() bool {
 //    return AsStatusPanel(uintptr(a))
 //}
 
-// TSpinEdit
 
 func (i TIs) SpinEdit() bool {
     return SpinEdit_InheritsFrom(uintptr(i), TSpinEditClass())
@@ -782,7 +705,6 @@ func (i TIs) SpinEdit() bool {
 //    return AsSpinEdit(uintptr(a))
 //}
 
-// TMiniWebview
 
 func (i TIs) MiniWebview() bool {
     return MiniWebview_InheritsFrom(uintptr(i), TMiniWebviewClass())
@@ -792,7 +714,6 @@ func (i TIs) MiniWebview() bool {
 //    return AsMiniWebview(uintptr(a))
 //}
 
-// TCanvas
 
 func (i TIs) Canvas() bool {
     return Canvas_InheritsFrom(uintptr(i), TCanvasClass())
@@ -802,7 +723,6 @@ func (i TIs) Canvas() bool {
 //    return AsCanvas(uintptr(a))
 //}
 
-// TObject
 
 func (i TIs) Object() bool {
     return Object_InheritsFrom(uintptr(i), TObjectClass())
@@ -812,7 +732,6 @@ func (i TIs) Object() bool {
 //    return AsObject(uintptr(a))
 //}
 
-// TPngImage
 
 func (i TIs) PngImage() bool {
     return PngImage_InheritsFrom(uintptr(i), TPngImageClass())
@@ -822,7 +741,6 @@ func (i TIs) PngImage() bool {
 //    return AsPngImage(uintptr(a))
 //}
 
-// TJPEGImage
 
 func (i TIs) JPEGImage() bool {
     return JPEGImage_InheritsFrom(uintptr(i), TJPEGImageClass())
@@ -832,7 +750,6 @@ func (i TIs) JPEGImage() bool {
 //    return AsJPEGImage(uintptr(a))
 //}
 
-// TGIFImage
 
 func (i TIs) GIFImage() bool {
     return GIFImage_InheritsFrom(uintptr(i), TGIFImageClass())
@@ -842,7 +759,6 @@ func (i TIs) GIFImage() bool {
 //    return AsGIFImage(uintptr(a))
 //}
 
-// TGIFFrame
 
 func (i TIs) GIFFrame() bool {
     return GIFFrame_InheritsFrom(uintptr(i), TGIFFrameClass())
@@ -852,7 +768,6 @@ func (i TIs) GIFFrame() bool {
 //    return AsGIFFrame(uintptr(a))
 //}
 
-// TActionList
 
 func (i TIs) ActionList() bool {
     return ActionList_InheritsFrom(uintptr(i), TActionListClass())
@@ -862,7 +777,6 @@ func (i TIs) ActionList() bool {
 //    return AsActionList(uintptr(a))
 //}
 
-// TAction
 
 func (i TIs) Action() bool {
     return Action_InheritsFrom(uintptr(i), TActionClass())
@@ -872,7 +786,6 @@ func (i TIs) Action() bool {
 //    return AsAction(uintptr(a))
 //}
 
-// TToolButton
 
 func (i TIs) ToolButton() bool {
     return ToolButton_InheritsFrom(uintptr(i), TToolButtonClass())
@@ -882,7 +795,6 @@ func (i TIs) ToolButton() bool {
 //    return AsToolButton(uintptr(a))
 //}
 
-// TIniFile
 
 func (i TIs) IniFile() bool {
     return IniFile_InheritsFrom(uintptr(i), TIniFileClass())
@@ -892,7 +804,6 @@ func (i TIs) IniFile() bool {
 //    return AsIniFile(uintptr(a))
 //}
 
-// TRegistry
 
 func (i TIs) Registry() bool {
     return Registry_InheritsFrom(uintptr(i), TRegistryClass())
@@ -902,7 +813,6 @@ func (i TIs) Registry() bool {
 //    return AsRegistry(uintptr(a))
 //}
 
-// TClipboard
 
 func (i TIs) Clipboard() bool {
     return Clipboard_InheritsFrom(uintptr(i), TClipboardClass())
@@ -912,7 +822,6 @@ func (i TIs) Clipboard() bool {
 //    return AsClipboard(uintptr(a))
 //}
 
-// TMonitor
 
 func (i TIs) Monitor() bool {
     return Monitor_InheritsFrom(uintptr(i), TMonitorClass())
@@ -922,7 +831,6 @@ func (i TIs) Monitor() bool {
 //    return AsMonitor(uintptr(a))
 //}
 
-// TMargins
 
 func (i TIs) Margins() bool {
     return Margins_InheritsFrom(uintptr(i), TMarginsClass())
@@ -932,7 +840,6 @@ func (i TIs) Margins() bool {
 //    return AsMargins(uintptr(a))
 //}
 
-// TPaintBox
 
 func (i TIs) PaintBox() bool {
     return PaintBox_InheritsFrom(uintptr(i), TPaintBoxClass())
@@ -942,7 +849,6 @@ func (i TIs) PaintBox() bool {
 //    return AsPaintBox(uintptr(a))
 //}
 
-// TTimer
 
 func (i TIs) Timer() bool {
     return Timer_InheritsFrom(uintptr(i), TTimerClass())
@@ -952,7 +858,6 @@ func (i TIs) Timer() bool {
 //    return AsTimer(uintptr(a))
 //}
 
-// TList
 
 func (i TIs) List() bool {
     return List_InheritsFrom(uintptr(i), TListClass())
@@ -962,7 +867,6 @@ func (i TIs) List() bool {
 //    return AsList(uintptr(a))
 //}
 
-// TGraphic
 
 func (i TIs) Graphic() bool {
     return Graphic_InheritsFrom(uintptr(i), TGraphicClass())
@@ -972,7 +876,6 @@ func (i TIs) Graphic() bool {
 //    return AsGraphic(uintptr(a))
 //}
 
-// TComponent
 
 func (i TIs) Component() bool {
     return Component_InheritsFrom(uintptr(i), TComponentClass())
@@ -982,7 +885,6 @@ func (i TIs) Component() bool {
 //    return AsComponent(uintptr(a))
 //}
 
-// TMonthCalColors
 
 func (i TIs) MonthCalColors() bool {
     return MonthCalColors_InheritsFrom(uintptr(i), TMonthCalColorsClass())
@@ -992,7 +894,6 @@ func (i TIs) MonthCalColors() bool {
 //    return AsMonthCalColors(uintptr(a))
 //}
 
-// TParaAttributes
 
 func (i TIs) ParaAttributes() bool {
     return ParaAttributes_InheritsFrom(uintptr(i), TParaAttributesClass())
@@ -1002,7 +903,6 @@ func (i TIs) ParaAttributes() bool {
 //    return AsParaAttributes(uintptr(a))
 //}
 
-// TTextAttributes
 
 func (i TIs) TextAttributes() bool {
     return TextAttributes_InheritsFrom(uintptr(i), TTextAttributesClass())
@@ -1012,7 +912,6 @@ func (i TIs) TextAttributes() bool {
 //    return AsTextAttributes(uintptr(a))
 //}
 
-// TIconOptions
 
 func (i TIs) IconOptions() bool {
     return IconOptions_InheritsFrom(uintptr(i), TIconOptionsClass())
@@ -1022,7 +921,6 @@ func (i TIs) IconOptions() bool {
 //    return AsIconOptions(uintptr(a))
 //}
 
-// Exception
 
 func (i TIs) Exception() bool {
     return Exception_InheritsFrom(uintptr(i), ExceptionClass())
@@ -1032,7 +930,6 @@ func (i TIs) Exception() bool {
 //    return AsException(uintptr(a))
 //}
 
-// TScrollBar
 
 func (i TIs) ScrollBar() bool {
     return ScrollBar_InheritsFrom(uintptr(i), TScrollBarClass())
@@ -1042,7 +939,6 @@ func (i TIs) ScrollBar() bool {
 //    return AsScrollBar(uintptr(a))
 //}
 
-// TCustomHint
 
 func (i TIs) CustomHint() bool {
     return CustomHint_InheritsFrom(uintptr(i), TCustomHintClass())
@@ -1052,7 +948,6 @@ func (i TIs) CustomHint() bool {
 //    return AsCustomHint(uintptr(a))
 //}
 
-// TShape
 
 func (i TIs) Shape() bool {
     return Shape_InheritsFrom(uintptr(i), TShapeClass())
@@ -1062,7 +957,6 @@ func (i TIs) Shape() bool {
 //    return AsShape(uintptr(a))
 //}
 
-// TBevel
 
 func (i TIs) Bevel() bool {
     return Bevel_InheritsFrom(uintptr(i), TBevelClass())
@@ -1072,7 +966,6 @@ func (i TIs) Bevel() bool {
 //    return AsBevel(uintptr(a))
 //}
 
-// TScrollBox
 
 func (i TIs) ScrollBox() bool {
     return ScrollBox_InheritsFrom(uintptr(i), TScrollBoxClass())
@@ -1082,7 +975,6 @@ func (i TIs) ScrollBox() bool {
 //    return AsScrollBox(uintptr(a))
 //}
 
-// TCheckListBox
 
 func (i TIs) CheckListBox() bool {
     return CheckListBox_InheritsFrom(uintptr(i), TCheckListBoxClass())
@@ -1092,7 +984,6 @@ func (i TIs) CheckListBox() bool {
 //    return AsCheckListBox(uintptr(a))
 //}
 
-// TGauge
 
 func (i TIs) Gauge() bool {
     return Gauge_InheritsFrom(uintptr(i), TGaugeClass())
@@ -1102,7 +993,6 @@ func (i TIs) Gauge() bool {
 //    return AsGauge(uintptr(a))
 //}
 
-// TImageButton
 
 func (i TIs) ImageButton() bool {
     return ImageButton_InheritsFrom(uintptr(i), TImageButtonClass())
@@ -1112,7 +1002,6 @@ func (i TIs) ImageButton() bool {
 //    return AsImageButton(uintptr(a))
 //}
 
-// TFindDialog
 
 func (i TIs) FindDialog() bool {
     return FindDialog_InheritsFrom(uintptr(i), TFindDialogClass())
@@ -1122,7 +1011,6 @@ func (i TIs) FindDialog() bool {
 //    return AsFindDialog(uintptr(a))
 //}
 
-// TReplaceDialog
 
 func (i TIs) ReplaceDialog() bool {
     return ReplaceDialog_InheritsFrom(uintptr(i), TReplaceDialogClass())
@@ -1132,7 +1020,6 @@ func (i TIs) ReplaceDialog() bool {
 //    return AsReplaceDialog(uintptr(a))
 //}
 
-// TPrinterSetupDialog
 
 func (i TIs) PrinterSetupDialog() bool {
     return PrinterSetupDialog_InheritsFrom(uintptr(i), TPrinterSetupDialogClass())
@@ -1142,7 +1029,6 @@ func (i TIs) PrinterSetupDialog() bool {
 //    return AsPrinterSetupDialog(uintptr(a))
 //}
 
-// TPageSetupDialog
 
 func (i TIs) PageSetupDialog() bool {
     return PageSetupDialog_InheritsFrom(uintptr(i), TPageSetupDialogClass())
@@ -1152,7 +1038,6 @@ func (i TIs) PageSetupDialog() bool {
 //    return AsPageSetupDialog(uintptr(a))
 //}
 
-// TDragObject
 
 func (i TIs) DragObject() bool {
     return DragObject_InheritsFrom(uintptr(i), TDragObjectClass())
@@ -1162,7 +1047,6 @@ func (i TIs) DragObject() bool {
 //    return AsDragObject(uintptr(a))
 //}
 
-// TDragDockObject
 
 func (i TIs) DragDockObject() bool {
     return DragDockObject_InheritsFrom(uintptr(i), TDragDockObjectClass())
@@ -1172,7 +1056,6 @@ func (i TIs) DragDockObject() bool {
 //    return AsDragDockObject(uintptr(a))
 //}
 
-// TStringGrid
 
 func (i TIs) StringGrid() bool {
     return StringGrid_InheritsFrom(uintptr(i), TStringGridClass())
@@ -1182,7 +1065,6 @@ func (i TIs) StringGrid() bool {
 //    return AsStringGrid(uintptr(a))
 //}
 
-// TDrawGrid
 
 func (i TIs) DrawGrid() bool {
     return DrawGrid_InheritsFrom(uintptr(i), TDrawGridClass())
@@ -1192,7 +1074,6 @@ func (i TIs) DrawGrid() bool {
 //    return AsDrawGrid(uintptr(a))
 //}
 
-// TValueListEditor
 
 func (i TIs) ValueListEditor() bool {
     return ValueListEditor_InheritsFrom(uintptr(i), TValueListEditorClass())
@@ -1202,7 +1083,6 @@ func (i TIs) ValueListEditor() bool {
 //    return AsValueListEditor(uintptr(a))
 //}
 
-// THeaderControl
 
 func (i TIs) HeaderControl() bool {
     return HeaderControl_InheritsFrom(uintptr(i), THeaderControlClass())
@@ -1212,7 +1092,6 @@ func (i TIs) HeaderControl() bool {
 //    return AsHeaderControl(uintptr(a))
 //}
 
-// THeaderSection
 
 func (i TIs) HeaderSection() bool {
     return HeaderSection_InheritsFrom(uintptr(i), THeaderSectionClass())
@@ -1222,7 +1101,6 @@ func (i TIs) HeaderSection() bool {
 //    return AsHeaderSection(uintptr(a))
 //}
 
-// THeaderSections
 
 func (i TIs) HeaderSections() bool {
     return HeaderSections_InheritsFrom(uintptr(i), THeaderSectionsClass())
@@ -1232,7 +1110,6 @@ func (i TIs) HeaderSections() bool {
 //    return AsHeaderSections(uintptr(a))
 //}
 
-// TLabeledEdit
 
 func (i TIs) LabeledEdit() bool {
     return LabeledEdit_InheritsFrom(uintptr(i), TLabeledEditClass())
@@ -1242,7 +1119,6 @@ func (i TIs) LabeledEdit() bool {
 //    return AsLabeledEdit(uintptr(a))
 //}
 
-// TBoundLabel
 
 func (i TIs) BoundLabel() bool {
     return BoundLabel_InheritsFrom(uintptr(i), TBoundLabelClass())
@@ -1252,7 +1128,6 @@ func (i TIs) BoundLabel() bool {
 //    return AsBoundLabel(uintptr(a))
 //}
 
-// TFlowPanel
 
 func (i TIs) FlowPanel() bool {
     return FlowPanel_InheritsFrom(uintptr(i), TFlowPanelClass())
@@ -1262,7 +1137,6 @@ func (i TIs) FlowPanel() bool {
 //    return AsFlowPanel(uintptr(a))
 //}
 
-// TCoolBar
 
 func (i TIs) CoolBar() bool {
     return CoolBar_InheritsFrom(uintptr(i), TCoolBarClass())
@@ -1272,7 +1146,6 @@ func (i TIs) CoolBar() bool {
 //    return AsCoolBar(uintptr(a))
 //}
 
-// TCoolBands
 
 func (i TIs) CoolBands() bool {
     return CoolBands_InheritsFrom(uintptr(i), TCoolBandsClass())
@@ -1282,7 +1155,6 @@ func (i TIs) CoolBands() bool {
 //    return AsCoolBands(uintptr(a))
 //}
 
-// TCoolBand
 
 func (i TIs) CoolBand() bool {
     return CoolBand_InheritsFrom(uintptr(i), TCoolBandClass())
@@ -1292,7 +1164,6 @@ func (i TIs) CoolBand() bool {
 //    return AsCoolBand(uintptr(a))
 //}
 
-// TJumpList
 
 func (i TIs) JumpList() bool {
     return JumpList_InheritsFrom(uintptr(i), TJumpListClass())
@@ -1302,7 +1173,6 @@ func (i TIs) JumpList() bool {
 //    return AsJumpList(uintptr(a))
 //}
 
-// TJumpListItem
 
 func (i TIs) JumpListItem() bool {
     return JumpListItem_InheritsFrom(uintptr(i), TJumpListItemClass())
@@ -1312,7 +1182,6 @@ func (i TIs) JumpListItem() bool {
 //    return AsJumpListItem(uintptr(a))
 //}
 
-// TTaskbar
 
 func (i TIs) Taskbar() bool {
     return Taskbar_InheritsFrom(uintptr(i), TTaskbarClass())
@@ -1322,7 +1191,6 @@ func (i TIs) Taskbar() bool {
 //    return AsTaskbar(uintptr(a))
 //}
 
-// TThumbBarButtonList
 
 func (i TIs) ThumbBarButtonList() bool {
     return ThumbBarButtonList_InheritsFrom(uintptr(i), TThumbBarButtonListClass())
@@ -1332,7 +1200,6 @@ func (i TIs) ThumbBarButtonList() bool {
 //    return AsThumbBarButtonList(uintptr(a))
 //}
 
-// TPreviewClipRegion
 
 func (i TIs) PreviewClipRegion() bool {
     return PreviewClipRegion_InheritsFrom(uintptr(i), TPreviewClipRegionClass())
@@ -1342,7 +1209,6 @@ func (i TIs) PreviewClipRegion() bool {
 //    return AsPreviewClipRegion(uintptr(a))
 //}
 
-// TThumbBarButton
 
 func (i TIs) ThumbBarButton() bool {
     return ThumbBarButton_InheritsFrom(uintptr(i), TThumbBarButtonClass())
@@ -1352,7 +1218,6 @@ func (i TIs) ThumbBarButton() bool {
 //    return AsThumbBarButton(uintptr(a))
 //}
 
-// TJumpListCollection
 
 func (i TIs) JumpListCollection() bool {
     return JumpListCollection_InheritsFrom(uintptr(i), TJumpListCollectionClass())
@@ -1362,7 +1227,6 @@ func (i TIs) JumpListCollection() bool {
 //    return AsJumpListCollection(uintptr(a))
 //}
 
-// TJumpCategories
 
 func (i TIs) JumpCategories() bool {
     return JumpCategories_InheritsFrom(uintptr(i), TJumpCategoriesClass())
@@ -1372,7 +1236,6 @@ func (i TIs) JumpCategories() bool {
 //    return AsJumpCategories(uintptr(a))
 //}
 
-// TJumpCategoryItem
 
 func (i TIs) JumpCategoryItem() bool {
     return JumpCategoryItem_InheritsFrom(uintptr(i), TJumpCategoryItemClass())
@@ -1382,7 +1245,6 @@ func (i TIs) JumpCategoryItem() bool {
 //    return AsJumpCategoryItem(uintptr(a))
 //}
 
-// TCollection
 
 func (i TIs) Collection() bool {
     return Collection_InheritsFrom(uintptr(i), TCollectionClass())
@@ -1392,7 +1254,6 @@ func (i TIs) Collection() bool {
 //    return AsCollection(uintptr(a))
 //}
 
-// TPrinter
 
 func (i TIs) Printer() bool {
     return Printer_InheritsFrom(uintptr(i), TPrinterClass())
@@ -1402,7 +1263,6 @@ func (i TIs) Printer() bool {
 //    return AsPrinter(uintptr(a))
 //}
 
-// TTaskDialog
 
 func (i TIs) TaskDialog() bool {
     return TaskDialog_InheritsFrom(uintptr(i), TTaskDialogClass())
@@ -1412,7 +1272,6 @@ func (i TIs) TaskDialog() bool {
 //    return AsTaskDialog(uintptr(a))
 //}
 
-// TTaskDialogButtons
 
 func (i TIs) TaskDialogButtons() bool {
     return TaskDialogButtons_InheritsFrom(uintptr(i), TTaskDialogButtonsClass())
@@ -1422,7 +1281,6 @@ func (i TIs) TaskDialogButtons() bool {
 //    return AsTaskDialogButtons(uintptr(a))
 //}
 
-// TTaskDialogProgressBar
 
 func (i TIs) TaskDialogProgressBar() bool {
     return TaskDialogProgressBar_InheritsFrom(uintptr(i), TTaskDialogProgressBarClass())
@@ -1432,7 +1290,6 @@ func (i TIs) TaskDialogProgressBar() bool {
 //    return AsTaskDialogProgressBar(uintptr(a))
 //}
 
-// TTaskDialogButtonItem
 
 func (i TIs) TaskDialogButtonItem() bool {
     return TaskDialogButtonItem_InheritsFrom(uintptr(i), TTaskDialogButtonItemClass())
@@ -1442,7 +1299,6 @@ func (i TIs) TaskDialogButtonItem() bool {
 //    return AsTaskDialogButtonItem(uintptr(a))
 //}
 
-// TTaskDialogRadioButtonItem
 
 func (i TIs) TaskDialogRadioButtonItem() bool {
     return TaskDialogRadioButtonItem_InheritsFrom(uintptr(i), TTaskDialogRadioButtonItemClass())
@@ -1452,7 +1308,6 @@ func (i TIs) TaskDialogRadioButtonItem() bool {
 //    return AsTaskDialogRadioButtonItem(uintptr(a))
 //}
 
-// TTaskDialogBaseButtonItem
 
 func (i TIs) TaskDialogBaseButtonItem() bool {
     return TaskDialogBaseButtonItem_InheritsFrom(uintptr(i), TTaskDialogBaseButtonItemClass())
@@ -1462,7 +1317,6 @@ func (i TIs) TaskDialogBaseButtonItem() bool {
 //    return AsTaskDialogBaseButtonItem(uintptr(a))
 //}
 
-// TComboBoxEx
 
 func (i TIs) ComboBoxEx() bool {
     return ComboBoxEx_InheritsFrom(uintptr(i), TComboBoxExClass())
@@ -1472,7 +1326,6 @@ func (i TIs) ComboBoxEx() bool {
 //    return AsComboBoxEx(uintptr(a))
 //}
 
-// TComboExItems
 
 func (i TIs) ComboExItems() bool {
     return ComboExItems_InheritsFrom(uintptr(i), TComboExItemsClass())
@@ -1482,7 +1335,6 @@ func (i TIs) ComboExItems() bool {
 //    return AsComboExItems(uintptr(a))
 //}
 
-// TComboExItem
 
 func (i TIs) ComboExItem() bool {
     return ComboExItem_InheritsFrom(uintptr(i), TComboExItemClass())
@@ -1492,7 +1344,6 @@ func (i TIs) ComboExItem() bool {
 //    return AsComboExItem(uintptr(a))
 //}
 
-// TFrame
 
 func (i TIs) Frame() bool {
     return Frame_InheritsFrom(uintptr(i), TFrameClass())
@@ -1502,7 +1353,6 @@ func (i TIs) Frame() bool {
 //    return AsFrame(uintptr(a))
 //}
 
-// TControlScrollBar
 
 func (i TIs) ControlScrollBar() bool {
     return ControlScrollBar_InheritsFrom(uintptr(i), TControlScrollBarClass())
@@ -1512,7 +1362,6 @@ func (i TIs) ControlScrollBar() bool {
 //    return AsControlScrollBar(uintptr(a))
 //}
 
-// TSizeConstraints
 
 func (i TIs) SizeConstraints() bool {
     return SizeConstraints_InheritsFrom(uintptr(i), TSizeConstraintsClass())
@@ -1522,7 +1371,6 @@ func (i TIs) SizeConstraints() bool {
 //    return AsSizeConstraints(uintptr(a))
 //}
 
-// TXButton
 
 func (i TIs) XButton() bool {
     return XButton_InheritsFrom(uintptr(i), TXButtonClass())
