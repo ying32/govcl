@@ -9,41 +9,50 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
+type TMainForm struct {
+	*vcl.TForm
+	Button1 *vcl.TButton
+}
+
 type TForm1 struct {
 	*vcl.TForm
 	Button1 *vcl.TButton
 }
 
-var form1 *TForm1
+var (
+	mainForm *TMainForm
+	form1    *TForm1
+)
 
 func main() {
-	vcl.Application.SetFormScaled(true)
-	vcl.Application.Initialize()
-	vcl.Application.SetMainFormOnTaskBar(true)
-
-	mainForm := vcl.Application.CreateForm()
-	mainForm.SetCaption("Hello")
-	mainForm.SetPosition(types.PoScreenCenter)
-	mainForm.EnabledMaximize(false)
-	mainForm.SetWidth(300)
-	mainForm.SetHeight(200)
-	mainForm.SetOnCloseQuery(func(Sender vcl.IObject, CanClose *bool) {
-		*CanClose = vcl.MessageDlg("是否退出？", types.MtConfirmation, types.MbYes, types.MbNo) == types.IdYes
-	})
-
-	vcl.Application.CreateForm(&form1, true)
-
-	btn := vcl.NewButton(mainForm)
-	btn.SetParent(mainForm)
-	btn.SetCaption("窗口1")
-	btn.SetLeft(50)
-	btn.SetTop(50)
-	btn.SetOnClick(func(sender vcl.IObject) {
-		form1.Show()
-	})
-
-	vcl.Application.Run()
+	vcl.RunApp(&mainForm, &form1)
 }
+
+// --------------MainForm -----------------
+func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
+	f.SetCaption("Hello")
+	f.EnabledMaximize(false)
+	f.SetWidth(300)
+	f.SetHeight(200)
+	f.ScreenCenter()
+
+	f.Button1 = vcl.NewButton(mainForm)
+	f.Button1.SetParent(mainForm)
+	f.Button1.SetCaption("窗口1")
+	f.Button1.SetLeft(50)
+	f.Button1.SetTop(50)
+
+}
+
+func (f *TMainForm) OnFormCloseQuery(Sender vcl.IObject, CanClose *bool) {
+	*CanClose = vcl.MessageDlg("是否退出？", types.MtConfirmation, types.MbYes, types.MbNo) == types.IdYes
+}
+
+func (f *TMainForm) OnButton1Click(object vcl.IObject) {
+	form1.Show()
+}
+
+// ---------- Form1 ----------------
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("onCreate")

@@ -8,15 +8,18 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
-func main() {
+type TMainForm struct {
+	*vcl.TForm
+}
 
-	vcl.Application.Initialize()
-	mainForm := vcl.Application.CreateForm()
-	mainForm.SetCaption("TCheckListBox测试")
-	mainForm.ScreenCenter()
+var mainForm *TMainForm
 
-	chkListBox := vcl.NewCheckListBox(mainForm)
-	chkListBox.SetParent(mainForm)
+func (f *TMainForm) OnFormCreate(object vcl.IObject) {
+	f.SetCaption("TCheckListBox测试")
+	f.ScreenCenter()
+
+	chkListBox := vcl.NewCheckListBox(f)
+	chkListBox.SetParent(f)
 	chkListBox.SetAlign(types.AlClient)
 	chkListBox.SetOnClickCheck(func(sender vcl.IObject) {
 		fmt.Println("check单击。")
@@ -25,8 +28,8 @@ func main() {
 	for i := 1; i < 100; i++ {
 		chkListBox.Items().Add(fmt.Sprintf("第%d个项目", i))
 	}
-	button := vcl.NewButton(mainForm)
-	button.SetParent(mainForm)
+	button := vcl.NewButton(f)
+	button.SetParent(f)
 	button.SetAlign(types.AlBottom)
 	button.SetCaption("项目启用")
 	button.SetOnClick(func(sender vcl.IObject) {
@@ -46,21 +49,24 @@ func main() {
 	//chkListBox.Checked()
 	//chkListBox.SetChecked()
 
-	button = vcl.NewButton(mainForm)
-	button.SetParent(mainForm)
+	button = vcl.NewButton(f)
+	button.SetParent(f)
 	button.SetCaption("全选")
 	button.SetAlign(types.AlBottom)
 	button.SetOnClick(func(sender vcl.IObject) {
 		chkListBox.CheckAll(types.CbChecked, true, true)
 	})
 
-	button = vcl.NewButton(mainForm)
-	button.SetParent(mainForm)
+	button = vcl.NewButton(f)
+	button.SetParent(f)
 	button.SetCaption("取消全选")
 	button.SetAlign(types.AlBottom)
 	button.SetOnClick(func(sender vcl.IObject) {
 		chkListBox.CheckAll(types.CbUnchecked, true, true)
 	})
 
-	vcl.Application.Run()
+}
+
+func main() {
+	vcl.RunApp(&mainForm)
 }
