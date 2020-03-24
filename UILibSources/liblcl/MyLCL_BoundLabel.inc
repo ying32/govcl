@@ -548,6 +548,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function BoundLabel_GetMargins(AObj: TBoundLabel): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure BoundLabel_SetMargins(AObj: TBoundLabel; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function BoundLabel_GetComponentCount(AObj: TBoundLabel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -591,16 +601,6 @@ end;
 function BoundLabel_GetComponents(AObj: TBoundLabel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function BoundLabel_GetMargins(AObj: TBoundLabel): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure BoundLabel_SetMargins(AObj: TBoundLabel; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function BoundLabel_StaticClassType: TClass; extdecl;
@@ -714,6 +714,8 @@ exports
   BoundLabel_SetCursor,
   BoundLabel_GetHint,
   BoundLabel_SetHint,
+  BoundLabel_GetMargins,
+  BoundLabel_SetMargins,
   BoundLabel_GetComponentCount,
   BoundLabel_GetComponentIndex,
   BoundLabel_SetComponentIndex,
@@ -723,7 +725,5 @@ exports
   BoundLabel_GetTag,
   BoundLabel_SetTag,
   BoundLabel_GetComponents,
-  BoundLabel_StaticClassType,
-  BoundLabel_GetMargins,
-  BoundLabel_SetMargins;
+  BoundLabel_StaticClassType;
 

@@ -785,6 +785,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function GroupBox_GetMargins(AObj: TGroupBox): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure GroupBox_SetMargins(AObj: TGroupBox; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function GroupBox_GetComponentCount(AObj: TGroupBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -838,16 +848,6 @@ end;
 function GroupBox_GetComponents(AObj: TGroupBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function GroupBox_GetMargins(AObj: TGroupBox): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure GroupBox_SetMargins(AObj: TGroupBox; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function GroupBox_StaticClassType: TClass; extdecl;
@@ -1004,6 +1004,8 @@ exports
   GroupBox_SetCursor,
   GroupBox_GetHint,
   GroupBox_SetHint,
+  GroupBox_GetMargins,
+  GroupBox_SetMargins,
   GroupBox_GetComponentCount,
   GroupBox_GetComponentIndex,
   GroupBox_SetComponentIndex,
@@ -1015,7 +1017,5 @@ exports
   GroupBox_GetDockClients,
   GroupBox_GetControls,
   GroupBox_GetComponents,
-  GroupBox_StaticClassType,
-  GroupBox_GetMargins,
-  GroupBox_SetMargins;
+  GroupBox_StaticClassType;
 

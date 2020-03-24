@@ -882,6 +882,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function FlowPanel_GetMargins(AObj: TFlowPanel): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure FlowPanel_SetMargins(AObj: TFlowPanel; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function FlowPanel_GetComponentCount(AObj: TFlowPanel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -935,16 +945,6 @@ end;
 function FlowPanel_GetComponents(AObj: TFlowPanel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function FlowPanel_GetMargins(AObj: TFlowPanel): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure FlowPanel_SetMargins(AObj: TFlowPanel; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function FlowPanel_StaticClassType: TClass; extdecl;
@@ -1120,6 +1120,8 @@ exports
   FlowPanel_SetCursor,
   FlowPanel_GetHint,
   FlowPanel_SetHint,
+  FlowPanel_GetMargins,
+  FlowPanel_SetMargins,
   FlowPanel_GetComponentCount,
   FlowPanel_GetComponentIndex,
   FlowPanel_SetComponentIndex,
@@ -1131,7 +1133,5 @@ exports
   FlowPanel_GetDockClients,
   FlowPanel_GetControls,
   FlowPanel_GetComponents,
-  FlowPanel_StaticClassType,
-  FlowPanel_GetMargins,
-  FlowPanel_SetMargins;
+  FlowPanel_StaticClassType;
 

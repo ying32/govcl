@@ -767,6 +767,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function DateTimePicker_GetMargins(AObj: TDateTimePicker): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure DateTimePicker_SetMargins(AObj: TDateTimePicker; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function DateTimePicker_GetComponentCount(AObj: TDateTimePicker): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -820,16 +830,6 @@ end;
 function DateTimePicker_GetComponents(AObj: TDateTimePicker; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function DateTimePicker_GetMargins(AObj: TDateTimePicker): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure DateTimePicker_SetMargins(AObj: TDateTimePicker; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function DateTimePicker_StaticClassType: TClass; extdecl;
@@ -986,6 +986,8 @@ exports
   DateTimePicker_SetCursor,
   DateTimePicker_GetHint,
   DateTimePicker_SetHint,
+  DateTimePicker_GetMargins,
+  DateTimePicker_SetMargins,
   DateTimePicker_GetComponentCount,
   DateTimePicker_GetComponentIndex,
   DateTimePicker_SetComponentIndex,
@@ -997,7 +999,5 @@ exports
   DateTimePicker_GetDockClients,
   DateTimePicker_GetControls,
   DateTimePicker_GetComponents,
-  DateTimePicker_StaticClassType,
-  DateTimePicker_GetMargins,
-  DateTimePicker_SetMargins;
+  DateTimePicker_StaticClassType;
 

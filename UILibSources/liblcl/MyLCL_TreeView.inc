@@ -10,7 +10,6 @@
 function TreeView_Create(AOwner: TComponent): TTreeView; extdecl;
 begin
   Result :=  TTreeView.Create(AOwner);
-  Result.ScrollBars := ssAutoBoth;
 end;
 
 procedure TreeView_Free(AObj: TTreeView); extdecl;
@@ -1137,6 +1136,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function TreeView_GetMargins(AObj: TTreeView): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure TreeView_SetMargins(AObj: TTreeView; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TreeView_GetComponentCount(AObj: TTreeView): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1195,16 +1204,6 @@ end;
 function TreeView_GetComponents(AObj: TTreeView; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function TreeView_GetMargins(AObj: TTreeView): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure TreeView_SetMargins(AObj: TTreeView; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function TreeView_StaticClassType: TClass; extdecl;
@@ -1426,6 +1425,8 @@ exports
   TreeView_SetCursor,
   TreeView_GetHint,
   TreeView_SetHint,
+  TreeView_GetMargins,
+  TreeView_SetMargins,
   TreeView_GetComponentCount,
   TreeView_GetComponentIndex,
   TreeView_SetComponentIndex,
@@ -1438,7 +1439,5 @@ exports
   TreeView_GetDockClients,
   TreeView_GetControls,
   TreeView_GetComponents,
-  TreeView_StaticClassType,
-  TreeView_GetMargins,
-  TreeView_SetMargins;
+  TreeView_StaticClassType;
 

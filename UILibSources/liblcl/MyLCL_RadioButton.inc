@@ -777,6 +777,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function RadioButton_GetMargins(AObj: TRadioButton): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure RadioButton_SetMargins(AObj: TRadioButton; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function RadioButton_GetComponentCount(AObj: TRadioButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -830,16 +840,6 @@ end;
 function RadioButton_GetComponents(AObj: TRadioButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function RadioButton_GetMargins(AObj: TRadioButton): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure RadioButton_SetMargins(AObj: TRadioButton; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function RadioButton_StaticClassType: TClass; extdecl;
@@ -996,6 +996,8 @@ exports
   RadioButton_SetCursor,
   RadioButton_GetHint,
   RadioButton_SetHint,
+  RadioButton_GetMargins,
+  RadioButton_SetMargins,
   RadioButton_GetComponentCount,
   RadioButton_GetComponentIndex,
   RadioButton_SetComponentIndex,
@@ -1007,7 +1009,5 @@ exports
   RadioButton_GetDockClients,
   RadioButton_GetControls,
   RadioButton_GetComponents,
-  RadioButton_StaticClassType,
-  RadioButton_GetMargins,
-  RadioButton_SetMargins;
+  RadioButton_StaticClassType;
 

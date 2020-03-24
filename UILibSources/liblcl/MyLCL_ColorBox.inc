@@ -890,6 +890,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ColorBox_GetMargins(AObj: TColorBox): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ColorBox_SetMargins(AObj: TColorBox; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ColorBox_GetComponentCount(AObj: TColorBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -953,16 +963,6 @@ end;
 function ColorBox_GetComponents(AObj: TColorBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ColorBox_GetMargins(AObj: TColorBox): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ColorBox_SetMargins(AObj: TColorBox; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ColorBox_StaticClassType: TClass; extdecl;
@@ -1142,6 +1142,8 @@ exports
   ColorBox_SetCursor,
   ColorBox_GetHint,
   ColorBox_SetHint,
+  ColorBox_GetMargins,
+  ColorBox_SetMargins,
   ColorBox_GetComponentCount,
   ColorBox_GetComponentIndex,
   ColorBox_SetComponentIndex,
@@ -1155,7 +1157,5 @@ exports
   ColorBox_GetDockClients,
   ColorBox_GetControls,
   ColorBox_GetComponents,
-  ColorBox_StaticClassType,
-  ColorBox_GetMargins,
-  ColorBox_SetMargins;
+  ColorBox_StaticClassType;
 

@@ -797,6 +797,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function TrackBar_GetMargins(AObj: TTrackBar): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure TrackBar_SetMargins(AObj: TTrackBar; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TrackBar_GetComponentCount(AObj: TTrackBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -850,16 +860,6 @@ end;
 function TrackBar_GetComponents(AObj: TTrackBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function TrackBar_GetMargins(AObj: TTrackBar): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure TrackBar_SetMargins(AObj: TTrackBar; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function TrackBar_StaticClassType: TClass; extdecl;
@@ -1022,6 +1022,8 @@ exports
   TrackBar_SetCursor,
   TrackBar_GetHint,
   TrackBar_SetHint,
+  TrackBar_GetMargins,
+  TrackBar_SetMargins,
   TrackBar_GetComponentCount,
   TrackBar_GetComponentIndex,
   TrackBar_SetComponentIndex,
@@ -1033,7 +1035,5 @@ exports
   TrackBar_GetDockClients,
   TrackBar_GetControls,
   TrackBar_GetComponents,
-  TrackBar_StaticClassType,
-  TrackBar_GetMargins,
-  TrackBar_SetMargins;
+  TrackBar_StaticClassType;
 

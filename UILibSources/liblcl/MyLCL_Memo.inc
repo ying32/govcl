@@ -981,6 +981,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Memo_GetMargins(AObj: TMemo): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Memo_SetMargins(AObj: TMemo; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Memo_GetComponentCount(AObj: TMemo): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1034,16 +1044,6 @@ end;
 function Memo_GetComponents(AObj: TMemo; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Memo_GetMargins(AObj: TMemo): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Memo_SetMargins(AObj: TMemo; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Memo_StaticClassType: TClass; extdecl;
@@ -1240,6 +1240,8 @@ exports
   Memo_SetCursor,
   Memo_GetHint,
   Memo_SetHint,
+  Memo_GetMargins,
+  Memo_SetMargins,
   Memo_GetComponentCount,
   Memo_GetComponentIndex,
   Memo_SetComponentIndex,
@@ -1251,7 +1253,5 @@ exports
   Memo_GetDockClients,
   Memo_GetControls,
   Memo_GetComponents,
-  Memo_StaticClassType,
-  Memo_GetMargins,
-  Memo_SetMargins;
+  Memo_StaticClassType;
 

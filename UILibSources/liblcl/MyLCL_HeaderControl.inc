@@ -759,6 +759,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function HeaderControl_GetMargins(AObj: THeaderControl): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure HeaderControl_SetMargins(AObj: THeaderControl; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function HeaderControl_GetComponentCount(AObj: THeaderControl): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -812,16 +822,6 @@ end;
 function HeaderControl_GetComponents(AObj: THeaderControl; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function HeaderControl_GetMargins(AObj: THeaderControl): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure HeaderControl_SetMargins(AObj: THeaderControl; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function HeaderControl_StaticClassType: TClass; extdecl;
@@ -974,6 +974,8 @@ exports
   HeaderControl_SetCursor,
   HeaderControl_GetHint,
   HeaderControl_SetHint,
+  HeaderControl_GetMargins,
+  HeaderControl_SetMargins,
   HeaderControl_GetComponentCount,
   HeaderControl_GetComponentIndex,
   HeaderControl_SetComponentIndex,
@@ -985,7 +987,5 @@ exports
   HeaderControl_GetDockClients,
   HeaderControl_GetControls,
   HeaderControl_GetComponents,
-  HeaderControl_StaticClassType,
-  HeaderControl_GetMargins,
-  HeaderControl_SetMargins;
+  HeaderControl_StaticClassType;
 

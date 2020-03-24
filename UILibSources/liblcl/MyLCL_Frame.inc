@@ -848,6 +848,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Frame_GetMargins(AObj: TFrame): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Frame_SetMargins(AObj: TFrame; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Frame_GetComponentCount(AObj: TFrame): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -901,16 +911,6 @@ end;
 function Frame_GetComponents(AObj: TFrame; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Frame_GetMargins(AObj: TFrame): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Frame_SetMargins(AObj: TFrame; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Frame_StaticClassType: TClass; extdecl;
@@ -1078,6 +1078,8 @@ exports
   Frame_SetCursor,
   Frame_GetHint,
   Frame_SetHint,
+  Frame_GetMargins,
+  Frame_SetMargins,
   Frame_GetComponentCount,
   Frame_GetComponentIndex,
   Frame_SetComponentIndex,
@@ -1089,7 +1091,5 @@ exports
   Frame_GetDockClients,
   Frame_GetControls,
   Frame_GetComponents,
-  Frame_StaticClassType,
-  Frame_GetMargins,
-  Frame_SetMargins;
+  Frame_StaticClassType;
 

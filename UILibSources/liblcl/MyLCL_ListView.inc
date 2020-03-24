@@ -10,7 +10,6 @@
 function ListView_Create(AOwner: TComponent): TListView; extdecl;
 begin
   Result :=  TListView.Create(AOwner);
-  Result.ScrollBars := ssAutoBoth;
 end;
 
 procedure ListView_Free(AObj: TListView); extdecl;
@@ -1220,6 +1219,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ListView_GetMargins(AObj: TListView): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ListView_SetMargins(AObj: TListView; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ListView_GetComponentCount(AObj: TListView): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1278,16 +1287,6 @@ end;
 function ListView_GetComponents(AObj: TListView; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ListView_GetMargins(AObj: TListView): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ListView_SetMargins(AObj: TListView; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ListView_StaticClassType: TClass; extdecl;
@@ -1524,6 +1523,8 @@ exports
   ListView_SetCursor,
   ListView_GetHint,
   ListView_SetHint,
+  ListView_GetMargins,
+  ListView_SetMargins,
   ListView_GetComponentCount,
   ListView_GetComponentIndex,
   ListView_SetComponentIndex,
@@ -1536,7 +1537,5 @@ exports
   ListView_GetDockClients,
   ListView_GetControls,
   ListView_GetComponents,
-  ListView_StaticClassType,
-  ListView_GetMargins,
-  ListView_SetMargins;
+  ListView_StaticClassType;
 

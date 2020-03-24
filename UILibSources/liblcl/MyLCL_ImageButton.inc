@@ -596,6 +596,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ImageButton_GetMargins(AObj: TImageButton): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ImageButton_SetMargins(AObj: TImageButton; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ImageButton_GetComponentCount(AObj: TImageButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -639,16 +649,6 @@ end;
 function ImageButton_GetComponents(AObj: TImageButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ImageButton_GetMargins(AObj: TImageButton): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ImageButton_SetMargins(AObj: TImageButton; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ImageButton_StaticClassType: TClass; extdecl;
@@ -770,6 +770,8 @@ exports
   ImageButton_SetCursor,
   ImageButton_GetHint,
   ImageButton_SetHint,
+  ImageButton_GetMargins,
+  ImageButton_SetMargins,
   ImageButton_GetComponentCount,
   ImageButton_GetComponentIndex,
   ImageButton_SetComponentIndex,
@@ -779,7 +781,5 @@ exports
   ImageButton_GetTag,
   ImageButton_SetTag,
   ImageButton_GetComponents,
-  ImageButton_StaticClassType,
-  ImageButton_GetMargins,
-  ImageButton_SetMargins;
+  ImageButton_StaticClassType;
 

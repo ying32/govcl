@@ -714,6 +714,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function RadioGroup_GetMargins(AObj: TRadioGroup): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure RadioGroup_SetMargins(AObj: TRadioGroup; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function RadioGroup_GetComponentCount(AObj: TRadioGroup): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -767,16 +777,6 @@ end;
 function RadioGroup_GetComponents(AObj: TRadioGroup; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function RadioGroup_GetMargins(AObj: TRadioGroup): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure RadioGroup_SetMargins(AObj: TRadioGroup; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function RadioGroup_StaticClassType: TClass; extdecl;
@@ -924,6 +924,8 @@ exports
   RadioGroup_SetCursor,
   RadioGroup_GetHint,
   RadioGroup_SetHint,
+  RadioGroup_GetMargins,
+  RadioGroup_SetMargins,
   RadioGroup_GetComponentCount,
   RadioGroup_GetComponentIndex,
   RadioGroup_SetComponentIndex,
@@ -935,7 +937,5 @@ exports
   RadioGroup_GetDockClients,
   RadioGroup_GetControls,
   RadioGroup_GetComponents,
-  RadioGroup_StaticClassType,
-  RadioGroup_GetMargins,
-  RadioGroup_SetMargins;
+  RadioGroup_StaticClassType;
 

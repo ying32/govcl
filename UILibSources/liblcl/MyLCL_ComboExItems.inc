@@ -22,11 +22,6 @@ begin
   Result :=  AObj.Insert(Index);
 end;
 
-procedure ComboExItems_CustomSort(AObj: TComboExItems; Compare: TListItemsCompare); extdecl;
-begin
-  AObj.CustomSort(Compare);
-end;
-
 function ComboExItems_Owner(AObj: TComboExItems): TPersistent; extdecl;
 begin
   Result :=  AObj.Owner;
@@ -121,7 +116,6 @@ exports
   ComboExItems_Add,
   ComboExItems_AddItem,
   ComboExItems_Insert,
-  ComboExItems_CustomSort,
   ComboExItems_Owner,
   ComboExItems_Assign,
   ComboExItems_BeginUpdate,

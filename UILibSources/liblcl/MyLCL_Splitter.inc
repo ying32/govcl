@@ -409,6 +409,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Splitter_GetMargins(AObj: TSplitter): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Splitter_SetMargins(AObj: TSplitter; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Splitter_GetComponentCount(AObj: TSplitter): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -452,16 +462,6 @@ end;
 function Splitter_GetComponents(AObj: TSplitter; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Splitter_GetMargins(AObj: TSplitter): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Splitter_SetMargins(AObj: TSplitter; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Splitter_StaticClassType: TClass; extdecl;
@@ -550,6 +550,8 @@ exports
   Splitter_SetHeight,
   Splitter_GetHint,
   Splitter_SetHint,
+  Splitter_GetMargins,
+  Splitter_SetMargins,
   Splitter_GetComponentCount,
   Splitter_GetComponentIndex,
   Splitter_SetComponentIndex,
@@ -559,7 +561,5 @@ exports
   Splitter_GetTag,
   Splitter_SetTag,
   Splitter_GetComponents,
-  Splitter_StaticClassType,
-  Splitter_GetMargins,
-  Splitter_SetMargins;
+  Splitter_StaticClassType;
 

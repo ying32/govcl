@@ -822,6 +822,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function StatusBar_GetMargins(AObj: TStatusBar): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure StatusBar_SetMargins(AObj: TStatusBar; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function StatusBar_GetComponentCount(AObj: TStatusBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -875,16 +885,6 @@ end;
 function StatusBar_GetComponents(AObj: TStatusBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function StatusBar_GetMargins(AObj: TStatusBar): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure StatusBar_SetMargins(AObj: TStatusBar; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function StatusBar_StaticClassType: TClass; extdecl;
@@ -1050,6 +1050,8 @@ exports
   StatusBar_SetCursor,
   StatusBar_GetHint,
   StatusBar_SetHint,
+  StatusBar_GetMargins,
+  StatusBar_SetMargins,
   StatusBar_GetComponentCount,
   StatusBar_GetComponentIndex,
   StatusBar_SetComponentIndex,
@@ -1061,7 +1063,5 @@ exports
   StatusBar_GetDockClients,
   StatusBar_GetControls,
   StatusBar_GetComponents,
-  StatusBar_StaticClassType,
-  StatusBar_GetMargins,
-  StatusBar_SetMargins;
+  StatusBar_StaticClassType;
 

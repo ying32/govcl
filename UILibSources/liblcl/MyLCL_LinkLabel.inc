@@ -576,6 +576,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function LinkLabel_GetMargins(AObj: TLinkLabel): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure LinkLabel_SetMargins(AObj: TLinkLabel; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function LinkLabel_GetComponentCount(AObj: TLinkLabel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -619,16 +629,6 @@ end;
 function LinkLabel_GetComponents(AObj: TLinkLabel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function LinkLabel_GetMargins(AObj: TLinkLabel): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure LinkLabel_SetMargins(AObj: TLinkLabel; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function LinkLabel_StaticClassType: TClass; extdecl;
@@ -746,6 +746,8 @@ exports
   LinkLabel_SetHeight,
   LinkLabel_GetHint,
   LinkLabel_SetHint,
+  LinkLabel_GetMargins,
+  LinkLabel_SetMargins,
   LinkLabel_GetComponentCount,
   LinkLabel_GetComponentIndex,
   LinkLabel_SetComponentIndex,
@@ -755,7 +757,5 @@ exports
   LinkLabel_GetTag,
   LinkLabel_SetTag,
   LinkLabel_GetComponents,
-  LinkLabel_StaticClassType,
-  LinkLabel_GetMargins,
-  LinkLabel_SetMargins;
+  LinkLabel_StaticClassType;
 

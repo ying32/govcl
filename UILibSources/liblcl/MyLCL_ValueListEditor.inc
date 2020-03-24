@@ -1046,6 +1046,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ValueListEditor_GetMargins(AObj: TValueListEditor): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ValueListEditor_SetMargins(AObj: TValueListEditor; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ValueListEditor_GetComponentCount(AObj: TValueListEditor): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1139,16 +1149,6 @@ end;
 function ValueListEditor_GetComponents(AObj: TValueListEditor; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ValueListEditor_GetMargins(AObj: TValueListEditor): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ValueListEditor_SetMargins(AObj: TValueListEditor; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ValueListEditor_StaticClassType: TClass; extdecl;
@@ -1354,6 +1354,8 @@ exports
   ValueListEditor_SetCursor,
   ValueListEditor_GetHint,
   ValueListEditor_SetHint,
+  ValueListEditor_GetMargins,
+  ValueListEditor_SetMargins,
   ValueListEditor_GetComponentCount,
   ValueListEditor_GetComponentIndex,
   ValueListEditor_SetComponentIndex,
@@ -1373,7 +1375,5 @@ exports
   ValueListEditor_GetDockClients,
   ValueListEditor_GetControls,
   ValueListEditor_GetComponents,
-  ValueListEditor_StaticClassType,
-  ValueListEditor_GetMargins,
-  ValueListEditor_SetMargins;
+  ValueListEditor_StaticClassType;
 

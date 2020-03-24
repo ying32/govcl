@@ -619,6 +619,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Label_GetMargins(AObj: TLabel): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Label_SetMargins(AObj: TLabel; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Label_GetComponentCount(AObj: TLabel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -662,16 +672,6 @@ end;
 function Label_GetComponents(AObj: TLabel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Label_GetMargins(AObj: TLabel): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Label_SetMargins(AObj: TLabel; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Label_StaticClassType: TClass; extdecl;
@@ -798,6 +798,8 @@ exports
   Label_SetCursor,
   Label_GetHint,
   Label_SetHint,
+  Label_GetMargins,
+  Label_SetMargins,
   Label_GetComponentCount,
   Label_GetComponentIndex,
   Label_SetComponentIndex,
@@ -807,7 +809,5 @@ exports
   Label_GetTag,
   Label_SetTag,
   Label_GetComponents,
-  Label_StaticClassType,
-  Label_GetMargins,
-  Label_SetMargins;
+  Label_StaticClassType;
 

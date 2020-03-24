@@ -702,6 +702,16 @@ begin
   AObj.Cursor := AValue;
 end;
 
+function UpDown_GetMargins(AObj: TUpDown): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure UpDown_SetMargins(AObj: TUpDown; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function UpDown_GetComponentCount(AObj: TUpDown): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -755,16 +765,6 @@ end;
 function UpDown_GetComponents(AObj: TUpDown; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function UpDown_GetMargins(AObj: TUpDown): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure UpDown_SetMargins(AObj: TUpDown; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function UpDown_StaticClassType: TClass; extdecl;
@@ -908,6 +908,8 @@ exports
   UpDown_SetHeight,
   UpDown_GetCursor,
   UpDown_SetCursor,
+  UpDown_GetMargins,
+  UpDown_SetMargins,
   UpDown_GetComponentCount,
   UpDown_GetComponentIndex,
   UpDown_SetComponentIndex,
@@ -919,7 +921,5 @@ exports
   UpDown_GetDockClients,
   UpDown_GetControls,
   UpDown_GetComponents,
-  UpDown_StaticClassType,
-  UpDown_GetMargins,
-  UpDown_SetMargins;
+  UpDown_StaticClassType;
 

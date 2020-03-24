@@ -503,6 +503,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Shape_GetMargins(AObj: TShape): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Shape_SetMargins(AObj: TShape; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Shape_GetComponentCount(AObj: TShape): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -546,16 +556,6 @@ end;
 function Shape_GetComponents(AObj: TShape; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Shape_GetMargins(AObj: TShape): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Shape_SetMargins(AObj: TShape; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Shape_StaticClassType: TClass; extdecl;
@@ -660,6 +660,8 @@ exports
   Shape_SetCursor,
   Shape_GetHint,
   Shape_SetHint,
+  Shape_GetMargins,
+  Shape_SetMargins,
   Shape_GetComponentCount,
   Shape_GetComponentIndex,
   Shape_SetComponentIndex,
@@ -669,7 +671,5 @@ exports
   Shape_GetTag,
   Shape_SetTag,
   Shape_GetComponents,
-  Shape_StaticClassType,
-  Shape_GetMargins,
-  Shape_SetMargins;
+  Shape_StaticClassType;
 

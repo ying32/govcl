@@ -51,14 +51,6 @@ func Application_ModalFinished(obj uintptr)  {
     application_ModalFinished.Call(obj)
 }
 
-func Application_NormalizeAllTopMosts(obj uintptr)  {
-    application_NormalizeAllTopMosts.Call(obj)
-}
-
-func Application_NormalizeTopMosts(obj uintptr)  {
-    application_NormalizeTopMosts.Call(obj)
-}
-
 func Application_ProcessMessages(obj uintptr)  {
     application_ProcessMessages.Call(obj)
 }
@@ -99,10 +91,6 @@ func Application_Assign(obj uintptr, Source uintptr)  {
     application_Assign.Call(obj, Source )
 }
 
-func Application_DisposeOf(obj uintptr)  {
-    application_DisposeOf.Call(obj)
-}
-
 func Application_ClassType(obj uintptr) TClass {
     ret, _, _ := application_ClassType.Call(obj)
     return TClass(ret)
@@ -136,15 +124,6 @@ func Application_GetHashCode(obj uintptr) int32 {
 func Application_ToString(obj uintptr) string {
     ret, _, _ := application_ToString.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Application_GetDialogHandle(obj uintptr) HWND {
-    ret, _, _ := application_GetDialogHandle.Call(obj)
-    return HWND(ret)
-}
-
-func Application_SetDialogHandle(obj uintptr, value HWND) {
-   application_SetDialogHandle.Call(obj, uintptr(value))
 }
 
 func Application_GetExeName(obj uintptr) string {
@@ -215,11 +194,6 @@ func Application_SetIcon(obj uintptr, value uintptr) {
    application_SetIcon.Call(obj, value)
 }
 
-func Application_GetIsMetropolisUI(obj uintptr) bool {
-    ret, _, _ := application_GetIsMetropolisUI.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func Application_GetMainForm(obj uintptr) uintptr {
     ret, _, _ := application_GetMainForm.Call(obj)
     return ret
@@ -287,10 +261,6 @@ func Application_SetOnHint(obj uintptr, fn interface{}) {
     application_SetOnHint.Call(obj, addEventToMap(fn))
 }
 
-func Application_SetOnMessage(obj uintptr, fn interface{}) {
-    application_SetOnMessage.Call(obj, addEventToMap(fn))
-}
-
 func Application_SetOnMinimize(obj uintptr, fn interface{}) {
     application_SetOnMinimize.Call(obj, addEventToMap(fn))
 }
@@ -301,15 +271,6 @@ func Application_SetOnRestore(obj uintptr, fn interface{}) {
 
 func Application_SetOnShortCut(obj uintptr, fn interface{}) {
     application_SetOnShortCut.Call(obj, addEventToMap(fn))
-}
-
-func Application_GetHandle(obj uintptr) HWND {
-    ret, _, _ := application_GetHandle.Call(obj)
-    return HWND(ret)
-}
-
-func Application_SetHandle(obj uintptr, value HWND) {
-   application_SetHandle.Call(obj, uintptr(value))
 }
 
 func Application_GetComponentCount(obj uintptr) int32 {
@@ -378,10 +339,6 @@ func Form_Hide(obj uintptr)  {
     form_Hide.Call(obj)
 }
 
-func Form_Print(obj uintptr)  {
-    form_Print.Call(obj)
-}
-
 func Form_SetFocus(obj uintptr)  {
     form_SetFocus.Call(obj)
 }
@@ -393,14 +350,6 @@ func Form_Show(obj uintptr)  {
 func Form_ShowModal(obj uintptr) int32 {
     ret, _, _ := form_ShowModal.Call(obj)
     return int32(ret)
-}
-
-func Form_DisableAutoRange(obj uintptr)  {
-    form_DisableAutoRange.Call(obj)
-}
-
-func Form_EnableAutoRange(obj uintptr)  {
-    form_EnableAutoRange.Call(obj)
 }
 
 func Form_ScrollInView(obj uintptr, AControl uintptr)  {
@@ -457,10 +406,6 @@ func Form_Invalidate(obj uintptr)  {
     form_Invalidate.Call(obj)
 }
 
-func Form_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    form_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func Form_RemoveControl(obj uintptr, AControl uintptr)  {
     form_RemoveControl.Call(obj, AControl )
 }
@@ -487,10 +432,6 @@ func Form_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight 
 
 func Form_Update(obj uintptr)  {
     form_Update.Call(obj)
-}
-
-func Form_UpdateControlState(obj uintptr)  {
-    form_UpdateControlState.Call(obj)
 }
 
 func Form_BringToFront(obj uintptr)  {
@@ -575,10 +516,6 @@ func Form_GetNamePath(obj uintptr) string {
 
 func Form_Assign(obj uintptr, Source uintptr)  {
     form_Assign.Call(obj, Source )
-}
-
-func Form_DisposeOf(obj uintptr)  {
-    form_DisposeOf.Call(obj)
 }
 
 func Form_ClassType(obj uintptr) TClass {
@@ -751,24 +688,6 @@ func Form_SetColor(obj uintptr, value TColor) {
    form_SetColor.Call(obj, uintptr(value))
 }
 
-func Form_GetTransparentColor(obj uintptr) bool {
-    ret, _, _ := form_GetTransparentColor.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Form_SetTransparentColor(obj uintptr, value bool) {
-   form_SetTransparentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func Form_GetTransparentColorValue(obj uintptr) TColor {
-    ret, _, _ := form_GetTransparentColorValue.Call(obj)
-    return TColor(ret)
-}
-
-func Form_SetTransparentColorValue(obj uintptr, value TColor) {
-   form_SetTransparentColorValue.Call(obj, uintptr(value))
-}
-
 func Form_GetConstraints(obj uintptr) uintptr {
     ret, _, _ := form_GetConstraints.Call(obj)
     return ret
@@ -776,15 +695,6 @@ func Form_GetConstraints(obj uintptr) uintptr {
 
 func Form_SetConstraints(obj uintptr, value uintptr) {
    form_SetConstraints.Call(obj, value)
-}
-
-func Form_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := form_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Form_SetCtl3D(obj uintptr, value bool) {
-   form_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Form_GetUseDockManager(obj uintptr) bool {
@@ -1003,15 +913,6 @@ func Form_SetWindowState(obj uintptr, value TWindowState) {
    form_SetWindowState.Call(obj, uintptr(value))
 }
 
-func Form_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := form_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Form_SetStyleElements(obj uintptr, value TStyleElements) {
-   form_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func Form_SetOnAlignPosition(obj uintptr, fn interface{}) {
     form_SetOnAlignPosition.Call(obj, addEventToMap(fn))
 }
@@ -1052,10 +953,6 @@ func Form_SetOnEndDock(obj uintptr, fn interface{}) {
     form_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
-func Form_SetOnGesture(obj uintptr, fn interface{}) {
-    form_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func Form_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     form_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
 }
@@ -1078,10 +975,6 @@ func Form_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Form_SetOnKeyUp(obj uintptr, fn interface{}) {
     form_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func Form_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    form_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Form_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -1145,15 +1038,6 @@ func Form_GetCanvas(obj uintptr) uintptr {
     return ret
 }
 
-func Form_GetDropTarget(obj uintptr) bool {
-    ret, _, _ := form_GetDropTarget.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Form_SetDropTarget(obj uintptr, value bool) {
-   form_SetDropTarget.Call(obj, GoBoolToDBool(value))
-}
-
 func Form_GetModalResult(obj uintptr) TModalResult {
     ret, _, _ := form_GetModalResult.Call(obj)
     return TModalResult(ret)
@@ -1189,11 +1073,6 @@ func Form_SetTop(obj uintptr, value int32) {
 func Form_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := form_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func Form_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := form_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func Form_GetMouseInClient(obj uintptr) bool {
@@ -1297,26 +1176,6 @@ func Form_SetControlStyle(obj uintptr, value TControlStyle) {
    form_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Form_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := form_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Form_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := form_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Form_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := form_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Form_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := form_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Form_GetFloating(obj uintptr) bool {
     ret, _, _ := form_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -1329,15 +1188,6 @@ func Form_GetParent(obj uintptr) uintptr {
 
 func Form_SetParent(obj uintptr, value uintptr) {
    form_SetParent.Call(obj, value)
-}
-
-func Form_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := form_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Form_SetAlignWithMargins(obj uintptr, value bool) {
-   form_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Form_GetCursor(obj uintptr) TCursor {
@@ -1489,10 +1339,6 @@ func Button_Invalidate(obj uintptr)  {
     button_Invalidate.Call(obj)
 }
 
-func Button_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    button_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func Button_RemoveControl(obj uintptr, AControl uintptr)  {
     button_RemoveControl.Call(obj, AControl )
 }
@@ -1523,10 +1369,6 @@ func Button_SetFocus(obj uintptr)  {
 
 func Button_Update(obj uintptr)  {
     button_Update.Call(obj)
-}
-
-func Button_UpdateControlState(obj uintptr)  {
-    button_UpdateControlState.Call(obj)
 }
 
 func Button_BringToFront(obj uintptr)  {
@@ -1621,10 +1463,6 @@ func Button_Assign(obj uintptr, Source uintptr)  {
     button_Assign.Call(obj, Source )
 }
 
-func Button_DisposeOf(obj uintptr)  {
-    button_DisposeOf.Call(obj)
-}
-
 func Button_ClassType(obj uintptr) TClass {
     ret, _, _ := button_ClassType.Call(obj)
     return TClass(ret)
@@ -1714,15 +1552,6 @@ func Button_SetCaption(obj uintptr, value string) {
    button_SetCaption.Call(obj, GoStrToDStr(value))
 }
 
-func Button_GetCommandLinkHint(obj uintptr) string {
-    ret, _, _ := button_GetCommandLinkHint.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Button_SetCommandLinkHint(obj uintptr, value string) {
-   button_SetCommandLinkHint.Call(obj, GoStrToDStr(value))
-}
-
 func Button_GetConstraints(obj uintptr) uintptr {
     ret, _, _ := button_GetConstraints.Call(obj)
     return ret
@@ -1739,15 +1568,6 @@ func Button_GetDefault(obj uintptr) bool {
 
 func Button_SetDefault(obj uintptr, value bool) {
    button_SetDefault.Call(obj, GoBoolToDBool(value))
-}
-
-func Button_GetDisabledImageIndex(obj uintptr) int32 {
-    ret, _, _ := button_GetDisabledImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func Button_SetDisabledImageIndex(obj uintptr, value int32) {
-   button_SetDisabledImageIndex.Call(obj, uintptr(value))
 }
 
 func Button_GetDoubleBuffered(obj uintptr) bool {
@@ -1786,15 +1606,6 @@ func Button_SetDragMode(obj uintptr, value TDragMode) {
    button_SetDragMode.Call(obj, uintptr(value))
 }
 
-func Button_GetElevationRequired(obj uintptr) bool {
-    ret, _, _ := button_GetElevationRequired.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Button_SetElevationRequired(obj uintptr, value bool) {
-   button_SetElevationRequired.Call(obj, GoBoolToDBool(value))
-}
-
 func Button_GetEnabled(obj uintptr) bool {
     ret, _, _ := button_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -1811,42 +1622,6 @@ func Button_GetFont(obj uintptr) uintptr {
 
 func Button_SetFont(obj uintptr, value uintptr) {
    button_SetFont.Call(obj, value)
-}
-
-func Button_GetHotImageIndex(obj uintptr) int32 {
-    ret, _, _ := button_GetHotImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func Button_SetHotImageIndex(obj uintptr, value int32) {
-   button_SetHotImageIndex.Call(obj, uintptr(value))
-}
-
-func Button_GetImageAlignment(obj uintptr) TImageAlignment {
-    ret, _, _ := button_GetImageAlignment.Call(obj)
-    return TImageAlignment(ret)
-}
-
-func Button_SetImageAlignment(obj uintptr, value TImageAlignment) {
-   button_SetImageAlignment.Call(obj, uintptr(value))
-}
-
-func Button_GetImageIndex(obj uintptr) int32 {
-    ret, _, _ := button_GetImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func Button_SetImageIndex(obj uintptr, value int32) {
-   button_SetImageIndex.Call(obj, uintptr(value))
-}
-
-func Button_GetImages(obj uintptr) uintptr {
-    ret, _, _ := button_GetImages.Call(obj)
-    return ret
-}
-
-func Button_SetImages(obj uintptr, value uintptr) {
-   button_SetImages.Call(obj, value)
 }
 
 func Button_GetModalResult(obj uintptr) TModalResult {
@@ -1894,24 +1669,6 @@ func Button_SetPopupMenu(obj uintptr, value uintptr) {
    button_SetPopupMenu.Call(obj, value)
 }
 
-func Button_GetPressedImageIndex(obj uintptr) int32 {
-    ret, _, _ := button_GetPressedImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func Button_SetPressedImageIndex(obj uintptr, value int32) {
-   button_SetPressedImageIndex.Call(obj, uintptr(value))
-}
-
-func Button_GetSelectedImageIndex(obj uintptr) int32 {
-    ret, _, _ := button_GetSelectedImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func Button_SetSelectedImageIndex(obj uintptr, value int32) {
-   button_SetSelectedImageIndex.Call(obj, uintptr(value))
-}
-
 func Button_GetShowHint(obj uintptr) bool {
     ret, _, _ := button_GetShowHint.Call(obj)
     return DBoolToGoBool(ret)
@@ -1919,24 +1676,6 @@ func Button_GetShowHint(obj uintptr) bool {
 
 func Button_SetShowHint(obj uintptr, value bool) {
    button_SetShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func Button_GetStyle(obj uintptr) TButtonStyle {
-    ret, _, _ := button_GetStyle.Call(obj)
-    return TButtonStyle(ret)
-}
-
-func Button_SetStyle(obj uintptr, value TButtonStyle) {
-   button_SetStyle.Call(obj, uintptr(value))
-}
-
-func Button_GetStylusHotImageIndex(obj uintptr) int32 {
-    ret, _, _ := button_GetStylusHotImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func Button_SetStylusHotImageIndex(obj uintptr, value int32) {
-   button_SetStylusHotImageIndex.Call(obj, uintptr(value))
 }
 
 func Button_GetTabOrder(obj uintptr) TTabOrder {
@@ -1966,24 +1705,6 @@ func Button_SetVisible(obj uintptr, value bool) {
    button_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func Button_GetWordWrap(obj uintptr) bool {
-    ret, _, _ := button_GetWordWrap.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Button_SetWordWrap(obj uintptr, value bool) {
-   button_SetWordWrap.Call(obj, GoBoolToDBool(value))
-}
-
-func Button_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := button_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Button_SetStyleElements(obj uintptr, value TStyleElements) {
-   button_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func Button_SetOnClick(obj uintptr, fn interface{}) {
     button_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -1998,10 +1719,6 @@ func Button_SetOnDragDrop(obj uintptr, fn interface{}) {
 
 func Button_SetOnDragOver(obj uintptr, fn interface{}) {
     button_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func Button_SetOnEndDock(obj uintptr, fn interface{}) {
-    button_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
 func Button_SetOnEndDrag(obj uintptr, fn interface{}) {
@@ -2028,10 +1745,6 @@ func Button_SetOnKeyUp(obj uintptr, fn interface{}) {
     button_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
-func Button_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    button_SetOnMouseActivate.Call(obj, addEventToMap(fn))
-}
-
 func Button_SetOnMouseDown(obj uintptr, fn interface{}) {
     button_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -2052,10 +1765,6 @@ func Button_SetOnMouseUp(obj uintptr, fn interface{}) {
     button_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func Button_SetOnStartDock(obj uintptr, fn interface{}) {
-    button_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func Button_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := button_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -2068,11 +1777,6 @@ func Button_GetDockSite(obj uintptr) bool {
 
 func Button_SetDockSite(obj uintptr, value bool) {
    button_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func Button_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := button_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func Button_GetMouseInClient(obj uintptr) bool {
@@ -2176,26 +1880,6 @@ func Button_SetControlStyle(obj uintptr, value TControlStyle) {
    button_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Button_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := button_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Button_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := button_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Button_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := button_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Button_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := button_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Button_GetFloating(obj uintptr) bool {
     ret, _, _ := button_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -2208,19 +1892,6 @@ func Button_GetParent(obj uintptr) uintptr {
 
 func Button_SetParent(obj uintptr, value uintptr) {
    button_SetParent.Call(obj, value)
-}
-
-func Button_SetOnGesture(obj uintptr, fn interface{}) {
-    button_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func Button_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := button_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Button_SetAlignWithMargins(obj uintptr, value bool) {
-   button_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Button_GetLeft(obj uintptr) int32 {
@@ -2378,22 +2049,8 @@ func Edit_Undo(obj uintptr)  {
     edit_Undo.Call(obj)
 }
 
-func Edit_ClearUndo(obj uintptr)  {
-    edit_ClearUndo.Call(obj)
-}
-
 func Edit_SelectAll(obj uintptr)  {
     edit_SelectAll.Call(obj)
-}
-
-func Edit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    if Buffer == nil || BufSize == 0 {
-        return 0
-    }
-    strPtr := getBuff(BufSize)
-    ret, _, _ := edit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
-    getTextBuf(strPtr, Buffer, int(ret))
-    return int32(ret)
 }
 
 func Edit_CanFocus(obj uintptr) bool {
@@ -2446,10 +2103,6 @@ func Edit_Invalidate(obj uintptr)  {
     edit_Invalidate.Call(obj)
 }
 
-func Edit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    edit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func Edit_RemoveControl(obj uintptr, AControl uintptr)  {
     edit_RemoveControl.Call(obj, AControl )
 }
@@ -2480,10 +2133,6 @@ func Edit_SetFocus(obj uintptr)  {
 
 func Edit_Update(obj uintptr)  {
     edit_Update.Call(obj)
-}
-
-func Edit_UpdateControlState(obj uintptr)  {
-    edit_UpdateControlState.Call(obj)
 }
 
 func Edit_BringToFront(obj uintptr)  {
@@ -2578,10 +2227,6 @@ func Edit_Assign(obj uintptr, Source uintptr)  {
     edit_Assign.Call(obj, Source )
 }
 
-func Edit_DisposeOf(obj uintptr)  {
-    edit_DisposeOf.Call(obj)
-}
-
 func Edit_ClassType(obj uintptr) TClass {
     ret, _, _ := edit_ClassType.Call(obj)
     return TClass(ret)
@@ -2662,42 +2307,6 @@ func Edit_SetAutoSize(obj uintptr, value bool) {
    edit_SetAutoSize.Call(obj, GoBoolToDBool(value))
 }
 
-func Edit_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := edit_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func Edit_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   edit_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func Edit_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := edit_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func Edit_SetBevelInner(obj uintptr, value TBevelCut) {
-   edit_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func Edit_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := edit_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func Edit_SetBevelKind(obj uintptr, value TBevelKind) {
-   edit_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func Edit_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := edit_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func Edit_SetBevelOuter(obj uintptr, value TBevelCut) {
-   edit_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func Edit_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := edit_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -2741,15 +2350,6 @@ func Edit_GetConstraints(obj uintptr) uintptr {
 
 func Edit_SetConstraints(obj uintptr, value uintptr) {
    edit_SetConstraints.Call(obj, value)
-}
-
-func Edit_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := edit_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Edit_SetCtl3D(obj uintptr, value bool) {
-   edit_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Edit_GetDoubleBuffered(obj uintptr) bool {
@@ -2840,15 +2440,6 @@ func Edit_GetParentColor(obj uintptr) bool {
 
 func Edit_SetParentColor(obj uintptr, value bool) {
    edit_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func Edit_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := edit_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Edit_SetParentCtl3D(obj uintptr, value bool) {
-   edit_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Edit_GetParentDoubleBuffered(obj uintptr) bool {
@@ -2959,15 +2550,6 @@ func Edit_SetVisible(obj uintptr, value bool) {
    edit_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func Edit_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := edit_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Edit_SetStyleElements(obj uintptr, value TStyleElements) {
-   edit_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func Edit_SetOnChange(obj uintptr, fn interface{}) {
     edit_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -2992,10 +2574,6 @@ func Edit_SetOnDragOver(obj uintptr, fn interface{}) {
     edit_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func Edit_SetOnEndDock(obj uintptr, fn interface{}) {
-    edit_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func Edit_SetOnEndDrag(obj uintptr, fn interface{}) {
     edit_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -3008,10 +2586,6 @@ func Edit_SetOnExit(obj uintptr, fn interface{}) {
     edit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func Edit_SetOnGesture(obj uintptr, fn interface{}) {
-    edit_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func Edit_SetOnKeyDown(obj uintptr, fn interface{}) {
     edit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -3022,10 +2596,6 @@ func Edit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Edit_SetOnKeyUp(obj uintptr, fn interface{}) {
     edit_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func Edit_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    edit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Edit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -3046,10 +2616,6 @@ func Edit_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Edit_SetOnMouseUp(obj uintptr, fn interface{}) {
     edit_SetOnMouseUp.Call(obj, addEventToMap(fn))
-}
-
-func Edit_SetOnStartDock(obj uintptr, fn interface{}) {
-    edit_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Edit_GetCanUndo(obj uintptr) bool {
@@ -3105,11 +2671,6 @@ func Edit_GetDockSite(obj uintptr) bool {
 
 func Edit_SetDockSite(obj uintptr, value bool) {
    edit_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func Edit_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := edit_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func Edit_GetMouseInClient(obj uintptr) bool {
@@ -3222,26 +2783,6 @@ func Edit_SetControlStyle(obj uintptr, value TControlStyle) {
    edit_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Edit_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := edit_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Edit_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := edit_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Edit_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := edit_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Edit_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := edit_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Edit_GetFloating(obj uintptr) bool {
     ret, _, _ := edit_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -3254,15 +2795,6 @@ func Edit_GetParent(obj uintptr) uintptr {
 
 func Edit_SetParent(obj uintptr, value uintptr) {
    edit_SetParent.Call(obj, value)
-}
-
-func Edit_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := edit_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Edit_SetAlignWithMargins(obj uintptr, value bool) {
-   edit_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Edit_GetLeft(obj uintptr) int32 {
@@ -3415,10 +2947,6 @@ func MainMenu_Assign(obj uintptr, Source uintptr)  {
     mainMenu_Assign.Call(obj, Source )
 }
 
-func MainMenu_DisposeOf(obj uintptr)  {
-    mainMenu_DisposeOf.Call(obj)
-}
-
 func MainMenu_ClassType(obj uintptr) TClass {
     ret, _, _ := mainMenu_ClassType.Call(obj)
     return TClass(ret)
@@ -3452,15 +2980,6 @@ func MainMenu_GetHashCode(obj uintptr) int32 {
 func MainMenu_ToString(obj uintptr) string {
     ret, _, _ := mainMenu_ToString.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func MainMenu_GetAutoHotkeys(obj uintptr) TMenuAutoFlag {
-    ret, _, _ := mainMenu_GetAutoHotkeys.Call(obj)
-    return TMenuAutoFlag(ret)
-}
-
-func MainMenu_SetAutoHotkeys(obj uintptr, value TMenuAutoFlag) {
-   mainMenu_SetAutoHotkeys.Call(obj, uintptr(value))
 }
 
 func MainMenu_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -3497,15 +3016,6 @@ func MainMenu_SetOnChange(obj uintptr, fn interface{}) {
 func MainMenu_GetHandle(obj uintptr) HMENU {
     ret, _, _ := mainMenu_GetHandle.Call(obj)
     return HMENU(ret)
-}
-
-func MainMenu_GetWindowHandle(obj uintptr) HWND {
-    ret, _, _ := mainMenu_GetWindowHandle.Call(obj)
-    return HWND(ret)
-}
-
-func MainMenu_SetWindowHandle(obj uintptr, value HWND) {
-   mainMenu_SetWindowHandle.Call(obj, uintptr(value))
 }
 
 func MainMenu_GetItems(obj uintptr) uintptr {
@@ -3598,10 +3108,6 @@ func PopupMenu_Assign(obj uintptr, Source uintptr)  {
     popupMenu_Assign.Call(obj, Source )
 }
 
-func PopupMenu_DisposeOf(obj uintptr)  {
-    popupMenu_DisposeOf.Call(obj)
-}
-
 func PopupMenu_ClassType(obj uintptr) TClass {
     ret, _, _ := popupMenu_ClassType.Call(obj)
     return TClass(ret)
@@ -3661,15 +3167,6 @@ func PopupMenu_SetAlignment(obj uintptr, value TPopupAlignment) {
    popupMenu_SetAlignment.Call(obj, uintptr(value))
 }
 
-func PopupMenu_GetAutoHotkeys(obj uintptr) TMenuAutoFlag {
-    ret, _, _ := popupMenu_GetAutoHotkeys.Call(obj)
-    return TMenuAutoFlag(ret)
-}
-
-func PopupMenu_SetAutoHotkeys(obj uintptr, value TMenuAutoFlag) {
-   popupMenu_SetAutoHotkeys.Call(obj, uintptr(value))
-}
-
 func PopupMenu_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := popupMenu_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -3697,10 +3194,6 @@ func PopupMenu_SetOwnerDraw(obj uintptr, value bool) {
    popupMenu_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
 }
 
-func PopupMenu_SetOnChange(obj uintptr, fn interface{}) {
-    popupMenu_SetOnChange.Call(obj, addEventToMap(fn))
-}
-
 func PopupMenu_SetOnPopup(obj uintptr, fn interface{}) {
     popupMenu_SetOnPopup.Call(obj, addEventToMap(fn))
 }
@@ -3708,15 +3201,6 @@ func PopupMenu_SetOnPopup(obj uintptr, fn interface{}) {
 func PopupMenu_GetHandle(obj uintptr) HMENU {
     ret, _, _ := popupMenu_GetHandle.Call(obj)
     return HMENU(ret)
-}
-
-func PopupMenu_GetWindowHandle(obj uintptr) HWND {
-    ret, _, _ := popupMenu_GetWindowHandle.Call(obj)
-    return HWND(ret)
-}
-
-func PopupMenu_SetWindowHandle(obj uintptr, value HWND) {
-   popupMenu_SetWindowHandle.Call(obj, uintptr(value))
 }
 
 func PopupMenu_GetItems(obj uintptr) uintptr {
@@ -3806,22 +3290,8 @@ func Memo_Undo(obj uintptr)  {
     memo_Undo.Call(obj)
 }
 
-func Memo_ClearUndo(obj uintptr)  {
-    memo_ClearUndo.Call(obj)
-}
-
 func Memo_SelectAll(obj uintptr)  {
     memo_SelectAll.Call(obj)
-}
-
-func Memo_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    if Buffer == nil || BufSize == 0 {
-        return 0
-    }
-    strPtr := getBuff(BufSize)
-    ret, _, _ := memo_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
-    getTextBuf(strPtr, Buffer, int(ret))
-    return int32(ret)
 }
 
 func Memo_CanFocus(obj uintptr) bool {
@@ -3874,10 +3344,6 @@ func Memo_Invalidate(obj uintptr)  {
     memo_Invalidate.Call(obj)
 }
 
-func Memo_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    memo_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func Memo_RemoveControl(obj uintptr, AControl uintptr)  {
     memo_RemoveControl.Call(obj, AControl )
 }
@@ -3908,10 +3374,6 @@ func Memo_SetFocus(obj uintptr)  {
 
 func Memo_Update(obj uintptr)  {
     memo_Update.Call(obj)
-}
-
-func Memo_UpdateControlState(obj uintptr)  {
-    memo_UpdateControlState.Call(obj)
 }
 
 func Memo_BringToFront(obj uintptr)  {
@@ -4006,10 +3468,6 @@ func Memo_Assign(obj uintptr, Source uintptr)  {
     memo_Assign.Call(obj, Source )
 }
 
-func Memo_DisposeOf(obj uintptr)  {
-    memo_DisposeOf.Call(obj)
-}
-
 func Memo_ClassType(obj uintptr) TClass {
     ret, _, _ := memo_ClassType.Call(obj)
     return TClass(ret)
@@ -4072,42 +3530,6 @@ func Memo_SetAnchors(obj uintptr, value TAnchors) {
    memo_SetAnchors.Call(obj, uintptr(value))
 }
 
-func Memo_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := memo_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func Memo_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   memo_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func Memo_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := memo_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func Memo_SetBevelInner(obj uintptr, value TBevelCut) {
-   memo_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func Memo_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := memo_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func Memo_SetBevelKind(obj uintptr, value TBevelKind) {
-   memo_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func Memo_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := memo_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func Memo_SetBevelOuter(obj uintptr, value TBevelCut) {
-   memo_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func Memo_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := memo_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -4151,15 +3573,6 @@ func Memo_GetConstraints(obj uintptr) uintptr {
 
 func Memo_SetConstraints(obj uintptr, value uintptr) {
    memo_SetConstraints.Call(obj, value)
-}
-
-func Memo_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := memo_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Memo_SetCtl3D(obj uintptr, value bool) {
-   memo_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Memo_GetDoubleBuffered(obj uintptr) bool {
@@ -4250,15 +3663,6 @@ func Memo_GetParentColor(obj uintptr) bool {
 
 func Memo_SetParentColor(obj uintptr, value bool) {
    memo_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func Memo_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := memo_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Memo_SetParentCtl3D(obj uintptr, value bool) {
-   memo_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Memo_GetParentDoubleBuffered(obj uintptr) bool {
@@ -4378,15 +3782,6 @@ func Memo_SetWordWrap(obj uintptr, value bool) {
    memo_SetWordWrap.Call(obj, GoBoolToDBool(value))
 }
 
-func Memo_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := memo_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Memo_SetStyleElements(obj uintptr, value TStyleElements) {
-   memo_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func Memo_SetOnChange(obj uintptr, fn interface{}) {
     memo_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -4411,10 +3806,6 @@ func Memo_SetOnDragOver(obj uintptr, fn interface{}) {
     memo_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func Memo_SetOnEndDock(obj uintptr, fn interface{}) {
-    memo_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func Memo_SetOnEndDrag(obj uintptr, fn interface{}) {
     memo_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -4427,10 +3818,6 @@ func Memo_SetOnExit(obj uintptr, fn interface{}) {
     memo_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func Memo_SetOnGesture(obj uintptr, fn interface{}) {
-    memo_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func Memo_SetOnKeyDown(obj uintptr, fn interface{}) {
     memo_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -4441,10 +3828,6 @@ func Memo_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func Memo_SetOnKeyUp(obj uintptr, fn interface{}) {
     memo_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func Memo_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    memo_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Memo_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -4465,10 +3848,6 @@ func Memo_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Memo_SetOnMouseUp(obj uintptr, fn interface{}) {
     memo_SetOnMouseUp.Call(obj, addEventToMap(fn))
-}
-
-func Memo_SetOnStartDock(obj uintptr, fn interface{}) {
-    memo_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Memo_GetCaretPos(obj uintptr) TPoint {
@@ -4552,11 +3931,6 @@ func Memo_GetDockSite(obj uintptr) bool {
 
 func Memo_SetDockSite(obj uintptr, value bool) {
    memo_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func Memo_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := memo_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func Memo_GetMouseInClient(obj uintptr) bool {
@@ -4669,26 +4043,6 @@ func Memo_SetControlStyle(obj uintptr, value TControlStyle) {
    memo_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Memo_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := memo_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Memo_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := memo_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Memo_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := memo_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Memo_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := memo_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Memo_GetFloating(obj uintptr) bool {
     ret, _, _ := memo_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -4701,15 +4055,6 @@ func Memo_GetParent(obj uintptr) uintptr {
 
 func Memo_SetParent(obj uintptr, value uintptr) {
    memo_SetParent.Call(obj, value)
-}
-
-func Memo_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := memo_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Memo_SetAlignWithMargins(obj uintptr, value bool) {
-   memo_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Memo_GetLeft(obj uintptr) int32 {
@@ -4893,10 +4238,6 @@ func CheckBox_Invalidate(obj uintptr)  {
     checkBox_Invalidate.Call(obj)
 }
 
-func CheckBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    checkBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func CheckBox_RemoveControl(obj uintptr, AControl uintptr)  {
     checkBox_RemoveControl.Call(obj, AControl )
 }
@@ -4927,10 +4268,6 @@ func CheckBox_SetFocus(obj uintptr)  {
 
 func CheckBox_Update(obj uintptr)  {
     checkBox_Update.Call(obj)
-}
-
-func CheckBox_UpdateControlState(obj uintptr)  {
-    checkBox_UpdateControlState.Call(obj)
 }
 
 func CheckBox_BringToFront(obj uintptr)  {
@@ -5023,10 +4360,6 @@ func CheckBox_GetNamePath(obj uintptr) string {
 
 func CheckBox_Assign(obj uintptr, Source uintptr)  {
     checkBox_Assign.Call(obj, Source )
-}
-
-func CheckBox_DisposeOf(obj uintptr)  {
-    checkBox_DisposeOf.Call(obj)
 }
 
 func CheckBox_ClassType(obj uintptr) TClass {
@@ -5154,15 +4487,6 @@ func CheckBox_SetConstraints(obj uintptr, value uintptr) {
    checkBox_SetConstraints.Call(obj, value)
 }
 
-func CheckBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := checkBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckBox_SetCtl3D(obj uintptr, value bool) {
-   checkBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func CheckBox_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := checkBox_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -5224,15 +4548,6 @@ func CheckBox_GetParentColor(obj uintptr) bool {
 
 func CheckBox_SetParentColor(obj uintptr, value bool) {
    checkBox_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func CheckBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := checkBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckBox_SetParentCtl3D(obj uintptr, value bool) {
-   checkBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func CheckBox_GetParentDoubleBuffered(obj uintptr) bool {
@@ -5316,24 +4631,6 @@ func CheckBox_SetVisible(obj uintptr, value bool) {
    checkBox_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func CheckBox_GetWordWrap(obj uintptr) bool {
-    ret, _, _ := checkBox_GetWordWrap.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckBox_SetWordWrap(obj uintptr, value bool) {
-   checkBox_SetWordWrap.Call(obj, GoBoolToDBool(value))
-}
-
-func CheckBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := checkBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func CheckBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   checkBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func CheckBox_SetOnClick(obj uintptr, fn interface{}) {
     checkBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -5348,10 +4645,6 @@ func CheckBox_SetOnDragDrop(obj uintptr, fn interface{}) {
 
 func CheckBox_SetOnDragOver(obj uintptr, fn interface{}) {
     checkBox_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func CheckBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    checkBox_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
 func CheckBox_SetOnEndDrag(obj uintptr, fn interface{}) {
@@ -5378,10 +4671,6 @@ func CheckBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     checkBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
-func CheckBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    checkBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
-}
-
 func CheckBox_SetOnMouseDown(obj uintptr, fn interface{}) {
     checkBox_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -5402,10 +4691,6 @@ func CheckBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     checkBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func CheckBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    checkBox_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func CheckBox_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := checkBox_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -5418,11 +4703,6 @@ func CheckBox_GetDockSite(obj uintptr) bool {
 
 func CheckBox_SetDockSite(obj uintptr, value bool) {
    checkBox_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func CheckBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := checkBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func CheckBox_GetMouseInClient(obj uintptr) bool {
@@ -5526,26 +4806,6 @@ func CheckBox_SetControlStyle(obj uintptr, value TControlStyle) {
    checkBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func CheckBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := checkBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func CheckBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := checkBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func CheckBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := checkBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func CheckBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := checkBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func CheckBox_GetFloating(obj uintptr) bool {
     ret, _, _ := checkBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -5558,19 +4818,6 @@ func CheckBox_GetParent(obj uintptr) uintptr {
 
 func CheckBox_SetParent(obj uintptr, value uintptr) {
    checkBox_SetParent.Call(obj, value)
-}
-
-func CheckBox_SetOnGesture(obj uintptr, fn interface{}) {
-    checkBox_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func CheckBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := checkBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckBox_SetAlignWithMargins(obj uintptr, value bool) {
-   checkBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func CheckBox_GetLeft(obj uintptr) int32 {
@@ -5754,10 +5001,6 @@ func RadioButton_Invalidate(obj uintptr)  {
     radioButton_Invalidate.Call(obj)
 }
 
-func RadioButton_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    radioButton_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func RadioButton_RemoveControl(obj uintptr, AControl uintptr)  {
     radioButton_RemoveControl.Call(obj, AControl )
 }
@@ -5788,10 +5031,6 @@ func RadioButton_SetFocus(obj uintptr)  {
 
 func RadioButton_Update(obj uintptr)  {
     radioButton_Update.Call(obj)
-}
-
-func RadioButton_UpdateControlState(obj uintptr)  {
-    radioButton_UpdateControlState.Call(obj)
 }
 
 func RadioButton_BringToFront(obj uintptr)  {
@@ -5884,10 +5123,6 @@ func RadioButton_GetNamePath(obj uintptr) string {
 
 func RadioButton_Assign(obj uintptr, Source uintptr)  {
     radioButton_Assign.Call(obj, Source )
-}
-
-func RadioButton_DisposeOf(obj uintptr)  {
-    radioButton_DisposeOf.Call(obj)
 }
 
 func RadioButton_ClassType(obj uintptr) TClass {
@@ -6006,15 +5241,6 @@ func RadioButton_SetConstraints(obj uintptr, value uintptr) {
    radioButton_SetConstraints.Call(obj, value)
 }
 
-func RadioButton_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := radioButton_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioButton_SetCtl3D(obj uintptr, value bool) {
-   radioButton_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func RadioButton_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := radioButton_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -6076,15 +5302,6 @@ func RadioButton_GetParentColor(obj uintptr) bool {
 
 func RadioButton_SetParentColor(obj uintptr, value bool) {
    radioButton_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func RadioButton_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := radioButton_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioButton_SetParentCtl3D(obj uintptr, value bool) {
-   radioButton_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func RadioButton_GetParentDoubleBuffered(obj uintptr) bool {
@@ -6159,24 +5376,6 @@ func RadioButton_SetVisible(obj uintptr, value bool) {
    radioButton_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func RadioButton_GetWordWrap(obj uintptr) bool {
-    ret, _, _ := radioButton_GetWordWrap.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioButton_SetWordWrap(obj uintptr, value bool) {
-   radioButton_SetWordWrap.Call(obj, GoBoolToDBool(value))
-}
-
-func RadioButton_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := radioButton_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func RadioButton_SetStyleElements(obj uintptr, value TStyleElements) {
-   radioButton_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func RadioButton_SetOnClick(obj uintptr, fn interface{}) {
     radioButton_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -6185,20 +5384,12 @@ func RadioButton_SetOnContextPopup(obj uintptr, fn interface{}) {
     radioButton_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
-func RadioButton_SetOnDblClick(obj uintptr, fn interface{}) {
-    radioButton_SetOnDblClick.Call(obj, addEventToMap(fn))
-}
-
 func RadioButton_SetOnDragDrop(obj uintptr, fn interface{}) {
     radioButton_SetOnDragDrop.Call(obj, addEventToMap(fn))
 }
 
 func RadioButton_SetOnDragOver(obj uintptr, fn interface{}) {
     radioButton_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func RadioButton_SetOnEndDock(obj uintptr, fn interface{}) {
-    radioButton_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
 func RadioButton_SetOnEndDrag(obj uintptr, fn interface{}) {
@@ -6225,10 +5416,6 @@ func RadioButton_SetOnKeyUp(obj uintptr, fn interface{}) {
     radioButton_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
-func RadioButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    radioButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
-}
-
 func RadioButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     radioButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -6249,10 +5436,6 @@ func RadioButton_SetOnMouseUp(obj uintptr, fn interface{}) {
     radioButton_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func RadioButton_SetOnStartDock(obj uintptr, fn interface{}) {
-    radioButton_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func RadioButton_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := radioButton_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -6265,11 +5448,6 @@ func RadioButton_GetDockSite(obj uintptr) bool {
 
 func RadioButton_SetDockSite(obj uintptr, value bool) {
    radioButton_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func RadioButton_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := radioButton_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func RadioButton_GetMouseInClient(obj uintptr) bool {
@@ -6373,26 +5551,6 @@ func RadioButton_SetControlStyle(obj uintptr, value TControlStyle) {
    radioButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func RadioButton_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := radioButton_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func RadioButton_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := radioButton_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func RadioButton_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := radioButton_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func RadioButton_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := radioButton_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func RadioButton_GetFloating(obj uintptr) bool {
     ret, _, _ := radioButton_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -6405,19 +5563,6 @@ func RadioButton_GetParent(obj uintptr) uintptr {
 
 func RadioButton_SetParent(obj uintptr, value uintptr) {
    radioButton_SetParent.Call(obj, value)
-}
-
-func RadioButton_SetOnGesture(obj uintptr, fn interface{}) {
-    radioButton_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func RadioButton_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := radioButton_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioButton_SetAlignWithMargins(obj uintptr, value bool) {
-   radioButton_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func RadioButton_GetLeft(obj uintptr) int32 {
@@ -6601,10 +5746,6 @@ func GroupBox_Invalidate(obj uintptr)  {
     groupBox_Invalidate.Call(obj)
 }
 
-func GroupBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    groupBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func GroupBox_RemoveControl(obj uintptr, AControl uintptr)  {
     groupBox_RemoveControl.Call(obj, AControl )
 }
@@ -6635,10 +5776,6 @@ func GroupBox_SetFocus(obj uintptr)  {
 
 func GroupBox_Update(obj uintptr)  {
     groupBox_Update.Call(obj)
-}
-
-func GroupBox_UpdateControlState(obj uintptr)  {
-    groupBox_UpdateControlState.Call(obj)
 }
 
 func GroupBox_BringToFront(obj uintptr)  {
@@ -6733,10 +5870,6 @@ func GroupBox_Assign(obj uintptr, Source uintptr)  {
     groupBox_Assign.Call(obj, Source )
 }
 
-func GroupBox_DisposeOf(obj uintptr)  {
-    groupBox_DisposeOf.Call(obj)
-}
-
 func GroupBox_ClassType(obj uintptr) TClass {
     ret, _, _ := groupBox_ClassType.Call(obj)
     return TClass(ret)
@@ -6826,15 +5959,6 @@ func GroupBox_SetConstraints(obj uintptr, value uintptr) {
    groupBox_SetConstraints.Call(obj, value)
 }
 
-func GroupBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := groupBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GroupBox_SetCtl3D(obj uintptr, value bool) {
-   groupBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func GroupBox_GetDockSite(obj uintptr) bool {
     ret, _, _ := groupBox_GetDockSite.Call(obj)
     return DBoolToGoBool(ret)
@@ -6898,15 +6022,6 @@ func GroupBox_SetFont(obj uintptr, value uintptr) {
    groupBox_SetFont.Call(obj, value)
 }
 
-func GroupBox_GetParentBackground(obj uintptr) bool {
-    ret, _, _ := groupBox_GetParentBackground.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GroupBox_SetParentBackground(obj uintptr, value bool) {
-   groupBox_SetParentBackground.Call(obj, GoBoolToDBool(value))
-}
-
 func GroupBox_GetParentColor(obj uintptr) bool {
     ret, _, _ := groupBox_GetParentColor.Call(obj)
     return DBoolToGoBool(ret)
@@ -6914,15 +6029,6 @@ func GroupBox_GetParentColor(obj uintptr) bool {
 
 func GroupBox_SetParentColor(obj uintptr, value bool) {
    groupBox_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func GroupBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := groupBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GroupBox_SetParentCtl3D(obj uintptr, value bool) {
-   groupBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func GroupBox_GetParentDoubleBuffered(obj uintptr) bool {
@@ -6997,15 +6103,6 @@ func GroupBox_SetVisible(obj uintptr, value bool) {
    groupBox_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func GroupBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := groupBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func GroupBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   groupBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func GroupBox_SetOnAlignPosition(obj uintptr, fn interface{}) {
     groupBox_SetOnAlignPosition.Call(obj, addEventToMap(fn))
 }
@@ -7050,16 +6147,8 @@ func GroupBox_SetOnExit(obj uintptr, fn interface{}) {
     groupBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func GroupBox_SetOnGesture(obj uintptr, fn interface{}) {
-    groupBox_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func GroupBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     groupBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func GroupBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    groupBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func GroupBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -7093,11 +6182,6 @@ func GroupBox_SetOnUnDock(obj uintptr, fn interface{}) {
 func GroupBox_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := groupBox_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func GroupBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := groupBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func GroupBox_GetMouseInClient(obj uintptr) bool {
@@ -7210,26 +6294,6 @@ func GroupBox_SetControlStyle(obj uintptr, value TControlStyle) {
    groupBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func GroupBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := groupBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func GroupBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := groupBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func GroupBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := groupBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func GroupBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := groupBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func GroupBox_GetFloating(obj uintptr) bool {
     ret, _, _ := groupBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -7242,15 +6306,6 @@ func GroupBox_GetParent(obj uintptr) uintptr {
 
 func GroupBox_SetParent(obj uintptr, value uintptr) {
    groupBox_SetParent.Call(obj, value)
-}
-
-func GroupBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := groupBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GroupBox_SetAlignWithMargins(obj uintptr, value bool) {
-   groupBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func GroupBox_GetLeft(obj uintptr) int32 {
@@ -7492,10 +6547,6 @@ func Label_Assign(obj uintptr, Source uintptr)  {
     label_Assign.Call(obj, Source )
 }
 
-func Label_DisposeOf(obj uintptr)  {
-    label_DisposeOf.Call(obj)
-}
-
 func Label_ClassType(obj uintptr) TClass {
     ret, _, _ := label_ClassType.Call(obj)
     return TClass(ret)
@@ -7630,15 +6681,6 @@ func Label_SetDragMode(obj uintptr, value TDragMode) {
    label_SetDragMode.Call(obj, uintptr(value))
 }
 
-func Label_GetEllipsisPosition(obj uintptr) TEllipsisPosition {
-    ret, _, _ := label_GetEllipsisPosition.Call(obj)
-    return TEllipsisPosition(ret)
-}
-
-func Label_SetEllipsisPosition(obj uintptr, value TEllipsisPosition) {
-   label_SetEllipsisPosition.Call(obj, uintptr(value))
-}
-
 func Label_GetEnabled(obj uintptr) bool {
     ret, _, _ := label_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -7655,15 +6697,6 @@ func Label_GetFont(obj uintptr) uintptr {
 
 func Label_SetFont(obj uintptr, value uintptr) {
    label_SetFont.Call(obj, value)
-}
-
-func Label_GetGlowSize(obj uintptr) int32 {
-    ret, _, _ := label_GetGlowSize.Call(obj)
-    return int32(ret)
-}
-
-func Label_SetGlowSize(obj uintptr, value int32) {
-   label_SetGlowSize.Call(obj, uintptr(value))
 }
 
 func Label_GetParentColor(obj uintptr) bool {
@@ -7756,15 +6789,6 @@ func Label_SetWordWrap(obj uintptr, value bool) {
    label_SetWordWrap.Call(obj, GoBoolToDBool(value))
 }
 
-func Label_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := label_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Label_SetStyleElements(obj uintptr, value TStyleElements) {
-   label_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func Label_SetOnClick(obj uintptr, fn interface{}) {
     label_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -7785,20 +6809,8 @@ func Label_SetOnDragOver(obj uintptr, fn interface{}) {
     label_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func Label_SetOnEndDock(obj uintptr, fn interface{}) {
-    label_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func Label_SetOnEndDrag(obj uintptr, fn interface{}) {
     label_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func Label_SetOnGesture(obj uintptr, fn interface{}) {
-    label_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func Label_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    label_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Label_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -7819,10 +6831,6 @@ func Label_SetOnMouseEnter(obj uintptr, fn interface{}) {
 
 func Label_SetOnMouseLeave(obj uintptr, fn interface{}) {
     label_SetOnMouseLeave.Call(obj, addEventToMap(fn))
-}
-
-func Label_SetOnStartDock(obj uintptr, fn interface{}) {
-    label_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Label_GetCanvas(obj uintptr) uintptr {
@@ -7897,26 +6905,6 @@ func Label_SetControlStyle(obj uintptr, value TControlStyle) {
    label_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Label_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := label_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Label_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := label_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Label_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := label_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Label_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := label_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Label_GetFloating(obj uintptr) bool {
     ret, _, _ := label_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -7929,15 +6917,6 @@ func Label_GetParent(obj uintptr) uintptr {
 
 func Label_SetParent(obj uintptr, value uintptr) {
    label_SetParent.Call(obj, value)
-}
-
-func Label_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := label_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Label_SetAlignWithMargins(obj uintptr, value bool) {
-   label_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Label_GetLeft(obj uintptr) int32 {
@@ -8073,10 +7052,6 @@ func ListBox_ClearSelection(obj uintptr)  {
     listBox_ClearSelection.Call(obj)
 }
 
-func ListBox_CopySelection(obj uintptr, Destination uintptr)  {
-    listBox_CopySelection.Call(obj, Destination )
-}
-
 func ListBox_DeleteSelected(obj uintptr)  {
     listBox_DeleteSelected.Call(obj)
 }
@@ -8146,10 +7121,6 @@ func ListBox_Invalidate(obj uintptr)  {
     listBox_Invalidate.Call(obj)
 }
 
-func ListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    listBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ListBox_RemoveControl(obj uintptr, AControl uintptr)  {
     listBox_RemoveControl.Call(obj, AControl )
 }
@@ -8180,10 +7151,6 @@ func ListBox_SetFocus(obj uintptr)  {
 
 func ListBox_Update(obj uintptr)  {
     listBox_Update.Call(obj)
-}
-
-func ListBox_UpdateControlState(obj uintptr)  {
-    listBox_UpdateControlState.Call(obj)
 }
 
 func ListBox_BringToFront(obj uintptr)  {
@@ -8278,10 +7245,6 @@ func ListBox_Assign(obj uintptr, Source uintptr)  {
     listBox_Assign.Call(obj, Source )
 }
 
-func ListBox_DisposeOf(obj uintptr)  {
-    listBox_DisposeOf.Call(obj)
-}
-
 func ListBox_ClassType(obj uintptr) TClass {
     ret, _, _ := listBox_ClassType.Call(obj)
     return TClass(ret)
@@ -8326,24 +7289,6 @@ func ListBox_SetStyle(obj uintptr, value TListBoxStyle) {
    listBox_SetStyle.Call(obj, uintptr(value))
 }
 
-func ListBox_GetAutoComplete(obj uintptr) bool {
-    ret, _, _ := listBox_GetAutoComplete.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListBox_SetAutoComplete(obj uintptr, value bool) {
-   listBox_SetAutoComplete.Call(obj, GoBoolToDBool(value))
-}
-
-func ListBox_GetAutoCompleteDelay(obj uintptr) uint32 {
-    ret, _, _ := listBox_GetAutoCompleteDelay.Call(obj)
-    return uint32(ret)
-}
-
-func ListBox_SetAutoCompleteDelay(obj uintptr, value uint32) {
-   listBox_SetAutoCompleteDelay.Call(obj, uintptr(value))
-}
-
 func ListBox_GetAlign(obj uintptr) TAlign {
     ret, _, _ := listBox_GetAlign.Call(obj)
     return TAlign(ret)
@@ -8360,42 +7305,6 @@ func ListBox_GetAnchors(obj uintptr) TAnchors {
 
 func ListBox_SetAnchors(obj uintptr, value TAnchors) {
    listBox_SetAnchors.Call(obj, uintptr(value))
-}
-
-func ListBox_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := listBox_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func ListBox_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   listBox_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func ListBox_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := listBox_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ListBox_SetBevelInner(obj uintptr, value TBevelCut) {
-   listBox_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func ListBox_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := listBox_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func ListBox_SetBevelKind(obj uintptr, value TBevelKind) {
-   listBox_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func ListBox_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := listBox_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ListBox_SetBevelOuter(obj uintptr, value TBevelCut) {
-   listBox_SetBevelOuter.Call(obj, uintptr(value))
 }
 
 func ListBox_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -8441,15 +7350,6 @@ func ListBox_GetConstraints(obj uintptr) uintptr {
 
 func ListBox_SetConstraints(obj uintptr, value uintptr) {
    listBox_SetConstraints.Call(obj, value)
-}
-
-func ListBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := listBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListBox_SetCtl3D(obj uintptr, value bool) {
-   listBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ListBox_GetDoubleBuffered(obj uintptr) bool {
@@ -8542,15 +7442,6 @@ func ListBox_SetParentColor(obj uintptr, value bool) {
    listBox_SetParentColor.Call(obj, GoBoolToDBool(value))
 }
 
-func ListBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := listBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListBox_SetParentCtl3D(obj uintptr, value bool) {
-   listBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ListBox_GetParentDoubleBuffered(obj uintptr) bool {
     ret, _, _ := listBox_GetParentDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -8623,15 +7514,6 @@ func ListBox_SetTabStop(obj uintptr, value bool) {
    listBox_SetTabStop.Call(obj, GoBoolToDBool(value))
 }
 
-func ListBox_GetTabWidth(obj uintptr) int32 {
-    ret, _, _ := listBox_GetTabWidth.Call(obj)
-    return int32(ret)
-}
-
-func ListBox_SetTabWidth(obj uintptr, value int32) {
-   listBox_SetTabWidth.Call(obj, uintptr(value))
-}
-
 func ListBox_GetVisible(obj uintptr) bool {
     ret, _, _ := listBox_GetVisible.Call(obj)
     return DBoolToGoBool(ret)
@@ -8641,33 +7523,12 @@ func ListBox_SetVisible(obj uintptr, value bool) {
    listBox_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ListBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := listBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ListBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   listBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ListBox_SetOnClick(obj uintptr, fn interface{}) {
     listBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
 func ListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
     listBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
-}
-
-func ListBox_SetOnData(obj uintptr, fn interface{}) {
-    listBox_SetOnData.Call(obj, addEventToMap(fn))
-}
-
-func ListBox_SetOnDataFind(obj uintptr, fn interface{}) {
-    listBox_SetOnDataFind.Call(obj, addEventToMap(fn))
-}
-
-func ListBox_SetOnDataObject(obj uintptr, fn interface{}) {
-    listBox_SetOnDataObject.Call(obj, addEventToMap(fn))
 }
 
 func ListBox_SetOnDblClick(obj uintptr, fn interface{}) {
@@ -8686,10 +7547,6 @@ func ListBox_SetOnDrawItem(obj uintptr, fn interface{}) {
     listBox_SetOnDrawItem.Call(obj, addEventToMap(fn))
 }
 
-func ListBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    listBox_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func ListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     listBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -8700,10 +7557,6 @@ func ListBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ListBox_SetOnExit(obj uintptr, fn interface{}) {
     listBox_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func ListBox_SetOnGesture(obj uintptr, fn interface{}) {
-    listBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -8720,10 +7573,6 @@ func ListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
 
 func ListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
     listBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
-}
-
-func ListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    listBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -8746,10 +7595,6 @@ func ListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     listBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func ListBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    listBox_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func ListBox_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := listBox_GetCanvas.Call(obj)
     return ret
@@ -8758,10 +7603,6 @@ func ListBox_GetCanvas(obj uintptr) uintptr {
 func ListBox_GetCount(obj uintptr) int32 {
     ret, _, _ := listBox_GetCount.Call(obj)
     return int32(ret)
-}
-
-func ListBox_SetCount(obj uintptr, value int32) {
-   listBox_SetCount.Call(obj, uintptr(value))
 }
 
 func ListBox_GetSelCount(obj uintptr) int32 {
@@ -8790,11 +7631,6 @@ func ListBox_GetDockSite(obj uintptr) bool {
 
 func ListBox_SetDockSite(obj uintptr, value bool) {
    listBox_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func ListBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := listBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ListBox_GetMouseInClient(obj uintptr) bool {
@@ -8907,26 +7743,6 @@ func ListBox_SetControlStyle(obj uintptr, value TControlStyle) {
    listBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ListBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := listBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ListBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := listBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ListBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := listBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ListBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := listBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ListBox_GetFloating(obj uintptr) bool {
     ret, _, _ := listBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -8939,15 +7755,6 @@ func ListBox_GetParent(obj uintptr) uintptr {
 
 func ListBox_SetParent(obj uintptr, value uintptr) {
    listBox_SetParent.Call(obj, value)
-}
-
-func ListBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := listBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListBox_SetAlignWithMargins(obj uintptr, value bool) {
-   listBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ListBox_GetLeft(obj uintptr) int32 {
@@ -9102,10 +7909,6 @@ func ComboBox_ClearSelection(obj uintptr)  {
     comboBox_ClearSelection.Call(obj)
 }
 
-func ComboBox_CopySelection(obj uintptr, Destination uintptr)  {
-    comboBox_CopySelection.Call(obj, Destination )
-}
-
 func ComboBox_DeleteSelected(obj uintptr)  {
     comboBox_DeleteSelected.Call(obj)
 }
@@ -9164,10 +7967,6 @@ func ComboBox_Invalidate(obj uintptr)  {
     comboBox_Invalidate.Call(obj)
 }
 
-func ComboBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    comboBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ComboBox_RemoveControl(obj uintptr, AControl uintptr)  {
     comboBox_RemoveControl.Call(obj, AControl )
 }
@@ -9198,10 +7997,6 @@ func ComboBox_SetFocus(obj uintptr)  {
 
 func ComboBox_Update(obj uintptr)  {
     comboBox_Update.Call(obj)
-}
-
-func ComboBox_UpdateControlState(obj uintptr)  {
-    comboBox_UpdateControlState.Call(obj)
 }
 
 func ComboBox_BringToFront(obj uintptr)  {
@@ -9296,10 +8091,6 @@ func ComboBox_Assign(obj uintptr, Source uintptr)  {
     comboBox_Assign.Call(obj, Source )
 }
 
-func ComboBox_DisposeOf(obj uintptr)  {
-    comboBox_DisposeOf.Call(obj)
-}
-
 func ComboBox_ClassType(obj uintptr) TClass {
     ret, _, _ := comboBox_ClassType.Call(obj)
     return TClass(ret)
@@ -9353,15 +8144,6 @@ func ComboBox_SetAutoComplete(obj uintptr, value bool) {
    comboBox_SetAutoComplete.Call(obj, GoBoolToDBool(value))
 }
 
-func ComboBox_GetAutoCompleteDelay(obj uintptr) uint32 {
-    ret, _, _ := comboBox_GetAutoCompleteDelay.Call(obj)
-    return uint32(ret)
-}
-
-func ComboBox_SetAutoCompleteDelay(obj uintptr, value uint32) {
-   comboBox_SetAutoCompleteDelay.Call(obj, uintptr(value))
-}
-
 func ComboBox_GetAutoDropDown(obj uintptr) bool {
     ret, _, _ := comboBox_GetAutoDropDown.Call(obj)
     return DBoolToGoBool(ret)
@@ -9369,51 +8151,6 @@ func ComboBox_GetAutoDropDown(obj uintptr) bool {
 
 func ComboBox_SetAutoDropDown(obj uintptr, value bool) {
    comboBox_SetAutoDropDown.Call(obj, GoBoolToDBool(value))
-}
-
-func ComboBox_GetAutoCloseUp(obj uintptr) bool {
-    ret, _, _ := comboBox_GetAutoCloseUp.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ComboBox_SetAutoCloseUp(obj uintptr, value bool) {
-   comboBox_SetAutoCloseUp.Call(obj, GoBoolToDBool(value))
-}
-
-func ComboBox_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := comboBox_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func ComboBox_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   comboBox_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func ComboBox_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := comboBox_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ComboBox_SetBevelInner(obj uintptr, value TBevelCut) {
-   comboBox_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func ComboBox_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := comboBox_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func ComboBox_SetBevelKind(obj uintptr, value TBevelKind) {
-   comboBox_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func ComboBox_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := comboBox_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ComboBox_SetBevelOuter(obj uintptr, value TBevelCut) {
-   comboBox_SetBevelOuter.Call(obj, uintptr(value))
 }
 
 func ComboBox_GetStyle(obj uintptr) TComboBoxStyle {
@@ -9468,15 +8205,6 @@ func ComboBox_GetConstraints(obj uintptr) uintptr {
 
 func ComboBox_SetConstraints(obj uintptr, value uintptr) {
    comboBox_SetConstraints.Call(obj, value)
-}
-
-func ComboBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := comboBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ComboBox_SetCtl3D(obj uintptr, value bool) {
-   comboBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ComboBox_GetDoubleBuffered(obj uintptr) bool {
@@ -9578,15 +8306,6 @@ func ComboBox_SetParentColor(obj uintptr, value bool) {
    comboBox_SetParentColor.Call(obj, GoBoolToDBool(value))
 }
 
-func ComboBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := comboBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ComboBox_SetParentCtl3D(obj uintptr, value bool) {
-   comboBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ComboBox_GetParentDoubleBuffered(obj uintptr) bool {
     ret, _, _ := comboBox_GetParentDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -9668,15 +8387,6 @@ func ComboBox_SetText(obj uintptr, value string) {
    comboBox_SetText.Call(obj, GoStrToDStr(value))
 }
 
-func ComboBox_GetTextHint(obj uintptr) string {
-    ret, _, _ := comboBox_GetTextHint.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func ComboBox_SetTextHint(obj uintptr, value string) {
-   comboBox_SetTextHint.Call(obj, GoStrToDStr(value))
-}
-
 func ComboBox_GetVisible(obj uintptr) bool {
     ret, _, _ := comboBox_GetVisible.Call(obj)
     return DBoolToGoBool(ret)
@@ -9684,15 +8394,6 @@ func ComboBox_GetVisible(obj uintptr) bool {
 
 func ComboBox_SetVisible(obj uintptr, value bool) {
    comboBox_SetVisible.Call(obj, GoBoolToDBool(value))
-}
-
-func ComboBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := comboBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ComboBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   comboBox_SetStyleElements.Call(obj, uintptr(value))
 }
 
 func ComboBox_SetOnChange(obj uintptr, fn interface{}) {
@@ -9723,14 +8424,6 @@ func ComboBox_SetOnDrawItem(obj uintptr, fn interface{}) {
     comboBox_SetOnDrawItem.Call(obj, addEventToMap(fn))
 }
 
-func ComboBox_SetOnDropDown(obj uintptr, fn interface{}) {
-    comboBox_SetOnDropDown.Call(obj, addEventToMap(fn))
-}
-
-func ComboBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    comboBox_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func ComboBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     comboBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -9741,10 +8434,6 @@ func ComboBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ComboBox_SetOnExit(obj uintptr, fn interface{}) {
     comboBox_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func ComboBox_SetOnGesture(obj uintptr, fn interface{}) {
-    comboBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ComboBox_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -9773,10 +8462,6 @@ func ComboBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
 
 func ComboBox_SetOnSelect(obj uintptr, fn interface{}) {
     comboBox_SetOnSelect.Call(obj, addEventToMap(fn))
-}
-
-func ComboBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    comboBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func ComboBox_GetItems(obj uintptr) uintptr {
@@ -9841,11 +8526,6 @@ func ComboBox_GetDockSite(obj uintptr) bool {
 
 func ComboBox_SetDockSite(obj uintptr, value bool) {
    comboBox_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func ComboBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := comboBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ComboBox_GetMouseInClient(obj uintptr) bool {
@@ -9958,26 +8638,6 @@ func ComboBox_SetControlStyle(obj uintptr, value TControlStyle) {
    comboBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ComboBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := comboBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ComboBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := comboBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ComboBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := comboBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ComboBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := comboBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ComboBox_GetFloating(obj uintptr) bool {
     ret, _, _ := comboBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -9990,15 +8650,6 @@ func ComboBox_GetParent(obj uintptr) uintptr {
 
 func ComboBox_SetParent(obj uintptr, value uintptr) {
    comboBox_SetParent.Call(obj, value)
-}
-
-func ComboBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := comboBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ComboBox_SetAlignWithMargins(obj uintptr, value bool) {
-   comboBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ComboBox_GetLeft(obj uintptr) int32 {
@@ -10182,10 +8833,6 @@ func Panel_Invalidate(obj uintptr)  {
     panel_Invalidate.Call(obj)
 }
 
-func Panel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    panel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func Panel_RemoveControl(obj uintptr, AControl uintptr)  {
     panel_RemoveControl.Call(obj, AControl )
 }
@@ -10216,10 +8863,6 @@ func Panel_SetFocus(obj uintptr)  {
 
 func Panel_Update(obj uintptr)  {
     panel_Update.Call(obj)
-}
-
-func Panel_UpdateControlState(obj uintptr)  {
-    panel_UpdateControlState.Call(obj)
 }
 
 func Panel_BringToFront(obj uintptr)  {
@@ -10314,10 +8957,6 @@ func Panel_Assign(obj uintptr, Source uintptr)  {
     panel_Assign.Call(obj, Source )
 }
 
-func Panel_DisposeOf(obj uintptr)  {
-    panel_DisposeOf.Call(obj)
-}
-
 func Panel_ClassType(obj uintptr) TClass {
     ret, _, _ := panel_ClassType.Call(obj)
     return TClass(ret)
@@ -10389,15 +9028,6 @@ func Panel_SetAutoSize(obj uintptr, value bool) {
    panel_SetAutoSize.Call(obj, GoBoolToDBool(value))
 }
 
-func Panel_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := panel_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func Panel_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   panel_SetBevelEdges.Call(obj, uintptr(value))
-}
-
 func Panel_GetBevelInner(obj uintptr) TBevelCut {
     ret, _, _ := panel_GetBevelInner.Call(obj)
     return TBevelCut(ret)
@@ -10405,15 +9035,6 @@ func Panel_GetBevelInner(obj uintptr) TBevelCut {
 
 func Panel_SetBevelInner(obj uintptr, value TBevelCut) {
    panel_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func Panel_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := panel_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func Panel_SetBevelKind(obj uintptr, value TBevelKind) {
-   panel_SetBevelKind.Call(obj, uintptr(value))
 }
 
 func Panel_GetBevelOuter(obj uintptr) TBevelCut {
@@ -10477,15 +9098,6 @@ func Panel_GetConstraints(obj uintptr) uintptr {
 
 func Panel_SetConstraints(obj uintptr, value uintptr) {
    panel_SetConstraints.Call(obj, value)
-}
-
-func Panel_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := panel_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Panel_SetCtl3D(obj uintptr, value bool) {
-   panel_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Panel_GetUseDockManager(obj uintptr) bool {
@@ -10569,15 +9181,6 @@ func Panel_SetFont(obj uintptr, value uintptr) {
    panel_SetFont.Call(obj, value)
 }
 
-func Panel_GetLocked(obj uintptr) bool {
-    ret, _, _ := panel_GetLocked.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Panel_SetLocked(obj uintptr, value bool) {
-   panel_SetLocked.Call(obj, GoBoolToDBool(value))
-}
-
 func Panel_GetParentBackground(obj uintptr) bool {
     ret, _, _ := panel_GetParentBackground.Call(obj)
     return DBoolToGoBool(ret)
@@ -10594,15 +9197,6 @@ func Panel_GetParentColor(obj uintptr) bool {
 
 func Panel_SetParentColor(obj uintptr, value bool) {
    panel_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func Panel_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := panel_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Panel_SetParentCtl3D(obj uintptr, value bool) {
-   panel_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Panel_GetParentDoubleBuffered(obj uintptr) bool {
@@ -10641,15 +9235,6 @@ func Panel_SetPopupMenu(obj uintptr, value uintptr) {
    panel_SetPopupMenu.Call(obj, value)
 }
 
-func Panel_GetShowCaption(obj uintptr) bool {
-    ret, _, _ := panel_GetShowCaption.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Panel_SetShowCaption(obj uintptr, value bool) {
-   panel_SetShowCaption.Call(obj, GoBoolToDBool(value))
-}
-
 func Panel_GetShowHint(obj uintptr) bool {
     ret, _, _ := panel_GetShowHint.Call(obj)
     return DBoolToGoBool(ret)
@@ -10684,15 +9269,6 @@ func Panel_GetVisible(obj uintptr) bool {
 
 func Panel_SetVisible(obj uintptr, value bool) {
    panel_SetVisible.Call(obj, GoBoolToDBool(value))
-}
-
-func Panel_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := panel_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Panel_SetStyleElements(obj uintptr, value TStyleElements) {
-   panel_SetStyleElements.Call(obj, uintptr(value))
 }
 
 func Panel_SetOnAlignPosition(obj uintptr, fn interface{}) {
@@ -10739,16 +9315,8 @@ func Panel_SetOnExit(obj uintptr, fn interface{}) {
     panel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func Panel_SetOnGesture(obj uintptr, fn interface{}) {
-    panel_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func Panel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     panel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func Panel_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    panel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Panel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -10786,11 +9354,6 @@ func Panel_SetOnUnDock(obj uintptr, fn interface{}) {
 func Panel_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := panel_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func Panel_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := panel_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func Panel_GetMouseInClient(obj uintptr) bool {
@@ -10894,26 +9457,6 @@ func Panel_SetControlStyle(obj uintptr, value TControlStyle) {
    panel_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Panel_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := panel_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Panel_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := panel_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Panel_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := panel_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Panel_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := panel_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Panel_GetFloating(obj uintptr) bool {
     ret, _, _ := panel_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -10926,15 +9469,6 @@ func Panel_GetParent(obj uintptr) uintptr {
 
 func Panel_SetParent(obj uintptr, value uintptr) {
    panel_SetParent.Call(obj, value)
-}
-
-func Panel_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := panel_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Panel_SetAlignWithMargins(obj uintptr, value bool) {
-   panel_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Panel_GetLeft(obj uintptr) int32 {
@@ -11176,10 +9710,6 @@ func Image_Assign(obj uintptr, Source uintptr)  {
     image_Assign.Call(obj, Source )
 }
 
-func Image_DisposeOf(obj uintptr)  {
-    image_DisposeOf.Call(obj)
-}
-
 func Image_ClassType(obj uintptr) TClass {
     ret, _, _ := image_ClassType.Call(obj)
     return TClass(ret)
@@ -11274,15 +9804,6 @@ func Image_SetDragCursor(obj uintptr, value TCursor) {
    image_SetDragCursor.Call(obj, uintptr(value))
 }
 
-func Image_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := image_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func Image_SetDragKind(obj uintptr, value TDragKind) {
-   image_SetDragKind.Call(obj, uintptr(value))
-}
-
 func Image_GetDragMode(obj uintptr) TDragMode {
     ret, _, _ := image_GetDragMode.Call(obj)
     return TDragMode(ret)
@@ -11299,15 +9820,6 @@ func Image_GetEnabled(obj uintptr) bool {
 
 func Image_SetEnabled(obj uintptr, value bool) {
    image_SetEnabled.Call(obj, GoBoolToDBool(value))
-}
-
-func Image_GetIncrementalDisplay(obj uintptr) bool {
-    ret, _, _ := image_GetIncrementalDisplay.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Image_SetIncrementalDisplay(obj uintptr, value bool) {
-   image_SetIncrementalDisplay.Call(obj, GoBoolToDBool(value))
 }
 
 func Image_GetParentShowHint(obj uintptr) bool {
@@ -11386,10 +9898,6 @@ func Image_SetOnClick(obj uintptr, fn interface{}) {
     image_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
-func Image_SetOnContextPopup(obj uintptr, fn interface{}) {
-    image_SetOnContextPopup.Call(obj, addEventToMap(fn))
-}
-
 func Image_SetOnDblClick(obj uintptr, fn interface{}) {
     image_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -11402,20 +9910,8 @@ func Image_SetOnDragOver(obj uintptr, fn interface{}) {
     image_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func Image_SetOnEndDock(obj uintptr, fn interface{}) {
-    image_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func Image_SetOnEndDrag(obj uintptr, fn interface{}) {
     image_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func Image_SetOnGesture(obj uintptr, fn interface{}) {
-    image_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func Image_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    image_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Image_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -11436,10 +9932,6 @@ func Image_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Image_SetOnMouseUp(obj uintptr, fn interface{}) {
     image_SetOnMouseUp.Call(obj, addEventToMap(fn))
-}
-
-func Image_SetOnStartDock(obj uintptr, fn interface{}) {
-    image_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Image_GetAction(obj uintptr) uintptr {
@@ -11518,26 +10010,6 @@ func Image_SetControlStyle(obj uintptr, value TControlStyle) {
    image_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Image_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := image_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Image_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := image_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Image_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := image_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Image_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := image_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Image_GetFloating(obj uintptr) bool {
     ret, _, _ := image_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -11550,24 +10022,6 @@ func Image_GetParent(obj uintptr) uintptr {
 
 func Image_SetParent(obj uintptr, value uintptr) {
    image_SetParent.Call(obj, value)
-}
-
-func Image_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := image_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Image_SetStyleElements(obj uintptr, value TStyleElements) {
-   image_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func Image_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := image_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Image_SetAlignWithMargins(obj uintptr, value bool) {
-   image_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Image_GetLeft(obj uintptr) int32 {
@@ -11691,94 +10145,20 @@ func LinkLabel_Free(obj uintptr) {
     linkLabel_Free.Call(obj)
 }
 
-func LinkLabel_CanFocus(obj uintptr) bool {
-    ret, _, _ := linkLabel_CanFocus.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_ContainsControl(obj uintptr, Control uintptr) bool {
-    ret, _, _ := linkLabel_ContainsControl.Call(obj, Control )
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    ret, _, _ := linkLabel_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
-    return ret
-}
-
-func LinkLabel_DisableAlign(obj uintptr)  {
-    linkLabel_DisableAlign.Call(obj)
-}
-
-func LinkLabel_EnableAlign(obj uintptr)  {
-    linkLabel_EnableAlign.Call(obj)
-}
-
-func LinkLabel_FindChildControl(obj uintptr, ControlName string) uintptr {
-    ret, _, _ := linkLabel_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
-    return ret
-}
-
-func LinkLabel_FlipChildren(obj uintptr, AllLevels bool)  {
-    linkLabel_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
-}
-
-func LinkLabel_Focused(obj uintptr) bool {
-    ret, _, _ := linkLabel_Focused.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_HandleAllocated(obj uintptr) bool {
-    ret, _, _ := linkLabel_HandleAllocated.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_InsertControl(obj uintptr, AControl uintptr)  {
-    linkLabel_InsertControl.Call(obj, AControl )
-}
-
 func LinkLabel_Invalidate(obj uintptr)  {
     linkLabel_Invalidate.Call(obj)
-}
-
-func LinkLabel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    linkLabel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
-func LinkLabel_RemoveControl(obj uintptr, AControl uintptr)  {
-    linkLabel_RemoveControl.Call(obj, AControl )
-}
-
-func LinkLabel_Realign(obj uintptr)  {
-    linkLabel_Realign.Call(obj)
 }
 
 func LinkLabel_Repaint(obj uintptr)  {
     linkLabel_Repaint.Call(obj)
 }
 
-func LinkLabel_ScaleBy(obj uintptr, M int32, D int32)  {
-    linkLabel_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
-}
-
-func LinkLabel_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    linkLabel_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
-}
-
 func LinkLabel_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
     linkLabel_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
-func LinkLabel_SetFocus(obj uintptr)  {
-    linkLabel_SetFocus.Call(obj)
-}
-
 func LinkLabel_Update(obj uintptr)  {
     linkLabel_Update.Call(obj)
-}
-
-func LinkLabel_UpdateControlState(obj uintptr)  {
-    linkLabel_UpdateControlState.Call(obj)
 }
 
 func LinkLabel_BringToFront(obj uintptr)  {
@@ -11873,10 +10253,6 @@ func LinkLabel_Assign(obj uintptr, Source uintptr)  {
     linkLabel_Assign.Call(obj, Source )
 }
 
-func LinkLabel_DisposeOf(obj uintptr)  {
-    linkLabel_DisposeOf.Call(obj)
-}
-
 func LinkLabel_ClassType(obj uintptr) TClass {
     ret, _, _ := linkLabel_ClassType.Call(obj)
     return TClass(ret)
@@ -11946,42 +10322,6 @@ func LinkLabel_GetAutoSize(obj uintptr) bool {
 
 func LinkLabel_SetAutoSize(obj uintptr, value bool) {
    linkLabel_SetAutoSize.Call(obj, GoBoolToDBool(value))
-}
-
-func LinkLabel_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := linkLabel_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func LinkLabel_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   linkLabel_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := linkLabel_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func LinkLabel_SetBevelInner(obj uintptr, value TBevelCut) {
-   linkLabel_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := linkLabel_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func LinkLabel_SetBevelKind(obj uintptr, value TBevelKind) {
-   linkLabel_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := linkLabel_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func LinkLabel_SetBevelOuter(obj uintptr, value TBevelCut) {
-   linkLabel_SetBevelOuter.Call(obj, uintptr(value))
 }
 
 func LinkLabel_GetCaption(obj uintptr) string {
@@ -12101,33 +10441,6 @@ func LinkLabel_SetShowHint(obj uintptr, value bool) {
    linkLabel_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func LinkLabel_GetTabOrder(obj uintptr) TTabOrder {
-    ret, _, _ := linkLabel_GetTabOrder.Call(obj)
-    return TTabOrder(ret)
-}
-
-func LinkLabel_SetTabOrder(obj uintptr, value TTabOrder) {
-   linkLabel_SetTabOrder.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetTabStop(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetTabStop.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_SetTabStop(obj uintptr, value bool) {
-   linkLabel_SetTabStop.Call(obj, GoBoolToDBool(value))
-}
-
-func LinkLabel_GetUseVisualStyle(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetUseVisualStyle.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_SetUseVisualStyle(obj uintptr, value bool) {
-   linkLabel_SetUseVisualStyle.Call(obj, GoBoolToDBool(value))
-}
-
 func LinkLabel_GetVisible(obj uintptr) bool {
     ret, _, _ := linkLabel_GetVisible.Call(obj)
     return DBoolToGoBool(ret)
@@ -12157,20 +10470,8 @@ func LinkLabel_SetOnDragOver(obj uintptr, fn interface{}) {
     linkLabel_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func LinkLabel_SetOnEndDock(obj uintptr, fn interface{}) {
-    linkLabel_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func LinkLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
     linkLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func LinkLabel_SetOnGesture(obj uintptr, fn interface{}) {
-    linkLabel_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func LinkLabel_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    linkLabel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func LinkLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -12193,92 +10494,13 @@ func LinkLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
     linkLabel_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func LinkLabel_SetOnStartDock(obj uintptr, fn interface{}) {
-    linkLabel_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func LinkLabel_SetOnLinkClick(obj uintptr, fn interface{}) {
     linkLabel_SetOnLinkClick.Call(obj, addEventToMap(fn))
-}
-
-func LinkLabel_GetDockClientCount(obj uintptr) int32 {
-    ret, _, _ := linkLabel_GetDockClientCount.Call(obj)
-    return int32(ret)
-}
-
-func LinkLabel_GetDockSite(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetDockSite.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_SetDockSite(obj uintptr, value bool) {
-   linkLabel_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func LinkLabel_GetDoubleBuffered(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetDoubleBuffered.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_SetDoubleBuffered(obj uintptr, value bool) {
-   linkLabel_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func LinkLabel_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func LinkLabel_GetMouseInClient(obj uintptr) bool {
     ret, _, _ := linkLabel_GetMouseInClient.Call(obj)
     return DBoolToGoBool(ret)
-}
-
-func LinkLabel_GetVisibleDockClientCount(obj uintptr) int32 {
-    ret, _, _ := linkLabel_GetVisibleDockClientCount.Call(obj)
-    return int32(ret)
-}
-
-func LinkLabel_GetBrush(obj uintptr) uintptr {
-    ret, _, _ := linkLabel_GetBrush.Call(obj)
-    return ret
-}
-
-func LinkLabel_GetControlCount(obj uintptr) int32 {
-    ret, _, _ := linkLabel_GetControlCount.Call(obj)
-    return int32(ret)
-}
-
-func LinkLabel_GetHandle(obj uintptr) HWND {
-    ret, _, _ := linkLabel_GetHandle.Call(obj)
-    return HWND(ret)
-}
-
-func LinkLabel_GetParentDoubleBuffered(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetParentDoubleBuffered.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_SetParentDoubleBuffered(obj uintptr, value bool) {
-   linkLabel_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func LinkLabel_GetParentWindow(obj uintptr) HWND {
-    ret, _, _ := linkLabel_GetParentWindow.Call(obj)
-    return HWND(ret)
-}
-
-func LinkLabel_SetParentWindow(obj uintptr, value HWND) {
-   linkLabel_SetParentWindow.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetUseDockManager(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetUseDockManager.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_SetUseDockManager(obj uintptr, value bool) {
-   linkLabel_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
 func LinkLabel_GetAction(obj uintptr) uintptr {
@@ -12357,26 +10579,6 @@ func LinkLabel_SetControlStyle(obj uintptr, value TControlStyle) {
    linkLabel_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func LinkLabel_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := linkLabel_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func LinkLabel_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := linkLabel_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func LinkLabel_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := linkLabel_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func LinkLabel_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := linkLabel_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func LinkLabel_GetFloating(obj uintptr) bool {
     ret, _, _ := linkLabel_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -12389,24 +10591,6 @@ func LinkLabel_GetParent(obj uintptr) uintptr {
 
 func LinkLabel_SetParent(obj uintptr, value uintptr) {
    linkLabel_SetParent.Call(obj, value)
-}
-
-func LinkLabel_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := linkLabel_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func LinkLabel_SetStyleElements(obj uintptr, value TStyleElements) {
-   linkLabel_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := linkLabel_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LinkLabel_SetAlignWithMargins(obj uintptr, value bool) {
-   linkLabel_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func LinkLabel_GetLeft(obj uintptr) int32 {
@@ -12443,15 +10627,6 @@ func LinkLabel_GetHeight(obj uintptr) int32 {
 
 func LinkLabel_SetHeight(obj uintptr, value int32) {
    linkLabel_SetHeight.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetCursor(obj uintptr) TCursor {
-    ret, _, _ := linkLabel_GetCursor.Call(obj)
-    return TCursor(ret)
-}
-
-func LinkLabel_SetCursor(obj uintptr, value TCursor) {
-   linkLabel_SetCursor.Call(obj, uintptr(value))
 }
 
 func LinkLabel_GetHint(obj uintptr) string {
@@ -12507,16 +10682,6 @@ func LinkLabel_GetTag(obj uintptr) int {
 
 func LinkLabel_SetTag(obj uintptr, value int) {
    linkLabel_SetTag.Call(obj, uintptr(value))
-}
-
-func LinkLabel_GetDockClients(obj uintptr, Index int32) uintptr {
-    ret, _, _ := linkLabel_GetDockClients.Call(obj, uintptr(Index))
-    return ret
-}
-
-func LinkLabel_GetControls(obj uintptr, Index int32) uintptr {
-    ret, _, _ := linkLabel_GetControls.Call(obj, uintptr(Index))
-    return ret
 }
 
 func LinkLabel_GetComponents(obj uintptr, AIndex int32) uintptr {
@@ -12650,10 +10815,6 @@ func SpeedButton_GetNamePath(obj uintptr) string {
 
 func SpeedButton_Assign(obj uintptr, Source uintptr)  {
     speedButton_Assign.Call(obj, Source )
-}
-
-func SpeedButton_DisposeOf(obj uintptr)  {
-    speedButton_DisposeOf.Call(obj)
 }
 
 func SpeedButton_ClassType(obj uintptr) TClass {
@@ -12889,25 +11050,12 @@ func SpeedButton_SetVisible(obj uintptr, value bool) {
    speedButton_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func SpeedButton_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := speedButton_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func SpeedButton_SetStyleElements(obj uintptr, value TStyleElements) {
-   speedButton_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func SpeedButton_SetOnClick(obj uintptr, fn interface{}) {
     speedButton_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
 func SpeedButton_SetOnDblClick(obj uintptr, fn interface{}) {
     speedButton_SetOnDblClick.Call(obj, addEventToMap(fn))
-}
-
-func SpeedButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    speedButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func SpeedButton_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -12988,26 +11136,6 @@ func SpeedButton_SetControlStyle(obj uintptr, value TControlStyle) {
    speedButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func SpeedButton_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := speedButton_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func SpeedButton_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := speedButton_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func SpeedButton_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := speedButton_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func SpeedButton_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := speedButton_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func SpeedButton_GetFloating(obj uintptr) bool {
     ret, _, _ := speedButton_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -13020,19 +11148,6 @@ func SpeedButton_GetParent(obj uintptr) uintptr {
 
 func SpeedButton_SetParent(obj uintptr, value uintptr) {
    speedButton_SetParent.Call(obj, value)
-}
-
-func SpeedButton_SetOnGesture(obj uintptr, fn interface{}) {
-    speedButton_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func SpeedButton_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := speedButton_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func SpeedButton_SetAlignWithMargins(obj uintptr, value bool) {
-   speedButton_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func SpeedButton_GetLeft(obj uintptr) int32 {
@@ -13264,10 +11379,6 @@ func Splitter_Assign(obj uintptr, Source uintptr)  {
     splitter_Assign.Call(obj, Source )
 }
 
-func Splitter_DisposeOf(obj uintptr)  {
-    splitter_DisposeOf.Call(obj)
-}
-
 func Splitter_ClassType(obj uintptr) TClass {
     ret, _, _ := splitter_ClassType.Call(obj)
     return TClass(ret)
@@ -13371,15 +11482,6 @@ func Splitter_SetWidth(obj uintptr, value int32) {
    splitter_SetWidth.Call(obj, uintptr(value))
 }
 
-func Splitter_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := splitter_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Splitter_SetStyleElements(obj uintptr, value TStyleElements) {
-   splitter_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func Splitter_SetOnPaint(obj uintptr, fn interface{}) {
     splitter_SetOnPaint.Call(obj, addEventToMap(fn))
 }
@@ -13478,26 +11580,6 @@ func Splitter_SetControlStyle(obj uintptr, value TControlStyle) {
    splitter_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Splitter_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := splitter_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Splitter_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := splitter_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Splitter_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := splitter_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Splitter_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := splitter_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Splitter_GetFloating(obj uintptr) bool {
     ret, _, _ := splitter_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -13519,19 +11601,6 @@ func Splitter_GetParent(obj uintptr) uintptr {
 
 func Splitter_SetParent(obj uintptr, value uintptr) {
    splitter_SetParent.Call(obj, value)
-}
-
-func Splitter_SetOnGesture(obj uintptr, fn interface{}) {
-    splitter_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func Splitter_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := splitter_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Splitter_SetAlignWithMargins(obj uintptr, value bool) {
-   splitter_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Splitter_GetLeft(obj uintptr) int32 {
@@ -13687,10 +11756,6 @@ func RadioGroup_Invalidate(obj uintptr)  {
     radioGroup_Invalidate.Call(obj)
 }
 
-func RadioGroup_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    radioGroup_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func RadioGroup_RemoveControl(obj uintptr, AControl uintptr)  {
     radioGroup_RemoveControl.Call(obj, AControl )
 }
@@ -13721,10 +11786,6 @@ func RadioGroup_SetFocus(obj uintptr)  {
 
 func RadioGroup_Update(obj uintptr)  {
     radioGroup_Update.Call(obj)
-}
-
-func RadioGroup_UpdateControlState(obj uintptr)  {
-    radioGroup_UpdateControlState.Call(obj)
 }
 
 func RadioGroup_BringToFront(obj uintptr)  {
@@ -13819,10 +11880,6 @@ func RadioGroup_Assign(obj uintptr, Source uintptr)  {
     radioGroup_Assign.Call(obj, Source )
 }
 
-func RadioGroup_DisposeOf(obj uintptr)  {
-    radioGroup_DisposeOf.Call(obj)
-}
-
 func RadioGroup_ClassType(obj uintptr) TClass {
     ret, _, _ := radioGroup_ClassType.Call(obj)
     return TClass(ret)
@@ -13912,15 +11969,6 @@ func RadioGroup_SetColumns(obj uintptr, value int32) {
    radioGroup_SetColumns.Call(obj, uintptr(value))
 }
 
-func RadioGroup_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := radioGroup_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioGroup_SetCtl3D(obj uintptr, value bool) {
-   radioGroup_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func RadioGroup_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := radioGroup_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -13937,15 +11985,6 @@ func RadioGroup_GetDragCursor(obj uintptr) TCursor {
 
 func RadioGroup_SetDragCursor(obj uintptr, value TCursor) {
    radioGroup_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func RadioGroup_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := radioGroup_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func RadioGroup_SetDragKind(obj uintptr, value TDragKind) {
-   radioGroup_SetDragKind.Call(obj, uintptr(value))
 }
 
 func RadioGroup_GetDragMode(obj uintptr) TDragMode {
@@ -14002,15 +12041,6 @@ func RadioGroup_SetConstraints(obj uintptr, value uintptr) {
    radioGroup_SetConstraints.Call(obj, value)
 }
 
-func RadioGroup_GetParentBackground(obj uintptr) bool {
-    ret, _, _ := radioGroup_GetParentBackground.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioGroup_SetParentBackground(obj uintptr, value bool) {
-   radioGroup_SetParentBackground.Call(obj, GoBoolToDBool(value))
-}
-
 func RadioGroup_GetParentColor(obj uintptr) bool {
     ret, _, _ := radioGroup_GetParentColor.Call(obj)
     return DBoolToGoBool(ret)
@@ -14018,15 +12048,6 @@ func RadioGroup_GetParentColor(obj uintptr) bool {
 
 func RadioGroup_SetParentColor(obj uintptr, value bool) {
    radioGroup_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func RadioGroup_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := radioGroup_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioGroup_SetParentCtl3D(obj uintptr, value bool) {
-   radioGroup_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func RadioGroup_GetParentDoubleBuffered(obj uintptr) bool {
@@ -14101,30 +12122,8 @@ func RadioGroup_SetVisible(obj uintptr, value bool) {
    radioGroup_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func RadioGroup_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := radioGroup_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func RadioGroup_SetStyleElements(obj uintptr, value TStyleElements) {
-   radioGroup_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func RadioGroup_GetWordWrap(obj uintptr) bool {
-    ret, _, _ := radioGroup_GetWordWrap.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioGroup_SetWordWrap(obj uintptr, value bool) {
-   radioGroup_SetWordWrap.Call(obj, GoBoolToDBool(value))
-}
-
 func RadioGroup_SetOnClick(obj uintptr, fn interface{}) {
     radioGroup_SetOnClick.Call(obj, addEventToMap(fn))
-}
-
-func RadioGroup_SetOnContextPopup(obj uintptr, fn interface{}) {
-    radioGroup_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
 func RadioGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
@@ -14133,10 +12132,6 @@ func RadioGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
 
 func RadioGroup_SetOnDragOver(obj uintptr, fn interface{}) {
     radioGroup_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func RadioGroup_SetOnEndDock(obj uintptr, fn interface{}) {
-    radioGroup_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
 func RadioGroup_SetOnEndDrag(obj uintptr, fn interface{}) {
@@ -14151,14 +12146,6 @@ func RadioGroup_SetOnExit(obj uintptr, fn interface{}) {
     radioGroup_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func RadioGroup_SetOnGesture(obj uintptr, fn interface{}) {
-    radioGroup_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func RadioGroup_SetOnStartDock(obj uintptr, fn interface{}) {
-    radioGroup_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func RadioGroup_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := radioGroup_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -14171,11 +12158,6 @@ func RadioGroup_GetDockSite(obj uintptr) bool {
 
 func RadioGroup_SetDockSite(obj uintptr, value bool) {
    radioGroup_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func RadioGroup_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := radioGroup_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func RadioGroup_GetMouseInClient(obj uintptr) bool {
@@ -14288,26 +12270,6 @@ func RadioGroup_SetControlStyle(obj uintptr, value TControlStyle) {
    radioGroup_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func RadioGroup_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := radioGroup_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func RadioGroup_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := radioGroup_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func RadioGroup_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := radioGroup_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func RadioGroup_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := radioGroup_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func RadioGroup_GetFloating(obj uintptr) bool {
     ret, _, _ := radioGroup_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -14320,15 +12282,6 @@ func RadioGroup_GetParent(obj uintptr) uintptr {
 
 func RadioGroup_SetParent(obj uintptr, value uintptr) {
    radioGroup_SetParent.Call(obj, value)
-}
-
-func RadioGroup_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := radioGroup_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func RadioGroup_SetAlignWithMargins(obj uintptr, value bool) {
-   radioGroup_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func RadioGroup_GetLeft(obj uintptr) int32 {
@@ -14431,11 +12384,6 @@ func RadioGroup_SetTag(obj uintptr, value int) {
    radioGroup_SetTag.Call(obj, uintptr(value))
 }
 
-func RadioGroup_GetButtons(obj uintptr, Index int32) uintptr {
-    ret, _, _ := radioGroup_GetButtons.Call(obj, uintptr(Index))
-    return ret
-}
-
 func RadioGroup_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := radioGroup_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -14517,10 +12465,6 @@ func StaticText_Invalidate(obj uintptr)  {
     staticText_Invalidate.Call(obj)
 }
 
-func StaticText_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    staticText_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func StaticText_RemoveControl(obj uintptr, AControl uintptr)  {
     staticText_RemoveControl.Call(obj, AControl )
 }
@@ -14551,10 +12495,6 @@ func StaticText_SetFocus(obj uintptr)  {
 
 func StaticText_Update(obj uintptr)  {
     staticText_Update.Call(obj)
-}
-
-func StaticText_UpdateControlState(obj uintptr)  {
-    staticText_UpdateControlState.Call(obj)
 }
 
 func StaticText_BringToFront(obj uintptr)  {
@@ -14649,10 +12589,6 @@ func StaticText_Assign(obj uintptr, Source uintptr)  {
     staticText_Assign.Call(obj, Source )
 }
 
-func StaticText_DisposeOf(obj uintptr)  {
-    staticText_DisposeOf.Call(obj)
-}
-
 func StaticText_ClassType(obj uintptr) TClass {
     ret, _, _ := staticText_ClassType.Call(obj)
     return TClass(ret)
@@ -14722,42 +12658,6 @@ func StaticText_GetAutoSize(obj uintptr) bool {
 
 func StaticText_SetAutoSize(obj uintptr, value bool) {
    staticText_SetAutoSize.Call(obj, GoBoolToDBool(value))
-}
-
-func StaticText_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := staticText_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func StaticText_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   staticText_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func StaticText_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := staticText_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func StaticText_SetBevelInner(obj uintptr, value TBevelCut) {
-   staticText_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func StaticText_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := staticText_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func StaticText_SetBevelKind(obj uintptr, value TBevelKind) {
-   staticText_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func StaticText_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := staticText_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func StaticText_SetBevelOuter(obj uintptr, value TBevelCut) {
-   staticText_SetBevelOuter.Call(obj, uintptr(value))
 }
 
 func StaticText_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -14958,15 +12858,6 @@ func StaticText_SetVisible(obj uintptr, value bool) {
    staticText_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func StaticText_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := staticText_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func StaticText_SetStyleElements(obj uintptr, value TStyleElements) {
-   staticText_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func StaticText_SetOnClick(obj uintptr, fn interface{}) {
     staticText_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -14987,20 +12878,8 @@ func StaticText_SetOnDragOver(obj uintptr, fn interface{}) {
     staticText_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func StaticText_SetOnEndDock(obj uintptr, fn interface{}) {
-    staticText_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func StaticText_SetOnEndDrag(obj uintptr, fn interface{}) {
     staticText_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func StaticText_SetOnGesture(obj uintptr, fn interface{}) {
-    staticText_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func StaticText_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    staticText_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StaticText_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -15023,10 +12902,6 @@ func StaticText_SetOnMouseUp(obj uintptr, fn interface{}) {
     staticText_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func StaticText_SetOnStartDock(obj uintptr, fn interface{}) {
-    staticText_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func StaticText_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := staticText_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -15039,11 +12914,6 @@ func StaticText_GetDockSite(obj uintptr) bool {
 
 func StaticText_SetDockSite(obj uintptr, value bool) {
    staticText_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func StaticText_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := staticText_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func StaticText_GetMouseInClient(obj uintptr) bool {
@@ -15156,26 +13026,6 @@ func StaticText_SetControlStyle(obj uintptr, value TControlStyle) {
    staticText_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func StaticText_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := staticText_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func StaticText_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := staticText_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func StaticText_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := staticText_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func StaticText_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := staticText_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func StaticText_GetFloating(obj uintptr) bool {
     ret, _, _ := staticText_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -15188,15 +13038,6 @@ func StaticText_GetParent(obj uintptr) uintptr {
 
 func StaticText_SetParent(obj uintptr, value uintptr) {
    staticText_SetParent.Call(obj, value)
-}
-
-func StaticText_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := staticText_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func StaticText_SetAlignWithMargins(obj uintptr, value bool) {
-   staticText_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func StaticText_GetLeft(obj uintptr) int32 {
@@ -15342,10 +13183,6 @@ func ColorBox_ClearSelection(obj uintptr)  {
     colorBox_ClearSelection.Call(obj)
 }
 
-func ColorBox_CopySelection(obj uintptr, Destination uintptr)  {
-    colorBox_CopySelection.Call(obj, Destination )
-}
-
 func ColorBox_DeleteSelected(obj uintptr)  {
     colorBox_DeleteSelected.Call(obj)
 }
@@ -15404,10 +13241,6 @@ func ColorBox_Invalidate(obj uintptr)  {
     colorBox_Invalidate.Call(obj)
 }
 
-func ColorBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    colorBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ColorBox_RemoveControl(obj uintptr, AControl uintptr)  {
     colorBox_RemoveControl.Call(obj, AControl )
 }
@@ -15438,10 +13271,6 @@ func ColorBox_SetFocus(obj uintptr)  {
 
 func ColorBox_Update(obj uintptr)  {
     colorBox_Update.Call(obj)
-}
-
-func ColorBox_UpdateControlState(obj uintptr)  {
-    colorBox_UpdateControlState.Call(obj)
 }
 
 func ColorBox_BringToFront(obj uintptr)  {
@@ -15534,10 +13363,6 @@ func ColorBox_GetNamePath(obj uintptr) string {
 
 func ColorBox_Assign(obj uintptr, Source uintptr)  {
     colorBox_Assign.Call(obj, Source )
-}
-
-func ColorBox_DisposeOf(obj uintptr)  {
-    colorBox_DisposeOf.Call(obj)
 }
 
 func ColorBox_ClassType(obj uintptr) TClass {
@@ -15647,42 +13472,6 @@ func ColorBox_SetAnchors(obj uintptr, value TAnchors) {
    colorBox_SetAnchors.Call(obj, uintptr(value))
 }
 
-func ColorBox_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := colorBox_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func ColorBox_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   colorBox_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func ColorBox_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := colorBox_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ColorBox_SetBevelInner(obj uintptr, value TBevelCut) {
-   colorBox_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func ColorBox_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := colorBox_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func ColorBox_SetBevelKind(obj uintptr, value TBevelKind) {
-   colorBox_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func ColorBox_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := colorBox_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ColorBox_SetBevelOuter(obj uintptr, value TBevelCut) {
-   colorBox_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func ColorBox_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := colorBox_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -15708,15 +13497,6 @@ func ColorBox_GetConstraints(obj uintptr) uintptr {
 
 func ColorBox_SetConstraints(obj uintptr, value uintptr) {
    colorBox_SetConstraints.Call(obj, value)
-}
-
-func ColorBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := colorBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorBox_SetCtl3D(obj uintptr, value bool) {
-   colorBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorBox_GetDoubleBuffered(obj uintptr) bool {
@@ -15771,15 +13551,6 @@ func ColorBox_GetParentColor(obj uintptr) bool {
 
 func ColorBox_SetParentColor(obj uintptr, value bool) {
    colorBox_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func ColorBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := colorBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorBox_SetParentCtl3D(obj uintptr, value bool) {
-   colorBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorBox_GetParentDoubleBuffered(obj uintptr) bool {
@@ -15854,15 +13625,6 @@ func ColorBox_SetVisible(obj uintptr, value bool) {
    colorBox_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ColorBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := colorBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ColorBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   colorBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ColorBox_SetOnChange(obj uintptr, fn interface{}) {
     colorBox_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -15883,14 +13645,6 @@ func ColorBox_SetOnDragOver(obj uintptr, fn interface{}) {
     colorBox_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func ColorBox_SetOnDropDown(obj uintptr, fn interface{}) {
-    colorBox_SetOnDropDown.Call(obj, addEventToMap(fn))
-}
-
-func ColorBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    colorBox_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func ColorBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     colorBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -15901,10 +13655,6 @@ func ColorBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ColorBox_SetOnExit(obj uintptr, fn interface{}) {
     colorBox_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func ColorBox_SetOnGesture(obj uintptr, fn interface{}) {
-    colorBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ColorBox_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -15931,28 +13681,6 @@ func ColorBox_SetOnSelect(obj uintptr, fn interface{}) {
     colorBox_SetOnSelect.Call(obj, addEventToMap(fn))
 }
 
-func ColorBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    colorBox_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
-func ColorBox_GetAutoCompleteDelay(obj uintptr) uint32 {
-    ret, _, _ := colorBox_GetAutoCompleteDelay.Call(obj)
-    return uint32(ret)
-}
-
-func ColorBox_SetAutoCompleteDelay(obj uintptr, value uint32) {
-   colorBox_SetAutoCompleteDelay.Call(obj, uintptr(value))
-}
-
-func ColorBox_GetAutoCloseUp(obj uintptr) bool {
-    ret, _, _ := colorBox_GetAutoCloseUp.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorBox_SetAutoCloseUp(obj uintptr, value bool) {
-   colorBox_SetAutoCloseUp.Call(obj, GoBoolToDBool(value))
-}
-
 func ColorBox_GetCharCase(obj uintptr) TEditCharCase {
     ret, _, _ := colorBox_GetCharCase.Call(obj)
     return TEditCharCase(ret)
@@ -15969,15 +13697,6 @@ func ColorBox_GetSelText(obj uintptr) string {
 
 func ColorBox_SetSelText(obj uintptr, value string) {
    colorBox_SetSelText.Call(obj, GoStrToDStr(value))
-}
-
-func ColorBox_GetTextHint(obj uintptr) string {
-    ret, _, _ := colorBox_GetTextHint.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func ColorBox_SetTextHint(obj uintptr, value string) {
-   colorBox_SetTextHint.Call(obj, GoStrToDStr(value))
 }
 
 func ColorBox_GetCanvas(obj uintptr) uintptr {
@@ -16042,11 +13761,6 @@ func ColorBox_GetDockSite(obj uintptr) bool {
 
 func ColorBox_SetDockSite(obj uintptr, value bool) {
    colorBox_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func ColorBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := colorBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ColorBox_GetMouseInClient(obj uintptr) bool {
@@ -16159,26 +13873,6 @@ func ColorBox_SetControlStyle(obj uintptr, value TControlStyle) {
    colorBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ColorBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := colorBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ColorBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := colorBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ColorBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := colorBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ColorBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := colorBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ColorBox_GetFloating(obj uintptr) bool {
     ret, _, _ := colorBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -16191,15 +13885,6 @@ func ColorBox_GetParent(obj uintptr) uintptr {
 
 func ColorBox_SetParent(obj uintptr, value uintptr) {
    colorBox_SetParent.Call(obj, value)
-}
-
-func ColorBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := colorBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorBox_SetAlignWithMargins(obj uintptr, value bool) {
-   colorBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorBox_GetLeft(obj uintptr) int32 {
@@ -16355,10 +14040,6 @@ func ColorListBox_ClearSelection(obj uintptr)  {
     colorListBox_ClearSelection.Call(obj)
 }
 
-func ColorListBox_CopySelection(obj uintptr, Destination uintptr)  {
-    colorListBox_CopySelection.Call(obj, Destination )
-}
-
 func ColorListBox_DeleteSelected(obj uintptr)  {
     colorListBox_DeleteSelected.Call(obj)
 }
@@ -16428,10 +14109,6 @@ func ColorListBox_Invalidate(obj uintptr)  {
     colorListBox_Invalidate.Call(obj)
 }
 
-func ColorListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    colorListBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ColorListBox_RemoveControl(obj uintptr, AControl uintptr)  {
     colorListBox_RemoveControl.Call(obj, AControl )
 }
@@ -16462,10 +14139,6 @@ func ColorListBox_SetFocus(obj uintptr)  {
 
 func ColorListBox_Update(obj uintptr)  {
     colorListBox_Update.Call(obj)
-}
-
-func ColorListBox_UpdateControlState(obj uintptr)  {
-    colorListBox_UpdateControlState.Call(obj)
 }
 
 func ColorListBox_BringToFront(obj uintptr)  {
@@ -16560,10 +14233,6 @@ func ColorListBox_Assign(obj uintptr, Source uintptr)  {
     colorListBox_Assign.Call(obj, Source )
 }
 
-func ColorListBox_DisposeOf(obj uintptr)  {
-    colorListBox_DisposeOf.Call(obj)
-}
-
 func ColorListBox_ClassType(obj uintptr) TClass {
     ret, _, _ := colorListBox_ClassType.Call(obj)
     return TClass(ret)
@@ -16606,15 +14275,6 @@ func ColorListBox_GetAlign(obj uintptr) TAlign {
 
 func ColorListBox_SetAlign(obj uintptr, value TAlign) {
    colorListBox_SetAlign.Call(obj, uintptr(value))
-}
-
-func ColorListBox_GetAutoComplete(obj uintptr) bool {
-    ret, _, _ := colorListBox_GetAutoComplete.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorListBox_SetAutoComplete(obj uintptr, value bool) {
-   colorListBox_SetAutoComplete.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorListBox_GetDefaultColorColor(obj uintptr) TColor {
@@ -16662,42 +14322,6 @@ func ColorListBox_SetAnchors(obj uintptr, value TAnchors) {
    colorListBox_SetAnchors.Call(obj, uintptr(value))
 }
 
-func ColorListBox_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := colorListBox_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func ColorListBox_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   colorListBox_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func ColorListBox_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := colorListBox_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ColorListBox_SetBevelInner(obj uintptr, value TBevelCut) {
-   colorListBox_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func ColorListBox_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := colorListBox_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func ColorListBox_SetBevelKind(obj uintptr, value TBevelKind) {
-   colorListBox_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func ColorListBox_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := colorListBox_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ColorListBox_SetBevelOuter(obj uintptr, value TBevelCut) {
-   colorListBox_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func ColorListBox_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := colorListBox_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -16723,15 +14347,6 @@ func ColorListBox_GetConstraints(obj uintptr) uintptr {
 
 func ColorListBox_SetConstraints(obj uintptr, value uintptr) {
    colorListBox_SetConstraints.Call(obj, value)
-}
-
-func ColorListBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := colorListBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorListBox_SetCtl3D(obj uintptr, value bool) {
-   colorListBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorListBox_GetDoubleBuffered(obj uintptr) bool {
@@ -16777,15 +14392,6 @@ func ColorListBox_GetParentColor(obj uintptr) bool {
 
 func ColorListBox_SetParentColor(obj uintptr, value bool) {
    colorListBox_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func ColorListBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := colorListBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorListBox_SetParentCtl3D(obj uintptr, value bool) {
-   colorListBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorListBox_GetParentDoubleBuffered(obj uintptr) bool {
@@ -16860,15 +14466,6 @@ func ColorListBox_SetVisible(obj uintptr, value bool) {
    colorListBox_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ColorListBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := colorListBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ColorListBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   colorListBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ColorListBox_SetOnClick(obj uintptr, fn interface{}) {
     colorListBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -16889,10 +14486,6 @@ func ColorListBox_SetOnDragOver(obj uintptr, fn interface{}) {
     colorListBox_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func ColorListBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    colorListBox_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func ColorListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     colorListBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -16905,10 +14498,6 @@ func ColorListBox_SetOnExit(obj uintptr, fn interface{}) {
     colorListBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func ColorListBox_SetOnGesture(obj uintptr, fn interface{}) {
-    colorListBox_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func ColorListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
     colorListBox_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -16919,10 +14508,6 @@ func ColorListBox_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ColorListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
     colorListBox_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func ColorListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    colorListBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ColorListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -16945,19 +14530,6 @@ func ColorListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     colorListBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func ColorListBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    colorListBox_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
-func ColorListBox_GetAutoCompleteDelay(obj uintptr) uint32 {
-    ret, _, _ := colorListBox_GetAutoCompleteDelay.Call(obj)
-    return uint32(ret)
-}
-
-func ColorListBox_SetAutoCompleteDelay(obj uintptr, value uint32) {
-   colorListBox_SetAutoCompleteDelay.Call(obj, uintptr(value))
-}
-
 func ColorListBox_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := colorListBox_GetCanvas.Call(obj)
     return ret
@@ -16966,10 +14538,6 @@ func ColorListBox_GetCanvas(obj uintptr) uintptr {
 func ColorListBox_GetCount(obj uintptr) int32 {
     ret, _, _ := colorListBox_GetCount.Call(obj)
     return int32(ret)
-}
-
-func ColorListBox_SetCount(obj uintptr, value int32) {
-   colorListBox_SetCount.Call(obj, uintptr(value))
 }
 
 func ColorListBox_GetItems(obj uintptr) uintptr {
@@ -17016,11 +14584,6 @@ func ColorListBox_GetDockSite(obj uintptr) bool {
 
 func ColorListBox_SetDockSite(obj uintptr, value bool) {
    colorListBox_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func ColorListBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := colorListBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ColorListBox_GetMouseInClient(obj uintptr) bool {
@@ -17133,26 +14696,6 @@ func ColorListBox_SetControlStyle(obj uintptr, value TControlStyle) {
    colorListBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ColorListBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := colorListBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ColorListBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := colorListBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ColorListBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := colorListBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ColorListBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := colorListBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ColorListBox_GetFloating(obj uintptr) bool {
     ret, _, _ := colorListBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -17165,15 +14708,6 @@ func ColorListBox_GetParent(obj uintptr) uintptr {
 
 func ColorListBox_SetParent(obj uintptr, value uintptr) {
    colorListBox_SetParent.Call(obj, value)
-}
-
-func ColorListBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := colorListBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorListBox_SetAlignWithMargins(obj uintptr, value bool) {
-   colorListBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ColorListBox_GetLeft(obj uintptr) int32 {
@@ -17317,14 +14851,6 @@ func TrayIcon_Free(obj uintptr) {
     trayIcon_Free.Call(obj)
 }
 
-func TrayIcon_Refresh(obj uintptr)  {
-    trayIcon_Refresh.Call(obj)
-}
-
-func TrayIcon_SetDefaultIcon(obj uintptr)  {
-    trayIcon_SetDefaultIcon.Call(obj)
-}
-
 func TrayIcon_ShowBalloonHint(obj uintptr)  {
     trayIcon_ShowBalloonHint.Call(obj)
 }
@@ -17346,10 +14872,6 @@ func TrayIcon_HasParent(obj uintptr) bool {
 
 func TrayIcon_Assign(obj uintptr, Source uintptr)  {
     trayIcon_Assign.Call(obj, Source )
-}
-
-func TrayIcon_DisposeOf(obj uintptr)  {
-    trayIcon_DisposeOf.Call(obj)
 }
 
 func TrayIcon_ClassType(obj uintptr) TClass {
@@ -17385,15 +14907,6 @@ func TrayIcon_GetHashCode(obj uintptr) int32 {
 func TrayIcon_ToString(obj uintptr) string {
     ret, _, _ := trayIcon_ToString.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func TrayIcon_GetAnimate(obj uintptr) bool {
-    ret, _, _ := trayIcon_GetAnimate.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TrayIcon_SetAnimate(obj uintptr, value bool) {
-   trayIcon_SetAnimate.Call(obj, GoBoolToDBool(value))
 }
 
 func TrayIcon_GetAnimateInterval(obj uintptr) uint32 {
@@ -17459,15 +14972,6 @@ func TrayIcon_SetIcon(obj uintptr, value uintptr) {
    trayIcon_SetIcon.Call(obj, value)
 }
 
-func TrayIcon_GetIconIndex(obj uintptr) int32 {
-    ret, _, _ := trayIcon_GetIconIndex.Call(obj)
-    return int32(ret)
-}
-
-func TrayIcon_SetIconIndex(obj uintptr, value int32) {
-   trayIcon_SetIconIndex.Call(obj, uintptr(value))
-}
-
 func TrayIcon_GetPopupMenu(obj uintptr) uintptr {
     ret, _, _ := trayIcon_GetPopupMenu.Call(obj)
     return ret
@@ -17484,10 +14988,6 @@ func TrayIcon_GetVisible(obj uintptr) bool {
 
 func TrayIcon_SetVisible(obj uintptr, value bool) {
    trayIcon_SetVisible.Call(obj, GoBoolToDBool(value))
-}
-
-func TrayIcon_SetOnBalloonClick(obj uintptr, fn interface{}) {
-    trayIcon_SetOnBalloonClick.Call(obj, addEventToMap(fn))
 }
 
 func TrayIcon_SetOnClick(obj uintptr, fn interface{}) {
@@ -17592,10 +15092,6 @@ func OpenDialog_Assign(obj uintptr, Source uintptr)  {
     openDialog_Assign.Call(obj, Source )
 }
 
-func OpenDialog_DisposeOf(obj uintptr)  {
-    openDialog_DisposeOf.Call(obj)
-}
-
 func OpenDialog_ClassType(obj uintptr) TClass {
     ret, _, _ := openDialog_ClassType.Call(obj)
     return TClass(ret)
@@ -17690,15 +15186,6 @@ func OpenDialog_SetOptions(obj uintptr, value TOpenOptions) {
    openDialog_SetOptions.Call(obj, uintptr(value))
 }
 
-func OpenDialog_GetOptionsEx(obj uintptr) TOpenOptionsEx {
-    ret, _, _ := openDialog_GetOptionsEx.Call(obj)
-    return TOpenOptionsEx(ret)
-}
-
-func OpenDialog_SetOptionsEx(obj uintptr, value TOpenOptionsEx) {
-   openDialog_SetOptionsEx.Call(obj, uintptr(value))
-}
-
 func OpenDialog_GetTitle(obj uintptr) string {
     ret, _, _ := openDialog_GetTitle.Call(obj)
     return DStrToGoStr(ret)
@@ -17711,15 +15198,6 @@ func OpenDialog_SetTitle(obj uintptr, value string) {
 func OpenDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := openDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func OpenDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := openDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func OpenDialog_SetCtl3D(obj uintptr, value bool) {
-   openDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func OpenDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -17810,10 +15288,6 @@ func SaveDialog_HasParent(obj uintptr) bool {
 
 func SaveDialog_Assign(obj uintptr, Source uintptr)  {
     saveDialog_Assign.Call(obj, Source )
-}
-
-func SaveDialog_DisposeOf(obj uintptr)  {
-    saveDialog_DisposeOf.Call(obj)
 }
 
 func SaveDialog_ClassType(obj uintptr) TClass {
@@ -17910,15 +15384,6 @@ func SaveDialog_SetOptions(obj uintptr, value TOpenOptions) {
    saveDialog_SetOptions.Call(obj, uintptr(value))
 }
 
-func SaveDialog_GetOptionsEx(obj uintptr) TOpenOptionsEx {
-    ret, _, _ := saveDialog_GetOptionsEx.Call(obj)
-    return TOpenOptionsEx(ret)
-}
-
-func SaveDialog_SetOptionsEx(obj uintptr, value TOpenOptionsEx) {
-   saveDialog_SetOptionsEx.Call(obj, uintptr(value))
-}
-
 func SaveDialog_GetTitle(obj uintptr) string {
     ret, _, _ := saveDialog_GetTitle.Call(obj)
     return DStrToGoStr(ret)
@@ -17931,15 +15396,6 @@ func SaveDialog_SetTitle(obj uintptr, value string) {
 func SaveDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := saveDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func SaveDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := saveDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func SaveDialog_SetCtl3D(obj uintptr, value bool) {
-   saveDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func SaveDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -18032,10 +15488,6 @@ func ColorDialog_Assign(obj uintptr, Source uintptr)  {
     colorDialog_Assign.Call(obj, Source )
 }
 
-func ColorDialog_DisposeOf(obj uintptr)  {
-    colorDialog_DisposeOf.Call(obj)
-}
-
 func ColorDialog_ClassType(obj uintptr) TClass {
     ret, _, _ := colorDialog_ClassType.Call(obj)
     return TClass(ret)
@@ -18078,24 +15530,6 @@ func ColorDialog_GetColor(obj uintptr) TColor {
 
 func ColorDialog_SetColor(obj uintptr, value TColor) {
    colorDialog_SetColor.Call(obj, uintptr(value))
-}
-
-func ColorDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := colorDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ColorDialog_SetCtl3D(obj uintptr, value bool) {
-   colorDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
-func ColorDialog_GetOptions(obj uintptr) TColorDialogOptions {
-    ret, _, _ := colorDialog_GetOptions.Call(obj)
-    return TColorDialogOptions(ret)
-}
-
-func ColorDialog_SetOptions(obj uintptr, value TColorDialogOptions) {
-   colorDialog_SetOptions.Call(obj, uintptr(value))
 }
 
 func ColorDialog_GetHandle(obj uintptr) HWND {
@@ -18193,10 +15627,6 @@ func FontDialog_Assign(obj uintptr, Source uintptr)  {
     fontDialog_Assign.Call(obj, Source )
 }
 
-func FontDialog_DisposeOf(obj uintptr)  {
-    fontDialog_DisposeOf.Call(obj)
-}
-
 func FontDialog_ClassType(obj uintptr) TClass {
     ret, _, _ := fontDialog_ClassType.Call(obj)
     return TClass(ret)
@@ -18253,15 +15683,6 @@ func FontDialog_SetOptions(obj uintptr, value TFontDialogOptions) {
 func FontDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := fontDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func FontDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := fontDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func FontDialog_SetCtl3D(obj uintptr, value bool) {
-   fontDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func FontDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -18352,10 +15773,6 @@ func PrintDialog_HasParent(obj uintptr) bool {
 
 func PrintDialog_Assign(obj uintptr, Source uintptr)  {
     printDialog_Assign.Call(obj, Source )
-}
-
-func PrintDialog_DisposeOf(obj uintptr)  {
-    printDialog_DisposeOf.Call(obj)
 }
 
 func PrintDialog_ClassType(obj uintptr) TClass {
@@ -18479,15 +15896,6 @@ func PrintDialog_GetHandle(obj uintptr) HWND {
     return HWND(ret)
 }
 
-func PrintDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := printDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func PrintDialog_SetCtl3D(obj uintptr, value bool) {
-   printDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func PrintDialog_SetOnClose(obj uintptr, fn interface{}) {
     printDialog_SetOnClose.Call(obj, addEventToMap(fn))
 }
@@ -18576,10 +15984,6 @@ func OpenPictureDialog_HasParent(obj uintptr) bool {
 
 func OpenPictureDialog_Assign(obj uintptr, Source uintptr)  {
     openPictureDialog_Assign.Call(obj, Source )
-}
-
-func OpenPictureDialog_DisposeOf(obj uintptr)  {
-    openPictureDialog_DisposeOf.Call(obj)
 }
 
 func OpenPictureDialog_ClassType(obj uintptr) TClass {
@@ -18676,15 +16080,6 @@ func OpenPictureDialog_SetOptions(obj uintptr, value TOpenOptions) {
    openPictureDialog_SetOptions.Call(obj, uintptr(value))
 }
 
-func OpenPictureDialog_GetOptionsEx(obj uintptr) TOpenOptionsEx {
-    ret, _, _ := openPictureDialog_GetOptionsEx.Call(obj)
-    return TOpenOptionsEx(ret)
-}
-
-func OpenPictureDialog_SetOptionsEx(obj uintptr, value TOpenOptionsEx) {
-   openPictureDialog_SetOptionsEx.Call(obj, uintptr(value))
-}
-
 func OpenPictureDialog_GetTitle(obj uintptr) string {
     ret, _, _ := openPictureDialog_GetTitle.Call(obj)
     return DStrToGoStr(ret)
@@ -18697,15 +16092,6 @@ func OpenPictureDialog_SetTitle(obj uintptr, value string) {
 func OpenPictureDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := openPictureDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func OpenPictureDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := openPictureDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func OpenPictureDialog_SetCtl3D(obj uintptr, value bool) {
-   openPictureDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func OpenPictureDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -18796,10 +16182,6 @@ func SavePictureDialog_HasParent(obj uintptr) bool {
 
 func SavePictureDialog_Assign(obj uintptr, Source uintptr)  {
     savePictureDialog_Assign.Call(obj, Source )
-}
-
-func SavePictureDialog_DisposeOf(obj uintptr)  {
-    savePictureDialog_DisposeOf.Call(obj)
 }
 
 func SavePictureDialog_ClassType(obj uintptr) TClass {
@@ -18896,15 +16278,6 @@ func SavePictureDialog_SetOptions(obj uintptr, value TOpenOptions) {
    savePictureDialog_SetOptions.Call(obj, uintptr(value))
 }
 
-func SavePictureDialog_GetOptionsEx(obj uintptr) TOpenOptionsEx {
-    ret, _, _ := savePictureDialog_GetOptionsEx.Call(obj)
-    return TOpenOptionsEx(ret)
-}
-
-func SavePictureDialog_SetOptionsEx(obj uintptr, value TOpenOptionsEx) {
-   savePictureDialog_SetOptionsEx.Call(obj, uintptr(value))
-}
-
 func SavePictureDialog_GetTitle(obj uintptr) string {
     ret, _, _ := savePictureDialog_GetTitle.Call(obj)
     return DStrToGoStr(ret)
@@ -18917,15 +16290,6 @@ func SavePictureDialog_SetTitle(obj uintptr, value string) {
 func SavePictureDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := savePictureDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func SavePictureDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := savePictureDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func SavePictureDialog_SetCtl3D(obj uintptr, value bool) {
-   savePictureDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func SavePictureDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -19048,10 +16412,6 @@ func TrackBar_Invalidate(obj uintptr)  {
     trackBar_Invalidate.Call(obj)
 }
 
-func TrackBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    trackBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func TrackBar_RemoveControl(obj uintptr, AControl uintptr)  {
     trackBar_RemoveControl.Call(obj, AControl )
 }
@@ -19082,10 +16442,6 @@ func TrackBar_SetFocus(obj uintptr)  {
 
 func TrackBar_Update(obj uintptr)  {
     trackBar_Update.Call(obj)
-}
-
-func TrackBar_UpdateControlState(obj uintptr)  {
-    trackBar_UpdateControlState.Call(obj)
 }
 
 func TrackBar_BringToFront(obj uintptr)  {
@@ -19180,10 +16536,6 @@ func TrackBar_Assign(obj uintptr, Source uintptr)  {
     trackBar_Assign.Call(obj, Source )
 }
 
-func TrackBar_DisposeOf(obj uintptr)  {
-    trackBar_DisposeOf.Call(obj)
-}
-
 func TrackBar_ClassType(obj uintptr) TClass {
     ret, _, _ := trackBar_ClassType.Call(obj)
     return TClass(ret)
@@ -19246,15 +16598,6 @@ func TrackBar_SetBorderWidth(obj uintptr, value int32) {
    trackBar_SetBorderWidth.Call(obj, uintptr(value))
 }
 
-func TrackBar_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := trackBar_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TrackBar_SetCtl3D(obj uintptr, value bool) {
-   trackBar_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func TrackBar_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := trackBar_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -19271,15 +16614,6 @@ func TrackBar_GetDragCursor(obj uintptr) TCursor {
 
 func TrackBar_SetDragCursor(obj uintptr, value TCursor) {
    trackBar_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func TrackBar_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := trackBar_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func TrackBar_SetDragKind(obj uintptr, value TDragKind) {
-   trackBar_SetDragKind.Call(obj, uintptr(value))
 }
 
 func TrackBar_GetDragMode(obj uintptr) TDragMode {
@@ -19345,15 +16679,6 @@ func TrackBar_SetOrientation(obj uintptr, value TTrackBarOrientation) {
    trackBar_SetOrientation.Call(obj, uintptr(value))
 }
 
-func TrackBar_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := trackBar_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TrackBar_SetParentCtl3D(obj uintptr, value bool) {
-   trackBar_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func TrackBar_GetParentDoubleBuffered(obj uintptr) bool {
     ret, _, _ := trackBar_GetParentDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -19406,24 +16731,6 @@ func TrackBar_GetPosition(obj uintptr) int32 {
 
 func TrackBar_SetPosition(obj uintptr, value int32) {
    trackBar_SetPosition.Call(obj, uintptr(value))
-}
-
-func TrackBar_GetPositionToolTip(obj uintptr) TPositionToolTip {
-    ret, _, _ := trackBar_GetPositionToolTip.Call(obj)
-    return TPositionToolTip(ret)
-}
-
-func TrackBar_SetPositionToolTip(obj uintptr, value TPositionToolTip) {
-   trackBar_SetPositionToolTip.Call(obj, uintptr(value))
-}
-
-func TrackBar_GetSliderVisible(obj uintptr) bool {
-    ret, _, _ := trackBar_GetSliderVisible.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TrackBar_SetSliderVisible(obj uintptr, value bool) {
-   trackBar_SetSliderVisible.Call(obj, GoBoolToDBool(value))
 }
 
 func TrackBar_GetSelEnd(obj uintptr) int32 {
@@ -19480,15 +16787,6 @@ func TrackBar_SetTabStop(obj uintptr, value bool) {
    trackBar_SetTabStop.Call(obj, GoBoolToDBool(value))
 }
 
-func TrackBar_GetThumbLength(obj uintptr) int32 {
-    ret, _, _ := trackBar_GetThumbLength.Call(obj)
-    return int32(ret)
-}
-
-func TrackBar_SetThumbLength(obj uintptr, value int32) {
-   trackBar_SetThumbLength.Call(obj, uintptr(value))
-}
-
 func TrackBar_GetTickMarks(obj uintptr) TTickMark {
     ret, _, _ := trackBar_GetTickMarks.Call(obj)
     return TTickMark(ret)
@@ -19516,15 +16814,6 @@ func TrackBar_SetVisible(obj uintptr, value bool) {
    trackBar_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func TrackBar_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := trackBar_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func TrackBar_SetStyleElements(obj uintptr, value TStyleElements) {
-   trackBar_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func TrackBar_SetOnContextPopup(obj uintptr, fn interface{}) {
     trackBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -19541,10 +16830,6 @@ func TrackBar_SetOnDragOver(obj uintptr, fn interface{}) {
     trackBar_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func TrackBar_SetOnEndDock(obj uintptr, fn interface{}) {
-    trackBar_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func TrackBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     trackBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -19555,10 +16840,6 @@ func TrackBar_SetOnEnter(obj uintptr, fn interface{}) {
 
 func TrackBar_SetOnExit(obj uintptr, fn interface{}) {
     trackBar_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func TrackBar_SetOnGesture(obj uintptr, fn interface{}) {
-    trackBar_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func TrackBar_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -19573,10 +16854,6 @@ func TrackBar_SetOnKeyUp(obj uintptr, fn interface{}) {
     trackBar_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
-func TrackBar_SetOnStartDock(obj uintptr, fn interface{}) {
-    trackBar_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func TrackBar_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := trackBar_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -19589,11 +16866,6 @@ func TrackBar_GetDockSite(obj uintptr) bool {
 
 func TrackBar_SetDockSite(obj uintptr, value bool) {
    trackBar_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func TrackBar_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := trackBar_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func TrackBar_GetMouseInClient(obj uintptr) bool {
@@ -19715,26 +16987,6 @@ func TrackBar_SetControlStyle(obj uintptr, value TControlStyle) {
    trackBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func TrackBar_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := trackBar_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func TrackBar_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := trackBar_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func TrackBar_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := trackBar_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func TrackBar_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := trackBar_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func TrackBar_GetFloating(obj uintptr) bool {
     ret, _, _ := trackBar_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -19747,15 +16999,6 @@ func TrackBar_GetParent(obj uintptr) uintptr {
 
 func TrackBar_SetParent(obj uintptr, value uintptr) {
    trackBar_SetParent.Call(obj, value)
-}
-
-func TrackBar_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := trackBar_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TrackBar_SetAlignWithMargins(obj uintptr, value bool) {
-   trackBar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func TrackBar_GetLeft(obj uintptr) int32 {
@@ -19917,11 +17160,6 @@ func ImageList_AddIcon(obj uintptr, Image uintptr) int32 {
     return int32(ret)
 }
 
-func ImageList_AddImage(obj uintptr, Value uintptr, Index int32) int32 {
-    ret, _, _ := imageList_AddImage.Call(obj, Value , uintptr(Index) )
-    return int32(ret)
-}
-
 func ImageList_AddImages(obj uintptr, Value uintptr)  {
     imageList_AddImages.Call(obj, Value )
 }
@@ -19937,36 +17175,6 @@ func ImageList_Clear(obj uintptr)  {
 
 func ImageList_Delete(obj uintptr, Index int32)  {
     imageList_Delete.Call(obj, uintptr(Index) )
-}
-
-func ImageList_FileLoad(obj uintptr, ResType TResType, Name string, MaskColor TColor) bool {
-    ret, _, _ := imageList_FileLoad.Call(obj, uintptr(ResType) , GoStrToDStr(Name) , uintptr(MaskColor) )
-    return DBoolToGoBool(ret)
-}
-
-func ImageList_GetBitmap(obj uintptr, Index int32, Image uintptr) bool {
-    ret, _, _ := imageList_GetBitmap.Call(obj, uintptr(Index) , Image )
-    return DBoolToGoBool(ret)
-}
-
-func ImageList_GetImageBitmap(obj uintptr) HBITMAP {
-    ret, _, _ := imageList_GetImageBitmap.Call(obj)
-    return HBITMAP(ret)
-}
-
-func ImageList_GetMaskBitmap(obj uintptr) HBITMAP {
-    ret, _, _ := imageList_GetMaskBitmap.Call(obj)
-    return HBITMAP(ret)
-}
-
-func ImageList_GetResource(obj uintptr, ResType TResType, Name string, Width int32, LoadFlags TLoadResources, MaskColor TColor) bool {
-    ret, _, _ := imageList_GetResource.Call(obj, uintptr(ResType) , GoStrToDStr(Name) , uintptr(Width) , uintptr(LoadFlags) , uintptr(MaskColor) )
-    return DBoolToGoBool(ret)
-}
-
-func ImageList_HandleAllocated(obj uintptr) bool {
-    ret, _, _ := imageList_HandleAllocated.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ImageList_Insert(obj uintptr, Index int32, Image uintptr, Mask uintptr)  {
@@ -19985,35 +17193,12 @@ func ImageList_Move(obj uintptr, CurIndex int32, NewIndex int32)  {
     imageList_Move.Call(obj, uintptr(CurIndex) , uintptr(NewIndex) )
 }
 
-func ImageList_Overlay(obj uintptr, ImageIndex int32, Overlay uint8) bool {
-    ret, _, _ := imageList_Overlay.Call(obj, uintptr(ImageIndex) , uintptr(Overlay) )
-    return DBoolToGoBool(ret)
-}
-
-func ImageList_ResourceLoad(obj uintptr, ResType TResType, Name string, MaskColor TColor) bool {
-    ret, _, _ := imageList_ResourceLoad.Call(obj, uintptr(ResType) , GoStrToDStr(Name) , uintptr(MaskColor) )
-    return DBoolToGoBool(ret)
-}
-
-func ImageList_ResInstLoad(obj uintptr, Instance uintptr, ResType TResType, Name string, MaskColor TColor) bool {
-    ret, _, _ := imageList_ResInstLoad.Call(obj, Instance , uintptr(ResType) , GoStrToDStr(Name) , uintptr(MaskColor) )
-    return DBoolToGoBool(ret)
-}
-
 func ImageList_Replace(obj uintptr, Index int32, Image uintptr, Mask uintptr)  {
     imageList_Replace.Call(obj, uintptr(Index) , Image , Mask )
 }
 
-func ImageList_ReplaceIcon(obj uintptr, Index int32, Image uintptr)  {
-    imageList_ReplaceIcon.Call(obj, uintptr(Index) , Image )
-}
-
 func ImageList_ReplaceMasked(obj uintptr, Index int32, NewImage uintptr, MaskColor TColor)  {
     imageList_ReplaceMasked.Call(obj, uintptr(Index) , NewImage , uintptr(MaskColor) )
-}
-
-func ImageList_SetSize(obj uintptr, AWidth int32, AHeight int32)  {
-    imageList_SetSize.Call(obj, uintptr(AWidth) , uintptr(AHeight) )
 }
 
 func ImageList_BeginUpdate(obj uintptr)  {
@@ -20037,10 +17222,6 @@ func ImageList_GetNamePath(obj uintptr) string {
 func ImageList_HasParent(obj uintptr) bool {
     ret, _, _ := imageList_HasParent.Call(obj)
     return DBoolToGoBool(ret)
-}
-
-func ImageList_DisposeOf(obj uintptr)  {
-    imageList_DisposeOf.Call(obj)
 }
 
 func ImageList_ClassType(obj uintptr) TClass {
@@ -20105,15 +17286,6 @@ func ImageList_SetAllocBy(obj uintptr, value int32) {
    imageList_SetAllocBy.Call(obj, uintptr(value))
 }
 
-func ImageList_GetColorDepth(obj uintptr) TColorDepth {
-    ret, _, _ := imageList_GetColorDepth.Call(obj)
-    return TColorDepth(ret)
-}
-
-func ImageList_SetColorDepth(obj uintptr, value TColorDepth) {
-   imageList_SetColorDepth.Call(obj, uintptr(value))
-}
-
 func ImageList_GetDrawingStyle(obj uintptr) TDrawingStyle {
     ret, _, _ := imageList_GetDrawingStyle.Call(obj)
     return TDrawingStyle(ret)
@@ -20121,15 +17293,6 @@ func ImageList_GetDrawingStyle(obj uintptr) TDrawingStyle {
 
 func ImageList_SetDrawingStyle(obj uintptr, value TDrawingStyle) {
    imageList_SetDrawingStyle.Call(obj, uintptr(value))
-}
-
-func ImageList_GetGrayscaleFactor(obj uintptr) uint8 {
-    ret, _, _ := imageList_GetGrayscaleFactor.Call(obj)
-    return uint8(ret)
-}
-
-func ImageList_SetGrayscaleFactor(obj uintptr, value uint8) {
-   imageList_SetGrayscaleFactor.Call(obj, uintptr(value))
 }
 
 func ImageList_GetHeight(obj uintptr) int32 {
@@ -20193,15 +17356,6 @@ func ImageList_SetDragCursor(obj uintptr, value TCursor) {
 func ImageList_GetDragging(obj uintptr) bool {
     ret, _, _ := imageList_GetDragging.Call(obj)
     return DBoolToGoBool(ret)
-}
-
-func ImageList_GetHandle(obj uintptr) uintptr {
-    ret, _, _ := imageList_GetHandle.Call(obj)
-    return ret
-}
-
-func ImageList_SetHandle(obj uintptr, value uintptr) {
-   imageList_SetHandle.Call(obj, value)
 }
 
 func ImageList_GetCount(obj uintptr) int32 {
@@ -20317,10 +17471,6 @@ func UpDown_Invalidate(obj uintptr)  {
     upDown_Invalidate.Call(obj)
 }
 
-func UpDown_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    upDown_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func UpDown_RemoveControl(obj uintptr, AControl uintptr)  {
     upDown_RemoveControl.Call(obj, AControl )
 }
@@ -20351,10 +17501,6 @@ func UpDown_SetFocus(obj uintptr)  {
 
 func UpDown_Update(obj uintptr)  {
     upDown_Update.Call(obj)
-}
-
-func UpDown_UpdateControlState(obj uintptr)  {
-    upDown_UpdateControlState.Call(obj)
 }
 
 func UpDown_BringToFront(obj uintptr)  {
@@ -20447,10 +17593,6 @@ func UpDown_GetNamePath(obj uintptr) string {
 
 func UpDown_Assign(obj uintptr, Source uintptr)  {
     upDown_Assign.Call(obj, Source )
-}
-
-func UpDown_DisposeOf(obj uintptr)  {
-    upDown_DisposeOf.Call(obj)
 }
 
 func UpDown_ClassType(obj uintptr) TClass {
@@ -20650,15 +17792,6 @@ func UpDown_SetWrap(obj uintptr, value bool) {
    upDown_SetWrap.Call(obj, GoBoolToDBool(value))
 }
 
-func UpDown_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := upDown_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func UpDown_SetStyleElements(obj uintptr, value TStyleElements) {
-   upDown_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func UpDown_SetOnChanging(obj uintptr, fn interface{}) {
     upDown_SetOnChanging.Call(obj, addEventToMap(fn))
 }
@@ -20677,10 +17810,6 @@ func UpDown_SetOnEnter(obj uintptr, fn interface{}) {
 
 func UpDown_SetOnExit(obj uintptr, fn interface{}) {
     upDown_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func UpDown_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    upDown_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func UpDown_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -20715,11 +17844,6 @@ func UpDown_GetDockSite(obj uintptr) bool {
 
 func UpDown_SetDockSite(obj uintptr, value bool) {
    upDown_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func UpDown_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := upDown_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func UpDown_GetMouseInClient(obj uintptr) bool {
@@ -20850,26 +17974,6 @@ func UpDown_SetControlStyle(obj uintptr, value TControlStyle) {
    upDown_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func UpDown_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := upDown_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func UpDown_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := upDown_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func UpDown_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := upDown_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func UpDown_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := upDown_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func UpDown_GetFloating(obj uintptr) bool {
     ret, _, _ := upDown_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -20882,19 +17986,6 @@ func UpDown_GetParent(obj uintptr) uintptr {
 
 func UpDown_SetParent(obj uintptr, value uintptr) {
    upDown_SetParent.Call(obj, value)
-}
-
-func UpDown_SetOnGesture(obj uintptr, fn interface{}) {
-    upDown_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func UpDown_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := upDown_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func UpDown_SetAlignWithMargins(obj uintptr, value bool) {
-   upDown_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func UpDown_GetLeft(obj uintptr) int32 {
@@ -21077,10 +18168,6 @@ func ProgressBar_Invalidate(obj uintptr)  {
     progressBar_Invalidate.Call(obj)
 }
 
-func ProgressBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    progressBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ProgressBar_RemoveControl(obj uintptr, AControl uintptr)  {
     progressBar_RemoveControl.Call(obj, AControl )
 }
@@ -21111,10 +18198,6 @@ func ProgressBar_SetFocus(obj uintptr)  {
 
 func ProgressBar_Update(obj uintptr)  {
     progressBar_Update.Call(obj)
-}
-
-func ProgressBar_UpdateControlState(obj uintptr)  {
-    progressBar_UpdateControlState.Call(obj)
 }
 
 func ProgressBar_BringToFront(obj uintptr)  {
@@ -21207,10 +18290,6 @@ func ProgressBar_GetNamePath(obj uintptr) string {
 
 func ProgressBar_Assign(obj uintptr, Source uintptr)  {
     progressBar_Assign.Call(obj, Source )
-}
-
-func ProgressBar_DisposeOf(obj uintptr)  {
-    progressBar_DisposeOf.Call(obj)
 }
 
 func ProgressBar_ClassType(obj uintptr) TClass {
@@ -21419,42 +18498,6 @@ func ProgressBar_SetStyle(obj uintptr, value TProgressBarStyle) {
    progressBar_SetStyle.Call(obj, uintptr(value))
 }
 
-func ProgressBar_GetMarqueeInterval(obj uintptr) int32 {
-    ret, _, _ := progressBar_GetMarqueeInterval.Call(obj)
-    return int32(ret)
-}
-
-func ProgressBar_SetMarqueeInterval(obj uintptr, value int32) {
-   progressBar_SetMarqueeInterval.Call(obj, uintptr(value))
-}
-
-func ProgressBar_GetBarColor(obj uintptr) TColor {
-    ret, _, _ := progressBar_GetBarColor.Call(obj)
-    return TColor(ret)
-}
-
-func ProgressBar_SetBarColor(obj uintptr, value TColor) {
-   progressBar_SetBarColor.Call(obj, uintptr(value))
-}
-
-func ProgressBar_GetBackgroundColor(obj uintptr) TColor {
-    ret, _, _ := progressBar_GetBackgroundColor.Call(obj)
-    return TColor(ret)
-}
-
-func ProgressBar_SetBackgroundColor(obj uintptr, value TColor) {
-   progressBar_SetBackgroundColor.Call(obj, uintptr(value))
-}
-
-func ProgressBar_GetSmoothReverse(obj uintptr) bool {
-    ret, _, _ := progressBar_GetSmoothReverse.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ProgressBar_SetSmoothReverse(obj uintptr, value bool) {
-   progressBar_SetSmoothReverse.Call(obj, GoBoolToDBool(value))
-}
-
 func ProgressBar_GetStep(obj uintptr) int32 {
     ret, _, _ := progressBar_GetStep.Call(obj)
     return int32(ret)
@@ -21462,15 +18505,6 @@ func ProgressBar_GetStep(obj uintptr) int32 {
 
 func ProgressBar_SetStep(obj uintptr, value int32) {
    progressBar_SetStep.Call(obj, uintptr(value))
-}
-
-func ProgressBar_GetState(obj uintptr) TProgressBarState {
-    ret, _, _ := progressBar_GetState.Call(obj)
-    return TProgressBarState(ret)
-}
-
-func ProgressBar_SetState(obj uintptr, value TProgressBarState) {
-   progressBar_SetState.Call(obj, uintptr(value))
 }
 
 func ProgressBar_GetShowHint(obj uintptr) bool {
@@ -21509,15 +18543,6 @@ func ProgressBar_SetVisible(obj uintptr, value bool) {
    progressBar_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ProgressBar_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := progressBar_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ProgressBar_SetStyleElements(obj uintptr, value TStyleElements) {
-   progressBar_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ProgressBar_SetOnContextPopup(obj uintptr, fn interface{}) {
     progressBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -21530,10 +18555,6 @@ func ProgressBar_SetOnDragOver(obj uintptr, fn interface{}) {
     progressBar_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func ProgressBar_SetOnEndDock(obj uintptr, fn interface{}) {
-    progressBar_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func ProgressBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     progressBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -21544,14 +18565,6 @@ func ProgressBar_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ProgressBar_SetOnExit(obj uintptr, fn interface{}) {
     progressBar_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func ProgressBar_SetOnGesture(obj uintptr, fn interface{}) {
-    progressBar_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func ProgressBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    progressBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ProgressBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -21574,10 +18587,6 @@ func ProgressBar_SetOnMouseUp(obj uintptr, fn interface{}) {
     progressBar_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func ProgressBar_SetOnStartDock(obj uintptr, fn interface{}) {
-    progressBar_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func ProgressBar_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := progressBar_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -21590,11 +18599,6 @@ func ProgressBar_GetDockSite(obj uintptr) bool {
 
 func ProgressBar_SetDockSite(obj uintptr, value bool) {
    progressBar_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func ProgressBar_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := progressBar_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ProgressBar_GetMouseInClient(obj uintptr) bool {
@@ -21716,26 +18720,6 @@ func ProgressBar_SetControlStyle(obj uintptr, value TControlStyle) {
    progressBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ProgressBar_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := progressBar_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ProgressBar_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := progressBar_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ProgressBar_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := progressBar_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ProgressBar_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := progressBar_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ProgressBar_GetFloating(obj uintptr) bool {
     ret, _, _ := progressBar_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -21748,15 +18732,6 @@ func ProgressBar_GetParent(obj uintptr) uintptr {
 
 func ProgressBar_SetParent(obj uintptr, value uintptr) {
    progressBar_SetParent.Call(obj, value)
-}
-
-func ProgressBar_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := progressBar_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ProgressBar_SetAlignWithMargins(obj uintptr, value bool) {
-   progressBar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ProgressBar_GetLeft(obj uintptr) int32 {
@@ -21931,10 +18906,6 @@ func DateTimePicker_Invalidate(obj uintptr)  {
     dateTimePicker_Invalidate.Call(obj)
 }
 
-func DateTimePicker_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    dateTimePicker_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func DateTimePicker_RemoveControl(obj uintptr, AControl uintptr)  {
     dateTimePicker_RemoveControl.Call(obj, AControl )
 }
@@ -21965,10 +18936,6 @@ func DateTimePicker_SetFocus(obj uintptr)  {
 
 func DateTimePicker_Update(obj uintptr)  {
     dateTimePicker_Update.Call(obj)
-}
-
-func DateTimePicker_UpdateControlState(obj uintptr)  {
-    dateTimePicker_UpdateControlState.Call(obj)
 }
 
 func DateTimePicker_BringToFront(obj uintptr)  {
@@ -22063,10 +19030,6 @@ func DateTimePicker_Assign(obj uintptr, Source uintptr)  {
     dateTimePicker_Assign.Call(obj, Source )
 }
 
-func DateTimePicker_DisposeOf(obj uintptr)  {
-    dateTimePicker_DisposeOf.Call(obj)
-}
-
 func DateTimePicker_ClassType(obj uintptr) TClass {
     ret, _, _ := dateTimePicker_ClassType.Call(obj)
     return TClass(ret)
@@ -22134,42 +19097,6 @@ func DateTimePicker_SetAnchors(obj uintptr, value TAnchors) {
    dateTimePicker_SetAnchors.Call(obj, uintptr(value))
 }
 
-func DateTimePicker_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := dateTimePicker_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func DateTimePicker_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   dateTimePicker_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func DateTimePicker_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := dateTimePicker_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func DateTimePicker_SetBevelInner(obj uintptr, value TBevelCut) {
-   dateTimePicker_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func DateTimePicker_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := dateTimePicker_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func DateTimePicker_SetBevelOuter(obj uintptr, value TBevelCut) {
-   dateTimePicker_SetBevelOuter.Call(obj, uintptr(value))
-}
-
-func DateTimePicker_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := dateTimePicker_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func DateTimePicker_SetBevelKind(obj uintptr, value TBevelKind) {
-   dateTimePicker_SetBevelKind.Call(obj, uintptr(value))
-}
-
 func DateTimePicker_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := dateTimePicker_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -22188,15 +19115,6 @@ func DateTimePicker_SetCalAlignment(obj uintptr, value TDTCalAlignment) {
    dateTimePicker_SetCalAlignment.Call(obj, uintptr(value))
 }
 
-func DateTimePicker_GetCalColors(obj uintptr) uintptr {
-    ret, _, _ := dateTimePicker_GetCalColors.Call(obj)
-    return ret
-}
-
-func DateTimePicker_SetCalColors(obj uintptr, value uintptr) {
-   dateTimePicker_SetCalColors.Call(obj, value)
-}
-
 func DateTimePicker_GetConstraints(obj uintptr) uintptr {
     ret, _, _ := dateTimePicker_GetConstraints.Call(obj)
     return ret
@@ -22213,15 +19131,6 @@ func DateTimePicker_GetDate(obj uintptr) time.Time {
 
 func DateTimePicker_SetDate(obj uintptr, value time.Time) {
    dateTimePicker_SetDate.Call(obj, uintptr(value.Unix()))
-}
-
-func DateTimePicker_GetFormat(obj uintptr) string {
-    ret, _, _ := dateTimePicker_GetFormat.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func DateTimePicker_SetFormat(obj uintptr, value string) {
-   dateTimePicker_SetFormat.Call(obj, GoStrToDStr(value))
 }
 
 func DateTimePicker_GetTime(obj uintptr) time.Time {
@@ -22251,15 +19160,6 @@ func DateTimePicker_SetColor(obj uintptr, value TColor) {
    dateTimePicker_SetColor.Call(obj, uintptr(value))
 }
 
-func DateTimePicker_GetDateFormat(obj uintptr) TDTDateFormat {
-    ret, _, _ := dateTimePicker_GetDateFormat.Call(obj)
-    return TDTDateFormat(ret)
-}
-
-func DateTimePicker_SetDateFormat(obj uintptr, value TDTDateFormat) {
-   dateTimePicker_SetDateFormat.Call(obj, uintptr(value))
-}
-
 func DateTimePicker_GetDateMode(obj uintptr) TDTDateMode {
     ret, _, _ := dateTimePicker_GetDateMode.Call(obj)
     return TDTDateMode(ret)
@@ -22276,33 +19176,6 @@ func DateTimePicker_GetDoubleBuffered(obj uintptr) bool {
 
 func DateTimePicker_SetDoubleBuffered(obj uintptr, value bool) {
    dateTimePicker_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func DateTimePicker_GetDragCursor(obj uintptr) TCursor {
-    ret, _, _ := dateTimePicker_GetDragCursor.Call(obj)
-    return TCursor(ret)
-}
-
-func DateTimePicker_SetDragCursor(obj uintptr, value TCursor) {
-   dateTimePicker_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func DateTimePicker_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := dateTimePicker_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func DateTimePicker_SetDragKind(obj uintptr, value TDragKind) {
-   dateTimePicker_SetDragKind.Call(obj, uintptr(value))
-}
-
-func DateTimePicker_GetDragMode(obj uintptr) TDragMode {
-    ret, _, _ := dateTimePicker_GetDragMode.Call(obj)
-    return TDragMode(ret)
-}
-
-func DateTimePicker_SetDragMode(obj uintptr, value TDragMode) {
-   dateTimePicker_SetDragMode.Call(obj, uintptr(value))
 }
 
 func DateTimePicker_GetEnabled(obj uintptr) bool {
@@ -22323,15 +19196,6 @@ func DateTimePicker_SetFont(obj uintptr, value uintptr) {
    dateTimePicker_SetFont.Call(obj, value)
 }
 
-func DateTimePicker_GetKind(obj uintptr) TDateTimeKind {
-    ret, _, _ := dateTimePicker_GetKind.Call(obj)
-    return TDateTimeKind(ret)
-}
-
-func DateTimePicker_SetKind(obj uintptr, value TDateTimeKind) {
-   dateTimePicker_SetKind.Call(obj, uintptr(value))
-}
-
 func DateTimePicker_GetMaxDate(obj uintptr) time.Time {
     ret, _, _ := dateTimePicker_GetMaxDate.Call(obj)
     return time.Unix(int64(ret), 0)
@@ -22348,15 +19212,6 @@ func DateTimePicker_GetMinDate(obj uintptr) time.Time {
 
 func DateTimePicker_SetMinDate(obj uintptr, value time.Time) {
    dateTimePicker_SetMinDate.Call(obj, uintptr(value.Unix()))
-}
-
-func DateTimePicker_GetParseInput(obj uintptr) bool {
-    ret, _, _ := dateTimePicker_GetParseInput.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DateTimePicker_SetParseInput(obj uintptr, value bool) {
-   dateTimePicker_SetParseInput.Call(obj, GoBoolToDBool(value))
 }
 
 func DateTimePicker_GetParentColor(obj uintptr) bool {
@@ -22440,15 +19295,6 @@ func DateTimePicker_SetVisible(obj uintptr, value bool) {
    dateTimePicker_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func DateTimePicker_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := dateTimePicker_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func DateTimePicker_SetStyleElements(obj uintptr, value TStyleElements) {
-   dateTimePicker_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func DateTimePicker_SetOnClick(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -22461,36 +19307,12 @@ func DateTimePicker_SetOnContextPopup(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
-func DateTimePicker_SetOnDropDown(obj uintptr, fn interface{}) {
-    dateTimePicker_SetOnDropDown.Call(obj, addEventToMap(fn))
-}
-
-func DateTimePicker_SetOnDragDrop(obj uintptr, fn interface{}) {
-    dateTimePicker_SetOnDragDrop.Call(obj, addEventToMap(fn))
-}
-
-func DateTimePicker_SetOnDragOver(obj uintptr, fn interface{}) {
-    dateTimePicker_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func DateTimePicker_SetOnEndDock(obj uintptr, fn interface{}) {
-    dateTimePicker_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
-func DateTimePicker_SetOnEndDrag(obj uintptr, fn interface{}) {
-    dateTimePicker_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
 func DateTimePicker_SetOnEnter(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnEnter.Call(obj, addEventToMap(fn))
 }
 
 func DateTimePicker_SetOnExit(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func DateTimePicker_SetOnGesture(obj uintptr, fn interface{}) {
-    dateTimePicker_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func DateTimePicker_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -22513,10 +19335,6 @@ func DateTimePicker_SetOnMouseLeave(obj uintptr, fn interface{}) {
     dateTimePicker_SetOnMouseLeave.Call(obj, addEventToMap(fn))
 }
 
-func DateTimePicker_SetOnStartDock(obj uintptr, fn interface{}) {
-    dateTimePicker_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func DateTimePicker_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := dateTimePicker_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -22529,11 +19347,6 @@ func DateTimePicker_GetDockSite(obj uintptr) bool {
 
 func DateTimePicker_SetDockSite(obj uintptr, value bool) {
    dateTimePicker_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func DateTimePicker_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := dateTimePicker_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func DateTimePicker_GetMouseInClient(obj uintptr) bool {
@@ -22646,26 +19459,6 @@ func DateTimePicker_SetControlStyle(obj uintptr, value TControlStyle) {
    dateTimePicker_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func DateTimePicker_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := dateTimePicker_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func DateTimePicker_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := dateTimePicker_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func DateTimePicker_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := dateTimePicker_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func DateTimePicker_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := dateTimePicker_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func DateTimePicker_GetFloating(obj uintptr) bool {
     ret, _, _ := dateTimePicker_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -22678,15 +19471,6 @@ func DateTimePicker_GetParent(obj uintptr) uintptr {
 
 func DateTimePicker_SetParent(obj uintptr, value uintptr) {
    dateTimePicker_SetParent.Call(obj, value)
-}
-
-func DateTimePicker_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := dateTimePicker_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DateTimePicker_SetAlignWithMargins(obj uintptr, value bool) {
-   dateTimePicker_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func DateTimePicker_GetLeft(obj uintptr) int32 {
@@ -22870,10 +19654,6 @@ func MonthCalendar_Invalidate(obj uintptr)  {
     monthCalendar_Invalidate.Call(obj)
 }
 
-func MonthCalendar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    monthCalendar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func MonthCalendar_RemoveControl(obj uintptr, AControl uintptr)  {
     monthCalendar_RemoveControl.Call(obj, AControl )
 }
@@ -22904,10 +19684,6 @@ func MonthCalendar_SetFocus(obj uintptr)  {
 
 func MonthCalendar_Update(obj uintptr)  {
     monthCalendar_Update.Call(obj)
-}
-
-func MonthCalendar_UpdateControlState(obj uintptr)  {
-    monthCalendar_UpdateControlState.Call(obj)
 }
 
 func MonthCalendar_BringToFront(obj uintptr)  {
@@ -23002,10 +19778,6 @@ func MonthCalendar_Assign(obj uintptr, Source uintptr)  {
     monthCalendar_Assign.Call(obj, Source )
 }
 
-func MonthCalendar_DisposeOf(obj uintptr)  {
-    monthCalendar_DisposeOf.Call(obj)
-}
-
 func MonthCalendar_ClassType(obj uintptr) TClass {
     ret, _, _ := monthCalendar_ClassType.Call(obj)
     return TClass(ret)
@@ -23086,15 +19858,6 @@ func MonthCalendar_SetBiDiMode(obj uintptr, value TBiDiMode) {
    monthCalendar_SetBiDiMode.Call(obj, uintptr(value))
 }
 
-func MonthCalendar_GetCalColors(obj uintptr) uintptr {
-    ret, _, _ := monthCalendar_GetCalColors.Call(obj)
-    return ret
-}
-
-func MonthCalendar_SetCalColors(obj uintptr, value uintptr) {
-   monthCalendar_SetCalColors.Call(obj, value)
-}
-
 func MonthCalendar_GetConstraints(obj uintptr) uintptr {
     ret, _, _ := monthCalendar_GetConstraints.Call(obj)
     return ret
@@ -23102,15 +19865,6 @@ func MonthCalendar_GetConstraints(obj uintptr) uintptr {
 
 func MonthCalendar_SetConstraints(obj uintptr, value uintptr) {
    monthCalendar_SetConstraints.Call(obj, value)
-}
-
-func MonthCalendar_GetMultiSelect(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetMultiSelect.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalendar_SetMultiSelect(obj uintptr, value bool) {
-   monthCalendar_SetMultiSelect.Call(obj, GoBoolToDBool(value))
 }
 
 func MonthCalendar_GetDate(obj uintptr) time.Time {
@@ -23167,15 +19921,6 @@ func MonthCalendar_SetEnabled(obj uintptr, value bool) {
    monthCalendar_SetEnabled.Call(obj, GoBoolToDBool(value))
 }
 
-func MonthCalendar_GetFirstDayOfWeek(obj uintptr) TCalDayOfWeek {
-    ret, _, _ := monthCalendar_GetFirstDayOfWeek.Call(obj)
-    return TCalDayOfWeek(ret)
-}
-
-func MonthCalendar_SetFirstDayOfWeek(obj uintptr, value TCalDayOfWeek) {
-   monthCalendar_SetFirstDayOfWeek.Call(obj, uintptr(value))
-}
-
 func MonthCalendar_GetFont(obj uintptr) uintptr {
     ret, _, _ := monthCalendar_GetFont.Call(obj)
     return ret
@@ -23185,33 +19930,6 @@ func MonthCalendar_SetFont(obj uintptr, value uintptr) {
    monthCalendar_SetFont.Call(obj, value)
 }
 
-func MonthCalendar_GetMaxDate(obj uintptr) time.Time {
-    ret, _, _ := monthCalendar_GetMaxDate.Call(obj)
-    return time.Unix(int64(ret), 0)
-}
-
-func MonthCalendar_SetMaxDate(obj uintptr, value time.Time) {
-   monthCalendar_SetMaxDate.Call(obj, uintptr(value.Unix()))
-}
-
-func MonthCalendar_GetMaxSelectRange(obj uintptr) int32 {
-    ret, _, _ := monthCalendar_GetMaxSelectRange.Call(obj)
-    return int32(ret)
-}
-
-func MonthCalendar_SetMaxSelectRange(obj uintptr, value int32) {
-   monthCalendar_SetMaxSelectRange.Call(obj, uintptr(value))
-}
-
-func MonthCalendar_GetMinDate(obj uintptr) time.Time {
-    ret, _, _ := monthCalendar_GetMinDate.Call(obj)
-    return time.Unix(int64(ret), 0)
-}
-
-func MonthCalendar_SetMinDate(obj uintptr, value time.Time) {
-   monthCalendar_SetMinDate.Call(obj, uintptr(value.Unix()))
-}
-
 func MonthCalendar_GetParentDoubleBuffered(obj uintptr) bool {
     ret, _, _ := monthCalendar_GetParentDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -23219,24 +19937,6 @@ func MonthCalendar_GetParentDoubleBuffered(obj uintptr) bool {
 
 func MonthCalendar_SetParentDoubleBuffered(obj uintptr, value bool) {
    monthCalendar_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func MonthCalendar_GetParentFont(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetParentFont.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalendar_SetParentFont(obj uintptr, value bool) {
-   monthCalendar_SetParentFont.Call(obj, GoBoolToDBool(value))
-}
-
-func MonthCalendar_GetParentShowHint(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetParentShowHint.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalendar_SetParentShowHint(obj uintptr, value bool) {
-   monthCalendar_SetParentShowHint.Call(obj, GoBoolToDBool(value))
 }
 
 func MonthCalendar_GetPopupMenu(obj uintptr) uintptr {
@@ -23255,24 +19955,6 @@ func MonthCalendar_GetShowHint(obj uintptr) bool {
 
 func MonthCalendar_SetShowHint(obj uintptr, value bool) {
    monthCalendar_SetShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func MonthCalendar_GetShowToday(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetShowToday.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalendar_SetShowToday(obj uintptr, value bool) {
-   monthCalendar_SetShowToday.Call(obj, GoBoolToDBool(value))
-}
-
-func MonthCalendar_GetShowTodayCircle(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetShowTodayCircle.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalendar_SetShowTodayCircle(obj uintptr, value bool) {
-   monthCalendar_SetShowTodayCircle.Call(obj, GoBoolToDBool(value))
 }
 
 func MonthCalendar_GetTabOrder(obj uintptr) TTabOrder {
@@ -23300,15 +19982,6 @@ func MonthCalendar_GetVisible(obj uintptr) bool {
 
 func MonthCalendar_SetVisible(obj uintptr, value bool) {
    monthCalendar_SetVisible.Call(obj, GoBoolToDBool(value))
-}
-
-func MonthCalendar_GetWeekNumbers(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetWeekNumbers.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalendar_SetWeekNumbers(obj uintptr, value bool) {
-   monthCalendar_SetWeekNumbers.Call(obj, GoBoolToDBool(value))
 }
 
 func MonthCalendar_SetOnClick(obj uintptr, fn interface{}) {
@@ -23347,10 +20020,6 @@ func MonthCalendar_SetOnExit(obj uintptr, fn interface{}) {
     monthCalendar_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func MonthCalendar_SetOnGesture(obj uintptr, fn interface{}) {
-    monthCalendar_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func MonthCalendar_SetOnKeyDown(obj uintptr, fn interface{}) {
     monthCalendar_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -23387,11 +20056,6 @@ func MonthCalendar_GetDockSite(obj uintptr) bool {
 
 func MonthCalendar_SetDockSite(obj uintptr, value bool) {
    monthCalendar_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func MonthCalendar_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func MonthCalendar_GetMouseInClient(obj uintptr) bool {
@@ -23504,26 +20168,6 @@ func MonthCalendar_SetControlStyle(obj uintptr, value TControlStyle) {
    monthCalendar_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func MonthCalendar_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := monthCalendar_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func MonthCalendar_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := monthCalendar_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func MonthCalendar_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := monthCalendar_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func MonthCalendar_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := monthCalendar_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func MonthCalendar_GetFloating(obj uintptr) bool {
     ret, _, _ := monthCalendar_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -23536,24 +20180,6 @@ func MonthCalendar_GetParent(obj uintptr) uintptr {
 
 func MonthCalendar_SetParent(obj uintptr, value uintptr) {
    monthCalendar_SetParent.Call(obj, value)
-}
-
-func MonthCalendar_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := monthCalendar_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func MonthCalendar_SetStyleElements(obj uintptr, value TStyleElements) {
-   monthCalendar_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func MonthCalendar_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := monthCalendar_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalendar_SetAlignWithMargins(obj uintptr, value bool) {
-   monthCalendar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func MonthCalendar_GetLeft(obj uintptr) int32 {
@@ -23704,17 +20330,8 @@ func ListView_ClearSelection(obj uintptr)  {
     listView_ClearSelection.Call(obj)
 }
 
-func ListView_CopySelection(obj uintptr, Destination uintptr)  {
-    listView_CopySelection.Call(obj, Destination )
-}
-
 func ListView_DeleteSelected(obj uintptr)  {
     listView_DeleteSelected.Call(obj)
-}
-
-func ListView_GetSearchString(obj uintptr) string {
-    ret, _, _ := listView_GetSearchString.Call(obj)
-    return DStrToGoStr(ret)
 }
 
 func ListView_IsEditing(obj uintptr) bool {
@@ -23724,15 +20341,6 @@ func ListView_IsEditing(obj uintptr) bool {
 
 func ListView_SelectAll(obj uintptr)  {
     listView_SelectAll.Call(obj)
-}
-
-func ListView_Scroll(obj uintptr, DX int32, DY int32)  {
-    listView_Scroll.Call(obj, uintptr(DX) , uintptr(DY) )
-}
-
-func ListView_CustomSort(obj uintptr, SortProc PFNLVCOMPARE, lParam int) bool {
-    ret, _, _ := listView_CustomSort.Call(obj, uintptr(SortProc) , uintptr(lParam) )
-    return DBoolToGoBool(ret)
 }
 
 func ListView_CanFocus(obj uintptr) bool {
@@ -23785,10 +20393,6 @@ func ListView_Invalidate(obj uintptr)  {
     listView_Invalidate.Call(obj)
 }
 
-func ListView_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    listView_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ListView_RemoveControl(obj uintptr, AControl uintptr)  {
     listView_RemoveControl.Call(obj, AControl )
 }
@@ -23819,10 +20423,6 @@ func ListView_SetFocus(obj uintptr)  {
 
 func ListView_Update(obj uintptr)  {
     listView_Update.Call(obj)
-}
-
-func ListView_UpdateControlState(obj uintptr)  {
-    listView_UpdateControlState.Call(obj)
 }
 
 func ListView_BringToFront(obj uintptr)  {
@@ -23917,10 +20517,6 @@ func ListView_Assign(obj uintptr, Source uintptr)  {
     listView_Assign.Call(obj, Source )
 }
 
-func ListView_DisposeOf(obj uintptr)  {
-    listView_DisposeOf.Call(obj)
-}
-
 func ListView_ClassType(obj uintptr) TClass {
     ret, _, _ := listView_ClassType.Call(obj)
     return TClass(ret)
@@ -23990,42 +20586,6 @@ func ListView_GetAnchors(obj uintptr) TAnchors {
 
 func ListView_SetAnchors(obj uintptr, value TAnchors) {
    listView_SetAnchors.Call(obj, uintptr(value))
-}
-
-func ListView_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := listView_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func ListView_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   listView_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func ListView_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := listView_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ListView_SetBevelInner(obj uintptr, value TBevelCut) {
-   listView_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func ListView_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := listView_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ListView_SetBevelOuter(obj uintptr, value TBevelCut) {
-   listView_SetBevelOuter.Call(obj, uintptr(value))
-}
-
-func ListView_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := listView_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func ListView_SetBevelKind(obj uintptr, value TBevelKind) {
-   listView_SetBevelKind.Call(obj, uintptr(value))
 }
 
 func ListView_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -24098,15 +20658,6 @@ func ListView_GetConstraints(obj uintptr) uintptr {
 
 func ListView_SetConstraints(obj uintptr, value uintptr) {
    listView_SetConstraints.Call(obj, value)
-}
-
-func ListView_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := listView_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListView_SetCtl3D(obj uintptr, value bool) {
-   listView_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ListView_GetDoubleBuffered(obj uintptr) bool {
@@ -24208,15 +20759,6 @@ func ListView_SetHotTrack(obj uintptr, value bool) {
    listView_SetHotTrack.Call(obj, GoBoolToDBool(value))
 }
 
-func ListView_GetHoverTime(obj uintptr) int32 {
-    ret, _, _ := listView_GetHoverTime.Call(obj)
-    return int32(ret)
-}
-
-func ListView_SetHoverTime(obj uintptr, value int32) {
-   listView_SetHoverTime.Call(obj, uintptr(value))
-}
-
 func ListView_GetIconOptions(obj uintptr) uintptr {
     ret, _, _ := listView_GetIconOptions.Call(obj)
     return ret
@@ -24253,15 +20795,6 @@ func ListView_SetMultiSelect(obj uintptr, value bool) {
    listView_SetMultiSelect.Call(obj, GoBoolToDBool(value))
 }
 
-func ListView_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := listView_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ListView_SetStyleElements(obj uintptr, value TStyleElements) {
-   listView_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ListView_GetOwnerData(obj uintptr) bool {
     ret, _, _ := listView_GetOwnerData.Call(obj)
     return DBoolToGoBool(ret)
@@ -24278,15 +20811,6 @@ func ListView_GetOwnerDraw(obj uintptr) bool {
 
 func ListView_SetOwnerDraw(obj uintptr, value bool) {
    listView_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
-}
-
-func ListView_GetGroupHeaderImages(obj uintptr) uintptr {
-    ret, _, _ := listView_GetGroupHeaderImages.Call(obj)
-    return ret
-}
-
-func ListView_SetGroupHeaderImages(obj uintptr, value uintptr) {
-   listView_SetGroupHeaderImages.Call(obj, value)
 }
 
 func ListView_GetReadOnly(obj uintptr) bool {
@@ -24359,15 +20883,6 @@ func ListView_GetShowColumnHeaders(obj uintptr) bool {
 
 func ListView_SetShowColumnHeaders(obj uintptr, value bool) {
    listView_SetShowColumnHeaders.Call(obj, GoBoolToDBool(value))
-}
-
-func ListView_GetShowWorkAreas(obj uintptr) bool {
-    ret, _, _ := listView_GetShowWorkAreas.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListView_SetShowWorkAreas(obj uintptr, value bool) {
-   listView_SetShowWorkAreas.Call(obj, GoBoolToDBool(value))
 }
 
 func ListView_GetShowHint(obj uintptr) bool {
@@ -24458,20 +20973,12 @@ func ListView_SetOnChange(obj uintptr, fn interface{}) {
     listView_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
-func ListView_SetOnChanging(obj uintptr, fn interface{}) {
-    listView_SetOnChanging.Call(obj, addEventToMap(fn))
-}
-
 func ListView_SetOnClick(obj uintptr, fn interface{}) {
     listView_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnColumnClick(obj uintptr, fn interface{}) {
     listView_SetOnColumnClick.Call(obj, addEventToMap(fn))
-}
-
-func ListView_SetOnColumnRightClick(obj uintptr, fn interface{}) {
-    listView_SetOnColumnRightClick.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnCompare(obj uintptr, fn interface{}) {
@@ -24510,10 +21017,6 @@ func ListView_SetOnDeletion(obj uintptr, fn interface{}) {
     listView_SetOnDeletion.Call(obj, addEventToMap(fn))
 }
 
-func ListView_SetOnDrawItem(obj uintptr, fn interface{}) {
-    listView_SetOnDrawItem.Call(obj, addEventToMap(fn))
-}
-
 func ListView_SetOnEdited(obj uintptr, fn interface{}) {
     listView_SetOnEdited.Call(obj, addEventToMap(fn))
 }
@@ -24538,14 +21041,6 @@ func ListView_SetOnExit(obj uintptr, fn interface{}) {
     listView_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func ListView_SetOnGesture(obj uintptr, fn interface{}) {
-    listView_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func ListView_SetOnGetImageIndex(obj uintptr, fn interface{}) {
-    listView_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
-}
-
 func ListView_SetOnDragDrop(obj uintptr, fn interface{}) {
     listView_SetOnDragDrop.Call(obj, addEventToMap(fn))
 }
@@ -24568,10 +21063,6 @@ func ListView_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ListView_SetOnKeyUp(obj uintptr, fn interface{}) {
     listView_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func ListView_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    listView_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ListView_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -24613,15 +21104,6 @@ func ListView_SetOnStartDock(obj uintptr, fn interface{}) {
 func ListView_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := listView_GetCanvas.Call(obj)
     return ret
-}
-
-func ListView_GetDropTarget(obj uintptr) uintptr {
-    ret, _, _ := listView_GetDropTarget.Call(obj)
-    return ret
-}
-
-func ListView_SetDropTarget(obj uintptr, value uintptr) {
-   listView_SetDropTarget.Call(obj, value)
 }
 
 func ListView_GetItemFocused(obj uintptr) uintptr {
@@ -24678,11 +21160,6 @@ func ListView_GetDockSite(obj uintptr) bool {
 
 func ListView_SetDockSite(obj uintptr, value bool) {
    listView_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func ListView_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := listView_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ListView_GetMouseInClient(obj uintptr) bool {
@@ -24786,26 +21263,6 @@ func ListView_SetControlStyle(obj uintptr, value TControlStyle) {
    listView_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ListView_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := listView_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ListView_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := listView_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ListView_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := listView_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ListView_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := listView_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ListView_GetFloating(obj uintptr) bool {
     ret, _, _ := listView_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -24818,15 +21275,6 @@ func ListView_GetParent(obj uintptr) uintptr {
 
 func ListView_SetParent(obj uintptr, value uintptr) {
    listView_SetParent.Call(obj, value)
-}
-
-func ListView_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := listView_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListView_SetAlignWithMargins(obj uintptr, value bool) {
-   listView_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ListView_GetLeft(obj uintptr) int32 {
@@ -24965,11 +21413,6 @@ func TreeView_Free(obj uintptr) {
     treeView_Free.Call(obj)
 }
 
-func TreeView_AlphaSort(obj uintptr, ARecurse bool) bool {
-    ret, _, _ := treeView_AlphaSort.Call(obj, GoBoolToDBool(ARecurse) )
-    return DBoolToGoBool(ret)
-}
-
 func TreeView_FullCollapse(obj uintptr)  {
     treeView_FullCollapse.Call(obj)
 }
@@ -25004,21 +21447,8 @@ func TreeView_SaveToStream(obj uintptr, Stream uintptr)  {
     treeView_SaveToStream.Call(obj, Stream )
 }
 
-func TreeView_Deselect(obj uintptr, Node uintptr)  {
-    treeView_Deselect.Call(obj, Node )
-}
-
-func TreeView_Subselect(obj uintptr, Node uintptr, Validate bool)  {
-    treeView_Subselect.Call(obj, Node , GoBoolToDBool(Validate) )
-}
-
 func TreeView_ClearSelection(obj uintptr, KeepPrimary bool)  {
     treeView_ClearSelection.Call(obj, GoBoolToDBool(KeepPrimary) )
-}
-
-func TreeView_FindNextToSelect(obj uintptr) uintptr {
-    ret, _, _ := treeView_FindNextToSelect.Call(obj)
-    return ret
 }
 
 func TreeView_CustomSort(obj uintptr, SortProc PFNTVCOMPARE, Data int, ARecurse bool) bool {
@@ -25076,10 +21506,6 @@ func TreeView_Invalidate(obj uintptr)  {
     treeView_Invalidate.Call(obj)
 }
 
-func TreeView_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    treeView_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func TreeView_RemoveControl(obj uintptr, AControl uintptr)  {
     treeView_RemoveControl.Call(obj, AControl )
 }
@@ -25110,10 +21536,6 @@ func TreeView_SetFocus(obj uintptr)  {
 
 func TreeView_Update(obj uintptr)  {
     treeView_Update.Call(obj)
-}
-
-func TreeView_UpdateControlState(obj uintptr)  {
-    treeView_UpdateControlState.Call(obj)
 }
 
 func TreeView_BringToFront(obj uintptr)  {
@@ -25208,10 +21630,6 @@ func TreeView_Assign(obj uintptr, Source uintptr)  {
     treeView_Assign.Call(obj, Source )
 }
 
-func TreeView_DisposeOf(obj uintptr)  {
-    treeView_DisposeOf.Call(obj)
-}
-
 func TreeView_ClassType(obj uintptr) TClass {
     ret, _, _ := treeView_ClassType.Call(obj)
     return TClass(ret)
@@ -25274,42 +21692,6 @@ func TreeView_SetAutoExpand(obj uintptr, value bool) {
    treeView_SetAutoExpand.Call(obj, GoBoolToDBool(value))
 }
 
-func TreeView_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := treeView_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func TreeView_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   treeView_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func TreeView_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := treeView_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func TreeView_SetBevelInner(obj uintptr, value TBevelCut) {
-   treeView_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func TreeView_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := treeView_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func TreeView_SetBevelOuter(obj uintptr, value TBevelCut) {
-   treeView_SetBevelOuter.Call(obj, uintptr(value))
-}
-
-func TreeView_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := treeView_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func TreeView_SetBevelKind(obj uintptr, value TBevelKind) {
-   treeView_SetBevelKind.Call(obj, uintptr(value))
-}
-
 func TreeView_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := treeView_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -25337,15 +21719,6 @@ func TreeView_SetBorderWidth(obj uintptr, value int32) {
    treeView_SetBorderWidth.Call(obj, uintptr(value))
 }
 
-func TreeView_GetChangeDelay(obj uintptr) int32 {
-    ret, _, _ := treeView_GetChangeDelay.Call(obj)
-    return int32(ret)
-}
-
-func TreeView_SetChangeDelay(obj uintptr, value int32) {
-   treeView_SetChangeDelay.Call(obj, uintptr(value))
-}
-
 func TreeView_GetColor(obj uintptr) TColor {
     ret, _, _ := treeView_GetColor.Call(obj)
     return TColor(ret)
@@ -25353,15 +21726,6 @@ func TreeView_GetColor(obj uintptr) TColor {
 
 func TreeView_SetColor(obj uintptr, value TColor) {
    treeView_SetColor.Call(obj, uintptr(value))
-}
-
-func TreeView_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := treeView_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TreeView_SetCtl3D(obj uintptr, value bool) {
-   treeView_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeView_GetConstraints(obj uintptr) uintptr {
@@ -25488,15 +21852,6 @@ func TreeView_GetParentColor(obj uintptr) bool {
 
 func TreeView_SetParentColor(obj uintptr, value bool) {
    treeView_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func TreeView_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := treeView_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TreeView_SetParentCtl3D(obj uintptr, value bool) {
-   treeView_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeView_GetParentDoubleBuffered(obj uintptr) bool {
@@ -25652,15 +22007,6 @@ func TreeView_SetVisible(obj uintptr, value bool) {
    treeView_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func TreeView_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := treeView_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func TreeView_SetStyleElements(obj uintptr, value TStyleElements) {
-   treeView_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func TreeView_SetOnAddition(obj uintptr, fn interface{}) {
     treeView_SetOnAddition.Call(obj, addEventToMap(fn))
 }
@@ -25671,10 +22017,6 @@ func TreeView_SetOnAdvancedCustomDraw(obj uintptr, fn interface{}) {
 
 func TreeView_SetOnAdvancedCustomDrawItem(obj uintptr, fn interface{}) {
     treeView_SetOnAdvancedCustomDrawItem.Call(obj, addEventToMap(fn))
-}
-
-func TreeView_SetOnCancelEdit(obj uintptr, fn interface{}) {
-    treeView_SetOnCancelEdit.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnChange(obj uintptr, fn interface{}) {
@@ -25737,10 +22079,6 @@ func TreeView_SetOnEditing(obj uintptr, fn interface{}) {
     treeView_SetOnEditing.Call(obj, addEventToMap(fn))
 }
 
-func TreeView_SetOnEndDock(obj uintptr, fn interface{}) {
-    treeView_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func TreeView_SetOnEndDrag(obj uintptr, fn interface{}) {
     treeView_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -25761,20 +22099,8 @@ func TreeView_SetOnExpanded(obj uintptr, fn interface{}) {
     treeView_SetOnExpanded.Call(obj, addEventToMap(fn))
 }
 
-func TreeView_SetOnGesture(obj uintptr, fn interface{}) {
-    treeView_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func TreeView_SetOnGetImageIndex(obj uintptr, fn interface{}) {
-    treeView_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
-}
-
 func TreeView_SetOnGetSelectedIndex(obj uintptr, fn interface{}) {
     treeView_SetOnGetSelectedIndex.Call(obj, addEventToMap(fn))
-}
-
-func TreeView_SetOnHint(obj uintptr, fn interface{}) {
-    treeView_SetOnHint.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -25787,10 +22113,6 @@ func TreeView_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func TreeView_SetOnKeyUp(obj uintptr, fn interface{}) {
     treeView_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func TreeView_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    treeView_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func TreeView_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -25813,10 +22135,6 @@ func TreeView_SetOnMouseUp(obj uintptr, fn interface{}) {
     treeView_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func TreeView_SetOnStartDock(obj uintptr, fn interface{}) {
-    treeView_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func TreeView_GetItems(obj uintptr) uintptr {
     ret, _, _ := treeView_GetItems.Call(obj)
     return ret
@@ -25829,15 +22147,6 @@ func TreeView_SetItems(obj uintptr, value uintptr) {
 func TreeView_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := treeView_GetCanvas.Call(obj)
     return ret
-}
-
-func TreeView_GetDropTarget(obj uintptr) uintptr {
-    ret, _, _ := treeView_GetDropTarget.Call(obj)
-    return ret
-}
-
-func TreeView_SetDropTarget(obj uintptr, value uintptr) {
-   treeView_SetDropTarget.Call(obj, value)
 }
 
 func TreeView_GetSelected(obj uintptr) uintptr {
@@ -25875,11 +22184,6 @@ func TreeView_GetDockSite(obj uintptr) bool {
 
 func TreeView_SetDockSite(obj uintptr, value bool) {
    treeView_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func TreeView_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := treeView_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func TreeView_GetMouseInClient(obj uintptr) bool {
@@ -25992,26 +22296,6 @@ func TreeView_SetControlStyle(obj uintptr, value TControlStyle) {
    treeView_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func TreeView_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := treeView_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func TreeView_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := treeView_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func TreeView_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := treeView_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func TreeView_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := treeView_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func TreeView_GetFloating(obj uintptr) bool {
     ret, _, _ := treeView_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -26024,15 +22308,6 @@ func TreeView_GetParent(obj uintptr) uintptr {
 
 func TreeView_SetParent(obj uintptr, value uintptr) {
    treeView_SetParent.Call(obj, value)
-}
-
-func TreeView_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := treeView_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TreeView_SetAlignWithMargins(obj uintptr, value bool) {
-   treeView_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeView_GetLeft(obj uintptr) int32 {
@@ -26225,10 +22500,6 @@ func StatusBar_Invalidate(obj uintptr)  {
     statusBar_Invalidate.Call(obj)
 }
 
-func StatusBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    statusBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func StatusBar_RemoveControl(obj uintptr, AControl uintptr)  {
     statusBar_RemoveControl.Call(obj, AControl )
 }
@@ -26255,10 +22526,6 @@ func StatusBar_SetFocus(obj uintptr)  {
 
 func StatusBar_Update(obj uintptr)  {
     statusBar_Update.Call(obj)
-}
-
-func StatusBar_UpdateControlState(obj uintptr)  {
-    statusBar_UpdateControlState.Call(obj)
 }
 
 func StatusBar_BringToFront(obj uintptr)  {
@@ -26351,10 +22618,6 @@ func StatusBar_GetNamePath(obj uintptr) string {
 
 func StatusBar_Assign(obj uintptr, Source uintptr)  {
     statusBar_Assign.Call(obj, Source )
-}
-
-func StatusBar_DisposeOf(obj uintptr)  {
-    statusBar_DisposeOf.Call(obj)
 }
 
 func StatusBar_ClassType(obj uintptr) TClass {
@@ -26626,15 +22889,6 @@ func StatusBar_SetVisible(obj uintptr, value bool) {
    statusBar_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func StatusBar_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := statusBar_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func StatusBar_SetStyleElements(obj uintptr, value TStyleElements) {
-   statusBar_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func StatusBar_SetOnClick(obj uintptr, fn interface{}) {
     statusBar_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -26663,16 +22917,8 @@ func StatusBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     statusBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
-func StatusBar_SetOnGesture(obj uintptr, fn interface{}) {
-    statusBar_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func StatusBar_SetOnHint(obj uintptr, fn interface{}) {
     statusBar_SetOnHint.Call(obj, addEventToMap(fn))
-}
-
-func StatusBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    statusBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StatusBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -26720,11 +22966,6 @@ func StatusBar_GetDockSite(obj uintptr) bool {
 
 func StatusBar_SetDockSite(obj uintptr, value bool) {
    statusBar_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func StatusBar_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := statusBar_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func StatusBar_GetMouseInClient(obj uintptr) bool {
@@ -26846,26 +23087,6 @@ func StatusBar_SetControlStyle(obj uintptr, value TControlStyle) {
    statusBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func StatusBar_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := statusBar_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func StatusBar_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := statusBar_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func StatusBar_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := statusBar_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func StatusBar_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := statusBar_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func StatusBar_GetFloating(obj uintptr) bool {
     ret, _, _ := statusBar_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -26878,15 +23099,6 @@ func StatusBar_GetParent(obj uintptr) uintptr {
 
 func StatusBar_SetParent(obj uintptr, value uintptr) {
    statusBar_SetParent.Call(obj, value)
-}
-
-func StatusBar_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := statusBar_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func StatusBar_SetAlignWithMargins(obj uintptr, value bool) {
-   statusBar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func StatusBar_GetLeft(obj uintptr) int32 {
@@ -27070,10 +23282,6 @@ func ToolBar_Invalidate(obj uintptr)  {
     toolBar_Invalidate.Call(obj)
 }
 
-func ToolBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    toolBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ToolBar_RemoveControl(obj uintptr, AControl uintptr)  {
     toolBar_RemoveControl.Call(obj, AControl )
 }
@@ -27104,10 +23312,6 @@ func ToolBar_SetFocus(obj uintptr)  {
 
 func ToolBar_Update(obj uintptr)  {
     toolBar_Update.Call(obj)
-}
-
-func ToolBar_UpdateControlState(obj uintptr)  {
-    toolBar_UpdateControlState.Call(obj)
 }
 
 func ToolBar_BringToFront(obj uintptr)  {
@@ -27202,10 +23406,6 @@ func ToolBar_Assign(obj uintptr, Source uintptr)  {
     toolBar_Assign.Call(obj, Source )
 }
 
-func ToolBar_DisposeOf(obj uintptr)  {
-    toolBar_DisposeOf.Call(obj)
-}
-
 func ToolBar_ClassType(obj uintptr) TClass {
     ret, _, _ := toolBar_ClassType.Call(obj)
     return TClass(ret)
@@ -27249,24 +23449,6 @@ func ToolBar_GetButtonCount(obj uintptr) int32 {
 func ToolBar_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := toolBar_GetCanvas.Call(obj)
     return ret
-}
-
-func ToolBar_GetCustomizeKeyName(obj uintptr) string {
-    ret, _, _ := toolBar_GetCustomizeKeyName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func ToolBar_SetCustomizeKeyName(obj uintptr, value string) {
-   toolBar_SetCustomizeKeyName.Call(obj, GoStrToDStr(value))
-}
-
-func ToolBar_GetCustomizeValueName(obj uintptr) string {
-    ret, _, _ := toolBar_GetCustomizeValueName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func ToolBar_SetCustomizeValueName(obj uintptr, value string) {
-   toolBar_SetCustomizeValueName.Call(obj, GoStrToDStr(value))
 }
 
 func ToolBar_GetRowCount(obj uintptr) int32 {
@@ -27355,15 +23537,6 @@ func ToolBar_SetConstraints(obj uintptr, value uintptr) {
    toolBar_SetConstraints.Call(obj, value)
 }
 
-func ToolBar_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := toolBar_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ToolBar_SetCtl3D(obj uintptr, value bool) {
-   toolBar_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ToolBar_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := toolBar_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -27407,15 +23580,6 @@ func ToolBar_GetDragMode(obj uintptr) TDragMode {
 
 func ToolBar_SetDragMode(obj uintptr, value TDragMode) {
    toolBar_SetDragMode.Call(obj, uintptr(value))
-}
-
-func ToolBar_GetDrawingStyle(obj uintptr) TTBDrawingStyle {
-    ret, _, _ := toolBar_GetDrawingStyle.Call(obj)
-    return TTBDrawingStyle(ret)
-}
-
-func ToolBar_SetDrawingStyle(obj uintptr, value TTBDrawingStyle) {
-   toolBar_SetDrawingStyle.Call(obj, uintptr(value))
 }
 
 func ToolBar_GetEdgeBorders(obj uintptr) TEdgeBorders {
@@ -27472,24 +23636,6 @@ func ToolBar_SetFont(obj uintptr, value uintptr) {
    toolBar_SetFont.Call(obj, value)
 }
 
-func ToolBar_GetGradientEndColor(obj uintptr) TColor {
-    ret, _, _ := toolBar_GetGradientEndColor.Call(obj)
-    return TColor(ret)
-}
-
-func ToolBar_SetGradientEndColor(obj uintptr, value TColor) {
-   toolBar_SetGradientEndColor.Call(obj, uintptr(value))
-}
-
-func ToolBar_GetGradientStartColor(obj uintptr) TColor {
-    ret, _, _ := toolBar_GetGradientStartColor.Call(obj)
-    return TColor(ret)
-}
-
-func ToolBar_SetGradientStartColor(obj uintptr, value TColor) {
-   toolBar_SetGradientStartColor.Call(obj, uintptr(value))
-}
-
 func ToolBar_GetHeight(obj uintptr) int32 {
     ret, _, _ := toolBar_GetHeight.Call(obj)
     return int32(ret)
@@ -27497,15 +23643,6 @@ func ToolBar_GetHeight(obj uintptr) int32 {
 
 func ToolBar_SetHeight(obj uintptr, value int32) {
    toolBar_SetHeight.Call(obj, uintptr(value))
-}
-
-func ToolBar_GetHideClippedButtons(obj uintptr) bool {
-    ret, _, _ := toolBar_GetHideClippedButtons.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ToolBar_SetHideClippedButtons(obj uintptr, value bool) {
-   toolBar_SetHideClippedButtons.Call(obj, GoBoolToDBool(value))
 }
 
 func ToolBar_GetHotImages(obj uintptr) uintptr {
@@ -27542,33 +23679,6 @@ func ToolBar_GetList(obj uintptr) bool {
 
 func ToolBar_SetList(obj uintptr, value bool) {
    toolBar_SetList.Call(obj, GoBoolToDBool(value))
-}
-
-func ToolBar_GetMenu(obj uintptr) uintptr {
-    ret, _, _ := toolBar_GetMenu.Call(obj)
-    return ret
-}
-
-func ToolBar_SetMenu(obj uintptr, value uintptr) {
-   toolBar_SetMenu.Call(obj, value)
-}
-
-func ToolBar_GetGradientDirection(obj uintptr) TGradientDirection {
-    ret, _, _ := toolBar_GetGradientDirection.Call(obj)
-    return TGradientDirection(ret)
-}
-
-func ToolBar_SetGradientDirection(obj uintptr, value TGradientDirection) {
-   toolBar_SetGradientDirection.Call(obj, uintptr(value))
-}
-
-func ToolBar_GetGradientDrawingOptions(obj uintptr) TTBGradientDrawingOptions {
-    ret, _, _ := toolBar_GetGradientDrawingOptions.Call(obj)
-    return TTBGradientDrawingOptions(ret)
-}
-
-func ToolBar_SetGradientDrawingOptions(obj uintptr, value TTBGradientDrawingOptions) {
-   toolBar_SetGradientDrawingOptions.Call(obj, uintptr(value))
 }
 
 func ToolBar_GetParentColor(obj uintptr) bool {
@@ -27670,15 +23780,6 @@ func ToolBar_SetVisible(obj uintptr, value bool) {
    toolBar_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ToolBar_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := toolBar_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ToolBar_SetStyleElements(obj uintptr, value TStyleElements) {
-   toolBar_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ToolBar_GetWrapable(obj uintptr) bool {
     ret, _, _ := toolBar_GetWrapable.Call(obj)
     return DBoolToGoBool(ret)
@@ -27686,14 +23787,6 @@ func ToolBar_GetWrapable(obj uintptr) bool {
 
 func ToolBar_SetWrapable(obj uintptr, value bool) {
    toolBar_SetWrapable.Call(obj, GoBoolToDBool(value))
-}
-
-func ToolBar_SetOnAdvancedCustomDraw(obj uintptr, fn interface{}) {
-    toolBar_SetOnAdvancedCustomDraw.Call(obj, addEventToMap(fn))
-}
-
-func ToolBar_SetOnAdvancedCustomDrawButton(obj uintptr, fn interface{}) {
-    toolBar_SetOnAdvancedCustomDrawButton.Call(obj, addEventToMap(fn))
 }
 
 func ToolBar_SetOnClick(obj uintptr, fn interface{}) {
@@ -27720,10 +23813,6 @@ func ToolBar_SetOnDragOver(obj uintptr, fn interface{}) {
     toolBar_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func ToolBar_SetOnEndDock(obj uintptr, fn interface{}) {
-    toolBar_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func ToolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     toolBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -27734,18 +23823,6 @@ func ToolBar_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ToolBar_SetOnExit(obj uintptr, fn interface{}) {
     toolBar_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func ToolBar_SetOnGesture(obj uintptr, fn interface{}) {
-    toolBar_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func ToolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
-    toolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func ToolBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    toolBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ToolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -27772,10 +23849,6 @@ func ToolBar_SetOnResize(obj uintptr, fn interface{}) {
     toolBar_SetOnResize.Call(obj, addEventToMap(fn))
 }
 
-func ToolBar_SetOnStartDock(obj uintptr, fn interface{}) {
-    toolBar_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func ToolBar_SetOnUnDock(obj uintptr, fn interface{}) {
     toolBar_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
@@ -27783,11 +23856,6 @@ func ToolBar_SetOnUnDock(obj uintptr, fn interface{}) {
 func ToolBar_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := toolBar_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func ToolBar_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := toolBar_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ToolBar_GetMouseInClient(obj uintptr) bool {
@@ -27909,26 +23977,6 @@ func ToolBar_SetControlStyle(obj uintptr, value TControlStyle) {
    toolBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ToolBar_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := toolBar_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ToolBar_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := toolBar_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ToolBar_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := toolBar_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ToolBar_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := toolBar_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ToolBar_GetFloating(obj uintptr) bool {
     ret, _, _ := toolBar_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -27941,15 +23989,6 @@ func ToolBar_GetParent(obj uintptr) uintptr {
 
 func ToolBar_SetParent(obj uintptr, value uintptr) {
    toolBar_SetParent.Call(obj, value)
-}
-
-func ToolBar_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := toolBar_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ToolBar_SetAlignWithMargins(obj uintptr, value bool) {
-   toolBar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ToolBar_GetLeft(obj uintptr) int32 {
@@ -28068,1044 +24107,6 @@ func ToolBar_StaticClassType() TClass {
     return TClass(r)
 }
 
-//--------------------------- TMaskEdit ---------------------------
-
-func MaskEdit_Create(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_Create.Call(obj)
-    return ret
-}
-
-func MaskEdit_Free(obj uintptr) {
-    maskEdit_Free.Call(obj)
-}
-
-func MaskEdit_ValidateEdit(obj uintptr)  {
-    maskEdit_ValidateEdit.Call(obj)
-}
-
-func MaskEdit_Clear(obj uintptr)  {
-    maskEdit_Clear.Call(obj)
-}
-
-func MaskEdit_GetTextLen(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetTextLen.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_ClearSelection(obj uintptr)  {
-    maskEdit_ClearSelection.Call(obj)
-}
-
-func MaskEdit_CopyToClipboard(obj uintptr)  {
-    maskEdit_CopyToClipboard.Call(obj)
-}
-
-func MaskEdit_CutToClipboard(obj uintptr)  {
-    maskEdit_CutToClipboard.Call(obj)
-}
-
-func MaskEdit_PasteFromClipboard(obj uintptr)  {
-    maskEdit_PasteFromClipboard.Call(obj)
-}
-
-func MaskEdit_Undo(obj uintptr)  {
-    maskEdit_Undo.Call(obj)
-}
-
-func MaskEdit_ClearUndo(obj uintptr)  {
-    maskEdit_ClearUndo.Call(obj)
-}
-
-func MaskEdit_SelectAll(obj uintptr)  {
-    maskEdit_SelectAll.Call(obj)
-}
-
-func MaskEdit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    if Buffer == nil || BufSize == 0 {
-        return 0
-    }
-    strPtr := getBuff(BufSize)
-    ret, _, _ := maskEdit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
-    getTextBuf(strPtr, Buffer, int(ret))
-    return int32(ret)
-}
-
-func MaskEdit_CanFocus(obj uintptr) bool {
-    ret, _, _ := maskEdit_CanFocus.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_ContainsControl(obj uintptr, Control uintptr) bool {
-    ret, _, _ := maskEdit_ContainsControl.Call(obj, Control )
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
-    ret, _, _ := maskEdit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
-    return ret
-}
-
-func MaskEdit_DisableAlign(obj uintptr)  {
-    maskEdit_DisableAlign.Call(obj)
-}
-
-func MaskEdit_EnableAlign(obj uintptr)  {
-    maskEdit_EnableAlign.Call(obj)
-}
-
-func MaskEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
-    ret, _, _ := maskEdit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
-    return ret
-}
-
-func MaskEdit_FlipChildren(obj uintptr, AllLevels bool)  {
-    maskEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
-}
-
-func MaskEdit_Focused(obj uintptr) bool {
-    ret, _, _ := maskEdit_Focused.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_HandleAllocated(obj uintptr) bool {
-    ret, _, _ := maskEdit_HandleAllocated.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_InsertControl(obj uintptr, AControl uintptr)  {
-    maskEdit_InsertControl.Call(obj, AControl )
-}
-
-func MaskEdit_Invalidate(obj uintptr)  {
-    maskEdit_Invalidate.Call(obj)
-}
-
-func MaskEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    maskEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
-func MaskEdit_RemoveControl(obj uintptr, AControl uintptr)  {
-    maskEdit_RemoveControl.Call(obj, AControl )
-}
-
-func MaskEdit_Realign(obj uintptr)  {
-    maskEdit_Realign.Call(obj)
-}
-
-func MaskEdit_Repaint(obj uintptr)  {
-    maskEdit_Repaint.Call(obj)
-}
-
-func MaskEdit_ScaleBy(obj uintptr, M int32, D int32)  {
-    maskEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
-}
-
-func MaskEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
-    maskEdit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
-}
-
-func MaskEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
-    maskEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
-}
-
-func MaskEdit_SetFocus(obj uintptr)  {
-    maskEdit_SetFocus.Call(obj)
-}
-
-func MaskEdit_Update(obj uintptr)  {
-    maskEdit_Update.Call(obj)
-}
-
-func MaskEdit_UpdateControlState(obj uintptr)  {
-    maskEdit_UpdateControlState.Call(obj)
-}
-
-func MaskEdit_BringToFront(obj uintptr)  {
-    maskEdit_BringToFront.Call(obj)
-}
-
-func MaskEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
-    var ret TPoint
-    maskEdit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func MaskEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
-    var ret TPoint
-    maskEdit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func MaskEdit_Dragging(obj uintptr) bool {
-    ret, _, _ := maskEdit_Dragging.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_HasParent(obj uintptr) bool {
-    ret, _, _ := maskEdit_HasParent.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_Hide(obj uintptr)  {
-    maskEdit_Hide.Call(obj)
-}
-
-func MaskEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
-    ret, _, _ := maskEdit_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
-    return int(ret)
-}
-
-func MaskEdit_Refresh(obj uintptr)  {
-    maskEdit_Refresh.Call(obj)
-}
-
-func MaskEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
-    var ret TPoint
-    maskEdit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func MaskEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
-    var ret TPoint
-    maskEdit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func MaskEdit_SendToBack(obj uintptr)  {
-    maskEdit_SendToBack.Call(obj)
-}
-
-func MaskEdit_Show(obj uintptr)  {
-    maskEdit_Show.Call(obj)
-}
-
-func MaskEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    if Buffer == nil || BufSize == 0 {
-        return 0
-    }
-    strPtr := getBuff(BufSize)
-    ret, _, _ := maskEdit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
-    getTextBuf(strPtr, Buffer, int(ret))
-    return int32(ret)
-}
-
-func MaskEdit_SetTextBuf(obj uintptr, Buffer string)  {
-    maskEdit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
-}
-
-func MaskEdit_FindComponent(obj uintptr, AName string) uintptr {
-    ret, _, _ := maskEdit_FindComponent.Call(obj, GoStrToDStr(AName) )
-    return ret
-}
-
-func MaskEdit_GetNamePath(obj uintptr) string {
-    ret, _, _ := maskEdit_GetNamePath.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_Assign(obj uintptr, Source uintptr)  {
-    maskEdit_Assign.Call(obj, Source )
-}
-
-func MaskEdit_DisposeOf(obj uintptr)  {
-    maskEdit_DisposeOf.Call(obj)
-}
-
-func MaskEdit_ClassType(obj uintptr) TClass {
-    ret, _, _ := maskEdit_ClassType.Call(obj)
-    return TClass(ret)
-}
-
-func MaskEdit_ClassName(obj uintptr) string {
-    ret, _, _ := maskEdit_ClassName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_InstanceSize(obj uintptr) int32 {
-    ret, _, _ := maskEdit_InstanceSize.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
-    ret, _, _ := maskEdit_InheritsFrom.Call(obj, uintptr(AClass) )
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_Equals(obj uintptr, Obj uintptr) bool {
-    ret, _, _ := maskEdit_Equals.Call(obj, Obj )
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_GetHashCode(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetHashCode.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_ToString(obj uintptr) string {
-    ret, _, _ := maskEdit_ToString.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_GetAlign(obj uintptr) TAlign {
-    ret, _, _ := maskEdit_GetAlign.Call(obj)
-    return TAlign(ret)
-}
-
-func MaskEdit_SetAlign(obj uintptr, value TAlign) {
-   maskEdit_SetAlign.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetAlignment(obj uintptr) TAlignment {
-    ret, _, _ := maskEdit_GetAlignment.Call(obj)
-    return TAlignment(ret)
-}
-
-func MaskEdit_SetAlignment(obj uintptr, value TAlignment) {
-   maskEdit_SetAlignment.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetAnchors(obj uintptr) TAnchors {
-    ret, _, _ := maskEdit_GetAnchors.Call(obj)
-    return TAnchors(ret)
-}
-
-func MaskEdit_SetAnchors(obj uintptr, value TAnchors) {
-   maskEdit_SetAnchors.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetAutoSelect(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetAutoSelect.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetAutoSelect(obj uintptr, value bool) {
-   maskEdit_SetAutoSelect.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetAutoSize(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetAutoSize.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetAutoSize(obj uintptr, value bool) {
-   maskEdit_SetAutoSize.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := maskEdit_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func MaskEdit_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   maskEdit_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := maskEdit_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func MaskEdit_SetBevelInner(obj uintptr, value TBevelCut) {
-   maskEdit_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := maskEdit_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func MaskEdit_SetBevelOuter(obj uintptr, value TBevelCut) {
-   maskEdit_SetBevelOuter.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := maskEdit_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func MaskEdit_SetBevelKind(obj uintptr, value TBevelKind) {
-   maskEdit_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetBiDiMode(obj uintptr) TBiDiMode {
-    ret, _, _ := maskEdit_GetBiDiMode.Call(obj)
-    return TBiDiMode(ret)
-}
-
-func MaskEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
-   maskEdit_SetBiDiMode.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetBorderStyle(obj uintptr) TBorderStyle {
-    ret, _, _ := maskEdit_GetBorderStyle.Call(obj)
-    return TBorderStyle(ret)
-}
-
-func MaskEdit_SetBorderStyle(obj uintptr, value TBorderStyle) {
-   maskEdit_SetBorderStyle.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetCharCase(obj uintptr) TEditCharCase {
-    ret, _, _ := maskEdit_GetCharCase.Call(obj)
-    return TEditCharCase(ret)
-}
-
-func MaskEdit_SetCharCase(obj uintptr, value TEditCharCase) {
-   maskEdit_SetCharCase.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetColor(obj uintptr) TColor {
-    ret, _, _ := maskEdit_GetColor.Call(obj)
-    return TColor(ret)
-}
-
-func MaskEdit_SetColor(obj uintptr, value TColor) {
-   maskEdit_SetColor.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetConstraints(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetConstraints.Call(obj)
-    return ret
-}
-
-func MaskEdit_SetConstraints(obj uintptr, value uintptr) {
-   maskEdit_SetConstraints.Call(obj, value)
-}
-
-func MaskEdit_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetCtl3D(obj uintptr, value bool) {
-   maskEdit_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetDoubleBuffered(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetDoubleBuffered.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetDoubleBuffered(obj uintptr, value bool) {
-   maskEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetDragCursor(obj uintptr) TCursor {
-    ret, _, _ := maskEdit_GetDragCursor.Call(obj)
-    return TCursor(ret)
-}
-
-func MaskEdit_SetDragCursor(obj uintptr, value TCursor) {
-   maskEdit_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := maskEdit_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func MaskEdit_SetDragKind(obj uintptr, value TDragKind) {
-   maskEdit_SetDragKind.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetDragMode(obj uintptr) TDragMode {
-    ret, _, _ := maskEdit_GetDragMode.Call(obj)
-    return TDragMode(ret)
-}
-
-func MaskEdit_SetDragMode(obj uintptr, value TDragMode) {
-   maskEdit_SetDragMode.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetEnabled(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetEnabled(obj uintptr, value bool) {
-   maskEdit_SetEnabled.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetFont(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetFont.Call(obj)
-    return ret
-}
-
-func MaskEdit_SetFont(obj uintptr, value uintptr) {
-   maskEdit_SetFont.Call(obj, value)
-}
-
-func MaskEdit_GetMaxLength(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetMaxLength.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetMaxLength(obj uintptr, value int32) {
-   maskEdit_SetMaxLength.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetParentColor(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetParentColor.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetParentColor(obj uintptr, value bool) {
-   maskEdit_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetParentCtl3D(obj uintptr, value bool) {
-   maskEdit_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetParentDoubleBuffered(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetParentDoubleBuffered.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
-   maskEdit_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetParentFont(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetParentFont.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetParentFont(obj uintptr, value bool) {
-   maskEdit_SetParentFont.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetParentShowHint(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetParentShowHint.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetParentShowHint(obj uintptr, value bool) {
-   maskEdit_SetParentShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetPasswordChar(obj uintptr) uint16 {
-    ret, _, _ := maskEdit_GetPasswordChar.Call(obj)
-    return uint16(ret)
-}
-
-func MaskEdit_SetPasswordChar(obj uintptr, value uint16) {
-   maskEdit_SetPasswordChar.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetPopupMenu(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetPopupMenu.Call(obj)
-    return ret
-}
-
-func MaskEdit_SetPopupMenu(obj uintptr, value uintptr) {
-   maskEdit_SetPopupMenu.Call(obj, value)
-}
-
-func MaskEdit_GetReadOnly(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetReadOnly.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetReadOnly(obj uintptr, value bool) {
-   maskEdit_SetReadOnly.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetShowHint(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetShowHint.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetShowHint(obj uintptr, value bool) {
-   maskEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetTabOrder(obj uintptr) TTabOrder {
-    ret, _, _ := maskEdit_GetTabOrder.Call(obj)
-    return TTabOrder(ret)
-}
-
-func MaskEdit_SetTabOrder(obj uintptr, value TTabOrder) {
-   maskEdit_SetTabOrder.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetTabStop(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetTabStop.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetTabStop(obj uintptr, value bool) {
-   maskEdit_SetTabStop.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetText(obj uintptr) string {
-    ret, _, _ := maskEdit_GetText.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_SetText(obj uintptr, value string) {
-   maskEdit_SetText.Call(obj, GoStrToDStr(value))
-}
-
-func MaskEdit_GetTextHint(obj uintptr) string {
-    ret, _, _ := maskEdit_GetTextHint.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_SetTextHint(obj uintptr, value string) {
-   maskEdit_SetTextHint.Call(obj, GoStrToDStr(value))
-}
-
-func MaskEdit_GetVisible(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetVisible.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetVisible(obj uintptr, value bool) {
-   maskEdit_SetVisible.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := maskEdit_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func MaskEdit_SetStyleElements(obj uintptr, value TStyleElements) {
-   maskEdit_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func MaskEdit_SetOnChange(obj uintptr, fn interface{}) {
-    maskEdit_SetOnChange.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnClick(obj uintptr, fn interface{}) {
-    maskEdit_SetOnClick.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnDblClick(obj uintptr, fn interface{}) {
-    maskEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
-    maskEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnDragOver(obj uintptr, fn interface{}) {
-    maskEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnEndDock(obj uintptr, fn interface{}) {
-    maskEdit_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
-    maskEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnEnter(obj uintptr, fn interface{}) {
-    maskEdit_SetOnEnter.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnExit(obj uintptr, fn interface{}) {
-    maskEdit_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnGesture(obj uintptr, fn interface{}) {
-    maskEdit_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
-    maskEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
-    maskEdit_SetOnKeyPress.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
-    maskEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    maskEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
-    maskEdit_SetOnMouseDown.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    maskEdit_SetOnMouseEnter.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    maskEdit_SetOnMouseLeave.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
-    maskEdit_SetOnMouseMove.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
-    maskEdit_SetOnMouseUp.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_SetOnStartDock(obj uintptr, fn interface{}) {
-    maskEdit_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
-func MaskEdit_GetIsMasked(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetIsMasked.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_GetEditText(obj uintptr) string {
-    ret, _, _ := maskEdit_GetEditText.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_SetEditText(obj uintptr, value string) {
-   maskEdit_SetEditText.Call(obj, GoStrToDStr(value))
-}
-
-func MaskEdit_GetCanUndo(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetCanUndo.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_GetModified(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetModified.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetModified(obj uintptr, value bool) {
-   maskEdit_SetModified.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetSelLength(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetSelLength.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetSelLength(obj uintptr, value int32) {
-   maskEdit_SetSelLength.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetSelStart(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetSelStart.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetSelStart(obj uintptr, value int32) {
-   maskEdit_SetSelStart.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetSelText(obj uintptr) string {
-    ret, _, _ := maskEdit_GetSelText.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_SetSelText(obj uintptr, value string) {
-   maskEdit_SetSelText.Call(obj, GoStrToDStr(value))
-}
-
-func MaskEdit_GetDockClientCount(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetDockClientCount.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetDockSite(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetDockSite.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetDockSite(obj uintptr, value bool) {
-   maskEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_GetMouseInClient(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetMouseInClient.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_GetVisibleDockClientCount(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetVisibleDockClientCount.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetBrush(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetBrush.Call(obj)
-    return ret
-}
-
-func MaskEdit_GetControlCount(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetControlCount.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetHandle(obj uintptr) HWND {
-    ret, _, _ := maskEdit_GetHandle.Call(obj)
-    return HWND(ret)
-}
-
-func MaskEdit_GetParentWindow(obj uintptr) HWND {
-    ret, _, _ := maskEdit_GetParentWindow.Call(obj)
-    return HWND(ret)
-}
-
-func MaskEdit_SetParentWindow(obj uintptr, value HWND) {
-   maskEdit_SetParentWindow.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetUseDockManager(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetUseDockManager.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetUseDockManager(obj uintptr, value bool) {
-   maskEdit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetAction(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetAction.Call(obj)
-    return ret
-}
-
-func MaskEdit_SetAction(obj uintptr, value uintptr) {
-   maskEdit_SetAction.Call(obj, value)
-}
-
-func MaskEdit_GetBoundsRect(obj uintptr) TRect {
-    var ret TRect
-    maskEdit_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func MaskEdit_SetBoundsRect(obj uintptr, value TRect) {
-   maskEdit_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
-}
-
-func MaskEdit_GetClientHeight(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetClientHeight.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetClientHeight(obj uintptr, value int32) {
-   maskEdit_SetClientHeight.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetClientOrigin(obj uintptr) TPoint {
-    var ret TPoint
-    maskEdit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func MaskEdit_GetClientRect(obj uintptr) TRect {
-    var ret TRect
-    maskEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func MaskEdit_GetClientWidth(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetClientWidth.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetClientWidth(obj uintptr, value int32) {
-   maskEdit_SetClientWidth.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetControlState(obj uintptr) TControlState {
-    ret, _, _ := maskEdit_GetControlState.Call(obj)
-    return TControlState(ret)
-}
-
-func MaskEdit_SetControlState(obj uintptr, value TControlState) {
-   maskEdit_SetControlState.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetControlStyle(obj uintptr) TControlStyle {
-    ret, _, _ := maskEdit_GetControlStyle.Call(obj)
-    return TControlStyle(ret)
-}
-
-func MaskEdit_SetControlStyle(obj uintptr, value TControlStyle) {
-   maskEdit_SetControlStyle.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetFloating(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetFloating.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_GetParent(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetParent.Call(obj)
-    return ret
-}
-
-func MaskEdit_SetParent(obj uintptr, value uintptr) {
-   maskEdit_SetParent.Call(obj, value)
-}
-
-func MaskEdit_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := maskEdit_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MaskEdit_SetAlignWithMargins(obj uintptr, value bool) {
-   maskEdit_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
-}
-
-func MaskEdit_GetLeft(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetLeft.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetLeft(obj uintptr, value int32) {
-   maskEdit_SetLeft.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetTop(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetTop.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetTop(obj uintptr, value int32) {
-   maskEdit_SetTop.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetWidth(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetWidth.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetWidth(obj uintptr, value int32) {
-   maskEdit_SetWidth.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetHeight(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetHeight.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetHeight(obj uintptr, value int32) {
-   maskEdit_SetHeight.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetCursor(obj uintptr) TCursor {
-    ret, _, _ := maskEdit_GetCursor.Call(obj)
-    return TCursor(ret)
-}
-
-func MaskEdit_SetCursor(obj uintptr, value TCursor) {
-   maskEdit_SetCursor.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetHint(obj uintptr) string {
-    ret, _, _ := maskEdit_GetHint.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_SetHint(obj uintptr, value string) {
-   maskEdit_SetHint.Call(obj, GoStrToDStr(value))
-}
-
-func MaskEdit_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetMargins.Call(obj)
-    return ret
-}
-
-func MaskEdit_SetMargins(obj uintptr, value uintptr) {
-   maskEdit_SetMargins.Call(obj, value)
-}
-
-func MaskEdit_GetComponentCount(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetComponentCount.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_GetComponentIndex(obj uintptr) int32 {
-    ret, _, _ := maskEdit_GetComponentIndex.Call(obj)
-    return int32(ret)
-}
-
-func MaskEdit_SetComponentIndex(obj uintptr, value int32) {
-   maskEdit_SetComponentIndex.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetOwner(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetOwner.Call(obj)
-    return ret
-}
-
-func MaskEdit_GetName(obj uintptr) string {
-    ret, _, _ := maskEdit_GetName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MaskEdit_SetName(obj uintptr, value string) {
-   maskEdit_SetName.Call(obj, GoStrToDStr(value))
-}
-
-func MaskEdit_GetTag(obj uintptr) int {
-    ret, _, _ := maskEdit_GetTag.Call(obj)
-    return int(ret)
-}
-
-func MaskEdit_SetTag(obj uintptr, value int) {
-   maskEdit_SetTag.Call(obj, uintptr(value))
-}
-
-func MaskEdit_GetDockClients(obj uintptr, Index int32) uintptr {
-    ret, _, _ := maskEdit_GetDockClients.Call(obj, uintptr(Index))
-    return ret
-}
-
-func MaskEdit_GetControls(obj uintptr, Index int32) uintptr {
-    ret, _, _ := maskEdit_GetControls.Call(obj, uintptr(Index))
-    return ret
-}
-
-func MaskEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
-    ret, _, _ := maskEdit_GetComponents.Call(obj, uintptr(AIndex))
-    return ret
-}
-
-func MaskEdit_StaticClassType() TClass {
-    r, _, _:= maskEdit_StaticClassType.Call()
-    return TClass(r)
-}
-
 //--------------------------- TBitBtn ---------------------------
 
 func BitBtn_Create(obj uintptr) uintptr {
@@ -29171,10 +24172,6 @@ func BitBtn_Invalidate(obj uintptr)  {
     bitBtn_Invalidate.Call(obj)
 }
 
-func BitBtn_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    bitBtn_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func BitBtn_RemoveControl(obj uintptr, AControl uintptr)  {
     bitBtn_RemoveControl.Call(obj, AControl )
 }
@@ -29205,10 +24202,6 @@ func BitBtn_SetFocus(obj uintptr)  {
 
 func BitBtn_Update(obj uintptr)  {
     bitBtn_Update.Call(obj)
-}
-
-func BitBtn_UpdateControlState(obj uintptr)  {
-    bitBtn_UpdateControlState.Call(obj)
 }
 
 func BitBtn_BringToFront(obj uintptr)  {
@@ -29301,10 +24294,6 @@ func BitBtn_GetNamePath(obj uintptr) string {
 
 func BitBtn_Assign(obj uintptr, Source uintptr)  {
     bitBtn_Assign.Call(obj, Source )
-}
-
-func BitBtn_DisposeOf(obj uintptr)  {
-    bitBtn_DisposeOf.Call(obj)
 }
 
 func BitBtn_ClassType(obj uintptr) TClass {
@@ -29423,33 +24412,6 @@ func BitBtn_SetDoubleBuffered(obj uintptr, value bool) {
    bitBtn_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
-func BitBtn_GetDragCursor(obj uintptr) TCursor {
-    ret, _, _ := bitBtn_GetDragCursor.Call(obj)
-    return TCursor(ret)
-}
-
-func BitBtn_SetDragCursor(obj uintptr, value TCursor) {
-   bitBtn_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := bitBtn_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func BitBtn_SetDragKind(obj uintptr, value TDragKind) {
-   bitBtn_SetDragKind.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetDragMode(obj uintptr) TDragMode {
-    ret, _, _ := bitBtn_GetDragMode.Call(obj)
-    return TDragMode(ret)
-}
-
-func BitBtn_SetDragMode(obj uintptr, value TDragMode) {
-   bitBtn_SetDragMode.Call(obj, uintptr(value))
-}
-
 func BitBtn_GetEnabled(obj uintptr) bool {
     ret, _, _ := bitBtn_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -29475,15 +24437,6 @@ func BitBtn_GetGlyph(obj uintptr) uintptr {
 
 func BitBtn_SetGlyph(obj uintptr, value uintptr) {
    bitBtn_SetGlyph.Call(obj, value)
-}
-
-func BitBtn_GetKind(obj uintptr) TBitBtnKind {
-    ret, _, _ := bitBtn_GetKind.Call(obj)
-    return TBitBtnKind(ret)
-}
-
-func BitBtn_SetKind(obj uintptr, value TBitBtnKind) {
-   bitBtn_SetKind.Call(obj, uintptr(value))
 }
 
 func BitBtn_GetLayout(obj uintptr) TButtonLayout {
@@ -29558,15 +24511,6 @@ func BitBtn_SetShowHint(obj uintptr, value bool) {
    bitBtn_SetShowHint.Call(obj, GoBoolToDBool(value))
 }
 
-func BitBtn_GetStyle(obj uintptr) TButtonStyle {
-    ret, _, _ := bitBtn_GetStyle.Call(obj)
-    return TButtonStyle(ret)
-}
-
-func BitBtn_SetStyle(obj uintptr, value TButtonStyle) {
-   bitBtn_SetStyle.Call(obj, uintptr(value))
-}
-
 func BitBtn_GetSpacing(obj uintptr) int32 {
     ret, _, _ := bitBtn_GetSpacing.Call(obj)
     return int32(ret)
@@ -29603,24 +24547,6 @@ func BitBtn_SetVisible(obj uintptr, value bool) {
    bitBtn_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func BitBtn_GetWordWrap(obj uintptr) bool {
-    ret, _, _ := bitBtn_GetWordWrap.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func BitBtn_SetWordWrap(obj uintptr, value bool) {
-   bitBtn_SetWordWrap.Call(obj, GoBoolToDBool(value))
-}
-
-func BitBtn_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := bitBtn_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func BitBtn_SetStyleElements(obj uintptr, value TStyleElements) {
-   bitBtn_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func BitBtn_SetOnClick(obj uintptr, fn interface{}) {
     bitBtn_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -29635,10 +24561,6 @@ func BitBtn_SetOnDragDrop(obj uintptr, fn interface{}) {
 
 func BitBtn_SetOnDragOver(obj uintptr, fn interface{}) {
     bitBtn_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func BitBtn_SetOnEndDock(obj uintptr, fn interface{}) {
-    bitBtn_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
 func BitBtn_SetOnEndDrag(obj uintptr, fn interface{}) {
@@ -29665,10 +24587,6 @@ func BitBtn_SetOnKeyUp(obj uintptr, fn interface{}) {
     bitBtn_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
-func BitBtn_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    bitBtn_SetOnMouseActivate.Call(obj, addEventToMap(fn))
-}
-
 func BitBtn_SetOnMouseDown(obj uintptr, fn interface{}) {
     bitBtn_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -29689,100 +24607,6 @@ func BitBtn_SetOnMouseUp(obj uintptr, fn interface{}) {
     bitBtn_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func BitBtn_SetOnStartDock(obj uintptr, fn interface{}) {
-    bitBtn_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
-func BitBtn_GetCommandLinkHint(obj uintptr) string {
-    ret, _, _ := bitBtn_GetCommandLinkHint.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func BitBtn_SetCommandLinkHint(obj uintptr, value string) {
-   bitBtn_SetCommandLinkHint.Call(obj, GoStrToDStr(value))
-}
-
-func BitBtn_GetDisabledImageIndex(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetDisabledImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_SetDisabledImageIndex(obj uintptr, value int32) {
-   bitBtn_SetDisabledImageIndex.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetElevationRequired(obj uintptr) bool {
-    ret, _, _ := bitBtn_GetElevationRequired.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func BitBtn_SetElevationRequired(obj uintptr, value bool) {
-   bitBtn_SetElevationRequired.Call(obj, GoBoolToDBool(value))
-}
-
-func BitBtn_GetHotImageIndex(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetHotImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_SetHotImageIndex(obj uintptr, value int32) {
-   bitBtn_SetHotImageIndex.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetImages(obj uintptr) uintptr {
-    ret, _, _ := bitBtn_GetImages.Call(obj)
-    return ret
-}
-
-func BitBtn_SetImages(obj uintptr, value uintptr) {
-   bitBtn_SetImages.Call(obj, value)
-}
-
-func BitBtn_GetImageAlignment(obj uintptr) TImageAlignment {
-    ret, _, _ := bitBtn_GetImageAlignment.Call(obj)
-    return TImageAlignment(ret)
-}
-
-func BitBtn_SetImageAlignment(obj uintptr, value TImageAlignment) {
-   bitBtn_SetImageAlignment.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetImageIndex(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_SetImageIndex(obj uintptr, value int32) {
-   bitBtn_SetImageIndex.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetPressedImageIndex(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetPressedImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_SetPressedImageIndex(obj uintptr, value int32) {
-   bitBtn_SetPressedImageIndex.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetSelectedImageIndex(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetSelectedImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_SetSelectedImageIndex(obj uintptr, value int32) {
-   bitBtn_SetSelectedImageIndex.Call(obj, uintptr(value))
-}
-
-func BitBtn_GetStylusHotImageIndex(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetStylusHotImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_SetStylusHotImageIndex(obj uintptr, value int32) {
-   bitBtn_SetStylusHotImageIndex.Call(obj, uintptr(value))
-}
-
 func BitBtn_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := bitBtn_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -29795,11 +24619,6 @@ func BitBtn_GetDockSite(obj uintptr) bool {
 
 func BitBtn_SetDockSite(obj uintptr, value bool) {
    bitBtn_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func BitBtn_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := bitBtn_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func BitBtn_GetMouseInClient(obj uintptr) bool {
@@ -29903,26 +24722,6 @@ func BitBtn_SetControlStyle(obj uintptr, value TControlStyle) {
    bitBtn_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func BitBtn_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func BitBtn_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := bitBtn_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func BitBtn_GetFloating(obj uintptr) bool {
     ret, _, _ := bitBtn_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -29935,19 +24734,6 @@ func BitBtn_GetParent(obj uintptr) uintptr {
 
 func BitBtn_SetParent(obj uintptr, value uintptr) {
    bitBtn_SetParent.Call(obj, value)
-}
-
-func BitBtn_SetOnGesture(obj uintptr, fn interface{}) {
-    bitBtn_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func BitBtn_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := bitBtn_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func BitBtn_SetAlignWithMargins(obj uintptr, value bool) {
-   bitBtn_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func BitBtn_GetLeft(obj uintptr) int32 {
@@ -30128,10 +24914,6 @@ func Icon_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func Icon_DisposeOf(obj uintptr)  {
-    icon_DisposeOf.Call(obj)
-}
-
 func Icon_ClassType(obj uintptr) TClass {
     ret, _, _ := icon_ClassType.Call(obj)
     return TClass(ret)
@@ -30301,10 +25083,6 @@ func Bitmap_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func Bitmap_DisposeOf(obj uintptr)  {
-    bitmap_DisposeOf.Call(obj)
-}
-
 func Bitmap_ClassType(obj uintptr) TClass {
     ret, _, _ := bitmap_ClassType.Call(obj)
     return TClass(ret)
@@ -30374,15 +25152,6 @@ func Bitmap_GetPixelFormat(obj uintptr) TPixelFormat {
 
 func Bitmap_SetPixelFormat(obj uintptr, value TPixelFormat) {
    bitmap_SetPixelFormat.Call(obj, uintptr(value))
-}
-
-func Bitmap_GetTransparentColor(obj uintptr) TColor {
-    ret, _, _ := bitmap_GetTransparentColor.Call(obj)
-    return TColor(ret)
-}
-
-func Bitmap_SetTransparentColor(obj uintptr, value TColor) {
-   bitmap_SetTransparentColor.Call(obj, uintptr(value))
 }
 
 func Bitmap_GetTransparentMode(obj uintptr) TTransparentMode {
@@ -30510,10 +25279,6 @@ func MemoryStream_CopyFrom(obj uintptr, Source uintptr, Count int64) int64 {
     return ret
 }
 
-func MemoryStream_DisposeOf(obj uintptr)  {
-    memoryStream_DisposeOf.Call(obj)
-}
-
 func MemoryStream_ClassType(obj uintptr) TClass {
     ret, _, _ := memoryStream_ClassType.Call(obj)
     return TClass(ret)
@@ -30602,10 +25367,6 @@ func Font_HandleAllocated(obj uintptr) bool {
 func Font_GetNamePath(obj uintptr) string {
     ret, _, _ := font_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Font_DisposeOf(obj uintptr)  {
-    font_DisposeOf.Call(obj)
 }
 
 func Font_ClassType(obj uintptr) TClass {
@@ -30849,10 +25610,6 @@ func Strings_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func Strings_DisposeOf(obj uintptr)  {
-    strings_DisposeOf.Call(obj)
-}
-
 func Strings_ClassType(obj uintptr) TClass {
     ret, _, _ := strings_ClassType.Call(obj)
     return TClass(ret)
@@ -30922,24 +25679,6 @@ func Strings_GetText(obj uintptr) string {
 
 func Strings_SetText(obj uintptr, value string) {
    strings_SetText.Call(obj, GoStrToDStr(value))
-}
-
-func Strings_GetWriteBOM(obj uintptr) bool {
-    ret, _, _ := strings_GetWriteBOM.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Strings_SetWriteBOM(obj uintptr, value bool) {
-   strings_SetWriteBOM.Call(obj, GoBoolToDBool(value))
-}
-
-func Strings_GetOptions(obj uintptr) TStringsOptions {
-    ret, _, _ := strings_GetOptions.Call(obj)
-    return TStringsOptions(ret)
-}
-
-func Strings_SetOptions(obj uintptr, value TStringsOptions) {
-   strings_SetOptions.Call(obj, uintptr(value))
 }
 
 func Strings_GetObjects(obj uintptr, Index int32) uintptr {
@@ -31081,10 +25820,6 @@ func StringList_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func StringList_DisposeOf(obj uintptr)  {
-    stringList_DisposeOf.Call(obj)
-}
-
 func StringList_ClassType(obj uintptr) TClass {
     ret, _, _ := stringList_ClassType.Call(obj)
     return TClass(ret)
@@ -31173,24 +25908,6 @@ func StringList_SetText(obj uintptr, value string) {
    stringList_SetText.Call(obj, GoStrToDStr(value))
 }
 
-func StringList_GetWriteBOM(obj uintptr) bool {
-    ret, _, _ := stringList_GetWriteBOM.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func StringList_SetWriteBOM(obj uintptr, value bool) {
-   stringList_SetWriteBOM.Call(obj, GoBoolToDBool(value))
-}
-
-func StringList_GetOptions(obj uintptr) TStringsOptions {
-    ret, _, _ := stringList_GetOptions.Call(obj)
-    return TStringsOptions(ret)
-}
-
-func StringList_SetOptions(obj uintptr, value TStringsOptions) {
-   stringList_SetOptions.Call(obj, uintptr(value))
-}
-
 func StringList_GetObjects(obj uintptr, Index int32) uintptr {
     ret, _, _ := stringList_GetObjects.Call(obj, uintptr(Index))
     return ret
@@ -31247,18 +25964,9 @@ func Brush_Assign(obj uintptr, Source uintptr)  {
     brush_Assign.Call(obj, Source )
 }
 
-func Brush_HandleAllocated(obj uintptr) bool {
-    ret, _, _ := brush_HandleAllocated.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func Brush_GetNamePath(obj uintptr) string {
     ret, _, _ := brush_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Brush_DisposeOf(obj uintptr)  {
-    brush_DisposeOf.Call(obj)
 }
 
 func Brush_ClassType(obj uintptr) TClass {
@@ -31356,18 +26064,9 @@ func Pen_Assign(obj uintptr, Source uintptr)  {
     pen_Assign.Call(obj, Source )
 }
 
-func Pen_HandleAllocated(obj uintptr) bool {
-    ret, _, _ := pen_HandleAllocated.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func Pen_GetNamePath(obj uintptr) string {
     ret, _, _ := pen_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Pen_DisposeOf(obj uintptr)  {
-    pen_DisposeOf.Call(obj)
 }
 
 func Pen_ClassType(obj uintptr) TClass {
@@ -31514,10 +26213,6 @@ func MenuItem_Assign(obj uintptr, Source uintptr)  {
     menuItem_Assign.Call(obj, Source )
 }
 
-func MenuItem_DisposeOf(obj uintptr)  {
-    menuItem_DisposeOf.Call(obj)
-}
-
 func MenuItem_ClassType(obj uintptr) TClass {
     ret, _, _ := menuItem_ClassType.Call(obj)
     return TClass(ret)
@@ -31586,15 +26281,6 @@ func MenuItem_SetAutoCheck(obj uintptr, value bool) {
    menuItem_SetAutoCheck.Call(obj, GoBoolToDBool(value))
 }
 
-func MenuItem_GetAutoHotkeys(obj uintptr) TMenuItemAutoFlag {
-    ret, _, _ := menuItem_GetAutoHotkeys.Call(obj)
-    return TMenuItemAutoFlag(ret)
-}
-
-func MenuItem_SetAutoHotkeys(obj uintptr, value TMenuItemAutoFlag) {
-   menuItem_SetAutoHotkeys.Call(obj, uintptr(value))
-}
-
 func MenuItem_GetBitmap(obj uintptr) uintptr {
     ret, _, _ := menuItem_GetBitmap.Call(obj)
     return ret
@@ -31602,15 +26288,6 @@ func MenuItem_GetBitmap(obj uintptr) uintptr {
 
 func MenuItem_SetBitmap(obj uintptr, value uintptr) {
    menuItem_SetBitmap.Call(obj, value)
-}
-
-func MenuItem_GetBreak(obj uintptr) TMenuBreak {
-    ret, _, _ := menuItem_GetBreak.Call(obj)
-    return TMenuBreak(ret)
-}
-
-func MenuItem_SetBreak(obj uintptr, value TMenuBreak) {
-   menuItem_SetBreak.Call(obj, uintptr(value))
 }
 
 func MenuItem_GetCaption(obj uintptr) string {
@@ -31707,10 +26384,6 @@ func MenuItem_SetOnClick(obj uintptr, fn interface{}) {
     menuItem_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
-func MenuItem_SetOnDrawItem(obj uintptr, fn interface{}) {
-    menuItem_SetOnDrawItem.Call(obj, addEventToMap(fn))
-}
-
 func MenuItem_SetOnMeasureItem(obj uintptr, fn interface{}) {
     menuItem_SetOnMeasureItem.Call(obj, addEventToMap(fn))
 }
@@ -31801,10 +26474,6 @@ func Picture_Assign(obj uintptr, Source uintptr)  {
 func Picture_GetNamePath(obj uintptr) string {
     ret, _, _ := picture_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Picture_DisposeOf(obj uintptr)  {
-    picture_DisposeOf.Call(obj)
 }
 
 func Picture_ClassType(obj uintptr) TClass {
@@ -31921,10 +26590,6 @@ func ListColumns_Clear(obj uintptr)  {
     listColumns_Clear.Call(obj)
 }
 
-func ListColumns_ClearAndResetID(obj uintptr)  {
-    listColumns_ClearAndResetID.Call(obj)
-}
-
 func ListColumns_Delete(obj uintptr, Index int32)  {
     listColumns_Delete.Call(obj, uintptr(Index) )
 }
@@ -31946,10 +26611,6 @@ func ListColumns_GetNamePath(obj uintptr) string {
 func ListColumns_Insert(obj uintptr, Index int32) uintptr {
     ret, _, _ := listColumns_Insert.Call(obj, uintptr(Index) )
     return ret
-}
-
-func ListColumns_DisposeOf(obj uintptr)  {
-    listColumns_DisposeOf.Call(obj)
 }
 
 func ListColumns_ClassType(obj uintptr) TClass {
@@ -31987,15 +26648,6 @@ func ListColumns_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func ListColumns_GetCapacity(obj uintptr) int32 {
-    ret, _, _ := listColumns_GetCapacity.Call(obj)
-    return int32(ret)
-}
-
-func ListColumns_SetCapacity(obj uintptr, value int32) {
-   listColumns_SetCapacity.Call(obj, uintptr(value))
-}
-
 func ListColumns_GetCount(obj uintptr) int32 {
     ret, _, _ := listColumns_GetCount.Call(obj)
     return int32(ret)
@@ -32028,11 +26680,6 @@ func ListItems_Free(obj uintptr) {
 
 func ListItems_Add(obj uintptr) uintptr {
     ret, _, _ := listItems_Add.Call(obj)
-    return ret
-}
-
-func ListItems_AddItem(obj uintptr, Item uintptr, Index int32) uintptr {
-    ret, _, _ := listItems_AddItem.Call(obj, Item , uintptr(Index) )
     return ret
 }
 
@@ -32069,10 +26716,6 @@ func ListItems_Insert(obj uintptr, Index int32) uintptr {
 func ListItems_GetNamePath(obj uintptr) string {
     ret, _, _ := listItems_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func ListItems_DisposeOf(obj uintptr)  {
-    listItems_DisposeOf.Call(obj)
 }
 
 func ListItems_ClassType(obj uintptr) TClass {
@@ -32117,11 +26760,6 @@ func ListItems_GetCount(obj uintptr) int32 {
 
 func ListItems_SetCount(obj uintptr, value int32) {
    listItems_SetCount.Call(obj, uintptr(value))
-}
-
-func ListItems_GetHandle(obj uintptr) HWND {
-    ret, _, _ := listItems_GetHandle.Call(obj)
-    return HWND(ret)
 }
 
 func ListItems_GetOwner(obj uintptr) uintptr {
@@ -32199,11 +26837,6 @@ func TreeNodes_Add(obj uintptr, Sibling uintptr, S string) uintptr {
     return ret
 }
 
-func TreeNodes_AlphaSort(obj uintptr, ARecurse bool) bool {
-    ret, _, _ := treeNodes_AlphaSort.Call(obj, GoBoolToDBool(ARecurse) )
-    return DBoolToGoBool(ret)
-}
-
 func TreeNodes_Assign(obj uintptr, Source uintptr)  {
     treeNodes_Assign.Call(obj, Source )
 }
@@ -32229,11 +26862,6 @@ func TreeNodes_GetFirstNode(obj uintptr) uintptr {
     return ret
 }
 
-func TreeNodes_GetNode(obj uintptr, ItemId uintptr) uintptr {
-    ret, _, _ := treeNodes_GetNode.Call(obj, ItemId )
-    return ret
-}
-
 func TreeNodes_Insert(obj uintptr, Sibling uintptr, S string) uintptr {
     ret, _, _ := treeNodes_Insert.Call(obj, Sibling , GoStrToDStr(S) )
     return ret
@@ -32244,13 +26872,14 @@ func TreeNodes_InsertObject(obj uintptr, Sibling uintptr, S string, Ptr uintptr)
     return ret
 }
 
+func TreeNodes_CustomSort(obj uintptr, SortProc PFNTVCOMPARE, Data int, ARecurse bool) bool {
+    ret, _, _ := treeNodes_CustomSort.Call(obj, uintptr(SortProc) , uintptr(Data) , GoBoolToDBool(ARecurse) )
+    return DBoolToGoBool(ret)
+}
+
 func TreeNodes_GetNamePath(obj uintptr) string {
     ret, _, _ := treeNodes_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func TreeNodes_DisposeOf(obj uintptr)  {
-    treeNodes_DisposeOf.Call(obj)
 }
 
 func TreeNodes_ClassType(obj uintptr) TClass {
@@ -32293,11 +26922,6 @@ func TreeNodes_GetCount(obj uintptr) int32 {
     return int32(ret)
 }
 
-func TreeNodes_GetHandle(obj uintptr) HWND {
-    ret, _, _ := treeNodes_GetHandle.Call(obj)
-    return HWND(ret)
-}
-
 func TreeNodes_GetOwner(obj uintptr) uintptr {
     ret, _, _ := treeNodes_GetOwner.Call(obj)
     return ret
@@ -32328,10 +26952,6 @@ func ListItem_Assign(obj uintptr, Source uintptr)  {
     listItem_Assign.Call(obj, Source )
 }
 
-func ListItem_CancelEdit(obj uintptr)  {
-    listItem_CancelEdit.Call(obj)
-}
-
 func ListItem_Delete(obj uintptr)  {
     listItem_Delete.Call(obj)
 }
@@ -32351,22 +26971,9 @@ func ListItem_MakeVisible(obj uintptr, PartialOK bool)  {
     listItem_MakeVisible.Call(obj, GoBoolToDBool(PartialOK) )
 }
 
-func ListItem_Update(obj uintptr)  {
-    listItem_Update.Call(obj)
-}
-
-func ListItem_WorkArea(obj uintptr) int32 {
-    ret, _, _ := listItem_WorkArea.Call(obj)
-    return int32(ret)
-}
-
 func ListItem_GetNamePath(obj uintptr) string {
     ret, _, _ := listItem_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func ListItem_DisposeOf(obj uintptr)  {
-    listItem_DisposeOf.Call(obj)
 }
 
 func ListItem_ClassType(obj uintptr) TClass {
@@ -32440,20 +27047,6 @@ func ListItem_SetData(obj uintptr, value unsafe.Pointer) {
    listItem_SetData.Call(obj, uintptr(value))
 }
 
-func ListItem_GetDeleting(obj uintptr) bool {
-    ret, _, _ := listItem_GetDeleting.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListItem_GetDropTarget(obj uintptr) bool {
-    ret, _, _ := listItem_GetDropTarget.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ListItem_SetDropTarget(obj uintptr, value bool) {
-   listItem_SetDropTarget.Call(obj, GoBoolToDBool(value))
-}
-
 func ListItem_GetFocused(obj uintptr) bool {
     ret, _, _ := listItem_GetFocused.Call(obj)
     return DBoolToGoBool(ret)
@@ -32463,11 +27056,6 @@ func ListItem_SetFocused(obj uintptr, value bool) {
    listItem_SetFocused.Call(obj, GoBoolToDBool(value))
 }
 
-func ListItem_GetHandle(obj uintptr) HWND {
-    ret, _, _ := listItem_GetHandle.Call(obj)
-    return HWND(ret)
-}
-
 func ListItem_GetImageIndex(obj uintptr) int32 {
     ret, _, _ := listItem_GetImageIndex.Call(obj)
     return int32(ret)
@@ -32475,15 +27063,6 @@ func ListItem_GetImageIndex(obj uintptr) int32 {
 
 func ListItem_SetImageIndex(obj uintptr, value int32) {
    listItem_SetImageIndex.Call(obj, uintptr(value))
-}
-
-func ListItem_GetIndent(obj uintptr) int32 {
-    ret, _, _ := listItem_GetIndent.Call(obj)
-    return int32(ret)
-}
-
-func ListItem_SetIndent(obj uintptr, value int32) {
-   listItem_SetIndent.Call(obj, uintptr(value))
 }
 
 func ListItem_GetIndex(obj uintptr) int32 {
@@ -32508,15 +27087,6 @@ func ListItem_GetListView(obj uintptr) uintptr {
 func ListItem_GetOwner(obj uintptr) uintptr {
     ret, _, _ := listItem_GetOwner.Call(obj)
     return ret
-}
-
-func ListItem_GetOverlayIndex(obj uintptr) int32 {
-    ret, _, _ := listItem_GetOverlayIndex.Call(obj)
-    return int32(ret)
-}
-
-func ListItem_SetOverlayIndex(obj uintptr, value int32) {
-   listItem_SetOverlayIndex.Call(obj, uintptr(value))
 }
 
 func ListItem_GetPosition(obj uintptr) TPoint {
@@ -32590,11 +27160,6 @@ func TreeNode_Free(obj uintptr) {
     treeNode_Free.Call(obj)
 }
 
-func TreeNode_AlphaSort(obj uintptr, ARecurse bool) bool {
-    ret, _, _ := treeNode_AlphaSort.Call(obj, GoBoolToDBool(ARecurse) )
-    return DBoolToGoBool(ret)
-}
-
 func TreeNode_Assign(obj uintptr, Source uintptr)  {
     treeNode_Assign.Call(obj, Source )
 }
@@ -32635,13 +27200,14 @@ func TreeNode_MoveTo(obj uintptr, Destination uintptr, Mode TNodeAttachMode)  {
     treeNode_MoveTo.Call(obj, Destination , uintptr(Mode) )
 }
 
+func TreeNode_CustomSort(obj uintptr, SortProc PFNTVCOMPARE, Data int, ARecurse bool) bool {
+    ret, _, _ := treeNode_CustomSort.Call(obj, uintptr(SortProc) , uintptr(Data) , GoBoolToDBool(ARecurse) )
+    return DBoolToGoBool(ret)
+}
+
 func TreeNode_GetNamePath(obj uintptr) string {
     ret, _, _ := treeNode_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func TreeNode_DisposeOf(obj uintptr)  {
-    treeNode_DisposeOf.Call(obj)
 }
 
 func TreeNode_ClassType(obj uintptr) TClass {
@@ -32721,15 +27287,6 @@ func TreeNode_SetFocused(obj uintptr, value bool) {
    treeNode_SetFocused.Call(obj, GoBoolToDBool(value))
 }
 
-func TreeNode_GetDropTarget(obj uintptr) bool {
-    ret, _, _ := treeNode_GetDropTarget.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TreeNode_SetDropTarget(obj uintptr, value bool) {
-   treeNode_SetDropTarget.Call(obj, GoBoolToDBool(value))
-}
-
 func TreeNode_GetSelected(obj uintptr) bool {
     ret, _, _ := treeNode_GetSelected.Call(obj)
     return DBoolToGoBool(ret)
@@ -32746,15 +27303,6 @@ func TreeNode_GetExpanded(obj uintptr) bool {
 
 func TreeNode_SetExpanded(obj uintptr, value bool) {
    treeNode_SetExpanded.Call(obj, GoBoolToDBool(value))
-}
-
-func TreeNode_GetExpandedImageIndex(obj uintptr) int32 {
-    ret, _, _ := treeNode_GetExpandedImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func TreeNode_SetExpandedImageIndex(obj uintptr, value int32) {
-   treeNode_SetExpandedImageIndex.Call(obj, uintptr(value))
 }
 
 func TreeNode_GetHandle(obj uintptr) HWND {
@@ -32790,23 +27338,9 @@ func TreeNode_GetIsVisible(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
-func TreeNode_GetItemId(obj uintptr) uintptr {
-    ret, _, _ := treeNode_GetItemId.Call(obj)
-    return ret
-}
-
 func TreeNode_GetLevel(obj uintptr) int32 {
     ret, _, _ := treeNode_GetLevel.Call(obj)
     return int32(ret)
-}
-
-func TreeNode_GetOverlayIndex(obj uintptr) int32 {
-    ret, _, _ := treeNode_GetOverlayIndex.Call(obj)
-    return int32(ret)
-}
-
-func TreeNode_SetOverlayIndex(obj uintptr, value int32) {
-   treeNode_SetOverlayIndex.Call(obj, uintptr(value))
 }
 
 func TreeNode_GetOwner(obj uintptr) uintptr {
@@ -32826,15 +27360,6 @@ func TreeNode_GetSelectedIndex(obj uintptr) int32 {
 
 func TreeNode_SetSelectedIndex(obj uintptr, value int32) {
    treeNode_SetSelectedIndex.Call(obj, uintptr(value))
-}
-
-func TreeNode_GetEnabled(obj uintptr) bool {
-    ret, _, _ := treeNode_GetEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TreeNode_SetEnabled(obj uintptr, value bool) {
-   treeNode_SetEnabled.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeNode_GetStateIndex(obj uintptr) int32 {
@@ -32895,11 +27420,6 @@ func PageControl_TabRect(obj uintptr, Index int32) TRect {
     return ret
 }
 
-func PageControl_RowCount(obj uintptr) int32 {
-    ret, _, _ := pageControl_RowCount.Call(obj)
-    return int32(ret)
-}
-
 func PageControl_CanFocus(obj uintptr) bool {
     ret, _, _ := pageControl_CanFocus.Call(obj)
     return DBoolToGoBool(ret)
@@ -32950,10 +27470,6 @@ func PageControl_Invalidate(obj uintptr)  {
     pageControl_Invalidate.Call(obj)
 }
 
-func PageControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    pageControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func PageControl_RemoveControl(obj uintptr, AControl uintptr)  {
     pageControl_RemoveControl.Call(obj, AControl )
 }
@@ -32984,10 +27500,6 @@ func PageControl_SetFocus(obj uintptr)  {
 
 func PageControl_Update(obj uintptr)  {
     pageControl_Update.Call(obj)
-}
-
-func PageControl_UpdateControlState(obj uintptr)  {
-    pageControl_UpdateControlState.Call(obj)
 }
 
 func PageControl_BringToFront(obj uintptr)  {
@@ -33080,10 +27592,6 @@ func PageControl_GetNamePath(obj uintptr) string {
 
 func PageControl_Assign(obj uintptr, Source uintptr)  {
     pageControl_Assign.Call(obj, Source )
-}
-
-func PageControl_DisposeOf(obj uintptr)  {
-    pageControl_DisposeOf.Call(obj)
 }
 
 func PageControl_ClassType(obj uintptr) TClass {
@@ -33234,15 +27742,6 @@ func PageControl_SetFont(obj uintptr, value uintptr) {
    pageControl_SetFont.Call(obj, value)
 }
 
-func PageControl_GetHotTrack(obj uintptr) bool {
-    ret, _, _ := pageControl_GetHotTrack.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func PageControl_SetHotTrack(obj uintptr, value bool) {
-   pageControl_SetHotTrack.Call(obj, GoBoolToDBool(value))
-}
-
 func PageControl_GetImages(obj uintptr) uintptr {
     ret, _, _ := pageControl_GetImages.Call(obj)
     return ret
@@ -33259,15 +27758,6 @@ func PageControl_GetMultiLine(obj uintptr) bool {
 
 func PageControl_SetMultiLine(obj uintptr, value bool) {
    pageControl_SetMultiLine.Call(obj, GoBoolToDBool(value))
-}
-
-func PageControl_GetOwnerDraw(obj uintptr) bool {
-    ret, _, _ := pageControl_GetOwnerDraw.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func PageControl_SetOwnerDraw(obj uintptr, value bool) {
-   pageControl_SetOwnerDraw.Call(obj, GoBoolToDBool(value))
 }
 
 func PageControl_GetParentDoubleBuffered(obj uintptr) bool {
@@ -33313,15 +27803,6 @@ func PageControl_GetShowHint(obj uintptr) bool {
 
 func PageControl_SetShowHint(obj uintptr, value bool) {
    pageControl_SetShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func PageControl_GetStyle(obj uintptr) TTabStyle {
-    ret, _, _ := pageControl_GetStyle.Call(obj)
-    return TTabStyle(ret)
-}
-
-func PageControl_SetStyle(obj uintptr, value TTabStyle) {
-   pageControl_SetStyle.Call(obj, uintptr(value))
 }
 
 func PageControl_GetTabHeight(obj uintptr) int16 {
@@ -33387,15 +27868,6 @@ func PageControl_SetVisible(obj uintptr, value bool) {
    pageControl_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func PageControl_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := pageControl_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func PageControl_SetStyleElements(obj uintptr, value TStyleElements) {
-   pageControl_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func PageControl_SetOnChange(obj uintptr, fn interface{}) {
     pageControl_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -33436,20 +27908,8 @@ func PageControl_SetOnExit(obj uintptr, fn interface{}) {
     pageControl_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func PageControl_SetOnGesture(obj uintptr, fn interface{}) {
-    pageControl_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func PageControl_SetOnGetImageIndex(obj uintptr, fn interface{}) {
-    pageControl_SetOnGetImageIndex.Call(obj, addEventToMap(fn))
-}
-
 func PageControl_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     pageControl_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func PageControl_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    pageControl_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func PageControl_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -33484,19 +27944,9 @@ func PageControl_SetOnUnDock(obj uintptr, fn interface{}) {
     pageControl_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
 
-func PageControl_GetCanvas(obj uintptr) uintptr {
-    ret, _, _ := pageControl_GetCanvas.Call(obj)
-    return ret
-}
-
 func PageControl_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := pageControl_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func PageControl_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := pageControl_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func PageControl_GetMouseInClient(obj uintptr) bool {
@@ -33609,26 +28059,6 @@ func PageControl_SetControlStyle(obj uintptr, value TControlStyle) {
    pageControl_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func PageControl_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := pageControl_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func PageControl_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := pageControl_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func PageControl_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := pageControl_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func PageControl_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := pageControl_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func PageControl_GetFloating(obj uintptr) bool {
     ret, _, _ := pageControl_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -33641,15 +28071,6 @@ func PageControl_GetParent(obj uintptr) uintptr {
 
 func PageControl_SetParent(obj uintptr, value uintptr) {
    pageControl_SetParent.Call(obj, value)
-}
-
-func PageControl_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := pageControl_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func PageControl_SetAlignWithMargins(obj uintptr, value bool) {
-   pageControl_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func PageControl_GetLeft(obj uintptr) int32 {
@@ -33838,10 +28259,6 @@ func TabSheet_Invalidate(obj uintptr)  {
     tabSheet_Invalidate.Call(obj)
 }
 
-func TabSheet_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    tabSheet_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func TabSheet_RemoveControl(obj uintptr, AControl uintptr)  {
     tabSheet_RemoveControl.Call(obj, AControl )
 }
@@ -33872,10 +28289,6 @@ func TabSheet_SetFocus(obj uintptr)  {
 
 func TabSheet_Update(obj uintptr)  {
     tabSheet_Update.Call(obj)
-}
-
-func TabSheet_UpdateControlState(obj uintptr)  {
-    tabSheet_UpdateControlState.Call(obj)
 }
 
 func TabSheet_BringToFront(obj uintptr)  {
@@ -33970,10 +28383,6 @@ func TabSheet_Assign(obj uintptr, Source uintptr)  {
     tabSheet_Assign.Call(obj, Source )
 }
 
-func TabSheet_DisposeOf(obj uintptr)  {
-    tabSheet_DisposeOf.Call(obj)
-}
-
 func TabSheet_ClassType(obj uintptr) TClass {
     ret, _, _ := tabSheet_ClassType.Call(obj)
     return TClass(ret)
@@ -34050,15 +28459,6 @@ func TabSheet_SetDoubleBuffered(obj uintptr, value bool) {
    tabSheet_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
 }
 
-func TabSheet_GetDragMode(obj uintptr) TDragMode {
-    ret, _, _ := tabSheet_GetDragMode.Call(obj)
-    return TDragMode(ret)
-}
-
-func TabSheet_SetDragMode(obj uintptr, value TDragMode) {
-   tabSheet_SetDragMode.Call(obj, uintptr(value))
-}
-
 func TabSheet_GetEnabled(obj uintptr) bool {
     ret, _, _ := tabSheet_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -34084,15 +28484,6 @@ func TabSheet_GetHeight(obj uintptr) int32 {
 
 func TabSheet_SetHeight(obj uintptr, value int32) {
    tabSheet_SetHeight.Call(obj, uintptr(value))
-}
-
-func TabSheet_GetHighlighted(obj uintptr) bool {
-    ret, _, _ := tabSheet_GetHighlighted.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TabSheet_SetHighlighted(obj uintptr, value bool) {
-   tabSheet_SetHighlighted.Call(obj, GoBoolToDBool(value))
 }
 
 func TabSheet_GetImageIndex(obj uintptr) int32 {
@@ -34236,16 +28627,8 @@ func TabSheet_SetOnExit(obj uintptr, fn interface{}) {
     tabSheet_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func TabSheet_SetOnGesture(obj uintptr, fn interface{}) {
-    tabSheet_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func TabSheet_SetOnHide(obj uintptr, fn interface{}) {
     tabSheet_SetOnHide.Call(obj, addEventToMap(fn))
-}
-
-func TabSheet_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    tabSheet_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func TabSheet_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -34288,11 +28671,6 @@ func TabSheet_GetDockSite(obj uintptr) bool {
 
 func TabSheet_SetDockSite(obj uintptr, value bool) {
    tabSheet_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func TabSheet_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := tabSheet_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func TabSheet_GetMouseInClient(obj uintptr) bool {
@@ -34450,26 +28828,6 @@ func TabSheet_SetControlStyle(obj uintptr, value TControlStyle) {
    tabSheet_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func TabSheet_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := tabSheet_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func TabSheet_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := tabSheet_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func TabSheet_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := tabSheet_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func TabSheet_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := tabSheet_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func TabSheet_GetFloating(obj uintptr) bool {
     ret, _, _ := tabSheet_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -34482,24 +28840,6 @@ func TabSheet_GetParent(obj uintptr) uintptr {
 
 func TabSheet_SetParent(obj uintptr, value uintptr) {
    tabSheet_SetParent.Call(obj, value)
-}
-
-func TabSheet_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := tabSheet_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func TabSheet_SetStyleElements(obj uintptr, value TStyleElements) {
-   tabSheet_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func TabSheet_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := tabSheet_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TabSheet_SetAlignWithMargins(obj uintptr, value bool) {
-   tabSheet_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func TabSheet_GetCursor(obj uintptr) TCursor {
@@ -34705,10 +29045,6 @@ func Control_Assign(obj uintptr, Source uintptr)  {
     control_Assign.Call(obj, Source )
 }
 
-func Control_DisposeOf(obj uintptr)  {
-    control_DisposeOf.Call(obj)
-}
-
 func Control_ClassType(obj uintptr) TClass {
     ret, _, _ := control_ClassType.Call(obj)
     return TClass(ret)
@@ -34856,26 +29192,6 @@ func Control_SetControlStyle(obj uintptr, value TControlStyle) {
    control_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Control_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := control_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Control_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := control_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Control_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := control_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Control_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := control_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Control_GetFloating(obj uintptr) bool {
     ret, _, _ := control_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -34906,28 +29222,6 @@ func Control_GetParent(obj uintptr) uintptr {
 
 func Control_SetParent(obj uintptr, value uintptr) {
    control_SetParent.Call(obj, value)
-}
-
-func Control_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := control_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Control_SetStyleElements(obj uintptr, value TStyleElements) {
-   control_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func Control_SetOnGesture(obj uintptr, fn interface{}) {
-    control_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func Control_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := control_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Control_SetAlignWithMargins(obj uintptr, value bool) {
-   control_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Control_GetLeft(obj uintptr) int32 {
@@ -35101,10 +29395,6 @@ func WinControl_Invalidate(obj uintptr)  {
     winControl_Invalidate.Call(obj)
 }
 
-func WinControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    winControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func WinControl_RemoveControl(obj uintptr, AControl uintptr)  {
     winControl_RemoveControl.Call(obj, AControl )
 }
@@ -35135,10 +29425,6 @@ func WinControl_SetFocus(obj uintptr)  {
 
 func WinControl_Update(obj uintptr)  {
     winControl_Update.Call(obj)
-}
-
-func WinControl_UpdateControlState(obj uintptr)  {
-    winControl_UpdateControlState.Call(obj)
 }
 
 func WinControl_BringToFront(obj uintptr)  {
@@ -35233,10 +29519,6 @@ func WinControl_Assign(obj uintptr, Source uintptr)  {
     winControl_Assign.Call(obj, Source )
 }
 
-func WinControl_DisposeOf(obj uintptr)  {
-    winControl_DisposeOf.Call(obj)
-}
-
 func WinControl_ClassType(obj uintptr) TClass {
     ret, _, _ := winControl_ClassType.Call(obj)
     return TClass(ret)
@@ -35293,11 +29575,6 @@ func WinControl_GetDoubleBuffered(obj uintptr) bool {
 
 func WinControl_SetDoubleBuffered(obj uintptr, value bool) {
    winControl_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func WinControl_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := winControl_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func WinControl_GetMouseInClient(obj uintptr) bool {
@@ -35482,26 +29759,6 @@ func WinControl_SetControlStyle(obj uintptr, value TControlStyle) {
    winControl_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func WinControl_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := winControl_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func WinControl_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := winControl_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func WinControl_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := winControl_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func WinControl_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := winControl_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func WinControl_GetFloating(obj uintptr) bool {
     ret, _, _ := winControl_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -35532,28 +29789,6 @@ func WinControl_GetParent(obj uintptr) uintptr {
 
 func WinControl_SetParent(obj uintptr, value uintptr) {
    winControl_SetParent.Call(obj, value)
-}
-
-func WinControl_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := winControl_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func WinControl_SetStyleElements(obj uintptr, value TStyleElements) {
-   winControl_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func WinControl_SetOnGesture(obj uintptr, fn interface{}) {
-    winControl_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func WinControl_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := winControl_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func WinControl_SetAlignWithMargins(obj uintptr, value bool) {
-   winControl_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func WinControl_GetLeft(obj uintptr) int32 {
@@ -35687,18 +29922,6 @@ func Screen_Free(obj uintptr) {
     screen_Free.Call(obj)
 }
 
-func Screen_DisableAlign(obj uintptr)  {
-    screen_DisableAlign.Call(obj)
-}
-
-func Screen_EnableAlign(obj uintptr)  {
-    screen_EnableAlign.Call(obj)
-}
-
-func Screen_Realign(obj uintptr)  {
-    screen_Realign.Call(obj)
-}
-
 func Screen_FindComponent(obj uintptr, AName string) uintptr {
     ret, _, _ := screen_FindComponent.Call(obj, GoStrToDStr(AName) )
     return ret
@@ -35716,10 +29939,6 @@ func Screen_HasParent(obj uintptr) bool {
 
 func Screen_Assign(obj uintptr, Source uintptr)  {
     screen_Assign.Call(obj, Source )
-}
-
-func Screen_DisposeOf(obj uintptr)  {
-    screen_DisposeOf.Call(obj)
 }
 
 func Screen_ClassType(obj uintptr) TClass {
@@ -35767,11 +29986,6 @@ func Screen_GetCustomFormCount(obj uintptr) int32 {
     return int32(ret)
 }
 
-func Screen_GetCursorCount(obj uintptr) int32 {
-    ret, _, _ := screen_GetCursorCount.Call(obj)
-    return int32(ret)
-}
-
 func Screen_GetCursor(obj uintptr) TCursor {
     ret, _, _ := screen_GetCursor.Call(obj)
     return TCursor(ret)
@@ -35784,10 +29998,6 @@ func Screen_SetCursor(obj uintptr, value TCursor) {
 func Screen_GetFocusedForm(obj uintptr) uintptr {
     ret, _, _ := screen_GetFocusedForm.Call(obj)
     return ret
-}
-
-func Screen_SetFocusedForm(obj uintptr, value uintptr) {
-   screen_SetFocusedForm.Call(obj, value)
 }
 
 func Screen_GetMonitorCount(obj uintptr) int32 {
@@ -35855,16 +30065,6 @@ func Screen_GetFonts(obj uintptr) uintptr {
 func Screen_GetFormCount(obj uintptr) int32 {
     ret, _, _ := screen_GetFormCount.Call(obj)
     return int32(ret)
-}
-
-func Screen_GetImes(obj uintptr) uintptr {
-    ret, _, _ := screen_GetImes.Call(obj)
-    return ret
-}
-
-func Screen_GetDefaultIme(obj uintptr) string {
-    ret, _, _ := screen_GetDefaultIme.Call(obj)
-    return DStrToGoStr(ret)
 }
 
 func Screen_GetHeight(obj uintptr) int32 {
@@ -35964,10 +30164,6 @@ func Mouse_Free(obj uintptr) {
     mouse_Free.Call(obj)
 }
 
-func Mouse_DisposeOf(obj uintptr)  {
-    mouse_DisposeOf.Call(obj)
-}
-
 func Mouse_ClassType(obj uintptr) TClass {
     ret, _, _ := mouse_ClassType.Call(obj)
     return TClass(ret)
@@ -36027,16 +30223,6 @@ func Mouse_GetIsDragging(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
-func Mouse_GetIsPanning(obj uintptr) bool {
-    ret, _, _ := mouse_GetIsPanning.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Mouse_GetWheelPresent(obj uintptr) bool {
-    ret, _, _ := mouse_GetWheelPresent.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func Mouse_GetWheelScrollLines(obj uintptr) int32 {
     ret, _, _ := mouse_GetWheelScrollLines.Call(obj)
     return int32(ret)
@@ -36065,10 +30251,6 @@ func ListColumn_Assign(obj uintptr, Source uintptr)  {
 func ListColumn_GetNamePath(obj uintptr) string {
     ret, _, _ := listColumn_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func ListColumn_DisposeOf(obj uintptr)  {
-    listColumn_DisposeOf.Call(obj)
 }
 
 func ListColumn_ClassType(obj uintptr) TClass {
@@ -36230,10 +30412,6 @@ func CollectionItem_Assign(obj uintptr, Source uintptr)  {
     collectionItem_Assign.Call(obj, Source )
 }
 
-func CollectionItem_DisposeOf(obj uintptr)  {
-    collectionItem_DisposeOf.Call(obj)
-}
-
 func CollectionItem_ClassType(obj uintptr) TClass {
     ret, _, _ := collectionItem_ClassType.Call(obj)
     return TClass(ret)
@@ -36317,11 +30495,6 @@ func StatusPanels_Add(obj uintptr) uintptr {
     return ret
 }
 
-func StatusPanels_AddItem(obj uintptr, Item uintptr, Index int32) uintptr {
-    ret, _, _ := statusPanels_AddItem.Call(obj, Item , uintptr(Index) )
-    return ret
-}
-
 func StatusPanels_Insert(obj uintptr, Index int32) uintptr {
     ret, _, _ := statusPanels_Insert.Call(obj, uintptr(Index) )
     return ret
@@ -36344,10 +30517,6 @@ func StatusPanels_Clear(obj uintptr)  {
     statusPanels_Clear.Call(obj)
 }
 
-func StatusPanels_ClearAndResetID(obj uintptr)  {
-    statusPanels_ClearAndResetID.Call(obj)
-}
-
 func StatusPanels_Delete(obj uintptr, Index int32)  {
     statusPanels_Delete.Call(obj, uintptr(Index) )
 }
@@ -36364,10 +30533,6 @@ func StatusPanels_FindItemID(obj uintptr, ID int32) uintptr {
 func StatusPanels_GetNamePath(obj uintptr) string {
     ret, _, _ := statusPanels_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func StatusPanels_DisposeOf(obj uintptr)  {
-    statusPanels_DisposeOf.Call(obj)
 }
 
 func StatusPanels_ClassType(obj uintptr) TClass {
@@ -36451,10 +30616,6 @@ func StatusPanel_Assign(obj uintptr, Source uintptr)  {
 func StatusPanel_GetNamePath(obj uintptr) string {
     ret, _, _ := statusPanel_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func StatusPanel_DisposeOf(obj uintptr)  {
-    statusPanel_DisposeOf.Call(obj)
 }
 
 func StatusPanel_ClassType(obj uintptr) TClass {
@@ -36604,22 +30765,8 @@ func SpinEdit_Undo(obj uintptr)  {
     spinEdit_Undo.Call(obj)
 }
 
-func SpinEdit_ClearUndo(obj uintptr)  {
-    spinEdit_ClearUndo.Call(obj)
-}
-
 func SpinEdit_SelectAll(obj uintptr)  {
     spinEdit_SelectAll.Call(obj)
-}
-
-func SpinEdit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    if Buffer == nil || BufSize == 0 {
-        return 0
-    }
-    strPtr := getBuff(BufSize)
-    ret, _, _ := spinEdit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
-    getTextBuf(strPtr, Buffer, int(ret))
-    return int32(ret)
 }
 
 func SpinEdit_CanFocus(obj uintptr) bool {
@@ -36672,10 +30819,6 @@ func SpinEdit_Invalidate(obj uintptr)  {
     spinEdit_Invalidate.Call(obj)
 }
 
-func SpinEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    spinEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func SpinEdit_RemoveControl(obj uintptr, AControl uintptr)  {
     spinEdit_RemoveControl.Call(obj, AControl )
 }
@@ -36706,10 +30849,6 @@ func SpinEdit_SetFocus(obj uintptr)  {
 
 func SpinEdit_Update(obj uintptr)  {
     spinEdit_Update.Call(obj)
-}
-
-func SpinEdit_UpdateControlState(obj uintptr)  {
-    spinEdit_UpdateControlState.Call(obj)
 }
 
 func SpinEdit_BringToFront(obj uintptr)  {
@@ -36804,10 +30943,6 @@ func SpinEdit_Assign(obj uintptr, Source uintptr)  {
     spinEdit_Assign.Call(obj, Source )
 }
 
-func SpinEdit_DisposeOf(obj uintptr)  {
-    spinEdit_DisposeOf.Call(obj)
-}
-
 func SpinEdit_ClassType(obj uintptr) TClass {
     ret, _, _ := spinEdit_ClassType.Call(obj)
     return TClass(ret)
@@ -36888,42 +31023,6 @@ func SpinEdit_SetConstraints(obj uintptr, value uintptr) {
    spinEdit_SetConstraints.Call(obj, value)
 }
 
-func SpinEdit_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := spinEdit_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func SpinEdit_SetCtl3D(obj uintptr, value bool) {
-   spinEdit_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
-func SpinEdit_GetDragCursor(obj uintptr) TCursor {
-    ret, _, _ := spinEdit_GetDragCursor.Call(obj)
-    return TCursor(ret)
-}
-
-func SpinEdit_SetDragCursor(obj uintptr, value TCursor) {
-   spinEdit_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func SpinEdit_GetDragMode(obj uintptr) TDragMode {
-    ret, _, _ := spinEdit_GetDragMode.Call(obj)
-    return TDragMode(ret)
-}
-
-func SpinEdit_SetDragMode(obj uintptr, value TDragMode) {
-   spinEdit_SetDragMode.Call(obj, uintptr(value))
-}
-
-func SpinEdit_GetEditorEnabled(obj uintptr) bool {
-    ret, _, _ := spinEdit_GetEditorEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func SpinEdit_SetEditorEnabled(obj uintptr, value bool) {
-   spinEdit_SetEditorEnabled.Call(obj, GoBoolToDBool(value))
-}
-
 func SpinEdit_GetEnabled(obj uintptr) bool {
     ret, _, _ := spinEdit_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -36985,15 +31084,6 @@ func SpinEdit_GetParentColor(obj uintptr) bool {
 
 func SpinEdit_SetParentColor(obj uintptr, value bool) {
    spinEdit_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func SpinEdit_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := spinEdit_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func SpinEdit_SetParentCtl3D(obj uintptr, value bool) {
-   spinEdit_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func SpinEdit_GetParentFont(obj uintptr) bool {
@@ -37083,22 +31173,6 @@ func SpinEdit_SetOnChange(obj uintptr, fn interface{}) {
 
 func SpinEdit_SetOnClick(obj uintptr, fn interface{}) {
     spinEdit_SetOnClick.Call(obj, addEventToMap(fn))
-}
-
-func SpinEdit_SetOnDblClick(obj uintptr, fn interface{}) {
-    spinEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
-}
-
-func SpinEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
-    spinEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
-}
-
-func SpinEdit_SetOnDragOver(obj uintptr, fn interface{}) {
-    spinEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func SpinEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
-    spinEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
 func SpinEdit_SetOnEnter(obj uintptr, fn interface{}) {
@@ -37222,11 +31296,6 @@ func SpinEdit_GetDoubleBuffered(obj uintptr) bool {
 
 func SpinEdit_SetDoubleBuffered(obj uintptr, value bool) {
    spinEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func SpinEdit_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := spinEdit_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func SpinEdit_GetMouseInClient(obj uintptr) bool {
@@ -37366,26 +31435,6 @@ func SpinEdit_SetControlStyle(obj uintptr, value TControlStyle) {
    spinEdit_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func SpinEdit_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := spinEdit_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func SpinEdit_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := spinEdit_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func SpinEdit_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := spinEdit_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func SpinEdit_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := spinEdit_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func SpinEdit_GetFloating(obj uintptr) bool {
     ret, _, _ := spinEdit_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -37398,28 +31447,6 @@ func SpinEdit_GetParent(obj uintptr) uintptr {
 
 func SpinEdit_SetParent(obj uintptr, value uintptr) {
    spinEdit_SetParent.Call(obj, value)
-}
-
-func SpinEdit_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := spinEdit_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func SpinEdit_SetStyleElements(obj uintptr, value TStyleElements) {
-   spinEdit_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func SpinEdit_SetOnGesture(obj uintptr, fn interface{}) {
-    spinEdit_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func SpinEdit_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := spinEdit_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func SpinEdit_SetAlignWithMargins(obj uintptr, value bool) {
-   spinEdit_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func SpinEdit_GetLeft(obj uintptr) int32 {
@@ -37647,10 +31674,6 @@ func MiniWebview_Invalidate(obj uintptr)  {
     miniWebview_Invalidate.Call(obj)
 }
 
-func MiniWebview_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    miniWebview_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func MiniWebview_RemoveControl(obj uintptr, AControl uintptr)  {
     miniWebview_RemoveControl.Call(obj, AControl )
 }
@@ -37677,10 +31700,6 @@ func MiniWebview_SetFocus(obj uintptr)  {
 
 func MiniWebview_Update(obj uintptr)  {
     miniWebview_Update.Call(obj)
-}
-
-func MiniWebview_UpdateControlState(obj uintptr)  {
-    miniWebview_UpdateControlState.Call(obj)
 }
 
 func MiniWebview_BringToFront(obj uintptr)  {
@@ -37771,10 +31790,6 @@ func MiniWebview_Assign(obj uintptr, Source uintptr)  {
     miniWebview_Assign.Call(obj, Source )
 }
 
-func MiniWebview_DisposeOf(obj uintptr)  {
-    miniWebview_DisposeOf.Call(obj)
-}
-
 func MiniWebview_ClassType(obj uintptr) TClass {
     ret, _, _ := miniWebview_ClassType.Call(obj)
     return TClass(ret)
@@ -37844,11 +31859,6 @@ func MiniWebview_GetDoubleBuffered(obj uintptr) bool {
 
 func MiniWebview_SetDoubleBuffered(obj uintptr, value bool) {
    miniWebview_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
-}
-
-func MiniWebview_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := miniWebview_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func MiniWebview_GetMouseInClient(obj uintptr) bool {
@@ -38033,26 +32043,6 @@ func MiniWebview_SetControlStyle(obj uintptr, value TControlStyle) {
    miniWebview_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func MiniWebview_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := miniWebview_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func MiniWebview_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := miniWebview_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func MiniWebview_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := miniWebview_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func MiniWebview_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := miniWebview_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func MiniWebview_GetFloating(obj uintptr) bool {
     ret, _, _ := miniWebview_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -38083,28 +32073,6 @@ func MiniWebview_GetParent(obj uintptr) uintptr {
 
 func MiniWebview_SetParent(obj uintptr, value uintptr) {
    miniWebview_SetParent.Call(obj, value)
-}
-
-func MiniWebview_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := miniWebview_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func MiniWebview_SetStyleElements(obj uintptr, value TStyleElements) {
-   miniWebview_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func MiniWebview_SetOnGesture(obj uintptr, fn interface{}) {
-    miniWebview_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func MiniWebview_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := miniWebview_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MiniWebview_SetAlignWithMargins(obj uintptr, value bool) {
-   miniWebview_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func MiniWebview_GetLeft(obj uintptr) int32 {
@@ -38324,10 +32292,6 @@ func Canvas_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func Canvas_DisposeOf(obj uintptr)  {
-    canvas_DisposeOf.Call(obj)
-}
-
 func Canvas_ClassType(obj uintptr) TClass {
     ret, _, _ := canvas_ClassType.Call(obj)
     return TClass(ret)
@@ -38432,10 +32396,6 @@ func Object_Free(obj uintptr) {
     object_Free.Call(obj)
 }
 
-func Object_DisposeOf(obj uintptr)  {
-    object_DisposeOf.Call(obj)
-}
-
 func Object_ClassType(obj uintptr) TClass {
     ret, _, _ := object_ClassType.Call(obj)
     return TClass(ret)
@@ -38473,6 +32433,145 @@ func Object_ToString(obj uintptr) string {
 
 func Object_StaticClassType() TClass {
     r, _, _:= object_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TGraphic ---------------------------
+
+func Graphic_Create() uintptr {
+    ret, _, _ := graphic_Create.Call()
+    return ret
+}
+
+func Graphic_Free(obj uintptr) {
+    graphic_Free.Call(obj)
+}
+
+func Graphic_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := graphic_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func Graphic_LoadFromFile(obj uintptr, Filename string)  {
+    graphic_LoadFromFile.Call(obj, GoStrToDStr(Filename) )
+}
+
+func Graphic_SaveToFile(obj uintptr, Filename string)  {
+    graphic_SaveToFile.Call(obj, GoStrToDStr(Filename) )
+}
+
+func Graphic_LoadFromStream(obj uintptr, Stream uintptr)  {
+    graphic_LoadFromStream.Call(obj, Stream )
+}
+
+func Graphic_SaveToStream(obj uintptr, Stream uintptr)  {
+    graphic_SaveToStream.Call(obj, Stream )
+}
+
+func Graphic_Assign(obj uintptr, Source uintptr)  {
+    graphic_Assign.Call(obj, Source )
+}
+
+func Graphic_GetNamePath(obj uintptr) string {
+    ret, _, _ := graphic_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Graphic_ClassType(obj uintptr) TClass {
+    ret, _, _ := graphic_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func Graphic_ClassName(obj uintptr) string {
+    ret, _, _ := graphic_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Graphic_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := graphic_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func Graphic_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := graphic_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func Graphic_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := graphic_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func Graphic_ToString(obj uintptr) string {
+    ret, _, _ := graphic_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Graphic_GetEmpty(obj uintptr) bool {
+    ret, _, _ := graphic_GetEmpty.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Graphic_GetHeight(obj uintptr) int32 {
+    ret, _, _ := graphic_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func Graphic_SetHeight(obj uintptr, value int32) {
+   graphic_SetHeight.Call(obj, uintptr(value))
+}
+
+func Graphic_GetModified(obj uintptr) bool {
+    ret, _, _ := graphic_GetModified.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Graphic_SetModified(obj uintptr, value bool) {
+   graphic_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func Graphic_GetPalette(obj uintptr) HPALETTE {
+    ret, _, _ := graphic_GetPalette.Call(obj)
+    return HPALETTE(ret)
+}
+
+func Graphic_SetPalette(obj uintptr, value HPALETTE) {
+   graphic_SetPalette.Call(obj, uintptr(value))
+}
+
+func Graphic_GetPaletteModified(obj uintptr) bool {
+    ret, _, _ := graphic_GetPaletteModified.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Graphic_SetPaletteModified(obj uintptr, value bool) {
+   graphic_SetPaletteModified.Call(obj, GoBoolToDBool(value))
+}
+
+func Graphic_GetTransparent(obj uintptr) bool {
+    ret, _, _ := graphic_GetTransparent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Graphic_SetTransparent(obj uintptr, value bool) {
+   graphic_SetTransparent.Call(obj, GoBoolToDBool(value))
+}
+
+func Graphic_GetWidth(obj uintptr) int32 {
+    ret, _, _ := graphic_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func Graphic_SetWidth(obj uintptr, value int32) {
+   graphic_SetWidth.Call(obj, uintptr(value))
+}
+
+func Graphic_SetOnChange(obj uintptr, fn interface{}) {
+    graphic_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func Graphic_StaticClassType() TClass {
+    r, _, _:= graphic_StaticClassType.Call()
     return TClass(r)
 }
 
@@ -38529,10 +32628,6 @@ func PngImage_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func PngImage_DisposeOf(obj uintptr)  {
-    pngImage_DisposeOf.Call(obj)
-}
-
 func PngImage_ClassType(obj uintptr) TClass {
     ret, _, _ := pngImage_ClassType.Call(obj)
     return TClass(ret)
@@ -38563,15 +32658,6 @@ func PngImage_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func PngImage_GetTransparentColor(obj uintptr) TColor {
-    ret, _, _ := pngImage_GetTransparentColor.Call(obj)
-    return TColor(ret)
-}
-
-func PngImage_SetTransparentColor(obj uintptr, value TColor) {
-   pngImage_SetTransparentColor.Call(obj, uintptr(value))
-}
-
 func PngImage_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := pngImage_GetCanvas.Call(obj)
     return ret
@@ -38587,32 +32673,9 @@ func PngImage_GetHeight(obj uintptr) int32 {
     return int32(ret)
 }
 
-func PngImage_GetMaxIdatSize(obj uintptr) int32 {
-    ret, _, _ := pngImage_GetMaxIdatSize.Call(obj)
-    return int32(ret)
-}
-
-func PngImage_SetMaxIdatSize(obj uintptr, value int32) {
-   pngImage_SetMaxIdatSize.Call(obj, uintptr(value))
-}
-
 func PngImage_GetEmpty(obj uintptr) bool {
     ret, _, _ := pngImage_GetEmpty.Call(obj)
     return DBoolToGoBool(ret)
-}
-
-func PngImage_GetCompressionLevel(obj uintptr) TCompressionLevel {
-    ret, _, _ := pngImage_GetCompressionLevel.Call(obj)
-    return TCompressionLevel(ret)
-}
-
-func PngImage_SetCompressionLevel(obj uintptr, value TCompressionLevel) {
-   pngImage_SetCompressionLevel.Call(obj, uintptr(value))
-}
-
-func PngImage_GetVersion(obj uintptr) string {
-    ret, _, _ := pngImage_GetVersion.Call(obj)
-    return DStrToGoStr(ret)
 }
 
 func PngImage_GetModified(obj uintptr) bool {
@@ -38705,10 +32768,6 @@ func JPEGImage_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func JPEGImage_DisposeOf(obj uintptr)  {
-    jPEGImage_DisposeOf.Call(obj)
-}
-
 func JPEGImage_ClassType(obj uintptr) TClass {
     ret, _, _ := jPEGImage_ClassType.Call(obj)
     return TClass(ret)
@@ -38748,15 +32807,6 @@ func JPEGImage_SetPixelFormat(obj uintptr, value TJPEGPixelFormat) {
    jPEGImage_SetPixelFormat.Call(obj, uintptr(value))
 }
 
-func JPEGImage_GetProgressiveDisplay(obj uintptr) bool {
-    ret, _, _ := jPEGImage_GetProgressiveDisplay.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func JPEGImage_SetProgressiveDisplay(obj uintptr, value bool) {
-   jPEGImage_SetProgressiveDisplay.Call(obj, GoBoolToDBool(value))
-}
-
 func JPEGImage_GetPerformance(obj uintptr) TJPEGPerformance {
     ret, _, _ := jPEGImage_GetPerformance.Call(obj)
     return TJPEGPerformance(ret)
@@ -38764,24 +32814,6 @@ func JPEGImage_GetPerformance(obj uintptr) TJPEGPerformance {
 
 func JPEGImage_SetPerformance(obj uintptr, value TJPEGPerformance) {
    jPEGImage_SetPerformance.Call(obj, uintptr(value))
-}
-
-func JPEGImage_GetScale(obj uintptr) TJPEGScale {
-    ret, _, _ := jPEGImage_GetScale.Call(obj)
-    return TJPEGScale(ret)
-}
-
-func JPEGImage_SetScale(obj uintptr, value TJPEGScale) {
-   jPEGImage_SetScale.Call(obj, uintptr(value))
-}
-
-func JPEGImage_GetSmoothing(obj uintptr) bool {
-    ret, _, _ := jPEGImage_GetSmoothing.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func JPEGImage_SetSmoothing(obj uintptr, value bool) {
-   jPEGImage_SetSmoothing.Call(obj, GoBoolToDBool(value))
 }
 
 func JPEGImage_GetCanvas(obj uintptr) uintptr {
@@ -38876,29 +32908,12 @@ func GIFImage_LoadFromStream(obj uintptr, Stream uintptr)  {
     gIFImage_LoadFromStream.Call(obj, Stream )
 }
 
-func GIFImage_Add(obj uintptr, Source uintptr) uintptr {
-    ret, _, _ := gIFImage_Add.Call(obj, Source )
-    return ret
-}
-
 func GIFImage_Clear(obj uintptr)  {
     gIFImage_Clear.Call(obj)
 }
 
 func GIFImage_Assign(obj uintptr, Source uintptr)  {
     gIFImage_Assign.Call(obj, Source )
-}
-
-func GIFImage_StopDraw(obj uintptr)  {
-    gIFImage_StopDraw.Call(obj)
-}
-
-func GIFImage_SuspendDraw(obj uintptr)  {
-    gIFImage_SuspendDraw.Call(obj)
-}
-
-func GIFImage_ResumeDraw(obj uintptr)  {
-    gIFImage_ResumeDraw.Call(obj)
 }
 
 func GIFImage_Equals(obj uintptr, Obj uintptr) bool {
@@ -38921,10 +32936,6 @@ func GIFImage_SetSize(obj uintptr, AWidth int32, AHeight int32)  {
 func GIFImage_GetNamePath(obj uintptr) string {
     ret, _, _ := gIFImage_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func GIFImage_DisposeOf(obj uintptr)  {
-    gIFImage_DisposeOf.Call(obj)
 }
 
 func GIFImage_ClassType(obj uintptr) TClass {
@@ -38957,78 +32968,9 @@ func GIFImage_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func GIFImage_GetVersion(obj uintptr) TGIFVersion {
-    ret, _, _ := gIFImage_GetVersion.Call(obj)
-    return TGIFVersion(ret)
-}
-
 func GIFImage_GetBitsPerPixel(obj uintptr) int32 {
     ret, _, _ := gIFImage_GetBitsPerPixel.Call(obj)
     return int32(ret)
-}
-
-func GIFImage_GetBackgroundColor(obj uintptr) TColor {
-    ret, _, _ := gIFImage_GetBackgroundColor.Call(obj)
-    return TColor(ret)
-}
-
-func GIFImage_SetBackgroundColor(obj uintptr, value TColor) {
-   gIFImage_SetBackgroundColor.Call(obj, uintptr(value))
-}
-
-func GIFImage_GetAspectRatio(obj uintptr) uint8 {
-    ret, _, _ := gIFImage_GetAspectRatio.Call(obj)
-    return uint8(ret)
-}
-
-func GIFImage_SetAspectRatio(obj uintptr, value uint8) {
-   gIFImage_SetAspectRatio.Call(obj, uintptr(value))
-}
-
-func GIFImage_GetIsTransparent(obj uintptr) bool {
-    ret, _, _ := gIFImage_GetIsTransparent.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GIFImage_GetAnimationSpeed(obj uintptr) int32 {
-    ret, _, _ := gIFImage_GetAnimationSpeed.Call(obj)
-    return int32(ret)
-}
-
-func GIFImage_SetAnimationSpeed(obj uintptr, value int32) {
-   gIFImage_SetAnimationSpeed.Call(obj, uintptr(value))
-}
-
-func GIFImage_GetBitmap(obj uintptr) uintptr {
-    ret, _, _ := gIFImage_GetBitmap.Call(obj)
-    return ret
-}
-
-func GIFImage_SetOnPaint(obj uintptr, fn interface{}) {
-    gIFImage_SetOnPaint.Call(obj, addEventToMap(fn))
-}
-
-func GIFImage_GetAnimate(obj uintptr) bool {
-    ret, _, _ := gIFImage_GetAnimate.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GIFImage_SetAnimate(obj uintptr, value bool) {
-   gIFImage_SetAnimate.Call(obj, GoBoolToDBool(value))
-}
-
-func GIFImage_GetAnimateLoop(obj uintptr) TGIFAnimationLoop {
-    ret, _, _ := gIFImage_GetAnimateLoop.Call(obj)
-    return TGIFAnimationLoop(ret)
-}
-
-func GIFImage_SetAnimateLoop(obj uintptr, value TGIFAnimationLoop) {
-   gIFImage_SetAnimateLoop.Call(obj, uintptr(value))
-}
-
-func GIFImage_GetShouldDither(obj uintptr) bool {
-    ret, _, _ := gIFImage_GetShouldDither.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func GIFImage_GetEmpty(obj uintptr) bool {
@@ -39077,10 +33019,6 @@ func GIFImage_GetTransparent(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
-func GIFImage_SetTransparent(obj uintptr, value bool) {
-   gIFImage_SetTransparent.Call(obj, GoBoolToDBool(value))
-}
-
 func GIFImage_GetWidth(obj uintptr) int32 {
     ret, _, _ := gIFImage_GetWidth.Call(obj)
     return int32(ret)
@@ -39096,199 +33034,6 @@ func GIFImage_SetOnChange(obj uintptr, fn interface{}) {
 
 func GIFImage_StaticClassType() TClass {
     r, _, _:= gIFImage_StaticClassType.Call()
-    return TClass(r)
-}
-
-//--------------------------- TGIFFrame ---------------------------
-
-func GIFFrame_Create() uintptr {
-    ret, _, _ := gIFFrame_Create.Call()
-    return ret
-}
-
-func GIFFrame_Free(obj uintptr) {
-    gIFFrame_Free.Call(obj)
-}
-
-func GIFFrame_Clear(obj uintptr)  {
-    gIFFrame_Clear.Call(obj)
-}
-
-func GIFFrame_SaveToStream(obj uintptr, Stream uintptr)  {
-    gIFFrame_SaveToStream.Call(obj, Stream )
-}
-
-func GIFFrame_LoadFromStream(obj uintptr, Stream uintptr)  {
-    gIFFrame_LoadFromStream.Call(obj, Stream )
-}
-
-func GIFFrame_Assign(obj uintptr, Source uintptr)  {
-    gIFFrame_Assign.Call(obj, Source )
-}
-
-func GIFFrame_SaveToFile(obj uintptr, Filename string)  {
-    gIFFrame_SaveToFile.Call(obj, GoStrToDStr(Filename) )
-}
-
-func GIFFrame_LoadFromFile(obj uintptr, Filename string)  {
-    gIFFrame_LoadFromFile.Call(obj, GoStrToDStr(Filename) )
-}
-
-func GIFFrame_GetNamePath(obj uintptr) string {
-    ret, _, _ := gIFFrame_GetNamePath.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func GIFFrame_DisposeOf(obj uintptr)  {
-    gIFFrame_DisposeOf.Call(obj)
-}
-
-func GIFFrame_ClassType(obj uintptr) TClass {
-    ret, _, _ := gIFFrame_ClassType.Call(obj)
-    return TClass(ret)
-}
-
-func GIFFrame_ClassName(obj uintptr) string {
-    ret, _, _ := gIFFrame_ClassName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func GIFFrame_InstanceSize(obj uintptr) int32 {
-    ret, _, _ := gIFFrame_InstanceSize.Call(obj)
-    return int32(ret)
-}
-
-func GIFFrame_InheritsFrom(obj uintptr, AClass TClass) bool {
-    ret, _, _ := gIFFrame_InheritsFrom.Call(obj, uintptr(AClass) )
-    return DBoolToGoBool(ret)
-}
-
-func GIFFrame_Equals(obj uintptr, Obj uintptr) bool {
-    ret, _, _ := gIFFrame_Equals.Call(obj, Obj )
-    return DBoolToGoBool(ret)
-}
-
-func GIFFrame_GetHashCode(obj uintptr) int32 {
-    ret, _, _ := gIFFrame_GetHashCode.Call(obj)
-    return int32(ret)
-}
-
-func GIFFrame_ToString(obj uintptr) string {
-    ret, _, _ := gIFFrame_ToString.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func GIFFrame_GetHasBitmap(obj uintptr) bool {
-    ret, _, _ := gIFFrame_GetHasBitmap.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GIFFrame_SetHasBitmap(obj uintptr, value bool) {
-   gIFFrame_SetHasBitmap.Call(obj, GoBoolToDBool(value))
-}
-
-func GIFFrame_GetLeft(obj uintptr) uint16 {
-    ret, _, _ := gIFFrame_GetLeft.Call(obj)
-    return uint16(ret)
-}
-
-func GIFFrame_SetLeft(obj uintptr, value uint16) {
-   gIFFrame_SetLeft.Call(obj, uintptr(value))
-}
-
-func GIFFrame_GetTop(obj uintptr) uint16 {
-    ret, _, _ := gIFFrame_GetTop.Call(obj)
-    return uint16(ret)
-}
-
-func GIFFrame_SetTop(obj uintptr, value uint16) {
-   gIFFrame_SetTop.Call(obj, uintptr(value))
-}
-
-func GIFFrame_GetWidth(obj uintptr) uint16 {
-    ret, _, _ := gIFFrame_GetWidth.Call(obj)
-    return uint16(ret)
-}
-
-func GIFFrame_SetWidth(obj uintptr, value uint16) {
-   gIFFrame_SetWidth.Call(obj, uintptr(value))
-}
-
-func GIFFrame_GetHeight(obj uintptr) uint16 {
-    ret, _, _ := gIFFrame_GetHeight.Call(obj)
-    return uint16(ret)
-}
-
-func GIFFrame_SetHeight(obj uintptr, value uint16) {
-   gIFFrame_SetHeight.Call(obj, uintptr(value))
-}
-
-func GIFFrame_GetBoundsRect(obj uintptr) TRect {
-    var ret TRect
-    gIFFrame_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func GIFFrame_SetBoundsRect(obj uintptr, value TRect) {
-   gIFFrame_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
-}
-
-func GIFFrame_GetClientRect(obj uintptr) TRect {
-    var ret TRect
-    gIFFrame_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func GIFFrame_GetData(obj uintptr) uintptr {
-    ret, _, _ := gIFFrame_GetData.Call(obj)
-    return ret
-}
-
-func GIFFrame_GetDataSize(obj uintptr) int32 {
-    ret, _, _ := gIFFrame_GetDataSize.Call(obj)
-    return int32(ret)
-}
-
-func GIFFrame_GetVersion(obj uintptr) TGIFVersion {
-    ret, _, _ := gIFFrame_GetVersion.Call(obj)
-    return TGIFVersion(ret)
-}
-
-func GIFFrame_GetBitsPerPixel(obj uintptr) int32 {
-    ret, _, _ := gIFFrame_GetBitsPerPixel.Call(obj)
-    return int32(ret)
-}
-
-func GIFFrame_GetBitmap(obj uintptr) uintptr {
-    ret, _, _ := gIFFrame_GetBitmap.Call(obj)
-    return ret
-}
-
-func GIFFrame_SetBitmap(obj uintptr, value uintptr) {
-   gIFFrame_SetBitmap.Call(obj, value)
-}
-
-func GIFFrame_GetPalette(obj uintptr) HPALETTE {
-    ret, _, _ := gIFFrame_GetPalette.Call(obj)
-    return HPALETTE(ret)
-}
-
-func GIFFrame_SetPalette(obj uintptr, value HPALETTE) {
-   gIFFrame_SetPalette.Call(obj, uintptr(value))
-}
-
-func GIFFrame_GetEmpty(obj uintptr) bool {
-    ret, _, _ := gIFFrame_GetEmpty.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GIFFrame_GetTransparent(obj uintptr) bool {
-    ret, _, _ := gIFFrame_GetTransparent.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func GIFFrame_StaticClassType() TClass {
-    r, _, _:= gIFFrame_StaticClassType.Call()
     return TClass(r)
 }
 
@@ -39320,10 +33065,6 @@ func ActionList_HasParent(obj uintptr) bool {
 
 func ActionList_Assign(obj uintptr, Source uintptr)  {
     actionList_Assign.Call(obj, Source )
-}
-
-func ActionList_DisposeOf(obj uintptr)  {
-    actionList_DisposeOf.Call(obj)
 }
 
 func ActionList_ClassType(obj uintptr) TClass {
@@ -39470,10 +33211,6 @@ func Action_Assign(obj uintptr, Source uintptr)  {
     action_Assign.Call(obj, Source )
 }
 
-func Action_DisposeOf(obj uintptr)  {
-    action_DisposeOf.Call(obj)
-}
-
 func Action_ClassType(obj uintptr) TClass {
     ret, _, _ := action_ClassType.Call(obj)
     return TClass(ret)
@@ -39596,11 +33333,6 @@ func Action_SetOnExecute(obj uintptr, fn interface{}) {
 
 func Action_SetOnUpdate(obj uintptr, fn interface{}) {
     action_SetOnUpdate.Call(obj, addEventToMap(fn))
-}
-
-func Action_GetImages(obj uintptr) uintptr {
-    ret, _, _ := action_GetImages.Call(obj)
-    return ret
 }
 
 func Action_GetIndex(obj uintptr) int32 {
@@ -39787,10 +33519,6 @@ func ToolButton_Assign(obj uintptr, Source uintptr)  {
     toolButton_Assign.Call(obj, Source )
 }
 
-func ToolButton_DisposeOf(obj uintptr)  {
-    toolButton_DisposeOf.Call(obj)
-}
-
 func ToolButton_ClassType(obj uintptr) TClass {
     ret, _, _ := toolButton_ClassType.Call(obj)
     return TClass(ret)
@@ -39919,15 +33647,6 @@ func ToolButton_GetEnabled(obj uintptr) bool {
 
 func ToolButton_SetEnabled(obj uintptr, value bool) {
    toolButton_SetEnabled.Call(obj, GoBoolToDBool(value))
-}
-
-func ToolButton_GetEnableDropdown(obj uintptr) bool {
-    ret, _, _ := toolButton_GetEnableDropdown.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ToolButton_SetEnableDropdown(obj uintptr, value bool) {
-   toolButton_SetEnableDropdown.Call(obj, GoBoolToDBool(value))
 }
 
 func ToolButton_GetGrouped(obj uintptr) bool {
@@ -40062,10 +33781,6 @@ func ToolButton_SetOnEndDrag(obj uintptr, fn interface{}) {
     toolButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
-func ToolButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    toolButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
-}
-
 func ToolButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     toolButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -40184,26 +33899,6 @@ func ToolButton_SetControlStyle(obj uintptr, value TControlStyle) {
    toolButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ToolButton_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := toolButton_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ToolButton_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := toolButton_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ToolButton_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := toolButton_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ToolButton_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := toolButton_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ToolButton_GetFloating(obj uintptr) bool {
     ret, _, _ := toolButton_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -40216,28 +33911,6 @@ func ToolButton_GetParent(obj uintptr) uintptr {
 
 func ToolButton_SetParent(obj uintptr, value uintptr) {
    toolButton_SetParent.Call(obj, value)
-}
-
-func ToolButton_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := toolButton_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ToolButton_SetStyleElements(obj uintptr, value TStyleElements) {
-   toolButton_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func ToolButton_SetOnGesture(obj uintptr, fn interface{}) {
-    toolButton_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func ToolButton_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := toolButton_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ToolButton_SetAlignWithMargins(obj uintptr, value bool) {
-   toolButton_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ToolButton_GetLeft(obj uintptr) int32 {
@@ -40432,17 +34105,9 @@ func IniFile_WriteTime(obj uintptr, Section string, Name string, Value time.Time
     iniFile_WriteTime.Call(obj, GoStrToDStr(Section) , GoStrToDStr(Name) , uintptr(Value.Unix()))
 }
 
-func IniFile_ReadSubSections(obj uintptr, Section string, Strings uintptr, Recurse bool)  {
-    iniFile_ReadSubSections.Call(obj, GoStrToDStr(Section) , Strings , GoBoolToDBool(Recurse) )
-}
-
 func IniFile_ValueExists(obj uintptr, Section string, Ident string) bool {
     ret, _, _ := iniFile_ValueExists.Call(obj, GoStrToDStr(Section) , GoStrToDStr(Ident) )
     return DBoolToGoBool(ret)
-}
-
-func IniFile_DisposeOf(obj uintptr)  {
-    iniFile_DisposeOf.Call(obj)
 }
 
 func IniFile_ClassType(obj uintptr) TClass {
@@ -40651,10 +34316,6 @@ func Registry_WriteTime(obj uintptr, Name string, Value time.Time)  {
     registry_WriteTime.Call(obj, GoStrToDStr(Name) , uintptr(Value.Unix()))
 }
 
-func Registry_DisposeOf(obj uintptr)  {
-    registry_DisposeOf.Call(obj)
-}
-
 func Registry_ClassType(obj uintptr) TClass {
     ret, _, _ := registry_ClassType.Call(obj)
     return TClass(ret)
@@ -40728,11 +34389,6 @@ func Registry_SetRootKey(obj uintptr, value HKEY) {
    registry_SetRootKey.Call(obj, uintptr(value))
 }
 
-func Registry_GetRootKeyName(obj uintptr) string {
-    ret, _, _ := registry_GetRootKeyName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
 func Registry_GetAccess(obj uintptr) uint32 {
     ret, _, _ := registry_GetAccess.Call(obj)
     return uint32(ret)
@@ -40770,11 +34426,6 @@ func Clipboard_Close(obj uintptr)  {
     clipboard_Close.Call(obj)
 }
 
-func Clipboard_GetAsHandle(obj uintptr, Format uint16) uintptr {
-    ret, _, _ := clipboard_GetAsHandle.Call(obj, uintptr(Format) )
-    return ret
-}
-
 func Clipboard_HasFormat(obj uintptr, Format uint16) bool {
     ret, _, _ := clipboard_HasFormat.Call(obj, uintptr(Format) )
     return DBoolToGoBool(ret)
@@ -40782,10 +34433,6 @@ func Clipboard_HasFormat(obj uintptr, Format uint16) bool {
 
 func Clipboard_Open(obj uintptr)  {
     clipboard_Open.Call(obj)
-}
-
-func Clipboard_SetAsHandle(obj uintptr, Format uint16, Value uintptr)  {
-    clipboard_SetAsHandle.Call(obj, uintptr(Format) , Value )
 }
 
 func Clipboard_GetTextBuf(obj uintptr, Buffer string, BufSize int32) int32 {
@@ -40800,10 +34447,6 @@ func Clipboard_SetTextBuf(obj uintptr, Buffer string)  {
 func Clipboard_GetNamePath(obj uintptr) string {
     ret, _, _ := clipboard_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Clipboard_DisposeOf(obj uintptr)  {
-    clipboard_DisposeOf.Call(obj)
 }
 
 func Clipboard_ClassType(obj uintptr) TClass {
@@ -40874,10 +34517,6 @@ func Monitor_Create() uintptr {
 
 func Monitor_Free(obj uintptr) {
     monitor_Free.Call(obj)
-}
-
-func Monitor_DisposeOf(obj uintptr)  {
-    monitor_DisposeOf.Call(obj)
 }
 
 func Monitor_ClassType(obj uintptr) TClass {
@@ -40974,15 +34613,6 @@ func Monitor_StaticClassType() TClass {
 
 //--------------------------- TMargins ---------------------------
 
-func Margins_Create() uintptr {
-    ret, _, _ := margins_Create.Call()
-    return ret
-}
-
-func Margins_Free(obj uintptr) {
-    margins_Free.Call(obj)
-}
-
 func Margins_SetBounds(obj uintptr, ALeft int32, ATop int32, ARight int32, ABottom int32)  {
     margins_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(ARight) , uintptr(ABottom) )
 }
@@ -40994,10 +34624,6 @@ func Margins_Assign(obj uintptr, Source uintptr)  {
 func Margins_GetNamePath(obj uintptr) string {
     ret, _, _ := margins_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Margins_DisposeOf(obj uintptr)  {
-    margins_DisposeOf.Call(obj)
 }
 
 func Margins_ClassType(obj uintptr) TClass {
@@ -41052,26 +34678,6 @@ func Margins_GetControlWidth(obj uintptr) int32 {
 
 func Margins_GetControlHeight(obj uintptr) int32 {
     ret, _, _ := margins_GetControlHeight.Call(obj)
-    return int32(ret)
-}
-
-func Margins_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := margins_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Margins_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := margins_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Margins_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := margins_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Margins_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := margins_GetExplicitHeight.Call(obj)
     return int32(ret)
 }
 
@@ -41239,10 +34845,6 @@ func PaintBox_Assign(obj uintptr, Source uintptr)  {
     paintBox_Assign.Call(obj, Source )
 }
 
-func PaintBox_DisposeOf(obj uintptr)  {
-    paintBox_DisposeOf.Call(obj)
-}
-
 func PaintBox_ClassType(obj uintptr) TClass {
     ret, _, _ := paintBox_ClassType.Call(obj)
     return TClass(ret)
@@ -41326,15 +34928,6 @@ func PaintBox_GetDragCursor(obj uintptr) TCursor {
 
 func PaintBox_SetDragCursor(obj uintptr, value TCursor) {
    paintBox_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func PaintBox_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := paintBox_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func PaintBox_SetDragKind(obj uintptr, value TDragKind) {
-   paintBox_SetDragKind.Call(obj, uintptr(value))
 }
 
 func PaintBox_GetDragMode(obj uintptr) TDragMode {
@@ -41422,10 +35015,6 @@ func PaintBox_SetOnClick(obj uintptr, fn interface{}) {
     paintBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
-func PaintBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    paintBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
-}
-
 func PaintBox_SetOnDblClick(obj uintptr, fn interface{}) {
     paintBox_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -41438,20 +35027,8 @@ func PaintBox_SetOnDragOver(obj uintptr, fn interface{}) {
     paintBox_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func PaintBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    paintBox_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func PaintBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     paintBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func PaintBox_SetOnGesture(obj uintptr, fn interface{}) {
-    paintBox_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func PaintBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    paintBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func PaintBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -41476,10 +35053,6 @@ func PaintBox_SetOnMouseUp(obj uintptr, fn interface{}) {
 
 func PaintBox_SetOnPaint(obj uintptr, fn interface{}) {
     paintBox_SetOnPaint.Call(obj, addEventToMap(fn))
-}
-
-func PaintBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    paintBox_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func PaintBox_GetAction(obj uintptr) uintptr {
@@ -41558,26 +35131,6 @@ func PaintBox_SetControlStyle(obj uintptr, value TControlStyle) {
    paintBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func PaintBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := paintBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func PaintBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := paintBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func PaintBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := paintBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func PaintBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := paintBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func PaintBox_GetFloating(obj uintptr) bool {
     ret, _, _ := paintBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -41590,24 +35143,6 @@ func PaintBox_GetParent(obj uintptr) uintptr {
 
 func PaintBox_SetParent(obj uintptr, value uintptr) {
    paintBox_SetParent.Call(obj, value)
-}
-
-func PaintBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := paintBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func PaintBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   paintBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func PaintBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := paintBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func PaintBox_SetAlignWithMargins(obj uintptr, value bool) {
-   paintBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func PaintBox_GetLeft(obj uintptr) int32 {
@@ -41748,10 +35283,6 @@ func Timer_HasParent(obj uintptr) bool {
 
 func Timer_Assign(obj uintptr, Source uintptr)  {
     timer_Assign.Call(obj, Source )
-}
-
-func Timer_DisposeOf(obj uintptr)  {
-    timer_DisposeOf.Call(obj)
 }
 
 func Timer_ClassType(obj uintptr) TClass {
@@ -41900,10 +35431,6 @@ func List_Move(obj uintptr, CurIndex int32, NewIndex int32)  {
     list_Move.Call(obj, uintptr(CurIndex) , uintptr(NewIndex) )
 }
 
-func List_DisposeOf(obj uintptr)  {
-    list_DisposeOf.Call(obj)
-}
-
 func List_ClassType(obj uintptr) TClass {
     ret, _, _ := list_ClassType.Call(obj)
     return TClass(ret)
@@ -41976,153 +35503,6 @@ func List_StaticClassType() TClass {
     return TClass(r)
 }
 
-//--------------------------- TGraphic ---------------------------
-
-func Graphic_Create() uintptr {
-    ret, _, _ := graphic_Create.Call()
-    return ret
-}
-
-func Graphic_Free(obj uintptr) {
-    graphic_Free.Call(obj)
-}
-
-func Graphic_Equals(obj uintptr, Obj uintptr) bool {
-    ret, _, _ := graphic_Equals.Call(obj, Obj )
-    return DBoolToGoBool(ret)
-}
-
-func Graphic_LoadFromFile(obj uintptr, Filename string)  {
-    graphic_LoadFromFile.Call(obj, GoStrToDStr(Filename) )
-}
-
-func Graphic_SaveToFile(obj uintptr, Filename string)  {
-    graphic_SaveToFile.Call(obj, GoStrToDStr(Filename) )
-}
-
-func Graphic_LoadFromStream(obj uintptr, Stream uintptr)  {
-    graphic_LoadFromStream.Call(obj, Stream )
-}
-
-func Graphic_SaveToStream(obj uintptr, Stream uintptr)  {
-    graphic_SaveToStream.Call(obj, Stream )
-}
-
-func Graphic_SetSize(obj uintptr, AWidth int32, AHeight int32)  {
-    graphic_SetSize.Call(obj, uintptr(AWidth) , uintptr(AHeight) )
-}
-
-func Graphic_Assign(obj uintptr, Source uintptr)  {
-    graphic_Assign.Call(obj, Source )
-}
-
-func Graphic_GetNamePath(obj uintptr) string {
-    ret, _, _ := graphic_GetNamePath.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Graphic_DisposeOf(obj uintptr)  {
-    graphic_DisposeOf.Call(obj)
-}
-
-func Graphic_ClassType(obj uintptr) TClass {
-    ret, _, _ := graphic_ClassType.Call(obj)
-    return TClass(ret)
-}
-
-func Graphic_ClassName(obj uintptr) string {
-    ret, _, _ := graphic_ClassName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Graphic_InstanceSize(obj uintptr) int32 {
-    ret, _, _ := graphic_InstanceSize.Call(obj)
-    return int32(ret)
-}
-
-func Graphic_InheritsFrom(obj uintptr, AClass TClass) bool {
-    ret, _, _ := graphic_InheritsFrom.Call(obj, uintptr(AClass) )
-    return DBoolToGoBool(ret)
-}
-
-func Graphic_GetHashCode(obj uintptr) int32 {
-    ret, _, _ := graphic_GetHashCode.Call(obj)
-    return int32(ret)
-}
-
-func Graphic_ToString(obj uintptr) string {
-    ret, _, _ := graphic_ToString.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Graphic_GetEmpty(obj uintptr) bool {
-    ret, _, _ := graphic_GetEmpty.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Graphic_GetHeight(obj uintptr) int32 {
-    ret, _, _ := graphic_GetHeight.Call(obj)
-    return int32(ret)
-}
-
-func Graphic_SetHeight(obj uintptr, value int32) {
-   graphic_SetHeight.Call(obj, uintptr(value))
-}
-
-func Graphic_GetModified(obj uintptr) bool {
-    ret, _, _ := graphic_GetModified.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Graphic_SetModified(obj uintptr, value bool) {
-   graphic_SetModified.Call(obj, GoBoolToDBool(value))
-}
-
-func Graphic_GetPalette(obj uintptr) HPALETTE {
-    ret, _, _ := graphic_GetPalette.Call(obj)
-    return HPALETTE(ret)
-}
-
-func Graphic_SetPalette(obj uintptr, value HPALETTE) {
-   graphic_SetPalette.Call(obj, uintptr(value))
-}
-
-func Graphic_GetPaletteModified(obj uintptr) bool {
-    ret, _, _ := graphic_GetPaletteModified.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Graphic_SetPaletteModified(obj uintptr, value bool) {
-   graphic_SetPaletteModified.Call(obj, GoBoolToDBool(value))
-}
-
-func Graphic_GetTransparent(obj uintptr) bool {
-    ret, _, _ := graphic_GetTransparent.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Graphic_SetTransparent(obj uintptr, value bool) {
-   graphic_SetTransparent.Call(obj, GoBoolToDBool(value))
-}
-
-func Graphic_GetWidth(obj uintptr) int32 {
-    ret, _, _ := graphic_GetWidth.Call(obj)
-    return int32(ret)
-}
-
-func Graphic_SetWidth(obj uintptr, value int32) {
-   graphic_SetWidth.Call(obj, uintptr(value))
-}
-
-func Graphic_SetOnChange(obj uintptr, fn interface{}) {
-    graphic_SetOnChange.Call(obj, addEventToMap(fn))
-}
-
-func Graphic_StaticClassType() TClass {
-    r, _, _:= graphic_StaticClassType.Call()
-    return TClass(r)
-}
-
 //--------------------------- TComponent ---------------------------
 
 func Component_Create(obj uintptr) uintptr {
@@ -42151,10 +35531,6 @@ func Component_HasParent(obj uintptr) bool {
 
 func Component_Assign(obj uintptr, Source uintptr)  {
     component_Assign.Call(obj, Source )
-}
-
-func Component_DisposeOf(obj uintptr)  {
-    component_DisposeOf.Call(obj)
 }
 
 func Component_ClassType(obj uintptr) TClass {
@@ -42239,79 +35615,6 @@ func Component_StaticClassType() TClass {
     return TClass(r)
 }
 
-//--------------------------- TMonthCalColors ---------------------------
-
-func MonthCalColors_Create() uintptr {
-    ret, _, _ := monthCalColors_Create.Call()
-    return ret
-}
-
-func MonthCalColors_Free(obj uintptr) {
-    monthCalColors_Free.Call(obj)
-}
-
-func MonthCalColors_Assign(obj uintptr, Source uintptr)  {
-    monthCalColors_Assign.Call(obj, Source )
-}
-
-func MonthCalColors_GetNamePath(obj uintptr) string {
-    ret, _, _ := monthCalColors_GetNamePath.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MonthCalColors_DisposeOf(obj uintptr)  {
-    monthCalColors_DisposeOf.Call(obj)
-}
-
-func MonthCalColors_ClassType(obj uintptr) TClass {
-    ret, _, _ := monthCalColors_ClassType.Call(obj)
-    return TClass(ret)
-}
-
-func MonthCalColors_ClassName(obj uintptr) string {
-    ret, _, _ := monthCalColors_ClassName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MonthCalColors_InstanceSize(obj uintptr) int32 {
-    ret, _, _ := monthCalColors_InstanceSize.Call(obj)
-    return int32(ret)
-}
-
-func MonthCalColors_InheritsFrom(obj uintptr, AClass TClass) bool {
-    ret, _, _ := monthCalColors_InheritsFrom.Call(obj, uintptr(AClass) )
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalColors_Equals(obj uintptr, Obj uintptr) bool {
-    ret, _, _ := monthCalColors_Equals.Call(obj, Obj )
-    return DBoolToGoBool(ret)
-}
-
-func MonthCalColors_GetHashCode(obj uintptr) int32 {
-    ret, _, _ := monthCalColors_GetHashCode.Call(obj)
-    return int32(ret)
-}
-
-func MonthCalColors_ToString(obj uintptr) string {
-    ret, _, _ := monthCalColors_ToString.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func MonthCalColors_GetBackColor(obj uintptr) TColor {
-    ret, _, _ := monthCalColors_GetBackColor.Call(obj)
-    return TColor(ret)
-}
-
-func MonthCalColors_SetBackColor(obj uintptr, value TColor) {
-   monthCalColors_SetBackColor.Call(obj, uintptr(value))
-}
-
-func MonthCalColors_StaticClassType() TClass {
-    r, _, _:= monthCalColors_StaticClassType.Call()
-    return TClass(r)
-}
-
 //--------------------------- TIconOptions ---------------------------
 
 func IconOptions_Assign(obj uintptr, Source uintptr)  {
@@ -42321,10 +35624,6 @@ func IconOptions_Assign(obj uintptr, Source uintptr)  {
 func IconOptions_GetNamePath(obj uintptr) string {
     ret, _, _ := iconOptions_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func IconOptions_DisposeOf(obj uintptr)  {
-    iconOptions_DisposeOf.Call(obj)
 }
 
 func IconOptions_ClassType(obj uintptr) TClass {
@@ -42392,10 +35691,6 @@ func Exception_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func Exception_DisposeOf(obj uintptr)  {
-    exception_DisposeOf.Call(obj)
-}
-
 func Exception_ClassType(obj uintptr) TClass {
     ret, _, _ := exception_ClassType.Call(obj)
     return TClass(ret)
@@ -42426,16 +35721,6 @@ func Exception_GetHashCode(obj uintptr) int32 {
     return int32(ret)
 }
 
-func Exception_GetBaseException(obj uintptr) uintptr {
-    ret, _, _ := exception_GetBaseException.Call(obj)
-    return ret
-}
-
-func Exception_GetInnerException(obj uintptr) uintptr {
-    ret, _, _ := exception_GetInnerException.Call(obj)
-    return ret
-}
-
 func Exception_GetMessage(obj uintptr) string {
     ret, _, _ := exception_GetMessage.Call(obj)
     return DStrToGoStr(ret)
@@ -42443,16 +35728,6 @@ func Exception_GetMessage(obj uintptr) string {
 
 func Exception_SetMessage(obj uintptr, value string) {
    exception_SetMessage.Call(obj, GoStrToDStr(value))
-}
-
-func Exception_GetStackTrace(obj uintptr) string {
-    ret, _, _ := exception_GetStackTrace.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Exception_GetStackInfo(obj uintptr) uintptr {
-    ret, _, _ := exception_GetStackInfo.Call(obj)
-    return ret
 }
 
 func Exception_StaticClassType() TClass {
@@ -42525,10 +35800,6 @@ func ScrollBar_Invalidate(obj uintptr)  {
     scrollBar_Invalidate.Call(obj)
 }
 
-func ScrollBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    scrollBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ScrollBar_RemoveControl(obj uintptr, AControl uintptr)  {
     scrollBar_RemoveControl.Call(obj, AControl )
 }
@@ -42559,10 +35830,6 @@ func ScrollBar_SetFocus(obj uintptr)  {
 
 func ScrollBar_Update(obj uintptr)  {
     scrollBar_Update.Call(obj)
-}
-
-func ScrollBar_UpdateControlState(obj uintptr)  {
-    scrollBar_UpdateControlState.Call(obj)
 }
 
 func ScrollBar_BringToFront(obj uintptr)  {
@@ -42657,10 +35924,6 @@ func ScrollBar_Assign(obj uintptr, Source uintptr)  {
     scrollBar_Assign.Call(obj, Source )
 }
 
-func ScrollBar_DisposeOf(obj uintptr)  {
-    scrollBar_DisposeOf.Call(obj)
-}
-
 func ScrollBar_ClassType(obj uintptr) TClass {
     ret, _, _ := scrollBar_ClassType.Call(obj)
     return TClass(ret)
@@ -42732,15 +35995,6 @@ func ScrollBar_SetConstraints(obj uintptr, value uintptr) {
    scrollBar_SetConstraints.Call(obj, value)
 }
 
-func ScrollBar_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := scrollBar_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ScrollBar_SetCtl3D(obj uintptr, value bool) {
-   scrollBar_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ScrollBar_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := scrollBar_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -42786,15 +36040,6 @@ func ScrollBar_SetEnabled(obj uintptr, value bool) {
    scrollBar_SetEnabled.Call(obj, GoBoolToDBool(value))
 }
 
-func ScrollBar_GetKind(obj uintptr) TScrollBarKind {
-    ret, _, _ := scrollBar_GetKind.Call(obj)
-    return TScrollBarKind(ret)
-}
-
-func ScrollBar_SetKind(obj uintptr, value TScrollBarKind) {
-   scrollBar_SetKind.Call(obj, uintptr(value))
-}
-
 func ScrollBar_GetLargeChange(obj uintptr) TScrollBarInc {
     ret, _, _ := scrollBar_GetLargeChange.Call(obj)
     return TScrollBarInc(ret)
@@ -42829,15 +36074,6 @@ func ScrollBar_GetPageSize(obj uintptr) int32 {
 
 func ScrollBar_SetPageSize(obj uintptr, value int32) {
    scrollBar_SetPageSize.Call(obj, uintptr(value))
-}
-
-func ScrollBar_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := scrollBar_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ScrollBar_SetParentCtl3D(obj uintptr, value bool) {
-   scrollBar_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ScrollBar_GetParentDoubleBuffered(obj uintptr) bool {
@@ -42921,15 +36157,6 @@ func ScrollBar_SetVisible(obj uintptr, value bool) {
    scrollBar_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ScrollBar_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := scrollBar_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ScrollBar_SetStyleElements(obj uintptr, value TStyleElements) {
-   scrollBar_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ScrollBar_SetOnContextPopup(obj uintptr, fn interface{}) {
     scrollBar_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -42944,10 +36171,6 @@ func ScrollBar_SetOnDragDrop(obj uintptr, fn interface{}) {
 
 func ScrollBar_SetOnDragOver(obj uintptr, fn interface{}) {
     scrollBar_SetOnDragOver.Call(obj, addEventToMap(fn))
-}
-
-func ScrollBar_SetOnEndDock(obj uintptr, fn interface{}) {
-    scrollBar_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBar_SetOnEndDrag(obj uintptr, fn interface{}) {
@@ -42974,18 +36197,6 @@ func ScrollBar_SetOnKeyUp(obj uintptr, fn interface{}) {
     scrollBar_SetOnKeyUp.Call(obj, addEventToMap(fn))
 }
 
-func ScrollBar_SetOnMouseEnter(obj uintptr, fn interface{}) {
-    scrollBar_SetOnMouseEnter.Call(obj, addEventToMap(fn))
-}
-
-func ScrollBar_SetOnMouseLeave(obj uintptr, fn interface{}) {
-    scrollBar_SetOnMouseLeave.Call(obj, addEventToMap(fn))
-}
-
-func ScrollBar_SetOnStartDock(obj uintptr, fn interface{}) {
-    scrollBar_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func ScrollBar_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := scrollBar_GetDockClientCount.Call(obj)
     return int32(ret)
@@ -42998,11 +36209,6 @@ func ScrollBar_GetDockSite(obj uintptr) bool {
 
 func ScrollBar_SetDockSite(obj uintptr, value bool) {
    scrollBar_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func ScrollBar_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := scrollBar_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ScrollBar_GetMouseInClient(obj uintptr) bool {
@@ -43115,26 +36321,6 @@ func ScrollBar_SetControlStyle(obj uintptr, value TControlStyle) {
    scrollBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ScrollBar_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := scrollBar_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ScrollBar_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := scrollBar_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ScrollBar_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := scrollBar_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ScrollBar_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := scrollBar_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ScrollBar_GetFloating(obj uintptr) bool {
     ret, _, _ := scrollBar_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -43147,19 +36333,6 @@ func ScrollBar_GetParent(obj uintptr) uintptr {
 
 func ScrollBar_SetParent(obj uintptr, value uintptr) {
    scrollBar_SetParent.Call(obj, value)
-}
-
-func ScrollBar_SetOnGesture(obj uintptr, fn interface{}) {
-    scrollBar_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func ScrollBar_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := scrollBar_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ScrollBar_SetAlignWithMargins(obj uintptr, value bool) {
-   scrollBar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ScrollBar_GetLeft(obj uintptr) int32 {
@@ -43282,6 +36455,913 @@ func ScrollBar_StaticClassType() TClass {
     return TClass(r)
 }
 
+//--------------------------- TMaskEdit ---------------------------
+
+func MaskEdit_Create(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_Create.Call(obj)
+    return ret
+}
+
+func MaskEdit_Free(obj uintptr) {
+    maskEdit_Free.Call(obj)
+}
+
+func MaskEdit_ValidateEdit(obj uintptr)  {
+    maskEdit_ValidateEdit.Call(obj)
+}
+
+func MaskEdit_Clear(obj uintptr)  {
+    maskEdit_Clear.Call(obj)
+}
+
+func MaskEdit_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_ClearSelection(obj uintptr)  {
+    maskEdit_ClearSelection.Call(obj)
+}
+
+func MaskEdit_CopyToClipboard(obj uintptr)  {
+    maskEdit_CopyToClipboard.Call(obj)
+}
+
+func MaskEdit_CutToClipboard(obj uintptr)  {
+    maskEdit_CutToClipboard.Call(obj)
+}
+
+func MaskEdit_PasteFromClipboard(obj uintptr)  {
+    maskEdit_PasteFromClipboard.Call(obj)
+}
+
+func MaskEdit_Undo(obj uintptr)  {
+    maskEdit_Undo.Call(obj)
+}
+
+func MaskEdit_SelectAll(obj uintptr)  {
+    maskEdit_SelectAll.Call(obj)
+}
+
+func MaskEdit_CanFocus(obj uintptr) bool {
+    ret, _, _ := maskEdit_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := maskEdit_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := maskEdit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func MaskEdit_DisableAlign(obj uintptr)  {
+    maskEdit_DisableAlign.Call(obj)
+}
+
+func MaskEdit_EnableAlign(obj uintptr)  {
+    maskEdit_EnableAlign.Call(obj)
+}
+
+func MaskEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := maskEdit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func MaskEdit_FlipChildren(obj uintptr, AllLevels bool)  {
+    maskEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func MaskEdit_Focused(obj uintptr) bool {
+    ret, _, _ := maskEdit_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := maskEdit_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    maskEdit_InsertControl.Call(obj, AControl )
+}
+
+func MaskEdit_Invalidate(obj uintptr)  {
+    maskEdit_Invalidate.Call(obj)
+}
+
+func MaskEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    maskEdit_RemoveControl.Call(obj, AControl )
+}
+
+func MaskEdit_Realign(obj uintptr)  {
+    maskEdit_Realign.Call(obj)
+}
+
+func MaskEdit_Repaint(obj uintptr)  {
+    maskEdit_Repaint.Call(obj)
+}
+
+func MaskEdit_ScaleBy(obj uintptr, M int32, D int32)  {
+    maskEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func MaskEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    maskEdit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func MaskEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    maskEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func MaskEdit_SetFocus(obj uintptr)  {
+    maskEdit_SetFocus.Call(obj)
+}
+
+func MaskEdit_Update(obj uintptr)  {
+    maskEdit_Update.Call(obj)
+}
+
+func MaskEdit_BringToFront(obj uintptr)  {
+    maskEdit_BringToFront.Call(obj)
+}
+
+func MaskEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    maskEdit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    maskEdit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := maskEdit_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_HasParent(obj uintptr) bool {
+    ret, _, _ := maskEdit_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_Hide(obj uintptr)  {
+    maskEdit_Hide.Call(obj)
+}
+
+func MaskEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := maskEdit_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func MaskEdit_Refresh(obj uintptr)  {
+    maskEdit_Refresh.Call(obj)
+}
+
+func MaskEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    maskEdit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    maskEdit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_SendToBack(obj uintptr)  {
+    maskEdit_SendToBack.Call(obj)
+}
+
+func MaskEdit_Show(obj uintptr)  {
+    maskEdit_Show.Call(obj)
+}
+
+func MaskEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := maskEdit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer, int(ret))
+    return int32(ret)
+}
+
+func MaskEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    maskEdit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
+func MaskEdit_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := maskEdit_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func MaskEdit_GetNamePath(obj uintptr) string {
+    ret, _, _ := maskEdit_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_Assign(obj uintptr, Source uintptr)  {
+    maskEdit_Assign.Call(obj, Source )
+}
+
+func MaskEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := maskEdit_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func MaskEdit_ClassName(obj uintptr) string {
+    ret, _, _ := maskEdit_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := maskEdit_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := maskEdit_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := maskEdit_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_ToString(obj uintptr) string {
+    ret, _, _ := maskEdit_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := maskEdit_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func MaskEdit_SetAlign(obj uintptr, value TAlign) {
+   maskEdit_SetAlign.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := maskEdit_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func MaskEdit_SetAlignment(obj uintptr, value TAlignment) {
+   maskEdit_SetAlignment.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := maskEdit_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func MaskEdit_SetAnchors(obj uintptr, value TAnchors) {
+   maskEdit_SetAnchors.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetAutoSelect(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetAutoSelect.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetAutoSelect(obj uintptr, value bool) {
+   maskEdit_SetAutoSelect.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetAutoSize(obj uintptr, value bool) {
+   maskEdit_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := maskEdit_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func MaskEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   maskEdit_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := maskEdit_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func MaskEdit_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   maskEdit_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetCharCase(obj uintptr) TEditCharCase {
+    ret, _, _ := maskEdit_GetCharCase.Call(obj)
+    return TEditCharCase(ret)
+}
+
+func MaskEdit_SetCharCase(obj uintptr, value TEditCharCase) {
+   maskEdit_SetCharCase.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetColor(obj uintptr) TColor {
+    ret, _, _ := maskEdit_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func MaskEdit_SetColor(obj uintptr, value TColor) {
+   maskEdit_SetColor.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetConstraints.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetConstraints(obj uintptr, value uintptr) {
+   maskEdit_SetConstraints.Call(obj, value)
+}
+
+func MaskEdit_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetDoubleBuffered(obj uintptr, value bool) {
+   maskEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := maskEdit_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func MaskEdit_SetDragCursor(obj uintptr, value TCursor) {
+   maskEdit_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := maskEdit_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func MaskEdit_SetDragKind(obj uintptr, value TDragKind) {
+   maskEdit_SetDragKind.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := maskEdit_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func MaskEdit_SetDragMode(obj uintptr, value TDragMode) {
+   maskEdit_SetDragMode.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetEnabled(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetEnabled(obj uintptr, value bool) {
+   maskEdit_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetFont(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetFont.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetFont(obj uintptr, value uintptr) {
+   maskEdit_SetFont.Call(obj, value)
+}
+
+func MaskEdit_GetMaxLength(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetMaxLength.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetMaxLength(obj uintptr, value int32) {
+   maskEdit_SetMaxLength.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetParentColor(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetParentColor(obj uintptr, value bool) {
+   maskEdit_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+   maskEdit_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetParentFont(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetParentFont(obj uintptr, value bool) {
+   maskEdit_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetParentShowHint(obj uintptr, value bool) {
+   maskEdit_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetPasswordChar(obj uintptr) uint16 {
+    ret, _, _ := maskEdit_GetPasswordChar.Call(obj)
+    return uint16(ret)
+}
+
+func MaskEdit_SetPasswordChar(obj uintptr, value uint16) {
+   maskEdit_SetPasswordChar.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetPopupMenu(obj uintptr, value uintptr) {
+   maskEdit_SetPopupMenu.Call(obj, value)
+}
+
+func MaskEdit_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetReadOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetReadOnly(obj uintptr, value bool) {
+   maskEdit_SetReadOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetShowHint(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetShowHint(obj uintptr, value bool) {
+   maskEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := maskEdit_GetTabOrder.Call(obj)
+    return TTabOrder(ret)
+}
+
+func MaskEdit_SetTabOrder(obj uintptr, value TTabOrder) {
+   maskEdit_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetTabStop(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetTabStop(obj uintptr, value bool) {
+   maskEdit_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetText(obj uintptr) string {
+    ret, _, _ := maskEdit_GetText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_SetText(obj uintptr, value string) {
+   maskEdit_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func MaskEdit_GetTextHint(obj uintptr) string {
+    ret, _, _ := maskEdit_GetTextHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_SetTextHint(obj uintptr, value string) {
+   maskEdit_SetTextHint.Call(obj, GoStrToDStr(value))
+}
+
+func MaskEdit_GetVisible(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetVisible(obj uintptr, value bool) {
+   maskEdit_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_SetOnChange(obj uintptr, fn interface{}) {
+    maskEdit_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnClick(obj uintptr, fn interface{}) {
+    maskEdit_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnDblClick(obj uintptr, fn interface{}) {
+    maskEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    maskEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+    maskEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnEndDock(obj uintptr, fn interface{}) {
+    maskEdit_SetOnEndDock.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    maskEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnEnter(obj uintptr, fn interface{}) {
+    maskEdit_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnExit(obj uintptr, fn interface{}) {
+    maskEdit_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+    maskEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+    maskEdit_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+    maskEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+    maskEdit_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    maskEdit_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    maskEdit_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    maskEdit_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    maskEdit_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_SetOnStartDock(obj uintptr, fn interface{}) {
+    maskEdit_SetOnStartDock.Call(obj, addEventToMap(fn))
+}
+
+func MaskEdit_GetIsMasked(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetIsMasked.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_GetEditText(obj uintptr) string {
+    ret, _, _ := maskEdit_GetEditText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_SetEditText(obj uintptr, value string) {
+   maskEdit_SetEditText.Call(obj, GoStrToDStr(value))
+}
+
+func MaskEdit_GetCanUndo(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetCanUndo.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_GetModified(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetModified.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetModified(obj uintptr, value bool) {
+   maskEdit_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetSelLength(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetSelLength.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetSelLength(obj uintptr, value int32) {
+   maskEdit_SetSelLength.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetSelStart(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetSelStart.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetSelStart(obj uintptr, value int32) {
+   maskEdit_SetSelStart.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetSelText(obj uintptr) string {
+    ret, _, _ := maskEdit_GetSelText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_SetSelText(obj uintptr, value string) {
+   maskEdit_SetSelText.Call(obj, GoStrToDStr(value))
+}
+
+func MaskEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetDockSite(obj uintptr, value bool) {
+   maskEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetBrush.Call(obj)
+    return ret
+}
+
+func MaskEdit_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_GetHandle(obj uintptr) HWND {
+    ret, _, _ := maskEdit_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func MaskEdit_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := maskEdit_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func MaskEdit_SetParentWindow(obj uintptr, value HWND) {
+   maskEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_SetUseDockManager(obj uintptr, value bool) {
+   maskEdit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func MaskEdit_GetAction(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetAction.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetAction(obj uintptr, value uintptr) {
+   maskEdit_SetAction.Call(obj, value)
+}
+
+func MaskEdit_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    maskEdit_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_SetBoundsRect(obj uintptr, value TRect) {
+   maskEdit_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func MaskEdit_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetClientHeight(obj uintptr, value int32) {
+   maskEdit_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    maskEdit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    maskEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func MaskEdit_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetClientWidth(obj uintptr, value int32) {
+   maskEdit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := maskEdit_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func MaskEdit_SetControlState(obj uintptr, value TControlState) {
+   maskEdit_SetControlState.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := maskEdit_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func MaskEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+   maskEdit_SetControlStyle.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MaskEdit_GetParent(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetParent.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetParent(obj uintptr, value uintptr) {
+   maskEdit_SetParent.Call(obj, value)
+}
+
+func MaskEdit_GetLeft(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetLeft(obj uintptr, value int32) {
+   maskEdit_SetLeft.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetTop(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetTop(obj uintptr, value int32) {
+   maskEdit_SetTop.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetWidth(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetWidth(obj uintptr, value int32) {
+   maskEdit_SetWidth.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetHeight(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetHeight(obj uintptr, value int32) {
+   maskEdit_SetHeight.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := maskEdit_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func MaskEdit_SetCursor(obj uintptr, value TCursor) {
+   maskEdit_SetCursor.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetHint(obj uintptr) string {
+    ret, _, _ := maskEdit_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_SetHint(obj uintptr, value string) {
+   maskEdit_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func MaskEdit_GetMargins(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetMargins.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetMargins(obj uintptr, value uintptr) {
+   maskEdit_SetMargins.Call(obj, value)
+}
+
+func MaskEdit_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := maskEdit_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func MaskEdit_SetComponentIndex(obj uintptr, value int32) {
+   maskEdit_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetOwner.Call(obj)
+    return ret
+}
+
+func MaskEdit_GetName(obj uintptr) string {
+    ret, _, _ := maskEdit_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func MaskEdit_SetName(obj uintptr, value string) {
+   maskEdit_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func MaskEdit_GetTag(obj uintptr) int {
+    ret, _, _ := maskEdit_GetTag.Call(obj)
+    return int(ret)
+}
+
+func MaskEdit_SetTag(obj uintptr, value int) {
+   maskEdit_SetTag.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := maskEdit_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
+func MaskEdit_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := maskEdit_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func MaskEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := maskEdit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func MaskEdit_StaticClassType() TClass {
+    r, _, _:= maskEdit_StaticClassType.Call()
+    return TClass(r)
+}
+
 //--------------------------- TShape ---------------------------
 
 func Shape_Create(obj uintptr) uintptr {
@@ -43399,10 +37479,6 @@ func Shape_GetNamePath(obj uintptr) string {
 
 func Shape_Assign(obj uintptr, Source uintptr)  {
     shape_Assign.Call(obj, Source )
-}
-
-func Shape_DisposeOf(obj uintptr)  {
-    shape_DisposeOf.Call(obj)
 }
 
 func Shape_ClassType(obj uintptr) TClass {
@@ -43557,10 +37633,6 @@ func Shape_SetVisible(obj uintptr, value bool) {
    shape_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func Shape_SetOnContextPopup(obj uintptr, fn interface{}) {
-    shape_SetOnContextPopup.Call(obj, addEventToMap(fn))
-}
-
 func Shape_SetOnDragDrop(obj uintptr, fn interface{}) {
     shape_SetOnDragDrop.Call(obj, addEventToMap(fn))
 }
@@ -43569,16 +37641,8 @@ func Shape_SetOnDragOver(obj uintptr, fn interface{}) {
     shape_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func Shape_SetOnEndDock(obj uintptr, fn interface{}) {
-    shape_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func Shape_SetOnEndDrag(obj uintptr, fn interface{}) {
     shape_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func Shape_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    shape_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Shape_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -43599,14 +37663,6 @@ func Shape_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func Shape_SetOnMouseUp(obj uintptr, fn interface{}) {
     shape_SetOnMouseUp.Call(obj, addEventToMap(fn))
-}
-
-func Shape_SetOnGesture(obj uintptr, fn interface{}) {
-    shape_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func Shape_SetOnStartDock(obj uintptr, fn interface{}) {
-    shape_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func Shape_GetAction(obj uintptr) uintptr {
@@ -43685,26 +37741,6 @@ func Shape_SetControlStyle(obj uintptr, value TControlStyle) {
    shape_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Shape_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := shape_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Shape_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := shape_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Shape_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := shape_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Shape_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := shape_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Shape_GetFloating(obj uintptr) bool {
     ret, _, _ := shape_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -43717,24 +37753,6 @@ func Shape_GetParent(obj uintptr) uintptr {
 
 func Shape_SetParent(obj uintptr, value uintptr) {
    shape_SetParent.Call(obj, value)
-}
-
-func Shape_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := shape_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Shape_SetStyleElements(obj uintptr, value TStyleElements) {
-   shape_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func Shape_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := shape_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Shape_SetAlignWithMargins(obj uintptr, value bool) {
-   shape_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Shape_GetLeft(obj uintptr) int32 {
@@ -43966,10 +37984,6 @@ func Bevel_Assign(obj uintptr, Source uintptr)  {
     bevel_Assign.Call(obj, Source )
 }
 
-func Bevel_DisposeOf(obj uintptr)  {
-    bevel_DisposeOf.Call(obj)
-}
-
 func Bevel_ClassType(obj uintptr) TClass {
     ret, _, _ := bevel_ClassType.Call(obj)
     return TClass(ret)
@@ -44077,10 +38091,6 @@ func Bevel_SetVisible(obj uintptr, value bool) {
    bevel_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func Bevel_SetOnGesture(obj uintptr, fn interface{}) {
-    bevel_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func Bevel_GetEnabled(obj uintptr) bool {
     ret, _, _ := bevel_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -44166,26 +38176,6 @@ func Bevel_SetControlStyle(obj uintptr, value TControlStyle) {
    bevel_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Bevel_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := bevel_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Bevel_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := bevel_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Bevel_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := bevel_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Bevel_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := bevel_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Bevel_GetFloating(obj uintptr) bool {
     ret, _, _ := bevel_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -44198,24 +38188,6 @@ func Bevel_GetParent(obj uintptr) uintptr {
 
 func Bevel_SetParent(obj uintptr, value uintptr) {
    bevel_SetParent.Call(obj, value)
-}
-
-func Bevel_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := bevel_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Bevel_SetStyleElements(obj uintptr, value TStyleElements) {
-   bevel_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func Bevel_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := bevel_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Bevel_SetAlignWithMargins(obj uintptr, value bool) {
-   bevel_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Bevel_GetLeft(obj uintptr) int32 {
@@ -44339,14 +38311,6 @@ func ScrollBox_Free(obj uintptr) {
     scrollBox_Free.Call(obj)
 }
 
-func ScrollBox_DisableAutoRange(obj uintptr)  {
-    scrollBox_DisableAutoRange.Call(obj)
-}
-
-func ScrollBox_EnableAutoRange(obj uintptr)  {
-    scrollBox_EnableAutoRange.Call(obj)
-}
-
 func ScrollBox_ScrollInView(obj uintptr, AControl uintptr)  {
     scrollBox_ScrollInView.Call(obj, AControl )
 }
@@ -44401,10 +38365,6 @@ func ScrollBox_Invalidate(obj uintptr)  {
     scrollBox_Invalidate.Call(obj)
 }
 
-func ScrollBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    scrollBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ScrollBox_RemoveControl(obj uintptr, AControl uintptr)  {
     scrollBox_RemoveControl.Call(obj, AControl )
 }
@@ -44435,10 +38395,6 @@ func ScrollBox_SetFocus(obj uintptr)  {
 
 func ScrollBox_Update(obj uintptr)  {
     scrollBox_Update.Call(obj)
-}
-
-func ScrollBox_UpdateControlState(obj uintptr)  {
-    scrollBox_UpdateControlState.Call(obj)
 }
 
 func ScrollBox_BringToFront(obj uintptr)  {
@@ -44533,10 +38489,6 @@ func ScrollBox_Assign(obj uintptr, Source uintptr)  {
     scrollBox_Assign.Call(obj, Source )
 }
 
-func ScrollBox_DisposeOf(obj uintptr)  {
-    scrollBox_DisposeOf.Call(obj)
-}
-
 func ScrollBox_ClassType(obj uintptr) TClass {
     ret, _, _ := scrollBox_ClassType.Call(obj)
     return TClass(ret)
@@ -44606,42 +38558,6 @@ func ScrollBox_GetAutoSize(obj uintptr) bool {
 
 func ScrollBox_SetAutoSize(obj uintptr, value bool) {
    scrollBox_SetAutoSize.Call(obj, GoBoolToDBool(value))
-}
-
-func ScrollBox_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := scrollBox_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func ScrollBox_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   scrollBox_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func ScrollBox_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := scrollBox_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ScrollBox_SetBevelInner(obj uintptr, value TBevelCut) {
-   scrollBox_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func ScrollBox_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := scrollBox_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func ScrollBox_SetBevelOuter(obj uintptr, value TBevelCut) {
-   scrollBox_SetBevelOuter.Call(obj, uintptr(value))
-}
-
-func ScrollBox_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := scrollBox_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func ScrollBox_SetBevelKind(obj uintptr, value TBevelKind) {
-   scrollBox_SetBevelKind.Call(obj, uintptr(value))
 }
 
 func ScrollBox_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -44734,15 +38650,6 @@ func ScrollBox_SetColor(obj uintptr, value TColor) {
    scrollBox_SetColor.Call(obj, uintptr(value))
 }
 
-func ScrollBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := scrollBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ScrollBox_SetCtl3D(obj uintptr, value bool) {
-   scrollBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ScrollBox_GetFont(obj uintptr) uintptr {
     ret, _, _ := scrollBox_GetFont.Call(obj)
     return ret
@@ -44768,15 +38675,6 @@ func ScrollBox_GetParentColor(obj uintptr) bool {
 
 func ScrollBox_SetParentColor(obj uintptr, value bool) {
    scrollBox_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func ScrollBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := scrollBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ScrollBox_SetParentCtl3D(obj uintptr, value bool) {
-   scrollBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ScrollBox_GetParentDoubleBuffered(obj uintptr) bool {
@@ -44851,21 +38749,8 @@ func ScrollBox_SetVisible(obj uintptr, value bool) {
    scrollBox_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ScrollBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := scrollBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ScrollBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   scrollBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ScrollBox_SetOnClick(obj uintptr, fn interface{}) {
     scrollBox_SetOnClick.Call(obj, addEventToMap(fn))
-}
-
-func ScrollBox_SetOnContextPopup(obj uintptr, fn interface{}) {
-    scrollBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBox_SetOnDblClick(obj uintptr, fn interface{}) {
@@ -44884,10 +38769,6 @@ func ScrollBox_SetOnDragOver(obj uintptr, fn interface{}) {
     scrollBox_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func ScrollBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    scrollBox_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func ScrollBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     scrollBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -44900,16 +38781,8 @@ func ScrollBox_SetOnExit(obj uintptr, fn interface{}) {
     scrollBox_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func ScrollBox_SetOnGesture(obj uintptr, fn interface{}) {
-    scrollBox_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func ScrollBox_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     scrollBox_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func ScrollBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    scrollBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ScrollBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -44948,10 +38821,6 @@ func ScrollBox_SetOnResize(obj uintptr, fn interface{}) {
     scrollBox_SetOnResize.Call(obj, addEventToMap(fn))
 }
 
-func ScrollBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    scrollBox_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func ScrollBox_SetOnUnDock(obj uintptr, fn interface{}) {
     scrollBox_SetOnUnDock.Call(obj, addEventToMap(fn))
 }
@@ -44981,11 +38850,6 @@ func ScrollBox_SetVertScrollBar(obj uintptr, value uintptr) {
 func ScrollBox_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := scrollBox_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func ScrollBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := scrollBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func ScrollBox_GetMouseInClient(obj uintptr) bool {
@@ -45098,26 +38962,6 @@ func ScrollBox_SetControlStyle(obj uintptr, value TControlStyle) {
    scrollBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ScrollBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := scrollBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ScrollBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := scrollBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ScrollBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := scrollBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ScrollBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := scrollBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ScrollBox_GetFloating(obj uintptr) bool {
     ret, _, _ := scrollBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -45130,15 +38974,6 @@ func ScrollBox_GetParent(obj uintptr) uintptr {
 
 func ScrollBox_SetParent(obj uintptr, value uintptr) {
    scrollBox_SetParent.Call(obj, value)
-}
-
-func ScrollBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := scrollBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ScrollBox_SetAlignWithMargins(obj uintptr, value bool) {
-   scrollBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ScrollBox_GetLeft(obj uintptr) int32 {
@@ -45288,10 +39123,6 @@ func CheckListBox_ClearSelection(obj uintptr)  {
     checkListBox_ClearSelection.Call(obj)
 }
 
-func CheckListBox_CopySelection(obj uintptr, Destination uintptr)  {
-    checkListBox_CopySelection.Call(obj, Destination )
-}
-
 func CheckListBox_DeleteSelected(obj uintptr)  {
     checkListBox_DeleteSelected.Call(obj)
 }
@@ -45361,10 +39192,6 @@ func CheckListBox_Invalidate(obj uintptr)  {
     checkListBox_Invalidate.Call(obj)
 }
 
-func CheckListBox_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    checkListBox_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func CheckListBox_RemoveControl(obj uintptr, AControl uintptr)  {
     checkListBox_RemoveControl.Call(obj, AControl )
 }
@@ -45395,10 +39222,6 @@ func CheckListBox_SetFocus(obj uintptr)  {
 
 func CheckListBox_Update(obj uintptr)  {
     checkListBox_Update.Call(obj)
-}
-
-func CheckListBox_UpdateControlState(obj uintptr)  {
-    checkListBox_UpdateControlState.Call(obj)
 }
 
 func CheckListBox_BringToFront(obj uintptr)  {
@@ -45493,10 +39316,6 @@ func CheckListBox_Assign(obj uintptr, Source uintptr)  {
     checkListBox_Assign.Call(obj, Source )
 }
 
-func CheckListBox_DisposeOf(obj uintptr)  {
-    checkListBox_DisposeOf.Call(obj)
-}
-
 func CheckListBox_ClassType(obj uintptr) TClass {
     ret, _, _ := checkListBox_ClassType.Call(obj)
     return TClass(ret)
@@ -45563,51 +39382,6 @@ func CheckListBox_SetAnchors(obj uintptr, value TAnchors) {
    checkListBox_SetAnchors.Call(obj, uintptr(value))
 }
 
-func CheckListBox_GetAutoComplete(obj uintptr) bool {
-    ret, _, _ := checkListBox_GetAutoComplete.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckListBox_SetAutoComplete(obj uintptr, value bool) {
-   checkListBox_SetAutoComplete.Call(obj, GoBoolToDBool(value))
-}
-
-func CheckListBox_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := checkListBox_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func CheckListBox_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   checkListBox_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func CheckListBox_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := checkListBox_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func CheckListBox_SetBevelInner(obj uintptr, value TBevelCut) {
-   checkListBox_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func CheckListBox_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := checkListBox_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func CheckListBox_SetBevelOuter(obj uintptr, value TBevelCut) {
-   checkListBox_SetBevelOuter.Call(obj, uintptr(value))
-}
-
-func CheckListBox_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := checkListBox_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func CheckListBox_SetBevelKind(obj uintptr, value TBevelKind) {
-   checkListBox_SetBevelKind.Call(obj, uintptr(value))
-}
-
 func CheckListBox_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := checkListBox_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -45653,15 +39427,6 @@ func CheckListBox_SetConstraints(obj uintptr, value uintptr) {
    checkListBox_SetConstraints.Call(obj, value)
 }
 
-func CheckListBox_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := checkListBox_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckListBox_SetCtl3D(obj uintptr, value bool) {
-   checkListBox_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func CheckListBox_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := checkListBox_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -45678,15 +39443,6 @@ func CheckListBox_GetDragCursor(obj uintptr) TCursor {
 
 func CheckListBox_SetDragCursor(obj uintptr, value TCursor) {
    checkListBox_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func CheckListBox_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := checkListBox_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func CheckListBox_SetDragKind(obj uintptr, value TDragKind) {
-   checkListBox_SetDragKind.Call(obj, uintptr(value))
 }
 
 func CheckListBox_GetDragMode(obj uintptr) TDragMode {
@@ -45707,15 +39463,6 @@ func CheckListBox_SetEnabled(obj uintptr, value bool) {
    checkListBox_SetEnabled.Call(obj, GoBoolToDBool(value))
 }
 
-func CheckListBox_GetFlat(obj uintptr) bool {
-    ret, _, _ := checkListBox_GetFlat.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckListBox_SetFlat(obj uintptr, value bool) {
-   checkListBox_SetFlat.Call(obj, GoBoolToDBool(value))
-}
-
 func CheckListBox_GetFont(obj uintptr) uintptr {
     ret, _, _ := checkListBox_GetFont.Call(obj)
     return ret
@@ -45723,24 +39470,6 @@ func CheckListBox_GetFont(obj uintptr) uintptr {
 
 func CheckListBox_SetFont(obj uintptr, value uintptr) {
    checkListBox_SetFont.Call(obj, value)
-}
-
-func CheckListBox_GetHeaderColor(obj uintptr) TColor {
-    ret, _, _ := checkListBox_GetHeaderColor.Call(obj)
-    return TColor(ret)
-}
-
-func CheckListBox_SetHeaderColor(obj uintptr, value TColor) {
-   checkListBox_SetHeaderColor.Call(obj, uintptr(value))
-}
-
-func CheckListBox_GetHeaderBackgroundColor(obj uintptr) TColor {
-    ret, _, _ := checkListBox_GetHeaderBackgroundColor.Call(obj)
-    return TColor(ret)
-}
-
-func CheckListBox_SetHeaderBackgroundColor(obj uintptr, value TColor) {
-   checkListBox_SetHeaderBackgroundColor.Call(obj, uintptr(value))
 }
 
 func CheckListBox_GetItemHeight(obj uintptr) int32 {
@@ -45768,15 +39497,6 @@ func CheckListBox_GetParentColor(obj uintptr) bool {
 
 func CheckListBox_SetParentColor(obj uintptr, value bool) {
    checkListBox_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func CheckListBox_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := checkListBox_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckListBox_SetParentCtl3D(obj uintptr, value bool) {
-   checkListBox_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func CheckListBox_GetParentDoubleBuffered(obj uintptr) bool {
@@ -45860,15 +39580,6 @@ func CheckListBox_SetTabStop(obj uintptr, value bool) {
    checkListBox_SetTabStop.Call(obj, GoBoolToDBool(value))
 }
 
-func CheckListBox_GetTabWidth(obj uintptr) int32 {
-    ret, _, _ := checkListBox_GetTabWidth.Call(obj)
-    return int32(ret)
-}
-
-func CheckListBox_SetTabWidth(obj uintptr, value int32) {
-   checkListBox_SetTabWidth.Call(obj, uintptr(value))
-}
-
 func CheckListBox_GetVisible(obj uintptr) bool {
     ret, _, _ := checkListBox_GetVisible.Call(obj)
     return DBoolToGoBool(ret)
@@ -45878,33 +39589,12 @@ func CheckListBox_SetVisible(obj uintptr, value bool) {
    checkListBox_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func CheckListBox_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := checkListBox_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func CheckListBox_SetStyleElements(obj uintptr, value TStyleElements) {
-   checkListBox_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func CheckListBox_SetOnClick(obj uintptr, fn interface{}) {
     checkListBox_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_SetOnContextPopup(obj uintptr, fn interface{}) {
     checkListBox_SetOnContextPopup.Call(obj, addEventToMap(fn))
-}
-
-func CheckListBox_SetOnData(obj uintptr, fn interface{}) {
-    checkListBox_SetOnData.Call(obj, addEventToMap(fn))
-}
-
-func CheckListBox_SetOnDataFind(obj uintptr, fn interface{}) {
-    checkListBox_SetOnDataFind.Call(obj, addEventToMap(fn))
-}
-
-func CheckListBox_SetOnDataObject(obj uintptr, fn interface{}) {
-    checkListBox_SetOnDataObject.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_SetOnDblClick(obj uintptr, fn interface{}) {
@@ -45919,10 +39609,6 @@ func CheckListBox_SetOnDragOver(obj uintptr, fn interface{}) {
     checkListBox_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func CheckListBox_SetOnEndDock(obj uintptr, fn interface{}) {
-    checkListBox_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func CheckListBox_SetOnEndDrag(obj uintptr, fn interface{}) {
     checkListBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -45933,10 +39619,6 @@ func CheckListBox_SetOnEnter(obj uintptr, fn interface{}) {
 
 func CheckListBox_SetOnExit(obj uintptr, fn interface{}) {
     checkListBox_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func CheckListBox_SetOnGesture(obj uintptr, fn interface{}) {
-    checkListBox_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -45953,10 +39635,6 @@ func CheckListBox_SetOnKeyUp(obj uintptr, fn interface{}) {
 
 func CheckListBox_SetOnMeasureItem(obj uintptr, fn interface{}) {
     checkListBox_SetOnMeasureItem.Call(obj, addEventToMap(fn))
-}
-
-func CheckListBox_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    checkListBox_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CheckListBox_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -45979,19 +39657,6 @@ func CheckListBox_SetOnMouseUp(obj uintptr, fn interface{}) {
     checkListBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func CheckListBox_SetOnStartDock(obj uintptr, fn interface{}) {
-    checkListBox_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
-func CheckListBox_GetAutoCompleteDelay(obj uintptr) uint32 {
-    ret, _, _ := checkListBox_GetAutoCompleteDelay.Call(obj)
-    return uint32(ret)
-}
-
-func CheckListBox_SetAutoCompleteDelay(obj uintptr, value uint32) {
-   checkListBox_SetAutoCompleteDelay.Call(obj, uintptr(value))
-}
-
 func CheckListBox_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := checkListBox_GetCanvas.Call(obj)
     return ret
@@ -46000,10 +39665,6 @@ func CheckListBox_GetCanvas(obj uintptr) uintptr {
 func CheckListBox_GetCount(obj uintptr) int32 {
     ret, _, _ := checkListBox_GetCount.Call(obj)
     return int32(ret)
-}
-
-func CheckListBox_SetCount(obj uintptr, value int32) {
-   checkListBox_SetCount.Call(obj, uintptr(value))
 }
 
 func CheckListBox_GetMultiSelect(obj uintptr) bool {
@@ -46041,11 +39702,6 @@ func CheckListBox_GetDockSite(obj uintptr) bool {
 
 func CheckListBox_SetDockSite(obj uintptr, value bool) {
    checkListBox_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func CheckListBox_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := checkListBox_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func CheckListBox_GetMouseInClient(obj uintptr) bool {
@@ -46158,26 +39814,6 @@ func CheckListBox_SetControlStyle(obj uintptr, value TControlStyle) {
    checkListBox_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func CheckListBox_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := checkListBox_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func CheckListBox_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := checkListBox_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func CheckListBox_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := checkListBox_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func CheckListBox_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := checkListBox_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func CheckListBox_GetFloating(obj uintptr) bool {
     ret, _, _ := checkListBox_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -46190,15 +39826,6 @@ func CheckListBox_GetParent(obj uintptr) uintptr {
 
 func CheckListBox_SetParent(obj uintptr, value uintptr) {
    checkListBox_SetParent.Call(obj, value)
-}
-
-func CheckListBox_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := checkListBox_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CheckListBox_SetAlignWithMargins(obj uintptr, value bool) {
-   checkListBox_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func CheckListBox_GetLeft(obj uintptr) int32 {
@@ -46489,10 +40116,6 @@ func Gauge_Assign(obj uintptr, Source uintptr)  {
     gauge_Assign.Call(obj, Source )
 }
 
-func Gauge_DisposeOf(obj uintptr)  {
-    gauge_DisposeOf.Call(obj)
-}
-
 func Gauge_ClassType(obj uintptr) TClass {
     ret, _, _ := gauge_ClassType.Call(obj)
     return TClass(ret)
@@ -46612,15 +40235,6 @@ func Gauge_GetFont(obj uintptr) uintptr {
 
 func Gauge_SetFont(obj uintptr, value uintptr) {
    gauge_SetFont.Call(obj, value)
-}
-
-func Gauge_GetKind(obj uintptr) TGaugeKind {
-    ret, _, _ := gauge_GetKind.Call(obj)
-    return TGaugeKind(ret)
-}
-
-func Gauge_SetKind(obj uintptr, value TGaugeKind) {
-   gauge_SetKind.Call(obj, uintptr(value))
 }
 
 func Gauge_GetMinValue(obj uintptr) int32 {
@@ -46789,26 +40403,6 @@ func Gauge_SetControlStyle(obj uintptr, value TControlStyle) {
    gauge_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Gauge_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := gauge_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Gauge_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := gauge_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Gauge_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := gauge_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Gauge_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := gauge_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Gauge_GetFloating(obj uintptr) bool {
     ret, _, _ := gauge_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -46821,28 +40415,6 @@ func Gauge_GetParent(obj uintptr) uintptr {
 
 func Gauge_SetParent(obj uintptr, value uintptr) {
    gauge_SetParent.Call(obj, value)
-}
-
-func Gauge_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := gauge_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Gauge_SetStyleElements(obj uintptr, value TStyleElements) {
-   gauge_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func Gauge_SetOnGesture(obj uintptr, fn interface{}) {
-    gauge_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func Gauge_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := gauge_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Gauge_SetAlignWithMargins(obj uintptr, value bool) {
-   gauge_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Gauge_GetLeft(obj uintptr) int32 {
@@ -47076,10 +40648,6 @@ func ImageButton_GetNamePath(obj uintptr) string {
 
 func ImageButton_Assign(obj uintptr, Source uintptr)  {
     imageButton_Assign.Call(obj, Source )
-}
-
-func ImageButton_DisposeOf(obj uintptr)  {
-    imageButton_DisposeOf.Call(obj)
 }
 
 func ImageButton_ClassType(obj uintptr) TClass {
@@ -47325,14 +40893,6 @@ func ImageButton_SetOnEndDrag(obj uintptr, fn interface{}) {
     imageButton_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
-func ImageButton_SetOnGesture(obj uintptr, fn interface{}) {
-    imageButton_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func ImageButton_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    imageButton_SetOnMouseActivate.Call(obj, addEventToMap(fn))
-}
-
 func ImageButton_SetOnMouseDown(obj uintptr, fn interface{}) {
     imageButton_SetOnMouseDown.Call(obj, addEventToMap(fn))
 }
@@ -47420,26 +40980,6 @@ func ImageButton_SetControlStyle(obj uintptr, value TControlStyle) {
    imageButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ImageButton_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := imageButton_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ImageButton_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := imageButton_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ImageButton_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := imageButton_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ImageButton_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := imageButton_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ImageButton_GetFloating(obj uintptr) bool {
     ret, _, _ := imageButton_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -47452,24 +40992,6 @@ func ImageButton_GetParent(obj uintptr) uintptr {
 
 func ImageButton_SetParent(obj uintptr, value uintptr) {
    imageButton_SetParent.Call(obj, value)
-}
-
-func ImageButton_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := imageButton_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ImageButton_SetStyleElements(obj uintptr, value TStyleElements) {
-   imageButton_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func ImageButton_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := imageButton_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ImageButton_SetAlignWithMargins(obj uintptr, value bool) {
-   imageButton_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ImageButton_GetLeft(obj uintptr) int32 {
@@ -47621,10 +41143,6 @@ func FindDialog_Assign(obj uintptr, Source uintptr)  {
     findDialog_Assign.Call(obj, Source )
 }
 
-func FindDialog_DisposeOf(obj uintptr)  {
-    findDialog_DisposeOf.Call(obj)
-}
-
 func FindDialog_ClassType(obj uintptr) TClass {
     ret, _, _ := findDialog_ClassType.Call(obj)
     return TClass(ret)
@@ -47713,15 +41231,6 @@ func FindDialog_SetOnFind(obj uintptr, fn interface{}) {
 func FindDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := findDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func FindDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := findDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func FindDialog_SetCtl3D(obj uintptr, value bool) {
-   findDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func FindDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -47816,10 +41325,6 @@ func ReplaceDialog_HasParent(obj uintptr) bool {
 
 func ReplaceDialog_Assign(obj uintptr, Source uintptr)  {
     replaceDialog_Assign.Call(obj, Source )
-}
-
-func ReplaceDialog_DisposeOf(obj uintptr)  {
-    replaceDialog_DisposeOf.Call(obj)
 }
 
 func ReplaceDialog_ClassType(obj uintptr) TClass {
@@ -47925,15 +41430,6 @@ func ReplaceDialog_GetHandle(obj uintptr) HWND {
     return HWND(ret)
 }
 
-func ReplaceDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := replaceDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ReplaceDialog_SetCtl3D(obj uintptr, value bool) {
-   replaceDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ReplaceDialog_SetOnClose(obj uintptr, fn interface{}) {
     replaceDialog_SetOnClose.Call(obj, addEventToMap(fn))
 }
@@ -48024,10 +41520,6 @@ func PrinterSetupDialog_Assign(obj uintptr, Source uintptr)  {
     printerSetupDialog_Assign.Call(obj, Source )
 }
 
-func PrinterSetupDialog_DisposeOf(obj uintptr)  {
-    printerSetupDialog_DisposeOf.Call(obj)
-}
-
 func PrinterSetupDialog_ClassType(obj uintptr) TClass {
     ret, _, _ := printerSetupDialog_ClassType.Call(obj)
     return TClass(ret)
@@ -48066,15 +41558,6 @@ func PrinterSetupDialog_ToString(obj uintptr) string {
 func PrinterSetupDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := printerSetupDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func PrinterSetupDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := printerSetupDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func PrinterSetupDialog_SetCtl3D(obj uintptr, value bool) {
-   printerSetupDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func PrinterSetupDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -48143,11 +41626,6 @@ func PageSetupDialog_Free(obj uintptr) {
     pageSetupDialog_Free.Call(obj)
 }
 
-func PageSetupDialog_GetDefaults(obj uintptr) bool {
-    ret, _, _ := pageSetupDialog_GetDefaults.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func PageSetupDialog_Execute(obj uintptr) bool {
     ret, _, _ := pageSetupDialog_Execute.Call(obj)
     return DBoolToGoBool(ret)
@@ -48170,10 +41648,6 @@ func PageSetupDialog_HasParent(obj uintptr) bool {
 
 func PageSetupDialog_Assign(obj uintptr, Source uintptr)  {
     pageSetupDialog_Assign.Call(obj, Source )
-}
-
-func PageSetupDialog_DisposeOf(obj uintptr)  {
-    pageSetupDialog_DisposeOf.Call(obj)
 }
 
 func PageSetupDialog_ClassType(obj uintptr) TClass {
@@ -48209,42 +41683,6 @@ func PageSetupDialog_GetHashCode(obj uintptr) int32 {
 func PageSetupDialog_ToString(obj uintptr) string {
     ret, _, _ := pageSetupDialog_ToString.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func PageSetupDialog_GetMinMarginLeft(obj uintptr) int32 {
-    ret, _, _ := pageSetupDialog_GetMinMarginLeft.Call(obj)
-    return int32(ret)
-}
-
-func PageSetupDialog_SetMinMarginLeft(obj uintptr, value int32) {
-   pageSetupDialog_SetMinMarginLeft.Call(obj, uintptr(value))
-}
-
-func PageSetupDialog_GetMinMarginTop(obj uintptr) int32 {
-    ret, _, _ := pageSetupDialog_GetMinMarginTop.Call(obj)
-    return int32(ret)
-}
-
-func PageSetupDialog_SetMinMarginTop(obj uintptr, value int32) {
-   pageSetupDialog_SetMinMarginTop.Call(obj, uintptr(value))
-}
-
-func PageSetupDialog_GetMinMarginRight(obj uintptr) int32 {
-    ret, _, _ := pageSetupDialog_GetMinMarginRight.Call(obj)
-    return int32(ret)
-}
-
-func PageSetupDialog_SetMinMarginRight(obj uintptr, value int32) {
-   pageSetupDialog_SetMinMarginRight.Call(obj, uintptr(value))
-}
-
-func PageSetupDialog_GetMinMarginBottom(obj uintptr) int32 {
-    ret, _, _ := pageSetupDialog_GetMinMarginBottom.Call(obj)
-    return int32(ret)
-}
-
-func PageSetupDialog_SetMinMarginBottom(obj uintptr, value int32) {
-   pageSetupDialog_SetMinMarginBottom.Call(obj, uintptr(value))
 }
 
 func PageSetupDialog_GetMarginLeft(obj uintptr) int32 {
@@ -48315,22 +41753,9 @@ func PageSetupDialog_GetUnits(obj uintptr) TPageMeasureUnits {
     return TPageMeasureUnits(ret)
 }
 
-func PageSetupDialog_SetUnits(obj uintptr, value TPageMeasureUnits) {
-   pageSetupDialog_SetUnits.Call(obj, uintptr(value))
-}
-
 func PageSetupDialog_GetHandle(obj uintptr) HWND {
     ret, _, _ := pageSetupDialog_GetHandle.Call(obj)
     return HWND(ret)
-}
-
-func PageSetupDialog_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := pageSetupDialog_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func PageSetupDialog_SetCtl3D(obj uintptr, value bool) {
-   pageSetupDialog_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func PageSetupDialog_SetOnClose(obj uintptr, fn interface{}) {
@@ -48411,10 +41836,6 @@ func DragObject_ShowDragImage(obj uintptr)  {
     dragObject_ShowDragImage.Call(obj)
 }
 
-func DragObject_DisposeOf(obj uintptr)  {
-    dragObject_DisposeOf.Call(obj)
-}
-
 func DragObject_ClassType(obj uintptr) TClass {
     ret, _, _ := dragObject_ClassType.Call(obj)
     return TClass(ret)
@@ -48459,24 +41880,6 @@ func DragObject_SetAlwaysShowDragImages(obj uintptr, value bool) {
    dragObject_SetAlwaysShowDragImages.Call(obj, GoBoolToDBool(value))
 }
 
-func DragObject_GetCancelling(obj uintptr) bool {
-    ret, _, _ := dragObject_GetCancelling.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DragObject_SetCancelling(obj uintptr, value bool) {
-   dragObject_SetCancelling.Call(obj, GoBoolToDBool(value))
-}
-
-func DragObject_GetDragHandle(obj uintptr) HWND {
-    ret, _, _ := dragObject_GetDragHandle.Call(obj)
-    return HWND(ret)
-}
-
-func DragObject_SetDragHandle(obj uintptr, value HWND) {
-   dragObject_SetDragHandle.Call(obj, uintptr(value))
-}
-
 func DragObject_GetDragPos(obj uintptr) TPoint {
     var ret TPoint
     dragObject_GetDragPos.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -48511,27 +41914,6 @@ func DragObject_GetDropped(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
-func DragObject_GetMouseDeltaX(obj uintptr) float64 {
-    var ret float64
-    dragObject_GetMouseDeltaX.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func DragObject_GetMouseDeltaY(obj uintptr) float64 {
-    var ret float64
-    dragObject_GetMouseDeltaY.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func DragObject_GetRightClickCancels(obj uintptr) bool {
-    ret, _, _ := dragObject_GetRightClickCancels.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DragObject_SetRightClickCancels(obj uintptr, value bool) {
-   dragObject_SetRightClickCancels.Call(obj, GoBoolToDBool(value))
-}
-
 func DragObject_StaticClassType() TClass {
     r, _, _:= dragObject_StaticClassType.Call()
     return TClass(r)
@@ -48558,10 +41940,6 @@ func DragDockObject_HideDragImage(obj uintptr)  {
 
 func DragDockObject_ShowDragImage(obj uintptr)  {
     dragDockObject_ShowDragImage.Call(obj)
-}
-
-func DragDockObject_DisposeOf(obj uintptr)  {
-    dragDockObject_DisposeOf.Call(obj)
 }
 
 func DragDockObject_ClassType(obj uintptr) TClass {
@@ -48599,15 +41977,6 @@ func DragDockObject_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func DragDockObject_GetBrush(obj uintptr) uintptr {
-    ret, _, _ := dragDockObject_GetBrush.Call(obj)
-    return ret
-}
-
-func DragDockObject_SetBrush(obj uintptr, value uintptr) {
-   dragDockObject_SetBrush.Call(obj, value)
-}
-
 func DragDockObject_GetDockRect(obj uintptr) TRect {
     var ret TRect
     dragDockObject_GetDockRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
@@ -48638,11 +42007,6 @@ func DragDockObject_SetEraseDockRect(obj uintptr, value TRect) {
    dragDockObject_SetEraseDockRect.Call(obj, uintptr(unsafe.Pointer(&value)))
 }
 
-func DragDockObject_GetEraseWhenMoving(obj uintptr) bool {
-    ret, _, _ := dragDockObject_GetEraseWhenMoving.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func DragDockObject_GetFloating(obj uintptr) bool {
     ret, _, _ := dragDockObject_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -48650,11 +42014,6 @@ func DragDockObject_GetFloating(obj uintptr) bool {
 
 func DragDockObject_SetFloating(obj uintptr, value bool) {
    dragDockObject_SetFloating.Call(obj, GoBoolToDBool(value))
-}
-
-func DragDockObject_GetFrameWidth(obj uintptr) int32 {
-    ret, _, _ := dragDockObject_GetFrameWidth.Call(obj)
-    return int32(ret)
 }
 
 func DragDockObject_GetControl(obj uintptr) uintptr {
@@ -48673,24 +42032,6 @@ func DragDockObject_GetAlwaysShowDragImages(obj uintptr) bool {
 
 func DragDockObject_SetAlwaysShowDragImages(obj uintptr, value bool) {
    dragDockObject_SetAlwaysShowDragImages.Call(obj, GoBoolToDBool(value))
-}
-
-func DragDockObject_GetCancelling(obj uintptr) bool {
-    ret, _, _ := dragDockObject_GetCancelling.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DragDockObject_SetCancelling(obj uintptr, value bool) {
-   dragDockObject_SetCancelling.Call(obj, GoBoolToDBool(value))
-}
-
-func DragDockObject_GetDragHandle(obj uintptr) HWND {
-    ret, _, _ := dragDockObject_GetDragHandle.Call(obj)
-    return HWND(ret)
-}
-
-func DragDockObject_SetDragHandle(obj uintptr, value HWND) {
-   dragDockObject_SetDragHandle.Call(obj, uintptr(value))
 }
 
 func DragDockObject_GetDragPos(obj uintptr) TPoint {
@@ -48725,27 +42066,6 @@ func DragDockObject_SetDragTargetPos(obj uintptr, value TPoint) {
 func DragDockObject_GetDropped(obj uintptr) bool {
     ret, _, _ := dragDockObject_GetDropped.Call(obj)
     return DBoolToGoBool(ret)
-}
-
-func DragDockObject_GetMouseDeltaX(obj uintptr) float64 {
-    var ret float64
-    dragDockObject_GetMouseDeltaX.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func DragDockObject_GetMouseDeltaY(obj uintptr) float64 {
-    var ret float64
-    dragDockObject_GetMouseDeltaY.Call(obj, uintptr(unsafe.Pointer(&ret)))
-    return ret
-}
-
-func DragDockObject_GetRightClickCancels(obj uintptr) bool {
-    ret, _, _ := dragDockObject_GetRightClickCancels.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DragDockObject_SetRightClickCancels(obj uintptr, value bool) {
-   dragDockObject_SetRightClickCancels.Call(obj, GoBoolToDBool(value))
 }
 
 func DragDockObject_StaticClassType() TClass {
@@ -48830,10 +42150,6 @@ func StringGrid_Invalidate(obj uintptr)  {
     stringGrid_Invalidate.Call(obj)
 }
 
-func StringGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    stringGrid_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func StringGrid_RemoveControl(obj uintptr, AControl uintptr)  {
     stringGrid_RemoveControl.Call(obj, AControl )
 }
@@ -48864,10 +42180,6 @@ func StringGrid_SetFocus(obj uintptr)  {
 
 func StringGrid_Update(obj uintptr)  {
     stringGrid_Update.Call(obj)
-}
-
-func StringGrid_UpdateControlState(obj uintptr)  {
-    stringGrid_UpdateControlState.Call(obj)
 }
 
 func StringGrid_BringToFront(obj uintptr)  {
@@ -48962,10 +42274,6 @@ func StringGrid_Assign(obj uintptr, Source uintptr)  {
     stringGrid_Assign.Call(obj, Source )
 }
 
-func StringGrid_DisposeOf(obj uintptr)  {
-    stringGrid_DisposeOf.Call(obj)
-}
-
 func StringGrid_ClassType(obj uintptr) TClass {
     ret, _, _ := stringGrid_ClassType.Call(obj)
     return TClass(ret)
@@ -49019,42 +42327,6 @@ func StringGrid_SetAnchors(obj uintptr, value TAnchors) {
    stringGrid_SetAnchors.Call(obj, uintptr(value))
 }
 
-func StringGrid_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := stringGrid_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func StringGrid_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   stringGrid_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func StringGrid_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := stringGrid_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func StringGrid_SetBevelInner(obj uintptr, value TBevelCut) {
-   stringGrid_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func StringGrid_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := stringGrid_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func StringGrid_SetBevelKind(obj uintptr, value TBevelKind) {
-   stringGrid_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func StringGrid_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := stringGrid_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func StringGrid_SetBevelOuter(obj uintptr, value TBevelCut) {
-   stringGrid_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func StringGrid_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := stringGrid_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -49098,15 +42370,6 @@ func StringGrid_GetConstraints(obj uintptr) uintptr {
 
 func StringGrid_SetConstraints(obj uintptr, value uintptr) {
    stringGrid_SetConstraints.Call(obj, value)
-}
-
-func StringGrid_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := stringGrid_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func StringGrid_SetCtl3D(obj uintptr, value bool) {
-   stringGrid_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func StringGrid_GetDefaultColWidth(obj uintptr) int32 {
@@ -49172,15 +42435,6 @@ func StringGrid_SetDragMode(obj uintptr, value TDragMode) {
    stringGrid_SetDragMode.Call(obj, uintptr(value))
 }
 
-func StringGrid_GetDrawingStyle(obj uintptr) TGridDrawingStyle {
-    ret, _, _ := stringGrid_GetDrawingStyle.Call(obj)
-    return TGridDrawingStyle(ret)
-}
-
-func StringGrid_SetDrawingStyle(obj uintptr, value TGridDrawingStyle) {
-   stringGrid_SetDrawingStyle.Call(obj, uintptr(value))
-}
-
 func StringGrid_GetEnabled(obj uintptr) bool {
     ret, _, _ := stringGrid_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -49235,24 +42489,6 @@ func StringGrid_SetFont(obj uintptr, value uintptr) {
    stringGrid_SetFont.Call(obj, value)
 }
 
-func StringGrid_GetGradientEndColor(obj uintptr) TColor {
-    ret, _, _ := stringGrid_GetGradientEndColor.Call(obj)
-    return TColor(ret)
-}
-
-func StringGrid_SetGradientEndColor(obj uintptr, value TColor) {
-   stringGrid_SetGradientEndColor.Call(obj, uintptr(value))
-}
-
-func StringGrid_GetGradientStartColor(obj uintptr) TColor {
-    ret, _, _ := stringGrid_GetGradientStartColor.Call(obj)
-    return TColor(ret)
-}
-
-func StringGrid_SetGradientStartColor(obj uintptr, value TColor) {
-   stringGrid_SetGradientStartColor.Call(obj, uintptr(value))
-}
-
 func StringGrid_GetGridLineWidth(obj uintptr) int32 {
     ret, _, _ := stringGrid_GetGridLineWidth.Call(obj)
     return int32(ret)
@@ -49278,15 +42514,6 @@ func StringGrid_GetParentColor(obj uintptr) bool {
 
 func StringGrid_SetParentColor(obj uintptr, value bool) {
    stringGrid_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func StringGrid_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := stringGrid_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func StringGrid_SetParentCtl3D(obj uintptr, value bool) {
-   stringGrid_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func StringGrid_GetParentDoubleBuffered(obj uintptr) bool {
@@ -49361,15 +42588,6 @@ func StringGrid_SetVisible(obj uintptr, value bool) {
    stringGrid_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func StringGrid_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := stringGrid_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func StringGrid_SetStyleElements(obj uintptr, value TStyleElements) {
-   stringGrid_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func StringGrid_GetVisibleColCount(obj uintptr) int32 {
     ret, _, _ := stringGrid_GetVisibleColCount.Call(obj)
     return int32(ret)
@@ -49424,14 +42642,6 @@ func StringGrid_SetOnExit(obj uintptr, fn interface{}) {
     stringGrid_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func StringGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
-    stringGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
-}
-
-func StringGrid_SetOnGesture(obj uintptr, fn interface{}) {
-    stringGrid_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func StringGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     stringGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -49450,10 +42660,6 @@ func StringGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func StringGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     stringGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func StringGrid_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    stringGrid_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func StringGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -49597,11 +42803,6 @@ func StringGrid_SetDockSite(obj uintptr, value bool) {
    stringGrid_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
-func StringGrid_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := stringGrid_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func StringGrid_GetMouseInClient(obj uintptr) bool {
     ret, _, _ := stringGrid_GetMouseInClient.Call(obj)
     return DBoolToGoBool(ret)
@@ -49712,26 +42913,6 @@ func StringGrid_SetControlStyle(obj uintptr, value TControlStyle) {
    stringGrid_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func StringGrid_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := stringGrid_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func StringGrid_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := stringGrid_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func StringGrid_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := stringGrid_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func StringGrid_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := stringGrid_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func StringGrid_GetFloating(obj uintptr) bool {
     ret, _, _ := stringGrid_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -49744,15 +42925,6 @@ func StringGrid_GetParent(obj uintptr) uintptr {
 
 func StringGrid_SetParent(obj uintptr, value uintptr) {
    stringGrid_SetParent.Call(obj, value)
-}
-
-func StringGrid_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := stringGrid_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func StringGrid_SetAlignWithMargins(obj uintptr, value bool) {
-   stringGrid_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func StringGrid_GetLeft(obj uintptr) int32 {
@@ -49909,15 +43081,6 @@ func StringGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
    stringGrid_SetRowHeights.Call(obj, uintptr(Index), uintptr(value))
 }
 
-func StringGrid_GetTabStops(obj uintptr, Index int32) bool {
-    ret, _, _ := stringGrid_GetTabStops.Call(obj, uintptr(Index))
-    return DBoolToGoBool(ret)
-}
-
-func StringGrid_SetTabStops(obj uintptr, Index int32, value bool) {
-   stringGrid_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
-}
-
 func StringGrid_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := stringGrid_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -50015,10 +43178,6 @@ func DrawGrid_Invalidate(obj uintptr)  {
     drawGrid_Invalidate.Call(obj)
 }
 
-func DrawGrid_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    drawGrid_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func DrawGrid_RemoveControl(obj uintptr, AControl uintptr)  {
     drawGrid_RemoveControl.Call(obj, AControl )
 }
@@ -50049,10 +43208,6 @@ func DrawGrid_SetFocus(obj uintptr)  {
 
 func DrawGrid_Update(obj uintptr)  {
     drawGrid_Update.Call(obj)
-}
-
-func DrawGrid_UpdateControlState(obj uintptr)  {
-    drawGrid_UpdateControlState.Call(obj)
 }
 
 func DrawGrid_BringToFront(obj uintptr)  {
@@ -50147,10 +43302,6 @@ func DrawGrid_Assign(obj uintptr, Source uintptr)  {
     drawGrid_Assign.Call(obj, Source )
 }
 
-func DrawGrid_DisposeOf(obj uintptr)  {
-    drawGrid_DisposeOf.Call(obj)
-}
-
 func DrawGrid_ClassType(obj uintptr) TClass {
     ret, _, _ := drawGrid_ClassType.Call(obj)
     return TClass(ret)
@@ -50204,42 +43355,6 @@ func DrawGrid_SetAnchors(obj uintptr, value TAnchors) {
    drawGrid_SetAnchors.Call(obj, uintptr(value))
 }
 
-func DrawGrid_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := drawGrid_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func DrawGrid_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   drawGrid_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func DrawGrid_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := drawGrid_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func DrawGrid_SetBevelInner(obj uintptr, value TBevelCut) {
-   drawGrid_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func DrawGrid_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := drawGrid_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func DrawGrid_SetBevelKind(obj uintptr, value TBevelKind) {
-   drawGrid_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func DrawGrid_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := drawGrid_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func DrawGrid_SetBevelOuter(obj uintptr, value TBevelCut) {
-   drawGrid_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func DrawGrid_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := drawGrid_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -50283,15 +43398,6 @@ func DrawGrid_GetConstraints(obj uintptr) uintptr {
 
 func DrawGrid_SetConstraints(obj uintptr, value uintptr) {
    drawGrid_SetConstraints.Call(obj, value)
-}
-
-func DrawGrid_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := drawGrid_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DrawGrid_SetCtl3D(obj uintptr, value bool) {
-   drawGrid_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func DrawGrid_GetDefaultColWidth(obj uintptr) int32 {
@@ -50357,15 +43463,6 @@ func DrawGrid_SetDragMode(obj uintptr, value TDragMode) {
    drawGrid_SetDragMode.Call(obj, uintptr(value))
 }
 
-func DrawGrid_GetDrawingStyle(obj uintptr) TGridDrawingStyle {
-    ret, _, _ := drawGrid_GetDrawingStyle.Call(obj)
-    return TGridDrawingStyle(ret)
-}
-
-func DrawGrid_SetDrawingStyle(obj uintptr, value TGridDrawingStyle) {
-   drawGrid_SetDrawingStyle.Call(obj, uintptr(value))
-}
-
 func DrawGrid_GetEnabled(obj uintptr) bool {
     ret, _, _ := drawGrid_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -50420,24 +43517,6 @@ func DrawGrid_SetFont(obj uintptr, value uintptr) {
    drawGrid_SetFont.Call(obj, value)
 }
 
-func DrawGrid_GetGradientEndColor(obj uintptr) TColor {
-    ret, _, _ := drawGrid_GetGradientEndColor.Call(obj)
-    return TColor(ret)
-}
-
-func DrawGrid_SetGradientEndColor(obj uintptr, value TColor) {
-   drawGrid_SetGradientEndColor.Call(obj, uintptr(value))
-}
-
-func DrawGrid_GetGradientStartColor(obj uintptr) TColor {
-    ret, _, _ := drawGrid_GetGradientStartColor.Call(obj)
-    return TColor(ret)
-}
-
-func DrawGrid_SetGradientStartColor(obj uintptr, value TColor) {
-   drawGrid_SetGradientStartColor.Call(obj, uintptr(value))
-}
-
 func DrawGrid_GetGridLineWidth(obj uintptr) int32 {
     ret, _, _ := drawGrid_GetGridLineWidth.Call(obj)
     return int32(ret)
@@ -50463,15 +43542,6 @@ func DrawGrid_GetParentColor(obj uintptr) bool {
 
 func DrawGrid_SetParentColor(obj uintptr, value bool) {
    drawGrid_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func DrawGrid_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := drawGrid_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DrawGrid_SetParentCtl3D(obj uintptr, value bool) {
-   drawGrid_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func DrawGrid_GetParentDoubleBuffered(obj uintptr) bool {
@@ -50546,15 +43616,6 @@ func DrawGrid_SetVisible(obj uintptr, value bool) {
    drawGrid_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func DrawGrid_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := drawGrid_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func DrawGrid_SetStyleElements(obj uintptr, value TStyleElements) {
-   drawGrid_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func DrawGrid_GetVisibleColCount(obj uintptr) int32 {
     ret, _, _ := drawGrid_GetVisibleColCount.Call(obj)
     return int32(ret)
@@ -50609,14 +43670,6 @@ func DrawGrid_SetOnExit(obj uintptr, fn interface{}) {
     drawGrid_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func DrawGrid_SetOnFixedCellClick(obj uintptr, fn interface{}) {
-    drawGrid_SetOnFixedCellClick.Call(obj, addEventToMap(fn))
-}
-
-func DrawGrid_SetOnGesture(obj uintptr, fn interface{}) {
-    drawGrid_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func DrawGrid_SetOnGetEditMask(obj uintptr, fn interface{}) {
     drawGrid_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -50635,10 +43688,6 @@ func DrawGrid_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func DrawGrid_SetOnKeyUp(obj uintptr, fn interface{}) {
     drawGrid_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func DrawGrid_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    drawGrid_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func DrawGrid_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -50782,11 +43831,6 @@ func DrawGrid_SetDockSite(obj uintptr, value bool) {
    drawGrid_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
-func DrawGrid_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := drawGrid_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func DrawGrid_GetMouseInClient(obj uintptr) bool {
     ret, _, _ := drawGrid_GetMouseInClient.Call(obj)
     return DBoolToGoBool(ret)
@@ -50897,26 +43941,6 @@ func DrawGrid_SetControlStyle(obj uintptr, value TControlStyle) {
    drawGrid_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func DrawGrid_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := drawGrid_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func DrawGrid_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := drawGrid_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func DrawGrid_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := drawGrid_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func DrawGrid_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := drawGrid_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func DrawGrid_GetFloating(obj uintptr) bool {
     ret, _, _ := drawGrid_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -50929,15 +43953,6 @@ func DrawGrid_GetParent(obj uintptr) uintptr {
 
 func DrawGrid_SetParent(obj uintptr, value uintptr) {
    drawGrid_SetParent.Call(obj, value)
-}
-
-func DrawGrid_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := drawGrid_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func DrawGrid_SetAlignWithMargins(obj uintptr, value bool) {
-   drawGrid_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func DrawGrid_GetLeft(obj uintptr) int32 {
@@ -51058,15 +44073,6 @@ func DrawGrid_SetRowHeights(obj uintptr, Index int32, value int32) {
    drawGrid_SetRowHeights.Call(obj, uintptr(Index), uintptr(value))
 }
 
-func DrawGrid_GetTabStops(obj uintptr, Index int32) bool {
-    ret, _, _ := drawGrid_GetTabStops.Call(obj, uintptr(Index))
-    return DBoolToGoBool(ret)
-}
-
-func DrawGrid_SetTabStops(obj uintptr, Index int32, value bool) {
-   drawGrid_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
-}
-
 func DrawGrid_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := drawGrid_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -51168,10 +44174,6 @@ func ValueListEditor_Invalidate(obj uintptr)  {
     valueListEditor_Invalidate.Call(obj)
 }
 
-func ValueListEditor_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    valueListEditor_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ValueListEditor_RemoveControl(obj uintptr, AControl uintptr)  {
     valueListEditor_RemoveControl.Call(obj, AControl )
 }
@@ -51202,10 +44204,6 @@ func ValueListEditor_SetFocus(obj uintptr)  {
 
 func ValueListEditor_Update(obj uintptr)  {
     valueListEditor_Update.Call(obj)
-}
-
-func ValueListEditor_UpdateControlState(obj uintptr)  {
-    valueListEditor_UpdateControlState.Call(obj)
 }
 
 func ValueListEditor_BringToFront(obj uintptr)  {
@@ -51294,10 +44292,6 @@ func ValueListEditor_GetNamePath(obj uintptr) string {
 
 func ValueListEditor_Assign(obj uintptr, Source uintptr)  {
     valueListEditor_Assign.Call(obj, Source )
-}
-
-func ValueListEditor_DisposeOf(obj uintptr)  {
-    valueListEditor_DisposeOf.Call(obj)
 }
 
 func ValueListEditor_ClassType(obj uintptr) TClass {
@@ -51413,15 +44407,6 @@ func ValueListEditor_SetConstraints(obj uintptr, value uintptr) {
    valueListEditor_SetConstraints.Call(obj, value)
 }
 
-func ValueListEditor_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := valueListEditor_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ValueListEditor_SetCtl3D(obj uintptr, value bool) {
-   valueListEditor_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ValueListEditor_GetDefaultColWidth(obj uintptr) int32 {
     ret, _, _ := valueListEditor_GetDefaultColWidth.Call(obj)
     return int32(ret)
@@ -51485,15 +44470,6 @@ func ValueListEditor_SetDragMode(obj uintptr, value TDragMode) {
    valueListEditor_SetDragMode.Call(obj, uintptr(value))
 }
 
-func ValueListEditor_GetDrawingStyle(obj uintptr) TGridDrawingStyle {
-    ret, _, _ := valueListEditor_GetDrawingStyle.Call(obj)
-    return TGridDrawingStyle(ret)
-}
-
-func ValueListEditor_SetDrawingStyle(obj uintptr, value TGridDrawingStyle) {
-   valueListEditor_SetDrawingStyle.Call(obj, uintptr(value))
-}
-
 func ValueListEditor_GetEnabled(obj uintptr) bool {
     ret, _, _ := valueListEditor_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -51530,24 +44506,6 @@ func ValueListEditor_SetFont(obj uintptr, value uintptr) {
    valueListEditor_SetFont.Call(obj, value)
 }
 
-func ValueListEditor_GetGradientEndColor(obj uintptr) TColor {
-    ret, _, _ := valueListEditor_GetGradientEndColor.Call(obj)
-    return TColor(ret)
-}
-
-func ValueListEditor_SetGradientEndColor(obj uintptr, value TColor) {
-   valueListEditor_SetGradientEndColor.Call(obj, uintptr(value))
-}
-
-func ValueListEditor_GetGradientStartColor(obj uintptr) TColor {
-    ret, _, _ := valueListEditor_GetGradientStartColor.Call(obj)
-    return TColor(ret)
-}
-
-func ValueListEditor_SetGradientStartColor(obj uintptr, value TColor) {
-   valueListEditor_SetGradientStartColor.Call(obj, uintptr(value))
-}
-
 func ValueListEditor_GetGridLineWidth(obj uintptr) int32 {
     ret, _, _ := valueListEditor_GetGridLineWidth.Call(obj)
     return int32(ret)
@@ -51573,15 +44531,6 @@ func ValueListEditor_GetParentColor(obj uintptr) bool {
 
 func ValueListEditor_SetParentColor(obj uintptr, value bool) {
    valueListEditor_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func ValueListEditor_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := valueListEditor_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ValueListEditor_SetParentCtl3D(obj uintptr, value bool) {
-   valueListEditor_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ValueListEditor_GetParentDoubleBuffered(obj uintptr) bool {
@@ -51665,15 +44614,6 @@ func ValueListEditor_SetVisible(obj uintptr, value bool) {
    valueListEditor_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ValueListEditor_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := valueListEditor_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ValueListEditor_SetStyleElements(obj uintptr, value TStyleElements) {
-   valueListEditor_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func ValueListEditor_SetOnClick(obj uintptr, fn interface{}) {
     valueListEditor_SetOnClick.Call(obj, addEventToMap(fn))
 }
@@ -51714,10 +44654,6 @@ func ValueListEditor_SetOnExit(obj uintptr, fn interface{}) {
     valueListEditor_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func ValueListEditor_SetOnGesture(obj uintptr, fn interface{}) {
-    valueListEditor_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func ValueListEditor_SetOnGetEditMask(obj uintptr, fn interface{}) {
     valueListEditor_SetOnGetEditMask.Call(obj, addEventToMap(fn))
 }
@@ -51736,10 +44672,6 @@ func ValueListEditor_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func ValueListEditor_SetOnKeyUp(obj uintptr, fn interface{}) {
     valueListEditor_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func ValueListEditor_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    valueListEditor_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func ValueListEditor_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -51883,11 +44815,6 @@ func ValueListEditor_SetDockSite(obj uintptr, value bool) {
    valueListEditor_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
-func ValueListEditor_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := valueListEditor_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func ValueListEditor_GetMouseInClient(obj uintptr) bool {
     ret, _, _ := valueListEditor_GetMouseInClient.Call(obj)
     return DBoolToGoBool(ret)
@@ -51998,26 +44925,6 @@ func ValueListEditor_SetControlStyle(obj uintptr, value TControlStyle) {
    valueListEditor_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ValueListEditor_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := valueListEditor_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ValueListEditor_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := valueListEditor_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ValueListEditor_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := valueListEditor_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ValueListEditor_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := valueListEditor_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ValueListEditor_GetFloating(obj uintptr) bool {
     ret, _, _ := valueListEditor_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -52030,15 +44937,6 @@ func ValueListEditor_GetParent(obj uintptr) uintptr {
 
 func ValueListEditor_SetParent(obj uintptr, value uintptr) {
    valueListEditor_SetParent.Call(obj, value)
-}
-
-func ValueListEditor_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := valueListEditor_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ValueListEditor_SetAlignWithMargins(obj uintptr, value bool) {
-   valueListEditor_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ValueListEditor_GetLeft(obj uintptr) int32 {
@@ -52177,15 +45075,6 @@ func ValueListEditor_SetRowHeights(obj uintptr, Index int32, value int32) {
    valueListEditor_SetRowHeights.Call(obj, uintptr(Index), uintptr(value))
 }
 
-func ValueListEditor_GetTabStops(obj uintptr, Index int32) bool {
-    ret, _, _ := valueListEditor_GetTabStops.Call(obj, uintptr(Index))
-    return DBoolToGoBool(ret)
-}
-
-func ValueListEditor_SetTabStops(obj uintptr, Index int32, value bool) {
-   valueListEditor_SetTabStops.Call(obj, uintptr(Index), GoBoolToDBool(value))
-}
-
 func ValueListEditor_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := valueListEditor_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -52267,10 +45156,6 @@ func HeaderControl_Invalidate(obj uintptr)  {
     headerControl_Invalidate.Call(obj)
 }
 
-func HeaderControl_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    headerControl_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func HeaderControl_RemoveControl(obj uintptr, AControl uintptr)  {
     headerControl_RemoveControl.Call(obj, AControl )
 }
@@ -52301,10 +45186,6 @@ func HeaderControl_SetFocus(obj uintptr)  {
 
 func HeaderControl_Update(obj uintptr)  {
     headerControl_Update.Call(obj)
-}
-
-func HeaderControl_UpdateControlState(obj uintptr)  {
-    headerControl_UpdateControlState.Call(obj)
 }
 
 func HeaderControl_BringToFront(obj uintptr)  {
@@ -52399,10 +45280,6 @@ func HeaderControl_Assign(obj uintptr, Source uintptr)  {
     headerControl_Assign.Call(obj, Source )
 }
 
-func HeaderControl_DisposeOf(obj uintptr)  {
-    headerControl_DisposeOf.Call(obj)
-}
-
 func HeaderControl_ClassType(obj uintptr) TClass {
     ret, _, _ := headerControl_ClassType.Call(obj)
     return TClass(ret)
@@ -52454,15 +45331,6 @@ func HeaderControl_GetAnchors(obj uintptr) TAnchors {
 
 func HeaderControl_SetAnchors(obj uintptr, value TAnchors) {
    headerControl_SetAnchors.Call(obj, uintptr(value))
-}
-
-func HeaderControl_GetBiDiMode(obj uintptr) TBiDiMode {
-    ret, _, _ := headerControl_GetBiDiMode.Call(obj)
-    return TBiDiMode(ret)
-}
-
-func HeaderControl_SetBiDiMode(obj uintptr, value TBiDiMode) {
-   headerControl_SetBiDiMode.Call(obj, uintptr(value))
 }
 
 func HeaderControl_GetBorderWidth(obj uintptr) int32 {
@@ -52528,24 +45396,6 @@ func HeaderControl_SetFont(obj uintptr, value uintptr) {
    headerControl_SetFont.Call(obj, value)
 }
 
-func HeaderControl_GetFullDrag(obj uintptr) bool {
-    ret, _, _ := headerControl_GetFullDrag.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderControl_SetFullDrag(obj uintptr, value bool) {
-   headerControl_SetFullDrag.Call(obj, GoBoolToDBool(value))
-}
-
-func HeaderControl_GetHotTrack(obj uintptr) bool {
-    ret, _, _ := headerControl_GetHotTrack.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderControl_SetHotTrack(obj uintptr, value bool) {
-   headerControl_SetHotTrack.Call(obj, GoBoolToDBool(value))
-}
-
 func HeaderControl_GetImages(obj uintptr) uintptr {
     ret, _, _ := headerControl_GetImages.Call(obj)
     return ret
@@ -52580,15 +45430,6 @@ func HeaderControl_GetShowHint(obj uintptr) bool {
 
 func HeaderControl_SetShowHint(obj uintptr, value bool) {
    headerControl_SetShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func HeaderControl_GetStyle(obj uintptr) THeaderStyle {
-    ret, _, _ := headerControl_GetStyle.Call(obj)
-    return THeaderStyle(ret)
-}
-
-func HeaderControl_SetStyle(obj uintptr, value THeaderStyle) {
-   headerControl_SetStyle.Call(obj, uintptr(value))
 }
 
 func HeaderControl_GetParentDoubleBuffered(obj uintptr) bool {
@@ -52636,15 +45477,6 @@ func HeaderControl_SetVisible(obj uintptr, value bool) {
    headerControl_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func HeaderControl_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := headerControl_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func HeaderControl_SetStyleElements(obj uintptr, value TStyleElements) {
-   headerControl_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func HeaderControl_SetOnContextPopup(obj uintptr, fn interface{}) {
     headerControl_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
@@ -52663,14 +45495,6 @@ func HeaderControl_SetOnEndDock(obj uintptr, fn interface{}) {
 
 func HeaderControl_SetOnEndDrag(obj uintptr, fn interface{}) {
     headerControl_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func HeaderControl_SetOnGesture(obj uintptr, fn interface{}) {
-    headerControl_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func HeaderControl_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    headerControl_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func HeaderControl_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -52697,10 +45521,6 @@ func HeaderControl_SetOnResize(obj uintptr, fn interface{}) {
     headerControl_SetOnResize.Call(obj, addEventToMap(fn))
 }
 
-func HeaderControl_SetOnDrawSection(obj uintptr, fn interface{}) {
-    headerControl_SetOnDrawSection.Call(obj, addEventToMap(fn))
-}
-
 func HeaderControl_SetOnSectionClick(obj uintptr, fn interface{}) {
     headerControl_SetOnSectionClick.Call(obj, addEventToMap(fn))
 }
@@ -52721,17 +45541,9 @@ func HeaderControl_SetOnSectionEndDrag(obj uintptr, fn interface{}) {
     headerControl_SetOnSectionEndDrag.Call(obj, addEventToMap(fn))
 }
 
-func HeaderControl_SetOnStartDock(obj uintptr, fn interface{}) {
-    headerControl_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func HeaderControl_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := headerControl_GetCanvas.Call(obj)
     return ret
-}
-
-func HeaderControl_SetOnSectionCheck(obj uintptr, fn interface{}) {
-    headerControl_SetOnSectionCheck.Call(obj, addEventToMap(fn))
 }
 
 func HeaderControl_GetDockClientCount(obj uintptr) int32 {
@@ -52746,11 +45558,6 @@ func HeaderControl_GetDockSite(obj uintptr) bool {
 
 func HeaderControl_SetDockSite(obj uintptr, value bool) {
    headerControl_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func HeaderControl_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := headerControl_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func HeaderControl_GetMouseInClient(obj uintptr) bool {
@@ -52881,26 +45688,6 @@ func HeaderControl_SetControlStyle(obj uintptr, value TControlStyle) {
    headerControl_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func HeaderControl_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := headerControl_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func HeaderControl_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := headerControl_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func HeaderControl_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := headerControl_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func HeaderControl_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := headerControl_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func HeaderControl_GetFloating(obj uintptr) bool {
     ret, _, _ := headerControl_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -52913,15 +45700,6 @@ func HeaderControl_GetParent(obj uintptr) uintptr {
 
 func HeaderControl_SetParent(obj uintptr, value uintptr) {
    headerControl_SetParent.Call(obj, value)
-}
-
-func HeaderControl_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := headerControl_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderControl_SetAlignWithMargins(obj uintptr, value bool) {
-   headerControl_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func HeaderControl_GetLeft(obj uintptr) int32 {
@@ -53064,10 +45842,6 @@ func HeaderSection_GetNamePath(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func HeaderSection_DisposeOf(obj uintptr)  {
-    headerSection_DisposeOf.Call(obj)
-}
-
 func HeaderSection_ClassType(obj uintptr) TClass {
     ret, _, _ := headerSection_ClassType.Call(obj)
     return TClass(ret)
@@ -53122,60 +45896,6 @@ func HeaderSection_SetAlignment(obj uintptr, value TAlignment) {
    headerSection_SetAlignment.Call(obj, uintptr(value))
 }
 
-func HeaderSection_GetAllowClick(obj uintptr) bool {
-    ret, _, _ := headerSection_GetAllowClick.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderSection_SetAllowClick(obj uintptr, value bool) {
-   headerSection_SetAllowClick.Call(obj, GoBoolToDBool(value))
-}
-
-func HeaderSection_GetAutoSize(obj uintptr) bool {
-    ret, _, _ := headerSection_GetAutoSize.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderSection_SetAutoSize(obj uintptr, value bool) {
-   headerSection_SetAutoSize.Call(obj, GoBoolToDBool(value))
-}
-
-func HeaderSection_GetBiDiMode(obj uintptr) TBiDiMode {
-    ret, _, _ := headerSection_GetBiDiMode.Call(obj)
-    return TBiDiMode(ret)
-}
-
-func HeaderSection_SetBiDiMode(obj uintptr, value TBiDiMode) {
-   headerSection_SetBiDiMode.Call(obj, uintptr(value))
-}
-
-func HeaderSection_GetCheckBox(obj uintptr) bool {
-    ret, _, _ := headerSection_GetCheckBox.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderSection_SetCheckBox(obj uintptr, value bool) {
-   headerSection_SetCheckBox.Call(obj, GoBoolToDBool(value))
-}
-
-func HeaderSection_GetChecked(obj uintptr) bool {
-    ret, _, _ := headerSection_GetChecked.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderSection_SetChecked(obj uintptr, value bool) {
-   headerSection_SetChecked.Call(obj, GoBoolToDBool(value))
-}
-
-func HeaderSection_GetFixedWidth(obj uintptr) bool {
-    ret, _, _ := headerSection_GetFixedWidth.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func HeaderSection_SetFixedWidth(obj uintptr, value bool) {
-   headerSection_SetFixedWidth.Call(obj, GoBoolToDBool(value))
-}
-
 func HeaderSection_GetImageIndex(obj uintptr) int32 {
     ret, _, _ := headerSection_GetImageIndex.Call(obj)
     return int32(ret)
@@ -53201,15 +45921,6 @@ func HeaderSection_GetMinWidth(obj uintptr) int32 {
 
 func HeaderSection_SetMinWidth(obj uintptr, value int32) {
    headerSection_SetMinWidth.Call(obj, uintptr(value))
-}
-
-func HeaderSection_GetStyle(obj uintptr) THeaderSectionStyle {
-    ret, _, _ := headerSection_GetStyle.Call(obj)
-    return THeaderSectionStyle(ret)
-}
-
-func HeaderSection_SetStyle(obj uintptr, value THeaderSectionStyle) {
-   headerSection_SetStyle.Call(obj, uintptr(value))
 }
 
 func HeaderSection_GetText(obj uintptr) string {
@@ -53305,10 +46016,6 @@ func HeaderSections_Clear(obj uintptr)  {
     headerSections_Clear.Call(obj)
 }
 
-func HeaderSections_ClearAndResetID(obj uintptr)  {
-    headerSections_ClearAndResetID.Call(obj)
-}
-
 func HeaderSections_Delete(obj uintptr, Index int32)  {
     headerSections_Delete.Call(obj, uintptr(Index) )
 }
@@ -53325,10 +46032,6 @@ func HeaderSections_FindItemID(obj uintptr, ID int32) uintptr {
 func HeaderSections_GetNamePath(obj uintptr) string {
     ret, _, _ := headerSections_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func HeaderSections_DisposeOf(obj uintptr)  {
-    headerSections_DisposeOf.Call(obj)
 }
 
 func HeaderSections_ClassType(obj uintptr) TClass {
@@ -53366,15 +46069,6 @@ func HeaderSections_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func HeaderSections_GetCapacity(obj uintptr) int32 {
-    ret, _, _ := headerSections_GetCapacity.Call(obj)
-    return int32(ret)
-}
-
-func HeaderSections_SetCapacity(obj uintptr, value int32) {
-   headerSections_SetCapacity.Call(obj, uintptr(value))
-}
-
 func HeaderSections_GetCount(obj uintptr) int32 {
     ret, _, _ := headerSections_GetCount.Call(obj)
     return int32(ret)
@@ -53409,10 +46103,6 @@ func LabeledEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, A
     labeledEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
-func LabeledEdit_SetupInternalLabel(obj uintptr)  {
-    labeledEdit_SetupInternalLabel.Call(obj)
-}
-
 func LabeledEdit_Clear(obj uintptr)  {
     labeledEdit_Clear.Call(obj)
 }
@@ -53437,22 +46127,8 @@ func LabeledEdit_Undo(obj uintptr)  {
     labeledEdit_Undo.Call(obj)
 }
 
-func LabeledEdit_ClearUndo(obj uintptr)  {
-    labeledEdit_ClearUndo.Call(obj)
-}
-
 func LabeledEdit_SelectAll(obj uintptr)  {
     labeledEdit_SelectAll.Call(obj)
-}
-
-func LabeledEdit_GetSelTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
-    if Buffer == nil || BufSize == 0 {
-        return 0
-    }
-    strPtr := getBuff(BufSize)
-    ret, _, _ := labeledEdit_GetSelTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
-    getTextBuf(strPtr, Buffer, int(ret))
-    return int32(ret)
 }
 
 func LabeledEdit_CanFocus(obj uintptr) bool {
@@ -53505,10 +46181,6 @@ func LabeledEdit_Invalidate(obj uintptr)  {
     labeledEdit_Invalidate.Call(obj)
 }
 
-func LabeledEdit_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    labeledEdit_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func LabeledEdit_RemoveControl(obj uintptr, AControl uintptr)  {
     labeledEdit_RemoveControl.Call(obj, AControl )
 }
@@ -53535,10 +46207,6 @@ func LabeledEdit_SetFocus(obj uintptr)  {
 
 func LabeledEdit_Update(obj uintptr)  {
     labeledEdit_Update.Call(obj)
-}
-
-func LabeledEdit_UpdateControlState(obj uintptr)  {
-    labeledEdit_UpdateControlState.Call(obj)
 }
 
 func LabeledEdit_BringToFront(obj uintptr)  {
@@ -53633,10 +46301,6 @@ func LabeledEdit_Assign(obj uintptr, Source uintptr)  {
     labeledEdit_Assign.Call(obj, Source )
 }
 
-func LabeledEdit_DisposeOf(obj uintptr)  {
-    labeledEdit_DisposeOf.Call(obj)
-}
-
 func LabeledEdit_ClassType(obj uintptr) TClass {
     ret, _, _ := labeledEdit_ClassType.Call(obj)
     return TClass(ret)
@@ -53708,42 +46372,6 @@ func LabeledEdit_SetAutoSize(obj uintptr, value bool) {
    labeledEdit_SetAutoSize.Call(obj, GoBoolToDBool(value))
 }
 
-func LabeledEdit_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := labeledEdit_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func LabeledEdit_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   labeledEdit_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func LabeledEdit_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := labeledEdit_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func LabeledEdit_SetBevelInner(obj uintptr, value TBevelCut) {
-   labeledEdit_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func LabeledEdit_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := labeledEdit_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func LabeledEdit_SetBevelKind(obj uintptr, value TBevelKind) {
-   labeledEdit_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func LabeledEdit_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := labeledEdit_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func LabeledEdit_SetBevelOuter(obj uintptr, value TBevelCut) {
-   labeledEdit_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func LabeledEdit_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := labeledEdit_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -53789,15 +46417,6 @@ func LabeledEdit_SetConstraints(obj uintptr, value uintptr) {
    labeledEdit_SetConstraints.Call(obj, value)
 }
 
-func LabeledEdit_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := labeledEdit_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LabeledEdit_SetCtl3D(obj uintptr, value bool) {
-   labeledEdit_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func LabeledEdit_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := labeledEdit_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -53814,15 +46433,6 @@ func LabeledEdit_GetDragCursor(obj uintptr) TCursor {
 
 func LabeledEdit_SetDragCursor(obj uintptr, value TCursor) {
    labeledEdit_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func LabeledEdit_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := labeledEdit_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func LabeledEdit_SetDragKind(obj uintptr, value TDragKind) {
-   labeledEdit_SetDragKind.Call(obj, uintptr(value))
 }
 
 func LabeledEdit_GetDragMode(obj uintptr) TDragMode {
@@ -53909,15 +46519,6 @@ func LabeledEdit_GetParentColor(obj uintptr) bool {
 
 func LabeledEdit_SetParentColor(obj uintptr, value bool) {
    labeledEdit_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func LabeledEdit_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := labeledEdit_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LabeledEdit_SetParentCtl3D(obj uintptr, value bool) {
-   labeledEdit_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func LabeledEdit_GetParentDoubleBuffered(obj uintptr) bool {
@@ -54028,25 +46629,12 @@ func LabeledEdit_SetVisible(obj uintptr, value bool) {
    labeledEdit_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func LabeledEdit_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := labeledEdit_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func LabeledEdit_SetStyleElements(obj uintptr, value TStyleElements) {
-   labeledEdit_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func LabeledEdit_SetOnChange(obj uintptr, fn interface{}) {
     labeledEdit_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
 func LabeledEdit_SetOnClick(obj uintptr, fn interface{}) {
     labeledEdit_SetOnClick.Call(obj, addEventToMap(fn))
-}
-
-func LabeledEdit_SetOnContextPopup(obj uintptr, fn interface{}) {
-    labeledEdit_SetOnContextPopup.Call(obj, addEventToMap(fn))
 }
 
 func LabeledEdit_SetOnDblClick(obj uintptr, fn interface{}) {
@@ -54061,10 +46649,6 @@ func LabeledEdit_SetOnDragOver(obj uintptr, fn interface{}) {
     labeledEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func LabeledEdit_SetOnEndDock(obj uintptr, fn interface{}) {
-    labeledEdit_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func LabeledEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
     labeledEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
@@ -54077,10 +46661,6 @@ func LabeledEdit_SetOnExit(obj uintptr, fn interface{}) {
     labeledEdit_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func LabeledEdit_SetOnGesture(obj uintptr, fn interface{}) {
-    labeledEdit_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func LabeledEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
     labeledEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
 }
@@ -54091,10 +46671,6 @@ func LabeledEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
 
 func LabeledEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
     labeledEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
-}
-
-func LabeledEdit_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    labeledEdit_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func LabeledEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -54115,10 +46691,6 @@ func LabeledEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
 
 func LabeledEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
     labeledEdit_SetOnMouseUp.Call(obj, addEventToMap(fn))
-}
-
-func LabeledEdit_SetOnStartDock(obj uintptr, fn interface{}) {
-    labeledEdit_SetOnStartDock.Call(obj, addEventToMap(fn))
 }
 
 func LabeledEdit_GetCanUndo(obj uintptr) bool {
@@ -54174,11 +46746,6 @@ func LabeledEdit_GetDockSite(obj uintptr) bool {
 
 func LabeledEdit_SetDockSite(obj uintptr, value bool) {
    labeledEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
-}
-
-func LabeledEdit_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := labeledEdit_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func LabeledEdit_GetMouseInClient(obj uintptr) bool {
@@ -54300,26 +46867,6 @@ func LabeledEdit_SetControlStyle(obj uintptr, value TControlStyle) {
    labeledEdit_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func LabeledEdit_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := labeledEdit_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func LabeledEdit_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := labeledEdit_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func LabeledEdit_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := labeledEdit_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func LabeledEdit_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := labeledEdit_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func LabeledEdit_GetFloating(obj uintptr) bool {
     ret, _, _ := labeledEdit_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -54332,15 +46879,6 @@ func LabeledEdit_GetParent(obj uintptr) uintptr {
 
 func LabeledEdit_SetParent(obj uintptr, value uintptr) {
    labeledEdit_SetParent.Call(obj, value)
-}
-
-func LabeledEdit_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := labeledEdit_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func LabeledEdit_SetAlignWithMargins(obj uintptr, value bool) {
-   labeledEdit_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func LabeledEdit_GetLeft(obj uintptr) int32 {
@@ -54582,10 +47120,6 @@ func BoundLabel_Assign(obj uintptr, Source uintptr)  {
     boundLabel_Assign.Call(obj, Source )
 }
 
-func BoundLabel_DisposeOf(obj uintptr)  {
-    boundLabel_DisposeOf.Call(obj)
-}
-
 func BoundLabel_ClassType(obj uintptr) TClass {
     ret, _, _ := boundLabel_ClassType.Call(obj)
     return TClass(ret)
@@ -54655,15 +47189,6 @@ func BoundLabel_GetDragCursor(obj uintptr) TCursor {
 
 func BoundLabel_SetDragCursor(obj uintptr, value TCursor) {
    boundLabel_SetDragCursor.Call(obj, uintptr(value))
-}
-
-func BoundLabel_GetDragKind(obj uintptr) TDragKind {
-    ret, _, _ := boundLabel_GetDragKind.Call(obj)
-    return TDragKind(ret)
-}
-
-func BoundLabel_SetDragKind(obj uintptr, value TDragKind) {
-   boundLabel_SetDragKind.Call(obj, uintptr(value))
 }
 
 func BoundLabel_GetDragMode(obj uintptr) TDragMode {
@@ -54757,15 +47282,6 @@ func BoundLabel_GetTop(obj uintptr) int32 {
     return int32(ret)
 }
 
-func BoundLabel_GetTransparent(obj uintptr) bool {
-    ret, _, _ := boundLabel_GetTransparent.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func BoundLabel_SetTransparent(obj uintptr, value bool) {
-   boundLabel_SetTransparent.Call(obj, GoBoolToDBool(value))
-}
-
 func BoundLabel_GetLayout(obj uintptr) TTextLayout {
     ret, _, _ := boundLabel_GetLayout.Call(obj)
     return TTextLayout(ret)
@@ -54797,10 +47313,6 @@ func BoundLabel_SetOnClick(obj uintptr, fn interface{}) {
     boundLabel_SetOnClick.Call(obj, addEventToMap(fn))
 }
 
-func BoundLabel_SetOnContextPopup(obj uintptr, fn interface{}) {
-    boundLabel_SetOnContextPopup.Call(obj, addEventToMap(fn))
-}
-
 func BoundLabel_SetOnDblClick(obj uintptr, fn interface{}) {
     boundLabel_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
@@ -54813,20 +47325,8 @@ func BoundLabel_SetOnDragOver(obj uintptr, fn interface{}) {
     boundLabel_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func BoundLabel_SetOnEndDock(obj uintptr, fn interface{}) {
-    boundLabel_SetOnEndDock.Call(obj, addEventToMap(fn))
-}
-
 func BoundLabel_SetOnEndDrag(obj uintptr, fn interface{}) {
     boundLabel_SetOnEndDrag.Call(obj, addEventToMap(fn))
-}
-
-func BoundLabel_SetOnGesture(obj uintptr, fn interface{}) {
-    boundLabel_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func BoundLabel_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    boundLabel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func BoundLabel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -54841,22 +47341,9 @@ func BoundLabel_SetOnMouseUp(obj uintptr, fn interface{}) {
     boundLabel_SetOnMouseUp.Call(obj, addEventToMap(fn))
 }
 
-func BoundLabel_SetOnStartDock(obj uintptr, fn interface{}) {
-    boundLabel_SetOnStartDock.Call(obj, addEventToMap(fn))
-}
-
 func BoundLabel_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := boundLabel_GetCanvas.Call(obj)
     return ret
-}
-
-func BoundLabel_GetGlowSize(obj uintptr) int32 {
-    ret, _, _ := boundLabel_GetGlowSize.Call(obj)
-    return int32(ret)
-}
-
-func BoundLabel_SetGlowSize(obj uintptr, value int32) {
-   boundLabel_SetGlowSize.Call(obj, uintptr(value))
 }
 
 func BoundLabel_GetEnabled(obj uintptr) bool {
@@ -54962,26 +47449,6 @@ func BoundLabel_SetControlStyle(obj uintptr, value TControlStyle) {
    boundLabel_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func BoundLabel_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := boundLabel_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func BoundLabel_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := boundLabel_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func BoundLabel_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := boundLabel_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func BoundLabel_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := boundLabel_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func BoundLabel_GetFloating(obj uintptr) bool {
     ret, _, _ := boundLabel_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -55003,24 +47470,6 @@ func BoundLabel_GetParent(obj uintptr) uintptr {
 
 func BoundLabel_SetParent(obj uintptr, value uintptr) {
    boundLabel_SetParent.Call(obj, value)
-}
-
-func BoundLabel_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := boundLabel_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func BoundLabel_SetStyleElements(obj uintptr, value TStyleElements) {
-   boundLabel_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func BoundLabel_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := boundLabel_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func BoundLabel_SetAlignWithMargins(obj uintptr, value bool) {
-   boundLabel_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func BoundLabel_GetCursor(obj uintptr) TCursor {
@@ -55167,10 +47616,6 @@ func FlowPanel_Invalidate(obj uintptr)  {
     flowPanel_Invalidate.Call(obj)
 }
 
-func FlowPanel_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    flowPanel_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func FlowPanel_RemoveControl(obj uintptr, AControl uintptr)  {
     flowPanel_RemoveControl.Call(obj, AControl )
 }
@@ -55201,10 +47646,6 @@ func FlowPanel_SetFocus(obj uintptr)  {
 
 func FlowPanel_Update(obj uintptr)  {
     flowPanel_Update.Call(obj)
-}
-
-func FlowPanel_UpdateControlState(obj uintptr)  {
-    flowPanel_UpdateControlState.Call(obj)
 }
 
 func FlowPanel_BringToFront(obj uintptr)  {
@@ -55299,10 +47740,6 @@ func FlowPanel_Assign(obj uintptr, Source uintptr)  {
     flowPanel_Assign.Call(obj, Source )
 }
 
-func FlowPanel_DisposeOf(obj uintptr)  {
-    flowPanel_DisposeOf.Call(obj)
-}
-
 func FlowPanel_ClassType(obj uintptr) TClass {
     ret, _, _ := flowPanel_ClassType.Call(obj)
     return TClass(ret)
@@ -55383,42 +47820,6 @@ func FlowPanel_SetAutoWrap(obj uintptr, value bool) {
    flowPanel_SetAutoWrap.Call(obj, GoBoolToDBool(value))
 }
 
-func FlowPanel_GetBevelEdges(obj uintptr) TBevelEdges {
-    ret, _, _ := flowPanel_GetBevelEdges.Call(obj)
-    return TBevelEdges(ret)
-}
-
-func FlowPanel_SetBevelEdges(obj uintptr, value TBevelEdges) {
-   flowPanel_SetBevelEdges.Call(obj, uintptr(value))
-}
-
-func FlowPanel_GetBevelInner(obj uintptr) TBevelCut {
-    ret, _, _ := flowPanel_GetBevelInner.Call(obj)
-    return TBevelCut(ret)
-}
-
-func FlowPanel_SetBevelInner(obj uintptr, value TBevelCut) {
-   flowPanel_SetBevelInner.Call(obj, uintptr(value))
-}
-
-func FlowPanel_GetBevelKind(obj uintptr) TBevelKind {
-    ret, _, _ := flowPanel_GetBevelKind.Call(obj)
-    return TBevelKind(ret)
-}
-
-func FlowPanel_SetBevelKind(obj uintptr, value TBevelKind) {
-   flowPanel_SetBevelKind.Call(obj, uintptr(value))
-}
-
-func FlowPanel_GetBevelOuter(obj uintptr) TBevelCut {
-    ret, _, _ := flowPanel_GetBevelOuter.Call(obj)
-    return TBevelCut(ret)
-}
-
-func FlowPanel_SetBevelOuter(obj uintptr, value TBevelCut) {
-   flowPanel_SetBevelOuter.Call(obj, uintptr(value))
-}
-
 func FlowPanel_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := flowPanel_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -55471,15 +47872,6 @@ func FlowPanel_GetConstraints(obj uintptr) uintptr {
 
 func FlowPanel_SetConstraints(obj uintptr, value uintptr) {
    flowPanel_SetConstraints.Call(obj, value)
-}
-
-func FlowPanel_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := flowPanel_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func FlowPanel_SetCtl3D(obj uintptr, value bool) {
-   flowPanel_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func FlowPanel_GetUseDockManager(obj uintptr) bool {
@@ -55572,15 +47964,6 @@ func FlowPanel_SetFont(obj uintptr, value uintptr) {
    flowPanel_SetFont.Call(obj, value)
 }
 
-func FlowPanel_GetLocked(obj uintptr) bool {
-    ret, _, _ := flowPanel_GetLocked.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func FlowPanel_SetLocked(obj uintptr, value bool) {
-   flowPanel_SetLocked.Call(obj, GoBoolToDBool(value))
-}
-
 func FlowPanel_GetParentBackground(obj uintptr) bool {
     ret, _, _ := flowPanel_GetParentBackground.Call(obj)
     return DBoolToGoBool(ret)
@@ -55597,15 +47980,6 @@ func FlowPanel_GetParentColor(obj uintptr) bool {
 
 func FlowPanel_SetParentColor(obj uintptr, value bool) {
    flowPanel_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func FlowPanel_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := flowPanel_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func FlowPanel_SetParentCtl3D(obj uintptr, value bool) {
-   flowPanel_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func FlowPanel_GetParentDoubleBuffered(obj uintptr) bool {
@@ -55644,15 +48018,6 @@ func FlowPanel_SetPopupMenu(obj uintptr, value uintptr) {
    flowPanel_SetPopupMenu.Call(obj, value)
 }
 
-func FlowPanel_GetShowCaption(obj uintptr) bool {
-    ret, _, _ := flowPanel_GetShowCaption.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func FlowPanel_SetShowCaption(obj uintptr, value bool) {
-   flowPanel_SetShowCaption.Call(obj, GoBoolToDBool(value))
-}
-
 func FlowPanel_GetShowHint(obj uintptr) bool {
     ret, _, _ := flowPanel_GetShowHint.Call(obj)
     return DBoolToGoBool(ret)
@@ -55687,15 +48052,6 @@ func FlowPanel_GetVisible(obj uintptr) bool {
 
 func FlowPanel_SetVisible(obj uintptr, value bool) {
    flowPanel_SetVisible.Call(obj, GoBoolToDBool(value))
-}
-
-func FlowPanel_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := flowPanel_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func FlowPanel_SetStyleElements(obj uintptr, value TStyleElements) {
-   flowPanel_SetStyleElements.Call(obj, uintptr(value))
 }
 
 func FlowPanel_SetOnAlignPosition(obj uintptr, fn interface{}) {
@@ -55742,16 +48098,8 @@ func FlowPanel_SetOnExit(obj uintptr, fn interface{}) {
     flowPanel_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func FlowPanel_SetOnGesture(obj uintptr, fn interface{}) {
-    flowPanel_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func FlowPanel_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     flowPanel_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func FlowPanel_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    flowPanel_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func FlowPanel_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -55789,11 +48137,6 @@ func FlowPanel_SetOnUnDock(obj uintptr, fn interface{}) {
 func FlowPanel_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := flowPanel_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func FlowPanel_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := flowPanel_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func FlowPanel_GetMouseInClient(obj uintptr) bool {
@@ -55897,26 +48240,6 @@ func FlowPanel_SetControlStyle(obj uintptr, value TControlStyle) {
    flowPanel_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func FlowPanel_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := flowPanel_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func FlowPanel_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := flowPanel_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func FlowPanel_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := flowPanel_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func FlowPanel_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := flowPanel_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func FlowPanel_GetFloating(obj uintptr) bool {
     ret, _, _ := flowPanel_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -55929,15 +48252,6 @@ func FlowPanel_GetParent(obj uintptr) uintptr {
 
 func FlowPanel_SetParent(obj uintptr, value uintptr) {
    flowPanel_SetParent.Call(obj, value)
-}
-
-func FlowPanel_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := flowPanel_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func FlowPanel_SetAlignWithMargins(obj uintptr, value bool) {
-   flowPanel_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func FlowPanel_GetLeft(obj uintptr) int32 {
@@ -56113,16 +48427,8 @@ func CoolBar_HandleAllocated(obj uintptr) bool {
     return DBoolToGoBool(ret)
 }
 
-func CoolBar_InsertControl(obj uintptr, AControl uintptr)  {
-    coolBar_InsertControl.Call(obj, AControl )
-}
-
 func CoolBar_Invalidate(obj uintptr)  {
     coolBar_Invalidate.Call(obj)
-}
-
-func CoolBar_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    coolBar_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
 }
 
 func CoolBar_RemoveControl(obj uintptr, AControl uintptr)  {
@@ -56155,10 +48461,6 @@ func CoolBar_SetFocus(obj uintptr)  {
 
 func CoolBar_Update(obj uintptr)  {
     coolBar_Update.Call(obj)
-}
-
-func CoolBar_UpdateControlState(obj uintptr)  {
-    coolBar_UpdateControlState.Call(obj)
 }
 
 func CoolBar_BringToFront(obj uintptr)  {
@@ -56251,10 +48553,6 @@ func CoolBar_GetNamePath(obj uintptr) string {
 
 func CoolBar_Assign(obj uintptr, Source uintptr)  {
     coolBar_Assign.Call(obj, Source )
-}
-
-func CoolBar_DisposeOf(obj uintptr)  {
-    coolBar_DisposeOf.Call(obj)
 }
 
 func CoolBar_ClassType(obj uintptr) TClass {
@@ -56371,15 +48669,6 @@ func CoolBar_GetConstraints(obj uintptr) uintptr {
 
 func CoolBar_SetConstraints(obj uintptr, value uintptr) {
    coolBar_SetConstraints.Call(obj, value)
-}
-
-func CoolBar_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := coolBar_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CoolBar_SetCtl3D(obj uintptr, value bool) {
-   coolBar_SetCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func CoolBar_GetDockSite(obj uintptr) bool {
@@ -56589,15 +48878,6 @@ func CoolBar_SetVisible(obj uintptr, value bool) {
    coolBar_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func CoolBar_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := coolBar_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func CoolBar_SetStyleElements(obj uintptr, value TStyleElements) {
-   coolBar_SetStyleElements.Call(obj, uintptr(value))
-}
-
 func CoolBar_SetOnChange(obj uintptr, fn interface{}) {
     coolBar_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -56634,16 +48914,8 @@ func CoolBar_SetOnEndDrag(obj uintptr, fn interface{}) {
     coolBar_SetOnEndDrag.Call(obj, addEventToMap(fn))
 }
 
-func CoolBar_SetOnGesture(obj uintptr, fn interface{}) {
-    coolBar_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func CoolBar_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     coolBar_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func CoolBar_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    coolBar_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func CoolBar_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -56681,11 +48953,6 @@ func CoolBar_SetOnUnDock(obj uintptr, fn interface{}) {
 func CoolBar_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := coolBar_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func CoolBar_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := coolBar_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func CoolBar_GetMouseInClient(obj uintptr) bool {
@@ -56825,26 +49092,6 @@ func CoolBar_SetControlStyle(obj uintptr, value TControlStyle) {
    coolBar_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func CoolBar_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := coolBar_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func CoolBar_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := coolBar_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func CoolBar_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := coolBar_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func CoolBar_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := coolBar_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func CoolBar_GetFloating(obj uintptr) bool {
     ret, _, _ := coolBar_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -56857,15 +49104,6 @@ func CoolBar_GetParent(obj uintptr) uintptr {
 
 func CoolBar_SetParent(obj uintptr, value uintptr) {
    coolBar_SetParent.Call(obj, value)
-}
-
-func CoolBar_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := coolBar_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func CoolBar_SetAlignWithMargins(obj uintptr, value bool) {
-   coolBar_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func CoolBar_GetLeft(obj uintptr) int32 {
@@ -57026,10 +49264,6 @@ func CoolBands_Clear(obj uintptr)  {
     coolBands_Clear.Call(obj)
 }
 
-func CoolBands_ClearAndResetID(obj uintptr)  {
-    coolBands_ClearAndResetID.Call(obj)
-}
-
 func CoolBands_Delete(obj uintptr, Index int32)  {
     coolBands_Delete.Call(obj, uintptr(Index) )
 }
@@ -57051,10 +49285,6 @@ func CoolBands_GetNamePath(obj uintptr) string {
 func CoolBands_Insert(obj uintptr, Index int32) uintptr {
     ret, _, _ := coolBands_Insert.Call(obj, uintptr(Index) )
     return ret
-}
-
-func CoolBands_DisposeOf(obj uintptr)  {
-    coolBands_DisposeOf.Call(obj)
 }
 
 func CoolBands_ClassType(obj uintptr) TClass {
@@ -57090,20 +49320,6 @@ func CoolBands_GetHashCode(obj uintptr) int32 {
 func CoolBands_ToString(obj uintptr) string {
     ret, _, _ := coolBands_ToString.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func CoolBands_GetCoolBar(obj uintptr) uintptr {
-    ret, _, _ := coolBands_GetCoolBar.Call(obj)
-    return ret
-}
-
-func CoolBands_GetCapacity(obj uintptr) int32 {
-    ret, _, _ := coolBands_GetCapacity.Call(obj)
-    return int32(ret)
-}
-
-func CoolBands_SetCapacity(obj uintptr, value int32) {
-   coolBands_SetCapacity.Call(obj, uintptr(value))
 }
 
 func CoolBands_GetCount(obj uintptr) int32 {
@@ -57143,10 +49359,6 @@ func CoolBand_Assign(obj uintptr, Source uintptr)  {
 func CoolBand_GetNamePath(obj uintptr) string {
     ret, _, _ := coolBand_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func CoolBand_DisposeOf(obj uintptr)  {
-    coolBand_DisposeOf.Call(obj)
 }
 
 func CoolBand_ClassType(obj uintptr) TClass {
@@ -57398,10 +49610,6 @@ func Collection_Clear(obj uintptr)  {
     collection_Clear.Call(obj)
 }
 
-func Collection_ClearAndResetID(obj uintptr)  {
-    collection_ClearAndResetID.Call(obj)
-}
-
 func Collection_Delete(obj uintptr, Index int32)  {
     collection_Delete.Call(obj, uintptr(Index) )
 }
@@ -57423,10 +49631,6 @@ func Collection_GetNamePath(obj uintptr) string {
 func Collection_Insert(obj uintptr, Index int32) uintptr {
     ret, _, _ := collection_Insert.Call(obj, uintptr(Index) )
     return ret
-}
-
-func Collection_DisposeOf(obj uintptr)  {
-    collection_DisposeOf.Call(obj)
 }
 
 func Collection_ClassType(obj uintptr) TClass {
@@ -57462,15 +49666,6 @@ func Collection_GetHashCode(obj uintptr) int32 {
 func Collection_ToString(obj uintptr) string {
     ret, _, _ := collection_ToString.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func Collection_GetCapacity(obj uintptr) int32 {
-    ret, _, _ := collection_GetCapacity.Call(obj)
-    return int32(ret)
-}
-
-func Collection_SetCapacity(obj uintptr, value int32) {
-   collection_SetCapacity.Call(obj, uintptr(value))
 }
 
 func Collection_GetCount(obj uintptr) int32 {
@@ -57523,18 +49718,6 @@ func Printer_Refresh(obj uintptr)  {
     printer_Refresh.Call(obj)
 }
 
-func Printer_GetPrinter(obj uintptr, ADevice string, ADriver string, APort string, ADeviceMode *uintptr)  {
-    printer_GetPrinter.Call(obj, GoStrToDStr(ADevice) , GoStrToDStr(ADriver) , GoStrToDStr(APort) , uintptr(unsafe.Pointer(ADeviceMode)))
-}
-
-func Printer_SetPrinter(obj uintptr, ADevice string, ADriver string, APort string, ADeviceMode uintptr)  {
-    printer_SetPrinter.Call(obj, GoStrToDStr(ADevice) , GoStrToDStr(ADriver) , GoStrToDStr(APort) , ADeviceMode )
-}
-
-func Printer_DisposeOf(obj uintptr)  {
-    printer_DisposeOf.Call(obj)
-}
-
 func Printer_ClassType(obj uintptr) TClass {
     ret, _, _ := printer_ClassType.Call(obj)
     return TClass(ret)
@@ -57580,11 +49763,6 @@ func Printer_GetCanvas(obj uintptr) uintptr {
     return ret
 }
 
-func Printer_GetCapabilities(obj uintptr) TPrinterCapabilities {
-    ret, _, _ := printer_GetCapabilities.Call(obj)
-    return TPrinterCapabilities(ret)
-}
-
 func Printer_GetCopies(obj uintptr) int32 {
     ret, _, _ := printer_GetCopies.Call(obj)
     return int32(ret)
@@ -57597,11 +49775,6 @@ func Printer_SetCopies(obj uintptr, value int32) {
 func Printer_GetFonts(obj uintptr) uintptr {
     ret, _, _ := printer_GetFonts.Call(obj)
     return ret
-}
-
-func Printer_GetHandle(obj uintptr) HDC {
-    ret, _, _ := printer_GetHandle.Call(obj)
-    return HDC(ret)
 }
 
 func Printer_GetOrientation(obj uintptr) TPrinterOrientation {
@@ -57696,10 +49869,6 @@ func TaskDialog_Assign(obj uintptr, Source uintptr)  {
     taskDialog_Assign.Call(obj, Source )
 }
 
-func TaskDialog_DisposeOf(obj uintptr)  {
-    taskDialog_DisposeOf.Call(obj)
-}
-
 func TaskDialog_ClassType(obj uintptr) TClass {
     ret, _, _ := taskDialog_ClassType.Call(obj)
     return TClass(ret)
@@ -57760,24 +49929,6 @@ func TaskDialog_GetCommonButtons(obj uintptr) TTaskDialogCommonButtons {
 
 func TaskDialog_SetCommonButtons(obj uintptr, value TTaskDialogCommonButtons) {
    taskDialog_SetCommonButtons.Call(obj, uintptr(value))
-}
-
-func TaskDialog_GetCustomFooterIcon(obj uintptr) uintptr {
-    ret, _, _ := taskDialog_GetCustomFooterIcon.Call(obj)
-    return ret
-}
-
-func TaskDialog_SetCustomFooterIcon(obj uintptr, value uintptr) {
-   taskDialog_SetCustomFooterIcon.Call(obj, value)
-}
-
-func TaskDialog_GetCustomMainIcon(obj uintptr) uintptr {
-    ret, _, _ := taskDialog_GetCustomMainIcon.Call(obj)
-    return ret
-}
-
-func TaskDialog_SetCustomMainIcon(obj uintptr, value uintptr) {
-   taskDialog_SetCustomMainIcon.Call(obj, value)
 }
 
 func TaskDialog_GetDefaultButton(obj uintptr) TTaskDialogCommonButton {
@@ -57843,15 +49994,6 @@ func TaskDialog_SetMainIcon(obj uintptr, value TTaskDialogIcon) {
    taskDialog_SetMainIcon.Call(obj, uintptr(value))
 }
 
-func TaskDialog_GetProgressBar(obj uintptr) uintptr {
-    ret, _, _ := taskDialog_GetProgressBar.Call(obj)
-    return ret
-}
-
-func TaskDialog_SetProgressBar(obj uintptr, value uintptr) {
-   taskDialog_SetProgressBar.Call(obj, value)
-}
-
 func TaskDialog_GetRadioButtons(obj uintptr) uintptr {
     ret, _, _ := taskDialog_GetRadioButtons.Call(obj)
     return ret
@@ -57892,42 +50034,6 @@ func TaskDialog_SetOnButtonClicked(obj uintptr, fn interface{}) {
     taskDialog_SetOnButtonClicked.Call(obj, addEventToMap(fn))
 }
 
-func TaskDialog_SetOnDialogConstructed(obj uintptr, fn interface{}) {
-    taskDialog_SetOnDialogConstructed.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnDialogCreated(obj uintptr, fn interface{}) {
-    taskDialog_SetOnDialogCreated.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnDialogDestroyed(obj uintptr, fn interface{}) {
-    taskDialog_SetOnDialogDestroyed.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnExpanded(obj uintptr, fn interface{}) {
-    taskDialog_SetOnExpanded.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnHyperlinkClicked(obj uintptr, fn interface{}) {
-    taskDialog_SetOnHyperlinkClicked.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnNavigated(obj uintptr, fn interface{}) {
-    taskDialog_SetOnNavigated.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnRadioButtonClicked(obj uintptr, fn interface{}) {
-    taskDialog_SetOnRadioButtonClicked.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnTimer(obj uintptr, fn interface{}) {
-    taskDialog_SetOnTimer.Call(obj, addEventToMap(fn))
-}
-
-func TaskDialog_SetOnVerificationClicked(obj uintptr, fn interface{}) {
-    taskDialog_SetOnVerificationClicked.Call(obj, addEventToMap(fn))
-}
-
 func TaskDialog_GetButton(obj uintptr) uintptr {
     ret, _, _ := taskDialog_GetButton.Call(obj)
     return ret
@@ -57935,16 +50041,6 @@ func TaskDialog_GetButton(obj uintptr) uintptr {
 
 func TaskDialog_SetButton(obj uintptr, value uintptr) {
    taskDialog_SetButton.Call(obj, value)
-}
-
-func TaskDialog_GetExpanded(obj uintptr) bool {
-    ret, _, _ := taskDialog_GetExpanded.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TaskDialog_GetHandle(obj uintptr) HWND {
-    ret, _, _ := taskDialog_GetHandle.Call(obj)
-    return HWND(ret)
 }
 
 func TaskDialog_GetModalResult(obj uintptr) TModalResult {
@@ -57959,11 +50055,6 @@ func TaskDialog_SetModalResult(obj uintptr, value TModalResult) {
 func TaskDialog_GetRadioButton(obj uintptr) uintptr {
     ret, _, _ := taskDialog_GetRadioButton.Call(obj)
     return ret
-}
-
-func TaskDialog_GetURL(obj uintptr) string {
-    ret, _, _ := taskDialog_GetURL.Call(obj)
-    return DStrToGoStr(ret)
 }
 
 func TaskDialog_GetComponentCount(obj uintptr) int32 {
@@ -58029,8 +50120,8 @@ func TaskDialogButtons_Add(obj uintptr) uintptr {
     return ret
 }
 
-func TaskDialogButtons_Buttons(obj uintptr) uintptr {
-    ret, _, _ := taskDialogButtons_Buttons.Call(obj)
+func TaskDialogButtons_FindButton(obj uintptr, AModalResult TModalResult) uintptr {
+    ret, _, _ := taskDialogButtons_FindButton.Call(obj, uintptr(AModalResult) )
     return ret
 }
 
@@ -58049,10 +50140,6 @@ func TaskDialogButtons_BeginUpdate(obj uintptr)  {
 
 func TaskDialogButtons_Clear(obj uintptr)  {
     taskDialogButtons_Clear.Call(obj)
-}
-
-func TaskDialogButtons_ClearAndResetID(obj uintptr)  {
-    taskDialogButtons_ClearAndResetID.Call(obj)
 }
 
 func TaskDialogButtons_Delete(obj uintptr, Index int32)  {
@@ -58076,10 +50163,6 @@ func TaskDialogButtons_GetNamePath(obj uintptr) string {
 func TaskDialogButtons_Insert(obj uintptr, Index int32) uintptr {
     ret, _, _ := taskDialogButtons_Insert.Call(obj, uintptr(Index) )
     return ret
-}
-
-func TaskDialogButtons_DisposeOf(obj uintptr)  {
-    taskDialogButtons_DisposeOf.Call(obj)
 }
 
 func TaskDialogButtons_ClassType(obj uintptr) TClass {
@@ -58126,15 +50209,6 @@ func TaskDialogButtons_SetDefaultButton(obj uintptr, value uintptr) {
    taskDialogButtons_SetDefaultButton.Call(obj, value)
 }
 
-func TaskDialogButtons_GetCapacity(obj uintptr) int32 {
-    ret, _, _ := taskDialogButtons_GetCapacity.Call(obj)
-    return int32(ret)
-}
-
-func TaskDialogButtons_SetCapacity(obj uintptr, value int32) {
-   taskDialogButtons_SetCapacity.Call(obj, uintptr(value))
-}
-
 func TaskDialogButtons_GetCount(obj uintptr) int32 {
     ret, _, _ := taskDialogButtons_GetCount.Call(obj)
     return int32(ret)
@@ -58154,106 +50228,6 @@ func TaskDialogButtons_StaticClassType() TClass {
     return TClass(r)
 }
 
-//--------------------------- TTaskDialogProgressBar ---------------------------
-
-func TaskDialogProgressBar_Create() uintptr {
-    ret, _, _ := taskDialogProgressBar_Create.Call()
-    return ret
-}
-
-func TaskDialogProgressBar_Free(obj uintptr) {
-    taskDialogProgressBar_Free.Call(obj)
-}
-
-func TaskDialogProgressBar_Assign(obj uintptr, Source uintptr)  {
-    taskDialogProgressBar_Assign.Call(obj, Source )
-}
-
-func TaskDialogProgressBar_GetNamePath(obj uintptr) string {
-    ret, _, _ := taskDialogProgressBar_GetNamePath.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func TaskDialogProgressBar_DisposeOf(obj uintptr)  {
-    taskDialogProgressBar_DisposeOf.Call(obj)
-}
-
-func TaskDialogProgressBar_ClassType(obj uintptr) TClass {
-    ret, _, _ := taskDialogProgressBar_ClassType.Call(obj)
-    return TClass(ret)
-}
-
-func TaskDialogProgressBar_ClassName(obj uintptr) string {
-    ret, _, _ := taskDialogProgressBar_ClassName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func TaskDialogProgressBar_InstanceSize(obj uintptr) int32 {
-    ret, _, _ := taskDialogProgressBar_InstanceSize.Call(obj)
-    return int32(ret)
-}
-
-func TaskDialogProgressBar_InheritsFrom(obj uintptr, AClass TClass) bool {
-    ret, _, _ := taskDialogProgressBar_InheritsFrom.Call(obj, uintptr(AClass) )
-    return DBoolToGoBool(ret)
-}
-
-func TaskDialogProgressBar_Equals(obj uintptr, Obj uintptr) bool {
-    ret, _, _ := taskDialogProgressBar_Equals.Call(obj, Obj )
-    return DBoolToGoBool(ret)
-}
-
-func TaskDialogProgressBar_GetHashCode(obj uintptr) int32 {
-    ret, _, _ := taskDialogProgressBar_GetHashCode.Call(obj)
-    return int32(ret)
-}
-
-func TaskDialogProgressBar_ToString(obj uintptr) string {
-    ret, _, _ := taskDialogProgressBar_ToString.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func TaskDialogProgressBar_GetMax(obj uintptr) int32 {
-    ret, _, _ := taskDialogProgressBar_GetMax.Call(obj)
-    return int32(ret)
-}
-
-func TaskDialogProgressBar_SetMax(obj uintptr, value int32) {
-   taskDialogProgressBar_SetMax.Call(obj, uintptr(value))
-}
-
-func TaskDialogProgressBar_GetMin(obj uintptr) int32 {
-    ret, _, _ := taskDialogProgressBar_GetMin.Call(obj)
-    return int32(ret)
-}
-
-func TaskDialogProgressBar_SetMin(obj uintptr, value int32) {
-   taskDialogProgressBar_SetMin.Call(obj, uintptr(value))
-}
-
-func TaskDialogProgressBar_GetPosition(obj uintptr) int32 {
-    ret, _, _ := taskDialogProgressBar_GetPosition.Call(obj)
-    return int32(ret)
-}
-
-func TaskDialogProgressBar_SetPosition(obj uintptr, value int32) {
-   taskDialogProgressBar_SetPosition.Call(obj, uintptr(value))
-}
-
-func TaskDialogProgressBar_GetState(obj uintptr) TProgressBarState {
-    ret, _, _ := taskDialogProgressBar_GetState.Call(obj)
-    return TProgressBarState(ret)
-}
-
-func TaskDialogProgressBar_SetState(obj uintptr, value TProgressBarState) {
-   taskDialogProgressBar_SetState.Call(obj, uintptr(value))
-}
-
-func TaskDialogProgressBar_StaticClassType() TClass {
-    r, _, _:= taskDialogProgressBar_StaticClassType.Call()
-    return TClass(r)
-}
-
 //--------------------------- TTaskDialogButtonItem ---------------------------
 
 func TaskDialogButtonItem_Create() uintptr {
@@ -58265,10 +50239,6 @@ func TaskDialogButtonItem_Free(obj uintptr) {
     taskDialogButtonItem_Free.Call(obj)
 }
 
-func TaskDialogButtonItem_Click(obj uintptr)  {
-    taskDialogButtonItem_Click.Call(obj)
-}
-
 func TaskDialogButtonItem_GetNamePath(obj uintptr) string {
     ret, _, _ := taskDialogButtonItem_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
@@ -58276,10 +50246,6 @@ func TaskDialogButtonItem_GetNamePath(obj uintptr) string {
 
 func TaskDialogButtonItem_Assign(obj uintptr, Source uintptr)  {
     taskDialogButtonItem_Assign.Call(obj, Source )
-}
-
-func TaskDialogButtonItem_DisposeOf(obj uintptr)  {
-    taskDialogButtonItem_DisposeOf.Call(obj)
 }
 
 func TaskDialogButtonItem_ClassType(obj uintptr) TClass {
@@ -58317,24 +50283,6 @@ func TaskDialogButtonItem_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func TaskDialogButtonItem_GetCommandLinkHint(obj uintptr) string {
-    ret, _, _ := taskDialogButtonItem_GetCommandLinkHint.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func TaskDialogButtonItem_SetCommandLinkHint(obj uintptr, value string) {
-   taskDialogButtonItem_SetCommandLinkHint.Call(obj, GoStrToDStr(value))
-}
-
-func TaskDialogButtonItem_GetElevationRequired(obj uintptr) bool {
-    ret, _, _ := taskDialogButtonItem_GetElevationRequired.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TaskDialogButtonItem_SetElevationRequired(obj uintptr, value bool) {
-   taskDialogButtonItem_SetElevationRequired.Call(obj, GoBoolToDBool(value))
-}
-
 func TaskDialogButtonItem_GetModalResult(obj uintptr) TModalResult {
     ret, _, _ := taskDialogButtonItem_GetModalResult.Call(obj)
     return TModalResult(ret)
@@ -58360,15 +50308,6 @@ func TaskDialogButtonItem_GetDefault(obj uintptr) bool {
 
 func TaskDialogButtonItem_SetDefault(obj uintptr, value bool) {
    taskDialogButtonItem_SetDefault.Call(obj, GoBoolToDBool(value))
-}
-
-func TaskDialogButtonItem_GetEnabled(obj uintptr) bool {
-    ret, _, _ := taskDialogButtonItem_GetEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TaskDialogButtonItem_SetEnabled(obj uintptr, value bool) {
-   taskDialogButtonItem_SetEnabled.Call(obj, GoBoolToDBool(value))
 }
 
 func TaskDialogButtonItem_GetCollection(obj uintptr) uintptr {
@@ -58414,10 +50353,6 @@ func TaskDialogRadioButtonItem_Free(obj uintptr) {
     taskDialogRadioButtonItem_Free.Call(obj)
 }
 
-func TaskDialogRadioButtonItem_Click(obj uintptr)  {
-    taskDialogRadioButtonItem_Click.Call(obj)
-}
-
 func TaskDialogRadioButtonItem_GetNamePath(obj uintptr) string {
     ret, _, _ := taskDialogRadioButtonItem_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
@@ -58425,10 +50360,6 @@ func TaskDialogRadioButtonItem_GetNamePath(obj uintptr) string {
 
 func TaskDialogRadioButtonItem_Assign(obj uintptr, Source uintptr)  {
     taskDialogRadioButtonItem_Assign.Call(obj, Source )
-}
-
-func TaskDialogRadioButtonItem_DisposeOf(obj uintptr)  {
-    taskDialogRadioButtonItem_DisposeOf.Call(obj)
 }
 
 func TaskDialogRadioButtonItem_ClassType(obj uintptr) TClass {
@@ -58493,15 +50424,6 @@ func TaskDialogRadioButtonItem_SetDefault(obj uintptr, value bool) {
    taskDialogRadioButtonItem_SetDefault.Call(obj, GoBoolToDBool(value))
 }
 
-func TaskDialogRadioButtonItem_GetEnabled(obj uintptr) bool {
-    ret, _, _ := taskDialogRadioButtonItem_GetEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TaskDialogRadioButtonItem_SetEnabled(obj uintptr, value bool) {
-   taskDialogRadioButtonItem_SetEnabled.Call(obj, GoBoolToDBool(value))
-}
-
 func TaskDialogRadioButtonItem_GetCollection(obj uintptr) uintptr {
     ret, _, _ := taskDialogRadioButtonItem_GetCollection.Call(obj)
     return ret
@@ -58545,10 +50467,6 @@ func TaskDialogBaseButtonItem_Free(obj uintptr) {
     taskDialogBaseButtonItem_Free.Call(obj)
 }
 
-func TaskDialogBaseButtonItem_Click(obj uintptr)  {
-    taskDialogBaseButtonItem_Click.Call(obj)
-}
-
 func TaskDialogBaseButtonItem_GetNamePath(obj uintptr) string {
     ret, _, _ := taskDialogBaseButtonItem_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
@@ -58556,10 +50474,6 @@ func TaskDialogBaseButtonItem_GetNamePath(obj uintptr) string {
 
 func TaskDialogBaseButtonItem_Assign(obj uintptr, Source uintptr)  {
     taskDialogBaseButtonItem_Assign.Call(obj, Source )
-}
-
-func TaskDialogBaseButtonItem_DisposeOf(obj uintptr)  {
-    taskDialogBaseButtonItem_DisposeOf.Call(obj)
 }
 
 func TaskDialogBaseButtonItem_ClassType(obj uintptr) TClass {
@@ -58624,15 +50538,6 @@ func TaskDialogBaseButtonItem_SetDefault(obj uintptr, value bool) {
    taskDialogBaseButtonItem_SetDefault.Call(obj, GoBoolToDBool(value))
 }
 
-func TaskDialogBaseButtonItem_GetEnabled(obj uintptr) bool {
-    ret, _, _ := taskDialogBaseButtonItem_GetEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TaskDialogBaseButtonItem_SetEnabled(obj uintptr, value bool) {
-   taskDialogBaseButtonItem_SetEnabled.Call(obj, GoBoolToDBool(value))
-}
-
 func TaskDialogBaseButtonItem_GetCollection(obj uintptr) uintptr {
     ret, _, _ := taskDialogBaseButtonItem_GetCollection.Call(obj)
     return ret
@@ -58693,10 +50598,6 @@ func ComboBoxEx_ClearSelection(obj uintptr)  {
     comboBoxEx_ClearSelection.Call(obj)
 }
 
-func ComboBoxEx_CopySelection(obj uintptr, Destination uintptr)  {
-    comboBoxEx_CopySelection.Call(obj, Destination )
-}
-
 func ComboBoxEx_DeleteSelected(obj uintptr)  {
     comboBoxEx_DeleteSelected.Call(obj)
 }
@@ -58750,10 +50651,6 @@ func ComboBoxEx_Invalidate(obj uintptr)  {
     comboBoxEx_Invalidate.Call(obj)
 }
 
-func ComboBoxEx_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    comboBoxEx_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func ComboBoxEx_RemoveControl(obj uintptr, AControl uintptr)  {
     comboBoxEx_RemoveControl.Call(obj, AControl )
 }
@@ -58784,10 +50681,6 @@ func ComboBoxEx_SetFocus(obj uintptr)  {
 
 func ComboBoxEx_Update(obj uintptr)  {
     comboBoxEx_Update.Call(obj)
-}
-
-func ComboBoxEx_UpdateControlState(obj uintptr)  {
-    comboBoxEx_UpdateControlState.Call(obj)
 }
 
 func ComboBoxEx_BringToFront(obj uintptr)  {
@@ -58880,10 +50773,6 @@ func ComboBoxEx_GetNamePath(obj uintptr) string {
 
 func ComboBoxEx_Assign(obj uintptr, Source uintptr)  {
     comboBoxEx_Assign.Call(obj, Source )
-}
-
-func ComboBoxEx_DisposeOf(obj uintptr)  {
-    comboBoxEx_DisposeOf.Call(obj)
 }
 
 func ComboBoxEx_ClassType(obj uintptr) TClass {
@@ -59011,15 +50900,6 @@ func ComboBoxEx_SetConstraints(obj uintptr, value uintptr) {
    comboBoxEx_SetConstraints.Call(obj, value)
 }
 
-func ComboBoxEx_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := comboBoxEx_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ComboBoxEx_SetCtl3D(obj uintptr, value bool) {
-   comboBoxEx_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func ComboBoxEx_GetDoubleBuffered(obj uintptr) bool {
     ret, _, _ := comboBoxEx_GetDoubleBuffered.Call(obj)
     return DBoolToGoBool(ret)
@@ -59099,15 +50979,6 @@ func ComboBoxEx_GetParentColor(obj uintptr) bool {
 
 func ComboBoxEx_SetParentColor(obj uintptr, value bool) {
    comboBoxEx_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func ComboBoxEx_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := comboBoxEx_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ComboBoxEx_SetParentCtl3D(obj uintptr, value bool) {
-   comboBoxEx_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func ComboBoxEx_GetParentDoubleBuffered(obj uintptr) bool {
@@ -59191,19 +51062,6 @@ func ComboBoxEx_SetVisible(obj uintptr, value bool) {
    comboBoxEx_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
-func ComboBoxEx_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := comboBoxEx_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func ComboBoxEx_SetStyleElements(obj uintptr, value TStyleElements) {
-   comboBoxEx_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func ComboBoxEx_SetOnBeginEdit(obj uintptr, fn interface{}) {
-    comboBoxEx_SetOnBeginEdit.Call(obj, addEventToMap(fn))
-}
-
 func ComboBoxEx_SetOnChange(obj uintptr, fn interface{}) {
     comboBoxEx_SetOnChange.Call(obj, addEventToMap(fn))
 }
@@ -59228,14 +51086,6 @@ func ComboBoxEx_SetOnDragOver(obj uintptr, fn interface{}) {
     comboBoxEx_SetOnDragOver.Call(obj, addEventToMap(fn))
 }
 
-func ComboBoxEx_SetOnDropDown(obj uintptr, fn interface{}) {
-    comboBoxEx_SetOnDropDown.Call(obj, addEventToMap(fn))
-}
-
-func ComboBoxEx_SetOnEndEdit(obj uintptr, fn interface{}) {
-    comboBoxEx_SetOnEndEdit.Call(obj, addEventToMap(fn))
-}
-
 func ComboBoxEx_SetOnEndDock(obj uintptr, fn interface{}) {
     comboBoxEx_SetOnEndDock.Call(obj, addEventToMap(fn))
 }
@@ -59250,10 +51100,6 @@ func ComboBoxEx_SetOnEnter(obj uintptr, fn interface{}) {
 
 func ComboBoxEx_SetOnExit(obj uintptr, fn interface{}) {
     comboBoxEx_SetOnExit.Call(obj, addEventToMap(fn))
-}
-
-func ComboBoxEx_SetOnGesture(obj uintptr, fn interface{}) {
-    comboBoxEx_SetOnGesture.Call(obj, addEventToMap(fn))
 }
 
 func ComboBoxEx_SetOnKeyDown(obj uintptr, fn interface{}) {
@@ -59371,11 +51217,6 @@ func ComboBoxEx_SetDockSite(obj uintptr, value bool) {
    comboBoxEx_SetDockSite.Call(obj, GoBoolToDBool(value))
 }
 
-func ComboBoxEx_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := comboBoxEx_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
 func ComboBoxEx_GetMouseInClient(obj uintptr) bool {
     ret, _, _ := comboBoxEx_GetMouseInClient.Call(obj)
     return DBoolToGoBool(ret)
@@ -59477,26 +51318,6 @@ func ComboBoxEx_SetControlStyle(obj uintptr, value TControlStyle) {
    comboBoxEx_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func ComboBoxEx_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := comboBoxEx_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func ComboBoxEx_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := comboBoxEx_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func ComboBoxEx_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := comboBoxEx_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func ComboBoxEx_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := comboBoxEx_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func ComboBoxEx_GetFloating(obj uintptr) bool {
     ret, _, _ := comboBoxEx_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -59509,15 +51330,6 @@ func ComboBoxEx_GetParent(obj uintptr) uintptr {
 
 func ComboBoxEx_SetParent(obj uintptr, value uintptr) {
    comboBoxEx_SetParent.Call(obj, value)
-}
-
-func ComboBoxEx_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := comboBoxEx_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ComboBoxEx_SetAlignWithMargins(obj uintptr, value bool) {
-   comboBoxEx_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func ComboBoxEx_GetLeft(obj uintptr) int32 {
@@ -59674,10 +51486,6 @@ func ComboExItems_Clear(obj uintptr)  {
     comboExItems_Clear.Call(obj)
 }
 
-func ComboExItems_ClearAndResetID(obj uintptr)  {
-    comboExItems_ClearAndResetID.Call(obj)
-}
-
 func ComboExItems_Delete(obj uintptr, Index int32)  {
     comboExItems_Delete.Call(obj, uintptr(Index) )
 }
@@ -59694,10 +51502,6 @@ func ComboExItems_FindItemID(obj uintptr, ID int32) uintptr {
 func ComboExItems_GetNamePath(obj uintptr) string {
     ret, _, _ := comboExItems_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func ComboExItems_DisposeOf(obj uintptr)  {
-    comboExItems_DisposeOf.Call(obj)
 }
 
 func ComboExItems_ClassType(obj uintptr) TClass {
@@ -59735,15 +51539,6 @@ func ComboExItems_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func ComboExItems_GetCapacity(obj uintptr) int32 {
-    ret, _, _ := comboExItems_GetCapacity.Call(obj)
-    return int32(ret)
-}
-
-func ComboExItems_SetCapacity(obj uintptr, value int32) {
-   comboExItems_SetCapacity.Call(obj, uintptr(value))
-}
-
 func ComboExItems_GetCount(obj uintptr) int32 {
     ret, _, _ := comboExItems_GetCount.Call(obj)
     return int32(ret)
@@ -59768,10 +51563,6 @@ func ComboExItem_Assign(obj uintptr, Source uintptr)  {
 func ComboExItem_GetNamePath(obj uintptr) string {
     ret, _, _ := comboExItem_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func ComboExItem_DisposeOf(obj uintptr)  {
-    comboExItem_DisposeOf.Call(obj)
 }
 
 func ComboExItem_ClassType(obj uintptr) TClass {
@@ -59825,15 +51616,6 @@ func ComboExItem_GetOverlayImageIndex(obj uintptr) int32 {
 
 func ComboExItem_SetOverlayImageIndex(obj uintptr, value int32) {
    comboExItem_SetOverlayImageIndex.Call(obj, uintptr(value))
-}
-
-func ComboExItem_GetSelectedImageIndex(obj uintptr) int32 {
-    ret, _, _ := comboExItem_GetSelectedImageIndex.Call(obj)
-    return int32(ret)
-}
-
-func ComboExItem_SetSelectedImageIndex(obj uintptr, value int32) {
-   comboExItem_SetSelectedImageIndex.Call(obj, uintptr(value))
 }
 
 func ComboExItem_GetData(obj uintptr) unsafe.Pointer {
@@ -59906,14 +51688,6 @@ func Frame_Free(obj uintptr) {
     frame_Free.Call(obj)
 }
 
-func Frame_DisableAutoRange(obj uintptr)  {
-    frame_DisableAutoRange.Call(obj)
-}
-
-func Frame_EnableAutoRange(obj uintptr)  {
-    frame_EnableAutoRange.Call(obj)
-}
-
 func Frame_ScrollInView(obj uintptr, AControl uintptr)  {
     frame_ScrollInView.Call(obj, AControl )
 }
@@ -59968,10 +51742,6 @@ func Frame_Invalidate(obj uintptr)  {
     frame_Invalidate.Call(obj)
 }
 
-func Frame_PaintTo(obj uintptr, DC HDC, X int32, Y int32)  {
-    frame_PaintTo.Call(obj, uintptr(DC) , uintptr(X) , uintptr(Y) )
-}
-
 func Frame_RemoveControl(obj uintptr, AControl uintptr)  {
     frame_RemoveControl.Call(obj, AControl )
 }
@@ -60002,10 +51772,6 @@ func Frame_SetFocus(obj uintptr)  {
 
 func Frame_Update(obj uintptr)  {
     frame_Update.Call(obj)
-}
-
-func Frame_UpdateControlState(obj uintptr)  {
-    frame_UpdateControlState.Call(obj)
 }
 
 func Frame_BringToFront(obj uintptr)  {
@@ -60098,10 +51864,6 @@ func Frame_GetNamePath(obj uintptr) string {
 
 func Frame_Assign(obj uintptr, Source uintptr)  {
     frame_Assign.Call(obj, Source )
-}
-
-func Frame_DisposeOf(obj uintptr)  {
-    frame_DisposeOf.Call(obj)
 }
 
 func Frame_ClassType(obj uintptr) TClass {
@@ -60256,15 +52018,6 @@ func Frame_SetColor(obj uintptr, value TColor) {
    frame_SetColor.Call(obj, uintptr(value))
 }
 
-func Frame_GetCtl3D(obj uintptr) bool {
-    ret, _, _ := frame_GetCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Frame_SetCtl3D(obj uintptr, value bool) {
-   frame_SetCtl3D.Call(obj, GoBoolToDBool(value))
-}
-
 func Frame_GetFont(obj uintptr) uintptr {
     ret, _, _ := frame_GetFont.Call(obj)
     return ret
@@ -60274,15 +52027,6 @@ func Frame_SetFont(obj uintptr, value uintptr) {
    frame_SetFont.Call(obj, value)
 }
 
-func Frame_GetParentBackground(obj uintptr) bool {
-    ret, _, _ := frame_GetParentBackground.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Frame_SetParentBackground(obj uintptr, value bool) {
-   frame_SetParentBackground.Call(obj, GoBoolToDBool(value))
-}
-
 func Frame_GetParentColor(obj uintptr) bool {
     ret, _, _ := frame_GetParentColor.Call(obj)
     return DBoolToGoBool(ret)
@@ -60290,15 +52034,6 @@ func Frame_GetParentColor(obj uintptr) bool {
 
 func Frame_SetParentColor(obj uintptr, value bool) {
    frame_SetParentColor.Call(obj, GoBoolToDBool(value))
-}
-
-func Frame_GetParentCtl3D(obj uintptr) bool {
-    ret, _, _ := frame_GetParentCtl3D.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Frame_SetParentCtl3D(obj uintptr, value bool) {
-   frame_SetParentCtl3D.Call(obj, GoBoolToDBool(value))
 }
 
 func Frame_GetParentDoubleBuffered(obj uintptr) bool {
@@ -60417,16 +52152,8 @@ func Frame_SetOnExit(obj uintptr, fn interface{}) {
     frame_SetOnExit.Call(obj, addEventToMap(fn))
 }
 
-func Frame_SetOnGesture(obj uintptr, fn interface{}) {
-    frame_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
 func Frame_SetOnGetSiteInfo(obj uintptr, fn interface{}) {
     frame_SetOnGetSiteInfo.Call(obj, addEventToMap(fn))
-}
-
-func Frame_SetOnMouseActivate(obj uintptr, fn interface{}) {
-    frame_SetOnMouseActivate.Call(obj, addEventToMap(fn))
 }
 
 func Frame_SetOnMouseDown(obj uintptr, fn interface{}) {
@@ -60494,11 +52221,6 @@ func Frame_SetVertScrollBar(obj uintptr, value uintptr) {
 func Frame_GetDockClientCount(obj uintptr) int32 {
     ret, _, _ := frame_GetDockClientCount.Call(obj)
     return int32(ret)
-}
-
-func Frame_GetAlignDisabled(obj uintptr) bool {
-    ret, _, _ := frame_GetAlignDisabled.Call(obj)
-    return DBoolToGoBool(ret)
 }
 
 func Frame_GetMouseInClient(obj uintptr) bool {
@@ -60611,26 +52333,6 @@ func Frame_SetControlStyle(obj uintptr, value TControlStyle) {
    frame_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func Frame_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := frame_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func Frame_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := frame_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func Frame_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := frame_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func Frame_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := frame_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func Frame_GetFloating(obj uintptr) bool {
     ret, _, _ := frame_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -60643,24 +52345,6 @@ func Frame_GetParent(obj uintptr) uintptr {
 
 func Frame_SetParent(obj uintptr, value uintptr) {
    frame_SetParent.Call(obj, value)
-}
-
-func Frame_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := frame_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func Frame_SetStyleElements(obj uintptr, value TStyleElements) {
-   frame_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func Frame_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := frame_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func Frame_SetAlignWithMargins(obj uintptr, value bool) {
-   frame_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func Frame_GetLeft(obj uintptr) int32 {
@@ -60789,10 +52473,6 @@ func ControlScrollBar_Assign(obj uintptr, Source uintptr)  {
     controlScrollBar_Assign.Call(obj, Source )
 }
 
-func ControlScrollBar_ChangeBiDiPosition(obj uintptr)  {
-    controlScrollBar_ChangeBiDiPosition.Call(obj)
-}
-
 func ControlScrollBar_IsScrollBarVisible(obj uintptr) bool {
     ret, _, _ := controlScrollBar_IsScrollBarVisible.Call(obj)
     return DBoolToGoBool(ret)
@@ -60801,10 +52481,6 @@ func ControlScrollBar_IsScrollBarVisible(obj uintptr) bool {
 func ControlScrollBar_GetNamePath(obj uintptr) string {
     ret, _, _ := controlScrollBar_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func ControlScrollBar_DisposeOf(obj uintptr)  {
-    controlScrollBar_DisposeOf.Call(obj)
 }
 
 func ControlScrollBar_ClassType(obj uintptr) TClass {
@@ -60842,32 +52518,9 @@ func ControlScrollBar_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
-func ControlScrollBar_GetKind(obj uintptr) TScrollBarKind {
-    ret, _, _ := controlScrollBar_GetKind.Call(obj)
-    return TScrollBarKind(ret)
-}
-
 func ControlScrollBar_GetScrollPos(obj uintptr) int32 {
     ret, _, _ := controlScrollBar_GetScrollPos.Call(obj)
     return int32(ret)
-}
-
-func ControlScrollBar_GetButtonSize(obj uintptr) int32 {
-    ret, _, _ := controlScrollBar_GetButtonSize.Call(obj)
-    return int32(ret)
-}
-
-func ControlScrollBar_SetButtonSize(obj uintptr, value int32) {
-   controlScrollBar_SetButtonSize.Call(obj, uintptr(value))
-}
-
-func ControlScrollBar_GetColor(obj uintptr) TColor {
-    ret, _, _ := controlScrollBar_GetColor.Call(obj)
-    return TColor(ret)
-}
-
-func ControlScrollBar_SetColor(obj uintptr, value TColor) {
-   controlScrollBar_SetColor.Call(obj, uintptr(value))
 }
 
 func ControlScrollBar_GetIncrement(obj uintptr) TScrollBarInc {
@@ -60877,15 +52530,6 @@ func ControlScrollBar_GetIncrement(obj uintptr) TScrollBarInc {
 
 func ControlScrollBar_SetIncrement(obj uintptr, value TScrollBarInc) {
    controlScrollBar_SetIncrement.Call(obj, uintptr(value))
-}
-
-func ControlScrollBar_GetParentColor(obj uintptr) bool {
-    ret, _, _ := controlScrollBar_GetParentColor.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func ControlScrollBar_SetParentColor(obj uintptr, value bool) {
-   controlScrollBar_SetParentColor.Call(obj, GoBoolToDBool(value))
 }
 
 func ControlScrollBar_GetPosition(obj uintptr) int32 {
@@ -60913,33 +52557,6 @@ func ControlScrollBar_GetSmooth(obj uintptr) bool {
 
 func ControlScrollBar_SetSmooth(obj uintptr, value bool) {
    controlScrollBar_SetSmooth.Call(obj, GoBoolToDBool(value))
-}
-
-func ControlScrollBar_GetSize(obj uintptr) int32 {
-    ret, _, _ := controlScrollBar_GetSize.Call(obj)
-    return int32(ret)
-}
-
-func ControlScrollBar_SetSize(obj uintptr, value int32) {
-   controlScrollBar_SetSize.Call(obj, uintptr(value))
-}
-
-func ControlScrollBar_GetStyle(obj uintptr) TScrollBarStyle {
-    ret, _, _ := controlScrollBar_GetStyle.Call(obj)
-    return TScrollBarStyle(ret)
-}
-
-func ControlScrollBar_SetStyle(obj uintptr, value TScrollBarStyle) {
-   controlScrollBar_SetStyle.Call(obj, uintptr(value))
-}
-
-func ControlScrollBar_GetThumbSize(obj uintptr) int32 {
-    ret, _, _ := controlScrollBar_GetThumbSize.Call(obj)
-    return int32(ret)
-}
-
-func ControlScrollBar_SetThumbSize(obj uintptr, value int32) {
-   controlScrollBar_SetThumbSize.Call(obj, uintptr(value))
 }
 
 func ControlScrollBar_GetTracking(obj uintptr) bool {
@@ -60974,10 +52591,6 @@ func SizeConstraints_Assign(obj uintptr, Source uintptr)  {
 func SizeConstraints_GetNamePath(obj uintptr) string {
     ret, _, _ := sizeConstraints_GetNamePath.Call(obj)
     return DStrToGoStr(ret)
-}
-
-func SizeConstraints_DisposeOf(obj uintptr)  {
-    sizeConstraints_DisposeOf.Call(obj)
 }
 
 func SizeConstraints_ClassType(obj uintptr) TClass {
@@ -61177,10 +52790,6 @@ func XButton_GetNamePath(obj uintptr) string {
 
 func XButton_Assign(obj uintptr, Source uintptr)  {
     xButton_Assign.Call(obj, Source )
-}
-
-func XButton_DisposeOf(obj uintptr)  {
-    xButton_DisposeOf.Call(obj)
 }
 
 func XButton_ClassType(obj uintptr) TClass {
@@ -61520,26 +53129,6 @@ func XButton_SetControlStyle(obj uintptr, value TControlStyle) {
    xButton_SetControlStyle.Call(obj, uintptr(value))
 }
 
-func XButton_GetExplicitLeft(obj uintptr) int32 {
-    ret, _, _ := xButton_GetExplicitLeft.Call(obj)
-    return int32(ret)
-}
-
-func XButton_GetExplicitTop(obj uintptr) int32 {
-    ret, _, _ := xButton_GetExplicitTop.Call(obj)
-    return int32(ret)
-}
-
-func XButton_GetExplicitWidth(obj uintptr) int32 {
-    ret, _, _ := xButton_GetExplicitWidth.Call(obj)
-    return int32(ret)
-}
-
-func XButton_GetExplicitHeight(obj uintptr) int32 {
-    ret, _, _ := xButton_GetExplicitHeight.Call(obj)
-    return int32(ret)
-}
-
 func XButton_GetFloating(obj uintptr) bool {
     ret, _, _ := xButton_GetFloating.Call(obj)
     return DBoolToGoBool(ret)
@@ -61552,28 +53141,6 @@ func XButton_GetParent(obj uintptr) uintptr {
 
 func XButton_SetParent(obj uintptr, value uintptr) {
    xButton_SetParent.Call(obj, value)
-}
-
-func XButton_GetStyleElements(obj uintptr) TStyleElements {
-    ret, _, _ := xButton_GetStyleElements.Call(obj)
-    return TStyleElements(ret)
-}
-
-func XButton_SetStyleElements(obj uintptr, value TStyleElements) {
-   xButton_SetStyleElements.Call(obj, uintptr(value))
-}
-
-func XButton_SetOnGesture(obj uintptr, fn interface{}) {
-    xButton_SetOnGesture.Call(obj, addEventToMap(fn))
-}
-
-func XButton_GetAlignWithMargins(obj uintptr) bool {
-    ret, _, _ := xButton_GetAlignWithMargins.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func XButton_SetAlignWithMargins(obj uintptr, value bool) {
-   xButton_SetAlignWithMargins.Call(obj, GoBoolToDBool(value))
 }
 
 func XButton_GetLeft(obj uintptr) int32 {

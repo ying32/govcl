@@ -929,6 +929,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ToolBar_GetMargins(AObj: TToolBar): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ToolBar_SetMargins(AObj: TToolBar; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ToolBar_GetComponentCount(AObj: TToolBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -987,16 +997,6 @@ end;
 function ToolBar_GetComponents(AObj: TToolBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ToolBar_GetMargins(AObj: TToolBar): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ToolBar_SetMargins(AObj: TToolBar; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ToolBar_StaticClassType: TClass; extdecl;
@@ -1183,6 +1183,8 @@ exports
   ToolBar_SetCursor,
   ToolBar_GetHint,
   ToolBar_SetHint,
+  ToolBar_GetMargins,
+  ToolBar_SetMargins,
   ToolBar_GetComponentCount,
   ToolBar_GetComponentIndex,
   ToolBar_SetComponentIndex,
@@ -1195,7 +1197,5 @@ exports
   ToolBar_GetDockClients,
   ToolBar_GetControls,
   ToolBar_GetComponents,
-  ToolBar_StaticClassType,
-  ToolBar_GetMargins,
-  ToolBar_SetMargins;
+  ToolBar_StaticClassType;
 

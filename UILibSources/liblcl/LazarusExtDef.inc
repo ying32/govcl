@@ -7,6 +7,7 @@ type
   TPngImage = type TPortableNetworkGraphic;
   TMonthCalendar = type TCalendar;
   TJPEGPixelFormat = TPixelFormat;
+  TMargins = TControlBorderSpacing;
   //TPageMeasureUnits = type TMeasureUnits;
 {$ifndef windows}
   PFNLVCOMPARE = Pointer;

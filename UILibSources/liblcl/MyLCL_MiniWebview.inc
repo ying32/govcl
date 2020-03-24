@@ -616,6 +616,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function MiniWebview_GetMargins(AObj: TMiniWebview): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure MiniWebview_SetMargins(AObj: TMiniWebview; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function MiniWebview_GetComponentCount(AObj: TMiniWebview): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -669,16 +679,6 @@ end;
 function MiniWebview_GetComponents(AObj: TMiniWebview; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function MiniWebview_GetMargins(AObj: TMiniWebview): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure MiniWebview_SetMargins(AObj: TMiniWebview; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function MiniWebview_StaticClassType: TClass; extdecl;
@@ -808,6 +808,8 @@ exports
   MiniWebview_SetCursor,
   MiniWebview_GetHint,
   MiniWebview_SetHint,
+  MiniWebview_GetMargins,
+  MiniWebview_SetMargins,
   MiniWebview_GetComponentCount,
   MiniWebview_GetComponentIndex,
   MiniWebview_SetComponentIndex,
@@ -819,7 +821,5 @@ exports
   MiniWebview_GetDockClients,
   MiniWebview_GetControls,
   MiniWebview_GetComponents,
-  MiniWebview_StaticClassType,
-  MiniWebview_GetMargins,
-  MiniWebview_SetMargins;
+  MiniWebview_StaticClassType;
 

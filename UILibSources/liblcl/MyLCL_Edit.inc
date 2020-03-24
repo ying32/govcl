@@ -961,6 +961,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Edit_GetMargins(AObj: TEdit): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Edit_SetMargins(AObj: TEdit; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Edit_GetComponentCount(AObj: TEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1014,16 +1024,6 @@ end;
 function Edit_GetComponents(AObj: TEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Edit_GetMargins(AObj: TEdit): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Edit_SetMargins(AObj: TEdit; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Edit_StaticClassType: TClass; extdecl;
@@ -1216,6 +1216,8 @@ exports
   Edit_SetCursor,
   Edit_GetHint,
   Edit_SetHint,
+  Edit_GetMargins,
+  Edit_SetMargins,
   Edit_GetComponentCount,
   Edit_GetComponentIndex,
   Edit_SetComponentIndex,
@@ -1227,7 +1229,5 @@ exports
   Edit_GetDockClients,
   Edit_GetControls,
   Edit_GetComponents,
-  Edit_StaticClassType,
-  Edit_GetMargins,
-  Edit_SetMargins;
+  Edit_StaticClassType;
 

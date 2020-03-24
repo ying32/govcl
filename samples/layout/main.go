@@ -200,7 +200,6 @@ func main() {
 
 	pnl.SetAlign(types.AlClient)
 
-	pnl.SetAlignWithMargins(true)
 	m := pnl.Margins()
 	m.SetLeft(20)
 	m.SetTop(30)

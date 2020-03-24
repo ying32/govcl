@@ -782,6 +782,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function BitBtn_GetMargins(AObj: TBitBtn): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure BitBtn_SetMargins(AObj: TBitBtn; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function BitBtn_GetComponentCount(AObj: TBitBtn): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -835,16 +845,6 @@ end;
 function BitBtn_GetComponents(AObj: TBitBtn; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function BitBtn_GetMargins(AObj: TBitBtn): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure BitBtn_SetMargins(AObj: TBitBtn; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function BitBtn_StaticClassType: TClass; extdecl;
@@ -1002,6 +1002,8 @@ exports
   BitBtn_SetCursor,
   BitBtn_GetHint,
   BitBtn_SetHint,
+  BitBtn_GetMargins,
+  BitBtn_SetMargins,
   BitBtn_GetComponentCount,
   BitBtn_GetComponentIndex,
   BitBtn_SetComponentIndex,
@@ -1013,7 +1015,5 @@ exports
   BitBtn_GetDockClients,
   BitBtn_GetControls,
   BitBtn_GetComponents,
-  BitBtn_StaticClassType,
-  BitBtn_GetMargins,
-  BitBtn_SetMargins;
+  BitBtn_StaticClassType;
 

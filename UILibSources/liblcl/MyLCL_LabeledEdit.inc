@@ -969,6 +969,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function LabeledEdit_GetMargins(AObj: TLabeledEdit): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure LabeledEdit_SetMargins(AObj: TLabeledEdit; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function LabeledEdit_GetComponentCount(AObj: TLabeledEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1022,16 +1032,6 @@ end;
 function LabeledEdit_GetComponents(AObj: TLabeledEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function LabeledEdit_GetMargins(AObj: TLabeledEdit): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure LabeledEdit_SetMargins(AObj: TLabeledEdit; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function LabeledEdit_StaticClassType: TClass; extdecl;
@@ -1226,6 +1226,8 @@ exports
   LabeledEdit_SetCursor,
   LabeledEdit_GetHint,
   LabeledEdit_SetHint,
+  LabeledEdit_GetMargins,
+  LabeledEdit_SetMargins,
   LabeledEdit_GetComponentCount,
   LabeledEdit_GetComponentIndex,
   LabeledEdit_SetComponentIndex,
@@ -1237,7 +1239,5 @@ exports
   LabeledEdit_GetDockClients,
   LabeledEdit_GetControls,
   LabeledEdit_GetComponents,
-  LabeledEdit_StaticClassType,
-  LabeledEdit_GetMargins,
-  LabeledEdit_SetMargins;
+  LabeledEdit_StaticClassType;
 

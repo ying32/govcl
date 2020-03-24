@@ -898,6 +898,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ListBox_GetMargins(AObj: TListBox): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ListBox_SetMargins(AObj: TListBox; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ListBox_GetComponentCount(AObj: TListBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -961,16 +971,6 @@ end;
 function ListBox_GetComponents(AObj: TListBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ListBox_GetMargins(AObj: TListBox): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ListBox_SetMargins(AObj: TListBox; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ListBox_StaticClassType: TClass; extdecl;
@@ -1150,6 +1150,8 @@ exports
   ListBox_SetCursor,
   ListBox_GetHint,
   ListBox_SetHint,
+  ListBox_GetMargins,
+  ListBox_SetMargins,
   ListBox_GetComponentCount,
   ListBox_GetComponentIndex,
   ListBox_SetComponentIndex,
@@ -1163,7 +1165,5 @@ exports
   ListBox_GetDockClients,
   ListBox_GetControls,
   ListBox_GetComponents,
-  ListBox_StaticClassType,
-  ListBox_GetMargins,
-  ListBox_SetMargins;
+  ListBox_StaticClassType;
 

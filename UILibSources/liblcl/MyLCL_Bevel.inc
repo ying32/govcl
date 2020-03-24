@@ -407,6 +407,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Bevel_GetMargins(AObj: TBevel): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Bevel_SetMargins(AObj: TBevel; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Bevel_GetComponentCount(AObj: TBevel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -450,16 +460,6 @@ end;
 function Bevel_GetComponents(AObj: TBevel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Bevel_GetMargins(AObj: TBevel): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Bevel_SetMargins(AObj: TBevel; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Bevel_StaticClassType: TClass; extdecl;
@@ -548,6 +548,8 @@ exports
   Bevel_SetCursor,
   Bevel_GetHint,
   Bevel_SetHint,
+  Bevel_GetMargins,
+  Bevel_SetMargins,
   Bevel_GetComponentCount,
   Bevel_GetComponentIndex,
   Bevel_SetComponentIndex,
@@ -557,7 +559,5 @@ exports
   Bevel_GetTag,
   Bevel_SetTag,
   Bevel_GetComponents,
-  Bevel_StaticClassType,
-  Bevel_GetMargins,
-  Bevel_SetMargins;
+  Bevel_StaticClassType;
 

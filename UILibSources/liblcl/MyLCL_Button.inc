@@ -772,6 +772,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Button_GetMargins(AObj: TButton): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Button_SetMargins(AObj: TButton; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Button_GetComponentCount(AObj: TButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -825,16 +835,6 @@ end;
 function Button_GetComponents(AObj: TButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Button_GetMargins(AObj: TButton): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Button_SetMargins(AObj: TButton; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Button_StaticClassType: TClass; extdecl;
@@ -990,6 +990,8 @@ exports
   Button_SetCursor,
   Button_GetHint,
   Button_SetHint,
+  Button_GetMargins,
+  Button_SetMargins,
   Button_GetComponentCount,
   Button_GetComponentIndex,
   Button_SetComponentIndex,
@@ -1001,7 +1003,5 @@ exports
   Button_GetDockClients,
   Button_GetControls,
   Button_GetComponents,
-  Button_StaticClassType,
-  Button_GetMargins,
-  Button_SetMargins;
+  Button_StaticClassType;
 

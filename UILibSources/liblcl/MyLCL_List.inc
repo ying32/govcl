@@ -52,11 +52,6 @@ begin
   AObj.Move(CurIndex, NewIndex);
 end;
 
-procedure List_Assign(AObj: TList; ListA: TList; AOperator: TListAssignOp; ListB: TList); extdecl;
-begin
-  AObj.Assign(ListA, AOperator, ListB);
-end;
-
 function List_ClassType(AObj: TList): TClass; extdecl;
 begin
   Result :=  AObj.ClassType;
@@ -142,7 +137,6 @@ exports
   List_IndexOf,
   List_Insert,
   List_Move,
-  List_Assign,
   List_ClassType,
   List_ClassName,
   List_InstanceSize,

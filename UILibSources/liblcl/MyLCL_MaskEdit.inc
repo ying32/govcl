@@ -968,6 +968,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function MaskEdit_GetMargins(AObj: TMaskEdit): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure MaskEdit_SetMargins(AObj: TMaskEdit; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function MaskEdit_GetComponentCount(AObj: TMaskEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1021,16 +1031,6 @@ end;
 function MaskEdit_GetComponents(AObj: TMaskEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function MaskEdit_GetMargins(AObj: TMaskEdit): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure MaskEdit_SetMargins(AObj: TMaskEdit; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function MaskEdit_StaticClassType: TClass; extdecl;
@@ -1224,6 +1224,8 @@ exports
   MaskEdit_SetCursor,
   MaskEdit_GetHint,
   MaskEdit_SetHint,
+  MaskEdit_GetMargins,
+  MaskEdit_SetMargins,
   MaskEdit_GetComponentCount,
   MaskEdit_GetComponentIndex,
   MaskEdit_SetComponentIndex,
@@ -1235,7 +1237,5 @@ exports
   MaskEdit_GetDockClients,
   MaskEdit_GetControls,
   MaskEdit_GetComponents,
-  MaskEdit_StaticClassType,
-  MaskEdit_GetMargins,
-  MaskEdit_SetMargins;
+  MaskEdit_StaticClassType;
 

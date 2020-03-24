@@ -539,6 +539,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function PaintBox_GetMargins(AObj: TPaintBox): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure PaintBox_SetMargins(AObj: TPaintBox; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function PaintBox_GetComponentCount(AObj: TPaintBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -582,16 +592,6 @@ end;
 function PaintBox_GetComponents(AObj: TPaintBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function PaintBox_GetMargins(AObj: TPaintBox): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure PaintBox_SetMargins(AObj: TPaintBox; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function PaintBox_StaticClassType: TClass; extdecl;
@@ -702,6 +702,8 @@ exports
   PaintBox_SetCursor,
   PaintBox_GetHint,
   PaintBox_SetHint,
+  PaintBox_GetMargins,
+  PaintBox_SetMargins,
   PaintBox_GetComponentCount,
   PaintBox_GetComponentIndex,
   PaintBox_SetComponentIndex,
@@ -711,7 +713,5 @@ exports
   PaintBox_GetTag,
   PaintBox_SetTag,
   PaintBox_GetComponents,
-  PaintBox_StaticClassType,
-  PaintBox_GetMargins,
-  PaintBox_SetMargins;
+  PaintBox_StaticClassType;
 

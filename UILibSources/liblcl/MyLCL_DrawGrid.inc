@@ -1058,6 +1058,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function DrawGrid_GetMargins(AObj: TDrawGrid): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure DrawGrid_SetMargins(AObj: TDrawGrid; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function DrawGrid_GetComponentCount(AObj: TDrawGrid): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1131,16 +1141,6 @@ end;
 function DrawGrid_GetComponents(AObj: TDrawGrid; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function DrawGrid_GetMargins(AObj: TDrawGrid): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure DrawGrid_SetMargins(AObj: TDrawGrid; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function DrawGrid_StaticClassType: TClass; extdecl;
@@ -1348,6 +1348,8 @@ exports
   DrawGrid_SetCursor,
   DrawGrid_GetHint,
   DrawGrid_SetHint,
+  DrawGrid_GetMargins,
+  DrawGrid_SetMargins,
   DrawGrid_GetComponentCount,
   DrawGrid_GetComponentIndex,
   DrawGrid_SetComponentIndex,
@@ -1363,7 +1365,5 @@ exports
   DrawGrid_GetDockClients,
   DrawGrid_GetControls,
   DrawGrid_GetComponents,
-  DrawGrid_StaticClassType,
-  DrawGrid_GetMargins,
-  DrawGrid_SetMargins;
+  DrawGrid_StaticClassType;
 

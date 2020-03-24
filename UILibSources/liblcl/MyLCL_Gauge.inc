@@ -517,6 +517,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Gauge_GetMargins(AObj: TGauge): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Gauge_SetMargins(AObj: TGauge; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Gauge_GetComponentCount(AObj: TGauge): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -560,16 +570,6 @@ end;
 function Gauge_GetComponents(AObj: TGauge; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Gauge_GetMargins(AObj: TGauge): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Gauge_SetMargins(AObj: TGauge; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Gauge_StaticClassType: TClass; extdecl;
@@ -680,6 +680,8 @@ exports
   Gauge_SetCursor,
   Gauge_GetHint,
   Gauge_SetHint,
+  Gauge_GetMargins,
+  Gauge_SetMargins,
   Gauge_GetComponentCount,
   Gauge_GetComponentIndex,
   Gauge_SetComponentIndex,
@@ -689,7 +691,5 @@ exports
   Gauge_GetTag,
   Gauge_SetTag,
   Gauge_GetComponents,
-  Gauge_StaticClassType,
-  Gauge_GetMargins,
-  Gauge_SetMargins;
+  Gauge_StaticClassType;
 

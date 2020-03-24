@@ -1047,6 +1047,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Form_GetMargins(AObj: TForm): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Form_SetMargins(AObj: TForm; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Form_GetComponentCount(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1100,16 +1110,6 @@ end;
 function Form_GetComponents(AObj: TForm; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Form_GetMargins(AObj: TForm): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Form_SetMargins(AObj: TForm; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Form_StaticClassType: TClass; extdecl;
@@ -1314,6 +1314,8 @@ exports
   Form_SetCursor,
   Form_GetHint,
   Form_SetHint,
+  Form_GetMargins,
+  Form_SetMargins,
   Form_GetComponentCount,
   Form_GetComponentIndex,
   Form_SetComponentIndex,
@@ -1325,7 +1327,5 @@ exports
   Form_GetDockClients,
   Form_GetControls,
   Form_GetComponents,
-  Form_StaticClassType,
-  Form_GetMargins,
-  Form_SetMargins;
+  Form_StaticClassType;
 

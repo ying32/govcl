@@ -24,7 +24,7 @@ type IObject interface {
 	Free()
 	GetHashCode() int32
 	Equals(IObject) bool
-	DisposeOf()
+	//DisposeOf()
 	ClassType() types.TClass
 	InstanceSize() int32
 	InheritsFrom(types.TClass) bool

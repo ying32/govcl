@@ -934,6 +934,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ComboBoxEx_GetMargins(AObj: TComboBoxEx): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ComboBoxEx_SetMargins(AObj: TComboBoxEx; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ComboBoxEx_GetComponentCount(AObj: TComboBoxEx): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -987,16 +997,6 @@ end;
 function ComboBoxEx_GetComponents(AObj: TComboBoxEx; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ComboBoxEx_GetMargins(AObj: TComboBoxEx): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ComboBoxEx_SetMargins(AObj: TComboBoxEx; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ComboBoxEx_StaticClassType: TClass; extdecl;
@@ -1184,6 +1184,8 @@ exports
   ComboBoxEx_SetCursor,
   ComboBoxEx_GetHint,
   ComboBoxEx_SetHint,
+  ComboBoxEx_GetMargins,
+  ComboBoxEx_SetMargins,
   ComboBoxEx_GetComponentCount,
   ComboBoxEx_GetComponentIndex,
   ComboBoxEx_SetComponentIndex,
@@ -1195,7 +1197,5 @@ exports
   ComboBoxEx_GetDockClients,
   ComboBoxEx_GetControls,
   ComboBoxEx_GetComponents,
-  ComboBoxEx_StaticClassType,
-  ComboBoxEx_GetMargins,
-  ComboBoxEx_SetMargins;
+  ComboBoxEx_StaticClassType;
 

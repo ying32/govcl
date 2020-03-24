@@ -552,6 +552,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function Image_GetMargins(AObj: TImage): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Image_SetMargins(AObj: TImage; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Image_GetComponentCount(AObj: TImage): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -595,16 +605,6 @@ end;
 function Image_GetComponents(AObj: TImage; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function Image_GetMargins(AObj: TImage): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure Image_SetMargins(AObj: TImage; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function Image_StaticClassType: TClass; extdecl;
@@ -718,6 +718,8 @@ exports
   Image_SetCursor,
   Image_GetHint,
   Image_SetHint,
+  Image_GetMargins,
+  Image_SetMargins,
   Image_GetComponentCount,
   Image_GetComponentIndex,
   Image_SetComponentIndex,
@@ -727,7 +729,5 @@ exports
   Image_GetTag,
   Image_SetTag,
   Image_GetComponents,
-  Image_StaticClassType,
-  Image_GetMargins,
-  Image_SetMargins;
+  Image_StaticClassType;
 

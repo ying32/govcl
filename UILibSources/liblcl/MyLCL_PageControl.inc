@@ -840,6 +840,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function PageControl_GetMargins(AObj: TPageControl): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure PageControl_SetMargins(AObj: TPageControl; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function PageControl_GetComponentCount(AObj: TPageControl): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -898,16 +908,6 @@ end;
 function PageControl_GetComponents(AObj: TPageControl; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function PageControl_GetMargins(AObj: TPageControl): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure PageControl_SetMargins(AObj: TPageControl; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function PageControl_StaticClassType: TClass; extdecl;
@@ -1075,6 +1075,8 @@ exports
   PageControl_SetCursor,
   PageControl_GetHint,
   PageControl_SetHint,
+  PageControl_GetMargins,
+  PageControl_SetMargins,
   PageControl_GetComponentCount,
   PageControl_GetComponentIndex,
   PageControl_SetComponentIndex,
@@ -1087,7 +1089,5 @@ exports
   PageControl_GetDockClients,
   PageControl_GetControls,
   PageControl_GetComponents,
-  PageControl_StaticClassType,
-  PageControl_GetMargins,
-  PageControl_SetMargins;
+  PageControl_StaticClassType;
 

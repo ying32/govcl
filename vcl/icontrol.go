@@ -82,8 +82,8 @@ type IControl interface {
 
 	SetTextBuf(string)
 
-	AlignWithMargins() bool
-	SetAlignWithMargins(bool)
+	//AlignWithMargins() bool
+	//SetAlignWithMargins(bool)
 
 	Margins() *TMargins
 	SetMargins(*TMargins)

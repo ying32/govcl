@@ -737,6 +737,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function ScrollBar_GetMargins(AObj: TScrollBar): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ScrollBar_SetMargins(AObj: TScrollBar; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ScrollBar_GetComponentCount(AObj: TScrollBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -790,16 +800,6 @@ end;
 function ScrollBar_GetComponents(AObj: TScrollBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function ScrollBar_GetMargins(AObj: TScrollBar): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure ScrollBar_SetMargins(AObj: TScrollBar; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function ScrollBar_StaticClassType: TClass; extdecl;
@@ -950,6 +950,8 @@ exports
   ScrollBar_SetCursor,
   ScrollBar_GetHint,
   ScrollBar_SetHint,
+  ScrollBar_GetMargins,
+  ScrollBar_SetMargins,
   ScrollBar_GetComponentCount,
   ScrollBar_GetComponentIndex,
   ScrollBar_SetComponentIndex,
@@ -961,7 +963,5 @@ exports
   ScrollBar_GetDockClients,
   ScrollBar_GetControls,
   ScrollBar_GetComponents,
-  ScrollBar_StaticClassType,
-  ScrollBar_GetMargins,
-  ScrollBar_SetMargins;
+  ScrollBar_StaticClassType;
 

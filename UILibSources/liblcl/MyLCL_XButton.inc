@@ -586,6 +586,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function XButton_GetMargins(AObj: TXButton): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure XButton_SetMargins(AObj: TXButton; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function XButton_GetComponentCount(AObj: TXButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -629,16 +639,6 @@ end;
 function XButton_GetComponents(AObj: TXButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function XButton_GetMargins(AObj: TXButton): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure XButton_SetMargins(AObj: TXButton; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function XButton_StaticClassType: TClass; extdecl;
@@ -760,6 +760,8 @@ exports
   XButton_SetCursor,
   XButton_GetHint,
   XButton_SetHint,
+  XButton_GetMargins,
+  XButton_SetMargins,
   XButton_GetComponentCount,
   XButton_GetComponentIndex,
   XButton_SetComponentIndex,
@@ -769,7 +771,5 @@ exports
   XButton_GetTag,
   XButton_SetTag,
   XButton_GetComponents,
-  XButton_StaticClassType,
-  XButton_GetMargins,
-  XButton_SetMargins;
+  XButton_StaticClassType;
 

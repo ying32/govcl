@@ -552,6 +552,16 @@ begin
   AObj.Hint := AValue;
 end;
 
+function WinControl_GetMargins(AObj: TWinControl): TMargins; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure WinControl_SetMargins(AObj: TWinControl; AValue: TMargins); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function WinControl_GetComponentCount(AObj: TWinControl): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -605,16 +615,6 @@ end;
 function WinControl_GetComponents(AObj: TWinControl; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
-end;
-
-function WinControl_GetMargins(AObj: TWinControl): TControlBorderSpacing; extdecl;
-begin
-  Result := AObj.BorderSpacing;
-end;
-
-procedure WinControl_SetMargins(AObj: TWinControl; AValue: TControlBorderSpacing); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
 end;
 
 function WinControl_StaticClassType: TClass; extdecl;
@@ -732,6 +732,8 @@ exports
   WinControl_SetCursor,
   WinControl_GetHint,
   WinControl_SetHint,
+  WinControl_GetMargins,
+  WinControl_SetMargins,
   WinControl_GetComponentCount,
   WinControl_GetComponentIndex,
   WinControl_SetComponentIndex,
@@ -743,7 +745,5 @@ exports
   WinControl_GetDockClients,
   WinControl_GetControls,
   WinControl_GetComponents,
-  WinControl_StaticClassType,
-  WinControl_GetMargins,
-  WinControl_SetMargins;
+  WinControl_StaticClassType;
 
