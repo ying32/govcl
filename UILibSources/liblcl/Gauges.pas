@@ -1,9 +1,14 @@
+
 // 移植自Delphi组件,在lcl中算第三方组件了吧
+// Ported from Delphi components
+
+{$mode objfpc}{$H+}
+
 unit Gauges;
 
 interface
 
-uses SysUtils, Classes, Graphics, Controls, StdCtrls, Types;
+uses SysUtils, Classes, Graphics, Controls, Types;
 
 type
 
@@ -11,55 +16,56 @@ type
 
   TGauge = class(TGraphicControl)
   private
-    FMinValue: Longint;
-    FMaxValue: Longint;
-    FCurValue: Longint;
+    FMinValue: LongInt;
+    FMaxValue: LongInt;
+    FCurValue: LongInt;
     FKind: TGaugeKind;
-    FShowText: Boolean;
+    FShowText: boolean;
     FBorderStyle: TBorderStyle;
     FForeColor: TColor;
     FBackColor: TColor;
     procedure PaintBackground(AnImage: TBitmap);
-    procedure PaintAsText(AnImage: TBitmap; PaintRect: TRect);
-    procedure PaintAsNothing(AnImage: TBitmap; PaintRect: TRect);
-    procedure PaintAsBar(AnImage: TBitmap; PaintRect: TRect);
-    procedure PaintAsPie(AnImage: TBitmap; PaintRect: TRect);
-    procedure PaintAsNeedle(AnImage: TBitmap; PaintRect: TRect);
+    procedure PaintAsText(AnImage: TBitmap; APaintRect: TRect);
+    procedure PaintAsNothing(AnImage: TBitmap; APaintRect: TRect);
+    procedure PaintAsBar(AnImage: TBitmap; APaintRect: TRect);
+    procedure PaintAsPie(AnImage: TBitmap; APaintRect: TRect);
+    procedure PaintAsNeedle(AnImage: TBitmap; APaintRect: TRect);
     procedure SetGaugeKind(Value: TGaugeKind);
     procedure SetShowText(Value: Boolean);
     procedure SetBorderStyle(Value: TBorderStyle);
     procedure SetForeColor(Value: TColor);
     procedure SetBackColor(Value: TColor);
-    procedure SetMinValue(Value: Longint);
-    procedure SetMaxValue(Value: Longint);
-    procedure SetProgress(Value: Longint);
-    function GetPercentDone: Longint;
+    procedure SetMinValue(Value: LongInt);
+    procedure SetMaxValue(Value: LongInt);
+    procedure SetProgress(Value: LongInt);
+    function GetPercentDone: LongInt;
   protected
     procedure Paint; override;
   public
     constructor Create(AOwner: TComponent); override;
-    procedure AddProgress(Value: Longint);
-    property PercentDone: Longint read GetPercentDone;
+    procedure AddProgress(Value: longint);
+    property PercentDone: longint read GetPercentDone;
   published
     property Align;
     property Anchors;
     property BackColor: TColor read FBackColor write SetBackColor default clWhite;
-    property BorderStyle: TBorderStyle read FBorderStyle write SetBorderStyle default bsSingle;
+    property BorderStyle: TBorderStyle
+      read FBorderStyle write SetBorderStyle default bsSingle;
     property Color;
     property Constraints;
     property Enabled;
     property ForeColor: TColor read FForeColor write SetForeColor default clBlack;
     property Font;
     property Kind: TGaugeKind read FKind write SetGaugeKind default gkHorizontalBar;
-    property MinValue: Longint read FMinValue write SetMinValue default 0;
-    property MaxValue: Longint read FMaxValue write SetMaxValue default 100;
+    property MinValue: longint read FMinValue write SetMinValue default 0;
+    property MaxValue: longint read FMaxValue write SetMaxValue default 100;
     property ParentColor;
     property ParentFont;
     property ParentShowHint;
     property PopupMenu;
-    property Progress: Longint read FCurValue write SetProgress;
+    property Progress: longint read FCurValue write SetProgress;
     property ShowHint;
-    property ShowText: Boolean read FShowText write SetShowText default True;
+    property ShowText: boolean read FShowText write SetShowText default True;
     property Visible;
   end;
 
@@ -69,13 +75,14 @@ const
   SOutOfRange = 'Value must be between %d and %d';
 
 type
-  TBltBitmap = class(TBitmap)
+  TBitmapHelper = class helper for TBitmap
+  public
     procedure MakeLike(ATemplate: TBitmap);
   end;
 
-{ TBltBitmap }
+{ TBitmapHelper }
 
-procedure TBltBitmap.MakeLike(ATemplate: TBitmap);
+procedure TBitmapHelper.MakeLike(ATemplate: TBitmap);
 begin
   Width := ATemplate.Width;
   Height := ATemplate.Height;
@@ -84,17 +91,17 @@ begin
   Canvas.FillRect(Rect(0, 0, Width, Height));
 end;
 
-{ This function solves for x in the equation "x is y% of z". }
-function SolveForX(Y, Z: Longint): Longint;
+function SolveForX(Y, Z: LongInt): LongInt;
 begin
-  Result := Longint(Trunc( Z * (Y * 0.01) ));
+  Result := LongInt(Trunc(Z * (Y * 0.01)));
 end;
 
-{ This function solves for y in the equation "x is y% of z". }
-function SolveForY(X, Z: Longint): Longint;
+function SolveForY(X, Z: LongInt): LongInt;
 begin
-  if Z = 0 then Result := 0
-  else Result := Longint(Trunc( (X * 100.0) / Z ));
+  if Z = 0 then
+    Result := 0
+  else
+    Result := LongInt(Trunc((X * 100.0) / Z));
 end;
 
 { TGauge }
@@ -103,7 +110,6 @@ constructor TGauge.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   ControlStyle := ControlStyle + [csFramed, csOpaque];
-  { default values }
   FMinValue := 0;
   FMaxValue := 100;
   FCurValue := 0;
@@ -116,7 +122,7 @@ begin
   Height := 100;
 end;
 
-function TGauge.GetPercentDone: Longint;
+function TGauge.GetPercentDone: LongInt;
 begin
   Result := SolveForY(FCurValue - FMinValue, FMaxValue - FMinValue);
 end;
@@ -124,7 +130,7 @@ end;
 procedure TGauge.Paint;
 var
   TheImage: TBitmap;
-  OverlayImage: TBltBitmap;
+  OverlayImage: TBitmap;
   PaintRect: TRect;
 begin
   with Canvas do
@@ -135,8 +141,9 @@ begin
       TheImage.Width := Width;
       PaintBackground(TheImage);
       PaintRect := ClientRect;
-      if FBorderStyle = bsSingle then InflateRect(PaintRect, -1, -1);
-      OverlayImage := TBltBitmap.Create;
+      if FBorderStyle = bsSingle then
+        InflateRect(PaintRect, -1, -1);
+      OverlayImage := TBitmap.Create;
       try
         OverlayImage.MakeLike(TheImage);
         PaintBackground(OverlayImage);
@@ -149,7 +156,8 @@ begin
         TheImage.Canvas.CopyMode := cmSrcInvert;
         TheImage.Canvas.Draw(0, 0, OverlayImage);
         TheImage.Canvas.CopyMode := cmSrcCopy;
-        if ShowText then PaintAsText(TheImage, PaintRect);
+        if ShowText then
+          PaintAsText(TheImage, PaintRect);
       finally
         OverlayImage.Free;
       end;
@@ -163,96 +171,95 @@ end;
 
 procedure TGauge.PaintBackground(AnImage: TBitmap);
 var
-  ARect: TRect;
+  LRect: TRect;
 begin
   with AnImage.Canvas do
   begin
     CopyMode := cmBlackness;
-    ARect := Rect(0, 0, Width, Height);
-    CopyRect(ARect, Animage.Canvas, ARect);
+    LRect := Rect(0, 0, Width, Height);
+    CopyRect(LRect, AnImage.Canvas, LRect);
     CopyMode := cmSrcCopy;
   end;
 end;
 
-procedure TGauge.PaintAsText(AnImage: TBitmap; PaintRect: TRect);
+procedure TGauge.PaintAsText(AnImage: TBitmap; APaintRect: TRect);
 var
-  S: string;
-  X, Y: Integer;
-  OverRect: TBltBitmap;
+  LS: string;
+  LX, LY: integer;
+  LOverBmp: TBitmap;
 begin
-  OverRect := TBltBitmap.Create;
+  LOverBmp := TBitmap.Create;
   try
-    OverRect.MakeLike(AnImage);
-    PaintBackground(OverRect);
-    S := Format('%d%%', [PercentDone]);
-    with OverRect.Canvas do
+    LOverBmp.MakeLike(AnImage);
+    PaintBackground(LOverBmp);
+    LS := Format('%d%%', [PercentDone]);
+    with LOverBmp.Canvas do
     begin
       Brush.Style := bsClear;
       Font := Self.Font;
       Font.Color := clWhite;
-      with PaintRect do
-      begin
-        X := (Right - Left + 1 - TextWidth(S)) div 2;
-        Y := (Bottom - Top + 1 - TextHeight(S)) div 2;
-      end;
-      TextRect(PaintRect, X, Y, S);
+      LX := (APaintRect.Right - APaintRect.Left + 1 - TextWidth(LS)) div 2;
+      LY := (APaintRect.Bottom - APaintRect.Top + 1 - TextHeight(LS)) div 2;
+      TextRect(APaintRect, LX, LY, LS);
     end;
     AnImage.Canvas.CopyMode := cmSrcInvert;
-    AnImage.Canvas.Draw(0, 0, OverRect);
+    AnImage.Canvas.Draw(0, 0, LOverBmp);
   finally
-    OverRect.Free;
+    LOverBmp.Free;
   end;
 end;
 
-procedure TGauge.PaintAsNothing(AnImage: TBitmap; PaintRect: TRect);
+procedure TGauge.PaintAsNothing(AnImage: TBitmap; APaintRect: TRect);
 begin
   with AnImage do
   begin
     Canvas.Brush.Color := BackColor;
-    Canvas.FillRect(PaintRect);
+    Canvas.FillRect(APaintRect);
   end;
 end;
 
-procedure TGauge.PaintAsBar(AnImage: TBitmap; PaintRect: TRect);
+procedure TGauge.PaintAsBar(AnImage: TBitmap; APaintRect: TRect);
 var
-  FillSize: Longint;
-  W, H: Integer;
+  FillSize: LongInt;
+  W, H: integer;
 begin
-  W := PaintRect.Right - PaintRect.Left + 1;
-  H := PaintRect.Bottom - PaintRect.Top + 1;
+  W := APaintRect.Right - APaintRect.Left + 1;
+  H := APaintRect.Bottom - APaintRect.Top + 1;
   with AnImage.Canvas do
   begin
     Brush.Color := BackColor;
-    FillRect(PaintRect);
+    FillRect(APaintRect);
     Pen.Color := ForeColor;
     Pen.Width := 1;
     Brush.Color := ForeColor;
     case FKind of
       gkHorizontalBar:
-        begin
-          FillSize := SolveForX(PercentDone, W);
-          if FillSize > W then FillSize := W;
-          if FillSize > 0 then FillRect(Rect(PaintRect.Left, PaintRect.Top,
-            FillSize, H));
-        end;
+      begin
+        FillSize := SolveForX(PercentDone, W);
+        if FillSize > W then
+          FillSize := W;
+        if FillSize > 0 then
+          FillRect(Rect(APaintRect.Left, APaintRect.Top, FillSize, H));
+      end;
       gkVerticalBar:
-        begin
-          FillSize := SolveForX(PercentDone, H);
-          if FillSize >= H then FillSize := H - 1;
-          FillRect(Rect(PaintRect.Left, H - FillSize, W, H));
-        end;
+      begin
+        FillSize := SolveForX(PercentDone, H);
+        if FillSize >= H then
+          FillSize := H - 1;
+        FillRect(Rect(APaintRect.Left, H - FillSize, W, H));
+      end;
     end;
   end;
 end;
 
-procedure TGauge.PaintAsPie(AnImage: TBitmap; PaintRect: TRect);
+procedure TGauge.PaintAsPie(AnImage: TBitmap; APaintRect: TRect);
 var
-  MiddleX, MiddleY: Integer;
-  Angle: Double;
-  W, H: Integer;
+  MiddleX, MiddleY: integer;
+  Angle: double;
+  W, H: integer;
 begin
-  W := PaintRect.Right - PaintRect.Left;
-  H := PaintRect.Bottom - PaintRect.Top;
+  W := APaintRect.Right - APaintRect.Left;
+  H := APaintRect.Bottom - APaintRect.Top;
   if FBorderStyle = bsSingle then
   begin
     Inc(W);
@@ -261,31 +268,31 @@ begin
   with AnImage.Canvas do
   begin
     Brush.Color := Color;
-    FillRect(PaintRect);
+    FillRect(APaintRect);
     Brush.Color := BackColor;
     Pen.Color := ForeColor;
     Pen.Width := 1;
-    Ellipse(PaintRect.Left, PaintRect.Top, W, H);
+    Ellipse(APaintRect.Left, APaintRect.Top, W, H);
     if PercentDone > 0 then
     begin
       Brush.Color := ForeColor;
       MiddleX := W div 2;
       MiddleY := H div 2;
       Angle := (Pi * ((PercentDone / 50) + 0.5));
-      Pie(PaintRect.Left, PaintRect.Top, W, H,
-        Integer(Round(MiddleX * (1 - Cos(Angle)))),
-        Integer(Round(MiddleY * (1 - Sin(Angle)))), MiddleX, 0);
+      Pie(APaintRect.Left, APaintRect.Top, W, H,
+        integer(Round(MiddleX * (1 - Cos(Angle)))),
+        integer(Round(MiddleY * (1 - Sin(Angle)))), MiddleX, 0);
     end;
   end;
 end;
 
-procedure TGauge.PaintAsNeedle(AnImage: TBitmap; PaintRect: TRect);
+procedure TGauge.PaintAsNeedle(AnImage: TBitmap; APaintRect: TRect);
 var
-  MiddleX: Integer;
-  Angle: Double;
-  X, Y, W, H: Integer;
+  MiddleX: integer;
+  Angle: double;
+  X, Y, W, H: integer;
 begin
-  with PaintRect do
+  with APaintRect do
   begin
     X := Left;
     Y := Top;
@@ -300,21 +307,21 @@ begin
   with AnImage.Canvas do
   begin
     Brush.Color := Color;
-    FillRect(PaintRect);
+    FillRect(APaintRect);
     Brush.Color := BackColor;
     Pen.Color := ForeColor;
     Pen.Width := 1;
-    Pie(X, Y, W, H * 2 - 1, X + W, PaintRect.Bottom - 1, X, PaintRect.Bottom - 1);
-    MoveTo(X, PaintRect.Bottom);
-    LineTo(X + W, PaintRect.Bottom);
+    Pie(X, Y, W, H * 2 - 1, X + W, APaintRect.Bottom - 1, X, APaintRect.Bottom - 1);
+    MoveTo(X, APaintRect.Bottom);
+    LineTo(X + W, APaintRect.Bottom);
     if PercentDone > 0 then
     begin
       Pen.Color := ForeColor;
       MiddleX := Width div 2;
-      MoveTo(MiddleX, PaintRect.Bottom - 1);
+      MoveTo(MiddleX, APaintRect.Bottom - 1);
       Angle := (Pi * ((PercentDone / 100)));
-      LineTo(Integer(Round(MiddleX * (1 - Cos(Angle)))),
-        Integer(Round((PaintRect.Bottom - 1) * (1 - Sin(Angle)))));
+      LineTo(integer(Round(MiddleX * (1 - Cos(Angle)))),
+        integer(Round((APaintRect.Bottom - 1) * (1 - Sin(Angle)))));
     end;
   end;
 end;
@@ -364,7 +371,7 @@ begin
   end;
 end;
 
-procedure TGauge.SetMinValue(Value: Longint);
+procedure TGauge.SetMinValue(Value: LongInt);
 begin
   if Value <> FMinValue then
   begin
@@ -372,12 +379,13 @@ begin
       if not (csLoading in ComponentState) then
         raise EInvalidOperation.CreateFmt(SOutOfRange, [-MaxInt, FMaxValue - 1]);
     FMinValue := Value;
-    if FCurValue < Value then FCurValue := Value;
+    if FCurValue < Value then
+      FCurValue := Value;
     Refresh;
   end;
 end;
 
-procedure TGauge.SetMaxValue(Value: Longint);
+procedure TGauge.SetMaxValue(Value: LongInt);
 begin
   if Value <> FMaxValue then
   begin
@@ -385,16 +393,17 @@ begin
       if not (csLoading in ComponentState) then
         raise EInvalidOperation.CreateFmt(SOutOfRange, [FMinValue + 1, MaxInt]);
     FMaxValue := Value;
-    if FCurValue > Value then FCurValue := Value;
+    if FCurValue > Value then
+      FCurValue := Value;
     Refresh;
   end;
 end;
 
-procedure TGauge.SetProgress(Value: Longint);
+procedure TGauge.SetProgress(Value: LongInt);
 var
-  TempPercent: Longint;
+  TempPercent: LongInt;
 begin
-  TempPercent := GetPercentDone;  { remember where we were }
+  TempPercent := GetPercentDone;
   if Value < FMinValue then
     Value := FMinValue
   else if Value > FMaxValue then
@@ -402,12 +411,12 @@ begin
   if FCurValue <> Value then
   begin
     FCurValue := Value;
-    if TempPercent <> GetPercentDone then { only refresh if percentage changed }
+    if TempPercent <> GetPercentDone then
       Refresh;
   end;
 end;
 
-procedure TGauge.AddProgress(Value: Longint);
+procedure TGauge.AddProgress(Value: LongInt);
 begin
   Progress := FCurValue + Value;
   Refresh;
