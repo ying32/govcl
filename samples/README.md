@@ -9,7 +9,7 @@
 | checklistbox | 复选列表框演示 | |
 | clock | 自绘的时钟 | |
 | comboboxEx | 可显示图标的combobox | |
-| customLibTest | 自定义加载指定位置的libvcl或者liblcl | |
+| customLibTest | 自定义加载指定位置的liblcl | |
 | draganddrop | 数据拖放 | |
 | draw | canvas自绘演示 | |
 | drawchart | 使用[Charts for Go](https://github.com/vdobler/chart)绘制图表并显示到GoVCL的控件上 | |
@@ -34,7 +34,7 @@
 | listboxcustomdraw2 | ListBox部分自绘演示  | |
 | listview | ListView部分功能演示  | 部分限Windows |
 | listviewadvcustomdraw | ListView高级自绘 | windows |  
-| listviewcustomdraw |  ListView部分自绘演示  | 自绘部分限Windows,Group部分限libvcl |   
+| listviewcustomdraw |  ListView部分自绘演示  | 自绘部分限Windows |   
 | listviewitemedit |  用于双击项目直接编辑ListView数据。  | Windows |  
 | listviewvirtualdata | TListView虚拟数据，用于大数据显示 |   |
 | login |  登录窗口演示  | |   
@@ -57,7 +57,6 @@
 | redisViewer | Redis视图客户端  | |  
 | registerHotkey | windows注册热键  | Windows |
 | registry | windows注册表演示  | Windows |
-| res2goTest/Delphi |  res2go工具测试例程，演示使用Delphi设计器构建的UI  | |  
 | res2goTest/Lazarus | res2go工具测试例程，演示使用Lazarus设计器构建的UI | |  
 | res2goTest/Test | res2go工具测试例程，演示不通过Application.CreateForm创建窗口、TFrame演示| |  
 | richedit | windows富文本框演示  | Windows,libvcl |
@@ -68,7 +67,6 @@
 | SkinsharpTest | skinsharp第三方皮肤演示(不咋好使，特别是在liblcl中) | Windows,32bit |
 | statusbar | 状态条演示  | |
 | stdcontrols | 标准控件示例  | |
-| style | windows下delphi样式演示  | Windows,libvcl |
 | sysdialog | 各种系统对话框演示  | |
 | syslocale | 本地化相关 | |
 | taskdialog | 任务对话框 | |
@@ -82,8 +80,6 @@
 | WindowsTest | Windows下的一些测试    | Windows |
 | wingif | windows下gif图片播放演示  | 动画部分仅限Windows |
 | winole | 使用go-ole库操作ole | Windows | 
-| winTaskbar | windows任务栏相关，只支持libvcl，win7+ | Windows,libvcl,win7+  |
-| winJumpList | windows任务栏，跳转列表，只支持libvcl，win7+ | Windows,libvcl,win7+  |  
 | wkeWebBrowser | windows下wke浏览器嵌入演示  | Windows,32bit |
 | xunleidownloader | 迅雷下载引擎演示    | Windows,32bit |
 
