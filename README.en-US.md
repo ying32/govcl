@@ -3,7 +3,7 @@
 
 ----
 
-**It is expected that version 2.0 will remove support for `vcl` and focus on` lcl` cross-platform solutions.**  
+**It is planned that the govcl 2.0 version will remove the support of `vcl` and only focus on the `lcl` cross-platform solution. The last branch that supports the vcl version: [last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/).**  
 
 ## Cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
 

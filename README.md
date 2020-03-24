@@ -3,7 +3,7 @@
 
 ----
 
-**预计2.0版本开始将剔除vcl的支持，专注于lcl的跨平台方案。**   
+**计划govcl 2.0版本开始将移除`vcl`的支持，只专注于`lcl`的跨平台方案。最后一个支持vcl版本的分支：[last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/)。**   
 
 ### 跨平台的Golang GUI库，底层绑定自Delphi VCL和Lazarus LCL  
 
