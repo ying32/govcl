@@ -3,9 +3,9 @@ unit Unit11;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.StdCtrls, Vcl.ComCtrls;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms, Dialogs, ImageList, ImgList,
+  StdCtrls, ComCtrls;
 
 type
   TForm11 = class(TForm)
@@ -25,7 +25,7 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TForm11.FormCreate(Sender: TObject);
 begin

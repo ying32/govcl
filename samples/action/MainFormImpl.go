@@ -67,7 +67,6 @@ func (f *TMainForm) initComponents() {
 	f.Btn.SetParent(f)
 	f.Btn.SetLeft(80)
 	f.Btn.SetTop(f.Tlbar.Top() + f.Tlbar.Height() + 10)
-	f.Btn.SetImages(f.ImgList)
 
 	f.Chk = vcl.NewCheckBox(f)
 	f.Chk.SetParent(f)

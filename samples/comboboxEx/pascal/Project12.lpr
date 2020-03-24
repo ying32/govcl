@@ -1,7 +1,11 @@
 program Project12;
 
 uses
-  Vcl.Forms,
+{$IFDEF UNIX}{$IFDEF UseCThreads}
+  cthreads,
+{$ENDIF}{$ENDIF}
+  Interfaces, // this includes the LCL widgetset,
+  Forms,
   Unit11 in 'Unit11.pas' {Form11};
 
 {$R *.res}
