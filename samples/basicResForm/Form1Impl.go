@@ -18,7 +18,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	for i = 0; i < f.ComponentCount(); i++ {
 		comp := f.Components(i)
 		//fmt.Println(i, "=", comp.Name())
-		if comp.InheritsFrom(vcl.TMemoClass()) {
+		if comp.Is().Memo() {
 			fmt.Println(i, "=", comp.Name(), ", 继承自TMemo")
 			mem := vcl.AsMemo(comp)
 			mem.SetOnKeyUp(f.memoOnKeyup)

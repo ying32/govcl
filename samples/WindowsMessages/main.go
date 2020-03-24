@@ -4,7 +4,6 @@ package main
 
 import (
 	"fmt"
-
 	"syscall"
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
@@ -17,25 +16,19 @@ var (
 	oldWndPrc uintptr
 )
 
-func main() {
+type TMainForm struct {
+	*vcl.TForm
+}
 
-	vcl.Application.Initialize()
-	vcl.Application.SetMainFormOnTaskBar(true)
+var mainForm *TMainForm
 
-	mainForm := vcl.Application.CreateForm()
-	mainForm.SetCaption("Windows Messages")
-	mainForm.SetPosition(types.PoScreenCenter)
-	mainForm.SetWidth(300)
-	mainForm.SetHeight(200)
+func (f *TMainForm) OnFormCreate(object vcl.IObject) {
+	f.SetCaption("Windows Messages")
+	f.SetWidth(300)
+	f.SetHeight(200)
+	f.ScreenCenter()
 
 	newWndProc := syscall.NewCallback(WndProc)
-
-	mainForm.SetOnDestroy(func(sender vcl.IObject) {
-		fmt.Println("FormOnDestroy")
-		// 完成后要恢复的
-		win.SetWindowLongPtr(mainForm.Handle(), win.GWL_WNDPROC, oldWndPrc)
-	})
-
 	oldWndPrc = win.SetWindowLongPtr(mainForm.Handle(), win.GWL_WNDPROC, newWndProc)
 	fmt.Println("newWndProc:", newWndProc)
 	fmt.Println("oldWndPro:", oldWndPrc)
@@ -45,9 +38,16 @@ func main() {
 	btn.SetCaption("按钮1")
 	btn.SetLeft(50)
 	btn.SetTop(50)
+}
 
-	vcl.Application.Run()
+func (f *TMainForm) OnFormDestroy(object vcl.IObject) {
+	fmt.Println("FormOnDestroy")
+	// 完成后要恢复的
+	win.SetWindowLongPtr(mainForm.Handle(), win.GWL_WNDPROC, oldWndPrc)
+}
 
+func main() {
+	vcl.RunApp(&mainForm)
 }
 
 func WndProc(hWnd uintptr, message uint32, wParam, lParam uintptr) uintptr {

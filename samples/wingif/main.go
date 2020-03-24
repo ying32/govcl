@@ -6,30 +6,32 @@ import (
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
 	"github.com/ying32/govcl/vcl/rtl"
-	"github.com/ying32/govcl/vcl/types"
 )
 
-func main() {
+type TMainForm struct {
+	*vcl.TForm
+	img *vcl.TImage
+}
 
-	vcl.Application.Initialize()
-	vcl.Application.SetMainFormOnTaskBar(true)
+var mainForm *TMainForm
 
-	mainForm := vcl.Application.CreateForm()
-	mainForm.SetCaption("GIF动画")
-	mainForm.SetPosition(types.PoScreenCenter)
-	mainForm.EnabledMaximize(false)
-	mainForm.SetWidth(300)
-	mainForm.SetHeight(200)
+func (f *TMainForm) OnFormCreate(object vcl.IObject) {
+	f.SetCaption("GIF动画")
+	f.EnabledMaximize(false)
+	f.SetWidth(300)
+	f.SetHeight(200)
+	f.ScreenCenter()
 
-	img := vcl.NewImage(mainForm)
-	img.SetParent(mainForm)
-	img.SetBounds(20, 20, 60, 60)
-	img.Picture().LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "test.gif")
+	f.img = vcl.NewImage(f)
+	f.img.SetParent(f)
+	f.img.SetBounds(20, 20, 60, 60)
+	f.img.Picture().LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "test.gif")
 	// 动画只支持Windows下的libvcl
 	if runtime.GOOS == "windows" && !rtl.LcLLoaded() {
-		vcl.AsGIFImage(img.Picture().Graphic()).SetAnimate(true)
-
+		vcl.AsGIFImage(f.img.Picture().Graphic()).SetAnimate(true)
 	}
+}
 
-	vcl.Application.Run()
+func main() {
+	vcl.RunApp(&mainForm)
 }

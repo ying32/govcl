@@ -10,10 +10,11 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
-var (
+//::private::
+type TForm1Fields struct {
 	lastRect types.TRect
 	lasthWnd types.HWND
-)
+}
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.SetLeft(vcl.Screen.Width() - f.Width() - 5)
@@ -28,7 +29,7 @@ func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
 
 func (f *TForm1) OnImg1MouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {
 	if shift.In(types.SsLeft) {
-		lasthWnd = 0 //win.WindowFromPoint(vcl.Mouse.CursorPos())
+		f.lasthWnd = 0 //win.WindowFromPoint(vcl.Mouse.CursorPos())
 		vcl.Screen.SetCursor(types.TCursor(1))
 		f.Img2.SetVisible(true)
 		f.Img1.SetVisible(false)
@@ -40,15 +41,15 @@ func (f *TForm1) OnImg1MouseUp(sender vcl.IObject, button types.TMouseButton, sh
 	f.Img1.SetVisible(true)
 	f.Img2.SetVisible(false)
 	f.clearDesktopRect()
-	lasthWnd = 0
+	f.lasthWnd = 0
 }
 
 func (f *TForm1) clearDesktopRect() {
-	if lastRect.IsEmpty() {
+	if f.lastRect.IsEmpty() {
 		return
 	}
-	f.drawRect(lastRect)
-	lastRect.Empty()
+	f.drawRect(f.lastRect)
+	f.lastRect.Empty()
 }
 
 func (f *TForm1) drawRect(rc types.TRect) {
@@ -66,15 +67,15 @@ func (f *TForm1) drawRect(rc types.TRect) {
 func (f *TForm1) drawDesktopRect(rc types.TRect) {
 	f.clearDesktopRect()
 	f.drawRect(rc)
-	lastRect = rc
+	f.lastRect = rc
 }
 
 func (f *TForm1) OnImg1MouseMove(sender vcl.IObject, shift types.TShiftState, x, y int32) {
 	if shift.In(types.SsLeft) {
 		pt, _ := win.GetCursorPos2()
 		hWnd := win.WindowFromPoint(pt)
-		if hWnd != lasthWnd {
-			lasthWnd = hWnd
+		if hWnd != f.lasthWnd {
+			f.lasthWnd = hWnd
 			if hWnd != f.Handle() && !win.IsChild(f.Handle(), hWnd) {
 
 				caption, _ := win.GetWindowText(hWnd)

@@ -182,8 +182,14 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 			field := vt.Elem().Field(i)
 			if field.Type.Kind() != reflect.Ptr || field.Anonymous ||
 				!strings.Contains(field.Type.String(), ".T") {
-				//!strings.HasPrefix(field.Type.String(), "*vcl.") {
 				continue
+			}
+			// 检测首字母是否大写
+			if len(field.Name) >= 1 {
+				// 首字母不为A-Z之间的则排除。
+				if c := field.Name[0]; !(c >= 'A' && c <= 'Z') {
+					continue
+				}
 			}
 			if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
 				findAndSetComponentName(vCtl, field.Name)

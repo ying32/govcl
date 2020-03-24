@@ -3,6 +3,8 @@
 
 ----
 
+**It is expected that version 2.0 will remove support for `vcl` and focus on` lcl` cross-platform solutions.**  
+
 ## Cross-platform Golang GUI library. Use Delphi VCL and Lazarus LCL for binding.
 
 > The govcl version >=1.2.0 must require the go version >=1.9.0.  

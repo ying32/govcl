@@ -3,6 +3,8 @@
 
 ----
 
+**预计2.0版本开始将剔除vcl的支持，专注于lcl的跨平台方案。**   
+
 ### 跨平台的Golang GUI库，底层绑定自Delphi VCL和Lazarus LCL  
 
 > 从1.2.0版本开始govcl将最低要求go1.9。  
