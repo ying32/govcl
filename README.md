@@ -27,7 +27,7 @@
 ----
 
 ### 预编译GUI库二进制下载       
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.10/Librarys-1.2.10.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/v1.2.10/Librarys-1.2.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.10/Librarys-1.2.10.zip)  
 > 注：压缩包内包含的“libvcl”库二进制（libvcl.dll、libvclx64.dll）仅供预览和测试使用。正式使用请自行编译“libvcl”源代码，具体编译方法参考[UILIbSrcources](UILibSources/README.md)中的说明。  
 
 ### res2go工具下载（[文档](Tools/res2go)）  
