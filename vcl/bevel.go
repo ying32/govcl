@@ -607,18 +607,6 @@ func (b *TBevel) SetMargins(value *TMargins) {
     Bevel_SetMargins(b.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (b *TBevel) CustomHint() *TCustomHint {
-    return AsCustomHint(Bevel_GetCustomHint(b.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (b *TBevel) SetCustomHint(value IComponent) {
-    Bevel_SetCustomHint(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TBevel) ComponentCount() int32 {

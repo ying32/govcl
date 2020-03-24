@@ -22,7 +22,7 @@ func codeBuildistViewInstance(trainData *TTrainSearchResultData) {
 	// 这里偷下懒，使用原有的ImageList
 	lv.SetSmallImages(FormListViewDraw.ImageList1)
 	lv.SetGridLines(true)
-	lv.SetGroupView(true)
+
 	lv.SetReadOnly(true)
 	lv.SetRowSelect(true)
 	lv.SetViewStyle(types.VsReport)
@@ -52,22 +52,6 @@ func codeBuildistViewInstance(trainData *TTrainSearchResultData) {
 	addCol("无座", 60)
 	addCol("其它", 60)
 	addCol("备注", 120)
-
-	addGroup := func(caption string) {
-		g := lv.Groups().Add()
-		g.SetFooterAlign(types.TaCenter)
-		g.SetHeaderAlign(types.TaCenter)
-		g.SetHeader(caption)
-		//state := g.State() //默认为0
-		g.SetState(types.NewSet(types.LgsCollapsible))
-		g.SetTitleImage(-1)
-	}
-	addGroup("高铁/城际")
-	addGroup("动车")
-	addGroup("直达")
-	addGroup("特快")
-	addGroup("快速")
-	addGroup("其它")
 
 	fullListViewDataAndSetEvent(lv, trainData)
 }

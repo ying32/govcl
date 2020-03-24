@@ -811,18 +811,6 @@ func (b *TBoundLabel) SetMargins(value *TMargins) {
     BoundLabel_SetMargins(b.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (b *TBoundLabel) CustomHint() *TCustomHint {
-    return AsCustomHint(BoundLabel_GetCustomHint(b.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (b *TBoundLabel) SetCustomHint(value IComponent) {
-    BoundLabel_SetCustomHint(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TBoundLabel) ComponentCount() int32 {

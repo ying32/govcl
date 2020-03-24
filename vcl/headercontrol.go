@@ -1055,18 +1055,6 @@ func (h *THeaderControl) SetMargins(value *TMargins) {
     HeaderControl_SetMargins(h.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (h *THeaderControl) CustomHint() *TCustomHint {
-    return AsCustomHint(HeaderControl_GetCustomHint(h.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (h *THeaderControl) SetCustomHint(value IComponent) {
-    HeaderControl_SetCustomHint(h.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (h *THeaderControl) ComponentCount() int32 {

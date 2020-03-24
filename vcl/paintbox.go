@@ -781,18 +781,6 @@ func (p *TPaintBox) SetMargins(value *TMargins) {
     PaintBox_SetMargins(p.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (p *TPaintBox) CustomHint() *TCustomHint {
-    return AsCustomHint(PaintBox_GetCustomHint(p.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (p *TPaintBox) SetCustomHint(value IComponent) {
-    PaintBox_SetCustomHint(p.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (p *TPaintBox) ComponentCount() int32 {

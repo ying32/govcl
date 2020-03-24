@@ -1289,18 +1289,6 @@ func (v *TValueListEditor) SetMargins(value *TMargins) {
     ValueListEditor_SetMargins(v.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (v *TValueListEditor) CustomHint() *TCustomHint {
-    return AsCustomHint(ValueListEditor_GetCustomHint(v.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (v *TValueListEditor) SetCustomHint(value IComponent) {
-    ValueListEditor_SetCustomHint(v.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (v *TValueListEditor) ComponentCount() int32 {

@@ -24,7 +24,7 @@ const (
 func fullListViewDataAndSetEvent(lv *vcl.TListView, trainData *TTrainSearchResultData) {
 	if trainData != nil {
 		// 填充数据到ListView
-		var lG, lD, lZ, lT, lK, lQT int
+
 		//FormListViewDraw.ImageList1 这个imagelist内部没有项目的，用来撑大ListItem，设置了W=1, H=40
 		//FormListViewDraw.LVTrain.SetGroupView(false)
 		//FormListViewDraw.LVTrain.SetGridLines(false)
@@ -33,23 +33,6 @@ func fullListViewDataAndSetEvent(lv *vcl.TListView, trainData *TTrainSearchResul
 
 			item := lv.Items().Add()
 
-			groupId := trainCodeToGroupId(data.StationTrainCode)
-			switch groupId {
-			case 0:
-				lG++
-			case 1:
-				lD++
-			case 2:
-				lZ++
-			case 3:
-				lT++
-			case 4:
-				lK++
-			default:
-				lQT++
-			}
-
-			item.SetGroupID(groupId)
 			item.SetCaption(data.StationTrainCode)
 			//item.SetData(unsafe.Pointer(uintptr(i)))
 
@@ -70,13 +53,6 @@ func fullListViewDataAndSetEvent(lv *vcl.TListView, trainData *TTrainSearchResul
 			subItem.Add(data.QTNum)
 			subItem.Add(data.Note)
 		}
-		groups := lv.Groups()
-		groups.Items(0).SetFooter(fmt.Sprintf("共%d车次 高铁/城际", lG))
-		groups.Items(1).SetFooter(fmt.Sprintf("共%d车次 动车", lD))
-		groups.Items(2).SetFooter(fmt.Sprintf("共%d车次 直达", lZ))
-		groups.Items(3).SetFooter(fmt.Sprintf("共%d车次 特快", lT))
-		groups.Items(4).SetFooter(fmt.Sprintf("共%d车次 快速", lK))
-		groups.Items(5).SetFooter(fmt.Sprintf("共%d车次 其它", lQT))
 
 		lv.Items().EndUpdate()
 	}

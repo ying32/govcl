@@ -1217,18 +1217,6 @@ func (c *TColorBox) SetMargins(value *TMargins) {
     ColorBox_SetMargins(c.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (c *TColorBox) CustomHint() *TCustomHint {
-    return AsCustomHint(ColorBox_GetCustomHint(c.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (c *TColorBox) SetCustomHint(value IComponent) {
-    ColorBox_SetCustomHint(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TColorBox) ComponentCount() int32 {

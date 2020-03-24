@@ -263,14 +263,6 @@ func (l *TListItem) SetFocused(value bool) {
     ListItem_SetFocused(l.instance, value)
 }
 
-func (l *TListItem) GroupID() int32 {
-    return ListItem_GetGroupID(l.instance)
-}
-
-func (l *TListItem) SetGroupID(value int32) {
-    ListItem_SetGroupID(l.instance, value)
-}
-
 // CN: 获取控件句柄。
 // EN: Get Control handle.
 func (l *TListItem) Handle() HWND {

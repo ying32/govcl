@@ -1187,18 +1187,6 @@ func (b *TBitBtn) SetMargins(value *TMargins) {
     BitBtn_SetMargins(b.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (b *TBitBtn) CustomHint() *TCustomHint {
-    return AsCustomHint(BitBtn_GetCustomHint(b.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (b *TBitBtn) SetCustomHint(value IComponent) {
-    BitBtn_SetCustomHint(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TBitBtn) ComponentCount() int32 {

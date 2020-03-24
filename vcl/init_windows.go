@@ -14,12 +14,6 @@ import (
 	. "github.com/ying32/govcl/vcl/win"
 )
 
-var (
-	// CN: StyleManager 没有实例类的，属于静态类。
-	// EN: StyleManager does not have an instance class, it is a static class.
-	StyleManager TStyleManager
-)
-
 func showError(err interface{}) {
 	MessageBox(0, fmt.Sprint(err), "Error", MB_ICONERROR)
 }

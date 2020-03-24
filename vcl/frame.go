@@ -1119,18 +1119,6 @@ func (f *TFrame) SetMargins(value *TMargins) {
     Frame_SetMargins(f.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (f *TFrame) CustomHint() *TCustomHint {
-    return AsCustomHint(Frame_GetCustomHint(f.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (f *TFrame) SetCustomHint(value IComponent) {
-    Frame_SetCustomHint(f.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (f *TFrame) ComponentCount() int32 {

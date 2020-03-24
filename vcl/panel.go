@@ -1169,18 +1169,6 @@ func (p *TPanel) SetMargins(value *TMargins) {
     Panel_SetMargins(p.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (p *TPanel) CustomHint() *TCustomHint {
-    return AsCustomHint(Panel_GetCustomHint(p.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (p *TPanel) SetCustomHint(value IComponent) {
-    Panel_SetCustomHint(p.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (p *TPanel) ComponentCount() int32 {

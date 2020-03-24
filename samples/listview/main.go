@@ -133,27 +133,6 @@ func main() {
 	col.SetCaption("序号")
 	col.SetWidth(100)
 
-	grp := lv3.Groups().Add()
-	grp.SetHeader("第一个分组头")
-	grp.SetFooter("第一个分组结束")
-	grp.SetHeaderAlign(types.TaCenter)
-	grp.SetFooterAlign(types.TaCenter)
-	grp.SetSubtitle("这是子标题")
-	grp.SetTitleImage(0)
-	state := grp.State()
-	state = state.Include(types.LgsCollapsible)
-	grp.SetState(state)
-
-	grp = lv3.Groups().Add()
-	grp.SetHeader("第二个分组头")
-	grp.SetFooter("第二个分组结束")
-	grp.SetHeaderAlign(types.TaCenter)
-	grp.SetFooterAlign(types.TaCenter)
-	grp.SetSubtitle("这是子标题")
-	state = grp.State()
-	state = state.Include(types.LgsCollapsible)
-	grp.SetState(state)
-
 	lv3.SetOnClick(func(vcl.IObject) {
 		if lv3.ItemIndex() != -1 {
 			item := lv3.Selected()

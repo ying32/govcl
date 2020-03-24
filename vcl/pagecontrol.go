@@ -1109,18 +1109,6 @@ func (p *TPageControl) SetMargins(value *TMargins) {
     PageControl_SetMargins(p.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (p *TPageControl) CustomHint() *TCustomHint {
-    return AsCustomHint(PageControl_GetCustomHint(p.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (p *TPageControl) SetCustomHint(value IComponent) {
-    PageControl_SetCustomHint(p.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (p *TPageControl) ComponentCount() int32 {

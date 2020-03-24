@@ -46,8 +46,7 @@ var (
 	mouse_Instance  = libvcl.NewProc("Mouse_Instance")
 	screen_Instance = libvcl.NewProc("Screen_Instance")
 
-	dSetReportMemoryLeaksOnShutdown = libvcl.NewProc("DSetReportMemoryLeaksOnShutdown")
-	dSynchronize                    = libvcl.NewProc("DSynchronize")
+	dSynchronize = libvcl.NewProc("DSynchronize")
 
 	// TMenuItem
 	dTextToShortCut = libvcl.NewProc("DTextToShortCut")

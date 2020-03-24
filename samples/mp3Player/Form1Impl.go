@@ -9,10 +9,6 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ying32/govcl/vcl/rtl/version"
-
-	"github.com/ying32/govcl/vcl/rtl"
-
 	"github.com/ying32/govcl/vcl/types"
 
 	"github.com/ying32/govcl/pkgs/bass"
@@ -25,11 +21,6 @@ type TForm1Fields struct {
 	playCtl    *TPlayControl
 	progress   *TImageTrackBar
 	volbar     *TImageTrackBar
-
-	// 仅windows
-	taskbar1         *vcl.TTaskbar
-	isSupportTaskbar bool
-	thumbPreviewBmp  *vcl.TBitmap
 }
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
@@ -60,41 +51,6 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.volbar.SetPosition(60)
 	f.volbar.OnTrackChange = f.OnVolChange
 
-	f.isSupportTaskbar = runtime.GOOS == "windows" && version.OSVersion.CheckMajorMinor(6, 1) && !rtl.LcLLoaded()
-	if f.isSupportTaskbar {
-		f.thumbPreviewBmp = vcl.NewBitmap()
-		f.thumbPreviewBmp.SetPixelFormat(types.Pf32bit)
-		f.thumbPreviewBmp.SetSize(f.ImgSinger.Width(), f.ImgSinger.Height())
-
-		f.thumbPreviewBmp.Assign(f.ImgSinger.Picture().Graphic())
-		f.taskbar1 = vcl.NewTaskbar(f)
-		f.taskbar1.SetOnThumbPreviewRequest(f.onTaskbar1ThumbPreviewRequest)
-		f.taskbar1.SetOnThumbButtonClick(f.onTaskbar1ThumbButtonClick)
-		f.taskbar1.SetTabProperties(types.NewSet(types.CustomizedPreview))
-
-		f.taskbar1.TaskBarButtons().BeginUpdate()
-		// buttons
-		tbtn := f.taskbar1.TaskBarButtons().Add()
-		tbtn.SetHint("上一曲")
-		f.ImageList1.GetIcon(0, tbtn.Icon())
-
-		tbtn = f.taskbar1.TaskBarButtons().Add()
-		tbtn.SetHint("播放")
-		f.ImageList1.GetIcon(1, tbtn.Icon())
-
-		tbtn = f.taskbar1.TaskBarButtons().Add()
-		tbtn.SetButtonState(tbtn.ButtonState().Include(types.TbsHidden))
-		tbtn.SetHint("暂停")
-		f.ImageList1.GetIcon(2, tbtn.Icon())
-
-		tbtn = f.taskbar1.TaskBarButtons().Add()
-		tbtn.SetHint("下一曲")
-		f.ImageList1.GetIcon(3, tbtn.Icon())
-
-		f.taskbar1.TaskBarButtons().EndUpdate()
-
-	}
-
 	f.bassPlayer = bass.NewBass()
 	// 我的测试
 	switch runtime.GOOS {
@@ -109,66 +65,8 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	}
 }
 
-func (f *TForm1) onTaskbar1ThumbPreviewRequest(sender vcl.IObject, aPreviewHeight, aPreviewWidth int32, previewBitmap *vcl.TBitmap) {
-	//fmt.Println("OnTaskbar1ThumbPreviewRequest")
-	previewBitmap.Assign(f.thumbPreviewBmp)
-}
-
-func (f *TForm1) onTaskbar1ThumbButtonClick(sender vcl.IObject, aButtonID int32) {
-
-	switch aButtonID {
-	case 0:
-		f.BtnPrev.Click()
-	case 1:
-		f.BtnPlay.Click()
-	case 2:
-		f.BtnPause.Click()
-	case 3:
-		f.BtnNext.Click()
-	}
-}
-
-func (f *TForm1) setTaskbarHint(str string) {
-	if f.isSupportTaskbar {
-		f.taskbar1.SetToolTip(str)
-	}
-}
-
-func (f *TForm1) setTasbarButtonState(aPlayVisible, aPauseVisible bool) {
-
-	if f.isSupportTaskbar {
-
-		// 更新完后再提交，不然就会出现闪烁
-		f.taskbar1.TaskBarButtons().BeginUpdate()
-		defer f.taskbar1.TaskBarButtons().EndUpdate()
-
-		var state types.TThumbButtonStates
-		// play
-		tbtn := f.taskbar1.TaskBarButtons().Items(1)
-		state = tbtn.ButtonState()
-		if aPlayVisible {
-			state = state.Exclude(types.TbsHidden)
-		} else {
-			state = state.Include(types.TbsHidden)
-		}
-		tbtn.SetButtonState(state)
-
-		// pause
-		tbtn = f.taskbar1.TaskBarButtons().Items(2)
-		state = tbtn.ButtonState()
-		if aPauseVisible {
-			state = state.Exclude(types.TbsHidden)
-		} else {
-			state = state.Include(types.TbsHidden)
-		}
-		tbtn.SetButtonState(state)
-	}
-}
-
 func (f *TForm1) OnFormDestroy(sender vcl.IObject) {
-	if f.isSupportTaskbar {
-		f.thumbPreviewBmp.Free()
-	}
+
 	f.bassPlayer.Close()
 	bass.BassFree()
 }
@@ -224,7 +122,7 @@ func (f *TForm1) OnPlayListSelect(sender vcl.IObject, item TPlayListItem) {
 	f.play()
 	str := item.Caption + " - " + item.Singer
 	f.SetCaption(str)
-	f.setTaskbarHint(str)
+
 }
 
 func (f *TForm1) OnBtnPlayClick(sender vcl.IObject) {
@@ -286,8 +184,6 @@ func (f *TForm1) stopPlay() {
 	f.BtnPause.Hide()
 	f.BtnPlay.Show()
 
-	f.setTasbarButtonState(true, false)
-
 	f.SetCaption("Mp3Player")
 }
 
@@ -298,7 +194,6 @@ func (f *TForm1) play() {
 	f.BtnPause.Show()
 	f.Timer1.SetEnabled(true)
 
-	f.setTasbarButtonState(false, true)
 }
 
 func (f *TForm1) pause() {
@@ -307,7 +202,6 @@ func (f *TForm1) pause() {
 	f.BtnPlay.Show()
 	f.Timer1.SetEnabled(false)
 
-	f.setTasbarButtonState(true, false)
 }
 
 func (f *TForm1) OnPanel1MouseDown(sender vcl.IObject, button types.TMouseButton, shift types.TShiftState, x, y int32) {

@@ -148,8 +148,9 @@ func Combine(path, name string) string {
 //}
 
 // 是否加载的为lcl库，true表是是，false表示不是
+// Deprecated
 func LcLLoaded() bool {
-	return api.IsloadedLcl
+	return true
 }
 
 // ------------------- SetProperty

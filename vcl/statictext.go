@@ -1095,18 +1095,6 @@ func (s *TStaticText) SetMargins(value *TMargins) {
     StaticText_SetMargins(s.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (s *TStaticText) CustomHint() *TCustomHint {
-    return AsCustomHint(StaticText_GetCustomHint(s.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (s *TStaticText) SetCustomHint(value IComponent) {
-    StaticText_SetCustomHint(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TStaticText) ComponentCount() int32 {

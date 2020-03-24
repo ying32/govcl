@@ -857,18 +857,6 @@ func (m *TMiniWebview) SetMargins(value *TMargins) {
     MiniWebview_SetMargins(m.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (m *TMiniWebview) CustomHint() *TCustomHint {
-    return AsCustomHint(MiniWebview_GetCustomHint(m.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (m *TMiniWebview) SetCustomHint(value IComponent) {
-    MiniWebview_SetCustomHint(m.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (m *TMiniWebview) ComponentCount() int32 {

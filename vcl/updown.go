@@ -939,18 +939,6 @@ func (u *TUpDown) SetMargins(value *TMargins) {
     UpDown_SetMargins(u.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (u *TUpDown) CustomHint() *TCustomHint {
-    return AsCustomHint(UpDown_GetCustomHint(u.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (u *TUpDown) SetCustomHint(value IComponent) {
-    UpDown_SetCustomHint(u.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (u *TUpDown) ComponentCount() int32 {

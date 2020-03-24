@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	. "github.com/ying32/govcl/vcl"
-	. "github.com/ying32/govcl/vcl/rtl"
 	. "github.com/ying32/govcl/vcl/types"
 )
 
@@ -34,11 +33,9 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 
 	m.TDrawGrid.SetDefaultDrawing(false)
 	m.TDrawGrid.SetDefaultRowHeight(24)
-	if LcLLoaded() {
-		m.TDrawGrid.SetOptions(NewSet(GoLzRangeSelect, GoLzRowSelect))
-	} else {
-		m.TDrawGrid.SetOptions(NewSet(GoRangeSelect, GoRowSelect))
-	}
+
+	m.TDrawGrid.SetOptions(NewSet(GoRangeSelect, GoRowSelect))
+
 	m.TDrawGrid.SetRowCount(1)
 	m.TDrawGrid.SetColCount(4)
 	m.TDrawGrid.SetFixedRows(0)

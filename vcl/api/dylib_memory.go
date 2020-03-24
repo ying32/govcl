@@ -11,13 +11,11 @@
 
 // 编译时加上 -tags memorydll
 
-// 内存加载libvcl.dll或者liblcl.dll
+// 内存加载liblcl.dll
 // 注：内存加载dll容易被杀毒软件杀掉。。。
 package api
 
 import (
-	"fmt"
-
 	"github.com/ying32/govcl/vcl/api/memorydll"
 	"github.com/ying32/govcl/vcl/win"
 )
@@ -33,8 +31,10 @@ func loadUILib() *memorydll.LazyDLL {
 		panic("Unable to load dll, unknown reason.")
 		return nil
 	}
-	IsloadedLcl = getLibType(lib) == LtLCL
-	fmt.Println(guiLibTypeString())
+	if getLibType(lib) != LtLCL {
+		// 当前已经不再支持VCL库了。如果有需要，请使用最后一个支持VCL版本的代码：https://github.com/ying32/govcl/tree/last-vcl-support。
+		panic("The VCL library is no longer supported. If necessary, please use the last code that supports VCL version: https://github.com/ying32/govcl/tree/last-vcl-support.")
+	}
 	return lib
 }
 

@@ -175,10 +175,6 @@ func DMessageDlg(Msg string, DlgType TMsgDlgType, Buttons TMsgDlgButtons, HelpCt
 	return int32(ret)
 }
 
-func DSetReportMemoryLeaksOnShutdown(v bool) {
-	dSetReportMemoryLeaksOnShutdown.Call(GoBoolToDBool(v))
-}
-
 func DTextToShortCut(val string) TShortCut {
 	ret, _, _ := dTextToShortCut.Call(GoStrToDStr(val))
 	return TShortCut(ret)

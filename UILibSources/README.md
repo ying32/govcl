@@ -4,36 +4,11 @@
 
 ----  
 
-### libvcl
-
-libvcl 基于Delphi 10.2.1版本, 其它版本编译出现的问题请自行解决相关。
-
-libvcl工程源码位于"govcl\UILibSources\libvcl"目录。`libvcl限仅于windows`     
-
-编译步骤：  
-
-
-* 1、安装好Delphi 10.2.1。  
-* 2、双击vcl.dproj或者vcl.dpr在IDE中打开工程。  
-* 3、在右边Project Manager的File列表中选择Build Configurations为Release。
-* 4、在右边Project Manager的File列表中选择Target Platforms (32-bit Windows或者64-bit Windows)。  
-* 5、按下Ctrl+F9（或直接在Release配置右键，选择Make或者Build）。  
-
-因为配置中设置了相关编译后的操作，编译完后的二进制可以在以下目录查看  
-
-> ..\libvcl.dll  
-> ..\x64\libvclx64.dll    
- 
-**注：源码无第三方依赖库，安装好相关版本Delphi后直接编译即可。**
-
-
-----
-
 ### liblcl 
 
 liblcl 基于Lazarus 2.0.6版本 FPC 3.0.4，具体各个平台的安装方式自行参考官网安装说明, 其它版本编译出现的问题请自行解决相关。。
 
-libvcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Windows、Linux、MacOS`。       
+liblcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Windows、Linux、MacOS`。       
 
 编译步骤：  
 

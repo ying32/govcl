@@ -1299,18 +1299,6 @@ func (t *TToolBar) SetMargins(value *TMargins) {
     ToolBar_SetMargins(t.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (t *TToolBar) CustomHint() *TCustomHint {
-    return AsCustomHint(ToolBar_GetCustomHint(t.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (t *TToolBar) SetCustomHint(value IComponent) {
-    ToolBar_SetCustomHint(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TToolBar) ComponentCount() int32 {

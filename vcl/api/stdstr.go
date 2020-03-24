@@ -19,11 +19,7 @@ var (
 
 // 初始系统字符串转换相关
 func initStdString() error {
-	if IsloadedLcl {
-		initLCLStdStr()
-	} else {
-		initVCLStdStr()
-	}
+	initLCLStdStr()
 	return nil
 }
 

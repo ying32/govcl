@@ -681,14 +681,6 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				AsObject(getVal(0)),
 				(*bool)(unsafe.Pointer(getVal(1))))
 
-			//type TItemDeletedByUserEvent func(sender IObject, item *TJumpListItem, categoryName string, fromTasks bool)
-		case TItemDeletedByUserEvent:
-			v.(TItemDeletedByUserEvent)(
-				AsObject(getVal(0)),
-				AsJumpListItem(getVal(1)),
-				DStrToGoStr(getVal(2)),
-				DBoolToGoBool(getVal(3)))
-
 			//type TCreatingListErrorEvent func(sender IObject, winErrorCode uint32, errorDescription string, handled *bool)
 		case TCreatingListErrorEvent:
 			v.(TCreatingListErrorEvent)(

@@ -1163,18 +1163,6 @@ func (s *TScrollBox) SetMargins(value *TMargins) {
     ScrollBox_SetMargins(s.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (s *TScrollBox) CustomHint() *TCustomHint {
-    return AsCustomHint(ScrollBox_GetCustomHint(s.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (s *TScrollBox) SetCustomHint(value IComponent) {
-    ScrollBox_SetCustomHint(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TScrollBox) ComponentCount() int32 {

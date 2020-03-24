@@ -10,11 +10,6 @@ package rtl
 
 import "github.com/ying32/govcl/vcl/api"
 
-// 程序结束时报告内存泄露，总有2-4字节的未知泄露位置
-func SetReportMemoryLeaksOnShutdown(v bool) {
-	api.DSetReportMemoryLeaksOnShutdown(v)
-}
-
 // Shortcut
 
 /*

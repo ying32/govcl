@@ -1147,18 +1147,6 @@ func (b *TButton) SetMargins(value *TMargins) {
     Button_SetMargins(b.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (b *TButton) CustomHint() *TCustomHint {
-    return AsCustomHint(Button_GetCustomHint(b.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (b *TButton) SetCustomHint(value IComponent) {
-    Button_SetCustomHint(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TButton) ComponentCount() int32 {

@@ -619,18 +619,6 @@ func (s *TSplitter) SetMargins(value *TMargins) {
     Splitter_SetMargins(s.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (s *TSplitter) CustomHint() *TCustomHint {
-    return AsCustomHint(Splitter_GetCustomHint(s.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (s *TSplitter) SetCustomHint(value IComponent) {
-    Splitter_SetCustomHint(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TSplitter) ComponentCount() int32 {

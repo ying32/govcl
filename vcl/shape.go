@@ -725,18 +725,6 @@ func (s *TShape) SetMargins(value *TMargins) {
     Shape_SetMargins(s.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (s *TShape) CustomHint() *TCustomHint {
-    return AsCustomHint(Shape_GetCustomHint(s.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (s *TShape) SetCustomHint(value IComponent) {
-    Shape_SetCustomHint(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TShape) ComponentCount() int32 {

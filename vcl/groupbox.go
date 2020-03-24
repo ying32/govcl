@@ -1059,18 +1059,6 @@ func (g *TGroupBox) SetMargins(value *TMargins) {
     GroupBox_SetMargins(g.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (g *TGroupBox) CustomHint() *TCustomHint {
-    return AsCustomHint(GroupBox_GetCustomHint(g.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (g *TGroupBox) SetCustomHint(value IComponent) {
-    GroupBox_SetCustomHint(g.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (g *TGroupBox) ComponentCount() int32 {

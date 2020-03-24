@@ -9,13 +9,12 @@
 package api
 
 import (
-	"fmt"
 	"unsafe"
 )
 
 // ---------------- liblcl ----------------
 func initLCLStdStr() {
-	fmt.Println("Library Character Encoding: UTF-8")
+	//fmt.Println("Library Character Encoding: UTF-8")
 	GoStrToDStr = lcl_GoStrToDStr
 	DStrToGoStr = lcl_DStrToGoStr
 	getBuff = lcl_getBuff

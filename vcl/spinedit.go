@@ -1238,18 +1238,6 @@ func (s *TSpinEdit) SetMargins(value *TMargins) {
     SpinEdit_SetMargins(s.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (s *TSpinEdit) CustomHint() *TCustomHint {
-    return AsCustomHint(SpinEdit_GetCustomHint(s.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (s *TSpinEdit) SetCustomHint(value IComponent) {
-    SpinEdit_SetCustomHint(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TSpinEdit) ComponentCount() int32 {

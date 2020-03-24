@@ -1091,18 +1091,6 @@ func (t *TTrackBar) SetMargins(value *TMargins) {
     TrackBar_SetMargins(t.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (t *TTrackBar) CustomHint() *TCustomHint {
-    return AsCustomHint(TrackBar_GetCustomHint(t.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (t *TTrackBar) SetCustomHint(value IComponent) {
-    TrackBar_SetCustomHint(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TTrackBar) ComponentCount() int32 {

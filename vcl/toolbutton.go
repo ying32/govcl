@@ -837,18 +837,6 @@ func (t *TToolButton) SetMargins(value *TMargins) {
     ToolButton_SetMargins(t.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (t *TToolButton) CustomHint() *TCustomHint {
-    return AsCustomHint(ToolButton_GetCustomHint(t.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (t *TToolButton) SetCustomHint(value IComponent) {
-    ToolButton_SetCustomHint(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TToolButton) ComponentCount() int32 {

@@ -1073,18 +1073,6 @@ func (s *TStatusBar) SetMargins(value *TMargins) {
     StatusBar_SetMargins(s.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (s *TStatusBar) CustomHint() *TCustomHint {
-    return AsCustomHint(StatusBar_GetCustomHint(s.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (s *TStatusBar) SetCustomHint(value IComponent) {
-    StatusBar_SetCustomHint(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TStatusBar) ComponentCount() int32 {

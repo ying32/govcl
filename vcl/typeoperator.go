@@ -220,33 +220,6 @@ func (i TIs) TrayIcon() bool {
 //}
 
 
-func (i TIs) BalloonHint() bool {
-    return BalloonHint_InheritsFrom(uintptr(i), TBalloonHintClass())
-}
-
-//func (a TAs) BalloonHint() *TBalloonHint {
-//    return AsBalloonHint(uintptr(a))
-//}
-
-
-func (i TIs) CategoryPanelGroup() bool {
-    return CategoryPanelGroup_InheritsFrom(uintptr(i), TCategoryPanelGroupClass())
-}
-
-//func (a TAs) CategoryPanelGroup() *TCategoryPanelGroup {
-//    return AsCategoryPanelGroup(uintptr(a))
-//}
-
-
-func (i TIs) CategoryPanel() bool {
-    return CategoryPanel_InheritsFrom(uintptr(i), TCategoryPanelClass())
-}
-
-//func (a TAs) CategoryPanel() *TCategoryPanel {
-//    return AsCategoryPanel(uintptr(a))
-//}
-
-
 func (i TIs) OpenDialog() bool {
     return OpenDialog_InheritsFrom(uintptr(i), TOpenDialogClass())
 }
@@ -310,33 +283,6 @@ func (i TIs) SavePictureDialog() bool {
 //}
 
 
-func (i TIs) SaveTextFileDialog() bool {
-    return SaveTextFileDialog_InheritsFrom(uintptr(i), TSaveTextFileDialogClass())
-}
-
-//func (a TAs) SaveTextFileDialog() *TSaveTextFileDialog {
-//    return AsSaveTextFileDialog(uintptr(a))
-//}
-
-
-func (i TIs) OpenTextFileDialog() bool {
-    return OpenTextFileDialog_InheritsFrom(uintptr(i), TOpenTextFileDialogClass())
-}
-
-//func (a TAs) OpenTextFileDialog() *TOpenTextFileDialog {
-//    return AsOpenTextFileDialog(uintptr(a))
-//}
-
-
-func (i TIs) RichEdit() bool {
-    return RichEdit_InheritsFrom(uintptr(i), TRichEditClass())
-}
-
-//func (a TAs) RichEdit() *TRichEdit {
-//    return AsRichEdit(uintptr(a))
-//}
-
-
 func (i TIs) TrackBar() bool {
     return TrackBar_InheritsFrom(uintptr(i), TTrackBarClass())
 }
@@ -370,15 +316,6 @@ func (i TIs) ProgressBar() bool {
 
 //func (a TAs) ProgressBar() *TProgressBar {
 //    return AsProgressBar(uintptr(a))
-//}
-
-
-func (i TIs) HotKey() bool {
-    return HotKey_InheritsFrom(uintptr(i), THotKeyClass())
-}
-
-//func (a TAs) HotKey() *THotKey {
-//    return AsHotKey(uintptr(a))
 //}
 
 
@@ -535,15 +472,6 @@ func (i TIs) MenuItem() bool {
 //}
 
 
-func (i TIs) ListGroups() bool {
-    return ListGroups_InheritsFrom(uintptr(i), TListGroupsClass())
-}
-
-//func (a TAs) ListGroups() *TListGroups {
-//    return AsListGroups(uintptr(a))
-//}
-
-
 func (i TIs) Picture() bool {
     return Picture_InheritsFrom(uintptr(i), TPictureClass())
 }
@@ -649,15 +577,6 @@ func (i TIs) Mouse() bool {
 
 //func (a TAs) Mouse() *TMouse {
 //    return AsMouse(uintptr(a))
-//}
-
-
-func (i TIs) ListGroup() bool {
-    return ListGroup_InheritsFrom(uintptr(i), TListGroupClass())
-}
-
-//func (a TAs) ListGroup() *TListGroup {
-//    return AsListGroup(uintptr(a))
 //}
 
 
@@ -895,24 +814,6 @@ func (i TIs) MonthCalColors() bool {
 //}
 
 
-func (i TIs) ParaAttributes() bool {
-    return ParaAttributes_InheritsFrom(uintptr(i), TParaAttributesClass())
-}
-
-//func (a TAs) ParaAttributes() *TParaAttributes {
-//    return AsParaAttributes(uintptr(a))
-//}
-
-
-func (i TIs) TextAttributes() bool {
-    return TextAttributes_InheritsFrom(uintptr(i), TTextAttributesClass())
-}
-
-//func (a TAs) TextAttributes() *TTextAttributes {
-//    return AsTextAttributes(uintptr(a))
-//}
-
-
 func (i TIs) IconOptions() bool {
     return IconOptions_InheritsFrom(uintptr(i), TIconOptionsClass())
 }
@@ -937,15 +838,6 @@ func (i TIs) ScrollBar() bool {
 
 //func (a TAs) ScrollBar() *TScrollBar {
 //    return AsScrollBar(uintptr(a))
-//}
-
-
-func (i TIs) CustomHint() bool {
-    return CustomHint_InheritsFrom(uintptr(i), TCustomHintClass())
-}
-
-//func (a TAs) CustomHint() *TCustomHint {
-//    return AsCustomHint(uintptr(a))
 //}
 
 
@@ -1162,87 +1054,6 @@ func (i TIs) CoolBand() bool {
 
 //func (a TAs) CoolBand() *TCoolBand {
 //    return AsCoolBand(uintptr(a))
-//}
-
-
-func (i TIs) JumpList() bool {
-    return JumpList_InheritsFrom(uintptr(i), TJumpListClass())
-}
-
-//func (a TAs) JumpList() *TJumpList {
-//    return AsJumpList(uintptr(a))
-//}
-
-
-func (i TIs) JumpListItem() bool {
-    return JumpListItem_InheritsFrom(uintptr(i), TJumpListItemClass())
-}
-
-//func (a TAs) JumpListItem() *TJumpListItem {
-//    return AsJumpListItem(uintptr(a))
-//}
-
-
-func (i TIs) Taskbar() bool {
-    return Taskbar_InheritsFrom(uintptr(i), TTaskbarClass())
-}
-
-//func (a TAs) Taskbar() *TTaskbar {
-//    return AsTaskbar(uintptr(a))
-//}
-
-
-func (i TIs) ThumbBarButtonList() bool {
-    return ThumbBarButtonList_InheritsFrom(uintptr(i), TThumbBarButtonListClass())
-}
-
-//func (a TAs) ThumbBarButtonList() *TThumbBarButtonList {
-//    return AsThumbBarButtonList(uintptr(a))
-//}
-
-
-func (i TIs) PreviewClipRegion() bool {
-    return PreviewClipRegion_InheritsFrom(uintptr(i), TPreviewClipRegionClass())
-}
-
-//func (a TAs) PreviewClipRegion() *TPreviewClipRegion {
-//    return AsPreviewClipRegion(uintptr(a))
-//}
-
-
-func (i TIs) ThumbBarButton() bool {
-    return ThumbBarButton_InheritsFrom(uintptr(i), TThumbBarButtonClass())
-}
-
-//func (a TAs) ThumbBarButton() *TThumbBarButton {
-//    return AsThumbBarButton(uintptr(a))
-//}
-
-
-func (i TIs) JumpListCollection() bool {
-    return JumpListCollection_InheritsFrom(uintptr(i), TJumpListCollectionClass())
-}
-
-//func (a TAs) JumpListCollection() *TJumpListCollection {
-//    return AsJumpListCollection(uintptr(a))
-//}
-
-
-func (i TIs) JumpCategories() bool {
-    return JumpCategories_InheritsFrom(uintptr(i), TJumpCategoriesClass())
-}
-
-//func (a TAs) JumpCategories() *TJumpCategories {
-//    return AsJumpCategories(uintptr(a))
-//}
-
-
-func (i TIs) JumpCategoryItem() bool {
-    return JumpCategoryItem_InheritsFrom(uintptr(i), TJumpCategoryItemClass())
-}
-
-//func (a TAs) JumpCategoryItem() *TJumpCategoryItem {
-//    return AsJumpCategoryItem(uintptr(a))
 //}
 
 

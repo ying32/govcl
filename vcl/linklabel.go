@@ -1075,18 +1075,6 @@ func (l *TLinkLabel) SetMargins(value *TMargins) {
     LinkLabel_SetMargins(l.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (l *TLinkLabel) CustomHint() *TCustomHint {
-    return AsCustomHint(LinkLabel_GetCustomHint(l.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (l *TLinkLabel) SetCustomHint(value IComponent) {
-    LinkLabel_SetCustomHint(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TLinkLabel) ComponentCount() int32 {

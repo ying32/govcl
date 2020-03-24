@@ -1332,18 +1332,6 @@ func (e *TEdit) SetMargins(value *TMargins) {
     Edit_SetMargins(e.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (e *TEdit) CustomHint() *TCustomHint {
-    return AsCustomHint(Edit_GetCustomHint(e.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (e *TEdit) SetCustomHint(value IComponent) {
-    Edit_SetCustomHint(e.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (e *TEdit) ComponentCount() int32 {

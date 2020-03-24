@@ -691,14 +691,6 @@ func (l *TListView) SetGridLines(value bool) {
     ListView_SetGridLines(l.instance, value)
 }
 
-func (l *TListView) Groups() *TListGroups {
-    return AsListGroups(ListView_GetGroups(l.instance))
-}
-
-func (l *TListView) SetGroups(value *TListGroups) {
-    ListView_SetGroups(l.instance, CheckPtr(value))
-}
-
 // CN: 获取隐藏选择。
 // EN: .
 func (l *TListView) HideSelection() bool {
@@ -793,14 +785,6 @@ func (l *TListView) GroupHeaderImages() *TImageList {
 
 func (l *TListView) SetGroupHeaderImages(value IComponent) {
     ListView_SetGroupHeaderImages(l.instance, CheckPtr(value))
-}
-
-func (l *TListView) GroupView() bool {
-    return ListView_GetGroupView(l.instance)
-}
-
-func (l *TListView) SetGroupView(value bool) {
-    ListView_SetGroupView(l.instance, value)
 }
 
 // CN: 获取只读。
@@ -1501,18 +1485,6 @@ func (l *TListView) Margins() *TMargins {
 // EN: Set Edge moment, only VCL is valid.
 func (l *TListView) SetMargins(value *TMargins) {
     ListView_SetMargins(l.instance, CheckPtr(value))
-}
-
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (l *TListView) CustomHint() *TCustomHint {
-    return AsCustomHint(ListView_GetCustomHint(l.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (l *TListView) SetCustomHint(value IComponent) {
-    ListView_SetCustomHint(l.instance, CheckPtr(value))
 }
 
 // CN: 获取组件总数。

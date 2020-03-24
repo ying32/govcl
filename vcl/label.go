@@ -867,18 +867,6 @@ func (l *TLabel) SetMargins(value *TMargins) {
     Label_SetMargins(l.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (l *TLabel) CustomHint() *TCustomHint {
-    return AsCustomHint(Label_GetCustomHint(l.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (l *TLabel) SetCustomHint(value IComponent) {
-    Label_SetCustomHint(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TLabel) ComponentCount() int32 {

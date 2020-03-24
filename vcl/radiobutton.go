@@ -1087,18 +1087,6 @@ func (r *TRadioButton) SetMargins(value *TMargins) {
     RadioButton_SetMargins(r.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (r *TRadioButton) CustomHint() *TCustomHint {
-    return AsCustomHint(RadioButton_GetCustomHint(r.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (r *TRadioButton) SetCustomHint(value IComponent) {
-    RadioButton_SetCustomHint(r.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (r *TRadioButton) ComponentCount() int32 {

@@ -1039,18 +1039,6 @@ func (r *TRadioGroup) SetMargins(value *TMargins) {
     RadioGroup_SetMargins(r.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (r *TRadioGroup) CustomHint() *TCustomHint {
-    return AsCustomHint(RadioGroup_GetCustomHint(r.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (r *TRadioGroup) SetCustomHint(value IComponent) {
-    RadioGroup_SetCustomHint(r.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (r *TRadioGroup) ComponentCount() int32 {

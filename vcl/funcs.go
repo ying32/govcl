@@ -132,6 +132,7 @@ func RunApp(forms ...interface{}) {
 
 // CN: 当前是否使用LCL库。
 // EN: Whether it is currently an LCL library.
+// Deprecated
 func LclLoaded() bool {
-	return api.IsloadedLcl
+	return true
 }

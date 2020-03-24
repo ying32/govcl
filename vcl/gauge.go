@@ -727,18 +727,6 @@ func (g *TGauge) SetMargins(value *TMargins) {
     Gauge_SetMargins(g.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (g *TGauge) CustomHint() *TCustomHint {
-    return AsCustomHint(Gauge_GetCustomHint(g.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (g *TGauge) SetCustomHint(value IComponent) {
-    Gauge_SetCustomHint(g.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (g *TGauge) ComponentCount() int32 {

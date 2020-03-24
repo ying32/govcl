@@ -94,7 +94,6 @@ type IControl interface {
 	Font() *TFont
 	SetFont(*TFont)
 
-	CustomHint() *TCustomHint
 	SetCustomHint(IComponent)
 
 	ParentCustomHint() bool

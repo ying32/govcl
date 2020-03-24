@@ -1318,18 +1318,6 @@ func (m *TMaskEdit) SetMargins(value *TMargins) {
     MaskEdit_SetMargins(m.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (m *TMaskEdit) CustomHint() *TCustomHint {
-    return AsCustomHint(MaskEdit_GetCustomHint(m.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (m *TMaskEdit) SetCustomHint(value IComponent) {
-    MaskEdit_SetCustomHint(m.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (m *TMaskEdit) ComponentCount() int32 {

@@ -1279,18 +1279,6 @@ func (c *TCheckListBox) SetMargins(value *TMargins) {
     CheckListBox_SetMargins(c.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (c *TCheckListBox) CustomHint() *TCustomHint {
-    return AsCustomHint(CheckListBox_GetCustomHint(c.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (c *TCheckListBox) SetCustomHint(value IComponent) {
-    CheckListBox_SetCustomHint(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TCheckListBox) ComponentCount() int32 {

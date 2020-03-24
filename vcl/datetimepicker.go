@@ -1150,18 +1150,6 @@ func (d *TDateTimePicker) SetMargins(value *TMargins) {
     DateTimePicker_SetMargins(d.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (d *TDateTimePicker) CustomHint() *TCustomHint {
-    return AsCustomHint(DateTimePicker_GetCustomHint(d.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (d *TDateTimePicker) SetCustomHint(value IComponent) {
-    DateTimePicker_SetCustomHint(d.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (d *TDateTimePicker) ComponentCount() int32 {

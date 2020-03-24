@@ -1356,18 +1356,6 @@ func (l *TLabeledEdit) SetMargins(value *TMargins) {
     LabeledEdit_SetMargins(l.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (l *TLabeledEdit) CustomHint() *TCustomHint {
-    return AsCustomHint(LabeledEdit_GetCustomHint(l.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (l *TLabeledEdit) SetCustomHint(value IComponent) {
-    LabeledEdit_SetCustomHint(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TLabeledEdit) ComponentCount() int32 {

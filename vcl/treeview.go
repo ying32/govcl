@@ -1431,18 +1431,6 @@ func (t *TTreeView) SetMargins(value *TMargins) {
     TreeView_SetMargins(t.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (t *TTreeView) CustomHint() *TCustomHint {
-    return AsCustomHint(TreeView_GetCustomHint(t.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (t *TTreeView) SetCustomHint(value IComponent) {
-    TreeView_SetCustomHint(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TTreeView) ComponentCount() int32 {

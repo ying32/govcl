@@ -805,18 +805,6 @@ func (i *TImageButton) SetMargins(value *TMargins) {
     ImageButton_SetMargins(i.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (i *TImageButton) CustomHint() *TCustomHint {
-    return AsCustomHint(ImageButton_GetCustomHint(i.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (i *TImageButton) SetCustomHint(value IComponent) {
-    ImageButton_SetCustomHint(i.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (i *TImageButton) ComponentCount() int32 {

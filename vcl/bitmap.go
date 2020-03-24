@@ -277,14 +277,6 @@ func (b *TBitmap) SetTransparentMode(value TTransparentMode) {
     Bitmap_SetTransparentMode(b.instance, value)
 }
 
-func (b *TBitmap) AlphaFormat() TAlphaFormat {
-    return Bitmap_GetAlphaFormat(b.instance)
-}
-
-func (b *TBitmap) SetAlphaFormat(value TAlphaFormat) {
-    Bitmap_SetAlphaFormat(b.instance, value)
-}
-
 func (b *TBitmap) Empty() bool {
     return Bitmap_GetEmpty(b.instance)
 }

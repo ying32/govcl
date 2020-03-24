@@ -583,18 +583,6 @@ func (c *TControl) SetMargins(value *TMargins) {
     Control_SetMargins(c.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (c *TControl) CustomHint() *TCustomHint {
-    return AsCustomHint(Control_GetCustomHint(c.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (c *TControl) SetCustomHint(value IComponent) {
-    Control_SetCustomHint(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TControl) ComponentCount() int32 {

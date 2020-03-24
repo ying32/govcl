@@ -773,18 +773,6 @@ func (x *TXButton) SetMargins(value *TMargins) {
     XButton_SetMargins(x.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (x *TXButton) CustomHint() *TCustomHint {
-    return AsCustomHint(XButton_GetCustomHint(x.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (x *TXButton) SetCustomHint(value IComponent) {
-    XButton_SetCustomHint(x.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (x *TXButton) ComponentCount() int32 {

@@ -1333,18 +1333,6 @@ func (d *TDrawGrid) SetMargins(value *TMargins) {
     DrawGrid_SetMargins(d.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (d *TDrawGrid) CustomHint() *TCustomHint {
-    return AsCustomHint(DrawGrid_GetCustomHint(d.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (d *TDrawGrid) SetCustomHint(value IComponent) {
-    DrawGrid_SetCustomHint(d.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (d *TDrawGrid) ComponentCount() int32 {

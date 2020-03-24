@@ -1284,18 +1284,6 @@ func (c *TComboBox) SetMargins(value *TMargins) {
     ComboBox_SetMargins(c.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (c *TComboBox) CustomHint() *TCustomHint {
-    return AsCustomHint(ComboBox_GetCustomHint(c.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (c *TComboBox) SetCustomHint(value IComponent) {
-    ComboBox_SetCustomHint(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TComboBox) ComponentCount() int32 {

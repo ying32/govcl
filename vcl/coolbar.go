@@ -1151,18 +1151,6 @@ func (c *TCoolBar) SetMargins(value *TMargins) {
     CoolBar_SetMargins(c.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (c *TCoolBar) CustomHint() *TCustomHint {
-    return AsCustomHint(CoolBar_GetCustomHint(c.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (c *TCoolBar) SetCustomHint(value IComponent) {
-    CoolBar_SetCustomHint(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TCoolBar) ComponentCount() int32 {

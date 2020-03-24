@@ -6,7 +6,6 @@ import (
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 )
 
@@ -60,22 +59,22 @@ func main() {
 	pm.Items().Add(item)
 	trayicon.SetPopupMenu(pm)
 	// lcl库得手指定，在windows下，如果实例资源中存在一个名为 MAINICON 的图标资源，则会自动加载，下面只是应对于linux与macOS下
-	if rtl.LcLLoaded() {
-		if runtime.GOOS != "windows" {
-			// 这是使用文件加载方法，不考虑外部文件的话，可以用新的内存方法加载
-			//icon := vcl.NewIcon()
-			//icon.LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "/2.ico")
-			//trayicon.SetIcon(icon)
-			//icon.Free()
-			// 将图标应用到Application中的Icon中，到时候随时可以使用
-			// 但也可不使用
-			//loadMainIconFromStream(vcl.Application.Icon())
-			loadMainIconFromStream(trayicon.Icon())
 
-		} else {
-			//trayicon.SetIcon(vcl.Application.Icon())
-		}
+	if runtime.GOOS != "windows" {
+		// 这是使用文件加载方法，不考虑外部文件的话，可以用新的内存方法加载
+		//icon := vcl.NewIcon()
+		//icon.LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "/2.ico")
+		//trayicon.SetIcon(icon)
+		//icon.Free()
+		// 将图标应用到Application中的Icon中，到时候随时可以使用
+		// 但也可不使用
+		//loadMainIconFromStream(vcl.Application.Icon())
+		loadMainIconFromStream(trayicon.Icon())
+
+	} else {
+		//trayicon.SetIcon(vcl.Application.Icon())
 	}
+
 	trayicon.SetHint(mainForm.Caption())
 	trayicon.SetVisible(true)
 

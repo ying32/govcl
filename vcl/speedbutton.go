@@ -775,18 +775,6 @@ func (s *TSpeedButton) SetMargins(value *TMargins) {
     SpeedButton_SetMargins(s.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (s *TSpeedButton) CustomHint() *TCustomHint {
-    return AsCustomHint(SpeedButton_GetCustomHint(s.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (s *TSpeedButton) SetCustomHint(value IComponent) {
-    SpeedButton_SetCustomHint(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TSpeedButton) ComponentCount() int32 {

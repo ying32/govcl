@@ -11,92 +11,41 @@
 package api
 
 import (
-	"os"
-	"os/exec"
-	"path/filepath"
 	"runtime"
 
 	"github.com/ying32/govcl/pkgs/libname"
 
-	"fmt"
-
 	"github.com/ying32/dylib"
 )
 
-const (
-	// 各个平台对应的lib名
-	libvcldll    = "libvcl.dll"
-	libvclx64dll = "libvclx64.dll"
-	liblcldll    = "liblcl.dll"
-	liblclso     = "liblcl.so"
-	liblcldylib  = "liblcl.dylib"
+var (
+	platformExtNames = map[string]string{
+		"windows": ".dll",
+		"linux":   ".so",
+		"darwin":  ".dylib",
+	}
 )
-
-// Windows下专用的
-func windowsDLLExists(name string) bool {
-	file, _ := exec.LookPath(os.Args[0])
-	dllFileName := filepath.Dir(file) + "\\" + name
-	_, err := os.Stat(dllFileName)
-	if err == nil {
-		return true
-	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	return false
-}
 
 // 加载库
 func loadUILib() *dylib.LazyDLL {
-	libName := ""
+	libName := "liblcl"
 	if libname.LibName == "" {
-		switch runtime.GOOS {
-		case "windows":
-			if runtime.GOARCH == "amd64" {
-				libName = libvclx64dll
-			} else {
-				libName = libvcldll
-			}
-			// 如果exe目录下存在libvclx64.dll且为x64系统
-			if runtime.GOARCH == "amd64" && windowsDLLExists(libvclx64dll) {
-				libName = libvclx64dll
-			} else
-			// 如果当前存在
-			if runtime.GOARCH == "386" && windowsDLLExists(libvcldll) {
-				libName = libvcldll
-			} else
-			// 如果当下目录存在liblcl则加载
-			if windowsDLLExists(liblcldll) {
-				libName = liblcldll
-			}
-		case "linux":
-			libName = liblclso
-		case "darwin":
-			libName = liblcldylib
+		if ext, ok := platformExtNames[runtime.GOOS]; ok {
+			libName += ext
 		}
 	} else {
 		libName = libname.LibName
 	}
-	fmt.Println("LoadLibrary:", libName)
+	//fmt.Println("LoadLibrary:", libName)
 	lib := dylib.NewLazyDLL(libName)
-	// 这里做个判断，当libvcl.dll或者libvclx64.dll加载失败时尝试加载liblcl.dll
-	// 这样做主要为以后考虑，对于某些人来说怕什么的来说，可以使用非Delphi的组件
 	err := lib.Load()
-
-	// 只有当 libname.LibName 为空的时候才去搜索相关的
-	if libname.LibName == "" {
-		if err != nil && runtime.GOOS == "windows" && (libName == libvcldll || libName == libvclx64dll) {
-			fmt.Println(fmt.Sprintf("%s does not exist, trying to load liblcl.dll.", libName))
-			lib = dylib.NewLazyDLL(liblcldll)
-			err = lib.Load()
-		}
-	}
 	if err != nil {
 		panic(err)
 	}
-
-	IsloadedLcl = getLibType(lib) == LtLCL
-	fmt.Println(guiLibTypeString())
+	if getLibType(lib) != LtLCL {
+		// 当前已经不再支持VCL库了。如果有需要，请使用最后一个支持VCL版本的代码：https://github.com/ying32/govcl/tree/last-vcl-support。
+		panic("The VCL library is no longer supported. If necessary, please use the last code that supports VCL version: https://github.com/ying32/govcl/tree/last-vcl-support.")
+	}
 
 	return lib
 }

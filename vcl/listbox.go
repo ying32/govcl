@@ -1239,18 +1239,6 @@ func (l *TListBox) SetMargins(value *TMargins) {
     ListBox_SetMargins(l.instance, CheckPtr(value))
 }
 
-// CN: 获取自定义提示。
-// EN: Get custom hint.
-func (l *TListBox) CustomHint() *TCustomHint {
-    return AsCustomHint(ListBox_GetCustomHint(l.instance))
-}
-
-// CN: 设置自定义提示。
-// EN: Set custom hint.
-func (l *TListBox) SetCustomHint(value IComponent) {
-    ListBox_SetCustomHint(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TListBox) ComponentCount() int32 {

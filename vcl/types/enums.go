@@ -9,7 +9,7 @@
 package types
 
 /*
-  注意：Delphi中所有集合这里全部使用TSet(uint32)表示，也就是说最多32个元素
+  注意：Free Pascal中所有集合这里全部使用TSet(uint32)表示，也就是说最多32个元素
 
 */
 
@@ -1697,7 +1697,31 @@ const (
 	GdsGradient
 )
 
-type TGridOption int32
+//type TGridOption int32
+//
+//const (
+//	GoFixedVertLine = iota + 0
+//	GoFixedHorzLine
+//	GoVertLine
+//	GoHorzLine
+//	GoRangeSelect
+//	GoDrawFocusSelected
+//	GoRowSizing
+//	GoColSizing
+//	GoRowMoving
+//	GoColMoving
+//	GoEditing
+//	GoTabs
+//	GoRowSelect
+//	GoAlwaysShowEditor
+//	GoThumbTracking
+//	GoFixedColClick
+//	GoFixedRowClick
+//	GoFixedHotTrack
+//)
+
+// Lazarus的Grids选项，跟Delphi有点不一样。
+type TGridOption = int32
 
 const (
 	GoFixedVertLine = iota + 0
@@ -1711,52 +1735,28 @@ const (
 	GoRowMoving
 	GoColMoving
 	GoEditing
+	GoAutoAddRows
 	GoTabs
 	GoRowSelect
 	GoAlwaysShowEditor
 	GoThumbTracking
-	GoFixedColClick
-	GoFixedRowClick
-	GoFixedHotTrack
-)
-
-// Lazarus的Grids选项，跟Delphi有点不一样。
-type TGridOptionLz = int32
-
-const (
-	GoLzFixedVertLine = iota + 0
-	GoLzFixedHorzLine
-	GoLzVertLine
-	GoLzHorzLine
-	GoLzRangeSelect
-	GoLzDrawFocusSelected
-	GoLzRowSizing
-	GoLzColSizing
-	GoLzRowMoving
-	GoLzColMoving
-	GoLzEditing
-	GoLzAutoAddRows
-	GoLzTabs
-	GoLzRowSelect
-	GoLzAlwaysShowEditor
-	GoLzThumbTracking
 	// Additional Options
-	GoLzColSpanning                 // Enable cellextent calcs
-	GoLzRelaxedRowSelect            // User can see focused cell on goRowSelect
-	GoLzDblClickAutoSize            // dblclicking columns borders (on hdrs) resize col.
-	GoLzSmoothScroll                // Switch scrolling mode (pixel scroll is by default)
-	GoLzFixedRowNumbering           // Ya
-	GoLzScrollKeepVisible           // keeps focused cell visible while scrolling
-	GoLzHeaderHotTracking           // Header cells change look when mouse is over them
-	GoLzHeaderPushedLook            // Header cells looks pushed when clicked
-	GoLzSelectionActive             // Setting grid.Selection moves also cell cursor
-	GoLzFixedColSizing              // Allow to resize fixed columns
-	GoLzDontScrollPartCell          // clicking partially visible cells will not scroll
-	GoLzCellHints                   // show individual cell hints
-	GoLzTruncCellHints              // show cell hints if cell text is too long
-	GoLzCellEllipsis                // show "..." if cell text is too long
-	GoLzAutoAddRowsSkipContentCheck //BB Also add a row (if AutoAddRows in Options) if last row is empty
-	GoLzRowHighlight                // Highlight the current Row
+	GoColSpanning                 // Enable cellextent calcs
+	GoRelaxedRowSelect            // User can see focused cell on goRowSelect
+	GoDblClickAutoSize            // dblclicking columns borders (on hdrs) resize col.
+	GoSmoothScroll                // Switch scrolling mode (pixel scroll is by default)
+	GoFixedRowNumbering           // Ya
+	GoScrollKeepVisible           // keeps focused cell visible while scrolling
+	GoHeaderHotTracking           // Header cells change look when mouse is over them
+	GoHeaderPushedLook            // Header cells looks pushed when clicked
+	GoSelectionActive             // Setting grid.Selection moves also cell cursor
+	GoFixedColSizing              // Allow to resize fixed columns
+	GoDontScrollPartCell          // clicking partially visible cells will not scroll
+	GoCellHints                   // show individual cell hints
+	GoTruncCellHints              // show cell hints if cell text is too long
+	GoCellEllipsis                // show "..." if cell text is too long
+	GoAutoAddRowsSkipContentCheck //BB Also add a row (if AutoAddRows in Options) if last row is empty
+	GoRowHighlight                // Highlight the current Row
 )
 
 // Delphi set of TGridOption,  Lazarus set of TGridOptionLz
