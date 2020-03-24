@@ -44,13 +44,13 @@ var resItems = map[string]string{
 	"SMsgDlgClose":       "关闭(&C)",
 
 	// VCL专有
-	"SSelectDirCap":  "选择目录",
-	"SDirNameCap":    "目录名(&N)：",
-	"SDrivesCap":     "驱动器(&R)：",
-	"SDirsCap":       "目录(&D)：",
-	"SFilesCap":      "文件(&F)：(*.*)",
-	"SNetworkCap":    "网络(&T)...",
-	"SEncodingLabel": "编码：",
+	//"SSelectDirCap":  "选择目录",
+	//"SDirNameCap":    "目录名(&N)：",
+	//"SDrivesCap":     "驱动器(&R)：",
+	//"SDirsCap":       "目录(&D)：",
+	//"SFilesCap":      "文件(&F)：(*.*)",
+	//"SNetworkCap":    "网络(&T)...",
+	//"SEncodingLabel": "编码：",
 
 	// LCL专有
 	// TFindDialog And TReplaceDialog
