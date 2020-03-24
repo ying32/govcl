@@ -252,7 +252,7 @@ func main() {
 	dtp := vcl.NewDateTimePicker(mainForm)
 	dtp.SetParent(mainForm)
 	dtp.SetBounds(left, top, 167, 25)
-	dtp.SetFormat("yyyy-MM-dd HH:mm:ss")
+	//dtp.SetFormat("yyyy-MM-dd HH:mm:ss")
 
 	top += dtp.Height() + 10
 

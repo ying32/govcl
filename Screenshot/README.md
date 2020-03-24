@@ -7,23 +7,19 @@
 ## Windows
 
 * test1  
-![截图1](1.png)   
+![截图1](govcl-win-1.jpg)   
 * test2  
-![截图2](2.png)      
+![截图2](govcl-win-2.jpg)      
 * 自绘(custom draw)    
-![绘图](draw.png)  
+![绘图](draw-win.jpg)  
 * ListView   
-![ListView](listview.png)  
-* Windows富文本框，紧限libvcl(RichEdit, only libvcl)    
-![RichEdit](richedit.png)  
+![ListView](listview.jpg)  
 * 标准控件(standard control)    
-![标准控件](std.png)  
-* 样式（皮肤）,仅限Windows libvcl(Style/skin, only windows libvcl)    
-![样式](style.png)   
+![标准控件](std.jpg)   
 * 四态图像按钮(image button)  
 ![图像按钮](imagebutton.jpg)   
 * 从资源中加载窗口(resouce form)   
-![basicResForm_Windows](basicResForm_windows_vcl.jpg)  
+![basicResForm_Windows](basicResForm_windows.jpg)  
 * libvcl MiniWebview   
 ![miniweb_libvcl_win](miniweb_libvcl_win.jpg) 
 * liblcl MiniWebview 

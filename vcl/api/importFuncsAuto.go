@@ -20343,6 +20343,11 @@ func ListView_SelectAll(obj uintptr)  {
     listView_SelectAll.Call(obj)
 }
 
+func ListView_CustomSort(obj uintptr, SortProc PFNLVCOMPARE, lParam int) bool {
+    ret, _, _ := listView_CustomSort.Call(obj, uintptr(SortProc) , uintptr(lParam) )
+    return DBoolToGoBool(ret)
+}
+
 func ListView_CanFocus(obj uintptr) bool {
     ret, _, _ := listView_CanFocus.Call(obj)
     return DBoolToGoBool(ret)

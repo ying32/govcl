@@ -53,7 +53,7 @@ func NewPlayControl(owner IComponent) *TPlayControl {
 	m.TDrawGrid.SetWidth(536)
 	m.TDrawGrid.SetHeight(397)
 
-	m.TDrawGrid.SetDrawingStyle(GdsThemed)
+	//m.TDrawGrid.SetDrawingStyle(GdsThemed)
 	// 加载时取消第一行永远被选中
 	m.TDrawGrid.SetSelection(TGridRect{-24, -24, -24, -24})
 

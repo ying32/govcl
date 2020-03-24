@@ -127,8 +127,6 @@ func main() {
 	lv3.SetViewStyle(types.VsReport)
 	lv3.SetGridLines(true)
 
-	lv3.SetGroupHeaderImages(imgList)
-	lv3.SetGroupView(true)
 	col = lv3.Columns().Add()
 	col.SetCaption("序号")
 	col.SetWidth(100)
@@ -143,7 +141,7 @@ func main() {
 	for i := 1; i <= 2; i++ {
 		item := lv3.Items().Add()
 		item.SetImageIndex(0)
-		item.SetGroupID(0)
+
 		// 第一列为Caption属性所管理
 		item.SetCaption(fmt.Sprintf("%d", i))
 		item.SubItems().Add(fmt.Sprintf("值：%d", i))
@@ -151,7 +149,7 @@ func main() {
 	for i := 1; i <= 2; i++ {
 		item := lv3.Items().Add()
 		item.SetImageIndex(0)
-		item.SetGroupID(1)
+
 		// 第一列为Caption属性所管理
 		item.SetCaption(fmt.Sprintf("%d", i))
 		item.SubItems().Add(fmt.Sprintf("值：%d", i))

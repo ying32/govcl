@@ -4496,6 +4496,7 @@ var (
     listView_DeleteSelected = libvcl.NewProc("ListView_DeleteSelected")
     listView_IsEditing = libvcl.NewProc("ListView_IsEditing")
     listView_SelectAll = libvcl.NewProc("ListView_SelectAll")
+    listView_CustomSort = libvcl.NewProc("ListView_CustomSort")
     listView_CanFocus = libvcl.NewProc("ListView_CanFocus")
     listView_ContainsControl = libvcl.NewProc("ListView_ContainsControl")
     listView_ControlAtPos = libvcl.NewProc("ListView_ControlAtPos")

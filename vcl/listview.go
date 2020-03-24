@@ -143,6 +143,10 @@ func (l *TListView) SelectAll() {
     ListView_SelectAll(l.instance)
 }
 
+func (l *TListView) CustomSort(SortProc PFNLVCOMPARE, lParam int) bool {
+    return ListView_CustomSort(l.instance, SortProc , lParam)
+}
+
 // CN: 是否可以获得焦点。
 // EN: .
 func (l *TListView) CanFocus() bool {
