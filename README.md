@@ -26,7 +26,7 @@
 ----
 
 ### 预编译GUI库二进制下载       
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-1.2.10.zip.svg)](https://github.com/ying32/govcl/releases/download/v1.2.10/Librarys-1.2.10.zip)  
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-2.0.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/Librarys-2.0.0.zip)  
 
 ### res2go工具下载（[文档](Tools/res2go)）  
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.19-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.9/res2go-1.0.19.zip)  
