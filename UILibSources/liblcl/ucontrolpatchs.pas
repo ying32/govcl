@@ -84,7 +84,8 @@ end;
 
 procedure TListView.DeleteSelected;
 begin
-
+  if ItemIndex <> -1 then
+    Items.Delete(ItemIndex);
 end;
 
 // 兼容版，因为内部Lazarus2.0起后有个兼容版本，但实际使用中并不兼容。
