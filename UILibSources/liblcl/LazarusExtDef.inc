@@ -35,38 +35,7 @@ begin
     Items.Delete(ItemIndex);
 end;
 
-// --------------- TListView ------------------
-type
 
-  { TListViewHelper }
-
-  TListViewHelper = class helper for TListView
-  public
-    procedure DeleteSelected;
-    function CustomSort2(SortProc: TLVCompare; lParam: PtrInt): Boolean;
-  end;
-
-procedure TListViewHelper.DeleteSelected;
-begin
-if ItemIndex <> -1 then
-  Items.Delete(ItemIndex);
-end;
-
-
-// 兼容版，因为内部Lazarus2.0起后有个兼容版本，但实际使用中并不兼容。
-function DefaultListViewSortProc(Item1, Item2: TListItem; AOptionalParam: PtrInt): Integer stdcall;
-begin
-  with Item1 do
-    if Assigned(TListView(ListView).OnCompare) then
-      TListView(ListView).OnCompare(ListView, Item1, Item2, AOptionalParam, Result)
-    else Result := CompareText(Item1.Caption, Item2.Caption);
-end;
-
-function TListViewHelper.CustomSort2(SortProc: TLVCompare; lParam: PtrInt): Boolean;
-begin
-   if not Assigned(SortProc) then SortProc := @DefaultListViewSortProc;
-   Result := Self.CustomSort(SortProc, lParam);
-end;
 
 // --------------- TTreeView ------------------
 type
