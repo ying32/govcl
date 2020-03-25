@@ -1,0 +1,17 @@
+object About: TAbout
+  Left = 419
+  Height = 292
+  Top = 250
+  Width = 490
+  Caption = 'About'
+  ClientHeight = 292
+  ClientWidth = 490
+  object Button1: TButton
+    Left = 208
+    Height = 25
+    Top = 121
+    Width = 75
+    Caption = 'About'
+    TabOrder = 0
+  end
+end

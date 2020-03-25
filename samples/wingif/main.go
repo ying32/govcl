@@ -28,7 +28,7 @@ func (f *TMainForm) OnFormCreate(object vcl.IObject) {
 	f.img.Picture().LoadFromFile(rtl.ExtractFilePath(vcl.Application.ExeName()) + "test.gif")
 	// 动画只支持Windows下的libvcl
 	if runtime.GOOS == "windows" && !rtl.LcLLoaded() {
-		vcl.AsGIFImage(f.img.Picture().Graphic()).SetAnimate(true)
+		//vcl.AsGIFImage(f.img.Picture().Graphic()).SetAnimate(true)
 	}
 }
 

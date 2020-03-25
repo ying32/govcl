@@ -66,12 +66,6 @@ func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
 	btn.SetCaption("保持")
 	btn.SetModalResult(types.MrNo)
 
-	if !rtl.LcLLoaded() {
-		f := taskdlg.Flags()
-		taskdlg.SetFlags(f.Include(types.TfShowProgressBar, types.TfShowMarqueeProgressBar))
-		taskdlg.ProgressBar().SetPosition(50)
-	}
-
 	if rtl.LcLLoaded() {
 		taskdlg.SetMainIcon(types.TdiQuestion)
 	} else {

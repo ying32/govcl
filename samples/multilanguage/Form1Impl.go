@@ -22,7 +22,6 @@ type TForm1Fields struct {
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	multilang.InitComponentLang(f)
 
-	f.MainMenu1.SetAutoHotkeys(types.MaManual)
 	item := vcl.NewMenuItem(f)
 	item.SetCaption("Languages")
 	for key, val := range multilang.LocalLangs {

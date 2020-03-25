@@ -8,9 +8,9 @@ import (
 )
 
 //::private::
-type TFrame2Fields struct {
+type TFrame1Fields struct {
 }
 
-func (f *TFrame2) OnButton1Click(sender vcl.IObject) {
-	vcl.ShowMessage("Frame2")
+func (f *TFrame1) OnButton1Click(sender vcl.IObject) {
+	vcl.ShowMessage("Frame1")
 }

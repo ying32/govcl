@@ -72,7 +72,6 @@ func (f *TForm11) addItem() {
 	LColorLbl.SetParent(f.ListView1)
 	LColorLbl.SetAutoSize(false)
 	LColorLbl.SetColor(Colors[rand.Intn(len(Colors)-1)])
-	LColorLbl.SetStyleElements(0)
 	LColorLbl.SetTransparent(false)
 	LColorLbl.SetBounds(r.Left, r.Top, r.Width(), r.Height())
 	LColorLbl.SetOnClick(f.ColorLblClick)

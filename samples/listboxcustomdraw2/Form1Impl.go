@@ -25,7 +25,6 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 
 	// 这里为显示，手动设置，一般可以设计器时设置
 	f.LstLeft.SetStyle(types.LbOwnerDrawFixed)
-	f.LstLeft.SetCtl3D(false)
 	f.LstLeft.SetItemHeight(90)
 	f.LstLeft.Items().Add("第一项")
 	f.LstLeft.Items().Add("第二项")
@@ -33,7 +32,6 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.LstLeft.Items().Add("第四项")
 
 	f.LstRight.SetStyle(types.LbOwnerDrawFixed)
-	f.LstRight.SetCtl3D(false)
 	f.LstRight.SetItemHeight(53)
 	for i := int32(0); i < 20; i++ {
 		f.LstRight.Items().Add(fmt.Sprintf("ListBox Item of %d\nSecond of %d\nThird of %d", i, i, i))

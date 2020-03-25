@@ -94,13 +94,13 @@ type IControl interface {
 	Font() *TFont
 	SetFont(*TFont)
 
-	SetCustomHint(IComponent)
+	//SetCustomHint(IComponent)
 
-	ParentCustomHint() bool
-	SetParentCustomHint(bool)
+	//ParentCustomHint() bool
+	//SetParentCustomHint(bool)
 
-	StyleElements() TStyleElements
-	SetStyleElements(TStyleElements)
+	//StyleElements() TStyleElements
+	//SetStyleElements(TStyleElements)
 
 	Floating() bool
 	SetFloating(bool)

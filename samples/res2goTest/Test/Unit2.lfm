@@ -1,0 +1,20 @@
+object Frame1: TFrame1
+  Left = 0
+  Height = 291
+  Top = 0
+  Width = 471
+  ClientHeight = 291
+  ClientWidth = 471
+  TabOrder = 0
+  DesignLeft = 418
+  DesignTop = 28
+  object Button1: TButton
+    Left = 208
+    Height = 25
+    Top = 121
+    Width = 75
+    Caption = 'Frame1'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+end

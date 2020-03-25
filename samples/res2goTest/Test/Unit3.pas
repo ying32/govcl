@@ -1,23 +1,35 @@
 unit Unit3;
 
+{$mode objfpc}{$H+}
+
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Classes, SysUtils, Forms, Controls, StdCtrls;
 
 type
-  TFrame3 = class(TFrame)
-    Panel1: TPanel;
-    Edit1: TEdit;
+
+  { TFrame2 }
+
+  TFrame2 = class(TFrame)
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   private
-    { Private declarations }
+
   public
-    { Public declarations }
+
   end;
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
+
+{ TFrame2 }
+
+procedure TFrame2.Button1Click(Sender: TObject);
+begin
+
+end;
 
 end.
+

@@ -99,28 +99,6 @@ func main() {
 		}
 	})
 
-	dlTxtOpen := vcl.NewOpenTextFileDialog(mainForm)
-	btn = vcl.NewButton(mainForm)
-	btn.SetAlign(types.AlTop)
-	btn.SetParent(mainForm)
-	btn.SetCaption("Open Text Dialog")
-	btn.SetOnClick(func(vcl.IObject) {
-		if dlTxtOpen.Execute() {
-			fmt.Println("Name: ", dlTxtOpen.FileName())
-		}
-	})
-
-	dlTxtSave := vcl.NewSaveTextFileDialog(mainForm)
-	btn = vcl.NewButton(mainForm)
-	btn.SetAlign(types.AlTop)
-	btn.SetParent(mainForm)
-	btn.SetCaption("Save Text Dialog")
-	btn.SetOnClick(func(vcl.IObject) {
-		if dlTxtSave.Execute() {
-			fmt.Println("Name: ", dlTxtSave.FileName())
-		}
-	})
-
 	btn = vcl.NewButton(mainForm)
 	btn.SetAlign(types.AlTop)
 	btn.SetParent(mainForm)

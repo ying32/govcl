@@ -14,6 +14,7 @@ type TMainFormFields struct {
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.test = "aaaaaa"
+	f.ScreenCenter()
 	// Lazarus 无此属性，所以手动设置下
 	f.Panel1.SetParentBackground(false)
 	f.Panel2.SetParentBackground(false)
@@ -28,10 +29,6 @@ func (f *TMainForm) OnButton1Click(sender vcl.IObject) {
 func (f *TMainForm) OnButton2Click(sender vcl.IObject) {
 	btn := vcl.AsButton(sender)
 	vcl.ShowMessage("Name:" + btn.Name())
-}
-
-func (f *TMainForm) OnButton2Resize(sender vcl.IObject) {
-
 }
 
 func (f *TMainForm) OnPanel1MouseEnter(sender vcl.IObject) {

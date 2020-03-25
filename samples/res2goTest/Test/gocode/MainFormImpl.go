@@ -9,13 +9,13 @@ import (
 
 //::private::
 type TMainFormFields struct {
-	frame1 *TFrame2
-	frame2 *TFrame3
+	frame1 *TFrame1
+	frame2 *TFrame2
 }
 
 func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
-	f.frame1 = NewFrame2(f)
-	f.frame2 = NewFrame3(f)
+	f.frame1 = NewFrame1(f)
+	f.frame2 = NewFrame2(f)
 
 	f.frame1.Hide()
 	f.frame2.Hide()

@@ -6,7 +6,6 @@ import (
 
 	"github.com/ying32/govcl/vcl/types/colors"
 
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
@@ -33,10 +32,6 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 
 	// TMainMenu
 	f.mainMenu = vcl.NewMainMenu(f)
-	// 不自动生成热键
-	if !rtl.LcLLoaded() {
-		f.mainMenu.SetAutoHotkeys(types.MaManual)
-	}
 
 	// macOS下专有的
 	if runtime.GOOS == "darwin" {

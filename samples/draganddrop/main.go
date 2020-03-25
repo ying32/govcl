@@ -29,20 +29,22 @@ func main() {
 
 	tv.SetOnDragOver(func(sender, source vcl.IObject, x, y int32, state types.TDragState, accept *bool) {
 		*accept = false
-		if source.IsValid() {
+		if source != nil {
 			node := vcl.AsTreeView(source).GetNodeAt(x, y)
 			selnode := vcl.AsTreeView(source).Selected()
-			if node.IsValid() && selnode.IsValid() {
-				*accept = selnode.Parent().Instance() != node.Parent().Instance()
+			if node != nil && selnode != nil {
+
+				*accept = vcl.CheckPtr(selnode.Parent()) != vcl.CheckPtr(node.Parent())
+
 			}
 		}
 	})
 
 	tv.SetOnEndDrag(func(sender, target vcl.IObject, x, y int32) {
-		if target.IsValid() {
+		if target != nil {
 			node := tv.GetNodeAt(x, y)
 			selnode := tv.Selected()
-			if node.IsValid() && selnode.IsValid() {
+			if node != nil && selnode != nil {
 				selnode.MoveTo(node, types.NaInsert) // NaAdd
 			}
 		}

@@ -1,0 +1,61 @@
+object MainForm: TMainForm
+  Left = 419
+  Height = 524
+  Top = 250
+  Width = 844
+  Caption = 'MainForm'
+  ClientHeight = 524
+  ClientWidth = 844
+  OnCreate = FormCreate
+  object Panel1: TPanel
+    Left = 0
+    Height = 524
+    Top = 0
+    Width = 170
+    Align = alLeft
+    ClientHeight = 524
+    ClientWidth = 170
+    TabOrder = 0
+    object BtnShowAbout: TButton
+      Left = 48
+      Height = 25
+      Top = 136
+      Width = 88
+      Caption = 'ShowAbout'
+      OnClick = BtnShowAboutClick
+      TabOrder = 0
+    end
+    object BtnShowFrame1: TButton
+      Left = 48
+      Height = 25
+      Top = 192
+      Width = 88
+      Caption = 'ShowFrame1'
+      OnClick = BtnShowFrame1Click
+      TabOrder = 1
+    end
+    object BtnShowFrame2: TButton
+      Left = 48
+      Height = 25
+      Top = 248
+      Width = 88
+      Caption = 'ShowFrame2'
+      OnClick = BtnShowFrame2Click
+      TabOrder = 2
+    end
+  end
+  object Splitter1: TSplitter
+    Left = 170
+    Height = 524
+    Top = 0
+    Width = 5
+  end
+  object Panel2: TPanel
+    Left = 175
+    Height = 524
+    Top = 0
+    Width = 669
+    Align = alClient
+    TabOrder = 2
+  end
+end

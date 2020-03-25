@@ -120,15 +120,10 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 	// 总是32位，不然没办法透明。
 	bmp.SetPixelFormat(types.Pf32bit)
 	bmp.SetHandleType(types.BmDIB)
-	if !vcl.LclLoaded() {
-		// libvcl开启这个就会透明，liblcl无此属性，自动透明
-		bmp.SetAlphaFormat(types.AfDefined)
-	}
 
-	if vcl.LclLoaded() {
-		bmp.BeginUpdate(false)
-		defer bmp.EndUpdate(false)
-	}
+	bmp.BeginUpdate(false)
+	defer bmp.EndUpdate(false)
+
 	// 填充，左下角为起点
 	for h := height - 1; h >= 0; h-- {
 		ptr := bmp.ScanLine(int32(h))
