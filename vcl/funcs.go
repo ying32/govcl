@@ -101,12 +101,6 @@ func ThreadSync(fn TThreadProc) {
 	api.DSynchronize(fn, 1)
 }
 
-// CN: 主线程中执行，第二个参数决定是否使用Delphi自带的，此也只对libvcl生效，1使用消息，0使用Delphi自带的线程同步方法。
-// EN: The main thread is executed, and only takes effect on libvcl, using the thread synchronization method that comes with Delphi.
-func ThreadSyncVcl(fn TThreadProc) {
-	api.DSynchronize(fn, 0)
-}
-
 // CN: 输入框。
 // EN: Input box.
 func InputBox(aCaption, aPrompt, aDefault string) string {
