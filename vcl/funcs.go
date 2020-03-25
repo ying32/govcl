@@ -136,3 +136,8 @@ func RunApp(forms ...interface{}) {
 func LclLoaded() bool {
 	return true
 }
+
+// 比较两个对象
+func EqualsObject(obj1, obj2 IObject) bool {
+	return CheckPtr(obj1) == CheckPtr(obj2)
+}

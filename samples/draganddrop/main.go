@@ -33,9 +33,7 @@ func main() {
 			node := vcl.AsTreeView(source).GetNodeAt(x, y)
 			selnode := vcl.AsTreeView(source).Selected()
 			if node != nil && selnode != nil {
-
-				*accept = vcl.CheckPtr(selnode.Parent()) != vcl.CheckPtr(node.Parent())
-
+				*accept = !vcl.EqualsObject(selnode.Parent(), node.Parent())
 			}
 		}
 	})
