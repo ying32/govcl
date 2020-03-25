@@ -348,6 +348,7 @@ begin
   LMem := TMemoryStream.Create;
   try
     TFormResFile.Decrypt(AStream, LMem);
+    LMem.Position := 0;
     LR := TReader.Create(LMem, 4096);
     try
       LR.OnFindComponentClass := @OnFindComponentClass;
@@ -359,13 +360,25 @@ begin
 
       GlobalNameSpace.BeginWrite;
       try
-        if (ClassType <> TForm) and not (csDesigning in ARoot.ComponentState) then
+        if (ARoot.ClassType <> TForm) and not (csDesigning in ARoot.ComponentState) then
         begin
-          TFormPatch(ARoot).FormStateIncludeCreating;
-          try
-            InitLazResourceComponent(LR, ARoot, TForm);
-          finally
-            TFormPatch(ARoot).FormStateExcludeCreating;
+          if ARoot is TForm then
+          begin
+            TFormPatch(ARoot).FormStateIncludeCreating;
+            try
+              InitLazResourceComponent(LR, ARoot, TForm);
+            finally
+              TFormPatch(ARoot).FormStateExcludeCreating;
+            end;
+          end else if ARoot is TFrame then
+          begin
+            //ControlStyle := [csAcceptsControls, csCaptureMouse, csClickEvents, csSetCaption,
+            //                 csDoubleClicks, csParentBackground];
+            if (ARoot.ClassType = TFrame) and ([csDesignInstance, csDesigning] * ARoot.ComponentState = []) then
+            begin
+              LR.ReadRootComponent(ARoot);
+              // InitLazResourceComponent(LR, ARoot, TFrame);
+            end
           end;
         end;
       finally
