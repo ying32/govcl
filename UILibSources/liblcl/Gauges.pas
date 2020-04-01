@@ -14,6 +14,8 @@ type
 
   TGaugeKind = (gkText, gkHorizontalBar, gkVerticalBar, gkPie, gkNeedle);
 
+  { TGauge }
+
   TGauge = class(TGraphicControl)
   private
     FMinValue: LongInt;
@@ -39,6 +41,8 @@ type
     procedure SetMaxValue(Value: LongInt);
     procedure SetProgress(Value: LongInt);
     function GetPercentDone: LongInt;
+
+    procedure UpdateState;
   protected
     procedure Paint; override;
   public
@@ -125,6 +129,12 @@ end;
 function TGauge.GetPercentDone: LongInt;
 begin
   Result := SolveForY(FCurValue - FMinValue, FMaxValue - FMinValue);
+end;
+
+procedure TGauge.UpdateState;
+begin
+  // 不能用Repaint，linux下会卡
+  Self.Invalidate;
 end;
 
 procedure TGauge.Paint;
@@ -331,7 +341,7 @@ begin
   if Value <> FKind then
   begin
     FKind := Value;
-    Refresh;
+    UpdateState;
   end;
 end;
 
@@ -340,7 +350,7 @@ begin
   if Value <> FShowText then
   begin
     FShowText := Value;
-    Refresh;
+    UpdateState;
   end;
 end;
 
@@ -349,7 +359,7 @@ begin
   if Value <> FBorderStyle then
   begin
     FBorderStyle := Value;
-    Refresh;
+    UpdateState;
   end;
 end;
 
@@ -358,7 +368,7 @@ begin
   if Value <> FForeColor then
   begin
     FForeColor := Value;
-    Refresh;
+    UpdateState;
   end;
 end;
 
@@ -367,7 +377,7 @@ begin
   if Value <> FBackColor then
   begin
     FBackColor := Value;
-    Refresh;
+    UpdateState;
   end;
 end;
 
@@ -381,7 +391,7 @@ begin
     FMinValue := Value;
     if FCurValue < Value then
       FCurValue := Value;
-    Refresh;
+    UpdateState;
   end;
 end;
 
@@ -395,7 +405,7 @@ begin
     FMaxValue := Value;
     if FCurValue > Value then
       FCurValue := Value;
-    Refresh;
+    UpdateState;
   end;
 end;
 
@@ -412,14 +422,14 @@ begin
   begin
     FCurValue := Value;
     if TempPercent <> GetPercentDone then
-      Refresh;
+      UpdateState;
   end;
 end;
 
 procedure TGauge.AddProgress(Value: LongInt);
 begin
   Progress := FCurValue + Value;
-  Refresh;
+  UpdateState;
 end;
 
 end.
