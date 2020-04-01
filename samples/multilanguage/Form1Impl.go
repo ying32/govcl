@@ -21,6 +21,7 @@ type TForm1Fields struct {
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	multilang.InitComponentLang(f)
+	f.ScreenCenter()
 
 	item := vcl.NewMenuItem(f)
 	item.SetCaption("Languages")
