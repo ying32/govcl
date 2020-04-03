@@ -26,9 +26,9 @@ type THeaderSections struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewHeaderSections() *THeaderSections {
+func NewHeaderSections(AOwner *THeaderControl) *THeaderSections {
     h := new(THeaderSections)
-    h.instance = HeaderSections_Create()
+    h.instance = HeaderSections_Create(CheckPtr(AOwner))
     h.ptr = unsafe.Pointer(h.instance)
     return h
 }

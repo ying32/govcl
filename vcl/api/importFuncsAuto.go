@@ -26564,8 +26564,8 @@ func Picture_StaticClassType() TClass {
 
 //--------------------------- TListColumns ---------------------------
 
-func ListColumns_Create() uintptr {
-    ret, _, _ := listColumns_Create.Call()
+func ListColumns_Create(obj uintptr) uintptr {
+    ret, _, _ := listColumns_Create.Call(obj)
     return ret
 }
 
@@ -26674,8 +26674,8 @@ func ListColumns_StaticClassType() TClass {
 
 //--------------------------- TListItems ---------------------------
 
-func ListItems_Create() uintptr {
-    ret, _, _ := listItems_Create.Call()
+func ListItems_Create(obj uintptr) uintptr {
+    ret, _, _ := listItems_Create.Call(obj)
     return ret
 }
 
@@ -26788,8 +26788,8 @@ func ListItems_StaticClassType() TClass {
 
 //--------------------------- TTreeNodes ---------------------------
 
-func TreeNodes_Create() uintptr {
-    ret, _, _ := treeNodes_Create.Call()
+func TreeNodes_Create(obj uintptr) uintptr {
+    ret, _, _ := treeNodes_Create.Call(obj)
     return ret
 }
 
@@ -26944,8 +26944,8 @@ func TreeNodes_StaticClassType() TClass {
 
 //--------------------------- TListItem ---------------------------
 
-func ListItem_Create() uintptr {
-    ret, _, _ := listItem_Create.Call()
+func ListItem_Create(obj uintptr) uintptr {
+    ret, _, _ := listItem_Create.Call(obj)
     return ret
 }
 
@@ -27156,8 +27156,8 @@ func ListItem_StaticClassType() TClass {
 
 //--------------------------- TTreeNode ---------------------------
 
-func TreeNode_Create() uintptr {
-    ret, _, _ := treeNode_Create.Call()
+func TreeNode_Create(obj uintptr) uintptr {
+    ret, _, _ := treeNode_Create.Call(obj)
     return ret
 }
 
@@ -30240,8 +30240,8 @@ func Mouse_StaticClassType() TClass {
 
 //--------------------------- TListColumn ---------------------------
 
-func ListColumn_Create() uintptr {
-    ret, _, _ := listColumn_Create.Call()
+func ListColumn_Create(obj uintptr) uintptr {
+    ret, _, _ := listColumn_Create.Call(obj)
     return ret
 }
 
@@ -30399,8 +30399,8 @@ func ListColumn_StaticClassType() TClass {
 
 //--------------------------- TCollectionItem ---------------------------
 
-func CollectionItem_Create() uintptr {
-    ret, _, _ := collectionItem_Create.Call()
+func CollectionItem_Create(obj uintptr) uintptr {
+    ret, _, _ := collectionItem_Create.Call(obj)
     return ret
 }
 
@@ -30486,8 +30486,8 @@ func CollectionItem_StaticClassType() TClass {
 
 //--------------------------- TStatusPanels ---------------------------
 
-func StatusPanels_Create() uintptr {
-    ret, _, _ := statusPanels_Create.Call()
+func StatusPanels_Create(obj uintptr) uintptr {
+    ret, _, _ := statusPanels_Create.Call(obj)
     return ret
 }
 
@@ -30605,8 +30605,8 @@ func StatusPanels_StaticClassType() TClass {
 
 //--------------------------- TStatusPanel ---------------------------
 
-func StatusPanel_Create() uintptr {
-    ret, _, _ := statusPanel_Create.Call()
+func StatusPanel_Create(obj uintptr) uintptr {
+    ret, _, _ := statusPanel_Create.Call(obj)
     return ret
 }
 
@@ -34012,8 +34012,8 @@ func ToolButton_StaticClassType() TClass {
 
 //--------------------------- TIniFile ---------------------------
 
-func IniFile_Create(filename string) uintptr {
-    ret, _, _ := iniFile_Create.Call(GoStrToDStr(filename))
+func IniFile_Create(obj uintptr) uintptr {
+    ret, _, _ := iniFile_Create.Call(obj)
     return ret
 }
 
@@ -34162,8 +34162,8 @@ func IniFile_StaticClassType() TClass {
 
 //--------------------------- TRegistry ---------------------------
 
-func Registry_Create(aAccess uint32) uintptr {
-    ret, _, _ := registry_Create.Call(uintptr(aAccess))
+func Registry_Create(obj uintptr) uintptr {
+    ret, _, _ := registry_Create.Call(obj)
     return ret
 }
 
@@ -41820,8 +41820,8 @@ func PageSetupDialog_StaticClassType() TClass {
 
 //--------------------------- TDragObject ---------------------------
 
-func DragObject_Create() uintptr {
-    ret, _, _ := dragObject_Create.Call()
+func DragObject_Create(obj uintptr) uintptr {
+    ret, _, _ := dragObject_Create.Call(obj)
     return ret
 }
 
@@ -41926,8 +41926,8 @@ func DragObject_StaticClassType() TClass {
 
 //--------------------------- TDragDockObject ---------------------------
 
-func DragDockObject_Create() uintptr {
-    ret, _, _ := dragDockObject_Create.Call()
+func DragDockObject_Create(obj uintptr) uintptr {
+    ret, _, _ := dragDockObject_Create.Call(obj)
     return ret
 }
 
@@ -45829,8 +45829,8 @@ func HeaderControl_StaticClassType() TClass {
 
 //--------------------------- THeaderSection ---------------------------
 
-func HeaderSection_Create() uintptr {
-    ret, _, _ := headerSection_Create.Call()
+func HeaderSection_Create(obj uintptr) uintptr {
+    ret, _, _ := headerSection_Create.Call(obj)
     return ret
 }
 
@@ -45980,8 +45980,8 @@ func HeaderSection_StaticClassType() TClass {
 
 //--------------------------- THeaderSections ---------------------------
 
-func HeaderSections_Create() uintptr {
-    ret, _, _ := headerSections_Create.Call()
+func HeaderSections_Create(obj uintptr) uintptr {
+    ret, _, _ := headerSections_Create.Call(obj)
     return ret
 }
 
@@ -49233,8 +49233,8 @@ func CoolBar_StaticClassType() TClass {
 
 //--------------------------- TCoolBands ---------------------------
 
-func CoolBands_Create() uintptr {
-    ret, _, _ := coolBands_Create.Call()
+func CoolBands_Create(obj uintptr) uintptr {
+    ret, _, _ := coolBands_Create.Call(obj)
     return ret
 }
 
@@ -49348,8 +49348,8 @@ func CoolBands_StaticClassType() TClass {
 
 //--------------------------- TCoolBand ---------------------------
 
-func CoolBand_Create() uintptr {
-    ret, _, _ := coolBand_Create.Call()
+func CoolBand_Create(obj uintptr) uintptr {
+    ret, _, _ := coolBand_Create.Call(obj)
     return ret
 }
 
@@ -49584,8 +49584,8 @@ func CoolBand_StaticClassType() TClass {
 
 //--------------------------- TCollection ---------------------------
 
-func Collection_Create() uintptr {
-    ret, _, _ := collection_Create.Call()
+func Collection_Create(obj uintptr) uintptr {
+    ret, _, _ := collection_Create.Call(obj)
     return ret
 }
 
@@ -50111,15 +50111,6 @@ func TaskDialog_StaticClassType() TClass {
 
 //--------------------------- TTaskDialogButtons ---------------------------
 
-func TaskDialogButtons_Create() uintptr {
-    ret, _, _ := taskDialogButtons_Create.Call()
-    return ret
-}
-
-func TaskDialogButtons_Free(obj uintptr) {
-    taskDialogButtons_Free.Call(obj)
-}
-
 func TaskDialogButtons_Add(obj uintptr) uintptr {
     ret, _, _ := taskDialogButtons_Add.Call(obj)
     return ret
@@ -50235,8 +50226,8 @@ func TaskDialogButtons_StaticClassType() TClass {
 
 //--------------------------- TTaskDialogButtonItem ---------------------------
 
-func TaskDialogButtonItem_Create() uintptr {
-    ret, _, _ := taskDialogButtonItem_Create.Call()
+func TaskDialogButtonItem_Create(obj uintptr) uintptr {
+    ret, _, _ := taskDialogButtonItem_Create.Call(obj)
     return ret
 }
 
@@ -50349,8 +50340,8 @@ func TaskDialogButtonItem_StaticClassType() TClass {
 
 //--------------------------- TTaskDialogRadioButtonItem ---------------------------
 
-func TaskDialogRadioButtonItem_Create() uintptr {
-    ret, _, _ := taskDialogRadioButtonItem_Create.Call()
+func TaskDialogRadioButtonItem_Create(obj uintptr) uintptr {
+    ret, _, _ := taskDialogRadioButtonItem_Create.Call(obj)
     return ret
 }
 
@@ -50463,8 +50454,8 @@ func TaskDialogRadioButtonItem_StaticClassType() TClass {
 
 //--------------------------- TTaskDialogBaseButtonItem ---------------------------
 
-func TaskDialogBaseButtonItem_Create() uintptr {
-    ret, _, _ := taskDialogBaseButtonItem_Create.Call()
+func TaskDialogBaseButtonItem_Create(obj uintptr) uintptr {
+    ret, _, _ := taskDialogBaseButtonItem_Create.Call(obj)
     return ret
 }
 

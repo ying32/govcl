@@ -26,9 +26,9 @@ type TListColumns struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewListColumns() *TListColumns {
+func NewListColumns(AOwner *TListView) *TListColumns {
     l := new(TListColumns)
-    l.instance = ListColumns_Create()
+    l.instance = ListColumns_Create(CheckPtr(AOwner))
     l.ptr = unsafe.Pointer(l.instance)
     return l
 }

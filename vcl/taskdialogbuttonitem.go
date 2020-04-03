@@ -26,9 +26,9 @@ type TTaskDialogButtonItem struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewTaskDialogButtonItem() *TTaskDialogButtonItem {
+func NewTaskDialogButtonItem(AOwner *TCollection) *TTaskDialogButtonItem {
     t := new(TTaskDialogButtonItem)
-    t.instance = TaskDialogButtonItem_Create()
+    t.instance = TaskDialogButtonItem_Create(CheckPtr(AOwner))
     t.ptr = unsafe.Pointer(t.instance)
     return t
 }

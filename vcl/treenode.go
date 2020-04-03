@@ -26,9 +26,9 @@ type TTreeNode struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewTreeNode() *TTreeNode {
+func NewTreeNode(AOwner *TTreeNodes) *TTreeNode {
     t := new(TTreeNode)
-    t.instance = TreeNode_Create()
+    t.instance = TreeNode_Create(CheckPtr(AOwner))
     t.ptr = unsafe.Pointer(t.instance)
     return t
 }

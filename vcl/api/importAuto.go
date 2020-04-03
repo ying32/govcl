@@ -11088,8 +11088,6 @@ var (
     taskDialog_StaticClassType = libvcl.NewProc("TaskDialog_StaticClassType")
 
     // TTaskDialogButtons
-    taskDialogButtons_Create = libvcl.NewProc("TaskDialogButtons_Create")
-    taskDialogButtons_Free = libvcl.NewProc("TaskDialogButtons_Free")
     taskDialogButtons_Add = libvcl.NewProc("TaskDialogButtons_Add")
     taskDialogButtons_FindButton = libvcl.NewProc("TaskDialogButtons_FindButton")
     taskDialogButtons_Owner = libvcl.NewProc("TaskDialogButtons_Owner")

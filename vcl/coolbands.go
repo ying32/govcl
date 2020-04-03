@@ -26,9 +26,9 @@ type TCoolBands struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewCoolBands() *TCoolBands {
+func NewCoolBands(AOwner *TCoolBar) *TCoolBands {
     c := new(TCoolBands)
-    c.instance = CoolBands_Create()
+    c.instance = CoolBands_Create(CheckPtr(AOwner))
     c.ptr = unsafe.Pointer(c.instance)
     return c
 }

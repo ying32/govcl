@@ -26,9 +26,9 @@ type TCollectionItem struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewCollectionItem() *TCollectionItem {
+func NewCollectionItem(AOwner *TCollection) *TCollectionItem {
     c := new(TCollectionItem)
-    c.instance = CollectionItem_Create()
+    c.instance = CollectionItem_Create(CheckPtr(AOwner))
     c.ptr = unsafe.Pointer(c.instance)
     return c
 }

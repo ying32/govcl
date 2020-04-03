@@ -24,15 +24,6 @@ type TTaskDialogButtons struct {
     ptr unsafe.Pointer
 }
 
-// CN: 创建一个新的对象。
-// EN: Create a new object.
-func NewTaskDialogButtons() *TTaskDialogButtons {
-    t := new(TTaskDialogButtons)
-    t.instance = TaskDialogButtons_Create()
-    t.ptr = unsafe.Pointer(t.instance)
-    return t
-}
-
 // CN: 动态转换一个已存在的对象实例。或者使用Obj.As().<目标对象>。
 // EN: Dynamically convert an existing object instance. Or use Obj.As().<Target object>.
 func AsTaskDialogButtons(obj interface{}) *TTaskDialogButtons {
@@ -64,15 +55,6 @@ func TaskDialogButtonsFromUnsafePointer(ptr unsafe.Pointer) *TTaskDialogButtons 
 }
 
 // -------------------------- Deprecated end --------------------------
-// CN: 释放对象。
-// EN: Free object.
-func (t *TTaskDialogButtons) Free() {
-    if t.instance != 0 {
-        TaskDialogButtons_Free(t.instance)
-        t.instance, t.ptr = 0, nullptr
-    }
-}
-
 // CN: 返回对象实例指针。
 // EN: Return object instance pointer.
 func (t *TTaskDialogButtons) Instance() uintptr {

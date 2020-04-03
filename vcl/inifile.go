@@ -29,7 +29,7 @@ type TIniFile struct {
 // EN: Create a new object.
 func NewIniFile(filename string) *TIniFile {
     i := new(TIniFile)
-    i.instance = IniFile_Create(filename)
+    i.instance = IniFile_Create(GoStrToDStr(filename))
     i.ptr = unsafe.Pointer(i.instance)
     return i
 }

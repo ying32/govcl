@@ -26,9 +26,9 @@ type TListItem struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewListItem() *TListItem {
+func NewListItem(AOwner *TListItems) *TListItem {
     l := new(TListItem)
-    l.instance = ListItem_Create()
+    l.instance = ListItem_Create(CheckPtr(AOwner))
     l.ptr = unsafe.Pointer(l.instance)
     return l
 }

@@ -26,9 +26,9 @@ type TDragObject struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewDragObject() *TDragObject {
+func NewDragObject(AOwner IControl) *TDragObject {
     d := new(TDragObject)
-    d.instance = DragObject_Create()
+    d.instance = DragObject_Create(CheckPtr(AOwner))
     d.ptr = unsafe.Pointer(d.instance)
     return d
 }

@@ -29,7 +29,7 @@ type TRegistry struct {
 // EN: Create a new object.
 func NewRegistry(aAccess uint32) *TRegistry {
     r := new(TRegistry)
-    r.instance = Registry_Create(aAccess)
+    r.instance = Registry_Create(uintptr(aAccess))
     r.ptr = unsafe.Pointer(r.instance)
     return r
 }

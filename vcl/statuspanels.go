@@ -26,9 +26,9 @@ type TStatusPanels struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewStatusPanels() *TStatusPanels {
+func NewStatusPanels(AOwner *TStatusBar) *TStatusPanels {
     s := new(TStatusPanels)
-    s.instance = StatusPanels_Create()
+    s.instance = StatusPanels_Create(CheckPtr(AOwner))
     s.ptr = unsafe.Pointer(s.instance)
     return s
 }

@@ -7,16 +7,6 @@
 //
 //----------------------------------------
 
-function TaskDialogButtons_Create(AOwner: TPersistent; ItemClass: TCollectionItemClass): TTaskDialogButtons; extdecl;
-begin
-  Result :=  TTaskDialogButtons.Create(AOwner, ItemClass);
-end;
-
-procedure TaskDialogButtons_Free(AObj: TTaskDialogButtons); extdecl;
-begin
-  AObj.Free;
-end;
-
 function TaskDialogButtons_Add(AObj: TTaskDialogButtons): TTaskDialogBaseButtonItem; extdecl;
 begin
   Result :=  AObj.Add;
@@ -138,8 +128,6 @@ begin
 end;
 
 exports
-  TaskDialogButtons_Create,
-  TaskDialogButtons_Free,
   TaskDialogButtons_Add,
   TaskDialogButtons_FindButton,
   TaskDialogButtons_Owner,

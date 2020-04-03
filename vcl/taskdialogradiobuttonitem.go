@@ -26,9 +26,9 @@ type TTaskDialogRadioButtonItem struct {
 
 // CN: 创建一个新的对象。
 // EN: Create a new object.
-func NewTaskDialogRadioButtonItem() *TTaskDialogRadioButtonItem {
+func NewTaskDialogRadioButtonItem(AOwner *TCollection) *TTaskDialogRadioButtonItem {
     t := new(TTaskDialogRadioButtonItem)
-    t.instance = TaskDialogRadioButtonItem_Create()
+    t.instance = TaskDialogRadioButtonItem_Create(CheckPtr(AOwner))
     t.ptr = unsafe.Pointer(t.instance)
     return t
 }
