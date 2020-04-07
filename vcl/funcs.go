@@ -115,11 +115,16 @@ func InputQuery(aCaption, aPrompt string, value *string) bool {
 
 // CN: 简化运行。
 // EN: simplify running.
-func RunApp(forms ...interface{}) {
+func RunApp(values ...interface{}) {
 	Application.Initialize()
 	Application.SetMainFormOnTaskBar(true)
-	for i := 0; i < len(forms); i++ {
-		Application.CreateForm(forms[i])
+	for i := 0; i < len(values); i++ {
+		switch values[i].(type) {
+		case func():
+			values[i].(func())()
+		default:
+			Application.CreateForm(values[i])
+		}
 	}
 	Application.Run()
 }
