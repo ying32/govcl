@@ -60,7 +60,7 @@ type UINT = uint32
 
 type LPARAM = uintptr
 
-type WAPRAM = uintptr
+type WPARAM = uintptr
 
 type LRESULT = uintptr
 

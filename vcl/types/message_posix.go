@@ -15,7 +15,7 @@ package types
 type TMessage struct {
 	Msg        Cardinal
 	_UnusedMsg Cardinal
-	WParam     WAPRAM
+	WParam     WPARAM
 	LParam     LPARAM
 	Result     LRESULT
 }
