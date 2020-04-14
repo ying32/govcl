@@ -49,7 +49,7 @@ func (f *TForm1) OnFormWndProc(msg *types.TMessage) {
 	  end;
 	*/
 	if msg.Msg == messages.WM_HOTKEY {
-		if msg.WParam == types.WAPRAM(f.hotKeyId) {
+		if msg.WParam == types.WPARAM(f.hotKeyId) {
 			vcl.ShowMessage("按下了Ctrl+F1")
 		}
 	}
