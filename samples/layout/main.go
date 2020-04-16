@@ -5,7 +5,6 @@ import (
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
-	"github.com/ying32/govcl/vcl/rtl"
 	"github.com/ying32/govcl/vcl/types"
 	"github.com/ying32/govcl/vcl/types/colors"
 )
@@ -143,18 +142,20 @@ func main() {
 	sheet = vcl.NewTabSheet(mainForm)
 	sheet.SetPageControl(pgc)
 	sheet.SetCaption("Anchors")
-	// windows下貌似有问题。。。
-	var w, h int32
-	if rtl.LcLLoaded() {
-		w = sheet.ClientWidth()
-		h = sheet.ClientHeight()
-	} else {
-		w = sheet.Width()
-		h = sheet.Height()
-	}
+
+	pnl = vcl.NewPanel(mainForm)
+	pnl.SetParentBackground(false)
+	//pnl.SetColor(colors.ClBlue)
+	pnl.SetParent(sheet)
+	pnl.SetAlign(types.AlClient)
+
+	w := pnl.Width()
+	h := pnl.Height()
+
+	fmt.Println(w, h)
 
 	btn := vcl.NewButton(mainForm)
-	btn.SetParent(sheet)
+	btn.SetParent(pnl)
 	btn.SetCaption("左")
 	btn.SetLeft(10)
 
@@ -162,20 +163,20 @@ func main() {
 	// vcl下建议使用Width或者Height
 	// 原因估计是两套组件对于某些方面的处理不同
 	btn = vcl.NewButton(mainForm)
-	btn.SetParent(sheet)
+	btn.SetParent(pnl)
 	btn.SetCaption("右")
 	btn.SetLeft(w - btn.Width() - 10)
 	btn.SetAnchors(types.NewSet(types.AkTop, types.AkRight))
 
 	btn = vcl.NewButton(mainForm)
-	btn.SetParent(sheet)
+	btn.SetParent(pnl)
 	btn.SetCaption("左下")
 	btn.SetLeft(10)
 	btn.SetTop(h - btn.Height() - 10)
 	btn.SetAnchors(types.NewSet(types.AkLeft, types.AkBottom))
 
 	btn = vcl.NewButton(mainForm)
-	btn.SetParent(sheet)
+	btn.SetParent(pnl)
 	btn.SetCaption("右下")
 	btn.SetLeft(w - btn.Width() - 10)
 	btn.SetTop(h - btn.Height() - 10)
