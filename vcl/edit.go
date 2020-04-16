@@ -748,16 +748,13 @@ func (e *TEdit) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (e *TEdit) Text() string {
-    if IsWindows {
-        strLen := e.GetTextLen()
+    strLen := e.GetTextLen()
+    if strLen != 0 {
         var buffStr string
-        if strLen != 0 {
-            e.GetTextBuf(&buffStr, strLen + 1)
-        }
+        e.GetTextBuf(&buffStr, strLen + 1)
         return buffStr
-    } else { 
-        return Edit_GetText(e.instance)
     }
+    return ""
 }
 
 // CN: 设置文本。

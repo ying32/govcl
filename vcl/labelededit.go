@@ -744,16 +744,13 @@ func (l *TLabeledEdit) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (l *TLabeledEdit) Text() string {
-    if IsWindows {
-        strLen := l.GetTextLen()
+    strLen := l.GetTextLen()
+    if strLen != 0 {
         var buffStr string
-        if strLen != 0 {
-            l.GetTextBuf(&buffStr, strLen + 1)
-        }
+        l.GetTextBuf(&buffStr, strLen + 1)
         return buffStr
-    } else { 
-        return LabeledEdit_GetText(l.instance)
     }
+    return ""
 }
 
 // CN: 设置文本。

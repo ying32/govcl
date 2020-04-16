@@ -6,7 +6,7 @@
 
 ### liblcl 
 
-liblcl 基于Lazarus 2.0.6版本 FPC 3.0.4，具体各个平台的安装方式自行参考官网安装说明, 其它版本编译出现的问题请自行解决相关。。
+liblcl 基于Lazarus 2.0.8版本 FPC 3.0.4，具体各个平台的安装方式自行参考官网安装说明, 其它版本编译出现的问题请自行解决相关。。
 
 liblcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Windows、Linux、MacOS`。       
 
@@ -14,7 +14,7 @@ liblcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Wind
 
 **注：如果有需要可以运行“govcl\Tools\LazarusPatch”工具给Lazarus源代码打补丁。**     
 
-* 1、安装好Lazarus 2.0.6 64bit版本及i386扩展包   
+* 1、安装好Lazarus 2.0.8 64bit版本及i386扩展包   
 * 2、双击lcl.lpi  
 * 3、菜单->Project->Project Options -> Compiler Options -> Build modes 切换相关编环模式，当前有效模式为以下几种种：   
    * Win32  
@@ -23,7 +23,7 @@ liblcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Wind
    * Linux32
    * LinuxARM           
    * MacOS32(carbon)
-   * MacOS64(cocoa) 确保在Tools-> Options下将“Compiler Executable”设置为“/usr/local/bin/fpc”以获得64位应用程序。 
+   * MacOS64(cocoa) 确保在Tools-> Options下将“Compiler Executable”设置为“/usr/local/bin/fpc”以获得64位应用程序(32bit Lazarus)。 
 * 4、菜单->Run->Compile(或者Build)  
 
 **注意： 如你想要编译ARM和Linux 32位的liblcl则需要在对应平台安装相应的[Lazarus](http://www.lazarus-ide.org/)和FPC。也可考虑安装[CodeTyphon](http://www.pilotlogic.com/sitejoom/index.php/codetyphon)进行交叉编译，不过挺麻烦。**

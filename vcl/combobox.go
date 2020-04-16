@@ -692,16 +692,13 @@ func (c *TComboBox) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (c *TComboBox) Text() string {
-    if IsWindows {
-        strLen := c.GetTextLen()
+    strLen := c.GetTextLen()
+    if strLen != 0 {
         var buffStr string
-        if strLen != 0 {
-            c.GetTextBuf(&buffStr, strLen + 1)
-        }
+        c.GetTextBuf(&buffStr, strLen + 1)
         return buffStr
-    } else { 
-        return ComboBox_GetText(c.instance)
     }
+    return ""
 }
 
 // CN: 设置文本。

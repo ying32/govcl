@@ -20,7 +20,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs,
-  MacOSAll, CocoaAll, WebKit, CocoaUtils;
+  MacOSAll, CocoaAll, WebKit, CocoaUtils, CocoaPrivate,
+  CocoaWSCommon;
 
 type
    TReadyState = (rsUninitialized, rsLoading, rsLoaded, rsInterActive, rsComplete);
@@ -57,6 +58,7 @@ type
    private
      procedure CreateCocoaWebView;
      function GetReadyState: TReadyState;
+     procedure UpdateBounds;
    private
      property CurWebView: Webview read GetCurWebview;
    protected
@@ -137,9 +139,23 @@ begin
   inherited Destroy;
 end;
 
-function TMiniWebview.GetReadyState: TReadyState;
+function TMiniWebView.GetReadyState: TReadyState;
 begin
   Result := rsUninitialized;  //?????
+end;
+
+procedure TMiniWebView.UpdateBounds;
+var
+  LR: NSRect;
+begin
+  if CurWebView <> nil then
+  begin
+    LR.origin.x := 0;
+    LR.origin.y := 0;
+    LR.size.width := Width;
+    LR.size.height := Height;
+    CurWebView.setFrame(LR);
+  end;
 end;
 
 procedure TMiniWebView.Navigate(const AURL: string);
@@ -255,7 +271,7 @@ procedure TMiniWebView.VisibleChanged;
 begin
   inherited VisibleChanged;
   if FWebview <> nil then
-    FWebView.setHidden(Visible);
+    FWebView.setHidden(not Visible);
 end;
 
 procedure TMiniWebView.RealizeBounds;
@@ -265,18 +281,9 @@ end;
 
 
 procedure TMiniWebView.Resize;
-var
-  LR: NSRect;
 begin
   inherited Resize;
-  if CurWebView <> nil then
-  begin
-    LR.origin.x := 0;
-    LR.origin.y := 0;
-    LR.size.width := Width;
-    LR.size.height := Height;
-    CurWebView.setFrame(LR);
-  end;
+  UpdateBounds;
 end;
 
 procedure TMiniWebView.CreateWnd;
@@ -287,8 +294,10 @@ begin
   inherited CreateWnd;
   AutoPool := NSAutoreleasePool.alloc.init;
   try
-    view := GetNSObjectView(NSObject(Handle));
+    view := NSView(Self.Handle).lclContentView;//GetNSObjectView(NSObject(Handle));
+    //writeln(NSObjectDebugStr(view));
     view.addSubview(FWebview);
+    UpdateBounds;
   finally
     AutoPool.release;
   end;

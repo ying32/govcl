@@ -728,16 +728,13 @@ func (m *TMaskEdit) SetTabStop(value bool) {
 // CN: 获取文本。
 // EN: .
 func (m *TMaskEdit) Text() string {
-    if IsWindows {
-        strLen := m.GetTextLen()
+    strLen := m.GetTextLen()
+    if strLen != 0 {
         var buffStr string
-        if strLen != 0 {
-            m.GetTextBuf(&buffStr, strLen + 1)
-        }
+        m.GetTextBuf(&buffStr, strLen + 1)
         return buffStr
-    } else { 
-        return MaskEdit_GetText(m.instance)
     }
+    return ""
 }
 
 // CN: 设置文本。

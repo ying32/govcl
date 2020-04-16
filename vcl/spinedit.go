@@ -768,16 +768,13 @@ func (s *TSpinEdit) SetSelText(value string) {
 // CN: 获取文本。
 // EN: .
 func (s *TSpinEdit) Text() string {
-    if IsWindows {
-        strLen := s.GetTextLen()
+    strLen := s.GetTextLen()
+    if strLen != 0 {
         var buffStr string
-        if strLen != 0 {
-            s.GetTextBuf(&buffStr, strLen + 1)
-        }
+        s.GetTextBuf(&buffStr, strLen + 1)
         return buffStr
-    } else { 
-        return SpinEdit_GetText(s.instance)
     }
+    return ""
 }
 
 // CN: 设置文本。
