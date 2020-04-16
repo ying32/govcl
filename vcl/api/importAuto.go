@@ -4644,6 +4644,7 @@ var (
     listView_SetOnCustomDrawSubItem = libvcl.NewProc("ListView_SetOnCustomDrawSubItem")
     listView_SetOnData = libvcl.NewProc("ListView_SetOnData")
     listView_SetOnDataFind = libvcl.NewProc("ListView_SetOnDataFind")
+    listView_SetOnDataHint = libvcl.NewProc("ListView_SetOnDataHint")
     listView_SetOnDblClick = libvcl.NewProc("ListView_SetOnDblClick")
     listView_SetOnDeletion = libvcl.NewProc("ListView_SetOnDeletion")
     listView_SetOnEdited = libvcl.NewProc("ListView_SetOnEdited")

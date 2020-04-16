@@ -818,6 +818,13 @@ begin
   EventMethodCode
 end;
 
+procedure ListView_SetOnDataHint(AObj: TListView; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnDataHint}
+  {$DEFINE EventMethodName := ListViewOnDataHint}
+  EventMethodCode
+end;
+
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -1457,6 +1464,7 @@ exports
   ListView_SetOnCustomDrawSubItem,
   ListView_SetOnData,
   ListView_SetOnDataFind,
+  ListView_SetOnDataHint,
   ListView_SetOnDblClick,
   ListView_SetOnDeletion,
   ListView_SetOnEdited,

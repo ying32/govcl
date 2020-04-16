@@ -911,6 +911,10 @@ func (l *TListView) SetOnDataFind(fn TLVOwnerDataFindEvent) {
     ListView_SetOnDataFind(l.instance, fn)
 }
 
+func (l *TListView) SetOnDataHint(fn TLVOwnerDataHintEvent) {
+    ListView_SetOnDataHint(l.instance, fn)
+}
+
 // CN: 设置双击事件。
 // EN: .
 func (l *TListView) SetOnDblClick(fn TNotifyEvent) {

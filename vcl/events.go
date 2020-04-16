@@ -309,6 +309,10 @@ type TLVCustomDrawSubItemEvent func(sender *TListView, item *TListItem, subItem 
 //TLVDrawItemEvent = procedure(Sender: TCustomListView; Item: TListItem; Rect: TRect; State: TOwnerDrawState) of object;
 type TLVDrawItemEvent func(sender *TListView, item *TListItem, rect TRect, state TOwnerDrawState)
 
+//TLVDataHintEvent = procedure(Sender: TObject; StartIndex, EndIndex: Integer) of object;
+type TLVDataHintEvent = func(sender IObject, startIndex, endIndex int32)
+type TLVOwnerDataHintEvent = TLVDataHintEvent
+
 //TTVCustomDrawEvent = procedure(Sender: TCustomTreeView; const ARect: TRect;var DefaultDraw: Boolean) of object;
 type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
 

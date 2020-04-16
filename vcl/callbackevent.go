@@ -744,6 +744,13 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				*(*TRect)(unsafe.Pointer(getVal(2))),
 				TOwnerDrawState(getVal(3)))
 
+		//type TLVDataHintEvent = func(sender IObject, startIndex, endIndex int32)
+		case TLVDataHintEvent:
+			v.(TLVDataHintEvent)(
+				AsObject(getVal(0)),
+				int32(getVal(1)),
+				int32(getVal(2)))
+
 			//type TTVCustomDrawEvent func(sender *TTreeView, aRect TRect, defaultDraw *bool)
 		case TTVCustomDrawEvent:
 			v.(TTVCustomDrawEvent)(

@@ -194,6 +194,8 @@ type
     class procedure ListViewOnCustomDrawSubItem(Sender: TCustomListView; Item: TListItem; SubItem: Integer; State: TCustomDrawState; var DefaultDraw: Boolean);
     class procedure ListViewOnDrawItem(Sender: TCustomListView; Item: TListItem; ARect: TRect; State: TOwnerDrawState);
 
+    class procedure ListViewOnDataHint(Sender: TObject; StartIndex, EndIndex: Integer);
+
 
 
 
@@ -615,6 +617,12 @@ end;
 class procedure TEventClass.ListViewOnDrawItem(Sender: TCustomListView; Item: TListItem; ARect: TRect; State: TOwnerDrawState);
 begin
   SendEvent(Sender, @TEventClass.ListViewOnDrawItem, [Sender, Item, @ARect, PWord(@State)^]);
+end;
+
+class procedure TEventClass.ListViewOnDataHint(Sender: TObject; StartIndex,
+  EndIndex: Integer);
+begin
+  SendEvent(Sender, @TEventClass.ListViewOnDataHint, [Sender, StartIndex, EndIndex]);
 end;
 
 

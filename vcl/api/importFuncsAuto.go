@@ -21014,6 +21014,10 @@ func ListView_SetOnDataFind(obj uintptr, fn interface{}) {
     listView_SetOnDataFind.Call(obj, addEventToMap(fn))
 }
 
+func ListView_SetOnDataHint(obj uintptr, fn interface{}) {
+    listView_SetOnDataHint.Call(obj, addEventToMap(fn))
+}
+
 func ListView_SetOnDblClick(obj uintptr, fn interface{}) {
     listView_SetOnDblClick.Call(obj, addEventToMap(fn))
 }
