@@ -220,18 +220,18 @@ type TWndClass struct {
 }
 
 // TGestureEventInfo
-type TGestureEventInfo struct {
-	GestureID     TGestureID
-	Location      TPoint
-	Flags         TInteractiveGestureFlags
-	Angle         float64
-	InertiaVector TSmallPoint
-	//case Integer of
-	//	0: (Distance: Integer);
-	//	1: (TapLocation: TSmallPoint);
-	//	end;
-	TapLocation TSmallPoint
-}
+//type TGestureEventInfo struct {
+//	GestureID     TGestureID
+//	Location      TPoint
+//	Flags         TInteractiveGestureFlags
+//	Angle         float64
+//	InertiaVector TSmallPoint
+//	//case Integer of
+//	//	0: (Distance: Integer);
+//	//	1: (TapLocation: TSmallPoint);
+//	//	end;
+//	TapLocation TSmallPoint
+//}
 
 // -------------- TSet
 

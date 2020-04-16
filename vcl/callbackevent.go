@@ -516,13 +516,13 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 
 			////
 			//type TGestureEvent func(sender IObject, eventInfo TGestureEventInfo, handled *bool)
-		case TGestureEvent:
-			v.(TGestureEvent)(
-				AsObject(getVal(0)),
-				*(*TGestureEventInfo)(unsafe.Pointer(getVal(1))),
-				(*bool)(unsafe.Pointer(getVal(2))))
+		//case TGestureEvent:
+		//	v.(TGestureEvent)(
+		//		AsObject(getVal(0)),
+		//		*(*TGestureEventInfo)(unsafe.Pointer(getVal(1))),
+		//		(*bool)(unsafe.Pointer(getVal(2))))
 
-			//type TMouseActivateEvent func(sender IObject, button TMouseButton, shift TShiftState, x, y int32, hitTest int32, mouseActivate *TMouseActivate)
+		//type TMouseActivateEvent func(sender IObject, button TMouseButton, shift TShiftState, x, y int32, hitTest int32, mouseActivate *TMouseActivate)
 		case TMouseActivateEvent:
 			v.(TMouseActivateEvent)(
 				AsObject(getVal(0)),

@@ -216,8 +216,9 @@ func ShiftStateToWord(shift types.TShiftState) uint32 {
 	if shift.In(types.SsAlt) {
 		result += MOD_ALT
 	}
-	if shift.In(types.SsCommand) {
-		result += MOD_WIN
-	}
+	// lcl没不知道哪个值
+	//if shift.In(types.SsCommand) {
+	//	result += MOD_WIN
+	//}
 	return result
 }

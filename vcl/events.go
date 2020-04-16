@@ -220,7 +220,7 @@ type TCustomSectionNotifyEvent func(headerControl *THeaderControl, section *THea
 
 //
 // TGestureEvent = procedure(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean) of object;
-type TGestureEvent func(sender IObject, eventInfo TGestureEventInfo, handled *bool)
+//type TGestureEvent func(sender IObject, eventInfo TGestureEventInfo, handled *bool)
 
 // TMouseActivateEvent = procedure(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer; HitTest: Integer; var MouseActivate: TMouseActivate) of object;
 type TMouseActivateEvent func(sender IObject, button TMouseButton, shift TShiftState, x, y int32, hitTest int32, mouseActivate *TMouseActivate)

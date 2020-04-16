@@ -26,6 +26,8 @@ const (
 	AlCustom
 )
 
+type TAlignSet = TSet
+
 //  TFormBorderStyle = (bsNone, bsSingle, bsSizeable, bsDialog, bsToolWindow, bsSizeToolWin);
 //  TBorderStyle = bsNone..bsSingle;
 type TBorderStyle int32
@@ -41,7 +43,8 @@ const (
 
 type TFormBorderStyle TBorderStyle
 
-//  TFormStyle = (fsNormal, fsMDIChild, fsMDIForm, fsStayOnTop);
+// vcl TFormStyle = (fsNormal, fsMDIChild, fsMDIForm, fsStayOnTop);
+// lcl TFormStyle = (fsNormal, fsMDIChild, fsMDIForm, fsStayOnTop, fsSplash, fsSystemStayOnTop);
 type TFormStyle int32
 
 const (
@@ -49,52 +52,66 @@ const (
 	FsMDIChild
 	FsMDIForm
 	FsStayOnTop
+
+	// lcl
+	fsSplash
+	fsSystemStayOnTop
 )
 
 //  TPosition = (poDesigned, poDefault, poDefaultPosOnly, poDefaultSizeOnly, poScreenCenter, poDesktopCenter, poMainFormCenter, poOwnerFormCenter);
 type TPosition int32
 
 const (
-	PoDesigned = iota + 0
-	PoDefault
-	PoDefaultPosOnly
-	PoDefaultSizeOnly
-	PoScreenCenter
-	PoDesktopCenter
-	PoMainFormCenter
-	PoOwnerFormCenter
-
-	// lazarus
-	PoWorkAreaCenter
+	PoDesigned        = iota + 0 // use bounds from the designer (read from stream)
+	PoDefault                    // LCL decision (normally window manager decides)
+	PoDefaultPosOnly             // designed size and LCL position
+	PoDefaultSizeOnly            // designed position and LCL size
+	PoScreenCenter               // center form on screen (depends on DefaultMonitor)
+	PoDesktopCenter              // center form on desktop (total of all screens)
+	PoMainFormCenter             // center form on main form (depends on DefaultMonitor)
+	PoOwnerFormCenter            // center form on owner form (depends on DefaultMonitor)
+	PoWorkAreaCenter             // center form on working area (depends on DefaultMonitor)
 )
 
 //  TCursor = -32768..32767;
 type TCursor int16
 
 const (
-	CrDefault   = 0
-	CrNone      = -1
-	CrArrow     = -2
-	CrCross     = -3
-	CrIBeam     = -4
-	CrSize      = -22
-	CrSizeNESW  = -6
-	CrSizeNS    = -7
-	CrSizeNWSE  = -8
-	CrSizeWE    = -9
-	CrUpArrow   = -10
-	CrHourGlass = -11
-	CrDrag      = -12
-	CrNoDrop    = -13
-	CrHSplit    = -14
-	CrVSplit    = -15
-	CrMultiDrag = -16
-	CrSQLWait   = -17
-	CrNo        = -18
-	CrAppStart  = -19
-	CrHelp      = -20
-	CrHandPoint = -21
-	CrSizeAll   = -22
+	CrHigh = TCursor(0)
+
+	CrDefault   = TCursor(0)
+	CrNone      = TCursor(-1)
+	CrArrow     = TCursor(-2)
+	CrCross     = TCursor(-3)
+	CrIBeam     = TCursor(-4)
+	CrSize      = TCursor(-22)
+	CrSizeNESW  = TCursor(-6) // diagonal north east - south west
+	CrSizeNS    = TCursor(-7)
+	CrSizeNWSE  = TCursor(-8)
+	CrSizeWE    = TCursor(-9)
+	CrSizeNW    = TCursor(-23)
+	CrSizeN     = TCursor(-24)
+	CrSizeNE    = TCursor(-25)
+	CrSizeW     = TCursor(-26)
+	CrSizeE     = TCursor(-27)
+	CrSizeSW    = TCursor(-28)
+	CrSizeS     = TCursor(-29)
+	CrSizeSE    = TCursor(-30)
+	CrUpArrow   = TCursor(-10)
+	CrHourGlass = TCursor(-11)
+	CrDrag      = TCursor(-12)
+	CrNoDrop    = TCursor(-13)
+	CrHSplit    = TCursor(-14)
+	CrVSplit    = TCursor(-15)
+	CrMultiDrag = TCursor(-16)
+	CrSQLWait   = TCursor(-17)
+	CrNo        = TCursor(-18)
+	CrAppStart  = TCursor(-19)
+	CrHelp      = TCursor(-20)
+	CrHandPoint = TCursor(-21)
+	CrSizeAll   = TCursor(-22)
+
+	CrLow = -30
 )
 
 // TSeekOrigin = (soBeginning, soCurrent, soEnd);
@@ -122,12 +139,12 @@ const (
 )
 
 // TBalloonHintStyle = (bhsStandard, bhsBalloon);
-type TBalloonHintStyle int32
-
-const (
-	bhsStandard = iota + 0
-	bhsBalloon
-)
+//type TBalloonHintStyle int32
+//
+//const (
+//	bhsStandard = iota + 0
+//	bhsBalloon
+//)
 
 //TAlignment = (taLeftJustify, taRightJustify, taCenter);
 type TAlignment int32
@@ -171,15 +188,16 @@ const (
 
 type TColorBoxStyle int32
 
-//  TComboBoxStyle = (csDropDown, csSimple, csDropDownList, csOwnerDrawFixed, csOwnerDrawVariable);
 type TComboBoxStyle int32
 
 const (
-	CsDropDown = iota + 0
-	CsSimple
-	CsDropDownList
-	CsOwnerDrawFixed
-	CsOwnerDrawVariable
+	CsDropDown                  = iota + 0 // like an TEdit plus a button to drop down the list, default
+	CsSimple                               // like an TEdit plus a TListBox
+	CsDropDownList                         // like TLabel plus a button to drop down the list
+	CsOwnerDrawFixed                       // like csDropDownList, but custom drawn
+	CsOwnerDrawVariable                    // like csDropDownList, but custom drawn and with each item can have another height
+	CsOwnerDrawEditableFixed               // like csOwnerDrawFixed, but with TEdit
+	CsOwnerDrawEditableVariable            // like csOwnerDrawVariable, but with TEdit
 )
 
 //  TWindowState = (wsNormal, wsMinimized, wsMaximized);
@@ -215,7 +233,7 @@ const (
 
 type TLinkAlignment TAlignment
 
-//  TListBoxStyle = (lbStandard, lbOwnerDrawFixed, lbOwnerDrawVariable, lbVirtual, lbVirtualOwnerDraw);
+// TListBoxStyle = (lbStandard, lbOwnerDrawFixed, lbOwnerDrawVariable, lbVirtual);
 type TListBoxStyle int32
 
 const (
@@ -223,7 +241,7 @@ const (
 	LbOwnerDrawFixed
 	LbOwnerDrawVariable
 	LbVirtual
-	LbVirtualOwnerDraw
+	//LbVirtualOwnerDraw
 )
 
 //TMenuItemAutoFlag = (maAutomatic, maManual, maParent);
@@ -255,12 +273,15 @@ const (
 	TbLeftButton
 )
 
-//  TProgressBarOrientation = (pbHorizontal, pbVertical);
+// TProgressBarOrientation = (pbHorizontal, pbVertical, pbRightToLeft, pbTopDown);
 type TProgressBarOrientation int32
 
 const (
 	PbHorizontal = iota + 0
 	PbVertical
+	// lcl
+	PbRightToLeft
+	PbTopDown
 )
 
 //  TProgressBarStyle = (pbstNormal, pbstMarquee);
@@ -294,10 +315,12 @@ const (
 type TButtonState int32
 
 const (
-	BsUp = iota + 0
-	BsDisabled
-	BsDown
-	BsExclusive
+	BsUp        = iota + 0 // button is up
+	BsDisabled             // button disabled (grayed)
+	BsDown                 // button is down
+	BsExclusive            // button is the only down in his group
+	// lcl
+	BsHot // button is under mouse
 )
 
 // TButtonStyle = (bsAutoDetect, bsWin31, bsNew);
@@ -471,10 +494,12 @@ const (
 	BsBDiagonal
 	BsCross
 	BsDiagCross
+
+	// lcl
+	BsImage
+	BsPattern
 )
 
-//TPenStyle = (psSolid, psDash, psDot, psDashDot, psDashDotDot, psClear,
-//    psInsideFrame, psUserStyle, psAlternate);
 type TPenStyle int32
 
 const (
@@ -483,10 +508,9 @@ const (
 	PsDot
 	PsDashDot
 	PsDashDotDot
+	PsinsideFrame
+	PsPattern
 	PsClear
-	PsInsideFrame
-	PsUserStyle
-	PsAlternate
 )
 
 // TUDBtnType = (btNext, btPrev);
@@ -589,15 +613,13 @@ const (
 	CaMinimize
 )
 
-//  TBalloonFlags = (bfNone = NIIF_NONE, bfInfo = NIIF_INFO,
-//    bfWarning = NIIF_WARNING, bfError = NIIF_ERROR);
 type TBalloonFlags int32
 
 const (
-	BfNone    = 0
-	BfInfo    = 1
-	BfWarning = 2
-	BfError   = 3
+	BfNone = iota + 0
+	BfInfo
+	BfWarning
+	BfError
 )
 
 //  TMsgDlgType = (mtWarning, mtError, mtInformation, mtConfirmation, mtCustom);
@@ -680,12 +702,12 @@ const (
 )
 
 //  TJPEGPixelFormat = (jf24Bit, jf8Bit);
-type TJPEGPixelFormat int32
+type TJPEGPixelFormat = TPixelFormat
 
-const (
-	Jf24Bit = iota + 0
-	Jf8Bit
-)
+//const (
+//	Jf24Bit = iota + 0
+//	Jf8Bit
+//)
 
 //  TGIFVersion = (gvUnknown, gv87a, gv89a);
 type TGIFVersion int32
@@ -729,26 +751,30 @@ type TCompressionLevel = uint32
 
 type TShortCut uint16
 
-//  TNodeState = (nsCut, nsDropHilited, nsFocused, nsSelected, nsExpanded);
 type TNodeState int32
 
 const (
-	NsCut = iota + 0
-	NsDropHilited
-	NsFocused
-	NsSelected
-	NsExpanded
+	NsCut           = iota + 0 // = Node.Cut
+	NsDropHilite               // = Node.DropTarget
+	NsFocused                  // = Node.Focused
+	NsSelected                 // = Node.Selected
+	NsMultiSelected            // = Node.MultiSelected
+	NsExpanded                 // = Node.Expanded
+	NsHasChildren              // = Node.HasChildren
+	NsDeleting                 // = Node.Deleting, set on Destroy
+	NsVisible                  // = Node.Visible
+	NsBound                    // bound to a tree, e.g. has Parent or is top lvl node
 )
 
-//  TNodeAttachMode = (naAdd, naAddFirst, naAddChild, naAddChildFirst, naInsert);
 type TNodeAttachMode int32
 
 const (
-	NaAdd = iota + 0
-	NaAddFirst
-	NaAddChild
-	NaAddChildFirst
-	NaInsert
+	NaAdd           = iota + 0 // add as last sibling of Destination
+	NaAddFirst                 // add as first sibling of Destination
+	NaAddChild                 // add as last child of Destination
+	NaAddChildFirst            // add as first child of Destination
+	NaInsert                   // insert in front of Destination
+	NaInsertBehind             // insert behind Destination
 )
 
 //  TAddMode = (taAddFirst, taAdd, taInsert);
@@ -760,7 +786,16 @@ const (
 	TaInsert
 )
 
-type TMultiSelectStyle int32
+//type TMultiSelectStyles int32
+//
+//const (
+//	MsControlSelect = iota + 0
+//	MsShiftSelect
+//	MsVisibleOnly
+//	MsSiblingOnly
+//)
+
+type TMultiSelectStyle = TSet
 
 // TActionListState = (asNormal, asSuspended, asSuspendedEnabled);
 type TActionListState int32
@@ -856,22 +891,22 @@ const (
 //    lgsSubseted,
 //    lgsSubSetLinkFocused
 //  );
-type TListGroupState int32
-
-const (
-	LgsNormal = iota + 0
-	LgsHidden
-	LgsCollapsed
-	LgsNoHeader
-	LgsCollapsible
-	LgsFocused
-	LgsSelected
-	LgsSubseted
-	LgsSubSetLinkFocused
-)
+//type TListGroupState int32
+//
+//const (
+//	LgsNormal = iota + 0
+//	LgsHidden
+//	LgsCollapsed
+//	LgsNoHeader
+//	LgsCollapsible
+//	LgsFocused
+//	LgsSelected
+//	LgsSubseted
+//	LgsSubSetLinkFocused
+//)
 
 //  TListGroupStateSet = set of TListGroupState;
-type TListGroupStateSet = TSet
+//type TListGroupStateSet = TSet
 
 // TTBDrawingStyle = (dsNormal, dsGradient);
 type TTBDrawingStyle int32
@@ -881,31 +916,30 @@ const (
 	DsGradient
 )
 
-//TToolButtonStyle = (tbsButton, tbsCheck, tbsDropDown, tbsSeparator, tbsDivider, tbsTextButton);
 type TToolButtonStyle int32
 
 const (
-	TbsButton = iota + 0
-	TbsCheck
-	TbsDropDown
-	TbsSeparator
-	TbsDivider
-	TbsTextButton
+	TbsButton     = iota + 0 // button (can be clicked)
+	TbsCheck                 // check item (click to toggle state, can be grouped)
+	TbsDropDown              // button with dropdown button to show a popup menu
+	TbsSeparator             // space holder
+	TbsDivider               // space holder with line
+	TbsButtonDrop            // button with arrow (not separated from each other)
 )
 
 //  TToolButtonState = (tbsChecked, tbsPressed, tbsEnabled, tbsHidden, tbsIndeterminate, tbsWrap, tbsEllipses, tbsMarked);
-type TToolButtonState int32
-
-const (
-	TbsChecked = iota + 0
-	TbsPressed
-	TbsEnabled
-	TbsHidden
-	TbsIndeterminate
-	TbsWrap
-	TbsEllipses
-	TbsMarked
-)
+//type TToolButtonState int32
+//
+//const (
+//	TbsChecked = iota + 0
+//	TbsPressed
+//	TbsEnabled
+//	TbsHidden
+//	TbsIndeterminate
+//	TbsWrap
+//	TbsEllipses
+//	TbsMarked
+//)
 
 // TTBGradientDrawingOption = (gdoHotTrack, gdoGradient)
 type TTBGradientDrawingOption int32
@@ -983,28 +1017,32 @@ type TFontDialogOptions = TSet
 type TOpenOption int32
 
 const (
-	OfReadOnly = iota + 0
-	OfOverwritePrompt
-	OfHideReadOnly
-	OfNoChangeDir
-	OfShowHelp
+	OfReadOnly        = iota + 0
+	OfOverwritePrompt // if selected file exists shows a message, that file
+	// will be overwritten
+	OfHideReadOnly // hide read only file
+	OfNoChangeDir  // do not change current directory
+	OfShowHelp     // show a help button
 	OfNoValidate
-	OfAllowMultiSelect
+	OfAllowMultiSelect // allow multiselection
 	OfExtensionDifferent
-	OfPathMustExist
-	OfFileMustExist
+	OfPathMustExist // shows an error message if selected path does not exist
+	OfFileMustExist // shows an error message if selected file does not exist
 	OfCreatePrompt
 	OfShareAware
-	OfNoReadOnlyReturn
+	OfNoReadOnlyReturn // do not return filenames that are readonly
 	OfNoTestFileCreate
 	OfNoNetworkButton
 	OfNoLongNames
 	OfOldStyleDialog
-	OfNoDereferenceLinks
+	OfNoDereferenceLinks // do not resolve links while dialog is shown (only on Windows, see OFN_NODEREFERENCELINKS)
+	OfNoResolveLinks     // do not resolve links after Execute
 	OfEnableIncludeNotify
-	OfEnableSizing
-	OfDontAddToRecent
-	OfForceShowHidden
+	OfEnableSizing    // dialog can be resized, e.g. via the mouse
+	OfDontAddToRecent // do not add the path to the history list
+	OfForceShowHidden // show hidden files
+	OfViewDetail      // details are OS and interface dependent
+	OfAutoPreview     // details are OS and interface dependent
 )
 
 // TOpenOptions = set of TOpenOption;
@@ -1028,6 +1066,8 @@ const (
 	PrAllPages = iota + 0
 	PrSelection
 	PrPageNums
+	// lcl
+	PrCurrentPage
 )
 
 // TPrintDialogOption = (poPrintToFile, poPageNums, poSelection, poWarning,
@@ -1041,6 +1081,8 @@ const (
 	PoWarning
 	PoHelp
 	PoDisablePrintToFile
+	//lcl
+	PoBeforeBeginDoc
 )
 
 // TPrintDialogOptions = set of TPrintDialogOption;
@@ -1106,7 +1148,6 @@ const (
 //   TStringsOptions = set of TStringsOption;
 type TStringsOptions = TSet
 
-// TShiftState = set of (ssShift, ssAlt, ssCtrl, ssLeft, ssRight, ssMiddle, ssDouble, ssTouch, ssPen, ssCommand, ssHorizontal);
 type TShiftState = TSet
 
 const (
@@ -1117,19 +1158,32 @@ const (
 	SsRight
 	SsMiddle
 	SsDouble
-	SsTouch
-	SsPen
-	SsCommand
-	SssHorizontal // 有冲突，所以加了个s
+	// Extra additions
+	SsMeta
+	SsSuper
+	SsHyper
+	SsAltGr
+	SsCaps
+	SsNum
+	SsScroll
+	SsTriple
+	SsQuad
+	SsExtra1
+	SsExtra2
 )
 
-// TMouseButton = (mbLeft, mbRight, mbMiddle);
+// vcl TMouseButton = (mbLeft, mbRight, mbMiddle);
+// lcl TMouseButton = (mbLeft, mbRight, mbMiddle, mbExtra1, mbExtra2);
 type TMouseButton int32
 
 const (
 	MbLeft = iota + 0
 	MbRight
 	MbMiddle
+
+	// lcl
+	mbExtra1
+	mbExtra2
 )
 
 // TFillStyle = (fsSurface, fsBorder);
@@ -1158,6 +1212,8 @@ const (
 	CsFontValid
 	CsPenValid
 	CsBrushValid
+	//lcl
+	CsRegionValid
 )
 
 // TCanvasState = set of TCanvasStates;
@@ -1210,13 +1266,13 @@ const (
 type TTextFormat = TSet
 
 // TStyleElements = set of (seFont, seClient, seBorder);
-type TStyleElements = TSet
-
-const (
-	SeFont = iota + 0
-	SeClient
-	SeBorder
-)
+//type TStyleElements = TSet
+//
+//const (
+//	SeFont = iota + 0
+//	SeClient
+//	SeBorder
+//)
 
 // TBevelCut = (bvNone, bvLowered, bvRaised, bvSpace);
 type TBevelCut int32
@@ -1286,6 +1342,8 @@ type TDateTimeKind int32
 const (
 	DtkDate = iota + 0
 	DtkTime
+	// lcl
+	DtkDateTime
 )
 
 // TDTDateMode = (dmComboBox, dmUpDown);
@@ -1294,6 +1352,8 @@ type TDTDateMode int32
 const (
 	DmComboBox = iota + 0
 	DmUpDown
+	// lcl
+	DmNone
 )
 
 // TDTDateFormat = (dfShort, dfLong);
@@ -1310,6 +1370,8 @@ type TDTCalAlignment int32
 const (
 	DtaLeft = iota + 0
 	DtaRight
+	// lcl
+	DtaDefault
 )
 
 // { Calendar common control support }
@@ -1402,12 +1464,13 @@ const (
 	IiaCenter
 )
 
-//  TAnchorKind = (akLeft, akTop, akRight, akBottom);
+// vcl TAnchorKind = (akLeft, akTop, akRight, akBottom);
+// lcl TAnchorKind = (akTop, akLeft, akRight, akBottom);
 type TAnchorKind int32
 
 const (
-	AkLeft = iota + 0
-	AkTop
+	AkTop = iota + 0
+	AkLeft
 	AkRight
 	AkBottom
 )
@@ -1419,6 +1482,8 @@ type TAnchors = TSet
 //    odFocused, odDefault, odHotLight, odInactive, odNoAccel, odNoFocusRect,
 //    odReserved1, odReserved2, odComboBoxEdit);
 type TOwnerDrawState = TSet
+
+type TOwnerDrawStateType int32
 
 const (
 	OdSelected = iota + 0
@@ -1434,6 +1499,7 @@ const (
 	OdReserved1
 	OdReserved2
 	OdComboBoxEdit
+	OdBackgroundPainted // item background already painted
 )
 
 //   TBitBtnKind = (bkCustom, bkOK, bkCancel, bkHelp, bkYes, bkNo, bkClose,
@@ -1452,6 +1518,8 @@ const (
 	BkRetry
 	BkIgnore
 	BkAll
+	BkNoToAll
+	BkYesToAll
 )
 
 // TScrollBarKind = (sbHorizontal, sbVertical);
@@ -1474,8 +1542,6 @@ const (
 	ssHotTrack
 )
 
-// TShapeType = (stRectangle, stSquare, stRoundRect, stRoundSquare,
-// stEllipse, stCircle);
 type TShapeType int32
 
 const (
@@ -1485,6 +1551,14 @@ const (
 	StRoundSquare
 	StEllipse
 	StCircle
+	StSquaredDiamond
+	StDiamond
+	StTriangle
+	StTriangleLeft
+	StTriangleRight
+	StTriangleDown
+	StStar
+	StStarDown
 )
 
 // TBevelStyle = (bsLowered, bsRaised);
@@ -1539,9 +1613,6 @@ const (
 	cdPostErase
 )
 
-//TCustomDrawState = set of (cdsSelected, cdsGrayed, cdsDisabled, cdsChecked,
-//  cdsFocused, cdsDefault, cdsHot, cdsMarked, cdsIndeterminate,
-//  cdsShowKeyboardCues, cdsNearHot, cdsOtherSideHot, cdsDropHilited);
 type TCustomDrawState = TSet
 
 const (
@@ -1554,10 +1625,20 @@ const (
 	CdsHot
 	CdsMarked
 	CdsIndeterminate
-	CdsShowKeyboardCues
-	CdsNearHot
-	CdsOtherSideHot
-	CdsDropHilited
+
+	//CdsSelected = iota + 0
+	//CdsGrayed
+	//CdsDisabled
+	//CdsChecked
+	//CdsFocused
+	//CdsDefault
+	//CdsHot
+	//CdsMarked
+	//CdsIndeterminate
+	//CdsShowKeyboardCues
+	//CdsNearHot
+	//CdsOtherSideHot
+	//CdsDropHilited
 )
 
 //TTBCustomDrawFlags = set of (tbNoEdges, tbHiliteHotTrack, tbNoOffset, tbNoMark, tbNoEtchedEffect);
@@ -1697,29 +1778,6 @@ const (
 	GdsGradient
 )
 
-//type TGridOption int32
-//
-//const (
-//	GoFixedVertLine = iota + 0
-//	GoFixedHorzLine
-//	GoVertLine
-//	GoHorzLine
-//	GoRangeSelect
-//	GoDrawFocusSelected
-//	GoRowSizing
-//	GoColSizing
-//	GoRowMoving
-//	GoColMoving
-//	GoEditing
-//	GoTabs
-//	GoRowSelect
-//	GoAlwaysShowEditor
-//	GoThumbTracking
-//	GoFixedColClick
-//	GoFixedRowClick
-//	GoFixedHotTrack
-//)
-
 // Lazarus的Grids选项，跟Delphi有点不一样。
 type TGridOption = int32
 
@@ -1762,16 +1820,15 @@ const (
 // Delphi set of TGridOption,  Lazarus set of TGridOptionLz
 type TGridOptions = TSet
 
-// Set of = ( gdSelected, gdFocused, gdFixed, gdRowSelected, gdHotTrack, gdPressed)
 type TGridDrawState = TSet
 
 const (
 	GdSelected = iota + 0
 	GdFocused
 	GdFixed
-	GdRowSelected
-	GdHotTrack
-	GdPressed
+	GdHot
+	GdPushed
+	GdRowHighlight
 )
 
 type TGridScrollDirection = uint32
@@ -1848,83 +1905,53 @@ const (
 	CsClicked
 	CsPalette
 	CsReadingState
-	CsAlignmentNeeded
 	CsFocusing
-	CsCreating
+	CsCreating // not used, exists for Delphi compatibility
 	CsPaintCopy
 	CsCustomPaint
 	CsDestroyingHandle
 	CsDocking
-	CsDesignerHide
-	CsPanning
-	CsRecreating
-	CsAligning
-	CsGlassPaint
-	CsPrintClient
+	CsVisibleSetInLoading
 )
 
-/* New TControlStyles: csNeedsBorderPaint and csParentBackground.
+type TControlStyleType int32
 
-   These two ControlStyles are only applicable when Themes are Enabled
-   in applications on Windows XP. csNeedsBorderPaint causes the
-   ThemeServices to paint the border of a control with the current theme.
-   csParentBackground causes the parent to draw its background into the
-   Control's background; this is useful for controls which need to show their
-   parent's theme elements, such as a TPanel or TFrame that appear on a
-   TPageControl. TWinControl introduces a protected ParentBackground
-   property which includes/excludes the csParentBackground control style.
-*/
+const (
+	CsAcceptsControls            = iota + 0 // can have children in the designer
+	CsCaptureMouse                          // auto capture mouse when clicked
+	CsDesignInteractive                     // wants mouse events in design mode
+	CsClickEvents                           // handles mouse events
+	CsFramed                                // not implemented, has 3d frame
+	CsSetCaption                            // if Name=Caption, changing the Name changes the Caption
+	CsOpaque                                // the control paints its area completely
+	CsDoubleClicks                          // understands mouse double clicks
+	CsTripleClicks                          // understands mouse triple clicks
+	CsQuadClicks                            // understands mouse quad clicks
+	CsFixedWidth                            // cannot change its width
+	CsFixedHeight                           // cannot change its height (for example combobox)
+	CsNoDesignVisible                       // is invisible in the designer
+	CsReplicatable                          // PaintTo works
+	CsNoStdEvents                           // standard events such as mouse, key, and click events are ignored.
+	CsDisplayDragImage                      // display images from dragimagelist during drag operation over control
+	CsReflector                             // not implemented, the controls respond to size, focus and dlg messages - it can be used as ActiveX control under Windows
+	CsActionClient                          // Action is set
+	CsMenuEvents                            // not implemented
+	CsNoFocus                               // control will not take focus when clicked with mouse.
+	CsNeedsBorderPaint                      // not implemented
+	CsParentBackground                      // tells WinXP to paint the theme background of parent on controls background
+	CsDesignNoSmoothResize                  // when resizing control in the designer do not SetBounds while dragging
+	CsDesignFixedBounds                     // can not be moved nor resized in designer
+	CsHasDefaultAction                      // implements useful ExecuteDefaultAction
+	CsHasCancelAction                       // implements useful ExecuteCancelAction
+	CsNoDesignSelectable                    // can not be selected at design time
+	CsOwnedChildrenNotSelectable            // child controls owned by this control are NOT selectable in the designer
+	CsAutoSize0x0                           // if the preferred size is 0x0 then control is shrinked ot 0x0
+	CsAutoSizeKeepChildLeft                 // when AutoSize=true do not move children horizontally
+	CsAutoSizeKeepChildTop                  // when AutoSize=true do not move children vertically
+	CsRequiresKeyboardInput                 // If the device has no physical keyboard then show the virtual keyboard when this control gets focus (therefore available only to TWinControl descendents)
+)
 
-// TControlStyle = set of (csAcceptsControls, csCaptureMouse,
-//  csDesignInteractive, csClickEvents, csFramed, csSetCaption, csOpaque,
-//  csDoubleClicks, csFixedWidth, csFixedHeight, csNoDesignVisible,
-//  csReplicatable, csNoStdEvents, csDisplayDragImage, csReflector,
-//  csActionClient, csMenuEvents, csNeedsBorderPaint, csParentBackground,
-//  csPannable, csAlignWithMargins, csGestures, csPaintBlackOpaqueOnGlass,
-//  csOverrideStylePaint);
 type TControlStyle = TSet
-
-const (
-	CsAcsControls = iota + 0
-	CsCaptureMouse
-	CsDesignInteractive
-	CsClickEvents
-	CsFramed
-	CsSetCaption
-	CsOpaque
-	CsDoubleClicks
-	CsFixedWidth
-	CsFixedHeight
-	CsNoDesignVisible
-	CsReplicatable
-	CsNoStdEvents
-	CsDisplayDragImage
-	CsReflector
-	CsActionClient
-	CsMenuEvents
-	CsNeedsBorderPaint
-	CsParentBackground
-	CsPannable
-	CsAlignWithMargins
-	CsGestures
-	CsPaintBlackOpaqueOnGlass
-	CsOverrideStylePaint
-)
-
-type TGestureID int32 // rgiFirst..igiLast;
-
-// Corresponds to GF_* flags
-
-type TInteractiveGestureFlag int32
-
-const (
-	GfBegin = iota + 0
-	GfInertia
-	GfEnd
-)
-
-// set of TInteractiveGestureFlag;
-type TInteractiveGestureFlags = TSet
 
 type TMouseActivate int32
 
@@ -1986,9 +2013,10 @@ const (
 type TPrinterState int32
 
 const (
-	PsNoHandle = iota + 0
-	PsHandleIC
-	PsHandleDC
+	PsNoDefine = iota + 0
+	PsReady
+	PsPrinting
+	PsStopped
 )
 
 // TPrinterOrientation = (poPortrait, poLandscape);
@@ -1997,6 +2025,8 @@ type TPrinterOrientation int32
 const (
 	PoPortrait = iota + 0
 	PoLandscape
+	PoReverseLandscape
+	PoReversePortrait
 )
 
 //TPrinterCapability = (pcCopies, pcOrientation, pcCollation);
@@ -2010,6 +2040,13 @@ const (
 
 // Set of TPrinterCapability
 type TPrinterCapabilities = TSet
+
+type TPrinterType int32
+
+const (
+	PtLocal = iota + 0
+	PtNetWork
+)
 
 type TReadyState int32
 
@@ -2030,7 +2067,6 @@ const (
 	SeUTF8
 )
 
-// 原为Lazarus中TForm所有，现做了Delphi的兼容
 type TShowInTaskbar int32
 
 const (
@@ -2145,18 +2181,18 @@ const (
 	TmFixed
 )
 
-// libvcl
-// TAlphaFormat = (afIgnored, afDefined, afPremultiplied);
-type TAlphaFormat int32
-
-// afIgnored  The Reserved byte in the TRGBQuad is ignored.
-// afDefined  The reserved byte in the TRGBQuad contains an alpha value.
-// afPremultiplied The reserved byte in the TRGBQuad contains an alpha value. The red, green, and blue values have been premultiplied with the alpha value.
-const (
-	AfIgnored = iota + 0
-	AfDefined
-	AfPremultiplied
-)
+//// libvcl
+//// TAlphaFormat = (afIgnored, afDefined, afPremultiplied);
+//type TAlphaFormat int32
+//
+//// afIgnored  The Reserved byte in the TRGBQuad is ignored.
+//// afDefined  The reserved byte in the TRGBQuad contains an alpha value.
+//// afPremultiplied The reserved byte in the TRGBQuad contains an alpha value. The red, green, and blue values have been premultiplied with the alpha value.
+//const (
+//	AfIgnored = iota + 0
+//	AfDefined
+//	AfPremultiplied
+//)
 
 // TDrawImageMode = (dimNormal, dimCenter, dimStretch);
 type TDrawImageMode int32
