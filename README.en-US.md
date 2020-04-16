@@ -3,7 +3,7 @@
 
 ----
 
-**Starting with govcl 2.0, `Delphi/VCL` will no longer be supported. The last branch that supports the vcl version: [last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/).**  
+**The current version no longer supports `Delphi/VCL`. The last branch that supports the vcl version: [last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/).**  
 
 ## Cross-platform Golang GUI library. Use Lazarus LCL for binding.
 
