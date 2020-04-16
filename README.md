@@ -29,7 +29,7 @@
 [![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/Librarys-2.0.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/Librarys-2.0.0.zip)  
 
 ### res2go工具下载（[文档](Tools/res2go)）  
-[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.19-blue.svg)](https://github.com/ying32/govcl/releases/download/v1.2.9/res2go-1.0.19.zip)  
+[![res2go](https://img.shields.io/badge/downloads-res2go%201.0.20-blue.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/res2go-1.0.20.zip)  
 > 注：用Lazarus设计界面，用Golang写代码。    
   
 [GoVCL扩展包](https://github.com/ying32/exts)  
