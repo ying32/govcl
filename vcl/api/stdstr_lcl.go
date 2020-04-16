@@ -30,15 +30,43 @@ func lcl_GoStrToDStr(s string) uintptr {
 	return uintptr(unsafe.Pointer(StringToUTF8Ptr(s)))
 }
 
+// 这种跟copyStr3基本一样，只是用go来处理了
+func copyStr(src uintptr, strlen int) string {
+	str := make([]uint8, strlen)
+	for i := 0; i < strlen; i++ {
+		str[i] = *(*uint8)(unsafe.Pointer(src + uintptr(i)))
+	}
+	return string(str)
+}
+
+type GoStringHeader struct {
+	Data uintptr
+	Len  int
+}
+
+// 小点的字符适合此种方式，大了就不行了
+func copyStr2(str uintptr, strlen int) string {
+	var ret string
+	head := (*GoStringHeader)(unsafe.Pointer(&ret))
+	head.Data = str
+	head.Len = strlen
+	return ret
+}
+
+// 最新的lz macOS下出问题了
+func copyStr3(str uintptr, strlen int) string {
+	buffer := make([]uint8, strlen)
+	DMove(str, uintptr(unsafe.Pointer(&buffer[0])), strlen)
+	return string(buffer)
+}
+
 // Lazarus的string转换为Go的string
 func lcl_DStrToGoStr(ustr uintptr) string {
 	l := DStrLen(ustr)
 	if l == 0 {
 		return ""
 	}
-	str := make([]uint8, l)
-	DMove(ustr, uintptr(unsafe.Pointer(&str[0])), l)
-	return string(str)
+	return copyStr2(ustr, int(l))
 }
 
 func lcl_getBuff(size int32) interface{} {
