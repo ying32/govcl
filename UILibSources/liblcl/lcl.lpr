@@ -83,6 +83,7 @@ uses
   xButton in 'xButton.pas',
   uComponents,
   uGoForm,
+  uRichEdit,
 {$IFDEF LCLCocoa}
   uMacOSPatchs,
 {$ENDIF}
@@ -133,6 +134,7 @@ uses
 {$I MyLCL_PrintDialog.inc}
 {$I MyLCL_OpenPictureDialog.inc}
 {$I MyLCL_SavePictureDialog.inc}
+{$I MyLCL_RichEdit.inc}
 {$I MyLCL_TrackBar.inc}
 {$I MyLCL_ImageList.inc}
 {$I MyLCL_UpDown.inc}
@@ -190,6 +192,8 @@ uses
 {$I MyLCL_Timer.inc}
 {$I MyLCL_List.inc}
 {$I MyLCL_Component.inc}
+{$I MyLCL_ParaAttributes.inc}
+{$I MyLCL_TextAttributes.inc}
 {$I MyLCL_IconOptions.inc}
 {$I MyLCL_Exception.inc}
 {$I MyLCL_ScrollBar.inc}

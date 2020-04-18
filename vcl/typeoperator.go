@@ -283,6 +283,15 @@ func (i TIs) SavePictureDialog() bool {
 //}
 
 
+func (i TIs) RichEdit() bool {
+    return RichEdit_InheritsFrom(uintptr(i), TRichEditClass())
+}
+
+//func (a TAs) RichEdit() *TRichEdit {
+//    return AsRichEdit(uintptr(a))
+//}
+
+
 func (i TIs) TrackBar() bool {
     return TrackBar_InheritsFrom(uintptr(i), TTrackBarClass())
 }
@@ -784,6 +793,24 @@ func (i TIs) Component() bool {
 
 //func (a TAs) Component() *TComponent {
 //    return AsComponent(uintptr(a))
+//}
+
+
+func (i TIs) ParaAttributes() bool {
+    return ParaAttributes_InheritsFrom(uintptr(i), TParaAttributesClass())
+}
+
+//func (a TAs) ParaAttributes() *TParaAttributes {
+//    return AsParaAttributes(uintptr(a))
+//}
+
+
+func (i TIs) TextAttributes() bool {
+    return TextAttributes_InheritsFrom(uintptr(i), TTextAttributesClass())
+}
+
+//func (a TAs) TextAttributes() *TTextAttributes {
+//    return AsTextAttributes(uintptr(a))
 //}
 
 
