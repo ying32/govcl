@@ -18,7 +18,7 @@ type TForm1Fields struct {
 
 func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.SetLeft(vcl.Screen.Width() - f.Width() - 5)
-	f.SetTop(vcl.Screen.WorkAreaHeight() - f.Height() - 5)
+	f.SetTop(vcl.Screen.WorkAreaHeight() - f.Height() - 30)
 	vcl.Screen.SetCursors(1, f.Img3.Picture().Icon().Handle())
 }
 
