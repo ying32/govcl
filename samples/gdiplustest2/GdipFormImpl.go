@@ -11,6 +11,10 @@ import (
 	"github.com/ying32/govcl/vcl"
 )
 
+//::private::
+type TGdipFormFields struct {
+}
+
 func (f *TGdipForm) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("OnCreate")
 

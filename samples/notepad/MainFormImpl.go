@@ -8,6 +8,10 @@ import (
 	"github.com/ying32/govcl/vcl"
 )
 
+//::private::
+type TMainFormFields struct {
+}
+
 // 此方法会在将资源窗口处理完后调用，命名规则为  On+窗口Name+Create，除TForm外
 func (m *TMainForm) OnFormCreate(sender vcl.IObject) {
 	// 这里可以初始化些东西

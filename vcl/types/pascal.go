@@ -138,5 +138,5 @@ func (s TSmallPoint) Empty() TSmallPoint {
 }
 
 func (s TSmallPoint) IsEqual(val TSmallPoint) bool {
-	return s.Y == val.Y && s.Y == val.Y
+	return s.X == val.X && s.Y == val.Y
 }

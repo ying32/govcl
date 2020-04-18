@@ -9,6 +9,10 @@ import (
 	"github.com/ying32/govcl/vcl/types"
 )
 
+//::private::
+type TForm1Fields struct {
+}
+
 func (f *TForm1) OnFormCreate(object vcl.IObject) {
 	fmt.Println("OnForm1Create被调用了:", object.Instance())
 	vcl.Application.SetTitle("我是新标题")
