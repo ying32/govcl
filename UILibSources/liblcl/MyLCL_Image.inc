@@ -162,6 +162,56 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function Image_GetAntialiasingMode(AObj: TImage): TAntialiasingMode; extdecl;
+begin
+  Result :=  AObj.AntialiasingMode;
+end;
+
+procedure Image_SetAntialiasingMode(AObj: TImage; AValue: TAntialiasingMode); extdecl;
+begin
+  AObj.AntialiasingMode := AValue;
+end;
+
+function Image_GetKeepOriginXWhenClipped(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.KeepOriginXWhenClipped;
+end;
+
+procedure Image_SetKeepOriginXWhenClipped(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.KeepOriginXWhenClipped := AValue;
+end;
+
+function Image_GetKeepOriginYWhenClipped(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.KeepOriginYWhenClipped;
+end;
+
+procedure Image_SetKeepOriginYWhenClipped(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.KeepOriginYWhenClipped := AValue;
+end;
+
+function Image_GetStretchInEnabled(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.StretchInEnabled;
+end;
+
+procedure Image_SetStretchInEnabled(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.StretchInEnabled := AValue;
+end;
+
+function Image_GetStretchOutEnabled(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.StretchOutEnabled;
+end;
+
+procedure Image_SetStretchOutEnabled(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.StretchOutEnabled := AValue;
+end;
+
 function Image_GetCanvas(AObj: TImage): TCanvas; extdecl;
 begin
   Result :=  AObj.Canvas;
@@ -644,6 +694,16 @@ exports
   Image_Equals,
   Image_GetHashCode,
   Image_ToString,
+  Image_GetAntialiasingMode,
+  Image_SetAntialiasingMode,
+  Image_GetKeepOriginXWhenClipped,
+  Image_SetKeepOriginXWhenClipped,
+  Image_GetKeepOriginYWhenClipped,
+  Image_SetKeepOriginYWhenClipped,
+  Image_GetStretchInEnabled,
+  Image_SetStretchInEnabled,
+  Image_GetStretchOutEnabled,
+  Image_SetStretchOutEnabled,
   Image_GetCanvas,
   Image_GetAlign,
   Image_SetAlign,

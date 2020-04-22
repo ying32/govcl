@@ -272,6 +272,36 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function ListBox_GetClickOnSelChange(AObj: TListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ClickOnSelChange;
+end;
+
+procedure ListBox_SetClickOnSelChange(AObj: TListBox; AValue: LongBool); extdecl;
+begin
+  AObj.ClickOnSelChange := AValue;
+end;
+
+function ListBox_GetOptions(AObj: TListBox): TListBoxOptions; extdecl;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure ListBox_SetOptions(AObj: TListBox; AValue: TListBoxOptions); extdecl;
+begin
+  AObj.Options := AValue;
+end;
+
+function ListBox_GetTopIndex(AObj: TListBox): Integer; extdecl;
+begin
+  Result :=  AObj.TopIndex;
+end;
+
+procedure ListBox_SetTopIndex(AObj: TListBox; AValue: Integer); extdecl;
+begin
+  AObj.TopIndex := AValue;
+end;
+
 function ListBox_GetStyle(AObj: TListBox): TListBoxStyle; extdecl;
 begin
   Result :=  AObj.Style;
@@ -1032,6 +1062,12 @@ exports
   ListBox_Equals,
   ListBox_GetHashCode,
   ListBox_ToString,
+  ListBox_GetClickOnSelChange,
+  ListBox_SetClickOnSelChange,
+  ListBox_GetOptions,
+  ListBox_SetOptions,
+  ListBox_GetTopIndex,
+  ListBox_SetTopIndex,
   ListBox_GetStyle,
   ListBox_SetStyle,
   ListBox_GetAlign,

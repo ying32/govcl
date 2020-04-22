@@ -167,6 +167,46 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function SpeedButton_GetImageIndex(AObj: TSpeedButton): Integer; extdecl;
+begin
+  Result :=  AObj.ImageIndex;
+end;
+
+procedure SpeedButton_SetImageIndex(AObj: TSpeedButton; AValue: Integer); extdecl;
+begin
+  AObj.ImageIndex := AValue;
+end;
+
+function SpeedButton_GetImages(AObj: TSpeedButton): TCustomImageList; extdecl;
+begin
+  Result :=  AObj.Images;
+end;
+
+procedure SpeedButton_SetImages(AObj: TSpeedButton; AValue: TCustomImageList); extdecl;
+begin
+  AObj.Images := AValue;
+end;
+
+function SpeedButton_GetImageWidth(AObj: TSpeedButton): Integer; extdecl;
+begin
+  Result :=  AObj.ImageWidth;
+end;
+
+procedure SpeedButton_SetImageWidth(AObj: TSpeedButton; AValue: Integer); extdecl;
+begin
+  AObj.ImageWidth := AValue;
+end;
+
+function SpeedButton_GetShowCaption(AObj: TSpeedButton): LongBool; extdecl;
+begin
+  Result :=  AObj.ShowCaption;
+end;
+
+procedure SpeedButton_SetShowCaption(AObj: TSpeedButton; AValue: LongBool); extdecl;
+begin
+  AObj.ShowCaption := AValue;
+end;
+
 function SpeedButton_GetAction(AObj: TSpeedButton): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -664,6 +704,14 @@ exports
   SpeedButton_Equals,
   SpeedButton_GetHashCode,
   SpeedButton_ToString,
+  SpeedButton_GetImageIndex,
+  SpeedButton_SetImageIndex,
+  SpeedButton_GetImages,
+  SpeedButton_SetImages,
+  SpeedButton_GetImageWidth,
+  SpeedButton_SetImageWidth,
+  SpeedButton_GetShowCaption,
+  SpeedButton_SetShowCaption,
   SpeedButton_GetAction,
   SpeedButton_SetAction,
   SpeedButton_GetAlign,

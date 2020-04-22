@@ -409,6 +409,86 @@ func (l *TListView) ToString() string {
     return ListView_ToString(l.instance)
 }
 
+func (l *TListView) AutoSort() bool {
+    return ListView_GetAutoSort(l.instance)
+}
+
+func (l *TListView) SetAutoSort(value bool) {
+    ListView_SetAutoSort(l.instance, value)
+}
+
+func (l *TListView) AutoSortIndicator() bool {
+    return ListView_GetAutoSortIndicator(l.instance)
+}
+
+func (l *TListView) SetAutoSortIndicator(value bool) {
+    ListView_SetAutoSortIndicator(l.instance, value)
+}
+
+func (l *TListView) AutoWidthLastColumn() bool {
+    return ListView_GetAutoWidthLastColumn(l.instance)
+}
+
+func (l *TListView) SetAutoWidthLastColumn(value bool) {
+    ListView_SetAutoWidthLastColumn(l.instance, value)
+}
+
+func (l *TListView) SmallImagesWidth() int32 {
+    return ListView_GetSmallImagesWidth(l.instance)
+}
+
+func (l *TListView) SetSmallImagesWidth(value int32) {
+    ListView_SetSmallImagesWidth(l.instance, value)
+}
+
+func (l *TListView) SortColumn() int32 {
+    return ListView_GetSortColumn(l.instance)
+}
+
+func (l *TListView) SetSortColumn(value int32) {
+    ListView_SetSortColumn(l.instance, value)
+}
+
+func (l *TListView) SortDirection() TSortDirection {
+    return ListView_GetSortDirection(l.instance)
+}
+
+func (l *TListView) SetSortDirection(value TSortDirection) {
+    ListView_SetSortDirection(l.instance, value)
+}
+
+func (l *TListView) LargeImagesWidth() int32 {
+    return ListView_GetLargeImagesWidth(l.instance)
+}
+
+func (l *TListView) SetLargeImagesWidth(value int32) {
+    ListView_SetLargeImagesWidth(l.instance, value)
+}
+
+func (l *TListView) StateImagesWidth() int32 {
+    return ListView_GetStateImagesWidth(l.instance)
+}
+
+func (l *TListView) SetStateImagesWidth(value int32) {
+    ListView_SetStateImagesWidth(l.instance, value)
+}
+
+func (l *TListView) ToolTips() bool {
+    return ListView_GetToolTips(l.instance)
+}
+
+func (l *TListView) SetToolTips(value bool) {
+    ListView_SetToolTips(l.instance, value)
+}
+
+func (l *TListView) ScrollBars() TScrollStyle {
+    return ListView_GetScrollBars(l.instance)
+}
+
+func (l *TListView) SetScrollBars(value TScrollStyle) {
+    ListView_SetScrollBars(l.instance, value)
+}
+
 func (l *TListView) Action() *TAction {
     return AsAction(ListView_GetAction(l.instance))
 }

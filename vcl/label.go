@@ -283,6 +283,14 @@ func (l *TLabel) ToString() string {
     return Label_ToString(l.instance)
 }
 
+func (l *TLabel) OptimalFill() bool {
+    return Label_GetOptimalFill(l.instance)
+}
+
+func (l *TLabel) SetOptimalFill(value bool) {
+    Label_SetOptimalFill(l.instance, value)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (l *TLabel) Align() TAlign {

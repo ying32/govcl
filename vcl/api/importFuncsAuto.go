@@ -2982,6 +2982,15 @@ func MainMenu_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func MainMenu_GetImagesWidth(obj uintptr) int32 {
+    ret, _, _ := mainMenu_GetImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func MainMenu_SetImagesWidth(obj uintptr, value int32) {
+   mainMenu_SetImagesWidth.Call(obj, uintptr(value))
+}
+
 func MainMenu_GetBiDiMode(obj uintptr) TBiDiMode {
     ret, _, _ := mainMenu_GetBiDiMode.Call(obj)
     return TBiDiMode(ret)
@@ -3141,6 +3150,15 @@ func PopupMenu_GetHashCode(obj uintptr) int32 {
 func PopupMenu_ToString(obj uintptr) string {
     ret, _, _ := popupMenu_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PopupMenu_GetImagesWidth(obj uintptr) int32 {
+    ret, _, _ := popupMenu_GetImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func PopupMenu_SetImagesWidth(obj uintptr, value int32) {
+   popupMenu_SetImagesWidth.Call(obj, uintptr(value))
 }
 
 func PopupMenu_GetPopupComponent(obj uintptr) uintptr {
@@ -6582,6 +6600,15 @@ func Label_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Label_GetOptimalFill(obj uintptr) bool {
+    ret, _, _ := label_GetOptimalFill.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Label_SetOptimalFill(obj uintptr, value bool) {
+   label_SetOptimalFill.Call(obj, GoBoolToDBool(value))
+}
+
 func Label_GetAlign(obj uintptr) TAlign {
     ret, _, _ := label_GetAlign.Call(obj)
     return TAlign(ret)
@@ -7278,6 +7305,33 @@ func ListBox_GetHashCode(obj uintptr) int32 {
 func ListBox_ToString(obj uintptr) string {
     ret, _, _ := listBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListBox_GetClickOnSelChange(obj uintptr) bool {
+    ret, _, _ := listBox_GetClickOnSelChange.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_SetClickOnSelChange(obj uintptr, value bool) {
+   listBox_SetClickOnSelChange.Call(obj, GoBoolToDBool(value))
+}
+
+func ListBox_GetOptions(obj uintptr) TListBoxOptions {
+    ret, _, _ := listBox_GetOptions.Call(obj)
+    return TListBoxOptions(ret)
+}
+
+func ListBox_SetOptions(obj uintptr, value TListBoxOptions) {
+   listBox_SetOptions.Call(obj, uintptr(value))
+}
+
+func ListBox_GetTopIndex(obj uintptr) int32 {
+    ret, _, _ := listBox_GetTopIndex.Call(obj)
+    return int32(ret)
+}
+
+func ListBox_SetTopIndex(obj uintptr, value int32) {
+   listBox_SetTopIndex.Call(obj, uintptr(value))
 }
 
 func ListBox_GetStyle(obj uintptr) TListBoxStyle {
@@ -9745,6 +9799,51 @@ func Image_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Image_GetAntialiasingMode(obj uintptr) TAntialiasingMode {
+    ret, _, _ := image_GetAntialiasingMode.Call(obj)
+    return TAntialiasingMode(ret)
+}
+
+func Image_SetAntialiasingMode(obj uintptr, value TAntialiasingMode) {
+   image_SetAntialiasingMode.Call(obj, uintptr(value))
+}
+
+func Image_GetKeepOriginXWhenClipped(obj uintptr) bool {
+    ret, _, _ := image_GetKeepOriginXWhenClipped.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetKeepOriginXWhenClipped(obj uintptr, value bool) {
+   image_SetKeepOriginXWhenClipped.Call(obj, GoBoolToDBool(value))
+}
+
+func Image_GetKeepOriginYWhenClipped(obj uintptr) bool {
+    ret, _, _ := image_GetKeepOriginYWhenClipped.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetKeepOriginYWhenClipped(obj uintptr, value bool) {
+   image_SetKeepOriginYWhenClipped.Call(obj, GoBoolToDBool(value))
+}
+
+func Image_GetStretchInEnabled(obj uintptr) bool {
+    ret, _, _ := image_GetStretchInEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetStretchInEnabled(obj uintptr, value bool) {
+   image_SetStretchInEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func Image_GetStretchOutEnabled(obj uintptr) bool {
+    ret, _, _ := image_GetStretchOutEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetStretchOutEnabled(obj uintptr, value bool) {
+   image_SetStretchOutEnabled.Call(obj, GoBoolToDBool(value))
+}
+
 func Image_GetCanvas(obj uintptr) uintptr {
     ret, _, _ := image_GetCanvas.Call(obj)
     return ret
@@ -10852,6 +10951,42 @@ func SpeedButton_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func SpeedButton_GetImageIndex(obj uintptr) int32 {
+    ret, _, _ := speedButton_GetImageIndex.Call(obj)
+    return int32(ret)
+}
+
+func SpeedButton_SetImageIndex(obj uintptr, value int32) {
+   speedButton_SetImageIndex.Call(obj, uintptr(value))
+}
+
+func SpeedButton_GetImages(obj uintptr) uintptr {
+    ret, _, _ := speedButton_GetImages.Call(obj)
+    return ret
+}
+
+func SpeedButton_SetImages(obj uintptr, value uintptr) {
+   speedButton_SetImages.Call(obj, value)
+}
+
+func SpeedButton_GetImageWidth(obj uintptr) int32 {
+    ret, _, _ := speedButton_GetImageWidth.Call(obj)
+    return int32(ret)
+}
+
+func SpeedButton_SetImageWidth(obj uintptr, value int32) {
+   speedButton_SetImageWidth.Call(obj, uintptr(value))
+}
+
+func SpeedButton_GetShowCaption(obj uintptr) bool {
+    ret, _, _ := speedButton_GetShowCaption.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpeedButton_SetShowCaption(obj uintptr, value bool) {
+   speedButton_SetShowCaption.Call(obj, GoBoolToDBool(value))
+}
+
 func SpeedButton_GetAction(obj uintptr) uintptr {
     ret, _, _ := speedButton_GetAction.Call(obj)
     return ret
@@ -11412,6 +11547,15 @@ func Splitter_GetHashCode(obj uintptr) int32 {
 func Splitter_ToString(obj uintptr) string {
     ret, _, _ := splitter_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Splitter_GetResizeAnchor(obj uintptr) TAnchorKind {
+    ret, _, _ := splitter_GetResizeAnchor.Call(obj)
+    return TAnchorKind(ret)
+}
+
+func Splitter_SetResizeAnchor(obj uintptr, value TAnchorKind) {
+   splitter_SetResizeAnchor.Call(obj, uintptr(value))
 }
 
 func Splitter_GetCanvas(obj uintptr) uintptr {
@@ -14547,6 +14691,15 @@ func ColorListBox_GetItems(obj uintptr) uintptr {
 
 func ColorListBox_SetItems(obj uintptr, value uintptr) {
    colorListBox_SetItems.Call(obj, value)
+}
+
+func ColorListBox_GetTopIndex(obj uintptr) int32 {
+    ret, _, _ := colorListBox_GetTopIndex.Call(obj)
+    return int32(ret)
+}
+
+func ColorListBox_SetTopIndex(obj uintptr, value int32) {
+   colorListBox_SetTopIndex.Call(obj, uintptr(value))
 }
 
 func ColorListBox_GetMultiSelect(obj uintptr) bool {
@@ -21528,6 +21681,96 @@ func ListView_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ListView_GetAutoSort(obj uintptr) bool {
+    ret, _, _ := listView_GetAutoSort.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetAutoSort(obj uintptr, value bool) {
+   listView_SetAutoSort.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetAutoSortIndicator(obj uintptr) bool {
+    ret, _, _ := listView_GetAutoSortIndicator.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetAutoSortIndicator(obj uintptr, value bool) {
+   listView_SetAutoSortIndicator.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetAutoWidthLastColumn(obj uintptr) bool {
+    ret, _, _ := listView_GetAutoWidthLastColumn.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetAutoWidthLastColumn(obj uintptr, value bool) {
+   listView_SetAutoWidthLastColumn.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetSmallImagesWidth(obj uintptr) int32 {
+    ret, _, _ := listView_GetSmallImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetSmallImagesWidth(obj uintptr, value int32) {
+   listView_SetSmallImagesWidth.Call(obj, uintptr(value))
+}
+
+func ListView_GetSortColumn(obj uintptr) int32 {
+    ret, _, _ := listView_GetSortColumn.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetSortColumn(obj uintptr, value int32) {
+   listView_SetSortColumn.Call(obj, uintptr(value))
+}
+
+func ListView_GetSortDirection(obj uintptr) TSortDirection {
+    ret, _, _ := listView_GetSortDirection.Call(obj)
+    return TSortDirection(ret)
+}
+
+func ListView_SetSortDirection(obj uintptr, value TSortDirection) {
+   listView_SetSortDirection.Call(obj, uintptr(value))
+}
+
+func ListView_GetLargeImagesWidth(obj uintptr) int32 {
+    ret, _, _ := listView_GetLargeImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetLargeImagesWidth(obj uintptr, value int32) {
+   listView_SetLargeImagesWidth.Call(obj, uintptr(value))
+}
+
+func ListView_GetStateImagesWidth(obj uintptr) int32 {
+    ret, _, _ := listView_GetStateImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetStateImagesWidth(obj uintptr, value int32) {
+   listView_SetStateImagesWidth.Call(obj, uintptr(value))
+}
+
+func ListView_GetToolTips(obj uintptr) bool {
+    ret, _, _ := listView_GetToolTips.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetToolTips(obj uintptr, value bool) {
+   listView_SetToolTips.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := listView_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func ListView_SetScrollBars(obj uintptr, value TScrollStyle) {
+   listView_SetScrollBars.Call(obj, uintptr(value))
+}
+
 func ListView_GetAction(obj uintptr) uintptr {
     ret, _, _ := listView_GetAction.Call(obj)
     return ret
@@ -22645,6 +22888,150 @@ func TreeView_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func TreeView_GetDefaultItemHeight(obj uintptr) int32 {
+    ret, _, _ := treeView_GetDefaultItemHeight.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetDefaultItemHeight(obj uintptr, value int32) {
+   treeView_SetDefaultItemHeight.Call(obj, uintptr(value))
+}
+
+func TreeView_GetExpandSignColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetExpandSignColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetExpandSignColor(obj uintptr, value TColor) {
+   treeView_SetExpandSignColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetExpandSignSize(obj uintptr) int32 {
+    ret, _, _ := treeView_GetExpandSignSize.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetExpandSignSize(obj uintptr, value int32) {
+   treeView_SetExpandSignSize.Call(obj, uintptr(value))
+}
+
+func TreeView_GetExpandSignType(obj uintptr) TTreeViewExpandSignType {
+    ret, _, _ := treeView_GetExpandSignType.Call(obj)
+    return TTreeViewExpandSignType(ret)
+}
+
+func TreeView_SetExpandSignType(obj uintptr, value TTreeViewExpandSignType) {
+   treeView_SetExpandSignType.Call(obj, uintptr(value))
+}
+
+func TreeView_GetHotTrackColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetHotTrackColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetHotTrackColor(obj uintptr, value TColor) {
+   treeView_SetHotTrackColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetImagesWidth(obj uintptr) int32 {
+    ret, _, _ := treeView_GetImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetImagesWidth(obj uintptr, value int32) {
+   treeView_SetImagesWidth.Call(obj, uintptr(value))
+}
+
+func TreeView_GetOptions(obj uintptr) TTreeViewOptions {
+    ret, _, _ := treeView_GetOptions.Call(obj)
+    return TTreeViewOptions(ret)
+}
+
+func TreeView_SetOptions(obj uintptr, value TTreeViewOptions) {
+   treeView_SetOptions.Call(obj, uintptr(value))
+}
+
+func TreeView_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := treeView_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func TreeView_SetScrollBars(obj uintptr, value TScrollStyle) {
+   treeView_SetScrollBars.Call(obj, uintptr(value))
+}
+
+func TreeView_GetSelectionColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetSelectionColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetSelectionColor(obj uintptr, value TColor) {
+   treeView_SetSelectionColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetSelectionFontColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetSelectionFontColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetSelectionFontColor(obj uintptr, value TColor) {
+   treeView_SetSelectionFontColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetSelectionFontColorUsed(obj uintptr) bool {
+    ret, _, _ := treeView_GetSelectionFontColorUsed.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_SetSelectionFontColorUsed(obj uintptr, value bool) {
+   treeView_SetSelectionFontColorUsed.Call(obj, GoBoolToDBool(value))
+}
+
+func TreeView_GetSeparatorColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetSeparatorColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetSeparatorColor(obj uintptr, value TColor) {
+   treeView_SetSeparatorColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetStateImagesWidth(obj uintptr) int32 {
+    ret, _, _ := treeView_GetStateImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetStateImagesWidth(obj uintptr, value int32) {
+   treeView_SetStateImagesWidth.Call(obj, uintptr(value))
+}
+
+func TreeView_GetToolTips(obj uintptr) bool {
+    ret, _, _ := treeView_GetToolTips.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_SetToolTips(obj uintptr, value bool) {
+   treeView_SetToolTips.Call(obj, GoBoolToDBool(value))
+}
+
+func TreeView_GetTreeLineColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetTreeLineColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetTreeLineColor(obj uintptr, value TColor) {
+   treeView_SetTreeLineColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetTreeLinePenStyle(obj uintptr) TPenStyle {
+    ret, _, _ := treeView_GetTreeLinePenStyle.Call(obj)
+    return TPenStyle(ret)
+}
+
+func TreeView_SetTreeLinePenStyle(obj uintptr, value TPenStyle) {
+   treeView_SetTreeLinePenStyle.Call(obj, uintptr(value))
+}
+
 func TreeView_GetAlign(obj uintptr) TAlign {
     ret, _, _ := treeView_GetAlign.Call(obj)
     return TAlign(ret)
@@ -22967,15 +23354,6 @@ func TreeView_GetTabStop(obj uintptr) bool {
 
 func TreeView_SetTabStop(obj uintptr, value bool) {
    treeView_SetTabStop.Call(obj, GoBoolToDBool(value))
-}
-
-func TreeView_GetToolTips(obj uintptr) bool {
-    ret, _, _ := treeView_GetToolTips.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TreeView_SetToolTips(obj uintptr, value bool) {
-   treeView_SetToolTips.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeView_GetVisible(obj uintptr) bool {
@@ -25309,6 +25687,33 @@ func BitBtn_GetHashCode(obj uintptr) int32 {
 func BitBtn_ToString(obj uintptr) string {
     ret, _, _ := bitBtn_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func BitBtn_GetDefaultCaption(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetDefaultCaption.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BitBtn_SetDefaultCaption(obj uintptr, value bool) {
+   bitBtn_SetDefaultCaption.Call(obj, GoBoolToDBool(value))
+}
+
+func BitBtn_GetGlyphShowMode(obj uintptr) TGlyphShowMode {
+    ret, _, _ := bitBtn_GetGlyphShowMode.Call(obj)
+    return TGlyphShowMode(ret)
+}
+
+func BitBtn_SetGlyphShowMode(obj uintptr, value TGlyphShowMode) {
+   bitBtn_SetGlyphShowMode.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetImageWidth(obj uintptr) int32 {
+    ret, _, _ := bitBtn_GetImageWidth.Call(obj)
+    return int32(ret)
+}
+
+func BitBtn_SetImageWidth(obj uintptr, value int32) {
+   bitBtn_SetImageWidth.Call(obj, uintptr(value))
 }
 
 func BitBtn_GetAction(obj uintptr) uintptr {
@@ -28607,6 +29012,15 @@ func PageControl_GetHashCode(obj uintptr) int32 {
 func PageControl_ToString(obj uintptr) string {
     ret, _, _ := pageControl_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PageControl_GetOptions(obj uintptr) TCTabControlOptions {
+    ret, _, _ := pageControl_GetOptions.Call(obj)
+    return TCTabControlOptions(ret)
+}
+
+func PageControl_SetOptions(obj uintptr, value TCTabControlOptions) {
+   pageControl_SetOptions.Call(obj, uintptr(value))
 }
 
 func PageControl_GetActivePageIndex(obj uintptr) int32 {
@@ -40873,6 +41287,15 @@ func CheckListBox_GetCanvas(obj uintptr) uintptr {
 func CheckListBox_GetCount(obj uintptr) int32 {
     ret, _, _ := checkListBox_GetCount.Call(obj)
     return int32(ret)
+}
+
+func CheckListBox_GetTopIndex(obj uintptr) int32 {
+    ret, _, _ := checkListBox_GetTopIndex.Call(obj)
+    return int32(ret)
+}
+
+func CheckListBox_SetTopIndex(obj uintptr, value int32) {
+   checkListBox_SetTopIndex.Call(obj, uintptr(value))
 }
 
 func CheckListBox_GetMultiSelect(obj uintptr) bool {

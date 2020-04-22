@@ -287,6 +287,166 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function TreeView_GetDefaultItemHeight(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultItemHeight;
+end;
+
+procedure TreeView_SetDefaultItemHeight(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.DefaultItemHeight := AValue;
+end;
+
+function TreeView_GetExpandSignColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.ExpandSignColor;
+end;
+
+procedure TreeView_SetExpandSignColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.ExpandSignColor := AValue;
+end;
+
+function TreeView_GetExpandSignSize(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.ExpandSignSize;
+end;
+
+procedure TreeView_SetExpandSignSize(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.ExpandSignSize := AValue;
+end;
+
+function TreeView_GetExpandSignType(AObj: TTreeView): TTreeViewExpandSignType; extdecl;
+begin
+  Result :=  AObj.ExpandSignType;
+end;
+
+procedure TreeView_SetExpandSignType(AObj: TTreeView; AValue: TTreeViewExpandSignType); extdecl;
+begin
+  AObj.ExpandSignType := AValue;
+end;
+
+function TreeView_GetHotTrackColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.HotTrackColor;
+end;
+
+procedure TreeView_SetHotTrackColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.HotTrackColor := AValue;
+end;
+
+function TreeView_GetImagesWidth(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.ImagesWidth;
+end;
+
+procedure TreeView_SetImagesWidth(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.ImagesWidth := AValue;
+end;
+
+function TreeView_GetOptions(AObj: TTreeView): TTreeViewOptions; extdecl;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure TreeView_SetOptions(AObj: TTreeView; AValue: TTreeViewOptions); extdecl;
+begin
+  AObj.Options := AValue;
+end;
+
+function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
+begin
+  Result :=  AObj.ScrollBars;
+end;
+
+procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
+begin
+  AObj.ScrollBars := AValue;
+end;
+
+function TreeView_GetSelectionColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.SelectionColor;
+end;
+
+procedure TreeView_SetSelectionColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.SelectionColor := AValue;
+end;
+
+function TreeView_GetSelectionFontColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.SelectionFontColor;
+end;
+
+procedure TreeView_SetSelectionFontColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.SelectionFontColor := AValue;
+end;
+
+function TreeView_GetSelectionFontColorUsed(AObj: TTreeView): LongBool; extdecl;
+begin
+  Result :=  AObj.SelectionFontColorUsed;
+end;
+
+procedure TreeView_SetSelectionFontColorUsed(AObj: TTreeView; AValue: LongBool); extdecl;
+begin
+  AObj.SelectionFontColorUsed := AValue;
+end;
+
+function TreeView_GetSeparatorColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.SeparatorColor;
+end;
+
+procedure TreeView_SetSeparatorColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.SeparatorColor := AValue;
+end;
+
+function TreeView_GetStateImagesWidth(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.StateImagesWidth;
+end;
+
+procedure TreeView_SetStateImagesWidth(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.StateImagesWidth := AValue;
+end;
+
+function TreeView_GetToolTips(AObj: TTreeView): LongBool; extdecl;
+begin
+  Result :=  AObj.ToolTips;
+end;
+
+procedure TreeView_SetToolTips(AObj: TTreeView; AValue: LongBool); extdecl;
+begin
+  AObj.ToolTips := AValue;
+end;
+
+function TreeView_GetTreeLineColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.TreeLineColor;
+end;
+
+procedure TreeView_SetTreeLineColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.TreeLineColor := AValue;
+end;
+
+function TreeView_GetTreeLinePenStyle(AObj: TTreeView): TPenStyle; extdecl;
+begin
+  Result :=  AObj.TreeLinePenStyle;
+end;
+
+procedure TreeView_SetTreeLinePenStyle(AObj: TTreeView; AValue: TPenStyle); extdecl;
+begin
+  AObj.TreeLinePenStyle := AValue;
+end;
+
 function TreeView_GetAlign(AObj: TTreeView): TAlign; extdecl;
 begin
   Result :=  AObj.Align;
@@ -645,16 +805,6 @@ end;
 procedure TreeView_SetTabStop(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
   AObj.TabStop := AValue;
-end;
-
-function TreeView_GetToolTips(AObj: TTreeView): LongBool; extdecl;
-begin
-  Result :=  AObj.ToolTips;
-end;
-
-procedure TreeView_SetToolTips(AObj: TTreeView; AValue: LongBool); extdecl;
-begin
-  AObj.ToolTips := AValue;
 end;
 
 function TreeView_GetVisible(AObj: TTreeView): LongBool; extdecl;
@@ -1268,6 +1418,38 @@ exports
   TreeView_Equals,
   TreeView_GetHashCode,
   TreeView_ToString,
+  TreeView_GetDefaultItemHeight,
+  TreeView_SetDefaultItemHeight,
+  TreeView_GetExpandSignColor,
+  TreeView_SetExpandSignColor,
+  TreeView_GetExpandSignSize,
+  TreeView_SetExpandSignSize,
+  TreeView_GetExpandSignType,
+  TreeView_SetExpandSignType,
+  TreeView_GetHotTrackColor,
+  TreeView_SetHotTrackColor,
+  TreeView_GetImagesWidth,
+  TreeView_SetImagesWidth,
+  TreeView_GetOptions,
+  TreeView_SetOptions,
+  TreeView_GetScrollBars,
+  TreeView_SetScrollBars,
+  TreeView_GetSelectionColor,
+  TreeView_SetSelectionColor,
+  TreeView_GetSelectionFontColor,
+  TreeView_SetSelectionFontColor,
+  TreeView_GetSelectionFontColorUsed,
+  TreeView_SetSelectionFontColorUsed,
+  TreeView_GetSeparatorColor,
+  TreeView_SetSeparatorColor,
+  TreeView_GetStateImagesWidth,
+  TreeView_SetStateImagesWidth,
+  TreeView_GetToolTips,
+  TreeView_SetToolTips,
+  TreeView_GetTreeLineColor,
+  TreeView_SetTreeLineColor,
+  TreeView_GetTreeLinePenStyle,
+  TreeView_SetTreeLinePenStyle,
   TreeView_GetAlign,
   TreeView_SetAlign,
   TreeView_GetAnchors,
@@ -1340,8 +1522,6 @@ exports
   TreeView_SetTabOrder,
   TreeView_GetTabStop,
   TreeView_SetTabStop,
-  TreeView_GetToolTips,
-  TreeView_SetToolTips,
   TreeView_GetVisible,
   TreeView_SetVisible,
   TreeView_SetOnAddition,

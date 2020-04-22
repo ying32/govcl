@@ -162,6 +162,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function Label_GetOptimalFill(AObj: TLabel): LongBool; extdecl;
+begin
+  Result :=  AObj.OptimalFill;
+end;
+
+procedure Label_SetOptimalFill(AObj: TLabel; AValue: LongBool); extdecl;
+begin
+  AObj.OptimalFill := AValue;
+end;
+
 function Label_GetAlign(AObj: TLabel): TAlign; extdecl;
 begin
   Result :=  AObj.Align;
@@ -711,6 +721,8 @@ exports
   Label_Equals,
   Label_GetHashCode,
   Label_ToString,
+  Label_GetOptimalFill,
+  Label_SetOptimalFill,
   Label_GetAlign,
   Label_SetAlign,
   Label_GetAlignment,

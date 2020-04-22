@@ -673,6 +673,16 @@ begin
   Result :=  AObj.Count;
 end;
 
+function CheckListBox_GetTopIndex(AObj: TCheckListBox): Integer; extdecl;
+begin
+  Result :=  AObj.TopIndex;
+end;
+
+procedure CheckListBox_SetTopIndex(AObj: TCheckListBox; AValue: Integer); extdecl;
+begin
+  AObj.TopIndex := AValue;
+end;
+
 function CheckListBox_GetMultiSelect(AObj: TCheckListBox): LongBool; extdecl;
 begin
   Result :=  AObj.MultiSelect;
@@ -1150,6 +1160,8 @@ exports
   CheckListBox_SetOnMouseUp,
   CheckListBox_GetCanvas,
   CheckListBox_GetCount,
+  CheckListBox_GetTopIndex,
+  CheckListBox_SetTopIndex,
   CheckListBox_GetMultiSelect,
   CheckListBox_SetMultiSelect,
   CheckListBox_GetSelCount,

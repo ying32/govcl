@@ -277,6 +277,106 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function ListView_GetAutoSort(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSort;
+end;
+
+procedure ListView_SetAutoSort(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSort := AValue;
+end;
+
+function ListView_GetAutoSortIndicator(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSortIndicator;
+end;
+
+procedure ListView_SetAutoSortIndicator(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSortIndicator := AValue;
+end;
+
+function ListView_GetAutoWidthLastColumn(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoWidthLastColumn;
+end;
+
+procedure ListView_SetAutoWidthLastColumn(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.AutoWidthLastColumn := AValue;
+end;
+
+function ListView_GetSmallImagesWidth(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.SmallImagesWidth;
+end;
+
+procedure ListView_SetSmallImagesWidth(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.SmallImagesWidth := AValue;
+end;
+
+function ListView_GetSortColumn(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.SortColumn;
+end;
+
+procedure ListView_SetSortColumn(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.SortColumn := AValue;
+end;
+
+function ListView_GetSortDirection(AObj: TListView): TSortDirection; extdecl;
+begin
+  Result :=  AObj.SortDirection;
+end;
+
+procedure ListView_SetSortDirection(AObj: TListView; AValue: TSortDirection); extdecl;
+begin
+  AObj.SortDirection := AValue;
+end;
+
+function ListView_GetLargeImagesWidth(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.LargeImagesWidth;
+end;
+
+procedure ListView_SetLargeImagesWidth(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.LargeImagesWidth := AValue;
+end;
+
+function ListView_GetStateImagesWidth(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.StateImagesWidth;
+end;
+
+procedure ListView_SetStateImagesWidth(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.StateImagesWidth := AValue;
+end;
+
+function ListView_GetToolTips(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.ToolTips;
+end;
+
+procedure ListView_SetToolTips(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.ToolTips := AValue;
+end;
+
+function ListView_GetScrollBars(AObj: TListView): TScrollStyle; extdecl;
+begin
+  Result :=  AObj.ScrollBars;
+end;
+
+procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
+begin
+  AObj.ScrollBars := AValue;
+end;
+
 function ListView_GetAction(AObj: TListView): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -1361,6 +1461,26 @@ exports
   ListView_Equals,
   ListView_GetHashCode,
   ListView_ToString,
+  ListView_GetAutoSort,
+  ListView_SetAutoSort,
+  ListView_GetAutoSortIndicator,
+  ListView_SetAutoSortIndicator,
+  ListView_GetAutoWidthLastColumn,
+  ListView_SetAutoWidthLastColumn,
+  ListView_GetSmallImagesWidth,
+  ListView_SetSmallImagesWidth,
+  ListView_GetSortColumn,
+  ListView_SetSortColumn,
+  ListView_GetSortDirection,
+  ListView_SetSortDirection,
+  ListView_GetLargeImagesWidth,
+  ListView_SetLargeImagesWidth,
+  ListView_GetStateImagesWidth,
+  ListView_SetStateImagesWidth,
+  ListView_GetToolTips,
+  ListView_SetToolTips,
+  ListView_GetScrollBars,
+  ListView_SetScrollBars,
   ListView_GetAction,
   ListView_SetAction,
   ListView_GetAlign,

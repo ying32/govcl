@@ -283,6 +283,14 @@ func (s *TSplitter) ToString() string {
     return Splitter_ToString(s.instance)
 }
 
+func (s *TSplitter) ResizeAnchor() TAnchorKind {
+    return Splitter_GetResizeAnchor(s.instance)
+}
+
+func (s *TSplitter) SetResizeAnchor(value TAnchorKind) {
+    Splitter_SetResizeAnchor(s.instance, value)
+}
+
 // CN: 获取画布。
 // EN: .
 func (s *TSplitter) Canvas() *TCanvas {

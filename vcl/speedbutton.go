@@ -289,6 +289,46 @@ func (s *TSpeedButton) ToString() string {
     return SpeedButton_ToString(s.instance)
 }
 
+// CN: 获取图像在images中的索引。
+// EN: .
+func (s *TSpeedButton) ImageIndex() int32 {
+    return SpeedButton_GetImageIndex(s.instance)
+}
+
+// CN: 设置图像在images中的索引。
+// EN: .
+func (s *TSpeedButton) SetImageIndex(value int32) {
+    SpeedButton_SetImageIndex(s.instance, value)
+}
+
+// CN: 获取图标索引列表对象。
+// EN: .
+func (s *TSpeedButton) Images() *TImageList {
+    return AsImageList(SpeedButton_GetImages(s.instance))
+}
+
+// CN: 设置图标索引列表对象。
+// EN: .
+func (s *TSpeedButton) SetImages(value IComponent) {
+    SpeedButton_SetImages(s.instance, CheckPtr(value))
+}
+
+func (s *TSpeedButton) ImageWidth() int32 {
+    return SpeedButton_GetImageWidth(s.instance)
+}
+
+func (s *TSpeedButton) SetImageWidth(value int32) {
+    SpeedButton_SetImageWidth(s.instance, value)
+}
+
+func (s *TSpeedButton) ShowCaption() bool {
+    return SpeedButton_GetShowCaption(s.instance)
+}
+
+func (s *TSpeedButton) SetShowCaption(value bool) {
+    SpeedButton_SetShowCaption(s.instance, value)
+}
+
 func (s *TSpeedButton) Action() *TAction {
     return AsAction(SpeedButton_GetAction(s.instance))
 }

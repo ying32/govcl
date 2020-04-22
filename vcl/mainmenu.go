@@ -175,6 +175,14 @@ func (m *TMainMenu) ToString() string {
     return MainMenu_ToString(m.instance)
 }
 
+func (m *TMainMenu) ImagesWidth() int32 {
+    return MainMenu_GetImagesWidth(m.instance)
+}
+
+func (m *TMainMenu) SetImagesWidth(value int32) {
+    MainMenu_SetImagesWidth(m.instance, value)
+}
+
 func (m *TMainMenu) BiDiMode() TBiDiMode {
     return MainMenu_GetBiDiMode(m.instance)
 }

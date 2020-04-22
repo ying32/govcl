@@ -513,15 +513,15 @@ end;
 
 
 // TListView
-function ListView_GetScrollBars(AObj: TListView): TScrollStyle; extdecl;
-begin
-  Result :=  AObj.ScrollBars;
-end;
-
-procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
-begin
-  AObj.ScrollBars := AValue;
-end;
+//function ListView_GetScrollBars(AObj: TListView): TScrollStyle; extdecl;
+//begin
+//  Result :=  AObj.ScrollBars;
+//end;
+//
+//procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
+//begin
+//  AObj.ScrollBars := AValue;
+//end;
 
 //function ListView_CustomSort(AObj: TListView; SortProc: TLVCompare; lParam: NativeInt): LongBool; extdecl;
 //begin
@@ -529,15 +529,15 @@ end;
 //end;
 
 // TTreeView
-function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
-begin
-  Result :=  AObj.ScrollBars;
-end;
-
-procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
-begin
-  AObj.ScrollBars := AValue;
-end;
+//function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
+//begin
+//  Result :=  AObj.ScrollBars;
+//end;
+//
+//procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
+//begin
+//  AObj.ScrollBars := AValue;
+//end;
 
 // TBitmap
 procedure Bitmap_Clear(AObj: TBitmap); extdecl;
@@ -1182,13 +1182,13 @@ exports
   //ImageList_GetIcon2,
 
   // TListView
-  ListView_GetScrollBars,
-  ListView_SetScrollBars,
+  //ListView_GetScrollBars,
+  //ListView_SetScrollBars,
   //ListView_CustomSort,
 
   // TTreeView
-  TreeView_GetScrollBars,
-  TreeView_SetScrollBars,
+  //TreeView_GetScrollBars,
+  //TreeView_SetScrollBars,
 
   // TBitmap
   Bitmap_Clear,

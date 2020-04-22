@@ -247,6 +247,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function PageControl_GetOptions(AObj: TPageControl): TCTabControlOptions; extdecl;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure PageControl_SetOptions(AObj: TPageControl; AValue: TCTabControlOptions); extdecl;
+begin
+  AObj.Options := AValue;
+end;
+
 function PageControl_GetActivePageIndex(AObj: TPageControl): Integer; extdecl;
 begin
   Result :=  AObj.ActivePageIndex;
@@ -964,6 +974,8 @@ exports
   PageControl_Equals,
   PageControl_GetHashCode,
   PageControl_ToString,
+  PageControl_GetOptions,
+  PageControl_SetOptions,
   PageControl_GetActivePageIndex,
   PageControl_SetActivePageIndex,
   PageControl_GetPageCount,

@@ -749,6 +749,14 @@ func (c *TColorListBox) SetItems(value IObject) {
     ColorListBox_SetItems(c.instance, CheckPtr(value))
 }
 
+func (c *TColorListBox) TopIndex() int32 {
+    return ColorListBox_GetTopIndex(c.instance)
+}
+
+func (c *TColorListBox) SetTopIndex(value int32) {
+    ColorListBox_SetTopIndex(c.instance, value)
+}
+
 func (c *TColorListBox) MultiSelect() bool {
     return ColorListBox_GetMultiSelect(c.instance)
 }

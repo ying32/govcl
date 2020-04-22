@@ -162,6 +162,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function Splitter_GetResizeAnchor(AObj: TSplitter): TAnchorKind; extdecl;
+begin
+  Result :=  AObj.ResizeAnchor;
+end;
+
+procedure Splitter_SetResizeAnchor(AObj: TSplitter; AValue: TAnchorKind); extdecl;
+begin
+  AObj.ResizeAnchor := AValue;
+end;
+
 function Splitter_GetCanvas(AObj: TSplitter): TCanvas; extdecl;
 begin
   Result :=  AObj.Canvas;
@@ -501,6 +511,8 @@ exports
   Splitter_Equals,
   Splitter_GetHashCode,
   Splitter_ToString,
+  Splitter_GetResizeAnchor,
+  Splitter_SetResizeAnchor,
   Splitter_GetCanvas,
   Splitter_GetAlign,
   Splitter_SetAlign,

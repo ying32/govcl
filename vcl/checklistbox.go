@@ -797,6 +797,14 @@ func (c *TCheckListBox) Count() int32 {
     return CheckListBox_GetCount(c.instance)
 }
 
+func (c *TCheckListBox) TopIndex() int32 {
+    return CheckListBox_GetTopIndex(c.instance)
+}
+
+func (c *TCheckListBox) SetTopIndex(value int32) {
+    CheckListBox_SetTopIndex(c.instance, value)
+}
+
 func (c *TCheckListBox) MultiSelect() bool {
     return CheckListBox_GetMultiSelect(c.instance)
 }

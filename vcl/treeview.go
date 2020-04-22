@@ -421,6 +421,134 @@ func (t *TTreeView) ToString() string {
     return TreeView_ToString(t.instance)
 }
 
+func (t *TTreeView) DefaultItemHeight() int32 {
+    return TreeView_GetDefaultItemHeight(t.instance)
+}
+
+func (t *TTreeView) SetDefaultItemHeight(value int32) {
+    TreeView_SetDefaultItemHeight(t.instance, value)
+}
+
+func (t *TTreeView) ExpandSignColor() TColor {
+    return TreeView_GetExpandSignColor(t.instance)
+}
+
+func (t *TTreeView) SetExpandSignColor(value TColor) {
+    TreeView_SetExpandSignColor(t.instance, value)
+}
+
+func (t *TTreeView) ExpandSignSize() int32 {
+    return TreeView_GetExpandSignSize(t.instance)
+}
+
+func (t *TTreeView) SetExpandSignSize(value int32) {
+    TreeView_SetExpandSignSize(t.instance, value)
+}
+
+func (t *TTreeView) ExpandSignType() TTreeViewExpandSignType {
+    return TreeView_GetExpandSignType(t.instance)
+}
+
+func (t *TTreeView) SetExpandSignType(value TTreeViewExpandSignType) {
+    TreeView_SetExpandSignType(t.instance, value)
+}
+
+func (t *TTreeView) HotTrackColor() TColor {
+    return TreeView_GetHotTrackColor(t.instance)
+}
+
+func (t *TTreeView) SetHotTrackColor(value TColor) {
+    TreeView_SetHotTrackColor(t.instance, value)
+}
+
+func (t *TTreeView) ImagesWidth() int32 {
+    return TreeView_GetImagesWidth(t.instance)
+}
+
+func (t *TTreeView) SetImagesWidth(value int32) {
+    TreeView_SetImagesWidth(t.instance, value)
+}
+
+func (t *TTreeView) Options() TTreeViewOptions {
+    return TreeView_GetOptions(t.instance)
+}
+
+func (t *TTreeView) SetOptions(value TTreeViewOptions) {
+    TreeView_SetOptions(t.instance, value)
+}
+
+func (t *TTreeView) ScrollBars() TScrollStyle {
+    return TreeView_GetScrollBars(t.instance)
+}
+
+func (t *TTreeView) SetScrollBars(value TScrollStyle) {
+    TreeView_SetScrollBars(t.instance, value)
+}
+
+func (t *TTreeView) SelectionColor() TColor {
+    return TreeView_GetSelectionColor(t.instance)
+}
+
+func (t *TTreeView) SetSelectionColor(value TColor) {
+    TreeView_SetSelectionColor(t.instance, value)
+}
+
+func (t *TTreeView) SelectionFontColor() TColor {
+    return TreeView_GetSelectionFontColor(t.instance)
+}
+
+func (t *TTreeView) SetSelectionFontColor(value TColor) {
+    TreeView_SetSelectionFontColor(t.instance, value)
+}
+
+func (t *TTreeView) SelectionFontColorUsed() bool {
+    return TreeView_GetSelectionFontColorUsed(t.instance)
+}
+
+func (t *TTreeView) SetSelectionFontColorUsed(value bool) {
+    TreeView_SetSelectionFontColorUsed(t.instance, value)
+}
+
+func (t *TTreeView) SeparatorColor() TColor {
+    return TreeView_GetSeparatorColor(t.instance)
+}
+
+func (t *TTreeView) SetSeparatorColor(value TColor) {
+    TreeView_SetSeparatorColor(t.instance, value)
+}
+
+func (t *TTreeView) StateImagesWidth() int32 {
+    return TreeView_GetStateImagesWidth(t.instance)
+}
+
+func (t *TTreeView) SetStateImagesWidth(value int32) {
+    TreeView_SetStateImagesWidth(t.instance, value)
+}
+
+func (t *TTreeView) ToolTips() bool {
+    return TreeView_GetToolTips(t.instance)
+}
+
+func (t *TTreeView) SetToolTips(value bool) {
+    TreeView_SetToolTips(t.instance, value)
+}
+
+func (t *TTreeView) TreeLineColor() TColor {
+    return TreeView_GetTreeLineColor(t.instance)
+}
+
+func (t *TTreeView) SetTreeLineColor(value TColor) {
+    TreeView_SetTreeLineColor(t.instance, value)
+}
+
+func (t *TTreeView) TreeLinePenStyle() TPenStyle {
+    return TreeView_GetTreeLinePenStyle(t.instance)
+}
+
+func (t *TTreeView) SetTreeLinePenStyle(value TPenStyle) {
+    TreeView_SetTreeLinePenStyle(t.instance, value)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (t *TTreeView) Align() TAlign {
@@ -791,14 +919,6 @@ func (t *TTreeView) TabStop() bool {
 // EN: Set Tab can stay.
 func (t *TTreeView) SetTabStop(value bool) {
     TreeView_SetTabStop(t.instance, value)
-}
-
-func (t *TTreeView) ToolTips() bool {
-    return TreeView_GetToolTips(t.instance)
-}
-
-func (t *TTreeView) SetToolTips(value bool) {
-    TreeView_SetToolTips(t.instance, value)
 }
 
 // CN: 获取控件可视。

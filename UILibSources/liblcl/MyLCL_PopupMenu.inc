@@ -82,6 +82,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function PopupMenu_GetImagesWidth(AObj: TPopupMenu): Integer; extdecl;
+begin
+  Result :=  AObj.ImagesWidth;
+end;
+
+procedure PopupMenu_SetImagesWidth(AObj: TPopupMenu; AValue: Integer); extdecl;
+begin
+  AObj.ImagesWidth := AValue;
+end;
+
 function PopupMenu_GetPopupComponent(AObj: TPopupMenu): TComponent; extdecl;
 begin
   Result :=  AObj.PopupComponent;
@@ -220,6 +230,8 @@ exports
   PopupMenu_Equals,
   PopupMenu_GetHashCode,
   PopupMenu_ToString,
+  PopupMenu_GetImagesWidth,
+  PopupMenu_SetImagesWidth,
   PopupMenu_GetPopupComponent,
   PopupMenu_SetPopupComponent,
   PopupMenu_GetPopupPoint,

@@ -377,6 +377,30 @@ func (b *TBitBtn) ToString() string {
     return BitBtn_ToString(b.instance)
 }
 
+func (b *TBitBtn) DefaultCaption() bool {
+    return BitBtn_GetDefaultCaption(b.instance)
+}
+
+func (b *TBitBtn) SetDefaultCaption(value bool) {
+    BitBtn_SetDefaultCaption(b.instance, value)
+}
+
+func (b *TBitBtn) GlyphShowMode() TGlyphShowMode {
+    return BitBtn_GetGlyphShowMode(b.instance)
+}
+
+func (b *TBitBtn) SetGlyphShowMode(value TGlyphShowMode) {
+    BitBtn_SetGlyphShowMode(b.instance, value)
+}
+
+func (b *TBitBtn) ImageWidth() int32 {
+    return BitBtn_GetImageWidth(b.instance)
+}
+
+func (b *TBitBtn) SetImageWidth(value int32) {
+    BitBtn_SetImageWidth(b.instance, value)
+}
+
 func (b *TBitBtn) Action() *TAction {
     return AsAction(BitBtn_GetAction(b.instance))
 }

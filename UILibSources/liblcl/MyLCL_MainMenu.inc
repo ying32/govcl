@@ -72,6 +72,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function MainMenu_GetImagesWidth(AObj: TMainMenu): Integer; extdecl;
+begin
+  Result :=  AObj.ImagesWidth;
+end;
+
+procedure MainMenu_SetImagesWidth(AObj: TMainMenu; AValue: Integer); extdecl;
+begin
+  AObj.ImagesWidth := AValue;
+end;
+
 function MainMenu_GetBiDiMode(AObj: TMainMenu): TBiDiMode; extdecl;
 begin
   Result :=  AObj.BiDiMode;
@@ -183,6 +193,8 @@ exports
   MainMenu_Equals,
   MainMenu_GetHashCode,
   MainMenu_ToString,
+  MainMenu_GetImagesWidth,
+  MainMenu_SetImagesWidth,
   MainMenu_GetBiDiMode,
   MainMenu_SetBiDiMode,
   MainMenu_GetImages,

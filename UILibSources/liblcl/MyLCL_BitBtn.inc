@@ -242,6 +242,36 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function BitBtn_GetDefaultCaption(AObj: TBitBtn): LongBool; extdecl;
+begin
+  Result :=  AObj.DefaultCaption;
+end;
+
+procedure BitBtn_SetDefaultCaption(AObj: TBitBtn; AValue: LongBool); extdecl;
+begin
+  AObj.DefaultCaption := AValue;
+end;
+
+function BitBtn_GetGlyphShowMode(AObj: TBitBtn): TGlyphShowMode; extdecl;
+begin
+  Result :=  AObj.GlyphShowMode;
+end;
+
+procedure BitBtn_SetGlyphShowMode(AObj: TBitBtn; AValue: TGlyphShowMode); extdecl;
+begin
+  AObj.GlyphShowMode := AValue;
+end;
+
+function BitBtn_GetImageWidth(AObj: TBitBtn): Integer; extdecl;
+begin
+  Result :=  AObj.ImageWidth;
+end;
+
+procedure BitBtn_SetImageWidth(AObj: TBitBtn; AValue: Integer); extdecl;
+begin
+  AObj.ImageWidth := AValue;
+end;
+
 function BitBtn_GetAction(AObj: TBitBtn): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -900,6 +930,12 @@ exports
   BitBtn_Equals,
   BitBtn_GetHashCode,
   BitBtn_ToString,
+  BitBtn_GetDefaultCaption,
+  BitBtn_SetDefaultCaption,
+  BitBtn_GetGlyphShowMode,
+  BitBtn_SetGlyphShowMode,
+  BitBtn_GetImageWidth,
+  BitBtn_SetImageWidth,
   BitBtn_GetAction,
   BitBtn_SetAction,
   BitBtn_GetAlign,

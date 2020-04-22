@@ -405,6 +405,30 @@ func (l *TListBox) ToString() string {
     return ListBox_ToString(l.instance)
 }
 
+func (l *TListBox) ClickOnSelChange() bool {
+    return ListBox_GetClickOnSelChange(l.instance)
+}
+
+func (l *TListBox) SetClickOnSelChange(value bool) {
+    ListBox_SetClickOnSelChange(l.instance, value)
+}
+
+func (l *TListBox) Options() TListBoxOptions {
+    return ListBox_GetOptions(l.instance)
+}
+
+func (l *TListBox) SetOptions(value TListBoxOptions) {
+    ListBox_SetOptions(l.instance, value)
+}
+
+func (l *TListBox) TopIndex() int32 {
+    return ListBox_GetTopIndex(l.instance)
+}
+
+func (l *TListBox) SetTopIndex(value int32) {
+    ListBox_SetTopIndex(l.instance, value)
+}
+
 func (l *TListBox) Style() TListBoxStyle {
     return ListBox_GetStyle(l.instance)
 }

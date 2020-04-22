@@ -624,6 +624,16 @@ begin
   AObj.Items := AValue;
 end;
 
+function ColorListBox_GetTopIndex(AObj: TColorListBox): Integer; extdecl;
+begin
+  Result :=  AObj.TopIndex;
+end;
+
+procedure ColorListBox_SetTopIndex(AObj: TColorListBox; AValue: Integer); extdecl;
+begin
+  AObj.TopIndex := AValue;
+end;
+
 function ColorListBox_GetMultiSelect(AObj: TColorListBox): LongBool; extdecl;
 begin
   Result :=  AObj.MultiSelect;
@@ -1052,6 +1062,8 @@ exports
   ColorListBox_GetCount,
   ColorListBox_GetItems,
   ColorListBox_SetItems,
+  ColorListBox_GetTopIndex,
+  ColorListBox_SetTopIndex,
   ColorListBox_GetMultiSelect,
   ColorListBox_SetMultiSelect,
   ColorListBox_GetSelCount,

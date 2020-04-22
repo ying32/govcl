@@ -379,6 +379,14 @@ func (p *TPageControl) ToString() string {
     return PageControl_ToString(p.instance)
 }
 
+func (p *TPageControl) Options() TCTabControlOptions {
+    return PageControl_GetOptions(p.instance)
+}
+
+func (p *TPageControl) SetOptions(value TCTabControlOptions) {
+    PageControl_SetOptions(p.instance, value)
+}
+
 func (p *TPageControl) ActivePageIndex() int32 {
     return PageControl_GetActivePageIndex(p.instance)
 }

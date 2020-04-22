@@ -183,6 +183,14 @@ func (p *TPopupMenu) ToString() string {
     return PopupMenu_ToString(p.instance)
 }
 
+func (p *TPopupMenu) ImagesWidth() int32 {
+    return PopupMenu_GetImagesWidth(p.instance)
+}
+
+func (p *TPopupMenu) SetImagesWidth(value int32) {
+    PopupMenu_SetImagesWidth(p.instance, value)
+}
+
 func (p *TPopupMenu) PopupComponent() *TComponent {
     return AsComponent(PopupMenu_GetPopupComponent(p.instance))
 }

@@ -283,6 +283,46 @@ func (i *TImage) ToString() string {
     return Image_ToString(i.instance)
 }
 
+func (i *TImage) AntialiasingMode() TAntialiasingMode {
+    return Image_GetAntialiasingMode(i.instance)
+}
+
+func (i *TImage) SetAntialiasingMode(value TAntialiasingMode) {
+    Image_SetAntialiasingMode(i.instance, value)
+}
+
+func (i *TImage) KeepOriginXWhenClipped() bool {
+    return Image_GetKeepOriginXWhenClipped(i.instance)
+}
+
+func (i *TImage) SetKeepOriginXWhenClipped(value bool) {
+    Image_SetKeepOriginXWhenClipped(i.instance, value)
+}
+
+func (i *TImage) KeepOriginYWhenClipped() bool {
+    return Image_GetKeepOriginYWhenClipped(i.instance)
+}
+
+func (i *TImage) SetKeepOriginYWhenClipped(value bool) {
+    Image_SetKeepOriginYWhenClipped(i.instance, value)
+}
+
+func (i *TImage) StretchInEnabled() bool {
+    return Image_GetStretchInEnabled(i.instance)
+}
+
+func (i *TImage) SetStretchInEnabled(value bool) {
+    Image_SetStretchInEnabled(i.instance, value)
+}
+
+func (i *TImage) StretchOutEnabled() bool {
+    return Image_GetStretchOutEnabled(i.instance)
+}
+
+func (i *TImage) SetStretchOutEnabled(value bool) {
+    Image_SetStretchOutEnabled(i.instance, value)
+}
+
 // CN: 获取画布。
 // EN: .
 func (i *TImage) Canvas() *TCanvas {
