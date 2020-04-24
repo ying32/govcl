@@ -16,7 +16,7 @@ const (
 func buildLCL(arch, binFileDir string) error {
 
 	lazarusDir, fpcExe := GetLazarusDir()
-	projectFileName := GetLibProjectFile("/liblcl/lcl.lpr")
+	projectFileName := GetLibProjectFile("/liblcl/liblcl.lpr")
 
 	// lcl.lpi 这里面要修改版本号之类的
 	// ProductVersion="1.2.8.0"
