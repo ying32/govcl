@@ -32,10 +32,6 @@
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.20-blue.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/res2go-1.0.20.zip)  
 > 注：用Lazarus设计界面，用Golang写代码。    
   
-[GoVCL扩展包](https://github.com/ying32/exts)  
-> 注：扩展包里面的inc或者pas文件需要自己放到liblcl目录下编译。    
-
-
 ---
 ### 使用方法  
 

@@ -27,10 +27,6 @@
 ### res2go Tool([doc](Tools/res2go))    
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.20-blue.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/res2go-1.0.20.zip)  
 > Note: Designed in Lazarus, code written in Golang.  
-
-[GoVCL extension package](https://github.com/ying32/exts)  
-> Note: The inc or pas file in the extension package needs to be compiled into the liblcl directory.     
-
  
 ### usage: 
 
