@@ -18,10 +18,10 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MajorVersionNr Value="1"/>
-      <RevisionNr Value="20"/>
+      <RevisionNr Value="21"/>
       <Language Value="0804"/>
       <CharSet Value="03B6"/>
-      <StringTable Comments="Lazarus/Delphi资源窗口转go" CompanyName="ying32" FileDescription="Lazarus/Delphi资源窗口转go" LegalCopyright="ying32" OriginalFilename="res2go.exe" ProductName="res2go" ProductVersion="1.0.20.0"/>
+      <StringTable Comments="Lazarus/Delphi资源窗口转go" CompanyName="ying32" FileDescription="Lazarus/Delphi资源窗口转go" LegalCopyright="ying32" OriginalFilename="res2go.exe" ProductName="res2go" ProductVersion="1.0.21.0"/>
     </VersionInfo>
     <BuildModes Count="3">
       <Item1 Name="win32" Default="True"/>
@@ -95,7 +95,7 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <Units Count="5">
+    <Units Count="4">
       <Unit0>
         <Filename Value="res2go.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -105,17 +105,13 @@
         <IsPartOfProject Value="True"/>
       </Unit1>
       <Unit2>
-        <Filename Value="winResData.inc"/>
+        <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
       </Unit2>
       <Unit3>
-        <Filename Value="supportsComponents.inc"/>
-        <IsPartOfProject Value="True"/>
-      </Unit3>
-      <Unit4>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit4>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

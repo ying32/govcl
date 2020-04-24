@@ -50,25 +50,25 @@
       </Unit1>
       <Unit2>
         <Filename Value="winResData.inc"/>
-        <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <UsageCount Value="53"/>
       </Unit2>
       <Unit3>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="80"/>
-        <CursorPos X="26" Y="135"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="107"/>
+        <CursorPos X="160" Y="128"/>
         <UsageCount Value="42"/>
+        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="13"/>
-        <CursorPos X="23" Y="29"/>
+        <TopLine Value="118"/>
+        <CursorPos X="58" Y="40"/>
         <FoldState Value=" T3nN0}0131D"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
@@ -393,7 +393,7 @@
         <UsageCount Value="10"/>
       </Unit49>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="888" Column="64" TopLine="851"/>
@@ -510,6 +510,10 @@
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="135" Column="2" TopLine="121"/>
       </Position29>
+      <Position30>
+        <Filename Value="uresourceformtogo.pas"/>
+        <Caret Line="40" Column="70" TopLine="118"/>
+      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
