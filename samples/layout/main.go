@@ -156,7 +156,7 @@ func main() {
 
 	btn := vcl.NewButton(mainForm)
 	btn.SetParent(pnl)
-	btn.SetCaption("左")
+	btn.SetCaption("左(Left)")
 	btn.SetLeft(10)
 
 	// lcl下使用ClientWidth或者ClientHeight
@@ -164,20 +164,28 @@ func main() {
 	// 原因估计是两套组件对于某些方面的处理不同
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(pnl)
-	btn.SetCaption("右")
+	btn.SetCaption("右(Right)")
 	btn.SetLeft(w - btn.Width() - 10)
 	btn.SetAnchors(types.NewSet(types.AkTop, types.AkRight))
 
+	// 中
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(pnl)
-	btn.SetCaption("左下")
+	btn.SetCaption("中(Center)")
+	btn.SetLeft(w - btn.Width() - 10)
+	btn.AnchorHorizontalCenterTo(pnl)
+	btn.AnchorVerticalCenterTo(pnl)
+
+	btn = vcl.NewButton(mainForm)
+	btn.SetParent(pnl)
+	btn.SetCaption("左下(Left-Bottom)")
 	btn.SetLeft(10)
 	btn.SetTop(h - btn.Height() - 10)
 	btn.SetAnchors(types.NewSet(types.AkLeft, types.AkBottom))
 
 	btn = vcl.NewButton(mainForm)
 	btn.SetParent(pnl)
-	btn.SetCaption("右下")
+	btn.SetCaption("右下(Right-Bottom)")
 	btn.SetLeft(w - btn.Width() - 10)
 	btn.SetTop(h - btn.Height() - 10)
 	btn.SetAnchors(types.NewSet(types.AkRight, types.AkBottom))
@@ -186,7 +194,7 @@ func main() {
 
 	sheet = vcl.NewTabSheet(mainForm)
 	sheet.SetPageControl(pgc)
-	sheet.SetCaption("Margins")
+	sheet.SetCaption("BorderSpacing")
 
 	ppnl = vcl.NewPanel(mainForm)
 	ppnl.SetParent(sheet)
@@ -201,7 +209,7 @@ func main() {
 
 	pnl.SetAlign(types.AlClient)
 
-	m := pnl.Margins()
+	m := pnl.BorderSpacing()
 	m.SetLeft(20)
 	m.SetTop(30)
 	m.SetBottom(40)
