@@ -1,3 +1,4 @@
+{$ifdef windows}
 unit uExport2;
 
 {$mode delphi}
@@ -11,7 +12,8 @@ implementation
 uses
   Classes, SysUtils,
   {$I UseAll.inc},
-  uControlPatchs;
+  uControlPatchs, uExportTable;
+{$endif windows}
 
 {$I MyLCL_CoolBar.inc}
 {$I MyLCL_CoolBands.inc}
@@ -35,4 +37,6 @@ uses
 {$I MyLCL_ControlChildSizing.inc}
 
 
+{$ifdef windows}
 end.
+{$endif windows}

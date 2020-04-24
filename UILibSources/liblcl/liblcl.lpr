@@ -31,9 +31,12 @@ uses
   uLinuxPatchs,
 {$ENDIF}
   uComponents,
-  uControlPatchs,
-  uExport1,
-  uExport2;
+  uControlPatchs
+// windows下才用这种方式，否则把pas当一个inc文件处理
+{$ifdef windows}
+  ,uExport1,
+  uExport2
+{$endif};
 
 {$IFDEF WINDOWS}
   {$R *.res}
@@ -41,6 +44,11 @@ uses
 
 {$I ExtDecl.inc}
 {$I LazarusDef.inc}
+
+{$ifndef windows}
+  {$I uExport1.pas}
+  {$I uExport2.pas}
+{$endif}
 
 // 用户自己定义的组件
 {$I UserDefineComponents.inc}

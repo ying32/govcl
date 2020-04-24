@@ -60,6 +60,16 @@ begin
 {$ENDIF}
 end;
 
+function GtkWidget_Window(Ah: HWND): PGdkWindow; extdecl;
+begin
+{$IFDEF LCLgtk2}
+  Result := PGtkWidget(Ah)^.window;
+{$ENDIF}
+{$IFDEF LClgtk3}
+  Result := TGtk3Widget(Ah).GetWindow;
+{$ENDIF}
+end;
+
 //exports
 //
 ////{$IFDEF LINUX}

@@ -66,7 +66,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="17">
+    <Units Count="18">
       <Unit0>
         <Filename Value="liblcl.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -145,6 +145,11 @@
         <Filename Value="UseAll.inc"/>
         <IsPartOfProject Value="True"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="uexporttable.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uExportTable"/>
+      </Unit17>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -176,6 +181,11 @@
         <ExecutableType Value="Library"/>
       </Options>
     </Linking>
+    <Other>
+      <OtherDefines Count="1">
+        <Define0 Value="USED_BY_LAZLOGGER_DUMMY"/>
+      </OtherDefines>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

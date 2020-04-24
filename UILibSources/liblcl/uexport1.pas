@@ -1,3 +1,4 @@
+{$ifdef windows}
 unit uExport1;
 
 {$mode delphi}
@@ -11,7 +12,8 @@ implementation
 uses
   Classes, SysUtils,
   {$I UseAll.inc},
-  uControlPatchs;
+  uControlPatchs, uExportTable;
+{$endif windows}
 
 {$I MyLCL_Application.inc}
 {$I MyLCL_Form.inc}
@@ -131,4 +133,6 @@ uses
 {$I MyLCL_FlowPanel.inc}
 
 
+{$ifdef windows}
 end.
+{$endif windows}

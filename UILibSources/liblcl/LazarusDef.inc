@@ -942,6 +942,12 @@ begin
 end;
 
 
+// 非Windows下使用exports无法导出pas中的
+//function DGetProcAddr(AName: PChar): Pointer; extdecl;
+//begin
+//  Result := GetProcAddr(AName);
+//end;
+
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -1000,6 +1006,8 @@ end;
 exports
   // 导出动态调用的
   MySyscall,
+  // 导出表查询
+  //DGetProcAddr,
 
   // SysLocaled
   DSysLocale,
@@ -1058,7 +1066,8 @@ exports
 {$IFDEF LINUX}
   GdkWindow_GetXId,
   GtkWidget_GetGtkFixed,
-  GdkWindow_FromForm;
+  GdkWindow_FromForm,
+  GtkWidget_Window,
 {$ENDIF}
 
 {$IFDEF LCLCocoa}
@@ -1070,7 +1079,7 @@ exports
   NSWindow_styleMask,
   NSWindow_setStyleMask,
   NSWindow_setRepresentedURL,
-  NSWindow_release;
+  NSWindow_release,
 {$ENDIF}
 
   // Other
