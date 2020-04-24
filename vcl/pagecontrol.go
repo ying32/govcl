@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -377,6 +377,30 @@ func (p *TPageControl) GetHashCode() int32 {
 // EN: Text information.
 func (p *TPageControl) ToString() string {
     return PageControl_ToString(p.instance)
+}
+
+func (p *TPageControl) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    PageControl_AnchorToNeighbour(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (p *TPageControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    PageControl_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (p *TPageControl) AnchorHorizontalCenterTo(ASibling IControl) {
+    PageControl_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+func (p *TPageControl) AnchorVerticalCenterTo(ASibling IControl) {
+    PageControl_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+func (p *TPageControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    PageControl_AnchorAsAlign(p.instance, ATheAlign , ASpace)
+}
+
+func (p *TPageControl) AnchorClient(ASpace int32) {
+    PageControl_AnchorClient(p.instance, ASpace)
 }
 
 func (p *TPageControl) Options() TCTabControlOptions {
@@ -995,18 +1019,6 @@ func (p *TPageControl) SetHint(value string) {
     PageControl_SetHint(p.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (p *TPageControl) Margins() *TMargins {
-    return AsMargins(PageControl_GetMargins(p.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (p *TPageControl) SetMargins(value *TMargins) {
-    PageControl_SetMargins(p.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (p *TPageControl) ComponentCount() int32 {
@@ -1055,6 +1067,54 @@ func (p *TPageControl) SetTag(value int) {
     PageControl_SetTag(p.instance, value)
 }
 
+func (p *TPageControl) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(PageControl_GetAnchorSideLeft(p.instance))
+}
+
+func (p *TPageControl) SetAnchorSideLeft(value *TAnchorSide) {
+    PageControl_SetAnchorSideLeft(p.instance, CheckPtr(value))
+}
+
+func (p *TPageControl) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(PageControl_GetAnchorSideTop(p.instance))
+}
+
+func (p *TPageControl) SetAnchorSideTop(value *TAnchorSide) {
+    PageControl_SetAnchorSideTop(p.instance, CheckPtr(value))
+}
+
+func (p *TPageControl) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(PageControl_GetAnchorSideRight(p.instance))
+}
+
+func (p *TPageControl) SetAnchorSideRight(value *TAnchorSide) {
+    PageControl_SetAnchorSideRight(p.instance, CheckPtr(value))
+}
+
+func (p *TPageControl) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(PageControl_GetAnchorSideBottom(p.instance))
+}
+
+func (p *TPageControl) SetAnchorSideBottom(value *TAnchorSide) {
+    PageControl_SetAnchorSideBottom(p.instance, CheckPtr(value))
+}
+
+func (p *TPageControl) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(PageControl_GetChildSizing(p.instance))
+}
+
+func (p *TPageControl) SetChildSizing(value *TControlChildSizing) {
+    PageControl_SetChildSizing(p.instance, CheckPtr(value))
+}
+
+func (p *TPageControl) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(PageControl_GetBorderSpacing(p.instance))
+}
+
+func (p *TPageControl) SetBorderSpacing(value *TControlBorderSpacing) {
+    PageControl_SetBorderSpacing(p.instance, CheckPtr(value))
+}
+
 func (p *TPageControl) Pages(Index int32) *TTabSheet {
     return AsTabSheet(PageControl_GetPages(p.instance, Index))
 }
@@ -1075,5 +1135,9 @@ func (p *TPageControl) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (p *TPageControl) Components(AIndex int32) *TComponent {
     return AsComponent(PageControl_GetComponents(p.instance, AIndex))
+}
+
+func (p *TPageControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(PageControl_GetAnchorSide(p.instance, AKind))
 }
 

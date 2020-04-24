@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )

@@ -1,25 +1,6 @@
 // 不使用自动生成的
 // 这里主要是对自动生成做兼容和补充相关
 
-function ToUnixTime(ADateTime: TDateTime): TUnixDateTime; inline;
-begin
-  Result := DateTimeToUnix(LocalTimeToUniversal(ADateTime));
-end;
-
-function UnixToTime(ADateTime: TUnixDateTime): TDateTime; inline;
-begin
-  Result := UniversalTimeToLocal(UnixToDateTime(ADateTime));
-end;
-
-function ToPChar(AStr: string): PChar; inline;
-begin
-  Result := PChar(AStr);
-end;
-
-// 一些关于库的信息
-type
-  TStringEncoding = (seUnknown, seANSI, seUnicode, seUTF8);
-
 function DLibStringEncoding: TStringEncoding; extdecl;
 begin
   Result := seUTF8;
@@ -28,7 +9,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $02000000;
+  Result := $02000100;
 end;
 
 // 一些初始
@@ -511,33 +492,6 @@ end;
 //end;
 
 
-
-// TListView
-//function ListView_GetScrollBars(AObj: TListView): TScrollStyle; extdecl;
-//begin
-//  Result :=  AObj.ScrollBars;
-//end;
-//
-//procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
-//begin
-//  AObj.ScrollBars := AValue;
-//end;
-
-//function ListView_CustomSort(AObj: TListView; SortProc: TLVCompare; lParam: NativeInt): LongBool; extdecl;
-//begin
-//  Result :=  AObj.CustomSort2(SortProc, lParam);
-//end;
-
-// TTreeView
-//function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
-//begin
-//  Result :=  AObj.ScrollBars;
-//end;
-//
-//procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
-//begin
-//  AObj.ScrollBars := AValue;
-//end;
 
 // TBitmap
 procedure Bitmap_Clear(AObj: TBitmap); extdecl;
@@ -1101,6 +1055,12 @@ exports
   DWindowFromPoint,
 {$ENDIF}
 
+{$IFDEF LINUX}
+  GdkWindow_GetXId,
+  GtkWidget_GetGtkFixed,
+  GdkWindow_FromForm;
+{$ENDIF}
+
 {$IFDEF LCLCocoa}
   NSWindow_FromForm,
   NSWindow_titleVisibility,
@@ -1110,7 +1070,7 @@ exports
   NSWindow_styleMask,
   NSWindow_setStyleMask,
   NSWindow_setRepresentedURL,
-  NSWindow_release,
+  NSWindow_release;
 {$ENDIF}
 
   // Other
@@ -1181,22 +1141,12 @@ exports
   ImageList_GetIcon1,
   //ImageList_GetIcon2,
 
-  // TListView
-  //ListView_GetScrollBars,
-  //ListView_SetScrollBars,
-  //ListView_CustomSort,
-
-  // TTreeView
-  //TreeView_GetScrollBars,
-  //TreeView_SetScrollBars,
-
   // TBitmap
   Bitmap_Clear,
   Bitmap_BeginUpdate,
   Bitmap_EndUpdate,
   Bitmap_LoadFromDevice,
 
-  // Form uFormDesignerFile.pas
   ResFormLoadFromStream,
   ResFormLoadFromFile,
   ResFormLoadFromResourceName,
@@ -1215,10 +1165,5 @@ exports
   DGetLibResouceItem,
   DModifyLibResouce,
 
-{$IFDEF LINUX}
-  GdkWindow_GetXId,
-  GtkWidget_GetGtkFixed,
-  GdkWindow_FromForm,
-{$ENDIF}
   DGetLibType
 ;

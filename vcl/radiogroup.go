@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (r *TRadioGroup) GetHashCode() int32 {
 // EN: Text information.
 func (r *TRadioGroup) ToString() string {
     return RadioGroup_ToString(r.instance)
+}
+
+func (r *TRadioGroup) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioGroup_AnchorToNeighbour(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRadioGroup) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioGroup_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRadioGroup) AnchorHorizontalCenterTo(ASibling IControl) {
+    RadioGroup_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRadioGroup) AnchorVerticalCenterTo(ASibling IControl) {
+    RadioGroup_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRadioGroup) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    RadioGroup_AnchorAsAlign(r.instance, ATheAlign , ASpace)
+}
+
+func (r *TRadioGroup) AnchorClient(ASpace int32) {
+    RadioGroup_AnchorClient(r.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -893,18 +917,6 @@ func (r *TRadioGroup) SetHint(value string) {
     RadioGroup_SetHint(r.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (r *TRadioGroup) Margins() *TMargins {
-    return AsMargins(RadioGroup_GetMargins(r.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (r *TRadioGroup) SetMargins(value *TMargins) {
-    RadioGroup_SetMargins(r.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (r *TRadioGroup) ComponentCount() int32 {
@@ -953,6 +965,54 @@ func (r *TRadioGroup) SetTag(value int) {
     RadioGroup_SetTag(r.instance, value)
 }
 
+func (r *TRadioGroup) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideLeft(r.instance))
+}
+
+func (r *TRadioGroup) SetAnchorSideLeft(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideLeft(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioGroup) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideTop(r.instance))
+}
+
+func (r *TRadioGroup) SetAnchorSideTop(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideTop(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioGroup) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideRight(r.instance))
+}
+
+func (r *TRadioGroup) SetAnchorSideRight(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideRight(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioGroup) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideBottom(r.instance))
+}
+
+func (r *TRadioGroup) SetAnchorSideBottom(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideBottom(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioGroup) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(RadioGroup_GetChildSizing(r.instance))
+}
+
+func (r *TRadioGroup) SetChildSizing(value *TControlChildSizing) {
+    RadioGroup_SetChildSizing(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioGroup) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(RadioGroup_GetBorderSpacing(r.instance))
+}
+
+func (r *TRadioGroup) SetBorderSpacing(value *TControlBorderSpacing) {
+    RadioGroup_SetBorderSpacing(r.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRadioGroup) DockClients(Index int32) *TControl {
@@ -969,5 +1029,9 @@ func (r *TRadioGroup) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (r *TRadioGroup) Components(AIndex int32) *TComponent {
     return AsComponent(RadioGroup_GetComponents(r.instance, AIndex))
+}
+
+func (r *TRadioGroup) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSide(r.instance, AKind))
 }
 

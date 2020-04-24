@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -381,6 +381,30 @@ func (d *TDrawGrid) GetHashCode() int32 {
 // EN: Text information.
 func (d *TDrawGrid) ToString() string {
     return DrawGrid_ToString(d.instance)
+}
+
+func (d *TDrawGrid) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    DrawGrid_AnchorToNeighbour(d.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (d *TDrawGrid) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    DrawGrid_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (d *TDrawGrid) AnchorHorizontalCenterTo(ASibling IControl) {
+    DrawGrid_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
+}
+
+func (d *TDrawGrid) AnchorVerticalCenterTo(ASibling IControl) {
+    DrawGrid_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
+}
+
+func (d *TDrawGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    DrawGrid_AnchorAsAlign(d.instance, ATheAlign , ASpace)
+}
+
+func (d *TDrawGrid) AnchorClient(ASpace int32) {
+    DrawGrid_AnchorClient(d.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1165,18 +1189,6 @@ func (d *TDrawGrid) SetHint(value string) {
     DrawGrid_SetHint(d.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (d *TDrawGrid) Margins() *TMargins {
-    return AsMargins(DrawGrid_GetMargins(d.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (d *TDrawGrid) SetMargins(value *TMargins) {
-    DrawGrid_SetMargins(d.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (d *TDrawGrid) ComponentCount() int32 {
@@ -1225,6 +1237,54 @@ func (d *TDrawGrid) SetTag(value int) {
     DrawGrid_SetTag(d.instance, value)
 }
 
+func (d *TDrawGrid) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideLeft(d.instance))
+}
+
+func (d *TDrawGrid) SetAnchorSideLeft(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideLeft(d.instance, CheckPtr(value))
+}
+
+func (d *TDrawGrid) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideTop(d.instance))
+}
+
+func (d *TDrawGrid) SetAnchorSideTop(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideTop(d.instance, CheckPtr(value))
+}
+
+func (d *TDrawGrid) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideRight(d.instance))
+}
+
+func (d *TDrawGrid) SetAnchorSideRight(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideRight(d.instance, CheckPtr(value))
+}
+
+func (d *TDrawGrid) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideBottom(d.instance))
+}
+
+func (d *TDrawGrid) SetAnchorSideBottom(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideBottom(d.instance, CheckPtr(value))
+}
+
+func (d *TDrawGrid) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(DrawGrid_GetChildSizing(d.instance))
+}
+
+func (d *TDrawGrid) SetChildSizing(value *TControlChildSizing) {
+    DrawGrid_SetChildSizing(d.instance, CheckPtr(value))
+}
+
+func (d *TDrawGrid) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(DrawGrid_GetBorderSpacing(d.instance))
+}
+
+func (d *TDrawGrid) SetBorderSpacing(value *TControlBorderSpacing) {
+    DrawGrid_SetBorderSpacing(d.instance, CheckPtr(value))
+}
+
 func (d *TDrawGrid) ColWidths(Index int32) int32 {
     return DrawGrid_GetColWidths(d.instance, Index)
 }
@@ -1257,5 +1317,9 @@ func (d *TDrawGrid) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (d *TDrawGrid) Components(AIndex int32) *TComponent {
     return AsComponent(DrawGrid_GetComponents(d.instance, AIndex))
+}
+
+func (d *TDrawGrid) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSide(d.instance, AKind))
 }
 

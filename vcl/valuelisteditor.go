@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -381,6 +381,30 @@ func (v *TValueListEditor) GetHashCode() int32 {
 // EN: Text information.
 func (v *TValueListEditor) ToString() string {
     return ValueListEditor_ToString(v.instance)
+}
+
+func (v *TValueListEditor) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ValueListEditor_AnchorToNeighbour(v.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (v *TValueListEditor) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ValueListEditor_AnchorParallel(v.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (v *TValueListEditor) AnchorHorizontalCenterTo(ASibling IControl) {
+    ValueListEditor_AnchorHorizontalCenterTo(v.instance, CheckPtr(ASibling))
+}
+
+func (v *TValueListEditor) AnchorVerticalCenterTo(ASibling IControl) {
+    ValueListEditor_AnchorVerticalCenterTo(v.instance, CheckPtr(ASibling))
+}
+
+func (v *TValueListEditor) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ValueListEditor_AnchorAsAlign(v.instance, ATheAlign , ASpace)
+}
+
+func (v *TValueListEditor) AnchorClient(ASpace int32) {
+    ValueListEditor_AnchorClient(v.instance, ASpace)
 }
 
 func (v *TValueListEditor) ColCount() int32 {
@@ -1157,18 +1181,6 @@ func (v *TValueListEditor) SetHint(value string) {
     ValueListEditor_SetHint(v.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (v *TValueListEditor) Margins() *TMargins {
-    return AsMargins(ValueListEditor_GetMargins(v.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (v *TValueListEditor) SetMargins(value *TMargins) {
-    ValueListEditor_SetMargins(v.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (v *TValueListEditor) ComponentCount() int32 {
@@ -1215,6 +1227,54 @@ func (v *TValueListEditor) Tag() int {
 // EN: Set the control tag.
 func (v *TValueListEditor) SetTag(value int) {
     ValueListEditor_SetTag(v.instance, value)
+}
+
+func (v *TValueListEditor) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ValueListEditor_GetAnchorSideLeft(v.instance))
+}
+
+func (v *TValueListEditor) SetAnchorSideLeft(value *TAnchorSide) {
+    ValueListEditor_SetAnchorSideLeft(v.instance, CheckPtr(value))
+}
+
+func (v *TValueListEditor) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ValueListEditor_GetAnchorSideTop(v.instance))
+}
+
+func (v *TValueListEditor) SetAnchorSideTop(value *TAnchorSide) {
+    ValueListEditor_SetAnchorSideTop(v.instance, CheckPtr(value))
+}
+
+func (v *TValueListEditor) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ValueListEditor_GetAnchorSideRight(v.instance))
+}
+
+func (v *TValueListEditor) SetAnchorSideRight(value *TAnchorSide) {
+    ValueListEditor_SetAnchorSideRight(v.instance, CheckPtr(value))
+}
+
+func (v *TValueListEditor) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ValueListEditor_GetAnchorSideBottom(v.instance))
+}
+
+func (v *TValueListEditor) SetAnchorSideBottom(value *TAnchorSide) {
+    ValueListEditor_SetAnchorSideBottom(v.instance, CheckPtr(value))
+}
+
+func (v *TValueListEditor) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ValueListEditor_GetChildSizing(v.instance))
+}
+
+func (v *TValueListEditor) SetChildSizing(value *TControlChildSizing) {
+    ValueListEditor_SetChildSizing(v.instance, CheckPtr(value))
+}
+
+func (v *TValueListEditor) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ValueListEditor_GetBorderSpacing(v.instance))
+}
+
+func (v *TValueListEditor) SetBorderSpacing(value *TControlBorderSpacing) {
+    ValueListEditor_SetBorderSpacing(v.instance, CheckPtr(value))
 }
 
 func (v *TValueListEditor) Cells(ACol int32, ARow int32) string {
@@ -1265,5 +1325,9 @@ func (v *TValueListEditor) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (v *TValueListEditor) Components(AIndex int32) *TComponent {
     return AsComponent(ValueListEditor_GetComponents(v.instance, AIndex))
+}
+
+func (v *TValueListEditor) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ValueListEditor_GetAnchorSide(v.instance, AKind))
 }
 

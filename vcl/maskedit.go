@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -415,6 +415,30 @@ func (m *TMaskEdit) GetHashCode() int32 {
 // EN: Text information.
 func (m *TMaskEdit) ToString() string {
     return MaskEdit_ToString(m.instance)
+}
+
+func (m *TMaskEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MaskEdit_AnchorToNeighbour(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMaskEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MaskEdit_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMaskEdit) AnchorHorizontalCenterTo(ASibling IControl) {
+    MaskEdit_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMaskEdit) AnchorVerticalCenterTo(ASibling IControl) {
+    MaskEdit_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMaskEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    MaskEdit_AnchorAsAlign(m.instance, ATheAlign , ASpace)
+}
+
+func (m *TMaskEdit) AnchorClient(ASpace int32) {
+    MaskEdit_AnchorClient(m.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1173,18 +1197,6 @@ func (m *TMaskEdit) SetHint(value string) {
     MaskEdit_SetHint(m.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (m *TMaskEdit) Margins() *TMargins {
-    return AsMargins(MaskEdit_GetMargins(m.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (m *TMaskEdit) SetMargins(value *TMargins) {
-    MaskEdit_SetMargins(m.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (m *TMaskEdit) ComponentCount() int32 {
@@ -1233,6 +1245,54 @@ func (m *TMaskEdit) SetTag(value int) {
     MaskEdit_SetTag(m.instance, value)
 }
 
+func (m *TMaskEdit) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(MaskEdit_GetAnchorSideLeft(m.instance))
+}
+
+func (m *TMaskEdit) SetAnchorSideLeft(value *TAnchorSide) {
+    MaskEdit_SetAnchorSideLeft(m.instance, CheckPtr(value))
+}
+
+func (m *TMaskEdit) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(MaskEdit_GetAnchorSideTop(m.instance))
+}
+
+func (m *TMaskEdit) SetAnchorSideTop(value *TAnchorSide) {
+    MaskEdit_SetAnchorSideTop(m.instance, CheckPtr(value))
+}
+
+func (m *TMaskEdit) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(MaskEdit_GetAnchorSideRight(m.instance))
+}
+
+func (m *TMaskEdit) SetAnchorSideRight(value *TAnchorSide) {
+    MaskEdit_SetAnchorSideRight(m.instance, CheckPtr(value))
+}
+
+func (m *TMaskEdit) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(MaskEdit_GetAnchorSideBottom(m.instance))
+}
+
+func (m *TMaskEdit) SetAnchorSideBottom(value *TAnchorSide) {
+    MaskEdit_SetAnchorSideBottom(m.instance, CheckPtr(value))
+}
+
+func (m *TMaskEdit) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(MaskEdit_GetChildSizing(m.instance))
+}
+
+func (m *TMaskEdit) SetChildSizing(value *TControlChildSizing) {
+    MaskEdit_SetChildSizing(m.instance, CheckPtr(value))
+}
+
+func (m *TMaskEdit) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(MaskEdit_GetBorderSpacing(m.instance))
+}
+
+func (m *TMaskEdit) SetBorderSpacing(value *TControlBorderSpacing) {
+    MaskEdit_SetBorderSpacing(m.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMaskEdit) DockClients(Index int32) *TControl {
@@ -1249,5 +1309,9 @@ func (m *TMaskEdit) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (m *TMaskEdit) Components(AIndex int32) *TComponent {
     return AsComponent(MaskEdit_GetComponents(m.instance, AIndex))
+}
+
+func (m *TMaskEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(MaskEdit_GetAnchorSide(m.instance, AKind))
 }
 

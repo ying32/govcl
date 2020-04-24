@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -281,6 +281,30 @@ func (i *TImage) GetHashCode() int32 {
 // EN: Text information.
 func (i *TImage) ToString() string {
     return Image_ToString(i.instance)
+}
+
+func (i *TImage) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Image_AnchorToNeighbour(i.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (i *TImage) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Image_AnchorParallel(i.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (i *TImage) AnchorHorizontalCenterTo(ASibling IControl) {
+    Image_AnchorHorizontalCenterTo(i.instance, CheckPtr(ASibling))
+}
+
+func (i *TImage) AnchorVerticalCenterTo(ASibling IControl) {
+    Image_AnchorVerticalCenterTo(i.instance, CheckPtr(ASibling))
+}
+
+func (i *TImage) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Image_AnchorAsAlign(i.instance, ATheAlign , ASpace)
+}
+
+func (i *TImage) AnchorClient(ASpace int32) {
+    Image_AnchorClient(i.instance, ASpace)
 }
 
 func (i *TImage) AntialiasingMode() TAntialiasingMode {
@@ -727,18 +751,6 @@ func (i *TImage) SetHint(value string) {
     Image_SetHint(i.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (i *TImage) Margins() *TMargins {
-    return AsMargins(Image_GetMargins(i.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (i *TImage) SetMargins(value *TMargins) {
-    Image_SetMargins(i.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (i *TImage) ComponentCount() int32 {
@@ -787,9 +799,53 @@ func (i *TImage) SetTag(value int) {
     Image_SetTag(i.instance, value)
 }
 
+func (i *TImage) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideLeft(i.instance))
+}
+
+func (i *TImage) SetAnchorSideLeft(value *TAnchorSide) {
+    Image_SetAnchorSideLeft(i.instance, CheckPtr(value))
+}
+
+func (i *TImage) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideTop(i.instance))
+}
+
+func (i *TImage) SetAnchorSideTop(value *TAnchorSide) {
+    Image_SetAnchorSideTop(i.instance, CheckPtr(value))
+}
+
+func (i *TImage) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideRight(i.instance))
+}
+
+func (i *TImage) SetAnchorSideRight(value *TAnchorSide) {
+    Image_SetAnchorSideRight(i.instance, CheckPtr(value))
+}
+
+func (i *TImage) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideBottom(i.instance))
+}
+
+func (i *TImage) SetAnchorSideBottom(value *TAnchorSide) {
+    Image_SetAnchorSideBottom(i.instance, CheckPtr(value))
+}
+
+func (i *TImage) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Image_GetBorderSpacing(i.instance))
+}
+
+func (i *TImage) SetBorderSpacing(value *TControlBorderSpacing) {
+    Image_SetBorderSpacing(i.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (i *TImage) Components(AIndex int32) *TComponent {
     return AsComponent(Image_GetComponents(i.instance, AIndex))
+}
+
+func (i *TImage) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSide(i.instance, AKind))
 }
 

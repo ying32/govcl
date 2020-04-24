@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (r *TRadioButton) GetHashCode() int32 {
 // EN: Text information.
 func (r *TRadioButton) ToString() string {
     return RadioButton_ToString(r.instance)
+}
+
+func (r *TRadioButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioButton_AnchorToNeighbour(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRadioButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioButton_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRadioButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    RadioButton_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRadioButton) AnchorVerticalCenterTo(ASibling IControl) {
+    RadioButton_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRadioButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    RadioButton_AnchorAsAlign(r.instance, ATheAlign , ASpace)
+}
+
+func (r *TRadioButton) AnchorClient(ASpace int32) {
+    RadioButton_AnchorClient(r.instance, ASpace)
 }
 
 func (r *TRadioButton) Action() *TAction {
@@ -957,18 +981,6 @@ func (r *TRadioButton) SetHint(value string) {
     RadioButton_SetHint(r.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (r *TRadioButton) Margins() *TMargins {
-    return AsMargins(RadioButton_GetMargins(r.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (r *TRadioButton) SetMargins(value *TMargins) {
-    RadioButton_SetMargins(r.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (r *TRadioButton) ComponentCount() int32 {
@@ -1017,6 +1029,54 @@ func (r *TRadioButton) SetTag(value int) {
     RadioButton_SetTag(r.instance, value)
 }
 
+func (r *TRadioButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideLeft(r.instance))
+}
+
+func (r *TRadioButton) SetAnchorSideLeft(value *TAnchorSide) {
+    RadioButton_SetAnchorSideLeft(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideTop(r.instance))
+}
+
+func (r *TRadioButton) SetAnchorSideTop(value *TAnchorSide) {
+    RadioButton_SetAnchorSideTop(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideRight(r.instance))
+}
+
+func (r *TRadioButton) SetAnchorSideRight(value *TAnchorSide) {
+    RadioButton_SetAnchorSideRight(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideBottom(r.instance))
+}
+
+func (r *TRadioButton) SetAnchorSideBottom(value *TAnchorSide) {
+    RadioButton_SetAnchorSideBottom(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioButton) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(RadioButton_GetChildSizing(r.instance))
+}
+
+func (r *TRadioButton) SetChildSizing(value *TControlChildSizing) {
+    RadioButton_SetChildSizing(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(RadioButton_GetBorderSpacing(r.instance))
+}
+
+func (r *TRadioButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    RadioButton_SetBorderSpacing(r.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRadioButton) DockClients(Index int32) *TControl {
@@ -1033,5 +1093,9 @@ func (r *TRadioButton) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (r *TRadioButton) Components(AIndex int32) *TComponent {
     return AsComponent(RadioButton_GetComponents(r.instance, AIndex))
+}
+
+func (r *TRadioButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSide(r.instance, AKind))
 }
 

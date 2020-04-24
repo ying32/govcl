@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (h *THeaderControl) GetHashCode() int32 {
 // EN: Text information.
 func (h *THeaderControl) ToString() string {
     return HeaderControl_ToString(h.instance)
+}
+
+func (h *THeaderControl) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    HeaderControl_AnchorToNeighbour(h.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (h *THeaderControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    HeaderControl_AnchorParallel(h.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (h *THeaderControl) AnchorHorizontalCenterTo(ASibling IControl) {
+    HeaderControl_AnchorHorizontalCenterTo(h.instance, CheckPtr(ASibling))
+}
+
+func (h *THeaderControl) AnchorVerticalCenterTo(ASibling IControl) {
+    HeaderControl_AnchorVerticalCenterTo(h.instance, CheckPtr(ASibling))
+}
+
+func (h *THeaderControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    HeaderControl_AnchorAsAlign(h.instance, ATheAlign , ASpace)
+}
+
+func (h *THeaderControl) AnchorClient(ASpace int32) {
+    HeaderControl_AnchorClient(h.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -925,18 +949,6 @@ func (h *THeaderControl) SetHint(value string) {
     HeaderControl_SetHint(h.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (h *THeaderControl) Margins() *TMargins {
-    return AsMargins(HeaderControl_GetMargins(h.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (h *THeaderControl) SetMargins(value *TMargins) {
-    HeaderControl_SetMargins(h.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (h *THeaderControl) ComponentCount() int32 {
@@ -985,6 +997,54 @@ func (h *THeaderControl) SetTag(value int) {
     HeaderControl_SetTag(h.instance, value)
 }
 
+func (h *THeaderControl) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(HeaderControl_GetAnchorSideLeft(h.instance))
+}
+
+func (h *THeaderControl) SetAnchorSideLeft(value *TAnchorSide) {
+    HeaderControl_SetAnchorSideLeft(h.instance, CheckPtr(value))
+}
+
+func (h *THeaderControl) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(HeaderControl_GetAnchorSideTop(h.instance))
+}
+
+func (h *THeaderControl) SetAnchorSideTop(value *TAnchorSide) {
+    HeaderControl_SetAnchorSideTop(h.instance, CheckPtr(value))
+}
+
+func (h *THeaderControl) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(HeaderControl_GetAnchorSideRight(h.instance))
+}
+
+func (h *THeaderControl) SetAnchorSideRight(value *TAnchorSide) {
+    HeaderControl_SetAnchorSideRight(h.instance, CheckPtr(value))
+}
+
+func (h *THeaderControl) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(HeaderControl_GetAnchorSideBottom(h.instance))
+}
+
+func (h *THeaderControl) SetAnchorSideBottom(value *TAnchorSide) {
+    HeaderControl_SetAnchorSideBottom(h.instance, CheckPtr(value))
+}
+
+func (h *THeaderControl) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(HeaderControl_GetChildSizing(h.instance))
+}
+
+func (h *THeaderControl) SetChildSizing(value *TControlChildSizing) {
+    HeaderControl_SetChildSizing(h.instance, CheckPtr(value))
+}
+
+func (h *THeaderControl) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(HeaderControl_GetBorderSpacing(h.instance))
+}
+
+func (h *THeaderControl) SetBorderSpacing(value *TControlBorderSpacing) {
+    HeaderControl_SetBorderSpacing(h.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (h *THeaderControl) DockClients(Index int32) *TControl {
@@ -1001,5 +1061,9 @@ func (h *THeaderControl) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (h *THeaderControl) Components(AIndex int32) *TComponent {
     return AsComponent(HeaderControl_GetComponents(h.instance, AIndex))
+}
+
+func (h *THeaderControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(HeaderControl_GetAnchorSide(h.instance, AKind))
 }
 

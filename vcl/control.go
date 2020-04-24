@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -283,6 +283,30 @@ func (c *TControl) ToString() string {
     return Control_ToString(c.instance)
 }
 
+func (c *TControl) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Control_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Control_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TControl) AnchorHorizontalCenterTo(ASibling IControl) {
+    Control_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TControl) AnchorVerticalCenterTo(ASibling IControl) {
+    Control_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Control_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+}
+
+func (c *TControl) AnchorClient(ASpace int32) {
+    Control_AnchorClient(c.instance, ASpace)
+}
+
 // CN: 获取控件启用。
 // EN: Get the control enabled.
 func (c *TControl) Enabled() bool {
@@ -521,18 +545,6 @@ func (c *TControl) SetHint(value string) {
     Control_SetHint(c.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (c *TControl) Margins() *TMargins {
-    return AsMargins(Control_GetMargins(c.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (c *TControl) SetMargins(value *TMargins) {
-    Control_SetMargins(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TControl) ComponentCount() int32 {
@@ -581,9 +593,53 @@ func (c *TControl) SetTag(value int) {
     Control_SetTag(c.instance, value)
 }
 
+func (c *TControl) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Control_GetAnchorSideLeft(c.instance))
+}
+
+func (c *TControl) SetAnchorSideLeft(value *TAnchorSide) {
+    Control_SetAnchorSideLeft(c.instance, CheckPtr(value))
+}
+
+func (c *TControl) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Control_GetAnchorSideTop(c.instance))
+}
+
+func (c *TControl) SetAnchorSideTop(value *TAnchorSide) {
+    Control_SetAnchorSideTop(c.instance, CheckPtr(value))
+}
+
+func (c *TControl) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Control_GetAnchorSideRight(c.instance))
+}
+
+func (c *TControl) SetAnchorSideRight(value *TAnchorSide) {
+    Control_SetAnchorSideRight(c.instance, CheckPtr(value))
+}
+
+func (c *TControl) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Control_GetAnchorSideBottom(c.instance))
+}
+
+func (c *TControl) SetAnchorSideBottom(value *TAnchorSide) {
+    Control_SetAnchorSideBottom(c.instance, CheckPtr(value))
+}
+
+func (c *TControl) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Control_GetBorderSpacing(c.instance))
+}
+
+func (c *TControl) SetBorderSpacing(value *TControlBorderSpacing) {
+    Control_SetBorderSpacing(c.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (c *TControl) Components(AIndex int32) *TComponent {
     return AsComponent(Control_GetComponents(c.instance, AIndex))
+}
+
+func (c *TControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Control_GetAnchorSide(c.instance, AKind))
 }
 

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -407,6 +407,30 @@ func (m *TMiniWebview) ToString() string {
     return MiniWebview_ToString(m.instance)
 }
 
+func (m *TMiniWebview) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MiniWebview_AnchorToNeighbour(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMiniWebview) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MiniWebview_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMiniWebview) AnchorHorizontalCenterTo(ASibling IControl) {
+    MiniWebview_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMiniWebview) AnchorVerticalCenterTo(ASibling IControl) {
+    MiniWebview_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMiniWebview) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    MiniWebview_AnchorAsAlign(m.instance, ATheAlign , ASpace)
+}
+
+func (m *TMiniWebview) AnchorClient(ASpace int32) {
+    MiniWebview_AnchorClient(m.instance, ASpace)
+}
+
 func (m *TMiniWebview) ReadyState() TReadyState {
     return MiniWebview_GetReadyState(m.instance)
 }
@@ -777,18 +801,6 @@ func (m *TMiniWebview) SetHint(value string) {
     MiniWebview_SetHint(m.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (m *TMiniWebview) Margins() *TMargins {
-    return AsMargins(MiniWebview_GetMargins(m.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (m *TMiniWebview) SetMargins(value *TMargins) {
-    MiniWebview_SetMargins(m.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (m *TMiniWebview) ComponentCount() int32 {
@@ -837,6 +849,54 @@ func (m *TMiniWebview) SetTag(value int) {
     MiniWebview_SetTag(m.instance, value)
 }
 
+func (m *TMiniWebview) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(MiniWebview_GetAnchorSideLeft(m.instance))
+}
+
+func (m *TMiniWebview) SetAnchorSideLeft(value *TAnchorSide) {
+    MiniWebview_SetAnchorSideLeft(m.instance, CheckPtr(value))
+}
+
+func (m *TMiniWebview) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(MiniWebview_GetAnchorSideTop(m.instance))
+}
+
+func (m *TMiniWebview) SetAnchorSideTop(value *TAnchorSide) {
+    MiniWebview_SetAnchorSideTop(m.instance, CheckPtr(value))
+}
+
+func (m *TMiniWebview) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(MiniWebview_GetAnchorSideRight(m.instance))
+}
+
+func (m *TMiniWebview) SetAnchorSideRight(value *TAnchorSide) {
+    MiniWebview_SetAnchorSideRight(m.instance, CheckPtr(value))
+}
+
+func (m *TMiniWebview) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(MiniWebview_GetAnchorSideBottom(m.instance))
+}
+
+func (m *TMiniWebview) SetAnchorSideBottom(value *TAnchorSide) {
+    MiniWebview_SetAnchorSideBottom(m.instance, CheckPtr(value))
+}
+
+func (m *TMiniWebview) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(MiniWebview_GetChildSizing(m.instance))
+}
+
+func (m *TMiniWebview) SetChildSizing(value *TControlChildSizing) {
+    MiniWebview_SetChildSizing(m.instance, CheckPtr(value))
+}
+
+func (m *TMiniWebview) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(MiniWebview_GetBorderSpacing(m.instance))
+}
+
+func (m *TMiniWebview) SetBorderSpacing(value *TControlBorderSpacing) {
+    MiniWebview_SetBorderSpacing(m.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMiniWebview) DockClients(Index int32) *TControl {
@@ -853,5 +913,9 @@ func (m *TMiniWebview) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (m *TMiniWebview) Components(AIndex int32) *TComponent {
     return AsComponent(MiniWebview_GetComponents(m.instance, AIndex))
+}
+
+func (m *TMiniWebview) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(MiniWebview_GetAnchorSide(m.instance, AKind))
 }
 

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -373,6 +373,30 @@ func (s *TScrollBar) GetHashCode() int32 {
 // EN: Text information.
 func (s *TScrollBar) ToString() string {
     return ScrollBar_ToString(s.instance)
+}
+
+func (s *TScrollBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ScrollBar_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TScrollBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ScrollBar_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TScrollBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    ScrollBar_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TScrollBar) AnchorVerticalCenterTo(ASibling IControl) {
+    ScrollBar_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TScrollBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ScrollBar_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TScrollBar) AnchorClient(ASpace int32) {
+    ScrollBar_AnchorClient(s.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -895,18 +919,6 @@ func (s *TScrollBar) SetHint(value string) {
     ScrollBar_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TScrollBar) Margins() *TMargins {
-    return AsMargins(ScrollBar_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TScrollBar) SetMargins(value *TMargins) {
-    ScrollBar_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TScrollBar) ComponentCount() int32 {
@@ -955,6 +967,54 @@ func (s *TScrollBar) SetTag(value int) {
     ScrollBar_SetTag(s.instance, value)
 }
 
+func (s *TScrollBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ScrollBar_GetAnchorSideLeft(s.instance))
+}
+
+func (s *TScrollBar) SetAnchorSideLeft(value *TAnchorSide) {
+    ScrollBar_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+func (s *TScrollBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ScrollBar_GetAnchorSideTop(s.instance))
+}
+
+func (s *TScrollBar) SetAnchorSideTop(value *TAnchorSide) {
+    ScrollBar_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+func (s *TScrollBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ScrollBar_GetAnchorSideRight(s.instance))
+}
+
+func (s *TScrollBar) SetAnchorSideRight(value *TAnchorSide) {
+    ScrollBar_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+func (s *TScrollBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ScrollBar_GetAnchorSideBottom(s.instance))
+}
+
+func (s *TScrollBar) SetAnchorSideBottom(value *TAnchorSide) {
+    ScrollBar_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TScrollBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ScrollBar_GetChildSizing(s.instance))
+}
+
+func (s *TScrollBar) SetChildSizing(value *TControlChildSizing) {
+    ScrollBar_SetChildSizing(s.instance, CheckPtr(value))
+}
+
+func (s *TScrollBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ScrollBar_GetBorderSpacing(s.instance))
+}
+
+func (s *TScrollBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    ScrollBar_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TScrollBar) DockClients(Index int32) *TControl {
@@ -971,5 +1031,9 @@ func (s *TScrollBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (s *TScrollBar) Components(AIndex int32) *TComponent {
     return AsComponent(ScrollBar_GetComponents(s.instance, AIndex))
+}
+
+func (s *TScrollBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ScrollBar_GetAnchorSide(s.instance, AKind))
 }
 

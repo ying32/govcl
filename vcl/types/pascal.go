@@ -35,6 +35,8 @@ type Byte = uint8
 
 type TFontCharset = uint8
 
+type TSpacingSize int32
+
 // Unicode 主要用于keymap, 参见types/keys包
 type Char = uint16
 

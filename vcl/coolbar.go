@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -363,6 +363,30 @@ func (c *TCoolBar) GetHashCode() int32 {
 // EN: Text information.
 func (c *TCoolBar) ToString() string {
     return CoolBar_ToString(c.instance)
+}
+
+func (c *TCoolBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    CoolBar_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TCoolBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    CoolBar_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TCoolBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    CoolBar_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TCoolBar) AnchorVerticalCenterTo(ASibling IControl) {
+    CoolBar_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TCoolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    CoolBar_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+}
+
+func (c *TCoolBar) AnchorClient(ASpace int32) {
+    CoolBar_AnchorClient(c.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1053,18 +1077,6 @@ func (c *TCoolBar) SetHint(value string) {
     CoolBar_SetHint(c.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (c *TCoolBar) Margins() *TMargins {
-    return AsMargins(CoolBar_GetMargins(c.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (c *TCoolBar) SetMargins(value *TMargins) {
-    CoolBar_SetMargins(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TCoolBar) ComponentCount() int32 {
@@ -1113,6 +1125,54 @@ func (c *TCoolBar) SetTag(value int) {
     CoolBar_SetTag(c.instance, value)
 }
 
+func (c *TCoolBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(CoolBar_GetAnchorSideLeft(c.instance))
+}
+
+func (c *TCoolBar) SetAnchorSideLeft(value *TAnchorSide) {
+    CoolBar_SetAnchorSideLeft(c.instance, CheckPtr(value))
+}
+
+func (c *TCoolBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(CoolBar_GetAnchorSideTop(c.instance))
+}
+
+func (c *TCoolBar) SetAnchorSideTop(value *TAnchorSide) {
+    CoolBar_SetAnchorSideTop(c.instance, CheckPtr(value))
+}
+
+func (c *TCoolBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(CoolBar_GetAnchorSideRight(c.instance))
+}
+
+func (c *TCoolBar) SetAnchorSideRight(value *TAnchorSide) {
+    CoolBar_SetAnchorSideRight(c.instance, CheckPtr(value))
+}
+
+func (c *TCoolBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(CoolBar_GetAnchorSideBottom(c.instance))
+}
+
+func (c *TCoolBar) SetAnchorSideBottom(value *TAnchorSide) {
+    CoolBar_SetAnchorSideBottom(c.instance, CheckPtr(value))
+}
+
+func (c *TCoolBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(CoolBar_GetChildSizing(c.instance))
+}
+
+func (c *TCoolBar) SetChildSizing(value *TControlChildSizing) {
+    CoolBar_SetChildSizing(c.instance, CheckPtr(value))
+}
+
+func (c *TCoolBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(CoolBar_GetBorderSpacing(c.instance))
+}
+
+func (c *TCoolBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    CoolBar_SetBorderSpacing(c.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TCoolBar) DockClients(Index int32) *TControl {
@@ -1129,5 +1189,9 @@ func (c *TCoolBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (c *TCoolBar) Components(AIndex int32) *TComponent {
     return AsComponent(CoolBar_GetComponents(c.instance, AIndex))
+}
+
+func (c *TCoolBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(CoolBar_GetAnchorSide(c.instance, AKind))
 }
 

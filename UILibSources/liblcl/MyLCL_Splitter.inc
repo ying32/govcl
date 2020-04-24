@@ -162,6 +162,36 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+procedure Splitter_AnchorToNeighbour(AObj: TSplitter; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Splitter_AnchorParallel(AObj: TSplitter; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Splitter_AnchorHorizontalCenterTo(AObj: TSplitter; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Splitter_AnchorVerticalCenterTo(AObj: TSplitter; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Splitter_AnchorAsAlign(AObj: TSplitter; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Splitter_AnchorClient(AObj: TSplitter; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
 function Splitter_GetResizeAnchor(AObj: TSplitter): TAnchorKind; extdecl;
 begin
   Result :=  AObj.ResizeAnchor;
@@ -419,16 +449,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Splitter_GetMargins(AObj: TSplitter): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Splitter_SetMargins(AObj: TSplitter; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Splitter_GetComponentCount(AObj: TSplitter): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -469,9 +489,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Splitter_GetAnchorSideLeft(AObj: TSplitter): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Splitter_SetAnchorSideLeft(AObj: TSplitter; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Splitter_GetAnchorSideTop(AObj: TSplitter): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Splitter_SetAnchorSideTop(AObj: TSplitter; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Splitter_GetAnchorSideRight(AObj: TSplitter): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Splitter_SetAnchorSideRight(AObj: TSplitter; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Splitter_GetAnchorSideBottom(AObj: TSplitter): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Splitter_SetAnchorSideBottom(AObj: TSplitter; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Splitter_GetBorderSpacing(AObj: TSplitter): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Splitter_SetBorderSpacing(AObj: TSplitter; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Splitter_GetComponents(AObj: TSplitter; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Splitter_GetAnchorSide(AObj: TSplitter; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Splitter_StaticClassType: TClass; extdecl;
@@ -511,6 +586,12 @@ exports
   Splitter_Equals,
   Splitter_GetHashCode,
   Splitter_ToString,
+  Splitter_AnchorToNeighbour,
+  Splitter_AnchorParallel,
+  Splitter_AnchorHorizontalCenterTo,
+  Splitter_AnchorVerticalCenterTo,
+  Splitter_AnchorAsAlign,
+  Splitter_AnchorClient,
   Splitter_GetResizeAnchor,
   Splitter_SetResizeAnchor,
   Splitter_GetCanvas,
@@ -562,8 +643,6 @@ exports
   Splitter_SetHeight,
   Splitter_GetHint,
   Splitter_SetHint,
-  Splitter_GetMargins,
-  Splitter_SetMargins,
   Splitter_GetComponentCount,
   Splitter_GetComponentIndex,
   Splitter_SetComponentIndex,
@@ -572,6 +651,17 @@ exports
   Splitter_SetName,
   Splitter_GetTag,
   Splitter_SetTag,
+  Splitter_GetAnchorSideLeft,
+  Splitter_SetAnchorSideLeft,
+  Splitter_GetAnchorSideTop,
+  Splitter_SetAnchorSideTop,
+  Splitter_GetAnchorSideRight,
+  Splitter_SetAnchorSideRight,
+  Splitter_GetAnchorSideBottom,
+  Splitter_SetAnchorSideBottom,
+  Splitter_GetBorderSpacing,
+  Splitter_SetBorderSpacing,
   Splitter_GetComponents,
+  Splitter_GetAnchorSide,
   Splitter_StaticClassType;
 

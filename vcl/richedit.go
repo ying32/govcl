@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -415,6 +415,30 @@ func (r *TRichEdit) GetHashCode() int32 {
 // EN: Text information.
 func (r *TRichEdit) ToString() string {
     return RichEdit_ToString(r.instance)
+}
+
+func (r *TRichEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RichEdit_AnchorToNeighbour(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRichEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RichEdit_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRichEdit) AnchorHorizontalCenterTo(ASibling IControl) {
+    RichEdit_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRichEdit) AnchorVerticalCenterTo(ASibling IControl) {
+    RichEdit_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRichEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    RichEdit_AnchorAsAlign(r.instance, ATheAlign , ASpace)
+}
+
+func (r *TRichEdit) AnchorClient(ASpace int32) {
+    RichEdit_AnchorClient(r.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1233,18 +1257,6 @@ func (r *TRichEdit) SetHint(value string) {
     RichEdit_SetHint(r.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (r *TRichEdit) Margins() *TMargins {
-    return AsMargins(RichEdit_GetMargins(r.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (r *TRichEdit) SetMargins(value *TMargins) {
-    RichEdit_SetMargins(r.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (r *TRichEdit) ComponentCount() int32 {
@@ -1293,6 +1305,54 @@ func (r *TRichEdit) SetTag(value int) {
     RichEdit_SetTag(r.instance, value)
 }
 
+func (r *TRichEdit) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(RichEdit_GetAnchorSideLeft(r.instance))
+}
+
+func (r *TRichEdit) SetAnchorSideLeft(value *TAnchorSide) {
+    RichEdit_SetAnchorSideLeft(r.instance, CheckPtr(value))
+}
+
+func (r *TRichEdit) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(RichEdit_GetAnchorSideTop(r.instance))
+}
+
+func (r *TRichEdit) SetAnchorSideTop(value *TAnchorSide) {
+    RichEdit_SetAnchorSideTop(r.instance, CheckPtr(value))
+}
+
+func (r *TRichEdit) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(RichEdit_GetAnchorSideRight(r.instance))
+}
+
+func (r *TRichEdit) SetAnchorSideRight(value *TAnchorSide) {
+    RichEdit_SetAnchorSideRight(r.instance, CheckPtr(value))
+}
+
+func (r *TRichEdit) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(RichEdit_GetAnchorSideBottom(r.instance))
+}
+
+func (r *TRichEdit) SetAnchorSideBottom(value *TAnchorSide) {
+    RichEdit_SetAnchorSideBottom(r.instance, CheckPtr(value))
+}
+
+func (r *TRichEdit) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(RichEdit_GetChildSizing(r.instance))
+}
+
+func (r *TRichEdit) SetChildSizing(value *TControlChildSizing) {
+    RichEdit_SetChildSizing(r.instance, CheckPtr(value))
+}
+
+func (r *TRichEdit) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(RichEdit_GetBorderSpacing(r.instance))
+}
+
+func (r *TRichEdit) SetBorderSpacing(value *TControlBorderSpacing) {
+    RichEdit_SetBorderSpacing(r.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRichEdit) DockClients(Index int32) *TControl {
@@ -1309,5 +1369,9 @@ func (r *TRichEdit) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (r *TRichEdit) Components(AIndex int32) *TComponent {
     return AsComponent(RichEdit_GetComponents(r.instance, AIndex))
+}
+
+func (r *TRichEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(RichEdit_GetAnchorSide(r.instance, AKind))
 }
 

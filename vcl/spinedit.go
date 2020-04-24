@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -411,6 +411,30 @@ func (s *TSpinEdit) GetHashCode() int32 {
 // EN: Text information.
 func (s *TSpinEdit) ToString() string {
     return SpinEdit_ToString(s.instance)
+}
+
+func (s *TSpinEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    SpinEdit_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TSpinEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    SpinEdit_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TSpinEdit) AnchorHorizontalCenterTo(ASibling IControl) {
+    SpinEdit_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TSpinEdit) AnchorVerticalCenterTo(ASibling IControl) {
+    SpinEdit_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TSpinEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    SpinEdit_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TSpinEdit) AnchorClient(ASpace int32) {
+    SpinEdit_AnchorClient(s.instance, ASpace)
 }
 
 // CN: 获取四个角位置的锚点。
@@ -1073,18 +1097,6 @@ func (s *TSpinEdit) SetHint(value string) {
     SpinEdit_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TSpinEdit) Margins() *TMargins {
-    return AsMargins(SpinEdit_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TSpinEdit) SetMargins(value *TMargins) {
-    SpinEdit_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TSpinEdit) ComponentCount() int32 {
@@ -1133,6 +1145,54 @@ func (s *TSpinEdit) SetTag(value int) {
     SpinEdit_SetTag(s.instance, value)
 }
 
+func (s *TSpinEdit) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(SpinEdit_GetAnchorSideLeft(s.instance))
+}
+
+func (s *TSpinEdit) SetAnchorSideLeft(value *TAnchorSide) {
+    SpinEdit_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+func (s *TSpinEdit) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(SpinEdit_GetAnchorSideTop(s.instance))
+}
+
+func (s *TSpinEdit) SetAnchorSideTop(value *TAnchorSide) {
+    SpinEdit_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+func (s *TSpinEdit) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(SpinEdit_GetAnchorSideRight(s.instance))
+}
+
+func (s *TSpinEdit) SetAnchorSideRight(value *TAnchorSide) {
+    SpinEdit_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+func (s *TSpinEdit) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(SpinEdit_GetAnchorSideBottom(s.instance))
+}
+
+func (s *TSpinEdit) SetAnchorSideBottom(value *TAnchorSide) {
+    SpinEdit_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TSpinEdit) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(SpinEdit_GetChildSizing(s.instance))
+}
+
+func (s *TSpinEdit) SetChildSizing(value *TControlChildSizing) {
+    SpinEdit_SetChildSizing(s.instance, CheckPtr(value))
+}
+
+func (s *TSpinEdit) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(SpinEdit_GetBorderSpacing(s.instance))
+}
+
+func (s *TSpinEdit) SetBorderSpacing(value *TControlBorderSpacing) {
+    SpinEdit_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TSpinEdit) DockClients(Index int32) *TControl {
@@ -1149,5 +1209,9 @@ func (s *TSpinEdit) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (s *TSpinEdit) Components(AIndex int32) *TComponent {
     return AsComponent(SpinEdit_GetComponents(s.instance, AIndex))
+}
+
+func (s *TSpinEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(SpinEdit_GetAnchorSide(s.instance, AKind))
 }
 

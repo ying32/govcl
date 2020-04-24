@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -283,6 +283,30 @@ func (b *TBevel) ToString() string {
     return Bevel_ToString(b.instance)
 }
 
+func (b *TBevel) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Bevel_AnchorToNeighbour(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TBevel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Bevel_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TBevel) AnchorHorizontalCenterTo(ASibling IControl) {
+    Bevel_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TBevel) AnchorVerticalCenterTo(ASibling IControl) {
+    Bevel_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TBevel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Bevel_AnchorAsAlign(b.instance, ATheAlign , ASpace)
+}
+
+func (b *TBevel) AnchorClient(ASpace int32) {
+    Bevel_AnchorClient(b.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (b *TBevel) Align() TAlign {
@@ -545,18 +569,6 @@ func (b *TBevel) SetHint(value string) {
     Bevel_SetHint(b.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (b *TBevel) Margins() *TMargins {
-    return AsMargins(Bevel_GetMargins(b.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (b *TBevel) SetMargins(value *TMargins) {
-    Bevel_SetMargins(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TBevel) ComponentCount() int32 {
@@ -605,9 +617,53 @@ func (b *TBevel) SetTag(value int) {
     Bevel_SetTag(b.instance, value)
 }
 
+func (b *TBevel) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Bevel_GetAnchorSideLeft(b.instance))
+}
+
+func (b *TBevel) SetAnchorSideLeft(value *TAnchorSide) {
+    Bevel_SetAnchorSideLeft(b.instance, CheckPtr(value))
+}
+
+func (b *TBevel) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Bevel_GetAnchorSideTop(b.instance))
+}
+
+func (b *TBevel) SetAnchorSideTop(value *TAnchorSide) {
+    Bevel_SetAnchorSideTop(b.instance, CheckPtr(value))
+}
+
+func (b *TBevel) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Bevel_GetAnchorSideRight(b.instance))
+}
+
+func (b *TBevel) SetAnchorSideRight(value *TAnchorSide) {
+    Bevel_SetAnchorSideRight(b.instance, CheckPtr(value))
+}
+
+func (b *TBevel) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Bevel_GetAnchorSideBottom(b.instance))
+}
+
+func (b *TBevel) SetAnchorSideBottom(value *TAnchorSide) {
+    Bevel_SetAnchorSideBottom(b.instance, CheckPtr(value))
+}
+
+func (b *TBevel) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Bevel_GetBorderSpacing(b.instance))
+}
+
+func (b *TBevel) SetBorderSpacing(value *TControlBorderSpacing) {
+    Bevel_SetBorderSpacing(b.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (b *TBevel) Components(AIndex int32) *TComponent {
     return AsComponent(Bevel_GetComponents(b.instance, AIndex))
+}
+
+func (b *TBevel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Bevel_GetAnchorSide(b.instance, AKind))
 }
 

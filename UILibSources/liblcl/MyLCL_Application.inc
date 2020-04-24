@@ -137,6 +137,16 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+function Application_GetScaled(AObj: TApplication): LongBool; extdecl;
+begin
+  Result :=  AObj.Scaled;
+end;
+
+procedure Application_SetScaled(AObj: TApplication; AValue: LongBool); extdecl;
+begin
+  AObj.Scaled := AValue;
+end;
+
 function Application_GetExeName(AObj: TApplication): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ExeName);
@@ -391,6 +401,8 @@ exports
   Application_Equals,
   Application_GetHashCode,
   Application_ToString,
+  Application_GetScaled,
+  Application_SetScaled,
   Application_GetExeName,
   Application_GetHint,
   Application_SetHint,

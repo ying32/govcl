@@ -10,10 +10,8 @@
 unit uEventCallback;
 
 {$mode objfpc}{$H+}
-//{$mode delphi}
 
 {$I ExtDecl.inc}
-
 
 interface
 

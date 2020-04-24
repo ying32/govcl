@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -375,6 +375,30 @@ func (b *TButton) GetHashCode() int32 {
 // EN: Text information.
 func (b *TButton) ToString() string {
     return Button_ToString(b.instance)
+}
+
+func (b *TButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Button_AnchorToNeighbour(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Button_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    Button_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TButton) AnchorVerticalCenterTo(ASibling IControl) {
+    Button_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Button_AnchorAsAlign(b.instance, ATheAlign , ASpace)
+}
+
+func (b *TButton) AnchorClient(ASpace int32) {
+    Button_AnchorClient(b.instance, ASpace)
 }
 
 func (b *TButton) Action() *TAction {
@@ -943,18 +967,6 @@ func (b *TButton) SetHint(value string) {
     Button_SetHint(b.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (b *TButton) Margins() *TMargins {
-    return AsMargins(Button_GetMargins(b.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (b *TButton) SetMargins(value *TMargins) {
-    Button_SetMargins(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TButton) ComponentCount() int32 {
@@ -1003,6 +1015,54 @@ func (b *TButton) SetTag(value int) {
     Button_SetTag(b.instance, value)
 }
 
+func (b *TButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideLeft(b.instance))
+}
+
+func (b *TButton) SetAnchorSideLeft(value *TAnchorSide) {
+    Button_SetAnchorSideLeft(b.instance, CheckPtr(value))
+}
+
+func (b *TButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideTop(b.instance))
+}
+
+func (b *TButton) SetAnchorSideTop(value *TAnchorSide) {
+    Button_SetAnchorSideTop(b.instance, CheckPtr(value))
+}
+
+func (b *TButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideRight(b.instance))
+}
+
+func (b *TButton) SetAnchorSideRight(value *TAnchorSide) {
+    Button_SetAnchorSideRight(b.instance, CheckPtr(value))
+}
+
+func (b *TButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideBottom(b.instance))
+}
+
+func (b *TButton) SetAnchorSideBottom(value *TAnchorSide) {
+    Button_SetAnchorSideBottom(b.instance, CheckPtr(value))
+}
+
+func (b *TButton) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(Button_GetChildSizing(b.instance))
+}
+
+func (b *TButton) SetChildSizing(value *TControlChildSizing) {
+    Button_SetChildSizing(b.instance, CheckPtr(value))
+}
+
+func (b *TButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Button_GetBorderSpacing(b.instance))
+}
+
+func (b *TButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    Button_SetBorderSpacing(b.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (b *TButton) DockClients(Index int32) *TControl {
@@ -1019,5 +1079,9 @@ func (b *TButton) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (b *TButton) Components(AIndex int32) *TComponent {
     return AsComponent(Button_GetComponents(b.instance, AIndex))
+}
+
+func (b *TButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSide(b.instance, AKind))
 }
 

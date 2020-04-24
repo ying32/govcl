@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (u *TUpDown) GetHashCode() int32 {
 // EN: Text information.
 func (u *TUpDown) ToString() string {
     return UpDown_ToString(u.instance)
+}
+
+func (u *TUpDown) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    UpDown_AnchorToNeighbour(u.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (u *TUpDown) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    UpDown_AnchorParallel(u.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (u *TUpDown) AnchorHorizontalCenterTo(ASibling IControl) {
+    UpDown_AnchorHorizontalCenterTo(u.instance, CheckPtr(ASibling))
+}
+
+func (u *TUpDown) AnchorVerticalCenterTo(ASibling IControl) {
+    UpDown_AnchorVerticalCenterTo(u.instance, CheckPtr(ASibling))
+}
+
+func (u *TUpDown) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    UpDown_AnchorAsAlign(u.instance, ATheAlign , ASpace)
+}
+
+func (u *TUpDown) AnchorClient(ASpace int32) {
+    UpDown_AnchorClient(u.instance, ASpace)
 }
 
 // CN: 获取四个角位置的锚点。
@@ -855,18 +879,6 @@ func (u *TUpDown) SetCursor(value TCursor) {
     UpDown_SetCursor(u.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (u *TUpDown) Margins() *TMargins {
-    return AsMargins(UpDown_GetMargins(u.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (u *TUpDown) SetMargins(value *TMargins) {
-    UpDown_SetMargins(u.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (u *TUpDown) ComponentCount() int32 {
@@ -915,6 +927,54 @@ func (u *TUpDown) SetTag(value int) {
     UpDown_SetTag(u.instance, value)
 }
 
+func (u *TUpDown) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideLeft(u.instance))
+}
+
+func (u *TUpDown) SetAnchorSideLeft(value *TAnchorSide) {
+    UpDown_SetAnchorSideLeft(u.instance, CheckPtr(value))
+}
+
+func (u *TUpDown) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideTop(u.instance))
+}
+
+func (u *TUpDown) SetAnchorSideTop(value *TAnchorSide) {
+    UpDown_SetAnchorSideTop(u.instance, CheckPtr(value))
+}
+
+func (u *TUpDown) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideRight(u.instance))
+}
+
+func (u *TUpDown) SetAnchorSideRight(value *TAnchorSide) {
+    UpDown_SetAnchorSideRight(u.instance, CheckPtr(value))
+}
+
+func (u *TUpDown) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideBottom(u.instance))
+}
+
+func (u *TUpDown) SetAnchorSideBottom(value *TAnchorSide) {
+    UpDown_SetAnchorSideBottom(u.instance, CheckPtr(value))
+}
+
+func (u *TUpDown) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(UpDown_GetChildSizing(u.instance))
+}
+
+func (u *TUpDown) SetChildSizing(value *TControlChildSizing) {
+    UpDown_SetChildSizing(u.instance, CheckPtr(value))
+}
+
+func (u *TUpDown) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(UpDown_GetBorderSpacing(u.instance))
+}
+
+func (u *TUpDown) SetBorderSpacing(value *TControlBorderSpacing) {
+    UpDown_SetBorderSpacing(u.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (u *TUpDown) DockClients(Index int32) *TControl {
@@ -931,5 +991,9 @@ func (u *TUpDown) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (u *TUpDown) Components(AIndex int32) *TComponent {
     return AsComponent(UpDown_GetComponents(u.instance, AIndex))
+}
+
+func (u *TUpDown) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSide(u.instance, AKind))
 }
 

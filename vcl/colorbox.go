@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -395,6 +395,30 @@ func (c *TColorBox) GetHashCode() int32 {
 // EN: Text information.
 func (c *TColorBox) ToString() string {
     return ColorBox_ToString(c.instance)
+}
+
+func (c *TColorBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ColorBox_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TColorBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ColorBox_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TColorBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    ColorBox_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TColorBox) AnchorVerticalCenterTo(ASibling IControl) {
+    ColorBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TColorBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ColorBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+}
+
+func (c *TColorBox) AnchorClient(ASpace int32) {
+    ColorBox_AnchorClient(c.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1041,18 +1065,6 @@ func (c *TColorBox) SetHint(value string) {
     ColorBox_SetHint(c.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (c *TColorBox) Margins() *TMargins {
-    return AsMargins(ColorBox_GetMargins(c.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (c *TColorBox) SetMargins(value *TMargins) {
-    ColorBox_SetMargins(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TColorBox) ComponentCount() int32 {
@@ -1101,6 +1113,54 @@ func (c *TColorBox) SetTag(value int) {
     ColorBox_SetTag(c.instance, value)
 }
 
+func (c *TColorBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ColorBox_GetAnchorSideLeft(c.instance))
+}
+
+func (c *TColorBox) SetAnchorSideLeft(value *TAnchorSide) {
+    ColorBox_SetAnchorSideLeft(c.instance, CheckPtr(value))
+}
+
+func (c *TColorBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ColorBox_GetAnchorSideTop(c.instance))
+}
+
+func (c *TColorBox) SetAnchorSideTop(value *TAnchorSide) {
+    ColorBox_SetAnchorSideTop(c.instance, CheckPtr(value))
+}
+
+func (c *TColorBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ColorBox_GetAnchorSideRight(c.instance))
+}
+
+func (c *TColorBox) SetAnchorSideRight(value *TAnchorSide) {
+    ColorBox_SetAnchorSideRight(c.instance, CheckPtr(value))
+}
+
+func (c *TColorBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ColorBox_GetAnchorSideBottom(c.instance))
+}
+
+func (c *TColorBox) SetAnchorSideBottom(value *TAnchorSide) {
+    ColorBox_SetAnchorSideBottom(c.instance, CheckPtr(value))
+}
+
+func (c *TColorBox) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ColorBox_GetChildSizing(c.instance))
+}
+
+func (c *TColorBox) SetChildSizing(value *TControlChildSizing) {
+    ColorBox_SetChildSizing(c.instance, CheckPtr(value))
+}
+
+func (c *TColorBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ColorBox_GetBorderSpacing(c.instance))
+}
+
+func (c *TColorBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    ColorBox_SetBorderSpacing(c.instance, CheckPtr(value))
+}
+
 func (c *TColorBox) Colors(Index int32) TColor {
     return ColorBox_GetColors(c.instance, Index)
 }
@@ -1125,5 +1185,9 @@ func (c *TColorBox) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (c *TColorBox) Components(AIndex int32) *TComponent {
     return AsComponent(ColorBox_GetComponents(c.instance, AIndex))
+}
+
+func (c *TColorBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ColorBox_GetAnchorSide(c.instance, AKind))
 }
 

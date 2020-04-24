@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -407,6 +407,30 @@ func (l *TListView) GetHashCode() int32 {
 // EN: Text information.
 func (l *TListView) ToString() string {
     return ListView_ToString(l.instance)
+}
+
+func (l *TListView) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ListView_AnchorToNeighbour(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TListView) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ListView_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TListView) AnchorHorizontalCenterTo(ASibling IControl) {
+    ListView_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TListView) AnchorVerticalCenterTo(ASibling IControl) {
+    ListView_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TListView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ListView_AnchorAsAlign(l.instance, ATheAlign , ASpace)
+}
+
+func (l *TListView) AnchorClient(ASpace int32) {
+    ListView_AnchorClient(l.instance, ASpace)
 }
 
 func (l *TListView) AutoSort() bool {
@@ -1387,18 +1411,6 @@ func (l *TListView) SetHint(value string) {
     ListView_SetHint(l.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (l *TListView) Margins() *TMargins {
-    return AsMargins(ListView_GetMargins(l.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (l *TListView) SetMargins(value *TMargins) {
-    ListView_SetMargins(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TListView) ComponentCount() int32 {
@@ -1447,6 +1459,54 @@ func (l *TListView) SetTag(value int) {
     ListView_SetTag(l.instance, value)
 }
 
+func (l *TListView) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideLeft(l.instance))
+}
+
+func (l *TListView) SetAnchorSideLeft(value *TAnchorSide) {
+    ListView_SetAnchorSideLeft(l.instance, CheckPtr(value))
+}
+
+func (l *TListView) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideTop(l.instance))
+}
+
+func (l *TListView) SetAnchorSideTop(value *TAnchorSide) {
+    ListView_SetAnchorSideTop(l.instance, CheckPtr(value))
+}
+
+func (l *TListView) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideRight(l.instance))
+}
+
+func (l *TListView) SetAnchorSideRight(value *TAnchorSide) {
+    ListView_SetAnchorSideRight(l.instance, CheckPtr(value))
+}
+
+func (l *TListView) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideBottom(l.instance))
+}
+
+func (l *TListView) SetAnchorSideBottom(value *TAnchorSide) {
+    ListView_SetAnchorSideBottom(l.instance, CheckPtr(value))
+}
+
+func (l *TListView) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ListView_GetChildSizing(l.instance))
+}
+
+func (l *TListView) SetChildSizing(value *TControlChildSizing) {
+    ListView_SetChildSizing(l.instance, CheckPtr(value))
+}
+
+func (l *TListView) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ListView_GetBorderSpacing(l.instance))
+}
+
+func (l *TListView) SetBorderSpacing(value *TControlBorderSpacing) {
+    ListView_SetBorderSpacing(l.instance, CheckPtr(value))
+}
+
 func (l *TListView) Column(Index int32) *TListColumn {
     return AsListColumn(ListView_GetColumn(l.instance, Index))
 }
@@ -1467,5 +1527,9 @@ func (l *TListView) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (l *TListView) Components(AIndex int32) *TComponent {
     return AsComponent(ListView_GetComponents(l.instance, AIndex))
+}
+
+func (l *TListView) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSide(l.instance, AKind))
 }
 

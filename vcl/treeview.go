@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -419,6 +419,30 @@ func (t *TTreeView) GetHashCode() int32 {
 // EN: Text information.
 func (t *TTreeView) ToString() string {
     return TreeView_ToString(t.instance)
+}
+
+func (t *TTreeView) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TreeView_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTreeView) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TreeView_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTreeView) AnchorHorizontalCenterTo(ASibling IControl) {
+    TreeView_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTreeView) AnchorVerticalCenterTo(ASibling IControl) {
+    TreeView_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTreeView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    TreeView_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TTreeView) AnchorClient(ASpace int32) {
+    TreeView_AnchorClient(t.instance, ASpace)
 }
 
 func (t *TTreeView) DefaultItemHeight() int32 {
@@ -1361,18 +1385,6 @@ func (t *TTreeView) SetHint(value string) {
     TreeView_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TTreeView) Margins() *TMargins {
-    return AsMargins(TreeView_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TTreeView) SetMargins(value *TMargins) {
-    TreeView_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TTreeView) ComponentCount() int32 {
@@ -1421,6 +1433,54 @@ func (t *TTreeView) SetTag(value int) {
     TreeView_SetTag(t.instance, value)
 }
 
+func (t *TTreeView) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideLeft(t.instance))
+}
+
+func (t *TTreeView) SetAnchorSideLeft(value *TAnchorSide) {
+    TreeView_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+func (t *TTreeView) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideTop(t.instance))
+}
+
+func (t *TTreeView) SetAnchorSideTop(value *TAnchorSide) {
+    TreeView_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+func (t *TTreeView) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideRight(t.instance))
+}
+
+func (t *TTreeView) SetAnchorSideRight(value *TAnchorSide) {
+    TreeView_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+func (t *TTreeView) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideBottom(t.instance))
+}
+
+func (t *TTreeView) SetAnchorSideBottom(value *TAnchorSide) {
+    TreeView_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TTreeView) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(TreeView_GetChildSizing(t.instance))
+}
+
+func (t *TTreeView) SetChildSizing(value *TControlChildSizing) {
+    TreeView_SetChildSizing(t.instance, CheckPtr(value))
+}
+
+func (t *TTreeView) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(TreeView_GetBorderSpacing(t.instance))
+}
+
+func (t *TTreeView) SetBorderSpacing(value *TControlBorderSpacing) {
+    TreeView_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 func (t *TTreeView) Selections(Index int32) *TTreeNode {
     return AsTreeNode(TreeView_GetSelections(t.instance, Index))
 }
@@ -1441,5 +1501,9 @@ func (t *TTreeView) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (t *TTreeView) Components(AIndex int32) *TComponent {
     return AsComponent(TreeView_GetComponents(t.instance, AIndex))
+}
+
+func (t *TTreeView) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSide(t.instance, AKind))
 }
 

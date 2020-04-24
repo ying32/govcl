@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -411,6 +411,30 @@ func (l *TLabeledEdit) GetHashCode() int32 {
 // EN: Text information.
 func (l *TLabeledEdit) ToString() string {
     return LabeledEdit_ToString(l.instance)
+}
+
+func (l *TLabeledEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    LabeledEdit_AnchorToNeighbour(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TLabeledEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    LabeledEdit_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TLabeledEdit) AnchorHorizontalCenterTo(ASibling IControl) {
+    LabeledEdit_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TLabeledEdit) AnchorVerticalCenterTo(ASibling IControl) {
+    LabeledEdit_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TLabeledEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    LabeledEdit_AnchorAsAlign(l.instance, ATheAlign , ASpace)
+}
+
+func (l *TLabeledEdit) AnchorClient(ASpace int32) {
+    LabeledEdit_AnchorClient(l.instance, ASpace)
 }
 
 // CN: 获取文字对齐。
@@ -1177,18 +1201,6 @@ func (l *TLabeledEdit) SetHint(value string) {
     LabeledEdit_SetHint(l.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (l *TLabeledEdit) Margins() *TMargins {
-    return AsMargins(LabeledEdit_GetMargins(l.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (l *TLabeledEdit) SetMargins(value *TMargins) {
-    LabeledEdit_SetMargins(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TLabeledEdit) ComponentCount() int32 {
@@ -1237,6 +1249,54 @@ func (l *TLabeledEdit) SetTag(value int) {
     LabeledEdit_SetTag(l.instance, value)
 }
 
+func (l *TLabeledEdit) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(LabeledEdit_GetAnchorSideLeft(l.instance))
+}
+
+func (l *TLabeledEdit) SetAnchorSideLeft(value *TAnchorSide) {
+    LabeledEdit_SetAnchorSideLeft(l.instance, CheckPtr(value))
+}
+
+func (l *TLabeledEdit) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(LabeledEdit_GetAnchorSideTop(l.instance))
+}
+
+func (l *TLabeledEdit) SetAnchorSideTop(value *TAnchorSide) {
+    LabeledEdit_SetAnchorSideTop(l.instance, CheckPtr(value))
+}
+
+func (l *TLabeledEdit) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(LabeledEdit_GetAnchorSideRight(l.instance))
+}
+
+func (l *TLabeledEdit) SetAnchorSideRight(value *TAnchorSide) {
+    LabeledEdit_SetAnchorSideRight(l.instance, CheckPtr(value))
+}
+
+func (l *TLabeledEdit) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(LabeledEdit_GetAnchorSideBottom(l.instance))
+}
+
+func (l *TLabeledEdit) SetAnchorSideBottom(value *TAnchorSide) {
+    LabeledEdit_SetAnchorSideBottom(l.instance, CheckPtr(value))
+}
+
+func (l *TLabeledEdit) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(LabeledEdit_GetChildSizing(l.instance))
+}
+
+func (l *TLabeledEdit) SetChildSizing(value *TControlChildSizing) {
+    LabeledEdit_SetChildSizing(l.instance, CheckPtr(value))
+}
+
+func (l *TLabeledEdit) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(LabeledEdit_GetBorderSpacing(l.instance))
+}
+
+func (l *TLabeledEdit) SetBorderSpacing(value *TControlBorderSpacing) {
+    LabeledEdit_SetBorderSpacing(l.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (l *TLabeledEdit) DockClients(Index int32) *TControl {
@@ -1253,5 +1313,9 @@ func (l *TLabeledEdit) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (l *TLabeledEdit) Components(AIndex int32) *TComponent {
     return AsComponent(LabeledEdit_GetComponents(l.instance, AIndex))
+}
+
+func (l *TLabeledEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(LabeledEdit_GetAnchorSide(l.instance, AKind))
 }
 

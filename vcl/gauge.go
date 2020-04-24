@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -285,6 +285,30 @@ func (g *TGauge) GetHashCode() int32 {
 // EN: Text information.
 func (g *TGauge) ToString() string {
     return Gauge_ToString(g.instance)
+}
+
+func (g *TGauge) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Gauge_AnchorToNeighbour(g.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (g *TGauge) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Gauge_AnchorParallel(g.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (g *TGauge) AnchorHorizontalCenterTo(ASibling IControl) {
+    Gauge_AnchorHorizontalCenterTo(g.instance, CheckPtr(ASibling))
+}
+
+func (g *TGauge) AnchorVerticalCenterTo(ASibling IControl) {
+    Gauge_AnchorVerticalCenterTo(g.instance, CheckPtr(ASibling))
+}
+
+func (g *TGauge) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Gauge_AnchorAsAlign(g.instance, ATheAlign , ASpace)
+}
+
+func (g *TGauge) AnchorClient(ASpace int32) {
+    Gauge_AnchorClient(g.instance, ASpace)
 }
 
 func (g *TGauge) PercentDone() int32 {
@@ -657,18 +681,6 @@ func (g *TGauge) SetHint(value string) {
     Gauge_SetHint(g.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (g *TGauge) Margins() *TMargins {
-    return AsMargins(Gauge_GetMargins(g.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (g *TGauge) SetMargins(value *TMargins) {
-    Gauge_SetMargins(g.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (g *TGauge) ComponentCount() int32 {
@@ -717,9 +729,53 @@ func (g *TGauge) SetTag(value int) {
     Gauge_SetTag(g.instance, value)
 }
 
+func (g *TGauge) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Gauge_GetAnchorSideLeft(g.instance))
+}
+
+func (g *TGauge) SetAnchorSideLeft(value *TAnchorSide) {
+    Gauge_SetAnchorSideLeft(g.instance, CheckPtr(value))
+}
+
+func (g *TGauge) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Gauge_GetAnchorSideTop(g.instance))
+}
+
+func (g *TGauge) SetAnchorSideTop(value *TAnchorSide) {
+    Gauge_SetAnchorSideTop(g.instance, CheckPtr(value))
+}
+
+func (g *TGauge) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Gauge_GetAnchorSideRight(g.instance))
+}
+
+func (g *TGauge) SetAnchorSideRight(value *TAnchorSide) {
+    Gauge_SetAnchorSideRight(g.instance, CheckPtr(value))
+}
+
+func (g *TGauge) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Gauge_GetAnchorSideBottom(g.instance))
+}
+
+func (g *TGauge) SetAnchorSideBottom(value *TAnchorSide) {
+    Gauge_SetAnchorSideBottom(g.instance, CheckPtr(value))
+}
+
+func (g *TGauge) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Gauge_GetBorderSpacing(g.instance))
+}
+
+func (g *TGauge) SetBorderSpacing(value *TControlBorderSpacing) {
+    Gauge_SetBorderSpacing(g.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (g *TGauge) Components(AIndex int32) *TComponent {
     return AsComponent(Gauge_GetComponents(g.instance, AIndex))
+}
+
+func (g *TGauge) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Gauge_GetAnchorSide(g.instance, AKind))
 }
 

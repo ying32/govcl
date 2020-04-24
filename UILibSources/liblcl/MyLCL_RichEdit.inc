@@ -277,6 +277,36 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+procedure RichEdit_AnchorToNeighbour(AObj: TRichEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure RichEdit_AnchorParallel(AObj: TRichEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure RichEdit_AnchorHorizontalCenterTo(AObj: TRichEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure RichEdit_AnchorVerticalCenterTo(AObj: TRichEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure RichEdit_AnchorAsAlign(AObj: TRichEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure RichEdit_AnchorClient(AObj: TRichEdit; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
 function RichEdit_GetAlign(AObj: TRichEdit): TAlign; extdecl;
 begin
   Result :=  AObj.Align;
@@ -1042,16 +1072,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function RichEdit_GetMargins(AObj: TRichEdit): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure RichEdit_SetMargins(AObj: TRichEdit; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function RichEdit_GetComponentCount(AObj: TRichEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1092,6 +1112,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function RichEdit_GetAnchorSideLeft(AObj: TRichEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure RichEdit_SetAnchorSideLeft(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function RichEdit_GetAnchorSideTop(AObj: TRichEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure RichEdit_SetAnchorSideTop(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function RichEdit_GetAnchorSideRight(AObj: TRichEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure RichEdit_SetAnchorSideRight(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function RichEdit_GetAnchorSideBottom(AObj: TRichEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure RichEdit_SetAnchorSideBottom(AObj: TRichEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function RichEdit_GetChildSizing(AObj: TRichEdit): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure RichEdit_SetChildSizing(AObj: TRichEdit; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function RichEdit_GetBorderSpacing(AObj: TRichEdit): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure RichEdit_SetBorderSpacing(AObj: TRichEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function RichEdit_GetDockClients(AObj: TRichEdit; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -1105,6 +1185,11 @@ end;
 function RichEdit_GetComponents(AObj: TRichEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function RichEdit_GetAnchorSide(AObj: TRichEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function RichEdit_StaticClassType: TClass; extdecl;
@@ -1167,6 +1252,12 @@ exports
   RichEdit_Equals,
   RichEdit_GetHashCode,
   RichEdit_ToString,
+  RichEdit_AnchorToNeighbour,
+  RichEdit_AnchorParallel,
+  RichEdit_AnchorHorizontalCenterTo,
+  RichEdit_AnchorVerticalCenterTo,
+  RichEdit_AnchorAsAlign,
+  RichEdit_AnchorClient,
   RichEdit_GetAlign,
   RichEdit_SetAlign,
   RichEdit_GetAlignment,
@@ -1312,8 +1403,6 @@ exports
   RichEdit_SetCursor,
   RichEdit_GetHint,
   RichEdit_SetHint,
-  RichEdit_GetMargins,
-  RichEdit_SetMargins,
   RichEdit_GetComponentCount,
   RichEdit_GetComponentIndex,
   RichEdit_SetComponentIndex,
@@ -1322,8 +1411,21 @@ exports
   RichEdit_SetName,
   RichEdit_GetTag,
   RichEdit_SetTag,
+  RichEdit_GetAnchorSideLeft,
+  RichEdit_SetAnchorSideLeft,
+  RichEdit_GetAnchorSideTop,
+  RichEdit_SetAnchorSideTop,
+  RichEdit_GetAnchorSideRight,
+  RichEdit_SetAnchorSideRight,
+  RichEdit_GetAnchorSideBottom,
+  RichEdit_SetAnchorSideBottom,
+  RichEdit_GetChildSizing,
+  RichEdit_SetChildSizing,
+  RichEdit_GetBorderSpacing,
+  RichEdit_SetBorderSpacing,
   RichEdit_GetDockClients,
   RichEdit_GetControls,
   RichEdit_GetComponents,
+  RichEdit_GetAnchorSide,
   RichEdit_StaticClassType;
 

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (w *TWinControl) GetHashCode() int32 {
 // EN: Text information.
 func (w *TWinControl) ToString() string {
     return WinControl_ToString(w.instance)
+}
+
+func (w *TWinControl) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    WinControl_AnchorToNeighbour(w.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (w *TWinControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    WinControl_AnchorParallel(w.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (w *TWinControl) AnchorHorizontalCenterTo(ASibling IControl) {
+    WinControl_AnchorHorizontalCenterTo(w.instance, CheckPtr(ASibling))
+}
+
+func (w *TWinControl) AnchorVerticalCenterTo(ASibling IControl) {
+    WinControl_AnchorVerticalCenterTo(w.instance, CheckPtr(ASibling))
+}
+
+func (w *TWinControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    WinControl_AnchorAsAlign(w.instance, ATheAlign , ASpace)
+}
+
+func (w *TWinControl) AnchorClient(ASpace int32) {
+    WinControl_AnchorClient(w.instance, ASpace)
 }
 
 // CN: 获取依靠客户端总数。
@@ -729,18 +753,6 @@ func (w *TWinControl) SetHint(value string) {
     WinControl_SetHint(w.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (w *TWinControl) Margins() *TMargins {
-    return AsMargins(WinControl_GetMargins(w.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (w *TWinControl) SetMargins(value *TMargins) {
-    WinControl_SetMargins(w.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (w *TWinControl) ComponentCount() int32 {
@@ -789,6 +801,54 @@ func (w *TWinControl) SetTag(value int) {
     WinControl_SetTag(w.instance, value)
 }
 
+func (w *TWinControl) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideLeft(w.instance))
+}
+
+func (w *TWinControl) SetAnchorSideLeft(value *TAnchorSide) {
+    WinControl_SetAnchorSideLeft(w.instance, CheckPtr(value))
+}
+
+func (w *TWinControl) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideTop(w.instance))
+}
+
+func (w *TWinControl) SetAnchorSideTop(value *TAnchorSide) {
+    WinControl_SetAnchorSideTop(w.instance, CheckPtr(value))
+}
+
+func (w *TWinControl) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideRight(w.instance))
+}
+
+func (w *TWinControl) SetAnchorSideRight(value *TAnchorSide) {
+    WinControl_SetAnchorSideRight(w.instance, CheckPtr(value))
+}
+
+func (w *TWinControl) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideBottom(w.instance))
+}
+
+func (w *TWinControl) SetAnchorSideBottom(value *TAnchorSide) {
+    WinControl_SetAnchorSideBottom(w.instance, CheckPtr(value))
+}
+
+func (w *TWinControl) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(WinControl_GetChildSizing(w.instance))
+}
+
+func (w *TWinControl) SetChildSizing(value *TControlChildSizing) {
+    WinControl_SetChildSizing(w.instance, CheckPtr(value))
+}
+
+func (w *TWinControl) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(WinControl_GetBorderSpacing(w.instance))
+}
+
+func (w *TWinControl) SetBorderSpacing(value *TControlBorderSpacing) {
+    WinControl_SetBorderSpacing(w.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (w *TWinControl) DockClients(Index int32) *TControl {
@@ -805,5 +865,9 @@ func (w *TWinControl) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (w *TWinControl) Components(AIndex int32) *TComponent {
     return AsComponent(WinControl_GetComponents(w.instance, AIndex))
+}
+
+func (w *TWinControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSide(w.instance, AKind))
 }
 

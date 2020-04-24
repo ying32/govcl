@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -247,6 +247,14 @@ func (a *TApplication) GetHashCode() int32 {
 // EN: Text information.
 func (a *TApplication) ToString() string {
     return Application_ToString(a.instance)
+}
+
+func (a *TApplication) Scaled() bool {
+    return Application_GetScaled(a.instance)
+}
+
+func (a *TApplication) SetScaled(value bool) {
+    Application_SetScaled(a.instance, value)
 }
 
 // CN: 获取当前exe文件名，包含全路径。

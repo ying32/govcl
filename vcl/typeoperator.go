@@ -283,6 +283,15 @@ func (i TIs) SavePictureDialog() bool {
 //}
 
 
+func (i TIs) SelectDirectoryDialog() bool {
+    return SelectDirectoryDialog_InheritsFrom(uintptr(i), TSelectDirectoryDialogClass())
+}
+
+//func (a TAs) SelectDirectoryDialog() *TSelectDirectoryDialog {
+//    return AsSelectDirectoryDialog(uintptr(a))
+//}
+
+
 func (i TIs) RichEdit() bool {
     return RichEdit_InheritsFrom(uintptr(i), TRichEditClass())
 }
@@ -751,15 +760,6 @@ func (i TIs) Monitor() bool {
 //}
 
 
-func (i TIs) Margins() bool {
-    return Margins_InheritsFrom(uintptr(i), TMarginsClass())
-}
-
-//func (a TAs) Margins() *TMargins {
-//    return AsMargins(uintptr(a))
-//}
-
-
 func (i TIs) PaintBox() bool {
     return PaintBox_InheritsFrom(uintptr(i), TPaintBoxClass())
 }
@@ -1189,5 +1189,32 @@ func (i TIs) XButton() bool {
 
 //func (a TAs) XButton() *TXButton {
 //    return AsXButton(uintptr(a))
+//}
+
+
+func (i TIs) AnchorSide() bool {
+    return AnchorSide_InheritsFrom(uintptr(i), TAnchorSideClass())
+}
+
+//func (a TAs) AnchorSide() *TAnchorSide {
+//    return AsAnchorSide(uintptr(a))
+//}
+
+
+func (i TIs) ControlBorderSpacing() bool {
+    return ControlBorderSpacing_InheritsFrom(uintptr(i), TControlBorderSpacingClass())
+}
+
+//func (a TAs) ControlBorderSpacing() *TControlBorderSpacing {
+//    return AsControlBorderSpacing(uintptr(a))
+//}
+
+
+func (i TIs) ControlChildSizing() bool {
+    return ControlChildSizing_InheritsFrom(uintptr(i), TControlChildSizingClass())
+}
+
+//func (a TAs) ControlChildSizing() *TControlChildSizing {
+//    return AsControlChildSizing(uintptr(a))
 //}
 

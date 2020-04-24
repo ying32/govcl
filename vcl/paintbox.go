@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -281,6 +281,30 @@ func (p *TPaintBox) GetHashCode() int32 {
 // EN: Text information.
 func (p *TPaintBox) ToString() string {
     return PaintBox_ToString(p.instance)
+}
+
+func (p *TPaintBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    PaintBox_AnchorToNeighbour(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (p *TPaintBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    PaintBox_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (p *TPaintBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    PaintBox_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+func (p *TPaintBox) AnchorVerticalCenterTo(ASibling IControl) {
+    PaintBox_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+func (p *TPaintBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    PaintBox_AnchorAsAlign(p.instance, ATheAlign , ASpace)
+}
+
+func (p *TPaintBox) AnchorClient(ASpace int32) {
+    PaintBox_AnchorClient(p.instance, ASpace)
 }
 
 // CN: 获取画布。
@@ -685,18 +709,6 @@ func (p *TPaintBox) SetHint(value string) {
     PaintBox_SetHint(p.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (p *TPaintBox) Margins() *TMargins {
-    return AsMargins(PaintBox_GetMargins(p.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (p *TPaintBox) SetMargins(value *TMargins) {
-    PaintBox_SetMargins(p.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (p *TPaintBox) ComponentCount() int32 {
@@ -745,9 +757,53 @@ func (p *TPaintBox) SetTag(value int) {
     PaintBox_SetTag(p.instance, value)
 }
 
+func (p *TPaintBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(PaintBox_GetAnchorSideLeft(p.instance))
+}
+
+func (p *TPaintBox) SetAnchorSideLeft(value *TAnchorSide) {
+    PaintBox_SetAnchorSideLeft(p.instance, CheckPtr(value))
+}
+
+func (p *TPaintBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(PaintBox_GetAnchorSideTop(p.instance))
+}
+
+func (p *TPaintBox) SetAnchorSideTop(value *TAnchorSide) {
+    PaintBox_SetAnchorSideTop(p.instance, CheckPtr(value))
+}
+
+func (p *TPaintBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(PaintBox_GetAnchorSideRight(p.instance))
+}
+
+func (p *TPaintBox) SetAnchorSideRight(value *TAnchorSide) {
+    PaintBox_SetAnchorSideRight(p.instance, CheckPtr(value))
+}
+
+func (p *TPaintBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(PaintBox_GetAnchorSideBottom(p.instance))
+}
+
+func (p *TPaintBox) SetAnchorSideBottom(value *TAnchorSide) {
+    PaintBox_SetAnchorSideBottom(p.instance, CheckPtr(value))
+}
+
+func (p *TPaintBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(PaintBox_GetBorderSpacing(p.instance))
+}
+
+func (p *TPaintBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    PaintBox_SetBorderSpacing(p.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (p *TPaintBox) Components(AIndex int32) *TComponent {
     return AsComponent(PaintBox_GetComponents(p.instance, AIndex))
+}
+
+func (p *TPaintBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(PaintBox_GetAnchorSide(p.instance, AKind))
 }
 

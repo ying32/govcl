@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (g *TGroupBox) GetHashCode() int32 {
 // EN: Text information.
 func (g *TGroupBox) ToString() string {
     return GroupBox_ToString(g.instance)
+}
+
+func (g *TGroupBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    GroupBox_AnchorToNeighbour(g.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (g *TGroupBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    GroupBox_AnchorParallel(g.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (g *TGroupBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    GroupBox_AnchorHorizontalCenterTo(g.instance, CheckPtr(ASibling))
+}
+
+func (g *TGroupBox) AnchorVerticalCenterTo(ASibling IControl) {
+    GroupBox_AnchorVerticalCenterTo(g.instance, CheckPtr(ASibling))
+}
+
+func (g *TGroupBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    GroupBox_AnchorAsAlign(g.instance, ATheAlign , ASpace)
+}
+
+func (g *TGroupBox) AnchorClient(ASpace int32) {
+    GroupBox_AnchorClient(g.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -951,18 +975,6 @@ func (g *TGroupBox) SetHint(value string) {
     GroupBox_SetHint(g.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (g *TGroupBox) Margins() *TMargins {
-    return AsMargins(GroupBox_GetMargins(g.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (g *TGroupBox) SetMargins(value *TMargins) {
-    GroupBox_SetMargins(g.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (g *TGroupBox) ComponentCount() int32 {
@@ -1011,6 +1023,54 @@ func (g *TGroupBox) SetTag(value int) {
     GroupBox_SetTag(g.instance, value)
 }
 
+func (g *TGroupBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideLeft(g.instance))
+}
+
+func (g *TGroupBox) SetAnchorSideLeft(value *TAnchorSide) {
+    GroupBox_SetAnchorSideLeft(g.instance, CheckPtr(value))
+}
+
+func (g *TGroupBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideTop(g.instance))
+}
+
+func (g *TGroupBox) SetAnchorSideTop(value *TAnchorSide) {
+    GroupBox_SetAnchorSideTop(g.instance, CheckPtr(value))
+}
+
+func (g *TGroupBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideRight(g.instance))
+}
+
+func (g *TGroupBox) SetAnchorSideRight(value *TAnchorSide) {
+    GroupBox_SetAnchorSideRight(g.instance, CheckPtr(value))
+}
+
+func (g *TGroupBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideBottom(g.instance))
+}
+
+func (g *TGroupBox) SetAnchorSideBottom(value *TAnchorSide) {
+    GroupBox_SetAnchorSideBottom(g.instance, CheckPtr(value))
+}
+
+func (g *TGroupBox) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(GroupBox_GetChildSizing(g.instance))
+}
+
+func (g *TGroupBox) SetChildSizing(value *TControlChildSizing) {
+    GroupBox_SetChildSizing(g.instance, CheckPtr(value))
+}
+
+func (g *TGroupBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(GroupBox_GetBorderSpacing(g.instance))
+}
+
+func (g *TGroupBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    GroupBox_SetBorderSpacing(g.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (g *TGroupBox) DockClients(Index int32) *TControl {
@@ -1027,5 +1087,9 @@ func (g *TGroupBox) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (g *TGroupBox) Components(AIndex int32) *TComponent {
     return AsComponent(GroupBox_GetComponents(g.instance, AIndex))
+}
+
+func (g *TGroupBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSide(g.instance, AKind))
 }
 

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -281,6 +281,30 @@ func (x *TXButton) GetHashCode() int32 {
 // EN: Text information.
 func (x *TXButton) ToString() string {
     return XButton_ToString(x.instance)
+}
+
+func (x *TXButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    XButton_AnchorToNeighbour(x.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (x *TXButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    XButton_AnchorParallel(x.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (x *TXButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    XButton_AnchorHorizontalCenterTo(x.instance, CheckPtr(ASibling))
+}
+
+func (x *TXButton) AnchorVerticalCenterTo(ASibling IControl) {
+    XButton_AnchorVerticalCenterTo(x.instance, CheckPtr(ASibling))
+}
+
+func (x *TXButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    XButton_AnchorAsAlign(x.instance, ATheAlign , ASpace)
+}
+
+func (x *TXButton) AnchorClient(ASpace int32) {
+    XButton_AnchorClient(x.instance, ASpace)
 }
 
 // CN: 获取控件标题。
@@ -711,18 +735,6 @@ func (x *TXButton) SetHint(value string) {
     XButton_SetHint(x.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (x *TXButton) Margins() *TMargins {
-    return AsMargins(XButton_GetMargins(x.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (x *TXButton) SetMargins(value *TMargins) {
-    XButton_SetMargins(x.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (x *TXButton) ComponentCount() int32 {
@@ -771,9 +783,53 @@ func (x *TXButton) SetTag(value int) {
     XButton_SetTag(x.instance, value)
 }
 
+func (x *TXButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideLeft(x.instance))
+}
+
+func (x *TXButton) SetAnchorSideLeft(value *TAnchorSide) {
+    XButton_SetAnchorSideLeft(x.instance, CheckPtr(value))
+}
+
+func (x *TXButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideTop(x.instance))
+}
+
+func (x *TXButton) SetAnchorSideTop(value *TAnchorSide) {
+    XButton_SetAnchorSideTop(x.instance, CheckPtr(value))
+}
+
+func (x *TXButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideRight(x.instance))
+}
+
+func (x *TXButton) SetAnchorSideRight(value *TAnchorSide) {
+    XButton_SetAnchorSideRight(x.instance, CheckPtr(value))
+}
+
+func (x *TXButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideBottom(x.instance))
+}
+
+func (x *TXButton) SetAnchorSideBottom(value *TAnchorSide) {
+    XButton_SetAnchorSideBottom(x.instance, CheckPtr(value))
+}
+
+func (x *TXButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(XButton_GetBorderSpacing(x.instance))
+}
+
+func (x *TXButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    XButton_SetBorderSpacing(x.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (x *TXButton) Components(AIndex int32) *TComponent {
     return AsComponent(XButton_GetComponents(x.instance, AIndex))
+}
+
+func (x *TXButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSide(x.instance, AKind))
 }
 

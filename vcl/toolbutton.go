@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -291,6 +291,30 @@ func (t *TToolButton) GetHashCode() int32 {
 // EN: Text information.
 func (t *TToolButton) ToString() string {
     return ToolButton_ToString(t.instance)
+}
+
+func (t *TToolButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ToolButton_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TToolButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ToolButton_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TToolButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    ToolButton_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TToolButton) AnchorVerticalCenterTo(ASibling IControl) {
+    ToolButton_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TToolButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ToolButton_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TToolButton) AnchorClient(ASpace int32) {
+    ToolButton_AnchorClient(t.instance, ASpace)
 }
 
 func (t *TToolButton) Index() int32 {
@@ -763,18 +787,6 @@ func (t *TToolButton) SetHint(value string) {
     ToolButton_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TToolButton) Margins() *TMargins {
-    return AsMargins(ToolButton_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TToolButton) SetMargins(value *TMargins) {
-    ToolButton_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TToolButton) ComponentCount() int32 {
@@ -823,9 +835,53 @@ func (t *TToolButton) SetTag(value int) {
     ToolButton_SetTag(t.instance, value)
 }
 
+func (t *TToolButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ToolButton_GetAnchorSideLeft(t.instance))
+}
+
+func (t *TToolButton) SetAnchorSideLeft(value *TAnchorSide) {
+    ToolButton_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+func (t *TToolButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ToolButton_GetAnchorSideTop(t.instance))
+}
+
+func (t *TToolButton) SetAnchorSideTop(value *TAnchorSide) {
+    ToolButton_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+func (t *TToolButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ToolButton_GetAnchorSideRight(t.instance))
+}
+
+func (t *TToolButton) SetAnchorSideRight(value *TAnchorSide) {
+    ToolButton_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+func (t *TToolButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ToolButton_GetAnchorSideBottom(t.instance))
+}
+
+func (t *TToolButton) SetAnchorSideBottom(value *TAnchorSide) {
+    ToolButton_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TToolButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ToolButton_GetBorderSpacing(t.instance))
+}
+
+func (t *TToolButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    ToolButton_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (t *TToolButton) Components(AIndex int32) *TComponent {
     return AsComponent(ToolButton_GetComponents(t.instance, AIndex))
+}
+
+func (t *TToolButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ToolButton_GetAnchorSide(t.instance, AKind))
 }
 

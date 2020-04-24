@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -281,6 +281,30 @@ func (l *TLinkLabel) GetHashCode() int32 {
 // EN: Text information.
 func (l *TLinkLabel) ToString() string {
     return LinkLabel_ToString(l.instance)
+}
+
+func (l *TLinkLabel) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    LinkLabel_AnchorToNeighbour(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TLinkLabel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    LinkLabel_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TLinkLabel) AnchorHorizontalCenterTo(ASibling IControl) {
+    LinkLabel_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TLinkLabel) AnchorVerticalCenterTo(ASibling IControl) {
+    LinkLabel_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TLinkLabel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    LinkLabel_AnchorAsAlign(l.instance, ATheAlign , ASpace)
+}
+
+func (l *TLinkLabel) AnchorClient(ASpace int32) {
+    LinkLabel_AnchorClient(l.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -725,18 +749,6 @@ func (l *TLinkLabel) SetHint(value string) {
     LinkLabel_SetHint(l.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (l *TLinkLabel) Margins() *TMargins {
-    return AsMargins(LinkLabel_GetMargins(l.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (l *TLinkLabel) SetMargins(value *TMargins) {
-    LinkLabel_SetMargins(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TLinkLabel) ComponentCount() int32 {
@@ -785,9 +797,53 @@ func (l *TLinkLabel) SetTag(value int) {
     LinkLabel_SetTag(l.instance, value)
 }
 
+func (l *TLinkLabel) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(LinkLabel_GetAnchorSideLeft(l.instance))
+}
+
+func (l *TLinkLabel) SetAnchorSideLeft(value *TAnchorSide) {
+    LinkLabel_SetAnchorSideLeft(l.instance, CheckPtr(value))
+}
+
+func (l *TLinkLabel) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(LinkLabel_GetAnchorSideTop(l.instance))
+}
+
+func (l *TLinkLabel) SetAnchorSideTop(value *TAnchorSide) {
+    LinkLabel_SetAnchorSideTop(l.instance, CheckPtr(value))
+}
+
+func (l *TLinkLabel) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(LinkLabel_GetAnchorSideRight(l.instance))
+}
+
+func (l *TLinkLabel) SetAnchorSideRight(value *TAnchorSide) {
+    LinkLabel_SetAnchorSideRight(l.instance, CheckPtr(value))
+}
+
+func (l *TLinkLabel) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(LinkLabel_GetAnchorSideBottom(l.instance))
+}
+
+func (l *TLinkLabel) SetAnchorSideBottom(value *TAnchorSide) {
+    LinkLabel_SetAnchorSideBottom(l.instance, CheckPtr(value))
+}
+
+func (l *TLinkLabel) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(LinkLabel_GetBorderSpacing(l.instance))
+}
+
+func (l *TLinkLabel) SetBorderSpacing(value *TControlBorderSpacing) {
+    LinkLabel_SetBorderSpacing(l.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (l *TLinkLabel) Components(AIndex int32) *TComponent {
     return AsComponent(LinkLabel_GetComponents(l.instance, AIndex))
+}
+
+func (l *TLinkLabel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(LinkLabel_GetAnchorSide(l.instance, AKind))
 }
 

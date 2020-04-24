@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -281,6 +281,30 @@ func (s *TShape) GetHashCode() int32 {
 // EN: Text information.
 func (s *TShape) ToString() string {
     return Shape_ToString(s.instance)
+}
+
+func (s *TShape) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Shape_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TShape) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Shape_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TShape) AnchorHorizontalCenterTo(ASibling IControl) {
+    Shape_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TShape) AnchorVerticalCenterTo(ASibling IControl) {
+    Shape_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TShape) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Shape_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TShape) AnchorClient(ASpace int32) {
+    Shape_AnchorClient(s.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -641,18 +665,6 @@ func (s *TShape) SetHint(value string) {
     Shape_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TShape) Margins() *TMargins {
-    return AsMargins(Shape_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TShape) SetMargins(value *TMargins) {
-    Shape_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TShape) ComponentCount() int32 {
@@ -701,9 +713,53 @@ func (s *TShape) SetTag(value int) {
     Shape_SetTag(s.instance, value)
 }
 
+func (s *TShape) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Shape_GetAnchorSideLeft(s.instance))
+}
+
+func (s *TShape) SetAnchorSideLeft(value *TAnchorSide) {
+    Shape_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+func (s *TShape) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Shape_GetAnchorSideTop(s.instance))
+}
+
+func (s *TShape) SetAnchorSideTop(value *TAnchorSide) {
+    Shape_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+func (s *TShape) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Shape_GetAnchorSideRight(s.instance))
+}
+
+func (s *TShape) SetAnchorSideRight(value *TAnchorSide) {
+    Shape_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+func (s *TShape) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Shape_GetAnchorSideBottom(s.instance))
+}
+
+func (s *TShape) SetAnchorSideBottom(value *TAnchorSide) {
+    Shape_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TShape) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Shape_GetBorderSpacing(s.instance))
+}
+
+func (s *TShape) SetBorderSpacing(value *TControlBorderSpacing) {
+    Shape_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TShape) Components(AIndex int32) *TComponent {
     return AsComponent(Shape_GetComponents(s.instance, AIndex))
+}
+
+func (s *TShape) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Shape_GetAnchorSide(s.instance, AKind))
 }
 

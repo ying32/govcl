@@ -125,6 +125,18 @@ end;
 //end;
 
 
+//exports
+////{$IFDEF LCLCocoa}
+//  NSWindow_FromForm,
+//  NSWindow_titleVisibility,
+//  NSWindow_setTitleVisibility,
+//  NSWindow_titlebarAppearsTransparent,
+//  NSWindow_setTitlebarAppearsTransparent,
+//  NSWindow_styleMask,
+//  NSWindow_setStyleMask,
+//  NSWindow_setRepresentedURL,
+//  NSWindow_release;
+////{$ENDIF}
 
 end.
 

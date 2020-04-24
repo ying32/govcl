@@ -167,6 +167,36 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+procedure SpeedButton_AnchorToNeighbour(AObj: TSpeedButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure SpeedButton_AnchorParallel(AObj: TSpeedButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure SpeedButton_AnchorHorizontalCenterTo(AObj: TSpeedButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure SpeedButton_AnchorVerticalCenterTo(AObj: TSpeedButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure SpeedButton_AnchorAsAlign(AObj: TSpeedButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure SpeedButton_AnchorClient(AObj: TSpeedButton; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
 function SpeedButton_GetImageIndex(AObj: TSpeedButton): Integer; extdecl;
 begin
   Result :=  AObj.ImageIndex;
@@ -611,16 +641,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function SpeedButton_GetMargins(AObj: TSpeedButton): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure SpeedButton_SetMargins(AObj: TSpeedButton; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function SpeedButton_GetComponentCount(AObj: TSpeedButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -661,9 +681,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function SpeedButton_GetAnchorSideLeft(AObj: TSpeedButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure SpeedButton_SetAnchorSideLeft(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function SpeedButton_GetAnchorSideTop(AObj: TSpeedButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure SpeedButton_SetAnchorSideTop(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function SpeedButton_GetAnchorSideRight(AObj: TSpeedButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure SpeedButton_SetAnchorSideRight(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function SpeedButton_GetAnchorSideBottom(AObj: TSpeedButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure SpeedButton_SetAnchorSideBottom(AObj: TSpeedButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function SpeedButton_GetBorderSpacing(AObj: TSpeedButton): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure SpeedButton_SetBorderSpacing(AObj: TSpeedButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function SpeedButton_GetComponents(AObj: TSpeedButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function SpeedButton_GetAnchorSide(AObj: TSpeedButton; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function SpeedButton_StaticClassType: TClass; extdecl;
@@ -704,6 +779,12 @@ exports
   SpeedButton_Equals,
   SpeedButton_GetHashCode,
   SpeedButton_ToString,
+  SpeedButton_AnchorToNeighbour,
+  SpeedButton_AnchorParallel,
+  SpeedButton_AnchorHorizontalCenterTo,
+  SpeedButton_AnchorVerticalCenterTo,
+  SpeedButton_AnchorAsAlign,
+  SpeedButton_AnchorClient,
   SpeedButton_GetImageIndex,
   SpeedButton_SetImageIndex,
   SpeedButton_GetImages,
@@ -790,8 +871,6 @@ exports
   SpeedButton_SetCursor,
   SpeedButton_GetHint,
   SpeedButton_SetHint,
-  SpeedButton_GetMargins,
-  SpeedButton_SetMargins,
   SpeedButton_GetComponentCount,
   SpeedButton_GetComponentIndex,
   SpeedButton_SetComponentIndex,
@@ -800,6 +879,17 @@ exports
   SpeedButton_SetName,
   SpeedButton_GetTag,
   SpeedButton_SetTag,
+  SpeedButton_GetAnchorSideLeft,
+  SpeedButton_SetAnchorSideLeft,
+  SpeedButton_GetAnchorSideTop,
+  SpeedButton_SetAnchorSideTop,
+  SpeedButton_GetAnchorSideRight,
+  SpeedButton_SetAnchorSideRight,
+  SpeedButton_GetAnchorSideBottom,
+  SpeedButton_SetAnchorSideBottom,
+  SpeedButton_GetBorderSpacing,
+  SpeedButton_SetBorderSpacing,
   SpeedButton_GetComponents,
+  SpeedButton_GetAnchorSide,
   SpeedButton_StaticClassType;
 

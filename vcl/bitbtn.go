@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -375,6 +375,30 @@ func (b *TBitBtn) GetHashCode() int32 {
 // EN: Text information.
 func (b *TBitBtn) ToString() string {
     return BitBtn_ToString(b.instance)
+}
+
+func (b *TBitBtn) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    BitBtn_AnchorToNeighbour(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TBitBtn) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    BitBtn_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TBitBtn) AnchorHorizontalCenterTo(ASibling IControl) {
+    BitBtn_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TBitBtn) AnchorVerticalCenterTo(ASibling IControl) {
+    BitBtn_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TBitBtn) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    BitBtn_AnchorAsAlign(b.instance, ATheAlign , ASpace)
+}
+
+func (b *TBitBtn) AnchorClient(ASpace int32) {
+    BitBtn_AnchorClient(b.instance, ASpace)
 }
 
 func (b *TBitBtn) DefaultCaption() bool {
@@ -963,18 +987,6 @@ func (b *TBitBtn) SetHint(value string) {
     BitBtn_SetHint(b.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (b *TBitBtn) Margins() *TMargins {
-    return AsMargins(BitBtn_GetMargins(b.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (b *TBitBtn) SetMargins(value *TMargins) {
-    BitBtn_SetMargins(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TBitBtn) ComponentCount() int32 {
@@ -1023,6 +1035,54 @@ func (b *TBitBtn) SetTag(value int) {
     BitBtn_SetTag(b.instance, value)
 }
 
+func (b *TBitBtn) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideLeft(b.instance))
+}
+
+func (b *TBitBtn) SetAnchorSideLeft(value *TAnchorSide) {
+    BitBtn_SetAnchorSideLeft(b.instance, CheckPtr(value))
+}
+
+func (b *TBitBtn) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideTop(b.instance))
+}
+
+func (b *TBitBtn) SetAnchorSideTop(value *TAnchorSide) {
+    BitBtn_SetAnchorSideTop(b.instance, CheckPtr(value))
+}
+
+func (b *TBitBtn) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideRight(b.instance))
+}
+
+func (b *TBitBtn) SetAnchorSideRight(value *TAnchorSide) {
+    BitBtn_SetAnchorSideRight(b.instance, CheckPtr(value))
+}
+
+func (b *TBitBtn) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideBottom(b.instance))
+}
+
+func (b *TBitBtn) SetAnchorSideBottom(value *TAnchorSide) {
+    BitBtn_SetAnchorSideBottom(b.instance, CheckPtr(value))
+}
+
+func (b *TBitBtn) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(BitBtn_GetChildSizing(b.instance))
+}
+
+func (b *TBitBtn) SetChildSizing(value *TControlChildSizing) {
+    BitBtn_SetChildSizing(b.instance, CheckPtr(value))
+}
+
+func (b *TBitBtn) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(BitBtn_GetBorderSpacing(b.instance))
+}
+
+func (b *TBitBtn) SetBorderSpacing(value *TControlBorderSpacing) {
+    BitBtn_SetBorderSpacing(b.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (b *TBitBtn) DockClients(Index int32) *TControl {
@@ -1039,5 +1099,9 @@ func (b *TBitBtn) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (b *TBitBtn) Components(AIndex int32) *TComponent {
     return AsComponent(BitBtn_GetComponents(b.instance, AIndex))
+}
+
+func (b *TBitBtn) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSide(b.instance, AKind))
 }
 

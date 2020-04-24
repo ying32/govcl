@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (s *TStatusBar) GetHashCode() int32 {
 // EN: Text information.
 func (s *TStatusBar) ToString() string {
     return StatusBar_ToString(s.instance)
+}
+
+func (s *TStatusBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StatusBar_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TStatusBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StatusBar_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TStatusBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    StatusBar_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TStatusBar) AnchorVerticalCenterTo(ASibling IControl) {
+    StatusBar_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TStatusBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    StatusBar_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TStatusBar) AnchorClient(ASpace int32) {
+    StatusBar_AnchorClient(s.instance, ASpace)
 }
 
 func (s *TStatusBar) Action() *TAction {
@@ -989,18 +1013,6 @@ func (s *TStatusBar) SetHint(value string) {
     StatusBar_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TStatusBar) Margins() *TMargins {
-    return AsMargins(StatusBar_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TStatusBar) SetMargins(value *TMargins) {
-    StatusBar_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TStatusBar) ComponentCount() int32 {
@@ -1049,6 +1061,54 @@ func (s *TStatusBar) SetTag(value int) {
     StatusBar_SetTag(s.instance, value)
 }
 
+func (s *TStatusBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideLeft(s.instance))
+}
+
+func (s *TStatusBar) SetAnchorSideLeft(value *TAnchorSide) {
+    StatusBar_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+func (s *TStatusBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideTop(s.instance))
+}
+
+func (s *TStatusBar) SetAnchorSideTop(value *TAnchorSide) {
+    StatusBar_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+func (s *TStatusBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideRight(s.instance))
+}
+
+func (s *TStatusBar) SetAnchorSideRight(value *TAnchorSide) {
+    StatusBar_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+func (s *TStatusBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideBottom(s.instance))
+}
+
+func (s *TStatusBar) SetAnchorSideBottom(value *TAnchorSide) {
+    StatusBar_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TStatusBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(StatusBar_GetChildSizing(s.instance))
+}
+
+func (s *TStatusBar) SetChildSizing(value *TControlChildSizing) {
+    StatusBar_SetChildSizing(s.instance, CheckPtr(value))
+}
+
+func (s *TStatusBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(StatusBar_GetBorderSpacing(s.instance))
+}
+
+func (s *TStatusBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    StatusBar_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TStatusBar) DockClients(Index int32) *TControl {
@@ -1065,5 +1125,9 @@ func (s *TStatusBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (s *TStatusBar) Components(AIndex int32) *TComponent {
     return AsComponent(StatusBar_GetComponents(s.instance, AIndex))
+}
+
+func (s *TStatusBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSide(s.instance, AKind))
 }
 

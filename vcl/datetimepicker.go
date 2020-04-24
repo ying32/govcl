@@ -13,7 +13,7 @@ package vcl
 
 import (
     "time"
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -370,6 +370,30 @@ func (d *TDateTimePicker) GetHashCode() int32 {
 // EN: Text information.
 func (d *TDateTimePicker) ToString() string {
     return DateTimePicker_ToString(d.instance)
+}
+
+func (d *TDateTimePicker) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    DateTimePicker_AnchorToNeighbour(d.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (d *TDateTimePicker) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    DateTimePicker_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (d *TDateTimePicker) AnchorHorizontalCenterTo(ASibling IControl) {
+    DateTimePicker_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
+}
+
+func (d *TDateTimePicker) AnchorVerticalCenterTo(ASibling IControl) {
+    DateTimePicker_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
+}
+
+func (d *TDateTimePicker) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    DateTimePicker_AnchorAsAlign(d.instance, ATheAlign , ASpace)
+}
+
+func (d *TDateTimePicker) AnchorClient(ASpace int32) {
+    DateTimePicker_AnchorClient(d.instance, ASpace)
 }
 
 func (d *TDateTimePicker) DateTime() time.Time {
@@ -928,18 +952,6 @@ func (d *TDateTimePicker) SetHint(value string) {
     DateTimePicker_SetHint(d.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (d *TDateTimePicker) Margins() *TMargins {
-    return AsMargins(DateTimePicker_GetMargins(d.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (d *TDateTimePicker) SetMargins(value *TMargins) {
-    DateTimePicker_SetMargins(d.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (d *TDateTimePicker) ComponentCount() int32 {
@@ -988,6 +1000,54 @@ func (d *TDateTimePicker) SetTag(value int) {
     DateTimePicker_SetTag(d.instance, value)
 }
 
+func (d *TDateTimePicker) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(DateTimePicker_GetAnchorSideLeft(d.instance))
+}
+
+func (d *TDateTimePicker) SetAnchorSideLeft(value *TAnchorSide) {
+    DateTimePicker_SetAnchorSideLeft(d.instance, CheckPtr(value))
+}
+
+func (d *TDateTimePicker) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(DateTimePicker_GetAnchorSideTop(d.instance))
+}
+
+func (d *TDateTimePicker) SetAnchorSideTop(value *TAnchorSide) {
+    DateTimePicker_SetAnchorSideTop(d.instance, CheckPtr(value))
+}
+
+func (d *TDateTimePicker) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(DateTimePicker_GetAnchorSideRight(d.instance))
+}
+
+func (d *TDateTimePicker) SetAnchorSideRight(value *TAnchorSide) {
+    DateTimePicker_SetAnchorSideRight(d.instance, CheckPtr(value))
+}
+
+func (d *TDateTimePicker) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(DateTimePicker_GetAnchorSideBottom(d.instance))
+}
+
+func (d *TDateTimePicker) SetAnchorSideBottom(value *TAnchorSide) {
+    DateTimePicker_SetAnchorSideBottom(d.instance, CheckPtr(value))
+}
+
+func (d *TDateTimePicker) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(DateTimePicker_GetChildSizing(d.instance))
+}
+
+func (d *TDateTimePicker) SetChildSizing(value *TControlChildSizing) {
+    DateTimePicker_SetChildSizing(d.instance, CheckPtr(value))
+}
+
+func (d *TDateTimePicker) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(DateTimePicker_GetBorderSpacing(d.instance))
+}
+
+func (d *TDateTimePicker) SetBorderSpacing(value *TControlBorderSpacing) {
+    DateTimePicker_SetBorderSpacing(d.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (d *TDateTimePicker) DockClients(Index int32) *TControl {
@@ -1004,5 +1064,9 @@ func (d *TDateTimePicker) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (d *TDateTimePicker) Components(AIndex int32) *TComponent {
     return AsComponent(DateTimePicker_GetComponents(d.instance, AIndex))
+}
+
+func (d *TDateTimePicker) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(DateTimePicker_GetAnchorSide(d.instance, AKind))
 }
 

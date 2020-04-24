@@ -13,7 +13,7 @@ unit uComponents;
 interface
 
 uses
-  Classes, SysUtils, fgl;
+  Classes, fgl;
 
 type
   TClassLists = specialize  TFPGMap<string, TClass>;
@@ -23,58 +23,8 @@ type
 implementation
 
 uses
-  Interfaces, // this includes the LCL widgetset,
-{$IFDEF WINDOWS}
-  Windows,
-  MultiMon,
-  ShellAPI,
-  CommCtrl,
-  ActiveX,
-{$ELSE}
-  LCLType,
-  Types,
-{$ENDIF}
-  typinfo,
-  LCLProc,
-  LCLIntf,
-  DateUtils,
-  IniFiles,
-  Registry,
-  Forms,
-  StdCtrls,
-  Dialogs,
-  ExtCtrls,
-  Graphics,
-  Controls,
-  Buttons,
-  ComCtrls,
-  ToolWin,
-  ImgList,
-  ExtDlgs,
-  ActnList,
-  ColorBox,
-  PrintersDlgs,
-  DateTimePicker,
-  Calendar,
-  Menus,
-  Clipbrd,
-  CheckLst,
-  MaskEdit,
-  uLinkLabel,
-  ImageButton,
-  uRichEdit,
-  Grids,
-  ValEdit,
-  Gauges,
-  Spin,
-  ComboEx,
-  {$I UserDefineComponentUses.inc}
-  uMiniWebview,
-  XButton,
-  uControlPatchs;
-
-{$I LazarusExtDef.inc}
-
+  {$I UseAll.inc}
+  ,uControlPatchs;
 
 procedure AddComponentClass(AClass: TClass);
 begin

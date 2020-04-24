@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -403,6 +403,30 @@ func (c *TColorListBox) GetHashCode() int32 {
 // EN: Text information.
 func (c *TColorListBox) ToString() string {
     return ColorListBox_ToString(c.instance)
+}
+
+func (c *TColorListBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ColorListBox_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TColorListBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ColorListBox_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TColorListBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    ColorListBox_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TColorListBox) AnchorVerticalCenterTo(ASibling IControl) {
+    ColorListBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TColorListBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ColorListBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+}
+
+func (c *TColorListBox) AnchorClient(ASpace int32) {
+    ColorListBox_AnchorClient(c.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1011,18 +1035,6 @@ func (c *TColorListBox) SetHint(value string) {
     ColorListBox_SetHint(c.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (c *TColorListBox) Margins() *TMargins {
-    return AsMargins(ColorListBox_GetMargins(c.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (c *TColorListBox) SetMargins(value *TMargins) {
-    ColorListBox_SetMargins(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TColorListBox) ComponentCount() int32 {
@@ -1071,6 +1083,54 @@ func (c *TColorListBox) SetTag(value int) {
     ColorListBox_SetTag(c.instance, value)
 }
 
+func (c *TColorListBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ColorListBox_GetAnchorSideLeft(c.instance))
+}
+
+func (c *TColorListBox) SetAnchorSideLeft(value *TAnchorSide) {
+    ColorListBox_SetAnchorSideLeft(c.instance, CheckPtr(value))
+}
+
+func (c *TColorListBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ColorListBox_GetAnchorSideTop(c.instance))
+}
+
+func (c *TColorListBox) SetAnchorSideTop(value *TAnchorSide) {
+    ColorListBox_SetAnchorSideTop(c.instance, CheckPtr(value))
+}
+
+func (c *TColorListBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ColorListBox_GetAnchorSideRight(c.instance))
+}
+
+func (c *TColorListBox) SetAnchorSideRight(value *TAnchorSide) {
+    ColorListBox_SetAnchorSideRight(c.instance, CheckPtr(value))
+}
+
+func (c *TColorListBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ColorListBox_GetAnchorSideBottom(c.instance))
+}
+
+func (c *TColorListBox) SetAnchorSideBottom(value *TAnchorSide) {
+    ColorListBox_SetAnchorSideBottom(c.instance, CheckPtr(value))
+}
+
+func (c *TColorListBox) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ColorListBox_GetChildSizing(c.instance))
+}
+
+func (c *TColorListBox) SetChildSizing(value *TControlChildSizing) {
+    ColorListBox_SetChildSizing(c.instance, CheckPtr(value))
+}
+
+func (c *TColorListBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ColorListBox_GetBorderSpacing(c.instance))
+}
+
+func (c *TColorListBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    ColorListBox_SetBorderSpacing(c.instance, CheckPtr(value))
+}
+
 func (c *TColorListBox) Colors(Index int32) TColor {
     return ColorListBox_GetColors(c.instance, Index)
 }
@@ -1095,5 +1155,9 @@ func (c *TColorListBox) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (c *TColorListBox) Components(AIndex int32) *TComponent {
     return AsComponent(ColorListBox_GetComponents(c.instance, AIndex))
+}
+
+func (c *TColorListBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ColorListBox_GetAnchorSide(c.instance, AKind))
 }
 

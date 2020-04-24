@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -395,6 +395,30 @@ func (c *TComboBoxEx) GetHashCode() int32 {
 // EN: Text information.
 func (c *TComboBoxEx) ToString() string {
     return ComboBoxEx_ToString(c.instance)
+}
+
+func (c *TComboBoxEx) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ComboBoxEx_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TComboBoxEx) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ComboBoxEx_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TComboBoxEx) AnchorHorizontalCenterTo(ASibling IControl) {
+    ComboBoxEx_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TComboBoxEx) AnchorVerticalCenterTo(ASibling IControl) {
+    ComboBoxEx_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TComboBoxEx) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ComboBoxEx_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+}
+
+func (c *TComboBoxEx) AnchorClient(ASpace int32) {
+    ComboBoxEx_AnchorClient(c.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1107,18 +1131,6 @@ func (c *TComboBoxEx) SetHint(value string) {
     ComboBoxEx_SetHint(c.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (c *TComboBoxEx) Margins() *TMargins {
-    return AsMargins(ComboBoxEx_GetMargins(c.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (c *TComboBoxEx) SetMargins(value *TMargins) {
-    ComboBoxEx_SetMargins(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TComboBoxEx) ComponentCount() int32 {
@@ -1167,6 +1179,54 @@ func (c *TComboBoxEx) SetTag(value int) {
     ComboBoxEx_SetTag(c.instance, value)
 }
 
+func (c *TComboBoxEx) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ComboBoxEx_GetAnchorSideLeft(c.instance))
+}
+
+func (c *TComboBoxEx) SetAnchorSideLeft(value *TAnchorSide) {
+    ComboBoxEx_SetAnchorSideLeft(c.instance, CheckPtr(value))
+}
+
+func (c *TComboBoxEx) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ComboBoxEx_GetAnchorSideTop(c.instance))
+}
+
+func (c *TComboBoxEx) SetAnchorSideTop(value *TAnchorSide) {
+    ComboBoxEx_SetAnchorSideTop(c.instance, CheckPtr(value))
+}
+
+func (c *TComboBoxEx) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ComboBoxEx_GetAnchorSideRight(c.instance))
+}
+
+func (c *TComboBoxEx) SetAnchorSideRight(value *TAnchorSide) {
+    ComboBoxEx_SetAnchorSideRight(c.instance, CheckPtr(value))
+}
+
+func (c *TComboBoxEx) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ComboBoxEx_GetAnchorSideBottom(c.instance))
+}
+
+func (c *TComboBoxEx) SetAnchorSideBottom(value *TAnchorSide) {
+    ComboBoxEx_SetAnchorSideBottom(c.instance, CheckPtr(value))
+}
+
+func (c *TComboBoxEx) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ComboBoxEx_GetChildSizing(c.instance))
+}
+
+func (c *TComboBoxEx) SetChildSizing(value *TControlChildSizing) {
+    ComboBoxEx_SetChildSizing(c.instance, CheckPtr(value))
+}
+
+func (c *TComboBoxEx) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ComboBoxEx_GetBorderSpacing(c.instance))
+}
+
+func (c *TComboBoxEx) SetBorderSpacing(value *TControlBorderSpacing) {
+    ComboBoxEx_SetBorderSpacing(c.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TComboBoxEx) DockClients(Index int32) *TControl {
@@ -1183,5 +1243,9 @@ func (c *TComboBoxEx) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (c *TComboBoxEx) Components(AIndex int32) *TComponent {
     return AsComponent(ComboBoxEx_GetComponents(c.instance, AIndex))
+}
+
+func (c *TComboBoxEx) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ComboBoxEx_GetAnchorSide(c.instance, AKind))
 }
 

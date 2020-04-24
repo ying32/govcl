@@ -13,7 +13,7 @@ package vcl
 
 import (
     "time"
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -370,6 +370,30 @@ func (m *TMonthCalendar) GetHashCode() int32 {
 // EN: Text information.
 func (m *TMonthCalendar) ToString() string {
     return MonthCalendar_ToString(m.instance)
+}
+
+func (m *TMonthCalendar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MonthCalendar_AnchorToNeighbour(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMonthCalendar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MonthCalendar_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMonthCalendar) AnchorHorizontalCenterTo(ASibling IControl) {
+    MonthCalendar_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMonthCalendar) AnchorVerticalCenterTo(ASibling IControl) {
+    MonthCalendar_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMonthCalendar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    MonthCalendar_AnchorAsAlign(m.instance, ATheAlign , ASpace)
+}
+
+func (m *TMonthCalendar) AnchorClient(ASpace int32) {
+    MonthCalendar_AnchorClient(m.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -910,18 +934,6 @@ func (m *TMonthCalendar) SetHint(value string) {
     MonthCalendar_SetHint(m.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (m *TMonthCalendar) Margins() *TMargins {
-    return AsMargins(MonthCalendar_GetMargins(m.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (m *TMonthCalendar) SetMargins(value *TMargins) {
-    MonthCalendar_SetMargins(m.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (m *TMonthCalendar) ComponentCount() int32 {
@@ -970,6 +982,54 @@ func (m *TMonthCalendar) SetTag(value int) {
     MonthCalendar_SetTag(m.instance, value)
 }
 
+func (m *TMonthCalendar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideLeft(m.instance))
+}
+
+func (m *TMonthCalendar) SetAnchorSideLeft(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideLeft(m.instance, CheckPtr(value))
+}
+
+func (m *TMonthCalendar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideTop(m.instance))
+}
+
+func (m *TMonthCalendar) SetAnchorSideTop(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideTop(m.instance, CheckPtr(value))
+}
+
+func (m *TMonthCalendar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideRight(m.instance))
+}
+
+func (m *TMonthCalendar) SetAnchorSideRight(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideRight(m.instance, CheckPtr(value))
+}
+
+func (m *TMonthCalendar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideBottom(m.instance))
+}
+
+func (m *TMonthCalendar) SetAnchorSideBottom(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideBottom(m.instance, CheckPtr(value))
+}
+
+func (m *TMonthCalendar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(MonthCalendar_GetChildSizing(m.instance))
+}
+
+func (m *TMonthCalendar) SetChildSizing(value *TControlChildSizing) {
+    MonthCalendar_SetChildSizing(m.instance, CheckPtr(value))
+}
+
+func (m *TMonthCalendar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(MonthCalendar_GetBorderSpacing(m.instance))
+}
+
+func (m *TMonthCalendar) SetBorderSpacing(value *TControlBorderSpacing) {
+    MonthCalendar_SetBorderSpacing(m.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMonthCalendar) DockClients(Index int32) *TControl {
@@ -986,5 +1046,9 @@ func (m *TMonthCalendar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (m *TMonthCalendar) Components(AIndex int32) *TComponent {
     return AsComponent(MonthCalendar_GetComponents(m.instance, AIndex))
+}
+
+func (m *TMonthCalendar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSide(m.instance, AKind))
 }
 

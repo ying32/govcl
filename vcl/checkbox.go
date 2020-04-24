@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (c *TCheckBox) GetHashCode() int32 {
 // EN: Text information.
 func (c *TCheckBox) ToString() string {
     return CheckBox_ToString(c.instance)
+}
+
+func (c *TCheckBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    CheckBox_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TCheckBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    CheckBox_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TCheckBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    CheckBox_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TCheckBox) AnchorVerticalCenterTo(ASibling IControl) {
+    CheckBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TCheckBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    CheckBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+}
+
+func (c *TCheckBox) AnchorClient(ASpace int32) {
+    CheckBox_AnchorClient(c.instance, ASpace)
 }
 
 func (c *TCheckBox) Action() *TAction {
@@ -973,18 +997,6 @@ func (c *TCheckBox) SetHint(value string) {
     CheckBox_SetHint(c.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (c *TCheckBox) Margins() *TMargins {
-    return AsMargins(CheckBox_GetMargins(c.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (c *TCheckBox) SetMargins(value *TMargins) {
-    CheckBox_SetMargins(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TCheckBox) ComponentCount() int32 {
@@ -1033,6 +1045,54 @@ func (c *TCheckBox) SetTag(value int) {
     CheckBox_SetTag(c.instance, value)
 }
 
+func (c *TCheckBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(CheckBox_GetAnchorSideLeft(c.instance))
+}
+
+func (c *TCheckBox) SetAnchorSideLeft(value *TAnchorSide) {
+    CheckBox_SetAnchorSideLeft(c.instance, CheckPtr(value))
+}
+
+func (c *TCheckBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(CheckBox_GetAnchorSideTop(c.instance))
+}
+
+func (c *TCheckBox) SetAnchorSideTop(value *TAnchorSide) {
+    CheckBox_SetAnchorSideTop(c.instance, CheckPtr(value))
+}
+
+func (c *TCheckBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(CheckBox_GetAnchorSideRight(c.instance))
+}
+
+func (c *TCheckBox) SetAnchorSideRight(value *TAnchorSide) {
+    CheckBox_SetAnchorSideRight(c.instance, CheckPtr(value))
+}
+
+func (c *TCheckBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(CheckBox_GetAnchorSideBottom(c.instance))
+}
+
+func (c *TCheckBox) SetAnchorSideBottom(value *TAnchorSide) {
+    CheckBox_SetAnchorSideBottom(c.instance, CheckPtr(value))
+}
+
+func (c *TCheckBox) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(CheckBox_GetChildSizing(c.instance))
+}
+
+func (c *TCheckBox) SetChildSizing(value *TControlChildSizing) {
+    CheckBox_SetChildSizing(c.instance, CheckPtr(value))
+}
+
+func (c *TCheckBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(CheckBox_GetBorderSpacing(c.instance))
+}
+
+func (c *TCheckBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    CheckBox_SetBorderSpacing(c.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TCheckBox) DockClients(Index int32) *TControl {
@@ -1049,5 +1109,9 @@ func (c *TCheckBox) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (c *TCheckBox) Components(AIndex int32) *TComponent {
     return AsComponent(CheckBox_GetComponents(c.instance, AIndex))
+}
+
+func (c *TCheckBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(CheckBox_GetAnchorSide(c.instance, AKind))
 }
 

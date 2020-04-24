@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -381,6 +381,30 @@ func (s *TStringGrid) GetHashCode() int32 {
 // EN: Text information.
 func (s *TStringGrid) ToString() string {
     return StringGrid_ToString(s.instance)
+}
+
+func (s *TStringGrid) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StringGrid_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TStringGrid) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StringGrid_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TStringGrid) AnchorHorizontalCenterTo(ASibling IControl) {
+    StringGrid_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TStringGrid) AnchorVerticalCenterTo(ASibling IControl) {
+    StringGrid_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TStringGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    StringGrid_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TStringGrid) AnchorClient(ASpace int32) {
+    StringGrid_AnchorClient(s.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1165,18 +1189,6 @@ func (s *TStringGrid) SetHint(value string) {
     StringGrid_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TStringGrid) Margins() *TMargins {
-    return AsMargins(StringGrid_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TStringGrid) SetMargins(value *TMargins) {
-    StringGrid_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TStringGrid) ComponentCount() int32 {
@@ -1223,6 +1235,54 @@ func (s *TStringGrid) Tag() int {
 // EN: Set the control tag.
 func (s *TStringGrid) SetTag(value int) {
     StringGrid_SetTag(s.instance, value)
+}
+
+func (s *TStringGrid) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(StringGrid_GetAnchorSideLeft(s.instance))
+}
+
+func (s *TStringGrid) SetAnchorSideLeft(value *TAnchorSide) {
+    StringGrid_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(StringGrid_GetAnchorSideTop(s.instance))
+}
+
+func (s *TStringGrid) SetAnchorSideTop(value *TAnchorSide) {
+    StringGrid_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(StringGrid_GetAnchorSideRight(s.instance))
+}
+
+func (s *TStringGrid) SetAnchorSideRight(value *TAnchorSide) {
+    StringGrid_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(StringGrid_GetAnchorSideBottom(s.instance))
+}
+
+func (s *TStringGrid) SetAnchorSideBottom(value *TAnchorSide) {
+    StringGrid_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(StringGrid_GetChildSizing(s.instance))
+}
+
+func (s *TStringGrid) SetChildSizing(value *TControlChildSizing) {
+    StringGrid_SetChildSizing(s.instance, CheckPtr(value))
+}
+
+func (s *TStringGrid) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(StringGrid_GetBorderSpacing(s.instance))
+}
+
+func (s *TStringGrid) SetBorderSpacing(value *TControlBorderSpacing) {
+    StringGrid_SetBorderSpacing(s.instance, CheckPtr(value))
 }
 
 func (s *TStringGrid) Cells(ACol int32, ARow int32) string {
@@ -1289,5 +1349,9 @@ func (s *TStringGrid) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (s *TStringGrid) Components(AIndex int32) *TComponent {
     return AsComponent(StringGrid_GetComponents(s.instance, AIndex))
+}
+
+func (s *TStringGrid) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(StringGrid_GetAnchorSide(s.instance, AKind))
 }
 

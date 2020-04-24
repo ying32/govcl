@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (t *TTabSheet) GetHashCode() int32 {
 // EN: Text information.
 func (t *TTabSheet) ToString() string {
     return TabSheet_ToString(t.instance)
+}
+
+func (t *TTabSheet) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TabSheet_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTabSheet) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TabSheet_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTabSheet) AnchorHorizontalCenterTo(ASibling IControl) {
+    TabSheet_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTabSheet) AnchorVerticalCenterTo(ASibling IControl) {
+    TabSheet_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTabSheet) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    TabSheet_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TTabSheet) AnchorClient(ASpace int32) {
+    TabSheet_AnchorClient(t.instance, ASpace)
 }
 
 func (t *TTabSheet) PageControl() *TPageControl {
@@ -921,18 +945,6 @@ func (t *TTabSheet) SetHint(value string) {
     TabSheet_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TTabSheet) Margins() *TMargins {
-    return AsMargins(TabSheet_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TTabSheet) SetMargins(value *TMargins) {
-    TabSheet_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TTabSheet) ComponentCount() int32 {
@@ -981,6 +993,54 @@ func (t *TTabSheet) SetTag(value int) {
     TabSheet_SetTag(t.instance, value)
 }
 
+func (t *TTabSheet) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(TabSheet_GetAnchorSideLeft(t.instance))
+}
+
+func (t *TTabSheet) SetAnchorSideLeft(value *TAnchorSide) {
+    TabSheet_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+func (t *TTabSheet) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(TabSheet_GetAnchorSideTop(t.instance))
+}
+
+func (t *TTabSheet) SetAnchorSideTop(value *TAnchorSide) {
+    TabSheet_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+func (t *TTabSheet) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(TabSheet_GetAnchorSideRight(t.instance))
+}
+
+func (t *TTabSheet) SetAnchorSideRight(value *TAnchorSide) {
+    TabSheet_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+func (t *TTabSheet) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(TabSheet_GetAnchorSideBottom(t.instance))
+}
+
+func (t *TTabSheet) SetAnchorSideBottom(value *TAnchorSide) {
+    TabSheet_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TTabSheet) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(TabSheet_GetChildSizing(t.instance))
+}
+
+func (t *TTabSheet) SetChildSizing(value *TControlChildSizing) {
+    TabSheet_SetChildSizing(t.instance, CheckPtr(value))
+}
+
+func (t *TTabSheet) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(TabSheet_GetBorderSpacing(t.instance))
+}
+
+func (t *TTabSheet) SetBorderSpacing(value *TControlBorderSpacing) {
+    TabSheet_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (t *TTabSheet) DockClients(Index int32) *TControl {
@@ -997,5 +1057,9 @@ func (t *TTabSheet) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (t *TTabSheet) Components(AIndex int32) *TComponent {
     return AsComponent(TabSheet_GetComponents(t.instance, AIndex))
+}
+
+func (t *TTabSheet) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(TabSheet_GetAnchorSide(t.instance, AKind))
 }
 

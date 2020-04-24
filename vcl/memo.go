@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -411,6 +411,30 @@ func (m *TMemo) GetHashCode() int32 {
 // EN: Text information.
 func (m *TMemo) ToString() string {
     return Memo_ToString(m.instance)
+}
+
+func (m *TMemo) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Memo_AnchorToNeighbour(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMemo) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Memo_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMemo) AnchorHorizontalCenterTo(ASibling IControl) {
+    Memo_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMemo) AnchorVerticalCenterTo(ASibling IControl) {
+    Memo_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMemo) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Memo_AnchorAsAlign(m.instance, ATheAlign , ASpace)
+}
+
+func (m *TMemo) AnchorClient(ASpace int32) {
+    Memo_AnchorClient(m.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1179,18 +1203,6 @@ func (m *TMemo) SetHint(value string) {
     Memo_SetHint(m.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (m *TMemo) Margins() *TMargins {
-    return AsMargins(Memo_GetMargins(m.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (m *TMemo) SetMargins(value *TMargins) {
-    Memo_SetMargins(m.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (m *TMemo) ComponentCount() int32 {
@@ -1239,6 +1251,54 @@ func (m *TMemo) SetTag(value int) {
     Memo_SetTag(m.instance, value)
 }
 
+func (m *TMemo) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Memo_GetAnchorSideLeft(m.instance))
+}
+
+func (m *TMemo) SetAnchorSideLeft(value *TAnchorSide) {
+    Memo_SetAnchorSideLeft(m.instance, CheckPtr(value))
+}
+
+func (m *TMemo) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Memo_GetAnchorSideTop(m.instance))
+}
+
+func (m *TMemo) SetAnchorSideTop(value *TAnchorSide) {
+    Memo_SetAnchorSideTop(m.instance, CheckPtr(value))
+}
+
+func (m *TMemo) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Memo_GetAnchorSideRight(m.instance))
+}
+
+func (m *TMemo) SetAnchorSideRight(value *TAnchorSide) {
+    Memo_SetAnchorSideRight(m.instance, CheckPtr(value))
+}
+
+func (m *TMemo) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Memo_GetAnchorSideBottom(m.instance))
+}
+
+func (m *TMemo) SetAnchorSideBottom(value *TAnchorSide) {
+    Memo_SetAnchorSideBottom(m.instance, CheckPtr(value))
+}
+
+func (m *TMemo) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(Memo_GetChildSizing(m.instance))
+}
+
+func (m *TMemo) SetChildSizing(value *TControlChildSizing) {
+    Memo_SetChildSizing(m.instance, CheckPtr(value))
+}
+
+func (m *TMemo) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Memo_GetBorderSpacing(m.instance))
+}
+
+func (m *TMemo) SetBorderSpacing(value *TControlBorderSpacing) {
+    Memo_SetBorderSpacing(m.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMemo) DockClients(Index int32) *TControl {
@@ -1255,5 +1315,9 @@ func (m *TMemo) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (m *TMemo) Components(AIndex int32) *TComponent {
     return AsComponent(Memo_GetComponents(m.instance, AIndex))
+}
+
+func (m *TMemo) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Memo_GetAnchorSide(m.instance, AKind))
 }
 

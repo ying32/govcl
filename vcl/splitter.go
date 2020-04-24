@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -281,6 +281,30 @@ func (s *TSplitter) GetHashCode() int32 {
 // EN: Text information.
 func (s *TSplitter) ToString() string {
     return Splitter_ToString(s.instance)
+}
+
+func (s *TSplitter) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Splitter_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TSplitter) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Splitter_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TSplitter) AnchorHorizontalCenterTo(ASibling IControl) {
+    Splitter_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TSplitter) AnchorVerticalCenterTo(ASibling IControl) {
+    Splitter_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TSplitter) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Splitter_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TSplitter) AnchorClient(ASpace int32) {
+    Splitter_AnchorClient(s.instance, ASpace)
 }
 
 func (s *TSplitter) ResizeAnchor() TAnchorKind {
@@ -565,18 +589,6 @@ func (s *TSplitter) SetHint(value string) {
     Splitter_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TSplitter) Margins() *TMargins {
-    return AsMargins(Splitter_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TSplitter) SetMargins(value *TMargins) {
-    Splitter_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TSplitter) ComponentCount() int32 {
@@ -625,9 +637,53 @@ func (s *TSplitter) SetTag(value int) {
     Splitter_SetTag(s.instance, value)
 }
 
+func (s *TSplitter) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Splitter_GetAnchorSideLeft(s.instance))
+}
+
+func (s *TSplitter) SetAnchorSideLeft(value *TAnchorSide) {
+    Splitter_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+func (s *TSplitter) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Splitter_GetAnchorSideTop(s.instance))
+}
+
+func (s *TSplitter) SetAnchorSideTop(value *TAnchorSide) {
+    Splitter_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+func (s *TSplitter) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Splitter_GetAnchorSideRight(s.instance))
+}
+
+func (s *TSplitter) SetAnchorSideRight(value *TAnchorSide) {
+    Splitter_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+func (s *TSplitter) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Splitter_GetAnchorSideBottom(s.instance))
+}
+
+func (s *TSplitter) SetAnchorSideBottom(value *TAnchorSide) {
+    Splitter_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TSplitter) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Splitter_GetBorderSpacing(s.instance))
+}
+
+func (s *TSplitter) SetBorderSpacing(value *TControlBorderSpacing) {
+    Splitter_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TSplitter) Components(AIndex int32) *TComponent {
     return AsComponent(Splitter_GetComponents(s.instance, AIndex))
+}
+
+func (s *TSplitter) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Splitter_GetAnchorSide(s.instance, AKind))
 }
 

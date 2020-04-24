@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -373,6 +373,30 @@ func (t *TTrackBar) GetHashCode() int32 {
 // EN: Text information.
 func (t *TTrackBar) ToString() string {
     return TrackBar_ToString(t.instance)
+}
+
+func (t *TTrackBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TrackBar_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTrackBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TrackBar_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTrackBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    TrackBar_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTrackBar) AnchorVerticalCenterTo(ASibling IControl) {
+    TrackBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTrackBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    TrackBar_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TTrackBar) AnchorClient(ASpace int32) {
+    TrackBar_AnchorClient(t.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -947,18 +971,6 @@ func (t *TTrackBar) SetHint(value string) {
     TrackBar_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TTrackBar) Margins() *TMargins {
-    return AsMargins(TrackBar_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TTrackBar) SetMargins(value *TMargins) {
-    TrackBar_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TTrackBar) ComponentCount() int32 {
@@ -1007,6 +1019,54 @@ func (t *TTrackBar) SetTag(value int) {
     TrackBar_SetTag(t.instance, value)
 }
 
+func (t *TTrackBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideLeft(t.instance))
+}
+
+func (t *TTrackBar) SetAnchorSideLeft(value *TAnchorSide) {
+    TrackBar_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+func (t *TTrackBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideTop(t.instance))
+}
+
+func (t *TTrackBar) SetAnchorSideTop(value *TAnchorSide) {
+    TrackBar_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+func (t *TTrackBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideRight(t.instance))
+}
+
+func (t *TTrackBar) SetAnchorSideRight(value *TAnchorSide) {
+    TrackBar_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+func (t *TTrackBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideBottom(t.instance))
+}
+
+func (t *TTrackBar) SetAnchorSideBottom(value *TAnchorSide) {
+    TrackBar_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TTrackBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(TrackBar_GetChildSizing(t.instance))
+}
+
+func (t *TTrackBar) SetChildSizing(value *TControlChildSizing) {
+    TrackBar_SetChildSizing(t.instance, CheckPtr(value))
+}
+
+func (t *TTrackBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(TrackBar_GetBorderSpacing(t.instance))
+}
+
+func (t *TTrackBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    TrackBar_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (t *TTrackBar) DockClients(Index int32) *TControl {
@@ -1023,5 +1083,9 @@ func (t *TTrackBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (t *TTrackBar) Components(AIndex int32) *TComponent {
     return AsComponent(TrackBar_GetComponents(t.instance, AIndex))
+}
+
+func (t *TTrackBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSide(t.instance, AKind))
 }
 

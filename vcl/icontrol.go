@@ -85,8 +85,8 @@ type IControl interface {
 	//AlignWithMargins() bool
 	//SetAlignWithMargins(bool)
 
-	Margins() *TMargins
-	SetMargins(*TMargins)
+	//Margins() *TMargins
+	//SetMargins(*TMargins)
 
 	PopupMenu() *TPopupMenu
 	SetPopupMenu(IComponent)

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -281,6 +281,30 @@ func (l *TLabel) GetHashCode() int32 {
 // EN: Text information.
 func (l *TLabel) ToString() string {
     return Label_ToString(l.instance)
+}
+
+func (l *TLabel) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Label_AnchorToNeighbour(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TLabel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Label_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TLabel) AnchorHorizontalCenterTo(ASibling IControl) {
+    Label_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TLabel) AnchorVerticalCenterTo(ASibling IControl) {
+    Label_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TLabel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Label_AnchorAsAlign(l.instance, ATheAlign , ASpace)
+}
+
+func (l *TLabel) AnchorClient(ASpace int32) {
+    Label_AnchorClient(l.instance, ASpace)
 }
 
 func (l *TLabel) OptimalFill() bool {
@@ -781,18 +805,6 @@ func (l *TLabel) SetHint(value string) {
     Label_SetHint(l.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (l *TLabel) Margins() *TMargins {
-    return AsMargins(Label_GetMargins(l.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (l *TLabel) SetMargins(value *TMargins) {
-    Label_SetMargins(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TLabel) ComponentCount() int32 {
@@ -841,9 +853,53 @@ func (l *TLabel) SetTag(value int) {
     Label_SetTag(l.instance, value)
 }
 
+func (l *TLabel) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Label_GetAnchorSideLeft(l.instance))
+}
+
+func (l *TLabel) SetAnchorSideLeft(value *TAnchorSide) {
+    Label_SetAnchorSideLeft(l.instance, CheckPtr(value))
+}
+
+func (l *TLabel) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Label_GetAnchorSideTop(l.instance))
+}
+
+func (l *TLabel) SetAnchorSideTop(value *TAnchorSide) {
+    Label_SetAnchorSideTop(l.instance, CheckPtr(value))
+}
+
+func (l *TLabel) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Label_GetAnchorSideRight(l.instance))
+}
+
+func (l *TLabel) SetAnchorSideRight(value *TAnchorSide) {
+    Label_SetAnchorSideRight(l.instance, CheckPtr(value))
+}
+
+func (l *TLabel) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Label_GetAnchorSideBottom(l.instance))
+}
+
+func (l *TLabel) SetAnchorSideBottom(value *TAnchorSide) {
+    Label_SetAnchorSideBottom(l.instance, CheckPtr(value))
+}
+
+func (l *TLabel) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Label_GetBorderSpacing(l.instance))
+}
+
+func (l *TLabel) SetBorderSpacing(value *TControlBorderSpacing) {
+    Label_SetBorderSpacing(l.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (l *TLabel) Components(AIndex int32) *TComponent {
     return AsComponent(Label_GetComponents(l.instance, AIndex))
+}
+
+func (l *TLabel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Label_GetAnchorSide(l.instance, AKind))
 }
 

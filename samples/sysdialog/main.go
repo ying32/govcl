@@ -99,6 +99,17 @@ func main() {
 		}
 	})
 
+	dlSelDirdlg := vcl.NewSelectDirectoryDialog(mainForm)
+	btn = vcl.NewButton(mainForm)
+	btn.SetAlign(types.AlTop)
+	btn.SetParent(mainForm)
+	btn.SetCaption("Select Directory Dialog")
+	btn.SetOnClick(func(vcl.IObject) {
+		if dlSelDirdlg.Execute() {
+			fmt.Println("Name: ", dlSelDirdlg.FileName())
+		}
+	})
+
 	btn = vcl.NewButton(mainForm)
 	btn.SetAlign(types.AlTop)
 	btn.SetParent(mainForm)

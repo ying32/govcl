@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -369,6 +369,30 @@ func (t *TToolBar) GetHashCode() int32 {
 // EN: Text information.
 func (t *TToolBar) ToString() string {
     return ToolBar_ToString(t.instance)
+}
+
+func (t *TToolBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ToolBar_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TToolBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ToolBar_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TToolBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    ToolBar_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TToolBar) AnchorVerticalCenterTo(ASibling IControl) {
+    ToolBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TToolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ToolBar_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TToolBar) AnchorClient(ASpace int32) {
+    ToolBar_AnchorClient(t.instance, ASpace)
 }
 
 func (t *TToolBar) ButtonCount() int32 {
@@ -1095,18 +1119,6 @@ func (t *TToolBar) SetHint(value string) {
     ToolBar_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TToolBar) Margins() *TMargins {
-    return AsMargins(ToolBar_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TToolBar) SetMargins(value *TMargins) {
-    ToolBar_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TToolBar) ComponentCount() int32 {
@@ -1155,6 +1167,54 @@ func (t *TToolBar) SetTag(value int) {
     ToolBar_SetTag(t.instance, value)
 }
 
+func (t *TToolBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideLeft(t.instance))
+}
+
+func (t *TToolBar) SetAnchorSideLeft(value *TAnchorSide) {
+    ToolBar_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+func (t *TToolBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideTop(t.instance))
+}
+
+func (t *TToolBar) SetAnchorSideTop(value *TAnchorSide) {
+    ToolBar_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+func (t *TToolBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideRight(t.instance))
+}
+
+func (t *TToolBar) SetAnchorSideRight(value *TAnchorSide) {
+    ToolBar_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+func (t *TToolBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideBottom(t.instance))
+}
+
+func (t *TToolBar) SetAnchorSideBottom(value *TAnchorSide) {
+    ToolBar_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TToolBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ToolBar_GetChildSizing(t.instance))
+}
+
+func (t *TToolBar) SetChildSizing(value *TControlChildSizing) {
+    ToolBar_SetChildSizing(t.instance, CheckPtr(value))
+}
+
+func (t *TToolBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ToolBar_GetBorderSpacing(t.instance))
+}
+
+func (t *TToolBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    ToolBar_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 func (t *TToolBar) Buttons(Index int32) *TToolButton {
     return AsToolButton(ToolBar_GetButtons(t.instance, Index))
 }
@@ -1175,5 +1235,9 @@ func (t *TToolBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (t *TToolBar) Components(AIndex int32) *TComponent {
     return AsComponent(ToolBar_GetComponents(t.instance, AIndex))
+}
+
+func (t *TToolBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSide(t.instance, AKind))
 }
 

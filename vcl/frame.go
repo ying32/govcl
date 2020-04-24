@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -373,6 +373,30 @@ func (f *TFrame) GetHashCode() int32 {
 // EN: Text information.
 func (f *TFrame) ToString() string {
     return Frame_ToString(f.instance)
+}
+
+func (f *TFrame) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Frame_AnchorToNeighbour(f.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (f *TFrame) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Frame_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (f *TFrame) AnchorHorizontalCenterTo(ASibling IControl) {
+    Frame_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
+}
+
+func (f *TFrame) AnchorVerticalCenterTo(ASibling IControl) {
+    Frame_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
+}
+
+func (f *TFrame) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Frame_AnchorAsAlign(f.instance, ATheAlign , ASpace)
+}
+
+func (f *TFrame) AnchorClient(ASpace int32) {
+    Frame_AnchorClient(f.instance, ASpace)
 }
 
 // CN: 获取控件自动调整。
@@ -1003,18 +1027,6 @@ func (f *TFrame) SetHint(value string) {
     Frame_SetHint(f.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (f *TFrame) Margins() *TMargins {
-    return AsMargins(Frame_GetMargins(f.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (f *TFrame) SetMargins(value *TMargins) {
-    Frame_SetMargins(f.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (f *TFrame) ComponentCount() int32 {
@@ -1063,6 +1075,54 @@ func (f *TFrame) SetTag(value int) {
     Frame_SetTag(f.instance, value)
 }
 
+func (f *TFrame) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Frame_GetAnchorSideLeft(f.instance))
+}
+
+func (f *TFrame) SetAnchorSideLeft(value *TAnchorSide) {
+    Frame_SetAnchorSideLeft(f.instance, CheckPtr(value))
+}
+
+func (f *TFrame) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Frame_GetAnchorSideTop(f.instance))
+}
+
+func (f *TFrame) SetAnchorSideTop(value *TAnchorSide) {
+    Frame_SetAnchorSideTop(f.instance, CheckPtr(value))
+}
+
+func (f *TFrame) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Frame_GetAnchorSideRight(f.instance))
+}
+
+func (f *TFrame) SetAnchorSideRight(value *TAnchorSide) {
+    Frame_SetAnchorSideRight(f.instance, CheckPtr(value))
+}
+
+func (f *TFrame) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Frame_GetAnchorSideBottom(f.instance))
+}
+
+func (f *TFrame) SetAnchorSideBottom(value *TAnchorSide) {
+    Frame_SetAnchorSideBottom(f.instance, CheckPtr(value))
+}
+
+func (f *TFrame) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(Frame_GetChildSizing(f.instance))
+}
+
+func (f *TFrame) SetChildSizing(value *TControlChildSizing) {
+    Frame_SetChildSizing(f.instance, CheckPtr(value))
+}
+
+func (f *TFrame) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Frame_GetBorderSpacing(f.instance))
+}
+
+func (f *TFrame) SetBorderSpacing(value *TControlBorderSpacing) {
+    Frame_SetBorderSpacing(f.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (f *TFrame) DockClients(Index int32) *TControl {
@@ -1079,5 +1139,9 @@ func (f *TFrame) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (f *TFrame) Components(AIndex int32) *TComponent {
     return AsComponent(Frame_GetComponents(f.instance, AIndex))
+}
+
+func (f *TFrame) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Frame_GetAnchorSide(f.instance, AKind))
 }
 

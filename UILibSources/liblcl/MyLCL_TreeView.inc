@@ -287,6 +287,36 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+procedure TreeView_AnchorToNeighbour(AObj: TTreeView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure TreeView_AnchorParallel(AObj: TTreeView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure TreeView_AnchorHorizontalCenterTo(AObj: TTreeView; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure TreeView_AnchorVerticalCenterTo(AObj: TTreeView; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure TreeView_AnchorAsAlign(AObj: TTreeView; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure TreeView_AnchorClient(AObj: TTreeView; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
 function TreeView_GetDefaultItemHeight(AObj: TTreeView): Integer; extdecl;
 begin
   Result :=  AObj.DefaultItemHeight;
@@ -1286,16 +1316,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function TreeView_GetMargins(AObj: TTreeView): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure TreeView_SetMargins(AObj: TTreeView; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function TreeView_GetComponentCount(AObj: TTreeView): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1336,6 +1356,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function TreeView_GetAnchorSideLeft(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure TreeView_SetAnchorSideLeft(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function TreeView_GetAnchorSideTop(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure TreeView_SetAnchorSideTop(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function TreeView_GetAnchorSideRight(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure TreeView_SetAnchorSideRight(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function TreeView_GetAnchorSideBottom(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure TreeView_SetAnchorSideBottom(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function TreeView_GetChildSizing(AObj: TTreeView): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure TreeView_SetChildSizing(AObj: TTreeView; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function TreeView_GetBorderSpacing(AObj: TTreeView): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure TreeView_SetBorderSpacing(AObj: TTreeView; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TreeView_GetSelections(AObj: TTreeView; Index: Integer): TTreeNode; extdecl;
 begin
   Result :=  AObj.Selections[Index];
@@ -1354,6 +1434,11 @@ end;
 function TreeView_GetComponents(AObj: TTreeView; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function TreeView_GetAnchorSide(AObj: TTreeView; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function TreeView_StaticClassType: TClass; extdecl;
@@ -1418,6 +1503,12 @@ exports
   TreeView_Equals,
   TreeView_GetHashCode,
   TreeView_ToString,
+  TreeView_AnchorToNeighbour,
+  TreeView_AnchorParallel,
+  TreeView_AnchorHorizontalCenterTo,
+  TreeView_AnchorVerticalCenterTo,
+  TreeView_AnchorAsAlign,
+  TreeView_AnchorClient,
   TreeView_GetDefaultItemHeight,
   TreeView_SetDefaultItemHeight,
   TreeView_GetExpandSignColor,
@@ -1605,8 +1696,6 @@ exports
   TreeView_SetCursor,
   TreeView_GetHint,
   TreeView_SetHint,
-  TreeView_GetMargins,
-  TreeView_SetMargins,
   TreeView_GetComponentCount,
   TreeView_GetComponentIndex,
   TreeView_SetComponentIndex,
@@ -1615,9 +1704,22 @@ exports
   TreeView_SetName,
   TreeView_GetTag,
   TreeView_SetTag,
+  TreeView_GetAnchorSideLeft,
+  TreeView_SetAnchorSideLeft,
+  TreeView_GetAnchorSideTop,
+  TreeView_SetAnchorSideTop,
+  TreeView_GetAnchorSideRight,
+  TreeView_SetAnchorSideRight,
+  TreeView_GetAnchorSideBottom,
+  TreeView_SetAnchorSideBottom,
+  TreeView_GetChildSizing,
+  TreeView_SetChildSizing,
+  TreeView_GetBorderSpacing,
+  TreeView_SetBorderSpacing,
   TreeView_GetSelections,
   TreeView_GetDockClients,
   TreeView_GetControls,
   TreeView_GetComponents,
+  TreeView_GetAnchorSide,
   TreeView_StaticClassType;
 

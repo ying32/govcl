@@ -470,5 +470,9 @@ begin
 end;
 
 
-
+//exports
+//  ResFormLoadFromStream,
+//  ResFormLoadFromFile,
+//  ResFormLoadFromResourceName;
+//
 end.
