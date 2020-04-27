@@ -3,13 +3,15 @@
 
 ----
 
-**GoVCL: 中文全称：`Go语言可视化组件库`；英文全称：`Go Language Visual Component Library`**    
+### GoVCL
+
+跨平台的Golang GUI库，底层绑定自Lazarus LCL。  
+
+**中文全称：`Go语言可视化组件库`；英文全称：`Go Language Visual Component Library`**    
 
 **当前版本已不再支持`Delphi/VCL`了。最后一个支持vcl版本的分支：[last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/)。**   
 
-### 跨平台的Golang GUI库，底层绑定自Lazarus LCL  
-
-> 从1.2.0版本开始govcl将最低要求go1.9。  
+*从1.2.0版本开始govcl将最低要求go1.9。*    
 
 [截图查看](https://github.com/ying32/govcl/tree/master/Screenshot) | 
 [中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 

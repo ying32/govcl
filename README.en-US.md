@@ -3,13 +3,15 @@
 
 ----
 
-**GoVCL: Full name: `Go Language Visual Component Library`**    
+### GoVCL
 
-**The current version no longer supports `Delphi/VCL`. The last branch that supports the vcl version: [last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/).**  
+Cross-platform Golang GUI library, Binding with Lazarus LCL.  
 
-## Cross-platform Golang GUI library. Use Lazarus LCL for binding.
+**Full name: `Go Language Visual Component Library`**    
 
-> The govcl version >=1.2.0 must require the go version >=1.9.0.  
+**The current version no longer supports `Delphi/VCL`. The last branch that supports the vcl version: [last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/).**   
+
+*The govcl version >=1.2.0 must require the go version >=1.9.0.*    
 
 [Screenshots](https://github.com/ying32/govcl/tree/master/Screenshot) | 
 [What's-new(Chinese)](https://z-kit.cc/changelog.html) | 
