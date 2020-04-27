@@ -175,21 +175,23 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 
 #### 步骤三：复制对应的二进制    
 
-* Windows: 根据编译的二进制是32还是64位的，复制对应的`liblcl.dll`到当前exe目录或系统环境路径下。 
+* Windows: 根据编译的二进制是32还是64位的，复制对应的`liblcl.dll`到当前可执行文件目录或系统环境路径下。 
   * Go环境变量： `GOARCH = amd64 386` `GOOS = windows` `CGO_ENABLED=0`   
 
-* Linux: 复制`liblcl.so`可执行文件目录下(也可复制liblcl.so到`/usr/lib/`(32bit liblcl)或者`/usr/lib/x86_64-linux-gnu/`(64bit liblcl)目录中，作为公共库使用)。  
+* Linux: 复制`liblcl.so`当前可执行文件目录下(也可复制liblcl.so到`/usr/lib/`(32bit liblcl)或者`/usr/lib/x86_64-linux-gnu/`(64bit liblcl)目录中，作为公共库使用)。  
   * Go环境变量： `GOARCH = amd64` `GOOS = linux` `CGO_ENABLED=1`
 
-* MacOS: 复制`liblcl.dylib`可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420)   
+* MacOS: 复制`liblcl.dylib`当前可执行文件目录下（MacOS下注意：需要自行创建info.plist文件），或者参考：[MacOS上应用打包](https://gitee.com/ying32/govcl/wikis/pages?sort_id=410056&doc_id=102420)   
   * Go环境变量： `GOARCH = amd64` `GOOS = darwin` `CGO_ENABLED=1`  
 
+
+注：这里的`当前可执行文件目录`指的是你当前编译的项目生成的可执行文件位置。
 
 ----
 
 ### 注意:  
 
-> 特别注意：所有UI组件都是非线程/协程安全的，当在goroutine中使用时，请使用`vcl.ThreadSync`来同步更新到UI上。  
+> 特别注意：所有UI组件都是非线程/协程安全的，当在goroutine中使用时，请使用[vcl.ThreadSync](https://gitee.com/ying32/govcl/wikis/pages?sort_id=976890&doc_id=102420)来同步更新到UI上。  
 
 
 ### API文档
