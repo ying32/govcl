@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 
 	"github.com/ying32/govcl/vcl"
 )
@@ -25,13 +26,10 @@ func (f *TForm1) OnFormCreate(object vcl.IObject) {
 
 	f.TreeView1.Items().Clear()
 	f.TreeView1.Items().BeginUpdate()
-	node := f.TreeView1.Items().Add(nil, "Root")
 	f.paths = make(map[uintptr]string, 0)
-	f.paths[node.Instance()] = "."
-	f.walkFile(node, ".", false)
-	node.Expand(true)
-	f.TreeView1.Items().EndUpdate()
+	f.walkFile(nil, ".", true)
 
+	f.TreeView1.Items().EndUpdate()
 }
 
 func (f *TForm1) OnTreeView1Click(object vcl.IObject) {
@@ -41,10 +39,10 @@ func (f *TForm1) OnTreeView1Click(object vcl.IObject) {
 			_, err := os.Stat(path)
 			if err == nil {
 				if !os.IsNotExist(err) {
-					f.ListBox1.Clear()
-					f.ListBox1.Items().BeginUpdate()
-					f.walkFile(nil, path, true)
-					f.ListBox1.Items().EndUpdate()
+					f.ListView1.Clear()
+					f.ListView1.Items().BeginUpdate()
+					f.walkFile(nil, path, false)
+					f.ListView1.Items().EndUpdate()
 				}
 			}
 			fmt.Println(path)
@@ -54,7 +52,7 @@ func (f *TForm1) OnTreeView1Click(object vcl.IObject) {
 	}
 }
 
-func (f *TForm1) walkFile(node *vcl.TTreeNode, path string, isFile bool) {
+func (f *TForm1) walkFile(node *vcl.TTreeNode, path string, recurse bool) {
 	fd, err := os.Open(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -63,19 +61,45 @@ func (f *TForm1) walkFile(node *vcl.TTreeNode, path string, isFile bool) {
 		return
 	}
 	defer fd.Close()
+
+	// 添加当前目录
+	if recurse && (node == nil) {
+		subNode := f.TreeView1.Items().Add(nil, ".")
+		f.paths[subNode.Instance()] = path
+		subNode.SetSelectedIndex(1)
+		subNode.SetStateIndex(0)
+	}
+
 	for {
 		files, err := fd.Readdir(100)
 		for _, file := range files {
-			if !isFile {
+			if recurse {
 				if file.IsDir() {
 					curPath := path + string(os.PathSeparator) + file.Name()
-					subNode := f.TreeView1.Items().AddChild(node, file.Name())
+
+					var subNode *vcl.TTreeNode
+					if node == nil {
+						subNode = f.TreeView1.Items().Add(nil, file.Name())
+					} else {
+						subNode = f.TreeView1.Items().AddChild(node, file.Name())
+					}
+
+					//subNode.SetImageIndex(0)
+					subNode.SetSelectedIndex(1)
+					subNode.SetStateIndex(0)
+
 					//subNode.SetData(unsafe.Pointer(uintptr(index)))
 					f.paths[subNode.Instance()] = curPath
-					f.walkFile(subNode, curPath, isFile)
+					f.walkFile(subNode, curPath, recurse)
+					subNode.Expand(false)
+
 				}
 			} else {
-				f.ListBox1.Items().Add(file.Name())
+				item := f.ListView1.Items().Add()
+				item.SetCaption(file.Name())
+				item.SubItems().Add(fmt.Sprintf("%d byte", file.Size()))
+				item.SubItems().Add(filepath.Ext(file.Name()))
+				item.SetImageIndex(2)
 			}
 		}
 		if err == io.EOF {
