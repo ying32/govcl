@@ -631,7 +631,10 @@ end;
 // 在主线程中运行
 procedure DSynchronize(AUseMsg: LongBool); extdecl;
 begin
-  TThread.Synchronize(nil, TEventClass.ThreadProc);
+  if MainThreadId = TThread.CurrentThread.ThreadID then
+    TEventClass.ThreadProc()
+  else
+    TThread.Synchronize(nil, TEventClass.ThreadProc);
 end;
 
 procedure DSysOpen(FileName: PChar); extdecl;
@@ -996,7 +999,7 @@ begin
         else
           MessageDlg(E.Message,  mtError, [mbOK], 0);
       end else
-        DebugLn('Syscall' + ALen.ToString + ' Error: ' + E.Message);
+        Writeln('Syscall' + ALen.ToString + ' Error: ' + E.Message);
     end;
   end;
 end;
