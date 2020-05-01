@@ -27,7 +27,8 @@ func (f *TForm1) OnFormCreate(object vcl.IObject) {
 	f.TreeView1.Items().BeginUpdate()
 	node := f.TreeView1.Items().Add(nil, "Root")
 	f.paths = make(map[uintptr]string, 0)
-	f.walkFile(node, ".")
+	f.paths[node.Instance()] = "."
+	f.walkFile(node, ".", false)
 	node.Expand(true)
 	f.TreeView1.Items().EndUpdate()
 
@@ -42,7 +43,7 @@ func (f *TForm1) OnTreeView1Click(object vcl.IObject) {
 				if !os.IsNotExist(err) {
 					f.ListBox1.Clear()
 					f.ListBox1.Items().BeginUpdate()
-					f.walkFile2(path)
+					f.walkFile(nil, path, true)
 					f.ListBox1.Items().EndUpdate()
 				}
 			}
@@ -53,9 +54,7 @@ func (f *TForm1) OnTreeView1Click(object vcl.IObject) {
 	}
 }
 
-// 只列出当前目录的
-func (f *TForm1) walkFile2(path string) {
-
+func (f *TForm1) walkFile(node *vcl.TTreeNode, path string, isFile bool) {
 	fd, err := os.Open(path)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -67,41 +66,16 @@ func (f *TForm1) walkFile2(path string) {
 	for {
 		files, err := fd.Readdir(100)
 		for _, file := range files {
-			if !file.IsDir() {
+			if !isFile {
+				if file.IsDir() {
+					curPath := path + string(os.PathSeparator) + file.Name()
+					subNode := f.TreeView1.Items().AddChild(node, file.Name())
+					//subNode.SetData(unsafe.Pointer(uintptr(index)))
+					f.paths[subNode.Instance()] = curPath
+					f.walkFile(subNode, curPath, isFile)
+				}
+			} else {
 				f.ListBox1.Items().Add(file.Name())
-			}
-		}
-		if err == io.EOF {
-			break
-		}
-		if len(files) == 0 {
-			break
-		}
-	}
-}
-
-func (f *TForm1) walkFile(node *vcl.TTreeNode, path string) {
-
-	fd, err := os.Open(path)
-	if err != nil {
-		if os.IsNotExist(err) {
-			return
-		}
-		return
-	}
-	defer fd.Close()
-	for {
-		files, err := fd.Readdir(100)
-		for _, file := range files {
-			if file.IsDir() {
-
-				curPath := path + string(os.PathSeparator) + file.Name()
-				subNode := f.TreeView1.Items().AddChild(node, file.Name())
-
-				//subNode.SetData(unsafe.Pointer(uintptr(index)))
-
-				f.paths[subNode.Instance()] = curPath
-				f.walkFile(subNode, curPath)
 			}
 		}
 		if err == io.EOF {
