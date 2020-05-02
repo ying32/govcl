@@ -33,6 +33,7 @@ func main() {
 	fmt.Println("InheritsFrom：", vcl.Application.Is().Object())
 	fmt.Println("InheritsFrom：", vcl.Application.Is().Component())
 	fmt.Println("InheritsFrom：", vcl.Application.Is().Control())
+	fmt.Println(rtl.LibAbout())
 
 	guid := rtl.CreateGUID()
 	fmt.Println("guid:", guid)

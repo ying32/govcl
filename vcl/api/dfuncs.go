@@ -329,3 +329,8 @@ func DLibVersion() uint32 {
 	r, _, _ := dLibVersion.Call()
 	return uint32(r)
 }
+
+func DLibAbout() string {
+	r, _, _ := dLibAbout.Call()
+	return DStrToGoStr(r)
+}

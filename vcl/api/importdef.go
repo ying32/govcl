@@ -131,6 +131,7 @@ var (
 	dGetLibResouceCount = libvcl.NewProc("DGetLibResouceCount")
 	dGetLibResouceItem  = libvcl.NewProc("DGetLibResouceItem")
 	dModifyLibResouce   = libvcl.NewProc("DModifyLibResouce")
+	dLibAbout           = libvcl.NewProc("DLibAbout")
 
 	// 库的信息
 	dLibStringEncoding = libvcl.NewProc("DLibStringEncoding")

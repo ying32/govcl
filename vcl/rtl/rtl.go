@@ -222,3 +222,8 @@ func ShiftStateToWord(shift types.TShiftState) uint32 {
 	//}
 	return result
 }
+
+// liblcl About
+func LibAbout() string {
+	return api.DLibAbout()
+}
