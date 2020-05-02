@@ -13,6 +13,7 @@ uses
   Classes, SysUtils,
   {$I UseAll.inc},
   uControlPatchs, uExportTable;
+  
 {$endif windows}
 
 {$I MyLCL_Application.inc}

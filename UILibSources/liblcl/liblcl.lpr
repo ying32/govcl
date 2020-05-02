@@ -23,6 +23,7 @@ uses
 {$I UseAll.inc}
   ,Classes,
   SysUtils,
+  LCLVersion,
   uFormDesignerFile,
 {$IFDEF LCLCocoa}
   uMacOSPatchs,

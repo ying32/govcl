@@ -854,7 +854,32 @@ begin
   Obj.SetPrinter(aName);
 end;
 
+function SysIsZhCN: Boolean;
+begin
+{$IFDEF MSWINDOWS}
+  Result := SysLocale.DefaultLCID = 2052;
+{$ELSE}
+  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) > 0;
+{$ENDIF}
+end;
 
+function DLibAbout: PChar; extdecl;
+var
+  LVal: string;
+begin
+  if SysIsZhCN then
+    LVal := '作者：不在乎y(ying32)'#13#10 +
+            '官网：https://z-kit.cc'#13#10 +
+            '基于Lazarus ' + lcl_version + '制作'#13#10 +
+            '第三方库列表：'#13#10#13#10
+  else
+    LVal := 'Author:不在乎y(ying32)'#13#10 +
+            'Official website:https://z-kit.cc'#13#10 +
+            'Based on Lazarus ' + lcl_version + #13#10 +
+            'Third party library list:'#13#10#13#10;
+  LVal := LVal + '    TRichMemo';
+  Result := PChar(LVal);
+end;
 
 //----------------------------------------------------
 // 一些lib的资源
@@ -1176,6 +1201,7 @@ exports
   DGetLibResouceCount,
   DGetLibResouceItem,
   DModifyLibResouce,
+  DLibAbout,
 
   DGetLibType
 ;
