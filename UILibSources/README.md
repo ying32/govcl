@@ -22,7 +22,7 @@ liblcl工程源码位于"govcl\UILibSources\liblcl"目录。`liblcl适用于Wind
    * Linux32
    * LinuxARM           
    * MacOS64(cocoa) 确保在Tools-> Options下将“Compiler Executable”设置为“/usr/local/bin/fpc”以获得64位应用程序(32bit Lazarus)。 
-* 5、菜单->Run->Compile(或者Build)  
+* 5、菜单 -> Run -> Build 或者 Shift + F9 (必须使用Build)  
 
 **注意： 如你想要编译ARM和Linux 32位的liblcl则需要在对应平台安装相应的[Lazarus](http://www.lazarus-ide.org/)和FPC。也可考虑安装[CodeTyphon](http://www.pilotlogic.com/sitejoom/index.php/codetyphon)进行交叉编译，不过挺麻烦。**
 

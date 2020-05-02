@@ -22,7 +22,7 @@ Compile steps:
    * LinuxARM           
    * MacOS64(cocoa) Make sure under Tools->Options that "Compiler Executable" is set to "/usr/local/bin/fpc" to get 64 bit apps(32bit Lazarus).   
   
-* 5. menu -> Run-> Compile (or Build)   
+* 5. menu -> Run-> Build or Shift + F9 (Must use Build)   
 
 The compiled binary can be viewed in the following directory:      
 
