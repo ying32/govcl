@@ -859,7 +859,7 @@ begin
 {$IFDEF MSWINDOWS}
   Result := SysLocale.DefaultLCID = 2052;
 {$ELSE}
-  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) > 0;
+  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) <> -1;
 {$ENDIF}
 end;
 
