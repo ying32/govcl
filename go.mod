@@ -1,4 +1,4 @@
-module github.com/ying32/govcl
+module github.com/ying32/govcl/v2
 
 go 1.11
 
