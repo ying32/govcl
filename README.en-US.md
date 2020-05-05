@@ -22,7 +22,7 @@
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
 ### Pre-compiled GUI library binary download     
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/liblcl-2.0.0.zip)   
+[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/v2.0.0/liblcl-2.0.0.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/liblcl-2.0.0.zip)   
 
 ### res2go Tool([doc](Tools/res2go))    
 [![res2go](https://img.shields.io/badge/downloads-res2go%201.0.20-blue.svg)](https://github.com/ying32/govcl/releases/download/v2.0.0/res2go-1.0.20.zip)  
