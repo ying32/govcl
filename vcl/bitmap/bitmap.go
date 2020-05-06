@@ -27,7 +27,7 @@ var (
 	ErrPixelDataEmpty        = errors.New("the pixel data is empty")
 	ErrUnsupportedDataFormat = errors.New("unsupported pixel data format")
 	ErrBitmapInvalid         = errors.New("bitmap invalid")
-	ErrObjIsInvalid          = errors.New("obj is invalid")
+	ErrObjIsInvalid          = errors.New("object is invalid")
 	ErrUnknownError          = errors.New("unknown error")
 )
 
