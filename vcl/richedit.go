@@ -425,10 +425,14 @@ func (r *TRichEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     RichEdit_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (r *TRichEdit) AnchorHorizontalCenterTo(ASibling IControl) {
     RichEdit_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (r *TRichEdit) AnchorVerticalCenterTo(ASibling IControl) {
     RichEdit_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
 }
@@ -593,10 +597,14 @@ func (r *TRichEdit) SetHideSelection(value bool) {
     RichEdit_SetHideSelection(r.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (r *TRichEdit) Constraints() *TSizeConstraints {
     return AsSizeConstraints(RichEdit_GetConstraints(r.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (r *TRichEdit) SetConstraints(value *TSizeConstraints) {
     RichEdit_SetConstraints(r.instance, CheckPtr(value))
 }
@@ -645,10 +653,14 @@ func (r *TRichEdit) SetParentFont(value bool) {
     RichEdit_SetParentFont(r.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRichEdit) ParentShowHint() bool {
     return RichEdit_GetParentShowHint(r.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRichEdit) SetParentShowHint(value bool) {
     RichEdit_SetParentShowHint(r.instance, value)
 }
@@ -1305,34 +1317,50 @@ func (r *TRichEdit) SetTag(value int) {
     RichEdit_SetTag(r.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (r *TRichEdit) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(RichEdit_GetAnchorSideLeft(r.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (r *TRichEdit) SetAnchorSideLeft(value *TAnchorSide) {
     RichEdit_SetAnchorSideLeft(r.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (r *TRichEdit) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(RichEdit_GetAnchorSideTop(r.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (r *TRichEdit) SetAnchorSideTop(value *TAnchorSide) {
     RichEdit_SetAnchorSideTop(r.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (r *TRichEdit) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(RichEdit_GetAnchorSideRight(r.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (r *TRichEdit) SetAnchorSideRight(value *TAnchorSide) {
     RichEdit_SetAnchorSideRight(r.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (r *TRichEdit) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(RichEdit_GetAnchorSideBottom(r.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (r *TRichEdit) SetAnchorSideBottom(value *TAnchorSide) {
     RichEdit_SetAnchorSideBottom(r.instance, CheckPtr(value))
 }
@@ -1345,10 +1373,14 @@ func (r *TRichEdit) SetChildSizing(value *TControlChildSizing) {
     RichEdit_SetChildSizing(r.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (r *TRichEdit) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(RichEdit_GetBorderSpacing(r.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (r *TRichEdit) SetBorderSpacing(value *TControlBorderSpacing) {
     RichEdit_SetBorderSpacing(r.instance, CheckPtr(value))
 }
@@ -1371,6 +1403,8 @@ func (r *TRichEdit) Components(AIndex int32) *TComponent {
     return AsComponent(RichEdit_GetComponents(r.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (r *TRichEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(RichEdit_GetAnchorSide(r.instance, AKind))
 }

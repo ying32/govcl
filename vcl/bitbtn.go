@@ -385,10 +385,14 @@ func (b *TBitBtn) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICont
     BitBtn_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (b *TBitBtn) AnchorHorizontalCenterTo(ASibling IControl) {
     BitBtn_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (b *TBitBtn) AnchorVerticalCenterTo(ASibling IControl) {
     BitBtn_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
 }
@@ -485,10 +489,14 @@ func (b *TBitBtn) SetCaption(value string) {
     BitBtn_SetCaption(b.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (b *TBitBtn) Constraints() *TSizeConstraints {
     return AsSizeConstraints(BitBtn_GetConstraints(b.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (b *TBitBtn) SetConstraints(value *TSizeConstraints) {
     BitBtn_SetConstraints(b.instance, CheckPtr(value))
 }
@@ -597,10 +605,14 @@ func (b *TBitBtn) SetParentFont(value bool) {
     BitBtn_SetParentFont(b.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBitBtn) ParentShowHint() bool {
     return BitBtn_GetParentShowHint(b.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBitBtn) SetParentShowHint(value bool) {
     BitBtn_SetParentShowHint(b.instance, value)
 }
@@ -1035,34 +1047,50 @@ func (b *TBitBtn) SetTag(value int) {
     BitBtn_SetTag(b.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (b *TBitBtn) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(BitBtn_GetAnchorSideLeft(b.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (b *TBitBtn) SetAnchorSideLeft(value *TAnchorSide) {
     BitBtn_SetAnchorSideLeft(b.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (b *TBitBtn) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(BitBtn_GetAnchorSideTop(b.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (b *TBitBtn) SetAnchorSideTop(value *TAnchorSide) {
     BitBtn_SetAnchorSideTop(b.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (b *TBitBtn) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(BitBtn_GetAnchorSideRight(b.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (b *TBitBtn) SetAnchorSideRight(value *TAnchorSide) {
     BitBtn_SetAnchorSideRight(b.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (b *TBitBtn) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(BitBtn_GetAnchorSideBottom(b.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (b *TBitBtn) SetAnchorSideBottom(value *TAnchorSide) {
     BitBtn_SetAnchorSideBottom(b.instance, CheckPtr(value))
 }
@@ -1075,10 +1103,14 @@ func (b *TBitBtn) SetChildSizing(value *TControlChildSizing) {
     BitBtn_SetChildSizing(b.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (b *TBitBtn) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(BitBtn_GetBorderSpacing(b.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (b *TBitBtn) SetBorderSpacing(value *TControlBorderSpacing) {
     BitBtn_SetBorderSpacing(b.instance, CheckPtr(value))
 }
@@ -1101,6 +1133,8 @@ func (b *TBitBtn) Components(AIndex int32) *TComponent {
     return AsComponent(BitBtn_GetComponents(b.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (b *TBitBtn) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(BitBtn_GetAnchorSide(b.instance, AKind))
 }

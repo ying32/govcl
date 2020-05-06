@@ -291,10 +291,14 @@ func (p *TPaintBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     PaintBox_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (p *TPaintBox) AnchorHorizontalCenterTo(ASibling IControl) {
     PaintBox_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (p *TPaintBox) AnchorVerticalCenterTo(ASibling IControl) {
     PaintBox_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
 }
@@ -349,10 +353,14 @@ func (p *TPaintBox) SetColor(value TColor) {
     PaintBox_SetColor(p.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (p *TPaintBox) Constraints() *TSizeConstraints {
     return AsSizeConstraints(PaintBox_GetConstraints(p.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (p *TPaintBox) SetConstraints(value *TSizeConstraints) {
     PaintBox_SetConstraints(p.instance, CheckPtr(value))
 }
@@ -429,10 +437,14 @@ func (p *TPaintBox) SetParentFont(value bool) {
     PaintBox_SetParentFont(p.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPaintBox) ParentShowHint() bool {
     return PaintBox_GetParentShowHint(p.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPaintBox) SetParentShowHint(value bool) {
     PaintBox_SetParentShowHint(p.instance, value)
 }
@@ -757,42 +769,62 @@ func (p *TPaintBox) SetTag(value int) {
     PaintBox_SetTag(p.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (p *TPaintBox) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(PaintBox_GetAnchorSideLeft(p.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (p *TPaintBox) SetAnchorSideLeft(value *TAnchorSide) {
     PaintBox_SetAnchorSideLeft(p.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (p *TPaintBox) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(PaintBox_GetAnchorSideTop(p.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (p *TPaintBox) SetAnchorSideTop(value *TAnchorSide) {
     PaintBox_SetAnchorSideTop(p.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (p *TPaintBox) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(PaintBox_GetAnchorSideRight(p.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (p *TPaintBox) SetAnchorSideRight(value *TAnchorSide) {
     PaintBox_SetAnchorSideRight(p.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (p *TPaintBox) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(PaintBox_GetAnchorSideBottom(p.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (p *TPaintBox) SetAnchorSideBottom(value *TAnchorSide) {
     PaintBox_SetAnchorSideBottom(p.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (p *TPaintBox) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(PaintBox_GetBorderSpacing(p.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (p *TPaintBox) SetBorderSpacing(value *TControlBorderSpacing) {
     PaintBox_SetBorderSpacing(p.instance, CheckPtr(value))
 }
@@ -803,6 +835,8 @@ func (p *TPaintBox) Components(AIndex int32) *TComponent {
     return AsComponent(PaintBox_GetComponents(p.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (p *TPaintBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(PaintBox_GetAnchorSide(p.instance, AKind))
 }

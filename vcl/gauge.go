@@ -295,10 +295,14 @@ func (g *TGauge) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContr
     Gauge_AnchorParallel(g.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (g *TGauge) AnchorHorizontalCenterTo(ASibling IControl) {
     Gauge_AnchorHorizontalCenterTo(g.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (g *TGauge) AnchorVerticalCenterTo(ASibling IControl) {
     Gauge_AnchorVerticalCenterTo(g.instance, CheckPtr(ASibling))
 }
@@ -371,10 +375,14 @@ func (g *TGauge) SetColor(value TColor) {
     Gauge_SetColor(g.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (g *TGauge) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Gauge_GetConstraints(g.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (g *TGauge) SetConstraints(value *TSizeConstraints) {
     Gauge_SetConstraints(g.instance, CheckPtr(value))
 }
@@ -451,10 +459,14 @@ func (g *TGauge) SetParentFont(value bool) {
     Gauge_SetParentFont(g.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (g *TGauge) ParentShowHint() bool {
     return Gauge_GetParentShowHint(g.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (g *TGauge) SetParentShowHint(value bool) {
     Gauge_SetParentShowHint(g.instance, value)
 }
@@ -729,42 +741,62 @@ func (g *TGauge) SetTag(value int) {
     Gauge_SetTag(g.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (g *TGauge) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Gauge_GetAnchorSideLeft(g.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (g *TGauge) SetAnchorSideLeft(value *TAnchorSide) {
     Gauge_SetAnchorSideLeft(g.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (g *TGauge) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Gauge_GetAnchorSideTop(g.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (g *TGauge) SetAnchorSideTop(value *TAnchorSide) {
     Gauge_SetAnchorSideTop(g.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (g *TGauge) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Gauge_GetAnchorSideRight(g.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (g *TGauge) SetAnchorSideRight(value *TAnchorSide) {
     Gauge_SetAnchorSideRight(g.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (g *TGauge) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Gauge_GetAnchorSideBottom(g.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (g *TGauge) SetAnchorSideBottom(value *TAnchorSide) {
     Gauge_SetAnchorSideBottom(g.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (g *TGauge) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Gauge_GetBorderSpacing(g.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (g *TGauge) SetBorderSpacing(value *TControlBorderSpacing) {
     Gauge_SetBorderSpacing(g.instance, CheckPtr(value))
 }
@@ -775,6 +807,8 @@ func (g *TGauge) Components(AIndex int32) *TComponent {
     return AsComponent(Gauge_GetComponents(g.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (g *TGauge) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Gauge_GetAnchorSide(g.instance, AKind))
 }

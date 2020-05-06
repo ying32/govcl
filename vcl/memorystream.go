@@ -127,6 +127,8 @@ func (m *TMemoryStream) LoadFromFile(FileName string) {
     MemoryStream_LoadFromFile(m.instance, FileName)
 }
 
+// CN: 移动流指针位置。
+// EN: .
 func (m *TMemoryStream) Seek(Offset int64, Origin TSeekOrigin) int64 {
     return MemoryStream_Seek(m.instance, Offset , Origin)
 }
@@ -143,6 +145,8 @@ func (m *TMemoryStream) SaveToFile(FileName string) {
     MemoryStream_SaveToFile(m.instance, FileName)
 }
 
+// CN: 从指定流中复制。
+// EN: .
 func (m *TMemoryStream) CopyFrom(Source IObject, Count int64) int64 {
     return MemoryStream_CopyFrom(m.instance, CheckPtr(Source), Count)
 }
@@ -189,22 +193,32 @@ func (m *TMemoryStream) ToString() string {
     return MemoryStream_ToString(m.instance)
 }
 
+// CN: 获取内存指针。
+// EN: .
 func (m *TMemoryStream) Memory() uintptr {
     return MemoryStream_GetMemory(m.instance)
 }
 
+// CN: 获取流指针位置。
+// EN: .
 func (m *TMemoryStream) Position() int64 {
     return MemoryStream_GetPosition(m.instance)
 }
 
+// CN: 设置流指针位置。
+// EN: .
 func (m *TMemoryStream) SetPosition(value int64) {
     MemoryStream_SetPosition(m.instance, value)
 }
 
+// CN: 获取流的大小。
+// EN: .
 func (m *TMemoryStream) Size() int64 {
     return MemoryStream_GetSize(m.instance)
 }
 
+// CN: 设置流的大小。
+// EN: .
 func (m *TMemoryStream) SetSize(value int64) {
     MemoryStream_SetSize(m.instance, value)
 }

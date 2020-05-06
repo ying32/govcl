@@ -380,10 +380,14 @@ func (d *TDateTimePicker) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibli
     DateTimePicker_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (d *TDateTimePicker) AnchorHorizontalCenterTo(ASibling IControl) {
     DateTimePicker_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (d *TDateTimePicker) AnchorVerticalCenterTo(ASibling IControl) {
     DateTimePicker_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
 }
@@ -448,10 +452,14 @@ func (d *TDateTimePicker) SetCalAlignment(value TDTCalAlignment) {
     DateTimePicker_SetCalAlignment(d.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (d *TDateTimePicker) Constraints() *TSizeConstraints {
     return AsSizeConstraints(DateTimePicker_GetConstraints(d.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (d *TDateTimePicker) SetConstraints(value *TSizeConstraints) {
     DateTimePicker_SetConstraints(d.instance, CheckPtr(value))
 }
@@ -592,10 +600,14 @@ func (d *TDateTimePicker) SetParentFont(value bool) {
     DateTimePicker_SetParentFont(d.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (d *TDateTimePicker) ParentShowHint() bool {
     return DateTimePicker_GetParentShowHint(d.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (d *TDateTimePicker) SetParentShowHint(value bool) {
     DateTimePicker_SetParentShowHint(d.instance, value)
 }
@@ -1000,34 +1012,50 @@ func (d *TDateTimePicker) SetTag(value int) {
     DateTimePicker_SetTag(d.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (d *TDateTimePicker) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideLeft(d.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (d *TDateTimePicker) SetAnchorSideLeft(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideLeft(d.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (d *TDateTimePicker) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideTop(d.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (d *TDateTimePicker) SetAnchorSideTop(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideTop(d.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (d *TDateTimePicker) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideRight(d.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (d *TDateTimePicker) SetAnchorSideRight(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideRight(d.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (d *TDateTimePicker) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSideBottom(d.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (d *TDateTimePicker) SetAnchorSideBottom(value *TAnchorSide) {
     DateTimePicker_SetAnchorSideBottom(d.instance, CheckPtr(value))
 }
@@ -1040,10 +1068,14 @@ func (d *TDateTimePicker) SetChildSizing(value *TControlChildSizing) {
     DateTimePicker_SetChildSizing(d.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (d *TDateTimePicker) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(DateTimePicker_GetBorderSpacing(d.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (d *TDateTimePicker) SetBorderSpacing(value *TControlBorderSpacing) {
     DateTimePicker_SetBorderSpacing(d.instance, CheckPtr(value))
 }
@@ -1066,6 +1098,8 @@ func (d *TDateTimePicker) Components(AIndex int32) *TComponent {
     return AsComponent(DateTimePicker_GetComponents(d.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (d *TDateTimePicker) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(DateTimePicker_GetAnchorSide(d.instance, AKind))
 }

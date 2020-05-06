@@ -379,10 +379,14 @@ func (h *THeaderControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASiblin
     HeaderControl_AnchorParallel(h.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (h *THeaderControl) AnchorHorizontalCenterTo(ASibling IControl) {
     HeaderControl_AnchorHorizontalCenterTo(h.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (h *THeaderControl) AnchorVerticalCenterTo(ASibling IControl) {
     HeaderControl_AnchorVerticalCenterTo(h.instance, CheckPtr(ASibling))
 }
@@ -515,10 +519,14 @@ func (h *THeaderControl) SetImages(value IComponent) {
     HeaderControl_SetImages(h.instance, CheckPtr(value))
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (h *THeaderControl) Constraints() *TSizeConstraints {
     return AsSizeConstraints(HeaderControl_GetConstraints(h.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (h *THeaderControl) SetConstraints(value *TSizeConstraints) {
     HeaderControl_SetConstraints(h.instance, CheckPtr(value))
 }
@@ -567,10 +575,14 @@ func (h *THeaderControl) SetParentFont(value bool) {
     HeaderControl_SetParentFont(h.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (h *THeaderControl) ParentShowHint() bool {
     return HeaderControl_GetParentShowHint(h.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (h *THeaderControl) SetParentShowHint(value bool) {
     HeaderControl_SetParentShowHint(h.instance, value)
 }
@@ -997,34 +1009,50 @@ func (h *THeaderControl) SetTag(value int) {
     HeaderControl_SetTag(h.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (h *THeaderControl) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(HeaderControl_GetAnchorSideLeft(h.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (h *THeaderControl) SetAnchorSideLeft(value *TAnchorSide) {
     HeaderControl_SetAnchorSideLeft(h.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (h *THeaderControl) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(HeaderControl_GetAnchorSideTop(h.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (h *THeaderControl) SetAnchorSideTop(value *TAnchorSide) {
     HeaderControl_SetAnchorSideTop(h.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (h *THeaderControl) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(HeaderControl_GetAnchorSideRight(h.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (h *THeaderControl) SetAnchorSideRight(value *TAnchorSide) {
     HeaderControl_SetAnchorSideRight(h.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (h *THeaderControl) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(HeaderControl_GetAnchorSideBottom(h.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (h *THeaderControl) SetAnchorSideBottom(value *TAnchorSide) {
     HeaderControl_SetAnchorSideBottom(h.instance, CheckPtr(value))
 }
@@ -1037,10 +1065,14 @@ func (h *THeaderControl) SetChildSizing(value *TControlChildSizing) {
     HeaderControl_SetChildSizing(h.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (h *THeaderControl) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(HeaderControl_GetBorderSpacing(h.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (h *THeaderControl) SetBorderSpacing(value *TControlBorderSpacing) {
     HeaderControl_SetBorderSpacing(h.instance, CheckPtr(value))
 }
@@ -1063,6 +1095,8 @@ func (h *THeaderControl) Components(AIndex int32) *TComponent {
     return AsComponent(HeaderControl_GetComponents(h.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (h *THeaderControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(HeaderControl_GetAnchorSide(h.instance, AKind))
 }

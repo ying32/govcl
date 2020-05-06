@@ -387,10 +387,14 @@ func (p *TPageControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling 
     PageControl_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (p *TPageControl) AnchorHorizontalCenterTo(ASibling IControl) {
     PageControl_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (p *TPageControl) AnchorVerticalCenterTo(ASibling IControl) {
     PageControl_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
 }
@@ -455,10 +459,14 @@ func (p *TPageControl) SetBiDiMode(value TBiDiMode) {
     PageControl_SetBiDiMode(p.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (p *TPageControl) Constraints() *TSizeConstraints {
     return AsSizeConstraints(PageControl_GetConstraints(p.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (p *TPageControl) SetConstraints(value *TSizeConstraints) {
     PageControl_SetConstraints(p.instance, CheckPtr(value))
 }
@@ -591,10 +599,14 @@ func (p *TPageControl) SetParentFont(value bool) {
     PageControl_SetParentFont(p.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPageControl) ParentShowHint() bool {
     return PageControl_GetParentShowHint(p.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPageControl) SetParentShowHint(value bool) {
     PageControl_SetParentShowHint(p.instance, value)
 }
@@ -1067,34 +1079,50 @@ func (p *TPageControl) SetTag(value int) {
     PageControl_SetTag(p.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (p *TPageControl) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(PageControl_GetAnchorSideLeft(p.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (p *TPageControl) SetAnchorSideLeft(value *TAnchorSide) {
     PageControl_SetAnchorSideLeft(p.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (p *TPageControl) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(PageControl_GetAnchorSideTop(p.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (p *TPageControl) SetAnchorSideTop(value *TAnchorSide) {
     PageControl_SetAnchorSideTop(p.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (p *TPageControl) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(PageControl_GetAnchorSideRight(p.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (p *TPageControl) SetAnchorSideRight(value *TAnchorSide) {
     PageControl_SetAnchorSideRight(p.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (p *TPageControl) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(PageControl_GetAnchorSideBottom(p.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (p *TPageControl) SetAnchorSideBottom(value *TAnchorSide) {
     PageControl_SetAnchorSideBottom(p.instance, CheckPtr(value))
 }
@@ -1107,10 +1135,14 @@ func (p *TPageControl) SetChildSizing(value *TControlChildSizing) {
     PageControl_SetChildSizing(p.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (p *TPageControl) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(PageControl_GetBorderSpacing(p.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (p *TPageControl) SetBorderSpacing(value *TControlBorderSpacing) {
     PageControl_SetBorderSpacing(p.instance, CheckPtr(value))
 }
@@ -1137,6 +1169,8 @@ func (p *TPageControl) Components(AIndex int32) *TComponent {
     return AsComponent(PageControl_GetComponents(p.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (p *TPageControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(PageControl_GetAnchorSide(p.instance, AKind))
 }

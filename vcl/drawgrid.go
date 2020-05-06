@@ -391,10 +391,14 @@ func (d *TDrawGrid) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     DrawGrid_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (d *TDrawGrid) AnchorHorizontalCenterTo(ASibling IControl) {
     DrawGrid_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (d *TDrawGrid) AnchorVerticalCenterTo(ASibling IControl) {
     DrawGrid_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
 }
@@ -471,10 +475,14 @@ func (d *TDrawGrid) SetColCount(value int32) {
     DrawGrid_SetColCount(d.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (d *TDrawGrid) Constraints() *TSizeConstraints {
     return AsSizeConstraints(DrawGrid_GetConstraints(d.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (d *TDrawGrid) SetConstraints(value *TSizeConstraints) {
     DrawGrid_SetConstraints(d.instance, CheckPtr(value))
 }
@@ -659,10 +667,14 @@ func (d *TDrawGrid) SetParentFont(value bool) {
     DrawGrid_SetParentFont(d.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (d *TDrawGrid) ParentShowHint() bool {
     return DrawGrid_GetParentShowHint(d.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (d *TDrawGrid) SetParentShowHint(value bool) {
     DrawGrid_SetParentShowHint(d.instance, value)
 }
@@ -1237,34 +1249,50 @@ func (d *TDrawGrid) SetTag(value int) {
     DrawGrid_SetTag(d.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (d *TDrawGrid) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(DrawGrid_GetAnchorSideLeft(d.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (d *TDrawGrid) SetAnchorSideLeft(value *TAnchorSide) {
     DrawGrid_SetAnchorSideLeft(d.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (d *TDrawGrid) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(DrawGrid_GetAnchorSideTop(d.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (d *TDrawGrid) SetAnchorSideTop(value *TAnchorSide) {
     DrawGrid_SetAnchorSideTop(d.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (d *TDrawGrid) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(DrawGrid_GetAnchorSideRight(d.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (d *TDrawGrid) SetAnchorSideRight(value *TAnchorSide) {
     DrawGrid_SetAnchorSideRight(d.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (d *TDrawGrid) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(DrawGrid_GetAnchorSideBottom(d.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (d *TDrawGrid) SetAnchorSideBottom(value *TAnchorSide) {
     DrawGrid_SetAnchorSideBottom(d.instance, CheckPtr(value))
 }
@@ -1277,10 +1305,14 @@ func (d *TDrawGrid) SetChildSizing(value *TControlChildSizing) {
     DrawGrid_SetChildSizing(d.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (d *TDrawGrid) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(DrawGrid_GetBorderSpacing(d.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (d *TDrawGrid) SetBorderSpacing(value *TControlBorderSpacing) {
     DrawGrid_SetBorderSpacing(d.instance, CheckPtr(value))
 }
@@ -1319,6 +1351,8 @@ func (d *TDrawGrid) Components(AIndex int32) *TComponent {
     return AsComponent(DrawGrid_GetComponents(d.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (d *TDrawGrid) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(DrawGrid_GetAnchorSide(d.instance, AKind))
 }

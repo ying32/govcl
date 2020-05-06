@@ -291,10 +291,14 @@ func (b *TBoundLabel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling I
     BoundLabel_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (b *TBoundLabel) AnchorHorizontalCenterTo(ASibling IControl) {
     BoundLabel_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (b *TBoundLabel) AnchorVerticalCenterTo(ASibling IControl) {
     BoundLabel_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
 }
@@ -417,10 +421,14 @@ func (b *TBoundLabel) SetParentFont(value bool) {
     BoundLabel_SetParentFont(b.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBoundLabel) ParentShowHint() bool {
     return BoundLabel_GetParentShowHint(b.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBoundLabel) SetParentShowHint(value bool) {
     BoundLabel_SetParentShowHint(b.instance, value)
 }
@@ -635,10 +643,14 @@ func (b *TBoundLabel) SetClientWidth(value int32) {
     BoundLabel_SetClientWidth(b.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (b *TBoundLabel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(BoundLabel_GetConstraints(b.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (b *TBoundLabel) SetConstraints(value *TSizeConstraints) {
     BoundLabel_SetConstraints(b.instance, CheckPtr(value))
 }
@@ -767,42 +779,62 @@ func (b *TBoundLabel) SetTag(value int) {
     BoundLabel_SetTag(b.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (b *TBoundLabel) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(BoundLabel_GetAnchorSideLeft(b.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (b *TBoundLabel) SetAnchorSideLeft(value *TAnchorSide) {
     BoundLabel_SetAnchorSideLeft(b.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (b *TBoundLabel) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(BoundLabel_GetAnchorSideTop(b.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (b *TBoundLabel) SetAnchorSideTop(value *TAnchorSide) {
     BoundLabel_SetAnchorSideTop(b.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (b *TBoundLabel) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(BoundLabel_GetAnchorSideRight(b.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (b *TBoundLabel) SetAnchorSideRight(value *TAnchorSide) {
     BoundLabel_SetAnchorSideRight(b.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (b *TBoundLabel) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(BoundLabel_GetAnchorSideBottom(b.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (b *TBoundLabel) SetAnchorSideBottom(value *TAnchorSide) {
     BoundLabel_SetAnchorSideBottom(b.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (b *TBoundLabel) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(BoundLabel_GetBorderSpacing(b.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (b *TBoundLabel) SetBorderSpacing(value *TControlBorderSpacing) {
     BoundLabel_SetBorderSpacing(b.instance, CheckPtr(value))
 }
@@ -813,6 +845,8 @@ func (b *TBoundLabel) Components(AIndex int32) *TComponent {
     return AsComponent(BoundLabel_GetComponents(b.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (b *TBoundLabel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(BoundLabel_GetAnchorSide(b.instance, AKind))
 }

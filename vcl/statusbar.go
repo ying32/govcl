@@ -379,10 +379,14 @@ func (s *TStatusBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IC
     StatusBar_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TStatusBar) AnchorHorizontalCenterTo(ASibling IControl) {
     StatusBar_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TStatusBar) AnchorVerticalCenterTo(ASibling IControl) {
     StatusBar_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -539,10 +543,14 @@ func (s *TStatusBar) SetFont(value *TFont) {
     StatusBar_SetFont(s.instance, CheckPtr(value))
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TStatusBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(StatusBar_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TStatusBar) SetConstraints(value *TSizeConstraints) {
     StatusBar_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -591,10 +599,14 @@ func (s *TStatusBar) SetParentFont(value bool) {
     StatusBar_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStatusBar) ParentShowHint() bool {
     return StatusBar_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStatusBar) SetParentShowHint(value bool) {
     StatusBar_SetParentShowHint(s.instance, value)
 }
@@ -1061,34 +1073,50 @@ func (s *TStatusBar) SetTag(value int) {
     StatusBar_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TStatusBar) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(StatusBar_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TStatusBar) SetAnchorSideLeft(value *TAnchorSide) {
     StatusBar_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TStatusBar) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(StatusBar_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TStatusBar) SetAnchorSideTop(value *TAnchorSide) {
     StatusBar_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TStatusBar) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(StatusBar_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TStatusBar) SetAnchorSideRight(value *TAnchorSide) {
     StatusBar_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TStatusBar) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(StatusBar_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TStatusBar) SetAnchorSideBottom(value *TAnchorSide) {
     StatusBar_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
@@ -1101,10 +1129,14 @@ func (s *TStatusBar) SetChildSizing(value *TControlChildSizing) {
     StatusBar_SetChildSizing(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TStatusBar) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(StatusBar_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TStatusBar) SetBorderSpacing(value *TControlBorderSpacing) {
     StatusBar_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -1127,6 +1159,8 @@ func (s *TStatusBar) Components(AIndex int32) *TComponent {
     return AsComponent(StatusBar_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TStatusBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(StatusBar_GetAnchorSide(s.instance, AKind))
 }

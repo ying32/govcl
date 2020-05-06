@@ -387,10 +387,14 @@ func (f *TFlowPanel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IC
     FlowPanel_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (f *TFlowPanel) AnchorHorizontalCenterTo(ASibling IControl) {
     FlowPanel_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (f *TFlowPanel) AnchorVerticalCenterTo(ASibling IControl) {
     FlowPanel_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
 }
@@ -515,10 +519,14 @@ func (f *TFlowPanel) SetColor(value TColor) {
     FlowPanel_SetColor(f.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (f *TFlowPanel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(FlowPanel_GetConstraints(f.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (f *TFlowPanel) SetConstraints(value *TSizeConstraints) {
     FlowPanel_SetConstraints(f.instance, CheckPtr(value))
 }
@@ -679,10 +687,14 @@ func (f *TFlowPanel) SetParentFont(value bool) {
     FlowPanel_SetParentFont(f.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (f *TFlowPanel) ParentShowHint() bool {
     return FlowPanel_GetParentShowHint(f.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (f *TFlowPanel) SetParentShowHint(value bool) {
     FlowPanel_SetParentShowHint(f.instance, value)
 }
@@ -1117,34 +1129,50 @@ func (f *TFlowPanel) SetTag(value int) {
     FlowPanel_SetTag(f.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (f *TFlowPanel) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(FlowPanel_GetAnchorSideLeft(f.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (f *TFlowPanel) SetAnchorSideLeft(value *TAnchorSide) {
     FlowPanel_SetAnchorSideLeft(f.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (f *TFlowPanel) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(FlowPanel_GetAnchorSideTop(f.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (f *TFlowPanel) SetAnchorSideTop(value *TAnchorSide) {
     FlowPanel_SetAnchorSideTop(f.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (f *TFlowPanel) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(FlowPanel_GetAnchorSideRight(f.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (f *TFlowPanel) SetAnchorSideRight(value *TAnchorSide) {
     FlowPanel_SetAnchorSideRight(f.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (f *TFlowPanel) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(FlowPanel_GetAnchorSideBottom(f.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (f *TFlowPanel) SetAnchorSideBottom(value *TAnchorSide) {
     FlowPanel_SetAnchorSideBottom(f.instance, CheckPtr(value))
 }
@@ -1157,10 +1185,14 @@ func (f *TFlowPanel) SetChildSizing(value *TControlChildSizing) {
     FlowPanel_SetChildSizing(f.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (f *TFlowPanel) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(FlowPanel_GetBorderSpacing(f.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (f *TFlowPanel) SetBorderSpacing(value *TControlBorderSpacing) {
     FlowPanel_SetBorderSpacing(f.instance, CheckPtr(value))
 }
@@ -1183,6 +1215,8 @@ func (f *TFlowPanel) Components(AIndex int32) *TComponent {
     return AsComponent(FlowPanel_GetComponents(f.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (f *TFlowPanel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(FlowPanel_GetAnchorSide(f.instance, AKind))
 }

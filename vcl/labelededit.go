@@ -421,10 +421,14 @@ func (l *TLabeledEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling 
     LabeledEdit_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (l *TLabeledEdit) AnchorHorizontalCenterTo(ASibling IControl) {
     LabeledEdit_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (l *TLabeledEdit) AnchorVerticalCenterTo(ASibling IControl) {
     LabeledEdit_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
@@ -525,10 +529,14 @@ func (l *TLabeledEdit) SetColor(value TColor) {
     LabeledEdit_SetColor(l.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (l *TLabeledEdit) Constraints() *TSizeConstraints {
     return AsSizeConstraints(LabeledEdit_GetConstraints(l.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (l *TLabeledEdit) SetConstraints(value *TSizeConstraints) {
     LabeledEdit_SetConstraints(l.instance, CheckPtr(value))
 }
@@ -685,10 +693,14 @@ func (l *TLabeledEdit) SetParentFont(value bool) {
     LabeledEdit_SetParentFont(l.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (l *TLabeledEdit) ParentShowHint() bool {
     return LabeledEdit_GetParentShowHint(l.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (l *TLabeledEdit) SetParentShowHint(value bool) {
     LabeledEdit_SetParentShowHint(l.instance, value)
 }
@@ -1249,34 +1261,50 @@ func (l *TLabeledEdit) SetTag(value int) {
     LabeledEdit_SetTag(l.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (l *TLabeledEdit) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(LabeledEdit_GetAnchorSideLeft(l.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (l *TLabeledEdit) SetAnchorSideLeft(value *TAnchorSide) {
     LabeledEdit_SetAnchorSideLeft(l.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (l *TLabeledEdit) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(LabeledEdit_GetAnchorSideTop(l.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (l *TLabeledEdit) SetAnchorSideTop(value *TAnchorSide) {
     LabeledEdit_SetAnchorSideTop(l.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (l *TLabeledEdit) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(LabeledEdit_GetAnchorSideRight(l.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (l *TLabeledEdit) SetAnchorSideRight(value *TAnchorSide) {
     LabeledEdit_SetAnchorSideRight(l.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (l *TLabeledEdit) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(LabeledEdit_GetAnchorSideBottom(l.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (l *TLabeledEdit) SetAnchorSideBottom(value *TAnchorSide) {
     LabeledEdit_SetAnchorSideBottom(l.instance, CheckPtr(value))
 }
@@ -1289,10 +1317,14 @@ func (l *TLabeledEdit) SetChildSizing(value *TControlChildSizing) {
     LabeledEdit_SetChildSizing(l.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (l *TLabeledEdit) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(LabeledEdit_GetBorderSpacing(l.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (l *TLabeledEdit) SetBorderSpacing(value *TControlBorderSpacing) {
     LabeledEdit_SetBorderSpacing(l.instance, CheckPtr(value))
 }
@@ -1315,6 +1347,8 @@ func (l *TLabeledEdit) Components(AIndex int32) *TComponent {
     return AsComponent(LabeledEdit_GetComponents(l.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (l *TLabeledEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(LabeledEdit_GetAnchorSide(l.instance, AKind))
 }

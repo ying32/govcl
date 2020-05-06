@@ -395,10 +395,14 @@ func (f *TForm) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContro
     Form_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (f *TForm) AnchorHorizontalCenterTo(ASibling IControl) {
     Form_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (f *TForm) AnchorVerticalCenterTo(ASibling IControl) {
     Form_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
 }
@@ -579,10 +583,14 @@ func (f *TForm) SetColor(value TColor) {
     Form_SetColor(f.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (f *TForm) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Form_GetConstraints(f.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (f *TForm) SetConstraints(value *TSizeConstraints) {
     Form_SetConstraints(f.instance, CheckPtr(value))
 }
@@ -1289,34 +1297,50 @@ func (f *TForm) SetTag(value int) {
     Form_SetTag(f.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (f *TForm) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideLeft(f.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (f *TForm) SetAnchorSideLeft(value *TAnchorSide) {
     Form_SetAnchorSideLeft(f.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (f *TForm) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideTop(f.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (f *TForm) SetAnchorSideTop(value *TAnchorSide) {
     Form_SetAnchorSideTop(f.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (f *TForm) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideRight(f.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (f *TForm) SetAnchorSideRight(value *TAnchorSide) {
     Form_SetAnchorSideRight(f.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (f *TForm) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSideBottom(f.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (f *TForm) SetAnchorSideBottom(value *TAnchorSide) {
     Form_SetAnchorSideBottom(f.instance, CheckPtr(value))
 }
@@ -1329,10 +1353,14 @@ func (f *TForm) SetChildSizing(value *TControlChildSizing) {
     Form_SetChildSizing(f.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (f *TForm) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Form_GetBorderSpacing(f.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (f *TForm) SetBorderSpacing(value *TControlBorderSpacing) {
     Form_SetBorderSpacing(f.instance, CheckPtr(value))
 }
@@ -1355,6 +1383,8 @@ func (f *TForm) Components(AIndex int32) *TComponent {
     return AsComponent(Form_GetComponents(f.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (f *TForm) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Form_GetAnchorSide(f.instance, AKind))
 }

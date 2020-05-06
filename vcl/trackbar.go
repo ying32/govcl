@@ -383,10 +383,14 @@ func (t *TTrackBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     TrackBar_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (t *TTrackBar) AnchorHorizontalCenterTo(ASibling IControl) {
     TrackBar_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (t *TTrackBar) AnchorVerticalCenterTo(ASibling IControl) {
     TrackBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
@@ -483,10 +487,14 @@ func (t *TTrackBar) SetEnabled(value bool) {
     TrackBar_SetEnabled(t.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (t *TTrackBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(TrackBar_GetConstraints(t.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (t *TTrackBar) SetConstraints(value *TSizeConstraints) {
     TrackBar_SetConstraints(t.instance, CheckPtr(value))
 }
@@ -535,10 +543,14 @@ func (t *TTrackBar) SetParentDoubleBuffered(value bool) {
     TrackBar_SetParentDoubleBuffered(t.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTrackBar) ParentShowHint() bool {
     return TrackBar_GetParentShowHint(t.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTrackBar) SetParentShowHint(value bool) {
     TrackBar_SetParentShowHint(t.instance, value)
 }
@@ -1019,34 +1031,50 @@ func (t *TTrackBar) SetTag(value int) {
     TrackBar_SetTag(t.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (t *TTrackBar) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(TrackBar_GetAnchorSideLeft(t.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (t *TTrackBar) SetAnchorSideLeft(value *TAnchorSide) {
     TrackBar_SetAnchorSideLeft(t.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (t *TTrackBar) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(TrackBar_GetAnchorSideTop(t.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (t *TTrackBar) SetAnchorSideTop(value *TAnchorSide) {
     TrackBar_SetAnchorSideTop(t.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (t *TTrackBar) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(TrackBar_GetAnchorSideRight(t.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (t *TTrackBar) SetAnchorSideRight(value *TAnchorSide) {
     TrackBar_SetAnchorSideRight(t.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (t *TTrackBar) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(TrackBar_GetAnchorSideBottom(t.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (t *TTrackBar) SetAnchorSideBottom(value *TAnchorSide) {
     TrackBar_SetAnchorSideBottom(t.instance, CheckPtr(value))
 }
@@ -1059,10 +1087,14 @@ func (t *TTrackBar) SetChildSizing(value *TControlChildSizing) {
     TrackBar_SetChildSizing(t.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (t *TTrackBar) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(TrackBar_GetBorderSpacing(t.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (t *TTrackBar) SetBorderSpacing(value *TControlBorderSpacing) {
     TrackBar_SetBorderSpacing(t.instance, CheckPtr(value))
 }
@@ -1085,6 +1117,8 @@ func (t *TTrackBar) Components(AIndex int32) *TComponent {
     return AsComponent(TrackBar_GetComponents(t.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (t *TTrackBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(TrackBar_GetAnchorSide(t.instance, AKind))
 }

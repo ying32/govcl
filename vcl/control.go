@@ -291,10 +291,14 @@ func (c *TControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICon
     Control_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (c *TControl) AnchorHorizontalCenterTo(ASibling IControl) {
     Control_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (c *TControl) AnchorVerticalCenterTo(ASibling IControl) {
     Control_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
@@ -401,10 +405,14 @@ func (c *TControl) SetClientWidth(value int32) {
     Control_SetClientWidth(c.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (c *TControl) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Control_GetConstraints(c.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (c *TControl) SetConstraints(value *TSizeConstraints) {
     Control_SetConstraints(c.instance, CheckPtr(value))
 }
@@ -593,42 +601,62 @@ func (c *TControl) SetTag(value int) {
     Control_SetTag(c.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (c *TControl) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Control_GetAnchorSideLeft(c.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (c *TControl) SetAnchorSideLeft(value *TAnchorSide) {
     Control_SetAnchorSideLeft(c.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (c *TControl) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Control_GetAnchorSideTop(c.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (c *TControl) SetAnchorSideTop(value *TAnchorSide) {
     Control_SetAnchorSideTop(c.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (c *TControl) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Control_GetAnchorSideRight(c.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (c *TControl) SetAnchorSideRight(value *TAnchorSide) {
     Control_SetAnchorSideRight(c.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (c *TControl) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Control_GetAnchorSideBottom(c.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (c *TControl) SetAnchorSideBottom(value *TAnchorSide) {
     Control_SetAnchorSideBottom(c.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (c *TControl) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Control_GetBorderSpacing(c.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (c *TControl) SetBorderSpacing(value *TControlBorderSpacing) {
     Control_SetBorderSpacing(c.instance, CheckPtr(value))
 }
@@ -639,6 +667,8 @@ func (c *TControl) Components(AIndex int32) *TComponent {
     return AsComponent(Control_GetComponents(c.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (c *TControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Control_GetAnchorSide(c.instance, AKind))
 }

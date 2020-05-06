@@ -379,10 +379,14 @@ func (p *TPanel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContr
     Panel_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (p *TPanel) AnchorHorizontalCenterTo(ASibling IControl) {
     Panel_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (p *TPanel) AnchorVerticalCenterTo(ASibling IControl) {
     Panel_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
 }
@@ -515,10 +519,14 @@ func (p *TPanel) SetColor(value TColor) {
     Panel_SetColor(p.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (p *TPanel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Panel_GetConstraints(p.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (p *TPanel) SetConstraints(value *TSizeConstraints) {
     Panel_SetConstraints(p.instance, CheckPtr(value))
 }
@@ -671,10 +679,14 @@ func (p *TPanel) SetParentFont(value bool) {
     Panel_SetParentFont(p.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPanel) ParentShowHint() bool {
     return Panel_GetParentShowHint(p.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPanel) SetParentShowHint(value bool) {
     Panel_SetParentShowHint(p.instance, value)
 }
@@ -1109,34 +1121,50 @@ func (p *TPanel) SetTag(value int) {
     Panel_SetTag(p.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (p *TPanel) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Panel_GetAnchorSideLeft(p.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (p *TPanel) SetAnchorSideLeft(value *TAnchorSide) {
     Panel_SetAnchorSideLeft(p.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (p *TPanel) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Panel_GetAnchorSideTop(p.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (p *TPanel) SetAnchorSideTop(value *TAnchorSide) {
     Panel_SetAnchorSideTop(p.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (p *TPanel) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Panel_GetAnchorSideRight(p.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (p *TPanel) SetAnchorSideRight(value *TAnchorSide) {
     Panel_SetAnchorSideRight(p.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (p *TPanel) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Panel_GetAnchorSideBottom(p.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (p *TPanel) SetAnchorSideBottom(value *TAnchorSide) {
     Panel_SetAnchorSideBottom(p.instance, CheckPtr(value))
 }
@@ -1149,10 +1177,14 @@ func (p *TPanel) SetChildSizing(value *TControlChildSizing) {
     Panel_SetChildSizing(p.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (p *TPanel) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Panel_GetBorderSpacing(p.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (p *TPanel) SetBorderSpacing(value *TControlBorderSpacing) {
     Panel_SetBorderSpacing(p.instance, CheckPtr(value))
 }
@@ -1175,6 +1207,8 @@ func (p *TPanel) Components(AIndex int32) *TComponent {
     return AsComponent(Panel_GetComponents(p.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (p *TPanel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Panel_GetAnchorSide(p.instance, AKind))
 }

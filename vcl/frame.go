@@ -383,10 +383,14 @@ func (f *TFrame) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContr
     Frame_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (f *TFrame) AnchorHorizontalCenterTo(ASibling IControl) {
     Frame_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (f *TFrame) AnchorVerticalCenterTo(ASibling IControl) {
     Frame_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
 }
@@ -451,10 +455,14 @@ func (f *TFrame) SetBiDiMode(value TBiDiMode) {
     Frame_SetBiDiMode(f.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (f *TFrame) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Frame_GetConstraints(f.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (f *TFrame) SetConstraints(value *TSizeConstraints) {
     Frame_SetConstraints(f.instance, CheckPtr(value))
 }
@@ -591,10 +599,14 @@ func (f *TFrame) SetParentFont(value bool) {
     Frame_SetParentFont(f.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (f *TFrame) ParentShowHint() bool {
     return Frame_GetParentShowHint(f.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (f *TFrame) SetParentShowHint(value bool) {
     Frame_SetParentShowHint(f.instance, value)
 }
@@ -1075,34 +1087,50 @@ func (f *TFrame) SetTag(value int) {
     Frame_SetTag(f.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (f *TFrame) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Frame_GetAnchorSideLeft(f.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (f *TFrame) SetAnchorSideLeft(value *TAnchorSide) {
     Frame_SetAnchorSideLeft(f.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (f *TFrame) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Frame_GetAnchorSideTop(f.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (f *TFrame) SetAnchorSideTop(value *TAnchorSide) {
     Frame_SetAnchorSideTop(f.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (f *TFrame) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Frame_GetAnchorSideRight(f.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (f *TFrame) SetAnchorSideRight(value *TAnchorSide) {
     Frame_SetAnchorSideRight(f.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (f *TFrame) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Frame_GetAnchorSideBottom(f.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (f *TFrame) SetAnchorSideBottom(value *TAnchorSide) {
     Frame_SetAnchorSideBottom(f.instance, CheckPtr(value))
 }
@@ -1115,10 +1143,14 @@ func (f *TFrame) SetChildSizing(value *TControlChildSizing) {
     Frame_SetChildSizing(f.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (f *TFrame) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Frame_GetBorderSpacing(f.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (f *TFrame) SetBorderSpacing(value *TControlBorderSpacing) {
     Frame_SetBorderSpacing(f.instance, CheckPtr(value))
 }
@@ -1141,6 +1173,8 @@ func (f *TFrame) Components(AIndex int32) *TComponent {
     return AsComponent(Frame_GetComponents(f.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (f *TFrame) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Frame_GetAnchorSide(f.instance, AKind))
 }

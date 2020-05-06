@@ -383,10 +383,14 @@ func (s *TScrollBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IC
     ScrollBar_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TScrollBar) AnchorHorizontalCenterTo(ASibling IControl) {
     ScrollBar_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TScrollBar) AnchorVerticalCenterTo(ASibling IControl) {
     ScrollBar_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -431,10 +435,14 @@ func (s *TScrollBar) SetBiDiMode(value TBiDiMode) {
     ScrollBar_SetBiDiMode(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TScrollBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ScrollBar_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TScrollBar) SetConstraints(value *TSizeConstraints) {
     ScrollBar_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -543,10 +551,14 @@ func (s *TScrollBar) SetParentDoubleBuffered(value bool) {
     ScrollBar_SetParentDoubleBuffered(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TScrollBar) ParentShowHint() bool {
     return ScrollBar_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TScrollBar) SetParentShowHint(value bool) {
     ScrollBar_SetParentShowHint(s.instance, value)
 }
@@ -967,34 +979,50 @@ func (s *TScrollBar) SetTag(value int) {
     ScrollBar_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TScrollBar) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(ScrollBar_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TScrollBar) SetAnchorSideLeft(value *TAnchorSide) {
     ScrollBar_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TScrollBar) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(ScrollBar_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TScrollBar) SetAnchorSideTop(value *TAnchorSide) {
     ScrollBar_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TScrollBar) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(ScrollBar_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TScrollBar) SetAnchorSideRight(value *TAnchorSide) {
     ScrollBar_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TScrollBar) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(ScrollBar_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TScrollBar) SetAnchorSideBottom(value *TAnchorSide) {
     ScrollBar_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
@@ -1007,10 +1035,14 @@ func (s *TScrollBar) SetChildSizing(value *TControlChildSizing) {
     ScrollBar_SetChildSizing(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TScrollBar) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(ScrollBar_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TScrollBar) SetBorderSpacing(value *TControlBorderSpacing) {
     ScrollBar_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -1033,6 +1065,8 @@ func (s *TScrollBar) Components(AIndex int32) *TComponent {
     return AsComponent(ScrollBar_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TScrollBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(ScrollBar_GetAnchorSide(s.instance, AKind))
 }

@@ -391,10 +391,14 @@ func (v *TValueListEditor) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibl
     ValueListEditor_AnchorParallel(v.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (v *TValueListEditor) AnchorHorizontalCenterTo(ASibling IControl) {
     ValueListEditor_AnchorHorizontalCenterTo(v.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (v *TValueListEditor) AnchorVerticalCenterTo(ASibling IControl) {
     ValueListEditor_AnchorVerticalCenterTo(v.instance, CheckPtr(ASibling))
 }
@@ -483,10 +487,14 @@ func (v *TValueListEditor) SetColor(value TColor) {
     ValueListEditor_SetColor(v.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (v *TValueListEditor) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ValueListEditor_GetConstraints(v.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (v *TValueListEditor) SetConstraints(value *TSizeConstraints) {
     ValueListEditor_SetConstraints(v.instance, CheckPtr(value))
 }
@@ -655,10 +663,14 @@ func (v *TValueListEditor) SetParentFont(value bool) {
     ValueListEditor_SetParentFont(v.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (v *TValueListEditor) ParentShowHint() bool {
     return ValueListEditor_GetParentShowHint(v.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (v *TValueListEditor) SetParentShowHint(value bool) {
     ValueListEditor_SetParentShowHint(v.instance, value)
 }
@@ -1229,34 +1241,50 @@ func (v *TValueListEditor) SetTag(value int) {
     ValueListEditor_SetTag(v.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (v *TValueListEditor) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(ValueListEditor_GetAnchorSideLeft(v.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (v *TValueListEditor) SetAnchorSideLeft(value *TAnchorSide) {
     ValueListEditor_SetAnchorSideLeft(v.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (v *TValueListEditor) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(ValueListEditor_GetAnchorSideTop(v.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (v *TValueListEditor) SetAnchorSideTop(value *TAnchorSide) {
     ValueListEditor_SetAnchorSideTop(v.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (v *TValueListEditor) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(ValueListEditor_GetAnchorSideRight(v.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (v *TValueListEditor) SetAnchorSideRight(value *TAnchorSide) {
     ValueListEditor_SetAnchorSideRight(v.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (v *TValueListEditor) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(ValueListEditor_GetAnchorSideBottom(v.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (v *TValueListEditor) SetAnchorSideBottom(value *TAnchorSide) {
     ValueListEditor_SetAnchorSideBottom(v.instance, CheckPtr(value))
 }
@@ -1269,10 +1297,14 @@ func (v *TValueListEditor) SetChildSizing(value *TControlChildSizing) {
     ValueListEditor_SetChildSizing(v.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (v *TValueListEditor) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(ValueListEditor_GetBorderSpacing(v.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (v *TValueListEditor) SetBorderSpacing(value *TControlBorderSpacing) {
     ValueListEditor_SetBorderSpacing(v.instance, CheckPtr(value))
 }
@@ -1327,6 +1359,8 @@ func (v *TValueListEditor) Components(AIndex int32) *TComponent {
     return AsComponent(ValueListEditor_GetComponents(v.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (v *TValueListEditor) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(ValueListEditor_GetAnchorSide(v.instance, AKind))
 }

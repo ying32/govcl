@@ -379,10 +379,14 @@ func (w *TWinControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling I
     WinControl_AnchorParallel(w.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (w *TWinControl) AnchorHorizontalCenterTo(ASibling IControl) {
     WinControl_AnchorHorizontalCenterTo(w.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (w *TWinControl) AnchorVerticalCenterTo(ASibling IControl) {
     WinControl_AnchorVerticalCenterTo(w.instance, CheckPtr(ASibling))
 }
@@ -609,10 +613,14 @@ func (w *TWinControl) SetClientWidth(value int32) {
     WinControl_SetClientWidth(w.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (w *TWinControl) Constraints() *TSizeConstraints {
     return AsSizeConstraints(WinControl_GetConstraints(w.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (w *TWinControl) SetConstraints(value *TSizeConstraints) {
     WinControl_SetConstraints(w.instance, CheckPtr(value))
 }
@@ -801,34 +809,50 @@ func (w *TWinControl) SetTag(value int) {
     WinControl_SetTag(w.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (w *TWinControl) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(WinControl_GetAnchorSideLeft(w.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (w *TWinControl) SetAnchorSideLeft(value *TAnchorSide) {
     WinControl_SetAnchorSideLeft(w.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (w *TWinControl) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(WinControl_GetAnchorSideTop(w.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (w *TWinControl) SetAnchorSideTop(value *TAnchorSide) {
     WinControl_SetAnchorSideTop(w.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (w *TWinControl) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(WinControl_GetAnchorSideRight(w.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (w *TWinControl) SetAnchorSideRight(value *TAnchorSide) {
     WinControl_SetAnchorSideRight(w.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (w *TWinControl) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(WinControl_GetAnchorSideBottom(w.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (w *TWinControl) SetAnchorSideBottom(value *TAnchorSide) {
     WinControl_SetAnchorSideBottom(w.instance, CheckPtr(value))
 }
@@ -841,10 +865,14 @@ func (w *TWinControl) SetChildSizing(value *TControlChildSizing) {
     WinControl_SetChildSizing(w.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (w *TWinControl) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(WinControl_GetBorderSpacing(w.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (w *TWinControl) SetBorderSpacing(value *TControlBorderSpacing) {
     WinControl_SetBorderSpacing(w.instance, CheckPtr(value))
 }
@@ -867,6 +895,8 @@ func (w *TWinControl) Components(AIndex int32) *TComponent {
     return AsComponent(WinControl_GetComponents(w.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (w *TWinControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(WinControl_GetAnchorSide(w.instance, AKind))
 }

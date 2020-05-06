@@ -291,10 +291,14 @@ func (b *TBevel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContr
     Bevel_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (b *TBevel) AnchorHorizontalCenterTo(ASibling IControl) {
     Bevel_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (b *TBevel) AnchorVerticalCenterTo(ASibling IControl) {
     Bevel_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
 }
@@ -331,18 +335,26 @@ func (b *TBevel) SetAnchors(value TAnchors) {
     Bevel_SetAnchors(b.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (b *TBevel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Bevel_GetConstraints(b.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (b *TBevel) SetConstraints(value *TSizeConstraints) {
     Bevel_SetConstraints(b.instance, CheckPtr(value))
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBevel) ParentShowHint() bool {
     return Bevel_GetParentShowHint(b.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBevel) SetParentShowHint(value bool) {
     Bevel_SetParentShowHint(b.instance, value)
 }
@@ -617,42 +629,62 @@ func (b *TBevel) SetTag(value int) {
     Bevel_SetTag(b.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (b *TBevel) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Bevel_GetAnchorSideLeft(b.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (b *TBevel) SetAnchorSideLeft(value *TAnchorSide) {
     Bevel_SetAnchorSideLeft(b.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (b *TBevel) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Bevel_GetAnchorSideTop(b.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (b *TBevel) SetAnchorSideTop(value *TAnchorSide) {
     Bevel_SetAnchorSideTop(b.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (b *TBevel) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Bevel_GetAnchorSideRight(b.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (b *TBevel) SetAnchorSideRight(value *TAnchorSide) {
     Bevel_SetAnchorSideRight(b.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (b *TBevel) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Bevel_GetAnchorSideBottom(b.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (b *TBevel) SetAnchorSideBottom(value *TAnchorSide) {
     Bevel_SetAnchorSideBottom(b.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (b *TBevel) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Bevel_GetBorderSpacing(b.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (b *TBevel) SetBorderSpacing(value *TControlBorderSpacing) {
     Bevel_SetBorderSpacing(b.instance, CheckPtr(value))
 }
@@ -663,6 +695,8 @@ func (b *TBevel) Components(AIndex int32) *TComponent {
     return AsComponent(Bevel_GetComponents(b.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (b *TBevel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Bevel_GetAnchorSide(b.instance, AKind))
 }

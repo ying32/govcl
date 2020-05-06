@@ -297,10 +297,14 @@ func (s *TSpeedButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling 
     SpeedButton_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TSpeedButton) AnchorHorizontalCenterTo(ASibling IControl) {
     SpeedButton_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TSpeedButton) AnchorVerticalCenterTo(ASibling IControl) {
     SpeedButton_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -401,10 +405,14 @@ func (s *TSpeedButton) SetBiDiMode(value TBiDiMode) {
     SpeedButton_SetBiDiMode(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TSpeedButton) Constraints() *TSizeConstraints {
     return AsSizeConstraints(SpeedButton_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TSpeedButton) SetConstraints(value *TSizeConstraints) {
     SpeedButton_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -513,10 +521,14 @@ func (s *TSpeedButton) SetParentFont(value bool) {
     SpeedButton_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TSpeedButton) ParentShowHint() bool {
     return SpeedButton_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TSpeedButton) SetParentShowHint(value bool) {
     SpeedButton_SetParentShowHint(s.instance, value)
 }
@@ -821,42 +833,62 @@ func (s *TSpeedButton) SetTag(value int) {
     SpeedButton_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TSpeedButton) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(SpeedButton_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TSpeedButton) SetAnchorSideLeft(value *TAnchorSide) {
     SpeedButton_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TSpeedButton) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(SpeedButton_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TSpeedButton) SetAnchorSideTop(value *TAnchorSide) {
     SpeedButton_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TSpeedButton) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(SpeedButton_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TSpeedButton) SetAnchorSideRight(value *TAnchorSide) {
     SpeedButton_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TSpeedButton) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(SpeedButton_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TSpeedButton) SetAnchorSideBottom(value *TAnchorSide) {
     SpeedButton_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TSpeedButton) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(SpeedButton_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TSpeedButton) SetBorderSpacing(value *TControlBorderSpacing) {
     SpeedButton_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -867,6 +899,8 @@ func (s *TSpeedButton) Components(AIndex int32) *TComponent {
     return AsComponent(SpeedButton_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TSpeedButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(SpeedButton_GetAnchorSide(s.instance, AKind))
 }

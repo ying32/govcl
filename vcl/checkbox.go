@@ -379,10 +379,14 @@ func (c *TCheckBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     CheckBox_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (c *TCheckBox) AnchorHorizontalCenterTo(ASibling IControl) {
     CheckBox_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (c *TCheckBox) AnchorVerticalCenterTo(ASibling IControl) {
     CheckBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
@@ -491,10 +495,14 @@ func (c *TCheckBox) SetColor(value TColor) {
     CheckBox_SetColor(c.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (c *TCheckBox) Constraints() *TSizeConstraints {
     return AsSizeConstraints(CheckBox_GetConstraints(c.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (c *TCheckBox) SetConstraints(value *TSizeConstraints) {
     CheckBox_SetConstraints(c.instance, CheckPtr(value))
 }
@@ -607,10 +615,14 @@ func (c *TCheckBox) SetParentFont(value bool) {
     CheckBox_SetParentFont(c.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (c *TCheckBox) ParentShowHint() bool {
     return CheckBox_GetParentShowHint(c.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (c *TCheckBox) SetParentShowHint(value bool) {
     CheckBox_SetParentShowHint(c.instance, value)
 }
@@ -1045,34 +1057,50 @@ func (c *TCheckBox) SetTag(value int) {
     CheckBox_SetTag(c.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (c *TCheckBox) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(CheckBox_GetAnchorSideLeft(c.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (c *TCheckBox) SetAnchorSideLeft(value *TAnchorSide) {
     CheckBox_SetAnchorSideLeft(c.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (c *TCheckBox) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(CheckBox_GetAnchorSideTop(c.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (c *TCheckBox) SetAnchorSideTop(value *TAnchorSide) {
     CheckBox_SetAnchorSideTop(c.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (c *TCheckBox) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(CheckBox_GetAnchorSideRight(c.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (c *TCheckBox) SetAnchorSideRight(value *TAnchorSide) {
     CheckBox_SetAnchorSideRight(c.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (c *TCheckBox) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(CheckBox_GetAnchorSideBottom(c.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (c *TCheckBox) SetAnchorSideBottom(value *TAnchorSide) {
     CheckBox_SetAnchorSideBottom(c.instance, CheckPtr(value))
 }
@@ -1085,10 +1113,14 @@ func (c *TCheckBox) SetChildSizing(value *TControlChildSizing) {
     CheckBox_SetChildSizing(c.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (c *TCheckBox) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(CheckBox_GetBorderSpacing(c.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (c *TCheckBox) SetBorderSpacing(value *TControlBorderSpacing) {
     CheckBox_SetBorderSpacing(c.instance, CheckPtr(value))
 }
@@ -1111,6 +1143,8 @@ func (c *TCheckBox) Components(AIndex int32) *TComponent {
     return AsComponent(CheckBox_GetComponents(c.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (c *TCheckBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(CheckBox_GetAnchorSide(c.instance, AKind))
 }

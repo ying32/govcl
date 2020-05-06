@@ -291,10 +291,14 @@ func (l *TLinkLabel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IC
     LinkLabel_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (l *TLinkLabel) AnchorHorizontalCenterTo(ASibling IControl) {
     LinkLabel_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (l *TLinkLabel) AnchorVerticalCenterTo(ASibling IControl) {
     LinkLabel_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
@@ -379,10 +383,14 @@ func (l *TLinkLabel) SetColor(value TColor) {
     LinkLabel_SetColor(l.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (l *TLinkLabel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(LinkLabel_GetConstraints(l.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (l *TLinkLabel) SetConstraints(value *TSizeConstraints) {
     LinkLabel_SetConstraints(l.instance, CheckPtr(value))
 }
@@ -471,10 +479,14 @@ func (l *TLinkLabel) SetParentFont(value bool) {
     LinkLabel_SetParentFont(l.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (l *TLinkLabel) ParentShowHint() bool {
     return LinkLabel_GetParentShowHint(l.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (l *TLinkLabel) SetParentShowHint(value bool) {
     LinkLabel_SetParentShowHint(l.instance, value)
 }
@@ -797,42 +809,62 @@ func (l *TLinkLabel) SetTag(value int) {
     LinkLabel_SetTag(l.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (l *TLinkLabel) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideLeft(l.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (l *TLinkLabel) SetAnchorSideLeft(value *TAnchorSide) {
     LinkLabel_SetAnchorSideLeft(l.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (l *TLinkLabel) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideTop(l.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (l *TLinkLabel) SetAnchorSideTop(value *TAnchorSide) {
     LinkLabel_SetAnchorSideTop(l.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (l *TLinkLabel) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideRight(l.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (l *TLinkLabel) SetAnchorSideRight(value *TAnchorSide) {
     LinkLabel_SetAnchorSideRight(l.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (l *TLinkLabel) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSideBottom(l.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (l *TLinkLabel) SetAnchorSideBottom(value *TAnchorSide) {
     LinkLabel_SetAnchorSideBottom(l.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (l *TLinkLabel) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(LinkLabel_GetBorderSpacing(l.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (l *TLinkLabel) SetBorderSpacing(value *TControlBorderSpacing) {
     LinkLabel_SetBorderSpacing(l.instance, CheckPtr(value))
 }
@@ -843,6 +875,8 @@ func (l *TLinkLabel) Components(AIndex int32) *TComponent {
     return AsComponent(LinkLabel_GetComponents(l.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (l *TLinkLabel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(LinkLabel_GetAnchorSide(l.instance, AKind))
 }

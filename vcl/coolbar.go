@@ -373,10 +373,14 @@ func (c *TCoolBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICon
     CoolBar_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (c *TCoolBar) AnchorHorizontalCenterTo(ASibling IControl) {
     CoolBar_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (c *TCoolBar) AnchorVerticalCenterTo(ASibling IControl) {
     CoolBar_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
@@ -473,10 +477,14 @@ func (c *TCoolBar) SetColor(value TColor) {
     CoolBar_SetColor(c.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (c *TCoolBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(CoolBar_GetConstraints(c.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (c *TCoolBar) SetConstraints(value *TSizeConstraints) {
     CoolBar_SetConstraints(c.instance, CheckPtr(value))
 }
@@ -653,10 +661,14 @@ func (c *TCoolBar) SetParentFont(value bool) {
     CoolBar_SetParentFont(c.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (c *TCoolBar) ParentShowHint() bool {
     return CoolBar_GetParentShowHint(c.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (c *TCoolBar) SetParentShowHint(value bool) {
     CoolBar_SetParentShowHint(c.instance, value)
 }
@@ -1125,34 +1137,50 @@ func (c *TCoolBar) SetTag(value int) {
     CoolBar_SetTag(c.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (c *TCoolBar) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(CoolBar_GetAnchorSideLeft(c.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (c *TCoolBar) SetAnchorSideLeft(value *TAnchorSide) {
     CoolBar_SetAnchorSideLeft(c.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (c *TCoolBar) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(CoolBar_GetAnchorSideTop(c.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (c *TCoolBar) SetAnchorSideTop(value *TAnchorSide) {
     CoolBar_SetAnchorSideTop(c.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (c *TCoolBar) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(CoolBar_GetAnchorSideRight(c.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (c *TCoolBar) SetAnchorSideRight(value *TAnchorSide) {
     CoolBar_SetAnchorSideRight(c.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (c *TCoolBar) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(CoolBar_GetAnchorSideBottom(c.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (c *TCoolBar) SetAnchorSideBottom(value *TAnchorSide) {
     CoolBar_SetAnchorSideBottom(c.instance, CheckPtr(value))
 }
@@ -1165,10 +1193,14 @@ func (c *TCoolBar) SetChildSizing(value *TControlChildSizing) {
     CoolBar_SetChildSizing(c.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (c *TCoolBar) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(CoolBar_GetBorderSpacing(c.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (c *TCoolBar) SetBorderSpacing(value *TControlBorderSpacing) {
     CoolBar_SetBorderSpacing(c.instance, CheckPtr(value))
 }
@@ -1191,6 +1223,8 @@ func (c *TCoolBar) Components(AIndex int32) *TComponent {
     return AsComponent(CoolBar_GetComponents(c.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (c *TCoolBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(CoolBar_GetAnchorSide(c.instance, AKind))
 }

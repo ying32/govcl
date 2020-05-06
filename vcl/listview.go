@@ -417,10 +417,14 @@ func (l *TListView) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     ListView_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (l *TListView) AnchorHorizontalCenterTo(ASibling IControl) {
     ListView_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (l *TListView) AnchorVerticalCenterTo(ASibling IControl) {
     ListView_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
 }
@@ -621,10 +625,14 @@ func (l *TListView) SetColumnClick(value bool) {
     ListView_SetColumnClick(l.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (l *TListView) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ListView_GetConstraints(l.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (l *TListView) SetConstraints(value *TSizeConstraints) {
     ListView_SetConstraints(l.instance, CheckPtr(value))
 }
@@ -849,10 +857,14 @@ func (l *TListView) SetParentFont(value bool) {
     ListView_SetParentFont(l.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (l *TListView) ParentShowHint() bool {
     return ListView_GetParentShowHint(l.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (l *TListView) SetParentShowHint(value bool) {
     ListView_SetParentShowHint(l.instance, value)
 }
@@ -1459,34 +1471,50 @@ func (l *TListView) SetTag(value int) {
     ListView_SetTag(l.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (l *TListView) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(ListView_GetAnchorSideLeft(l.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (l *TListView) SetAnchorSideLeft(value *TAnchorSide) {
     ListView_SetAnchorSideLeft(l.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (l *TListView) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(ListView_GetAnchorSideTop(l.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (l *TListView) SetAnchorSideTop(value *TAnchorSide) {
     ListView_SetAnchorSideTop(l.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (l *TListView) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(ListView_GetAnchorSideRight(l.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (l *TListView) SetAnchorSideRight(value *TAnchorSide) {
     ListView_SetAnchorSideRight(l.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (l *TListView) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(ListView_GetAnchorSideBottom(l.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (l *TListView) SetAnchorSideBottom(value *TAnchorSide) {
     ListView_SetAnchorSideBottom(l.instance, CheckPtr(value))
 }
@@ -1499,10 +1527,14 @@ func (l *TListView) SetChildSizing(value *TControlChildSizing) {
     ListView_SetChildSizing(l.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (l *TListView) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(ListView_GetBorderSpacing(l.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (l *TListView) SetBorderSpacing(value *TControlBorderSpacing) {
     ListView_SetBorderSpacing(l.instance, CheckPtr(value))
 }
@@ -1529,6 +1561,8 @@ func (l *TListView) Components(AIndex int32) *TComponent {
     return AsComponent(ListView_GetComponents(l.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (l *TListView) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(ListView_GetAnchorSide(l.instance, AKind))
 }

@@ -379,10 +379,14 @@ func (s *TStaticText) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling I
     StaticText_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TStaticText) AnchorHorizontalCenterTo(ASibling IControl) {
     StaticText_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TStaticText) AnchorVerticalCenterTo(ASibling IControl) {
     StaticText_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -487,10 +491,14 @@ func (s *TStaticText) SetColor(value TColor) {
     StaticText_SetColor(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TStaticText) Constraints() *TSizeConstraints {
     return AsSizeConstraints(StaticText_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TStaticText) SetConstraints(value *TSizeConstraints) {
     StaticText_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -603,10 +611,14 @@ func (s *TStaticText) SetParentFont(value bool) {
     StaticText_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStaticText) ParentShowHint() bool {
     return StaticText_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStaticText) SetParentShowHint(value bool) {
     StaticText_SetParentShowHint(s.instance, value)
 }
@@ -1039,34 +1051,50 @@ func (s *TStaticText) SetTag(value int) {
     StaticText_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TStaticText) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(StaticText_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TStaticText) SetAnchorSideLeft(value *TAnchorSide) {
     StaticText_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TStaticText) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(StaticText_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TStaticText) SetAnchorSideTop(value *TAnchorSide) {
     StaticText_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TStaticText) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(StaticText_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TStaticText) SetAnchorSideRight(value *TAnchorSide) {
     StaticText_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TStaticText) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(StaticText_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TStaticText) SetAnchorSideBottom(value *TAnchorSide) {
     StaticText_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
@@ -1079,10 +1107,14 @@ func (s *TStaticText) SetChildSizing(value *TControlChildSizing) {
     StaticText_SetChildSizing(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TStaticText) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(StaticText_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TStaticText) SetBorderSpacing(value *TControlBorderSpacing) {
     StaticText_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -1105,6 +1137,8 @@ func (s *TStaticText) Components(AIndex int32) *TComponent {
     return AsComponent(StaticText_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TStaticText) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(StaticText_GetAnchorSide(s.instance, AKind))
 }

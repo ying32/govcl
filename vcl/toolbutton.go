@@ -301,10 +301,14 @@ func (t *TToolButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling I
     ToolButton_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (t *TToolButton) AnchorHorizontalCenterTo(ASibling IControl) {
     ToolButton_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (t *TToolButton) AnchorVerticalCenterTo(ASibling IControl) {
     ToolButton_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
@@ -473,10 +477,14 @@ func (t *TToolButton) SetMarked(value bool) {
     ToolButton_SetMarked(t.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (t *TToolButton) ParentShowHint() bool {
     return ToolButton_GetParentShowHint(t.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (t *TToolButton) SetParentShowHint(value bool) {
     ToolButton_SetParentShowHint(t.instance, value)
 }
@@ -691,10 +699,14 @@ func (t *TToolButton) SetClientWidth(value int32) {
     ToolButton_SetClientWidth(t.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (t *TToolButton) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ToolButton_GetConstraints(t.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (t *TToolButton) SetConstraints(value *TSizeConstraints) {
     ToolButton_SetConstraints(t.instance, CheckPtr(value))
 }
@@ -835,42 +847,62 @@ func (t *TToolButton) SetTag(value int) {
     ToolButton_SetTag(t.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (t *TToolButton) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(ToolButton_GetAnchorSideLeft(t.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (t *TToolButton) SetAnchorSideLeft(value *TAnchorSide) {
     ToolButton_SetAnchorSideLeft(t.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (t *TToolButton) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(ToolButton_GetAnchorSideTop(t.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (t *TToolButton) SetAnchorSideTop(value *TAnchorSide) {
     ToolButton_SetAnchorSideTop(t.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (t *TToolButton) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(ToolButton_GetAnchorSideRight(t.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (t *TToolButton) SetAnchorSideRight(value *TAnchorSide) {
     ToolButton_SetAnchorSideRight(t.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (t *TToolButton) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(ToolButton_GetAnchorSideBottom(t.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (t *TToolButton) SetAnchorSideBottom(value *TAnchorSide) {
     ToolButton_SetAnchorSideBottom(t.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (t *TToolButton) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(ToolButton_GetBorderSpacing(t.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (t *TToolButton) SetBorderSpacing(value *TControlBorderSpacing) {
     ToolButton_SetBorderSpacing(t.instance, CheckPtr(value))
 }
@@ -881,6 +913,8 @@ func (t *TToolButton) Components(AIndex int32) *TComponent {
     return AsComponent(ToolButton_GetComponents(t.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (t *TToolButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(ToolButton_GetAnchorSide(t.instance, AKind))
 }

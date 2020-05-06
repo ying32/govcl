@@ -291,10 +291,14 @@ func (s *TShape) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContr
     Shape_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TShape) AnchorHorizontalCenterTo(ASibling IControl) {
     Shape_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TShape) AnchorVerticalCenterTo(ASibling IControl) {
     Shape_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -391,18 +395,26 @@ func (s *TShape) SetEnabled(value bool) {
     Shape_SetEnabled(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TShape) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Shape_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TShape) SetConstraints(value *TSizeConstraints) {
     Shape_SetConstraints(s.instance, CheckPtr(value))
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TShape) ParentShowHint() bool {
     return Shape_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TShape) SetParentShowHint(value bool) {
     Shape_SetParentShowHint(s.instance, value)
 }
@@ -713,42 +725,62 @@ func (s *TShape) SetTag(value int) {
     Shape_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TShape) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Shape_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TShape) SetAnchorSideLeft(value *TAnchorSide) {
     Shape_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TShape) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Shape_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TShape) SetAnchorSideTop(value *TAnchorSide) {
     Shape_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TShape) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Shape_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TShape) SetAnchorSideRight(value *TAnchorSide) {
     Shape_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TShape) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Shape_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TShape) SetAnchorSideBottom(value *TAnchorSide) {
     Shape_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TShape) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Shape_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TShape) SetBorderSpacing(value *TControlBorderSpacing) {
     Shape_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -759,6 +791,8 @@ func (s *TShape) Components(AIndex int32) *TComponent {
     return AsComponent(Shape_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TShape) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Shape_GetAnchorSide(s.instance, AKind))
 }

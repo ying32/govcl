@@ -421,10 +421,14 @@ func (m *TMemo) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContro
     Memo_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (m *TMemo) AnchorHorizontalCenterTo(ASibling IControl) {
     Memo_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (m *TMemo) AnchorVerticalCenterTo(ASibling IControl) {
     Memo_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
 }
@@ -513,10 +517,14 @@ func (m *TMemo) SetColor(value TColor) {
     Memo_SetColor(m.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (m *TMemo) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Memo_GetConstraints(m.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (m *TMemo) SetConstraints(value *TSizeConstraints) {
     Memo_SetConstraints(m.instance, CheckPtr(value))
 }
@@ -661,10 +669,14 @@ func (m *TMemo) SetParentFont(value bool) {
     Memo_SetParentFont(m.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (m *TMemo) ParentShowHint() bool {
     return Memo_GetParentShowHint(m.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (m *TMemo) SetParentShowHint(value bool) {
     Memo_SetParentShowHint(m.instance, value)
 }
@@ -1251,34 +1263,50 @@ func (m *TMemo) SetTag(value int) {
     Memo_SetTag(m.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (m *TMemo) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Memo_GetAnchorSideLeft(m.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (m *TMemo) SetAnchorSideLeft(value *TAnchorSide) {
     Memo_SetAnchorSideLeft(m.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (m *TMemo) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Memo_GetAnchorSideTop(m.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (m *TMemo) SetAnchorSideTop(value *TAnchorSide) {
     Memo_SetAnchorSideTop(m.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (m *TMemo) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Memo_GetAnchorSideRight(m.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (m *TMemo) SetAnchorSideRight(value *TAnchorSide) {
     Memo_SetAnchorSideRight(m.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (m *TMemo) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Memo_GetAnchorSideBottom(m.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (m *TMemo) SetAnchorSideBottom(value *TAnchorSide) {
     Memo_SetAnchorSideBottom(m.instance, CheckPtr(value))
 }
@@ -1291,10 +1319,14 @@ func (m *TMemo) SetChildSizing(value *TControlChildSizing) {
     Memo_SetChildSizing(m.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (m *TMemo) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Memo_GetBorderSpacing(m.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (m *TMemo) SetBorderSpacing(value *TControlBorderSpacing) {
     Memo_SetBorderSpacing(m.instance, CheckPtr(value))
 }
@@ -1317,6 +1349,8 @@ func (m *TMemo) Components(AIndex int32) *TComponent {
     return AsComponent(Memo_GetComponents(m.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (m *TMemo) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Memo_GetAnchorSide(m.instance, AKind))
 }

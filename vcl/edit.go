@@ -421,10 +421,14 @@ func (e *TEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IContro
     Edit_AnchorParallel(e.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (e *TEdit) AnchorHorizontalCenterTo(ASibling IControl) {
     Edit_AnchorHorizontalCenterTo(e.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (e *TEdit) AnchorVerticalCenterTo(ASibling IControl) {
     Edit_AnchorVerticalCenterTo(e.instance, CheckPtr(ASibling))
 }
@@ -537,10 +541,14 @@ func (e *TEdit) SetColor(value TColor) {
     Edit_SetColor(e.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (e *TEdit) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Edit_GetConstraints(e.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (e *TEdit) SetConstraints(value *TSizeConstraints) {
     Edit_SetConstraints(e.instance, CheckPtr(value))
 }
@@ -689,10 +697,14 @@ func (e *TEdit) SetParentFont(value bool) {
     Edit_SetParentFont(e.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (e *TEdit) ParentShowHint() bool {
     return Edit_GetParentShowHint(e.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (e *TEdit) SetParentShowHint(value bool) {
     Edit_SetParentShowHint(e.instance, value)
 }
@@ -1247,34 +1259,50 @@ func (e *TEdit) SetTag(value int) {
     Edit_SetTag(e.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (e *TEdit) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Edit_GetAnchorSideLeft(e.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (e *TEdit) SetAnchorSideLeft(value *TAnchorSide) {
     Edit_SetAnchorSideLeft(e.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (e *TEdit) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Edit_GetAnchorSideTop(e.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (e *TEdit) SetAnchorSideTop(value *TAnchorSide) {
     Edit_SetAnchorSideTop(e.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (e *TEdit) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Edit_GetAnchorSideRight(e.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (e *TEdit) SetAnchorSideRight(value *TAnchorSide) {
     Edit_SetAnchorSideRight(e.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (e *TEdit) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Edit_GetAnchorSideBottom(e.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (e *TEdit) SetAnchorSideBottom(value *TAnchorSide) {
     Edit_SetAnchorSideBottom(e.instance, CheckPtr(value))
 }
@@ -1287,10 +1315,14 @@ func (e *TEdit) SetChildSizing(value *TControlChildSizing) {
     Edit_SetChildSizing(e.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (e *TEdit) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Edit_GetBorderSpacing(e.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (e *TEdit) SetBorderSpacing(value *TControlBorderSpacing) {
     Edit_SetBorderSpacing(e.instance, CheckPtr(value))
 }
@@ -1313,6 +1345,8 @@ func (e *TEdit) Components(AIndex int32) *TComponent {
     return AsComponent(Edit_GetComponents(e.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (e *TEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Edit_GetAnchorSide(e.instance, AKind))
 }

@@ -415,10 +415,14 @@ func (m *TMiniWebview) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling 
     MiniWebview_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (m *TMiniWebview) AnchorHorizontalCenterTo(ASibling IControl) {
     MiniWebview_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (m *TMiniWebview) AnchorVerticalCenterTo(ASibling IControl) {
     MiniWebview_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
 }
@@ -657,10 +661,14 @@ func (m *TMiniWebview) SetClientWidth(value int32) {
     MiniWebview_SetClientWidth(m.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (m *TMiniWebview) Constraints() *TSizeConstraints {
     return AsSizeConstraints(MiniWebview_GetConstraints(m.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (m *TMiniWebview) SetConstraints(value *TSizeConstraints) {
     MiniWebview_SetConstraints(m.instance, CheckPtr(value))
 }
@@ -849,34 +857,50 @@ func (m *TMiniWebview) SetTag(value int) {
     MiniWebview_SetTag(m.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (m *TMiniWebview) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(MiniWebview_GetAnchorSideLeft(m.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (m *TMiniWebview) SetAnchorSideLeft(value *TAnchorSide) {
     MiniWebview_SetAnchorSideLeft(m.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (m *TMiniWebview) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(MiniWebview_GetAnchorSideTop(m.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (m *TMiniWebview) SetAnchorSideTop(value *TAnchorSide) {
     MiniWebview_SetAnchorSideTop(m.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (m *TMiniWebview) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(MiniWebview_GetAnchorSideRight(m.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (m *TMiniWebview) SetAnchorSideRight(value *TAnchorSide) {
     MiniWebview_SetAnchorSideRight(m.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (m *TMiniWebview) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(MiniWebview_GetAnchorSideBottom(m.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (m *TMiniWebview) SetAnchorSideBottom(value *TAnchorSide) {
     MiniWebview_SetAnchorSideBottom(m.instance, CheckPtr(value))
 }
@@ -889,10 +913,14 @@ func (m *TMiniWebview) SetChildSizing(value *TControlChildSizing) {
     MiniWebview_SetChildSizing(m.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (m *TMiniWebview) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(MiniWebview_GetBorderSpacing(m.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (m *TMiniWebview) SetBorderSpacing(value *TControlBorderSpacing) {
     MiniWebview_SetBorderSpacing(m.instance, CheckPtr(value))
 }
@@ -915,6 +943,8 @@ func (m *TMiniWebview) Components(AIndex int32) *TComponent {
     return AsComponent(MiniWebview_GetComponents(m.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (m *TMiniWebview) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(MiniWebview_GetAnchorSide(m.instance, AKind))
 }

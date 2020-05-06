@@ -379,10 +379,14 @@ func (t *TTabSheet) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     TabSheet_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (t *TTabSheet) AnchorHorizontalCenterTo(ASibling IControl) {
     TabSheet_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (t *TTabSheet) AnchorVerticalCenterTo(ASibling IControl) {
     TabSheet_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
@@ -503,10 +507,14 @@ func (t *TTabSheet) SetLeft(value int32) {
     TabSheet_SetLeft(t.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (t *TTabSheet) Constraints() *TSizeConstraints {
     return AsSizeConstraints(TabSheet_GetConstraints(t.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (t *TTabSheet) SetConstraints(value *TSizeConstraints) {
     TabSheet_SetConstraints(t.instance, CheckPtr(value))
 }
@@ -543,10 +551,14 @@ func (t *TTabSheet) SetParentFont(value bool) {
     TabSheet_SetParentFont(t.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTabSheet) ParentShowHint() bool {
     return TabSheet_GetParentShowHint(t.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTabSheet) SetParentShowHint(value bool) {
     TabSheet_SetParentShowHint(t.instance, value)
 }
@@ -993,34 +1005,50 @@ func (t *TTabSheet) SetTag(value int) {
     TabSheet_SetTag(t.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (t *TTabSheet) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(TabSheet_GetAnchorSideLeft(t.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (t *TTabSheet) SetAnchorSideLeft(value *TAnchorSide) {
     TabSheet_SetAnchorSideLeft(t.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (t *TTabSheet) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(TabSheet_GetAnchorSideTop(t.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (t *TTabSheet) SetAnchorSideTop(value *TAnchorSide) {
     TabSheet_SetAnchorSideTop(t.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (t *TTabSheet) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(TabSheet_GetAnchorSideRight(t.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (t *TTabSheet) SetAnchorSideRight(value *TAnchorSide) {
     TabSheet_SetAnchorSideRight(t.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (t *TTabSheet) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(TabSheet_GetAnchorSideBottom(t.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (t *TTabSheet) SetAnchorSideBottom(value *TAnchorSide) {
     TabSheet_SetAnchorSideBottom(t.instance, CheckPtr(value))
 }
@@ -1033,10 +1061,14 @@ func (t *TTabSheet) SetChildSizing(value *TControlChildSizing) {
     TabSheet_SetChildSizing(t.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (t *TTabSheet) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(TabSheet_GetBorderSpacing(t.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (t *TTabSheet) SetBorderSpacing(value *TControlBorderSpacing) {
     TabSheet_SetBorderSpacing(t.instance, CheckPtr(value))
 }
@@ -1059,6 +1091,8 @@ func (t *TTabSheet) Components(AIndex int32) *TComponent {
     return AsComponent(TabSheet_GetComponents(t.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (t *TTabSheet) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(TabSheet_GetAnchorSide(t.instance, AKind))
 }

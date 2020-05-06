@@ -405,10 +405,14 @@ func (c *TColorBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     ColorBox_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (c *TColorBox) AnchorHorizontalCenterTo(ASibling IControl) {
     ColorBox_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (c *TColorBox) AnchorVerticalCenterTo(ASibling IControl) {
     ColorBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
 }
@@ -513,10 +517,14 @@ func (c *TColorBox) SetColor(value TColor) {
     ColorBox_SetColor(c.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (c *TColorBox) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ColorBox_GetConstraints(c.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (c *TColorBox) SetConstraints(value *TSizeConstraints) {
     ColorBox_SetConstraints(c.instance, CheckPtr(value))
 }
@@ -609,10 +617,14 @@ func (c *TColorBox) SetParentFont(value bool) {
     ColorBox_SetParentFont(c.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (c *TColorBox) ParentShowHint() bool {
     return ColorBox_GetParentShowHint(c.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (c *TColorBox) SetParentShowHint(value bool) {
     ColorBox_SetParentShowHint(c.instance, value)
 }
@@ -1113,34 +1125,50 @@ func (c *TColorBox) SetTag(value int) {
     ColorBox_SetTag(c.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (c *TColorBox) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(ColorBox_GetAnchorSideLeft(c.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (c *TColorBox) SetAnchorSideLeft(value *TAnchorSide) {
     ColorBox_SetAnchorSideLeft(c.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (c *TColorBox) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(ColorBox_GetAnchorSideTop(c.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (c *TColorBox) SetAnchorSideTop(value *TAnchorSide) {
     ColorBox_SetAnchorSideTop(c.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (c *TColorBox) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(ColorBox_GetAnchorSideRight(c.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (c *TColorBox) SetAnchorSideRight(value *TAnchorSide) {
     ColorBox_SetAnchorSideRight(c.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (c *TColorBox) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(ColorBox_GetAnchorSideBottom(c.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (c *TColorBox) SetAnchorSideBottom(value *TAnchorSide) {
     ColorBox_SetAnchorSideBottom(c.instance, CheckPtr(value))
 }
@@ -1153,10 +1181,14 @@ func (c *TColorBox) SetChildSizing(value *TControlChildSizing) {
     ColorBox_SetChildSizing(c.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (c *TColorBox) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(ColorBox_GetBorderSpacing(c.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (c *TColorBox) SetBorderSpacing(value *TControlBorderSpacing) {
     ColorBox_SetBorderSpacing(c.instance, CheckPtr(value))
 }
@@ -1187,6 +1219,8 @@ func (c *TColorBox) Components(AIndex int32) *TComponent {
     return AsComponent(ColorBox_GetComponents(c.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (c *TColorBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(ColorBox_GetAnchorSide(c.instance, AKind))
 }

@@ -291,10 +291,14 @@ func (s *TSplitter) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     Splitter_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TSplitter) AnchorHorizontalCenterTo(ASibling IControl) {
     Splitter_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TSplitter) AnchorVerticalCenterTo(ASibling IControl) {
     Splitter_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -357,10 +361,14 @@ func (s *TSplitter) SetCursor(value TCursor) {
     Splitter_SetCursor(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TSplitter) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Splitter_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TSplitter) SetConstraints(value *TSizeConstraints) {
     Splitter_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -637,42 +645,62 @@ func (s *TSplitter) SetTag(value int) {
     Splitter_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TSplitter) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(Splitter_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TSplitter) SetAnchorSideLeft(value *TAnchorSide) {
     Splitter_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TSplitter) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(Splitter_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TSplitter) SetAnchorSideTop(value *TAnchorSide) {
     Splitter_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TSplitter) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(Splitter_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TSplitter) SetAnchorSideRight(value *TAnchorSide) {
     Splitter_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TSplitter) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(Splitter_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TSplitter) SetAnchorSideBottom(value *TAnchorSide) {
     Splitter_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TSplitter) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(Splitter_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TSplitter) SetBorderSpacing(value *TControlBorderSpacing) {
     Splitter_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -683,6 +711,8 @@ func (s *TSplitter) Components(AIndex int32) *TComponent {
     return AsComponent(Splitter_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TSplitter) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(Splitter_GetAnchorSide(s.instance, AKind))
 }

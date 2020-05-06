@@ -425,10 +425,14 @@ func (m *TMaskEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     MaskEdit_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (m *TMaskEdit) AnchorHorizontalCenterTo(ASibling IControl) {
     MaskEdit_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (m *TMaskEdit) AnchorVerticalCenterTo(ASibling IControl) {
     MaskEdit_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
 }
@@ -541,10 +545,14 @@ func (m *TMaskEdit) SetColor(value TColor) {
     MaskEdit_SetColor(m.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (m *TMaskEdit) Constraints() *TSizeConstraints {
     return AsSizeConstraints(MaskEdit_GetConstraints(m.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (m *TMaskEdit) SetConstraints(value *TSizeConstraints) {
     MaskEdit_SetConstraints(m.instance, CheckPtr(value))
 }
@@ -669,10 +677,14 @@ func (m *TMaskEdit) SetParentFont(value bool) {
     MaskEdit_SetParentFont(m.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (m *TMaskEdit) ParentShowHint() bool {
     return MaskEdit_GetParentShowHint(m.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (m *TMaskEdit) SetParentShowHint(value bool) {
     MaskEdit_SetParentShowHint(m.instance, value)
 }
@@ -1245,34 +1257,50 @@ func (m *TMaskEdit) SetTag(value int) {
     MaskEdit_SetTag(m.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (m *TMaskEdit) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(MaskEdit_GetAnchorSideLeft(m.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (m *TMaskEdit) SetAnchorSideLeft(value *TAnchorSide) {
     MaskEdit_SetAnchorSideLeft(m.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (m *TMaskEdit) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(MaskEdit_GetAnchorSideTop(m.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (m *TMaskEdit) SetAnchorSideTop(value *TAnchorSide) {
     MaskEdit_SetAnchorSideTop(m.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (m *TMaskEdit) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(MaskEdit_GetAnchorSideRight(m.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (m *TMaskEdit) SetAnchorSideRight(value *TAnchorSide) {
     MaskEdit_SetAnchorSideRight(m.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (m *TMaskEdit) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(MaskEdit_GetAnchorSideBottom(m.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (m *TMaskEdit) SetAnchorSideBottom(value *TAnchorSide) {
     MaskEdit_SetAnchorSideBottom(m.instance, CheckPtr(value))
 }
@@ -1285,10 +1313,14 @@ func (m *TMaskEdit) SetChildSizing(value *TControlChildSizing) {
     MaskEdit_SetChildSizing(m.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (m *TMaskEdit) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(MaskEdit_GetBorderSpacing(m.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (m *TMaskEdit) SetBorderSpacing(value *TControlBorderSpacing) {
     MaskEdit_SetBorderSpacing(m.instance, CheckPtr(value))
 }
@@ -1311,6 +1343,8 @@ func (m *TMaskEdit) Components(AIndex int32) *TComponent {
     return AsComponent(MaskEdit_GetComponents(m.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (m *TMaskEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(MaskEdit_GetAnchorSide(m.instance, AKind))
 }

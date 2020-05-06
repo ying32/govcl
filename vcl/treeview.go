@@ -429,10 +429,14 @@ func (t *TTreeView) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     TreeView_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (t *TTreeView) AnchorHorizontalCenterTo(ASibling IControl) {
     TreeView_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (t *TTreeView) AnchorVerticalCenterTo(ASibling IControl) {
     TreeView_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
 }
@@ -649,10 +653,14 @@ func (t *TTreeView) SetColor(value TColor) {
     TreeView_SetColor(t.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (t *TTreeView) Constraints() *TSizeConstraints {
     return AsSizeConstraints(TreeView_GetConstraints(t.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (t *TTreeView) SetConstraints(value *TSizeConstraints) {
     TreeView_SetConstraints(t.instance, CheckPtr(value))
 }
@@ -821,10 +829,14 @@ func (t *TTreeView) SetParentFont(value bool) {
     TreeView_SetParentFont(t.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTreeView) ParentShowHint() bool {
     return TreeView_GetParentShowHint(t.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTreeView) SetParentShowHint(value bool) {
     TreeView_SetParentShowHint(t.instance, value)
 }
@@ -1433,34 +1445,50 @@ func (t *TTreeView) SetTag(value int) {
     TreeView_SetTag(t.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (t *TTreeView) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(TreeView_GetAnchorSideLeft(t.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (t *TTreeView) SetAnchorSideLeft(value *TAnchorSide) {
     TreeView_SetAnchorSideLeft(t.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (t *TTreeView) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(TreeView_GetAnchorSideTop(t.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (t *TTreeView) SetAnchorSideTop(value *TAnchorSide) {
     TreeView_SetAnchorSideTop(t.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (t *TTreeView) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(TreeView_GetAnchorSideRight(t.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (t *TTreeView) SetAnchorSideRight(value *TAnchorSide) {
     TreeView_SetAnchorSideRight(t.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (t *TTreeView) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(TreeView_GetAnchorSideBottom(t.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (t *TTreeView) SetAnchorSideBottom(value *TAnchorSide) {
     TreeView_SetAnchorSideBottom(t.instance, CheckPtr(value))
 }
@@ -1473,10 +1501,14 @@ func (t *TTreeView) SetChildSizing(value *TControlChildSizing) {
     TreeView_SetChildSizing(t.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (t *TTreeView) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(TreeView_GetBorderSpacing(t.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (t *TTreeView) SetBorderSpacing(value *TControlBorderSpacing) {
     TreeView_SetBorderSpacing(t.instance, CheckPtr(value))
 }
@@ -1503,6 +1535,8 @@ func (t *TTreeView) Components(AIndex int32) *TComponent {
     return AsComponent(TreeView_GetComponents(t.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (t *TTreeView) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(TreeView_GetAnchorSide(t.instance, AKind))
 }

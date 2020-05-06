@@ -391,10 +391,14 @@ func (s *TStringGrid) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling I
     StringGrid_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TStringGrid) AnchorHorizontalCenterTo(ASibling IControl) {
     StringGrid_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TStringGrid) AnchorVerticalCenterTo(ASibling IControl) {
     StringGrid_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -471,10 +475,14 @@ func (s *TStringGrid) SetColCount(value int32) {
     StringGrid_SetColCount(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TStringGrid) Constraints() *TSizeConstraints {
     return AsSizeConstraints(StringGrid_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TStringGrid) SetConstraints(value *TSizeConstraints) {
     StringGrid_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -659,10 +667,14 @@ func (s *TStringGrid) SetParentFont(value bool) {
     StringGrid_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStringGrid) ParentShowHint() bool {
     return StringGrid_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStringGrid) SetParentShowHint(value bool) {
     StringGrid_SetParentShowHint(s.instance, value)
 }
@@ -1237,34 +1249,50 @@ func (s *TStringGrid) SetTag(value int) {
     StringGrid_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TStringGrid) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(StringGrid_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TStringGrid) SetAnchorSideLeft(value *TAnchorSide) {
     StringGrid_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TStringGrid) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(StringGrid_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TStringGrid) SetAnchorSideTop(value *TAnchorSide) {
     StringGrid_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TStringGrid) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(StringGrid_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TStringGrid) SetAnchorSideRight(value *TAnchorSide) {
     StringGrid_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TStringGrid) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(StringGrid_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TStringGrid) SetAnchorSideBottom(value *TAnchorSide) {
     StringGrid_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
@@ -1277,10 +1305,14 @@ func (s *TStringGrid) SetChildSizing(value *TControlChildSizing) {
     StringGrid_SetChildSizing(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TStringGrid) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(StringGrid_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TStringGrid) SetBorderSpacing(value *TControlBorderSpacing) {
     StringGrid_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -1351,6 +1383,8 @@ func (s *TStringGrid) Components(AIndex int32) *TComponent {
     return AsComponent(StringGrid_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TStringGrid) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(StringGrid_GetAnchorSide(s.instance, AKind))
 }

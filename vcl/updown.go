@@ -379,10 +379,14 @@ func (u *TUpDown) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICont
     UpDown_AnchorParallel(u.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (u *TUpDown) AnchorHorizontalCenterTo(ASibling IControl) {
     UpDown_AnchorHorizontalCenterTo(u.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (u *TUpDown) AnchorVerticalCenterTo(ASibling IControl) {
     UpDown_AnchorVerticalCenterTo(u.instance, CheckPtr(ASibling))
 }
@@ -467,10 +471,14 @@ func (u *TUpDown) SetIncrement(value int32) {
     UpDown_SetIncrement(u.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (u *TUpDown) Constraints() *TSizeConstraints {
     return AsSizeConstraints(UpDown_GetConstraints(u.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (u *TUpDown) SetConstraints(value *TSizeConstraints) {
     UpDown_SetConstraints(u.instance, CheckPtr(value))
 }
@@ -495,10 +503,14 @@ func (u *TUpDown) SetParentDoubleBuffered(value bool) {
     UpDown_SetParentDoubleBuffered(u.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (u *TUpDown) ParentShowHint() bool {
     return UpDown_GetParentShowHint(u.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (u *TUpDown) SetParentShowHint(value bool) {
     UpDown_SetParentShowHint(u.instance, value)
 }
@@ -927,34 +939,50 @@ func (u *TUpDown) SetTag(value int) {
     UpDown_SetTag(u.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (u *TUpDown) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(UpDown_GetAnchorSideLeft(u.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (u *TUpDown) SetAnchorSideLeft(value *TAnchorSide) {
     UpDown_SetAnchorSideLeft(u.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (u *TUpDown) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(UpDown_GetAnchorSideTop(u.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (u *TUpDown) SetAnchorSideTop(value *TAnchorSide) {
     UpDown_SetAnchorSideTop(u.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (u *TUpDown) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(UpDown_GetAnchorSideRight(u.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (u *TUpDown) SetAnchorSideRight(value *TAnchorSide) {
     UpDown_SetAnchorSideRight(u.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (u *TUpDown) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(UpDown_GetAnchorSideBottom(u.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (u *TUpDown) SetAnchorSideBottom(value *TAnchorSide) {
     UpDown_SetAnchorSideBottom(u.instance, CheckPtr(value))
 }
@@ -967,10 +995,14 @@ func (u *TUpDown) SetChildSizing(value *TControlChildSizing) {
     UpDown_SetChildSizing(u.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (u *TUpDown) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(UpDown_GetBorderSpacing(u.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (u *TUpDown) SetBorderSpacing(value *TControlBorderSpacing) {
     UpDown_SetBorderSpacing(u.instance, CheckPtr(value))
 }
@@ -993,6 +1025,8 @@ func (u *TUpDown) Components(AIndex int32) *TComponent {
     return AsComponent(UpDown_GetComponents(u.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (u *TUpDown) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(UpDown_GetAnchorSide(u.instance, AKind))
 }

@@ -421,10 +421,14 @@ func (s *TSpinEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling ICo
     SpinEdit_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (s *TSpinEdit) AnchorHorizontalCenterTo(ASibling IControl) {
     SpinEdit_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (s *TSpinEdit) AnchorVerticalCenterTo(ASibling IControl) {
     SpinEdit_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
 }
@@ -485,10 +489,14 @@ func (s *TSpinEdit) SetColor(value TColor) {
     SpinEdit_SetColor(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TSpinEdit) Constraints() *TSizeConstraints {
     return AsSizeConstraints(SpinEdit_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TSpinEdit) SetConstraints(value *TSizeConstraints) {
     SpinEdit_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -577,10 +585,14 @@ func (s *TSpinEdit) SetParentFont(value bool) {
     SpinEdit_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TSpinEdit) ParentShowHint() bool {
     return SpinEdit_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TSpinEdit) SetParentShowHint(value bool) {
     SpinEdit_SetParentShowHint(s.instance, value)
 }
@@ -1145,34 +1157,50 @@ func (s *TSpinEdit) SetTag(value int) {
     SpinEdit_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (s *TSpinEdit) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(SpinEdit_GetAnchorSideLeft(s.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (s *TSpinEdit) SetAnchorSideLeft(value *TAnchorSide) {
     SpinEdit_SetAnchorSideLeft(s.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (s *TSpinEdit) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(SpinEdit_GetAnchorSideTop(s.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (s *TSpinEdit) SetAnchorSideTop(value *TAnchorSide) {
     SpinEdit_SetAnchorSideTop(s.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (s *TSpinEdit) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(SpinEdit_GetAnchorSideRight(s.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (s *TSpinEdit) SetAnchorSideRight(value *TAnchorSide) {
     SpinEdit_SetAnchorSideRight(s.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (s *TSpinEdit) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(SpinEdit_GetAnchorSideBottom(s.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (s *TSpinEdit) SetAnchorSideBottom(value *TAnchorSide) {
     SpinEdit_SetAnchorSideBottom(s.instance, CheckPtr(value))
 }
@@ -1185,10 +1213,14 @@ func (s *TSpinEdit) SetChildSizing(value *TControlChildSizing) {
     SpinEdit_SetChildSizing(s.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (s *TSpinEdit) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(SpinEdit_GetBorderSpacing(s.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (s *TSpinEdit) SetBorderSpacing(value *TControlBorderSpacing) {
     SpinEdit_SetBorderSpacing(s.instance, CheckPtr(value))
 }
@@ -1211,6 +1243,8 @@ func (s *TSpinEdit) Components(AIndex int32) *TComponent {
     return AsComponent(SpinEdit_GetComponents(s.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (s *TSpinEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(SpinEdit_GetAnchorSide(s.instance, AKind))
 }

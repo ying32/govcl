@@ -379,10 +379,14 @@ func (r *TRadioGroup) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling I
     RadioGroup_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的横向中心。
+// EN: .
 func (r *TRadioGroup) AnchorHorizontalCenterTo(ASibling IControl) {
     RadioGroup_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
 }
 
+// CN: 置于指定控件的纵向中心。
+// EN: .
 func (r *TRadioGroup) AnchorVerticalCenterTo(ASibling IControl) {
     RadioGroup_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
 }
@@ -535,10 +539,14 @@ func (r *TRadioGroup) SetItems(value IObject) {
     RadioGroup_SetItems(r.instance, CheckPtr(value))
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (r *TRadioGroup) Constraints() *TSizeConstraints {
     return AsSizeConstraints(RadioGroup_GetConstraints(r.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (r *TRadioGroup) SetConstraints(value *TSizeConstraints) {
     RadioGroup_SetConstraints(r.instance, CheckPtr(value))
 }
@@ -579,10 +587,14 @@ func (r *TRadioGroup) SetParentFont(value bool) {
     RadioGroup_SetParentFont(r.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRadioGroup) ParentShowHint() bool {
     return RadioGroup_GetParentShowHint(r.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRadioGroup) SetParentShowHint(value bool) {
     RadioGroup_SetParentShowHint(r.instance, value)
 }
@@ -965,34 +977,50 @@ func (r *TRadioGroup) SetTag(value int) {
     RadioGroup_SetTag(r.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
 func (r *TRadioGroup) AnchorSideLeft() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideLeft(r.instance))
 }
 
+// CN: 设置左边锚点。
+// EN: .
 func (r *TRadioGroup) SetAnchorSideLeft(value *TAnchorSide) {
     RadioGroup_SetAnchorSideLeft(r.instance, CheckPtr(value))
 }
 
+// CN: 获取顶边锚点。
+// EN: .
 func (r *TRadioGroup) AnchorSideTop() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideTop(r.instance))
 }
 
+// CN: 设置顶边锚点。
+// EN: .
 func (r *TRadioGroup) SetAnchorSideTop(value *TAnchorSide) {
     RadioGroup_SetAnchorSideTop(r.instance, CheckPtr(value))
 }
 
+// CN: 获取右边锚点。
+// EN: .
 func (r *TRadioGroup) AnchorSideRight() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideRight(r.instance))
 }
 
+// CN: 设置右边锚点。
+// EN: .
 func (r *TRadioGroup) SetAnchorSideRight(value *TAnchorSide) {
     RadioGroup_SetAnchorSideRight(r.instance, CheckPtr(value))
 }
 
+// CN: 获取底边锚点。
+// EN: .
 func (r *TRadioGroup) AnchorSideBottom() *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSideBottom(r.instance))
 }
 
+// CN: 设置底边锚点。
+// EN: .
 func (r *TRadioGroup) SetAnchorSideBottom(value *TAnchorSide) {
     RadioGroup_SetAnchorSideBottom(r.instance, CheckPtr(value))
 }
@@ -1005,10 +1033,14 @@ func (r *TRadioGroup) SetChildSizing(value *TControlChildSizing) {
     RadioGroup_SetChildSizing(r.instance, CheckPtr(value))
 }
 
+// CN: 获取边框间距。
+// EN: .
 func (r *TRadioGroup) BorderSpacing() *TControlBorderSpacing {
     return AsControlBorderSpacing(RadioGroup_GetBorderSpacing(r.instance))
 }
 
+// CN: 设置边框间距。
+// EN: .
 func (r *TRadioGroup) SetBorderSpacing(value *TControlBorderSpacing) {
     RadioGroup_SetBorderSpacing(r.instance, CheckPtr(value))
 }
@@ -1031,6 +1063,8 @@ func (r *TRadioGroup) Components(AIndex int32) *TComponent {
     return AsComponent(RadioGroup_GetComponents(r.instance, AIndex))
 }
 
+// CN: 获取锚侧面。
+// EN: .
 func (r *TRadioGroup) AnchorSide(AKind TAnchorKind) *TAnchorSide {
     return AsAnchorSide(RadioGroup_GetAnchorSide(r.instance, AKind))
 }
