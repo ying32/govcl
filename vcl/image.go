@@ -509,10 +509,14 @@ func (i *TImage) SetShowHint(value bool) {
     Image_SetShowHint(i.instance, value)
 }
 
+// CN: 获取拉伸缩放。
+// EN: .
 func (i *TImage) Stretch() bool {
     return Image_GetStretch(i.instance)
 }
 
+// CN: 设置拉伸缩放。
+// EN: .
 func (i *TImage) SetStretch(value bool) {
     Image_SetStretch(i.instance, value)
 }
