@@ -47,6 +47,8 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	//f.Button1.SetShowCaption(false)
 
 	f.Button1.SetBounds(10, 10, 80, 40)
+
+	f.Button1.SetOnClick(f.OnButton1Click)
 }
 
 func (f *TForm1) OnButton1Click(object vcl.IObject) {

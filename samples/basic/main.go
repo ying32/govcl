@@ -41,6 +41,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.Button1.SetCaption("窗口1")
 	f.Button1.SetLeft(50)
 	f.Button1.SetTop(50)
+	f.Button1.SetOnClick(f.OnButton1Click)
 
 }
 
@@ -61,7 +62,7 @@ func (f *TForm1) OnFormCreate(sender vcl.IObject) {
 	f.Button1.SetParent(f)
 	//f.Button1.SetName("Button1")
 	f.Button1.SetCaption("我是按钮")
-	//f.Button1.SetOnClick(f.OnButton1Click)
+	f.Button1.SetOnClick(f.OnButton1Click)
 }
 
 func (f *TForm1) OnButton1Click(object vcl.IObject) {
