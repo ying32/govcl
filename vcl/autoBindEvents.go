@@ -192,7 +192,7 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 				}
 			}
 			if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
-				findAndSetComponentName(vCtl, field.Name)
+				findAndSetComponentName(vCtl, field.Name, true)
 			}
 		}
 		bindSubComponentsEvents()
@@ -240,7 +240,7 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod
 }
 
 // findAndSetComponentName 查找并设置组件名称
-func findAndSetComponentName(v reflect.Value, name string) {
+func findAndSetComponentName(v reflect.Value, name string, clearDefault bool) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("Calling findAndSetComponentName exception:", err)
@@ -251,6 +251,11 @@ func findAndSetComponentName(v reflect.Value, name string) {
 	}
 	if setName := v.MethodByName("SetName"); setName.IsValid() {
 		setName.Call([]reflect.Value{reflect.ValueOf(name)})
+		if clearDefault {
+			if setTextBuf := v.MethodByName("SetTextBuf"); setTextBuf.IsValid() {
+				setTextBuf.Call([]reflect.Value{reflect.ValueOf("")})
+			}
+		}
 	}
 }
 
