@@ -214,7 +214,7 @@ end;
 
 function SpinEdit_GetTextLen(AObj: TSpinEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure SpinEdit_SetTextBuf(AObj: TSpinEdit; Buffer: PChar); extdecl;

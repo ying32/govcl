@@ -179,7 +179,7 @@ end;
 
 function WinControl_GetTextLen(AObj: TWinControl): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure WinControl_SetTextBuf(AObj: TWinControl; Buffer: PChar); extdecl;

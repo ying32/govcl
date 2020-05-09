@@ -109,7 +109,7 @@ end;
 
 function ImageButton_GetTextLen(AObj: TImageButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ImageButton_SetTextBuf(AObj: TImageButton; Buffer: PChar); extdecl;

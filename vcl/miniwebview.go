@@ -439,6 +439,54 @@ func (m *TMiniWebview) ReadyState() TReadyState {
     return MiniWebview_GetReadyState(m.instance)
 }
 
+// CN: 获取控件自动调整。
+// EN: Get Control automatically adjusts.
+func (m *TMiniWebview) Align() TAlign {
+    return MiniWebview_GetAlign(m.instance)
+}
+
+// CN: 设置控件自动调整。
+// EN: Set Control automatically adjusts.
+func (m *TMiniWebview) SetAlign(value TAlign) {
+    MiniWebview_SetAlign(m.instance, value)
+}
+
+// CN: 获取四个角位置的锚点。
+// EN: .
+func (m *TMiniWebview) Anchors() TAnchors {
+    return MiniWebview_GetAnchors(m.instance)
+}
+
+// CN: 设置四个角位置的锚点。
+// EN: .
+func (m *TMiniWebview) SetAnchors(value TAnchors) {
+    MiniWebview_SetAnchors(m.instance, value)
+}
+
+// CN: 获取控件启用。
+// EN: Get the control enabled.
+func (m *TMiniWebview) Enabled() bool {
+    return MiniWebview_GetEnabled(m.instance)
+}
+
+// CN: 设置控件启用。
+// EN: Set the control enabled.
+func (m *TMiniWebview) SetEnabled(value bool) {
+    MiniWebview_SetEnabled(m.instance, value)
+}
+
+// CN: 获取控件可视。
+// EN: Get the control visible.
+func (m *TMiniWebview) Visible() bool {
+    return MiniWebview_GetVisible(m.instance)
+}
+
+// CN: 设置控件可视。
+// EN: Set the control visible.
+func (m *TMiniWebview) SetVisible(value bool) {
+    MiniWebview_SetVisible(m.instance, value)
+}
+
 func (m *TMiniWebview) SetOnTitleChange(fn TWebTitleChangeEvent) {
     MiniWebview_SetOnTitleChange(m.instance, fn)
 }
@@ -567,48 +615,12 @@ func (m *TMiniWebview) SetUseDockManager(value bool) {
     MiniWebview_SetUseDockManager(m.instance, value)
 }
 
-// CN: 获取控件启用。
-// EN: Get the control enabled.
-func (m *TMiniWebview) Enabled() bool {
-    return MiniWebview_GetEnabled(m.instance)
-}
-
-// CN: 设置控件启用。
-// EN: Set the control enabled.
-func (m *TMiniWebview) SetEnabled(value bool) {
-    MiniWebview_SetEnabled(m.instance, value)
-}
-
 func (m *TMiniWebview) Action() *TAction {
     return AsAction(MiniWebview_GetAction(m.instance))
 }
 
 func (m *TMiniWebview) SetAction(value IComponent) {
     MiniWebview_SetAction(m.instance, CheckPtr(value))
-}
-
-// CN: 获取控件自动调整。
-// EN: Get Control automatically adjusts.
-func (m *TMiniWebview) Align() TAlign {
-    return MiniWebview_GetAlign(m.instance)
-}
-
-// CN: 设置控件自动调整。
-// EN: Set Control automatically adjusts.
-func (m *TMiniWebview) SetAlign(value TAlign) {
-    MiniWebview_SetAlign(m.instance, value)
-}
-
-// CN: 获取四个角位置的锚点。
-// EN: .
-func (m *TMiniWebview) Anchors() TAnchors {
-    return MiniWebview_GetAnchors(m.instance)
-}
-
-// CN: 设置四个角位置的锚点。
-// EN: .
-func (m *TMiniWebview) SetAnchors(value TAnchors) {
-    MiniWebview_SetAnchors(m.instance, value)
 }
 
 func (m *TMiniWebview) BiDiMode() TBiDiMode {
@@ -711,18 +723,6 @@ func (m *TMiniWebview) ShowHint() bool {
 // EN: Set Show mouseover tips.
 func (m *TMiniWebview) SetShowHint(value bool) {
     MiniWebview_SetShowHint(m.instance, value)
-}
-
-// CN: 获取控件可视。
-// EN: Get the control visible.
-func (m *TMiniWebview) Visible() bool {
-    return MiniWebview_GetVisible(m.instance)
-}
-
-// CN: 设置控件可视。
-// EN: Set the control visible.
-func (m *TMiniWebview) SetVisible(value bool) {
-    MiniWebview_SetVisible(m.instance, value)
 }
 
 // CN: 获取控件父容器。

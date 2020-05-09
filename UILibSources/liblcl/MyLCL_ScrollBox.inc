@@ -184,7 +184,7 @@ end;
 
 function ScrollBox_GetTextLen(AObj: TScrollBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ScrollBox_SetTextBuf(AObj: TScrollBox; Buffer: PChar); extdecl;

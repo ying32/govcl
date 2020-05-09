@@ -179,7 +179,7 @@ end;
 
 function Panel_GetTextLen(AObj: TPanel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Panel_SetTextBuf(AObj: TPanel; Buffer: PChar); extdecl;

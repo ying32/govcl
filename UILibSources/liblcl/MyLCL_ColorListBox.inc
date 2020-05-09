@@ -214,7 +214,7 @@ end;
 
 function ColorListBox_GetTextLen(AObj: TColorListBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ColorListBox_SetTextBuf(AObj: TColorListBox; Buffer: PChar); extdecl;

@@ -194,7 +194,7 @@ end;
 
 function Form_GetTextLen(AObj: TForm): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Form_SetTextBuf(AObj: TForm; Buffer: PChar); extdecl;

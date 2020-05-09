@@ -104,7 +104,7 @@ end;
 
 function LinkLabel_GetTextLen(AObj: TLinkLabel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure LinkLabel_SetTextBuf(AObj: TLinkLabel; Buffer: PChar); extdecl;

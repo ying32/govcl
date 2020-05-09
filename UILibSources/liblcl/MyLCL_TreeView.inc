@@ -229,7 +229,7 @@ end;
 
 function TreeView_GetTextLen(AObj: TTreeView): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure TreeView_SetTextBuf(AObj: TTreeView; Buffer: PChar); extdecl;

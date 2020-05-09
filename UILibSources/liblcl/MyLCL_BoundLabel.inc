@@ -104,7 +104,7 @@ end;
 
 function BoundLabel_GetTextLen(AObj: TBoundLabel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure BoundLabel_SetTextBuf(AObj: TBoundLabel; Buffer: PChar); extdecl;

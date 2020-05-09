@@ -189,7 +189,7 @@ end;
 
 function FlowPanel_GetTextLen(AObj: TFlowPanel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure FlowPanel_SetTextBuf(AObj: TFlowPanel; Buffer: PChar); extdecl;

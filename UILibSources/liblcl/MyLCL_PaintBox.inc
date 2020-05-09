@@ -104,7 +104,7 @@ end;
 
 function PaintBox_GetTextLen(AObj: TPaintBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure PaintBox_SetTextBuf(AObj: TPaintBox; Buffer: PChar); extdecl;

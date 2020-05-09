@@ -214,7 +214,7 @@ end;
 
 function Memo_GetTextLen(AObj: TMemo): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Memo_SetTextBuf(AObj: TMemo; Buffer: PChar); extdecl;

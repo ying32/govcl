@@ -214,7 +214,7 @@ end;
 
 function Edit_GetTextLen(AObj: TEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Edit_SetTextBuf(AObj: TEdit; Buffer: PChar); extdecl;

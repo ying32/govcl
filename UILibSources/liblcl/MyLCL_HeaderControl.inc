@@ -179,7 +179,7 @@ end;
 
 function HeaderControl_GetTextLen(AObj: THeaderControl): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure HeaderControl_SetTextBuf(AObj: THeaderControl; Buffer: PChar); extdecl;

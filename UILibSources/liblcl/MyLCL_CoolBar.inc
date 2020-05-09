@@ -174,7 +174,7 @@ end;
 
 function CoolBar_GetTextLen(AObj: TCoolBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure CoolBar_SetTextBuf(AObj: TCoolBar; Buffer: PChar); extdecl;

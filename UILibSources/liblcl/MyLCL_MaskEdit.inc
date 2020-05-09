@@ -29,7 +29,7 @@ end;
 
 function MaskEdit_GetTextLen(AObj: TMaskEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure MaskEdit_ClearSelection(AObj: TMaskEdit); extdecl;

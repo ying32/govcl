@@ -104,7 +104,7 @@ end;
 
 function Splitter_GetTextLen(AObj: TSplitter): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Splitter_SetTextBuf(AObj: TSplitter; Buffer: PChar); extdecl;

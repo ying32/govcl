@@ -104,7 +104,7 @@ end;
 
 function Image_GetTextLen(AObj: TImage): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Image_SetTextBuf(AObj: TImage; Buffer: PChar); extdecl;

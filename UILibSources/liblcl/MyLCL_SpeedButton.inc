@@ -109,7 +109,7 @@ end;
 
 function SpeedButton_GetTextLen(AObj: TSpeedButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure SpeedButton_SetTextBuf(AObj: TSpeedButton; Buffer: PChar); extdecl;

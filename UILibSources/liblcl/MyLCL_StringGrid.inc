@@ -194,7 +194,7 @@ end;
 
 function StringGrid_GetTextLen(AObj: TStringGrid): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure StringGrid_SetTextBuf(AObj: TStringGrid; Buffer: PChar); extdecl;

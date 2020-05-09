@@ -219,7 +219,7 @@ end;
 
 function RichEdit_GetTextLen(AObj: TRichEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure RichEdit_SetTextBuf(AObj: TRichEdit; Buffer: PChar); extdecl;

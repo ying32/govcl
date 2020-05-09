@@ -204,7 +204,7 @@ end;
 
 function ColorBox_GetTextLen(AObj: TColorBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ColorBox_SetTextBuf(AObj: TColorBox; Buffer: PChar); extdecl;

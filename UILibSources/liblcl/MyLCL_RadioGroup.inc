@@ -179,7 +179,7 @@ end;
 
 function RadioGroup_GetTextLen(AObj: TRadioGroup): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure RadioGroup_SetTextBuf(AObj: TRadioGroup; Buffer: PChar); extdecl;

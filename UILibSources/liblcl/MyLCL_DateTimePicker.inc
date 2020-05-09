@@ -179,7 +179,7 @@ end;
 
 function DateTimePicker_GetTextLen(AObj: TDateTimePicker): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure DateTimePicker_SetTextBuf(AObj: TDateTimePicker; Buffer: PChar); extdecl;

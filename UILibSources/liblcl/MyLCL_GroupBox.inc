@@ -179,7 +179,7 @@ end;
 
 function GroupBox_GetTextLen(AObj: TGroupBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure GroupBox_SetTextBuf(AObj: TGroupBox; Buffer: PChar); extdecl;

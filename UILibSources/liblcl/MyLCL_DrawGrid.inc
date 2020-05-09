@@ -194,7 +194,7 @@ end;
 
 function DrawGrid_GetTextLen(AObj: TDrawGrid): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure DrawGrid_SetTextBuf(AObj: TDrawGrid; Buffer: PChar); extdecl;

@@ -104,7 +104,7 @@ end;
 
 function XButton_GetTextLen(AObj: TXButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure XButton_SetTextBuf(AObj: TXButton; Buffer: PChar); extdecl;

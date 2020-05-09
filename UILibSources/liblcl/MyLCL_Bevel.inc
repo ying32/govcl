@@ -104,7 +104,7 @@ end;
 
 function Bevel_GetTextLen(AObj: TBevel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Bevel_SetTextBuf(AObj: TBevel; Buffer: PChar); extdecl;

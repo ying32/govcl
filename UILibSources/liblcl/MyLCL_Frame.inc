@@ -184,7 +184,7 @@ end;
 
 function Frame_GetTextLen(AObj: TFrame): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Frame_SetTextBuf(AObj: TFrame; Buffer: PChar); extdecl;

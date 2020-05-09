@@ -219,7 +219,7 @@ end;
 
 function ListView_GetTextLen(AObj: TListView): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ListView_SetTextBuf(AObj: TListView; Buffer: PChar); extdecl;

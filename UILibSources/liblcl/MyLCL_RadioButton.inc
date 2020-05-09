@@ -179,7 +179,7 @@ end;
 
 function RadioButton_GetTextLen(AObj: TRadioButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure RadioButton_SetTextBuf(AObj: TRadioButton; Buffer: PChar); extdecl;

@@ -179,7 +179,7 @@ end;
 
 function CheckBox_GetTextLen(AObj: TCheckBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure CheckBox_SetTextBuf(AObj: TCheckBox; Buffer: PChar); extdecl;

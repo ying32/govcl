@@ -189,7 +189,7 @@ end;
 
 function PageControl_GetTextLen(AObj: TPageControl): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure PageControl_SetTextBuf(AObj: TPageControl; Buffer: PChar); extdecl;

@@ -109,7 +109,7 @@ end;
 
 function Gauge_GetTextLen(AObj: TGauge): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Gauge_SetTextBuf(AObj: TGauge; Buffer: PChar); extdecl;

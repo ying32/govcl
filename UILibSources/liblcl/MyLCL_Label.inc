@@ -104,7 +104,7 @@ end;
 
 function Label_GetTextLen(AObj: TLabel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Label_SetTextBuf(AObj: TLabel; Buffer: PChar); extdecl;

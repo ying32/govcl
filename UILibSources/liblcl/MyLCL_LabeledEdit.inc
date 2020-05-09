@@ -214,7 +214,7 @@ end;
 
 function LabeledEdit_GetTextLen(AObj: TLabeledEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure LabeledEdit_SetTextBuf(AObj: TLabeledEdit; Buffer: PChar); extdecl;

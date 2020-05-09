@@ -189,7 +189,7 @@ end;
 
 function ProgressBar_GetTextLen(AObj: TProgressBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ProgressBar_SetTextBuf(AObj: TProgressBar; Buffer: PChar); extdecl;

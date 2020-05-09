@@ -179,7 +179,7 @@ end;
 
 function StaticText_GetTextLen(AObj: TStaticText): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure StaticText_SetTextBuf(AObj: TStaticText; Buffer: PChar); extdecl;

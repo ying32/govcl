@@ -184,7 +184,7 @@ end;
 
 function Button_GetTextLen(AObj: TButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Button_SetTextBuf(AObj: TButton; Buffer: PChar); extdecl;

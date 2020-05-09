@@ -179,7 +179,7 @@ end;
 
 function MonthCalendar_GetTextLen(AObj: TMonthCalendar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure MonthCalendar_SetTextBuf(AObj: TMonthCalendar; Buffer: PChar); extdecl;

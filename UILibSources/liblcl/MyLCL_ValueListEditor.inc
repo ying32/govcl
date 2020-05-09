@@ -194,7 +194,7 @@ end;
 
 function ValueListEditor_GetTextLen(AObj: TValueListEditor): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ValueListEditor_SetTextBuf(AObj: TValueListEditor; Buffer: PChar); extdecl;

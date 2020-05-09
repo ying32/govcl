@@ -204,7 +204,7 @@ end;
 
 function ComboBox_GetTextLen(AObj: TComboBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ComboBox_SetTextBuf(AObj: TComboBox; Buffer: PChar); extdecl;

@@ -179,7 +179,7 @@ end;
 
 function TabSheet_GetTextLen(AObj: TTabSheet): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure TabSheet_SetTextBuf(AObj: TTabSheet; Buffer: PChar); extdecl;

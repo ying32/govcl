@@ -114,7 +114,7 @@ end;
 
 function ToolButton_GetTextLen(AObj: TToolButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ToolButton_SetTextBuf(AObj: TToolButton; Buffer: PChar); extdecl;

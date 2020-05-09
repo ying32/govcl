@@ -184,7 +184,7 @@ end;
 
 function TrackBar_GetTextLen(AObj: TTrackBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure TrackBar_SetTextBuf(AObj: TTrackBar; Buffer: PChar); extdecl;

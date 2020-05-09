@@ -179,7 +179,7 @@ end;
 
 function UpDown_GetTextLen(AObj: TUpDown): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure UpDown_SetTextBuf(AObj: TUpDown; Buffer: PChar); extdecl;

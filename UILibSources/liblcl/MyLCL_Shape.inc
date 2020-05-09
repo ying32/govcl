@@ -104,7 +104,7 @@ end;
 
 function Shape_GetTextLen(AObj: TShape): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Shape_SetTextBuf(AObj: TShape; Buffer: PChar); extdecl;

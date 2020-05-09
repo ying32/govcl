@@ -35991,6 +35991,42 @@ func MiniWebview_GetReadyState(obj uintptr) TReadyState {
     return TReadyState(ret)
 }
 
+func MiniWebview_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := miniWebview_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func MiniWebview_SetAlign(obj uintptr, value TAlign) {
+   miniWebview_SetAlign.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := miniWebview_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func MiniWebview_SetAnchors(obj uintptr, value TAnchors) {
+   miniWebview_SetAnchors.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetEnabled(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetEnabled(obj uintptr, value bool) {
+   miniWebview_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetVisible(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetVisible(obj uintptr, value bool) {
+   miniWebview_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
 func MiniWebview_SetOnTitleChange(obj uintptr, fn interface{}) {
     miniWebview_SetOnTitleChange.Call(obj, addEventToMap(fn))
 }
@@ -36092,15 +36128,6 @@ func MiniWebview_SetUseDockManager(obj uintptr, value bool) {
    miniWebview_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
-func MiniWebview_GetEnabled(obj uintptr) bool {
-    ret, _, _ := miniWebview_GetEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MiniWebview_SetEnabled(obj uintptr, value bool) {
-   miniWebview_SetEnabled.Call(obj, GoBoolToDBool(value))
-}
-
 func MiniWebview_GetAction(obj uintptr) uintptr {
     ret, _, _ := miniWebview_GetAction.Call(obj)
     return ret
@@ -36108,24 +36135,6 @@ func MiniWebview_GetAction(obj uintptr) uintptr {
 
 func MiniWebview_SetAction(obj uintptr, value uintptr) {
    miniWebview_SetAction.Call(obj, value)
-}
-
-func MiniWebview_GetAlign(obj uintptr) TAlign {
-    ret, _, _ := miniWebview_GetAlign.Call(obj)
-    return TAlign(ret)
-}
-
-func MiniWebview_SetAlign(obj uintptr, value TAlign) {
-   miniWebview_SetAlign.Call(obj, uintptr(value))
-}
-
-func MiniWebview_GetAnchors(obj uintptr) TAnchors {
-    ret, _, _ := miniWebview_GetAnchors.Call(obj)
-    return TAnchors(ret)
-}
-
-func MiniWebview_SetAnchors(obj uintptr, value TAnchors) {
-   miniWebview_SetAnchors.Call(obj, uintptr(value))
 }
 
 func MiniWebview_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -36216,15 +36225,6 @@ func MiniWebview_GetShowHint(obj uintptr) bool {
 
 func MiniWebview_SetShowHint(obj uintptr, value bool) {
    miniWebview_SetShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func MiniWebview_GetVisible(obj uintptr) bool {
-    ret, _, _ := miniWebview_GetVisible.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MiniWebview_SetVisible(obj uintptr, value bool) {
-   miniWebview_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
 func MiniWebview_GetParent(obj uintptr) uintptr {

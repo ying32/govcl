@@ -179,7 +179,7 @@ end;
 
 function ToolBar_GetTextLen(AObj: TToolBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ToolBar_SetTextBuf(AObj: TToolBar; Buffer: PChar); extdecl;

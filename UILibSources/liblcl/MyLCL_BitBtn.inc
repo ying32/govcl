@@ -184,7 +184,7 @@ end;
 
 function BitBtn_GetTextLen(AObj: TBitBtn): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure BitBtn_SetTextBuf(AObj: TBitBtn; Buffer: PChar); extdecl;

@@ -179,7 +179,7 @@ end;
 
 function StatusBar_GetTextLen(AObj: TStatusBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure StatusBar_SetTextBuf(AObj: TStatusBar; Buffer: PChar); extdecl;
