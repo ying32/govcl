@@ -252,8 +252,8 @@ func findAndSetComponentName(v reflect.Value, name string, clearDefault bool) {
 	if setName := v.MethodByName("SetName"); setName.IsValid() {
 		setName.Call([]reflect.Value{reflect.ValueOf(name)})
 		if clearDefault {
-			if setTextBuf := v.MethodByName("SetTextBuf"); setTextBuf.IsValid() {
-				setTextBuf.Call([]reflect.Value{reflect.ValueOf("")})
+			if setText := v.MethodByName("SetText"); setText.IsValid() {
+				setText.Call([]reflect.Value{reflect.ValueOf("")})
 			}
 		}
 	}
