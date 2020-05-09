@@ -31,9 +31,12 @@ func lcl_GoStrToDStr(s string) uintptr {
 }
 
 // 这种跟copyStr3基本一样，只是用go来处理了
-func copyStr(src uintptr, strlen int) string {
-	str := make([]uint8, strlen)
-	for i := 0; i < strlen; i++ {
+func copyStr(src uintptr, strLen int) string {
+	if strLen == 0 {
+		return ""
+	}
+	str := make([]uint8, strLen)
+	for i := 0; i < strLen; i++ {
 		str[i] = *(*uint8)(unsafe.Pointer(src + uintptr(i)))
 	}
 	return string(str)
@@ -45,18 +48,24 @@ type GoStringHeader struct {
 }
 
 // 小点的字符适合此种方式，大了就不行了
-func copyStr2(str uintptr, strlen int) string {
+func copyStr2(str uintptr, strLen int) string {
+	if strLen == 0 {
+		return ""
+	}
 	var ret string
 	head := (*GoStringHeader)(unsafe.Pointer(&ret))
 	head.Data = str
-	head.Len = strlen
+	head.Len = strLen
 	return ret
 }
 
 // 最新的lz macOS下出问题了
-func copyStr3(str uintptr, strlen int) string {
-	buffer := make([]uint8, strlen)
-	DMove(str, uintptr(unsafe.Pointer(&buffer[0])), strlen)
+func copyStr3(str uintptr, strLen int) string {
+	if strLen == 0 {
+		return ""
+	}
+	buffer := make([]uint8, strLen)
+	DMove(str, uintptr(unsafe.Pointer(&buffer[0])), strLen)
 	return string(buffer)
 }
 

@@ -92,6 +92,7 @@ begin
   Self.Font.Style := [];
   Self.Font.Color := clBlue;
   Self.Cursor := crDefault;
+  Caption := '<a href="https://linkLabel">LinkLabel</a>'; //默认值，参考用
 end;
 
 procedure TLinkLabel.Paint;

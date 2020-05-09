@@ -521,8 +521,8 @@ constructor TMiniWebview.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   ControlStyle := ControlStyle - [csAcceptsControls, csSetCaption];
-  Width := 400;
-  Height := 300;
+  Width := 300;
+  Height := 200;
   if not(csDesigning in ComponentState) then
   begin
     OleCheck(CoCreateInstance(CLSID_WebBrowser, nil, CLSCTX_INPROC, IID_IOleObject, FOleObject));

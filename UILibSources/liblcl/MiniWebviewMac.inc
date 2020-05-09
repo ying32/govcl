@@ -51,8 +51,10 @@ type
    private
      FWebview: Webview;
      FURL: string;
-     FOnTitleChange: TWebTitleChangeEvent;
      FOnStatusTextChange: TWebStatusTextChangeEvent;
+     FOnWindowClosing: TWebWindowClosingEvent;
+     FOnOnDocumentComplete: TWebDocumentCompleteEvent;
+     FOnTitleChange: TWebTitleChangeEvent;
      FOnJSExternal: TWebJSExternalEvent;
 
      function GetCurWebview: Webview;
@@ -65,7 +67,7 @@ type
    protected
      procedure VisibleChanged; override;
      procedure RealizeBounds; override;
-
+     procedure Paint; override;
    public
      procedure Resize; override;
      procedure CreateWnd; override;
@@ -134,8 +136,8 @@ constructor TMiniWebView.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   ControlStyle := ControlStyle - [csAcceptsControls, csSetCaption];
-  Width := 400;
-  Height := 300;
+  Width := 300;
+  Height := 200;
   Visible := True;
   if csDesigning in ComponentState then
     Exit;
@@ -325,6 +327,16 @@ begin
     UpdateBounds;
   finally
     AutoPool.release;
+  end;
+end;
+
+procedure TMiniWebview.Paint;
+begin
+  inherited Paint;
+  if csDesigning in ComponentState then
+  begin
+    Canvas.Brush.Color:=clWhite;
+    Canvas.FillRect(ClientRect);
   end;
 end;
 

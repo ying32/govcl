@@ -290,11 +290,11 @@ begin
   if not Visible then Exit;
   if csDesigning in ComponentState then
   begin
-    with inherited Canvas do
+    with Canvas do
     begin
       Pen.Style := psDash;
       Brush.Style := bsClear;
-      Rectangle(0, 0, Width, Height);
+      Rectangle(0, 0, Self.Width-1, Self.Height-1);//????
     end;
   end;
 

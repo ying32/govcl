@@ -45,9 +45,11 @@ type
 
    TMiniWebview = class(TCustomControl)
    private
-     FOnJSExternal: TWebJSExternalEvent;
      FOnStatusTextChange: TWebStatusTextChangeEvent;
+     FOnWindowClosing: TWebWindowClosingEvent;
+     FOnOnDocumentComplete: TWebDocumentCompleteEvent;
      FOnTitleChange: TWebTitleChangeEvent;
+     FOnJSExternal: TWebJSExternalEvent;
      FWebView: WebKitWebView;
    {$IFDEF LCLgtk2}
      FScrolledWindow: PGtkWidget;
@@ -56,6 +58,8 @@ type
      FScrolledWindow: PGtkScrolledWindow;
    {$ENDIF}
      function GetReadyState: TReadyState;
+   protected
+     procedure Paint; override;
    public
      constructor Create(AOwner: TComponent); override;
      destructor Destroy; override;
@@ -166,8 +170,8 @@ constructor TMiniWebview.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   ControlStyle := ControlStyle - [csAcceptsControls, csSetCaption];
-  Width := 400;
-  Height := 300;
+  Width := 300;
+  Height := 200;
   if csDesigning in ComponentState then
     Exit;
   LoadLibWebkitGtk;
@@ -290,6 +294,16 @@ procedure TMiniWebview.LoadHTML(const AStr: string);
 begin
   //if Assigned(FWebview) and (Length(AStr) > 0) then
     //webkit_web_view_load_html(FWebview, PChar(AStr), 'about:blank');
+end;
+
+procedure TMiniWebview.Paint;
+begin
+  inherited Paint;
+  if csDesigning in ComponentState then
+  begin
+    Canvas.Brush.Color:=clWhite;
+    Canvas.FillRect(ClientRect);
+  end;
 end;
 
 initialization
