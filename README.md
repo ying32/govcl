@@ -143,7 +143,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
     f.Btn1.SetParent(f)
     f.Btn1.SetBounds(10, 10, 88, 28)
     f.Btn1.SetCaption("Button1")
-    //f.Btn1.SetOnClick(f.OnBtn1Click)  
+    f.Btn1.SetOnClick(f.OnBtn1Click)  
 }
 
 func (f *TMainForm) OnBtn1Click(sender vcl.IObject) {
@@ -160,6 +160,7 @@ func (f *TAboutForm) OnFormCreate(sender vcl.IObject) {
     f.Btn1.SetParent(f)
     f.Btn1.SetBounds(10, 10, 88, 28)
     f.Btn1.SetCaption("Button1")
+    f.Btn1.SetOnClick(f.OnBtn1Click)  
 }
 
 func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
