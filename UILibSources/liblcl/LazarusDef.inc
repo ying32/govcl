@@ -637,6 +637,16 @@ begin
     TThread.Synchronize(nil, TEventClass.ThreadProc);
 end;
 
+function DMainThreadId: TThreadID; extdecl;
+begin
+  Result := MainThreadId;
+end;
+
+function DCurrentThreadId: TThreadID; extdecl;
+begin
+  Result := TThread.CurrentThread.ThreadID;
+end;
+
 procedure DSysOpen(FileName: PChar); extdecl;
 begin
  {$IFDEF WINDOWS}
@@ -1128,6 +1138,8 @@ exports
   DMessageDlg,
   DExtractFilePath,
   DFileExists,
+  DMainThreadId,
+  DCurrentThreadId,
 
   DSelectDirectory1,
   DSelectDirectory2,

@@ -136,4 +136,7 @@ var (
 	// 库的信息
 	dLibStringEncoding = libvcl.NewProc("DLibStringEncoding")
 	dLibVersion        = libvcl.NewProc("DLibVersion")
+
+	dMainThreadId    = libvcl.NewProc("DMainThreadId")
+	dCurrentThreadId = libvcl.NewProc("DCurrentThreadId")
 )

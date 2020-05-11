@@ -23,14 +23,14 @@ var (
 	SysLocale types.TSysLocale
 )
 
-// Delphi/Lazarus中的内存操作，不过这里传入的是指针
-// Memory operations in Delphi/Lazarus, but pointers are passed here.
+// CN: Delphi/Lazarus中的内存操作，不过这里传入的是指针
+// EN: Memory operations in Delphi/Lazarus, but pointers are passed here.
 func Move(src, dest uintptr, llen int) {
 	api.DMove(src, dest, llen)
 }
 
-// Delphi/Lazarus的字符串长度。
-// Delphi/Lazarus string length.
+// CN: Delphi/Lazarus的字符串长度。
+// EN: Delphi/Lazarus string length.
 func StrLen(str uintptr) int {
 	return api.DStrLen(str)
 }
@@ -155,12 +155,14 @@ func LcLLoaded() bool {
 
 // ------------------- SetProperty
 
-// 设置对象属性
+// CN: 设置对象属性值
+// EN: Set object property value
 func SetPropertyValue(instance uintptr, propName, value string) {
 	api.DSetPropertyValue(instance, propName, value)
 }
 
-// 设置对象二级属性
+// CN: 设置对象二级属性值
+// EN: Set the secondary attribute value of the object
 func SetPropertySecValue(instance uintptr, propName, secPropName, value string) {
 	api.DSetPropertySecValue(instance, propName, secPropName, value)
 }
@@ -226,4 +228,16 @@ func ShiftStateToWord(shift types.TShiftState) uint32 {
 // liblcl About
 func LibAbout() string {
 	return api.DLibAbout()
+}
+
+// CN: 返回主线程ID
+// EN: Return the main thread id.
+func MainThreadId() uintptr {
+	return api.DMainThreadId()
+}
+
+// CN: 返回当前线程iD
+// EN: Return the current thread id.
+func CurrentThreadId() uintptr {
+	return api.DCurrentThreadId()
 }
