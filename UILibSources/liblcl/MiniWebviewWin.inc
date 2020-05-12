@@ -437,6 +437,7 @@ type
     function Invoke(DispID: Integer; const IID: TGUID; LocaleID: Integer;
       Flags: Word; var Params; VarResult, ExcepInfo, ArgErr: Pointer): HResult; stdcall;
 
+    procedure UpdateWebbrowserSize;
     procedure Paint; override;
   public
      procedure CreateWnd; override;
@@ -463,11 +464,9 @@ type
   published
     property Align;
     property Anchors;
-  {$IFDEF FPC}
     property BorderSpacing;
     property ChildSizing;
     property Constraints;
-  {$ENDIF}
     property Enabled;
     property Visible;
     // events
@@ -682,13 +681,6 @@ end;
 procedure TMiniWebview.Resize;
 begin
   inherited;
-  if not(csDesigning in ComponentState) and (FWebBrowser <> nil) then
-  begin
-    FWebBrowser.Set_Left(Self.Left);
-    FWebBrowser.Set_Top(Self.Top);
-    FWebBrowser.Set_Width(Self.Width);
-    FWebBrowser.Set_Height(Self.Height);
-  end;
 end;
 
 //----------------------------------------------------------------------
@@ -760,6 +752,17 @@ begin
   //procedure StatusTextChange(const Text: WideString); dispid 102;
   //procedure WindowClosing(IsChildWindow: WordBool; var Cancel: WordBool); dispid 263;
 
+end;
+
+procedure TMiniWebview.UpdateWebbrowserSize;
+begin
+  if FWebBrowser <> nil then
+   begin
+     FWebBrowser.Left := 0;
+     FWebBrowser.Top := 0;
+     FWebBrowser.Width := Self.Width;
+     FWebBrowser.Height := Self.Height;
+   end;
 end;
 
 procedure TMiniWebview.Paint;
@@ -1057,13 +1060,8 @@ end;
 procedure TMiniWebview.SetBounds(ALeft, ATop, AWidth, AHeight: Integer);
 begin
   inherited SetBounds(ALeft, ATop, AWidth, AHeight);
-  if Assigned(FWebBrowser) then
-  begin
-    FWebBrowser.Set_Left(Self.Left);
-    FWebBrowser.Set_Top(Self.Top);
-    FWebBrowser.Set_Width(Self.Width);
-    FWebBrowser.Set_Height(Self.Height);
-  end;
+  if not(csDesigning in ComponentState) then
+    Self.UpdateWebbrowserSize;
 end;
 
 procedure TMiniWebview.ExecuteScript(AScriptText, AScriptType: string);
