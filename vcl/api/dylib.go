@@ -17,9 +17,6 @@ var (
 
 	// 全局导入库
 	libvcl = loadUILib()
-
-	// 初始导入字符串指针函数
-	_ = initStdString()
 )
 
 // VCL或者LCL
