@@ -103,7 +103,7 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 **方法一需要配合res2go工具使用。**  
 
 
-* 方法二(纯代码，仿照FreePascal类的方式，可自动绑定事件。)：  
+* 方法二(纯代码，仿照FreePascal类的方式。)：  
 
 ```golang
 package main

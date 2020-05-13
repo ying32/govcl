@@ -98,7 +98,7 @@ func (f *TAboutForm) OnBtn1Click(sender vcl.IObject) {
 **Method 1 needs to be used in conjunction with the res2go tool.**  
 
 
-* Method 2(Pure code, imitating the way of FreePascal class, can automatically bind events.):  
+* Method 2(Pure code, imitating the way of FreePascal class.):  
 
 ```golang
 package main
