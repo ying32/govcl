@@ -9,7 +9,6 @@
 package rtl
 
 import (
-	"os"
 	"path/filepath"
 	"strings"
 
@@ -126,10 +125,10 @@ func GetFileNameWithoutExt(path string) string {
 
 // 合并
 func Combine(path, name string) string {
-	if path != "" && !strings.HasSuffix(path, string(os.PathSeparator)) {
-		path += string(os.PathSeparator)
+	if path != "" && !strings.HasSuffix(path, PathSeparator) {
+		path += PathSeparator
 	}
-	if name != "" && strings.HasPrefix(name, string(os.PathSeparator)) {
+	if name != "" && strings.HasPrefix(name, PathSeparator) {
 		name = name[1:]
 	}
 	return path + name

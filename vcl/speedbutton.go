@@ -20,7 +20,7 @@ import (
 type TSpeedButton struct {
     IControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewSpeedButton(owner IComponent) *TSpeedButton {
     s := new(TSpeedButton)
     s.instance = SpeedButton_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(s, (*TSpeedButton).Free)
     return s
 }
 
@@ -57,7 +59,7 @@ func SpeedButtonFromObj(obj IObject) *TSpeedButton {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsSpeedButton.
 func SpeedButtonFromUnsafePointer(ptr unsafe.Pointer) *TSpeedButton {
     return AsSpeedButton(ptr)

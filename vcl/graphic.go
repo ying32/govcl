@@ -20,7 +20,7 @@ import (
 type TGraphic struct {
     IObject
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewGraphic() *TGraphic {
     g := new(TGraphic)
     g.instance = Graphic_Create()
     g.ptr = unsafe.Pointer(g.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(g, (*TGraphic).Free)
     return g
 }
 
@@ -57,7 +59,7 @@ func GraphicFromObj(obj IObject) *TGraphic {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsGraphic.
 func GraphicFromUnsafePointer(ptr unsafe.Pointer) *TGraphic {
     return AsGraphic(ptr)

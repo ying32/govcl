@@ -20,7 +20,7 @@ import (
 type TAction struct {
     IComponent
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewAction(owner IComponent) *TAction {
     a := new(TAction)
     a.instance = Action_Create(CheckPtr(owner))
     a.ptr = unsafe.Pointer(a.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(a, (*TAction).Free)
     return a
 }
 
@@ -57,7 +59,7 @@ func ActionFromObj(obj IObject) *TAction {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsAction.
 func ActionFromUnsafePointer(ptr unsafe.Pointer) *TAction {
     return AsAction(ptr)

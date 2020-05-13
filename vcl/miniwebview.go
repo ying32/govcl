@@ -20,7 +20,7 @@ import (
 type TMiniWebview struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewMiniWebview(owner IComponent) *TMiniWebview {
     m := new(TMiniWebview)
     m.instance = MiniWebview_Create(CheckPtr(owner))
     m.ptr = unsafe.Pointer(m.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(m, (*TMiniWebview).Free)
     return m
 }
 
@@ -57,7 +59,7 @@ func MiniWebviewFromObj(obj IObject) *TMiniWebview {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsMiniWebview.
 func MiniWebviewFromUnsafePointer(ptr unsafe.Pointer) *TMiniWebview {
     return AsMiniWebview(ptr)
@@ -463,6 +465,18 @@ func (m *TMiniWebview) SetAnchors(value TAnchors) {
     MiniWebview_SetAnchors(m.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
+func (m *TMiniWebview) Constraints() *TSizeConstraints {
+    return AsSizeConstraints(MiniWebview_GetConstraints(m.instance))
+}
+
+// CN: 设置约束控件大小。
+// EN: .
+func (m *TMiniWebview) SetConstraints(value *TSizeConstraints) {
+    MiniWebview_SetConstraints(m.instance, CheckPtr(value))
+}
+
 // CN: 获取控件启用。
 // EN: Get the control enabled.
 func (m *TMiniWebview) Enabled() bool {
@@ -671,18 +685,6 @@ func (m *TMiniWebview) ClientWidth() int32 {
 // EN: Set client width.
 func (m *TMiniWebview) SetClientWidth(value int32) {
     MiniWebview_SetClientWidth(m.instance, value)
-}
-
-// CN: 获取约束控件大小。
-// EN: .
-func (m *TMiniWebview) Constraints() *TSizeConstraints {
-    return AsSizeConstraints(MiniWebview_GetConstraints(m.instance))
-}
-
-// CN: 设置约束控件大小。
-// EN: .
-func (m *TMiniWebview) SetConstraints(value *TSizeConstraints) {
-    MiniWebview_SetConstraints(m.instance, CheckPtr(value))
 }
 
 // CN: 获取控件状态。

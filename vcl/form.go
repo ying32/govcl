@@ -20,7 +20,7 @@ import (
 type TForm struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewForm(owner IComponent) *TForm {
     f := new(TForm)
     f.instance = Form_Create(CheckPtr(owner))
     f.ptr = unsafe.Pointer(f.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(f, (*TForm).Free)
     return f
 }
 
@@ -57,7 +59,7 @@ func FormFromObj(obj IObject) *TForm {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsForm.
 func FormFromUnsafePointer(ptr unsafe.Pointer) *TForm {
     return AsForm(ptr)

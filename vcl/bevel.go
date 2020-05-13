@@ -20,7 +20,7 @@ import (
 type TBevel struct {
     IControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewBevel(owner IComponent) *TBevel {
     b := new(TBevel)
     b.instance = Bevel_Create(CheckPtr(owner))
     b.ptr = unsafe.Pointer(b.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(b, (*TBevel).Free)
     return b
 }
 
@@ -57,7 +59,7 @@ func BevelFromObj(obj IObject) *TBevel {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsBevel.
 func BevelFromUnsafePointer(ptr unsafe.Pointer) *TBevel {
     return AsBevel(ptr)

@@ -36009,6 +36009,15 @@ func MiniWebview_SetAnchors(obj uintptr, value TAnchors) {
    miniWebview_SetAnchors.Call(obj, uintptr(value))
 }
 
+func MiniWebview_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetConstraints.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetConstraints(obj uintptr, value uintptr) {
+   miniWebview_SetConstraints.Call(obj, value)
+}
+
 func MiniWebview_GetEnabled(obj uintptr) bool {
     ret, _, _ := miniWebview_GetEnabled.Call(obj)
     return DBoolToGoBool(ret)
@@ -36184,15 +36193,6 @@ func MiniWebview_GetClientWidth(obj uintptr) int32 {
 
 func MiniWebview_SetClientWidth(obj uintptr, value int32) {
    miniWebview_SetClientWidth.Call(obj, uintptr(value))
-}
-
-func MiniWebview_GetConstraints(obj uintptr) uintptr {
-    ret, _, _ := miniWebview_GetConstraints.Call(obj)
-    return ret
-}
-
-func MiniWebview_SetConstraints(obj uintptr, value uintptr) {
-   miniWebview_SetConstraints.Call(obj, value)
 }
 
 func MiniWebview_GetControlState(obj uintptr) TControlState {

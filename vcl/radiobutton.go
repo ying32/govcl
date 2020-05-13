@@ -20,7 +20,7 @@ import (
 type TRadioButton struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewRadioButton(owner IComponent) *TRadioButton {
     r := new(TRadioButton)
     r.instance = RadioButton_Create(CheckPtr(owner))
     r.ptr = unsafe.Pointer(r.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(r, (*TRadioButton).Free)
     return r
 }
 
@@ -57,7 +59,7 @@ func RadioButtonFromObj(obj IObject) *TRadioButton {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsRadioButton.
 func RadioButtonFromUnsafePointer(ptr unsafe.Pointer) *TRadioButton {
     return AsRadioButton(ptr)

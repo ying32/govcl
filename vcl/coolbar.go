@@ -20,7 +20,7 @@ import (
 type TCoolBar struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewCoolBar(owner IComponent) *TCoolBar {
     c := new(TCoolBar)
     c.instance = CoolBar_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(c, (*TCoolBar).Free)
     return c
 }
 
@@ -57,7 +59,7 @@ func CoolBarFromObj(obj IObject) *TCoolBar {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsCoolBar.
 func CoolBarFromUnsafePointer(ptr unsafe.Pointer) *TCoolBar {
     return AsCoolBar(ptr)
