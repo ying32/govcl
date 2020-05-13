@@ -18,6 +18,7 @@
 | drawusegg | 使用[Go Graphics - 2D](github.com/fogleman/gg)绘制并显示到GoVCL的控件上，演示视频见`drawusegg/video.mp4` | |
 | dropfiles | 鼠标拖放文件演示  | |
 | eventpublic | 控件事件的公用演示  | |
+| fileshelltree | 文件目录树  | |
 | formEvents | 演示自动关联事件    |  |
 | gdiplustest | GDI+画渐变文字及半透明背景    | Windows |
 | gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
