@@ -14,7 +14,7 @@ unit uRichEdit;
 interface
 
 uses
-  Classes, SysUtils, RichMemo, Graphics;
+  Classes, SysUtils, RichMemo, richmemohelpers, Graphics;
 
 type
 
@@ -200,17 +200,19 @@ end;
 
 function TParaAttributes.GetAlignment: TAlignment;
 begin
- Result := TAlignment(FOwner.GetParaAlignment(FOwner.SelStart));
+  Result := TAlignment(RichMemoHelpers.TParaAttributes(TObject(FOwner)).Alignment);
+ //Result := TAlignment(FOwner.GetParaAlignment(FOwner.SelStart));
 end;
 
 function TParaAttributes.GetFirstIndent: Integer;
 begin
-  Result := Trunc(DoGetParaMetric.FirstLine);
+  Result := RichMemoHelpers.TParaAttributes(TObject(FOwner)).FirstIndent;
+  //Result := Trunc(DoGetParaMetric.FirstLine);
 end;
 
 function TParaAttributes.GetLeftIndent: Integer;
 begin
-  Result := 0;
+  Result := RichMemoHelpers.TParaAttributes(TObject(FOwner)).LeftIndent;
 end;
 
 function TParaAttributes.GetNumbering: TNumberingStyle;
@@ -220,32 +222,33 @@ end;
 
 function TParaAttributes.GetRightIndent: Integer;
 begin
-  Result := 0;
+  Result := RichMemoHelpers.TParaAttributes(TObject(FOwner)).RightIndent;
 end;
 
 function TParaAttributes.GetTab(Index: Byte): Longint;
 begin
-  Result := 0;
+  Result := RichMemoHelpers.TParaAttributes(TObject(FOwner)).Tab[Index];
 end;
 
 function TParaAttributes.GetTabCount: Integer;
 begin
-  Result := 0;
+  Result := RichMemoHelpers.TParaAttributes(TObject(FOwner)).TabCount;
 end;
 
 procedure TParaAttributes.SetAlignment(AValue: TAlignment);
 begin
-
+  RichMemoHelpers.TParaAttributes(TObject(FOwner)).Alignment := RichMemoHelpers.TRichEditAlignment(AValue);
+  // TAlignment = (taLeftJustify, taRightJustify, taCenter);
 end;
 
 procedure TParaAttributes.SetFirstIndent(AValue: Integer);
 begin
-
+  RichMemoHelpers.TParaAttributes(TObject(FOwner)).FirstIndent:=AValue;
 end;
 
 procedure TParaAttributes.SetLeftIndent(AValue: Integer);
 begin
-
+  RichMemoHelpers.TParaAttributes(TObject(FOwner)).LeftIndent:=AValue;
 end;
 
 procedure TParaAttributes.SetNumbering(AValue: TNumberingStyle);
@@ -255,17 +258,17 @@ end;
 
 procedure TParaAttributes.SetRightIndent(AValue: Integer);
 begin
-
+  RichMemoHelpers.TParaAttributes(TObject(FOwner)).RightIndent:=AValue;
 end;
 
 procedure TParaAttributes.SetTab(Index: Byte; AValue: Longint);
 begin
-
+  RichMemoHelpers.TParaAttributes(TObject(FOwner)).Tab[Index] := AValue;
 end;
 
 procedure TParaAttributes.SetTabCount(AValue: Integer);
 begin
-
+  RichMemoHelpers.TParaAttributes(TObject(FOwner)).TabCount:=AValue;
 end;
 
 constructor TParaAttributes.Create(AOwner: TRichMemo);

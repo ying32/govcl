@@ -464,8 +464,10 @@ type
   published
     property Align;
     property Anchors;
+  {$ifdef fpc}
     property BorderSpacing;
     property ChildSizing;
+  {$endif}
     property Constraints;
     property Enabled;
     property Visible;
