@@ -5,5 +5,5 @@
 
 | Name | Download URL | License |
 | :------ | :------ | ---- | 
-| RichMemo | http://packages.lazarus-ide.org/RichMemo.zip | LGPL |
+| RichMemo | http://packages.lazarus-ide.org/RichMemo.zip | modifiedLGPL |
 

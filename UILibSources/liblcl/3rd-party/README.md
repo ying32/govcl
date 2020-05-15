@@ -4,5 +4,5 @@
 
 | 组件名 | 下载地址 | 授权方式 |
 | :------ | :------ | ---- | 
-| RichMemo | http://packages.lazarus-ide.org/RichMemo.zip | LGPL |
+| RichMemo | http://packages.lazarus-ide.org/RichMemo.zip | modifiedLGPL |
 
