@@ -15,4 +15,4 @@ Compile with the project file res2go.dpr using Delphi that supports Unicode or h
 
 #### Lazarus
 
-Open the project file res2go.lpi and select the corresponding platform to compile in the menu bar -> Project -> Project Options -> Compiler Options -> Build modes.
+Open the project file res2go.lpi, menu bar -> Run -> Build

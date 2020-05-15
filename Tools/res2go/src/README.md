@@ -15,4 +15,4 @@ res2go工具主要是使用Lazarus编译，Delphi也可以编译。
 
 #### Lazarus 
 
-打开工程文件res2go.lpi，在 菜单栏 -> Project -> Project Options -> Compiler Options -> Build modes中可选择相对应的平台进行编译。
+打开工程文件res2go.lpi，在 菜单栏 -> Run -> Build
