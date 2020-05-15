@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TButton struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewButton(owner IComponent) *TButton {
     b := new(TButton)
     b.instance = Button_Create(CheckPtr(owner))
     b.ptr = unsafe.Pointer(b.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(b, (*TButton).Free)
     return b
 }
 
@@ -57,7 +59,7 @@ func ButtonFromObj(obj IObject) *TButton {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsButton.
 func ButtonFromUnsafePointer(ptr unsafe.Pointer) *TButton {
     return AsButton(ptr)
@@ -377,6 +379,34 @@ func (b *TButton) ToString() string {
     return Button_ToString(b.instance)
 }
 
+func (b *TButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Button_AnchorToNeighbour(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Button_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (b *TButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    Button_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (b *TButton) AnchorVerticalCenterTo(ASibling IControl) {
+    Button_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Button_AnchorAsAlign(b.instance, ATheAlign , ASpace)
+}
+
+func (b *TButton) AnchorClient(ASpace int32) {
+    Button_AnchorClient(b.instance, ASpace)
+}
+
 func (b *TButton) Action() *TAction {
     return AsAction(Button_GetAction(b.instance))
 }
@@ -437,10 +467,14 @@ func (b *TButton) SetCaption(value string) {
     Button_SetCaption(b.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (b *TButton) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Button_GetConstraints(b.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (b *TButton) SetConstraints(value *TSizeConstraints) {
     Button_SetConstraints(b.instance, CheckPtr(value))
 }
@@ -561,10 +595,14 @@ func (b *TButton) SetParentFont(value bool) {
     Button_SetParentFont(b.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (b *TButton) ParentShowHint() bool {
     return Button_GetParentShowHint(b.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (b *TButton) SetParentShowHint(value bool) {
     Button_SetParentShowHint(b.instance, value)
 }
@@ -943,18 +981,6 @@ func (b *TButton) SetHint(value string) {
     Button_SetHint(b.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (b *TButton) Margins() *TMargins {
-    return AsMargins(Button_GetMargins(b.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (b *TButton) SetMargins(value *TMargins) {
-    Button_SetMargins(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TButton) ComponentCount() int32 {
@@ -1003,6 +1029,74 @@ func (b *TButton) SetTag(value int) {
     Button_SetTag(b.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (b *TButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideLeft(b.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (b *TButton) SetAnchorSideLeft(value *TAnchorSide) {
+    Button_SetAnchorSideLeft(b.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (b *TButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideTop(b.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (b *TButton) SetAnchorSideTop(value *TAnchorSide) {
+    Button_SetAnchorSideTop(b.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (b *TButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideRight(b.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (b *TButton) SetAnchorSideRight(value *TAnchorSide) {
+    Button_SetAnchorSideRight(b.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (b *TButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSideBottom(b.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (b *TButton) SetAnchorSideBottom(value *TAnchorSide) {
+    Button_SetAnchorSideBottom(b.instance, CheckPtr(value))
+}
+
+func (b *TButton) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(Button_GetChildSizing(b.instance))
+}
+
+func (b *TButton) SetChildSizing(value *TControlChildSizing) {
+    Button_SetChildSizing(b.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (b *TButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Button_GetBorderSpacing(b.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (b *TButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    Button_SetBorderSpacing(b.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (b *TButton) DockClients(Index int32) *TControl {
@@ -1019,5 +1113,11 @@ func (b *TButton) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (b *TButton) Components(AIndex int32) *TComponent {
     return AsComponent(Button_GetComponents(b.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (b *TButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Button_GetAnchorSide(b.instance, AKind))
 }
 

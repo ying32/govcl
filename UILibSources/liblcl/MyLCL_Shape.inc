@@ -104,7 +104,7 @@ end;
 
 function Shape_GetTextLen(AObj: TShape): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Shape_SetTextBuf(AObj: TShape; Buffer: PChar); extdecl;
@@ -160,6 +160,36 @@ end;
 function Shape_ToString(AObj: TShape): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Shape_AnchorToNeighbour(AObj: TShape; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Shape_AnchorParallel(AObj: TShape; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Shape_AnchorHorizontalCenterTo(AObj: TShape; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Shape_AnchorVerticalCenterTo(AObj: TShape; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Shape_AnchorAsAlign(AObj: TShape; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Shape_AnchorClient(AObj: TShape; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Shape_GetAlign(AObj: TShape): TAlign; extdecl;
@@ -503,16 +533,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Shape_GetMargins(AObj: TShape): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Shape_SetMargins(AObj: TShape; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Shape_GetComponentCount(AObj: TShape): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -553,9 +573,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Shape_GetAnchorSideLeft(AObj: TShape): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Shape_SetAnchorSideLeft(AObj: TShape; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Shape_GetAnchorSideTop(AObj: TShape): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Shape_SetAnchorSideTop(AObj: TShape; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Shape_GetAnchorSideRight(AObj: TShape): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Shape_SetAnchorSideRight(AObj: TShape; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Shape_GetAnchorSideBottom(AObj: TShape): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Shape_SetAnchorSideBottom(AObj: TShape; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Shape_GetBorderSpacing(AObj: TShape): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Shape_SetBorderSpacing(AObj: TShape; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Shape_GetComponents(AObj: TShape; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Shape_GetAnchorSide(AObj: TShape; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Shape_StaticClassType: TClass; extdecl;
@@ -595,6 +670,12 @@ exports
   Shape_Equals,
   Shape_GetHashCode,
   Shape_ToString,
+  Shape_AnchorToNeighbour,
+  Shape_AnchorParallel,
+  Shape_AnchorHorizontalCenterTo,
+  Shape_AnchorVerticalCenterTo,
+  Shape_AnchorAsAlign,
+  Shape_AnchorClient,
   Shape_GetAlign,
   Shape_SetAlign,
   Shape_GetAnchors,
@@ -660,8 +741,6 @@ exports
   Shape_SetCursor,
   Shape_GetHint,
   Shape_SetHint,
-  Shape_GetMargins,
-  Shape_SetMargins,
   Shape_GetComponentCount,
   Shape_GetComponentIndex,
   Shape_SetComponentIndex,
@@ -670,6 +749,17 @@ exports
   Shape_SetName,
   Shape_GetTag,
   Shape_SetTag,
+  Shape_GetAnchorSideLeft,
+  Shape_SetAnchorSideLeft,
+  Shape_GetAnchorSideTop,
+  Shape_SetAnchorSideTop,
+  Shape_GetAnchorSideRight,
+  Shape_SetAnchorSideRight,
+  Shape_GetAnchorSideBottom,
+  Shape_SetAnchorSideBottom,
+  Shape_GetBorderSpacing,
+  Shape_SetBorderSpacing,
   Shape_GetComponents,
+  Shape_GetAnchorSide,
   Shape_StaticClassType;
 

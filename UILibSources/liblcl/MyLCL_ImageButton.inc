@@ -109,7 +109,7 @@ end;
 
 function ImageButton_GetTextLen(AObj: TImageButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ImageButton_SetTextBuf(AObj: TImageButton; Buffer: PChar); extdecl;
@@ -165,6 +165,36 @@ end;
 function ImageButton_ToString(AObj: TImageButton): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ImageButton_AnchorToNeighbour(AObj: TImageButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ImageButton_AnchorParallel(AObj: TImageButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ImageButton_AnchorHorizontalCenterTo(AObj: TImageButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ImageButton_AnchorVerticalCenterTo(AObj: TImageButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ImageButton_AnchorAsAlign(AObj: TImageButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ImageButton_AnchorClient(AObj: TImageButton; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ImageButton_GetAction(AObj: TImageButton): TBasicAction; extdecl;
@@ -596,16 +626,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ImageButton_GetMargins(AObj: TImageButton): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ImageButton_SetMargins(AObj: TImageButton; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ImageButton_GetComponentCount(AObj: TImageButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -646,9 +666,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ImageButton_GetAnchorSideLeft(AObj: TImageButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ImageButton_SetAnchorSideLeft(AObj: TImageButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ImageButton_GetAnchorSideTop(AObj: TImageButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ImageButton_SetAnchorSideTop(AObj: TImageButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ImageButton_GetAnchorSideRight(AObj: TImageButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ImageButton_SetAnchorSideRight(AObj: TImageButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ImageButton_GetAnchorSideBottom(AObj: TImageButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ImageButton_SetAnchorSideBottom(AObj: TImageButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ImageButton_GetBorderSpacing(AObj: TImageButton): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ImageButton_SetBorderSpacing(AObj: TImageButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ImageButton_GetComponents(AObj: TImageButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ImageButton_GetAnchorSide(AObj: TImageButton; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ImageButton_StaticClassType: TClass; extdecl;
@@ -689,6 +764,12 @@ exports
   ImageButton_Equals,
   ImageButton_GetHashCode,
   ImageButton_ToString,
+  ImageButton_AnchorToNeighbour,
+  ImageButton_AnchorParallel,
+  ImageButton_AnchorHorizontalCenterTo,
+  ImageButton_AnchorVerticalCenterTo,
+  ImageButton_AnchorAsAlign,
+  ImageButton_AnchorClient,
   ImageButton_GetAction,
   ImageButton_SetAction,
   ImageButton_GetAlign,
@@ -770,8 +851,6 @@ exports
   ImageButton_SetCursor,
   ImageButton_GetHint,
   ImageButton_SetHint,
-  ImageButton_GetMargins,
-  ImageButton_SetMargins,
   ImageButton_GetComponentCount,
   ImageButton_GetComponentIndex,
   ImageButton_SetComponentIndex,
@@ -780,6 +859,17 @@ exports
   ImageButton_SetName,
   ImageButton_GetTag,
   ImageButton_SetTag,
+  ImageButton_GetAnchorSideLeft,
+  ImageButton_SetAnchorSideLeft,
+  ImageButton_GetAnchorSideTop,
+  ImageButton_SetAnchorSideTop,
+  ImageButton_GetAnchorSideRight,
+  ImageButton_SetAnchorSideRight,
+  ImageButton_GetAnchorSideBottom,
+  ImageButton_SetAnchorSideBottom,
+  ImageButton_GetBorderSpacing,
+  ImageButton_SetBorderSpacing,
   ImageButton_GetComponents,
+  ImageButton_GetAnchorSide,
   ImageButton_StaticClassType;
 

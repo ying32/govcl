@@ -114,7 +114,7 @@ end;
 
 function ToolButton_GetTextLen(AObj: TToolButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ToolButton_SetTextBuf(AObj: TToolButton; Buffer: PChar); extdecl;
@@ -170,6 +170,36 @@ end;
 function ToolButton_ToString(AObj: TToolButton): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ToolButton_AnchorToNeighbour(AObj: TToolButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ToolButton_AnchorParallel(AObj: TToolButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ToolButton_AnchorHorizontalCenterTo(AObj: TToolButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ToolButton_AnchorVerticalCenterTo(AObj: TToolButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ToolButton_AnchorAsAlign(AObj: TToolButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ToolButton_AnchorClient(AObj: TToolButton; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ToolButton_GetIndex(AObj: TToolButton): Integer; extdecl;
@@ -636,16 +666,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ToolButton_GetMargins(AObj: TToolButton): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ToolButton_SetMargins(AObj: TToolButton; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ToolButton_GetComponentCount(AObj: TToolButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -686,9 +706,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ToolButton_GetAnchorSideLeft(AObj: TToolButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ToolButton_SetAnchorSideLeft(AObj: TToolButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ToolButton_GetAnchorSideTop(AObj: TToolButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ToolButton_SetAnchorSideTop(AObj: TToolButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ToolButton_GetAnchorSideRight(AObj: TToolButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ToolButton_SetAnchorSideRight(AObj: TToolButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ToolButton_GetAnchorSideBottom(AObj: TToolButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ToolButton_SetAnchorSideBottom(AObj: TToolButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ToolButton_GetBorderSpacing(AObj: TToolButton): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ToolButton_SetBorderSpacing(AObj: TToolButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ToolButton_GetComponents(AObj: TToolButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ToolButton_GetAnchorSide(AObj: TToolButton; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ToolButton_StaticClassType: TClass; extdecl;
@@ -730,6 +805,12 @@ exports
   ToolButton_Equals,
   ToolButton_GetHashCode,
   ToolButton_ToString,
+  ToolButton_AnchorToNeighbour,
+  ToolButton_AnchorParallel,
+  ToolButton_AnchorHorizontalCenterTo,
+  ToolButton_AnchorVerticalCenterTo,
+  ToolButton_AnchorAsAlign,
+  ToolButton_AnchorClient,
   ToolButton_GetIndex,
   ToolButton_GetAction,
   ToolButton_SetAction,
@@ -818,8 +899,6 @@ exports
   ToolButton_SetCursor,
   ToolButton_GetHint,
   ToolButton_SetHint,
-  ToolButton_GetMargins,
-  ToolButton_SetMargins,
   ToolButton_GetComponentCount,
   ToolButton_GetComponentIndex,
   ToolButton_SetComponentIndex,
@@ -828,6 +907,17 @@ exports
   ToolButton_SetName,
   ToolButton_GetTag,
   ToolButton_SetTag,
+  ToolButton_GetAnchorSideLeft,
+  ToolButton_SetAnchorSideLeft,
+  ToolButton_GetAnchorSideTop,
+  ToolButton_SetAnchorSideTop,
+  ToolButton_GetAnchorSideRight,
+  ToolButton_SetAnchorSideRight,
+  ToolButton_GetAnchorSideBottom,
+  ToolButton_SetAnchorSideBottom,
+  ToolButton_GetBorderSpacing,
+  ToolButton_SetBorderSpacing,
   ToolButton_GetComponents,
+  ToolButton_GetAnchorSide,
   ToolButton_StaticClassType;
 

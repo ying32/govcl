@@ -104,7 +104,7 @@ end;
 
 function Bevel_GetTextLen(AObj: TBevel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Bevel_SetTextBuf(AObj: TBevel; Buffer: PChar); extdecl;
@@ -160,6 +160,36 @@ end;
 function Bevel_ToString(AObj: TBevel): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Bevel_AnchorToNeighbour(AObj: TBevel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Bevel_AnchorParallel(AObj: TBevel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Bevel_AnchorHorizontalCenterTo(AObj: TBevel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Bevel_AnchorVerticalCenterTo(AObj: TBevel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Bevel_AnchorAsAlign(AObj: TBevel; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Bevel_AnchorClient(AObj: TBevel; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Bevel_GetAlign(AObj: TBevel): TAlign; extdecl;
@@ -407,16 +437,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Bevel_GetMargins(AObj: TBevel): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Bevel_SetMargins(AObj: TBevel; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Bevel_GetComponentCount(AObj: TBevel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -457,9 +477,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Bevel_GetAnchorSideLeft(AObj: TBevel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Bevel_SetAnchorSideLeft(AObj: TBevel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Bevel_GetAnchorSideTop(AObj: TBevel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Bevel_SetAnchorSideTop(AObj: TBevel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Bevel_GetAnchorSideRight(AObj: TBevel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Bevel_SetAnchorSideRight(AObj: TBevel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Bevel_GetAnchorSideBottom(AObj: TBevel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Bevel_SetAnchorSideBottom(AObj: TBevel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Bevel_GetBorderSpacing(AObj: TBevel): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Bevel_SetBorderSpacing(AObj: TBevel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Bevel_GetComponents(AObj: TBevel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Bevel_GetAnchorSide(AObj: TBevel; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Bevel_StaticClassType: TClass; extdecl;
@@ -499,6 +574,12 @@ exports
   Bevel_Equals,
   Bevel_GetHashCode,
   Bevel_ToString,
+  Bevel_AnchorToNeighbour,
+  Bevel_AnchorParallel,
+  Bevel_AnchorHorizontalCenterTo,
+  Bevel_AnchorVerticalCenterTo,
+  Bevel_AnchorAsAlign,
+  Bevel_AnchorClient,
   Bevel_GetAlign,
   Bevel_SetAlign,
   Bevel_GetAnchors,
@@ -548,8 +629,6 @@ exports
   Bevel_SetCursor,
   Bevel_GetHint,
   Bevel_SetHint,
-  Bevel_GetMargins,
-  Bevel_SetMargins,
   Bevel_GetComponentCount,
   Bevel_GetComponentIndex,
   Bevel_SetComponentIndex,
@@ -558,6 +637,17 @@ exports
   Bevel_SetName,
   Bevel_GetTag,
   Bevel_SetTag,
+  Bevel_GetAnchorSideLeft,
+  Bevel_SetAnchorSideLeft,
+  Bevel_GetAnchorSideTop,
+  Bevel_SetAnchorSideTop,
+  Bevel_GetAnchorSideRight,
+  Bevel_SetAnchorSideRight,
+  Bevel_GetAnchorSideBottom,
+  Bevel_SetAnchorSideBottom,
+  Bevel_GetBorderSpacing,
+  Bevel_SetBorderSpacing,
   Bevel_GetComponents,
+  Bevel_GetAnchorSide,
   Bevel_StaticClassType;
 

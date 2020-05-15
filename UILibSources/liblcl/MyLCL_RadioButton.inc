@@ -179,7 +179,7 @@ end;
 
 function RadioButton_GetTextLen(AObj: TRadioButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure RadioButton_SetTextBuf(AObj: TRadioButton; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function RadioButton_ToString(AObj: TRadioButton): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure RadioButton_AnchorToNeighbour(AObj: TRadioButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure RadioButton_AnchorParallel(AObj: TRadioButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure RadioButton_AnchorHorizontalCenterTo(AObj: TRadioButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure RadioButton_AnchorVerticalCenterTo(AObj: TRadioButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure RadioButton_AnchorAsAlign(AObj: TRadioButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure RadioButton_AnchorClient(AObj: TRadioButton; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function RadioButton_GetAction(AObj: TRadioButton): TBasicAction; extdecl;
@@ -777,16 +807,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function RadioButton_GetMargins(AObj: TRadioButton): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure RadioButton_SetMargins(AObj: TRadioButton; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function RadioButton_GetComponentCount(AObj: TRadioButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -827,6 +847,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function RadioButton_GetAnchorSideLeft(AObj: TRadioButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure RadioButton_SetAnchorSideLeft(AObj: TRadioButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function RadioButton_GetAnchorSideTop(AObj: TRadioButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure RadioButton_SetAnchorSideTop(AObj: TRadioButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function RadioButton_GetAnchorSideRight(AObj: TRadioButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure RadioButton_SetAnchorSideRight(AObj: TRadioButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function RadioButton_GetAnchorSideBottom(AObj: TRadioButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure RadioButton_SetAnchorSideBottom(AObj: TRadioButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function RadioButton_GetChildSizing(AObj: TRadioButton): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure RadioButton_SetChildSizing(AObj: TRadioButton; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function RadioButton_GetBorderSpacing(AObj: TRadioButton): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure RadioButton_SetBorderSpacing(AObj: TRadioButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function RadioButton_GetDockClients(AObj: TRadioButton; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -840,6 +920,11 @@ end;
 function RadioButton_GetComponents(AObj: TRadioButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function RadioButton_GetAnchorSide(AObj: TRadioButton; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function RadioButton_StaticClassType: TClass; extdecl;
@@ -894,6 +979,12 @@ exports
   RadioButton_Equals,
   RadioButton_GetHashCode,
   RadioButton_ToString,
+  RadioButton_AnchorToNeighbour,
+  RadioButton_AnchorParallel,
+  RadioButton_AnchorHorizontalCenterTo,
+  RadioButton_AnchorVerticalCenterTo,
+  RadioButton_AnchorAsAlign,
+  RadioButton_AnchorClient,
   RadioButton_GetAction,
   RadioButton_SetAction,
   RadioButton_GetAlign,
@@ -996,8 +1087,6 @@ exports
   RadioButton_SetCursor,
   RadioButton_GetHint,
   RadioButton_SetHint,
-  RadioButton_GetMargins,
-  RadioButton_SetMargins,
   RadioButton_GetComponentCount,
   RadioButton_GetComponentIndex,
   RadioButton_SetComponentIndex,
@@ -1006,8 +1095,21 @@ exports
   RadioButton_SetName,
   RadioButton_GetTag,
   RadioButton_SetTag,
+  RadioButton_GetAnchorSideLeft,
+  RadioButton_SetAnchorSideLeft,
+  RadioButton_GetAnchorSideTop,
+  RadioButton_SetAnchorSideTop,
+  RadioButton_GetAnchorSideRight,
+  RadioButton_SetAnchorSideRight,
+  RadioButton_GetAnchorSideBottom,
+  RadioButton_SetAnchorSideBottom,
+  RadioButton_GetChildSizing,
+  RadioButton_SetChildSizing,
+  RadioButton_GetBorderSpacing,
+  RadioButton_SetBorderSpacing,
   RadioButton_GetDockClients,
   RadioButton_GetControls,
   RadioButton_GetComponents,
+  RadioButton_GetAnchorSide,
   RadioButton_StaticClassType;
 

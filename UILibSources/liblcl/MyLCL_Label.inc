@@ -104,7 +104,7 @@ end;
 
 function Label_GetTextLen(AObj: TLabel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Label_SetTextBuf(AObj: TLabel; Buffer: PChar); extdecl;
@@ -160,6 +160,46 @@ end;
 function Label_ToString(AObj: TLabel): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Label_AnchorToNeighbour(AObj: TLabel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Label_AnchorParallel(AObj: TLabel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Label_AnchorHorizontalCenterTo(AObj: TLabel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Label_AnchorVerticalCenterTo(AObj: TLabel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Label_AnchorAsAlign(AObj: TLabel; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Label_AnchorClient(AObj: TLabel; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
+function Label_GetOptimalFill(AObj: TLabel): LongBool; extdecl;
+begin
+  Result :=  AObj.OptimalFill;
+end;
+
+procedure Label_SetOptimalFill(AObj: TLabel; AValue: LongBool); extdecl;
+begin
+  AObj.OptimalFill := AValue;
 end;
 
 function Label_GetAlign(AObj: TLabel): TAlign; extdecl;
@@ -619,16 +659,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Label_GetMargins(AObj: TLabel): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Label_SetMargins(AObj: TLabel; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Label_GetComponentCount(AObj: TLabel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -669,9 +699,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Label_GetAnchorSideLeft(AObj: TLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Label_SetAnchorSideLeft(AObj: TLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Label_GetAnchorSideTop(AObj: TLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Label_SetAnchorSideTop(AObj: TLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Label_GetAnchorSideRight(AObj: TLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Label_SetAnchorSideRight(AObj: TLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Label_GetAnchorSideBottom(AObj: TLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Label_SetAnchorSideBottom(AObj: TLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Label_GetBorderSpacing(AObj: TLabel): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Label_SetBorderSpacing(AObj: TLabel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Label_GetComponents(AObj: TLabel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Label_GetAnchorSide(AObj: TLabel; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Label_StaticClassType: TClass; extdecl;
@@ -711,6 +796,14 @@ exports
   Label_Equals,
   Label_GetHashCode,
   Label_ToString,
+  Label_AnchorToNeighbour,
+  Label_AnchorParallel,
+  Label_AnchorHorizontalCenterTo,
+  Label_AnchorVerticalCenterTo,
+  Label_AnchorAsAlign,
+  Label_AnchorClient,
+  Label_GetOptimalFill,
+  Label_SetOptimalFill,
   Label_GetAlign,
   Label_SetAlign,
   Label_GetAlignment,
@@ -798,8 +891,6 @@ exports
   Label_SetCursor,
   Label_GetHint,
   Label_SetHint,
-  Label_GetMargins,
-  Label_SetMargins,
   Label_GetComponentCount,
   Label_GetComponentIndex,
   Label_SetComponentIndex,
@@ -808,6 +899,17 @@ exports
   Label_SetName,
   Label_GetTag,
   Label_SetTag,
+  Label_GetAnchorSideLeft,
+  Label_SetAnchorSideLeft,
+  Label_GetAnchorSideTop,
+  Label_SetAnchorSideTop,
+  Label_GetAnchorSideRight,
+  Label_SetAnchorSideRight,
+  Label_GetAnchorSideBottom,
+  Label_SetAnchorSideBottom,
+  Label_GetBorderSpacing,
+  Label_SetBorderSpacing,
   Label_GetComponents,
+  Label_GetAnchorSide,
   Label_StaticClassType;
 

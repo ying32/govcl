@@ -194,7 +194,7 @@ end;
 
 function DrawGrid_GetTextLen(AObj: TDrawGrid): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure DrawGrid_SetTextBuf(AObj: TDrawGrid; Buffer: PChar); extdecl;
@@ -250,6 +250,36 @@ end;
 function DrawGrid_ToString(AObj: TDrawGrid): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure DrawGrid_AnchorToNeighbour(AObj: TDrawGrid; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure DrawGrid_AnchorParallel(AObj: TDrawGrid; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure DrawGrid_AnchorHorizontalCenterTo(AObj: TDrawGrid; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure DrawGrid_AnchorVerticalCenterTo(AObj: TDrawGrid; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure DrawGrid_AnchorAsAlign(AObj: TDrawGrid; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure DrawGrid_AnchorClient(AObj: TDrawGrid; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function DrawGrid_GetAlign(AObj: TDrawGrid): TAlign; extdecl;
@@ -1058,16 +1088,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function DrawGrid_GetMargins(AObj: TDrawGrid): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure DrawGrid_SetMargins(AObj: TDrawGrid; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function DrawGrid_GetComponentCount(AObj: TDrawGrid): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1108,6 +1128,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function DrawGrid_GetAnchorSideLeft(AObj: TDrawGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure DrawGrid_SetAnchorSideLeft(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function DrawGrid_GetAnchorSideTop(AObj: TDrawGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure DrawGrid_SetAnchorSideTop(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function DrawGrid_GetAnchorSideRight(AObj: TDrawGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure DrawGrid_SetAnchorSideRight(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function DrawGrid_GetAnchorSideBottom(AObj: TDrawGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure DrawGrid_SetAnchorSideBottom(AObj: TDrawGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function DrawGrid_GetChildSizing(AObj: TDrawGrid): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure DrawGrid_SetChildSizing(AObj: TDrawGrid; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function DrawGrid_GetBorderSpacing(AObj: TDrawGrid): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure DrawGrid_SetBorderSpacing(AObj: TDrawGrid; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function DrawGrid_GetColWidths(AObj: TDrawGrid; Index: Integer): Integer; extdecl;
 begin
   Result :=  AObj.ColWidths[Index];
@@ -1141,6 +1221,11 @@ end;
 function DrawGrid_GetComponents(AObj: TDrawGrid; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function DrawGrid_GetAnchorSide(AObj: TDrawGrid; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function DrawGrid_StaticClassType: TClass; extdecl;
@@ -1198,6 +1283,12 @@ exports
   DrawGrid_Equals,
   DrawGrid_GetHashCode,
   DrawGrid_ToString,
+  DrawGrid_AnchorToNeighbour,
+  DrawGrid_AnchorParallel,
+  DrawGrid_AnchorHorizontalCenterTo,
+  DrawGrid_AnchorVerticalCenterTo,
+  DrawGrid_AnchorAsAlign,
+  DrawGrid_AnchorClient,
   DrawGrid_GetAlign,
   DrawGrid_SetAlign,
   DrawGrid_GetAnchors,
@@ -1348,8 +1439,6 @@ exports
   DrawGrid_SetCursor,
   DrawGrid_GetHint,
   DrawGrid_SetHint,
-  DrawGrid_GetMargins,
-  DrawGrid_SetMargins,
   DrawGrid_GetComponentCount,
   DrawGrid_GetComponentIndex,
   DrawGrid_SetComponentIndex,
@@ -1358,6 +1447,18 @@ exports
   DrawGrid_SetName,
   DrawGrid_GetTag,
   DrawGrid_SetTag,
+  DrawGrid_GetAnchorSideLeft,
+  DrawGrid_SetAnchorSideLeft,
+  DrawGrid_GetAnchorSideTop,
+  DrawGrid_SetAnchorSideTop,
+  DrawGrid_GetAnchorSideRight,
+  DrawGrid_SetAnchorSideRight,
+  DrawGrid_GetAnchorSideBottom,
+  DrawGrid_SetAnchorSideBottom,
+  DrawGrid_GetChildSizing,
+  DrawGrid_SetChildSizing,
+  DrawGrid_GetBorderSpacing,
+  DrawGrid_SetBorderSpacing,
   DrawGrid_GetColWidths,
   DrawGrid_SetColWidths,
   DrawGrid_GetRowHeights,
@@ -1365,5 +1466,6 @@ exports
   DrawGrid_GetDockClients,
   DrawGrid_GetControls,
   DrawGrid_GetComponents,
+  DrawGrid_GetAnchorSide,
   DrawGrid_StaticClassType;
 

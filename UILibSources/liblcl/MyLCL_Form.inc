@@ -194,7 +194,7 @@ end;
 
 function Form_GetTextLen(AObj: TForm): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Form_SetTextBuf(AObj: TForm; Buffer: PChar); extdecl;
@@ -250,6 +250,36 @@ end;
 function Form_ToString(AObj: TForm): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Form_AnchorToNeighbour(AObj: TForm; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Form_AnchorParallel(AObj: TForm; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Form_AnchorHorizontalCenterTo(AObj: TForm; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Form_AnchorVerticalCenterTo(AObj: TForm; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Form_AnchorAsAlign(AObj: TForm; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Form_AnchorClient(AObj: TForm; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Form_GetAction(AObj: TForm): TBasicAction; extdecl;
@@ -1047,16 +1077,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Form_GetMargins(AObj: TForm): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Form_SetMargins(AObj: TForm; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Form_GetComponentCount(AObj: TForm): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1097,6 +1117,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Form_GetAnchorSideLeft(AObj: TForm): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Form_SetAnchorSideLeft(AObj: TForm; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Form_GetAnchorSideTop(AObj: TForm): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Form_SetAnchorSideTop(AObj: TForm; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Form_GetAnchorSideRight(AObj: TForm): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Form_SetAnchorSideRight(AObj: TForm; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Form_GetAnchorSideBottom(AObj: TForm): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Form_SetAnchorSideBottom(AObj: TForm; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Form_GetChildSizing(AObj: TForm): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure Form_SetChildSizing(AObj: TForm; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function Form_GetBorderSpacing(AObj: TForm): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Form_SetBorderSpacing(AObj: TForm; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Form_GetDockClients(AObj: TForm; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -1110,6 +1190,11 @@ end;
 function Form_GetComponents(AObj: TForm; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Form_GetAnchorSide(AObj: TForm; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Form_StaticClassType: TClass; extdecl;
@@ -1167,6 +1252,12 @@ exports
   Form_Equals,
   Form_GetHashCode,
   Form_ToString,
+  Form_AnchorToNeighbour,
+  Form_AnchorParallel,
+  Form_AnchorHorizontalCenterTo,
+  Form_AnchorVerticalCenterTo,
+  Form_AnchorAsAlign,
+  Form_AnchorClient,
   Form_GetAction,
   Form_SetAction,
   Form_GetAlign,
@@ -1314,8 +1405,6 @@ exports
   Form_SetCursor,
   Form_GetHint,
   Form_SetHint,
-  Form_GetMargins,
-  Form_SetMargins,
   Form_GetComponentCount,
   Form_GetComponentIndex,
   Form_SetComponentIndex,
@@ -1324,8 +1413,21 @@ exports
   Form_SetName,
   Form_GetTag,
   Form_SetTag,
+  Form_GetAnchorSideLeft,
+  Form_SetAnchorSideLeft,
+  Form_GetAnchorSideTop,
+  Form_SetAnchorSideTop,
+  Form_GetAnchorSideRight,
+  Form_SetAnchorSideRight,
+  Form_GetAnchorSideBottom,
+  Form_SetAnchorSideBottom,
+  Form_GetChildSizing,
+  Form_SetChildSizing,
+  Form_GetBorderSpacing,
+  Form_SetBorderSpacing,
   Form_GetDockClients,
   Form_GetControls,
   Form_GetComponents,
+  Form_GetAnchorSide,
   Form_StaticClassType;
 

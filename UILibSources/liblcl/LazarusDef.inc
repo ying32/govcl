@@ -1,25 +1,6 @@
 // 不使用自动生成的
 // 这里主要是对自动生成做兼容和补充相关
 
-function ToUnixTime(ADateTime: TDateTime): TUnixDateTime; inline;
-begin
-  Result := DateTimeToUnix(LocalTimeToUniversal(ADateTime));
-end;
-
-function UnixToTime(ADateTime: TUnixDateTime): TDateTime; inline;
-begin
-  Result := UniversalTimeToLocal(UnixToDateTime(ADateTime));
-end;
-
-function ToPChar(AStr: string): PChar; inline;
-begin
-  Result := PChar(AStr);
-end;
-
-// 一些关于库的信息
-type
-  TStringEncoding = (seUnknown, seANSI, seUnicode, seUTF8);
-
 function DLibStringEncoding: TStringEncoding; extdecl;
 begin
   Result := seUTF8;
@@ -28,7 +9,7 @@ end;
 function DLibVersion: Cardinal; extdecl;
 begin
   // 共8位，2位2位的
-  Result := $02000000;
+  Result := $02000200;
 end;
 
 // 一些初始
@@ -512,33 +493,6 @@ end;
 
 
 
-// TListView
-function ListView_GetScrollBars(AObj: TListView): TScrollStyle; extdecl;
-begin
-  Result :=  AObj.ScrollBars;
-end;
-
-procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
-begin
-  AObj.ScrollBars := AValue;
-end;
-
-//function ListView_CustomSort(AObj: TListView; SortProc: TLVCompare; lParam: NativeInt): LongBool; extdecl;
-//begin
-//  Result :=  AObj.CustomSort2(SortProc, lParam);
-//end;
-
-// TTreeView
-function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
-begin
-  Result :=  AObj.ScrollBars;
-end;
-
-procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
-begin
-  AObj.ScrollBars := AValue;
-end;
-
 // TBitmap
 procedure Bitmap_Clear(AObj: TBitmap); extdecl;
 begin
@@ -677,7 +631,20 @@ end;
 // 在主线程中运行
 procedure DSynchronize(AUseMsg: LongBool); extdecl;
 begin
-  TThread.Synchronize(nil, TEventClass.ThreadProc);
+  if MainThreadId = TThread.CurrentThread.ThreadID then
+    TEventClass.ThreadProc()
+  else
+    TThread.Synchronize(nil, TEventClass.ThreadProc);
+end;
+
+function DMainThreadId: TThreadID; extdecl;
+begin
+  Result := MainThreadId;
+end;
+
+function DCurrentThreadId: TThreadID; extdecl;
+begin
+  Result := TThread.CurrentThread.ThreadID;
 end;
 
 procedure DSysOpen(FileName: PChar); extdecl;
@@ -897,7 +864,32 @@ begin
   Obj.SetPrinter(aName);
 end;
 
+function SysIsZhCN: Boolean;
+begin
+{$IFDEF MSWINDOWS}
+  Result := SysLocale.DefaultLCID = 2052;
+{$ELSE}
+  Result := Pos('zh_CN', GetEnvironmentVariable('LANG')) <> -1;
+{$ENDIF}
+end;
 
+function DLibAbout: PChar; extdecl;
+var
+  LVal: string;
+begin
+  if SysIsZhCN then
+    LVal := '作者：不在乎y(ying32)'#13#10 +
+            '官网：https://z-kit.cc'#13#10 +
+            '基于Lazarus ' + lcl_version + '制作'#13#10 +
+            '第三方库列表：'#13#10#13#10
+  else
+    LVal := 'Author:不在乎y(ying32)'#13#10 +
+            'Official website:https://z-kit.cc'#13#10 +
+            'Based on Lazarus ' + lcl_version + #13#10 +
+            'Third party library list:'#13#10#13#10;
+  LVal := LVal + '    TRichMemo';
+  Result := PChar(LVal);
+end;
 
 //----------------------------------------------------
 // 一些lib的资源
@@ -988,6 +980,12 @@ begin
 end;
 
 
+// 非Windows下使用exports无法导出pas中的
+//function DGetProcAddr(AName: PChar): Pointer; extdecl;
+//begin
+//  Result := GetProcAddr(AName);
+//end;
+
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -1036,7 +1034,7 @@ begin
         else
           MessageDlg(E.Message,  mtError, [mbOK], 0);
       end else
-        DebugLn('Syscall' + ALen.ToString + ' Error: ' + E.Message);
+        Writeln('Syscall' + ALen.ToString + ' Error: ' + E.Message);
     end;
   end;
 end;
@@ -1046,6 +1044,8 @@ end;
 exports
   // 导出动态调用的
   MySyscall,
+  // 导出表查询
+  //DGetProcAddr,
 
   // SysLocaled
   DSysLocale,
@@ -1101,6 +1101,13 @@ exports
   DWindowFromPoint,
 {$ENDIF}
 
+{$IFDEF LINUX}
+  GdkWindow_GetXId,
+  GtkWidget_GetGtkFixed,
+  GdkWindow_FromForm,
+  GtkWidget_Window,
+{$ENDIF}
+
 {$IFDEF LCLCocoa}
   NSWindow_FromForm,
   NSWindow_titleVisibility,
@@ -1131,6 +1138,8 @@ exports
   DMessageDlg,
   DExtractFilePath,
   DFileExists,
+  DMainThreadId,
+  DCurrentThreadId,
 
   DSelectDirectory1,
   DSelectDirectory2,
@@ -1181,22 +1190,12 @@ exports
   ImageList_GetIcon1,
   //ImageList_GetIcon2,
 
-  // TListView
-  ListView_GetScrollBars,
-  ListView_SetScrollBars,
-  //ListView_CustomSort,
-
-  // TTreeView
-  TreeView_GetScrollBars,
-  TreeView_SetScrollBars,
-
   // TBitmap
   Bitmap_Clear,
   Bitmap_BeginUpdate,
   Bitmap_EndUpdate,
   Bitmap_LoadFromDevice,
 
-  // Form uFormDesignerFile.pas
   ResFormLoadFromStream,
   ResFormLoadFromFile,
   ResFormLoadFromResourceName,
@@ -1214,11 +1213,7 @@ exports
   DGetLibResouceCount,
   DGetLibResouceItem,
   DModifyLibResouce,
+  DLibAbout,
 
-{$IFDEF LINUX}
-  GdkWindow_GetXId,
-  GtkWidget_GetGtkFixed,
-  GdkWindow_FromForm,
-{$ENDIF}
   DGetLibType
 ;

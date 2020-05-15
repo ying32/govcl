@@ -13,7 +13,7 @@ unit uComponents;
 interface
 
 uses
-  Classes, SysUtils, fgl;
+  Classes, fgl;
 
 type
   TClassLists = specialize  TFPGMap<string, TClass>;
@@ -23,57 +23,8 @@ type
 implementation
 
 uses
-  Interfaces, // this includes the LCL widgetset,
-{$IFDEF WINDOWS}
-  Windows,
-  MultiMon,
-  ShellAPI,
-  CommCtrl,
-  ActiveX,
-{$ELSE}
-  LCLType,
-  Types,
-{$ENDIF}
-  typinfo,
-  LCLProc,
-  LCLIntf,
-  DateUtils,
-  IniFiles,
-  Registry,
-  Forms,
-  StdCtrls,
-  Dialogs,
-  ExtCtrls,
-  Graphics,
-  Controls,
-  Buttons,
-  ComCtrls,
-  ToolWin,
-  ImgList,
-  ExtDlgs,
-  ActnList,
-  ColorBox,
-  PrintersDlgs,
-  DateTimePicker,
-  Calendar,
-  Menus,
-  Clipbrd,
-  CheckLst,
-  MaskEdit,
-  uLinkLabel,
-  ImageButton,
-  Grids,
-  ValEdit,
-  Gauges,
-  Spin,
-  ComboEx,
-  {$I UserDefineComponentUses.inc}
-  uMiniWebview,
-  XButton,
-  uControlPatchs;
-
-{$I LazarusExtDef.inc}
-
+  {$I UseAll.inc}
+  ,uControlPatchs;
 
 procedure AddComponentClass(AClass: TClass);
 begin
@@ -99,7 +50,7 @@ begin
       TTrayIcon,{TBalloonHint,TCategoryPanelGroup,TCategoryPanel,}TOpenDialog,
       TSaveDialog,TColorDialog,TFontDialog,TPrintDialog,TOpenPictureDialog,
       TSavePictureDialog{,TSaveTextFileDialog,TOpenTextFileDialog},
-      {TRichEdit,}TTrackBar,TImageList,TUpDown,TProgressBar,
+      TRichEdit,TTrackBar,TImageList,TUpDown,TProgressBar,
       {THotKey,}TDateTimePicker,TMonthCalendar,TListView,TTreeView,TStatusBar,
       TToolBar{,TIcon,TBitmap,TMemoryStream,TFont,TStrings,
       TStringList,TBrush,TPen},TMenuItem{,TListGroups,TPicture,
@@ -111,7 +62,7 @@ begin
       {TMargins,TPadding,}TPaintBox,TTimer,TComponent,{TList,TGraphic,TMonthCalColors,}
       {TParaAttributes,TTextAttributes,TIconOptions,}TScrollBar,TShape,TBevel,TScrollBox,
       TCheckListBox,TGauge{,TCustomHint},TImageButton,TFontDialog,TFindDialog,TReplaceDialog,TPageSetupDialog,
-      TPrinterSetupDialog,
+      TPrinterSetupDialog, TSelectDirectoryDialog,
       TStringGrid, TDrawGrid, TValueListEditor, THeaderControl,
       {THeaderSection,THeaderSections,}TLabeledEdit,TBoundLabel,
       TFlowPanel,TCoolBar,TCoolBands,TCoolBand, TSpinEdit,TMiniWebview,

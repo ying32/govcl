@@ -104,7 +104,7 @@ end;
 
 function Control_GetTextLen(AObj: TControl): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Control_SetTextBuf(AObj: TControl; Buffer: PChar); extdecl;
@@ -160,6 +160,36 @@ end;
 function Control_ToString(AObj: TControl): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Control_AnchorToNeighbour(AObj: TControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Control_AnchorParallel(AObj: TControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Control_AnchorHorizontalCenterTo(AObj: TControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Control_AnchorVerticalCenterTo(AObj: TControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Control_AnchorAsAlign(AObj: TControl; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Control_AnchorClient(AObj: TControl; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Control_GetEnabled(AObj: TControl): LongBool; extdecl;
@@ -377,16 +407,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Control_GetMargins(AObj: TControl): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Control_SetMargins(AObj: TControl; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Control_GetComponentCount(AObj: TControl): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -427,9 +447,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Control_GetAnchorSideLeft(AObj: TControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Control_SetAnchorSideLeft(AObj: TControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Control_GetAnchorSideTop(AObj: TControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Control_SetAnchorSideTop(AObj: TControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Control_GetAnchorSideRight(AObj: TControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Control_SetAnchorSideRight(AObj: TControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Control_GetAnchorSideBottom(AObj: TControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Control_SetAnchorSideBottom(AObj: TControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Control_GetBorderSpacing(AObj: TControl): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Control_SetBorderSpacing(AObj: TControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Control_GetComponents(AObj: TControl; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Control_GetAnchorSide(AObj: TControl; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Control_StaticClassType: TClass; extdecl;
@@ -469,6 +544,12 @@ exports
   Control_Equals,
   Control_GetHashCode,
   Control_ToString,
+  Control_AnchorToNeighbour,
+  Control_AnchorParallel,
+  Control_AnchorHorizontalCenterTo,
+  Control_AnchorVerticalCenterTo,
+  Control_AnchorAsAlign,
+  Control_AnchorClient,
   Control_GetEnabled,
   Control_SetEnabled,
   Control_GetAction,
@@ -512,8 +593,6 @@ exports
   Control_SetCursor,
   Control_GetHint,
   Control_SetHint,
-  Control_GetMargins,
-  Control_SetMargins,
   Control_GetComponentCount,
   Control_GetComponentIndex,
   Control_SetComponentIndex,
@@ -522,6 +601,17 @@ exports
   Control_SetName,
   Control_GetTag,
   Control_SetTag,
+  Control_GetAnchorSideLeft,
+  Control_SetAnchorSideLeft,
+  Control_GetAnchorSideTop,
+  Control_SetAnchorSideTop,
+  Control_GetAnchorSideRight,
+  Control_SetAnchorSideRight,
+  Control_GetAnchorSideBottom,
+  Control_SetAnchorSideBottom,
+  Control_GetBorderSpacing,
+  Control_SetBorderSpacing,
   Control_GetComponents,
+  Control_GetAnchorSide,
   Control_StaticClassType;
 

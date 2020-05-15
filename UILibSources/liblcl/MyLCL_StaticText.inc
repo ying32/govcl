@@ -179,7 +179,7 @@ end;
 
 function StaticText_GetTextLen(AObj: TStaticText): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure StaticText_SetTextBuf(AObj: TStaticText; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function StaticText_ToString(AObj: TStaticText): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure StaticText_AnchorToNeighbour(AObj: TStaticText; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure StaticText_AnchorParallel(AObj: TStaticText; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure StaticText_AnchorHorizontalCenterTo(AObj: TStaticText; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure StaticText_AnchorVerticalCenterTo(AObj: TStaticText; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure StaticText_AnchorAsAlign(AObj: TStaticText; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure StaticText_AnchorClient(AObj: TStaticText; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function StaticText_GetAlign(AObj: TStaticText): TAlign; extdecl;
@@ -779,16 +809,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function StaticText_GetMargins(AObj: TStaticText): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure StaticText_SetMargins(AObj: TStaticText; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function StaticText_GetComponentCount(AObj: TStaticText): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -829,6 +849,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function StaticText_GetAnchorSideLeft(AObj: TStaticText): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure StaticText_SetAnchorSideLeft(AObj: TStaticText; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function StaticText_GetAnchorSideTop(AObj: TStaticText): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure StaticText_SetAnchorSideTop(AObj: TStaticText; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function StaticText_GetAnchorSideRight(AObj: TStaticText): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure StaticText_SetAnchorSideRight(AObj: TStaticText; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function StaticText_GetAnchorSideBottom(AObj: TStaticText): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure StaticText_SetAnchorSideBottom(AObj: TStaticText; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function StaticText_GetChildSizing(AObj: TStaticText): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure StaticText_SetChildSizing(AObj: TStaticText; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function StaticText_GetBorderSpacing(AObj: TStaticText): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure StaticText_SetBorderSpacing(AObj: TStaticText; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function StaticText_GetDockClients(AObj: TStaticText; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -842,6 +922,11 @@ end;
 function StaticText_GetComponents(AObj: TStaticText; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function StaticText_GetAnchorSide(AObj: TStaticText; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function StaticText_StaticClassType: TClass; extdecl;
@@ -896,6 +981,12 @@ exports
   StaticText_Equals,
   StaticText_GetHashCode,
   StaticText_ToString,
+  StaticText_AnchorToNeighbour,
+  StaticText_AnchorParallel,
+  StaticText_AnchorHorizontalCenterTo,
+  StaticText_AnchorVerticalCenterTo,
+  StaticText_AnchorAsAlign,
+  StaticText_AnchorClient,
   StaticText_GetAlign,
   StaticText_SetAlign,
   StaticText_GetAlignment,
@@ -1000,8 +1091,6 @@ exports
   StaticText_SetCursor,
   StaticText_GetHint,
   StaticText_SetHint,
-  StaticText_GetMargins,
-  StaticText_SetMargins,
   StaticText_GetComponentCount,
   StaticText_GetComponentIndex,
   StaticText_SetComponentIndex,
@@ -1010,8 +1099,21 @@ exports
   StaticText_SetName,
   StaticText_GetTag,
   StaticText_SetTag,
+  StaticText_GetAnchorSideLeft,
+  StaticText_SetAnchorSideLeft,
+  StaticText_GetAnchorSideTop,
+  StaticText_SetAnchorSideTop,
+  StaticText_GetAnchorSideRight,
+  StaticText_SetAnchorSideRight,
+  StaticText_GetAnchorSideBottom,
+  StaticText_SetAnchorSideBottom,
+  StaticText_GetChildSizing,
+  StaticText_SetChildSizing,
+  StaticText_GetBorderSpacing,
+  StaticText_SetBorderSpacing,
   StaticText_GetDockClients,
   StaticText_GetControls,
   StaticText_GetComponents,
+  StaticText_GetAnchorSide,
   StaticText_StaticClassType;
 

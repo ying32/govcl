@@ -189,7 +189,7 @@ end;
 
 function ProgressBar_GetTextLen(AObj: TProgressBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ProgressBar_SetTextBuf(AObj: TProgressBar; Buffer: PChar); extdecl;
@@ -245,6 +245,36 @@ end;
 function ProgressBar_ToString(AObj: TProgressBar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ProgressBar_AnchorToNeighbour(AObj: TProgressBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ProgressBar_AnchorParallel(AObj: TProgressBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ProgressBar_AnchorHorizontalCenterTo(AObj: TProgressBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ProgressBar_AnchorVerticalCenterTo(AObj: TProgressBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ProgressBar_AnchorAsAlign(AObj: TProgressBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ProgressBar_AnchorClient(AObj: TProgressBar; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ProgressBar_GetAlign(AObj: TProgressBar): TAlign; extdecl;
@@ -769,16 +799,6 @@ begin
   AObj.Cursor := AValue;
 end;
 
-function ProgressBar_GetMargins(AObj: TProgressBar): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ProgressBar_SetMargins(AObj: TProgressBar; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ProgressBar_GetComponentCount(AObj: TProgressBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -819,6 +839,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ProgressBar_GetAnchorSideLeft(AObj: TProgressBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ProgressBar_SetAnchorSideLeft(AObj: TProgressBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ProgressBar_GetAnchorSideTop(AObj: TProgressBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ProgressBar_SetAnchorSideTop(AObj: TProgressBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ProgressBar_GetAnchorSideRight(AObj: TProgressBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ProgressBar_SetAnchorSideRight(AObj: TProgressBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ProgressBar_GetAnchorSideBottom(AObj: TProgressBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ProgressBar_SetAnchorSideBottom(AObj: TProgressBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ProgressBar_GetChildSizing(AObj: TProgressBar): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ProgressBar_SetChildSizing(AObj: TProgressBar; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ProgressBar_GetBorderSpacing(AObj: TProgressBar): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ProgressBar_SetBorderSpacing(AObj: TProgressBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ProgressBar_GetDockClients(AObj: TProgressBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -832,6 +912,11 @@ end;
 function ProgressBar_GetComponents(AObj: TProgressBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ProgressBar_GetAnchorSide(AObj: TProgressBar; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ProgressBar_StaticClassType: TClass; extdecl;
@@ -888,6 +973,12 @@ exports
   ProgressBar_Equals,
   ProgressBar_GetHashCode,
   ProgressBar_ToString,
+  ProgressBar_AnchorToNeighbour,
+  ProgressBar_AnchorParallel,
+  ProgressBar_AnchorHorizontalCenterTo,
+  ProgressBar_AnchorVerticalCenterTo,
+  ProgressBar_AnchorAsAlign,
+  ProgressBar_AnchorClient,
   ProgressBar_GetAlign,
   ProgressBar_SetAlign,
   ProgressBar_GetAnchors,
@@ -988,8 +1079,6 @@ exports
   ProgressBar_SetHeight,
   ProgressBar_GetCursor,
   ProgressBar_SetCursor,
-  ProgressBar_GetMargins,
-  ProgressBar_SetMargins,
   ProgressBar_GetComponentCount,
   ProgressBar_GetComponentIndex,
   ProgressBar_SetComponentIndex,
@@ -998,8 +1087,21 @@ exports
   ProgressBar_SetName,
   ProgressBar_GetTag,
   ProgressBar_SetTag,
+  ProgressBar_GetAnchorSideLeft,
+  ProgressBar_SetAnchorSideLeft,
+  ProgressBar_GetAnchorSideTop,
+  ProgressBar_SetAnchorSideTop,
+  ProgressBar_GetAnchorSideRight,
+  ProgressBar_SetAnchorSideRight,
+  ProgressBar_GetAnchorSideBottom,
+  ProgressBar_SetAnchorSideBottom,
+  ProgressBar_GetChildSizing,
+  ProgressBar_SetChildSizing,
+  ProgressBar_GetBorderSpacing,
+  ProgressBar_SetBorderSpacing,
   ProgressBar_GetDockClients,
   ProgressBar_GetControls,
   ProgressBar_GetComponents,
+  ProgressBar_GetAnchorSide,
   ProgressBar_StaticClassType;
 

@@ -80,6 +80,8 @@ func (f *TMainForm) initComponents() {
 	f.Act.SetCaption("action")
 	f.Act.SetImageIndex(0)
 	f.Act.SetHint("这是一个提示|长提示了")
+	f.Act.SetOnExecute(f.OnActExecute)
+	f.Act.SetOnUpdate(f.OnActUpdate)
 
 	// mainMenu
 	f.MainMenu = vcl.NewMainMenu(f)

@@ -33,19 +33,23 @@ uses
 type
    TReadyState = (rsUninitialized, rsLoading, rsLoaded, rsInterActive, rsComplete);
 
-   TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
-   TWebStatusTextChangeEvent = procedure(Sender: TObject; const Text: string) of object;
-   TWebJSExternalEvent = procedure(Sender: TObject; const func: string; const args: WideString; var retval: WideString) of object;
+   TWebStatusTextChangeEvent = procedure(Sender: TObject; const AText: string) of object;
+   TWebTitleChangeEvent = procedure(Sender: TObject; const AText: string) of object;
+   TWebDocumentCompleteEvent = procedure(Sender: TObject; const pDisp: Pointer; const AURL: string) of object;
+   TWebWindowClosingEvent = procedure(Sender: TObject; AIsChildWindow: Boolean; var ACancel: Boolean) of object;
+   TWebJSExternalEvent = procedure(Sender: TObject; const AFunc: string; const AArgs: WideString; var ARetval: WideString) of object;
 
    { TMiniWebview }
 
    WebKitWebView = PGtkWidget;
 
-   TMiniWebview = class({$IFDEF LCLgtk3}TCustomControl{$ELSE}TWinControl{$ENDIF})
+   TMiniWebview = class(TCustomControl)
    private
-     FOnJSExternal: TWebJSExternalEvent;
      FOnStatusTextChange: TWebStatusTextChangeEvent;
+     FOnWindowClosing: TWebWindowClosingEvent;
+     FOnOnDocumentComplete: TWebDocumentCompleteEvent;
      FOnTitleChange: TWebTitleChangeEvent;
+     FOnJSExternal: TWebJSExternalEvent;
      FWebView: WebKitWebView;
    {$IFDEF LCLgtk2}
      FScrolledWindow: PGtkWidget;
@@ -54,6 +58,8 @@ type
      FScrolledWindow: PGtkScrolledWindow;
    {$ENDIF}
      function GetReadyState: TReadyState;
+   protected
+     procedure Paint; override;
    public
      constructor Create(AOwner: TComponent); override;
      destructor Destroy; override;
@@ -75,11 +81,19 @@ type
 
      // propertys
      property ReadyState: TReadyState read GetReadyState;   // not support
+   published
+     property Align;
+     property Anchors;
+     property BorderSpacing;
+     property ChildSizing;
+     property Constraints;
+     property Enabled;
+     property Visible;
      // events
      property OnStatusTextChange: TWebStatusTextChangeEvent read FOnStatusTextChange write FOnStatusTextChange;  // no support????
      property OnTitleChange: TWebTitleChangeEvent read FOnTitleChange write FOnTitleChange;  // not support
-     //property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
-     //property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
+     property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
+     property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
      property OnJSExternal: TWebJSExternalEvent read FOnJSExternal write FOnJSExternal;// not support
    end;
 
@@ -155,6 +169,9 @@ end;
 constructor TMiniWebview.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
+  ControlStyle := ControlStyle - [csAcceptsControls, csSetCaption];
+  Width := 300;
+  Height := 200;
   if csDesigning in ComponentState then
     Exit;
   LoadLibWebkitGtk;
@@ -184,6 +201,8 @@ end;
 procedure TMiniWebview.Resize;
 begin
   inherited Resize;
+  if csDesigning in ComponentState then
+    Exit;
   if FScrolledWindow <> nil then
 {$IFDEF LCLgtk3}
   gtk_widget_set_size_request(FScrolledWindow, Width, Height);
@@ -198,6 +217,8 @@ var
   LChild: PGtkWidget;
 begin
   inherited CreateWnd;
+  if csDesigning in ComponentState then
+    Exit;
   if (Handle <> 0) and (FWebView <> nil) and (FScrolledWindow <> nil) then
   begin
 {$IFDEF LCLgtk2}
@@ -273,6 +294,16 @@ procedure TMiniWebview.LoadHTML(const AStr: string);
 begin
   //if Assigned(FWebview) and (Length(AStr) > 0) then
     //webkit_web_view_load_html(FWebview, PChar(AStr), 'about:blank');
+end;
+
+procedure TMiniWebview.Paint;
+begin
+  inherited Paint;
+  if csDesigning in ComponentState then
+  begin
+    Canvas.Brush.Color:=clWhite;
+    Canvas.FillRect(ClientRect);
+  end;
 end;
 
 initialization

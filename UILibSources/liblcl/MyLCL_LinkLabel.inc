@@ -104,7 +104,7 @@ end;
 
 function LinkLabel_GetTextLen(AObj: TLinkLabel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure LinkLabel_SetTextBuf(AObj: TLinkLabel; Buffer: PChar); extdecl;
@@ -160,6 +160,36 @@ end;
 function LinkLabel_ToString(AObj: TLinkLabel): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure LinkLabel_AnchorToNeighbour(AObj: TLinkLabel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure LinkLabel_AnchorParallel(AObj: TLinkLabel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure LinkLabel_AnchorHorizontalCenterTo(AObj: TLinkLabel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure LinkLabel_AnchorVerticalCenterTo(AObj: TLinkLabel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure LinkLabel_AnchorAsAlign(AObj: TLinkLabel; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure LinkLabel_AnchorClient(AObj: TLinkLabel; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function LinkLabel_GetAlign(AObj: TLinkLabel): TAlign; extdecl;
@@ -576,16 +606,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function LinkLabel_GetMargins(AObj: TLinkLabel): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure LinkLabel_SetMargins(AObj: TLinkLabel; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function LinkLabel_GetComponentCount(AObj: TLinkLabel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -626,9 +646,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function LinkLabel_GetAnchorSideLeft(AObj: TLinkLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure LinkLabel_SetAnchorSideLeft(AObj: TLinkLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function LinkLabel_GetAnchorSideTop(AObj: TLinkLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure LinkLabel_SetAnchorSideTop(AObj: TLinkLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function LinkLabel_GetAnchorSideRight(AObj: TLinkLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure LinkLabel_SetAnchorSideRight(AObj: TLinkLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function LinkLabel_GetAnchorSideBottom(AObj: TLinkLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure LinkLabel_SetAnchorSideBottom(AObj: TLinkLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function LinkLabel_GetBorderSpacing(AObj: TLinkLabel): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure LinkLabel_SetBorderSpacing(AObj: TLinkLabel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function LinkLabel_GetComponents(AObj: TLinkLabel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function LinkLabel_GetAnchorSide(AObj: TLinkLabel; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function LinkLabel_StaticClassType: TClass; extdecl;
@@ -668,6 +743,12 @@ exports
   LinkLabel_Equals,
   LinkLabel_GetHashCode,
   LinkLabel_ToString,
+  LinkLabel_AnchorToNeighbour,
+  LinkLabel_AnchorParallel,
+  LinkLabel_AnchorHorizontalCenterTo,
+  LinkLabel_AnchorVerticalCenterTo,
+  LinkLabel_AnchorAsAlign,
+  LinkLabel_AnchorClient,
   LinkLabel_GetAlign,
   LinkLabel_SetAlign,
   LinkLabel_GetAlignment,
@@ -746,8 +827,6 @@ exports
   LinkLabel_SetHeight,
   LinkLabel_GetHint,
   LinkLabel_SetHint,
-  LinkLabel_GetMargins,
-  LinkLabel_SetMargins,
   LinkLabel_GetComponentCount,
   LinkLabel_GetComponentIndex,
   LinkLabel_SetComponentIndex,
@@ -756,6 +835,17 @@ exports
   LinkLabel_SetName,
   LinkLabel_GetTag,
   LinkLabel_SetTag,
+  LinkLabel_GetAnchorSideLeft,
+  LinkLabel_SetAnchorSideLeft,
+  LinkLabel_GetAnchorSideTop,
+  LinkLabel_SetAnchorSideTop,
+  LinkLabel_GetAnchorSideRight,
+  LinkLabel_SetAnchorSideRight,
+  LinkLabel_GetAnchorSideBottom,
+  LinkLabel_SetAnchorSideBottom,
+  LinkLabel_GetBorderSpacing,
+  LinkLabel_SetBorderSpacing,
   LinkLabel_GetComponents,
+  LinkLabel_GetAnchorSide,
   LinkLabel_StaticClassType;
 

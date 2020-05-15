@@ -184,7 +184,7 @@ end;
 
 function BitBtn_GetTextLen(AObj: TBitBtn): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure BitBtn_SetTextBuf(AObj: TBitBtn; Buffer: PChar); extdecl;
@@ -240,6 +240,66 @@ end;
 function BitBtn_ToString(AObj: TBitBtn): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure BitBtn_AnchorToNeighbour(AObj: TBitBtn; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure BitBtn_AnchorParallel(AObj: TBitBtn; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure BitBtn_AnchorHorizontalCenterTo(AObj: TBitBtn; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure BitBtn_AnchorVerticalCenterTo(AObj: TBitBtn; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure BitBtn_AnchorAsAlign(AObj: TBitBtn; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure BitBtn_AnchorClient(AObj: TBitBtn; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
+function BitBtn_GetDefaultCaption(AObj: TBitBtn): LongBool; extdecl;
+begin
+  Result :=  AObj.DefaultCaption;
+end;
+
+procedure BitBtn_SetDefaultCaption(AObj: TBitBtn; AValue: LongBool); extdecl;
+begin
+  AObj.DefaultCaption := AValue;
+end;
+
+function BitBtn_GetGlyphShowMode(AObj: TBitBtn): TGlyphShowMode; extdecl;
+begin
+  Result :=  AObj.GlyphShowMode;
+end;
+
+procedure BitBtn_SetGlyphShowMode(AObj: TBitBtn; AValue: TGlyphShowMode); extdecl;
+begin
+  AObj.GlyphShowMode := AValue;
+end;
+
+function BitBtn_GetImageWidth(AObj: TBitBtn): Integer; extdecl;
+begin
+  Result :=  AObj.ImageWidth;
+end;
+
+procedure BitBtn_SetImageWidth(AObj: TBitBtn; AValue: Integer); extdecl;
+begin
+  AObj.ImageWidth := AValue;
 end;
 
 function BitBtn_GetAction(AObj: TBitBtn): TBasicAction; extdecl;
@@ -782,16 +842,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function BitBtn_GetMargins(AObj: TBitBtn): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure BitBtn_SetMargins(AObj: TBitBtn; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function BitBtn_GetComponentCount(AObj: TBitBtn): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -832,6 +882,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function BitBtn_GetAnchorSideLeft(AObj: TBitBtn): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure BitBtn_SetAnchorSideLeft(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function BitBtn_GetAnchorSideTop(AObj: TBitBtn): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure BitBtn_SetAnchorSideTop(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function BitBtn_GetAnchorSideRight(AObj: TBitBtn): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure BitBtn_SetAnchorSideRight(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function BitBtn_GetAnchorSideBottom(AObj: TBitBtn): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure BitBtn_SetAnchorSideBottom(AObj: TBitBtn; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function BitBtn_GetChildSizing(AObj: TBitBtn): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure BitBtn_SetChildSizing(AObj: TBitBtn; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function BitBtn_GetBorderSpacing(AObj: TBitBtn): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure BitBtn_SetBorderSpacing(AObj: TBitBtn; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function BitBtn_GetDockClients(AObj: TBitBtn; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -845,6 +955,11 @@ end;
 function BitBtn_GetComponents(AObj: TBitBtn; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function BitBtn_GetAnchorSide(AObj: TBitBtn; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function BitBtn_StaticClassType: TClass; extdecl;
@@ -900,6 +1015,18 @@ exports
   BitBtn_Equals,
   BitBtn_GetHashCode,
   BitBtn_ToString,
+  BitBtn_AnchorToNeighbour,
+  BitBtn_AnchorParallel,
+  BitBtn_AnchorHorizontalCenterTo,
+  BitBtn_AnchorVerticalCenterTo,
+  BitBtn_AnchorAsAlign,
+  BitBtn_AnchorClient,
+  BitBtn_GetDefaultCaption,
+  BitBtn_SetDefaultCaption,
+  BitBtn_GetGlyphShowMode,
+  BitBtn_SetGlyphShowMode,
+  BitBtn_GetImageWidth,
+  BitBtn_SetImageWidth,
   BitBtn_GetAction,
   BitBtn_SetAction,
   BitBtn_GetAlign,
@@ -1002,8 +1129,6 @@ exports
   BitBtn_SetCursor,
   BitBtn_GetHint,
   BitBtn_SetHint,
-  BitBtn_GetMargins,
-  BitBtn_SetMargins,
   BitBtn_GetComponentCount,
   BitBtn_GetComponentIndex,
   BitBtn_SetComponentIndex,
@@ -1012,8 +1137,21 @@ exports
   BitBtn_SetName,
   BitBtn_GetTag,
   BitBtn_SetTag,
+  BitBtn_GetAnchorSideLeft,
+  BitBtn_SetAnchorSideLeft,
+  BitBtn_GetAnchorSideTop,
+  BitBtn_SetAnchorSideTop,
+  BitBtn_GetAnchorSideRight,
+  BitBtn_SetAnchorSideRight,
+  BitBtn_GetAnchorSideBottom,
+  BitBtn_SetAnchorSideBottom,
+  BitBtn_GetChildSizing,
+  BitBtn_SetChildSizing,
+  BitBtn_GetBorderSpacing,
+  BitBtn_SetBorderSpacing,
   BitBtn_GetDockClients,
   BitBtn_GetControls,
   BitBtn_GetComponents,
+  BitBtn_GetAnchorSide,
   BitBtn_StaticClassType;
 

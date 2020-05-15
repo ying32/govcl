@@ -179,7 +179,7 @@ end;
 
 function GroupBox_GetTextLen(AObj: TGroupBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure GroupBox_SetTextBuf(AObj: TGroupBox; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function GroupBox_ToString(AObj: TGroupBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure GroupBox_AnchorToNeighbour(AObj: TGroupBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure GroupBox_AnchorParallel(AObj: TGroupBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure GroupBox_AnchorHorizontalCenterTo(AObj: TGroupBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure GroupBox_AnchorVerticalCenterTo(AObj: TGroupBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure GroupBox_AnchorAsAlign(AObj: TGroupBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure GroupBox_AnchorClient(AObj: TGroupBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function GroupBox_GetAlign(AObj: TGroupBox): TAlign; extdecl;
@@ -785,16 +815,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function GroupBox_GetMargins(AObj: TGroupBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure GroupBox_SetMargins(AObj: TGroupBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function GroupBox_GetComponentCount(AObj: TGroupBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -835,6 +855,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function GroupBox_GetAnchorSideLeft(AObj: TGroupBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure GroupBox_SetAnchorSideLeft(AObj: TGroupBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function GroupBox_GetAnchorSideTop(AObj: TGroupBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure GroupBox_SetAnchorSideTop(AObj: TGroupBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function GroupBox_GetAnchorSideRight(AObj: TGroupBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure GroupBox_SetAnchorSideRight(AObj: TGroupBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function GroupBox_GetAnchorSideBottom(AObj: TGroupBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure GroupBox_SetAnchorSideBottom(AObj: TGroupBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function GroupBox_GetChildSizing(AObj: TGroupBox): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure GroupBox_SetChildSizing(AObj: TGroupBox; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function GroupBox_GetBorderSpacing(AObj: TGroupBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure GroupBox_SetBorderSpacing(AObj: TGroupBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function GroupBox_GetDockClients(AObj: TGroupBox; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -848,6 +928,11 @@ end;
 function GroupBox_GetComponents(AObj: TGroupBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function GroupBox_GetAnchorSide(AObj: TGroupBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function GroupBox_StaticClassType: TClass; extdecl;
@@ -902,6 +987,12 @@ exports
   GroupBox_Equals,
   GroupBox_GetHashCode,
   GroupBox_ToString,
+  GroupBox_AnchorToNeighbour,
+  GroupBox_AnchorParallel,
+  GroupBox_AnchorHorizontalCenterTo,
+  GroupBox_AnchorVerticalCenterTo,
+  GroupBox_AnchorAsAlign,
+  GroupBox_AnchorClient,
   GroupBox_GetAlign,
   GroupBox_SetAlign,
   GroupBox_GetAnchors,
@@ -1004,8 +1095,6 @@ exports
   GroupBox_SetCursor,
   GroupBox_GetHint,
   GroupBox_SetHint,
-  GroupBox_GetMargins,
-  GroupBox_SetMargins,
   GroupBox_GetComponentCount,
   GroupBox_GetComponentIndex,
   GroupBox_SetComponentIndex,
@@ -1014,8 +1103,21 @@ exports
   GroupBox_SetName,
   GroupBox_GetTag,
   GroupBox_SetTag,
+  GroupBox_GetAnchorSideLeft,
+  GroupBox_SetAnchorSideLeft,
+  GroupBox_GetAnchorSideTop,
+  GroupBox_SetAnchorSideTop,
+  GroupBox_GetAnchorSideRight,
+  GroupBox_SetAnchorSideRight,
+  GroupBox_GetAnchorSideBottom,
+  GroupBox_SetAnchorSideBottom,
+  GroupBox_GetChildSizing,
+  GroupBox_SetChildSizing,
+  GroupBox_GetBorderSpacing,
+  GroupBox_SetBorderSpacing,
   GroupBox_GetDockClients,
   GroupBox_GetControls,
   GroupBox_GetComponents,
+  GroupBox_GetAnchorSide,
   GroupBox_StaticClassType;
 

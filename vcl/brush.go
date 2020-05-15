@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TBrush struct {
     IObject
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewBrush() *TBrush {
     b := new(TBrush)
     b.instance = Brush_Create()
     b.ptr = unsafe.Pointer(b.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(b, (*TBrush).Free)
     return b
 }
 
@@ -57,7 +59,7 @@ func BrushFromObj(obj IObject) *TBrush {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsBrush.
 func BrushFromUnsafePointer(ptr unsafe.Pointer) *TBrush {
     return AsBrush(ptr)

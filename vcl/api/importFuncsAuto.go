@@ -126,6 +126,15 @@ func Application_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func Application_GetScaled(obj uintptr) bool {
+    ret, _, _ := application_GetScaled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Application_SetScaled(obj uintptr, value bool) {
+   application_SetScaled.Call(obj, GoBoolToDBool(value))
+}
+
 func Application_GetExeName(obj uintptr) string {
     ret, _, _ := application_GetExeName.Call(obj)
     return DStrToGoStr(ret)
@@ -551,6 +560,30 @@ func Form_GetHashCode(obj uintptr) int32 {
 func Form_ToString(obj uintptr) string {
     ret, _, _ := form_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Form_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    form_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Form_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    form_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Form_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    form_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Form_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    form_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Form_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    form_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Form_AnchorClient(obj uintptr, ASpace int32)  {
+    form_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Form_GetAction(obj uintptr) uintptr {
@@ -1208,15 +1241,6 @@ func Form_SetHint(obj uintptr, value string) {
    form_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Form_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := form_GetMargins.Call(obj)
-    return ret
-}
-
-func Form_SetMargins(obj uintptr, value uintptr) {
-   form_SetMargins.Call(obj, value)
-}
-
 func Form_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := form_GetComponentCount.Call(obj)
     return int32(ret)
@@ -1254,6 +1278,60 @@ func Form_SetTag(obj uintptr, value int) {
    form_SetTag.Call(obj, uintptr(value))
 }
 
+func Form_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := form_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Form_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   form_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Form_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := form_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Form_SetAnchorSideTop(obj uintptr, value uintptr) {
+   form_SetAnchorSideTop.Call(obj, value)
+}
+
+func Form_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := form_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Form_SetAnchorSideRight(obj uintptr, value uintptr) {
+   form_SetAnchorSideRight.Call(obj, value)
+}
+
+func Form_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := form_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Form_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   form_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Form_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := form_GetChildSizing.Call(obj)
+    return ret
+}
+
+func Form_SetChildSizing(obj uintptr, value uintptr) {
+   form_SetChildSizing.Call(obj, value)
+}
+
+func Form_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := form_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Form_SetBorderSpacing(obj uintptr, value uintptr) {
+   form_SetBorderSpacing.Call(obj, value)
+}
+
 func Form_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := form_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -1266,6 +1344,11 @@ func Form_GetControls(obj uintptr, Index int32) uintptr {
 
 func Form_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := form_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Form_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := form_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -1496,6 +1579,30 @@ func Button_GetHashCode(obj uintptr) int32 {
 func Button_ToString(obj uintptr) string {
     ret, _, _ := button_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Button_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    button_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Button_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    button_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Button_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    button_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Button_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    button_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Button_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    button_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Button_AnchorClient(obj uintptr, ASpace int32)  {
+    button_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Button_GetAction(obj uintptr) uintptr {
@@ -1948,15 +2055,6 @@ func Button_SetHint(obj uintptr, value string) {
    button_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Button_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := button_GetMargins.Call(obj)
-    return ret
-}
-
-func Button_SetMargins(obj uintptr, value uintptr) {
-   button_SetMargins.Call(obj, value)
-}
-
 func Button_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := button_GetComponentCount.Call(obj)
     return int32(ret)
@@ -1994,6 +2092,60 @@ func Button_SetTag(obj uintptr, value int) {
    button_SetTag.Call(obj, uintptr(value))
 }
 
+func Button_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := button_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Button_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   button_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Button_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := button_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Button_SetAnchorSideTop(obj uintptr, value uintptr) {
+   button_SetAnchorSideTop.Call(obj, value)
+}
+
+func Button_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := button_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Button_SetAnchorSideRight(obj uintptr, value uintptr) {
+   button_SetAnchorSideRight.Call(obj, value)
+}
+
+func Button_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := button_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Button_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   button_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Button_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := button_GetChildSizing.Call(obj)
+    return ret
+}
+
+func Button_SetChildSizing(obj uintptr, value uintptr) {
+   button_SetChildSizing.Call(obj, value)
+}
+
+func Button_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := button_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Button_SetBorderSpacing(obj uintptr, value uintptr) {
+   button_SetBorderSpacing.Call(obj, value)
+}
+
 func Button_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := button_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -2006,6 +2158,11 @@ func Button_GetControls(obj uintptr, Index int32) uintptr {
 
 func Button_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := button_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Button_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := button_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -2260,6 +2417,30 @@ func Edit_GetHashCode(obj uintptr) int32 {
 func Edit_ToString(obj uintptr) string {
     ret, _, _ := edit_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Edit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    edit_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Edit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    edit_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Edit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    edit_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Edit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    edit_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Edit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    edit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Edit_AnchorClient(obj uintptr, ASpace int32)  {
+    edit_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Edit_GetAlign(obj uintptr) TAlign {
@@ -2851,15 +3032,6 @@ func Edit_SetHint(obj uintptr, value string) {
    edit_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Edit_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := edit_GetMargins.Call(obj)
-    return ret
-}
-
-func Edit_SetMargins(obj uintptr, value uintptr) {
-   edit_SetMargins.Call(obj, value)
-}
-
 func Edit_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := edit_GetComponentCount.Call(obj)
     return int32(ret)
@@ -2897,6 +3069,60 @@ func Edit_SetTag(obj uintptr, value int) {
    edit_SetTag.Call(obj, uintptr(value))
 }
 
+func Edit_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := edit_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Edit_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   edit_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Edit_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := edit_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Edit_SetAnchorSideTop(obj uintptr, value uintptr) {
+   edit_SetAnchorSideTop.Call(obj, value)
+}
+
+func Edit_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := edit_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Edit_SetAnchorSideRight(obj uintptr, value uintptr) {
+   edit_SetAnchorSideRight.Call(obj, value)
+}
+
+func Edit_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := edit_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Edit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   edit_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Edit_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := edit_GetChildSizing.Call(obj)
+    return ret
+}
+
+func Edit_SetChildSizing(obj uintptr, value uintptr) {
+   edit_SetChildSizing.Call(obj, value)
+}
+
+func Edit_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := edit_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Edit_SetBorderSpacing(obj uintptr, value uintptr) {
+   edit_SetBorderSpacing.Call(obj, value)
+}
+
 func Edit_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := edit_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -2909,6 +3135,11 @@ func Edit_GetControls(obj uintptr, Index int32) uintptr {
 
 func Edit_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := edit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Edit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := edit_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -2980,6 +3211,15 @@ func MainMenu_GetHashCode(obj uintptr) int32 {
 func MainMenu_ToString(obj uintptr) string {
     ret, _, _ := mainMenu_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MainMenu_GetImagesWidth(obj uintptr) int32 {
+    ret, _, _ := mainMenu_GetImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func MainMenu_SetImagesWidth(obj uintptr, value int32) {
+   mainMenu_SetImagesWidth.Call(obj, uintptr(value))
 }
 
 func MainMenu_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -3141,6 +3381,15 @@ func PopupMenu_GetHashCode(obj uintptr) int32 {
 func PopupMenu_ToString(obj uintptr) string {
     ret, _, _ := popupMenu_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PopupMenu_GetImagesWidth(obj uintptr) int32 {
+    ret, _, _ := popupMenu_GetImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func PopupMenu_SetImagesWidth(obj uintptr, value int32) {
+   popupMenu_SetImagesWidth.Call(obj, uintptr(value))
 }
 
 func PopupMenu_GetPopupComponent(obj uintptr) uintptr {
@@ -3501,6 +3750,30 @@ func Memo_GetHashCode(obj uintptr) int32 {
 func Memo_ToString(obj uintptr) string {
     ret, _, _ := memo_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Memo_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    memo_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Memo_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    memo_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Memo_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    memo_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Memo_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    memo_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Memo_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    memo_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Memo_AnchorClient(obj uintptr, ASpace int32)  {
+    memo_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Memo_GetAlign(obj uintptr) TAlign {
@@ -4111,15 +4384,6 @@ func Memo_SetHint(obj uintptr, value string) {
    memo_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Memo_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := memo_GetMargins.Call(obj)
-    return ret
-}
-
-func Memo_SetMargins(obj uintptr, value uintptr) {
-   memo_SetMargins.Call(obj, value)
-}
-
 func Memo_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := memo_GetComponentCount.Call(obj)
     return int32(ret)
@@ -4157,6 +4421,60 @@ func Memo_SetTag(obj uintptr, value int) {
    memo_SetTag.Call(obj, uintptr(value))
 }
 
+func Memo_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := memo_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Memo_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   memo_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Memo_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := memo_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Memo_SetAnchorSideTop(obj uintptr, value uintptr) {
+   memo_SetAnchorSideTop.Call(obj, value)
+}
+
+func Memo_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := memo_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Memo_SetAnchorSideRight(obj uintptr, value uintptr) {
+   memo_SetAnchorSideRight.Call(obj, value)
+}
+
+func Memo_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := memo_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Memo_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   memo_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Memo_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := memo_GetChildSizing.Call(obj)
+    return ret
+}
+
+func Memo_SetChildSizing(obj uintptr, value uintptr) {
+   memo_SetChildSizing.Call(obj, value)
+}
+
+func Memo_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := memo_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Memo_SetBorderSpacing(obj uintptr, value uintptr) {
+   memo_SetBorderSpacing.Call(obj, value)
+}
+
 func Memo_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := memo_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -4169,6 +4487,11 @@ func Memo_GetControls(obj uintptr, Index int32) uintptr {
 
 func Memo_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := memo_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Memo_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := memo_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -4395,6 +4718,30 @@ func CheckBox_GetHashCode(obj uintptr) int32 {
 func CheckBox_ToString(obj uintptr) string {
     ret, _, _ := checkBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CheckBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    checkBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CheckBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    checkBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CheckBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    checkBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func CheckBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    checkBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func CheckBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    checkBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func CheckBox_AnchorClient(obj uintptr, ASpace int32)  {
+    checkBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func CheckBox_GetAction(obj uintptr) uintptr {
@@ -4874,15 +5221,6 @@ func CheckBox_SetHint(obj uintptr, value string) {
    checkBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func CheckBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := checkBox_GetMargins.Call(obj)
-    return ret
-}
-
-func CheckBox_SetMargins(obj uintptr, value uintptr) {
-   checkBox_SetMargins.Call(obj, value)
-}
-
 func CheckBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := checkBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -4920,6 +5258,60 @@ func CheckBox_SetTag(obj uintptr, value int) {
    checkBox_SetTag.Call(obj, uintptr(value))
 }
 
+func CheckBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := checkBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func CheckBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   checkBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func CheckBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := checkBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func CheckBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   checkBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func CheckBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := checkBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func CheckBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   checkBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func CheckBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := checkBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func CheckBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   checkBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func CheckBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := checkBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func CheckBox_SetChildSizing(obj uintptr, value uintptr) {
+   checkBox_SetChildSizing.Call(obj, value)
+}
+
+func CheckBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := checkBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func CheckBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   checkBox_SetBorderSpacing.Call(obj, value)
+}
+
 func CheckBox_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := checkBox_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -4932,6 +5324,11 @@ func CheckBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func CheckBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := checkBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func CheckBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := checkBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -5158,6 +5555,30 @@ func RadioButton_GetHashCode(obj uintptr) int32 {
 func RadioButton_ToString(obj uintptr) string {
     ret, _, _ := radioButton_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func RadioButton_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    radioButton_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func RadioButton_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    radioButton_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func RadioButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    radioButton_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func RadioButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    radioButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func RadioButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    radioButton_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func RadioButton_AnchorClient(obj uintptr, ASpace int32)  {
+    radioButton_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func RadioButton_GetAction(obj uintptr) uintptr {
@@ -5619,15 +6040,6 @@ func RadioButton_SetHint(obj uintptr, value string) {
    radioButton_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func RadioButton_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := radioButton_GetMargins.Call(obj)
-    return ret
-}
-
-func RadioButton_SetMargins(obj uintptr, value uintptr) {
-   radioButton_SetMargins.Call(obj, value)
-}
-
 func RadioButton_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := radioButton_GetComponentCount.Call(obj)
     return int32(ret)
@@ -5665,6 +6077,60 @@ func RadioButton_SetTag(obj uintptr, value int) {
    radioButton_SetTag.Call(obj, uintptr(value))
 }
 
+func RadioButton_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := radioButton_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func RadioButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   radioButton_SetAnchorSideLeft.Call(obj, value)
+}
+
+func RadioButton_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := radioButton_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func RadioButton_SetAnchorSideTop(obj uintptr, value uintptr) {
+   radioButton_SetAnchorSideTop.Call(obj, value)
+}
+
+func RadioButton_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := radioButton_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func RadioButton_SetAnchorSideRight(obj uintptr, value uintptr) {
+   radioButton_SetAnchorSideRight.Call(obj, value)
+}
+
+func RadioButton_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := radioButton_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func RadioButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   radioButton_SetAnchorSideBottom.Call(obj, value)
+}
+
+func RadioButton_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := radioButton_GetChildSizing.Call(obj)
+    return ret
+}
+
+func RadioButton_SetChildSizing(obj uintptr, value uintptr) {
+   radioButton_SetChildSizing.Call(obj, value)
+}
+
+func RadioButton_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := radioButton_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func RadioButton_SetBorderSpacing(obj uintptr, value uintptr) {
+   radioButton_SetBorderSpacing.Call(obj, value)
+}
+
 func RadioButton_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := radioButton_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -5677,6 +6143,11 @@ func RadioButton_GetControls(obj uintptr, Index int32) uintptr {
 
 func RadioButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := radioButton_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func RadioButton_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := radioButton_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -5903,6 +6374,30 @@ func GroupBox_GetHashCode(obj uintptr) int32 {
 func GroupBox_ToString(obj uintptr) string {
     ret, _, _ := groupBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func GroupBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    groupBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func GroupBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    groupBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func GroupBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    groupBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func GroupBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    groupBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func GroupBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    groupBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func GroupBox_AnchorClient(obj uintptr, ASpace int32)  {
+    groupBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func GroupBox_GetAlign(obj uintptr) TAlign {
@@ -6362,15 +6857,6 @@ func GroupBox_SetHint(obj uintptr, value string) {
    groupBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func GroupBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := groupBox_GetMargins.Call(obj)
-    return ret
-}
-
-func GroupBox_SetMargins(obj uintptr, value uintptr) {
-   groupBox_SetMargins.Call(obj, value)
-}
-
 func GroupBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := groupBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -6408,6 +6894,60 @@ func GroupBox_SetTag(obj uintptr, value int) {
    groupBox_SetTag.Call(obj, uintptr(value))
 }
 
+func GroupBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := groupBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func GroupBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   groupBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func GroupBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := groupBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func GroupBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   groupBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func GroupBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := groupBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func GroupBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   groupBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func GroupBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := groupBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func GroupBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   groupBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func GroupBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := groupBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func GroupBox_SetChildSizing(obj uintptr, value uintptr) {
+   groupBox_SetChildSizing.Call(obj, value)
+}
+
+func GroupBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := groupBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func GroupBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   groupBox_SetBorderSpacing.Call(obj, value)
+}
+
 func GroupBox_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := groupBox_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -6420,6 +6960,11 @@ func GroupBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func GroupBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := groupBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func GroupBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := groupBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -6580,6 +7125,39 @@ func Label_GetHashCode(obj uintptr) int32 {
 func Label_ToString(obj uintptr) string {
     ret, _, _ := label_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Label_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    label_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Label_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    label_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Label_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    label_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Label_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    label_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Label_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    label_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Label_AnchorClient(obj uintptr, ASpace int32)  {
+    label_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Label_GetOptimalFill(obj uintptr) bool {
+    ret, _, _ := label_GetOptimalFill.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Label_SetOptimalFill(obj uintptr, value bool) {
+   label_SetOptimalFill.Call(obj, GoBoolToDBool(value))
 }
 
 func Label_GetAlign(obj uintptr) TAlign {
@@ -6973,15 +7551,6 @@ func Label_SetHint(obj uintptr, value string) {
    label_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Label_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := label_GetMargins.Call(obj)
-    return ret
-}
-
-func Label_SetMargins(obj uintptr, value uintptr) {
-   label_SetMargins.Call(obj, value)
-}
-
 func Label_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := label_GetComponentCount.Call(obj)
     return int32(ret)
@@ -7019,8 +7588,58 @@ func Label_SetTag(obj uintptr, value int) {
    label_SetTag.Call(obj, uintptr(value))
 }
 
+func Label_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := label_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Label_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   label_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Label_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := label_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Label_SetAnchorSideTop(obj uintptr, value uintptr) {
+   label_SetAnchorSideTop.Call(obj, value)
+}
+
+func Label_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := label_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Label_SetAnchorSideRight(obj uintptr, value uintptr) {
+   label_SetAnchorSideRight.Call(obj, value)
+}
+
+func Label_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := label_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Label_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   label_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Label_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := label_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Label_SetBorderSpacing(obj uintptr, value uintptr) {
+   label_SetBorderSpacing.Call(obj, value)
+}
+
 func Label_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := label_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Label_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := label_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -7278,6 +7897,57 @@ func ListBox_GetHashCode(obj uintptr) int32 {
 func ListBox_ToString(obj uintptr) string {
     ret, _, _ := listBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    listBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ListBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    listBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ListBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    listBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ListBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    listBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    listBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ListBox_AnchorClient(obj uintptr, ASpace int32)  {
+    listBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ListBox_GetClickOnSelChange(obj uintptr) bool {
+    ret, _, _ := listBox_GetClickOnSelChange.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListBox_SetClickOnSelChange(obj uintptr, value bool) {
+   listBox_SetClickOnSelChange.Call(obj, GoBoolToDBool(value))
+}
+
+func ListBox_GetOptions(obj uintptr) TListBoxOptions {
+    ret, _, _ := listBox_GetOptions.Call(obj)
+    return TListBoxOptions(ret)
+}
+
+func ListBox_SetOptions(obj uintptr, value TListBoxOptions) {
+   listBox_SetOptions.Call(obj, uintptr(value))
+}
+
+func ListBox_GetTopIndex(obj uintptr) int32 {
+    ret, _, _ := listBox_GetTopIndex.Call(obj)
+    return int32(ret)
+}
+
+func ListBox_SetTopIndex(obj uintptr, value int32) {
+   listBox_SetTopIndex.Call(obj, uintptr(value))
 }
 
 func ListBox_GetStyle(obj uintptr) TListBoxStyle {
@@ -7811,15 +8481,6 @@ func ListBox_SetHint(obj uintptr, value string) {
    listBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ListBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := listBox_GetMargins.Call(obj)
-    return ret
-}
-
-func ListBox_SetMargins(obj uintptr, value uintptr) {
-   listBox_SetMargins.Call(obj, value)
-}
-
 func ListBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := listBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -7857,6 +8518,60 @@ func ListBox_SetTag(obj uintptr, value int) {
    listBox_SetTag.Call(obj, uintptr(value))
 }
 
+func ListBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := listBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ListBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   listBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ListBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := listBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ListBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   listBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func ListBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := listBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ListBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   listBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func ListBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := listBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ListBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   listBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ListBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := listBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ListBox_SetChildSizing(obj uintptr, value uintptr) {
+   listBox_SetChildSizing.Call(obj, value)
+}
+
+func ListBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := listBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ListBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   listBox_SetBorderSpacing.Call(obj, value)
+}
+
 func ListBox_GetSelected(obj uintptr, Index int32) bool {
     ret, _, _ := listBox_GetSelected.Call(obj, uintptr(Index))
     return DBoolToGoBool(ret)
@@ -7878,6 +8593,11 @@ func ListBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func ListBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := listBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ListBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := listBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -8124,6 +8844,30 @@ func ComboBox_GetHashCode(obj uintptr) int32 {
 func ComboBox_ToString(obj uintptr) string {
     ret, _, _ := comboBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ComboBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    comboBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ComboBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    comboBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ComboBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    comboBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ComboBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    comboBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ComboBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    comboBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ComboBox_AnchorClient(obj uintptr, ASpace int32)  {
+    comboBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ComboBox_GetAlign(obj uintptr) TAlign {
@@ -8706,15 +9450,6 @@ func ComboBox_SetHint(obj uintptr, value string) {
    comboBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ComboBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := comboBox_GetMargins.Call(obj)
-    return ret
-}
-
-func ComboBox_SetMargins(obj uintptr, value uintptr) {
-   comboBox_SetMargins.Call(obj, value)
-}
-
 func ComboBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := comboBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -8752,6 +9487,60 @@ func ComboBox_SetTag(obj uintptr, value int) {
    comboBox_SetTag.Call(obj, uintptr(value))
 }
 
+func ComboBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := comboBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ComboBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   comboBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ComboBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := comboBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ComboBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   comboBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func ComboBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := comboBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ComboBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   comboBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func ComboBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := comboBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ComboBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   comboBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ComboBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := comboBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ComboBox_SetChildSizing(obj uintptr, value uintptr) {
+   comboBox_SetChildSizing.Call(obj, value)
+}
+
+func ComboBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := comboBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ComboBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   comboBox_SetBorderSpacing.Call(obj, value)
+}
+
 func ComboBox_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := comboBox_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -8764,6 +9553,11 @@ func ComboBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func ComboBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := comboBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ComboBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := comboBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -8990,6 +9784,30 @@ func Panel_GetHashCode(obj uintptr) int32 {
 func Panel_ToString(obj uintptr) string {
     ret, _, _ := panel_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Panel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    panel_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Panel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    panel_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Panel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    panel_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Panel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    panel_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Panel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    panel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Panel_AnchorClient(obj uintptr, ASpace int32)  {
+    panel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Panel_GetAlign(obj uintptr) TAlign {
@@ -9525,15 +10343,6 @@ func Panel_SetHint(obj uintptr, value string) {
    panel_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Panel_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := panel_GetMargins.Call(obj)
-    return ret
-}
-
-func Panel_SetMargins(obj uintptr, value uintptr) {
-   panel_SetMargins.Call(obj, value)
-}
-
 func Panel_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := panel_GetComponentCount.Call(obj)
     return int32(ret)
@@ -9571,6 +10380,60 @@ func Panel_SetTag(obj uintptr, value int) {
    panel_SetTag.Call(obj, uintptr(value))
 }
 
+func Panel_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := panel_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Panel_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   panel_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Panel_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := panel_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Panel_SetAnchorSideTop(obj uintptr, value uintptr) {
+   panel_SetAnchorSideTop.Call(obj, value)
+}
+
+func Panel_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := panel_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Panel_SetAnchorSideRight(obj uintptr, value uintptr) {
+   panel_SetAnchorSideRight.Call(obj, value)
+}
+
+func Panel_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := panel_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Panel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   panel_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Panel_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := panel_GetChildSizing.Call(obj)
+    return ret
+}
+
+func Panel_SetChildSizing(obj uintptr, value uintptr) {
+   panel_SetChildSizing.Call(obj, value)
+}
+
+func Panel_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := panel_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Panel_SetBorderSpacing(obj uintptr, value uintptr) {
+   panel_SetBorderSpacing.Call(obj, value)
+}
+
 func Panel_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := panel_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -9583,6 +10446,11 @@ func Panel_GetControls(obj uintptr, Index int32) uintptr {
 
 func Panel_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := panel_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Panel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := panel_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -9743,6 +10611,75 @@ func Image_GetHashCode(obj uintptr) int32 {
 func Image_ToString(obj uintptr) string {
     ret, _, _ := image_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Image_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    image_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Image_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    image_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Image_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    image_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Image_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    image_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Image_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    image_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Image_AnchorClient(obj uintptr, ASpace int32)  {
+    image_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Image_GetAntialiasingMode(obj uintptr) TAntialiasingMode {
+    ret, _, _ := image_GetAntialiasingMode.Call(obj)
+    return TAntialiasingMode(ret)
+}
+
+func Image_SetAntialiasingMode(obj uintptr, value TAntialiasingMode) {
+   image_SetAntialiasingMode.Call(obj, uintptr(value))
+}
+
+func Image_GetKeepOriginXWhenClipped(obj uintptr) bool {
+    ret, _, _ := image_GetKeepOriginXWhenClipped.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetKeepOriginXWhenClipped(obj uintptr, value bool) {
+   image_SetKeepOriginXWhenClipped.Call(obj, GoBoolToDBool(value))
+}
+
+func Image_GetKeepOriginYWhenClipped(obj uintptr) bool {
+    ret, _, _ := image_GetKeepOriginYWhenClipped.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetKeepOriginYWhenClipped(obj uintptr, value bool) {
+   image_SetKeepOriginYWhenClipped.Call(obj, GoBoolToDBool(value))
+}
+
+func Image_GetStretchInEnabled(obj uintptr) bool {
+    ret, _, _ := image_GetStretchInEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetStretchInEnabled(obj uintptr, value bool) {
+   image_SetStretchInEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func Image_GetStretchOutEnabled(obj uintptr) bool {
+    ret, _, _ := image_GetStretchOutEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Image_SetStretchOutEnabled(obj uintptr, value bool) {
+   image_SetStretchOutEnabled.Call(obj, GoBoolToDBool(value))
 }
 
 func Image_GetCanvas(obj uintptr) uintptr {
@@ -10078,15 +11015,6 @@ func Image_SetHint(obj uintptr, value string) {
    image_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Image_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := image_GetMargins.Call(obj)
-    return ret
-}
-
-func Image_SetMargins(obj uintptr, value uintptr) {
-   image_SetMargins.Call(obj, value)
-}
-
 func Image_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := image_GetComponentCount.Call(obj)
     return int32(ret)
@@ -10124,8 +11052,58 @@ func Image_SetTag(obj uintptr, value int) {
    image_SetTag.Call(obj, uintptr(value))
 }
 
+func Image_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := image_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Image_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   image_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Image_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := image_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Image_SetAnchorSideTop(obj uintptr, value uintptr) {
+   image_SetAnchorSideTop.Call(obj, value)
+}
+
+func Image_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := image_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Image_SetAnchorSideRight(obj uintptr, value uintptr) {
+   image_SetAnchorSideRight.Call(obj, value)
+}
+
+func Image_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := image_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Image_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   image_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Image_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := image_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Image_SetBorderSpacing(obj uintptr, value uintptr) {
+   image_SetBorderSpacing.Call(obj, value)
+}
+
 func Image_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := image_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Image_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := image_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -10286,6 +11264,30 @@ func LinkLabel_GetHashCode(obj uintptr) int32 {
 func LinkLabel_ToString(obj uintptr) string {
     ret, _, _ := linkLabel_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func LinkLabel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    linkLabel_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func LinkLabel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    linkLabel_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func LinkLabel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    linkLabel_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func LinkLabel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    linkLabel_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func LinkLabel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    linkLabel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func LinkLabel_AnchorClient(obj uintptr, ASpace int32)  {
+    linkLabel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func LinkLabel_GetAlign(obj uintptr) TAlign {
@@ -10638,15 +11640,6 @@ func LinkLabel_SetHint(obj uintptr, value string) {
    linkLabel_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func LinkLabel_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := linkLabel_GetMargins.Call(obj)
-    return ret
-}
-
-func LinkLabel_SetMargins(obj uintptr, value uintptr) {
-   linkLabel_SetMargins.Call(obj, value)
-}
-
 func LinkLabel_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := linkLabel_GetComponentCount.Call(obj)
     return int32(ret)
@@ -10684,8 +11677,58 @@ func LinkLabel_SetTag(obj uintptr, value int) {
    linkLabel_SetTag.Call(obj, uintptr(value))
 }
 
+func LinkLabel_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := linkLabel_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func LinkLabel_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   linkLabel_SetAnchorSideLeft.Call(obj, value)
+}
+
+func LinkLabel_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := linkLabel_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func LinkLabel_SetAnchorSideTop(obj uintptr, value uintptr) {
+   linkLabel_SetAnchorSideTop.Call(obj, value)
+}
+
+func LinkLabel_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := linkLabel_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func LinkLabel_SetAnchorSideRight(obj uintptr, value uintptr) {
+   linkLabel_SetAnchorSideRight.Call(obj, value)
+}
+
+func LinkLabel_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := linkLabel_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func LinkLabel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   linkLabel_SetAnchorSideBottom.Call(obj, value)
+}
+
+func LinkLabel_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := linkLabel_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func LinkLabel_SetBorderSpacing(obj uintptr, value uintptr) {
+   linkLabel_SetBorderSpacing.Call(obj, value)
+}
+
 func LinkLabel_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := linkLabel_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func LinkLabel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := linkLabel_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -10850,6 +11893,66 @@ func SpeedButton_GetHashCode(obj uintptr) int32 {
 func SpeedButton_ToString(obj uintptr) string {
     ret, _, _ := speedButton_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func SpeedButton_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    speedButton_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func SpeedButton_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    speedButton_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func SpeedButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    speedButton_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func SpeedButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    speedButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func SpeedButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    speedButton_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func SpeedButton_AnchorClient(obj uintptr, ASpace int32)  {
+    speedButton_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func SpeedButton_GetImageIndex(obj uintptr) int32 {
+    ret, _, _ := speedButton_GetImageIndex.Call(obj)
+    return int32(ret)
+}
+
+func SpeedButton_SetImageIndex(obj uintptr, value int32) {
+   speedButton_SetImageIndex.Call(obj, uintptr(value))
+}
+
+func SpeedButton_GetImages(obj uintptr) uintptr {
+    ret, _, _ := speedButton_GetImages.Call(obj)
+    return ret
+}
+
+func SpeedButton_SetImages(obj uintptr, value uintptr) {
+   speedButton_SetImages.Call(obj, value)
+}
+
+func SpeedButton_GetImageWidth(obj uintptr) int32 {
+    ret, _, _ := speedButton_GetImageWidth.Call(obj)
+    return int32(ret)
+}
+
+func SpeedButton_SetImageWidth(obj uintptr, value int32) {
+   speedButton_SetImageWidth.Call(obj, uintptr(value))
+}
+
+func SpeedButton_GetShowCaption(obj uintptr) bool {
+    ret, _, _ := speedButton_GetShowCaption.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SpeedButton_SetShowCaption(obj uintptr, value bool) {
+   speedButton_SetShowCaption.Call(obj, GoBoolToDBool(value))
 }
 
 func SpeedButton_GetAction(obj uintptr) uintptr {
@@ -11204,15 +12307,6 @@ func SpeedButton_SetHint(obj uintptr, value string) {
    speedButton_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func SpeedButton_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := speedButton_GetMargins.Call(obj)
-    return ret
-}
-
-func SpeedButton_SetMargins(obj uintptr, value uintptr) {
-   speedButton_SetMargins.Call(obj, value)
-}
-
 func SpeedButton_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := speedButton_GetComponentCount.Call(obj)
     return int32(ret)
@@ -11250,8 +12344,58 @@ func SpeedButton_SetTag(obj uintptr, value int) {
    speedButton_SetTag.Call(obj, uintptr(value))
 }
 
+func SpeedButton_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := speedButton_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func SpeedButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   speedButton_SetAnchorSideLeft.Call(obj, value)
+}
+
+func SpeedButton_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := speedButton_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func SpeedButton_SetAnchorSideTop(obj uintptr, value uintptr) {
+   speedButton_SetAnchorSideTop.Call(obj, value)
+}
+
+func SpeedButton_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := speedButton_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func SpeedButton_SetAnchorSideRight(obj uintptr, value uintptr) {
+   speedButton_SetAnchorSideRight.Call(obj, value)
+}
+
+func SpeedButton_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := speedButton_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func SpeedButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   speedButton_SetAnchorSideBottom.Call(obj, value)
+}
+
+func SpeedButton_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := speedButton_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func SpeedButton_SetBorderSpacing(obj uintptr, value uintptr) {
+   speedButton_SetBorderSpacing.Call(obj, value)
+}
+
 func SpeedButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := speedButton_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func SpeedButton_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := speedButton_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -11412,6 +12556,39 @@ func Splitter_GetHashCode(obj uintptr) int32 {
 func Splitter_ToString(obj uintptr) string {
     ret, _, _ := splitter_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Splitter_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    splitter_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Splitter_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    splitter_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Splitter_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    splitter_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Splitter_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    splitter_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Splitter_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    splitter_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Splitter_AnchorClient(obj uintptr, ASpace int32)  {
+    splitter_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func Splitter_GetResizeAnchor(obj uintptr) TAnchorKind {
+    ret, _, _ := splitter_GetResizeAnchor.Call(obj)
+    return TAnchorKind(ret)
+}
+
+func Splitter_SetResizeAnchor(obj uintptr, value TAnchorKind) {
+   splitter_SetResizeAnchor.Call(obj, uintptr(value))
 }
 
 func Splitter_GetCanvas(obj uintptr) uintptr {
@@ -11639,15 +12816,6 @@ func Splitter_SetHint(obj uintptr, value string) {
    splitter_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Splitter_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := splitter_GetMargins.Call(obj)
-    return ret
-}
-
-func Splitter_SetMargins(obj uintptr, value uintptr) {
-   splitter_SetMargins.Call(obj, value)
-}
-
 func Splitter_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := splitter_GetComponentCount.Call(obj)
     return int32(ret)
@@ -11685,8 +12853,58 @@ func Splitter_SetTag(obj uintptr, value int) {
    splitter_SetTag.Call(obj, uintptr(value))
 }
 
+func Splitter_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := splitter_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Splitter_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   splitter_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Splitter_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := splitter_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Splitter_SetAnchorSideTop(obj uintptr, value uintptr) {
+   splitter_SetAnchorSideTop.Call(obj, value)
+}
+
+func Splitter_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := splitter_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Splitter_SetAnchorSideRight(obj uintptr, value uintptr) {
+   splitter_SetAnchorSideRight.Call(obj, value)
+}
+
+func Splitter_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := splitter_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Splitter_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   splitter_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Splitter_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := splitter_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Splitter_SetBorderSpacing(obj uintptr, value uintptr) {
+   splitter_SetBorderSpacing.Call(obj, value)
+}
+
 func Splitter_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := splitter_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Splitter_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := splitter_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -11913,6 +13131,30 @@ func RadioGroup_GetHashCode(obj uintptr) int32 {
 func RadioGroup_ToString(obj uintptr) string {
     ret, _, _ := radioGroup_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func RadioGroup_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    radioGroup_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func RadioGroup_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    radioGroup_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func RadioGroup_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    radioGroup_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func RadioGroup_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    radioGroup_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func RadioGroup_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    radioGroup_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func RadioGroup_AnchorClient(obj uintptr, ASpace int32)  {
+    radioGroup_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func RadioGroup_GetAlign(obj uintptr) TAlign {
@@ -12338,15 +13580,6 @@ func RadioGroup_SetHint(obj uintptr, value string) {
    radioGroup_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func RadioGroup_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := radioGroup_GetMargins.Call(obj)
-    return ret
-}
-
-func RadioGroup_SetMargins(obj uintptr, value uintptr) {
-   radioGroup_SetMargins.Call(obj, value)
-}
-
 func RadioGroup_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := radioGroup_GetComponentCount.Call(obj)
     return int32(ret)
@@ -12384,6 +13617,60 @@ func RadioGroup_SetTag(obj uintptr, value int) {
    radioGroup_SetTag.Call(obj, uintptr(value))
 }
 
+func RadioGroup_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := radioGroup_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func RadioGroup_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   radioGroup_SetAnchorSideLeft.Call(obj, value)
+}
+
+func RadioGroup_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := radioGroup_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func RadioGroup_SetAnchorSideTop(obj uintptr, value uintptr) {
+   radioGroup_SetAnchorSideTop.Call(obj, value)
+}
+
+func RadioGroup_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := radioGroup_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func RadioGroup_SetAnchorSideRight(obj uintptr, value uintptr) {
+   radioGroup_SetAnchorSideRight.Call(obj, value)
+}
+
+func RadioGroup_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := radioGroup_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func RadioGroup_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   radioGroup_SetAnchorSideBottom.Call(obj, value)
+}
+
+func RadioGroup_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := radioGroup_GetChildSizing.Call(obj)
+    return ret
+}
+
+func RadioGroup_SetChildSizing(obj uintptr, value uintptr) {
+   radioGroup_SetChildSizing.Call(obj, value)
+}
+
+func RadioGroup_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := radioGroup_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func RadioGroup_SetBorderSpacing(obj uintptr, value uintptr) {
+   radioGroup_SetBorderSpacing.Call(obj, value)
+}
+
 func RadioGroup_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := radioGroup_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -12396,6 +13683,11 @@ func RadioGroup_GetControls(obj uintptr, Index int32) uintptr {
 
 func RadioGroup_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := radioGroup_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func RadioGroup_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := radioGroup_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -12622,6 +13914,30 @@ func StaticText_GetHashCode(obj uintptr) int32 {
 func StaticText_ToString(obj uintptr) string {
     ret, _, _ := staticText_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func StaticText_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    staticText_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func StaticText_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    staticText_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func StaticText_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    staticText_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func StaticText_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    staticText_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func StaticText_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    staticText_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func StaticText_AnchorClient(obj uintptr, ASpace int32)  {
+    staticText_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func StaticText_GetAlign(obj uintptr) TAlign {
@@ -13094,15 +14410,6 @@ func StaticText_SetHint(obj uintptr, value string) {
    staticText_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func StaticText_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := staticText_GetMargins.Call(obj)
-    return ret
-}
-
-func StaticText_SetMargins(obj uintptr, value uintptr) {
-   staticText_SetMargins.Call(obj, value)
-}
-
 func StaticText_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := staticText_GetComponentCount.Call(obj)
     return int32(ret)
@@ -13140,6 +14447,60 @@ func StaticText_SetTag(obj uintptr, value int) {
    staticText_SetTag.Call(obj, uintptr(value))
 }
 
+func StaticText_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := staticText_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func StaticText_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   staticText_SetAnchorSideLeft.Call(obj, value)
+}
+
+func StaticText_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := staticText_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func StaticText_SetAnchorSideTop(obj uintptr, value uintptr) {
+   staticText_SetAnchorSideTop.Call(obj, value)
+}
+
+func StaticText_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := staticText_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func StaticText_SetAnchorSideRight(obj uintptr, value uintptr) {
+   staticText_SetAnchorSideRight.Call(obj, value)
+}
+
+func StaticText_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := staticText_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func StaticText_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   staticText_SetAnchorSideBottom.Call(obj, value)
+}
+
+func StaticText_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := staticText_GetChildSizing.Call(obj)
+    return ret
+}
+
+func StaticText_SetChildSizing(obj uintptr, value uintptr) {
+   staticText_SetChildSizing.Call(obj, value)
+}
+
+func StaticText_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := staticText_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func StaticText_SetBorderSpacing(obj uintptr, value uintptr) {
+   staticText_SetBorderSpacing.Call(obj, value)
+}
+
 func StaticText_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := staticText_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -13152,6 +14513,11 @@ func StaticText_GetControls(obj uintptr, Index int32) uintptr {
 
 func StaticText_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := staticText_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func StaticText_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := staticText_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -13398,6 +14764,30 @@ func ColorBox_GetHashCode(obj uintptr) int32 {
 func ColorBox_ToString(obj uintptr) string {
     ret, _, _ := colorBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ColorBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    colorBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ColorBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    colorBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ColorBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    colorBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ColorBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    colorBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ColorBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    colorBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ColorBox_AnchorClient(obj uintptr, ASpace int32)  {
+    colorBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ColorBox_GetAlign(obj uintptr) TAlign {
@@ -13941,15 +15331,6 @@ func ColorBox_SetHint(obj uintptr, value string) {
    colorBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ColorBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := colorBox_GetMargins.Call(obj)
-    return ret
-}
-
-func ColorBox_SetMargins(obj uintptr, value uintptr) {
-   colorBox_SetMargins.Call(obj, value)
-}
-
 func ColorBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := colorBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -13987,6 +15368,60 @@ func ColorBox_SetTag(obj uintptr, value int) {
    colorBox_SetTag.Call(obj, uintptr(value))
 }
 
+func ColorBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := colorBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ColorBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   colorBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ColorBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := colorBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ColorBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   colorBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func ColorBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := colorBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ColorBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   colorBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func ColorBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := colorBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ColorBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   colorBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ColorBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := colorBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ColorBox_SetChildSizing(obj uintptr, value uintptr) {
+   colorBox_SetChildSizing.Call(obj, value)
+}
+
+func ColorBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := colorBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ColorBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   colorBox_SetBorderSpacing.Call(obj, value)
+}
+
 func ColorBox_GetColors(obj uintptr, Index int32) TColor {
     ret, _, _ := colorBox_GetColors.Call(obj, uintptr(Index))
     return TColor(ret)
@@ -14009,6 +15444,11 @@ func ColorBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func ColorBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := colorBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ColorBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := colorBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -14266,6 +15706,30 @@ func ColorListBox_GetHashCode(obj uintptr) int32 {
 func ColorListBox_ToString(obj uintptr) string {
     ret, _, _ := colorListBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ColorListBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    colorListBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ColorListBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    colorListBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ColorListBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    colorListBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ColorListBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    colorListBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ColorListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    colorListBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ColorListBox_AnchorClient(obj uintptr, ASpace int32)  {
+    colorListBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ColorListBox_GetAlign(obj uintptr) TAlign {
@@ -14549,6 +16013,15 @@ func ColorListBox_SetItems(obj uintptr, value uintptr) {
    colorListBox_SetItems.Call(obj, value)
 }
 
+func ColorListBox_GetTopIndex(obj uintptr) int32 {
+    ret, _, _ := colorListBox_GetTopIndex.Call(obj)
+    return int32(ret)
+}
+
+func ColorListBox_SetTopIndex(obj uintptr, value int32) {
+   colorListBox_SetTopIndex.Call(obj, uintptr(value))
+}
+
 func ColorListBox_GetMultiSelect(obj uintptr) bool {
     ret, _, _ := colorListBox_GetMultiSelect.Call(obj)
     return DBoolToGoBool(ret)
@@ -14764,15 +16237,6 @@ func ColorListBox_SetHint(obj uintptr, value string) {
    colorListBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ColorListBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := colorListBox_GetMargins.Call(obj)
-    return ret
-}
-
-func ColorListBox_SetMargins(obj uintptr, value uintptr) {
-   colorListBox_SetMargins.Call(obj, value)
-}
-
 func ColorListBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := colorListBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -14810,6 +16274,60 @@ func ColorListBox_SetTag(obj uintptr, value int) {
    colorListBox_SetTag.Call(obj, uintptr(value))
 }
 
+func ColorListBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := colorListBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ColorListBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   colorListBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ColorListBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := colorListBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ColorListBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   colorListBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func ColorListBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := colorListBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ColorListBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   colorListBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func ColorListBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := colorListBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ColorListBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   colorListBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ColorListBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := colorListBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ColorListBox_SetChildSizing(obj uintptr, value uintptr) {
+   colorListBox_SetChildSizing.Call(obj, value)
+}
+
+func ColorListBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := colorListBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ColorListBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   colorListBox_SetBorderSpacing.Call(obj, value)
+}
+
 func ColorListBox_GetColors(obj uintptr, Index int32) TColor {
     ret, _, _ := colorListBox_GetColors.Call(obj, uintptr(Index))
     return TColor(ret)
@@ -14832,6 +16350,11 @@ func ColorListBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func ColorListBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := colorListBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ColorListBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := colorListBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -16347,6 +17870,1249 @@ func SavePictureDialog_StaticClassType() TClass {
     return TClass(r)
 }
 
+//--------------------------- TSelectDirectoryDialog ---------------------------
+
+func SelectDirectoryDialog_Create(obj uintptr) uintptr {
+    ret, _, _ := selectDirectoryDialog_Create.Call(obj)
+    return ret
+}
+
+func SelectDirectoryDialog_Free(obj uintptr) {
+    selectDirectoryDialog_Free.Call(obj)
+}
+
+func SelectDirectoryDialog_Execute(obj uintptr) bool {
+    ret, _, _ := selectDirectoryDialog_Execute.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SelectDirectoryDialog_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := selectDirectoryDialog_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func SelectDirectoryDialog_GetNamePath(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_HasParent(obj uintptr) bool {
+    ret, _, _ := selectDirectoryDialog_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func SelectDirectoryDialog_Assign(obj uintptr, Source uintptr)  {
+    selectDirectoryDialog_Assign.Call(obj, Source )
+}
+
+func SelectDirectoryDialog_ClassType(obj uintptr) TClass {
+    ret, _, _ := selectDirectoryDialog_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func SelectDirectoryDialog_ClassName(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := selectDirectoryDialog_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func SelectDirectoryDialog_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := selectDirectoryDialog_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func SelectDirectoryDialog_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := selectDirectoryDialog_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func SelectDirectoryDialog_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := selectDirectoryDialog_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func SelectDirectoryDialog_ToString(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_GetFiles(obj uintptr) uintptr {
+    ret, _, _ := selectDirectoryDialog_GetFiles.Call(obj)
+    return ret
+}
+
+func SelectDirectoryDialog_GetDefaultExt(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_GetDefaultExt.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_SetDefaultExt(obj uintptr, value string) {
+   selectDirectoryDialog_SetDefaultExt.Call(obj, GoStrToDStr(value))
+}
+
+func SelectDirectoryDialog_GetFileName(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_GetFileName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_SetFileName(obj uintptr, value string) {
+   selectDirectoryDialog_SetFileName.Call(obj, GoStrToDStr(value))
+}
+
+func SelectDirectoryDialog_GetFilter(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_GetFilter.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_SetFilter(obj uintptr, value string) {
+   selectDirectoryDialog_SetFilter.Call(obj, GoStrToDStr(value))
+}
+
+func SelectDirectoryDialog_GetFilterIndex(obj uintptr) int32 {
+    ret, _, _ := selectDirectoryDialog_GetFilterIndex.Call(obj)
+    return int32(ret)
+}
+
+func SelectDirectoryDialog_SetFilterIndex(obj uintptr, value int32) {
+   selectDirectoryDialog_SetFilterIndex.Call(obj, uintptr(value))
+}
+
+func SelectDirectoryDialog_GetInitialDir(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_GetInitialDir.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_SetInitialDir(obj uintptr, value string) {
+   selectDirectoryDialog_SetInitialDir.Call(obj, GoStrToDStr(value))
+}
+
+func SelectDirectoryDialog_GetOptions(obj uintptr) TOpenOptions {
+    ret, _, _ := selectDirectoryDialog_GetOptions.Call(obj)
+    return TOpenOptions(ret)
+}
+
+func SelectDirectoryDialog_SetOptions(obj uintptr, value TOpenOptions) {
+   selectDirectoryDialog_SetOptions.Call(obj, uintptr(value))
+}
+
+func SelectDirectoryDialog_GetTitle(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_GetTitle.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_SetTitle(obj uintptr, value string) {
+   selectDirectoryDialog_SetTitle.Call(obj, GoStrToDStr(value))
+}
+
+func SelectDirectoryDialog_GetHandle(obj uintptr) HWND {
+    ret, _, _ := selectDirectoryDialog_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func SelectDirectoryDialog_SetOnClose(obj uintptr, fn interface{}) {
+    selectDirectoryDialog_SetOnClose.Call(obj, addEventToMap(fn))
+}
+
+func SelectDirectoryDialog_SetOnShow(obj uintptr, fn interface{}) {
+    selectDirectoryDialog_SetOnShow.Call(obj, addEventToMap(fn))
+}
+
+func SelectDirectoryDialog_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := selectDirectoryDialog_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func SelectDirectoryDialog_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := selectDirectoryDialog_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func SelectDirectoryDialog_SetComponentIndex(obj uintptr, value int32) {
+   selectDirectoryDialog_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func SelectDirectoryDialog_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := selectDirectoryDialog_GetOwner.Call(obj)
+    return ret
+}
+
+func SelectDirectoryDialog_GetName(obj uintptr) string {
+    ret, _, _ := selectDirectoryDialog_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func SelectDirectoryDialog_SetName(obj uintptr, value string) {
+   selectDirectoryDialog_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func SelectDirectoryDialog_GetTag(obj uintptr) int {
+    ret, _, _ := selectDirectoryDialog_GetTag.Call(obj)
+    return int(ret)
+}
+
+func SelectDirectoryDialog_SetTag(obj uintptr, value int) {
+   selectDirectoryDialog_SetTag.Call(obj, uintptr(value))
+}
+
+func SelectDirectoryDialog_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := selectDirectoryDialog_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func SelectDirectoryDialog_StaticClassType() TClass {
+    r, _, _:= selectDirectoryDialog_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TRichEdit ---------------------------
+
+func RichEdit_Create(obj uintptr) uintptr {
+    ret, _, _ := richEdit_Create.Call(obj)
+    return ret
+}
+
+func RichEdit_Free(obj uintptr) {
+    richEdit_Free.Call(obj)
+}
+
+func RichEdit_Clear(obj uintptr)  {
+    richEdit_Clear.Call(obj)
+}
+
+func RichEdit_FindText(obj uintptr, SearchStr string, StartPos int32, Length int32, Options TSearchTypes) int32 {
+    ret, _, _ := richEdit_FindText.Call(obj, GoStrToDStr(SearchStr) , uintptr(StartPos) , uintptr(Length) , uintptr(Options) )
+    return int32(ret)
+}
+
+func RichEdit_ClearSelection(obj uintptr)  {
+    richEdit_ClearSelection.Call(obj)
+}
+
+func RichEdit_CopyToClipboard(obj uintptr)  {
+    richEdit_CopyToClipboard.Call(obj)
+}
+
+func RichEdit_CutToClipboard(obj uintptr)  {
+    richEdit_CutToClipboard.Call(obj)
+}
+
+func RichEdit_PasteFromClipboard(obj uintptr)  {
+    richEdit_PasteFromClipboard.Call(obj)
+}
+
+func RichEdit_Undo(obj uintptr)  {
+    richEdit_Undo.Call(obj)
+}
+
+func RichEdit_SelectAll(obj uintptr)  {
+    richEdit_SelectAll.Call(obj)
+}
+
+func RichEdit_CanFocus(obj uintptr) bool {
+    ret, _, _ := richEdit_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := richEdit_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := richEdit_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func RichEdit_DisableAlign(obj uintptr)  {
+    richEdit_DisableAlign.Call(obj)
+}
+
+func RichEdit_EnableAlign(obj uintptr)  {
+    richEdit_EnableAlign.Call(obj)
+}
+
+func RichEdit_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := richEdit_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func RichEdit_FlipChildren(obj uintptr, AllLevels bool)  {
+    richEdit_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func RichEdit_Focused(obj uintptr) bool {
+    ret, _, _ := richEdit_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := richEdit_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_InsertControl(obj uintptr, AControl uintptr)  {
+    richEdit_InsertControl.Call(obj, AControl )
+}
+
+func RichEdit_Invalidate(obj uintptr)  {
+    richEdit_Invalidate.Call(obj)
+}
+
+func RichEdit_RemoveControl(obj uintptr, AControl uintptr)  {
+    richEdit_RemoveControl.Call(obj, AControl )
+}
+
+func RichEdit_Realign(obj uintptr)  {
+    richEdit_Realign.Call(obj)
+}
+
+func RichEdit_Repaint(obj uintptr)  {
+    richEdit_Repaint.Call(obj)
+}
+
+func RichEdit_ScaleBy(obj uintptr, M int32, D int32)  {
+    richEdit_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func RichEdit_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    richEdit_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func RichEdit_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    richEdit_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func RichEdit_SetFocus(obj uintptr)  {
+    richEdit_SetFocus.Call(obj)
+}
+
+func RichEdit_Update(obj uintptr)  {
+    richEdit_Update.Call(obj)
+}
+
+func RichEdit_BringToFront(obj uintptr)  {
+    richEdit_BringToFront.Call(obj)
+}
+
+func RichEdit_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    richEdit_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    richEdit_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_Dragging(obj uintptr) bool {
+    ret, _, _ := richEdit_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_HasParent(obj uintptr) bool {
+    ret, _, _ := richEdit_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_Hide(obj uintptr)  {
+    richEdit_Hide.Call(obj)
+}
+
+func RichEdit_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := richEdit_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func RichEdit_Refresh(obj uintptr)  {
+    richEdit_Refresh.Call(obj)
+}
+
+func RichEdit_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    richEdit_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    richEdit_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_SendToBack(obj uintptr)  {
+    richEdit_SendToBack.Call(obj)
+}
+
+func RichEdit_Show(obj uintptr)  {
+    richEdit_Show.Call(obj)
+}
+
+func RichEdit_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := richEdit_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer, int(ret))
+    return int32(ret)
+}
+
+func RichEdit_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetTextBuf(obj uintptr, Buffer string)  {
+    richEdit_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
+func RichEdit_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := richEdit_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func RichEdit_GetNamePath(obj uintptr) string {
+    ret, _, _ := richEdit_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_Assign(obj uintptr, Source uintptr)  {
+    richEdit_Assign.Call(obj, Source )
+}
+
+func RichEdit_ClassType(obj uintptr) TClass {
+    ret, _, _ := richEdit_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func RichEdit_ClassName(obj uintptr) string {
+    ret, _, _ := richEdit_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := richEdit_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := richEdit_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := richEdit_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_ToString(obj uintptr) string {
+    ret, _, _ := richEdit_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    richEdit_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func RichEdit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    richEdit_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func RichEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    richEdit_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func RichEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    richEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func RichEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    richEdit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func RichEdit_AnchorClient(obj uintptr, ASpace int32)  {
+    richEdit_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func RichEdit_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := richEdit_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func RichEdit_SetAlign(obj uintptr, value TAlign) {
+   richEdit_SetAlign.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := richEdit_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func RichEdit_SetAlignment(obj uintptr, value TAlignment) {
+   richEdit_SetAlignment.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := richEdit_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func RichEdit_SetAnchors(obj uintptr, value TAnchors) {
+   richEdit_SetAnchors.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := richEdit_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func RichEdit_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   richEdit_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetBorderStyle(obj uintptr) TBorderStyle {
+    ret, _, _ := richEdit_GetBorderStyle.Call(obj)
+    return TBorderStyle(ret)
+}
+
+func RichEdit_SetBorderStyle(obj uintptr, value TBorderStyle) {
+   richEdit_SetBorderStyle.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetBorderWidth(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetBorderWidth.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetBorderWidth(obj uintptr, value int32) {
+   richEdit_SetBorderWidth.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetColor(obj uintptr) TColor {
+    ret, _, _ := richEdit_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func RichEdit_SetColor(obj uintptr, value TColor) {
+   richEdit_SetColor.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := richEdit_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func RichEdit_SetDragCursor(obj uintptr, value TCursor) {
+   richEdit_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := richEdit_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func RichEdit_SetDragKind(obj uintptr, value TDragKind) {
+   richEdit_SetDragKind.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := richEdit_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func RichEdit_SetDragMode(obj uintptr, value TDragMode) {
+   richEdit_SetDragMode.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetEnabled(obj uintptr) bool {
+    ret, _, _ := richEdit_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetEnabled(obj uintptr, value bool) {
+   richEdit_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetFont(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetFont.Call(obj)
+    return ret
+}
+
+func RichEdit_SetFont(obj uintptr, value uintptr) {
+   richEdit_SetFont.Call(obj, value)
+}
+
+func RichEdit_GetHideSelection(obj uintptr) bool {
+    ret, _, _ := richEdit_GetHideSelection.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetHideSelection(obj uintptr, value bool) {
+   richEdit_SetHideSelection.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetConstraints.Call(obj)
+    return ret
+}
+
+func RichEdit_SetConstraints(obj uintptr, value uintptr) {
+   richEdit_SetConstraints.Call(obj, value)
+}
+
+func RichEdit_GetLines(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetLines.Call(obj)
+    return ret
+}
+
+func RichEdit_SetLines(obj uintptr, value uintptr) {
+   richEdit_SetLines.Call(obj, value)
+}
+
+func RichEdit_GetMaxLength(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetMaxLength.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetMaxLength(obj uintptr, value int32) {
+   richEdit_SetMaxLength.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetParentColor(obj uintptr) bool {
+    ret, _, _ := richEdit_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetParentColor(obj uintptr, value bool) {
+   richEdit_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetParentFont(obj uintptr) bool {
+    ret, _, _ := richEdit_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetParentFont(obj uintptr, value bool) {
+   richEdit_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := richEdit_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetParentShowHint(obj uintptr, value bool) {
+   richEdit_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func RichEdit_SetPopupMenu(obj uintptr, value uintptr) {
+   richEdit_SetPopupMenu.Call(obj, value)
+}
+
+func RichEdit_GetReadOnly(obj uintptr) bool {
+    ret, _, _ := richEdit_GetReadOnly.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetReadOnly(obj uintptr, value bool) {
+   richEdit_SetReadOnly.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := richEdit_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func RichEdit_SetScrollBars(obj uintptr, value TScrollStyle) {
+   richEdit_SetScrollBars.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetShowHint(obj uintptr) bool {
+    ret, _, _ := richEdit_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetShowHint(obj uintptr, value bool) {
+   richEdit_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := richEdit_GetTabOrder.Call(obj)
+    return TTabOrder(ret)
+}
+
+func RichEdit_SetTabOrder(obj uintptr, value TTabOrder) {
+   richEdit_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetTabStop(obj uintptr) bool {
+    ret, _, _ := richEdit_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetTabStop(obj uintptr, value bool) {
+   richEdit_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetVisible(obj uintptr) bool {
+    ret, _, _ := richEdit_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetVisible(obj uintptr, value bool) {
+   richEdit_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetWantTabs(obj uintptr) bool {
+    ret, _, _ := richEdit_GetWantTabs.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetWantTabs(obj uintptr, value bool) {
+   richEdit_SetWantTabs.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetWantReturns(obj uintptr) bool {
+    ret, _, _ := richEdit_GetWantReturns.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetWantReturns(obj uintptr, value bool) {
+   richEdit_SetWantReturns.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetWordWrap(obj uintptr) bool {
+    ret, _, _ := richEdit_GetWordWrap.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetWordWrap(obj uintptr, value bool) {
+   richEdit_SetWordWrap.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetZoom(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetZoom.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetZoom(obj uintptr, value int32) {
+   richEdit_SetZoom.Call(obj, uintptr(value))
+}
+
+func RichEdit_SetOnChange(obj uintptr, fn interface{}) {
+    richEdit_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnClick(obj uintptr, fn interface{}) {
+    richEdit_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnContextPopup(obj uintptr, fn interface{}) {
+    richEdit_SetOnContextPopup.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnDblClick(obj uintptr, fn interface{}) {
+    richEdit_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnDragDrop(obj uintptr, fn interface{}) {
+    richEdit_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnDragOver(obj uintptr, fn interface{}) {
+    richEdit_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnEndDrag(obj uintptr, fn interface{}) {
+    richEdit_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnEnter(obj uintptr, fn interface{}) {
+    richEdit_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnExit(obj uintptr, fn interface{}) {
+    richEdit_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnKeyDown(obj uintptr, fn interface{}) {
+    richEdit_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnKeyPress(obj uintptr, fn interface{}) {
+    richEdit_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnKeyUp(obj uintptr, fn interface{}) {
+    richEdit_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseDown(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseMove(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseUp(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseWheel(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseWheel.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    richEdit_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
+func RichEdit_GetDefAttributes(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetDefAttributes.Call(obj)
+    return ret
+}
+
+func RichEdit_SetDefAttributes(obj uintptr, value uintptr) {
+   richEdit_SetDefAttributes.Call(obj, value)
+}
+
+func RichEdit_GetSelAttributes(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetSelAttributes.Call(obj)
+    return ret
+}
+
+func RichEdit_SetSelAttributes(obj uintptr, value uintptr) {
+   richEdit_SetSelAttributes.Call(obj, value)
+}
+
+func RichEdit_GetParagraph(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetParagraph.Call(obj)
+    return ret
+}
+
+func RichEdit_GetCaretPos(obj uintptr) TPoint {
+    var ret TPoint
+    richEdit_GetCaretPos.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_SetCaretPos(obj uintptr, value TPoint) {
+   richEdit_SetCaretPos.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func RichEdit_GetCanUndo(obj uintptr) bool {
+    ret, _, _ := richEdit_GetCanUndo.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_GetModified(obj uintptr) bool {
+    ret, _, _ := richEdit_GetModified.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetModified(obj uintptr, value bool) {
+   richEdit_SetModified.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetSelLength(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetSelLength.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetSelLength(obj uintptr, value int32) {
+   richEdit_SetSelLength.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetSelStart(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetSelStart.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetSelStart(obj uintptr, value int32) {
+   richEdit_SetSelStart.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetSelText(obj uintptr) string {
+    ret, _, _ := richEdit_GetSelText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_SetSelText(obj uintptr, value string) {
+   richEdit_SetSelText.Call(obj, GoStrToDStr(value))
+}
+
+func RichEdit_GetText(obj uintptr) string {
+    ret, _, _ := richEdit_GetText.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_SetText(obj uintptr, value string) {
+   richEdit_SetText.Call(obj, GoStrToDStr(value))
+}
+
+func RichEdit_GetTextHint(obj uintptr) string {
+    ret, _, _ := richEdit_GetTextHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_SetTextHint(obj uintptr, value string) {
+   richEdit_SetTextHint.Call(obj, GoStrToDStr(value))
+}
+
+func RichEdit_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_GetDockSite(obj uintptr) bool {
+    ret, _, _ := richEdit_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetDockSite(obj uintptr, value bool) {
+   richEdit_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := richEdit_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetDoubleBuffered(obj uintptr, value bool) {
+   richEdit_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := richEdit_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetBrush.Call(obj)
+    return ret
+}
+
+func RichEdit_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_GetHandle(obj uintptr) HWND {
+    ret, _, _ := richEdit_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func RichEdit_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := richEdit_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetParentDoubleBuffered(obj uintptr, value bool) {
+   richEdit_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := richEdit_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func RichEdit_SetParentWindow(obj uintptr, value HWND) {
+   richEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := richEdit_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_SetUseDockManager(obj uintptr, value bool) {
+   richEdit_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func RichEdit_GetAction(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetAction.Call(obj)
+    return ret
+}
+
+func RichEdit_SetAction(obj uintptr, value uintptr) {
+   richEdit_SetAction.Call(obj, value)
+}
+
+func RichEdit_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    richEdit_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_SetBoundsRect(obj uintptr, value TRect) {
+   richEdit_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func RichEdit_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetClientHeight(obj uintptr, value int32) {
+   richEdit_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    richEdit_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    richEdit_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func RichEdit_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetClientWidth(obj uintptr, value int32) {
+   richEdit_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := richEdit_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func RichEdit_SetControlState(obj uintptr, value TControlState) {
+   richEdit_SetControlState.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := richEdit_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func RichEdit_SetControlStyle(obj uintptr, value TControlStyle) {
+   richEdit_SetControlStyle.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetFloating(obj uintptr) bool {
+    ret, _, _ := richEdit_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func RichEdit_GetParent(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetParent.Call(obj)
+    return ret
+}
+
+func RichEdit_SetParent(obj uintptr, value uintptr) {
+   richEdit_SetParent.Call(obj, value)
+}
+
+func RichEdit_GetLeft(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetLeft(obj uintptr, value int32) {
+   richEdit_SetLeft.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetTop(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetTop(obj uintptr, value int32) {
+   richEdit_SetTop.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetWidth(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetWidth(obj uintptr, value int32) {
+   richEdit_SetWidth.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetHeight(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetHeight(obj uintptr, value int32) {
+   richEdit_SetHeight.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := richEdit_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func RichEdit_SetCursor(obj uintptr, value TCursor) {
+   richEdit_SetCursor.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetHint(obj uintptr) string {
+    ret, _, _ := richEdit_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_SetHint(obj uintptr, value string) {
+   richEdit_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func RichEdit_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := richEdit_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func RichEdit_SetComponentIndex(obj uintptr, value int32) {
+   richEdit_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetOwner.Call(obj)
+    return ret
+}
+
+func RichEdit_GetName(obj uintptr) string {
+    ret, _, _ := richEdit_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func RichEdit_SetName(obj uintptr, value string) {
+   richEdit_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func RichEdit_GetTag(obj uintptr) int {
+    ret, _, _ := richEdit_GetTag.Call(obj)
+    return int(ret)
+}
+
+func RichEdit_SetTag(obj uintptr, value int) {
+   richEdit_SetTag.Call(obj, uintptr(value))
+}
+
+func RichEdit_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func RichEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   richEdit_SetAnchorSideLeft.Call(obj, value)
+}
+
+func RichEdit_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func RichEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
+   richEdit_SetAnchorSideTop.Call(obj, value)
+}
+
+func RichEdit_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func RichEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
+   richEdit_SetAnchorSideRight.Call(obj, value)
+}
+
+func RichEdit_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func RichEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   richEdit_SetAnchorSideBottom.Call(obj, value)
+}
+
+func RichEdit_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetChildSizing.Call(obj)
+    return ret
+}
+
+func RichEdit_SetChildSizing(obj uintptr, value uintptr) {
+   richEdit_SetChildSizing.Call(obj, value)
+}
+
+func RichEdit_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := richEdit_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func RichEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+   richEdit_SetBorderSpacing.Call(obj, value)
+}
+
+func RichEdit_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := richEdit_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
+func RichEdit_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := richEdit_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func RichEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := richEdit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func RichEdit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := richEdit_GetAnchorSide.Call(obj, uintptr(AKind))
+    return ret
+}
+
+func RichEdit_StaticClassType() TClass {
+    r, _, _:= richEdit_StaticClassType.Call()
+    return TClass(r)
+}
+
 //--------------------------- TTrackBar ---------------------------
 
 func TrackBar_Create(obj uintptr) uintptr {
@@ -16569,6 +19335,30 @@ func TrackBar_GetHashCode(obj uintptr) int32 {
 func TrackBar_ToString(obj uintptr) string {
     ret, _, _ := trackBar_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TrackBar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    trackBar_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func TrackBar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    trackBar_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func TrackBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    trackBar_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func TrackBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    trackBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func TrackBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    trackBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func TrackBar_AnchorClient(obj uintptr, ASpace int32)  {
+    trackBar_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func TrackBar_GetAlign(obj uintptr) TAlign {
@@ -17055,15 +19845,6 @@ func TrackBar_SetHint(obj uintptr, value string) {
    trackBar_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func TrackBar_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := trackBar_GetMargins.Call(obj)
-    return ret
-}
-
-func TrackBar_SetMargins(obj uintptr, value uintptr) {
-   trackBar_SetMargins.Call(obj, value)
-}
-
 func TrackBar_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := trackBar_GetComponentCount.Call(obj)
     return int32(ret)
@@ -17101,6 +19882,60 @@ func TrackBar_SetTag(obj uintptr, value int) {
    trackBar_SetTag.Call(obj, uintptr(value))
 }
 
+func TrackBar_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := trackBar_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func TrackBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   trackBar_SetAnchorSideLeft.Call(obj, value)
+}
+
+func TrackBar_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := trackBar_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func TrackBar_SetAnchorSideTop(obj uintptr, value uintptr) {
+   trackBar_SetAnchorSideTop.Call(obj, value)
+}
+
+func TrackBar_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := trackBar_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func TrackBar_SetAnchorSideRight(obj uintptr, value uintptr) {
+   trackBar_SetAnchorSideRight.Call(obj, value)
+}
+
+func TrackBar_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := trackBar_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func TrackBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   trackBar_SetAnchorSideBottom.Call(obj, value)
+}
+
+func TrackBar_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := trackBar_GetChildSizing.Call(obj)
+    return ret
+}
+
+func TrackBar_SetChildSizing(obj uintptr, value uintptr) {
+   trackBar_SetChildSizing.Call(obj, value)
+}
+
+func TrackBar_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := trackBar_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func TrackBar_SetBorderSpacing(obj uintptr, value uintptr) {
+   trackBar_SetBorderSpacing.Call(obj, value)
+}
+
 func TrackBar_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := trackBar_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -17113,6 +19948,11 @@ func TrackBar_GetControls(obj uintptr, Index int32) uintptr {
 
 func TrackBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := trackBar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func TrackBar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := trackBar_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -17630,6 +20470,30 @@ func UpDown_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func UpDown_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    upDown_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func UpDown_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    upDown_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func UpDown_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    upDown_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func UpDown_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    upDown_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func UpDown_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    upDown_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func UpDown_AnchorClient(obj uintptr, ASpace int32)  {
+    upDown_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
 func UpDown_GetAnchors(obj uintptr) TAnchors {
     ret, _, _ := upDown_GetAnchors.Call(obj)
     return TAnchors(ret)
@@ -18033,15 +20897,6 @@ func UpDown_SetCursor(obj uintptr, value TCursor) {
    upDown_SetCursor.Call(obj, uintptr(value))
 }
 
-func UpDown_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := upDown_GetMargins.Call(obj)
-    return ret
-}
-
-func UpDown_SetMargins(obj uintptr, value uintptr) {
-   upDown_SetMargins.Call(obj, value)
-}
-
 func UpDown_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := upDown_GetComponentCount.Call(obj)
     return int32(ret)
@@ -18079,6 +20934,60 @@ func UpDown_SetTag(obj uintptr, value int) {
    upDown_SetTag.Call(obj, uintptr(value))
 }
 
+func UpDown_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := upDown_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func UpDown_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   upDown_SetAnchorSideLeft.Call(obj, value)
+}
+
+func UpDown_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := upDown_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func UpDown_SetAnchorSideTop(obj uintptr, value uintptr) {
+   upDown_SetAnchorSideTop.Call(obj, value)
+}
+
+func UpDown_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := upDown_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func UpDown_SetAnchorSideRight(obj uintptr, value uintptr) {
+   upDown_SetAnchorSideRight.Call(obj, value)
+}
+
+func UpDown_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := upDown_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func UpDown_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   upDown_SetAnchorSideBottom.Call(obj, value)
+}
+
+func UpDown_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := upDown_GetChildSizing.Call(obj)
+    return ret
+}
+
+func UpDown_SetChildSizing(obj uintptr, value uintptr) {
+   upDown_SetChildSizing.Call(obj, value)
+}
+
+func UpDown_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := upDown_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func UpDown_SetBorderSpacing(obj uintptr, value uintptr) {
+   upDown_SetBorderSpacing.Call(obj, value)
+}
+
 func UpDown_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := upDown_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -18091,6 +21000,11 @@ func UpDown_GetControls(obj uintptr, Index int32) uintptr {
 
 func UpDown_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := upDown_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func UpDown_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := upDown_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -18325,6 +21239,30 @@ func ProgressBar_GetHashCode(obj uintptr) int32 {
 func ProgressBar_ToString(obj uintptr) string {
     ret, _, _ := progressBar_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ProgressBar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    progressBar_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ProgressBar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    progressBar_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ProgressBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    progressBar_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ProgressBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    progressBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ProgressBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    progressBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ProgressBar_AnchorClient(obj uintptr, ASpace int32)  {
+    progressBar_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ProgressBar_GetAlign(obj uintptr) TAlign {
@@ -18779,15 +21717,6 @@ func ProgressBar_SetCursor(obj uintptr, value TCursor) {
    progressBar_SetCursor.Call(obj, uintptr(value))
 }
 
-func ProgressBar_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := progressBar_GetMargins.Call(obj)
-    return ret
-}
-
-func ProgressBar_SetMargins(obj uintptr, value uintptr) {
-   progressBar_SetMargins.Call(obj, value)
-}
-
 func ProgressBar_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := progressBar_GetComponentCount.Call(obj)
     return int32(ret)
@@ -18825,6 +21754,60 @@ func ProgressBar_SetTag(obj uintptr, value int) {
    progressBar_SetTag.Call(obj, uintptr(value))
 }
 
+func ProgressBar_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := progressBar_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ProgressBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   progressBar_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ProgressBar_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := progressBar_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ProgressBar_SetAnchorSideTop(obj uintptr, value uintptr) {
+   progressBar_SetAnchorSideTop.Call(obj, value)
+}
+
+func ProgressBar_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := progressBar_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ProgressBar_SetAnchorSideRight(obj uintptr, value uintptr) {
+   progressBar_SetAnchorSideRight.Call(obj, value)
+}
+
+func ProgressBar_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := progressBar_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ProgressBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   progressBar_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ProgressBar_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := progressBar_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ProgressBar_SetChildSizing(obj uintptr, value uintptr) {
+   progressBar_SetChildSizing.Call(obj, value)
+}
+
+func ProgressBar_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := progressBar_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ProgressBar_SetBorderSpacing(obj uintptr, value uintptr) {
+   progressBar_SetBorderSpacing.Call(obj, value)
+}
+
 func ProgressBar_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := progressBar_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -18837,6 +21820,11 @@ func ProgressBar_GetControls(obj uintptr, Index int32) uintptr {
 
 func ProgressBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := progressBar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ProgressBar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := progressBar_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -19063,6 +22051,30 @@ func DateTimePicker_GetHashCode(obj uintptr) int32 {
 func DateTimePicker_ToString(obj uintptr) string {
     ret, _, _ := dateTimePicker_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func DateTimePicker_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    dateTimePicker_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func DateTimePicker_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    dateTimePicker_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func DateTimePicker_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    dateTimePicker_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func DateTimePicker_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    dateTimePicker_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func DateTimePicker_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    dateTimePicker_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func DateTimePicker_AnchorClient(obj uintptr, ASpace int32)  {
+    dateTimePicker_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func DateTimePicker_GetDateTime(obj uintptr) time.Time {
@@ -19527,15 +22539,6 @@ func DateTimePicker_SetHint(obj uintptr, value string) {
    dateTimePicker_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func DateTimePicker_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := dateTimePicker_GetMargins.Call(obj)
-    return ret
-}
-
-func DateTimePicker_SetMargins(obj uintptr, value uintptr) {
-   dateTimePicker_SetMargins.Call(obj, value)
-}
-
 func DateTimePicker_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := dateTimePicker_GetComponentCount.Call(obj)
     return int32(ret)
@@ -19573,6 +22576,60 @@ func DateTimePicker_SetTag(obj uintptr, value int) {
    dateTimePicker_SetTag.Call(obj, uintptr(value))
 }
 
+func DateTimePicker_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := dateTimePicker_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func DateTimePicker_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   dateTimePicker_SetAnchorSideLeft.Call(obj, value)
+}
+
+func DateTimePicker_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := dateTimePicker_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func DateTimePicker_SetAnchorSideTop(obj uintptr, value uintptr) {
+   dateTimePicker_SetAnchorSideTop.Call(obj, value)
+}
+
+func DateTimePicker_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := dateTimePicker_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func DateTimePicker_SetAnchorSideRight(obj uintptr, value uintptr) {
+   dateTimePicker_SetAnchorSideRight.Call(obj, value)
+}
+
+func DateTimePicker_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := dateTimePicker_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func DateTimePicker_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   dateTimePicker_SetAnchorSideBottom.Call(obj, value)
+}
+
+func DateTimePicker_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := dateTimePicker_GetChildSizing.Call(obj)
+    return ret
+}
+
+func DateTimePicker_SetChildSizing(obj uintptr, value uintptr) {
+   dateTimePicker_SetChildSizing.Call(obj, value)
+}
+
+func DateTimePicker_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := dateTimePicker_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func DateTimePicker_SetBorderSpacing(obj uintptr, value uintptr) {
+   dateTimePicker_SetBorderSpacing.Call(obj, value)
+}
+
 func DateTimePicker_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := dateTimePicker_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -19585,6 +22642,11 @@ func DateTimePicker_GetControls(obj uintptr, Index int32) uintptr {
 
 func DateTimePicker_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := dateTimePicker_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func DateTimePicker_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := dateTimePicker_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -19811,6 +22873,30 @@ func MonthCalendar_GetHashCode(obj uintptr) int32 {
 func MonthCalendar_ToString(obj uintptr) string {
     ret, _, _ := monthCalendar_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MonthCalendar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    monthCalendar_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func MonthCalendar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    monthCalendar_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func MonthCalendar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    monthCalendar_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func MonthCalendar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    monthCalendar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func MonthCalendar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    monthCalendar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func MonthCalendar_AnchorClient(obj uintptr, ASpace int32)  {
+    monthCalendar_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func MonthCalendar_GetAlign(obj uintptr) TAlign {
@@ -20236,15 +23322,6 @@ func MonthCalendar_SetHint(obj uintptr, value string) {
    monthCalendar_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func MonthCalendar_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := monthCalendar_GetMargins.Call(obj)
-    return ret
-}
-
-func MonthCalendar_SetMargins(obj uintptr, value uintptr) {
-   monthCalendar_SetMargins.Call(obj, value)
-}
-
 func MonthCalendar_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := monthCalendar_GetComponentCount.Call(obj)
     return int32(ret)
@@ -20282,6 +23359,60 @@ func MonthCalendar_SetTag(obj uintptr, value int) {
    monthCalendar_SetTag.Call(obj, uintptr(value))
 }
 
+func MonthCalendar_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := monthCalendar_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func MonthCalendar_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   monthCalendar_SetAnchorSideLeft.Call(obj, value)
+}
+
+func MonthCalendar_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := monthCalendar_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func MonthCalendar_SetAnchorSideTop(obj uintptr, value uintptr) {
+   monthCalendar_SetAnchorSideTop.Call(obj, value)
+}
+
+func MonthCalendar_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := monthCalendar_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func MonthCalendar_SetAnchorSideRight(obj uintptr, value uintptr) {
+   monthCalendar_SetAnchorSideRight.Call(obj, value)
+}
+
+func MonthCalendar_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := monthCalendar_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func MonthCalendar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   monthCalendar_SetAnchorSideBottom.Call(obj, value)
+}
+
+func MonthCalendar_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := monthCalendar_GetChildSizing.Call(obj)
+    return ret
+}
+
+func MonthCalendar_SetChildSizing(obj uintptr, value uintptr) {
+   monthCalendar_SetChildSizing.Call(obj, value)
+}
+
+func MonthCalendar_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := monthCalendar_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func MonthCalendar_SetBorderSpacing(obj uintptr, value uintptr) {
+   monthCalendar_SetBorderSpacing.Call(obj, value)
+}
+
 func MonthCalendar_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := monthCalendar_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -20294,6 +23425,11 @@ func MonthCalendar_GetControls(obj uintptr, Index int32) uintptr {
 
 func MonthCalendar_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := monthCalendar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func MonthCalendar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := monthCalendar_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -20555,6 +23691,120 @@ func ListView_GetHashCode(obj uintptr) int32 {
 func ListView_ToString(obj uintptr) string {
     ret, _, _ := listView_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ListView_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    listView_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ListView_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    listView_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ListView_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    listView_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ListView_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    listView_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ListView_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    listView_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ListView_AnchorClient(obj uintptr, ASpace int32)  {
+    listView_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ListView_GetAutoSort(obj uintptr) bool {
+    ret, _, _ := listView_GetAutoSort.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetAutoSort(obj uintptr, value bool) {
+   listView_SetAutoSort.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetAutoSortIndicator(obj uintptr) bool {
+    ret, _, _ := listView_GetAutoSortIndicator.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetAutoSortIndicator(obj uintptr, value bool) {
+   listView_SetAutoSortIndicator.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetAutoWidthLastColumn(obj uintptr) bool {
+    ret, _, _ := listView_GetAutoWidthLastColumn.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetAutoWidthLastColumn(obj uintptr, value bool) {
+   listView_SetAutoWidthLastColumn.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetSmallImagesWidth(obj uintptr) int32 {
+    ret, _, _ := listView_GetSmallImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetSmallImagesWidth(obj uintptr, value int32) {
+   listView_SetSmallImagesWidth.Call(obj, uintptr(value))
+}
+
+func ListView_GetSortColumn(obj uintptr) int32 {
+    ret, _, _ := listView_GetSortColumn.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetSortColumn(obj uintptr, value int32) {
+   listView_SetSortColumn.Call(obj, uintptr(value))
+}
+
+func ListView_GetSortDirection(obj uintptr) TSortDirection {
+    ret, _, _ := listView_GetSortDirection.Call(obj)
+    return TSortDirection(ret)
+}
+
+func ListView_SetSortDirection(obj uintptr, value TSortDirection) {
+   listView_SetSortDirection.Call(obj, uintptr(value))
+}
+
+func ListView_GetLargeImagesWidth(obj uintptr) int32 {
+    ret, _, _ := listView_GetLargeImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetLargeImagesWidth(obj uintptr, value int32) {
+   listView_SetLargeImagesWidth.Call(obj, uintptr(value))
+}
+
+func ListView_GetStateImagesWidth(obj uintptr) int32 {
+    ret, _, _ := listView_GetStateImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func ListView_SetStateImagesWidth(obj uintptr, value int32) {
+   listView_SetStateImagesWidth.Call(obj, uintptr(value))
+}
+
+func ListView_GetToolTips(obj uintptr) bool {
+    ret, _, _ := listView_GetToolTips.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ListView_SetToolTips(obj uintptr, value bool) {
+   listView_SetToolTips.Call(obj, GoBoolToDBool(value))
+}
+
+func ListView_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := listView_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func ListView_SetScrollBars(obj uintptr, value TScrollStyle) {
+   listView_SetScrollBars.Call(obj, uintptr(value))
 }
 
 func ListView_GetAction(obj uintptr) uintptr {
@@ -21340,15 +24590,6 @@ func ListView_SetHint(obj uintptr, value string) {
    listView_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ListView_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := listView_GetMargins.Call(obj)
-    return ret
-}
-
-func ListView_SetMargins(obj uintptr, value uintptr) {
-   listView_SetMargins.Call(obj, value)
-}
-
 func ListView_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := listView_GetComponentCount.Call(obj)
     return int32(ret)
@@ -21386,6 +24627,60 @@ func ListView_SetTag(obj uintptr, value int) {
    listView_SetTag.Call(obj, uintptr(value))
 }
 
+func ListView_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := listView_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ListView_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   listView_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ListView_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := listView_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ListView_SetAnchorSideTop(obj uintptr, value uintptr) {
+   listView_SetAnchorSideTop.Call(obj, value)
+}
+
+func ListView_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := listView_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ListView_SetAnchorSideRight(obj uintptr, value uintptr) {
+   listView_SetAnchorSideRight.Call(obj, value)
+}
+
+func ListView_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := listView_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ListView_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   listView_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ListView_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := listView_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ListView_SetChildSizing(obj uintptr, value uintptr) {
+   listView_SetChildSizing.Call(obj, value)
+}
+
+func ListView_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := listView_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ListView_SetBorderSpacing(obj uintptr, value uintptr) {
+   listView_SetBorderSpacing.Call(obj, value)
+}
+
 func ListView_GetColumn(obj uintptr, Index int32) uintptr {
     ret, _, _ := listView_GetColumn.Call(obj, uintptr(Index))
     return ret
@@ -21403,6 +24698,11 @@ func ListView_GetControls(obj uintptr, Index int32) uintptr {
 
 func ListView_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := listView_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ListView_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := listView_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -21672,6 +24972,174 @@ func TreeView_GetHashCode(obj uintptr) int32 {
 func TreeView_ToString(obj uintptr) string {
     ret, _, _ := treeView_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TreeView_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    treeView_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func TreeView_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    treeView_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func TreeView_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    treeView_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func TreeView_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    treeView_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func TreeView_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    treeView_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func TreeView_AnchorClient(obj uintptr, ASpace int32)  {
+    treeView_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func TreeView_GetDefaultItemHeight(obj uintptr) int32 {
+    ret, _, _ := treeView_GetDefaultItemHeight.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetDefaultItemHeight(obj uintptr, value int32) {
+   treeView_SetDefaultItemHeight.Call(obj, uintptr(value))
+}
+
+func TreeView_GetExpandSignColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetExpandSignColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetExpandSignColor(obj uintptr, value TColor) {
+   treeView_SetExpandSignColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetExpandSignSize(obj uintptr) int32 {
+    ret, _, _ := treeView_GetExpandSignSize.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetExpandSignSize(obj uintptr, value int32) {
+   treeView_SetExpandSignSize.Call(obj, uintptr(value))
+}
+
+func TreeView_GetExpandSignType(obj uintptr) TTreeViewExpandSignType {
+    ret, _, _ := treeView_GetExpandSignType.Call(obj)
+    return TTreeViewExpandSignType(ret)
+}
+
+func TreeView_SetExpandSignType(obj uintptr, value TTreeViewExpandSignType) {
+   treeView_SetExpandSignType.Call(obj, uintptr(value))
+}
+
+func TreeView_GetHotTrackColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetHotTrackColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetHotTrackColor(obj uintptr, value TColor) {
+   treeView_SetHotTrackColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetImagesWidth(obj uintptr) int32 {
+    ret, _, _ := treeView_GetImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetImagesWidth(obj uintptr, value int32) {
+   treeView_SetImagesWidth.Call(obj, uintptr(value))
+}
+
+func TreeView_GetOptions(obj uintptr) TTreeViewOptions {
+    ret, _, _ := treeView_GetOptions.Call(obj)
+    return TTreeViewOptions(ret)
+}
+
+func TreeView_SetOptions(obj uintptr, value TTreeViewOptions) {
+   treeView_SetOptions.Call(obj, uintptr(value))
+}
+
+func TreeView_GetScrollBars(obj uintptr) TScrollStyle {
+    ret, _, _ := treeView_GetScrollBars.Call(obj)
+    return TScrollStyle(ret)
+}
+
+func TreeView_SetScrollBars(obj uintptr, value TScrollStyle) {
+   treeView_SetScrollBars.Call(obj, uintptr(value))
+}
+
+func TreeView_GetSelectionColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetSelectionColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetSelectionColor(obj uintptr, value TColor) {
+   treeView_SetSelectionColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetSelectionFontColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetSelectionFontColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetSelectionFontColor(obj uintptr, value TColor) {
+   treeView_SetSelectionFontColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetSelectionFontColorUsed(obj uintptr) bool {
+    ret, _, _ := treeView_GetSelectionFontColorUsed.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_SetSelectionFontColorUsed(obj uintptr, value bool) {
+   treeView_SetSelectionFontColorUsed.Call(obj, GoBoolToDBool(value))
+}
+
+func TreeView_GetSeparatorColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetSeparatorColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetSeparatorColor(obj uintptr, value TColor) {
+   treeView_SetSeparatorColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetStateImagesWidth(obj uintptr) int32 {
+    ret, _, _ := treeView_GetStateImagesWidth.Call(obj)
+    return int32(ret)
+}
+
+func TreeView_SetStateImagesWidth(obj uintptr, value int32) {
+   treeView_SetStateImagesWidth.Call(obj, uintptr(value))
+}
+
+func TreeView_GetToolTips(obj uintptr) bool {
+    ret, _, _ := treeView_GetToolTips.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func TreeView_SetToolTips(obj uintptr, value bool) {
+   treeView_SetToolTips.Call(obj, GoBoolToDBool(value))
+}
+
+func TreeView_GetTreeLineColor(obj uintptr) TColor {
+    ret, _, _ := treeView_GetTreeLineColor.Call(obj)
+    return TColor(ret)
+}
+
+func TreeView_SetTreeLineColor(obj uintptr, value TColor) {
+   treeView_SetTreeLineColor.Call(obj, uintptr(value))
+}
+
+func TreeView_GetTreeLinePenStyle(obj uintptr) TPenStyle {
+    ret, _, _ := treeView_GetTreeLinePenStyle.Call(obj)
+    return TPenStyle(ret)
+}
+
+func TreeView_SetTreeLinePenStyle(obj uintptr, value TPenStyle) {
+   treeView_SetTreeLinePenStyle.Call(obj, uintptr(value))
 }
 
 func TreeView_GetAlign(obj uintptr) TAlign {
@@ -21996,15 +25464,6 @@ func TreeView_GetTabStop(obj uintptr) bool {
 
 func TreeView_SetTabStop(obj uintptr, value bool) {
    treeView_SetTabStop.Call(obj, GoBoolToDBool(value))
-}
-
-func TreeView_GetToolTips(obj uintptr) bool {
-    ret, _, _ := treeView_GetToolTips.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func TreeView_SetToolTips(obj uintptr, value bool) {
-   treeView_SetToolTips.Call(obj, GoBoolToDBool(value))
 }
 
 func TreeView_GetVisible(obj uintptr) bool {
@@ -22373,15 +25832,6 @@ func TreeView_SetHint(obj uintptr, value string) {
    treeView_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func TreeView_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := treeView_GetMargins.Call(obj)
-    return ret
-}
-
-func TreeView_SetMargins(obj uintptr, value uintptr) {
-   treeView_SetMargins.Call(obj, value)
-}
-
 func TreeView_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := treeView_GetComponentCount.Call(obj)
     return int32(ret)
@@ -22419,6 +25869,60 @@ func TreeView_SetTag(obj uintptr, value int) {
    treeView_SetTag.Call(obj, uintptr(value))
 }
 
+func TreeView_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := treeView_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func TreeView_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   treeView_SetAnchorSideLeft.Call(obj, value)
+}
+
+func TreeView_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := treeView_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func TreeView_SetAnchorSideTop(obj uintptr, value uintptr) {
+   treeView_SetAnchorSideTop.Call(obj, value)
+}
+
+func TreeView_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := treeView_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func TreeView_SetAnchorSideRight(obj uintptr, value uintptr) {
+   treeView_SetAnchorSideRight.Call(obj, value)
+}
+
+func TreeView_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := treeView_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func TreeView_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   treeView_SetAnchorSideBottom.Call(obj, value)
+}
+
+func TreeView_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := treeView_GetChildSizing.Call(obj)
+    return ret
+}
+
+func TreeView_SetChildSizing(obj uintptr, value uintptr) {
+   treeView_SetChildSizing.Call(obj, value)
+}
+
+func TreeView_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := treeView_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func TreeView_SetBorderSpacing(obj uintptr, value uintptr) {
+   treeView_SetBorderSpacing.Call(obj, value)
+}
+
 func TreeView_GetSelections(obj uintptr, Index int32) uintptr {
     ret, _, _ := treeView_GetSelections.Call(obj, uintptr(Index))
     return ret
@@ -22436,6 +25940,11 @@ func TreeView_GetControls(obj uintptr, Index int32) uintptr {
 
 func TreeView_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := treeView_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func TreeView_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := treeView_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -22662,6 +26171,30 @@ func StatusBar_GetHashCode(obj uintptr) int32 {
 func StatusBar_ToString(obj uintptr) string {
     ret, _, _ := statusBar_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func StatusBar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    statusBar_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func StatusBar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    statusBar_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func StatusBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    statusBar_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func StatusBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    statusBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func StatusBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    statusBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func StatusBar_AnchorClient(obj uintptr, ASpace int32)  {
+    statusBar_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func StatusBar_GetAction(obj uintptr) uintptr {
@@ -23164,15 +26697,6 @@ func StatusBar_SetHint(obj uintptr, value string) {
    statusBar_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func StatusBar_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := statusBar_GetMargins.Call(obj)
-    return ret
-}
-
-func StatusBar_SetMargins(obj uintptr, value uintptr) {
-   statusBar_SetMargins.Call(obj, value)
-}
-
 func StatusBar_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := statusBar_GetComponentCount.Call(obj)
     return int32(ret)
@@ -23210,6 +26734,60 @@ func StatusBar_SetTag(obj uintptr, value int) {
    statusBar_SetTag.Call(obj, uintptr(value))
 }
 
+func StatusBar_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := statusBar_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func StatusBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   statusBar_SetAnchorSideLeft.Call(obj, value)
+}
+
+func StatusBar_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := statusBar_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func StatusBar_SetAnchorSideTop(obj uintptr, value uintptr) {
+   statusBar_SetAnchorSideTop.Call(obj, value)
+}
+
+func StatusBar_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := statusBar_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func StatusBar_SetAnchorSideRight(obj uintptr, value uintptr) {
+   statusBar_SetAnchorSideRight.Call(obj, value)
+}
+
+func StatusBar_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := statusBar_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func StatusBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   statusBar_SetAnchorSideBottom.Call(obj, value)
+}
+
+func StatusBar_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := statusBar_GetChildSizing.Call(obj)
+    return ret
+}
+
+func StatusBar_SetChildSizing(obj uintptr, value uintptr) {
+   statusBar_SetChildSizing.Call(obj, value)
+}
+
+func StatusBar_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := statusBar_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func StatusBar_SetBorderSpacing(obj uintptr, value uintptr) {
+   statusBar_SetBorderSpacing.Call(obj, value)
+}
+
 func StatusBar_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := statusBar_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -23222,6 +26800,11 @@ func StatusBar_GetControls(obj uintptr, Index int32) uintptr {
 
 func StatusBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := statusBar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func StatusBar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := statusBar_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -23448,6 +27031,30 @@ func ToolBar_GetHashCode(obj uintptr) int32 {
 func ToolBar_ToString(obj uintptr) string {
     ret, _, _ := toolBar_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ToolBar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    toolBar_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ToolBar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    toolBar_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ToolBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    toolBar_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ToolBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    toolBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ToolBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    toolBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ToolBar_AnchorClient(obj uintptr, ASpace int32)  {
+    toolBar_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ToolBar_GetButtonCount(obj uintptr) int32 {
@@ -24045,15 +27652,6 @@ func ToolBar_SetHint(obj uintptr, value string) {
    toolBar_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ToolBar_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := toolBar_GetMargins.Call(obj)
-    return ret
-}
-
-func ToolBar_SetMargins(obj uintptr, value uintptr) {
-   toolBar_SetMargins.Call(obj, value)
-}
-
 func ToolBar_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := toolBar_GetComponentCount.Call(obj)
     return int32(ret)
@@ -24091,6 +27689,60 @@ func ToolBar_SetTag(obj uintptr, value int) {
    toolBar_SetTag.Call(obj, uintptr(value))
 }
 
+func ToolBar_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := toolBar_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ToolBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   toolBar_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ToolBar_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := toolBar_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ToolBar_SetAnchorSideTop(obj uintptr, value uintptr) {
+   toolBar_SetAnchorSideTop.Call(obj, value)
+}
+
+func ToolBar_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := toolBar_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ToolBar_SetAnchorSideRight(obj uintptr, value uintptr) {
+   toolBar_SetAnchorSideRight.Call(obj, value)
+}
+
+func ToolBar_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := toolBar_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ToolBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   toolBar_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ToolBar_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := toolBar_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ToolBar_SetChildSizing(obj uintptr, value uintptr) {
+   toolBar_SetChildSizing.Call(obj, value)
+}
+
+func ToolBar_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := toolBar_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ToolBar_SetBorderSpacing(obj uintptr, value uintptr) {
+   toolBar_SetBorderSpacing.Call(obj, value)
+}
+
 func ToolBar_GetButtons(obj uintptr, Index int32) uintptr {
     ret, _, _ := toolBar_GetButtons.Call(obj, uintptr(Index))
     return ret
@@ -24108,6 +27760,11 @@ func ToolBar_GetControls(obj uintptr, Index int32) uintptr {
 
 func ToolBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := toolBar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ToolBar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := toolBar_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -24338,6 +27995,57 @@ func BitBtn_GetHashCode(obj uintptr) int32 {
 func BitBtn_ToString(obj uintptr) string {
     ret, _, _ := bitBtn_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func BitBtn_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    bitBtn_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func BitBtn_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    bitBtn_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func BitBtn_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    bitBtn_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func BitBtn_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    bitBtn_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func BitBtn_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    bitBtn_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func BitBtn_AnchorClient(obj uintptr, ASpace int32)  {
+    bitBtn_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func BitBtn_GetDefaultCaption(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetDefaultCaption.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func BitBtn_SetDefaultCaption(obj uintptr, value bool) {
+   bitBtn_SetDefaultCaption.Call(obj, GoBoolToDBool(value))
+}
+
+func BitBtn_GetGlyphShowMode(obj uintptr) TGlyphShowMode {
+    ret, _, _ := bitBtn_GetGlyphShowMode.Call(obj)
+    return TGlyphShowMode(ret)
+}
+
+func BitBtn_SetGlyphShowMode(obj uintptr, value TGlyphShowMode) {
+   bitBtn_SetGlyphShowMode.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetImageWidth(obj uintptr) int32 {
+    ret, _, _ := bitBtn_GetImageWidth.Call(obj)
+    return int32(ret)
+}
+
+func BitBtn_SetImageWidth(obj uintptr, value int32) {
+   bitBtn_SetImageWidth.Call(obj, uintptr(value))
 }
 
 func BitBtn_GetAction(obj uintptr) uintptr {
@@ -24799,15 +28507,6 @@ func BitBtn_SetHint(obj uintptr, value string) {
    bitBtn_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func BitBtn_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := bitBtn_GetMargins.Call(obj)
-    return ret
-}
-
-func BitBtn_SetMargins(obj uintptr, value uintptr) {
-   bitBtn_SetMargins.Call(obj, value)
-}
-
 func BitBtn_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := bitBtn_GetComponentCount.Call(obj)
     return int32(ret)
@@ -24845,6 +28544,60 @@ func BitBtn_SetTag(obj uintptr, value int) {
    bitBtn_SetTag.Call(obj, uintptr(value))
 }
 
+func BitBtn_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := bitBtn_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func BitBtn_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   bitBtn_SetAnchorSideLeft.Call(obj, value)
+}
+
+func BitBtn_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := bitBtn_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func BitBtn_SetAnchorSideTop(obj uintptr, value uintptr) {
+   bitBtn_SetAnchorSideTop.Call(obj, value)
+}
+
+func BitBtn_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := bitBtn_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func BitBtn_SetAnchorSideRight(obj uintptr, value uintptr) {
+   bitBtn_SetAnchorSideRight.Call(obj, value)
+}
+
+func BitBtn_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := bitBtn_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func BitBtn_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   bitBtn_SetAnchorSideBottom.Call(obj, value)
+}
+
+func BitBtn_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := bitBtn_GetChildSizing.Call(obj)
+    return ret
+}
+
+func BitBtn_SetChildSizing(obj uintptr, value uintptr) {
+   bitBtn_SetChildSizing.Call(obj, value)
+}
+
+func BitBtn_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := bitBtn_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func BitBtn_SetBorderSpacing(obj uintptr, value uintptr) {
+   bitBtn_SetBorderSpacing.Call(obj, value)
+}
+
 func BitBtn_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := bitBtn_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -24857,6 +28610,11 @@ func BitBtn_GetControls(obj uintptr, Index int32) uintptr {
 
 func BitBtn_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := bitBtn_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func BitBtn_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := bitBtn_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -27638,6 +31396,39 @@ func PageControl_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func PageControl_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    pageControl_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func PageControl_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    pageControl_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func PageControl_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    pageControl_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func PageControl_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    pageControl_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func PageControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    pageControl_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func PageControl_AnchorClient(obj uintptr, ASpace int32)  {
+    pageControl_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func PageControl_GetOptions(obj uintptr) TCTabControlOptions {
+    ret, _, _ := pageControl_GetOptions.Call(obj)
+    return TCTabControlOptions(ret)
+}
+
+func PageControl_SetOptions(obj uintptr, value TCTabControlOptions) {
+   pageControl_SetOptions.Call(obj, uintptr(value))
+}
+
 func PageControl_GetActivePageIndex(obj uintptr) int32 {
     ret, _, _ := pageControl_GetActivePageIndex.Call(obj)
     return int32(ret)
@@ -28136,15 +31927,6 @@ func PageControl_SetHint(obj uintptr, value string) {
    pageControl_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func PageControl_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := pageControl_GetMargins.Call(obj)
-    return ret
-}
-
-func PageControl_SetMargins(obj uintptr, value uintptr) {
-   pageControl_SetMargins.Call(obj, value)
-}
-
 func PageControl_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := pageControl_GetComponentCount.Call(obj)
     return int32(ret)
@@ -28182,6 +31964,60 @@ func PageControl_SetTag(obj uintptr, value int) {
    pageControl_SetTag.Call(obj, uintptr(value))
 }
 
+func PageControl_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := pageControl_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func PageControl_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   pageControl_SetAnchorSideLeft.Call(obj, value)
+}
+
+func PageControl_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := pageControl_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func PageControl_SetAnchorSideTop(obj uintptr, value uintptr) {
+   pageControl_SetAnchorSideTop.Call(obj, value)
+}
+
+func PageControl_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := pageControl_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func PageControl_SetAnchorSideRight(obj uintptr, value uintptr) {
+   pageControl_SetAnchorSideRight.Call(obj, value)
+}
+
+func PageControl_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := pageControl_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func PageControl_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   pageControl_SetAnchorSideBottom.Call(obj, value)
+}
+
+func PageControl_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := pageControl_GetChildSizing.Call(obj)
+    return ret
+}
+
+func PageControl_SetChildSizing(obj uintptr, value uintptr) {
+   pageControl_SetChildSizing.Call(obj, value)
+}
+
+func PageControl_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := pageControl_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func PageControl_SetBorderSpacing(obj uintptr, value uintptr) {
+   pageControl_SetBorderSpacing.Call(obj, value)
+}
+
 func PageControl_GetPages(obj uintptr, Index int32) uintptr {
     ret, _, _ := pageControl_GetPages.Call(obj, uintptr(Index))
     return ret
@@ -28199,6 +32035,11 @@ func PageControl_GetControls(obj uintptr, Index int32) uintptr {
 
 func PageControl_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := pageControl_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func PageControl_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := pageControl_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -28425,6 +32266,30 @@ func TabSheet_GetHashCode(obj uintptr) int32 {
 func TabSheet_ToString(obj uintptr) string {
     ret, _, _ := tabSheet_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func TabSheet_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    tabSheet_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func TabSheet_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    tabSheet_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func TabSheet_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    tabSheet_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func TabSheet_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    tabSheet_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func TabSheet_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    tabSheet_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func TabSheet_AnchorClient(obj uintptr, ASpace int32)  {
+    tabSheet_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func TabSheet_GetPageControl(obj uintptr) uintptr {
@@ -28869,15 +32734,6 @@ func TabSheet_SetHint(obj uintptr, value string) {
    tabSheet_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func TabSheet_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := tabSheet_GetMargins.Call(obj)
-    return ret
-}
-
-func TabSheet_SetMargins(obj uintptr, value uintptr) {
-   tabSheet_SetMargins.Call(obj, value)
-}
-
 func TabSheet_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := tabSheet_GetComponentCount.Call(obj)
     return int32(ret)
@@ -28915,6 +32771,60 @@ func TabSheet_SetTag(obj uintptr, value int) {
    tabSheet_SetTag.Call(obj, uintptr(value))
 }
 
+func TabSheet_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := tabSheet_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func TabSheet_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   tabSheet_SetAnchorSideLeft.Call(obj, value)
+}
+
+func TabSheet_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := tabSheet_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func TabSheet_SetAnchorSideTop(obj uintptr, value uintptr) {
+   tabSheet_SetAnchorSideTop.Call(obj, value)
+}
+
+func TabSheet_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := tabSheet_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func TabSheet_SetAnchorSideRight(obj uintptr, value uintptr) {
+   tabSheet_SetAnchorSideRight.Call(obj, value)
+}
+
+func TabSheet_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := tabSheet_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func TabSheet_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   tabSheet_SetAnchorSideBottom.Call(obj, value)
+}
+
+func TabSheet_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := tabSheet_GetChildSizing.Call(obj)
+    return ret
+}
+
+func TabSheet_SetChildSizing(obj uintptr, value uintptr) {
+   tabSheet_SetChildSizing.Call(obj, value)
+}
+
+func TabSheet_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := tabSheet_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func TabSheet_SetBorderSpacing(obj uintptr, value uintptr) {
+   tabSheet_SetBorderSpacing.Call(obj, value)
+}
+
 func TabSheet_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := tabSheet_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -28927,6 +32837,11 @@ func TabSheet_GetControls(obj uintptr, Index int32) uintptr {
 
 func TabSheet_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := tabSheet_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func TabSheet_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := tabSheet_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -29087,6 +33002,30 @@ func Control_GetHashCode(obj uintptr) int32 {
 func Control_ToString(obj uintptr) string {
     ret, _, _ := control_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Control_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    control_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Control_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    control_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Control_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    control_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Control_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    control_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Control_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    control_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Control_AnchorClient(obj uintptr, ASpace int32)  {
+    control_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Control_GetEnabled(obj uintptr) bool {
@@ -29287,15 +33226,6 @@ func Control_SetHint(obj uintptr, value string) {
    control_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Control_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := control_GetMargins.Call(obj)
-    return ret
-}
-
-func Control_SetMargins(obj uintptr, value uintptr) {
-   control_SetMargins.Call(obj, value)
-}
-
 func Control_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := control_GetComponentCount.Call(obj)
     return int32(ret)
@@ -29333,8 +33263,58 @@ func Control_SetTag(obj uintptr, value int) {
    control_SetTag.Call(obj, uintptr(value))
 }
 
+func Control_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := control_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Control_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   control_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Control_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := control_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Control_SetAnchorSideTop(obj uintptr, value uintptr) {
+   control_SetAnchorSideTop.Call(obj, value)
+}
+
+func Control_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := control_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Control_SetAnchorSideRight(obj uintptr, value uintptr) {
+   control_SetAnchorSideRight.Call(obj, value)
+}
+
+func Control_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := control_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Control_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   control_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Control_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := control_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Control_SetBorderSpacing(obj uintptr, value uintptr) {
+   control_SetBorderSpacing.Call(obj, value)
+}
+
 func Control_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := control_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Control_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := control_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -29561,6 +33541,30 @@ func WinControl_GetHashCode(obj uintptr) int32 {
 func WinControl_ToString(obj uintptr) string {
     ret, _, _ := winControl_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func WinControl_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    winControl_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func WinControl_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    winControl_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func WinControl_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    winControl_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func WinControl_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    winControl_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func WinControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    winControl_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func WinControl_AnchorClient(obj uintptr, ASpace int32)  {
+    winControl_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func WinControl_GetDockClientCount(obj uintptr) int32 {
@@ -29854,15 +33858,6 @@ func WinControl_SetHint(obj uintptr, value string) {
    winControl_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func WinControl_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := winControl_GetMargins.Call(obj)
-    return ret
-}
-
-func WinControl_SetMargins(obj uintptr, value uintptr) {
-   winControl_SetMargins.Call(obj, value)
-}
-
 func WinControl_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := winControl_GetComponentCount.Call(obj)
     return int32(ret)
@@ -29900,6 +33895,60 @@ func WinControl_SetTag(obj uintptr, value int) {
    winControl_SetTag.Call(obj, uintptr(value))
 }
 
+func WinControl_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func WinControl_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   winControl_SetAnchorSideLeft.Call(obj, value)
+}
+
+func WinControl_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func WinControl_SetAnchorSideTop(obj uintptr, value uintptr) {
+   winControl_SetAnchorSideTop.Call(obj, value)
+}
+
+func WinControl_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func WinControl_SetAnchorSideRight(obj uintptr, value uintptr) {
+   winControl_SetAnchorSideRight.Call(obj, value)
+}
+
+func WinControl_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func WinControl_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   winControl_SetAnchorSideBottom.Call(obj, value)
+}
+
+func WinControl_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetChildSizing.Call(obj)
+    return ret
+}
+
+func WinControl_SetChildSizing(obj uintptr, value uintptr) {
+   winControl_SetChildSizing.Call(obj, value)
+}
+
+func WinControl_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := winControl_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func WinControl_SetBorderSpacing(obj uintptr, value uintptr) {
+   winControl_SetBorderSpacing.Call(obj, value)
+}
+
 func WinControl_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := winControl_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -29912,6 +33961,11 @@ func WinControl_GetControls(obj uintptr, Index int32) uintptr {
 
 func WinControl_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := winControl_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func WinControl_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := winControl_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -30987,6 +35041,30 @@ func SpinEdit_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func SpinEdit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    spinEdit_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func SpinEdit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    spinEdit_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func SpinEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    spinEdit_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func SpinEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    spinEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func SpinEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    spinEdit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func SpinEdit_AnchorClient(obj uintptr, ASpace int32)  {
+    spinEdit_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
 func SpinEdit_GetAnchors(obj uintptr) TAnchors {
     ret, _, _ := spinEdit_GetAnchors.Call(obj)
     return TAnchors(ret)
@@ -31512,15 +35590,6 @@ func SpinEdit_SetHint(obj uintptr, value string) {
    spinEdit_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func SpinEdit_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := spinEdit_GetMargins.Call(obj)
-    return ret
-}
-
-func SpinEdit_SetMargins(obj uintptr, value uintptr) {
-   spinEdit_SetMargins.Call(obj, value)
-}
-
 func SpinEdit_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := spinEdit_GetComponentCount.Call(obj)
     return int32(ret)
@@ -31558,6 +35627,60 @@ func SpinEdit_SetTag(obj uintptr, value int) {
    spinEdit_SetTag.Call(obj, uintptr(value))
 }
 
+func SpinEdit_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   spinEdit_SetAnchorSideLeft.Call(obj, value)
+}
+
+func SpinEdit_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
+   spinEdit_SetAnchorSideTop.Call(obj, value)
+}
+
+func SpinEdit_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
+   spinEdit_SetAnchorSideRight.Call(obj, value)
+}
+
+func SpinEdit_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   spinEdit_SetAnchorSideBottom.Call(obj, value)
+}
+
+func SpinEdit_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetChildSizing.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetChildSizing(obj uintptr, value uintptr) {
+   spinEdit_SetChildSizing.Call(obj, value)
+}
+
+func SpinEdit_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := spinEdit_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func SpinEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+   spinEdit_SetBorderSpacing.Call(obj, value)
+}
+
 func SpinEdit_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := spinEdit_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -31570,6 +35693,11 @@ func SpinEdit_GetControls(obj uintptr, Index int32) uintptr {
 
 func SpinEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := spinEdit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func SpinEdit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := spinEdit_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -31834,9 +35962,78 @@ func MiniWebview_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func MiniWebview_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    miniWebview_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func MiniWebview_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    miniWebview_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func MiniWebview_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    miniWebview_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func MiniWebview_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    miniWebview_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func MiniWebview_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    miniWebview_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func MiniWebview_AnchorClient(obj uintptr, ASpace int32)  {
+    miniWebview_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
 func MiniWebview_GetReadyState(obj uintptr) TReadyState {
     ret, _, _ := miniWebview_GetReadyState.Call(obj)
     return TReadyState(ret)
+}
+
+func MiniWebview_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := miniWebview_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func MiniWebview_SetAlign(obj uintptr, value TAlign) {
+   miniWebview_SetAlign.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := miniWebview_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func MiniWebview_SetAnchors(obj uintptr, value TAnchors) {
+   miniWebview_SetAnchors.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetConstraints.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetConstraints(obj uintptr, value uintptr) {
+   miniWebview_SetConstraints.Call(obj, value)
+}
+
+func MiniWebview_GetEnabled(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetEnabled(obj uintptr, value bool) {
+   miniWebview_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func MiniWebview_GetVisible(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func MiniWebview_SetVisible(obj uintptr, value bool) {
+   miniWebview_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
 func MiniWebview_SetOnTitleChange(obj uintptr, fn interface{}) {
@@ -31940,15 +36137,6 @@ func MiniWebview_SetUseDockManager(obj uintptr, value bool) {
    miniWebview_SetUseDockManager.Call(obj, GoBoolToDBool(value))
 }
 
-func MiniWebview_GetEnabled(obj uintptr) bool {
-    ret, _, _ := miniWebview_GetEnabled.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MiniWebview_SetEnabled(obj uintptr, value bool) {
-   miniWebview_SetEnabled.Call(obj, GoBoolToDBool(value))
-}
-
 func MiniWebview_GetAction(obj uintptr) uintptr {
     ret, _, _ := miniWebview_GetAction.Call(obj)
     return ret
@@ -31956,24 +36144,6 @@ func MiniWebview_GetAction(obj uintptr) uintptr {
 
 func MiniWebview_SetAction(obj uintptr, value uintptr) {
    miniWebview_SetAction.Call(obj, value)
-}
-
-func MiniWebview_GetAlign(obj uintptr) TAlign {
-    ret, _, _ := miniWebview_GetAlign.Call(obj)
-    return TAlign(ret)
-}
-
-func MiniWebview_SetAlign(obj uintptr, value TAlign) {
-   miniWebview_SetAlign.Call(obj, uintptr(value))
-}
-
-func MiniWebview_GetAnchors(obj uintptr) TAnchors {
-    ret, _, _ := miniWebview_GetAnchors.Call(obj)
-    return TAnchors(ret)
-}
-
-func MiniWebview_SetAnchors(obj uintptr, value TAnchors) {
-   miniWebview_SetAnchors.Call(obj, uintptr(value))
 }
 
 func MiniWebview_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -32025,15 +36195,6 @@ func MiniWebview_SetClientWidth(obj uintptr, value int32) {
    miniWebview_SetClientWidth.Call(obj, uintptr(value))
 }
 
-func MiniWebview_GetConstraints(obj uintptr) uintptr {
-    ret, _, _ := miniWebview_GetConstraints.Call(obj)
-    return ret
-}
-
-func MiniWebview_SetConstraints(obj uintptr, value uintptr) {
-   miniWebview_SetConstraints.Call(obj, value)
-}
-
 func MiniWebview_GetControlState(obj uintptr) TControlState {
     ret, _, _ := miniWebview_GetControlState.Call(obj)
     return TControlState(ret)
@@ -32064,15 +36225,6 @@ func MiniWebview_GetShowHint(obj uintptr) bool {
 
 func MiniWebview_SetShowHint(obj uintptr, value bool) {
    miniWebview_SetShowHint.Call(obj, GoBoolToDBool(value))
-}
-
-func MiniWebview_GetVisible(obj uintptr) bool {
-    ret, _, _ := miniWebview_GetVisible.Call(obj)
-    return DBoolToGoBool(ret)
-}
-
-func MiniWebview_SetVisible(obj uintptr, value bool) {
-   miniWebview_SetVisible.Call(obj, GoBoolToDBool(value))
 }
 
 func MiniWebview_GetParent(obj uintptr) uintptr {
@@ -32138,15 +36290,6 @@ func MiniWebview_SetHint(obj uintptr, value string) {
    miniWebview_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func MiniWebview_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := miniWebview_GetMargins.Call(obj)
-    return ret
-}
-
-func MiniWebview_SetMargins(obj uintptr, value uintptr) {
-   miniWebview_SetMargins.Call(obj, value)
-}
-
 func MiniWebview_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := miniWebview_GetComponentCount.Call(obj)
     return int32(ret)
@@ -32184,6 +36327,60 @@ func MiniWebview_SetTag(obj uintptr, value int) {
    miniWebview_SetTag.Call(obj, uintptr(value))
 }
 
+func MiniWebview_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   miniWebview_SetAnchorSideLeft.Call(obj, value)
+}
+
+func MiniWebview_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetAnchorSideTop(obj uintptr, value uintptr) {
+   miniWebview_SetAnchorSideTop.Call(obj, value)
+}
+
+func MiniWebview_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetAnchorSideRight(obj uintptr, value uintptr) {
+   miniWebview_SetAnchorSideRight.Call(obj, value)
+}
+
+func MiniWebview_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   miniWebview_SetAnchorSideBottom.Call(obj, value)
+}
+
+func MiniWebview_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetChildSizing.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetChildSizing(obj uintptr, value uintptr) {
+   miniWebview_SetChildSizing.Call(obj, value)
+}
+
+func MiniWebview_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := miniWebview_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func MiniWebview_SetBorderSpacing(obj uintptr, value uintptr) {
+   miniWebview_SetBorderSpacing.Call(obj, value)
+}
+
 func MiniWebview_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := miniWebview_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -32196,6 +36393,11 @@ func MiniWebview_GetControls(obj uintptr, Index int32) uintptr {
 
 func MiniWebview_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := miniWebview_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func MiniWebview_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := miniWebview_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -33563,6 +37765,30 @@ func ToolButton_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ToolButton_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    toolButton_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ToolButton_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    toolButton_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ToolButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    toolButton_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ToolButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    toolButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ToolButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    toolButton_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ToolButton_AnchorClient(obj uintptr, ASpace int32)  {
+    toolButton_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
 func ToolButton_GetIndex(obj uintptr) int32 {
     ret, _, _ := toolButton_GetIndex.Call(obj)
     return int32(ret)
@@ -33958,15 +38184,6 @@ func ToolButton_SetHint(obj uintptr, value string) {
    toolButton_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ToolButton_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := toolButton_GetMargins.Call(obj)
-    return ret
-}
-
-func ToolButton_SetMargins(obj uintptr, value uintptr) {
-   toolButton_SetMargins.Call(obj, value)
-}
-
 func ToolButton_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := toolButton_GetComponentCount.Call(obj)
     return int32(ret)
@@ -34004,8 +38221,58 @@ func ToolButton_SetTag(obj uintptr, value int) {
    toolButton_SetTag.Call(obj, uintptr(value))
 }
 
+func ToolButton_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := toolButton_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ToolButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   toolButton_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ToolButton_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := toolButton_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ToolButton_SetAnchorSideTop(obj uintptr, value uintptr) {
+   toolButton_SetAnchorSideTop.Call(obj, value)
+}
+
+func ToolButton_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := toolButton_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ToolButton_SetAnchorSideRight(obj uintptr, value uintptr) {
+   toolButton_SetAnchorSideRight.Call(obj, value)
+}
+
+func ToolButton_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := toolButton_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ToolButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   toolButton_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ToolButton_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := toolButton_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ToolButton_SetBorderSpacing(obj uintptr, value uintptr) {
+   toolButton_SetBorderSpacing.Call(obj, value)
+}
+
 func ToolButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := toolButton_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ToolButton_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := toolButton_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -34620,121 +38887,6 @@ func Monitor_StaticClassType() TClass {
     return TClass(r)
 }
 
-//--------------------------- TMargins ---------------------------
-
-func Margins_SetBounds(obj uintptr, ALeft int32, ATop int32, ARight int32, ABottom int32)  {
-    margins_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(ARight) , uintptr(ABottom) )
-}
-
-func Margins_Assign(obj uintptr, Source uintptr)  {
-    margins_Assign.Call(obj, Source )
-}
-
-func Margins_GetNamePath(obj uintptr) string {
-    ret, _, _ := margins_GetNamePath.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Margins_ClassType(obj uintptr) TClass {
-    ret, _, _ := margins_ClassType.Call(obj)
-    return TClass(ret)
-}
-
-func Margins_ClassName(obj uintptr) string {
-    ret, _, _ := margins_ClassName.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Margins_InstanceSize(obj uintptr) int32 {
-    ret, _, _ := margins_InstanceSize.Call(obj)
-    return int32(ret)
-}
-
-func Margins_InheritsFrom(obj uintptr, AClass TClass) bool {
-    ret, _, _ := margins_InheritsFrom.Call(obj, uintptr(AClass) )
-    return DBoolToGoBool(ret)
-}
-
-func Margins_Equals(obj uintptr, Obj uintptr) bool {
-    ret, _, _ := margins_Equals.Call(obj, Obj )
-    return DBoolToGoBool(ret)
-}
-
-func Margins_GetHashCode(obj uintptr) int32 {
-    ret, _, _ := margins_GetHashCode.Call(obj)
-    return int32(ret)
-}
-
-func Margins_ToString(obj uintptr) string {
-    ret, _, _ := margins_ToString.Call(obj)
-    return DStrToGoStr(ret)
-}
-
-func Margins_GetControlLeft(obj uintptr) int32 {
-    ret, _, _ := margins_GetControlLeft.Call(obj)
-    return int32(ret)
-}
-
-func Margins_GetControlTop(obj uintptr) int32 {
-    ret, _, _ := margins_GetControlTop.Call(obj)
-    return int32(ret)
-}
-
-func Margins_GetControlWidth(obj uintptr) int32 {
-    ret, _, _ := margins_GetControlWidth.Call(obj)
-    return int32(ret)
-}
-
-func Margins_GetControlHeight(obj uintptr) int32 {
-    ret, _, _ := margins_GetControlHeight.Call(obj)
-    return int32(ret)
-}
-
-func Margins_SetOnChange(obj uintptr, fn interface{}) {
-    margins_SetOnChange.Call(obj, addEventToMap(fn))
-}
-
-func Margins_GetLeft(obj uintptr) int32 {
-    ret, _, _ := margins_GetLeft.Call(obj)
-    return int32(ret)
-}
-
-func Margins_SetLeft(obj uintptr, value int32) {
-   margins_SetLeft.Call(obj, uintptr(value))
-}
-
-func Margins_GetTop(obj uintptr) int32 {
-    ret, _, _ := margins_GetTop.Call(obj)
-    return int32(ret)
-}
-
-func Margins_SetTop(obj uintptr, value int32) {
-   margins_SetTop.Call(obj, uintptr(value))
-}
-
-func Margins_GetRight(obj uintptr) int32 {
-    ret, _, _ := margins_GetRight.Call(obj)
-    return int32(ret)
-}
-
-func Margins_SetRight(obj uintptr, value int32) {
-   margins_SetRight.Call(obj, uintptr(value))
-}
-
-func Margins_GetBottom(obj uintptr) int32 {
-    ret, _, _ := margins_GetBottom.Call(obj)
-    return int32(ret)
-}
-
-func Margins_SetBottom(obj uintptr, value int32) {
-   margins_SetBottom.Call(obj, uintptr(value))
-}
-
-func Margins_StaticClassType() TClass {
-    r, _, _:= margins_StaticClassType.Call()
-    return TClass(r)
-}
-
 //--------------------------- TPaintBox ---------------------------
 
 func PaintBox_Create(obj uintptr) uintptr {
@@ -34887,6 +39039,30 @@ func PaintBox_GetHashCode(obj uintptr) int32 {
 func PaintBox_ToString(obj uintptr) string {
     ret, _, _ := paintBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func PaintBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    paintBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func PaintBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    paintBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func PaintBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    paintBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func PaintBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    paintBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func PaintBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    paintBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func PaintBox_AnchorClient(obj uintptr, ASpace int32)  {
+    paintBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func PaintBox_GetCanvas(obj uintptr) uintptr {
@@ -35208,15 +39384,6 @@ func PaintBox_SetHint(obj uintptr, value string) {
    paintBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func PaintBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := paintBox_GetMargins.Call(obj)
-    return ret
-}
-
-func PaintBox_SetMargins(obj uintptr, value uintptr) {
-   paintBox_SetMargins.Call(obj, value)
-}
-
 func PaintBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := paintBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -35254,8 +39421,58 @@ func PaintBox_SetTag(obj uintptr, value int) {
    paintBox_SetTag.Call(obj, uintptr(value))
 }
 
+func PaintBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := paintBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func PaintBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   paintBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func PaintBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := paintBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func PaintBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   paintBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func PaintBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := paintBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func PaintBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   paintBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func PaintBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := paintBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func PaintBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   paintBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func PaintBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := paintBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func PaintBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   paintBox_SetBorderSpacing.Call(obj, value)
+}
+
 func PaintBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := paintBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func PaintBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := paintBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -35624,6 +39841,234 @@ func Component_StaticClassType() TClass {
     return TClass(r)
 }
 
+//--------------------------- TParaAttributes ---------------------------
+
+func ParaAttributes_Assign(obj uintptr, Source uintptr)  {
+    paraAttributes_Assign.Call(obj, Source )
+}
+
+func ParaAttributes_GetNamePath(obj uintptr) string {
+    ret, _, _ := paraAttributes_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ParaAttributes_ClassType(obj uintptr) TClass {
+    ret, _, _ := paraAttributes_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func ParaAttributes_ClassName(obj uintptr) string {
+    ret, _, _ := paraAttributes_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ParaAttributes_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := paraAttributes_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ParaAttributes_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := paraAttributes_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func ParaAttributes_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := paraAttributes_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func ParaAttributes_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := paraAttributes_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func ParaAttributes_ToString(obj uintptr) string {
+    ret, _, _ := paraAttributes_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ParaAttributes_GetAlignment(obj uintptr) TAlignment {
+    ret, _, _ := paraAttributes_GetAlignment.Call(obj)
+    return TAlignment(ret)
+}
+
+func ParaAttributes_SetAlignment(obj uintptr, value TAlignment) {
+   paraAttributes_SetAlignment.Call(obj, uintptr(value))
+}
+
+func ParaAttributes_GetFirstIndent(obj uintptr) int32 {
+    ret, _, _ := paraAttributes_GetFirstIndent.Call(obj)
+    return int32(ret)
+}
+
+func ParaAttributes_SetFirstIndent(obj uintptr, value int32) {
+   paraAttributes_SetFirstIndent.Call(obj, uintptr(value))
+}
+
+func ParaAttributes_GetLeftIndent(obj uintptr) int32 {
+    ret, _, _ := paraAttributes_GetLeftIndent.Call(obj)
+    return int32(ret)
+}
+
+func ParaAttributes_SetLeftIndent(obj uintptr, value int32) {
+   paraAttributes_SetLeftIndent.Call(obj, uintptr(value))
+}
+
+func ParaAttributes_GetNumbering(obj uintptr) TNumberingStyle {
+    ret, _, _ := paraAttributes_GetNumbering.Call(obj)
+    return TNumberingStyle(ret)
+}
+
+func ParaAttributes_SetNumbering(obj uintptr, value TNumberingStyle) {
+   paraAttributes_SetNumbering.Call(obj, uintptr(value))
+}
+
+func ParaAttributes_GetRightIndent(obj uintptr) int32 {
+    ret, _, _ := paraAttributes_GetRightIndent.Call(obj)
+    return int32(ret)
+}
+
+func ParaAttributes_SetRightIndent(obj uintptr, value int32) {
+   paraAttributes_SetRightIndent.Call(obj, uintptr(value))
+}
+
+func ParaAttributes_GetTabCount(obj uintptr) int32 {
+    ret, _, _ := paraAttributes_GetTabCount.Call(obj)
+    return int32(ret)
+}
+
+func ParaAttributes_SetTabCount(obj uintptr, value int32) {
+   paraAttributes_SetTabCount.Call(obj, uintptr(value))
+}
+
+func ParaAttributes_GetTab(obj uintptr, Index uint8) int32 {
+    ret, _, _ := paraAttributes_GetTab.Call(obj, uintptr(Index))
+    return int32(ret)
+}
+
+func ParaAttributes_SetTab(obj uintptr, Index uint8, value int32) {
+   paraAttributes_SetTab.Call(obj, uintptr(Index), uintptr(value))
+}
+
+func ParaAttributes_StaticClassType() TClass {
+    r, _, _:= paraAttributes_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TTextAttributes ---------------------------
+
+func TextAttributes_Assign(obj uintptr, Source uintptr)  {
+    textAttributes_Assign.Call(obj, Source )
+}
+
+func TextAttributes_GetNamePath(obj uintptr) string {
+    ret, _, _ := textAttributes_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TextAttributes_ClassType(obj uintptr) TClass {
+    ret, _, _ := textAttributes_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func TextAttributes_ClassName(obj uintptr) string {
+    ret, _, _ := textAttributes_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TextAttributes_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := textAttributes_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func TextAttributes_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := textAttributes_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func TextAttributes_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := textAttributes_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func TextAttributes_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := textAttributes_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func TextAttributes_ToString(obj uintptr) string {
+    ret, _, _ := textAttributes_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TextAttributes_GetCharset(obj uintptr) TFontCharset {
+    ret, _, _ := textAttributes_GetCharset.Call(obj)
+    return TFontCharset(ret)
+}
+
+func TextAttributes_SetCharset(obj uintptr, value TFontCharset) {
+   textAttributes_SetCharset.Call(obj, uintptr(value))
+}
+
+func TextAttributes_GetColor(obj uintptr) TColor {
+    ret, _, _ := textAttributes_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func TextAttributes_SetColor(obj uintptr, value TColor) {
+   textAttributes_SetColor.Call(obj, uintptr(value))
+}
+
+func TextAttributes_GetName(obj uintptr) string {
+    ret, _, _ := textAttributes_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func TextAttributes_SetName(obj uintptr, value string) {
+   textAttributes_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func TextAttributes_GetPitch(obj uintptr) TFontPitch {
+    ret, _, _ := textAttributes_GetPitch.Call(obj)
+    return TFontPitch(ret)
+}
+
+func TextAttributes_SetPitch(obj uintptr, value TFontPitch) {
+   textAttributes_SetPitch.Call(obj, uintptr(value))
+}
+
+func TextAttributes_GetSize(obj uintptr) int32 {
+    ret, _, _ := textAttributes_GetSize.Call(obj)
+    return int32(ret)
+}
+
+func TextAttributes_SetSize(obj uintptr, value int32) {
+   textAttributes_SetSize.Call(obj, uintptr(value))
+}
+
+func TextAttributes_GetStyle(obj uintptr) TFontStyles {
+    ret, _, _ := textAttributes_GetStyle.Call(obj)
+    return TFontStyles(ret)
+}
+
+func TextAttributes_SetStyle(obj uintptr, value TFontStyles) {
+   textAttributes_SetStyle.Call(obj, uintptr(value))
+}
+
+func TextAttributes_GetHeight(obj uintptr) int32 {
+    ret, _, _ := textAttributes_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func TextAttributes_SetHeight(obj uintptr, value int32) {
+   textAttributes_SetHeight.Call(obj, uintptr(value))
+}
+
+func TextAttributes_StaticClassType() TClass {
+    r, _, _:= textAttributes_StaticClassType.Call()
+    return TClass(r)
+}
+
 //--------------------------- TIconOptions ---------------------------
 
 func IconOptions_Assign(obj uintptr, Source uintptr)  {
@@ -35966,6 +40411,30 @@ func ScrollBar_GetHashCode(obj uintptr) int32 {
 func ScrollBar_ToString(obj uintptr) string {
     ret, _, _ := scrollBar_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ScrollBar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    scrollBar_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ScrollBar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    scrollBar_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ScrollBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    scrollBar_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ScrollBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    scrollBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ScrollBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    scrollBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ScrollBar_AnchorClient(obj uintptr, ASpace int32)  {
+    scrollBar_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ScrollBar_GetAlign(obj uintptr) TAlign {
@@ -36398,15 +40867,6 @@ func ScrollBar_SetHint(obj uintptr, value string) {
    scrollBar_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ScrollBar_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := scrollBar_GetMargins.Call(obj)
-    return ret
-}
-
-func ScrollBar_SetMargins(obj uintptr, value uintptr) {
-   scrollBar_SetMargins.Call(obj, value)
-}
-
 func ScrollBar_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := scrollBar_GetComponentCount.Call(obj)
     return int32(ret)
@@ -36444,6 +40904,60 @@ func ScrollBar_SetTag(obj uintptr, value int) {
    scrollBar_SetTag.Call(obj, uintptr(value))
 }
 
+func ScrollBar_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := scrollBar_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ScrollBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   scrollBar_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ScrollBar_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := scrollBar_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ScrollBar_SetAnchorSideTop(obj uintptr, value uintptr) {
+   scrollBar_SetAnchorSideTop.Call(obj, value)
+}
+
+func ScrollBar_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := scrollBar_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ScrollBar_SetAnchorSideRight(obj uintptr, value uintptr) {
+   scrollBar_SetAnchorSideRight.Call(obj, value)
+}
+
+func ScrollBar_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := scrollBar_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ScrollBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   scrollBar_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ScrollBar_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := scrollBar_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ScrollBar_SetChildSizing(obj uintptr, value uintptr) {
+   scrollBar_SetChildSizing.Call(obj, value)
+}
+
+func ScrollBar_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := scrollBar_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ScrollBar_SetBorderSpacing(obj uintptr, value uintptr) {
+   scrollBar_SetBorderSpacing.Call(obj, value)
+}
+
 func ScrollBar_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := scrollBar_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -36456,6 +40970,11 @@ func ScrollBar_GetControls(obj uintptr, Index int32) uintptr {
 
 func ScrollBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := scrollBar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ScrollBar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := scrollBar_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -36714,6 +41233,30 @@ func MaskEdit_GetHashCode(obj uintptr) int32 {
 func MaskEdit_ToString(obj uintptr) string {
     ret, _, _ := maskEdit_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func MaskEdit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    maskEdit_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func MaskEdit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    maskEdit_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func MaskEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    maskEdit_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func MaskEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    maskEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func MaskEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    maskEdit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func MaskEdit_AnchorClient(obj uintptr, ASpace int32)  {
+    maskEdit_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func MaskEdit_GetAlign(obj uintptr) TAlign {
@@ -37305,15 +41848,6 @@ func MaskEdit_SetHint(obj uintptr, value string) {
    maskEdit_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func MaskEdit_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := maskEdit_GetMargins.Call(obj)
-    return ret
-}
-
-func MaskEdit_SetMargins(obj uintptr, value uintptr) {
-   maskEdit_SetMargins.Call(obj, value)
-}
-
 func MaskEdit_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := maskEdit_GetComponentCount.Call(obj)
     return int32(ret)
@@ -37351,6 +41885,60 @@ func MaskEdit_SetTag(obj uintptr, value int) {
    maskEdit_SetTag.Call(obj, uintptr(value))
 }
 
+func MaskEdit_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   maskEdit_SetAnchorSideLeft.Call(obj, value)
+}
+
+func MaskEdit_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
+   maskEdit_SetAnchorSideTop.Call(obj, value)
+}
+
+func MaskEdit_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
+   maskEdit_SetAnchorSideRight.Call(obj, value)
+}
+
+func MaskEdit_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   maskEdit_SetAnchorSideBottom.Call(obj, value)
+}
+
+func MaskEdit_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetChildSizing.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetChildSizing(obj uintptr, value uintptr) {
+   maskEdit_SetChildSizing.Call(obj, value)
+}
+
+func MaskEdit_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := maskEdit_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func MaskEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+   maskEdit_SetBorderSpacing.Call(obj, value)
+}
+
 func MaskEdit_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := maskEdit_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -37363,6 +41951,11 @@ func MaskEdit_GetControls(obj uintptr, Index int32) uintptr {
 
 func MaskEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := maskEdit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func MaskEdit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := maskEdit_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -37523,6 +42116,30 @@ func Shape_GetHashCode(obj uintptr) int32 {
 func Shape_ToString(obj uintptr) string {
     ret, _, _ := shape_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Shape_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    shape_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Shape_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    shape_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Shape_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    shape_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Shape_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    shape_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Shape_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    shape_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Shape_AnchorClient(obj uintptr, ASpace int32)  {
+    shape_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Shape_GetAlign(obj uintptr) TAlign {
@@ -37818,15 +42435,6 @@ func Shape_SetHint(obj uintptr, value string) {
    shape_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Shape_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := shape_GetMargins.Call(obj)
-    return ret
-}
-
-func Shape_SetMargins(obj uintptr, value uintptr) {
-   shape_SetMargins.Call(obj, value)
-}
-
 func Shape_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := shape_GetComponentCount.Call(obj)
     return int32(ret)
@@ -37864,8 +42472,58 @@ func Shape_SetTag(obj uintptr, value int) {
    shape_SetTag.Call(obj, uintptr(value))
 }
 
+func Shape_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := shape_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Shape_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   shape_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Shape_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := shape_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Shape_SetAnchorSideTop(obj uintptr, value uintptr) {
+   shape_SetAnchorSideTop.Call(obj, value)
+}
+
+func Shape_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := shape_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Shape_SetAnchorSideRight(obj uintptr, value uintptr) {
+   shape_SetAnchorSideRight.Call(obj, value)
+}
+
+func Shape_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := shape_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Shape_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   shape_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Shape_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := shape_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Shape_SetBorderSpacing(obj uintptr, value uintptr) {
+   shape_SetBorderSpacing.Call(obj, value)
+}
+
 func Shape_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := shape_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Shape_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := shape_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -38026,6 +42684,30 @@ func Bevel_GetHashCode(obj uintptr) int32 {
 func Bevel_ToString(obj uintptr) string {
     ret, _, _ := bevel_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Bevel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    bevel_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Bevel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    bevel_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Bevel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    bevel_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Bevel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    bevel_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Bevel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    bevel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Bevel_AnchorClient(obj uintptr, ASpace int32)  {
+    bevel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Bevel_GetAlign(obj uintptr) TAlign {
@@ -38253,15 +42935,6 @@ func Bevel_SetHint(obj uintptr, value string) {
    bevel_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Bevel_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := bevel_GetMargins.Call(obj)
-    return ret
-}
-
-func Bevel_SetMargins(obj uintptr, value uintptr) {
-   bevel_SetMargins.Call(obj, value)
-}
-
 func Bevel_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := bevel_GetComponentCount.Call(obj)
     return int32(ret)
@@ -38299,8 +42972,58 @@ func Bevel_SetTag(obj uintptr, value int) {
    bevel_SetTag.Call(obj, uintptr(value))
 }
 
+func Bevel_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := bevel_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Bevel_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   bevel_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Bevel_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := bevel_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Bevel_SetAnchorSideTop(obj uintptr, value uintptr) {
+   bevel_SetAnchorSideTop.Call(obj, value)
+}
+
+func Bevel_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := bevel_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Bevel_SetAnchorSideRight(obj uintptr, value uintptr) {
+   bevel_SetAnchorSideRight.Call(obj, value)
+}
+
+func Bevel_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := bevel_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Bevel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   bevel_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Bevel_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := bevel_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Bevel_SetBorderSpacing(obj uintptr, value uintptr) {
+   bevel_SetBorderSpacing.Call(obj, value)
+}
+
 func Bevel_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := bevel_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Bevel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := bevel_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -38531,6 +43254,30 @@ func ScrollBox_GetHashCode(obj uintptr) int32 {
 func ScrollBox_ToString(obj uintptr) string {
     ret, _, _ := scrollBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ScrollBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    scrollBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ScrollBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    scrollBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ScrollBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    scrollBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ScrollBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    scrollBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ScrollBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    scrollBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ScrollBox_AnchorClient(obj uintptr, ASpace int32)  {
+    scrollBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ScrollBox_GetAlign(obj uintptr) TAlign {
@@ -39039,15 +43786,6 @@ func ScrollBox_SetHint(obj uintptr, value string) {
    scrollBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ScrollBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := scrollBox_GetMargins.Call(obj)
-    return ret
-}
-
-func ScrollBox_SetMargins(obj uintptr, value uintptr) {
-   scrollBox_SetMargins.Call(obj, value)
-}
-
 func ScrollBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := scrollBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -39085,6 +43823,60 @@ func ScrollBox_SetTag(obj uintptr, value int) {
    scrollBox_SetTag.Call(obj, uintptr(value))
 }
 
+func ScrollBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := scrollBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ScrollBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   scrollBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ScrollBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := scrollBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ScrollBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   scrollBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func ScrollBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := scrollBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ScrollBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   scrollBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func ScrollBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := scrollBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ScrollBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   scrollBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ScrollBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := scrollBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ScrollBox_SetChildSizing(obj uintptr, value uintptr) {
+   scrollBox_SetChildSizing.Call(obj, value)
+}
+
+func ScrollBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := scrollBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ScrollBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   scrollBox_SetBorderSpacing.Call(obj, value)
+}
+
 func ScrollBox_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := scrollBox_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -39097,6 +43889,11 @@ func ScrollBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func ScrollBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := scrollBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ScrollBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := scrollBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -39358,6 +44155,30 @@ func CheckListBox_GetHashCode(obj uintptr) int32 {
 func CheckListBox_ToString(obj uintptr) string {
     ret, _, _ := checkListBox_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CheckListBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    checkListBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CheckListBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    checkListBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CheckListBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    checkListBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func CheckListBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    checkListBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func CheckListBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    checkListBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func CheckListBox_AnchorClient(obj uintptr, ASpace int32)  {
+    checkListBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func CheckListBox_SetOnClickCheck(obj uintptr, fn interface{}) {
@@ -39676,6 +44497,15 @@ func CheckListBox_GetCount(obj uintptr) int32 {
     return int32(ret)
 }
 
+func CheckListBox_GetTopIndex(obj uintptr) int32 {
+    ret, _, _ := checkListBox_GetTopIndex.Call(obj)
+    return int32(ret)
+}
+
+func CheckListBox_SetTopIndex(obj uintptr, value int32) {
+   checkListBox_SetTopIndex.Call(obj, uintptr(value))
+}
+
 func CheckListBox_GetMultiSelect(obj uintptr) bool {
     ret, _, _ := checkListBox_GetMultiSelect.Call(obj)
     return DBoolToGoBool(ret)
@@ -39891,15 +44721,6 @@ func CheckListBox_SetHint(obj uintptr, value string) {
    checkListBox_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func CheckListBox_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := checkListBox_GetMargins.Call(obj)
-    return ret
-}
-
-func CheckListBox_SetMargins(obj uintptr, value uintptr) {
-   checkListBox_SetMargins.Call(obj, value)
-}
-
 func CheckListBox_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := checkListBox_GetComponentCount.Call(obj)
     return int32(ret)
@@ -39935,6 +44756,60 @@ func CheckListBox_GetTag(obj uintptr) int {
 
 func CheckListBox_SetTag(obj uintptr, value int) {
    checkListBox_SetTag.Call(obj, uintptr(value))
+}
+
+func CheckListBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := checkListBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func CheckListBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   checkListBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func CheckListBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := checkListBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func CheckListBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   checkListBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func CheckListBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := checkListBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func CheckListBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   checkListBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func CheckListBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := checkListBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func CheckListBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   checkListBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func CheckListBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := checkListBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func CheckListBox_SetChildSizing(obj uintptr, value uintptr) {
+   checkListBox_SetChildSizing.Call(obj, value)
+}
+
+func CheckListBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := checkListBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func CheckListBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   checkListBox_SetBorderSpacing.Call(obj, value)
 }
 
 func CheckListBox_GetChecked(obj uintptr, Index int32) bool {
@@ -39994,6 +44869,11 @@ func CheckListBox_GetControls(obj uintptr, Index int32) uintptr {
 
 func CheckListBox_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := checkListBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func CheckListBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := checkListBox_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -40158,6 +45038,30 @@ func Gauge_GetHashCode(obj uintptr) int32 {
 func Gauge_ToString(obj uintptr) string {
     ret, _, _ := gauge_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Gauge_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    gauge_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Gauge_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    gauge_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Gauge_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    gauge_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Gauge_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    gauge_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Gauge_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    gauge_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Gauge_AnchorClient(obj uintptr, ASpace int32)  {
+    gauge_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Gauge_GetPercentDone(obj uintptr) int32 {
@@ -40480,15 +45384,6 @@ func Gauge_SetHint(obj uintptr, value string) {
    gauge_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Gauge_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := gauge_GetMargins.Call(obj)
-    return ret
-}
-
-func Gauge_SetMargins(obj uintptr, value uintptr) {
-   gauge_SetMargins.Call(obj, value)
-}
-
 func Gauge_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := gauge_GetComponentCount.Call(obj)
     return int32(ret)
@@ -40526,8 +45421,58 @@ func Gauge_SetTag(obj uintptr, value int) {
    gauge_SetTag.Call(obj, uintptr(value))
 }
 
+func Gauge_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := gauge_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Gauge_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   gauge_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Gauge_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := gauge_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Gauge_SetAnchorSideTop(obj uintptr, value uintptr) {
+   gauge_SetAnchorSideTop.Call(obj, value)
+}
+
+func Gauge_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := gauge_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Gauge_SetAnchorSideRight(obj uintptr, value uintptr) {
+   gauge_SetAnchorSideRight.Call(obj, value)
+}
+
+func Gauge_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := gauge_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Gauge_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   gauge_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Gauge_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := gauge_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Gauge_SetBorderSpacing(obj uintptr, value uintptr) {
+   gauge_SetBorderSpacing.Call(obj, value)
+}
+
 func Gauge_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := gauge_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Gauge_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := gauge_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -40692,6 +45637,30 @@ func ImageButton_GetHashCode(obj uintptr) int32 {
 func ImageButton_ToString(obj uintptr) string {
     ret, _, _ := imageButton_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ImageButton_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    imageButton_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ImageButton_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    imageButton_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ImageButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    imageButton_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ImageButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    imageButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ImageButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    imageButton_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ImageButton_AnchorClient(obj uintptr, ASpace int32)  {
+    imageButton_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ImageButton_GetAction(obj uintptr) uintptr {
@@ -41057,15 +46026,6 @@ func ImageButton_SetHint(obj uintptr, value string) {
    imageButton_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ImageButton_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := imageButton_GetMargins.Call(obj)
-    return ret
-}
-
-func ImageButton_SetMargins(obj uintptr, value uintptr) {
-   imageButton_SetMargins.Call(obj, value)
-}
-
 func ImageButton_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := imageButton_GetComponentCount.Call(obj)
     return int32(ret)
@@ -41103,8 +46063,58 @@ func ImageButton_SetTag(obj uintptr, value int) {
    imageButton_SetTag.Call(obj, uintptr(value))
 }
 
+func ImageButton_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := imageButton_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ImageButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   imageButton_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ImageButton_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := imageButton_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ImageButton_SetAnchorSideTop(obj uintptr, value uintptr) {
+   imageButton_SetAnchorSideTop.Call(obj, value)
+}
+
+func ImageButton_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := imageButton_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ImageButton_SetAnchorSideRight(obj uintptr, value uintptr) {
+   imageButton_SetAnchorSideRight.Call(obj, value)
+}
+
+func ImageButton_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := imageButton_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ImageButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   imageButton_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ImageButton_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := imageButton_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ImageButton_SetBorderSpacing(obj uintptr, value uintptr) {
+   imageButton_SetBorderSpacing.Call(obj, value)
+}
+
 func ImageButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := imageButton_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ImageButton_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := imageButton_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -42318,6 +47328,30 @@ func StringGrid_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func StringGrid_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    stringGrid_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func StringGrid_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    stringGrid_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func StringGrid_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    stringGrid_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func StringGrid_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    stringGrid_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func StringGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    stringGrid_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func StringGrid_AnchorClient(obj uintptr, ASpace int32)  {
+    stringGrid_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
 func StringGrid_GetAlign(obj uintptr) TAlign {
     ret, _, _ := stringGrid_GetAlign.Call(obj)
     return TAlign(ret)
@@ -42990,15 +48024,6 @@ func StringGrid_SetHint(obj uintptr, value string) {
    stringGrid_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func StringGrid_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := stringGrid_GetMargins.Call(obj)
-    return ret
-}
-
-func StringGrid_SetMargins(obj uintptr, value uintptr) {
-   stringGrid_SetMargins.Call(obj, value)
-}
-
 func StringGrid_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := stringGrid_GetComponentCount.Call(obj)
     return int32(ret)
@@ -43034,6 +48059,60 @@ func StringGrid_GetTag(obj uintptr) int {
 
 func StringGrid_SetTag(obj uintptr, value int) {
    stringGrid_SetTag.Call(obj, uintptr(value))
+}
+
+func StringGrid_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func StringGrid_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   stringGrid_SetAnchorSideLeft.Call(obj, value)
+}
+
+func StringGrid_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func StringGrid_SetAnchorSideTop(obj uintptr, value uintptr) {
+   stringGrid_SetAnchorSideTop.Call(obj, value)
+}
+
+func StringGrid_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func StringGrid_SetAnchorSideRight(obj uintptr, value uintptr) {
+   stringGrid_SetAnchorSideRight.Call(obj, value)
+}
+
+func StringGrid_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func StringGrid_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   stringGrid_SetAnchorSideBottom.Call(obj, value)
+}
+
+func StringGrid_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetChildSizing.Call(obj)
+    return ret
+}
+
+func StringGrid_SetChildSizing(obj uintptr, value uintptr) {
+   stringGrid_SetChildSizing.Call(obj, value)
+}
+
+func StringGrid_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := stringGrid_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func StringGrid_SetBorderSpacing(obj uintptr, value uintptr) {
+   stringGrid_SetBorderSpacing.Call(obj, value)
 }
 
 func StringGrid_GetCells(obj uintptr, ACol int32, ARow int32) string {
@@ -43102,6 +48181,11 @@ func StringGrid_GetControls(obj uintptr, Index int32) uintptr {
 
 func StringGrid_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := stringGrid_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func StringGrid_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := stringGrid_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -43344,6 +48428,30 @@ func DrawGrid_GetHashCode(obj uintptr) int32 {
 func DrawGrid_ToString(obj uintptr) string {
     ret, _, _ := drawGrid_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func DrawGrid_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    drawGrid_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func DrawGrid_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    drawGrid_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func DrawGrid_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    drawGrid_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func DrawGrid_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    drawGrid_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func DrawGrid_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    drawGrid_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func DrawGrid_AnchorClient(obj uintptr, ASpace int32)  {
+    drawGrid_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func DrawGrid_GetAlign(obj uintptr) TAlign {
@@ -44018,15 +49126,6 @@ func DrawGrid_SetHint(obj uintptr, value string) {
    drawGrid_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func DrawGrid_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := drawGrid_GetMargins.Call(obj)
-    return ret
-}
-
-func DrawGrid_SetMargins(obj uintptr, value uintptr) {
-   drawGrid_SetMargins.Call(obj, value)
-}
-
 func DrawGrid_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := drawGrid_GetComponentCount.Call(obj)
     return int32(ret)
@@ -44064,6 +49163,60 @@ func DrawGrid_SetTag(obj uintptr, value int) {
    drawGrid_SetTag.Call(obj, uintptr(value))
 }
 
+func DrawGrid_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   drawGrid_SetAnchorSideLeft.Call(obj, value)
+}
+
+func DrawGrid_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetAnchorSideTop(obj uintptr, value uintptr) {
+   drawGrid_SetAnchorSideTop.Call(obj, value)
+}
+
+func DrawGrid_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetAnchorSideRight(obj uintptr, value uintptr) {
+   drawGrid_SetAnchorSideRight.Call(obj, value)
+}
+
+func DrawGrid_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   drawGrid_SetAnchorSideBottom.Call(obj, value)
+}
+
+func DrawGrid_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetChildSizing.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetChildSizing(obj uintptr, value uintptr) {
+   drawGrid_SetChildSizing.Call(obj, value)
+}
+
+func DrawGrid_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := drawGrid_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func DrawGrid_SetBorderSpacing(obj uintptr, value uintptr) {
+   drawGrid_SetBorderSpacing.Call(obj, value)
+}
+
 func DrawGrid_GetColWidths(obj uintptr, Index int32) int32 {
     ret, _, _ := drawGrid_GetColWidths.Call(obj, uintptr(Index))
     return int32(ret)
@@ -44094,6 +49247,11 @@ func DrawGrid_GetControls(obj uintptr, Index int32) uintptr {
 
 func DrawGrid_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := drawGrid_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func DrawGrid_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := drawGrid_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -44336,6 +49494,30 @@ func ValueListEditor_GetHashCode(obj uintptr) int32 {
 func ValueListEditor_ToString(obj uintptr) string {
     ret, _, _ := valueListEditor_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func ValueListEditor_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    valueListEditor_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ValueListEditor_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    valueListEditor_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ValueListEditor_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    valueListEditor_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ValueListEditor_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    valueListEditor_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ValueListEditor_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    valueListEditor_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ValueListEditor_AnchorClient(obj uintptr, ASpace int32)  {
+    valueListEditor_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func ValueListEditor_GetColCount(obj uintptr) int32 {
@@ -45002,15 +50184,6 @@ func ValueListEditor_SetHint(obj uintptr, value string) {
    valueListEditor_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ValueListEditor_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := valueListEditor_GetMargins.Call(obj)
-    return ret
-}
-
-func ValueListEditor_SetMargins(obj uintptr, value uintptr) {
-   valueListEditor_SetMargins.Call(obj, value)
-}
-
 func ValueListEditor_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := valueListEditor_GetComponentCount.Call(obj)
     return int32(ret)
@@ -45046,6 +50219,60 @@ func ValueListEditor_GetTag(obj uintptr) int {
 
 func ValueListEditor_SetTag(obj uintptr, value int) {
    valueListEditor_SetTag.Call(obj, uintptr(value))
+}
+
+func ValueListEditor_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   valueListEditor_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ValueListEditor_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetAnchorSideTop(obj uintptr, value uintptr) {
+   valueListEditor_SetAnchorSideTop.Call(obj, value)
+}
+
+func ValueListEditor_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetAnchorSideRight(obj uintptr, value uintptr) {
+   valueListEditor_SetAnchorSideRight.Call(obj, value)
+}
+
+func ValueListEditor_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   valueListEditor_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ValueListEditor_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetChildSizing(obj uintptr, value uintptr) {
+   valueListEditor_SetChildSizing.Call(obj, value)
+}
+
+func ValueListEditor_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := valueListEditor_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ValueListEditor_SetBorderSpacing(obj uintptr, value uintptr) {
+   valueListEditor_SetBorderSpacing.Call(obj, value)
 }
 
 func ValueListEditor_GetCells(obj uintptr, ACol int32, ARow int32) string {
@@ -45096,6 +50323,11 @@ func ValueListEditor_GetControls(obj uintptr, Index int32) uintptr {
 
 func ValueListEditor_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := valueListEditor_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ValueListEditor_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := valueListEditor_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -45322,6 +50554,30 @@ func HeaderControl_GetHashCode(obj uintptr) int32 {
 func HeaderControl_ToString(obj uintptr) string {
     ret, _, _ := headerControl_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func HeaderControl_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    headerControl_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func HeaderControl_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    headerControl_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func HeaderControl_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    headerControl_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func HeaderControl_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    headerControl_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func HeaderControl_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    headerControl_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func HeaderControl_AnchorClient(obj uintptr, ASpace int32)  {
+    headerControl_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func HeaderControl_GetAlign(obj uintptr) TAlign {
@@ -45765,15 +51021,6 @@ func HeaderControl_SetHint(obj uintptr, value string) {
    headerControl_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func HeaderControl_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := headerControl_GetMargins.Call(obj)
-    return ret
-}
-
-func HeaderControl_SetMargins(obj uintptr, value uintptr) {
-   headerControl_SetMargins.Call(obj, value)
-}
-
 func HeaderControl_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := headerControl_GetComponentCount.Call(obj)
     return int32(ret)
@@ -45811,6 +51058,60 @@ func HeaderControl_SetTag(obj uintptr, value int) {
    headerControl_SetTag.Call(obj, uintptr(value))
 }
 
+func HeaderControl_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   headerControl_SetAnchorSideLeft.Call(obj, value)
+}
+
+func HeaderControl_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetAnchorSideTop(obj uintptr, value uintptr) {
+   headerControl_SetAnchorSideTop.Call(obj, value)
+}
+
+func HeaderControl_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetAnchorSideRight(obj uintptr, value uintptr) {
+   headerControl_SetAnchorSideRight.Call(obj, value)
+}
+
+func HeaderControl_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   headerControl_SetAnchorSideBottom.Call(obj, value)
+}
+
+func HeaderControl_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetChildSizing.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetChildSizing(obj uintptr, value uintptr) {
+   headerControl_SetChildSizing.Call(obj, value)
+}
+
+func HeaderControl_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := headerControl_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func HeaderControl_SetBorderSpacing(obj uintptr, value uintptr) {
+   headerControl_SetBorderSpacing.Call(obj, value)
+}
+
 func HeaderControl_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := headerControl_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -45823,6 +51124,11 @@ func HeaderControl_GetControls(obj uintptr, Index int32) uintptr {
 
 func HeaderControl_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := headerControl_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func HeaderControl_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := headerControl_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -46343,6 +51649,30 @@ func LabeledEdit_GetHashCode(obj uintptr) int32 {
 func LabeledEdit_ToString(obj uintptr) string {
     ret, _, _ := labeledEdit_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func LabeledEdit_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    labeledEdit_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func LabeledEdit_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    labeledEdit_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func LabeledEdit_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    labeledEdit_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func LabeledEdit_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    labeledEdit_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func LabeledEdit_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    labeledEdit_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func LabeledEdit_AnchorClient(obj uintptr, ASpace int32)  {
+    labeledEdit_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func LabeledEdit_GetAlignment(obj uintptr) TAlignment {
@@ -46944,15 +52274,6 @@ func LabeledEdit_SetHint(obj uintptr, value string) {
    labeledEdit_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func LabeledEdit_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := labeledEdit_GetMargins.Call(obj)
-    return ret
-}
-
-func LabeledEdit_SetMargins(obj uintptr, value uintptr) {
-   labeledEdit_SetMargins.Call(obj, value)
-}
-
 func LabeledEdit_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := labeledEdit_GetComponentCount.Call(obj)
     return int32(ret)
@@ -46990,6 +52311,60 @@ func LabeledEdit_SetTag(obj uintptr, value int) {
    labeledEdit_SetTag.Call(obj, uintptr(value))
 }
 
+func LabeledEdit_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   labeledEdit_SetAnchorSideLeft.Call(obj, value)
+}
+
+func LabeledEdit_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetAnchorSideTop(obj uintptr, value uintptr) {
+   labeledEdit_SetAnchorSideTop.Call(obj, value)
+}
+
+func LabeledEdit_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetAnchorSideRight(obj uintptr, value uintptr) {
+   labeledEdit_SetAnchorSideRight.Call(obj, value)
+}
+
+func LabeledEdit_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   labeledEdit_SetAnchorSideBottom.Call(obj, value)
+}
+
+func LabeledEdit_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetChildSizing.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetChildSizing(obj uintptr, value uintptr) {
+   labeledEdit_SetChildSizing.Call(obj, value)
+}
+
+func LabeledEdit_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := labeledEdit_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func LabeledEdit_SetBorderSpacing(obj uintptr, value uintptr) {
+   labeledEdit_SetBorderSpacing.Call(obj, value)
+}
+
 func LabeledEdit_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := labeledEdit_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -47002,6 +52377,11 @@ func LabeledEdit_GetControls(obj uintptr, Index int32) uintptr {
 
 func LabeledEdit_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := labeledEdit_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func LabeledEdit_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := labeledEdit_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -47162,6 +52542,30 @@ func BoundLabel_GetHashCode(obj uintptr) int32 {
 func BoundLabel_ToString(obj uintptr) string {
     ret, _, _ := boundLabel_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func BoundLabel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    boundLabel_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func BoundLabel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    boundLabel_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func BoundLabel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    boundLabel_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func BoundLabel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    boundLabel_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func BoundLabel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    boundLabel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func BoundLabel_AnchorClient(obj uintptr, ASpace int32)  {
+    boundLabel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func BoundLabel_GetBiDiMode(obj uintptr) TBiDiMode {
@@ -47499,15 +52903,6 @@ func BoundLabel_SetHint(obj uintptr, value string) {
    boundLabel_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func BoundLabel_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := boundLabel_GetMargins.Call(obj)
-    return ret
-}
-
-func BoundLabel_SetMargins(obj uintptr, value uintptr) {
-   boundLabel_SetMargins.Call(obj, value)
-}
-
 func BoundLabel_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := boundLabel_GetComponentCount.Call(obj)
     return int32(ret)
@@ -47545,8 +52940,58 @@ func BoundLabel_SetTag(obj uintptr, value int) {
    boundLabel_SetTag.Call(obj, uintptr(value))
 }
 
+func BoundLabel_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   boundLabel_SetAnchorSideLeft.Call(obj, value)
+}
+
+func BoundLabel_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetAnchorSideTop(obj uintptr, value uintptr) {
+   boundLabel_SetAnchorSideTop.Call(obj, value)
+}
+
+func BoundLabel_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetAnchorSideRight(obj uintptr, value uintptr) {
+   boundLabel_SetAnchorSideRight.Call(obj, value)
+}
+
+func BoundLabel_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   boundLabel_SetAnchorSideBottom.Call(obj, value)
+}
+
+func BoundLabel_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := boundLabel_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func BoundLabel_SetBorderSpacing(obj uintptr, value uintptr) {
+   boundLabel_SetBorderSpacing.Call(obj, value)
+}
+
 func BoundLabel_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := boundLabel_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func BoundLabel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := boundLabel_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -47782,6 +53227,30 @@ func FlowPanel_GetHashCode(obj uintptr) int32 {
 func FlowPanel_ToString(obj uintptr) string {
     ret, _, _ := flowPanel_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func FlowPanel_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    flowPanel_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func FlowPanel_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    flowPanel_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func FlowPanel_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    flowPanel_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func FlowPanel_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    flowPanel_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func FlowPanel_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    flowPanel_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func FlowPanel_AnchorClient(obj uintptr, ASpace int32)  {
+    flowPanel_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func FlowPanel_GetAlign(obj uintptr) TAlign {
@@ -48317,15 +53786,6 @@ func FlowPanel_SetHint(obj uintptr, value string) {
    flowPanel_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func FlowPanel_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := flowPanel_GetMargins.Call(obj)
-    return ret
-}
-
-func FlowPanel_SetMargins(obj uintptr, value uintptr) {
-   flowPanel_SetMargins.Call(obj, value)
-}
-
 func FlowPanel_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := flowPanel_GetComponentCount.Call(obj)
     return int32(ret)
@@ -48363,6 +53823,60 @@ func FlowPanel_SetTag(obj uintptr, value int) {
    flowPanel_SetTag.Call(obj, uintptr(value))
 }
 
+func FlowPanel_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   flowPanel_SetAnchorSideLeft.Call(obj, value)
+}
+
+func FlowPanel_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetAnchorSideTop(obj uintptr, value uintptr) {
+   flowPanel_SetAnchorSideTop.Call(obj, value)
+}
+
+func FlowPanel_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetAnchorSideRight(obj uintptr, value uintptr) {
+   flowPanel_SetAnchorSideRight.Call(obj, value)
+}
+
+func FlowPanel_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   flowPanel_SetAnchorSideBottom.Call(obj, value)
+}
+
+func FlowPanel_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetChildSizing.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetChildSizing(obj uintptr, value uintptr) {
+   flowPanel_SetChildSizing.Call(obj, value)
+}
+
+func FlowPanel_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := flowPanel_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func FlowPanel_SetBorderSpacing(obj uintptr, value uintptr) {
+   flowPanel_SetBorderSpacing.Call(obj, value)
+}
+
 func FlowPanel_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := flowPanel_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -48375,6 +53889,11 @@ func FlowPanel_GetControls(obj uintptr, Index int32) uintptr {
 
 func FlowPanel_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := flowPanel_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func FlowPanel_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := flowPanel_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -48597,6 +54116,30 @@ func CoolBar_GetHashCode(obj uintptr) int32 {
 func CoolBar_ToString(obj uintptr) string {
     ret, _, _ := coolBar_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func CoolBar_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    coolBar_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CoolBar_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    coolBar_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CoolBar_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    coolBar_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func CoolBar_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    coolBar_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func CoolBar_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    coolBar_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func CoolBar_AnchorClient(obj uintptr, ASpace int32)  {
+    coolBar_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func CoolBar_GetAlign(obj uintptr) TAlign {
@@ -49169,15 +54712,6 @@ func CoolBar_SetHint(obj uintptr, value string) {
    coolBar_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func CoolBar_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := coolBar_GetMargins.Call(obj)
-    return ret
-}
-
-func CoolBar_SetMargins(obj uintptr, value uintptr) {
-   coolBar_SetMargins.Call(obj, value)
-}
-
 func CoolBar_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := coolBar_GetComponentCount.Call(obj)
     return int32(ret)
@@ -49215,6 +54749,60 @@ func CoolBar_SetTag(obj uintptr, value int) {
    coolBar_SetTag.Call(obj, uintptr(value))
 }
 
+func CoolBar_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func CoolBar_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   coolBar_SetAnchorSideLeft.Call(obj, value)
+}
+
+func CoolBar_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func CoolBar_SetAnchorSideTop(obj uintptr, value uintptr) {
+   coolBar_SetAnchorSideTop.Call(obj, value)
+}
+
+func CoolBar_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func CoolBar_SetAnchorSideRight(obj uintptr, value uintptr) {
+   coolBar_SetAnchorSideRight.Call(obj, value)
+}
+
+func CoolBar_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func CoolBar_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   coolBar_SetAnchorSideBottom.Call(obj, value)
+}
+
+func CoolBar_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetChildSizing.Call(obj)
+    return ret
+}
+
+func CoolBar_SetChildSizing(obj uintptr, value uintptr) {
+   coolBar_SetChildSizing.Call(obj, value)
+}
+
+func CoolBar_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := coolBar_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func CoolBar_SetBorderSpacing(obj uintptr, value uintptr) {
+   coolBar_SetBorderSpacing.Call(obj, value)
+}
+
 func CoolBar_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := coolBar_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -49227,6 +54815,11 @@ func CoolBar_GetControls(obj uintptr, Index int32) uintptr {
 
 func CoolBar_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := coolBar_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func CoolBar_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := coolBar_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -50810,6 +56403,30 @@ func ComboBoxEx_ToString(obj uintptr) string {
     return DStrToGoStr(ret)
 }
 
+func ComboBoxEx_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    comboBoxEx_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ComboBoxEx_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    comboBoxEx_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ComboBoxEx_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    comboBoxEx_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ComboBoxEx_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    comboBoxEx_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ComboBoxEx_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    comboBoxEx_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ComboBoxEx_AnchorClient(obj uintptr, ASpace int32)  {
+    comboBoxEx_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
 func ComboBoxEx_GetAlign(obj uintptr) TAlign {
     ret, _, _ := comboBoxEx_GetAlign.Call(obj)
     return TAlign(ret)
@@ -51386,15 +57003,6 @@ func ComboBoxEx_SetHint(obj uintptr, value string) {
    comboBoxEx_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func ComboBoxEx_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := comboBoxEx_GetMargins.Call(obj)
-    return ret
-}
-
-func ComboBoxEx_SetMargins(obj uintptr, value uintptr) {
-   comboBoxEx_SetMargins.Call(obj, value)
-}
-
 func ComboBoxEx_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := comboBoxEx_GetComponentCount.Call(obj)
     return int32(ret)
@@ -51432,6 +57040,60 @@ func ComboBoxEx_SetTag(obj uintptr, value int) {
    comboBoxEx_SetTag.Call(obj, uintptr(value))
 }
 
+func ComboBoxEx_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := comboBoxEx_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ComboBoxEx_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   comboBoxEx_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ComboBoxEx_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := comboBoxEx_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ComboBoxEx_SetAnchorSideTop(obj uintptr, value uintptr) {
+   comboBoxEx_SetAnchorSideTop.Call(obj, value)
+}
+
+func ComboBoxEx_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := comboBoxEx_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ComboBoxEx_SetAnchorSideRight(obj uintptr, value uintptr) {
+   comboBoxEx_SetAnchorSideRight.Call(obj, value)
+}
+
+func ComboBoxEx_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := comboBoxEx_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ComboBoxEx_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   comboBoxEx_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ComboBoxEx_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := comboBoxEx_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ComboBoxEx_SetChildSizing(obj uintptr, value uintptr) {
+   comboBoxEx_SetChildSizing.Call(obj, value)
+}
+
+func ComboBoxEx_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := comboBoxEx_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ComboBoxEx_SetBorderSpacing(obj uintptr, value uintptr) {
+   comboBoxEx_SetBorderSpacing.Call(obj, value)
+}
+
 func ComboBoxEx_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := comboBoxEx_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -51444,6 +57106,11 @@ func ComboBoxEx_GetControls(obj uintptr, Index int32) uintptr {
 
 func ComboBoxEx_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := comboBoxEx_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ComboBoxEx_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := comboBoxEx_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -51899,6 +57566,30 @@ func Frame_GetHashCode(obj uintptr) int32 {
 func Frame_ToString(obj uintptr) string {
     ret, _, _ := frame_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func Frame_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    frame_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Frame_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    frame_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func Frame_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    frame_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func Frame_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    frame_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func Frame_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    frame_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func Frame_AnchorClient(obj uintptr, ASpace int32)  {
+    frame_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func Frame_GetAlign(obj uintptr) TAlign {
@@ -52401,15 +58092,6 @@ func Frame_SetHint(obj uintptr, value string) {
    frame_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func Frame_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := frame_GetMargins.Call(obj)
-    return ret
-}
-
-func Frame_SetMargins(obj uintptr, value uintptr) {
-   frame_SetMargins.Call(obj, value)
-}
-
 func Frame_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := frame_GetComponentCount.Call(obj)
     return int32(ret)
@@ -52447,6 +58129,60 @@ func Frame_SetTag(obj uintptr, value int) {
    frame_SetTag.Call(obj, uintptr(value))
 }
 
+func Frame_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := frame_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func Frame_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   frame_SetAnchorSideLeft.Call(obj, value)
+}
+
+func Frame_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := frame_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func Frame_SetAnchorSideTop(obj uintptr, value uintptr) {
+   frame_SetAnchorSideTop.Call(obj, value)
+}
+
+func Frame_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := frame_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func Frame_SetAnchorSideRight(obj uintptr, value uintptr) {
+   frame_SetAnchorSideRight.Call(obj, value)
+}
+
+func Frame_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := frame_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func Frame_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   frame_SetAnchorSideBottom.Call(obj, value)
+}
+
+func Frame_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := frame_GetChildSizing.Call(obj)
+    return ret
+}
+
+func Frame_SetChildSizing(obj uintptr, value uintptr) {
+   frame_SetChildSizing.Call(obj, value)
+}
+
+func Frame_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := frame_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func Frame_SetBorderSpacing(obj uintptr, value uintptr) {
+   frame_SetBorderSpacing.Call(obj, value)
+}
+
 func Frame_GetDockClients(obj uintptr, Index int32) uintptr {
     ret, _, _ := frame_GetDockClients.Call(obj, uintptr(Index))
     return ret
@@ -52459,6 +58195,11 @@ func Frame_GetControls(obj uintptr, Index int32) uintptr {
 
 func Frame_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := frame_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func Frame_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := frame_GetAnchorSide.Call(obj, uintptr(AKind))
     return ret
 }
 
@@ -52825,6 +58566,30 @@ func XButton_GetHashCode(obj uintptr) int32 {
 func XButton_ToString(obj uintptr) string {
     ret, _, _ := xButton_ToString.Call(obj)
     return DStrToGoStr(ret)
+}
+
+func XButton_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    xButton_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func XButton_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    xButton_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func XButton_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    xButton_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func XButton_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    xButton_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func XButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    xButton_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func XButton_AnchorClient(obj uintptr, ASpace int32)  {
+    xButton_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
 func XButton_GetCaption(obj uintptr) string {
@@ -53197,15 +58962,6 @@ func XButton_SetHint(obj uintptr, value string) {
    xButton_SetHint.Call(obj, GoStrToDStr(value))
 }
 
-func XButton_GetMargins(obj uintptr) uintptr {
-    ret, _, _ := xButton_GetMargins.Call(obj)
-    return ret
-}
-
-func XButton_SetMargins(obj uintptr, value uintptr) {
-   xButton_SetMargins.Call(obj, value)
-}
-
 func XButton_GetComponentCount(obj uintptr) int32 {
     ret, _, _ := xButton_GetComponentCount.Call(obj)
     return int32(ret)
@@ -53243,12 +58999,477 @@ func XButton_SetTag(obj uintptr, value int) {
    xButton_SetTag.Call(obj, uintptr(value))
 }
 
+func XButton_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func XButton_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   xButton_SetAnchorSideLeft.Call(obj, value)
+}
+
+func XButton_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func XButton_SetAnchorSideTop(obj uintptr, value uintptr) {
+   xButton_SetAnchorSideTop.Call(obj, value)
+}
+
+func XButton_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func XButton_SetAnchorSideRight(obj uintptr, value uintptr) {
+   xButton_SetAnchorSideRight.Call(obj, value)
+}
+
+func XButton_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func XButton_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   xButton_SetAnchorSideBottom.Call(obj, value)
+}
+
+func XButton_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := xButton_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func XButton_SetBorderSpacing(obj uintptr, value uintptr) {
+   xButton_SetBorderSpacing.Call(obj, value)
+}
+
 func XButton_GetComponents(obj uintptr, AIndex int32) uintptr {
     ret, _, _ := xButton_GetComponents.Call(obj, uintptr(AIndex))
     return ret
 }
 
+func XButton_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := xButton_GetAnchorSide.Call(obj, uintptr(AKind))
+    return ret
+}
+
 func XButton_StaticClassType() TClass {
     r, _, _:= xButton_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TAnchorSide ---------------------------
+
+func AnchorSide_Assign(obj uintptr, Source uintptr)  {
+    anchorSide_Assign.Call(obj, Source )
+}
+
+func AnchorSide_GetNamePath(obj uintptr) string {
+    ret, _, _ := anchorSide_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func AnchorSide_ClassType(obj uintptr) TClass {
+    ret, _, _ := anchorSide_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func AnchorSide_ClassName(obj uintptr) string {
+    ret, _, _ := anchorSide_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func AnchorSide_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := anchorSide_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func AnchorSide_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := anchorSide_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func AnchorSide_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := anchorSide_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func AnchorSide_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := anchorSide_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func AnchorSide_ToString(obj uintptr) string {
+    ret, _, _ := anchorSide_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func AnchorSide_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := anchorSide_GetOwner.Call(obj)
+    return ret
+}
+
+func AnchorSide_GetControl(obj uintptr) uintptr {
+    ret, _, _ := anchorSide_GetControl.Call(obj)
+    return ret
+}
+
+func AnchorSide_SetControl(obj uintptr, value uintptr) {
+   anchorSide_SetControl.Call(obj, value)
+}
+
+func AnchorSide_GetSide(obj uintptr) TAnchorSideReference {
+    ret, _, _ := anchorSide_GetSide.Call(obj)
+    return TAnchorSideReference(ret)
+}
+
+func AnchorSide_SetSide(obj uintptr, value TAnchorSideReference) {
+   anchorSide_SetSide.Call(obj, uintptr(value))
+}
+
+func AnchorSide_StaticClassType() TClass {
+    r, _, _:= anchorSide_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TControlBorderSpacing ---------------------------
+
+func ControlBorderSpacing_Assign(obj uintptr, Source uintptr)  {
+    controlBorderSpacing_Assign.Call(obj, Source )
+}
+
+func ControlBorderSpacing_GetNamePath(obj uintptr) string {
+    ret, _, _ := controlBorderSpacing_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ControlBorderSpacing_ClassType(obj uintptr) TClass {
+    ret, _, _ := controlBorderSpacing_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func ControlBorderSpacing_ClassName(obj uintptr) string {
+    ret, _, _ := controlBorderSpacing_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ControlBorderSpacing_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := controlBorderSpacing_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func ControlBorderSpacing_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := controlBorderSpacing_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func ControlBorderSpacing_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_ToString(obj uintptr) string {
+    ret, _, _ := controlBorderSpacing_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ControlBorderSpacing_GetControl(obj uintptr) uintptr {
+    ret, _, _ := controlBorderSpacing_GetControl.Call(obj)
+    return ret
+}
+
+func ControlBorderSpacing_GetAroundLeft(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetAroundLeft.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetAroundTop(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetAroundTop.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetAroundRight(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetAroundRight.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetAroundBottom(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetAroundBottom.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetControlLeft(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetControlLeft.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetControlTop(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetControlTop.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetControlWidth(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetControlWidth.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetControlHeight(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetControlHeight.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetControlRight(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetControlRight.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_GetControlBottom(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetControlBottom.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetOnChange(obj uintptr, fn interface{}) {
+    controlBorderSpacing_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func ControlBorderSpacing_GetLeft(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetLeft(obj uintptr, value int32) {
+   controlBorderSpacing_SetLeft.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetTop(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetTop(obj uintptr, value int32) {
+   controlBorderSpacing_SetTop.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetRight(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetRight.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetRight(obj uintptr, value int32) {
+   controlBorderSpacing_SetRight.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetBottom(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetBottom.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetBottom(obj uintptr, value int32) {
+   controlBorderSpacing_SetBottom.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetAround(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetAround.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetAround(obj uintptr, value int32) {
+   controlBorderSpacing_SetAround.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetInnerBorder(obj uintptr) int32 {
+    ret, _, _ := controlBorderSpacing_GetInnerBorder.Call(obj)
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetInnerBorder(obj uintptr, value int32) {
+   controlBorderSpacing_SetInnerBorder.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetCellAlignHorizontal(obj uintptr) TControlCellAlign {
+    ret, _, _ := controlBorderSpacing_GetCellAlignHorizontal.Call(obj)
+    return TControlCellAlign(ret)
+}
+
+func ControlBorderSpacing_SetCellAlignHorizontal(obj uintptr, value TControlCellAlign) {
+   controlBorderSpacing_SetCellAlignHorizontal.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetCellAlignVertical(obj uintptr) TControlCellAlign {
+    ret, _, _ := controlBorderSpacing_GetCellAlignVertical.Call(obj)
+    return TControlCellAlign(ret)
+}
+
+func ControlBorderSpacing_SetCellAlignVertical(obj uintptr, value TControlCellAlign) {
+   controlBorderSpacing_SetCellAlignVertical.Call(obj, uintptr(value))
+}
+
+func ControlBorderSpacing_GetSpace(obj uintptr, Kind TAnchorKind) int32 {
+    ret, _, _ := controlBorderSpacing_GetSpace.Call(obj, uintptr(Kind))
+    return int32(ret)
+}
+
+func ControlBorderSpacing_SetSpace(obj uintptr, Kind TAnchorKind, value int32) {
+   controlBorderSpacing_SetSpace.Call(obj, uintptr(Kind), uintptr(value))
+}
+
+func ControlBorderSpacing_StaticClassType() TClass {
+    r, _, _:= controlBorderSpacing_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TControlChildSizing ---------------------------
+
+func ControlChildSizing_Assign(obj uintptr, Source uintptr)  {
+    controlChildSizing_Assign.Call(obj, Source )
+}
+
+func ControlChildSizing_GetNamePath(obj uintptr) string {
+    ret, _, _ := controlChildSizing_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ControlChildSizing_ClassType(obj uintptr) TClass {
+    ret, _, _ := controlChildSizing_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func ControlChildSizing_ClassName(obj uintptr) string {
+    ret, _, _ := controlChildSizing_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ControlChildSizing_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := controlChildSizing_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ControlChildSizing_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := controlChildSizing_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func ControlChildSizing_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := controlChildSizing_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func ControlChildSizing_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := controlChildSizing_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func ControlChildSizing_ToString(obj uintptr) string {
+    ret, _, _ := controlChildSizing_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ControlChildSizing_GetControl(obj uintptr) uintptr {
+    ret, _, _ := controlChildSizing_GetControl.Call(obj)
+    return ret
+}
+
+func ControlChildSizing_SetOnChange(obj uintptr, fn interface{}) {
+    controlChildSizing_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func ControlChildSizing_GetLeftRightSpacing(obj uintptr) int32 {
+    ret, _, _ := controlChildSizing_GetLeftRightSpacing.Call(obj)
+    return int32(ret)
+}
+
+func ControlChildSizing_SetLeftRightSpacing(obj uintptr, value int32) {
+   controlChildSizing_SetLeftRightSpacing.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetTopBottomSpacing(obj uintptr) int32 {
+    ret, _, _ := controlChildSizing_GetTopBottomSpacing.Call(obj)
+    return int32(ret)
+}
+
+func ControlChildSizing_SetTopBottomSpacing(obj uintptr, value int32) {
+   controlChildSizing_SetTopBottomSpacing.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetHorizontalSpacing(obj uintptr) int32 {
+    ret, _, _ := controlChildSizing_GetHorizontalSpacing.Call(obj)
+    return int32(ret)
+}
+
+func ControlChildSizing_SetHorizontalSpacing(obj uintptr, value int32) {
+   controlChildSizing_SetHorizontalSpacing.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetVerticalSpacing(obj uintptr) int32 {
+    ret, _, _ := controlChildSizing_GetVerticalSpacing.Call(obj)
+    return int32(ret)
+}
+
+func ControlChildSizing_SetVerticalSpacing(obj uintptr, value int32) {
+   controlChildSizing_SetVerticalSpacing.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetEnlargeHorizontal(obj uintptr) TChildControlResizeStyle {
+    ret, _, _ := controlChildSizing_GetEnlargeHorizontal.Call(obj)
+    return TChildControlResizeStyle(ret)
+}
+
+func ControlChildSizing_SetEnlargeHorizontal(obj uintptr, value TChildControlResizeStyle) {
+   controlChildSizing_SetEnlargeHorizontal.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetEnlargeVertical(obj uintptr) TChildControlResizeStyle {
+    ret, _, _ := controlChildSizing_GetEnlargeVertical.Call(obj)
+    return TChildControlResizeStyle(ret)
+}
+
+func ControlChildSizing_SetEnlargeVertical(obj uintptr, value TChildControlResizeStyle) {
+   controlChildSizing_SetEnlargeVertical.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetShrinkHorizontal(obj uintptr) TChildControlResizeStyle {
+    ret, _, _ := controlChildSizing_GetShrinkHorizontal.Call(obj)
+    return TChildControlResizeStyle(ret)
+}
+
+func ControlChildSizing_SetShrinkHorizontal(obj uintptr, value TChildControlResizeStyle) {
+   controlChildSizing_SetShrinkHorizontal.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetShrinkVertical(obj uintptr) TChildControlResizeStyle {
+    ret, _, _ := controlChildSizing_GetShrinkVertical.Call(obj)
+    return TChildControlResizeStyle(ret)
+}
+
+func ControlChildSizing_SetShrinkVertical(obj uintptr, value TChildControlResizeStyle) {
+   controlChildSizing_SetShrinkVertical.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetLayout(obj uintptr) TControlChildrenLayout {
+    ret, _, _ := controlChildSizing_GetLayout.Call(obj)
+    return TControlChildrenLayout(ret)
+}
+
+func ControlChildSizing_SetLayout(obj uintptr, value TControlChildrenLayout) {
+   controlChildSizing_SetLayout.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_GetControlsPerLine(obj uintptr) int32 {
+    ret, _, _ := controlChildSizing_GetControlsPerLine.Call(obj)
+    return int32(ret)
+}
+
+func ControlChildSizing_SetControlsPerLine(obj uintptr, value int32) {
+   controlChildSizing_SetControlsPerLine.Call(obj, uintptr(value))
+}
+
+func ControlChildSizing_StaticClassType() TClass {
+    r, _, _:= controlChildSizing_StaticClassType.Call()
     return TClass(r)
 }

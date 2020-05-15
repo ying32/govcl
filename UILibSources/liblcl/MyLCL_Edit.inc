@@ -214,7 +214,7 @@ end;
 
 function Edit_GetTextLen(AObj: TEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Edit_SetTextBuf(AObj: TEdit; Buffer: PChar); extdecl;
@@ -270,6 +270,36 @@ end;
 function Edit_ToString(AObj: TEdit): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Edit_AnchorToNeighbour(AObj: TEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Edit_AnchorParallel(AObj: TEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Edit_AnchorHorizontalCenterTo(AObj: TEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Edit_AnchorVerticalCenterTo(AObj: TEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Edit_AnchorAsAlign(AObj: TEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Edit_AnchorClient(AObj: TEdit; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Edit_GetAlign(AObj: TEdit): TAlign; extdecl;
@@ -961,16 +991,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Edit_GetMargins(AObj: TEdit): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Edit_SetMargins(AObj: TEdit; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Edit_GetComponentCount(AObj: TEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1011,6 +1031,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Edit_GetAnchorSideLeft(AObj: TEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Edit_SetAnchorSideLeft(AObj: TEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Edit_GetAnchorSideTop(AObj: TEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Edit_SetAnchorSideTop(AObj: TEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Edit_GetAnchorSideRight(AObj: TEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Edit_SetAnchorSideRight(AObj: TEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Edit_GetAnchorSideBottom(AObj: TEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Edit_SetAnchorSideBottom(AObj: TEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Edit_GetChildSizing(AObj: TEdit): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure Edit_SetChildSizing(AObj: TEdit; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function Edit_GetBorderSpacing(AObj: TEdit): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Edit_SetBorderSpacing(AObj: TEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Edit_GetDockClients(AObj: TEdit; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -1024,6 +1104,11 @@ end;
 function Edit_GetComponents(AObj: TEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Edit_GetAnchorSide(AObj: TEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Edit_StaticClassType: TClass; extdecl;
@@ -1085,6 +1170,12 @@ exports
   Edit_Equals,
   Edit_GetHashCode,
   Edit_ToString,
+  Edit_AnchorToNeighbour,
+  Edit_AnchorParallel,
+  Edit_AnchorHorizontalCenterTo,
+  Edit_AnchorVerticalCenterTo,
+  Edit_AnchorAsAlign,
+  Edit_AnchorClient,
   Edit_GetAlign,
   Edit_SetAlign,
   Edit_GetAlignment,
@@ -1216,8 +1307,6 @@ exports
   Edit_SetCursor,
   Edit_GetHint,
   Edit_SetHint,
-  Edit_GetMargins,
-  Edit_SetMargins,
   Edit_GetComponentCount,
   Edit_GetComponentIndex,
   Edit_SetComponentIndex,
@@ -1226,8 +1315,21 @@ exports
   Edit_SetName,
   Edit_GetTag,
   Edit_SetTag,
+  Edit_GetAnchorSideLeft,
+  Edit_SetAnchorSideLeft,
+  Edit_GetAnchorSideTop,
+  Edit_SetAnchorSideTop,
+  Edit_GetAnchorSideRight,
+  Edit_SetAnchorSideRight,
+  Edit_GetAnchorSideBottom,
+  Edit_SetAnchorSideBottom,
+  Edit_GetChildSizing,
+  Edit_SetChildSizing,
+  Edit_GetBorderSpacing,
+  Edit_SetBorderSpacing,
   Edit_GetDockClients,
   Edit_GetControls,
   Edit_GetComponents,
+  Edit_GetAnchorSide,
   Edit_StaticClassType;
 

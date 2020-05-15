@@ -5,6 +5,9 @@
   {$DEFINE extdecl := cdecl}
 {$ENDIF}
 
+// 枚举都按4字节对齐
+{$Z4+}
+
 (*
    EventMethodName 实际的方法名称 TEventClass中的
    EventName 组件的方法名称

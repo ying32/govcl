@@ -184,7 +184,7 @@ end;
 
 function ScrollBar_GetTextLen(AObj: TScrollBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ScrollBar_SetTextBuf(AObj: TScrollBar; Buffer: PChar); extdecl;
@@ -240,6 +240,36 @@ end;
 function ScrollBar_ToString(AObj: TScrollBar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ScrollBar_AnchorToNeighbour(AObj: TScrollBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ScrollBar_AnchorParallel(AObj: TScrollBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ScrollBar_AnchorHorizontalCenterTo(AObj: TScrollBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ScrollBar_AnchorVerticalCenterTo(AObj: TScrollBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ScrollBar_AnchorAsAlign(AObj: TScrollBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ScrollBar_AnchorClient(AObj: TScrollBar; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ScrollBar_GetAlign(AObj: TScrollBar): TAlign; extdecl;
@@ -737,16 +767,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ScrollBar_GetMargins(AObj: TScrollBar): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ScrollBar_SetMargins(AObj: TScrollBar; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ScrollBar_GetComponentCount(AObj: TScrollBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -787,6 +807,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ScrollBar_GetAnchorSideLeft(AObj: TScrollBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ScrollBar_SetAnchorSideLeft(AObj: TScrollBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ScrollBar_GetAnchorSideTop(AObj: TScrollBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ScrollBar_SetAnchorSideTop(AObj: TScrollBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ScrollBar_GetAnchorSideRight(AObj: TScrollBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ScrollBar_SetAnchorSideRight(AObj: TScrollBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ScrollBar_GetAnchorSideBottom(AObj: TScrollBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ScrollBar_SetAnchorSideBottom(AObj: TScrollBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ScrollBar_GetChildSizing(AObj: TScrollBar): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ScrollBar_SetChildSizing(AObj: TScrollBar; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ScrollBar_GetBorderSpacing(AObj: TScrollBar): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ScrollBar_SetBorderSpacing(AObj: TScrollBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ScrollBar_GetDockClients(AObj: TScrollBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -800,6 +880,11 @@ end;
 function ScrollBar_GetComponents(AObj: TScrollBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ScrollBar_GetAnchorSide(AObj: TScrollBar; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ScrollBar_StaticClassType: TClass; extdecl;
@@ -855,6 +940,12 @@ exports
   ScrollBar_Equals,
   ScrollBar_GetHashCode,
   ScrollBar_ToString,
+  ScrollBar_AnchorToNeighbour,
+  ScrollBar_AnchorParallel,
+  ScrollBar_AnchorHorizontalCenterTo,
+  ScrollBar_AnchorVerticalCenterTo,
+  ScrollBar_AnchorAsAlign,
+  ScrollBar_AnchorClient,
   ScrollBar_GetAlign,
   ScrollBar_SetAlign,
   ScrollBar_GetAnchors,
@@ -950,8 +1041,6 @@ exports
   ScrollBar_SetCursor,
   ScrollBar_GetHint,
   ScrollBar_SetHint,
-  ScrollBar_GetMargins,
-  ScrollBar_SetMargins,
   ScrollBar_GetComponentCount,
   ScrollBar_GetComponentIndex,
   ScrollBar_SetComponentIndex,
@@ -960,8 +1049,21 @@ exports
   ScrollBar_SetName,
   ScrollBar_GetTag,
   ScrollBar_SetTag,
+  ScrollBar_GetAnchorSideLeft,
+  ScrollBar_SetAnchorSideLeft,
+  ScrollBar_GetAnchorSideTop,
+  ScrollBar_SetAnchorSideTop,
+  ScrollBar_GetAnchorSideRight,
+  ScrollBar_SetAnchorSideRight,
+  ScrollBar_GetAnchorSideBottom,
+  ScrollBar_SetAnchorSideBottom,
+  ScrollBar_GetChildSizing,
+  ScrollBar_SetChildSizing,
+  ScrollBar_GetBorderSpacing,
+  ScrollBar_SetBorderSpacing,
   ScrollBar_GetDockClients,
   ScrollBar_GetControls,
   ScrollBar_GetComponents,
+  ScrollBar_GetAnchorSide,
   ScrollBar_StaticClassType;
 

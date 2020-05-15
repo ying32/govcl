@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TRadioGroup struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewRadioGroup(owner IComponent) *TRadioGroup {
     r := new(TRadioGroup)
     r.instance = RadioGroup_Create(CheckPtr(owner))
     r.ptr = unsafe.Pointer(r.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(r, (*TRadioGroup).Free)
     return r
 }
 
@@ -57,7 +59,7 @@ func RadioGroupFromObj(obj IObject) *TRadioGroup {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsRadioGroup.
 func RadioGroupFromUnsafePointer(ptr unsafe.Pointer) *TRadioGroup {
     return AsRadioGroup(ptr)
@@ -371,6 +373,34 @@ func (r *TRadioGroup) ToString() string {
     return RadioGroup_ToString(r.instance)
 }
 
+func (r *TRadioGroup) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioGroup_AnchorToNeighbour(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRadioGroup) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioGroup_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (r *TRadioGroup) AnchorHorizontalCenterTo(ASibling IControl) {
+    RadioGroup_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (r *TRadioGroup) AnchorVerticalCenterTo(ASibling IControl) {
+    RadioGroup_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRadioGroup) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    RadioGroup_AnchorAsAlign(r.instance, ATheAlign , ASpace)
+}
+
+func (r *TRadioGroup) AnchorClient(ASpace int32) {
+    RadioGroup_AnchorClient(r.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (r *TRadioGroup) Align() TAlign {
@@ -511,10 +541,14 @@ func (r *TRadioGroup) SetItems(value IObject) {
     RadioGroup_SetItems(r.instance, CheckPtr(value))
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (r *TRadioGroup) Constraints() *TSizeConstraints {
     return AsSizeConstraints(RadioGroup_GetConstraints(r.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (r *TRadioGroup) SetConstraints(value *TSizeConstraints) {
     RadioGroup_SetConstraints(r.instance, CheckPtr(value))
 }
@@ -555,10 +589,14 @@ func (r *TRadioGroup) SetParentFont(value bool) {
     RadioGroup_SetParentFont(r.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRadioGroup) ParentShowHint() bool {
     return RadioGroup_GetParentShowHint(r.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRadioGroup) SetParentShowHint(value bool) {
     RadioGroup_SetParentShowHint(r.instance, value)
 }
@@ -893,18 +931,6 @@ func (r *TRadioGroup) SetHint(value string) {
     RadioGroup_SetHint(r.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (r *TRadioGroup) Margins() *TMargins {
-    return AsMargins(RadioGroup_GetMargins(r.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (r *TRadioGroup) SetMargins(value *TMargins) {
-    RadioGroup_SetMargins(r.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (r *TRadioGroup) ComponentCount() int32 {
@@ -953,6 +979,74 @@ func (r *TRadioGroup) SetTag(value int) {
     RadioGroup_SetTag(r.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (r *TRadioGroup) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideLeft(r.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (r *TRadioGroup) SetAnchorSideLeft(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideLeft(r.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (r *TRadioGroup) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideTop(r.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (r *TRadioGroup) SetAnchorSideTop(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideTop(r.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (r *TRadioGroup) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideRight(r.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (r *TRadioGroup) SetAnchorSideRight(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideRight(r.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (r *TRadioGroup) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSideBottom(r.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (r *TRadioGroup) SetAnchorSideBottom(value *TAnchorSide) {
+    RadioGroup_SetAnchorSideBottom(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioGroup) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(RadioGroup_GetChildSizing(r.instance))
+}
+
+func (r *TRadioGroup) SetChildSizing(value *TControlChildSizing) {
+    RadioGroup_SetChildSizing(r.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (r *TRadioGroup) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(RadioGroup_GetBorderSpacing(r.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (r *TRadioGroup) SetBorderSpacing(value *TControlBorderSpacing) {
+    RadioGroup_SetBorderSpacing(r.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRadioGroup) DockClients(Index int32) *TControl {
@@ -969,5 +1063,11 @@ func (r *TRadioGroup) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (r *TRadioGroup) Components(AIndex int32) *TComponent {
     return AsComponent(RadioGroup_GetComponents(r.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (r *TRadioGroup) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(RadioGroup_GetAnchorSide(r.instance, AKind))
 }
 

@@ -1,1 +1,0 @@
-![s1.jpg](https://raw.githubusercontent.com/ying32/govcl/dev/samples/SkinsharpTest/s1.jpg)  

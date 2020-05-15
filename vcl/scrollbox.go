@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TScrollBox struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewScrollBox(owner IComponent) *TScrollBox {
     s := new(TScrollBox)
     s.instance = ScrollBox_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(s, (*TScrollBox).Free)
     return s
 }
 
@@ -57,7 +59,7 @@ func ScrollBoxFromObj(obj IObject) *TScrollBox {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsScrollBox.
 func ScrollBoxFromUnsafePointer(ptr unsafe.Pointer) *TScrollBox {
     return AsScrollBox(ptr)
@@ -375,6 +377,34 @@ func (s *TScrollBox) ToString() string {
     return ScrollBox_ToString(s.instance)
 }
 
+func (s *TScrollBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ScrollBox_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TScrollBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ScrollBox_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (s *TScrollBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    ScrollBox_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (s *TScrollBox) AnchorVerticalCenterTo(ASibling IControl) {
+    ScrollBox_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TScrollBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ScrollBox_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TScrollBox) AnchorClient(ASpace int32) {
+    ScrollBox_AnchorClient(s.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (s *TScrollBox) Align() TAlign {
@@ -439,10 +469,14 @@ func (s *TScrollBox) SetBorderStyle(value TBorderStyle) {
     ScrollBox_SetBorderStyle(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TScrollBox) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ScrollBox_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TScrollBox) SetConstraints(value *TSizeConstraints) {
     ScrollBox_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -587,10 +621,14 @@ func (s *TScrollBox) SetParentFont(value bool) {
     ScrollBox_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TScrollBox) ParentShowHint() bool {
     return ScrollBox_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TScrollBox) SetParentShowHint(value bool) {
     ScrollBox_SetParentShowHint(s.instance, value)
 }
@@ -1005,18 +1043,6 @@ func (s *TScrollBox) SetHint(value string) {
     ScrollBox_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TScrollBox) Margins() *TMargins {
-    return AsMargins(ScrollBox_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TScrollBox) SetMargins(value *TMargins) {
-    ScrollBox_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TScrollBox) ComponentCount() int32 {
@@ -1065,6 +1091,74 @@ func (s *TScrollBox) SetTag(value int) {
     ScrollBox_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (s *TScrollBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ScrollBox_GetAnchorSideLeft(s.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (s *TScrollBox) SetAnchorSideLeft(value *TAnchorSide) {
+    ScrollBox_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (s *TScrollBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ScrollBox_GetAnchorSideTop(s.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (s *TScrollBox) SetAnchorSideTop(value *TAnchorSide) {
+    ScrollBox_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (s *TScrollBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ScrollBox_GetAnchorSideRight(s.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (s *TScrollBox) SetAnchorSideRight(value *TAnchorSide) {
+    ScrollBox_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (s *TScrollBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ScrollBox_GetAnchorSideBottom(s.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (s *TScrollBox) SetAnchorSideBottom(value *TAnchorSide) {
+    ScrollBox_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TScrollBox) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ScrollBox_GetChildSizing(s.instance))
+}
+
+func (s *TScrollBox) SetChildSizing(value *TControlChildSizing) {
+    ScrollBox_SetChildSizing(s.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (s *TScrollBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ScrollBox_GetBorderSpacing(s.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (s *TScrollBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    ScrollBox_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TScrollBox) DockClients(Index int32) *TControl {
@@ -1081,5 +1175,11 @@ func (s *TScrollBox) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (s *TScrollBox) Components(AIndex int32) *TComponent {
     return AsComponent(ScrollBox_GetComponents(s.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (s *TScrollBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ScrollBox_GetAnchorSide(s.instance, AKind))
 }
 

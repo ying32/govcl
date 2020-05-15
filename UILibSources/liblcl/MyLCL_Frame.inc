@@ -184,7 +184,7 @@ end;
 
 function Frame_GetTextLen(AObj: TFrame): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Frame_SetTextBuf(AObj: TFrame; Buffer: PChar); extdecl;
@@ -240,6 +240,36 @@ end;
 function Frame_ToString(AObj: TFrame): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Frame_AnchorToNeighbour(AObj: TFrame; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Frame_AnchorParallel(AObj: TFrame; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Frame_AnchorHorizontalCenterTo(AObj: TFrame; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Frame_AnchorVerticalCenterTo(AObj: TFrame; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Frame_AnchorAsAlign(AObj: TFrame; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Frame_AnchorClient(AObj: TFrame; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Frame_GetAlign(AObj: TFrame): TAlign; extdecl;
@@ -848,16 +878,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Frame_GetMargins(AObj: TFrame): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Frame_SetMargins(AObj: TFrame; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Frame_GetComponentCount(AObj: TFrame): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -898,6 +918,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Frame_GetAnchorSideLeft(AObj: TFrame): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Frame_SetAnchorSideLeft(AObj: TFrame; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Frame_GetAnchorSideTop(AObj: TFrame): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Frame_SetAnchorSideTop(AObj: TFrame; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Frame_GetAnchorSideRight(AObj: TFrame): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Frame_SetAnchorSideRight(AObj: TFrame; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Frame_GetAnchorSideBottom(AObj: TFrame): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Frame_SetAnchorSideBottom(AObj: TFrame; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Frame_GetChildSizing(AObj: TFrame): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure Frame_SetChildSizing(AObj: TFrame; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function Frame_GetBorderSpacing(AObj: TFrame): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Frame_SetBorderSpacing(AObj: TFrame; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Frame_GetDockClients(AObj: TFrame; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -911,6 +991,11 @@ end;
 function Frame_GetComponents(AObj: TFrame; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Frame_GetAnchorSide(AObj: TFrame; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Frame_StaticClassType: TClass; extdecl;
@@ -966,6 +1051,12 @@ exports
   Frame_Equals,
   Frame_GetHashCode,
   Frame_ToString,
+  Frame_AnchorToNeighbour,
+  Frame_AnchorParallel,
+  Frame_AnchorHorizontalCenterTo,
+  Frame_AnchorVerticalCenterTo,
+  Frame_AnchorAsAlign,
+  Frame_AnchorClient,
   Frame_GetAlign,
   Frame_SetAlign,
   Frame_GetAnchors,
@@ -1078,8 +1169,6 @@ exports
   Frame_SetCursor,
   Frame_GetHint,
   Frame_SetHint,
-  Frame_GetMargins,
-  Frame_SetMargins,
   Frame_GetComponentCount,
   Frame_GetComponentIndex,
   Frame_SetComponentIndex,
@@ -1088,8 +1177,21 @@ exports
   Frame_SetName,
   Frame_GetTag,
   Frame_SetTag,
+  Frame_GetAnchorSideLeft,
+  Frame_SetAnchorSideLeft,
+  Frame_GetAnchorSideTop,
+  Frame_SetAnchorSideTop,
+  Frame_GetAnchorSideRight,
+  Frame_SetAnchorSideRight,
+  Frame_GetAnchorSideBottom,
+  Frame_SetAnchorSideBottom,
+  Frame_GetChildSizing,
+  Frame_SetChildSizing,
+  Frame_GetBorderSpacing,
+  Frame_SetBorderSpacing,
   Frame_GetDockClients,
   Frame_GetControls,
   Frame_GetComponents,
+  Frame_GetAnchorSide,
   Frame_StaticClassType;
 

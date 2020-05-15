@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TEdit struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewEdit(owner IComponent) *TEdit {
     e := new(TEdit)
     e.instance = Edit_Create(CheckPtr(owner))
     e.ptr = unsafe.Pointer(e.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(e, (*TEdit).Free)
     return e
 }
 
@@ -57,7 +59,7 @@ func EditFromObj(obj IObject) *TEdit {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsEdit.
 func EditFromUnsafePointer(ptr unsafe.Pointer) *TEdit {
     return AsEdit(ptr)
@@ -413,6 +415,34 @@ func (e *TEdit) ToString() string {
     return Edit_ToString(e.instance)
 }
 
+func (e *TEdit) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Edit_AnchorToNeighbour(e.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (e *TEdit) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Edit_AnchorParallel(e.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (e *TEdit) AnchorHorizontalCenterTo(ASibling IControl) {
+    Edit_AnchorHorizontalCenterTo(e.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (e *TEdit) AnchorVerticalCenterTo(ASibling IControl) {
+    Edit_AnchorVerticalCenterTo(e.instance, CheckPtr(ASibling))
+}
+
+func (e *TEdit) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Edit_AnchorAsAlign(e.instance, ATheAlign , ASpace)
+}
+
+func (e *TEdit) AnchorClient(ASpace int32) {
+    Edit_AnchorClient(e.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (e *TEdit) Align() TAlign {
@@ -513,10 +543,14 @@ func (e *TEdit) SetColor(value TColor) {
     Edit_SetColor(e.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (e *TEdit) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Edit_GetConstraints(e.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (e *TEdit) SetConstraints(value *TSizeConstraints) {
     Edit_SetConstraints(e.instance, CheckPtr(value))
 }
@@ -665,10 +699,14 @@ func (e *TEdit) SetParentFont(value bool) {
     Edit_SetParentFont(e.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (e *TEdit) ParentShowHint() bool {
     return Edit_GetParentShowHint(e.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (e *TEdit) SetParentShowHint(value bool) {
     Edit_SetParentShowHint(e.instance, value)
 }
@@ -1175,18 +1213,6 @@ func (e *TEdit) SetHint(value string) {
     Edit_SetHint(e.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (e *TEdit) Margins() *TMargins {
-    return AsMargins(Edit_GetMargins(e.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (e *TEdit) SetMargins(value *TMargins) {
-    Edit_SetMargins(e.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (e *TEdit) ComponentCount() int32 {
@@ -1235,6 +1261,74 @@ func (e *TEdit) SetTag(value int) {
     Edit_SetTag(e.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (e *TEdit) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Edit_GetAnchorSideLeft(e.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (e *TEdit) SetAnchorSideLeft(value *TAnchorSide) {
+    Edit_SetAnchorSideLeft(e.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (e *TEdit) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Edit_GetAnchorSideTop(e.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (e *TEdit) SetAnchorSideTop(value *TAnchorSide) {
+    Edit_SetAnchorSideTop(e.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (e *TEdit) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Edit_GetAnchorSideRight(e.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (e *TEdit) SetAnchorSideRight(value *TAnchorSide) {
+    Edit_SetAnchorSideRight(e.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (e *TEdit) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Edit_GetAnchorSideBottom(e.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (e *TEdit) SetAnchorSideBottom(value *TAnchorSide) {
+    Edit_SetAnchorSideBottom(e.instance, CheckPtr(value))
+}
+
+func (e *TEdit) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(Edit_GetChildSizing(e.instance))
+}
+
+func (e *TEdit) SetChildSizing(value *TControlChildSizing) {
+    Edit_SetChildSizing(e.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (e *TEdit) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Edit_GetBorderSpacing(e.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (e *TEdit) SetBorderSpacing(value *TControlBorderSpacing) {
+    Edit_SetBorderSpacing(e.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (e *TEdit) DockClients(Index int32) *TControl {
@@ -1251,5 +1345,11 @@ func (e *TEdit) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (e *TEdit) Components(AIndex int32) *TComponent {
     return AsComponent(Edit_GetComponents(e.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (e *TEdit) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Edit_GetAnchorSide(e.instance, AKind))
 }
 

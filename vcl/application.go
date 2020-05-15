@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TApplication struct {
     IComponent
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewApplication(owner IComponent) *TApplication {
     a := new(TApplication)
     a.instance = Application_Create(CheckPtr(owner))
     a.ptr = unsafe.Pointer(a.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(a, (*TApplication).Free)
     return a
 }
 
@@ -57,7 +59,7 @@ func ApplicationFromObj(obj IObject) *TApplication {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsApplication.
 func ApplicationFromUnsafePointer(ptr unsafe.Pointer) *TApplication {
     return AsApplication(ptr)
@@ -247,6 +249,14 @@ func (a *TApplication) GetHashCode() int32 {
 // EN: Text information.
 func (a *TApplication) ToString() string {
     return Application_ToString(a.instance)
+}
+
+func (a *TApplication) Scaled() bool {
+    return Application_GetScaled(a.instance)
+}
+
+func (a *TApplication) SetScaled(value bool) {
+    Application_SetScaled(a.instance, value)
 }
 
 // CN: 获取当前exe文件名，包含全路径。

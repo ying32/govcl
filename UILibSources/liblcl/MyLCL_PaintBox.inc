@@ -104,7 +104,7 @@ end;
 
 function PaintBox_GetTextLen(AObj: TPaintBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure PaintBox_SetTextBuf(AObj: TPaintBox; Buffer: PChar); extdecl;
@@ -160,6 +160,36 @@ end;
 function PaintBox_ToString(AObj: TPaintBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure PaintBox_AnchorToNeighbour(AObj: TPaintBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure PaintBox_AnchorParallel(AObj: TPaintBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure PaintBox_AnchorHorizontalCenterTo(AObj: TPaintBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure PaintBox_AnchorVerticalCenterTo(AObj: TPaintBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure PaintBox_AnchorAsAlign(AObj: TPaintBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure PaintBox_AnchorClient(AObj: TPaintBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function PaintBox_GetCanvas(AObj: TPaintBox): TCanvas; extdecl;
@@ -539,16 +569,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function PaintBox_GetMargins(AObj: TPaintBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure PaintBox_SetMargins(AObj: TPaintBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function PaintBox_GetComponentCount(AObj: TPaintBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -589,9 +609,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function PaintBox_GetAnchorSideLeft(AObj: TPaintBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure PaintBox_SetAnchorSideLeft(AObj: TPaintBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function PaintBox_GetAnchorSideTop(AObj: TPaintBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure PaintBox_SetAnchorSideTop(AObj: TPaintBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function PaintBox_GetAnchorSideRight(AObj: TPaintBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure PaintBox_SetAnchorSideRight(AObj: TPaintBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function PaintBox_GetAnchorSideBottom(AObj: TPaintBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure PaintBox_SetAnchorSideBottom(AObj: TPaintBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function PaintBox_GetBorderSpacing(AObj: TPaintBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure PaintBox_SetBorderSpacing(AObj: TPaintBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function PaintBox_GetComponents(AObj: TPaintBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function PaintBox_GetAnchorSide(AObj: TPaintBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function PaintBox_StaticClassType: TClass; extdecl;
@@ -631,6 +706,12 @@ exports
   PaintBox_Equals,
   PaintBox_GetHashCode,
   PaintBox_ToString,
+  PaintBox_AnchorToNeighbour,
+  PaintBox_AnchorParallel,
+  PaintBox_AnchorHorizontalCenterTo,
+  PaintBox_AnchorVerticalCenterTo,
+  PaintBox_AnchorAsAlign,
+  PaintBox_AnchorClient,
   PaintBox_GetCanvas,
   PaintBox_GetAlign,
   PaintBox_SetAlign,
@@ -702,8 +783,6 @@ exports
   PaintBox_SetCursor,
   PaintBox_GetHint,
   PaintBox_SetHint,
-  PaintBox_GetMargins,
-  PaintBox_SetMargins,
   PaintBox_GetComponentCount,
   PaintBox_GetComponentIndex,
   PaintBox_SetComponentIndex,
@@ -712,6 +791,17 @@ exports
   PaintBox_SetName,
   PaintBox_GetTag,
   PaintBox_SetTag,
+  PaintBox_GetAnchorSideLeft,
+  PaintBox_SetAnchorSideLeft,
+  PaintBox_GetAnchorSideTop,
+  PaintBox_SetAnchorSideTop,
+  PaintBox_GetAnchorSideRight,
+  PaintBox_SetAnchorSideRight,
+  PaintBox_GetAnchorSideBottom,
+  PaintBox_SetAnchorSideBottom,
+  PaintBox_GetBorderSpacing,
+  PaintBox_SetBorderSpacing,
   PaintBox_GetComponents,
+  PaintBox_GetAnchorSide,
   PaintBox_StaticClassType;
 

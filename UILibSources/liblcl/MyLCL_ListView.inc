@@ -219,7 +219,7 @@ end;
 
 function ListView_GetTextLen(AObj: TListView): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ListView_SetTextBuf(AObj: TListView; Buffer: PChar); extdecl;
@@ -275,6 +275,136 @@ end;
 function ListView_ToString(AObj: TListView): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ListView_AnchorToNeighbour(AObj: TListView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ListView_AnchorParallel(AObj: TListView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ListView_AnchorHorizontalCenterTo(AObj: TListView; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ListView_AnchorVerticalCenterTo(AObj: TListView; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ListView_AnchorAsAlign(AObj: TListView; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ListView_AnchorClient(AObj: TListView; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
+function ListView_GetAutoSort(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSort;
+end;
+
+procedure ListView_SetAutoSort(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSort := AValue;
+end;
+
+function ListView_GetAutoSortIndicator(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoSortIndicator;
+end;
+
+procedure ListView_SetAutoSortIndicator(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.AutoSortIndicator := AValue;
+end;
+
+function ListView_GetAutoWidthLastColumn(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.AutoWidthLastColumn;
+end;
+
+procedure ListView_SetAutoWidthLastColumn(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.AutoWidthLastColumn := AValue;
+end;
+
+function ListView_GetSmallImagesWidth(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.SmallImagesWidth;
+end;
+
+procedure ListView_SetSmallImagesWidth(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.SmallImagesWidth := AValue;
+end;
+
+function ListView_GetSortColumn(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.SortColumn;
+end;
+
+procedure ListView_SetSortColumn(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.SortColumn := AValue;
+end;
+
+function ListView_GetSortDirection(AObj: TListView): TSortDirection; extdecl;
+begin
+  Result :=  AObj.SortDirection;
+end;
+
+procedure ListView_SetSortDirection(AObj: TListView; AValue: TSortDirection); extdecl;
+begin
+  AObj.SortDirection := AValue;
+end;
+
+function ListView_GetLargeImagesWidth(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.LargeImagesWidth;
+end;
+
+procedure ListView_SetLargeImagesWidth(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.LargeImagesWidth := AValue;
+end;
+
+function ListView_GetStateImagesWidth(AObj: TListView): Integer; extdecl;
+begin
+  Result :=  AObj.StateImagesWidth;
+end;
+
+procedure ListView_SetStateImagesWidth(AObj: TListView; AValue: Integer); extdecl;
+begin
+  AObj.StateImagesWidth := AValue;
+end;
+
+function ListView_GetToolTips(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.ToolTips;
+end;
+
+procedure ListView_SetToolTips(AObj: TListView; AValue: LongBool); extdecl;
+begin
+  AObj.ToolTips := AValue;
+end;
+
+function ListView_GetScrollBars(AObj: TListView): TScrollStyle; extdecl;
+begin
+  Result :=  AObj.ScrollBars;
+end;
+
+procedure ListView_SetScrollBars(AObj: TListView; AValue: TScrollStyle); extdecl;
+begin
+  AObj.ScrollBars := AValue;
 end;
 
 function ListView_GetAction(AObj: TListView): TBasicAction; extdecl;
@@ -1231,16 +1361,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ListView_GetMargins(AObj: TListView): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ListView_SetMargins(AObj: TListView; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ListView_GetComponentCount(AObj: TListView): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1281,6 +1401,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ListView_GetAnchorSideLeft(AObj: TListView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ListView_SetAnchorSideLeft(AObj: TListView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ListView_GetAnchorSideTop(AObj: TListView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ListView_SetAnchorSideTop(AObj: TListView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ListView_GetAnchorSideRight(AObj: TListView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ListView_SetAnchorSideRight(AObj: TListView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ListView_GetAnchorSideBottom(AObj: TListView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ListView_SetAnchorSideBottom(AObj: TListView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ListView_GetChildSizing(AObj: TListView): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ListView_SetChildSizing(AObj: TListView; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ListView_GetBorderSpacing(AObj: TListView): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ListView_SetBorderSpacing(AObj: TListView; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ListView_GetColumn(AObj: TListView; Index: Integer): TListColumn; extdecl;
 begin
   Result :=  AObj.Column[Index];
@@ -1299,6 +1479,11 @@ end;
 function ListView_GetComponents(AObj: TListView; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ListView_GetAnchorSide(AObj: TListView; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ListView_StaticClassType: TClass; extdecl;
@@ -1361,6 +1546,32 @@ exports
   ListView_Equals,
   ListView_GetHashCode,
   ListView_ToString,
+  ListView_AnchorToNeighbour,
+  ListView_AnchorParallel,
+  ListView_AnchorHorizontalCenterTo,
+  ListView_AnchorVerticalCenterTo,
+  ListView_AnchorAsAlign,
+  ListView_AnchorClient,
+  ListView_GetAutoSort,
+  ListView_SetAutoSort,
+  ListView_GetAutoSortIndicator,
+  ListView_SetAutoSortIndicator,
+  ListView_GetAutoWidthLastColumn,
+  ListView_SetAutoWidthLastColumn,
+  ListView_GetSmallImagesWidth,
+  ListView_SetSmallImagesWidth,
+  ListView_GetSortColumn,
+  ListView_SetSortColumn,
+  ListView_GetSortDirection,
+  ListView_SetSortDirection,
+  ListView_GetLargeImagesWidth,
+  ListView_SetLargeImagesWidth,
+  ListView_GetStateImagesWidth,
+  ListView_SetStateImagesWidth,
+  ListView_GetToolTips,
+  ListView_SetToolTips,
+  ListView_GetScrollBars,
+  ListView_SetScrollBars,
   ListView_GetAction,
   ListView_SetAction,
   ListView_GetAlign,
@@ -1537,8 +1748,6 @@ exports
   ListView_SetCursor,
   ListView_GetHint,
   ListView_SetHint,
-  ListView_GetMargins,
-  ListView_SetMargins,
   ListView_GetComponentCount,
   ListView_GetComponentIndex,
   ListView_SetComponentIndex,
@@ -1547,9 +1756,22 @@ exports
   ListView_SetName,
   ListView_GetTag,
   ListView_SetTag,
+  ListView_GetAnchorSideLeft,
+  ListView_SetAnchorSideLeft,
+  ListView_GetAnchorSideTop,
+  ListView_SetAnchorSideTop,
+  ListView_GetAnchorSideRight,
+  ListView_SetAnchorSideRight,
+  ListView_GetAnchorSideBottom,
+  ListView_SetAnchorSideBottom,
+  ListView_GetChildSizing,
+  ListView_SetChildSizing,
+  ListView_GetBorderSpacing,
+  ListView_SetBorderSpacing,
   ListView_GetColumn,
   ListView_GetDockClients,
   ListView_GetControls,
   ListView_GetComponents,
+  ListView_GetAnchorSide,
   ListView_StaticClassType;
 

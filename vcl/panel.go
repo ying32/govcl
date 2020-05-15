@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TPanel struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewPanel(owner IComponent) *TPanel {
     p := new(TPanel)
     p.instance = Panel_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(p, (*TPanel).Free)
     return p
 }
 
@@ -57,7 +59,7 @@ func PanelFromObj(obj IObject) *TPanel {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsPanel.
 func PanelFromUnsafePointer(ptr unsafe.Pointer) *TPanel {
     return AsPanel(ptr)
@@ -371,6 +373,34 @@ func (p *TPanel) ToString() string {
     return Panel_ToString(p.instance)
 }
 
+func (p *TPanel) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Panel_AnchorToNeighbour(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (p *TPanel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Panel_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (p *TPanel) AnchorHorizontalCenterTo(ASibling IControl) {
+    Panel_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (p *TPanel) AnchorVerticalCenterTo(ASibling IControl) {
+    Panel_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+func (p *TPanel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Panel_AnchorAsAlign(p.instance, ATheAlign , ASpace)
+}
+
+func (p *TPanel) AnchorClient(ASpace int32) {
+    Panel_AnchorClient(p.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (p *TPanel) Align() TAlign {
@@ -491,10 +521,14 @@ func (p *TPanel) SetColor(value TColor) {
     Panel_SetColor(p.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (p *TPanel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Panel_GetConstraints(p.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (p *TPanel) SetConstraints(value *TSizeConstraints) {
     Panel_SetConstraints(p.instance, CheckPtr(value))
 }
@@ -647,10 +681,14 @@ func (p *TPanel) SetParentFont(value bool) {
     Panel_SetParentFont(p.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPanel) ParentShowHint() bool {
     return Panel_GetParentShowHint(p.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (p *TPanel) SetParentShowHint(value bool) {
     Panel_SetParentShowHint(p.instance, value)
 }
@@ -1037,18 +1075,6 @@ func (p *TPanel) SetHint(value string) {
     Panel_SetHint(p.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (p *TPanel) Margins() *TMargins {
-    return AsMargins(Panel_GetMargins(p.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (p *TPanel) SetMargins(value *TMargins) {
-    Panel_SetMargins(p.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (p *TPanel) ComponentCount() int32 {
@@ -1097,6 +1123,74 @@ func (p *TPanel) SetTag(value int) {
     Panel_SetTag(p.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (p *TPanel) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Panel_GetAnchorSideLeft(p.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (p *TPanel) SetAnchorSideLeft(value *TAnchorSide) {
+    Panel_SetAnchorSideLeft(p.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (p *TPanel) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Panel_GetAnchorSideTop(p.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (p *TPanel) SetAnchorSideTop(value *TAnchorSide) {
+    Panel_SetAnchorSideTop(p.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (p *TPanel) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Panel_GetAnchorSideRight(p.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (p *TPanel) SetAnchorSideRight(value *TAnchorSide) {
+    Panel_SetAnchorSideRight(p.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (p *TPanel) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Panel_GetAnchorSideBottom(p.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (p *TPanel) SetAnchorSideBottom(value *TAnchorSide) {
+    Panel_SetAnchorSideBottom(p.instance, CheckPtr(value))
+}
+
+func (p *TPanel) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(Panel_GetChildSizing(p.instance))
+}
+
+func (p *TPanel) SetChildSizing(value *TControlChildSizing) {
+    Panel_SetChildSizing(p.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (p *TPanel) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Panel_GetBorderSpacing(p.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (p *TPanel) SetBorderSpacing(value *TControlBorderSpacing) {
+    Panel_SetBorderSpacing(p.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (p *TPanel) DockClients(Index int32) *TControl {
@@ -1113,5 +1207,11 @@ func (p *TPanel) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (p *TPanel) Components(AIndex int32) *TComponent {
     return AsComponent(Panel_GetComponents(p.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (p *TPanel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Panel_GetAnchorSide(p.instance, AKind))
 }
 

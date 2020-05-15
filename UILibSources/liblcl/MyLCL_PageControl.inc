@@ -189,7 +189,7 @@ end;
 
 function PageControl_GetTextLen(AObj: TPageControl): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure PageControl_SetTextBuf(AObj: TPageControl; Buffer: PChar); extdecl;
@@ -245,6 +245,46 @@ end;
 function PageControl_ToString(AObj: TPageControl): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure PageControl_AnchorToNeighbour(AObj: TPageControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure PageControl_AnchorParallel(AObj: TPageControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure PageControl_AnchorHorizontalCenterTo(AObj: TPageControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure PageControl_AnchorVerticalCenterTo(AObj: TPageControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure PageControl_AnchorAsAlign(AObj: TPageControl; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure PageControl_AnchorClient(AObj: TPageControl; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
+function PageControl_GetOptions(AObj: TPageControl): TCTabControlOptions; extdecl;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure PageControl_SetOptions(AObj: TPageControl; AValue: TCTabControlOptions); extdecl;
+begin
+  AObj.Options := AValue;
 end;
 
 function PageControl_GetActivePageIndex(AObj: TPageControl): Integer; extdecl;
@@ -840,16 +880,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function PageControl_GetMargins(AObj: TPageControl): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure PageControl_SetMargins(AObj: TPageControl; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function PageControl_GetComponentCount(AObj: TPageControl): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -890,6 +920,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function PageControl_GetAnchorSideLeft(AObj: TPageControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure PageControl_SetAnchorSideLeft(AObj: TPageControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function PageControl_GetAnchorSideTop(AObj: TPageControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure PageControl_SetAnchorSideTop(AObj: TPageControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function PageControl_GetAnchorSideRight(AObj: TPageControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure PageControl_SetAnchorSideRight(AObj: TPageControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function PageControl_GetAnchorSideBottom(AObj: TPageControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure PageControl_SetAnchorSideBottom(AObj: TPageControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function PageControl_GetChildSizing(AObj: TPageControl): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure PageControl_SetChildSizing(AObj: TPageControl; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function PageControl_GetBorderSpacing(AObj: TPageControl): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure PageControl_SetBorderSpacing(AObj: TPageControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function PageControl_GetPages(AObj: TPageControl; Index: Integer): TTabSheet; extdecl;
 begin
   Result :=  AObj.Pages[Index];
@@ -908,6 +998,11 @@ end;
 function PageControl_GetComponents(AObj: TPageControl; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function PageControl_GetAnchorSide(AObj: TPageControl; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function PageControl_StaticClassType: TClass; extdecl;
@@ -964,6 +1059,14 @@ exports
   PageControl_Equals,
   PageControl_GetHashCode,
   PageControl_ToString,
+  PageControl_AnchorToNeighbour,
+  PageControl_AnchorParallel,
+  PageControl_AnchorHorizontalCenterTo,
+  PageControl_AnchorVerticalCenterTo,
+  PageControl_AnchorAsAlign,
+  PageControl_AnchorClient,
+  PageControl_GetOptions,
+  PageControl_SetOptions,
   PageControl_GetActivePageIndex,
   PageControl_SetActivePageIndex,
   PageControl_GetPageCount,
@@ -1075,8 +1178,6 @@ exports
   PageControl_SetCursor,
   PageControl_GetHint,
   PageControl_SetHint,
-  PageControl_GetMargins,
-  PageControl_SetMargins,
   PageControl_GetComponentCount,
   PageControl_GetComponentIndex,
   PageControl_SetComponentIndex,
@@ -1085,9 +1186,22 @@ exports
   PageControl_SetName,
   PageControl_GetTag,
   PageControl_SetTag,
+  PageControl_GetAnchorSideLeft,
+  PageControl_SetAnchorSideLeft,
+  PageControl_GetAnchorSideTop,
+  PageControl_SetAnchorSideTop,
+  PageControl_GetAnchorSideRight,
+  PageControl_SetAnchorSideRight,
+  PageControl_GetAnchorSideBottom,
+  PageControl_SetAnchorSideBottom,
+  PageControl_GetChildSizing,
+  PageControl_SetChildSizing,
+  PageControl_GetBorderSpacing,
+  PageControl_SetBorderSpacing,
   PageControl_GetPages,
   PageControl_GetDockClients,
   PageControl_GetControls,
   PageControl_GetComponents,
+  PageControl_GetAnchorSide,
   PageControl_StaticClassType;
 

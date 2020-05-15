@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TBoundLabel struct {
     IControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewBoundLabel(owner IComponent) *TBoundLabel {
     b := new(TBoundLabel)
     b.instance = BoundLabel_Create(CheckPtr(owner))
     b.ptr = unsafe.Pointer(b.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(b, (*TBoundLabel).Free)
     return b
 }
 
@@ -57,7 +59,7 @@ func BoundLabelFromObj(obj IObject) *TBoundLabel {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsBoundLabel.
 func BoundLabelFromUnsafePointer(ptr unsafe.Pointer) *TBoundLabel {
     return AsBoundLabel(ptr)
@@ -283,6 +285,34 @@ func (b *TBoundLabel) ToString() string {
     return BoundLabel_ToString(b.instance)
 }
 
+func (b *TBoundLabel) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    BoundLabel_AnchorToNeighbour(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TBoundLabel) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    BoundLabel_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (b *TBoundLabel) AnchorHorizontalCenterTo(ASibling IControl) {
+    BoundLabel_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (b *TBoundLabel) AnchorVerticalCenterTo(ASibling IControl) {
+    BoundLabel_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TBoundLabel) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    BoundLabel_AnchorAsAlign(b.instance, ATheAlign , ASpace)
+}
+
+func (b *TBoundLabel) AnchorClient(ASpace int32) {
+    BoundLabel_AnchorClient(b.instance, ASpace)
+}
+
 func (b *TBoundLabel) BiDiMode() TBiDiMode {
     return BoundLabel_GetBiDiMode(b.instance)
 }
@@ -393,10 +423,14 @@ func (b *TBoundLabel) SetParentFont(value bool) {
     BoundLabel_SetParentFont(b.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBoundLabel) ParentShowHint() bool {
     return BoundLabel_GetParentShowHint(b.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBoundLabel) SetParentShowHint(value bool) {
     BoundLabel_SetParentShowHint(b.instance, value)
 }
@@ -611,10 +645,14 @@ func (b *TBoundLabel) SetClientWidth(value int32) {
     BoundLabel_SetClientWidth(b.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (b *TBoundLabel) Constraints() *TSizeConstraints {
     return AsSizeConstraints(BoundLabel_GetConstraints(b.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (b *TBoundLabel) SetConstraints(value *TSizeConstraints) {
     BoundLabel_SetConstraints(b.instance, CheckPtr(value))
 }
@@ -695,18 +733,6 @@ func (b *TBoundLabel) SetHint(value string) {
     BoundLabel_SetHint(b.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (b *TBoundLabel) Margins() *TMargins {
-    return AsMargins(BoundLabel_GetMargins(b.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (b *TBoundLabel) SetMargins(value *TMargins) {
-    BoundLabel_SetMargins(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TBoundLabel) ComponentCount() int32 {
@@ -755,9 +781,75 @@ func (b *TBoundLabel) SetTag(value int) {
     BoundLabel_SetTag(b.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (b *TBoundLabel) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(BoundLabel_GetAnchorSideLeft(b.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (b *TBoundLabel) SetAnchorSideLeft(value *TAnchorSide) {
+    BoundLabel_SetAnchorSideLeft(b.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (b *TBoundLabel) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(BoundLabel_GetAnchorSideTop(b.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (b *TBoundLabel) SetAnchorSideTop(value *TAnchorSide) {
+    BoundLabel_SetAnchorSideTop(b.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (b *TBoundLabel) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(BoundLabel_GetAnchorSideRight(b.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (b *TBoundLabel) SetAnchorSideRight(value *TAnchorSide) {
+    BoundLabel_SetAnchorSideRight(b.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (b *TBoundLabel) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(BoundLabel_GetAnchorSideBottom(b.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (b *TBoundLabel) SetAnchorSideBottom(value *TAnchorSide) {
+    BoundLabel_SetAnchorSideBottom(b.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (b *TBoundLabel) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(BoundLabel_GetBorderSpacing(b.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (b *TBoundLabel) SetBorderSpacing(value *TControlBorderSpacing) {
+    BoundLabel_SetBorderSpacing(b.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (b *TBoundLabel) Components(AIndex int32) *TComponent {
     return AsComponent(BoundLabel_GetComponents(b.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (b *TBoundLabel) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(BoundLabel_GetAnchorSide(b.instance, AKind))
 }
 

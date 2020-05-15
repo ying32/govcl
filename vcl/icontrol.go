@@ -82,25 +82,27 @@ type IControl interface {
 
 	SetTextBuf(string)
 
-	//AlignWithMargins() bool
-	//SetAlignWithMargins(bool)
-
-	Margins() *TMargins
-	SetMargins(*TMargins)
-
 	PopupMenu() *TPopupMenu
 	SetPopupMenu(IComponent)
 
 	Font() *TFont
 	SetFont(*TFont)
 
-	//SetCustomHint(IComponent)
+	AnchorToNeighbour(TAnchorKind, int32, IControl)
+	AnchorParallel(TAnchorKind, int32, IControl)
+	AnchorHorizontalCenterTo(IControl)
+	AnchorVerticalCenterTo(IControl)
+	AnchorSame(TAnchorKind, IControl)
+	AnchorAsAlign(TAlign, int32)
+	AnchorClient(int32)
 
-	//ParentCustomHint() bool
-	//SetParentCustomHint(bool)
+	AnchorSide(TAnchorKind) *TAnchorSide
+	AnchorSideLeft() *TAnchorSide
+	AnchorSideTop() *TAnchorSide
+	AnchorSideRight() *TAnchorSide
+	AnchorSideBottom() *TAnchorSide
 
-	//StyleElements() TStyleElements
-	//SetStyleElements(TStyleElements)
+	BorderSpacing() *TControlBorderSpacing
 
 	Floating() bool
 	SetFloating(bool)
@@ -114,9 +116,9 @@ type IControl interface {
 	ControlState() TControlState
 	SetControlState(TControlState)
 
-	// ---------------------事件
-
 	ScreenToClient(Point TPoint) TPoint
 	ParentToClient(Point TPoint, AParent IWinControl) TPoint
+
+	// ---------------------事件
 	//SetOnClick(TNotifyEvent)
 }

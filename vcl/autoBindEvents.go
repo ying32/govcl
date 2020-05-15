@@ -176,27 +176,28 @@ func autoBindEvents(vForm reflect.Value, root IComponent, subComponentsEvent, af
 	callEvent(doCreate, []reflect.Value{vForm})
 
 	// 设定了之后绑定子组件事件并且之前没有指定要绑定子组件事件
-	if afterBindSubComponentsEvents && !subComponentsEvent {
-		// 因为手动创建的组件没有名称，所以这里设置下，名称在当前TForm必须是唯一的
-		for i := 0; i < vt.Elem().NumField(); i++ {
-			field := vt.Elem().Field(i)
-			if field.Type.Kind() != reflect.Ptr || field.Anonymous ||
-				!strings.Contains(field.Type.String(), ".T") {
-				continue
-			}
-			// 检测首字母是否大写
-			if len(field.Name) >= 1 {
-				// 首字母不为A-Z之间的则排除。
-				if c := field.Name[0]; !(c >= 'A' && c <= 'Z') {
-					continue
-				}
-			}
-			if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
-				findAndSetComponentName(vCtl, field.Name)
-			}
-		}
-		bindSubComponentsEvents()
-	}
+	// 会造成冲突，先禁用吧
+	//if afterBindSubComponentsEvents && !subComponentsEvent {
+	//	// 因为手动创建的组件没有名称，所以这里设置下，名称在当前TForm必须是唯一的
+	//	for i := 0; i < vt.Elem().NumField(); i++ {
+	//		field := vt.Elem().Field(i)
+	//		if field.Type.Kind() != reflect.Ptr || field.Anonymous ||
+	//			!strings.Contains(field.Type.String(), ".T") {
+	//			continue
+	//		}
+	//		// 检测首字母是否大写
+	//		if len(field.Name) >= 1 {
+	//			// 首字母不为A-Z之间的则排除。
+	//			if c := field.Name[0]; !(c >= 'A' && c <= 'Z') {
+	//				continue
+	//			}
+	//		}
+	//		if vCtl := vForm.Elem().Field(i); vCtl.IsValid() {
+	//			findAndSetComponentName(vCtl, field.Name, true)
+	//		}
+	//	}
+	//	bindSubComponentsEvents()
+	//}
 }
 
 // callEvent 调用事件。
@@ -240,7 +241,7 @@ func findAndSetEvent(v reflect.Value, name, eventType string, method eventMethod
 }
 
 // findAndSetComponentName 查找并设置组件名称
-func findAndSetComponentName(v reflect.Value, name string) {
+func findAndSetComponentName(v reflect.Value, name string, clearDefault bool) {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println("Calling findAndSetComponentName exception:", err)
@@ -251,6 +252,11 @@ func findAndSetComponentName(v reflect.Value, name string) {
 	}
 	if setName := v.MethodByName("SetName"); setName.IsValid() {
 		setName.Call([]reflect.Value{reflect.ValueOf(name)})
+		if clearDefault {
+			if setText := v.MethodByName("SetText"); setText.IsValid() {
+				setText.Call([]reflect.Value{reflect.ValueOf("")})
+			}
+		}
 	}
 }
 

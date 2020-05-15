@@ -13,7 +13,7 @@ package vcl
 
 import (
     "time"
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -21,7 +21,7 @@ import (
 type TMonthCalendar struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -31,6 +31,8 @@ func NewMonthCalendar(owner IComponent) *TMonthCalendar {
     m := new(TMonthCalendar)
     m.instance = MonthCalendar_Create(CheckPtr(owner))
     m.ptr = unsafe.Pointer(m.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(m, (*TMonthCalendar).Free)
     return m
 }
 
@@ -58,7 +60,7 @@ func MonthCalendarFromObj(obj IObject) *TMonthCalendar {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsMonthCalendar.
 func MonthCalendarFromUnsafePointer(ptr unsafe.Pointer) *TMonthCalendar {
     return AsMonthCalendar(ptr)
@@ -372,6 +374,34 @@ func (m *TMonthCalendar) ToString() string {
     return MonthCalendar_ToString(m.instance)
 }
 
+func (m *TMonthCalendar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MonthCalendar_AnchorToNeighbour(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (m *TMonthCalendar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    MonthCalendar_AnchorParallel(m.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (m *TMonthCalendar) AnchorHorizontalCenterTo(ASibling IControl) {
+    MonthCalendar_AnchorHorizontalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (m *TMonthCalendar) AnchorVerticalCenterTo(ASibling IControl) {
+    MonthCalendar_AnchorVerticalCenterTo(m.instance, CheckPtr(ASibling))
+}
+
+func (m *TMonthCalendar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    MonthCalendar_AnchorAsAlign(m.instance, ATheAlign , ASpace)
+}
+
+func (m *TMonthCalendar) AnchorClient(ASpace int32) {
+    MonthCalendar_AnchorClient(m.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (m *TMonthCalendar) Align() TAlign {
@@ -428,10 +458,14 @@ func (m *TMonthCalendar) SetBiDiMode(value TBiDiMode) {
     MonthCalendar_SetBiDiMode(m.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (m *TMonthCalendar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(MonthCalendar_GetConstraints(m.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (m *TMonthCalendar) SetConstraints(value *TSizeConstraints) {
     MonthCalendar_SetConstraints(m.instance, CheckPtr(value))
 }
@@ -910,18 +944,6 @@ func (m *TMonthCalendar) SetHint(value string) {
     MonthCalendar_SetHint(m.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (m *TMonthCalendar) Margins() *TMargins {
-    return AsMargins(MonthCalendar_GetMargins(m.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (m *TMonthCalendar) SetMargins(value *TMargins) {
-    MonthCalendar_SetMargins(m.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (m *TMonthCalendar) ComponentCount() int32 {
@@ -970,6 +992,74 @@ func (m *TMonthCalendar) SetTag(value int) {
     MonthCalendar_SetTag(m.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (m *TMonthCalendar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideLeft(m.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (m *TMonthCalendar) SetAnchorSideLeft(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideLeft(m.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (m *TMonthCalendar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideTop(m.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (m *TMonthCalendar) SetAnchorSideTop(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideTop(m.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (m *TMonthCalendar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideRight(m.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (m *TMonthCalendar) SetAnchorSideRight(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideRight(m.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (m *TMonthCalendar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSideBottom(m.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (m *TMonthCalendar) SetAnchorSideBottom(value *TAnchorSide) {
+    MonthCalendar_SetAnchorSideBottom(m.instance, CheckPtr(value))
+}
+
+func (m *TMonthCalendar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(MonthCalendar_GetChildSizing(m.instance))
+}
+
+func (m *TMonthCalendar) SetChildSizing(value *TControlChildSizing) {
+    MonthCalendar_SetChildSizing(m.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (m *TMonthCalendar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(MonthCalendar_GetBorderSpacing(m.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (m *TMonthCalendar) SetBorderSpacing(value *TControlBorderSpacing) {
+    MonthCalendar_SetBorderSpacing(m.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (m *TMonthCalendar) DockClients(Index int32) *TControl {
@@ -986,5 +1076,11 @@ func (m *TMonthCalendar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (m *TMonthCalendar) Components(AIndex int32) *TComponent {
     return AsComponent(MonthCalendar_GetComponents(m.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (m *TMonthCalendar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(MonthCalendar_GetAnchorSide(m.instance, AKind))
 }
 

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TSpeedButton struct {
     IControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewSpeedButton(owner IComponent) *TSpeedButton {
     s := new(TSpeedButton)
     s.instance = SpeedButton_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(s, (*TSpeedButton).Free)
     return s
 }
 
@@ -57,7 +59,7 @@ func SpeedButtonFromObj(obj IObject) *TSpeedButton {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsSpeedButton.
 func SpeedButtonFromUnsafePointer(ptr unsafe.Pointer) *TSpeedButton {
     return AsSpeedButton(ptr)
@@ -289,6 +291,74 @@ func (s *TSpeedButton) ToString() string {
     return SpeedButton_ToString(s.instance)
 }
 
+func (s *TSpeedButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    SpeedButton_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TSpeedButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    SpeedButton_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (s *TSpeedButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    SpeedButton_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (s *TSpeedButton) AnchorVerticalCenterTo(ASibling IControl) {
+    SpeedButton_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TSpeedButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    SpeedButton_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TSpeedButton) AnchorClient(ASpace int32) {
+    SpeedButton_AnchorClient(s.instance, ASpace)
+}
+
+// CN: 获取图像在images中的索引。
+// EN: .
+func (s *TSpeedButton) ImageIndex() int32 {
+    return SpeedButton_GetImageIndex(s.instance)
+}
+
+// CN: 设置图像在images中的索引。
+// EN: .
+func (s *TSpeedButton) SetImageIndex(value int32) {
+    SpeedButton_SetImageIndex(s.instance, value)
+}
+
+// CN: 获取图标索引列表对象。
+// EN: .
+func (s *TSpeedButton) Images() *TImageList {
+    return AsImageList(SpeedButton_GetImages(s.instance))
+}
+
+// CN: 设置图标索引列表对象。
+// EN: .
+func (s *TSpeedButton) SetImages(value IComponent) {
+    SpeedButton_SetImages(s.instance, CheckPtr(value))
+}
+
+func (s *TSpeedButton) ImageWidth() int32 {
+    return SpeedButton_GetImageWidth(s.instance)
+}
+
+func (s *TSpeedButton) SetImageWidth(value int32) {
+    SpeedButton_SetImageWidth(s.instance, value)
+}
+
+func (s *TSpeedButton) ShowCaption() bool {
+    return SpeedButton_GetShowCaption(s.instance)
+}
+
+func (s *TSpeedButton) SetShowCaption(value bool) {
+    SpeedButton_SetShowCaption(s.instance, value)
+}
+
 func (s *TSpeedButton) Action() *TAction {
     return AsAction(SpeedButton_GetAction(s.instance))
 }
@@ -337,10 +407,14 @@ func (s *TSpeedButton) SetBiDiMode(value TBiDiMode) {
     SpeedButton_SetBiDiMode(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TSpeedButton) Constraints() *TSizeConstraints {
     return AsSizeConstraints(SpeedButton_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TSpeedButton) SetConstraints(value *TSizeConstraints) {
     SpeedButton_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -449,10 +523,14 @@ func (s *TSpeedButton) SetParentFont(value bool) {
     SpeedButton_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TSpeedButton) ParentShowHint() bool {
     return SpeedButton_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TSpeedButton) SetParentShowHint(value bool) {
     SpeedButton_SetParentShowHint(s.instance, value)
 }
@@ -709,18 +787,6 @@ func (s *TSpeedButton) SetHint(value string) {
     SpeedButton_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TSpeedButton) Margins() *TMargins {
-    return AsMargins(SpeedButton_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TSpeedButton) SetMargins(value *TMargins) {
-    SpeedButton_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TSpeedButton) ComponentCount() int32 {
@@ -769,9 +835,75 @@ func (s *TSpeedButton) SetTag(value int) {
     SpeedButton_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (s *TSpeedButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(SpeedButton_GetAnchorSideLeft(s.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (s *TSpeedButton) SetAnchorSideLeft(value *TAnchorSide) {
+    SpeedButton_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (s *TSpeedButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(SpeedButton_GetAnchorSideTop(s.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (s *TSpeedButton) SetAnchorSideTop(value *TAnchorSide) {
+    SpeedButton_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (s *TSpeedButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(SpeedButton_GetAnchorSideRight(s.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (s *TSpeedButton) SetAnchorSideRight(value *TAnchorSide) {
+    SpeedButton_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (s *TSpeedButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(SpeedButton_GetAnchorSideBottom(s.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (s *TSpeedButton) SetAnchorSideBottom(value *TAnchorSide) {
+    SpeedButton_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (s *TSpeedButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(SpeedButton_GetBorderSpacing(s.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (s *TSpeedButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    SpeedButton_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (s *TSpeedButton) Components(AIndex int32) *TComponent {
     return AsComponent(SpeedButton_GetComponents(s.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (s *TSpeedButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(SpeedButton_GetAnchorSide(s.instance, AKind))
 }
 

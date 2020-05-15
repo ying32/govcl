@@ -204,7 +204,7 @@ end;
 
 function ColorBox_GetTextLen(AObj: TColorBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ColorBox_SetTextBuf(AObj: TColorBox; Buffer: PChar); extdecl;
@@ -260,6 +260,36 @@ end;
 function ColorBox_ToString(AObj: TColorBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ColorBox_AnchorToNeighbour(AObj: TColorBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ColorBox_AnchorParallel(AObj: TColorBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ColorBox_AnchorHorizontalCenterTo(AObj: TColorBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ColorBox_AnchorVerticalCenterTo(AObj: TColorBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ColorBox_AnchorAsAlign(AObj: TColorBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ColorBox_AnchorClient(AObj: TColorBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ColorBox_GetAlign(AObj: TColorBox): TAlign; extdecl;
@@ -890,16 +920,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ColorBox_GetMargins(AObj: TColorBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ColorBox_SetMargins(AObj: TColorBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ColorBox_GetComponentCount(AObj: TColorBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -940,6 +960,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ColorBox_GetAnchorSideLeft(AObj: TColorBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ColorBox_SetAnchorSideLeft(AObj: TColorBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ColorBox_GetAnchorSideTop(AObj: TColorBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ColorBox_SetAnchorSideTop(AObj: TColorBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ColorBox_GetAnchorSideRight(AObj: TColorBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ColorBox_SetAnchorSideRight(AObj: TColorBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ColorBox_GetAnchorSideBottom(AObj: TColorBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ColorBox_SetAnchorSideBottom(AObj: TColorBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ColorBox_GetChildSizing(AObj: TColorBox): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ColorBox_SetChildSizing(AObj: TColorBox; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ColorBox_GetBorderSpacing(AObj: TColorBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ColorBox_SetBorderSpacing(AObj: TColorBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ColorBox_GetColors(AObj: TColorBox; Index: Integer): TColor; extdecl;
 begin
   Result :=  AObj.Colors[Index];
@@ -963,6 +1043,11 @@ end;
 function ColorBox_GetComponents(AObj: TColorBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ColorBox_GetAnchorSide(AObj: TColorBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ColorBox_StaticClassType: TClass; extdecl;
@@ -1022,6 +1107,12 @@ exports
   ColorBox_Equals,
   ColorBox_GetHashCode,
   ColorBox_ToString,
+  ColorBox_AnchorToNeighbour,
+  ColorBox_AnchorParallel,
+  ColorBox_AnchorHorizontalCenterTo,
+  ColorBox_AnchorVerticalCenterTo,
+  ColorBox_AnchorAsAlign,
+  ColorBox_AnchorClient,
   ColorBox_GetAlign,
   ColorBox_SetAlign,
   ColorBox_GetAutoComplete,
@@ -1142,8 +1233,6 @@ exports
   ColorBox_SetCursor,
   ColorBox_GetHint,
   ColorBox_SetHint,
-  ColorBox_GetMargins,
-  ColorBox_SetMargins,
   ColorBox_GetComponentCount,
   ColorBox_GetComponentIndex,
   ColorBox_SetComponentIndex,
@@ -1152,10 +1241,23 @@ exports
   ColorBox_SetName,
   ColorBox_GetTag,
   ColorBox_SetTag,
+  ColorBox_GetAnchorSideLeft,
+  ColorBox_SetAnchorSideLeft,
+  ColorBox_GetAnchorSideTop,
+  ColorBox_SetAnchorSideTop,
+  ColorBox_GetAnchorSideRight,
+  ColorBox_SetAnchorSideRight,
+  ColorBox_GetAnchorSideBottom,
+  ColorBox_SetAnchorSideBottom,
+  ColorBox_GetChildSizing,
+  ColorBox_SetChildSizing,
+  ColorBox_GetBorderSpacing,
+  ColorBox_SetBorderSpacing,
   ColorBox_GetColors,
   ColorBox_GetColorNames,
   ColorBox_GetDockClients,
   ColorBox_GetControls,
   ColorBox_GetComponents,
+  ColorBox_GetAnchorSide,
   ColorBox_StaticClassType;
 

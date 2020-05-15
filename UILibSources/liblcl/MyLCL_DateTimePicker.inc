@@ -179,7 +179,7 @@ end;
 
 function DateTimePicker_GetTextLen(AObj: TDateTimePicker): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure DateTimePicker_SetTextBuf(AObj: TDateTimePicker; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function DateTimePicker_ToString(AObj: TDateTimePicker): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure DateTimePicker_AnchorToNeighbour(AObj: TDateTimePicker; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure DateTimePicker_AnchorParallel(AObj: TDateTimePicker; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure DateTimePicker_AnchorHorizontalCenterTo(AObj: TDateTimePicker; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure DateTimePicker_AnchorVerticalCenterTo(AObj: TDateTimePicker; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure DateTimePicker_AnchorAsAlign(AObj: TDateTimePicker; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure DateTimePicker_AnchorClient(AObj: TDateTimePicker; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function DateTimePicker_GetDateTime(AObj: TDateTimePicker): TUnixDateTime; extdecl;
@@ -767,16 +797,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function DateTimePicker_GetMargins(AObj: TDateTimePicker): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure DateTimePicker_SetMargins(AObj: TDateTimePicker; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function DateTimePicker_GetComponentCount(AObj: TDateTimePicker): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -817,6 +837,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function DateTimePicker_GetAnchorSideLeft(AObj: TDateTimePicker): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure DateTimePicker_SetAnchorSideLeft(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function DateTimePicker_GetAnchorSideTop(AObj: TDateTimePicker): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure DateTimePicker_SetAnchorSideTop(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function DateTimePicker_GetAnchorSideRight(AObj: TDateTimePicker): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure DateTimePicker_SetAnchorSideRight(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function DateTimePicker_GetAnchorSideBottom(AObj: TDateTimePicker): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure DateTimePicker_SetAnchorSideBottom(AObj: TDateTimePicker; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function DateTimePicker_GetChildSizing(AObj: TDateTimePicker): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure DateTimePicker_SetChildSizing(AObj: TDateTimePicker; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function DateTimePicker_GetBorderSpacing(AObj: TDateTimePicker): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure DateTimePicker_SetBorderSpacing(AObj: TDateTimePicker; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function DateTimePicker_GetDockClients(AObj: TDateTimePicker; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -830,6 +910,11 @@ end;
 function DateTimePicker_GetComponents(AObj: TDateTimePicker; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function DateTimePicker_GetAnchorSide(AObj: TDateTimePicker; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function DateTimePicker_StaticClassType: TClass; extdecl;
@@ -884,6 +969,12 @@ exports
   DateTimePicker_Equals,
   DateTimePicker_GetHashCode,
   DateTimePicker_ToString,
+  DateTimePicker_AnchorToNeighbour,
+  DateTimePicker_AnchorParallel,
+  DateTimePicker_AnchorHorizontalCenterTo,
+  DateTimePicker_AnchorVerticalCenterTo,
+  DateTimePicker_AnchorAsAlign,
+  DateTimePicker_AnchorClient,
   DateTimePicker_GetDateTime,
   DateTimePicker_SetDateTime,
   DateTimePicker_GetDroppedDown,
@@ -986,8 +1077,6 @@ exports
   DateTimePicker_SetCursor,
   DateTimePicker_GetHint,
   DateTimePicker_SetHint,
-  DateTimePicker_GetMargins,
-  DateTimePicker_SetMargins,
   DateTimePicker_GetComponentCount,
   DateTimePicker_GetComponentIndex,
   DateTimePicker_SetComponentIndex,
@@ -996,8 +1085,21 @@ exports
   DateTimePicker_SetName,
   DateTimePicker_GetTag,
   DateTimePicker_SetTag,
+  DateTimePicker_GetAnchorSideLeft,
+  DateTimePicker_SetAnchorSideLeft,
+  DateTimePicker_GetAnchorSideTop,
+  DateTimePicker_SetAnchorSideTop,
+  DateTimePicker_GetAnchorSideRight,
+  DateTimePicker_SetAnchorSideRight,
+  DateTimePicker_GetAnchorSideBottom,
+  DateTimePicker_SetAnchorSideBottom,
+  DateTimePicker_GetChildSizing,
+  DateTimePicker_SetChildSizing,
+  DateTimePicker_GetBorderSpacing,
+  DateTimePicker_SetBorderSpacing,
   DateTimePicker_GetDockClients,
   DateTimePicker_GetControls,
   DateTimePicker_GetComponents,
+  DateTimePicker_GetAnchorSide,
   DateTimePicker_StaticClassType;
 

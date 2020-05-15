@@ -27,10 +27,14 @@ var (
 	ErrPixelDataEmpty        = errors.New("the pixel data is empty")
 	ErrUnsupportedDataFormat = errors.New("unsupported pixel data format")
 	ErrBitmapInvalid         = errors.New("bitmap invalid")
+	ErrObjIsInvalid          = errors.New("object is invalid")
+	ErrUnknownError          = errors.New("unknown error")
 )
 
-// 将Go的Image转为VCL/LCL的 TPngImage
-// 返回的Png对象用完记得Free掉
+// CN: 将Go的Image转为VCL/LCL的 TPngImage
+//     返回的Png对象用完记得Free掉
+// EN: Convert the image of go to TPngImage of VCL/LCL
+//     Remember to free the returned png object
 func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 	buff := bytes.NewBuffer([]byte{})
 	if err := png.Encode(buff, img); err != nil {
@@ -44,8 +48,10 @@ func ToPngImage(img image.Image) (*vcl.TPngImage, error) {
 	return obj, nil
 }
 
-// 32bit bmp
-// 返回的Bmp对象用完记得Free掉
+// CN: 32bit bmp
+//     返回的Bmp对象用完记得Free掉
+// EN: 32bit bmp
+//     Remember to free the returned bmp object
 func ToBitmap(img image.Image) (*vcl.TBitmap, error) {
 	bmp := vcl.NewBitmap()
 	if err := ToBitmap2(img, bmp); err != nil {
@@ -78,8 +84,10 @@ func ToBitmap2(img image.Image, bmp *vcl.TBitmap) error {
 	return nil
 }
 
-// 将Go的Image转为VCL/LCL的 TJPEGImage
-// 返回的jpg对象用完记得Free掉
+// CN: 将Go的Image转为VCL/LCL的 TJPEGImage
+//     返回的jpg对象用完记得Free掉
+// EN: Convert the image of go to TJPEGImage of VCL/LCL
+//     Remember to free the returned jpg object
 func ToJPEGImage(img image.Image, quality int) (*vcl.TJPEGImage, error) {
 	buff := bytes.NewBuffer([]byte{})
 	if err := jpeg.Encode(buff, img, &jpeg.Options{quality}); err != nil {
@@ -93,8 +101,10 @@ func ToJPEGImage(img image.Image, quality int) (*vcl.TJPEGImage, error) {
 	return obj, nil
 }
 
-// 将Go的Image转为VCL/LCL的 TGIFImage
-// 返回的gif对象用完记得Free掉
+// CN: 将Go的Image转为VCL/LCL的 TGIFImage
+//     返回的gif对象用完记得Free掉
+// EN: Convert the image of go to TGIFImage of VCL/LCL
+//     Remember to free the returned GIF object
 func ToGIFImage(img image.Image) (*vcl.TGIFImage, error) {
 	buff := bytes.NewBuffer([]byte{})
 	if err := gif.Encode(buff, img, &gif.Options{NumColors: 256}); err != nil {
@@ -139,10 +149,14 @@ func toBitmap(width, height int, pix []uint8, bmp *vcl.TBitmap) error {
 	return nil
 }
 
-// 将vcl/lcl的Graphic对象转为Go的Image
+// CN: 将vcl/lcl的Graphic对象转为Go的Image
+// EN: Convert the graphic object of VCL/LCL to the image of go
 func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
-	if obj == nil || !obj.IsValid() {
-		return nil, errors.New("obj is invalid")
+	if obj == nil {
+		return nil, ErrObjIsInvalid
+	}
+	if !obj.IsValid() {
+		return nil, ErrObjIsInvalid
 	}
 	buff := bytes.NewBuffer([]byte{})
 	mem := vcl.NewMemoryStream()
@@ -215,5 +229,5 @@ func ToGoImage(obj *vcl.TGraphic) (image.Image, error) {
 		}
 		return img, nil
 	}
-	return nil, errors.New("unknown error")
+	return nil, ErrUnknownError
 }

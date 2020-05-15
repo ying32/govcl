@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TImage struct {
     IControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewImage(owner IComponent) *TImage {
     i := new(TImage)
     i.instance = Image_Create(CheckPtr(owner))
     i.ptr = unsafe.Pointer(i.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(i, (*TImage).Free)
     return i
 }
 
@@ -57,7 +59,7 @@ func ImageFromObj(obj IObject) *TImage {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsImage.
 func ImageFromUnsafePointer(ptr unsafe.Pointer) *TImage {
     return AsImage(ptr)
@@ -283,6 +285,74 @@ func (i *TImage) ToString() string {
     return Image_ToString(i.instance)
 }
 
+func (i *TImage) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Image_AnchorToNeighbour(i.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (i *TImage) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Image_AnchorParallel(i.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (i *TImage) AnchorHorizontalCenterTo(ASibling IControl) {
+    Image_AnchorHorizontalCenterTo(i.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (i *TImage) AnchorVerticalCenterTo(ASibling IControl) {
+    Image_AnchorVerticalCenterTo(i.instance, CheckPtr(ASibling))
+}
+
+func (i *TImage) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Image_AnchorAsAlign(i.instance, ATheAlign , ASpace)
+}
+
+func (i *TImage) AnchorClient(ASpace int32) {
+    Image_AnchorClient(i.instance, ASpace)
+}
+
+func (i *TImage) AntialiasingMode() TAntialiasingMode {
+    return Image_GetAntialiasingMode(i.instance)
+}
+
+func (i *TImage) SetAntialiasingMode(value TAntialiasingMode) {
+    Image_SetAntialiasingMode(i.instance, value)
+}
+
+func (i *TImage) KeepOriginXWhenClipped() bool {
+    return Image_GetKeepOriginXWhenClipped(i.instance)
+}
+
+func (i *TImage) SetKeepOriginXWhenClipped(value bool) {
+    Image_SetKeepOriginXWhenClipped(i.instance, value)
+}
+
+func (i *TImage) KeepOriginYWhenClipped() bool {
+    return Image_GetKeepOriginYWhenClipped(i.instance)
+}
+
+func (i *TImage) SetKeepOriginYWhenClipped(value bool) {
+    Image_SetKeepOriginYWhenClipped(i.instance, value)
+}
+
+func (i *TImage) StretchInEnabled() bool {
+    return Image_GetStretchInEnabled(i.instance)
+}
+
+func (i *TImage) SetStretchInEnabled(value bool) {
+    Image_SetStretchInEnabled(i.instance, value)
+}
+
+func (i *TImage) StretchOutEnabled() bool {
+    return Image_GetStretchOutEnabled(i.instance)
+}
+
+func (i *TImage) SetStretchOutEnabled(value bool) {
+    Image_SetStretchOutEnabled(i.instance, value)
+}
+
 // CN: 获取画布。
 // EN: .
 func (i *TImage) Canvas() *TCanvas {
@@ -333,10 +403,14 @@ func (i *TImage) SetCenter(value bool) {
     Image_SetCenter(i.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (i *TImage) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Image_GetConstraints(i.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (i *TImage) SetConstraints(value *TSizeConstraints) {
     Image_SetConstraints(i.instance, CheckPtr(value))
 }
@@ -377,18 +451,26 @@ func (i *TImage) SetEnabled(value bool) {
     Image_SetEnabled(i.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (i *TImage) ParentShowHint() bool {
     return Image_GetParentShowHint(i.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (i *TImage) SetParentShowHint(value bool) {
     Image_SetParentShowHint(i.instance, value)
 }
 
+// CN: 获取图片。
+// EN: .
 func (i *TImage) Picture() *TPicture {
     return AsPicture(Image_GetPicture(i.instance))
 }
 
+// CN: 设置图片。
+// EN: .
 func (i *TImage) SetPicture(value *TPicture) {
     Image_SetPicture(i.instance, CheckPtr(value))
 }
@@ -405,10 +487,14 @@ func (i *TImage) SetPopupMenu(value IComponent) {
     Image_SetPopupMenu(i.instance, CheckPtr(value))
 }
 
+// CN: 获取等比缩放。
+// EN: .
 func (i *TImage) Proportional() bool {
     return Image_GetProportional(i.instance)
 }
 
+// CN: 设置等比缩放。
+// EN: .
 func (i *TImage) SetProportional(value bool) {
     Image_SetProportional(i.instance, value)
 }
@@ -425,10 +511,14 @@ func (i *TImage) SetShowHint(value bool) {
     Image_SetShowHint(i.instance, value)
 }
 
+// CN: 获取拉伸缩放。
+// EN: .
 func (i *TImage) Stretch() bool {
     return Image_GetStretch(i.instance)
 }
 
+// CN: 设置拉伸缩放。
+// EN: .
 func (i *TImage) SetStretch(value bool) {
     Image_SetStretch(i.instance, value)
 }
@@ -687,18 +777,6 @@ func (i *TImage) SetHint(value string) {
     Image_SetHint(i.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (i *TImage) Margins() *TMargins {
-    return AsMargins(Image_GetMargins(i.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (i *TImage) SetMargins(value *TMargins) {
-    Image_SetMargins(i.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (i *TImage) ComponentCount() int32 {
@@ -747,9 +825,75 @@ func (i *TImage) SetTag(value int) {
     Image_SetTag(i.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (i *TImage) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideLeft(i.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (i *TImage) SetAnchorSideLeft(value *TAnchorSide) {
+    Image_SetAnchorSideLeft(i.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (i *TImage) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideTop(i.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (i *TImage) SetAnchorSideTop(value *TAnchorSide) {
+    Image_SetAnchorSideTop(i.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (i *TImage) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideRight(i.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (i *TImage) SetAnchorSideRight(value *TAnchorSide) {
+    Image_SetAnchorSideRight(i.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (i *TImage) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSideBottom(i.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (i *TImage) SetAnchorSideBottom(value *TAnchorSide) {
+    Image_SetAnchorSideBottom(i.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (i *TImage) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Image_GetBorderSpacing(i.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (i *TImage) SetBorderSpacing(value *TControlBorderSpacing) {
+    Image_SetBorderSpacing(i.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (i *TImage) Components(AIndex int32) *TComponent {
     return AsComponent(Image_GetComponents(i.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (i *TImage) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Image_GetAnchorSide(i.instance, AKind))
 }
 

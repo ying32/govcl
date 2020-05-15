@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TRadioButton struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewRadioButton(owner IComponent) *TRadioButton {
     r := new(TRadioButton)
     r.instance = RadioButton_Create(CheckPtr(owner))
     r.ptr = unsafe.Pointer(r.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(r, (*TRadioButton).Free)
     return r
 }
 
@@ -57,7 +59,7 @@ func RadioButtonFromObj(obj IObject) *TRadioButton {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsRadioButton.
 func RadioButtonFromUnsafePointer(ptr unsafe.Pointer) *TRadioButton {
     return AsRadioButton(ptr)
@@ -371,6 +373,34 @@ func (r *TRadioButton) ToString() string {
     return RadioButton_ToString(r.instance)
 }
 
+func (r *TRadioButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioButton_AnchorToNeighbour(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (r *TRadioButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    RadioButton_AnchorParallel(r.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (r *TRadioButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    RadioButton_AnchorHorizontalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (r *TRadioButton) AnchorVerticalCenterTo(ASibling IControl) {
+    RadioButton_AnchorVerticalCenterTo(r.instance, CheckPtr(ASibling))
+}
+
+func (r *TRadioButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    RadioButton_AnchorAsAlign(r.instance, ATheAlign , ASpace)
+}
+
+func (r *TRadioButton) AnchorClient(ASpace int32) {
+    RadioButton_AnchorClient(r.instance, ASpace)
+}
+
 func (r *TRadioButton) Action() *TAction {
     return AsAction(RadioButton_GetAction(r.instance))
 }
@@ -459,10 +489,14 @@ func (r *TRadioButton) SetColor(value TColor) {
     RadioButton_SetColor(r.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (r *TRadioButton) Constraints() *TSizeConstraints {
     return AsSizeConstraints(RadioButton_GetConstraints(r.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (r *TRadioButton) SetConstraints(value *TSizeConstraints) {
     RadioButton_SetConstraints(r.instance, CheckPtr(value))
 }
@@ -575,10 +609,14 @@ func (r *TRadioButton) SetParentFont(value bool) {
     RadioButton_SetParentFont(r.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRadioButton) ParentShowHint() bool {
     return RadioButton_GetParentShowHint(r.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (r *TRadioButton) SetParentShowHint(value bool) {
     RadioButton_SetParentShowHint(r.instance, value)
 }
@@ -957,18 +995,6 @@ func (r *TRadioButton) SetHint(value string) {
     RadioButton_SetHint(r.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (r *TRadioButton) Margins() *TMargins {
-    return AsMargins(RadioButton_GetMargins(r.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (r *TRadioButton) SetMargins(value *TMargins) {
-    RadioButton_SetMargins(r.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (r *TRadioButton) ComponentCount() int32 {
@@ -1017,6 +1043,74 @@ func (r *TRadioButton) SetTag(value int) {
     RadioButton_SetTag(r.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (r *TRadioButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideLeft(r.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (r *TRadioButton) SetAnchorSideLeft(value *TAnchorSide) {
+    RadioButton_SetAnchorSideLeft(r.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (r *TRadioButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideTop(r.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (r *TRadioButton) SetAnchorSideTop(value *TAnchorSide) {
+    RadioButton_SetAnchorSideTop(r.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (r *TRadioButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideRight(r.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (r *TRadioButton) SetAnchorSideRight(value *TAnchorSide) {
+    RadioButton_SetAnchorSideRight(r.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (r *TRadioButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSideBottom(r.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (r *TRadioButton) SetAnchorSideBottom(value *TAnchorSide) {
+    RadioButton_SetAnchorSideBottom(r.instance, CheckPtr(value))
+}
+
+func (r *TRadioButton) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(RadioButton_GetChildSizing(r.instance))
+}
+
+func (r *TRadioButton) SetChildSizing(value *TControlChildSizing) {
+    RadioButton_SetChildSizing(r.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (r *TRadioButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(RadioButton_GetBorderSpacing(r.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (r *TRadioButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    RadioButton_SetBorderSpacing(r.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (r *TRadioButton) DockClients(Index int32) *TControl {
@@ -1033,5 +1127,11 @@ func (r *TRadioButton) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (r *TRadioButton) Components(AIndex int32) *TComponent {
     return AsComponent(RadioButton_GetComponents(r.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (r *TRadioButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(RadioButton_GetAnchorSide(r.instance, AKind))
 }
 

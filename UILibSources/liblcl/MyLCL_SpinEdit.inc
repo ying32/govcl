@@ -214,7 +214,7 @@ end;
 
 function SpinEdit_GetTextLen(AObj: TSpinEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure SpinEdit_SetTextBuf(AObj: TSpinEdit; Buffer: PChar); extdecl;
@@ -270,6 +270,36 @@ end;
 function SpinEdit_ToString(AObj: TSpinEdit): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure SpinEdit_AnchorToNeighbour(AObj: TSpinEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure SpinEdit_AnchorParallel(AObj: TSpinEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure SpinEdit_AnchorHorizontalCenterTo(AObj: TSpinEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure SpinEdit_AnchorVerticalCenterTo(AObj: TSpinEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure SpinEdit_AnchorAsAlign(AObj: TSpinEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure SpinEdit_AnchorClient(AObj: TSpinEdit; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function SpinEdit_GetAnchors(AObj: TSpinEdit): TAnchors; extdecl;
@@ -872,16 +902,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function SpinEdit_GetMargins(AObj: TSpinEdit): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure SpinEdit_SetMargins(AObj: TSpinEdit; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function SpinEdit_GetComponentCount(AObj: TSpinEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -922,6 +942,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function SpinEdit_GetAnchorSideLeft(AObj: TSpinEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure SpinEdit_SetAnchorSideLeft(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function SpinEdit_GetAnchorSideTop(AObj: TSpinEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure SpinEdit_SetAnchorSideTop(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function SpinEdit_GetAnchorSideRight(AObj: TSpinEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure SpinEdit_SetAnchorSideRight(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function SpinEdit_GetAnchorSideBottom(AObj: TSpinEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure SpinEdit_SetAnchorSideBottom(AObj: TSpinEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function SpinEdit_GetChildSizing(AObj: TSpinEdit): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure SpinEdit_SetChildSizing(AObj: TSpinEdit; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function SpinEdit_GetBorderSpacing(AObj: TSpinEdit): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure SpinEdit_SetBorderSpacing(AObj: TSpinEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function SpinEdit_GetDockClients(AObj: TSpinEdit; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -935,6 +1015,11 @@ end;
 function SpinEdit_GetComponents(AObj: TSpinEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function SpinEdit_GetAnchorSide(AObj: TSpinEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function SpinEdit_StaticClassType: TClass; extdecl;
@@ -996,6 +1081,12 @@ exports
   SpinEdit_Equals,
   SpinEdit_GetHashCode,
   SpinEdit_ToString,
+  SpinEdit_AnchorToNeighbour,
+  SpinEdit_AnchorParallel,
+  SpinEdit_AnchorHorizontalCenterTo,
+  SpinEdit_AnchorVerticalCenterTo,
+  SpinEdit_AnchorAsAlign,
+  SpinEdit_AnchorClient,
   SpinEdit_GetAnchors,
   SpinEdit_SetAnchors,
   SpinEdit_GetAutoSelect,
@@ -1112,8 +1203,6 @@ exports
   SpinEdit_SetCursor,
   SpinEdit_GetHint,
   SpinEdit_SetHint,
-  SpinEdit_GetMargins,
-  SpinEdit_SetMargins,
   SpinEdit_GetComponentCount,
   SpinEdit_GetComponentIndex,
   SpinEdit_SetComponentIndex,
@@ -1122,8 +1211,21 @@ exports
   SpinEdit_SetName,
   SpinEdit_GetTag,
   SpinEdit_SetTag,
+  SpinEdit_GetAnchorSideLeft,
+  SpinEdit_SetAnchorSideLeft,
+  SpinEdit_GetAnchorSideTop,
+  SpinEdit_SetAnchorSideTop,
+  SpinEdit_GetAnchorSideRight,
+  SpinEdit_SetAnchorSideRight,
+  SpinEdit_GetAnchorSideBottom,
+  SpinEdit_SetAnchorSideBottom,
+  SpinEdit_GetChildSizing,
+  SpinEdit_SetChildSizing,
+  SpinEdit_GetBorderSpacing,
+  SpinEdit_SetBorderSpacing,
   SpinEdit_GetDockClients,
   SpinEdit_GetControls,
   SpinEdit_GetComponents,
+  SpinEdit_GetAnchorSide,
   SpinEdit_StaticClassType;
 

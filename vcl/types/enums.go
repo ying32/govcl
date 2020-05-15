@@ -2202,3 +2202,121 @@ const (
 	DimCenter
 	DimStretch
 )
+
+type TListBoxOption int32
+
+const (
+	LboDrawFocusRect = iota + 0 // draw focus rect in case of owner drawing
+)
+
+type TListBoxOptions = TSet
+
+type TAntialiasingMode int32
+
+const (
+	AmDontCare = iota + 0 // default antialiasing
+	AmOn                  // enabled
+	AmOff                 // disabled
+)
+
+type TSortDirection int32
+
+const (
+	SdAscending = iota + 0
+	SdDescending
+)
+
+type TTreeViewExpandSignType int32
+
+const (
+	TvestTheme     = iota + 0 // use themed sign
+	TvestPlusMinus            // use +/- sign
+	TvestArrow                // use blank arrow
+	TvestArrowFill            // use filled arrow
+)
+
+type TTreeViewOption int32
+
+const (
+	TvoAllowMultiselect = iota + 0
+	TvoAutoExpand
+	TvoAutoInsertMark
+	TvoAutoItemHeight
+	TvoHideSelection
+	TvoHotTrack
+	TvoKeepCollapsedNodes
+	TvoReadOnly
+	TvoRightClickSelect
+	TvoRowSelect
+	TvoShowButtons
+	TvoShowLines
+	TvoShowRoot
+	TvoShowSeparators
+	TvoToolTips
+	TvoNoDoubleClickExpand
+	TvoThemedDraw
+)
+
+type TTreeViewOptions = TSet
+
+type TGlyphShowMode int32
+
+const (
+	GsmAlways      = iota + 0 // always show
+	GsmNever                  // never show
+	GsmApplication            // depends on application settings
+	GsmSystem                 // depends on system settings
+)
+
+// These are LCL additions
+type TCTabControlOption int32
+
+const (
+	NboShowCloseButtons = iota + 0
+	NboMultiLine
+	NboHidePageListPopup
+	NboKeyboardTabSwitch
+	NboShowAddTabButton
+	NboDoChangeOnSetIndex
+)
+
+type TCTabControlOptions = TSet
+
+type TAnchorSideReference int32
+
+const (
+	AsrTop = iota + 0
+	AsrBottom
+	AsrCenter
+)
+
+type TControlCellAlign int32
+
+const (
+	CcaFill = iota + 0
+	CcaLeftTop
+	CcaRightBottom
+	CcaCenter
+)
+
+type TControlCellAligns = TSet
+
+type TChildControlResizeStyle int32
+
+const (
+	CrsAnchorAligning        = iota + 0 // (like Delphi)
+	CrsScaleChilds                      // scale children equally, keep space between children fixed
+	CrsHomogenousChildResize            // enlarge children equally (i.e. by the same amount of pixel)
+	CrsHomogenousSpaceResize            // enlarge space between children equally
+//{$IFDEF EnablecrsSameSize}
+//,CrsSameSize  // each child gets the same size (maybe one pixel difference)
+//{$ENDIF}
+)
+
+type TControlChildrenLayout int32
+
+const (
+	CclNone                       = iota + 0
+	CclLeftToRightThenTopToBottom // if BiDiMode <> bdLeftToRight then it becomes RightToLeft
+	CclTopToBottomThenLeftToRight
+)

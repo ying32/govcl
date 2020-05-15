@@ -104,7 +104,7 @@ end;
 
 function XButton_GetTextLen(AObj: TXButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure XButton_SetTextBuf(AObj: TXButton; Buffer: PChar); extdecl;
@@ -160,6 +160,36 @@ end;
 function XButton_ToString(AObj: TXButton): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure XButton_AnchorToNeighbour(AObj: TXButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure XButton_AnchorParallel(AObj: TXButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure XButton_AnchorHorizontalCenterTo(AObj: TXButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure XButton_AnchorVerticalCenterTo(AObj: TXButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure XButton_AnchorAsAlign(AObj: TXButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure XButton_AnchorClient(AObj: TXButton; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function XButton_GetCaption(AObj: TXButton): PChar; extdecl;
@@ -586,16 +616,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function XButton_GetMargins(AObj: TXButton): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure XButton_SetMargins(AObj: TXButton; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function XButton_GetComponentCount(AObj: TXButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -636,9 +656,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function XButton_GetAnchorSideLeft(AObj: TXButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure XButton_SetAnchorSideLeft(AObj: TXButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function XButton_GetAnchorSideTop(AObj: TXButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure XButton_SetAnchorSideTop(AObj: TXButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function XButton_GetAnchorSideRight(AObj: TXButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure XButton_SetAnchorSideRight(AObj: TXButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function XButton_GetAnchorSideBottom(AObj: TXButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure XButton_SetAnchorSideBottom(AObj: TXButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function XButton_GetBorderSpacing(AObj: TXButton): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure XButton_SetBorderSpacing(AObj: TXButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function XButton_GetComponents(AObj: TXButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function XButton_GetAnchorSide(AObj: TXButton; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function XButton_StaticClassType: TClass; extdecl;
@@ -678,6 +753,12 @@ exports
   XButton_Equals,
   XButton_GetHashCode,
   XButton_ToString,
+  XButton_AnchorToNeighbour,
+  XButton_AnchorParallel,
+  XButton_AnchorHorizontalCenterTo,
+  XButton_AnchorVerticalCenterTo,
+  XButton_AnchorAsAlign,
+  XButton_AnchorClient,
   XButton_GetCaption,
   XButton_SetCaption,
   XButton_GetShowCaption,
@@ -760,8 +841,6 @@ exports
   XButton_SetCursor,
   XButton_GetHint,
   XButton_SetHint,
-  XButton_GetMargins,
-  XButton_SetMargins,
   XButton_GetComponentCount,
   XButton_GetComponentIndex,
   XButton_SetComponentIndex,
@@ -770,6 +849,17 @@ exports
   XButton_SetName,
   XButton_GetTag,
   XButton_SetTag,
+  XButton_GetAnchorSideLeft,
+  XButton_SetAnchorSideLeft,
+  XButton_GetAnchorSideTop,
+  XButton_SetAnchorSideTop,
+  XButton_GetAnchorSideRight,
+  XButton_SetAnchorSideRight,
+  XButton_GetAnchorSideBottom,
+  XButton_SetAnchorSideBottom,
+  XButton_GetBorderSpacing,
+  XButton_SetBorderSpacing,
   XButton_GetComponents,
+  XButton_GetAnchorSide,
   XButton_StaticClassType;
 

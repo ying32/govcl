@@ -174,7 +174,7 @@ end;
 
 function CoolBar_GetTextLen(AObj: TCoolBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure CoolBar_SetTextBuf(AObj: TCoolBar; Buffer: PChar); extdecl;
@@ -230,6 +230,36 @@ end;
 function CoolBar_ToString(AObj: TCoolBar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure CoolBar_AnchorToNeighbour(AObj: TCoolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure CoolBar_AnchorParallel(AObj: TCoolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure CoolBar_AnchorHorizontalCenterTo(AObj: TCoolBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure CoolBar_AnchorVerticalCenterTo(AObj: TCoolBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure CoolBar_AnchorAsAlign(AObj: TCoolBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure CoolBar_AnchorClient(AObj: TCoolBar; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function CoolBar_GetAlign(AObj: TCoolBar): TAlign; extdecl;
@@ -903,16 +933,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function CoolBar_GetMargins(AObj: TCoolBar): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure CoolBar_SetMargins(AObj: TCoolBar; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function CoolBar_GetComponentCount(AObj: TCoolBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -953,6 +973,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function CoolBar_GetAnchorSideLeft(AObj: TCoolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure CoolBar_SetAnchorSideLeft(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function CoolBar_GetAnchorSideTop(AObj: TCoolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure CoolBar_SetAnchorSideTop(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function CoolBar_GetAnchorSideRight(AObj: TCoolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure CoolBar_SetAnchorSideRight(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function CoolBar_GetAnchorSideBottom(AObj: TCoolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure CoolBar_SetAnchorSideBottom(AObj: TCoolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function CoolBar_GetChildSizing(AObj: TCoolBar): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure CoolBar_SetChildSizing(AObj: TCoolBar; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function CoolBar_GetBorderSpacing(AObj: TCoolBar): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure CoolBar_SetBorderSpacing(AObj: TCoolBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function CoolBar_GetDockClients(AObj: TCoolBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -966,6 +1046,11 @@ end;
 function CoolBar_GetComponents(AObj: TCoolBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function CoolBar_GetAnchorSide(AObj: TCoolBar; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function CoolBar_StaticClassType: TClass; extdecl;
@@ -1019,6 +1104,12 @@ exports
   CoolBar_Equals,
   CoolBar_GetHashCode,
   CoolBar_ToString,
+  CoolBar_AnchorToNeighbour,
+  CoolBar_AnchorParallel,
+  CoolBar_AnchorHorizontalCenterTo,
+  CoolBar_AnchorVerticalCenterTo,
+  CoolBar_AnchorAsAlign,
+  CoolBar_AnchorClient,
   CoolBar_GetAlign,
   CoolBar_SetAlign,
   CoolBar_GetAnchors,
@@ -1146,8 +1237,6 @@ exports
   CoolBar_SetCursor,
   CoolBar_GetHint,
   CoolBar_SetHint,
-  CoolBar_GetMargins,
-  CoolBar_SetMargins,
   CoolBar_GetComponentCount,
   CoolBar_GetComponentIndex,
   CoolBar_SetComponentIndex,
@@ -1156,8 +1245,21 @@ exports
   CoolBar_SetName,
   CoolBar_GetTag,
   CoolBar_SetTag,
+  CoolBar_GetAnchorSideLeft,
+  CoolBar_SetAnchorSideLeft,
+  CoolBar_GetAnchorSideTop,
+  CoolBar_SetAnchorSideTop,
+  CoolBar_GetAnchorSideRight,
+  CoolBar_SetAnchorSideRight,
+  CoolBar_GetAnchorSideBottom,
+  CoolBar_SetAnchorSideBottom,
+  CoolBar_GetChildSizing,
+  CoolBar_SetChildSizing,
+  CoolBar_GetBorderSpacing,
+  CoolBar_SetBorderSpacing,
   CoolBar_GetDockClients,
   CoolBar_GetControls,
   CoolBar_GetComponents,
+  CoolBar_GetAnchorSide,
   CoolBar_StaticClassType;
 

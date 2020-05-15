@@ -214,7 +214,7 @@ end;
 
 function Memo_GetTextLen(AObj: TMemo): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Memo_SetTextBuf(AObj: TMemo; Buffer: PChar); extdecl;
@@ -270,6 +270,36 @@ end;
 function Memo_ToString(AObj: TMemo): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Memo_AnchorToNeighbour(AObj: TMemo; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Memo_AnchorParallel(AObj: TMemo; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Memo_AnchorHorizontalCenterTo(AObj: TMemo; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Memo_AnchorVerticalCenterTo(AObj: TMemo; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Memo_AnchorAsAlign(AObj: TMemo; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Memo_AnchorClient(AObj: TMemo; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Memo_GetAlign(AObj: TMemo): TAlign; extdecl;
@@ -981,16 +1011,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Memo_GetMargins(AObj: TMemo): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Memo_SetMargins(AObj: TMemo; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Memo_GetComponentCount(AObj: TMemo): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1031,6 +1051,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Memo_GetAnchorSideLeft(AObj: TMemo): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Memo_SetAnchorSideLeft(AObj: TMemo; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Memo_GetAnchorSideTop(AObj: TMemo): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Memo_SetAnchorSideTop(AObj: TMemo; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Memo_GetAnchorSideRight(AObj: TMemo): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Memo_SetAnchorSideRight(AObj: TMemo; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Memo_GetAnchorSideBottom(AObj: TMemo): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Memo_SetAnchorSideBottom(AObj: TMemo; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Memo_GetChildSizing(AObj: TMemo): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure Memo_SetChildSizing(AObj: TMemo; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function Memo_GetBorderSpacing(AObj: TMemo): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Memo_SetBorderSpacing(AObj: TMemo; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Memo_GetDockClients(AObj: TMemo; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -1044,6 +1124,11 @@ end;
 function Memo_GetComponents(AObj: TMemo; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Memo_GetAnchorSide(AObj: TMemo; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Memo_StaticClassType: TClass; extdecl;
@@ -1105,6 +1190,12 @@ exports
   Memo_Equals,
   Memo_GetHashCode,
   Memo_ToString,
+  Memo_AnchorToNeighbour,
+  Memo_AnchorParallel,
+  Memo_AnchorHorizontalCenterTo,
+  Memo_AnchorVerticalCenterTo,
+  Memo_AnchorAsAlign,
+  Memo_AnchorClient,
   Memo_GetAlign,
   Memo_SetAlign,
   Memo_GetAlignment,
@@ -1240,8 +1331,6 @@ exports
   Memo_SetCursor,
   Memo_GetHint,
   Memo_SetHint,
-  Memo_GetMargins,
-  Memo_SetMargins,
   Memo_GetComponentCount,
   Memo_GetComponentIndex,
   Memo_SetComponentIndex,
@@ -1250,8 +1339,21 @@ exports
   Memo_SetName,
   Memo_GetTag,
   Memo_SetTag,
+  Memo_GetAnchorSideLeft,
+  Memo_SetAnchorSideLeft,
+  Memo_GetAnchorSideTop,
+  Memo_SetAnchorSideTop,
+  Memo_GetAnchorSideRight,
+  Memo_SetAnchorSideRight,
+  Memo_GetAnchorSideBottom,
+  Memo_SetAnchorSideBottom,
+  Memo_GetChildSizing,
+  Memo_SetChildSizing,
+  Memo_GetBorderSpacing,
+  Memo_SetBorderSpacing,
   Memo_GetDockClients,
   Memo_GetControls,
   Memo_GetComponents,
+  Memo_GetAnchorSide,
   Memo_StaticClassType;
 

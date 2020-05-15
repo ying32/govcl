@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TPopupMenu struct {
     IComponent
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewPopupMenu(owner IComponent) *TPopupMenu {
     p := new(TPopupMenu)
     p.instance = PopupMenu_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(p, (*TPopupMenu).Free)
     return p
 }
 
@@ -57,7 +59,7 @@ func PopupMenuFromObj(obj IObject) *TPopupMenu {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsPopupMenu.
 func PopupMenuFromUnsafePointer(ptr unsafe.Pointer) *TPopupMenu {
     return AsPopupMenu(ptr)
@@ -181,6 +183,14 @@ func (p *TPopupMenu) GetHashCode() int32 {
 // EN: Text information.
 func (p *TPopupMenu) ToString() string {
     return PopupMenu_ToString(p.instance)
+}
+
+func (p *TPopupMenu) ImagesWidth() int32 {
+    return PopupMenu_GetImagesWidth(p.instance)
+}
+
+func (p *TPopupMenu) SetImagesWidth(value int32) {
+    PopupMenu_SetImagesWidth(p.instance, value)
 }
 
 func (p *TPopupMenu) PopupComponent() *TComponent {

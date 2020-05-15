@@ -26,6 +26,7 @@ func (f *TMainForm) OnFormCreate(object vcl.IObject) {
 	f.Btn1.SetParent(f)
 	f.Btn1.SetBounds(10, 10, 100, 30)
 	f.Btn1.SetCaption("打开记事本")
+	f.Btn1.SetOnClick(f.OnBtn1Click)
 }
 
 func (f *TMainForm) OnBtn1Click(object vcl.IObject) {

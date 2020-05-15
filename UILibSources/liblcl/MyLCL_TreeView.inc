@@ -229,7 +229,7 @@ end;
 
 function TreeView_GetTextLen(AObj: TTreeView): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure TreeView_SetTextBuf(AObj: TTreeView; Buffer: PChar); extdecl;
@@ -285,6 +285,196 @@ end;
 function TreeView_ToString(AObj: TTreeView): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure TreeView_AnchorToNeighbour(AObj: TTreeView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure TreeView_AnchorParallel(AObj: TTreeView; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure TreeView_AnchorHorizontalCenterTo(AObj: TTreeView; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure TreeView_AnchorVerticalCenterTo(AObj: TTreeView; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure TreeView_AnchorAsAlign(AObj: TTreeView; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure TreeView_AnchorClient(AObj: TTreeView; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
+function TreeView_GetDefaultItemHeight(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.DefaultItemHeight;
+end;
+
+procedure TreeView_SetDefaultItemHeight(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.DefaultItemHeight := AValue;
+end;
+
+function TreeView_GetExpandSignColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.ExpandSignColor;
+end;
+
+procedure TreeView_SetExpandSignColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.ExpandSignColor := AValue;
+end;
+
+function TreeView_GetExpandSignSize(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.ExpandSignSize;
+end;
+
+procedure TreeView_SetExpandSignSize(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.ExpandSignSize := AValue;
+end;
+
+function TreeView_GetExpandSignType(AObj: TTreeView): TTreeViewExpandSignType; extdecl;
+begin
+  Result :=  AObj.ExpandSignType;
+end;
+
+procedure TreeView_SetExpandSignType(AObj: TTreeView; AValue: TTreeViewExpandSignType); extdecl;
+begin
+  AObj.ExpandSignType := AValue;
+end;
+
+function TreeView_GetHotTrackColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.HotTrackColor;
+end;
+
+procedure TreeView_SetHotTrackColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.HotTrackColor := AValue;
+end;
+
+function TreeView_GetImagesWidth(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.ImagesWidth;
+end;
+
+procedure TreeView_SetImagesWidth(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.ImagesWidth := AValue;
+end;
+
+function TreeView_GetOptions(AObj: TTreeView): TTreeViewOptions; extdecl;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure TreeView_SetOptions(AObj: TTreeView; AValue: TTreeViewOptions); extdecl;
+begin
+  AObj.Options := AValue;
+end;
+
+function TreeView_GetScrollBars(AObj: TTreeView): TScrollStyle; extdecl;
+begin
+  Result :=  AObj.ScrollBars;
+end;
+
+procedure TreeView_SetScrollBars(AObj: TTreeView; AValue: TScrollStyle); extdecl;
+begin
+  AObj.ScrollBars := AValue;
+end;
+
+function TreeView_GetSelectionColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.SelectionColor;
+end;
+
+procedure TreeView_SetSelectionColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.SelectionColor := AValue;
+end;
+
+function TreeView_GetSelectionFontColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.SelectionFontColor;
+end;
+
+procedure TreeView_SetSelectionFontColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.SelectionFontColor := AValue;
+end;
+
+function TreeView_GetSelectionFontColorUsed(AObj: TTreeView): LongBool; extdecl;
+begin
+  Result :=  AObj.SelectionFontColorUsed;
+end;
+
+procedure TreeView_SetSelectionFontColorUsed(AObj: TTreeView; AValue: LongBool); extdecl;
+begin
+  AObj.SelectionFontColorUsed := AValue;
+end;
+
+function TreeView_GetSeparatorColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.SeparatorColor;
+end;
+
+procedure TreeView_SetSeparatorColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.SeparatorColor := AValue;
+end;
+
+function TreeView_GetStateImagesWidth(AObj: TTreeView): Integer; extdecl;
+begin
+  Result :=  AObj.StateImagesWidth;
+end;
+
+procedure TreeView_SetStateImagesWidth(AObj: TTreeView; AValue: Integer); extdecl;
+begin
+  AObj.StateImagesWidth := AValue;
+end;
+
+function TreeView_GetToolTips(AObj: TTreeView): LongBool; extdecl;
+begin
+  Result :=  AObj.ToolTips;
+end;
+
+procedure TreeView_SetToolTips(AObj: TTreeView; AValue: LongBool); extdecl;
+begin
+  AObj.ToolTips := AValue;
+end;
+
+function TreeView_GetTreeLineColor(AObj: TTreeView): TColor; extdecl;
+begin
+  Result :=  AObj.TreeLineColor;
+end;
+
+procedure TreeView_SetTreeLineColor(AObj: TTreeView; AValue: TColor); extdecl;
+begin
+  AObj.TreeLineColor := AValue;
+end;
+
+function TreeView_GetTreeLinePenStyle(AObj: TTreeView): TPenStyle; extdecl;
+begin
+  Result :=  AObj.TreeLinePenStyle;
+end;
+
+procedure TreeView_SetTreeLinePenStyle(AObj: TTreeView; AValue: TPenStyle); extdecl;
+begin
+  AObj.TreeLinePenStyle := AValue;
 end;
 
 function TreeView_GetAlign(AObj: TTreeView): TAlign; extdecl;
@@ -645,16 +835,6 @@ end;
 procedure TreeView_SetTabStop(AObj: TTreeView; AValue: LongBool); extdecl;
 begin
   AObj.TabStop := AValue;
-end;
-
-function TreeView_GetToolTips(AObj: TTreeView): LongBool; extdecl;
-begin
-  Result :=  AObj.ToolTips;
-end;
-
-procedure TreeView_SetToolTips(AObj: TTreeView; AValue: LongBool); extdecl;
-begin
-  AObj.ToolTips := AValue;
 end;
 
 function TreeView_GetVisible(AObj: TTreeView): LongBool; extdecl;
@@ -1136,16 +1316,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function TreeView_GetMargins(AObj: TTreeView): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure TreeView_SetMargins(AObj: TTreeView; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function TreeView_GetComponentCount(AObj: TTreeView): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1186,6 +1356,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function TreeView_GetAnchorSideLeft(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure TreeView_SetAnchorSideLeft(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function TreeView_GetAnchorSideTop(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure TreeView_SetAnchorSideTop(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function TreeView_GetAnchorSideRight(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure TreeView_SetAnchorSideRight(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function TreeView_GetAnchorSideBottom(AObj: TTreeView): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure TreeView_SetAnchorSideBottom(AObj: TTreeView; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function TreeView_GetChildSizing(AObj: TTreeView): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure TreeView_SetChildSizing(AObj: TTreeView; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function TreeView_GetBorderSpacing(AObj: TTreeView): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure TreeView_SetBorderSpacing(AObj: TTreeView; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TreeView_GetSelections(AObj: TTreeView; Index: Integer): TTreeNode; extdecl;
 begin
   Result :=  AObj.Selections[Index];
@@ -1204,6 +1434,11 @@ end;
 function TreeView_GetComponents(AObj: TTreeView; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function TreeView_GetAnchorSide(AObj: TTreeView; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function TreeView_StaticClassType: TClass; extdecl;
@@ -1268,6 +1503,44 @@ exports
   TreeView_Equals,
   TreeView_GetHashCode,
   TreeView_ToString,
+  TreeView_AnchorToNeighbour,
+  TreeView_AnchorParallel,
+  TreeView_AnchorHorizontalCenterTo,
+  TreeView_AnchorVerticalCenterTo,
+  TreeView_AnchorAsAlign,
+  TreeView_AnchorClient,
+  TreeView_GetDefaultItemHeight,
+  TreeView_SetDefaultItemHeight,
+  TreeView_GetExpandSignColor,
+  TreeView_SetExpandSignColor,
+  TreeView_GetExpandSignSize,
+  TreeView_SetExpandSignSize,
+  TreeView_GetExpandSignType,
+  TreeView_SetExpandSignType,
+  TreeView_GetHotTrackColor,
+  TreeView_SetHotTrackColor,
+  TreeView_GetImagesWidth,
+  TreeView_SetImagesWidth,
+  TreeView_GetOptions,
+  TreeView_SetOptions,
+  TreeView_GetScrollBars,
+  TreeView_SetScrollBars,
+  TreeView_GetSelectionColor,
+  TreeView_SetSelectionColor,
+  TreeView_GetSelectionFontColor,
+  TreeView_SetSelectionFontColor,
+  TreeView_GetSelectionFontColorUsed,
+  TreeView_SetSelectionFontColorUsed,
+  TreeView_GetSeparatorColor,
+  TreeView_SetSeparatorColor,
+  TreeView_GetStateImagesWidth,
+  TreeView_SetStateImagesWidth,
+  TreeView_GetToolTips,
+  TreeView_SetToolTips,
+  TreeView_GetTreeLineColor,
+  TreeView_SetTreeLineColor,
+  TreeView_GetTreeLinePenStyle,
+  TreeView_SetTreeLinePenStyle,
   TreeView_GetAlign,
   TreeView_SetAlign,
   TreeView_GetAnchors,
@@ -1340,8 +1613,6 @@ exports
   TreeView_SetTabOrder,
   TreeView_GetTabStop,
   TreeView_SetTabStop,
-  TreeView_GetToolTips,
-  TreeView_SetToolTips,
   TreeView_GetVisible,
   TreeView_SetVisible,
   TreeView_SetOnAddition,
@@ -1425,8 +1696,6 @@ exports
   TreeView_SetCursor,
   TreeView_GetHint,
   TreeView_SetHint,
-  TreeView_GetMargins,
-  TreeView_SetMargins,
   TreeView_GetComponentCount,
   TreeView_GetComponentIndex,
   TreeView_SetComponentIndex,
@@ -1435,9 +1704,22 @@ exports
   TreeView_SetName,
   TreeView_GetTag,
   TreeView_SetTag,
+  TreeView_GetAnchorSideLeft,
+  TreeView_SetAnchorSideLeft,
+  TreeView_GetAnchorSideTop,
+  TreeView_SetAnchorSideTop,
+  TreeView_GetAnchorSideRight,
+  TreeView_SetAnchorSideRight,
+  TreeView_GetAnchorSideBottom,
+  TreeView_SetAnchorSideBottom,
+  TreeView_GetChildSizing,
+  TreeView_SetChildSizing,
+  TreeView_GetBorderSpacing,
+  TreeView_SetBorderSpacing,
   TreeView_GetSelections,
   TreeView_GetDockClients,
   TreeView_GetControls,
   TreeView_GetComponents,
+  TreeView_GetAnchorSide,
   TreeView_StaticClassType;
 

@@ -214,7 +214,7 @@ end;
 
 function LabeledEdit_GetTextLen(AObj: TLabeledEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure LabeledEdit_SetTextBuf(AObj: TLabeledEdit; Buffer: PChar); extdecl;
@@ -270,6 +270,36 @@ end;
 function LabeledEdit_ToString(AObj: TLabeledEdit): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure LabeledEdit_AnchorToNeighbour(AObj: TLabeledEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure LabeledEdit_AnchorParallel(AObj: TLabeledEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure LabeledEdit_AnchorHorizontalCenterTo(AObj: TLabeledEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure LabeledEdit_AnchorVerticalCenterTo(AObj: TLabeledEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure LabeledEdit_AnchorAsAlign(AObj: TLabeledEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure LabeledEdit_AnchorClient(AObj: TLabeledEdit; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function LabeledEdit_GetAlignment(AObj: TLabeledEdit): TAlignment; extdecl;
@@ -969,16 +999,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function LabeledEdit_GetMargins(AObj: TLabeledEdit): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure LabeledEdit_SetMargins(AObj: TLabeledEdit; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function LabeledEdit_GetComponentCount(AObj: TLabeledEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1019,6 +1039,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function LabeledEdit_GetAnchorSideLeft(AObj: TLabeledEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure LabeledEdit_SetAnchorSideLeft(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function LabeledEdit_GetAnchorSideTop(AObj: TLabeledEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure LabeledEdit_SetAnchorSideTop(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function LabeledEdit_GetAnchorSideRight(AObj: TLabeledEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure LabeledEdit_SetAnchorSideRight(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function LabeledEdit_GetAnchorSideBottom(AObj: TLabeledEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure LabeledEdit_SetAnchorSideBottom(AObj: TLabeledEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function LabeledEdit_GetChildSizing(AObj: TLabeledEdit): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure LabeledEdit_SetChildSizing(AObj: TLabeledEdit; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function LabeledEdit_GetBorderSpacing(AObj: TLabeledEdit): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure LabeledEdit_SetBorderSpacing(AObj: TLabeledEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function LabeledEdit_GetDockClients(AObj: TLabeledEdit; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -1032,6 +1112,11 @@ end;
 function LabeledEdit_GetComponents(AObj: TLabeledEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function LabeledEdit_GetAnchorSide(AObj: TLabeledEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function LabeledEdit_StaticClassType: TClass; extdecl;
@@ -1093,6 +1178,12 @@ exports
   LabeledEdit_Equals,
   LabeledEdit_GetHashCode,
   LabeledEdit_ToString,
+  LabeledEdit_AnchorToNeighbour,
+  LabeledEdit_AnchorParallel,
+  LabeledEdit_AnchorHorizontalCenterTo,
+  LabeledEdit_AnchorVerticalCenterTo,
+  LabeledEdit_AnchorAsAlign,
+  LabeledEdit_AnchorClient,
   LabeledEdit_GetAlignment,
   LabeledEdit_SetAlignment,
   LabeledEdit_GetAnchors,
@@ -1226,8 +1317,6 @@ exports
   LabeledEdit_SetCursor,
   LabeledEdit_GetHint,
   LabeledEdit_SetHint,
-  LabeledEdit_GetMargins,
-  LabeledEdit_SetMargins,
   LabeledEdit_GetComponentCount,
   LabeledEdit_GetComponentIndex,
   LabeledEdit_SetComponentIndex,
@@ -1236,8 +1325,21 @@ exports
   LabeledEdit_SetName,
   LabeledEdit_GetTag,
   LabeledEdit_SetTag,
+  LabeledEdit_GetAnchorSideLeft,
+  LabeledEdit_SetAnchorSideLeft,
+  LabeledEdit_GetAnchorSideTop,
+  LabeledEdit_SetAnchorSideTop,
+  LabeledEdit_GetAnchorSideRight,
+  LabeledEdit_SetAnchorSideRight,
+  LabeledEdit_GetAnchorSideBottom,
+  LabeledEdit_SetAnchorSideBottom,
+  LabeledEdit_GetChildSizing,
+  LabeledEdit_SetChildSizing,
+  LabeledEdit_GetBorderSpacing,
+  LabeledEdit_SetBorderSpacing,
   LabeledEdit_GetDockClients,
   LabeledEdit_GetControls,
   LabeledEdit_GetComponents,
+  LabeledEdit_GetAnchorSide,
   LabeledEdit_StaticClassType;
 

@@ -204,7 +204,7 @@ end;
 
 function ComboBoxEx_GetTextLen(AObj: TComboBoxEx): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ComboBoxEx_SetTextBuf(AObj: TComboBoxEx; Buffer: PChar); extdecl;
@@ -260,6 +260,36 @@ end;
 function ComboBoxEx_ToString(AObj: TComboBoxEx): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ComboBoxEx_AnchorToNeighbour(AObj: TComboBoxEx; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ComboBoxEx_AnchorParallel(AObj: TComboBoxEx; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ComboBoxEx_AnchorHorizontalCenterTo(AObj: TComboBoxEx; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ComboBoxEx_AnchorVerticalCenterTo(AObj: TComboBoxEx; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ComboBoxEx_AnchorAsAlign(AObj: TComboBoxEx; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ComboBoxEx_AnchorClient(AObj: TComboBoxEx; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ComboBoxEx_GetAlign(AObj: TComboBoxEx): TAlign; extdecl;
@@ -934,16 +964,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ComboBoxEx_GetMargins(AObj: TComboBoxEx): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ComboBoxEx_SetMargins(AObj: TComboBoxEx; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ComboBoxEx_GetComponentCount(AObj: TComboBoxEx): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -984,6 +1004,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ComboBoxEx_GetAnchorSideLeft(AObj: TComboBoxEx): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ComboBoxEx_SetAnchorSideLeft(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ComboBoxEx_GetAnchorSideTop(AObj: TComboBoxEx): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ComboBoxEx_SetAnchorSideTop(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ComboBoxEx_GetAnchorSideRight(AObj: TComboBoxEx): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ComboBoxEx_SetAnchorSideRight(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ComboBoxEx_GetAnchorSideBottom(AObj: TComboBoxEx): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ComboBoxEx_SetAnchorSideBottom(AObj: TComboBoxEx; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ComboBoxEx_GetChildSizing(AObj: TComboBoxEx): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ComboBoxEx_SetChildSizing(AObj: TComboBoxEx; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ComboBoxEx_GetBorderSpacing(AObj: TComboBoxEx): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ComboBoxEx_SetBorderSpacing(AObj: TComboBoxEx; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ComboBoxEx_GetDockClients(AObj: TComboBoxEx; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -997,6 +1077,11 @@ end;
 function ComboBoxEx_GetComponents(AObj: TComboBoxEx; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ComboBoxEx_GetAnchorSide(AObj: TComboBoxEx; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ComboBoxEx_StaticClassType: TClass; extdecl;
@@ -1056,6 +1141,12 @@ exports
   ComboBoxEx_Equals,
   ComboBoxEx_GetHashCode,
   ComboBoxEx_ToString,
+  ComboBoxEx_AnchorToNeighbour,
+  ComboBoxEx_AnchorParallel,
+  ComboBoxEx_AnchorHorizontalCenterTo,
+  ComboBoxEx_AnchorVerticalCenterTo,
+  ComboBoxEx_AnchorAsAlign,
+  ComboBoxEx_AnchorClient,
   ComboBoxEx_GetAlign,
   ComboBoxEx_SetAlign,
   ComboBoxEx_GetAutoCompleteOptions,
@@ -1184,8 +1275,6 @@ exports
   ComboBoxEx_SetCursor,
   ComboBoxEx_GetHint,
   ComboBoxEx_SetHint,
-  ComboBoxEx_GetMargins,
-  ComboBoxEx_SetMargins,
   ComboBoxEx_GetComponentCount,
   ComboBoxEx_GetComponentIndex,
   ComboBoxEx_SetComponentIndex,
@@ -1194,8 +1283,21 @@ exports
   ComboBoxEx_SetName,
   ComboBoxEx_GetTag,
   ComboBoxEx_SetTag,
+  ComboBoxEx_GetAnchorSideLeft,
+  ComboBoxEx_SetAnchorSideLeft,
+  ComboBoxEx_GetAnchorSideTop,
+  ComboBoxEx_SetAnchorSideTop,
+  ComboBoxEx_GetAnchorSideRight,
+  ComboBoxEx_SetAnchorSideRight,
+  ComboBoxEx_GetAnchorSideBottom,
+  ComboBoxEx_SetAnchorSideBottom,
+  ComboBoxEx_GetChildSizing,
+  ComboBoxEx_SetChildSizing,
+  ComboBoxEx_GetBorderSpacing,
+  ComboBoxEx_SetBorderSpacing,
   ComboBoxEx_GetDockClients,
   ComboBoxEx_GetControls,
   ComboBoxEx_GetComponents,
+  ComboBoxEx_GetAnchorSide,
   ComboBoxEx_StaticClassType;
 

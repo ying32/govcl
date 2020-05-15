@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TForm struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewForm(owner IComponent) *TForm {
     f := new(TForm)
     f.instance = Form_Create(CheckPtr(owner))
     f.ptr = unsafe.Pointer(f.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(f, (*TForm).Free)
     return f
 }
 
@@ -57,7 +59,7 @@ func FormFromObj(obj IObject) *TForm {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsForm.
 func FormFromUnsafePointer(ptr unsafe.Pointer) *TForm {
     return AsForm(ptr)
@@ -387,6 +389,34 @@ func (f *TForm) ToString() string {
     return Form_ToString(f.instance)
 }
 
+func (f *TForm) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Form_AnchorToNeighbour(f.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (f *TForm) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    Form_AnchorParallel(f.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (f *TForm) AnchorHorizontalCenterTo(ASibling IControl) {
+    Form_AnchorHorizontalCenterTo(f.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (f *TForm) AnchorVerticalCenterTo(ASibling IControl) {
+    Form_AnchorVerticalCenterTo(f.instance, CheckPtr(ASibling))
+}
+
+func (f *TForm) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    Form_AnchorAsAlign(f.instance, ATheAlign , ASpace)
+}
+
+func (f *TForm) AnchorClient(ASpace int32) {
+    Form_AnchorClient(f.instance, ASpace)
+}
+
 func (f *TForm) Action() *TAction {
     return AsAction(Form_GetAction(f.instance))
 }
@@ -555,10 +585,14 @@ func (f *TForm) SetColor(value TColor) {
     Form_SetColor(f.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (f *TForm) Constraints() *TSizeConstraints {
     return AsSizeConstraints(Form_GetConstraints(f.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (f *TForm) SetConstraints(value *TSizeConstraints) {
     Form_SetConstraints(f.instance, CheckPtr(value))
 }
@@ -1217,18 +1251,6 @@ func (f *TForm) SetHint(value string) {
     Form_SetHint(f.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (f *TForm) Margins() *TMargins {
-    return AsMargins(Form_GetMargins(f.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (f *TForm) SetMargins(value *TMargins) {
-    Form_SetMargins(f.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (f *TForm) ComponentCount() int32 {
@@ -1277,6 +1299,74 @@ func (f *TForm) SetTag(value int) {
     Form_SetTag(f.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (f *TForm) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(Form_GetAnchorSideLeft(f.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (f *TForm) SetAnchorSideLeft(value *TAnchorSide) {
+    Form_SetAnchorSideLeft(f.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (f *TForm) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(Form_GetAnchorSideTop(f.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (f *TForm) SetAnchorSideTop(value *TAnchorSide) {
+    Form_SetAnchorSideTop(f.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (f *TForm) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(Form_GetAnchorSideRight(f.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (f *TForm) SetAnchorSideRight(value *TAnchorSide) {
+    Form_SetAnchorSideRight(f.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (f *TForm) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(Form_GetAnchorSideBottom(f.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (f *TForm) SetAnchorSideBottom(value *TAnchorSide) {
+    Form_SetAnchorSideBottom(f.instance, CheckPtr(value))
+}
+
+func (f *TForm) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(Form_GetChildSizing(f.instance))
+}
+
+func (f *TForm) SetChildSizing(value *TControlChildSizing) {
+    Form_SetChildSizing(f.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (f *TForm) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(Form_GetBorderSpacing(f.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (f *TForm) SetBorderSpacing(value *TControlBorderSpacing) {
+    Form_SetBorderSpacing(f.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (f *TForm) DockClients(Index int32) *TControl {
@@ -1293,5 +1383,11 @@ func (f *TForm) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (f *TForm) Components(AIndex int32) *TComponent {
     return AsComponent(Form_GetComponents(f.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (f *TForm) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(Form_GetAnchorSide(f.instance, AKind))
 }
 

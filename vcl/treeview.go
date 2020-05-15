@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TTreeView struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewTreeView(owner IComponent) *TTreeView {
     t := new(TTreeView)
     t.instance = TreeView_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(t, (*TTreeView).Free)
     return t
 }
 
@@ -57,7 +59,7 @@ func TreeViewFromObj(obj IObject) *TTreeView {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsTreeView.
 func TreeViewFromUnsafePointer(ptr unsafe.Pointer) *TTreeView {
     return AsTreeView(ptr)
@@ -421,6 +423,162 @@ func (t *TTreeView) ToString() string {
     return TreeView_ToString(t.instance)
 }
 
+func (t *TTreeView) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TreeView_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTreeView) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TreeView_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (t *TTreeView) AnchorHorizontalCenterTo(ASibling IControl) {
+    TreeView_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (t *TTreeView) AnchorVerticalCenterTo(ASibling IControl) {
+    TreeView_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTreeView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    TreeView_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TTreeView) AnchorClient(ASpace int32) {
+    TreeView_AnchorClient(t.instance, ASpace)
+}
+
+func (t *TTreeView) DefaultItemHeight() int32 {
+    return TreeView_GetDefaultItemHeight(t.instance)
+}
+
+func (t *TTreeView) SetDefaultItemHeight(value int32) {
+    TreeView_SetDefaultItemHeight(t.instance, value)
+}
+
+func (t *TTreeView) ExpandSignColor() TColor {
+    return TreeView_GetExpandSignColor(t.instance)
+}
+
+func (t *TTreeView) SetExpandSignColor(value TColor) {
+    TreeView_SetExpandSignColor(t.instance, value)
+}
+
+func (t *TTreeView) ExpandSignSize() int32 {
+    return TreeView_GetExpandSignSize(t.instance)
+}
+
+func (t *TTreeView) SetExpandSignSize(value int32) {
+    TreeView_SetExpandSignSize(t.instance, value)
+}
+
+func (t *TTreeView) ExpandSignType() TTreeViewExpandSignType {
+    return TreeView_GetExpandSignType(t.instance)
+}
+
+func (t *TTreeView) SetExpandSignType(value TTreeViewExpandSignType) {
+    TreeView_SetExpandSignType(t.instance, value)
+}
+
+func (t *TTreeView) HotTrackColor() TColor {
+    return TreeView_GetHotTrackColor(t.instance)
+}
+
+func (t *TTreeView) SetHotTrackColor(value TColor) {
+    TreeView_SetHotTrackColor(t.instance, value)
+}
+
+func (t *TTreeView) ImagesWidth() int32 {
+    return TreeView_GetImagesWidth(t.instance)
+}
+
+func (t *TTreeView) SetImagesWidth(value int32) {
+    TreeView_SetImagesWidth(t.instance, value)
+}
+
+func (t *TTreeView) Options() TTreeViewOptions {
+    return TreeView_GetOptions(t.instance)
+}
+
+func (t *TTreeView) SetOptions(value TTreeViewOptions) {
+    TreeView_SetOptions(t.instance, value)
+}
+
+func (t *TTreeView) ScrollBars() TScrollStyle {
+    return TreeView_GetScrollBars(t.instance)
+}
+
+func (t *TTreeView) SetScrollBars(value TScrollStyle) {
+    TreeView_SetScrollBars(t.instance, value)
+}
+
+func (t *TTreeView) SelectionColor() TColor {
+    return TreeView_GetSelectionColor(t.instance)
+}
+
+func (t *TTreeView) SetSelectionColor(value TColor) {
+    TreeView_SetSelectionColor(t.instance, value)
+}
+
+func (t *TTreeView) SelectionFontColor() TColor {
+    return TreeView_GetSelectionFontColor(t.instance)
+}
+
+func (t *TTreeView) SetSelectionFontColor(value TColor) {
+    TreeView_SetSelectionFontColor(t.instance, value)
+}
+
+func (t *TTreeView) SelectionFontColorUsed() bool {
+    return TreeView_GetSelectionFontColorUsed(t.instance)
+}
+
+func (t *TTreeView) SetSelectionFontColorUsed(value bool) {
+    TreeView_SetSelectionFontColorUsed(t.instance, value)
+}
+
+func (t *TTreeView) SeparatorColor() TColor {
+    return TreeView_GetSeparatorColor(t.instance)
+}
+
+func (t *TTreeView) SetSeparatorColor(value TColor) {
+    TreeView_SetSeparatorColor(t.instance, value)
+}
+
+func (t *TTreeView) StateImagesWidth() int32 {
+    return TreeView_GetStateImagesWidth(t.instance)
+}
+
+func (t *TTreeView) SetStateImagesWidth(value int32) {
+    TreeView_SetStateImagesWidth(t.instance, value)
+}
+
+func (t *TTreeView) ToolTips() bool {
+    return TreeView_GetToolTips(t.instance)
+}
+
+func (t *TTreeView) SetToolTips(value bool) {
+    TreeView_SetToolTips(t.instance, value)
+}
+
+func (t *TTreeView) TreeLineColor() TColor {
+    return TreeView_GetTreeLineColor(t.instance)
+}
+
+func (t *TTreeView) SetTreeLineColor(value TColor) {
+    TreeView_SetTreeLineColor(t.instance, value)
+}
+
+func (t *TTreeView) TreeLinePenStyle() TPenStyle {
+    return TreeView_GetTreeLinePenStyle(t.instance)
+}
+
+func (t *TTreeView) SetTreeLinePenStyle(value TPenStyle) {
+    TreeView_SetTreeLinePenStyle(t.instance, value)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (t *TTreeView) Align() TAlign {
@@ -497,10 +655,14 @@ func (t *TTreeView) SetColor(value TColor) {
     TreeView_SetColor(t.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (t *TTreeView) Constraints() *TSizeConstraints {
     return AsSizeConstraints(TreeView_GetConstraints(t.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (t *TTreeView) SetConstraints(value *TSizeConstraints) {
     TreeView_SetConstraints(t.instance, CheckPtr(value))
 }
@@ -669,10 +831,14 @@ func (t *TTreeView) SetParentFont(value bool) {
     TreeView_SetParentFont(t.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTreeView) ParentShowHint() bool {
     return TreeView_GetParentShowHint(t.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTreeView) SetParentShowHint(value bool) {
     TreeView_SetParentShowHint(t.instance, value)
 }
@@ -791,14 +957,6 @@ func (t *TTreeView) TabStop() bool {
 // EN: Set Tab can stay.
 func (t *TTreeView) SetTabStop(value bool) {
     TreeView_SetTabStop(t.instance, value)
-}
-
-func (t *TTreeView) ToolTips() bool {
-    return TreeView_GetToolTips(t.instance)
-}
-
-func (t *TTreeView) SetToolTips(value bool) {
-    TreeView_SetToolTips(t.instance, value)
 }
 
 // CN: 获取控件可视。
@@ -1241,18 +1399,6 @@ func (t *TTreeView) SetHint(value string) {
     TreeView_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TTreeView) Margins() *TMargins {
-    return AsMargins(TreeView_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TTreeView) SetMargins(value *TMargins) {
-    TreeView_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TTreeView) ComponentCount() int32 {
@@ -1301,6 +1447,74 @@ func (t *TTreeView) SetTag(value int) {
     TreeView_SetTag(t.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (t *TTreeView) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideLeft(t.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (t *TTreeView) SetAnchorSideLeft(value *TAnchorSide) {
+    TreeView_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (t *TTreeView) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideTop(t.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (t *TTreeView) SetAnchorSideTop(value *TAnchorSide) {
+    TreeView_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (t *TTreeView) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideRight(t.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (t *TTreeView) SetAnchorSideRight(value *TAnchorSide) {
+    TreeView_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (t *TTreeView) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSideBottom(t.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (t *TTreeView) SetAnchorSideBottom(value *TAnchorSide) {
+    TreeView_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TTreeView) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(TreeView_GetChildSizing(t.instance))
+}
+
+func (t *TTreeView) SetChildSizing(value *TControlChildSizing) {
+    TreeView_SetChildSizing(t.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (t *TTreeView) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(TreeView_GetBorderSpacing(t.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (t *TTreeView) SetBorderSpacing(value *TControlBorderSpacing) {
+    TreeView_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 func (t *TTreeView) Selections(Index int32) *TTreeNode {
     return AsTreeNode(TreeView_GetSelections(t.instance, Index))
 }
@@ -1321,5 +1535,11 @@ func (t *TTreeView) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (t *TTreeView) Components(AIndex int32) *TComponent {
     return AsComponent(TreeView_GetComponents(t.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (t *TTreeView) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(TreeView_GetAnchorSide(t.instance, AKind))
 }
 

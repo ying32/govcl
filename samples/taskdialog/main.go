@@ -32,6 +32,7 @@ func (f *TMainForm) OnFormCreate(sender vcl.IObject) {
 	f.Btn1.SetCaption("TaskDialog")
 	f.Btn1.SetLeft(10)
 	f.Btn1.SetTop(10)
+	f.Btn1.SetOnClick(f.OnBtn1Click)
 
 }
 

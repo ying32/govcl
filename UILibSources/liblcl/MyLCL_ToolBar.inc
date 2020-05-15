@@ -179,7 +179,7 @@ end;
 
 function ToolBar_GetTextLen(AObj: TToolBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ToolBar_SetTextBuf(AObj: TToolBar; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function ToolBar_ToString(AObj: TToolBar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ToolBar_AnchorToNeighbour(AObj: TToolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ToolBar_AnchorParallel(AObj: TToolBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ToolBar_AnchorHorizontalCenterTo(AObj: TToolBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ToolBar_AnchorVerticalCenterTo(AObj: TToolBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ToolBar_AnchorAsAlign(AObj: TToolBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ToolBar_AnchorClient(AObj: TToolBar; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ToolBar_GetButtonCount(AObj: TToolBar): Integer; extdecl;
@@ -929,16 +959,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ToolBar_GetMargins(AObj: TToolBar): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ToolBar_SetMargins(AObj: TToolBar; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ToolBar_GetComponentCount(AObj: TToolBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -979,6 +999,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ToolBar_GetAnchorSideLeft(AObj: TToolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ToolBar_SetAnchorSideLeft(AObj: TToolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ToolBar_GetAnchorSideTop(AObj: TToolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ToolBar_SetAnchorSideTop(AObj: TToolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ToolBar_GetAnchorSideRight(AObj: TToolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ToolBar_SetAnchorSideRight(AObj: TToolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ToolBar_GetAnchorSideBottom(AObj: TToolBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ToolBar_SetAnchorSideBottom(AObj: TToolBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ToolBar_GetChildSizing(AObj: TToolBar): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ToolBar_SetChildSizing(AObj: TToolBar; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ToolBar_GetBorderSpacing(AObj: TToolBar): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ToolBar_SetBorderSpacing(AObj: TToolBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ToolBar_GetButtons(AObj: TToolBar; Index: Integer): TToolButton; extdecl;
 begin
   Result :=  AObj.Buttons[Index];
@@ -997,6 +1077,11 @@ end;
 function ToolBar_GetComponents(AObj: TToolBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ToolBar_GetAnchorSide(AObj: TToolBar; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ToolBar_StaticClassType: TClass; extdecl;
@@ -1051,6 +1136,12 @@ exports
   ToolBar_Equals,
   ToolBar_GetHashCode,
   ToolBar_ToString,
+  ToolBar_AnchorToNeighbour,
+  ToolBar_AnchorParallel,
+  ToolBar_AnchorHorizontalCenterTo,
+  ToolBar_AnchorVerticalCenterTo,
+  ToolBar_AnchorAsAlign,
+  ToolBar_AnchorClient,
   ToolBar_GetButtonCount,
   ToolBar_GetCanvas,
   ToolBar_GetRowCount,
@@ -1183,8 +1274,6 @@ exports
   ToolBar_SetCursor,
   ToolBar_GetHint,
   ToolBar_SetHint,
-  ToolBar_GetMargins,
-  ToolBar_SetMargins,
   ToolBar_GetComponentCount,
   ToolBar_GetComponentIndex,
   ToolBar_SetComponentIndex,
@@ -1193,9 +1282,22 @@ exports
   ToolBar_SetName,
   ToolBar_GetTag,
   ToolBar_SetTag,
+  ToolBar_GetAnchorSideLeft,
+  ToolBar_SetAnchorSideLeft,
+  ToolBar_GetAnchorSideTop,
+  ToolBar_SetAnchorSideTop,
+  ToolBar_GetAnchorSideRight,
+  ToolBar_SetAnchorSideRight,
+  ToolBar_GetAnchorSideBottom,
+  ToolBar_SetAnchorSideBottom,
+  ToolBar_GetChildSizing,
+  ToolBar_SetChildSizing,
+  ToolBar_GetBorderSpacing,
+  ToolBar_SetBorderSpacing,
   ToolBar_GetButtons,
   ToolBar_GetDockClients,
   ToolBar_GetControls,
   ToolBar_GetComponents,
+  ToolBar_GetAnchorSide,
   ToolBar_StaticClassType;
 

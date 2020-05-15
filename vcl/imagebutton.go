@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TImageButton struct {
     IControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewImageButton(owner IComponent) *TImageButton {
     i := new(TImageButton)
     i.instance = ImageButton_Create(CheckPtr(owner))
     i.ptr = unsafe.Pointer(i.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(i, (*TImageButton).Free)
     return i
 }
 
@@ -57,7 +59,7 @@ func ImageButtonFromObj(obj IObject) *TImageButton {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsImageButton.
 func ImageButtonFromUnsafePointer(ptr unsafe.Pointer) *TImageButton {
     return AsImageButton(ptr)
@@ -289,6 +291,34 @@ func (i *TImageButton) ToString() string {
     return ImageButton_ToString(i.instance)
 }
 
+func (i *TImageButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ImageButton_AnchorToNeighbour(i.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (i *TImageButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ImageButton_AnchorParallel(i.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (i *TImageButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    ImageButton_AnchorHorizontalCenterTo(i.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (i *TImageButton) AnchorVerticalCenterTo(ASibling IControl) {
+    ImageButton_AnchorVerticalCenterTo(i.instance, CheckPtr(ASibling))
+}
+
+func (i *TImageButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ImageButton_AnchorAsAlign(i.instance, ATheAlign , ASpace)
+}
+
+func (i *TImageButton) AnchorClient(ASpace int32) {
+    ImageButton_AnchorClient(i.instance, ASpace)
+}
+
 func (i *TImageButton) Action() *TAction {
     return AsAction(ImageButton_GetAction(i.instance))
 }
@@ -333,10 +363,14 @@ func (i *TImageButton) SetAutoSize(value bool) {
     ImageButton_SetAutoSize(i.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (i *TImageButton) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ImageButton_GetConstraints(i.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (i *TImageButton) SetConstraints(value *TSizeConstraints) {
     ImageButton_SetConstraints(i.instance, CheckPtr(value))
 }
@@ -433,10 +467,14 @@ func (i *TImageButton) SetModalResult(value TModalResult) {
     ImageButton_SetModalResult(i.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (i *TImageButton) ParentShowHint() bool {
     return ImageButton_GetParentShowHint(i.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (i *TImageButton) SetParentShowHint(value bool) {
     ImageButton_SetParentShowHint(i.instance, value)
 }
@@ -453,10 +491,14 @@ func (i *TImageButton) SetParentFont(value bool) {
     ImageButton_SetParentFont(i.instance, value)
 }
 
+// CN: 获取图片。
+// EN: .
 func (i *TImageButton) Picture() *TPicture {
     return AsPicture(ImageButton_GetPicture(i.instance))
 }
 
+// CN: 设置图片。
+// EN: .
 func (i *TImageButton) SetPicture(value *TPicture) {
     ImageButton_SetPicture(i.instance, CheckPtr(value))
 }
@@ -739,18 +781,6 @@ func (i *TImageButton) SetHint(value string) {
     ImageButton_SetHint(i.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (i *TImageButton) Margins() *TMargins {
-    return AsMargins(ImageButton_GetMargins(i.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (i *TImageButton) SetMargins(value *TMargins) {
-    ImageButton_SetMargins(i.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (i *TImageButton) ComponentCount() int32 {
@@ -799,9 +829,75 @@ func (i *TImageButton) SetTag(value int) {
     ImageButton_SetTag(i.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (i *TImageButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ImageButton_GetAnchorSideLeft(i.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (i *TImageButton) SetAnchorSideLeft(value *TAnchorSide) {
+    ImageButton_SetAnchorSideLeft(i.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (i *TImageButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ImageButton_GetAnchorSideTop(i.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (i *TImageButton) SetAnchorSideTop(value *TAnchorSide) {
+    ImageButton_SetAnchorSideTop(i.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (i *TImageButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ImageButton_GetAnchorSideRight(i.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (i *TImageButton) SetAnchorSideRight(value *TAnchorSide) {
+    ImageButton_SetAnchorSideRight(i.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (i *TImageButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ImageButton_GetAnchorSideBottom(i.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (i *TImageButton) SetAnchorSideBottom(value *TAnchorSide) {
+    ImageButton_SetAnchorSideBottom(i.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (i *TImageButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ImageButton_GetBorderSpacing(i.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (i *TImageButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    ImageButton_SetBorderSpacing(i.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (i *TImageButton) Components(AIndex int32) *TComponent {
     return AsComponent(ImageButton_GetComponents(i.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (i *TImageButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ImageButton_GetAnchorSide(i.instance, AKind))
 }
 

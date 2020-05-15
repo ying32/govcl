@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TMemoryStream struct {
     IObject
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewMemoryStream() *TMemoryStream {
     m := new(TMemoryStream)
     m.instance = MemoryStream_Create()
     m.ptr = unsafe.Pointer(m.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(m, (*TMemoryStream).Free)
     return m
 }
 
@@ -57,7 +59,7 @@ func MemoryStreamFromObj(obj IObject) *TMemoryStream {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsMemoryStream.
 func MemoryStreamFromUnsafePointer(ptr unsafe.Pointer) *TMemoryStream {
     return AsMemoryStream(ptr)
@@ -127,6 +129,8 @@ func (m *TMemoryStream) LoadFromFile(FileName string) {
     MemoryStream_LoadFromFile(m.instance, FileName)
 }
 
+// CN: 移动流指针位置。
+// EN: .
 func (m *TMemoryStream) Seek(Offset int64, Origin TSeekOrigin) int64 {
     return MemoryStream_Seek(m.instance, Offset , Origin)
 }
@@ -143,6 +147,8 @@ func (m *TMemoryStream) SaveToFile(FileName string) {
     MemoryStream_SaveToFile(m.instance, FileName)
 }
 
+// CN: 从指定流中复制。
+// EN: .
 func (m *TMemoryStream) CopyFrom(Source IObject, Count int64) int64 {
     return MemoryStream_CopyFrom(m.instance, CheckPtr(Source), Count)
 }
@@ -189,22 +195,32 @@ func (m *TMemoryStream) ToString() string {
     return MemoryStream_ToString(m.instance)
 }
 
+// CN: 获取内存指针。
+// EN: .
 func (m *TMemoryStream) Memory() uintptr {
     return MemoryStream_GetMemory(m.instance)
 }
 
+// CN: 获取流指针位置。
+// EN: .
 func (m *TMemoryStream) Position() int64 {
     return MemoryStream_GetPosition(m.instance)
 }
 
+// CN: 设置流指针位置。
+// EN: .
 func (m *TMemoryStream) SetPosition(value int64) {
     MemoryStream_SetPosition(m.instance, value)
 }
 
+// CN: 获取流的大小。
+// EN: .
 func (m *TMemoryStream) Size() int64 {
     return MemoryStream_GetSize(m.instance)
 }
 
+// CN: 设置流的大小。
+// EN: .
 func (m *TMemoryStream) SetSize(value int64) {
     MemoryStream_SetSize(m.instance, value)
 }

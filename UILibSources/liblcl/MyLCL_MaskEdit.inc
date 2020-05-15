@@ -29,7 +29,7 @@ end;
 
 function MaskEdit_GetTextLen(AObj: TMaskEdit): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure MaskEdit_ClearSelection(AObj: TMaskEdit); extdecl;
@@ -275,6 +275,36 @@ end;
 function MaskEdit_ToString(AObj: TMaskEdit): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure MaskEdit_AnchorToNeighbour(AObj: TMaskEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure MaskEdit_AnchorParallel(AObj: TMaskEdit; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure MaskEdit_AnchorHorizontalCenterTo(AObj: TMaskEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure MaskEdit_AnchorVerticalCenterTo(AObj: TMaskEdit; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure MaskEdit_AnchorAsAlign(AObj: TMaskEdit; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure MaskEdit_AnchorClient(AObj: TMaskEdit; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function MaskEdit_GetAlign(AObj: TMaskEdit): TAlign; extdecl;
@@ -968,16 +998,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function MaskEdit_GetMargins(AObj: TMaskEdit): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure MaskEdit_SetMargins(AObj: TMaskEdit; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function MaskEdit_GetComponentCount(AObj: TMaskEdit): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1018,6 +1038,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function MaskEdit_GetAnchorSideLeft(AObj: TMaskEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure MaskEdit_SetAnchorSideLeft(AObj: TMaskEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function MaskEdit_GetAnchorSideTop(AObj: TMaskEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure MaskEdit_SetAnchorSideTop(AObj: TMaskEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function MaskEdit_GetAnchorSideRight(AObj: TMaskEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure MaskEdit_SetAnchorSideRight(AObj: TMaskEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function MaskEdit_GetAnchorSideBottom(AObj: TMaskEdit): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure MaskEdit_SetAnchorSideBottom(AObj: TMaskEdit; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function MaskEdit_GetChildSizing(AObj: TMaskEdit): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure MaskEdit_SetChildSizing(AObj: TMaskEdit; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function MaskEdit_GetBorderSpacing(AObj: TMaskEdit): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure MaskEdit_SetBorderSpacing(AObj: TMaskEdit; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function MaskEdit_GetDockClients(AObj: TMaskEdit; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -1031,6 +1111,11 @@ end;
 function MaskEdit_GetComponents(AObj: TMaskEdit; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function MaskEdit_GetAnchorSide(AObj: TMaskEdit; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function MaskEdit_StaticClassType: TClass; extdecl;
@@ -1093,6 +1178,12 @@ exports
   MaskEdit_Equals,
   MaskEdit_GetHashCode,
   MaskEdit_ToString,
+  MaskEdit_AnchorToNeighbour,
+  MaskEdit_AnchorParallel,
+  MaskEdit_AnchorHorizontalCenterTo,
+  MaskEdit_AnchorVerticalCenterTo,
+  MaskEdit_AnchorAsAlign,
+  MaskEdit_AnchorClient,
   MaskEdit_GetAlign,
   MaskEdit_SetAlign,
   MaskEdit_GetAlignment,
@@ -1224,8 +1315,6 @@ exports
   MaskEdit_SetCursor,
   MaskEdit_GetHint,
   MaskEdit_SetHint,
-  MaskEdit_GetMargins,
-  MaskEdit_SetMargins,
   MaskEdit_GetComponentCount,
   MaskEdit_GetComponentIndex,
   MaskEdit_SetComponentIndex,
@@ -1234,8 +1323,21 @@ exports
   MaskEdit_SetName,
   MaskEdit_GetTag,
   MaskEdit_SetTag,
+  MaskEdit_GetAnchorSideLeft,
+  MaskEdit_SetAnchorSideLeft,
+  MaskEdit_GetAnchorSideTop,
+  MaskEdit_SetAnchorSideTop,
+  MaskEdit_GetAnchorSideRight,
+  MaskEdit_SetAnchorSideRight,
+  MaskEdit_GetAnchorSideBottom,
+  MaskEdit_SetAnchorSideBottom,
+  MaskEdit_GetChildSizing,
+  MaskEdit_SetChildSizing,
+  MaskEdit_GetBorderSpacing,
+  MaskEdit_SetBorderSpacing,
   MaskEdit_GetDockClients,
   MaskEdit_GetControls,
   MaskEdit_GetComponents,
+  MaskEdit_GetAnchorSide,
   MaskEdit_StaticClassType;
 

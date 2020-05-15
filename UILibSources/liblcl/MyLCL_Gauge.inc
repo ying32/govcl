@@ -109,7 +109,7 @@ end;
 
 function Gauge_GetTextLen(AObj: TGauge): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Gauge_SetTextBuf(AObj: TGauge; Buffer: PChar); extdecl;
@@ -165,6 +165,36 @@ end;
 function Gauge_ToString(AObj: TGauge): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Gauge_AnchorToNeighbour(AObj: TGauge; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Gauge_AnchorParallel(AObj: TGauge; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Gauge_AnchorHorizontalCenterTo(AObj: TGauge; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Gauge_AnchorVerticalCenterTo(AObj: TGauge; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Gauge_AnchorAsAlign(AObj: TGauge; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Gauge_AnchorClient(AObj: TGauge; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Gauge_GetPercentDone(AObj: TGauge): Integer; extdecl;
@@ -517,16 +547,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Gauge_GetMargins(AObj: TGauge): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Gauge_SetMargins(AObj: TGauge; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Gauge_GetComponentCount(AObj: TGauge): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -567,9 +587,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Gauge_GetAnchorSideLeft(AObj: TGauge): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Gauge_SetAnchorSideLeft(AObj: TGauge; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Gauge_GetAnchorSideTop(AObj: TGauge): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Gauge_SetAnchorSideTop(AObj: TGauge; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Gauge_GetAnchorSideRight(AObj: TGauge): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Gauge_SetAnchorSideRight(AObj: TGauge; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Gauge_GetAnchorSideBottom(AObj: TGauge): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Gauge_SetAnchorSideBottom(AObj: TGauge; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Gauge_GetBorderSpacing(AObj: TGauge): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Gauge_SetBorderSpacing(AObj: TGauge; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Gauge_GetComponents(AObj: TGauge; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Gauge_GetAnchorSide(AObj: TGauge; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Gauge_StaticClassType: TClass; extdecl;
@@ -610,6 +685,12 @@ exports
   Gauge_Equals,
   Gauge_GetHashCode,
   Gauge_ToString,
+  Gauge_AnchorToNeighbour,
+  Gauge_AnchorParallel,
+  Gauge_AnchorHorizontalCenterTo,
+  Gauge_AnchorVerticalCenterTo,
+  Gauge_AnchorAsAlign,
+  Gauge_AnchorClient,
   Gauge_GetPercentDone,
   Gauge_GetAlign,
   Gauge_SetAlign,
@@ -680,8 +761,6 @@ exports
   Gauge_SetCursor,
   Gauge_GetHint,
   Gauge_SetHint,
-  Gauge_GetMargins,
-  Gauge_SetMargins,
   Gauge_GetComponentCount,
   Gauge_GetComponentIndex,
   Gauge_SetComponentIndex,
@@ -690,6 +769,17 @@ exports
   Gauge_SetName,
   Gauge_GetTag,
   Gauge_SetTag,
+  Gauge_GetAnchorSideLeft,
+  Gauge_SetAnchorSideLeft,
+  Gauge_GetAnchorSideTop,
+  Gauge_SetAnchorSideTop,
+  Gauge_GetAnchorSideRight,
+  Gauge_SetAnchorSideRight,
+  Gauge_GetAnchorSideBottom,
+  Gauge_SetAnchorSideBottom,
+  Gauge_GetBorderSpacing,
+  Gauge_SetBorderSpacing,
   Gauge_GetComponents,
+  Gauge_GetAnchorSide,
   Gauge_StaticClassType;
 

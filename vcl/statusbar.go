@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TStatusBar struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewStatusBar(owner IComponent) *TStatusBar {
     s := new(TStatusBar)
     s.instance = StatusBar_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(s, (*TStatusBar).Free)
     return s
 }
 
@@ -57,7 +59,7 @@ func StatusBarFromObj(obj IObject) *TStatusBar {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsStatusBar.
 func StatusBarFromUnsafePointer(ptr unsafe.Pointer) *TStatusBar {
     return AsStatusBar(ptr)
@@ -371,6 +373,34 @@ func (s *TStatusBar) ToString() string {
     return StatusBar_ToString(s.instance)
 }
 
+func (s *TStatusBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StatusBar_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TStatusBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StatusBar_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (s *TStatusBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    StatusBar_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (s *TStatusBar) AnchorVerticalCenterTo(ASibling IControl) {
+    StatusBar_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TStatusBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    StatusBar_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TStatusBar) AnchorClient(ASpace int32) {
+    StatusBar_AnchorClient(s.instance, ASpace)
+}
+
 func (s *TStatusBar) Action() *TAction {
     return AsAction(StatusBar_GetAction(s.instance))
 }
@@ -515,10 +545,14 @@ func (s *TStatusBar) SetFont(value *TFont) {
     StatusBar_SetFont(s.instance, CheckPtr(value))
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TStatusBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(StatusBar_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TStatusBar) SetConstraints(value *TSizeConstraints) {
     StatusBar_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -567,10 +601,14 @@ func (s *TStatusBar) SetParentFont(value bool) {
     StatusBar_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStatusBar) ParentShowHint() bool {
     return StatusBar_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStatusBar) SetParentShowHint(value bool) {
     StatusBar_SetParentShowHint(s.instance, value)
 }
@@ -989,18 +1027,6 @@ func (s *TStatusBar) SetHint(value string) {
     StatusBar_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TStatusBar) Margins() *TMargins {
-    return AsMargins(StatusBar_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TStatusBar) SetMargins(value *TMargins) {
-    StatusBar_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TStatusBar) ComponentCount() int32 {
@@ -1049,6 +1075,74 @@ func (s *TStatusBar) SetTag(value int) {
     StatusBar_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (s *TStatusBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideLeft(s.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (s *TStatusBar) SetAnchorSideLeft(value *TAnchorSide) {
+    StatusBar_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (s *TStatusBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideTop(s.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (s *TStatusBar) SetAnchorSideTop(value *TAnchorSide) {
+    StatusBar_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (s *TStatusBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideRight(s.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (s *TStatusBar) SetAnchorSideRight(value *TAnchorSide) {
+    StatusBar_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (s *TStatusBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSideBottom(s.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (s *TStatusBar) SetAnchorSideBottom(value *TAnchorSide) {
+    StatusBar_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TStatusBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(StatusBar_GetChildSizing(s.instance))
+}
+
+func (s *TStatusBar) SetChildSizing(value *TControlChildSizing) {
+    StatusBar_SetChildSizing(s.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (s *TStatusBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(StatusBar_GetBorderSpacing(s.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (s *TStatusBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    StatusBar_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TStatusBar) DockClients(Index int32) *TControl {
@@ -1065,5 +1159,11 @@ func (s *TStatusBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (s *TStatusBar) Components(AIndex int32) *TComponent {
     return AsComponent(StatusBar_GetComponents(s.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (s *TStatusBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(StatusBar_GetAnchorSide(s.instance, AKind))
 }
 

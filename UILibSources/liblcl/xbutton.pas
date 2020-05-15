@@ -148,14 +148,16 @@ end;
 procedure TXButton.Paint;
 begin
   inherited Paint;
-  Canvas.Draw(0, 0,FBufferBmp);
+
   if csDesigning in ComponentState then
   begin
+    Canvas.Draw(1, 1,FBufferBmp);
     Canvas.Pen.Style := psDot;
     Canvas.Pen.Color := clBlack;
     Canvas.Brush.Style := bsClear;
-    Canvas.Rectangle(ClientRect);
-  end;
+    Canvas.Rectangle(Rect(0, 0, Width -1, Height - 1)); ///???
+  end else
+    Canvas.Draw(0, 0,FBufferBmp);
 end;
 
 procedure TXButton.Resize;

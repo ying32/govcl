@@ -219,7 +219,7 @@ end;
 
 function CheckListBox_GetTextLen(AObj: TCheckListBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure CheckListBox_SetTextBuf(AObj: TCheckListBox; Buffer: PChar); extdecl;
@@ -275,6 +275,36 @@ end;
 function CheckListBox_ToString(AObj: TCheckListBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure CheckListBox_AnchorToNeighbour(AObj: TCheckListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure CheckListBox_AnchorParallel(AObj: TCheckListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure CheckListBox_AnchorHorizontalCenterTo(AObj: TCheckListBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure CheckListBox_AnchorVerticalCenterTo(AObj: TCheckListBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure CheckListBox_AnchorAsAlign(AObj: TCheckListBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure CheckListBox_AnchorClient(AObj: TCheckListBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 procedure CheckListBox_SetOnClickCheck(AObj: TCheckListBox; AEventId: NativeUInt); extdecl;
@@ -673,6 +703,16 @@ begin
   Result :=  AObj.Count;
 end;
 
+function CheckListBox_GetTopIndex(AObj: TCheckListBox): Integer; extdecl;
+begin
+  Result :=  AObj.TopIndex;
+end;
+
+procedure CheckListBox_SetTopIndex(AObj: TCheckListBox; AValue: Integer); extdecl;
+begin
+  AObj.TopIndex := AValue;
+end;
+
 function CheckListBox_GetMultiSelect(AObj: TCheckListBox): LongBool; extdecl;
 begin
   Result :=  AObj.MultiSelect;
@@ -903,16 +943,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function CheckListBox_GetMargins(AObj: TCheckListBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure CheckListBox_SetMargins(AObj: TCheckListBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function CheckListBox_GetComponentCount(AObj: TCheckListBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -951,6 +981,66 @@ end;
 procedure CheckListBox_SetTag(AObj: TCheckListBox; AValue: NativeInt); extdecl;
 begin
   AObj.Tag := AValue;
+end;
+
+function CheckListBox_GetAnchorSideLeft(AObj: TCheckListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure CheckListBox_SetAnchorSideLeft(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function CheckListBox_GetAnchorSideTop(AObj: TCheckListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure CheckListBox_SetAnchorSideTop(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function CheckListBox_GetAnchorSideRight(AObj: TCheckListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure CheckListBox_SetAnchorSideRight(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function CheckListBox_GetAnchorSideBottom(AObj: TCheckListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure CheckListBox_SetAnchorSideBottom(AObj: TCheckListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function CheckListBox_GetChildSizing(AObj: TCheckListBox): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure CheckListBox_SetChildSizing(AObj: TCheckListBox; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function CheckListBox_GetBorderSpacing(AObj: TCheckListBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure CheckListBox_SetBorderSpacing(AObj: TCheckListBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
 end;
 
 function CheckListBox_GetChecked(AObj: TCheckListBox; Index: Integer): LongBool; extdecl;
@@ -1018,6 +1108,11 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function CheckListBox_GetAnchorSide(AObj: TCheckListBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
+end;
+
 function CheckListBox_StaticClassType: TClass; extdecl;
 begin
   Result := TCheckListBox;
@@ -1078,6 +1173,12 @@ exports
   CheckListBox_Equals,
   CheckListBox_GetHashCode,
   CheckListBox_ToString,
+  CheckListBox_AnchorToNeighbour,
+  CheckListBox_AnchorParallel,
+  CheckListBox_AnchorHorizontalCenterTo,
+  CheckListBox_AnchorVerticalCenterTo,
+  CheckListBox_AnchorAsAlign,
+  CheckListBox_AnchorClient,
   CheckListBox_SetOnClickCheck,
   CheckListBox_GetAlign,
   CheckListBox_SetAlign,
@@ -1150,6 +1251,8 @@ exports
   CheckListBox_SetOnMouseUp,
   CheckListBox_GetCanvas,
   CheckListBox_GetCount,
+  CheckListBox_GetTopIndex,
+  CheckListBox_SetTopIndex,
   CheckListBox_GetMultiSelect,
   CheckListBox_SetMultiSelect,
   CheckListBox_GetSelCount,
@@ -1196,8 +1299,6 @@ exports
   CheckListBox_SetCursor,
   CheckListBox_GetHint,
   CheckListBox_SetHint,
-  CheckListBox_GetMargins,
-  CheckListBox_SetMargins,
   CheckListBox_GetComponentCount,
   CheckListBox_GetComponentIndex,
   CheckListBox_SetComponentIndex,
@@ -1206,6 +1307,18 @@ exports
   CheckListBox_SetName,
   CheckListBox_GetTag,
   CheckListBox_SetTag,
+  CheckListBox_GetAnchorSideLeft,
+  CheckListBox_SetAnchorSideLeft,
+  CheckListBox_GetAnchorSideTop,
+  CheckListBox_SetAnchorSideTop,
+  CheckListBox_GetAnchorSideRight,
+  CheckListBox_SetAnchorSideRight,
+  CheckListBox_GetAnchorSideBottom,
+  CheckListBox_SetAnchorSideBottom,
+  CheckListBox_GetChildSizing,
+  CheckListBox_SetChildSizing,
+  CheckListBox_GetBorderSpacing,
+  CheckListBox_SetBorderSpacing,
   CheckListBox_GetChecked,
   CheckListBox_SetChecked,
   CheckListBox_GetItemEnabled,
@@ -1219,5 +1332,6 @@ exports
   CheckListBox_GetDockClients,
   CheckListBox_GetControls,
   CheckListBox_GetComponents,
+  CheckListBox_GetAnchorSide,
   CheckListBox_StaticClassType;
 

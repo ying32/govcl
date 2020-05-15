@@ -1,4 +1,4 @@
-//----------------------------------------
+﻿//----------------------------------------
 //
 // Copyright © ying32. All Rights Reserved.
 // 
@@ -17,10 +17,18 @@
 
 unit ImageButton;
 
+{$IFDEF FPC}
+  {$mode objfpc}{$H+}
+{$ENDIF}
+
 interface
 
 uses
+{$IFDEF FPC}
   LMessages,
+{$ELSE}
+  Winapi.Messages,
+{$ENDIF}
   Classes,
   SysUtils,
   Types,
@@ -29,6 +37,10 @@ uses
   Forms;
 
 type
+
+{$IFNDEF FPC}
+  TLMessage = TMessage;
+{$ENDIF}
 
   TImageButton = class(TGraphicControl)
   private type
@@ -112,9 +124,9 @@ constructor TImageButton.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   FPicture := TPicture.Create;
-  FPicture.OnChange := @OnPictureChanged;
+  FPicture.OnChange := {$IFDEF FPC}@{$ENDIF}OnPictureChanged;
   FFont := TFont.Create;
-  FFont.OnChange := @OnFontChanged;
+  FFont.OnChange := {$IFDEF FPC}@{$ENDIF}OnFontChanged;
   FState := bsNormal;
   FImageCount := 3;
   Width := 80;
@@ -217,6 +229,7 @@ procedure TImageButton.Paint;
 //var
 //  GP: TGPGraphics;
 
+{$IFDEF FPC}
   procedure DrawText;
   var
     LR: TRect;
@@ -236,6 +249,12 @@ procedure TImageButton.Paint;
         Canvas.TextRect(LR, 0, 0, FCaption, LStyle);//[tfCenter, tfSingleLine, tfVerticalCenter]);
     end;
   end;
+{$ELSE}
+  procedure DrawText;
+  begin
+    // 只用于在GenlibLcl工具中生成代码用
+  end;
+{$ENDIF}
 
   procedure PngBrushCopy(const Dest, Source: TRect);
 //  var
@@ -271,11 +290,11 @@ begin
   if not Visible then Exit;
   if csDesigning in ComponentState then
   begin
-    with inherited Canvas do
+    with Canvas do
     begin
       Pen.Style := psDash;
       Brush.Style := bsClear;
-      Rectangle(0, 0, Width, Height);
+      Rectangle(0, 0, Self.Width-1, Self.Height-1);//????
     end;
   end;
 

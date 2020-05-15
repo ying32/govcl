@@ -179,7 +179,7 @@ end;
 
 function TabSheet_GetTextLen(AObj: TTabSheet): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure TabSheet_SetTextBuf(AObj: TTabSheet; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function TabSheet_ToString(AObj: TTabSheet): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure TabSheet_AnchorToNeighbour(AObj: TTabSheet; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure TabSheet_AnchorParallel(AObj: TTabSheet; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure TabSheet_AnchorHorizontalCenterTo(AObj: TTabSheet; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure TabSheet_AnchorVerticalCenterTo(AObj: TTabSheet; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure TabSheet_AnchorAsAlign(AObj: TTabSheet; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure TabSheet_AnchorClient(AObj: TTabSheet; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function TabSheet_GetPageControl(AObj: TTabSheet): TPageControl; extdecl;
@@ -755,16 +785,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function TabSheet_GetMargins(AObj: TTabSheet): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure TabSheet_SetMargins(AObj: TTabSheet; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function TabSheet_GetComponentCount(AObj: TTabSheet): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -805,6 +825,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function TabSheet_GetAnchorSideLeft(AObj: TTabSheet): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure TabSheet_SetAnchorSideLeft(AObj: TTabSheet; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function TabSheet_GetAnchorSideTop(AObj: TTabSheet): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure TabSheet_SetAnchorSideTop(AObj: TTabSheet; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function TabSheet_GetAnchorSideRight(AObj: TTabSheet): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure TabSheet_SetAnchorSideRight(AObj: TTabSheet; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function TabSheet_GetAnchorSideBottom(AObj: TTabSheet): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure TabSheet_SetAnchorSideBottom(AObj: TTabSheet; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function TabSheet_GetChildSizing(AObj: TTabSheet): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure TabSheet_SetChildSizing(AObj: TTabSheet; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function TabSheet_GetBorderSpacing(AObj: TTabSheet): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure TabSheet_SetBorderSpacing(AObj: TTabSheet; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TabSheet_GetDockClients(AObj: TTabSheet; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -818,6 +898,11 @@ end;
 function TabSheet_GetComponents(AObj: TTabSheet; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function TabSheet_GetAnchorSide(AObj: TTabSheet; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function TabSheet_StaticClassType: TClass; extdecl;
@@ -872,6 +957,12 @@ exports
   TabSheet_Equals,
   TabSheet_GetHashCode,
   TabSheet_ToString,
+  TabSheet_AnchorToNeighbour,
+  TabSheet_AnchorParallel,
+  TabSheet_AnchorHorizontalCenterTo,
+  TabSheet_AnchorVerticalCenterTo,
+  TabSheet_AnchorAsAlign,
+  TabSheet_AnchorClient,
   TabSheet_GetPageControl,
   TabSheet_SetPageControl,
   TabSheet_GetTabIndex,
@@ -970,8 +1061,6 @@ exports
   TabSheet_SetCursor,
   TabSheet_GetHint,
   TabSheet_SetHint,
-  TabSheet_GetMargins,
-  TabSheet_SetMargins,
   TabSheet_GetComponentCount,
   TabSheet_GetComponentIndex,
   TabSheet_SetComponentIndex,
@@ -980,8 +1069,21 @@ exports
   TabSheet_SetName,
   TabSheet_GetTag,
   TabSheet_SetTag,
+  TabSheet_GetAnchorSideLeft,
+  TabSheet_SetAnchorSideLeft,
+  TabSheet_GetAnchorSideTop,
+  TabSheet_SetAnchorSideTop,
+  TabSheet_GetAnchorSideRight,
+  TabSheet_SetAnchorSideRight,
+  TabSheet_GetAnchorSideBottom,
+  TabSheet_SetAnchorSideBottom,
+  TabSheet_GetChildSizing,
+  TabSheet_SetChildSizing,
+  TabSheet_GetBorderSpacing,
+  TabSheet_SetBorderSpacing,
   TabSheet_GetDockClients,
   TabSheet_GetControls,
   TabSheet_GetComponents,
+  TabSheet_GetAnchorSide,
   TabSheet_StaticClassType;
 

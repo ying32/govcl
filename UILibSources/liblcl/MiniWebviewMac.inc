@@ -26,10 +26,11 @@ uses
 type
    TReadyState = (rsUninitialized, rsLoading, rsLoaded, rsInterActive, rsComplete);
    
-   TWebTitleChangeEvent = procedure(Sender: TObject; const Text: string) of object;
-   TWebStatusTextChangeEvent = procedure(Sender: TObject; const Text: string) of object;
-   TWebJSExternalEvent = procedure(Sender: TObject; const func: string; const args: WideString; var retval: WideString) of object;
-
+   TWebStatusTextChangeEvent = procedure(Sender: TObject; const AText: string) of object;
+   TWebTitleChangeEvent = procedure(Sender: TObject; const AText: string) of object;
+   TWebDocumentCompleteEvent = procedure(Sender: TObject; const pDisp: Pointer; const AURL: string) of object;
+   TWebWindowClosingEvent = procedure(Sender: TObject; AIsChildWindow: Boolean; var ACancel: Boolean) of object;
+   TWebJSExternalEvent = procedure(Sender: TObject; const AFunc: string; const AArgs: WideString; var ARetval: WideString) of object;
 
    { TWebviewUIDelegate }
 
@@ -46,12 +47,14 @@ type
 
    { TMiniWebView }
 
-   TMiniWebView = class(TWinControl)
+   TMiniWebView = class(TCustomControl)
    private
      FWebview: Webview;
      FURL: string;
-     FOnTitleChange: TWebTitleChangeEvent;
      FOnStatusTextChange: TWebStatusTextChangeEvent;
+     FOnWindowClosing: TWebWindowClosingEvent;
+     FOnOnDocumentComplete: TWebDocumentCompleteEvent;
+     FOnTitleChange: TWebTitleChangeEvent;
      FOnJSExternal: TWebJSExternalEvent;
 
      function GetCurWebview: Webview;
@@ -64,7 +67,7 @@ type
    protected
      procedure VisibleChanged; override;
      procedure RealizeBounds; override;
-
+     procedure Paint; override;
    public
      procedure Resize; override;
      procedure CreateWnd; override;
@@ -88,12 +91,19 @@ type
 
      // propertys
      property ReadyState: TReadyState read GetReadyState;
-
+   published
+     property Align;
+     property Anchors;
+     property BorderSpacing;
+     property ChildSizing;
+     property Constraints;
+     property Enabled;
+     property Visible;
      // events
      property OnStatusTextChange: TWebStatusTextChangeEvent read FOnStatusTextChange write FOnStatusTextChange;  // no support????
      property OnTitleChange: TWebTitleChangeEvent read FOnTitleChange write FOnTitleChange;
-     //property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
-     //property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
+     property OnDocumentComplete: TWebDocumentCompleteEvent read FOnOnDocumentComplete write FOnOnDocumentComplete;
+     property OnWindowClosing: TWebWindowClosingEvent read FOnWindowClosing write FOnWindowClosing;
      property OnJSExternal: TWebJSExternalEvent read FOnJSExternal write FOnJSExternal;
    end;
 
@@ -125,17 +135,23 @@ end;
 constructor TMiniWebView.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
+  ControlStyle := ControlStyle - [csAcceptsControls, csSetCaption];
   Width := 300;
   Height := 200;
   Visible := True;
+  if csDesigning in ComponentState then
+    Exit;
   CreateCocoaWebView;
   Navigate(FURL);
 end;
 
 destructor TMiniWebView.Destroy;
 begin
-  if FWebview <> nil then
-    FWebview.release;
+  if not(csDesigning in ComponentState) then
+  begin
+    if FWebview <> nil then
+      FWebview.release;
+  end;
   inherited Destroy;
 end;
 
@@ -148,13 +164,16 @@ procedure TMiniWebView.UpdateBounds;
 var
   LR: NSRect;
 begin
-  if CurWebView <> nil then
+  if not(csDesigning in ComponentState) then
   begin
-    LR.origin.x := 0;
-    LR.origin.y := 0;
-    LR.size.width := Width;
-    LR.size.height := Height;
-    CurWebView.setFrame(LR);
+    if CurWebView <> nil then
+    begin
+      LR.origin.x := 0;
+      LR.origin.y := 0;
+      LR.size.width := Width;
+      LR.size.height := Height;
+      CurWebView.setFrame(LR);
+    end;
   end;
 end;
 
@@ -163,6 +182,8 @@ var
   AutoPool: NSAutoreleasePool;
   LReq: NSURLRequest;
 begin
+  if csDesigning in ComponentState then
+    Exit;
   AutoPool := NSAutoreleasePool.alloc.init;
   try
     if CurWebview <> nil then
@@ -245,6 +266,8 @@ var
   LR: NSRect;
   LDelegate: TWebviewUIDelegate;
 begin
+  if csDesigning in ComponentState then
+    Exit;
   AutoPool := NSAutoreleasePool.alloc.init;
   try
     LR.origin.x:=0;
@@ -270,6 +293,8 @@ end;
 procedure TMiniWebView.VisibleChanged;
 begin
   inherited VisibleChanged;
+  if csDesigning in ComponentState then
+    Exit;
   if FWebview <> nil then
     FWebView.setHidden(not Visible);
 end;
@@ -292,6 +317,8 @@ var
   AutoPool: NSAutoreleasePool;
 begin
   inherited CreateWnd;
+  if csDesigning in ComponentState then
+    Exit;
   AutoPool := NSAutoreleasePool.alloc.init;
   try
     view := NSView(Self.Handle).lclContentView;//GetNSObjectView(NSObject(Handle));
@@ -300,6 +327,16 @@ begin
     UpdateBounds;
   finally
     AutoPool.release;
+  end;
+end;
+
+procedure TMiniWebview.Paint;
+begin
+  inherited Paint;
+  if csDesigning in ComponentState then
+  begin
+    Canvas.Brush.Color:=clWhite;
+    Canvas.FillRect(ClientRect);
   end;
 end;
 

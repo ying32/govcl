@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TDrawGrid struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewDrawGrid(owner IComponent) *TDrawGrid {
     d := new(TDrawGrid)
     d.instance = DrawGrid_Create(CheckPtr(owner))
     d.ptr = unsafe.Pointer(d.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(d, (*TDrawGrid).Free)
     return d
 }
 
@@ -57,7 +59,7 @@ func DrawGridFromObj(obj IObject) *TDrawGrid {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsDrawGrid.
 func DrawGridFromUnsafePointer(ptr unsafe.Pointer) *TDrawGrid {
     return AsDrawGrid(ptr)
@@ -383,6 +385,34 @@ func (d *TDrawGrid) ToString() string {
     return DrawGrid_ToString(d.instance)
 }
 
+func (d *TDrawGrid) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    DrawGrid_AnchorToNeighbour(d.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (d *TDrawGrid) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    DrawGrid_AnchorParallel(d.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (d *TDrawGrid) AnchorHorizontalCenterTo(ASibling IControl) {
+    DrawGrid_AnchorHorizontalCenterTo(d.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (d *TDrawGrid) AnchorVerticalCenterTo(ASibling IControl) {
+    DrawGrid_AnchorVerticalCenterTo(d.instance, CheckPtr(ASibling))
+}
+
+func (d *TDrawGrid) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    DrawGrid_AnchorAsAlign(d.instance, ATheAlign , ASpace)
+}
+
+func (d *TDrawGrid) AnchorClient(ASpace int32) {
+    DrawGrid_AnchorClient(d.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (d *TDrawGrid) Align() TAlign {
@@ -447,10 +477,14 @@ func (d *TDrawGrid) SetColCount(value int32) {
     DrawGrid_SetColCount(d.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (d *TDrawGrid) Constraints() *TSizeConstraints {
     return AsSizeConstraints(DrawGrid_GetConstraints(d.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (d *TDrawGrid) SetConstraints(value *TSizeConstraints) {
     DrawGrid_SetConstraints(d.instance, CheckPtr(value))
 }
@@ -635,10 +669,14 @@ func (d *TDrawGrid) SetParentFont(value bool) {
     DrawGrid_SetParentFont(d.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (d *TDrawGrid) ParentShowHint() bool {
     return DrawGrid_GetParentShowHint(d.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (d *TDrawGrid) SetParentShowHint(value bool) {
     DrawGrid_SetParentShowHint(d.instance, value)
 }
@@ -1165,18 +1203,6 @@ func (d *TDrawGrid) SetHint(value string) {
     DrawGrid_SetHint(d.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (d *TDrawGrid) Margins() *TMargins {
-    return AsMargins(DrawGrid_GetMargins(d.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (d *TDrawGrid) SetMargins(value *TMargins) {
-    DrawGrid_SetMargins(d.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (d *TDrawGrid) ComponentCount() int32 {
@@ -1225,6 +1251,74 @@ func (d *TDrawGrid) SetTag(value int) {
     DrawGrid_SetTag(d.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (d *TDrawGrid) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideLeft(d.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (d *TDrawGrid) SetAnchorSideLeft(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideLeft(d.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (d *TDrawGrid) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideTop(d.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (d *TDrawGrid) SetAnchorSideTop(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideTop(d.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (d *TDrawGrid) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideRight(d.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (d *TDrawGrid) SetAnchorSideRight(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideRight(d.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (d *TDrawGrid) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSideBottom(d.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (d *TDrawGrid) SetAnchorSideBottom(value *TAnchorSide) {
+    DrawGrid_SetAnchorSideBottom(d.instance, CheckPtr(value))
+}
+
+func (d *TDrawGrid) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(DrawGrid_GetChildSizing(d.instance))
+}
+
+func (d *TDrawGrid) SetChildSizing(value *TControlChildSizing) {
+    DrawGrid_SetChildSizing(d.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (d *TDrawGrid) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(DrawGrid_GetBorderSpacing(d.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (d *TDrawGrid) SetBorderSpacing(value *TControlBorderSpacing) {
+    DrawGrid_SetBorderSpacing(d.instance, CheckPtr(value))
+}
+
 func (d *TDrawGrid) ColWidths(Index int32) int32 {
     return DrawGrid_GetColWidths(d.instance, Index)
 }
@@ -1257,5 +1351,11 @@ func (d *TDrawGrid) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (d *TDrawGrid) Components(AIndex int32) *TComponent {
     return AsComponent(DrawGrid_GetComponents(d.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (d *TDrawGrid) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(DrawGrid_GetAnchorSide(d.instance, AKind))
 }
 

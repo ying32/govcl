@@ -179,7 +179,7 @@ end;
 
 function CheckBox_GetTextLen(AObj: TCheckBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure CheckBox_SetTextBuf(AObj: TCheckBox; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function CheckBox_ToString(AObj: TCheckBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure CheckBox_AnchorToNeighbour(AObj: TCheckBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure CheckBox_AnchorParallel(AObj: TCheckBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure CheckBox_AnchorHorizontalCenterTo(AObj: TCheckBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure CheckBox_AnchorVerticalCenterTo(AObj: TCheckBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure CheckBox_AnchorAsAlign(AObj: TCheckBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure CheckBox_AnchorClient(AObj: TCheckBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function CheckBox_GetAction(AObj: TCheckBox): TBasicAction; extdecl;
@@ -797,16 +827,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function CheckBox_GetMargins(AObj: TCheckBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure CheckBox_SetMargins(AObj: TCheckBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function CheckBox_GetComponentCount(AObj: TCheckBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -847,6 +867,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function CheckBox_GetAnchorSideLeft(AObj: TCheckBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure CheckBox_SetAnchorSideLeft(AObj: TCheckBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function CheckBox_GetAnchorSideTop(AObj: TCheckBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure CheckBox_SetAnchorSideTop(AObj: TCheckBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function CheckBox_GetAnchorSideRight(AObj: TCheckBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure CheckBox_SetAnchorSideRight(AObj: TCheckBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function CheckBox_GetAnchorSideBottom(AObj: TCheckBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure CheckBox_SetAnchorSideBottom(AObj: TCheckBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function CheckBox_GetChildSizing(AObj: TCheckBox): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure CheckBox_SetChildSizing(AObj: TCheckBox; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function CheckBox_GetBorderSpacing(AObj: TCheckBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure CheckBox_SetBorderSpacing(AObj: TCheckBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function CheckBox_GetDockClients(AObj: TCheckBox; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -860,6 +940,11 @@ end;
 function CheckBox_GetComponents(AObj: TCheckBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function CheckBox_GetAnchorSide(AObj: TCheckBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function CheckBox_StaticClassType: TClass; extdecl;
@@ -914,6 +999,12 @@ exports
   CheckBox_Equals,
   CheckBox_GetHashCode,
   CheckBox_ToString,
+  CheckBox_AnchorToNeighbour,
+  CheckBox_AnchorParallel,
+  CheckBox_AnchorHorizontalCenterTo,
+  CheckBox_AnchorVerticalCenterTo,
+  CheckBox_AnchorAsAlign,
+  CheckBox_AnchorClient,
   CheckBox_GetAction,
   CheckBox_SetAction,
   CheckBox_GetAlign,
@@ -1020,8 +1111,6 @@ exports
   CheckBox_SetCursor,
   CheckBox_GetHint,
   CheckBox_SetHint,
-  CheckBox_GetMargins,
-  CheckBox_SetMargins,
   CheckBox_GetComponentCount,
   CheckBox_GetComponentIndex,
   CheckBox_SetComponentIndex,
@@ -1030,8 +1119,21 @@ exports
   CheckBox_SetName,
   CheckBox_GetTag,
   CheckBox_SetTag,
+  CheckBox_GetAnchorSideLeft,
+  CheckBox_SetAnchorSideLeft,
+  CheckBox_GetAnchorSideTop,
+  CheckBox_SetAnchorSideTop,
+  CheckBox_GetAnchorSideRight,
+  CheckBox_SetAnchorSideRight,
+  CheckBox_GetAnchorSideBottom,
+  CheckBox_SetAnchorSideBottom,
+  CheckBox_GetChildSizing,
+  CheckBox_SetChildSizing,
+  CheckBox_GetBorderSpacing,
+  CheckBox_SetBorderSpacing,
   CheckBox_GetDockClients,
   CheckBox_GetControls,
   CheckBox_GetComponents,
+  CheckBox_GetAnchorSide,
   CheckBox_StaticClassType;
 

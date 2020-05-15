@@ -329,3 +329,18 @@ func DLibVersion() uint32 {
 	r, _, _ := dLibVersion.Call()
 	return uint32(r)
 }
+
+func DLibAbout() string {
+	r, _, _ := dLibAbout.Call()
+	return DStrToGoStr(r)
+}
+
+func DMainThreadId() uintptr {
+	r, _, _ := dMainThreadId.Call()
+	return r
+}
+
+func DCurrentThreadId() uintptr {
+	r, _, _ := dCurrentThreadId.Call()
+	return r
+}

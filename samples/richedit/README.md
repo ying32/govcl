@@ -1,0 +1,1 @@
+### TRichEdit ，富文本框，只支持Windows下的libvcl，不支持liblcl和其他平台   

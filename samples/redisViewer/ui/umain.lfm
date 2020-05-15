@@ -1,0 +1,105 @@
+object MainForm: TMainForm
+  Left = 237
+  Height = 490
+  Top = 250
+  Width = 875
+  Caption = 'Redis Viewer'
+  ClientHeight = 490
+  ClientWidth = 875
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  object Panel1: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 875
+    Align = alTop
+    ClientHeight = 50
+    ClientWidth = 875
+    TabOrder = 0
+    object BtnNewConn: TSpeedButton
+      Left = 24
+      Height = 27
+      Top = 8
+      Width = 29
+      Caption = '+'
+      OnClick = BtnNewConnClick
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 418
+    Top = 50
+    Width = 130
+    Align = alLeft
+    ClientHeight = 418
+    ClientWidth = 130
+    TabOrder = 1
+    object TvConns: TTreeView
+      Left = 1
+      Height = 416
+      Top = 1
+      Width = 128
+      Align = alClient
+      ExpandSignType = tvestArrowFill
+      ReadOnly = True
+      RowSelect = True
+      ScrollBars = ssAutoBoth
+      TabOrder = 0
+      OnDblClick = TvConnsDblClick
+      Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoRowSelect, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+      Items.Data = {
+        F9FFFFFF020002000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000
+        000000050000004974656D30FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01000000
+        0000000001050000004974656D31FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+        00000000000000050000004974656D32
+      }
+      TreeLinePenStyle = psinsideFrame
+    end
+  end
+  object Panel3: TPanel
+    Left = 135
+    Height = 418
+    Top = 50
+    Width = 740
+    Align = alClient
+    ClientHeight = 418
+    ClientWidth = 740
+    TabOrder = 2
+    object PgMain: TPageControl
+      Left = 1
+      Height = 416
+      Top = 1
+      Width = 738
+      Align = alClient
+      PopupMenu = PopupMenu1
+      TabOrder = 0
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 22
+    Top = 468
+    Width = 875
+    Panels = <>
+  end
+  object Splitter1: TSplitter
+    Left = 130
+    Height = 418
+    Top = 50
+    Width = 5
+  end
+  object MainMenu1: TMainMenu
+    left = 312
+    top = 128
+  end
+  object PopupMenu1: TPopupMenu
+    left = 244
+    top = 90
+    object MIClose: TMenuItem
+      Caption = '关闭'
+      OnClick = MICloseClick
+    end
+  end
+end

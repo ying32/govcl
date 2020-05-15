@@ -179,7 +179,7 @@ end;
 
 function WinControl_GetTextLen(AObj: TWinControl): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure WinControl_SetTextBuf(AObj: TWinControl; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function WinControl_ToString(AObj: TWinControl): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure WinControl_AnchorToNeighbour(AObj: TWinControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure WinControl_AnchorParallel(AObj: TWinControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure WinControl_AnchorHorizontalCenterTo(AObj: TWinControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure WinControl_AnchorVerticalCenterTo(AObj: TWinControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure WinControl_AnchorAsAlign(AObj: TWinControl; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure WinControl_AnchorClient(AObj: TWinControl; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function WinControl_GetDockClientCount(AObj: TWinControl): Integer; extdecl;
@@ -552,16 +582,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function WinControl_GetMargins(AObj: TWinControl): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure WinControl_SetMargins(AObj: TWinControl; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function WinControl_GetComponentCount(AObj: TWinControl): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -602,6 +622,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function WinControl_GetAnchorSideLeft(AObj: TWinControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure WinControl_SetAnchorSideLeft(AObj: TWinControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function WinControl_GetAnchorSideTop(AObj: TWinControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure WinControl_SetAnchorSideTop(AObj: TWinControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function WinControl_GetAnchorSideRight(AObj: TWinControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure WinControl_SetAnchorSideRight(AObj: TWinControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function WinControl_GetAnchorSideBottom(AObj: TWinControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure WinControl_SetAnchorSideBottom(AObj: TWinControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function WinControl_GetChildSizing(AObj: TWinControl): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure WinControl_SetChildSizing(AObj: TWinControl; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function WinControl_GetBorderSpacing(AObj: TWinControl): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure WinControl_SetBorderSpacing(AObj: TWinControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function WinControl_GetDockClients(AObj: TWinControl; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -615,6 +695,11 @@ end;
 function WinControl_GetComponents(AObj: TWinControl; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function WinControl_GetAnchorSide(AObj: TWinControl; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function WinControl_StaticClassType: TClass; extdecl;
@@ -669,6 +754,12 @@ exports
   WinControl_Equals,
   WinControl_GetHashCode,
   WinControl_ToString,
+  WinControl_AnchorToNeighbour,
+  WinControl_AnchorParallel,
+  WinControl_AnchorHorizontalCenterTo,
+  WinControl_AnchorVerticalCenterTo,
+  WinControl_AnchorAsAlign,
+  WinControl_AnchorClient,
   WinControl_GetDockClientCount,
   WinControl_GetDockSite,
   WinControl_SetDockSite,
@@ -732,8 +823,6 @@ exports
   WinControl_SetCursor,
   WinControl_GetHint,
   WinControl_SetHint,
-  WinControl_GetMargins,
-  WinControl_SetMargins,
   WinControl_GetComponentCount,
   WinControl_GetComponentIndex,
   WinControl_SetComponentIndex,
@@ -742,8 +831,21 @@ exports
   WinControl_SetName,
   WinControl_GetTag,
   WinControl_SetTag,
+  WinControl_GetAnchorSideLeft,
+  WinControl_SetAnchorSideLeft,
+  WinControl_GetAnchorSideTop,
+  WinControl_SetAnchorSideTop,
+  WinControl_GetAnchorSideRight,
+  WinControl_SetAnchorSideRight,
+  WinControl_GetAnchorSideBottom,
+  WinControl_SetAnchorSideBottom,
+  WinControl_GetChildSizing,
+  WinControl_SetChildSizing,
+  WinControl_GetBorderSpacing,
+  WinControl_SetBorderSpacing,
   WinControl_GetDockClients,
   WinControl_GetControls,
   WinControl_GetComponents,
+  WinControl_GetAnchorSide,
   WinControl_StaticClassType;
 

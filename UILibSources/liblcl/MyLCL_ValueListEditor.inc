@@ -194,7 +194,7 @@ end;
 
 function ValueListEditor_GetTextLen(AObj: TValueListEditor): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ValueListEditor_SetTextBuf(AObj: TValueListEditor; Buffer: PChar); extdecl;
@@ -250,6 +250,36 @@ end;
 function ValueListEditor_ToString(AObj: TValueListEditor): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ValueListEditor_AnchorToNeighbour(AObj: TValueListEditor; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ValueListEditor_AnchorParallel(AObj: TValueListEditor; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ValueListEditor_AnchorHorizontalCenterTo(AObj: TValueListEditor; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ValueListEditor_AnchorVerticalCenterTo(AObj: TValueListEditor; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ValueListEditor_AnchorAsAlign(AObj: TValueListEditor; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ValueListEditor_AnchorClient(AObj: TValueListEditor; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ValueListEditor_GetColCount(AObj: TValueListEditor): Integer; extdecl;
@@ -1046,16 +1076,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ValueListEditor_GetMargins(AObj: TValueListEditor): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ValueListEditor_SetMargins(AObj: TValueListEditor; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ValueListEditor_GetComponentCount(AObj: TValueListEditor): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1094,6 +1114,66 @@ end;
 procedure ValueListEditor_SetTag(AObj: TValueListEditor; AValue: NativeInt); extdecl;
 begin
   AObj.Tag := AValue;
+end;
+
+function ValueListEditor_GetAnchorSideLeft(AObj: TValueListEditor): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ValueListEditor_SetAnchorSideLeft(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ValueListEditor_GetAnchorSideTop(AObj: TValueListEditor): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ValueListEditor_SetAnchorSideTop(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ValueListEditor_GetAnchorSideRight(AObj: TValueListEditor): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ValueListEditor_SetAnchorSideRight(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ValueListEditor_GetAnchorSideBottom(AObj: TValueListEditor): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ValueListEditor_SetAnchorSideBottom(AObj: TValueListEditor; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ValueListEditor_GetChildSizing(AObj: TValueListEditor): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ValueListEditor_SetChildSizing(AObj: TValueListEditor; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ValueListEditor_GetBorderSpacing(AObj: TValueListEditor): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ValueListEditor_SetBorderSpacing(AObj: TValueListEditor; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
 end;
 
 function ValueListEditor_GetCells(AObj: TValueListEditor; ACol: Integer; ARow: Integer): PChar; extdecl;
@@ -1151,6 +1231,11 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function ValueListEditor_GetAnchorSide(AObj: TValueListEditor; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
+end;
+
 function ValueListEditor_StaticClassType: TClass; extdecl;
 begin
   Result := TValueListEditor;
@@ -1206,6 +1291,12 @@ exports
   ValueListEditor_Equals,
   ValueListEditor_GetHashCode,
   ValueListEditor_ToString,
+  ValueListEditor_AnchorToNeighbour,
+  ValueListEditor_AnchorParallel,
+  ValueListEditor_AnchorHorizontalCenterTo,
+  ValueListEditor_AnchorVerticalCenterTo,
+  ValueListEditor_AnchorAsAlign,
+  ValueListEditor_AnchorClient,
   ValueListEditor_GetColCount,
   ValueListEditor_SetColCount,
   ValueListEditor_GetRowCount,
@@ -1354,8 +1445,6 @@ exports
   ValueListEditor_SetCursor,
   ValueListEditor_GetHint,
   ValueListEditor_SetHint,
-  ValueListEditor_GetMargins,
-  ValueListEditor_SetMargins,
   ValueListEditor_GetComponentCount,
   ValueListEditor_GetComponentIndex,
   ValueListEditor_SetComponentIndex,
@@ -1364,6 +1453,18 @@ exports
   ValueListEditor_SetName,
   ValueListEditor_GetTag,
   ValueListEditor_SetTag,
+  ValueListEditor_GetAnchorSideLeft,
+  ValueListEditor_SetAnchorSideLeft,
+  ValueListEditor_GetAnchorSideTop,
+  ValueListEditor_SetAnchorSideTop,
+  ValueListEditor_GetAnchorSideRight,
+  ValueListEditor_SetAnchorSideRight,
+  ValueListEditor_GetAnchorSideBottom,
+  ValueListEditor_SetAnchorSideBottom,
+  ValueListEditor_GetChildSizing,
+  ValueListEditor_SetChildSizing,
+  ValueListEditor_GetBorderSpacing,
+  ValueListEditor_SetBorderSpacing,
   ValueListEditor_GetCells,
   ValueListEditor_SetCells,
   ValueListEditor_GetValues,
@@ -1375,5 +1476,6 @@ exports
   ValueListEditor_GetDockClients,
   ValueListEditor_GetControls,
   ValueListEditor_GetComponents,
+  ValueListEditor_GetAnchorSide,
   ValueListEditor_StaticClassType;
 

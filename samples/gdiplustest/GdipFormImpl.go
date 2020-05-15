@@ -15,6 +15,10 @@ import (
 	"github.com/ying32/govcl/vcl/win"
 )
 
+//::private::
+type TGdipFormFields struct {
+}
+
 func (f *TGdipForm) OnFormCreate(sender vcl.IObject) {
 	fmt.Println("OnCreate")
 	style := win.GetWindowLongPtr(f.Handle(), win.GWL_EXSTYLE) | win.WS_EX_LAYERED | win.WS_EX_TOOLWINDOW

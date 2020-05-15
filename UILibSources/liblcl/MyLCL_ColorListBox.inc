@@ -214,7 +214,7 @@ end;
 
 function ColorListBox_GetTextLen(AObj: TColorListBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ColorListBox_SetTextBuf(AObj: TColorListBox; Buffer: PChar); extdecl;
@@ -270,6 +270,36 @@ end;
 function ColorListBox_ToString(AObj: TColorListBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ColorListBox_AnchorToNeighbour(AObj: TColorListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ColorListBox_AnchorParallel(AObj: TColorListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ColorListBox_AnchorHorizontalCenterTo(AObj: TColorListBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ColorListBox_AnchorVerticalCenterTo(AObj: TColorListBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ColorListBox_AnchorAsAlign(AObj: TColorListBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ColorListBox_AnchorClient(AObj: TColorListBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ColorListBox_GetAlign(AObj: TColorListBox): TAlign; extdecl;
@@ -624,6 +654,16 @@ begin
   AObj.Items := AValue;
 end;
 
+function ColorListBox_GetTopIndex(AObj: TColorListBox): Integer; extdecl;
+begin
+  Result :=  AObj.TopIndex;
+end;
+
+procedure ColorListBox_SetTopIndex(AObj: TColorListBox; AValue: Integer); extdecl;
+begin
+  AObj.TopIndex := AValue;
+end;
+
 function ColorListBox_GetMultiSelect(AObj: TColorListBox): LongBool; extdecl;
 begin
   Result :=  AObj.MultiSelect;
@@ -854,16 +894,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ColorListBox_GetMargins(AObj: TColorListBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ColorListBox_SetMargins(AObj: TColorListBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ColorListBox_GetComponentCount(AObj: TColorListBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -904,6 +934,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ColorListBox_GetAnchorSideLeft(AObj: TColorListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ColorListBox_SetAnchorSideLeft(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ColorListBox_GetAnchorSideTop(AObj: TColorListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ColorListBox_SetAnchorSideTop(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ColorListBox_GetAnchorSideRight(AObj: TColorListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ColorListBox_SetAnchorSideRight(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ColorListBox_GetAnchorSideBottom(AObj: TColorListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ColorListBox_SetAnchorSideBottom(AObj: TColorListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ColorListBox_GetChildSizing(AObj: TColorListBox): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ColorListBox_SetChildSizing(AObj: TColorListBox; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ColorListBox_GetBorderSpacing(AObj: TColorListBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ColorListBox_SetBorderSpacing(AObj: TColorListBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ColorListBox_GetColors(AObj: TColorListBox; Index: Integer): TColor; extdecl;
 begin
   Result :=  AObj.Colors[Index];
@@ -927,6 +1017,11 @@ end;
 function ColorListBox_GetComponents(AObj: TColorListBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ColorListBox_GetAnchorSide(AObj: TColorListBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ColorListBox_StaticClassType: TClass; extdecl;
@@ -988,6 +1083,12 @@ exports
   ColorListBox_Equals,
   ColorListBox_GetHashCode,
   ColorListBox_ToString,
+  ColorListBox_AnchorToNeighbour,
+  ColorListBox_AnchorParallel,
+  ColorListBox_AnchorHorizontalCenterTo,
+  ColorListBox_AnchorVerticalCenterTo,
+  ColorListBox_AnchorAsAlign,
+  ColorListBox_AnchorClient,
   ColorListBox_GetAlign,
   ColorListBox_SetAlign,
   ColorListBox_GetDefaultColorColor,
@@ -1052,6 +1153,8 @@ exports
   ColorListBox_GetCount,
   ColorListBox_GetItems,
   ColorListBox_SetItems,
+  ColorListBox_GetTopIndex,
+  ColorListBox_SetTopIndex,
   ColorListBox_GetMultiSelect,
   ColorListBox_SetMultiSelect,
   ColorListBox_GetSelCount,
@@ -1098,8 +1201,6 @@ exports
   ColorListBox_SetCursor,
   ColorListBox_GetHint,
   ColorListBox_SetHint,
-  ColorListBox_GetMargins,
-  ColorListBox_SetMargins,
   ColorListBox_GetComponentCount,
   ColorListBox_GetComponentIndex,
   ColorListBox_SetComponentIndex,
@@ -1108,10 +1209,23 @@ exports
   ColorListBox_SetName,
   ColorListBox_GetTag,
   ColorListBox_SetTag,
+  ColorListBox_GetAnchorSideLeft,
+  ColorListBox_SetAnchorSideLeft,
+  ColorListBox_GetAnchorSideTop,
+  ColorListBox_SetAnchorSideTop,
+  ColorListBox_GetAnchorSideRight,
+  ColorListBox_SetAnchorSideRight,
+  ColorListBox_GetAnchorSideBottom,
+  ColorListBox_SetAnchorSideBottom,
+  ColorListBox_GetChildSizing,
+  ColorListBox_SetChildSizing,
+  ColorListBox_GetBorderSpacing,
+  ColorListBox_SetBorderSpacing,
   ColorListBox_GetColors,
   ColorListBox_GetColorNames,
   ColorListBox_GetDockClients,
   ColorListBox_GetControls,
   ColorListBox_GetComponents,
+  ColorListBox_GetAnchorSide,
   ColorListBox_StaticClassType;
 

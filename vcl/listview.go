@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TListView struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewListView(owner IComponent) *TListView {
     l := new(TListView)
     l.instance = ListView_Create(CheckPtr(owner))
     l.ptr = unsafe.Pointer(l.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(l, (*TListView).Free)
     return l
 }
 
@@ -57,7 +59,7 @@ func ListViewFromObj(obj IObject) *TListView {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsListView.
 func ListViewFromUnsafePointer(ptr unsafe.Pointer) *TListView {
     return AsListView(ptr)
@@ -409,6 +411,114 @@ func (l *TListView) ToString() string {
     return ListView_ToString(l.instance)
 }
 
+func (l *TListView) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ListView_AnchorToNeighbour(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (l *TListView) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ListView_AnchorParallel(l.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (l *TListView) AnchorHorizontalCenterTo(ASibling IControl) {
+    ListView_AnchorHorizontalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (l *TListView) AnchorVerticalCenterTo(ASibling IControl) {
+    ListView_AnchorVerticalCenterTo(l.instance, CheckPtr(ASibling))
+}
+
+func (l *TListView) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ListView_AnchorAsAlign(l.instance, ATheAlign , ASpace)
+}
+
+func (l *TListView) AnchorClient(ASpace int32) {
+    ListView_AnchorClient(l.instance, ASpace)
+}
+
+func (l *TListView) AutoSort() bool {
+    return ListView_GetAutoSort(l.instance)
+}
+
+func (l *TListView) SetAutoSort(value bool) {
+    ListView_SetAutoSort(l.instance, value)
+}
+
+func (l *TListView) AutoSortIndicator() bool {
+    return ListView_GetAutoSortIndicator(l.instance)
+}
+
+func (l *TListView) SetAutoSortIndicator(value bool) {
+    ListView_SetAutoSortIndicator(l.instance, value)
+}
+
+func (l *TListView) AutoWidthLastColumn() bool {
+    return ListView_GetAutoWidthLastColumn(l.instance)
+}
+
+func (l *TListView) SetAutoWidthLastColumn(value bool) {
+    ListView_SetAutoWidthLastColumn(l.instance, value)
+}
+
+func (l *TListView) SmallImagesWidth() int32 {
+    return ListView_GetSmallImagesWidth(l.instance)
+}
+
+func (l *TListView) SetSmallImagesWidth(value int32) {
+    ListView_SetSmallImagesWidth(l.instance, value)
+}
+
+func (l *TListView) SortColumn() int32 {
+    return ListView_GetSortColumn(l.instance)
+}
+
+func (l *TListView) SetSortColumn(value int32) {
+    ListView_SetSortColumn(l.instance, value)
+}
+
+func (l *TListView) SortDirection() TSortDirection {
+    return ListView_GetSortDirection(l.instance)
+}
+
+func (l *TListView) SetSortDirection(value TSortDirection) {
+    ListView_SetSortDirection(l.instance, value)
+}
+
+func (l *TListView) LargeImagesWidth() int32 {
+    return ListView_GetLargeImagesWidth(l.instance)
+}
+
+func (l *TListView) SetLargeImagesWidth(value int32) {
+    ListView_SetLargeImagesWidth(l.instance, value)
+}
+
+func (l *TListView) StateImagesWidth() int32 {
+    return ListView_GetStateImagesWidth(l.instance)
+}
+
+func (l *TListView) SetStateImagesWidth(value int32) {
+    ListView_SetStateImagesWidth(l.instance, value)
+}
+
+func (l *TListView) ToolTips() bool {
+    return ListView_GetToolTips(l.instance)
+}
+
+func (l *TListView) SetToolTips(value bool) {
+    ListView_SetToolTips(l.instance, value)
+}
+
+func (l *TListView) ScrollBars() TScrollStyle {
+    return ListView_GetScrollBars(l.instance)
+}
+
+func (l *TListView) SetScrollBars(value TScrollStyle) {
+    ListView_SetScrollBars(l.instance, value)
+}
+
 func (l *TListView) Action() *TAction {
     return AsAction(ListView_GetAction(l.instance))
 }
@@ -517,10 +627,14 @@ func (l *TListView) SetColumnClick(value bool) {
     ListView_SetColumnClick(l.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (l *TListView) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ListView_GetConstraints(l.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (l *TListView) SetConstraints(value *TSizeConstraints) {
     ListView_SetConstraints(l.instance, CheckPtr(value))
 }
@@ -745,10 +859,14 @@ func (l *TListView) SetParentFont(value bool) {
     ListView_SetParentFont(l.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (l *TListView) ParentShowHint() bool {
     return ListView_GetParentShowHint(l.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (l *TListView) SetParentShowHint(value bool) {
     ListView_SetParentShowHint(l.instance, value)
 }
@@ -1307,18 +1425,6 @@ func (l *TListView) SetHint(value string) {
     ListView_SetHint(l.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (l *TListView) Margins() *TMargins {
-    return AsMargins(ListView_GetMargins(l.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (l *TListView) SetMargins(value *TMargins) {
-    ListView_SetMargins(l.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (l *TListView) ComponentCount() int32 {
@@ -1367,6 +1473,74 @@ func (l *TListView) SetTag(value int) {
     ListView_SetTag(l.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (l *TListView) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideLeft(l.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (l *TListView) SetAnchorSideLeft(value *TAnchorSide) {
+    ListView_SetAnchorSideLeft(l.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (l *TListView) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideTop(l.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (l *TListView) SetAnchorSideTop(value *TAnchorSide) {
+    ListView_SetAnchorSideTop(l.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (l *TListView) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideRight(l.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (l *TListView) SetAnchorSideRight(value *TAnchorSide) {
+    ListView_SetAnchorSideRight(l.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (l *TListView) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSideBottom(l.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (l *TListView) SetAnchorSideBottom(value *TAnchorSide) {
+    ListView_SetAnchorSideBottom(l.instance, CheckPtr(value))
+}
+
+func (l *TListView) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ListView_GetChildSizing(l.instance))
+}
+
+func (l *TListView) SetChildSizing(value *TControlChildSizing) {
+    ListView_SetChildSizing(l.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (l *TListView) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ListView_GetBorderSpacing(l.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (l *TListView) SetBorderSpacing(value *TControlBorderSpacing) {
+    ListView_SetBorderSpacing(l.instance, CheckPtr(value))
+}
+
 func (l *TListView) Column(Index int32) *TListColumn {
     return AsListColumn(ListView_GetColumn(l.instance, Index))
 }
@@ -1387,5 +1561,11 @@ func (l *TListView) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (l *TListView) Components(AIndex int32) *TComponent {
     return AsComponent(ListView_GetComponents(l.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (l *TListView) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ListView_GetAnchorSide(l.instance, AKind))
 }
 

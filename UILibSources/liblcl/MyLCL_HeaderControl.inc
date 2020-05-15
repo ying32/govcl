@@ -179,7 +179,7 @@ end;
 
 function HeaderControl_GetTextLen(AObj: THeaderControl): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure HeaderControl_SetTextBuf(AObj: THeaderControl; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function HeaderControl_ToString(AObj: THeaderControl): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure HeaderControl_AnchorToNeighbour(AObj: THeaderControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure HeaderControl_AnchorParallel(AObj: THeaderControl; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure HeaderControl_AnchorHorizontalCenterTo(AObj: THeaderControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure HeaderControl_AnchorVerticalCenterTo(AObj: THeaderControl; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure HeaderControl_AnchorAsAlign(AObj: THeaderControl; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure HeaderControl_AnchorClient(AObj: THeaderControl; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function HeaderControl_GetAlign(AObj: THeaderControl): TAlign; extdecl;
@@ -759,16 +789,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function HeaderControl_GetMargins(AObj: THeaderControl): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure HeaderControl_SetMargins(AObj: THeaderControl; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function HeaderControl_GetComponentCount(AObj: THeaderControl): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -809,6 +829,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function HeaderControl_GetAnchorSideLeft(AObj: THeaderControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure HeaderControl_SetAnchorSideLeft(AObj: THeaderControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function HeaderControl_GetAnchorSideTop(AObj: THeaderControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure HeaderControl_SetAnchorSideTop(AObj: THeaderControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function HeaderControl_GetAnchorSideRight(AObj: THeaderControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure HeaderControl_SetAnchorSideRight(AObj: THeaderControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function HeaderControl_GetAnchorSideBottom(AObj: THeaderControl): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure HeaderControl_SetAnchorSideBottom(AObj: THeaderControl; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function HeaderControl_GetChildSizing(AObj: THeaderControl): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure HeaderControl_SetChildSizing(AObj: THeaderControl; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function HeaderControl_GetBorderSpacing(AObj: THeaderControl): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure HeaderControl_SetBorderSpacing(AObj: THeaderControl; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function HeaderControl_GetDockClients(AObj: THeaderControl; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -822,6 +902,11 @@ end;
 function HeaderControl_GetComponents(AObj: THeaderControl; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function HeaderControl_GetAnchorSide(AObj: THeaderControl; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function HeaderControl_StaticClassType: TClass; extdecl;
@@ -876,6 +961,12 @@ exports
   HeaderControl_Equals,
   HeaderControl_GetHashCode,
   HeaderControl_ToString,
+  HeaderControl_AnchorToNeighbour,
+  HeaderControl_AnchorParallel,
+  HeaderControl_AnchorHorizontalCenterTo,
+  HeaderControl_AnchorVerticalCenterTo,
+  HeaderControl_AnchorAsAlign,
+  HeaderControl_AnchorClient,
   HeaderControl_GetAlign,
   HeaderControl_SetAlign,
   HeaderControl_GetAnchors,
@@ -974,8 +1065,6 @@ exports
   HeaderControl_SetCursor,
   HeaderControl_GetHint,
   HeaderControl_SetHint,
-  HeaderControl_GetMargins,
-  HeaderControl_SetMargins,
   HeaderControl_GetComponentCount,
   HeaderControl_GetComponentIndex,
   HeaderControl_SetComponentIndex,
@@ -984,8 +1073,21 @@ exports
   HeaderControl_SetName,
   HeaderControl_GetTag,
   HeaderControl_SetTag,
+  HeaderControl_GetAnchorSideLeft,
+  HeaderControl_SetAnchorSideLeft,
+  HeaderControl_GetAnchorSideTop,
+  HeaderControl_SetAnchorSideTop,
+  HeaderControl_GetAnchorSideRight,
+  HeaderControl_SetAnchorSideRight,
+  HeaderControl_GetAnchorSideBottom,
+  HeaderControl_SetAnchorSideBottom,
+  HeaderControl_GetChildSizing,
+  HeaderControl_SetChildSizing,
+  HeaderControl_GetBorderSpacing,
+  HeaderControl_SetBorderSpacing,
   HeaderControl_GetDockClients,
   HeaderControl_GetControls,
   HeaderControl_GetComponents,
+  HeaderControl_GetAnchorSide,
   HeaderControl_StaticClassType;
 

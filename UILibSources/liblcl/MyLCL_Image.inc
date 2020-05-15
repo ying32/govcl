@@ -104,7 +104,7 @@ end;
 
 function Image_GetTextLen(AObj: TImage): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Image_SetTextBuf(AObj: TImage; Buffer: PChar); extdecl;
@@ -160,6 +160,86 @@ end;
 function Image_ToString(AObj: TImage): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Image_AnchorToNeighbour(AObj: TImage; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Image_AnchorParallel(AObj: TImage; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Image_AnchorHorizontalCenterTo(AObj: TImage; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Image_AnchorVerticalCenterTo(AObj: TImage; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Image_AnchorAsAlign(AObj: TImage; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Image_AnchorClient(AObj: TImage; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
+function Image_GetAntialiasingMode(AObj: TImage): TAntialiasingMode; extdecl;
+begin
+  Result :=  AObj.AntialiasingMode;
+end;
+
+procedure Image_SetAntialiasingMode(AObj: TImage; AValue: TAntialiasingMode); extdecl;
+begin
+  AObj.AntialiasingMode := AValue;
+end;
+
+function Image_GetKeepOriginXWhenClipped(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.KeepOriginXWhenClipped;
+end;
+
+procedure Image_SetKeepOriginXWhenClipped(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.KeepOriginXWhenClipped := AValue;
+end;
+
+function Image_GetKeepOriginYWhenClipped(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.KeepOriginYWhenClipped;
+end;
+
+procedure Image_SetKeepOriginYWhenClipped(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.KeepOriginYWhenClipped := AValue;
+end;
+
+function Image_GetStretchInEnabled(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.StretchInEnabled;
+end;
+
+procedure Image_SetStretchInEnabled(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.StretchInEnabled := AValue;
+end;
+
+function Image_GetStretchOutEnabled(AObj: TImage): LongBool; extdecl;
+begin
+  Result :=  AObj.StretchOutEnabled;
+end;
+
+procedure Image_SetStretchOutEnabled(AObj: TImage; AValue: LongBool); extdecl;
+begin
+  AObj.StretchOutEnabled := AValue;
 end;
 
 function Image_GetCanvas(AObj: TImage): TCanvas; extdecl;
@@ -552,16 +632,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Image_GetMargins(AObj: TImage): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Image_SetMargins(AObj: TImage; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Image_GetComponentCount(AObj: TImage): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -602,9 +672,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Image_GetAnchorSideLeft(AObj: TImage): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Image_SetAnchorSideLeft(AObj: TImage; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Image_GetAnchorSideTop(AObj: TImage): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Image_SetAnchorSideTop(AObj: TImage; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Image_GetAnchorSideRight(AObj: TImage): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Image_SetAnchorSideRight(AObj: TImage; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Image_GetAnchorSideBottom(AObj: TImage): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Image_SetAnchorSideBottom(AObj: TImage; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Image_GetBorderSpacing(AObj: TImage): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Image_SetBorderSpacing(AObj: TImage; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Image_GetComponents(AObj: TImage; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Image_GetAnchorSide(AObj: TImage; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Image_StaticClassType: TClass; extdecl;
@@ -644,6 +769,22 @@ exports
   Image_Equals,
   Image_GetHashCode,
   Image_ToString,
+  Image_AnchorToNeighbour,
+  Image_AnchorParallel,
+  Image_AnchorHorizontalCenterTo,
+  Image_AnchorVerticalCenterTo,
+  Image_AnchorAsAlign,
+  Image_AnchorClient,
+  Image_GetAntialiasingMode,
+  Image_SetAntialiasingMode,
+  Image_GetKeepOriginXWhenClipped,
+  Image_SetKeepOriginXWhenClipped,
+  Image_GetKeepOriginYWhenClipped,
+  Image_SetKeepOriginYWhenClipped,
+  Image_GetStretchInEnabled,
+  Image_SetStretchInEnabled,
+  Image_GetStretchOutEnabled,
+  Image_SetStretchOutEnabled,
   Image_GetCanvas,
   Image_GetAlign,
   Image_SetAlign,
@@ -718,8 +859,6 @@ exports
   Image_SetCursor,
   Image_GetHint,
   Image_SetHint,
-  Image_GetMargins,
-  Image_SetMargins,
   Image_GetComponentCount,
   Image_GetComponentIndex,
   Image_SetComponentIndex,
@@ -728,6 +867,17 @@ exports
   Image_SetName,
   Image_GetTag,
   Image_SetTag,
+  Image_GetAnchorSideLeft,
+  Image_SetAnchorSideLeft,
+  Image_GetAnchorSideTop,
+  Image_SetAnchorSideTop,
+  Image_GetAnchorSideRight,
+  Image_SetAnchorSideRight,
+  Image_GetAnchorSideBottom,
+  Image_SetAnchorSideBottom,
+  Image_GetBorderSpacing,
+  Image_SetBorderSpacing,
   Image_GetComponents,
+  Image_GetAnchorSide,
   Image_StaticClassType;
 

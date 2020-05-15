@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TTrackBar struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewTrackBar(owner IComponent) *TTrackBar {
     t := new(TTrackBar)
     t.instance = TrackBar_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(t, (*TTrackBar).Free)
     return t
 }
 
@@ -57,7 +59,7 @@ func TrackBarFromObj(obj IObject) *TTrackBar {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsTrackBar.
 func TrackBarFromUnsafePointer(ptr unsafe.Pointer) *TTrackBar {
     return AsTrackBar(ptr)
@@ -375,6 +377,34 @@ func (t *TTrackBar) ToString() string {
     return TrackBar_ToString(t.instance)
 }
 
+func (t *TTrackBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TrackBar_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TTrackBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    TrackBar_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (t *TTrackBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    TrackBar_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (t *TTrackBar) AnchorVerticalCenterTo(ASibling IControl) {
+    TrackBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TTrackBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    TrackBar_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TTrackBar) AnchorClient(ASpace int32) {
+    TrackBar_AnchorClient(t.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (t *TTrackBar) Align() TAlign {
@@ -459,10 +489,14 @@ func (t *TTrackBar) SetEnabled(value bool) {
     TrackBar_SetEnabled(t.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (t *TTrackBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(TrackBar_GetConstraints(t.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (t *TTrackBar) SetConstraints(value *TSizeConstraints) {
     TrackBar_SetConstraints(t.instance, CheckPtr(value))
 }
@@ -511,10 +545,14 @@ func (t *TTrackBar) SetParentDoubleBuffered(value bool) {
     TrackBar_SetParentDoubleBuffered(t.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTrackBar) ParentShowHint() bool {
     return TrackBar_GetParentShowHint(t.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (t *TTrackBar) SetParentShowHint(value bool) {
     TrackBar_SetParentShowHint(t.instance, value)
 }
@@ -947,18 +985,6 @@ func (t *TTrackBar) SetHint(value string) {
     TrackBar_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TTrackBar) Margins() *TMargins {
-    return AsMargins(TrackBar_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TTrackBar) SetMargins(value *TMargins) {
-    TrackBar_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TTrackBar) ComponentCount() int32 {
@@ -1007,6 +1033,74 @@ func (t *TTrackBar) SetTag(value int) {
     TrackBar_SetTag(t.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (t *TTrackBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideLeft(t.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (t *TTrackBar) SetAnchorSideLeft(value *TAnchorSide) {
+    TrackBar_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (t *TTrackBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideTop(t.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (t *TTrackBar) SetAnchorSideTop(value *TAnchorSide) {
+    TrackBar_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (t *TTrackBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideRight(t.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (t *TTrackBar) SetAnchorSideRight(value *TAnchorSide) {
+    TrackBar_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (t *TTrackBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSideBottom(t.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (t *TTrackBar) SetAnchorSideBottom(value *TAnchorSide) {
+    TrackBar_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TTrackBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(TrackBar_GetChildSizing(t.instance))
+}
+
+func (t *TTrackBar) SetChildSizing(value *TControlChildSizing) {
+    TrackBar_SetChildSizing(t.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (t *TTrackBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(TrackBar_GetBorderSpacing(t.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (t *TTrackBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    TrackBar_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (t *TTrackBar) DockClients(Index int32) *TControl {
@@ -1023,5 +1117,11 @@ func (t *TTrackBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (t *TTrackBar) Components(AIndex int32) *TComponent {
     return AsComponent(TrackBar_GetComponents(t.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (t *TTrackBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(TrackBar_GetAnchorSide(t.instance, AKind))
 }
 

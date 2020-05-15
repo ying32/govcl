@@ -179,7 +179,7 @@ end;
 
 function MonthCalendar_GetTextLen(AObj: TMonthCalendar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure MonthCalendar_SetTextBuf(AObj: TMonthCalendar; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function MonthCalendar_ToString(AObj: TMonthCalendar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure MonthCalendar_AnchorToNeighbour(AObj: TMonthCalendar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure MonthCalendar_AnchorParallel(AObj: TMonthCalendar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure MonthCalendar_AnchorHorizontalCenterTo(AObj: TMonthCalendar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure MonthCalendar_AnchorVerticalCenterTo(AObj: TMonthCalendar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure MonthCalendar_AnchorAsAlign(AObj: TMonthCalendar; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure MonthCalendar_AnchorClient(AObj: TMonthCalendar; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function MonthCalendar_GetAlign(AObj: TMonthCalendar): TAlign; extdecl;
@@ -737,16 +767,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function MonthCalendar_GetMargins(AObj: TMonthCalendar): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure MonthCalendar_SetMargins(AObj: TMonthCalendar; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function MonthCalendar_GetComponentCount(AObj: TMonthCalendar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -787,6 +807,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function MonthCalendar_GetAnchorSideLeft(AObj: TMonthCalendar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure MonthCalendar_SetAnchorSideLeft(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function MonthCalendar_GetAnchorSideTop(AObj: TMonthCalendar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure MonthCalendar_SetAnchorSideTop(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function MonthCalendar_GetAnchorSideRight(AObj: TMonthCalendar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure MonthCalendar_SetAnchorSideRight(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function MonthCalendar_GetAnchorSideBottom(AObj: TMonthCalendar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure MonthCalendar_SetAnchorSideBottom(AObj: TMonthCalendar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function MonthCalendar_GetChildSizing(AObj: TMonthCalendar): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure MonthCalendar_SetChildSizing(AObj: TMonthCalendar; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function MonthCalendar_GetBorderSpacing(AObj: TMonthCalendar): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure MonthCalendar_SetBorderSpacing(AObj: TMonthCalendar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function MonthCalendar_GetDockClients(AObj: TMonthCalendar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -800,6 +880,11 @@ end;
 function MonthCalendar_GetComponents(AObj: TMonthCalendar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function MonthCalendar_GetAnchorSide(AObj: TMonthCalendar; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function MonthCalendar_StaticClassType: TClass; extdecl;
@@ -854,6 +939,12 @@ exports
   MonthCalendar_Equals,
   MonthCalendar_GetHashCode,
   MonthCalendar_ToString,
+  MonthCalendar_AnchorToNeighbour,
+  MonthCalendar_AnchorParallel,
+  MonthCalendar_AnchorHorizontalCenterTo,
+  MonthCalendar_AnchorVerticalCenterTo,
+  MonthCalendar_AnchorAsAlign,
+  MonthCalendar_AnchorClient,
   MonthCalendar_GetAlign,
   MonthCalendar_SetAlign,
   MonthCalendar_GetAnchors,
@@ -948,8 +1039,6 @@ exports
   MonthCalendar_SetCursor,
   MonthCalendar_GetHint,
   MonthCalendar_SetHint,
-  MonthCalendar_GetMargins,
-  MonthCalendar_SetMargins,
   MonthCalendar_GetComponentCount,
   MonthCalendar_GetComponentIndex,
   MonthCalendar_SetComponentIndex,
@@ -958,8 +1047,21 @@ exports
   MonthCalendar_SetName,
   MonthCalendar_GetTag,
   MonthCalendar_SetTag,
+  MonthCalendar_GetAnchorSideLeft,
+  MonthCalendar_SetAnchorSideLeft,
+  MonthCalendar_GetAnchorSideTop,
+  MonthCalendar_SetAnchorSideTop,
+  MonthCalendar_GetAnchorSideRight,
+  MonthCalendar_SetAnchorSideRight,
+  MonthCalendar_GetAnchorSideBottom,
+  MonthCalendar_SetAnchorSideBottom,
+  MonthCalendar_GetChildSizing,
+  MonthCalendar_SetChildSizing,
+  MonthCalendar_GetBorderSpacing,
+  MonthCalendar_SetBorderSpacing,
   MonthCalendar_GetDockClients,
   MonthCalendar_GetControls,
   MonthCalendar_GetComponents,
+  MonthCalendar_GetAnchorSide,
   MonthCalendar_StaticClassType;
 

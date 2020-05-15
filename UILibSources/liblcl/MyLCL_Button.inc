@@ -184,7 +184,7 @@ end;
 
 function Button_GetTextLen(AObj: TButton): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Button_SetTextBuf(AObj: TButton; Buffer: PChar); extdecl;
@@ -240,6 +240,36 @@ end;
 function Button_ToString(AObj: TButton): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Button_AnchorToNeighbour(AObj: TButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Button_AnchorParallel(AObj: TButton; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Button_AnchorHorizontalCenterTo(AObj: TButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Button_AnchorVerticalCenterTo(AObj: TButton; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Button_AnchorAsAlign(AObj: TButton; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Button_AnchorClient(AObj: TButton; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Button_GetAction(AObj: TButton): TBasicAction; extdecl;
@@ -772,16 +802,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Button_GetMargins(AObj: TButton): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Button_SetMargins(AObj: TButton; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Button_GetComponentCount(AObj: TButton): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -822,6 +842,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Button_GetAnchorSideLeft(AObj: TButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Button_SetAnchorSideLeft(AObj: TButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Button_GetAnchorSideTop(AObj: TButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Button_SetAnchorSideTop(AObj: TButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Button_GetAnchorSideRight(AObj: TButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Button_SetAnchorSideRight(AObj: TButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Button_GetAnchorSideBottom(AObj: TButton): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Button_SetAnchorSideBottom(AObj: TButton; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Button_GetChildSizing(AObj: TButton): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure Button_SetChildSizing(AObj: TButton; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function Button_GetBorderSpacing(AObj: TButton): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Button_SetBorderSpacing(AObj: TButton; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Button_GetDockClients(AObj: TButton; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -835,6 +915,11 @@ end;
 function Button_GetComponents(AObj: TButton; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Button_GetAnchorSide(AObj: TButton; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Button_StaticClassType: TClass; extdecl;
@@ -890,6 +975,12 @@ exports
   Button_Equals,
   Button_GetHashCode,
   Button_ToString,
+  Button_AnchorToNeighbour,
+  Button_AnchorParallel,
+  Button_AnchorHorizontalCenterTo,
+  Button_AnchorVerticalCenterTo,
+  Button_AnchorAsAlign,
+  Button_AnchorClient,
   Button_GetAction,
   Button_SetAction,
   Button_GetAlign,
@@ -990,8 +1081,6 @@ exports
   Button_SetCursor,
   Button_GetHint,
   Button_SetHint,
-  Button_GetMargins,
-  Button_SetMargins,
   Button_GetComponentCount,
   Button_GetComponentIndex,
   Button_SetComponentIndex,
@@ -1000,8 +1089,21 @@ exports
   Button_SetName,
   Button_GetTag,
   Button_SetTag,
+  Button_GetAnchorSideLeft,
+  Button_SetAnchorSideLeft,
+  Button_GetAnchorSideTop,
+  Button_SetAnchorSideTop,
+  Button_GetAnchorSideRight,
+  Button_SetAnchorSideRight,
+  Button_GetAnchorSideBottom,
+  Button_SetAnchorSideBottom,
+  Button_GetChildSizing,
+  Button_SetChildSizing,
+  Button_GetBorderSpacing,
+  Button_SetBorderSpacing,
   Button_GetDockClients,
   Button_GetControls,
   Button_GetComponents,
+  Button_GetAnchorSide,
   Button_StaticClassType;
 

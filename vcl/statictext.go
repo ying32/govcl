@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TStaticText struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewStaticText(owner IComponent) *TStaticText {
     s := new(TStaticText)
     s.instance = StaticText_Create(CheckPtr(owner))
     s.ptr = unsafe.Pointer(s.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(s, (*TStaticText).Free)
     return s
 }
 
@@ -57,7 +59,7 @@ func StaticTextFromObj(obj IObject) *TStaticText {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsStaticText.
 func StaticTextFromUnsafePointer(ptr unsafe.Pointer) *TStaticText {
     return AsStaticText(ptr)
@@ -371,6 +373,34 @@ func (s *TStaticText) ToString() string {
     return StaticText_ToString(s.instance)
 }
 
+func (s *TStaticText) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StaticText_AnchorToNeighbour(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (s *TStaticText) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    StaticText_AnchorParallel(s.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (s *TStaticText) AnchorHorizontalCenterTo(ASibling IControl) {
+    StaticText_AnchorHorizontalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (s *TStaticText) AnchorVerticalCenterTo(ASibling IControl) {
+    StaticText_AnchorVerticalCenterTo(s.instance, CheckPtr(ASibling))
+}
+
+func (s *TStaticText) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    StaticText_AnchorAsAlign(s.instance, ATheAlign , ASpace)
+}
+
+func (s *TStaticText) AnchorClient(ASpace int32) {
+    StaticText_AnchorClient(s.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (s *TStaticText) Align() TAlign {
@@ -463,10 +493,14 @@ func (s *TStaticText) SetColor(value TColor) {
     StaticText_SetColor(s.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (s *TStaticText) Constraints() *TSizeConstraints {
     return AsSizeConstraints(StaticText_GetConstraints(s.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (s *TStaticText) SetConstraints(value *TSizeConstraints) {
     StaticText_SetConstraints(s.instance, CheckPtr(value))
 }
@@ -579,10 +613,14 @@ func (s *TStaticText) SetParentFont(value bool) {
     StaticText_SetParentFont(s.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStaticText) ParentShowHint() bool {
     return StaticText_GetParentShowHint(s.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (s *TStaticText) SetParentShowHint(value bool) {
     StaticText_SetParentShowHint(s.instance, value)
 }
@@ -967,18 +1005,6 @@ func (s *TStaticText) SetHint(value string) {
     StaticText_SetHint(s.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (s *TStaticText) Margins() *TMargins {
-    return AsMargins(StaticText_GetMargins(s.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (s *TStaticText) SetMargins(value *TMargins) {
-    StaticText_SetMargins(s.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (s *TStaticText) ComponentCount() int32 {
@@ -1027,6 +1053,74 @@ func (s *TStaticText) SetTag(value int) {
     StaticText_SetTag(s.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (s *TStaticText) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(StaticText_GetAnchorSideLeft(s.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (s *TStaticText) SetAnchorSideLeft(value *TAnchorSide) {
+    StaticText_SetAnchorSideLeft(s.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (s *TStaticText) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(StaticText_GetAnchorSideTop(s.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (s *TStaticText) SetAnchorSideTop(value *TAnchorSide) {
+    StaticText_SetAnchorSideTop(s.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (s *TStaticText) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(StaticText_GetAnchorSideRight(s.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (s *TStaticText) SetAnchorSideRight(value *TAnchorSide) {
+    StaticText_SetAnchorSideRight(s.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (s *TStaticText) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(StaticText_GetAnchorSideBottom(s.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (s *TStaticText) SetAnchorSideBottom(value *TAnchorSide) {
+    StaticText_SetAnchorSideBottom(s.instance, CheckPtr(value))
+}
+
+func (s *TStaticText) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(StaticText_GetChildSizing(s.instance))
+}
+
+func (s *TStaticText) SetChildSizing(value *TControlChildSizing) {
+    StaticText_SetChildSizing(s.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (s *TStaticText) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(StaticText_GetBorderSpacing(s.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (s *TStaticText) SetBorderSpacing(value *TControlBorderSpacing) {
+    StaticText_SetBorderSpacing(s.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (s *TStaticText) DockClients(Index int32) *TControl {
@@ -1043,5 +1137,11 @@ func (s *TStaticText) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (s *TStaticText) Components(AIndex int32) *TComponent {
     return AsComponent(StaticText_GetComponents(s.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (s *TStaticText) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(StaticText_GetAnchorSide(s.instance, AKind))
 }
 

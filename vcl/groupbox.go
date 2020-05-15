@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TGroupBox struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewGroupBox(owner IComponent) *TGroupBox {
     g := new(TGroupBox)
     g.instance = GroupBox_Create(CheckPtr(owner))
     g.ptr = unsafe.Pointer(g.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(g, (*TGroupBox).Free)
     return g
 }
 
@@ -57,7 +59,7 @@ func GroupBoxFromObj(obj IObject) *TGroupBox {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsGroupBox.
 func GroupBoxFromUnsafePointer(ptr unsafe.Pointer) *TGroupBox {
     return AsGroupBox(ptr)
@@ -371,6 +373,34 @@ func (g *TGroupBox) ToString() string {
     return GroupBox_ToString(g.instance)
 }
 
+func (g *TGroupBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    GroupBox_AnchorToNeighbour(g.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (g *TGroupBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    GroupBox_AnchorParallel(g.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (g *TGroupBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    GroupBox_AnchorHorizontalCenterTo(g.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (g *TGroupBox) AnchorVerticalCenterTo(ASibling IControl) {
+    GroupBox_AnchorVerticalCenterTo(g.instance, CheckPtr(ASibling))
+}
+
+func (g *TGroupBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    GroupBox_AnchorAsAlign(g.instance, ATheAlign , ASpace)
+}
+
+func (g *TGroupBox) AnchorClient(ASpace int32) {
+    GroupBox_AnchorClient(g.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (g *TGroupBox) Align() TAlign {
@@ -427,10 +457,14 @@ func (g *TGroupBox) SetColor(value TColor) {
     GroupBox_SetColor(g.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (g *TGroupBox) Constraints() *TSizeConstraints {
     return AsSizeConstraints(GroupBox_GetConstraints(g.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (g *TGroupBox) SetConstraints(value *TSizeConstraints) {
     GroupBox_SetConstraints(g.instance, CheckPtr(value))
 }
@@ -555,10 +589,14 @@ func (g *TGroupBox) SetParentFont(value bool) {
     GroupBox_SetParentFont(g.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (g *TGroupBox) ParentShowHint() bool {
     return GroupBox_GetParentShowHint(g.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (g *TGroupBox) SetParentShowHint(value bool) {
     GroupBox_SetParentShowHint(g.instance, value)
 }
@@ -951,18 +989,6 @@ func (g *TGroupBox) SetHint(value string) {
     GroupBox_SetHint(g.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (g *TGroupBox) Margins() *TMargins {
-    return AsMargins(GroupBox_GetMargins(g.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (g *TGroupBox) SetMargins(value *TMargins) {
-    GroupBox_SetMargins(g.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (g *TGroupBox) ComponentCount() int32 {
@@ -1011,6 +1037,74 @@ func (g *TGroupBox) SetTag(value int) {
     GroupBox_SetTag(g.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (g *TGroupBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideLeft(g.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (g *TGroupBox) SetAnchorSideLeft(value *TAnchorSide) {
+    GroupBox_SetAnchorSideLeft(g.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (g *TGroupBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideTop(g.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (g *TGroupBox) SetAnchorSideTop(value *TAnchorSide) {
+    GroupBox_SetAnchorSideTop(g.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (g *TGroupBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideRight(g.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (g *TGroupBox) SetAnchorSideRight(value *TAnchorSide) {
+    GroupBox_SetAnchorSideRight(g.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (g *TGroupBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSideBottom(g.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (g *TGroupBox) SetAnchorSideBottom(value *TAnchorSide) {
+    GroupBox_SetAnchorSideBottom(g.instance, CheckPtr(value))
+}
+
+func (g *TGroupBox) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(GroupBox_GetChildSizing(g.instance))
+}
+
+func (g *TGroupBox) SetChildSizing(value *TControlChildSizing) {
+    GroupBox_SetChildSizing(g.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (g *TGroupBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(GroupBox_GetBorderSpacing(g.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (g *TGroupBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    GroupBox_SetBorderSpacing(g.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (g *TGroupBox) DockClients(Index int32) *TControl {
@@ -1027,5 +1121,11 @@ func (g *TGroupBox) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (g *TGroupBox) Components(AIndex int32) *TComponent {
     return AsComponent(GroupBox_GetComponents(g.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (g *TGroupBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(GroupBox_GetAnchorSide(g.instance, AKind))
 }
 

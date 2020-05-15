@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TWinControl struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewWinControl(owner IComponent) *TWinControl {
     w := new(TWinControl)
     w.instance = WinControl_Create(CheckPtr(owner))
     w.ptr = unsafe.Pointer(w.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(w, (*TWinControl).Free)
     return w
 }
 
@@ -57,7 +59,7 @@ func WinControlFromObj(obj IObject) *TWinControl {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsWinControl.
 func WinControlFromUnsafePointer(ptr unsafe.Pointer) *TWinControl {
     return AsWinControl(ptr)
@@ -371,6 +373,34 @@ func (w *TWinControl) ToString() string {
     return WinControl_ToString(w.instance)
 }
 
+func (w *TWinControl) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    WinControl_AnchorToNeighbour(w.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (w *TWinControl) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    WinControl_AnchorParallel(w.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (w *TWinControl) AnchorHorizontalCenterTo(ASibling IControl) {
+    WinControl_AnchorHorizontalCenterTo(w.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (w *TWinControl) AnchorVerticalCenterTo(ASibling IControl) {
+    WinControl_AnchorVerticalCenterTo(w.instance, CheckPtr(ASibling))
+}
+
+func (w *TWinControl) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    WinControl_AnchorAsAlign(w.instance, ATheAlign , ASpace)
+}
+
+func (w *TWinControl) AnchorClient(ASpace int32) {
+    WinControl_AnchorClient(w.instance, ASpace)
+}
+
 // CN: 获取依靠客户端总数。
 // EN: .
 func (w *TWinControl) DockClientCount() int32 {
@@ -585,10 +615,14 @@ func (w *TWinControl) SetClientWidth(value int32) {
     WinControl_SetClientWidth(w.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (w *TWinControl) Constraints() *TSizeConstraints {
     return AsSizeConstraints(WinControl_GetConstraints(w.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (w *TWinControl) SetConstraints(value *TSizeConstraints) {
     WinControl_SetConstraints(w.instance, CheckPtr(value))
 }
@@ -729,18 +763,6 @@ func (w *TWinControl) SetHint(value string) {
     WinControl_SetHint(w.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (w *TWinControl) Margins() *TMargins {
-    return AsMargins(WinControl_GetMargins(w.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (w *TWinControl) SetMargins(value *TMargins) {
-    WinControl_SetMargins(w.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (w *TWinControl) ComponentCount() int32 {
@@ -789,6 +811,74 @@ func (w *TWinControl) SetTag(value int) {
     WinControl_SetTag(w.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (w *TWinControl) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideLeft(w.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (w *TWinControl) SetAnchorSideLeft(value *TAnchorSide) {
+    WinControl_SetAnchorSideLeft(w.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (w *TWinControl) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideTop(w.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (w *TWinControl) SetAnchorSideTop(value *TAnchorSide) {
+    WinControl_SetAnchorSideTop(w.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (w *TWinControl) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideRight(w.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (w *TWinControl) SetAnchorSideRight(value *TAnchorSide) {
+    WinControl_SetAnchorSideRight(w.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (w *TWinControl) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSideBottom(w.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (w *TWinControl) SetAnchorSideBottom(value *TAnchorSide) {
+    WinControl_SetAnchorSideBottom(w.instance, CheckPtr(value))
+}
+
+func (w *TWinControl) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(WinControl_GetChildSizing(w.instance))
+}
+
+func (w *TWinControl) SetChildSizing(value *TControlChildSizing) {
+    WinControl_SetChildSizing(w.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (w *TWinControl) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(WinControl_GetBorderSpacing(w.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (w *TWinControl) SetBorderSpacing(value *TControlBorderSpacing) {
+    WinControl_SetBorderSpacing(w.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (w *TWinControl) DockClients(Index int32) *TControl {
@@ -805,5 +895,11 @@ func (w *TWinControl) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (w *TWinControl) Components(AIndex int32) *TComponent {
     return AsComponent(WinControl_GetComponents(w.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (w *TWinControl) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(WinControl_GetAnchorSide(w.instance, AKind))
 }
 

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TMainMenu struct {
     IComponent
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewMainMenu(owner IComponent) *TMainMenu {
     m := new(TMainMenu)
     m.instance = MainMenu_Create(CheckPtr(owner))
     m.ptr = unsafe.Pointer(m.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(m, (*TMainMenu).Free)
     return m
 }
 
@@ -57,7 +59,7 @@ func MainMenuFromObj(obj IObject) *TMainMenu {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsMainMenu.
 func MainMenuFromUnsafePointer(ptr unsafe.Pointer) *TMainMenu {
     return AsMainMenu(ptr)
@@ -173,6 +175,14 @@ func (m *TMainMenu) GetHashCode() int32 {
 // EN: Text information.
 func (m *TMainMenu) ToString() string {
     return MainMenu_ToString(m.instance)
+}
+
+func (m *TMainMenu) ImagesWidth() int32 {
+    return MainMenu_GetImagesWidth(m.instance)
+}
+
+func (m *TMainMenu) SetImagesWidth(value int32) {
+    MainMenu_SetImagesWidth(m.instance, value)
 }
 
 func (m *TMainMenu) BiDiMode() TBiDiMode {

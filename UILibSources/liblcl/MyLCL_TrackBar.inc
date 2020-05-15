@@ -184,7 +184,7 @@ end;
 
 function TrackBar_GetTextLen(AObj: TTrackBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure TrackBar_SetTextBuf(AObj: TTrackBar; Buffer: PChar); extdecl;
@@ -240,6 +240,36 @@ end;
 function TrackBar_ToString(AObj: TTrackBar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure TrackBar_AnchorToNeighbour(AObj: TTrackBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure TrackBar_AnchorParallel(AObj: TTrackBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure TrackBar_AnchorHorizontalCenterTo(AObj: TTrackBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure TrackBar_AnchorVerticalCenterTo(AObj: TTrackBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure TrackBar_AnchorAsAlign(AObj: TTrackBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure TrackBar_AnchorClient(AObj: TTrackBar; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function TrackBar_GetAlign(AObj: TTrackBar): TAlign; extdecl;
@@ -797,16 +827,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function TrackBar_GetMargins(AObj: TTrackBar): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure TrackBar_SetMargins(AObj: TTrackBar; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function TrackBar_GetComponentCount(AObj: TTrackBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -847,6 +867,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function TrackBar_GetAnchorSideLeft(AObj: TTrackBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure TrackBar_SetAnchorSideLeft(AObj: TTrackBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function TrackBar_GetAnchorSideTop(AObj: TTrackBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure TrackBar_SetAnchorSideTop(AObj: TTrackBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function TrackBar_GetAnchorSideRight(AObj: TTrackBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure TrackBar_SetAnchorSideRight(AObj: TTrackBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function TrackBar_GetAnchorSideBottom(AObj: TTrackBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure TrackBar_SetAnchorSideBottom(AObj: TTrackBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function TrackBar_GetChildSizing(AObj: TTrackBar): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure TrackBar_SetChildSizing(AObj: TTrackBar; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function TrackBar_GetBorderSpacing(AObj: TTrackBar): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure TrackBar_SetBorderSpacing(AObj: TTrackBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function TrackBar_GetDockClients(AObj: TTrackBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -860,6 +940,11 @@ end;
 function TrackBar_GetComponents(AObj: TTrackBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function TrackBar_GetAnchorSide(AObj: TTrackBar; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function TrackBar_StaticClassType: TClass; extdecl;
@@ -915,6 +1000,12 @@ exports
   TrackBar_Equals,
   TrackBar_GetHashCode,
   TrackBar_ToString,
+  TrackBar_AnchorToNeighbour,
+  TrackBar_AnchorParallel,
+  TrackBar_AnchorHorizontalCenterTo,
+  TrackBar_AnchorVerticalCenterTo,
+  TrackBar_AnchorAsAlign,
+  TrackBar_AnchorClient,
   TrackBar_GetAlign,
   TrackBar_SetAlign,
   TrackBar_GetAnchors,
@@ -1022,8 +1113,6 @@ exports
   TrackBar_SetCursor,
   TrackBar_GetHint,
   TrackBar_SetHint,
-  TrackBar_GetMargins,
-  TrackBar_SetMargins,
   TrackBar_GetComponentCount,
   TrackBar_GetComponentIndex,
   TrackBar_SetComponentIndex,
@@ -1032,8 +1121,21 @@ exports
   TrackBar_SetName,
   TrackBar_GetTag,
   TrackBar_SetTag,
+  TrackBar_GetAnchorSideLeft,
+  TrackBar_SetAnchorSideLeft,
+  TrackBar_GetAnchorSideTop,
+  TrackBar_SetAnchorSideTop,
+  TrackBar_GetAnchorSideRight,
+  TrackBar_SetAnchorSideRight,
+  TrackBar_GetAnchorSideBottom,
+  TrackBar_SetAnchorSideBottom,
+  TrackBar_GetChildSizing,
+  TrackBar_SetChildSizing,
+  TrackBar_GetBorderSpacing,
+  TrackBar_SetBorderSpacing,
   TrackBar_GetDockClients,
   TrackBar_GetControls,
   TrackBar_GetComponents,
+  TrackBar_GetAnchorSide,
   TrackBar_StaticClassType;
 

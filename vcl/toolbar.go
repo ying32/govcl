@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TToolBar struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewToolBar(owner IComponent) *TToolBar {
     t := new(TToolBar)
     t.instance = ToolBar_Create(CheckPtr(owner))
     t.ptr = unsafe.Pointer(t.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(t, (*TToolBar).Free)
     return t
 }
 
@@ -57,7 +59,7 @@ func ToolBarFromObj(obj IObject) *TToolBar {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsToolBar.
 func ToolBarFromUnsafePointer(ptr unsafe.Pointer) *TToolBar {
     return AsToolBar(ptr)
@@ -371,6 +373,34 @@ func (t *TToolBar) ToString() string {
     return ToolBar_ToString(t.instance)
 }
 
+func (t *TToolBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ToolBar_AnchorToNeighbour(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (t *TToolBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ToolBar_AnchorParallel(t.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (t *TToolBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    ToolBar_AnchorHorizontalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (t *TToolBar) AnchorVerticalCenterTo(ASibling IControl) {
+    ToolBar_AnchorVerticalCenterTo(t.instance, CheckPtr(ASibling))
+}
+
+func (t *TToolBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ToolBar_AnchorAsAlign(t.instance, ATheAlign , ASpace)
+}
+
+func (t *TToolBar) AnchorClient(ASpace int32) {
+    ToolBar_AnchorClient(t.instance, ASpace)
+}
+
 func (t *TToolBar) ButtonCount() int32 {
     return ToolBar_GetButtonCount(t.instance)
 }
@@ -473,10 +503,14 @@ func (t *TToolBar) SetColor(value TColor) {
     ToolBar_SetColor(t.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (t *TToolBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ToolBar_GetConstraints(t.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (t *TToolBar) SetConstraints(value *TSizeConstraints) {
     ToolBar_SetConstraints(t.instance, CheckPtr(value))
 }
@@ -685,10 +719,14 @@ func (t *TToolBar) SetParentFont(value bool) {
     ToolBar_SetParentFont(t.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (t *TToolBar) ParentShowHint() bool {
     return ToolBar_GetParentShowHint(t.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (t *TToolBar) SetParentShowHint(value bool) {
     ToolBar_SetParentShowHint(t.instance, value)
 }
@@ -1095,18 +1133,6 @@ func (t *TToolBar) SetHint(value string) {
     ToolBar_SetHint(t.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (t *TToolBar) Margins() *TMargins {
-    return AsMargins(ToolBar_GetMargins(t.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (t *TToolBar) SetMargins(value *TMargins) {
-    ToolBar_SetMargins(t.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (t *TToolBar) ComponentCount() int32 {
@@ -1155,6 +1181,74 @@ func (t *TToolBar) SetTag(value int) {
     ToolBar_SetTag(t.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (t *TToolBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideLeft(t.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (t *TToolBar) SetAnchorSideLeft(value *TAnchorSide) {
+    ToolBar_SetAnchorSideLeft(t.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (t *TToolBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideTop(t.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (t *TToolBar) SetAnchorSideTop(value *TAnchorSide) {
+    ToolBar_SetAnchorSideTop(t.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (t *TToolBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideRight(t.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (t *TToolBar) SetAnchorSideRight(value *TAnchorSide) {
+    ToolBar_SetAnchorSideRight(t.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (t *TToolBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSideBottom(t.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (t *TToolBar) SetAnchorSideBottom(value *TAnchorSide) {
+    ToolBar_SetAnchorSideBottom(t.instance, CheckPtr(value))
+}
+
+func (t *TToolBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ToolBar_GetChildSizing(t.instance))
+}
+
+func (t *TToolBar) SetChildSizing(value *TControlChildSizing) {
+    ToolBar_SetChildSizing(t.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (t *TToolBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ToolBar_GetBorderSpacing(t.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (t *TToolBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    ToolBar_SetBorderSpacing(t.instance, CheckPtr(value))
+}
+
 func (t *TToolBar) Buttons(Index int32) *TToolButton {
     return AsToolButton(ToolBar_GetButtons(t.instance, Index))
 }
@@ -1175,5 +1269,11 @@ func (t *TToolBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (t *TToolBar) Components(AIndex int32) *TComponent {
     return AsComponent(ToolBar_GetComponents(t.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (t *TToolBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ToolBar_GetAnchorSide(t.instance, AKind))
 }
 

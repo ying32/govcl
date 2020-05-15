@@ -204,7 +204,7 @@ end;
 
 function ComboBox_GetTextLen(AObj: TComboBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ComboBox_SetTextBuf(AObj: TComboBox; Buffer: PChar); extdecl;
@@ -260,6 +260,36 @@ end;
 function ComboBox_ToString(AObj: TComboBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ComboBox_AnchorToNeighbour(AObj: TComboBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ComboBox_AnchorParallel(AObj: TComboBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ComboBox_AnchorHorizontalCenterTo(AObj: TComboBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ComboBox_AnchorVerticalCenterTo(AObj: TComboBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ComboBox_AnchorAsAlign(AObj: TComboBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ComboBox_AnchorClient(AObj: TComboBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function ComboBox_GetAlign(AObj: TComboBox): TAlign; extdecl;
@@ -941,16 +971,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ComboBox_GetMargins(AObj: TComboBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ComboBox_SetMargins(AObj: TComboBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ComboBox_GetComponentCount(AObj: TComboBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -991,6 +1011,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ComboBox_GetAnchorSideLeft(AObj: TComboBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ComboBox_SetAnchorSideLeft(AObj: TComboBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ComboBox_GetAnchorSideTop(AObj: TComboBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ComboBox_SetAnchorSideTop(AObj: TComboBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ComboBox_GetAnchorSideRight(AObj: TComboBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ComboBox_SetAnchorSideRight(AObj: TComboBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ComboBox_GetAnchorSideBottom(AObj: TComboBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ComboBox_SetAnchorSideBottom(AObj: TComboBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ComboBox_GetChildSizing(AObj: TComboBox): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ComboBox_SetChildSizing(AObj: TComboBox; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ComboBox_GetBorderSpacing(AObj: TComboBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ComboBox_SetBorderSpacing(AObj: TComboBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ComboBox_GetDockClients(AObj: TComboBox; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -1004,6 +1084,11 @@ end;
 function ComboBox_GetComponents(AObj: TComboBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ComboBox_GetAnchorSide(AObj: TComboBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ComboBox_StaticClassType: TClass; extdecl;
@@ -1063,6 +1148,12 @@ exports
   ComboBox_Equals,
   ComboBox_GetHashCode,
   ComboBox_ToString,
+  ComboBox_AnchorToNeighbour,
+  ComboBox_AnchorParallel,
+  ComboBox_AnchorHorizontalCenterTo,
+  ComboBox_AnchorVerticalCenterTo,
+  ComboBox_AnchorAsAlign,
+  ComboBox_AnchorClient,
   ComboBox_GetAlign,
   ComboBox_SetAlign,
   ComboBox_GetAutoComplete,
@@ -1192,8 +1283,6 @@ exports
   ComboBox_SetCursor,
   ComboBox_GetHint,
   ComboBox_SetHint,
-  ComboBox_GetMargins,
-  ComboBox_SetMargins,
   ComboBox_GetComponentCount,
   ComboBox_GetComponentIndex,
   ComboBox_SetComponentIndex,
@@ -1202,8 +1291,21 @@ exports
   ComboBox_SetName,
   ComboBox_GetTag,
   ComboBox_SetTag,
+  ComboBox_GetAnchorSideLeft,
+  ComboBox_SetAnchorSideLeft,
+  ComboBox_GetAnchorSideTop,
+  ComboBox_SetAnchorSideTop,
+  ComboBox_GetAnchorSideRight,
+  ComboBox_SetAnchorSideRight,
+  ComboBox_GetAnchorSideBottom,
+  ComboBox_SetAnchorSideBottom,
+  ComboBox_GetChildSizing,
+  ComboBox_SetChildSizing,
+  ComboBox_GetBorderSpacing,
+  ComboBox_SetBorderSpacing,
   ComboBox_GetDockClients,
   ComboBox_GetControls,
   ComboBox_GetComponents,
+  ComboBox_GetAnchorSide,
   ComboBox_StaticClassType;
 

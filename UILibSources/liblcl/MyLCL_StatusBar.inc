@@ -179,7 +179,7 @@ end;
 
 function StatusBar_GetTextLen(AObj: TStatusBar): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure StatusBar_SetTextBuf(AObj: TStatusBar; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function StatusBar_ToString(AObj: TStatusBar): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure StatusBar_AnchorToNeighbour(AObj: TStatusBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure StatusBar_AnchorParallel(AObj: TStatusBar; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure StatusBar_AnchorHorizontalCenterTo(AObj: TStatusBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure StatusBar_AnchorVerticalCenterTo(AObj: TStatusBar; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure StatusBar_AnchorAsAlign(AObj: TStatusBar; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure StatusBar_AnchorClient(AObj: TStatusBar; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function StatusBar_GetAction(AObj: TStatusBar): TBasicAction; extdecl;
@@ -822,16 +852,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function StatusBar_GetMargins(AObj: TStatusBar): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure StatusBar_SetMargins(AObj: TStatusBar; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function StatusBar_GetComponentCount(AObj: TStatusBar): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -872,6 +892,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function StatusBar_GetAnchorSideLeft(AObj: TStatusBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure StatusBar_SetAnchorSideLeft(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function StatusBar_GetAnchorSideTop(AObj: TStatusBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure StatusBar_SetAnchorSideTop(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function StatusBar_GetAnchorSideRight(AObj: TStatusBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure StatusBar_SetAnchorSideRight(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function StatusBar_GetAnchorSideBottom(AObj: TStatusBar): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure StatusBar_SetAnchorSideBottom(AObj: TStatusBar; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function StatusBar_GetChildSizing(AObj: TStatusBar): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure StatusBar_SetChildSizing(AObj: TStatusBar; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function StatusBar_GetBorderSpacing(AObj: TStatusBar): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure StatusBar_SetBorderSpacing(AObj: TStatusBar; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function StatusBar_GetDockClients(AObj: TStatusBar; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -885,6 +965,11 @@ end;
 function StatusBar_GetComponents(AObj: TStatusBar; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function StatusBar_GetAnchorSide(AObj: TStatusBar; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function StatusBar_StaticClassType: TClass; extdecl;
@@ -939,6 +1024,12 @@ exports
   StatusBar_Equals,
   StatusBar_GetHashCode,
   StatusBar_ToString,
+  StatusBar_AnchorToNeighbour,
+  StatusBar_AnchorParallel,
+  StatusBar_AnchorHorizontalCenterTo,
+  StatusBar_AnchorVerticalCenterTo,
+  StatusBar_AnchorAsAlign,
+  StatusBar_AnchorClient,
   StatusBar_GetAction,
   StatusBar_SetAction,
   StatusBar_GetAutoHint,
@@ -1050,8 +1141,6 @@ exports
   StatusBar_SetCursor,
   StatusBar_GetHint,
   StatusBar_SetHint,
-  StatusBar_GetMargins,
-  StatusBar_SetMargins,
   StatusBar_GetComponentCount,
   StatusBar_GetComponentIndex,
   StatusBar_SetComponentIndex,
@@ -1060,8 +1149,21 @@ exports
   StatusBar_SetName,
   StatusBar_GetTag,
   StatusBar_SetTag,
+  StatusBar_GetAnchorSideLeft,
+  StatusBar_SetAnchorSideLeft,
+  StatusBar_GetAnchorSideTop,
+  StatusBar_SetAnchorSideTop,
+  StatusBar_GetAnchorSideRight,
+  StatusBar_SetAnchorSideRight,
+  StatusBar_GetAnchorSideBottom,
+  StatusBar_SetAnchorSideBottom,
+  StatusBar_GetChildSizing,
+  StatusBar_SetChildSizing,
+  StatusBar_GetBorderSpacing,
+  StatusBar_SetBorderSpacing,
   StatusBar_GetDockClients,
   StatusBar_GetControls,
   StatusBar_GetComponents,
+  StatusBar_GetAnchorSide,
   StatusBar_StaticClassType;
 

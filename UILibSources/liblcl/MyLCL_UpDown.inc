@@ -179,7 +179,7 @@ end;
 
 function UpDown_GetTextLen(AObj: TUpDown): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure UpDown_SetTextBuf(AObj: TUpDown; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function UpDown_ToString(AObj: TUpDown): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure UpDown_AnchorToNeighbour(AObj: TUpDown; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure UpDown_AnchorParallel(AObj: TUpDown; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure UpDown_AnchorHorizontalCenterTo(AObj: TUpDown; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure UpDown_AnchorVerticalCenterTo(AObj: TUpDown; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure UpDown_AnchorAsAlign(AObj: TUpDown; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure UpDown_AnchorClient(AObj: TUpDown; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function UpDown_GetAnchors(AObj: TUpDown): TAnchors; extdecl;
@@ -702,16 +732,6 @@ begin
   AObj.Cursor := AValue;
 end;
 
-function UpDown_GetMargins(AObj: TUpDown): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure UpDown_SetMargins(AObj: TUpDown; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function UpDown_GetComponentCount(AObj: TUpDown): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -752,6 +772,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function UpDown_GetAnchorSideLeft(AObj: TUpDown): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure UpDown_SetAnchorSideLeft(AObj: TUpDown; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function UpDown_GetAnchorSideTop(AObj: TUpDown): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure UpDown_SetAnchorSideTop(AObj: TUpDown; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function UpDown_GetAnchorSideRight(AObj: TUpDown): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure UpDown_SetAnchorSideRight(AObj: TUpDown; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function UpDown_GetAnchorSideBottom(AObj: TUpDown): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure UpDown_SetAnchorSideBottom(AObj: TUpDown; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function UpDown_GetChildSizing(AObj: TUpDown): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure UpDown_SetChildSizing(AObj: TUpDown; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function UpDown_GetBorderSpacing(AObj: TUpDown): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure UpDown_SetBorderSpacing(AObj: TUpDown; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function UpDown_GetDockClients(AObj: TUpDown; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -765,6 +845,11 @@ end;
 function UpDown_GetComponents(AObj: TUpDown; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function UpDown_GetAnchorSide(AObj: TUpDown; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function UpDown_StaticClassType: TClass; extdecl;
@@ -819,6 +904,12 @@ exports
   UpDown_Equals,
   UpDown_GetHashCode,
   UpDown_ToString,
+  UpDown_AnchorToNeighbour,
+  UpDown_AnchorParallel,
+  UpDown_AnchorHorizontalCenterTo,
+  UpDown_AnchorVerticalCenterTo,
+  UpDown_AnchorAsAlign,
+  UpDown_AnchorClient,
   UpDown_GetAnchors,
   UpDown_SetAnchors,
   UpDown_GetDoubleBuffered,
@@ -908,8 +999,6 @@ exports
   UpDown_SetHeight,
   UpDown_GetCursor,
   UpDown_SetCursor,
-  UpDown_GetMargins,
-  UpDown_SetMargins,
   UpDown_GetComponentCount,
   UpDown_GetComponentIndex,
   UpDown_SetComponentIndex,
@@ -918,8 +1007,21 @@ exports
   UpDown_SetName,
   UpDown_GetTag,
   UpDown_SetTag,
+  UpDown_GetAnchorSideLeft,
+  UpDown_SetAnchorSideLeft,
+  UpDown_GetAnchorSideTop,
+  UpDown_SetAnchorSideTop,
+  UpDown_GetAnchorSideRight,
+  UpDown_SetAnchorSideRight,
+  UpDown_GetAnchorSideBottom,
+  UpDown_SetAnchorSideBottom,
+  UpDown_GetChildSizing,
+  UpDown_SetChildSizing,
+  UpDown_GetBorderSpacing,
+  UpDown_SetBorderSpacing,
   UpDown_GetDockClients,
   UpDown_GetControls,
   UpDown_GetComponents,
+  UpDown_GetAnchorSide,
   UpDown_StaticClassType;
 

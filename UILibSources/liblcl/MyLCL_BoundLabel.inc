@@ -104,7 +104,7 @@ end;
 
 function BoundLabel_GetTextLen(AObj: TBoundLabel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure BoundLabel_SetTextBuf(AObj: TBoundLabel; Buffer: PChar); extdecl;
@@ -160,6 +160,36 @@ end;
 function BoundLabel_ToString(AObj: TBoundLabel): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure BoundLabel_AnchorToNeighbour(AObj: TBoundLabel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure BoundLabel_AnchorParallel(AObj: TBoundLabel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure BoundLabel_AnchorHorizontalCenterTo(AObj: TBoundLabel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure BoundLabel_AnchorVerticalCenterTo(AObj: TBoundLabel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure BoundLabel_AnchorAsAlign(AObj: TBoundLabel; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure BoundLabel_AnchorClient(AObj: TBoundLabel; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function BoundLabel_GetBiDiMode(AObj: TBoundLabel): TBiDiMode; extdecl;
@@ -548,16 +578,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function BoundLabel_GetMargins(AObj: TBoundLabel): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure BoundLabel_SetMargins(AObj: TBoundLabel; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function BoundLabel_GetComponentCount(AObj: TBoundLabel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -598,9 +618,64 @@ begin
   AObj.Tag := AValue;
 end;
 
+function BoundLabel_GetAnchorSideLeft(AObj: TBoundLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure BoundLabel_SetAnchorSideLeft(AObj: TBoundLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function BoundLabel_GetAnchorSideTop(AObj: TBoundLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure BoundLabel_SetAnchorSideTop(AObj: TBoundLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function BoundLabel_GetAnchorSideRight(AObj: TBoundLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure BoundLabel_SetAnchorSideRight(AObj: TBoundLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function BoundLabel_GetAnchorSideBottom(AObj: TBoundLabel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure BoundLabel_SetAnchorSideBottom(AObj: TBoundLabel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function BoundLabel_GetBorderSpacing(AObj: TBoundLabel): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure BoundLabel_SetBorderSpacing(AObj: TBoundLabel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function BoundLabel_GetComponents(AObj: TBoundLabel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function BoundLabel_GetAnchorSide(AObj: TBoundLabel; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function BoundLabel_StaticClassType: TClass; extdecl;
@@ -640,6 +715,12 @@ exports
   BoundLabel_Equals,
   BoundLabel_GetHashCode,
   BoundLabel_ToString,
+  BoundLabel_AnchorToNeighbour,
+  BoundLabel_AnchorParallel,
+  BoundLabel_AnchorHorizontalCenterTo,
+  BoundLabel_AnchorVerticalCenterTo,
+  BoundLabel_AnchorAsAlign,
+  BoundLabel_AnchorClient,
   BoundLabel_GetBiDiMode,
   BoundLabel_SetBiDiMode,
   BoundLabel_GetCaption,
@@ -714,8 +795,6 @@ exports
   BoundLabel_SetCursor,
   BoundLabel_GetHint,
   BoundLabel_SetHint,
-  BoundLabel_GetMargins,
-  BoundLabel_SetMargins,
   BoundLabel_GetComponentCount,
   BoundLabel_GetComponentIndex,
   BoundLabel_SetComponentIndex,
@@ -724,6 +803,17 @@ exports
   BoundLabel_SetName,
   BoundLabel_GetTag,
   BoundLabel_SetTag,
+  BoundLabel_GetAnchorSideLeft,
+  BoundLabel_SetAnchorSideLeft,
+  BoundLabel_GetAnchorSideTop,
+  BoundLabel_SetAnchorSideTop,
+  BoundLabel_GetAnchorSideRight,
+  BoundLabel_SetAnchorSideRight,
+  BoundLabel_GetAnchorSideBottom,
+  BoundLabel_SetAnchorSideBottom,
+  BoundLabel_GetBorderSpacing,
+  BoundLabel_SetBorderSpacing,
   BoundLabel_GetComponents,
+  BoundLabel_GetAnchorSide,
   BoundLabel_StaticClassType;
 

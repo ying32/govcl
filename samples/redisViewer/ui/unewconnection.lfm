@@ -1,0 +1,130 @@
+object NewConnection: TNewConnection
+  Left = 667
+  Height = 397
+  Top = 250
+  Width = 352
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'New...'
+  ClientHeight = 397
+  ClientWidth = 352
+  OnCreate = FormCreate
+  object Panel1: TPanel
+    Left = 0
+    Height = 50
+    Top = 347
+    Width = 352
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 50
+    ClientWidth = 352
+    TabOrder = 0
+    object BtnTestConnection: TButton
+      Left = 8
+      Height = 25
+      Top = 16
+      Width = 139
+      Caption = '测试连接'
+      OnClick = BtnTestConnectionClick
+      TabOrder = 0
+    end
+    object BtnOk: TButton
+      Left = 192
+      Height = 25
+      Top = 16
+      Width = 75
+      Caption = '确定'
+      ModalResult = 1
+      TabOrder = 1
+    end
+    object BtnCancel: TButton
+      Left = 269
+      Height = 25
+      Top = 16
+      Width = 75
+      Caption = '取消'
+      ModalResult = 2
+      TabOrder = 2
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 347
+    Top = 0
+    Width = 352
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 347
+    ClientWidth = 352
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 32
+      Height = 25
+      Top = 32
+      Width = 96
+      AutoSize = False
+      Caption = '连接名：'
+      ParentColor = False
+    end
+    object EdtConnName: TEdit
+      Left = 128
+      Height = 25
+      Top = 32
+      Width = 192
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      Left = 32
+      Height = 25
+      Top = 88
+      Width = 96
+      AutoSize = False
+      Caption = '主机名/IP地：'
+      ParentColor = False
+    end
+    object EdtHost: TEdit
+      Left = 128
+      Height = 25
+      Top = 88
+      Width = 192
+      TabOrder = 1
+      Text = '127.0.0.1'
+    end
+    object Label3: TLabel
+      Left = 32
+      Height = 25
+      Top = 120
+      Width = 96
+      AutoSize = False
+      Caption = '端口：'
+      ParentColor = False
+    end
+    object EdtPort: TEdit
+      Left = 128
+      Height = 25
+      Top = 120
+      Width = 56
+      NumbersOnly = True
+      TabOrder = 2
+      Text = '6379'
+    end
+    object Label5: TLabel
+      Left = 32
+      Height = 25
+      Top = 152
+      Width = 96
+      AutoSize = False
+      Caption = '密码：'
+      ParentColor = False
+    end
+    object EdtPassword: TEdit
+      Left = 128
+      Height = 25
+      Top = 152
+      Width = 144
+      EchoMode = emPassword
+      PasswordChar = '*'
+      TabOrder = 3
+    end
+  end
+end

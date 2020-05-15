@@ -194,7 +194,7 @@ end;
 
 function StringGrid_GetTextLen(AObj: TStringGrid): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure StringGrid_SetTextBuf(AObj: TStringGrid; Buffer: PChar); extdecl;
@@ -250,6 +250,36 @@ end;
 function StringGrid_ToString(AObj: TStringGrid): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure StringGrid_AnchorToNeighbour(AObj: TStringGrid; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure StringGrid_AnchorParallel(AObj: TStringGrid; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure StringGrid_AnchorHorizontalCenterTo(AObj: TStringGrid; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure StringGrid_AnchorVerticalCenterTo(AObj: TStringGrid; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure StringGrid_AnchorAsAlign(AObj: TStringGrid; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure StringGrid_AnchorClient(AObj: TStringGrid; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function StringGrid_GetAlign(AObj: TStringGrid): TAlign; extdecl;
@@ -1058,16 +1088,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function StringGrid_GetMargins(AObj: TStringGrid): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure StringGrid_SetMargins(AObj: TStringGrid; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function StringGrid_GetComponentCount(AObj: TStringGrid): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -1106,6 +1126,66 @@ end;
 procedure StringGrid_SetTag(AObj: TStringGrid; AValue: NativeInt); extdecl;
 begin
   AObj.Tag := AValue;
+end;
+
+function StringGrid_GetAnchorSideLeft(AObj: TStringGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure StringGrid_SetAnchorSideLeft(AObj: TStringGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function StringGrid_GetAnchorSideTop(AObj: TStringGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure StringGrid_SetAnchorSideTop(AObj: TStringGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function StringGrid_GetAnchorSideRight(AObj: TStringGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure StringGrid_SetAnchorSideRight(AObj: TStringGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function StringGrid_GetAnchorSideBottom(AObj: TStringGrid): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure StringGrid_SetAnchorSideBottom(AObj: TStringGrid; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function StringGrid_GetChildSizing(AObj: TStringGrid): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure StringGrid_SetChildSizing(AObj: TStringGrid; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function StringGrid_GetBorderSpacing(AObj: TStringGrid): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure StringGrid_SetBorderSpacing(AObj: TStringGrid; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
 end;
 
 function StringGrid_GetCells(AObj: TStringGrid; ACol: Integer; ARow: Integer): PChar; extdecl;
@@ -1183,6 +1263,11 @@ begin
   Result :=  AObj.Components[AIndex];
 end;
 
+function StringGrid_GetAnchorSide(AObj: TStringGrid; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
+end;
+
 function StringGrid_StaticClassType: TClass; extdecl;
 begin
   Result := TStringGrid;
@@ -1238,6 +1323,12 @@ exports
   StringGrid_Equals,
   StringGrid_GetHashCode,
   StringGrid_ToString,
+  StringGrid_AnchorToNeighbour,
+  StringGrid_AnchorParallel,
+  StringGrid_AnchorHorizontalCenterTo,
+  StringGrid_AnchorVerticalCenterTo,
+  StringGrid_AnchorAsAlign,
+  StringGrid_AnchorClient,
   StringGrid_GetAlign,
   StringGrid_SetAlign,
   StringGrid_GetAnchors,
@@ -1388,8 +1479,6 @@ exports
   StringGrid_SetCursor,
   StringGrid_GetHint,
   StringGrid_SetHint,
-  StringGrid_GetMargins,
-  StringGrid_SetMargins,
   StringGrid_GetComponentCount,
   StringGrid_GetComponentIndex,
   StringGrid_SetComponentIndex,
@@ -1398,6 +1487,18 @@ exports
   StringGrid_SetName,
   StringGrid_GetTag,
   StringGrid_SetTag,
+  StringGrid_GetAnchorSideLeft,
+  StringGrid_SetAnchorSideLeft,
+  StringGrid_GetAnchorSideTop,
+  StringGrid_SetAnchorSideTop,
+  StringGrid_GetAnchorSideRight,
+  StringGrid_SetAnchorSideRight,
+  StringGrid_GetAnchorSideBottom,
+  StringGrid_SetAnchorSideBottom,
+  StringGrid_GetChildSizing,
+  StringGrid_SetChildSizing,
+  StringGrid_GetBorderSpacing,
+  StringGrid_SetBorderSpacing,
   StringGrid_GetCells,
   StringGrid_SetCells,
   StringGrid_GetCols,
@@ -1413,5 +1514,6 @@ exports
   StringGrid_GetDockClients,
   StringGrid_GetControls,
   StringGrid_GetComponents,
+  StringGrid_GetAnchorSide,
   StringGrid_StaticClassType;
 

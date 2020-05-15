@@ -90,11 +90,11 @@ func Rect(left, top, right, bottom int32) TRect {
 	return TRect{Left: left, Top: top, Right: right, Bottom: bottom}
 }
 
-func (r *TRect) PtInRect(P TPoint) bool {
+func (r TRect) PtInRect(P TPoint) bool {
 	return P.X >= r.Left && P.X < r.Right && P.Y >= r.Top && P.Y < r.Bottom
 }
 
-func (r *TRect) Width() int32 {
+func (r TRect) Width() int32 {
 	return r.Right - r.Left
 }
 
@@ -102,7 +102,7 @@ func (r *TRect) SetWidth(val int32) {
 	r.Right = r.Left + val
 }
 
-func (r *TRect) Height() int32 {
+func (r TRect) Height() int32 {
 	return r.Bottom - r.Top
 }
 
@@ -110,7 +110,7 @@ func (r *TRect) SetHeight(val int32) {
 	r.Bottom = r.Top + val
 }
 
-func (r *TRect) IsEmpty() bool {
+func (r TRect) IsEmpty() bool {
 	return r.Right <= r.Left || r.Bottom <= r.Top
 }
 
@@ -121,9 +121,8 @@ func (r *TRect) Empty() {
 	r.Bottom = 0
 }
 
-func (r *TRect) Size() TSize {
-	s := TSize{r.Width(), r.Height()}
-	return s
+func (r TRect) Size() TSize {
+	return TSize{r.Width(), r.Height()}
 }
 
 func (r *TRect) SetSize(w, h int32) {
@@ -138,15 +137,15 @@ func (r *TRect) Inflate(dx, dy int32) {
 	r.Bottom += dy
 }
 
-func (r *TRect) Contains(aR TRect) bool {
+func (r TRect) Contains(aR TRect) bool {
 	return r.Left <= aR.Left && r.Right >= aR.Right && r.Top <= aR.Top && r.Bottom >= aR.Bottom
 }
 
-func (r *TRect) IntersectsWith(aR TRect) bool {
+func (r TRect) IntersectsWith(aR TRect) bool {
 	return r.Left < aR.Right && r.Right > aR.Left && r.Top < aR.Bottom && r.Bottom > aR.Top
 }
 
-func (r *TRect) CenterPoint() (ret TPoint) {
+func (r TRect) CenterPoint() (ret TPoint) {
 	ret.X = (r.Right-r.Left)/2 + r.Left
 	ret.Y = (r.Bottom-r.Top)/2 + r.Top
 	return
@@ -169,7 +168,7 @@ func Point(x, y int32) TPoint {
 	return TPoint{X: x, Y: y}
 }
 
-func (p *TPoint) IsZero() bool {
+func (p TPoint) IsZero() bool {
 	return p.X == 0 && p.Y == 0
 }
 

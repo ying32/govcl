@@ -224,7 +224,7 @@ end;
 
 function MiniWebview_GetTextLen(AObj: TMiniWebview): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure MiniWebview_SetTextBuf(AObj: TMiniWebview; Buffer: PChar); extdecl;
@@ -282,9 +282,89 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+procedure MiniWebview_AnchorToNeighbour(AObj: TMiniWebview; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure MiniWebview_AnchorParallel(AObj: TMiniWebview; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure MiniWebview_AnchorHorizontalCenterTo(AObj: TMiniWebview; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure MiniWebview_AnchorVerticalCenterTo(AObj: TMiniWebview; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure MiniWebview_AnchorAsAlign(AObj: TMiniWebview; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure MiniWebview_AnchorClient(AObj: TMiniWebview; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
 function MiniWebview_GetReadyState(AObj: TMiniWebview): TReadyState; extdecl;
 begin
   Result :=  AObj.ReadyState;
+end;
+
+function MiniWebview_GetAlign(AObj: TMiniWebview): TAlign; extdecl;
+begin
+  Result :=  AObj.Align;
+end;
+
+procedure MiniWebview_SetAlign(AObj: TMiniWebview; AValue: TAlign); extdecl;
+begin
+  AObj.Align := AValue;
+end;
+
+function MiniWebview_GetAnchors(AObj: TMiniWebview): TAnchors; extdecl;
+begin
+  Result :=  AObj.Anchors;
+end;
+
+procedure MiniWebview_SetAnchors(AObj: TMiniWebview; AValue: TAnchors); extdecl;
+begin
+  AObj.Anchors := AValue;
+end;
+
+function MiniWebview_GetConstraints(AObj: TMiniWebview): TSizeConstraints; extdecl;
+begin
+  Result :=  AObj.Constraints;
+end;
+
+procedure MiniWebview_SetConstraints(AObj: TMiniWebview; AValue: TSizeConstraints); extdecl;
+begin
+  AObj.Constraints := AValue;
+end;
+
+function MiniWebview_GetEnabled(AObj: TMiniWebview): LongBool; extdecl;
+begin
+  Result :=  AObj.Enabled;
+end;
+
+procedure MiniWebview_SetEnabled(AObj: TMiniWebview; AValue: LongBool); extdecl;
+begin
+  AObj.Enabled := AValue;
+end;
+
+function MiniWebview_GetVisible(AObj: TMiniWebview): LongBool; extdecl;
+begin
+  Result :=  AObj.Visible;
+end;
+
+procedure MiniWebview_SetVisible(AObj: TMiniWebview; AValue: LongBool); extdecl;
+begin
+  AObj.Visible := AValue;
 end;
 
 procedure MiniWebview_SetOnTitleChange(AObj: TMiniWebview; AEventId: NativeUInt); extdecl;
@@ -401,16 +481,6 @@ begin
   AObj.UseDockManager := AValue;
 end;
 
-function MiniWebview_GetEnabled(AObj: TMiniWebview): LongBool; extdecl;
-begin
-  Result :=  AObj.Enabled;
-end;
-
-procedure MiniWebview_SetEnabled(AObj: TMiniWebview; AValue: LongBool); extdecl;
-begin
-  AObj.Enabled := AValue;
-end;
-
 function MiniWebview_GetAction(AObj: TMiniWebview): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -419,26 +489,6 @@ end;
 procedure MiniWebview_SetAction(AObj: TMiniWebview; AValue: TBasicAction); extdecl;
 begin
   AObj.Action := AValue;
-end;
-
-function MiniWebview_GetAlign(AObj: TMiniWebview): TAlign; extdecl;
-begin
-  Result :=  AObj.Align;
-end;
-
-procedure MiniWebview_SetAlign(AObj: TMiniWebview; AValue: TAlign); extdecl;
-begin
-  AObj.Align := AValue;
-end;
-
-function MiniWebview_GetAnchors(AObj: TMiniWebview): TAnchors; extdecl;
-begin
-  Result :=  AObj.Anchors;
-end;
-
-procedure MiniWebview_SetAnchors(AObj: TMiniWebview; AValue: TAnchors); extdecl;
-begin
-  AObj.Anchors := AValue;
 end;
 
 function MiniWebview_GetBiDiMode(AObj: TMiniWebview): TBiDiMode; extdecl;
@@ -491,16 +541,6 @@ begin
   AObj.ClientWidth := AValue;
 end;
 
-function MiniWebview_GetConstraints(AObj: TMiniWebview): TSizeConstraints; extdecl;
-begin
-  Result :=  AObj.Constraints;
-end;
-
-procedure MiniWebview_SetConstraints(AObj: TMiniWebview; AValue: TSizeConstraints); extdecl;
-begin
-  AObj.Constraints := AValue;
-end;
-
 function MiniWebview_GetControlState(AObj: TMiniWebview): TControlState; extdecl;
 begin
   Result :=  AObj.ControlState;
@@ -534,16 +574,6 @@ end;
 procedure MiniWebview_SetShowHint(AObj: TMiniWebview; AValue: LongBool); extdecl;
 begin
   AObj.ShowHint := AValue;
-end;
-
-function MiniWebview_GetVisible(AObj: TMiniWebview): LongBool; extdecl;
-begin
-  Result :=  AObj.Visible;
-end;
-
-procedure MiniWebview_SetVisible(AObj: TMiniWebview; AValue: LongBool); extdecl;
-begin
-  AObj.Visible := AValue;
 end;
 
 function MiniWebview_GetParent(AObj: TMiniWebview): TWinControl; extdecl;
@@ -616,16 +646,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function MiniWebview_GetMargins(AObj: TMiniWebview): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure MiniWebview_SetMargins(AObj: TMiniWebview; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function MiniWebview_GetComponentCount(AObj: TMiniWebview): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -666,6 +686,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function MiniWebview_GetAnchorSideLeft(AObj: TMiniWebview): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure MiniWebview_SetAnchorSideLeft(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function MiniWebview_GetAnchorSideTop(AObj: TMiniWebview): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure MiniWebview_SetAnchorSideTop(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function MiniWebview_GetAnchorSideRight(AObj: TMiniWebview): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure MiniWebview_SetAnchorSideRight(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function MiniWebview_GetAnchorSideBottom(AObj: TMiniWebview): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure MiniWebview_SetAnchorSideBottom(AObj: TMiniWebview; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function MiniWebview_GetChildSizing(AObj: TMiniWebview): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure MiniWebview_SetChildSizing(AObj: TMiniWebview; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function MiniWebview_GetBorderSpacing(AObj: TMiniWebview): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure MiniWebview_SetBorderSpacing(AObj: TMiniWebview; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function MiniWebview_GetDockClients(AObj: TMiniWebview; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -679,6 +759,11 @@ end;
 function MiniWebview_GetComponents(AObj: TMiniWebview; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function MiniWebview_GetAnchorSide(AObj: TMiniWebview; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function MiniWebview_StaticClassType: TClass; extdecl;
@@ -742,7 +827,23 @@ exports
   MiniWebview_Equals,
   MiniWebview_GetHashCode,
   MiniWebview_ToString,
+  MiniWebview_AnchorToNeighbour,
+  MiniWebview_AnchorParallel,
+  MiniWebview_AnchorHorizontalCenterTo,
+  MiniWebview_AnchorVerticalCenterTo,
+  MiniWebview_AnchorAsAlign,
+  MiniWebview_AnchorClient,
   MiniWebview_GetReadyState,
+  MiniWebview_GetAlign,
+  MiniWebview_SetAlign,
+  MiniWebview_GetAnchors,
+  MiniWebview_SetAnchors,
+  MiniWebview_GetConstraints,
+  MiniWebview_SetConstraints,
+  MiniWebview_GetEnabled,
+  MiniWebview_SetEnabled,
+  MiniWebview_GetVisible,
+  MiniWebview_SetVisible,
   MiniWebview_SetOnTitleChange,
   MiniWebview_SetOnJSExternal,
   MiniWebview_GetDockClientCount,
@@ -765,14 +866,8 @@ exports
   MiniWebview_SetTabStop,
   MiniWebview_GetUseDockManager,
   MiniWebview_SetUseDockManager,
-  MiniWebview_GetEnabled,
-  MiniWebview_SetEnabled,
   MiniWebview_GetAction,
   MiniWebview_SetAction,
-  MiniWebview_GetAlign,
-  MiniWebview_SetAlign,
-  MiniWebview_GetAnchors,
-  MiniWebview_SetAnchors,
   MiniWebview_GetBiDiMode,
   MiniWebview_SetBiDiMode,
   MiniWebview_GetBoundsRect,
@@ -783,8 +878,6 @@ exports
   MiniWebview_GetClientRect,
   MiniWebview_GetClientWidth,
   MiniWebview_SetClientWidth,
-  MiniWebview_GetConstraints,
-  MiniWebview_SetConstraints,
   MiniWebview_GetControlState,
   MiniWebview_SetControlState,
   MiniWebview_GetControlStyle,
@@ -792,8 +885,6 @@ exports
   MiniWebview_GetFloating,
   MiniWebview_GetShowHint,
   MiniWebview_SetShowHint,
-  MiniWebview_GetVisible,
-  MiniWebview_SetVisible,
   MiniWebview_GetParent,
   MiniWebview_SetParent,
   MiniWebview_GetLeft,
@@ -808,8 +899,6 @@ exports
   MiniWebview_SetCursor,
   MiniWebview_GetHint,
   MiniWebview_SetHint,
-  MiniWebview_GetMargins,
-  MiniWebview_SetMargins,
   MiniWebview_GetComponentCount,
   MiniWebview_GetComponentIndex,
   MiniWebview_SetComponentIndex,
@@ -818,8 +907,21 @@ exports
   MiniWebview_SetName,
   MiniWebview_GetTag,
   MiniWebview_SetTag,
+  MiniWebview_GetAnchorSideLeft,
+  MiniWebview_SetAnchorSideLeft,
+  MiniWebview_GetAnchorSideTop,
+  MiniWebview_SetAnchorSideTop,
+  MiniWebview_GetAnchorSideRight,
+  MiniWebview_SetAnchorSideRight,
+  MiniWebview_GetAnchorSideBottom,
+  MiniWebview_SetAnchorSideBottom,
+  MiniWebview_GetChildSizing,
+  MiniWebview_SetChildSizing,
+  MiniWebview_GetBorderSpacing,
+  MiniWebview_SetBorderSpacing,
   MiniWebview_GetDockClients,
   MiniWebview_GetControls,
   MiniWebview_GetComponents,
+  MiniWebview_GetAnchorSide,
   MiniWebview_StaticClassType;
 

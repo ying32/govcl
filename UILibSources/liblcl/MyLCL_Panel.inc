@@ -179,7 +179,7 @@ end;
 
 function Panel_GetTextLen(AObj: TPanel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure Panel_SetTextBuf(AObj: TPanel; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function Panel_ToString(AObj: TPanel): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure Panel_AnchorToNeighbour(AObj: TPanel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure Panel_AnchorParallel(AObj: TPanel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure Panel_AnchorHorizontalCenterTo(AObj: TPanel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure Panel_AnchorVerticalCenterTo(AObj: TPanel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure Panel_AnchorAsAlign(AObj: TPanel; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure Panel_AnchorClient(AObj: TPanel; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function Panel_GetAlign(AObj: TPanel): TAlign; extdecl;
@@ -872,16 +902,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function Panel_GetMargins(AObj: TPanel): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure Panel_SetMargins(AObj: TPanel; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function Panel_GetComponentCount(AObj: TPanel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -922,6 +942,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function Panel_GetAnchorSideLeft(AObj: TPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure Panel_SetAnchorSideLeft(AObj: TPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function Panel_GetAnchorSideTop(AObj: TPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure Panel_SetAnchorSideTop(AObj: TPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function Panel_GetAnchorSideRight(AObj: TPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure Panel_SetAnchorSideRight(AObj: TPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function Panel_GetAnchorSideBottom(AObj: TPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure Panel_SetAnchorSideBottom(AObj: TPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function Panel_GetChildSizing(AObj: TPanel): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure Panel_SetChildSizing(AObj: TPanel; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function Panel_GetBorderSpacing(AObj: TPanel): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure Panel_SetBorderSpacing(AObj: TPanel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function Panel_GetDockClients(AObj: TPanel; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -935,6 +1015,11 @@ end;
 function Panel_GetComponents(AObj: TPanel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function Panel_GetAnchorSide(AObj: TPanel; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function Panel_StaticClassType: TClass; extdecl;
@@ -989,6 +1074,12 @@ exports
   Panel_Equals,
   Panel_GetHashCode,
   Panel_ToString,
+  Panel_AnchorToNeighbour,
+  Panel_AnchorParallel,
+  Panel_AnchorHorizontalCenterTo,
+  Panel_AnchorVerticalCenterTo,
+  Panel_AnchorAsAlign,
+  Panel_AnchorClient,
   Panel_GetAlign,
   Panel_SetAlign,
   Panel_GetAlignment,
@@ -1108,8 +1199,6 @@ exports
   Panel_SetCursor,
   Panel_GetHint,
   Panel_SetHint,
-  Panel_GetMargins,
-  Panel_SetMargins,
   Panel_GetComponentCount,
   Panel_GetComponentIndex,
   Panel_SetComponentIndex,
@@ -1118,8 +1207,21 @@ exports
   Panel_SetName,
   Panel_GetTag,
   Panel_SetTag,
+  Panel_GetAnchorSideLeft,
+  Panel_SetAnchorSideLeft,
+  Panel_GetAnchorSideTop,
+  Panel_SetAnchorSideTop,
+  Panel_GetAnchorSideRight,
+  Panel_SetAnchorSideRight,
+  Panel_GetAnchorSideBottom,
+  Panel_SetAnchorSideBottom,
+  Panel_GetChildSizing,
+  Panel_SetChildSizing,
+  Panel_GetBorderSpacing,
+  Panel_SetBorderSpacing,
   Panel_GetDockClients,
   Panel_GetControls,
   Panel_GetComponents,
+  Panel_GetAnchorSide,
   Panel_StaticClassType;
 

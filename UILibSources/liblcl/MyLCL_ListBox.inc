@@ -214,7 +214,7 @@ end;
 
 function ListBox_GetTextLen(AObj: TListBox): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure ListBox_SetTextBuf(AObj: TListBox; Buffer: PChar); extdecl;
@@ -270,6 +270,66 @@ end;
 function ListBox_ToString(AObj: TListBox): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure ListBox_AnchorToNeighbour(AObj: TListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure ListBox_AnchorParallel(AObj: TListBox; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure ListBox_AnchorHorizontalCenterTo(AObj: TListBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure ListBox_AnchorVerticalCenterTo(AObj: TListBox; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure ListBox_AnchorAsAlign(AObj: TListBox; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure ListBox_AnchorClient(AObj: TListBox; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
+end;
+
+function ListBox_GetClickOnSelChange(AObj: TListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.ClickOnSelChange;
+end;
+
+procedure ListBox_SetClickOnSelChange(AObj: TListBox; AValue: LongBool); extdecl;
+begin
+  AObj.ClickOnSelChange := AValue;
+end;
+
+function ListBox_GetOptions(AObj: TListBox): TListBoxOptions; extdecl;
+begin
+  Result :=  AObj.Options;
+end;
+
+procedure ListBox_SetOptions(AObj: TListBox; AValue: TListBoxOptions); extdecl;
+begin
+  AObj.Options := AValue;
+end;
+
+function ListBox_GetTopIndex(AObj: TListBox): Integer; extdecl;
+begin
+  Result :=  AObj.TopIndex;
+end;
+
+procedure ListBox_SetTopIndex(AObj: TListBox; AValue: Integer); extdecl;
+begin
+  AObj.TopIndex := AValue;
 end;
 
 function ListBox_GetStyle(AObj: TListBox): TListBoxStyle; extdecl;
@@ -898,16 +958,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function ListBox_GetMargins(AObj: TListBox): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure ListBox_SetMargins(AObj: TListBox; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function ListBox_GetComponentCount(AObj: TListBox): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -948,6 +998,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function ListBox_GetAnchorSideLeft(AObj: TListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure ListBox_SetAnchorSideLeft(AObj: TListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function ListBox_GetAnchorSideTop(AObj: TListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure ListBox_SetAnchorSideTop(AObj: TListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function ListBox_GetAnchorSideRight(AObj: TListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure ListBox_SetAnchorSideRight(AObj: TListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function ListBox_GetAnchorSideBottom(AObj: TListBox): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure ListBox_SetAnchorSideBottom(AObj: TListBox; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function ListBox_GetChildSizing(AObj: TListBox): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure ListBox_SetChildSizing(AObj: TListBox; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function ListBox_GetBorderSpacing(AObj: TListBox): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure ListBox_SetBorderSpacing(AObj: TListBox; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function ListBox_GetSelected(AObj: TListBox; Index: Integer): LongBool; extdecl;
 begin
   Result :=  AObj.Selected[Index];
@@ -971,6 +1081,11 @@ end;
 function ListBox_GetComponents(AObj: TListBox; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function ListBox_GetAnchorSide(AObj: TListBox; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function ListBox_StaticClassType: TClass; extdecl;
@@ -1032,6 +1147,18 @@ exports
   ListBox_Equals,
   ListBox_GetHashCode,
   ListBox_ToString,
+  ListBox_AnchorToNeighbour,
+  ListBox_AnchorParallel,
+  ListBox_AnchorHorizontalCenterTo,
+  ListBox_AnchorVerticalCenterTo,
+  ListBox_AnchorAsAlign,
+  ListBox_AnchorClient,
+  ListBox_GetClickOnSelChange,
+  ListBox_SetClickOnSelChange,
+  ListBox_GetOptions,
+  ListBox_SetOptions,
+  ListBox_GetTopIndex,
+  ListBox_SetTopIndex,
   ListBox_GetStyle,
   ListBox_SetStyle,
   ListBox_GetAlign,
@@ -1150,8 +1277,6 @@ exports
   ListBox_SetCursor,
   ListBox_GetHint,
   ListBox_SetHint,
-  ListBox_GetMargins,
-  ListBox_SetMargins,
   ListBox_GetComponentCount,
   ListBox_GetComponentIndex,
   ListBox_SetComponentIndex,
@@ -1160,10 +1285,23 @@ exports
   ListBox_SetName,
   ListBox_GetTag,
   ListBox_SetTag,
+  ListBox_GetAnchorSideLeft,
+  ListBox_SetAnchorSideLeft,
+  ListBox_GetAnchorSideTop,
+  ListBox_SetAnchorSideTop,
+  ListBox_GetAnchorSideRight,
+  ListBox_SetAnchorSideRight,
+  ListBox_GetAnchorSideBottom,
+  ListBox_SetAnchorSideBottom,
+  ListBox_GetChildSizing,
+  ListBox_SetChildSizing,
+  ListBox_GetBorderSpacing,
+  ListBox_SetBorderSpacing,
   ListBox_GetSelected,
   ListBox_SetSelected,
   ListBox_GetDockClients,
   ListBox_GetControls,
   ListBox_GetComponents,
+  ListBox_GetAnchorSide,
   ListBox_StaticClassType;
 

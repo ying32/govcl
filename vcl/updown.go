@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TUpDown struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewUpDown(owner IComponent) *TUpDown {
     u := new(TUpDown)
     u.instance = UpDown_Create(CheckPtr(owner))
     u.ptr = unsafe.Pointer(u.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(u, (*TUpDown).Free)
     return u
 }
 
@@ -57,7 +59,7 @@ func UpDownFromObj(obj IObject) *TUpDown {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsUpDown.
 func UpDownFromUnsafePointer(ptr unsafe.Pointer) *TUpDown {
     return AsUpDown(ptr)
@@ -371,6 +373,34 @@ func (u *TUpDown) ToString() string {
     return UpDown_ToString(u.instance)
 }
 
+func (u *TUpDown) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    UpDown_AnchorToNeighbour(u.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (u *TUpDown) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    UpDown_AnchorParallel(u.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (u *TUpDown) AnchorHorizontalCenterTo(ASibling IControl) {
+    UpDown_AnchorHorizontalCenterTo(u.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (u *TUpDown) AnchorVerticalCenterTo(ASibling IControl) {
+    UpDown_AnchorVerticalCenterTo(u.instance, CheckPtr(ASibling))
+}
+
+func (u *TUpDown) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    UpDown_AnchorAsAlign(u.instance, ATheAlign , ASpace)
+}
+
+func (u *TUpDown) AnchorClient(ASpace int32) {
+    UpDown_AnchorClient(u.instance, ASpace)
+}
+
 // CN: 获取四个角位置的锚点。
 // EN: .
 func (u *TUpDown) Anchors() TAnchors {
@@ -443,10 +473,14 @@ func (u *TUpDown) SetIncrement(value int32) {
     UpDown_SetIncrement(u.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (u *TUpDown) Constraints() *TSizeConstraints {
     return AsSizeConstraints(UpDown_GetConstraints(u.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (u *TUpDown) SetConstraints(value *TSizeConstraints) {
     UpDown_SetConstraints(u.instance, CheckPtr(value))
 }
@@ -471,10 +505,14 @@ func (u *TUpDown) SetParentDoubleBuffered(value bool) {
     UpDown_SetParentDoubleBuffered(u.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (u *TUpDown) ParentShowHint() bool {
     return UpDown_GetParentShowHint(u.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (u *TUpDown) SetParentShowHint(value bool) {
     UpDown_SetParentShowHint(u.instance, value)
 }
@@ -855,18 +893,6 @@ func (u *TUpDown) SetCursor(value TCursor) {
     UpDown_SetCursor(u.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (u *TUpDown) Margins() *TMargins {
-    return AsMargins(UpDown_GetMargins(u.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (u *TUpDown) SetMargins(value *TMargins) {
-    UpDown_SetMargins(u.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (u *TUpDown) ComponentCount() int32 {
@@ -915,6 +941,74 @@ func (u *TUpDown) SetTag(value int) {
     UpDown_SetTag(u.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (u *TUpDown) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideLeft(u.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (u *TUpDown) SetAnchorSideLeft(value *TAnchorSide) {
+    UpDown_SetAnchorSideLeft(u.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (u *TUpDown) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideTop(u.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (u *TUpDown) SetAnchorSideTop(value *TAnchorSide) {
+    UpDown_SetAnchorSideTop(u.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (u *TUpDown) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideRight(u.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (u *TUpDown) SetAnchorSideRight(value *TAnchorSide) {
+    UpDown_SetAnchorSideRight(u.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (u *TUpDown) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSideBottom(u.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (u *TUpDown) SetAnchorSideBottom(value *TAnchorSide) {
+    UpDown_SetAnchorSideBottom(u.instance, CheckPtr(value))
+}
+
+func (u *TUpDown) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(UpDown_GetChildSizing(u.instance))
+}
+
+func (u *TUpDown) SetChildSizing(value *TControlChildSizing) {
+    UpDown_SetChildSizing(u.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (u *TUpDown) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(UpDown_GetBorderSpacing(u.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (u *TUpDown) SetBorderSpacing(value *TControlBorderSpacing) {
+    UpDown_SetBorderSpacing(u.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (u *TUpDown) DockClients(Index int32) *TControl {
@@ -931,5 +1025,11 @@ func (u *TUpDown) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (u *TUpDown) Components(AIndex int32) *TComponent {
     return AsComponent(UpDown_GetComponents(u.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (u *TUpDown) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(UpDown_GetAnchorSide(u.instance, AKind))
 }
 

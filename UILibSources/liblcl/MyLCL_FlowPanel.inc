@@ -189,7 +189,7 @@ end;
 
 function FlowPanel_GetTextLen(AObj: TFlowPanel): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure FlowPanel_SetTextBuf(AObj: TFlowPanel; Buffer: PChar); extdecl;
@@ -245,6 +245,36 @@ end;
 function FlowPanel_ToString(AObj: TFlowPanel): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure FlowPanel_AnchorToNeighbour(AObj: TFlowPanel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure FlowPanel_AnchorParallel(AObj: TFlowPanel; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure FlowPanel_AnchorHorizontalCenterTo(AObj: TFlowPanel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure FlowPanel_AnchorVerticalCenterTo(AObj: TFlowPanel; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure FlowPanel_AnchorAsAlign(AObj: TFlowPanel; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure FlowPanel_AnchorClient(AObj: TFlowPanel; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function FlowPanel_GetAlign(AObj: TFlowPanel): TAlign; extdecl;
@@ -882,16 +912,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function FlowPanel_GetMargins(AObj: TFlowPanel): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure FlowPanel_SetMargins(AObj: TFlowPanel; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function FlowPanel_GetComponentCount(AObj: TFlowPanel): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -932,6 +952,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function FlowPanel_GetAnchorSideLeft(AObj: TFlowPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure FlowPanel_SetAnchorSideLeft(AObj: TFlowPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function FlowPanel_GetAnchorSideTop(AObj: TFlowPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure FlowPanel_SetAnchorSideTop(AObj: TFlowPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function FlowPanel_GetAnchorSideRight(AObj: TFlowPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure FlowPanel_SetAnchorSideRight(AObj: TFlowPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function FlowPanel_GetAnchorSideBottom(AObj: TFlowPanel): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure FlowPanel_SetAnchorSideBottom(AObj: TFlowPanel; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function FlowPanel_GetChildSizing(AObj: TFlowPanel): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure FlowPanel_SetChildSizing(AObj: TFlowPanel; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function FlowPanel_GetBorderSpacing(AObj: TFlowPanel): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure FlowPanel_SetBorderSpacing(AObj: TFlowPanel; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function FlowPanel_GetDockClients(AObj: TFlowPanel; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -945,6 +1025,11 @@ end;
 function FlowPanel_GetComponents(AObj: TFlowPanel; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function FlowPanel_GetAnchorSide(AObj: TFlowPanel; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function FlowPanel_StaticClassType: TClass; extdecl;
@@ -1001,6 +1086,12 @@ exports
   FlowPanel_Equals,
   FlowPanel_GetHashCode,
   FlowPanel_ToString,
+  FlowPanel_AnchorToNeighbour,
+  FlowPanel_AnchorParallel,
+  FlowPanel_AnchorHorizontalCenterTo,
+  FlowPanel_AnchorVerticalCenterTo,
+  FlowPanel_AnchorAsAlign,
+  FlowPanel_AnchorClient,
   FlowPanel_GetAlign,
   FlowPanel_SetAlign,
   FlowPanel_GetAlignment,
@@ -1120,8 +1211,6 @@ exports
   FlowPanel_SetCursor,
   FlowPanel_GetHint,
   FlowPanel_SetHint,
-  FlowPanel_GetMargins,
-  FlowPanel_SetMargins,
   FlowPanel_GetComponentCount,
   FlowPanel_GetComponentIndex,
   FlowPanel_SetComponentIndex,
@@ -1130,8 +1219,21 @@ exports
   FlowPanel_SetName,
   FlowPanel_GetTag,
   FlowPanel_SetTag,
+  FlowPanel_GetAnchorSideLeft,
+  FlowPanel_SetAnchorSideLeft,
+  FlowPanel_GetAnchorSideTop,
+  FlowPanel_SetAnchorSideTop,
+  FlowPanel_GetAnchorSideRight,
+  FlowPanel_SetAnchorSideRight,
+  FlowPanel_GetAnchorSideBottom,
+  FlowPanel_SetAnchorSideBottom,
+  FlowPanel_GetChildSizing,
+  FlowPanel_SetChildSizing,
+  FlowPanel_GetBorderSpacing,
+  FlowPanel_SetBorderSpacing,
   FlowPanel_GetDockClients,
   FlowPanel_GetControls,
   FlowPanel_GetComponents,
+  FlowPanel_GetAnchorSide,
   FlowPanel_StaticClassType;
 

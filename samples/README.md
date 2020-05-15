@@ -18,6 +18,7 @@
 | drawusegg | 使用[Go Graphics - 2D](github.com/fogleman/gg)绘制并显示到GoVCL的控件上，演示视频见`drawusegg/video.mp4` | |
 | dropfiles | 鼠标拖放文件演示  | |
 | eventpublic | 控件事件的公用演示  | |
+| fileshelltree | 文件目录树  | |
 | formEvents | 演示自动关联事件    |  |
 | gdiplustest | GDI+画渐变文字及半透明背景    | Windows |
 | gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
@@ -64,7 +65,6 @@
 | shortcut | 创建快捷方式相关 | Windows | 
 | simpleIM | 简单的群聊，基于TCP    |  |
 | simplelibvlc | 基于libvlc库的播放器，主要测试可行性 |  |  
-| SkinsharpTest | skinsharp第三方皮肤演示(不咋好使，特别是在liblcl中) | Windows,32bit |
 | statusbar | 状态条演示  | |
 | stdcontrols | 标准控件示例  | |
 | sysdialog | 各种系统对话框演示  | |

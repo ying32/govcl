@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TBitBtn struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewBitBtn(owner IComponent) *TBitBtn {
     b := new(TBitBtn)
     b.instance = BitBtn_Create(CheckPtr(owner))
     b.ptr = unsafe.Pointer(b.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(b, (*TBitBtn).Free)
     return b
 }
 
@@ -57,7 +59,7 @@ func BitBtnFromObj(obj IObject) *TBitBtn {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsBitBtn.
 func BitBtnFromUnsafePointer(ptr unsafe.Pointer) *TBitBtn {
     return AsBitBtn(ptr)
@@ -377,6 +379,58 @@ func (b *TBitBtn) ToString() string {
     return BitBtn_ToString(b.instance)
 }
 
+func (b *TBitBtn) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    BitBtn_AnchorToNeighbour(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (b *TBitBtn) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    BitBtn_AnchorParallel(b.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (b *TBitBtn) AnchorHorizontalCenterTo(ASibling IControl) {
+    BitBtn_AnchorHorizontalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (b *TBitBtn) AnchorVerticalCenterTo(ASibling IControl) {
+    BitBtn_AnchorVerticalCenterTo(b.instance, CheckPtr(ASibling))
+}
+
+func (b *TBitBtn) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    BitBtn_AnchorAsAlign(b.instance, ATheAlign , ASpace)
+}
+
+func (b *TBitBtn) AnchorClient(ASpace int32) {
+    BitBtn_AnchorClient(b.instance, ASpace)
+}
+
+func (b *TBitBtn) DefaultCaption() bool {
+    return BitBtn_GetDefaultCaption(b.instance)
+}
+
+func (b *TBitBtn) SetDefaultCaption(value bool) {
+    BitBtn_SetDefaultCaption(b.instance, value)
+}
+
+func (b *TBitBtn) GlyphShowMode() TGlyphShowMode {
+    return BitBtn_GetGlyphShowMode(b.instance)
+}
+
+func (b *TBitBtn) SetGlyphShowMode(value TGlyphShowMode) {
+    BitBtn_SetGlyphShowMode(b.instance, value)
+}
+
+func (b *TBitBtn) ImageWidth() int32 {
+    return BitBtn_GetImageWidth(b.instance)
+}
+
+func (b *TBitBtn) SetImageWidth(value int32) {
+    BitBtn_SetImageWidth(b.instance, value)
+}
+
 func (b *TBitBtn) Action() *TAction {
     return AsAction(BitBtn_GetAction(b.instance))
 }
@@ -437,10 +491,14 @@ func (b *TBitBtn) SetCaption(value string) {
     BitBtn_SetCaption(b.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (b *TBitBtn) Constraints() *TSizeConstraints {
     return AsSizeConstraints(BitBtn_GetConstraints(b.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (b *TBitBtn) SetConstraints(value *TSizeConstraints) {
     BitBtn_SetConstraints(b.instance, CheckPtr(value))
 }
@@ -549,10 +607,14 @@ func (b *TBitBtn) SetParentFont(value bool) {
     BitBtn_SetParentFont(b.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBitBtn) ParentShowHint() bool {
     return BitBtn_GetParentShowHint(b.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (b *TBitBtn) SetParentShowHint(value bool) {
     BitBtn_SetParentShowHint(b.instance, value)
 }
@@ -939,18 +1001,6 @@ func (b *TBitBtn) SetHint(value string) {
     BitBtn_SetHint(b.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (b *TBitBtn) Margins() *TMargins {
-    return AsMargins(BitBtn_GetMargins(b.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (b *TBitBtn) SetMargins(value *TMargins) {
-    BitBtn_SetMargins(b.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (b *TBitBtn) ComponentCount() int32 {
@@ -999,6 +1049,74 @@ func (b *TBitBtn) SetTag(value int) {
     BitBtn_SetTag(b.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (b *TBitBtn) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideLeft(b.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (b *TBitBtn) SetAnchorSideLeft(value *TAnchorSide) {
+    BitBtn_SetAnchorSideLeft(b.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (b *TBitBtn) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideTop(b.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (b *TBitBtn) SetAnchorSideTop(value *TAnchorSide) {
+    BitBtn_SetAnchorSideTop(b.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (b *TBitBtn) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideRight(b.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (b *TBitBtn) SetAnchorSideRight(value *TAnchorSide) {
+    BitBtn_SetAnchorSideRight(b.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (b *TBitBtn) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSideBottom(b.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (b *TBitBtn) SetAnchorSideBottom(value *TAnchorSide) {
+    BitBtn_SetAnchorSideBottom(b.instance, CheckPtr(value))
+}
+
+func (b *TBitBtn) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(BitBtn_GetChildSizing(b.instance))
+}
+
+func (b *TBitBtn) SetChildSizing(value *TControlChildSizing) {
+    BitBtn_SetChildSizing(b.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (b *TBitBtn) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(BitBtn_GetBorderSpacing(b.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (b *TBitBtn) SetBorderSpacing(value *TControlBorderSpacing) {
+    BitBtn_SetBorderSpacing(b.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (b *TBitBtn) DockClients(Index int32) *TControl {
@@ -1015,5 +1133,11 @@ func (b *TBitBtn) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (b *TBitBtn) Components(AIndex int32) *TComponent {
     return AsComponent(BitBtn_GetComponents(b.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (b *TBitBtn) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(BitBtn_GetAnchorSide(b.instance, AKind))
 }
 

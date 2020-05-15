@@ -179,7 +179,7 @@ end;
 
 function RadioGroup_GetTextLen(AObj: TRadioGroup): Integer; extdecl;
 begin
-  Result :=  AObj.GetTextLen;
+  Result :=  {$ifdef darwin}Length(AObj.Caption){$else}AObj.GetTextLen{$endif};
 end;
 
 procedure RadioGroup_SetTextBuf(AObj: TRadioGroup; Buffer: PChar); extdecl;
@@ -235,6 +235,36 @@ end;
 function RadioGroup_ToString(AObj: TRadioGroup): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ToString);
+end;
+
+procedure RadioGroup_AnchorToNeighbour(AObj: TRadioGroup; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorToNeighbour(ASide, ASpace, ASibling);
+end;
+
+procedure RadioGroup_AnchorParallel(AObj: TRadioGroup; ASide: TAnchorKind; ASpace: Integer; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorParallel(ASide, ASpace, ASibling);
+end;
+
+procedure RadioGroup_AnchorHorizontalCenterTo(AObj: TRadioGroup; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorHorizontalCenterTo(ASibling);
+end;
+
+procedure RadioGroup_AnchorVerticalCenterTo(AObj: TRadioGroup; ASibling: TControl); extdecl;
+begin
+  AObj.AnchorVerticalCenterTo(ASibling);
+end;
+
+procedure RadioGroup_AnchorAsAlign(AObj: TRadioGroup; ATheAlign: TAlign; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorAsAlign(ATheAlign, ASpace);
+end;
+
+procedure RadioGroup_AnchorClient(AObj: TRadioGroup; ASpace: Integer); extdecl;
+begin
+  AObj.AnchorClient(ASpace);
 end;
 
 function RadioGroup_GetAlign(AObj: TRadioGroup): TAlign; extdecl;
@@ -714,16 +744,6 @@ begin
   AObj.Hint := AValue;
 end;
 
-function RadioGroup_GetMargins(AObj: TRadioGroup): TMargins; extdecl;
-begin
-  Result :=  AObj.BorderSpacing;
-end;
-
-procedure RadioGroup_SetMargins(AObj: TRadioGroup; AValue: TMargins); extdecl;
-begin
-  AObj.BorderSpacing := AValue;
-end;
-
 function RadioGroup_GetComponentCount(AObj: TRadioGroup): Integer; extdecl;
 begin
   Result :=  AObj.ComponentCount;
@@ -764,6 +784,66 @@ begin
   AObj.Tag := AValue;
 end;
 
+function RadioGroup_GetAnchorSideLeft(AObj: TRadioGroup): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideLeft;
+end;
+
+procedure RadioGroup_SetAnchorSideLeft(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideLeft := AValue;
+end;
+
+function RadioGroup_GetAnchorSideTop(AObj: TRadioGroup): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideTop;
+end;
+
+procedure RadioGroup_SetAnchorSideTop(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideTop := AValue;
+end;
+
+function RadioGroup_GetAnchorSideRight(AObj: TRadioGroup): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideRight;
+end;
+
+procedure RadioGroup_SetAnchorSideRight(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideRight := AValue;
+end;
+
+function RadioGroup_GetAnchorSideBottom(AObj: TRadioGroup): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSideBottom;
+end;
+
+procedure RadioGroup_SetAnchorSideBottom(AObj: TRadioGroup; AValue: TAnchorSide); extdecl;
+begin
+  AObj.AnchorSideBottom := AValue;
+end;
+
+function RadioGroup_GetChildSizing(AObj: TRadioGroup): TControlChildSizing; extdecl;
+begin
+  Result :=  AObj.ChildSizing;
+end;
+
+procedure RadioGroup_SetChildSizing(AObj: TRadioGroup; AValue: TControlChildSizing); extdecl;
+begin
+  AObj.ChildSizing := AValue;
+end;
+
+function RadioGroup_GetBorderSpacing(AObj: TRadioGroup): TControlBorderSpacing; extdecl;
+begin
+  Result :=  AObj.BorderSpacing;
+end;
+
+procedure RadioGroup_SetBorderSpacing(AObj: TRadioGroup; AValue: TControlBorderSpacing); extdecl;
+begin
+  AObj.BorderSpacing := AValue;
+end;
+
 function RadioGroup_GetDockClients(AObj: TRadioGroup; Index: Integer): TControl; extdecl;
 begin
   Result :=  AObj.DockClients[Index];
@@ -777,6 +857,11 @@ end;
 function RadioGroup_GetComponents(AObj: TRadioGroup; AIndex: Integer): TComponent; extdecl;
 begin
   Result :=  AObj.Components[AIndex];
+end;
+
+function RadioGroup_GetAnchorSide(AObj: TRadioGroup; AKind: TAnchorKind): TAnchorSide; extdecl;
+begin
+  Result :=  AObj.AnchorSide[AKind];
 end;
 
 function RadioGroup_StaticClassType: TClass; extdecl;
@@ -831,6 +916,12 @@ exports
   RadioGroup_Equals,
   RadioGroup_GetHashCode,
   RadioGroup_ToString,
+  RadioGroup_AnchorToNeighbour,
+  RadioGroup_AnchorParallel,
+  RadioGroup_AnchorHorizontalCenterTo,
+  RadioGroup_AnchorVerticalCenterTo,
+  RadioGroup_AnchorAsAlign,
+  RadioGroup_AnchorClient,
   RadioGroup_GetAlign,
   RadioGroup_SetAlign,
   RadioGroup_GetAnchors,
@@ -924,8 +1015,6 @@ exports
   RadioGroup_SetCursor,
   RadioGroup_GetHint,
   RadioGroup_SetHint,
-  RadioGroup_GetMargins,
-  RadioGroup_SetMargins,
   RadioGroup_GetComponentCount,
   RadioGroup_GetComponentIndex,
   RadioGroup_SetComponentIndex,
@@ -934,8 +1023,21 @@ exports
   RadioGroup_SetName,
   RadioGroup_GetTag,
   RadioGroup_SetTag,
+  RadioGroup_GetAnchorSideLeft,
+  RadioGroup_SetAnchorSideLeft,
+  RadioGroup_GetAnchorSideTop,
+  RadioGroup_SetAnchorSideTop,
+  RadioGroup_GetAnchorSideRight,
+  RadioGroup_SetAnchorSideRight,
+  RadioGroup_GetAnchorSideBottom,
+  RadioGroup_SetAnchorSideBottom,
+  RadioGroup_GetChildSizing,
+  RadioGroup_SetChildSizing,
+  RadioGroup_GetBorderSpacing,
+  RadioGroup_SetBorderSpacing,
   RadioGroup_GetDockClients,
   RadioGroup_GetControls,
   RadioGroup_GetComponents,
+  RadioGroup_GetAnchorSide,
   RadioGroup_StaticClassType;
 

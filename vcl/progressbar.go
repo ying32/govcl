@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TProgressBar struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewProgressBar(owner IComponent) *TProgressBar {
     p := new(TProgressBar)
     p.instance = ProgressBar_Create(CheckPtr(owner))
     p.ptr = unsafe.Pointer(p.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(p, (*TProgressBar).Free)
     return p
 }
 
@@ -57,7 +59,7 @@ func ProgressBarFromObj(obj IObject) *TProgressBar {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsProgressBar.
 func ProgressBarFromUnsafePointer(ptr unsafe.Pointer) *TProgressBar {
     return AsProgressBar(ptr)
@@ -379,6 +381,34 @@ func (p *TProgressBar) ToString() string {
     return ProgressBar_ToString(p.instance)
 }
 
+func (p *TProgressBar) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ProgressBar_AnchorToNeighbour(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (p *TProgressBar) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ProgressBar_AnchorParallel(p.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (p *TProgressBar) AnchorHorizontalCenterTo(ASibling IControl) {
+    ProgressBar_AnchorHorizontalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (p *TProgressBar) AnchorVerticalCenterTo(ASibling IControl) {
+    ProgressBar_AnchorVerticalCenterTo(p.instance, CheckPtr(ASibling))
+}
+
+func (p *TProgressBar) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ProgressBar_AnchorAsAlign(p.instance, ATheAlign , ASpace)
+}
+
+func (p *TProgressBar) AnchorClient(ASpace int32) {
+    ProgressBar_AnchorClient(p.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (p *TProgressBar) Align() TAlign {
@@ -487,10 +517,14 @@ func (p *TProgressBar) SetHint(value string) {
     ProgressBar_SetHint(p.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (p *TProgressBar) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ProgressBar_GetConstraints(p.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (p *TProgressBar) SetConstraints(value *TSizeConstraints) {
     ProgressBar_SetConstraints(p.instance, CheckPtr(value))
 }
@@ -531,10 +565,14 @@ func (p *TProgressBar) SetParentDoubleBuffered(value bool) {
     ProgressBar_SetParentDoubleBuffered(p.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (p *TProgressBar) ParentShowHint() bool {
     return ProgressBar_GetParentShowHint(p.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (p *TProgressBar) SetParentShowHint(value bool) {
     ProgressBar_SetParentShowHint(p.instance, value)
 }
@@ -927,18 +965,6 @@ func (p *TProgressBar) SetCursor(value TCursor) {
     ProgressBar_SetCursor(p.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (p *TProgressBar) Margins() *TMargins {
-    return AsMargins(ProgressBar_GetMargins(p.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (p *TProgressBar) SetMargins(value *TMargins) {
-    ProgressBar_SetMargins(p.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (p *TProgressBar) ComponentCount() int32 {
@@ -987,6 +1013,74 @@ func (p *TProgressBar) SetTag(value int) {
     ProgressBar_SetTag(p.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (p *TProgressBar) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ProgressBar_GetAnchorSideLeft(p.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (p *TProgressBar) SetAnchorSideLeft(value *TAnchorSide) {
+    ProgressBar_SetAnchorSideLeft(p.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (p *TProgressBar) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ProgressBar_GetAnchorSideTop(p.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (p *TProgressBar) SetAnchorSideTop(value *TAnchorSide) {
+    ProgressBar_SetAnchorSideTop(p.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (p *TProgressBar) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ProgressBar_GetAnchorSideRight(p.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (p *TProgressBar) SetAnchorSideRight(value *TAnchorSide) {
+    ProgressBar_SetAnchorSideRight(p.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (p *TProgressBar) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ProgressBar_GetAnchorSideBottom(p.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (p *TProgressBar) SetAnchorSideBottom(value *TAnchorSide) {
+    ProgressBar_SetAnchorSideBottom(p.instance, CheckPtr(value))
+}
+
+func (p *TProgressBar) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ProgressBar_GetChildSizing(p.instance))
+}
+
+func (p *TProgressBar) SetChildSizing(value *TControlChildSizing) {
+    ProgressBar_SetChildSizing(p.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (p *TProgressBar) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ProgressBar_GetBorderSpacing(p.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (p *TProgressBar) SetBorderSpacing(value *TControlBorderSpacing) {
+    ProgressBar_SetBorderSpacing(p.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (p *TProgressBar) DockClients(Index int32) *TControl {
@@ -1003,5 +1097,11 @@ func (p *TProgressBar) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (p *TProgressBar) Components(AIndex int32) *TComponent {
     return AsComponent(ProgressBar_GetComponents(p.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (p *TProgressBar) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ProgressBar_GetAnchorSide(p.instance, AKind))
 }
 

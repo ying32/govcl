@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TXButton struct {
     IControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewXButton(owner IComponent) *TXButton {
     x := new(TXButton)
     x.instance = XButton_Create(CheckPtr(owner))
     x.ptr = unsafe.Pointer(x.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(x, (*TXButton).Free)
     return x
 }
 
@@ -57,7 +59,7 @@ func XButtonFromObj(obj IObject) *TXButton {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsXButton.
 func XButtonFromUnsafePointer(ptr unsafe.Pointer) *TXButton {
     return AsXButton(ptr)
@@ -283,6 +285,34 @@ func (x *TXButton) ToString() string {
     return XButton_ToString(x.instance)
 }
 
+func (x *TXButton) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    XButton_AnchorToNeighbour(x.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (x *TXButton) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    XButton_AnchorParallel(x.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (x *TXButton) AnchorHorizontalCenterTo(ASibling IControl) {
+    XButton_AnchorHorizontalCenterTo(x.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (x *TXButton) AnchorVerticalCenterTo(ASibling IControl) {
+    XButton_AnchorVerticalCenterTo(x.instance, CheckPtr(ASibling))
+}
+
+func (x *TXButton) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    XButton_AnchorAsAlign(x.instance, ATheAlign , ASpace)
+}
+
+func (x *TXButton) AnchorClient(ASpace int32) {
+    XButton_AnchorClient(x.instance, ASpace)
+}
+
 // CN: 获取控件标题。
 // EN: Get the control title.
 func (x *TXButton) Caption() string {
@@ -347,10 +377,14 @@ func (x *TXButton) SetBorderColor(value TColor) {
     XButton_SetBorderColor(x.instance, value)
 }
 
+// CN: 获取图片。
+// EN: .
 func (x *TXButton) Picture() *TPicture {
     return AsPicture(XButton_GetPicture(x.instance))
 }
 
+// CN: 设置图片。
+// EN: .
 func (x *TXButton) SetPicture(value *TPicture) {
     XButton_SetPicture(x.instance, CheckPtr(value))
 }
@@ -427,10 +461,14 @@ func (x *TXButton) SetBiDiMode(value TBiDiMode) {
     XButton_SetBiDiMode(x.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (x *TXButton) Constraints() *TSizeConstraints {
     return AsSizeConstraints(XButton_GetConstraints(x.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (x *TXButton) SetConstraints(value *TSizeConstraints) {
     XButton_SetConstraints(x.instance, CheckPtr(value))
 }
@@ -471,10 +509,14 @@ func (x *TXButton) SetParentFont(value bool) {
     XButton_SetParentFont(x.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (x *TXButton) ParentShowHint() bool {
     return XButton_GetParentShowHint(x.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (x *TXButton) SetParentShowHint(value bool) {
     XButton_SetParentShowHint(x.instance, value)
 }
@@ -711,18 +753,6 @@ func (x *TXButton) SetHint(value string) {
     XButton_SetHint(x.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (x *TXButton) Margins() *TMargins {
-    return AsMargins(XButton_GetMargins(x.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (x *TXButton) SetMargins(value *TMargins) {
-    XButton_SetMargins(x.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (x *TXButton) ComponentCount() int32 {
@@ -771,9 +801,75 @@ func (x *TXButton) SetTag(value int) {
     XButton_SetTag(x.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (x *TXButton) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideLeft(x.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (x *TXButton) SetAnchorSideLeft(value *TAnchorSide) {
+    XButton_SetAnchorSideLeft(x.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (x *TXButton) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideTop(x.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (x *TXButton) SetAnchorSideTop(value *TAnchorSide) {
+    XButton_SetAnchorSideTop(x.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (x *TXButton) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideRight(x.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (x *TXButton) SetAnchorSideRight(value *TAnchorSide) {
+    XButton_SetAnchorSideRight(x.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (x *TXButton) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSideBottom(x.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (x *TXButton) SetAnchorSideBottom(value *TAnchorSide) {
+    XButton_SetAnchorSideBottom(x.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (x *TXButton) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(XButton_GetBorderSpacing(x.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (x *TXButton) SetBorderSpacing(value *TControlBorderSpacing) {
+    XButton_SetBorderSpacing(x.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引组件。
 // EN: Get the specified index component.
 func (x *TXButton) Components(AIndex int32) *TComponent {
     return AsComponent(XButton_GetComponents(x.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (x *TXButton) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(XButton_GetAnchorSide(x.instance, AKind))
 }
 

@@ -12,7 +12,7 @@ package vcl
 
 
 import (
-	. "github.com/ying32/govcl/vcl/api"
+    . "github.com/ying32/govcl/vcl/api"
     . "github.com/ying32/govcl/vcl/types"
     "unsafe"
 )
@@ -20,7 +20,7 @@ import (
 type TComboBox struct {
     IWinControl
     instance uintptr
-    // 特殊情况下使用，主要应对Go的GC问题，与VCL没有太多关系。
+    // 特殊情况下使用，主要应对Go的GC问题，与LCL没有太多关系。
     ptr unsafe.Pointer
 }
 
@@ -30,6 +30,8 @@ func NewComboBox(owner IComponent) *TComboBox {
     c := new(TComboBox)
     c.instance = ComboBox_Create(CheckPtr(owner))
     c.ptr = unsafe.Pointer(c.instance)
+    // 不敢启用，因为不知道会发生什么...
+    // runtime.SetFinalizer(c, (*TComboBox).Free)
     return c
 }
 
@@ -57,7 +59,7 @@ func ComboBoxFromObj(obj IObject) *TComboBox {
 }
 
 // CN: 新建一个对象来自不安全的地址。注意：使用此函数可能造成一些不明情况，慎用。
-// EN: Create a new object from an unsecure address. Note: Using this function may cause some unclear situations and be used with caution..
+// EN: Create a new object from an unsecured address. Note: Using this function may cause some unclear situations and be used with caution..
 // Deprecated: use AsComboBox.
 func ComboBoxFromUnsafePointer(ptr unsafe.Pointer) *TComboBox {
     return AsComboBox(ptr)
@@ -397,6 +399,34 @@ func (c *TComboBox) ToString() string {
     return ComboBox_ToString(c.instance)
 }
 
+func (c *TComboBox) AnchorToNeighbour(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ComboBox_AnchorToNeighbour(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+func (c *TComboBox) AnchorParallel(ASide TAnchorKind, ASpace int32, ASibling IControl) {
+    ComboBox_AnchorParallel(c.instance, ASide , ASpace , CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的横向中心。
+// EN: .
+func (c *TComboBox) AnchorHorizontalCenterTo(ASibling IControl) {
+    ComboBox_AnchorHorizontalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+// CN: 置于指定控件的纵向中心。
+// EN: .
+func (c *TComboBox) AnchorVerticalCenterTo(ASibling IControl) {
+    ComboBox_AnchorVerticalCenterTo(c.instance, CheckPtr(ASibling))
+}
+
+func (c *TComboBox) AnchorAsAlign(ATheAlign TAlign, ASpace int32) {
+    ComboBox_AnchorAsAlign(c.instance, ATheAlign , ASpace)
+}
+
+func (c *TComboBox) AnchorClient(ASpace int32) {
+    ComboBox_AnchorClient(c.instance, ASpace)
+}
+
 // CN: 获取控件自动调整。
 // EN: Get Control automatically adjusts.
 func (c *TComboBox) Align() TAlign {
@@ -473,10 +503,14 @@ func (c *TComboBox) SetColor(value TColor) {
     ComboBox_SetColor(c.instance, value)
 }
 
+// CN: 获取约束控件大小。
+// EN: .
 func (c *TComboBox) Constraints() *TSizeConstraints {
     return AsSizeConstraints(ComboBox_GetConstraints(c.instance))
 }
 
+// CN: 设置约束控件大小。
+// EN: .
 func (c *TComboBox) SetConstraints(value *TSizeConstraints) {
     ComboBox_SetConstraints(c.instance, CheckPtr(value))
 }
@@ -625,10 +659,14 @@ func (c *TComboBox) SetParentFont(value bool) {
     ComboBox_SetParentFont(c.instance, value)
 }
 
+// CN: 获取以父容器的ShowHint属性为准。
+// EN: .
 func (c *TComboBox) ParentShowHint() bool {
     return ComboBox_GetParentShowHint(c.instance)
 }
 
+// CN: 设置以父容器的ShowHint属性为准。
+// EN: .
 func (c *TComboBox) SetParentShowHint(value bool) {
     ComboBox_SetParentShowHint(c.instance, value)
 }
@@ -1105,18 +1143,6 @@ func (c *TComboBox) SetHint(value string) {
     ComboBox_SetHint(c.instance, value)
 }
 
-// CN: 获取边矩，仅VCL有效。
-// EN: Get Edge moment, only VCL is valid.
-func (c *TComboBox) Margins() *TMargins {
-    return AsMargins(ComboBox_GetMargins(c.instance))
-}
-
-// CN: 设置边矩，仅VCL有效。
-// EN: Set Edge moment, only VCL is valid.
-func (c *TComboBox) SetMargins(value *TMargins) {
-    ComboBox_SetMargins(c.instance, CheckPtr(value))
-}
-
 // CN: 获取组件总数。
 // EN: Get the total number of components.
 func (c *TComboBox) ComponentCount() int32 {
@@ -1165,6 +1191,74 @@ func (c *TComboBox) SetTag(value int) {
     ComboBox_SetTag(c.instance, value)
 }
 
+// CN: 获取左边锚点。
+// EN: .
+func (c *TComboBox) AnchorSideLeft() *TAnchorSide {
+    return AsAnchorSide(ComboBox_GetAnchorSideLeft(c.instance))
+}
+
+// CN: 设置左边锚点。
+// EN: .
+func (c *TComboBox) SetAnchorSideLeft(value *TAnchorSide) {
+    ComboBox_SetAnchorSideLeft(c.instance, CheckPtr(value))
+}
+
+// CN: 获取顶边锚点。
+// EN: .
+func (c *TComboBox) AnchorSideTop() *TAnchorSide {
+    return AsAnchorSide(ComboBox_GetAnchorSideTop(c.instance))
+}
+
+// CN: 设置顶边锚点。
+// EN: .
+func (c *TComboBox) SetAnchorSideTop(value *TAnchorSide) {
+    ComboBox_SetAnchorSideTop(c.instance, CheckPtr(value))
+}
+
+// CN: 获取右边锚点。
+// EN: .
+func (c *TComboBox) AnchorSideRight() *TAnchorSide {
+    return AsAnchorSide(ComboBox_GetAnchorSideRight(c.instance))
+}
+
+// CN: 设置右边锚点。
+// EN: .
+func (c *TComboBox) SetAnchorSideRight(value *TAnchorSide) {
+    ComboBox_SetAnchorSideRight(c.instance, CheckPtr(value))
+}
+
+// CN: 获取底边锚点。
+// EN: .
+func (c *TComboBox) AnchorSideBottom() *TAnchorSide {
+    return AsAnchorSide(ComboBox_GetAnchorSideBottom(c.instance))
+}
+
+// CN: 设置底边锚点。
+// EN: .
+func (c *TComboBox) SetAnchorSideBottom(value *TAnchorSide) {
+    ComboBox_SetAnchorSideBottom(c.instance, CheckPtr(value))
+}
+
+func (c *TComboBox) ChildSizing() *TControlChildSizing {
+    return AsControlChildSizing(ComboBox_GetChildSizing(c.instance))
+}
+
+func (c *TComboBox) SetChildSizing(value *TControlChildSizing) {
+    ComboBox_SetChildSizing(c.instance, CheckPtr(value))
+}
+
+// CN: 获取边框间距。
+// EN: .
+func (c *TComboBox) BorderSpacing() *TControlBorderSpacing {
+    return AsControlBorderSpacing(ComboBox_GetBorderSpacing(c.instance))
+}
+
+// CN: 设置边框间距。
+// EN: .
+func (c *TComboBox) SetBorderSpacing(value *TControlBorderSpacing) {
+    ComboBox_SetBorderSpacing(c.instance, CheckPtr(value))
+}
+
 // CN: 获取指定索引停靠客户端。
 // EN: .
 func (c *TComboBox) DockClients(Index int32) *TControl {
@@ -1181,5 +1275,11 @@ func (c *TComboBox) Controls(Index int32) *TControl {
 // EN: Get the specified index component.
 func (c *TComboBox) Components(AIndex int32) *TComponent {
     return AsComponent(ComboBox_GetComponents(c.instance, AIndex))
+}
+
+// CN: 获取锚侧面。
+// EN: .
+func (c *TComboBox) AnchorSide(AKind TAnchorKind) *TAnchorSide {
+    return AsAnchorSide(ComboBox_GetAnchorSide(c.instance, AKind))
 }
 
