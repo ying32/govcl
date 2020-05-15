@@ -3,8 +3,8 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="11"/>
-    <BuildModes Count="1" Active="win32Dev">
-      <Item1 Name="macOS">
+    <BuildModes Count="1" Active="Default">
+      <Item1 Name="Default">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -16,7 +16,6 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
-            <TargetOS Value="darwin"/>
             <Optimizations>
               <OptimizationLevel Value="4"/>
             </Optimizations>
@@ -49,11 +48,6 @@
         <UsageCount Value="65"/>
       </Unit1>
       <Unit2>
-        <Filename Value="winResData.inc"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="53"/>
-      </Unit2>
-      <Unit3>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
@@ -62,16 +56,20 @@
         <CursorPos X="160" Y="128"/>
         <UsageCount Value="42"/>
         <Loaded Value="True"/>
-      </Unit3>
-      <Unit4>
+      </Unit2>
+      <Unit3>
         <Filename Value="uresourceformtogo.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="118"/>
         <CursorPos X="58" Y="40"/>
-        <FoldState Value=" T3nN0}0131D"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="winResData.inc"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="53"/>
       </Unit4>
       <Unit5>
         <Filename Value="udelphiwriter.pas"/>
@@ -393,7 +391,7 @@
         <UsageCount Value="10"/>
       </Unit49>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="888" Column="64" TopLine="851"/>
@@ -510,10 +508,6 @@
         <Filename Value="uresourceformtogo.pas"/>
         <Caret Line="135" Column="2" TopLine="121"/>
       </Position29>
-      <Position30>
-        <Filename Value="uresourceformtogo.pas"/>
-        <Caret Line="40" Column="70" TopLine="118"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
