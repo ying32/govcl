@@ -17,6 +17,11 @@ begin
   AObj.Free;
 end;
 
+function TreeView_AlphaSort(AObj: TTreeView; ARecurse: LongBool): LongBool; extdecl;
+begin
+  Result :=  AObj.AlphaSort(ARecurse);
+end;
+
 procedure TreeView_FullCollapse(AObj: TTreeView); extdecl;
 begin
   AObj.FullCollapse;
@@ -1449,6 +1454,7 @@ end;
 exports
   TreeView_Create,
   TreeView_Free,
+  TreeView_AlphaSort,
   TreeView_FullCollapse,
   TreeView_FullExpand,
   TreeView_GetNodeAt,

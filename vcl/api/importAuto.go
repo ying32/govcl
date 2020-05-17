@@ -5483,6 +5483,7 @@ var (
     // TTreeView
     treeView_Create = libvcl.NewProc("TreeView_Create")
     treeView_Free = libvcl.NewProc("TreeView_Free")
+    treeView_AlphaSort = libvcl.NewProc("TreeView_AlphaSort")
     treeView_FullCollapse = libvcl.NewProc("TreeView_FullCollapse")
     treeView_FullExpand = libvcl.NewProc("TreeView_FullExpand")
     treeView_GetNodeAt = libvcl.NewProc("TreeView_GetNodeAt")

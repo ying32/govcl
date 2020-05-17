@@ -111,6 +111,10 @@ func TTreeViewClass() TClass {
     return TreeView_StaticClassType()
 }
 
+func (t *TTreeView) AlphaSort(ARecurse bool) bool {
+    return TreeView_AlphaSort(t.instance, ARecurse)
+}
+
 func (t *TTreeView) FullCollapse() {
     TreeView_FullCollapse(t.instance)
 }

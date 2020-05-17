@@ -312,7 +312,7 @@ function TTreeView.CustomSort(SortProc: PFNTVCOMPARE; Data: NativeInt;
   ARecurse: LongBool): Boolean;
 begin
   // no support
-  Result := True;
+  Result := inherited CustomSort(nil);
 end;
 
 function TTreeView.AlphaSort(ARecurse: Boolean): Boolean;

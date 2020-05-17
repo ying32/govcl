@@ -24722,6 +24722,11 @@ func TreeView_Free(obj uintptr) {
     treeView_Free.Call(obj)
 }
 
+func TreeView_AlphaSort(obj uintptr, ARecurse bool) bool {
+    ret, _, _ := treeView_AlphaSort.Call(obj, GoBoolToDBool(ARecurse) )
+    return DBoolToGoBool(ret)
+}
+
 func TreeView_FullCollapse(obj uintptr)  {
     treeView_FullCollapse.Call(obj)
 }
