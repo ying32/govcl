@@ -111,6 +111,8 @@ func TTreeViewClass() TClass {
     return TreeView_StaticClassType()
 }
 
+// CN: 按字母排序，所有都参数无效，仅仅用来兼容Delphi的。
+// EN: Sorted alphabetically, all parameters are invalid, Only used to be compatible with Delphi.
 func (t *TTreeView) AlphaSort(ARecurse bool) bool {
     return TreeView_AlphaSort(t.instance, ARecurse)
 }
@@ -161,6 +163,8 @@ func (t *TTreeView) ClearSelection(KeepPrimary bool) {
     TreeView_ClearSelection(t.instance, KeepPrimary)
 }
 
+// CN: 自定义排序，所有都参数无效，仅仅用来兼容Delphi的。
+// EN: Custom sorting, All parameters are invalid, Only used to be compatible with Delphi.
 func (t *TTreeView) CustomSort(SortProc PFNTVCOMPARE, Data int, ARecurse bool) bool {
     return TreeView_CustomSort(t.instance, SortProc , Data , ARecurse)
 }

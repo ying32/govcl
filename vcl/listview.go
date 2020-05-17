@@ -145,6 +145,8 @@ func (l *TListView) SelectAll() {
     ListView_SelectAll(l.instance)
 }
 
+// CN: 自定义排序，ASortProc参数无效，仅仅用来兼容Delphi的。
+// EN: Custom sorting, ASortProc parameter is invalid, Only used to be compatible with Delphi.
 func (l *TListView) CustomSort(SortProc PFNLVCOMPARE, lParam int) bool {
     return ListView_CustomSort(l.instance, SortProc , lParam)
 }
