@@ -54,8 +54,8 @@ const (
 	FsStayOnTop
 
 	// lcl
-	fsSplash
-	fsSystemStayOnTop
+	FsSplash
+	FsSystemStayOnTop
 )
 
 //  TPosition = (poDesigned, poDefault, poDefaultPosOnly, poDefaultSizeOnly, poScreenCenter, poDesktopCenter, poMainFormCenter, poOwnerFormCenter);
