@@ -517,8 +517,8 @@ const (
 type TUDBtnType int32
 
 const (
-	btNext = iota + 0
-	btPrev
+	BtNext = iota + 0
+	BtPrev
 )
 
 //  TTabPosition = (tpTop, tpBottom, tpLeft, tpRight);
@@ -1380,14 +1380,14 @@ const (
 type TCalDayOfWeek int32
 
 const (
-	dowMonday = iota + 0
-	dowTuesday
-	dowWednesday
-	dowThursday
-	dowFriday
-	dowSaturday
-	dowSunday
-	dowLocaleDefault
+	DowMonday = iota + 0
+	DowTuesday
+	DowWednesday
+	DowThursday
+	DowFriday
+	DowSaturday
+	DowSunday
+	DowLocaleDefault
 )
 
 // TSearchType = (stWholeWord, stMatchCase);
@@ -1539,7 +1539,7 @@ type TScrollBarStyle int32
 const (
 	SsRegular = iota + 0
 	SsFlat
-	ssHotTrack
+	SsHotTrack
 )
 
 type TShapeType int32
@@ -1610,7 +1610,7 @@ const (
 	CdPrePaint = iota + 0
 	CdPostPaint
 	CdPreErase
-	cdPostErase
+	CdPostErase
 )
 
 type TCustomDrawState = TSet
