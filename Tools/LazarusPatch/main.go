@@ -19,15 +19,16 @@ var (
 
 func main() {
 
+	// 禁用
 	// lazarus的路径
 	lazarusPath = GetLazarusPath()
 	checkLazarusPath()
 
 	// 开始进行文的补丁操作
 
-	patchFile("lcl/comctrls.pp", ComCtrlsPPData)
-	patchFile("lcl/include/listitems.inc", listItemsIncData)
-	patchFile("lcl/include/treeview.inc", treeViewIncData)
+	//patchFile("lcl/comctrls.pp", ComCtrlsPPData)
+	//patchFile("lcl/include/listitems.inc", listItemsIncData)
+	//patchFile("lcl/include/treeview.inc", treeViewIncData)
 }
 
 func checkLazarusPath() {
