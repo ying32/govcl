@@ -11,9 +11,9 @@
 
 **当前版本已不再支持`Delphi/VCL`了。最后一个支持vcl版本的分支：[last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/)。**   
 
-*从1.2.0版本开始govcl将最低要求go1.9。*    
+*govcl最低要求go1.9。*    
 
-[截图查看](https://github.com/ying32/govcl/tree/master/Screenshot) | 
+[截图查看](https://z-kit.cc/screenshot.html) | 
 [中文文档](https://gitee.com/ying32/govcl/wikis/pages) | 
 [更新日志](https://z-kit.cc/changelog.html) | 
 [加入QQ群](https://jq.qq.com/?_wv=1027&k=5Sv7Qiq) | 

@@ -11,9 +11,10 @@ Cross-platform Golang GUI library, Binding with Lazarus LCL.
 
 **The current version no longer supports `Delphi/VCL`. The last branch that supports the vcl version: [last-vcl-support](https://github.com/ying32/govcl/tree/last-vcl-support/).**   
 
-*The govcl version >=1.2.0 must require the go version >=1.9.0.*    
+*govcl minimum requirement is go1.9.*    
 
-[Screenshots](https://github.com/ying32/govcl/tree/master/Screenshot) | 
+[Screenshots](https://z-kit.cc/en/screenshot.html) | 
+[WIKI(Chinese)](https://gitee.com/ying32/govcl/wikis/pages) |  
 [What's-new(Chinese)](https://z-kit.cc/changelog.html) | 
 [GoVCL video tutorial (third party)](https://video.0-w.cc/videos/1) | 
 [Sponsor govcl](https://z-kit.cc/sponsor.html)  
