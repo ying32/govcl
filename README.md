@@ -29,10 +29,10 @@
 
 ----
 
-### 预编译GUI库二进制下载       
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.2/liblcl-2.0.2.zip)  
+### 预编译GUI库二进制下载（[源代码](UILibSources)）       
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.2/liblcl-2.0.2.zip)  
 
-### res2go工具下载（[文档](Tools/res2go)）  
+### res2go工具下载（[文档、源代码](Tools/res2go)）  
 
 **需要自己编译: [编译方法](Tools/res2go/src/README.md)**   
 

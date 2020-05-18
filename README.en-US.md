@@ -26,10 +26,10 @@ Cross-platform Golang GUI library, Binding with Lazarus LCL.
 
 > If you want to support linux arm and linux 32bit, you need to compile the corresponding liblcl binary.   
 
-### Pre-compiled GUI library binary download     
-[![Librarys](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.2/liblcl-2.0.2.zip)   
+### Pre-compiled GUI library binary download ([source code](UILibSources))     
+[![liblcl](https://img.shields.io/github/downloads/ying32/govcl/latest/liblcl-2.0.2.zip.svg)](https://github.com/ying32/govcl/releases/download/v2.0.2/liblcl-2.0.2.zip)   
 
-### res2go Tool([doc](Tools/res2go))    
+### res2go Tool([doc, source code](Tools/res2go))    
 
 **Need to compile yourself: [Compile Guide]](Tools/res2go/src/README.md)**   
 
