@@ -5,7 +5,7 @@
 
 ----
 
-`res2go是一个将Lazarus/Delphi资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。`  
+`res2go是一个将Lazarus资源窗口转go工具，可自动解析lfm、dfm中的组件名、组件类型、事件名称。解析lpr、dpr文件中窗口信息。`  
 
 命令行：  
 
@@ -28,18 +28,7 @@
 
 ---- 
 
-### 集成到Delphi/Lazarus IDE内 
-
-* Delphi IDE
-
-打开IDE： 菜单 -> Tools -> Configure Tools -> Add, 显示了Tool Properties窗口   
-
-```
-Title              菜单栏显示的名字  
-Program            res2go程序全文件名（含路径）  
-Working directory  工作目录，可不填  
-Parameters         命令行参数（填这句，运行后会在当前工程目录下的gocode生成代码）： -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)/gocode" -pause "ew"   
-```
+### 集成到Lazarus IDE内 
 
 * Lazarus IDE  
 

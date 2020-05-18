@@ -5,13 +5,9 @@
 
 ----
 
-res2go工具主要是使用Lazarus编译，Delphi也可以编译。
+res2go工具主要是使用Lazarus编译。
 
 #### 自行编译方法
-
-#### Delphi
-
-打开工程文件res2go.dpr，使用高级并支持Unicode的Delphi版本进行编译。
 
 #### Lazarus 
 

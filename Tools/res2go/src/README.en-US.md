@@ -5,13 +5,9 @@
 
 ----
 
-The res2go tool is mainly compiled with Lazarus, and Delphi can also be compiled.
+The res2go tool is mainly compiled with Lazarus.
 
 #### Compilation method
-
-#### Delphi
-
-Compile with the project file res2go.dpr using Delphi that supports Unicode or higher.
 
 #### Lazarus
 

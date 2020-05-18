@@ -5,7 +5,7 @@
 
 ----
 
-`res2go is a Lazarus/Delphi resource window to go tool, can automatically resolve the lfm, dfm component name, component type and event name. Parse window information in lpr, dpr file.`   
+`res2go is a Lazarus resource window to go tool, can automatically resolve the lfm, dfm component name, component type and event name. Parse window information in lpr, dpr file.`   
 
 Command Line:  
 ```
@@ -28,18 +28,7 @@ usage: res2go [-path "C:\project\"] [-outpath "C:\xxx\"] [-outmain true] [-outre
 
 ---- 
 
-### Integrated into the Delphi/Lazarus IDE  
-
-* Delphi IDE
-
-Open the IDE: Menu -> Tools -> Configure Tools -> Add   
-
-```
-Title              The name displayed on the menu  
-Program            res2go program full file name (including path) 
-Working directory  Working directory, no need to fill  
-Parameters         Command line arguments (the code will be generated in the gocode directory under the current project directory after running): -path "$PATH($PROJECT)" -outpath "$PATH($PROJECT)/gocode" -pause "ew"    
-```
+### Integrated into the Lazarus IDE  
 
 * Lazarus IDE  
 
