@@ -14,7 +14,7 @@ Cross-platform Golang GUI library, Binding with Lazarus LCL.
 *govcl minimum requirement is go1.9.*    
 
 [Screenshots](https://z-kit.cc/en/screenshot.html) | 
-[WIKI(Chinese)](https://gitee.com/ying32/govcl/wikis/pages) |  
+[WIKI(Chinese)](https://gitee.com/ying32/govcl/wikis/pages) | 
 [What's-new(Chinese)](https://z-kit.cc/changelog.html) | 
 [GoVCL video tutorial (third party)](https://video.0-w.cc/videos/1) | 
 [Sponsor govcl](https://z-kit.cc/sponsor.html)  
@@ -31,7 +31,7 @@ Cross-platform Golang GUI library, Binding with Lazarus LCL.
 
 ### res2go Tool([doc, source code](Tools/res2go))    
 
-**Need to compile yourself: [Compile Guide]](Tools/res2go/src/README.md)**   
+**Need to compile yourself: [Compile Guide](Tools/res2go/src/README.en-US.md)**   
 
 > Note: Designed in Lazarus, code written in Golang.  
  
