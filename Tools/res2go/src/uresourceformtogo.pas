@@ -1068,7 +1068,7 @@ begin
       LMainDotGo.Add('');
       LMainDotGo.Add('func main() {');
       if FindCmdLineSwitch('scale') then
-        LMainDotGo.Add('    vcl.Application.SetFormScaled(true)');
+        LMainDotGo.Add('    vcl.Application.SetScaled(true)');
       LMainDotGo.Add('    vcl.Application.Initialize()');
       if SameText(ExtractFileExt(AFileName), '.dpr') then
         LMainDotGo.Add('    vcl.Application.SetMainFormOnTaskBar(true)');
