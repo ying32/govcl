@@ -23,9 +23,6 @@
       <CharSet Value="03B6"/>
       <StringTable Comments="Lazarus/Delphi资源窗口转go" CompanyName="ying32" FileDescription="Lazarus/Delphi资源窗口转go" LegalCopyright="ying32" OriginalFilename="res2go.exe" ProductName="res2go" ProductVersion="1.0.21.0"/>
     </VersionInfo>
-    <BuildModes Count="1">
-      <Item1 Name="default" Default="True"/>
-    </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
     </PublishOptions>
