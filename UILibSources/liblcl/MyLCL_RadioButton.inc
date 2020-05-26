@@ -267,6 +267,13 @@ begin
   AObj.AnchorClient(ASpace);
 end;
 
+procedure RadioButton_SetOnChange(AObj: TRadioButton; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
+end;
+
 function RadioButton_GetAction(AObj: TRadioButton): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -985,6 +992,7 @@ exports
   RadioButton_AnchorVerticalCenterTo,
   RadioButton_AnchorAsAlign,
   RadioButton_AnchorClient,
+  RadioButton_SetOnChange,
   RadioButton_GetAction,
   RadioButton_SetAction,
   RadioButton_GetAlign,

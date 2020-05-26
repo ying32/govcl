@@ -4744,6 +4744,10 @@ func CheckBox_AnchorClient(obj uintptr, ASpace int32)  {
     checkBox_AnchorClient.Call(obj, uintptr(ASpace) )
 }
 
+func CheckBox_SetOnChange(obj uintptr, fn interface{}) {
+    checkBox_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
 func CheckBox_GetAction(obj uintptr) uintptr {
     ret, _, _ := checkBox_GetAction.Call(obj)
     return ret
@@ -5579,6 +5583,10 @@ func RadioButton_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
 
 func RadioButton_AnchorClient(obj uintptr, ASpace int32)  {
     radioButton_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func RadioButton_SetOnChange(obj uintptr, fn interface{}) {
+    radioButton_SetOnChange.Call(obj, addEventToMap(fn))
 }
 
 func RadioButton_GetAction(obj uintptr) uintptr {

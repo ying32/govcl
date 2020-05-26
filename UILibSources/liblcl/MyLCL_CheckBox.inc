@@ -267,6 +267,13 @@ begin
   AObj.AnchorClient(ASpace);
 end;
 
+procedure CheckBox_SetOnChange(AObj: TCheckBox; AEventId: NativeUInt); extdecl;
+begin
+  {$DEFINE EventName := OnChange}
+  {$DEFINE EventMethodName := OnChange}
+  EventMethodCode
+end;
+
 function CheckBox_GetAction(AObj: TCheckBox): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -1005,6 +1012,7 @@ exports
   CheckBox_AnchorVerticalCenterTo,
   CheckBox_AnchorAsAlign,
   CheckBox_AnchorClient,
+  CheckBox_SetOnChange,
   CheckBox_GetAction,
   CheckBox_SetAction,
   CheckBox_GetAlign,

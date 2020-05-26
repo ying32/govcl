@@ -401,6 +401,12 @@ func (r *TRadioButton) AnchorClient(ASpace int32) {
     RadioButton_AnchorClient(r.instance, ASpace)
 }
 
+// CN: 设置改变事件。
+// EN: Set changed event.
+func (r *TRadioButton) SetOnChange(fn TNotifyEvent) {
+    RadioButton_SetOnChange(r.instance, fn)
+}
+
 func (r *TRadioButton) Action() *TAction {
     return AsAction(RadioButton_GetAction(r.instance))
 }

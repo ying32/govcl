@@ -401,6 +401,12 @@ func (c *TCheckBox) AnchorClient(ASpace int32) {
     CheckBox_AnchorClient(c.instance, ASpace)
 }
 
+// CN: 设置改变事件。
+// EN: Set changed event.
+func (c *TCheckBox) SetOnChange(fn TNotifyEvent) {
+    CheckBox_SetOnChange(c.instance, fn)
+}
+
 func (c *TCheckBox) Action() *TAction {
     return AsAction(CheckBox_GetAction(c.instance))
 }
