@@ -147,12 +147,12 @@ func (m *TMiniWebview) SetBounds(ALeft int32, ATop int32, AWidth int32, AHeight 
     MiniWebview_SetBounds(m.instance, ALeft , ATop , AWidth , AHeight)
 }
 
-func (m *TMiniWebview) ExecuteScript(AScriptText string, AScriptType string) {
-    MiniWebview_ExecuteScript(m.instance, AScriptText , AScriptType)
+func (m *TMiniWebview) ExecuteScript(AScriptText string, AScriptType string) string {
+    return MiniWebview_ExecuteScript(m.instance, AScriptText , AScriptType)
 }
 
-func (m *TMiniWebview) ExecuteJS(AScriptText string) {
-    MiniWebview_ExecuteJS(m.instance, AScriptText)
+func (m *TMiniWebview) ExecuteJS(AScriptText string) string {
+    return MiniWebview_ExecuteJS(m.instance, AScriptText)
 }
 
 func (m *TMiniWebview) LoadHTML(AStr string) {

@@ -74,8 +74,8 @@ type
      procedure Refresh;
      procedure Stop;
 
-     procedure ExecuteScript(AScriptText, AScriptType: string);  // not support
-     procedure ExecuteJS(AScriptText: string);   // not support
+     function ExecuteScript(AScriptText, AScriptType: string): string;  // not support
+     function ExecuteJS(AScriptText: string): string;   // not support
 
      procedure LoadHTML(const AStr: string);
 
@@ -280,14 +280,14 @@ begin
      webkit_web_view_stop_loading(FWebview);
 end;
 
-procedure TMiniWebview.ExecuteScript(AScriptText, AScriptType: string);
+function TMiniWebview.ExecuteScript(AScriptText, AScriptType: string): string;
 begin
-
+  Result := '';
 end;
 
-procedure TMiniWebview.ExecuteJS(AScriptText: string);
+function TMiniWebview.ExecuteJS(AScriptText: string): string;
 begin
-
+  Result := ExecuteScript(AScriptText, '');
 end;
 
 procedure TMiniWebview.LoadHTML(const AStr: string);

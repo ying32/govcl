@@ -454,8 +454,8 @@ type
     procedure Stop;
     procedure SetBounds(ALeft, ATop, AWidth, AHeight: Integer); override;
 
-    procedure ExecuteScript(AScriptText, AScriptType: string);
-    procedure ExecuteJS(AScriptText: string);
+    function ExecuteScript(AScriptText, AScriptType: string): string;
+    function ExecuteJS(AScriptText: string): string;
 
     procedure LoadHTML(const AStr: string);
 
@@ -1066,11 +1066,12 @@ begin
     Self.UpdateWebbrowserSize;
 end;
 
-procedure TMiniWebview.ExecuteScript(AScriptText, AScriptType: string);
+function TMiniWebview.ExecuteScript(AScriptText, AScriptType: string): string;
 var
   LDocument: IHTMLDocument2;
   LParent: IHTMLWindow2;
 begin
+  Result := '';
   if not HandleAllocated then
     HandleNeeded;
   if FWebBrowser = nil then
@@ -1081,15 +1082,15 @@ begin
     begin
       LParent := LDocument.parentWindow;
       if Assigned(LParent) then
-        LParent.execScript(AScriptText, AScriptType);
+        Result := string(LParent.execScript(AScriptText, AScriptType));
     end;
   except
   end;
 end;
 
-procedure TMiniWebview.ExecuteJS(AScriptText: string);
+function TMiniWebview.ExecuteJS(AScriptText: string): string;
 begin
-  ExecuteScript(AScriptText, 'javascript');
+  Result := ExecuteScript(AScriptText, 'javascript');
 end;
 
 procedure TMiniWebview.LoadHTML(const AStr: string);

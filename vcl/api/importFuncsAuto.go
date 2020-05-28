@@ -35762,12 +35762,14 @@ func MiniWebview_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, A
     miniWebview_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
 }
 
-func MiniWebview_ExecuteScript(obj uintptr, AScriptText string, AScriptType string)  {
-    miniWebview_ExecuteScript.Call(obj, GoStrToDStr(AScriptText) , GoStrToDStr(AScriptType) )
+func MiniWebview_ExecuteScript(obj uintptr, AScriptText string, AScriptType string) string {
+    ret, _, _ := miniWebview_ExecuteScript.Call(obj, GoStrToDStr(AScriptText) , GoStrToDStr(AScriptType) )
+    return DStrToGoStr(ret)
 }
 
-func MiniWebview_ExecuteJS(obj uintptr, AScriptText string)  {
-    miniWebview_ExecuteJS.Call(obj, GoStrToDStr(AScriptText) )
+func MiniWebview_ExecuteJS(obj uintptr, AScriptText string) string {
+    ret, _, _ := miniWebview_ExecuteJS.Call(obj, GoStrToDStr(AScriptText) )
+    return DStrToGoStr(ret)
 }
 
 func MiniWebview_LoadHTML(obj uintptr, AStr string)  {

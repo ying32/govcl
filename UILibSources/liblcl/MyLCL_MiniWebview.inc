@@ -57,14 +57,14 @@ begin
   AObj.SetBounds(ALeft, ATop, AWidth, AHeight);
 end;
 
-procedure MiniWebview_ExecuteScript(AObj: TMiniWebview; AScriptText: PChar; AScriptType: PChar); extdecl;
+function MiniWebview_ExecuteScript(AObj: TMiniWebview; AScriptText: PChar; AScriptType: PChar): PChar; extdecl;
 begin
-  AObj.ExecuteScript(AScriptText, AScriptType);
+  Result :=  PChar(AObj.ExecuteScript(AScriptText, AScriptType));
 end;
 
-procedure MiniWebview_ExecuteJS(AObj: TMiniWebview; AScriptText: PChar); extdecl;
+function MiniWebview_ExecuteJS(AObj: TMiniWebview; AScriptText: PChar): PChar; extdecl;
 begin
-  AObj.ExecuteJS(AScriptText);
+  Result :=  PChar(AObj.ExecuteJS(AScriptText));
 end;
 
 procedure MiniWebview_LoadHTML(AObj: TMiniWebview; AStr: PChar); extdecl;

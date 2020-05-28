@@ -84,8 +84,8 @@ type
      procedure Refresh;
      procedure Stop;
 
-     procedure ExecuteScript(AScriptText, AScriptType: string);
-     procedure ExecuteJS(AScriptText: string);
+     function ExecuteScript(AScriptText, AScriptType: string): string;
+     function ExecuteJS(AScriptText: string): string;
 
      procedure LoadHTML(const AStr: string);
 
@@ -237,18 +237,19 @@ begin
 end;
 
 // AScriptType no support
-procedure TMiniWebView.ExecuteScript(AScriptText, AScriptType: string);
+function TMiniWebView.ExecuteScript(AScriptText, AScriptType: string): string;
 begin
+  Result := '';
   if not HandleAllocated then
     HandleNeeded;
   if CurwebView = nil then
     Exit;
-  Curwebview.stringByEvaluatingJavaScriptFromString(NSStringUtf8(AScriptText));
+  Result := NSStringToString(Curwebview.stringByEvaluatingJavaScriptFromString(NSStringUtf8(AScriptText)));
 end;
 
-procedure TMiniWebView.ExecuteJS(AScriptText: string);
+function TMiniWebView.ExecuteJS(AScriptText: string): string;
 begin
-  ExecuteScript(AScriptText, 'javascript');
+  Result := ExecuteScript(AScriptText, '');
 end;
 
 procedure TMiniWebView.LoadHTML(const AStr: string);
