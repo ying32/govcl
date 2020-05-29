@@ -657,6 +657,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function Button_GetShowing(AObj: TButton): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function Button_GetUseDockManager(AObj: TButton): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1052,6 +1057,7 @@ exports
   Button_GetHandle,
   Button_GetParentWindow,
   Button_SetParentWindow,
+  Button_GetShowing,
   Button_GetUseDockManager,
   Button_SetUseDockManager,
   Button_GetBoundsRect,

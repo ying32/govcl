@@ -819,6 +819,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ComboBoxEx_GetShowing(AObj: TComboBoxEx): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ComboBoxEx_GetUseDockManager(AObj: TComboBoxEx): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1246,6 +1251,7 @@ exports
   ComboBoxEx_GetHandle,
   ComboBoxEx_GetParentWindow,
   ComboBoxEx_SetParentWindow,
+  ComboBoxEx_GetShowing,
   ComboBoxEx_GetUseDockManager,
   ComboBoxEx_SetUseDockManager,
   ComboBoxEx_GetBoundsRect,

@@ -867,6 +867,10 @@ func (f *TFrame) SetParentWindow(value HWND) {
     Frame_SetParentWindow(f.instance, value)
 }
 
+func (f *TFrame) Showing() bool {
+    return Frame_GetShowing(f.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (f *TFrame) UseDockManager() bool {

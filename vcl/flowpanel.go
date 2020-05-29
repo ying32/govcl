@@ -921,6 +921,10 @@ func (f *TFlowPanel) SetParentWindow(value HWND) {
     FlowPanel_SetParentWindow(f.instance, value)
 }
 
+func (f *TFlowPanel) Showing() bool {
+    return FlowPanel_GetShowing(f.instance)
+}
+
 func (f *TFlowPanel) Action() *TAction {
     return AsAction(FlowPanel_GetAction(f.instance))
 }

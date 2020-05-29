@@ -1145,6 +1145,10 @@ func (f *TForm) SetParentWindow(value HWND) {
     Form_SetParentWindow(f.instance, value)
 }
 
+func (f *TForm) Showing() bool {
+    return Form_GetShowing(f.instance)
+}
+
 // CN: 获取Tab切换顺序序号。
 // EN: Get Tab switching sequence number.
 func (f *TForm) TabOrder() TTabOrder {

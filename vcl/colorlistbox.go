@@ -875,6 +875,10 @@ func (c *TColorListBox) SetParentWindow(value HWND) {
     ColorListBox_SetParentWindow(c.instance, value)
 }
 
+func (c *TColorListBox) Showing() bool {
+    return ColorListBox_GetShowing(c.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (c *TColorListBox) UseDockManager() bool {

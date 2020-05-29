@@ -147,6 +147,41 @@ begin
   AObj.Scaled := AValue;
 end;
 
+function Application_GetSingleInstanceEnabled(AObj: TApplication): LongBool; extdecl;
+begin
+  Result :=  AObj.SingleInstanceEnabled;
+end;
+
+procedure Application_SetSingleInstanceEnabled(AObj: TApplication; AValue: LongBool); extdecl;
+begin
+  AObj.SingleInstanceEnabled := AValue;
+end;
+
+function Application_GetLocation(AObj: TApplication): PChar; extdecl;
+begin
+  Result :=  PChar(AObj.Location);
+end;
+
+function Application_GetStopOnException(AObj: TApplication): LongBool; extdecl;
+begin
+  Result :=  AObj.StopOnException;
+end;
+
+procedure Application_SetStopOnException(AObj: TApplication; AValue: LongBool); extdecl;
+begin
+  AObj.StopOnException := AValue;
+end;
+
+function Application_GetExceptionExitCode(AObj: TApplication): Integer; extdecl;
+begin
+  Result :=  AObj.ExceptionExitCode;
+end;
+
+procedure Application_SetExceptionExitCode(AObj: TApplication; AValue: Integer); extdecl;
+begin
+  AObj.ExceptionExitCode := AValue;
+end;
+
 function Application_GetExeName(AObj: TApplication): PChar; extdecl;
 begin
   Result :=  PChar(AObj.ExeName);
@@ -403,6 +438,13 @@ exports
   Application_ToString,
   Application_GetScaled,
   Application_SetScaled,
+  Application_GetSingleInstanceEnabled,
+  Application_SetSingleInstanceEnabled,
+  Application_GetLocation,
+  Application_GetStopOnException,
+  Application_SetStopOnException,
+  Application_GetExceptionExitCode,
+  Application_SetExceptionExitCode,
   Application_GetExeName,
   Application_GetHint,
   Application_SetHint,

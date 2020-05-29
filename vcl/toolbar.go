@@ -963,6 +963,10 @@ func (t *TToolBar) SetParentWindow(value HWND) {
     ToolBar_SetParentWindow(t.instance, value)
 }
 
+func (t *TToolBar) Showing() bool {
+    return ToolBar_GetShowing(t.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (t *TToolBar) UseDockManager() bool {

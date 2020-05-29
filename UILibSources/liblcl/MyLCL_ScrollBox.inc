@@ -722,6 +722,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ScrollBox_GetShowing(AObj: TScrollBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ScrollBox_GetUseDockManager(AObj: TScrollBox): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1138,6 +1143,7 @@ exports
   ScrollBox_GetHandle,
   ScrollBox_GetParentWindow,
   ScrollBox_SetParentWindow,
+  ScrollBox_GetShowing,
   ScrollBox_GetUseDockManager,
   ScrollBox_SetUseDockManager,
   ScrollBox_GetAction,

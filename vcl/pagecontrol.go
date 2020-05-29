@@ -859,6 +859,10 @@ func (p *TPageControl) SetParentWindow(value HWND) {
     PageControl_SetParentWindow(p.instance, value)
 }
 
+func (p *TPageControl) Showing() bool {
+    return PageControl_GetShowing(p.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (p *TPageControl) UseDockManager() bool {

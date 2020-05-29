@@ -815,6 +815,10 @@ func (b *TButton) SetParentWindow(value HWND) {
     Button_SetParentWindow(b.instance, value)
 }
 
+func (b *TButton) Showing() bool {
+    return Button_GetShowing(b.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (b *TButton) UseDockManager() bool {

@@ -748,6 +748,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function CoolBar_GetShowing(AObj: TCoolBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function CoolBar_GetTabOrder(AObj: TCoolBar): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
@@ -1200,6 +1205,7 @@ exports
   CoolBar_GetHandle,
   CoolBar_GetParentWindow,
   CoolBar_SetParentWindow,
+  CoolBar_GetShowing,
   CoolBar_GetTabOrder,
   CoolBar_SetTabOrder,
   CoolBar_GetTabStop,

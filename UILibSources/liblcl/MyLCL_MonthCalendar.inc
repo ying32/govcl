@@ -612,6 +612,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function MonthCalendar_GetShowing(AObj: TMonthCalendar): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function MonthCalendar_GetUseDockManager(AObj: TMonthCalendar): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1008,6 +1013,7 @@ exports
   MonthCalendar_GetHandle,
   MonthCalendar_GetParentWindow,
   MonthCalendar_SetParentWindow,
+  MonthCalendar_GetShowing,
   MonthCalendar_GetUseDockManager,
   MonthCalendar_SetUseDockManager,
   MonthCalendar_GetAction,

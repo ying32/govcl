@@ -795,6 +795,10 @@ func (p *TProgressBar) SetParentWindow(value HWND) {
     ProgressBar_SetParentWindow(p.instance, value)
 }
 
+func (p *TProgressBar) Showing() bool {
+    return ProgressBar_GetShowing(p.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (p *TProgressBar) UseDockManager() bool {

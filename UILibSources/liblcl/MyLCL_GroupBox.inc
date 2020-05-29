@@ -660,6 +660,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function GroupBox_GetShowing(AObj: TGroupBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function GroupBox_GetUseDockManager(AObj: TGroupBox): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1064,6 +1069,7 @@ exports
   GroupBox_GetHandle,
   GroupBox_GetParentWindow,
   GroupBox_SetParentWindow,
+  GroupBox_GetShowing,
   GroupBox_GetUseDockManager,
   GroupBox_SetUseDockManager,
   GroupBox_GetAction,

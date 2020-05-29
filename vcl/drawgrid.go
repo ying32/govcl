@@ -1029,6 +1029,10 @@ func (d *TDrawGrid) SetParentWindow(value HWND) {
     DrawGrid_SetParentWindow(d.instance, value)
 }
 
+func (d *TDrawGrid) Showing() bool {
+    return DrawGrid_GetShowing(d.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (d *TDrawGrid) UseDockManager() bool {

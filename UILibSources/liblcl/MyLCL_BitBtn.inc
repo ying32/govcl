@@ -697,6 +697,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function BitBtn_GetShowing(AObj: TBitBtn): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function BitBtn_GetUseDockManager(AObj: TBitBtn): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1100,6 +1105,7 @@ exports
   BitBtn_GetHandle,
   BitBtn_GetParentWindow,
   BitBtn_SetParentWindow,
+  BitBtn_GetShowing,
   BitBtn_GetUseDockManager,
   BitBtn_SetUseDockManager,
   BitBtn_GetBoundsRect,

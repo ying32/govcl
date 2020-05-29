@@ -757,6 +757,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function Panel_GetShowing(AObj: TPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function Panel_GetAction(AObj: TPanel): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -1170,6 +1175,7 @@ exports
   Panel_GetHandle,
   Panel_GetParentWindow,
   Panel_SetParentWindow,
+  Panel_GetShowing,
   Panel_GetAction,
   Panel_SetAction,
   Panel_GetBoundsRect,

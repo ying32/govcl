@@ -939,6 +939,10 @@ func (l *TListBox) SetParentWindow(value HWND) {
     ListBox_SetParentWindow(l.instance, value)
 }
 
+func (l *TListBox) Showing() bool {
+    return ListBox_GetShowing(l.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (l *TListBox) UseDockManager() bool {

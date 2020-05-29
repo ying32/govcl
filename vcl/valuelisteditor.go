@@ -1021,6 +1021,10 @@ func (v *TValueListEditor) SetParentWindow(value HWND) {
     ValueListEditor_SetParentWindow(v.instance, value)
 }
 
+func (v *TValueListEditor) Showing() bool {
+    return ValueListEditor_GetShowing(v.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (v *TValueListEditor) UseDockManager() bool {

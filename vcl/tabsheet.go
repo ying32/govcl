@@ -777,6 +777,10 @@ func (t *TTabSheet) SetParentWindow(value HWND) {
     TabSheet_SetParentWindow(t.instance, value)
 }
 
+func (t *TTabSheet) Showing() bool {
+    return TabSheet_GetShowing(t.instance)
+}
+
 // CN: 获取Tab切换顺序序号。
 // EN: Get Tab switching sequence number.
 func (t *TTabSheet) TabOrder() TTabOrder {

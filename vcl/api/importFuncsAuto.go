@@ -135,6 +135,38 @@ func Application_SetScaled(obj uintptr, value bool) {
    application_SetScaled.Call(obj, GoBoolToDBool(value))
 }
 
+func Application_GetSingleInstanceEnabled(obj uintptr) bool {
+    ret, _, _ := application_GetSingleInstanceEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Application_SetSingleInstanceEnabled(obj uintptr, value bool) {
+   application_SetSingleInstanceEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func Application_GetLocation(obj uintptr) string {
+    ret, _, _ := application_GetLocation.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func Application_GetStopOnException(obj uintptr) bool {
+    ret, _, _ := application_GetStopOnException.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func Application_SetStopOnException(obj uintptr, value bool) {
+   application_SetStopOnException.Call(obj, GoBoolToDBool(value))
+}
+
+func Application_GetExceptionExitCode(obj uintptr) int32 {
+    ret, _, _ := application_GetExceptionExitCode.Call(obj)
+    return int32(ret)
+}
+
+func Application_SetExceptionExitCode(obj uintptr, value int32) {
+   application_SetExceptionExitCode.Call(obj, uintptr(value))
+}
+
 func Application_GetExeName(obj uintptr) string {
     ret, _, _ := application_GetExeName.Call(obj)
     return DStrToGoStr(ret)
@@ -1151,6 +1183,11 @@ func Form_SetParentWindow(obj uintptr, value HWND) {
    form_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func Form_GetShowing(obj uintptr) bool {
+    ret, _, _ := form_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Form_GetTabOrder(obj uintptr) TTabOrder {
     ret, _, _ := form_GetTabOrder.Call(obj)
     return TTabOrder(ret)
@@ -1918,6 +1955,11 @@ func Button_GetParentWindow(obj uintptr) HWND {
 
 func Button_SetParentWindow(obj uintptr, value HWND) {
    button_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func Button_GetShowing(obj uintptr) bool {
+    ret, _, _ := button_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Button_GetUseDockManager(obj uintptr) bool {
@@ -2886,6 +2928,11 @@ func Edit_GetParentWindow(obj uintptr) HWND {
 
 func Edit_SetParentWindow(obj uintptr, value HWND) {
    edit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func Edit_GetShowing(obj uintptr) bool {
+    ret, _, _ := edit_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Edit_GetUseDockManager(obj uintptr) bool {
@@ -4240,6 +4287,11 @@ func Memo_SetParentWindow(obj uintptr, value HWND) {
    memo_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func Memo_GetShowing(obj uintptr) bool {
+    ret, _, _ := memo_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func Memo_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := memo_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -5090,6 +5142,11 @@ func CheckBox_SetParentWindow(obj uintptr, value HWND) {
    checkBox_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func CheckBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := checkBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func CheckBox_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := checkBox_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -5913,6 +5970,11 @@ func RadioButton_SetParentWindow(obj uintptr, value HWND) {
    radioButton_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func RadioButton_GetShowing(obj uintptr) bool {
+    ret, _, _ := radioButton_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func RadioButton_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := radioButton_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -6719,6 +6781,11 @@ func GroupBox_GetParentWindow(obj uintptr) HWND {
 
 func GroupBox_SetParentWindow(obj uintptr, value HWND) {
    groupBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func GroupBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := groupBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func GroupBox_GetUseDockManager(obj uintptr) bool {
@@ -8345,6 +8412,11 @@ func ListBox_SetParentWindow(obj uintptr, value HWND) {
    listBox_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ListBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := listBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ListBox_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := listBox_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -9314,6 +9386,11 @@ func ComboBox_SetParentWindow(obj uintptr, value HWND) {
    comboBox_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ComboBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := comboBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ComboBox_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := comboBox_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -10214,6 +10291,11 @@ func Panel_GetParentWindow(obj uintptr) HWND {
 
 func Panel_SetParentWindow(obj uintptr, value HWND) {
    panel_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func Panel_GetShowing(obj uintptr) bool {
+    ret, _, _ := panel_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Panel_GetAction(obj uintptr) uintptr {
@@ -13444,6 +13526,11 @@ func RadioGroup_SetParentWindow(obj uintptr, value HWND) {
    radioGroup_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func RadioGroup_GetShowing(obj uintptr) bool {
+    ret, _, _ := radioGroup_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func RadioGroup_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := radioGroup_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -14272,6 +14359,11 @@ func StaticText_GetParentWindow(obj uintptr) HWND {
 
 func StaticText_SetParentWindow(obj uintptr, value HWND) {
    staticText_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func StaticText_GetShowing(obj uintptr) bool {
+    ret, _, _ := staticText_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func StaticText_GetUseDockManager(obj uintptr) bool {
@@ -15195,6 +15287,11 @@ func ColorBox_SetParentWindow(obj uintptr, value HWND) {
    colorBox_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ColorBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := colorBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ColorBox_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := colorBox_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -16099,6 +16196,11 @@ func ColorListBox_GetParentWindow(obj uintptr) HWND {
 
 func ColorListBox_SetParentWindow(obj uintptr, value HWND) {
    colorListBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ColorListBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := colorListBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func ColorListBox_GetUseDockManager(obj uintptr) bool {
@@ -18861,6 +18963,11 @@ func RichEdit_SetParentWindow(obj uintptr, value HWND) {
    richEdit_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func RichEdit_GetShowing(obj uintptr) bool {
+    ret, _, _ := richEdit_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func RichEdit_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := richEdit_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -19698,6 +19805,11 @@ func TrackBar_GetParentWindow(obj uintptr) HWND {
 
 func TrackBar_SetParentWindow(obj uintptr, value HWND) {
    trackBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func TrackBar_GetShowing(obj uintptr) bool {
+    ret, _, _ := trackBar_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func TrackBar_GetUseDockManager(obj uintptr) bool {
@@ -20752,6 +20864,11 @@ func UpDown_SetParentWindow(obj uintptr, value HWND) {
    upDown_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func UpDown_GetShowing(obj uintptr) bool {
+    ret, _, _ := upDown_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func UpDown_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := upDown_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -21581,6 +21698,11 @@ func ProgressBar_SetParentWindow(obj uintptr, value HWND) {
    progressBar_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ProgressBar_GetShowing(obj uintptr) bool {
+    ret, _, _ := progressBar_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ProgressBar_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := progressBar_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -22403,6 +22525,11 @@ func DateTimePicker_SetParentWindow(obj uintptr, value HWND) {
    dateTimePicker_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func DateTimePicker_GetShowing(obj uintptr) bool {
+    ret, _, _ := dateTimePicker_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func DateTimePicker_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := dateTimePicker_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -23184,6 +23311,11 @@ func MonthCalendar_GetParentWindow(obj uintptr) HWND {
 
 func MonthCalendar_SetParentWindow(obj uintptr, value HWND) {
    monthCalendar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func MonthCalendar_GetShowing(obj uintptr) bool {
+    ret, _, _ := monthCalendar_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func MonthCalendar_GetUseDockManager(obj uintptr) bool {
@@ -24463,6 +24595,11 @@ func ListView_SetParentWindow(obj uintptr, value HWND) {
    listView_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ListView_GetShowing(obj uintptr) bool {
+    ret, _, _ := listView_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ListView_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := listView_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -25701,6 +25838,11 @@ func TreeView_SetParentWindow(obj uintptr, value HWND) {
    treeView_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func TreeView_GetShowing(obj uintptr) bool {
+    ret, _, _ := treeView_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func TreeView_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := treeView_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -26555,6 +26697,11 @@ func StatusBar_GetParentWindow(obj uintptr) HWND {
 
 func StatusBar_SetParentWindow(obj uintptr, value HWND) {
    statusBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func StatusBar_GetShowing(obj uintptr) bool {
+    ret, _, _ := statusBar_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func StatusBar_GetTabOrder(obj uintptr) TTabOrder {
@@ -27521,6 +27668,11 @@ func ToolBar_SetParentWindow(obj uintptr, value HWND) {
    toolBar_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ToolBar_GetShowing(obj uintptr) bool {
+    ret, _, _ := toolBar_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ToolBar_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := toolBar_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -28383,6 +28535,11 @@ func BitBtn_GetParentWindow(obj uintptr) HWND {
 
 func BitBtn_SetParentWindow(obj uintptr, value HWND) {
    bitBtn_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func BitBtn_GetShowing(obj uintptr) bool {
+    ret, _, _ := bitBtn_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func BitBtn_GetUseDockManager(obj uintptr) bool {
@@ -31796,6 +31953,11 @@ func PageControl_SetParentWindow(obj uintptr, value HWND) {
    pageControl_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func PageControl_GetShowing(obj uintptr) bool {
+    ret, _, _ := pageControl_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func PageControl_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := pageControl_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -32592,6 +32754,11 @@ func TabSheet_GetParentWindow(obj uintptr) HWND {
 
 func TabSheet_SetParentWindow(obj uintptr, value HWND) {
    tabSheet_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func TabSheet_GetShowing(obj uintptr) bool {
+    ret, _, _ := tabSheet_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func TabSheet_GetTabOrder(obj uintptr) TTabOrder {
@@ -33644,6 +33811,11 @@ func WinControl_GetParentWindow(obj uintptr) HWND {
 
 func WinControl_SetParentWindow(obj uintptr, value HWND) {
    winControl_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func WinControl_GetShowing(obj uintptr) bool {
+    ret, _, _ := winControl_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func WinControl_GetTabOrder(obj uintptr) TTabOrder {
@@ -35441,6 +35613,11 @@ func SpinEdit_SetParentWindow(obj uintptr, value HWND) {
    spinEdit_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func SpinEdit_GetShowing(obj uintptr) bool {
+    ret, _, _ := spinEdit_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func SpinEdit_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := spinEdit_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -36123,6 +36300,11 @@ func MiniWebview_GetParentWindow(obj uintptr) HWND {
 
 func MiniWebview_SetParentWindow(obj uintptr, value HWND) {
    miniWebview_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func MiniWebview_GetShowing(obj uintptr) bool {
+    ret, _, _ := miniWebview_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func MiniWebview_GetTabOrder(obj uintptr) TTabOrder {
@@ -40738,6 +40920,11 @@ func ScrollBar_SetParentWindow(obj uintptr, value HWND) {
    scrollBar_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ScrollBar_GetShowing(obj uintptr) bool {
+    ret, _, _ := scrollBar_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ScrollBar_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := scrollBar_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -41717,6 +41904,11 @@ func MaskEdit_GetParentWindow(obj uintptr) HWND {
 
 func MaskEdit_SetParentWindow(obj uintptr, value HWND) {
    maskEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func MaskEdit_GetShowing(obj uintptr) bool {
+    ret, _, _ := maskEdit_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func MaskEdit_GetUseDockManager(obj uintptr) bool {
@@ -43657,6 +43849,11 @@ func ScrollBox_SetParentWindow(obj uintptr, value HWND) {
    scrollBox_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ScrollBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := scrollBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ScrollBox_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := scrollBox_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -44590,6 +44787,11 @@ func CheckListBox_GetParentWindow(obj uintptr) HWND {
 
 func CheckListBox_SetParentWindow(obj uintptr, value HWND) {
    checkListBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func CheckListBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := checkListBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func CheckListBox_GetUseDockManager(obj uintptr) bool {
@@ -47895,6 +48097,11 @@ func StringGrid_SetParentWindow(obj uintptr, value HWND) {
    stringGrid_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func StringGrid_GetShowing(obj uintptr) bool {
+    ret, _, _ := stringGrid_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func StringGrid_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := stringGrid_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -48997,6 +49204,11 @@ func DrawGrid_SetParentWindow(obj uintptr, value HWND) {
    drawGrid_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func DrawGrid_GetShowing(obj uintptr) bool {
+    ret, _, _ := drawGrid_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func DrawGrid_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := drawGrid_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -50055,6 +50267,11 @@ func ValueListEditor_SetParentWindow(obj uintptr, value HWND) {
    valueListEditor_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ValueListEditor_GetShowing(obj uintptr) bool {
+    ret, _, _ := valueListEditor_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ValueListEditor_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := valueListEditor_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -50872,6 +51089,11 @@ func HeaderControl_GetParentWindow(obj uintptr) HWND {
 
 func HeaderControl_SetParentWindow(obj uintptr, value HWND) {
    headerControl_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func HeaderControl_GetShowing(obj uintptr) bool {
+    ret, _, _ := headerControl_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func HeaderControl_GetTabOrder(obj uintptr) TTabOrder {
@@ -52134,6 +52356,11 @@ func LabeledEdit_GetParentWindow(obj uintptr) HWND {
 
 func LabeledEdit_SetParentWindow(obj uintptr, value HWND) {
    labeledEdit_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func LabeledEdit_GetShowing(obj uintptr) bool {
+    ret, _, _ := labeledEdit_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func LabeledEdit_GetUseDockManager(obj uintptr) bool {
@@ -53666,6 +53893,11 @@ func FlowPanel_SetParentWindow(obj uintptr, value HWND) {
    flowPanel_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func FlowPanel_GetShowing(obj uintptr) bool {
+    ret, _, _ := flowPanel_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func FlowPanel_GetAction(obj uintptr) uintptr {
     ret, _, _ := flowPanel_GetAction.Call(obj)
     return ret
@@ -54554,6 +54786,11 @@ func CoolBar_GetParentWindow(obj uintptr) HWND {
 
 func CoolBar_SetParentWindow(obj uintptr, value HWND) {
    coolBar_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func CoolBar_GetShowing(obj uintptr) bool {
+    ret, _, _ := coolBar_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func CoolBar_GetTabOrder(obj uintptr) TTabOrder {
@@ -56883,6 +57120,11 @@ func ComboBoxEx_SetParentWindow(obj uintptr, value HWND) {
    comboBoxEx_SetParentWindow.Call(obj, uintptr(value))
 }
 
+func ComboBoxEx_GetShowing(obj uintptr) bool {
+    ret, _, _ := comboBoxEx_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
 func ComboBoxEx_GetUseDockManager(obj uintptr) bool {
     ret, _, _ := comboBoxEx_GetUseDockManager.Call(obj)
     return DBoolToGoBool(ret)
@@ -57961,6 +58203,11 @@ func Frame_GetParentWindow(obj uintptr) HWND {
 
 func Frame_SetParentWindow(obj uintptr, value HWND) {
    frame_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func Frame_GetShowing(obj uintptr) bool {
+    ret, _, _ := frame_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
 }
 
 func Frame_GetUseDockManager(obj uintptr) bool {

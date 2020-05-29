@@ -885,6 +885,10 @@ func (c *TCoolBar) SetParentWindow(value HWND) {
     CoolBar_SetParentWindow(c.instance, value)
 }
 
+func (c *TCoolBar) Showing() bool {
+    return CoolBar_GetShowing(c.instance)
+}
+
 // CN: 获取Tab切换顺序序号。
 // EN: Get Tab switching sequence number.
 func (c *TCoolBar) TabOrder() TTabOrder {

@@ -765,6 +765,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ColorBox_GetShowing(AObj: TColorBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ColorBox_GetUseDockManager(AObj: TColorBox): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1202,6 +1207,7 @@ exports
   ColorBox_GetHandle,
   ColorBox_GetParentWindow,
   ColorBox_SetParentWindow,
+  ColorBox_GetShowing,
   ColorBox_GetUseDockManager,
   ColorBox_SetUseDockManager,
   ColorBox_GetAction,

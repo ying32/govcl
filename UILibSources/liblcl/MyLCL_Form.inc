@@ -982,6 +982,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function Form_GetShowing(AObj: TForm): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function Form_GetTabOrder(AObj: TForm): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
@@ -1386,6 +1391,7 @@ exports
   Form_SetParentDoubleBuffered,
   Form_GetParentWindow,
   Form_SetParentWindow,
+  Form_GetShowing,
   Form_GetTabOrder,
   Form_SetTabOrder,
   Form_GetTabStop,

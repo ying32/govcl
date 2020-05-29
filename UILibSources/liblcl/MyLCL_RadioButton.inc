@@ -669,6 +669,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function RadioButton_GetShowing(AObj: TRadioButton): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function RadioButton_GetUseDockManager(AObj: TRadioButton): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1066,6 +1071,7 @@ exports
   RadioButton_GetHandle,
   RadioButton_GetParentWindow,
   RadioButton_SetParentWindow,
+  RadioButton_GetShowing,
   RadioButton_GetUseDockManager,
   RadioButton_SetUseDockManager,
   RadioButton_GetBoundsRect,

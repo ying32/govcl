@@ -788,6 +788,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function CheckListBox_GetShowing(AObj: TCheckListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function CheckListBox_GetUseDockManager(AObj: TCheckListBox): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1268,6 +1273,7 @@ exports
   CheckListBox_GetHandle,
   CheckListBox_GetParentWindow,
   CheckListBox_SetParentWindow,
+  CheckListBox_GetShowing,
   CheckListBox_GetUseDockManager,
   CheckListBox_SetUseDockManager,
   CheckListBox_GetAction,

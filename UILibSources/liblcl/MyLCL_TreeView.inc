@@ -1166,6 +1166,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function TreeView_GetShowing(AObj: TTreeView): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function TreeView_GetUseDockManager(AObj: TTreeView): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1671,6 +1676,7 @@ exports
   TreeView_GetHandle,
   TreeView_GetParentWindow,
   TreeView_SetParentWindow,
+  TreeView_GetShowing,
   TreeView_GetUseDockManager,
   TreeView_SetUseDockManager,
   TreeView_GetAction,

@@ -337,6 +337,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function WinControl_GetShowing(AObj: TWinControl): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function WinControl_GetTabOrder(AObj: TWinControl): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
@@ -774,6 +779,7 @@ exports
   WinControl_SetParentDoubleBuffered,
   WinControl_GetParentWindow,
   WinControl_SetParentWindow,
+  WinControl_GetShowing,
   WinControl_GetTabOrder,
   WinControl_SetTabOrder,
   WinControl_GetTabStop,

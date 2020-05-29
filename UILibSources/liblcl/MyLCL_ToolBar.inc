@@ -804,6 +804,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ToolBar_GetShowing(AObj: TToolBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ToolBar_GetUseDockManager(AObj: TToolBar): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1243,6 +1248,7 @@ exports
   ToolBar_GetHandle,
   ToolBar_GetParentWindow,
   ToolBar_SetParentWindow,
+  ToolBar_GetShowing,
   ToolBar_GetUseDockManager,
   ToolBar_SetUseDockManager,
   ToolBar_GetAction,

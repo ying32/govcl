@@ -837,6 +837,10 @@ func (s *TStatusBar) SetParentWindow(value HWND) {
     StatusBar_SetParentWindow(s.instance, value)
 }
 
+func (s *TStatusBar) Showing() bool {
+    return StatusBar_GetShowing(s.instance)
+}
+
 // CN: 获取Tab切换顺序序号。
 // EN: Get Tab switching sequence number.
 func (s *TStatusBar) TabOrder() TTabOrder {

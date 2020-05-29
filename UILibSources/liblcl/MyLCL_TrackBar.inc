@@ -662,6 +662,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function TrackBar_GetShowing(AObj: TTrackBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function TrackBar_GetUseDockManager(AObj: TTrackBar): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1080,6 +1085,7 @@ exports
   TrackBar_GetHandle,
   TrackBar_GetParentWindow,
   TrackBar_SetParentWindow,
+  TrackBar_GetShowing,
   TrackBar_GetUseDockManager,
   TrackBar_SetUseDockManager,
   TrackBar_GetAction,

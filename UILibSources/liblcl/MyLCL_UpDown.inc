@@ -567,6 +567,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function UpDown_GetShowing(AObj: TUpDown): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function UpDown_GetUseDockManager(AObj: TUpDown): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -966,6 +971,7 @@ exports
   UpDown_GetHandle,
   UpDown_GetParentWindow,
   UpDown_SetParentWindow,
+  UpDown_GetShowing,
   UpDown_GetUseDockManager,
   UpDown_SetUseDockManager,
   UpDown_GetAction,

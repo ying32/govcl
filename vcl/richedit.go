@@ -1097,6 +1097,10 @@ func (r *TRichEdit) SetParentWindow(value HWND) {
     RichEdit_SetParentWindow(r.instance, value)
 }
 
+func (r *TRichEdit) Showing() bool {
+    return RichEdit_GetShowing(r.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (r *TRichEdit) UseDockManager() bool {

@@ -644,6 +644,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ProgressBar_GetShowing(AObj: TProgressBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ProgressBar_GetUseDockManager(AObj: TProgressBar): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1048,6 +1053,7 @@ exports
   ProgressBar_GetHandle,
   ProgressBar_GetParentWindow,
   ProgressBar_SetParentWindow,
+  ProgressBar_GetShowing,
   ProgressBar_GetUseDockManager,
   ProgressBar_SetUseDockManager,
   ProgressBar_GetAction,

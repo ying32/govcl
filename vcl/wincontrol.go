@@ -485,6 +485,10 @@ func (w *TWinControl) SetParentWindow(value HWND) {
     WinControl_SetParentWindow(w.instance, value)
 }
 
+func (w *TWinControl) Showing() bool {
+    return WinControl_GetShowing(w.instance)
+}
+
 // CN: 获取Tab切换顺序序号。
 // EN: Get Tab switching sequence number.
 func (w *TWinControl) TabOrder() TTabOrder {

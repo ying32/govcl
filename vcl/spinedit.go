@@ -917,6 +917,10 @@ func (s *TSpinEdit) SetParentWindow(value HWND) {
     SpinEdit_SetParentWindow(s.instance, value)
 }
 
+func (s *TSpinEdit) Showing() bool {
+    return SpinEdit_GetShowing(s.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (s *TSpinEdit) UseDockManager() bool {

@@ -1029,6 +1029,10 @@ func (s *TStringGrid) SetParentWindow(value HWND) {
     StringGrid_SetParentWindow(s.instance, value)
 }
 
+func (s *TStringGrid) Showing() bool {
+    return StringGrid_GetShowing(s.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (s *TStringGrid) UseDockManager() bool {

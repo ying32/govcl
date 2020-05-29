@@ -792,6 +792,10 @@ func (d *TDateTimePicker) SetParentWindow(value HWND) {
     DateTimePicker_SetParentWindow(d.instance, value)
 }
 
+func (d *TDateTimePicker) Showing() bool {
+    return DateTimePicker_GetShowing(d.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (d *TDateTimePicker) UseDockManager() bool {

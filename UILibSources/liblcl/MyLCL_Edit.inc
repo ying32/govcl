@@ -836,6 +836,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function Edit_GetShowing(AObj: TEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function Edit_GetUseDockManager(AObj: TEdit): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1276,6 +1281,7 @@ exports
   Edit_GetHandle,
   Edit_GetParentWindow,
   Edit_SetParentWindow,
+  Edit_GetShowing,
   Edit_GetUseDockManager,
   Edit_SetUseDockManager,
   Edit_GetAction,

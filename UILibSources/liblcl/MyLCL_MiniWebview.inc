@@ -451,6 +451,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function MiniWebview_GetShowing(AObj: TMiniWebview): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function MiniWebview_GetTabOrder(AObj: TMiniWebview): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
@@ -860,6 +865,7 @@ exports
   MiniWebview_SetParentDoubleBuffered,
   MiniWebview_GetParentWindow,
   MiniWebview_SetParentWindow,
+  MiniWebview_GetShowing,
   MiniWebview_GetTabOrder,
   MiniWebview_SetTabOrder,
   MiniWebview_GetTabStop,

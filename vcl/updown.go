@@ -711,6 +711,10 @@ func (u *TUpDown) SetParentWindow(value HWND) {
     UpDown_SetParentWindow(u.instance, value)
 }
 
+func (u *TUpDown) Showing() bool {
+    return UpDown_GetShowing(u.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (u *TUpDown) UseDockManager() bool {

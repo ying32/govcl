@@ -979,6 +979,10 @@ func (c *TComboBoxEx) SetParentWindow(value HWND) {
     ComboBoxEx_SetParentWindow(c.instance, value)
 }
 
+func (c *TComboBoxEx) Showing() bool {
+    return ComboBoxEx_GetShowing(c.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (c *TComboBoxEx) UseDockManager() bool {

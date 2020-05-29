@@ -835,6 +835,10 @@ func (r *TRadioButton) SetParentWindow(value HWND) {
     RadioButton_SetParentWindow(r.instance, value)
 }
 
+func (r *TRadioButton) Showing() bool {
+    return RadioButton_GetShowing(r.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (r *TRadioButton) UseDockManager() bool {

@@ -642,6 +642,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function DateTimePicker_GetShowing(AObj: TDateTimePicker): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function DateTimePicker_GetUseDockManager(AObj: TDateTimePicker): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1046,6 +1051,7 @@ exports
   DateTimePicker_GetHandle,
   DateTimePicker_GetParentWindow,
   DateTimePicker_SetParentWindow,
+  DateTimePicker_GetShowing,
   DateTimePicker_GetUseDockManager,
   DateTimePicker_SetUseDockManager,
   DateTimePicker_GetAction,

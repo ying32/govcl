@@ -1216,6 +1216,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ListView_GetShowing(AObj: TListView): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ListView_GetUseDockManager(AObj: TListView): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1719,6 +1724,7 @@ exports
   ListView_GetHandle,
   ListView_GetParentWindow,
   ListView_SetParentWindow,
+  ListView_GetShowing,
   ListView_GetUseDockManager,
   ListView_SetUseDockManager,
   ListView_GetBoundsRect,

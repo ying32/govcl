@@ -687,6 +687,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function StatusBar_GetShowing(AObj: TStatusBar): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function StatusBar_GetTabOrder(AObj: TStatusBar): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
@@ -1108,6 +1113,7 @@ exports
   StatusBar_GetHandle,
   StatusBar_GetParentWindow,
   StatusBar_SetParentWindow,
+  StatusBar_GetShowing,
   StatusBar_GetTabOrder,
   StatusBar_SetTabOrder,
   StatusBar_GetTabStop,

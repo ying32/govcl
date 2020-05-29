@@ -835,6 +835,10 @@ func (b *TBitBtn) SetParentWindow(value HWND) {
     BitBtn_SetParentWindow(b.instance, value)
 }
 
+func (b *TBitBtn) Showing() bool {
+    return BitBtn_GetShowing(b.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (b *TBitBtn) UseDockManager() bool {

@@ -259,6 +259,34 @@ func (a *TApplication) SetScaled(value bool) {
     Application_SetScaled(a.instance, value)
 }
 
+func (a *TApplication) SingleInstanceEnabled() bool {
+    return Application_GetSingleInstanceEnabled(a.instance)
+}
+
+func (a *TApplication) SetSingleInstanceEnabled(value bool) {
+    Application_SetSingleInstanceEnabled(a.instance, value)
+}
+
+func (a *TApplication) Location() string {
+    return Application_GetLocation(a.instance)
+}
+
+func (a *TApplication) StopOnException() bool {
+    return Application_GetStopOnException(a.instance)
+}
+
+func (a *TApplication) SetStopOnException(value bool) {
+    Application_SetStopOnException(a.instance, value)
+}
+
+func (a *TApplication) ExceptionExitCode() int32 {
+    return Application_GetExceptionExitCode(a.instance)
+}
+
+func (a *TApplication) SetExceptionExitCode(value int32) {
+    Application_SetExceptionExitCode(a.instance, value)
+}
+
 // CN: 获取当前exe文件名，包含全路径。
 // EN: .
 func (a *TApplication) ExeName() string {

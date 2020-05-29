@@ -933,6 +933,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function StringGrid_GetShowing(AObj: TStringGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function StringGrid_GetUseDockManager(AObj: TStringGrid): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1448,6 +1453,7 @@ exports
   StringGrid_GetHandle,
   StringGrid_GetParentWindow,
   StringGrid_SetParentWindow,
+  StringGrid_GetShowing,
   StringGrid_GetUseDockManager,
   StringGrid_SetUseDockManager,
   StringGrid_GetAction,

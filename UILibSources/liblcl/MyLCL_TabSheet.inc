@@ -620,6 +620,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function TabSheet_GetShowing(AObj: TTabSheet): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function TabSheet_GetTabOrder(AObj: TTabSheet): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
@@ -1028,6 +1033,7 @@ exports
   TabSheet_GetHandle,
   TabSheet_GetParentWindow,
   TabSheet_SetParentWindow,
+  TabSheet_GetShowing,
   TabSheet_GetTabOrder,
   TabSheet_SetTabOrder,
   TabSheet_GetTabStop,

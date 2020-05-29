@@ -723,6 +723,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function Frame_GetShowing(AObj: TFrame): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function Frame_GetUseDockManager(AObj: TFrame): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1138,6 +1143,7 @@ exports
   Frame_GetHandle,
   Frame_GetParentWindow,
   Frame_SetParentWindow,
+  Frame_GetShowing,
   Frame_GetUseDockManager,
   Frame_SetUseDockManager,
   Frame_GetAction,

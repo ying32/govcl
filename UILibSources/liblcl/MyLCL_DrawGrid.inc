@@ -933,6 +933,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function DrawGrid_GetShowing(AObj: TDrawGrid): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function DrawGrid_GetUseDockManager(AObj: TDrawGrid): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1408,6 +1413,7 @@ exports
   DrawGrid_GetHandle,
   DrawGrid_GetParentWindow,
   DrawGrid_SetParentWindow,
+  DrawGrid_GetShowing,
   DrawGrid_GetUseDockManager,
   DrawGrid_SetUseDockManager,
   DrawGrid_GetAction,

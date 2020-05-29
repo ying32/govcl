@@ -1037,6 +1037,10 @@ func (m *TMaskEdit) SetParentWindow(value HWND) {
     MaskEdit_SetParentWindow(m.instance, value)
 }
 
+func (m *TMaskEdit) Showing() bool {
+    return MaskEdit_GetShowing(m.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (m *TMaskEdit) UseDockManager() bool {

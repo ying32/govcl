@@ -757,6 +757,10 @@ func (r *TRadioGroup) SetParentWindow(value HWND) {
     RadioGroup_SetParentWindow(r.instance, value)
 }
 
+func (r *TRadioGroup) Showing() bool {
+    return RadioGroup_GetShowing(r.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (r *TRadioGroup) UseDockManager() bool {

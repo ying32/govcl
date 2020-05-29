@@ -921,6 +921,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ValueListEditor_GetShowing(AObj: TValueListEditor): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ValueListEditor_GetUseDockManager(AObj: TValueListEditor): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1414,6 +1419,7 @@ exports
   ValueListEditor_GetHandle,
   ValueListEditor_GetParentWindow,
   ValueListEditor_SetParentWindow,
+  ValueListEditor_GetShowing,
   ValueListEditor_GetUseDockManager,
   ValueListEditor_SetUseDockManager,
   ValueListEditor_GetAction,

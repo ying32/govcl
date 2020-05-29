@@ -815,6 +815,10 @@ func (g *TGroupBox) SetParentWindow(value HWND) {
     GroupBox_SetParentWindow(g.instance, value)
 }
 
+func (g *TGroupBox) Showing() bool {
+    return GroupBox_GetShowing(g.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (g *TGroupBox) UseDockManager() bool {

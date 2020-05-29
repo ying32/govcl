@@ -913,6 +913,10 @@ func (p *TPanel) SetParentWindow(value HWND) {
     Panel_SetParentWindow(p.instance, value)
 }
 
+func (p *TPanel) Showing() bool {
+    return Panel_GetShowing(p.instance)
+}
+
 func (p *TPanel) Action() *TAction {
     return AsAction(Panel_GetAction(p.instance))
 }

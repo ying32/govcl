@@ -727,6 +727,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function SpinEdit_GetShowing(AObj: TSpinEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function SpinEdit_GetUseDockManager(AObj: TSpinEdit): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1168,6 +1173,7 @@ exports
   SpinEdit_SetParentDoubleBuffered,
   SpinEdit_GetParentWindow,
   SpinEdit_SetParentWindow,
+  SpinEdit_GetShowing,
   SpinEdit_GetUseDockManager,
   SpinEdit_SetUseDockManager,
   SpinEdit_GetAction,

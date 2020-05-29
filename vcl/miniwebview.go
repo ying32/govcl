@@ -593,6 +593,10 @@ func (m *TMiniWebview) SetParentWindow(value HWND) {
     MiniWebview_SetParentWindow(m.instance, value)
 }
 
+func (m *TMiniWebview) Showing() bool {
+    return MiniWebview_GetShowing(m.instance)
+}
+
 // CN: 获取Tab切换顺序序号。
 // EN: Get Tab switching sequence number.
 func (m *TMiniWebview) TabOrder() TTabOrder {

@@ -759,6 +759,10 @@ func (s *TScrollBar) SetParentWindow(value HWND) {
     ScrollBar_SetParentWindow(s.instance, value)
 }
 
+func (s *TScrollBar) Showing() bool {
+    return ScrollBar_GetShowing(s.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (s *TScrollBar) UseDockManager() bool {

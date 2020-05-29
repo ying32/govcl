@@ -725,6 +725,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function PageControl_GetShowing(AObj: TPageControl): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function PageControl_GetUseDockManager(AObj: TPageControl): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1147,6 +1152,7 @@ exports
   PageControl_GetHandle,
   PageControl_GetParentWindow,
   PageControl_SetParentWindow,
+  PageControl_GetShowing,
   PageControl_GetUseDockManager,
   PageControl_SetUseDockManager,
   PageControl_GetAction,

@@ -834,6 +834,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function LabeledEdit_GetShowing(AObj: TLabeledEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function LabeledEdit_GetUseDockManager(AObj: TLabeledEdit): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1284,6 +1289,7 @@ exports
   LabeledEdit_GetHandle,
   LabeledEdit_GetParentWindow,
   LabeledEdit_SetParentWindow,
+  LabeledEdit_GetShowing,
   LabeledEdit_GetUseDockManager,
   LabeledEdit_SetUseDockManager,
   LabeledEdit_GetAction,

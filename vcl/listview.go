@@ -1261,6 +1261,10 @@ func (l *TListView) SetParentWindow(value HWND) {
     ListView_SetParentWindow(l.instance, value)
 }
 
+func (l *TListView) Showing() bool {
+    return ListView_GetShowing(l.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (l *TListView) UseDockManager() bool {

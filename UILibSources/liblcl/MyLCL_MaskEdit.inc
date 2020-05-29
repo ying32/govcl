@@ -843,6 +843,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function MaskEdit_GetShowing(AObj: TMaskEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function MaskEdit_GetUseDockManager(AObj: TMaskEdit): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1284,6 +1289,7 @@ exports
   MaskEdit_GetHandle,
   MaskEdit_GetParentWindow,
   MaskEdit_SetParentWindow,
+  MaskEdit_GetShowing,
   MaskEdit_GetUseDockManager,
   MaskEdit_SetUseDockManager,
   MaskEdit_GetAction,

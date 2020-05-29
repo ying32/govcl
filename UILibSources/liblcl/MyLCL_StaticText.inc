@@ -654,6 +654,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function StaticText_GetShowing(AObj: TStaticText): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function StaticText_GetUseDockManager(AObj: TStaticText): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1060,6 +1065,7 @@ exports
   StaticText_GetHandle,
   StaticText_GetParentWindow,
   StaticText_SetParentWindow,
+  StaticText_GetShowing,
   StaticText_GetUseDockManager,
   StaticText_SetUseDockManager,
   StaticText_GetAction,

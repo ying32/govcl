@@ -917,6 +917,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function RichEdit_GetShowing(AObj: TRichEdit): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function RichEdit_GetUseDockManager(AObj: TRichEdit): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1372,6 +1377,7 @@ exports
   RichEdit_SetParentDoubleBuffered,
   RichEdit_GetParentWindow,
   RichEdit_SetParentWindow,
+  RichEdit_GetShowing,
   RichEdit_GetUseDockManager,
   RichEdit_SetUseDockManager,
   RichEdit_GetAction,

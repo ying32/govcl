@@ -803,6 +803,10 @@ func (t *TTrackBar) SetParentWindow(value HWND) {
     TrackBar_SetParentWindow(t.instance, value)
 }
 
+func (t *TTrackBar) Showing() bool {
+    return TrackBar_GetShowing(t.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (t *TTrackBar) UseDockManager() bool {

@@ -589,6 +589,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function RadioGroup_GetShowing(AObj: TRadioGroup): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function RadioGroup_GetUseDockManager(AObj: TRadioGroup): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -984,6 +989,7 @@ exports
   RadioGroup_GetHandle,
   RadioGroup_GetParentWindow,
   RadioGroup_SetParentWindow,
+  RadioGroup_GetShowing,
   RadioGroup_GetUseDockManager,
   RadioGroup_SetUseDockManager,
   RadioGroup_GetAction,

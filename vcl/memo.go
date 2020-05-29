@@ -1043,6 +1043,10 @@ func (m *TMemo) SetParentWindow(value HWND) {
     Memo_SetParentWindow(m.instance, value)
 }
 
+func (m *TMemo) Showing() bool {
+    return Memo_GetShowing(m.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (m *TMemo) UseDockManager() bool {

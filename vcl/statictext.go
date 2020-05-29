@@ -831,6 +831,10 @@ func (s *TStaticText) SetParentWindow(value HWND) {
     StaticText_SetParentWindow(s.instance, value)
 }
 
+func (s *TStaticText) Showing() bool {
+    return StaticText_GetShowing(s.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (s *TStaticText) UseDockManager() bool {

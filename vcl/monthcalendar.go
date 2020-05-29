@@ -770,6 +770,10 @@ func (m *TMonthCalendar) SetParentWindow(value HWND) {
     MonthCalendar_SetParentWindow(m.instance, value)
 }
 
+func (m *TMonthCalendar) Showing() bool {
+    return MonthCalendar_GetShowing(m.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (m *TMonthCalendar) UseDockManager() bool {

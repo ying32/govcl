@@ -1029,6 +1029,10 @@ func (l *TLabeledEdit) SetParentWindow(value HWND) {
     LabeledEdit_SetParentWindow(l.instance, value)
 }
 
+func (l *TLabeledEdit) Showing() bool {
+    return LabeledEdit_GetShowing(l.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (l *TLabeledEdit) UseDockManager() bool {

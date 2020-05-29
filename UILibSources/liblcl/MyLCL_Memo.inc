@@ -856,6 +856,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function Memo_GetShowing(AObj: TMemo): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function Memo_GetUseDockManager(AObj: TMemo): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1300,6 +1305,7 @@ exports
   Memo_GetHandle,
   Memo_GetParentWindow,
   Memo_SetParentWindow,
+  Memo_GetShowing,
   Memo_GetUseDockManager,
   Memo_SetUseDockManager,
   Memo_GetAction,

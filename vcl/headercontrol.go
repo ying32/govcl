@@ -765,6 +765,10 @@ func (h *THeaderControl) SetParentWindow(value HWND) {
     HeaderControl_SetParentWindow(h.instance, value)
 }
 
+func (h *THeaderControl) Showing() bool {
+    return HeaderControl_GetShowing(h.instance)
+}
+
 // CN: 获取Tab切换顺序序号。
 // EN: Get Tab switching sequence number.
 func (h *THeaderControl) TabOrder() TTabOrder {

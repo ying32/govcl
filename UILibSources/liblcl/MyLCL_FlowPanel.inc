@@ -767,6 +767,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function FlowPanel_GetShowing(AObj: TFlowPanel): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function FlowPanel_GetAction(AObj: TFlowPanel): TBasicAction; extdecl;
 begin
   Result :=  AObj.Action;
@@ -1182,6 +1187,7 @@ exports
   FlowPanel_GetHandle,
   FlowPanel_GetParentWindow,
   FlowPanel_SetParentWindow,
+  FlowPanel_GetShowing,
   FlowPanel_GetAction,
   FlowPanel_SetAction,
   FlowPanel_GetBoundsRect,

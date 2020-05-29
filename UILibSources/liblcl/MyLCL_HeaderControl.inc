@@ -614,6 +614,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function HeaderControl_GetShowing(AObj: THeaderControl): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function HeaderControl_GetTabOrder(AObj: THeaderControl): TTabOrder; extdecl;
 begin
   Result :=  AObj.TabOrder;
@@ -1030,6 +1035,7 @@ exports
   HeaderControl_GetHandle,
   HeaderControl_GetParentWindow,
   HeaderControl_SetParentWindow,
+  HeaderControl_GetShowing,
   HeaderControl_GetTabOrder,
   HeaderControl_SetTabOrder,
   HeaderControl_GetTabStop,

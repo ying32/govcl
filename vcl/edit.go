@@ -1039,6 +1039,10 @@ func (e *TEdit) SetParentWindow(value HWND) {
     Edit_SetParentWindow(e.instance, value)
 }
 
+func (e *TEdit) Showing() bool {
+    return Edit_GetShowing(e.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (e *TEdit) UseDockManager() bool {

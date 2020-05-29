@@ -1233,6 +1233,10 @@ func (t *TTreeView) SetParentWindow(value HWND) {
     TreeView_SetParentWindow(t.instance, value)
 }
 
+func (t *TTreeView) Showing() bool {
+    return TreeView_GetShowing(t.instance)
+}
+
 // CN: 获取使用停靠管理。
 // EN: .
 func (t *TTreeView) UseDockManager() bool {

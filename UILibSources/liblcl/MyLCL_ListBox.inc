@@ -803,6 +803,11 @@ begin
   AObj.ParentWindow := AValue;
 end;
 
+function ListBox_GetShowing(AObj: TListBox): LongBool; extdecl;
+begin
+  Result :=  AObj.Showing;
+end;
+
 function ListBox_GetUseDockManager(AObj: TListBox): LongBool; extdecl;
 begin
   Result :=  AObj.UseDockManager;
@@ -1246,6 +1251,7 @@ exports
   ListBox_GetHandle,
   ListBox_GetParentWindow,
   ListBox_SetParentWindow,
+  ListBox_GetShowing,
   ListBox_GetUseDockManager,
   ListBox_SetUseDockManager,
   ListBox_GetAction,
