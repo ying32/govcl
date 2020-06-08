@@ -86,9 +86,9 @@ lib
 /samples/cef3browser
 /samples/ipscanner
 /samples/libcefext_x64_test.rar
-/samples/miniblinkWebview/LocalStorage
-/samples/miniblinkWebview/cookies.dat
-/samples/wkeWebBrowser/wke.dll.mblink
+/samples/Windows/miniblinkWebview/LocalStorage
+/samples/Windows/miniblinkWebview/cookies.dat
+/samples/Windows/wkeWebBrowser/wke.dll.mblink
 /samples/opengl
 /bin
 /samples/markdownEd/icons/
@@ -96,8 +96,8 @@ lib
 /samples/eventsTest
 *.res
 /samples/testbindevents
-/samples/memloaddll/defaultRes_windows_386.syso
-/samples/memloaddll/defaultRes_windows_amd64.syso
+/samples/Windows/memloaddll/defaultRes_windows_386.syso
+/samples/Windows/memloaddll/defaultRes_windows_amd64.syso
 /samples/directUITest/
 /samples/cgoTest/
 go.sum
