@@ -20,8 +20,8 @@
 | eventpublic | 控件事件的公用演示  | |
 | fileshelltree | 文件目录树  | |
 | formEvents | 演示自动关联事件    |  |
-| gdiplustest | GDI+画渐变文字及半透明背景    | Windows |
-| gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
+| Windows/gdiplustest | GDI+画渐变文字及半透明背景    | Windows |
+| Windows/gdiplustest2 | 移植自Delphi IGDIPlus例程的    | Windows  |
 | govcl | 开发govcl时的总测试例程，包含很多功能的演示 | |  
 | grids/stringgrid | 表格控件1 | |
 | grids/drawgrid | 表格控件2 | |
@@ -30,39 +30,38 @@
 | inifile | INI配置文件演示  | |
 | jsonTogo | 将一段json数据转为Go的结构，以方便json.Unmarshal填充 |  |  
 | jsonViewer | 将一段json数据以树的形式显示 |  |  
-| layout | 基础布局演示  | 部分限Windows |
+| layout | 基础布局演示  | |
 | listboxcustomdraw | ListBox部分自绘演示  | |
 | listboxcustomdraw2 | ListBox部分自绘演示  | |
 | listview | ListView部分功能演示  | 部分限Windows |
-| listviewadvcustomdraw | ListView高级自绘 | windows |  
-| listviewcustomdraw |  ListView部分自绘演示  | 自绘部分限Windows |   
-| listviewitemedit |  用于双击项目直接编辑ListView数据。  | Windows |  
+| Windows/listviewadvcustomdraw | ListView高级自绘 | windows |  
+| Windows/listviewcustomdraw |  ListView部分自绘演示  | 自绘部分限Windows |   
+| Windows/listviewitemedit |  用于双击项目直接编辑ListView数据。  | Windows |  
 | listviewvirtualdata | TListView虚拟数据，用于大数据显示 |   |
 | login |  登录窗口演示  | |   
 | markdownEd |  简单的markdown编辑器  | |   
-| memloaddll |  内存加载dll（单文件）  | Windows 32bit |   
+| Windows/memloaddll |  内存加载dll（单文件）  | Windows 32bit |   
 | memstream | 内存流演示  | |
 | menu | 菜单演示  | |
 | messageTest | 跨平台的窗口消息捕获，与WindowsMessages例程功能一样，只是可以跨平台 | |  
-| miniblinkWebview | 基于miniblink内核的浏览器  | Windows，目前还有问题，很多不能正常使用 |
+| Windows/miniblinkWebview | 基于miniblink内核的浏览器  | Windows，目前还有问题，很多不能正常使用 |
 | miniwebview | 跨平台浏览器组件演示 | libvcl, liblcl win32/win64,  liblcl macOS-cocoa, liblcl linux-gtk2 |  
 | mp3Player | 基于bass.dll的音频播放器 |  |  
 | msgbox | 各种消息框演示  | |
 | multilanguage | 多国语言演示例程 | |  
-| myext | 为libvcl/liblcl扩展组件示例 | |  
 | notepad | 简单仿Windows记事本    |  |
-| nswindowTest | 一个macOS下无标题栏样式窗口（不是无边框窗口）   | macOS,cocoa  |
+| macOS/nswindowTest | 一个macOS下无标题栏样式窗口（不是无边框窗口）   | macOS,cocoa  |
 | OSVersion | 系统版本信息获取    |  |
 | pageControlWizard | PageControl向导程序演示 | |  
 | printer | 打印机操作 | |  
 | redisViewer | Redis视图客户端  | |  
-| registerHotkey | windows注册热键  | Windows |
-| registry | windows注册表演示  | Windows |
+| Windows/registerHotkey | windows注册热键  | Windows |
+| Windows/registry | windows注册表演示  | Windows |
 | res2goTest/Lazarus | res2go工具测试例程，演示使用Lazarus设计器构建的UI | |  
 | res2goTest/Test | res2go工具测试例程，演示不通过Application.CreateForm创建窗口、TFrame演示| |  
-| richedit | windows富文本框演示  | Windows,libvcl |
+| richedit | windows富文本框演示  |  |
 | rproxy | 简单的反向代理用于内网穿透，支持HTTP/HTTPS转发 | |  
-| shortcut | 创建快捷方式相关 | Windows | 
+| Windows/shortcut | 创建快捷方式相关 | Windows | 
 | simpleIM | 简单的群聊，基于TCP    |  |
 | simplelibvlc | 基于libvlc库的播放器，主要测试可行性 |  |  
 | statusbar | 状态条演示  | |
@@ -72,16 +71,16 @@
 | taskdialog | 任务对话框 | |
 | trayicon | 系统拖盘图标演示  | Windows  MacOS 部分linux |
 | treeview |  树型列表框演示  | |
-| treeview_checkbox |  树型列表框 + 复选框 演示  | windows,libvcl |
+| Windows/treeview_checkbox |  树型列表框 + 复选框 演示  | windows,libvcl |
 | valuelisteditor |  键值编辑器 | |
-| WindowsMessages | Windows下消息捕获    | Windows |
-| WindowsProcess | Windows进程列表    | Windows |
-| windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
-| WindowsTest | Windows下的一些测试    | Windows |
+| Windows/WindowsMessages | Windows下消息捕获    | Windows |
+| Windows/WindowsProcess | Windows进程列表    | Windows |
+| Windows/windowsspy | Windows下的一个窗口信息查看，类型于spy++ | Windows |
+| Windows/WindowsTest | Windows下的一些测试    | Windows |
 | wingif | windows下gif图片播放演示  | 不支持动画 |
-| winole | 使用go-ole库操作ole | Windows | 
-| wkeWebBrowser | windows下wke浏览器嵌入演示  | Windows,32bit |
-| xunleidownloader | 迅雷下载引擎演示    | Windows,32bit |
+| Windows/winole | 使用go-ole库操作ole | Windows | 
+| Windows/wkeWebBrowser | windows下wke浏览器嵌入演示  | Windows,32bit |
+| Windows/xunleidownloader | 迅雷下载引擎演示    | Windows,32bit |
 
 
 
