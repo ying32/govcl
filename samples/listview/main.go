@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"strings"
 
 	_ "github.com/ying32/govcl/pkgs/winappres"
 	"github.com/ying32/govcl/vcl"
@@ -60,19 +59,26 @@ func main() {
 			lv1.Items().Delete(lv1.ItemIndex())
 		}
 	})
-	lv1.SetOnColumnClick(func(sender vcl.IObject, column *vcl.TListColumn) {
-		fmt.Println("index:", column.Index())
-		// 按柱头索引排序, lcl兼容版第二个参数永远为 column
-		lv1.CustomSort(0, int(column.Index()))
-	})
 
-	lv1.SetOnCompare(func(sender vcl.IObject, item1, item2 *vcl.TListItem, data int32, compare *int32) {
-		if data == 0 {
-			*compare = int32(strings.Compare(item1.Caption(), item2.Caption()))
-		} else {
-			*compare = int32(strings.Compare(item1.SubItems().Strings(data-1), item2.SubItems().Strings(data-1)))
-		}
-	})
+	// 排序箭头
+	lv1.SetAutoSortIndicator(true)
+	//lv1.SetSortDirection()  AES or DES
+	lv1.SetSortType(types.StText) // 按文本排序
+
+	// 不使用这个
+	//lv1.SetOnColumnClick(func(sender vcl.IObject, column *vcl.TListColumn) {
+	//	fmt.Println("index:", column.Index())
+	//	// 按柱头索引排序, lcl兼容版第二个参数永远为 column
+	//	lv1.CustomSort(0, int(column.Index()))
+	//})
+
+	//lv1.SetOnCompare(func(sender vcl.IObject, item1, item2 *vcl.TListItem, data int32, compare *int32) {
+	//	if data == 0 {
+	//		*compare = int32(strings.Compare(item1.Caption(), item2.Caption()))
+	//	} else {
+	//		*compare = int32(strings.Compare(item1.SubItems().Strings(data-1), item2.SubItems().Strings(data-1)))
+	//	}
+	//})
 
 	//	lv1.Clear()
 	lv1.Items().BeginUpdate()
