@@ -77,7 +77,6 @@
 | [Windows/WindowsProcess](Windows/WindowsProcess) | Windows进程列表    | Windows |
 | [Windows/windowsspy](Windows/windowsspy) | Windows下的一个窗口信息查看，类型于spy++ | Windows |
 | [Windows/WindowsTest](Windows/WindowsTest) | Windows下的一些测试    | Windows |
-| [wingif](wingif) | windows下gif图片播放演示  | 不支持动画 |
 | [Windows/winole](Windows/winole) | 使用go-ole库操作ole | Windows | 
 | [Windows/wkeWebBrowser](Windows/wkeWebBrowser) | windows下wke浏览器嵌入演示  | Windows,32bit |
 | [Windows/xunleidownloader](Windows/xunleidownloader) | 迅雷下载引擎演示    | Windows,32bit |
