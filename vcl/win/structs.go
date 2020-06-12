@@ -103,3 +103,13 @@ type TShellExecuteInfo struct {
 
 	HProcess uintptr
 }
+
+type TMemoryBasicInformation struct {
+	BaseAddress       uintptr
+	AllocationBase    uintptr
+	AllocationProtect uint32
+	RegionSize        SIZE_T
+	State             uint32
+	Protect           uint32
+	Type_9            uint32
+}

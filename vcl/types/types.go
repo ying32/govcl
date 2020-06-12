@@ -80,6 +80,8 @@ type ATOM = uint16
 
 type TAtom = uint16
 
+type SIZE_T = uintptr
+
 // Pascal集合类型 set of xxx
 type TSet uint32
 

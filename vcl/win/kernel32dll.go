@@ -79,6 +79,11 @@ var (
 
 	_GlobalAddAtom    = kernel32dll.NewProc("GlobalAddAtomW")
 	_GlobalDeleteAtom = kernel32dll.NewProc("GlobalDeleteAtom")
+
+	_VirtualQueryEx     = kernel32dll.NewProc("VirtualQueryEx")
+	_ReadProcessMemory  = kernel32dll.NewProc("ReadProcessMemory")
+	_WriteProcessMemory = kernel32dll.NewProc("WriteProcessMemory")
+	_GetSystemInfo      = kernel32dll.NewProc("GetSystemInfo")
 )
 
 // GetLastError
@@ -343,4 +348,37 @@ func GlobalAddAtom(lpString string) ATOM {
 func GlobalDeleteAtom(nAtom ATOM) ATOM {
 	r, _, _ := _GlobalDeleteAtom.Call(uintptr(nAtom))
 	return ATOM(r)
+}
+
+func VirtualQueryEx(hProcess uintptr, lpAddress uintptr, lpBuffer *TMemoryBasicInformation, dwLength SIZE_T) SIZE_T {
+	r, _, _ := _VirtualQueryEx.Call(hProcess, lpAddress, uintptr(unsafe.Pointer(lpBuffer)), dwLength)
+	return r
+}
+
+func ReadProcessMemoryBytes(hProcess uintptr, lpBaseAddress uintptr, nSize SIZE_T) ([]byte, bool) {
+	var lpNumberOfBytesRead SIZE_T
+	buffer := make([]byte, nSize)
+	r, _, _ := _ReadProcessMemory.Call(hProcess, lpBaseAddress, uintptr(unsafe.Pointer(&buffer[0])), nSize, uintptr(unsafe.Pointer(&lpNumberOfBytesRead)))
+	return buffer[:lpNumberOfBytesRead], r != 0
+}
+
+func ReadProcessMemory(hProcess uintptr, lpBaseAddress uintptr, lpBuffer uintptr, nSize SIZE_T, lpNumberOfBytesRead *SIZE_T) bool {
+	r, _, _ := _ReadProcessMemory.Call(hProcess, lpBaseAddress, lpBuffer, nSize, uintptr(unsafe.Pointer(lpNumberOfBytesRead)))
+	return r != 0
+}
+
+func WriteProcessMemoryBytes(hProcess uintptr, lpBaseAddress uintptr, lpBuffer []byte, nSize SIZE_T) (SIZE_T, bool) {
+	var lpNumberOfBytesWritten SIZE_T
+	r, _, _ := _WriteProcessMemory.Call(hProcess, lpBaseAddress, uintptr(unsafe.Pointer(&lpBuffer[0])), nSize, uintptr(unsafe.Pointer(&lpNumberOfBytesWritten)))
+	return lpNumberOfBytesWritten, r != 0
+}
+
+func WriteProcessMemory(hProcess uintptr, lpBaseAddress uintptr, lpBuffer uintptr, nSize SIZE_T, lpNumberOfBytesWritten *SIZE_T) bool {
+	r, _, _ := _WriteProcessMemory.Call(hProcess, lpBaseAddress, lpBuffer, nSize, uintptr(unsafe.Pointer(lpNumberOfBytesWritten)))
+	return r != 0
+}
+
+func GetSystemInfo(lpSystemInfo *TSystemInfo) bool {
+	r, _, _ := _GetSystemInfo.Call(uintptr(unsafe.Pointer(lpSystemInfo)))
+	return r != 0
 }

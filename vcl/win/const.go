@@ -753,3 +753,34 @@ const (
 	SEE_MASK_WAITFORINPUTIDLE  = 0x02000000
 	SEE_MASK_FLAG_LOG_USAGE    = 0x04000000
 )
+
+const (
+	PAGE_NOACCESS          = 1
+	PAGE_READONLY          = 2
+	PAGE_READWRITE         = 4
+	PAGE_WRITECOPY         = 8
+	PAGE_EXECUTE           = 0x10
+	PAGE_EXECUTE_READ      = 0x20
+	PAGE_EXECUTE_READWRITE = 0x40
+	PAGE_EXECUTE_WRITECOPY = 0x80
+	PAGE_GUARD             = 0x100
+	PAGE_NOCACHE           = 0x200
+	MEM_COMMIT             = 0x1000
+	MEM_RESERVE            = 0x2000
+	MEM_DECOMMIT           = 0x4000
+	MEM_RELEASE            = 0x8000
+	MEM_FREE               = 0x10000
+	MEM_PRIVATE            = 0x20000
+	MEM_MAPPED             = 0x40000
+	MEM_RESET              = 0x80000
+	MEM_TOP_DOWN           = 0x100000
+	MEM_PHYSICAL           = 0x400000
+	MEM_RESET_UNDO         = 0x1000000
+	MEM_LARGE_PAGES        = 0x20000000
+	SEC_FILE               = 0x800000
+	SEC_IMAGE              = 0x1000000
+	SEC_RESERVE            = 0x4000000
+	SEC_COMMIT             = 0x8000000
+	SEC_NOCACHE            = 0x10000000
+	MEM_IMAGE              = SEC_IMAGE
+)
