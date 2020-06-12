@@ -359,7 +359,10 @@ func ReadProcessMemoryBytes(hProcess uintptr, lpBaseAddress uintptr, nSize SIZE_
 	var lpNumberOfBytesRead SIZE_T
 	buffer := make([]byte, nSize)
 	r, _, _ := _ReadProcessMemory.Call(hProcess, lpBaseAddress, uintptr(unsafe.Pointer(&buffer[0])), nSize, uintptr(unsafe.Pointer(&lpNumberOfBytesRead)))
-	return buffer[:lpNumberOfBytesRead], r != 0
+	if r != 0 {
+		return buffer[:lpNumberOfBytesRead], true
+	}
+	return nil, false
 }
 
 func ReadProcessMemory(hProcess uintptr, lpBaseAddress uintptr, lpBuffer uintptr, nSize SIZE_T, lpNumberOfBytesRead *SIZE_T) bool {
@@ -370,7 +373,10 @@ func ReadProcessMemory(hProcess uintptr, lpBaseAddress uintptr, lpBuffer uintptr
 func WriteProcessMemoryBytes(hProcess uintptr, lpBaseAddress uintptr, lpBuffer []byte, nSize SIZE_T) (SIZE_T, bool) {
 	var lpNumberOfBytesWritten SIZE_T
 	r, _, _ := _WriteProcessMemory.Call(hProcess, lpBaseAddress, uintptr(unsafe.Pointer(&lpBuffer[0])), nSize, uintptr(unsafe.Pointer(&lpNumberOfBytesWritten)))
-	return lpNumberOfBytesWritten, r != 0
+	if r != 0 {
+		return lpNumberOfBytesWritten, true
+	}
+	return 0, false
 }
 
 func WriteProcessMemory(hProcess uintptr, lpBaseAddress uintptr, lpBuffer uintptr, nSize SIZE_T, lpNumberOfBytesWritten *SIZE_T) bool {
