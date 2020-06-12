@@ -93,8 +93,12 @@ begin
 //{$ELSE}
   AObj.Run;
 //{$ENDIF}
-  // 在Run结束后手动释放Application中的Form，主要是考虑在非Delphi运行环境中造成的一些资源清理问题
+  // 在Run结束后手动释放Application中的Form，主要是考虑在非Lazarus运行环境中造成的一些资源清理问题
   RemoveAllForms;
+//{$IFDEF WINDOWS}
+//  if AObj.Handle <> 0 then
+//     DisposeWindowInfo(AObj.Handle);
+//{$ENDIF}
 end;
 
 function Application_GetHandle(AObj: TApplication): THandle; extdecl;
@@ -108,7 +112,9 @@ end;
 
 procedure Application_SetHandle(AObj: TApplication; AValue: THandle); extdecl;
 begin
-  // 不允许设置
+{$IFDEF WINDOWS}
+  WidgetSet.AppHandle := AValue;
+{$ENDIF}
 end;
 
 // TForm

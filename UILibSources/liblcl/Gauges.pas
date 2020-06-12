@@ -18,9 +18,9 @@ type
 
   TGauge = class(TGraphicControl)
   private
-    FMinValue: LongInt;
-    FMaxValue: LongInt;
-    FCurValue: LongInt;
+    FMinValue: longint;
+    FMaxValue: longint;
+    FCurValue: longint;
     FKind: TGaugeKind;
     FShowText: boolean;
     FBorderStyle: TBorderStyle;
@@ -33,14 +33,14 @@ type
     procedure PaintAsPie(AnImage: TBitmap; APaintRect: TRect);
     procedure PaintAsNeedle(AnImage: TBitmap; APaintRect: TRect);
     procedure SetGaugeKind(Value: TGaugeKind);
-    procedure SetShowText(Value: Boolean);
+    procedure SetShowText(Value: boolean);
     procedure SetBorderStyle(Value: TBorderStyle);
     procedure SetForeColor(Value: TColor);
     procedure SetBackColor(Value: TColor);
-    procedure SetMinValue(Value: LongInt);
-    procedure SetMaxValue(Value: LongInt);
-    procedure SetProgress(Value: LongInt);
-    function GetPercentDone: LongInt;
+    procedure SetMinValue(Value: longint);
+    procedure SetMaxValue(Value: longint);
+    procedure SetProgress(Value: longint);
+    function GetPercentDone: longint;
 
     procedure UpdateState;
   protected
@@ -95,17 +95,17 @@ begin
   Canvas.FillRect(Rect(0, 0, Width, Height));
 end;
 
-function SolveForX(Y, Z: LongInt): LongInt;
+function SolveForX(Y, Z: longint): longint;
 begin
-  Result := LongInt(Trunc(Z * (Y * 0.01)));
+  Result := longint(Trunc(Z * (Y * 0.01)));
 end;
 
-function SolveForY(X, Z: LongInt): LongInt;
+function SolveForY(X, Z: longint): longint;
 begin
   if Z = 0 then
     Result := 0
   else
-    Result := LongInt(Trunc((X * 100.0) / Z));
+    Result := longint(Trunc((X * 100.0) / Z));
 end;
 
 { TGauge }
@@ -126,7 +126,7 @@ begin
   Height := 100;
 end;
 
-function TGauge.GetPercentDone: LongInt;
+function TGauge.GetPercentDone: longint;
 begin
   Result := SolveForY(FCurValue - FMinValue, FMaxValue - FMinValue);
 end;
@@ -230,7 +230,7 @@ end;
 
 procedure TGauge.PaintAsBar(AnImage: TBitmap; APaintRect: TRect);
 var
-  FillSize: LongInt;
+  FillSize: longint;
   W, H: integer;
 begin
   W := APaintRect.Right - APaintRect.Left + 1;
@@ -345,7 +345,7 @@ begin
   end;
 end;
 
-procedure TGauge.SetShowText(Value: Boolean);
+procedure TGauge.SetShowText(Value: boolean);
 begin
   if Value <> FShowText then
   begin
@@ -381,7 +381,7 @@ begin
   end;
 end;
 
-procedure TGauge.SetMinValue(Value: LongInt);
+procedure TGauge.SetMinValue(Value: longint);
 begin
   if Value <> FMinValue then
   begin
@@ -395,7 +395,7 @@ begin
   end;
 end;
 
-procedure TGauge.SetMaxValue(Value: LongInt);
+procedure TGauge.SetMaxValue(Value: longint);
 begin
   if Value <> FMaxValue then
   begin
@@ -409,9 +409,9 @@ begin
   end;
 end;
 
-procedure TGauge.SetProgress(Value: LongInt);
+procedure TGauge.SetProgress(Value: longint);
 var
-  TempPercent: LongInt;
+  TempPercent: longint;
 begin
   TempPercent := GetPercentDone;
   if Value < FMinValue then
@@ -426,7 +426,7 @@ begin
   end;
 end;
 
-procedure TGauge.AddProgress(Value: LongInt);
+procedure TGauge.AddProgress(Value: longint);
 begin
   Progress := FCurValue + Value;
   UpdateState;
