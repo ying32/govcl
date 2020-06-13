@@ -82,7 +82,7 @@ func setInfo(nppHandle, scintillaMainHandle, scintillaSecondHandle HWND) {
 	// liblcl中的MainThreadId不为主线程id的原因是go的dll会另起一条线程初始化
 	rtl.InitGoDll(0)
 
-	// 因为一些原因，所以要调用下 vcl.Application.Initialize()
+	// 设置application的icon为notepad++的icon
 	vcl.Application.Icon().SetHandle(win.LoadIcon(win.GetSelfModuleHandle(), 100))
 
 	// 新建一个窗口
