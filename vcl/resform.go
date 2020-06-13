@@ -42,6 +42,7 @@ package vcl
 import (
 	"fmt"
 	"reflect"
+	"runtime"
 	"unsafe"
 
 	. "github.com/ying32/govcl/vcl/api"
@@ -125,6 +126,9 @@ func resObjtBuild(typ int, owner IComponent, appInst uintptr, fields ...interfac
 			fmt.Println("resCreateForm Error: ", err)
 		}
 	}()
+
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
 
 	var fullSubComponent bool
 	var afterBindSubComponentsEvents bool

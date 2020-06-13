@@ -11,6 +11,7 @@
 package win
 
 import (
+	"fmt"
 	"syscall"
 	"unsafe"
 
@@ -84,6 +85,8 @@ var (
 	_ReadProcessMemory  = kernel32dll.NewProc("ReadProcessMemory")
 	_WriteProcessMemory = kernel32dll.NewProc("WriteProcessMemory")
 	_GetSystemInfo      = kernel32dll.NewProc("GetSystemInfo")
+
+	_OutputDebugString = kernel32dll.NewProc("OutputDebugStringW")
 )
 
 // GetLastError
@@ -387,4 +390,8 @@ func WriteProcessMemory(hProcess uintptr, lpBaseAddress uintptr, lpBuffer uintpt
 func GetSystemInfo(lpSystemInfo *TSystemInfo) bool {
 	r, _, _ := _GetSystemInfo.Call(uintptr(unsafe.Pointer(lpSystemInfo)))
 	return r != 0
+}
+
+func OutputDebugString(v ...interface{}) {
+	_OutputDebugString.Call(uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(fmt.Sprintln(v...)))))
 }

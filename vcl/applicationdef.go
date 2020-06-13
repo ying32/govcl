@@ -8,7 +8,10 @@
 
 package vcl
 
-import . "github.com/ying32/govcl/vcl/api"
+import (
+	. "github.com/ying32/govcl/vcl/api"
+	"github.com/ying32/govcl/vcl/types"
+)
 
 var globalFormScaled bool = false
 
@@ -83,12 +86,6 @@ func (a *TApplication) CreateForm(fields ...interface{}) *TForm {
 	return AsForm(resObjtBuild(0, nil, a.instance, fields...))
 }
 
-func (a *TApplication) SetFormScaled(val bool) {
-	// disabled
-	//globalFormScaled = val
-	//SetGlobalFormScaled(val)
-}
-
 // CN: 运行APP。
 // EN: Run the app.
 func (a *TApplication) Run() {
@@ -99,4 +96,14 @@ func (a *TApplication) Run() {
 // EN: Initial APP information.
 func (a *TApplication) Initialize() {
 	Application_Initialize(a.instance)
+}
+
+// CN: 获取应用程序句柄，仅Windows有效。
+func (a *TApplication) Handle() types.HWND {
+	return Application_GetHandle(a.instance)
+}
+
+// CN: 设置应用程序句柄，仅Windows有效。
+func (a *TApplication) SetHandle(handle types.HWND) {
+	Application_SetHandle(a.instance, handle)
 }

@@ -13,6 +13,8 @@ var (
 	application_CreateForm = libvcl.NewProc("Application_CreateForm")
 	application_Run        = libvcl.NewProc("Application_Run")
 	application_Initialize = libvcl.NewProc("Application_Initialize")
+	application_GetHandle  = libvcl.NewProc("Application_GetHandle")
+	application_SetHandle  = libvcl.NewProc("Application_SetHandle")
 
 	form_Create2                = libvcl.NewProc("Form_Create2")
 	form_EnabledMaximize        = libvcl.NewProc("Form_EnabledMaximize")
@@ -104,7 +106,6 @@ var (
 	dInputQuery       = libvcl.NewProc("DInputQuery")
 
 	// TForm相关设置
-	setGlobalFormScaled      = libvcl.NewProc("SetGlobalFormScaled")
 	form_ScaleForPPI         = libvcl.NewProc("Form_ScaleForPPI")
 	form_ScaleControlsForDpi = libvcl.NewProc("Form_ScaleControlsForDpi")
 
@@ -139,4 +140,6 @@ var (
 
 	dMainThreadId    = libvcl.NewProc("DMainThreadId")
 	dCurrentThreadId = libvcl.NewProc("DCurrentThreadId")
+
+	dInitGoDll = libvcl.NewProc("DInitGoDll")
 )

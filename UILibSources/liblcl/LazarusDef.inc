@@ -106,7 +106,7 @@ begin
 {$IFDEF WINDOWS}
    Result := WidgetSet.AppHandle;
 {$ELSE}
-  Result := 0;
+   Result := 0;
 {$ENDIF}
 end;
 
@@ -693,8 +693,6 @@ begin
     Directory := PChar(LDir);
 end;
 
-
-
 function DInputBox(ACaption, APrompt, ADefault: PChar): PChar; extdecl;
 begin
   Result := PChar(InputBox(ACaption, APrompt, ADefault));
@@ -1046,6 +1044,33 @@ begin
 end;
 
 
+// 用于go编译成dll时使用
+procedure DInitGoDll(AMainThreadId: TThreadID; AAppHandle: HWND); extdecl;
+begin
+  // 因为go编译为dll后，这个值不一定是主线程id了，所以得重新初始
+  if MainThreadId <> AMainThreadId then
+  begin
+    if AMainThreadId <= 0 then
+      AMainThreadId := TThread.CurrentThread.ThreadID;
+    MainThreadId := AMainThreadId;
+  end;
+  // 初始下app
+  Application.MainFormOnTaskBar:=True;
+  Application.Initialize;
+{$ifdef windows}
+  WidgetSet.ThemeServices.UpdateThemes;
+  // 设置App句柄
+  if not IsWindow(AAppHandle) then
+    AAppHandle := CreateWindowsAppHandle
+  else begin
+    if GetWin32WindowInfo(AAppHandle) <> nil then
+      DisposeWindowInfo(AAppHandle);
+    AllocWindowInfo(AAppHandle);
+  end;
+  WidgetSet.AppHandle := AAppHandle;
+{$endif}
+end;
+
 
 exports
   // 导出动态调用的
@@ -1221,5 +1246,7 @@ exports
   DModifyLibResouce,
   DLibAbout,
 
-  DGetLibType
+  DGetLibType,
+
+  DInitGoDll
 ;

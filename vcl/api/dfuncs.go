@@ -344,3 +344,7 @@ func DCurrentThreadId() uintptr {
 	r, _, _ := dCurrentThreadId.Call()
 	return r
 }
+
+func DInitGoDll(aMainThreadId uintptr, aAppHandle HWND) {
+	dInitGoDll.Call(aMainThreadId, aAppHandle)
+}
