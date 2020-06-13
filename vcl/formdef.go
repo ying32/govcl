@@ -89,11 +89,6 @@ func (f *TForm) SetOnActivate(fn TNotifyEvent) {
 	Form_SetOnActivate(f.instance, fn)
 }
 
-// 样式已改变事件，为解决样式切换后的问题特意加上的
-func (f *TForm) SetOnStyleChanged(fn TNotifyEvent) {
-	Form_SetOnStyleChanged(f.instance, fn)
-}
-
 // 窗口消息过程
 func (f *TForm) SetOnWndProc(fn TWndProcEvent) {
 	Form_SetOnWndProc(f.instance, fn)

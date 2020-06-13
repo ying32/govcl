@@ -241,6 +241,6 @@ func CurrentThreadId() uintptr {
 	return api.DCurrentThreadId()
 }
 
-func InitGoDll(aMainThreadId uintptr, aAppHandle types.HWND) {
-	api.DInitGoDll(aMainThreadId, aAppHandle)
+func InitGoDll(aMainThreadId uintptr) {
+	api.DInitGoDll(aMainThreadId)
 }

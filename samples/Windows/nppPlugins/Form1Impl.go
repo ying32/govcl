@@ -37,9 +37,9 @@ func (f *TForm1) OnButton2Click(vcl.IObject) {
 	win.OutputDebugString("currentid-1: ", win.GetCurrentThreadId())
 	go func() {
 		win.OutputDebugString("OnButton2Click,  currentid-2", win.GetCurrentThreadId())
-		// 失效了。。。
+
 		vcl.ThreadSync(func() {
-			win.OutputDebugString("ThreadSync OnButton2Click")
+			win.OutputDebugString("ThreadSync OnButton2Click-3", win.GetCurrentThreadId())
 			vcl.ShowMessage("测试")
 		})
 	}()

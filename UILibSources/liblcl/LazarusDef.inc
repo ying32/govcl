@@ -1045,7 +1045,7 @@ end;
 
 
 // 用于go编译成dll时使用
-procedure DInitGoDll(AMainThreadId: TThreadID; AAppHandle: HWND); extdecl;
+procedure DInitGoDll(AMainThreadId: TThreadID); extdecl;
 begin
   // 因为go编译为dll后，这个值不一定是主线程id了，所以得重新初始
   if MainThreadId <> AMainThreadId then
@@ -1060,14 +1060,7 @@ begin
 {$ifdef windows}
   WidgetSet.ThemeServices.UpdateThemes;
   // 设置App句柄
-  if not IsWindow(AAppHandle) then
-    AAppHandle := CreateWindowsAppHandle
-  else begin
-    if GetWin32WindowInfo(AAppHandle) <> nil then
-      DisposeWindowInfo(AAppHandle);
-    AllocWindowInfo(AAppHandle);
-  end;
-  WidgetSet.AppHandle := AAppHandle;
+  WidgetSet.AppHandle := CreateWindowsAppHandle;
 {$endif}
 end;
 
