@@ -69,7 +69,7 @@ func setInfo(nppHandle, scintillaMainHandle, scintillaSecondHandle HWND) {
 			win.OutputDebugString("addFuncItem err: ", err)
 		}
 	}()
-	runtime.UnlockOSThread()
+	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
 
 	nppData.NppHandle = nppHandle
@@ -78,9 +78,18 @@ func setInfo(nppHandle, scintillaMainHandle, scintillaSecondHandle HWND) {
 	win.OutputDebugString("setInfo: ", nppData)
 	commandMenuInit()
 
-	// 主要是setInfo测试出来是在主线程，而liblcl中的值则不为主线程
+	// 主要是setInfo测试出来是在主线程调用的，而liblcl中的值则不为主线程
 	// liblcl中的MainThreadId不为主线程id的原因是go的dll会另起一条线程初始化
-	rtl.InitGoDll(0)
+
+	// 不要在go的dll中使用以下方法
+	//vcl.Application.Initialize()
+	//vcl.Application.SetMainFormOnTaskBar()
+	//vcl.Application.CreateForm()
+	//vcl.Application.Run()
+
+	// 在go的dll中应该使用专用的初始函数
+	// 此方法也只适合第三方非govcl程序，不适合go+govcl+godll+govcl方式
+	rtl.InitGoDll(0) //0则自动获取当前线程Id
 
 	// 设置application的icon为notepad++的icon
 	vcl.Application.Icon().SetHandle(win.LoadIcon(win.GetSelfModuleHandle(), 100))
