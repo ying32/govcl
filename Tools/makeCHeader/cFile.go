@@ -343,11 +343,28 @@ void* LCLAPI doMessageCallbackProc(void* f, void* msg) {
     return NULL;
 }
  
+// 线程同步过程
+typedef void(*THREADSYNCPROC)(void);
+THREADSYNCPROC threadSyncProc;
 // 线程同步回调
 void* LCLAPI doThreadSyncCallbackProc() {
-    //((void(*)(void*))f)();
+    if (threadSyncProc) {
+        // 这里还要添加锁
+        ((THREADSYNCPROC)threadSyncProc)();
+        threadSyncProc = NULL;
+    }
     return NULL;
 }
+
+// 线程同步方法
+// 无参数，无返回值的一个函数
+void ThreadSync(THREADSYNCPROC fn) {
+    // 要加锁，先不管吧
+    threadSyncProc = fn;
+    DSynchronize(false);
+    threadSyncProc = NULL;
+}
+ 
  
 void init_lib_lcl() {
  
