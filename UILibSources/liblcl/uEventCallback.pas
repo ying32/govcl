@@ -46,6 +46,7 @@ var
   GMessageCallbackPtr: TMessageCallbackPtr;
   GThreadSyncCallbackPtr: TThreadSyncCallbackPtr;
 
+
 type
 
   TEventKey = packed record

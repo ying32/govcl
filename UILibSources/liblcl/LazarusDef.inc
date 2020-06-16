@@ -308,14 +308,12 @@ end;
 // Canvas_TextRect1
 // Canvas_TextRect2
 
-procedure Canvas_BrushCopy(AObj: TCanvas; var Dest: TRect; Bitmap: TBitmap;
-      var Source: TRect; Color: TColor); extdecl;
+procedure Canvas_BrushCopy(AObj: TCanvas; var Dest: TRect; Bitmap: TBitmap; var Source: TRect; Color: TColor); extdecl;
 begin
   AObj.BrushCopy(Dest, Bitmap, Source, Color);
 end;
 
-procedure Canvas_CopyRect(AObj: TCanvas; var Dest: TRect; Canvas: TCanvas;
-  var Source: TRect); extdecl;
+procedure Canvas_CopyRect(AObj: TCanvas; var Dest: TRect; Canvas: TCanvas; var Source: TRect); extdecl;
 begin
   AObj.CopyRect(Dest, Canvas, Source);
 end;
@@ -474,8 +472,7 @@ end;
 //  AObj.Draw(Canvas, X, Y, Index, ADrawingStyle, AImageType, Enabled);
 //end;
 
-procedure ImageList_DrawOverlay1(AObj: TImageList; Canvas: TCanvas; X, Y: Integer;
-  ImageIndex: Integer; Overlay: TOverlay; Enabled: LongBool); extdecl;
+procedure ImageList_DrawOverlay1(AObj: TImageList; Canvas: TCanvas; X, Y: Integer; ImageIndex: Integer; Overlay: TOverlay; Enabled: LongBool); extdecl;
 begin
   AObj.DrawOverlay(Canvas, X, Y, ImageIndex, Overlay, Enabled);
 end;
@@ -628,8 +625,7 @@ begin
 {$ENDIF}
 end;
 
-function DMessageDlg(const Msg: PChar; DlgType: TMsgDlgType;
-  Buttons: TMsgDlgButtons; HelpCtx: Longint): Integer; extdecl;
+function DMessageDlg(const Msg: PChar; DlgType: TMsgDlgType; Buttons: TMsgDlgButtons; HelpCtx: Longint): Integer; extdecl;
 begin
   Result := MessageDlg(Msg, DlgType, Buttons, HelpCtx);
 end;
@@ -673,8 +669,7 @@ begin
   Result := FileExists(AFileName);
 end;
 
-function DSelectDirectory1(var Directory: PChar;
-  Options: TSelectDirOpts; HelpCtx: Longint): LongBool; extdecl;
+function DSelectDirectory1(var Directory: PChar; Options: TSelectDirOpts; HelpCtx: Longint): LongBool; extdecl;
 var
   LDir: string;
 begin
@@ -683,8 +678,7 @@ begin
     Directory := PChar(LDir);
 end;
 
-function DSelectDirectory2(Caption, Root: PChar;
-  var Directory: PChar; Options: Cardinal{无效参数}; Parent: TWinControl{无效参数}): LongBool;  extdecl;
+function DSelectDirectory2(Caption, Root: PChar; var Directory: PChar; Options: Cardinal{无效参数}; Parent: TWinControl{无效参数}): LongBool;  extdecl;
 var
   LDir: string;
 begin
