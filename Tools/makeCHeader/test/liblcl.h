@@ -102,225 +102,6 @@ static void* p##name;
 typedef uint32_t TSet;
 
 
-// 常量
-// keycode
-// Virtual Keys, Standard Set
-#define vkLButton     0x01 //   1
-#define vkRButton     0x02 //   2
-#define vkCancel      0x03 //   3
-#define vkMButton     0x04 //   4
-#define vkXButton1    0x05 //   5
-#define vkXButton2    0x06 //   6
-#define vkBack        0x08 //   8
-#define vkTab         0x09 //   9
-#define vkLineFeed    0x0A //  10
-#define vkClear       0x0C //  12
-#define vkReturn      0x0D //  13
-#define vkShift       0x10 //  16
-#define vkControl     0x11 //  17
-#define vkMenu        0x12 //  18
-#define vkPause       0x13 //  19
-#define vkCapital     0x14 //  20
-#define vkKana        0x15 //  21
-#define vkHangul      0x15 //  21
-#define vkJunja       0x17 //  23
-#define vkFinal       0x18 //  24
-#define vkHanja       0x19 //  25
-#define vkKanji       0x19 //  25
-#define vkConvert     0x1C //  28
-#define vkNonConvert  0x1D //  29
-#define vkAccept      0x1E //  30
-#define vkModeChange  0x1F //  31
-#define vkEscape      0x1B //  27
-#define vkSpace       0x20 //  32
-#define vkPrior       0x21 //  33
-#define vkNext        0x22 //  34
-#define vkEnd         0x23 //  35
-#define vkHome        0x24 //  36
-#define vkLeft        0x25 //  37
-#define vkUp          0x26 //  38
-#define vkRight       0x27 //  39
-#define vkDown        0x28 //  40
-#define vkSelect      0x29 //  41
-#define vkPrint       0x2A //  42
-#define vkExecute     0x2B //  43
-#define vkSnapshot    0x2C //  44
-#define vkInsert      0x2D //  45
-#define vkDelete      0x2E //  46
-#define vkHelp        0x2F //  47
-// vk0 thru vk9 are the same as ASCII '0' thru '9' (0x30 - 0x39)
-#define vk0  0x30 //  48
-#define vk1  0x31 //  49
-#define vk2  0x32 //  50
-#define vk3  0x33 //  51
-#define vk4  0x34 //  52
-#define vk5  0x35 //  53
-#define vk6  0x36 //  54
-#define vk7  0x37 //  55
-#define vk8  0x38 //  56
-#define vk9  0x39 //  57
-// vkA thru vkZ are the same as ASCII 'A' thru 'Z' (0x41 - 0x5A)
-#define vkA          0x41 //  65
-#define vkB          0x42 //  66
-#define vkC          0x43 //  67
-#define vkD          0x44 //  68
-#define vkE          0x45 //  69
-#define vkF          0x46 //  70
-#define vkG          0x47 //  71
-#define vkH          0x48 //  72
-#define vkI          0x49 //  73
-#define vkJ          0x4A //  74
-#define vkK          0x4B //  75
-#define vkL          0x4C //  76
-#define vkM          0x4D //  77
-#define vkN          0x4E //  78
-#define vkO          0x4F //  79
-#define vkP          0x50 //  80
-#define vkQ          0x51 //  81
-#define vkR          0x52 //  82
-#define vkS          0x53 //  83
-#define vkT          0x54 //  84
-#define vkU          0x55 //  85
-#define vkV          0x56 //  86
-#define vkW          0x57 //  87
-#define vkX          0x58 //  88
-#define vkY          0x59 //  89
-#define vkZ          0x5A //  90
-#define vkLWin       0x5B //  91
-#define vkRWin       0x5C //  92
-#define vkApps       0x5D //  93
-#define vkSleep      0x5F //  95
-#define vkNumpad0    0x60 //  96
-#define vkNumpad1    0x61 //  97
-#define vkNumpad2    0x62 //  98
-#define vkNumpad3    0x63 //  99
-#define vkNumpad4    0x64 // 100
-#define vkNumpad5    0x65 // 101
-#define vkNumpad6    0x66 // 102
-#define vkNumpad7    0x67 // 103
-#define vkNumpad8    0x68 // 104
-#define vkNumpad9    0x69 // 105
-#define vkMultiply   0x6A // 106
-#define vkAdd        0x6B // 107
-#define vkSeparator  0x6C // 108
-#define vkSubtract   0x6D // 109
-#define vkDecimal    0x6E // 110
-#define vkDivide     0x6F // 111
-#define vkF1         0x70 // 112
-#define vkF2         0x71 // 113
-#define vkF3         0x72 // 114
-#define vkF4         0x73 // 115
-#define vkF5         0x74 // 116
-#define vkF6         0x75 // 117
-#define vkF7         0x76 // 118
-#define vkF8         0x77 // 119
-#define vkF9         0x78 // 120
-#define vkF10        0x79 // 121
-#define vkF11        0x7A // 122
-#define vkF12        0x7B // 123
-#define vkF13        0x7C // 124
-#define vkF14        0x7D // 125
-#define vkF15        0x7E // 126
-#define vkF16        0x7F // 127
-#define vkF17        0x80 // 128
-#define vkF18        0x81 // 129
-#define vkF19        0x82 // 130
-#define vkF20        0x83 // 131
-#define vkF21        0x84 // 132
-#define vkF22        0x85 // 133
-#define vkF23        0x86 // 134
-#define vkF24        0x87 // 135
-
-#define vkCamera        0x88 // 136
-#define vkHardwareBack  0x89 // 137
-
-#define vkNumLock   0x90 // 144
-#define vkScroll    0x91 // 145
-#define vkLShift    0xA0 // 160
-#define vkRShift    0xA1 // 161
-#define vkLControl  0xA2 // 162
-#define vkRControl  0xA3 // 163
-#define vkLMenu     0xA4 // 164
-#define vkRMenu     0xA5 // 165
-
-#define vkBrowserBack        0xA6 // 166
-#define vkBrowserForward     0xA7 // 167
-#define vkBrowserRefresh     0xA8 // 168
-#define vkBrowserStop        0xA9 // 169
-#define vkBrowserSearch      0xAA // 170
-#define vkBrowserFavorites   0xAB // 171
-#define vkBrowserHome        0xAC // 172
-#define vkVolumeMute         0xAD // 173
-#define vkVolumeDown         0xAE // 174
-#define vkVolumeUp           0xAF // 175
-#define vkMediaNextTrack     0xB0 // 176
-#define vkMediaPrevTrack     0xB1 // 177
-#define vkMediaStop          0xB2 // 178
-#define vkMediaPlayPause     0xB3 // 179
-#define vkLaunchMail         0xB4 // 180
-#define vkLaunchMediaSelect  0xB5 // 181
-#define vkLaunchApp1         0xB6 // 182
-#define vkLaunchApp2         0xB7 // 183
-
-#define vkSemicolon     0xBA // 186
-#define vkEqual         0xBB // 187
-#define vkComma         0xBC // 188
-#define vkMinus         0xBD // 189
-#define vkPeriod        0xBE // 190
-#define vkSlash         0xBF // 191
-#define vkTilde         0xC0 // 192
-#define vkLeftBracket   0xDB // 219
-#define vkBackslash     0xDC // 220
-#define vkRightBracket  0xDD // 221
-#define vkQuote         0xDE // 222
-#define vkPara          0xDF // 223
-
-#define vkOem102      0xE2 // 226
-#define vkIcoHelp     0xE3 // 227
-#define vkIco00       0xE4 // 228
-#define vkProcessKey  0xE5 // 229
-#define vkIcoClear    0xE6 // 230
-#define vkPacket      0xE7 // 231
-#define vkAttn        0xF6 // 246
-#define vkCrsel       0xF7 // 247
-#define vkExsel       0xF8 // 248
-#define vkErEof       0xF9 // 249
-#define vkPlay        0xFA // 250
-#define vkZoom        0xFB // 251
-#define vkNoname      0xFC // 252
-#define vkPA1         0xFD // 253
-#define vkOemClear    0xFE // 254
-#define vkNone        0xFF // 255
-
-// 消息框的
-#define IdOK         1
-#define IdCancel     2
-#define IdAbort      3
-#define IdRetry      4
-#define IdIgnore     5
-#define IdYes        6
-#define IdNo         7
-#define IdClose      8
-#define IdHelp       9
-#define IdTryAgain   10
-#define IdContinue   11
-#define mrNone       0
-#define mrOk         IdOK
-#define mrCancel     IdCancel
-#define mrAbort      IdAbort
-#define mrRetry      IdRetry
-#define mrIgnore     IdIgnore
-#define mrYes        IdYes
-#define mrNo         IdNo
-#define mrClose      IdClose
-#define mrHelp       IdHelp
-#define mrTryAgain   IdTryAgain
-#define mrContinue   IdContinue
-#define mrAll        MrContinue + 1
-#define mrNoToAll    MrAll + 1
-#define mrYesToAll   MrNoToAll + 1
-
-
 // 所有LCL枚举类定义  
 //  TCursor = -32768..32767;
 typedef int16_t TCursor;
@@ -358,6 +139,416 @@ typedef int16_t TCursor;
 #define	crHandPoint  (TCursor)-21
 #define	crSizeAll    (TCursor)-22
 #define	crLow  (TCursor)-30
+
+
+//../../vcl/types/colors/colors.go
+
+// Delphi中的颜色表，Delphi中的TColor与一般HTML的RGB有点不一样，反过来的
+
+
+// 以BGR表示.
+
+#define clClSysNone  0x1FFFFFFF
+#define clSysDefault 0x20000000
+
+// Actual colors
+
+#define clAliceblue            0xFFF8F0
+#define clAntiquewhite         0xD7EBFA
+#define clAqua                 0xFFFF00
+#define clAquamarine           0xD4FF7F
+#define clAzure                0xFFFFF0
+#define clBeige                0xDCF5F5
+#define clBisque               0xC4E4FF
+#define clBlack                0x000000
+#define clBlanchedalmond       0xCDEBFF
+#define clBlue                 0xFF0000
+#define clBlueviolet           0xE22B8A
+#define clBrown                0x2A2AA5
+#define clBurlywood            0x87B8DE
+#define clCadetblue            0xA09E5F
+#define clChartreuse           0x00FF7F
+#define clChocolate            0x1E69D2
+#define clCoral                0x507FFF
+#define clCornflowerblue       0xED9564
+#define clCornsilk             0xDCF8FF
+#define clCrimson              0x3C14DC
+#define clCyan                 0xFFFF00
+#define clDarkblue             0x8B0000
+#define clDarkcyan             0x8B8B00
+#define clDarkgoldenrod        0x0B86B8
+#define clDarkgray             0xA9A9A9
+#define clDarkgreen            0x006400
+#define clDarkgrey             0xA9A9A9
+#define clDarkkhaki            0x6BB7BD
+#define clDarkmagenta          0x8B008B
+#define clDarkolivegreen       0x2F6B55
+#define clDarkorange           0x008CFF
+#define clDarkorchid           0xCC3299
+#define clDarkred              0x00008B
+#define clDarksalmon           0x7A96E9
+#define clDarkseagreen         0x8FBC8F
+#define clDarkslateblue        0x8B3D48
+#define clDarkslategray        0x4F4F2F
+#define clDarkslategrey        0x4F4F2F
+#define clDarkturquoise        0xD1CE00
+#define clDarkviolet           0xD30094
+#define clDeeppink             0x9314FF
+#define clDeepskyblue          0xFFBF00
+#define clDimgray              0x696969
+#define clDimgrey              0x696969
+#define clDodgerblue           0xFF901E
+#define clFirebrick            0x2222B2
+#define clFloralwhite          0xF0FAFF
+#define clForestgreen          0x228B22
+#define clFuchsia              0xFF00FF
+#define clGainsboro            0xDCDCDC
+#define clGhostwhite           0xFFF8F8
+#define clGold                 0x00D7FF
+#define clGoldenrod            0x20A5DA
+#define clGray                 0x808080
+#define clGreen                0x008000
+#define clGreenyellow          0x2FFFAD
+#define clGrey                 0x808080
+#define clHoneydew             0xF0FFF0
+#define clHotpink              0xB469FF
+#define clIndianred            0x5C5CCD
+#define clIndigo               0x82004B
+#define clIvory                0xF0FFFF
+#define clKhaki                0x8CE6F0
+#define clLavender             0xFAE6E6
+#define clLavenderblush        0xF5F0FF
+#define clLawngreen            0x00FC7C
+#define clLemonchiffon         0xCDFAFF
+#define clLightblue            0xE6D8AD
+#define clLightcoral           0x8080F0
+#define clLightcyan            0xFFFFE0
+#define clLightgoldenrodyellow 0xD2FAFA
+#define clLightgray            0xD3D3D3
+#define clLightgreen           0x90EE90
+#define clLightgrey            0xD3D3D3
+#define clLightpink            0xC1B6FF
+#define clLightsalmon          0x7AA0FF
+#define clLightseagreen        0xAAB220
+#define clLightskyblue         0xFACE87
+#define clLightslategray       0x998877
+#define clLightslategrey       0x998877
+#define clLightsteelblue       0xDEC4B0
+#define clLightyellow          0xE0FFFF
+#define clLtGray               0xC0C0C0
+#define clMedGray              0xA4A0A0
+#define clDkGray               0x808080
+#define clMoneyGreen           0xC0DCC0
+#define clLegacySkyBlue        0xF0CAA6
+#define clCream                0xF0FBFF
+#define clLime                 0x00FF00
+#define clLimegreen            0x32CD32
+#define clLinen                0xE6F0FA
+#define clMagenta              0xFF00FF
+#define clMaroon               0x000080
+#define clMediumaquamarine     0xAACD66
+#define clMediumblue           0xCD0000
+#define clMediumorchid         0xD355BA
+#define clMediumpurple         0xDB7093
+#define clMediumseagreen       0x71B33C
+#define clMediumslateblue      0xEE687B
+#define clMediumspringgreen    0x9AFA00
+#define clMediumturquoise      0xCCD148
+#define clMediumvioletred      0x8515C7
+#define clMidnightblue         0x701919
+#define clMintcream            0xFAFFF5
+#define clMistyrose            0xE1E4FF
+#define clMoccasin             0xB5E4FF
+#define clNavajowhite          0xADDEFF
+#define clNavy                 0x800000
+#define clOldlace              0xE6F5FD
+#define clOlive                0x008080
+#define clOlivedrab            0x238E6B
+#define clOrange               0x00A5FF
+#define clOrangered            0x0045FF
+#define clOrchid               0xD670DA
+#define clPalegoldenrod        0xAAE8EE
+#define clPalegreen            0x98FB98
+#define clPaleturquoise        0xEEEEAF
+#define clPalevioletred        0x9370DB
+#define clPapayawhip           0xD5EFFF
+#define clPeachpuff            0xB9DAFF
+#define clPeru                 0x3F85CD
+#define clPink                 0xCBC0FF
+#define clPlum                 0xDDA0DD
+#define clPowderblue           0xE6E0B0
+#define clPurple               0x800080
+#define clRed                  0x0000FF
+#define clRosybrown            0x8F8FBC
+#define clRoyalblue            0xE16941
+#define clSaddlebrown          0x13458B
+#define clSalmon               0x7280FA
+#define clSandybrown           0x60A4F4
+#define clSeagreen             0x578B2E
+#define clSeashell             0xEEF5FF
+#define clSienna               0x2D52A0
+#define clSilver               0xC0C0C0
+#define clSkyblue              0xEBCE87
+#define clSlateblue            0xCD5A6A
+#define clSlategray            0x908070
+#define clSlategrey            0x908070
+#define clSnow                 0xFAFAFF
+#define clSpringgreen          0x7FFF00
+#define clSteelblue            0xB48246
+#define clTan                  0x8CB4D2
+#define clTeal                 0x808000
+#define clThistle              0xD8BFD8
+#define clTomato               0x4763FF
+#define clTurquoise            0xD0E040
+#define clViolet               0xEE82EE
+#define clWheat                0xB3DEF5
+#define clWhite                0xFFFFFF
+#define clWhitesmoke           0xF5F5F5
+#define clYellow               0x00FFFF
+#define clYellowgreen          0x32CD9A
+#define clBtnFace              0xFF00000F
+#define clNull                 0x00000000
+
+
+
+//../../vcl/types/keys/keys.go
+
+// Virtual Keys, Standard Set
+
+#define vkLButton    0x01 //   1
+#define vkRButton    0x02 //   2
+#define vkCancel     0x03 //   3
+#define vkMButton    0x04 //   4
+#define vkXButton1   0x05 //   5
+#define vkXButton2   0x06 //   6
+#define vkBack       0x08 //   8
+#define vkTab        0x09 //   9
+#define vkLineFeed   0x0A //  10
+#define vkClear      0x0C //  12
+#define vkReturn     0x0D //  13
+#define vkShift      0x10 //  16
+#define vkControl    0x11 //  17
+#define vkMenu       0x12 //  18
+#define vkPause      0x13 //  19
+#define vkCapital    0x14 //  20
+#define vkKana       0x15 //  21
+#define vkHangul     0x15 //  21
+#define vkJunja      0x17 //  23
+#define vkFinal      0x18 //  24
+#define vkHanja      0x19 //  25
+#define vkKanji      0x19 //  25
+#define vkConvert    0x1C //  28
+#define vkNonConvert 0x1D //  29
+#define vkAccept     0x1E //  30
+#define vkModeChange 0x1F //  31
+#define vkEscape     0x1B //  27
+#define vkSpace      0x20 //  32
+#define vkPrior      0x21 //  33
+#define vkNext       0x22 //  34
+#define vkEnd        0x23 //  35
+#define vkHome       0x24 //  36
+#define vkLeft       0x25 //  37
+#define vkUp         0x26 //  38
+#define vkRight      0x27 //  39
+#define vkDown       0x28 //  40
+#define vkSelect     0x29 //  41
+#define vkPrint      0x2A //  42
+#define vkExecute    0x2B //  43
+#define vkSnapshot   0x2C //  44
+#define vkInsert     0x2D //  45
+#define vkDelete     0x2E //  46
+#define vkHelp       0x2F //  47
+
+// vk0 thru vk9 are the same as ASCII '0' thru '9' (0x30 - 0x39)
+
+#define vk0 0x30 //  48
+#define vk1 0x31 //  49
+#define vk2 0x32 //  50
+#define vk3 0x33 //  51
+#define vk4 0x34 //  52
+#define vk5 0x35 //  53
+#define vk6 0x36 //  54
+#define vk7 0x37 //  55
+#define vk8 0x38 //  56
+#define vk9 0x39 //  57
+
+// vkA thru vkZ are the same as ASCII 'A' thru 'Z' (0x41 - 0x5A)
+
+#define vkA         0x41 //  65
+#define vkB         0x42 //  66
+#define vkC         0x43 //  67
+#define vkD         0x44 //  68
+#define vkE         0x45 //  69
+#define vkF         0x46 //  70
+#define vkG         0x47 //  71
+#define vkH         0x48 //  72
+#define vkI         0x49 //  73
+#define vkJ         0x4A //  74
+#define vkK         0x4B //  75
+#define vkL         0x4C //  76
+#define vkM         0x4D //  77
+#define vkN         0x4E //  78
+#define vkO         0x4F //  79
+#define vkP         0x50 //  80
+#define vkQ         0x51 //  81
+#define vkR         0x52 //  82
+#define vkS         0x53 //  83
+#define vkT         0x54 //  84
+#define vkU         0x55 //  85
+#define vkV         0x56 //  86
+#define vkW         0x57 //  87
+#define vkX         0x58 //  88
+#define vkY         0x59 //  89
+#define vkZ         0x5A //  90
+#define vkLWin      0x5B //  91
+#define vkRWin      0x5C //  92
+#define vkApps      0x5D //  93
+#define vkSleep     0x5F //  95
+#define vkNumpad0   0x60 //  96
+#define vkNumpad1   0x61 //  97
+#define vkNumpad2   0x62 //  98
+#define vkNumpad3   0x63 //  99
+#define vkNumpad4   0x64 // 100
+#define vkNumpad5   0x65 // 101
+#define vkNumpad6   0x66 // 102
+#define vkNumpad7   0x67 // 103
+#define vkNumpad8   0x68 // 104
+#define vkNumpad9   0x69 // 105
+#define vkMultiply  0x6A // 106
+#define vkAdd       0x6B // 107
+#define vkSeparator 0x6C // 108
+#define vkSubtract  0x6D // 109
+#define vkDecimal   0x6E // 110
+#define vkDivide    0x6F // 111
+#define vkF1        0x70 // 112
+#define vkF2        0x71 // 113
+#define vkF3        0x72 // 114
+#define vkF4        0x73 // 115
+#define vkF5        0x74 // 116
+#define vkF6        0x75 // 117
+#define vkF7        0x76 // 118
+#define vkF8        0x77 // 119
+#define vkF9        0x78 // 120
+#define vkF10       0x79 // 121
+#define vkF11       0x7A // 122
+#define vkF12       0x7B // 123
+#define vkF13       0x7C // 124
+#define vkF14       0x7D // 125
+#define vkF15       0x7E // 126
+#define vkF16       0x7F // 127
+#define vkF17       0x80 // 128
+#define vkF18       0x81 // 129
+#define vkF19       0x82 // 130
+#define vkF20       0x83 // 131
+#define vkF21       0x84 // 132
+#define vkF22       0x85 // 133
+#define vkF23       0x86 // 134
+#define vkF24       0x87 // 135
+#define vkCamera       0x88 // 136
+#define vkHardwareBack 0x89 // 137
+#define vkNumLock  0x90 // 144
+#define vkScroll   0x91 // 145
+#define vkLShift   0xA0 // 160
+#define vkRShift   0xA1 // 161
+#define vkLControl 0xA2 // 162
+#define vkRControl 0xA3 // 163
+#define vkLMenu    0xA4 // 164
+#define vkRMenu    0xA5 // 165
+#define vkBrowserBack       0xA6 // 166
+#define vkBrowserForward    0xA7 // 167
+#define vkBrowserRefresh    0xA8 // 168
+#define vkBrowserStop       0xA9 // 169
+#define vkBrowserSearch     0xAA // 170
+#define vkBrowserFavorites  0xAB // 171
+#define vkBrowserHome       0xAC // 172
+#define vkVolumeMute        0xAD // 173
+#define vkVolumeDown        0xAE // 174
+#define vkVolumeUp          0xAF // 175
+#define vkMediaNextTrack    0xB0 // 176
+#define vkMediaPrevTrack    0xB1 // 177
+#define vkMediaStop         0xB2 // 178
+#define vkMediaPlayPause    0xB3 // 179
+#define vkLaunchMail        0xB4 // 180
+#define vkLaunchMediaSelect 0xB5 // 181
+#define vkLaunchApp1        0xB6 // 182
+#define vkLaunchApp2        0xB7 // 183
+#define vkSemicolon    0xBA // 186
+#define vkEqual        0xBB // 187
+#define vkComma        0xBC // 188
+#define vkMinus        0xBD // 189
+#define vkPeriod       0xBE // 190
+#define vkSlash        0xBF // 191
+#define vkTilde        0xC0 // 192
+#define vkLeftBracket  0xDB // 219
+#define vkBackslash    0xDC // 220
+#define vkRightBracket 0xDD // 221
+#define vkQuote        0xDE // 222
+#define vkPara         0xDF // 223
+#define vkOem102     0xE2 // 226
+#define vkIcoHelp    0xE3 // 227
+#define vkIco00      0xE4 // 228
+#define vkProcessKey 0xE5 // 229
+#define vkIcoClear   0xE6 // 230
+#define vkPacket     0xE7 // 231
+#define vkAttn       0xF6 // 246
+#define vkCrsel      0xF7 // 247
+#define vkExsel      0xF8 // 248
+#define vkErEof      0xF9 // 249
+#define vkPlay       0xFA // 250
+#define vkZoom       0xFB // 251
+#define vkNoname     0xFC // 252
+#define vkPA1        0xFD // 253
+#define vkOemClear   0xFE // 254
+#define vkNone       0xFF // 255
+
+
+
+//../../vcl/types/consts.go
+#define idOK       1
+#define idCancel   2
+#define idAbort    3
+#define idRetry    4
+#define idIgnore   5
+#define idYes      6
+#define idNo       7
+#define idClose    8
+#define idHelp     9
+#define idTryAgain 10
+#define idContinue 11
+#define mrNone     0
+#define mrOk       IdOK
+#define mrCancel   IdCancel
+#define mrAbort    IdAbort
+#define mrRetry    IdRetry
+#define mrIgnore   IdIgnore
+#define mrYes      IdYes
+#define mrNo       IdNo
+#define mrClose    IdClose
+#define mrHelp     IdHelp
+#define mrTryAgain IdTryAgain
+#define mrContinue IdContinue
+#define mrAll      MrContinue + 1
+#define mrNoToAll  MrAll + 1
+#define mrYesToAll MrNoToAll + 1
+
+#define cF_TEXT         1
+#define cF_BITMAP       2
+#define cF_METAFILEPICT 3
+#define cF_SYLK         4
+#define cF_DIF          5
+#define cF_TIFF         6
+#define cF_OEMTEXT      7
+#define cF_DIB          8
+#define cF_PALETTE      9
+#define cF_PENDATA      10
+#define cF_RIFF         11
+#define cF_WAVE         12
+#define cF_UNICODETEXT  13
+#define cF_ENHMETAFILE  14
+#define cF_HDROP        15
+#define cF_LOCALE       0x10
+
+
  
 
 // 补充的一部分
@@ -81447,7 +81638,4 @@ void un_init_lib_lcl() {
 
 #endif // _LIBLCL_H
 
-
-
-// 枚举定义
 

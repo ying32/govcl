@@ -17,6 +17,10 @@ import (
 type CFile struct {
 	buff     *bytes.Buffer
 	fileName string
+	replaces []struct {
+		name string
+		data []byte
+	}
 }
 
 func NewCFile(fileName string) *CFile {
@@ -149,225 +153,6 @@ static void* p##name;
 typedef uint32_t TSet;
 
 
-// 常量
-// keycode
-// Virtual Keys, Standard Set
-#define vkLButton     0x01 //   1
-#define vkRButton     0x02 //   2
-#define vkCancel      0x03 //   3
-#define vkMButton     0x04 //   4
-#define vkXButton1    0x05 //   5
-#define vkXButton2    0x06 //   6
-#define vkBack        0x08 //   8
-#define vkTab         0x09 //   9
-#define vkLineFeed    0x0A //  10
-#define vkClear       0x0C //  12
-#define vkReturn      0x0D //  13
-#define vkShift       0x10 //  16
-#define vkControl     0x11 //  17
-#define vkMenu        0x12 //  18
-#define vkPause       0x13 //  19
-#define vkCapital     0x14 //  20
-#define vkKana        0x15 //  21
-#define vkHangul      0x15 //  21
-#define vkJunja       0x17 //  23
-#define vkFinal       0x18 //  24
-#define vkHanja       0x19 //  25
-#define vkKanji       0x19 //  25
-#define vkConvert     0x1C //  28
-#define vkNonConvert  0x1D //  29
-#define vkAccept      0x1E //  30
-#define vkModeChange  0x1F //  31
-#define vkEscape      0x1B //  27
-#define vkSpace       0x20 //  32
-#define vkPrior       0x21 //  33
-#define vkNext        0x22 //  34
-#define vkEnd         0x23 //  35
-#define vkHome        0x24 //  36
-#define vkLeft        0x25 //  37
-#define vkUp          0x26 //  38
-#define vkRight       0x27 //  39
-#define vkDown        0x28 //  40
-#define vkSelect      0x29 //  41
-#define vkPrint       0x2A //  42
-#define vkExecute     0x2B //  43
-#define vkSnapshot    0x2C //  44
-#define vkInsert      0x2D //  45
-#define vkDelete      0x2E //  46
-#define vkHelp        0x2F //  47
-// vk0 thru vk9 are the same as ASCII '0' thru '9' (0x30 - 0x39)
-#define vk0  0x30 //  48
-#define vk1  0x31 //  49
-#define vk2  0x32 //  50
-#define vk3  0x33 //  51
-#define vk4  0x34 //  52
-#define vk5  0x35 //  53
-#define vk6  0x36 //  54
-#define vk7  0x37 //  55
-#define vk8  0x38 //  56
-#define vk9  0x39 //  57
-// vkA thru vkZ are the same as ASCII 'A' thru 'Z' (0x41 - 0x5A)
-#define vkA          0x41 //  65
-#define vkB          0x42 //  66
-#define vkC          0x43 //  67
-#define vkD          0x44 //  68
-#define vkE          0x45 //  69
-#define vkF          0x46 //  70
-#define vkG          0x47 //  71
-#define vkH          0x48 //  72
-#define vkI          0x49 //  73
-#define vkJ          0x4A //  74
-#define vkK          0x4B //  75
-#define vkL          0x4C //  76
-#define vkM          0x4D //  77
-#define vkN          0x4E //  78
-#define vkO          0x4F //  79
-#define vkP          0x50 //  80
-#define vkQ          0x51 //  81
-#define vkR          0x52 //  82
-#define vkS          0x53 //  83
-#define vkT          0x54 //  84
-#define vkU          0x55 //  85
-#define vkV          0x56 //  86
-#define vkW          0x57 //  87
-#define vkX          0x58 //  88
-#define vkY          0x59 //  89
-#define vkZ          0x5A //  90
-#define vkLWin       0x5B //  91
-#define vkRWin       0x5C //  92
-#define vkApps       0x5D //  93
-#define vkSleep      0x5F //  95
-#define vkNumpad0    0x60 //  96
-#define vkNumpad1    0x61 //  97
-#define vkNumpad2    0x62 //  98
-#define vkNumpad3    0x63 //  99
-#define vkNumpad4    0x64 // 100
-#define vkNumpad5    0x65 // 101
-#define vkNumpad6    0x66 // 102
-#define vkNumpad7    0x67 // 103
-#define vkNumpad8    0x68 // 104
-#define vkNumpad9    0x69 // 105
-#define vkMultiply   0x6A // 106
-#define vkAdd        0x6B // 107
-#define vkSeparator  0x6C // 108
-#define vkSubtract   0x6D // 109
-#define vkDecimal    0x6E // 110
-#define vkDivide     0x6F // 111
-#define vkF1         0x70 // 112
-#define vkF2         0x71 // 113
-#define vkF3         0x72 // 114
-#define vkF4         0x73 // 115
-#define vkF5         0x74 // 116
-#define vkF6         0x75 // 117
-#define vkF7         0x76 // 118
-#define vkF8         0x77 // 119
-#define vkF9         0x78 // 120
-#define vkF10        0x79 // 121
-#define vkF11        0x7A // 122
-#define vkF12        0x7B // 123
-#define vkF13        0x7C // 124
-#define vkF14        0x7D // 125
-#define vkF15        0x7E // 126
-#define vkF16        0x7F // 127
-#define vkF17        0x80 // 128
-#define vkF18        0x81 // 129
-#define vkF19        0x82 // 130
-#define vkF20        0x83 // 131
-#define vkF21        0x84 // 132
-#define vkF22        0x85 // 133
-#define vkF23        0x86 // 134
-#define vkF24        0x87 // 135
-
-#define vkCamera        0x88 // 136
-#define vkHardwareBack  0x89 // 137
-
-#define vkNumLock   0x90 // 144
-#define vkScroll    0x91 // 145
-#define vkLShift    0xA0 // 160
-#define vkRShift    0xA1 // 161
-#define vkLControl  0xA2 // 162
-#define vkRControl  0xA3 // 163
-#define vkLMenu     0xA4 // 164
-#define vkRMenu     0xA5 // 165
-
-#define vkBrowserBack        0xA6 // 166
-#define vkBrowserForward     0xA7 // 167
-#define vkBrowserRefresh     0xA8 // 168
-#define vkBrowserStop        0xA9 // 169
-#define vkBrowserSearch      0xAA // 170
-#define vkBrowserFavorites   0xAB // 171
-#define vkBrowserHome        0xAC // 172
-#define vkVolumeMute         0xAD // 173
-#define vkVolumeDown         0xAE // 174
-#define vkVolumeUp           0xAF // 175
-#define vkMediaNextTrack     0xB0 // 176
-#define vkMediaPrevTrack     0xB1 // 177
-#define vkMediaStop          0xB2 // 178
-#define vkMediaPlayPause     0xB3 // 179
-#define vkLaunchMail         0xB4 // 180
-#define vkLaunchMediaSelect  0xB5 // 181
-#define vkLaunchApp1         0xB6 // 182
-#define vkLaunchApp2         0xB7 // 183
-
-#define vkSemicolon     0xBA // 186
-#define vkEqual         0xBB // 187
-#define vkComma         0xBC // 188
-#define vkMinus         0xBD // 189
-#define vkPeriod        0xBE // 190
-#define vkSlash         0xBF // 191
-#define vkTilde         0xC0 // 192
-#define vkLeftBracket   0xDB // 219
-#define vkBackslash     0xDC // 220
-#define vkRightBracket  0xDD // 221
-#define vkQuote         0xDE // 222
-#define vkPara          0xDF // 223
-
-#define vkOem102      0xE2 // 226
-#define vkIcoHelp     0xE3 // 227
-#define vkIco00       0xE4 // 228
-#define vkProcessKey  0xE5 // 229
-#define vkIcoClear    0xE6 // 230
-#define vkPacket      0xE7 // 231
-#define vkAttn        0xF6 // 246
-#define vkCrsel       0xF7 // 247
-#define vkExsel       0xF8 // 248
-#define vkErEof       0xF9 // 249
-#define vkPlay        0xFA // 250
-#define vkZoom        0xFB // 251
-#define vkNoname      0xFC // 252
-#define vkPA1         0xFD // 253
-#define vkOemClear    0xFE // 254
-#define vkNone        0xFF // 255
-
-// 消息框的
-#define IdOK         1
-#define IdCancel     2
-#define IdAbort      3
-#define IdRetry      4
-#define IdIgnore     5
-#define IdYes        6
-#define IdNo         7
-#define IdClose      8
-#define IdHelp       9
-#define IdTryAgain   10
-#define IdContinue   11
-#define mrNone       0
-#define mrOk         IdOK
-#define mrCancel     IdCancel
-#define mrAbort      IdAbort
-#define mrRetry      IdRetry
-#define mrIgnore     IdIgnore
-#define mrYes        IdYes
-#define mrNo         IdNo
-#define mrClose      IdClose
-#define mrHelp       IdHelp
-#define mrTryAgain   IdTryAgain
-#define mrContinue   IdContinue
-#define mrAll        MrContinue + 1
-#define mrNoToAll    MrAll + 1
-#define mrYesToAll   MrNoToAll + 1
-
-
 // 所有LCL枚举类定义  
 //  TCursor = -32768..32767;
 typedef int16_t TCursor;
@@ -405,6 +190,13 @@ typedef int16_t TCursor;
 #define	crHandPoint  (TCursor)-21
 #define	crSizeAll    (TCursor)-22
 #define	crLow  (TCursor)-30
+
+
+<%colorconsts%>
+
+<%keyconsts%>
+
+<%typeconsts%>
  
 
 // 补充的一部分
@@ -882,22 +674,23 @@ void un_init_lib_lcl() {
 `)
 }
 
-func (c *CFile) Save(classDefs []string, enumDefs []byte, eventDefs []byte) error {
-	if len(classDefs) == 0 {
-		return ioutil.WriteFile(c.fileName, c.buff.Bytes(), 0664)
-	} else {
-		getClassDefs := func() []byte {
-			buf := bytes.NewBuffer(nil)
-			for _, class := range classDefs {
-				buf.WriteString(fmt.Sprintf("typedef void* %s;\n", class))
-			}
-			return buf.Bytes()
-		}
-
-		bs := bytes.Replace(c.buff.Bytes(), []byte("<%typedefs%>"), getClassDefs(), 1)
-		bs = bytes.Replace(bs, []byte("<%enumdefs%>"), enumDefs, 1)
-		bs = bytes.Replace(bs, []byte("<%eventdefs%>"), eventDefs, 1)
-		bs = bytes.Replace(bs, []byte("\n"), []byte("\r\n"), -1)
-		return ioutil.WriteFile(c.fileName, bs, 0664)
+func (c *CFile) Save() error {
+	bs := c.buff.Bytes()
+	for _, x := range c.replaces {
+		bs = bytes.Replace(bs, []byte(x.name), x.data, 1)
 	}
+
+	//bs = bytes.Replace(bs, []byte("<%enumdefs%>"), enumDefs, 1)
+	//bs = bytes.Replace(bs, []byte("<%eventdefs%>"), eventDefs, 1)
+
+	bs = bytes.Replace(bs, []byte("\n"), []byte("\r\n"), -1)
+	return ioutil.WriteFile(c.fileName, bs, 0664)
+
+}
+
+func (c *CFile) AddReplaceFlag(flag string, data []byte) {
+	c.replaces = append(c.replaces, struct {
+		name string
+		data []byte
+	}{name: fmt.Sprintf("<%%%s%%>", flag), data: data})
 }

@@ -125,18 +125,31 @@ func main() {
 	file.WriteFooter()
 	// 生成枚举
 	file.WLn()
-	file.WComment("枚举定义\n")
+	//file.WComment("枚举定义\n")
 
-	file.Save(classArray,
-		parseEnums("../../vcl/types/enums.go"),
-		parseEvents("../../vcl/events.go"))
+	file.AddReplaceFlag("typedefs", getClassDefs())
+	file.AddReplaceFlag("enumdefs", parseEnums("../../vcl/types/enums.go"))
+	file.AddReplaceFlag("eventdefs", parseEvents("../../vcl/events.go"))
+	file.AddReplaceFlag("colorconsts", parseConst("../../vcl/types/colors/colors.go"))
+	file.AddReplaceFlag("keyconsts", parseConst("../../vcl/types/keys/keys.go"))
+	file.AddReplaceFlag("typeconsts", parseConst("../../vcl/types/consts.go"))
+
+	file.Save()
 
 }
 
-func parseFile(f *CFile, fileName string, isclass bool) error {
+func ReadFile(fileName string) ([]byte, error) {
 	bs, err := ioutil.ReadFile("../../UILibSources/liblcl/" + fileName)
 	if err != nil {
-		return err
+		return nil, err
+	}
+	return bs, nil
+}
+
+func parseFile(f *CFile, fileName string, isclass bool) {
+	bs, err := ReadFile(fileName)
+	if err != nil {
+		panic(err)
 	}
 	f.WComment(fileName)
 	// {无效参数}
@@ -158,13 +171,12 @@ func parseFile(f *CFile, fileName string, isclass bool) error {
 		}
 	}
 
-	return nil
 }
 
-func parseClassFiles(f *CFile, fileName string) error {
-	bs, err := ioutil.ReadFile("../../UILibSources/liblcl/" + fileName)
+func parseClassFiles(f *CFile, fileName string) {
+	bs, err := ReadFile(fileName)
 	if err != nil {
-		return err
+		panic(err)
 	}
 	bs = bytes.Replace(bs, []byte("\r"), nil, -1)
 	f.WComment(fileName)
@@ -187,7 +199,7 @@ func parseClassFiles(f *CFile, fileName string) error {
 			parseFile(f, incFileName, true)
 		}
 	}
-	return nil
+
 }
 
 func parseFunc(f *CFile, s string, isclass bool, eventType string) error {
@@ -398,14 +410,13 @@ func TypeConvert(src string) string {
 }
 
 func parseEnums(fileName string) []byte {
-	buff := bytes.NewBuffer(nil)
-	buff.WriteString("//" + fileName + "\n")
-	bs, err := ioutil.ReadFile(fileName)
+
+	buff, lines, err := ReadFileLines(fileName)
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	lines := bytes.Split(bs, []byte("\n"))
+
 	i := 0
 	for i < len(lines) {
 		s := string(bytes.TrimSpace(lines[i]))
@@ -472,12 +483,6 @@ func parseEnums(fileName string) []byte {
 						}
 						if find {
 
-							firstLowerChar := func(sx string) string {
-								sx = strings.TrimSpace(sx)
-								sx = strings.ToLower(string(sx[0])) + string(sx[1:])
-								return sx
-							}
-
 							if s != "" && !strings.HasPrefix(s, "//") && !strings.HasPrefix(s, "{") {
 
 								cc := strings.Split(s, "= iota")
@@ -533,14 +538,12 @@ func parseEnums(fileName string) []byte {
 }
 
 func parseEvents(fileName string) []byte {
-	buff := bytes.NewBuffer(nil)
-	buff.WriteString("//" + fileName + "\n")
-	bs, err := ioutil.ReadFile(fileName)
+	buff, lines, err := ReadFileLines(fileName)
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	for _, line := range bytes.Split(bs, []byte("\n")) {
+	for _, line := range lines {
 		s := string(bytes.TrimSpace(line))
 		if strings.HasPrefix(s, "type ") {
 			s = strings.TrimPrefix(s, "type ")
@@ -660,4 +663,70 @@ func parseEvents(fileName string) []byte {
 	}
 	//fmt.Println(buff.String())
 	return buff.Bytes()
+}
+
+func getClassDefs() []byte {
+	buf := bytes.NewBuffer(nil)
+	for _, class := range classArray {
+		buf.WriteString(fmt.Sprintf("typedef void* %s;\n", class))
+	}
+	return buf.Bytes()
+}
+
+func parseConst(filename string) []byte {
+
+	buff, lines, err := ReadFileLines(filename)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	i := 0
+	for i < len(lines) {
+		s := string(bytes.TrimSpace(lines[i]))
+		if strings.HasPrefix(s, "const (") {
+			i++
+			for s != ")" {
+				s = string(bytes.TrimSpace(lines[i]))
+				// 注释也收集
+				if strings.HasPrefix(s, "//") || strings.HasPrefix(s, "/*") {
+					buff.WriteString("\n")
+					buff.WriteString(s)
+					buff.WriteString("\n\n")
+				} else {
+					ss := strings.Split(s, "=")
+					if len(ss) == 2 {
+						buff.WriteString("#define ")
+						buff.WriteString(firstLowerChar(strings.TrimSpace(ss[0])))
+						buff.WriteString(strings.Repeat(" ", strings.Count(ss[0], " ")))
+
+						buff.WriteString(strings.TrimSpace(ss[1]))
+						buff.WriteString("\n")
+					}
+				}
+				i++
+			}
+			buff.WriteString("\n")
+			continue
+		}
+		i++
+	}
+	return buff.Bytes()
+}
+
+func firstLowerChar(sx string) string {
+	sx = strings.TrimSpace(sx)
+	sx = strings.ToLower(string(sx[0])) + string(sx[1:])
+	return sx
+}
+
+func ReadFileLines(filename string) (*bytes.Buffer, [][]byte, error) {
+	buff := bytes.NewBuffer(nil)
+	buff.WriteString("//" + filename)
+	buff.WriteString("\n")
+	bs, err := ioutil.ReadFile(filename)
+	if err != nil {
+		fmt.Println(err)
+		return nil, nil, err
+	}
+	return buff, bytes.Split(bs, []byte("\n")), nil
 }
