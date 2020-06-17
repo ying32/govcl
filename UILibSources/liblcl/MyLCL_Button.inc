@@ -502,6 +502,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Button_SetOnClick(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -509,6 +510,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure Button_SetOnContextPopup(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -516,6 +518,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure Button_SetOnDragDrop(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -523,6 +526,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure Button_SetOnDragOver(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -530,6 +534,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure Button_SetOnEndDrag(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -537,6 +542,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Button_SetOnEnter(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -544,6 +550,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Button_SetOnExit(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -551,6 +558,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure Button_SetOnKeyDown(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -558,6 +566,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure Button_SetOnKeyPress(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -565,6 +574,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure Button_SetOnKeyUp(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -572,6 +582,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Button_SetOnMouseDown(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -579,6 +590,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Button_SetOnMouseEnter(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -586,6 +598,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Button_SetOnMouseLeave(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -593,6 +606,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure Button_SetOnMouseMove(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -600,6 +614,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Button_SetOnMouseUp(AObj: TButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}

@@ -652,6 +652,7 @@ begin
   AObj.Wrapable := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolBar_SetOnClick(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -659,6 +660,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure ToolBar_SetOnContextPopup(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -666,6 +668,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolBar_SetOnDblClick(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -673,6 +676,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDockDropEvent
 procedure ToolBar_SetOnDockDrop(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDockDrop}
@@ -680,6 +684,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure ToolBar_SetOnDragDrop(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -687,6 +692,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure ToolBar_SetOnDragOver(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -694,6 +700,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure ToolBar_SetOnEndDrag(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -701,6 +708,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolBar_SetOnEnter(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -708,6 +716,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolBar_SetOnExit(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -715,6 +724,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ToolBar_SetOnMouseDown(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -722,6 +732,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolBar_SetOnMouseEnter(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -729,6 +740,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolBar_SetOnMouseLeave(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -736,6 +748,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure ToolBar_SetOnMouseMove(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -743,6 +756,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ToolBar_SetOnMouseUp(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -750,6 +764,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolBar_SetOnResize(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -757,6 +772,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TUnDockEvent
 procedure ToolBar_SetOnUnDock(AObj: TToolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUnDock}

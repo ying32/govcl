@@ -447,6 +447,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure HeaderControl_SetOnContextPopup(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -454,6 +455,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure HeaderControl_SetOnDragDrop(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -461,6 +463,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure HeaderControl_SetOnDragOver(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -468,6 +471,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure HeaderControl_SetOnEndDock(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -475,6 +479,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure HeaderControl_SetOnEndDrag(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -482,6 +487,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure HeaderControl_SetOnMouseDown(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -489,6 +495,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure HeaderControl_SetOnMouseEnter(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -496,6 +503,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure HeaderControl_SetOnMouseLeave(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -503,6 +511,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure HeaderControl_SetOnMouseMove(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -510,6 +519,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure HeaderControl_SetOnMouseUp(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -517,6 +527,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure HeaderControl_SetOnResize(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -524,6 +535,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TSectionNotifyEvent
 procedure HeaderControl_SetOnSectionClick(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSectionClick}
@@ -531,6 +543,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TSectionNotifyEvent
 procedure HeaderControl_SetOnSectionResize(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSectionResize}
@@ -538,6 +551,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TSectionTrackEvent
 procedure HeaderControl_SetOnSectionTrack(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSectionTrack}
@@ -545,6 +559,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TSectionDragEvent
 procedure HeaderControl_SetOnSectionDrag(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSectionDrag}
@@ -552,6 +567,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure HeaderControl_SetOnSectionEndDrag(AObj: THeaderControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSectionEndDrag}

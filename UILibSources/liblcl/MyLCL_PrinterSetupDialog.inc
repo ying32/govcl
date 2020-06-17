@@ -82,6 +82,7 @@ begin
   Result :=  AObj.Handle;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PrinterSetupDialog_SetOnClose(AObj: TPrinterSetupDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClose}
@@ -89,6 +90,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PrinterSetupDialog_SetOnShow(AObj: TPrinterSetupDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShow}

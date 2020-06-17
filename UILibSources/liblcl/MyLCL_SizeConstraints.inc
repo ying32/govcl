@@ -52,6 +52,7 @@ begin
   Result :=  PChar(AObj.ToString);
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure SizeConstraints_SetOnChange(AObj: TSizeConstraints; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

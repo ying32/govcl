@@ -173,6 +173,7 @@ begin
   Result := AObj.AllowDropFiles;
 end;
 
+//EVENT_TYPE:TDropFilesEvent
 procedure Form_SetOnDropFiles(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDropFiles}
@@ -180,6 +181,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnDestroy(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDestroy}
@@ -187,6 +189,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TConstrainedResizeEvent
 procedure Form_SetOnConstrainedResize(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnConstrainedResize}
@@ -194,6 +197,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnDeactivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDeactivate}
@@ -201,6 +205,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnActivate(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnActivate}
@@ -208,6 +213,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TWndProcEvent
 procedure Form_SetOnWndProc(AObj: TGoForm; AEventId: NativeUInt); extdecl;
 begin
   if AEventId = 0 then
@@ -703,11 +709,11 @@ begin
 end;
 
 
-procedure SetGlobalFormScaled(AVal: LongBool); extdecl;
-begin
-  // 先移除掉，待后我有2k屏再说吧。
-  // Application.Scaled := AVal;
-end;
+//procedure SetGlobalFormScaled(AVal: LongBool); extdecl;
+//begin
+//  // 先移除掉，待后我有2k屏再说吧。
+//  // Application.Scaled := AVal;
+//end;
 
 
 {$IFDEF WINDOWS}
@@ -1076,7 +1082,7 @@ exports
   Application_Instance,
   Application_CreateForm,
   Application_Run,
-  SetGlobalFormScaled,
+  //SetGlobalFormScaled,
   Application_Initialize,
   Application_GetHandle,
   Application_SetHandle,

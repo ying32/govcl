@@ -92,6 +92,7 @@ begin
   AObj.ReplaceText := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnReplace(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnReplace}
@@ -149,6 +150,7 @@ begin
   AObj.Options := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnFind(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnFind}
@@ -161,6 +163,7 @@ begin
   Result :=  AObj.Handle;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnClose(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClose}
@@ -168,6 +171,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ReplaceDialog_SetOnShow(AObj: TReplaceDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShow}

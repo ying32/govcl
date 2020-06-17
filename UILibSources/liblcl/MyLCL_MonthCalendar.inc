@@ -457,6 +457,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnClick(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -464,6 +465,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure MonthCalendar_SetOnContextPopup(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -471,6 +473,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnDblClick(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -478,6 +481,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure MonthCalendar_SetOnDragDrop(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -485,6 +489,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure MonthCalendar_SetOnDragOver(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -492,6 +497,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure MonthCalendar_SetOnEndDock(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -499,6 +505,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure MonthCalendar_SetOnEndDrag(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -506,6 +513,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnEnter(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -513,6 +521,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnExit(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -520,6 +529,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure MonthCalendar_SetOnKeyDown(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -527,6 +537,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure MonthCalendar_SetOnKeyPress(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -534,6 +545,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure MonthCalendar_SetOnKeyUp(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -541,6 +553,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnMouseEnter(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -548,6 +561,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure MonthCalendar_SetOnMouseLeave(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -555,6 +569,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure MonthCalendar_SetOnStartDock(AObj: TMonthCalendar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}

@@ -92,6 +92,7 @@ begin
   Result :=  AObj.Handle;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ColorDialog_SetOnClose(AObj: TColorDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClose}
@@ -99,6 +100,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ColorDialog_SetOnShow(AObj: TColorDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShow}

@@ -172,6 +172,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Action_SetOnExecute(AObj: TAction; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExecute}
@@ -179,6 +180,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Action_SetOnUpdate(AObj: TAction; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUpdate}

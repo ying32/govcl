@@ -102,6 +102,7 @@ begin
   AObj.Style := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Brush_SetOnChange(AObj: TBrush; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

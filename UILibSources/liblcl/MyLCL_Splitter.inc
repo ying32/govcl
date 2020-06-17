@@ -277,6 +277,7 @@ begin
   AObj.Width := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Splitter_SetOnPaint(AObj: TSplitter; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnPaint}

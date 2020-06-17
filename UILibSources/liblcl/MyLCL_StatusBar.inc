@@ -527,6 +527,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StatusBar_SetOnClick(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -534,6 +535,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure StatusBar_SetOnContextPopup(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -541,6 +543,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StatusBar_SetOnDblClick(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -548,6 +551,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure StatusBar_SetOnDragDrop(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -555,6 +559,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure StatusBar_SetOnDragOver(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -562,6 +567,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure StatusBar_SetOnEndDock(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -569,6 +575,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure StatusBar_SetOnEndDrag(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -576,6 +583,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StatusBar_SetOnHint(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnHint}
@@ -583,6 +591,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure StatusBar_SetOnMouseDown(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -590,6 +599,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StatusBar_SetOnMouseEnter(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -597,6 +607,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StatusBar_SetOnMouseLeave(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -604,6 +615,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure StatusBar_SetOnMouseMove(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -611,6 +623,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure StatusBar_SetOnMouseUp(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -618,6 +631,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StatusBar_SetOnResize(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -625,6 +639,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure StatusBar_SetOnStartDock(AObj: TStatusBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}

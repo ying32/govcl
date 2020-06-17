@@ -427,6 +427,7 @@ begin
   AObj.Width := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolButton_SetOnClick(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -434,6 +435,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure ToolButton_SetOnContextPopup(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -441,6 +443,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure ToolButton_SetOnDragDrop(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -448,6 +451,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure ToolButton_SetOnDragOver(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -455,6 +459,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure ToolButton_SetOnEndDock(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -462,6 +467,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure ToolButton_SetOnEndDrag(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -469,6 +475,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ToolButton_SetOnMouseDown(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -476,6 +483,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolButton_SetOnMouseEnter(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -483,6 +491,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ToolButton_SetOnMouseLeave(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -490,6 +499,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure ToolButton_SetOnMouseMove(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -497,6 +507,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ToolButton_SetOnMouseUp(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -504,6 +515,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure ToolButton_SetOnStartDock(AObj: TToolButton; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}

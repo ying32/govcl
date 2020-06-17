@@ -582,6 +582,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure CoolBar_SetOnChange(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -589,6 +590,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure CoolBar_SetOnClick(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -596,6 +598,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure CoolBar_SetOnContextPopup(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -603,6 +606,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure CoolBar_SetOnDblClick(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -610,6 +614,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDockDropEvent
 procedure CoolBar_SetOnDockDrop(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDockDrop}
@@ -617,6 +622,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure CoolBar_SetOnDragDrop(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -624,6 +630,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure CoolBar_SetOnDragOver(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -631,6 +638,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure CoolBar_SetOnEndDock(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -638,6 +646,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure CoolBar_SetOnEndDrag(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -645,6 +654,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetSiteInfoEvent
 procedure CoolBar_SetOnGetSiteInfo(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetSiteInfo}
@@ -652,6 +662,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure CoolBar_SetOnMouseDown(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -659,6 +670,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure CoolBar_SetOnMouseEnter(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -666,6 +678,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure CoolBar_SetOnMouseLeave(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -673,6 +686,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure CoolBar_SetOnMouseMove(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -680,6 +694,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure CoolBar_SetOnMouseUp(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -687,6 +702,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure CoolBar_SetOnResize(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -694,6 +710,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure CoolBar_SetOnStartDock(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}
@@ -701,6 +718,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TUnDockEvent
 procedure CoolBar_SetOnUnDock(AObj: TCoolBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUnDock}

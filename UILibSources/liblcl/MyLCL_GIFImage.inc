@@ -157,6 +157,7 @@ begin
   AObj.Width := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure GIFImage_SetOnChange(AObj: TGIFImage; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

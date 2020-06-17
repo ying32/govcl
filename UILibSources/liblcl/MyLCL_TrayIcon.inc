@@ -167,6 +167,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TrayIcon_SetOnClick(AObj: TTrayIcon; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -174,6 +175,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TrayIcon_SetOnDblClick(AObj: TTrayIcon; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -181,6 +183,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure TrayIcon_SetOnMouseMove(AObj: TTrayIcon; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -188,6 +191,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure TrayIcon_SetOnMouseUp(AObj: TTrayIcon; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -195,6 +199,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure TrayIcon_SetOnMouseDown(AObj: TTrayIcon; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}

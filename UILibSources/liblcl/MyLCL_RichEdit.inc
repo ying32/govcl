@@ -607,6 +607,7 @@ begin
   AObj.Zoom := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure RichEdit_SetOnChange(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -614,6 +615,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure RichEdit_SetOnClick(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -621,6 +623,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure RichEdit_SetOnContextPopup(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -628,6 +631,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure RichEdit_SetOnDblClick(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -635,6 +639,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure RichEdit_SetOnDragDrop(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -642,6 +647,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure RichEdit_SetOnDragOver(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -649,6 +655,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure RichEdit_SetOnEndDrag(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -656,6 +663,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure RichEdit_SetOnEnter(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -663,6 +671,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure RichEdit_SetOnExit(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -670,6 +679,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure RichEdit_SetOnKeyDown(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -677,6 +687,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure RichEdit_SetOnKeyPress(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -684,6 +695,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure RichEdit_SetOnKeyUp(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -691,6 +703,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure RichEdit_SetOnMouseDown(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -698,6 +711,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure RichEdit_SetOnMouseEnter(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -705,6 +719,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure RichEdit_SetOnMouseLeave(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -712,6 +727,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure RichEdit_SetOnMouseMove(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -719,6 +735,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure RichEdit_SetOnMouseUp(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -726,6 +743,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelEvent
 procedure RichEdit_SetOnMouseWheel(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheel}
@@ -733,6 +751,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure RichEdit_SetOnMouseWheelDown(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelDown}
@@ -740,6 +759,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure RichEdit_SetOnMouseWheelUp(AObj: TRichEdit; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelUp}

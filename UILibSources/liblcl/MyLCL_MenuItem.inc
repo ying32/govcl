@@ -247,6 +247,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure MenuItem_SetOnClick(AObj: TMenuItem; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -254,6 +255,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMenuMeasureItemEvent
 procedure MenuItem_SetOnMeasureItem(AObj: TMenuItem; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMeasureItem}

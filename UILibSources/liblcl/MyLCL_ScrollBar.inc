@@ -492,6 +492,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure ScrollBar_SetOnContextPopup(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -499,6 +500,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ScrollBar_SetOnChange(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -506,6 +508,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure ScrollBar_SetOnDragDrop(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -513,6 +516,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure ScrollBar_SetOnDragOver(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -520,6 +524,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure ScrollBar_SetOnEndDrag(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -527,6 +532,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ScrollBar_SetOnEnter(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -534,6 +540,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ScrollBar_SetOnExit(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -541,6 +548,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure ScrollBar_SetOnKeyDown(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -548,6 +556,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure ScrollBar_SetOnKeyPress(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -555,6 +564,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure ScrollBar_SetOnKeyUp(AObj: TScrollBar; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}

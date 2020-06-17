@@ -122,6 +122,7 @@ begin
   Result :=  AObj.Width;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Picture_SetOnChange(AObj: TPicture; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

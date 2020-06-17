@@ -179,6 +179,7 @@ begin
   AObj.Width := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Icon_SetOnChange(AObj: TIcon; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

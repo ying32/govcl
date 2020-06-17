@@ -92,6 +92,7 @@ begin
   AObj.State := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ActionList_SetOnChange(AObj: TActionList; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

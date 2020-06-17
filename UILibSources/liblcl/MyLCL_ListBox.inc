@@ -602,6 +602,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListBox_SetOnClick(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -609,6 +610,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure ListBox_SetOnContextPopup(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -616,6 +618,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListBox_SetOnDblClick(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -623,6 +626,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure ListBox_SetOnDragDrop(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -630,6 +634,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure ListBox_SetOnDragOver(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -637,6 +642,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDrawItemEvent
 procedure ListBox_SetOnDrawItem(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDrawItem}
@@ -644,6 +650,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure ListBox_SetOnEndDrag(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -651,6 +658,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListBox_SetOnEnter(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -658,6 +666,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListBox_SetOnExit(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -665,6 +674,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure ListBox_SetOnKeyDown(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -672,6 +682,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure ListBox_SetOnKeyPress(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -679,6 +690,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure ListBox_SetOnKeyUp(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -686,6 +698,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMeasureItemEvent
 procedure ListBox_SetOnMeasureItem(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMeasureItem}
@@ -693,6 +706,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ListBox_SetOnMouseDown(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -700,6 +714,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListBox_SetOnMouseEnter(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -707,6 +722,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListBox_SetOnMouseLeave(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -714,6 +730,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure ListBox_SetOnMouseMove(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -721,6 +738,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ListBox_SetOnMouseUp(AObj: TListBox; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}

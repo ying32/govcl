@@ -57,6 +57,7 @@ begin
   Result :=  AObj.Control;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ControlChildSizing_SetOnChange(AObj: TControlChildSizing; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

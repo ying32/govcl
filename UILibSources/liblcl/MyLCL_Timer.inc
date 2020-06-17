@@ -92,6 +92,7 @@ begin
   AObj.Interval := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Timer_SetOnTimer(AObj: TTimer; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnTimer}

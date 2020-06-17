@@ -857,6 +857,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TLVAdvancedCustomDrawEvent
 procedure ListView_SetOnAdvancedCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAdvancedCustomDraw}
@@ -864,6 +865,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVAdvancedCustomDrawItemEvent
 procedure ListView_SetOnAdvancedCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAdvancedCustomDrawItem}
@@ -871,6 +873,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVAdvancedCustomDrawSubItemEvent
 procedure ListView_SetOnAdvancedCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAdvancedCustomDrawSubItem}
@@ -878,6 +881,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVChangeEvent
 procedure ListView_SetOnChange(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -885,6 +889,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -892,6 +897,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVColumnClickEvent
 procedure ListView_SetOnColumnClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnColumnClick}
@@ -899,6 +905,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVCompareEvent
 procedure ListView_SetOnCompare(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCompare}
@@ -906,6 +913,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure ListView_SetOnContextPopup(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -913,6 +921,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVCustomDrawEvent
 procedure ListView_SetOnCustomDraw(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCustomDraw}
@@ -920,6 +929,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVCustomDrawItemEvent
 procedure ListView_SetOnCustomDrawItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCustomDrawItem}
@@ -927,6 +937,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVCustomDrawSubItemEvent
 procedure ListView_SetOnCustomDrawSubItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCustomDrawSubItem}
@@ -934,6 +945,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVOwnerDataEvent
 procedure ListView_SetOnData(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnData}
@@ -941,6 +953,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVOwnerDataFindEvent
 procedure ListView_SetOnDataFind(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDataFind}
@@ -948,6 +961,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVOwnerDataHintEvent
 procedure ListView_SetOnDataHint(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDataHint}
@@ -955,6 +969,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnDblClick(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -962,6 +977,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVDeletedEvent
 procedure ListView_SetOnDeletion(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDeletion}
@@ -969,6 +985,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVEditedEvent
 procedure ListView_SetOnEdited(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEdited}
@@ -976,6 +993,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVEditingEvent
 procedure ListView_SetOnEditing(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEditing}
@@ -983,6 +1001,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure ListView_SetOnEndDock(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -990,6 +1009,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure ListView_SetOnEndDrag(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -997,6 +1017,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -1004,6 +1025,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnExit(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -1011,6 +1033,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure ListView_SetOnDragDrop(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -1018,6 +1041,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure ListView_SetOnDragOver(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -1025,6 +1049,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVDeletedEvent
 procedure ListView_SetOnInsert(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnInsert}
@@ -1032,6 +1057,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure ListView_SetOnKeyDown(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -1039,6 +1065,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure ListView_SetOnKeyPress(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -1046,6 +1073,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure ListView_SetOnKeyUp(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -1053,6 +1081,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ListView_SetOnMouseDown(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -1060,6 +1089,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnMouseEnter(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -1067,6 +1097,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnMouseLeave(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -1074,6 +1105,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure ListView_SetOnMouseMove(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -1081,6 +1113,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure ListView_SetOnMouseUp(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -1088,6 +1121,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ListView_SetOnResize(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -1095,6 +1129,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVSelectItemEvent
 procedure ListView_SetOnSelectItem(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSelectItem}
@@ -1102,6 +1137,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TLVCheckedItemEvent
 procedure ListView_SetOnItemChecked(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnItemChecked}
@@ -1109,6 +1145,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure ListView_SetOnStartDock(AObj: TListView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}

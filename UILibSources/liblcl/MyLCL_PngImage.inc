@@ -159,6 +159,7 @@ begin
   AObj.Transparent := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PngImage_SetOnChange(AObj: TPngImage; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

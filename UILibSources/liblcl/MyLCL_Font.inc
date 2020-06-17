@@ -177,6 +177,7 @@ begin
   AObj.Quality := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Font_SetOnChange(AObj: TFont; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

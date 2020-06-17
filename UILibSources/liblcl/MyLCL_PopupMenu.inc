@@ -147,6 +147,7 @@ begin
   AObj.OwnerDraw := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PopupMenu_SetOnPopup(AObj: TPopupMenu; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnPopup}

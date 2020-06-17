@@ -502,6 +502,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TAlignPositionEvent
 procedure Frame_SetOnAlignPosition(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAlignPosition}
@@ -509,6 +510,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Frame_SetOnClick(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -516,6 +518,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure Frame_SetOnContextPopup(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -523,6 +526,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Frame_SetOnDblClick(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -530,6 +534,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDockDropEvent
 procedure Frame_SetOnDockDrop(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDockDrop}
@@ -537,6 +542,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure Frame_SetOnDragDrop(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -544,6 +550,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure Frame_SetOnDragOver(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -551,6 +558,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure Frame_SetOnEndDock(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -558,6 +566,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure Frame_SetOnEndDrag(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -565,6 +574,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Frame_SetOnEnter(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -572,6 +582,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Frame_SetOnExit(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -579,6 +590,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetSiteInfoEvent
 procedure Frame_SetOnGetSiteInfo(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetSiteInfo}
@@ -586,6 +598,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Frame_SetOnMouseDown(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -593,6 +606,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Frame_SetOnMouseEnter(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -600,6 +614,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Frame_SetOnMouseLeave(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -607,6 +622,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure Frame_SetOnMouseMove(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -614,6 +630,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Frame_SetOnMouseUp(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -621,6 +638,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelEvent
 procedure Frame_SetOnMouseWheel(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheel}
@@ -628,6 +646,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure Frame_SetOnMouseWheelDown(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelDown}
@@ -635,6 +654,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure Frame_SetOnMouseWheelUp(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelUp}
@@ -642,6 +662,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Frame_SetOnResize(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -649,6 +670,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure Frame_SetOnStartDock(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}
@@ -656,6 +678,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TUnDockEvent
 procedure Frame_SetOnUnDock(AObj: TFrame; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUnDock}

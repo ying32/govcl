@@ -367,6 +367,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TWebTitleChangeEvent
 procedure MiniWebview_SetOnTitleChange(AObj: TMiniWebview; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnTitleChange}
@@ -374,6 +375,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TWebJSExternalEvent
 procedure MiniWebview_SetOnJSExternal(AObj: TMiniWebview; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnJSExternal}

@@ -157,6 +157,7 @@ begin
   Result :=  AObj.Handle;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure SaveDialog_SetOnClose(AObj: TSaveDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClose}
@@ -164,6 +165,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure SaveDialog_SetOnShow(AObj: TSaveDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShow}

@@ -229,6 +229,7 @@ begin
   AObj.Width := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Bitmap_SetOnChange(AObj: TBitmap; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

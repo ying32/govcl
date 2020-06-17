@@ -362,6 +362,7 @@ begin
   AObj.Width := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure BoundLabel_SetOnClick(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -369,6 +370,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure BoundLabel_SetOnDblClick(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -376,6 +378,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure BoundLabel_SetOnDragDrop(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -383,6 +386,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure BoundLabel_SetOnDragOver(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -390,6 +394,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure BoundLabel_SetOnEndDrag(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -397,6 +402,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure BoundLabel_SetOnMouseDown(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -404,6 +410,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure BoundLabel_SetOnMouseMove(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -411,6 +418,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure BoundLabel_SetOnMouseUp(AObj: TBoundLabel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}

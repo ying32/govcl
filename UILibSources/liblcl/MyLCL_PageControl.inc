@@ -552,6 +552,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PageControl_SetOnChange(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -559,6 +560,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTabChangingEvent
 procedure PageControl_SetOnChanging(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChanging}
@@ -566,6 +568,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure PageControl_SetOnContextPopup(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -573,6 +576,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDockDropEvent
 procedure PageControl_SetOnDockDrop(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDockDrop}
@@ -580,6 +584,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure PageControl_SetOnDragDrop(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -587,6 +592,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure PageControl_SetOnDragOver(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -594,6 +600,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure PageControl_SetOnEndDock(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -601,6 +608,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure PageControl_SetOnEndDrag(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -608,6 +616,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PageControl_SetOnEnter(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -615,6 +624,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PageControl_SetOnExit(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -622,6 +632,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetSiteInfoEvent
 procedure PageControl_SetOnGetSiteInfo(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetSiteInfo}
@@ -629,6 +640,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure PageControl_SetOnMouseDown(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -636,6 +648,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PageControl_SetOnMouseEnter(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -643,6 +656,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PageControl_SetOnMouseLeave(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -650,6 +664,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure PageControl_SetOnMouseMove(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -657,6 +672,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure PageControl_SetOnMouseUp(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -664,6 +680,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PageControl_SetOnResize(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -671,6 +688,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure PageControl_SetOnStartDock(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}
@@ -678,6 +696,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TUnDockEvent
 procedure PageControl_SetOnUnDock(AObj: TPageControl; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUnDock}

@@ -577,6 +577,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TAlignPositionEvent
 procedure Panel_SetOnAlignPosition(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAlignPosition}
@@ -584,6 +585,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Panel_SetOnClick(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -591,6 +593,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure Panel_SetOnContextPopup(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -598,6 +601,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDockDropEvent
 procedure Panel_SetOnDockDrop(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDockDrop}
@@ -605,6 +609,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Panel_SetOnDblClick(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -612,6 +617,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure Panel_SetOnDragDrop(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -619,6 +625,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure Panel_SetOnDragOver(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -626,6 +633,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure Panel_SetOnEndDock(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -633,6 +641,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure Panel_SetOnEndDrag(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -640,6 +649,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Panel_SetOnEnter(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -647,6 +657,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Panel_SetOnExit(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -654,6 +665,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetSiteInfoEvent
 procedure Panel_SetOnGetSiteInfo(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetSiteInfo}
@@ -661,6 +673,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Panel_SetOnMouseDown(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -668,6 +681,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Panel_SetOnMouseEnter(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -675,6 +689,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Panel_SetOnMouseLeave(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -682,6 +697,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure Panel_SetOnMouseMove(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -689,6 +705,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Panel_SetOnMouseUp(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -696,6 +713,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Panel_SetOnResize(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -703,6 +721,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure Panel_SetOnStartDock(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}
@@ -710,6 +729,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TUnDockEvent
 procedure Panel_SetOnUnDock(AObj: TPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUnDock}

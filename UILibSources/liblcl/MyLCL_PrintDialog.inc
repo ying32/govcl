@@ -172,6 +172,7 @@ begin
   Result :=  AObj.Handle;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PrintDialog_SetOnClose(AObj: TPrintDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClose}
@@ -179,6 +180,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure PrintDialog_SetOnShow(AObj: TPrintDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShow}

@@ -217,6 +217,7 @@ begin
   AObj.VerificationText := AValue;
 end;
 
+//EVENT_TYPE:TTaskDlgClickEvent
 procedure TaskDialog_SetOnButtonClicked(AObj: TTaskDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnButtonClicked}

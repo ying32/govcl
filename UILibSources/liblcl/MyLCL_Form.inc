@@ -682,6 +682,7 @@ begin
   AObj.WindowState := AValue;
 end;
 
+//EVENT_TYPE:TAlignPositionEvent
 procedure Form_SetOnAlignPosition(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAlignPosition}
@@ -689,6 +690,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnClick(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -696,6 +698,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TCloseEvent
 procedure Form_SetOnClose(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClose}
@@ -703,6 +706,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TCloseQueryEvent
 procedure Form_SetOnCloseQuery(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCloseQuery}
@@ -710,6 +714,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure Form_SetOnContextPopup(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -717,6 +722,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnDblClick(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -724,6 +730,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDockDropEvent
 procedure Form_SetOnDockDrop(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDockDrop}
@@ -731,6 +738,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure Form_SetOnDragDrop(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -738,6 +746,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure Form_SetOnDragOver(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -745,6 +754,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure Form_SetOnEndDock(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -752,6 +762,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetSiteInfoEvent
 procedure Form_SetOnGetSiteInfo(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetSiteInfo}
@@ -759,6 +770,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnHide(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnHide}
@@ -766,6 +778,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:THelpEvent
 procedure Form_SetOnHelp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnHelp}
@@ -773,6 +786,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure Form_SetOnKeyDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -780,6 +794,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure Form_SetOnKeyPress(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -787,6 +802,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure Form_SetOnKeyUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -794,6 +810,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Form_SetOnMouseDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -801,6 +818,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnMouseEnter(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -808,6 +826,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnMouseLeave(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -815,6 +834,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure Form_SetOnMouseMove(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -822,6 +842,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure Form_SetOnMouseUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -829,6 +850,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelEvent
 procedure Form_SetOnMouseWheel(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheel}
@@ -836,6 +858,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure Form_SetOnMouseWheelDown(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelDown}
@@ -843,6 +866,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure Form_SetOnMouseWheelUp(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelUp}
@@ -850,6 +874,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnPaint(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnPaint}
@@ -857,6 +882,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnResize(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -864,6 +890,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TShortCutEvent
 procedure Form_SetOnShortCut(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShortCut}
@@ -871,6 +898,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Form_SetOnShow(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShow}
@@ -878,6 +906,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure Form_SetOnStartDock(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}
@@ -885,6 +914,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TUnDockEvent
 procedure Form_SetOnUnDock(AObj: TForm; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUnDock}

@@ -587,6 +587,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TAlignPositionEvent
 procedure FlowPanel_SetOnAlignPosition(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAlignPosition}
@@ -594,6 +595,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FlowPanel_SetOnClick(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -601,6 +603,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure FlowPanel_SetOnContextPopup(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -608,6 +611,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDockDropEvent
 procedure FlowPanel_SetOnDockDrop(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDockDrop}
@@ -615,6 +619,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FlowPanel_SetOnDblClick(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -622,6 +627,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure FlowPanel_SetOnDragDrop(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -629,6 +635,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure FlowPanel_SetOnDragOver(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -636,6 +643,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure FlowPanel_SetOnEndDock(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -643,6 +651,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure FlowPanel_SetOnEndDrag(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -650,6 +659,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FlowPanel_SetOnEnter(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -657,6 +667,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FlowPanel_SetOnExit(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -664,6 +675,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetSiteInfoEvent
 procedure FlowPanel_SetOnGetSiteInfo(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetSiteInfo}
@@ -671,6 +683,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure FlowPanel_SetOnMouseDown(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -678,6 +691,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FlowPanel_SetOnMouseEnter(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -685,6 +699,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FlowPanel_SetOnMouseLeave(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -692,6 +707,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure FlowPanel_SetOnMouseMove(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -699,6 +715,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure FlowPanel_SetOnMouseUp(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -706,6 +723,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FlowPanel_SetOnResize(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnResize}
@@ -713,6 +731,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure FlowPanel_SetOnStartDock(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}
@@ -720,6 +739,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TUnDockEvent
 procedure FlowPanel_SetOnUnDock(AObj: TFlowPanel; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnUnDock}

@@ -317,6 +317,7 @@ begin
   AObj.Title := AValue;
 end;
 
+//EVENT_TYPE:TExceptionEvent
 procedure Application_SetOnException(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnException}
@@ -324,6 +325,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:THelpEvent
 procedure Application_SetOnHelp(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnHelp}
@@ -331,6 +333,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Application_SetOnHint(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnHint}
@@ -338,6 +341,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Application_SetOnMinimize(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMinimize}
@@ -345,6 +349,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Application_SetOnRestore(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnRestore}
@@ -352,6 +357,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TShortCutEvent
 procedure Application_SetOnShortCut(AObj: TApplication; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShortCut}

@@ -227,6 +227,7 @@ begin
   AObj.Masked := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ImageList_SetOnChange(AObj: TImageList; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

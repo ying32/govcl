@@ -147,6 +147,7 @@ begin
   AObj.Width := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Graphic_SetOnChange(AObj: TGraphic; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

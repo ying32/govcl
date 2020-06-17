@@ -132,6 +132,7 @@ begin
   AObj.Options := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FindDialog_SetOnFind(AObj: TFindDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnFind}
@@ -144,6 +145,7 @@ begin
   Result :=  AObj.Handle;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FindDialog_SetOnClose(AObj: TFindDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClose}
@@ -151,6 +153,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure FindDialog_SetOnShow(AObj: TFindDialog; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnShow}

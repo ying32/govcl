@@ -852,6 +852,7 @@ begin
   AObj.Visible := AValue;
 end;
 
+//EVENT_TYPE:TTVExpandedEvent
 procedure TreeView_SetOnAddition(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAddition}
@@ -859,6 +860,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVAdvancedCustomDrawEvent
 procedure TreeView_SetOnAdvancedCustomDraw(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAdvancedCustomDraw}
@@ -866,6 +868,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVAdvancedCustomDrawItemEvent
 procedure TreeView_SetOnAdvancedCustomDrawItem(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnAdvancedCustomDrawItem}
@@ -873,6 +876,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVChangedEvent
 procedure TreeView_SetOnChange(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -880,6 +884,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVChangingEvent
 procedure TreeView_SetOnChanging(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChanging}
@@ -887,6 +892,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TreeView_SetOnClick(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -894,6 +900,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVExpandedEvent
 procedure TreeView_SetOnCollapsed(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCollapsed}
@@ -901,6 +908,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVCollapsingEvent
 procedure TreeView_SetOnCollapsing(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCollapsing}
@@ -908,6 +916,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVCompareEvent
 procedure TreeView_SetOnCompare(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCompare}
@@ -915,6 +924,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure TreeView_SetOnContextPopup(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -922,6 +932,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVCustomDrawEvent
 procedure TreeView_SetOnCustomDraw(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCustomDraw}
@@ -929,6 +940,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVCustomDrawItemEvent
 procedure TreeView_SetOnCustomDrawItem(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnCustomDrawItem}
@@ -936,6 +948,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TreeView_SetOnDblClick(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -943,6 +956,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVExpandedEvent
 procedure TreeView_SetOnDeletion(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDeletion}
@@ -950,6 +964,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure TreeView_SetOnDragDrop(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -957,6 +972,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure TreeView_SetOnDragOver(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -964,6 +980,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVEditedEvent
 procedure TreeView_SetOnEdited(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEdited}
@@ -971,6 +988,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVEditingEvent
 procedure TreeView_SetOnEditing(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEditing}
@@ -978,6 +996,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure TreeView_SetOnEndDrag(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -985,6 +1004,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TreeView_SetOnEnter(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -992,6 +1012,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TreeView_SetOnExit(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -999,6 +1020,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVExpandingEvent
 procedure TreeView_SetOnExpanding(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExpanding}
@@ -1006,6 +1028,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVExpandedEvent
 procedure TreeView_SetOnExpanded(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExpanded}
@@ -1013,6 +1036,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TTVExpandedEvent
 procedure TreeView_SetOnGetSelectedIndex(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetSelectedIndex}
@@ -1020,6 +1044,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure TreeView_SetOnKeyDown(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -1027,6 +1052,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure TreeView_SetOnKeyPress(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -1034,6 +1060,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure TreeView_SetOnKeyUp(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -1041,6 +1068,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure TreeView_SetOnMouseDown(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -1048,6 +1076,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TreeView_SetOnMouseEnter(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -1055,6 +1084,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure TreeView_SetOnMouseLeave(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -1062,6 +1092,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure TreeView_SetOnMouseMove(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -1069,6 +1100,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure TreeView_SetOnMouseUp(AObj: TTreeView; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}

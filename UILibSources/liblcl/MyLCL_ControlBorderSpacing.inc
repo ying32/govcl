@@ -107,6 +107,7 @@ begin
   Result :=  AObj.ControlBottom;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure ControlBorderSpacing_SetOnChange(AObj: TControlBorderSpacing; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

@@ -602,6 +602,7 @@ begin
   Result :=  AObj.VisibleRowCount;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure DrawGrid_SetOnClick(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnClick}
@@ -609,6 +610,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMovedEvent
 procedure DrawGrid_SetOnColumnMoved(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnColRowMoved}
@@ -616,6 +618,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TContextPopupEvent
 procedure DrawGrid_SetOnContextPopup(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnContextPopup}
@@ -623,6 +626,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure DrawGrid_SetOnDblClick(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDblClick}
@@ -630,6 +634,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragDropEvent
 procedure DrawGrid_SetOnDragDrop(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragDrop}
@@ -637,6 +642,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDragOverEvent
 procedure DrawGrid_SetOnDragOver(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDragOver}
@@ -644,6 +650,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TDrawCellEvent
 procedure DrawGrid_SetOnDrawCell(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnDrawCell}
@@ -651,6 +658,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure DrawGrid_SetOnEndDock(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDock}
@@ -658,6 +666,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TEndDragEvent
 procedure DrawGrid_SetOnEndDrag(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEndDrag}
@@ -665,6 +674,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure DrawGrid_SetOnEnter(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnEnter}
@@ -672,6 +682,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure DrawGrid_SetOnExit(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnExit}
@@ -679,6 +690,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetEditEvent
 procedure DrawGrid_SetOnGetEditMask(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetEditMask}
@@ -686,6 +698,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TGetEditEvent
 procedure DrawGrid_SetOnGetEditText(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnGetEditText}
@@ -693,6 +706,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure DrawGrid_SetOnKeyDown(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyDown}
@@ -700,6 +714,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyPressEvent
 procedure DrawGrid_SetOnKeyPress(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyPress}
@@ -707,6 +722,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TKeyEvent
 procedure DrawGrid_SetOnKeyUp(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnKeyUp}
@@ -714,6 +730,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure DrawGrid_SetOnMouseDown(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseDown}
@@ -721,6 +738,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure DrawGrid_SetOnMouseEnter(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseEnter}
@@ -728,6 +746,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure DrawGrid_SetOnMouseLeave(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseLeave}
@@ -735,6 +754,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseMoveEvent
 procedure DrawGrid_SetOnMouseMove(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseMove}
@@ -742,6 +762,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseEvent
 procedure DrawGrid_SetOnMouseUp(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseUp}
@@ -749,6 +770,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure DrawGrid_SetOnMouseWheelDown(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelDown}
@@ -756,6 +778,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMouseWheelUpDownEvent
 procedure DrawGrid_SetOnMouseWheelUp(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnMouseWheelUp}
@@ -763,6 +786,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TMovedEvent
 procedure DrawGrid_SetOnRowMoved(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnColRowMoved}
@@ -770,6 +794,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TSelectCellEvent
 procedure DrawGrid_SetOnSelectCell(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSelectCell}
@@ -777,6 +802,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TSetEditEvent
 procedure DrawGrid_SetOnSetEditText(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnSetEditText}
@@ -784,6 +810,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TStartDockEvent
 procedure DrawGrid_SetOnStartDock(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnStartDock}
@@ -791,6 +818,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure DrawGrid_SetOnTopLeftChanged(AObj: TDrawGrid; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnTopLeftChanged}

@@ -157,6 +157,7 @@ begin
   AObj.Sorted := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StringList_SetOnChange(AObj: TStringList; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -164,6 +165,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure StringList_SetOnChanging(AObj: TStringList; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChanging}

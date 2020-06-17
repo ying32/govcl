@@ -112,6 +112,7 @@ begin
   AObj.OwnerDraw := AValue;
 end;
 
+//EVENT_TYPE:TMenuChangeEvent
 procedure MainMenu_SetOnChange(AObj: TMainMenu; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}

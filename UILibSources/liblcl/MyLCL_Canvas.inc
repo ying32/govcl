@@ -202,6 +202,7 @@ begin
   AObj.Pen := AValue;
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Canvas_SetOnChange(AObj: TCanvas; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChange}
@@ -209,6 +210,7 @@ begin
   EventMethodCode
 end;
 
+//EVENT_TYPE:TNotifyEvent
 procedure Canvas_SetOnChanging(AObj: TCanvas; AEventId: NativeUInt); extdecl;
 begin
   {$DEFINE EventName := OnChanging}
