@@ -595,7 +595,7 @@ func parseEvents(fileName string) []byte {
 				if item.IsArr {
 					item := Param{}
 					item.Name = "len"
-					item.Type = "uintptr_t"
+					item.Type = "intptr_t"
 					params = append(params, item)
 				}
 			}

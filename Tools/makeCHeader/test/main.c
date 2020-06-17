@@ -3,8 +3,61 @@
 
 #include "liblcl.h" 
 
-void btnClick(TObject sender) {
+ 
+#ifdef _WIN32
+char *UTF8Decode(char* str) {
+    int len = MultiByteToWideChar(CP_UTF8, 0, str, -1, 0, 0);
+    wchar_t* wCharBuffer = (wchar_t*)malloc(len * sizeof(wchar_t) + 1);
+    MultiByteToWideChar(CP_UTF8, 0, str, -1, wCharBuffer, len);
+
+    len = WideCharToMultiByte(CP_ACP, 0, wCharBuffer, -1, 0, 0, 0, NULL);
+    char* aCharBuffer = (char*)malloc(len * sizeof(char) + 1);
+    WideCharToMultiByte(CP_ACP, 0, wCharBuffer, -1, aCharBuffer, len, 0, NULL);
+    free((void*)wCharBuffer);
+
+    return aCharBuffer;
+}
+#endif
+
+void onButton1Click(TObject sender) {
     ShowMessage("Hello world!");
+}
+
+void onOnDropFiles(TObject sender, void* aFileNames, intptr_t len) {
+    printf("aFileNames: %p, len=%d\n", aFileNames, len);
+    intptr_t i;
+    for (i = 0; i < len; i++) {
+        
+#ifdef _WIN32
+        char *filename = UTF8Decode(GetStringArrOf(aFileNames, i));
+#else
+        char *filename = GetStringArrOf(aFileNames, i);
+#endif
+        printf("file[%d]=%s\n", i+1, filename);
+#ifdef _WIN32
+        free((void*)filename);
+#endif
+    }
+}
+
+void onFormKeyDown(TObject sender, Char* key, TShiftState shift) {
+    printf("key=%d, shift=%d\n", *key, shift);
+    if (*key == vkReturn) {
+        ShowMessage("press Enter!");
+    }
+
+    TShiftState s = Include(0, ssAlt);
+    if (InSet(s, ssAlt)) {
+        printf("ssAlt1\n");
+    }
+    s = Exclude(s, ssAlt);
+    if (!InSet(s, ssAlt)) {
+        printf("ssAlt2\n");
+    }
+}
+
+void onEditChange(TObject sender) {
+    printf("%s\n", Edit_GetText(sender));
 }
 
 int main()
@@ -25,12 +78,40 @@ int main()
         TForm form = Application_CreateForm(Application, FALSE);
         Form_SetCaption(form, "LCL Form");
         Form_SetPosition(form, poScreenCenter);
+
+        // 拖放文件测试
+        Form_SetAllowDropFiles(form, TRUE); // 接受文件拖放
+        Form_SetOnDropFiles(form, onOnDropFiles); // 事件
+
+        // 窗口优先接受按键，不受其它影响
+        Form_SetKeyPreview(form, TRUE);
+
+        // 窗口按键事件
+        Form_SetOnKeyDown(form, onFormKeyDown);
         
+        // 从文件加载窗口设置
+        // 从流加载
+        //TMemoryStream mem = NewMemoryStream();
+        //MemoryStream_Write(mem, data, datalen);
+        //ResFormLoadFromStream(mem, form);
+        //MemoryStream_Free(mem);
+        // 从文件加载
+        //ResFormLoadFromFile("./Form1.gfm", form);
+
+        // --  动态创建 -- 
         // 创建按钮
         TButton btn = Button_Create(form);
         Button_SetParent(btn, form);
-        Button_SetOnClick(btn, btnClick);
+        Button_SetOnClick(btn, onButton1Click);
         Button_SetCaption(btn, "button1");
+        Button_SetLeft(btn, 100);
+        Button_SetTop(btn, 100);
+
+        TEdit edit = Edit_Create(form);
+        Edit_SetParent(edit, form);
+        Edit_SetLeft(edit, 10);
+        Edit_SetTop(edit, 10);
+        Edit_SetOnChange(edit, onEditChange);
 
         // 运行app
         Application_Run(Application);
