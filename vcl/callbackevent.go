@@ -422,13 +422,13 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				(*bool)(unsafe.Pointer(getVal(3))))
 
 			// TMessageEvent = procedure (var Msg: TMsg; var Handled: Boolean) of object;
-		case TMessageEvent: // func(msg *TMsg, handled *bool)
-			v.(TMessageEvent)(
-				(*TMsg)(unsafe.Pointer(getVal(0))),
-				(*bool)(unsafe.Pointer(getVal(1))))
+		//case TMessageEvent: // func(msg *TMsg, handled *bool)
+		//	v.(TMessageEvent)(
+		//		(*TMsg)(unsafe.Pointer(getVal(0))),
+		//		(*bool)(unsafe.Pointer(getVal(1))))
 
-			// ---- grid
-			//type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
+		// ---- grid
+		//type TMovedEvent func(sender IObject, fromIndex, toIndex int32)
 		case TMovedEvent:
 			v.(TMovedEvent)(
 				AsObject(getVal(0)),
