@@ -3,7 +3,7 @@
 
 #include "liblcl.h" 
 
-void LCLAPI btnClick(TObject sender) {
+void btnClick(TObject sender) {
     DShowMessage("Hello world!");
 }
 
