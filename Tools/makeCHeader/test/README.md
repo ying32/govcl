@@ -1,4 +1,4 @@
-**已经测试通过** 
+**已经测试通过(Already tested)** 
 
 * Windows 10 64bit
   * vs2017  
