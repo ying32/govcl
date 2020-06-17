@@ -8,6 +8,13 @@
 #ifndef _LIBLCL_H
 #define _LIBLCL_H
 
+#ifdef __cplusplus
+//extern "C" {
+#define CChar const 
+#else
+#define CChar
+#endif
+
 #ifdef __GNUC__
    // #pragma GCC diagnostic ignored "-Wint-to-pointer-cast"
 #endif
@@ -1919,13 +1926,13 @@ void Application_Terminate(TApplication AObj) {
 }
 
 void* pApplication_MessageBox; 
-int32_t Application_MessageBox(TApplication AObj, char* Text, char* Caption, int32_t Flags) {
+int32_t Application_MessageBox(TApplication AObj, CChar char* Text, CChar char* Caption, int32_t Flags) {
     GET_FUNC_ADDR(Application_MessageBox)
     return (int32_t)MySyscall(pApplication_MessageBox, 4, AObj, Text, Caption, Flags ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pApplication_FindComponent; 
-TComponent Application_FindComponent(TApplication AObj, char* AName) {
+TComponent Application_FindComponent(TApplication AObj, CChar char* AName) {
     GET_FUNC_ADDR(Application_FindComponent)
     return (TComponent)MySyscall(pApplication_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -2057,7 +2064,7 @@ char* Application_GetHint(TApplication AObj) {
 }
 
 void* pApplication_SetHint; 
-void Application_SetHint(TApplication AObj, char* AValue) {
+void Application_SetHint(TApplication AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Application_SetHint)
     MySyscall(pApplication_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -2201,7 +2208,7 @@ char* Application_GetTitle(TApplication AObj) {
 }
 
 void* pApplication_SetTitle; 
-void Application_SetTitle(TApplication AObj, char* AValue) {
+void Application_SetTitle(TApplication AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Application_SetTitle)
     MySyscall(pApplication_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -2273,7 +2280,7 @@ char* Application_GetName(TApplication AObj) {
 }
 
 void* pApplication_SetName; 
-void Application_SetName(TApplication AObj, char* AValue) {
+void Application_SetName(TApplication AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Application_SetName)
     MySyscall(pApplication_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -2383,7 +2390,7 @@ void Form_EnableAlign(TForm AObj) {
 }
 
 void* pForm_FindChildControl; 
-TControl Form_FindChildControl(TForm AObj, char* ControlName) {
+TControl Form_FindChildControl(TForm AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(Form_FindChildControl)
     return (TControl)MySyscall(pForm_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -2521,7 +2528,7 @@ void Form_SendToBack(TForm AObj) {
 }
 
 void* pForm_GetTextBuf; 
-int32_t Form_GetTextBuf(TForm AObj, char* Buffer, int32_t BufSize) {
+int32_t Form_GetTextBuf(TForm AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Form_GetTextBuf)
     return (int32_t)MySyscall(pForm_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -2533,13 +2540,13 @@ int32_t Form_GetTextLen(TForm AObj) {
 }
 
 void* pForm_SetTextBuf; 
-void Form_SetTextBuf(TForm AObj, char* Buffer) {
+void Form_SetTextBuf(TForm AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Form_SetTextBuf)
     MySyscall(pForm_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pForm_FindComponent; 
-TComponent Form_FindComponent(TForm AObj, char* AName) {
+TComponent Form_FindComponent(TForm AObj, CChar char* AName) {
     GET_FUNC_ADDR(Form_FindComponent)
     return (TComponent)MySyscall(pForm_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -2773,7 +2780,7 @@ char* Form_GetCaption(TForm AObj) {
 }
 
 void* pForm_SetCaption; 
-void Form_SetCaption(TForm AObj, char* AValue) {
+void Form_SetCaption(TForm AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Form_SetCaption)
     MySyscall(pForm_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -3517,7 +3524,7 @@ char* Form_GetHint(TForm AObj) {
 }
 
 void* pForm_SetHint; 
-void Form_SetHint(TForm AObj, char* AValue) {
+void Form_SetHint(TForm AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Form_SetHint)
     MySyscall(pForm_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -3553,7 +3560,7 @@ char* Form_GetName(TForm AObj) {
 }
 
 void* pForm_SetName; 
-void Form_SetName(TForm AObj, char* AValue) {
+void Form_SetName(TForm AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Form_SetName)
     MySyscall(pForm_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -3723,7 +3730,7 @@ void Button_EnableAlign(TButton AObj) {
 }
 
 void* pButton_FindChildControl; 
-TControl Button_FindChildControl(TButton AObj, char* ControlName) {
+TControl Button_FindChildControl(TButton AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(Button_FindChildControl)
     return (TControl)MySyscall(pButton_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -3879,7 +3886,7 @@ void Button_Show(TButton AObj) {
 }
 
 void* pButton_GetTextBuf; 
-int32_t Button_GetTextBuf(TButton AObj, char* Buffer, int32_t BufSize) {
+int32_t Button_GetTextBuf(TButton AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Button_GetTextBuf)
     return (int32_t)MySyscall(pButton_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -3891,13 +3898,13 @@ int32_t Button_GetTextLen(TButton AObj) {
 }
 
 void* pButton_SetTextBuf; 
-void Button_SetTextBuf(TButton AObj, char* Buffer) {
+void Button_SetTextBuf(TButton AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Button_SetTextBuf)
     MySyscall(pButton_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pButton_FindComponent; 
-TComponent Button_FindComponent(TButton AObj, char* AName) {
+TComponent Button_FindComponent(TButton AObj, CChar char* AName) {
     GET_FUNC_ADDR(Button_FindComponent)
     return (TComponent)MySyscall(pButton_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -4059,7 +4066,7 @@ char* Button_GetCaption(TButton AObj) {
 }
 
 void* pButton_SetCaption; 
-void Button_SetCaption(TButton AObj, char* AValue) {
+void Button_SetCaption(TButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Button_SetCaption)
     MySyscall(pButton_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -4593,7 +4600,7 @@ char* Button_GetHint(TButton AObj) {
 }
 
 void* pButton_SetHint; 
-void Button_SetHint(TButton AObj, char* AValue) {
+void Button_SetHint(TButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Button_SetHint)
     MySyscall(pButton_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -4629,7 +4636,7 @@ char* Button_GetName(TButton AObj) {
 }
 
 void* pButton_SetName; 
-void Button_SetName(TButton AObj, char* AValue) {
+void Button_SetName(TButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Button_SetName)
     MySyscall(pButton_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -4835,7 +4842,7 @@ void Edit_EnableAlign(TEdit AObj) {
 }
 
 void* pEdit_FindChildControl; 
-TControl Edit_FindChildControl(TEdit AObj, char* ControlName) {
+TControl Edit_FindChildControl(TEdit AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(Edit_FindChildControl)
     return (TControl)MySyscall(pEdit_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -4991,7 +4998,7 @@ void Edit_Show(TEdit AObj) {
 }
 
 void* pEdit_GetTextBuf; 
-int32_t Edit_GetTextBuf(TEdit AObj, char* Buffer, int32_t BufSize) {
+int32_t Edit_GetTextBuf(TEdit AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Edit_GetTextBuf)
     return (int32_t)MySyscall(pEdit_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -5003,13 +5010,13 @@ int32_t Edit_GetTextLen(TEdit AObj) {
 }
 
 void* pEdit_SetTextBuf; 
-void Edit_SetTextBuf(TEdit AObj, char* Buffer) {
+void Edit_SetTextBuf(TEdit AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Edit_SetTextBuf)
     MySyscall(pEdit_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pEdit_FindComponent; 
-TComponent Edit_FindComponent(TEdit AObj, char* AName) {
+TComponent Edit_FindComponent(TEdit AObj, CChar char* AName) {
     GET_FUNC_ADDR(Edit_FindComponent)
     return (TComponent)MySyscall(pEdit_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -5459,7 +5466,7 @@ char* Edit_GetText(TEdit AObj) {
 }
 
 void* pEdit_SetText; 
-void Edit_SetText(TEdit AObj, char* AValue) {
+void Edit_SetText(TEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Edit_SetText)
     MySyscall(pEdit_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -5471,7 +5478,7 @@ char* Edit_GetTextHint(TEdit AObj) {
 }
 
 void* pEdit_SetTextHint; 
-void Edit_SetTextHint(TEdit AObj, char* AValue) {
+void Edit_SetTextHint(TEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Edit_SetTextHint)
     MySyscall(pEdit_SetTextHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -5639,7 +5646,7 @@ char* Edit_GetSelText(TEdit AObj) {
 }
 
 void* pEdit_SetSelText; 
-void Edit_SetSelText(TEdit AObj, char* AValue) {
+void Edit_SetSelText(TEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Edit_SetSelText)
     MySyscall(pEdit_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -5891,7 +5898,7 @@ char* Edit_GetHint(TEdit AObj) {
 }
 
 void* pEdit_SetHint; 
-void Edit_SetHint(TEdit AObj, char* AValue) {
+void Edit_SetHint(TEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Edit_SetHint)
     MySyscall(pEdit_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -5927,7 +5934,7 @@ char* Edit_GetName(TEdit AObj) {
 }
 
 void* pEdit_SetName; 
-void Edit_SetName(TEdit AObj, char* AValue) {
+void Edit_SetName(TEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Edit_SetName)
     MySyscall(pEdit_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -6061,7 +6068,7 @@ void MainMenu_Free(TMainMenu AObj) {
 }
 
 void* pMainMenu_FindComponent; 
-TComponent MainMenu_FindComponent(TMainMenu AObj, char* AName) {
+TComponent MainMenu_FindComponent(TMainMenu AObj, CChar char* AName) {
     GET_FUNC_ADDR(MainMenu_FindComponent)
     return (TComponent)MySyscall(pMainMenu_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -6223,7 +6230,7 @@ char* MainMenu_GetName(TMainMenu AObj) {
 }
 
 void* pMainMenu_SetName; 
-void MainMenu_SetName(TMainMenu AObj, char* AValue) {
+void MainMenu_SetName(TMainMenu AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MainMenu_SetName)
     MySyscall(pMainMenu_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -6279,7 +6286,7 @@ void PopupMenu_Popup(TPopupMenu AObj, int32_t X, int32_t Y) {
 }
 
 void* pPopupMenu_FindComponent; 
-TComponent PopupMenu_FindComponent(TPopupMenu AObj, char* AName) {
+TComponent PopupMenu_FindComponent(TPopupMenu AObj, CChar char* AName) {
     GET_FUNC_ADDR(PopupMenu_FindComponent)
     return (TComponent)MySyscall(pPopupMenu_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -6471,7 +6478,7 @@ char* PopupMenu_GetName(TPopupMenu AObj) {
 }
 
 void* pPopupMenu_SetName; 
-void PopupMenu_SetName(TPopupMenu AObj, char* AValue) {
+void PopupMenu_SetName(TPopupMenu AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PopupMenu_SetName)
     MySyscall(pPopupMenu_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -6587,7 +6594,7 @@ void Memo_EnableAlign(TMemo AObj) {
 }
 
 void* pMemo_FindChildControl; 
-TControl Memo_FindChildControl(TMemo AObj, char* ControlName) {
+TControl Memo_FindChildControl(TMemo AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(Memo_FindChildControl)
     return (TControl)MySyscall(pMemo_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -6743,7 +6750,7 @@ void Memo_Show(TMemo AObj) {
 }
 
 void* pMemo_GetTextBuf; 
-int32_t Memo_GetTextBuf(TMemo AObj, char* Buffer, int32_t BufSize) {
+int32_t Memo_GetTextBuf(TMemo AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Memo_GetTextBuf)
     return (int32_t)MySyscall(pMemo_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -6755,13 +6762,13 @@ int32_t Memo_GetTextLen(TMemo AObj) {
 }
 
 void* pMemo_SetTextBuf; 
-void Memo_SetTextBuf(TMemo AObj, char* Buffer) {
+void Memo_SetTextBuf(TMemo AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Memo_SetTextBuf)
     MySyscall(pMemo_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pMemo_FindComponent; 
-TComponent Memo_FindComponent(TMemo AObj, char* AName) {
+TComponent Memo_FindComponent(TMemo AObj, CChar char* AName) {
     GET_FUNC_ADDR(Memo_FindComponent)
     return (TComponent)MySyscall(pMemo_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -7391,7 +7398,7 @@ char* Memo_GetSelText(TMemo AObj) {
 }
 
 void* pMemo_SetSelText; 
-void Memo_SetSelText(TMemo AObj, char* AValue) {
+void Memo_SetSelText(TMemo AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Memo_SetSelText)
     MySyscall(pMemo_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -7403,7 +7410,7 @@ char* Memo_GetText(TMemo AObj) {
 }
 
 void* pMemo_SetText; 
-void Memo_SetText(TMemo AObj, char* AValue) {
+void Memo_SetText(TMemo AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Memo_SetText)
     MySyscall(pMemo_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -7415,7 +7422,7 @@ char* Memo_GetTextHint(TMemo AObj) {
 }
 
 void* pMemo_SetTextHint; 
-void Memo_SetTextHint(TMemo AObj, char* AValue) {
+void Memo_SetTextHint(TMemo AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Memo_SetTextHint)
     MySyscall(pMemo_SetTextHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -7667,7 +7674,7 @@ char* Memo_GetHint(TMemo AObj) {
 }
 
 void* pMemo_SetHint; 
-void Memo_SetHint(TMemo AObj, char* AValue) {
+void Memo_SetHint(TMemo AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Memo_SetHint)
     MySyscall(pMemo_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -7703,7 +7710,7 @@ char* Memo_GetName(TMemo AObj) {
 }
 
 void* pMemo_SetName; 
-void Memo_SetName(TMemo AObj, char* AValue) {
+void Memo_SetName(TMemo AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Memo_SetName)
     MySyscall(pMemo_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -7867,7 +7874,7 @@ void CheckBox_EnableAlign(TCheckBox AObj) {
 }
 
 void* pCheckBox_FindChildControl; 
-TControl CheckBox_FindChildControl(TCheckBox AObj, char* ControlName) {
+TControl CheckBox_FindChildControl(TCheckBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(CheckBox_FindChildControl)
     return (TControl)MySyscall(pCheckBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -8023,7 +8030,7 @@ void CheckBox_Show(TCheckBox AObj) {
 }
 
 void* pCheckBox_GetTextBuf; 
-int32_t CheckBox_GetTextBuf(TCheckBox AObj, char* Buffer, int32_t BufSize) {
+int32_t CheckBox_GetTextBuf(TCheckBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(CheckBox_GetTextBuf)
     return (int32_t)MySyscall(pCheckBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -8035,13 +8042,13 @@ int32_t CheckBox_GetTextLen(TCheckBox AObj) {
 }
 
 void* pCheckBox_SetTextBuf; 
-void CheckBox_SetTextBuf(TCheckBox AObj, char* Buffer) {
+void CheckBox_SetTextBuf(TCheckBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(CheckBox_SetTextBuf)
     MySyscall(pCheckBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pCheckBox_FindComponent; 
-TComponent CheckBox_FindComponent(TCheckBox AObj, char* AName) {
+TComponent CheckBox_FindComponent(TCheckBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(CheckBox_FindComponent)
     return (TComponent)MySyscall(pCheckBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -8221,7 +8228,7 @@ char* CheckBox_GetCaption(TCheckBox AObj) {
 }
 
 void* pCheckBox_SetCaption; 
-void CheckBox_SetCaption(TCheckBox AObj, char* AValue) {
+void CheckBox_SetCaption(TCheckBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CheckBox_SetCaption)
     MySyscall(pCheckBox_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -8779,7 +8786,7 @@ char* CheckBox_GetHint(TCheckBox AObj) {
 }
 
 void* pCheckBox_SetHint; 
-void CheckBox_SetHint(TCheckBox AObj, char* AValue) {
+void CheckBox_SetHint(TCheckBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CheckBox_SetHint)
     MySyscall(pCheckBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -8815,7 +8822,7 @@ char* CheckBox_GetName(TCheckBox AObj) {
 }
 
 void* pCheckBox_SetName; 
-void CheckBox_SetName(TCheckBox AObj, char* AValue) {
+void CheckBox_SetName(TCheckBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CheckBox_SetName)
     MySyscall(pCheckBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -8979,7 +8986,7 @@ void RadioButton_EnableAlign(TRadioButton AObj) {
 }
 
 void* pRadioButton_FindChildControl; 
-TControl RadioButton_FindChildControl(TRadioButton AObj, char* ControlName) {
+TControl RadioButton_FindChildControl(TRadioButton AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(RadioButton_FindChildControl)
     return (TControl)MySyscall(pRadioButton_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -9135,7 +9142,7 @@ void RadioButton_Show(TRadioButton AObj) {
 }
 
 void* pRadioButton_GetTextBuf; 
-int32_t RadioButton_GetTextBuf(TRadioButton AObj, char* Buffer, int32_t BufSize) {
+int32_t RadioButton_GetTextBuf(TRadioButton AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(RadioButton_GetTextBuf)
     return (int32_t)MySyscall(pRadioButton_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -9147,13 +9154,13 @@ int32_t RadioButton_GetTextLen(TRadioButton AObj) {
 }
 
 void* pRadioButton_SetTextBuf; 
-void RadioButton_SetTextBuf(TRadioButton AObj, char* Buffer) {
+void RadioButton_SetTextBuf(TRadioButton AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(RadioButton_SetTextBuf)
     MySyscall(pRadioButton_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRadioButton_FindComponent; 
-TComponent RadioButton_FindComponent(TRadioButton AObj, char* AName) {
+TComponent RadioButton_FindComponent(TRadioButton AObj, CChar char* AName) {
     GET_FUNC_ADDR(RadioButton_FindComponent)
     return (TComponent)MySyscall(pRadioButton_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -9321,7 +9328,7 @@ char* RadioButton_GetCaption(TRadioButton AObj) {
 }
 
 void* pRadioButton_SetCaption; 
-void RadioButton_SetCaption(TRadioButton AObj, char* AValue) {
+void RadioButton_SetCaption(TRadioButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RadioButton_SetCaption)
     MySyscall(pRadioButton_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -9867,7 +9874,7 @@ char* RadioButton_GetHint(TRadioButton AObj) {
 }
 
 void* pRadioButton_SetHint; 
-void RadioButton_SetHint(TRadioButton AObj, char* AValue) {
+void RadioButton_SetHint(TRadioButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RadioButton_SetHint)
     MySyscall(pRadioButton_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -9903,7 +9910,7 @@ char* RadioButton_GetName(TRadioButton AObj) {
 }
 
 void* pRadioButton_SetName; 
-void RadioButton_SetName(TRadioButton AObj, char* AValue) {
+void RadioButton_SetName(TRadioButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RadioButton_SetName)
     MySyscall(pRadioButton_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -10067,7 +10074,7 @@ void GroupBox_EnableAlign(TGroupBox AObj) {
 }
 
 void* pGroupBox_FindChildControl; 
-TControl GroupBox_FindChildControl(TGroupBox AObj, char* ControlName) {
+TControl GroupBox_FindChildControl(TGroupBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(GroupBox_FindChildControl)
     return (TControl)MySyscall(pGroupBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -10223,7 +10230,7 @@ void GroupBox_Show(TGroupBox AObj) {
 }
 
 void* pGroupBox_GetTextBuf; 
-int32_t GroupBox_GetTextBuf(TGroupBox AObj, char* Buffer, int32_t BufSize) {
+int32_t GroupBox_GetTextBuf(TGroupBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(GroupBox_GetTextBuf)
     return (int32_t)MySyscall(pGroupBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -10235,13 +10242,13 @@ int32_t GroupBox_GetTextLen(TGroupBox AObj) {
 }
 
 void* pGroupBox_SetTextBuf; 
-void GroupBox_SetTextBuf(TGroupBox AObj, char* Buffer) {
+void GroupBox_SetTextBuf(TGroupBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(GroupBox_SetTextBuf)
     MySyscall(pGroupBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pGroupBox_FindComponent; 
-TComponent GroupBox_FindComponent(TGroupBox AObj, char* AName) {
+TComponent GroupBox_FindComponent(TGroupBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(GroupBox_FindComponent)
     return (TComponent)MySyscall(pGroupBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -10379,7 +10386,7 @@ char* GroupBox_GetCaption(TGroupBox AObj) {
 }
 
 void* pGroupBox_SetCaption; 
-void GroupBox_SetCaption(TGroupBox AObj, char* AValue) {
+void GroupBox_SetCaption(TGroupBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(GroupBox_SetCaption)
     MySyscall(pGroupBox_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -10949,7 +10956,7 @@ char* GroupBox_GetHint(TGroupBox AObj) {
 }
 
 void* pGroupBox_SetHint; 
-void GroupBox_SetHint(TGroupBox AObj, char* AValue) {
+void GroupBox_SetHint(TGroupBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(GroupBox_SetHint)
     MySyscall(pGroupBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -10985,7 +10992,7 @@ char* GroupBox_GetName(TGroupBox AObj) {
 }
 
 void* pGroupBox_SetName; 
-void GroupBox_SetName(TGroupBox AObj, char* AValue) {
+void GroupBox_SetName(TGroupBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(GroupBox_SetName)
     MySyscall(pGroupBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -11215,7 +11222,7 @@ void Label_Update(TLabel AObj) {
 }
 
 void* pLabel_GetTextBuf; 
-int32_t Label_GetTextBuf(TLabel AObj, char* Buffer, int32_t BufSize) {
+int32_t Label_GetTextBuf(TLabel AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Label_GetTextBuf)
     return (int32_t)MySyscall(pLabel_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -11227,13 +11234,13 @@ int32_t Label_GetTextLen(TLabel AObj) {
 }
 
 void* pLabel_SetTextBuf; 
-void Label_SetTextBuf(TLabel AObj, char* Buffer) {
+void Label_SetTextBuf(TLabel AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Label_SetTextBuf)
     MySyscall(pLabel_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pLabel_FindComponent; 
-TComponent Label_FindComponent(TLabel AObj, char* AName) {
+TComponent Label_FindComponent(TLabel AObj, CChar char* AName) {
     GET_FUNC_ADDR(Label_FindComponent)
     return (TComponent)MySyscall(pLabel_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -11407,7 +11414,7 @@ char* Label_GetCaption(TLabel AObj) {
 }
 
 void* pLabel_SetCaption; 
-void Label_SetCaption(TLabel AObj, char* AValue) {
+void Label_SetCaption(TLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Label_SetCaption)
     MySyscall(pLabel_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -11857,7 +11864,7 @@ char* Label_GetHint(TLabel AObj) {
 }
 
 void* pLabel_SetHint; 
-void Label_SetHint(TLabel AObj, char* AValue) {
+void Label_SetHint(TLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Label_SetHint)
     MySyscall(pLabel_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -11893,7 +11900,7 @@ char* Label_GetName(TLabel AObj) {
 }
 
 void* pLabel_SetName; 
-void Label_SetName(TLabel AObj, char* AValue) {
+void Label_SetName(TLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Label_SetName)
     MySyscall(pLabel_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -12003,7 +12010,7 @@ void ListBox_Free(TListBox AObj) {
 }
 
 void* pListBox_AddItem; 
-void ListBox_AddItem(TListBox AObj, char* Item, TObject AObject) {
+void ListBox_AddItem(TListBox AObj, CChar char* Item, TObject AObject) {
     GET_FUNC_ADDR(ListBox_AddItem)
     MySyscall(pListBox_AddItem, 3, AObj, Item, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -12075,7 +12082,7 @@ void ListBox_EnableAlign(TListBox AObj) {
 }
 
 void* pListBox_FindChildControl; 
-TControl ListBox_FindChildControl(TListBox AObj, char* ControlName) {
+TControl ListBox_FindChildControl(TListBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ListBox_FindChildControl)
     return (TControl)MySyscall(pListBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -12231,7 +12238,7 @@ void ListBox_Show(TListBox AObj) {
 }
 
 void* pListBox_GetTextBuf; 
-int32_t ListBox_GetTextBuf(TListBox AObj, char* Buffer, int32_t BufSize) {
+int32_t ListBox_GetTextBuf(TListBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ListBox_GetTextBuf)
     return (int32_t)MySyscall(pListBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -12243,13 +12250,13 @@ int32_t ListBox_GetTextLen(TListBox AObj) {
 }
 
 void* pListBox_SetTextBuf; 
-void ListBox_SetTextBuf(TListBox AObj, char* Buffer) {
+void ListBox_SetTextBuf(TListBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ListBox_SetTextBuf)
     MySyscall(pListBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pListBox_FindComponent; 
-TComponent ListBox_FindComponent(TListBox AObj, char* AName) {
+TComponent ListBox_FindComponent(TListBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(ListBox_FindComponent)
     return (TComponent)MySyscall(pListBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -13089,7 +13096,7 @@ char* ListBox_GetHint(TListBox AObj) {
 }
 
 void* pListBox_SetHint; 
-void ListBox_SetHint(TListBox AObj, char* AValue) {
+void ListBox_SetHint(TListBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ListBox_SetHint)
     MySyscall(pListBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -13125,7 +13132,7 @@ char* ListBox_GetName(TListBox AObj) {
 }
 
 void* pListBox_SetName; 
-void ListBox_SetName(TListBox AObj, char* AValue) {
+void ListBox_SetName(TListBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ListBox_SetName)
     MySyscall(pListBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -13271,7 +13278,7 @@ void ComboBox_Free(TComboBox AObj) {
 }
 
 void* pComboBox_AddItem; 
-void ComboBox_AddItem(TComboBox AObj, char* Item, TObject AObject) {
+void ComboBox_AddItem(TComboBox AObj, CChar char* Item, TObject AObject) {
     GET_FUNC_ADDR(ComboBox_AddItem)
     MySyscall(pComboBox_AddItem, 3, AObj, Item, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -13337,7 +13344,7 @@ void ComboBox_EnableAlign(TComboBox AObj) {
 }
 
 void* pComboBox_FindChildControl; 
-TControl ComboBox_FindChildControl(TComboBox AObj, char* ControlName) {
+TControl ComboBox_FindChildControl(TComboBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ComboBox_FindChildControl)
     return (TControl)MySyscall(pComboBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -13487,7 +13494,7 @@ void ComboBox_Show(TComboBox AObj) {
 }
 
 void* pComboBox_GetTextBuf; 
-int32_t ComboBox_GetTextBuf(TComboBox AObj, char* Buffer, int32_t BufSize) {
+int32_t ComboBox_GetTextBuf(TComboBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ComboBox_GetTextBuf)
     return (int32_t)MySyscall(pComboBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -13499,13 +13506,13 @@ int32_t ComboBox_GetTextLen(TComboBox AObj) {
 }
 
 void* pComboBox_SetTextBuf; 
-void ComboBox_SetTextBuf(TComboBox AObj, char* Buffer) {
+void ComboBox_SetTextBuf(TComboBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ComboBox_SetTextBuf)
     MySyscall(pComboBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pComboBox_FindComponent; 
-TComponent ComboBox_FindComponent(TComboBox AObj, char* AName) {
+TComponent ComboBox_FindComponent(TComboBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(ComboBox_FindComponent)
     return (TComponent)MySyscall(pComboBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -13943,7 +13950,7 @@ char* ComboBox_GetText(TComboBox AObj) {
 }
 
 void* pComboBox_SetText; 
-void ComboBox_SetText(TComboBox AObj, char* AValue) {
+void ComboBox_SetText(TComboBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBox_SetText)
     MySyscall(pComboBox_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -14081,7 +14088,7 @@ char* ComboBox_GetSelText(TComboBox AObj) {
 }
 
 void* pComboBox_SetSelText; 
-void ComboBox_SetSelText(TComboBox AObj, char* AValue) {
+void ComboBox_SetSelText(TComboBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBox_SetSelText)
     MySyscall(pComboBox_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -14375,7 +14382,7 @@ char* ComboBox_GetHint(TComboBox AObj) {
 }
 
 void* pComboBox_SetHint; 
-void ComboBox_SetHint(TComboBox AObj, char* AValue) {
+void ComboBox_SetHint(TComboBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBox_SetHint)
     MySyscall(pComboBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -14411,7 +14418,7 @@ char* ComboBox_GetName(TComboBox AObj) {
 }
 
 void* pComboBox_SetName; 
-void ComboBox_SetName(TComboBox AObj, char* AValue) {
+void ComboBox_SetName(TComboBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBox_SetName)
     MySyscall(pComboBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -14575,7 +14582,7 @@ void Panel_EnableAlign(TPanel AObj) {
 }
 
 void* pPanel_FindChildControl; 
-TControl Panel_FindChildControl(TPanel AObj, char* ControlName) {
+TControl Panel_FindChildControl(TPanel AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(Panel_FindChildControl)
     return (TControl)MySyscall(pPanel_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -14731,7 +14738,7 @@ void Panel_Show(TPanel AObj) {
 }
 
 void* pPanel_GetTextBuf; 
-int32_t Panel_GetTextBuf(TPanel AObj, char* Buffer, int32_t BufSize) {
+int32_t Panel_GetTextBuf(TPanel AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Panel_GetTextBuf)
     return (int32_t)MySyscall(pPanel_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -14743,13 +14750,13 @@ int32_t Panel_GetTextLen(TPanel AObj) {
 }
 
 void* pPanel_SetTextBuf; 
-void Panel_SetTextBuf(TPanel AObj, char* Buffer) {
+void Panel_SetTextBuf(TPanel AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Panel_SetTextBuf)
     MySyscall(pPanel_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pPanel_FindComponent; 
-TComponent Panel_FindComponent(TPanel AObj, char* AName) {
+TComponent Panel_FindComponent(TPanel AObj, CChar char* AName) {
     GET_FUNC_ADDR(Panel_FindComponent)
     return (TComponent)MySyscall(pPanel_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -14959,7 +14966,7 @@ char* Panel_GetCaption(TPanel AObj) {
 }
 
 void* pPanel_SetCaption; 
-void Panel_SetCaption(TPanel AObj, char* AValue) {
+void Panel_SetCaption(TPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Panel_SetCaption)
     MySyscall(pPanel_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -15559,7 +15566,7 @@ char* Panel_GetHint(TPanel AObj) {
 }
 
 void* pPanel_SetHint; 
-void Panel_SetHint(TPanel AObj, char* AValue) {
+void Panel_SetHint(TPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Panel_SetHint)
     MySyscall(pPanel_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -15595,7 +15602,7 @@ char* Panel_GetName(TPanel AObj) {
 }
 
 void* pPanel_SetName; 
-void Panel_SetName(TPanel AObj, char* AValue) {
+void Panel_SetName(TPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Panel_SetName)
     MySyscall(pPanel_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -15825,7 +15832,7 @@ void Image_Update(TImage AObj) {
 }
 
 void* pImage_GetTextBuf; 
-int32_t Image_GetTextBuf(TImage AObj, char* Buffer, int32_t BufSize) {
+int32_t Image_GetTextBuf(TImage AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Image_GetTextBuf)
     return (int32_t)MySyscall(pImage_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -15837,13 +15844,13 @@ int32_t Image_GetTextLen(TImage AObj) {
 }
 
 void* pImage_SetTextBuf; 
-void Image_SetTextBuf(TImage AObj, char* Buffer) {
+void Image_SetTextBuf(TImage AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Image_SetTextBuf)
     MySyscall(pImage_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pImage_FindComponent; 
-TComponent Image_FindComponent(TImage AObj, char* AName) {
+TComponent Image_FindComponent(TImage AObj, CChar char* AName) {
     GET_FUNC_ADDR(Image_FindComponent)
     return (TComponent)MySyscall(pImage_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -16437,7 +16444,7 @@ char* Image_GetHint(TImage AObj) {
 }
 
 void* pImage_SetHint; 
-void Image_SetHint(TImage AObj, char* AValue) {
+void Image_SetHint(TImage AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Image_SetHint)
     MySyscall(pImage_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -16473,7 +16480,7 @@ char* Image_GetName(TImage AObj) {
 }
 
 void* pImage_SetName; 
-void Image_SetName(TImage AObj, char* AValue) {
+void Image_SetName(TImage AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Image_SetName)
     MySyscall(pImage_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -16679,7 +16686,7 @@ void LinkLabel_Show(TLinkLabel AObj) {
 }
 
 void* pLinkLabel_GetTextBuf; 
-int32_t LinkLabel_GetTextBuf(TLinkLabel AObj, char* Buffer, int32_t BufSize) {
+int32_t LinkLabel_GetTextBuf(TLinkLabel AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(LinkLabel_GetTextBuf)
     return (int32_t)MySyscall(pLinkLabel_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -16691,13 +16698,13 @@ int32_t LinkLabel_GetTextLen(TLinkLabel AObj) {
 }
 
 void* pLinkLabel_SetTextBuf; 
-void LinkLabel_SetTextBuf(TLinkLabel AObj, char* Buffer) {
+void LinkLabel_SetTextBuf(TLinkLabel AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(LinkLabel_SetTextBuf)
     MySyscall(pLinkLabel_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pLinkLabel_FindComponent; 
-TComponent LinkLabel_FindComponent(TLinkLabel AObj, char* AName) {
+TComponent LinkLabel_FindComponent(TLinkLabel AObj, CChar char* AName) {
     GET_FUNC_ADDR(LinkLabel_FindComponent)
     return (TComponent)MySyscall(pLinkLabel_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -16847,7 +16854,7 @@ char* LinkLabel_GetCaption(TLinkLabel AObj) {
 }
 
 void* pLinkLabel_SetCaption; 
-void LinkLabel_SetCaption(TLinkLabel AObj, char* AValue) {
+void LinkLabel_SetCaption(TLinkLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LinkLabel_SetCaption)
     MySyscall(pLinkLabel_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -17255,7 +17262,7 @@ char* LinkLabel_GetHint(TLinkLabel AObj) {
 }
 
 void* pLinkLabel_SetHint; 
-void LinkLabel_SetHint(TLinkLabel AObj, char* AValue) {
+void LinkLabel_SetHint(TLinkLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LinkLabel_SetHint)
     MySyscall(pLinkLabel_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -17291,7 +17298,7 @@ char* LinkLabel_GetName(TLinkLabel AObj) {
 }
 
 void* pLinkLabel_SetName; 
-void LinkLabel_SetName(TLinkLabel AObj, char* AValue) {
+void LinkLabel_SetName(TLinkLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LinkLabel_SetName)
     MySyscall(pLinkLabel_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -17503,7 +17510,7 @@ void SpeedButton_Update(TSpeedButton AObj) {
 }
 
 void* pSpeedButton_GetTextBuf; 
-int32_t SpeedButton_GetTextBuf(TSpeedButton AObj, char* Buffer, int32_t BufSize) {
+int32_t SpeedButton_GetTextBuf(TSpeedButton AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(SpeedButton_GetTextBuf)
     return (int32_t)MySyscall(pSpeedButton_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -17515,13 +17522,13 @@ int32_t SpeedButton_GetTextLen(TSpeedButton AObj) {
 }
 
 void* pSpeedButton_SetTextBuf; 
-void SpeedButton_SetTextBuf(TSpeedButton AObj, char* Buffer) {
+void SpeedButton_SetTextBuf(TSpeedButton AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(SpeedButton_SetTextBuf)
     MySyscall(pSpeedButton_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pSpeedButton_FindComponent; 
-TComponent SpeedButton_FindComponent(TSpeedButton AObj, char* AName) {
+TComponent SpeedButton_FindComponent(TSpeedButton AObj, CChar char* AName) {
     GET_FUNC_ADDR(SpeedButton_FindComponent)
     return (TComponent)MySyscall(pSpeedButton_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -17767,7 +17774,7 @@ char* SpeedButton_GetCaption(TSpeedButton AObj) {
 }
 
 void* pSpeedButton_SetCaption; 
-void SpeedButton_SetCaption(TSpeedButton AObj, char* AValue) {
+void SpeedButton_SetCaption(TSpeedButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpeedButton_SetCaption)
     MySyscall(pSpeedButton_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -18127,7 +18134,7 @@ char* SpeedButton_GetHint(TSpeedButton AObj) {
 }
 
 void* pSpeedButton_SetHint; 
-void SpeedButton_SetHint(TSpeedButton AObj, char* AValue) {
+void SpeedButton_SetHint(TSpeedButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpeedButton_SetHint)
     MySyscall(pSpeedButton_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -18163,7 +18170,7 @@ char* SpeedButton_GetName(TSpeedButton AObj) {
 }
 
 void* pSpeedButton_SetName; 
-void SpeedButton_SetName(TSpeedButton AObj, char* AValue) {
+void SpeedButton_SetName(TSpeedButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpeedButton_SetName)
     MySyscall(pSpeedButton_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -18369,7 +18376,7 @@ void Splitter_Update(TSplitter AObj) {
 }
 
 void* pSplitter_GetTextBuf; 
-int32_t Splitter_GetTextBuf(TSplitter AObj, char* Buffer, int32_t BufSize) {
+int32_t Splitter_GetTextBuf(TSplitter AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Splitter_GetTextBuf)
     return (int32_t)MySyscall(pSplitter_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -18381,13 +18388,13 @@ int32_t Splitter_GetTextLen(TSplitter AObj) {
 }
 
 void* pSplitter_SetTextBuf; 
-void Splitter_SetTextBuf(TSplitter AObj, char* Buffer) {
+void Splitter_SetTextBuf(TSplitter AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Splitter_SetTextBuf)
     MySyscall(pSplitter_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pSplitter_FindComponent; 
-TComponent Splitter_FindComponent(TSplitter AObj, char* AName) {
+TComponent Splitter_FindComponent(TSplitter AObj, CChar char* AName) {
     GET_FUNC_ADDR(Splitter_FindComponent)
     return (TComponent)MySyscall(pSplitter_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -18783,7 +18790,7 @@ char* Splitter_GetHint(TSplitter AObj) {
 }
 
 void* pSplitter_SetHint; 
-void Splitter_SetHint(TSplitter AObj, char* AValue) {
+void Splitter_SetHint(TSplitter AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Splitter_SetHint)
     MySyscall(pSplitter_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -18819,7 +18826,7 @@ char* Splitter_GetName(TSplitter AObj) {
 }
 
 void* pSplitter_SetName; 
-void Splitter_SetName(TSplitter AObj, char* AValue) {
+void Splitter_SetName(TSplitter AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Splitter_SetName)
     MySyscall(pSplitter_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -18965,7 +18972,7 @@ void RadioGroup_EnableAlign(TRadioGroup AObj) {
 }
 
 void* pRadioGroup_FindChildControl; 
-TControl RadioGroup_FindChildControl(TRadioGroup AObj, char* ControlName) {
+TControl RadioGroup_FindChildControl(TRadioGroup AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(RadioGroup_FindChildControl)
     return (TControl)MySyscall(pRadioGroup_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -19115,7 +19122,7 @@ void RadioGroup_Show(TRadioGroup AObj) {
 }
 
 void* pRadioGroup_GetTextBuf; 
-int32_t RadioGroup_GetTextBuf(TRadioGroup AObj, char* Buffer, int32_t BufSize) {
+int32_t RadioGroup_GetTextBuf(TRadioGroup AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(RadioGroup_GetTextBuf)
     return (int32_t)MySyscall(pRadioGroup_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -19127,13 +19134,13 @@ int32_t RadioGroup_GetTextLen(TRadioGroup AObj) {
 }
 
 void* pRadioGroup_SetTextBuf; 
-void RadioGroup_SetTextBuf(TRadioGroup AObj, char* Buffer) {
+void RadioGroup_SetTextBuf(TRadioGroup AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(RadioGroup_SetTextBuf)
     MySyscall(pRadioGroup_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRadioGroup_FindComponent; 
-TComponent RadioGroup_FindComponent(TRadioGroup AObj, char* AName) {
+TComponent RadioGroup_FindComponent(TRadioGroup AObj, CChar char* AName) {
     GET_FUNC_ADDR(RadioGroup_FindComponent)
     return (TComponent)MySyscall(pRadioGroup_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -19271,7 +19278,7 @@ char* RadioGroup_GetCaption(TRadioGroup AObj) {
 }
 
 void* pRadioGroup_SetCaption; 
-void RadioGroup_SetCaption(TRadioGroup AObj, char* AValue) {
+void RadioGroup_SetCaption(TRadioGroup AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RadioGroup_SetCaption)
     MySyscall(pRadioGroup_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -19787,7 +19794,7 @@ char* RadioGroup_GetHint(TRadioGroup AObj) {
 }
 
 void* pRadioGroup_SetHint; 
-void RadioGroup_SetHint(TRadioGroup AObj, char* AValue) {
+void RadioGroup_SetHint(TRadioGroup AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RadioGroup_SetHint)
     MySyscall(pRadioGroup_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -19823,7 +19830,7 @@ char* RadioGroup_GetName(TRadioGroup AObj) {
 }
 
 void* pRadioGroup_SetName; 
-void RadioGroup_SetName(TRadioGroup AObj, char* AValue) {
+void RadioGroup_SetName(TRadioGroup AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RadioGroup_SetName)
     MySyscall(pRadioGroup_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -19987,7 +19994,7 @@ void StaticText_EnableAlign(TStaticText AObj) {
 }
 
 void* pStaticText_FindChildControl; 
-TControl StaticText_FindChildControl(TStaticText AObj, char* ControlName) {
+TControl StaticText_FindChildControl(TStaticText AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(StaticText_FindChildControl)
     return (TControl)MySyscall(pStaticText_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -20143,7 +20150,7 @@ void StaticText_Show(TStaticText AObj) {
 }
 
 void* pStaticText_GetTextBuf; 
-int32_t StaticText_GetTextBuf(TStaticText AObj, char* Buffer, int32_t BufSize) {
+int32_t StaticText_GetTextBuf(TStaticText AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(StaticText_GetTextBuf)
     return (int32_t)MySyscall(pStaticText_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -20155,13 +20162,13 @@ int32_t StaticText_GetTextLen(TStaticText AObj) {
 }
 
 void* pStaticText_SetTextBuf; 
-void StaticText_SetTextBuf(TStaticText AObj, char* Buffer) {
+void StaticText_SetTextBuf(TStaticText AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(StaticText_SetTextBuf)
     MySyscall(pStaticText_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStaticText_FindComponent; 
-TComponent StaticText_FindComponent(TStaticText AObj, char* AName) {
+TComponent StaticText_FindComponent(TStaticText AObj, CChar char* AName) {
     GET_FUNC_ADDR(StaticText_FindComponent)
     return (TComponent)MySyscall(pStaticText_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -20335,7 +20342,7 @@ char* StaticText_GetCaption(TStaticText AObj) {
 }
 
 void* pStaticText_SetCaption; 
-void StaticText_SetCaption(TStaticText AObj, char* AValue) {
+void StaticText_SetCaption(TStaticText AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StaticText_SetCaption)
     MySyscall(pStaticText_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -20881,7 +20888,7 @@ char* StaticText_GetHint(TStaticText AObj) {
 }
 
 void* pStaticText_SetHint; 
-void StaticText_SetHint(TStaticText AObj, char* AValue) {
+void StaticText_SetHint(TStaticText AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StaticText_SetHint)
     MySyscall(pStaticText_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -20917,7 +20924,7 @@ char* StaticText_GetName(TStaticText AObj) {
 }
 
 void* pStaticText_SetName; 
-void StaticText_SetName(TStaticText AObj, char* AValue) {
+void StaticText_SetName(TStaticText AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StaticText_SetName)
     MySyscall(pStaticText_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -21051,7 +21058,7 @@ void ColorBox_Free(TColorBox AObj) {
 }
 
 void* pColorBox_AddItem; 
-void ColorBox_AddItem(TColorBox AObj, char* Item, TObject AObject) {
+void ColorBox_AddItem(TColorBox AObj, CChar char* Item, TObject AObject) {
     GET_FUNC_ADDR(ColorBox_AddItem)
     MySyscall(pColorBox_AddItem, 3, AObj, Item, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -21117,7 +21124,7 @@ void ColorBox_EnableAlign(TColorBox AObj) {
 }
 
 void* pColorBox_FindChildControl; 
-TControl ColorBox_FindChildControl(TColorBox AObj, char* ControlName) {
+TControl ColorBox_FindChildControl(TColorBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ColorBox_FindChildControl)
     return (TControl)MySyscall(pColorBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -21267,7 +21274,7 @@ void ColorBox_Show(TColorBox AObj) {
 }
 
 void* pColorBox_GetTextBuf; 
-int32_t ColorBox_GetTextBuf(TColorBox AObj, char* Buffer, int32_t BufSize) {
+int32_t ColorBox_GetTextBuf(TColorBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ColorBox_GetTextBuf)
     return (int32_t)MySyscall(pColorBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -21279,13 +21286,13 @@ int32_t ColorBox_GetTextLen(TColorBox AObj) {
 }
 
 void* pColorBox_SetTextBuf; 
-void ColorBox_SetTextBuf(TColorBox AObj, char* Buffer) {
+void ColorBox_SetTextBuf(TColorBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ColorBox_SetTextBuf)
     MySyscall(pColorBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pColorBox_FindComponent; 
-TComponent ColorBox_FindComponent(TColorBox AObj, char* AName) {
+TComponent ColorBox_FindComponent(TColorBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(ColorBox_FindComponent)
     return (TComponent)MySyscall(pColorBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -21783,7 +21790,7 @@ char* ColorBox_GetSelText(TColorBox AObj) {
 }
 
 void* pColorBox_SetSelText; 
-void ColorBox_SetSelText(TColorBox AObj, char* AValue) {
+void ColorBox_SetSelText(TColorBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ColorBox_SetSelText)
     MySyscall(pColorBox_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -22101,7 +22108,7 @@ char* ColorBox_GetHint(TColorBox AObj) {
 }
 
 void* pColorBox_SetHint; 
-void ColorBox_SetHint(TColorBox AObj, char* AValue) {
+void ColorBox_SetHint(TColorBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ColorBox_SetHint)
     MySyscall(pColorBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -22137,7 +22144,7 @@ char* ColorBox_GetName(TColorBox AObj) {
 }
 
 void* pColorBox_SetName; 
-void ColorBox_SetName(TColorBox AObj, char* AValue) {
+void ColorBox_SetName(TColorBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ColorBox_SetName)
     MySyscall(pColorBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -22283,7 +22290,7 @@ void ColorListBox_Free(TColorListBox AObj) {
 }
 
 void* pColorListBox_AddItem; 
-void ColorListBox_AddItem(TColorListBox AObj, char* Item, TObject AObject) {
+void ColorListBox_AddItem(TColorListBox AObj, CChar char* Item, TObject AObject) {
     GET_FUNC_ADDR(ColorListBox_AddItem)
     MySyscall(pColorListBox_AddItem, 3, AObj, Item, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -22355,7 +22362,7 @@ void ColorListBox_EnableAlign(TColorListBox AObj) {
 }
 
 void* pColorListBox_FindChildControl; 
-TControl ColorListBox_FindChildControl(TColorListBox AObj, char* ControlName) {
+TControl ColorListBox_FindChildControl(TColorListBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ColorListBox_FindChildControl)
     return (TControl)MySyscall(pColorListBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -22511,7 +22518,7 @@ void ColorListBox_Show(TColorListBox AObj) {
 }
 
 void* pColorListBox_GetTextBuf; 
-int32_t ColorListBox_GetTextBuf(TColorListBox AObj, char* Buffer, int32_t BufSize) {
+int32_t ColorListBox_GetTextBuf(TColorListBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ColorListBox_GetTextBuf)
     return (int32_t)MySyscall(pColorListBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -22523,13 +22530,13 @@ int32_t ColorListBox_GetTextLen(TColorListBox AObj) {
 }
 
 void* pColorListBox_SetTextBuf; 
-void ColorListBox_SetTextBuf(TColorListBox AObj, char* Buffer) {
+void ColorListBox_SetTextBuf(TColorListBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ColorListBox_SetTextBuf)
     MySyscall(pColorListBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pColorListBox_FindComponent; 
-TComponent ColorListBox_FindComponent(TColorListBox AObj, char* AName) {
+TComponent ColorListBox_FindComponent(TColorListBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(ColorListBox_FindComponent)
     return (TComponent)MySyscall(pColorListBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23297,7 +23304,7 @@ char* ColorListBox_GetHint(TColorListBox AObj) {
 }
 
 void* pColorListBox_SetHint; 
-void ColorListBox_SetHint(TColorListBox AObj, char* AValue) {
+void ColorListBox_SetHint(TColorListBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ColorListBox_SetHint)
     MySyscall(pColorListBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23333,7 +23340,7 @@ char* ColorListBox_GetName(TColorListBox AObj) {
 }
 
 void* pColorListBox_SetName; 
-void ColorListBox_SetName(TColorListBox AObj, char* AValue) {
+void ColorListBox_SetName(TColorListBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ColorListBox_SetName)
     MySyscall(pColorListBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23485,7 +23492,7 @@ void TrayIcon_ShowBalloonHint(TTrayIcon AObj) {
 }
 
 void* pTrayIcon_FindComponent; 
-TComponent TrayIcon_FindComponent(TTrayIcon AObj, char* AName) {
+TComponent TrayIcon_FindComponent(TTrayIcon AObj, CChar char* AName) {
     GET_FUNC_ADDR(TrayIcon_FindComponent)
     return (TComponent)MySyscall(pTrayIcon_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23569,7 +23576,7 @@ char* TrayIcon_GetHint(TTrayIcon AObj) {
 }
 
 void* pTrayIcon_SetHint; 
-void TrayIcon_SetHint(TTrayIcon AObj, char* AValue) {
+void TrayIcon_SetHint(TTrayIcon AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TrayIcon_SetHint)
     MySyscall(pTrayIcon_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23581,7 +23588,7 @@ char* TrayIcon_GetBalloonHint(TTrayIcon AObj) {
 }
 
 void* pTrayIcon_SetBalloonHint; 
-void TrayIcon_SetBalloonHint(TTrayIcon AObj, char* AValue) {
+void TrayIcon_SetBalloonHint(TTrayIcon AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TrayIcon_SetBalloonHint)
     MySyscall(pTrayIcon_SetBalloonHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23593,7 +23600,7 @@ char* TrayIcon_GetBalloonTitle(TTrayIcon AObj) {
 }
 
 void* pTrayIcon_SetBalloonTitle; 
-void TrayIcon_SetBalloonTitle(TTrayIcon AObj, char* AValue) {
+void TrayIcon_SetBalloonTitle(TTrayIcon AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TrayIcon_SetBalloonTitle)
     MySyscall(pTrayIcon_SetBalloonTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23719,7 +23726,7 @@ char* TrayIcon_GetName(TTrayIcon AObj) {
 }
 
 void* pTrayIcon_SetName; 
-void TrayIcon_SetName(TTrayIcon AObj, char* AValue) {
+void TrayIcon_SetName(TTrayIcon AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TrayIcon_SetName)
     MySyscall(pTrayIcon_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23769,7 +23776,7 @@ BOOL OpenDialog_Execute(TOpenDialog AObj) {
 }
 
 void* pOpenDialog_FindComponent; 
-TComponent OpenDialog_FindComponent(TOpenDialog AObj, char* AName) {
+TComponent OpenDialog_FindComponent(TOpenDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(OpenDialog_FindComponent)
     return (TComponent)MySyscall(pOpenDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23847,7 +23854,7 @@ char* OpenDialog_GetDefaultExt(TOpenDialog AObj) {
 }
 
 void* pOpenDialog_SetDefaultExt; 
-void OpenDialog_SetDefaultExt(TOpenDialog AObj, char* AValue) {
+void OpenDialog_SetDefaultExt(TOpenDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenDialog_SetDefaultExt)
     MySyscall(pOpenDialog_SetDefaultExt, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23859,7 +23866,7 @@ char* OpenDialog_GetFileName(TOpenDialog AObj) {
 }
 
 void* pOpenDialog_SetFileName; 
-void OpenDialog_SetFileName(TOpenDialog AObj, char* AValue) {
+void OpenDialog_SetFileName(TOpenDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenDialog_SetFileName)
     MySyscall(pOpenDialog_SetFileName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23871,7 +23878,7 @@ char* OpenDialog_GetFilter(TOpenDialog AObj) {
 }
 
 void* pOpenDialog_SetFilter; 
-void OpenDialog_SetFilter(TOpenDialog AObj, char* AValue) {
+void OpenDialog_SetFilter(TOpenDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenDialog_SetFilter)
     MySyscall(pOpenDialog_SetFilter, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23895,7 +23902,7 @@ char* OpenDialog_GetInitialDir(TOpenDialog AObj) {
 }
 
 void* pOpenDialog_SetInitialDir; 
-void OpenDialog_SetInitialDir(TOpenDialog AObj, char* AValue) {
+void OpenDialog_SetInitialDir(TOpenDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenDialog_SetInitialDir)
     MySyscall(pOpenDialog_SetInitialDir, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23919,7 +23926,7 @@ char* OpenDialog_GetTitle(TOpenDialog AObj) {
 }
 
 void* pOpenDialog_SetTitle; 
-void OpenDialog_SetTitle(TOpenDialog AObj, char* AValue) {
+void OpenDialog_SetTitle(TOpenDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenDialog_SetTitle)
     MySyscall(pOpenDialog_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -23973,7 +23980,7 @@ char* OpenDialog_GetName(TOpenDialog AObj) {
 }
 
 void* pOpenDialog_SetName; 
-void OpenDialog_SetName(TOpenDialog AObj, char* AValue) {
+void OpenDialog_SetName(TOpenDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenDialog_SetName)
     MySyscall(pOpenDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24023,7 +24030,7 @@ BOOL SaveDialog_Execute(TSaveDialog AObj) {
 }
 
 void* pSaveDialog_FindComponent; 
-TComponent SaveDialog_FindComponent(TSaveDialog AObj, char* AName) {
+TComponent SaveDialog_FindComponent(TSaveDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(SaveDialog_FindComponent)
     return (TComponent)MySyscall(pSaveDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24101,7 +24108,7 @@ char* SaveDialog_GetDefaultExt(TSaveDialog AObj) {
 }
 
 void* pSaveDialog_SetDefaultExt; 
-void SaveDialog_SetDefaultExt(TSaveDialog AObj, char* AValue) {
+void SaveDialog_SetDefaultExt(TSaveDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SaveDialog_SetDefaultExt)
     MySyscall(pSaveDialog_SetDefaultExt, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24113,7 +24120,7 @@ char* SaveDialog_GetFileName(TSaveDialog AObj) {
 }
 
 void* pSaveDialog_SetFileName; 
-void SaveDialog_SetFileName(TSaveDialog AObj, char* AValue) {
+void SaveDialog_SetFileName(TSaveDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SaveDialog_SetFileName)
     MySyscall(pSaveDialog_SetFileName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24125,7 +24132,7 @@ char* SaveDialog_GetFilter(TSaveDialog AObj) {
 }
 
 void* pSaveDialog_SetFilter; 
-void SaveDialog_SetFilter(TSaveDialog AObj, char* AValue) {
+void SaveDialog_SetFilter(TSaveDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SaveDialog_SetFilter)
     MySyscall(pSaveDialog_SetFilter, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24149,7 +24156,7 @@ char* SaveDialog_GetInitialDir(TSaveDialog AObj) {
 }
 
 void* pSaveDialog_SetInitialDir; 
-void SaveDialog_SetInitialDir(TSaveDialog AObj, char* AValue) {
+void SaveDialog_SetInitialDir(TSaveDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SaveDialog_SetInitialDir)
     MySyscall(pSaveDialog_SetInitialDir, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24173,7 +24180,7 @@ char* SaveDialog_GetTitle(TSaveDialog AObj) {
 }
 
 void* pSaveDialog_SetTitle; 
-void SaveDialog_SetTitle(TSaveDialog AObj, char* AValue) {
+void SaveDialog_SetTitle(TSaveDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SaveDialog_SetTitle)
     MySyscall(pSaveDialog_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24227,7 +24234,7 @@ char* SaveDialog_GetName(TSaveDialog AObj) {
 }
 
 void* pSaveDialog_SetName; 
-void SaveDialog_SetName(TSaveDialog AObj, char* AValue) {
+void SaveDialog_SetName(TSaveDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SaveDialog_SetName)
     MySyscall(pSaveDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24277,7 +24284,7 @@ BOOL ColorDialog_Execute(TColorDialog AObj) {
 }
 
 void* pColorDialog_FindComponent; 
-TComponent ColorDialog_FindComponent(TColorDialog AObj, char* AName) {
+TComponent ColorDialog_FindComponent(TColorDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(ColorDialog_FindComponent)
     return (TComponent)MySyscall(pColorDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24403,7 +24410,7 @@ char* ColorDialog_GetName(TColorDialog AObj) {
 }
 
 void* pColorDialog_SetName; 
-void ColorDialog_SetName(TColorDialog AObj, char* AValue) {
+void ColorDialog_SetName(TColorDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ColorDialog_SetName)
     MySyscall(pColorDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24453,7 +24460,7 @@ BOOL FontDialog_Execute(TFontDialog AObj) {
 }
 
 void* pFontDialog_FindComponent; 
-TComponent FontDialog_FindComponent(TFontDialog AObj, char* AName) {
+TComponent FontDialog_FindComponent(TFontDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(FontDialog_FindComponent)
     return (TComponent)MySyscall(pFontDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24591,7 +24598,7 @@ char* FontDialog_GetName(TFontDialog AObj) {
 }
 
 void* pFontDialog_SetName; 
-void FontDialog_SetName(TFontDialog AObj, char* AValue) {
+void FontDialog_SetName(TFontDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(FontDialog_SetName)
     MySyscall(pFontDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24641,7 +24648,7 @@ BOOL PrintDialog_Execute(TPrintDialog AObj) {
 }
 
 void* pPrintDialog_FindComponent; 
-TComponent PrintDialog_FindComponent(TPrintDialog AObj, char* AName) {
+TComponent PrintDialog_FindComponent(TPrintDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(PrintDialog_FindComponent)
     return (TComponent)MySyscall(pPrintDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24863,7 +24870,7 @@ char* PrintDialog_GetName(TPrintDialog AObj) {
 }
 
 void* pPrintDialog_SetName; 
-void PrintDialog_SetName(TPrintDialog AObj, char* AValue) {
+void PrintDialog_SetName(TPrintDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PrintDialog_SetName)
     MySyscall(pPrintDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24913,7 +24920,7 @@ BOOL OpenPictureDialog_Execute(TOpenPictureDialog AObj) {
 }
 
 void* pOpenPictureDialog_FindComponent; 
-TComponent OpenPictureDialog_FindComponent(TOpenPictureDialog AObj, char* AName) {
+TComponent OpenPictureDialog_FindComponent(TOpenPictureDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(OpenPictureDialog_FindComponent)
     return (TComponent)MySyscall(pOpenPictureDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -24985,7 +24992,7 @@ char* OpenPictureDialog_GetFilter(TOpenPictureDialog AObj) {
 }
 
 void* pOpenPictureDialog_SetFilter; 
-void OpenPictureDialog_SetFilter(TOpenPictureDialog AObj, char* AValue) {
+void OpenPictureDialog_SetFilter(TOpenPictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenPictureDialog_SetFilter)
     MySyscall(pOpenPictureDialog_SetFilter, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25003,7 +25010,7 @@ char* OpenPictureDialog_GetDefaultExt(TOpenPictureDialog AObj) {
 }
 
 void* pOpenPictureDialog_SetDefaultExt; 
-void OpenPictureDialog_SetDefaultExt(TOpenPictureDialog AObj, char* AValue) {
+void OpenPictureDialog_SetDefaultExt(TOpenPictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenPictureDialog_SetDefaultExt)
     MySyscall(pOpenPictureDialog_SetDefaultExt, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25015,7 +25022,7 @@ char* OpenPictureDialog_GetFileName(TOpenPictureDialog AObj) {
 }
 
 void* pOpenPictureDialog_SetFileName; 
-void OpenPictureDialog_SetFileName(TOpenPictureDialog AObj, char* AValue) {
+void OpenPictureDialog_SetFileName(TOpenPictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenPictureDialog_SetFileName)
     MySyscall(pOpenPictureDialog_SetFileName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25039,7 +25046,7 @@ char* OpenPictureDialog_GetInitialDir(TOpenPictureDialog AObj) {
 }
 
 void* pOpenPictureDialog_SetInitialDir; 
-void OpenPictureDialog_SetInitialDir(TOpenPictureDialog AObj, char* AValue) {
+void OpenPictureDialog_SetInitialDir(TOpenPictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenPictureDialog_SetInitialDir)
     MySyscall(pOpenPictureDialog_SetInitialDir, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25063,7 +25070,7 @@ char* OpenPictureDialog_GetTitle(TOpenPictureDialog AObj) {
 }
 
 void* pOpenPictureDialog_SetTitle; 
-void OpenPictureDialog_SetTitle(TOpenPictureDialog AObj, char* AValue) {
+void OpenPictureDialog_SetTitle(TOpenPictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenPictureDialog_SetTitle)
     MySyscall(pOpenPictureDialog_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25117,7 +25124,7 @@ char* OpenPictureDialog_GetName(TOpenPictureDialog AObj) {
 }
 
 void* pOpenPictureDialog_SetName; 
-void OpenPictureDialog_SetName(TOpenPictureDialog AObj, char* AValue) {
+void OpenPictureDialog_SetName(TOpenPictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(OpenPictureDialog_SetName)
     MySyscall(pOpenPictureDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25167,7 +25174,7 @@ BOOL SavePictureDialog_Execute(TSavePictureDialog AObj) {
 }
 
 void* pSavePictureDialog_FindComponent; 
-TComponent SavePictureDialog_FindComponent(TSavePictureDialog AObj, char* AName) {
+TComponent SavePictureDialog_FindComponent(TSavePictureDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(SavePictureDialog_FindComponent)
     return (TComponent)MySyscall(pSavePictureDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25239,7 +25246,7 @@ char* SavePictureDialog_GetFilter(TSavePictureDialog AObj) {
 }
 
 void* pSavePictureDialog_SetFilter; 
-void SavePictureDialog_SetFilter(TSavePictureDialog AObj, char* AValue) {
+void SavePictureDialog_SetFilter(TSavePictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SavePictureDialog_SetFilter)
     MySyscall(pSavePictureDialog_SetFilter, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25257,7 +25264,7 @@ char* SavePictureDialog_GetDefaultExt(TSavePictureDialog AObj) {
 }
 
 void* pSavePictureDialog_SetDefaultExt; 
-void SavePictureDialog_SetDefaultExt(TSavePictureDialog AObj, char* AValue) {
+void SavePictureDialog_SetDefaultExt(TSavePictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SavePictureDialog_SetDefaultExt)
     MySyscall(pSavePictureDialog_SetDefaultExt, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25269,7 +25276,7 @@ char* SavePictureDialog_GetFileName(TSavePictureDialog AObj) {
 }
 
 void* pSavePictureDialog_SetFileName; 
-void SavePictureDialog_SetFileName(TSavePictureDialog AObj, char* AValue) {
+void SavePictureDialog_SetFileName(TSavePictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SavePictureDialog_SetFileName)
     MySyscall(pSavePictureDialog_SetFileName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25293,7 +25300,7 @@ char* SavePictureDialog_GetInitialDir(TSavePictureDialog AObj) {
 }
 
 void* pSavePictureDialog_SetInitialDir; 
-void SavePictureDialog_SetInitialDir(TSavePictureDialog AObj, char* AValue) {
+void SavePictureDialog_SetInitialDir(TSavePictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SavePictureDialog_SetInitialDir)
     MySyscall(pSavePictureDialog_SetInitialDir, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25317,7 +25324,7 @@ char* SavePictureDialog_GetTitle(TSavePictureDialog AObj) {
 }
 
 void* pSavePictureDialog_SetTitle; 
-void SavePictureDialog_SetTitle(TSavePictureDialog AObj, char* AValue) {
+void SavePictureDialog_SetTitle(TSavePictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SavePictureDialog_SetTitle)
     MySyscall(pSavePictureDialog_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25371,7 +25378,7 @@ char* SavePictureDialog_GetName(TSavePictureDialog AObj) {
 }
 
 void* pSavePictureDialog_SetName; 
-void SavePictureDialog_SetName(TSavePictureDialog AObj, char* AValue) {
+void SavePictureDialog_SetName(TSavePictureDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SavePictureDialog_SetName)
     MySyscall(pSavePictureDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25421,7 +25428,7 @@ BOOL SelectDirectoryDialog_Execute(TSelectDirectoryDialog AObj) {
 }
 
 void* pSelectDirectoryDialog_FindComponent; 
-TComponent SelectDirectoryDialog_FindComponent(TSelectDirectoryDialog AObj, char* AName) {
+TComponent SelectDirectoryDialog_FindComponent(TSelectDirectoryDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(SelectDirectoryDialog_FindComponent)
     return (TComponent)MySyscall(pSelectDirectoryDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25499,7 +25506,7 @@ char* SelectDirectoryDialog_GetDefaultExt(TSelectDirectoryDialog AObj) {
 }
 
 void* pSelectDirectoryDialog_SetDefaultExt; 
-void SelectDirectoryDialog_SetDefaultExt(TSelectDirectoryDialog AObj, char* AValue) {
+void SelectDirectoryDialog_SetDefaultExt(TSelectDirectoryDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SelectDirectoryDialog_SetDefaultExt)
     MySyscall(pSelectDirectoryDialog_SetDefaultExt, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25511,7 +25518,7 @@ char* SelectDirectoryDialog_GetFileName(TSelectDirectoryDialog AObj) {
 }
 
 void* pSelectDirectoryDialog_SetFileName; 
-void SelectDirectoryDialog_SetFileName(TSelectDirectoryDialog AObj, char* AValue) {
+void SelectDirectoryDialog_SetFileName(TSelectDirectoryDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SelectDirectoryDialog_SetFileName)
     MySyscall(pSelectDirectoryDialog_SetFileName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25523,7 +25530,7 @@ char* SelectDirectoryDialog_GetFilter(TSelectDirectoryDialog AObj) {
 }
 
 void* pSelectDirectoryDialog_SetFilter; 
-void SelectDirectoryDialog_SetFilter(TSelectDirectoryDialog AObj, char* AValue) {
+void SelectDirectoryDialog_SetFilter(TSelectDirectoryDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SelectDirectoryDialog_SetFilter)
     MySyscall(pSelectDirectoryDialog_SetFilter, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25547,7 +25554,7 @@ char* SelectDirectoryDialog_GetInitialDir(TSelectDirectoryDialog AObj) {
 }
 
 void* pSelectDirectoryDialog_SetInitialDir; 
-void SelectDirectoryDialog_SetInitialDir(TSelectDirectoryDialog AObj, char* AValue) {
+void SelectDirectoryDialog_SetInitialDir(TSelectDirectoryDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SelectDirectoryDialog_SetInitialDir)
     MySyscall(pSelectDirectoryDialog_SetInitialDir, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25571,7 +25578,7 @@ char* SelectDirectoryDialog_GetTitle(TSelectDirectoryDialog AObj) {
 }
 
 void* pSelectDirectoryDialog_SetTitle; 
-void SelectDirectoryDialog_SetTitle(TSelectDirectoryDialog AObj, char* AValue) {
+void SelectDirectoryDialog_SetTitle(TSelectDirectoryDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SelectDirectoryDialog_SetTitle)
     MySyscall(pSelectDirectoryDialog_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25625,7 +25632,7 @@ char* SelectDirectoryDialog_GetName(TSelectDirectoryDialog AObj) {
 }
 
 void* pSelectDirectoryDialog_SetName; 
-void SelectDirectoryDialog_SetName(TSelectDirectoryDialog AObj, char* AValue) {
+void SelectDirectoryDialog_SetName(TSelectDirectoryDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SelectDirectoryDialog_SetName)
     MySyscall(pSelectDirectoryDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25675,7 +25682,7 @@ void RichEdit_Clear(TRichEdit AObj) {
 }
 
 void* pRichEdit_FindText; 
-int32_t RichEdit_FindText(TRichEdit AObj, char* SearchStr, int32_t StartPos, int32_t Length, TSearchTypes Options) {
+int32_t RichEdit_FindText(TRichEdit AObj, CChar char* SearchStr, int32_t StartPos, int32_t Length, TSearchTypes Options) {
     GET_FUNC_ADDR(RichEdit_FindText)
     return (int32_t)MySyscall(pRichEdit_FindText, 5, AObj, SearchStr, StartPos, Length, Options ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25747,7 +25754,7 @@ void RichEdit_EnableAlign(TRichEdit AObj) {
 }
 
 void* pRichEdit_FindChildControl; 
-TControl RichEdit_FindChildControl(TRichEdit AObj, char* ControlName) {
+TControl RichEdit_FindChildControl(TRichEdit AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(RichEdit_FindChildControl)
     return (TControl)MySyscall(pRichEdit_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25903,7 +25910,7 @@ void RichEdit_Show(TRichEdit AObj) {
 }
 
 void* pRichEdit_GetTextBuf; 
-int32_t RichEdit_GetTextBuf(TRichEdit AObj, char* Buffer, int32_t BufSize) {
+int32_t RichEdit_GetTextBuf(TRichEdit AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(RichEdit_GetTextBuf)
     return (int32_t)MySyscall(pRichEdit_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -25915,13 +25922,13 @@ int32_t RichEdit_GetTextLen(TRichEdit AObj) {
 }
 
 void* pRichEdit_SetTextBuf; 
-void RichEdit_SetTextBuf(TRichEdit AObj, char* Buffer) {
+void RichEdit_SetTextBuf(TRichEdit AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(RichEdit_SetTextBuf)
     MySyscall(pRichEdit_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRichEdit_FindComponent; 
-TComponent RichEdit_FindComponent(TRichEdit AObj, char* AName) {
+TComponent RichEdit_FindComponent(TRichEdit AObj, CChar char* AName) {
     GET_FUNC_ADDR(RichEdit_FindComponent)
     return (TComponent)MySyscall(pRichEdit_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -26587,7 +26594,7 @@ char* RichEdit_GetSelText(TRichEdit AObj) {
 }
 
 void* pRichEdit_SetSelText; 
-void RichEdit_SetSelText(TRichEdit AObj, char* AValue) {
+void RichEdit_SetSelText(TRichEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RichEdit_SetSelText)
     MySyscall(pRichEdit_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -26599,7 +26606,7 @@ char* RichEdit_GetText(TRichEdit AObj) {
 }
 
 void* pRichEdit_SetText; 
-void RichEdit_SetText(TRichEdit AObj, char* AValue) {
+void RichEdit_SetText(TRichEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RichEdit_SetText)
     MySyscall(pRichEdit_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -26611,7 +26618,7 @@ char* RichEdit_GetTextHint(TRichEdit AObj) {
 }
 
 void* pRichEdit_SetTextHint; 
-void RichEdit_SetTextHint(TRichEdit AObj, char* AValue) {
+void RichEdit_SetTextHint(TRichEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RichEdit_SetTextHint)
     MySyscall(pRichEdit_SetTextHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -26887,7 +26894,7 @@ char* RichEdit_GetHint(TRichEdit AObj) {
 }
 
 void* pRichEdit_SetHint; 
-void RichEdit_SetHint(TRichEdit AObj, char* AValue) {
+void RichEdit_SetHint(TRichEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RichEdit_SetHint)
     MySyscall(pRichEdit_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -26923,7 +26930,7 @@ char* RichEdit_GetName(TRichEdit AObj) {
 }
 
 void* pRichEdit_SetName; 
-void RichEdit_SetName(TRichEdit AObj, char* AValue) {
+void RichEdit_SetName(TRichEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(RichEdit_SetName)
     MySyscall(pRichEdit_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -27093,7 +27100,7 @@ void TrackBar_EnableAlign(TTrackBar AObj) {
 }
 
 void* pTrackBar_FindChildControl; 
-TControl TrackBar_FindChildControl(TTrackBar AObj, char* ControlName) {
+TControl TrackBar_FindChildControl(TTrackBar AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(TrackBar_FindChildControl)
     return (TControl)MySyscall(pTrackBar_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -27249,7 +27256,7 @@ void TrackBar_Show(TTrackBar AObj) {
 }
 
 void* pTrackBar_GetTextBuf; 
-int32_t TrackBar_GetTextBuf(TTrackBar AObj, char* Buffer, int32_t BufSize) {
+int32_t TrackBar_GetTextBuf(TTrackBar AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(TrackBar_GetTextBuf)
     return (int32_t)MySyscall(pTrackBar_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -27261,13 +27268,13 @@ int32_t TrackBar_GetTextLen(TTrackBar AObj) {
 }
 
 void* pTrackBar_SetTextBuf; 
-void TrackBar_SetTextBuf(TTrackBar AObj, char* Buffer) {
+void TrackBar_SetTextBuf(TTrackBar AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(TrackBar_SetTextBuf)
     MySyscall(pTrackBar_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTrackBar_FindComponent; 
-TComponent TrackBar_FindComponent(TTrackBar AObj, char* AName) {
+TComponent TrackBar_FindComponent(TTrackBar AObj, CChar char* AName) {
     GET_FUNC_ADDR(TrackBar_FindComponent)
     return (TComponent)MySyscall(pTrackBar_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28005,7 +28012,7 @@ char* TrackBar_GetHint(TTrackBar AObj) {
 }
 
 void* pTrackBar_SetHint; 
-void TrackBar_SetHint(TTrackBar AObj, char* AValue) {
+void TrackBar_SetHint(TTrackBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TrackBar_SetHint)
     MySyscall(pTrackBar_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28041,7 +28048,7 @@ char* TrackBar_GetName(TTrackBar AObj) {
 }
 
 void* pTrackBar_SetName; 
-void TrackBar_SetName(TTrackBar AObj, char* AValue) {
+void TrackBar_SetName(TTrackBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TrackBar_SetName)
     MySyscall(pTrackBar_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28283,7 +28290,7 @@ void ImageList_EndUpdate(TImageList AObj) {
 }
 
 void* pImageList_FindComponent; 
-TComponent ImageList_FindComponent(TImageList AObj, char* AName) {
+TComponent ImageList_FindComponent(TImageList AObj, CChar char* AName) {
     GET_FUNC_ADDR(ImageList_FindComponent)
     return (TComponent)MySyscall(pImageList_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28511,7 +28518,7 @@ char* ImageList_GetName(TImageList AObj) {
 }
 
 void* pImageList_SetName; 
-void ImageList_SetName(TImageList AObj, char* AValue) {
+void ImageList_SetName(TImageList AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ImageList_SetName)
     MySyscall(pImageList_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28585,7 +28592,7 @@ void UpDown_EnableAlign(TUpDown AObj) {
 }
 
 void* pUpDown_FindChildControl; 
-TControl UpDown_FindChildControl(TUpDown AObj, char* ControlName) {
+TControl UpDown_FindChildControl(TUpDown AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(UpDown_FindChildControl)
     return (TControl)MySyscall(pUpDown_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28741,7 +28748,7 @@ void UpDown_Show(TUpDown AObj) {
 }
 
 void* pUpDown_GetTextBuf; 
-int32_t UpDown_GetTextBuf(TUpDown AObj, char* Buffer, int32_t BufSize) {
+int32_t UpDown_GetTextBuf(TUpDown AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(UpDown_GetTextBuf)
     return (int32_t)MySyscall(pUpDown_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28753,13 +28760,13 @@ int32_t UpDown_GetTextLen(TUpDown AObj) {
 }
 
 void* pUpDown_SetTextBuf; 
-void UpDown_SetTextBuf(TUpDown AObj, char* Buffer) {
+void UpDown_SetTextBuf(TUpDown AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(UpDown_SetTextBuf)
     MySyscall(pUpDown_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pUpDown_FindComponent; 
-TComponent UpDown_FindComponent(TUpDown AObj, char* AName) {
+TComponent UpDown_FindComponent(TUpDown AObj, CChar char* AName) {
     GET_FUNC_ADDR(UpDown_FindComponent)
     return (TComponent)MySyscall(pUpDown_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -28897,7 +28904,7 @@ char* UpDown_GetHint(TUpDown AObj) {
 }
 
 void* pUpDown_SetHint; 
-void UpDown_SetHint(TUpDown AObj, char* AValue) {
+void UpDown_SetHint(TUpDown AObj, CChar char* AValue) {
     GET_FUNC_ADDR(UpDown_SetHint)
     MySyscall(pUpDown_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -29425,7 +29432,7 @@ char* UpDown_GetName(TUpDown AObj) {
 }
 
 void* pUpDown_SetName; 
-void UpDown_SetName(TUpDown AObj, char* AValue) {
+void UpDown_SetName(TUpDown AObj, CChar char* AValue) {
     GET_FUNC_ADDR(UpDown_SetName)
     MySyscall(pUpDown_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -29601,7 +29608,7 @@ void ProgressBar_EnableAlign(TProgressBar AObj) {
 }
 
 void* pProgressBar_FindChildControl; 
-TControl ProgressBar_FindChildControl(TProgressBar AObj, char* ControlName) {
+TControl ProgressBar_FindChildControl(TProgressBar AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ProgressBar_FindChildControl)
     return (TControl)MySyscall(pProgressBar_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -29757,7 +29764,7 @@ void ProgressBar_Show(TProgressBar AObj) {
 }
 
 void* pProgressBar_GetTextBuf; 
-int32_t ProgressBar_GetTextBuf(TProgressBar AObj, char* Buffer, int32_t BufSize) {
+int32_t ProgressBar_GetTextBuf(TProgressBar AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ProgressBar_GetTextBuf)
     return (int32_t)MySyscall(pProgressBar_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -29769,13 +29776,13 @@ int32_t ProgressBar_GetTextLen(TProgressBar AObj) {
 }
 
 void* pProgressBar_SetTextBuf; 
-void ProgressBar_SetTextBuf(TProgressBar AObj, char* Buffer) {
+void ProgressBar_SetTextBuf(TProgressBar AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ProgressBar_SetTextBuf)
     MySyscall(pProgressBar_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pProgressBar_FindComponent; 
-TComponent ProgressBar_FindComponent(TProgressBar AObj, char* AName) {
+TComponent ProgressBar_FindComponent(TProgressBar AObj, CChar char* AName) {
     GET_FUNC_ADDR(ProgressBar_FindComponent)
     return (TComponent)MySyscall(pProgressBar_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -29973,7 +29980,7 @@ char* ProgressBar_GetHint(TProgressBar AObj) {
 }
 
 void* pProgressBar_SetHint; 
-void ProgressBar_SetHint(TProgressBar AObj, char* AValue) {
+void ProgressBar_SetHint(TProgressBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ProgressBar_SetHint)
     MySyscall(pProgressBar_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -30507,7 +30514,7 @@ char* ProgressBar_GetName(TProgressBar AObj) {
 }
 
 void* pProgressBar_SetName; 
-void ProgressBar_SetName(TProgressBar AObj, char* AValue) {
+void ProgressBar_SetName(TProgressBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ProgressBar_SetName)
     MySyscall(pProgressBar_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -30671,7 +30678,7 @@ void DateTimePicker_EnableAlign(TDateTimePicker AObj) {
 }
 
 void* pDateTimePicker_FindChildControl; 
-TControl DateTimePicker_FindChildControl(TDateTimePicker AObj, char* ControlName) {
+TControl DateTimePicker_FindChildControl(TDateTimePicker AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(DateTimePicker_FindChildControl)
     return (TControl)MySyscall(pDateTimePicker_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -30827,7 +30834,7 @@ void DateTimePicker_Show(TDateTimePicker AObj) {
 }
 
 void* pDateTimePicker_GetTextBuf; 
-int32_t DateTimePicker_GetTextBuf(TDateTimePicker AObj, char* Buffer, int32_t BufSize) {
+int32_t DateTimePicker_GetTextBuf(TDateTimePicker AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(DateTimePicker_GetTextBuf)
     return (int32_t)MySyscall(pDateTimePicker_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -30839,13 +30846,13 @@ int32_t DateTimePicker_GetTextLen(TDateTimePicker AObj) {
 }
 
 void* pDateTimePicker_SetTextBuf; 
-void DateTimePicker_SetTextBuf(TDateTimePicker AObj, char* Buffer) {
+void DateTimePicker_SetTextBuf(TDateTimePicker AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(DateTimePicker_SetTextBuf)
     MySyscall(pDateTimePicker_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDateTimePicker_FindComponent; 
-TComponent DateTimePicker_FindComponent(TDateTimePicker AObj, char* AName) {
+TComponent DateTimePicker_FindComponent(TDateTimePicker AObj, CChar char* AName) {
     GET_FUNC_ADDR(DateTimePicker_FindComponent)
     return (TComponent)MySyscall(pDateTimePicker_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -31553,7 +31560,7 @@ char* DateTimePicker_GetHint(TDateTimePicker AObj) {
 }
 
 void* pDateTimePicker_SetHint; 
-void DateTimePicker_SetHint(TDateTimePicker AObj, char* AValue) {
+void DateTimePicker_SetHint(TDateTimePicker AObj, CChar char* AValue) {
     GET_FUNC_ADDR(DateTimePicker_SetHint)
     MySyscall(pDateTimePicker_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -31589,7 +31596,7 @@ char* DateTimePicker_GetName(TDateTimePicker AObj) {
 }
 
 void* pDateTimePicker_SetName; 
-void DateTimePicker_SetName(TDateTimePicker AObj, char* AValue) {
+void DateTimePicker_SetName(TDateTimePicker AObj, CChar char* AValue) {
     GET_FUNC_ADDR(DateTimePicker_SetName)
     MySyscall(pDateTimePicker_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -31753,7 +31760,7 @@ void MonthCalendar_EnableAlign(TMonthCalendar AObj) {
 }
 
 void* pMonthCalendar_FindChildControl; 
-TControl MonthCalendar_FindChildControl(TMonthCalendar AObj, char* ControlName) {
+TControl MonthCalendar_FindChildControl(TMonthCalendar AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(MonthCalendar_FindChildControl)
     return (TControl)MySyscall(pMonthCalendar_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -31909,7 +31916,7 @@ void MonthCalendar_Show(TMonthCalendar AObj) {
 }
 
 void* pMonthCalendar_GetTextBuf; 
-int32_t MonthCalendar_GetTextBuf(TMonthCalendar AObj, char* Buffer, int32_t BufSize) {
+int32_t MonthCalendar_GetTextBuf(TMonthCalendar AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(MonthCalendar_GetTextBuf)
     return (int32_t)MySyscall(pMonthCalendar_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -31921,13 +31928,13 @@ int32_t MonthCalendar_GetTextLen(TMonthCalendar AObj) {
 }
 
 void* pMonthCalendar_SetTextBuf; 
-void MonthCalendar_SetTextBuf(TMonthCalendar AObj, char* Buffer) {
+void MonthCalendar_SetTextBuf(TMonthCalendar AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(MonthCalendar_SetTextBuf)
     MySyscall(pMonthCalendar_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pMonthCalendar_FindComponent; 
-TComponent MonthCalendar_FindComponent(TMonthCalendar AObj, char* AName) {
+TComponent MonthCalendar_FindComponent(TMonthCalendar AObj, CChar char* AName) {
     GET_FUNC_ADDR(MonthCalendar_FindComponent)
     return (TComponent)MySyscall(pMonthCalendar_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -32587,7 +32594,7 @@ char* MonthCalendar_GetHint(TMonthCalendar AObj) {
 }
 
 void* pMonthCalendar_SetHint; 
-void MonthCalendar_SetHint(TMonthCalendar AObj, char* AValue) {
+void MonthCalendar_SetHint(TMonthCalendar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MonthCalendar_SetHint)
     MySyscall(pMonthCalendar_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -32623,7 +32630,7 @@ char* MonthCalendar_GetName(TMonthCalendar AObj) {
 }
 
 void* pMonthCalendar_SetName; 
-void MonthCalendar_SetName(TMonthCalendar AObj, char* AValue) {
+void MonthCalendar_SetName(TMonthCalendar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MonthCalendar_SetName)
     MySyscall(pMonthCalendar_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -32757,7 +32764,7 @@ void ListView_Free(TListView AObj) {
 }
 
 void* pListView_AddItem; 
-void ListView_AddItem(TListView AObj, char* Item, TObject AObject) {
+void ListView_AddItem(TListView AObj, CChar char* Item, TObject AObject) {
     GET_FUNC_ADDR(ListView_AddItem)
     MySyscall(pListView_AddItem, 3, AObj, Item, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -32835,7 +32842,7 @@ void ListView_EnableAlign(TListView AObj) {
 }
 
 void* pListView_FindChildControl; 
-TControl ListView_FindChildControl(TListView AObj, char* ControlName) {
+TControl ListView_FindChildControl(TListView AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ListView_FindChildControl)
     return (TControl)MySyscall(pListView_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -32991,7 +32998,7 @@ void ListView_Show(TListView AObj) {
 }
 
 void* pListView_GetTextBuf; 
-int32_t ListView_GetTextBuf(TListView AObj, char* Buffer, int32_t BufSize) {
+int32_t ListView_GetTextBuf(TListView AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ListView_GetTextBuf)
     return (int32_t)MySyscall(pListView_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -33003,13 +33010,13 @@ int32_t ListView_GetTextLen(TListView AObj) {
 }
 
 void* pListView_SetTextBuf; 
-void ListView_SetTextBuf(TListView AObj, char* Buffer) {
+void ListView_SetTextBuf(TListView AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ListView_SetTextBuf)
     MySyscall(pListView_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pListView_FindComponent; 
-TComponent ListView_FindComponent(TListView AObj, char* AName) {
+TComponent ListView_FindComponent(TListView AObj, CChar char* AName) {
     GET_FUNC_ADDR(ListView_FindComponent)
     return (TComponent)MySyscall(pListView_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -34281,7 +34288,7 @@ char* ListView_GetHint(TListView AObj) {
 }
 
 void* pListView_SetHint; 
-void ListView_SetHint(TListView AObj, char* AValue) {
+void ListView_SetHint(TListView AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ListView_SetHint)
     MySyscall(pListView_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -34317,7 +34324,7 @@ char* ListView_GetName(TListView AObj) {
 }
 
 void* pListView_SetName; 
-void ListView_SetName(TListView AObj, char* AValue) {
+void ListView_SetName(TListView AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ListView_SetName)
     MySyscall(pListView_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -34487,7 +34494,7 @@ BOOL TreeView_IsEditing(TTreeView AObj) {
 }
 
 void* pTreeView_LoadFromFile; 
-void TreeView_LoadFromFile(TTreeView AObj, char* FileName) {
+void TreeView_LoadFromFile(TTreeView AObj, CChar char* FileName) {
     GET_FUNC_ADDR(TreeView_LoadFromFile)
     MySyscall(pTreeView_LoadFromFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -34499,7 +34506,7 @@ void TreeView_LoadFromStream(TTreeView AObj, TStream Stream) {
 }
 
 void* pTreeView_SaveToFile; 
-void TreeView_SaveToFile(TTreeView AObj, char* FileName) {
+void TreeView_SaveToFile(TTreeView AObj, CChar char* FileName) {
     GET_FUNC_ADDR(TreeView_SaveToFile)
     MySyscall(pTreeView_SaveToFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -34553,7 +34560,7 @@ void TreeView_EnableAlign(TTreeView AObj) {
 }
 
 void* pTreeView_FindChildControl; 
-TControl TreeView_FindChildControl(TTreeView AObj, char* ControlName) {
+TControl TreeView_FindChildControl(TTreeView AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(TreeView_FindChildControl)
     return (TControl)MySyscall(pTreeView_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -34709,7 +34716,7 @@ void TreeView_Show(TTreeView AObj) {
 }
 
 void* pTreeView_GetTextBuf; 
-int32_t TreeView_GetTextBuf(TTreeView AObj, char* Buffer, int32_t BufSize) {
+int32_t TreeView_GetTextBuf(TTreeView AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(TreeView_GetTextBuf)
     return (int32_t)MySyscall(pTreeView_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -34721,13 +34728,13 @@ int32_t TreeView_GetTextLen(TTreeView AObj) {
 }
 
 void* pTreeView_SetTextBuf; 
-void TreeView_SetTextBuf(TTreeView AObj, char* Buffer) {
+void TreeView_SetTextBuf(TTreeView AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(TreeView_SetTextBuf)
     MySyscall(pTreeView_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeView_FindComponent; 
-TComponent TreeView_FindComponent(TTreeView AObj, char* AName) {
+TComponent TreeView_FindComponent(TTreeView AObj, CChar char* AName) {
     GET_FUNC_ADDR(TreeView_FindComponent)
     return (TComponent)MySyscall(pTreeView_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -35945,7 +35952,7 @@ char* TreeView_GetHint(TTreeView AObj) {
 }
 
 void* pTreeView_SetHint; 
-void TreeView_SetHint(TTreeView AObj, char* AValue) {
+void TreeView_SetHint(TTreeView AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TreeView_SetHint)
     MySyscall(pTreeView_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -35981,7 +35988,7 @@ char* TreeView_GetName(TTreeView AObj) {
 }
 
 void* pTreeView_SetName; 
-void TreeView_SetName(TTreeView AObj, char* AValue) {
+void TreeView_SetName(TTreeView AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TreeView_SetName)
     MySyscall(pTreeView_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -36163,7 +36170,7 @@ void StatusBar_EnableAlign(TStatusBar AObj) {
 }
 
 void* pStatusBar_FindChildControl; 
-TControl StatusBar_FindChildControl(TStatusBar AObj, char* ControlName) {
+TControl StatusBar_FindChildControl(TStatusBar AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(StatusBar_FindChildControl)
     return (TControl)MySyscall(pStatusBar_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -36307,7 +36314,7 @@ void StatusBar_Show(TStatusBar AObj) {
 }
 
 void* pStatusBar_GetTextBuf; 
-int32_t StatusBar_GetTextBuf(TStatusBar AObj, char* Buffer, int32_t BufSize) {
+int32_t StatusBar_GetTextBuf(TStatusBar AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(StatusBar_GetTextBuf)
     return (int32_t)MySyscall(pStatusBar_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -36319,13 +36326,13 @@ int32_t StatusBar_GetTextLen(TStatusBar AObj) {
 }
 
 void* pStatusBar_SetTextBuf; 
-void StatusBar_SetTextBuf(TStatusBar AObj, char* Buffer) {
+void StatusBar_SetTextBuf(TStatusBar AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(StatusBar_SetTextBuf)
     MySyscall(pStatusBar_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStatusBar_FindComponent; 
-TComponent StatusBar_FindComponent(TStatusBar AObj, char* AName) {
+TComponent StatusBar_FindComponent(TStatusBar AObj, CChar char* AName) {
     GET_FUNC_ADDR(StatusBar_FindComponent)
     return (TComponent)MySyscall(pStatusBar_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -36691,7 +36698,7 @@ char* StatusBar_GetSimpleText(TStatusBar AObj) {
 }
 
 void* pStatusBar_SetSimpleText; 
-void StatusBar_SetSimpleText(TStatusBar AObj, char* AValue) {
+void StatusBar_SetSimpleText(TStatusBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StatusBar_SetSimpleText)
     MySyscall(pStatusBar_SetSimpleText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -37087,7 +37094,7 @@ char* StatusBar_GetHint(TStatusBar AObj) {
 }
 
 void* pStatusBar_SetHint; 
-void StatusBar_SetHint(TStatusBar AObj, char* AValue) {
+void StatusBar_SetHint(TStatusBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StatusBar_SetHint)
     MySyscall(pStatusBar_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -37123,7 +37130,7 @@ char* StatusBar_GetName(TStatusBar AObj) {
 }
 
 void* pStatusBar_SetName; 
-void StatusBar_SetName(TStatusBar AObj, char* AValue) {
+void StatusBar_SetName(TStatusBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StatusBar_SetName)
     MySyscall(pStatusBar_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -37293,7 +37300,7 @@ void ToolBar_EnableAlign(TToolBar AObj) {
 }
 
 void* pToolBar_FindChildControl; 
-TControl ToolBar_FindChildControl(TToolBar AObj, char* ControlName) {
+TControl ToolBar_FindChildControl(TToolBar AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ToolBar_FindChildControl)
     return (TControl)MySyscall(pToolBar_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -37443,7 +37450,7 @@ void ToolBar_Show(TToolBar AObj) {
 }
 
 void* pToolBar_GetTextBuf; 
-int32_t ToolBar_GetTextBuf(TToolBar AObj, char* Buffer, int32_t BufSize) {
+int32_t ToolBar_GetTextBuf(TToolBar AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ToolBar_GetTextBuf)
     return (int32_t)MySyscall(pToolBar_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -37455,13 +37462,13 @@ int32_t ToolBar_GetTextLen(TToolBar AObj) {
 }
 
 void* pToolBar_SetTextBuf; 
-void ToolBar_SetTextBuf(TToolBar AObj, char* Buffer) {
+void ToolBar_SetTextBuf(TToolBar AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ToolBar_SetTextBuf)
     MySyscall(pToolBar_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pToolBar_FindComponent; 
-TComponent ToolBar_FindComponent(TToolBar AObj, char* AName) {
+TComponent ToolBar_FindComponent(TToolBar AObj, CChar char* AName) {
     GET_FUNC_ADDR(ToolBar_FindComponent)
     return (TComponent)MySyscall(pToolBar_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -37653,7 +37660,7 @@ char* ToolBar_GetCaption(TToolBar AObj) {
 }
 
 void* pToolBar_SetCaption; 
-void ToolBar_SetCaption(TToolBar AObj, char* AValue) {
+void ToolBar_SetCaption(TToolBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ToolBar_SetCaption)
     MySyscall(pToolBar_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -38349,7 +38356,7 @@ char* ToolBar_GetHint(TToolBar AObj) {
 }
 
 void* pToolBar_SetHint; 
-void ToolBar_SetHint(TToolBar AObj, char* AValue) {
+void ToolBar_SetHint(TToolBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ToolBar_SetHint)
     MySyscall(pToolBar_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -38385,7 +38392,7 @@ char* ToolBar_GetName(TToolBar AObj) {
 }
 
 void* pToolBar_SetName; 
-void ToolBar_SetName(TToolBar AObj, char* AValue) {
+void ToolBar_SetName(TToolBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ToolBar_SetName)
     MySyscall(pToolBar_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -38561,7 +38568,7 @@ void BitBtn_EnableAlign(TBitBtn AObj) {
 }
 
 void* pBitBtn_FindChildControl; 
-TControl BitBtn_FindChildControl(TBitBtn AObj, char* ControlName) {
+TControl BitBtn_FindChildControl(TBitBtn AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(BitBtn_FindChildControl)
     return (TControl)MySyscall(pBitBtn_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -38717,7 +38724,7 @@ void BitBtn_Show(TBitBtn AObj) {
 }
 
 void* pBitBtn_GetTextBuf; 
-int32_t BitBtn_GetTextBuf(TBitBtn AObj, char* Buffer, int32_t BufSize) {
+int32_t BitBtn_GetTextBuf(TBitBtn AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(BitBtn_GetTextBuf)
     return (int32_t)MySyscall(pBitBtn_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -38729,13 +38736,13 @@ int32_t BitBtn_GetTextLen(TBitBtn AObj) {
 }
 
 void* pBitBtn_SetTextBuf; 
-void BitBtn_SetTextBuf(TBitBtn AObj, char* Buffer) {
+void BitBtn_SetTextBuf(TBitBtn AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(BitBtn_SetTextBuf)
     MySyscall(pBitBtn_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pBitBtn_FindComponent; 
-TComponent BitBtn_FindComponent(TBitBtn AObj, char* AName) {
+TComponent BitBtn_FindComponent(TBitBtn AObj, CChar char* AName) {
     GET_FUNC_ADDR(BitBtn_FindComponent)
     return (TComponent)MySyscall(pBitBtn_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -38933,7 +38940,7 @@ char* BitBtn_GetCaption(TBitBtn AObj) {
 }
 
 void* pBitBtn_SetCaption; 
-void BitBtn_SetCaption(TBitBtn AObj, char* AValue) {
+void BitBtn_SetCaption(TBitBtn AObj, CChar char* AValue) {
     GET_FUNC_ADDR(BitBtn_SetCaption)
     MySyscall(pBitBtn_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -39479,7 +39486,7 @@ char* BitBtn_GetHint(TBitBtn AObj) {
 }
 
 void* pBitBtn_SetHint; 
-void BitBtn_SetHint(TBitBtn AObj, char* AValue) {
+void BitBtn_SetHint(TBitBtn AObj, CChar char* AValue) {
     GET_FUNC_ADDR(BitBtn_SetHint)
     MySyscall(pBitBtn_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -39515,7 +39522,7 @@ char* BitBtn_GetName(TBitBtn AObj) {
 }
 
 void* pBitBtn_SetName; 
-void BitBtn_SetName(TBitBtn AObj, char* AValue) {
+void BitBtn_SetName(TBitBtn AObj, CChar char* AValue) {
     GET_FUNC_ADDR(BitBtn_SetName)
     MySyscall(pBitBtn_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -39679,7 +39686,7 @@ void Icon_SetSize(TIcon AObj, int32_t AWidth, int32_t AHeight) {
 }
 
 void* pIcon_LoadFromResourceName; 
-void Icon_LoadFromResourceName(TIcon AObj, uintptr_t Instance, char* ResName) {
+void Icon_LoadFromResourceName(TIcon AObj, uintptr_t Instance, CChar char* ResName) {
     GET_FUNC_ADDR(Icon_LoadFromResourceName)
     MySyscall(pIcon_LoadFromResourceName, 3, AObj, Instance, ResName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -39697,13 +39704,13 @@ BOOL Icon_Equals(TIcon AObj, TObject Obj) {
 }
 
 void* pIcon_LoadFromFile; 
-void Icon_LoadFromFile(TIcon AObj, char* Filename) {
+void Icon_LoadFromFile(TIcon AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Icon_LoadFromFile)
     MySyscall(pIcon_LoadFromFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIcon_SaveToFile; 
-void Icon_SaveToFile(TIcon AObj, char* Filename) {
+void Icon_SaveToFile(TIcon AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Icon_SaveToFile)
     MySyscall(pIcon_SaveToFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -39903,7 +39910,7 @@ void Bitmap_SetSize(TBitmap AObj, int32_t AWidth, int32_t AHeight) {
 }
 
 void* pBitmap_LoadFromResourceName; 
-void Bitmap_LoadFromResourceName(TBitmap AObj, uintptr_t Instance, char* ResName) {
+void Bitmap_LoadFromResourceName(TBitmap AObj, uintptr_t Instance, CChar char* ResName) {
     GET_FUNC_ADDR(Bitmap_LoadFromResourceName)
     MySyscall(pBitmap_LoadFromResourceName, 3, AObj, Instance, ResName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -39921,13 +39928,13 @@ BOOL Bitmap_Equals(TBitmap AObj, TObject Obj) {
 }
 
 void* pBitmap_LoadFromFile; 
-void Bitmap_LoadFromFile(TBitmap AObj, char* Filename) {
+void Bitmap_LoadFromFile(TBitmap AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Bitmap_LoadFromFile)
     MySyscall(pBitmap_LoadFromFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pBitmap_SaveToFile; 
-void Bitmap_SaveToFile(TBitmap AObj, char* Filename) {
+void Bitmap_SaveToFile(TBitmap AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Bitmap_SaveToFile)
     MySyscall(pBitmap_SaveToFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40163,7 +40170,7 @@ void MemoryStream_LoadFromStream(TMemoryStream AObj, TStream Stream) {
 }
 
 void* pMemoryStream_LoadFromFile; 
-void MemoryStream_LoadFromFile(TMemoryStream AObj, char* FileName) {
+void MemoryStream_LoadFromFile(TMemoryStream AObj, CChar char* FileName) {
     GET_FUNC_ADDR(MemoryStream_LoadFromFile)
     MySyscall(pMemoryStream_LoadFromFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40181,7 +40188,7 @@ void MemoryStream_SaveToStream(TMemoryStream AObj, TStream Stream) {
 }
 
 void* pMemoryStream_SaveToFile; 
-void MemoryStream_SaveToFile(TMemoryStream AObj, char* FileName) {
+void MemoryStream_SaveToFile(TMemoryStream AObj, CChar char* FileName) {
     GET_FUNC_ADDR(MemoryStream_SaveToFile)
     MySyscall(pMemoryStream_SaveToFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40411,7 +40418,7 @@ char* Font_GetName(TFont AObj) {
 }
 
 void* pFont_SetName; 
-void Font_SetName(TFont AObj, char* AValue) {
+void Font_SetName(TFont AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Font_SetName)
     MySyscall(pFont_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40503,19 +40510,19 @@ void Strings_Free(TStrings AObj) {
 }
 
 void* pStrings_Add; 
-int32_t Strings_Add(TStrings AObj, char* S) {
+int32_t Strings_Add(TStrings AObj, CChar char* S) {
     GET_FUNC_ADDR(Strings_Add)
     return (int32_t)MySyscall(pStrings_Add, 2, AObj, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStrings_AddObject; 
-int32_t Strings_AddObject(TStrings AObj, char* S, TObject AObject) {
+int32_t Strings_AddObject(TStrings AObj, CChar char* S, TObject AObject) {
     GET_FUNC_ADDR(Strings_AddObject)
     return (int32_t)MySyscall(pStrings_AddObject, 3, AObj, S, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStrings_Append; 
-void Strings_Append(TStrings AObj, char* S) {
+void Strings_Append(TStrings AObj, CChar char* S) {
     GET_FUNC_ADDR(Strings_Append)
     MySyscall(pStrings_Append, 2, AObj, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40557,13 +40564,13 @@ BOOL Strings_Equals(TStrings AObj, TStrings Strings) {
 }
 
 void* pStrings_IndexOf; 
-int32_t Strings_IndexOf(TStrings AObj, char* S) {
+int32_t Strings_IndexOf(TStrings AObj, CChar char* S) {
     GET_FUNC_ADDR(Strings_IndexOf)
     return (int32_t)MySyscall(pStrings_IndexOf, 2, AObj, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStrings_IndexOfName; 
-int32_t Strings_IndexOfName(TStrings AObj, char* Name) {
+int32_t Strings_IndexOfName(TStrings AObj, CChar char* Name) {
     GET_FUNC_ADDR(Strings_IndexOfName)
     return (int32_t)MySyscall(pStrings_IndexOfName, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40575,19 +40582,19 @@ int32_t Strings_IndexOfObject(TStrings AObj, TObject AObject) {
 }
 
 void* pStrings_Insert; 
-void Strings_Insert(TStrings AObj, int32_t Index, char* S) {
+void Strings_Insert(TStrings AObj, int32_t Index, CChar char* S) {
     GET_FUNC_ADDR(Strings_Insert)
     MySyscall(pStrings_Insert, 3, AObj, Index, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStrings_InsertObject; 
-void Strings_InsertObject(TStrings AObj, int32_t Index, char* S, TObject AObject) {
+void Strings_InsertObject(TStrings AObj, int32_t Index, CChar char* S, TObject AObject) {
     GET_FUNC_ADDR(Strings_InsertObject)
     MySyscall(pStrings_InsertObject, 4, AObj, Index, S, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStrings_LoadFromFile; 
-void Strings_LoadFromFile(TStrings AObj, char* FileName) {
+void Strings_LoadFromFile(TStrings AObj, CChar char* FileName) {
     GET_FUNC_ADDR(Strings_LoadFromFile)
     MySyscall(pStrings_LoadFromFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40605,7 +40612,7 @@ void Strings_Move(TStrings AObj, int32_t CurIndex, int32_t NewIndex) {
 }
 
 void* pStrings_SaveToFile; 
-void Strings_SaveToFile(TStrings AObj, char* FileName) {
+void Strings_SaveToFile(TStrings AObj, CChar char* FileName) {
     GET_FUNC_ADDR(Strings_SaveToFile)
     MySyscall(pStrings_SaveToFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40677,7 +40684,7 @@ char* Strings_GetCommaText(TStrings AObj) {
 }
 
 void* pStrings_SetCommaText; 
-void Strings_SetCommaText(TStrings AObj, char* AValue) {
+void Strings_SetCommaText(TStrings AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Strings_SetCommaText)
     MySyscall(pStrings_SetCommaText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40707,7 +40714,7 @@ char* Strings_GetText(TStrings AObj) {
 }
 
 void* pStrings_SetText; 
-void Strings_SetText(TStrings AObj, char* AValue) {
+void Strings_SetText(TStrings AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Strings_SetText)
     MySyscall(pStrings_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40725,13 +40732,13 @@ void Strings_SetObjects(TStrings AObj, int32_t Index, TObject AValue) {
 }
 
 void* pStrings_GetValues; 
-char* Strings_GetValues(TStrings AObj, char* Name) {
+char* Strings_GetValues(TStrings AObj, CChar char* Name) {
     GET_FUNC_ADDR(Strings_GetValues)
     return (char*)MySyscall(pStrings_GetValues, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStrings_SetValues; 
-void Strings_SetValues(TStrings AObj, char* Name, char* AValue) {
+void Strings_SetValues(TStrings AObj, char* Name, CChar char* AValue) {
     GET_FUNC_ADDR(Strings_SetValues)
     MySyscall(pStrings_SetValues, 3, AObj, Name, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40743,7 +40750,7 @@ char* Strings_GetValueFromIndex(TStrings AObj, int32_t Index) {
 }
 
 void* pStrings_SetValueFromIndex; 
-void Strings_SetValueFromIndex(TStrings AObj, int32_t Index, char* AValue) {
+void Strings_SetValueFromIndex(TStrings AObj, int32_t Index, CChar char* AValue) {
     GET_FUNC_ADDR(Strings_SetValueFromIndex)
     MySyscall(pStrings_SetValueFromIndex, 3, AObj, Index, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40755,7 +40762,7 @@ char* Strings_GetStrings(TStrings AObj, int32_t Index) {
 }
 
 void* pStrings_SetStrings; 
-void Strings_SetStrings(TStrings AObj, int32_t Index, char* AValue) {
+void Strings_SetStrings(TStrings AObj, int32_t Index, CChar char* AValue) {
     GET_FUNC_ADDR(Strings_SetStrings)
     MySyscall(pStrings_SetStrings, 3, AObj, Index, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40781,13 +40788,13 @@ void StringList_Free(TStringList AObj) {
 }
 
 void* pStringList_Add; 
-int32_t StringList_Add(TStringList AObj, char* S) {
+int32_t StringList_Add(TStringList AObj, CChar char* S) {
     GET_FUNC_ADDR(StringList_Add)
     return (int32_t)MySyscall(pStringList_Add, 2, AObj, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStringList_AddObject; 
-int32_t StringList_AddObject(TStringList AObj, char* S, TObject AObject) {
+int32_t StringList_AddObject(TStringList AObj, CChar char* S, TObject AObject) {
     GET_FUNC_ADDR(StringList_AddObject)
     return (int32_t)MySyscall(pStringList_AddObject, 3, AObj, S, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40811,25 +40818,25 @@ void StringList_Delete(TStringList AObj, int32_t Index) {
 }
 
 void* pStringList_IndexOf; 
-int32_t StringList_IndexOf(TStringList AObj, char* S) {
+int32_t StringList_IndexOf(TStringList AObj, CChar char* S) {
     GET_FUNC_ADDR(StringList_IndexOf)
     return (int32_t)MySyscall(pStringList_IndexOf, 2, AObj, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStringList_Insert; 
-void StringList_Insert(TStringList AObj, int32_t Index, char* S) {
+void StringList_Insert(TStringList AObj, int32_t Index, CChar char* S) {
     GET_FUNC_ADDR(StringList_Insert)
     MySyscall(pStringList_Insert, 3, AObj, Index, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStringList_InsertObject; 
-void StringList_InsertObject(TStringList AObj, int32_t Index, char* S, TObject AObject) {
+void StringList_InsertObject(TStringList AObj, int32_t Index, CChar char* S, TObject AObject) {
     GET_FUNC_ADDR(StringList_InsertObject)
     MySyscall(pStringList_InsertObject, 4, AObj, Index, S, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStringList_Append; 
-void StringList_Append(TStringList AObj, char* S) {
+void StringList_Append(TStringList AObj, CChar char* S) {
     GET_FUNC_ADDR(StringList_Append)
     MySyscall(pStringList_Append, 2, AObj, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40853,7 +40860,7 @@ BOOL StringList_Equals(TStringList AObj, TStrings Strings) {
 }
 
 void* pStringList_IndexOfName; 
-int32_t StringList_IndexOfName(TStringList AObj, char* Name) {
+int32_t StringList_IndexOfName(TStringList AObj, CChar char* Name) {
     GET_FUNC_ADDR(StringList_IndexOfName)
     return (int32_t)MySyscall(pStringList_IndexOfName, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40865,7 +40872,7 @@ int32_t StringList_IndexOfObject(TStringList AObj, TObject AObject) {
 }
 
 void* pStringList_LoadFromFile; 
-void StringList_LoadFromFile(TStringList AObj, char* FileName) {
+void StringList_LoadFromFile(TStringList AObj, CChar char* FileName) {
     GET_FUNC_ADDR(StringList_LoadFromFile)
     MySyscall(pStringList_LoadFromFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40883,7 +40890,7 @@ void StringList_Move(TStringList AObj, int32_t CurIndex, int32_t NewIndex) {
 }
 
 void* pStringList_SaveToFile; 
-void StringList_SaveToFile(TStringList AObj, char* FileName) {
+void StringList_SaveToFile(TStringList AObj, CChar char* FileName) {
     GET_FUNC_ADDR(StringList_SaveToFile)
     MySyscall(pStringList_SaveToFile, 2, AObj, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -40979,7 +40986,7 @@ char* StringList_GetCommaText(TStringList AObj) {
 }
 
 void* pStringList_SetCommaText; 
-void StringList_SetCommaText(TStringList AObj, char* AValue) {
+void StringList_SetCommaText(TStringList AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StringList_SetCommaText)
     MySyscall(pStringList_SetCommaText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41009,7 +41016,7 @@ char* StringList_GetText(TStringList AObj) {
 }
 
 void* pStringList_SetText; 
-void StringList_SetText(TStringList AObj, char* AValue) {
+void StringList_SetText(TStringList AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StringList_SetText)
     MySyscall(pStringList_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41027,13 +41034,13 @@ void StringList_SetObjects(TStringList AObj, int32_t Index, TObject AValue) {
 }
 
 void* pStringList_GetValues; 
-char* StringList_GetValues(TStringList AObj, char* Name) {
+char* StringList_GetValues(TStringList AObj, CChar char* Name) {
     GET_FUNC_ADDR(StringList_GetValues)
     return (char*)MySyscall(pStringList_GetValues, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStringList_SetValues; 
-void StringList_SetValues(TStringList AObj, char* Name, char* AValue) {
+void StringList_SetValues(TStringList AObj, char* Name, CChar char* AValue) {
     GET_FUNC_ADDR(StringList_SetValues)
     MySyscall(pStringList_SetValues, 3, AObj, Name, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41045,7 +41052,7 @@ char* StringList_GetValueFromIndex(TStringList AObj, int32_t Index) {
 }
 
 void* pStringList_SetValueFromIndex; 
-void StringList_SetValueFromIndex(TStringList AObj, int32_t Index, char* AValue) {
+void StringList_SetValueFromIndex(TStringList AObj, int32_t Index, CChar char* AValue) {
     GET_FUNC_ADDR(StringList_SetValueFromIndex)
     MySyscall(pStringList_SetValueFromIndex, 3, AObj, Index, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41057,7 +41064,7 @@ char* StringList_GetStrings(TStringList AObj, int32_t Index) {
 }
 
 void* pStringList_SetStrings; 
-void StringList_SetStrings(TStringList AObj, int32_t Index, char* AValue) {
+void StringList_SetStrings(TStringList AObj, int32_t Index, CChar char* AValue) {
     GET_FUNC_ADDR(StringList_SetStrings)
     MySyscall(pStringList_SetStrings, 3, AObj, Index, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41393,7 +41400,7 @@ void MenuItem_Add(TMenuItem AObj, TMenuItem Item) {
 }
 
 void* pMenuItem_FindComponent; 
-TComponent MenuItem_FindComponent(TMenuItem AObj, char* AName) {
+TComponent MenuItem_FindComponent(TMenuItem AObj, CChar char* AName) {
     GET_FUNC_ADDR(MenuItem_FindComponent)
     return (TComponent)MySyscall(pMenuItem_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41513,7 +41520,7 @@ char* MenuItem_GetCaption(TMenuItem AObj) {
 }
 
 void* pMenuItem_SetCaption; 
-void MenuItem_SetCaption(TMenuItem AObj, char* AValue) {
+void MenuItem_SetCaption(TMenuItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MenuItem_SetCaption)
     MySyscall(pMenuItem_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41573,7 +41580,7 @@ char* MenuItem_GetHint(TMenuItem AObj) {
 }
 
 void* pMenuItem_SetHint; 
-void MenuItem_SetHint(TMenuItem AObj, char* AValue) {
+void MenuItem_SetHint(TMenuItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MenuItem_SetHint)
     MySyscall(pMenuItem_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41669,7 +41676,7 @@ char* MenuItem_GetName(TMenuItem AObj) {
 }
 
 void* pMenuItem_SetName; 
-void MenuItem_SetName(TMenuItem AObj, char* AValue) {
+void MenuItem_SetName(TMenuItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MenuItem_SetName)
     MySyscall(pMenuItem_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -41719,13 +41726,13 @@ void Picture_Free(TPicture AObj) {
 }
 
 void* pPicture_LoadFromFile; 
-void Picture_LoadFromFile(TPicture AObj, char* Filename) {
+void Picture_LoadFromFile(TPicture AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Picture_LoadFromFile)
     MySyscall(pPicture_LoadFromFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pPicture_SaveToFile; 
-void Picture_SaveToFile(TPicture AObj, char* Filename) {
+void Picture_SaveToFile(TPicture AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Picture_SaveToFile)
     MySyscall(pPicture_SaveToFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -42157,55 +42164,55 @@ void TreeNodes_Free(TTreeNodes AObj) {
 }
 
 void* pTreeNodes_AddChildFirst; 
-TTreeNode TreeNodes_AddChildFirst(TTreeNodes AObj, TTreeNode Parent, char* S) {
+TTreeNode TreeNodes_AddChildFirst(TTreeNodes AObj, TTreeNode Parent, CChar char* S) {
     GET_FUNC_ADDR(TreeNodes_AddChildFirst)
     return (TTreeNode)MySyscall(pTreeNodes_AddChildFirst, 3, AObj, Parent, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_AddChild; 
-TTreeNode TreeNodes_AddChild(TTreeNodes AObj, TTreeNode Parent, char* S) {
+TTreeNode TreeNodes_AddChild(TTreeNodes AObj, TTreeNode Parent, CChar char* S) {
     GET_FUNC_ADDR(TreeNodes_AddChild)
     return (TTreeNode)MySyscall(pTreeNodes_AddChild, 3, AObj, Parent, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_AddChildObjectFirst; 
-TTreeNode TreeNodes_AddChildObjectFirst(TTreeNodes AObj, TTreeNode Parent, char* S, void* Ptr) {
+TTreeNode TreeNodes_AddChildObjectFirst(TTreeNodes AObj, TTreeNode Parent, CChar char* S, void* Ptr) {
     GET_FUNC_ADDR(TreeNodes_AddChildObjectFirst)
     return (TTreeNode)MySyscall(pTreeNodes_AddChildObjectFirst, 4, AObj, Parent, S, Ptr ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_AddChildObject; 
-TTreeNode TreeNodes_AddChildObject(TTreeNodes AObj, TTreeNode Parent, char* S, void* Ptr) {
+TTreeNode TreeNodes_AddChildObject(TTreeNodes AObj, TTreeNode Parent, CChar char* S, void* Ptr) {
     GET_FUNC_ADDR(TreeNodes_AddChildObject)
     return (TTreeNode)MySyscall(pTreeNodes_AddChildObject, 4, AObj, Parent, S, Ptr ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_AddObjectFirst; 
-TTreeNode TreeNodes_AddObjectFirst(TTreeNodes AObj, TTreeNode Sibling, char* S, void* Ptr) {
+TTreeNode TreeNodes_AddObjectFirst(TTreeNodes AObj, TTreeNode Sibling, CChar char* S, void* Ptr) {
     GET_FUNC_ADDR(TreeNodes_AddObjectFirst)
     return (TTreeNode)MySyscall(pTreeNodes_AddObjectFirst, 4, AObj, Sibling, S, Ptr ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_AddObject; 
-TTreeNode TreeNodes_AddObject(TTreeNodes AObj, TTreeNode Sibling, char* S, void* Ptr) {
+TTreeNode TreeNodes_AddObject(TTreeNodes AObj, TTreeNode Sibling, CChar char* S, void* Ptr) {
     GET_FUNC_ADDR(TreeNodes_AddObject)
     return (TTreeNode)MySyscall(pTreeNodes_AddObject, 4, AObj, Sibling, S, Ptr ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_AddNode; 
-TTreeNode TreeNodes_AddNode(TTreeNodes AObj, TTreeNode Node, TTreeNode Relative, char* S, void* Ptr, TNodeAttachMode Method) {
+TTreeNode TreeNodes_AddNode(TTreeNodes AObj, TTreeNode Node, TTreeNode Relative, CChar char* S, void* Ptr, TNodeAttachMode Method) {
     GET_FUNC_ADDR(TreeNodes_AddNode)
     return (TTreeNode)MySyscall(pTreeNodes_AddNode, 6, AObj, Node, Relative, S, Ptr, Method ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_AddFirst; 
-TTreeNode TreeNodes_AddFirst(TTreeNodes AObj, TTreeNode Sibling, char* S) {
+TTreeNode TreeNodes_AddFirst(TTreeNodes AObj, TTreeNode Sibling, CChar char* S) {
     GET_FUNC_ADDR(TreeNodes_AddFirst)
     return (TTreeNode)MySyscall(pTreeNodes_AddFirst, 3, AObj, Sibling, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_Add; 
-TTreeNode TreeNodes_Add(TTreeNodes AObj, TTreeNode Sibling, char* S) {
+TTreeNode TreeNodes_Add(TTreeNodes AObj, TTreeNode Sibling, CChar char* S) {
     GET_FUNC_ADDR(TreeNodes_Add)
     return (TTreeNode)MySyscall(pTreeNodes_Add, 3, AObj, Sibling, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -42247,13 +42254,13 @@ TTreeNode TreeNodes_GetFirstNode(TTreeNodes AObj) {
 }
 
 void* pTreeNodes_Insert; 
-TTreeNode TreeNodes_Insert(TTreeNodes AObj, TTreeNode Sibling, char* S) {
+TTreeNode TreeNodes_Insert(TTreeNodes AObj, TTreeNode Sibling, CChar char* S) {
     GET_FUNC_ADDR(TreeNodes_Insert)
     return (TTreeNode)MySyscall(pTreeNodes_Insert, 3, AObj, Sibling, S ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTreeNodes_InsertObject; 
-TTreeNode TreeNodes_InsertObject(TTreeNodes AObj, TTreeNode Sibling, char* S, void* Ptr) {
+TTreeNode TreeNodes_InsertObject(TTreeNodes AObj, TTreeNode Sibling, CChar char* S, void* Ptr) {
     GET_FUNC_ADDR(TreeNodes_InsertObject)
     return (TTreeNode)MySyscall(pTreeNodes_InsertObject, 4, AObj, Sibling, S, Ptr ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -42435,7 +42442,7 @@ char* ListItem_GetCaption(TListItem AObj) {
 }
 
 void* pListItem_SetCaption; 
-void ListItem_SetCaption(TListItem AObj, char* AValue) {
+void ListItem_SetCaption(TListItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ListItem_SetCaption)
     MySyscall(pListItem_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -42899,7 +42906,7 @@ char* TreeNode_GetText(TTreeNode AObj) {
 }
 
 void* pTreeNode_SetText; 
-void TreeNode_SetText(TTreeNode AObj, char* AValue) {
+void TreeNode_SetText(TTreeNode AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TreeNode_SetText)
     MySyscall(pTreeNode_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -42985,7 +42992,7 @@ void PageControl_EnableAlign(TPageControl AObj) {
 }
 
 void* pPageControl_FindChildControl; 
-TControl PageControl_FindChildControl(TPageControl AObj, char* ControlName) {
+TControl PageControl_FindChildControl(TPageControl AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(PageControl_FindChildControl)
     return (TControl)MySyscall(pPageControl_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -43141,7 +43148,7 @@ void PageControl_Show(TPageControl AObj) {
 }
 
 void* pPageControl_GetTextBuf; 
-int32_t PageControl_GetTextBuf(TPageControl AObj, char* Buffer, int32_t BufSize) {
+int32_t PageControl_GetTextBuf(TPageControl AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(PageControl_GetTextBuf)
     return (int32_t)MySyscall(pPageControl_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -43153,13 +43160,13 @@ int32_t PageControl_GetTextLen(TPageControl AObj) {
 }
 
 void* pPageControl_SetTextBuf; 
-void PageControl_SetTextBuf(TPageControl AObj, char* Buffer) {
+void PageControl_SetTextBuf(TPageControl AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(PageControl_SetTextBuf)
     MySyscall(pPageControl_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pPageControl_FindComponent; 
-TComponent PageControl_FindComponent(TPageControl AObj, char* AName) {
+TComponent PageControl_FindComponent(TPageControl AObj, CChar char* AName) {
     GET_FUNC_ADDR(PageControl_FindComponent)
     return (TComponent)MySyscall(pPageControl_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -43933,7 +43940,7 @@ char* PageControl_GetHint(TPageControl AObj) {
 }
 
 void* pPageControl_SetHint; 
-void PageControl_SetHint(TPageControl AObj, char* AValue) {
+void PageControl_SetHint(TPageControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PageControl_SetHint)
     MySyscall(pPageControl_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -43969,7 +43976,7 @@ char* PageControl_GetName(TPageControl AObj) {
 }
 
 void* pPageControl_SetName; 
-void PageControl_SetName(TPageControl AObj, char* AValue) {
+void PageControl_SetName(TPageControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PageControl_SetName)
     MySyscall(pPageControl_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -44139,7 +44146,7 @@ void TabSheet_EnableAlign(TTabSheet AObj) {
 }
 
 void* pTabSheet_FindChildControl; 
-TControl TabSheet_FindChildControl(TTabSheet AObj, char* ControlName) {
+TControl TabSheet_FindChildControl(TTabSheet AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(TabSheet_FindChildControl)
     return (TControl)MySyscall(pTabSheet_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -44295,7 +44302,7 @@ void TabSheet_Show(TTabSheet AObj) {
 }
 
 void* pTabSheet_GetTextBuf; 
-int32_t TabSheet_GetTextBuf(TTabSheet AObj, char* Buffer, int32_t BufSize) {
+int32_t TabSheet_GetTextBuf(TTabSheet AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(TabSheet_GetTextBuf)
     return (int32_t)MySyscall(pTabSheet_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -44307,13 +44314,13 @@ int32_t TabSheet_GetTextLen(TTabSheet AObj) {
 }
 
 void* pTabSheet_SetTextBuf; 
-void TabSheet_SetTextBuf(TTabSheet AObj, char* Buffer) {
+void TabSheet_SetTextBuf(TTabSheet AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(TabSheet_SetTextBuf)
     MySyscall(pTabSheet_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pTabSheet_FindComponent; 
-TComponent TabSheet_FindComponent(TTabSheet AObj, char* AName) {
+TComponent TabSheet_FindComponent(TTabSheet AObj, CChar char* AName) {
     GET_FUNC_ADDR(TabSheet_FindComponent)
     return (TComponent)MySyscall(pTabSheet_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -44445,7 +44452,7 @@ char* TabSheet_GetCaption(TTabSheet AObj) {
 }
 
 void* pTabSheet_SetCaption; 
-void TabSheet_SetCaption(TTabSheet AObj, char* AValue) {
+void TabSheet_SetCaption(TTabSheet AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TabSheet_SetCaption)
     MySyscall(pTabSheet_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -44997,7 +45004,7 @@ char* TabSheet_GetHint(TTabSheet AObj) {
 }
 
 void* pTabSheet_SetHint; 
-void TabSheet_SetHint(TTabSheet AObj, char* AValue) {
+void TabSheet_SetHint(TTabSheet AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TabSheet_SetHint)
     MySyscall(pTabSheet_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45033,7 +45040,7 @@ char* TabSheet_GetName(TTabSheet AObj) {
 }
 
 void* pTabSheet_SetName; 
-void TabSheet_SetName(TTabSheet AObj, char* AValue) {
+void TabSheet_SetName(TTabSheet AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TabSheet_SetName)
     MySyscall(pTabSheet_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45263,7 +45270,7 @@ void Control_Update(TControl AObj) {
 }
 
 void* pControl_GetTextBuf; 
-int32_t Control_GetTextBuf(TControl AObj, char* Buffer, int32_t BufSize) {
+int32_t Control_GetTextBuf(TControl AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Control_GetTextBuf)
     return (int32_t)MySyscall(pControl_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45275,13 +45282,13 @@ int32_t Control_GetTextLen(TControl AObj) {
 }
 
 void* pControl_SetTextBuf; 
-void Control_SetTextBuf(TControl AObj, char* Buffer) {
+void Control_SetTextBuf(TControl AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Control_SetTextBuf)
     MySyscall(pControl_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pControl_FindComponent; 
-TComponent Control_FindComponent(TControl AObj, char* AName) {
+TComponent Control_FindComponent(TControl AObj, CChar char* AName) {
     GET_FUNC_ADDR(Control_FindComponent)
     return (TComponent)MySyscall(pControl_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45629,7 +45636,7 @@ char* Control_GetHint(TControl AObj) {
 }
 
 void* pControl_SetHint; 
-void Control_SetHint(TControl AObj, char* AValue) {
+void Control_SetHint(TControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Control_SetHint)
     MySyscall(pControl_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45665,7 +45672,7 @@ char* Control_GetName(TControl AObj) {
 }
 
 void* pControl_SetName; 
-void Control_SetName(TControl AObj, char* AValue) {
+void Control_SetName(TControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Control_SetName)
     MySyscall(pControl_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45805,7 +45812,7 @@ void WinControl_EnableAlign(TWinControl AObj) {
 }
 
 void* pWinControl_FindChildControl; 
-TControl WinControl_FindChildControl(TWinControl AObj, char* ControlName) {
+TControl WinControl_FindChildControl(TWinControl AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(WinControl_FindChildControl)
     return (TControl)MySyscall(pWinControl_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45961,7 +45968,7 @@ void WinControl_Show(TWinControl AObj) {
 }
 
 void* pWinControl_GetTextBuf; 
-int32_t WinControl_GetTextBuf(TWinControl AObj, char* Buffer, int32_t BufSize) {
+int32_t WinControl_GetTextBuf(TWinControl AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(WinControl_GetTextBuf)
     return (int32_t)MySyscall(pWinControl_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -45973,13 +45980,13 @@ int32_t WinControl_GetTextLen(TWinControl AObj) {
 }
 
 void* pWinControl_SetTextBuf; 
-void WinControl_SetTextBuf(TWinControl AObj, char* Buffer) {
+void WinControl_SetTextBuf(TWinControl AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(WinControl_SetTextBuf)
     MySyscall(pWinControl_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pWinControl_FindComponent; 
-TComponent WinControl_FindComponent(TWinControl AObj, char* AName) {
+TComponent WinControl_FindComponent(TWinControl AObj, CChar char* AName) {
     GET_FUNC_ADDR(WinControl_FindComponent)
     return (TComponent)MySyscall(pWinControl_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -46453,7 +46460,7 @@ char* WinControl_GetHint(TWinControl AObj) {
 }
 
 void* pWinControl_SetHint; 
-void WinControl_SetHint(TWinControl AObj, char* AValue) {
+void WinControl_SetHint(TWinControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(WinControl_SetHint)
     MySyscall(pWinControl_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -46489,7 +46496,7 @@ char* WinControl_GetName(TWinControl AObj) {
 }
 
 void* pWinControl_SetName; 
-void WinControl_SetName(TWinControl AObj, char* AValue) {
+void WinControl_SetName(TWinControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(WinControl_SetName)
     MySyscall(pWinControl_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -46623,7 +46630,7 @@ void Screen_Free(TScreen AObj) {
 }
 
 void* pScreen_FindComponent; 
-TComponent Screen_FindComponent(TScreen AObj, char* AName) {
+TComponent Screen_FindComponent(TScreen AObj, CChar char* AName) {
     GET_FUNC_ADDR(Screen_FindComponent)
     return (TComponent)MySyscall(pScreen_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -46851,7 +46858,7 @@ char* Screen_GetName(TScreen AObj) {
 }
 
 void* pScreen_SetName; 
-void Screen_SetName(TScreen AObj, char* AValue) {
+void Screen_SetName(TScreen AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Screen_SetName)
     MySyscall(pScreen_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47101,7 +47108,7 @@ char* ListColumn_GetCaption(TListColumn AObj) {
 }
 
 void* pListColumn_SetCaption; 
-void ListColumn_SetCaption(TListColumn AObj, char* AValue) {
+void ListColumn_SetCaption(TListColumn AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ListColumn_SetCaption)
     MySyscall(pListColumn_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47197,7 +47204,7 @@ char* ListColumn_GetDisplayName(TListColumn AObj) {
 }
 
 void* pListColumn_SetDisplayName; 
-void ListColumn_SetDisplayName(TListColumn AObj, char* AValue) {
+void ListColumn_SetDisplayName(TListColumn AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ListColumn_SetDisplayName)
     MySyscall(pListColumn_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47307,7 +47314,7 @@ char* CollectionItem_GetDisplayName(TCollectionItem AObj) {
 }
 
 void* pCollectionItem_SetDisplayName; 
-void CollectionItem_SetDisplayName(TCollectionItem AObj, char* AValue) {
+void CollectionItem_SetDisplayName(TCollectionItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CollectionItem_SetDisplayName)
     MySyscall(pCollectionItem_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47581,7 +47588,7 @@ char* StatusPanel_GetText(TStatusPanel AObj) {
 }
 
 void* pStatusPanel_SetText; 
-void StatusPanel_SetText(TStatusPanel AObj, char* AValue) {
+void StatusPanel_SetText(TStatusPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StatusPanel_SetText)
     MySyscall(pStatusPanel_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47629,7 +47636,7 @@ char* StatusPanel_GetDisplayName(TStatusPanel AObj) {
 }
 
 void* pStatusPanel_SetDisplayName; 
-void StatusPanel_SetDisplayName(TStatusPanel AObj, char* AValue) {
+void StatusPanel_SetDisplayName(TStatusPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StatusPanel_SetDisplayName)
     MySyscall(pStatusPanel_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47727,7 +47734,7 @@ void SpinEdit_EnableAlign(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_FindChildControl; 
-TControl SpinEdit_FindChildControl(TSpinEdit AObj, char* ControlName) {
+TControl SpinEdit_FindChildControl(TSpinEdit AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(SpinEdit_FindChildControl)
     return (TControl)MySyscall(pSpinEdit_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47883,7 +47890,7 @@ void SpinEdit_Show(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_GetTextBuf; 
-int32_t SpinEdit_GetTextBuf(TSpinEdit AObj, char* Buffer, int32_t BufSize) {
+int32_t SpinEdit_GetTextBuf(TSpinEdit AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(SpinEdit_GetTextBuf)
     return (int32_t)MySyscall(pSpinEdit_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -47895,13 +47902,13 @@ int32_t SpinEdit_GetTextLen(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_SetTextBuf; 
-void SpinEdit_SetTextBuf(TSpinEdit AObj, char* Buffer) {
+void SpinEdit_SetTextBuf(TSpinEdit AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(SpinEdit_SetTextBuf)
     MySyscall(pSpinEdit_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pSpinEdit_FindComponent; 
-TComponent SpinEdit_FindComponent(TSpinEdit AObj, char* AName) {
+TComponent SpinEdit_FindComponent(TSpinEdit AObj, CChar char* AName) {
     GET_FUNC_ADDR(SpinEdit_FindComponent)
     return (TComponent)MySyscall(pSpinEdit_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48369,7 +48376,7 @@ char* SpinEdit_GetSelText(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_SetSelText; 
-void SpinEdit_SetSelText(TSpinEdit AObj, char* AValue) {
+void SpinEdit_SetSelText(TSpinEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpinEdit_SetSelText)
     MySyscall(pSpinEdit_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48381,7 +48388,7 @@ char* SpinEdit_GetText(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_SetText; 
-void SpinEdit_SetText(TSpinEdit AObj, char* AValue) {
+void SpinEdit_SetText(TSpinEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpinEdit_SetText)
     MySyscall(pSpinEdit_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48393,7 +48400,7 @@ char* SpinEdit_GetTextHint(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_SetTextHint; 
-void SpinEdit_SetTextHint(TSpinEdit AObj, char* AValue) {
+void SpinEdit_SetTextHint(TSpinEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpinEdit_SetTextHint)
     MySyscall(pSpinEdit_SetTextHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48693,7 +48700,7 @@ char* SpinEdit_GetHint(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_SetHint; 
-void SpinEdit_SetHint(TSpinEdit AObj, char* AValue) {
+void SpinEdit_SetHint(TSpinEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpinEdit_SetHint)
     MySyscall(pSpinEdit_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48729,7 +48736,7 @@ char* SpinEdit_GetName(TSpinEdit AObj) {
 }
 
 void* pSpinEdit_SetName; 
-void SpinEdit_SetName(TSpinEdit AObj, char* AValue) {
+void SpinEdit_SetName(TSpinEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(SpinEdit_SetName)
     MySyscall(pSpinEdit_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48863,7 +48870,7 @@ void MiniWebview_Free(TMiniWebview AObj) {
 }
 
 void* pMiniWebview_Navigate; 
-void MiniWebview_Navigate(TMiniWebview AObj, char* AURL) {
+void MiniWebview_Navigate(TMiniWebview AObj, CChar char* AURL) {
     GET_FUNC_ADDR(MiniWebview_Navigate)
     MySyscall(pMiniWebview_Navigate, 2, AObj, AURL ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48911,19 +48918,19 @@ void MiniWebview_SetBounds(TMiniWebview AObj, int32_t ALeft, int32_t ATop, int32
 }
 
 void* pMiniWebview_ExecuteScript; 
-char* MiniWebview_ExecuteScript(TMiniWebview AObj, char* AScriptText, char* AScriptType) {
+char* MiniWebview_ExecuteScript(TMiniWebview AObj, CChar char* AScriptText, CChar char* AScriptType) {
     GET_FUNC_ADDR(MiniWebview_ExecuteScript)
     return (char*)MySyscall(pMiniWebview_ExecuteScript, 3, AObj, AScriptText, AScriptType ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pMiniWebview_ExecuteJS; 
-char* MiniWebview_ExecuteJS(TMiniWebview AObj, char* AScriptText) {
+char* MiniWebview_ExecuteJS(TMiniWebview AObj, CChar char* AScriptText) {
     GET_FUNC_ADDR(MiniWebview_ExecuteJS)
     return (char*)MySyscall(pMiniWebview_ExecuteJS, 2, AObj, AScriptText ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pMiniWebview_LoadHTML; 
-void MiniWebview_LoadHTML(TMiniWebview AObj, char* AStr) {
+void MiniWebview_LoadHTML(TMiniWebview AObj, CChar char* AStr) {
     GET_FUNC_ADDR(MiniWebview_LoadHTML)
     MySyscall(pMiniWebview_LoadHTML, 2, AObj, AStr ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -48959,7 +48966,7 @@ void MiniWebview_EnableAlign(TMiniWebview AObj) {
 }
 
 void* pMiniWebview_FindChildControl; 
-TControl MiniWebview_FindChildControl(TMiniWebview AObj, char* ControlName) {
+TControl MiniWebview_FindChildControl(TMiniWebview AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(MiniWebview_FindChildControl)
     return (TControl)MySyscall(pMiniWebview_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -49103,7 +49110,7 @@ void MiniWebview_Show(TMiniWebview AObj) {
 }
 
 void* pMiniWebview_GetTextBuf; 
-int32_t MiniWebview_GetTextBuf(TMiniWebview AObj, char* Buffer, int32_t BufSize) {
+int32_t MiniWebview_GetTextBuf(TMiniWebview AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(MiniWebview_GetTextBuf)
     return (int32_t)MySyscall(pMiniWebview_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -49115,13 +49122,13 @@ int32_t MiniWebview_GetTextLen(TMiniWebview AObj) {
 }
 
 void* pMiniWebview_SetTextBuf; 
-void MiniWebview_SetTextBuf(TMiniWebview AObj, char* Buffer) {
+void MiniWebview_SetTextBuf(TMiniWebview AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(MiniWebview_SetTextBuf)
     MySyscall(pMiniWebview_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pMiniWebview_FindComponent; 
-TComponent MiniWebview_FindComponent(TMiniWebview AObj, char* AName) {
+TComponent MiniWebview_FindComponent(TMiniWebview AObj, CChar char* AName) {
     GET_FUNC_ADDR(MiniWebview_FindComponent)
     return (TComponent)MySyscall(pMiniWebview_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -49613,7 +49620,7 @@ char* MiniWebview_GetHint(TMiniWebview AObj) {
 }
 
 void* pMiniWebview_SetHint; 
-void MiniWebview_SetHint(TMiniWebview AObj, char* AValue) {
+void MiniWebview_SetHint(TMiniWebview AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MiniWebview_SetHint)
     MySyscall(pMiniWebview_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -49649,7 +49656,7 @@ char* MiniWebview_GetName(TMiniWebview AObj) {
 }
 
 void* pMiniWebview_SetName; 
-void MiniWebview_SetName(TMiniWebview AObj, char* AValue) {
+void MiniWebview_SetName(TMiniWebview AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MiniWebview_SetName)
     MySyscall(pMiniWebview_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -49861,13 +49868,13 @@ void Canvas_RoundRect(TCanvas AObj, int32_t X1, int32_t Y1, int32_t X2, int32_t 
 }
 
 void* pCanvas_TextExtent; 
-void Canvas_TextExtent(TCanvas AObj, char* Text, TSize* Result) {
+void Canvas_TextExtent(TCanvas AObj, CChar char* Text, TSize* Result) {
     GET_FUNC_ADDR(Canvas_TextExtent)
     MySyscall(pCanvas_TextExtent, 3, AObj, Text, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pCanvas_TextOut; 
-void Canvas_TextOut(TCanvas AObj, int32_t X, int32_t Y, char* Text) {
+void Canvas_TextOut(TCanvas AObj, int32_t X, int32_t Y, CChar char* Text) {
     GET_FUNC_ADDR(Canvas_TextOut)
     MySyscall(pCanvas_TextOut, 4, AObj, X, Y, Text ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -49879,13 +49886,13 @@ void Canvas_Lock(TCanvas AObj) {
 }
 
 void* pCanvas_TextHeight; 
-int32_t Canvas_TextHeight(TCanvas AObj, char* Text) {
+int32_t Canvas_TextHeight(TCanvas AObj, CChar char* Text) {
     GET_FUNC_ADDR(Canvas_TextHeight)
     return (int32_t)MySyscall(pCanvas_TextHeight, 2, AObj, Text ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pCanvas_TextWidth; 
-int32_t Canvas_TextWidth(TCanvas AObj, char* Text) {
+int32_t Canvas_TextWidth(TCanvas AObj, CChar char* Text) {
     GET_FUNC_ADDR(Canvas_TextWidth)
     return (int32_t)MySyscall(pCanvas_TextWidth, 2, AObj, Text ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -50105,13 +50112,13 @@ BOOL Graphic_Equals(TGraphic AObj, TObject Obj) {
 }
 
 void* pGraphic_LoadFromFile; 
-void Graphic_LoadFromFile(TGraphic AObj, char* Filename) {
+void Graphic_LoadFromFile(TGraphic AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Graphic_LoadFromFile)
     MySyscall(pGraphic_LoadFromFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pGraphic_SaveToFile; 
-void Graphic_SaveToFile(TGraphic AObj, char* Filename) {
+void Graphic_SaveToFile(TGraphic AObj, CChar char* Filename) {
     GET_FUNC_ADDR(Graphic_SaveToFile)
     MySyscall(pGraphic_SaveToFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -50299,7 +50306,7 @@ void PngImage_SaveToStream(TPngImage AObj, TStream Stream) {
 }
 
 void* pPngImage_LoadFromResourceName; 
-void PngImage_LoadFromResourceName(TPngImage AObj, uintptr_t Instance, char* Name) {
+void PngImage_LoadFromResourceName(TPngImage AObj, uintptr_t Instance, CChar char* Name) {
     GET_FUNC_ADDR(PngImage_LoadFromResourceName)
     MySyscall(pPngImage_LoadFromResourceName, 3, AObj, Instance, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -50317,13 +50324,13 @@ BOOL PngImage_Equals(TPngImage AObj, TObject Obj) {
 }
 
 void* pPngImage_LoadFromFile; 
-void PngImage_LoadFromFile(TPngImage AObj, char* Filename) {
+void PngImage_LoadFromFile(TPngImage AObj, CChar char* Filename) {
     GET_FUNC_ADDR(PngImage_LoadFromFile)
     MySyscall(pPngImage_LoadFromFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pPngImage_SaveToFile; 
-void PngImage_SaveToFile(TPngImage AObj, char* Filename) {
+void PngImage_SaveToFile(TPngImage AObj, CChar char* Filename) {
     GET_FUNC_ADDR(PngImage_SaveToFile)
     MySyscall(pPngImage_SaveToFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -50499,13 +50506,13 @@ BOOL JPEGImage_Equals(TJPEGImage AObj, TObject Obj) {
 }
 
 void* pJPEGImage_LoadFromFile; 
-void JPEGImage_LoadFromFile(TJPEGImage AObj, char* Filename) {
+void JPEGImage_LoadFromFile(TJPEGImage AObj, CChar char* Filename) {
     GET_FUNC_ADDR(JPEGImage_LoadFromFile)
     MySyscall(pJPEGImage_LoadFromFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pJPEGImage_SaveToFile; 
-void JPEGImage_SaveToFile(TJPEGImage AObj, char* Filename) {
+void JPEGImage_SaveToFile(TJPEGImage AObj, CChar char* Filename) {
     GET_FUNC_ADDR(JPEGImage_SaveToFile)
     MySyscall(pJPEGImage_SaveToFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -50723,13 +50730,13 @@ BOOL GIFImage_Equals(TGIFImage AObj, TObject Obj) {
 }
 
 void* pGIFImage_LoadFromFile; 
-void GIFImage_LoadFromFile(TGIFImage AObj, char* Filename) {
+void GIFImage_LoadFromFile(TGIFImage AObj, CChar char* Filename) {
     GET_FUNC_ADDR(GIFImage_LoadFromFile)
     MySyscall(pGIFImage_LoadFromFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pGIFImage_SaveToFile; 
-void GIFImage_SaveToFile(TGIFImage AObj, char* Filename) {
+void GIFImage_SaveToFile(TGIFImage AObj, CChar char* Filename) {
     GET_FUNC_ADDR(GIFImage_SaveToFile)
     MySyscall(pGIFImage_SaveToFile, 2, AObj, Filename ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -50887,7 +50894,7 @@ void ActionList_Free(TActionList AObj) {
 }
 
 void* pActionList_FindComponent; 
-TComponent ActionList_FindComponent(TActionList AObj, char* AName) {
+TComponent ActionList_FindComponent(TActionList AObj, CChar char* AName) {
     GET_FUNC_ADDR(ActionList_FindComponent)
     return (TComponent)MySyscall(pActionList_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51013,7 +51020,7 @@ char* ActionList_GetName(TActionList AObj) {
 }
 
 void* pActionList_SetName; 
-void ActionList_SetName(TActionList AObj, char* AValue) {
+void ActionList_SetName(TActionList AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ActionList_SetName)
     MySyscall(pActionList_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51075,7 +51082,7 @@ BOOL Action_HasParent(TAction AObj) {
 }
 
 void* pAction_FindComponent; 
-TComponent Action_FindComponent(TAction AObj, char* AName) {
+TComponent Action_FindComponent(TAction AObj, CChar char* AName) {
     GET_FUNC_ADDR(Action_FindComponent)
     return (TComponent)MySyscall(pAction_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51153,7 +51160,7 @@ char* Action_GetCaption(TAction AObj) {
 }
 
 void* pAction_SetCaption; 
-void Action_SetCaption(TAction AObj, char* AValue) {
+void Action_SetCaption(TAction AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Action_SetCaption)
     MySyscall(pAction_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51201,7 +51208,7 @@ char* Action_GetHint(TAction AObj) {
 }
 
 void* pAction_SetHint; 
-void Action_SetHint(TAction AObj, char* AValue) {
+void Action_SetHint(TAction AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Action_SetHint)
     MySyscall(pAction_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51297,7 +51304,7 @@ char* Action_GetName(TAction AObj) {
 }
 
 void* pAction_SetName; 
-void Action_SetName(TAction AObj, char* AValue) {
+void Action_SetName(TAction AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Action_SetName)
     MySyscall(pAction_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51449,7 +51456,7 @@ void ToolButton_Update(TToolButton AObj) {
 }
 
 void* pToolButton_GetTextBuf; 
-int32_t ToolButton_GetTextBuf(TToolButton AObj, char* Buffer, int32_t BufSize) {
+int32_t ToolButton_GetTextBuf(TToolButton AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ToolButton_GetTextBuf)
     return (int32_t)MySyscall(pToolButton_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51461,13 +51468,13 @@ int32_t ToolButton_GetTextLen(TToolButton AObj) {
 }
 
 void* pToolButton_SetTextBuf; 
-void ToolButton_SetTextBuf(TToolButton AObj, char* Buffer) {
+void ToolButton_SetTextBuf(TToolButton AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ToolButton_SetTextBuf)
     MySyscall(pToolButton_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pToolButton_FindComponent; 
-TComponent ToolButton_FindComponent(TToolButton AObj, char* AName) {
+TComponent ToolButton_FindComponent(TToolButton AObj, CChar char* AName) {
     GET_FUNC_ADDR(ToolButton_FindComponent)
     return (TComponent)MySyscall(pToolButton_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -51611,7 +51618,7 @@ char* ToolButton_GetCaption(TToolButton AObj) {
 }
 
 void* pToolButton_SetCaption; 
-void ToolButton_SetCaption(TToolButton AObj, char* AValue) {
+void ToolButton_SetCaption(TToolButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ToolButton_SetCaption)
     MySyscall(pToolButton_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52085,7 +52092,7 @@ char* ToolButton_GetHint(TToolButton AObj) {
 }
 
 void* pToolButton_SetHint; 
-void ToolButton_SetHint(TToolButton AObj, char* AValue) {
+void ToolButton_SetHint(TToolButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ToolButton_SetHint)
     MySyscall(pToolButton_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52121,7 +52128,7 @@ char* ToolButton_GetName(TToolButton AObj) {
 }
 
 void* pToolButton_SetName; 
-void ToolButton_SetName(TToolButton AObj, char* AValue) {
+void ToolButton_SetName(TToolButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ToolButton_SetName)
     MySyscall(pToolButton_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52219,7 +52226,7 @@ TClass ToolButton_StaticClassType() {
 
 // MyLCL_IniFile.inc
 void* pIniFile_Create; 
-TIniFile IniFile_Create(char* AFileName) {
+TIniFile IniFile_Create(CChar char* AFileName) {
     GET_FUNC_ADDR(IniFile_Create)
     return (TIniFile)MySyscall(pIniFile_Create, 1, AFileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52231,13 +52238,13 @@ void IniFile_Free(TIniFile AObj) {
 }
 
 void* pIniFile_ReadString; 
-char* IniFile_ReadString(TIniFile AObj, char* Section, char* Ident, char* Default) {
+char* IniFile_ReadString(TIniFile AObj, CChar char* Section, CChar char* Ident, CChar char* Default) {
     GET_FUNC_ADDR(IniFile_ReadString)
     return (char*)MySyscall(pIniFile_ReadString, 4, AObj, Section, Ident, Default ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_WriteString; 
-void IniFile_WriteString(TIniFile AObj, char* Section, char* Ident, char* Value) {
+void IniFile_WriteString(TIniFile AObj, CChar char* Section, CChar char* Ident, CChar char* Value) {
     GET_FUNC_ADDR(IniFile_WriteString)
     MySyscall(pIniFile_WriteString, 4, AObj, Section, Ident, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52249,19 +52256,19 @@ void IniFile_ReadSections(TIniFile AObj, TStrings Strings) {
 }
 
 void* pIniFile_ReadSectionValues; 
-void IniFile_ReadSectionValues(TIniFile AObj, char* Section, TStrings Strings) {
+void IniFile_ReadSectionValues(TIniFile AObj, CChar char* Section, TStrings Strings) {
     GET_FUNC_ADDR(IniFile_ReadSectionValues)
     MySyscall(pIniFile_ReadSectionValues, 3, AObj, Section, Strings ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_EraseSection; 
-void IniFile_EraseSection(TIniFile AObj, char* Section) {
+void IniFile_EraseSection(TIniFile AObj, CChar char* Section) {
     GET_FUNC_ADDR(IniFile_EraseSection)
     MySyscall(pIniFile_EraseSection, 2, AObj, Section ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_DeleteKey; 
-void IniFile_DeleteKey(TIniFile AObj, char* Section, char* Ident) {
+void IniFile_DeleteKey(TIniFile AObj, CChar char* Section, CChar char* Ident) {
     GET_FUNC_ADDR(IniFile_DeleteKey)
     MySyscall(pIniFile_DeleteKey, 3, AObj, Section, Ident ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52273,85 +52280,85 @@ void IniFile_UpdateFile(TIniFile AObj) {
 }
 
 void* pIniFile_SectionExists; 
-BOOL IniFile_SectionExists(TIniFile AObj, char* Section) {
+BOOL IniFile_SectionExists(TIniFile AObj, CChar char* Section) {
     GET_FUNC_ADDR(IniFile_SectionExists)
     return (BOOL)MySyscall(pIniFile_SectionExists, 2, AObj, Section ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_ReadInteger; 
-int32_t IniFile_ReadInteger(TIniFile AObj, char* Section, char* Ident, int32_t Default) {
+int32_t IniFile_ReadInteger(TIniFile AObj, CChar char* Section, CChar char* Ident, int32_t Default) {
     GET_FUNC_ADDR(IniFile_ReadInteger)
     return (int32_t)MySyscall(pIniFile_ReadInteger, 4, AObj, Section, Ident, Default ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_WriteInteger; 
-void IniFile_WriteInteger(TIniFile AObj, char* Section, char* Ident, int32_t Value) {
+void IniFile_WriteInteger(TIniFile AObj, CChar char* Section, CChar char* Ident, int32_t Value) {
     GET_FUNC_ADDR(IniFile_WriteInteger)
     MySyscall(pIniFile_WriteInteger, 4, AObj, Section, Ident, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_ReadBool; 
-BOOL IniFile_ReadBool(TIniFile AObj, char* Section, char* Ident, BOOL Default) {
+BOOL IniFile_ReadBool(TIniFile AObj, CChar char* Section, CChar char* Ident, BOOL Default) {
     GET_FUNC_ADDR(IniFile_ReadBool)
     return (BOOL)MySyscall(pIniFile_ReadBool, 4, AObj, Section, Ident, Default ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_WriteBool; 
-void IniFile_WriteBool(TIniFile AObj, char* Section, char* Ident, BOOL Value) {
+void IniFile_WriteBool(TIniFile AObj, CChar char* Section, CChar char* Ident, BOOL Value) {
     GET_FUNC_ADDR(IniFile_WriteBool)
     MySyscall(pIniFile_WriteBool, 4, AObj, Section, Ident, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_ReadDate; 
-uint32_t IniFile_ReadDate(TIniFile AObj, char* Section, char* Name, uint32_t Default) {
+uint32_t IniFile_ReadDate(TIniFile AObj, CChar char* Section, CChar char* Name, uint32_t Default) {
     GET_FUNC_ADDR(IniFile_ReadDate)
     return (uint32_t)MySyscall(pIniFile_ReadDate, 4, AObj, Section, Name, Default ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_ReadDateTime; 
-uint32_t IniFile_ReadDateTime(TIniFile AObj, char* Section, char* Name, uint32_t Default) {
+uint32_t IniFile_ReadDateTime(TIniFile AObj, CChar char* Section, CChar char* Name, uint32_t Default) {
     GET_FUNC_ADDR(IniFile_ReadDateTime)
     return (uint32_t)MySyscall(pIniFile_ReadDateTime, 4, AObj, Section, Name, Default ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_ReadFloat; 
-void IniFile_ReadFloat(TIniFile AObj, char* Section, char* Name, double* Default, double* Result) {
+void IniFile_ReadFloat(TIniFile AObj, CChar char* Section, CChar char* Name, double* Default, double* Result) {
     GET_FUNC_ADDR(IniFile_ReadFloat)
     MySyscall(pIniFile_ReadFloat, 5, AObj, Section, Name, Default, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_ReadTime; 
-uint32_t IniFile_ReadTime(TIniFile AObj, char* Section, char* Name, uint32_t Default) {
+uint32_t IniFile_ReadTime(TIniFile AObj, CChar char* Section, CChar char* Name, uint32_t Default) {
     GET_FUNC_ADDR(IniFile_ReadTime)
     return (uint32_t)MySyscall(pIniFile_ReadTime, 4, AObj, Section, Name, Default ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_WriteDate; 
-void IniFile_WriteDate(TIniFile AObj, char* Section, char* Name, uint32_t Value) {
+void IniFile_WriteDate(TIniFile AObj, CChar char* Section, CChar char* Name, uint32_t Value) {
     GET_FUNC_ADDR(IniFile_WriteDate)
     MySyscall(pIniFile_WriteDate, 4, AObj, Section, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_WriteDateTime; 
-void IniFile_WriteDateTime(TIniFile AObj, char* Section, char* Name, uint32_t Value) {
+void IniFile_WriteDateTime(TIniFile AObj, CChar char* Section, CChar char* Name, uint32_t Value) {
     GET_FUNC_ADDR(IniFile_WriteDateTime)
     MySyscall(pIniFile_WriteDateTime, 4, AObj, Section, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_WriteFloat; 
-void IniFile_WriteFloat(TIniFile AObj, char* Section, char* Name, double* Value) {
+void IniFile_WriteFloat(TIniFile AObj, CChar char* Section, CChar char* Name, double* Value) {
     GET_FUNC_ADDR(IniFile_WriteFloat)
     MySyscall(pIniFile_WriteFloat, 4, AObj, Section, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_WriteTime; 
-void IniFile_WriteTime(TIniFile AObj, char* Section, char* Name, uint32_t Value) {
+void IniFile_WriteTime(TIniFile AObj, CChar char* Section, CChar char* Name, uint32_t Value) {
     GET_FUNC_ADDR(IniFile_WriteTime)
     MySyscall(pIniFile_WriteTime, 4, AObj, Section, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pIniFile_ValueExists; 
-BOOL IniFile_ValueExists(TIniFile AObj, char* Section, char* Ident) {
+BOOL IniFile_ValueExists(TIniFile AObj, CChar char* Section, CChar char* Ident) {
     GET_FUNC_ADDR(IniFile_ValueExists)
     return (BOOL)MySyscall(pIniFile_ValueExists, 3, AObj, Section, Ident ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52431,19 +52438,19 @@ void Registry_CloseKey(TRegistry AObj) {
 }
 
 void* pRegistry_CreateKey; 
-BOOL Registry_CreateKey(TRegistry AObj, char* Key) {
+BOOL Registry_CreateKey(TRegistry AObj, CChar char* Key) {
     GET_FUNC_ADDR(Registry_CreateKey)
     return (BOOL)MySyscall(pRegistry_CreateKey, 2, AObj, Key ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_DeleteKey; 
-BOOL Registry_DeleteKey(TRegistry AObj, char* Key) {
+BOOL Registry_DeleteKey(TRegistry AObj, CChar char* Key) {
     GET_FUNC_ADDR(Registry_DeleteKey)
     return (BOOL)MySyscall(pRegistry_DeleteKey, 2, AObj, Key ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_DeleteValue; 
-BOOL Registry_DeleteValue(TRegistry AObj, char* Name) {
+BOOL Registry_DeleteValue(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_DeleteValue)
     return (BOOL)MySyscall(pRegistry_DeleteValue, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52455,163 +52462,163 @@ BOOL Registry_HasSubKeys(TRegistry AObj) {
 }
 
 void* pRegistry_KeyExists; 
-BOOL Registry_KeyExists(TRegistry AObj, char* Key) {
+BOOL Registry_KeyExists(TRegistry AObj, CChar char* Key) {
     GET_FUNC_ADDR(Registry_KeyExists)
     return (BOOL)MySyscall(pRegistry_KeyExists, 2, AObj, Key ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_LoadKey; 
-BOOL Registry_LoadKey(TRegistry AObj, char* Key, char* FileName) {
+BOOL Registry_LoadKey(TRegistry AObj, CChar char* Key, CChar char* FileName) {
     GET_FUNC_ADDR(Registry_LoadKey)
     return (BOOL)MySyscall(pRegistry_LoadKey, 3, AObj, Key, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_MoveKey; 
-void Registry_MoveKey(TRegistry AObj, char* OldName, char* NewName, BOOL Delete) {
+void Registry_MoveKey(TRegistry AObj, CChar char* OldName, CChar char* NewName, BOOL Delete) {
     GET_FUNC_ADDR(Registry_MoveKey)
     MySyscall(pRegistry_MoveKey, 4, AObj, OldName, NewName, Delete ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_OpenKey; 
-BOOL Registry_OpenKey(TRegistry AObj, char* Key, BOOL CanCreate) {
+BOOL Registry_OpenKey(TRegistry AObj, CChar char* Key, BOOL CanCreate) {
     GET_FUNC_ADDR(Registry_OpenKey)
     return (BOOL)MySyscall(pRegistry_OpenKey, 3, AObj, Key, CanCreate ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_OpenKeyReadOnly; 
-BOOL Registry_OpenKeyReadOnly(TRegistry AObj, char* Key) {
+BOOL Registry_OpenKeyReadOnly(TRegistry AObj, CChar char* Key) {
     GET_FUNC_ADDR(Registry_OpenKeyReadOnly)
     return (BOOL)MySyscall(pRegistry_OpenKeyReadOnly, 2, AObj, Key ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReadBool; 
-BOOL Registry_ReadBool(TRegistry AObj, char* Name) {
+BOOL Registry_ReadBool(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_ReadBool)
     return (BOOL)MySyscall(pRegistry_ReadBool, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReadDate; 
-uint32_t Registry_ReadDate(TRegistry AObj, char* Name) {
+uint32_t Registry_ReadDate(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_ReadDate)
     return (uint32_t)MySyscall(pRegistry_ReadDate, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReadDateTime; 
-uint32_t Registry_ReadDateTime(TRegistry AObj, char* Name) {
+uint32_t Registry_ReadDateTime(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_ReadDateTime)
     return (uint32_t)MySyscall(pRegistry_ReadDateTime, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReadFloat; 
-void Registry_ReadFloat(TRegistry AObj, char* Name, double* Result) {
+void Registry_ReadFloat(TRegistry AObj, CChar char* Name, double* Result) {
     GET_FUNC_ADDR(Registry_ReadFloat)
     MySyscall(pRegistry_ReadFloat, 3, AObj, Name, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReadInteger; 
-int32_t Registry_ReadInteger(TRegistry AObj, char* Name) {
+int32_t Registry_ReadInteger(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_ReadInteger)
     return (int32_t)MySyscall(pRegistry_ReadInteger, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReadString; 
-char* Registry_ReadString(TRegistry AObj, char* Name) {
+char* Registry_ReadString(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_ReadString)
     return (char*)MySyscall(pRegistry_ReadString, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReadTime; 
-uint32_t Registry_ReadTime(TRegistry AObj, char* Name) {
+uint32_t Registry_ReadTime(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_ReadTime)
     return (uint32_t)MySyscall(pRegistry_ReadTime, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_RegistryConnect; 
-BOOL Registry_RegistryConnect(TRegistry AObj, char* UNCName) {
+BOOL Registry_RegistryConnect(TRegistry AObj, CChar char* UNCName) {
     GET_FUNC_ADDR(Registry_RegistryConnect)
     return (BOOL)MySyscall(pRegistry_RegistryConnect, 2, AObj, UNCName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_RenameValue; 
-void Registry_RenameValue(TRegistry AObj, char* OldName, char* NewName) {
+void Registry_RenameValue(TRegistry AObj, CChar char* OldName, CChar char* NewName) {
     GET_FUNC_ADDR(Registry_RenameValue)
     MySyscall(pRegistry_RenameValue, 3, AObj, OldName, NewName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ReplaceKey; 
-BOOL Registry_ReplaceKey(TRegistry AObj, char* Key, char* FileName, char* BackUpFileName) {
+BOOL Registry_ReplaceKey(TRegistry AObj, CChar char* Key, CChar char* FileName, CChar char* BackUpFileName) {
     GET_FUNC_ADDR(Registry_ReplaceKey)
     return (BOOL)MySyscall(pRegistry_ReplaceKey, 4, AObj, Key, FileName, BackUpFileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_RestoreKey; 
-BOOL Registry_RestoreKey(TRegistry AObj, char* Key, char* FileName) {
+BOOL Registry_RestoreKey(TRegistry AObj, CChar char* Key, CChar char* FileName) {
     GET_FUNC_ADDR(Registry_RestoreKey)
     return (BOOL)MySyscall(pRegistry_RestoreKey, 3, AObj, Key, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_SaveKey; 
-BOOL Registry_SaveKey(TRegistry AObj, char* Key, char* FileName) {
+BOOL Registry_SaveKey(TRegistry AObj, CChar char* Key, CChar char* FileName) {
     GET_FUNC_ADDR(Registry_SaveKey)
     return (BOOL)MySyscall(pRegistry_SaveKey, 3, AObj, Key, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_UnLoadKey; 
-BOOL Registry_UnLoadKey(TRegistry AObj, char* Key) {
+BOOL Registry_UnLoadKey(TRegistry AObj, CChar char* Key) {
     GET_FUNC_ADDR(Registry_UnLoadKey)
     return (BOOL)MySyscall(pRegistry_UnLoadKey, 2, AObj, Key ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_ValueExists; 
-BOOL Registry_ValueExists(TRegistry AObj, char* Name) {
+BOOL Registry_ValueExists(TRegistry AObj, CChar char* Name) {
     GET_FUNC_ADDR(Registry_ValueExists)
     return (BOOL)MySyscall(pRegistry_ValueExists, 2, AObj, Name ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteBool; 
-void Registry_WriteBool(TRegistry AObj, char* Name, BOOL Value) {
+void Registry_WriteBool(TRegistry AObj, CChar char* Name, BOOL Value) {
     GET_FUNC_ADDR(Registry_WriteBool)
     MySyscall(pRegistry_WriteBool, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteDate; 
-void Registry_WriteDate(TRegistry AObj, char* Name, uint32_t Value) {
+void Registry_WriteDate(TRegistry AObj, CChar char* Name, uint32_t Value) {
     GET_FUNC_ADDR(Registry_WriteDate)
     MySyscall(pRegistry_WriteDate, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteDateTime; 
-void Registry_WriteDateTime(TRegistry AObj, char* Name, uint32_t Value) {
+void Registry_WriteDateTime(TRegistry AObj, CChar char* Name, uint32_t Value) {
     GET_FUNC_ADDR(Registry_WriteDateTime)
     MySyscall(pRegistry_WriteDateTime, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteFloat; 
-void Registry_WriteFloat(TRegistry AObj, char* Name, double* Value) {
+void Registry_WriteFloat(TRegistry AObj, CChar char* Name, double* Value) {
     GET_FUNC_ADDR(Registry_WriteFloat)
     MySyscall(pRegistry_WriteFloat, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteInteger; 
-void Registry_WriteInteger(TRegistry AObj, char* Name, int32_t Value) {
+void Registry_WriteInteger(TRegistry AObj, CChar char* Name, int32_t Value) {
     GET_FUNC_ADDR(Registry_WriteInteger)
     MySyscall(pRegistry_WriteInteger, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteString; 
-void Registry_WriteString(TRegistry AObj, char* Name, char* Value) {
+void Registry_WriteString(TRegistry AObj, CChar char* Name, CChar char* Value) {
     GET_FUNC_ADDR(Registry_WriteString)
     MySyscall(pRegistry_WriteString, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteExpandString; 
-void Registry_WriteExpandString(TRegistry AObj, char* Name, char* Value) {
+void Registry_WriteExpandString(TRegistry AObj, CChar char* Name, CChar char* Value) {
     GET_FUNC_ADDR(Registry_WriteExpandString)
     MySyscall(pRegistry_WriteExpandString, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pRegistry_WriteTime; 
-void Registry_WriteTime(TRegistry AObj, char* Name, uint32_t Value) {
+void Registry_WriteTime(TRegistry AObj, CChar char* Name, uint32_t Value) {
     GET_FUNC_ADDR(Registry_WriteTime)
     MySyscall(pRegistry_WriteTime, 3, AObj, Name, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52769,13 +52776,13 @@ void Clipboard_Open(TClipboard AObj) {
 }
 
 void* pClipboard_GetTextBuf; 
-int32_t Clipboard_GetTextBuf(TClipboard AObj, char* Buffer, int32_t BufSize) {
+int32_t Clipboard_GetTextBuf(TClipboard AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Clipboard_GetTextBuf)
     return (int32_t)MySyscall(pClipboard_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pClipboard_SetTextBuf; 
-void Clipboard_SetTextBuf(TClipboard AObj, char* Buffer) {
+void Clipboard_SetTextBuf(TClipboard AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Clipboard_SetTextBuf)
     MySyscall(pClipboard_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -52835,7 +52842,7 @@ char* Clipboard_GetAsText(TClipboard AObj) {
 }
 
 void* pClipboard_SetAsText; 
-void Clipboard_SetAsText(TClipboard AObj, char* AValue) {
+void Clipboard_SetAsText(TClipboard AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Clipboard_SetAsText)
     MySyscall(pClipboard_SetAsText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -53091,7 +53098,7 @@ void PaintBox_Update(TPaintBox AObj) {
 }
 
 void* pPaintBox_GetTextBuf; 
-int32_t PaintBox_GetTextBuf(TPaintBox AObj, char* Buffer, int32_t BufSize) {
+int32_t PaintBox_GetTextBuf(TPaintBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(PaintBox_GetTextBuf)
     return (int32_t)MySyscall(pPaintBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -53103,13 +53110,13 @@ int32_t PaintBox_GetTextLen(TPaintBox AObj) {
 }
 
 void* pPaintBox_SetTextBuf; 
-void PaintBox_SetTextBuf(TPaintBox AObj, char* Buffer) {
+void PaintBox_SetTextBuf(TPaintBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(PaintBox_SetTextBuf)
     MySyscall(pPaintBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pPaintBox_FindComponent; 
-TComponent PaintBox_FindComponent(TPaintBox AObj, char* AName) {
+TComponent PaintBox_FindComponent(TPaintBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(PaintBox_FindComponent)
     return (TComponent)MySyscall(pPaintBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -53625,7 +53632,7 @@ char* PaintBox_GetHint(TPaintBox AObj) {
 }
 
 void* pPaintBox_SetHint; 
-void PaintBox_SetHint(TPaintBox AObj, char* AValue) {
+void PaintBox_SetHint(TPaintBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PaintBox_SetHint)
     MySyscall(pPaintBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -53661,7 +53668,7 @@ char* PaintBox_GetName(TPaintBox AObj) {
 }
 
 void* pPaintBox_SetName; 
-void PaintBox_SetName(TPaintBox AObj, char* AValue) {
+void PaintBox_SetName(TPaintBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PaintBox_SetName)
     MySyscall(pPaintBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -53771,7 +53778,7 @@ void Timer_Free(TTimer AObj) {
 }
 
 void* pTimer_FindComponent; 
-TComponent Timer_FindComponent(TTimer AObj, char* AName) {
+TComponent Timer_FindComponent(TTimer AObj, CChar char* AName) {
     GET_FUNC_ADDR(Timer_FindComponent)
     return (TComponent)MySyscall(pTimer_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -53897,7 +53904,7 @@ char* Timer_GetName(TTimer AObj) {
 }
 
 void* pTimer_SetName; 
-void Timer_SetName(TTimer AObj, char* AValue) {
+void Timer_SetName(TTimer AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Timer_SetName)
     MySyscall(pTimer_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -54087,7 +54094,7 @@ void Component_Free(TComponent AObj) {
 }
 
 void* pComponent_FindComponent; 
-TComponent Component_FindComponent(TComponent AObj, char* AName) {
+TComponent Component_FindComponent(TComponent AObj, CChar char* AName) {
     GET_FUNC_ADDR(Component_FindComponent)
     return (TComponent)MySyscall(pComponent_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -54183,7 +54190,7 @@ char* Component_GetName(TComponent AObj) {
 }
 
 void* pComponent_SetName; 
-void Component_SetName(TComponent AObj, char* AValue) {
+void Component_SetName(TComponent AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Component_SetName)
     MySyscall(pComponent_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -54445,7 +54452,7 @@ char* TextAttributes_GetName(TTextAttributes AObj) {
 }
 
 void* pTextAttributes_SetName; 
-void TextAttributes_SetName(TTextAttributes AObj, char* AValue) {
+void TextAttributes_SetName(TTextAttributes AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TextAttributes_SetName)
     MySyscall(pTextAttributes_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -54641,7 +54648,7 @@ char* Exception_GetMessage(Exception AObj) {
 }
 
 void* pException_SetMessage; 
-void Exception_SetMessage(Exception AObj, char* AValue) {
+void Exception_SetMessage(Exception AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Exception_SetMessage)
     MySyscall(pException_SetMessage, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -54703,7 +54710,7 @@ void ScrollBar_EnableAlign(TScrollBar AObj) {
 }
 
 void* pScrollBar_FindChildControl; 
-TControl ScrollBar_FindChildControl(TScrollBar AObj, char* ControlName) {
+TControl ScrollBar_FindChildControl(TScrollBar AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ScrollBar_FindChildControl)
     return (TControl)MySyscall(pScrollBar_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -54859,7 +54866,7 @@ void ScrollBar_Show(TScrollBar AObj) {
 }
 
 void* pScrollBar_GetTextBuf; 
-int32_t ScrollBar_GetTextBuf(TScrollBar AObj, char* Buffer, int32_t BufSize) {
+int32_t ScrollBar_GetTextBuf(TScrollBar AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ScrollBar_GetTextBuf)
     return (int32_t)MySyscall(pScrollBar_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -54871,13 +54878,13 @@ int32_t ScrollBar_GetTextLen(TScrollBar AObj) {
 }
 
 void* pScrollBar_SetTextBuf; 
-void ScrollBar_SetTextBuf(TScrollBar AObj, char* Buffer) {
+void ScrollBar_SetTextBuf(TScrollBar AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ScrollBar_SetTextBuf)
     MySyscall(pScrollBar_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pScrollBar_FindComponent; 
-TComponent ScrollBar_FindComponent(TScrollBar AObj, char* AName) {
+TComponent ScrollBar_FindComponent(TScrollBar AObj, CChar char* AName) {
     GET_FUNC_ADDR(ScrollBar_FindComponent)
     return (TComponent)MySyscall(pScrollBar_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -55543,7 +55550,7 @@ char* ScrollBar_GetHint(TScrollBar AObj) {
 }
 
 void* pScrollBar_SetHint; 
-void ScrollBar_SetHint(TScrollBar AObj, char* AValue) {
+void ScrollBar_SetHint(TScrollBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ScrollBar_SetHint)
     MySyscall(pScrollBar_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -55579,7 +55586,7 @@ char* ScrollBar_GetName(TScrollBar AObj) {
 }
 
 void* pScrollBar_SetName; 
-void ScrollBar_SetName(TScrollBar AObj, char* AValue) {
+void ScrollBar_SetName(TScrollBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ScrollBar_SetName)
     MySyscall(pScrollBar_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -55797,7 +55804,7 @@ void MaskEdit_EnableAlign(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_FindChildControl; 
-TControl MaskEdit_FindChildControl(TMaskEdit AObj, char* ControlName) {
+TControl MaskEdit_FindChildControl(TMaskEdit AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(MaskEdit_FindChildControl)
     return (TControl)MySyscall(pMaskEdit_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -55953,19 +55960,19 @@ void MaskEdit_Show(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_GetTextBuf; 
-int32_t MaskEdit_GetTextBuf(TMaskEdit AObj, char* Buffer, int32_t BufSize) {
+int32_t MaskEdit_GetTextBuf(TMaskEdit AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(MaskEdit_GetTextBuf)
     return (int32_t)MySyscall(pMaskEdit_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pMaskEdit_SetTextBuf; 
-void MaskEdit_SetTextBuf(TMaskEdit AObj, char* Buffer) {
+void MaskEdit_SetTextBuf(TMaskEdit AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(MaskEdit_SetTextBuf)
     MySyscall(pMaskEdit_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pMaskEdit_FindComponent; 
-TComponent MaskEdit_FindComponent(TMaskEdit AObj, char* AName) {
+TComponent MaskEdit_FindComponent(TMaskEdit AObj, CChar char* AName) {
     GET_FUNC_ADDR(MaskEdit_FindComponent)
     return (TComponent)MySyscall(pMaskEdit_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -56391,7 +56398,7 @@ char* MaskEdit_GetText(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_SetText; 
-void MaskEdit_SetText(TMaskEdit AObj, char* AValue) {
+void MaskEdit_SetText(TMaskEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MaskEdit_SetText)
     MySyscall(pMaskEdit_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -56403,7 +56410,7 @@ char* MaskEdit_GetTextHint(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_SetTextHint; 
-void MaskEdit_SetTextHint(TMaskEdit AObj, char* AValue) {
+void MaskEdit_SetTextHint(TMaskEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MaskEdit_SetTextHint)
     MySyscall(pMaskEdit_SetTextHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -56541,7 +56548,7 @@ char* MaskEdit_GetEditText(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_SetEditText; 
-void MaskEdit_SetEditText(TMaskEdit AObj, char* AValue) {
+void MaskEdit_SetEditText(TMaskEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MaskEdit_SetEditText)
     MySyscall(pMaskEdit_SetEditText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -56595,7 +56602,7 @@ char* MaskEdit_GetSelText(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_SetSelText; 
-void MaskEdit_SetSelText(TMaskEdit AObj, char* AValue) {
+void MaskEdit_SetSelText(TMaskEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MaskEdit_SetSelText)
     MySyscall(pMaskEdit_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -56847,7 +56854,7 @@ char* MaskEdit_GetHint(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_SetHint; 
-void MaskEdit_SetHint(TMaskEdit AObj, char* AValue) {
+void MaskEdit_SetHint(TMaskEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MaskEdit_SetHint)
     MySyscall(pMaskEdit_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -56883,7 +56890,7 @@ char* MaskEdit_GetName(TMaskEdit AObj) {
 }
 
 void* pMaskEdit_SetName; 
-void MaskEdit_SetName(TMaskEdit AObj, char* AValue) {
+void MaskEdit_SetName(TMaskEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(MaskEdit_SetName)
     MySyscall(pMaskEdit_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -57113,7 +57120,7 @@ void Shape_Update(TShape AObj) {
 }
 
 void* pShape_GetTextBuf; 
-int32_t Shape_GetTextBuf(TShape AObj, char* Buffer, int32_t BufSize) {
+int32_t Shape_GetTextBuf(TShape AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Shape_GetTextBuf)
     return (int32_t)MySyscall(pShape_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -57125,13 +57132,13 @@ int32_t Shape_GetTextLen(TShape AObj) {
 }
 
 void* pShape_SetTextBuf; 
-void Shape_SetTextBuf(TShape AObj, char* Buffer) {
+void Shape_SetTextBuf(TShape AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Shape_SetTextBuf)
     MySyscall(pShape_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pShape_FindComponent; 
-TComponent Shape_FindComponent(TShape AObj, char* AName) {
+TComponent Shape_FindComponent(TShape AObj, CChar char* AName) {
     GET_FUNC_ADDR(Shape_FindComponent)
     return (TComponent)MySyscall(pShape_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -57611,7 +57618,7 @@ char* Shape_GetHint(TShape AObj) {
 }
 
 void* pShape_SetHint; 
-void Shape_SetHint(TShape AObj, char* AValue) {
+void Shape_SetHint(TShape AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Shape_SetHint)
     MySyscall(pShape_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -57647,7 +57654,7 @@ char* Shape_GetName(TShape AObj) {
 }
 
 void* pShape_SetName; 
-void Shape_SetName(TShape AObj, char* AValue) {
+void Shape_SetName(TShape AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Shape_SetName)
     MySyscall(pShape_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -57853,7 +57860,7 @@ void Bevel_Update(TBevel AObj) {
 }
 
 void* pBevel_GetTextBuf; 
-int32_t Bevel_GetTextBuf(TBevel AObj, char* Buffer, int32_t BufSize) {
+int32_t Bevel_GetTextBuf(TBevel AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Bevel_GetTextBuf)
     return (int32_t)MySyscall(pBevel_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -57865,13 +57872,13 @@ int32_t Bevel_GetTextLen(TBevel AObj) {
 }
 
 void* pBevel_SetTextBuf; 
-void Bevel_SetTextBuf(TBevel AObj, char* Buffer) {
+void Bevel_SetTextBuf(TBevel AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Bevel_SetTextBuf)
     MySyscall(pBevel_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pBevel_FindComponent; 
-TComponent Bevel_FindComponent(TBevel AObj, char* AName) {
+TComponent Bevel_FindComponent(TBevel AObj, CChar char* AName) {
     GET_FUNC_ADDR(Bevel_FindComponent)
     return (TComponent)MySyscall(pBevel_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -58255,7 +58262,7 @@ char* Bevel_GetHint(TBevel AObj) {
 }
 
 void* pBevel_SetHint; 
-void Bevel_SetHint(TBevel AObj, char* AValue) {
+void Bevel_SetHint(TBevel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Bevel_SetHint)
     MySyscall(pBevel_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -58291,7 +58298,7 @@ char* Bevel_GetName(TBevel AObj) {
 }
 
 void* pBevel_SetName; 
-void Bevel_SetName(TBevel AObj, char* AValue) {
+void Bevel_SetName(TBevel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Bevel_SetName)
     MySyscall(pBevel_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -58437,7 +58444,7 @@ void ScrollBox_EnableAlign(TScrollBox AObj) {
 }
 
 void* pScrollBox_FindChildControl; 
-TControl ScrollBox_FindChildControl(TScrollBox AObj, char* ControlName) {
+TControl ScrollBox_FindChildControl(TScrollBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ScrollBox_FindChildControl)
     return (TControl)MySyscall(pScrollBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -58593,7 +58600,7 @@ void ScrollBox_Show(TScrollBox AObj) {
 }
 
 void* pScrollBox_GetTextBuf; 
-int32_t ScrollBox_GetTextBuf(TScrollBox AObj, char* Buffer, int32_t BufSize) {
+int32_t ScrollBox_GetTextBuf(TScrollBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ScrollBox_GetTextBuf)
     return (int32_t)MySyscall(pScrollBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -58605,13 +58612,13 @@ int32_t ScrollBox_GetTextLen(TScrollBox AObj) {
 }
 
 void* pScrollBox_SetTextBuf; 
-void ScrollBox_SetTextBuf(TScrollBox AObj, char* Buffer) {
+void ScrollBox_SetTextBuf(TScrollBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ScrollBox_SetTextBuf)
     MySyscall(pScrollBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pScrollBox_FindComponent; 
-TComponent ScrollBox_FindComponent(TScrollBox AObj, char* AName) {
+TComponent ScrollBox_FindComponent(TScrollBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(ScrollBox_FindComponent)
     return (TComponent)MySyscall(pScrollBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -59385,7 +59392,7 @@ char* ScrollBox_GetHint(TScrollBox AObj) {
 }
 
 void* pScrollBox_SetHint; 
-void ScrollBox_SetHint(TScrollBox AObj, char* AValue) {
+void ScrollBox_SetHint(TScrollBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ScrollBox_SetHint)
     MySyscall(pScrollBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -59421,7 +59428,7 @@ char* ScrollBox_GetName(TScrollBox AObj) {
 }
 
 void* pScrollBox_SetName; 
-void ScrollBox_SetName(TScrollBox AObj, char* AValue) {
+void ScrollBox_SetName(TScrollBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ScrollBox_SetName)
     MySyscall(pScrollBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -59561,7 +59568,7 @@ void CheckListBox_CheckAll(TCheckListBox AObj, TCheckBoxState AState, BOOL Allow
 }
 
 void* pCheckListBox_AddItem; 
-void CheckListBox_AddItem(TCheckListBox AObj, char* Item, TObject AObject) {
+void CheckListBox_AddItem(TCheckListBox AObj, CChar char* Item, TObject AObject) {
     GET_FUNC_ADDR(CheckListBox_AddItem)
     MySyscall(pCheckListBox_AddItem, 3, AObj, Item, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -59633,7 +59640,7 @@ void CheckListBox_EnableAlign(TCheckListBox AObj) {
 }
 
 void* pCheckListBox_FindChildControl; 
-TControl CheckListBox_FindChildControl(TCheckListBox AObj, char* ControlName) {
+TControl CheckListBox_FindChildControl(TCheckListBox AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(CheckListBox_FindChildControl)
     return (TControl)MySyscall(pCheckListBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -59789,7 +59796,7 @@ void CheckListBox_Show(TCheckListBox AObj) {
 }
 
 void* pCheckListBox_GetTextBuf; 
-int32_t CheckListBox_GetTextBuf(TCheckListBox AObj, char* Buffer, int32_t BufSize) {
+int32_t CheckListBox_GetTextBuf(TCheckListBox AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(CheckListBox_GetTextBuf)
     return (int32_t)MySyscall(pCheckListBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -59801,13 +59808,13 @@ int32_t CheckListBox_GetTextLen(TCheckListBox AObj) {
 }
 
 void* pCheckListBox_SetTextBuf; 
-void CheckListBox_SetTextBuf(TCheckListBox AObj, char* Buffer) {
+void CheckListBox_SetTextBuf(TCheckListBox AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(CheckListBox_SetTextBuf)
     MySyscall(pCheckListBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pCheckListBox_FindComponent; 
-TComponent CheckListBox_FindComponent(TCheckListBox AObj, char* AName) {
+TComponent CheckListBox_FindComponent(TCheckListBox AObj, CChar char* AName) {
     GET_FUNC_ADDR(CheckListBox_FindComponent)
     return (TComponent)MySyscall(pCheckListBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -60623,7 +60630,7 @@ char* CheckListBox_GetHint(TCheckListBox AObj) {
 }
 
 void* pCheckListBox_SetHint; 
-void CheckListBox_SetHint(TCheckListBox AObj, char* AValue) {
+void CheckListBox_SetHint(TCheckListBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CheckListBox_SetHint)
     MySyscall(pCheckListBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -60659,7 +60666,7 @@ char* CheckListBox_GetName(TCheckListBox AObj) {
 }
 
 void* pCheckListBox_SetName; 
-void CheckListBox_SetName(TCheckListBox AObj, char* AValue) {
+void CheckListBox_SetName(TCheckListBox AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CheckListBox_SetName)
     MySyscall(pCheckListBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -60955,7 +60962,7 @@ void Gauge_Update(TGauge AObj) {
 }
 
 void* pGauge_GetTextBuf; 
-int32_t Gauge_GetTextBuf(TGauge AObj, char* Buffer, int32_t BufSize) {
+int32_t Gauge_GetTextBuf(TGauge AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Gauge_GetTextBuf)
     return (int32_t)MySyscall(pGauge_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -60967,13 +60974,13 @@ int32_t Gauge_GetTextLen(TGauge AObj) {
 }
 
 void* pGauge_SetTextBuf; 
-void Gauge_SetTextBuf(TGauge AObj, char* Buffer) {
+void Gauge_SetTextBuf(TGauge AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Gauge_SetTextBuf)
     MySyscall(pGauge_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pGauge_FindComponent; 
-TComponent Gauge_FindComponent(TGauge AObj, char* AName) {
+TComponent Gauge_FindComponent(TGauge AObj, CChar char* AName) {
     GET_FUNC_ADDR(Gauge_FindComponent)
     return (TComponent)MySyscall(pGauge_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -61483,7 +61490,7 @@ char* Gauge_GetHint(TGauge AObj) {
 }
 
 void* pGauge_SetHint; 
-void Gauge_SetHint(TGauge AObj, char* AValue) {
+void Gauge_SetHint(TGauge AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Gauge_SetHint)
     MySyscall(pGauge_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -61519,7 +61526,7 @@ char* Gauge_GetName(TGauge AObj) {
 }
 
 void* pGauge_SetName; 
-void Gauge_SetName(TGauge AObj, char* AValue) {
+void Gauge_SetName(TGauge AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Gauge_SetName)
     MySyscall(pGauge_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -61731,7 +61738,7 @@ void ImageButton_Update(TImageButton AObj) {
 }
 
 void* pImageButton_GetTextBuf; 
-int32_t ImageButton_GetTextBuf(TImageButton AObj, char* Buffer, int32_t BufSize) {
+int32_t ImageButton_GetTextBuf(TImageButton AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ImageButton_GetTextBuf)
     return (int32_t)MySyscall(pImageButton_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -61743,13 +61750,13 @@ int32_t ImageButton_GetTextLen(TImageButton AObj) {
 }
 
 void* pImageButton_SetTextBuf; 
-void ImageButton_SetTextBuf(TImageButton AObj, char* Buffer) {
+void ImageButton_SetTextBuf(TImageButton AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ImageButton_SetTextBuf)
     MySyscall(pImageButton_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pImageButton_FindComponent; 
-TComponent ImageButton_FindComponent(TImageButton AObj, char* AName) {
+TComponent ImageButton_FindComponent(TImageButton AObj, CChar char* AName) {
     GET_FUNC_ADDR(ImageButton_FindComponent)
     return (TComponent)MySyscall(pImageButton_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -61911,7 +61918,7 @@ char* ImageButton_GetCaption(TImageButton AObj) {
 }
 
 void* pImageButton_SetCaption; 
-void ImageButton_SetCaption(TImageButton AObj, char* AValue) {
+void ImageButton_SetCaption(TImageButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ImageButton_SetCaption)
     MySyscall(pImageButton_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62325,7 +62332,7 @@ char* ImageButton_GetHint(TImageButton AObj) {
 }
 
 void* pImageButton_SetHint; 
-void ImageButton_SetHint(TImageButton AObj, char* AValue) {
+void ImageButton_SetHint(TImageButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ImageButton_SetHint)
     MySyscall(pImageButton_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62361,7 +62368,7 @@ char* ImageButton_GetName(TImageButton AObj) {
 }
 
 void* pImageButton_SetName; 
-void ImageButton_SetName(TImageButton AObj, char* AValue) {
+void ImageButton_SetName(TImageButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ImageButton_SetName)
     MySyscall(pImageButton_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62483,7 +62490,7 @@ BOOL FindDialog_Execute(TFindDialog AObj) {
 }
 
 void* pFindDialog_FindComponent; 
-TComponent FindDialog_FindComponent(TFindDialog AObj, char* AName) {
+TComponent FindDialog_FindComponent(TFindDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(FindDialog_FindComponent)
     return (TComponent)MySyscall(pFindDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62591,7 +62598,7 @@ char* FindDialog_GetFindText(TFindDialog AObj) {
 }
 
 void* pFindDialog_SetFindText; 
-void FindDialog_SetFindText(TFindDialog AObj, char* AValue) {
+void FindDialog_SetFindText(TFindDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(FindDialog_SetFindText)
     MySyscall(pFindDialog_SetFindText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62663,7 +62670,7 @@ char* FindDialog_GetName(TFindDialog AObj) {
 }
 
 void* pFindDialog_SetName; 
-void FindDialog_SetName(TFindDialog AObj, char* AValue) {
+void FindDialog_SetName(TFindDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(FindDialog_SetName)
     MySyscall(pFindDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62719,7 +62726,7 @@ BOOL ReplaceDialog_Execute(TReplaceDialog AObj) {
 }
 
 void* pReplaceDialog_FindComponent; 
-TComponent ReplaceDialog_FindComponent(TReplaceDialog AObj, char* AName) {
+TComponent ReplaceDialog_FindComponent(TReplaceDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(ReplaceDialog_FindComponent)
     return (TComponent)MySyscall(pReplaceDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62791,7 +62798,7 @@ char* ReplaceDialog_GetReplaceText(TReplaceDialog AObj) {
 }
 
 void* pReplaceDialog_SetReplaceText; 
-void ReplaceDialog_SetReplaceText(TReplaceDialog AObj, char* AValue) {
+void ReplaceDialog_SetReplaceText(TReplaceDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ReplaceDialog_SetReplaceText)
     MySyscall(pReplaceDialog_SetReplaceText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62845,7 +62852,7 @@ char* ReplaceDialog_GetFindText(TReplaceDialog AObj) {
 }
 
 void* pReplaceDialog_SetFindText; 
-void ReplaceDialog_SetFindText(TReplaceDialog AObj, char* AValue) {
+void ReplaceDialog_SetFindText(TReplaceDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ReplaceDialog_SetFindText)
     MySyscall(pReplaceDialog_SetFindText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62917,7 +62924,7 @@ char* ReplaceDialog_GetName(TReplaceDialog AObj) {
 }
 
 void* pReplaceDialog_SetName; 
-void ReplaceDialog_SetName(TReplaceDialog AObj, char* AValue) {
+void ReplaceDialog_SetName(TReplaceDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ReplaceDialog_SetName)
     MySyscall(pReplaceDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -62967,7 +62974,7 @@ BOOL PrinterSetupDialog_Execute(TPrinterSetupDialog AObj) {
 }
 
 void* pPrinterSetupDialog_FindComponent; 
-TComponent PrinterSetupDialog_FindComponent(TPrinterSetupDialog AObj, char* AName) {
+TComponent PrinterSetupDialog_FindComponent(TPrinterSetupDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(PrinterSetupDialog_FindComponent)
     return (TComponent)MySyscall(pPrinterSetupDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -63081,7 +63088,7 @@ char* PrinterSetupDialog_GetName(TPrinterSetupDialog AObj) {
 }
 
 void* pPrinterSetupDialog_SetName; 
-void PrinterSetupDialog_SetName(TPrinterSetupDialog AObj, char* AValue) {
+void PrinterSetupDialog_SetName(TPrinterSetupDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PrinterSetupDialog_SetName)
     MySyscall(pPrinterSetupDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -63131,7 +63138,7 @@ BOOL PageSetupDialog_Execute(TPageSetupDialog AObj) {
 }
 
 void* pPageSetupDialog_FindComponent; 
-TComponent PageSetupDialog_FindComponent(TPageSetupDialog AObj, char* AName) {
+TComponent PageSetupDialog_FindComponent(TPageSetupDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(PageSetupDialog_FindComponent)
     return (TComponent)MySyscall(pPageSetupDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -63335,7 +63342,7 @@ char* PageSetupDialog_GetName(TPageSetupDialog AObj) {
 }
 
 void* pPageSetupDialog_SetName; 
-void PageSetupDialog_SetName(TPageSetupDialog AObj, char* AValue) {
+void PageSetupDialog_SetName(TPageSetupDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(PageSetupDialog_SetName)
     MySyscall(pPageSetupDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -63755,7 +63762,7 @@ void StringGrid_EnableAlign(TStringGrid AObj) {
 }
 
 void* pStringGrid_FindChildControl; 
-TControl StringGrid_FindChildControl(TStringGrid AObj, char* ControlName) {
+TControl StringGrid_FindChildControl(TStringGrid AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(StringGrid_FindChildControl)
     return (TControl)MySyscall(pStringGrid_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -63911,7 +63918,7 @@ void StringGrid_Show(TStringGrid AObj) {
 }
 
 void* pStringGrid_GetTextBuf; 
-int32_t StringGrid_GetTextBuf(TStringGrid AObj, char* Buffer, int32_t BufSize) {
+int32_t StringGrid_GetTextBuf(TStringGrid AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(StringGrid_GetTextBuf)
     return (int32_t)MySyscall(pStringGrid_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -63923,13 +63930,13 @@ int32_t StringGrid_GetTextLen(TStringGrid AObj) {
 }
 
 void* pStringGrid_SetTextBuf; 
-void StringGrid_SetTextBuf(TStringGrid AObj, char* Buffer) {
+void StringGrid_SetTextBuf(TStringGrid AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(StringGrid_SetTextBuf)
     MySyscall(pStringGrid_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pStringGrid_FindComponent; 
-TComponent StringGrid_FindComponent(TStringGrid AObj, char* AName) {
+TComponent StringGrid_FindComponent(TStringGrid AObj, CChar char* AName) {
     GET_FUNC_ADDR(StringGrid_FindComponent)
     return (TComponent)MySyscall(pStringGrid_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -64925,7 +64932,7 @@ char* StringGrid_GetHint(TStringGrid AObj) {
 }
 
 void* pStringGrid_SetHint; 
-void StringGrid_SetHint(TStringGrid AObj, char* AValue) {
+void StringGrid_SetHint(TStringGrid AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StringGrid_SetHint)
     MySyscall(pStringGrid_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -64961,7 +64968,7 @@ char* StringGrid_GetName(TStringGrid AObj) {
 }
 
 void* pStringGrid_SetName; 
-void StringGrid_SetName(TStringGrid AObj, char* AValue) {
+void StringGrid_SetName(TStringGrid AObj, CChar char* AValue) {
     GET_FUNC_ADDR(StringGrid_SetName)
     MySyscall(pStringGrid_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -65057,7 +65064,7 @@ char* StringGrid_GetCells(TStringGrid AObj, int32_t ACol, int32_t ARow) {
 }
 
 void* pStringGrid_SetCells; 
-void StringGrid_SetCells(TStringGrid AObj, int32_t ACol, int32_t ARow, char* AValue) {
+void StringGrid_SetCells(TStringGrid AObj, int32_t ACol, int32_t ARow, CChar char* AValue) {
     GET_FUNC_ADDR(StringGrid_SetCells)
     MySyscall(pStringGrid_SetCells, 4, AObj, ACol, ARow, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -65215,7 +65222,7 @@ void DrawGrid_EnableAlign(TDrawGrid AObj) {
 }
 
 void* pDrawGrid_FindChildControl; 
-TControl DrawGrid_FindChildControl(TDrawGrid AObj, char* ControlName) {
+TControl DrawGrid_FindChildControl(TDrawGrid AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(DrawGrid_FindChildControl)
     return (TControl)MySyscall(pDrawGrid_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -65371,7 +65378,7 @@ void DrawGrid_Show(TDrawGrid AObj) {
 }
 
 void* pDrawGrid_GetTextBuf; 
-int32_t DrawGrid_GetTextBuf(TDrawGrid AObj, char* Buffer, int32_t BufSize) {
+int32_t DrawGrid_GetTextBuf(TDrawGrid AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(DrawGrid_GetTextBuf)
     return (int32_t)MySyscall(pDrawGrid_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -65383,13 +65390,13 @@ int32_t DrawGrid_GetTextLen(TDrawGrid AObj) {
 }
 
 void* pDrawGrid_SetTextBuf; 
-void DrawGrid_SetTextBuf(TDrawGrid AObj, char* Buffer) {
+void DrawGrid_SetTextBuf(TDrawGrid AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(DrawGrid_SetTextBuf)
     MySyscall(pDrawGrid_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDrawGrid_FindComponent; 
-TComponent DrawGrid_FindComponent(TDrawGrid AObj, char* AName) {
+TComponent DrawGrid_FindComponent(TDrawGrid AObj, CChar char* AName) {
     GET_FUNC_ADDR(DrawGrid_FindComponent)
     return (TComponent)MySyscall(pDrawGrid_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -66385,7 +66392,7 @@ char* DrawGrid_GetHint(TDrawGrid AObj) {
 }
 
 void* pDrawGrid_SetHint; 
-void DrawGrid_SetHint(TDrawGrid AObj, char* AValue) {
+void DrawGrid_SetHint(TDrawGrid AObj, CChar char* AValue) {
     GET_FUNC_ADDR(DrawGrid_SetHint)
     MySyscall(pDrawGrid_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -66421,7 +66428,7 @@ char* DrawGrid_GetName(TDrawGrid AObj) {
 }
 
 void* pDrawGrid_SetName; 
-void DrawGrid_SetName(TDrawGrid AObj, char* AValue) {
+void DrawGrid_SetName(TDrawGrid AObj, CChar char* AValue) {
     GET_FUNC_ADDR(DrawGrid_SetName)
     MySyscall(pDrawGrid_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -66633,7 +66640,7 @@ void ValueListEditor_EnableAlign(TValueListEditor AObj) {
 }
 
 void* pValueListEditor_FindChildControl; 
-TControl ValueListEditor_FindChildControl(TValueListEditor AObj, char* ControlName) {
+TControl ValueListEditor_FindChildControl(TValueListEditor AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ValueListEditor_FindChildControl)
     return (TControl)MySyscall(pValueListEditor_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -66783,7 +66790,7 @@ void ValueListEditor_Show(TValueListEditor AObj) {
 }
 
 void* pValueListEditor_GetTextBuf; 
-int32_t ValueListEditor_GetTextBuf(TValueListEditor AObj, char* Buffer, int32_t BufSize) {
+int32_t ValueListEditor_GetTextBuf(TValueListEditor AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ValueListEditor_GetTextBuf)
     return (int32_t)MySyscall(pValueListEditor_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -66795,13 +66802,13 @@ int32_t ValueListEditor_GetTextLen(TValueListEditor AObj) {
 }
 
 void* pValueListEditor_SetTextBuf; 
-void ValueListEditor_SetTextBuf(TValueListEditor AObj, char* Buffer) {
+void ValueListEditor_SetTextBuf(TValueListEditor AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ValueListEditor_SetTextBuf)
     MySyscall(pValueListEditor_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pValueListEditor_FindComponent; 
-TComponent ValueListEditor_FindComponent(TValueListEditor AObj, char* AName) {
+TComponent ValueListEditor_FindComponent(TValueListEditor AObj, CChar char* AName) {
     GET_FUNC_ADDR(ValueListEditor_FindComponent)
     return (TComponent)MySyscall(pValueListEditor_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -67785,7 +67792,7 @@ char* ValueListEditor_GetHint(TValueListEditor AObj) {
 }
 
 void* pValueListEditor_SetHint; 
-void ValueListEditor_SetHint(TValueListEditor AObj, char* AValue) {
+void ValueListEditor_SetHint(TValueListEditor AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ValueListEditor_SetHint)
     MySyscall(pValueListEditor_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -67821,7 +67828,7 @@ char* ValueListEditor_GetName(TValueListEditor AObj) {
 }
 
 void* pValueListEditor_SetName; 
-void ValueListEditor_SetName(TValueListEditor AObj, char* AValue) {
+void ValueListEditor_SetName(TValueListEditor AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ValueListEditor_SetName)
     MySyscall(pValueListEditor_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -67917,19 +67924,19 @@ char* ValueListEditor_GetCells(TValueListEditor AObj, int32_t ACol, int32_t ARow
 }
 
 void* pValueListEditor_SetCells; 
-void ValueListEditor_SetCells(TValueListEditor AObj, int32_t ACol, int32_t ARow, char* AValue) {
+void ValueListEditor_SetCells(TValueListEditor AObj, int32_t ACol, int32_t ARow, CChar char* AValue) {
     GET_FUNC_ADDR(ValueListEditor_SetCells)
     MySyscall(pValueListEditor_SetCells, 4, AObj, ACol, ARow, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pValueListEditor_GetValues; 
-char* ValueListEditor_GetValues(TValueListEditor AObj, char* Key) {
+char* ValueListEditor_GetValues(TValueListEditor AObj, CChar char* Key) {
     GET_FUNC_ADDR(ValueListEditor_GetValues)
     return (char*)MySyscall(pValueListEditor_GetValues, 2, AObj, Key ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pValueListEditor_SetValues; 
-void ValueListEditor_SetValues(TValueListEditor AObj, char* Key, char* AValue) {
+void ValueListEditor_SetValues(TValueListEditor AObj, char* Key, CChar char* AValue) {
     GET_FUNC_ADDR(ValueListEditor_SetValues)
     MySyscall(pValueListEditor_SetValues, 3, AObj, Key, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -68039,7 +68046,7 @@ void HeaderControl_EnableAlign(THeaderControl AObj) {
 }
 
 void* pHeaderControl_FindChildControl; 
-TControl HeaderControl_FindChildControl(THeaderControl AObj, char* ControlName) {
+TControl HeaderControl_FindChildControl(THeaderControl AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(HeaderControl_FindChildControl)
     return (TControl)MySyscall(pHeaderControl_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -68189,7 +68196,7 @@ void HeaderControl_Show(THeaderControl AObj) {
 }
 
 void* pHeaderControl_GetTextBuf; 
-int32_t HeaderControl_GetTextBuf(THeaderControl AObj, char* Buffer, int32_t BufSize) {
+int32_t HeaderControl_GetTextBuf(THeaderControl AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(HeaderControl_GetTextBuf)
     return (int32_t)MySyscall(pHeaderControl_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -68201,13 +68208,13 @@ int32_t HeaderControl_GetTextLen(THeaderControl AObj) {
 }
 
 void* pHeaderControl_SetTextBuf; 
-void HeaderControl_SetTextBuf(THeaderControl AObj, char* Buffer) {
+void HeaderControl_SetTextBuf(THeaderControl AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(HeaderControl_SetTextBuf)
     MySyscall(pHeaderControl_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pHeaderControl_FindComponent; 
-TComponent HeaderControl_FindComponent(THeaderControl AObj, char* AName) {
+TComponent HeaderControl_FindComponent(THeaderControl AObj, CChar char* AName) {
     GET_FUNC_ADDR(HeaderControl_FindComponent)
     return (TComponent)MySyscall(pHeaderControl_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -68891,7 +68898,7 @@ char* HeaderControl_GetHint(THeaderControl AObj) {
 }
 
 void* pHeaderControl_SetHint; 
-void HeaderControl_SetHint(THeaderControl AObj, char* AValue) {
+void HeaderControl_SetHint(THeaderControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(HeaderControl_SetHint)
     MySyscall(pHeaderControl_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -68927,7 +68934,7 @@ char* HeaderControl_GetName(THeaderControl AObj) {
 }
 
 void* pHeaderControl_SetName; 
-void HeaderControl_SetName(THeaderControl AObj, char* AValue) {
+void HeaderControl_SetName(THeaderControl AObj, CChar char* AValue) {
     GET_FUNC_ADDR(HeaderControl_SetName)
     MySyscall(pHeaderControl_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -69181,7 +69188,7 @@ char* HeaderSection_GetText(THeaderSection AObj) {
 }
 
 void* pHeaderSection_SetText; 
-void HeaderSection_SetText(THeaderSection AObj, char* AValue) {
+void HeaderSection_SetText(THeaderSection AObj, CChar char* AValue) {
     GET_FUNC_ADDR(HeaderSection_SetText)
     MySyscall(pHeaderSection_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -69229,7 +69236,7 @@ char* HeaderSection_GetDisplayName(THeaderSection AObj) {
 }
 
 void* pHeaderSection_SetDisplayName; 
-void HeaderSection_SetDisplayName(THeaderSection AObj, char* AValue) {
+void HeaderSection_SetDisplayName(THeaderSection AObj, CChar char* AValue) {
     GET_FUNC_ADDR(HeaderSection_SetDisplayName)
     MySyscall(pHeaderSection_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -69479,7 +69486,7 @@ void LabeledEdit_EnableAlign(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_FindChildControl; 
-TControl LabeledEdit_FindChildControl(TLabeledEdit AObj, char* ControlName) {
+TControl LabeledEdit_FindChildControl(TLabeledEdit AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(LabeledEdit_FindChildControl)
     return (TControl)MySyscall(pLabeledEdit_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -69629,7 +69636,7 @@ void LabeledEdit_Show(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_GetTextBuf; 
-int32_t LabeledEdit_GetTextBuf(TLabeledEdit AObj, char* Buffer, int32_t BufSize) {
+int32_t LabeledEdit_GetTextBuf(TLabeledEdit AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(LabeledEdit_GetTextBuf)
     return (int32_t)MySyscall(pLabeledEdit_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -69641,13 +69648,13 @@ int32_t LabeledEdit_GetTextLen(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_SetTextBuf; 
-void LabeledEdit_SetTextBuf(TLabeledEdit AObj, char* Buffer) {
+void LabeledEdit_SetTextBuf(TLabeledEdit AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(LabeledEdit_SetTextBuf)
     MySyscall(pLabeledEdit_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pLabeledEdit_FindComponent; 
-TComponent LabeledEdit_FindComponent(TLabeledEdit AObj, char* AName) {
+TComponent LabeledEdit_FindComponent(TLabeledEdit AObj, CChar char* AName) {
     GET_FUNC_ADDR(LabeledEdit_FindComponent)
     return (TComponent)MySyscall(pLabeledEdit_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70103,7 +70110,7 @@ char* LabeledEdit_GetText(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_SetText; 
-void LabeledEdit_SetText(TLabeledEdit AObj, char* AValue) {
+void LabeledEdit_SetText(TLabeledEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LabeledEdit_SetText)
     MySyscall(pLabeledEdit_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70115,7 +70122,7 @@ char* LabeledEdit_GetTextHint(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_SetTextHint; 
-void LabeledEdit_SetTextHint(TLabeledEdit AObj, char* AValue) {
+void LabeledEdit_SetTextHint(TLabeledEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LabeledEdit_SetTextHint)
     MySyscall(pLabeledEdit_SetTextHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70277,7 +70284,7 @@ char* LabeledEdit_GetSelText(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_SetSelText; 
-void LabeledEdit_SetSelText(TLabeledEdit AObj, char* AValue) {
+void LabeledEdit_SetSelText(TLabeledEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LabeledEdit_SetSelText)
     MySyscall(pLabeledEdit_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70541,7 +70548,7 @@ char* LabeledEdit_GetHint(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_SetHint; 
-void LabeledEdit_SetHint(TLabeledEdit AObj, char* AValue) {
+void LabeledEdit_SetHint(TLabeledEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LabeledEdit_SetHint)
     MySyscall(pLabeledEdit_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70577,7 +70584,7 @@ char* LabeledEdit_GetName(TLabeledEdit AObj) {
 }
 
 void* pLabeledEdit_SetName; 
-void LabeledEdit_SetName(TLabeledEdit AObj, char* AValue) {
+void LabeledEdit_SetName(TLabeledEdit AObj, CChar char* AValue) {
     GET_FUNC_ADDR(LabeledEdit_SetName)
     MySyscall(pLabeledEdit_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70807,7 +70814,7 @@ void BoundLabel_Update(TBoundLabel AObj) {
 }
 
 void* pBoundLabel_GetTextBuf; 
-int32_t BoundLabel_GetTextBuf(TBoundLabel AObj, char* Buffer, int32_t BufSize) {
+int32_t BoundLabel_GetTextBuf(TBoundLabel AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(BoundLabel_GetTextBuf)
     return (int32_t)MySyscall(pBoundLabel_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70819,13 +70826,13 @@ int32_t BoundLabel_GetTextLen(TBoundLabel AObj) {
 }
 
 void* pBoundLabel_SetTextBuf; 
-void BoundLabel_SetTextBuf(TBoundLabel AObj, char* Buffer) {
+void BoundLabel_SetTextBuf(TBoundLabel AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(BoundLabel_SetTextBuf)
     MySyscall(pBoundLabel_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pBoundLabel_FindComponent; 
-TComponent BoundLabel_FindComponent(TBoundLabel AObj, char* AName) {
+TComponent BoundLabel_FindComponent(TBoundLabel AObj, CChar char* AName) {
     GET_FUNC_ADDR(BoundLabel_FindComponent)
     return (TComponent)MySyscall(pBoundLabel_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -70939,7 +70946,7 @@ char* BoundLabel_GetCaption(TBoundLabel AObj) {
 }
 
 void* pBoundLabel_SetCaption; 
-void BoundLabel_SetCaption(TBoundLabel AObj, char* AValue) {
+void BoundLabel_SetCaption(TBoundLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(BoundLabel_SetCaption)
     MySyscall(pBoundLabel_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -71359,7 +71366,7 @@ char* BoundLabel_GetHint(TBoundLabel AObj) {
 }
 
 void* pBoundLabel_SetHint; 
-void BoundLabel_SetHint(TBoundLabel AObj, char* AValue) {
+void BoundLabel_SetHint(TBoundLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(BoundLabel_SetHint)
     MySyscall(pBoundLabel_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -71395,7 +71402,7 @@ char* BoundLabel_GetName(TBoundLabel AObj) {
 }
 
 void* pBoundLabel_SetName; 
-void BoundLabel_SetName(TBoundLabel AObj, char* AValue) {
+void BoundLabel_SetName(TBoundLabel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(BoundLabel_SetName)
     MySyscall(pBoundLabel_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -71547,7 +71554,7 @@ void FlowPanel_EnableAlign(TFlowPanel AObj) {
 }
 
 void* pFlowPanel_FindChildControl; 
-TControl FlowPanel_FindChildControl(TFlowPanel AObj, char* ControlName) {
+TControl FlowPanel_FindChildControl(TFlowPanel AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(FlowPanel_FindChildControl)
     return (TControl)MySyscall(pFlowPanel_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -71703,7 +71710,7 @@ void FlowPanel_Show(TFlowPanel AObj) {
 }
 
 void* pFlowPanel_GetTextBuf; 
-int32_t FlowPanel_GetTextBuf(TFlowPanel AObj, char* Buffer, int32_t BufSize) {
+int32_t FlowPanel_GetTextBuf(TFlowPanel AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(FlowPanel_GetTextBuf)
     return (int32_t)MySyscall(pFlowPanel_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -71715,13 +71722,13 @@ int32_t FlowPanel_GetTextLen(TFlowPanel AObj) {
 }
 
 void* pFlowPanel_SetTextBuf; 
-void FlowPanel_SetTextBuf(TFlowPanel AObj, char* Buffer) {
+void FlowPanel_SetTextBuf(TFlowPanel AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(FlowPanel_SetTextBuf)
     MySyscall(pFlowPanel_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pFlowPanel_FindComponent; 
-TComponent FlowPanel_FindComponent(TFlowPanel AObj, char* AName) {
+TComponent FlowPanel_FindComponent(TFlowPanel AObj, CChar char* AName) {
     GET_FUNC_ADDR(FlowPanel_FindComponent)
     return (TComponent)MySyscall(pFlowPanel_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -71919,7 +71926,7 @@ char* FlowPanel_GetCaption(TFlowPanel AObj) {
 }
 
 void* pFlowPanel_SetCaption; 
-void FlowPanel_SetCaption(TFlowPanel AObj, char* AValue) {
+void FlowPanel_SetCaption(TFlowPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(FlowPanel_SetCaption)
     MySyscall(pFlowPanel_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -72531,7 +72538,7 @@ char* FlowPanel_GetHint(TFlowPanel AObj) {
 }
 
 void* pFlowPanel_SetHint; 
-void FlowPanel_SetHint(TFlowPanel AObj, char* AValue) {
+void FlowPanel_SetHint(TFlowPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(FlowPanel_SetHint)
     MySyscall(pFlowPanel_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -72567,7 +72574,7 @@ char* FlowPanel_GetName(TFlowPanel AObj) {
 }
 
 void* pFlowPanel_SetName; 
-void FlowPanel_SetName(TFlowPanel AObj, char* AValue) {
+void FlowPanel_SetName(TFlowPanel AObj, CChar char* AValue) {
     GET_FUNC_ADDR(FlowPanel_SetName)
     MySyscall(pFlowPanel_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -72739,7 +72746,7 @@ void CoolBar_EnableAlign(TCoolBar AObj) {
 }
 
 void* pCoolBar_FindChildControl; 
-TControl CoolBar_FindChildControl(TCoolBar AObj, char* ControlName) {
+TControl CoolBar_FindChildControl(TCoolBar AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(CoolBar_FindChildControl)
     return (TControl)MySyscall(pCoolBar_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -72883,7 +72890,7 @@ void CoolBar_Show(TCoolBar AObj) {
 }
 
 void* pCoolBar_GetTextBuf; 
-int32_t CoolBar_GetTextBuf(TCoolBar AObj, char* Buffer, int32_t BufSize) {
+int32_t CoolBar_GetTextBuf(TCoolBar AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(CoolBar_GetTextBuf)
     return (int32_t)MySyscall(pCoolBar_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -72895,13 +72902,13 @@ int32_t CoolBar_GetTextLen(TCoolBar AObj) {
 }
 
 void* pCoolBar_SetTextBuf; 
-void CoolBar_SetTextBuf(TCoolBar AObj, char* Buffer) {
+void CoolBar_SetTextBuf(TCoolBar AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(CoolBar_SetTextBuf)
     MySyscall(pCoolBar_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pCoolBar_FindComponent; 
-TComponent CoolBar_FindComponent(TCoolBar AObj, char* AName) {
+TComponent CoolBar_FindComponent(TCoolBar AObj, CChar char* AName) {
     GET_FUNC_ADDR(CoolBar_FindComponent)
     return (TComponent)MySyscall(pCoolBar_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -73759,7 +73766,7 @@ char* CoolBar_GetHint(TCoolBar AObj) {
 }
 
 void* pCoolBar_SetHint; 
-void CoolBar_SetHint(TCoolBar AObj, char* AValue) {
+void CoolBar_SetHint(TCoolBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CoolBar_SetHint)
     MySyscall(pCoolBar_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -73795,7 +73802,7 @@ char* CoolBar_GetName(TCoolBar AObj) {
 }
 
 void* pCoolBar_SetName; 
-void CoolBar_SetName(TCoolBar AObj, char* AValue) {
+void CoolBar_SetName(TCoolBar AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CoolBar_SetName)
     MySyscall(pCoolBar_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74297,7 +74304,7 @@ char* CoolBand_GetText(TCoolBand AObj) {
 }
 
 void* pCoolBand_SetText; 
-void CoolBand_SetText(TCoolBand AObj, char* AValue) {
+void CoolBand_SetText(TCoolBand AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CoolBand_SetText)
     MySyscall(pCoolBand_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74357,7 +74364,7 @@ char* CoolBand_GetDisplayName(TCoolBand AObj) {
 }
 
 void* pCoolBand_SetDisplayName; 
-void CoolBand_SetDisplayName(TCoolBand AObj, char* AValue) {
+void CoolBand_SetDisplayName(TCoolBand AObj, CChar char* AValue) {
     GET_FUNC_ADDR(CoolBand_SetDisplayName)
     MySyscall(pCoolBand_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74685,7 +74692,7 @@ char* Printer_GetTitle(TPrinter AObj) {
 }
 
 void* pPrinter_SetTitle; 
-void Printer_SetTitle(TPrinter AObj, char* AValue) {
+void Printer_SetTitle(TPrinter AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Printer_SetTitle)
     MySyscall(pPrinter_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74717,7 +74724,7 @@ BOOL TaskDialog_Execute(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_FindComponent; 
-TComponent TaskDialog_FindComponent(TTaskDialog AObj, char* AName) {
+TComponent TaskDialog_FindComponent(TTaskDialog AObj, CChar char* AName) {
     GET_FUNC_ADDR(TaskDialog_FindComponent)
     return (TComponent)MySyscall(pTaskDialog_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74801,7 +74808,7 @@ char* TaskDialog_GetCaption(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetCaption; 
-void TaskDialog_SetCaption(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetCaption(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetCaption)
     MySyscall(pTaskDialog_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74837,7 +74844,7 @@ char* TaskDialog_GetExpandButtonCaption(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetExpandButtonCaption; 
-void TaskDialog_SetExpandButtonCaption(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetExpandButtonCaption(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetExpandButtonCaption)
     MySyscall(pTaskDialog_SetExpandButtonCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74849,7 +74856,7 @@ char* TaskDialog_GetExpandedText(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetExpandedText; 
-void TaskDialog_SetExpandedText(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetExpandedText(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetExpandedText)
     MySyscall(pTaskDialog_SetExpandedText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74885,7 +74892,7 @@ char* TaskDialog_GetFooterText(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetFooterText; 
-void TaskDialog_SetFooterText(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetFooterText(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetFooterText)
     MySyscall(pTaskDialog_SetFooterText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74921,7 +74928,7 @@ char* TaskDialog_GetText(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetText; 
-void TaskDialog_SetText(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetText(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetText)
     MySyscall(pTaskDialog_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74933,7 +74940,7 @@ char* TaskDialog_GetTitle(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetTitle; 
-void TaskDialog_SetTitle(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetTitle(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetTitle)
     MySyscall(pTaskDialog_SetTitle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -74945,7 +74952,7 @@ char* TaskDialog_GetVerificationText(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetVerificationText; 
-void TaskDialog_SetVerificationText(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetVerificationText(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetVerificationText)
     MySyscall(pTaskDialog_SetVerificationText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75017,7 +75024,7 @@ char* TaskDialog_GetName(TTaskDialog AObj) {
 }
 
 void* pTaskDialog_SetName; 
-void TaskDialog_SetName(TTaskDialog AObj, char* AValue) {
+void TaskDialog_SetName(TTaskDialog AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialog_SetName)
     MySyscall(pTaskDialog_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75279,7 +75286,7 @@ char* TaskDialogButtonItem_GetCaption(TTaskDialogButtonItem AObj) {
 }
 
 void* pTaskDialogButtonItem_SetCaption; 
-void TaskDialogButtonItem_SetCaption(TTaskDialogButtonItem AObj, char* AValue) {
+void TaskDialogButtonItem_SetCaption(TTaskDialogButtonItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialogButtonItem_SetCaption)
     MySyscall(pTaskDialogButtonItem_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75327,7 +75334,7 @@ char* TaskDialogButtonItem_GetDisplayName(TTaskDialogButtonItem AObj) {
 }
 
 void* pTaskDialogButtonItem_SetDisplayName; 
-void TaskDialogButtonItem_SetDisplayName(TTaskDialogButtonItem AObj, char* AValue) {
+void TaskDialogButtonItem_SetDisplayName(TTaskDialogButtonItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialogButtonItem_SetDisplayName)
     MySyscall(pTaskDialogButtonItem_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75425,7 +75432,7 @@ char* TaskDialogRadioButtonItem_GetCaption(TTaskDialogRadioButtonItem AObj) {
 }
 
 void* pTaskDialogRadioButtonItem_SetCaption; 
-void TaskDialogRadioButtonItem_SetCaption(TTaskDialogRadioButtonItem AObj, char* AValue) {
+void TaskDialogRadioButtonItem_SetCaption(TTaskDialogRadioButtonItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialogRadioButtonItem_SetCaption)
     MySyscall(pTaskDialogRadioButtonItem_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75473,7 +75480,7 @@ char* TaskDialogRadioButtonItem_GetDisplayName(TTaskDialogRadioButtonItem AObj) 
 }
 
 void* pTaskDialogRadioButtonItem_SetDisplayName; 
-void TaskDialogRadioButtonItem_SetDisplayName(TTaskDialogRadioButtonItem AObj, char* AValue) {
+void TaskDialogRadioButtonItem_SetDisplayName(TTaskDialogRadioButtonItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialogRadioButtonItem_SetDisplayName)
     MySyscall(pTaskDialogRadioButtonItem_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75571,7 +75578,7 @@ char* TaskDialogBaseButtonItem_GetCaption(TTaskDialogBaseButtonItem AObj) {
 }
 
 void* pTaskDialogBaseButtonItem_SetCaption; 
-void TaskDialogBaseButtonItem_SetCaption(TTaskDialogBaseButtonItem AObj, char* AValue) {
+void TaskDialogBaseButtonItem_SetCaption(TTaskDialogBaseButtonItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialogBaseButtonItem_SetCaption)
     MySyscall(pTaskDialogBaseButtonItem_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75619,7 +75626,7 @@ char* TaskDialogBaseButtonItem_GetDisplayName(TTaskDialogBaseButtonItem AObj) {
 }
 
 void* pTaskDialogBaseButtonItem_SetDisplayName; 
-void TaskDialogBaseButtonItem_SetDisplayName(TTaskDialogBaseButtonItem AObj, char* AValue) {
+void TaskDialogBaseButtonItem_SetDisplayName(TTaskDialogBaseButtonItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(TaskDialogBaseButtonItem_SetDisplayName)
     MySyscall(pTaskDialogBaseButtonItem_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75651,7 +75658,7 @@ BOOL ComboBoxEx_Focused(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_AddItem; 
-void ComboBoxEx_AddItem(TComboBoxEx AObj, char* Item, TObject AObject) {
+void ComboBoxEx_AddItem(TComboBoxEx AObj, CChar char* Item, TObject AObject) {
     GET_FUNC_ADDR(ComboBoxEx_AddItem)
     MySyscall(pComboBoxEx_AddItem, 3, AObj, Item, AObject ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75711,7 +75718,7 @@ void ComboBoxEx_EnableAlign(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_FindChildControl; 
-TControl ComboBoxEx_FindChildControl(TComboBoxEx AObj, char* ControlName) {
+TControl ComboBoxEx_FindChildControl(TComboBoxEx AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(ComboBoxEx_FindChildControl)
     return (TControl)MySyscall(pComboBoxEx_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75861,7 +75868,7 @@ void ComboBoxEx_Show(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_GetTextBuf; 
-int32_t ComboBoxEx_GetTextBuf(TComboBoxEx AObj, char* Buffer, int32_t BufSize) {
+int32_t ComboBoxEx_GetTextBuf(TComboBoxEx AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(ComboBoxEx_GetTextBuf)
     return (int32_t)MySyscall(pComboBoxEx_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -75873,13 +75880,13 @@ int32_t ComboBoxEx_GetTextLen(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_SetTextBuf; 
-void ComboBoxEx_SetTextBuf(TComboBoxEx AObj, char* Buffer) {
+void ComboBoxEx_SetTextBuf(TComboBoxEx AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(ComboBoxEx_SetTextBuf)
     MySyscall(pComboBoxEx_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pComboBoxEx_FindComponent; 
-TComponent ComboBoxEx_FindComponent(TComboBoxEx AObj, char* AName) {
+TComponent ComboBoxEx_FindComponent(TComboBoxEx AObj, CChar char* AName) {
     GET_FUNC_ADDR(ComboBoxEx_FindComponent)
     return (TComponent)MySyscall(pComboBoxEx_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -76293,7 +76300,7 @@ char* ComboBoxEx_GetText(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_SetText; 
-void ComboBoxEx_SetText(TComboBoxEx AObj, char* AValue) {
+void ComboBoxEx_SetText(TComboBoxEx AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBoxEx_SetText)
     MySyscall(pComboBoxEx_SetText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -76437,7 +76444,7 @@ char* ComboBoxEx_GetSelText(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_SetSelText; 
-void ComboBoxEx_SetSelText(TComboBoxEx AObj, char* AValue) {
+void ComboBoxEx_SetSelText(TComboBoxEx AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBoxEx_SetSelText)
     MySyscall(pComboBoxEx_SetSelText, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -76743,7 +76750,7 @@ char* ComboBoxEx_GetHint(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_SetHint; 
-void ComboBoxEx_SetHint(TComboBoxEx AObj, char* AValue) {
+void ComboBoxEx_SetHint(TComboBoxEx AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBoxEx_SetHint)
     MySyscall(pComboBoxEx_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -76779,7 +76786,7 @@ char* ComboBoxEx_GetName(TComboBoxEx AObj) {
 }
 
 void* pComboBoxEx_SetName; 
-void ComboBoxEx_SetName(TComboBoxEx AObj, char* AValue) {
+void ComboBoxEx_SetName(TComboBoxEx AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboBoxEx_SetName)
     MySyscall(pComboBoxEx_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -76907,7 +76914,7 @@ TComboExItem ComboExItems_Add(TComboExItems AObj) {
 }
 
 void* pComboExItems_AddItem; 
-TComboExItem ComboExItems_AddItem(TComboExItems AObj, char* Caption, int32_t ImageIndex, int32_t SelectedImageIndex, int32_t OverlayImageIndex, int32_t Indent, void* Data) {
+TComboExItem ComboExItems_AddItem(TComboExItems AObj, CChar char* Caption, int32_t ImageIndex, int32_t SelectedImageIndex, int32_t OverlayImageIndex, int32_t Indent, void* Data) {
     GET_FUNC_ADDR(ComboExItems_AddItem)
     return (TComboExItem)MySyscall(pComboExItems_AddItem, 7, AObj, Caption, ImageIndex, SelectedImageIndex, OverlayImageIndex, Indent, Data ,0 ,0 ,0 ,0 ,0);
 }
@@ -77125,7 +77132,7 @@ char* ComboExItem_GetCaption(TComboExItem AObj) {
 }
 
 void* pComboExItem_SetCaption; 
-void ComboExItem_SetCaption(TComboExItem AObj, char* AValue) {
+void ComboExItem_SetCaption(TComboExItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboExItem_SetCaption)
     MySyscall(pComboExItem_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -77173,7 +77180,7 @@ char* ComboExItem_GetDisplayName(TComboExItem AObj) {
 }
 
 void* pComboExItem_SetDisplayName; 
-void ComboExItem_SetDisplayName(TComboExItem AObj, char* AValue) {
+void ComboExItem_SetDisplayName(TComboExItem AObj, CChar char* AValue) {
     GET_FUNC_ADDR(ComboExItem_SetDisplayName)
     MySyscall(pComboExItem_SetDisplayName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -77235,7 +77242,7 @@ void Frame_EnableAlign(TFrame AObj) {
 }
 
 void* pFrame_FindChildControl; 
-TControl Frame_FindChildControl(TFrame AObj, char* ControlName) {
+TControl Frame_FindChildControl(TFrame AObj, CChar char* ControlName) {
     GET_FUNC_ADDR(Frame_FindChildControl)
     return (TControl)MySyscall(pFrame_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -77391,7 +77398,7 @@ void Frame_Show(TFrame AObj) {
 }
 
 void* pFrame_GetTextBuf; 
-int32_t Frame_GetTextBuf(TFrame AObj, char* Buffer, int32_t BufSize) {
+int32_t Frame_GetTextBuf(TFrame AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(Frame_GetTextBuf)
     return (int32_t)MySyscall(pFrame_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -77403,13 +77410,13 @@ int32_t Frame_GetTextLen(TFrame AObj) {
 }
 
 void* pFrame_SetTextBuf; 
-void Frame_SetTextBuf(TFrame AObj, char* Buffer) {
+void Frame_SetTextBuf(TFrame AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(Frame_SetTextBuf)
     MySyscall(pFrame_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pFrame_FindComponent; 
-TComponent Frame_FindComponent(TFrame AObj, char* AName) {
+TComponent Frame_FindComponent(TFrame AObj, CChar char* AName) {
     GET_FUNC_ADDR(Frame_FindComponent)
     return (TComponent)MySyscall(pFrame_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -78177,7 +78184,7 @@ char* Frame_GetHint(TFrame AObj) {
 }
 
 void* pFrame_SetHint; 
-void Frame_SetHint(TFrame AObj, char* AValue) {
+void Frame_SetHint(TFrame AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Frame_SetHint)
     MySyscall(pFrame_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -78213,7 +78220,7 @@ char* Frame_GetName(TFrame AObj) {
 }
 
 void* pFrame_SetName; 
-void Frame_SetName(TFrame AObj, char* AValue) {
+void Frame_SetName(TFrame AObj, CChar char* AValue) {
     GET_FUNC_ADDR(Frame_SetName)
     MySyscall(pFrame_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -78705,7 +78712,7 @@ void XButton_Update(TXButton AObj) {
 }
 
 void* pXButton_GetTextBuf; 
-int32_t XButton_GetTextBuf(TXButton AObj, char* Buffer, int32_t BufSize) {
+int32_t XButton_GetTextBuf(TXButton AObj, CChar char* Buffer, int32_t BufSize) {
     GET_FUNC_ADDR(XButton_GetTextBuf)
     return (int32_t)MySyscall(pXButton_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -78717,13 +78724,13 @@ int32_t XButton_GetTextLen(TXButton AObj) {
 }
 
 void* pXButton_SetTextBuf; 
-void XButton_SetTextBuf(TXButton AObj, char* Buffer) {
+void XButton_SetTextBuf(TXButton AObj, CChar char* Buffer) {
     GET_FUNC_ADDR(XButton_SetTextBuf)
     MySyscall(pXButton_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pXButton_FindComponent; 
-TComponent XButton_FindComponent(TXButton AObj, char* AName) {
+TComponent XButton_FindComponent(TXButton AObj, CChar char* AName) {
     GET_FUNC_ADDR(XButton_FindComponent)
     return (TComponent)MySyscall(pXButton_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -78825,7 +78832,7 @@ char* XButton_GetCaption(TXButton AObj) {
 }
 
 void* pXButton_SetCaption; 
-void XButton_SetCaption(TXButton AObj, char* AValue) {
+void XButton_SetCaption(TXButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(XButton_SetCaption)
     MySyscall(pXButton_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -79305,7 +79312,7 @@ char* XButton_GetHint(TXButton AObj) {
 }
 
 void* pXButton_SetHint; 
-void XButton_SetHint(TXButton AObj, char* AValue) {
+void XButton_SetHint(TXButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(XButton_SetHint)
     MySyscall(pXButton_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -79341,7 +79348,7 @@ char* XButton_GetName(TXButton AObj) {
 }
 
 void* pXButton_SetName; 
-void XButton_SetName(TXButton AObj, char* AValue) {
+void XButton_SetName(TXButton AObj, CChar char* AValue) {
     GET_FUNC_ADDR(XButton_SetName)
     MySyscall(pXButton_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80142,7 +80149,7 @@ TScreen Screen_Instance() {
 }
 
 void* pDTextToShortCut; 
-TShortCut DTextToShortCut(char* AText) {
+TShortCut DTextToShortCut(CChar char* AText) {
     GET_FUNC_ADDR(DTextToShortCut)
     return (TShortCut)MySyscall(pDTextToShortCut, 1, AText ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80226,13 +80233,13 @@ void Canvas_StretchDraw(TCanvas AObj, TRect* Rect, TGraphic Graphic) {
 }
 
 void* pCanvas_TextRect1; 
-void Canvas_TextRect1(TCanvas AObj, TRect* Rect, int32_t X, int32_t Y, char* Text) {
+void Canvas_TextRect1(TCanvas AObj, TRect* Rect, int32_t X, int32_t Y, CChar char* Text) {
     GET_FUNC_ADDR(Canvas_TextRect1)
     MySyscall(pCanvas_TextRect1, 5, AObj, Rect, X, Y, Text ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pCanvas_TextRect2; 
-int32_t Canvas_TextRect2(TCanvas AObj, TRect* Rect, char* Text, char** AOutStr, TTextFormat TextFormat) {
+int32_t Canvas_TextRect2(TCanvas AObj, TRect* Rect, CChar char* Text, char** AOutStr, TTextFormat TextFormat) {
     GET_FUNC_ADDR(Canvas_TextRect2)
     return (int32_t)MySyscall(pCanvas_TextRect2, 5, AObj, Rect, Text, AOutStr, TextFormat ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80401,7 +80408,7 @@ char* DGetStringArrOf(void* P, intptr_t AIndex) {
 }
 
 void* pDStrLen; 
-intptr_t DStrLen(char* p) {
+intptr_t DStrLen(CChar char* p) {
     GET_FUNC_ADDR(DStrLen)
     return (intptr_t)MySyscall(pDStrLen, 1, p ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80419,7 +80426,7 @@ char* DGetClassName(TObject Obj) {
 }
 
 void* pDShowMessage; 
-void DShowMessage(char* AMsg) {
+void DShowMessage(CChar char* AMsg) {
     GET_FUNC_ADDR(DShowMessage)
     MySyscall(pDShowMessage, 1, AMsg ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80431,7 +80438,7 @@ HINST DGetMainInstance() {
 }
 
 void* pDMessageDlg; 
-int32_t DMessageDlg(char* Msg, TMsgDlgType DlgType, TMsgDlgButtons Buttons, int32_t HelpCtx) {
+int32_t DMessageDlg(CChar char* Msg, TMsgDlgType DlgType, TMsgDlgButtons Buttons, int32_t HelpCtx) {
     GET_FUNC_ADDR(DMessageDlg)
     return (int32_t)MySyscall(pDMessageDlg, 4, Msg, DlgType, Buttons, HelpCtx ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80455,19 +80462,19 @@ uintptr_t DCurrentThreadId() {
 }
 
 void* pDSysOpen; 
-void DSysOpen(char* FileName) {
+void DSysOpen(CChar char* FileName) {
     GET_FUNC_ADDR(DSysOpen)
     MySyscall(pDSysOpen, 1, FileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDExtractFilePath; 
-char* DExtractFilePath(char* AFileName) {
+char* DExtractFilePath(CChar char* AFileName) {
     GET_FUNC_ADDR(DExtractFilePath)
     return (char*)MySyscall(pDExtractFilePath, 1, AFileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDFileExists; 
-BOOL DFileExists(char* AFileName) {
+BOOL DFileExists(CChar char* AFileName) {
     GET_FUNC_ADDR(DFileExists)
     return (BOOL)MySyscall(pDFileExists, 1, AFileName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80479,19 +80486,19 @@ BOOL DSelectDirectory1(char** Directory, TSelectDirOpts Options, int32_t HelpCtx
 }
 
 void* pDSelectDirectory2; 
-BOOL DSelectDirectory2(char* Caption, char* Root, char** Directory, uint32_t Options, TWinControl Parent) {
+BOOL DSelectDirectory2(CChar char* Caption, CChar char* Root, char** Directory, uint32_t Options, TWinControl Parent) {
     GET_FUNC_ADDR(DSelectDirectory2)
     return (BOOL)MySyscall(pDSelectDirectory2, 5, Caption, Root, Directory, Options, Parent ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDInputBox; 
-char* DInputBox(char* ACaption, char* APrompt, char* ADefault) {
+char* DInputBox(CChar char* ACaption, CChar char* APrompt, CChar char* ADefault) {
     GET_FUNC_ADDR(DInputBox)
     return (char*)MySyscall(pDInputBox, 3, ACaption, APrompt, ADefault ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDInputQuery; 
-BOOL DInputQuery(char* ACaption, char* APrompt, char* Value, char** AOut) {
+BOOL DInputQuery(CChar char* ACaption, CChar char* APrompt, CChar char* Value, char** AOut) {
     GET_FUNC_ADDR(DInputQuery)
     return (BOOL)MySyscall(pDInputQuery, 4, ACaption, APrompt, Value, AOut ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80507,13 +80514,13 @@ void SetGlobalFormScaled(BOOL AVal) {
 #ifdef _WIN32
 
 void* pDCreateURLShortCut; 
-void DCreateURLShortCut(char* ADestPath, char* AShortCutName, char* AURL) {
+void DCreateURLShortCut(CChar char* ADestPath, CChar char* AShortCutName, CChar char* AURL) {
     GET_FUNC_ADDR(DCreateURLShortCut)
     MySyscall(pDCreateURLShortCut, 3, ADestPath, AShortCutName, AURL ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDCreateShortCut; 
-BOOL DCreateShortCut(char* ADestPath, char* AShortCutName, char* ASrcFileName, char* AIconFileName, char* ADescription, char* ACmdArgs) {
+BOOL DCreateShortCut(CChar char* ADestPath, CChar char* AShortCutName, CChar char* ASrcFileName, CChar char* AIconFileName, CChar char* ADescription, CChar char* ACmdArgs) {
     GET_FUNC_ADDR(DCreateShortCut)
     return (BOOL)MySyscall(pDCreateShortCut, 6, ADestPath, AShortCutName, ASrcFileName, AIconFileName, ADescription, ACmdArgs ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80522,13 +80529,13 @@ BOOL DCreateShortCut(char* ADestPath, char* AShortCutName, char* ASrcFileName, c
 #endif
 
 void* pDSetPropertyValue; 
-void DSetPropertyValue(TObject Instance, char* PropName, char* Value) {
+void DSetPropertyValue(TObject Instance, CChar char* PropName, CChar char* Value) {
     GET_FUNC_ADDR(DSetPropertyValue)
     MySyscall(pDSetPropertyValue, 3, Instance, PropName, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pDSetPropertySecValue; 
-void DSetPropertySecValue(TObject Instance, char* PropName, char* SecPropName, char* Value) {
+void DSetPropertySecValue(TObject Instance, CChar char* PropName, CChar char* SecPropName, CChar char* Value) {
     GET_FUNC_ADDR(DSetPropertySecValue)
     MySyscall(pDSetPropertySecValue, 4, Instance, PropName, SecPropName, Value ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80540,7 +80547,7 @@ char* DGUIDToString(TGUID* AGUID) {
 }
 
 void* pDStringToGUID; 
-void DStringToGUID(char* AGUIDStr, TGUID* AGUID) {
+void DStringToGUID(CChar char* AGUIDStr, TGUID* AGUID) {
     GET_FUNC_ADDR(DStringToGUID)
     MySyscall(pDStringToGUID, 2, AGUIDStr, AGUID ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80558,7 +80565,7 @@ TPrinter Printer_Instance() {
 }
 
 void* pPrinter_SetPrinter; 
-void Printer_SetPrinter(TPrinter Obj, char* aName, char* ADriver, char* APort, uintptr_t ADeviceMode) {
+void Printer_SetPrinter(TPrinter Obj, CChar char* aName, CChar char* ADriver, CChar char* APort, uintptr_t ADeviceMode) {
     GET_FUNC_ADDR(Printer_SetPrinter)
     MySyscall(pPrinter_SetPrinter, 5, Obj, aName, ADriver, APort, ADeviceMode ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80582,7 +80589,7 @@ void DGetLibResouceItem(int32_t AIndex, TResItem* AResult) {
 }
 
 void* pDModifyLibResouce; 
-void DModifyLibResouce(void* APtr, char* AValue) {
+void DModifyLibResouce(void* APtr, CChar char* AValue) {
     GET_FUNC_ADDR(DModifyLibResouce)
     MySyscall(pDModifyLibResouce, 2, APtr, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80646,13 +80653,13 @@ MyNSWindow NSWindow_FromForm(TForm AForm) {
 
 // uformdesignerfile.pas
 void* pResFormLoadFromResourceName; 
-void ResFormLoadFromResourceName(uintptr_t AInstance, char* AResName, TComponent ARoot) {
+void ResFormLoadFromResourceName(uintptr_t AInstance, CChar char* AResName, TComponent ARoot) {
     GET_FUNC_ADDR(ResFormLoadFromResourceName)
     MySyscall(pResFormLoadFromResourceName, 3, AInstance, AResName, ARoot ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
 
 void* pResFormLoadFromFile; 
-void ResFormLoadFromFile(char* AFileName, TComponent ARoot) {
+void ResFormLoadFromFile(CChar char* AFileName, TComponent ARoot) {
     GET_FUNC_ADDR(ResFormLoadFromFile)
     MySyscall(pResFormLoadFromFile, 2, AFileName, ARoot ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
 }
@@ -80796,6 +80803,9 @@ void un_init_lib_lcl() {
 #endif
 }
 
+//#ifdef __cplusplus
+//}
+//#endif
 
 #endif // _LIBLCL_H
 

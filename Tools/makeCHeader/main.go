@@ -303,9 +303,10 @@ func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
 		if i > 0 {
 			f.W(", ")
 		}
-		//if ps.Type == "PChar" && !ps.IsVar {
-		//	f.W("const ")
-		//}
+		if ps.Type == "PChar" && !ps.IsVar {
+			//f.W("const ")
+			f.W("CChar ")
+		}
 		f.W(TypeConvert(ps.Type))
 		if ps.IsVar {
 			f.W("*")

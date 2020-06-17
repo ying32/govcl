@@ -55,6 +55,13 @@ func (c *CFile) WriteHeader() {
 #ifndef _LIBLCL_H
 #define _LIBLCL_H
 
+#ifdef __cplusplus
+//extern "C" {
+#define CChar const 
+#else
+#define CChar
+#endif
+
 #ifdef __GNUC__
    // #pragma GCC diagnostic ignored "-Wint-to-pointer-cast"
 #endif
@@ -507,6 +514,9 @@ void un_init_lib_lcl() {
 #endif
 }
 
+//#ifdef __cplusplus
+//}
+//#endif
 
 #endif // _LIBLCL_H
 
