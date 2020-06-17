@@ -4,7 +4,7 @@
 #include "liblcl.h" 
 
 void btnClick(TObject sender) {
-    DShowMessage("Hello world!");
+    ShowMessage("Hello world!");
 }
 
 int main()
@@ -29,7 +29,7 @@ int main()
         // 创建按钮
         TButton btn = Button_Create(form);
         Button_SetParent(btn, form);
-        Button_SetOnClick(btn, MAKE_EVENT_ID(btnClick));
+        Button_SetOnClick(btn, btnClick);
         Button_SetCaption(btn, "button1");
 
         // 运行app

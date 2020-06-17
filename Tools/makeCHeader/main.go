@@ -59,20 +59,29 @@ var (
 		"TOverlay":             "uint8_t",
 		"TGoForm":              "TForm",
 		"TLMessage":            "TMessage",
+		"IObject":              "TObject",
+		"IWinControl":          "TWinControl",
+		"IComponent":           "TComponent",
+		"IControl":             "TControl",
+		"bool":                 "BOOL",
+		"uint16":               "uint16_t",
 
 		//"TResItem":             "",
 	}
 	funcsMap   = make(map[string]string, 0)
 	classArray = make([]string, 0)
+	objsMap    = make(map[string]string)
 )
 
 func main() {
-	//file := NewCFile("liblcl.h")
-	file := NewCFile(`F:\Users\zhuying\Documents\Visual Studio 2017\Projects\ConsoleApplication3\ConsoleApplication3\liblcl.h`)
+
+	file := NewCFile("./test/liblcl.h")
 	file.WriteHeader()
 
 	// UInt64 WINAPI MySyscall(void* AProc, intptr_t ALen, void* A1, void* A2, void* A3, void* A4, void* A5, void* A6, void* A7, void* A8, void* A9, void* A10, void* A11, void* A12);
-	funcsMap["MySyscall"] = "" // 排除此函数，手动构建
+	funcsMap["MySyscall"] = ""     // 排除此函数，手动构建
+	funcsMap["DGetClassName"] = "" // 已经废弃，govcl中也没引用
+	// 已经是c语言的了，则不需要这些了
 	funcsMap["NSWindow_titleVisibility"] = ""
 	funcsMap["NSWindow_setTitleVisibility"] = ""
 	funcsMap["NSWindow_titlebarAppearsTransparent"] = ""
@@ -90,23 +99,23 @@ func main() {
 	parseClassFiles(file, "uexport2.pas")
 
 	file.WLn()
-	parseFile(file, "LazarusDef.inc")
+	parseFile(file, "LazarusDef.inc", false)
 
 	file.WLn()
 	file.W("#ifdef __linux__\n")
-	parseFile(file, "ulinuxpatchs.pas")
+	parseFile(file, "ulinuxpatchs.pas", true)
 	file.WLn()
 	file.W("#endif\n")
 	file.WLn()
 
 	file.WLn()
 	file.W("#ifdef __APPLE__\n")
-	parseFile(file, "umacospatchs.pas")
+	parseFile(file, "umacospatchs.pas", true)
 	file.WLn()
 	file.W("#endif\n")
 	file.WLn()
 
-	parseFile(file, "uformdesignerfile.pas")
+	parseFile(file, "uformdesignerfile.pas", true)
 
 	// ulinuxpatchs.pas
 	// umacospathcs.pas
@@ -118,11 +127,13 @@ func main() {
 	file.WLn()
 	file.WComment("枚举定义\n")
 
-	file.Save(classArray, parseEnums("../../vcl/types/enums.go"))
+	file.Save(classArray,
+		parseEnums("../../vcl/types/enums.go"),
+		parseEvents("../../vcl/events.go"))
 
 }
 
-func parseFile(f *CFile, fileName string) error {
+func parseFile(f *CFile, fileName string, isclass bool) error {
 	bs, err := ioutil.ReadFile("../../UILibSources/liblcl/" + fileName)
 	if err != nil {
 		return err
@@ -132,10 +143,18 @@ func parseFile(f *CFile, fileName string) error {
 	bs = bytes.Replace(bs, []byte("{无效参数}"), nil, -1)
 	bs = bytes.Replace(bs, []byte("\r"), nil, -1)
 	sps := bytes.Split(bs, []byte("\n"))
-	for _, line := range sps {
+	for i, line := range sps {
 		s := string(bytes.TrimSpace(line))
 		if (strings.HasPrefix(strings.ToLower(s), "function") || strings.HasPrefix(strings.ToLower(s), "procedure")) && strings.HasSuffix(s, "extdecl;") {
-			parseFunc(f, s)
+			eventType := ""
+			if i > 0 {
+				prevLine := string(bytes.TrimSpace(sps[i-1]))
+				if strings.HasPrefix(prevLine, "//EVENT_TYPE:") {
+					//fmt.Println("事件：", prevLine)
+					eventType = strings.TrimSpace(strings.TrimPrefix(prevLine, "//EVENT_TYPE:"))
+				}
+			}
+			parseFunc(f, s, isclass, eventType)
 		}
 	}
 
@@ -160,16 +179,18 @@ func parseClassFiles(f *CFile, fileName string) error {
 			} else {
 				className = strings.Trim(className, " ")
 			}
-
+			// 后面事件判断是否为类的
+			objsMap[className] = className
+			// 生成类型定义用的
 			classArray = append(classArray, className)
 			fmt.Println(incFileName)
-			parseFile(f, incFileName)
+			parseFile(f, incFileName, true)
 		}
 	}
 	return nil
 }
 
-func parseFunc(f *CFile, s string) error {
+func parseFunc(f *CFile, s string, isclass bool, eventType string) error {
 	isFunc := strings.HasPrefix(strings.ToLower(s), "function")
 	if isFunc {
 		s = strings.TrimPrefix(s, "function")
@@ -212,14 +233,14 @@ func parseFunc(f *CFile, s string) error {
 	}
 
 	//fmt.Println("name: ", funcName, ", returnType:", returnType, ", isFunc: ", isFunc, ", haveParams: ", haveParams, ", params: ", paramsStr)
-	params := ParseParams(paramsStr)
+	params := ParseParams(paramsStr, eventType)
 	//fmt.Println(params)
 	//fmt.Println(s)
 	if _, ok := funcsMap[funcName]; ok {
 		return nil
 	}
 	funcsMap[funcName] = ""
-	MakeCFunc(f, funcName, returnType, params)
+	MakeCFunc(f, funcName, returnType, params, isclass)
 
 	return nil
 }
@@ -228,9 +249,10 @@ type Param struct {
 	Name  string
 	Type  string
 	IsVar bool
+	IsArr bool // 事件那
 }
 
-func ParseParams(s string) []Param {
+func ParseParams(s string, eventType string) []Param {
 	if s == "" {
 		return nil
 	}
@@ -264,7 +286,11 @@ func ParseParams(s string) []Param {
 			} else {
 				var item Param
 				item.Name = name
-				item.Type = typeStr
+				if eventType != "" && name == "AEventId" {
+					item.Type = eventType
+				} else {
+					item.Type = typeStr
+				}
 				item.IsVar = isVar
 				ps = append(ps, item)
 			}
@@ -273,7 +299,7 @@ func ParseParams(s string) []Param {
 	return ps
 }
 
-func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
+func MakeCFunc(f *CFile, name, returnType string, params []Param, isclass bool) error {
 
 	if name == "DSendMessage" || name == "DCreateURLShortCut" {
 		f.WLn()
@@ -288,7 +314,9 @@ func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
 	}
 
 	//f.W("  ")
-	f.W(fmt.Sprintf("void* p%s; \n", name))
+
+	//f.W(fmt.Sprintf("static void* p%s; \n", name))
+	f.W(fmt.Sprintf("DEFINE_FUNC_PTR(%s)\n", name))
 	if returnType != "" {
 		f.W(TypeConvert(returnType))
 	} else {
@@ -297,7 +325,15 @@ func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
 	f.W(" ")
 	//f.W("LCLAPI")
 	//f.W(" ")
-	f.W(name)
+	// 不是类的成员，不要那个D开头
+	tempName := name
+	if !isclass {
+		if tempName[0] == 'D' {
+			tempName = tempName[1:]
+		}
+	}
+	f.W(tempName)
+
 	f.W("(")
 	for i, ps := range params {
 		if i > 0 {
@@ -493,5 +529,135 @@ func parseEnums(fileName string) []byte {
 		i++
 	}
 
+	return buff.Bytes()
+}
+
+func parseEvents(fileName string) []byte {
+	buff := bytes.NewBuffer(nil)
+	buff.WriteString("//" + fileName + "\n")
+	bs, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	for _, line := range bytes.Split(bs, []byte("\n")) {
+		s := string(bytes.TrimSpace(line))
+		if strings.HasPrefix(s, "type ") {
+			s = strings.TrimPrefix(s, "type ")
+			// 干掉注释
+			if i := strings.Index(s, "//"); i != -1 {
+				s = s[:i]
+			}
+			if i := strings.Index(s, "/*"); i != -1 {
+				s = s[:i]
+			}
+			s = strings.TrimSpace(s)
+			// 检测是否有返回值，有则移到参数后面
+			if i := strings.Index(s, ")"); i != -1 {
+				retVal := strings.TrimSpace(s[i+1:])
+				if len(retVal) > 3 {
+					s = s[:i] + ", result " + retVal + ")" // 重新处理这个返回值
+				}
+			}
+
+			// type TLVOwnerDataHintEvent = TLVDataHintEvent
+			// 处理上面这种情况
+			if strings.Index(s, "=") != -1 {
+				fmt.Println("------------", s)
+				sp := strings.Split(s, "=")
+				buff.WriteString(fmt.Sprintf("typedef %s %s;\n\n", strings.TrimSpace(sp[1]), strings.TrimSpace(sp[0])))
+				continue
+			}
+
+			idx := strings.Index(s, " ")
+			name := s[:idx]
+			body := strings.TrimRight(strings.TrimPrefix(s[idx+1:], "func("), ")")
+			//fmt.Println(name, "\n", body)
+
+			params := make([]Param, 0)
+			for _, ps := range strings.Split(body, ",") {
+				ps = strings.TrimSpace(ps)
+				subps := strings.Split(ps, " ")
+				item := Param{}
+				if len(subps) >= 1 {
+					item.Name = strings.TrimSpace(subps[0])
+				}
+				if len(subps) >= 2 {
+					item.Type = strings.Trim(strings.TrimSpace(subps[1]), "*")
+					item.IsVar = strings.HasPrefix(strings.TrimSpace(subps[1]), "*")
+					item.IsArr = strings.HasPrefix(strings.TrimSpace(subps[1]), "[]")
+					if item.IsArr {
+						item.Type = "void*" // 所有数组都变成一个指针类型 //strings.TrimPrefix(item.Type, "[]")
+					}
+				}
+				params = append(params, item)
+				// 如果上个参数是一个数组，则添加一个数组长度参数
+				if item.IsArr {
+					item := Param{}
+					item.Name = "len"
+					item.Type = "uintptr_t"
+					params = append(params, item)
+				}
+			}
+			// 处理参数，将所有参数的类型都补上
+			lastType := ""
+			lastIsVar := false
+			for i := len(params) - 1; i >= 0; i-- {
+				item := params[i]
+				if item.Type == "" {
+					item.IsVar = lastIsVar
+					item.Type = lastType
+					params[i] = item
+				}
+				lastType = item.Type
+				lastIsVar = item.IsVar
+			}
+
+			getcppComment := func() string {
+				s := "void ("
+				if len(params) > 0 && params[0].Name != "" {
+					for i, ps := range params {
+						if i > 0 {
+							s += ", "
+						}
+						if _, ok := objsMap[ps.Type]; ok {
+							s += ps.Type
+						} else {
+							s += TypeConvert(ps.Type)
+							if ps.IsVar {
+								s += "*"
+							}
+						}
+						s += " " + ps.Name
+					}
+				}
+				return s + ")\n"
+			}
+
+			// 注释要修改
+			buff.WriteString("// " + getcppComment())
+			buff.WriteString(fmt.Sprintf("typedef void(*%s)(", name))
+			// 写参数
+			if len(params) > 0 && params[0].Name != "" {
+				for i, ps := range params {
+					if i > 0 {
+						buff.WriteString(", ")
+					}
+					if _, ok := objsMap[ps.Type]; ok {
+						buff.WriteString(ps.Type)
+					} else {
+						buff.WriteString(TypeConvert(ps.Type))
+						if ps.IsVar {
+							buff.WriteString("*")
+						}
+					}
+				}
+			} else {
+				buff.WriteString("void")
+			}
+			buff.WriteString(");\n\n")
+		}
+	}
+	//fmt.Println(buff.String())
 	return buff.Bytes()
 }

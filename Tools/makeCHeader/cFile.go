@@ -133,14 +133,17 @@ if(!p##name) \
    p##name = get_proc_addr(""#name""); \
 assert(p##name != NULL); 
 
+// 定义dll函数指针
+#define DEFINE_FUNC_PTR(name) \
+static void* p##name; 
 
 // 转换参数  
 #define COV_PARAM(name) \
 (uintptr_t)name
 
 // 生成eventid，实际就是函数指针  
-#define MAKE_EVENT_ID(fn) \
-(uintptr_t)&fn
+//#define MAKE_EVENT_ID(fn) \
+//(uintptr_t)(void*)&fn
 
 // 集合类型，提前申明
 typedef uint32_t TSet;
@@ -231,6 +234,22 @@ typedef struct TMessage {
     LResult LResult;
 }TMessage;
 
+typedef struct TDWordFiller {
+#if defined(_WIN64) || defined(__x86_64__)
+    uint8_t Filler[4];
+#endif
+} TDWordFiller;
+
+typedef struct TWMKey {
+	uint32_t Msg;       
+	TDWordFiller MsgFiller; 
+	uint16_t CharCode[2]; // 第二个元素未使用
+	TDWordFiller CharCodeUnusedFiller; 
+	uint32_t KeyData;               
+	TDWordFiller KeyDataFiller;        
+	LResult Result;               
+} TWMKey;
+
 typedef struct TGridCoord {
    int32_t x, y;
 } TGridCoord;
@@ -298,6 +317,15 @@ typedef struct TResItem {
    char* ValuePtr;  
 }TResItem;
 
+// 所有LCL类定义  
+<%typedefs%>
+typedef void* TStream;
+
+
+// 所有事件定义
+<%eventdefs%>
+
+
 // liblcl句柄
 static uintptr_t libHandle;
 
@@ -310,12 +338,6 @@ static MYSYSCALL pMySyscall;
 // 异常处理函数实体  
 #define MySyscall(addr, len, a1, a2 , a3, a4, a5, a6, a7, a8, a9, a10, a11, a12) \
     pMySyscall((void*)addr, (intptr_t)len, COV_PARAM(a1), COV_PARAM(a2), COV_PARAM(a3), COV_PARAM(a4), COV_PARAM(a5), COV_PARAM(a6), COV_PARAM(a7), COV_PARAM(a8), COV_PARAM(a9), COV_PARAM(a10), COV_PARAM(a11), COV_PARAM(a12))
-
- 
-
-// 所有LCL类定义  
-<%typedefs%>
-typedef void* TStream;
 
 // 全局实例类定义
 static TApplication Application; // 应用程序
@@ -451,12 +473,11 @@ void* LCLAPI doMessageCallbackProc(void* f, void* msg) {
 }
  
 // 线程同步过程
-typedef void(*THREADSYNCPROC)(void);
-THREADSYNCPROC threadSyncProc;
+TThreadProc threadSyncProc;
 // 线程同步回调
 void* LCLAPI doThreadSyncCallbackProc() {
     if (threadSyncProc) {
-        ((THREADSYNCPROC)threadSyncProc)();
+        ((TThreadProc)threadSyncProc)();
         threadSyncProc = NULL;
     }
     return NULL;
@@ -464,7 +485,7 @@ void* LCLAPI doThreadSyncCallbackProc() {
 
 // 线程同步方法
 // 无参数，无返回值的一个函数
-void ThreadSync(THREADSYNCPROC fn) {
+void ThreadSync(TThreadProc fn) {
     // 加锁
 #ifdef __GNUC__
     pthread_mutex_lock(&threadSyncMutex);
@@ -472,7 +493,7 @@ void ThreadSync(THREADSYNCPROC fn) {
     EnterCriticalSection(&threadSyncMutex);
 #endif
     threadSyncProc = fn;
-    DSynchronize(FALSE);
+    Synchronize(FALSE);
     threadSyncProc = NULL;
 #ifdef __GNUC__
     pthread_mutex_unlock(&threadSyncMutex);
@@ -504,6 +525,16 @@ void init_lib_lcl() {
 	Mouse = Mouse_Instance();             // 鼠标
 	Clipboard = Clipboard_Instance();     // 剪切板
 	Printer = Printer_Instance();         // 打印机
+
+#ifdef _WIN32
+    // 尝试加载exe中名为MAINICON的图标为应用程序图标
+    if(Application) {
+        TIcon icon = Application_GetIcon(Application);
+        if(icon) {
+            Icon_SetHandle(icon, LoadIconA(GetModuleHandleA(NULL), "MAINICON"));
+        } 
+    }
+#endif
 }
 
 void un_init_lib_lcl() {
@@ -523,7 +554,7 @@ void un_init_lib_lcl() {
 `)
 }
 
-func (c *CFile) Save(classDefs []string, enumDefs []byte) error {
+func (c *CFile) Save(classDefs []string, enumDefs []byte, eventDefs []byte) error {
 	if len(classDefs) == 0 {
 		return ioutil.WriteFile(c.fileName, c.buff.Bytes(), 0664)
 	} else {
@@ -537,6 +568,7 @@ func (c *CFile) Save(classDefs []string, enumDefs []byte) error {
 
 		bs := bytes.Replace(c.buff.Bytes(), []byte("<%typedefs%>"), getClassDefs(), 1)
 		bs = bytes.Replace(bs, []byte("<%enumdefs%>"), enumDefs, 1)
+		bs = bytes.Replace(bs, []byte("<%eventdefs%>"), eventDefs, 1)
 		bs = bytes.Replace(bs, []byte("\n"), []byte("\r\n"), -1)
 		return ioutil.WriteFile(c.fileName, bs, 0664)
 	}
