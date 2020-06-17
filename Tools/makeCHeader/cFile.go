@@ -55,37 +55,77 @@ func (c *CFile) WriteHeader() {
 #ifndef _LIBLCL_H
 #define _LIBLCL_H
 
+#ifdef __GNUC__
+   // #pragma GCC diagnostic ignored "-Wint-to-pointer-cast"
+#endif
+
 #include <stdint.h>
-#include <stdint.h>
+#include <stdio.h>
 #include <assert.h>
+
+#ifdef __GNUC__
+#include <pthread.h>
+#endif
+
 #ifdef _WIN32
     #include<Windows.h>
     #define LCLAPI __stdcall
 #else
     #include <dlfcn.h>
-
-    #define LCLAPI __cdecl
+    #include <stddef.h>
+    #include <stdbool.h>
+    // __cdecl 默认
+    #define LCLAPI 
+    #define TRUE 1
+    #define FALSE 0
 #endif
 
-
-
-#ifdef __APPLE__
-    #include <Cocoa.h>
+#ifndef NULL
+    #define NULL 0
 #endif
+
+//#ifdef __APPLE__
+//    #include <Cocoa/Cocoa.h>
+//#endif
 
 // 非Windows下的类型定义  
 #ifndef _WIN32
-    typedef  uintptr_t HWND;
-    typedef  uintptr_t HDC;
+    typedef uintptr_t HWND;
+    typedef uintptr_t HDC;
+    typedef int32_t BOOL; 
+    typedef uintptr_t HPEN;
+    typedef uintptr_t HMENU;
+    typedef uintptr_t HPALETTE;
+    typedef uintptr_t HICON;
+    typedef uintptr_t HKEY;
+    typedef uintptr_t HMONITOR;
+    typedef uintptr_t HBRUSH;
+    typedef uintptr_t HBITMAP;
+    typedef uintptr_t HFONT;
 #endif
 
 
-//printf("GetFunc: %s\n", ""#name""); \
+#ifdef __linux__
+
+typedef uintptr_t PGdkWindow;
+typedef uintptr_t TXId;
+typedef uintptr_t PGtkFixed;
+
+#endif
+
+#ifdef __APPLE__
+   //#include <Cocoa/Cocoa.h>
+typedef *void MyNSWindow;
+#endif
+
+// printf("GetFunc: %s=%p\n", ""#name"", p##name); 
+
 // 获取dll函数地址  
 #define GET_FUNC_ADDR(name) \
-if(p##name == NULL) \
+if(!p##name) \
    p##name = get_proc_addr(""#name""); \
-assert(p##name != NULL);
+assert(p##name != NULL); 
+
 
 // 转换参数  
 #define COV_PARAM(name) \
@@ -100,13 +140,60 @@ typedef uint32_t TSet;
 
 
 // 所有LCL枚举类定义  
+//  TCursor = -32768..32767;
+typedef int16_t TCursor;
+ 
+#define	crHigh  (TCursor)0;
+#define	crDefault    (TCursor)0
+#define	crNone       (TCursor)-1
+#define	crArrow      (TCursor)-2
+#define	crCross      (TCursor)-3
+#define	crIBeam      (TCursor)-4
+#define	crSize       (TCursor)-22
+#define	crSizeNESW   (TCursor)-6 // diagonal north east - south west
+#define	crSizeNS     (TCursor)-7
+#define	crSizeNWSE   (TCursor)-8
+#define	crSizeWE     (TCursor)-9
+#define	crSizeNW     (TCursor)-23
+#define	crSizeN      (TCursor)-24
+#define	crSizeNE     (TCursor)-25
+#define	crSizeW      (TCursor)-26
+#define	crSizeE      (TCursor)-27
+#define	crSizeSW     (TCursor)-28
+#define	crSizeS      (TCursor)-29
+#define	crSizeSE     (TCursor)-30
+#define	crUpArrow    (TCursor)-10
+#define	crHourGlass  (TCursor)-11
+#define	crDrag       (TCursor)-12
+#define	crNoDrop     (TCursor)-13
+#define	crHSplit     (TCursor)-14
+#define	crVSplit     (TCursor)-15
+#define	crMultiDrag  (TCursor)-16
+#define	crSQLWait    (TCursor)-17
+#define	crNo         (TCursor)-18
+#define	crAppStart   (TCursor)-19
+#define	crHelp       (TCursor)-20
+#define	crHandPoint  (TCursor)-21
+#define	crSizeAll    (TCursor)-22
+#define	crLow  (TCursor)-30
+ 
+
 <%enumdefs%>
 
+typedef int32_t TLeftRight; 
+typedef TBorderStyle TFormBorderStyle;
+typedef int32_t TColorBoxStyle;
+typedef TAlignment TLinkAlignment;
+typedef TMenuItemAutoFlag TMenuAutoFlag; 
+typedef int32_t TNumGlyphs;
+typedef uint16_t TShortCut; 
+typedef int16_t TScrollBarInc;
  
-enum TLibType {
+typedef enum  {
 	LtVCL,
 	LtLCL
-};
+}TLibType;
+
 
 // 重定义
 typedef int32_t TModalResult;
@@ -128,7 +215,13 @@ typedef uintptr_t THandle;
 
 
 typedef struct TMessage {
-
+    uint32_t Message;
+#if defined(_WIN64) || defined(__x86_64__)
+    uint32_t _UnusedMsg;
+#endif
+    WParam WParam;
+    LParam LParam;
+    LResult LResult;
 }TMessage;
 
 typedef struct TGridCoord {
@@ -153,8 +246,8 @@ typedef struct TSysLocale {
 	int32_t SubLangID;   
 
 	// win32 names
-	bool FarEast;    
-	bool MiddleEast; 
+	BOOL FarEast;    
+	BOOL MiddleEast; 
 }TSysLocale;
 
 typedef struct TSmallPoint {
@@ -171,8 +264,8 @@ typedef struct TGUID {
 
 // LibResouces
 typedef struct TLibResouce {
-	//Name string
-	//Ptr  uintptr
+	char* Name;
+	char* Value;   
 }TLibResouce;
 
 // TConstraintSize = 0..MaxInt;
@@ -199,33 +292,42 @@ typedef struct TResItem {
 }TResItem;
 
 // liblcl句柄
-uintptr_t libHandle;
+static uintptr_t libHandle;
 
 // 用于处理异常的模拟call  
-typedef uint64_t(* LCLAPI MYSYSCALL)(void*, intptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t);
+typedef uint64_t(LCLAPI *MYSYSCALL)(void*, intptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t);
 
 // 函数指针
-MYSYSCALL pMySyscall;
+static MYSYSCALL pMySyscall;
 
 // 异常处理函数实体  
-inline uint64_t MySyscall(void* addr, intptr_t len = 0, uintptr_t a1 = NULL, uintptr_t a2 = NULL, uintptr_t a3 = NULL, uintptr_t a4 = NULL, 
-  uintptr_t a5 = NULL, uintptr_t a6 = NULL, uintptr_t a7 = NULL, uintptr_t a8 = NULL, uintptr_t a9 = NULL, uintptr_t a10 = NULL, uintptr_t a11 = NULL, uintptr_t a12 = NULL) {
-    return pMySyscall(addr, len, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12);
-}
+#define MySyscall(addr, len, a1, a2 , a3, a4, a5, a6, a7, a8, a9, a10, a11, a12) \
+    pMySyscall((void*)addr, (intptr_t)len, COV_PARAM(a1), COV_PARAM(a2), COV_PARAM(a3), COV_PARAM(a4), COV_PARAM(a5), COV_PARAM(a6), COV_PARAM(a7), COV_PARAM(a8), COV_PARAM(a9), COV_PARAM(a10), COV_PARAM(a11), COV_PARAM(a12))
+
+ 
 
 // 所有LCL类定义  
 <%typedefs%>
 typedef void* TStream;
 
 // 全局实例类定义
-TApplication Application; // 应用程序
-TScreen Screen;           // 屏幕
-TMouse	Mouse;            // 鼠标
-TClipboard	Clipboard;    // 剪切板
-TPrinter Printer;         // 打印机
+static TApplication Application; // 应用程序
+static TScreen Screen;           // 屏幕
+static TMouse	Mouse;            // 鼠标
+static TClipboard	Clipboard;    // 剪切板
+static TPrinter Printer;         // 打印机
+
+// 全局互斥锁
+#ifdef __GNUC__
+static pthread_mutex_t threadSyncMutex;
+#else
+static RTL_CRITICAL_SECTION threadSyncMutex;
+#endif
 
 // 初始liblcl库
 void init_lib_lcl();
+// 反向初始liblcl库
+void un_init_lib_lcl();
 
 
 // 获取过程地址
@@ -238,9 +340,9 @@ void* get_proc_addr(const char *name) {
 }
 
 // 加载库
-bool load_liblcl(const char *name) {
+BOOL load_liblcl(const char *name) {
     if(libHandle > 0)
-        return true;
+        return TRUE;
 #ifdef _WIN32
     libHandle = (uintptr_t)LoadLibraryA(name);
 #else
@@ -263,6 +365,7 @@ void close_liblcl() {
 	    dlclose((void*)libHandle);
 	#endif
         libHandle = 0;
+        un_init_lib_lcl();
     }
 }
 
@@ -274,16 +377,13 @@ func (c *CFile) WriteFooter() {
 	c.W(`
 
 // 模拟call  
-inline uint64_t Syscall12(void* addr, uintptr_t p1 = NULL, uintptr_t p2 = NULL, uintptr_t p3 = NULL, uintptr_t p4 = NULL, uintptr_t p5 = NULL, uintptr_t p6 = NULL,
-    uintptr_t p7 = NULL, uintptr_t p8 = NULL, uintptr_t p9 = NULL, uintptr_t p10 = NULL, uintptr_t p11 = NULL, uintptr_t p12 = NULL) {
-    return ((uint64_t(*)(uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t))addr)(
-        p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
-}
+#define Syscall12(addr, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12) \
+    ((uint64_t(*)(uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t, uintptr_t))addr)(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12)
 
 // getParam 从指定索引和地址获取事件中的参数
-inline uintptr_t getParamOf(intptr_t index, void* ptr)  {
-	return *((uintptr_t*)((uintptr_t)ptr + (uintptr_t)index*sizeof(uintptr_t)));
-}
+#define getParamOf(index, ptr) \
+ (*((uintptr_t*)((uintptr_t)ptr + (uintptr_t)index*sizeof(uintptr_t))))
+
 
 // 获取参数的宏  
 #define GET_VAL(index) \
@@ -294,44 +394,44 @@ getParamOf(index, args)
 void* LCLAPI doEventCallbackProc(void* f, void* args, long argcount) {
  
     switch (argcount) {
-    case 0: Syscall12(f);
+    case 0: Syscall12(f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+       break;
+	
+    case 1: Syscall12(f, GET_VAL(0), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+       break;
+	
+    case 2: Syscall12(f, GET_VAL(0), GET_VAL(1), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         break;
-
-    case 1: Syscall12(f, GET_VAL(0));
-        break;
-  
-    case 2: Syscall12(f, GET_VAL(0), GET_VAL(1));
-         break;
-
-    case 3: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2));
-        break;
-
-    case 4: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(2));
-        break;
-
-    case 5: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4));
-        break;
-
-    case 6: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5));
-        break;
-
-    case 7: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6));
-        break;
-
-    case 8: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7));
-        break;
-
-    case 9: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), GET_VAL(8));
-        break;
-
-    case 10: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), GET_VAL(8), GET_VAL(9));
-        break;
-
-    case 11: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), GET_VAL(8), GET_VAL(9), GET_VAL(10));
-        break;
-
+	
+    case 3: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), 0, 0, 0, 0, 0, 0, 0, 0, 0);
+       break;
+	
+    case 4: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(2), 0, 0, 0, 0, 0, 0, 0, 0);
+       break;
+	
+    case 5: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), 0, 0, 0, 0, 0, 0, 0);
+       break;
+	
+    case 6: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), 0, 0, 0, 0, 0, 0);
+       break;
+	
+    case 7: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), 0, 0, 0, 0, 0);
+       break;
+	
+    case 8: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), 0, 0, 0, 0);
+       break;
+	
+    case 9: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), GET_VAL(8), 0, 0, 0);
+       break;
+	
+    case 10: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), GET_VAL(8), GET_VAL(9), 0, 0);
+       break;
+	
+    case 11: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), GET_VAL(8), GET_VAL(9), GET_VAL(10), 0);
+       break;
+	
     case 12: Syscall12(f, GET_VAL(0), GET_VAL(1), GET_VAL(2), GET_VAL(3), GET_VAL(4), GET_VAL(5), GET_VAL(6), GET_VAL(7), GET_VAL(8), GET_VAL(9), GET_VAL(10), GET_VAL(11));
-        break;
+       break;
     }
     return NULL;
 }
@@ -349,7 +449,6 @@ THREADSYNCPROC threadSyncProc;
 // 线程同步回调
 void* LCLAPI doThreadSyncCallbackProc() {
     if (threadSyncProc) {
-        // 这里还要添加锁
         ((THREADSYNCPROC)threadSyncProc)();
         threadSyncProc = NULL;
     }
@@ -359,21 +458,39 @@ void* LCLAPI doThreadSyncCallbackProc() {
 // 线程同步方法
 // 无参数，无返回值的一个函数
 void ThreadSync(THREADSYNCPROC fn) {
-    // 要加锁，先不管吧
+    // 加锁
+#ifdef __GNUC__
+    pthread_mutex_lock(&threadSyncMutex);
+#else
+    EnterCriticalSection(&threadSyncMutex);
+#endif
     threadSyncProc = fn;
-    DSynchronize(false);
+    DSynchronize(FALSE);
     threadSyncProc = NULL;
+#ifdef __GNUC__
+    pthread_mutex_unlock(&threadSyncMutex);
+#else
+    LeaveCriticalSection(&threadSyncMutex);
+#endif
+   
 }
  
+#define GET_CALLBACK(name) \
+  (void*)&name
  
 void init_lib_lcl() {
- 
+#ifdef __GNUC__
+    pthread_mutex_init(&threadSyncMutex, NULL);
+#else
+    InitializeCriticalSection(&threadSyncMutex);
+#endif
+
     // 设置事件的回调函数 
-	SetEventCallback(&doEventCallbackProc);
+	SetEventCallback(GET_CALLBACK(doEventCallbackProc));
 	// 消息回调
-	SetMessageCallback(&doMessageCallbackProc);
+	SetMessageCallback(GET_CALLBACK(doMessageCallbackProc));
 	// 线程同步回调
-	SetThreadSyncCallback(&doThreadSyncCallbackProc);
+	SetThreadSyncCallback(GET_CALLBACK(doThreadSyncCallbackProc));
 
 	Application = Application_Instance();
 	Screen = Screen_Instance();
@@ -381,6 +498,15 @@ void init_lib_lcl() {
 	Clipboard = Clipboard_Instance();     // 剪切板
 	Printer = Printer_Instance();         // 打印机
 }
+
+void un_init_lib_lcl() {
+#ifdef __GNUC__
+    pthread_mutex_destroy(&threadSyncMutex);
+#else
+    DeleteCriticalSection(&threadSyncMutex);
+#endif
+}
+
 
 #endif // _LIBLCL_H
 

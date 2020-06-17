@@ -73,6 +73,14 @@ func main() {
 
 	// UInt64 WINAPI MySyscall(void* AProc, intptr_t ALen, void* A1, void* A2, void* A3, void* A4, void* A5, void* A6, void* A7, void* A8, void* A9, void* A10, void* A11, void* A12);
 	funcsMap["MySyscall"] = "" // 排除此函数，手动构建
+	funcsMap["NSWindow_titleVisibility"] = ""
+	funcsMap["NSWindow_setTitleVisibility"] = ""
+	funcsMap["NSWindow_titlebarAppearsTransparent"] = ""
+	funcsMap["NSWindow_setTitlebarAppearsTransparent"] = ""
+	funcsMap["NSWindow_styleMask"] = ""
+	funcsMap["NSWindow_setStyleMask"] = ""
+	funcsMap["NSWindow_setRepresentedURL"] = ""
+	funcsMap["NSWindow_release"] = ""
 
 	file.WLn()
 	file.WLn()
@@ -267,6 +275,18 @@ func ParseParams(s string) []Param {
 
 func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
 
+	if name == "DSendMessage" || name == "DCreateURLShortCut" {
+		f.WLn()
+		f.WLn()
+		if name == "DSendMessage" {
+			f.W("#ifndef _WIN32\n")
+		} else if name == "DCreateURLShortCut" {
+			f.W("#ifdef _WIN32\n")
+		}
+
+		f.WLn()
+	}
+
 	//f.W("  ")
 	f.W(fmt.Sprintf("void* p%s; \n", name))
 	if returnType != "" {
@@ -283,9 +303,9 @@ func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
 		if i > 0 {
 			f.W(", ")
 		}
-		if ps.Type == "PChar" && !ps.IsVar {
-			f.W("const ")
-		}
+		//if ps.Type == "PChar" && !ps.IsVar {
+		//	f.W("const ")
+		//}
 		f.W(TypeConvert(ps.Type))
 		if ps.IsVar {
 			f.W("*")
@@ -301,11 +321,15 @@ func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
 				if i >= 0 {
 					ns += ", "
 				}
-				ns += fmt.Sprintf("COV_PARAM(%s)", s.Name)
+				//ns += fmt.Sprintf("COV_PARAM(%s)", s.Name)
+				ns += s.Name
+			}
+			for i := 0; i < 12-len(params); i++ {
+				ns += " ,0"
 			}
 			return ns
 		}
-		return ""
+		return " ,0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0"
 	}
 
 	f.W(") {\n")
@@ -318,6 +342,13 @@ func MakeCFunc(f *CFile, name, returnType string, params []Param) error {
 	f.WLn()
 	f.W("}\n")
 	f.WLn()
+
+	// 添加结束
+	if name == "DWindowFromPoint" || name == "DCreateShortCut" {
+		f.WLn()
+		f.W("#endif\n")
+		f.WLn()
+	}
 
 	return nil
 }
@@ -361,12 +392,30 @@ func parseEnums(fileName string) []byte {
 						buff.WriteString(strings.TrimSpace(sp[1]))
 						buff.WriteString(";\n")
 					}
+				//case "TBorderStyle":
+				//	buff.WriteString("typedef ")
+				//	buff.WriteString(TypeConvert(strings.TrimSpace(sp[len(sp)-1])) + " ")
+				//	buff.WriteString(strings.TrimSpace(sp[1]))
+				//	buff.WriteString(";\n")
 
 				default:
 
+					if strings.TrimSpace(sp[1]) == "TCursor" ||
+						strings.TrimSpace(sp[1]) == "TLeftRight" ||
+						strings.TrimSpace(sp[1]) == "TFormBorderStyle" ||
+						strings.TrimSpace(sp[1]) == "TColorBoxStyle" ||
+						strings.TrimSpace(sp[1]) == "TLinkAlignment" ||
+						strings.TrimSpace(sp[1]) == "TMenuAutoFlag" ||
+						strings.TrimSpace(sp[1]) == "TNumGlyphs" ||
+						strings.TrimSpace(sp[1]) == "TShortCut" ||
+						strings.TrimSpace(sp[1]) == "TScrollBarInc" {
+						i++
+						continue
+					}
+
 					// 枚举类型
-					buff.WriteString("enum ")
-					buff.WriteString(strings.TrimSpace(sp[1]))
+					buff.WriteString("typedef enum ")
+
 					buff.WriteString(" {\n")
 
 					i++
@@ -433,10 +482,10 @@ func parseEnums(fileName string) []byte {
 						}
 						i++
 					}
-					fmt.Println("")
 
-					buff.WriteString("};\n")
-					buff.WriteString("\n")
+					buff.WriteString("}")
+					buff.WriteString(strings.TrimSpace(sp[1]))
+					buff.WriteString(";\n\n")
 				}
 			}
 		}
