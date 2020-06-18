@@ -403,7 +403,7 @@ typedef void* TStream;
 
 // 一些其它函数
 
-// Lazarus集合加法，val...中存储为位的索引，下标为0
+// 集合加法，val...中存储为位的索引，下标为0
 TSet Include(TSet s, uint8_t val) {
     return (TSet)(s | (1 << val));
 }
@@ -419,7 +419,7 @@ TSet Include(TSet s, uint8_t val) {
 //    return (TSet)r;
 //}
 
-// Lazarus集合减法，val...中存储为位的索引，下标为0
+// 集合减法，val...中存储为位的索引，下标为0
 TSet Exclude(TSet s, uint8_t val) {
     return (TSet)(s & (~(1 << val)));
 }
@@ -435,7 +435,7 @@ TSet Exclude(TSet s, uint8_t val) {
 //    return (TSet)r;
 //}
 
-// Lazarus集合类型的判断，val表示位数，下标为0
+// 集合类型的判断，val表示位数，下标为0
 BOOL InSet(uint32_t s, uint8_t val) {
     if ((s&(1 << val)) != 0) {
         return TRUE;
@@ -473,13 +473,13 @@ static RTL_CRITICAL_SECTION threadSyncMutex;
 #endif
 
 // 初始liblcl库
-void init_lib_lcl();
+static void init_lib_lcl();
 // 反向初始liblcl库
-void un_init_lib_lcl();
+static void un_init_lib_lcl();
 
 
 // 获取过程地址
-void* get_proc_addr(const char *name) {
+static void* get_proc_addr(const char *name) {
 #ifdef _WIN32
     return (void*)GetProcAddress((HMODULE)libHandle, name);
 #else
@@ -488,7 +488,7 @@ void* get_proc_addr(const char *name) {
 }
 
 // 加载库
-BOOL load_liblcl(const char *name) {
+static BOOL load_liblcl(const char *name) {
     if(libHandle > 0)
         return TRUE;
 #ifdef _WIN32
@@ -505,7 +505,7 @@ BOOL load_liblcl(const char *name) {
 }
 
 // 关闭库
-void close_liblcl() {
+static void close_liblcl() {
     if(libHandle > 0) {
 	#ifdef _WIN32
 	    FreeLibrary((HMODULE)libHandle);
@@ -593,7 +593,7 @@ void* LCLAPI doMessageCallbackProc(void* f, void* msg) {
 }
  
 // 线程同步过程
-TThreadProc threadSyncProc;
+static TThreadProc threadSyncProc;
 // 线程同步回调
 void* LCLAPI doThreadSyncCallbackProc() {
     if (threadSyncProc) {
@@ -605,7 +605,7 @@ void* LCLAPI doThreadSyncCallbackProc() {
 
 // 线程同步方法
 // 无参数，无返回值的一个函数
-void ThreadSync(TThreadProc fn) {
+static void ThreadSync(TThreadProc fn) {
     // 加锁
 #ifdef __GNUC__
     pthread_mutex_lock(&threadSyncMutex);
@@ -626,7 +626,7 @@ void ThreadSync(TThreadProc fn) {
 #define GET_CALLBACK(name) \
   (void*)&name
  
-void init_lib_lcl() {
+static void init_lib_lcl() {
 #ifdef __GNUC__
     pthread_mutex_init(&threadSyncMutex, NULL);
 #else

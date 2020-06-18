@@ -1986,6 +1986,11 @@ typedef enum  {
     cclTopToBottomThenLeftToRight,
 }TControlChildrenLayout;
 
+typedef enum  {
+    clHorizontalThenVertical,
+    clVerticalThenHorizontal,
+}TColumnLayout;
+
 
 
 typedef int32_t TLeftRight; 
@@ -2250,6 +2255,8 @@ typedef void* TXButton;
 typedef void* TAnchorSide;
 typedef void* TControlBorderSpacing;
 typedef void* TControlChildSizing;
+typedef void* TCheckGroup;
+typedef void* TToggleBox;
 
 typedef void* TStream;
 
@@ -2546,12 +2553,15 @@ typedef void(*TTaskDlgTimerEvent)(TObject, uint32_t, BOOL*);
 // void (TWinControl sender, TControl control, int32_t* newLeft, int32_t* newTop, int32_t* newWidth, int32_t* newHeight, TRect* alignRect, TAlignInfo alignInfo)
 typedef void(*TAlignPositionEvent)(TWinControl, TControl, int32_t*, int32_t*, int32_t*, int32_t*, TRect*, TAlignInfo);
 
+// void (TObject sender, int32_t index)
+typedef void(*TCheckGroupClicked)(TObject, int32_t);
+
 
 
 
 // 一些其它函数
 
-// Lazarus集合加法，val...中存储为位的索引，下标为0
+// 集合加法，val...中存储为位的索引，下标为0
 TSet Include(TSet s, uint8_t val) {
     return (TSet)(s | (1 << val));
 }
@@ -2567,7 +2577,7 @@ TSet Include(TSet s, uint8_t val) {
 //    return (TSet)r;
 //}
 
-// Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+// 集合减法，val...中存储为位的索引，下标为0
 TSet Exclude(TSet s, uint8_t val) {
     return (TSet)(s & (~(1 << val)));
 }
@@ -2583,7 +2593,7 @@ TSet Exclude(TSet s, uint8_t val) {
 //    return (TSet)r;
 //}
 
-// Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+// 集合类型的判断，val表示位数，下标为0
 BOOL InSet(uint32_t s, uint8_t val) {
     if ((s&(1 << val)) != 0) {
         return TRUE;
@@ -2621,13 +2631,13 @@ static RTL_CRITICAL_SECTION threadSyncMutex;
 #endif
 
 // 初始liblcl库
-void init_lib_lcl();
+static void init_lib_lcl();
 // 反向初始liblcl库
-void un_init_lib_lcl();
+static void un_init_lib_lcl();
 
 
 // 获取过程地址
-void* get_proc_addr(const char *name) {
+static void* get_proc_addr(const char *name) {
 #ifdef _WIN32
     return (void*)GetProcAddress((HMODULE)libHandle, name);
 #else
@@ -2636,7 +2646,7 @@ void* get_proc_addr(const char *name) {
 }
 
 // 加载库
-BOOL load_liblcl(const char *name) {
+static BOOL load_liblcl(const char *name) {
     if(libHandle > 0)
         return TRUE;
 #ifdef _WIN32
@@ -2653,7 +2663,7 @@ BOOL load_liblcl(const char *name) {
 }
 
 // 关闭库
-void close_liblcl() {
+static void close_liblcl() {
     if(libHandle > 0) {
 	#ifdef _WIN32
 	    FreeLibrary((HMODULE)libHandle);
@@ -80803,6 +80813,2266 @@ TClass ControlChildSizing_StaticClassType() {
 }
 
 
+// MyLCL_CheckGroup.inc
+DEFINE_FUNC_PTR(CheckGroup_Create)
+TCheckGroup CheckGroup_Create(TComponent AOwner) {
+    GET_FUNC_ADDR(CheckGroup_Create)
+    return (TCheckGroup)MySyscall(pCheckGroup_Create, 1, AOwner ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Free)
+void CheckGroup_Free(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Free)
+    MySyscall(pCheckGroup_Free, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_FlipChildren)
+void CheckGroup_FlipChildren(TCheckGroup AObj, BOOL AllLevels) {
+    GET_FUNC_ADDR(CheckGroup_FlipChildren)
+    MySyscall(pCheckGroup_FlipChildren, 2, AObj, AllLevels ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Rows)
+int32_t CheckGroup_Rows(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Rows)
+    return (int32_t)MySyscall(pCheckGroup_Rows, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_CanFocus)
+BOOL CheckGroup_CanFocus(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_CanFocus)
+    return (BOOL)MySyscall(pCheckGroup_CanFocus, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ContainsControl)
+BOOL CheckGroup_ContainsControl(TCheckGroup AObj, TControl Control) {
+    GET_FUNC_ADDR(CheckGroup_ContainsControl)
+    return (BOOL)MySyscall(pCheckGroup_ContainsControl, 2, AObj, Control ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ControlAtPos)
+TControl CheckGroup_ControlAtPos(TCheckGroup AObj, TPoint* Pos, BOOL AllowDisabled, BOOL AllowWinControls) {
+    GET_FUNC_ADDR(CheckGroup_ControlAtPos)
+    return (TControl)MySyscall(pCheckGroup_ControlAtPos, 4, AObj, Pos, AllowDisabled, AllowWinControls ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_DisableAlign)
+void CheckGroup_DisableAlign(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_DisableAlign)
+    MySyscall(pCheckGroup_DisableAlign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_EnableAlign)
+void CheckGroup_EnableAlign(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_EnableAlign)
+    MySyscall(pCheckGroup_EnableAlign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_FindChildControl)
+TControl CheckGroup_FindChildControl(TCheckGroup AObj, CChar char* ControlName) {
+    GET_FUNC_ADDR(CheckGroup_FindChildControl)
+    return (TControl)MySyscall(pCheckGroup_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Focused)
+BOOL CheckGroup_Focused(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Focused)
+    return (BOOL)MySyscall(pCheckGroup_Focused, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_HandleAllocated)
+BOOL CheckGroup_HandleAllocated(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_HandleAllocated)
+    return (BOOL)MySyscall(pCheckGroup_HandleAllocated, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_InsertControl)
+void CheckGroup_InsertControl(TCheckGroup AObj, TControl AControl) {
+    GET_FUNC_ADDR(CheckGroup_InsertControl)
+    MySyscall(pCheckGroup_InsertControl, 2, AObj, AControl ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Invalidate)
+void CheckGroup_Invalidate(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Invalidate)
+    MySyscall(pCheckGroup_Invalidate, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_RemoveControl)
+void CheckGroup_RemoveControl(TCheckGroup AObj, TControl AControl) {
+    GET_FUNC_ADDR(CheckGroup_RemoveControl)
+    MySyscall(pCheckGroup_RemoveControl, 2, AObj, AControl ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Realign)
+void CheckGroup_Realign(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Realign)
+    MySyscall(pCheckGroup_Realign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Repaint)
+void CheckGroup_Repaint(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Repaint)
+    MySyscall(pCheckGroup_Repaint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ScaleBy)
+void CheckGroup_ScaleBy(TCheckGroup AObj, int32_t M, int32_t D) {
+    GET_FUNC_ADDR(CheckGroup_ScaleBy)
+    MySyscall(pCheckGroup_ScaleBy, 3, AObj, M, D ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ScrollBy)
+void CheckGroup_ScrollBy(TCheckGroup AObj, int32_t DeltaX, int32_t DeltaY) {
+    GET_FUNC_ADDR(CheckGroup_ScrollBy)
+    MySyscall(pCheckGroup_ScrollBy, 3, AObj, DeltaX, DeltaY ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetBounds)
+void CheckGroup_SetBounds(TCheckGroup AObj, int32_t ALeft, int32_t ATop, int32_t AWidth, int32_t AHeight) {
+    GET_FUNC_ADDR(CheckGroup_SetBounds)
+    MySyscall(pCheckGroup_SetBounds, 5, AObj, ALeft, ATop, AWidth, AHeight ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetFocus)
+void CheckGroup_SetFocus(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_SetFocus)
+    MySyscall(pCheckGroup_SetFocus, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Update)
+void CheckGroup_Update(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Update)
+    MySyscall(pCheckGroup_Update, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_BringToFront)
+void CheckGroup_BringToFront(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_BringToFront)
+    MySyscall(pCheckGroup_BringToFront, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ClientToScreen)
+void CheckGroup_ClientToScreen(TCheckGroup AObj, TPoint* Point, TPoint* Result) {
+    GET_FUNC_ADDR(CheckGroup_ClientToScreen)
+    MySyscall(pCheckGroup_ClientToScreen, 3, AObj, Point, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ClientToParent)
+void CheckGroup_ClientToParent(TCheckGroup AObj, TPoint* Point, TWinControl AParent, TPoint* Result) {
+    GET_FUNC_ADDR(CheckGroup_ClientToParent)
+    MySyscall(pCheckGroup_ClientToParent, 4, AObj, Point, AParent, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Dragging)
+BOOL CheckGroup_Dragging(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Dragging)
+    return (BOOL)MySyscall(pCheckGroup_Dragging, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_HasParent)
+BOOL CheckGroup_HasParent(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_HasParent)
+    return (BOOL)MySyscall(pCheckGroup_HasParent, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Hide)
+void CheckGroup_Hide(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Hide)
+    MySyscall(pCheckGroup_Hide, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Perform)
+intptr_t CheckGroup_Perform(TCheckGroup AObj, uint32_t Msg, uintptr_t WParam, intptr_t LParam) {
+    GET_FUNC_ADDR(CheckGroup_Perform)
+    return (intptr_t)MySyscall(pCheckGroup_Perform, 4, AObj, Msg, WParam, LParam ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Refresh)
+void CheckGroup_Refresh(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Refresh)
+    MySyscall(pCheckGroup_Refresh, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ScreenToClient)
+void CheckGroup_ScreenToClient(TCheckGroup AObj, TPoint* Point, TPoint* Result) {
+    GET_FUNC_ADDR(CheckGroup_ScreenToClient)
+    MySyscall(pCheckGroup_ScreenToClient, 3, AObj, Point, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ParentToClient)
+void CheckGroup_ParentToClient(TCheckGroup AObj, TPoint* Point, TWinControl AParent, TPoint* Result) {
+    GET_FUNC_ADDR(CheckGroup_ParentToClient)
+    MySyscall(pCheckGroup_ParentToClient, 4, AObj, Point, AParent, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SendToBack)
+void CheckGroup_SendToBack(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_SendToBack)
+    MySyscall(pCheckGroup_SendToBack, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Show)
+void CheckGroup_Show(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_Show)
+    MySyscall(pCheckGroup_Show, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetTextBuf)
+int32_t CheckGroup_GetTextBuf(TCheckGroup AObj, CChar char* Buffer, int32_t BufSize) {
+    GET_FUNC_ADDR(CheckGroup_GetTextBuf)
+    return (int32_t)MySyscall(pCheckGroup_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetTextLen)
+int32_t CheckGroup_GetTextLen(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetTextLen)
+    return (int32_t)MySyscall(pCheckGroup_GetTextLen, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetTextBuf)
+void CheckGroup_SetTextBuf(TCheckGroup AObj, CChar char* Buffer) {
+    GET_FUNC_ADDR(CheckGroup_SetTextBuf)
+    MySyscall(pCheckGroup_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_FindComponent)
+TComponent CheckGroup_FindComponent(TCheckGroup AObj, CChar char* AName) {
+    GET_FUNC_ADDR(CheckGroup_FindComponent)
+    return (TComponent)MySyscall(pCheckGroup_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetNamePath)
+char* CheckGroup_GetNamePath(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetNamePath)
+    return (char*)MySyscall(pCheckGroup_GetNamePath, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Assign)
+void CheckGroup_Assign(TCheckGroup AObj, TObject Source) {
+    GET_FUNC_ADDR(CheckGroup_Assign)
+    MySyscall(pCheckGroup_Assign, 2, AObj, Source ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ClassType)
+TClass CheckGroup_ClassType(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_ClassType)
+    return (TClass)MySyscall(pCheckGroup_ClassType, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ClassName)
+char* CheckGroup_ClassName(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_ClassName)
+    return (char*)MySyscall(pCheckGroup_ClassName, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_InstanceSize)
+int32_t CheckGroup_InstanceSize(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_InstanceSize)
+    return (int32_t)MySyscall(pCheckGroup_InstanceSize, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_InheritsFrom)
+BOOL CheckGroup_InheritsFrom(TCheckGroup AObj, TClass AClass) {
+    GET_FUNC_ADDR(CheckGroup_InheritsFrom)
+    return (BOOL)MySyscall(pCheckGroup_InheritsFrom, 2, AObj, AClass ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_Equals)
+BOOL CheckGroup_Equals(TCheckGroup AObj, TObject Obj) {
+    GET_FUNC_ADDR(CheckGroup_Equals)
+    return (BOOL)MySyscall(pCheckGroup_Equals, 2, AObj, Obj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetHashCode)
+int32_t CheckGroup_GetHashCode(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetHashCode)
+    return (int32_t)MySyscall(pCheckGroup_GetHashCode, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_ToString)
+char* CheckGroup_ToString(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_ToString)
+    return (char*)MySyscall(pCheckGroup_ToString, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_AnchorToNeighbour)
+void CheckGroup_AnchorToNeighbour(TCheckGroup AObj, TAnchorKind ASide, int32_t ASpace, TControl ASibling) {
+    GET_FUNC_ADDR(CheckGroup_AnchorToNeighbour)
+    MySyscall(pCheckGroup_AnchorToNeighbour, 4, AObj, ASide, ASpace, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_AnchorParallel)
+void CheckGroup_AnchorParallel(TCheckGroup AObj, TAnchorKind ASide, int32_t ASpace, TControl ASibling) {
+    GET_FUNC_ADDR(CheckGroup_AnchorParallel)
+    MySyscall(pCheckGroup_AnchorParallel, 4, AObj, ASide, ASpace, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_AnchorHorizontalCenterTo)
+void CheckGroup_AnchorHorizontalCenterTo(TCheckGroup AObj, TControl ASibling) {
+    GET_FUNC_ADDR(CheckGroup_AnchorHorizontalCenterTo)
+    MySyscall(pCheckGroup_AnchorHorizontalCenterTo, 2, AObj, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_AnchorVerticalCenterTo)
+void CheckGroup_AnchorVerticalCenterTo(TCheckGroup AObj, TControl ASibling) {
+    GET_FUNC_ADDR(CheckGroup_AnchorVerticalCenterTo)
+    MySyscall(pCheckGroup_AnchorVerticalCenterTo, 2, AObj, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_AnchorAsAlign)
+void CheckGroup_AnchorAsAlign(TCheckGroup AObj, TAlign ATheAlign, int32_t ASpace) {
+    GET_FUNC_ADDR(CheckGroup_AnchorAsAlign)
+    MySyscall(pCheckGroup_AnchorAsAlign, 3, AObj, ATheAlign, ASpace ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_AnchorClient)
+void CheckGroup_AnchorClient(TCheckGroup AObj, int32_t ASpace) {
+    GET_FUNC_ADDR(CheckGroup_AnchorClient)
+    MySyscall(pCheckGroup_AnchorClient, 2, AObj, ASpace ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAlign)
+TAlign CheckGroup_GetAlign(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAlign)
+    return (TAlign)MySyscall(pCheckGroup_GetAlign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAlign)
+void CheckGroup_SetAlign(TCheckGroup AObj, TAlign AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAlign)
+    MySyscall(pCheckGroup_SetAlign, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAnchors)
+TAnchors CheckGroup_GetAnchors(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAnchors)
+    return (TAnchors)MySyscall(pCheckGroup_GetAnchors, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAnchors)
+void CheckGroup_SetAnchors(TCheckGroup AObj, TAnchors AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAnchors)
+    MySyscall(pCheckGroup_SetAnchors, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAutoFill)
+BOOL CheckGroup_GetAutoFill(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAutoFill)
+    return (BOOL)MySyscall(pCheckGroup_GetAutoFill, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAutoFill)
+void CheckGroup_SetAutoFill(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAutoFill)
+    MySyscall(pCheckGroup_SetAutoFill, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAutoSize)
+BOOL CheckGroup_GetAutoSize(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAutoSize)
+    return (BOOL)MySyscall(pCheckGroup_GetAutoSize, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAutoSize)
+void CheckGroup_SetAutoSize(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAutoSize)
+    MySyscall(pCheckGroup_SetAutoSize, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetBiDiMode)
+TBiDiMode CheckGroup_GetBiDiMode(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetBiDiMode)
+    return (TBiDiMode)MySyscall(pCheckGroup_GetBiDiMode, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetBiDiMode)
+void CheckGroup_SetBiDiMode(TCheckGroup AObj, TBiDiMode AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetBiDiMode)
+    MySyscall(pCheckGroup_SetBiDiMode, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetCaption)
+char* CheckGroup_GetCaption(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetCaption)
+    return (char*)MySyscall(pCheckGroup_GetCaption, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetCaption)
+void CheckGroup_SetCaption(TCheckGroup AObj, CChar char* AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetCaption)
+    MySyscall(pCheckGroup_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetClientHeight)
+int32_t CheckGroup_GetClientHeight(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetClientHeight)
+    return (int32_t)MySyscall(pCheckGroup_GetClientHeight, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetClientHeight)
+void CheckGroup_SetClientHeight(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetClientHeight)
+    MySyscall(pCheckGroup_SetClientHeight, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetClientWidth)
+int32_t CheckGroup_GetClientWidth(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetClientWidth)
+    return (int32_t)MySyscall(pCheckGroup_GetClientWidth, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetClientWidth)
+void CheckGroup_SetClientWidth(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetClientWidth)
+    MySyscall(pCheckGroup_SetClientWidth, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetColor)
+TColor CheckGroup_GetColor(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetColor)
+    return (TColor)MySyscall(pCheckGroup_GetColor, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetColor)
+void CheckGroup_SetColor(TCheckGroup AObj, TColor AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetColor)
+    MySyscall(pCheckGroup_SetColor, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetColumnLayout)
+TColumnLayout CheckGroup_GetColumnLayout(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetColumnLayout)
+    return (TColumnLayout)MySyscall(pCheckGroup_GetColumnLayout, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetColumnLayout)
+void CheckGroup_SetColumnLayout(TCheckGroup AObj, TColumnLayout AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetColumnLayout)
+    MySyscall(pCheckGroup_SetColumnLayout, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetColumns)
+int32_t CheckGroup_GetColumns(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetColumns)
+    return (int32_t)MySyscall(pCheckGroup_GetColumns, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetColumns)
+void CheckGroup_SetColumns(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetColumns)
+    MySyscall(pCheckGroup_SetColumns, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetConstraints)
+TSizeConstraints CheckGroup_GetConstraints(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetConstraints)
+    return (TSizeConstraints)MySyscall(pCheckGroup_GetConstraints, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetConstraints)
+void CheckGroup_SetConstraints(TCheckGroup AObj, TSizeConstraints AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetConstraints)
+    MySyscall(pCheckGroup_SetConstraints, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetDoubleBuffered)
+BOOL CheckGroup_GetDoubleBuffered(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetDoubleBuffered)
+    return (BOOL)MySyscall(pCheckGroup_GetDoubleBuffered, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetDoubleBuffered)
+void CheckGroup_SetDoubleBuffered(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetDoubleBuffered)
+    MySyscall(pCheckGroup_SetDoubleBuffered, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetDragCursor)
+TCursor CheckGroup_GetDragCursor(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetDragCursor)
+    return (TCursor)MySyscall(pCheckGroup_GetDragCursor, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetDragCursor)
+void CheckGroup_SetDragCursor(TCheckGroup AObj, TCursor AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetDragCursor)
+    MySyscall(pCheckGroup_SetDragCursor, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetDragMode)
+TDragMode CheckGroup_GetDragMode(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetDragMode)
+    return (TDragMode)MySyscall(pCheckGroup_GetDragMode, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetDragMode)
+void CheckGroup_SetDragMode(TCheckGroup AObj, TDragMode AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetDragMode)
+    MySyscall(pCheckGroup_SetDragMode, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetEnabled)
+BOOL CheckGroup_GetEnabled(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetEnabled)
+    return (BOOL)MySyscall(pCheckGroup_GetEnabled, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetEnabled)
+void CheckGroup_SetEnabled(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetEnabled)
+    MySyscall(pCheckGroup_SetEnabled, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetFont)
+TFont CheckGroup_GetFont(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetFont)
+    return (TFont)MySyscall(pCheckGroup_GetFont, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetFont)
+void CheckGroup_SetFont(TCheckGroup AObj, TFont AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetFont)
+    MySyscall(pCheckGroup_SetFont, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetItems)
+TStrings CheckGroup_GetItems(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetItems)
+    return (TStrings)MySyscall(pCheckGroup_GetItems, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetItems)
+void CheckGroup_SetItems(TCheckGroup AObj, TStrings AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetItems)
+    MySyscall(pCheckGroup_SetItems, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnClick)
+void CheckGroup_SetOnClick(TCheckGroup AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnClick)
+    MySyscall(pCheckGroup_SetOnClick, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnDblClick)
+void CheckGroup_SetOnDblClick(TCheckGroup AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnDblClick)
+    MySyscall(pCheckGroup_SetOnDblClick, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnDragDrop)
+void CheckGroup_SetOnDragDrop(TCheckGroup AObj, TDragDropEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnDragDrop)
+    MySyscall(pCheckGroup_SetOnDragDrop, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnDragOver)
+void CheckGroup_SetOnDragOver(TCheckGroup AObj, TDragOverEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnDragOver)
+    MySyscall(pCheckGroup_SetOnDragOver, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnEndDrag)
+void CheckGroup_SetOnEndDrag(TCheckGroup AObj, TEndDragEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnEndDrag)
+    MySyscall(pCheckGroup_SetOnEndDrag, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnEnter)
+void CheckGroup_SetOnEnter(TCheckGroup AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnEnter)
+    MySyscall(pCheckGroup_SetOnEnter, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnExit)
+void CheckGroup_SetOnExit(TCheckGroup AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnExit)
+    MySyscall(pCheckGroup_SetOnExit, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnItemClick)
+void CheckGroup_SetOnItemClick(TCheckGroup AObj, TCheckGroupClicked AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnItemClick)
+    MySyscall(pCheckGroup_SetOnItemClick, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnKeyDown)
+void CheckGroup_SetOnKeyDown(TCheckGroup AObj, TKeyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnKeyDown)
+    MySyscall(pCheckGroup_SetOnKeyDown, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnKeyPress)
+void CheckGroup_SetOnKeyPress(TCheckGroup AObj, TKeyPressEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnKeyPress)
+    MySyscall(pCheckGroup_SetOnKeyPress, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnKeyUp)
+void CheckGroup_SetOnKeyUp(TCheckGroup AObj, TKeyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnKeyUp)
+    MySyscall(pCheckGroup_SetOnKeyUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseDown)
+void CheckGroup_SetOnMouseDown(TCheckGroup AObj, TMouseEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseDown)
+    MySyscall(pCheckGroup_SetOnMouseDown, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseEnter)
+void CheckGroup_SetOnMouseEnter(TCheckGroup AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseEnter)
+    MySyscall(pCheckGroup_SetOnMouseEnter, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseLeave)
+void CheckGroup_SetOnMouseLeave(TCheckGroup AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseLeave)
+    MySyscall(pCheckGroup_SetOnMouseLeave, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseMove)
+void CheckGroup_SetOnMouseMove(TCheckGroup AObj, TMouseMoveEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseMove)
+    MySyscall(pCheckGroup_SetOnMouseMove, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseUp)
+void CheckGroup_SetOnMouseUp(TCheckGroup AObj, TMouseEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseUp)
+    MySyscall(pCheckGroup_SetOnMouseUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseWheel)
+void CheckGroup_SetOnMouseWheel(TCheckGroup AObj, TMouseWheelEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseWheel)
+    MySyscall(pCheckGroup_SetOnMouseWheel, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseWheelDown)
+void CheckGroup_SetOnMouseWheelDown(TCheckGroup AObj, TMouseWheelUpDownEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseWheelDown)
+    MySyscall(pCheckGroup_SetOnMouseWheelDown, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnMouseWheelUp)
+void CheckGroup_SetOnMouseWheelUp(TCheckGroup AObj, TMouseWheelUpDownEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnMouseWheelUp)
+    MySyscall(pCheckGroup_SetOnMouseWheelUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetOnResize)
+void CheckGroup_SetOnResize(TCheckGroup AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(CheckGroup_SetOnResize)
+    MySyscall(pCheckGroup_SetOnResize, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetParentFont)
+BOOL CheckGroup_GetParentFont(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetParentFont)
+    return (BOOL)MySyscall(pCheckGroup_GetParentFont, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetParentFont)
+void CheckGroup_SetParentFont(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetParentFont)
+    MySyscall(pCheckGroup_SetParentFont, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetParentColor)
+BOOL CheckGroup_GetParentColor(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetParentColor)
+    return (BOOL)MySyscall(pCheckGroup_GetParentColor, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetParentColor)
+void CheckGroup_SetParentColor(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetParentColor)
+    MySyscall(pCheckGroup_SetParentColor, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetParentDoubleBuffered)
+BOOL CheckGroup_GetParentDoubleBuffered(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetParentDoubleBuffered)
+    return (BOOL)MySyscall(pCheckGroup_GetParentDoubleBuffered, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetParentDoubleBuffered)
+void CheckGroup_SetParentDoubleBuffered(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetParentDoubleBuffered)
+    MySyscall(pCheckGroup_SetParentDoubleBuffered, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetParentShowHint)
+BOOL CheckGroup_GetParentShowHint(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetParentShowHint)
+    return (BOOL)MySyscall(pCheckGroup_GetParentShowHint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetParentShowHint)
+void CheckGroup_SetParentShowHint(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetParentShowHint)
+    MySyscall(pCheckGroup_SetParentShowHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetPopupMenu)
+TPopupMenu CheckGroup_GetPopupMenu(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetPopupMenu)
+    return (TPopupMenu)MySyscall(pCheckGroup_GetPopupMenu, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetPopupMenu)
+void CheckGroup_SetPopupMenu(TCheckGroup AObj, TPopupMenu AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetPopupMenu)
+    MySyscall(pCheckGroup_SetPopupMenu, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetShowHint)
+BOOL CheckGroup_GetShowHint(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetShowHint)
+    return (BOOL)MySyscall(pCheckGroup_GetShowHint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetShowHint)
+void CheckGroup_SetShowHint(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetShowHint)
+    MySyscall(pCheckGroup_SetShowHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetTabOrder)
+TTabOrder CheckGroup_GetTabOrder(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetTabOrder)
+    return (TTabOrder)MySyscall(pCheckGroup_GetTabOrder, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetTabOrder)
+void CheckGroup_SetTabOrder(TCheckGroup AObj, TTabOrder AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetTabOrder)
+    MySyscall(pCheckGroup_SetTabOrder, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetTabStop)
+BOOL CheckGroup_GetTabStop(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetTabStop)
+    return (BOOL)MySyscall(pCheckGroup_GetTabStop, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetTabStop)
+void CheckGroup_SetTabStop(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetTabStop)
+    MySyscall(pCheckGroup_SetTabStop, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetVisible)
+BOOL CheckGroup_GetVisible(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetVisible)
+    return (BOOL)MySyscall(pCheckGroup_GetVisible, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetVisible)
+void CheckGroup_SetVisible(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetVisible)
+    MySyscall(pCheckGroup_SetVisible, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetDockClientCount)
+int32_t CheckGroup_GetDockClientCount(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetDockClientCount)
+    return (int32_t)MySyscall(pCheckGroup_GetDockClientCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetDockSite)
+BOOL CheckGroup_GetDockSite(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetDockSite)
+    return (BOOL)MySyscall(pCheckGroup_GetDockSite, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetDockSite)
+void CheckGroup_SetDockSite(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetDockSite)
+    MySyscall(pCheckGroup_SetDockSite, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetMouseInClient)
+BOOL CheckGroup_GetMouseInClient(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetMouseInClient)
+    return (BOOL)MySyscall(pCheckGroup_GetMouseInClient, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetVisibleDockClientCount)
+int32_t CheckGroup_GetVisibleDockClientCount(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetVisibleDockClientCount)
+    return (int32_t)MySyscall(pCheckGroup_GetVisibleDockClientCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetBrush)
+TBrush CheckGroup_GetBrush(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetBrush)
+    return (TBrush)MySyscall(pCheckGroup_GetBrush, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetControlCount)
+int32_t CheckGroup_GetControlCount(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetControlCount)
+    return (int32_t)MySyscall(pCheckGroup_GetControlCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetHandle)
+HWND CheckGroup_GetHandle(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetHandle)
+    return (HWND)MySyscall(pCheckGroup_GetHandle, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetParentWindow)
+HWND CheckGroup_GetParentWindow(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetParentWindow)
+    return (HWND)MySyscall(pCheckGroup_GetParentWindow, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetParentWindow)
+void CheckGroup_SetParentWindow(TCheckGroup AObj, HWND AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetParentWindow)
+    MySyscall(pCheckGroup_SetParentWindow, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetShowing)
+BOOL CheckGroup_GetShowing(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetShowing)
+    return (BOOL)MySyscall(pCheckGroup_GetShowing, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetUseDockManager)
+BOOL CheckGroup_GetUseDockManager(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetUseDockManager)
+    return (BOOL)MySyscall(pCheckGroup_GetUseDockManager, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetUseDockManager)
+void CheckGroup_SetUseDockManager(TCheckGroup AObj, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetUseDockManager)
+    MySyscall(pCheckGroup_SetUseDockManager, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAction)
+TAction CheckGroup_GetAction(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAction)
+    return (TAction)MySyscall(pCheckGroup_GetAction, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAction)
+void CheckGroup_SetAction(TCheckGroup AObj, TAction AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAction)
+    MySyscall(pCheckGroup_SetAction, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetBoundsRect)
+void CheckGroup_GetBoundsRect(TCheckGroup AObj, TRect* Result) {
+    GET_FUNC_ADDR(CheckGroup_GetBoundsRect)
+    MySyscall(pCheckGroup_GetBoundsRect, 2, AObj, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetBoundsRect)
+void CheckGroup_SetBoundsRect(TCheckGroup AObj, TRect* AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetBoundsRect)
+    MySyscall(pCheckGroup_SetBoundsRect, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetClientOrigin)
+void CheckGroup_GetClientOrigin(TCheckGroup AObj, TPoint* Result) {
+    GET_FUNC_ADDR(CheckGroup_GetClientOrigin)
+    MySyscall(pCheckGroup_GetClientOrigin, 2, AObj, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetClientRect)
+void CheckGroup_GetClientRect(TCheckGroup AObj, TRect* Result) {
+    GET_FUNC_ADDR(CheckGroup_GetClientRect)
+    MySyscall(pCheckGroup_GetClientRect, 2, AObj, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetControlState)
+TControlState CheckGroup_GetControlState(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetControlState)
+    return (TControlState)MySyscall(pCheckGroup_GetControlState, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetControlState)
+void CheckGroup_SetControlState(TCheckGroup AObj, TControlState AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetControlState)
+    MySyscall(pCheckGroup_SetControlState, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetControlStyle)
+TControlStyle CheckGroup_GetControlStyle(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetControlStyle)
+    return (TControlStyle)MySyscall(pCheckGroup_GetControlStyle, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetControlStyle)
+void CheckGroup_SetControlStyle(TCheckGroup AObj, TControlStyle AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetControlStyle)
+    MySyscall(pCheckGroup_SetControlStyle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetFloating)
+BOOL CheckGroup_GetFloating(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetFloating)
+    return (BOOL)MySyscall(pCheckGroup_GetFloating, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetParent)
+TWinControl CheckGroup_GetParent(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetParent)
+    return (TWinControl)MySyscall(pCheckGroup_GetParent, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetParent)
+void CheckGroup_SetParent(TCheckGroup AObj, TWinControl AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetParent)
+    MySyscall(pCheckGroup_SetParent, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetLeft)
+int32_t CheckGroup_GetLeft(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetLeft)
+    return (int32_t)MySyscall(pCheckGroup_GetLeft, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetLeft)
+void CheckGroup_SetLeft(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetLeft)
+    MySyscall(pCheckGroup_SetLeft, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetTop)
+int32_t CheckGroup_GetTop(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetTop)
+    return (int32_t)MySyscall(pCheckGroup_GetTop, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetTop)
+void CheckGroup_SetTop(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetTop)
+    MySyscall(pCheckGroup_SetTop, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetWidth)
+int32_t CheckGroup_GetWidth(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetWidth)
+    return (int32_t)MySyscall(pCheckGroup_GetWidth, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetWidth)
+void CheckGroup_SetWidth(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetWidth)
+    MySyscall(pCheckGroup_SetWidth, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetHeight)
+int32_t CheckGroup_GetHeight(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetHeight)
+    return (int32_t)MySyscall(pCheckGroup_GetHeight, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetHeight)
+void CheckGroup_SetHeight(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetHeight)
+    MySyscall(pCheckGroup_SetHeight, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetCursor)
+TCursor CheckGroup_GetCursor(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetCursor)
+    return (TCursor)MySyscall(pCheckGroup_GetCursor, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetCursor)
+void CheckGroup_SetCursor(TCheckGroup AObj, TCursor AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetCursor)
+    MySyscall(pCheckGroup_SetCursor, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetHint)
+char* CheckGroup_GetHint(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetHint)
+    return (char*)MySyscall(pCheckGroup_GetHint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetHint)
+void CheckGroup_SetHint(TCheckGroup AObj, CChar char* AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetHint)
+    MySyscall(pCheckGroup_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetComponentCount)
+int32_t CheckGroup_GetComponentCount(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetComponentCount)
+    return (int32_t)MySyscall(pCheckGroup_GetComponentCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetComponentIndex)
+int32_t CheckGroup_GetComponentIndex(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetComponentIndex)
+    return (int32_t)MySyscall(pCheckGroup_GetComponentIndex, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetComponentIndex)
+void CheckGroup_SetComponentIndex(TCheckGroup AObj, int32_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetComponentIndex)
+    MySyscall(pCheckGroup_SetComponentIndex, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetOwner)
+TComponent CheckGroup_GetOwner(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetOwner)
+    return (TComponent)MySyscall(pCheckGroup_GetOwner, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetName)
+char* CheckGroup_GetName(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetName)
+    return (char*)MySyscall(pCheckGroup_GetName, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetName)
+void CheckGroup_SetName(TCheckGroup AObj, CChar char* AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetName)
+    MySyscall(pCheckGroup_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetTag)
+intptr_t CheckGroup_GetTag(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetTag)
+    return (intptr_t)MySyscall(pCheckGroup_GetTag, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetTag)
+void CheckGroup_SetTag(TCheckGroup AObj, intptr_t AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetTag)
+    MySyscall(pCheckGroup_SetTag, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAnchorSideLeft)
+TAnchorSide CheckGroup_GetAnchorSideLeft(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAnchorSideLeft)
+    return (TAnchorSide)MySyscall(pCheckGroup_GetAnchorSideLeft, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAnchorSideLeft)
+void CheckGroup_SetAnchorSideLeft(TCheckGroup AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAnchorSideLeft)
+    MySyscall(pCheckGroup_SetAnchorSideLeft, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAnchorSideTop)
+TAnchorSide CheckGroup_GetAnchorSideTop(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAnchorSideTop)
+    return (TAnchorSide)MySyscall(pCheckGroup_GetAnchorSideTop, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAnchorSideTop)
+void CheckGroup_SetAnchorSideTop(TCheckGroup AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAnchorSideTop)
+    MySyscall(pCheckGroup_SetAnchorSideTop, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAnchorSideRight)
+TAnchorSide CheckGroup_GetAnchorSideRight(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAnchorSideRight)
+    return (TAnchorSide)MySyscall(pCheckGroup_GetAnchorSideRight, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAnchorSideRight)
+void CheckGroup_SetAnchorSideRight(TCheckGroup AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAnchorSideRight)
+    MySyscall(pCheckGroup_SetAnchorSideRight, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAnchorSideBottom)
+TAnchorSide CheckGroup_GetAnchorSideBottom(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetAnchorSideBottom)
+    return (TAnchorSide)MySyscall(pCheckGroup_GetAnchorSideBottom, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetAnchorSideBottom)
+void CheckGroup_SetAnchorSideBottom(TCheckGroup AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetAnchorSideBottom)
+    MySyscall(pCheckGroup_SetAnchorSideBottom, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetChildSizing)
+TControlChildSizing CheckGroup_GetChildSizing(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetChildSizing)
+    return (TControlChildSizing)MySyscall(pCheckGroup_GetChildSizing, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetChildSizing)
+void CheckGroup_SetChildSizing(TCheckGroup AObj, TControlChildSizing AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetChildSizing)
+    MySyscall(pCheckGroup_SetChildSizing, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetBorderSpacing)
+TControlBorderSpacing CheckGroup_GetBorderSpacing(TCheckGroup AObj) {
+    GET_FUNC_ADDR(CheckGroup_GetBorderSpacing)
+    return (TControlBorderSpacing)MySyscall(pCheckGroup_GetBorderSpacing, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetBorderSpacing)
+void CheckGroup_SetBorderSpacing(TCheckGroup AObj, TControlBorderSpacing AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetBorderSpacing)
+    MySyscall(pCheckGroup_SetBorderSpacing, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetChecked)
+BOOL CheckGroup_GetChecked(TCheckGroup AObj, int32_t Index) {
+    GET_FUNC_ADDR(CheckGroup_GetChecked)
+    return (BOOL)MySyscall(pCheckGroup_GetChecked, 2, AObj, Index ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetChecked)
+void CheckGroup_SetChecked(TCheckGroup AObj, int32_t Index, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetChecked)
+    MySyscall(pCheckGroup_SetChecked, 3, AObj, Index, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetCheckEnabled)
+BOOL CheckGroup_GetCheckEnabled(TCheckGroup AObj, int32_t Index) {
+    GET_FUNC_ADDR(CheckGroup_GetCheckEnabled)
+    return (BOOL)MySyscall(pCheckGroup_GetCheckEnabled, 2, AObj, Index ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_SetCheckEnabled)
+void CheckGroup_SetCheckEnabled(TCheckGroup AObj, int32_t Index, BOOL AValue) {
+    GET_FUNC_ADDR(CheckGroup_SetCheckEnabled)
+    MySyscall(pCheckGroup_SetCheckEnabled, 3, AObj, Index, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetDockClients)
+TControl CheckGroup_GetDockClients(TCheckGroup AObj, int32_t Index) {
+    GET_FUNC_ADDR(CheckGroup_GetDockClients)
+    return (TControl)MySyscall(pCheckGroup_GetDockClients, 2, AObj, Index ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetControls)
+TControl CheckGroup_GetControls(TCheckGroup AObj, int32_t Index) {
+    GET_FUNC_ADDR(CheckGroup_GetControls)
+    return (TControl)MySyscall(pCheckGroup_GetControls, 2, AObj, Index ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetComponents)
+TComponent CheckGroup_GetComponents(TCheckGroup AObj, int32_t AIndex) {
+    GET_FUNC_ADDR(CheckGroup_GetComponents)
+    return (TComponent)MySyscall(pCheckGroup_GetComponents, 2, AObj, AIndex ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_GetAnchorSide)
+TAnchorSide CheckGroup_GetAnchorSide(TCheckGroup AObj, TAnchorKind AKind) {
+    GET_FUNC_ADDR(CheckGroup_GetAnchorSide)
+    return (TAnchorSide)MySyscall(pCheckGroup_GetAnchorSide, 2, AObj, AKind ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(CheckGroup_StaticClassType)
+TClass CheckGroup_StaticClassType() {
+    GET_FUNC_ADDR(CheckGroup_StaticClassType)
+    return (TClass)MySyscall(pCheckGroup_StaticClassType, 0 ,0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+
+// MyLCL_ToggleBox.inc
+DEFINE_FUNC_PTR(ToggleBox_Create)
+TToggleBox ToggleBox_Create(TComponent AOwner) {
+    GET_FUNC_ADDR(ToggleBox_Create)
+    return (TToggleBox)MySyscall(pToggleBox_Create, 1, AOwner ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Free)
+void ToggleBox_Free(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Free)
+    MySyscall(pToggleBox_Free, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_CanFocus)
+BOOL ToggleBox_CanFocus(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_CanFocus)
+    return (BOOL)MySyscall(pToggleBox_CanFocus, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ContainsControl)
+BOOL ToggleBox_ContainsControl(TToggleBox AObj, TControl Control) {
+    GET_FUNC_ADDR(ToggleBox_ContainsControl)
+    return (BOOL)MySyscall(pToggleBox_ContainsControl, 2, AObj, Control ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ControlAtPos)
+TControl ToggleBox_ControlAtPos(TToggleBox AObj, TPoint* Pos, BOOL AllowDisabled, BOOL AllowWinControls) {
+    GET_FUNC_ADDR(ToggleBox_ControlAtPos)
+    return (TControl)MySyscall(pToggleBox_ControlAtPos, 4, AObj, Pos, AllowDisabled, AllowWinControls ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_DisableAlign)
+void ToggleBox_DisableAlign(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_DisableAlign)
+    MySyscall(pToggleBox_DisableAlign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_EnableAlign)
+void ToggleBox_EnableAlign(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_EnableAlign)
+    MySyscall(pToggleBox_EnableAlign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_FindChildControl)
+TControl ToggleBox_FindChildControl(TToggleBox AObj, CChar char* ControlName) {
+    GET_FUNC_ADDR(ToggleBox_FindChildControl)
+    return (TControl)MySyscall(pToggleBox_FindChildControl, 2, AObj, ControlName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_FlipChildren)
+void ToggleBox_FlipChildren(TToggleBox AObj, BOOL AllLevels) {
+    GET_FUNC_ADDR(ToggleBox_FlipChildren)
+    MySyscall(pToggleBox_FlipChildren, 2, AObj, AllLevels ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Focused)
+BOOL ToggleBox_Focused(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Focused)
+    return (BOOL)MySyscall(pToggleBox_Focused, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_HandleAllocated)
+BOOL ToggleBox_HandleAllocated(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_HandleAllocated)
+    return (BOOL)MySyscall(pToggleBox_HandleAllocated, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_InsertControl)
+void ToggleBox_InsertControl(TToggleBox AObj, TControl AControl) {
+    GET_FUNC_ADDR(ToggleBox_InsertControl)
+    MySyscall(pToggleBox_InsertControl, 2, AObj, AControl ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Invalidate)
+void ToggleBox_Invalidate(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Invalidate)
+    MySyscall(pToggleBox_Invalidate, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_RemoveControl)
+void ToggleBox_RemoveControl(TToggleBox AObj, TControl AControl) {
+    GET_FUNC_ADDR(ToggleBox_RemoveControl)
+    MySyscall(pToggleBox_RemoveControl, 2, AObj, AControl ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Realign)
+void ToggleBox_Realign(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Realign)
+    MySyscall(pToggleBox_Realign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Repaint)
+void ToggleBox_Repaint(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Repaint)
+    MySyscall(pToggleBox_Repaint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ScaleBy)
+void ToggleBox_ScaleBy(TToggleBox AObj, int32_t M, int32_t D) {
+    GET_FUNC_ADDR(ToggleBox_ScaleBy)
+    MySyscall(pToggleBox_ScaleBy, 3, AObj, M, D ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ScrollBy)
+void ToggleBox_ScrollBy(TToggleBox AObj, int32_t DeltaX, int32_t DeltaY) {
+    GET_FUNC_ADDR(ToggleBox_ScrollBy)
+    MySyscall(pToggleBox_ScrollBy, 3, AObj, DeltaX, DeltaY ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetBounds)
+void ToggleBox_SetBounds(TToggleBox AObj, int32_t ALeft, int32_t ATop, int32_t AWidth, int32_t AHeight) {
+    GET_FUNC_ADDR(ToggleBox_SetBounds)
+    MySyscall(pToggleBox_SetBounds, 5, AObj, ALeft, ATop, AWidth, AHeight ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetFocus)
+void ToggleBox_SetFocus(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_SetFocus)
+    MySyscall(pToggleBox_SetFocus, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Update)
+void ToggleBox_Update(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Update)
+    MySyscall(pToggleBox_Update, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_BringToFront)
+void ToggleBox_BringToFront(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_BringToFront)
+    MySyscall(pToggleBox_BringToFront, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ClientToScreen)
+void ToggleBox_ClientToScreen(TToggleBox AObj, TPoint* Point, TPoint* Result) {
+    GET_FUNC_ADDR(ToggleBox_ClientToScreen)
+    MySyscall(pToggleBox_ClientToScreen, 3, AObj, Point, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ClientToParent)
+void ToggleBox_ClientToParent(TToggleBox AObj, TPoint* Point, TWinControl AParent, TPoint* Result) {
+    GET_FUNC_ADDR(ToggleBox_ClientToParent)
+    MySyscall(pToggleBox_ClientToParent, 4, AObj, Point, AParent, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Dragging)
+BOOL ToggleBox_Dragging(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Dragging)
+    return (BOOL)MySyscall(pToggleBox_Dragging, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_HasParent)
+BOOL ToggleBox_HasParent(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_HasParent)
+    return (BOOL)MySyscall(pToggleBox_HasParent, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Hide)
+void ToggleBox_Hide(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Hide)
+    MySyscall(pToggleBox_Hide, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Perform)
+intptr_t ToggleBox_Perform(TToggleBox AObj, uint32_t Msg, uintptr_t WParam, intptr_t LParam) {
+    GET_FUNC_ADDR(ToggleBox_Perform)
+    return (intptr_t)MySyscall(pToggleBox_Perform, 4, AObj, Msg, WParam, LParam ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Refresh)
+void ToggleBox_Refresh(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Refresh)
+    MySyscall(pToggleBox_Refresh, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ScreenToClient)
+void ToggleBox_ScreenToClient(TToggleBox AObj, TPoint* Point, TPoint* Result) {
+    GET_FUNC_ADDR(ToggleBox_ScreenToClient)
+    MySyscall(pToggleBox_ScreenToClient, 3, AObj, Point, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ParentToClient)
+void ToggleBox_ParentToClient(TToggleBox AObj, TPoint* Point, TWinControl AParent, TPoint* Result) {
+    GET_FUNC_ADDR(ToggleBox_ParentToClient)
+    MySyscall(pToggleBox_ParentToClient, 4, AObj, Point, AParent, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SendToBack)
+void ToggleBox_SendToBack(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_SendToBack)
+    MySyscall(pToggleBox_SendToBack, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Show)
+void ToggleBox_Show(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_Show)
+    MySyscall(pToggleBox_Show, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetTextBuf)
+int32_t ToggleBox_GetTextBuf(TToggleBox AObj, CChar char* Buffer, int32_t BufSize) {
+    GET_FUNC_ADDR(ToggleBox_GetTextBuf)
+    return (int32_t)MySyscall(pToggleBox_GetTextBuf, 3, AObj, Buffer, BufSize ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetTextLen)
+int32_t ToggleBox_GetTextLen(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetTextLen)
+    return (int32_t)MySyscall(pToggleBox_GetTextLen, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetTextBuf)
+void ToggleBox_SetTextBuf(TToggleBox AObj, CChar char* Buffer) {
+    GET_FUNC_ADDR(ToggleBox_SetTextBuf)
+    MySyscall(pToggleBox_SetTextBuf, 2, AObj, Buffer ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_FindComponent)
+TComponent ToggleBox_FindComponent(TToggleBox AObj, CChar char* AName) {
+    GET_FUNC_ADDR(ToggleBox_FindComponent)
+    return (TComponent)MySyscall(pToggleBox_FindComponent, 2, AObj, AName ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetNamePath)
+char* ToggleBox_GetNamePath(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetNamePath)
+    return (char*)MySyscall(pToggleBox_GetNamePath, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Assign)
+void ToggleBox_Assign(TToggleBox AObj, TObject Source) {
+    GET_FUNC_ADDR(ToggleBox_Assign)
+    MySyscall(pToggleBox_Assign, 2, AObj, Source ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ClassType)
+TClass ToggleBox_ClassType(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_ClassType)
+    return (TClass)MySyscall(pToggleBox_ClassType, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ClassName)
+char* ToggleBox_ClassName(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_ClassName)
+    return (char*)MySyscall(pToggleBox_ClassName, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_InstanceSize)
+int32_t ToggleBox_InstanceSize(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_InstanceSize)
+    return (int32_t)MySyscall(pToggleBox_InstanceSize, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_InheritsFrom)
+BOOL ToggleBox_InheritsFrom(TToggleBox AObj, TClass AClass) {
+    GET_FUNC_ADDR(ToggleBox_InheritsFrom)
+    return (BOOL)MySyscall(pToggleBox_InheritsFrom, 2, AObj, AClass ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_Equals)
+BOOL ToggleBox_Equals(TToggleBox AObj, TObject Obj) {
+    GET_FUNC_ADDR(ToggleBox_Equals)
+    return (BOOL)MySyscall(pToggleBox_Equals, 2, AObj, Obj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetHashCode)
+int32_t ToggleBox_GetHashCode(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetHashCode)
+    return (int32_t)MySyscall(pToggleBox_GetHashCode, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_ToString)
+char* ToggleBox_ToString(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_ToString)
+    return (char*)MySyscall(pToggleBox_ToString, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_AnchorToNeighbour)
+void ToggleBox_AnchorToNeighbour(TToggleBox AObj, TAnchorKind ASide, int32_t ASpace, TControl ASibling) {
+    GET_FUNC_ADDR(ToggleBox_AnchorToNeighbour)
+    MySyscall(pToggleBox_AnchorToNeighbour, 4, AObj, ASide, ASpace, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_AnchorParallel)
+void ToggleBox_AnchorParallel(TToggleBox AObj, TAnchorKind ASide, int32_t ASpace, TControl ASibling) {
+    GET_FUNC_ADDR(ToggleBox_AnchorParallel)
+    MySyscall(pToggleBox_AnchorParallel, 4, AObj, ASide, ASpace, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_AnchorHorizontalCenterTo)
+void ToggleBox_AnchorHorizontalCenterTo(TToggleBox AObj, TControl ASibling) {
+    GET_FUNC_ADDR(ToggleBox_AnchorHorizontalCenterTo)
+    MySyscall(pToggleBox_AnchorHorizontalCenterTo, 2, AObj, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_AnchorVerticalCenterTo)
+void ToggleBox_AnchorVerticalCenterTo(TToggleBox AObj, TControl ASibling) {
+    GET_FUNC_ADDR(ToggleBox_AnchorVerticalCenterTo)
+    MySyscall(pToggleBox_AnchorVerticalCenterTo, 2, AObj, ASibling ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_AnchorAsAlign)
+void ToggleBox_AnchorAsAlign(TToggleBox AObj, TAlign ATheAlign, int32_t ASpace) {
+    GET_FUNC_ADDR(ToggleBox_AnchorAsAlign)
+    MySyscall(pToggleBox_AnchorAsAlign, 3, AObj, ATheAlign, ASpace ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_AnchorClient)
+void ToggleBox_AnchorClient(TToggleBox AObj, int32_t ASpace) {
+    GET_FUNC_ADDR(ToggleBox_AnchorClient)
+    MySyscall(pToggleBox_AnchorClient, 2, AObj, ASpace ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAllowGrayed)
+BOOL ToggleBox_GetAllowGrayed(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAllowGrayed)
+    return (BOOL)MySyscall(pToggleBox_GetAllowGrayed, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAllowGrayed)
+void ToggleBox_SetAllowGrayed(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAllowGrayed)
+    MySyscall(pToggleBox_SetAllowGrayed, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAlign)
+TAlign ToggleBox_GetAlign(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAlign)
+    return (TAlign)MySyscall(pToggleBox_GetAlign, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAlign)
+void ToggleBox_SetAlign(TToggleBox AObj, TAlign AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAlign)
+    MySyscall(pToggleBox_SetAlign, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAnchors)
+TAnchors ToggleBox_GetAnchors(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAnchors)
+    return (TAnchors)MySyscall(pToggleBox_GetAnchors, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAnchors)
+void ToggleBox_SetAnchors(TToggleBox AObj, TAnchors AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAnchors)
+    MySyscall(pToggleBox_SetAnchors, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAutoSize)
+BOOL ToggleBox_GetAutoSize(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAutoSize)
+    return (BOOL)MySyscall(pToggleBox_GetAutoSize, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAutoSize)
+void ToggleBox_SetAutoSize(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAutoSize)
+    MySyscall(pToggleBox_SetAutoSize, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetCaption)
+char* ToggleBox_GetCaption(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetCaption)
+    return (char*)MySyscall(pToggleBox_GetCaption, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetCaption)
+void ToggleBox_SetCaption(TToggleBox AObj, CChar char* AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetCaption)
+    MySyscall(pToggleBox_SetCaption, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetChecked)
+BOOL ToggleBox_GetChecked(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetChecked)
+    return (BOOL)MySyscall(pToggleBox_GetChecked, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetChecked)
+void ToggleBox_SetChecked(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetChecked)
+    MySyscall(pToggleBox_SetChecked, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetColor)
+TColor ToggleBox_GetColor(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetColor)
+    return (TColor)MySyscall(pToggleBox_GetColor, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetColor)
+void ToggleBox_SetColor(TToggleBox AObj, TColor AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetColor)
+    MySyscall(pToggleBox_SetColor, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetConstraints)
+TSizeConstraints ToggleBox_GetConstraints(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetConstraints)
+    return (TSizeConstraints)MySyscall(pToggleBox_GetConstraints, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetConstraints)
+void ToggleBox_SetConstraints(TToggleBox AObj, TSizeConstraints AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetConstraints)
+    MySyscall(pToggleBox_SetConstraints, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetDoubleBuffered)
+BOOL ToggleBox_GetDoubleBuffered(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetDoubleBuffered)
+    return (BOOL)MySyscall(pToggleBox_GetDoubleBuffered, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetDoubleBuffered)
+void ToggleBox_SetDoubleBuffered(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetDoubleBuffered)
+    MySyscall(pToggleBox_SetDoubleBuffered, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetDragCursor)
+TCursor ToggleBox_GetDragCursor(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetDragCursor)
+    return (TCursor)MySyscall(pToggleBox_GetDragCursor, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetDragCursor)
+void ToggleBox_SetDragCursor(TToggleBox AObj, TCursor AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetDragCursor)
+    MySyscall(pToggleBox_SetDragCursor, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetDragKind)
+TDragKind ToggleBox_GetDragKind(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetDragKind)
+    return (TDragKind)MySyscall(pToggleBox_GetDragKind, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetDragKind)
+void ToggleBox_SetDragKind(TToggleBox AObj, TDragKind AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetDragKind)
+    MySyscall(pToggleBox_SetDragKind, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetDragMode)
+TDragMode ToggleBox_GetDragMode(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetDragMode)
+    return (TDragMode)MySyscall(pToggleBox_GetDragMode, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetDragMode)
+void ToggleBox_SetDragMode(TToggleBox AObj, TDragMode AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetDragMode)
+    MySyscall(pToggleBox_SetDragMode, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetEnabled)
+BOOL ToggleBox_GetEnabled(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetEnabled)
+    return (BOOL)MySyscall(pToggleBox_GetEnabled, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetEnabled)
+void ToggleBox_SetEnabled(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetEnabled)
+    MySyscall(pToggleBox_SetEnabled, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetFont)
+TFont ToggleBox_GetFont(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetFont)
+    return (TFont)MySyscall(pToggleBox_GetFont, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetFont)
+void ToggleBox_SetFont(TToggleBox AObj, TFont AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetFont)
+    MySyscall(pToggleBox_SetFont, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetHint)
+char* ToggleBox_GetHint(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetHint)
+    return (char*)MySyscall(pToggleBox_GetHint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetHint)
+void ToggleBox_SetHint(TToggleBox AObj, CChar char* AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetHint)
+    MySyscall(pToggleBox_SetHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnChange)
+void ToggleBox_SetOnChange(TToggleBox AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnChange)
+    MySyscall(pToggleBox_SetOnChange, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnClick)
+void ToggleBox_SetOnClick(TToggleBox AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnClick)
+    MySyscall(pToggleBox_SetOnClick, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnDragDrop)
+void ToggleBox_SetOnDragDrop(TToggleBox AObj, TDragDropEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnDragDrop)
+    MySyscall(pToggleBox_SetOnDragDrop, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnDragOver)
+void ToggleBox_SetOnDragOver(TToggleBox AObj, TDragOverEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnDragOver)
+    MySyscall(pToggleBox_SetOnDragOver, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnEndDrag)
+void ToggleBox_SetOnEndDrag(TToggleBox AObj, TEndDragEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnEndDrag)
+    MySyscall(pToggleBox_SetOnEndDrag, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnEnter)
+void ToggleBox_SetOnEnter(TToggleBox AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnEnter)
+    MySyscall(pToggleBox_SetOnEnter, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnExit)
+void ToggleBox_SetOnExit(TToggleBox AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnExit)
+    MySyscall(pToggleBox_SetOnExit, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseDown)
+void ToggleBox_SetOnMouseDown(TToggleBox AObj, TMouseEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseDown)
+    MySyscall(pToggleBox_SetOnMouseDown, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseEnter)
+void ToggleBox_SetOnMouseEnter(TToggleBox AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseEnter)
+    MySyscall(pToggleBox_SetOnMouseEnter, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseLeave)
+void ToggleBox_SetOnMouseLeave(TToggleBox AObj, TNotifyEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseLeave)
+    MySyscall(pToggleBox_SetOnMouseLeave, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseMove)
+void ToggleBox_SetOnMouseMove(TToggleBox AObj, TMouseMoveEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseMove)
+    MySyscall(pToggleBox_SetOnMouseMove, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseUp)
+void ToggleBox_SetOnMouseUp(TToggleBox AObj, TMouseEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseUp)
+    MySyscall(pToggleBox_SetOnMouseUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseWheel)
+void ToggleBox_SetOnMouseWheel(TToggleBox AObj, TMouseWheelEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseWheel)
+    MySyscall(pToggleBox_SetOnMouseWheel, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseWheelDown)
+void ToggleBox_SetOnMouseWheelDown(TToggleBox AObj, TMouseWheelUpDownEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseWheelDown)
+    MySyscall(pToggleBox_SetOnMouseWheelDown, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetOnMouseWheelUp)
+void ToggleBox_SetOnMouseWheelUp(TToggleBox AObj, TMouseWheelUpDownEvent AEventId) {
+    GET_FUNC_ADDR(ToggleBox_SetOnMouseWheelUp)
+    MySyscall(pToggleBox_SetOnMouseWheelUp, 2, AObj, AEventId ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetParentDoubleBuffered)
+BOOL ToggleBox_GetParentDoubleBuffered(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetParentDoubleBuffered)
+    return (BOOL)MySyscall(pToggleBox_GetParentDoubleBuffered, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetParentDoubleBuffered)
+void ToggleBox_SetParentDoubleBuffered(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetParentDoubleBuffered)
+    MySyscall(pToggleBox_SetParentDoubleBuffered, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetParentFont)
+BOOL ToggleBox_GetParentFont(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetParentFont)
+    return (BOOL)MySyscall(pToggleBox_GetParentFont, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetParentFont)
+void ToggleBox_SetParentFont(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetParentFont)
+    MySyscall(pToggleBox_SetParentFont, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetParentShowHint)
+BOOL ToggleBox_GetParentShowHint(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetParentShowHint)
+    return (BOOL)MySyscall(pToggleBox_GetParentShowHint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetParentShowHint)
+void ToggleBox_SetParentShowHint(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetParentShowHint)
+    MySyscall(pToggleBox_SetParentShowHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetPopupMenu)
+TPopupMenu ToggleBox_GetPopupMenu(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetPopupMenu)
+    return (TPopupMenu)MySyscall(pToggleBox_GetPopupMenu, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetPopupMenu)
+void ToggleBox_SetPopupMenu(TToggleBox AObj, TPopupMenu AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetPopupMenu)
+    MySyscall(pToggleBox_SetPopupMenu, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetShowHint)
+BOOL ToggleBox_GetShowHint(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetShowHint)
+    return (BOOL)MySyscall(pToggleBox_GetShowHint, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetShowHint)
+void ToggleBox_SetShowHint(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetShowHint)
+    MySyscall(pToggleBox_SetShowHint, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetState)
+TCheckBoxState ToggleBox_GetState(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetState)
+    return (TCheckBoxState)MySyscall(pToggleBox_GetState, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetState)
+void ToggleBox_SetState(TToggleBox AObj, TCheckBoxState AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetState)
+    MySyscall(pToggleBox_SetState, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetTabOrder)
+TTabOrder ToggleBox_GetTabOrder(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetTabOrder)
+    return (TTabOrder)MySyscall(pToggleBox_GetTabOrder, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetTabOrder)
+void ToggleBox_SetTabOrder(TToggleBox AObj, TTabOrder AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetTabOrder)
+    MySyscall(pToggleBox_SetTabOrder, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetTabStop)
+BOOL ToggleBox_GetTabStop(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetTabStop)
+    return (BOOL)MySyscall(pToggleBox_GetTabStop, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetTabStop)
+void ToggleBox_SetTabStop(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetTabStop)
+    MySyscall(pToggleBox_SetTabStop, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetVisible)
+BOOL ToggleBox_GetVisible(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetVisible)
+    return (BOOL)MySyscall(pToggleBox_GetVisible, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetVisible)
+void ToggleBox_SetVisible(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetVisible)
+    MySyscall(pToggleBox_SetVisible, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetDockClientCount)
+int32_t ToggleBox_GetDockClientCount(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetDockClientCount)
+    return (int32_t)MySyscall(pToggleBox_GetDockClientCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetDockSite)
+BOOL ToggleBox_GetDockSite(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetDockSite)
+    return (BOOL)MySyscall(pToggleBox_GetDockSite, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetDockSite)
+void ToggleBox_SetDockSite(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetDockSite)
+    MySyscall(pToggleBox_SetDockSite, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetMouseInClient)
+BOOL ToggleBox_GetMouseInClient(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetMouseInClient)
+    return (BOOL)MySyscall(pToggleBox_GetMouseInClient, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetVisibleDockClientCount)
+int32_t ToggleBox_GetVisibleDockClientCount(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetVisibleDockClientCount)
+    return (int32_t)MySyscall(pToggleBox_GetVisibleDockClientCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetBrush)
+TBrush ToggleBox_GetBrush(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetBrush)
+    return (TBrush)MySyscall(pToggleBox_GetBrush, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetControlCount)
+int32_t ToggleBox_GetControlCount(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetControlCount)
+    return (int32_t)MySyscall(pToggleBox_GetControlCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetHandle)
+HWND ToggleBox_GetHandle(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetHandle)
+    return (HWND)MySyscall(pToggleBox_GetHandle, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetParentWindow)
+HWND ToggleBox_GetParentWindow(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetParentWindow)
+    return (HWND)MySyscall(pToggleBox_GetParentWindow, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetParentWindow)
+void ToggleBox_SetParentWindow(TToggleBox AObj, HWND AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetParentWindow)
+    MySyscall(pToggleBox_SetParentWindow, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetShowing)
+BOOL ToggleBox_GetShowing(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetShowing)
+    return (BOOL)MySyscall(pToggleBox_GetShowing, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetUseDockManager)
+BOOL ToggleBox_GetUseDockManager(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetUseDockManager)
+    return (BOOL)MySyscall(pToggleBox_GetUseDockManager, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetUseDockManager)
+void ToggleBox_SetUseDockManager(TToggleBox AObj, BOOL AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetUseDockManager)
+    MySyscall(pToggleBox_SetUseDockManager, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAction)
+TAction ToggleBox_GetAction(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAction)
+    return (TAction)MySyscall(pToggleBox_GetAction, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAction)
+void ToggleBox_SetAction(TToggleBox AObj, TAction AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAction)
+    MySyscall(pToggleBox_SetAction, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetBiDiMode)
+TBiDiMode ToggleBox_GetBiDiMode(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetBiDiMode)
+    return (TBiDiMode)MySyscall(pToggleBox_GetBiDiMode, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetBiDiMode)
+void ToggleBox_SetBiDiMode(TToggleBox AObj, TBiDiMode AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetBiDiMode)
+    MySyscall(pToggleBox_SetBiDiMode, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetBoundsRect)
+void ToggleBox_GetBoundsRect(TToggleBox AObj, TRect* Result) {
+    GET_FUNC_ADDR(ToggleBox_GetBoundsRect)
+    MySyscall(pToggleBox_GetBoundsRect, 2, AObj, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetBoundsRect)
+void ToggleBox_SetBoundsRect(TToggleBox AObj, TRect* AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetBoundsRect)
+    MySyscall(pToggleBox_SetBoundsRect, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetClientHeight)
+int32_t ToggleBox_GetClientHeight(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetClientHeight)
+    return (int32_t)MySyscall(pToggleBox_GetClientHeight, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetClientHeight)
+void ToggleBox_SetClientHeight(TToggleBox AObj, int32_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetClientHeight)
+    MySyscall(pToggleBox_SetClientHeight, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetClientOrigin)
+void ToggleBox_GetClientOrigin(TToggleBox AObj, TPoint* Result) {
+    GET_FUNC_ADDR(ToggleBox_GetClientOrigin)
+    MySyscall(pToggleBox_GetClientOrigin, 2, AObj, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetClientRect)
+void ToggleBox_GetClientRect(TToggleBox AObj, TRect* Result) {
+    GET_FUNC_ADDR(ToggleBox_GetClientRect)
+    MySyscall(pToggleBox_GetClientRect, 2, AObj, Result ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetClientWidth)
+int32_t ToggleBox_GetClientWidth(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetClientWidth)
+    return (int32_t)MySyscall(pToggleBox_GetClientWidth, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetClientWidth)
+void ToggleBox_SetClientWidth(TToggleBox AObj, int32_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetClientWidth)
+    MySyscall(pToggleBox_SetClientWidth, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetControlState)
+TControlState ToggleBox_GetControlState(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetControlState)
+    return (TControlState)MySyscall(pToggleBox_GetControlState, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetControlState)
+void ToggleBox_SetControlState(TToggleBox AObj, TControlState AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetControlState)
+    MySyscall(pToggleBox_SetControlState, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetControlStyle)
+TControlStyle ToggleBox_GetControlStyle(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetControlStyle)
+    return (TControlStyle)MySyscall(pToggleBox_GetControlStyle, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetControlStyle)
+void ToggleBox_SetControlStyle(TToggleBox AObj, TControlStyle AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetControlStyle)
+    MySyscall(pToggleBox_SetControlStyle, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetFloating)
+BOOL ToggleBox_GetFloating(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetFloating)
+    return (BOOL)MySyscall(pToggleBox_GetFloating, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetParent)
+TWinControl ToggleBox_GetParent(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetParent)
+    return (TWinControl)MySyscall(pToggleBox_GetParent, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetParent)
+void ToggleBox_SetParent(TToggleBox AObj, TWinControl AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetParent)
+    MySyscall(pToggleBox_SetParent, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetLeft)
+int32_t ToggleBox_GetLeft(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetLeft)
+    return (int32_t)MySyscall(pToggleBox_GetLeft, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetLeft)
+void ToggleBox_SetLeft(TToggleBox AObj, int32_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetLeft)
+    MySyscall(pToggleBox_SetLeft, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetTop)
+int32_t ToggleBox_GetTop(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetTop)
+    return (int32_t)MySyscall(pToggleBox_GetTop, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetTop)
+void ToggleBox_SetTop(TToggleBox AObj, int32_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetTop)
+    MySyscall(pToggleBox_SetTop, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetWidth)
+int32_t ToggleBox_GetWidth(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetWidth)
+    return (int32_t)MySyscall(pToggleBox_GetWidth, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetWidth)
+void ToggleBox_SetWidth(TToggleBox AObj, int32_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetWidth)
+    MySyscall(pToggleBox_SetWidth, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetHeight)
+int32_t ToggleBox_GetHeight(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetHeight)
+    return (int32_t)MySyscall(pToggleBox_GetHeight, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetHeight)
+void ToggleBox_SetHeight(TToggleBox AObj, int32_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetHeight)
+    MySyscall(pToggleBox_SetHeight, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetCursor)
+TCursor ToggleBox_GetCursor(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetCursor)
+    return (TCursor)MySyscall(pToggleBox_GetCursor, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetCursor)
+void ToggleBox_SetCursor(TToggleBox AObj, TCursor AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetCursor)
+    MySyscall(pToggleBox_SetCursor, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetComponentCount)
+int32_t ToggleBox_GetComponentCount(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetComponentCount)
+    return (int32_t)MySyscall(pToggleBox_GetComponentCount, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetComponentIndex)
+int32_t ToggleBox_GetComponentIndex(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetComponentIndex)
+    return (int32_t)MySyscall(pToggleBox_GetComponentIndex, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetComponentIndex)
+void ToggleBox_SetComponentIndex(TToggleBox AObj, int32_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetComponentIndex)
+    MySyscall(pToggleBox_SetComponentIndex, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetOwner)
+TComponent ToggleBox_GetOwner(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetOwner)
+    return (TComponent)MySyscall(pToggleBox_GetOwner, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetName)
+char* ToggleBox_GetName(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetName)
+    return (char*)MySyscall(pToggleBox_GetName, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetName)
+void ToggleBox_SetName(TToggleBox AObj, CChar char* AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetName)
+    MySyscall(pToggleBox_SetName, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetTag)
+intptr_t ToggleBox_GetTag(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetTag)
+    return (intptr_t)MySyscall(pToggleBox_GetTag, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetTag)
+void ToggleBox_SetTag(TToggleBox AObj, intptr_t AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetTag)
+    MySyscall(pToggleBox_SetTag, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAnchorSideLeft)
+TAnchorSide ToggleBox_GetAnchorSideLeft(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAnchorSideLeft)
+    return (TAnchorSide)MySyscall(pToggleBox_GetAnchorSideLeft, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAnchorSideLeft)
+void ToggleBox_SetAnchorSideLeft(TToggleBox AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAnchorSideLeft)
+    MySyscall(pToggleBox_SetAnchorSideLeft, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAnchorSideTop)
+TAnchorSide ToggleBox_GetAnchorSideTop(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAnchorSideTop)
+    return (TAnchorSide)MySyscall(pToggleBox_GetAnchorSideTop, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAnchorSideTop)
+void ToggleBox_SetAnchorSideTop(TToggleBox AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAnchorSideTop)
+    MySyscall(pToggleBox_SetAnchorSideTop, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAnchorSideRight)
+TAnchorSide ToggleBox_GetAnchorSideRight(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAnchorSideRight)
+    return (TAnchorSide)MySyscall(pToggleBox_GetAnchorSideRight, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAnchorSideRight)
+void ToggleBox_SetAnchorSideRight(TToggleBox AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAnchorSideRight)
+    MySyscall(pToggleBox_SetAnchorSideRight, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAnchorSideBottom)
+TAnchorSide ToggleBox_GetAnchorSideBottom(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetAnchorSideBottom)
+    return (TAnchorSide)MySyscall(pToggleBox_GetAnchorSideBottom, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetAnchorSideBottom)
+void ToggleBox_SetAnchorSideBottom(TToggleBox AObj, TAnchorSide AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetAnchorSideBottom)
+    MySyscall(pToggleBox_SetAnchorSideBottom, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetChildSizing)
+TControlChildSizing ToggleBox_GetChildSizing(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetChildSizing)
+    return (TControlChildSizing)MySyscall(pToggleBox_GetChildSizing, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetChildSizing)
+void ToggleBox_SetChildSizing(TToggleBox AObj, TControlChildSizing AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetChildSizing)
+    MySyscall(pToggleBox_SetChildSizing, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetBorderSpacing)
+TControlBorderSpacing ToggleBox_GetBorderSpacing(TToggleBox AObj) {
+    GET_FUNC_ADDR(ToggleBox_GetBorderSpacing)
+    return (TControlBorderSpacing)MySyscall(pToggleBox_GetBorderSpacing, 1, AObj ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_SetBorderSpacing)
+void ToggleBox_SetBorderSpacing(TToggleBox AObj, TControlBorderSpacing AValue) {
+    GET_FUNC_ADDR(ToggleBox_SetBorderSpacing)
+    MySyscall(pToggleBox_SetBorderSpacing, 2, AObj, AValue ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetDockClients)
+TControl ToggleBox_GetDockClients(TToggleBox AObj, int32_t Index) {
+    GET_FUNC_ADDR(ToggleBox_GetDockClients)
+    return (TControl)MySyscall(pToggleBox_GetDockClients, 2, AObj, Index ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetControls)
+TControl ToggleBox_GetControls(TToggleBox AObj, int32_t Index) {
+    GET_FUNC_ADDR(ToggleBox_GetControls)
+    return (TControl)MySyscall(pToggleBox_GetControls, 2, AObj, Index ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetComponents)
+TComponent ToggleBox_GetComponents(TToggleBox AObj, int32_t AIndex) {
+    GET_FUNC_ADDR(ToggleBox_GetComponents)
+    return (TComponent)MySyscall(pToggleBox_GetComponents, 2, AObj, AIndex ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_GetAnchorSide)
+TAnchorSide ToggleBox_GetAnchorSide(TToggleBox AObj, TAnchorKind AKind) {
+    GET_FUNC_ADDR(ToggleBox_GetAnchorSide)
+    return (TAnchorSide)MySyscall(pToggleBox_GetAnchorSide, 2, AObj, AKind ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+DEFINE_FUNC_PTR(ToggleBox_StaticClassType)
+TClass ToggleBox_StaticClassType() {
+    GET_FUNC_ADDR(ToggleBox_StaticClassType)
+    return (TClass)MySyscall(pToggleBox_StaticClassType, 0 ,0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0);
+}
+
+
 
 // LazarusDef.inc
 DEFINE_FUNC_PTR(DLibStringEncoding)
@@ -81560,7 +83830,7 @@ void* LCLAPI doMessageCallbackProc(void* f, void* msg) {
 }
  
 // 线程同步过程
-TThreadProc threadSyncProc;
+static TThreadProc threadSyncProc;
 // 线程同步回调
 void* LCLAPI doThreadSyncCallbackProc() {
     if (threadSyncProc) {
@@ -81572,7 +83842,7 @@ void* LCLAPI doThreadSyncCallbackProc() {
 
 // 线程同步方法
 // 无参数，无返回值的一个函数
-void ThreadSync(TThreadProc fn) {
+static void ThreadSync(TThreadProc fn) {
     // 加锁
 #ifdef __GNUC__
     pthread_mutex_lock(&threadSyncMutex);
@@ -81593,7 +83863,7 @@ void ThreadSync(TThreadProc fn) {
 #define GET_CALLBACK(name) \
   (void*)&name
  
-void init_lib_lcl() {
+static void init_lib_lcl() {
 #ifdef __GNUC__
     pthread_mutex_init(&threadSyncMutex, NULL);
 #else
