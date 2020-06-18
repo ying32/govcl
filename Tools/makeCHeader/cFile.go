@@ -459,11 +459,11 @@ static MYSYSCALL pMySyscall;
     pMySyscall((void*)addr, (intptr_t)len, COV_PARAM(a1), COV_PARAM(a2), COV_PARAM(a3), COV_PARAM(a4), COV_PARAM(a5), COV_PARAM(a6), COV_PARAM(a7), COV_PARAM(a8), COV_PARAM(a9), COV_PARAM(a10), COV_PARAM(a11), COV_PARAM(a12))
 
 // 全局实例类定义
-static TApplication Application; // 应用程序
-static TScreen Screen;           // 屏幕
-static TMouse	Mouse;            // 鼠标
-static TClipboard	Clipboard;    // 剪切板
-static TPrinter Printer;         // 打印机
+TApplication Application; // 应用程序
+TScreen Screen;           // 屏幕
+TMouse	Mouse;            // 鼠标
+TClipboard	Clipboard;    // 剪切板
+TPrinter Printer;         // 打印机
 
 // 全局互斥锁
 #ifdef __GNUC__
@@ -488,7 +488,7 @@ static void* get_proc_addr(const char *name) {
 }
 
 // 加载库
-static BOOL load_liblcl(const char *name) {
+BOOL load_liblcl(const char *name) {
     if(libHandle > 0)
         return TRUE;
 #ifdef _WIN32
@@ -505,7 +505,7 @@ static BOOL load_liblcl(const char *name) {
 }
 
 // 关闭库
-static void close_liblcl() {
+void close_liblcl() {
     if(libHandle > 0) {
 	#ifdef _WIN32
 	    FreeLibrary((HMODULE)libHandle);
@@ -540,7 +540,7 @@ getParamOf(index, args)
 
 
 // 事件回调
-void* LCLAPI doEventCallbackProc(void* f, void* args, long argcount) {
+static void* LCLAPI doEventCallbackProc(void* f, void* args, long argcount) {
  
     switch (argcount) {
     case 0: Syscall12(f, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -587,7 +587,7 @@ void* LCLAPI doEventCallbackProc(void* f, void* args, long argcount) {
  
  
 // 消息回调
-void* LCLAPI doMessageCallbackProc(void* f, void* msg) {
+static void* LCLAPI doMessageCallbackProc(void* f, void* msg) {
    ((void(*)(void*))f)(msg);
     return NULL;
 }
@@ -595,7 +595,7 @@ void* LCLAPI doMessageCallbackProc(void* f, void* msg) {
 // 线程同步过程
 static TThreadProc threadSyncProc;
 // 线程同步回调
-void* LCLAPI doThreadSyncCallbackProc() {
+static void* LCLAPI doThreadSyncCallbackProc() {
     if (threadSyncProc) {
         ((TThreadProc)threadSyncProc)();
         threadSyncProc = NULL;
@@ -605,7 +605,7 @@ void* LCLAPI doThreadSyncCallbackProc() {
 
 // 线程同步方法
 // 无参数，无返回值的一个函数
-static void ThreadSync(TThreadProc fn) {
+void ThreadSync(TThreadProc fn) {
     // 加锁
 #ifdef __GNUC__
     pthread_mutex_lock(&threadSyncMutex);
@@ -657,7 +657,7 @@ static void init_lib_lcl() {
 #endif
 }
 
-void un_init_lib_lcl() {
+static void un_init_lib_lcl() {
 #ifdef __GNUC__
     pthread_mutex_destroy(&threadSyncMutex);
 #else
