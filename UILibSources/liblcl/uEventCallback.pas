@@ -293,6 +293,9 @@ type
     class procedure OnBeginEdit(Sender: TObject);
     class procedure OnEndEdit(Sender: TObject);
 
+    // checkgroup
+    class procedure OnItemClick(Sender: TObject; Index: integer);
+
 
     class procedure Add(AObj: TObject; AEvent: Pointer; AId: NativeUInt);
     class procedure AddClick(Sender: TObject; AId: NativeUInt);
@@ -890,6 +893,11 @@ end;
 class procedure TEventClass.OnEndEdit(Sender: TObject);
 begin
   SendEvent(Sender, @TEventClass.OnEndEdit, [Sender]);
+end;
+
+class procedure TEventClass.OnItemClick(Sender: TObject; Index: integer);
+begin
+  SendEvent(Sender, @TEventClass.OnItemClick, [Sender, Index]);
 end;
 
 

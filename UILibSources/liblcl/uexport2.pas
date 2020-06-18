@@ -36,6 +36,8 @@ uses
 {$I MyLCL_AnchorSide.inc}
 {$I MyLCL_ControlBorderSpacing.inc}
 {$I MyLCL_ControlChildSizing.inc}
+{$I MyLCL_CheckGroup.inc}
+{$I MyLCL_ToggleBox.inc}
 
 
 {$ifdef windows}

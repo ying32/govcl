@@ -336,3 +336,6 @@ type TTaskDlgTimerEvent func(sender IObject, tickCount uint32, reset *bool)
 
 //TAlignPositionEvent = procedure(Sender: TWinControl; Control: TControl; var NewLeft, NewTop, NewWidth, NewHeight: Integer; var AlignRect: TRect; AlignInfo: TAlignInfo) of object;
 type TAlignPositionEvent func(sender *TWinControl, control *TControl, newLeft, newTop, newWidth, newHeight *int32, alignRect *TRect, alignInfo TAlignInfo)
+
+//TCheckGroupClicked = procedure(Sender: TObject; Index: integer) of object;
+type TCheckGroupClicked func(sender IObject, index int32)

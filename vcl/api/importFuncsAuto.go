@@ -59735,3 +59735,1721 @@ func ControlChildSizing_StaticClassType() TClass {
     r, _, _:= controlChildSizing_StaticClassType.Call()
     return TClass(r)
 }
+
+//--------------------------- TCheckGroup ---------------------------
+
+func CheckGroup_Create(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_Create.Call(obj)
+    return ret
+}
+
+func CheckGroup_Free(obj uintptr) {
+    checkGroup_Free.Call(obj)
+}
+
+func CheckGroup_FlipChildren(obj uintptr, AllLevels bool)  {
+    checkGroup_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func CheckGroup_Rows(obj uintptr) int32 {
+    ret, _, _ := checkGroup_Rows.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_CanFocus(obj uintptr) bool {
+    ret, _, _ := checkGroup_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := checkGroup_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := checkGroup_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func CheckGroup_DisableAlign(obj uintptr)  {
+    checkGroup_DisableAlign.Call(obj)
+}
+
+func CheckGroup_EnableAlign(obj uintptr)  {
+    checkGroup_EnableAlign.Call(obj)
+}
+
+func CheckGroup_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := checkGroup_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func CheckGroup_Focused(obj uintptr) bool {
+    ret, _, _ := checkGroup_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := checkGroup_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_InsertControl(obj uintptr, AControl uintptr)  {
+    checkGroup_InsertControl.Call(obj, AControl )
+}
+
+func CheckGroup_Invalidate(obj uintptr)  {
+    checkGroup_Invalidate.Call(obj)
+}
+
+func CheckGroup_RemoveControl(obj uintptr, AControl uintptr)  {
+    checkGroup_RemoveControl.Call(obj, AControl )
+}
+
+func CheckGroup_Realign(obj uintptr)  {
+    checkGroup_Realign.Call(obj)
+}
+
+func CheckGroup_Repaint(obj uintptr)  {
+    checkGroup_Repaint.Call(obj)
+}
+
+func CheckGroup_ScaleBy(obj uintptr, M int32, D int32)  {
+    checkGroup_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func CheckGroup_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    checkGroup_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func CheckGroup_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    checkGroup_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func CheckGroup_SetFocus(obj uintptr)  {
+    checkGroup_SetFocus.Call(obj)
+}
+
+func CheckGroup_Update(obj uintptr)  {
+    checkGroup_Update.Call(obj)
+}
+
+func CheckGroup_BringToFront(obj uintptr)  {
+    checkGroup_BringToFront.Call(obj)
+}
+
+func CheckGroup_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    checkGroup_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckGroup_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    checkGroup_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckGroup_Dragging(obj uintptr) bool {
+    ret, _, _ := checkGroup_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_HasParent(obj uintptr) bool {
+    ret, _, _ := checkGroup_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_Hide(obj uintptr)  {
+    checkGroup_Hide.Call(obj)
+}
+
+func CheckGroup_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := checkGroup_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func CheckGroup_Refresh(obj uintptr)  {
+    checkGroup_Refresh.Call(obj)
+}
+
+func CheckGroup_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    checkGroup_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckGroup_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    checkGroup_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckGroup_SendToBack(obj uintptr)  {
+    checkGroup_SendToBack.Call(obj)
+}
+
+func CheckGroup_Show(obj uintptr)  {
+    checkGroup_Show.Call(obj)
+}
+
+func CheckGroup_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := checkGroup_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer, int(ret))
+    return int32(ret)
+}
+
+func CheckGroup_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetTextBuf(obj uintptr, Buffer string)  {
+    checkGroup_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
+func CheckGroup_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := checkGroup_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func CheckGroup_GetNamePath(obj uintptr) string {
+    ret, _, _ := checkGroup_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CheckGroup_Assign(obj uintptr, Source uintptr)  {
+    checkGroup_Assign.Call(obj, Source )
+}
+
+func CheckGroup_ClassType(obj uintptr) TClass {
+    ret, _, _ := checkGroup_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func CheckGroup_ClassName(obj uintptr) string {
+    ret, _, _ := checkGroup_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CheckGroup_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := checkGroup_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := checkGroup_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := checkGroup_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_ToString(obj uintptr) string {
+    ret, _, _ := checkGroup_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CheckGroup_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    checkGroup_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CheckGroup_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    checkGroup_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func CheckGroup_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    checkGroup_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func CheckGroup_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    checkGroup_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func CheckGroup_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    checkGroup_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func CheckGroup_AnchorClient(obj uintptr, ASpace int32)  {
+    checkGroup_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func CheckGroup_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := checkGroup_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func CheckGroup_SetAlign(obj uintptr, value TAlign) {
+   checkGroup_SetAlign.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := checkGroup_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func CheckGroup_SetAnchors(obj uintptr, value TAnchors) {
+   checkGroup_SetAnchors.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetAutoFill(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetAutoFill.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetAutoFill(obj uintptr, value bool) {
+   checkGroup_SetAutoFill.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetAutoSize(obj uintptr, value bool) {
+   checkGroup_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := checkGroup_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func CheckGroup_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   checkGroup_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetCaption(obj uintptr) string {
+    ret, _, _ := checkGroup_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CheckGroup_SetCaption(obj uintptr, value string) {
+   checkGroup_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func CheckGroup_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetClientHeight(obj uintptr, value int32) {
+   checkGroup_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetClientWidth(obj uintptr, value int32) {
+   checkGroup_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetColor(obj uintptr) TColor {
+    ret, _, _ := checkGroup_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func CheckGroup_SetColor(obj uintptr, value TColor) {
+   checkGroup_SetColor.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetColumnLayout(obj uintptr) TColumnLayout {
+    ret, _, _ := checkGroup_GetColumnLayout.Call(obj)
+    return TColumnLayout(ret)
+}
+
+func CheckGroup_SetColumnLayout(obj uintptr, value TColumnLayout) {
+   checkGroup_SetColumnLayout.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetColumns(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetColumns.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetColumns(obj uintptr, value int32) {
+   checkGroup_SetColumns.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetConstraints.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetConstraints(obj uintptr, value uintptr) {
+   checkGroup_SetConstraints.Call(obj, value)
+}
+
+func CheckGroup_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetDoubleBuffered(obj uintptr, value bool) {
+   checkGroup_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := checkGroup_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CheckGroup_SetDragCursor(obj uintptr, value TCursor) {
+   checkGroup_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := checkGroup_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func CheckGroup_SetDragMode(obj uintptr, value TDragMode) {
+   checkGroup_SetDragMode.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetEnabled(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetEnabled(obj uintptr, value bool) {
+   checkGroup_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetFont(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetFont.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetFont(obj uintptr, value uintptr) {
+   checkGroup_SetFont.Call(obj, value)
+}
+
+func CheckGroup_GetItems(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetItems.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetItems(obj uintptr, value uintptr) {
+   checkGroup_SetItems.Call(obj, value)
+}
+
+func CheckGroup_SetOnClick(obj uintptr, fn interface{}) {
+    checkGroup_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnDblClick(obj uintptr, fn interface{}) {
+    checkGroup_SetOnDblClick.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnDragDrop(obj uintptr, fn interface{}) {
+    checkGroup_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnDragOver(obj uintptr, fn interface{}) {
+    checkGroup_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnEndDrag(obj uintptr, fn interface{}) {
+    checkGroup_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnEnter(obj uintptr, fn interface{}) {
+    checkGroup_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnExit(obj uintptr, fn interface{}) {
+    checkGroup_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnItemClick(obj uintptr, fn interface{}) {
+    checkGroup_SetOnItemClick.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnKeyDown(obj uintptr, fn interface{}) {
+    checkGroup_SetOnKeyDown.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnKeyPress(obj uintptr, fn interface{}) {
+    checkGroup_SetOnKeyPress.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnKeyUp(obj uintptr, fn interface{}) {
+    checkGroup_SetOnKeyUp.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseDown(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseMove(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseUp(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseWheel(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseWheel.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    checkGroup_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_SetOnResize(obj uintptr, fn interface{}) {
+    checkGroup_SetOnResize.Call(obj, addEventToMap(fn))
+}
+
+func CheckGroup_GetParentFont(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetParentFont(obj uintptr, value bool) {
+   checkGroup_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetParentColor(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetParentColor.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetParentColor(obj uintptr, value bool) {
+   checkGroup_SetParentColor.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetParentDoubleBuffered(obj uintptr, value bool) {
+   checkGroup_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetParentShowHint(obj uintptr, value bool) {
+   checkGroup_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetPopupMenu(obj uintptr, value uintptr) {
+   checkGroup_SetPopupMenu.Call(obj, value)
+}
+
+func CheckGroup_GetShowHint(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetShowHint(obj uintptr, value bool) {
+   checkGroup_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := checkGroup_GetTabOrder.Call(obj)
+    return TTabOrder(ret)
+}
+
+func CheckGroup_SetTabOrder(obj uintptr, value TTabOrder) {
+   checkGroup_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetTabStop(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetTabStop(obj uintptr, value bool) {
+   checkGroup_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetVisible(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetVisible(obj uintptr, value bool) {
+   checkGroup_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_GetDockSite(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetDockSite(obj uintptr, value bool) {
+   checkGroup_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetBrush.Call(obj)
+    return ret
+}
+
+func CheckGroup_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_GetHandle(obj uintptr) HWND {
+    ret, _, _ := checkGroup_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func CheckGroup_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := checkGroup_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func CheckGroup_SetParentWindow(obj uintptr, value HWND) {
+   checkGroup_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetShowing(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetUseDockManager(obj uintptr, value bool) {
+   checkGroup_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func CheckGroup_GetAction(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetAction.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetAction(obj uintptr, value uintptr) {
+   checkGroup_SetAction.Call(obj, value)
+}
+
+func CheckGroup_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    checkGroup_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckGroup_SetBoundsRect(obj uintptr, value TRect) {
+   checkGroup_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func CheckGroup_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    checkGroup_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckGroup_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    checkGroup_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func CheckGroup_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := checkGroup_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func CheckGroup_SetControlState(obj uintptr, value TControlState) {
+   checkGroup_SetControlState.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := checkGroup_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func CheckGroup_SetControlStyle(obj uintptr, value TControlStyle) {
+   checkGroup_SetControlStyle.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetFloating(obj uintptr) bool {
+    ret, _, _ := checkGroup_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_GetParent(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetParent.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetParent(obj uintptr, value uintptr) {
+   checkGroup_SetParent.Call(obj, value)
+}
+
+func CheckGroup_GetLeft(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetLeft(obj uintptr, value int32) {
+   checkGroup_SetLeft.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetTop(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetTop(obj uintptr, value int32) {
+   checkGroup_SetTop.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetWidth(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetWidth(obj uintptr, value int32) {
+   checkGroup_SetWidth.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetHeight(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetHeight(obj uintptr, value int32) {
+   checkGroup_SetHeight.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := checkGroup_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func CheckGroup_SetCursor(obj uintptr, value TCursor) {
+   checkGroup_SetCursor.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetHint(obj uintptr) string {
+    ret, _, _ := checkGroup_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CheckGroup_SetHint(obj uintptr, value string) {
+   checkGroup_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func CheckGroup_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := checkGroup_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func CheckGroup_SetComponentIndex(obj uintptr, value int32) {
+   checkGroup_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetOwner.Call(obj)
+    return ret
+}
+
+func CheckGroup_GetName(obj uintptr) string {
+    ret, _, _ := checkGroup_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func CheckGroup_SetName(obj uintptr, value string) {
+   checkGroup_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func CheckGroup_GetTag(obj uintptr) int {
+    ret, _, _ := checkGroup_GetTag.Call(obj)
+    return int(ret)
+}
+
+func CheckGroup_SetTag(obj uintptr, value int) {
+   checkGroup_SetTag.Call(obj, uintptr(value))
+}
+
+func CheckGroup_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   checkGroup_SetAnchorSideLeft.Call(obj, value)
+}
+
+func CheckGroup_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetAnchorSideTop(obj uintptr, value uintptr) {
+   checkGroup_SetAnchorSideTop.Call(obj, value)
+}
+
+func CheckGroup_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetAnchorSideRight(obj uintptr, value uintptr) {
+   checkGroup_SetAnchorSideRight.Call(obj, value)
+}
+
+func CheckGroup_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   checkGroup_SetAnchorSideBottom.Call(obj, value)
+}
+
+func CheckGroup_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetChildSizing.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetChildSizing(obj uintptr, value uintptr) {
+   checkGroup_SetChildSizing.Call(obj, value)
+}
+
+func CheckGroup_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := checkGroup_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func CheckGroup_SetBorderSpacing(obj uintptr, value uintptr) {
+   checkGroup_SetBorderSpacing.Call(obj, value)
+}
+
+func CheckGroup_GetChecked(obj uintptr, Index int32) bool {
+    ret, _, _ := checkGroup_GetChecked.Call(obj, uintptr(Index))
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetChecked(obj uintptr, Index int32, value bool) {
+   checkGroup_SetChecked.Call(obj, uintptr(Index), GoBoolToDBool(value))
+}
+
+func CheckGroup_GetCheckEnabled(obj uintptr, Index int32) bool {
+    ret, _, _ := checkGroup_GetCheckEnabled.Call(obj, uintptr(Index))
+    return DBoolToGoBool(ret)
+}
+
+func CheckGroup_SetCheckEnabled(obj uintptr, Index int32, value bool) {
+   checkGroup_SetCheckEnabled.Call(obj, uintptr(Index), GoBoolToDBool(value))
+}
+
+func CheckGroup_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := checkGroup_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
+func CheckGroup_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := checkGroup_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func CheckGroup_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := checkGroup_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func CheckGroup_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := checkGroup_GetAnchorSide.Call(obj, uintptr(AKind))
+    return ret
+}
+
+func CheckGroup_StaticClassType() TClass {
+    r, _, _:= checkGroup_StaticClassType.Call()
+    return TClass(r)
+}
+
+//--------------------------- TToggleBox ---------------------------
+
+func ToggleBox_Create(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_Create.Call(obj)
+    return ret
+}
+
+func ToggleBox_Free(obj uintptr) {
+    toggleBox_Free.Call(obj)
+}
+
+func ToggleBox_CanFocus(obj uintptr) bool {
+    ret, _, _ := toggleBox_CanFocus.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_ContainsControl(obj uintptr, Control uintptr) bool {
+    ret, _, _ := toggleBox_ContainsControl.Call(obj, Control )
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_ControlAtPos(obj uintptr, Pos TPoint, AllowDisabled bool, AllowWinControls bool, AllLevels bool) uintptr {
+    ret, _, _ := toggleBox_ControlAtPos.Call(obj, uintptr(unsafe.Pointer(&Pos)), GoBoolToDBool(AllowDisabled) , GoBoolToDBool(AllowWinControls) , GoBoolToDBool(AllLevels) )
+    return ret
+}
+
+func ToggleBox_DisableAlign(obj uintptr)  {
+    toggleBox_DisableAlign.Call(obj)
+}
+
+func ToggleBox_EnableAlign(obj uintptr)  {
+    toggleBox_EnableAlign.Call(obj)
+}
+
+func ToggleBox_FindChildControl(obj uintptr, ControlName string) uintptr {
+    ret, _, _ := toggleBox_FindChildControl.Call(obj, GoStrToDStr(ControlName) )
+    return ret
+}
+
+func ToggleBox_FlipChildren(obj uintptr, AllLevels bool)  {
+    toggleBox_FlipChildren.Call(obj, GoBoolToDBool(AllLevels) )
+}
+
+func ToggleBox_Focused(obj uintptr) bool {
+    ret, _, _ := toggleBox_Focused.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_HandleAllocated(obj uintptr) bool {
+    ret, _, _ := toggleBox_HandleAllocated.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_InsertControl(obj uintptr, AControl uintptr)  {
+    toggleBox_InsertControl.Call(obj, AControl )
+}
+
+func ToggleBox_Invalidate(obj uintptr)  {
+    toggleBox_Invalidate.Call(obj)
+}
+
+func ToggleBox_RemoveControl(obj uintptr, AControl uintptr)  {
+    toggleBox_RemoveControl.Call(obj, AControl )
+}
+
+func ToggleBox_Realign(obj uintptr)  {
+    toggleBox_Realign.Call(obj)
+}
+
+func ToggleBox_Repaint(obj uintptr)  {
+    toggleBox_Repaint.Call(obj)
+}
+
+func ToggleBox_ScaleBy(obj uintptr, M int32, D int32)  {
+    toggleBox_ScaleBy.Call(obj, uintptr(M) , uintptr(D) )
+}
+
+func ToggleBox_ScrollBy(obj uintptr, DeltaX int32, DeltaY int32)  {
+    toggleBox_ScrollBy.Call(obj, uintptr(DeltaX) , uintptr(DeltaY) )
+}
+
+func ToggleBox_SetBounds(obj uintptr, ALeft int32, ATop int32, AWidth int32, AHeight int32)  {
+    toggleBox_SetBounds.Call(obj, uintptr(ALeft) , uintptr(ATop) , uintptr(AWidth) , uintptr(AHeight) )
+}
+
+func ToggleBox_SetFocus(obj uintptr)  {
+    toggleBox_SetFocus.Call(obj)
+}
+
+func ToggleBox_Update(obj uintptr)  {
+    toggleBox_Update.Call(obj)
+}
+
+func ToggleBox_BringToFront(obj uintptr)  {
+    toggleBox_BringToFront.Call(obj)
+}
+
+func ToggleBox_ClientToScreen(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    toggleBox_ClientToScreen.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToggleBox_ClientToParent(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    toggleBox_ClientToParent.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToggleBox_Dragging(obj uintptr) bool {
+    ret, _, _ := toggleBox_Dragging.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_HasParent(obj uintptr) bool {
+    ret, _, _ := toggleBox_HasParent.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_Hide(obj uintptr)  {
+    toggleBox_Hide.Call(obj)
+}
+
+func ToggleBox_Perform(obj uintptr, Msg uint32, WParam uintptr, LParam int) int {
+    ret, _, _ := toggleBox_Perform.Call(obj, uintptr(Msg) , WParam , uintptr(LParam) )
+    return int(ret)
+}
+
+func ToggleBox_Refresh(obj uintptr)  {
+    toggleBox_Refresh.Call(obj)
+}
+
+func ToggleBox_ScreenToClient(obj uintptr, Point TPoint) TPoint {
+    var ret TPoint
+    toggleBox_ScreenToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToggleBox_ParentToClient(obj uintptr, Point TPoint, AParent uintptr) TPoint {
+    var ret TPoint
+    toggleBox_ParentToClient.Call(obj, uintptr(unsafe.Pointer(&Point)), AParent , uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToggleBox_SendToBack(obj uintptr)  {
+    toggleBox_SendToBack.Call(obj)
+}
+
+func ToggleBox_Show(obj uintptr)  {
+    toggleBox_Show.Call(obj)
+}
+
+func ToggleBox_GetTextBuf(obj uintptr, Buffer *string, BufSize int32) int32 {
+    if Buffer == nil || BufSize == 0 {
+        return 0
+    }
+    strPtr := getBuff(BufSize)
+    ret, _, _ := toggleBox_GetTextBuf.Call(obj, getBuffPtr(strPtr), uintptr(BufSize) )
+    getTextBuf(strPtr, Buffer, int(ret))
+    return int32(ret)
+}
+
+func ToggleBox_GetTextLen(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetTextLen.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetTextBuf(obj uintptr, Buffer string)  {
+    toggleBox_SetTextBuf.Call(obj, GoStrToDStr(Buffer) )
+}
+
+func ToggleBox_FindComponent(obj uintptr, AName string) uintptr {
+    ret, _, _ := toggleBox_FindComponent.Call(obj, GoStrToDStr(AName) )
+    return ret
+}
+
+func ToggleBox_GetNamePath(obj uintptr) string {
+    ret, _, _ := toggleBox_GetNamePath.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ToggleBox_Assign(obj uintptr, Source uintptr)  {
+    toggleBox_Assign.Call(obj, Source )
+}
+
+func ToggleBox_ClassType(obj uintptr) TClass {
+    ret, _, _ := toggleBox_ClassType.Call(obj)
+    return TClass(ret)
+}
+
+func ToggleBox_ClassName(obj uintptr) string {
+    ret, _, _ := toggleBox_ClassName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ToggleBox_InstanceSize(obj uintptr) int32 {
+    ret, _, _ := toggleBox_InstanceSize.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_InheritsFrom(obj uintptr, AClass TClass) bool {
+    ret, _, _ := toggleBox_InheritsFrom.Call(obj, uintptr(AClass) )
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_Equals(obj uintptr, Obj uintptr) bool {
+    ret, _, _ := toggleBox_Equals.Call(obj, Obj )
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_GetHashCode(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetHashCode.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_ToString(obj uintptr) string {
+    ret, _, _ := toggleBox_ToString.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ToggleBox_AnchorToNeighbour(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    toggleBox_AnchorToNeighbour.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ToggleBox_AnchorParallel(obj uintptr, ASide TAnchorKind, ASpace int32, ASibling uintptr)  {
+    toggleBox_AnchorParallel.Call(obj, uintptr(ASide) , uintptr(ASpace) , ASibling )
+}
+
+func ToggleBox_AnchorHorizontalCenterTo(obj uintptr, ASibling uintptr)  {
+    toggleBox_AnchorHorizontalCenterTo.Call(obj, ASibling )
+}
+
+func ToggleBox_AnchorVerticalCenterTo(obj uintptr, ASibling uintptr)  {
+    toggleBox_AnchorVerticalCenterTo.Call(obj, ASibling )
+}
+
+func ToggleBox_AnchorAsAlign(obj uintptr, ATheAlign TAlign, ASpace int32)  {
+    toggleBox_AnchorAsAlign.Call(obj, uintptr(ATheAlign) , uintptr(ASpace) )
+}
+
+func ToggleBox_AnchorClient(obj uintptr, ASpace int32)  {
+    toggleBox_AnchorClient.Call(obj, uintptr(ASpace) )
+}
+
+func ToggleBox_GetAllowGrayed(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetAllowGrayed.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetAllowGrayed(obj uintptr, value bool) {
+   toggleBox_SetAllowGrayed.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetAlign(obj uintptr) TAlign {
+    ret, _, _ := toggleBox_GetAlign.Call(obj)
+    return TAlign(ret)
+}
+
+func ToggleBox_SetAlign(obj uintptr, value TAlign) {
+   toggleBox_SetAlign.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetAnchors(obj uintptr) TAnchors {
+    ret, _, _ := toggleBox_GetAnchors.Call(obj)
+    return TAnchors(ret)
+}
+
+func ToggleBox_SetAnchors(obj uintptr, value TAnchors) {
+   toggleBox_SetAnchors.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetAutoSize(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetAutoSize.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetAutoSize(obj uintptr, value bool) {
+   toggleBox_SetAutoSize.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetCaption(obj uintptr) string {
+    ret, _, _ := toggleBox_GetCaption.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ToggleBox_SetCaption(obj uintptr, value string) {
+   toggleBox_SetCaption.Call(obj, GoStrToDStr(value))
+}
+
+func ToggleBox_GetChecked(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetChecked.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetChecked(obj uintptr, value bool) {
+   toggleBox_SetChecked.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetColor(obj uintptr) TColor {
+    ret, _, _ := toggleBox_GetColor.Call(obj)
+    return TColor(ret)
+}
+
+func ToggleBox_SetColor(obj uintptr, value TColor) {
+   toggleBox_SetColor.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetConstraints(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetConstraints.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetConstraints(obj uintptr, value uintptr) {
+   toggleBox_SetConstraints.Call(obj, value)
+}
+
+func ToggleBox_GetDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetDoubleBuffered(obj uintptr, value bool) {
+   toggleBox_SetDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetDragCursor(obj uintptr) TCursor {
+    ret, _, _ := toggleBox_GetDragCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ToggleBox_SetDragCursor(obj uintptr, value TCursor) {
+   toggleBox_SetDragCursor.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetDragKind(obj uintptr) TDragKind {
+    ret, _, _ := toggleBox_GetDragKind.Call(obj)
+    return TDragKind(ret)
+}
+
+func ToggleBox_SetDragKind(obj uintptr, value TDragKind) {
+   toggleBox_SetDragKind.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetDragMode(obj uintptr) TDragMode {
+    ret, _, _ := toggleBox_GetDragMode.Call(obj)
+    return TDragMode(ret)
+}
+
+func ToggleBox_SetDragMode(obj uintptr, value TDragMode) {
+   toggleBox_SetDragMode.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetEnabled(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetEnabled.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetEnabled(obj uintptr, value bool) {
+   toggleBox_SetEnabled.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetFont(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetFont.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetFont(obj uintptr, value uintptr) {
+   toggleBox_SetFont.Call(obj, value)
+}
+
+func ToggleBox_GetHint(obj uintptr) string {
+    ret, _, _ := toggleBox_GetHint.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ToggleBox_SetHint(obj uintptr, value string) {
+   toggleBox_SetHint.Call(obj, GoStrToDStr(value))
+}
+
+func ToggleBox_SetOnChange(obj uintptr, fn interface{}) {
+    toggleBox_SetOnChange.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnClick(obj uintptr, fn interface{}) {
+    toggleBox_SetOnClick.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnDragDrop(obj uintptr, fn interface{}) {
+    toggleBox_SetOnDragDrop.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnDragOver(obj uintptr, fn interface{}) {
+    toggleBox_SetOnDragOver.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnEndDrag(obj uintptr, fn interface{}) {
+    toggleBox_SetOnEndDrag.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnEnter(obj uintptr, fn interface{}) {
+    toggleBox_SetOnEnter.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnExit(obj uintptr, fn interface{}) {
+    toggleBox_SetOnExit.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseDown(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseDown.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseEnter(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseEnter.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseLeave(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseLeave.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseMove(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseMove.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseUp(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseUp.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseWheel(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseWheel.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseWheelDown(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseWheelDown.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_SetOnMouseWheelUp(obj uintptr, fn interface{}) {
+    toggleBox_SetOnMouseWheelUp.Call(obj, addEventToMap(fn))
+}
+
+func ToggleBox_GetParentDoubleBuffered(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetParentDoubleBuffered.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetParentDoubleBuffered(obj uintptr, value bool) {
+   toggleBox_SetParentDoubleBuffered.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetParentFont(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetParentFont.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetParentFont(obj uintptr, value bool) {
+   toggleBox_SetParentFont.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetParentShowHint(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetParentShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetParentShowHint(obj uintptr, value bool) {
+   toggleBox_SetParentShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetPopupMenu(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetPopupMenu.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetPopupMenu(obj uintptr, value uintptr) {
+   toggleBox_SetPopupMenu.Call(obj, value)
+}
+
+func ToggleBox_GetShowHint(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetShowHint.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetShowHint(obj uintptr, value bool) {
+   toggleBox_SetShowHint.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetState(obj uintptr) TCheckBoxState {
+    ret, _, _ := toggleBox_GetState.Call(obj)
+    return TCheckBoxState(ret)
+}
+
+func ToggleBox_SetState(obj uintptr, value TCheckBoxState) {
+   toggleBox_SetState.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetTabOrder(obj uintptr) TTabOrder {
+    ret, _, _ := toggleBox_GetTabOrder.Call(obj)
+    return TTabOrder(ret)
+}
+
+func ToggleBox_SetTabOrder(obj uintptr, value TTabOrder) {
+   toggleBox_SetTabOrder.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetTabStop(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetTabStop.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetTabStop(obj uintptr, value bool) {
+   toggleBox_SetTabStop.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetVisible(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetVisible.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetVisible(obj uintptr, value bool) {
+   toggleBox_SetVisible.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetDockClientCount(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_GetDockSite(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetDockSite.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetDockSite(obj uintptr, value bool) {
+   toggleBox_SetDockSite.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetMouseInClient(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetMouseInClient.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_GetVisibleDockClientCount(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetVisibleDockClientCount.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_GetBrush(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetBrush.Call(obj)
+    return ret
+}
+
+func ToggleBox_GetControlCount(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetControlCount.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_GetHandle(obj uintptr) HWND {
+    ret, _, _ := toggleBox_GetHandle.Call(obj)
+    return HWND(ret)
+}
+
+func ToggleBox_GetParentWindow(obj uintptr) HWND {
+    ret, _, _ := toggleBox_GetParentWindow.Call(obj)
+    return HWND(ret)
+}
+
+func ToggleBox_SetParentWindow(obj uintptr, value HWND) {
+   toggleBox_SetParentWindow.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetShowing(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetShowing.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_GetUseDockManager(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetUseDockManager.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_SetUseDockManager(obj uintptr, value bool) {
+   toggleBox_SetUseDockManager.Call(obj, GoBoolToDBool(value))
+}
+
+func ToggleBox_GetAction(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetAction.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetAction(obj uintptr, value uintptr) {
+   toggleBox_SetAction.Call(obj, value)
+}
+
+func ToggleBox_GetBiDiMode(obj uintptr) TBiDiMode {
+    ret, _, _ := toggleBox_GetBiDiMode.Call(obj)
+    return TBiDiMode(ret)
+}
+
+func ToggleBox_SetBiDiMode(obj uintptr, value TBiDiMode) {
+   toggleBox_SetBiDiMode.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetBoundsRect(obj uintptr) TRect {
+    var ret TRect
+    toggleBox_GetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToggleBox_SetBoundsRect(obj uintptr, value TRect) {
+   toggleBox_SetBoundsRect.Call(obj, uintptr(unsafe.Pointer(&value)))
+}
+
+func ToggleBox_GetClientHeight(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetClientHeight.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetClientHeight(obj uintptr, value int32) {
+   toggleBox_SetClientHeight.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetClientOrigin(obj uintptr) TPoint {
+    var ret TPoint
+    toggleBox_GetClientOrigin.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToggleBox_GetClientRect(obj uintptr) TRect {
+    var ret TRect
+    toggleBox_GetClientRect.Call(obj, uintptr(unsafe.Pointer(&ret)))
+    return ret
+}
+
+func ToggleBox_GetClientWidth(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetClientWidth.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetClientWidth(obj uintptr, value int32) {
+   toggleBox_SetClientWidth.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetControlState(obj uintptr) TControlState {
+    ret, _, _ := toggleBox_GetControlState.Call(obj)
+    return TControlState(ret)
+}
+
+func ToggleBox_SetControlState(obj uintptr, value TControlState) {
+   toggleBox_SetControlState.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetControlStyle(obj uintptr) TControlStyle {
+    ret, _, _ := toggleBox_GetControlStyle.Call(obj)
+    return TControlStyle(ret)
+}
+
+func ToggleBox_SetControlStyle(obj uintptr, value TControlStyle) {
+   toggleBox_SetControlStyle.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetFloating(obj uintptr) bool {
+    ret, _, _ := toggleBox_GetFloating.Call(obj)
+    return DBoolToGoBool(ret)
+}
+
+func ToggleBox_GetParent(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetParent.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetParent(obj uintptr, value uintptr) {
+   toggleBox_SetParent.Call(obj, value)
+}
+
+func ToggleBox_GetLeft(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetLeft.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetLeft(obj uintptr, value int32) {
+   toggleBox_SetLeft.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetTop(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetTop.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetTop(obj uintptr, value int32) {
+   toggleBox_SetTop.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetWidth(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetWidth.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetWidth(obj uintptr, value int32) {
+   toggleBox_SetWidth.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetHeight(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetHeight.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetHeight(obj uintptr, value int32) {
+   toggleBox_SetHeight.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetCursor(obj uintptr) TCursor {
+    ret, _, _ := toggleBox_GetCursor.Call(obj)
+    return TCursor(ret)
+}
+
+func ToggleBox_SetCursor(obj uintptr, value TCursor) {
+   toggleBox_SetCursor.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetComponentCount(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetComponentCount.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_GetComponentIndex(obj uintptr) int32 {
+    ret, _, _ := toggleBox_GetComponentIndex.Call(obj)
+    return int32(ret)
+}
+
+func ToggleBox_SetComponentIndex(obj uintptr, value int32) {
+   toggleBox_SetComponentIndex.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetOwner(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetOwner.Call(obj)
+    return ret
+}
+
+func ToggleBox_GetName(obj uintptr) string {
+    ret, _, _ := toggleBox_GetName.Call(obj)
+    return DStrToGoStr(ret)
+}
+
+func ToggleBox_SetName(obj uintptr, value string) {
+   toggleBox_SetName.Call(obj, GoStrToDStr(value))
+}
+
+func ToggleBox_GetTag(obj uintptr) int {
+    ret, _, _ := toggleBox_GetTag.Call(obj)
+    return int(ret)
+}
+
+func ToggleBox_SetTag(obj uintptr, value int) {
+   toggleBox_SetTag.Call(obj, uintptr(value))
+}
+
+func ToggleBox_GetAnchorSideLeft(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetAnchorSideLeft.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetAnchorSideLeft(obj uintptr, value uintptr) {
+   toggleBox_SetAnchorSideLeft.Call(obj, value)
+}
+
+func ToggleBox_GetAnchorSideTop(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetAnchorSideTop.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetAnchorSideTop(obj uintptr, value uintptr) {
+   toggleBox_SetAnchorSideTop.Call(obj, value)
+}
+
+func ToggleBox_GetAnchorSideRight(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetAnchorSideRight.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetAnchorSideRight(obj uintptr, value uintptr) {
+   toggleBox_SetAnchorSideRight.Call(obj, value)
+}
+
+func ToggleBox_GetAnchorSideBottom(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetAnchorSideBottom.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetAnchorSideBottom(obj uintptr, value uintptr) {
+   toggleBox_SetAnchorSideBottom.Call(obj, value)
+}
+
+func ToggleBox_GetChildSizing(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetChildSizing.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetChildSizing(obj uintptr, value uintptr) {
+   toggleBox_SetChildSizing.Call(obj, value)
+}
+
+func ToggleBox_GetBorderSpacing(obj uintptr) uintptr {
+    ret, _, _ := toggleBox_GetBorderSpacing.Call(obj)
+    return ret
+}
+
+func ToggleBox_SetBorderSpacing(obj uintptr, value uintptr) {
+   toggleBox_SetBorderSpacing.Call(obj, value)
+}
+
+func ToggleBox_GetDockClients(obj uintptr, Index int32) uintptr {
+    ret, _, _ := toggleBox_GetDockClients.Call(obj, uintptr(Index))
+    return ret
+}
+
+func ToggleBox_GetControls(obj uintptr, Index int32) uintptr {
+    ret, _, _ := toggleBox_GetControls.Call(obj, uintptr(Index))
+    return ret
+}
+
+func ToggleBox_GetComponents(obj uintptr, AIndex int32) uintptr {
+    ret, _, _ := toggleBox_GetComponents.Call(obj, uintptr(AIndex))
+    return ret
+}
+
+func ToggleBox_GetAnchorSide(obj uintptr, AKind TAnchorKind) uintptr {
+    ret, _, _ := toggleBox_GetAnchorSide.Call(obj, uintptr(AKind))
+    return ret
+}
+
+func ToggleBox_StaticClassType() TClass {
+    r, _, _:= toggleBox_StaticClassType.Call()
+    return TClass(r)
+}

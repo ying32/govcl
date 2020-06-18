@@ -1218,3 +1218,21 @@ func (i TIs) ControlChildSizing() bool {
 //    return AsControlChildSizing(uintptr(a))
 //}
 
+
+func (i TIs) CheckGroup() bool {
+    return CheckGroup_InheritsFrom(uintptr(i), TCheckGroupClass())
+}
+
+//func (a TAs) CheckGroup() *TCheckGroup {
+//    return AsCheckGroup(uintptr(a))
+//}
+
+
+func (i TIs) ToggleBox() bool {
+    return ToggleBox_InheritsFrom(uintptr(i), TToggleBoxClass())
+}
+
+//func (a TAs) ToggleBox() *TToggleBox {
+//    return AsToggleBox(uintptr(a))
+//}
+

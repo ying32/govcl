@@ -2320,3 +2320,10 @@ const (
 	CclLeftToRightThenTopToBottom // if BiDiMode <> bdLeftToRight then it becomes RightToLeft
 	CclTopToBottomThenLeftToRight
 )
+
+type TColumnLayout int32
+
+const (
+	ClHorizontalThenVertical = iota + 0
+	ClVerticalThenHorizontal
+)

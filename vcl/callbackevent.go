@@ -806,6 +806,12 @@ func eventCallbackProc(f uintptr, args uintptr, argcount int) uintptr {
 				(*int32)(unsafe.Pointer(getVal(5))),
 				(*TRect)(unsafe.Pointer(getVal(6))),
 				*(*TAlignInfo)(unsafe.Pointer(getVal(7))))
+
+		// type TCheckGroupClicked func(sender IObject, index int32)
+		case TCheckGroupClicked:
+			v.(TCheckGroupClicked)(
+				AsObject(getVal(0)),
+				int32(getVal(1)))
 		default:
 		}
 	}
