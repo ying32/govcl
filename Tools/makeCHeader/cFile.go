@@ -419,7 +419,7 @@ TSet Include(TSet s, uint8_t val) {
 //    return (TSet)r;
 //}
 
-// Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+// Lazarus集合减法，val...中存储为位的索引，下标为0
 TSet Exclude(TSet s, uint8_t val) {
     return (TSet)(s & (~(1 << val)));
 }
@@ -435,7 +435,7 @@ TSet Exclude(TSet s, uint8_t val) {
 //    return (TSet)r;
 //}
 
-// Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+// Lazarus集合类型的判断，val表示位数，下标为0
 BOOL InSet(uint32_t s, uint8_t val) {
     if ((s&(1 << val)) != 0) {
         return TRUE;

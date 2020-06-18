@@ -242,7 +242,7 @@ func NewSet(opts ...uint8) TSet {
 	return s.Include(opts...)
 }
 
-// Include Delphi/Lazarus集合加法，val...中存储为位的索引，下标为0
+// 集合加法，val...中存储为位的索引，下标为0
 func (s TSet) Include(val ...uint8) TSet {
 	r := uint32(s)
 	for _, v := range val {
@@ -251,7 +251,7 @@ func (s TSet) Include(val ...uint8) TSet {
 	return TSet(r)
 }
 
-// Exclude Delphi/Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+// 集合减法，val...中存储为位的索引，下标为0
 func (s TSet) Exclude(val ...uint8) TSet {
 	r := uint32(s)
 	for _, v := range val {
@@ -260,7 +260,7 @@ func (s TSet) Exclude(val ...uint8) TSet {
 	return TSet(r)
 }
 
-// In Delphi/Lazarus集合类型的判断,类型，然后后面是第几位，下标为0
+// 集合类型的判断，val表示位数，下标为0
 func (s TSet) In(val uint32) bool {
 	if s&(1<<uint8(val)) != 0 {
 		return true

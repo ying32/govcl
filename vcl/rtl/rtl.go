@@ -45,19 +45,19 @@ func IsNil(val interface{}) bool {
 
 //----------------------------Delphi/Lazarus集合操作-------------------------------------------------------
 
-// Delphi集合加法，val...中存储为位的索引，下标为0
+// 集合加法，val...中存储为位的索引，下标为0
 // Deprecated: use value.Include.
 func Include(r uint32, val ...uint8) uint32 {
 	return uint32(types.TSet(r).Include(val...))
 }
 
-// Delphi集合减法，val...中存储为位的索引，下标为0
+// 集合减法，val...中存储为位的索引，下标为0
 // Deprecated: use value.Exclude.
 func Exclude(r uint32, val ...uint8) uint32 {
 	return uint32(types.TSet(r).Exclude(val...))
 }
 
-// Delphi集合类型的判断,类型，然后后面是第几位，下标为0
+// 集合类型的判断，val表示位数，下标为0
 // Deprecated: use value.In.
 func InSets(r uint32, s uint32) bool {
 	return types.TSet(r).In(s)
