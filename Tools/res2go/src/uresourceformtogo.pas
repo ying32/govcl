@@ -74,7 +74,7 @@ const
      先不管了，
   }
   // 特殊
-  CommonEventType: array[0..41] of TEventType = (
+  CommonEventType: array[0..42] of TEventType = (
     (Name: 'Create'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
     (Name: 'Destroy'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
     (Name: 'Show'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
@@ -128,7 +128,8 @@ const
 
     (Name: 'LinkClick'; ControlClassName: ''; ImportTypePkg: True; Params: 'sender vcl.IObject, link string, linktype types.TSysLinkType'),
     (Name: 'Find'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
-    (Name: 'Replace'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject')
+    (Name: 'Replace'; ControlClassName: ''; ImportTypePkg: False; Params: 'sender vcl.IObject'),
+    (Name: 'OnItemClick'; ControlClassName: 'TCheckGroup'; ImportTypePkg: False; Params: 'sender vcl.IObject, index int32')
     );
 
 {$I supportsComponents.inc}

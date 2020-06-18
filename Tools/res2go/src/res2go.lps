@@ -50,8 +50,9 @@
       <Unit2>
         <Filename Value="supportsComponents.inc"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="160" Y="128"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="111"/>
+        <CursorPos X="28" Y="140"/>
         <UsageCount Value="44"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -60,8 +61,8 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="1045"/>
-        <CursorPos X="54" Y="1071"/>
+        <TopLine Value="101"/>
+        <CursorPos X="123" Y="132"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -254,11 +255,10 @@
       <Unit30>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\win64\system.pp"/>
         <UnitName Value="System"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <CursorPos X="2" Y="41"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit30>
       <Unit31>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\objpas\sysutils\sysencodingh.inc"/>
@@ -394,11 +394,10 @@
       </Unit49>
       <Unit50>
         <Filename Value="F:\lazarus\fpc\3.0.4\source\rtl\inc\ustringh.inc"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="119"/>
         <CursorPos X="10" Y="135"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit50>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">

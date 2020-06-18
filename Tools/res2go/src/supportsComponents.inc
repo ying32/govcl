@@ -1,7 +1,7 @@
 
 const
   // PkgName默认为空，如果不为空生成生指定的包名。
-  supportsComponents: array[0..133] of TSupportComponentItem = (
+  supportsComponents: array[0..135] of TSupportComponentItem = (
     (ClassName: 'TButton'; PkgName: ''),
     (ClassName: 'TBitBtn'; PkgName: ''),
     (ClassName: 'TMaskEdit'; PkgName: ''),
@@ -135,6 +135,9 @@ const
     (ClassName: 'TTaskDialogBaseButtonItem'; PkgName: ''),
     (ClassName: 'TComboBoxEx'; PkgName: ''),
     (ClassName: 'TFrame'; PkgName: ''),
-    (ClassName: 'TSelectDirectoryDialog'; PkgName: '')
+    (ClassName: 'TSelectDirectoryDialog'; PkgName: ''),
+    (ClassName: 'TCheckGroup'; PkgName: ''),
+    (ClassName: 'TToggleBox'; PkgName: '')
+
 
   );
