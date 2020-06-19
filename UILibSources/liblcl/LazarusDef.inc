@@ -1202,7 +1202,7 @@ begin
   // 因为go编译为dll后，这个值不一定是主线程id了，所以得重新初始
   if MainThreadId <> AMainThreadId then
   begin
-    if AMainThreadId <= 0 then
+    if AMainThreadId <= TThreadID(0) then
       AMainThreadId := TThread.CurrentThread.ThreadID;
     MainThreadId := AMainThreadId;
   end;
