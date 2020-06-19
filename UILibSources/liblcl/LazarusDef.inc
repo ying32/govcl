@@ -1141,6 +1141,7 @@ end;
 //  Result := GetProcAddr(AName);
 //end;
 
+{$ifndef UsehandleException}
 // dylib
 type
   TSyscall0  = function: UInt64; extdecl;
@@ -1193,6 +1194,7 @@ begin
     end;
   end;
 end;
+{$endif}
 
 
 // 用于go编译成dll时使用
@@ -1220,9 +1222,9 @@ end;
 
 exports
   // 导出动态调用的
+{$ifndef UsehandleException}
   MySyscall,
-  // 导出表查询
-  //DGetProcAddr,
+{$endif}
 
   // SysLocaled
   DSysLocale,
